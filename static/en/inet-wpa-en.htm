@@ -1,0 +1,854 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>siduction Manuals - Internet/Network WIFI- WPA-Supplicant</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision devil 10/01/2012 1430 UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here en lang maintained by devil-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="To siduction.org forums and wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-en.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" />Search online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" alt="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">siduction OS Manual</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">siduction OS Manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-en.htm#cred-team">Credits</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-en.htm#how-to">How to use this manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+					  <li><a href="welcome-en.htm#table-contents">Table of Contents</a></li>
+					</ul>
+					</li>
+		<li><a href="help-en.htm#help-gen">Getting Help &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-en.htm#help-gen">Where and how to get help</a></li>
+					  <li><a href="help-en.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-en.htm#welcome-quick">siduction Quick Start Guide</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">ISO Content, Releases, Download Mirrors and Burning</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">ISO Content and system requirements &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-en.htm#rolling">Release Notes</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Mirrors, Downloading and Burning &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burning-no-gui">burniso script</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burn-no-gui-gen">Burning without a GUI</a></li>
+					  <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Download Mirrors</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the siduction-Live ISO</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-en.htm#colours"> Coloured terminal prompts</a></li>
+					  <li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+					  <li><a href="help-en.htm#init3-tools">Tools to know in text mode (tty) - init 3</a></li>
+					  <li><a href="term-konsole-en.htm#term-cmds">Linux Terminal Commands List</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-en.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">Boot codes</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-en.htm#cheatcodes">siduction specific Live-ISO bootcodes</a></li>
+				<li><a href="cheatcodes-en.htm#cheatcodes-linux">Linux generic bootcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning the Hard Drive - Traditional, GPT and LVM</a>
+		    <ul class="sub-menu" id="sm6">
+			  <li><a href="part-gparted-en.htm#hd-ntfs3g">Writing on NTFS partitions with ntfs-3g</a></li>
+			  <li><a href="part-lvm-en.htm#part-lvm">Partitioning to use LVM - Logical Volume Manager</a></li>
+			  <li><a href="part-gparted-en.htm#partition">Partitioning with a GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-en.htm#partition">Partitioning with CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+					    <li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-6">Formatting after partitioning with gdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-1">GPT Partitioning with gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-en.htm#part-example">Partitioning Basics &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+					  <li><a href="part-uuid-en.htm#uuid">UUID, Rebuilding fstab and creating new mount points</a></li>
+					  <li><a href="part-cfdisk-en.htm#disknames">Disk Naming in brief</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation </a></li>
+					  <li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+					  <li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso - Overview</a></li>
+					  <li><a href="hd-install-opts-en.htm#grub2-fromiso">Booting 'fromiso' with Grub 2</a></li>
+					  <li><a href="hd-install-opts-en.htm#fromiso-persist">fromiso and persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#usb-hd">Installing to USB drives &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD - siduction specific - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-en.htm#raw-usb">Writing siduction to a USB/SSD stick with any Linux, MS Windows or Mac OS X system</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-en.htm#install-crypt">Installing to encrypted partitions - cryptroot</a></li>
+		  <li><a href="nbdboot-en.htm#nbd1">Booting siduction over a network</a></li>
+		  <li><a href="hd-install-vmopts-en.htm#vmopts">Virtual Machine installation options</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-en.htm">Graphic cards, monitors, Xorg,  &amp; drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors  &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors</a></li>
+					  <li><a href="hw-dev-mon-en.htm#xrandr">Dual Monitors and xrandr</a></li>
+					  <li><a href="hw-dev-mon-en.htm#mon-binary">Dual Monitors (using binaries)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-en.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-en.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-en.htm#fw-detect">Firmware detection - non-free </a></li>
+			  <li><a href="nf-firm-en.htm#non-free-firmware">Adding non-free to sources</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-en.htm#install-add">Window Managers</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-en.htm">KDE and XFCE Window Managers &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-en.htm#xfce-notes">Useful Xfce extras</a></li>
+					    <li><a href="wm-dm-en.htm#install-add">Useful extra KDE Apps</a></li>	    
+					    <li><a href="wm-dm-en.htm#kde-login">Cant login in KDE</a></li>
+					    <li><a href="wm-dm-en.htm#ch-th">Changing Themes</a></li>
+					    <li><a href="wm-dm-en.htm#desk-freeze">Desktop Freezes</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-en.htm#dm">Installing additional Display Managers</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-en.htm">Internet connecting, WiFi, LAN and Networks</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-en.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-en.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+					    <li><a href="lamp-php-en.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-en.htm#privoxy">Firewalls and Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-en.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-en.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-en.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-en.htm#ssh-x">SSH and Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+						  <li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+						  <li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+						  <li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+						  <li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+						  <li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+						  <li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">WIFI connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-en.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-en.htm#net-set1">WiFi - Setting up for WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-en.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-en.htm#hotswitch">Network switching between WiFi and Cable</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">Wired Connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-en.htm#dial-mod">56k Modems</a></li>
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">Package Management and dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-en.htm#apt-cook">APT Cookbook and Sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-downgrade">Package Hold and downgrading</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-cache">Package searching with apt-cache</a></li>
+					    <li><a href="sys-admin-apt-en.htm#gui-pacsea">GUI Package searching</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-remove">Removing Kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#dmakms">Installing kernel modules dynamically with dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-en.htm#approx">dist-upgrade of multiple PCs on a LAN</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview</a></li>
+					    <li><a href="sys-admin-apt-en.htm#du-st">Upgrade an Installed System -  dist-upgrade - The Steps</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-en.htm">System Administration</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-en.htm#bois-prep">Upgrading the BIOS with FreeDOS</a></li>
+		<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+		<li><a href="hd-install-en.htm#adduser">Adding Users and Passwords &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-en.htm#adduser">Adding a new user</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pw-lost">Lost root passwords, new passwords</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#start-services">Services and init runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-en.htm#start-services">Services enable/disable</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pkill">Killing a service or process</a></li>
+					    <li><a href="sys-admin-gen-en.htm#init">siduction runlevels - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-en.htm#rsync">Backing up the system &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
+					    <li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
+					    <li><a href="home-en.htm#home-bu">Moving /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#fonts">CUPS, Fonts and Sound &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-en.htm#fonts">Fonts</a></li>
+					     <li><a href="sys-admin-gen-en.htm#cups">CUPS - Printing System</a></li>
+					     <li><a href="sys-admin-gen-en.htm#sound">Sound Mixers</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-en.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-en.htm#chroot">Grub2 - Recovering Grub with chroot</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#mbr-over-grub2">Grub2 - MBR Overwritten</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#multi-os">Grub2 - Dual and Multibooting</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub1-grub2">Grub2 -Upgrading from Grub1</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub2">Grub2 - Overview</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="wpa-basic">
+		<h2 id="top-header" >Basic Guide To Get Wireless Working - WiFi</h2>
+
+							<p class="highlight-3">Due to the complexity of law, siduction will only provide dfsg-free software, <a href="nf-firm-en.htm#non-free-firmware">please check this link for additional information on non-free sources for firmware</a></p>
+
+							<p>To get wlan WiFi working, you need a wired connection for just a few minutes to download the appropriate firmware.</p>
+
+							<p>If a wired connection is not possible you will have to put the firmware on a removable device (pendrive e.g.) and install it as root from there using:</p>
+<pre>
+#dpkg -i &lt;firmware.deb&gt;
+</pre>
+
+							<p>To find the appropriate firmware without knowing the make or brand of your wireless chip, you can use the command:</p>
+<pre>
+#fw-detect
+</pre>
+							<p>This will give you the following information:</p>
+<pre>
+#apt-get update
+#apt-get install &lt;name of firmware&gt;
+#modprobe -r &lt;modulename&gt;
+#modprobe &lt;modulename&gt;
+</pre>
+							<p>Use the apt-get install line that fw-detect command gave you. After that is done, you need to issue some commands in konsole before configuring the device.</p>
+
+							<p>You have to load the module now in order to be able to configure your device.</p>
+
+							<p>As root in konsole do:</p>
+<pre>
+modprobe -r &lt;modulename&gt;
+
+modprobe &lt;modulename&gt;
+</pre>
+							<p>As &lt;modulename&gt; uses the info that fw-detect gave you before. A helpful function of Konsole can be used here: bash completion: <br />
+							If you just write the first few letters of &lt;modulename&gt; and then hit the TAB key, it completes the module name (e.g. modprobe ipw TAB key) That also prevents misspelling.</p>
+
+							<p>Both modprobe commands dont give any output if successful, so if the normal prompt returns, the module got loaded fine.</p>
+
+							<p>You can check this with:</p>
+<pre>
+#lsmod | grep &lt;module&gt;
+</pre>
+
+
+							<p>Now start Ceni from K-Menu - Internet or run it from konsole as root with <a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a>. Your wireless WiFi device should be shown now and is ready to be configured.</p>
+
+							<p>To set up a Wlan WiFi GUI see <a href="inet-wpagui-en.htm">WiFi - roaming WPA-GUI</a></p>
+	</div>
+	<div class="divider" id="wpa">
+		<h2>Modes of Operation in wpasupplicant for Debian</h2>
+
+							<p class="highlight-3">Due to the complexity of law, siduction will only provide dfsg-free software, <a href="nf-firm-en.htm#non-free-firmware">please check this link for additional information on non-free sources for firmware</a></p>
+
+							<p>The Debian wpasupplicant package provides two (2) convenient modes of operation that are closely integrated to the core networking infrastructure; ifupdown.</p>
+
+			<h4>Whats Covered</h4>
+
+					<!--<h6>1.  Specifying the wpa_supplicant driver backend</h6>
+          						<p>* Table of supported drivers<br />
+         						* Common Driver Recommendations </p>-->
+
+					<h6>2. Mode #1: Managed Mode</h6>
+          						<p>* Examples<br />
+          						* Table of Common Options<br />
+          						* Important Notes About Managed Mode<br />
+          						* How It Works </p>
+
+					<h6>3. Mode #2: Roaming Mode</h6>
+          						<p>* wpa_supplicant.conf<br />
+          						* /etc/network/interfaces<br />
+          						* Controlling the Roaming Daemon with wpa_action<br />
+          						* Fine Tuning the Roaming Setup<br />
+          						* The Logfile<br />
+          						* Using External Mapping Scripts (e.g. guessnet)<br />
+          						* /etc/network/interfaces with external mapping</p>
+
+					<h6>4. Troubleshooting</h6>
+          						<p>* Hidden ssids</p>
+
+					<h6>5. Security Considerations</h6>
+          						<p>* Configuration File Permissions</p>
+
+			<!--<h2>1. Specifying the wpa_supplicant driver backend</h2>
+
+							<p>The wext driver backend will be used for all interfaces that do not explicitly set 'wpa-driver' to the driver type required for that device. Users of linux  2.4 kernels, or 2.6 kernels less than 2.6.14 will be required to specify a wpa-driver type.</p>
+
+	</div>
+				<h3>Supported drivers</h3>
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<th>Driver</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td>wext</td>
+					<td>Linux wireless extensions (generic)</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer05"></div>
+		<h3>Common Driver Recommendations</h3>
+
+							<p>The Intel Pro Wireless adapters (ipw2100, ipw2200 and ipw3945) all use the 'wext' backend, unless your kernel is older than 2.6.14</p>
+
+							<p>Madwifi supports both the 'wext' and 'madwifi' driver backends. 'wext' is preferred, however 'madwifi' may work better in some circumstances.</p>
+
+							<p>Ndiswrapper NO LONGER SUPPORTS the 'ndiswrapper' driver backend as of version 1.16. Therefore, 'wext' must be used unless you use an antiquated ndiswrapper release.</p>
+
+							<p>Set the driver type in the interfaces(5) stanza for your device with the 'wpa-driver' option. For example:</p>
+
+<pre>
+iface eth0 inet dhcp
+	wpa-driver wext
+	. . . . . more options
+</pre>-->
+
+			<h2>2. Mode #1: Managed Mode</h2>
+
+							<p>This mode provides the ability to establish a connection via wpa_supplicant to one known network. It is similar to how the wireless-tools package works. Each element required to establish the connection via wpa_supplicant is prefixed with 'wpa-' and followed by the value that will be used for that element.</p>
+
+		<h6>Examples of a Mode #1 wpa.conf file - Example 1.</h6>
+<pre>
+Example of a Mode #1 wpa.conf file - Example 1.
+NOTE: the 'wpa-psk' value is only valid if:
+
+   1. It is a plaintext (ascii) string between 8 and 63 characters in length
+   2. It is a hexadecimal string of 64 characters
+
+# Connect to access point of ssid 'NETBEER' with an encryption type of
+# WPA-PSK/WPA2-PSK. It assumes the driver will use the 'wext' driver backend
+# of wpa_supplicant because no wpa-driver option has been specified.
+# The passphrase is given as a ASCII (plaintext) string. DHCP is used to
+# obtain a network address.
+#
+iface wlan0 inet dhcp
+
+        wpa-ssid NETBEER
+        # plaintext passphrase
+        wpa-psk PlainTextSecret
+
+# Connect to access point of ssid 'homezone' with an encryption type of
+# WPA-PSK/WPA2-PSK, using the 'wext' driver backend of wpa_supplicant.
+# The psk is given as an encoded hexadecimal string. DHCP is used to obtain
+# a network address.
+#
+iface wlan0 inet dhcp
+wpa-driver wext
+wpa-ssid homezone
+# hexadecimal psk is encoded from a plaintext passphrase
+wpa-psk 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+
+# Connect to access point of ssid 'HotSpot1' and bssid of '00:1a:2b:3c:4d:5e'
+# with an encryption type of WPA-PSK/WPA2-PSK, using the the 'madwifi' driver
+# backend of wpa_supplicant. The passphrase is given as a plaintext string.
+# A static network address assignment is used.
+#
+iface ath0 inet static
+
+        wpa-driver madwifi
+        wpa-ssid HotSpot1
+        wpa-bssid 00:1a:2b:3c:4d:5e
+        # plaintext passphrase
+        wpa-psk madhotspot
+        wpa-key-mgmt WPA-PSK
+        wpa-pairwise TKIP CCMP
+        wpa-group TKIP CCMP
+        wpa-proto WPA RSN
+        # static ip settings
+        address 192.168.0.100
+        netmask 255.255.255.0
+        network 192.168.0.0
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+
+# User supplied wpa_supplicant.conf is used for eth1. All network information
+# is contained within the user supplied wpa_supplicant.conf. No wpa-driver type
+# is specified, so wext is used. DHCP is used to obtain a network address.
+#
+iface eth1 inet dhcp
+
+wpa-conf /path/to/wpa_supplicant.conf
+</pre>
+
+	<div class="divider" id="wpa1">
+		<h2>Table of Common Options</h2>
+
+							<p>A brief summary of common 'wpa-' options that may be used in the /etc/network/interfaces stanza for a wireless device. See the 'Important Notes About Managed Mode' section for information about valid and invalid 'wpa-' values.</p>
+
+							<p class="highlight-2">NOTE: ALL values are CASE SeNsItVe</p>
+
+<pre>
+Element		Example Value		Description
+=======         =============           ===========
+wpa-ssid        plaintextstring         sets the ssid of your network
+wpa-bssid       00:1a:2b:3c:4d:5e       the bssid of your AP
+wpa-psk         0123456789......        your preshared wpa key. Use
+                                        wpa_passphrase(8) to generate your psk
+                                        from a passphrase and ssid pair
+wpa-key-mgmt    NONE, WPA-PSK, WPA-EAP, list of accepted authenticated key
+                IEEE8021X               management protocols
+wpa-group       CCMP, TKIP, WEP104,     list of accepted group ciphers for WPA
+                WEP40
+wpa-pairwise    CCMP, TKIP, NONE        list of accepted pairwise ciphers for
+                                        WPA
+wpa-auth-alg    OPEN, SHARED, LEAP      list of allowed IEEE 802.11
+                                        authentication algorithms
+wpa-proto       WPA, RSN                list of accepted protocols
+wpa-identity    myplaintextname         administrator provided username
+                                        (EAP authentication)
+wpa-password    myplaintextpassword     your password (EAP authentication)
+wpa-scan-ssid   0 or 1                  toggles scanning of ssid with specific
+                                        Probe Request frames
+wpa-ap-scan     0 or 1 or 2             adjusts the scanning logic of
+                                        wpa_supplicant
+
+</pre>
+							<p>The complete functionality of wpa_cli(8) should be implemented. Anything missing is considered a bug and should be reported as such. Patches are always welcome.</p>
+
+
+			<h2>Important Notes About Managed Mode</h2>
+
+							<p>Almost all 'wpa-' options require there is at least a ssid specified. Only a handful of options have a global effect. These are: 'wpa-ap-scan' and 'wpa-preauthenticate'.</p>
+
+							<p>Any 'wpa-' option given for a device in the interfaces(5) file is sufficient to trigger the wpa_supplicant daemon into action.</p>
+
+							<p>The wpasupplicant ifupdown script makes assumptions about the 'type' of input that is valid for each option. For example, it assumes that some input is plaintext and wraps quotation marks around the input before passing it on to wpa_cli, which then adds the input to the network block being formed via the wpa_supplicant ctrl_interface socket.</p>
+
+							<p>Running ifup manually with the  '--verbose' option will reveal all of the commands used to form the network block via wpa_cli. If the value you used for any wpa-* option in /etc/network/interfaces is surrounded by double quotes, then it has been assumed to be of "plaintext" or "ascii" type input.</p>
+
+							<p>Some input is assumed to be a hexadecimal string (eg. wpa-wep-key*). The value 'type' of the wpa-psk option however, is determined via a simple check for more than one non hexadecimal character.</p>
+
+			<h2>How It Works</h2>
+
+							<p>As mentioned earlier, each wpa_supplicant specific element is prefixed with 'wpa-'. Each element correlates to a property of wpa_supplicant described in the wpa_supplicant.conf(5), wpa_supplicant(8) and wpa_cli(8) manpages.</p>
+
+							<p>The supplicant is launched without any pre-configuration whatsoever, and wpa_cli forms a network configuration from the input provided by the 'wpa-*' lines. Initially, wpa_supplicant/wpa_cli does not directly set the properties of the device (like setting an essid with iwconfig, for example), rather it informs the device of what access point is suitable to associate with. Once the device has scanned the area, and found that the suitable access point is available for use, these properties are set.</p>
+
+							<p>The script that does all the work is located at:</p>
+
+<pre>
+/etc/wpa_supplicant/ifupdown.sh
+/etc/wpa_supplicant/functions.sh
+</pre>
+
+							<p>ifupdown.sh is executed by run-parts, which in turn is invoked by ifupdown during the 'pre-up', 'pre-down' and 'post-down' phases.</p>
+
+
+							<p>In the 'pre-up' phase, a wpa_supplicant daemon is launched followed by a series of wpa_cli commands that set up a network configuration according to what 'wpa-' options were used in /etc/network/interfaces for the physical device.</p>
+
+							<p>If wpa-roam is used, a wpa_cli daemon is lauched in the 'post-up' phase.</p>
+
+							<p>In the 'pre-down' phase, the wpa_cli daemon is killed if it exists.</p>
+
+							<p>In the 'post-down' phase, the wpa_supplicant daemon is killed.</p>
+
+			<h2>3. Mode #2: Roaming Mode</h2>
+
+							<p>A self contained, simplistic roaming mechanism is provided by this package. It is in the form of a wpa_cli action script, /sbin/wpa_action, and it assumes control of ifupdown once activated. The wpa_action(8) manpage describes its technical details in great depth.</p>
+
+							<p>To activate a roaming interface, adapt the following example interfaces(5) stanza:</p>
+
+<pre>
+iface eth1 inet manual
+	wpa-driver wext
+        wpa-roam /path/to/wpa_supplicant.conf
+</pre>
+
+							<p>Two daemons are spawned from the above example; wpa_supplicant and wpa_cli. It is required to provide a wpa_supplicant.conf. A good starting point is provided by an example configuration file:</p>
+
+<pre>
+ # copy the template to /etc/wpa_supplicant/
+        cp /usr/share/doc/wpasupplicant/examples/wpa-roam.conf \
+                /etc/wpa_supplicant/wpa_supplicant.conf
+        # allow only root to read and write to file
+        chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf
+
+NOTE: it is critical that the used wpa_supplicant.conf defines the location of
+      the 'ctrl_interface' so that a communication socket is created for the
+      wpa_cli (wpa-roam daemon) to attach. The mentioned example configuration,
+      /usr/share/doc/wpasupplicant/examples/wpa-roam.conf, has been set to a
+      sane default.
+
+</pre>
+
+
+							<p>It is required to edit this configuration file, and add the network blocks for all known networks. If you do not understand what this means, start reading the wpa_supplicant.conf(5) manpage now.</p>
+
+							<p>For each network, you may specify a special option 'id_str'. It should be set to a simple text string. This text string forms the basis for network profiling; it correlates to a logical interface defined in the interfaces(5) file. When no 'id_str' is given for a network, wpa_action assumes it will use the 'default' logical interface as fallback. The fallback interface can be chosen via the 'wpa-default-iface' option.</p>
+
+							<p>So what does all this mean? Lets illustrate it with a small example taken from the wpa_action(8) manpage.</p>
+
+		<h6>wpa_supplicant.conf example</h6>
+<pre>
+wpa_supplicant.conf example:
+network={
+        ssid="foo"
+        key_mgmt=NONE
+        # this id_str will notify /sbin/wpa_action to 'ifup uni'
+        id_str="uni"
+}
+
+network={
+        ssid="bar"
+        psk=123456789...
+        # this id_str will notify /sbin/wpa_action to 'ifup home_static'
+        id_str="home_static"
+}
+
+network={
+        ssid=""
+        key_mgmt=NONE
+        # no 'id_str' parameter is given, /sbin/wpa_action will 'ifup default'
+}
+</pre>
+
+	</div>
+	<div class="divider" id="wpa2">
+		<h6>/etc/network/interfaces example</h6>
+<pre>
+/etc/network/interfaces example:
+# the roaming interface MUST use the manual inet method
+# 'allow-hotplug' or 'auto' ensures the daemon starts automatically
+allow-hotplug eth1
+iface eth1 inet manual
+
+        wpa-driver wext
+        wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+# no id_str, 'default' is used as the fallback mapping target
+iface default inet dhcp
+
+
+# id_str="uni"
+iface uni inet dhcp
+
+# id_str="home_static"
+iface home_static inet static
+
+        address 192.168.0.20
+        netmask 255.255.255.0
+        network 192.168.0.0
+
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+</pre>
+
+							<p>A logical interface is brought up via ifup, and taken down via ifdown, as wpa_supplicant associates and de-associates with the network associated to it by the 'id_str' option used in the wpa_supplicant.conf configuration file.</p>
+
+							<p>A log of /sbin/wpa_action's actions is created at /var/log/wpa_action.log, please attach the log when reporting problems.</p>
+
+			<h2>Interacting with wpa_supplicant with wpa_cli and wpa_gui</h2>
+
+							<p>The wpa_supplicant process can be interacted with by members of the "netdev" group if the example roaming configuration was used as is (or by whatever group or gid specified by the GROUP= crtl_interface parameter).</p>
+<pre>
+# the default ctrl_interface option used in the example file
+	# /usr/share/doc/wpasupplicant/examples/wpa-roam.conf
+        ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+
+To interact with the supplicant, the wpa_cli (command line) and wpa_gui (QT)
+have been provided. With these you may connect, disconnect, add/delete new
+network blocks, provide required interactive security information and so on.
+</pre>
+
+			<h2>Controlling the Roaming Daemon with wpa_action</h2>
+
+							<p>Once the roaming daemon is started, it assumes control of ifupdown. That is; wpa_cli calls ifup when wpa_supplicant has successfully associated with an access point, and calls ifdown when the connection is lost or terminated. While the roaming daemon is active, ifupdown should not be controlled directly by manually issued commands, rather /sbin/wpa_action is supplied to stop and reload the roaming daemon. For example, to stop the romaing daemon on the device 'eth1':</p>
+
+<pre>
+wpa_action eth1 stop
+</pre>
+
+
+							<p>When it is required to update the roaming daemon with  a new networks details, it can be done without stopping it. Edit the wpa_supplicant.conf file that is being used by the daemon with the new networks details, add optional network settings to /etc/network/interfaces that are specific to the new network (linked by the 'id_str') and then 'reload' the daemon like so:</p>
+
+<pre>
+wpa_action eth1 reload
+</pre>
+
+							<p>For the complete technical details of what wpa_action can do, read the wpa_action(8) manpage.</p>
+
+	</div>
+	<div class="divider" id="wpa3">
+		<h2>Fine Tuning the Roaming Setup</h2>
+
+							<p>You may face situations where multiple known access points are in close proximity. You can choose which one is preferred manually, with wpa_cli or wpa_gui, or you can give each network its own priority. This is provided by the 'priority' option of wpa_supplicant.conf.</p>
+
+	</div>
+	<div class="divider" id="wpa4">
+		<h2>The Logfile</h2>
+
+							<p>All activity of the roaming dameon is logged to /var/log/wpa_action.log. The following information is logged:</p>
+
+							<p>*time and date<br />
+							*interface name and action event<br />
+							*values of enviromental variables (WPA_ID, WPA_ID_STR, WPA_CTRL_DIR)<br />
+							*ifupdown command executed<br />
+							*wpa_cli status (based on WPA-PSK, network may display different info)<br />
+							*bssid<br />
+							*ssid<br />
+							*id<br />
+							*id_str<br />
+							*pairwise_cipher<br />
+							*group_cipher<br />
+							*key_mgmt<br />
+							*wpa_state<br />
+							*ip_address</p>
+
+
+	</div>
+	<div class="divider" id="wpa5">
+		<h2>Using External Mapping Scripts (e.g. guessnet)</h2>
+
+							<p>In addition to the internal mapping of logical interfaces via 'id_str', wpa_action can call external mapping scripts. A mapping script should return the name of the logical interface which should be brought up. Any mapping script that works from ifupdowns mapping mechanism (see man interfaces) should also work when called from wpa_action.</p>
+
+							<p>To call a mapping script add a line 'wpa-mapping-script name-of-the-script' to  the interfaces stanza of the physical roaming device. (You may have to specify the absolute path to the mapping script.)</p>
+
+
+							<p>The contents of lines starting with wpa-map are passed to stdin of the mapping  script. Since ifupdown allows only one wpa-map line you can append any number to wpa-map for additional lines. For example:</p>
+
+<pre>
+iface wlan0 inet manual
+        wpa-driver wext
+        wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+        wpa-mapping-script guessnet-ifupdown
+        wpa-map0 home
+        wpa-map1 work
+        wpa-map2 school
+        # ... additional wpa-mapX lines as required
+</pre>
+							<p>By default the mapping script will only be used when no 'id_str' is available for the current network. If you want to completely disable 'id_str' matching and use only an external mapping script, use the 'wpa-mapping-script-priority 1' option to override default behaviour.</p>
+
+							<p>If the mapping script returns an empty string wpa_action will fallback to using the 'default' interface, unless an alternative is defined by the 'wpa-roam-default-iface' option.</p>
+
+							<p>Below is an advanced example, using guessnet-ifupdown as the external mapping script.</p>
+
+					<h6>/etc/network/interfaces with external mapping example</h6>
+<pre>
+/etc/network/interfaces with external mapping example:
+allow-hotplug wlan0
+iface wlan0 inet manual
+
+        wpa-driver wext
+        wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+        wpa-roam-default-iface default-wparoam
+        wpa-mapping-script guessnet-ifupdown
+        wpa-map default: default-guessnet
+        wpa-map0 home_static
+        wpa-map1 work_static
+
+
+# school can only be chosen via 'id_str' matching
+iface school inet dhcp
+
+        # resolvconf
+        dns-nameservers 11.22.33.44 55.66.77.88
+
+iface home_static inet static
+
+        address 192.168.0.20
+        netmask 255.255.255.0
+
+        network 192.168.0.0
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+        test peer address 192.168.0.1 mac 00:01:02:03:04:05
+
+
+iface work_static inet static
+
+        address 192.168.3.200
+        netmask 255.255.255.0
+        network 192.168.3.0
+        broadcast 192.168.3.255
+
+        gateway 192.168.3.1
+        test peer address 192.168.3.1 mac 00:01:02:03:04:05
+
+iface default-guessnet inet dhcp
+
+iface default-wparoam inet dhcp
+</pre>
+
+							<p>In this example wpa_action will use guessnet for the selection of a suitable logical interface only when no 'id_str' option has been provided for the current network in the provided wpa_supplicant.conf.</p>
+
+							<p>The 'wpa-map' lines provide guessnet with the logical interfaces that are to be tested as well as the default interface to be used when all tests fail. The 'test' lines of each logical interface are used by guessnet to determine if we are actually connected to that network. For instance, guessnet will choose the logical interface 'home_static' if there's a device with an IP address of 192.168.0.1 and MAC of 00:01:02:03:04:05 on the current network. If all tests fail, the 'default-guessnet' interface will be configured.</p>
+
+
+							<p>Please, read the guessnet(8) manpage for more information.</p>
+
+			<h2>4. Troubleshooting</h2>
+
+							<p>In order to debug connection, association and authentication problems, we suggest starting `wpa_cli -i &lt;interface&gt;` in a different shell, before starting the interface. Use the command 'level 0' first, to get all debug messages. Then use `ifup --verbose &lt;interface&gt;` to get verbose debug messages from the script starting wpasupplicant.</p>
+	</div>
+	<div class="divider" id="wpa6">
+		<h2>Hidden ssids</h2>
+
+							<p>For reference, see #358137. In order to be able to associate to hidden ssids, please try to set the option 'ap_scan=1' in the global section, and  'scan_ssid=1' in your network block section of your wpa_supplicant.conf file. If you are using the managed mode, you can do so by these stanzas:</p>
+
+<pre>
+iface eth1 inet dhcp
+wpa-conf managed
+wpa-ap-scan 1
+wpa-scan-ssid 1
+# additional options for your setup
+</pre>
+
+							<p>According to #368770, association can take a very long time to associate to WEP  secured networks. In some cases, setting the parameter 'ap_scan=2' in the config file, (or using a 'wpa-ap-scan 2' stanza, which is equivalent) can greatly help to speed up association.</p>
+
+ 							<p>Please note that setting ap_scan to the value of 2 also requires that all networks have a precisely defined security policy for for key_mgmt, pairwise, group and proto network policy variables.</p>
+
+	</div>
+	<div class="divider" id="wpa7">
+		<h2>5. Security Considerations</h2>
+				<h5>Configuration of File Permissions</h5>
+							<p>It is important to keep PSK's and other sensitive information concerning your network settings private, therefore ensure that important configuration files containing such data are only readable by their owner. For example:</p>
+
+<pre>
+chmod 0600 /etc/network/interfaces
+# substitute the path of your wpa_supplicant.conf file
+chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf
+</pre>
+							<p>By default, /etc/network/interfaces is world readable, and thus unsuitable for containing secret keys and passwords.</p>
+
+	</div>
+		<div id="rev">Page last revised 10/01/2012 1800 UTC</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

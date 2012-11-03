@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>siduction Manuals - Grub2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision by devil 15/01/2012-->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here de lang maintained by devil -->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu siduction.org (Forum und Wiki)" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-de.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Wähle eine andere Sprache - Choose another language DE, EN" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">siduction-Handbuch</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-de.htm#welcome-gen">siduction-Handbuch &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-de.htm#cred-team">Das siduction-Team</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-de.htm#how-to">Über das Handbuch &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-de.htm#how-to">Wie das Handbuch zu verwenden ist</a></li>
+					  <li><a href="welcome-de.htm#table-contents">Inhalt</a></li>
+					</ul>
+					</li>
+		<li><a href="help-de.htm#help-gen">Wo es Hilfe gibt &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-de.htm#help-gen">Weitere Hilfe</a></li>
+					  <li><a href="help-de.htm#paste">IRC und !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-de.htm#welcome-quick">siduction Schnellstart</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-de.htm">ISO: Inhalt, Veröffentlichungen, Download, Spiegelserver, Brennvorgang</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-de.htm#cd-content">ISO: Inhalt und Systemanforderungen &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-de.htm#rolling">Release Notes</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-de.htm#download-siduction">siduction: Spiegelserver, Download, Brennvorgang &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-de.htm#md5">md5 Checksumme</a></li>
+					  <li><a href="cd-dl-burning-de.htm#burn-nero">Brennen mit Windows</a></li>
+					  <li><a href="cd-dl-burning-de.htm#burn-linux">Brennen mit Linux</a></li>
+					  <li><a href="cd-no-gui-burn-de.htm#burning-no-gui">Das Skript burniso</a></li>
+					  <li><a href="cd-no-gui-burn-de.htm#burn-no-gui-gen">Brennen ohne graphische Oberfläche</a>
+					  </li><li><a href="cd-dl-burning-de.htm#download-siduction">Spiegelserver zum Download</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-Modus</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-de.htm#rootpw">Root-Passwort auf der Live-ISO</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Software-Installation auf einer Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-de.htm">Terminal/Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-de.htm#term-kon"> Terminal/Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-de.htm#term-kon">Terminal/Konsole</a></li>
+					  <li><a href="term-konsole-de.htm#colours">Farbige Prompts im Terminal</a></li>
+					  <li><a href="term-konsole-de.htm#cli-help">Hilfe auf der Befehlszeile</a></li>
+					  <li><a href="help-de.htm#init3-tools">Tools für den Textmodus (tty) - init 3</a></li>
+					  <li><a href="term-konsole-de.htm#term-cmds">Linux-Befehlsliste am Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-de.htm#sux"> sux/sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-de.htm">Bootoptionen (Bootcodes)</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-de.htm#cheatcodes">Bootoptionen für die siduction-Live-ISO</a></li>
+				<li><a href="cheatcodes-de.htm#cheatcodes-linux">Bootoptionen für Linux</a></li>
+				<li><a href="cheatcodes-vga-de.htm#vga">VGA-Codes</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-de.htm">Partitionierung der Festplatte - traditionell, GPT und LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-de.htm#hd-ntfs3g">Schreiben auf NTFS Partitionen mit ntfs-3g</a></li>
+			<li><a href="part-lvm-de.htm#part-lvm">Partitionierung mit LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-de.htm#partition">Partitionieren mit GUI-Programmen &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-de.htm#partition">Partitionieren mit GParted/KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-de.htm#ntfs">Größenänderung von NTFS-Partitionen mit GParted/KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-de.htm#partition">Partitionieren im Terminal &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-de.htm#partition">Partitionieren mit cfdisk</a></li>
+					    <li><a href="part-cfdisk-de.htm#formating">Formatieren</a></li>
+					    <li><a href="part-gdisk-de.htm#gdisk-6">Formatieren nach einer Partitionierung mit gdisk</a></li>
+					    <li><a href="part-gdisk-de.htm#gdisk-1">GPT Partitionieren mit gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-de.htm#part-example">Grundlagen für die Partitionierung &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-de.htm#part-example">Partitionierungsbeispiele</a></li>
+					  <li><a href="part-uuid-de.htm#uuid">UUID, Anpassung der fstab und Erstellung neuer Einhängepunkte</a></li>
+					  <li><a href="part-cfdisk-de.htm#disknames">Kurzanleitung zur Benennung von Partitionen</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-de.htm">Installationsoptionen - HD, USB, VM und Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-de.htm#Inst-prep">Vorbereitung einer Installation &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-de.htm#Inst-prep">Installationsvorbereitung </a></li>
+					  <li><a href="hd-install-de.htm#Installation">Installation auf einer Festplatte</a></li>
+					  <li><a href="hd-install-de.htm#first-hd-boot">Der erste Start des Systems</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-de.htm#fromiso">fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-de.htm#fromiso">fromiso - Überblick</a></li>
+					  <li><a href="hd-install-opts-de.htm#grub2-fromiso">fromiso mit Grub 2</a></li>
+					  <li><a href="hd-install-opts-de.htm#fromiso-persist">fromiso und persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-de.htm#usb-hd">Installation auf USB-Geräte &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-de.htm#usb-hd">Installation auf eine USB-Festplatte (Besonderheiten von siduction, siduction-on-stick)</a></li>
+					  <li><a href="hd-ins-opts-oos-de.htm#raw-usb">Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X)</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-de.htm#install-crypt">Installation auf verschlüsselte Partitionen - cryptroot</a></li>
+		  <li><a href="nbdboot-de.htm#nbd1">Booten über ein Netzwerk</a></li>
+		<li><a href="hd-install-vmopts-de.htm#vmopts">Installation auf virtuellen Maschinen</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-de.htm">Grafikkarten, Monitore, Xorg &amp; Treiber</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-de.htm#mon-res">Bildschirmauflösung und Monitore  &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-de.htm#mon-res">Bildschirmauflösung und Monitore</a></li>
+					  <li><a href="hw-dev-mon-de.htm#xrandr">Dual-Monitore und xrandr</a></li>
+					  <li><a href="hw-dev-mon-de.htm#mon-binary">Dual-Monitore (mit proprietären Treibern)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-de.htm#foss-xorg">Grafiktreiber &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-de.htm#ati-3d">AMD/ATI 3D-Treiber</a></li>
+					  <li><a href="gpu-de.htm#intel">Intel 2D- und 3D-Treiber</a></li>
+					  <li><a href="gpu-de.htm#nvidia">Nvidia 3D-Treiber</a></li>
+					  <li><a href="gpu-de.htm#foss-xorg">Open Source Xorg-Treiber</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-de.htm#fw-detect">Ermittlung von nicht freier Firmware</a></li>
+			  <li><a href="nf-firm-de.htm#non-free-firmware">non-free der Sources List anfügen</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-de.htm">Sitzungsmanager</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-de.htm">KDE, XFCE und weitere Sitzungsmanager &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-de.htm#xfce-notes">Xfce-Extras</a></li>
+					    <li><a href="wm-dm-de.htm#install-add">Zusätzliche KDE-Programme</a></li>
+					    <li><a href="wm-dm-de.htm#kde-login">Kein Login in KDE</a></li>
+					    <li><a href="wm-dm-de.htm#ch-th">Grafik-Themen ändern</a></li>
+					    <li><a href="wm-dm-de.htm#desk-freeze">Wenn der Desktop einfriert</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-de.htm#dm">Installation weiterer Sitzungsmanager</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-de.htm">Internetverbindung: WiFi, LAN, sonstige Netzwerke </a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-de.htm">LAMP mit siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-de.htm#serv-apache">LAMP mit siduction</a></li>
+					    <li><a href="lamp-apache-de.htm#serv-ftp">FTP-Klienten</a></li>
+					    <li><a href="lamp-apache-de.htm#serv-sec">Sicherheitsprotokolle</a></li>
+					    <li><a href="lamp-apache-de.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-de.htm#serv-mysql">MySQL</a></li>
+					    <li><a href="lamp-php-de.htm#serv-php">PHP und Apache</a></li>
+					    <li><a href="ntp-server-de.htm#ntp-server">Zeitserver</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-de.htm#tor">Firewalls und Datenschutz &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-de.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-de.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-de.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-de.htm#ssh-x">SSH und Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-de.htm#setup">Samba-Server</a></li>
+						  <li><a href="samba-de.htm#configure">Konfiguration von SAMBA (Windows)</a></li>
+						  <li><a href="ssh-de.htm#ssh-fs">SSH (Ferneinbindung)</a></li>
+						  <li><a href="ssh-de.htm#ssh-x">SSH mit grafischen Programmen</a></li>
+						  <li><a href="ssh-de.htm#ssh-f">SSH via Konqueror</a></li>
+						  <li><a href="ssh-de.htm#ssh-w">SSH: Weiterleitung von grafischen Programmen von Windows</a></li>
+						  <li><a href="ssh-de.htm#ssh">SSH und Sicherheit</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-de.htm#netcardconfig">WIFI-Verbindungen &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-de.htm#netcardconfig">Ceni (Erstellung einer Internetverbindung)</a></li>
+						    <li><a href="inet-wpagui-de.htm#wpa-roaming-gui">WiFi: WPA_GUI</a></li>
+						    <li><a href="inet-setup-de.htm#net-set1">WiFi: Roaming-Konfiguration</a></li>
+						    <li><a href="inet-wpa-de.htm#wpa">WiFi und wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-de.htm#hotswitch">Wechsel zwischen WiFi und Kabel</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-de.htm#netcardconfig">Kabelverbindungen &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-de.htm#dial-mod">56k-Modems</a></li>
+						    <li><a href="inet-ceni-de.htm#netcardconfig">Ceni (Erstellung einer Internetverbindung</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-de.htm">Paketmanager und Systemaktualisierung</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-de.htm#apt-cook">APT-Rezepte und APT-Quelllisten &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-de.htm#apt-cook">APT-Grundlagen, sources.list.d/*.list</a></li>
+					    <li><a href="sys-admin-apt-de.htm#apt-install">Installation von Programmpaketen</a></li>
+					    <li><a href="sys-admin-apt-de.htm#apt-delete">Löschen eines Programmpakets</a></li>
+					    <li><a href="sys-admin-apt-de.htm#apt-downgrade">Halten eines Programmpakets oder Ältere Version installieren</a></li>
+					    <li><a href="sys-admin-apt-de.htm#apt-cache">Programmpaket mit apt-cache suchen</a></li>
+					    <li><a href="sys-admin-apt-de.htm#gui-pacsea">Suchen eines Programmpakets mit grafischen Hilfsprogrammen</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Kernelaktualisierung &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-de.htm#kern-remove">Entfernen eines Kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Aktualisierung eines</a></li>
+					    <li><a href="sys-admin-kern-upg-de.htm#dmakms">Automatische Installation von Kernelmodulen mit dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-de.htm#apt-upgrade">Aktualisierung eines installierten Systems &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-de.htm#live-cd-upgrade">Aktualisierung mittels einer Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-de.htm#approx">Aktualisierung mehrerer PCs via LAN</a></li>
+					    <li><a href="sys-admin-apt-de.htm#apt-upgrade">Aktualisierung eines Systems: Grundlagen</a></li>
+					    <li><a href="sys-admin-apt-de.htm#du-st">Aktualsierung eines Systems: die einzelnen Schritte</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-de.htm">Systemadministration</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-de.htm#bois-prep">Aktualisierung des BIOS mittels FreeDOS</a></li>
+		<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkit-Scanner</a></li>
+		<li><a href="hd-install-de.htm#adduser">Hinzufügen von Benutzern, Passwortverwaltung &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-de.htm#adduser">Einen neuen Benutzer hinzufügen</a></li>
+					    <li><a href="sys-admin-gen-de.htm#pw-lost">Vergessene Root-Passwörter - Erstellung neuer Passwörter</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-de.htm#start-services">Dienste und Runlevel &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-de.htm#start-services">Dienste aktivieren/deaktivieren</a></li>
+					    <li><a href="sys-admin-gen-de.htm#pkill">Stoppen eines Dienstes oder Prozesses</a></li>
+					    <li><a href="sys-admin-gen-de.htm#init">Runlevel-Einstellungen von siduction</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-de.htm#rsync">Sicherung eines Systems &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-de.htm#rdiff">Sicherung mit rdiff</a></li>
+					    <li><a href="sys-admin-rsync-de.htm#rsync">Sicherung mit rsync</a></li>
+					    <li><a href="home-de.htm#home-bu">Verschieben von /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-de.htm#fonts">CUPS, Schriften und Audio &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-de.htm#fonts">Schriften</a></li>
+					     <li><a href="sys-admin-gen-de.htm#cups">CUPS - Drucken mit siduction</a></li>
+					     <li><a href="sys-admin-gen-de.htm#sound">Audio-Mischpulte</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-de.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-de.htm#chroot">Grub2 - Wiederherstellung von Grub durch chroot</a></li>
+					    <li><a href="sys-admin-grub2-de.htm#mbr-over-grub2">Grub2 - Falls der MBR-Bootsektor überschrieben wurde</a></li>
+					    <li><a href="sys-admin-grub2-de.htm#multi-os">Grub2 - Dual- und Multibooting</a></li>
+					    <li><a href="sys-admin-grub2-de.htm#grub1-grub2">Grub2 - Aktualisierung von Grub1</a></li>
+					    <li><a href="sys-admin-grub2-de.htm#grub2">Grub2 - Überblick</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+		<div class="divider" id="grub2">
+			<h2 id="top-header">GRUB 2</h2>
+				<h6>Zusammenfassung der wesentlichen Unterschiede zwischen GRUB 1 (jetzt grub-legacy) und GRUB2:</h6>
+
+					<ul>
+						  	<li><span class="highlight-3">Die Datei menu.lst existiert nicht mehr.</span></li>
+
+							<li>Die Datei <span class="highlight-3">grub.cfg</span> steuert nun den Grub-Bildschirm.</li>
+
+							<li>grub.cfg wird automatisch von Skripten in <span class="highlight-3"> /etc/grub.d</span> erstellt.</li>
+
+							<li>Die Bezeichnung der Partitionen ändert sich ebenfalls. Die Nummerierung der Partitionen beginnt mit 1, nicht mit 0 (Laufwerksnummerierungen beginnen weiterhin mit 0):
+<pre>
+Linux      grub1     grub2
+/dev/sda1  (hd0,0)   (hd0,1)
+/dev/sda2  (hd0,1)   (hd0,2)
+/dev/sda3  (hd0,2)   (hd0,3)
+
+/dev/sdb1  (hd1,0)   (hd1,1)
+/dev/sdb2  (hd1,1)   (hd1,2)
+/dev/sdb3  (hd1,2)   (hd1,3)
+</pre>
+							</li>
+
+							<li>Die Stanzas in grub.cfg folgen einer anderen Syntax als in menu.lst und können nicht direkt von der menu.lst von Grub 1 nach grub.cfg von Grub2 kopiert werden. <span class="highlight-2">Die Datei grub.cfg darf nie manuell geändert werden. </span></li>
+
+					 </ul>
+		</div>
+		<div class="divider" id="grub2-files">
+					  <h4>Konfigurationsdatei von Grub2</h4>
+							<p>Die Datei <span class="highlight-3">/etc/default/grub</span> enthält die variablen Einstellungen für Grub2, zum Beispiel Timeout, Basiseinstellungen des Menüs, Kernel-Parameter, graphische Oberfläche von Grub u.a.</p>
+
+					 <h4> Die Skripte von Grub2</h4>
+							<p><span class="highlight-3"> /etc/grub.d</span> steuert die Zieldatei <span class="highlight-3"> grub.cfg</span>, die sich in <span class="highlight-3"> /boot/grub/</span> befindet.</p>
+
+							<p><span class="highlight-2">Die Datei grub.cfg darf nie manuell geändert werden. </span>Alle Änderungen müssen in den Skriptdateien im Ordner <span class="highlight-3"> /etc/grub.d</span> durchgeführt werden. os-prober sollte 90% der Fälle korrekt lösen:</p>
+<pre>
+00_header:
+05_debian_theme: Setzt Hintergrund, Textfarben, Grafikthema
+10_hurd: Sucht einen Hurd-Kernel
+10_linux: Sucht einen Linux-Kernel auf Grundlage des Befehls lsb_release
+20_memtest86+: Falls die Datei /boot/memtest86+.bin existiert, wird sie ins Boot-Menü integriert
+30_os-prober: Sucht in allen Partitionen nach Betriebssystemen (Linux und andere) und integriert sie in das Boot-Menü
+40_custom: Eine Vorlage, um benutzerdefinierte Menü-Einträge für weitere Betriebssysteme anzulegen
+60_fll-fromiso: Eine Vorlage, um benutzerdefinierte Menü-Einträge für fromiso auf eine/n USB-Stick/SSD-Karte anzulegen
+<span class="highlight-2">60_fll-fromiso darf nicht manuell geändert werden. Für Anpassungen steht /etc/default/grub2-fll-fromiso zur Verfügung
+Weitere Informationen unter  <a href="hd-install-opts-de.htm#grub2-fromiso">fromiso' mit Grub 2</a></span>
+</pre>
+							<p>Nachdem Änderungen durchgeführt wurden, muss grub.cfg diese kennen. Nach einer Aktualisierung des siduction-Kernels, werden die Aktualisierung von Grub automatisch durchgeführt. Änderungen, die manuell durchgeführt wurden, erfordern diesen Befehl:</p>
+
+<pre>
+update-grub
+</pre>
+
+							<p><span class="highlight-3">Das Debianpaket von Grub2 ist so gestaltet, dass eine manuelle Änderung selten erforderlich ist.</span></p>
+		</div>
+		<div class="divider" id="grub1-grub2">
+				<h2>Aktualisierung von Grub Legacy auf Grub2</h2>
+							<p><span class="highlight-2">Wir empfehlen eine saubere Aktualisierung auf Grub2 und die gänzliche Entfernung von Grub 1</span>. Man sollte sich dessen bewusst sein, dass man bei fehlerhaftem Vorgehen das Bootsystem zerstören kann und daher sehr umsichtig vorgehen soll.</p>
+
+						<h6>Schritt 1: </h6>
+							<p>Stelle sicher, dass Dein ganzes System aktualisiert ist: <span class="highlight-3">dist-upgrade in Runlevel 3 (init 3)</span>.</p>
+<pre>
+apt-get update
+Ctrl+alt+F1
+init 3
+apt-get dist-upgrade
+init 5 &amp;&amp; exit
+</pre>
+						<h6>Schritt 2:</h6>
+							<p>Vollständige Entfernung von Grub 1:</p>
+<pre>
+rm -rf /boot/grub
+apt-get purge grub-gfxboot
+</pre>
+							<p>Als Folge werden <span class="highlight-3">fll-iso2usb* grub-gfxboot* install-usb-gui* </span> entfernt.  Gebe <span class="highlight-3">Y</span> zur Bestätigung ein.</p>
+
+						<h6>Schritt 3:</h6>
+
+<pre>
+apt-get install grub2 os-prober
+</pre>
+
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
+							<p>Verwende die TAB-Taste, um OK zu wählen</p>
+
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
+							<p>Verwende die TAB-Taste, um OK zu wählen</p>
+
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
+
+							<p>Verwende die Tastaturpfeile und die Leertaste, um einen <span class="highlight-3">* (Stern) </span> zu setzen, auf welcher Festplatte Grub2 in den MBR geschrieben werden soll. <i>(Das folgende Beispiel zeigt eine Installation auf ein USB-Laufwerk)</i>.</p>
+
+						<h6>Schritt 4:</h6>
+<pre>
+update-grub
+</pre>
+
+
+						<h6>Schritt 5:</h6>
+<pre>
+apt-get install install-usb-gui fll-iso2usb
+</pre>
+
+						<h6>Schritt 6:</h6>
+							<p> Starte Deinen PC neu und menu.cfg zeigt Kernel und Betriebssystem wie in diesem Beispiel an:</p>
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
+
+							<p>Sollte etwas falsch gelaufen und Grub2 korrumpiert sein, lese <a href="sys-admin-grub2-de.htm#chroot">Überschriebener oder korrumpierter Grub2 im MBR</a> </p>
+
+				  <h3>Eingabe von Grub2-Bootoptionen mit Hilfe des Bearbeitungsmodus</h3>
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
+							<p>Falls temporäre Änderungen bei den Boot-Optionen eines in Grub 2 gelisteten Kernels nötig sind, kann man die Kerneloptionen bearbeiten, indem die Taste <span class="highlight-2">e</span> gedrückt wird. Mit den Pfeiltasten geht man zu dem Kernel, der bearbeitet werden soll. Noch im Bearbeitungsmodus wird mit <span class="highlight-3">Ctrl+x</span> der Computer mit den neuen Optionen neu gestartet.</p>
+
+							<p>Ein Beispiel: um direkt in den Runlevel 3 zu starten, wird eine <span class="highlight-3">3</span> an das Ende der Zeile <span class="highlight-3">linux /boot/vmlinuz</span> gesetzt.</p>
+
+							<p>Änderungen, die im Bearbeitungsmodus durchgeführt werden, sind nicht dauerhaft. Für dauerhafte Änderungen müssen die jeweiligen Konfigurationsdateien angepasst werden. Siehe: <a href="sys-admin-grub2-de.htm#grub2-files">Konfigurationsdateien und Skripte von Grub 2</a>.</p>
+
+	      </div>
+		<div class="divider" id="multi-os">
+				<h2>Dualboot und Multiboot mit Grub2</h2>
+
+							<p>Grub2 besitzt eine modulare Konfiguration und erlaubt daher einen einfachen Befehl, um neu installierte Betriebssysteme zu finden, die automatisch in die Datei menu.cfg integriert werden. Der einfache Befehl lautet:</p>
+<pre>
+update-grub
+</pre>
+							<p>Sollte ein benutzerdefinierter Eintrag in menu.cfg erwünscht sein oder falls 30_os-prober nicht die benötigten Chainload-Einträge durchführt, können Ergänzungen mit Hilfe eines Texteditors in der Datei <span class="highlight-3"> /etc/grub.d/40_custom</span> durchgeführt werden.</p>
+
+							<p>Beispiele für eine Adaptierung der Datei 40_custom:</p>
+<pre>
+menuentry "second mbr"{
+set root=(hd1)
+chainloader +1
+}
+</pre>
+
+<pre>
+menuentry "second partition"{
+set root=(hd0,2)
+chainloader +1
+}
+</pre>
+							<p>Nach Abspeicherung der Ändertungen müssen diese Grub übergeben werden:</p>
+<pre>
+update-grub
+</pre>
+
+							<p>Sollte die Fehlermeldung auftreten, dass Grub auf einem Laufwerk nicht erkannt wird, muss die devicemap neu erstellt werden.</p>
+
+							<p><span class="highlight-3">Stelle bei der Installation eines weiteren Betriebssystems sicher, dass Grub nicht in den MBR, sondern in die Partition des neuen Betriebssystems geschrieben wird:</span></p>
+
+<pre>
+grub-mkdevicemap --no-floppy
+update-grub
+</pre>
+							<p>Warnhinweise können ignoriert werden.</p>
+
+							<p>Bei einem Fehler überschreibt die Aktualisierung vermutlich den MBR. Wie dies repariert wird, findest Du in <a href="sys-admin-grub2-de.htm#mbr-over-grub2">Grub2 - MBR überschrieben</a>.</p>
+</div>
+	<div class="divider" id="mbr-over-grub2">
+
+					<h2>Nur grub2 neu von der Fesplatte in den MBR schreiben</h2>
+
+<pre>
+/usr/sbin/grub-install --recheck --no-floppy /dev/sda
+</pre>
+						<p>Es kann sein, dass dieser Befehl mehrfach ausgeführt werden muss, bis er "überzeugt" ist, dass dies wirklich durchgeführt werden soll.</p>
+
+		<h2>MBR von Windows überschrieben - MBR korrumpiert - Wiederherstellung von Grub2</h2>
+							<p><span class="highlight-2">ANMERKUNG: zur Wiederherstellung von Grub2 benötigt man eine 2009-04 (moros) siduction.iso oder später.</span> <a href="sys-admin-grub2-de.htm#chroot">Alternativ kann ein chroot mit jeder live.iso verwendet werden</a>.</p>
+
+							<p>Um grub2 neu zu schreiben oder wiederherzustellen, muss in eine <span class="highlight-3">siduction.iso</span> gestartet werden:</p>
+						<ol>
+							<li>Um die Partitionen ([h,s]d[a..]X) zu identifizieren und bestätigen, muss man root (#) werden:
+<pre>
+$ sux
+</pre>
+							</li>
+							<li>Als root wird Folgendes eingegeben:
+<pre>
+fdisk -l
+cat /etc/fstab
+</pre>
+							Auf diese Weise erhält man die korrekten Benennungen.
+							</li>
+							<li>Wenn die korrekte Partitionsbezeichnung gefunden ist, wird ein Einhängepunkt erstellt:
+<pre>
+mkdir -p /media/[hdxx,sdxx,diskx]
+</pre>
+							</li>
+							<li>Danach wird die Partition eingebunden:
+<pre>
+mount /dev/xdxx /media/xdxx
+</pre>
+							</li>
+
+							<li>Jetzt kann Grub in den MBR der ersten Festplatte geschrieben werden:
+<pre>
+/usr/sbin/grub-install --recheck --no-floppy --root-directory=/media/xdxx /dev/sda
+</pre>
+							</li>
+						</ol>
+	      </div>
+		<div class="divider" id="chroot">
+		      <h2>Verwendung einer chroot-Umgebung zur Wiederherstellung eines überschriebenen oder korrumpierten Grub in MBR</h2>
+
+							<p>Um Grub wiederherzustellen, falls er im MBR überschrieben oder korrumpiert wurde, muss eine <span class="highlight-3">chroot</span>-Umgebung aufgesetzt werden. <span class="highlight-3">Es kann jede live.iso verwendet werden, da die Chroot-Umgebung die Festplatteninstallation anspricht, sodass die gewünschte Grub-Version wiederhergestellt werden kann: grub1 (grub-legacy) oder grub2.</span></p>
+
+							<p>Man bootet in eine Deinem System entsprechende siduction.iso (32 oder 64 bit CD, DVD, USB-Stick oder SSD-Karte) und öffnet eine Konsole. Man tippt <span class="highlight-3">sux</span> und drückt die Eingabetaste, um root-Rechte zu erhalten.</p>
+
+							<p>Mit <span class="highlight-3">fdisk -l oder blkid</span> stellt man sicher, welche Partition die Boot-Partition ist, und erhält die korrekten Bezeichnungen (falls eine graphische Oberfläche gewünscht ist, verwendet man <span class="highlight-3">Gparted</span>):</p>
+<pre>
+blkid
+</pre>
+							<p>Jetzt überprüft man, ob die Einträge in der Datei fstab mit der Ausgabe von blkid identisch sind:</p>
+<pre>
+cat /etc/fstab
+</pre>
+							<p>Hier wird angenommen, dass das root-Dateisystem sich auf <span class="highlight-3">/dev/sda2</span> befindet:</p>
+<pre>
+mkdir /mnt/siduction-chroot
+mount /dev/sda2 /mnt/siduction-chroot
+</pre>
+
+							<p>Als nächstes müssen /proc, /run, /dev und /sys wie folgt eingebunden werden:</p>
+<pre>
+mount --bind /proc /mnt/siduction-chroot/proc
+mount --bind /run /mnt/siduction-chroot/run
+mount --bind /sys /mnt/siduction-chroot/sys
+mount --bind /dev /mnt/siduction-chroot/dev
+mount --bind /dev/pts /mnt/siduction-chroot/dev/pts
+</pre>
+							<p>Wenn in eine EFI-Systempartition gebootet wird, muss diese auch eingebunden werden. In diesem Beispiel ist sie /dev/sda1:</p>
+<pre>
+mount /dev/sda1 /mnt/siduction-chroot/boot/efi
+</pre>
+
+							<p>Die chroot-Umgebung ist nun aufgesetzt und es kann auf diese Weise darauf zugegriffen werden:</p>
+<pre>
+chroot /mnt/siduction-chroot /bin/bash
+</pre>
+
+							<p>Es kann nun auf den lokalen Cache von apt zugegriffen werden bzw. in Dateien, die geändert werden müssen, geschrieben werden. Das Verhalten entspricht demjenigen, als ob Du im zu reparierenden System selbst arbeiten würdest. In folgendem Beispiel wird Grub neu in den MBR geschrieben.</p>
+
+							<p><span class="highlight-3">Wiederherstellung von Grub 2</span></p>
+<pre>
+apt-get install --reinstall grub-pc
+</pre>
+							<p>Um sicherzustellen, dass Grub auf dem richtigen Gerät bzw. der richtigen Partition installiert wurde, wird dieser Konfigurationsbefehl ausgeführt:</p>
+<pre>
+dpkg-reconfigure grub-pc
+</pre>
+							<p><span class="highlight-3">Wiederherstellung von Grub 2 EFI</span></p>
+<pre>
+apt-get install reinstall grub-efi-amd64
+</pre>
+							<p><span class="highlight-3">Wiederherstellung von Grub 1 (grub-legacy)</span></p>
+<pre>
+apt-get install --reinstall grub-legacy
+</pre>
+							<p>Folge den Anweisungen des Installationsprogramms.</p>
+
+							<p>Mit diesem Befehl wird die chroot-Umgebung wieder frei gegeben:</p>
+<pre>
+Ctrl+d
+</pre>
+							<p>Starte Deinen PC neu.</p>
+
+
+
+
+
+	</div>
+	<div id="rev">Page last revised 15/01/2012 1545 UTC</div>
+
+</div>
+</div>
+</body>
+</html>

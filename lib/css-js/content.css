@@ -1,0 +1,493 @@
+/*
+* bluewater-manual OS menu.css copyright:
+* 2011-2012, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
+* 2006-2009, Harald Holt (h2)
+* 2006-2011, Trevor Walkley (bluewater)(trevor_walkley at aptenodytes.org)
+* 
+* released under GNU Free Documentation License.Permission is granted to copy, distribute
+* and/or modify this document under the terms of the GNU Free Documentation License,
+* Version 1.2 or any later version published by the Free Software Foundation; with no
+* Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
+* 
+* Last updated by hendrikL 2012-02-11 09:15 hrs UTC
+*/
+
+@font-face {
+    font-family: 'DroidSansRegular';
+    src: url('fonts/droidsans-webfont.eot');
+    src: url('fonts/droidsans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidsans-webfont.woff') format('woff'),
+         url('fonts/droidsans-webfont.ttf') format('truetype'),
+         url('fonts/droidsans-webfont.svg#DroidSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DroidSansBold';
+    src: url('fonts/droidsans-bold-webfont.eot');
+    src: url('fonts/droidsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidsans-bold-webfont.woff') format('woff'),
+         url('fonts/droidsans-bold-webfont.ttf') format('truetype'),
+         url('fonts/droidsans-bold-webfont.svg#DroidSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DroidSansMonoRegular';
+    src: url('fonts/droidsansmono-webfont.eot');
+    src: url('fonts/droidsansmono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidsansmono-webfont.woff') format('woff'),
+         url('fonts/droidsansmono-webfont.ttf') format('truetype'),
+         url('fonts/droidsansmono-webfont.svg#DroidSansMonoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DroidSerifRegular';
+    src: url('fonts/droidserif-regular-webfont.eot');
+    src: url('fonts/droidserif-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidserif-regular-webfont.woff') format('woff'),
+         url('fonts/droidserif-regular-webfont.ttf') format('truetype'),
+         url('fonts/droidserif-regular-webfont.svg#DroidSerifRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DroidSerifBoldItalic';
+    src: url('fonts/droidserif-bolditalic-webfont.eot');
+    src: url('fonts/droidserif-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidserif-bolditalic-webfont.woff') format('woff'),
+         url('fonts/droidserif-bolditalic-webfont.ttf') format('truetype'),
+         url('fonts/droidserif-bolditalic-webfont.svg#DroidSerifBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DroidSerifBold';
+    src: url('fonts/droidserif-bold-webfont.eot');
+    src: url('fonts/droidserif-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidserif-bold-webfont.woff') format('woff'),
+         url('fonts/droidserif-bold-webfont.ttf') format('truetype'),
+         url('fonts/droidserif-bold-webfont.svg#DroidSerifBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DroidSerifItalic';
+    src: url('fonts/droidserif-italic-webfont.eot');
+    src: url('fonts/droidserif-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/droidserif-italic-webfont.woff') format('woff'),
+         url('fonts/droidserif-italic-webfont.ttf') format('truetype'),
+         url('fonts/droidserif-italic-webfont.svg#DroidSerifItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body,html,object,div{
+	margin:0;
+	padding:0;
+}
+body {
+	font:normal 14px "DroidSansRegular", sans-serif;
+	background: #e7e7e7; /*#D3D3D3;*/
+	color:#000611;
+	margin:0 auto;
+}
+
+.body-main {
+	max-width: 920px; /*width:95%;*/
+	min-width: 420px;
+	margin:0 auto;
+	padding-top:5px;
+	padding-bottom:15px;
+	}
+
+#bg {
+	width:92.85%;
+	background:#fff;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: -18px;
+	margin-bottom:10px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	}
+	
+.header-img {
+	width: 100%;
+	min-width: 390px;
+	margin-top:5px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:0;
+	}
+
+/*
+URL underline on hover
+*/
+
+a:link, a:active, a:visited {
+	border:none;text-decoration: none;
+	}
+	
+a:hover {
+	border:none;text-decoration:underline;
+	}
+
+#main-page{
+	padding:7px 5px;
+	margin-left:25%;
+	z-index:2;
+	max-width: 705px;
+	min-width: 273px;
+}
+
+/*
+note: this is the default, will create standard bordered cells and table
+*/
+
+table {
+	border:1px solid #888;
+	border-collapse:collapse;
+	margin:0 1%;
+}
+
+table td, table th {
+	border:1px solid #888;
+	padding:4px;	
+}
+table th {
+	font-size:13px;
+	font-weight:bold;
+	background:#87898D;
+	color:#F5F8FF;
+	border-color:#525355;
+}
+p {
+	margin-top:0;
+	padding:0 1%;
+}
+ul, ol {
+	margin: 0 0 1em 0;
+	padding:0 1%;
+}
+li {
+	margin:0 0 1em 18px;
+	padding:0 1%;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight:bold;
+	font-family: "DroidSansRegular", sans-serif;
+	margin-top:0;/* this must be 0 to fix a firefox css issue with this layout */
+	color:#040A2F;
+	margin-bottom:.1em;
+	margin-left: -3px;
+	padding:.2em;
+	border-radius:5px;
+}
+h1 {
+	font-size:1.25em;
+}
+h2 {
+	border-top:1px solid #040A2F;
+	font-size:1.2em;/*18px;*/
+	background: #B9BCC0; /* #ebdede #d48588 */
+	margin-bottom:1em;
+}
+h3 {
+	font-size:1.15em;
+}
+h4 {
+	font-size:1.1em;
+}
+h5 {
+	font-size:1.05em;
+}
+h6 {
+	font-size:1em;
+}
+
+/* 
+these are to handle cosmetic h1-h6 font size differences
+while retaining the correct h1-h6 level structures
+*/
+
+.size-0 {font-size:10px;}
+.size-1 {font-size:11px;}
+.size-2 {font-size:12px;}
+.size-3 {font-size:13px;}
+.size-4 {font-size:14px;}
+.size-5 {font-size:15px;}
+.size-6 {font-size:16px;}
+img {
+	border:none;
+}
+
+.divider {
+	margin-bottom:1em;
+	padding-bottom:1em;
+}
+
+ #rev {
+	font:italic 0.85em "DroidSerifRegular", serif;
+	margin-top:4em;
+	text-align:right;
+	color:#687A96;/* light greyish */
+}
+#rev-f {
+	font:italic 0.85em "DroidSerifRegular", serif;
+	margin-top:4em;
+	text-align:center;
+	color:#000000;/* black */
+}
+
+pre {
+	color:#000;
+	background:#ffffee;
+	border:1px solid #888;
+	font:normal 0.9em "DroidSansMonoRegular", monospace;
+	width:95%;
+	margin:1em auto 1em auto;
+	padding:6px;
+	text-align:left;
+	overflow:auto;
+	border-radius:5px;
+}
+.center {
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.spacer01 {height:15px;}
+.spacer02 {height:25px;}
+.spacer05 {height:50px;}
+.spacer10 {height:100px;}
+.spacer15 {height:150px;}
+.spacer20 {height:200px;}
+.spacer25 {height:250px;}
+
+.path {
+	font-style:italic;
+	font-weight:bold;
+}
+.box, .warning-box {
+	border:1px solid #888;
+	padding:3px;
+	border-radius:5px;
+}
+.data {
+	font-weight:bold;
+}
+.highlight-1 {
+	color:#007676;/* tealish */
+}
+.highlight-2, .warning-box {
+	color:red;
+}
+.highlight-3 {
+	color:#971171;/* violetish */
+}
+.highlight-4 {
+	color:#B73304;/* orangish */
+}
+.highlight-5 {
+	color:#00B7EB;/* cyanish */
+}
+
+.screenshot {
+	margin: 10px auto;
+	max-width:550px;
+}
+
+#main-page img {
+	width:100%;
+}
+
+#main-page li img {	
+	width:100%;
+	}
+	
+.screenshot2 {
+	margin:10px auto;
+	max-width:550px;
+	text-align:center;
+}
+
+.thumbs {
+
+	max-width:400px;
+	height:160px;
+	text-align:center;
+}
+.block {
+	margin:5px 5px 5px 25px;
+}
+
+.clear-both {
+        clear:both;
+}
+
+/*
+ various image/name pair stuff
+ First, set dd/dt defaults
+*/
+
+dd {
+        padding:0 5px;
+        margin:0;
+        text-align:center;
+}
+dt {
+        text-align:center;
+        padding:0 5px;
+}
+
+#flag-container1 {
+        width:auto;
+        margin:3em auto;
+}
+
+#flag-container2 {
+        width:55em;
+        margin:0em auto;
+}
+
+#flag-container3 {
+        width:auto;
+        margin:2em auto;
+}
+
+#flag-container4 {
+        width:auto;
+        margin:3em auto;
+}
+
+#flag-container5 {
+        width:auto;
+        margin:3em auto;
+}
+/* individual classes */
+.stacked-1 {
+
+}
+.stacked-1 dt {
+        padding:.5em;
+}
+.stacked-1 dt img {
+        width:200px;
+        height:150px;
+}
+.stacked-1 dd {
+        padding:.1em 1em;
+}
+
+/*
+this is for stacking pics down a page with a description if required
+*/
+
+.stacked-2 {
+
+}
+.stacked-2 dt {
+        text-align:left;
+        padding:.5em;
+}
+.stacked-2 dt img {
+        width:200px;
+        height:150px;
+}
+.stacked-2 dd {
+        text-align:left;
+        padding:.1em 1em;
+}
+
+.stacked-3 {
+        float:left;
+        width:10em;
+}
+.stacked-3 dt {
+        padding:.5em;
+}
+.stacked-3 dt img {
+        margin:1px;
+        width:50px;
+        height:30px;
+        border:2px solid #D3D3D3;
+}
+.stacked-3 dd {
+padding:.1em 1em;
+}
+.stacked-3 dt img:hover {
+	border:2px solid #6F9796;
+}
+.stacked-4 {
+         float:right;
+        width:10em;
+}
+.stacked-4 dt {
+        padding:.5em;
+}
+.stacked-4 dt img {
+        margin:3px;
+        width:50px;
+        height:30px;
+        border:2px solid #EAEDF4;
+}
+.stacked-4 dd {
+        padding:.1em 1em;
+}
+
+.stacked-5 {
+
+}
+.stacked-5 dt {
+        padding:.5em;
+}
+.stacked-5 dt img {
+        margin:3px;
+        width:100px;
+        height:75px;
+        border:2px solid #EAEDF4;
+}
+.stacked-5 dd {
+        padding:.1em 1em;
+}
+
+.stacked-6 {
+        float:left;
+        width:10em;
+}
+.stacked-6 dt {
+        padding:.5em;
+}
+.stacked-6 dt img {
+        margin:3px;
+        width:100px;
+        height:75px;
+        border:2px solid #EAEDF4;
+}
+.stacked-6 dd {
+padding:.1em 1em;
+}
+
+/*
+#menu-header  img {
+	margin: 0 auto;
+*/
+/*
+	width:160px;
+	height:55px;
+	border:2px solid #fff;
+*/
+/*
+}
+#menu-header img:hover {
+	border:2px solid #d3d3d3;
+}
+*/

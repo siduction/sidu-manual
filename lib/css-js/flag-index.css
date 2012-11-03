@@ -1,0 +1,55 @@
+/*
+ * bluewater-manual OS flag-index.css Copyright:
+ * 2012, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
+ * released under GNU Free Documentation License.Permission is granted to copy, distribute
+ * and/or modify this document under the terms of the GNU Free Documentation License,
+ * Version 1.2 or any later version published by the Free Software Foundation; with no
+ * Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
+ * 
+ * Last updated by hendrikL 2012-02-02 05:30 hrs UTC
+*/
+
+/*
+ * This is for bluewater-manual index.html and flag-index.html file
+*/
+
+
+/* just for the welcome text */	
+
+.h-index {
+	padding:10px;
+	text-align:center;
+	font-weight:bold;
+	font-family: "DroidSansRegular", sans-serif;
+	}
+	
+/* fot the flag images */
+
+#flags {
+	text-align:center;
+	margin: 5px 5px 5px 5px;
+  line-height:12px;
+  padding:0;
+}
+
+/*
+ * border for img must be same as background for this trick to work, then hover acts
+*/
+
+#flags img {
+  margin:5px;
+	padding:2px;
+  width:50px;
+  height:30px;
+  border:2px solid #fff; /* white */
+  border-radius: 5px;
+}
+
+#flags a, #menu #flags a:visited {
+  display:inline;
+}
+
+#flags img:hover {
+  border:2px solid #d3d3d3; /* siduction grey */ /*#ff9000; dark orange*/
+  border-radius: 5px;
+}

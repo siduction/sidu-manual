@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>siduction Manuals - Gparted/KDE Partition Manager</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision devil 14/01/2012 UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here en lang maintained by devil-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="To siduction.org forums and wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-en.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" />Search online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" alt="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">siduction OS Manual</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">siduction OS Manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-en.htm#cred-team">Credits</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-en.htm#how-to">How to use this manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+					  <li><a href="welcome-en.htm#table-contents">Table of Contents</a></li>
+					</ul>
+					</li>
+		<li><a href="help-en.htm#help-gen">Getting Help &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-en.htm#help-gen">Where and how to get help</a></li>
+					  <li><a href="help-en.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-en.htm#welcome-quick">siduction Quick Start Guide</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">ISO Content, Releases, Download Mirrors and Burning</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">ISO Content and system requirements &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-en.htm#rolling">Release Notes</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Mirrors, Downloading and Burning &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burning-no-gui">burniso script</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burn-no-gui-gen">Burning without a GUI</a></li>
+					  <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Download Mirrors</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the siduction-Live ISO</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-en.htm#colours"> Coloured terminal prompts</a></li>
+					  <li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+					  <li><a href="help-en.htm#init3-tools">Tools to know in text mode (tty) - init 3</a></li>
+					  <li><a href="term-konsole-en.htm#term-cmds">Linux Terminal Commands List</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-en.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">Boot codes</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-en.htm#cheatcodes">siduction specific Live-ISO bootcodes</a></li>
+				<li><a href="cheatcodes-en.htm#cheatcodes-linux">Linux generic bootcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning the Hard Drive - Traditional, GPT and LVM</a>
+		    <ul class="sub-menu" id="sm6">
+			  <li><a href="part-gparted-en.htm#hd-ntfs3g">Writing on NTFS partitions with ntfs-3g</a></li>
+			  <li><a href="part-lvm-en.htm#part-lvm">Partitioning to use LVM - Logical Volume Manager</a></li>
+			  <li><a href="part-gparted-en.htm#partition">Partitioning with a GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-en.htm#partition">Partitioning with CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+					    <li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-6">Formatting after partitioning with gdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-1">GPT Partitioning with gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-en.htm#part-example">Partitioning Basics &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+					  <li><a href="part-uuid-en.htm#uuid">UUID, Rebuilding fstab and creating new mount points</a></li>
+					  <li><a href="part-cfdisk-en.htm#disknames">Disk Naming in brief</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation </a></li>
+					  <li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+					  <li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso - Overview</a></li>
+					  <li><a href="hd-install-opts-en.htm#grub2-fromiso">Booting 'fromiso' with Grub 2</a></li>
+					  <li><a href="hd-install-opts-en.htm#fromiso-persist">fromiso and persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#usb-hd">Installing to USB drives &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD - siduction specific - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-en.htm#raw-usb">Writing siduction to a USB/SSD stick with any Linux, MS Windows or Mac OS X system</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-en.htm#install-crypt">Installing to encrypted partitions - cryptroot</a></li>
+		  <li><a href="nbdboot-en.htm#nbd1">Booting siduction over a network</a></li>
+		  <li><a href="hd-install-vmopts-en.htm#vmopts">Virtual Machine installation options</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-en.htm">Graphic cards, monitors, Xorg,  &amp; drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors  &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors</a></li>
+					  <li><a href="hw-dev-mon-en.htm#xrandr">Dual Monitors and xrandr</a></li>
+					  <li><a href="hw-dev-mon-en.htm#mon-binary">Dual Monitors (using binaries)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-en.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-en.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-en.htm#fw-detect">Firmware detection - non-free </a></li>
+			  <li><a href="nf-firm-en.htm#non-free-firmware">Adding non-free to sources</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-en.htm#install-add">Window Managers</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-en.htm">KDE and XFCE Window Managers &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-en.htm#xfce-notes">Useful Xfce extras</a></li>
+					    <li><a href="wm-dm-en.htm#install-add">Useful extra KDE Apps</a></li>	    
+					    <li><a href="wm-dm-en.htm#kde-login">Cant login in KDE</a></li>
+					    <li><a href="wm-dm-en.htm#ch-th">Changing Themes</a></li>
+					    <li><a href="wm-dm-en.htm#desk-freeze">Desktop Freezes</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-en.htm#dm">Installing additional Display Managers</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-en.htm">Internet connecting, WiFi, LAN and Networks</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-en.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-en.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+					    <li><a href="lamp-php-en.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-en.htm#privoxy">Firewalls and Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-en.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-en.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-en.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-en.htm#ssh-x">SSH and Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+						  <li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+						  <li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+						  <li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+						  <li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+						  <li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+						  <li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">WIFI connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-en.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-en.htm#net-set1">WiFi - Setting up for WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-en.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-en.htm#hotswitch">Network switching between WiFi and Cable</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">Wired Connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-en.htm#dial-mod">56k Modems</a></li>
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">Package Management and dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-en.htm#apt-cook">APT Cookbook and Sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-downgrade">Package Hold and downgrading</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-cache">Package searching with apt-cache</a></li>
+					    <li><a href="sys-admin-apt-en.htm#gui-pacsea">GUI Package searching</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-remove">Removing Kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#dmakms">Installing kernel modules dynamically with dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-en.htm#approx">dist-upgrade of multiple PCs on a LAN</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview</a></li>
+					    <li><a href="sys-admin-apt-en.htm#du-st">Upgrade an Installed System -  dist-upgrade - The Steps</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-en.htm">System Administration</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-en.htm#bois-prep">Upgrading the BIOS with FreeDOS</a></li>
+		<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+		<li><a href="hd-install-en.htm#adduser">Adding Users and Passwords &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-en.htm#adduser">Adding a new user</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pw-lost">Lost root passwords, new passwords</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#start-services">Services and init runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-en.htm#start-services">Services enable/disable</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pkill">Killing a service or process</a></li>
+					    <li><a href="sys-admin-gen-en.htm#init">siduction runlevels - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-en.htm#rsync">Backing up the system &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
+					    <li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
+					    <li><a href="home-en.htm#home-bu">Moving /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#fonts">CUPS, Fonts and Sound &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-en.htm#fonts">Fonts</a></li>
+					     <li><a href="sys-admin-gen-en.htm#cups">CUPS - Printing System</a></li>
+					     <li><a href="sys-admin-gen-en.htm#sound">Sound Mixers</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-en.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-en.htm#chroot">Grub2 - Recovering Grub with chroot</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#mbr-over-grub2">Grub2 - MBR Overwritten</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#multi-os">Grub2 - Dual and Multibooting</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub1-grub2">Grub2 -Upgrading from Grub1</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub2">Grub2 - Overview</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="partition">
+		<h2 id="top-header">Partitioning your HD using Gparted/KDE Partition Manager</h2>
+			<h5><span class="highlight-2">WARNING: for disk naming</span><a href="part-uuid-en.htm#uuid"> Please refer to UUID, Partition Labelling and fstab, as by default siduction uses UUID</a></h5>
+
+			<h5>Partitioning tools may request a root password, type <span class="highlight-3">sux</span> then your password. On a Live-ISO none is set <span class="highlight-3">sux</span> then press 'enter' . See: <a href="live-mode-en.htm#rootpw" >Live Mode</a></h5>
+	<div class="spacer02"></div>
+							<p class="warning-box">Resizing the NTFS partition requires you to reboot the system immediately! DON'T DO any other operations on this partition before the reboot, otherwise you will get errors.<a href="part-gparted-en.htm#ntfs"> Please read this.</a></p>
+
+							<p class="highlight-2">Always back-up your data!</p>
+
+					<h3>Basics</h3>
+							<p>A partition must have a filesystem. Linux knows different filesystems to use. Ext4 is the recommended format for siduction. ext2 is handy as a storage format as an MS Windows&#8482; driver is available for data-swapping. <a href="http://www.fs-driver.org/">Ext2 Installable File System For MS Windows</a>.</p>
+
+							<p  class="highlight-2">For normal use we recommend the ext4 file system, it is the default file system for siduction .</p>
+
+		<h2>Using KDE Partition Manager &amp; Gparted</h2>
+							<p>Creating and managing partitions is not something that is typically done every day. Therefore, a good idea is to read this guide once, to get comfortable with the concepts and some of the panels that will appear.</p>
+
+						  <h3>KDE Partition Manager - run in a terminal:</h3>
+<pre>
+sux
+partitionmanager
+</pre>
+						  <h3>Gparted - run in a terminal:</h3>
+<pre>
+sux
+gparted
+</pre>
+
+
+		<ul>
+			<li>
+							<p>When GParted or KDE Partition Manager runs , a window is opened, and drives are scanned.</p>
+
+							<p>In KDE Partition Manager the drives are shown in a list on the left.</p>
+
+		<div class="screenshot"><img src="../lib/images-common/images-kpart/kpart-02.png"  title="KDE Partition Manager partition information" alt="KDE Partition Manager partition information" /></div>
+
+							<p>In Gparted, if you click the menu (at the top left), a pop down is presented. You can select to refresh the display of the drives on your system.</p>
+
+
+		<div class="screenshot"><img src="../lib/images-en/gparted-en/gparted02-en.png"  title="Gparted Devices View" alt="gparted" /></div>
+			</li>
+		  </ul>
+						<h6><span class="highlight-2">The following screenshots are of Gparted. KDE Partition Manager behaves in much the same manner.</span></h6>
+		  <ul>
+			<li>
+				<h3>Edit</h3>
+							<p>The Edit menu has three greyed out functions which may be crucial for you:<br />
+							<span class="highlight-3">Undo last operations</span><br />
+							<span class="highlight-3">Apply</span><br />
+							<span class="highlight-3">Clear all operations</span>.</p>
+
+			</li>
+			<li>
+				<h3>View</h3>
+
+					<h4>Device Information</h4>
+							<p>The <span class="highlight-3">Harddisk Information</span> panel displays details about the hard disk, such as Model, Size etc. This panel is most useful in a multi harddisk system, where the information is used to confirm that the hard disk being examined is the one that is wanted.</p>
+		<div class="screenshot"><img src="../lib/images-en/gparted-en/gparted03-en.png" title="Gparted Harddisk Information"  alt="operation view" /></div>
+
+					<h4>Pending Operations</h4>
+							<p>At the footing window is a list of pending operations. The information is useful as it provides an indication of a number of pending operations.</p>
+
+			</li>
+			<li>
+				<h3>Device</h3>
+							<p>Device allows you to Set a Disk label if the current disk label is inappropriate, you may change it using this option.</p>
+			</li>
+			<li>
+				<h3>Partition Menu</h3>
+							<p>The menu is of utmost importance. It allows you to do multiple operations, some of which are dangerous.</p>
+
+							<p><span class="highlight-3">Delete</span> is selected if you want to delete a partition. To perform the delete, you must first select the partition.</p>
+
+							<p><span class="highlight-3">Resize/Move</span> allows you to rezize partitions.</p>
+
+
+			</li>
+			<li>
+				<h3>Creating a new partition</h3>
+							<p>On the graphical toolbar, the <span class="highlight-3">New</span> button allows you to create a new partition, if you have already selected an unallocated area. A new window appears and lets you chose the size you want, whether it be a Primary, Extended or Logical partition and the file system.</p>
+
+		<div class="screenshot"><img src="../lib/images-en/gparted-en/gparted07-en.png"  title="Gparted New Partition" alt="file system" /></div>
+			</li>
+			<li>
+				<h3>If you make a mistake</h3>
+							<p>If you have made a mistake you can use the Delete button to delete the chosen partition or if you haven't applied your decision to go ahead you can use the undo button.</p>
+
+		<div class="screenshot"><img src="../lib/images-en/gparted-en/gparted04-en.png"   title="Gparted Delete" alt="delete" /></div>
+			</li>
+			<li>
+				<h3>Resizing/Move</h3>
+							<p>When you want to resize a partition you have selected, click <span class="highlight-3">Resize/Move</span> button: a new window pops up. Use the mouse to reduce (or grow) the partition or if you prefer, use the arrows.</p>
+
+		<div class="screenshot"><img src="../lib/images-en/gparted-en/gparted05-en.png"    title="Gparted Resize" alt="resize / move" /></div>
+							<p>After the Resize command has been given, click on Apply as no operations are given to the hard disk until you click Apply</p>
+
+		<div class="screenshot"><img src="../lib/images-en/gparted-en/gparted09-en.png"     title="Gparted Apply" alt="operation view" /></div>
+
+							<p>The duration of the operations depends on the new size of the Partition.</p>
+
+							<p><span class="highlight-2">After manipulating the partition table please log out and reboot your system to allow siduction to reread the new partition table.</span></p>
+			</li>
+		</ul>
+
+	</div>
+	<div class="divider" id="ntfs">
+		<h2>NTFS partition Resizing</h2>
+
+							<p class="warning-box">Resizing the NTFS partition requires you to reboot the system immediately! DON'T DO any other operations on this partition before the reboot, otherwise you will get errors.</p>
+
+						<ul>
+							<li>After the boot-up on MS Windows&#8482; the system will show a special screen, and a message asking about drive consistency : Checking file system on c :</li>
+
+							<li>Let the AUTOCHK run: NT needs to check its file system after the resize operation.</li>
+
+							<li>At the end of the process, the computer will automatically restart for the second time. This ensures that things run perfectly.</li>
+
+							<li>After restart, Windows XP will be okay, but you must let the system finish the boot and wait for the login screen!</li>
+						</ul>
+
+							<p><b>Full GParted documentation: </b>To read the full documentation including, How-To copy partitions please go to <a href="http://gparted.sourceforge.net">GParted</a></p>
+		</div>
+		<div class="divider" id="hd-ntfs3g">
+			<h2>Writing to NTFS partitions with ntfs-3g</h2>
+
+							<p class="highlight-2"><b>Be warned</b>: Whilst the ntfs-3g is stated to be 'stable', never use it without external backup, and of course not on production systems! If you do, it's your fault if your data gets lost, so use at your own risk!</p>
+
+							<p>Open a shell and enter the following commands:See <a href="part-cfdisk-en.htm#disknames" >Partitioning your HD - Disk Naming</a></p>
+<pre >sux
+apt-get update &amp;&amp; apt-get install ntfs-3g
+umount /media/xdxx
+mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
+To get out of the konsole type: exit
+</pre>
+
+							<p>Now your NTFS Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
+
+		</div>
+		<div id="rev">Content last revised 14/01/2012 1500 UTC</div>
+
+</div>
+</div>
+</body>
+</html>

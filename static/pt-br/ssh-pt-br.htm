@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pt-br">
+<head>
+	<title>Manuais do siduction - SSH</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision by ceti 22/08/2230 1015 hrs AEST 02/05/2008 1352 hrs UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here pt-br lang maintained by ceti-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Ir para siduction.org forums e wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pt-br.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" /> Procurar Online Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Escolha outra língua - Choose another language" alt="troca-língua" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pt-br.htm">Manual do Sistema Operacional siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pt-br.htm#welcome-gen">Manual do SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pt-br.htm#cred-team">Créditos</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pt-br.htm#how-to">Como usar este manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pt-br.htm#how-to">Como usar este manual</a></li>
+					  <li><a href="welcome-pt-br.htm#table-contents">Índice</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pt-br.htm#help-gen">Como conseguir ajuda &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pt-br.htm#help-gen">Onde e como obter ajuda</a></li>
+					  <li><a href="help-pt-br.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pt-br.htm#welcome-quick">Guia Rápido do siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pt-br.htm">Conteúdo das ISOs, lançamentos, espelhos e como queimar</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pt-br.htm#cd-content">Conteúdo das ISOs e requisitos do sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pt-br.htm#rolling">Notas de Lançamento</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos ('mirrors') do siduction, como baixar e como queimar &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pt-br.htm#md5">Como verificar o md5</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-nero">Como queimar no Windows</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-linux">Como queimar no Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burning-no-gui">O script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burn-no-gui-gen">Como queimar sem interface gráfica</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos para baixar o siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pt-br.htm">O modo Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pt-br.htm#rootpw">Senha do root na ISO siduction-Live</a></li>
+				<li><a href="live-mode-pt-br.htm#live-cd-installsoft">Como instalar software estando no modo Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pt-br.htm">Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / consola</a></li>
+					  <li><a href="term-konsole-pt-br.htm#colours"> Dando cor ao prompt do seu terminal</a></li>
+					  <li><a href="term-konsole-pt-br.htm#cli-help">Ajuda pela linha de comando</a></li>
+					  <li><a href="help-pt-br.htm#init3-tools">Ferramentas a conhecer no modo texto (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pt-br.htm#term-cmds">Lista de comandos de Terminal no Linux</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pt-br.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pt-br.htm">"Cheatcodes"</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes">Cheatcodes específicas da Live-ISO do siduction</a></li>
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes-linux">Cheatcodes genéricas do Linux</a></li>
+				<li><a href="cheatcodes-vga-pt-br.htm#vga">Códigos VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pt-br.htm">Métodos de particionamento - Traditional, GPT and LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pt-br.htm#hd-ntfs3g">Escrevendo em partições NTFS com o ntfs-3g</a></li>
+			<li><a href="part-lvm-pt-br.htm#part-lvm">Como particionar para o uso de LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pt-br.htm#partition">Como particionar pela interface gráfica &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pt-br.htm#partition">Como particionar o HD usando GParted / Gerenciador de partições do KDE</a></li>
+					  <li><a href="part-gparted-pt-br.htm#ntfs">Como redimensionar a partição NTFS com o GParted / Gerenciador de partições do KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pt-br.htm#partition">Como particionar pela linha de comando &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pt-br.htm#partition">Como particionar o seu HD com o cfdisk</a></li>
+					    <li><a href="part-cfdisk-pt-br.htm#formating">Como formatar após o particionamento com o cfdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-6">Como formatar após o particionamento com o gdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-1">Particionamento GPT do HD com o gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pt-br.htm#part-example">O básico do particionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pt-br.htm#part-example">Exemplos de tamanhos de partições</a></li>
+					  <li><a href="part-uuid-pt-br.htm#uuid">UUID, refazendo o fstab e criando novos pontos de montagem</a></li>
+					  <li><a href="part-cfdisk-pt-br.htm#disknames">Uma geral sobre nomeação de discos</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pt-br.htm">Opções de instalação - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação da instalação </a></li>
+					  <li><a href="hd-install-pt-br.htm#Installation">Como instalar no HD</a></li>
+					  <li><a href="hd-install-pt-br.htm#first-hd-boot">Primeira inicialização</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#fromiso">Como dar o 'boot' com fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso">Como inicializar com fromiso - visão geral</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#grub2-fromiso">Como inicializar com 'fromiso' e Grub 2</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso-persist">fromiso e persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em drives USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em um HD-USB - específico do siduction - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-pt-br.htm#raw-usb">Instalando em dispositivo USB/SSD com qualquer sistema Linux, MS Windows ou Mac OSX</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pt-br.htm#install-crypt">Instalando em partição chifrada - cryptroot</a></li>
+		  <li><a href="nbdboot-pt-br.htm#nbd1">Inicializando o siduction através de uma rede</a></li>
+		  <li><a href="hd-install-vmopts-pt-br.htm#vmopts">Opções de instalação de Máquina Virtual</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pt-br.htm">Placas de Vídeo, dispositivos diversos, xorg &amp;  drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#xrandr">Monitores múltiplos (Dual Monitors) e a xrandr</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-binary">Monitores múltiplos usando binários</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pt-br.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pt-br.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pt-br.htm#fw-detect">Detetando Firmware - non-free </a></li>
+			  <li><a href="nf-firm-pt-br.htm#non-free-firmware">Adicionar non-free a lista de fontes</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pt-br.htm">Gerenciadores de janelas</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pt-br.htm">KDE and XFCE Gerenciadores de janelas &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pt-br.htm#xfce-notes">Extras úteis para o Xfce</a></li>
+					    <li><a href="wm-dm-pt-br.htm#install-add">Extras úteis para o KDE</a></li>
+					    <li><a href="wm-dm-pt-br.htm#desk-freeze">Congelamentos do desktop</a></li>
+					    <li><a href="wm-dm-pt-br.htm#kde-login">"Não consigo entrar no KDE"</a></li>
+					    <li><a href="wm-dm-pt-br.htm#ch-th">Como mudar os temas</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pt-br.htm#dm">Instalando Installing gerenciador de display adicionais</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pt-br.htm">Conexão com a Internet, WiFi, LAN e redes</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pt-br.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pt-br.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ftp">Clientes FTP</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-sec">Protocolos de segurança</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pt-br.htm#serv-mysql">Configuração do MySQL</a></li>
+					    <li><a href="lamp-php-pt-br.htm#serv-php">PHP no Apache</a></li>
+					    <li><a href="ntp-server-pt-br.htm#ntp-server">Configuração do servidor de data/hora</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pt-br.htm#tor">Firewalls e privacidade &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pt-br.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pt-br.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pt-br.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pt-br.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pt-br.htm#setup">Configuração do servidor Samba</a></li>
+						  <li><a href="samba-pt-br.htm#configure">Como configurar o Samba (Windows)</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-fs">Como montar um SSH remoto</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-x">Aplicações do X via SSH</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-f">SSH com o dolphin</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-w">SSH com X-Forwarding a partir do Windows</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh">SSH e segurança</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões wifi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+						    <li><a href="inet-wpagui-pt-br.htm#wpa-roaming-gui">WiFi - interface WPA_</a></li>
+						    <li><a href="inet-setup-pt-br.htm#net-set1">WiFi - como configurar o modo "Roaming"</a></li>
+						    <li><a href="inet-wpa-pt-br.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pt-br.htm#hotswitch">Como permutar entre wifi e cabo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões com fio &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pt-br.htm#dial-mod">Modems 56k</a></li>
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pt-br.htm">Gerenciamento de pacotes e dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-install">Como instalar um novo pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-delete">Como deletar um pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-downgrade">Pacotes em HOLD (espera) e como rebaixar pacotes</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cache">Como pesquisar pacotes com o apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#gui-pacsea">Como pesquisar pacotes com a interface gráfica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-remove">Como remover kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#dmakms">Como instalar módulos do kernel dinamicamente com o dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pt-br.htm#live-cd-upgrade">Atualização com uma Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pt-br.htm#approx">dist-upgrade de múltiplos PCs em uma LAN</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#du-st">Como atualizar todo o sistema -  dist-upgrade - os passos</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pt-br.htm">Administração do sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pt-br.htm#bois-prep">Como atualizar a BIOS com o FreeDOS</a></li>
+		<li><a href="vir-rkits-pt-br.htm#virus-rkits">Antivirus  e caçadores de rootkits</a></li>
+		<li><a href="hd-install-pt-br.htm#adduser">Como adicionar usuários e senhas &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pt-br.htm#adduser">Como adicionar um novo usuário</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pw-lost">Perda da senha root, nova senha</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#start-services">Serviços e runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pt-br.htm#start-services">Habilitar/desabilitar serviços</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pkill">Como finalizar um serviço ou processo</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#init">Runlevels no siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pt-br.htm#rsync">Como fazer backups do sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pt-br.htm#rdiff">Backup com o rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pt-br.htm#rsync">Backup com o rsync</a></li>
+					    <li><a href="home-pt-br.htm#home-bu">Como mover sua /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#fonts">CUPS, fontes e som &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pt-br.htm#fonts">Fontes</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#cups">CUPS - sistema de impressão</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#sound">Mixadores de som</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pt-br.htm#chroot">Grub2 - recuperaçaõ do grub em chroot</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#mbr-over-grub2">Grub2 - sobrescrição da MBR</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#multi-os">Grub2 - boots duplos e múltiplos</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub1-grub2">Grub2 - como atualizar a partir do Grub1</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 - visão geral</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Doação" alt="doação" /></a>
+</div>
+
+
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+<div class="divider" id="ssh">
+			<h2 id="top-header">SSH</h2>
+							<p>Em computação, Secure Shell ou SSH é um pacote de padrões e um protocolo de rede que permitem estabelecer um canal seguro entre um computador local e um remoto. Usa criptografia de chaves públicas para autenticar a máquina remota e (opcionalmente) permitir a esta autenticar o usuário. O SSH proporciona confidencialidade e integridade dos dados trocados entre os dois computadores ao usar encriptação e códigos de autenticação de mensagens (MAC - Message Authentication Code, em Inglês). Normalmente, o SSH é usado para conectar-se a uma máquina remota e executar comandos, mas são possíveis também o tunneling, forwarding  de portas TCP arbitrárias e conexões X11; Pode-se ainda transferir arquivos usando os protocolos SFTP ou SCP. Quanto à porta TCP, o padrão de um servidor SSH é ouvir na porta 22. <a href="http://pt.wikipedia.org/wiki/Secure_Shell"> Ver wikipedia</a></p>
+
+	</div>
+<div class="divider" id="ssh-s">
+			<h2>Como habilitar bons protocolos de segurança para o SSH</h2>
+
+							<p>Permitir o login como root, via ssh, não é seguro. Não é desejável, também, dar aos usuários 10 minutos que sejam para que eles façam um rápido ataque-dicionário às senhas de nosso login. Portanto, depende de você limitar o tempo e as tentativas!</p>
+
+ 							<p>Para deixar seu ssh mais seguro, torne-se root no terminal e abra o arquivo abaixo em seu editor de textos predileto:</p>
+<pre>
+/etc/ssh/sshd_config
+</pre>
+							<p>Então, faça as alterações necessárias nos items que podem causar problemas.</p>
+
+						<h6>Esses items problemáticos são os seguintes:</h6>
+
+ 							<p><span class="highlight-3">Port &lt;porta desejada&gt;:</span> Especifique a porta correta que você está adiantando ('forwarding') de seu roteador. 'Port forwarding' também precisa ser configurado em seu roteador. Se você não souber como fazer isso, então provavelmente você não está usando ssh. O padrão no Debian é a porta 22, porém o melhor é usar uma porta fora do campo normal de escaneamento. Digamos que você decida usar a porta 5874, então esse item fica assim:</p>
+<pre>
+Port 5874
+</pre>
+ 							<p><span class="highlight-3">ListenAddress &lt;IP da máquina ou interface de rede&gt;:</span> É preciso que a máquina tenha um endereço IP estático na rede, a menos que você esteja usando um servidor DNS localmente (mas se você está fazendo algo tão complicado e necessita destas instruções, provavelmente você está cometendo um enorme engano). Portanto, vamos dizer que fique assim:</p>
+<pre>
+ListenAddress 192.168.2.134
+</pre>
+							<p>Bem, o Protocol 2 já um padrão no Debian, mas confira só para ter certeza:</p>
+
+ 							<p><span class="highlight-3">LoginGraceTime &lt;tantos segundos para permitir o login&gt;:</span> O padrão é absurdo: 600 segundos. Não são necessários 10 minutos para você digitar seu nome de usuário e senha, portanto vamos mudar:</p>
+<pre>
+LoginGraceTime 45
+</pre>
+ 							<p>Agora você tem 45 segundos para logar-se e os hackers não têm 600 segundos para tentar descobrir sua senha.</p>
+
+							<p><span class="highlight-3">PermitRootLogin &lt;permitir login como root=yes&gt;:</span> Não se compreende porque o padrão no Debian é PermitRootLogin 'yes', portanto vamos passar  para 'não':</p>
+<pre>
+PermitRootLogin no
+</pre>
+
+<pre>
+StrictModes yes
+</pre>
+ 							<p><span class="highlight-3">MaxAuthTries &lt;xxx&gt;:</span> Número de tentativas para logar-se; o ideal é 3 ou 4, não mais.</p>
+<pre>
+MaxAuthTries 2
+</pre>
+ 							<p>Pode ser necessário adicionar alguns dos items seguintes, se eles não estiverem presentes:</p>
+<pre>
+AllowUsers &lt;nomes de usuários autorizados a acessar via ssh&gt;
+</pre>
+ 							<p><span class="highlight-3">AllowUsers &lt;xxx&gt;:</span> dar acesso ssh somente a usuários sem permissões; use 'adduser' para adicionar usuários, depois coloque seus nomes aqui:</p>
+<pre>
+AllowUsers qualquer_que_seja_seu_nome_de_usuário
+</pre>
+ 							<p><span class="highlight-3">PermitEmptyPasswords &lt;xxx&gt;:</span> dar a esse usuário uma senha tão longa, que será impossível adivinhar, nem em um milhão de anos, que ele é o único usuário com permissão de entrar no ssh. Uma vez dentro, você pode usar 'su' para tornar-se root:</p>
+<pre>
+PermitEmptyPasswords no
+</pre>
+							<p><span class="highlight-3">PasswordAuthentication &lt;xxx&gt;:</span> É óbvio que, se o usuário ao logar-se tiver de digitar uma senha (e não uma chave encriptada), essa senha terá de ser autenticada; portanto temos de colocar um 'yes' aqui:</p>
+<pre>
+PasswordAuthentication yes [a menos que se esteja usando chaves encriptadas]
+</pre>
+							<p>Finalmente:</p>
+<pre>
+/etc/init.d/ssh restart
+</pre>
+ 							<p>Agora você tem um ssh mais seguro que antes, ainda que não totalmente seguro. Até melhor, pois incluimos a criação de usuários 'ssh somente' com adduser.</p>
+
+							<p><span class="highlight-3">Observação:</span> Se você receber uma mensagem de erro e o ssh se recusar a conectar, procure uma pasta escondida em sua $HOME com o nome de <span class="highlight-3">.ssh</span>, apague o arquivod<span class="highlight-3"> known_hosts</span> e tente de novo. Este erro é mais comum com IPs dinâmicos (DHCP).</p>
+
+	</div>
+		<div class="divider" id="ssh-x">
+			<h2>Como usar aplicações do X via rede através do SSH</h2>
+							<p>O ssh -X permite que você se logue a um computador remoto e tenha sua interface gráfica mostrada em sua máquina local. Faça o seguinte, como $usuário (note que o 'X' é maiúsculo):</p>
+<pre>
+$ ssh -X usuário@xxx.xxx.xxx.xxx (ou IP)
+</pre>
+							<p>Digite a senha do usuário na máquina remota e rode a aplicação X na shell:</p>
+
+<pre>
+$ iceweasel OU oocalc OU oowriter OU kspread
+</pre>
+							<p>Algumas conexões realmente muito lentas podem ser beneficiadas se tiverem um nível de compressão para ajudar a velocidade de transferências. Para isso, adicione uma opção extra (mas atenção: em conexões rápidas, o efeito é o inverso):</p>
+<pre>
+$  ssh -C -X username@xxx.xxx.xxx.xxx (or IP)
+</pre>
+							<p>Leia:</p>
+<pre>
+$man ssh
+</pre>
+							<p><span class="highlight-3">Observação:</span> Se você receber uma mensagem de erro e o ssh se recusar a conectar, procure uma pasta escondida em sua $HOME com o nome de <span class="highlight-3">.ssh</span>, apague o arquivod<span class="highlight-3"> known_hosts</span> e tente de novo. Este erro é mais comum com IPs dinâmicos (DHCP).</p>
+	</div>
+	<div class="divider" id="ssh-scp">
+			<h2>Transferir ficheiros e diretórios usando scp</h2>
+
+							<p>scp utiliza a linha de commando, (terminal/cli), para copiar ficheiros entrs hosts numa rede utilizando os mecanismos de autentificação e a segurança do ssh para efectuar a transferencia dos ficheiros.</p>
+
+							<p>Partindo da hipótese de que você tem acesso por SSh a um server, então scp permite-lhe copiar (transferir) ficheiros desse (ou para esse) server para destinos nos quais lhe é permitido criar ficheiros. Isto inclui por exemplo transferir ficheiros de um PC ou um server da sua própria LAN para um dispositivo USB conetado a sua máquina local.</p>
+
+							<p>Se desejar a cópia pode ser recursiva permitindo até copiar partições inteiras usando a opção <span class="highlight-3">scp -r</span>.  Note bem que "sc -r" segue os links simbólicos que encontra ao descer um hierarquia de diretórios.</p>
+
+					<h3>Exemplos:</h3>
+							 <p><span class="highlight-3"> Exemplo 1:</span> Copiar uma partição:</p>
+
+<pre>
+scp -r &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
+</pre>
+							 <p><span class="highlight-3"> Exemplo 2:</span> Copiar um diretório - neste caso suposto encontar-se no $HOME do utilizador  na máquina remota:</p>
+
+<pre>
+scp -r &lt;user&gt;@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
+</pre>
+							 <p><span class="highlight-3">Example 3:</span> Copiar um ficheiro - neste caso suposto encontar-se no $HOME do utilizador  na máquina remota:</p>
+<pre>
+scp &lt;user&gt;@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
+</pre>
+							<p><span class="highlight-3">Example 4:</span>  Copiar um ficheiro:</p>
+<pre>
+scp &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
+</pre>
+
+							<p><span class="highlight-3">Example 5:</span> Copiar ficheiros para o seu actual diretório  utilize o '<span class="highlight-2"> <b>.</b> </span>' (ponto - dot) :</p>
+<pre>
+scp -r &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/filename.txt<span class="highlight-2"><b> .</b> </span>
+</pre>
+
+							<p><span class="highlight-3">Example 6:</span> Para copiar ficheiros do para o sistema remoto, (pode utilzar <span class="highlight-3">scp -r</span> se deseja copiar recursivamente uma partição ou um diretório:</p>
+
+<pre>
+scp /media/disk1part6/filename.txt &lt;user&gt;@xxx.xxx.x.xxx:/media/diskXpartX/xx
+</pre>
+
+							<p>Dẽ uma olhadela no conteúdo do:</p>
+<pre>
+man scp
+</pre>
+
+	</div>
+		<div class="divider" id="ssh-w">
+			<h2>SSH com X-Forwarding a partir de um PC Windows:</h2>
+
+							<p>* Baixe e queime o <a href="http://xlivecd.indiana.edu/">Cygwin XLiveCD</a><br />
+							* Dentro do Windows, coloque o CD na bandeja do CD-ROM e aguarde a auto-execução.<br />
+							Clique "Continue" até que surja uma janela de terminal. Então, digite:</p>
+<pre>
+ssh -X usuário@xxx.xxx.xxx.xxx
+</pre>
+      							<p>Observação: xxx.xxx.xxx.xxx é o endereço IP do computador remoto rodando Linux ou sua URL (por exemplo, uma conta no dyndns.org) e 'usuário' é uma conta de usuário existente na máquina remota, naturalmente. Depois de conectar-se com sucesso, rode "kmail", por exemplo, e cheque seus emails!</p>
+
+							<p>Importante: assegure-se de que o arquivo 'hosts.allow' tenha uma entrada que permita acessos de PCs de outras redes. Se você estiver atrás de um firewall NAT ou um roteador, confirme que a porta 22 está aberta para sua máquina Linux.</p>
+	</div>
+		<div class="divider" id="ssh-f">
+			<h2>SSH com dolphin</h2>
+
+							<p>Tanto o dolphin quanto o Krusader são capazes de acessar dados remotos, usando os protocolos <span class="highlight-3">sftp://</span> e ssh.</p>
+
+
+							<p>Como funciona:<br />
+							1) Abra o dolphin<br />
+							2) Digite na barra de endereços: <span class="highlight-3">sftp://nome_do_usuário@ssh-server.com</span></p>
+
+
+
+			<p>Exemplo 1: </p>
+<pre>
+sftp://siduction1@servidor remoto_ou_ip
+ (Nota: uma janela vai pedir sua senha ssh; coloque-a e clique OK)
+</pre>
+							<p>Exemplo 2: </p>
+<pre>
+sftp://nome_do_usuário:senha@servidor remoto_ou_ip
+(Aqui, <span class="highlight-3">NENHUMA</span> janela pedirá sua senha; você estará conectado diretamente.)
+</pre>
+							<p>Para um ambiente LAN:</p>
+<pre>
+sftp://nome_do_usuário@10.x.x.x ou 198.x.x.x.x
+(Nota: uma janela vai pedir sua senha ssh; coloque-a e clique OK)
+</pre>
+							<p>A conexão SSH, com uma janela do dolphin, é iniciada agora. Com essa janela, você pode trabalhar com os arquivos (copiar/ver) que estão no servidor SSH, exatamente como se eles estivessem em uma pasta em seu computador local.</p>
+
+							<p class="highlight-3">NOTA: se você configurou o ssh para usar outra porta que não a padrão, que é a 22, você precisa especificar qual porta o sftp vai usar:</p>
+<pre>
+sftp://usuário@ip:port
+</pre>
+							<p>'user@ip:port' é a sintaxe padrão de muitos programas, como sftp e smb.</p>
+
+	</div>
+	<div class="divider" id="ssh-fs">
+			<h2>SSHFS - como montar remotamente</h2>
+							<p>SSFS é um método fácil, rápido e seguro que usa FUSE para montar um sistema de arquivos remoto. O único requisito do lado do servidor é um daemon ssh sendo executado.</p>
+
+							<p>Do lado do cliente, provavelmente você terá de instalar o sshfs: <span class="highlight-1">instalar o fuse e grupos não é mais necessário desde o siduction 11.1, pois eles passaram a ser adicionados na instalação:</span></p>
+
+							<p>No cliente, você provavelmente terá de instalar o sshfs:	</p>
+<pre>
+apt-get update &amp;&amp; apt-get install sshfs
+</pre>
+							<p class="highlight-3">Agora, saia e logue-se novamente.</p>
+
+							<p>Montar um sistema de arquivos remoto é muito fácil:</p>
+<pre>
+sshfs usuário@hospedeiro_remoto:diretório ponto_de_montagem_local
+</pre>
+							<p>onde <span class="highlight-3">usuário</span> é a conta de usuário no hospedeiro remoto:</p>
+
+							<p>Se nenhum diretório for fornecido, será montado o diretório /home do usuário remoto.<span class="highlight-3"> Atenção: os dois pontos <span class="highlight-2"> <b>:</b></span> são essenciais, ainda que nenhum diretório seja dado! </span></p>
+
+							<p>Depois de montado, o diretório remoto comporta-se como qualquer outro sistema de arquivos: você pode navegar entre os arquivos, editá-los, rodar scripts etc, da mesma forma que você faz em um sistema local.</p>
+
+							<p>Se quiser desmontar o hospedeiro remoto, use o seguinte comando:</p>
+<pre>
+fusermount -u ponto_de_montagem_local
+</pre>
+							<p>Se você usa sshfs frequentemente, uma boa idéia é adicionar esta entrada no fstab:</p>
+<pre>
+sshfs#username@remote_hostname://remote_directory /local_mount_point fuse user,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#username@remote_hostname://remote_directory  0 0 
+</pre>
+							<p>Em seguida deative <span class="highlight-3">user_allow_other</span> no ficheiro <span class="highlight-3">/etc/fuse.conf</span>:</p>
+
+<pre> 
+ # Allow non-root users to specify the 'allow_other' or 'allow_root'
+ # mount options.
+ #
+ user_allow_other
+</pre>
+							<p>Assim, fica permitido a todo usuário que faça parte do grupo 'fuse' montar o sistema de arquivos, usando o já conhecido comando:</p>
+<pre>mount /caminho/para/ponto/de/montagem</pre>
+							<p>Naturalmente, você poderá também usar o comando para desmontar:</p>
+<pre>umount /caminho/para/ponto/de/montagem</pre>
+							<p>Para conferir se você faz parte do grupo ou não, use o seguinte comando:</p>
+<pre>
+cat /etc/group | grep fuse
+</pre>
+							<p>Você deverá ver mais ou menos isto:</p>
+<pre>
+fuse:x:117: &lt;nome_do_usuário&gt;
+</pre>
+							<p>Se seu nome de usuário não estiver relacionado, use o comando 'adduser' como root:</p>
+<pre>
+adduser &lt;nome_do_usuário&gt; fuse
+</pre>
+							<p>Agora seu nome de usuário deve aparecer na lista e você poderá executar o seguinte comando:</p>
+
+							<p class="highlight-3">Observação: o "id" não será mostrado no grupo "fuse" enquanto você não sair e logar-se de novo.</p>
+<pre>
+mount ponto_de_montagem_local
+</pre>
+							<p>e</p>
+<pre>
+umount ponto_de_montagem_local
+</pre>
+
+	</div>
+			<div id="rev">Content last revised 13/01/2012 2330 UTC</div>
+
+
+</div>
+</div>
+</body>
+</html>

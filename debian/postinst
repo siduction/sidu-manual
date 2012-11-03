@@ -1,0 +1,38 @@
+#! /bin/bash
+set -e
+PROJECT=sidu-manual
+if ! grep -q "$PROJECT" /etc/hosts ; then
+	# if the last newline is missing:
+	echo "" >>/etc/hosts
+	ADDR=86
+	while grep -q "127.0.0.$ADDR" /etc/hosts ; do
+		ADDR=$(expr $ADDR + 1)
+	done
+	echo "127.0.0.$ADDR $PROJECT" >>/etc/hosts
+	echo "virtual host installed: $PROJECT ($ADDR)"
+fi
+
+# Create the links from the toolkit:
+pushd /usr/share/$PROJECT >/dev/null
+SRC=../siguibui
+function MkLink(){
+	if [ ! -L $1 ] ; then
+		ln -s $2/$1 $1
+	fi
+}
+function MkLink2(){
+	if [ ! -L $2 ] ; then
+		ln -s $1 $2
+	fi
+}
+MkLink index.php $SRC
+MkLink base $SRC
+
+# Create the links to the shellserver:
+cd /usr/share/siguibui/backend
+SRC=../../$PROJECT/backend
+MkLink example.sh $SRC
+MkLink2 /var/cache/siguibui/public /usr/share/$PROJECT
+popd >/dev/null
+#DEBHELPER#
+exit 0

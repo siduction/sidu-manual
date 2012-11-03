@@ -1,0 +1,37 @@
+#top-menu-frame {
+	/*background-image:url(../logos/siduction-logo-web.png);*/
+	position: relative;
+	top: -43px;
+	left: 350px;
+}
+.top-menu {
+	/*background-image:url(../logos/siduction-logo-web.png);*/
+	
+	xmargin:0 35px 0 0;
+	xfloat: right;
+}
+
+.top-menu li {
+	float:left;
+	list-style-type:none;
+}
+
+.top-menu li a {
+	float:left;
+	display:block;
+	width:80px;
+	color:white;
+	padding: 3px 0;
+	ext-decoration:none;
+	text-align:center !important;
+}
+
+.top-menu li a:hover {
+	display:block;
+	width:80px;
+	color:red;
+	background-color:white;
+	text-decoration:none;
+	text-align:center !important;
+	font-weight:bold;
+	}

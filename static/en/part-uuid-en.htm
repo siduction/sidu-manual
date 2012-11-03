@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>siduction Manuals - fstab, mount and UUID</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision bluewater 15/01/2012 0945 UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here en lang maintained by devil-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="To siduction.org forums and wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-en.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" />Search online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" alt="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">siduction OS Manual</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">siduction OS Manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-en.htm#cred-team">Credits</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-en.htm#how-to">How to use this manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+					  <li><a href="welcome-en.htm#table-contents">Table of Contents</a></li>
+					</ul>
+					</li>
+		<li><a href="help-en.htm#help-gen">Getting Help &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-en.htm#help-gen">Where and how to get help</a></li>
+					  <li><a href="help-en.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-en.htm#welcome-quick">siduction Quick Start Guide</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">ISO Content, Releases, Download Mirrors and Burning</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">ISO Content and system requirements &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-en.htm#rolling">Release Notes</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Mirrors, Downloading and Burning &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burning-no-gui">burniso script</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burn-no-gui-gen">Burning without a GUI</a></li>
+					  <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Download Mirrors</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the siduction-Live ISO</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-en.htm#colours"> Coloured terminal prompts</a></li>
+					  <li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+					  <li><a href="help-en.htm#init3-tools">Tools to know in text mode (tty) - init 3</a></li>
+					  <li><a href="term-konsole-en.htm#term-cmds">Linux Terminal Commands List</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-en.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">Boot codes</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-en.htm#cheatcodes">siduction specific Live-ISO bootcodes</a></li>
+				<li><a href="cheatcodes-en.htm#cheatcodes-linux">Linux generic bootcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning the Hard Drive - Traditional, GPT and LVM</a>
+		    <ul class="sub-menu" id="sm6">
+			  <li><a href="part-gparted-en.htm#hd-ntfs3g">Writing on NTFS partitions with ntfs-3g</a></li>
+			  <li><a href="part-lvm-en.htm#part-lvm">Partitioning to use LVM - Logical Volume Manager</a></li>
+			  <li><a href="part-gparted-en.htm#partition">Partitioning with a GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-en.htm#partition">Partitioning with CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+					    <li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-6">Formatting after partitioning with gdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-1">GPT Partitioning with gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-en.htm#part-example">Partitioning Basics &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+					  <li><a href="part-uuid-en.htm#uuid">UUID, Rebuilding fstab and creating new mount points</a></li>
+					  <li><a href="part-cfdisk-en.htm#disknames">Disk Naming in brief</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation </a></li>
+					  <li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+					  <li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso - Overview</a></li>
+					  <li><a href="hd-install-opts-en.htm#grub2-fromiso">Booting 'fromiso' with Grub 2</a></li>
+					  <li><a href="hd-install-opts-en.htm#fromiso-persist">fromiso and persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#usb-hd">Installing to USB drives &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD - siduction specific - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-en.htm#raw-usb">Writing siduction to a USB/SSD stick with any Linux, MS Windows or Mac OS X system</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-en.htm#install-crypt">Installing to encrypted partitions - cryptroot</a></li>
+		  <li><a href="nbdboot-en.htm#nbd1">Booting siduction over a network</a></li>
+		  <li><a href="hd-install-vmopts-en.htm#vmopts">Virtual Machine installation options</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-en.htm">Graphic cards, monitors, Xorg,  &amp; drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors  &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors</a></li>
+					  <li><a href="hw-dev-mon-en.htm#xrandr">Dual Monitors and xrandr</a></li>
+					  <li><a href="hw-dev-mon-en.htm#mon-binary">Dual Monitors (using binaries)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-en.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-en.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-en.htm#fw-detect">Firmware detection - non-free </a></li>
+			  <li><a href="nf-firm-en.htm#non-free-firmware">Adding non-free to sources</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-en.htm#install-add">Window Managers</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-en.htm">KDE and XFCE Window Managers &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-en.htm#xfce-notes">Useful Xfce extras</a></li>
+					    <li><a href="wm-dm-en.htm#install-add">Useful extra KDE Apps</a></li>	    
+					    <li><a href="wm-dm-en.htm#kde-login">Cant login in KDE</a></li>
+					    <li><a href="wm-dm-en.htm#ch-th">Changing Themes</a></li>
+					    <li><a href="wm-dm-en.htm#desk-freeze">Desktop Freezes</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-en.htm#dm">Installing additional Display Managers</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-en.htm">Internet connecting, WiFi, LAN and Networks</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-en.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-en.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+					    <li><a href="lamp-php-en.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-en.htm#privoxy">Firewalls and Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-en.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-en.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-en.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-en.htm#ssh-x">SSH and Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+						  <li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+						  <li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+						  <li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+						  <li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+						  <li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+						  <li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">WIFI connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-en.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-en.htm#net-set1">WiFi - Setting up for WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-en.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-en.htm#hotswitch">Network switching between WiFi and Cable</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">Wired Connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-en.htm#dial-mod">56k Modems</a></li>
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">Package Management and dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-en.htm#apt-cook">APT Cookbook and Sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-downgrade">Package Hold and downgrading</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-cache">Package searching with apt-cache</a></li>
+					    <li><a href="sys-admin-apt-en.htm#gui-pacsea">GUI Package searching</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-remove">Removing Kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#dmakms">Installing kernel modules dynamically with dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-en.htm#approx">dist-upgrade of multiple PCs on a LAN</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview</a></li>
+					    <li><a href="sys-admin-apt-en.htm#du-st">Upgrade an Installed System -  dist-upgrade - The Steps</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-en.htm">System Administration</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-en.htm#bois-prep">Upgrading the BIOS with FreeDOS</a></li>
+		<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+		<li><a href="hd-install-en.htm#adduser">Adding Users and Passwords &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-en.htm#adduser">Adding a new user</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pw-lost">Lost root passwords, new passwords</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#start-services">Services and init runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-en.htm#start-services">Services enable/disable</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pkill">Killing a service or process</a></li>
+					    <li><a href="sys-admin-gen-en.htm#init">siduction runlevels - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-en.htm#rsync">Backing up the system &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
+					    <li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
+					    <li><a href="home-en.htm#home-bu">Moving /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#fonts">CUPS, Fonts and Sound &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-en.htm#fonts">Fonts</a></li>
+					     <li><a href="sys-admin-gen-en.htm#cups">CUPS - Printing System</a></li>
+					     <li><a href="sys-admin-gen-en.htm#sound">Sound Mixers</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-en.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-en.htm#chroot">Grub2 - Recovering Grub with chroot</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#mbr-over-grub2">Grub2 - MBR Overwritten</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#multi-os">Grub2 - Dual and Multibooting</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub1-grub2">Grub2 -Upgrading from Grub1</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub2">Grub2 - Overview</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="uuid">
+			<h2 id="top-header">Rebuilding fstab and creating mount points</h2>
+							<p class="highlight-3">By default siduction uses uuid in your fstab when you install.</p>
+
+							<p>To show a newly created partition (say sda6 or sdb7), that does not appear in fstab or want to be mounted, in a terminal, (konsole), as user ($), type the following command:</p>
+
+<pre>
+ ls -l /dev/disk/by-uuid
+</pre>
+
+							<p>It will output like this (bold is for example purposes only):</p>
+
+<pre>
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 348ea9e6-7879-4332-8d7a-915507574a80 -> ../../sda4
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 610aaaeb-a65e-4269-9714-b26a1388a106 -> ../../sda2
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 857c5e63-c9be-4080-b4c2-72d606435051 -> ../../sda5
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 a83b8ede-a9df-4df6-bfc7-02b8b7a5f1f2 -> ../../sda1
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 <b>ad662d33-6934-459c-a128-bdf0393e0f44</b> -> ../../sda6
+</pre>
+
+							<p>In this example <b>ad662d33-6934-459c-a128-bdf0393e0f44</b> is the missing entry. The next step is to enter the UUID partition to /etc/fstab. To add it to your fstab file use a text editor (like kate or kwrite) with root privileges:</p>
+<pre>
+# &lt;device file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt; &lt;pass&gt;
+<b>UUID=ad662d33-6934-459c-a128-bdf0393e0f44</b> /media/disk1part6 ext4	auto,users,exec	0 2
+</pre>
+							<p>Another example:</p>
+
+<pre>
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 30ebb8eb-8f22-460c-b8dd-59140274829d -> ../../sdb8
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 387d6d4b-4508-4b8e-8ed2-76998f41dae4 -> ../../sdb1
+rwxrwxrwx 1 root root 10 2007-05-28 13:18 7014f66f-6cdf-4fe1-83da-9cab7b6fab1a -> ../../sdb5
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 8f042ead-259f-4df0-98ec-3343080396c5 -> ../../sdb6
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 94B0AE63B0AE4B94 -> ../../sda2
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 A61820AA18207B85 -> ../../sda1
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 f28725d6-b7b5-4207-8476-36efe1a903ce -> ../../sdb9
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 f855c263-2521-48d3-8ec9-d2d2b69b6635 -> ../../sda3
+rwxrwxrwx 1 root root 10 2007-05-28 13:18 <b>f9aa4027-ecdd-4a86-84e2-df2ef73fe14e</b> -> ../../sdb7
+</pre>
+
+
+
+							<p>In this case <b>f9aa4027-ecdd-4a86-84e2-df2ef73fe14e</b> is the missing entry and is added to /etc/fstab:</p>
+<pre>
+# &lt;device file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt; &lt;pass&gt;
+<b>UUID=f9aa4027-ecdd-4a86-84e2-df2ef73fe14e</b> /media/disk2part7 ext4	auto,users,exec	0 2
+</pre>
+
+			<h3>Creating new mount points</h3>
+							<p> <span class="highlight-3">Note:</span> A mount point name, as noted in fstab, needs to have an existing directory. siduction creates these directories during the installation process under <span class="highlight-3">/media</span> and they are named <span class="highlight-3">diskXpartX</span>.</p>
+
+							<p>If you have manipulated the partition table after the initial installation and assuming you have already altered fstab, (for example, 2 new partitions have been created), the directory for each mount point will not exist and it needs to be manually created.</p>
+
+					  <h5>Example:</h5>
+
+							<p>First, as root, confirm the existing mount points:</p>
+
+<pre>
+cd /media
+ls
+</pre>
+							<p>It should return the existing mount points, for example:</p>
+<pre>
+disk1part1 disk1part3 disk2part1
+</pre>
+							<p>Staying in /media, create the mount points of the new partitions:</p>
+<pre>
+mkdir disk1part6
+mkdir disk2part7
+</pre>
+
+							<p>To test or use partitions immediately:</p>
+<pre>
+mount /dev/sda6 /media/disk1part6
+mount /dev/sda6 /media/disk2part7
+</pre>
+							<p>Upon a reboot of the computer the filesystems will be mounted automatically. Read:</p>
+							<p>Of course you do not have to stick to the naming scheme <span class="highlight-3">diskXpartX</span>. You can name your mountpoints (and according fstab entries) with meaningfull names like 'data' or 'music'.</i></p>
+<pre>
+man mount
+</pre>
+
+	</div>
+	<div class="divider" id="uuid-fstab">
+			<h2>Overview: UUID, Partition Labelling and fstab</h2>
+							<p>Persistent block device naming has been made possible by the introduction of udev and has some advantages over bus-based naming.</p>
+
+							<p>While Linux distributions and udev are evolving and hardware detection is becoming more reliable, there are also a number of new problems and changes:<br />
+				   			<b>1)</b> If you have more than one sata/scsi or ide disk controller and the order in which they are added is random, then this may result in device names like hdX and hdY switching around randomly on each boot. The same goes for sdX and sdY. Persistent naming allows you not to worry about this at all.<br />
+				  			<b>2)</b> Since the introduction of the new libata pata support a while ago, all your ide hdX devices are named sdX. Again, with persistent naming, you won't even notice.<br />
+				   			<b>3)</b> Machines with both sata and ide controllers are quite common these days. With the libata changes mentioned above, the first problem became even more common, as sata and ide hard drives now both have sdX names.</p>
+
+							<p class="highlight-3">By default siduction will use uuid in your fstab when you install.</p>
+
+			<h2>The four different schemes for persistent naming:</h2>
+
+			<h4>1. Persistent Naming by UUID</h4>
+
+							<p>UUID stands for Universally Unique Identifier and is a mechanism to give each filesystem a unique identifier. It is designed so that collisions are unlikely. All Linux filesystems (including swap) support UUID. FAT and NTFS filesystems don't support UUID, but are still listed in by-uuid with a unique identifier:</p>
+<pre>
+$ /bin/ls -lF /dev/disk/by-uuid/
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 2d781b26-0285-421a-b9d0-d4a0d3b55680 -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 31f8eb0d-612b-4805-835e-0e6d8b8c5591 -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 3FC2-3DDB -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 5090093f-e023-4a93-b2b6-8a9568dd23dc -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 912c7844-5430-4eea-b55c-e23f8959a8ee -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 B0DC1977DC193954 -> ../../sdb1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 bae98338-ec29-4beb-aacf-107e44599b2e -> ../../sdb2
+</pre>
+
+							<p>As you can see, the fat and ntfs partitions have shorter names (sda6 and sdb1), but are still listed by uuid.</p>
+
+
+			<h4>2. Persistent Naming by LABEL</h4>
+
+							<p>Almost every filesystem type can have a label. All your partitions that have one are listed in the /dev/disk/by-label directory:</p>
+<pre>
+$ ls -lF /dev/disk/by-label
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data -> ../../sdb2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data2 -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 fat -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 home -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 root -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 swap -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 windows -> ../../sdb1
+</pre>
+
+							<p>While labels may have recognisable names, you need to exercise extreme caution to negate name collisions.</p>
+
+							<p>You can change the labels of your filesystems using these commands:</p>
+<pre>
+* swap: Create a new swapspace like this: mkswap -L &lt;label&gt; /dev/XXX
+* ext2/ext3/ext4: e2label /dev/XXX &lt;label&gt;
+* jfs: jfs_tune -L &lt;label&gt; /dev/XXX
+* xfs: xfs_admin -L &lt;label&gt; /dev/XXX
+* fat/vfat: There is no tool to change the label using Linux,
+but when you create the filesystem, use mkdosfs -n &lt;label&gt; &lt;other options&gt;.
+You may also change the label of an existing filesystem using Windows.
+* ntfs: ntfslabel /dev/XXX &lt;label&gt; or change it using Windows.
+</pre>
+							<p class="highlight-3">Be careful: The labels have to be unique to make this work", it applies equally to USB/firewire sticks and to harddisks. The LABEL=/ UUID= syntax is preferred over /dev/disk/by-*/ for UN*X partitions</p>
+
+
+
+			<h4>3. Persistent Naming by id </h4>
+
+							<p>by-id creates a unique name depending on the hardware serial number.</p>
+			<h4>4. Persistent Naming by path</h4>
+							<p>by-path creates a unique name depending on the shortest physical path (according to sysfs). Both contain strings to indicate which subsystem they belong to and thus are not suitable for solving the problems mentioned in the beginning of this article. They won't be discussed any further here.</p>
+
+			<h4>Enabling persistent naming</h4>
+
+							<p>Having chosen which naming method you'd like to use, let's now enable persistent naming for your system:</p>
+
+			<h4>In fstab</h4>
+
+							<p>Enabling persistent naming in /etc/fstab is easy;  just replace the device name in the first column by the new persistent name. In my example I would replace /dev/sda7 by one of the following:</p>
+<pre>
+/dev/disk/by-label/home or
+/dev/disk/by-uuid/31f8eb0d-612b-4805-835e-0e6d8b8c5591
+</pre>
+							<p>Do so for all the partitions in your fstab file.</p>
+
+							<p>Instead of giving the device explicitly, one may indicate the filesystem that is to be mounted by its UUID or volume label, writing LABEL=&lt;label&gt; or UUID=&lt;uuid&gt;, for example:</p>
+<pre>
+LABEL=Boot
+</pre>				<p>or</p>
+<pre>
+UUID=3e6be9de-8139-11d1-9106-a43f08d823a6
+</pre>
+							<p>Source: <a href="http://wiki.archlinux.org/index.php/Persistent_block_device_naming">wiki.archlinux.org</a>  who used <a href=" http://marc.theaimsgroup.com/?l=linux-hotplug-devel&amp;m=114795097514527&amp;w=2">marc.theaimsgroup.com</a> Content from wiki.archlinux.org available under GNU Free Documentation License 1.2 and has been re-edited for siduction-manuals</p>
+
+							<p><a href="http://debian-resources.org/node/9/">There is more on labeling here at debian-ressources</a> </p>
+
+	</div>
+			<div id="rev">Content last revised 15/01/2012 1100 UTC</div>
+</div>
+</div>
+</body>
+</html>

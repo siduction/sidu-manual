@@ -1,0 +1,8 @@
+    [Desktop Entry]
+    Type=Application
+    Exec=sidu-manual
+    Icon=sidu-manual
+    Name=sidu-manual
+    GenericName=sidu-manual
+    GenericName[de]=sidu-manual
+    Categories=System;

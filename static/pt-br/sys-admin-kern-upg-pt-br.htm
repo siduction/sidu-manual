@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pt-br">
+<head>
+	<title>Manuais do siduction - Como Atualizar o Kernel (RO)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision by ceti 26/01/2010 2236 UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here pt-br lang maintained by ceti-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Ir para siduction.org forums e wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pt-br.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" /> Procurar Online Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Escolha outra língua - Choose another language" alt="troca-língua" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pt-br.htm">Manual do Sistema Operacional siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pt-br.htm#welcome-gen">Manual do SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pt-br.htm#cred-team">Créditos</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pt-br.htm#how-to">Como usar este manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pt-br.htm#how-to">Como usar este manual</a></li>
+					  <li><a href="welcome-pt-br.htm#table-contents">Índice</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pt-br.htm#help-gen">Como conseguir ajuda &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pt-br.htm#help-gen">Onde e como obter ajuda</a></li>
+					  <li><a href="help-pt-br.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pt-br.htm#welcome-quick">Guia Rápido do siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pt-br.htm">Conteúdo das ISOs, lançamentos, espelhos e como queimar</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pt-br.htm#cd-content">Conteúdo das ISOs e requisitos do sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pt-br.htm#rolling">Notas de Lançamento</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos ('mirrors') do siduction, como baixar e como queimar &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pt-br.htm#md5">Como verificar o md5</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-nero">Como queimar no Windows</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-linux">Como queimar no Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burning-no-gui">O script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burn-no-gui-gen">Como queimar sem interface gráfica</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos para baixar o siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pt-br.htm">O modo Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pt-br.htm#rootpw">Senha do root na ISO siduction-Live</a></li>
+				<li><a href="live-mode-pt-br.htm#live-cd-installsoft">Como instalar software estando no modo Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pt-br.htm">Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / consola</a></li>
+					  <li><a href="term-konsole-pt-br.htm#colours"> Dando cor ao prompt do seu terminal</a></li>
+					  <li><a href="term-konsole-pt-br.htm#cli-help">Ajuda pela linha de comando</a></li>
+					  <li><a href="help-pt-br.htm#init3-tools">Ferramentas a conhecer no modo texto (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pt-br.htm#term-cmds">Lista de comandos de Terminal no Linux</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pt-br.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pt-br.htm">"Cheatcodes"</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes">Cheatcodes específicas da Live-ISO do siduction</a></li>
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes-linux">Cheatcodes genéricas do Linux</a></li>
+				<li><a href="cheatcodes-vga-pt-br.htm#vga">Códigos VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pt-br.htm">Métodos de particionamento - Traditional, GPT and LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pt-br.htm#hd-ntfs3g">Escrevendo em partições NTFS com o ntfs-3g</a></li>
+			<li><a href="part-lvm-pt-br.htm#part-lvm">Como particionar para o uso de LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pt-br.htm#partition">Como particionar pela interface gráfica &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pt-br.htm#partition">Como particionar o HD usando GParted / Gerenciador de partições do KDE</a></li>
+					  <li><a href="part-gparted-pt-br.htm#ntfs">Como redimensionar a partição NTFS com o GParted / Gerenciador de partições do KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pt-br.htm#partition">Como particionar pela linha de comando &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pt-br.htm#partition">Como particionar o seu HD com o cfdisk</a></li>
+					    <li><a href="part-cfdisk-pt-br.htm#formating">Como formatar após o particionamento com o cfdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-6">Como formatar após o particionamento com o gdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-1">Particionamento GPT do HD com o gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pt-br.htm#part-example">O básico do particionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pt-br.htm#part-example">Exemplos de tamanhos de partições</a></li>
+					  <li><a href="part-uuid-pt-br.htm#uuid">UUID, refazendo o fstab e criando novos pontos de montagem</a></li>
+					  <li><a href="part-cfdisk-pt-br.htm#disknames">Uma geral sobre nomeação de discos</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pt-br.htm">Opções de instalação - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação da instalação </a></li>
+					  <li><a href="hd-install-pt-br.htm#Installation">Como instalar no HD</a></li>
+					  <li><a href="hd-install-pt-br.htm#first-hd-boot">Primeira inicialização</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#fromiso">Como dar o 'boot' com fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso">Como inicializar com fromiso - visão geral</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#grub2-fromiso">Como inicializar com 'fromiso' e Grub 2</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso-persist">fromiso e persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em drives USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em um HD-USB - específico do siduction - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-pt-br.htm#raw-usb">Instalando em dispositivo USB/SSD com qualquer sistema Linux, MS Windows ou Mac OSX</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pt-br.htm#install-crypt">Instalando em partição chifrada - cryptroot</a></li>
+		  <li><a href="nbdboot-pt-br.htm#nbd1">Inicializando o siduction através de uma rede</a></li>
+		  <li><a href="hd-install-vmopts-pt-br.htm#vmopts">Opções de instalação de Máquina Virtual</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pt-br.htm">Placas de Vídeo, dispositivos diversos, xorg &amp;  drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#xrandr">Monitores múltiplos (Dual Monitors) e a xrandr</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-binary">Monitores múltiplos usando binários</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pt-br.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pt-br.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pt-br.htm#fw-detect">Detetando Firmware - non-free </a></li>
+			  <li><a href="nf-firm-pt-br.htm#non-free-firmware">Adicionar non-free a lista de fontes</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pt-br.htm">Gerenciadores de janelas</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pt-br.htm">KDE and XFCE Gerenciadores de janelas &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pt-br.htm#xfce-notes">Extras úteis para o Xfce</a></li>
+					    <li><a href="wm-dm-pt-br.htm#install-add">Extras úteis para o KDE</a></li>
+					    <li><a href="wm-dm-pt-br.htm#desk-freeze">Congelamentos do desktop</a></li>
+					    <li><a href="wm-dm-pt-br.htm#kde-login">"Não consigo entrar no KDE"</a></li>
+					    <li><a href="wm-dm-pt-br.htm#ch-th">Como mudar os temas</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pt-br.htm#dm">Instalando Installing gerenciador de display adicionais</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pt-br.htm">Conexão com a Internet, WiFi, LAN e redes</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pt-br.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pt-br.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ftp">Clientes FTP</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-sec">Protocolos de segurança</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pt-br.htm#serv-mysql">Configuração do MySQL</a></li>
+					    <li><a href="lamp-php-pt-br.htm#serv-php">PHP no Apache</a></li>
+					    <li><a href="ntp-server-pt-br.htm#ntp-server">Configuração do servidor de data/hora</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pt-br.htm#tor">Firewalls e privacidade &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pt-br.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pt-br.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pt-br.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pt-br.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pt-br.htm#setup">Configuração do servidor Samba</a></li>
+						  <li><a href="samba-pt-br.htm#configure">Como configurar o Samba (Windows)</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-fs">Como montar um SSH remoto</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-x">Aplicações do X via SSH</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-f">SSH com o Konqueror</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-w">SSH com X-Forwarding a partir do Windows</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh">SSH e segurança</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões wifi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+						    <li><a href="inet-wpagui-pt-br.htm#wpa-roaming-gui">WiFi - interface WPA_</a></li>
+						    <li><a href="inet-setup-pt-br.htm#net-set1">WiFi - como configurar o modo "Roaming"</a></li>
+						    <li><a href="inet-wpa-pt-br.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pt-br.htm#hotswitch">Como permutar entre wifi e cabo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões com fio &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pt-br.htm#dial-mod">Modems 56k</a></li>
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pt-br.htm">Gerenciamento de pacotes e dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-install">Como instalar um novo pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-delete">Como deletar um pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-downgrade">Pacotes em HOLD (espera) e como rebaixar pacotes</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cache">Como pesquisar pacotes com o apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#gui-pacsea">Como pesquisar pacotes com a interface gráfica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-remove">Como remover kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#dmakms">Como instalar módulos do kernel dinamicamente com o dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pt-br.htm#live-cd-upgrade">Atualização com uma Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pt-br.htm#approx">dist-upgrade de múltiplos PCs em uma LAN</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#du-st">Como atualizar todo o sistema -  dist-upgrade - os passos</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pt-br.htm">Administração do sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pt-br.htm#bois-prep">Como atualizar a BIOS com o FreeDOS</a></li>
+		<li><a href="vir-rkits-pt-br.htm#virus-rkits">Antivirus  e caçadores de rootkits</a></li>
+		<li><a href="hd-install-pt-br.htm#adduser">Como adicionar usuários e senhas &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pt-br.htm#adduser">Como adicionar um novo usuário</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pw-lost">Perda da senha root, nova senha</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#start-services">Serviços e runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pt-br.htm#start-services">Habilitar/desabilitar serviços</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pkill">Como finalizar um serviço ou processo</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#init">Runlevels no siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pt-br.htm#rsync">Como fazer backups do sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pt-br.htm#rdiff">Backup com o rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pt-br.htm#rsync">Backup com o rsync</a></li>
+					    <li><a href="home-pt-br.htm#home-bu">Como mover sua /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#fonts">CUPS, fontes e som &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pt-br.htm#fonts">Fontes</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#cups">CUPS - sistema de impressão</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#sound">Mixadores de som</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pt-br.htm#chroot">Grub2 - recuperaçaõ do grub em chroot</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#mbr-over-grub2">Grub2 - sobrescrição da MBR</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#multi-os">Grub2 - boots duplos e múltiplos</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub1-grub2">Grub2 - como atualizar a partir do Grub1</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 - visão geral</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Doação" alt="doação" /></a>
+</div>
+
+
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="kern-upgrade">
+			<h2 id="top-header">Como Instalar Novos Kernels</h2>
+					<h5><span class="highlight-3">Os kernels do siduction são encontrados no repositório siduction.orgo um .deb e são incluídos automaticamente no dist-upgrade.</span></h5>
+<div class="spacer01"></div>
+							<h5><span class="highlight-3">Os kernels do siduction são encontrados no repositório siduction.orgo um .deb e são incluídos automaticamente no dist-upgrade.</span></h5>
+<div class="spacer01"></div>
+							<p>Os kernels estão disponíveis nos seguintes formatos:</p>
+						<ul>
+  							<li><b>siduction-686</b> - kernel para a família de processadores i686, com dual core ou não e outras CPUs</li>
+
+  							<li><b>siduction-amd64</b> - kernel para a plataforma de 64 bit</li>
+						</ul>
+
+					<h5>Os passos para carregar novos kernels manualmente, isto é, sem dist-upgrade são:</h5>
+
+						<p><b>1.</b> Abra o terminal e torne-se root; depois digite:</p>
+
+<pre>
+apt-get update
+</pre>
+							<p><b>2.</b> Para instalar a última versão do kernel:</p>
+<pre>
+apt-get install linux-image-siduction-686 linux-headers-siduction-686
+</pre>
+							<p>Para usar o novo kernel, é necessário reiniciar o computador</p>
+
+							<p><span class="highlight-3">Se ele trouxer problemas, você pode reiniciar a máquina e escolher um kernel antigo.</span></p>
+
+					<h5>Módulos</h5>
+
+ 							<p>Para saber de quais módulos você precisa, o comando a seguir lista os módulos disponíveis; copie-o para o terminal:</p>
+<pre>
+apt-cache search 2.6.*.towo.*-siduction| awk '/modules/{print $1}'
+</pre>
+
+							<p>Copie a linha seguinte para o terminal, caso queira uma descrição completa de cada módulo:</p>
+<pre>
+apt-cache search 2.6.*.towo.*-siduction
+</pre>
+
+
+ 							<p>Para instalar os módulos necessários (por exemplo, virtual-ose e qc-usb):</p>
+
+ <pre>
+apt-get install virtualbox-ose-modules-2.6.24-2.6.24.2.towo.7-siduction-686 (EXEMPLO)
+apt-get install qc-usb-modules-2.6.24-2.6.24.2.towo.7-siduction-686 (EXEMPLO)
+</pre>
+
+							<p>Para checar os módulos carregados no kernel:</p>
+<pre>
+ls /sys/module/
+ou
+cat /proc/modules
+</pre>
+	</div>
+		<div class="divider" id="dmakms">
+			<h2>Como instalar módulos com o Dynamic Module-Assistant Kernel Module Support (dmakms)</h2>
+
+							<p>O dmakms é útil na instalação de módulos do kernel que não são preparados antecipadamente para o kernel do siduction. O dmakms destina-se a automatizar a instalação dos módulos com o module-assistant <span class="highlight-3">(m-a)</span> quando atualizando ou instalando novos kernels.</p>
+
+<pre>
+apt-get install dmakms module-assistant
+</pre>
+							<p>Antes de ativar o Dynamic Module-Assistant Kernel Module Support, use o module-assistant para instalar o(s) módulo(s) desejado(s) para o kernel rodando atualmente. Para mais informações sobre module-assistant queira ler, por favor, sua página de manual:</p>
+<pre>
+man m-a
+</pre>
+
+							<p>O nome do módulo compatível com o module-assistant precisa ser adicionado a <span class="highlight-3">/etc/default/dmakms</span>, de forma que o processo de preparar e instalar o(s) mesmo(s) módulo(s) a cada novo kernel seja automatizado.</p>
+
+				<h4>Exemplo: como instalar o <span class="highlight-3">módulo speakup</span> com o module-assistant</h4>
+							<p>Assegure-se de ter a linha <span class="highlight-3">#deb-src http://ftp.br.debian.org/debian/ sid main contrib non-free</span> no seguinte arquivo: <span class="highlight-3">/etc/apt/sources.list.d/debian.list</span> </p>
+<pre>
+apt-cache search speakup-s
+speakup-source - Source of the speakup kernel modules
+</pre>
+
+							<p>A seguir, prepare o módulo:</p>
+<pre>
+m-a prepare
+m-a a-i speakup-source
+</pre>
+							<p>Então ative o Dynamic Module-Assistant Kernel Module Support para o speakup, de forma que, da próxima vez que o kernel for atualizado, um módulo speakup seja preparado para ele também, sem sua intervenção manual. Para isso, adicione <span class="highlight-3">speakup-source</span> ao arquivo de configuração <span class="highlight-3">/etc/default/dmakms </span>.</p>
+<pre>
+mcedit /etc/default/dmakms
+speakup-source
+</pre>
+
+							<p>Repita o mesmo processo para todos os outros pacotes de módulos do kernel compatíveis com o module-assistant.</p>
+
+							<p>Um pacote 'linux-headers' deve ser instalado para cada pacote com uma imagem do kernel correspondente, para que o module-assistant possa compilar os módulos do kernel.</p>
+
+					<h4>Falha no carregamento do módulo</h4>
+
+							<p>Se houver falha no carregamento do módulo, por qualquer motivo (um novo componente do xorg, um problema no sistema de arquivos ou uma recusa do X em reiniciar após um reboot] :</p>
+<pre>
+modprobe &lt;módulo&gt;
+</pre>
+							<p>Daí, reinicie o computador.</p>
+
+							<p>Se ainda assim o módulo se recusar a ser carregado:</p>
+ <pre>
+ m-a a-i -f module-source
+</pre>
+							<p>Isso reconstrói o módulo. <span class="highlight-3">Agora reinicie.</span></p>
+
+			 <h5> Como funciona</h5>
+
+							<p>O Dynamic Module-Assistant Kernel Module Support consiste de um simples initscript (/etc/init.d/dmakms) que é executado no momento do boot ou por um script disparado após a instalação de novos pacotes Debian com imagens do kernel.</p>
+
+							<p>A cada boot, o /etc/init.d/dmakms é rodado para descobrir se cada pacote com os fontes do módulo listado em /etc/default/dmakms providenciou um pacote com o módulo para o kernel em utilização, chamando o module-assistant para montar e instalar o módulo necessário.</p>
+
+							<p>Quando uma nova imagem do kernel é instalada, o arquivo /etc/init.d/dmakms é executado via um script pós-instalação com dois argumentos, 'start' e 'version string' (número da versão do kernel) para preparar um novo pacote com o módulo. Nessa hora, os pacotes de módulos listados no arquivo de configuração /etc/default/dmakms são processados com o module-assistant, e pacotes derivados são agendados para instalação no momento em que o computador for desligado. <span class="highlight-3">O motivo da instalação se dar quando do desligamento da máquina é simples: é necessário atrasar a instalação de forma que o apt/dpkg não esteja bloqueado por outro processo</span>.</p>
+
+<pre>
+$ /usr/share/doc/dmakms
+</pre>
+
+	<!--</div>
+			<div class="divider" id="other-kern-inst">
+				<h2>Outros métodos de instalação do kernel</h2>
+
+					<h5>siductioncc</h5>
+							<p>Você pode também instalar kernels pela interface gráfica<a href="siductioncc-pt-br.htm"> siductioncc </a>, que fica no KMenu > Sistema > siduction Control Centre. O siductioncc possui diversas outras aplicações gráficas referentes a administração do sistema.</p>-->
+	</div>
+			<div class="divider" id="kern-remove">
+					<h2>Como remover kernels antigos com o kernel remover</h2>
+
+							<p>Depois de um novo kernel instalado com sucesso, os kernels antigos podem ser apagados, ainda que seja prudente ficar com pelo menos um deles por mais alguns dias, pois pode acontecer de você enfrentar imprevistos com o novo. Assim, se for preciso, basta selecioná-lo na tela do Grub.</p>
+
+							<p>Old kernels can be removed from the system. To do so, install <span class="highlight-3">kernel-remover</span>:</p>
+
+<pre>
+apt-get update
+apt-get install kernel-remover
+</pre>
+
+	</div>
+
+	<div id="rev">Content last revised 13/01/2012 2330 UTC</div>
+
+</div>
+</div>
+</body>
+</html>

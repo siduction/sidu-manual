@@ -1,0 +1,25 @@
+#! /bin/bash
+set -e
+PROJECT=sidu-manual
+if grep -q $PROJECT /etc/hosts ; then
+	sed -i -e "/127\.0\.0\.[0-9]*[ \t]*$PROJECT/d" /etc/hosts
+	echo "virtual host removed: $PROJECT"
+fi
+
+# delete the links from the toolkit:
+function RmLink(){
+	if [ -L $1 ] ; then
+		rm -f $1
+	fi
+}
+pushd /usr/share/$PROJECT >/dev/null
+RmLink index.php
+RmLink base
+RmLink public
+
+# Remove the links to the shellserver:
+cd /usr/share/siguibui/backend
+RmLink example.sh
+popd >/dev/null
+#DEBHELPER#
+exit 0

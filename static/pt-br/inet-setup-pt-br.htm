@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Manuais siduction - Configurando Wifi Roaming (RO)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision by bluewater 06/12/2008 0230 UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here pt-br lang maintained by ceti-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Ir para siduction.org forums e wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pt-br.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" /> Procurar Online Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Escolha outra língua - Choose another language" alt="troca-língua" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pt-br.htm">Manual do Sistema Operacional siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pt-br.htm#welcome-gen">Manual do SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pt-br.htm#cred-team">Créditos</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pt-br.htm#how-to">Como usar este manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pt-br.htm#how-to">Como usar este manual</a></li>
+					  <li><a href="welcome-pt-br.htm#table-contents">Índice</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pt-br.htm#help-gen">Como conseguir ajuda &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pt-br.htm#help-gen">Onde e como obter ajuda</a></li>
+					  <li><a href="help-pt-br.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pt-br.htm#welcome-quick">Guia Rápido do siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pt-br.htm">Conteúdo das ISOs, lançamentos, espelhos e como queimar</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pt-br.htm#cd-content">Conteúdo das ISOs e requisitos do sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pt-br.htm#rolling">Notas de Lançamento</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos ('mirrors') do siduction, como baixar e como queimar &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pt-br.htm#md5">Como verificar o md5</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-nero">Como queimar no Windows</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-linux">Como queimar no Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burning-no-gui">O script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burn-no-gui-gen">Como queimar sem interface gráfica</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos para baixar o siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pt-br.htm">O modo Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pt-br.htm#rootpw">Senha do root na ISO siduction-Live</a></li>
+				<li><a href="live-mode-pt-br.htm#live-cd-installsoft">Como instalar software estando no modo Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pt-br.htm">Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / consola</a></li>
+					  <li><a href="term-konsole-pt-br.htm#colours"> Dando cor ao prompt do seu terminal</a></li>
+					  <li><a href="term-konsole-pt-br.htm#cli-help">Ajuda pela linha de comando</a></li>
+					  <li><a href="help-pt-br.htm#init3-tools">Ferramentas a conhecer no modo texto (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pt-br.htm#term-cmds">Lista de comandos de Terminal no Linux</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pt-br.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pt-br.htm">"Cheatcodes"</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes">Cheatcodes específicas da Live-ISO do siduction</a></li>
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes-linux">Cheatcodes genéricas do Linux</a></li>
+				<li><a href="cheatcodes-vga-pt-br.htm#vga">Códigos VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pt-br.htm">Métodos de particionamento - Traditional, GPT and LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pt-br.htm#hd-ntfs3g">Escrevendo em partições NTFS com o ntfs-3g</a></li>
+			<li><a href="part-lvm-pt-br.htm#part-lvm">Como particionar para o uso de LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pt-br.htm#partition">Como particionar pela interface gráfica &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pt-br.htm#partition">Como particionar o HD usando GParted / Gerenciador de partições do KDE</a></li>
+					  <li><a href="part-gparted-pt-br.htm#ntfs">Como redimensionar a partição NTFS com o GParted / Gerenciador de partições do KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pt-br.htm#partition">Como particionar pela linha de comando &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pt-br.htm#partition">Como particionar o seu HD com o cfdisk</a></li>
+					    <li><a href="part-cfdisk-pt-br.htm#formating">Como formatar após o particionamento com o cfdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-6">Como formatar após o particionamento com o gdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-1">Particionamento GPT do HD com o gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pt-br.htm#part-example">O básico do particionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pt-br.htm#part-example">Exemplos de tamanhos de partições</a></li>
+					  <li><a href="part-uuid-pt-br.htm#uuid">UUID, refazendo o fstab e criando novos pontos de montagem</a></li>
+					  <li><a href="part-cfdisk-pt-br.htm#disknames">Uma geral sobre nomeação de discos</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pt-br.htm">Opções de instalação - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação da instalação </a></li>
+					  <li><a href="hd-install-pt-br.htm#Installation">Como instalar no HD</a></li>
+					  <li><a href="hd-install-pt-br.htm#first-hd-boot">Primeira inicialização</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#fromiso">Como dar o 'boot' com fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso">Como inicializar com fromiso - visão geral</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#grub2-fromiso">Como inicializar com 'fromiso' e Grub 2</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso-persist">fromiso e persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em drives USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em um HD-USB - específico do siduction - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-pt-br.htm#raw-usb">Instalando em dispositivo USB/SSD com qualquer sistema Linux, MS Windows ou Mac OSX</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pt-br.htm#install-crypt">Instalando em partição chifrada - cryptroot</a></li>
+		  <li><a href="nbdboot-pt-br.htm#nbd1">Inicializando o siduction através de uma rede</a></li>
+		  <li><a href="hd-install-vmopts-pt-br.htm#vmopts">Opções de instalação de Máquina Virtual</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pt-br.htm">Placas de Vídeo, dispositivos diversos, xorg &amp;  drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#xrandr">Monitores múltiplos (Dual Monitors) e a xrandr</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-binary">Monitores múltiplos usando binários</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pt-br.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pt-br.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pt-br.htm#fw-detect">Detetando Firmware - non-free </a></li>
+			  <li><a href="nf-firm-pt-br.htm#non-free-firmware">Adicionar non-free a lista de fontes</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pt-br.htm">Gerenciadores de janelas</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pt-br.htm">KDE and XFCE Gerenciadores de janelas &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pt-br.htm#xfce-notes">Extras úteis para o Xfce</a></li>
+					    <li><a href="wm-dm-pt-br.htm#install-add">Extras úteis para o KDE</a></li>
+					    <li><a href="wm-dm-pt-br.htm#desk-freeze">Congelamentos do desktop</a></li>
+					    <li><a href="wm-dm-pt-br.htm#kde-login">"Não consigo entrar no KDE"</a></li>
+					    <li><a href="wm-dm-pt-br.htm#ch-th">Como mudar os temas</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pt-br.htm#dm">Instalando Installing gerenciador de display adicionais</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pt-br.htm">Conexão com a Internet, WiFi, LAN e redes</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pt-br.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pt-br.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ftp">Clientes FTP</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-sec">Protocolos de segurança</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pt-br.htm#serv-mysql">Configuração do MySQL</a></li>
+					    <li><a href="lamp-php-pt-br.htm#serv-php">PHP no Apache</a></li>
+					    <li><a href="ntp-server-pt-br.htm#ntp-server">Configuração do servidor de data/hora</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pt-br.htm#tor">Firewalls e privacidade &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pt-br.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pt-br.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pt-br.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pt-br.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pt-br.htm#setup">Configuração do servidor Samba</a></li>
+						  <li><a href="samba-pt-br.htm#configure">Como configurar o Samba (Windows)</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-fs">Como montar um SSH remoto</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-x">Aplicações do X via SSH</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-f">SSH com o Konqueror</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-w">SSH com X-Forwarding a partir do Windows</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh">SSH e segurança</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões wifi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+						    <li><a href="inet-wpagui-pt-br.htm#wpa-roaming-gui">WiFi - interface WPA_</a></li>
+						    <li><a href="inet-setup-pt-br.htm#net-set1">WiFi - como configurar o modo "Roaming"</a></li>
+						    <li><a href="inet-wpa-pt-br.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pt-br.htm#hotswitch">Como permutar entre wifi e cabo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões com fio &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pt-br.htm#dial-mod">Modems 56k</a></li>
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pt-br.htm">Gerenciamento de pacotes e dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-install">Como instalar um novo pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-delete">Como deletar um pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-downgrade">Pacotes em HOLD (espera) e como rebaixar pacotes</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cache">Como pesquisar pacotes com o apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#gui-pacsea">Como pesquisar pacotes com a interface gráfica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-remove">Como remover kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#dmakms">Como instalar módulos do kernel dinamicamente com o dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pt-br.htm#live-cd-upgrade">Atualização com uma Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pt-br.htm#approx">dist-upgrade de múltiplos PCs em uma LAN</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#du-st">Como atualizar todo o sistema -  dist-upgrade - os passos</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pt-br.htm">Administração do sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pt-br.htm#bois-prep">Como atualizar a BIOS com o FreeDOS</a></li>
+		<li><a href="vir-rkits-pt-br.htm#virus-rkits">Antivirus  e caçadores de rootkits</a></li>
+		<li><a href="hd-install-pt-br.htm#adduser">Como adicionar usuários e senhas &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pt-br.htm#adduser">Como adicionar um novo usuário</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pw-lost">Perda da senha root, nova senha</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#start-services">Serviços e runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pt-br.htm#start-services">Habilitar/desabilitar serviços</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pkill">Como finalizar um serviço ou processo</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#init">Runlevels no siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pt-br.htm#rsync">Como fazer backups do sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pt-br.htm#rdiff">Backup com o rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pt-br.htm#rsync">Backup com o rsync</a></li>
+					    <li><a href="home-pt-br.htm#home-bu">Como mover sua /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#fonts">CUPS, fontes e som &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pt-br.htm#fonts">Fontes</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#cups">CUPS - sistema de impressão</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#sound">Mixadores de som</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pt-br.htm#chroot">Grub2 - recuperaçaõ do grub em chroot</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#mbr-over-grub2">Grub2 - sobrescrição da MBR</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#multi-os">Grub2 - boots duplos e múltiplos</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub1-grub2">Grub2 - como atualizar a partir do Grub1</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 - visão geral</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Doação" alt="doação" /></a>
+</div>
+
+
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="net-set1">
+
+		<h2 id="top-header">Como configurar WiFi Roaming com wpa</h2>
+						      <p><span class="highlight-3">Provavelmente, será necessário disponibilizar firmware não livre em uma pendrive ou outro dispositivo USB, para instalar no sistema operacional. Favor consultar <a href="nf-firm-pt-br.htm#non-free-firmware">  pacotes .deb com firmware não livre em uma pendrive e afins</a>.</span></p>
+
+					  <h3>Visão geral</h3>
+
+							<p>O wpa-roaming é uma maneira de conectar-se e navegar por redes sem fio <span class="highlight-3">com ou sem ambiente gráfico</span>.</p>
+
+							<p>O resultado das configurações a seguir é que se um cabo ethernet não estiver conectado, wlan0 toma a precedência e conecta você à rede sem fio desejada ou a uma rede aberta disponível ou, ainda, a uma rede sem fio pré-determinada. Entretanto, se você conectar um cabo ethernet, a conexão cabeada desabilita o acesso sem fio e, então, eth0 faz a conexão à rede com cabo. Se você voltar a desconectar o cabo, novamente a conexão sem fio será restabelecida instantaneamente.</p>
+
+				<h3>A configuração da rede</h3>
+
+							<p>Como <span class="highlight-3">root</span> adapte seu arquivo <span class="highlight-3">/etc/network/interfaces</span> de forma que ele fique assim: (o nome da interface pode variar)</p>
+
+<pre>
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+
+# Adicionado pelo usuário
+allow-hotplug wlan0
+iface wlan0 inet manual
+  wpa-roam /etc/wpa_supplicant/wpa-roam.conf
+
+# Esta linha precisa estar sempre aqui
+iface default inet dhcp
+</pre>
+							<p>A seguir o wpa_supplicant precisa de um arquivo .conf, o wpa-roam.conf</p>
+
+<pre>
+cp /usr/share/doc/wpasupplicant/examples/wpa-roam.conf /etc/wpa_supplicant/wpa-roam.conf
+</pre>
+							<p>Abra este arquivo com seu editor de texto:</p>
+<pre>
+&lt;editor&gt; /etc/wpa_supplicant/wpa-roam.conf
+</pre>
+
+							<p>Descomente a linha 30 (retire o <span class="highlight-2">#</span>). Se você não fizer isso, as configurações não serão salvas:</p>
+<pre>
+update_config=1
+</pre>
+							<p>No caso de um laptop ou de um desktop que precisa apenas acessar uma rede segura imediatamente, descomente linhas, (remova o sinal <span class="highlight-2">#</span>), para WEP ou WPA-WPA2PSK, conforme o caso: </p>
+
+							<p>Exemplo para WEP:</p>
+<pre>
+network={
+	ssid="debian" #Example WEP Network
+	key_mgmt=NONE
+	wep_key0=6162636465
+	wep_tx_keyidx=0
+}
+</pre>
+							<p>Exemplo para WPA:</p>
+<pre>
+network={
+	ssid="siduction_Worldwide" #Example WPA Network
+	psk="mysecretpassphrase"
+}
+</pre>
+
+							<p>O próximo passo é prevenir o wpa-roam.conf contra acessos indevidos. Isto é necessário, porque as senhas secretas das redes privadas são salvas nesse arquivo:</p>
+
+<pre>
+chmod 600 /etc/wpa_supplicant/wpa-roam.conf
+</pre>
+
+							<p>Levante a conexão wireless:</p>
+<pre>
+ifup wlan0
+</pre>
+							<p>Agora, confirme que você está conectado à rede:</p>
+
+
+<pre>
+wpa_cli status
+</pre>
+							<p>A saída deve ser mais ou menos essa:</p>
+<pre>
+Selected interface 'wlan0'
+bssid=94:0c:6d:aa:f4:42
+ssid=siduction_PocosCaldas
+id=3
+pairwise_cipher=CCMP
+group_cipher=CCMP
+key_mgmt=WPA2-PSK
+wpa_state=COMPLETED
+ip_address=192.168.1.102
+</pre>
+							<p>Se você não puder ver números em ip_address=, você não está conectado; então, reveja suas configurações, mas primeiro pare wlan0:</p>
+
+<pre>
+wpa_action wlan0 stop
+</pre>
+							<p>Se você precisar de configurações especiais, veja <a href="#net-set3">aqui</a></p>
+
+		</div>
+		<div class="divider" id="net-set2">
+				<h2>Como possibilitar a troca entre redes com e sem fio</h2>
+							<p>Inicialmente, veja <a href="inet-ifplug-pt-br.htm">Como passar de cabo para wireless e vice-versa</a>, porque se a configuração não estiver correta, nem conexão nem troca serão possíveis.</p>
+
+							<p>Depois de montar o ifplugd, a configuração final deve se parecer com essa: </p>
+<pre>
+auto lo
+iface lo inet loopback
+
+# Comandado por ifplugd ... não use allow-hotplug ou opções automáticas
+iface eth0 inet dhcp
+
+# Adicionado pelo usuário
+allow-hotplug wlan0
+iface wlan0 inet manual
+  wpa-roam /etc/wpa_supplicant/wpa-roam.conf
+
+# Esta linha precisa estar sempre aqui
+iface default inet dhcp
+</pre>
+
+		</div>
+		<div class="divider" id="net-set3">
+				<h2>Como usar o arquivo wpa-roam.conf com configurações de rede especificadas manualmente</h2>
+
+							<p>Com a ajuda de <span class="highlight-3">IDString</span> e <span class="highlight-3">Priority</span>, você pode direcionar a rede a qual seu computador deve se conectar ao ser ligado. A prioridade mais alta é <span class="highlight-3">1000</span>, a mais baixa é <span class="highlight-3">0</span>. Você também precisa adicionar <span class="highlight-3">id_str</span> ao arquivo <span class="highlight-3">/etc/network/interfaces</span>.</p>
+
+						<h6>Sintaxe de /etc/network/interfaces</h6>
+							<p>Primeiro vem a conexão aos servidores DHCP e, em seguida, verificamos se você possui um endereço IP fixo. Para ajustar seus parâmetros de configuração:</p>
+<pre>
+# id_str="home_dhcp"
+iface home_dhcp inet dhcp
+
+# nunca tire esta linha daqui
+iface default inet dhcp
+
+# id_str="home_static"
+iface home_static inet static
+
+        address 192.168.0.20
+        netmask 255.255.255.0
+        network 192.168.0.0
+
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+</pre>
+						<h6>Exemplos práticos</h6>
+							<p>Se você deseja conectar-se automaticamente à sua wlan quando estiver em casa, preencha IDString com "home" e priority com "15". Se estiver viajando e quiser que seu laptop conecte-se a redes abertas (isto é, de graça e sem senhas), que estejam disponíveis, preencha IDString com "stalk" e priority com "1" (muito baixa). Mas, por favor, certifique-se da legalidade da conexão e disconecte-se caso ela obviamente não tiver a intenção de ser gratuita.</p>
+
+							<p>Exemplo de um arquivo /etc/network/interfaces:</p>
+<pre>
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+
+# The loopback interface
+# automatically added when upgrading
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+  wpa-roam /etc/wpa_supplicant/wpa-roam.conf
+
+# esta linha deve necessariamente estar sempre aqui
+iface default inet dhcp
+
+iface home inet dhcp
+iface stalk inet dhcp
+</pre>
+
+
+							<p>Exemplo do arquivo /etc/wpa_supplicant/wpa-roam.conf (SSID e chaves foram mudados ou receberam explicações):</p>
+<pre>
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+        ssid="meu_ssid"
+        scan_ssid=1
+        psk=123ABC  ##aqui fica a chave em código hexadecimal!!
+#       psk="senha_em_ascii"   ##não necessária
+        key_mgmt=WPA-PSK
+        pairwise=TKIP
+        group=TKIP
+        auth_alg=OPEN
+        priority=15
+        id_str="home"
+}
+
+network={
+        ssid=""
+        scan_ssid=1
+        key_mgmt=NONE
+        auth_alg=OPEN
+        priority=1
+        disabled=1   ##nenhuma conexão automática; você precisa do wpa_cli ou wpa_gui
+        id_str="stalk"
+}
+</pre>
+
+							<p>Com "disabled=1" você não será conectado automaticamente a um bloco de rede definido (WLANs abertas). Você precisa de iniciar o 'roaming' pelo wpa_gui ou wpa_cli. Para que o 'roaming' seja automático, não use a opção de forma alguma ou comente a linha com a opção "disabled" (inserindo um # à sua esquerda).</p>
+
+				<h5>Encriptação WEP</h5>
+							<p>Se você deseja adicionar permanentemente redes com encriptação WEP ao seu wpa-roam.conf, a sintaxe é a seguinte:</p>
+<pre>
+network={
+	ssid="exemplo de rede wep"
+	key_mgmt=NONE
+	wep_key0="abcde"
+	wep_key1=0102030405
+	wep_tx_keyidx=0
+}
+</pre>
+
+
+				<h3>Observações:</h3>
+
+					<h6>1. Fácil de usar novamente</h6>
+
+							<p>Uma vez pronta, é fácil utilizar a configuração em outros laptops ou desktops com placas WLAN. Basta copiar os arquivos /etc/network/interfaces (ajuste o nome da interface, se necessário) e /etc/wpa_supplicant/wpa-roam.conf para sua nova máquina. Não há a menor necessidade de "instalar" qualquer coisa coisa depois disso.</p>
+
+					<h6>2. Backup</h6>
+
+							<p>É de bom alvitre fazer uma ou mais cópias de /etc/network/interfaces e /etc/wpa_supplicant/wpa-roam.conf, todavia <span class="highlight-3">encripte seu backup porque ele contém informação sensível</span>.</p>
+
+ 							<p>Um bom método para fazer um backup e chifrar os ficheiros de configuração é utilizando tar e gpg. Como root:</p>
+<pre>
+tar -cf -  /etc/network/interfaces /etc/wpa_supplicant/wpa-roam.conf  |  gpg -c > backup_name.tar.gpg
+</pre>
+							<p>O ficheiro é criado no $HOME diretório:<br />
+							backup_name.tar.gpg</p>
+<br /><br />
+
+							<p>Para verificar o conteúdo do ficheiro backup_name.tar.gpg utilize:</p>
+
+<pre>
+gpg -d -o - backup_name.tar.gpg | tar vtf -
+</pre>
+
+							<p>Para dechifrar e extrair o conteúdo do ficheiro backup_name.tar.gpg utilize:</p>
+<pre>
+gpg -d -o - backup_name.tar.gpg | tar vxf -
+</pre>
+
+
+					<h6>3. SSIDs ocultos</h6>
+							<p>SSIDs ocultos são detectados quando <span class="highlight-3">scan_ssid=1</span> estiver definido no bloco de rede.</p>
+    </div>
+    <div class="divider" id="rousec-wifi">
+			<h2>Segurança básica para modem/roteador wireless</h2>
+
+							<p>Para manter controle de seu modem/roteador wireless, é possível implementar algumas poucas regras básicas de segurança. Isso ajuda a proteger seu lado da rede contra intrusos.</p>
+
+					<h6>Protocolo básico</h6>
+						<ul>
+							<li>WPA2-PSK é a melhor opção.</li>
+							<li>Para encriptação, escolha o protocolo AES.</li>
+							<li>A chave deve ser realmente forte.</li>
+						</ul>
+
+
+					  <h6>Chaves/senhas</h6>
+							<p>Para obter uma chave/senha que seja forte e incapaz de ser memorizada, use o pwgen em um terminal (também leia: man pwgen):</p>
+
+<pre>
+$ pwgen -s 63 1
+VltnfGmGKXovVv2rmrCFFXBZ55Mij5bA6WytVJnVoKUqRn6dfjldG6MBrRo0Cdi
+</pre>
+						  <ul>
+							<li>-s = segura (sem mnemônicos)</li>
+							<li>63 = quantidade de caracteres</li>
+							<li>1 = gere somente uma senha aleatória</li>
+
+						  </ul>
+							<p>Sem o -s serão geradas senhas parecidas com palavras, mas é improvável que você não deseje isso:</p>
+<pre>
+$ pwgen 8 3
+Sooxae2s Niew9ugh Hi7eeloo
+</pre>
+							<p>Uma vez gerada, transcreva a chave/senha em um arquivo de texto e aplique-a em outros computadores que usam redes sem fio. O arquivo deve ser salvo em uma pendrive ou outro dispositivo USB, nunca em seu computador.</p>
+
+						<h6>Exemplo final de configuração do roteador:</h6>
+<pre>
+Version: WPA2-PSK
+Encryption: AES
+PSK Password: VltnfGmGKXovVv2rmrCFFXBZ55Mij5bA6WytVJnVoKUqRn6dfjldG6MBrRo0Cdi
+</pre>
+
+	      </div>
+			<div id="rev">Content last revised 13/01/2012 2330 UTC</div>
+</div>
+</div>
+</body>
+</html>

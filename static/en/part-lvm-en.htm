@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>siduction Manuals - LVM Partitioning</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision devil 15/01/2012 0900 UTC -->
+<div id="bg">
+ <div id="menu"> <!-- menu starts here en lang maintained by devil-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="To siduction.org forums and wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-en.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" />Search online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" alt="Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">siduction OS Manual</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">siduction OS Manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-en.htm#cred-team">Credits</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-en.htm#how-to">How to use this manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+					  <li><a href="welcome-en.htm#table-contents">Table of Contents</a></li>
+					</ul>
+					</li>
+		<li><a href="help-en.htm#help-gen">Getting Help &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-en.htm#help-gen">Where and how to get help</a></li>
+					  <li><a href="help-en.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-en.htm#welcome-quick">siduction Quick Start Guide</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">ISO Content, Releases, Download Mirrors and Burning</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">ISO Content and system requirements &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-en.htm#rolling">Release Notes</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Mirrors, Downloading and Burning &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+					  <li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burning-no-gui">burniso script</a></li>
+					  <li><a href="cd-no-gui-burn-en.htm#burn-no-gui-gen">Burning without a GUI</a></li>
+					  <li><a href="cd-dl-burning-en.htm#download-siduction">siduction Download Mirrors</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the siduction-Live ISO</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-en.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-en.htm#colours"> Coloured terminal prompts</a></li>
+					  <li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+					  <li><a href="help-en.htm#init3-tools">Tools to know in text mode (tty) - init 3</a></li>
+					  <li><a href="term-konsole-en.htm#term-cmds">Linux Terminal Commands List</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-en.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">Boot codes</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-en.htm#cheatcodes">siduction specific Live-ISO bootcodes</a></li>
+				<li><a href="cheatcodes-en.htm#cheatcodes-linux">Linux generic bootcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning the Hard Drive - Traditional, GPT and LVM</a>
+		    <ul class="sub-menu" id="sm6">
+			  <li><a href="part-gparted-en.htm#hd-ntfs3g">Writing on NTFS partitions with ntfs-3g</a></li>
+			  <li><a href="part-lvm-en.htm#part-lvm">Partitioning to use LVM - Logical Volume Manager</a></li>
+			  <li><a href="part-gparted-en.htm#partition">Partitioning with a GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-en.htm#partition">Partitioning with CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+					    <li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-6">Formatting after partitioning with gdisk</a></li>
+					    <li><a href="part-gdisk-en.htm#gdisk-1">GPT Partitioning with gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-en.htm#part-example">Partitioning Basics &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+					  <li><a href="part-uuid-en.htm#uuid">UUID, Rebuilding fstab and creating new mount points</a></li>
+					  <li><a href="part-cfdisk-en.htm#disknames">Disk Naming in brief</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-en.htm#Inst-prep">Install Preparation </a></li>
+					  <li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+					  <li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-en.htm#fromiso">Booting fromiso - Overview</a></li>
+					  <li><a href="hd-install-opts-en.htm#grub2-fromiso">Booting 'fromiso' with Grub 2</a></li>
+					  <li><a href="hd-install-opts-en.htm#fromiso-persist">fromiso and persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-en.htm#usb-hd">Installing to USB drives &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD - siduction specific - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-en.htm#raw-usb">Writing siduction to a USB/SSD stick with any Linux, MS Windows or Mac OS X system</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-en.htm#install-crypt">Installing to encrypted partitions - cryptroot</a></li>
+		  <li><a href="nbdboot-en.htm#nbd1">Booting siduction over a network</a></li>
+		  <li><a href="hd-install-vmopts-en.htm#vmopts">Virtual Machine installation options</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-en.htm">Graphic cards, monitors, Xorg,  &amp; drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors  &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-en.htm#mon-res">Screen Resolution and Monitors</a></li>
+					  <li><a href="hw-dev-mon-en.htm#xrandr">Dual Monitors and xrandr</a></li>
+					  <li><a href="hw-dev-mon-en.htm#mon-binary">Dual Monitors (using binaries)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-en.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-en.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-en.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-en.htm#fw-detect">Firmware detection - non-free </a></li>
+			  <li><a href="nf-firm-en.htm#non-free-firmware">Adding non-free to sources</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-en.htm#install-add">Window Managers</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-en.htm">KDE and XFCE Window Managers &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-en.htm#xfce-notes">Useful Xfce extras</a></li>
+					    <li><a href="wm-dm-en.htm#install-add">Useful extra KDE Apps</a></li>	    
+					    <li><a href="wm-dm-en.htm#kde-login">Cant login in KDE</a></li>
+					    <li><a href="wm-dm-en.htm#ch-th">Changing Themes</a></li>
+					    <li><a href="wm-dm-en.htm#desk-freeze">Desktop Freezes</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-en.htm#dm">Installing additional Display Managers</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-en.htm">Internet connecting, WiFi, LAN and Networks</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-en.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-en.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+					    <li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+					    <li><a href="lamp-php-en.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-en.htm#privoxy">Firewalls and Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-en.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-en.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-en.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-en.htm#ssh-x">SSH and Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+						  <li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+						  <li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+						  <li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+						  <li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+						  <li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+						  <li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">WIFI connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-en.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-en.htm#net-set1">WiFi - Setting up for WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-en.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-en.htm#hotswitch">Network switching between WiFi and Cable</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-en.htm#netcardconfig">Wired Connections &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-en.htm#dial-mod">56k Modems</a></li>
+						    <li><a href="inet-ceni-en.htm#netcardconfig">Getting Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">Package Management and dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-en.htm#apt-cook">APT Cookbook and Sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-downgrade">Package Hold and downgrading</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-cache">Package searching with apt-cache</a></li>
+					    <li><a href="sys-admin-apt-en.htm#gui-pacsea">GUI Package searching</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-remove">Removing Kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-en.htm#dmakms">Installing kernel modules dynamically with dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-en.htm#approx">dist-upgrade of multiple PCs on a LAN</a></li>
+					    <li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System -  dist-upgrade - Overview</a></li>
+					    <li><a href="sys-admin-apt-en.htm#du-st">Upgrade an Installed System -  dist-upgrade - The Steps</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-en.htm">System Administration</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-en.htm#bois-prep">Upgrading the BIOS with FreeDOS</a></li>
+		<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+		<li><a href="hd-install-en.htm#adduser">Adding Users and Passwords &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-en.htm#adduser">Adding a new user</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pw-lost">Lost root passwords, new passwords</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#start-services">Services and init runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-en.htm#start-services">Services enable/disable</a></li>
+					    <li><a href="sys-admin-gen-en.htm#pkill">Killing a service or process</a></li>
+					    <li><a href="sys-admin-gen-en.htm#init">siduction runlevels - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-en.htm#rsync">Backing up the system &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
+					    <li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
+					    <li><a href="home-en.htm#home-bu">Moving /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-en.htm#fonts">CUPS, Fonts and Sound &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-en.htm#fonts">Fonts</a></li>
+					     <li><a href="sys-admin-gen-en.htm#cups">CUPS - Printing System</a></li>
+					     <li><a href="sys-admin-gen-en.htm#sound">Sound Mixers</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-en.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-en.htm#chroot">Grub2 - Recovering Grub with chroot</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#mbr-over-grub2">Grub2 - MBR Overwritten</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#multi-os">Grub2 - Dual and Multibooting</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub1-grub2">Grub2 -Upgrading from Grub1</a></li>
+					    <li><a href="sys-admin-grub2-en.htm#grub2">Grub2 - Overview</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+		<div class="divider" id="part-lvm">
+				<h2 id="top-header">LVM partitioning - Logical Volume Manager</h2>
+
+							<p><span class="highlight-2"> This is a basic guide to get you started. It is your responsibilty to learn more about LVM. Sources and Resources are linked at the bottom of this page which will be of help, however the list is definitely not exhaustive.</span></p>
+
+							<p>Applicable for siduction-onestepbeyond.iso forward.</p>
+
+							<p>Logical volumes can span multiple disks and are scalable, unlike the traditional method of partitioning hard drives. </p>
+
+							<p>However, whether it be the traditional method of partitioning or partitioning to use LVM, partitioning is not something you do very often, thus it requires deep thought, along with trial and error, before you will be happy with the outcome you desire.</p>
+
+							<p>There are 3 basic terms of of terminology you will need to know:</p>
+						  <ul>
+							<li><span class="highlight-3">Physical Volumes:</span> These are your physical disks, or disk partitions, such as /dev/sda or /dev/sdb1. These are what you would be used to using when mounting/unmounting things. Using LVM we can combine multiple physical volumes into volume groups. </li>
+
+							<li><span class="highlight-3">Volume Groups:</span> A volume group is comprised of real physical volumes, and is the storage used to create logical volumes which you can create/resize/remove and use. You can consider a volume group like a "virtual disk" assembled from physical volumes. You can slice it up into "virtual partitions" which are logical volumes.</li>
+
+
+							<li><span class="highlight-3">Logical Volumes:</span> Logical volumes are the volumes that you will ultimately end up mounting upon your system. They can be added, removed, and resized on the fly. Since these are contained in the volume groups they can be bigger than any single physical volume you might have. (i.e. 4 x 250GB drives can be combined into one 1TB volume group, then split create 2 x 500GB logical volumes.)</li>
+						  </ul>
+
+				<h3>There are 6 basic steps required</h3>
+							<p><span class="highlight-3">The assumption for the following example is based upon new unpartitioned disks or where a new partitioning scheme is required, which will delete all existing data on the partitions you wish to convert to an LVM.</span></p>
+
+							<p>Using cfdisk or fdisk is required, as to date Gparted and KDE Partition Manager, (partitionmanager), do not support LVM partitioning.</p>
+
+							<p><span class="highlight-3">Step 1: </span> Create the partition table:</p>
+<pre>
+cfdisk /dev/sda
+<span class="highlight-3"> n </span>to create a new partition on the disk
+<span class="highlight-3"> p  </span>to make this the primary partition
+<span class="highlight-3"> 1  </span>to give the partition the number 1 as an identifier
+<span class="highlight-3"> ### size allocation </span> ### Set first and last cylinders to the default values (press enter) to span the entire drive
+<span class="highlight-3"> t  </span>toggle the type of partition to create
+<span class="highlight-3"> 8e  </span>is the hex code for a Linux LVM
+<span class="highlight-3"> W  </span>to write your changes to the disk. ##This will write the partition table. If you have realised that you made a mistake at this point, you could restore the old partition layout and your data will be fine.##
+</pre>
+
+							<p>Should you want the volume to span 2 or more disks, repeat this process on each of the disks.</p>
+
+							<p><span class="highlight-3">Step 2:</span> Setup the partition as a Physical Volume. This will delete any data:</p>
+
+<pre>
+pvcreate /dev/sda1
+</pre>
+
+							<p>Repeat the process on any other partitions as required.</p>
+
+							<p><span class="highlight-3">Step 3:</span> Create the Volume Group:</p>
+
+<pre>
+vgcreate vulcan /dev/sda1
+</pre>
+							<p>Should you wish to span 3 disks, for example, you include the other disks in the vgcreate command:</p>
+
+<pre>
+vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1
+</pre>
+							<p>If you have done this correctly you'll be able to see the result in the output of:</p>
+<pre>
+vgscan
+</pre>
+							<p>vgdisplay will give you the <span class="highlight-3"> size </span> properties:</p>
+<pre>
+vgdisplay vulcan
+</pre>
+							<p><span class="highlight-3">Step 4:</span> Creating the Logical Volume. Now it is time for you to decide how big you want the logical volume to be initially. One advantage of LVM is that you can adjust the size of the volume on at will without needing to reboot.</p>
+
+							<p>Lets assume that you initially want a 300GB volume called spock within the lvm called vulcan:</p>
+<pre>
+lvcreate -n spock --size 300g vulcan
+</pre>
+
+							<p><span class="highlight-3">Step 5:</span> Format the volume and be patient while it is formating , it could take a while:</p>
+<pre>
+mkfs.ext4 /dev/vulcan/spock
+</pre>
+							<p><span class="highlight-3">Step 6:</span></p>
+<pre>
+mkdir /media/spock/
+</pre>
+							<p>Edit fstab with your favorite editor to mount the volume during boot up. </p>
+<pre>
+mcedit /etc/fstab
+</pre>
+							<p>Using <span class="highlight-3">/dev/vulcan/spock </span> is better than using UUID numbers with LVM, as then you can clone the filesystem and not have to worry about potential UUID collisions, especially with LVM, as you can end up with multiple filesystems with the same UUID number (snapshots being a prime example).</p>
+
+
+<pre>
+/dev/vulcan/spock /media/spock/ ext4 auto,users,rw,exec,dev,relatime  0  2
+</pre>
+							<p><span class="highlight-3"> Optional:</span> Change the owner of the volume so that other users have read/write access to the LVM:</p>
+
+<pre>
+chown root:users /media/spock
+</pre>
+
+<pre>
+chmod 775 /media/spock
+</pre>
+							<p>Your basic LVM should now be set up.</p>
+
+					    <h3>Resizing the volume</h3>
+
+							<p><span class="highlight-3">It is highly recommended that you use a live ISO to change the partition sizes. Whilst growing the partition 'on the fly' may be error free, the same can not be said when reducing the volume, as anomalies will cause data loss, particularly if <span class="highlight-2 "> / (root) </span> or <span class="highlight-2">/home</span> are involved.</span></p>
+
+							<h5>To resize the volume from 300GB to 500GB, as used in this example:</h5>
+<pre>
+umount /media/spock/
+</pre>
+
+<pre>
+lvextend -L+200g /dev/vulcan/spock
+</pre>
+							<p>Then run the command for the filesystem to be resized:</p>
+
+<pre>
+e2fsck -f /dev/vulcan/spock
+</pre>
+
+<pre>
+resize2fs /dev/vulcan/spock
+</pre>
+
+<pre>
+mount /media/spock
+</pre>
+							<h5>To resize the volume from 300GB down to 280GB, as used in this example:</h5>
+<pre>
+umount /media/spock/
+</pre>
+							<p>Then run the command for the filesystem to be resized:</p>
+
+<pre>
+e2fsck -f /dev/vulcan/spock
+</pre>
+
+<pre>
+resize2fs /dev/vulcan/spock 280g
+</pre>
+
+							<p>Then resize the volume</p>
+<pre>
+lvreduce -L-220g /dev/vulcan/spock
+</pre>
+
+<pre>
+resize2fs /dev/vulcan/spock
+</pre>
+
+<pre>
+mount /media/spock
+</pre>
+
+					     <h5>An LVM GUI</h5>
+							<p><span class="highlight-3">system-config-lvm</span> provides a GUI and is available to help you manage your LVMs which is started from the command line as root:</p>
+
+<pre>
+apt-get install system-config-lvm
+</pre>
+
+<pre>
+system-config-lvm2
+</pre>
+
+<pre>
+man system-config-lvm <span class="highlight-3"> # required reading</span>
+</pre>
+
+				  <h5>Sources and Resources:</h5>
+						     <ul>
+							 <li><a href="http://www.debian-administration.org/articles/410"> Debian Administration - A simple introduction to working with LVM </a></li>
+
+							 <li><a href="http://www.ibm.com/developerworks/linux/library/l-lvm2/"> IBM - Logical volume management</a></li>
+
+							  <li><a href="http://www.ibm.com/developerworks/linux/library/l-resizing-partitions-2/index.html"> IBM - Resizing Linux partitions, Part 2: Advanced resizing</a></li>
+
+
+							  <li> <a href="http://docs.google.com/viewer?a=v&amp;q=cache:1RMpacheCBcJ:www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5.4/pdf/Logical_Volume_Manager_Administration.pdf+%22Logical+Volume+Manager+Administration+%22&amp;hl=en&amp;pid=bl&amp;srcid=ADGEEShRiptIjzsnPNsCs4RgyUFNWkYcrDc3SkBSD6cTq39D6wye5JM3tP_ehcn37I5VWs84I_HI45rvG-n6YG4R2fE8hqDByq-KPhNEkha4zwphrR7QIUVnUz6omwY85e-ZEXX723Js&amp;sig=AHIEtbSJyxEst6Wue7_1_TeDYwB480azEw"> Red Hat - LVM Administrator's Guide</a></li>
+
+							  <li> <a href="http://en.wikipedia.org/wiki/Logical_Volume_Manager_%28Linux%29"> Logical Volume Manager (Linux)</a></li>
+
+							  <li> <a href="http://thelinuxexperiment.com/guinea-pigs/jon-f/setting-up-an-lvm-for-storage/"> Setting up an LVM for Storage</a></li>
+
+							  <li> <a href="http://linuxhelp.blogspot.com/2005/04/creating-lvm-in-linux.html"> Creating a LVM in Linux</a></li>
+
+							  <li> <a href="http://www.linuxconfig.org/Linux_lvm_-_Logical_Volume_Manager">Linux lvm - Logical Volume Manager</a></li>
+
+						      </ul>
+
+	</div>
+	<div id="rev">Page last revised 15/01/2012 0900 UTC</div>
+
+</div>
+</div>
+</body>
+</html>

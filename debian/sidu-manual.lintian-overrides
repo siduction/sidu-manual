@@ -1,0 +1,3 @@
+# We will never ever write a manpage for this
+sidu-manual: binary-without-manpage usr/bin/sidu-manual
+

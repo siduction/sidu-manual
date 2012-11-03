@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/* <![CDATA[ */
+
+/*
+css for fimrware listings for the hw-dev-hw-dri-xx files last updated for coding by bluewater 2009-10-25 1000 UTC
+Last trans date by bluewater 2009-10-25 - alessiog75 on 2009-10-25
+*/
+
+	dl.firmware dl.class > dt:after { content: ' periferiche' }
+	dl.firmware dl.class > dt.usb:after { content: ' periferiche (incluso usb)' }
+	dl.firmware dl.dvals > dt.drivers:before { content: 'I moduli che usano questo firmware sono:' }
+	dl.firmware dl.dvals > dt.ok:before { content: 'Puoi avere conferma di aver installato il firmware controllando i seguenti file:' }
+	dl.firmware dl.dvals > dt.fw:before { content: 'Per installare il firmware:' }
+	dl.firmware dl.dvals > dt.fw + dd .link:before { content: 'Visitare ' }
+	dl.firmware dl.dvals > dt.fw + dd .link .target:before { content: ' e mettere i file in: ' }
+	dl.firmware dl.dvals > dt.fw + dd .link .target:after { content: ' directory: ' }
+	dl.firmware dl.dvals > dt.url:before { content: 'Prendere il firmware da:' }
+	dl.firmware dl.dvals > dt.note:before { content: 'NOTE:' }
+
+
+
+ul#fwul {
+	width: 100% ;
+	float: left ;
+	list-style-type: none ;
+}
+
+ul#fwul  > li.fwindex {
+	padding: 4px ;
+	margin: 4px ;
+	float: left ;
+}
+ul#fwul  > li.fwindex  {
+	display: inline ;
+	margin: 4px ;
+	padding: 4px ;
+	border-width: 1px ;
+}
+ul#fwul  > li.fwindex a {
+	/*color:#FFFFFF;*/
+	border-style: none;
+	text-decoration: underline;
+}
+
+ul#fwul-1 {
+	width: 100% ;
+	float: left ;
+	list-style-type: none ;
+}
+
+ul#fwul-1  > li.fwindex {
+	padding: 4px ;
+	margin: 4px ;
+	float: left ;
+}
+ul#fwul-1  > li.fwindex  {
+	display: inline ;
+	margin: 4px ;
+	padding: 4px ;
+	border-width: 1px ;
+}
+ul#fwul-1  > li.fwindex a {
+	/*color:#FFFFFF;*/
+	border-style: none;
+	text-decoration: underline;
+}
+
+dl.firmware  > dt {
+	text-align:left;
+color:#971171;
+}
+
+dl.class  > dt {
+	text-align:left;
+	font-weight:bold;
+}
+
+dt.drivers {
+	text-align:left;
+}
+
+dt.url {
+	text-align:left;
+}
+
+dt.fw {
+	text-align:left;
+}
+
+dt.note {
+	text-align:left;
+}
+dt.ok {
+	text-align:left;
+}
+
+dd {
+	text-align:left;
+	padding: 0px 0px 5px 20px ;
+}
+
+dl.dvals dl {
+	display: block;
+	padding: 0px 0px 20px 0px ;
+}
+
+/* ]]> */

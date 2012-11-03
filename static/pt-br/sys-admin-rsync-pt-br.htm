@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Manuais do siduction - RSYNC (RO)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here pt-br lang maintained by ceti-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Ir para siduction.org forums e wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pt-br.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" /> Procurar Online Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Escolha outra língua - Choose another language" alt="troca-língua" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pt-br.htm">Manual do Sistema Operacional siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pt-br.htm#welcome-gen">Manual do SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pt-br.htm#cred-team">Créditos</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pt-br.htm#how-to">Como usar este manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pt-br.htm#how-to">Como usar este manual</a></li>
+					  <li><a href="welcome-pt-br.htm#table-contents">Índice</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pt-br.htm#help-gen">Como conseguir ajuda &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pt-br.htm#help-gen">Onde e como obter ajuda</a></li>
+					  <li><a href="help-pt-br.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pt-br.htm#welcome-quick">Guia Rápido do siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pt-br.htm">Conteúdo das ISOs, lançamentos, espelhos e como queimar</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pt-br.htm#cd-content">Conteúdo das ISOs e requisitos do sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pt-br.htm#rolling">Notas de Lançamento</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos ('mirrors') do siduction, como baixar e como queimar &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pt-br.htm#md5">Como verificar o md5</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-nero">Como queimar no Windows</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#burn-linux">Como queimar no Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burning-no-gui">O script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pt-br.htm#burn-no-gui-gen">Como queimar sem interface gráfica</a></li>
+					  <li><a href="cd-dl-burning-pt-br.htm#download-siduction">Espelhos para baixar o siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pt-br.htm">O modo Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pt-br.htm#rootpw">Senha do root na ISO siduction-Live</a></li>
+				<li><a href="live-mode-pt-br.htm#live-cd-installsoft">Como instalar software estando no modo Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pt-br.htm">Terminal / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pt-br.htm#term-kon"> Terminal / consola</a></li>
+					  <li><a href="term-konsole-pt-br.htm#colours"> Dando cor ao prompt do seu terminal</a></li>
+					  <li><a href="term-konsole-pt-br.htm#cli-help">Ajuda pela linha de comando</a></li>
+					  <li><a href="help-pt-br.htm#init3-tools">Ferramentas a conhecer no modo texto (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pt-br.htm#term-cmds">Lista de comandos de Terminal no Linux</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pt-br.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pt-br.htm">"Cheatcodes"</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes">Cheatcodes específicas da Live-ISO do siduction</a></li>
+				<li><a href="cheatcodes-pt-br.htm#cheatcodes-linux">Cheatcodes genéricas do Linux</a></li>
+				<li><a href="cheatcodes-vga-pt-br.htm#vga">Códigos VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pt-br.htm">Métodos de particionamento - Traditional, GPT and LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pt-br.htm#hd-ntfs3g">Escrevendo em partições NTFS com o ntfs-3g</a></li>
+			<li><a href="part-lvm-pt-br.htm#part-lvm">Como particionar para o uso de LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pt-br.htm#partition">Como particionar pela interface gráfica &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pt-br.htm#partition">Como particionar o HD usando GParted / Gerenciador de partições do KDE</a></li>
+					  <li><a href="part-gparted-pt-br.htm#ntfs">Como redimensionar a partição NTFS com o GParted / Gerenciador de partições do KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pt-br.htm#partition">Como particionar pela linha de comando &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pt-br.htm#partition">Como particionar o seu HD com o cfdisk</a></li>
+					    <li><a href="part-cfdisk-pt-br.htm#formating">Como formatar após o particionamento com o cfdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-6">Como formatar após o particionamento com o gdisk</a></li>
+					    <li><a href="part-gdisk-pt-br.htm#gdisk-1">Particionamento GPT do HD com o gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pt-br.htm#part-example">O básico do particionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pt-br.htm#part-example">Exemplos de tamanhos de partições</a></li>
+					  <li><a href="part-uuid-pt-br.htm#uuid">UUID, refazendo o fstab e criando novos pontos de montagem</a></li>
+					  <li><a href="part-cfdisk-pt-br.htm#disknames">Uma geral sobre nomeação de discos</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pt-br.htm">Opções de instalação - HD, USB, VM and Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pt-br.htm#Inst-prep">Preparação da instalação </a></li>
+					  <li><a href="hd-install-pt-br.htm#Installation">Como instalar no HD</a></li>
+					  <li><a href="hd-install-pt-br.htm#first-hd-boot">Primeira inicialização</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#fromiso">Como dar o 'boot' com fromiso &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso">Como inicializar com fromiso - visão geral</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#grub2-fromiso">Como inicializar com 'fromiso' e Grub 2</a></li>
+					  <li><a href="hd-install-opts-pt-br.htm#fromiso-persist">fromiso e persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em drives USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pt-br.htm#usb-hd">Como instalar em um HD-USB - específico do siduction - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-pt-br.htm#raw-usb">Instalando em dispositivo USB/SSD com qualquer sistema Linux, MS Windows ou Mac OSX</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pt-br.htm#install-crypt">Instalando em partição chifrada - cryptroot</a></li>
+		  <li><a href="nbdboot-pt-br.htm#nbd1">Inicializando o siduction através de uma rede</a></li>
+		  <li><a href="hd-install-vmopts-pt-br.htm#vmopts">Opções de instalação de Máquina Virtual</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pt-br.htm">Placas de Vídeo, dispositivos diversos, xorg &amp;  drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-res">Monitores e resolução de tela</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#xrandr">Monitores múltiplos (Dual Monitors) e a xrandr</a></li>
+					  <li><a href="hw-dev-mon-pt-br.htm#mon-binary">Monitores múltiplos usando binários</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pt-br.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pt-br.htm#ati-3d">AMD/ATI 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#intel">Intel 2D and 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#nvidia">Nvidia 3D drivers</a></li>
+					  <li><a href="gpu-pt-br.htm#foss-xorg">Open Source Xorg drivers</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pt-br.htm#fw-detect">Detetando Firmware - non-free </a></li>
+			  <li><a href="nf-firm-pt-br.htm#non-free-firmware">Adicionar non-free a lista de fontes</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pt-br.htm">Gerenciadores de janelas</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pt-br.htm">KDE and XFCE Gerenciadores de janelas &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pt-br.htm#xfce-notes">Extras úteis para o Xfce</a></li>
+					    <li><a href="wm-dm-pt-br.htm#install-add">Extras úteis para o KDE</a></li>
+					    <li><a href="wm-dm-pt-br.htm#desk-freeze">Congelamentos do desktop</a></li>
+					    <li><a href="wm-dm-pt-br.htm#kde-login">"Não consigo entrar no KDE"</a></li>
+					    <li><a href="wm-dm-pt-br.htm#ch-th">Como mudar os temas</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pt-br.htm#dm">Instalando Installing gerenciador de display adicionais</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pt-br.htm">Conexão com a Internet, WiFi, LAN e redes</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pt-br.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pt-br.htm#serv-apache">siduction LAMP Stack</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ftp">Clientes FTP</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-sec">Protocolos de segurança</a></li>
+					    <li><a href="lamp-apache-pt-br.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pt-br.htm#serv-mysql">Configuração do MySQL</a></li>
+					    <li><a href="lamp-php-pt-br.htm#serv-php">PHP no Apache</a></li>
+					    <li><a href="ntp-server-pt-br.htm#ntp-server">Configuração do servidor de data/hora</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pt-br.htm#tor">Firewalls e privacidade &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pt-br.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pt-br.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pt-br.htm#firewalls">Firewalls</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pt-br.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pt-br.htm#setup">Configuração do servidor Samba</a></li>
+						  <li><a href="samba-pt-br.htm#configure">Como configurar o Samba (Windows)</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-fs">Como montar um SSH remoto</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-x">Aplicações do X via SSH</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-f">SSH com o Konqueror</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh-w">SSH com X-Forwarding a partir do Windows</a></li>
+						  <li><a href="ssh-pt-br.htm#ssh">SSH e segurança</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões wifi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+						    <li><a href="inet-wpagui-pt-br.htm#wpa-roaming-gui">WiFi - interface WPA_</a></li>
+						    <li><a href="inet-setup-pt-br.htm#net-set1">WiFi - como configurar o modo "Roaming"</a></li>
+						    <li><a href="inet-wpa-pt-br.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pt-br.htm#hotswitch">Como permutar entre wifi e cabo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pt-br.htm#netcardconfig">Conexões com fio &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pt-br.htm#dial-mod">Modems 56k</a></li>
+						    <li><a href="inet-ceni-pt-br.htm#netcardconfig">Como ficar online - ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pt-br.htm">Gerenciamento de pacotes e dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cook">Guia do APT e a sources list</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-install">Como instalar um novo pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-delete">Como deletar um pacote</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-downgrade">Pacotes em HOLD (espera) e como rebaixar pacotes</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-cache">Como pesquisar pacotes com o apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#gui-pacsea">Como pesquisar pacotes com a interface gráfica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-remove">Como remover kernels</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#kern-upgrade">Como atualizar o kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-pt-br.htm#dmakms">Como instalar módulos do kernel dinamicamente com o dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pt-br.htm#live-cd-upgrade">Atualização com uma Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pt-br.htm#approx">dist-upgrade de múltiplos PCs em uma LAN</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#apt-upgrade">Como atualizar todo o sistema -  dist-upgrade - visão geral</a></li>
+					    <li><a href="sys-admin-apt-pt-br.htm#du-st">Como atualizar todo o sistema -  dist-upgrade - os passos</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pt-br.htm">Administração do sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pt-br.htm#bois-prep">Como atualizar a BIOS com o FreeDOS</a></li>
+		<li><a href="vir-rkits-pt-br.htm#virus-rkits">Antivirus  e caçadores de rootkits</a></li>
+		<li><a href="hd-install-pt-br.htm#adduser">Como adicionar usuários e senhas &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pt-br.htm#adduser">Como adicionar um novo usuário</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pw-lost">Perda da senha root, nova senha</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#start-services">Serviços e runlevels &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pt-br.htm#start-services">Habilitar/desabilitar serviços</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#pkill">Como finalizar um serviço ou processo</a></li>
+					    <li><a href="sys-admin-gen-pt-br.htm#init">Runlevels no siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pt-br.htm#rsync">Como fazer backups do sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pt-br.htm#rdiff">Backup com o rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pt-br.htm#rsync">Backup com o rsync</a></li>
+					    <li><a href="home-pt-br.htm#home-bu">Como mover sua /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pt-br.htm#fonts">CUPS, fontes e som &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pt-br.htm#fonts">Fontes</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#cups">CUPS - sistema de impressão</a></li>
+					     <li><a href="sys-admin-gen-pt-br.htm#sound">Mixadores de som</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pt-br.htm#chroot">Grub2 - recuperaçaõ do grub em chroot</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#mbr-over-grub2">Grub2 - sobrescrição da MBR</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#multi-os">Grub2 - boots duplos e múltiplos</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub1-grub2">Grub2 - como atualizar a partir do Grub1</a></li>
+					    <li><a href="sys-admin-grub2-pt-br.htm#grub2">Grub2 - visão geral</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Doação" alt="doação" /></a>
+</div>
+
+
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="rsync">
+			<h2 id="top-header">Back-ups com rsync</h2>
+							<p>rsync é uma ferramenta para você fazer backups e sincronizar seus  arquivos. (Ele pode ser rodado em várias versões do *nix ).</p>
+
+							 <p class="highlight-2">Uma das limitações do rsync é que ele NÃO pode copiar de um sistema remoto para outro sistema remoto. Se você for fazer isso, então terá de copiar um dos sistemas remotos para o sistema local e depois copiar deste para o outro sistema remoto.</p>
+
+							 <p>Com o siduction, você pode escolher como iniciar o processo: ou fazendo você mesmo ou via um pacote .deb no Debian sid:</p>
+
+				<h5>Para um pacote .deb:</h5>
+<pre>
+apt-get install luckybackup
+</pre>
+							<p><a href="http://luckybackup.sourceforge.net/">Site do luckybackup</a></p>
+
+				    <h6>O que se segue é a versão "faça você mesmo".</h6>
+							<p>A seguir um pouco do que o rsync pode fazer por você, seguido de alguns exemplos para seus scripts.</p>
+
+				<p>O rsync é um programa de back-up rápido e fácil de usar, inclusive para diretórios e arquivos. Isto é alcançado por uma rotina inteligente que verifica que arquivos sofreram alterações; daí, somente esses arquivos são copiados. O rsync usa um utilitário de compressão, o que acelera o processo de cópia <span class=" highlight-3">(quando configurado com a opção -z)</span>. Isso se explica facilmente:</p>
+
+				<p>O rsync detecta arquivos e pastas que precisam ser copiados porque algum de seus atributos mudou (por exemplo, data/hora da última modificação ou tamanho do arquivo). Esse processo de seleção é feito muito rapidamente.</p>
+
+				<p>Quando o rsync acaba de montar a lista que vai ser usada, a cópia desses arquivos é mais rápida em virtude da rotina de compressão usada no processo. O rsync faz a compressão antes de enviar e descomprime na outra ponta “on the fly”.</p>
+
+				<p>O rsync pode copiar arquivos de:<br />
+				* sistema local para sistema local<br />
+ 				* sistema local para sistema remoto<br />
+				* sistema remoto para sistema local</p>
+				<p>Ele usa tanto o cliente padrão <a href="ssh-pt-br.htm">ssh</a> quanto um daemon rsync rodando no sistema fonte e no sistema de destino. As páginas de manual do rsync dizem que, se você pode usar o ssh no seu sistema, então o rsync também será capaz de usar o ssh.</p>
+
+				<p class="highlight-3">Uma das limitações do rsync é que ele NÃO pode copiar de um sistema remoto para outro sistema remoto. Se você for fazer isso, então terá de copiar um dos sistemas remotos para o sistema local e depois copiar deste para o outro sistema remoto.</p>
+
+				<p>Para dar um exemplo dessa lógica, imaginemos os três sistemas seguintes:</p>
+<pre>
+neo – o sistema local
+morpheus – um sistema remoto
+trinity – outro sistema remoto
+</pre>
+				<p>Você deseja usar o rsync para copiar ou sincronizar umas com as outras, as pastas /home/[user]/Data de todos os sistemas. Cada sistema possui um "dono" específico, portanto cada sistema pode ser usado como "fonte" para os outros dois. Você vai rodar o comando rsync apenas no sistema local, que é o neo:</p>
+<pre>
+o usuário principal do neo é cuddles
+o usuário principal de morpheus é tartie
+o usuário principal de trinity é taylar
+</pre>
+				<p>Então, o que você deseja é copiar ou sincronizar o seguinte:</p>
+
+<pre>
+a área /home/cuddles/Data de neo para morpheus e trinity
+a área /home/tartie/Data de morpheus para neo e trinity
+a área /home/taylar/Data de trinity para neo e morpheus
+</pre>
+
+				<p>Como vimos, o rsync NÃO copia de sistema remoto para sistema remoto, o que, no nosso exemplo, vai acontecer entre trinity e morpheus (tanto a fonte quanto o destino são sistemas remotos, conforme nosso esquema acima). Resumindo:</p>
+
+
+<pre>
+neo --> morpheus – tudo bem, local para remoto
+neo --> trinity – tudo bem, local para remoto
+morpheus --> neo – tudo bem, remoto para local
+trinity --> neo – tudo bem, remoto para local
+morpheus --> trinity – não vai funcionar, remoto para remoto
+trinity --> morpheus – não vai funcionar, remoto para remoto
+</pre>
+				<p>Para resolver a situação, você terá de alterar um pouco seu esquema:</p>
+<pre>
+morpheus --> trinity – torna-se: morpheus --> neo &amp; neo --> trinity
+trinity --> morpheus – torna-se: trinity --> neo &amp; neo --> morpheus
+</pre>
+				<p>Este é um passo extra, mas como esses arquivos iriam para neo de qualquer forma, é só uma questão de alterar a fonte. Isso assegura que nossos back-ups serão confiáveis, pois nada ficará de fora.</p>
+
+				<p class="highlight-3">Ao rascunhar seu processo de cópia, não se esqueça de levar em conta essa limitação do rsync.</p>
+
+				<h5>Como usar hostnames com hostnames com rsync</h5>
+
+				<p>Conforme descrito acima, usar neo, morpheus ou trinity na tradução de um endereço IP físico, é uma maneira limpa e fácil de tornar as coisas mais legíveis. Ser capaz de usar aqueles hostnames é muito fácil.</p>
+
+				<p>Você vai precisar de editar o arquivo /etc/hosts e adicionar os hostnames e os endereços IP a eles relacionados. Aqui está uma pequena parte das linhas de cima do arquivo /etc/hosts, mostrando as traduções:</p>
+<pre>
+192.168.1.15	 neo
+192.168.1.16	 morpheus
+192.168.1.17	 trinity
+</pre>
+				<p>A primeira linha traduz o endereço IP 192.168.1.15 para o nome “neo”, o segundo endereço, 192.168.1.16, para o nome “morpheus” e a última linha, o endereço 192.168.1.17 para o nome “trinity”. Após adicionar as linhas acima e salvar o arquivo, você estará apto a usar o "nome" ao invés do endereço IP, o que não o impede de usar os endereços IP, se quiser. O que faz esse método brilhar é quando um sistema tem seu endereço IP mudado. Por exemplo, digamos que neo muda seu endereço IP de 192.168.1.15 para 192.168.1.25:</p>
+
+				<p>Se todos seus scripts usam endereço IP, você precisa localizá-los e mudá-los para o novo endereço. Se, por outro lado, seus scripts usam o "nome", tudo que você tem a fazer é mudar o arquivo /etc/hosts para refletir a mudança. Isso pode ser uma mão na roda quando você tiver muitos scripts para conexões remotas com os outros sistemas, ou vice-versa. O método por “nome” também faz com que seus scripts sejam mais fáceis de ler e seguir porque, ao invés de números, eles usam nomes reconhecíveis associados aos IPs.</p>
+
+				<h4>rsync e as duas maneiras de usá-lo</h4>
+
+				<p>Uma maneira é <b>“push” (empurrar)</b> os arquivos para um destino e a outra maneira é <b>“pull” (puxar)</b>  os arquivos da fonte. Ambas têm suas vantagens e desvantagens. Vamos dar uma olhada em cada uma delas (nesta explanação, vamos assumir que um dos sistemas é local e o outro, remoto. Assim fica mais fácil você entender a terminologia).</p>
+
+				<p><b>“push”</b> - As fontes para os arquivos e pastas estão no sistema local e o destino é o sistema remoto. O rsync roda no sistema local e "empurra" seus arquivos para o destino.</p>
+
+				<p>Vantagens:<br />
+				* Você pode ter mais de um sistema fazendo cópias de si mesmo para o sistema de destino.<br />
+				* O processo de back-up é distribuído por todos os sistemas de computadores, ao invés de ter apenas um carregando o piano.<br />
+				* Se um sistema for mais rápido que os outros, ele pode terminar mais cedo e passar a fazer outras coisas.</p>
+
+				<p>Desvantagens:<br />
+				* Se você usa um script agendado no cron, você terá de atualizar e fazer mudanças nos crontabs de cada sistema, bem como atualizar múltiplas versões de seu script.<br />
+				* Seu back-up não tem como saber se a partição do sistema de destino está montada ou não, portanto você corre o risco de estar copiando para nada na outra ponta.</p>
+
+				<p><b>“pull”</b> - Os arquivos e pastas a copiar estão no sistema remoto e o destino é o sistema local. O rsync é executado no sistema local e "puxa" os arquivos do sistema fonte.</p>
+
+				<p>Vantagens:<br />
+				* Um sistema é convertido para ser o servidor, controlando todos os back-ups para todos os outros sistemas: back-ups centralizados.<br />
+				* Se você usa um script, ele fica em apenas um sistema, tornando fáceis os processos de atualizar e modificar. Sem falar que você precisa ter o controle de um único arquivo crontab para agendar o script.<br />
+				* Seu script pode checar e, se necessário, montar a partição de destino.</p>
+
+				<h6>Sintaxe do rsync, conforme suas páginas de manual: [SRC=Source=Fonte]</h6>
+<pre>
+       rsync [OPÇÃO]... SRC [SRC]... DEST
+
+       rsync [OPÇÃO]... SRC [SRC]... [USER@]HOST:DEST
+
+       rsync [OPÇÃO]... SRC [SRC]... [USER@]HOST::DEST
+
+       rsync [OPÇÃO]... SRC [SRC]... rsync://[USER@]HOST[:PORT]/DEST
+
+       rsync [OPÇÃO]... SRC
+
+       rsync [OPÇÃO]... [USER@]HOST:SRC [DEST]
+
+       rsync [OPÇÃO]... [USER@]HOST::SRC [DEST]
+
+       rsync [OPÇÃO]... rsync://[USER@]HOST[:PORT]/SRC [DEST]
+</pre>
+				<h5>Exemplo de comandos rsync:</h5>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” morpheus:/home/tartie /media/sda7/SysBackups/morpheus/home
+</pre>
+				<p>Vamos dar uma olhada em algumas partes do comando:</p>
+<pre>
+a fonte caminho/arquivo é: morpheus:/home/tartie
+e o destino é: /media/sda7/SysBackups/morpheus/home
+</pre>
+				<p>Tudo que estiver em /home/tartie... será copiado para /media/sda7/SysBackups/morpheus/home, que ganhará mais uma pasta:</p>
+<pre>
+/media/sda7/SysBackups/morpheus/home/tartie...
+</pre>
+				<p>É preciso deixar claro que o único motivo para /tartie ficar na /home é que isso foi estabelecido no sistema de DESTINO e NÃO por causa da FONTE. A "fonte" somente seleciona de onde os arquivos vêm, não para onde vão. O "destino" é que diz ao rsync onde colocar os arquivos vindos da "fonte". Veja o seguinte exemplo:</p>
+<pre>
+rsync [...] /home/user/data/files /media/sda7/SysBackups/neo
+</pre>
+				<p>No comando acima, apenas a pasta /files e seu conteúdo serão copiados para a pasta de destino /neo  - e não isto: /media/sda7/SysBackups/neo/home/user/data/files</p>
+
+				<p>Lembre-se de levar isso em consideração ao criar comando de back-up no rsync.</p>
+
+				<h5>Explicação das opções:</h5>
+<pre>
+-a - usada no modo de arquivamento. Explicação nas páginas de manual: “em termos gerais,
+ uma maneira de fazer back-up recursivamente e preservar 'quase' tudo”. Mencionam ainda que
+a opção não preserva hardlinks devido à complexidade do processo.
+A opção -a é descrita como sendo equivalente ao seguinte: -rlptgoD, que significa:
+  -r = recursivo – processa subpastas e arquivos encontrados dentro da "fonte"
+  -l = links – quando links simbólicos são encontrados, recria-os no "destino"
+  -p = permissões – diz ao rsynk que as permissões do destino serão iguais às da fonte
+  -t = times (hora) – diz ao rsynk que a hora a ser aposta nos arquivos do destino será a mesma da hora da fonte
+  -q = quiet (discreto) – diz ao rsynk que a saída seja mínima
+  -o = owner (dono) – diz ao rsync que, se estiver rodando como root, os donos dos arquivos copiados
+para o destino deverão ser os mesmos da fonte.
+-D = equivalente a usar estes dois comandos: --devices --specials
+ --devices (dispositivos) = faz com que o rsync transfira arquivos de caractere e blocos de dispositivos
+para o sistema remoto recriar esses dispositivos. Infelizmente, se você não incluir
+também --super no mesmo comando, o efeito será nulo
+ --specials (especiais) = faz com que o rsync transfira arquivos especiais, como os sockets e fifos
+-g - usada para preservar o "grupo" dos arquivos fonte no destino
+-E - usada para preservar "executável" dos arquivos fontes no destino
+-v - usada para aumentar a quantidade de informações mostradas. Quando tiver certeza de
+estar copiando o que você quer, o “v” pode ser removido
+-z - usada para comprimir os dados a ser copiados;com essa opção o processo de cópia
+toma muito menos tempo, porque o arquivo a ser transferido é menor do que seu tamanho real
+--delete-after (apagar depois)= apaga arquivos/pastas no destino que não estiverem mais na fonte DEPOIS
+da transferência, não ANTES. Este “after ('depois')” é usado em caso de problemas ou de um
+travamento e o “delete ('apagar')” é usado para remover os arquivos do destino que não mais
+existem no sistema fonte, não apagados em nosso destino, ocupando espaço desnecessariamente
+--exclude (excluir)= é usado um padrão para excluir arquivos e/ou pastas do back-up. No
+exemplo, --exclude=“*~” excluirá do back-up TODO e QUALQUER arquivo ou pasta cujos nomes terminam
+com o caractere “~”. Apenas um padrão pode ser usado com a opção
+--exclude, portanto se você precisar de mais de um, você terá de entrar com linhas adicionais
+na linha de comando.
+</pre>
+				<p>Outras opções úteis:</p>
+<pre>
+-c – adiciona outro nível de checagem entre a fonte e o destino após o back-up,
+o que acaba por tornar todo o processo mais lento. Como o rsync já faz essa comparação
+durante o processamento, essa opção não foi incluída por ser meramente uma forma de redundância
+--super – segundo descrição de suas páginas de manual, com essa opção o sistema de destino
+tentará atividades de superusuário, isto é, o root.
+--dry-run – simula uma transferência. É como usar a opção -s com o
+apt-get install ou apt-get dist-upgrade.
+</pre>
+				<p>O restante de nossos comandos são os arquivos/pasta da fonte e nossa pasta de destino.</p>
+
+				<h5>Exemplos:</h5>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” morpheus:/home/tartie /media/sda7/SysBackups/morpheus/home
+</pre>
+				<p>Este comando vai copiar todos os arquivos e pastas dentro de /home/tartie no sistema traduzido com o nome "morpheus”, e colocá-los em /media/sda7/SysBackups/morpheus/home – sem incluir a árvore de diretórios da pasta tartie.</p>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” /home/tartie neo:/media/sda7/SysBackups/morpheus/home
+</pre>
+				<p>Este comando é o contrário do exemplo anterior. Ele vai "puxar" a pasta /home/tartie, com seu conteúdo e suas subpastas para o sistema chamado neo na mesma pasta – lembre-se que um sistema é considerado remoto quando tem “:” (dois pontos) na frente de seu caminho.</p>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” /home/cuddles /media/sda7/SysBackups/neo/home
+</pre>
+				<p>Este comando faz uma cópia de local para local. Perceba que não há ":" (dois pontos) nem na fonte nem no destino. O comando vai copiar localmente /home/cuddles para o mesmo sistema e pasta /media/sda7/SysBackups/neo/home.</p>
+
+				<p>Vejamos como é um 'exclude' múltiplo:</p>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” --exclude=”*.c” --exclude=”*.o” "/*" /media/sda7/SysBackups/neo
+</pre>
+				<p>O comando acima faz um back-up de TUDO no diretório raiz (/) do sistema local, com todos os seus arquivos e pastas e coloca-os no local de destino /media/sda7/SysBackups/neo – só que, agora, ele vai excluir todo arquivo e toda pasta que terminar em “~”, “.c”, ou “.o”</p>
+
+				<p class="highlight-2">Abaixo damos exemplo de um comando que deve ser evitado, pois resulta em erro. O exemplo é de um comando de sistema remoto para sistema remoto:</p>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” morpheus:/home/tartie trinity:/home
+</pre>
+				<p class="highlight-2">Como já mencionamos antes, trata-se de uma limitação do rsync.</p>
+
+				<p>Um último exemplo: vejamos como fica o rsync de um sistema remoto para um local, se substituirmos nossos "nomes" pelos seus respectivos endereços IP.</p>
+
+				<p>O primeiro comando é com o método de "nome" e o segundo é o mesmo comando, desta vez com o endereço IP:</p>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” morpheus:/home/tartie /media/sda7/SysBackups/morpheus/home
+</pre>
+<pre>
+rsync -agEvz --delete-after --exclude=”*~” 192.168.1.16:/home/tartie /media/sda7/SysBackups/morpheus/home
+</pre>
+				<p>Como dissemos anteriormente, você não é obrigado a usar o método de "nomes", mas, no primeiro exemplo, você pode ler o que está sendo feito de maneira muito mais fácil que no segundo.</p>
+
+				<p>Agora você já deve ser capaz de montar um comando simples, seja a partir dos exemplos dados, seja fazendo misturas e combinações dos comandos mostrados, até conseguir o que você precisa.</p>
+	</div>
+			<div id="rev">Content last revised 13/01/2012 2330 UTC</div>
+
+
+</div>
+</div>
+</body>
+</html>

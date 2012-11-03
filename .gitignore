@@ -1,0 +1,7 @@
+index.php
+base
+base/*
+.settings/*
+.classpath
+.project
+*~

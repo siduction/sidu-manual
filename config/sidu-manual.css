@@ -1,0 +1,162 @@
+@CHARSET "UTF-8";
+a:link {
+    color: blue;
+    text-decoration: none;
+    border-bottom: 1px dotted #ff4500;
+}
+
+a:visited {
+    color: purple;
+    text-decoration: none;
+    border-bottom: 1px dotted #ff4500;
+}
+  
+
+a:focus {
+    color: #ff4500;
+    background-color: #eeeeee;
+}
+
+a:hover {
+    color: #ff4500;
+    background-color: #eeeeee;
+}
+
+a:active {
+    color: #ff4500;
+}
+
+body {
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 13px;
+		font-family: 'DroidSansRegular', sans-serif;
+		color: #222222;
+		background-color: #e7e7e7;
+}
+input { font-size: 13px; }
+select, option { font-size: 13px; font-weight: normal; }
+h1, h2, h3 {
+		font-size: 20px;
+		font-family: 'DroidSansBold', sans-serif;
+		letter-spacing: 1px;
+		margin: 15px 0 0 0;
+}
+#main_area{
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 670px;
+}
+#header {
+		margin-left: auto;
+		margin-right: auto;
+		width:99.9%;
+		background-repeat:no-repeat;
+}
+#content{
+		margin-top:-0.9%;
+		margin-left: auto;
+		margin-right: auto;
+		background: #ffffff;
+		border: 2px #535d6c solid;
+		border-bottom-right-radius:5px;
+		border-bottom-left-radius:5px;
+		max-width:94.2%;
+}
+#content h1{
+		text-align: center;
+		color: #ff6600;
+		font-size: 2em;
+}
+
+#text_area{
+		height: 75%;
+}
+.error_message{
+		color: red;
+}
+.center{
+		text-align: center;
+}
+.left_block{
+		float: left;
+		display: block;
+		margin-right: 1em;
+}
+.right_block{
+		float: right;
+		display: block;
+}
+.navigation{
+		padding-bottom:3%;
+		padding-left:5%;
+		padding-right:5%;
+}
+.next_button{
+		float: right;
+}
+.navigation input { background: #ff6600; font-weight: bold; }
+.prev_button{
+		float: left;
+}
+.logo{ 
+		width:100%;
+}
+.button_one_only{
+		text-align: right;
+}
+.textblock{
+		padding: 0.7em;
+		margin: 0.5em;
+		border: 1px #ff6600 solid;
+		float: none;
+		border-radius:3px;	
+}
+.warning{
+		font-weight: bold;
+}
+.col_label{
+		width: 10em;
+}
+table { empty-cells: show; }
+th { text-align: left; font-weight: bold; }
+table.table_col5 tr th { width: 20%; }
+table.table_col5 tr td { width: 20%; }
+table.table_col5 { width: 100%; }
+td { vertical-align: top; }
+.horicontal_line { border-top: 1px #ff6600 solid; margin-top: 1em; margin-bottom: 1em;}
+
+#table_partition_mount, #table_partition_partman, #table_partition_root{ 
+		width: 100%; 
+}
+/* ------ Plugin home ------- */
+.home_img_warning { 
+		margin-right: 1em; 
+		float: left; 
+}
+.home_img_usb {
+		margin-right: 1%;
+}
+.home_button_usb {
+}
+/* ----- Plugin wait ------- */
+.wait_progress_frame{
+		width: 100%;
+		background-color: gray;
+		margin: 0;
+		border: black 1px solid;
+}
+.wait_progress{
+		background-color: #ff6600;
+		text-align: center;
+		color: black;
+}
+.progress_state{
+		text-align: left;
+		color: blue;
+		margin-top: 1em;
+}
+.unused{
+		border: 1px red solid;
+}
+

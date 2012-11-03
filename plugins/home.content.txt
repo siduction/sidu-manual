@@ -1,0 +1,10 @@
+<div id="text_area">
+<h1>###txt_title###</h1>
+<div class="textblock">
+<p>###txt_intro###</p>
+<p>###txt_intro2###</p>
+</div>
+<div class="textblock">
+<input type="submit" value="###txt_button_start###" name="button_start" />
+</div>
+</div> <!--text_area-->

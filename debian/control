@@ -1,0 +1,19 @@
+Source: sidu-manual
+Section: unknown
+Priority: extra
+Maintainer: J. Hamatoma <hama@siduction.net>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: <insert the upstream URL, if relevant>
+Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
+Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
+
+Package: sidu-manual
+Architecture: all
+Depends: ${misc:Depends},
+    perl (>= 5.0),
+    siguibui (>= 1.9)
+Description: Manual of siduction
+ This is the official manual of the distribution siduction.
+ It contains the overview, some how-tos, many tips and tricks.
+ The content is translated into some languages.
