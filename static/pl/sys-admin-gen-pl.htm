@@ -1,0 +1,617 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pl">
+<head>
+	<title>Podręcznik siduction - System Administration</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+        <p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision by XXXX xx/12/2007 1300hrs UTC -->
+<div id="bg">
+ <div id="menu"> 
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do siduction.org, forum oraz wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pl.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Poszukiwanie w instrukcji" alt="Search" /> Szukaj online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Wybierz inny język" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pl.htm">Podręcznik siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pl.htm#welcome-gen">Podręcznik siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pl.htm#cred-team">Zespół siduction</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pl.htm#how-to">Jak używać tego podręcznika &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pl.htm#how-to">Jak używać tego podręcznika</a></li>
+					  <li><a href="welcome-pl.htm#table-contents">Spis treści</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pl.htm#help-gen">Uzyskiwanie pomocy &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pl.htm#help-gen">Gdzie i jak uzyskać pomoc</a></li>
+					  <li><a href="help-pl.htm#paste">IRC oray !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pl.htm#welcome-quick">Szybki start z siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pl.htm">Zawartość obrazów, Wydania, Pobieranie, Serwery lustrzane, Wypalanie</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pl.htm#cd-content">Zawartość ISO i wymagania systemowe &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pl.htm#rolling">Notki Wydania</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pl.htm#download-siduction">Serwery lustrzane, pobieranie i wypalanie siduction &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pl.htm#md5">Sumy MD5</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#burn-nero">Wypalanie w Windows</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#burn-linux">Wypalanie w Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pl.htm#burning-no-gui">Skrypt burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pl.htm#burn-no-gui-gen">Wypalanie bez GUI</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#download-siduction">Serwery Lustrzane dla pobierania</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pl.htm">Tryb Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pl.htm#rootpw">Hasło root'a na siduction-Live</a></li>
+				<li><a href="live-mode-pl.htm#live-cd-installsoft">Instalacja oprogramowania w trybie Live-CD</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pl.htm">Terminal/Konsola</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pl.htm#term-kon"> Terminal/Konsola &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pl.htm#term-kon">Terminal/Konsola</a></li>
+					  <li><a href="term-konsole-pl.htm#colours">Kolorowe znaki zachęty terminala</a></li>
+					  <li><a href="term-konsole-pl.htm#cli-help">Linia komend - Pomoc</a></li>
+					  <li><a href="help-pl.htm#init3-tools">Narzędzia trybu tekstowego (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pl.htm#term-cmds">Konsolowe komendy</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pl.htm#sux"> sux/sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pl.htm">Kody startowe</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pl.htm#cheatcodes">Specyficzne kody dla siduction-Live</a></li>
+				<li><a href="cheatcodes-pl.htm#cheatcodes-linux">Powszechne kody Linux'a</a></li>
+				<li><a href="cheatcodes-vga-pl.htm#vga">Kody VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pl.htm">Partycjonowanie dysku twardego - tradycyjne, GPT i LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pl.htm#hd-ntfs3g">Zapis na partycje NTFS z użyciem ntfs-3g</a></li>
+			<li><a href="part-lvm-pl.htm#part-lvm">Partycjonowanie w celu użycia LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pl.htm#partition">Partycjonowanie dysku - aplikacje z graficznym intrefejsem użytkownika &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pl.htm#partition">Partycjonowanie dysku z użyciem GParted / Partycjonera KDE</a></li>
+					  <li><a href="part-gparted-pl.htm#ntfs">Zmiana rozmiaru partycji NTFS, z użyciem G-Parted / Partycjonera KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pl.htm#partition">Partycjonowanie dysku - konsola &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pl.htm#partition">Partycjonowanie dysku z użyciem cfdisk</a></li>
+					    <li><a href="part-cfdisk-pl.htm#formating">Formatowanie dysku</a></li>
+					    <li><a href="part-gdisk-pl.htm#gdisk-6">Formatowanie po partycjonowaniu z użyciem gdisk</a></li>
+					    <li><a href="part-gdisk-pl.htm#gdisk-1">Partycjonowanie GPT z użyciem gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pl.htm#part-example">Podstawy partycjonowania &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pl.htm#part-example">Przykładowe rozmiary partycji</a></li>
+					  <li><a href="part-uuid-pl.htm#uuid">UUID, przebudowa fstab i tworzenie nowych punktów montowania</a></li>
+					  <li><a href="part-cfdisk-pl.htm#disknames">Nazewnictwo partycji</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pl.htm">Opcje instlalacji - HD, USB, VM i Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pl.htm#Inst-prep">Przygotowanie do instalacji &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pl.htm#Inst-prep">Przygotowanie do instalacji</a></li>
+					  <li><a href="hd-install-pl.htm#Installation">Instalacja na dysku twardym</a></li>
+					  <li><a href="hd-install-pl.htm#first-hd-boot">Pierwsze uruchomienie</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pl.htm#fromiso">Uruchamianie z obrazu ISO &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pl.htm#fromiso">Uruchamianie z Obrazu ISO - Przegląd</a></li>
+					  <li><a href="hd-install-opts-pl.htm#grub2-fromiso">Uruchamianie z obrazu ISO - GRUB 2</a></li>
+					  <li><a href="hd-install-opts-pl.htm#fromiso-persist">Tryby fromiso i persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pl.htm#usb-hd">Instalacja na nośnik USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pl.htm#usb-hd">Instalacja na dysk USB-HDD</a></li>
+					  <li><a href="hd-ins-opts-oos-pl.htm#raw-usb">Zapis siduction na dysk USB/SSD z użyciem jakiegokolwiek systemu z rodziny Windows, Linux lub Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pl.htm#install-crypt">Instalacja na zaszyfrowanej partycji - cryptroot</a></li>
+		  <li><a href="nbdboot-pl.htm#nbd1">Uruchamianie siduction poprzez sieć</a></li>
+		  <li><a href="hd-install-vmopts-pl.htm#vmopts">Opcje instalacji maszyny wirtualnej</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pl.htm">Karty graficzne, monitory, Xorg  &amp; sterowniki</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pl.htm#mon-res">Rozdzielczość ekranu i monitory &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pl.htm#mon-res">Rozdzielczość ekranu i monitory</a></li>
+					  <li><a href="hw-dev-mon-pl.htm#xrandr">Dwa monitory i xrandr</a></li>
+					  <li><a href="hw-dev-mon-pl.htm#mon-binary">Dwa monitory (używając binariów)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pl.htm#foss-xorg">Sterowniki graficzne &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pl.htm#ati-3d">Sterowniki AMD/ATI 3D</a></li>
+					  <li><a href="gpu-pl.htm#intel">Sterowniki Intel 2D i 3D</a></li>
+					  <li><a href="gpu-pl.htm#nvidia">Sterowniki Nvidia 3D</a></li>
+					  <li><a href="gpu-pl.htm#foss-xorg">Sterowniki Open Source Xorg</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pl.htm#fw-detect">Dobieranie oprogramowania firmowego - nie wolnego </a></li>
+			  <li><a href="nf-firm-pl.htm#non-free-firmware">Dodawanie nie wolnych repozytoriów do Sources List</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pl.htm">Menadżery Okien</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pl.htm">KDE, XFCE i inne Menadżery Wyświetlania &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pl.htm#xfce-notes">Przydatne dodatki dla XFCE</a></li>
+					    <li><a href="wm-dm-pl.htm#install-add">Przydatne aplikacje dla KDE</a></li>
+					    <li><a href="wm-dm-pl.htm#kde-login">Nie można zalogować się do KDE</a></li>
+                        <li><a href="wm-dm--pl.htm#ch-th">Zmiana motywów</a></li>
+                        <li><a href="wm-dm-pl.htm#desk-freeze">Zamrażanie pulpitu</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pl.htm#dm">Instalacja dodatkowych Menadżerów Wyświetlania</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pl.htm">Łączenie z internetem, WiFi, LAN i inne typy sieci</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pl.htm">LAMP w siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pl.htm#serv-apache">LAMP w siduction</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-ftp">Klienty FTP</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-sec">Protokoły bezpieczeństwa</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pl.htm#serv-mysql">Ustawienia MySQL</a></li>
+					    <li><a href="lamp-php-pl.htm#serv-php">PHP w Apache</a></li>
+					    <li><a href="ntp-server-pl.htm#ntp-server">Ustawienia Serwera czasu</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pl.htm#tor">Firewall i prywatność &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pl.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pl.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pl.htm#firewalls">Firewall</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pl.htm#ssh-x">SSH i Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pl.htm#setup">Ustawienia serwera Samba</a></li>
+						  <li><a href="samba-pl.htm#configure">Konfiguracja SAMBA (Windows)</a></li>
+						  <li><a href="ssh-pl.htm#ssh-fs">Zdalny dostęp SSH</a></li>
+						  <li><a href="ssh-pl.htm#ssh-x">Graficzne aplikacje poprzez SSH</a></li>
+						  <li><a href="ssh-pl.htm#ssh-f">Graficzne SSH przy użyciu Konqueror</a></li>
+						  <li><a href="ssh-pl.htm#ssh-w">SSH X-Forwarding z Windows</a></li>
+						  <li><a href="ssh-pl.htm#ssh">SSH i bezpieczeństwo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia WiFi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pl.htm#netcardconfig">Łączenie z siecią - Ceni</a></li>
+						    <li><a href="inet-wpagui-pl.htm#wpa-roaming-gui">WiFi: WPA_GUI</a></li>
+						    <li><a href="inet-setup-pl.htm#net-set1">WiFi: Ustawianie Roaming'u WiFi</a></li>
+						    <li><a href="inet-wpa-pl.htm#wpa">WiFi i wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pl.htm#hotswitch">Sieć - Przełączanie interfejsów sieciowych</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia kablowe &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pl.htm#dial-mod">Modemy 56K</a></li>
+						    <li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia przy użyciu modemów 56K - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pl.htm">Zarządzanie pakietami i ich aktualizacja</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pl.htm#apt-cook">APT i Lista repozytoriów/źródeł &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pl.htm#apt-cook">Podręcznik APT'a, sources.list.d/*.list</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-install">Instalacja nowego pakietu</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-delete">Usuwanie pakietu</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-downgrade">Wstrzymywanie pakietów oraz cofanie do wcześniejszych wersji</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-cache">Wyszukiwanie pakietów z użyciem apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#gui-pacsea">Graficzne wyszukiwanie pakietów</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pl.htm#kern-upgrade">Aktualizacja jądra &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pl.htm#kern-remove">Usuwanie jąder</a></li>
+					    <li><a href="sys-admin-kern-upg-pl.htm#kern-upgrade">Aktualizacja jądra</a></li>
+					    <li><a href="sys-admin-kern-upg-pl.htm#dmakms">Instalacja modułów jądra z użyciem dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pl.htm#apt-upgrade">Aktualizacja zainstalowanego systemu &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pl.htm#live-cd-upgrade">Aktualizacja z użyciem obrazu ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pl.htm#approx">Aktualizacja systemów na kilku komputerach poprzez LAN</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-upgrade">Aktualizacja zainstalowanego systemu - Przegląd</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#du-st">Aktualizacja zainstalowanego systemu - Kroki</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pl.htm">Administracja systemem</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pl.htm#bois-prep">Aktualizacja BIOS'u z użyciem FreeDOS</a></li>
+		<li><a href="vir-rkits-pl.htm#virus-rkits">Skanery wirusów i rootkitów</a></li>
+		<li><a href="hd-install-pl.htm#adduser">Dodawanie użytkowników, administracja haseł &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pl.htm#adduser">Dodawanie nowego użytkownika</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#pw-lost">Zapomniane hasło root'a, nowe hasło</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pl.htm#start-services">Usługi i poziomy startu &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pl.htm#start-services">Włączanie/Wyłączanie usług</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#pkill">Zabijanie usługi systemowej lub działającego procesu</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#init">Poziomy uruchamiania siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pl.htm#rsync">Kopia zapasowa systemu &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pl.htm#rdiff">Kopia zapasowa systemu przy użyciu rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pl.htm#rsync">Kopia zapasowa systemu przy użyciu rsync</a></li>
+					    <li><a href="home-pl.htm#home-bu">Przenoszenie /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pl.htm#fonts">CUPS, czcionki i dźwięk &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pl.htm#fonts">Czcionki</a></li>
+					     <li><a href="sys-admin-gen-pl.htm#cups">CUPS - system obsługi urządzeń drukujących</a></li>
+					     <li><a href="sys-admin-gen-pl.htm#sound">Mixery dźwięku</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pl.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pl.htm#chroot">Grub2 - Przywracanie GRUB'a w środowisku chroot</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#mbr-over-grub2">Grub2 - Nadpisywanie MBR</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#multi-os">Grub2 - Uruchamianie wielu systemów operacyjnych</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#grub1-grub2">Grub2 -Aktualizacja z Grub'a w wersji 1</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#grub2">Grub2 - Przegląd</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="start-services">
+		<h2 id="top-header">Aktywacja usług w siductionzie</h2>
+
+				<h3>insserv (Pontos 2008-04 i późniejsze ): Aby wystartować/zatrzymać już zainstalowane usługi:</h3>
+							<p><span class="highlight-2">Czytaj <span class="highlight-3">/usr/share/doc/insserv/README.Debian</span>, uwagi do wydania i opisy w man pages bardzo uważnie:</span></p>
+<pre>
+ $ man insserv
+ $ man invoke-rc.d
+ $ man update-rc.d
+ google LSB headers
+</pre>
+
+							<p>Aby wykonać 'start':</p>
+<pre>
+/etc/init.d/&lt;service&gt; start
+</pre>
+							<p>Aby wykonać 'stop':</p>
+<pre>
+/etc/init.d/&lt;service&gt; stop
+</pre>
+							<p>Aby wykonać 'restart:</p>
+<pre>
+/etc/init.d/&lt;service&gt; restart
+</pre>
+							<p>Aby zapobiec uruchamianiu usługi przy starcie systemu</p>
+<pre>
+update-rc.d &lt;service&gt; remove
+[usunie wszystkie startowe linki]
+</pre>
+							<p>Aby upewnić się, że usługa pracuje przy starcie systemu [nie zawsze potrzebne]</p>
+<pre>
+update-rc.d &lt;service&gt; defaults
+[utworzy linki startowe]
+</pre>
+
+							<p>Aby przeczytać listę uruchomionych usług:</p>
+<pre>
+ls /etc/rc5.d
+</pre>
+
+							<p><span class="highlight-3">S</span> oznacza wystartowanie usługi.<br />
+							<span class="highlight-3">K</span> oznacza brak startu.</p>
+
+					<h3>Starsze instalacje  (przed Pontos 2008-04)</h3>
+						<h3>insserv na zainstalowanych systemach przed Pontos 2008-04</h3>
+
+							<p> <span class="highlight-2">Uwaga: Starsze instalacje nie uruchomią insserv automatycznie, z powodu własnych skryptów startowych użytkowników lub dowiązań symbolicznych. NIE zaleca się instalowania insserv na systemach wcześniejszych niż Pontos. Pakiet ten powinien być stosowany z ostrożnością, ponieważ nieprawidłowe lub brakujące zależności LSB istniejących skryptów instalacyjnych może prowadzić do uniemożliwienia rozruchu systemu. Instalacja insserv na istniejącej instalacji może wymagać dokonania ręcznych zmian. </span></p>
+
+							<p><span class="highlight-2">Czytaj <a href="http://wiki.debian.org/LSBInitScripts/DependencyBasedBoot"> uwagi dokumentacji Debiana</a>, i uwagi do wydania przed instalacja i włączeniem insserv.</span></p>
+	</div>
+	<div class="divider" id="bum">
+			<h2>Menedżer Boot-Up (bum) - Graficzne narzędzie konfiguracji usług</h2>
+
+							<p>Jeśli logika kolejności startu systemu debiana nie jest bardzo jasne i znana Ci, nie powinieneś igrać z dowiązaniami symbolicznymi, uprawnieniami i tak dalej. W celu uniknięcia zamieszania w systemie, Boot-menedżer pomoże zautomatyzować konfigurację.</p>
+
+							<p>Bootmenedżer jest graficznym (GUI) edytorem konfiguracji poziomów startowych, pozwalającym skonfigurować, jakie usługi inicjalizacyjne są wywoływane podczas uruchamiania systemu, lub restartu. Wyświetla listę wszystkich usług, które można uruchomić podczas startu systemu. Możesz przełączać poszczególne usługi - włączać i wyłączać.</p>
+
+<pre>
+apt-get install bum
+</pre>
+							<p>Aby używać Graficznego Boot-Up Menegera:</p>
+<pre>
+$ sux
+password:
+bum
+</pre>
+						  <p> <a href ="http://www.marzocca.net/linux/bumdocs.html"> Szczegółowa dokumentacja na temat Boot-Up Menegera (bum)</a>. </p>
+
+		</div>
+		<div class="divider" id="pkill">
+			<h2>Kończenie usługi lub procesu</h2>
+						<p><span class="highlight-3">pkill</span> jest bardzo użyteczny ze względu na łatwość użycia i możliwość wykorzystania przez użytkownika i administratora w terminalu lub tty.</p>
+<pre>
+pkill -n usługa
+</pre>
+						<p>Jeśli nie jesteś pewny poprawnej pisowni nazwy procesu lub usługi, które chcesz zakończyć, <span class="highlight-3">pkill &lt;tab&gt; &lt;tab&gt;</span> dostarczy listę. </p>
+
+						<p>htop jest także dobrym wyborem. (killall -9 jest ostatnią z możliwości).</p>
+
+	</div>
+	<div class="divider" id="init">
+			<h2>Poziomy uruchamiania siduction - init</h2>
+							<p>To jest lista poziomów uruchamiania systemu operacyjnego siduction, zwróć uwagę, że różni się od poziomów uruchamiania debiana stable:</p>
+		 <table>
+			<tbody>
+				<tr>
+					<th>Runlevel</th>
+					<th>siduction</th>
+					<th>Debian</th>
+				</tr>
+				<tr>
+					<td><b>init 0</b></td>
+					<td> Wyłącza zasilanie PC.</td>
+					<td> Wyłącza zasilanie PC.</td>
+				</tr>
+				<tr>
+					<td><b>init 1</b></td>
+					<td>Tryb jednego użytkownika [root] (tryb bezpieczeństwa lub ratunkowy). Demony jak apache i sshd są zatrzymane.
+					Nie wchodź w ten poziom przez zdalny dostęp.</td>
+					<td>Tryb jednego użytkownika, zatrzymuje usługi (tryb bezpieczeństwa lub ratunkowy). Nie wchodź w ten poziom przez zdalny dostęp.</td>
+				</tr>
+				<tr>
+					<td><b>init 2</b></td>
+					<td> Tryb wielu-użytkowników z działającą siecią, graficzny system X-Window nie działa, i/lub by nie wchodzić w X-Window System.</td>
+					<td>Domyślny runlevel Debiana dla trybu Wielu-użytkowników z działającą siecią i systemem X-Window.</td>
+				</tr>
+				<tr>
+					<td><b>init 3</b></td>
+					<td> Tryb wielo-użytkownikowy z działającą siecią, nie działającym systemem X-Window, i/lub by zatrzymać lub nie wchodzić w system X-Window.  <a href="sys-admin-apt-pl.htm#apt-upgrade"> Tu dokonuje się aktualizacji systemu poprzez dist-upgrade</a>.</td>
+					<td>Tak jak runlevel 2 / init 2.</td>
+				</tr>
+				<tr>
+					<td><b>init 4</b></td>
+					<td> Tryb wielo-użytkownikowy z działającą siecią, nie działającym systemem X-Window, i/lub by zatrzymać lub nie wchodzić w system X-Window.</td>
+					<td>Tak jak runlevel 2 / init 2.</td>
+				</tr>
+				<tr>
+					<td><b>init 5</b></td>
+					<td>Domyślny tryb siductiona wielo-użytkownikowy z działającą siecią, działającym systemem X-Window, i/lub by wystartować system X-Window.</td>
+					<td>Tak jak as runlevel 2 / init 2.</td>
+				</tr>
+				<tr>
+					<td><b>init 6</b></td>
+					<td>Restart/reboot ponowne uruchomienie systemu.</td>
+					<td>Restart/reboot ponowne uruchomienie systemu.</td>
+				</tr>
+				<tr>
+					<td><b>init S</b></td>
+					<td>To tu usługi wczesnej fazy startu systemu są uruchamiane na zasadzie "tylko raz". Nie można przełączyć się do niego po tym został jak został już uruchomiony.</td>
+					<td>To tu usługi wczesnej fazy startu systemu są uruchamiane na zasadzie "tylko raz". Nie można przełączyć się do niego po tym został jak został już uruchomiony.</td>
+				</tr>
+			</tbody>
+		</table>
+
+      <div class="spacer02"></div>
+
+							<p>Aby upewnić się co do aktualnego poziomu uruchomienia (init) w jakim jesteś:</p>
+<pre>
+who -r
+</pre>
+							<p>Wymaganą lekturą dla każdego administratora systemu poziomów siductiona i Debiana jest:</p>
+<pre>
+man init
+</pre>
+
+	</div>
+	<div class="divider" id="pw-lost">
+		<h2>Utracone hasło roota</h2>
+
+			<p>Nie możesz odzyskać utraconego hasła, ale możesz ustawić nowe.</p>
+
+			<p>Najpierw wystartuj system z Live-CD.</p>
+
+			<p>Jako root zamontuj swoją partycję główną (na przykład /dev/sdb2)</p>
+
+<pre>
+mount /dev/sdb2 /media/sdb2
+</pre>
+							<p>Teraz podmień główny katalog na swoją starą partycję główną przy pomocy chroot i ustaw nowe hasło:</p>
+<pre>
+chroot /media/sdb2 passwd
+</pre>
+
+	</div>
+	<div class="divider" id="pw-new">
+		<h2>Ustawianie nowych haseł</h2>
+
+							<p>Aby zmienić hasło twojego 'użytkonika', wykonaj jako <span class="highlight-3">$ użytkownik</span>:</p>
+<pre>
+$ passwd
+</pre>
+
+							<p>Aby zmienić hasło twojego 'superużytkownika' (root), wykonaj jako <span class="highlight-3"># root</span>:</p>
+<pre>
+passwd
+</pre>
+
+							<p>Aby zmienić hasło użytkownika jako administrator, wykonaj jako <span class="highlight-3"># root</span>:</p>
+<pre>
+passwd &lt;użytkownik&gt;
+</pre>
+
+	</div>
+	<div class="divider" id="fonts">
+			<h2>Czcionki w siductionzie</h2>
+				<h5>Poprawne ustawienia dpi - podstawy</h5>
+
+							<p>Ustawienia DPI są trudne do zgadnięcia, ale są właściwie doskonale wykryte przez X.</p>
+
+				<h5>Poprawna rozdzielczość i częstotliwość odświeżania</h5>
+
+							 <p>Każdy monitor posiada własną, doskonałą kombinację ustawień, ale niestety nie każdy przekazuje właściwe wartości DCC, a czasem istnieje potrzeba poprawy wartości przez użytkownika.</p>
+
+				<!--<h5>Właściwe sterowniki karty graficznej</h5>
+
+							 <p>Niektóre nowsze karty ATI i Nvidia nie działają dobrze z wolnymi sterownikami i jedynym, sensownym rozwiązaniem w takim przypadku są komercyjne sterowniki z zamkniętymi źródłami. siduction nie preinstaluje ich ze względów prawnych, <a href="gpu-pl.htm"> sposoby instalacji można znaleźć tutaj. </a></p>-->
+
+				<h5>Domyślny wybór czcionek, rendering i rozmiary</h5>
+
+							 <p>siduction używa wolnych czcionek, które dowiodły swojej wszechstronności, twój własny wybór czcionek może pogorszyć jakość renderingu. Jest jednak kilka potężnych opcji w Debianie (oprócz KDE>systemsettings ), które mogą pomóc dostarczyć idealnego renderingu również z innymi czcionkami. Bądź jednak świadomy, że każda czcionka ma tylko kilka idealnych rozmiarów, inne rozmiary mogą nie wyglądać tak dobrze.</p>
+
+				<p>Zmiana dpi również może prowadzić do poprawy wyglądu czcionki:</p>
+<pre>
+fix-dpi-kdm
+</pre>
+							  <p>Polecenie powinno pokazać DPI dla twojego rozmiaru ekranu, ale możesz również manipulować tym parametrem. Aby zmiany przyniosły efekt, musisz przejść do trybu init 3, nastepnie wrócić do init 5, albo uruchomić ponownie system.</p>
+
+							  <p> Po zmianie typu czcionki albo DPI (w X lub Firefox/Iceweasel), możesz potrzebować kilku ponownych regulacji, aby otrzymać zadowalający efekt, szczególnie po zmianie z czcionki bitmapowej na True Type, lub odwrotnie:</p>
+<pre>
+dpkg-reconfigure fontconfig-config
+</pre>
+					<p>Wybierz "native" i "autohinter" w konfiguratorze. Można też spróbować innych ustawień.</p>
+					<p>Jeśli to nie będzie działać, możesz potrzebować utworzyć ponownie cache czcionek poprzez:</p>
+<pre>
+apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
+</pre>
+				<h5>Aplikacje oparte na GTK, takie jak Firefox/Icewasel</h5>
+				<p>Aplikacje oparte na GTK generalnie sprawiają problemy z domyślnymi ustawieniami KDE. Można to naprawić przy pomocy:</p>
+<pre>
+apt-get install gtk2-engines system-config-gtk-kde gtk-qt-engine gtk2-engines-qtcurve
+</pre>
+							<p>W <span class="highlight-3">Ustawienia >Wygląd </span> znajdziesz nową pozycję menu nazwaną <span class="highlight-3">Style i Czcionki GTK</span>. Ustaw 'Style GTK' na 'Clearlooks' a 'Czcionki GTK' ustaw na 'Czcionki KDE' <span class="highlight-3">lub </span> eksperymentuj z wieloma opcjami by zadowolić swoje preferencje.</p>
+
+							<p>To może naprawić rendering czcionek w aplikacjach gtk.</p>
+	</div>
+	<div class="divider" id="cups">
+			<h2>CUPS - serwer wydruków</h2>
+							<p>KDE posiada rozbudowaną pomoc na ten temat, ale aktualizacja systemu często powoduje, że cups nie działa poprawnie, to jest jedno ze znanych rozwiązań:</p>
+
+<pre>
+modprobe lp
+echo lp >> /etc/modules
+apt-get remove --purge cupsys cups
+apt-get install cups
+	LUB
+apt-get install cups cups-driver-gutenprint hplip
+</pre>
+							<p>Upewnij się, że CUPS działa :</p>
+<pre>
+/etc/init.d/cups restart
+</pre>
+							<p> Następnie w przeglądarce internetowej: </p>
+<pre>
+http://localhost:631
+</pre>
+
+							<p>Innym problemem jest próba ustawienia cups przez GUI, kiedy pojawia się okno proszące o twoje hasło, podczas gdy ty chcesz użyć uprawnień <span class="highlight-2">roota</span> i wpisać  <span class="highlight-2">hasło roota</span>.</p>
+
+							<p><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/databaseintro">The OpenPrinting database</a> zawiera mnóstwo informacji o konkretnych drukarkach, wraz z dużą ilością informacji o strownikach, samych sterownikach, podstawowe dane techniczne i związane z tym zestawy narzędzi konfiguracyjnych. </p>
+	</div>
+	<div class="divider" id="sound">
+			<h2>Dżwięk w siductionie</h2>
+							<p><span class="highlight-3">Dźwięk jest domyslnie wyciszony w siductionzie.</span></p>
+
+							<p>Wersja KDE używa Kmix a XFCE używa Mixer.</p>
+
+							<p>Często jest to tylko kwestia kliknięcia na ikonę dźwięku na pasku zadań i odznaczenie pola "Mute".</p>
+
+					<h6>Kmix</h6>
+							<p>W kmix musisz włączyć opcje, które preferujesz dla opcji kanału, <span class="highlight-3">Kmix>Ustawienia>Konfiguracja Kanałów.</span> Albo w konsoli:</p>
+<pre>
+$ kmix
+</pre>
+
+					<h6>XFCE</h6>
+
+							<p>W XFCE uruchom mixer i dodaj kilka kontrolek przez <span class="highlight-3"> Multimedia>Mixer</span> i kliknij na <span class="highlight-3">Wybierz Controls box.</span> Lub w terminalu:</p>
+<pre>
+$ xfce4-mixer
+</pre>
+
+					<h3>Alsamixer</h3>
+
+							<p> Jeśli wolisz używać Alsamixera, znajduje się on w pakiecie alsa-utils:</p>
+<pre>
+apt-get update
+apt-get install alsa-utils
+exit
+</pre>
+							 <p>Ustaw preferowane ustawienia dźwięku jako <span class="highlight-2">$użytkownik</span> w terminalu:</p>
+<pre>
+$ alsamixer
+</pre>
+							<!-- <p>Then as root:</p>
+
+<pre>
+alsactl store
+</pre>-->
+
+<!--
+							  <p><a href=""> Zobacz także siduction wiki.</a></p>
+-->
+
+	</div>
+
+			<div id="rev">Content last revised 20/04/2011 0830 UTC </div>
+
+</div>
+</div>
+</body>
+</html>

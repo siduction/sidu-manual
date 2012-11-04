@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pl">
+<head>
+	<title>Podręcznik siduction - UUID</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+        <p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<!-- Last translation revision by maslot 04/01/2008 1800 UTC -->
+<div id="bg">
+ <div id="menu"> 
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do siduction.org, forum oraz wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pl.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Poszukiwanie w instrukcji" alt="Search" /> Szukaj online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Wybierz inny język" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pl.htm">Podręcznik siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pl.htm#welcome-gen">Podręcznik siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pl.htm#cred-team">Zespół siduction</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pl.htm#how-to">Jak używać tego podręcznika &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pl.htm#how-to">Jak używać tego podręcznika</a></li>
+					  <li><a href="welcome-pl.htm#table-contents">Spis treści</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pl.htm#help-gen">Uzyskiwanie pomocy &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pl.htm#help-gen">Gdzie i jak uzyskać pomoc</a></li>
+					  <li><a href="help-pl.htm#paste">IRC oray !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pl.htm#welcome-quick">Szybki start z siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pl.htm">Zawartość obrazów, Wydania, Pobieranie, Serwery lustrzane, Wypalanie</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pl.htm#cd-content">Zawartość ISO i wymagania systemowe &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pl.htm#rolling">Notki Wydania</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pl.htm#download-siduction">Serwery lustrzane, pobieranie i wypalanie siduction &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pl.htm#md5">Sumy MD5</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#burn-nero">Wypalanie w Windows</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#burn-linux">Wypalanie w Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pl.htm#burning-no-gui">Skrypt burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pl.htm#burn-no-gui-gen">Wypalanie bez GUI</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#download-siduction">Serwery Lustrzane dla pobierania</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pl.htm">Tryb Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pl.htm#rootpw">Hasło root'a na siduction-Live</a></li>
+				<li><a href="live-mode-pl.htm#live-cd-installsoft">Instalacja oprogramowania w trybie Live-CD</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pl.htm">Terminal/Konsola</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pl.htm#term-kon"> Terminal/Konsola &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pl.htm#term-kon">Terminal/Konsola</a></li>
+					  <li><a href="term-konsole-pl.htm#colours">Kolorowe znaki zachęty terminala</a></li>
+					  <li><a href="term-konsole-pl.htm#cli-help">Linia komend - Pomoc</a></li>
+					  <li><a href="help-pl.htm#init3-tools">Narzędzia trybu tekstowego (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pl.htm#term-cmds">Konsolowe komendy</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pl.htm#sux"> sux/sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pl.htm">Kody startowe</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pl.htm#cheatcodes">Specyficzne kody dla siduction-Live</a></li>
+				<li><a href="cheatcodes-pl.htm#cheatcodes-linux">Powszechne kody Linux'a</a></li>
+				<li><a href="cheatcodes-vga-pl.htm#vga">Kody VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pl.htm">Partycjonowanie dysku twardego - tradycyjne, GPT i LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pl.htm#hd-ntfs3g">Zapis na partycje NTFS z użyciem ntfs-3g</a></li>
+			<li><a href="part-lvm-pl.htm#part-lvm">Partycjonowanie w celu użycia LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pl.htm#partition">Partycjonowanie dysku - aplikacje z graficznym intrefejsem użytkownika &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pl.htm#partition">Partycjonowanie dysku z użyciem GParted / Partycjonera KDE</a></li>
+					  <li><a href="part-gparted-pl.htm#ntfs">Zmiana rozmiaru partycji NTFS, z użyciem G-Parted / Partycjonera KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pl.htm#partition">Partycjonowanie dysku - konsola &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pl.htm#partition">Partycjonowanie dysku z użyciem cfdisk</a></li>
+					    <li><a href="part-cfdisk-pl.htm#formating">Formatowanie dysku</a></li>
+					    <li><a href="part-gdisk-pl.htm#gdisk-6">Formatowanie po partycjonowaniu z użyciem gdisk</a></li>
+					    <li><a href="part-gdisk-pl.htm#gdisk-1">Partycjonowanie GPT z użyciem gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pl.htm#part-example">Podstawy partycjonowania &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pl.htm#part-example">Przykładowe rozmiary partycji</a></li>
+					  <li><a href="part-uuid-pl.htm#uuid">UUID, przebudowa fstab i tworzenie nowych punktów montowania</a></li>
+					  <li><a href="part-cfdisk-pl.htm#disknames">Nazewnictwo partycji</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pl.htm">Opcje instlalacji - HD, USB, VM i Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pl.htm#Inst-prep">Przygotowanie do instalacji &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pl.htm#Inst-prep">Przygotowanie do instalacji</a></li>
+					  <li><a href="hd-install-pl.htm#Installation">Instalacja na dysku twardym</a></li>
+					  <li><a href="hd-install-pl.htm#first-hd-boot">Pierwsze uruchomienie</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pl.htm#fromiso">Uruchamianie z obrazu ISO &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pl.htm#fromiso">Uruchamianie z Obrazu ISO - Przegląd</a></li>
+					  <li><a href="hd-install-opts-pl.htm#grub2-fromiso">Uruchamianie z obrazu ISO - GRUB 2</a></li>
+					  <li><a href="hd-install-opts-pl.htm#fromiso-persist">Tryby fromiso i persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pl.htm#usb-hd">Instalacja na nośnik USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pl.htm#usb-hd">Instalacja na dysk USB-HDD</a></li>
+					  <li><a href="hd-ins-opts-oos-pl.htm#raw-usb">Zapis siduction na dysk USB/SSD z użyciem jakiegokolwiek systemu z rodziny Windows, Linux lub Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pl.htm#install-crypt">Instalacja na zaszyfrowanej partycji - cryptroot</a></li>
+		  <li><a href="nbdboot-pl.htm#nbd1">Uruchamianie siduction poprzez sieć</a></li>
+		  <li><a href="hd-install-vmopts-pl.htm#vmopts">Opcje instalacji maszyny wirtualnej</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pl.htm">Karty graficzne, monitory, Xorg  &amp; sterowniki</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pl.htm#mon-res">Rozdzielczość ekranu i monitory &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pl.htm#mon-res">Rozdzielczość ekranu i monitory</a></li>
+					  <li><a href="hw-dev-mon-pl.htm#xrandr">Dwa monitory i xrandr</a></li>
+					  <li><a href="hw-dev-mon-pl.htm#mon-binary">Dwa monitory (używając binariów)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pl.htm#foss-xorg">Sterowniki graficzne &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pl.htm#ati-3d">Sterowniki AMD/ATI 3D</a></li>
+					  <li><a href="gpu-pl.htm#intel">Sterowniki Intel 2D i 3D</a></li>
+					  <li><a href="gpu-pl.htm#nvidia">Sterowniki Nvidia 3D</a></li>
+					  <li><a href="gpu-pl.htm#foss-xorg">Sterowniki Open Source Xorg</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pl.htm#fw-detect">Dobieranie oprogramowania firmowego - nie wolnego </a></li>
+			  <li><a href="nf-firm-pl.htm#non-free-firmware">Dodawanie nie wolnych repozytoriów do Sources List</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pl.htm">Menadżery Okien</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pl.htm">KDE, XFCE i inne Menadżery Wyświetlania &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pl.htm#xfce-notes">Przydatne dodatki dla XFCE</a></li>
+					    <li><a href="wm-dm-pl.htm#install-add">Przydatne aplikacje dla KDE</a></li>
+					    <li><a href="wm-dm-pl.htm#kde-login">Nie można zalogować się do KDE</a></li>
+                        <li><a href="wm-dm-pl.htm#ch-th">Zmiana motywów</a></li>
+                        <li><a href="wm-dm-pl.htm#desk-freeze">Zamrażanie pulpitu</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pl.htm#dm">Instalacja dodatkowych Menadżerów Wyświetlania</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pl.htm">Łączenie z internetem, WiFi, LAN i inne typy sieci</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pl.htm">LAMP w siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pl.htm#serv-apache">LAMP w siduction</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-ftp">Klienty FTP</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-sec">Protokoły bezpieczeństwa</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pl.htm#serv-mysql">Ustawienia MySQL</a></li>
+					    <li><a href="lamp-php-pl.htm#serv-php">PHP w Apache</a></li>
+					    <li><a href="ntp-server-pl.htm#ntp-server">Ustawienia Serwera czasu</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pl.htm#tor">Firewall i prywatność &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pl.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pl.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pl.htm#firewalls">Firewall</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pl.htm#ssh-x">SSH i Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pl.htm#setup">Ustawienia serwera Samba</a></li>
+						  <li><a href="samba-pl.htm#configure">Konfiguracja SAMBA (Windows)</a></li>
+						  <li><a href="ssh-pl.htm#ssh-fs">Zdalny dostęp SSH</a></li>
+						  <li><a href="ssh-pl.htm#ssh-x">Graficzne aplikacje poprzez SSH</a></li>
+						  <li><a href="ssh-pl.htm#ssh-f">Graficzne SSH przy użyciu Konqueror</a></li>
+						  <li><a href="ssh-pl.htm#ssh-w">SSH X-Forwarding z Windows</a></li>
+						  <li><a href="ssh-pl.htm#ssh">SSH i bezpieczeństwo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia WiFi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pl.htm#netcardconfig">Łączenie z siecią - Ceni</a></li>
+						    <li><a href="inet-wpagui-pl.htm#wpa-roaming-gui">WiFi: WPA_GUI</a></li>
+						    <li><a href="inet-setup-pl.htm#net-set1">WiFi: Ustawianie Roaming'u WiFi</a></li>
+						    <li><a href="inet-wpa-pl.htm#wpa">WiFi i wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pl.htm#hotswitch">Sieć - Przełączanie interfejsów sieciowych</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia kablowe &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pl.htm#dial-mod">Modemy 56K</a></li>
+						    <li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia przy użyciu modemów 56K - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pl.htm">Zarządzanie pakietami i ich aktualizacja</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pl.htm#apt-cook">APT i Lista repozytoriów/źródeł &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pl.htm#apt-cook">Podręcznik APT'a, sources.list.d/*.list</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-install">Instalacja nowego pakietu</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-delete">Usuwanie pakietu</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-downgrade">Wstrzymywanie pakietów oraz cofanie do wcześniejszych wersji</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-cache">Wyszukiwanie pakietów z użyciem apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#gui-pacsea">Graficzne wyszukiwanie pakietów</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pl.htm#kern-upgrade">Aktualizacja jądra &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pl.htm#kern-remove">Usuwanie jąder</a></li>
+					    <li><a href="sys-admin-kern-upg-pl.htm#kern-upgrade">Aktualizacja jądra</a></li>
+					    <li><a href="sys-admin-kern-upg-pl.htm#dmakms">Instalacja modułów jądra z użyciem dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pl.htm#apt-upgrade">Aktualizacja zainstalowanego systemu &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pl.htm#live-cd-upgrade">Aktualizacja z użyciem obrazu ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pl.htm#approx">Aktualizacja systemów na kilku komputerach poprzez LAN</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-upgrade">Aktualizacja zainstalowanego systemu - Przegląd</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#du-st">Aktualizacja zainstalowanego systemu - Kroki</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pl.htm">Administracja systemem</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pl.htm#bois-prep">Aktualizacja BIOS'u z użyciem FreeDOS</a></li>
+		<li><a href="vir-rkits-pl.htm#virus-rkits">Skanery wirusów i rootkitów</a></li>
+		<li><a href="hd-install-pl.htm#adduser">Dodawanie użytkowników, administracja haseł &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pl.htm#adduser">Dodawanie nowego użytkownika</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#pw-lost">Zapomniane hasło root'a, nowe hasło</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pl.htm#start-services">Usługi i poziomy startu &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pl.htm#start-services">Włączanie/Wyłączanie usług</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#pkill">Zabijanie usługi systemowej lub działającego procesu</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#init">Poziomy uruchamiania siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pl.htm#rsync">Kopia zapasowa systemu &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pl.htm#rdiff">Kopia zapasowa systemu przy użyciu rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pl.htm#rsync">Kopia zapasowa systemu przy użyciu rsync</a></li>
+					    <li><a href="home-pl.htm#home-bu">Przenoszenie /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pl.htm#fonts">CUPS, czcionki i dźwięk &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pl.htm#fonts">Czcionki</a></li>
+					     <li><a href="sys-admin-gen-pl.htm#cups">CUPS - system obsługi urządzeń drukujących</a></li>
+					     <li><a href="sys-admin-gen-pl.htm#sound">Mixery dźwięku</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pl.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pl.htm#chroot">Grub2 - Przywracanie GRUB'a w środowisku chroot</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#mbr-over-grub2">Grub2 - Nadpisywanie MBR</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#multi-os">Grub2 - Uruchamianie wielu systemów operacyjnych</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#grub1-grub2">Grub2 -Aktualizacja z Grub'a w wersji 1</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#grub2">Grub2 - Przegląd</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="uuid">
+			<h2 id="top-header">Rebuilding fstab and creating mount points</h2>
+							<p class="highlight-3">By default siduction uses uuid in your fstab when you install.</p>
+
+							<p>Aby dodać nową partycję (np. sda6 lub sdb7) do fstab, w konsoli jako użytkownik ($), wpisz następujące polecenie:</p>
+
+<pre>
+ ls -l /dev/disk/by-uuid
+</pre>
+
+							<p>Wyświetli to taki komunikat (wytłuszczenie tylko dla celów przykładu):</p>
+
+<pre>
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 348ea9e6-7879-4332-8d7a-915507574a80 -> ../../sda4
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 610aaaeb-a65e-4269-9714-b26a1388a106 -> ../../sda2
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 857c5e63-c9be-4080-b4c2-72d606435051 -> ../../sda5
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 a83b8ede-a9df-4df6-bfc7-02b8b7a5f1f2 -> ../../sda1
+lrwxrwxrwx 1 root root 10 2007-05-27 23:42 <b>ad662d33-6934-459c-a128-bdf0393e0f44</b> -> ../../sda6
+</pre>
+
+							<p>W tym przykładzie <b>ad662d33-6934-459c-a128-bdf0393e0f44</b> jest brakującym wpisem. Następnym krokiem jest wpisanie UUID partycji do /etc/fstab. Aby to zrobić, użyj edytora tekstowego (jak kate lub kwrite) z uprawnieniami roota:</p>
+<pre>
+# &lt;device file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt; &lt;pass&gt;
+<b>UUID=ad662d33-6934-459c-a128-bdf0393e0f44</b> /media/disk1part6 ext4	auto,users,exec	0 2
+</pre>
+							<p>Inny przykład:</p>
+
+<pre>
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 30ebb8eb-8f22-460c-b8dd-59140274829d -> ../../sdb8
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 387d6d4b-4508-4b8e-8ed2-76998f41dae4 -> ../../sdb1
+rwxrwxrwx 1 root root 10 2007-05-28 13:18 7014f66f-6cdf-4fe1-83da-9cab7b6fab1a -> ../../sdb5
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 8f042ead-259f-4df0-98ec-3343080396c5 -> ../../sdb6
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 94B0AE63B0AE4B94 -> ../../sda2
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 A61820AA18207B85 -> ../../sda1
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 f28725d6-b7b5-4207-8476-36efe1a903ce -> ../../sdb9
+lrwxrwxrwx 1 root root 10 2007-05-28 13:18 f855c263-2521-48d3-8ec9-d2d2b69b6635 -> ../../sda3
+rwxrwxrwx 1 root root 10 2007-05-28 13:18 <b>f9aa4027-ecdd-4a86-84e2-df2ef73fe14e</b> -> ../../sdb7
+</pre>
+
+
+
+							<p>W tym przypadku <b>f9aa4027-ecdd-4a86-84e2-df2ef73fe14e</b> jest brakującym wpisem i zostanie dodany do /etc/fstab:</p>
+<pre>
+# &lt;device file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt; &lt;pass&gt;
+<b>UUID=f9aa4027-ecdd-4a86-84e2-df2ef73fe14e</b> /media/disk2part7 ext4	auto,users,exec	0 2
+</pre>
+
+			<h3>Creating new mount points</h3>
+							<p> <span class="highlight-3">Note:</span> A mount point name, as noted in fstab, needs to have an existing directory. siduction creates these directories during the installation process under <span class="highlight-3">/media</span> and they are named <span class="highlight-3">diskXpartX</span>.</p>
+
+							<p>If you have manipulated the partition table after the initial installation and assuming you have already altered fstab, (for example, 2 new partitions have been created), the directory for each mount point will not exist and it needs to be manually created.</p>
+
+					  <h5>Example:</h5>
+
+							<p>First, as root, confirm the existing mount points:</p>
+
+<pre>
+cd /media
+ls
+</pre>
+							<p>It should return the existing mount points, for example:</p>
+<pre>
+disk1part1 disk1part3 disk2part1
+</pre>
+							<p>Staying in /media, create the mount points of the new partitions:</p>
+<pre>
+mkdir disk1part6
+mkdir disk2part7
+</pre>
+
+							<p>To test or use partitions immediately:</p>
+<pre>
+mount /dev/sda6 /media/disk1part6
+mount /dev/sda6 /media/disk2part7
+</pre>
+							<p>Upon a reboot of the computer the filesystems will be mounted automatically. Read:</p>
+<pre>
+man mount
+</pre>
+
+	</div>
+	<div class="divider" id="uuid-fstab">
+			<h2>Konfiguracja fstab</h2>
+
+			<h2>Przegląd: UUID, nazwy partycji i fstab</h2>
+							<p>Trwałe nazwy urządzeń blokowych stały się możliwe przez pojawienie się udev i mają kilka zalet w stosunku do nazewnictwa opartego na szynie systemowej.</p>
+
+							<p>Podczas gdy dystrybucje linuksa i udev rozwijają się, a wykrywanie sprzętu staje się coraz bardziej niezawodne, pojawia się również kilka nowych problemów i zmian:<br />
+				    			<b>1)</b> jeśli posiadasz więcej niż jeden kontroler dysku sata/scsi lub ide, kolejność, w której są one dodawane, jest losowa. Może to powodować losowe zmiany nazw urządzeń jak hdX i hdY przy każdym starcie systemu. To samo dotyczy sdX i sdY. Trwałe nazwy rozwiązują ten problem.<br />
+				    			<b>2)</b> Wraz z wprowadzeniem wsparcia dla nowego libata pata, wszystkie urządzenia ide hdX staną się w przyszłości urządzeniami sdX. Ponownie, dzięki trwałym nazwom, nawet nie zauważysz zmiany.<br />
+				    			<b>3)</b> Komputery z kontrolerami sata i ide są obecnie dość powszechne. Wraz ze zmianami w libata wspomnianymi wyżej, pierwszy problem stanie się jeszcze bardziej powszechny, ponieważ dyski sata i ide będą miały nazwy typu sdX.</p>
+
+							<p class="highlight-3">siduction domyślnie będzie używać uuid w fstab</p>
+
+							<p>Jest więcej powodów, ale wspomniane wyżej są najbardziej istotne. Dlatego siduction zachęca do zmiany konfiguracji na schemat trwałych nazw urządzeń blokowych.</p>
+
+			<h2>Cztery różne schematy trwałych nazw:</h2>
+
+					<h4>1. Trwałe nazwy poprzez użycie UUID</h4>
+
+							<p>UUID oznacza Universally Unique Identifier (Uniwersalny Unikatowy Identyfikator) i jest mechanizmem umożliwiającym przydzielenie każdemu systemowi plików unikatowego identyfikatora. Jest tak zaprojektowany, że kolizja nazw jest nieprawdopodobna. Wszystkie linuksowe systemy plików (włączając swap) wspierają UUID. Systemy plików FAT i NTFS nie wspierają UUID, ale także pojawiają się na liście  by-uuid z unikatowym identyfikatorem:</p>
+<pre>$ /bin/ls -lF /dev/disk/by-uuid/
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 2d781b26-0285-421a-b9d0-d4a0d3b55680 -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 31f8eb0d-612b-4805-835e-0e6d8b8c5591 -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 3FC2-3DDB -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 5090093f-e023-4a93-b2b6-8a9568dd23dc -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 912c7844-5430-4eea-b55c-e23f8959a8ee -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 B0DC1977DC193954 -> ../../sdb1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 bae98338-ec29-4beb-aacf-107e44599b2e -> ../../sdb2
+</pre>
+							<p>As you can see, the fat and ntfs partitions have shorter names (sda6 and sdb1), but are still listed by uuid.</p>
+
+					<h4>2. Trwałe nazwy poprzez użycie ETYKIET</h4>
+
+							<p>Prawie każdy system plików może mieć etykietę. Wszystkie partycje, które je mają, są wylistowane w katalogu /dev/disk/by-label:</p>
+<pre>
+$ ls -lF /dev/disk/by-label
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data -> ../../sdb2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data2 -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 fat -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 home -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 root -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 swap -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 windows -> ../../sdb1
+</pre>
+							<p>While labels may have recognisable names, you need to exercise extreme caution to negate name collisions.</p>
+
+							<p>Możesz zmienić etykiety swoich systemów plików używając poleceń:</p>
+<pre>
+* swap: Utwórz nową partycję wymiany: mkswap -L &lt;etykieta&gt; /dev/XXX
+* ext2/ext3ext4: e2label /dev/XXX &lt;etykieta&gt;
+* jfs: jfs_tune -L &lt;etykieta&gt; /dev/XXX
+* xfs: xfs_admin -L &lt;etykieta&gt; /dev/XXX
+* fat/vfat: Nie ma narzędzia do zmiany etykiety w linuksie,
+ale kiedy tworzysz system plików, użyj mkdosfs -n &lt;etykieta&gt; &lt;inne opcje&gt;.
+Możesz również zmienić etykietę istniejącego systemu plików używając Windows.
+* ntfs: ntfslabel /dev/XXX &lt;etykieta&gt; lub zmień używając Windows.
+</pre>
+							<p class="highlight-3">Bądź ostrożny: Etykiety muszą być unikatowe, aby mogły pełnić swoją rolę, dotyczy to napędów USB/firewire i twardych dysków. Składnia LABEL=/ UUID= jest bardziej zalecana niż /dev/disk/by-*/ dla partycji UN*X</p>
+
+
+
+			<h4>3. Trwałe nazwy poprzez użycie id </h4>
+
+							<p>by-id tworzy unikatową nazwę zależną od numeru seryjnego urządzenia.</p>
+
+					<h4>4. Stałe nazwy poprzez użycie ścieżki</h4>
+							<p>by-path tworzy unikatową nazwę zależną  od najkrótszej fizycznej ścieżki (według sysfs). Obie zawierają łańcuchy znaków, aby wskazać, do którego subsystemu należą, a zatem nie są odpowiednie do rozwiązania problemów wspomnianych na początku artykułu. Nie będą więc dalej omawiane.</p>
+
+					<h4>Aktywacja trwałych nazw</h4>
+
+							<p>Po wybraniu metody, teraz uaktywnimy trwałe nazwy w systemie:</p>
+
+					<h4>w fstab</h4>
+
+							<p>Aktywacja trwałych nazw w /etc/fstab jest łatwa, po prostu zamień nazwy urządzeń w pierwszej kolumnie trwałą nazwą. W moim przykładzie zmieniłem /dev/sda7 przez następujące:</p>
+<pre>
+/dev/disk/by-label/home lub
+/dev/disk/by-uuid/31f8eb0d-612b-4805-835e-0e6d8b8c5591
+</pre>
+							<p>Zrób tak dla wszystkich partycji w pliku fstab.</p>
+
+							<p>Zamiast podawać urządzenie bezpośrednio, można wskazać system plików, który ma zostać zamontowany przez jego UUID lub etykietę, pisząc LABEL=&lt;etykieta&gt; or UUID=&lt;uuid&gt;, na przykład:</p>
+<pre>
+LABEL=Boot
+</pre>
+							<p>lub</p>
+<pre>
+UUID=3e6be9de-8139-11d1-9106-a43f08d823a6
+</pre>
+							<p>Źródło:<a href="http://wiki.archlinux.org/index.php/Persistent_block_device_naming">wiki.archlinux.org</a> za <a href=" http://marc.theaimsgroup.com/?l=linux-hotplug-devel&amp;m=114795097514527&amp;w=2">marc.theaimsgroup.com</a>. Zawartość z wiki.archlinux.org dostępna na licencji GNU Free Documentation License 1.2 i została dostosowana dla instrukcji siduction.org</p>
+
+							<p><a href="http://www.lissot.net/partition/ext2fs/labels.html">Więcej o nazwach na lissot.net</a> </p>
+
+	</div>
+			<div id="rev">Content last revised 26/04/2011 1355 UTC</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<div id="menu"> <!-- menu starts here it lang maintained by alessiog75 -->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Jump to siduction.org (Forum and Wiki)" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-it.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Ricerca nel manuale" alt="Ricerca" />Ricerca Online Offline</a></li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Scegliere un'altra lingua" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-it.htm">Manuale di siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-it.htm#welcome-gen">Manuale di siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-it.htm#cred-team">Crediti</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-it.htm#how-to">Come usare questo manuale &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-it.htm#how-to">Come usare questo manuale</a></li>
+					  <li><a href="welcome-it.htm#table-contents">Indice</a></li>
+					</ul>
+					</li>
+		<li><a href="help-it.htm#help-gen">Come ottenere aiuto &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-it.htm#help-gen">Dove e come ottenere aiuto</a></li>
+					  <li><a href="help-it.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-it.htm#welcome-quick">siduction - Guida rapida</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-it.htm">Contenuto della ISO, Rilasci, Mirror per i Download e Masterizzazione</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-it.htm#cd-content">Contenuto della ISO e requisiti di sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-it.htm#rolling">Note di rilascio</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-it.htm#download-siduction">Mirror di siduction, download e masterizzazione &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-it.htm#md5">Somma MD5</a></li>
+					  <li><a href="cd-dl-burning-it.htm#burn-nero">Masterizzare in Windows</a></li>
+					  <li><a href="cd-dl-burning-it.htm#burn-linux">Masterizzare in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-it.htm#burning-no-gui">Script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-it.htm#burn-no-gui-gen">Masterizzare senza interfaccia grafica</a></li>
+					  <li><a href="cd-dl-burning-it.htm#download-siduction">Mirror per il download di siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-it.htm">Modalità Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-it.htm#rootpw">Password di root nel live ISO di siduction</a></li>
+				<li><a href="live-mode-it.htm#live-cd-installsoft">Installare software in modalità live ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-it.htm">Terminale / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-it.htm#term-kon">Terminale / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-it.htm#term-kon">Terminale / Konsole</a></li>
+					  <li><a href="term-konsole-it.htm#colours">Prompt del terminale colorati</a></li>
+					  <li><a href="term-konsole-it.htm#cli-help">Aiuto nella linea di comando</a></li>
+					  <li><a href="help-it.htm#init3-tools">Strumenti in modalità testo (tty) e init 3</a></li>
+					  <li><a href="term-konsole-it.htm#term-cmds">Lista dei comandi da terminale</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-it.htm#sux">sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-it.htm">Opzioni d'avvio</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-it.htm#cheatcodes">Opzioni d'avvio specifiche del live ISO di siduction</a></li>
+				<li><a href="cheatcodes-it.htm#cheatcodes-linux">Opzioni d'avvio generiche di Linux</a></li>
+				<li><a href="cheatcodes-vga-it.htm#vga">Codici VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-it.htm">Partizionamento del disco fisso - Tradizionale, GPT e LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-it.htm#hd-ntfs3g">Scrivere su partizioni NTFS con ntfs-3g</a></li>
+			<li><a href="part-lvm-it.htm#part-lvm">Partizionare per utilizzare LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-it.htm#partition">Partizionare con interfaccia grafica (GUI) &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-it.htm#partition">Partizionare il disco fisso con  GParted/KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-it.htm#ntfs">Ridimensionare una partizione NTFS GParted/KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-it.htm#partition">Partizionare dalla linea di comando (CLI) &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-it.htm#partition">Partizionare il disco fisso con cfdisk</a></li>
+					    <li><a href="part-cfdisk-it.htm#formating">Formattare dopo aver partizionato con cfdisk</a></li>
+  					    <li><a href="part-gdisk-it.htm#gdisk-1">Partitionamento GPT con gdisk</a></li>
+					    <li><a href="part-gdisk-it.htm#gdisk-6">Formattare dopo aver partizionato con gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-it.htm#part-example">Basi del partizionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-it.htm#part-example">Esempi di dimensione delle partizioni</a></li>
+					  <li><a href="part-uuid-it.htm#uuid">UUID, ricostruire fstab e creare nuovi punti di mount</a></li>
+					  <li><a href="part-cfdisk-it.htm#disknames">Assegnare nomi ai dischi</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-it.htm">Opzioni d'installazione - HD, USB, VM e Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-it.htm#Inst-prep">Preparazione all'installazione &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-it.htm#Inst-prep">Preparazione all'installazione</a></li>
+					  <li><a href="hd-install-it.htm#Installation">Installare sul disco fisso</a></li>
+					  <li><a href="hd-install-it.htm#first-hd-boot">Primo avvio</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-it.htm#fromiso">Avviare "fromiso" &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-it.htm#fromiso">Avviare "fromiso" - panoramica</a></li>
+					  <li><a href="hd-install-opts-it.htm#grub2-fromiso">Avviare "fromiso" con Grub 2</a></li>
+					  <li><a href="hd-install-opts-it.htm#fromiso-persist">"fromiso" e "persist"</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-it.htm#usb-hd">Installare su periferiche USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-it.htm#usb-hd">Installare siduction su di un dispositivo USB - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-it.htm#raw-usb">Installare siduction su di un dispositivo USB/SSD con qualsiasi sistema operativo: Linux, MS Windows, Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-it.htm#install-crypt">Installare su partizioni criptate - cryptroot</a></li>
+		  <li><a href="nbdboot-it.htm#nbd1">Avviare siduction attraverso una rete</a></li>
+		  <li><a href="hd-install-vmopts-it.htm#vmopts">Opzioni di installazione in una Macchina Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-it.htm">Schede grafiche, Monitor, Xorg &amp; Driver</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-it.htm#mon-res">Risoluzione dello schermo e tipi di schermi &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-it.htm#mon-res">Risoluzione dello schermo e tipi di schermi</a></li>
+					  <li><a href="hw-dev-mon-it.htm#xrandr">Doppio schermo e xrandr</a></li>
+					  <li><a href="hw-dev-mon-it.htm#mon-binary">Doppio schermo (usando i driver binari)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-it.htm#foss-xorg">Driver GPU &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-it.htm#ati-3d">Driver 3D per AMD/ATI</a></li>
+					  <li><a href="gpu-it.htm#intel">Driver 2D e 3D per Intel</a></li>
+					  <li><a href="gpu-it.htm#nvidia">Driver 3D per Nvidia</a></li>
+					  <li><a href="gpu-it.htm#foss-xorg">Driver Open Source Xorg</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-it.htm#fw-detect">Individuazione del firmware non-free</a></li>
+			  <li><a href="nf-firm-it.htm#non-free-firmware">Aggiungere non-free alla Sources List</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-it.htm">Gestori di finestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-it.htm">KDE and Xfce - Gestori di finestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-it.htm#xfce-notes">Aggiunte utili per Xfce</a></li>
+					    <li><a href="wm-dm-it.htm#install-add">Aggiunte utili per KDE</a></li>
+					    <li><a href="wm-dm-it.htm#desk-freeze">Blocchi del desktop</a></li>
+					    <li><a href="wm-dm-it.htm#kde-login">Impossibilità a entrare in KDE</a></li>
+					    <li><a href="wwm-dm-it.htm#ch-th">Cambiare i temi</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-it.htm#dm">Installare gestori di finestre addizionali</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-it.htm">Connessione a Internet, WiFi, LAN e reti</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-it.htm">LAMP in siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-it.htm#serv-apache">siduction e LAMP</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-ftp">Client FTP</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-sec">Protocolli di sicurezza</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-it.htm#serv-mysql">Configurazione di MySQL</a></li>
+					    <li><a href="lamp-php-it.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-it.htm#ntp-server">Configurazione del Timeserver</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-it.htm#tor">Firewall e Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-it.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-it.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-it.htm#firewalls">Firewall</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-it.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-it.htm#setup">Configurare il Server-Samba</a></li>
+						  <li><a href="samba-it.htm#configure">Configurare SAMBA (Windows)</a></li>
+						  <li><a href="ssh-it.htm#ssh-fs">Mount da remoto con SSH</a></li>
+						  <li><a href="ssh-it.htm#ssh-x">Applicazioni in X Window attraverso SSH</a></li>
+						  <li><a href="ssh-it.htm#ssh-f">Interfaccia grafica per SSH con Konqueror</a></li>
+						  <li><a href="ssh-it.htm#ssh-w">SSH X-Forwarding da un PC con Windows</a></li>
+						  <li><a href="ssh-it.htm#ssh">SSH e Sicurezza</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-it.htm#netcardconfig">Connessioni WiFi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-it.htm#netcardconfig">Attivare una connessione di rete con "ceni"</a></li>
+						    <li><a href="inet-wpagui-it.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-it.htm#net-set1">WiFi - Impostare il Roaming WiFi</a></li>
+						    <li><a href="inet-wpa-it.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-it.htm#hotswitch">Commutare la rete fra WiFi e Cavo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-it.htm#netcardconfig">Connessioni via cavo &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-it.htm#dial-mod">Modem 56k</a></li>
+						    <li><a href="inet-ceni-it.htm#netcardconfig">Attivare una connessione di rete con "Ceni"</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-it.htm">Dist-upgrade e gestione dei pacchetti</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-it.htm#apt-cook">APT - Guida rapida e lista dei depositi del software &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-it.htm#apt-cook">APT - Guida rapida e lista dei depositi del software</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-install">Installare un nuovo pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-delete">Eliminare un pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-downgrade">Effettuare il downgrade di un pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-cache">Cercare un pacchetto con apt-cache</a></li>
+					    <li><a href="sys-admin-apt-it.htm#gui-pacsea">Cercare un pacchetto tramite interfaccia grafica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-it.htm#kern-upgrade">Aggiornare il kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-it.htm#kern-remove">Eliminare i kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-it.htm#kern-upgrade">Aggiornare il kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-it.htm#dmakms">Installare dinamicamente i moduli del kernel con dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-it.htm#apt-upgrade">Aggiornare un sistema installato - dist-upgrade - Panoramica &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-it.htm#live-cd-upgrade">Aggiornare un sistema attraverso il DVD live ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-it.htm#approx">Fare il dist-upgrade di più PC in rete</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-upgrade">Aggiornare un sistema installato - dist-upgrade - Panoramica</a></li>
+					    <li><a href="sys-admin-apt-it.htm#du-st">Aggiornare un sistema installato - dist-upgrade - Passi da fare</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-it.htm">Amministrazione del sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-it.htm#bois-prep">Aggiornare il BIOS con FreeDOS</a></li>
+		<li><a href="vir-rkits-it.htm#virus-rkits">Antivirus e ricerca di rootkit</a></li>
+		<li><a href="hd-install-it.htm#adduser">Aggiungere Utenti e Password &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-it.htm#adduser">Aggiungere un nuovo utente</a></li>
+					    <li><a href="sys-admin-gen-it.htm#pw-lost">Recupero della password di root</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-it.htm#start-services">Servizi e runlevel init &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-it.htm#start-services">Abilitare e disabilitare servizi</a></li>
+					    <li><a href="sys-admin-gen-it.htm#pkill">Arrestare un servizio o un processo</a></li>
+					    <li><a href="sys-admin-gen-it.htm#init">runlevel di siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-it.htm#rsync">Backup del sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-it.htm#rdiff">Backup con rdiff</a></li>
+					    <li><a href="sys-admin-rsync-it.htm#rsync">Backup con rsync</a></li>
+					    <li><a href="home-it.htm#home-bu">Spostare la directory "home"</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-it.htm#fonts">CUPS, Font e Suono &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-it.htm#fonts">Font</a></li>
+					     <li><a href="sys-admin-gen-it.htm#cups">Sistema di stampa CUPS</a></li>
+					     <li><a href="sys-admin-gen-it.htm#sound">Mixer del suono</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-it.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-it.htm#chroot">Grub2 - Ripristinare Grub tramite chroot</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#mbr-over-grub2">Grub2 - MBR: sovrascrittura del settore di boot</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#multi-os">Grub2 - Avvio duplice o multiplo</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#grub1-grub2">Grub2 - Aggiornare da Grub1</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#grub2">Grub2 - Panoramica</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+
+
+
+
+<!-- menu-en ends here --> </div>

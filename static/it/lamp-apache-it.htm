@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Manuale siduction - Server Apache</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+<!-- Last translation revision by giocitta on 14/03/2012 18.30 UTC -->
+<div id="menu"> <!-- menu starts here it lang maintained by giocitta -->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Jump to siduction.org (Forum and Wiki)" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-it.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Ricerca nel manuale" alt="Ricerca" />Ricerca Online Offline</a></li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Scegliere un'altra lingua" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-it.htm">Manuale del s.o. siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-it.htm#welcome-gen">Manuale del s.o. siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-it.htm#cred-team">Crediti</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-it.htm#how-to">Come usare questo manuale &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-it.htm#how-to">Come usare questo manuale</a></li>
+					  <li><a href="welcome-it.htm#table-contents">Indice dei contenuti</a></li>
+					</ul>
+					</li>
+		<li><a href="help-it.htm#help-gen">Ottenere aiuto &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-it.htm#help-gen">Dove e come ottenere aiuto</a></li>
+					  <li><a href="help-it.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-it.htm#welcome-quick">siduction - Guida d'avvio rapida</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-it.htm">Contenuto della ISO, Rilasci, Mirror per i Download e Masterizzazione</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-it.htm#cd-content">Contenuto della ISO e requisiti di sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-it.htm#rolling">Note di rilascio dinamiche</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-it.htm#download-siduction">Mirror siduction, download e masterizzazione &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-it.htm#md5">Somma md5</a></li>
+					  <li><a href="cd-dl-burning-it.htm#burn-nero">Masterizzare in Windows</a></li>
+					  <li><a href="cd-dl-burning-it.htm#burn-linux">Masterizzare in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-it.htm#burning-no-gui">Script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-it.htm#burn-no-gui-gen">Masterizzare senza interfaccia grafica</a></li>
+					  <li><a href="cd-dl-burning-it.htm#download-siduction">Mirror per il download di siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-it.htm">Modalità Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-it.htm#rootpw">Password di root della Live ISO</a></li>
+				<li><a href="live-mode-it.htm#live-cd-installsoft">Installare software in modalità Live ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-it.htm">Terminale / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-it.htm#term-kon">Terminale / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-it.htm#term-kon">Terminale / Konsole</a></li>
+					  <li><a href="term-konsole-it.htm#colours">Prompt di terminale colorati</a></li>
+					  <li><a href="term-konsole-it.htm#cli-help">Aiuto nella linea di comando</a></li>
+					  <li><a href="help-it.htm#init3-tools">Strumenti in modalità testo da conoscere (tty) e init 3</a></li>
+					  <li><a href="term-konsole-it.htm#term-cmds">Lista dei comandi da terminale</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-it.htm#sux">sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-it.htm">Opzioni di avvio</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-it.htm#cheatcodes">Opzioni di avvio specifiche del live ISO siduction</a></li>
+				<li><a href="cheatcodes-it.htm#cheatcodes-linux">Opzioni di avvio generici di Linux</a></li>
+				<li><a href="cheatcodes-vga-it.htm#vga">Codici VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-it.htm">Partitioning the Hard Drive - Traditional, GPT and LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-it.htm#hd-ntfs3g">Scrivere su partizioni NTFS con ntfs-3g</a></li>
+			<li><a href="part-lvm-it.htm#part-lvm">Partizionare per utilizzare LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-it.htm#partition">Partizionare con una GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-it.htm#partition">Partizionare il disco fisso con  GParted/KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-it.htm#ntfs">Ridimensionare una partizione NTFS GParted/KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-it.htm#partition">Partizionare con una CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-it.htm#partition">Partizionare il disco fisso con cfdisk</a></li>
+					    <li><a href="part-cfdisk-it.htm#formating">Formattare dopo aver partizionato con cfdisk</a></li>
+					    <li><a href="part-gdisk-it.htm#gdisk-6">Formatting after partitioning with gdisk</a></li>
+					    <li><a href="part-gdisk-it.htm#gdisk-1">GPT Partitioning with gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-it.htm#part-example">Basi del partizionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-it.htm#part-example">Esempi di dimensione partizioni</a></li>
+					  <li><a href="part-uuid-it.htm#uuid">UUID, Ricostruire fstab e creare nuovi punti di mount</a></li>
+					  <li><a href="part-cfdisk-it.htm#disknames">Assegnare nomi ai dischi</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-it.htm">Opzioni d'installazione - HD, USB, VM e Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-it.htm#Inst-prep">Preparazione all'installazione &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-it.htm#Inst-prep">Preparazione all'installazione</a></li>
+					  <li><a href="hd-install-it.htm#Installation">Installare sul disco fisso</a></li>
+					  <li><a href="hd-install-it.htm#first-hd-boot">Primo avvio</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-it.htm#fromiso">Avviare "fromiso" &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-it.htm#fromiso">Avviare "fromiso" - panoramica</a></li>
+					  <li><a href="hd-install-opts-it.htm#grub2-fromiso">Avviare "fromiso" con Grub 2</a></li>
+					  <li><a href="hd-install-opts-it.htm#fromiso-persist">"fromiso" e "persistente"</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-it.htm#usb-hd">Installare su periferiche USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-it.htm#usb-hd">Installare siduction su di un dispositivo USB - specifico di siduction - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-it.htm#raw-usb">Installare siduction su di un dispositivo USB/SSD con qualsiasi s.o. : Linux, MS Windows, Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-it.htm#install-crypt">Installare su partizioni criptate - cryptroot</a></li>
+		  <li><a href="nbdboot-it.htm#nbd1">Avviare siduction attraverso una rete</a></li>
+		  <li><a href="hd-install-vmopts-it.htm#vmopts">Opzioni di installazione della Macchina Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-it.htm">Schede grafiche, Monitor, Xorg &amp; drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-it.htm#mon-res">Risoluzione dello schermo e tipi di schermi &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-it.htm#mon-res">Risoluzione dello schermo e tipi di schermi</a></li>
+					  <li><a href="hw-dev-mon-it.htm#xrandr">Doppio schermo e xrandr</a></li>
+					  <li><a href="hw-dev-mon-it.htm#mon-binary">Doppio schermo (usando i driver binari)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-it.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-it.htm#ati-3d">Driver 3D per AMD/ATI</a></li>
+					  <li><a href="gpu-it.htm#intel">Driver 2D e 3D per Intel</a></li>
+					  <li><a href="gpu-it.htm#nvidia">Driver 3D per Nvidia</a></li>
+					  <li><a href="gpu-it.htm#foss-xorg">Driver Open Source Xorg</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-it.htm#fw-detect">Rilevamento del firmware non-free</a></li>
+			  <li><a href="nf-firm-it.htm#non-free-firmware">Aggiungere non-free al Sources List</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-it.htm">Gestori di finestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-it.htm">KDE and XFCE Gestori di finestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-it.htm#xfce-notes">Aggiunte utili per Xfce</a></li>
+					    <li><a href="wm-dm-it.htm#install-add">Aggiunte utili per KDE</a></li>
+					    <li><a href="wm-dm-it.htm#desk-freeze">Blocchi del desktop</a></li>
+					    <li><a href="wm-dm-it.htm#kde-login">Impossibile entrare in KDE</a></li>
+					    <li><a href="wwm-dm-it.htm#ch-th">Cambiare i temi</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-it.htm#dm">Installing additional Display Managers</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-it.htm">Connessione ad internet, WiFi, LAN e reti</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-it.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-it.htm#serv-apache">siduction e LAMP</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-ftp">Client FTP</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-sec">Protocolli di sicurezza</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-it.htm#serv-mysql">Configurazione MySQL</a></li>
+					    <li><a href="lamp-php-it.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-it.htm#ntp-server">Configurazione Timeserver</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-it.htm#tor">Firewall e Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-it.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-it.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-it.htm#firewalls">Firewall</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-it.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-it.htm#setup">Setup Samba-Server</a></li>
+						  <li><a href="samba-it.htm#configure">Configurare SAMBA (Windows)</a></li>
+						  <li><a href="ssh-it.htm#ssh-fs">Mount da remoto con SSH</a></li>
+						  <li><a href="ssh-it.htm#ssh-x">Applicazioni in X Window attraverso SSH</a></li>
+						  <li><a href="ssh-it.htm#ssh-f">Interfaccia grafica per SSH con Konqueror</a></li>
+						  <li><a href="ssh-it.htm#ssh-w">SSH X-Forwarding da un PC con Windows</a></li>
+						  <li><a href="ssh-it.htm#ssh">SSH e Sicurezza</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-it.htm#netcardconfig">Connessioni WiFi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-it.htm#netcardconfig">Attivare una connessione di rete con "ceni"</a></li>
+						    <li><a href="inet-wpagui-it.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-it.htm#net-set1">WiFi - Impostare il Roaming WiFi</a></li>
+						    <li><a href="inet-wpa-it.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-it.htm#hotswitch">Scambiare la rete fra WiFi e Cavo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-it.htm#netcardconfig">Connessioni via cavo &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-it.htm#dial-mod">Modem 56k</a></li>
+						    <li><a href="inet-ceni-it.htm#netcardconfig">Attivare una connessione di rete con "ceni"</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-it.htm">Dist-upgrade e gestione dei pacchetti</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-it.htm#apt-cook">APT - Guida rapida lista depositi del software &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-it.htm#apt-cook">APT - Guida rapida lista depositi del software</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-install">Installare un nuovo pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-delete">Eliminare un pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-downgrade">Effettuare il downgrade o l'Hold di un pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-cache">Cercare un pacchetto con apt-cache</a></li>
+					    <li><a href="sys-admin-apt-it.htm#gui-pacsea">Cercare un pacchetto tramite interfaccia grafica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-it.htm#kern-upgrade">Aggiornare il kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-it.htm#kern-remove">Eliminare i kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-it.htm#kern-upgrade">Aggiornare il kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-it.htm#dmakms">Installare dinamicamente i moduli del kernel con dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-it.htm#apt-upgrade">Aggiornare un sistema installato - dist-upgrade - Panoramica &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-it.htm#live-cd-upgrade">Aggiornare un sistema attraverso il DVD live ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-it.htm#approx">Fare il dist-upgrade di più PC in rete</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-upgrade">Aggiornare un sistema installato - dist-upgrade - Panoramica</a></li>
+					    <li><a href="sys-admin-apt-it.htm#du-st">Aggiornare un sistema installato - dist-upgrade - Passi da fare</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-it.htm">Amministrazione di sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-it.htm#bois-prep">Aggiornare il BIOS con FreeDOS</a></li>
+		<li><a href="vir-rkits-it.htm#virus-rkits">Controllo virus e rootkit</a></li>
+		<li><a href="hd-install-it.htm#adduser">Aggiungere Utenti e Password &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-it.htm#adduser">Aggiungere un nuovo utente</a></li>
+					    <li><a href="sys-admin-gen-it.htm#pw-lost">Recupero della password di root</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-it.htm#start-services">Servizi e runlevel init &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-it.htm#start-services">Abilitare e disabilitare servizi</a></li>
+					    <li><a href="sys-admin-gen-it.htm#pkill">Killing a service or process</a></li>
+					    <li><a href="sys-admin-gen-it.htm#init">runlevel di siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-it.htm#rsync">Backup del sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-it.htm#rdiff">Backup con rdiff</a></li>
+					    <li><a href="sys-admin-rsync-it.htm#rsync">Backup con rsync</a></li>
+					    <li><a href="home-it.htm#home-bu">Spostare la directory "home"</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-it.htm#fonts">CUPS, Font e Suono &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-it.htm#fonts">Font</a></li>
+					     <li><a href="sys-admin-gen-it.htm#cups">Sistema di stampa CUPS</a></li>
+					     <li><a href="sys-admin-gen-it.htm#sound">Mixer del suono</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-it.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-it.htm#chroot">Grub2 - Ripristinare Grub tramite chroot</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#mbr-over-grub2">Grub2 - MBR: sovrascrittura del settore di boot</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#multi-os">Grub2 - Avvio doppio o multiplo</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#grub1-grub2">Grub2 - Aggiornare da Grub1</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#grub2">Grub2 - Panoramica</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+
+
+
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+<div class="divider" id="serv-apache">
+			<h2 id="top-header">La catena LAMP in siduction</h2>
+
+				<p>L'acronimo LAMP fa riferimento a un insieme di programmi liberi comunemente usati per far funzionare siti o server web dinamici:<br />
+				Linux, il sistema operativo<br />
+				Apache, il server web<br />
+				MySQL, il sistema di gestione dei database (o server database)<br />
+				Perl, PHP, e/o Python, i linguaggi di scripting</p>
+
+				<h5 class="highlight-2">ATTENZIONE: Non usate mai il PC dedicato al lavoro quotidiano come server web! Utilizzate piuttosto un PC dedicato per quella funzione e non usatelo per altro!</h5>
+
+				<p>Usi di un server:<br />
+				a) <span class="highlight-3">un server locale di prova per progettisti web senza connessione internet, che è lo scopo che qui ci ripromettiamo di trattare;</span><br />
+				b) un server privato "chiuso" connesso alla rete;<br />
+				c) un server web privato pienamente accessibile da internet,<br />
+				d) un server web commerciale, cosa peraltro al di là dello scopo di questo manuale.</p>
+
+
+			<h5>Requisiti minimi</h5>
+				<p>Almeno 256 Mb di RAM. Una quantità inferiore può causare molti problemi in quanto un server MySQL richiede molta RAM per funzionare correttamente. MySQL fornirà un errore del tipo "cannot connect to mysql.sock", cioè "non posso connettermi a mysql.sock", se la memoria disponibile non è sufficiente.</p>
+
+										<p>I pacchetti che devono essere installati sono:</p>
+<pre>
+apache2
+apache2-utils
+apache2-mpm-prefork
+php5 php5-common
+mysql-server
+mysql-common
+libapache2-mod-php5
+php5-mysql
+phpmyadmin
+</pre>
+				<p class="highlight-2">ATTENZIONE! Eseguite il seguente comando:</p>
+<pre>
+apt-get remove --purge splashy
+</pre>
+				<p class="highlight-2">in quanto splashy va sempre in conflitto con MySQL.</p>
+
+					<p>Il file di configurazione di Apache si trova in:<span class="highlight-3">/etc/apache2/apache2.conf</span> e la directory web è <span class="highlight-3">/var/www</span>. Non modificate le impostazioni predefinite di debian per 'mpm-worker/mpm-prefork' perché sono corrette.</p>
+
+					<p>Per controllare se php è installato e avviato correttamente, create semplicemente un file test.php nella cartella /var/www che includa la funzione phpinfo() esattamente come mostrato qui di seguito:</p>
+<pre>
+mcedit /var/www/test.php
+
+# test.php
+&lt;? phpinfo(); ?&gt;
+</pre>
+					<p>Indirizzate il browser web su:</p>
+<pre>
+http://localhost/test.php
+oppure
+http://vostro_indirizzo_IP:80/test.php
+</pre>
+					<p>Dovrebbe così esser visualizzata tutta la vostra configurazione di php e le impostazioni predefinite.</p>
+
+					<p>Potrete modificare i valori che interessano e impostare dei domini virtuali usando il file di configurazione di apache.</p>
+
+
+					<p>Se volete verificare l'installazione, aprite un browser web e digitate nella barra degli indirizzi:</p>
+<pre>
+http://vostro_indirizzo_IP/apache2-default/
+</pre>
+					<p>Se è visualizzato un messaggio di benvenuto, l'installazione è corretta.</p>
+
+					<p>La directory "root" predefinita dei documenti per apache2 è <span class="highlight-3">/var/www</span>. Cambiatela in:</p>
+<pre>
+mkdir /home/myself/www
+ln -s /home/myself/www /var/www
+</pre>
+					<p>Con questi comandi potrete modificare il vostro sito web nella directory home come utente normale.</p>
+
+	</div>
+<div class="divider" id="serv-ftp">
+			<h2>Programmi FTP</h2>
+				<p>Usate SSH e leggete attentamente in questo manuale <a href="ssh-it.htm">il capitolo SSH</a>; siduction ha anche un altro FTP client al suo interno, la funzionalità ftp di Konqueror che permette l'invio di file ai server.</p>
+
+
+	</div>
+<div class="divider" id="serv-sec">
+			<h2>Abilitare protocolli di sicurezza validi per i server web</h2>
+
+				<h3>Il firewall</h3>
+				<p><span class="highlight-2">Senza un firewall non c'è assolutamente sicurezza per il server. Ricordate di bloccare TUTTO fino a che non vi serve qualcosa: sbloccatela a quel punto, usatela e poi bloccatela nuovamente!</span></p>
+<pre>
+21 (ftp)
+22 (SSH)
+25 110 (email)
+443 (SSL http o https)
+993 (imap ssl)
+995 (pop3 ssl)
+80 (http)
+
+e qualsiasi altra porta disponibile!
+</pre>
+
+				<h3>Proteggere in via predefinita i file del server</h3>
+
+					<p>Un aspetto a volte incompreso di Apache è la funzionalità dell'accesso predefinito, cioè, se non si fa qualcosa per cambiarlo, il modo in cui il server può trovare il percorso verso un file attraverso le normali regole che mappano gli URL, e quindi inviarlo ai client che hanno richiesto quegli URL.</p>
+
+					<p>Consideriamo il seguente esempio:</p>
+<pre>
+ 1. # cd /; ln -s / public_html
+ 2. Accessing http://localhost/~root/
+</pre>
+					<p class="highlight-2">Ciò consentirebbe ai client di muoversi "a piacimento" attraverso l'intero filesystem! Per impedire l'evento, aggiungete il seguente blocco alla configurazione del server:</p>
+<pre>
+&lt;Directory /&gt;
+   Order Deny,Allow
+   Deny from all
+&lt;/Directory&gt;
+</pre>
+				<p>Questa impostazione impedirà l'accesso predefinito a locazioni del filesystem. Aggiungete dei corretti blocchi di &lt;Directory&gt; per permettere l'accesso solo alle aree volute. Ad esempio:</p>
+<pre>
+&lt;Directory /usr/users/*/public_html&gt;
+    Order Deny,Allow
+    Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/httpd&gt;
+    Order Deny,Allow
+    Allow from all
+ &lt;/Directory&gt;
+</pre>
+				<p>Ponete particolare attenzione all'interazione delle direttive &lt;Location&gt; e &lt;Directory&gt;; per esempio, anche se &lt;Directory /&gt; nega l'accesso, una direttiva &lt;Location /&gt; potrebbe sovrascriverla.</p>
+
+				<p>Siate anche guardinghi nel far girare giochi con la direttiva UserDir; impostarla in modo tipo "./" potrebbe avere lo stesso effetto, per root, come il primo esempio sopra. Se state usando Apache 1.3 o una versione superiore, vi raccomandiamo fortemente di includere la seguente linea nei file di configurazione del server:</p>
+<pre>
+UserDir disabled root
+</pre>
+
+	</div>
+<div class="divider" id="serv-ssl">
+			<h2>SSL</h2>
+
+ 				<p>Avviare lo script "apache2-ssl-certificate":</p>
+<pre>
+# apache2-ssl-certificate
+</pre>
+				<p>Apparirà la seguente schermata dove potrete inserire tutte le informazioni richieste.</p>
+<pre>
+Creating self-signed certificate
+replace it with one signed by a certification authority (CA) enter your ServerName at the Common Name prompt. If you want your certificate to expire after x days call this programm
+with -days x
+-----
+Generating a 1024 bit RSA private key
+--------
+writing new private key to '/etc/apache2/ssl/apache.pem'
+--------
+You are about to be asked to enter information that will be incorporated into your certificate request.
+-----------
+What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some blank. For some fields there will be a default value,
+----------
+If you enter '.', the field will be left blank.
+</pre>
+<pre>
+Country Name (2 letter code) [GB]:
+
+State or Province Name (full name) [Some-State]:
+
+Locality Name (eg, city) []:
+
+Organization Name (eg, company; recommended) []:
+
+Organizational Unit Name (eg, section) []:
+
+server name (eg. ssl.domain.tld; required!!!) []:
+
+Email Address []:
+</pre>
+
+					<p>Avviate lo script "a2enmod ssl":</p>
+<pre>
+# a2enmod ssl
+</pre>
+ 					<p>Ciò creerà automaticamente un collegamento simbolico tra mods-available e mods-enabled.</p>
+
+					<p>Fate una copia del file "/etc/apache2/sites-available/default" nella cartella /etc/apache2/sites-available/ e chiamatelo "ssl":</p>
+<pre>
+# cp /etc/apache2/sites-available/default /etc/apache2/sites-available/ssl
+</pre>
+					<p>Create un collegamento simbolico al nuovo file per questo uso:</p>
+<pre>
+#  ln -s /etc/apache2/sites-available/ssl /etc/apache2/sites-enabled/
+oppure
+#  a2ensite ssl
+</pre>
+ 					<p>Se volete cambiare una qualsiasi impostazione della configurazione di base, fatelo in /etc/apache2/apache2.conf; se volete cambiare la root dei documenti predefinita, fatelo nel file /etc/apache2/sites-available/default e riavviate il server apache.</p>
+
+ 					<p>Per riavviare il server Apache usate il seguente comando:</p>
+<pre>
+#/etc/init.d/apache2 restart
+</pre>
+ 					<p>Ora dovremo cambiare l'indirizzo della porta in /etc/apache2/ports.conf che in via predefinita starà in ascolto sulla porta 80, mentre ora con SSL occorre impostare l'ascolto sulla porta 443:</p>
+<pre>
+ Listen 443
+</pre>
+					<p>Modificate il file /etc/apache2/sites-available/ssl (o qualsiasi nome che avete dato al file di configurazione del nuovo sito ssl) e cambiate la porta 80 in 443 nel nome del sito.</p>
+
+					<p>Aggiungere le seguenti due linee da qualche parte nel file /etc/apache2/apache2.conf:</p>
+<pre>
+SSLEngine On
+SSLCertificateFile /etc/apache2/ssl/apache.pem
+</pre>
+					<p>Modificate "SSLCertificateFile /etc/apache2/ssl/apache.pem" e immettete le locazioni del file di certificato e del file della chiave certificata. Ecco qui un esempio:</p>
+<pre>
+SSLCertificateFile /etc/apache2/ssl/online.test.net.crt
+SSLCertificateKeyFile /etc/apache2/ssl/online.test.net.key
+</pre>
+					<p>Impostate "ServerSignature" a off, seguite questi passi e modificate il file /etc/apache2/apache2.conf aggiungendo le seguenti linee:</p>
+<pre>
+ServerSignature Off
+ServerTokens ProductOnly
+</pre>
+
+ 					<p>Se volete permettere dei tipi di file indice differenti, controllate le seguenti linee nel file /etc/apache2/apache2.conf :</p>
+<pre>
+ DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.shtml
+</pre>
+ 					<p>Riavviate il server apache:</p>
+<pre>
+ /etc/init.d/apache2 restart
+</pre>
+
+					<p>Ora dovreste avere un server di prova, ma nel caso voleste connettervi a internet con questo <span class="highlight-2">NON FATELO! Usate un altro PC esclusivamente devoluto a essere un server web per internet!</span></p>
+
+	</div>
+					<p>Fonti:</p>
+
+					<p><a href="http://www.mysql-apache-php.com/"> http://www.mysql-apache-php.com</a></p>
+					<p><a href="http://httpd.apache.org/docs/1.3/misc/security_tips.html"> http://httpd.apache.org/docs/1.3/misc/security_tips.html</a></p>
+					<p><a href="http://www.debianhelp.co.uk/webserver.htm"> http://www.debianhelp.co.uk/webserver.htm</a></p>
+
+			<div id="rev">Content last revised 14/03/2012 2000 UTC</div>
+
+</div>
+</div>
+</body>
+</html>

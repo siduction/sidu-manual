@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Manuale siduction - Installazioni crittografate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+<!-- Last translation revision by giocitta on 19/12/2010 18.15 UTC -->
+<div id="menu"> <!-- menu starts here it lang maintained by giocitta -->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+<!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Jump to siduction.org (Forum and Wiki)" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-it.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Ricerca nel manuale" alt="Ricerca" />Ricerca Online Offline</a></li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Scegliere un'altra lingua" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-it.htm">Manuale del s.o. siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-it.htm#welcome-gen">Manuale del s.o. siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-it.htm#cred-team">Crediti</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-it.htm#how-to">Come usare questo manuale &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-it.htm#how-to">Come usare questo manuale</a></li>
+					  <li><a href="welcome-it.htm#table-contents">Indice dei contenuti</a></li>
+					</ul>
+					</li>
+		<li><a href="help-it.htm#help-gen">Ottenere aiuto &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-it.htm#help-gen">Dove e come ottenere aiuto</a></li>
+					  <li><a href="help-it.htm#paste">IRC !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-it.htm#welcome-quick">siduction - Guida d'avvio rapida</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-it.htm">Contenuto della ISO, Rilasci, Mirror per i Download e Masterizzazione</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-it.htm#cd-content">Contenuto della ISO e requisiti di sistema &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-it.htm#rolling">Note di rilascio dinamiche</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-it.htm#download-siduction">Mirror siduction, download e masterizzazione &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-it.htm#md5">Somma md5</a></li>
+					  <li><a href="cd-dl-burning-it.htm#burn-nero">Masterizzare in Windows</a></li>
+					  <li><a href="cd-dl-burning-it.htm#burn-linux">Masterizzare in Linux</a></li>
+					  <li><a href="cd-no-gui-burn-it.htm#burning-no-gui">Script burniso</a></li>
+					  <li><a href="cd-no-gui-burn-it.htm#burn-no-gui-gen">Masterizzare senza interfaccia grafica</a></li>
+					  <li><a href="cd-dl-burning-it.htm#download-siduction">Mirror per il download di siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-it.htm">Modalità Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-it.htm#rootpw">Password di root della Live ISO</a></li>
+				<li><a href="live-mode-it.htm#live-cd-installsoft">Installare software in modalità Live ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-it.htm">Terminale / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-it.htm#term-kon">Terminale / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-it.htm#term-kon">Terminale / Konsole</a></li>
+					  <li><a href="term-konsole-it.htm#colours">Prompt di terminale colorati</a></li>
+					  <li><a href="term-konsole-it.htm#cli-help">Aiuto nella linea di comando</a></li>
+					  <li><a href="help-it.htm#init3-tools">Strumenti in modalità testo da conoscere (tty) e init 3</a></li>
+					  <li><a href="term-konsole-it.htm#term-cmds">Lista dei comandi da terminale</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-it.htm#sux">sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-it.htm">Opzioni di avvio</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-it.htm#cheatcodes">Opzioni di avvio specifiche del live ISO siduction</a></li>
+				<li><a href="cheatcodes-it.htm#cheatcodes-linux">Opzioni di avvio generici di Linux</a></li>
+				<li><a href="cheatcodes-vga-it.htm#vga">Codici VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-it.htm">Partitioning the Hard Drive - Traditional, GPT and LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-it.htm#hd-ntfs3g">Scrivere su partizioni NTFS con ntfs-3g</a></li>
+			<li><a href="part-lvm-it.htm#part-lvm">Partizionare per utilizzare LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-it.htm#partition">Partizionare con una GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-it.htm#partition">Partizionare il disco fisso con  GParted/KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-it.htm#ntfs">Ridimensionare una partizione NTFS GParted/KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-it.htm#partition">Partizionare con una CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-it.htm#partition">Partizionare il disco fisso con cfdisk</a></li>
+					    <li><a href="part-cfdisk-it.htm#formating">Formattare dopo aver partizionato con cfdisk</a></li>
+					    <li><a href="part-gdisk-it.htm#gdisk-6">Formatting after partitioning with gdisk</a></li>
+					    <li><a href="part-gdisk-it.htm#gdisk-1">GPT Partitioning with gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-it.htm#part-example">Basi del partizionamento &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-it.htm#part-example">Esempi di dimensione partizioni</a></li>
+					  <li><a href="part-uuid-it.htm#uuid">UUID, Ricostruire fstab e creare nuovi punti di mount</a></li>
+					  <li><a href="part-cfdisk-it.htm#disknames">Assegnare nomi ai dischi</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-it.htm">Opzioni d'installazione - HD, USB, VM e Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-it.htm#Inst-prep">Preparazione all'installazione &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-it.htm#Inst-prep">Preparazione all'installazione</a></li>
+					  <li><a href="hd-install-it.htm#Installation">Installare sul disco fisso</a></li>
+					  <li><a href="hd-install-it.htm#first-hd-boot">Primo avvio</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-it.htm#fromiso">Avviare "fromiso" &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-it.htm#fromiso">Avviare "fromiso" - panoramica</a></li>
+					  <li><a href="hd-install-opts-it.htm#grub2-fromiso">Avviare "fromiso" con Grub 2</a></li>
+					  <li><a href="hd-install-opts-it.htm#fromiso-persist">"fromiso" e "persistente"</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-it.htm#usb-hd">Installare su periferiche USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-it.htm#usb-hd">Installare siduction su di un dispositivo USB - specifico di siduction - siduction-on-stick</a></li>
+					  <li><a href="hd-ins-opts-oos-it.htm#raw-usb">Installare siduction su di un dispositivo USB/SSD con qualsiasi s.o. : Linux, MS Windows, Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-it.htm#install-crypt">Installare su partizioni criptate - cryptroot</a></li>
+		  <li><a href="nbdboot-it.htm#nbd1">Avviare siduction attraverso una rete</a></li>
+		  <li><a href="hd-install-vmopts-it.htm#vmopts">Opzioni di installazione della Macchina Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-it.htm">Schede grafiche, Monitor, Xorg &amp; drivers</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-it.htm#mon-res">Risoluzione dello schermo e tipi di schermi &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-it.htm#mon-res">Risoluzione dello schermo e tipi di schermi</a></li>
+					  <li><a href="hw-dev-mon-it.htm#xrandr">Doppio schermo e xrandr</a></li>
+					  <li><a href="hw-dev-mon-it.htm#mon-binary">Doppio schermo (usando i driver binari)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-it.htm#foss-xorg">GPU drivers &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-it.htm#ati-3d">Driver 3D per AMD/ATI</a></li>
+					  <li><a href="gpu-it.htm#intel">Driver 2D e 3D per Intel</a></li>
+					  <li><a href="gpu-it.htm#nvidia">Driver 3D per Nvidia</a></li>
+					  <li><a href="gpu-it.htm#foss-xorg">Driver Open Source Xorg</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-it.htm#fw-detect">Rilevamento del firmware non-free</a></li>
+			  <li><a href="nf-firm-it.htm#non-free-firmware">Aggiungere non-free al Sources List</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-it.htm">Gestori di finestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-it.htm">KDE and XFCE Gestori di finestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-it.htm#xfce-notes">Aggiunte utili per Xfce</a></li>
+					    <li><a href="wm-dm-it.htm#install-add">Aggiunte utili per KDE</a></li>
+					    <li><a href="wm-dm-it.htm#desk-freeze">Blocchi del desktop</a></li>
+					    <li><a href="wm-dm-it.htm#kde-login">Impossibile entrare in KDE</a></li>
+					    <li><a href="wwm-dm-it.htm#ch-th">Cambiare i temi</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-it.htm#dm">Installing additional Display Managers</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-it.htm">Connessione ad internet, WiFi, LAN e reti</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-it.htm">siduction LAMP Stack &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-it.htm#serv-apache">siduction e LAMP</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-ftp">Client FTP</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-sec">Protocolli di sicurezza</a></li>
+					    <li><a href="lamp-apache-it.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-it.htm#serv-mysql">Configurazione MySQL</a></li>
+					    <li><a href="lamp-php-it.htm#serv-php">PHP in Apache</a></li>
+					    <li><a href="ntp-server-it.htm#ntp-server">Configurazione Timeserver</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-it.htm#tor">Firewall e Privacy &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-it.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-it.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-it.htm#firewalls">Firewall</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-it.htm#ssh-x">SSH e Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-it.htm#setup">Setup Samba-Server</a></li>
+						  <li><a href="samba-it.htm#configure">Configurare SAMBA (Windows)</a></li>
+						  <li><a href="ssh-it.htm#ssh-fs">Mount da remoto con SSH</a></li>
+						  <li><a href="ssh-it.htm#ssh-x">Applicazioni in X Window attraverso SSH</a></li>
+						  <li><a href="ssh-it.htm#ssh-f">Interfaccia grafica per SSH con Konqueror</a></li>
+						  <li><a href="ssh-it.htm#ssh-w">SSH X-Forwarding da un PC con Windows</a></li>
+						  <li><a href="ssh-it.htm#ssh">SSH e Sicurezza</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-it.htm#netcardconfig">Connessioni WiFi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-it.htm#netcardconfig">Attivare una connessione di rete con "ceni"</a></li>
+						    <li><a href="inet-wpagui-it.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-it.htm#net-set1">WiFi - Impostare il Roaming WiFi</a></li>
+						    <li><a href="inet-wpa-it.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-it.htm#hotswitch">Scambiare la rete fra WiFi e Cavo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-it.htm#netcardconfig">Connessioni via cavo &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-it.htm#dial-mod">Modem 56k</a></li>
+						    <li><a href="inet-ceni-it.htm#netcardconfig">Attivare una connessione di rete con "ceni"</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-it.htm">Dist-upgrade e gestione dei pacchetti</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-it.htm#apt-cook">APT - Guida rapida lista depositi del software &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-it.htm#apt-cook">APT - Guida rapida lista depositi del software</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-install">Installare un nuovo pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-delete">Eliminare un pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-downgrade">Effettuare il downgrade o l'Hold di un pacchetto</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-cache">Cercare un pacchetto con apt-cache</a></li>
+					    <li><a href="sys-admin-apt-it.htm#gui-pacsea">Cercare un pacchetto tramite interfaccia grafica</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-it.htm#kern-upgrade">Aggiornare il kernel &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-it.htm#kern-remove">Eliminare i kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-it.htm#kern-upgrade">Aggiornare il kernel</a></li>
+					    <li><a href="sys-admin-kern-upg-it.htm#dmakms">Installare dinamicamente i moduli del kernel con dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-it.htm#apt-upgrade">Aggiornare un sistema installato - dist-upgrade - Panoramica &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-it.htm#live-cd-upgrade">Aggiornare un sistema attraverso il DVD live ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-it.htm#approx">Fare il dist-upgrade di più PC in rete</a></li>
+					    <li><a href="sys-admin-apt-it.htm#apt-upgrade">Aggiornare un sistema installato - dist-upgrade - Panoramica</a></li>
+					    <li><a href="sys-admin-apt-it.htm#du-st">Aggiornare un sistema installato - dist-upgrade - Passi da fare</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-it.htm">Amministrazione di sistema</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-it.htm#bois-prep">Aggiornare il BIOS con FreeDOS</a></li>
+		<li><a href="vir-rkits-it.htm#virus-rkits">Controllo virus e rootkit</a></li>
+		<li><a href="hd-install-it.htm#adduser">Aggiungere Utenti e Password &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-it.htm#adduser">Aggiungere un nuovo utente</a></li>
+					    <li><a href="sys-admin-gen-it.htm#pw-lost">Recupero della password di root</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-it.htm#start-services">Servizi e runlevel init &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-it.htm#start-services">Abilitare e disabilitare servizi</a></li>
+					    <li><a href="sys-admin-gen-it.htm#pkill">Killing a service or process</a></li>
+					    <li><a href="sys-admin-gen-it.htm#init">runlevel di siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-it.htm#rsync">Backup del sistema &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-it.htm#rdiff">Backup con rdiff</a></li>
+					    <li><a href="sys-admin-rsync-it.htm#rsync">Backup con rsync</a></li>
+					    <li><a href="home-it.htm#home-bu">Spostare la directory "home"</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-it.htm#fonts">CUPS, Font e Suono &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-it.htm#fonts">Font</a></li>
+					     <li><a href="sys-admin-gen-it.htm#cups">Sistema di stampa CUPS</a></li>
+					     <li><a href="sys-admin-gen-it.htm#sound">Mixer del suono</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-it.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-it.htm#chroot">Grub2 - Ripristinare Grub tramite chroot</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#mbr-over-grub2">Grub2 - MBR: sovrascrittura del settore di boot</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#multi-os">Grub2 - Avvio doppio o multiplo</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#grub1-grub2">Grub2 - Aggiornare da Grub1</a></li>
+					    <li><a href="sys-admin-grub2-it.htm#grub2">Grub2 - Panoramica</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+
+</ul>
+
+
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+
+
+
+
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+		<div class="divider" id="install-crypt">
+				<h2 id="top-header">Installare in una directory root criptata</h2>
+
+							<p><span class="highlight-2">Ecco alcune avvertenze da tenere ben presenti nell'utilizzare questa guida per criptare le partizioni root e dati:</span> </p>
+						    <ul>
+
+							<li>È applicabile solo da siduction-2011.1-onestepbeyond.iso in poi.</li>
+
+							<li>È una guida di base. Sarà vostra cura saperne di più riguardo a LUKS, cryptsetup e crittografia. Le Fonti e le Risorse che potrebbero esservi utili sono elencate alla fine di questa pagina, ma la lista non è certamente esaustiva.</li>
+
+							<li>cryptsetup non può crittografare una partizione dati esistente: quindi si deve sempre creare una nuova partizione, configurarla con cryptsetup e spostarvi i dati.</li>
+
+							<li>Potete anche utilizzare file chiave e avere chiavi multiple per i dati (fino a 8 includendo la rimozione delle chiavi), ma questo va oltre lo scopo di questa guida.</li>
+
+							<li><span class="highlight-3">Non dimenticate le frasi di accesso, in assenza delle quali si perderebbe l'accesso a ogni cosa! Persino un chroot senza conoscere le frasi di accesso non può essere di aiuto se non per la directory /boot.</span></li>
+
+							<li>Durante il processo d'avvio iniziale verrà richiesta la frase di accesso per la periferica criptata e il sistema si avvierà normalmente.</li>
+						    </ul>
+					      <h3>Esempi di crittografia:</h3>
+						    <ul>
+							<li><a href="hd-install-crypt-it.htm#lvm">Utilizzare la crittografia con i gruppi LVM</a>.</li>
+
+							<li><a href="hd-install-crypt-it.htm#simple">Note per la crittografia con i metodi di partizionamento tradizionali</a>.</li>
+						    </ul>
+
+			      </div>
+
+			      <div class="divider" id="lvm">
+					      <h2>Utilizzare la crittografia con i gruppi LVM</h2>
+
+							<p><span class= "highlight-3">Questo esempio, applicabile da siduction-11.1-onestepbeyond.iso in poi, utilizza la crittografia nel volume LVM e vi permette di separare la home da <span class= "highlight-2"> / </span> e avere una partizione di swap senza necessità di password multiple.</span></p>
+
+							<p>Prima di avviare il programma di installazione preparate i filesystem che verranno utilizzati per l'installazione. Per le linee guida base per il partizionamento LVM, fate riferimento a <a href="part-lvm-it.htm#part=lvm">Logical Volume Manager - partizionamento LVM</a>.</p>
+
+							<p>Avrete bisogno di almeno una partizione con filesystem non criptato <span class= "highlight-3">/boot </span> e una partizione con filesystem criptato <span class= "highlight-2"> / </span>, e inoltre di altri filesystem criptati <span class= "highlight-3">/home e swap</span>.</p>
+						  <ol>
+							<li>Se non prevedete di utilizzare un gruppo di volumi lvm esistente create un gruppo normale di volumi lvm. L'esempio che segue suppone che il gruppo di volumi che conterrà l'avvio e i dati criptati si chiami <span class= "highlight-3">vg</span>.</li>
+
+							<li>Avrete bisogno di un volume logico per /boot e i dati criptati, quindi utilizzate <span class= "highlight-3">lvcreate</span> per creare i volumi logici nel gruppo di volumi <span class= "highlight-3">vg</span> con le dimensioni volute:
+<pre>
+lvcreate -n boot --size 250m vg
+lvcreate -n crypt --size 300g vg
+</pre>
+							Qui avete chiamato i volumi logici boot e crypt e avete dato loro dimensioni rispettivamente di 250Mb e 300Gb.
+							</li>
+							<li>Create il filesystem per <span class= "highlight-3">/boot</span> in modo che sia disponibile per il programma di installazione:
+<pre>
+mkfs.ext4 /dev/mapper/vg-boot
+</pre>
+							</li>
+							<li>Utilizzate <span class= "highlight-3">cryptsetup</span> per criptare <span class= "highlight-3">vg-crypt</span> usando l'opzione più veloce xts con la lunghezza della chiave più sicura (512bit), e quindi apritela. Vi verrà richiesta la password due volte per impostarla e una terza volta per aprirla. Apritela con le impostazioni di default di cryptopts usando come nome cryptroot:
+<pre>
+cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/mapper/vg-crypt
+</pre>
+
+<pre>
+cryptsetup luksOpen /dev/mapper/vg-crypt cryptroot
+</pre>
+							</li>
+							<li>Adesso utilizzate lvm nella periferica criptata per creare un secondo gruppo di volumi che verrà usato per le periferiche <span class= "highlight-3">/swap</span> e <span class= "highlight-3">/home</span>. <span class= "highlight-3">pvcreate</span> cryptroot per farne un volume fisico e utilizzatela con <span class= "highlight-3">vgcreate</span> per creare un altro gruppo di volumi che chiameremo <span class= "highlight-3">cryptvg</span>:
+<pre>
+pvcreate /dev/mapper/cryptroot
+vgcreate cryptvg /dev/mapper/cryptroot
+</pre>
+							</li>
+							<li>Utilizzate poi <span class= "highlight-3">lvcreate</span> nel nuovo gruppo di volumi criptato <span class= "highlight-3">cryptvg</span> per creare i volumi logici <span class= "highlight-2"> / </span>, <span class= "highlight-3">/swap</span> e <span class= "highlight-3">/home </span> delle dimensioni volute:
+
+<pre>
+lvcreate -n swap --size 2g cryptvg
+lvcreate -n root --size 40g cryptvg
+lvcreate -n home --size 80g cryptvg
+</pre>
+							Si hanno così i volumi logici swap, root e home rispettivamente di 2Gb, 40Gb e 80Gb.
+							</li>
+							<li>Create i filesystems per cryptvg-swap, cryptvg-root e cryptvg-home in modo da renderli disponibili nel programma di installazione:
+<pre>
+mkswap /dev/mapper/cryptvg-swap
+mkfs.ext4 /dev/mapper/cryptvg-root
+mkfs.ext4 /dev/mapper/cryptvg-home
+</pre>
+							</li>
+
+							<li><b>Adesso siete pronti per avviare il programma di installazione dove dovreste utilizzare:</b><br />
+							<span class= "highlight-3">vg-boot</span> per <span class= "highlight-3">/boot</span>,<br />
+							<span class= "highlight-3">cryptvg-root</span> per <span class= "highlight-2"> /</span>,<br />
+							<span class= "highlight-3">cryptvg-home</span> per <span class= "highlight-3">/home</span>,<br />
+							e <span class= "highlight-3">cryptvg-swap</span> per <span class= "highlight-3">swap</span> dovrebbe essere riconosciuto automaticamente.</li>
+						    </ol>
+
+							<p>Il sistema installato infine dovrebbe avere una linea di comando per il kernel includente le seguenti opzioni:</p>
+<pre>
+root=/dev/mapper/cryptvg-root cryptopts=source=/dev/mapper/vg-crypt,target=cryptroot,lvm=cryptvg-root
+</pre>
+							<p>Adesso sono disponibili la crypt e la boot nel gruppo di volumi vg, e la root, home e swap nel gruppo di volumi vgcrypt che si trova nella periferica criptata protetta da password.</p>
+
+							<p><span class= "highlight-3">Nota:</span> Se reinstallate su un volume lvm precedentemente criptato, il programma di installazione deve essere informato della criptazione:</p>
+<pre>
+cryptsetup luksOpen /dev/mapper/cryptvg-root cryptvg
+vgchange -a y
+</pre>
+			  </div>
+			  <div class="divider" id="simple">
+					<h2>Note per la crittografia con i metodi di partizionamento tradizionali</h2>
+
+							<p>Prima cosa da decidere è come si vuole partizionare il disco. Avrete bisogno di almeno 2 partizioni: una partizione normale per <span class="highlight-3">/boot</span> e una per i dati criptati.</p>
+
+							<p>Assumendo che abbiate bisogno di swap servirà una terza partizione (criptata a sua volta) e dovrete inserire la password per swap separatamente durante l'avvio (le richieste di password saranno quindi due).</p>
+
+							<p>È possibile utilizzare chiavi per il swap dall'interno del sistema criptato con il partizionamento tradizionale, ma non sarà allora possibile la sospensione su disco. In ragione di questi problemi, l'opzione migliore nel lungo termine è utilizzare i volumi lvm con partizioni e chiavi completamente criptate.</p>
+
+							<!--<p>È possibile utilizzare chiavi per il swap dall'interno del sistema criptato con il partizionamento tradizionale, ma non sarà allora possibile la sospensione su disco. In ragione di questi problemi, l'opzione migliore nel lungo termine è decisamente l'uso di volumi lvm con partizioni interamente criptate con chiavi</p>-->
+
+			      <h6>Assunzioni essenziali:</h6>
+						  <ul>
+							<li>Vi sono giusto 3 partizioni in questo disco:<br />
+							<span class="highlight-3"> /boot</span>,  di 250Mb<br />
+							<span class="highlight-3"> swap</span>, di 2Gb<br />
+							<span class="highlight-2"> / </span> e <span class="highlight-3"> /home</span> combinate (per esempio, bilanciate).</li>
+
+							<li>Saranno richieste 2 frasi di accesso, 1 per swap e l'altra per <span class="highlight-2"> / </span> e <span class="highlight-3"> /home</span> combinate.</li>
+						   </ul>
+
+							<p>Una volta completato il partizionamento, si dovranno preparare le partizioni criptate in modo che siano riconosciute dal programma di installazione.</p>
+
+							<p>Se avete utilizzato un'applicazione grafica per il partizionamento, chiudetela e aprite un terminale, dato che i comandi per la crittografia devono essere eseguiti dalla linea di comando.</p>
+
+					      <h5>La partizione /boot</h5>
+							<p>Create la partizione <span class="highlight-3">/boot </span> come ext4, se non lo si è ancora fatto:</p>
+<pre>
+/sbin/mkfs.ext4 /dev/sda1
+</pre>
+
+
+
+
+					      <h5>Partizione swap criptata</h5>
+
+							<p>Per quanto concerne la partizione <span class="highlight-3">swap criptata</span> dovrete per prima cosa formattare e aprire la periferica grezza, <span class="highlight-3">/dev/sda2</span>, come una periferica criptata, in modo simile alla periferica vg-crypt di cui sopra, ma con nome differente, swap.</p>
+<ol>
+<li><pre>
+cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda2
+</pre></li>
+
+<li><pre>
+cryptsetup luksOpen /dev/sda2 swap
+</pre></li>
+
+<li><pre>
+echo "swap UUID=$(blkid -o value -s UUID /dev/sda2) none luks" >> /etc/crypttab
+</pre></li>
+</ol>
+							<p>Formattate <span class="highlight-3">/dev/mapper/swap</span> in modo che sia riconosciuto dal programma di installazione:</p>
+
+<pre>
+/sbin/mkswap /dev/mapper/swap
+</pre>
+
+					      <h5>Partizione / criptata</h5>
+							<p>Per quanto concerne la partizione <span class="highlight-3">/ criptata</span> dovrete per prima cosa formattare e aprire la periferica grezza, <span class="highlight-3">/dev/sda3</span>, come una periferica criptata, in modo simile alla periferica vg-crypt di cui sopra.</p>
+
+<pre>
+cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda3
+</pre>
+
+<pre>
+cryptsetup luksOpen /dev/sda3 cryptroot
+</pre>
+
+							<p>Formattate <span class="highlight-3">/dev/mapper/cryptroot</span> in modo che sia visualizzato nel programma di installazione:</p>
+
+<pre>
+/sbin/mkfs.ext4 /dev/mapper/cryptroot
+</pre>
+
+					  <h3>Aprire il programma di installazione</h3>
+							<p><b>Siete ora pronti per avviare il programma di installazione ove dovrete usare:</b><br />
+							<span class= "highlight-3">sda1</span> per <span class= "highlight-3">/boot</span>, <br />
+							<span class= "highlight-3">cryptroot</span> per <span class= "highlight-2"> / </span> e <span class= "highlight-3"> /home</span> <br />
+							<span class= "highlight-3">swap</span> dovrebbe essere automaticamente riconosciuto.</p>
+
+							<p>Il sistema installato infine dovrebbe avere una linea di comando per il kernel includente le seguenti opzioni (sebbene verrà utilizzato l'UUID esistente):</p>
+<pre>
+root=/dev/mapper/cryptroot cryptopts=source=UUID=12345678-1234-1234-1234-1234567890AB,target=cryptroot
+</pre>
+							<p>A questo punto avrete /boot in una partizione semplice, uno swap criptato protetto da password e una partizione criptata con / e /home.</p>
+
+			      </div>
+				  <h3>Fonti e Risorse:</h3>
+							<p>Letture necessarie:</p>
+
+<pre>
+man cryptsetup
+</pre>
+							<p><a href="http://code.google.com/p/cryptsetup/">LUKS</a>.</p>
+
+							<p><a href="http://www.redhat.com/">Redhat</a> e <a href="http://www.redhat.com/Fedora/">Fedora</a>.</p>
+
+							<p><a href="http://www.enterprisenetworkingplanet.com/netsecur/article.php/3683011"> Protect Your Stuff With Encrypted Linux Partitions ()Proteggete le cose vostre con partizioni Linux criptate)</a>.</p>
+
+							<p><a href="http://blog.bodhizazen.net/linux/kvm-how-to-use-encrypted-images/">KVM how to use encrypted images ()KVM come usare immagini criptate)</a>.</p>
+
+							<p><a href="http://siduction.com/index.php?module=wikula&amp;tag=FullDiskEncryptionTheDebianWay">siduction wiki</a>.</p>
+
+	<div id="rev">Page last revised 22/01/2012 1700 UTC</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pl">
+<head>
+	<title>Podręcznik siduction - rdiff</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+        <p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> 
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do siduction.org, forum oraz wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-pl.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Poszukiwanie w instrukcji" alt="Search" /> Szukaj online - offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Wybierz inny język" alt="lang-switch" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-pl.htm">Podręcznik siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-pl.htm#welcome-gen">Podręcznik siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-pl.htm#cred-team">Zespół siduction</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-pl.htm#how-to">Jak używać tego podręcznika &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-pl.htm#how-to">Jak używać tego podręcznika</a></li>
+					  <li><a href="welcome-pl.htm#table-contents">Spis treści</a></li>
+					</ul>
+					</li>
+		<li><a href="help-pl.htm#help-gen">Uzyskiwanie pomocy &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-pl.htm#help-gen">Gdzie i jak uzyskać pomoc</a></li>
+					  <li><a href="help-pl.htm#paste">IRC oray !paste</a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-pl.htm#welcome-quick">Szybki start z siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-pl.htm">Zawartość obrazów, Wydania, Pobieranie, Serwery lustrzane, Wypalanie</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-pl.htm#cd-content">Zawartość ISO i wymagania systemowe &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-pl.htm#rolling">Notki Wydania</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-pl.htm#download-siduction">Serwery lustrzane, pobieranie i wypalanie siduction &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-pl.htm#md5">Sumy MD5</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#burn-nero">Wypalanie w Windows</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#burn-linux">Wypalanie w Linux</a></li>
+					  <li><a href="cd-no-gui-burn-pl.htm#burning-no-gui">Skrypt burniso</a></li>
+					  <li><a href="cd-no-gui-burn-pl.htm#burn-no-gui-gen">Wypalanie bez GUI</a></li>
+					  <li><a href="cd-dl-burning-pl.htm#download-siduction">Serwery Lustrzane dla pobierania</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-pl.htm">Tryb Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-pl.htm#rootpw">Hasło root'a na siduction-Live</a></li>
+				<li><a href="live-mode-pl.htm#live-cd-installsoft">Instalacja oprogramowania w trybie Live-CD</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-pl.htm">Terminal/Konsola</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-pl.htm#term-kon"> Terminal/Konsola &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-pl.htm#term-kon">Terminal/Konsola</a></li>
+					  <li><a href="term-konsole-pl.htm#colours">Kolorowe znaki zachęty terminala</a></li>
+					  <li><a href="term-konsole-pl.htm#cli-help">Linia komend - Pomoc</a></li>
+					  <li><a href="help-pl.htm#init3-tools">Narzędzia trybu tekstowego (tty) - init 3</a></li>
+					  <li><a href="term-konsole-pl.htm#term-cmds">Konsolowe komendy</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-pl.htm#sux"> sux/sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-pl.htm">Kody startowe</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-pl.htm#cheatcodes">Specyficzne kody dla siduction-Live</a></li>
+				<li><a href="cheatcodes-pl.htm#cheatcodes-linux">Powszechne kody Linux'a</a></li>
+				<li><a href="cheatcodes-vga-pl.htm#vga">Kody VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-pl.htm">Partycjonowanie dysku twardego - tradycyjne, GPT i LVM</a>
+		<ul class="sub-menu" id="sm6">
+			<li><a href="part-gparted-pl.htm#hd-ntfs3g">Zapis na partycje NTFS z użyciem ntfs-3g</a></li>
+			<li><a href="part-lvm-pl.htm#part-lvm">Partycjonowanie w celu użycia LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-pl.htm#partition">Partycjonowanie dysku - aplikacje z graficznym intrefejsem użytkownika &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-pl.htm#partition">Partycjonowanie dysku z użyciem GParted / Partycjonera KDE</a></li>
+					  <li><a href="part-gparted-pl.htm#ntfs">Zmiana rozmiaru partycji NTFS, z użyciem G-Parted / Partycjonera KDE</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-pl.htm#partition">Partycjonowanie dysku - konsola &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-pl.htm#partition">Partycjonowanie dysku z użyciem cfdisk</a></li>
+					    <li><a href="part-cfdisk-pl.htm#formating">Formatowanie dysku</a></li>
+					    <li><a href="part-gdisk-pl.htm#gdisk-6">Formatowanie po partycjonowaniu z użyciem gdisk</a></li>
+					    <li><a href="part-gdisk-pl.htm#gdisk-1">Partycjonowanie GPT z użyciem gdisk</a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-pl.htm#part-example">Podstawy partycjonowania &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-pl.htm#part-example">Przykładowe rozmiary partycji</a></li>
+					  <li><a href="part-uuid-pl.htm#uuid">UUID, przebudowa fstab i tworzenie nowych punktów montowania</a></li>
+					  <li><a href="part-cfdisk-pl.htm#disknames">Nazewnictwo partycji</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-pl.htm">Opcje instlalacji - HD, USB, VM i Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-pl.htm#Inst-prep">Przygotowanie do instalacji &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-pl.htm#Inst-prep">Przygotowanie do instalacji</a></li>
+					  <li><a href="hd-install-pl.htm#Installation">Instalacja na dysku twardym</a></li>
+					  <li><a href="hd-install-pl.htm#first-hd-boot">Pierwsze uruchomienie</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pl.htm#fromiso">Uruchamianie z obrazu ISO &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-pl.htm#fromiso">Uruchamianie z Obrazu ISO - Przegląd</a></li>
+					  <li><a href="hd-install-opts-pl.htm#grub2-fromiso">Uruchamianie z obrazu ISO - GRUB 2</a></li>
+					  <li><a href="hd-install-opts-pl.htm#fromiso-persist">Tryby fromiso i persist</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-pl.htm#usb-hd">Instalacja na nośnik USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-pl.htm#usb-hd">Instalacja na dysk USB-HDD</a></li>
+					  <li><a href="hd-ins-opts-oos-pl.htm#raw-usb">Zapis siduction na dysk USB/SSD z użyciem jakiegokolwiek systemu z rodziny Windows, Linux lub Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-pl.htm#install-crypt">Instalacja na zaszyfrowanej partycji - cryptroot</a></li>
+		  <li><a href="nbdboot-pl.htm#nbd1">Uruchamianie siduction poprzez sieć</a></li>
+		  <li><a href="hd-install-vmopts-pl.htm#vmopts">Opcje instalacji maszyny wirtualnej</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-pl.htm">Karty graficzne, monitory, Xorg  &amp; sterowniki</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-pl.htm#mon-res">Rozdzielczość ekranu i monitory &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-pl.htm#mon-res">Rozdzielczość ekranu i monitory</a></li>
+					  <li><a href="hw-dev-mon-pl.htm#xrandr">Dwa monitory i xrandr</a></li>
+					  <li><a href="hw-dev-mon-pl.htm#mon-binary">Dwa monitory (używając binariów)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-pl.htm#foss-xorg">Sterowniki graficzne &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-pl.htm#ati-3d">Sterowniki AMD/ATI 3D</a></li>
+					  <li><a href="gpu-pl.htm#intel">Sterowniki Intel 2D i 3D</a></li>
+					  <li><a href="gpu-pl.htm#nvidia">Sterowniki Nvidia 3D</a></li>
+					  <li><a href="gpu-pl.htm#foss-xorg">Sterowniki Open Source Xorg</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-pl.htm#fw-detect">Dobieranie oprogramowania firmowego - nie wolnego </a></li>
+			  <li><a href="nf-firm-pl.htm#non-free-firmware">Dodawanie nie wolnych repozytoriów do Sources List</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-pl.htm">Menadżery Okien</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-pl.htm">KDE, XFCE i inne Menadżery Wyświetlania &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-pl.htm#xfce-notes">Przydatne dodatki dla XFCE</a></li>
+					    <li><a href="wm-dm-pl.htm#install-add">Przydatne aplikacje dla KDE</a></li>
+					    <li><a href="wm-dm-pl.htm#kde-login">Nie można zalogować się do KDE</a></li>
+                        <li><a href="wm-dm--pl.htm#ch-th">Zmiana motywów</a></li>
+                        <li><a href="wm-dm-pl.htm#desk-freeze">Zamrażanie pulpitu</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-pl.htm#dm">Instalacja dodatkowych Menadżerów Wyświetlania</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-pl.htm">Łączenie z internetem, WiFi, LAN i inne typy sieci</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-pl.htm">LAMP w siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-pl.htm#serv-apache">LAMP w siduction</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-ftp">Klienty FTP</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-sec">Protokoły bezpieczeństwa</a></li>
+					    <li><a href="lamp-apache-pl.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-pl.htm#serv-mysql">Ustawienia MySQL</a></li>
+					    <li><a href="lamp-php-pl.htm#serv-php">PHP w Apache</a></li>
+					    <li><a href="ntp-server-pl.htm#ntp-server">Ustawienia Serwera czasu</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-pl.htm#tor">Firewall i prywatność &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-pl.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-pl.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-pl.htm#firewalls">Firewall</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-pl.htm#ssh-x">SSH i Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-pl.htm#setup">Ustawienia serwera Samba</a></li>
+						  <li><a href="samba-pl.htm#configure">Konfiguracja SAMBA (Windows)</a></li>
+						  <li><a href="ssh-pl.htm#ssh-fs">Zdalny dostęp SSH</a></li>
+						  <li><a href="ssh-pl.htm#ssh-x">Graficzne aplikacje poprzez SSH</a></li>
+						  <li><a href="ssh-pl.htm#ssh-f">Graficzne SSH przy użyciu Konqueror</a></li>
+						  <li><a href="ssh-pl.htm#ssh-w">SSH X-Forwarding z Windows</a></li>
+						  <li><a href="ssh-pl.htm#ssh">SSH i bezpieczeństwo</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia WiFi &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-pl.htm#netcardconfig">Łączenie z siecią - Ceni</a></li>
+						    <li><a href="inet-wpagui-pl.htm#wpa-roaming-gui">WiFi: WPA_GUI</a></li>
+						    <li><a href="inet-setup-pl.htm#net-set1">WiFi: Ustawianie Roaming'u WiFi</a></li>
+						    <li><a href="inet-wpa-pl.htm#wpa">WiFi i wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-pl.htm#hotswitch">Sieć - Przełączanie interfejsów sieciowych</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia kablowe &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-pl.htm#dial-mod">Modemy 56K</a></li>
+						    <li><a href="inet-ceni-pl.htm#netcardconfig">Połączenia przy użyciu modemów 56K - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-pl.htm">Zarządzanie pakietami i ich aktualizacja</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-pl.htm#apt-cook">APT i Lista repozytoriów/źródeł &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-pl.htm#apt-cook">Podręcznik APT'a, sources.list.d/*.list</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-install">Instalacja nowego pakietu</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-delete">Usuwanie pakietu</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-downgrade">Wstrzymywanie pakietów oraz cofanie do wcześniejszych wersji</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-cache">Wyszukiwanie pakietów z użyciem apt-cache</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#gui-pacsea">Graficzne wyszukiwanie pakietów</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-pl.htm#kern-upgrade">Aktualizacja jądra &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-pl.htm#kern-remove">Usuwanie jąder</a></li>
+					    <li><a href="sys-admin-kern-upg-pl.htm#kern-upgrade">Aktualizacja jądra</a></li>
+					    <li><a href="sys-admin-kern-upg-pl.htm#dmakms">Instalacja modułów jądra z użyciem dmakms</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-pl.htm#apt-upgrade">Aktualizacja zainstalowanego systemu &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-pl.htm#live-cd-upgrade">Aktualizacja z użyciem obrazu ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-pl.htm#approx">Aktualizacja systemów na kilku komputerach poprzez LAN</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#apt-upgrade">Aktualizacja zainstalowanego systemu - Przegląd</a></li>
+					    <li><a href="sys-admin-apt-pl.htm#du-st">Aktualizacja zainstalowanego systemu - Kroki</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-pl.htm">Administracja systemem</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-pl.htm#bois-prep">Aktualizacja BIOS'u z użyciem FreeDOS</a></li>
+		<li><a href="vir-rkits-pl.htm#virus-rkits">Skanery wirusów i rootkitów</a></li>
+		<li><a href="hd-install-pl.htm#adduser">Dodawanie użytkowników, administracja haseł &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-pl.htm#adduser">Dodawanie nowego użytkownika</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#pw-lost">Zapomniane hasło root'a, nowe hasło</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pl.htm#start-services">Usługi i poziomy startu &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-pl.htm#start-services">Włączanie/Wyłączanie usług</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#pkill">Zabijanie usługi systemowej lub działającego procesu</a></li>
+					    <li><a href="sys-admin-gen-pl.htm#init">Poziomy uruchamiania siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-pl.htm#rsync">Kopia zapasowa systemu &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-pl.htm#rdiff">Kopia zapasowa systemu przy użyciu rdiff</a></li>
+					    <li><a href="sys-admin-rsync-pl.htm#rsync">Kopia zapasowa systemu przy użyciu rsync</a></li>
+					    <li><a href="home-pl.htm#home-bu">Przenoszenie /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-pl.htm#fonts">CUPS, czcionki i dźwięk &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-pl.htm#fonts">Czcionki</a></li>
+					     <li><a href="sys-admin-gen-pl.htm#cups">CUPS - system obsługi urządzeń drukujących</a></li>
+					     <li><a href="sys-admin-gen-pl.htm#sound">Mixery dźwięku</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-pl.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-pl.htm#chroot">Grub2 - Przywracanie GRUB'a w środowisku chroot</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#mbr-over-grub2">Grub2 - Nadpisywanie MBR</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#multi-os">Grub2 - Uruchamianie wielu systemów operacyjnych</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#grub1-grub2">Grub2 -Aktualizacja z Grub'a w wersji 1</a></li>
+					    <li><a href="sys-admin-grub2-pl.htm#grub2">Grub2 - Przegląd</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+<!-- menu-en ends here --> </div>
+<div id="main-page">
+	<div class="divider" id="rdiff">
+			<h2 id="top-header">Tworzenie kopii zapasowej przy pomocy rdiff-backup</h2>
+				<p>rdiff-backup jest narzędziem do robienia kopii zapasowej twoich plików. (Może działać na wielu różnych portach *nix ).</p>
+
+				<p class="highlight-2">Uruchamiaj polecenia jako root w konsoli, chyba że instrukcje będą inne.</p>
+
+				<p>*świetne do przywrócenia systemu po nieudanej aktualizacji systemu, kernela itp. (i także do przywrócenia pojedynczych plików).<br />
+				*robi kopię zapasową tego co się zmieniło, tak jak rsync (więc każdy backup nie trwa długo).<br />
+				*zachowuje historię zmian (co oznacza, że możesz przywrócić plik, który usunąłeś trzy tygodnie temu!)<br />
+				*zabezpiecza backupy poprzez sieć (używając ssh).<br />
+				*tworzy kopię partycji, gdy są zamontowane (więc łatwo zautomatyzować codzienny backup ... nie potrzebne odmontowywanie).<br />
+				*Może odzyskać wszystko, jeśli twój twardy dysk zepsuje się i będziesz musiał kupić nowy.<br />
+				*skalowalny do tworzenia kopii zapasowej wielkich sieci i jest używany przez przedsiębiorstwa.<br />
+				*jest aplikacją linii poleceń, co jest świetne dla tych, którzy wykonują takie zadania jak automatyczne kopie zapasowe (np. skrypty bash uruchamiane przez cron).<br />
+				*zapamiętuje i radzi sobie z uprawnieniami plików, a także obsługuje skróty symboliczne, więc kiedy przywrócisz dane, będą one dokładnie w tej samej postaci.</p>
+
+			<h6>Czego potrzebujesz</h6>
+				<p>rdiff-backup przechowuje całą (nieskompresowaną) kopię plików, a także historię (przyrostowe kopie zapasowe), co oznacza, że miejsce do przechowywania twojej kopii zapasowej musi być większe niż to, co chcesz zachować. Jeśli tworzyć kopię 100 GB danych, możesz potrzebować 120 GB przestrzeni (najlepiej na oddzielnym dysku!).</p>
+
+			<h6>Konfiguracja</h6>
+				<p>Załóżmy, że twój pc ma nastepujące parametry:<br />
+				* twardy dysk 100 GB (sda), który jest używany, sda1 używany jako partycja główna, sda5 przechowuje muzykę i inne pliki i sda6 to swap.<br />
+				* dodatkowy twardy dysk 200 GB (sdb), który nie jest używany, z jedną partycją sdb1, którą użyjemy na kopie zapasowe.<br />
+				* Adres IP 192.168.0.1</p>
+
+				<p>Najpierw należy zainstalować rdiff-backup:</p>
+<pre>
+# apt-get install rdiff-backup
+</pre>
+				<p>Chociaż możesz zrobić kopię zapasową dowolnego katalogu, zakładamy, że zrobimy kopię całej partycji. Chcemy zrobić backup sda1 i sda5 (nie chcemy kopii sda6), a więc stworzymy katalogi do przechowywania danych:</p>
+<pre>
+# mkdir -p /media/sdb1/rdiff-backups/192.168.0.1/root
+# mkdir -p /media/sdb1/rdiff-backups/192.168.0.1/sda5
+</pre>
+				<p>Musisz użyć adresu IP, ponieważ będzie to przydatne przy tworzeniu kopii zapasowej innego komputera (omówione w dalszej części instrukcji).</p>
+
+			<h6>Tworzenie kopii bezpieczeństwa</h6>
+
+				<p>rdiff-backup używa składni <span class="highlight-3">rdiff-backup katalog-źródłowy katalog-docelowy</span>. Uwaga: zawsze określaj nazwy katalogów, a nie nazwy plików.</p>
+
+				<p>Aby stworzyć kopię sda5, wykonaj polecenie:</p>
+<pre>
+# rdiff-backup /media/sda5 /media/sdb1/rdiff-backups/192.168.0.1/sda5
+</pre>
+				<p>Aby zrobić kopię partycji głównej, uruchom:</p>
+<pre>
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/sdb1/rdiff-backups/192.168.0.1/root
+</pre>
+				<p>Wszystkie błędy "AF_UNIX path too long" mogą zostać zignorowane. Proces może potrwać chwilę, ponieważ jest to pierwszy raz, kiedy tworzona jest kopia zapasowa, więc rdiff-backup będzie musiał zrobić kopię całej partycji (nie tylko różnice). Zwróć uwagę, że nie robimy kopii /tmp, ponieważ ciągle się zmienia, ani /proc lub /sys, ponieważ one nie zawierają prawdziwych plików, nie chcemy także tworzyć kopii montowanych zasobów. Jeśli zrobiłbyś kopię /media, wtedy robiłbyć kopię sdb1, co doprowadziłoby do nieskończonej pętli! Sposobem na to jest tworzenie backupów osobno.</p>
+
+				<p>Powodem, dla którego należy wpisać '/proc/*' zamiast samego '/proc', jest to, że pierwszy wariant będzie tworzył kopię samej nazwy katalogu /proc, a zignoruje wszystko inne. To samo jest prawdziwe dla /tmp, /sys, oraz dla nazw punktów montowania.</p>
+
+				 <p>W ten sposób, jeśli zniszczysz partycję główną i dokonasz pełnego przywrócenia partycji, /tmp, /proc, /sys i punkty montowania zostaną stworzone (tak jak powinny). Jeśli /tmp nie będzie istniał, kiedy X zostanie uruchomiony, mogą się pojawić komunikaty o błędach (Patrz: strona man, aby zdobyć więcej informacji o --exclude i --include).</p>
+
+			<h6>Przywracanie katalogów z kopii zapasowej</h6>
+
+				<p>rdiff-backup używa składni:</p>
+<pre>
+rdiff-backup -r &lt;skąd&gt; &lt;katalog-źródłowy&gt; &lt;katalog-docelowy&gt;
+</pre>
+				<p>Teraz, jeśli przypadkowo skasowałeś katalog /media/sda7/photos, możesz przywrócić go przy pomocy:</p>
+<pre>
+# rdiff-backup -r now /media/sdb1/rdiff-backups/192.168.0.1/sda5/photos /media/sda5/photos
+</pre>
+				<p>Opcja "-r now" oznacza przywrócenie z ostatniej kopii bezpieczeństwa. Jeśli tworzyłeś backupy okresowo (np. przez crontab), i nie zauważyłeś, że katalog photos zaginął kilka dni temu, będziesz potrzebował dokonać przywrócenia danych z backupu z przed kilku dni (a nie "now", ponieważ otrzymasz komunikat, że katalog photos nie istnieje). A może po prostu chcesz przywrócić wcześniejszą wersję danych.</p>
+
+				<p>Jeśli chcesz przywrócić dane z przed 3 dni, użyj opcji "-r 3D", ale zwróć uwagę:</p>
+
+				<p class="highlight-1">"3D" odnosi się do 72 godzin przed czasem obecnym i jeśli nie było żadnego backupu zrobionego w tym czasie, rdiff-backup przywróci stan z wcześniejszego backupu. Na przykład, w powyższym przypadku, jeśli użyta jest opcja "3D" i będą tylko kopie z przed 2 dni i z przed 4 dni, katalog zostanie przywrócony ze stanu z przed 4 dni (więc musisz myśleć o tym przed przywróceniem danych).</p>
+
+				<p>Aby zrobić listę backupów zrobionych dla sda5, wykonaj polecenie:</p>
+<pre>
+# rdiff-backup -l /media/sdb1/rdiff-backups/192.168.0.1/sda5
+</pre>
+			<h5>Przywracanie partycji</h5>
+
+				<p>Możesz także przywrócić całą partycję, przecież punkt montowania jest po prostu katalogiem.</p>
+
+				<p class="highlight-2">UWAGA: Nie przywracaj partycji głównej, kiedy uruchomiłeś z niej system! Przy pomocy jednego polecenia stracisz wszystkie pliki na wszystkich partycjach, włączając w to wszystkie backupy na oddzielnym twardym dysku!! rdiff-backup robi dokładnie to, o co jest proszony. Jeśli backup dla partycji głównej ma puste punkty montowania, aby przywrócić zachowane dane, skasuje wszystko na zamontowanych napędach, żeby wszystko było identyczne z  backupem.</p>
+
+				<p>Aby przywrócić sda5 z ostatniego backupu, po prostu wpisujemy:</p>
+<pre>
+# rdiff-backup -r now /media/sdb1/rdiff-backups/192.168.0.1/sda5 /media/sda5
+</pre>
+			<h5>Przywracanie partycji głównej</h5>
+
+				<p>Przywracanie partycji głównej nie jest takie łatwe. Nie przywracaj partycji głównej, gdy jest zamontowana (patrz powyższe ostrzeżenie). Naprawdę użyteczna jest możliwość przywrócenia partycji głównej, kiedy zepsujesz coś przy instalacji/aktualizacji czy instalowaniu nowego kernela, a przywrócenie stanu poprzedniego potrwa tylko 20 minut.</p>
+
+				<p>Jedną z metod przywrócenia partycji głównej jest start z dodatkowej partycji linuksowej, jeśli masz taką na twardym dysku. Wtedy będziesz mógł przywrócić partycję główną, ponieważ nie będzie zamontowana jako root ("/"). Po przywróceniu partycji, wystartuj z niej, a będzie dokładnie taka sama jak poprzednio! To jest najprostsza metoda.</p>
+
+				<p>Inną metodą przywrócenia partycji głównej jest wystartowanie z siduction-live cd. rdiff-backup jest włączony do siduction.org. W przypadku, gdy wersja siduction live-cd, którą posiadasz nie zawiera rdiff, możesz wpisać w linii poleceń gruba (Opcje startowe) "unionfs", co spowoduje, że będziesz mógł instalować aplikacje na live cd. Po prostu wystartuj i wpisz następujące polecenia:</p>
+<pre>
+$ sudo su
+# wget -O /etc/apt/sources.list http://siduction.org/files/misc/sources.list
+# apt-get update
+# apt-get install rdiff-backup
+</pre>
+				<h6>Teraz dokonajmy przywrócenia partycji:</h6>
+<pre>
+# mount /dev/sda1 /media/sda1
+# mount /dev/sdb1 /media/sdb1
+# rdiff-backup -r now /media/sdb1/rdiff-backups/192.168.0.1/root /media/sda1
+</pre>
+
+				<p>Uwaga: Jeśli nie masz siduction CD i twoje Live-CD wspiera klik, możesz zainstalować przy użyciu Klik:</p>
+<pre>
+$ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media/sdb1/rdiff-backups/192.168.0.1/root /media/sda1
+</pre>
+
+				<p>Zaleca się, aby każdy, kto tworzy kopię zapasową partycji głównej (z intencją przywrócenia jej, jeśli zajdzie taka potrzeba) powinien przetestować proces przywracania. </p>
+
+							<p>If the hard drive has been changed or reformatted, recheck the UUIDs, (or Labels), in <span class="highlight-3">/boot/grub/menu.lst (grub-legacy) or files in /etc/grub.d (grub2)t</span> and <span class="highlight-3">/etc/fstab</span>, and alter accordingly. An easy way to get the information to alter the menu.lst and fstab files, if required, is as root:</p>
+
+<pre>
+blkid
+</pre>
+
+			<h5>Tworzenie kopii zapasowej dysku innego komputera</h5>
+
+				<p>Możesz tworzyć kopie zapasowe dysku innego komputera na twoim komputerze, jeśli lokalny komputer może połączyć się z innym przy pomocy ssh (i jeśli masz wolne miejsce na lokalnym komputerze). Serwer ssh (sshd) musi działać na zdalnym  pc. Drugi komputer nie musi być w lokalnej sieci.</p>
+
+				<p>Załóżmy, że zdalny komputer posiada:<br />
+				1) dysk twardy 100 GB (sda), który jest w użyciu, z zamontowanymi zasobami,<br />
+				2) sda1 użyte jako partycja główna,<br />
+				3) sda5 przechowuje niektóre pliki tymczasowe, których nie chcemy zachowywać,<br />
+				4) i sda6 na swap <br />
+				5) adres IP to 192.168.0.2</p>
+
+				<p>Uwaga: oba dyski 100 GB nie mogą mieć kopii zapasowej na 200 GB dysku przy użyciu rdiff-backup (ponieważ nie będzie miejsca na przyrostowe pliki), ale ponieważ nie robisz kopii sda5 na zdalnym pc (i ponieważ twarde dyski nie są zwykle pełne, chociaż nie polegaj na tym) to możesz założyć, że jest wystarczająco miejsca. Za każdym razem, kiedy rdiff-backup wykona kolejny backup, coraz więcej przyrostowych plików będzie tworzone, i zajmie to coraz więcej miejsca.</p>
+
+				<p>Możesz nakazać rdiff-backup, aby zachowywał jedynie backupy nie starsze niż 1 miesiąc (polecenie to będzie pokazane później), a wtedy mniej miejsca będzie wykorzystane na pliki przyrostowe. </p>
+
+				<p>Pierwszą rzeczą jest zainstalowanie rdiff-backup na zdalnej maszynie (każdy komputer, którego dysku chcesz wykonać kopię zapasową musi mieć zainstalowany rdiff-backup).</p>
+
+				<p>Aby zrobić kopie zapasową zdalnego pc na lokalnym, uruchom na lokalnym pc (np. 192.168.0.1): <span class="highlight-4">Zwróć uwagę na użycie podwójnych dwukropków :: </span></p>
+<pre>
+# mkdir /media/sdb1/rdiff-backups/192.168.0.2/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' 192.168.0.2::/ /media/sdb1/rdiff-backups/192.168.0.2/root
+</pre>
+				<p>Teraz, jeśli chcesz przywrócić katalog na zdalnym pc, uruchom przywracanie albo na lokalnym, albo na zdalnym komputerze.</p>
+
+				<p>Tak przywrócisz katalog /usr/local/games na zdalnym komputerze, inicjując proces ze zdalnego komputera:</p>
+<pre>
+# rdiff-backup -r now 192.168.0.1::/media/sdb1/rdiff-backups/192.168.0.1/root/usr/local/games /usr/local/games
+</pre>
+				<p>Tak przywrócisz katalog /usr/local/games na zdalnym komputerze, inicjując proces z lokalnego komputera:</p>
+<pre>
+# rdiff-backup -r now /media/sdb1/rdiff-backups/192.168.0.1/root/usr/local/games 192.168.0.2::/usr/local/games
+</pre>
+				<p>Użyj taką samą składnię, kiedy przywracasz partycję główną z live cd (zdalny pc został uruchomiony przy pomocy live cd - patrz powyżej).</p>
+
+			<h5>Automatyczne kopie bezpieczeństwa:</h5>
+
+				<p>Jeśli wykonujesz kopie bezpieczeństwa innego komputera na swojej lokalnej maszynie, najpierw uaktywnij bezhasłowe logowanie ssh przy użyciu kluczy ssh. <span class="highlight-2">Zwróć uwagę, że mowa o bezhasłowym logowaniu ssh jako root. Można to zrobić w ten sposób, by tylko polecenie rdiff-backup było wykonywane, ale ta kwestia jest poza tematem tej instrukcji - patrz <a href="ssh-pl.htm#ssh-s">Konfiguracja SSH</a> </span>  Zakładamy pełne zaufanie i ustawimy najprostszy sposób osiągnięcia bezhasłowego logowania ssh.</p>
+
+				<p>Z lokalnego pc, wykonaj następujące polecenie:</p>
+<pre>
+# [ -f /root/.ssh/id_rsa ] || ssh-keygen -t rsa -f /root/.ssh/id_rsa
+</pre>
+				<p>I wciśnij dwa razy enter dla braku hasła. Następnie wykonaj polecenie:</p>
+<pre>
+# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\<!--dunno if this is wrong-->
+> cat - >>/root/.ssh/authorized_keys2'
+</pre>
+				<p>Zostaniesz poproszony o hasło roota.</p>
+
+				<p>Teraz możesz uruchomić ssh na zdalnym komputerze jako root bez wpisywania hasła i rdiff-backup może być automatyzowany.</p>
+
+				<p>Następnie, stwórz skrypt basha, który zawiera wszystkie polecenia rdiff-backup. Nasz skrypt basha może wyglądać tak:</p>
+
+
+<pre>
+#!/bin/bash
+RDIFF=/usr/bin/rdiff-backup
+echo
+echo "=======Backing up 192.168.0.1 root======="
+${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/sdb1/rdiff-backups/192.168.0.1/root
+echo "(and purge increments older than 1 month)"
+${RDIFF} --remove-older-than 1M --force /media/sdb1/rdiff-backups/192.168.0.1/root
+echo
+echo "=======Backing up 192.168.0.1 mount sda5======="
+${RDIFF} --ssh-no-compression --exclude /media/sda5/myjunk /media/sda5 /media/sdb1/rdiff-backups/192.168.0.1/sda5
+echo "(and purge increments older than 1 months)"
+${RDIFF} --remove-older-than 1M --force /media/sdb1/rdiff-backups/192.168.0.1/sda5
+echo
+echo "=======Backing up 192.168.0.2 root======="
+${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' --exclude '/mnt/*/*' 192.168.0.2::/media/sdb1/rdiff-backups/192.168.0.2/root
+echo "(and purge increments older than 1 months)"
+${RDIFF} --remove-older-than 1M --force /media/sdb1/rdiff-backups/192.168.0.2/root
+</pre>
+
+
+				<p>Teraz możesz nazwać ten skrypt "myrdiff-backups.bash" i umieścić go /usr/local/bin na naszej lokalnej maszynie (backup serwer) i nadać mu atrybut wykonywalności. Uruchom skrypt i sprawdź, czy działa.</p>
+
+				<p>Na koniec możesz przy użyciu crona uruchamiać go każdego wieczora o 20:00. Następująca linia w crontabie roota będzie mieć ten skutek:</p>
+<pre>
+# crontab -e
+i wpisz następującą linię
+0 20 * * * /usr/local/bin/myrdiff-backups.bash
+</pre>
+
+			<div id="rev">Content last revised 14/08/2010 0100 UTC</div>
+</div>
+</div>
+</div>
+</body>
+</html>
