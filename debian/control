@@ -1,11 +1,11 @@
 Source: sidu-manual
-Section: unknown
-Priority: extra
+Section: doc
+Priority: optional
 Maintainer: J. Hamatoma <hama@siduction.net>
 Uploaders: Alf Gaida <agaida@siduction.org>,
  Ferdinand Thommes <devil@siduction.org>,
  Hendrik Lehmbruch <hendrikl@siduction.org>,
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9),
 Standards-Version: 3.9.3
 Homepage: http://chili.siduction.org/projects/siduction/wiki/Sidu-manual
 Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
@@ -14,9 +14,9 @@ Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
 Package: sidu-manual
 Architecture: all
 Depends: ${misc:Depends},
-    perl (>= 5.0),
-    siguibui (>= 1.9),
-    creativecommons3,
+ perl (>= 5.0),
+ siguibui (>= 1.9),
+ creativecommons3,
 Recommends: sidu-manual-perlfect,
 Description: Manual of siduction
  This is the official manual of the distribution siduction.
