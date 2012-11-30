@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ro" lang="ro">
+<head>
+	<title>Manualul siduction - Resoluția ecranului și Dualhead </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-ro.htm#welcome-gen">Manualul SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-ro.htm#cred-team">Credite</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual</a></li>
+					  <li><a href="welcome-ro.htm#table-contents">Cuprins</a></li>
+					</ul>
+					</li>
+		<li><a href="help-ro.htm#help-gen">Cum primiți ajutor &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-ro.htm#help-gen">De unde și cum primiți ajutor</a></li>
+					  <li><a href="help-ro.htm#paste">IRC <i>!paste</i></a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-ro.htm#welcome-quick">Ghidul de pornire rapidă siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-ro.htm">Conținutul ISO, Versiuni, Locații de Download  și Arderea CD/DVD</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-ro.htm#cd-content">Conținutul ISO și cerințe de sistem &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-ro.htm#rolling">Notele Versiunii</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații siduction, Descărcare și Ardere &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-ro.htm#md5">md5 Suma de control</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-nero">Arderea în Windows</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-linux">Arderea în Linux</a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burning-no-gui">script-ul <i>burniso</i></a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burn-no-gui-gen">Arderea fără GUI</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații de Descărcare siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-ro.htm">Modul Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-ro.htm#rootpw">Parola de root pe siduction-Live ISO</a></li>
+				<li><a href="live-mode-ro.htm#live-cd-installsoft">Instalarea programelor în timpul rulării unui Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-ro.htm">Terminalul / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-ro.htm#colours"> Terminal - promt-uri colorate</a></li>
+					  <li><a href="term-konsole-ro.htm#cli-help">Ajutor în Linia de Comandă</a></li>
+					  <li><a href="help-ro.htm#init3-tools">Unelte bune de știut în modul text (tty) - <i>init 3</i></a></li>
+					  <li><a href="term-konsole-ro.htm#term-cmds">Lista Comenzilor Linux în Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-ro.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-ro.htm">CheatCode-uri</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-ro.htm#cheatcodes">CheatCode-uri specifice siduction în Live-ISO</a></li>
+				<li><a href="cheatcodes-ro.htm#cheatcodes-linux">CheatCode-uri generice Linux</a></li>
+				<li><a href="cheatcodes-vga-ro.htm#vga">Code-uri VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-ro.htm">Partiționarea Hard Disk-ului - Tradițional, GPT și LVM</a>
+		<ul class="sub-menu" id="sm6">
+			 <li><a href="part-gparted-ro.htm#hd-ntfs3g">Scrierea pe partiții NTFS cu <i>ntfs-3g</i></a></li>
+			<li><a href="part-lvm-ro.htm#part-lvm">Partiționarea pentru a folosi LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-ro.htm#partition">Partiționarea cu GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-ro.htm#partition">Partiționarea HD cu GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-ro.htm#ntfs">Redimensionarea partițiilor NTFS cu GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-ro.htm#partition">Partiționarea cu CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-ro.htm#partition">Partiționarea HD cu <i>cfdisk</i></a></li>
+					    <li><a href="part-cfdisk-ro.htm#formating">Formatarea după partiționare cu <i>cfdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-6">Formatarea după partiționare cu <i>gdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-1">GPT - Partiționarea cu <i>gdisk</i></a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-ro.htm#part-example">Partiționare - Sumar &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-ro.htm#part-example">Exemple de dimensiuni de Partiții</a></li>
+					  <li><a href="part-uuid-ro.htm#uuid">UUID, Reconstruirea <i>fstab</i> și crearea unor noi puncte de mount-are</a></li>
+					  <li><a href="part-cfdisk-ro.htm#disknames">Numirea pe scurt a Disk-urilor</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-ro.htm">Opțiuni de Instalare - HD, USB, VM și Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării</a></li>
+					  <li><a href="hd-install-ro.htm#Installation">Instalarea pe HD</a></li>
+					  <li><a href="hd-install-ro.htm#first-hd-boot">Prima Boot-are</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> - Introducere</a></li>
+					  <li><a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>fromiso</i> cu Grub 2</a></li>
+					  <li><a href="hd-install-opts-ro.htm#fromiso-persist"><i>fromiso</i> și <i>persist</i></a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe un USB-HD - specific siduction - <i>siduction-on-stick</i></a></li>
+					  <li><a href="hd-ins-opts-oos-ro.htm#raw-usb">Scrierea siduction pe un USB/SSD stick cu orice sistem Linux, MS Windows sau Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-ro.htm#install-crypt">Instalarea pe partiții criptate - <i>cryptroot</i></a></li>
+		  <li><a href="nbdboot-ro.htm#nbd1">Boot-area siduction din rețea</a></li>
+		  <li><a href="hd-install-vmopts-ro.htm#vmopts">Instalarea în Mașini Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-ro.htm">Plăci grafice, monitoare, Xorg,  &amp; drivere</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare</a></li>
+					  <li><a href="hw-dev-mon-ro.htm#xrandr">Monitoare Duale și <i>xrandr</i></a></li>
+					  <li><a href="hw-dev-mon-ro.htm#mon-binary">Monitoare Duale (folosind binare)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-ro.htm#foss-xorg">GPU drivere &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-ro.htm#ati-3d">AMD/ATI 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#intel">Intel 2D și 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#nvidia">Nvidia 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#foss-xorg">Open Source Xorg -drivere</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-ro.htm#fw-detect">Detectare Firmware - non-free </a></li>
+			  <li><a href="nf-firm-ro.htm#non-free-firmware">Adăugarea non-free la Lista Surselor</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-ro.htm">Managere de Ferestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-ro.htm">KDE și XFCE Managere de Ferestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-ro.htm#xfce-notes">Xfce aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#install-add">KDE aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#desk-freeze">Înghețarea Desktop-ului</a></li>
+					    <li><a href="wm-dm-ro.htm#kde-login">KDE - nu mă pot loga</a></li>
+					    <li><a href="wm-dm-ro.htm#ch-th">Schimbarea Aspectului</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-ro.htm#dm">Instalarea altor Managere de Ferestre (Display Managers)</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-ro.htm">Conectarea la Internet, WiFi, LAN și Rețele</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-ro.htm">Setul LAMP din siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-ro.htm#serv-apache">Setul LAMP din siduction</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ftp">Clienți FTP</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-sec">Protocoale de Securitate</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-ro.htm#serv-mysql">Setarea MySQL</a></li>
+					    <li><a href="lamp-ppp-ro.htm#serv-php">PHP în Apache</a></li>
+					    <li><a href="ntp-server-ro.htm#ntp-server">Setarea Timeserver-ului</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-ro.htm#tor">Firewall-uri și Intimitate &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-ro.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-ro.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-ro.htm#firewalls">Firewall-uri</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-ro.htm#ssh-x">SSH și Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-ro.htm#setup">Setarea Samba-Server</a></li>
+						  <li><a href="samba-ro.htm#configure">Configurarea SAMBA (Windows)</a></li>
+						  <li><a href="ssh-ro.htm#ssh-fs">SSH - Mount-area la distanță</a></li>
+						  <li><a href="ssh-ro.htm#ssh-x">Aplicații X Window via SSH</a></li>
+						  <li><a href="ssh-ro.htm#ssh-f">GUI SSH cu Konqueror</a></li>
+						  <li><a href="ssh-ro.htm#ssh-w">SSH X-Forwarding de pe PC-uri Windows</a></li>
+						  <li><a href="ssh-ro.htm#ssh">SSH și Securitate</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni WIFI &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-ro.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-ro.htm#net-set1">WiFi - Setarea WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-ro.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-ro.htm#hotswitch">Schimbarea rețelei între WiFi și Cablu</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni prin Cablu &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-ro.htm#dial-mod">Modem-uri 56k</a></li>
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-ro.htm">Managementul Pachetelor și dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-ro.htm#apt-cook">APT - Utilizare și Listele Surselor &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-ro.htm#apt-cook">APT-Ghid de Utilizare și Listele Surselor</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-install">Instalarea de pachete noi</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-delete">Ștergerea unui pachet</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-downgrade">Pachete în Hold și downgrading</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-cache">Pachete - căutarea cu <i>apt-cache</i></a></li>
+					    <li><a href="sys-admin-apt-ro.htm#gui-pacsea">Pachete - căutarea cu GUI</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-remove">Ștergerea Kernel-urilor</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#dmakms">Instalarea dinamică a modulelor kernel cu <i>dmakms</i></a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-ro.htm#live-cd-upgrade">Actualizarea cu Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-ro.htm#approx">Actualizarea <i>dist-upgrade</i> mai multor PC-uri din LAN</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#du-st">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Pașii</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-ro.htm">Administrarea Sistemului</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-ro.htm#bois-prep">Actualizarea BIOS-ului cu FreeDOS</a></li>
+		<li><a href="vir-rkits-ro.htm#virus-rkits">Scanere de Viruși și Rootkit</a></li>
+		<li><a href="hd-install-ro.htm#adduser">Adăugarea de Utilizatori și Parole &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-ro.htm#adduser">Adăugarea unui nou utilizator</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pw-lost">Parolele de <i>root</i> pierdute, parole noi</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#start-services">Servicii și init runlevel-e &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-ro.htm#start-services">Servicii -activare/dezactivare</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pkill">Omorârea unui serviciu sau proces</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#init">runlevel-e siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-ro.htm#rsync">Copii de siguranță ale Sistemului &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-ro.htm#rdiff">Back-Up cu <i>rdiff</i></a></li>
+					    <li><a href="sys-admin-rsync-ro.htm#rsync">Back-Up cu <i>rsync</i></a></li>
+					    <li><a href="home-ro.htm#home-bu">Mutarea /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#fonts">CUPS, Font-uri și Sunet &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-ro.htm#fonts">Font-uri</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#cups">CUPS - Sistemul de Print-are</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#sound">Mixere de Sunet</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-ro.htm#chroot">Grub2 - Recuperarea Grub cu <i>chroot</i></a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Grub2 - bootsector-ul MBR Suprascris</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#multi-os">Grub2 - Boot-area Duală și Multiplă</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub1-grub2">Grub2 - Actualizarea de la Grub1</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 - Introducere</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li><a></a></li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div><!--/htdig_noindex-->
+<div id="main-page">
+	<div class="divider" id="mon-res">
+		<h2 id="top-header">Rezoluţiile Ecranului şi Monitoare</h2>
+
+				<h4>xrandr</h4>
+					<h5>Driverele pentru plăcile suportate</h5>
+						<ul>
+							<li> xserver-xorg-video-intel (de la 2.0)</li>
+							<li>xserver-xorg-video-nouveau (<a href="http://nouveau.freedesktop.org/wiki/FeatureMatrix"> Despre nouveau Feature Matrix</a>)</li>
+							<li>xserver-xorg-video-ati (de la 6.7.192)</li>
+						</ul>
+
+							<p>Prima dată verificați dacă <i>xrandr</i> este suportat. Dacă <i>xrandr</i> nu este suportat verificați versiunea de <i>xorg</i> și de <i>driver</i> folosită.</p>
+
+							<p> Iată un exemplu de schimbare a rezoluției pe primul monitor, în caz că placa permite acest lucru, </p>
+							<p>prin <i>'xrandr'</i>: </p>
+<pre>
+xrandr --output VGA --mode 1440x900
+</pre>
+
+		</div>
+		<div class="divider" id="xrandr">
+			<h2>Două monitoare și <i>xrand</i>r</h2>
+
+							<p> <span class="highlight-2">Dacă folosiți driver-e free nu vă mai trebuie <i>xorg.conf</i>.</span> Dacă aveți un <i>xorg.conf</i> în directorul <span class= "highlight-3">/etc/X11/xorg.conf.d</span>, pentru că folosiți driver-e proprietare pentru placa video, trebuie să-l salvați acum înainte de a continua.</p>
+
+							<p>Fișierul <i>xorg.conf</i>, dacă este prezent, acum are o organizare modulară, de exemplu: fiecare modul conține tot ce trebuie unui dispozitiv "device", ecranul sau un mouse.</p>
+
+							<p>Cu <i>xrandr</i>. puteți configura ecranul principal sau secundar fără să mai restartați mediul X, (hotplug). <i>xrandr</i> înlocuiește <i>xinerama</i> și<i> mergedFB</i>. De la versiunea <i>xrandr 1.2</i> vechiul stil de configurare din <i>xorg (xinerama și mergedFB)</i> pare să nu mai funcționeze.</p>
+							<!-- mergedFB doesn't work anymore in a dist-upgraded siduction install -->
+
+				<h5> Driverele pentru plăcile suportate</h5>
+						<ul>
+							<li> xserver-xorg-video-intel (de la 2.0)</li>
+							<li>xserver-xorg-video-nouveau (<a href="http://nouveau.freedesktop.org/wiki/FeatureMatrix"> Despre nouveau Feature Matrix</a>)</li>
+							<li>xserver-xorg-video-ati (de la 6.7.192)</li>
+						</ul>
+
+			<h3>Pregătirea unui PC, pentru o configurare prin  <i>xrandr</i> cu dublu-monitor</h3>
+							<p> <span class="highlight-2">Notă:</span> În mod ideal, în cazul utilizării a două monitoare în mod  permanent, este bine să fie utilizată o configurație statică pentru  <span class="highlight-3"> xorg.conf</span>, configurație care să reflecte acest mod de utilizare. </p>
+
+							<p> Un laptop/notebook poare fi configurat dinamic (contrar unui PC cu două monitoare), dar după reboot   configurația este pierdută, cu excepția cazului în care ați utilizat anumiți parametrii în <i>xrandr</i>, care au fost <i>copy/paste</i> într-un script plasat în <span class="highlight-3"> ~/.kde/Autostart/</span>.</p>
+
+				<h4>Să ne obișnuim cu <i>xrandr</i></h4>
+							<p> Să începem prin a scrie, ca utilizator, într-un xterminal/shell <i>xrandr</i> și să evaluăm output-ul:</p>
+
+<pre>
+$xrandr
+Screen 0: minimum 320 x 200, current 2048 x 768, maximum 2048 x 768
+VGA-0 connected 1024x768+0+0 (normal left inverted right x axis y axis) 304mm x 228mm
+   1024x768       60.0*+   75.1     70.1     60.0*    59.9
+   832x624        74.6
+   800x600        72.2     75.0     60.3     56.2
+   640x480        75.0     72.8     66.7     60.0
+   720x400        70.1
+</pre>
+
+							<p> Aici apare doar monitorul vga atașat la PC (pentru explicații detaliate asupra termenilor folosiți citiți  <a href="hw-dev-mon-ro.htm#aa"> Appendix A </a> ). Se pot remarca rezoluțiile suportate de către acest monitor și valoarea maximă pentu acest monitor, în acest exemplu  2048x768, valoare importantă în cazul unui dublu-monitor.</p>
+
+							<p> Acum puteți conecta un alt monitor extern și rula  din nou <i>xrandr</i>:</p>
+<pre>
+xrandr
+Screen 0: minimum 320 x 200, current 2048 x 768, maximum 2048 x 768
+VGA-0 connected 1024x768+0+0 (normal left inverted right x axis y axis) 304mm x 228mm
+   1024x768       60.0*+   75.1     70.1     60.0*    59.9
+   832x624        74.6
+   800x600        72.2     75.0     60.3     56.2
+   640x480        75.0     72.8     66.7     60.0
+   720x400        70.1
+DVI-0 connected 1024x768+1024+0 (normal left inverted right x axis y axis) 310mm x 230mm
+   1024x768_85.00   85.0*+
+   1024x768       85.0 +   84.9     74.9     75.1     70.1     60.0     43.5
+   832x624        74.6
+   800x600        84.9     72.2     75.0     60.3     56.2
+   640x480        84.6     75.0     72.8     66.7     60.0
+   720x400        87.8     70.1
+S-video disconnected (normal left inverted right x axis y axis)
+</pre>
+							<p> Pe poate observa că monitorul DVI este bine conectat și că el suportă rezoluții între 720x400 și 1024x768, la o valoare dată a ratei de refresh.</p>
+
+				<h6>Câteva scenarii de configurare</h6>
+
+							<p> Sintaxa de bază</p>
+<pre>
+xrandr --output &lt;output&gt; --rate &lt;rate&gt; --mode &lt;mode&gt; --left-of|--right-of|--above|--below|--same-as &lt;output&gt;
+</pre>
+
+							<p>unde:</p>
+						<ul>
+    							<li>&lt;output&gt; este numele output-ului (vedeți <a href="hw-dev-mon-ro.htm#aa"> Appendix A </a>)</li>
+							<li>&lt;rate&gt; este rata de refresh dată de output-ul xrandr (opțional)</li>
+							<li>&lt;mode&gt; este rezoluția dată de output-ul xrandr (opțional)</li>
+						</ul>
+
+			<h5> Schimbarea rezoluției pentru monitorul principal </h5>
+<pre>
+xrandr --output VGA --mode 1024x768
+</pre>
+
+
+						<h6>Clonare</h6>
+							<p> Cum multe monitoare externe (sau video-proiectoare) nu pot lucra cu (sau în) modul 1280x800, ci doar cu  1024x768, folosiți această comandă ca un (bun) exemplu:</p>
+<pre>
+xrandr --output VGA --mode 1024x768 --output LVDS --mode 1024x768
+</pre>
+
+							<p> Pentru a opri al doilea monitor și a reveni la rezoluția normală pe monitorul principal, se poate rula comanda:</p>
+<pre>
+xrandr --output VGA --off --output LVDS --mode 1280x800
+</pre>
+
+				<h5>Desktop cu mai multe monitoare</h5>
+							<p> Deoarece intel GMA &lt;=945GM/GMS nu mai susține ecranele virtuale 3D cu rezoluții &gt;2048x2048, nu este posibil să folosim ambele monitoare cu  rezoluție înaltă, dar în schimb la rezoluția 1024x768 ambele pot lucra fără probleme:</p>
+<pre>
+xrandr --output LVDS --mode 1024x768 --output VGA --mode 1024x768 --left-of LVDS
+</pre>
+
+							<p> Pentru a dezactiva multiple monitoare și pentru a reveni la rezoluția inițială pe monitorul principal (dacă este nevoie) se rulează comanda:</p>
+
+<pre>
+xrandr --output VGA --off (--output LVDS --mode 1280x800)
+</pre>
+
+							<p> Altă opțiune este să punem al doilea monitor sub sau peste primul monitor:</p>
+
+<pre>
+xrandr --output LVDS --mode 1280x800 --output VGA --mode 1280x1024 --above LVDS
+</pre>
+
+							<p> Monitorul virtual rezultat va avea o resoluție de 1280x1824 care și în acest caz este inferioară lui  2048x2048. O altă soluție este pivotarea de monitoare:</p>
+
+<pre>
+xrandr --verbose --output LVDS --mode 1280x800 --output VGA  --mode 1024x768 --rotate left --left-of LVDS
+</pre>
+
+							<p>NOTĂ: Opțiune interesantă doar în cazul că monitoarele pot fi inter-schimbate fizic.</p>
+
+				<h6>Exemplu de PC cu două monitoare configurat permanent cu <i>xrandr</i> având următoarea secvență de cod în fișierul <span class="highlight-3"> /etc/X11/xorg.conf.d/30-screen.conf</span>:</h6>
+
+<pre>
+#30-screen.conf
+Section "Monitor"
+	Identifier      "DVI-0"
+	Option          "Primary"       "true"
+EndSection
+
+Section "Monitor"
+	Identifier      "DVI-1"
+	Option          "RightOf"       "DVI-0"
+EndSection
+
+Section "Device"
+	  Identifier     "ATI Radeon HD 2600"
+	  Option         "Monitor-DVI-0" "DVI-0"
+	  Option         "Monitor-DVI-1" "DVI-1"
+EndSection
+</pre>
+
+
+							<p>Notă:</p>
+ 						<ul>
+							<li> Monitorul virtual est limitat la 2048x2048 pentru intel. Se poate obține o rezoluție mai mare, însă cu pierderea suportului DRI. Se pare că această limitare nu se aplică și la nvidia/ati. </li>
+
+ 							<li>Ieșirea TV nu funționează cu ATI</li>
+
+							<li> Dacă DDC nu funționează corect cu ATI (Xorg.0.log: (WW) RADEON(0): DDC2/I2C nu este inițiat corespunzător) se poate că nu vor putea fi utilizate liniile <i>modes</i> în <i>xorg.conf</i> </li>
+
+							<li> În cazul configurării unui PC mare (cu dublu head/cap video) și că <i>xrandr</i> zice că rezoluția cerută depășește rezoluția suportată de <i>xrandr</i>, se poate folosi parametrul <i>"Virtual"</i> împreună cu  rezoluția cerută. (Vezi secțiunea <i>Screen</i> în Apendix A) </li>
+
+							<li> Pentru orice placă video, cu excepția lui intel, rezoluția virtuală poate fi suficient de mare pentru  rezoluția ambelor  monitoare.<br /> De  exemplu: monitor1= 1024x768 și monitor2=1280x1024, deci ecranul  virtual poat fi  de  (1024+1280)x(1024>768) -> 2304x1024</li>
+
+						</ul>
+
+<div class="divider" id="aa">
+					<h6>Appendix A</h6>
+
+						<h6>Intel</h6>
+<pre>
+Output names:
+* LVDS: internal laptop panel
+* TMDS-1: external DVI port
+* VGA: external VGA port
+* TV: external TV output
+</pre>
+						<h6>ATI</h6>
+<pre>
+Output names:
+* LVDS: internal laptop panel
+* DVI-0: first external DVI port
+* DVI-1: second external DVI port (if present)
+* VGA-0: first external VGA port
+* VGA-1: second external VGA port (if present)
+* S-video
+</pre>
+						<h6>Nvidia</h6>
+<pre>
+nv driver supports RandR1.2 on G80 boards
+Output names:
+* LVDS: internal laptop panel
+* DVI0: first external DVI port
+* DVI1: second external DVI port (if present)
+</pre>
+				    </div>
+						<h6>Legături utile</h6>
+							<p><a href="http://wiki.debian.org/XStrikeForce/HowToRandR12"> http://wiki.debian.org/XStrikeForce/HowToRandR12</a></p>
+							<p><a href="http://bgoglin.livejournal.com/9846.html">http://bgoglin.livejournal.com/9846.html</a></p>
+							<p><a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=420419">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=420419</a></p>
+							<p><a href="http://www.thinkwiki.org/wiki/Xorg_RandR_1.2">http://www.thinkwiki.org/wiki/Xorg_RandR_1.2</a></p>
+
+
+	</div>
+	<div class="divider" id="mon-binary">
+				<h2> Monitoare Duble (folosind  executabile) </h2>
+							<p> <span class="highlight-3">Pentru drivere-le proprietare citiți documentația producătorului plăcii grafice.</span></p>
+
+			<h3>nvidia</h3>
+							<p>Utilizaţi <i>nvidia xorg configurator</i> <a href="http://www.sorgonet.com/linux/nv-online/"> http://www.sorgonet.com/linux/nv-online/</a> şi modificaţi fişierul <i>xorg</i> după necesităţi.</p>
+
+			<h5>Native ATI-radeon</h5>
+
+							<!--<p><a href="http://siduction.org/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794"> http://siduction.org/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794</a> deţine câteva fişiere <i>xorg.conf</i> valide cu driverele free radeon.</p>-->
+
+							<p>NOTĂ: Va trebui să obţineţi informaţiile de configurare pentru al doilea monitor. Pentru aceasta deconectaţi un monitor, să boot-aţi de pe Live CD pentru a genera <i>xorg.conf</i>, să-l copiaţi, apoi faceţi la fel pentru cel de-al doilea monitor.</p>
+
+
+		</div>
+	<div id="rev">Page last revised 30/11/2012 2305 UTC</div>
+
+</div>
+</body>
+</html>

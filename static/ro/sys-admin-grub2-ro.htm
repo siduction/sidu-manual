@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ro" lang="ro">
+<head>
+	<title>Manualul siduction - Setare Grub2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-ro.htm#welcome-gen">Manualul SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-ro.htm#cred-team">Credite</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual</a></li>
+					  <li><a href="welcome-ro.htm#table-contents">Cuprins</a></li>
+					</ul>
+					</li>
+		<li><a href="help-ro.htm#help-gen">Cum primiți ajutor &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-ro.htm#help-gen">De unde și cum primiți ajutor</a></li>
+					  <li><a href="help-ro.htm#paste">IRC <i>!paste</i></a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-ro.htm#welcome-quick">Ghidul de pornire rapidă siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-ro.htm">Conținutul ISO, Versiuni, Locații de Download  și Arderea CD/DVD</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-ro.htm#cd-content">Conținutul ISO și cerințe de sistem &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-ro.htm#rolling">Notele Versiunii</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații siduction, Descărcare și Ardere &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-ro.htm#md5">md5 Suma de control</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-nero">Arderea în Windows</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-linux">Arderea în Linux</a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burning-no-gui">script-ul <i>burniso</i></a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burn-no-gui-gen">Arderea fără GUI</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații de Descărcare siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-ro.htm">Modul Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-ro.htm#rootpw">Parola de root pe siduction-Live ISO</a></li>
+				<li><a href="live-mode-ro.htm#live-cd-installsoft">Instalarea programelor în timpul rulării unui Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-ro.htm">Terminalul / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-ro.htm#colours"> Terminal - promt-uri colorate</a></li>
+					  <li><a href="term-konsole-ro.htm#cli-help">Ajutor în Linia de Comandă</a></li>
+					  <li><a href="help-ro.htm#init3-tools">Unelte bune de știut în modul text (tty) - <i>init 3</i></a></li>
+					  <li><a href="term-konsole-ro.htm#term-cmds">Lista Comenzilor Linux în Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-ro.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-ro.htm">CheatCode-uri</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-ro.htm#cheatcodes">CheatCode-uri specifice siduction în Live-ISO</a></li>
+				<li><a href="cheatcodes-ro.htm#cheatcodes-linux">CheatCode-uri generice Linux</a></li>
+				<li><a href="cheatcodes-vga-ro.htm#vga">Code-uri VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-ro.htm">Partiționarea Hard Disk-ului - Tradițional, GPT și LVM</a>
+		<ul class="sub-menu" id="sm6">
+			 <li><a href="part-gparted-ro.htm#hd-ntfs3g">Scrierea pe partiții NTFS cu <i>ntfs-3g</i></a></li>
+			<li><a href="part-lvm-ro.htm#part-lvm">Partiționarea pentru a folosi LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-ro.htm#partition">Partiționarea cu GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-ro.htm#partition">Partiționarea HD cu GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-ro.htm#ntfs">Redimensionarea partițiilor NTFS cu GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-ro.htm#partition">Partiționarea cu CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-ro.htm#partition">Partiționarea HD cu <i>cfdisk</i></a></li>
+					    <li><a href="part-cfdisk-ro.htm#formating">Formatarea după partiționare cu <i>cfdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-6">Formatarea după partiționare cu <i>gdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-1">GPT - Partiționarea cu <i>gdisk</i></a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-ro.htm#part-example">Partiționare - Sumar &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-ro.htm#part-example">Exemple de dimensiuni de Partiții</a></li>
+					  <li><a href="part-uuid-ro.htm#uuid">UUID, Reconstruirea <i>fstab</i> și crearea unor noi puncte de mount-are</a></li>
+					  <li><a href="part-cfdisk-ro.htm#disknames">Numirea pe scurt a Disk-urilor</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-ro.htm">Opțiuni de Instalare - HD, USB, VM și Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării</a></li>
+					  <li><a href="hd-install-ro.htm#Installation">Instalarea pe HD</a></li>
+					  <li><a href="hd-install-ro.htm#first-hd-boot">Prima Boot-are</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> - Introducere</a></li>
+					  <li><a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>fromiso</i> cu Grub 2</a></li>
+					  <li><a href="hd-install-opts-ro.htm#fromiso-persist"><i>fromiso</i> și <i>persist</i></a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe un USB-HD - specific siduction - <i>siduction-on-stick</i></a></li>
+					  <li><a href="hd-ins-opts-oos-ro.htm#raw-usb">Scrierea siduction pe un USB/SSD stick cu orice sistem Linux, MS Windows sau Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-ro.htm#install-crypt">Instalarea pe partiții criptate - <i>cryptroot</i></a></li>
+		  <li><a href="nbdboot-ro.htm#nbd1">Boot-area siduction din rețea</a></li>
+		  <li><a href="hd-install-vmopts-ro.htm#vmopts">Instalarea în Mașini Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-ro.htm">Plăci grafice, monitoare, Xorg,  &amp; drivere</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare</a></li>
+					  <li><a href="hw-dev-mon-ro.htm#xrandr">Monitoare Duale și <i>xrandr</i></a></li>
+					  <li><a href="hw-dev-mon-ro.htm#mon-binary">Monitoare Duale (folosind binare)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-ro.htm#foss-xorg">GPU drivere &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-ro.htm#ati-3d">AMD/ATI 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#intel">Intel 2D și 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#nvidia">Nvidia 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#foss-xorg">Open Source Xorg -drivere</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-ro.htm#fw-detect">Detectare Firmware - non-free </a></li>
+			  <li><a href="nf-firm-ro.htm#non-free-firmware">Adăugarea non-free la Lista Surselor</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-ro.htm">Managere de Ferestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-ro.htm">KDE și XFCE Managere de Ferestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-ro.htm#xfce-notes">Xfce aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#install-add">KDE aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#desk-freeze">Înghețarea Desktop-ului</a></li>
+					    <li><a href="wm-dm-ro.htm#kde-login">KDE - nu mă pot loga</a></li>
+					    <li><a href="wm-dm-ro.htm#ch-th">Schimbarea Aspectului</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-ro.htm#dm">Instalarea altor Managere de Ferestre (Display Managers)</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-ro.htm">Conectarea la Internet, WiFi, LAN și Rețele</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-ro.htm">Setul LAMP din siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-ro.htm#serv-apache">Setul LAMP din siduction</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ftp">Clienți FTP</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-sec">Protocoale de Securitate</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-ro.htm#serv-mysql">Setarea MySQL</a></li>
+					    <li><a href="lamp-ppp-ro.htm#serv-php">PHP în Apache</a></li>
+					    <li><a href="ntp-server-ro.htm#ntp-server">Setarea Timeserver-ului</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-ro.htm#tor">Firewall-uri și Intimitate &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-ro.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-ro.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-ro.htm#firewalls">Firewall-uri</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-ro.htm#ssh-x">SSH și Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-ro.htm#setup">Setarea Samba-Server</a></li>
+						  <li><a href="samba-ro.htm#configure">Configurarea SAMBA (Windows)</a></li>
+						  <li><a href="ssh-ro.htm#ssh-fs">SSH - Mount-area la distanță</a></li>
+						  <li><a href="ssh-ro.htm#ssh-x">Aplicații X Window via SSH</a></li>
+						  <li><a href="ssh-ro.htm#ssh-f">GUI SSH cu Konqueror</a></li>
+						  <li><a href="ssh-ro.htm#ssh-w">SSH X-Forwarding de pe PC-uri Windows</a></li>
+						  <li><a href="ssh-ro.htm#ssh">SSH și Securitate</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni WIFI &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-ro.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-ro.htm#net-set1">WiFi - Setarea WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-ro.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-ro.htm#hotswitch">Schimbarea rețelei între WiFi și Cablu</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni prin Cablu &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-ro.htm#dial-mod">Modem-uri 56k</a></li>
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-ro.htm">Managementul Pachetelor și dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-ro.htm#apt-cook">APT - Utilizare și Listele Surselor &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-ro.htm#apt-cook">APT-Ghid de Utilizare și Listele Surselor</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-install">Instalarea de pachete noi</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-delete">Ștergerea unui pachet</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-downgrade">Pachete în Hold și downgrading</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-cache">Pachete - căutarea cu <i>apt-cache</i></a></li>
+					    <li><a href="sys-admin-apt-ro.htm#gui-pacsea">Pachete - căutarea cu GUI</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-remove">Ștergerea Kernel-urilor</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#dmakms">Instalarea dinamică a modulelor kernel cu <i>dmakms</i></a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-ro.htm#live-cd-upgrade">Actualizarea cu Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-ro.htm#approx">Actualizarea <i>dist-upgrade</i> mai multor PC-uri din LAN</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#du-st">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Pașii</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-ro.htm">Administrarea Sistemului</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-ro.htm#bois-prep">Actualizarea BIOS-ului cu FreeDOS</a></li>
+		<li><a href="vir-rkits-ro.htm#virus-rkits">Scanere de Viruși și Rootkit</a></li>
+		<li><a href="hd-install-ro.htm#adduser">Adăugarea de Utilizatori și Parole &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-ro.htm#adduser">Adăugarea unui nou utilizator</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pw-lost">Parolele de <i>root</i> pierdute, parole noi</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#start-services">Servicii și init runlevel-e &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-ro.htm#start-services">Servicii -activare/dezactivare</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pkill">Omorârea unui serviciu sau proces</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#init">runlevel-e siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-ro.htm#rsync">Copii de siguranță ale Sistemului &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-ro.htm#rdiff">Back-Up cu <i>rdiff</i></a></li>
+					    <li><a href="sys-admin-rsync-ro.htm#rsync">Back-Up cu <i>rsync</i></a></li>
+					    <li><a href="home-ro.htm#home-bu">Mutarea /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#fonts">CUPS, Font-uri și Sunet &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-ro.htm#fonts">Font-uri</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#cups">CUPS - Sistemul de Print-are</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#sound">Mixere de Sunet</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-ro.htm#chroot">Grub2 - Recuperarea Grub cu <i>chroot</i></a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Grub2 - bootsector-ul MBR Suprascris</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#multi-os">Grub2 - Boot-area Duală și Multiplă</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub1-grub2">Grub2 - Actualizarea de la Grub1</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 - Introducere</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li><a></a></li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div><!--/htdig_noindex-->
+<div id="main-page">
+		<div class="divider" id="grub2">
+			<h2 id="top-header">GRUB 2</h2>
+				<h6>Scurt sumar al diferențelor majore dintre GRUB 1 (cunoscut acum ca 'grub-legacy') și GRUB 2:</h6>
+
+					<ul>
+						  	<li><span class="highlight-3">Fișierul <i>menu.lst</i> nu mai există.</span></li>
+
+							<li>Un fișier numit <span class="highlight-3"><i>grub.cfg</i></span> controlează acum Ecranul Grub.</li>
+
+							<li><i>grub.cfg</i> este generat automat de script-uri în <span class="highlight-3"><i> /etc/grub.d</i></span>.</li>
+
+							<li>Numerotarea partițiilor este de asemenea diferită.<br /> Ea începe acum de la <b>1</b> în loc de <b>0</b> (discurile sunt în continuare numărate începând cu <b>0</b>):
+<pre>
+Linux      grub1     grub2
+/dev/sda1  (hd0,0)   (hd0,1)
+/dev/sda2  (hd0,1)   (hd0,2)
+/dev/sda3  (hd0,2)   (hd0,3)
+
+/dev/sdb1  (hd1,0)   (hd1,1)
+/dev/sdb2  (hd1,1)   (hd1,2)
+/dev/sdb3  (hd1,2)   (hd1,3)
+</pre>
+							</li>
+
+							<li>Structura fișierului <i>grub.cfg</i> este complet diferită de <i>menu.lst</i> și NU poate fi copiată direct din Grub 1 <i>menu.lst</i> în Grub 2 <i>grub.cfg</i> ca să rezulte fișierul <i>grub.cfg</i>. <span class="highlight-2">Fișierul <i>grub.cfg</i> NU trebuie NICIODATĂ modificat manual !!. </span></li>
+
+					 </ul>
+		</div>
+		<div class="divider" id="grub2-files">
+					  <h4> Fișierul de configurare implicit al Grub 2</h4>
+							<p>Fișierul <span class="highlight-3"><i>/etc/default/grub</i></span> conține valorile variabilelor necesare lui grub2, cum sunt: timpul de afișare al meniului, intrările implicit active din meniu, parametrii de kernel, utilizarea elementelor grafice în grub și așa mai departe.</p>
+
+					 <h4> Script-urile lui Grub 2</h4>
+							<p>Fișierele din <span class="highlight-3"><i> /etc/grub.d</i></span>  controlează și au ca rezultat fișierul numit <span class="highlight-3"><i> grub.cfg</i></span>, ce poate fi găsit în <span class="highlight-3"><i> /boot/grub/</i></span>.</p>
+
+							<p><span class="highlight-2">Fișierul <i>grub.cfg</i> NU trebuie modificat NICIODATĂ manual. </span>Toate modificările trebuie făcute cu unul sau cu toate script-urile aflate în  <span class="highlight-3"><i> /etc/grub.d</i></span>. <i>'os-prober'</i> ar trebui să le rezolve în 90% din cazuri:</p>
+<pre>
+00_header:
+05_debian_theme: Setează fundalul, culorile textului, temele
+10_hurd: Locația Hurd kernels
+10_linux: Locația Linux kernels bazată pe rezultatele oferite de comanda <i>'lsb_release'</i>.
+20_memtest86+: Dacă fișierul <i> /boot/memtest86+.bin </i> există, este inclus în meniul de boot.
+30_os-prober: Caută Linux și alte SO-uri pe toate partițiile; le include în meniul de boot.
+40_custom: Un șablon pentru a adăuga intrări personale în meniu ale altor Sisteme de Operare.
+60_fll-fromiso: Un șablon pentru a adăuga intrări personale în meniu util la boot-area <i>fromiso</i> de pe un USB-stick/SSD-card.
+<span class="highlight-2"><i>60_fll-fromiso</i> nu trebuie modificat; folosiți <i>/etc/default/grub2-fll-fromiso</i>
+Citiți  <a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>'fromiso'</i> cu Grub 2</a></span>
+</pre>
+							<p>După ce o modificare este făcută, <i>grub</i> trebuie să știe schimbările. În cazul unei actualizări a kernel-ului siduction, comanda de actualizare a lui <i>grub</i> este rulată automat. În cazul unei modificări făcută manual de voi, ca administrator de sistem, asupra oricărui fișier menționat mai sus, trebuie să rulați: </p>
+
+<pre>
+update-grub
+</pre>
+
+							<p><span class="highlight-3">Pachetul Debian Grub2 este astfel proiectat încât o modificare manuală de către voi să fie necesară foarte rar.</span></p>
+		</div>
+		<div class="divider" id="grub1-grub2">
+				<h2>Trecerea de la Grub Legacy la Grub2</h2>
+							<p><span class="highlight-2">Vă recomandăm să faceți o trecere curată la Grub2 și să îndepărtați total Grub1. </span> Trebuie să vă avertizăm că puteți da totul peste cap deci fiți foarte atenți !.</p>
+
+						<h6>Pasul 1: </h6>
+							<p>Asigurați-vă că sistemul vostru aste complet adus la zi prin <span class="highlight-3"><i>dist-upgrade</i> în <i>init 3</i>. </span></p>
+<pre>
+apt-get update
+Ctrl+alt+F1
+init 3
+apt-get dist-upgrade
+init 5 &amp;&amp; exit
+</pre>
+						<h6>Pasul 2:</h6>
+							<p>Îndepărtați Grub1 total:</p>
+<pre>
+rm -rf /boot/grub
+apt-get purge grub-gfxboot
+</pre>
+							<p>Rezultatul va fi:  <span class="highlight-3">fll-iso2usb* grub-gfxboot* install-usb-gui* will be removed</span><br />  Tipăriți <span class="highlight-3">Y</span> pentru confirmare.</p>
+
+						<h6>Pasul 3:</h6>
+
+<pre>
+apt-get install grub2 os-prober
+</pre>
+
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
+							<p>Folosiți tasta 'Tab' pentru a selecta  'OK'</p>
+
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
+							<p>Folosiți tasta 'Tab' pentru a selecta  'OK'</p>
+
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
+
+							<p>Folosiți săgețile de la tastatură și tasta de spațiu pentru a plasa un <span class="highlight-3">* (asterisc) </span> ca să selectați pe a cărui MBR de hard drive urmează să scrie Grub2. <i>(Acest exemplu arată instalarea pe un USB drive)</i>.</p>
+
+						<h6>Pasul 4:</h6>
+<pre>
+update-grub
+</pre>
+
+
+						<h6>Pasul 5:</h6>
+<pre>
+apt-get install install-usb-gui
+</pre>
+
+						<h6>Pasul 6:</h6>
+							<p> Reboot-ați PC-ul și <i>menu.cfg</i> va afișa lista cu kernel-urile și sistemele de operare așa:</p>
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
+
+							<p>Dacă ceva e în neregulă sau merge prost uitați-vă la <a href="sys-admin-grub2-ro.htm#chroot">Suprascrierea sau stricarea lui Grub2 în MBR</a> </p>
+
+				  <h3>Modificarea opțiunilor de boot în Grub2 folosind ecranul de editare</h3>
+<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
+							<p>Dacă, din anumite motive, trebuie să faceți niște modificări temporare ale opțiunilor de boot ale kernel-ului selectat în ecranul de boot al Grub2, apăsați litera<span class="highlight-2"> e </span> pentru a edita opțiunile  kernel-ului apoi, folosind tastele săgeți, deplasați-vă la linia pe care vreți s-o editați. După ce ați editat folosiți combinația <span class="highlight-3"> Ctrl+x </span> pentru a boot-a computerul cu noile voastre opțiuni.</p>
+
+							<p>De examplu, pentru a rula direct în nivelul 3, adăugați <span class="highlight-3">3</span> la sfârșitul liniei ce conține <span class="highlight-3"> linux /boot/vmlinuz</span>.</p>
+
+							<p>Aceste editări nu sunt pemanente. Pentru a face schimbări permanente trebuie să editați fișierele corespunzătoare. Vedeți <a href="sys-admin-grub2-ro.htm#grub2-files">Fișierele lui Grub2</a>.</p>
+
+	      </div>
+		<div class="divider" id="multi-os">
+				<h2>Boot-area Duală și multi-booting cu Grub 2</h2>
+
+							<p>Având o configurație modulară, Grub2 oferă o comandă simplă de descoperire a oricărui sistem nou instalat iar dacă este găsit vre-o unul încearcă să implementeze schimbările prin actualizarea fișierului <i>menu.cfg</i>. Comanda este:</p>
+<pre>
+update-grub
+</pre>
+							<p>Dacă aveți nevoie să adăugați o intrare personală la <i>menu.cfg</i> sau dacă cele 30_os-prober nu reușesc să scrie în <i>menu.cfg</i> cu meniul <i>chainloader</i>, folosiți editorul de texte favorit pentru a face amendamentele în fișierul <span class="highlight-3"><i> /etc/grub.d/40_custom</i></span>.</p>
+
+							<p>Exemple de personalizare a fișierului <i>40_custom</i>:</p>
+<pre>
+menuentry "second mbr"{
+set root=(hd1)
+chainloader +1
+}
+</pre>
+
+<pre>
+menuentry "second partition"{
+set root=(hd0,2)
+chainloader +1
+}
+</pre>
+							<p>După ce ați făcut schimbările voastre rulați:</p>
+<pre>
+update-grub
+</pre>
+							<p>Dacă programul se plânge că nu recunoaște dispozitivele grub ale unui disk, înseamnă că trebuie re-generată <i>devicemap</i>.</p>
+
+							<p><span class="highlight-3">Asigurați-vă că ați ales partiția NU MBR când instalați un alt sistem de operare:</span></p>
+
+<pre>
+grub-mkdevicemap --no-floppy
+update-grub
+</pre>
+							<p>Avertizările pot fi ignorate în siguranță.</p>
+
+							<p>Dacă ați făcut vre-o greșeală, suprascriind probabil MBR veți avea nevoie pentru a repara asta cu <a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Suprascrierea sau stricarea lui Grub2 în MBR</a>.</p>
+</div>
+	<div class="divider" id="mbr-over-grub2">
+
+					<h2>Doar pentru a re-scrie grub2 în MBR de pe hard drive:</h2>
+
+<pre>
+/usr/sbin/grub-install --recheck --no-floppy /dev/sda
+</pre>
+						<p>Această linie s-ar putea să fie nevoie s-o rulați de mai multe ori, până convingeți programul că într-adevăr asta vreți să faceți.</p>
+
+		<h2>MBR Sectorul de boot suprascris de Windows, și /sau restaurarea lui Grub2</h2>
+							<p><span class="highlight-2">NOTĂ: pentru a restaura un Grub2 trebuie să aveți un <i>2009-04 (moros) siduction.iso</i> sau mai nou.</span> <a href="sys-admin-grub2-ro.htm#chroot">Ca alternativă puteți folosi <i>chroot</i> de pe oricare live.iso</a>.</p>
+
+							<p> Pentru a rescrie grub2 în MBR și/sau să reparați grub2 în general, va trebui să porniți sistemul de pe un <span class="highlight-3">siduction.iso</span>:</p>
+						<ol>
+							<li>Pentru a indentifica și confirma partițiile voastre (e.g. [h,s]d[a..]X) toate acțiunile următoare cer drepturi de administrator <i>(root)</i>, deci să devenim <i>root</i> (#):
+<pre>
+$ sux
+</pre>
+							</li>
+							<li>Fiind <i>root</i> tipăriți:
+<pre>
+fdisk -l
+cat /etc/fstab
+</pre>
+							Aceasta vă va oferi numele corecte.
+							</li>
+							<li>Când aveți convingerea că știți partiția corectă, creați punctul de mount-are:
+<pre>
+mkdir -p /media/[hdxx,sdxx,diskx]
+</pre>
+							</li>
+							<li>Mount-ați-o:
+<pre>
+mount /dev/xdxx /media/xdxx
+</pre>
+							</li>
+
+							<li>Acum rescrieți Grub în MBR al primului hard disk (generic):
+<pre>
+/usr/sbin/grub-install --recheck --no-floppy --root-directory=/media/xdxx /dev/sda
+</pre>
+							</li>
+						</ol>
+	      </div>
+		<div class="divider" id="chroot">
+		      <h2>Suprascrierea sau stricarea lui Grub în MBR</h2>
+
+							<p>Recuperarea lui Grub 2, dacă a fost suprascris sau stricat în MBR, folosiți următoarea metodă.<br />  <span class="highlight-3">Oricare live.iso  va fi suficient pentru a folosi <i>chroot</i> și a accesa sistemul instalat pe hard disk putând restaura versiunea grub corespunzătoare, grub1 (grub-legacy) sau grub2.</span></p>
+
+							<p>Boot-ați de pe un live siduction.iso care este cât mai apropiată de sistemul vostru (32 sau 64 bit CD, DVD, USB stick sau un SSD card) și deschideți o konsole. Tipăriți  <span class="highlight-3">sux</span> și apăsați enter pentru a da parola și a primi permisiuni de administrator <i>(root)</i>.</p>
+
+							<p>Folosind <span class="highlight-3">fdisk -l</span> sau <span class="highlight-3">blkid</span>, aflați care este numele corect al partiției de boot. Dacă preferați GUI folosiți <span class="highlight-3">Gparted</span>:</p>
+<pre>
+blkid
+</pre>
+							<p>și verificați dacă intrările din <i>fstab</i> se potrivesc cu output-ul lui <i>blkid</i>:</p>
+<pre>
+cat /etc/fstab
+</pre>
+							<p>Să presupunem că sistemul de fișiere root este pe <span class="highlight-3">/dev/sda2</span></p>
+<pre>
+mkdir /mnt/siduction-chroot
+mount /dev/sda2 /mnt/siduction-chroot
+</pre>
+
+							<p>Apoi, trebuie să mount-ați <span class="highlight-3">/proc</span>,  <span class="highlight-3">/run</span>, <span class="highlight-3">/dev</span>și <span class="highlight-3">/sys</span> astfel:</p>
+<pre>
+mount --bind /proc /mnt/siduction-chroot/proc
+mount --bind /run /mnt/siduction-chroot/run
+mount --bind /sys /mnt/siduction-chroot/sys
+mount --bind /dev /mnt/siduction-chroot/dev
+mount --bind /dev/pts /mnt/siduction-chroot/dev/pts
+</pre>
+							<p>Dacă boot-ați un sistem care folosește o partiționare EFI va trebui de asemeni să-l mount-ați. Presupunând că acesta este /dev/sda1:</p>
+<pre>
+mount /dev/sda1 /mnt/siduction-chroot/boot/efi
+</pre>
+
+							<p>Mediul <i>chroot</i> fiind acum setat, accesați-l cu:</p>
+<pre>
+chroot /mnt/siduction-chroot /bin/bash
+</pre>
+
+							<p>Acum puteți folosi arhivele locale din <i>/var/cache/apt</i> sau să modificați/reparați fișierele de care aveți nevoie când veți boot-a normal în SO, în acest caz de a repara Grub în MBR.</p>
+
+							<p><span class="highlight-3">Repararea lui Grub2</span></p>
+<pre>
+apt-get install --reinstall grub-pc
+</pre>
+							<p>Pentru a vă asigura că <i>grub</i> a fost instalat pe disk-ul sau partiția corectă, rulați:</p>
+<pre>
+dpkg-reconfigure grub-pc
+</pre>
+							<p><span class="highlight-3">Repararea Grub 2 EFI</span></p>
+<pre>
+apt-get install --reinstall grub-efi-amd64
+</pre>
+							<p><span class="highlight-3">Repararea lui Grub1 (grub-legacy)</span></p>
+<pre>
+apt-get install --reinstall grub-legacy
+</pre>
+							<p>Urmați instrucțiunile programului de instalare.</p>
+
+							<p>Pentru a părăsi mediul <i>chroot</i>:</p>
+<pre>
+Ctrl+d
+</pre>
+							<p>Reboot-ați PC-ul.</p>
+
+
+
+
+
+	</div>
+	<div id="rev">Page last revised 30/11/2012 1330 UTC</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ro" lang="ro">
+<head>
+	<title>Manualul siduction - Boot-are din rețea (nbd).</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/version-date.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<!-- Last translation revision bluewater 28/12/2009 1445 UTC-->
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-ro.htm#welcome-gen">Manualul SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-ro.htm#cred-team">Credite</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual</a></li>
+					  <li><a href="welcome-ro.htm#table-contents">Cuprins</a></li>
+					</ul>
+					</li>
+		<li><a href="help-ro.htm#help-gen">Cum primiți ajutor &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-ro.htm#help-gen">De unde și cum primiți ajutor</a></li>
+					  <li><a href="help-ro.htm#paste">IRC <i>!paste</i></a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-ro.htm#welcome-quick">Ghidul de pornire rapidă siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-ro.htm">Conținutul ISO, Versiuni, Locații de Download  și Arderea CD/DVD</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-ro.htm#cd-content">Conținutul ISO și cerințe de sistem &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-ro.htm#rolling">Notele Versiunii</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații siduction, Descărcare și Ardere &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-ro.htm#md5">md5 Suma de control</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-nero">Arderea în Windows</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-linux">Arderea în Linux</a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burning-no-gui">script-ul <i>burniso</i></a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burn-no-gui-gen">Arderea fără GUI</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații de Descărcare siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-ro.htm">Modul Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-ro.htm#rootpw">Parola de root pe siduction-Live ISO</a></li>
+				<li><a href="live-mode-ro.htm#live-cd-installsoft">Instalarea programelor în timpul rulării unui Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-ro.htm">Terminalul / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-ro.htm#colours"> Terminal - promt-uri colorate</a></li>
+					  <li><a href="term-konsole-ro.htm#cli-help">Ajutor în Linia de Comandă</a></li>
+					  <li><a href="help-ro.htm#init3-tools">Unelte bune de știut în modul text (tty) - <i>init 3</i></a></li>
+					  <li><a href="term-konsole-ro.htm#term-cmds">Lista Comenzilor Linux în Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-ro.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-ro.htm">CheatCode-uri</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-ro.htm#cheatcodes">CheatCode-uri specifice siduction în Live-ISO</a></li>
+				<li><a href="cheatcodes-ro.htm#cheatcodes-linux">CheatCode-uri generice Linux</a></li>
+				<li><a href="cheatcodes-vga-ro.htm#vga">Code-uri VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-ro.htm">Partiționarea Hard Disk-ului - Tradițional, GPT și LVM</a>
+		<ul class="sub-menu" id="sm6">
+			 <li><a href="part-gparted-ro.htm#hd-ntfs3g">Scrierea pe partiții NTFS cu <i>ntfs-3g</i></a></li>
+			<li><a href="part-lvm-ro.htm#part-lvm">Partiționarea pentru a folosi LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-ro.htm#partition">Partiționarea cu GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-ro.htm#partition">Partiționarea HD cu GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-ro.htm#ntfs">Redimensionarea partițiilor NTFS cu GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-ro.htm#partition">Partiționarea cu CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-ro.htm#partition">Partiționarea HD cu <i>cfdisk</i></a></li>
+					    <li><a href="part-cfdisk-ro.htm#formating">Formatarea după partiționare cu <i>cfdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-6">Formatarea după partiționare cu <i>gdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-1">GPT - Partiționarea cu <i>gdisk</i></a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-ro.htm#part-example">Partiționare - Sumar &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-ro.htm#part-example">Exemple de dimensiuni de Partiții</a></li>
+					  <li><a href="part-uuid-ro.htm#uuid">UUID, Reconstruirea <i>fstab</i> și crearea unor noi puncte de mount-are</a></li>
+					  <li><a href="part-cfdisk-ro.htm#disknames">Numirea pe scurt a Disk-urilor</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-ro.htm">Opțiuni de Instalare - HD, USB, VM și Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării</a></li>
+					  <li><a href="hd-install-ro.htm#Installation">Instalarea pe HD</a></li>
+					  <li><a href="hd-install-ro.htm#first-hd-boot">Prima Boot-are</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> - Introducere</a></li>
+					  <li><a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>fromiso</i> cu Grub 2</a></li>
+					  <li><a href="hd-install-opts-ro.htm#fromiso-persist"><i>fromiso</i> și <i>persist</i></a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe un USB-HD - specific siduction - <i>siduction-on-stick</i></a></li>
+					  <li><a href="hd-ins-opts-oos-ro.htm#raw-usb">Scrierea siduction pe un USB/SSD stick cu orice sistem Linux, MS Windows sau Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-ro.htm#install-crypt">Instalarea pe partiții criptate - <i>cryptroot</i></a></li>
+		  <li><a href="nbdboot-ro.htm#nbd1">Boot-area siduction din rețea</a></li>
+		  <li><a href="hd-install-vmopts-ro.htm#vmopts">Instalarea în Mașini Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-ro.htm">Plăci grafice, monitoare, Xorg,  &amp; drivere</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare</a></li>
+					  <li><a href="hw-dev-mon-ro.htm#xrandr">Monitoare Duale și <i>xrandr</i></a></li>
+					  <li><a href="hw-dev-mon-ro.htm#mon-binary">Monitoare Duale (folosind binare)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-ro.htm#foss-xorg">GPU drivere &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-ro.htm#ati-3d">AMD/ATI 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#intel">Intel 2D și 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#nvidia">Nvidia 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#foss-xorg">Open Source Xorg -drivere</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-ro.htm#fw-detect">Detectare Firmware - non-free </a></li>
+			  <li><a href="nf-firm-ro.htm#non-free-firmware">Adăugarea non-free la Lista Surselor</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-ro.htm">Managere de Ferestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-ro.htm">KDE și XFCE Managere de Ferestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-ro.htm#xfce-notes">Xfce aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#install-add">KDE aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#desk-freeze">Înghețarea Desktop-ului</a></li>
+					    <li><a href="wm-dm-ro.htm#kde-login">KDE - nu mă pot loga</a></li>
+					    <li><a href="wm-dm-ro.htm#ch-th">Schimbarea Aspectului</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-ro.htm#dm">Instalarea altor Managere de Ferestre (Display Managers)</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-ro.htm">Conectarea la Internet, WiFi, LAN și Rețele</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-ro.htm">Setul LAMP din siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-ro.htm#serv-apache">Setul LAMP din siduction</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ftp">Clienți FTP</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-sec">Protocoale de Securitate</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-ro.htm#serv-mysql">Setarea MySQL</a></li>
+					    <li><a href="lamp-ppp-ro.htm#serv-php">PHP în Apache</a></li>
+					    <li><a href="ntp-server-ro.htm#ntp-server">Setarea Timeserver-ului</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-ro.htm#tor">Firewall-uri și Intimitate &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-ro.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-ro.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-ro.htm#firewalls">Firewall-uri</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-ro.htm#ssh-x">SSH și Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-ro.htm#setup">Setarea Samba-Server</a></li>
+						  <li><a href="samba-ro.htm#configure">Configurarea SAMBA (Windows)</a></li>
+						  <li><a href="ssh-ro.htm#ssh-fs">SSH - Mount-area la distanță</a></li>
+						  <li><a href="ssh-ro.htm#ssh-x">Aplicații X Window via SSH</a></li>
+						  <li><a href="ssh-ro.htm#ssh-f">GUI SSH cu Konqueror</a></li>
+						  <li><a href="ssh-ro.htm#ssh-w">SSH X-Forwarding de pe PC-uri Windows</a></li>
+						  <li><a href="ssh-ro.htm#ssh">SSH și Securitate</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni WIFI &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-ro.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-ro.htm#net-set1">WiFi - Setarea WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-ro.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-ro.htm#hotswitch">Schimbarea rețelei între WiFi și Cablu</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni prin Cablu &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-ro.htm#dial-mod">Modem-uri 56k</a></li>
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-ro.htm">Managementul Pachetelor și dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-ro.htm#apt-cook">APT - Utilizare și Listele Surselor &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-ro.htm#apt-cook">APT-Ghid de Utilizare și Listele Surselor</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-install">Instalarea de pachete noi</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-delete">Ștergerea unui pachet</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-downgrade">Pachete în Hold și downgrading</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-cache">Pachete - căutarea cu <i>apt-cache</i></a></li>
+					    <li><a href="sys-admin-apt-ro.htm#gui-pacsea">Pachete - căutarea cu GUI</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-remove">Ștergerea Kernel-urilor</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#dmakms">Instalarea dinamică a modulelor kernel cu <i>dmakms</i></a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-ro.htm#live-cd-upgrade">Actualizarea cu Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-ro.htm#approx">Actualizarea <i>dist-upgrade</i> mai multor PC-uri din LAN</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#du-st">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Pașii</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-ro.htm">Administrarea Sistemului</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-ro.htm#bois-prep">Actualizarea BIOS-ului cu FreeDOS</a></li>
+		<li><a href="vir-rkits-ro.htm#virus-rkits">Scanere de Viruși și Rootkit</a></li>
+		<li><a href="hd-install-ro.htm#adduser">Adăugarea de Utilizatori și Parole &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-ro.htm#adduser">Adăugarea unui nou utilizator</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pw-lost">Parolele de <i>root</i> pierdute, parole noi</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#start-services">Servicii și init runlevel-e &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-ro.htm#start-services">Servicii -activare/dezactivare</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pkill">Omorârea unui serviciu sau proces</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#init">runlevel-e siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-ro.htm#rsync">Copii de siguranță ale Sistemului &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-ro.htm#rdiff">Back-Up cu <i>rdiff</i></a></li>
+					    <li><a href="sys-admin-rsync-ro.htm#rsync">Back-Up cu <i>rsync</i></a></li>
+					    <li><a href="home-ro.htm#home-bu">Mutarea /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#fonts">CUPS, Font-uri și Sunet &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-ro.htm#fonts">Font-uri</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#cups">CUPS - Sistemul de Print-are</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#sound">Mixere de Sunet</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-ro.htm#chroot">Grub2 - Recuperarea Grub cu <i>chroot</i></a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Grub2 - bootsector-ul MBR Suprascris</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#multi-os">Grub2 - Boot-area Duală și Multiplă</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub1-grub2">Grub2 - Actualizarea de la Grub1</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 - Introducere</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li><a></a></li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div><!--/htdig_noindex-->
+<div id="main-page">
+	<div class="divider" id="nbd1">
+			<h2 id="top-header">Boot-area în rețea (network block device - nbd)</h2>
+
+							<p><span class="highlight-2">ATENȚIE !: <i>dnsmasq</i> include un server <i>dhcp</i> ce poate intra în conflict cu un server <i>dhcp</i> existent în rețeaua voastră (router-ul poate oferi unul). </span>   <span class="highlight-3">Cel mai sigur este să folosiți doar un singur server <i>dhcp</i> într-o rețea. Asta înseamnă că trebuie să dezactivați toate serverele 'dncp' dintr-o rețea. Opțiunea 'dnsmasq proxy', menționată mai sus, ar trebui să poată co-exista cu un alt server <i>dhcp</i> în aceeași rețea, dar oricum vă rog să nu încercați asta decât dacă sunteți administratorul rețelei și sunteți pregătit să faceți față unor consecințe nedorite ce pot apare.</span></p>
+
+			      <h4>Informații de bază</h4>
+							<p>Pentru a putea boot-a din rețea trebuie să aveți un PC capabil să facă asta, care să poată fi conectat prin rețea la un PC programat să ofere servicii de boot-are în rețea. </p>
+
+							<p>Nu faceți asta în rețeaua de la serviciu sau într-o rețea pe care nu o administrați dumneavoastră cu excepția cazului când o administrați sau aveți permisiunea și îndrumarea administratorului de rețea. Dacă sunteți co-operator într-o rețea mare cercetați toate opțiunile lui <i>dnsmasq</i>, cum ar fi limitarea interfețelor ascultate sau a clienților ce vor răspunde, pentru a reduce impactul setărilor voastre asupra rețelei.</p>
+
+			      <h4>Condiții necesare</h4>
+							<p>Un siduction iso 2009-04 (sau mai nou) boot-at să fie folosit ca serverul de boot din rețea (network boot server). În principiu, instrucțiunile ar trebui să fie aceleași pe oricare PC cu o versiune actualizată de siduction sau debian sid și ar trebui să vă ofere toate indiciile necesare a fi folosite pe alte sisteme. Linux este necesar pentru a servi dispozitivele 'nbd'.</p>
+
+							<p>Vom folosi <i>dnsmasq</i> pentru a furniza totul în faza de boot-are inițială iar cunoștiințele necesare nu vor fi greu de adaptat altui software.</p>
+
+				<h6>Instalarea</h6>
+<pre>
+apt-get install nbd-server dnsmasq
+</pre>
+
+				<h3>Configurarea 'nbd-server'</h3>
+
+							<p> Presupunem că imaginea poate fi găsită la <span class="highlight-3">/dev/scd0</span>, (aceasta ar putea fi dacă se boot-ează de pe cd, altfel înlocuiți cu calea corespunzătoare către dispozitiv sau fișier), apoi puteți configura fișierul nbd-server numit <span class="highlight-3">nbd-siduction.conf</span> cu o secțiune numită siduction-iso pentru a exporta cd-ul rulând următoarele:</p>
+<pre>
+echo '[generic]' &gt; nbd-siduction.conf
+nbd-server 0.0.0.0:10809 /dev/scd0 -o siduction-iso &gt;&gt; nbd-siduction.conf
+</pre>
+							<p>Titlul "generic" este totdeauna necesar. Dacă doriți să configurați 'nbd-server' să lucreze automat într-un sistem real va trebui probabil să configurați <span class="highlight-3">/etc/nbd-server.conf</span> în loc de <span class="highlight-3">nbd-siduction.conf</span>. Există mult mai multe opțiuni ale nbd-server decât am arătat aici, așa că citiți <span class="highlight-3">man nbd-server.</span></p>
+
+							<p>Pentru a porni server-ul ca utilizator normal, fără a vă chinui cu setările sau să tot copiați fișierul la <span class="highlight-3">/etc/nbd-server.conf</span>, puteți rula comanda:</p>
+<pre>
+nbd-server -C nbd-siduction.conf
+</pre>
+							<p>Ținta lui nbd-server nu trebuie să fie un iso sau un cd/dvd/usb stick; trebuie doar să conțină o imagine corespunzătoare a sistemului de fișiere.</p>
+
+				  <h4>dnsmasq</h4>
+							<p>Următorul exemplu presupune că PC-ul vostru este într-o rețea simplă, cu o conexiune ethernet setată prin <i>dhcp</i> de la un alt PC pe care clienții de boot-are din rețea îl pot folosi pentru setarea interfețelor lor prin <i>dhcp</i>.</p>
+
+							<p>Opțiunile cele mai relevante pentru <i>dnsmasq</i> ca siduction să boot-eze din rețea este de a configura o cale (path) pentru fișierele server-ului 'tftp' și un fișier pentru a boot-a de acolo. </p>
+
+							<p>Creați un director <span class="highlight-3">tftp</span> pentru boot-are în <span class="highlight-3">/home</span> (puteți să-l creați oriunde vreți dacă preferați alt loc). Deci calea (path) devine <span class="highlight-3">/home/tftp</span>.</p>
+
+							<p>Creați un fișier numit <span class="highlight-3">pxe-siduction.conf</span> și scrieți în el (copy/paste) următoarele:</p>
+<pre>
+dhcp-range=0.0.0.0,proxy
+pxe-service=x86PC, &quot;boot linux&quot;, pxelinux
+enable-tftp
+tftp-root=/home/tftp
+tftp-secure
+</pre>
+							<p>Când utilizați proxy-ul <i>dhcp</i> trebuie să oferiți un menu 'pxe' cu 'pxelinux' ca singură opțiune ce va porni automat. Asta face linia cu "pxe-service" de mai sus.</p>
+
+ 							<p>Ca root, mutați nou creatul fișier <span class="highlight-3">pxe-siduction.conf</span> în <span class="highlight-3">/etc/dnsmasq.d/</span>:</p>
+<pre>
+sux
+mv pxe-siduction.conf /etc/dnsmasq.d/
+</pre>
+
+							<p>Notă: Pentru o rețea (e.g. 192.168.0.*) fără alt server <i>dhcp</i> puteți schimba primele două linii în:</p>
+<pre>
+dhcp-range=192.168.0.100,192.168.0.199,1h
+dhcp-boot=pxelinux.0
+</pre>
+
+							<p>Pentru a oferi adrese IP începând cu 192.168.0.100 până la 192.168.0.199, cu un timp de reîmprospătare de o oră, și a da numele fișierului doar pentru a rula 'pxelinux.0' ca parte a cererii dhcp, de-comentați setarea "conf-dir" din josul fișierului <span class="highlight-3"> /etc/dnsmasq.conf</span> apoi restartați <i>dnsmasq</i>.</p>
+
+							<p>Pentru ca noua configurație să fie folosită trebuie să de-comentați linia <span class="highlight-3">conf-dir=/etc/dnsmasq.d</span> de la sfârșitul fișierului <span class="highlight-3">/etc/dnsmasq.conf</span> apoi restart-ați dnsmasq.</p>
+
+							<p><i>dnsmasq</i> are multe opțiuni și poate funcționa ca server 'dns' la fel de bine ca și server <i>dhcp</i>, 'pxe' și 'tftp'. Cele de mai sus sunt doar o simplă și minimală abordare a pieselor necesare utilizării 'pxelinux'.</p>
+
+				  <h4>tftp</h4>
+							<p>'tftp' este echivalentul de rețea al directorului de boot. Utilizând în continuare directorul <span class="highlight-3">/home/tftp </span> din exemplul nostru, trebuie să-l populăm. Dacă cdrom-ul este mount-at în <span class="highlight-3">/fll/scd0</span>:</p>
+<pre>
+cp /fll/scd0/boot/isolinux/* /home/tftp
+mkdir /home/tftp/pxelinux.cfg
+mv /home/tftp/isolinux.cfg /home/tftp/pxelinux.cfg/default
+mkdir /home/tftp/boot
+cp /fll/scd0/boot/vmlin* /fll/scd0/boot/initr* /fll/scd0/boot/memtest* /home/tftp/boot/
+cp /usr/lib/syslinux/pxelinux.0 /home/tftp/
+# required for the tftp-secure option to dnsmasq
+chown -R dnsmasq.dnsmasq /home/tftp/*
+</pre>
+
+							<p>Acum puteți edita opțiunile de boot-are după cum doriți în <span class="highlight-3">/home/tftp</span> în ambele fișiere <span class="highlight-3">pxelinux.cfg/default</span> și <span class="highlight-3">gfxboot.cfg</span>.
+
+							<p>În particular este recomandabil ca, în secțiunea <span class="highlight-3">[install]</span>, să setați <span class="highlight-3">install= </span>în <span class="highlight-3">install=nbd</span>, <span class="highlight-3">install.nbd.server</span> pentru IP-urile serverelor din rețea și <span class="highlight-3">install.nbd.port</span> pentru numele secțiunii de export a nbd, de exemplu. siduction-iso (ca nume de export nbd fiind mai explicit decât folosirea simplă a numerelor porturilor).</p>
+
+							<p>Alternativ puteți dezactiva complet menu-ul F3 și editați linia de comandă a kernel-ului să folosească ceva de genul:</p>
+<pre>
+fromhd=/dev/nbd0 root=/dev/nbd0 nbdroot=192.168.1.23,siduction-iso nonetwork
+</pre>
+
+
+					<h6>codul de boot-are 'toram'</h6>
+							<p>Dacă adăugați 'toram' la opțiunile de boot-are, PC-urile cu suficient RAM vor elibera serverul imediat după ce și-au copiat fișierele iar PC-urile fără suficient RAM vor boot-a normal. Cel puțin 1 gig de RAM, (ideal ar fi 2 gig sau mai mult), sunt necesari pentru 'toram'.</p>
+
+				      <h4>Boot-area din rețea</h4>
+
+							<p>Asigurați-vă că BIOS-urile PC-urilor clienți sunt setate să folosească <span class="highlight-3">Boot from Network</span>. </p>
+
+							<p>Dacă BIOS-ul poate boot-a din rețea, PC-ul este conectat la o rețea cu server-ul vostru iar kernel-ul siduction și initrd.img suportă placa voastră de rețea, ar trebui să boot-ați siduction din rețea. </p>
+
+							<p>Unele plăci de rețea pot cere non-free firmware ceea ce ar putea necesita reconstruirea imaginii 'initrd' pentru a include firmware-ul.</p>
+
+
+	</div>
+	<div id="rev">Page last revised 30/11/2012 0200 UTC </div>
+
+</div>
+</body>
+</html>

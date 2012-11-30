@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ro" lang="ro">
+<head>
+	<title>Manualul siduction - Instalarea criptată</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-ro.htm#welcome-gen">Manualul SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-ro.htm#cred-team">Credite</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual</a></li>
+					  <li><a href="welcome-ro.htm#table-contents">Cuprins</a></li>
+					</ul>
+					</li>
+		<li><a href="help-ro.htm#help-gen">Cum primiți ajutor &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-ro.htm#help-gen">De unde și cum primiți ajutor</a></li>
+					  <li><a href="help-ro.htm#paste">IRC <i>!paste</i></a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-ro.htm#welcome-quick">Ghidul de pornire rapidă siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-ro.htm">Conținutul ISO, Versiuni, Locații de Download  și Arderea CD/DVD</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-ro.htm#cd-content">Conținutul ISO și cerințe de sistem &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-ro.htm#rolling">Notele Versiunii</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații siduction, Descărcare și Ardere &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-ro.htm#md5">md5 Suma de control</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-nero">Arderea în Windows</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-linux">Arderea în Linux</a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burning-no-gui">script-ul <i>burniso</i></a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burn-no-gui-gen">Arderea fără GUI</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații de Descărcare siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-ro.htm">Modul Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-ro.htm#rootpw">Parola de root pe siduction-Live ISO</a></li>
+				<li><a href="live-mode-ro.htm#live-cd-installsoft">Instalarea programelor în timpul rulării unui Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-ro.htm">Terminalul / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-ro.htm#colours"> Terminal - promt-uri colorate</a></li>
+					  <li><a href="term-konsole-ro.htm#cli-help">Ajutor în Linia de Comandă</a></li>
+					  <li><a href="help-ro.htm#init3-tools">Unelte bune de știut în modul text (tty) - <i>init 3</i></a></li>
+					  <li><a href="term-konsole-ro.htm#term-cmds">Lista Comenzilor Linux în Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-ro.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-ro.htm">CheatCode-uri</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-ro.htm#cheatcodes">CheatCode-uri specifice siduction în Live-ISO</a></li>
+				<li><a href="cheatcodes-ro.htm#cheatcodes-linux">CheatCode-uri generice Linux</a></li>
+				<li><a href="cheatcodes-vga-ro.htm#vga">Code-uri VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-ro.htm">Partiționarea Hard Disk-ului - Tradițional, GPT și LVM</a>
+		<ul class="sub-menu" id="sm6">
+			 <li><a href="part-gparted-ro.htm#hd-ntfs3g">Scrierea pe partiții NTFS cu <i>ntfs-3g</i></a></li>
+			<li><a href="part-lvm-ro.htm#part-lvm">Partiționarea pentru a folosi LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-ro.htm#partition">Partiționarea cu GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-ro.htm#partition">Partiționarea HD cu GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-ro.htm#ntfs">Redimensionarea partițiilor NTFS cu GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-ro.htm#partition">Partiționarea cu CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-ro.htm#partition">Partiționarea HD cu <i>cfdisk</i></a></li>
+					    <li><a href="part-cfdisk-ro.htm#formating">Formatarea după partiționare cu <i>cfdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-6">Formatarea după partiționare cu <i>gdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-1">GPT - Partiționarea cu <i>gdisk</i></a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-ro.htm#part-example">Partiționare - Sumar &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-ro.htm#part-example">Exemple de dimensiuni de Partiții</a></li>
+					  <li><a href="part-uuid-ro.htm#uuid">UUID, Reconstruirea <i>fstab</i> și crearea unor noi puncte de mount-are</a></li>
+					  <li><a href="part-cfdisk-ro.htm#disknames">Numirea pe scurt a Disk-urilor</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-ro.htm">Opțiuni de Instalare - HD, USB, VM și Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării</a></li>
+					  <li><a href="hd-install-ro.htm#Installation">Instalarea pe HD</a></li>
+					  <li><a href="hd-install-ro.htm#first-hd-boot">Prima Boot-are</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> - Introducere</a></li>
+					  <li><a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>fromiso</i> cu Grub 2</a></li>
+					  <li><a href="hd-install-opts-ro.htm#fromiso-persist"><i>fromiso</i> și <i>persist</i></a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe un USB-HD - specific siduction - <i>siduction-on-stick</i></a></li>
+					  <li><a href="hd-ins-opts-oos-ro.htm#raw-usb">Scrierea siduction pe un USB/SSD stick cu orice sistem Linux, MS Windows sau Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-ro.htm#install-crypt">Instalarea pe partiții criptate - <i>cryptroot</i></a></li>
+		  <li><a href="nbdboot-ro.htm#nbd1">Boot-area siduction din rețea</a></li>
+		  <li><a href="hd-install-vmopts-ro.htm#vmopts">Instalarea în Mașini Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-ro.htm">Plăci grafice, monitoare, Xorg,  &amp; drivere</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare</a></li>
+					  <li><a href="hw-dev-mon-ro.htm#xrandr">Monitoare Duale și <i>xrandr</i></a></li>
+					  <li><a href="hw-dev-mon-ro.htm#mon-binary">Monitoare Duale (folosind binare)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-ro.htm#foss-xorg">GPU drivere &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-ro.htm#ati-3d">AMD/ATI 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#intel">Intel 2D și 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#nvidia">Nvidia 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#foss-xorg">Open Source Xorg -drivere</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-ro.htm#fw-detect">Detectare Firmware - non-free </a></li>
+			  <li><a href="nf-firm-ro.htm#non-free-firmware">Adăugarea non-free la Lista Surselor</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-ro.htm">Managere de Ferestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-ro.htm">KDE și XFCE Managere de Ferestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-ro.htm#xfce-notes">Xfce aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#install-add">KDE aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#desk-freeze">Înghețarea Desktop-ului</a></li>
+					    <li><a href="wm-dm-ro.htm#kde-login">KDE - nu mă pot loga</a></li>
+					    <li><a href="wm-dm-ro.htm#ch-th">Schimbarea Aspectului</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-ro.htm#dm">Instalarea altor Managere de Ferestre (Display Managers)</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-ro.htm">Conectarea la Internet, WiFi, LAN și Rețele</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-ro.htm">Setul LAMP din siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-ro.htm#serv-apache">Setul LAMP din siduction</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ftp">Clienți FTP</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-sec">Protocoale de Securitate</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-ro.htm#serv-mysql">Setarea MySQL</a></li>
+					    <li><a href="lamp-ppp-ro.htm#serv-php">PHP în Apache</a></li>
+					    <li><a href="ntp-server-ro.htm#ntp-server">Setarea Timeserver-ului</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-ro.htm#tor">Firewall-uri și Intimitate &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-ro.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-ro.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-ro.htm#firewalls">Firewall-uri</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-ro.htm#ssh-x">SSH și Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-ro.htm#setup">Setarea Samba-Server</a></li>
+						  <li><a href="samba-ro.htm#configure">Configurarea SAMBA (Windows)</a></li>
+						  <li><a href="ssh-ro.htm#ssh-fs">SSH - Mount-area la distanță</a></li>
+						  <li><a href="ssh-ro.htm#ssh-x">Aplicații X Window via SSH</a></li>
+						  <li><a href="ssh-ro.htm#ssh-f">GUI SSH cu Konqueror</a></li>
+						  <li><a href="ssh-ro.htm#ssh-w">SSH X-Forwarding de pe PC-uri Windows</a></li>
+						  <li><a href="ssh-ro.htm#ssh">SSH și Securitate</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni WIFI &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-ro.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-ro.htm#net-set1">WiFi - Setarea WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-ro.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-ro.htm#hotswitch">Schimbarea rețelei între WiFi și Cablu</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni prin Cablu &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-ro.htm#dial-mod">Modem-uri 56k</a></li>
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-ro.htm">Managementul Pachetelor și dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-ro.htm#apt-cook">APT - Utilizare și Listele Surselor &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-ro.htm#apt-cook">APT-Ghid de Utilizare și Listele Surselor</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-install">Instalarea de pachete noi</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-delete">Ștergerea unui pachet</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-downgrade">Pachete în Hold și downgrading</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-cache">Pachete - căutarea cu <i>apt-cache</i></a></li>
+					    <li><a href="sys-admin-apt-ro.htm#gui-pacsea">Pachete - căutarea cu GUI</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-remove">Ștergerea Kernel-urilor</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#dmakms">Instalarea dinamică a modulelor kernel cu <i>dmakms</i></a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-ro.htm#live-cd-upgrade">Actualizarea cu Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-ro.htm#approx">Actualizarea <i>dist-upgrade</i> mai multor PC-uri din LAN</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#du-st">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Pașii</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-ro.htm">Administrarea Sistemului</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-ro.htm#bois-prep">Actualizarea BIOS-ului cu FreeDOS</a></li>
+		<li><a href="vir-rkits-ro.htm#virus-rkits">Scanere de Viruși și Rootkit</a></li>
+		<li><a href="hd-install-ro.htm#adduser">Adăugarea de Utilizatori și Parole &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-ro.htm#adduser">Adăugarea unui nou utilizator</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pw-lost">Parolele de <i>root</i> pierdute, parole noi</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#start-services">Servicii și init runlevel-e &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-ro.htm#start-services">Servicii -activare/dezactivare</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pkill">Omorârea unui serviciu sau proces</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#init">runlevel-e siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-ro.htm#rsync">Copii de siguranță ale Sistemului &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-ro.htm#rdiff">Back-Up cu <i>rdiff</i></a></li>
+					    <li><a href="sys-admin-rsync-ro.htm#rsync">Back-Up cu <i>rsync</i></a></li>
+					    <li><a href="home-ro.htm#home-bu">Mutarea /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#fonts">CUPS, Font-uri și Sunet &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-ro.htm#fonts">Font-uri</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#cups">CUPS - Sistemul de Print-are</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#sound">Mixere de Sunet</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-ro.htm#chroot">Grub2 - Recuperarea Grub cu <i>chroot</i></a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Grub2 - bootsector-ul MBR Suprascris</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#multi-os">Grub2 - Boot-area Duală și Multiplă</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub1-grub2">Grub2 - Actualizarea de la Grub1</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 - Introducere</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li><a></a></li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div><!--/htdig_noindex-->
+<div id="main-page">
+		<div class="divider" id="install-crypt">
+				<h2 id="top-header">Instalarea pe partiții criptate - <i>cryptroot</i></h2>
+
+							<p><span class="highlight-2">IMPORTANT: Există niște probleme în folosirea acestui ghid pentru partiții sau date criptate.<br /> Iată câteva:</span> </p>
+						    <ul>
+
+							<li>Aplicabil pentru siduction-2011.1-onestepbeyond.iso sau mai nou.</li>
+
+							<li>Este doar un ghid care-și propune să vă ofere un început. Rămâne în sarcina voastră să învățați mai multe despre <i>LUKS</i>, <i>cryptsetup</i> și <i>encryption</i>. Surse și resurse de informare ce vă pot fi de folos le găsiți la sfârșitul acestei pagini; oricum lista este totuși sumară.</li>
+
+							<li><i>cryptsetup</i> nu poate cripta o partiție deja existentă, deci va trebui să crați o nouă partiție, să o setați cu <i>cryptsetup</i> și apoi să vă mutați datele pe ea.</li>
+
+							<li>Puteți folosi fișiere-cheie (key files) și să aveți mai multe astfel de chei pentru date, (până la 8,  inclusiv ștergerea cheilor) dar acest subiect este în afara scopului acestui ghid.</li>
+
+							<li><span class="highlight-3">Să nu uitați parolele și frazele-cheie (passphrases) pentru că veți pierde accesul la toate datele voastre! Nici măcar <i>chroot</i> fără a ști frazele-cheie (passphrases) nu vă poate fi de nici un ajutor cu excepția fișierului /boot.</span></li>
+
+							<li>La începutul procesului de boot-are veți fi întrebați de fraza-cheie (passphrases) pentru device-ul criptat și apoi sistemul va boot-a așa cum trebuie.</li>
+						    </ul>
+					      <h3>Exemple de criptare:</h3>
+						    <ul>
+							<li><a href="hd-install-crypt-ro.htm#lvm">Utilizarea criptării în grupurile LVM</a>.</li>
+
+							<li><a href="hd-install-crypt-ro.htm#simple">Note pentru criptare cu metodele tradiționale de partiționare</a>.</li>
+						    </ul>
+
+			      </div>
+
+			      <div class="divider" id="lvm">
+					      <h2>Criptarea în cadrul grupurilor LVM</h2>
+
+							<p><span class= "highlight-3">Acest exemplu folosește criptarea în interiorul volumelor LVM dându-vă posibilitatea de a împărți <i>home</i>-ul vostru din <span class= "highlight-2"> / </span> și de a avea o partiție <i>swap</i> fără nevoia mai mulor parole; este aplicabil începând cu <i>siduction-2010-03-apate</i> sau ulterior.</span></p>
+
+							<p>Înaintea rulării programului de instalare trebuie să pregătiți sistemul de fișiere ce urmează a fi folosit pentru instalare. Un ghid sumar al partiționării LVM îl gasiți la <a href="part-lvm-ro.htm#part=lvm">Partiționarea LVM - Logical Volume Manager</a>. </p>
+
+							<p>Veți avea nevoie să creați cel putin un sistem de fișiere necriptat <span class= "highlight-3">/boot </span> și un sistem de fișiere criptat <span class= "highlight-2"> / </span>. De asemenea creați și un sistem de fișiere criptat <span class= "highlight-3">/home și swap</span> . </p>
+						  <ol>
+							<li>Dacă nu intenționați să folosiți un grup LVM existent atunci creați unul normal (lvm volume group). În acest exemplu considerăm că grupul se numește <span class= "highlight-3">vg</span> pentru a ține boot-area și datele criptate.</li>
+
+							<li>Veți avea nevoie de un volum logic pentru /boot și datele criptate deci folosiți <span class= "highlight-3">lvcreate</span> pentru a crea volumele logice în grupul <span class= "highlight-3">vg</span> cu dimensiunile dorite de voi:
+<pre>
+lvcreate -n boot --size 250m vg
+lvcreate -n crypt --size 300g vg
+</pre>
+							Aici ați numit volumele logice <i>boot</i> și <i>crypt</i> cu dimensiunile de 250Mb și respectiv 300Gb.
+							</li>
+							<li>Creați sistemul de fișiere <span class= "highlight-3">/boot</span> pentru a fi disponibil programului de instalare:
+<pre>
+mkfs.ext4 /dev/mapper/vg-boot
+</pre>
+							</li>
+							<li>Utilizați <span class= "highlight-3">cryptsetup</span> pentru criptarea <span class= "highlight-3">vg-crypt</span> folosind opțiunea cea mai rapidă <i>xts</i> cu cea mai puternică lungime a cheii de 512bit și apoi deschideți-l. Acesta vă va întreba de două ori parola pentru a o seta și a treia oară pentru al deschide. Deschideți-l aici în timpul opțiunii de boot-are criptată cu numele <i>cryptroot</i>:
+<pre>
+cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/mapper/vg-crypt
+</pre>
+
+<pre>
+cryptsetup luksOpen /dev/mapper/vg-crypt cryptroot
+</pre>
+							</li>
+							<li>Acum folosiți lvm înăuntrul dispozitivului criptat pentru a crea un al doilea grup ce va fi folosit pentru dispozitivele <span class= "highlight-3">/swap</span> și <span class= "highlight-3">/home</span>. <span class= "highlight-3">pvcreate</span> <i>cryptroot</i> pentru al face volum fizic și al folosi cu <span class= "highlight-3">vgcreate</span> pentru a crea un alt grup numit <span class= "highlight-3">cryptvg</span>:
+<pre>
+pvcreate /dev/mapper/cryptroot
+vgcreate cryptvg /dev/mapper/cryptroot
+</pre>
+							</li>
+							<li>Apoi utilizați <span class= "highlight-3">lvcreate</span> cu nou creatul grup criptat <span class= "highlight-3">cryptvg</span> pentru a crea volumele logice <span class= "highlight-2"> / </span>, <span class= "highlight-3">/swap</span> și <span class= "highlight-3">/home </span> cu dimensiunile dorite:
+
+<pre>
+lvcreate -n swap --size 2g cryptvg
+lvcreate -n root --size 40g cryptvg
+lvcreate -n home --size 80g cryptvg
+</pre>
+							Aici ați numit volumele logice <i>swap</i>, <i>root</i> și <i>home</i> cu dimensiunile de 2Gb, 40Gb și 80Gb.
+							</li>
+							<li>Creați sistemele de fișiere pentru <i>cryptvg-swap</i>, <i>cryptvg-root</i> și <i>cryptvg-home</i> pentru a fi disponibile programului de instalare:
+<pre>
+mkswap /dev/mapper/cryptvg-swap
+mkfs.ext4 /dev/mapper/cryptvg-root
+mkfs.ext4 /dev/mapper/cryptvg-home
+</pre>
+							</li>
+
+							<li><b>Acum sunteți pregătiți să rulați programul de instalare unde va trebui să folosiți:</b><br />
+							<span class= "highlight-3">vg-boot</span> pentru <span class= "highlight-3">/boot</span>,<br />
+							<span class= "highlight-3">cryptvg-root</span> pentru <span class= "highlight-2"> /</span>,<br />
+							<span class= "highlight-3">cryptvg-home</span> pentru <span class= "highlight-3">/home</span>, și <br />
+							<span class= "highlight-3">cryptvg-swap</span> pentru <span class= "highlight-3">swap</span> ar trebui să fie recunoscută automat.</li>
+						    </ol>
+
+							<p>Sistemul instalat ar trebui să se termine cu o linie de comandă a kernel-ului incluzând următoarele opțiuni:</p>
+<pre>
+root=/dev/mapper/cryptvg-root cryptopts=source=/dev/mapper/vg-crypt,target=cryptroot,lvm=cryptvg-root
+</pre>
+							<p>Aveți acum <i>crypt</i> și <i>boot</i> sub grupul lvm <i>vg</i> iar <i>root</i>, <i>home</i> și <i>swap</i> sub grupul lvm <i>vgcrypt</i> care se află pe dispozitivul vostru criptat și protejat de parolă.</p>
+
+                                                        <p><span class= "highlight-3">Reţineţi:</span> Daca reinstalaţti pe un volum lvm criptat înainte, instaler-ul trebuie să fie informat de prezenţa acestui volum:</p>
+<pre>
+                                                       
+cryptsetup luksOpen /dev/mapper/cryptvg-root cryptvg
+vgchange -a y
+</pre>
+			  </div>
+			   <div class="divider" id="simple">
+					<h2>Indicații de criptare cu metodele tradiționale de partiționare</h2>
+
+							<p>În primul rând trebuie să decideți cum vreți să arate disk-ul. Veți avea nevoie de minim 2 partiții, o partiție normală pentru <span class="highlight-3">/boot</span> și una pentru datele criptate. </p>
+
+							<p>Presupunând că aveți nevoie de <i>swap</i> (care va fi și ea criptată) veți crea o a treia partiție pentru care va trebui să introduceți o parolă separată pe timpul boot-ării (deci vi se vor cere două parole). </p>
+
+							<p>Este posibil să folosiți chei pentru <i>swap</i>-ul din cadrul sistemului criptat partiționat tradițional dar nu veți putea utiliza opțiunea <i>suspend to disk</i>. Din această cauză, pentru o utilizare pe termen lung, este mai bine să folosiți sistemul LVM cu criptare completă a partițiilor și a cheilor.</p>
+
+							<!--<p>It is possible to use keys for the swap from inside the encrypted system with traditional partitioning, however you will not be able to suspend to disk. Due to these issues, LVM volumes with fully encrypted partitions with keys is definitely the better option in the long term.</p>-->
+
+			      <h6> Condiții esențiale:</h6>
+						  <ul>
+							<li> Sunt doar 3 partiții pe acest disk:<br />
+							<span class="highlight-3"> /boot</span>,  de 250mb<br />
+							<span class="highlight-3"> swap</span>, de 2 gig<br />
+							<span class="highlight-2"> / </span> și <span class="highlight-3"> /home</span> combinate (de examplu, balanța).</li>
+
+							<li>2 fraze-cheie (passphrases) vor fi cerute, 1 pentru <i>swap</i> și cealaltă pentru <span class="highlight-2"> / </span> și <span class="highlight-3"> /home</span> combinate.</li>
+						   </ul>
+
+							<p>Acum, având partiționarea făcută, acum trebuie să pregătiți partițiile criptate pentru a fi recunoscute de programul de instalare.</p>
+
+							<p>Dacă ați folosit pentru partitionare un program cu interfață grafică, închideți-l și deschideti un terminal, deoarece comenzile de criptare trebuie date dintr-o linie de comandă.</p>
+
+					      <h5>Partiția /boot</h5>
+							<p>Formatați partiția <span class="highlight-3">/boot </span> în ext4, dacă nu ați făcut-o deja:</p>
+<pre>
+/sbin/mkfs.ext4 /dev/sda1
+</pre>
+
+
+
+
+					      <h5>Criptați partiția swap</h5>
+
+							<p>Pentru <span class="highlight-3">swap-ul criptat</span> trebuie mai întâi s-o formatați și s-o deschideți, <span class="highlight-3">/dev/sda2</span>, ca un dispozitiv criptat, precum dispozitivul <i>vg-crypt</i> de mai sus dar sub numele de <i>swap</i>.</p>
+<ol>
+<li><pre>
+cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda2
+</pre></li>
+
+<li><pre>
+cryptsetup luksOpen /dev/sda2 swap
+</pre></li>
+
+<li><pre>
+echo "swap UUID=$(blkid -o value -s UUID /dev/sda2) none luks" >> /etc/crypttab
+</pre></li>
+</ol>
+							<p>Formatați partiția <span class="highlight-3">/dev/mapper/swap</span> creată ca ea să fie recunoscută de installer:</p>
+
+<pre>
+/sbin/mkswap /dev/mapper/swap
+</pre>
+					      <h5>Criptarea partiției / </h5>
+							<p>Pentru <span class="highlight-3"> /-ul criptat</span> trebuie mai întâi s-o formatați și s-o deschideți, <span class="highlight-3">/dev/sda3</span>, ca un dispozitiv criptat, precum dispozitivul <i>vg-crypt</i> de mai sus.</p>
+
+<pre>
+cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda3
+</pre>
+
+<pre>
+cryptsetup luksOpen /dev/sda3 cryptroot
+</pre>
+
+							<p>Formatați <span class="highlight-3">/dev/mapper/cryptroot</span> nou creat astfel apărând în programul de instalare:</p>
+
+<pre>
+/sbin/mkfs.ext4 /dev/mapper/cryptroot
+</pre>
+
+					  <h3>Deschideți programul de instalare</h3>
+							<p><b>Acum sunteți pregătiți să rulați programul de instalare unde trebuie să folosiți:</b><br />
+							<span class= "highlight-3">sda1</span> pentru <span class= "highlight-3">/boot</span>,<br />
+							<span class= "highlight-3">cryptroot</span> pentru <span class= "highlight-2"> / </span> și <span class= "highlight-3"> /home</span> <br />
+							<span class= "highlight-3">swap</span> trebuie să fie recunoscută automat.</p>
+
+							<p>Sistemul instalat ar trebui să se termine cu o linie de comandă a kernel-ului incluzând următoarele opțiuni  (totuși va fi folosită notația voastră UUID):</p>
+<pre>
+root=/dev/mapper/cryptroot cryptopts=source=UUID=12345678-1234-1234-1234-1234567890AB,target=cryptroot
+</pre>
+							<p>Acum aveți partiția normală <i>/boot</i>, o partiție criptată <i>swap</i> protejată prin parolă împreună cu partițiile criptate <i>root</i> și <i>/home</i>.</p>
+
+			      </div>
+				  <h3>Bibliografie suplimentară:</h3>
+							<p>Trebuie să mai citiți:</p>
+
+<pre>
+man cryptsetup
+</pre>
+							<p><a href="http://code.google.com/p/cryptsetup/">LUKS</a>.</p>
+
+							<p><a href="http://www.redhat.com/">Redhat</a> și <a href="http://www.redhat.com/Fedora/">Fedora </a>.</p>
+
+							<p><a href="http://www.enterprisenetworkingplanet.com/netsecur/article.php/3683011"> Protect Your Stuff With Encrypted Linux Partitions</a>.</p>
+
+							<p><a href="http://blog.bodhizazen.net/linux/kvm-how-to-use-encrypted-images/">KVM how to use encrypted images</a>.</p>
+
+							<p><a href="http://siduction.org/index.php?module=wikula&amp;tag=FullDiskEncryptionTheDebianWay">siduction wiki</a>.</p>
+
+	<div id="rev">Page last revised 30/11/2012 1300 UTC</div>
+
+</div>
+</body>
+</html>

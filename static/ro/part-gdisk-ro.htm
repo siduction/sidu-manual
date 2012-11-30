@@ -1,0 +1,770 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ro" lang="ro">
+<head>
+	<title>Manualul siduction - GPT gdisk</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-ro.htm#welcome-gen">Manualul SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-ro.htm#cred-team">Credite</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual</a></li>
+					  <li><a href="welcome-ro.htm#table-contents">Cuprins</a></li>
+					</ul>
+					</li>
+		<li><a href="help-ro.htm#help-gen">Cum primiți ajutor &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-ro.htm#help-gen">De unde și cum primiți ajutor</a></li>
+					  <li><a href="help-ro.htm#paste">IRC <i>!paste</i></a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-ro.htm#welcome-quick">Ghidul de pornire rapidă siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-ro.htm">Conținutul ISO, Versiuni, Locații de Download  și Arderea CD/DVD</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-ro.htm#cd-content">Conținutul ISO și cerințe de sistem &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-ro.htm#rolling">Notele Versiunii</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații siduction, Descărcare și Ardere &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-ro.htm#md5">md5 Suma de control</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-nero">Arderea în Windows</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-linux">Arderea în Linux</a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burning-no-gui">script-ul <i>burniso</i></a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burn-no-gui-gen">Arderea fără GUI</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații de Descărcare siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-ro.htm">Modul Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-ro.htm#rootpw">Parola de root pe siduction-Live ISO</a></li>
+				<li><a href="live-mode-ro.htm#live-cd-installsoft">Instalarea programelor în timpul rulării unui Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-ro.htm">Terminalul / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-ro.htm#colours"> Terminal - promt-uri colorate</a></li>
+					  <li><a href="term-konsole-ro.htm#cli-help">Ajutor în Linia de Comandă</a></li>
+					  <li><a href="help-ro.htm#init3-tools">Unelte bune de știut în modul text (tty) - <i>init 3</i></a></li>
+					  <li><a href="term-konsole-ro.htm#term-cmds">Lista Comenzilor Linux în Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-ro.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-ro.htm">CheatCode-uri</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-ro.htm#cheatcodes">CheatCode-uri specifice siduction în Live-ISO</a></li>
+				<li><a href="cheatcodes-ro.htm#cheatcodes-linux">CheatCode-uri generice Linux</a></li>
+				<li><a href="cheatcodes-vga-ro.htm#vga">Code-uri VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-ro.htm">Partiționarea Hard Disk-ului - Tradițional, GPT și LVM</a>
+		<ul class="sub-menu" id="sm6">
+			 <li><a href="part-gparted-ro.htm#hd-ntfs3g">Scrierea pe partiții NTFS cu <i>ntfs-3g</i></a></li>
+			<li><a href="part-lvm-ro.htm#part-lvm">Partiționarea pentru a folosi LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-ro.htm#partition">Partiționarea cu GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-ro.htm#partition">Partiționarea HD cu GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-ro.htm#ntfs">Redimensionarea partițiilor NTFS cu GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-ro.htm#partition">Partiționarea cu CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-ro.htm#partition">Partiționarea HD cu <i>cfdisk</i></a></li>
+					    <li><a href="part-cfdisk-ro.htm#formating">Formatarea după partiționare cu <i>cfdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-6">Formatarea după partiționare cu <i>gdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-1">GPT - Partiționarea cu <i>gdisk</i></a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-ro.htm#part-example">Partiționare - Sumar &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-ro.htm#part-example">Exemple de dimensiuni de Partiții</a></li>
+					  <li><a href="part-uuid-ro.htm#uuid">UUID, Reconstruirea <i>fstab</i> și crearea unor noi puncte de mount-are</a></li>
+					  <li><a href="part-cfdisk-ro.htm#disknames">Numirea pe scurt a Disk-urilor</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-ro.htm">Opțiuni de Instalare - HD, USB, VM și Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării</a></li>
+					  <li><a href="hd-install-ro.htm#Installation">Instalarea pe HD</a></li>
+					  <li><a href="hd-install-ro.htm#first-hd-boot">Prima Boot-are</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> - Introducere</a></li>
+					  <li><a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>fromiso</i> cu Grub 2</a></li>
+					  <li><a href="hd-install-opts-ro.htm#fromiso-persist"><i>fromiso</i> și <i>persist</i></a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe un USB-HD - specific siduction - <i>siduction-on-stick</i></a></li>
+					  <li><a href="hd-ins-opts-oos-ro.htm#raw-usb">Scrierea siduction pe un USB/SSD stick cu orice sistem Linux, MS Windows sau Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-ro.htm#install-crypt">Instalarea pe partiții criptate - <i>cryptroot</i></a></li>
+		  <li><a href="nbdboot-ro.htm#nbd1">Boot-area siduction din rețea</a></li>
+		  <li><a href="hd-install-vmopts-ro.htm#vmopts">Instalarea în Mașini Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-ro.htm">Plăci grafice, monitoare, Xorg,  &amp; drivere</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare</a></li>
+					  <li><a href="hw-dev-mon-ro.htm#xrandr">Monitoare Duale și <i>xrandr</i></a></li>
+					  <li><a href="hw-dev-mon-ro.htm#mon-binary">Monitoare Duale (folosind binare)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-ro.htm#foss-xorg">GPU drivere &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-ro.htm#ati-3d">AMD/ATI 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#intel">Intel 2D și 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#nvidia">Nvidia 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#foss-xorg">Open Source Xorg -drivere</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-ro.htm#fw-detect">Detectare Firmware - non-free </a></li>
+			  <li><a href="nf-firm-ro.htm#non-free-firmware">Adăugarea non-free la Lista Surselor</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-ro.htm">Managere de Ferestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-ro.htm">KDE și XFCE Managere de Ferestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-ro.htm#xfce-notes">Xfce aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#install-add">KDE aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#desk-freeze">Înghețarea Desktop-ului</a></li>
+					    <li><a href="wm-dm-ro.htm#kde-login">KDE - nu mă pot loga</a></li>
+					    <li><a href="wm-dm-ro.htm#ch-th">Schimbarea Aspectului</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-ro.htm#dm">Instalarea altor Managere de Ferestre (Display Managers)</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-ro.htm">Conectarea la Internet, WiFi, LAN și Rețele</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-ro.htm">Setul LAMP din siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-ro.htm#serv-apache">Setul LAMP din siduction</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ftp">Clienți FTP</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-sec">Protocoale de Securitate</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-ro.htm#serv-mysql">Setarea MySQL</a></li>
+					    <li><a href="lamp-ppp-ro.htm#serv-php">PHP în Apache</a></li>
+					    <li><a href="ntp-server-ro.htm#ntp-server">Setarea Timeserver-ului</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-ro.htm#tor">Firewall-uri și Intimitate &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-ro.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-ro.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-ro.htm#firewalls">Firewall-uri</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-ro.htm#ssh-x">SSH și Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-ro.htm#setup">Setarea Samba-Server</a></li>
+						  <li><a href="samba-ro.htm#configure">Configurarea SAMBA (Windows)</a></li>
+						  <li><a href="ssh-ro.htm#ssh-fs">SSH - Mount-area la distanță</a></li>
+						  <li><a href="ssh-ro.htm#ssh-x">Aplicații X Window via SSH</a></li>
+						  <li><a href="ssh-ro.htm#ssh-f">GUI SSH cu Konqueror</a></li>
+						  <li><a href="ssh-ro.htm#ssh-w">SSH X-Forwarding de pe PC-uri Windows</a></li>
+						  <li><a href="ssh-ro.htm#ssh">SSH și Securitate</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni WIFI &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-ro.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-ro.htm#net-set1">WiFi - Setarea WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-ro.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-ro.htm#hotswitch">Schimbarea rețelei între WiFi și Cablu</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni prin Cablu &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-ro.htm#dial-mod">Modem-uri 56k</a></li>
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-ro.htm">Managementul Pachetelor și dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-ro.htm#apt-cook">APT - Utilizare și Listele Surselor &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-ro.htm#apt-cook">APT-Ghid de Utilizare și Listele Surselor</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-install">Instalarea de pachete noi</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-delete">Ștergerea unui pachet</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-downgrade">Pachete în Hold și downgrading</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-cache">Pachete - căutarea cu <i>apt-cache</i></a></li>
+					    <li><a href="sys-admin-apt-ro.htm#gui-pacsea">Pachete - căutarea cu GUI</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-remove">Ștergerea Kernel-urilor</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#dmakms">Instalarea dinamică a modulelor kernel cu <i>dmakms</i></a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-ro.htm#live-cd-upgrade">Actualizarea cu Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-ro.htm#approx">Actualizarea <i>dist-upgrade</i> mai multor PC-uri din LAN</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#du-st">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Pașii</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-ro.htm">Administrarea Sistemului</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-ro.htm#bois-prep">Actualizarea BIOS-ului cu FreeDOS</a></li>
+		<li><a href="vir-rkits-ro.htm#virus-rkits">Scanere de Viruși și Rootkit</a></li>
+		<li><a href="hd-install-ro.htm#adduser">Adăugarea de Utilizatori și Parole &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-ro.htm#adduser">Adăugarea unui nou utilizator</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pw-lost">Parolele de <i>root</i> pierdute, parole noi</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#start-services">Servicii și init runlevel-e &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-ro.htm#start-services">Servicii -activare/dezactivare</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pkill">Omorârea unui serviciu sau proces</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#init">runlevel-e siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-ro.htm#rsync">Copii de siguranță ale Sistemului &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-ro.htm#rdiff">Back-Up cu <i>rdiff</i></a></li>
+					    <li><a href="sys-admin-rsync-ro.htm#rsync">Back-Up cu <i>rsync</i></a></li>
+					    <li><a href="home-ro.htm#home-bu">Mutarea /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#fonts">CUPS, Font-uri și Sunet &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-ro.htm#fonts">Font-uri</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#cups">CUPS - Sistemul de Print-are</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#sound">Mixere de Sunet</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-ro.htm#chroot">Grub2 - Recuperarea Grub cu <i>chroot</i></a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Grub2 - bootsector-ul MBR Suprascris</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#multi-os">Grub2 - Boot-area Duală și Multiplă</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub1-grub2">Grub2 - Actualizarea de la Grub1</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 - Introducere</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li><a></a></li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div><!--/htdig_noindex-->
+<div id="main-page">
+	<div class="divider" id="gdisk-1">
+		<h2 id="top-header">Introducere în partiționarea cu GPT <i>gdisk</i></h2>
+							<p>GPT <i>gdisk</i>, Globally Unique Identifier (GUID) Partition Table (GPT), este o unealtă de partiționare a discurilor de orice dimensiune <span class="highlight-3">și este necesar mai ales pentru discurile mai mari de 2 TB </span>. În primul rând, <i>gdisk</i> se va asigura că partițiile sunt bine aliniate pentru SSDs, (sau harddisk-urile care nu au deja sectoare de 512 byte).</p> 
+
+							<p>Avantajul principal al GPT este că elimină nevoia de a avea partiții primare, extinse sau logice obligatorii ca la partiționarea pentru MBR. GPT poate suporta un număr aproape nelimitat de partiții fiind limitat doar de spațiul rezervat pentru intrările partițiilor în disk-ul GPT. De reținut totuși că setarea de bază a programului <span class="highlight-3"><i>gdisk</i></span> este 128 de partiții.</p>
+
+							<p>Oricum, folosirea GPT pe stick-uri USB/SSD mici, (de exemplu pe un stick de 8GB), poate fi neproductiv când veți avea nevoie să transferați date de pe un computer pe altul sau de pe un sistem de operare pe altul.</p>
+
+							<!--<p><span class="highlight-2">NOTE : USB booting is not supported with GPT.</span></p>-->
+
+				 <h3  class="highlight-2">Important de reținut</h3>
+
+							<p><span class="highlight-3">Termenii UEFI și EFI sunt echivalenți și înseamnă același lucru. </span></p>
+
+						<h5>Disk-urile GPT</h5>
+							<p><span class="highlight-3">Unele sisteme de operare nu suportă disk-urile GPT; vă rugăm citiți documentația sistemului de operare respectiv.</span></p>
+
+							<p>Disk-urile GPT sunt aplicabile pentru computerele de 32 și 64 bit sub Linux.</p>
+
+						  <h5>Boot-area disk-urilor GPT</h5>
+
+							<p>Boot-area duală și triplă a disk-urilor GPT cu Linux, BSD și Apple este pasibilă folosind modul <span class="highlight-3" >EFI </span> în 64 bit.</p>
+
+							<p>Boot-area duală a disk-urilor GPT cu Linux și MS Windows este posibilă cu condiția ca MS Windows OS să poată boota disk-urile GPT în modul <span class="highlight-3"> UEFI </span> în 64 bit,.</p>
+
+						  <h5>Unelte grafice (GUI) de partiționare care folosesc GPT</h5>
+							<p>Ca și alte programe bazate pe terminal cum sunt <i>gparted</i> sau <i>partitionmanager</i>, <i>gdisk</i> oferă o interfață grafică care suportă disk-urile GPT. Începând de-acum, <i>gdisk</i> poate deveni unealta voastră preferată care să vă ajute în prevenirea sau evitarea unor anomalii neintenționate ce pot apare sub programele cu GUI. Oricum, <i>Gparted</i> - <i>gparted</i> împreună cu <i>KDE Partition Manager</i> - <i>partitionmanager</i>, (ca și altele), sunt unelte bune pentru a vedea grafic acțiunile voastre efectuate cu <i>gdisk</i>.</p>
+
+							<p  class="highlight-3">Obligatoriu de citit înainte de a merge mai departe:</p>
+						<ul>
+<li>
+<pre>
+man gdisk
+</pre>
+</li>
+							<li><a href="http://www.rodsbooks.com/gdisk/"> GPT fdisk Tutorial by Roderick W. Smith</a></li>
+
+							<li><a href="http://en.wikipedia.org/wiki/GUID_Partition_Table">en.wikipedia.org/wiki/GUID_Partition_Table</a></li>
+						  </ul>
+	</div>
+	<div class="divider" id="gdisk-2">
+		<h2>Partiționarea HDD cu <i>gdisk</i> pentru un sistem Linux</h2>
+						<h6>Înțelegerea tastelor de comandă ale <i>gdisk</i> cum ar fi <span class="highlight-2"> m </span> pentru a reveni la meniul principal, <span class="highlight-2"> d </span> ,<span class="highlight-2"> n </span>, <span class="highlight-2"> p </span> și <span class="highlight-2"> t </span>, ca și altele, sunt în principal comenzile de bază ce vă pot satisface majoritatea nevoilor în partiționarea cu <i>gdisk</i> și merită efortul de a explora <i>gdisk</i>  pe un disk de test.</h6>
+
+					<h5><span class="highlight-2"> NOTIFICARE IMPORTANTĂ despre comanda <i>n</i> :</h5></span> 
+
+						<!--<h6> After creating the first partition you need to press  <span class="highlight-3"> &lt; Enter &gt; 2 times </span> each time you use <span class="highlight-2"> n </span>  to bring up the last sector to set the size of the subsequent partitions.</h6>-->
+
+							<p>Când folosiți comanda <span class="highlight-2"> n </span>, apăsați &lt;Enter&gt; pentru a da partiției următorul număr liber apoi trebuie să apăsați din nou &lt;Enter&gt; pentru a accepta sectorul de start al următoarei partiții înaite de a stabili mărimea necesară a ultimului sector.<br /> De exemplu:</p>
+
+<pre>
+Command (? for help):  n  
+Partition number (2-128, default 2):  2 
+First sector (34-15728606, default = <span class="highlight-3">411648</span>) or {+-}size{KMGTP}: 
+Last sector (<span class="highlight-3">411648</span>-15728606, default = 15728606) or {+-}size{KMGTP}: +6144M
+</pre>
+
+		  <h3>Exemplu de partitionare a unui disk GPT</h3>
+							<p><i>Organizare ce ar putea îndeplini nevoile voastre</i>:</p>
+						   <ol>
+							<li>Crearea unei partiții de boot, <span class="highlight-1"> (presupunem că disk-ul nu este destinat doar pentru stocarea datelor și trebuie să fie boot-abil) </span></li>
+							<li>Crearea unei partiții de swap, <span class="highlight-1"> (presupunem că disk-ul nu este destinat doar pentru stocarea datelor și trebuie să fie boot-abil) </span></li>
+							<li>Crearea partițiilor linux </li>
+							<li>Crearea altor partiții pentru stocarea datelor </li>	   
+						   </ol>
+
+							<p><span class="highlight-2">NOTĂ: Următorul exemplu folosește un stick USB pentru a demonstra pașii necesari și nu este foarte minuțios.</span></p>
+
+					<h3>Pașii de urmat</h3>
+							<p>Dacă nu sunteți sigur de numele disk-ului folosiți comanda <i>fdisk</i> pentru al afla, (drepturi de <i>root</i> sunt necesare pentru toate comenzile de partiționare și formatare):</p>
+<pre>
+fdisk -l
+</pre>
+							<p><i>fdisk</i> vă va da calea cerută și posibil să includă si alte nume de partiții aflate pe disk. Oricum va trebui să vă uitați după calea către disk-ul actual ignorând partițiile ce ar putea exista pe el. De exemplu, presupunând că acesta este <span class="highlight-3"> sdb </span> pornim <i>gdisk</i> cu calea către acesta:</p>
+<pre >
+gdisk /dev/sdb
+</pre>
+							<p><span class="highlight-3">Rezultatul inițial va fi o avertizare dacă disk-ul nu este nou sau este unul care folosește deja GPT:</span></p>
+<pre>
+GPT fdisk (gdisk) version 0.7.2
+Partition table scan:
+  MBR: MBR only
+  BSD: not present
+  APM: not present
+  GPT: not present
+***************************************************************
+Found invalid GPT and valid MBR; converting MBR to GPT format.
+THIS OPERATION IS POTENTIALLY DESTRUCTIVE! Exit by typing 'q' if
+you don't want to convert your MBR partitions to GPT format!
+***************************************************************
+Command (? for help):
+</pre>
+							<p>Când pornim <span class="highlight-3"><i>gdisk</i></span> pentru un disk pe care există partiții MBR și nu GPT, programul va afișa un mesaj înconjurat de asteriscuri despre convertirea partițiilor existente la formatul GPT. <span class="highlight-3">Acesta are rolul de a vă speria dacă ați lansat accidental <i>gdisk</i> pe un disk greșit sau nu știți ce faceți. Trebuie să răspundeți explicit acestui avertisment înainte de a continua. Este un mesaj intenționat pentru a vă feri de probabilitatea stricării accidentale a disk-urlor voastre de  boot.</span></p>
+
+							<p>Tipăriți <span class="highlight-2"> ? </span> și veți vedea o lista a comenzilor disponibile, (comenzile <span class="highlight-3">colorate</span> au scop de documentare):</p>
+<pre>
+Command (? for help): <span class="highlight-2"> ? </span>
+b	back up GPT data to a file
+c	change a partition's name
+d	delete a partition
+i	show detailed information on a partition
+l	list known partition types
+n	add a new partition
+o	create a new empty GUID partition table (GPT)
+p	print the partition table
+q	quit without saving changes
+r	recovery and transformation options (experts only)
+s	sort partitions
+t	change a partition's type code
+v	verify disk
+w	write table to disk and exit
+x	extra functionality (experts only)
+?	print this menu
+</pre>
+							<p>Pentru a verifica că lucrați pe disk-ul pe care credeți că vreți, tipăriți <span class="highlight-2"> p </span>.</p>
+<pre>
+Command (? for help): <span class="highlight-2"> p </span>
+Disk /dev/sdb: 16547840 sectors, 7.9 GiB <span class="highlight-2">Acest exemplu folosește un stick de 8GB</span>
+Logical sector size: 512 bytes
+Disk identifier (GUID): 0267952D-9B06-4B10-A648-B83684786910
+Partition table holds up to 128 entries
+First usable sector is 34, last usable sector is 16547806
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 16547773 sectors (7.9 GiB)
+Number  Start (sector)    End (sector)  Size       Code  Name
+</pre>
+
+							<p>Coloana <span class="highlight-3">Code </span> a rezultatelor vă arată codul tipului de partiție și coloana <span class="highlight-3">Name </span> vă arată un text cu numele ei pe care îl puteți modifica.</p>
+
+				    <h3>Ștergerea tabelei de partiții</h3>
+							<p>Trebuie să ștergeți toată tabela de partiții de pe disk pentru a putea seta patiționarea GPT:</p>
+<pre>
+command (? for help): <span class="highlight-2"> d </span>
+</pre>
+							<!--<p>If there are multiple partitions <i>gdisk</i> will ask you to type a number representing the partitions you wish to delete.</p>-->
+
+
+	</div>
+	<div class="divider" id="gdisk-3">
+			<h2>Pentru boot-area GPT-EFI sau GPT-BIOS</h2>
+
+							<p>Pentru ca disk-ul GPT să fie boot-abil, sunt 2 opțiuni de formatare a sectorului de boot a disk-ului GPT.</p>
+
+							<p>Ele sunt:</p>
+						    <ul>
+							<li><span class="highlight-3" >Computerul vostru are un BIOS care cunoaște (U)EFI, este activată opțiunea și este selectată pentru boot-are.</span></li>
+							<li>Doriți să folosiți boot-area EFI de pe un disk formatat GPT</li>
+						     </ul>
+							<p><span class="highlight-2"> sau </span></p>
+						    <ul>
+							<li>Computerul vostru are un BIOS care <span class="highlight-2"> nu cunoaște </span> (U)EFI</li>
+							<li>Doriți să folosiți BIOS-ul pentru a boota de pe un disk formatat GPT</li>
+						    </ul>
+
+					<h3>Boot-area EFI </h3>
+							<p><span class="highlight-2">BIOS-ul trebuie să fie capabil EFI, să fie pornită opțiunea și selectată pentru boot-are.</span> </p>
+
+							<p>Dacă vreți să utilizați EFI pentru boot-are trebuie obligatoriu ca prima partiție să fie formatată FAT în sistemulde partiționare EFI (tipăriți <span class="highlight-3">EF00 </span>). Această partiție va conține programul(ele) de boot-are. La instalare, veți ignora orice altă alegere de genul <i>"where to boot from"</i>  din programul grafic de instalare iar un program de boot siduction va fi instalat în sistemul de partiții EFI sub <span class="highlight-3">/efi/siduction </span>. Sistemul de partiții EFI va fi de asemenea mount-at ca <span class="highlight-3">/boot/efi</span> dacă ați lăsat selectată opțiunea <i>"mount other partitions"</i>, ne fiind nevoie să-i mai spuneți programului de instalare s-o mount-eze.</p>
+
+							<!--<p><span class="highlight-2">NOTE: USB booting is not supported with GPT.</span></p>-->
+
+					    <h4>Crearea partiției de boot EFI</h4>
+							  <p>Tastați <span class="highlight-2"> n </span> pentru a adăuga o nouă partiție și <span class="highlight-3"> +200M </span> pentru a-i aloca un spațiu.</p>
+<pre>
+Command (? for help): <span class="highlight-2"> n </span>
+Partition number (1-128, default 1): <span class="highlight-2"> 1 </span>
+</pre>
+ 
+<pre>
+First sector (34-16547806, default = 34) or {+-}size{KMGTP}: 
+Information: Moved requested sector from 34 to 2048 in
+order to align on 2048-sector boundaries.
+Use 'l' on the experts' menu to adjust alignment
+Last sector (2048-16547806, default = 16547806) or {+-}size{KMGTP}: <span class="highlight-2"> +200M </span>
+Current type is 'Linux filesystem'
+</pre>
+							  <p>Tastând <span class="highlight-2"> L </span> vi se va prezenta o listă cu coduri:</p>
+<pre>
+Hex code or GUID (L to show codes, Enter = 8300): <span class="highlight-2"> L </span>
+0700 Microsoft basic data  0c01 Microsoft reserved    2700 Windows RE          
+4200 Windows LDM data      4201 Windows LDM metadata  7501 IBM GPFS            
+7f00 ChromeOS kernel       7f01 ChromeOS root         7f02 ChromeOS reserved   
+8200 Linux swap            8300 Linux filesystem      8301 Linux reserved      
+8e00 Linux LVM             a500 FreeBSD disklabel     a501 FreeBSD boot        
+a502 FreeBSD swap          a503 FreeBSD UFS           a504 FreeBSD ZFS         
+a505 FreeBSD Vinum/RAID    a800 Apple UFS             a901 NetBSD swap         
+a902 NetBSD FFS            a903 NetBSD LFS            a904 NetBSD concatenated 
+a905 NetBSD encrypted      a906 NetBSD RAID           ab00 Apple boot          
+af00 Apple HFS/HFS+        af01 Apple RAID            af02 Apple RAID offline  
+af03 Apple label           af04 AppleTV recovery      be00 Solaris boot        
+bf00 Solaris root          bf01 Solaris /usr &amp; Mac Z  bf02 Solaris swap        
+bf03 Solaris backup        bf04 Solaris /var          bf05 Solaris /home       
+bf06 Solaris alternate se  bf07 Solaris Reserved 1    bf08 Solaris Reserved 2  
+bf09 Solaris Reserved 3    bf0a Solaris Reserved 4    bf0b Solaris Reserved 5  
+c001 HP-UX data            c002 HP-UX service         <span class="highlight-2">ef00 EFI System</span>          
+ef01 MBR partition scheme  ef02 BIOS boot partition   fd00 Linux RAID
+</pre>
+							<p>Introduceți <span class="highlight-3">ef00</span> pentru a crea o partiție UEFI:</p>
+<pre>
+Hex code or GUID (L to show codes, Enter = 8300): <span class="highlight-2">ef00</span>
+Changed system type of partition to 'EFI System'
+</pre>
+
+				    <h3>Partiția de boot BIOS</h3>
+					      <h4>Crearea unei partiții de boot BOIS</h4>
+
+							<p>Dacă computerul vostru nu suportă UEFI, puteți crea o partiție de boot BIOS ca înlocuitor al sectorului partiționat DOS aflat între tabela de partiții și prima partiție unde este scri direct <i>grub</i>.</p>
+
+							<p>Tastați <span class="highlight-2"> n </span> pentru a adăuga o nouă partiție și <span class="highlight-3"> +200M </span> ca dimensiune a partiției de boot. (Motivul de a o face de +200M, comparativ cu convenționalul +32M, este de a avea loc pentru o eventuală viitoare înlocuire cu o partiție de boot EFI).</p>
+
+<pre>
+Command (? for help): <span class="highlight-2"> n </span>
+Partition number (1-128, default 1): <span class="highlight-2"> 1 </span>
+</pre>
+ 
+<pre>
+First sector (34-16547806, default = 34) or {+-}size{KMGTP}: 
+Information: Moved requested sector from 34 to 2048 in
+order to align on 2048-sector boundaries.
+Use 'l' on the experts' menu to adjust alignment
+Last sector (2048-16547806, default = 16547806) or {+-}size{KMGTP}: <span class="highlight-2"> +200M </span>
+Current type is 'Linux filesystem'
+</pre>
+							<p>Introduceți <span class="highlight-3">ef02</span> pentru a crea o partiție de boot BIOS:</p>
+<pre>
+Hex code or GUID (L to show codes, Enter = 8300): <span class="highlight-2">ef02</span>
+Changed system type of partition to 'BIOS boot'
+</pre>
+
+							<p><span class="highlight-2">NOTĂ Importantă: Partiția de boot BIOS nu va fi formatată</span></p>
+
+	</div>
+	<div class="divider" id="gdisk-4">		  
+					<h3>Crearea partiției swap</h3>
+
+							<p>Dimensiunea unei partiții swap n-ar trebui subestimată niciodată, mai ales pentru laptop-uri și notebook-uri care au de regulă nevoia de <i>suspend to disk</i>. Partiția trebuie să fie cel puțin egală cu capacitatea RAM-ului.</p>
+
+							<p>Tastați <span class="highlight-2"> n </span> pentru a adăuga o nouă partiție și <span class="highlight-3">+2G</span>, (sau, <span class="highlight-3">+2048M</span>) ca dimensiune a partiției swap iar codul este <span class="highlight-3"> 8200 </span>. Un exemplu ar arăta cam așa:</p>
+
+<pre>
+Command (? for help): <span class="highlight-2"> n </span> 
+Partition number (2-128, default 2): <span class="highlight-2"> 2 </span>
+First sector (34-15728606, default = 411648) or {+-}size{KMGTP}: 
+Last sector (411648-15728606, default = 15728606) or {+-}size{KMGTP}: <span class="highlight-2">+2048M</span>
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): <span class="highlight-2"> 8200 </span>
+Changed type of partition to 'Linux swap
+</pre> 
+
+					  
+		  </div>
+	<div class="divider" id="gdisk-5">		  
+					<h3>Crearea partițiilor pentru date</h3>
+							<p>Tastați <span class="highlight-2"> n </span> pentru a adăuga o nouă partiție și <span class="highlight-3">XXXG</span> ca dimensiune. În acest exemplu <span class="highlight-3">+4G</span>:</p>
+<pre>
+Partition number (3-128, default 3): <span class="highlight-2"> 3 </span>
+First sector (34-15728606, default = 4605952) or {+-}size{KMGTP}: 
+Last sector (4605952-15728606, default = 15728606) or {+-}size{KMGTP}: <span class="highlight-2">+4G</span>
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): <span class="highlight-2">8300</span>
+Changed type of partition to 'Linux filesystem
+</pre>
+
+							<p><span class="highlight-3">Repetați procedurile pentru alte partiții funție de nevoile voastre.</span></p>
+
+							<p>Deoarece în acest exeplu am folosit un stick, am putea face o partiție pentru orice sistem de operare <span class="highlight-3"> Any OS Data </span>, tastând codul <span class="highlight-3">0700</span>, altfel dații cod pentru un sistem Linux (<span class="highlight-3">8300</span>):</p>
+<pre>
+Command (? for help): <span class="highlight-2"> n </span>
+Partition number (4-128, default 4): <span class="highlight-2"> 4 </span>
+First sector (34-15728606, default = 12994560) or {+-}size{KMGTP}: 
+Last sector (12994560-15728606, default = 15728606) or {+-}size{KMGTP}:<span class="highlight-2"> +1300M</span>
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): <span class="highlight-2"> 0700 </span>
+Changed type of partition to 'Microsoft basic data'
+</pre>
+							<p>Pentru a examina partițiile create:</p>
+<pre>
+Command (? for help): <span class="highlight-2"> p </span>
+Disk /dev/sdx: 15728640 sectors, 7.5 GiB
+Logical sector size: 512 bytes
+Disk identifier (GUID): F409CFD3-6DDC-4551-BBC5-85DC218C1352
+Partition table holds up to 128 entries
+First usable sector is 34, last usable sector is 15728606
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 73661 sectors (36.0 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048          411647   200.0 MiB   EF00  Boot
+   2          411648         4605951   2.0 GiB     8200  Swap
+   3         4605952        12994559   4.0 GiB     8300  Linux File System
+   4        12994560        15656959   1.3 GiB     0700  Any OS Data
+</pre>
+							<p>Pentru a adăuga o descriere a scopului fiecărei partiții folosiți comanda <span class="highlight-2"> c </span>. De exemplu:</p>
+<pre>
+Command (? for help): <span class="highlight-2"> c </span>
+Partition number (1-4): <span class="highlight-2"> 4 </span>
+Enter name: <span class="highlight-3"> Nume la alegerea voastră</span>
+</pre>
+							<p>Comanda <span class="highlight-2">w</span> va scrie schimbările făcute în timp ce comanda <span class="highlight-2">q</span> va ieși fără a salva modificările:</p>
+<pre>
+Command (? for help): <span class="highlight-2"> w </span>
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): <span class="highlight-2"> y </span>
+OK; writing new GUID partition table (GPT).
+The operation has completed successfully.
+</pre>
+		  </div>
+	<div class="divider" id="gdisk-6">
+			      <h2>Formatarea partițiilor</h2>
+							<p>Deoarece <i>gdisk</i> crează partiții nu sisteme de fișiere, va trebui să formatați fiecare partiție cu ajutorul terminalului. Pentru că trebuie să știți numele partițiilor pentru a le formata corect pe fiecare, rulați comanda:</p>
+<pre>
+fdisk -l
+</pre>
+							<p><i>fdisk</i> vă va arăta calea cerută. Presupunând că aceasta este <span class="highlight-3"> sdb </span> :</p>
+<pre>
+gdisk /dev/sdb
+Command (? for help): <span class="highlight-2"> p </span>
+</pre>
+							  
+							<p>Acum tastați <span class="highlight-2"> q </span> pentru a părăsi <i>gdisk</i> și a avea din nou promptul <span class="highlight-2"> # </span> al <i>root</i>-ului, putând astfel tasta calea și numărul fiecărei partiții:</p>
+
+							<p>Pentru partiția UEFI, <span class="highlight-2">(Nu formatați partiția de boot BIOS)</span>:</p>
+
+<pre>
+ mkfs -t vfat /dev/sdb1
+</pre>
+							<p>Pentru partiția Linux, <span class="highlight-3">(Sintaxa pentru oricare alte partiții Linux se va schimba desigur funție de fiecare sistem de fișiere Linux aflat pe sdb4, sdb5, și în continuare</span>:</p>
+<pre>
+ mkfs -t ext4 /dev/sdb3
+</pre>
+							 <p>Pentru partiția <i>'Any OS Partition'</i>, <span class="highlight-3">(probabil necesară dacă este folosit un stick USB pentru interoperabilitate între diverse sisteme de operare)</span>:</p>
+<pre>
+ mkfs -t vfat /dev/sdb4
+</pre>
+
+							<p>Formatarea partiției swap:</p>
+<pre >
+mkswap /dev/sdb2
+</pre>
+
+							<p>Apoi:</p>
+
+<pre >
+swapon /dev/sdb2
+</pre>
+
+							<p>Apoi verificați dacă swap este recunoscută tastând în consolă:</p>
+<pre >
+swapon -s
+</pre>
+							<p>Dacă swap este recunoscută corect, introduceți:</p>
+<pre >
+swapoff -a
+</pre>
+							<p>Aceste comenzi funcționeză dacă sunt pe partiții MBR.</p>
+
+							<h5><span class="highlight-2"> Este absolut imperativ să reboot-ați pentru ca noua partiționare și formatul lor să fie citite de  kernel.</span></h5>
+
+							<p>După reboot-are sunteți pregătit să porniți instalarea pe sau să utilizați disk-ul GPT.</p>
+
+		  </div>
+	<div class="divider" id="gdisk-7">
+			<h2>Comenzi <i>gdisk</i> pentru avansați</h2>
+
+							<p>Înainte de a salva modificările, poate veți dori să verificați dacă nu sunt probleme grosolane în structura de date GPT. Puteți face asta cu comanda <span class="highlight-2">v</span>:</p>
+<pre>
+Command (? for help): <span class="highlight-2"> v </span>
+No problems found. 0 free sectors (0 bytes) available in 0
+segments, the largest of which is 0 sectors (0 bytes) in size
+</pre>
+							<p>În acest caz, tot spațiul disponibil pe disk este alocat partițiilor și nu au fost găsite probleme. Dacă rămâne spațiu liber pentru a crea partiții veți vedea cât de mult este disponibil. Dacă <i>gdisk</i> găsește probleme, cum ar fi suprapuneri de partiții sau nepotriviri între tabela de partiții curentă și cea de siguranță (backup), vă vor fi raportate aici. Desigur, <i>gdisk</i> are măsuri de siguranță ce nu văvor lăsa să comiteți asemenea probleme. Opțiunea de verificare <span class="highlight-2">v</span> are rolul de ajutor în a vedea problemele ce ar putea să apară ca rezultat al datelor corupte.</p>
+
+							<p>Dacă sunt descoperite probleme, puteți să le corectați folosind diverse opțiuni din meniul secundar <span class="highlight-3"> recovery and transformation options (experts only) </span>, tastând <span class="highlight-2"> r </span> :</p>
+<pre>
+Command (? for help): <span class="highlight-2"> r </span>
+
+recovery/transformation command (? for help): <span class="highlight-2">?</span>
+b	use backup GPT header (rebuilding main)
+c	load backup partition table from disk (rebuilding main)
+d	use main GPT header (rebuilding backup)
+e	load main partition table from disk (rebuilding backup)
+f	load MBR and build fresh GPT from it
+g	convert GPT into MBR and exit
+h	make hybrid MBR
+i	show detailed information on a partition
+l	load partition data from a backup file
+m	return to main menu
+o	print protective MBR data
+p	print the partition table
+q	quit without saving changes
+t	transform BSD disklabel partition
+v	verify disk
+w	write table to disk and exit
+x	extra functionality (experts only)
+?	print this menu
+</pre>
+
+							<p>Un meniu terțiar, <span class="highlight-3"> extra functionality (experts only) </span>, poate fi accesat tastând <span class="highlight-2"> x </span> atât din meniul principal <span class="highlight-3">main menu </span> cât și din meniul <span class="highlight-3">recovery and transformation options (experts only)</span>.</p>
+
+<pre>
+recovery/transformation command (? for help): <span class="highlight-2">x</span>
+
+Expert command (? for help): <span class="highlight-2">?</span>
+a       set attributes
+c       change partition GUID
+d       display the sector alignment value
+e       relocate backup data structures to the end of the disk
+g       change disk GUID
+i       show detailed information on a partition
+l       set the sector alignment value
+m       return to main menu
+n       create a new protective MBR
+o       print protective MBR data
+p       print the partition table
+q       quit without saving changes
+r       recovery and transformation options (experts only)
+s       resize partition table
+v       verify disk
+w       write table to disk and exit
+z       zap (destroy) GPT data structures and exit
+?       print this menu
+</pre>
+							<p>De aici puteți face unele editări cum ar fi schimbarea GUID-urilor partițiilor sau disk-urilor (<span class="highlight-2"> c </span> și respectiv <span class="highlight-2"> g </span>). Opțiunea <span class="highlight-2"> z </span> distruge imediat structura de date GPT și poate fi utilizată dacă doriți reutilizarea disk-ului GPT cu o altă schemă de partiții. Dacă structura curentă nu este ștearsă unele programe de partiționare pot deveni confuze prin descoperirea aparentă a două sisteme de partiționare.</p>
+
+							<p>În general, ambele opțiuni <span class="highlight-3">recovery &amp; transformation  </span> și <span class="highlight-3">experts</span> n-ar trebui folosite de altcineva în afară de experții GPT. Non-experții ar putea fi nevoiți să le folosească dacă disk-ul li se strică. Înainte de a proceda la acțiuni drastice ar fi bine să apelați opțiunea <span class="highlight-2"> b </span> din meniul principal pentru a crea o copie de rezervă (backup file) pe care s-o salvați undeva pe un stick USB sau în altă parte în afara disk-ului pe care tocmai vreți să-l modificați. Astfel veți putea recupera configurația originală dacă vă stricați partițiile.</p>
+
+				    <h6>Surse bibliografice: </h6>
+							<p> <a href="http://www.rodsbooks.com/gdisk/"> GPT fdisk Tutorial by Roderick W. Smith</a></p>
+
+							<p> <a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463525"> Windows Hardware Developer Center </a></p>
+</div>
+	<!--<div class="divider" id="<gdisk-8">
+			<h2>Dual booting with Linux and another OS - TBA</h2>
+
+						<ul>
+<li>
+<pre>
+man gdisk
+</pre>
+</li>
+							<li><a href="http://www.rodsbooks.com/<i>gdisk</i>/"> GPT fdisk Tutorial by Roderick W. Smith</a></li>
+
+							<li><a href="http://en.wikipedia.org/wiki/GUID_Partition_Table">en.wikipedia.org/wiki/GUID_Partition_Table</a></li>
+						  </ul>
+</div>-->
+			<div id="rev">Content last revised  15/08/2011 1155 UTC</div>
+
+</div>
+</body>
+</html>

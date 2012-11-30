@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ro" lang="ro">
+<head>
+	<title>Manualul siduction - Administrarea Sistemului - generalități</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body class="body-main">
+	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+<div id="bg">
+ <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
+<!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+	</div>
+	<ul>
+<li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-ro.htm#welcome-gen">Manualul SO siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm1a">
+					  <li><a href="credits-ro.htm#cred-team">Credite</a></li>
+					</ul>
+					</li>
+		<li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual &#8658;</a>
+					<ul class="sub2-menu" id="sm1b">
+					  <li><a href="welcome-ro.htm#how-to">Cum să utilizați acest manual</a></li>
+					  <li><a href="welcome-ro.htm#table-contents">Cuprins</a></li>
+					</ul>
+					</li>
+		<li><a href="help-ro.htm#help-gen">Cum primiți ajutor &#8658;</a>
+					<ul class="sub2-menu" id="sm1c">
+					  <li><a href="help-ro.htm#help-gen">De unde și cum primiți ajutor</a></li>
+					  <li><a href="help-ro.htm#paste">IRC <i>!paste</i></a></li>
+					</ul>
+					</li>
+		<li><a href="wel-quickstart-ro.htm#welcome-quick">Ghidul de pornire rapidă siduction</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-dl-burning-ro.htm">Conținutul ISO, Versiuni, Locații de Download  și Arderea CD/DVD</a>
+			   <ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-ro.htm#cd-content">Conținutul ISO și cerințe de sistem &#8658;</a>
+					<ul class="sub2-menu" id="sm2a">
+					  <li><a href="sys-admin-release-ro.htm#rolling">Notele Versiunii</a></li>
+					</ul>
+					</li>
+		    <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații siduction, Descărcare și Ardere &#8658;</a>
+				<ul class="sub2-menu" id="sm2b">
+					  <li><a href="cd-dl-burning-ro.htm#md5">md5 Suma de control</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-nero">Arderea în Windows</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#burn-linux">Arderea în Linux</a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burning-no-gui">script-ul <i>burniso</i></a></li>
+					  <li><a href="cd-no-gui-burn-ro.htm#burn-no-gui-gen">Arderea fără GUI</a></li>
+					  <li><a href="cd-dl-burning-ro.htm#download-siduction">Locații de Descărcare siduction</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="live-mode-ro.htm">Modul Live</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="live-mode-ro.htm#rootpw">Parola de root pe siduction-Live ISO</a></li>
+				<li><a href="live-mode-ro.htm#live-cd-installsoft">Instalarea programelor în timpul rulării unui Live-ISO</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="term-konsole-ro.htm">Terminalul / Konsole</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole &#8658;</a>
+					<ul class="sub2-menu" id="sm4a">
+					  <li><a href="term-konsole-ro.htm#term-kon"> Terminal / Konsole</a></li>
+					  <li><a href="term-konsole-ro.htm#colours"> Terminal - promt-uri colorate</a></li>
+					  <li><a href="term-konsole-ro.htm#cli-help">Ajutor în Linia de Comandă</a></li>
+					  <li><a href="help-ro.htm#init3-tools">Unelte bune de știut în modul text (tty) - <i>init 3</i></a></li>
+					  <li><a href="term-konsole-ro.htm#term-cmds">Lista Comenzilor Linux în Terminal</a></li>
+					</ul>
+					</li>
+			  <li><a href="term-konsole-ro.htm#sux"> sux / sudo</a></li>
+		    </ul>
+		</li>
+<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-ro.htm">CheatCode-uri</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="cheatcodes-ro.htm#cheatcodes">CheatCode-uri specifice siduction în Live-ISO</a></li>
+				<li><a href="cheatcodes-ro.htm#cheatcodes-linux">CheatCode-uri generice Linux</a></li>
+				<li><a href="cheatcodes-vga-ro.htm#vga">Code-uri VGA</a></li>
+			</ul>
+		</li>
+<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="part-gparted-ro.htm">Partiționarea Hard Disk-ului - Tradițional, GPT și LVM</a>
+		<ul class="sub-menu" id="sm6">
+			 <li><a href="part-gparted-ro.htm#hd-ntfs3g">Scrierea pe partiții NTFS cu <i>ntfs-3g</i></a></li>
+			<li><a href="part-lvm-ro.htm#part-lvm">Partiționarea pentru a folosi LVM - Logical Volume Manager</a></li>
+			<li><a href="part-gparted-ro.htm#partition">Partiționarea cu GUI &#8658;</a>
+					<ul class="sub2-menu" id="sm6a">
+					  <li><a href="part-gparted-ro.htm#partition">Partiționarea HD cu GParted / KDE Partition Manager</a></li>
+					  <li><a href="part-gparted-ro.htm#ntfs">Redimensionarea partițiilor NTFS cu GParted / KDE Partition Manager</a></li>
+					</ul>
+					</li>
+		<li><a href="part-cfdisk-ro.htm#partition">Partiționarea cu CLI &#8658;</a>
+					 <ul class="sub2-menu" id="sm6b">
+					    <li><a href="part-cfdisk-ro.htm#partition">Partiționarea HD cu <i>cfdisk</i></a></li>
+					    <li><a href="part-cfdisk-ro.htm#formating">Formatarea după partiționare cu <i>cfdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-6">Formatarea după partiționare cu <i>gdisk</i></a></li>
+					    <li><a href="part-gdisk-ro.htm#gdisk-1">GPT - Partiționarea cu <i>gdisk</i></a></li>
+					</ul>
+					</li>
+		<li><a href="part-size-examp-ro.htm#part-example">Partiționare - Sumar &#8658;</a>
+					<ul class="sub2-menu" id="sm6c">
+					  <li><a href="part-size-examp-ro.htm#part-example">Exemple de dimensiuni de Partiții</a></li>
+					  <li><a href="part-uuid-ro.htm#uuid">UUID, Reconstruirea <i>fstab</i> și crearea unor noi puncte de mount-are</a></li>
+					  <li><a href="part-cfdisk-ro.htm#disknames">Numirea pe scurt a Disk-urilor</a></li>
+					</ul>
+					</li>
+		      </ul>
+		</li>
+<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="hd-install-ro.htm">Opțiuni de Instalare - HD, USB, VM și Cryptroot</a>
+		<ul class="sub-menu" id="sm7">
+		  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării &#8658;</a>
+					<ul class="sub2-menu" id="sm7a">
+					  <li><a href="hd-install-ro.htm#Inst-prep">Pregătirea Instalării</a></li>
+					  <li><a href="hd-install-ro.htm#Installation">Instalarea pe HD</a></li>
+					  <li><a href="hd-install-ro.htm#first-hd-boot">Prima Boot-are</a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> &#8658;</a>
+					<ul class="sub2-menu" id="sm7b">
+					  <li><a href="hd-install-opts-ro.htm#fromiso">Boot-area <i>fromiso</i> - Introducere</a></li>
+					  <li><a href="hd-install-opts-ro.htm#grub2-fromiso">Boot-area <i>fromiso</i> cu Grub 2</a></li>
+					  <li><a href="hd-install-opts-ro.htm#fromiso-persist"><i>fromiso</i> și <i>persist</i></a></li>
+					</ul>
+					</li>
+		<li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe USB &#8658;</a>
+					<ul class="sub2-menu" id="sm7c">
+					  <li><a href="hd-install-opts-ro.htm#usb-hd">Instalarea pe un USB-HD - specific siduction - <i>siduction-on-stick</i></a></li>
+					  <li><a href="hd-ins-opts-oos-ro.htm#raw-usb">Scrierea siduction pe un USB/SSD stick cu orice sistem Linux, MS Windows sau Mac OS X</a></li>
+					</ul>
+					</li>
+		  <li><a href="hd-install-crypt-ro.htm#install-crypt">Instalarea pe partiții criptate - <i>cryptroot</i></a></li>
+		  <li><a href="nbdboot-ro.htm#nbd1">Boot-area siduction din rețea</a></li>
+		  <li><a href="hd-install-vmopts-ro.htm#vmopts">Instalarea în Mașini Virtuale</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="gpu-ro.htm">Plăci grafice, monitoare, Xorg,  &amp; drivere</a>
+	<ul class="sub-menu" id="sm8">
+		<li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare &#8658;</a>
+					<ul class="sub2-menu" id="sm8a">
+					  <li><a href="hw-dev-mon-ro.htm#mon-res">Rezoluția Ecranului și Monitoare</a></li>
+					  <li><a href="hw-dev-mon-ro.htm#xrandr">Monitoare Duale și <i>xrandr</i></a></li>
+					  <li><a href="hw-dev-mon-ro.htm#mon-binary">Monitoare Duale (folosind binare)</a></li>
+					</ul>
+					</li>
+		<li><a href="gpu-ro.htm#foss-xorg">GPU drivere &#8658;</a>
+					<ul class="sub2-menu" id="sm8b">
+					  <li><a href="gpu-ro.htm#ati-3d">AMD/ATI 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#intel">Intel 2D și 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#nvidia">Nvidia 3D -drivere</a></li>
+					  <li><a href="gpu-ro.htm#foss-xorg">Open Source Xorg -drivere</a></li>
+					</ul>
+					</li>
+			  <li><a href="nf-firm-ro.htm#fw-detect">Detectare Firmware - non-free </a></li>
+			  <li><a href="nf-firm-ro.htm#non-free-firmware">Adăugarea non-free la Lista Surselor</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="wm-dm-ro.htm">Managere de Ferestre</a>
+		    <ul class="sub-menu" id="sm9">
+			  <li><a href="wm-dm-ro.htm">KDE și XFCE Managere de Ferestre &#8658;</a>
+					  <ul class="sub2-menu" id="sm9a">
+					    <li><a href="wm-dm-ro.htm#xfce-notes">Xfce aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#install-add">KDE aplicații utile</a></li>
+					    <li><a href="wm-dm-ro.htm#desk-freeze">Înghețarea Desktop-ului</a></li>
+					    <li><a href="wm-dm-ro.htm#kde-login">KDE - nu mă pot loga</a></li>
+					    <li><a href="wm-dm-ro.htm#ch-th">Schimbarea Aspectului</a></li>
+					</ul>
+					</li>
+		      <li><a href="wm-dm-ro.htm#dm">Instalarea altor Managere de Ferestre (Display Managers)</a></li>
+		</ul>
+		</li>
+<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="inet-ceni-ro.htm">Conectarea la Internet, WiFi, LAN și Rețele</a>
+		    <ul class="sub-menu" id="sm11">
+			<li><a href="lamp-apache-ro.htm">Setul LAMP din siduction &#8658;</a>
+					<ul class="sub2-menu" id="sm11a">
+					    <li><a href="lamp-apache-ro.htm#serv-apache">Setul LAMP din siduction</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ftp">Clienți FTP</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-sec">Protocoale de Securitate</a></li>
+					    <li><a href="lamp-apache-ro.htm#serv-ssl">SSL</a></li>
+					    <li><a href="lamp-sql-ro.htm#serv-mysql">Setarea MySQL</a></li>
+					    <li><a href="lamp-ppp-ro.htm#serv-php">PHP în Apache</a></li>
+					    <li><a href="ntp-server-ro.htm#ntp-server">Setarea Timeserver-ului</a></li>
+					</ul>
+					</li>
+		<li><a href="tor-privoxy-ro.htm#tor">Firewall-uri și Intimitate &#8658;</a>
+					<ul class="sub2-menu" id="sm11b">
+					    <li><a href="tor-privoxy-ro.htm#tor">Tor</a></li>
+					    <li><a href="tor-privoxy-ro.htm#privoxy">Privoxy</a></li>
+					    <li><a href="inet-ceni-ro.htm#firewalls">Firewall-uri</a></li>
+					</ul>
+					</li>
+		<li><a href="ssh-ro.htm#ssh-x">SSH și Samba &#8658;</a>
+					<ul class="sub2-menu" id="sm11c">
+						  <li><a href="samba-ro.htm#setup">Setarea Samba-Server</a></li>
+						  <li><a href="samba-ro.htm#configure">Configurarea SAMBA (Windows)</a></li>
+						  <li><a href="ssh-ro.htm#ssh-fs">SSH - Mount-area la distanță</a></li>
+						  <li><a href="ssh-ro.htm#ssh-x">Aplicații X Window via SSH</a></li>
+						  <li><a href="ssh-ro.htm#ssh-f">GUI SSH cu Konqueror</a></li>
+						  <li><a href="ssh-ro.htm#ssh-w">SSH X-Forwarding de pe PC-uri Windows</a></li>
+						  <li><a href="ssh-ro.htm#ssh">SSH și Securitate</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni WIFI &#8658;</a>
+						<ul class="sub2-menu" id="sm11d">
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+						    <li><a href="inet-wpagui-ro.htm#wpa-roaming-gui">WiFi - WPA_GUI</a></li>
+						    <li><a href="inet-setup-ro.htm#net-set1">WiFi - Setarea WiFi Roaming</a></li>
+						    <li><a href="inet-wpa-ro.htm#wpa">WiFi - wpasupplicant</a></li>
+						    <li><a href="inet-ifplug-ro.htm#hotswitch">Schimbarea rețelei între WiFi și Cablu</a></li>
+					</ul>
+					</li>
+		<li><a href="inet-ceni-ro.htm#netcardconfig">Conexiuni prin Cablu &#8658;</a>
+						<ul class="sub2-menu" id="sm11e">
+						    <li><a href="inet-ceni-ro.htm#dial-mod">Modem-uri 56k</a></li>
+						    <li><a href="inet-ceni-ro.htm#netcardconfig">Conectarea Online - Ceni</a></li>
+					</ul>
+					</li>
+				</ul>
+			    </li>
+<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="sys-admin-apt-ro.htm">Managementul Pachetelor și dist-upgrade</a>
+	<ul class="sub-menu" id="sm12">
+		<li><a href="sys-admin-apt-ro.htm#apt-cook">APT - Utilizare și Listele Surselor &#8658;</a>
+					<ul class="sub2-menu" id="sm12a">
+					    <li><a href="sys-admin-apt-ro.htm#apt-cook">APT-Ghid de Utilizare și Listele Surselor</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-install">Instalarea de pachete noi</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-delete">Ștergerea unui pachet</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-downgrade">Pachete în Hold și downgrading</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-cache">Pachete - căutarea cu <i>apt-cache</i></a></li>
+					    <li><a href="sys-admin-apt-ro.htm#gui-pacsea">Pachete - căutarea cu GUI</a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului &#8658;</a>
+					<ul class="sub2-menu" id="sm12b">
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-remove">Ștergerea Kernel-urilor</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#kern-upgrade">Actualizarea kernel-ului</a></li>
+					    <li><a href="sys-admin-kern-upg-ro.htm#dmakms">Instalarea dinamică a modulelor kernel cu <i>dmakms</i></a></li>
+					</ul>
+				</li>
+		<li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere &#8658;</a>
+					<ul class="sub2-menu" id="sm12c">
+					    <li><a href="sys-admin-upgrade-ro.htm#live-cd-upgrade">Actualizarea cu Live-ISO</a></li>
+					    <li><a href="sys-admin-apt-locarmirr-ro.htm#approx">Actualizarea <i>dist-upgrade</i> mai multor PC-uri din LAN</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#apt-upgrade">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Introducere</a></li>
+					    <li><a href="sys-admin-apt-ro.htm#du-st">Actualizarea unui Sistem Instalat - <i>dist-upgrade</i> - Pașii</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="sys-admin-gen-ro.htm">Administrarea Sistemului</a>
+	<ul class="sub-menu" id="sm13">
+		<li><a href="bios-freedos-ro.htm#bois-prep">Actualizarea BIOS-ului cu FreeDOS</a></li>
+		<li><a href="vir-rkits-ro.htm#virus-rkits">Scanere de Viruși și Rootkit</a></li>
+		<li><a href="hd-install-ro.htm#adduser">Adăugarea de Utilizatori și Parole &#8658;</a>
+					<ul class="sub2-menu" id="sm13a">
+					    <li><a href="hd-install-ro.htm#adduser">Adăugarea unui nou utilizator</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pw-lost">Parolele de <i>root</i> pierdute, parole noi</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#start-services">Servicii și init runlevel-e &#8658;</a>
+					<ul class="sub2-menu" id="sm13b">
+					    <li><a href="sys-admin-gen-ro.htm#start-services">Servicii -activare/dezactivare</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#pkill">Omorârea unui serviciu sau proces</a></li>
+					    <li><a href="sys-admin-gen-ro.htm#init">runlevel-e siduction - init</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-rsync-ro.htm#rsync">Copii de siguranță ale Sistemului &#8658;</a>
+					  <ul class="sub2-menu" id="sm13c">
+					    <li><a href="sys-admin-rdiff-ro.htm#rdiff">Back-Up cu <i>rdiff</i></a></li>
+					    <li><a href="sys-admin-rsync-ro.htm#rsync">Back-Up cu <i>rsync</i></a></li>
+					    <li><a href="home-ro.htm#home-bu">Mutarea /home</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-gen-ro.htm#fonts">CUPS, Font-uri și Sunet &#8658;</a>
+					  <ul class="sub2-menu" id="sm13d">
+					     <li><a href="sys-admin-gen-ro.htm#fonts">Font-uri</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#cups">CUPS - Sistemul de Print-are</a></li>
+					     <li><a href="sys-admin-gen-ro.htm#sound">Mixere de Sunet</a></li>
+					</ul>
+					</li>
+		<li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 &#8658;</a>
+					  <ul class="sub2-menu" id="sm13f">
+					    <li><a href="sys-admin-grub2-ro.htm#chroot">Grub2 - Recuperarea Grub cu <i>chroot</i></a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#mbr-over-grub2">Grub2 - bootsector-ul MBR Suprascris</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#multi-os">Grub2 - Boot-area Duală și Multiplă</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub1-grub2">Grub2 - Actualizarea de la Grub1</a></li>
+					    <li><a href="sys-admin-grub2-ro.htm#grub2">Grub2 - Introducere</a></li>
+					</ul>
+				  </li>
+			    </ul>
+		</li>
+<li><a></a></li>
+</ul>
+
+<div id="menu-header-5">
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div>
+
+<!-- menu-en ends here --> </div><!--/htdig_noindex-->
+<div id="main-page">
+	<div class="divider" id="start-services">
+		<h2 id="top-header">Activarea serviciilor în siduction</h2>
+				<h3><i>insserv</i> : Pentru start/stop servicii deja instalate:</h3>
+							<p><span class="highlight-2">Citiți cu atenție <span class="highlight-3"> /usr/share/doc/insserv/README.Debian </span>, notele versiunii curente și paginile de manual:</span></p>
+<pre>
+ $ man insserv
+ $ man invoke-rc.d
+ $ man update-rc.d
+ google LSB headers
+</pre>
+
+							<p>Pentru 'start':</p>
+<pre>
+/etc/init.d/&lt;nume_serviciu&gt; start
+</pre>
+							<p>Pentru 'stop':</p>
+<pre>
+/etc/init.d/&lt;nume_serviciu&gt; stop
+</pre>
+							<p>Pentru 'restart:</p>
+<pre>
+/etc/init.d/&lt;nume_serviciu&gt; restart
+</pre>
+							<p>Pentru prevenirea rulării serviciilor la pornire:</p>
+<pre>
+update-rc.d &lt;nume_serviciu&gt; remove
+[va șterge toate link-urile de startup]
+</pre>
+							<p>Pentru a fi siguri că un serviciu rulează la boot-are [nu-i necesar întotdeauna]:</p>
+<pre>
+update-rc.d &lt;nume_serviciu&gt; defaults
+[crează link-uri de startup]
+</pre>
+
+							<p>Pentru a citi lista serviciilor care rulează:</p>
+<pre>
+ls /etc/rc5.d
+</pre>
+
+							<p><span class="highlight-3">S</span> înseamnă că service-ul va porni.<br />
+							<span class="highlight-3">K</span> înseamnă că service-ul nu va porni.</p>
+
+					
+	</div>
+	<div class="divider" id="bum">
+			<h2>Managerul Boot-Up (bum) - Unealtă Grafică de configurare a serviciilor</h2>
+
+							<p>Dacă logica secvenței de boot-are a unui sistem debian  nu-ți este foarte clară și familiară, n-ar trebui să te joci cu symlink-uri, permisiuni și altele.<br /> Înainte de ați strica sistemul <i>'Boot-Up Manager'</i> te va ajuta să-ți automatizezi configurarea.</p>
+
+							<p><i>Boot-Up Manager</i> este un editor grafic de configurare a runlevel-elor care vă permite să configurați care <i>init services</i> sunt invocate când sistemul boot-ează sau reboot-ați. Afișează o listă cu toate serviciile care pot fi pornite la boot-are. Puteți seta individual fiecare serviciu pe <i>'on'</i> și <i>'off'</i>.</p>
+
+<pre>
+apt-get install bum
+</pre>
+							<p>Utilizarea <i>Boot-Up Manager</i> GUI:</p>
+<pre>
+$ sux
+password:
+bum
+</pre>
+						  <p> <a href ="http://www.marzocca.net/linux/bumdocs.html"> Documentația Detaliată a Boot-Up Manager (bum)</a>. </p>
+
+		</div>
+		<div class="divider" id="pkill">
+			<h2>Omorârea unui serviciu sau proces</h2>
+						<p><span class="highlight-3">pkill</span> este foarte util fiind prietenos și poate lucra în modul user și root într-un terminal sau tty</p>
+<pre>
+pkill -n &lt;nume_serviciu&gt;
+</pre>
+						<p>Dacă nu sunteți sigur de ortografia corectă a procesului sau serviciului pe care vreți să-l omorâți <span class="highlight-3">pkill &lt;tab&gt; &lt;tab&gt;</span> vă va oferi o listă</p>
+
+						<p><i>htop</i> este de asemenea o bună alternativă. (<i>killall -9 </i>este ultima voastră alternativă)</p>
+
+	</div>
+	<div class="divider" id="init">
+			<h2>Nivelele de rulare în siduction - init</h2>
+							<p>Aceasta este lista din sistemul de operare siduction pentru runlevels.<br />Observaţi că acestea diferă de runlevels din debain stable :</p>
+		 <table>
+			<tbody>
+				<tr>
+					<th>Runlevel</th>
+					<th>siduction</th>
+					<th>Debian</th>
+				</tr>
+				<tr>
+					<td><b>init 0</b></td>
+					<td> Oprește PC-ul.</td>
+					<td> Oprește PC-ul.</td>
+				</tr>
+				<tr>
+					<td><b>init 1</b></td>
+					<td>Single user (safety mode). Demoni ca  apache și sshd sunt stopați. Nu intrați în acest nivel via acces de la distanță.</td>
+					<td>Single user (safety mode). Demoni ca  apache și sshd sunt stopați. Nu intrați în acest nivel via acces de la distanță.</td>
+				</tr>
+				<tr>
+					<td><b>init 2</b></td>
+					<td> Multi-User mode cu rețeaua în funcțiune, fără rularea X-windows, și/sau pentru a opri sau a nu intra în X-windows</td>
+					<td>Runlevel-ul de bază Debian pentru modul Multi-User cu rularea network și a X-Window System.</td>
+				</tr>
+				<tr>
+					<td><b>init 3</b></td>
+					<td> Multi-User mode cu rețeaua în funcțiune, fără rularea the X-Window System, și/sau pentru a opri sau a nu intra în the X-Window System.  <a href="sys-admin-apt-ro.htm#apt-upgrade">În acet nivel va fi acționat <i>dist-upgrade</i></a>.</td>
+					<td>La fel ca runlevel 2 / init 2.</td>
+				</tr>
+				<tr>
+					<td><b>init 4</b></td>
+					<td> Multi-User mode cu rețeaua în funcțiune, fără rularea X-Window System, și/sau pentru a opri sau a nu intra în X-Window System.</td>
+					<td>La fel ca runlevel 2 / init 2.</td>
+				</tr>
+				<tr>
+					<td><b>init 5</b></td>
+					<td>Runlevel-ul de bază în siduction pentru modul Multi-User cu rețeaua în funcțiune, cu X-Window System și/sau pentru pornirea X-Window System.</td>
+					<td>La fel ca runlevel 2 / init 2.</td>
+				</tr>
+				<tr>
+					<td><b>init 6</b></td>
+					<td> Restartează/reboot-ează sistemul.</td>
+					<td> Restartează/reboot-ează sistemul.</td>
+				</tr>
+				<tr>
+					<td><b>init S</b></td>
+					<td> Unde sunt executate serviciile în primele secvențe ale boot-ării într-o 'once only basis'. Nu puteți comuta la acest nivel după ce acesta a fost rulat.</td>
+					<td>Unde sunt executate serviciile în primele secvențe ale boot-ării într-o 'once only basis'. Nu puteți comuta la acest nivel după ce acesta a fost rulat.</td>
+				</tr>
+			</tbody>
+		</table>
+
+      <div class="spacer02"></div>
+
+							<p>Pentru a verifica în care <i>runlevel</i> (init) sunteți, tastați:</p>
+<pre>
+who -r
+</pre>
+							<p>Administratorii de sisteme siduction și Debian trebuie să citească despre <i>runlevels</i> în:</p>
+<pre>
+man init
+</pre>
+
+	</div>
+	<div class="divider" id="pw-lost">
+		<h2>Parolele de root pierdute</h2>
+
+			<p>Nu puteţi recupera o parolă pierdută dar puteţi seta una nouă.</p>
+
+			<p>Porniţi de pe Live-CD.</p>
+
+			<p>Ca utilizator <i>root</i> mount-aţi  partiţia root (de exemplu  /dev/sdb2)</p>
+
+<pre>
+mount /dev/sdb2 /media/sdb2
+</pre>
+							<p>Acum <i>'chroot'</i> în vechea partiție root și setați o nouă parolă:</p>
+<pre>
+chroot /media/sdb2 passwd
+</pre>
+
+	</div>
+	<div class="divider" id="pw-new">
+		<h2>Setarea unor parole noi</h2>
+
+							<p>Pentru schimbarea parolei voastre de utilizator executați ca <span class="highlight-3">$ user</span>:</p>
+<pre>
+$ passwd
+</pre>
+
+							<p>Pentru schimbarea parolei voastre de <i>'root'</i> executați ca <span class="highlight-3"># root</span>:</p>
+<pre>
+passwd
+</pre>
+
+							<p>Ca administrator puteți schimba parola altui utilizator executând ca <span class="highlight-3"># root</span>:</p>
+<pre>
+passwd &lt;nume_utilizator&gt;
+</pre>
+
+	</div>
+	<div class="divider" id="fonts">
+
+			<h2>Fonturi în siduction</h2>
+				<h6>Setările dpi corecte - Filozofia de bază</h6>
+
+							<p>Setările DPI sunt foarte greu de ghicit, dar sunt realizate perfect la ora actuală de către X.</p>
+
+				<h6>Rezoluţiile şi Ratele de Refresh corecte</h6>
+
+							<p>Orice monitor are o combinaţie perfectă a setărilor dar, din păcate, nu toate monitoarele raportează corect valorile DCC şi uneori este nevoie de intervenţia manuală pentru a le corecta.</p>
+
+				<!--<h6>Driverele corecte ale adaptoarelor grafice</h6>
+
+							<p>Unele plăci grafice mai noi de la ATI şi Nvidia pur şi simplu nu funcţionează corect cu driverele free Xorg şi singura soluţie rezonabilă în astfel de cazuri rămâne instalarea driverelor comerciale, closed source.<br />Din motive legale siduction nu va face pre-instalarea acestor drivere, <a href="gpu-ro.htm"> Soluţia poate fi găsită aici. </a></p>-->
+
+				<h5>Selectare font-urilor implicite, a renderizării şi mărimiilor </h5>
+
+							<p>siduction utilizează fonturi pre-selectate (Debian) care s-au dovedit a fi foarte echilibrate, selectarea unor fonturi proprii pot/ar putea deteriora calitatea imaginii. Dar în Debian există şi câteva opţiuni puternice (prin KDE>systemsettings) care să vă ajute să obţineţi o imagine corectă şi cu alte fonturi.<br />Trebuie să reţineţi că fiecare font are doar câteva dimensiuni perfecte, alte dimensiuni e posibil să nu funcţioneze foarte bine.</p>
+
+							<p>Ajustarea mărimii dpi cu această comandă vă poate fi deasemeni de ajutor:</p>
+<pre>
+fix-dpi-kdm
+</pre>
+							<p>Vă va arăta DPI potrivit mărimii ecranului dumneavoastră dar şi acestea pot fi modificate. Va trebui să intraţi în <i>init 3</i> şi apoi înapoi în <i>init 5</i> pentru a funcţiona sau să restartaţi computerul.</p>
+
+							<p> După ce aţi schimbat tipul de font sau DPI (în X sau Firefox/Iceweasel), e posibil să aveţi nevoie de unele ajustări pentru a ajunge la rezultatul dorit şi în special după schimbarea din Bitmap Fonts în True Type Fonts sau altceva, prin:</p>
+<pre>
+dpkg-reconfigure fontconfig-config
+</pre>
+							<p>Alegeţi <i>native</i> şi <i>autohinter</i> pe <i>automatic</i>. Mai puteţi încerca şi altele.</p>
+
+							<p>Dacă acestea nu funcţionează va trebui să refaceţi <i>font cache</i> prin:</p>
+<pre>
+apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
+</pre>
+				<h5>Aplicaţii bazate pe GTK precum Firefox/Icewasel</h5>
+							<p>Aplicaţiile bazate pe GTK sunt în general problematice cu setările KDE implicite. Aceasta se poate rezolva prin:</p>
+<pre>
+apt-get install gtk2-engines system-config-gtk-kde gtk-qt-engine gtk2-engines-qtcurve
+</pre>
+							<p>În <span class="highlight-3">System Settings ->Appearance </span> veți avea în menu o nouă intrare numită <span class="highlight-3">GTK Styles and Fonts</span>. Setați 'GTK Styles' să folosească 'Clearlooks' și având 'GTK Fonts' setat să folosească 'KDE fonts' <span class="highlight-3">sau </span> experimentați cu diverse opțiuni pentru a vă satisface preferințle.</p>
+
+							<p>Astfel S-AR PUTEA înlătura problemele legate de <i>font rendering</i> în aplicațiile gtk </p>
+	</div>
+	<div class="divider" id="cups">
+			<h2>CUPS</h2>
+							<p>KDE deţine o întreagă secţiune în KDE help, totuşi, de multe ori <i>dist-upgrade</i> face ca <i>cups</i> să se manifeste ciudat, iată o soluţie cunoscută:</p>
+
+<pre>
+modprobe lp
+echo lp >> /etc/modules
+apt-get remove --purge cupsys cups
+apt-get install cups
+	SAU
+apt-get install cups cups-driver-gutenprint hplip
+</pre>
+							<p>Asiguraţi-vă că rulează CUPS:</p>
+<pre>
+/etc/init.d/cups restart
+</pre>
+							<p> Apoi într-un web browser: </p>
+<pre>
+http://localhost:631
+</pre>
+							<p>Un alt fapt se întâmplă când setaţi CUPS prin metoda GUI (grafică), vi se va afişa o fereastră de dialog cerând să introduceţi parola, această fereastră având deja scris numele dumneavoastră de utilizator iar dacă scrieţi parola de utilizator nu va funcţiona. Ceea ce trebuie să faceţi este să schimbaţi numele de utilizator în  <span class="highlight-2">root</span> iar mai departe scrieţi <span class="highlight-2">parola de <i>root</i></span>.</p>
+
+							<p><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/databaseintro">The OpenPrinting database</a> conține o bogată gamă de informații specifice pentru diverse imprimante, împreună cu amănunte despre drivere, driver-ele în sine, specificațiile de bază și diferite seturi cu unelte de configurare asociate lor. </p>
+	</div>
+	<div class="divider" id="sound">
+			<h2>Sunetul în siduction</h2>
+							<p><span class="highlight-3">Sunetul în siduction este <i>'muted'</i> implicit.</span></p>
+
+							<p>Versiunea KDE folosește <i>Kmix</i> iar XFCE folosește <i>Mixer</i>.</p>
+
+							<p>De fapt este doar o chestiune de dat click pe icon-ul sound icon în taskbar și debifați în căsuța <i>'Mute'</i>.</p>
+
+					<h6>Kmix</h6>
+							<p>În <i>Kmix</i> veți avea nevoie să activați opțiunile preferate pentru <i>channel options</i>, <span class="highlight-3">Kmix ->Setting ->Configure Channels.</span> Sau într-un terminal:</p>
+<pre>
+$ kmix
+</pre>
+
+					<h6>XFCE</h6>
+
+							<p>În XFCE rulați aplicația mixer și adăugați unele controale via <span class="highlight-3"> Multimedia ->Mixer</span> și click pe căsuța <span class="highlight-3">Select Controls.</span> Sau într-un terminal:</p>
+<pre>
+$ xfce4-mixer
+</pre>
+
+					<h3>Alsamixer</h3>
+
+							<p>Dacă preferați utilizarea <i>Alsamixer</i>, acesta este în pachetul <i>alsa-utils</i>:</p>
+<pre>
+apt-get update
+apt-get install alsa-utils
+exit
+</pre>
+							 <p>Faceți setările preferate ca <span class="highlight-2">$user</span> dintr-un terminal:</p>
+<pre>
+$ alsamixer
+</pre>
+
+							  <!--p><a href='http://sidux.com/index.php?module=Wikula&amp;tag=SoundMaster'> Vezi și pe wiki.</a></p> -->
+
+	</div>
+
+			<div id="rev">Content last revised 20/04/2011 0830 UTC</div>
+
+</div>
+</body>
+</html>
