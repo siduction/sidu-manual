@@ -317,353 +317,118 @@
 <!-- menu-en ends here --> </div><!--/htdig_noindex-->
 <div id="main-page">
 	<div class="divider" id="rolling">
-		<h2 id="top-header">Rolling Notes</h2>
+		
+<div id="main-page">
+	<div class="divider" id="rolling">
+		<h2 id="top-header">Note de versiune curentă</h2>
 
-							<p><span class="highlight-3">This page is a summary of the Release Notes and will only be updated after each release. Read the full Release Notes on <a href="http://siduction.org">siduction.org</a></span>, the <span class="highlight-3">Live ISO</span> or <span class="highlight-3">apt-get install siduction-releasenotes</span>.</p>
+							<p><span class="highlight-3">Această pagină reprezintă un sumar pentru Note de Versiune Curentă şi va fi actualizată la fiecare nouă versiune . Textul complet al Notelor de Versiune Curentă se află la <a href="http://siduction.org">siduction.org</a></span>, pentru a le instala <span class="highlight-3">folosiţi</span> or <span class="highlight-3">apt-get install siduction-releasenotes</span>.</p>
 
-		<h2>Release notes for siduction 2011-03 Πόνος - Ponos</h2>
-
-				<p>
-					New features in siduction 2011-03 &quot;Πόνος&quot; are in particular kernel 3.1 and numerous integration and stabilisation fixes.
-					Special focus has been cast upon improving the system compatibility with new hardware platforms and various corner cases.
-					Kernel 3.1 doesn't only improve and stabilise hardware support for newer devices, it also improves latency and general system performance, particularly vastly improved I/O scheduling for lvm2/ mdadm on SSDs.
-				</p>
-
-				<p>
-					Among the new features are inital XEN dom0 and PCI passthrough support as well as nested virtualization for kvm on intel and amd CPUs.
-					The graphics arena provides improved support for Intel sandy bridge graphics (HD2000/ HD3000) and for AMD llano graphics, just like nouveau starting to provide basic support for the GeForce 4xx/ 5xx series and bringing 3d capabilities to selected chipsets.
-					Subsystem support for DVB-T2 devices and the first devices is now available.
-				</p>
-
-				<p>
-					The networking subsystem now offers wake on wlan support (WoWLAN) and support for various new RealTek and Broadcom devices.
-				</p>
-
-				<p>
-					GPT and UEFI reliability have been improved, which allows harddisks exceeding 2 TiB and their use for booting on new systems using UEFI instead of the traditional PC-BIOS.
-				</p>
-
-				<p>
-					As usual, a large number of individual functionality enhancements and bugfixes have been applied to the full package line up and siduction's own packages, in order to improve the general distribution infrastructure.
-					The past months have allowed us to take special care of the small aspects in many packages, to improve general policy compliance and functionality.
-				</p>
-
-				<p>
-					We'd like to thank our sponsor <a href="http://www.webtropia.com/?o_ref=siduction">Webtropia</a> (part of myLoc managed IT AG), who provides 3 dedicated servers for our development&ndash; and hosting infrastructure and are looking forward to a lasting and successful co-operation with this fine hosting business.
-					With the new servers from <a href="http://www.myloc.de/">myLoc managed IT AG</a> we are finally able to have proper technical solutions for our needs, e.g. fully separated hardware for fast kernel- and ISO-building, and an extra server for running all our other sites in virtual machines (lab.siduction.org, manual.siduction.org, etc.).
-					All our servers are running our own server version of siduction.
-				</p>
-
-				<p>
-					Our special thanks go to the siduction art- and manual teams and especially <a href="http://www.webtropia.com/?o_ref=siduction">webtropia.com</a> and all <a href="cd-dl-burning-ro.htm#download-siduction">mirror</a> hosters for their efforts regarding siduction.
-				</p>
-			</div>
-	   <div class="divider" id="whats-new">
-		<h2>Now to the interesting topics, like what's on the menu for now:</h2>
-				<ul>
-					<li>Debian sid, as of 2011-12-31.</li>
-					<li>kernel 3.1.6 (smp, hard preemption).</li>
-					<li>xserver-xorg-core 1.11.2.902.</li>
-					<li>enable KMS support for ATi, Intel and nVidia based graphics chipsets.</li>
-					<li>DRI (3d) support for ATi Radeon chipsets up to r7xx (refer to <a href="nf-firm-ro.htm">non-free sources and Drivers</a>).</li>
-					<li>KDE 4.6.5 (en + de).</li>
-					<li>Iceweasel 9.0.1</li>
-					<li>new, SVG based, art theme created by the siduction art team.</li>
-
-					<li><a href="file:///usr/share/siduction-manual/index.html">offline manual</a> for <a href="file:///usr/share/siduction-manual/en/welcome-ro.htm">en</a> + <a href="file:///usr/share/siduction-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http://manual.siduction.org/">http://manual.siduction.org/</a> and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
-
-					<li>many changes for the manual.</li>
-					<li>ath5k support for 54/ "108" MBit/s Atheros wlan cards (AR2425, AR5210, AR5211, AR5212, AR5213 and AR5414).</li>
-					<li>ath9k support for 802.11n Atheros wlan cards (AR5418+AR5133, AR5416+AR5133, AR5416+AR2133, AR9160, AR9280, AR9281 and AR9285).</li>
-					<li>ath9k_htc support for 802.11n Atheros USB wlan cards (AR7010/ AR9271).</li>
-					<li>carl9170 support for 802.11n Atheros USB wlan cards (AR9170 &quot;otus&quot;), now supporting HT/ aggregation and AP mode.</li>
-					<li>
-
-						b43/ b43legacy support for Broadcom wlan cards.<br />
-						<a href="http://www.ing.unibs.it/openfwwf/">OpenFWWF 5.2</a> opensource firmware for the following Broadcom AirForce 802.11b/g wireless cards:
-						<ul>
-							<li>BCM4306</li>
-							<li>BCM4311 revision 1</li>
-							<li>BCM4318</li>
-
-							<li>BCM4320</li>
-						</ul>
-						experimental support for LP-PHY (BCM4312) and SSB based 802.11n (BCM4321, BCM4322) devices, non-free firmware images required.
-					</li>
-
-					<li>iwlagn support for IPW 3945/ 4965 and the IEEE 802.11 a/b/g/n part of the Intel Wireless WiFi Link 1000/ 2000/ 5xxxAGN/ 6000/ 6050 family.</li>
-					<li>iwmc3200wifi support for Intel Wireless Multicomm 802.11.</li>
-					<li>rt2x00 support for RaLink rt2400, rt2500, rt2570, rt61 and rt73 802.11b/g cards.</li>
-					<li>support for RaLink rt27x0, rt28x0, rt30x0, rt33xx, rt35xx, rt53xx 802.11b/g/n PCI/ USB cards through rt2x00.</li>
-					<li>support for RealTek RTL8180L/ RTL8185 PCI/ cardbus and RTL8187/ RTL8187B USB wlan cards.</li>
-					<li>support for RealTek RTL8188CE/ RTL8192CE, RTL8188DE/ RTL8192DE, RTL8188SE/ RTL8192SE (PCIe) and RTL8188CU/ RTL8192CU (USB) 802.11n wlan cards.</li>
-					<li>memtest86+.</li>
-					<li>OpenJDK 6 as part of the kde-full variant.</li>
-					<li>support kvm (Kernel-based Virtual Machine) for kde-full; kvm depends on hardware virtualisation support (AMD pacifica virtualisation extensions &quot;svm&quot; or Intel IVT (vanderpool) virtualisation extensions &quot;vmx&quot;)</li>
-					<li>access point support for many mac80211 based wlan cards through nl80211 and hostapd (optional).</li>
-					<li>client support for network booting over PXE/ NBD.</li>
-					<li>re-add usbutils.</li>
-					<li>make sure that polkit-kde-1 is available on KDE builds.</li>
-					<li>support for multi-tuner DVB cards.</li>
-					<li>fix gpm (tty mouse support) for kernel 3.x.</li>
-					<li>transition from /var/run/ to /run/, /var/lock/ to /run/lock/ and /lib/init/rw/ to /run/.</li>
-					<li>replace separate mtab handling by using /proc/mounts directly.</li>
-					<li>stability and compatibility improvements for USB and system installer.</li>
-					<li>fixes for ext4 backed persistency.</li>
-					<li>employ KDE's &quot;Air theme&quot;.</li>
-					<li>provide easy UEFI detection.</li>
-					<li>install iw to configure mac80211/ cfg80211 based wlan cards on default.</li>
-					<li>simplify and fix md5sum cheatcode on the live media.</li>
-					<li>make dmakms handling more robust.</li>
-					<li>fix broken DHCP configuration, which tends to overwrite the configured hostname.</li>
-					<li>adapt nbd based booting/ installation options to upstream changes.</li>
-					<li>welcome Ukrainian to the list of supported languages.</li>
-				</ul>
-			</div>
-			<div class="divider" id="faq">
-				<h2>Frequently asked questions</h2>
-
-				<h3>Installation</h3>
-				<p>
-
-					<b>It is recommended to set keymaps, locales and timezone before booting the live system to be installed, by selecting them from the boot menu [F2], [F3].</b>
-					This way, locale settings propagate to all required places for the installed system and don't require cumbersome changes at several places.
-				</p>
-
-				<h3>Kernel based Mode Setting (KMS) and intel, nvidia and radeon graphics</h3>
-				<p>
-					KMS support is required by xserver-xorg-video-intel, which means kernel parameters like &quot;i915.modeset=0&quot; or &quot;vga=791&quot; are no longer valid and actively break starting X on intel graphics cards.
-					Given that i915/ xserver-xorg-video-intel doesn't require any kind of firmware, there should no longer be KMS related bugs in relation to intel graphics.
-				</p>
-
-				<p>
-					For KMS to function in combination with ATi/ AMD radeon graphics, firmware images (firmware-linux-nonfree, see <a href="gpu-ro.htm#ati-3d">AMD/ATI 3D drivers</a>) are required, which can't be shipped on siduction live media, while X.org should transparently fall back to vesa on problematic cards, special attention might be needed in rare cases.
-					If X doesn't manage to start on ATi/ AMD radeon graphics cards, it might help to supply &quot;radeon.modeset=0&quot; as boot option for the live CD and to install the required firmware package &quot;<a href="gpu-ro.htm#ati-3d">AMD/ATI 3D drivers</a>&quot; on the live system, before installing to the harddisk.
-					Once firmware-linux-nonfree is installed, kernel parameters like &quot;radeon.modeset=0&quot; or &quot;vga=791&quot; should not be used anymore, as they might interfere with KMS operations, which are needed for radeon to work properly.
-				</p>
-
-				<p>
-					Nouveau doesn't require any kind of firmware and supports KMS natively, framebuffer kernel parameters like &quot;vga=791&quot; are no longer valid and break starting X on nVidia graphics cards.
-				</p>
-
-				<h3>grub2</h3>
-				<p>
-					While grub2 offers increased flexibility for installations, like UEFI support (optional), new filesystems (ext4) or advanced installation options like software RAID (mdadm), LVM2 and improved detection capabilities for other distributions and operating systems, it is limited to a textmode menu.
-					A new theming effort is currently under development and may become available in the future.<br />
-					
-					Even though support for plain wallpapers would be already supported by grub2, it is still fragile and prolongs the system boot.<br />
-
-					Internally the configuration system for grub2 uses scripts snippets under /etc/grub.d/ to create its configuration file &quot;grub.cfg&quot; in a way that allows many self updating features, such as automating fromiso support with the help of &quot;grub2-fll-fromiso&quot; (optional).
-				</p>
-
-		<h3>isohybrid</h3>
-				<p>
-					With isolinux supporting gfxboot, it is possible to use isohybrid, which allows writing an ISO directly to USB storage or sd/ sdhc/ mmc memory sticks to make these bootable.<br />
-					isohybrid adds an MBR to the ISO and sets up a partition table with one active entry, the partition containing the ISO.<br />
-					This allows writing siduction ISOs directly to USB storage devices of sdhc memory cards in addition to the well known possibility of using &quot;install-siduction-to-usb&quot; (install-usb-gui).<br />
-					This option is particularly useful if there is no existing siduction installation available and if an installation medium needs to be created from another distribution or operating system.<br />
-					It is important to note that this method overwrites the whole USB medium and restricts the available storage to the size of the siduction ISO; install-usb-gui is not subject to these limitations and therefore the recommended option in case an existing siduction system is available.<br />
-					Further partitions can be added to allow access to the unused part of the storage device.
-				</p>
-<pre>
-$cat /path/to/siduction-*.iso &gt; /dev/USB_raw_device_node
-</pre>
-
-				<p>
-					Further information about the siduction install is available from the <a href="http://manual.siduction.org/">siduction manual</a> at <a href="http://manual.siduction.org/en/hd-install-ro.htm">Installation options</a>.
-				</p>
-
-		<h3>Wireless regulatory domain settings</h3>
-				<p>
-
-					The regulatory domain framework for cfg80211 based wlan cards requires crda to allow access to wireless channels above ch11 (2.4 GHz or their 5 GHz equivalents), without crda only the "world domain" (channel 1-11) is available.
-				</p>
-<pre>
-apt-get update 
-apt-get install crda
-</pre>
-		<h3>Network booting siduction</h3>
-				<p>
-					Network booting siduction over PXE (Preboot Execution Environment) and NBD (Network Block Device) is supported, the required settings can be configured from within the boot menu [F4].
-					Instructions about how to set up an example PXE+NBD boot server can be obtained at <a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=9">siduction netboot introduction</a> and in the manual; <a href="nbdboot-ro.htm#nbd1">Booting siduction over a network</a>.
-				</p>
-
-				<h3>UEFI booting</h3>
-				<p>
-					Preliminary support for booting with UEFI has been added to the amd64 editions.
-					While the installer GUI has not been finalised yet, the bootloader will be an EFI program installed to /efi/siduction within your &quot;EFI system partition&quot; and mounted below /boot/efi/ on your installed system, provided the following conditions are met:
-				</p>
-
-				<ul>
-					<li>x86-64/ EM64T system (amd64).</li>
-					<li>booted using UEFI, this is apparent from the plain white/blue grub2 menu, instead of the usual graphical boot menu provided by isolinux for BIOS booting, on the live medium.</li>
-					<li>a vfat formatted EFI system partition on a GPT disk (type EF00) exists on the target system.</li>
-					<li>the install target is not a USB disk.</li>
-				</ul>
-
-				<p>
-					At the moment siduction only offers UEFI booting for its 64 bit edition (amd64), 32 bit UEFI (such as older Apple systems) is currently not supported.
-					Multiboot with other 64 bit operating systems should be possible, but could not be tested yet.
-				</p>
-
-				<h3>UEFI bootable removable devices</h3>
-				<p>
-					In order to create a UEFI bootable device, such as a USB stick, the contents of the siduction ISO can be extracted to a vfat formatted partition and the partition marked as bootable.
-					Optionally this removable medium can also be made compatible with PC-BIOS booting by installing a traditional bootsector in addition to the EFI bootloader (assuming /dev/sdz1 to be the target partition on the USB stick).
-				</p>
-
-<pre>
-syslinux -i -d /boot/isolinux /dev/sdz1
-install-mbr /dev/sdz
-</pre>
-
-				<h3>Localisation</h3>
-				<p>
-					A special feature of kde-full releases is the ability to select other languages than German or US English from the grub menu (F4), which automatically installs localisations for the desktop and many applications while booting.
-					This ensures they are also present after installing siduction, while only installing the required languages for the given system.
-					The amount of memory required for this feature depends on the language and siduction may refuse to install the given language packs automatically with insufficient RAM and the boot sequence  will be continued in english language but with the desired locales-settings (currency, date/ time format, keyboard charsets).
-					1 GB memory or more is supposed to be safe for all supported languages, which are:
-				</p>
-
-				<ul>
-					<li>Czech</li>
-					<li>Danish</li>
-					<li>Dutch</li>
-					<li>English (AU, GB, US)</li>
-					<li>French</li>
-					<li>German</li>
-					<li>Italian</li>
-					<li>Japanese</li>
-					<li>Polish</li>
-					<li>Portuguese (BR, PT)</li>
-					<li>Romanian</li>
-					<li>Russian</li>
-					<li>Spanish</li>
-					<li>Ukrainian</li>
-				</ul>
-
-				<p>
-
-					The language selection depends on the availability of siduction-manual translations, get involved to add your language.
-					Levels of up-to-date translation completeness of the following languages has dropped below the quorum for inclusion at this moment:
-				</p>
-
-				<ul>
-					<li>Bulgarian</li>
-					<li>Croatian</li>
-					<li>Greek</li>
-					<li>Hungarian</li>
-				</ul>
-
-				<p>
-					Additional help is urgently needed for these languages to bring the translations up to date for the language concerned.
-				</p>
-
-
-	</div>
-	<div class="divider" id="upgrade">
-			<h2>Hints for Upgraders:</h2>
-				<p>
-					siduction tries hard to provide seamless upgrade path for debian and siduction' own packages, nevertheless a few things remain that could be improved with manual interaction.
-				</p>
-
-			<h3>nouveau</h3>
-
-				<p>
-					xserver-xorg-video-nv has been removed from Debian, which means xserver-xorg-video-nouveau now takes its place.
-					Therefore we recommend users of nvidia graphics cards to purge xserver-xorg-video-nv, and install xserver-xorg-video-nouveau; configuration changes should not be required.
-					On selected chipset generations, basic video and 3d acceleration is available through xserver-xorg-video-nouveau and libgl1-mesa-dri-experimental.
-				</p>
-<pre>
-apt-get install xserver-xorg-video-nouveau libgl1-mesa-dri-experimental
-</pre>
-
-				<h3>KDE 4.6 and XFCE 4.8</h3>
-				<p>
-					Upgrading to KDE 4.6 or XFCE 4.8 might not pull all required packages in certain corner cases, please make sure to install them manually.
-					Without these packages, powermanagement, mounting of removable media and applying system wide configuration changes in systemsettings only work partially.
-				</p>
-				<p>
-					For KDE:
-				</p>
-<pre>
-apt-get install polkit-kde-1 udisks upower
-</pre>
-				 <p>
-					For XFCE:
-				 </p>
-<pre>
-apt-get install policykit-1 policykit-1-gnome udisks upower
-</pre>
-
-			<h3>Obsolete packages</h3>
-				<p>
-					As part of the continuing development of siduction, a number of packages have been replaced by better alternatives or become redundant.
-				</p>
-
-				<ul>
-					<li>
-						kaboom<br />
-						Transitional helper for KDE3 &rarr; KDE4 migrations of user configuration, which can be removed after the successful migration.
-					</li>
-
-					<li>
-						modconf<br />
-						This package has been removed from Debian after &quot;squeeze&quot; and doesn't serve any real purpose these days.
-					</li>
-				</ul>
-
-				<p>
-					Transitional packages and obsolete libraries can often be identified by &quot;deborphan&quot;.
-					While this tool is very convenient for ongoing system cleanup, its results should always be checked before using it as input for removals.
-				</p>
-
-<pre>
-$ deborphan
-</pre>
-
-							<p>The following command is able to find packages not available from any active apt repository and may hint at obsolete packages, be careful about manually installed packages though. apt-show-versions is a separate package and isn't necessarily preinstalled. </p>
-
-<pre>
-$ apt-show-versions | awk '/No available version in archive/{print $1}'
-</pre>
-			</div>
-			<div class="divider" id="howto-involve">
-				<h2>How to get involved</h2>
-				<p>
-					Getting involved in siduction is easy, just join us at our <a href="http://siduction.org/index.php?name=PNphpBB2">Forum</a> or even better on IRC (irc.oftc.net, port 6667, channel <a href="irc://irc.oftc.net:6667/#siduction">#siduction</a>) and discuss your patches/ proposals or additions.
-				</p>
-
-				<p>
-					We will gladly discuss any dfsg-free patches and contributions, especially regarding alternative window managers (GNOME, LXDE), general cleanup tasks or translations/ localisations.
-				</p>
-			</div>
-	
-			<div class="divider" id="roadmap">
-				<h2>Roadmap:</h2>
-				<p>
-					Please understand that the following roadmap is a rough estimate regarding our release schedule and is affected by the status of upstream Debian sid, major system components like X.org, KDE, the linux kernel and our own developments and is subject to changes.
-				</p>
-	
-				<ul>
-					<li>
-						Θάνατος - Thánatos
-					</li>
-
-					<li>
-						Ἑσπερίδες - Hesperides
-					</li>
-
-					<li>
-						Νέμεσις - Nemesis
-					</li>
-
-					<li>
-						Φιλότης - Philotes
-					</li>
-				</ul>
-			</div>	
-			<div id="rev">Content last revised 01/01/2012 1230 UTC </div>
+<h1>Note de Versiune Curentă pentru prima versiune de reparaţie a siduction 2012.1 - Desperado</h1>
+<p>
+Noi astăzi am realizat prima versiune de reparaţie a siduction 2012.1 Desperado, numită siduction 2012.1.1 Desperado Reloaded. În afara unor mici îmbunătăţiri principalul motiv pentru acestă versiune de reparaţie a fost includerea KDE SC 4.8.4.</p>
+<p>siduction 2012.1.1 Desperado Reloaded poate fi furnizat cu 3 medii desktop: KDE SC, XFCE and LXDE,
+toate în variantele 32 şi 64 de biţi. LXDE încape pe un  CD, KDE SC şi XFCE nu. Este mai potrivită mutarea acestora pe un device USB-device cu <i>dd</i> sau <i>cat</i> pentru a le instala bineânţeles dacă hardware+ul dvs  supportă boot-area de pe USB.
+(vă rugăm vedeţi <a href="http://manual.siduction.org/ro/hd-ins-opts-oos-ro.htm#raw-usb">manualul nostru.</a>)</p>
+<p>ISO-urile realizate au folosit <i>Debian Unstable</i>, cunscut sub numele de <i>sid</i>, din 2012-06-24.
+Pe lângă pachetele debian am adăugat câteva pachete şi scripturi utile, programul nostru de instalare şi un kernel particularizat linux-kernel 3.4.4, împreună cu serverul grafic XServer 1.12.1.</p>
+<p>Cum Debian 7 numit Wheezy va intra pe 30 iunie in freeze, din experienţă ştim că va dura aproximativ 8 luni, profităm de oportunitate pentru a prezenta utilizatorilor noştrii o nouă versiune de siduction. Aceasta are sens deoarece KDE SC 4.8.4 este acum în <em>unstable</em> în întregime. Singura excepţie este <em>kdepim</em>. Echipa Debian-KDE Team a hotărât să folosească  Kmail 4.4.11 în locul lui Kmail2. Pachetul KDE SC pe care îl furnizăm se pare că va fi folosit pentru Wheezy  .</p>
+<p>O altă schimbare constă în faptul că am hotărât să folosim pentru <i>akonadi</i> ca bază de date în loc de <i>mysql</i>  <i>sqlite</i>, deoarece considerăm că, mysql este prea mult pentru aceast scop.</p>
+<h4>Ce mai este nou?</h4>
+<p>* Pentru XFCE şi LXDE au fost adăugate sau substituite anumite aplicaţii. Pentru LXDE, <i>Xnoise</i> înlocuieşte <i>audacious</i> şi
+<i>gnome-mplayer</i>.</p>
+<p>* Pentru XFCE am adăugat <i>xfce4-powermanager.</i></p>
+<p>* Manualul siduction Bluewater-Manual, în afară de Engleză şi Germană, este disponibil şi în Poloneză precum şi Italiană. 
+Traducătorii/supervizorii pentru alte limbi sunt bineveniţi pe canalul de IRC #siduction-doc.</p>
+<h4>Resursele noastre</h4>
+<p>
+<a href="http://siduction.org">Forum</a>
+<br />
+<a href="http://news.siduction.org">Blog</a>
+<br />
+<a href="http://git.siduction.org">Arhiva Git</a>
+<br />
+<a href="http://packages.siduction.org">Repositories</a>
+<br />
+<a href="http://siduction.org/index.php?module=news">Noutăţile Siducţion</a>
+<br />
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug-Tracker</a><br />
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">Harta site-ului siduction.org</a><br />
+</p>
+<p>Puteţi obţine ajutor  pe forum cât şi pe IRC. Canalele pe serverul
+OFTC-Network sunt <i>#siduction</i> pentru limba engleză şi <i>#siduction-core</i> dacă doriţi să participaţi în cadrul proiectului. Pe desktop-ul dumneavoastră există deasemenea o iconiţă care vă duce pe canalul de irc potrivit pentru a fi ajutaţi.
+</p>
+<p>Pentru a fi posibil ca siduction să fie folosit ca o ramură de test pentru Debian, ne introducem propriul bug-tracker. Utilizatorii care ştiu să trimită către Debian bug-uri în mod direct vor folosi Debian BTS (Bug Tracking System). Pentru utilizatorii nefamiliarizaţi cu Debian BTS am introdus aplicaţia <i>reportbug-ng</i>. 
+Lăsaţi-mă să vă explic cum puteţi ajuta Siduction şi Debian raportând bug-uri.<br />
+Dacă consideraţi că aţi găsit un bug în un pachet debian, vă rugăm folosiţi  <i>reportbug-ng</i> şi puneţi numele pachetului în linia de adrese din partea superioară. Aplicaţia va căuta dacă exista bug-uri deja raportate pentru acel pachet şi dacă există vi le va arăta. Acum este timpul de a vedea dacă bug-ul dvs a fost deja raportat. Dacă este poate aveţi ceva relevant de adăugat poate chiar un patch pentru a-l corecta. Dacă nu atunci de data aceasta aţi terminat. Dacă bug-ul nu a fost raportat şi nu sunteţi familiarizat cu Debian BTS atunci puteţi folosi Bug Tracker-ul nostru
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">.</a> 
+Aceasta este valabilă şi pentru pachetele siduction. Vom sorta bugu-rile pentru dumneavoastră şi le vom introduce la locul potrivit dacă bug-ul poate fi reprodus. Pentru mai multe informaţii depre  bug-tracker căutaţi pe forum. Dacă toate acestea par prea complicate pentru dvs. atunci trimiteţi bug-ul direct pe forum.</p>
+<h4>Numele Versiunii</h4>
+<p>
+Dacă vă âîntrebaţi de unde provine numele 'Desperado' pentru aceasta versiune aflaţi atunci că provine de la un cântec faimos al formaţiei Eagles din 1973. cântec ce  se află pe al doilea album al formaţiei şi care a intrat în istoria muzicii rock. Printre altele acest nume a reprezentat opţiunea dvs.</p>
+<p> Vom încerca să terminăm aceast RC cu ajutorul vostru în aproximativ o săptămână, şi vă rugăm raportaţi bug-urile găsite pe forum .</p>
+<p>Ca de obicei avem nevoie de developeri şi contributori, aceştia sunt bineveniţi pe  IRC în <i>#siduction-core</i> pentru a ne spune ce pot face pentru noi.</p>
+<h4>Atenţie:</h4>
+<p>Site-ul nostru nu este încă terminat. Realizarea sa pe baza sablonului nostru se pare că este o sarcină mai dificilă decât am crezut. Lipsa de timp nu prea ajută aici. Vă vom ţine la curent.</p> 
+<h4>Ponturi Hardware</h4>
+<p>Dacă aveţi o placă video ATI Radeon, vă rugăm folosiţi opţiunea failsafe, la pornirea mediului LIVE. Această opţiune va adăuga <i>radeon.modeset=0 xmodule=vesa</i> ca parametrii de boot pentru Kernel, şi astfel veţi putea porni în mod grafic serverul X. Neapărat instalaţi înaintea pornirii procesului de instalare firmware-linux-nonfree.
+Pentru aceasta, vă rugăm deschideţi ca utilizatorul root<i>/etc/apt/sources.list.d/debian.list</i> cu editorul dvs. favorit şi adăugaţi <i>contrib non-free</i> la sfârşitul primei linii. Salvaţi şi apoi:</p>
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre>
+<p>Dacă veţi instala sistemul de operare atunci şi firmware-linux-nonfree va fi instalat şi aceasta va permite să reporniţi după instalare computerul. În absenţa firmware-linux-nonfree după instalare veţi obţine un ecran pe care nu veţi putea distinge nimic folositor. Atenţie ! Dacă veţi reporni sistemul inainte de a porni programul de instalare al sistemului de operare toate modificările făcute vor fi pierdute.</p>
+<p>Dacă sistemul dumneavoastră are o placă de reţea wireless network, probabil că aceasta va funţiona de la început cu driverele incluse. Puteţi folosi scriptul <i>fw-detect</i> pentru a obţine informaţii despre driverul plăcii dvs. wireless. Unele componente ale sistemului dvs nu funcţionează corect făra firmware-ul adecvat.Programul de instalare vă va informa despre firmware-ul lipsă şi vă va ghida pentru instalarea acestuia.</p>
+<br/>
+<h3>Mulţumiri pentru siduction 2012.1.1</h3>
+<h4>Echipa Nucleu:</h4>
+<p>Alf Gaida (agaida)
+<br />
+Axel Beu (ab)
+<br />
+Dinko Sabo (vibora)
+<br />
+Ferdinand Thommes (devil)
+<br />
+Holger Wagemann (holgerw)
+<br />
+Markus Meyer (coruja)
+<br />
+Nikolas Poniros (edhunter)
+<br />
+Stefan Tell (cryptosteve)
+<br />
+Torsten Wohlfarth (towo)
+<br /></p>
+<h4>Echipa de Graficieni:</h4>
+<p>Hendrik Lehmbruch (hendrikl)
+<br />
+Sven Strohmeier (se7en)
+<br /></p>
+<h4>Cod, Idei şi Voie bună:</h4>
+<p>ayla<br />
+Lars Lünnemann (Spike_DE)<br />
+J. Hamatoma (hama)<br />
+Marco Schmidt (anitainer)<br />
+Michael Singer (bluelupo)<br />
+Markus Schimpf (arno911)<br />
+Otto S.(otto)<br />
+Paulo P. (prp5627)<br />
+Peter Ziegler (harley-peter)<br />
+Robert Ulatowski (quidam77) <br />
+Roland Lang (vindeliker)<br />
+Robert Ulatowski (quidam77) <br />
+Tom Wroblewski (GoinEasy9)<br />
+zeppo<br />
+<br /><br /></p>
+<h3>Mai Mulţumim!</h3>
+<p>Mulţumim deasemenea tuturor celor ce au testat cât şi celor ce au ajutat în orice alt fel. Implicarea utilizatorilor reprezintă realizarea noastră majoră.</p>
+<p>Dorim deasemenea să ne exprimăm multumirile lui Debian şi sidux/aptosid deoarece au făcut posibil drumul pe care mergem.</p>
+<p>Şi acum bucuraţi-vă de noul sistem de operare!<br /><br />
+Din partea echipei siduction:<br />
+<br />
+Ferdinand Thommes</p>
 </div>
+</div> <!-- text_area -->
+</div> <!-- content -->
+<div id="rev">Content last revised 30/11/2012 0235 UTC</div>
 </body>
 </html>
+	
