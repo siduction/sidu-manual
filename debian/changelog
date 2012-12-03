@@ -1,3 +1,9 @@
+sidu-manual (0.8) UNRELEASED; urgency=low
+
+  * changes to welcome-ro.htm
+
+ -- Ovidiu Angelescu <convbsd@siduction.net>  Mon, 03 Dec 2012 18:40:25 +0200
+
 sidu-manual (0.7) UNRELEASED; urgency=low
 
   * synced with latest romanian RC2 release_notes
