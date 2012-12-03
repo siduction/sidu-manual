@@ -307,53 +307,56 @@
 				  </li>
 			    </ul>
 		</li>
-<li><a></a></li>
+
 </ul>
 
 <div id="menu-header-5">
 <a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
 </div>
 
-<!-- menu-en ends here --> </div><!--/htdig_noindex-->
-<div id="main-page">
-	<div class="divider" id="rolling">
+<!-- menu-en ends here --> </div>
 		
 <div id="main-page">
 	<div class="divider" id="rolling">
 		<h2 id="top-header">Note de versiune curentă</h2>
 
-							<p><span class="highlight-3">Această pagină reprezintă un sumar pentru Note de Versiune Curentă şi va fi actualizată la fiecare nouă versiune . Textul complet al Notelor de Versiune Curentă se află la <a href="http://siduction.org">siduction.org</a></span>, pentru a le instala <span class="highlight-3">folosiţi</span> or <span class="highlight-3">apt-get install siduction-releasenotes</span>.</p>
+							<p><span class="highlight-3">Această pagină reprezintă un sumar pentru Note de Versiune Curentă şi va fi actualizată la fiecare nouă versiune . Textul complet al Notelor de Versiune Curentă se află la <a href="http://siduction.org">siduction.org</a></span>, pentru a le instala <span class="highlight-3">folosiţi</span> <span class="highlight-3">apt-get install siduction-releasenotes</span>.</p>
 
-<h1>Note de Versiune Curentă pentru prima versiune de reparaţie a siduction 2012.1 - Desperado</h1>
+<h1>Note de Versiune Curentă pentru siduction 2012.2 RC2 - Riders on the Storm</h1>
+
+<p>Suntem mândri să vă prezentăm a doua versiune de test a siduction 2012.2 - <i>Riders on the Storm</i>. Siduction este o distribuţie linux  care are la bază Debian's instabil (unstable) şi vom încerca să facem o versiune nouă de patru ori pe an. Vă rugăm raportaţi orice bug descoperit în această versiune  de test (RC) pe forumul nostru sau pe <a href="http://chili.siduction.org/projects/siduction/issues/new">Chili</a>.</p>
+<p>Siduction 2012.2 vine cu 4 Medii Desktop: KDE SC, XFCE, LXDE şi Razor-qt, toate în variantele 32 şi 64 de biţi. Razor-Qt este ultimul mediu desktop care s-a alăturat ciclului nostru normal de vesiuni după ce a avut o versiune de dezvoltare (dev-release) în vară.</p> 
+<p>ISO-urile realizate au folosit <i>Debian Unstable</i>, cunscut sub numele de <i>sid</i>, din 2012-12-02. Pe lângă pachetele debian am adăugat câteva pachete şi scripturi proprii utile, programul nostru de instalare şi un kernel particularizat, linux-kernel 3.6-8, împreună cu serverul grafic XServer 1.12.4-4.</p>
+<p>Cum Debian 7 numit Wheezy a intrat pe 30 iunie in freeze, şi stim din experienţă că aceasta va mai dura, profităm de oportunitate pentru a prezenta utilizatorilor noştrii o nouă versiune de siduction.</p>
+<h3>Ce este nou?</h3>
+<p>În afară de pachetele actualizate şi o nouă grafică furnizăm anumite noutăţi, unele vizibile, altele ascunse.</p>
+<p>Am reparat bugurile apărute în prima versiune de test (RC1).</p>
+<ul>
+<li>Manualul bluewater manual este acum disponibil şi în limba română, închide bugul #998</li>
+<li><i>fw-detect</i> funcţionează conform aşteptărilor când instalaţi firmware proprietar (non-free).</li>
+<li>Crearea <i>sources.list</i> în procesul de construire a ISO-urilor, închide bug-ul #997</li>
+<li>Ultima versiune de <i>wbar</i> şi <i>wbar-config</i> aufost adăugate, pentru a închide bug-ul #978</li>
+<li>Am adăugat link-ul către firmware-ul corect pentru device-urile AR7010+AR9287 în <i>fw-detect</i></li>
+<li>Am schimbat meniul de start în  KDE pentru a fi folosit kickoff în locul meniului clasic</li>
+<li>Am modificat VG-ul implicit de 4 GB pentru LVM, închide bug-ul #974 </li>
+<li>Am adăugat <i>ntfs-config</i> pentru a configura simplu accesul la citire scriere pe partiţiile ntfs</li>
+</ul>
+<p>Prima versiune Razor-qt apărută în vară, ca o versiune în dezvoltare a devenit acum una din versiunile noastre regulate. Echipa Razor-qt a realizat versiunea <a href="http://news.siduction.org/2012/10/yay-razor-qt-0-5-released/">Razor-qt 0.5.1</a>, versiune pe care am integrat-o în ISO-ul nostru. Mediul Desktop Razor-qt este încă în lucru, dar versiunea 0.5 reprezintă un mare pas înainte.</p>
+<p>XFCE în Debian instabil (unstable), este încă la versiunea 4.8. Pentru această versiune siduction noi am împachetat şi folosit <a href="http://news.siduction.org/2012/10/xfce-4-10-for-siduction/">XFCE 4.10</a>.</p>
+<p>LXDE are două pachete noi: <i>lxpolkit</i>, care reprezintă pachetul propriu polkit al LXDE, şi <i>lxappearance-obconf</i>, care este un plgin de configurare openbox pentru lxappearance.</p>
+<p>Echipa debian-qt-kde a folosit versiunile KDE 4.8.4 apoi 4.8.5 şi apoi 4.8.4-4. Astfel că noi furnizăm 4.8.4-4 care de fapt este 4.8.5.</p>
+<p>Foarte mult timp ne-au luat modificările codului preluat pentru a satisface cerinţele noastre. Am găsit modalitatea de a integra grafică diferită dacă dorim în diferitele medii desktop pentru fiecare versiune siduction şi am îmbunătăţit acest proces. Acum lucrăm la simplificarea realizării manualului pentru a adăuga mai uşor pagini noi. Re scurt <a href="http://chili.siduction.org/projects/siduction/versions/13">am rezolvat109 bug-uri</a> de la ultima versiune siduction, majoritatea implicând rescriere de cod.</p>
+
+<p>În afară de acestea am primit ca donaţie mult doritul webserver de la un membru al echipei core (nucleu) şi l-am configurat corespunzător. Mulţumim foarte mult pentru aceasta.</p>
+<p> Programul de instalare oferă posibilitatea folosirii <i>btrfs</i> ca sistem de fişiere experimental. Fiţi precauţi dacă îl veţi folosi şi salvaţi-va intotdeauna datele.</p>
+<h3>Resursele noastre</h3>
 <p>
-Noi astăzi am realizat prima versiune de reparaţie a siduction 2012.1 Desperado, numită siduction 2012.1.1 Desperado Reloaded. În afara unor mici îmbunătăţiri principalul motiv pentru acestă versiune de reparaţie a fost includerea KDE SC 4.8.4.</p>
-<p>siduction 2012.1.1 Desperado Reloaded poate fi furnizat cu 3 medii desktop: KDE SC, XFCE and LXDE,
-toate în variantele 32 şi 64 de biţi. LXDE încape pe un  CD, KDE SC şi XFCE nu. Este mai potrivită mutarea acestora pe un device USB-device cu <i>dd</i> sau <i>cat</i> pentru a le instala bineânţeles dacă hardware+ul dvs  supportă boot-area de pe USB.
-(vă rugăm vedeţi <a href="http://manual.siduction.org/ro/hd-ins-opts-oos-ro.htm#raw-usb">manualul nostru.</a>)</p>
-<p>ISO-urile realizate au folosit <i>Debian Unstable</i>, cunscut sub numele de <i>sid</i>, din 2012-06-24.
-Pe lângă pachetele debian am adăugat câteva pachete şi scripturi utile, programul nostru de instalare şi un kernel particularizat linux-kernel 3.4.4, împreună cu serverul grafic XServer 1.12.1.</p>
-<p>Cum Debian 7 numit Wheezy va intra pe 30 iunie in freeze, din experienţă ştim că va dura aproximativ 8 luni, profităm de oportunitate pentru a prezenta utilizatorilor noştrii o nouă versiune de siduction. Aceasta are sens deoarece KDE SC 4.8.4 este acum în <em>unstable</em> în întregime. Singura excepţie este <em>kdepim</em>. Echipa Debian-KDE Team a hotărât să folosească  Kmail 4.4.11 în locul lui Kmail2. Pachetul KDE SC pe care îl furnizăm se pare că va fi folosit pentru Wheezy  .</p>
-<p>O altă schimbare constă în faptul că am hotărât să folosim pentru <i>akonadi</i> ca bază de date în loc de <i>mysql</i>  <i>sqlite</i>, deoarece considerăm că, mysql este prea mult pentru aceast scop.</p>
-<h4>Ce mai este nou?</h4>
-<p>* Pentru XFCE şi LXDE au fost adăugate sau substituite anumite aplicaţii. Pentru LXDE, <i>Xnoise</i> înlocuieşte <i>audacious</i> şi
-<i>gnome-mplayer</i>.</p>
-<p>* Pentru XFCE am adăugat <i>xfce4-powermanager.</i></p>
-<p>* Manualul siduction Bluewater-Manual, în afară de Engleză şi Germană, este disponibil şi în Poloneză precum şi Italiană. 
-Traducătorii/supervizorii pentru alte limbi sunt bineveniţi pe canalul de IRC #siduction-doc.</p>
-<h4>Resursele noastre</h4>
-<p>
-<a href="http://siduction.org">Forum</a>
-<br />
-<a href="http://news.siduction.org">Blog</a>
-<br />
-<a href="http://git.siduction.org">Arhiva Git</a>
-<br />
-<a href="http://packages.siduction.org">Repositories</a>
-<br />
-<a href="http://siduction.org/index.php?module=news">Noutăţile Siducţion</a>
-<br />
-<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug-Tracker</a><br />
-<a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">Harta site-ului siduction.org</a><br />
+<a href="http://siduction.org">Forumul siduction</a><br />
+<a href="http://news.siduction.org">Blog-ul siduction</a><br />
+<a href="http://git.siduction.org">Arhiva Git</a><br /> 
+<a href="http://siduction.org/index.php?module=news">Noutăţile siduction</a><br />
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug Tracker-ul siduction</a><br />
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">harta website-ului nostru</a>
 </p>
 <p>Puteţi obţine ajutor  pe forum cât şi pe IRC. Canalele pe serverul
 OFTC-Network sunt <i>#siduction</i> pentru limba engleză şi <i>#siduction-core</i> dacă doriţi să participaţi în cadrul proiectului. Pe desktop-ul dumneavoastră există deasemenea o iconiţă care vă duce pe canalul de irc potrivit pentru a fi ajutaţi.
@@ -362,69 +365,69 @@ OFTC-Network sunt <i>#siduction</i> pentru limba engleză şi <i>#siduction-core
 Lăsaţi-mă să vă explic cum puteţi ajuta Siduction şi Debian raportând bug-uri.<br />
 Dacă consideraţi că aţi găsit un bug în un pachet debian, vă rugăm folosiţi  <i>reportbug-ng</i> şi puneţi numele pachetului în linia de adrese din partea superioară. Aplicaţia va căuta dacă exista bug-uri deja raportate pentru acel pachet şi dacă există vi le va arăta. Acum este timpul de a vedea dacă bug-ul dvs a fost deja raportat. Dacă este poate aveţi ceva relevant de adăugat poate chiar un patch pentru a-l corecta. Dacă nu atunci de data aceasta aţi terminat. Dacă bug-ul nu a fost raportat şi nu sunteţi familiarizat cu Debian BTS atunci puteţi folosi Bug Tracker-ul nostru
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">.</a> 
-Aceasta este valabilă şi pentru pachetele siduction. Vom sorta bugu-rile pentru dumneavoastră şi le vom introduce la locul potrivit dacă bug-ul poate fi reprodus. Pentru mai multe informaţii depre  bug-tracker căutaţi pe forum. Dacă toate acestea par prea complicate pentru dvs. atunci trimiteţi bug-ul direct pe forum.</p>
+Aceasta este valabilă şi pentru pachetele siduction. Vom sorta bug-urile pentru dumneavoastră şi le vom introduce la locul potrivit dacă bug-ul poate fi reprodus. Pentru mai multe informaţii depre  bug-tracker căutaţi pe forum. Dacă toate acestea par prea complicate pentru dvs. atunci trimiteţi bug-ul direct pe forum.</p>
 <h4>Numele Versiunii</h4>
-<p>
-Dacă vă âîntrebaţi de unde provine numele 'Desperado' pentru aceasta versiune aflaţi atunci că provine de la un cântec faimos al formaţiei Eagles din 1973. cântec ce  se află pe al doilea album al formaţiei şi care a intrat în istoria muzicii rock. Printre altele acest nume a reprezentat opţiunea dvs.</p>
-<p> Vom încerca să terminăm aceast RC cu ajutorul vostru în aproximativ o săptămână, şi vă rugăm raportaţi bug-urile găsite pe forum .</p>
-<p>Ca de obicei avem nevoie de developeri şi contributori, aceştia sunt bineveniţi pe  IRC în <i>#siduction-core</i> pentru a ne spune ce pot face pentru noi.</p>
-<h4>Atenţie:</h4>
-<p>Site-ul nostru nu este încă terminat. Realizarea sa pe baza sablonului nostru se pare că este o sarcină mai dificilă decât am crezut. Lipsa de timp nu prea ajută aici. Vă vom ţine la curent.</p> 
+
+<p>Dacă vă întrebaţi de unde provine numele "Riders on the Storm" al versiunii noastre, vă voi spune că acest nume provine de la renumitul cântec rock 'Riders on the Storm' al formaţiei The Doors de pe albumul LA Woman.</p>
+<p>Vorbind în legătură cu ciclul nostru de realizare de noi versiuni vă putem spune că vom încerca să realizăm aproximativ 4 versiuni pe an.</p>
+<p>Ca de obicei avem nevoie de programatori şi contribuitori. Aceştia sunt bineveniţi pe  IRC în <i>#siduction-core</i> pentru a ne spune ce pot face pentru noi şi cum cred că pot ajuta.</p>
+
+
 <h4>Ponturi Hardware</h4>
 <p>Dacă aveţi o placă video ATI Radeon, vă rugăm folosiţi opţiunea failsafe, la pornirea mediului LIVE. Această opţiune va adăuga <i>radeon.modeset=0 xmodule=vesa</i> ca parametrii de boot pentru Kernel, şi astfel veţi putea porni în mod grafic serverul X. Neapărat instalaţi înaintea pornirii procesului de instalare firmware-linux-nonfree.
 Pentru aceasta, vă rugăm deschideţi ca utilizatorul root<i>/etc/apt/sources.list.d/debian.list</i> cu editorul dvs. favorit şi adăugaţi <i>contrib non-free</i> la sfârşitul primei linii. Salvaţi şi apoi:</p>
 <pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre>
 <p>Dacă veţi instala sistemul de operare atunci şi firmware-linux-nonfree va fi instalat şi aceasta va permite să reporniţi după instalare computerul. În absenţa firmware-linux-nonfree după instalare veţi obţine un ecran pe care nu veţi putea distinge nimic folositor. Atenţie ! Dacă veţi reporni sistemul inainte de a porni programul de instalare al sistemului de operare toate modificările făcute vor fi pierdute.</p>
-<p>Dacă sistemul dumneavoastră are o placă de reţea wireless network, probabil că aceasta va funţiona de la început cu driverele incluse. Puteţi folosi scriptul <i>fw-detect</i> pentru a obţine informaţii despre driverul plăcii dvs. wireless. Unele componente ale sistemului dvs nu funcţionează corect făra firmware-ul adecvat.Programul de instalare vă va informa despre firmware-ul lipsă şi vă va ghida pentru instalarea acestuia.</p>
-<br/>
-<h3>Mulţumiri pentru siduction 2012.1.1</h3>
-<h4>Echipa Nucleu:</h4>
-<p>Alf Gaida (agaida)
-<br />
-Axel Beu (ab)
-<br />
-Dinko Sabo (vibora)
-<br />
-Ferdinand Thommes (devil)
-<br />
-Holger Wagemann (holgerw)
-<br />
-Markus Meyer (coruja)
-<br />
-Nikolas Poniros (edhunter)
-<br />
-Stefan Tell (cryptosteve)
-<br />
-Torsten Wohlfarth (towo)
-<br /></p>
+<p>Dacă sistemul dumneavoastră are o placă de reţea wireless network, probabil că aceasta va funţiona de la început cu driverele incluse. Puteţi folosi scriptul <i>fw-detect</i> pentru a obţine informaţii despre driverul plăcii dvs. wireless. Unele componente ale sistemului dvs nu funcţionează corect făra firmware-ul adecvat. Programul de instalare vă va informa despre firmware-ul lipsă şi vă va ghida pentru instalarea acestuia.</p>
+
+<h3>Credite (mulţumiri) pentru  realizarea siduction 2012.2</h3>
+
+<h4>Echipa Nucleu(Core):</h4>
+<p>
+Alf Gaida (agaida)<br />
+Axel Beu (ab)<br />
+Ferdinand Thommes (devil)<br />
+Hendrik Lehmbruch (hendrikl)<br />
+Holger Wagemann (holgerw)<br />
+Markus Meyer (coruja)<br />
+Stefan Tell (cryptosteve)<br />
+Tom Wroblewski (GoingEasy 9)<br />
+Torsten Wohlfarth (towo)<br />
+</p>
+
+<h4>Cei care întreţin mediile desktop siduction:</h4>
+<p>
+<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) (în curând)<br />
+<b>KDE</b>:		 	Ferdinand Thommes (devil)<br />	
+<b>LXDE</b>:    	Markus Meyer (coruja)<br />
+<b>noX</b>:		 	rolandx1<br />
+<b>Razor-qt</b>:	Alf Gaida (agaida)<br />
+<b>XFCE</b>:		Torsten Wolfahrt (towo)<br />
+</p>
+
 <h4>Echipa de Graficieni:</h4>
-<p>Hendrik Lehmbruch (hendrikl)
-<br />
-Sven Strohmeier (se7en)
-<br /></p>
-<h4>Cod, Idei şi Voie bună:</h4>
-<p>ayla<br />
-Lars Lünnemann (Spike_DE)<br />
+<p>
+Hendrik Lehmbruch (hendrikl)<br />
+Sven Strohmeier (se7en)<br />
+</p>
+
+<h4>Cod, idei şi atmosferă plăcută:</h4>
+<p>
+ayla<br />
+bluelupo<br />
 J. Hamatoma (hama)<br />
-Marco Schmidt (anitainer)<br />
-Michael Singer (bluelupo)<br />
 Markus Schimpf (arno911)<br />
-Otto S.(otto)<br />
-Paulo P. (prp5627)<br />
-Peter Ziegler (harley-peter)<br />
-Robert Ulatowski (quidam77) <br />
-Roland Lang (vindeliker)<br />
-Robert Ulatowski (quidam77) <br />
-Tom Wroblewski (GoinEasy9)<br />
-zeppo<br />
-<br /><br /></p>
-<h3>Mai Mulţumim!</h3>
+Ulrich Beckmann (Bequimão)<br />
+zeppo</p>
+
+<h3>Mulţumim!</h3>
 <p>Mulţumim deasemenea tuturor celor ce au testat cât şi celor ce au ajutat în orice alt fel. Implicarea utilizatorilor reprezintă realizarea noastră majoră.</p>
 <p>Dorim deasemenea să ne exprimăm multumirile lui Debian şi sidux/aptosid deoarece au făcut posibil drumul pe care mergem.</p>
 <p>Şi acum bucuraţi-vă de noul sistem de operare!<br /><br />
 Din partea echipei siduction:<br />
 <br />
-Ferdinand Thommes</p>
+Ferdinand Thommes</p
+
 </div>
 </div> <!-- text_area -->
 </div> <!-- content -->
