@@ -1,3 +1,9 @@
+sidu-manual (0.9) UNRELEASED; urgency=low
+
+  * updated credits-ro.htm
+
+ -- Ovidiu Angelescu <convbsd@siduction.net>  Tue, 04 Dec 2012 06:34:25 +0200
+
 sidu-manual (0.8) UNRELEASED; urgency=low
 
   * changes to welcome-ro.htm
