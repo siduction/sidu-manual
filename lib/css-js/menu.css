@@ -74,7 +74,8 @@
 
 
 #menu ul ul {
-	margin-left: 0.5em;
+	/* margin-left: 0.5em; */
+	margin-left: 99%;
 	width:100%;
 	border:1px solid #626B79;
 	border-radius:5px;
@@ -126,7 +127,7 @@ ul ul li:hover #sm1a, ul ul li:hover #sm1b, ul ul li:hover #sm1c, ul ul li:hover
 
 #menu ul ul ul{
 	position:absolute;
-	left:99%;
+	/* left:99%; */
 	bottom:-4px;
 	width: 100%;
 }
