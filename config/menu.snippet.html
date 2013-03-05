@@ -1,0 +1,48 @@
+LEVEL_0:
+ <ul>
+###ENTRIES###
+ </ul>
+
+ENTRY_0_ORG:
+  <li{{class_current}} onmouseover="showHide( 1 );" onmouseout="startTime();" >
+   <a href="{{link}}">{{title}}</a>
+###SUBMENUS###
+  </li>
+
+ENTRY_0:
+  <li{{class_current}}>
+   <a href="{{link}}">{{title}}</a>
+###SUBMENUS###
+  </li>
+
+LEVEL_1_ORG:
+   <ul class="sub-menu"{{id}}>
+###ENTRIES###
+   </ul>
+
+LEVEL_1:
+   <ul {{id}}>
+###ENTRIES###
+   </ul>
+
+ENTRY_1:
+    <li{{class_current}}>
+     <a href="{{link}}">{{title}}</a>
+###SUBMENUS###
+    </li>
+
+LEVEL_2:
+     <ul class="sub2-menu"{{id}}>
+###ENTRIES###
+     </ul>
+
+ENTRY_2:
+      <li{{class_current}}><a href="{{link}}">{{title}}</a></li>
+
+CLASS_CURRENT:
+ class="current-item"
+
+ID:
+ id="{{id}}"
+
+END:

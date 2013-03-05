@@ -1,17 +1,12 @@
-backend				usr/share/sidu-manual
-config				usr/share/sidu-manual
-plugins				usr/share/sidu-manual
-images				usr/share/sidu-manual
-images/favicon.ico 	usr/share/sidu-manual
-static				usr/share/sidu-manual
-lib					usr/share/sidu-manual
+website			usr/share/sidu-manual
+sidu_manual		usr/share/sidu-manual
+config			usr/share/sidu-manual
+templates		usr/share/sidu-manual
+config.db		usr/share/sidu-manual
+images/favicon.ico 		usr/share/sidu-manual/sidu_manual/static
 sidu-manual.desktop   	usr/share/applications/siduction
 icons/sidu-manual.svg	usr/share/icons/hicolor/scalable/apps
-icons/hicolor		usr/share/icons
-icons/pixmaps		usr/share/icons
-etc/sidu-manual		etc
+icons/hicolor           	usr/share/icons
+icons/pixmaps           	usr/share/icons
 etc/pywwetha		etc
 etc/virtualhosts.d	etc/pywwetha
-usr/bin				usr
-
-

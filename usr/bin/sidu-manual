@@ -1,6 +1,0 @@
-#! /bin/sh
-
-# Restart forces the check of virtual hosts:
-sudo /etc/init.d/pywwetha restart
-sidu-shellserver-control start
-x-www-browser http://sidu-manual:8086/index.php/welcome

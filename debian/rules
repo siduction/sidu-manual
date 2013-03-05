@@ -36,3 +36,4 @@ create-icons:
 	mkdir -p icons/pixmaps
 	convert icons/hicolor/32x32/apps/sidu-manual.png icons/pixmaps/sidu-manual.xpm
 	convert icons/hicolor/16x16/apps/sidu-manual.png icons/pixmaps/sidu-manual-16.xpm
+	

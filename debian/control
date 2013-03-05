@@ -1,24 +1,22 @@
 Source: sidu-manual
-Section: doc
-Priority: optional
+Section: unknown
+Priority: extra
 Maintainer: J. Hamatoma <hama@siduction.net>
-Uploaders: Alf Gaida <agaida@siduction.org>,
- Ferdinand Thommes <devil@siduction.org>,
- Hendrik Lehmbruch <hendrikl@siduction.org>,
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
-Homepage: http://chili.siduction.org/projects/siduction/wiki/Sidu-manual
+Homepage: http://siduction.org
 Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
 Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
 
 Package: sidu-manual
 Architecture: all
 Depends: ${misc:Depends},
- perl (>= 5.0),
- siguibui (>= 1.9),
- creativecommons3,
-Recommends: sidu-manual-perlfect,
-Description: Manual of siduction
- This is the official manual of the distribution siduction.
- It contains the overview, some how-tos, many tips and tricks.
- The content is translated into some languages.
+    python (>= 2.7),
+    python-django (>= 1.4),
+    sidu-base(>= 0.1)
+Description: the manual for siduction
+ The main content is a set of HTML files describing features, handling
+ and tips for siduction.
+ A framework manages the common view of the pages: the navigation (menu),
+ the header (with logo and links to other siduction sites) and the footer
+ are generated for each page from a single template.

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="{{LANGUAGE}}">
+<head>
+	<title>{{txt_title}}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("{{STATIC_URL}}static/lib/css-js/content.css");</style>
+    <style type="text/css" media="all">@import url("{{STATIC_URL}}static/lib/css-js/menu.css");</style>
+    <style type="text/css" media="print">@import url("{{STATIC_URL}}static/lib/css-js/print.css");</style>
+    <link rel ="shortcut icon" href="{{STATIC_URL}}static/lib/favicon/manual.ico" />
+    <script type="text/javascript" src="{{STATIC_URL}}static/lib/css-js/menu2.js"></script>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}static/lib/css-js/ie_5-7_override.css">
+    <![endif]-->
+    <!--[if lt IE 7]>
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}static/lib/css-js/ie_5-6_override.css">
+    <![endif]-->
+{{META_DYNAMIC}}
+</head>
+<body class="body-main">
+<div><img class="header-img" alt="header logo siduction" src="{{STATIC_URL}}static/lib/logos/siduction-logo-web.png" />
+</div>
+  <!--  XXXXXXXXXXXXXX div id="top-menu-frame">
+  <div class="top-menu">
+  <ul>
+   <li><a href="http://siduction.org">{{txt_top_menu_news}}</a></li>
+   <li><a href="http://siduction.org/index.php?module=News">{{txt_top_menu_blog}}</a></li>
+   <li><a href="http://wiki.siduction.de/">{{txt_top_menu_wiki}}</a></li>
+   <li><a href="http://siduction.org/index.php?name=PNphpBB2&lang={{LANGUAGE}}">{{txt_top_menu_forum}}</a></li>
+  </ul>
+ </div> <!-- top-menu --XXXXXXXXXXXXXXX>
+ </div> <!-- top-menu-frame -->
+<div id="bg" class="to-top">
+  <div id="menu">
+	<div id="menu-header">
+	      <a href="http://siduction.org/"><img src="{{STATIC_URL}}static/lib/logos/manual-siduction-logo.png" title="Zu siduction.org (Forum und Wiki)" alt="siduction.org logo" /></a>
+	</div>
+	<ul id="top-list">
+		<li><a href="search"> <img src="{{STATIC_URL}}static/lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />{{txt_search_link}}</a> </li>
+	</ul>
+	<div id="flags-2">
+			<a href="../flag-index.html"><img src="{{STATIC_URL}}static/lib/logos/siduction-lang-100x64.png" title="Wähle eine andere Sprache - Choose another language DE, EN" alt="lang-switch" /></a>
+	</div>
+{{MENU}}
+<div id="menu-header-5">
+   <a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="{{STATIC_URL}}static/lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+</div><!-- menu-en ends here -->
+</div> <!-- menu -->
+<div id="main-page">
+{{CONTENT}}
+</div> <!-- main-page -->
+</div> <!-- bg -->
+<div id="footer" class="clear">
+{{txt_footer}}
+</div>
+</body>
+</html>
