@@ -17,14 +17,14 @@
         <![endif]-->
 </head>
 <body class="body-main">
-	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+	<p><a href="http://siduction.org/"><img class="header-img" alt="header logo siduction" title="Zu siduction.org (Wiki und Forum)" src="../lib/logos/siduction-logo-web.png" /></a></p>
 <!-- Last translation revision by devil 7.1.2012 0940 -->
 <div id="bg">
  <div id="menu"> <!-- menu starts here de lang maintained by devil -->
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 <!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu siduction.org (Forum und Wiki)" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu manual.siduction.org (Online Manual)" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-de.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
@@ -355,14 +355,19 @@ ceni
 						<p>Firewalls werden normalerweise nicht benötigt, wenn man sich hinter einem ordentlich konfigurierten Router befindet. Dennoch spielen sie eine sehr wichtige Rolle bei der Sicherheit, wenn man sich direkt über ein DSL-(USB-)Modem oder ein Einwahlmodem ins Internet verbinden muss:</p>
 
 <pre>
-apt-get install firestarter
+apt-get install shorewall
 </pre>
-					<!--guarddog wurde aus testing und unstable entfernt, ich habe es rausgenommen-->
+oder
+<pre>
+apt-get install shorewall6 
+</pre>
+für IPv6 Verbindungen
+					
 
-					<p><a href="http://www.fs-security.com/">Firestarter - Eine Open-Source-Firewall mit grafischer Benutzeroberfläche für Linux.</a> [Hinweis: Wenn man die grafische Oberfläche verlässt, bleibt die Firewall im Hintergrund weiterhin aktiv.] </p>
+					<p><a href="http://www.shorewall.net/">Shorewall- Ein grafisches Konfigurationstool für Netfilter in Linux.</a> [Hinweis: Shorewall nicht auf entfernten Rechnern installieren, ihr schliesst euch ziemlich sicher selbst vom Zugang zum Server aus!] </p>
 
 	</div>
-			<div id="rev">Page last revised 08/01/2012 1545 UTC</div>
+			<div id="rev">Page last revised 02/08/2012 1545 UTC</div>
 </div>
 </div>
 </body>

@@ -17,12 +17,12 @@
         <![endif]-->
 </head>
 <body class="body-main">
-        <p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+        <p><a href="http://siduction.org/"><img class="header-img" alt="header logo siduction" title="To siduction.org forums and wiki" src="../lib/logos/siduction-logo-web.png" /></a></p>
 <!-- Last translation revision by bluewater 22/04/2009 1350hrs UTC -->
 <div id="bg">
  <div id="menu"> 
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do siduction.org, forum oraz wiki" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do manual.siduction.org, online manual" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-pl.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Poszukiwanie w instrukcji" alt="Search" /> Szukaj online - offline</a> </li>
@@ -356,14 +356,14 @@ sdf: sdf1 sdf2
 sd 13:0:0:0: [sdf] Assuming drive cache: write through
 sd 13:0:0:0: [sdf] Attached SCSI removable disk
 </pre>
-							<p>Zakładając, że ISO <span class="highlight-3">siduction-2009-04-moros-kde-lite-i386-200912310312.iso</span> został pobrany, (można zmienić tą nazwę na <span class="highlight-3">siduction-moros-kde-lite.iso</span>), wykonaj kod:</p>
+							<p>Zakładając, że ISO <span class="highlight-3">siduction-release.iso</span> został pobrany, (można zmienić tą nazwę na <span class="highlight-3">siduction-release.iso</span>), wykonaj kod:</p>
 
 <pre>
-cat /home/username/siduction-moros-kde-lite.iso > /dev/sdf
+cat /home/username/siduction-release.iso > /dev/sdf
 </pre>
 							<p>lub</p>
 <pre>
-dd if=/home/username/siduction-moros-kde-lite.iso of=/dev/sdf
+dd if=/home/username/siduction-release.iso of=/dev/sdf
 </pre>
 
 							<p>Urządzenie USB/SSD powinno zostać rozpoznane automatycznie i powinna być dostępna opcja menu <span class="highlight-3">F4</span> wskazujaca <span class="highlight-3">Hard Disk</span>, w innym przypadku wywołaj <span class="highlight-3">F4 &gt;Hard Drive</span> lub dodaj <span class="highlight-3">fromhd</span> w linii uruchamiania boot menu.</p>
@@ -388,11 +388,11 @@ Available physical drives:
 0       size = 60022480896 (55 Gb))
 1       size = 2003828736 (1911 Mb)
 </pre>
-							<p>Zakładając, że ISO <span class="highlight-3">siduction-2009-04-moros-kde-lite-i386-200912310312.iso</span> został pobrany, (można zmienić tą nazwę na <span class="highlight-3">siduction-moros-kde-lite.iso</span>),  wytnij i wklej (lub skopiuj) do folderu flashnul-1rc1, zawierającego wszystkie szczególne pliki i foldery programu. </p>
+							<p>Zakładając, że ISO <span class="highlight-3">siduction-release.iso</span> został pobrany, (można zmienić tą nazwę na <span class="highlight-3">siduction-release.iso</span>),  wytnij i wklej (lub skopiuj) do folderu flashnul-1rc1, zawierającego wszystkie szczególne pliki i foldery programu. </p>
 
 							<p>Jeśli przykładowo wynik 'flashnul-p' pokazał urządzenie USB zamontowane na <span class="highlight-2">1</span>. Wpisz następujący kod i naciśnij klawisz Enter (uprawnienia administratora mogą być wymagane):</p>
 <pre>
-flashnul 1 -L siduction-moros-kde-lite.iso
+flashnul 1 -L siduction-release.iso
 </pre>
 
 							<p>MS Win7 może potrzebować określonej litery dysku, na przykład D: lub c:\ :</p>
@@ -414,9 +414,9 @@ diskutil list
 <pre>
 diskutil unmountDisk /dev/disk1
 </pre>
-							<p>Zakładając, że ISO <span class="highlight-3">siduction-2009-04-moros-kde-lite-i386-200912310312.iso</span> został pobrany do <span class="highlight-3"> /Users/username/Downloads/</span>, (można zmienić tą nazwę na <span class="highlight-3">siduction-moros-kde-lite.iso</span>) oraz gdy urządzenie USB jest oznaczony jako <span class="highlight-3">disk1</span>, wykonaj:</p>
+							<p>Zakładając, że ISO <span class="highlight-3">siduction-release.iso</span> został pobrany do <span class="highlight-3"> /Users/username/Downloads/</span>, (można zmienić tą nazwę na <span class="highlight-3">siduction-release.iso</span>) oraz gdy urządzenie USB jest oznaczony jako <span class="highlight-3">disk1</span>, wykonaj:</p>
 <pre>
-dd if=/Users/username/Downloads/siduction-moros-kde-lite.iso of=/dev/disk1
+dd if=/Users/username/Downloads/siduction-release.iso of=/dev/disk1
 </pre>
 
 							<p>Urządzenie USB/SSD powinno zostać rozpoznane automatycznie i powinna być dostępna opcja menu <span class="highlight-3">F4</span> wskazujaca <span class="highlight-3">Hard Disk</span>, w innym przypadku wywołaj <span class="highlight-3">F4 &gt;Hard Drive</span> lub dodaj <span class="highlight-3">fromhd</span> w linii uruchamiania boot menu.</p>

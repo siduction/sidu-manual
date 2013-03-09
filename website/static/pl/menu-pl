@@ -1,7 +1,7 @@
 
  <div id="menu"> 
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do siduction.org, forum oraz wiki" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Przejdź do manual.siduction.org, online manual" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-pl.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Poszukiwanie w instrukcji" alt="Search" /> Szukaj online - offline</a> </li>

@@ -2,7 +2,7 @@
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 <!-- menu last updated by 13/01/2011 1300 UTC-->
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu siduction.org (Forum und Wiki)" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu manual.siduction.org (Online Manual)" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-de.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
@@ -206,6 +206,7 @@
 						    <li><a href="inet-setup-de.htm#net-set1">WiFi: Roaming-Konfiguration</a></li>
 						    <li><a href="inet-wpa-de.htm#wpa">WiFi und wpasupplicant</a></li>
 						    <li><a href="inet-ifplug-de.htm#hotswitch">Wechsel zwischen WiFi und Kabel</a></li>
+						    <li><a href="inet-nm-cli-de.htm">Network Manager in der Shell</a></li>
 					</ul>
 					</li>
 		<li><a href="inet-ceni-de.htm#netcardconfig">Kabelverbindungen &#8658;</a>

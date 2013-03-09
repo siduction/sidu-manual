@@ -1,11 +1,12 @@
-sidu-manual (0.8.1) UNRELEASED; urgency=low
+sidu-manual (0.8.2) UNRELEASED; urgency=low
 
   * package management: install dependencies
   * new: sidu-manual-control, import_config.sh
   * menu rewritten
   * I18N in the page template
+  * source files synchronized with bluewater-manual
 
- -- J. Hamatoma <hama@siduction.net>  Sat, 09 Mar 2013 06:29:47 +0100
+ -- J. Hamatoma <hama@siduction.net>  Sat, 09 Mar 2013 19:03:06 +0100
 
 sidu-manual (0.8) unstable; urgency=low
 

@@ -17,12 +17,12 @@
         <![endif]-->
 </head>
 <body class="body-main">
-	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+	<p><a href="http://siduction.org/"><img class="header-img" alt="header logo siduction" title="La pagina siduction.org forum-uri şi wiki" src="../lib/logos/siduction-logo-web.png" /></a></p>
 <div id="bg">
  <div id="menu"> <!-- menu starts here ro lang maintained by convbsd-->
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina siduction.org forum-uri şi wiki" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina manual.siduction.org, online Manualul" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
@@ -329,7 +329,7 @@
 						 <ul>
 							<li><span class="highlight-3">Asigurați-vă că BIOS-ul PC-ului pe care vreți să-l boot-ați cu siduction-on-a-stick/card poate boot-a de pe USB stick-uri sau SSD card-uri. De obicei orice PC care are un USB 2.0 protocol poate boot-a de pe USB/SSD.</span></li>
 
-							<li>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> menu option will say <span class="highlight-3">Hard Disk</span>, otherwise invoke <span class="highlight-3">F4 &gt;Hard Drive</span> or add <span class="highlight-3">fromhd</span> to the boot menu bootline.</li>
+							<li>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> opţiunea din meniu va spune <span class="highlight-3">Hard Disk</span>, altfel apelaţi <span class="highlight-3">F4 &gt;Hard Drive</span> sau adăugaţi<span class="highlight-3">fromhd</span> în linia de comandă de boot.</li>
 
 							<li><span class="highlight-2">Este important de ținut minte că, următoarele metode vor suprascrie și vor distruge orice tabelă de partiții de pe mediul de stocare ales. Datele pierdute vor depinde de mărimea siduction-*.iso. Nu sunt limitări în privința spațiului de stocare disponibil câtă vreme Linux-ul este implicat și vă veți putea recupera datele rămase pe care imaginea ISO nu le-a șters în timp ce se pare că MS Windows alocă și recunoaște doar o singură partiție. Așa că vă rugăm să nu faceți asta pe hard-ul vostru de 100+- gig!</span></li>
 						 </ul>
@@ -358,14 +358,14 @@ sdf: sdf1 sdf2
 sd 13:0:0:0: [sdf] Assuming drive cache: write through
 sd 13:0:0:0: [sdf] Attached SCSI removable disk
 </pre>
-							<p>Presupunând că o imagine ISO numită <span class="highlight-3">siduction-2010-02-keres-kde-lite-i386-201009132215.iso</span> a fost download-ată, (puteți s-o redenumiți ca <span class="highlight-3">siduction-keres-kde-lite.iso</span>), atunci comada de rulare va fi:</p>
+							<p>Presupunând că o imagine ISO numită <span class="highlight-3">siduction-12.1.1-desperadoreloaded-kde-amd64-201206241901.iso</span> a fost download-ată, puteți s-o redenumiți ca <span class="highlight-3">siduction-desperadoreloaded-kde-amd64.iso</span>), atunci comada de rulare va fi:</p>
 
 <pre>
-cat /home/<i>nume_utilizator</i>/siduction-keres-kde-lite.iso > /dev/sdf
+cat /home/<i>nume_utilizator</i>/siduction-desperadoreloaded-kde-amd64.iso > /dev/sdf
 </pre>
 							<p>sau</p>
 <pre>
-dd if=/home/<i>nume_utilizator</i>/siduction-moros-kde-lite.iso of=/dev/sdf
+dd if=/home/<i>nume_utilizator</i>/siduction-desperadoreloaded-kde-amd64.iso of=/dev/sdf
 </pre>
 
 							<p>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> menu option will say <span class="highlight-3">Hard Disk</span>, otherwise invoke <span class="highlight-3">F4 &gt;Hard Drive</span> or add <span class="highlight-3">fromhd</span> to the boot menu bootline.</p>
@@ -390,16 +390,16 @@ Available physical drives:
 0       size = 60022480896 (55 Gb))
 1       size = 2003828736 (1911 Mb)
 </pre>
-							<p>Presupunând o imagine ISO numită <span class="highlight-3">siduction-2010-02-keres-kde-lite-i386-201009132215.iso</span> a fost download-ată, (o puteți redenumi în <span class="highlight-3">siduction-2010-02-keres-kde-lite.iso</span>), folosiți <i>'cut'</i> și <i>'paste'</i>, (sau copiați-o), în dosarul <i>"flashnul-1rc1"</i> care conține toate fișierele/dosarele individuale ale programului.</p>
+							<p>Presupunând o imagine ISO numită <span class="highlight-3">siduction-12.1.1-desperadoreloaded-kde-amd64-201206241901.iso</span> a fost download-ată, (o puteți redenumi în <span class="highlight-3">siduction-desperadoreloaded-kde-amd64.iso</span>), folosiți <i>'cut'</i> și <i>'paste'</i>, (sau copiați-o), în dosarul <i>"flashnul-1rc1"</i> care conține toate fișierele/dosarele individuale ale programului.</p>
 
 							<p>Conform output-ului comenzii <i>'flashnul -p'</i> din  examplul nostru, vedem că dispozitivul USB a fost mount-at în <span class="highlight-2">1</span>, tipăriți următoarele apoi apăsați tasta 'enter', (s-ar putea să fie nevoie de drepturi de administrator):</p>
 <pre>
-flashnul 1 -L siduction-2010-02-keres-kde-lite.iso
+flashnul 1 -L siduction-desperadoreloaded-kde-amd64.iso
 </pre>
 
 							<p>Sub MS Win7 e nevoie să specificați actualele litere ale partițiilor (discurilor), de examplu discurile D: și c:\ :</p>
 <pre>
-flashnul D: -L c:\flash\siduction-2010-02-kde-lite.iso
+flashnul D: -L c:\flash\siduction-desperadoreloaded-kde-amd64.iso
 </pre>
 
 							<p>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> menu option will say <span class="highlight-3">Hard Disk</span>, otherwise invoke <span class="highlight-3">F4 &gt;Hard Drive</span> or add <span class="highlight-3">fromhd</span> to the boot menu bootline.</p>
@@ -416,16 +416,16 @@ diskutil list
 <pre>
 diskutil unmountDisk /dev/disk1
 </pre>
-							<p>Presupunând că o imagine ISO numită <span class="highlight-3">siduction-2010-02-keres-kde-lite-i386-201009132215.iso</span> a fost download-ată în <span class="highlight-3"> /Users/<i>nume_utilizator</i>/Downloads/</span>, (puteți s-o redenumiți în <span class="highlight-3">siduction-keres-kde-lite.iso</span>). Dacă dispozitivul USB este desemnat ca <span class="highlight-3">disk1</span>, rulați:</p>
+							<p>Presupunând că o imagine ISO numită <span class="highlight-3">siduction-12.1.1-desperadoreloaded-kde-amd64-201206241901.iso</span> a fost download-ată în <span class="highlight-3"> /Users/<i>nume_utilizator</i>/Downloads/</span>, (puteți s-o redenumiți în <span class="highlight-3">siduction-desperadoreloaded-kde-amd64.iso</span>). Dacă dispozitivul USB este desemnat ca <span class="highlight-3">disk1</span>, rulați:</p>
 <pre>
-dd if=/Users/<i>nume_utilizator</i>/Downloads/siduction-keres-kde-lite.iso of=/dev/disk1
+dd if=/Users/<i>nume_utilizator</i>/Downloads/siduction-desperadoreloaded-kde-amd64.iso of=/dev/disk1
 </pre>
 
-							<p>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> menu option will say <span class="highlight-3">Hard Disk</span>, otherwise invoke <span class="highlight-3">F4 &gt;Hard Drive</span> or add <span class="highlight-3">fromhd</span> to the boot menu bootline.</p>
+							<p>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> menu option will say <span class="highlight-3">Hard Disk</span>, otherwise invoke <span class="highlight-3">F4 &gt;Hard Drive</span> or add <span class="highlight-3">fromhd</span> to the boot menu bootline.</p>							<p>Device-urile USB/SSD sunt recunoscute automat şi apăsând  <span 
 
 	</div>
-	<div id="rev">Page last revised 30/11/2012 1540 UTC</div>
-
+	<div id="rev">Page last revised 04/12/2012 1540 UTC</div>
+</div>
 </div>
 </body>
 </html>

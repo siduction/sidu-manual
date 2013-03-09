@@ -17,14 +17,14 @@
         <![endif]-->
 </head>
 <body class="body-main">
-	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+	<p><a href="http://siduction.org/"><img class="header-img" alt="header logo siduction" title="To siduction.org forums and wiki" src="../lib/logos/siduction-logo-web.png" /></a></p>
 <!-- Last translation revision ceti 26/01/2010 2213 UTC-->
 <div id="bg">
  <div id="menu"> <!-- menu starts here pt-br lang maintained by ceti-->
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 <!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Ir para siduction.org forums e wiki" alt="siduction.org logo" /></a>
+	     <p><a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Jump to manual.siduction.org (online Manual)" alt="manual.siduction.org logo" /></a></p>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-pt-br.htm#search-on"><img src="../lib/logos/manual-search-22x22.png" title="Search Manual" alt="Search" /> Procurar Online Offline</a> </li>
@@ -413,7 +413,7 @@ persist
 </pre>
 							<p>Quando o fromiso usar vfat, você vai precisar usar um arquivo que contenha um sistema de arquivos Linux e a 'cheatcode' será assim:</p>
 <pre>
-persist=/siduction/siduction-rw
+persist=/siduction/base-rw
 </pre>
 
 							<p>O siduction usa o aufs para habilitar o que é conhecido como "copy on write" em sua ISO, o que permite que você crie novos arquivos e pastas e atualize os já existentes, mantendo-os na memória. O cheatcode <span class="highlight-3">persist</span> irá armazenar seus novos arquivos na mesma partição que você usa para armazenar sua imagem ISO fromiso.</p>
@@ -464,7 +464,7 @@ mkdir $disk/siduction
 							<p>Digite o seguinte código para fazer a partição persist:</p>
 
 <pre>
-dd if=/dev/zero of=$disk-1/siduction/siduction-rw bs=1M count=$size &amp;&amp;  echo 'y' | LANG=C /sbin/mkfs.ext2 $disk-1/siduction/siduction-rw &amp;&amp;  tune2fs -c 0 "$disk-1/siduction/siduction-rw"
+dd if=/dev/zero of=$disk-1/siduction/base-rw bs=1M count=$size &amp;&amp;  echo 'y' | LANG=C /sbin/mkfs.ext2 $disk-1/siduction/base-rw &amp;&amp;  tune2fs -c 0 "$disk-1/siduction/base-rw"
 </pre>
 
 							<p class="highlight-2">Partições NTFS, geralmente usadas em instalações Windows NT/2000/XP (TM) NÃO PODEM ser usadas de forma nenhuma para persistência!!!</p>
@@ -510,7 +510,7 @@ dd if=/dev/zero of=$disk-1/siduction/siduction-rw bs=1M count=$size &amp;&amp;  
 
 						<h6>Exemplo no terminal:</h6>
 <pre>
- fll-iso2usb -D /dev/sdb -f none --iso /home/siduction/siduction.iso -p -- lang=no tz=Pacific/Auckland
+ fll-iso2usb -D /dev/sdb -f none --iso /home/siduction/base.iso -p -- lang=no tz=Pacific/Auckland
 </pre>
 							<p>Com isso, a imagem ISO é instalada no dispositivo USB <span class="highlight-3">sdb</span> com persist, língua norueguesa e fuso horário Pacífico/Auckland (Nova Zelândia) na linha padrão do GRUB.</p>
 

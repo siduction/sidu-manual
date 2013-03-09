@@ -17,14 +17,14 @@
         <![endif]-->
 </head>
 <body class="body-main">
-	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+	<p><a href="http://siduction.org/"><img class="header-img" alt="header logo siduction" title="Zu siduction.org (Wiki und Forum)" src="../lib/logos/siduction-logo-web.png" /></a></p>
 <!-- Last translation revision by devil 15/01/2012-->
 <div id="bg">
  <div id="menu"> <!-- menu starts here de lang maintained by devil -->
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 <!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu siduction.org (Forum und Wiki)" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu manual.siduction.org (Online Manual)" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-de.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
@@ -352,7 +352,8 @@ Linux      grub1     grub2
 					 <h4> Die Skripte von Grub2</h4>
 							<p><span class="highlight-3"> /etc/grub.d</span> steuert die Zieldatei <span class="highlight-3"> grub.cfg</span>, die sich in <span class="highlight-3"> /boot/grub/</span> befindet.</p>
 
-							<p><span class="highlight-2">Die Datei grub.cfg darf nie manuell geändert werden. </span>Alle Änderungen müssen in den Skriptdateien im Ordner <span class="highlight-3"> /etc/grub.d</span> durchgeführt werden. os-prober sollte 90% der Fälle korrekt lösen:</p>
+							<p><span class="highlight-2">Die Datei grub.cfg sollte nie manuell geändert werden</span>. 
+							Die &Auml;nderungen w&uuml;rden beim n&auml;chsten update von grub &uuml;berschrieben, da die Datei mit Werten aus /etc/default/grub durch Scripte in /etc/grub.d erzeugt wird. Daher müssen alle &Auml;nderungen in den Skriptdateien im Ordner <span class="highlight-3"> /etc/grub.d</span> durchgeführt werden. os-prober sollte 90% der Fälle korrekt lösen:</p>
 <pre>
 00_header:
 05_debian_theme: Setzt Hintergrund, Textfarben, Grafikthema
@@ -486,7 +487,7 @@ update-grub
 						<p>Es kann sein, dass dieser Befehl mehrfach ausgeführt werden muss, bis er "überzeugt" ist, dass dies wirklich durchgeführt werden soll.</p>
 
 		<h2>MBR von Windows überschrieben - MBR korrumpiert - Wiederherstellung von Grub2</h2>
-							<p><span class="highlight-2">ANMERKUNG: zur Wiederherstellung von Grub2 benötigt man eine 2009-04 (moros) siduction.iso oder später.</span> <a href="sys-admin-grub2-de.htm#chroot">Alternativ kann ein chroot mit jeder live.iso verwendet werden</a>.</p>
+							<p><span class="highlight-2">ANMERKUNG: zur Wiederherstellung von Grub2 benötigt man ein siduction.iso.</span> <a href="sys-admin-grub2-de.htm#chroot">Alternativ kann ein chroot mit jeder live.iso verwendet werden</a>.</p>
 
 							<p>Um grub2 neu zu schreiben oder wiederherzustellen, muss in eine <span class="highlight-3">siduction.iso</span> gestartet werden:</p>
 						<ol>

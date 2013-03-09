@@ -17,14 +17,14 @@
         <![endif]-->
 </head>
 <body class="body-main">
-	<p><img class="header-img" alt="header logo siduction" src="../lib/logos/siduction-logo-web.png" /></p>
+	<p><a href="http://siduction.org/"><img class="header-img" alt="header logo siduction" title="Zu siduction.org (Wiki und Forum)" src="../lib/logos/siduction-logo-web.png" /></a></p>
 <!-- Last translation revision by devil 17/01/2012 1400 UTC -->
 <div id="bg">
  <div id="menu"> <!-- menu starts here de lang maintained by devil -->
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 <!-- menu last updated by bluewater 2011.09.09 0935 hrs UTC -->
 	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu siduction.org (Forum und Wiki)" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu manual.siduction.org (Online Manual)" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
 		<li><a href="manual-search-de.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
@@ -322,48 +322,71 @@
 
 							<p><span class="highlight-3">Diese Seite bietet eine Zusammenfassung der Release-Notes und wird nach jeder Veröffentlichung aktualisiert. Die vollständigen Release-Notes finden sich auf <a href="http://siduction.org">siduction.org</a> beziehungsweise der Live-ISO </span> oder man installiert siduction-releasenotes.</p>
 
-<h1>Release Notes für das 1. Fix-Release für siduction 2012.1 - Desperado</h1>
-
+<h1>Release Notes für siduction 2012.2 - Riders on the Storm</h1>
 <p>
-Wir veröffentlichen heute das 1. Fix-Release von siduction 2012.1. Das Release heisst siduction 2012.1.1 Desperado Reloaded und bringt neben
-kleinen Korrekturen hauptsächlich KDE SC 4-8-4 in der Form, wie es auch in Wheezy erscheinen wird.
+Wir freuen uns sehr, euch siduction 2012.2 - <i>Riders on the Storm</i> - vorstellen zu können. Siduction erscheint etwa vierteljährlich und basiert auf dem Unstable-Zweig von Debian.
 </p>
-<p>siduction 2012.1.1 Desperado Reloaded umfasst, wie auch Desperado, die Geschmacksrichtungen KDE SC, XFCE und LXDE, jeweils in 32- und 64-bit Versionen. LXDE passt auf eine CD, KDE SC und XFCE leider nicht mehr. Von daher bietet sich zur Installation ein USB-Stick an, der per <i>dd</i> oder <i>cat</i> mit dem ISO-Image versorgt wird. (näheres in unserem <a href="http://manual.siduction.org/de/hd-ins-opts-oos-de.htm#raw-usb">Handbuch</a>)</p>
-<p>Die veröffentlichten Images sind ein Snapshot von Debian Sid vom 24.06.2012,
-ergänzt mit ein paar nützlichen Paketen und Scripten, einem eigenen Installer und unserer
-eigenen, gepatchten Version des Linux-Kernels 3.4-4 und XServer 1.12.1 </p>
-<p>
-Da der Freeze für Debian 7 aka Wheezy am 30.6. beginnt und erfahrungsgemäß mindestens 8 Monate dauert, bieten wir vorher noch einmal einen
-aktuellen Snapshot an. Das macht vor allem Sinn, da KDE SC 4.8.4 nun komplett in <em>unstable</em> eingezogen ist. Die Ausnahme bildet
-<em>kdepim</em>. Hier hat das Debian-KDE-Team beschlossen, bei Version 4.4.11 und somit bei Kmail zu bleiben anstatt Kmail2 anzubieten</p>
-<p>Eine weitere Änderung bei KDE betrifft <i>akonadi</i>. Wir haben <i>sqlite</i> anstatt <i>mysql</i> füt akonadi vorkonfiguriert, da uns
-Mysql unnötig überdimensioniert für den Job erscheint</p>
-<h4>Was gibt es sonst Neues?</h4>
-<p>* Bei LXDE und XFCE wurden lediglich einige Pakete ausgetauscht oder ergänzt. So kam bei LXDE für <i>audacious</i> und <i>gnome-mplayer</i>
-der neue Player <i>XNoise</i></p>
-<p>* Bei XFCE wurde u.a. <i>xfce4-powermanager</i> ergänzt.</p>
-<p>* Das Bluewater-Manual liegt neben Deutsch und Englisch mittlerweile auch in Übersetzungen für Brasilianisch, Polnisch und Italienisch vor. 
-Wer bei der Übersetzung/Revision in weitere Sprachen helfen möchte, melde sich bitte im IRC im Kanal #siduction-doc</p>
-<p>* Ansonsten haben wir intern unsere Infrastruktur verbessert und gefestigt und sind nun ganz gut aufgestellt.</p>
-<h4>Unsere Ressourcen</h4>
-<p><a href="http://siduction.org">Forum</a>
+
+<p>Siduction 2012.2 - <i>Riders on the Storm</i> wird mit 4 Desktop-Umgebungen ausgeliefert: KDE SC, XFCE, LXDE und Razor-qt,  alle jeweils in 32- und 64-bit Versionen.
+Die beiden ersten
+Varianten passen nicht mehr auf eine CD, also ist es nicht sinnvoll, Light- und
+Vollversionen getrennt anzubieten. LXDE ist per se schon leichtgewichtig. Neu in diesem Zyklus ist Razor-qt, dass wir uns freuen, jetzt auch offiziell vorstellen zu können.</p>
+<p>Die einfachste Art, ein <a href="http://manual.siduction.org/de/hd-ins-opts-oos-de.htm#raw-lin">Iso von siduction für die Installation vorzubereiten</a>, ist, es per <i>dd</i> auf einen USB-Stick zu legen.</p>
+<p>Die veröffentlichten ISOs sind ein Snapshot von Debian Sid vom 09.12.2012, ergänzt mit ein paar nützlichen Paketen und Skripten, einem Installer und unserer
+eigenen gepatchten Version des Kernels 3.6-9 sowie Xserver 1.12.4-4 </p>
+<p>Während Debian in den Vorbereitungen zum Release von Wheezy steckt und der Freeze vermutlich noch einige Monate dauern wird, nutzen wir die Gelegenheit, mit einem neuen Release die Paketbasis zu aktualisieren.
+</p>
+
 <br />
-<a href="http://news.siduction.org">Blog</a>
+<h3>Was gibt es Neues?</h3>
+<p>Neben den erneuerten Paketen auf dem aktuellsten Stand und dem neuen Artwork waren wir nicht untätig.</p>
+<p>Wir haben eine Reihe an Fehlern korrigiert, die uns für RC1 und RC2 gemeldet wurden:</p>
+<ul>
+<li>Bugs aus RC1</li>
+<li>Das Bluewater Handbuch liegt jetzt auch in rumänischer Übersetzung vor, schliesst: #998</li>
+<li><i>fw-detect</i> arbeitet wieder korrekt bei der Installation unfreier Firmware</li>
+<li>Erzeugen der <i>sources.list</i> während Erstellung der ISO wurde überarbeitet, schliesst: #997</li>
+<li>Neuer Upstream für <i>wbar</i>, <i>wbar-config</i> hinzugefügt, schliesst: #978</li>
+<li>korrekter Firmware-Link für AR7010+AR9287 Geräte in <i>fw-detect</i> eingefügt</li>
+<li>Wechsel zum Kickoff-Menü für KDE</li>
+<li>VG Standard-Größe von 4 GByte  für LVM sinnvoll geändert, schliesst: #974 </li>
+<li><i>ntfs-config</i> hinzugefügt zur einfacheren Konfiguration von ntfs</li>
+</ul>
+<ul>
+<li>Bugs aus RC2</li>
+<li>Rumänische Sprachunterstützung und Übersetzungen hinzugefügt im Installer, in grub/gfxboot und dem Sprachumschalter</li>
+<li>Sperre in Chromium nach Installation beseitigt</li>
+<li>Bereinigung einiger Regressionen aus Fixes von RC1</li>
+</ul>
+<p>Das im Sommer als Development-Release gestartete Razor-qt wird in den normalen Release-Zyklus aufgenommen und erscheint bei uns somit erstmals offiziell. Das Razor-qt Team hat vor kurzem <a href="http://de.news.siduction.org/2012/10/14/razor-qt-0-5-ist-da/">Razor-qt 0.5.1</a> veröffentlicht, worauf auch unser Release beruht. Razor-qt ist zwar noch nicht ganz fertig, aber mit Version 0.5 wesentlich benutzbarer als noch bei unserem Dev-Release, wo noch einiges an Funktionalität fehlte. Mittlerweile funktioniert sowohl das Benachrichtigungssystem als auch das Mounten von externen Geräten.
+</p>
+<p>XFCE hat in Debian Unstable wegen des Freeze zu Wheezy noch Version 4.8.0.3. Wir haben mittlerweile die Pakete auf <a href="http://de.news.siduction.org/2012/10/17/xfce-4-10-fur-siduction/">Version 4.10</a> angehoben. </p>
+<p>Für KDE SC hat das Team von Debian-KDE-QT die meisten Änderungen von 4.8.4 zu 4.8.5 nach 4.8.4-5 portiert, so dass wir effektiv ein 4.8.5 ausliefern.</p>
+<p></p> LXDE hat 2 neue Pakete bekommken: <i>lxpolkit</i>, was die <i>polkit</i> Variante von LXDE ist und <i>lxappearance-obconf</i>, ein Openbox-Konfigurations-Tool für lxappearance.
+<p>Sehr viel zeitaufwendige Änderungen sind auch diesmal wieder in den Umbau der Codebasis geflossen. So wurden die vom Vorgänger übernommenen Skripte zum Einbinden des jeweils aktuellen Artworks  wesentlich vereinfacht. Das Gleiche widerfährt gerade dem Unterbau des Handbuchs, wo es im Moment noch sehr zeitaufwändig ist, neue Themen einzufügen. Insgesamt haben wir seit dem letzten Release <a href="http://chili.siduction.org/projects/siduction/versions/13">118 Fehler beseitigt</a>, die meisten davon in der Code-Basis</p>
+<p>Wir haben weiterhin einen dringend benötigten <a href="http://de.news.siduction.org/2012/09/25/neuer-server-alte-webseite/">Webserver</a> von einem Core-Team Mitglied als großzügige Spende erhalten und in der Folge aufgesetzt.</p> 
+<p>Der Installer bietet weiterhin als Alternative auch <i>btrfs</i> als Dateisystem an. Bitte beachtet unbedingt die Warnungen in dem Zusammenhang.
+Die Unterstützung von <i>btrfs</i> ist immer noch als experimentell anzusehen und es sollte noch nicht auf Produktivsystemen eingesetzt werden. 
+Regelmäßige Back-Ups sind absolut Pflicht! Eine Einschränkung gilt es zu beachten: btrfs funktioniert derzeit nur mit einem herkömmlichen MBR, nicht mit GPT.</p>
+<br />
+<h3>Unsere Ressourcen</h3>
+<br />
+<a href="http://siduction.org">siduction Forum</a>
+<br />
+<a href="http://news.siduction.org">siduction Blog</a>
 <br />
 <a href="http://git.siduction.org">Git Archiv</a>
-<br />
-<a href="http://packages.siduction.org">Repositories</a>
 <br />
 <a href="http://siduction.org/index.php?module=news">Distro News</a>
 <br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug-Tracker</a><br />
-<a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">siduction-Map</a><br /></p>
-<p>
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">siduction-Map</a><br />
+<p><br />
 Support gibt es in unserem Forum und im IRC. Die Kanäle im OFTC Netzwerk sind
 <i>#siduction-de</i>
 für den deutschsprachigen Support und
-<i>#siduction-core</i>, 
-falls Du bei uns mitmachen oder uns helfen willst. Auf dem Desktop findet sich
+<i>#siduction-core</i>
+, falls Du bei uns mitmachen oder uns helfen willst. Auf dem Desktop findet sich
 außerdem ein Icon, mit dem man direkt in den Supportkanal gelangt, abhängig von der
 gewählten Systemsprache.
 </p>
@@ -374,7 +397,7 @@ Bug-Reports zu kaputten Paketen. Erfahrene Nutzer werden wissen, wie sie
 Fehlerberichte direkt an Debians BTS (Bug Tracking System) geben können. Für nicht so
 erfahrene User haben wir
 <i>reportbug-ng</i> vorinstalliert.</p>
-<p>Wenn du denkst, einen Fehler in einem Debianpaket gefunden zu haben, starte
+<p>Wenn Du denkst, einen Fehler in einem Debian-Paket gefunden zu haben, starte
 <i>reportbug-ng</i>
 und schreibe den Namen des Paketes in die Adresszeile oben. Die Anwendung wird nun
 die bereits bekannten Bugs durchstöbern und diese anzeigen. Jetzt ist es an Dir, zu
@@ -390,102 +413,85 @@ sortieren die Fehler dann und packen sie an die richtige Stelle, falls sie
 reproduzierbar sind. Falls Dir das zu kompliziert ist, schreib einfach im Bug Thread
 in unserem Forum, das klappt noch mindestens bis zum endgültigen Release.
 </p>
-<h4>Release-Namen</h4>
 <p>
-Solltest Du Dich gefragt haben, woher der Codename 'Desperado' kommt: Wir
-benennen unsere Releases nach berühmten Rocksongs. Desperado, ein Song vom gleichnamigen zweiten Album der Eagles aus 1973 
+Solltest Du Dich gefragt haben, woher der Codename 'Riders on the Storm' kommt: Wir
+benennen unsere Releases nach berühmten Rocksongs. Riders on the Storm, ein Song von LA Woman, dem letzten Album der Doors
 wurde von den Usern unter viele anderen Songs vorgeschlagen und gewann die Auswahl.
-<br />
-<br />
-Was den weiteren Releaseplan angeht, versuchen wir, innerhalb einer Woche mit eurer Hilfe diesen RC zu finalisieren.
-Bitte meldet eventuelle Bugs, Wünsche oder Unzulänglichkeiten im Forum. 
 </p>
 <p>
-Da wir immer nach weiteren Entwicklern und Mitwirkenden suchen, freuen wir uns, wenn Du Dich im IRC-Kanal
+Da wir immer nach weiteren Helfern suchen, freuen wir uns, wenn Du Dich im IRC-Kanal
 <i>#siduction-core</i>
 einfindest und uns sagst, wobei Du dem Projekt helfen kannst und möchtest.</p>
-<h4>Bitte beachten</h4>
-<p>Unsere neue Webpräsenz ist leider immer noch nicht fertig zum Umzug. Das Aufsetzen <i>from scratch</i> incl. eigenem Template ist schon eine
-größere Aufgabe,
-für die leider zu wenig Zeit bleibt. Weitere Informationen gibts beizeiten im alten Forum.</p> 
-<h4>Hardware Tips</h4>
+<br />
+<h3>Hardware Tips</h3>
 <p>Solltest Du eine ATI Radeon Grafikkarte besitzen, so benutze bitte beim Booten die
 "failsafe" Option. Diese Option hängt die Cheatcodes <i>radeon.modeset=0
 xmodule=vesa</i> 
-an die Kernel-Bootline an und gewährleistet das Booten nach X. Vor der Installation vom Live-ISO installiere bitte
-<i>firmware-linux-nonfree</i>.
+an die Kernel-Bootline an und gewährleistet das Booten nach X. Vor der Installation vom Live-ISO installiere bitte <i>firmware-linux-nonfree</i>.
 Dazu öffne Deine <i>/etc/apt/sources.list.d/debian.list</i> mit Deinem bevorzugten
 Editor als Root und hänge <i>contrib non-free</i> ans Ende der ersten Zeile.
-Speichern und dann:</p>
-<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> 
-<p>Wenn Du jetzt siduction installierst, wird das Paket mit in die
-Installation übernommen und gewährleistet, 
+Speichern und dann:
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> Wenn Du jetzt siduction installierst, wird das Paket mit in die Installation übernommen und gewährleistet, 
 dass der Rechner beim Reboot nach der Installation nach X booten kann. Denk daran,
 dass, solltet ihr vor der Installation rebooten, die Änderungen verloren sind.</p>
 <p>Einige WLAN-Karten können nicht automatisch von den mitgelieferten freien Treibern
 unterstützt werden, daher startest Du am besten mit kabelgebundenem Netz. Das Skript
 <i>fw-detect</i> liefert Informationen zur Einbindung entsprechender Firmware, der
 Installer führt dieses Skript ebenfalls aus und leitet Dich bei der
-Installation der benötigten Firmware an.</p>
-<br/>
-<h3>Credits für siduction 2012.1.1</h3>
+Installation der benötigten Firmware an.</p><br/>
+<h3>Credits für siduction 2011.2</h3>
 <h4>Core Team:</h4>
-<p>Alf Gaida (agaida)
+Alf Gaida (agaida)
 <br />
 Axel Beu (ab)
 <br />
-Dinko Sabo (vibora)
-<br />
 Ferdinand Thommes (devil)
+<br />
+Hendrik Lehmbruch (hendrikl)
 <br />
 Holger Wagemann (holgerw)
 <br />
 Markus Meyer (coruja)
 <br />
-Nikolas Poniros (edhunter)
-<br />
 Stefan Tell (cryptosteve)
 <br />
-Torsten Wohlfarth (towo)
-<br /></p>
+Tom Wroblewski (GoingEasy 9)
+<br />
+Torsten Wohlfarth (towo)<br />
+<h4>Maintainer der siduction Desktop Environments:</h4>
+<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) (coming soon)<br />
+<b>KDE</b>:		 	Ferdinand Thommes (devil)<br />	
+<b>LXDE</b>:    	Markus Meyer (coruja)<br />
+<b>noX</b>:		 	rolandx1<br />
+<b>Razor-qt</b>:	Alf Gaida (agaida)<br />
+<b>XFCE</b>:		Torsten Wolfahrt (towo)<br />
 <h4>Art Team:</h4>
-<p>
 Hendrik Lehmbruch (hendrikl)
 <br />
 Sven Strohmeier (se7en)
 <br />
-</p>
+<br />
 <h4>Code, Ideen, Unterstützung:</h4>
-<p>ayla<br />
-Lars Lünnemann (Spike_DE)<br />
+ayla<br />
+bluelupo<br />
 J. Hamatoma (hama)<br />
-Marco Schmidt (anitainer)<br />
-Michael Singer (bluelupo)<br />
 Markus Schimpf (arno911)<br />
-Otto S.(otto)<br />
-Paulo P. (prp5627)<br />
-Peter Ziegler (harley-peter)<br />
-Robert Ulatowski (quidam77) <br />
-Roland Lang (vindeliker)<br />
-Robert Ulatowski (quidam77) <br />
-Tom Wroblewski (GoinEasy9)<br />
+Ulrich Beckmann (Bequimão)<br />
 zeppo<br />
 <br /><br />
-</p>
 <h3>Danke!</h3>
-<p>Ebenso danken wir allen Testern, den Supportern in den IRC-Kanälen und all den Leuten, die uns auf alle erdenklichen
+<p>Ebenso danken wir allen Testern und all den Leuten, die uns auf alle erdenklichen
 Arten unterstützt haben. Dieses Release ist auch Euer Verdienst!</p>
-<p>Wir danken vor allem auch Debian und aptosid, die den Weg für uns geebnet haben.</p>
-<p>
+<p>Wir danken auch Debian und aptosid, die den Weg für uns geebnet haben.</p>
 <br />
 <br />
 Im Namen des gesamten siduction Teams:
 <br />
-<br />
 Ferdinand Thommes
-</p>
+</ul>
 </div>
 </div>
+</form>
 </div>
 </body>
 </html>

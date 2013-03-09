@@ -491,24 +491,3 @@ padding:.1em 1em;
 	border:2px solid #d3d3d3;
 }
 */
-.search-text { text-align: center; }
-.search-button { text-align: center; margin: 0.5em 0 0.5em 0; }
-.textblock{
-		padding: 0.7em;
-		margin: 0;
-		border: 1px #ff6600 solid;
-		float: none;
-		border-radius:3px;	
-}
-.warning{
-		font-weight: bold;
-}
-.error_message{
-		color: red;
-}
-#text_area{
-		padding: 1em;
-		width: 70%;
-		float: left;
-}
-
