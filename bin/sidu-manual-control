@@ -1,0 +1,24 @@
+#! /bin/bash
+
+CMD=$1
+test -n "$CMD" || CMD=start
+
+case "$1" in                                                                                                            
+start)
+	pywwetha-control $CMD
+	if [ -n "${DISPLAY}" ] ; then
+	# Launches x-www-browser if we are in kde, xfce, lxde, rqt, gnome
+	        x-www-browser http://sidu-manual:8086
+	else
+	# Launches www-browser (elinks) if we are in nox
+	        www-browser http://sidu-manual:8086
+	fi
+	;;
+stop)
+	pywwetha-control $CMD
+	;;                                                                                                              
+*)                                                                                                                      
+        echo "unknown command! Use start stop."                                            
+        exit 1                                                                                                          
+        ;;                                                                                                              
+esac                                                                                                                    

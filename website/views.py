@@ -6,18 +6,18 @@ from webbasic.htmlsnippets import HTMLSnippets
 
 
 def getSession(request):
-    session = Session(request, 'sidu-help')
+    session = Session(request, 'sidu-manual')
     return session
 
 def index(request):
-    session = getSession(request, 'sidu-help')
+    session = getSession(request, 'sidu-manual')
     url = "http://" + session._host
     if session._port != None:
         url += ':' + session._port
     return HttpResponsePermanentRedirect(url)
 
 def search(request):
-    return HttpResponse("Hello, world. You're at the search index.")
+    return HttpResponse("Sorry. This page is under construction")
 
 def staticPage(request, page):
     session = getSession(request)
@@ -48,4 +48,6 @@ def staticPage(request, page):
     return rc
 
 def home(request):
-    return HttpResponse("Hello, world. You're at the root")
+    session = getSession(request)
+    rc = session.redirect('/home', 'view.home')
+    return rc

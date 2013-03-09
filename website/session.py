@@ -21,7 +21,9 @@ class Session(SessionBase):
                             searching the configuration file
         '''
         super(Session, self).__init__(request, application)
-        self._rexprLinks = None
+        self._rexprPageLink = None
+        if not os.path.exists(self._homeDir):
+            self._homeDir = '/usr/share/sidu-manual/'
 
     def getNameOfStaticFile(self, name, language = None):
         '''Calculates the name of a static content file.
@@ -39,10 +41,12 @@ class Session(SessionBase):
         @param line: the line to change
         @return: the line with the corrected links
         '''
-        if self._rexprLinks == None:
-            self._rexprLinks = re.compile(
-                r'href="([\w.]*?)-([a-z]{2}(-[a-z]{2})?)[.]htm')
-        line = self._rexprLinks.sub(r'href="\1', line)
+        if self._rexprPageLink == None:
+            self._rexprPageLink = re.compile(
+                r'href="([\w.-]*?)-([a-z]{2}(-[a-z]{2})?)[.]htm')
+        line = self._rexprPageLink.sub(r'href="\1', line)
+        line = line.replace('href="../lib', 'href="/static/lib')
+        line = line.replace('src="../lib', 'src="/static/lib')
         return line
     
     def getBodyOfStatic(self, filename):
@@ -67,7 +71,7 @@ class Session(SessionBase):
                     elif not ignore:
                         if line.find('</body>') >= 0:
                             break
-                        if line.find('href="') >= 0:
+                        if line.find('href="') >= 0 or line.find('src="'):
                             line = self.translateInternalRefs(line)
                         rc += line
             fp.close()

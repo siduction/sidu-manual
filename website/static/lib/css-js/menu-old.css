@@ -50,9 +50,7 @@
 	list-style:none;
 }
 
-/* This changes the colour of the left menu: note: top li has
- * bottom margin to create space under each main menu item
- * nested ul ul li does not have this space */
+/* This changes the colour of the left menu: note: top li has bottom margin to create space under each main menu item nested ul ul li does not have this space */
 
 #menu ul li {
 	position:relative;
@@ -86,18 +84,17 @@ ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:
 	display:block;
 }
 
-	/* position:absolute;
-	left:99%;
-	bottom:-4px; */
 #menu ul ul {
-	margin: 0 0 0 4px;
+	position:absolute;
+	left:99%;
+	bottom:-4px;
 	width:100%;
 	border:1px solid #626B79;
 	border-radius:5px;
 	box-shadow: 4px 4px 1px rgba(0,0,0,0.4);
 }
 
-#menu div ul ul li {
+#menu ul ul li {
 	margin-bottom:0;
 }
 
@@ -126,12 +123,10 @@ ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:
 	background:#2b2f2f;
 }
 
+/*second flyout*/
+
 #menu .sub2-menu {
-	/* display:block; */
-	margin: 0 0 0 4px;
-}
-#menu .sub3-menu {
-	margin: 0 0 0 4px;
+	display:none;
 }
 
 /*
@@ -141,18 +136,17 @@ this is for the second flyout sub-menu called class="sub2-menu"
 ul ul li:hover #sm1a, ul ul li:hover #sm1b, ul ul li:hover #sm1c, ul ul li:hover #sm2a, ul ul li:hover #sm2b, ul ul li:hover #sm2c, ul ul li:hover #sm2d, ul ul li:hover #sm2e, ul li:hover  #sm3a, ul ul li:hover #sm4a, ul ul li:hover #sm4b, ul ul li:hover #sm4c, ul li:hover #sm5a, ul ul li:hover #sm6a, ul ul li:hover #sm6b, ul ul li:hover #sm6c, ul ul li:hover #sm6d, ul ul li:hover #sm7a,  ul ul li:hover #sm7b,  ul ul li:hover #sm7c, ul ul li:hover #sm7d, ul ul li:hover #sm8a, ul ul li:hover #sm8b,  ul ul li:hover #sm8c, ul ul li:hover #sm8d, ul ul li:hover #sm8e, ul ul li:hover #sm7c, ul ul li:hover #sm7d, ul ul li:hover #sm8a, ul ul li:hover #sm8b, ul ul li:hover #sm9a, ul ul li:hover #sm9b, ul ul li:hover #sm9c, ul ul li:hover #sm10a, ul ul li:hover #sm11a, ul ul li:hover #sm11b, ul ul li:hover #sm11c, ul ul li:hover #sm11d, ul ul li:hover #sm11e, ul ul li:hover #sm11f, ul ul li:hover #sm12a, ul ul li:hover #sm12b, ul ul li:hover #sm12c, ul ul li:hover #sm12d, ul ul li:hover #sm12e, ul ul li:hover #sm13a, ul ul  li:hover #sm13b, ul ul  li:hover #sm13c, ul ul  li:hover #sm13d, ul ul  li:hover #sm13e,  ul ul  li:hover #sm13f, ul li:hover #sm14, ul li:hover #sm15, ul li:hover #sm16, ul li:hover #sm17, ul li:hover #sm18, ul li:hover #sm19, ul li:hover #sm20, ul li:hover #sm21, ul li:hover #sm22, ul li:hover #sm23, ul li:hover #sm24, ul li:hover #sm25, ul li:hover #sm26, ul li:hover #sm27, ul li:hover #sm28, ul li:hover #sm29, ul li:hover #sm30 {
 	display:block;
 }
-#Xmenu ul ul li:hover, #menu ul ul ul li:hover {
+#menu ul ul li:hover, #menu ul ul ul li:hover {
 	display:block;
 	background-color: red;
 
 }
 
-	/* position:absolute;
+#menu ul ul ul{
+	position:absolute;
+	left:95%;
 	bottom:-4px;
 	width: 100%;
-	left:95%; */
-#menu ul ul ul{
-	margin: 0 0 0 4px;
 }
 
 #menu ul ul ul li {
@@ -341,7 +335,3 @@ button{
 	color:white;
 }
 
-#top-menu-list {
-	color: red;
-	display: inline;
-}

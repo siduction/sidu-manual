@@ -13,6 +13,7 @@ Architecture: all
 Depends: ${misc:Depends},
     python (>= 2.7),
     python-django (>= 1.4),
+    pywwetha (>= 1.0),
     sidu-base(>= 0.1)
 Description: the manual for siduction
  The main content is a set of HTML files describing features, handling

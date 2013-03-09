@@ -1,6 +1,6 @@
     [Desktop Entry]
     Type=Application
-    Exec=sidu-manual
+    Exec=sidu-manual-control start
     Icon=sidu-manual
     Name=sidu-manual
     GenericName=sidu-manual

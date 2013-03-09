@@ -1,3 +1,12 @@
+sidu-manual (0.8.1) UNRELEASED; urgency=low
+
+  * package management: install dependencies
+  * new: sidu-manual-control, import_config.sh
+  * menu rewritten
+  * I18N in the page template
+
+ -- J. Hamatoma <hama@siduction.net>  Sat, 09 Mar 2013 06:29:47 +0100
+
 sidu-manual (0.8) unstable; urgency=low
 
   * Initial release of the Python version of sidu-manual

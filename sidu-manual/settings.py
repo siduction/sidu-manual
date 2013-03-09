@@ -1,4 +1,4 @@
-# Django settings for sidu_help project.
+# Django settings for sidu-manual project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -67,8 +67,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-#    '/etc/sidu-help/statics',
-#    '/usr/share/sidu-help/statics'
+#    '/etc/sidu-manual/statics',
+#    '/usr/share/sidu-manual/statics'
 )
 
 # List of finder classes that know how to find static files in
@@ -99,14 +99,14 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'sidu_help.urls'
+ROOT_URLCONF = 'sidu-manual.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'sidu_help.wsgi.application'
+WSGI_APPLICATION = 'sidu-manual.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/etc/sidu-help/templates',
-    '/usr/share/sidu-help/templates',
+    '/etc/sidu-manual/templates',
+    '/usr/share/sidu-manual/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
