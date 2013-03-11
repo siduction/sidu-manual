@@ -2,6 +2,14 @@
 .settings
 sqlite.db
 *~
-website/.coverage
 .directory
 .coverage
+## don't track build crap
+debian/files
+debian/sidu-manual.debhelper.log
+debian/sidu-manual.postinst.debhelper
+debian/sidu-manual.prerm.debhelper
+debian/sidu-manual.substvars
+debian/sidu-manual/
+icons/hicolor/
+icons/pixmaps/
