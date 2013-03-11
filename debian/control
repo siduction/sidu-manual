@@ -1,9 +1,12 @@
 Source: sidu-manual
-Section: unknown
+Section: web
 Priority: extra
 Maintainer: J. Hamatoma <hama@siduction.net>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.3
+Uploaders: Alf Gaida <agaida@siduction.org>,
+ Hendrik Lehmbruch <hendrikl@siduction.org>,
+ Ferdinand Thommes <devil@siduction.org>,
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.4
 Homepage: http://siduction.org
 Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
 Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
@@ -11,11 +14,12 @@ Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
 Package: sidu-manual
 Architecture: all
 Depends: ${misc:Depends},
-    python (>= 2.7),
-    python-django (>= 1.4),
-    pywwetha (>= 1.0),
-    sidu-base(>= 0.1)
-Description: the manual for siduction
+ python (>= 2.7),
+ python-support (>= 0.90),
+ python-django (>= 1.4),
+ pywwetha (>= 1.0),
+ sidu-base(>= 0.1),
+Description: manual for siduction
  The main content is a set of HTML files describing features, handling
  and tips for siduction.
  A framework manages the common view of the pages: the navigation (menu),

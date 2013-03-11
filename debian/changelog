@@ -1,12 +1,38 @@
-sidu-manual (0.8.2) UNRELEASED; urgency=low
+sidu-manual (0.8.3) unstable; urgency=low
 
+  * gitignore modified
+  * added myself to Uploaders 
+  * added hendrikL to Uploaders
+  * added devil to Uploaders
+  * this silence linitian whinings:
+    W: sidu-manual source: changelog-should-mention-nmu
+    W: sidu-manual source: source-nmu-has-incorrect-version-number 0.8.3
+  * modified short-description, stop lintian whining
+    W: sidu-manual: description-synopsis-starts-with-article
+  * missed dependency python-support added, stopp lintian whining about
+    E: sidu-manual: missing-dependency-on-python-support 
+    python-support (>= 0.90)
+  * changed file modes to 644 for
+    website/static/lib/images-common/images-grub2/*, stopp lintian
+    complaining about: W: sidu-manual: executable-not-elf-or-script
+  * changed file mode to 644 for website/static/lib/logos/siduction-book.png
+  * changed file mode to 644 for 
+    website/static/lib/images-common/images-vm/kvm-gparted02.png
+  * W: sidu-manual: binary-without-manpage usr/bin/sidu-manual-control
+    no override, this should be fixed 
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:02:15 +0100
+
+sidu-manual (0.8.2) unstable; urgency=low
+
+  [ J. Hamatoma ]
   * package management: install dependencies
   * new: sidu-manual-control, import_config.sh
   * menu rewritten
   * I18N in the page template
   * source files synchronized with bluewater-manual
 
- -- J. Hamatoma <hama@siduction.net>  Sat, 09 Mar 2013 19:03:06 +0100
+ -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 22:24:52 +0100
 
 sidu-manual (0.8) unstable; urgency=low
 
