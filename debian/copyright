@@ -3,12 +3,12 @@ Upstream-Name: sidu-manual
 Source: http://git.siduction.org/code/sidu-manual
 
 Files: *
-Copyright: 2012 J. Hamatoma <hama@siduction.net>
+Copyright: 2012-2013 J. Hamatoma <hama@siduction.net>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2012 J. Hamatoma <hama@siduction.net>
-           2012 Alf Gaida <agaida@siduction.org>
+Copyright: 2012-2013 J. Hamatoma <hama@siduction.net>
+           2012-2013 Alf Gaida <agaida@siduction.org>
 License: GPL-3.0+
 
 Files: lib/*

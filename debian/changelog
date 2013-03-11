@@ -20,7 +20,10 @@ sidu-manual (0.8.3) unstable; urgency=low
     website/static/lib/images-common/images-vm/kvm-gparted02.png
   * W: sidu-manual: binary-without-manpage usr/bin/sidu-manual-control
     no override, this should be fixed 
-
+  * current standards: 3.9.4
+  * compat 9
+  * fixes in copyright
+  
  -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:02:15 +0100
 
 sidu-manual (0.8.2) unstable; urgency=low

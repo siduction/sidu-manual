@@ -5,7 +5,9 @@ Maintainer: J. Hamatoma <hama@siduction.net>
 Uploaders: Alf Gaida <agaida@siduction.org>,
  Hendrik Lehmbruch <hendrikl@siduction.org>,
  Ferdinand Thommes <devil@siduction.org>,
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9),
+ inkscape,
+ convert,
 Standards-Version: 3.9.4
 Homepage: http://siduction.org
 Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
