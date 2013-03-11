@@ -1,0 +1,19 @@
+MAIN:
+<h1>{{search.title}}</h1>
+
+<table border="0">
+<form method="GET" action="!search">
+<p>{{search.intro}}<br/>
+<input type="text" name="phrases" size="60" value="{{val_phrases}}" />
+<input type="submit" name="button_search" value="{{search.button_search}}" />
+</p>
+</form>
+
+{{RESULT}}
+
+RESULT_LIST:
+<h2>{{search.results.title}}</h2>
+{{search.results}}
+
+EMPTY_RESULT:
+<p>{{search.results.none}}</p>

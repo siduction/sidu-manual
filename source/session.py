@@ -3,7 +3,7 @@ Created on 03.02.2013
 
 @author: hm
 '''
-import os, re
+import os, re, codecs
 from webbasic.sessionbase import SessionBase
 
 from util.util import Util
@@ -64,7 +64,7 @@ class Session(SessionBase):
             if marker == key:
                 marker = 'id="main-page'
             ignore = True
-            with open(filename, "r") as fp:
+            with codecs.open(filename, "r", "UTF-8") as fp:
                 for line in fp:
                     if ignore and line.find(marker) >= 0:
                         ignore = False
@@ -93,3 +93,25 @@ class Session(SessionBase):
         fn = self._homeDir + 'templates/' + node
         rc = Util.readFileAsString(fn)
         return rc
+    
+    def buildStaticPage(self, page, menuBody):
+        '''Builds a page from a given HTML body.
+        @param page: the name of the page: defines the 
+        @param menuBody: the HTML code of the menu
+        @return: the HTML code of the page 
+        '''
+        fn = self.getNameOfStaticFile(page)
+        content = self.getBodyOfStatic(fn)
+        params = {'content': content, 
+            'LANGUAGE' : 'de', 
+            'txt_title' : 'sidu-help',
+            'META_DYNAMIC' : '',
+            'STATIC_URL' : '',
+            'MENU' : menuBody,
+            'CONTENT' : content,
+            'txt_footer' : ''
+            }
+        rc = self.getTemplate('pageframe.html')
+        rc = self.replaceVars(rc, params)
+        return rc
+        
