@@ -1,3 +1,14 @@
+sidu-manual (0.8.4) UNRELEASED; urgency=low
+
+  * changed rules - icons now build with every packagebuild
+  * added build-dependencies inkscape and imagemagick
+  * create override_dh_auto_build target
+  * create override_dh_auto_clean tartet
+  * drop create-icons target
+  * rebuild fixes #1105 
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:14:04 +0100
+
 sidu-manual (0.8.3) unstable; urgency=low
 
   * gitignore modified
@@ -24,7 +35,7 @@ sidu-manual (0.8.3) unstable; urgency=low
   * compat 9
   * fixes in copyright
   
- -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:02:15 +0100
+ -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:13:59 +0100
 
 sidu-manual (0.8.2) unstable; urgency=low
 
