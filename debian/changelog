@@ -1,4 +1,4 @@
-sidu-manual (0.8.4) UNRELEASED; urgency=low
+sidu-manual (0.8.4) unstable; urgency=low
 
   * changed rules - icons now build with every packagebuild
   * added build-dependencies inkscape and imagemagick
@@ -7,7 +7,7 @@ sidu-manual (0.8.4) UNRELEASED; urgency=low
   * drop create-icons target
   * rebuild fixes #1105 
 
- -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:14:04 +0100
+ -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:36:51 +0100
 
 sidu-manual (0.8.3) unstable; urgency=low
 
