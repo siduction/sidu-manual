@@ -1,9 +1,11 @@
-sidu-manual (0.8.5) UNRELEASED; urgency=low
+sidu-manual (0.8.7) UNRELEASED; urgency=low
 
   * search page
   * test coverage 100%
+  * fix: redirection from root
+  * URL for search page
 
- -- J. Hamatoma <hama@siduction.net>  Tue, 12 Mar 2013 00:36:13 +0100
+ -- J. Hamatoma <hama@siduction.net>  Tue, 12 Mar 2013 01:19:15 +0100
 
 sidu-manual (0.8.4) unstable; urgency=low
 

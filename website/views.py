@@ -1,5 +1,5 @@
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect
 from source.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets
@@ -29,12 +29,13 @@ def handlePage(page, request, session):
         url = pageResult._url
         session.trace('redirect to {:s) [{:s}]'.format(url, pageResult._caller))
         absUrl = session.buildAbsUrl(url)
-        rc = session.HttpResponsePermanentRedirect(absUrl) 
+        rc = HttpResponsePermanentRedirect(absUrl) 
     return rc
     
 def index(request):
     session = getSession(request)
-    rc = session.redirect('/home', 'views.indes()')
+    absUrl = session.buildAbsUrl('/home')
+    rc = HttpResponsePermanentRedirect(absUrl) 
     return rc
 
 def search(request):
@@ -51,5 +52,6 @@ def staticPage(request, page):
 
 def home(request):
     session = getSession(request)
-    rc = session.redirect('/home', 'views.home()')
+    absUrl = session.buildAbsUrl('/home')
+    rc = HttpResponsePermanentRedirect(absUrl) 
     return rc

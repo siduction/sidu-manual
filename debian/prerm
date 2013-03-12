@@ -16,7 +16,7 @@ pushd /usr/share/$PROJ >/dev/null
 
 RmLink public
 
-cd backend
+#cd backend
 
 # Remove the links to the shellserver:
 cd /usr/share/sidu-base/backend
