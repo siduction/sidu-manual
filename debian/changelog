@@ -1,10 +1,11 @@
-sidu-manual (0.8.9) UNRELEASED; urgency=low
+sidu-manual (0.8.10) UNRELEASED; urgency=low
 
   * test of supported languages
   * fallback to English content
   * links corrected for wm-dm*
+  * closes #1109
 
- -- J. Hamatoma <hama@siduction.net>  Wed, 13 Mar 2013 21:38:27 +0100
+ -- J. Hamatoma <hama@siduction.net>  Wed, 13 Mar 2013 21:51:30 +0100
 
 sidu-manual (0.8.7) unstable; urgency=low
 
