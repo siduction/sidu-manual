@@ -35,3 +35,43 @@
 	text-align:center !important;
 	font-weight:bold;
 	}
+
+#top_navigation {
+    position: absolute;
+    right: 45px;
+    bottom: 5px;
+    font-family: 'DroidSansBold', sans-serif;
+    color: #d3d3d3;
+}
+
+#top_navigation ul {
+    list-style: none;
+    float: left;
+    padding: 2px 0;
+}
+
+#top_navigation ul li {
+    display: inline;
+    color: #ff4500;
+    margin:4px;
+}
+
+#top_navigation a:link {
+    color: #d3d3d3;
+    border-bottom: none;
+    padding: 4px;
+    margin: -4px;
+}
+
+#top_navigation a:visited {
+    color: #d3d3d3;
+}
+
+#top_navigation a:hover {
+    color: #ff4500;
+}
+
+#top_navigation a:focus {
+    color: #ff4500;
+    background-color: #eeeeee;
+}

@@ -20,7 +20,9 @@ class Session(SessionBase):
         @param application: the name of the application. Will be used while 
                             searching the configuration file
         '''
-        super(Session, self).__init__(request, application)
+        super(Session, self).__init__(request,
+            ['de', 'en', 'it', 'pl', 'pt-br', 'ro'], 
+            application)
         self._rexprPageLink = None
         if not os.path.exists(self._homeDir):
             self._homeDir = '/usr/share/sidu-manual/'
@@ -34,6 +36,8 @@ class Session(SessionBase):
             language = self._language
         fn = (self._homeDir + 'website/static/' + language + '/' + name + '-' 
             + language + '.htm')
+        if not os.path.exists(fn) and language != 'en':
+            fn = (self._homeDir + 'website/static/en/' + name + '-en.htm')
         return fn
     
     def translateInternalRefs(self, line):

@@ -18,6 +18,7 @@ class TestSearch(unittest.TestCase):
         subdir = os.path.dirname(subdir)
         self._session._homeDir = subdir + "/"
         self._search = SearchPage(self._session)
+        self._search.defineFields()
 
 
     def tearDown(self):

@@ -49,6 +49,8 @@ class SessionTest(TestCase):
             session.getNameOfStaticFile('home', 'de'))
         self.assertEquals('/usr/share/sidu-manual/website/static/en/home-en.htm',
             session.getNameOfStaticFile('home', 'en'))
+        self.assertEquals('/usr/share/sidu-manual/website/static/en/home-en.htm',
+            session.getNameOfStaticFile('home', 'ru'))
         
     
     def testSessiontranslateInternalRefs(self):
