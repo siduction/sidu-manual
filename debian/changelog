@@ -1,4 +1,4 @@
-sidu-manual (0.8.13) UNRELEASED; urgency=low
+sidu-manual (0.8.14) UNRELEASED; urgency=low
 
   [ J. Hamatoma ]
   * test of supported languages
@@ -18,9 +18,9 @@ sidu-manual (0.8.13) UNRELEASED; urgency=low
   * Django settings: sqlite replaced by config.db
   * fix: pageframe design
   * search: handling of "no hits"
+  * top menu
 
-
- -- J. Hamatoma <hama@siduction.net>  Wed, 20 Mar 2013 17:08:01 +0100
+ -- J. Hamatoma <hama@siduction.net>  Wed, 20 Mar 2013 18:46:17 +0100
 
 sidu-manual (0.8.7) unstable; urgency=low
 

@@ -1,77 +1,46 @@
-#top-menu-frame {
-	/*background-image:url(../logos/siduction-logo-web.png);*/
-	position: relative;
-	top: -43px;
-	left: 350px;
-}
-.top-menu {
-	/*background-image:url(../logos/siduction-logo-web.png);*/
-
-	xmargin:0 35px 0 0;
-	xfloat: right;
-}
-
-.top-menu li {
-	float:left;
-	list-style-type:none;
-}
-
-.top-menu li a {
-	float:left;
-	display:block;
-	width:80px;
-	color:white;
-	padding: 3px 0;
-	ext-decoration:none;
-	text-align:center !important;
-}
-
-.top-menu li a:hover {
-	display:block;
-	width:80px;
-	color:red;
-	background-color:white;
-	text-decoration:none;
-	text-align:center !important;
-	font-weight:bold;
-	}
-
-#top_navigation {
+#top-navigation {
+    right: 0;
+    color: white;
+    margin:  0px 50px 0 50px;
     position: absolute;
-    right: 45px;
-    bottom: 5px;
-    font-family: 'DroidSansBold', sans-serif;
-    color: #d3d3d3;
+    top: 80px;
+    width: 20em;
+}
+#top-navigation a {
+	color: white;
+}
+#top-navigation a:visited {
+	color: white;
+}
+#top-navigation a:hover {
+	color: #c66323;
 }
 
-#top_navigation ul {
+#top-navigation ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#top-navigation li {
+    display: block;
+    margin: 0 0 0 5px;
     float: left;
-    padding: 2px 0;
+    position: relative;
 }
 
-#top_navigation ul li {
-    display: inline;
-    color: #ff4500;
-    margin:4px;
+
+.clearfix:before, .clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
 }
 
-#top_navigation a:link {
-    color: #d3d3d3;
-    border-bottom: none;
-    padding: 4px;
-    margin: -4px;
+.clearfix:after {
+    clear: both;
 }
 
-#top_navigation a:visited {
-    color: #d3d3d3;
-}
-
-#top_navigation a:hover {
-    color: #ff4500;
-}
-
-#top_navigation a:focus {
-    color: #ff4500;
-    background-color: #eeeeee;
+.clearfix {
+    zoom: 1;
 }
