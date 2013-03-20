@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', views.home, name='home'),
     url(r'^!search', views.search, name='search'),
+    url(r'^[_!]language.*', views.language, name='language'),
     url(r'^(?P<page>[\w+.+-]+)$', views.staticPage, name='static'),
     
     # url(r'^sidu_help/', include('sidu_help.foo.urls')),

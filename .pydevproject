@@ -15,5 +15,6 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
 <path>/home/ws/py/sidu-base</path>
+<path>/home/ws/py/pyygle</path>
 </pydev_pathproperty>
 </pydev_project>

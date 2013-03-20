@@ -24,8 +24,6 @@ class Session(SessionBase):
             ['de', 'en', 'it', 'pl', 'pt-br', 'ro'], 
             application)
         self._rexprPageLink = None
-        if not os.path.exists(self._homeDir):
-            self._homeDir = '/usr/share/sidu-manual/'
 
     def getNameOfStaticFile(self, name, language = None):
         '''Calculates the name of a static content file.
@@ -34,10 +32,10 @@ class Session(SessionBase):
         '''
         if language == None:
             language = self._language
-        fn = (self._homeDir + 'website/static/' + language + '/' + name + '-' 
+        fn = (self._homeDir + 'data/' + language + '/' + name + '-' 
             + language + '.htm')
         if not os.path.exists(fn) and language != 'en':
-            fn = (self._homeDir + 'website/static/en/' + name + '-en.htm')
+            fn = (self._homeDir + 'data/en/' + name + '-en.htm')
         return fn
     
     def translateInternalRefs(self, line):
@@ -113,7 +111,7 @@ class Session(SessionBase):
             'STATIC_URL' : '',
             'MENU' : menuBody,
             'CONTENT' : content,
-            'txt_footer' : ''
+            '!title' : self.getConfig('.static.title')
             }
         rc = self.getTemplate('pageframe.html')
         rc = self.replaceVars(rc, params)

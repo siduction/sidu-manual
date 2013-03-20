@@ -3,12 +3,12 @@
 * 2011-2012, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
 * 2006-2009, Harald Holt (h2)
 * 2006-2011, Trevor Walkley (bluewater)(trevor_walkley at aptenodytes.org)
-* 
+*
 * released under GNU Free Documentation License.Permission is granted to copy, distribute
 * and/or modify this document under the terms of the GNU Free Documentation License,
 * Version 1.2 or any later version published by the Free Software Foundation; with no
 * Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
-* 
+*
 * Last updated by hendrikL 2012-02-11 09:15 hrs UTC
 */
 
@@ -118,7 +118,7 @@ body {
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	}
-	
+
 .header-img {
 	width: 100%;
 	min-width: 390px;
@@ -135,7 +135,7 @@ URL underline on hover
 a:link, a:active, a:visited {
 	border:none;text-decoration: none;
 	}
-	
+
 a:hover {
 	border:none;text-decoration:underline;
 	}
@@ -160,7 +160,7 @@ table {
 
 table td, table th {
 	border:1px solid #888;
-	padding:4px;	
+	padding:4px;
 }
 table th {
 	font-size:13px;
@@ -213,7 +213,7 @@ h6 {
 	font-size:1em;
 }
 
-/* 
+/*
 these are to handle cosmetic h1-h6 font size differences
 while retaining the correct h1-h6 level structures
 */
@@ -309,10 +309,10 @@ pre {
 	width:100%;
 }
 
-#main-page li img {	
+#main-page li img {
 	width:100%;
 	}
-	
+
 .screenshot2 {
 	margin:10px auto;
 	max-width:550px;
@@ -491,3 +491,4 @@ padding:.1em 1em;
 	border:2px solid #d3d3d3;
 }
 */
+.center { text-align: center }

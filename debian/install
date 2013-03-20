@@ -1,4 +1,5 @@
 website			usr/share/sidu-manual
+data			usr/share/sidu-manual
 source			usr/share/sidu-manual
 sidu-manual		usr/share/sidu-manual
 config			usr/share/sidu-manual

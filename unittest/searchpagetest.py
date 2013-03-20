@@ -28,13 +28,13 @@ class TestSearch(unittest.TestCase):
     def testBasic(self):
         search = self._search
         search.defineFields()
-        self.assertTrue(None == search._data.get('phrases'))
+        self.assertTrue(None == search._pageData.get('phrases'))
         
 
     def testDefineFields(self):
         search = self._search
         search.defineFields()
-        self.assertTrue(None == search._data.get('phrases'))
+        self.assertTrue(None == search._pageData.get('phrases'))
 
     def testChangeContent(self):
         # body = body.replace('{{search.results}}', self._searchResults)
@@ -60,7 +60,35 @@ class TestSearch(unittest.TestCase):
         self.assertTrue(None == search.handleButton('button_search'))
         
         self.assertTrue(None == search.handleButton('button_unknown'))
+    
+    def testSplitPhrases(self):
+        ph = self._search.splitPhrases('"a" x "b" y z "c')
+        self.assertEqual('"a"', ph[0]) 
+        self.assertEqual('x', ph[1]) 
+        self.assertEqual('"b"', ph[2]) 
+        self.assertEqual('y', ph[3]) 
+        self.assertEqual('z', ph[4]) 
+        self.assertEqual('"c"', ph[5]) 
 
+        ph = self._search.splitPhrases('"a" "b" "c')
+        self.assertEqual('"a"', ph[0]) 
+        self.assertEqual('"b"', ph[1]) 
+        self.assertEqual('"c"', ph[2]) 
+
+        ph = self._search.splitPhrases('abc def')
+        self.assertEqual('abc', ph[0]) 
+        self.assertEqual('def', ph[1]) 
+
+        ph = self._search.splitPhrases(' abc def ')
+        self.assertEqual('abc', ph[0]) 
+        self.assertEqual('def', ph[1]) 
+
+        ph = self._search.splitPhrases('abc def +a      33\tblub')
+        self.assertEqual('abc', ph[0]) 
+        self.assertEqual('def', ph[1]) 
+        self.assertEqual('+a', ph[2]) 
+        self.assertEqual('33', ph[3]) 
+        self.assertEqual('blub', ph[4]) 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

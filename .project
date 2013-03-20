@@ -16,4 +16,10 @@
 		<nature>org.python.pydev.pythonNature</nature>
 		<nature>org.python.pydev.django.djangoNature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>PYYGLE</name>
+			<value>file:/home/ws/py/pyygle</value>
+		</variable>
+	</variableList>
 </projectDescription>

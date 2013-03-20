@@ -1,10 +1,13 @@
-sidu-manual (0.8.10) unstable; urgency=low
+sidu-manual (0.8.11) UNRELEASED; urgency=low
 
   [ J. Hamatoma ]
   * test of supported languages
   * fallback to English content
   * links corrected for wm-dm*
   * closes #1109
+  * +GlobalPage
+  * +LanguagePage
+
 
   [ Alf Gaida ]
   * rebuild fixes #1112 

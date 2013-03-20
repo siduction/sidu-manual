@@ -45,11 +45,12 @@ class SessionTest(TestCase):
         
     def testSessionGetNameOfStaticFile(self):
         session = self.getSession()
-        self.assertEquals('/usr/share/sidu-manual/website/static/de/home-de.htm',
+        home = session._homeDir
+        self.assertEquals(home + 'website/static/de/home-de.htm',
             session.getNameOfStaticFile('home', 'de'))
-        self.assertEquals('/usr/share/sidu-manual/website/static/en/home-en.htm',
+        self.assertEquals(home + 'website/static/en/home-en.htm',
             session.getNameOfStaticFile('home', 'en'))
-        self.assertEquals('/usr/share/sidu-manual/website/static/en/home-en.htm',
+        self.assertEquals(home + 'website/static/en/home-en.htm',
             session.getNameOfStaticFile('home', 'ru'))
         
     
