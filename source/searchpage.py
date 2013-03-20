@@ -36,16 +36,16 @@ class SearchPage(Page):
         @param body: the HTML code of the page
         @return: the modified body
         '''
-        isEmpty = False
-        snippet = 'EMPTY_RESULT' if isEmpty else 'RESULT_LIST'
-        code = self._snippets.get(snippet)
-        if not isEmpty and self._searchResults != None:
-            code = code.replace('{{search.results}}', self._searchResults)
-        
-        body = body.replace('{{RESULT}}', code)
+        if self._searchResults == None:
+            code = ''
+        else:
+            isEmpty = self._searchResults == ''
+            snippet = 'EMPTY_RESULT' if isEmpty else 'RESULT_LIST'
+            code = self._snippets.get(snippet)
+            if not isEmpty and self._searchResults != None:
+                code = code.replace('{{search.results}}', self._searchResults)
             
-        if self._searchResults != None:
-            body = body.replace('{{search.results}}', self._searchResults)
+        body = body.replace('{{RESULT}}', code)
         return body
     
     def buildUrl(self, docName, anchor):
@@ -80,7 +80,7 @@ class SearchPage(Page):
         engine = SearchEngine(db)
         url = '!search'
         if len(phrases) <= 0:
-            self._searchResults = 'Nothing searched, nothing found'
+            self._searchResults = None
         else:
             self._searchResults = engine.search(phrases, url, False, self)
         db.close()
@@ -118,6 +118,7 @@ class SearchPage(Page):
                 otherwise: a redirect info (PageResult)
         '''
         pageResult = None
+        self._searchResults = None
         if button == 'button_search':
             phrases = self._pageData.get('phrases')
             if phrases != None:
