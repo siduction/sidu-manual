@@ -1,4 +1,4 @@
-sidu-manual (0.8.14) UNRELEASED; urgency=low
+sidu-manual (0.9) unstable; urgency=low
 
   [ J. Hamatoma ]
   * test of supported languages
@@ -7,7 +7,6 @@ sidu-manual (0.8.14) UNRELEASED; urgency=low
   * closes #1109
   * +GlobalPage
   * +LanguagePage
-
 
   [ Alf Gaida ]
   * rebuild fixes #1112 
@@ -20,7 +19,7 @@ sidu-manual (0.8.14) UNRELEASED; urgency=low
   * search: handling of "no hits"
   * top menu
 
- -- J. Hamatoma <hama@siduction.net>  Wed, 20 Mar 2013 18:46:17 +0100
+ -- Alf Gaida <agaida@siduction.org>  Thu, 21 Mar 2013 00:50:51 +0100
 
 sidu-manual (0.8.7) unstable; urgency=low
 
