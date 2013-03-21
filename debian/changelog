@@ -1,3 +1,10 @@
+sidu-manual (0.9.1) UNRELEASED; urgency=low
+
+  * welcome is start page
+  * help + fixes for the search page
+
+ -- J. Hamatoma <hama@siduction.net>  Fri, 22 Mar 2013 00:20:44 +0100
+
 sidu-manual (0.9) unstable; urgency=low
 
   [ J. Hamatoma ]
@@ -18,6 +25,7 @@ sidu-manual (0.9) unstable; urgency=low
   * fix: pageframe design
   * search: handling of "no hits"
   * top menu
+  * 
 
  -- Alf Gaida <agaida@siduction.org>  Thu, 21 Mar 2013 00:50:51 +0100
 
