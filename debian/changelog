@@ -1,3 +1,9 @@
+sidu-manual (0.10) unstable; urgency=low
+
+  * pyygle.py --> pyygle  
+
+ -- Alf Gaida <agaida@siduction.org>  Fri, 22 Mar 2013 03:49:16 +0100
+
 sidu-manual (0.9) unstable; urgency=low
 
   [ J. Hamatoma ]
