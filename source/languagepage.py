@@ -49,7 +49,10 @@ class LanguagePage(Page):
             if language != None:
                 self._globalPage.putField('language', language)
                 self._session._language = language
-                pageResult = PageResult(None, 'home', 'LanguagePage.handleButton()')
+                homePage = self._session.getConfigOrNoneWithoutLanguage('.home.page')
+                if homePage == None:
+                    homePage = 'welcome'
+                pageResult = PageResult(None, homePage, 'LanguagePage.handleButton()')
         else:
             self.buttonError(button)
             

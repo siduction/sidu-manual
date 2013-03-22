@@ -96,20 +96,28 @@ class SearchPage(Page):
         rexpr = re.compile(r'\s+')
         while end >= 0:
             start = source.find('"', end)
+            start2 = source.find("'", end)
+            if start2 >= 0 and start2 < start:
+                start = start2
+                delim = "'"
+            else:
+                delim = '"'
             if start < 0:
                 src = source[end:].strip()
                 if src != '':
                     rc.extend(rexpr.split(src))
                 break
-            src = source[end:start].strip()
-            if src != '':
-                rc.extend(rexpr.split(src))
-            end = source.find('"', start+1)
-            if end < 0:
-                rc.append(source[start:] + '"')
             else:
-                end += 1
-                rc.append(source[start:end])
+                src = source[end:start].strip()
+                if src != '':
+                    rc.extend(rexpr.split(src))
+                end = source.find(delim, start+1)
+                if end < 0:
+                    rc.append(source[start:] + '"')
+                else:
+                    phrase = '=' + source[start+1:end]
+                    rc.append(phrase)
+                    end += 1
         return rc   
     def handleButton(self, button):
         '''Do the actions after a button has been pushed.

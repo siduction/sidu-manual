@@ -4,7 +4,6 @@ from source.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets
 from webbasic.pagedata import PageData
-from webbasic.page import Page
 from source.searchpage import SearchPage
 from source.languagepage import LanguagePage
 from source.globalpage import GlobalPage
@@ -44,7 +43,10 @@ def handlePage(page, request, session):
     
 def index(request):
     session = getSession(request)
-    absUrl = session.buildAbsUrl('/home')
+    homePage = session.getConfigOrNoneWithoutLanguage('.home.page')
+    if homePage == None:
+        homePage = 'welcome'
+    absUrl = session.buildAbsUrl(homePage)
     rc = HttpResponsePermanentRedirect(absUrl) 
     return rc
 
@@ -60,8 +62,8 @@ def language(request):
 
 def staticPage(request, page):
     session = getSession(request)
-    globalPage = GlobalPage(session, request.COOKIES)
-    lang = globalPage.getField('language')
+    # Detection of the current language:
+    GlobalPage(session, request.COOKIES)
     menuHtml = getMenu(session)
     body = session.buildStaticPage(page, menuHtml)
     rc = HttpResponse(body)
@@ -69,6 +71,9 @@ def staticPage(request, page):
 
 def home(request):
     session = getSession(request)
-    absUrl = session.buildAbsUrl('/home')
+    homePage = session.getConfigOrNoneWithoutLanguage('.home.page')
+    if homePage == None:
+        homePage = 'welcome'
+    absUrl = session.buildAbsUrl(homePage)
     rc = HttpResponsePermanentRedirect(absUrl) 
     return rc

@@ -1,8 +1,11 @@
 sidu-manual (0.10) unstable; urgency=low
 
+  [ J. Hamatoma ]
   * pyygle.py --> pyygle  
+  * welcome is start page
+  * help + fixes for the search page
 
- -- Alf Gaida <agaida@siduction.org>  Fri, 22 Mar 2013 03:49:16 +0100
+ -- Alf Gaida <agaida@siduction.org>  Fri, 22 Mar 2013 03:50:45 +0100
 
 sidu-manual (0.9) unstable; urgency=low
 
@@ -24,6 +27,7 @@ sidu-manual (0.9) unstable; urgency=low
   * fix: pageframe design
   * search: handling of "no hits"
   * top menu
+  * 
 
  -- Alf Gaida <agaida@siduction.org>  Thu, 21 Mar 2013 00:50:51 +0100
 
