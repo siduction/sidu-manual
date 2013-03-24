@@ -3,7 +3,8 @@
 	<name>sidu-manual</name>
 	<comment></comment>
 	<projects>
-		<project>sidu_base</project>
+		<project>pyygle</project>
+		<project>sidu-base</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -20,6 +21,10 @@
 		<variable>
 			<name>PYYGLE</name>
 			<value>file:/home/ws/py/pyygle</value>
+		</variable>
+		<variable>
+			<name>SIDU_BASE</name>
+			<value>file:/home/ws/py/sidu-base</value>
 		</variable>
 	</variableList>
 </projectDescription>

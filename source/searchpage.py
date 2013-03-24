@@ -30,6 +30,7 @@ class SearchPage(Page):
         This allows a generic handling of the fields.
         '''
         self.addField('phrases')
+        self.addField('help', 'T')
 
     def changeContent(self, body):
         '''Changes the template in a customized way.
@@ -44,7 +45,16 @@ class SearchPage(Page):
             code = self._snippets.get(snippet)
             if not isEmpty and self._searchResults != None:
                 code = code.replace('{{search.results}}', self._searchResults)
+        if self.getField('help') == 'T':
+            helpBody = self._snippets.get('HELP')
+            helpButton = self._snippets.get('HELP_OFF')
+        else:
+            helpBody = ''
+            helpButton = self._snippets.get('HELP_ON')
             
+        body = body.replace('{{HELP}}', helpBody)
+        body = body.replace('{{HELP_BUTTON}}', helpButton)
+                
         body = body.replace('{{RESULT}}', code)
         return body
     
@@ -132,6 +142,10 @@ class SearchPage(Page):
             if phrases != None:
                 phrases = self.splitPhrases(phrases)
                 self.doSearch(phrases)
+        elif button == 'button_help_on':
+            self.putField('help', 'T')
+        elif button == 'button_help_off':
+            self.putField('help', 'F')
         else:
             self.buttonError(button)
             

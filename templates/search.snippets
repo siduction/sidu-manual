@@ -4,6 +4,19 @@ MAIN:
 <table border="0">
 <form method="GET" action="!search">
 <h2{{search.example.title}}</h2>
+
+{{HELP}}
+
+<p>{{search.intro}}<br>
+<input type="text" name="phrases" size="60" value="{{val_phrases}}" />
+<input type="submit" name="button_search" value="{{search.button_search}}" />
+{{HELP_BUTTON}}
+</p>
+</form>
+
+{{RESULT}}
+
+HELP:
 <p>
 {{search.example.intro1}}
 </p>
@@ -25,13 +38,11 @@ MAIN:
 </tr>
 </table>
 
-<p>{{search.intro}}<br>
-<input type="text" name="phrases" size="60" value="{{val_phrases}}" />
-<input type="submit" name="button_search" value="{{search.button_search}}" />
-</p>
-</form>
+HELP_ON:
+<input type="submit" name="button_help_on" value="{{search.button_help_on}}" />
 
-{{RESULT}}
+HELP_OFF:
+<input type="submit" name="button_help_off" value="{{search.button_help_off}}" />
 
 RESULT_LIST:
 <h2>{{search.results.title}}</h2>

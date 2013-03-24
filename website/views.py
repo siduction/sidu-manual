@@ -7,9 +7,12 @@ from webbasic.pagedata import PageData
 from source.searchpage import SearchPage
 from source.languagepage import LanguagePage
 from source.globalpage import GlobalPage
+from source.checkpage import CheckPage
+from source.expertpage import ExpertPage
 
 def getSession(request):
     session = Session(request, 'sidu-manual')
+    session._globalPage = GlobalPage(session, request.COOKIES)
     return session
 
 def getMenu(session):
@@ -20,8 +23,13 @@ def getMenu(session):
     menuHtml = menu.buildHtml(snippets)
     return menuHtml
 
+def writeCookies(response):
+    cookies =  PageData._cookie
+    for cookie in cookies:
+        response.set_cookie(cookie, cookies[cookie])
+    
 def handlePage(page, request, session):
-    page._globalPage = GlobalPage(session, request.COOKIES)
+    page._globalPage = session._globalPage
     
     htmlMenu = getMenu(session)
     fields = request.GET
@@ -35,10 +43,8 @@ def handlePage(page, request, session):
         url = pageResult._url
         session.trace('redirect to {:s} [{:s}]'.format(url, pageResult._caller))
         absUrl = session.buildAbsUrl(url)
-        rc = HttpResponsePermanentRedirect(absUrl) 
-    cookies =  PageData._cookie
-    for cookie in cookies:
-        rc.set_cookie(cookie, cookies[cookie])
+        rc = HttpResponsePermanentRedirect(absUrl)
+    writeCookies(rc); 
     return rc
     
 def index(request):
@@ -50,9 +56,19 @@ def index(request):
     rc = HttpResponsePermanentRedirect(absUrl) 
     return rc
 
+def expert(request):
+    session = getSession(request)
+    rc = handlePage(ExpertPage(session), request, session)
+    return rc
+
 def search(request):
     session = getSession(request)
     rc = handlePage(SearchPage(session), request, session)
+    return rc
+
+def check(request):
+    session = getSession(request)
+    rc = handlePage(CheckPage(session), request, session)
     return rc
 
 def language(request):
@@ -62,8 +78,6 @@ def language(request):
 
 def staticPage(request, page):
     session = getSession(request)
-    # Detection of the current language:
-    GlobalPage(session, request.COOKIES)
     menuHtml = getMenu(session)
     body = session.buildStaticPage(page, menuHtml)
     rc = HttpResponse(body)
