@@ -1,9 +1,13 @@
-sidu-manual (0.12) UNRELEASED; urgency=low
+sidu-manual (0.12) unstable; urgency=low
 
+  [ J. Hamatoma ]
   * the new '+' menu designed by hendrikL
   * file comparism check (checkPage)
 
- -- J. Hamatoma <hama@siduction.net>  Thu, 28 Mar 2013 21:49:35 +0100
+  [ Alf Gaida ]
+  * rebuild refs #1126 #1125 
+
+ -- Alf Gaida <agaida@siduction.org>  Thu, 28 Mar 2013 21:58:11 +0100
 
 sidu-manual (0.11) unstable; urgency=low
 
