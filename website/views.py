@@ -16,7 +16,7 @@ def getSession(request):
     return session
 
 def getMenu(session):
-    menu = Menu(session, 'menu', False)
+    menu = Menu(session, 'menu', True)
     menu.read()
     snippets = HTMLSnippets(session)
     snippets.read('menu')

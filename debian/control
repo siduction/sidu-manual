@@ -21,7 +21,7 @@ Depends: ${misc:Depends},
  python-django (>= 1.4),
  pywwetha (>= 1.1.1),
  pyygle (>=0.3.8),
- sidu-base(>= 0.1.9)
+ sidu-base(>= 0.2)
 Description: manual for siduction
  The main content is a set of HTML files describing features, handling
  and tips for siduction.

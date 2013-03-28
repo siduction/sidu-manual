@@ -1,3 +1,10 @@
+sidu-manual (0.12) UNRELEASED; urgency=low
+
+  * the new '+' menu designed by hendrikL
+  * file comparism check (checkPage)
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 28 Mar 2013 21:49:35 +0100
+
 sidu-manual (0.11) unstable; urgency=low
 
   [ J. Hamatoma ]

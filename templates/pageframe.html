@@ -25,9 +25,8 @@
    <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>
    <li><a href="http://siduction.org/index.php?module=News">{{.txt_top_menu_blog}}</a></li>
    <li><a href="http://wiki.siduction.de/">{{.txt_top_menu_wiki}}</a></li>
-   <li><a href="http://siduction.org/index.php?name=PNphpBB2&lang={{!language}}">{{.txt_top_menu_forum}}</a></li>
+   <li><a href="http://siduction.org/index.php?name=PNphpBB2&amp;lang={{!language}}">{{.txt_top_menu_forum}}</a></li>
   </ul>
- </div> <!-- top-menu -->
  </div> <!-- top-navigation -->
 <div id="bg" class="to-top">
 
@@ -35,12 +34,6 @@
 	<div id="menu-header">
 	      <a href="http://siduction.org/"><img src="{{STATIC_URL}}/static/lib/logos/manual-siduction-logo.png" title="{{.txt_logo_title}}" alt="{{.txt_logo_alt}}" /></a>
 	</div>
-	<!-- XXXXXXXXXXXX ul id="top-list">
-		<li><a href="!search"> <img src="{{STATIC_URL}}/static/lib/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" /></a></li>
-	</ul>
-	<div id="flags-2">
-			<a href="../flag-index.html"><img src="{{STATIC_URL}}/static/lib/logos/siduction-lang-100x64.png" title="{{.txt_lang_selection}}" alt="lang-switch" /></a>
-	</div xxxxxxxxx -->
 
 	<ul id="top-list">
 		<li><a href="!search"> <img src="/static/lib/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" />{{.txt_search}}</a> </li>
@@ -48,16 +41,21 @@
 	<div id="flags-2">
 			<a href="!language"><img src="/static/lib/logos/siduction-lang-100x64.png" title="{{.txt_lang_switch}}" alt="{{.alt_lang_switch}}" /></a>
 	</div>
-
+	<div id="navi">
+<div class="center">{{.intro_menu}}
+</div>
 {{MENU}}
-<div id="menu-header-5">
-   <a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="{{STATIC_URL}}/static/lib/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" /></a>
-</div><!-- menu-en ends here -->
+	</div> <!-- navi -->
+	<div id="menu-header-5">
+		<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="{{STATIC_URL}}/static/lib/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" /></a>
+	</div><!-- menu-header-5 -->
 </div> <!-- menu -->
+
 <div id="main-page">
 {{CONTENT}}
 </div> <!-- main-page -->
 </div> <!-- bg -->
+
 <div id="footer" class="clear">
 {{.txt_footer}}
 </div>

@@ -8,6 +8,7 @@ import operator
 from webbasic.page import Page
 from webbasic.configcheck import ConfigChecker
 from webbasic.menucheck import MenuChecker
+from webbasic.filecheck import FileChecker
 
 class CheckPage(Page):
     '''
@@ -47,6 +48,39 @@ class CheckPage(Page):
         checker = MenuChecker(self._session, self._session._homeDir)
         self._resultBody = checker.buildTable(self.getField('language'))
              
+    def checkFiles(self):
+        '''Tests the completeness of the files.
+        '''
+        lang = self.getField('language')
+        if lang == None:
+            lang = 'de'
+        dirLang = self._session._homeDir + 'data/' + lang
+        dirEn = self._session._homeDir + 'data/en'
+        
+        self._resultTitle = self._session.getConfig('check.file.title')
+        checker = LangFileChecker(self._session)
+        checker.setLang(lang, 'en')
+        (missingLang, missingEn) = checker.compareDirs(dirLang, dirEn, '.*[.]htm$')
+        message = None
+        html = self._snippets.get('PART_RESULT')
+        separator = self._snippets.get('KEY_SEPARATOR')
+        if missingLang != None:
+            message = (self._session.getConfig('check.files.native.missing')
+                   .format(lang) + separator.join(missingLang))
+            message = html.replace('{{message}}', message)
+            
+        if missingEn != None:
+            msg = (self._session.getConfig('check.files.english.missing')
+                   + separator.join(missingEn))
+            msg = html.replace('{{message}}', msg)
+            if message == None:
+                message = msg
+            else:
+                message += msg
+        self._resultBody = message
+            
+        message = self._snippets.get('KEY_DIFF').replace('{{message}}', message)
+            
     def changeContent(self, body):
         '''Changes the template in a customized way.
         @param body: the HTML code of the page
@@ -90,8 +124,26 @@ class CheckPage(Page):
             self.checkMenu()
         elif button == 'button_table_menu':
             self.buildTableMenu()
+        elif button == 'button_files':
+            self.checkFiles()
         else:
             self.buttonError(button)
             
         return pageResult
-        
+  
+class LangFileChecker(FileChecker):
+    def __init__(self, session):
+        FileChecker.__init__(self, session)
+        self._lang1 = None
+        self._lang2 = None
+    def setLang(self, lang1, lang2):
+        self._lang1 = lang1 + '.'
+        self._lang2 = lang2 + '.'
+
+    def normFilename(self, name, dir1NotDir2):
+        if dir1NotDir2:
+            name = name.replace(self._lang1, '')
+        else:
+            name = name.replace(self._lang2, '')
+        return name
+          

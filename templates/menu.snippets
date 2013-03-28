@@ -1,59 +1,39 @@
 LEVEL_0:
- <ul>
+ <ul id="treeMenu">
 ###ENTRIES###
  </ul>
 
-ENTRY_0_ORG:
-  <li{{class_current}} onmouseover="showHide( {{index}} );" onmouseout="startTime();" >
-   <a href="{{link}}">{{title}}</a>
-###SUBMENUS###
-  </li>
+ENTRY_1:
+ <li{{current_item}}><a href="{{link}}">{{title}}</a></li>
 
-ENTRY_0:
-  <li{{class_current}}>
-   <a href="{{link}}">{{title}}</a>
+ENTRY_SUBMENU_0:
+ <li{{current_item}}><input name="tree" id="M{{menuid}}" type="checkbox" /><label for="M{{menuid}}" class="open"><img src="/static/lib/images-common/icons/trans.gif" alt="" /></label>
+ 	<a href="{{link}}">{{title}}</a>
 ###SUBMENUS###
-  </li>
-
-LEVEL_1_ORG:
-   <ul class="sub-menu"{{id}}>
-###ENTRIES###
-   </ul>
+ </li>
 
 LEVEL_1:
-   <ul {{id}}>
+  <ul>
 ###ENTRIES###
-   </ul>
+  </ul>
 
 ENTRY_1:
-    <li{{class_current}}>
-     <a href="{{link}}">{{title}}</a>
-###SUBMENUS###
+    <li><a href="{{link}}">{{title}}</a></li>
+    
+ENTRY_SUBMENU_1:
+    <li{{current_item}}><input name="tree" id="M{{menuid}}" type="checkbox" /><label for="M{{menuid}}" class="open"><img src="/static/lib/images-common/icons/trans.gif" alt="" /></label>
+    	<a href="{{link}}">{{title}}</a>
+ ###SUBMENUS###
     </li>
 
-LEVEL_2_ORG:
-     <ul class="sub2-menu"{{id}}>
-###ENTRIES###
-     </ul>
-
 LEVEL_2:
-     <ul class="sub3-menu">
+     <ul>
 ###ENTRIES###
      </ul>
-
-ENTRY_2_ORG:
-      <li{{class_current}}><a href="{{link}}">{{title}}</a></li>
 
 ENTRY_2:
-      <li><a href="{{link}}">{{title}}</a></li>
+       <li{{current_item}}><a href="{{link}}">{{title}}</a></li>
 
 CLASS_CURRENT:
- class="current-item"
-
-ID_ORG:
- id="{{id}}"
-
+ class="current_item"
 ID:
-
-
-END:
