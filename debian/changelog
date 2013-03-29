@@ -1,3 +1,11 @@
+sidu-manual (0.13) UNRELEASED; urgency=low
+
+  * special menu expand description text for some browsers
+  * dependency changed for usage in debian "Squeeze"
+
+
+ -- J. Hamatoma <hama@siduction.net>  Fri, 29 Mar 2013 11:44:24 +0100
+
 sidu-manual (0.12) unstable; urgency=low
 
   [ J. Hamatoma ]
