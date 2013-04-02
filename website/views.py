@@ -15,8 +15,14 @@ def getSession(request):
     session._globalPage = GlobalPage(session, request.COOKIES)
     return session
 
-def getMenu(session):
-    menu = Menu(session, 'menu', True)
+def getFields(request):
+    fields = request.GET
+    if len(fields) < len(request.POST):
+        fields = request.POST
+    
+def getMenu(session, request):
+    fields = getFields(request)
+    menu = Menu(session, 'menu', True, fields)
     menu.read()
     snippets = HTMLSnippets(session)
     snippets.read('menu')
@@ -27,15 +33,12 @@ def writeCookies(response):
     cookies =  PageData._cookie
     for cookie in cookies:
         response.set_cookie(cookie, cookies[cookie])
-    
+
 def handlePage(page, request, session):
     page._globalPage = session._globalPage
     
-    htmlMenu = getMenu(session)
-    fields = request.GET
-    if len(fields) < len(request.POST):
-        fields = request.POST
-    
+    htmlMenu = getMenu(session, request)
+    fields = getFields(request)
     pageResult = page.handle(htmlMenu, fields, request.COOKIES)
     if pageResult._body != None:
         rc = HttpResponse(pageResult._body)
@@ -78,7 +81,7 @@ def language(request):
 
 def staticPage(request, page):
     session = getSession(request)
-    menuHtml = getMenu(session)
+    menuHtml = getMenu(session, request)
     body = session.buildStaticPage(page, menuHtml)
     rc = HttpResponse(body)
     return rc

@@ -7,8 +7,8 @@ ENTRY_1:
  <li{{current_item}}><a href="{{link}}">{{title}}</a></li>
 
 ENTRY_SUBMENU_0:
- <li{{current_item}}><input name="tree" id="M{{menuid}}" type="checkbox" /><label for="M{{menuid}}" class="open"><img src="/static/lib/images-common/icons/trans.gif" alt="" /></label>
- 	<a href="{{link}}">{{title}}</a>
+ <li{{current_item}}> <label for="{{menulabel}}" class="open">{{title}}</label>
+ 	<input name="tree" {{checked}} id="{{menulabel}}" type="checkbox" />
 ###SUBMENUS###
  </li>
 
@@ -21,9 +21,9 @@ ENTRY_1:
     <li><a href="{{link}}">{{title}}</a></li>
     
 ENTRY_SUBMENU_1:
-    <li{{current_item}}><input name="tree" id="M{{menuid}}" type="checkbox" /><label for="M{{menuid}}" class="open"><img src="/static/lib/images-common/icons/trans.gif" alt="" /></label>
-    	<a href="{{link}}">{{title}}</a>
- ###SUBMENUS###
+ <li{{current_item}}> <label for="{{menulabel}}" class="open">{{title}}</label>
+ 	<input name="tree" {{checked}} id="{{menulabel}}" type="checkbox" />
+###SUBMENUS###
     </li>
 
 LEVEL_2:
@@ -37,3 +37,6 @@ ENTRY_2:
 CLASS_CURRENT:
  class="current_item"
 ID:
+
+MENU_LABEL:
+M{{menuid}}

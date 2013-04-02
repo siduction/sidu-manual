@@ -1,0 +1,162 @@
+*	sm1	welcome	siduction OS Manual
+**	sm1a	welcome#welcome-gen	siduction OS Manual &#8658;
+***	-	credits#cred-team	Credits
+**	sm1b	welcome#how-to	How to use this manual &#8658;
+***	-	welcome#how-to	How to use this manual
+***	-	welcome#table-contents	Table of Contents
+**	sm1c	help#help-gen	Getting Help &#8658;
+***	-	help#help-gen	Where and how to get help
+***	-	help#paste	IRC !paste
+**	-	wel-quickstart#welcome-quick	siduction Quick Start Guide
+*	sm2	cd-dl-burning	ISO Content, Releases, Download Mirrors and Burning
+**	sm2a	cd-content#cd-content	ISO Content and system requirements &#8658;
+***	-	sys-admin-release#rolling	Release Notes
+**	sm2b	cd-dl-burning#download-siduction	siduction Mirrors, Downloading and Burning &#8658;
+***	-	cd-dl-burning#md5	md5 Checksum
+***	-	cd-dl-burning#burn-nero	Burning in Windows
+***	-	cd-dl-burning#burn-linux	Burning in Linux
+***	-	cd-no-gui-burn#burning-no-gui	burniso script
+***	-	cd-no-gui-burn#burn-no-gui-gen	Burning without a GUI
+***	-	cd-dl-burning#download-siduction	siduction Download Mirrors
+*	sm3	live-mode	Live Mode
+**	-	live-mode#rootpw	Root-password on the siduction-Live ISO
+**	-	live-mode#live-cd-installsoft	Installing software whilst on a Live-ISO
+*	sm4	term-konsole	The Terminal / Konsole
+**	sm4a	term-konsole#term-kon	 Terminal / Konsole &#8658;
+***	-	term-konsole#term-kon	 Terminal / Konsole
+***	-	term-konsole#colours	 Coloured terminal prompts
+***	-	term-konsole#cli-help	Command Line Help
+***	-	help#init3-tools	Tools to know in text mode (tty) - init 3
+***	-	term-konsole#term-cmds	Linux Terminal Commands List
+**	-	term-konsole#sux	 sux / sudo
+*	sm5	cheatcodes	Boot codes
+**	-	cheatcodes#cheatcodes	siduction specific Live-ISO bootcodes
+**	-	cheatcodes#cheatcodes-linux	Linux generic bootcodes
+**	-	cheatcodes-vga#vga	VGA Codes
+*	sm6	part-gparted	Partitioning the Hard Drive - Traditional, GPT and LVM
+**	-	part-gparted#hd-ntfs3g	Writing on NTFS partitions with ntfs-3g
+**	-	part-lvm#part-lvm	Partitioning to use LVM - Logical Volume Manager
+**	sm6a	part-gparted#partition	Partitioning with a GUI &#8658;
+***	-	part-gparted#partition	Partitioning your HD using GParted / KDE Partition Manager
+***	-	part-gparted#ntfs	NTFS partition Resizing using GParted / KDE Partition Manager
+**	sm6b	part-cfdisk#partition	Partitioning with CLI &#8658;
+***	-	part-cfdisk#partition	Partitioning  your HD using cfdisk
+***	-	part-cfdisk#formating	Formatting after partitioning with cfdisk
+***	-	part-gdisk#gdisk-6	Formatting after partitioning with gdisk
+***	-	part-gdisk#gdisk-1	GPT Partitioning with gdisk
+**	sm6c	part-size-examp#part-example	Partitioning Basics &#8658;
+***	-	part-size-examp#part-example	Partition Size Examples
+***	-	part-uuid#uuid	UUID, Rebuilding fstab and creating new mount points
+***	-	part-cfdisk#disknames	Disk Naming in brief
+*	sm7	hd-install	Installation options - HD, USB, VM and Cryptroot
+**	sm7a	hd-install#Inst-prep	Install Preparation &#8658;
+***	-	hd-install#Inst-prep	Install Preparation
+***	-	hd-install#Installation	Installing to your HD
+***	-	hd-install#first-hd-boot	First Boot Up
+**	sm7b	hd-install-opts#fromiso	Booting fromiso &#8658;
+***	-	hd-install-opts#fromiso	Booting fromiso - Overview
+***	-	hd-install-opts#grub2-fromiso	Booting 'fromiso' with Grub 2
+***	-	hd-install-opts#fromiso-persist	fromiso and persist
+**	sm7c	hd-install-opts#usb-hd	Installing to USB drives &#8658;
+***	-	hd-install-opts#usb-hd	Installing on a USB-HD - siduction specific - siduction-on-stick
+***	-	hd-ins-opts-oos#raw-usb	Writing siduction to a USB/SSD stick with any Linux, MS Windows or Mac OS X system
+**	-	hd-install-crypt#install-crypt	Installing to encrypted partitions - cryptroot
+**	-	nbdboot#nbd1	Booting siduction over a network
+**	-	hd-install-vmopts#vmopts	Virtual Machine installation options
+*	sm8	gpu	Graphic cards, monitors, Xorg,  &amp; drivers
+**	sm8a	hw-dev-mon#mon-res	Screen Resolution and Monitors  &#8658;
+***	-	hw-dev-mon#mon-res	Screen Resolution and Monitors
+***	-	hw-dev-mon#xrandr	Dual Monitors and xrandr
+***	-	hw-dev-mon#mon-binary	Dual Monitors (using binaries)
+**	sm8b	gpu#foss-xorg	GPU drivers &#8658;
+***	-	gpu#ati-3d	AMD/ATI 3D drivers
+***	-	gpu#intel	Intel 2D and 3D drivers
+***	-	gpu#nvidia	Nvidia 3D drivers
+***	-	gpu#foss-xorg	Open Source Xorg drivers
+**	-	nf-firm#fw-detect	Firmware detection - non-free
+**	-	nf-firm#non-free-firmware	Adding non-free to sources
+*	sm9	wm-dm#install-add	Window Managers
+**	sm9a	wm-dm	KDE and XFCE Window Managers &#8658;
+***	-	wm-dm#xfce-notes	Useful Xfce extras
+***	-	wm-dm#install-add	Useful extra KDE Apps
+***	-	wm-dm#kde-login	Cant login in KDE
+***	-	wm-dm#ch-th	Changing Themes
+***	-	wm-dm#desk-freeze	Desktop Freezes
+**	-	wm-dm#dm	Installing additional Display Managers
+*	sm11	inet-ceni	Internet connecting, WiFi, LAN and Networks
+**	sm11a	lamp-apache	siduction LAMP Stack &#8658;
+***	-	lamp-apache#serv-apache	siduction LAMP Stack
+***	-	lamp-apache#serv-ftp	FTP Clients
+***	-	lamp-apache#serv-sec	Security Protocols
+***	-	lamp-apache#serv-ssl	SSL
+***	-	lamp-sql#serv-mysql	MySQL Setup
+***	-	lamp-php#serv-php	PHP in Apache
+***	-	ntp-server#ntp-server	Timeserver Setup
+**	sm11b	tor-privoxy#privoxy	Firewalls and Privacy &#8658;
+***	-	tor-privoxy#tor	Tor
+***	-	tor-privoxy#privoxy	Privoxy
+***	-	inet-ceni#firewalls	Firewalls
+**	sm11c	ssh#ssh-x	SSH and Samba &#8658;
+***	-	samba#setup	Samba-Server Setup
+***	-	samba#configure	Configuring SAMBA (Windows)
+***	-	ssh#ssh-fs	SSH Remote Mounting
+***	-	ssh#ssh-x	X Window Apps via SSH
+***	-	ssh#ssh-f	GUI SSH with Konqueror
+***	-	ssh#ssh-w	SSH X-Forwarding from Windows-PC
+***	-	ssh#ssh	SSH and Security
+**	sm11d	inet-ceni#netcardconfig	WIFI connections &#8658;
+***	-	inet-ceni#netcardconfig	Getting Online - Ceni
+***	-	inet-wpagui#wpa-roaming-gui	WiFi - WPA_GUI
+***	-	inet-setup#net-set1	WiFi - Setting up for WiFi Roaming
+***	-	inet-wpa#wpa	WiFi - wpasupplicant
+***	-	inet-ifplug#hotswitch	Network switching between WiFi and Cable
+***	-	inet-nm-cli	Network Manager in a Shell
+**	sm11e	inet-ceni#netcardconfig	Wired Connections &#8658;
+***	-	inet-ceni#dial-mod	56k Modems
+***	-	inet-ceni#netcardconfig	Getting Online - Ceni
+*	sm12	sys-admin-apt	Package Management and dist-upgrade
+**	sm12a	sys-admin-apt#apt-cook	APT Cookbook and Sources list &#8658;
+***	-	sys-admin-apt#apt-cook	APT-Guide Cookbook and Sources list
+***	-	sys-admin-apt#apt-install	Installing a new package
+***	-	sys-admin-apt#apt-delete	Deleting a package
+***	-	sys-admin-apt#apt-downgrade	Package Hold and downgrading
+***	-	sys-admin-apt#apt-cache	Package searching with apt-cache
+***	-	sys-admin-apt#gui-pacsea	GUI Package searching
+**	sm12b	sys-admin-kern-upg#kern-upgrade	Upgrading the kernel &#8658;
+***	-	sys-admin-kern-upg#kern-remove	Removing Kernels
+***	-	sys-admin-kern-upg#kern-upgrade	Upgrading the kernel
+***	-	sys-admin-kern-upg#dmakms	Installing kernel modules dynamically with dmakms
+**	sm12c	sys-admin-apt#apt-upgrade	Upgrade an Installed System -  dist-upgrade - Overview &#8658;
+***	-	sys-admin-upgrade#live-cd-upgrade	Upgrading by Live-ISO
+***	-	sys-admin-apt-locarmirr#approx	dist-upgrade of multiple PCs on a LAN
+***	-	sys-admin-apt#apt-upgrade	Upgrade an Installed System -  dist-upgrade - Overview
+***	-	sys-admin-apt#du-st	Upgrade an Installed System -  dist-upgrade - The Steps
+*	sm13	sys-admin-gen	System Administration
+**	-	bios-freedos#bois-prep	Upgrading the BIOS with FreeDOS
+**	-	vir-rkits#virus-rkits	Virus and Rootkit Scanners
+**	sm13a	hd-install#adduser	Adding Users and Passwords &#8658;
+***	-	hd-install#adduser	Adding a new user
+***	-	sys-admin-gen#pw-lost	Lost root passwords, new passwords
+**	sm13b	sys-admin-gen#start-services	Services and init runlevels &#8658;
+***	-	sys-admin-gen#start-services	Services enable/disable
+***	-	sys-admin-gen#pkill	Killing a service or process
+***	-	sys-admin-gen#init	siduction runlevels - init
+**	sm13c	sys-admin-rsync#rsync	Backing up the system &#8658;
+***	-	sys-admin-rdiff#rdiff	Back-Up with rdiff
+***	-	sys-admin-rsync#rsync	Back-Up with rsync
+***	-	home#home-bu	Moving /home
+**	sm13d	sys-admin-gen#fonts	CUPS, Fonts and Sound &#8658;
+***	-	sys-admin-gen#fonts	Fonts
+***	-	sys-admin-gen#cups	CUPS - Printing System
+***	-	sys-admin-gen#sound	Sound Mixers
+**	sm13f	sys-admin-grub2#grub2	Grub2 &#8658;
+***	-	sys-admin-grub2#chroot	Grub2 - Recovering Grub with chroot
+***	-	sys-admin-grub2#mbr-over-grub2	Grub2 - MBR Overwritten
+***	-	sys-admin-grub2#multi-os	Grub2 - Dual and Multibooting
+***	-	sys-admin-grub2#grub1-grub2	Grub2 -Upgrading from Grub1
+***	-	sys-admin-grub2#grub2	Grub2 - Overview
+* - !search Special Pages
+**	-	!search	Search
+** -	!language Language selection
+++ -	!check Consisty checks
+++ -	!expert Expert mode

@@ -1,10 +1,14 @@
-sidu-manual (0.13) UNRELEASED; urgency=low
+sidu-manual (0.14) UNRELEASED; urgency=low
 
   * special menu expand description text for some browsers
   * dependency changed for usage in debian "Squeeze"
 
+  * new menu style
+  * menu description: no id column
+  * many changes in the menu descriptions (all languages)
+  * start replacement django
 
- -- J. Hamatoma <hama@siduction.net>  Fri, 29 Mar 2013 11:44:24 +0100
+ -- J. Hamatoma <hama@siduction.net>  Wed, 03 Apr 2013 00:50:48 +0200
 
 sidu-manual (0.12) unstable; urgency=low
 

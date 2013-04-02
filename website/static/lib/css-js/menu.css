@@ -1,6 +1,8 @@
 /*
 * bluewater-manual OS menu.css copyright:
-* 2011-2012, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
+*
+* 2013, hama
+* 2011-2013, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
 * 2006-2009, Harald Holt (h2)
 * 2006-2011, Trevor Walkley (bluewater)(trevor_walkley at aptenodytes.org)
 *
@@ -9,12 +11,11 @@
 * Version 1.2 or any later version published by the Free Software Foundation; with no
 * Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
 *
-* Last updated by hendrikL 2012-02-13 06:40 hrs UTC
+* Last updated by hendrikL 2013-03-31 13:53:15 UTC
 */
 
 #menu {
-	max-width: 24%; /* make 2px less than frame width, avoids ff/iw bottom scroll bar */
-	min-width:121px;
+	width:200px;
 	font:normal 0.9em "DroidSansRegular", sans-serif;
 	float:left;
 	z-index:4;
@@ -34,21 +35,35 @@
 	text-align:center;
 }
 
-/* tree menu */
+#navi ul {list-style:none; padding: 0; }
 
-#navi {font:normal 0.9em "DroidSansRegular", sans-serif; background:#535D6C; padding:3px;}
-#navi ul {list-style:none; margin-left: -15px; padding:0;}
-#navi ul#treeMenu ul {list-style:none; display:none;
-	background:url(../../lib/images-common/icons/dots.png) repeat-y 4px 0; margin:0;}
-#navi ul#treeMenu input {display:none;}
-#navi ul#treeMenu li a {color:#fff; text-decoration:none; }
-li.current_item {border: solid 1px #ccc;}
-#navi ul#treeMenu li a:hover {text-decoration:underline; color:#ff8000;}
-#navi ul#treeMenu label {display:block; width:20px; height:20px; float:left; margin:0;}
-#navi ul#treeMenu label img {display:block; width:13px; height:13px; background:url(../../lib/images-common/icons/folder-plus.png);}
-#navi ul#treeMenu input:checked + label + a + ul {display:block;}
-#navi ul#treeMenu input:checked + label img {background:url(../../lib/images-common/icons/folder-minus.png);}
+ul#treeMenu { color: #fff; background:#535D6C; margin: 0; padding: 5px 0;}
+ul#treeMenu,
+ul#treeMenu ul,
+ul#treeMenu ul ul { margin: 0; }
 
+ul#treeMenu li,
+ul#treeMenu li li,
+ul#treeMenu li li li{
+	margin: 3px 0 0 1em;
+	padding: 0;
+	list-style: none;
+}
+
+ul#treeMenu li label:hover,
+ul#treeMenu li li label:hover,
+ul#treeMenu li li li label:hover{ text-decoration:underline; }
+
+#treeMenu a:visited,
+#treeMenu a:link { color: #ff8000; }
+#treeMenu a { font-size: 0x85em; color: #ff8000; }
+
+#treeMenu input { display:none; }
+#treeMenu li a:hover { text-decoration:underline;  }
+
+
+#treeMenu li input + ul  { display:none; !important;}
+#treeMenu li input:checked + ul  { display: block; }
 
 /* manual logo, manual-siduction-logo.png, links to siduction.org */
 
@@ -115,11 +130,24 @@ li.current_item {border: solid 1px #ccc;}
 
 /* search */
 
+#menu ul#top-list img.searchImg
+{
+    float:left;
+    padding-right:5px;
+}
+
+#menu ul#top-list li.search
+{
+      padding: 10px 25px 4px 4px;
+       float:right;
+}
+
 #menu ul#top-list{
-	margin:0 0;
+	/*margin:10;*/
+	height: 30px;
 	background:#535D6C;
 	list-style:none;
-	padding-top:2px;
+	padding-bottom: 3px;
 	font:normal 0.9em "DroidSansRegular", sans-serif;
 }
 
@@ -166,7 +194,4 @@ button{
 	color:white;
 }
 
-#top-menu-list {
-	color: red;
-	display: inline;
-}
+
