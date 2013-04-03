@@ -28,38 +28,34 @@
 	border-bottom-left-radius: 5px;
 }
 
-#menu h2 {
-	color:#E4D0CC;
-	font-size:1.1em;
-	font-weight:normal;
-	text-align:center;
-}
+#menu a:visited,
+#menu a:active,
+#menu a:link { color: white; }
+#menu li a:hover { text-decoration:underline;  }
 
-#navi ul {list-style:none; padding: 0; }
+#menu ul {list-style:none; padding: 0; }
 
 ul#treeMenu { color: #fff; background:#535D6C; margin: 0; padding: 5px 0;}
+
 ul#treeMenu,
 ul#treeMenu ul,
 ul#treeMenu ul ul { margin: 0; }
 
 ul#treeMenu li,
 ul#treeMenu li li,
-ul#treeMenu li li li{
-	margin: 3px 0 0 1em;
-	padding: 0;
-	list-style: none;
-}
+ul#treeMenu li li li {	margin: 3px 0 0 1em; padding: 0; }
 
 ul#treeMenu li label:hover,
 ul#treeMenu li li label:hover,
 ul#treeMenu li li li label:hover{ text-decoration:underline; }
 
+
 #treeMenu a:visited,
+#treeMenu a:active,
 #treeMenu a:link { color: #ff8000; }
 #treeMenu a { font-size: 0x85em; color: #ff8000; }
 
 #treeMenu input { display:none; }
-#treeMenu li a:hover { text-decoration:underline;  }
 
 
 #treeMenu li input + ul  { display:none; !important;}
@@ -67,9 +63,7 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 
 /* manual logo, manual-siduction-logo.png, links to siduction.org */
 
-#menu #menu-header {
- text-align:center;
-}
+#menu #menu-header { text-align:center; }
 
 #menu #menu-header img {
 	width:65%;
@@ -80,10 +74,7 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	margin-bottom:5px;
 }
 
-#menu #menu-header img:hover {
-	border:2px solid #D3D3D3;
-	border-radius: 5px;
-}
+#menu #menu-header img:hover { border:2px solid #D3D3D3; border-radius: 5px; }
 
 /* choose language logo, siduction-lang-100x64.png, links to flag-index */
 
@@ -95,18 +86,14 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	background: #fff;
 }
 
-#menu #flags-2 a, #menu #flags-2 a:visited {
-	display:inline;
-}
+#menu #flags-2 a { display:inline; }
 
 #menu #flags-2 img:hover {
 	border:2px solid #D3D3D3;
 	border-radius: 5px;
 }
 
-#menu #flags-2 {
-	text-align:center;
-}
+#menu #flags-2 { text-align:center; }
 
 /* donate logo */
 
@@ -119,47 +106,17 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	background: #fff;
 }
 
-#menu #menu-header-5 img:hover {
-	border:2px solid #D3D3D3;
-	border-radius: 5px;
-}
+#menu #menu-header-5 img:hover { border:2px solid #D3D3D3;	border-radius: 5px; }
 
-#menu #menu-header-5 {
-	text-align:center;
-}
+#menu #menu-header-5 { text-align:center; }
 
 /* search */
+#menu ul#top-list li { margin: 0; padding: 0;  }
+#menu ul#top-list img { margin: 5px 5px 0 35px;  }
+#menu ul#top-list img + b { position:absolute; margin: 5px 0 0 0; }
+#menu a > b:hover { text-decoration:underline; }
 
-#menu ul#top-list img.searchImg
-{
-    float:left;
-    padding-right:5px;
-}
-
-#menu ul#top-list li.search
-{
-      padding: 10px 25px 4px 4px;
-       float:right;
-}
-
-#menu ul#top-list{
-	/*margin:10;*/
-	height: 30px;
-	background:#535D6C;
-	list-style:none;
-	padding-bottom: 3px;
-	font:normal 0.9em "DroidSansRegular", sans-serif;
-}
-
-#menu ul#top-list a:link{
-	color:#fff;
-	text-decoration:none;
-}
-
-#menu ul#top-list a:hover{
-	text-decoration:underline;
-	color:#ff8000;
-}
+#menu ul#top-list {	height: 30px; background:#535D6C; }
 
 /* --- */
 
@@ -178,20 +135,9 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	border:1px solid #EAEDF4;
 }
 
-#menu #flags a, #menu #flags a:visited {
-	display:inline;
-}
+#menu #flags a { display:inline; }
 
-#menu #flags img:hover {
-	border:1px dotted #6F9796;
-}
+#menu img:hover { border:1px solid #6F9796; }
 
-/* fake search button to redirect to search page */
-
-button{
-	background:#707C8A;
-	font:normal 6px "DroidSansRegular", sans-serif;
-	color:white;
-}
 
 
