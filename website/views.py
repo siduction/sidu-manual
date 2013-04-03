@@ -19,6 +19,7 @@ def getFields(request):
     fields = request.GET
     if len(fields) < len(request.POST):
         fields = request.POST
+    return fields
     
 def getMenu(session, request):
     fields = getFields(request)
