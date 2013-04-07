@@ -1,5 +1,6 @@
-sidu-manual (0.15) UNRELEASED; urgency=low
+sidu-manual (0.15) unstable; urgency=low
 
+  [ J. Hamatoma ]
   * special menu expand description text for some browsers
   * dependency changed for usage in debian "Squeeze"
 
@@ -12,7 +13,10 @@ sidu-manual (0.15) UNRELEASED; urgency=low
   * shorter title "search"
   * LanguagePage: correct links
 
- -- J. Hamatoma <hama@siduction.net>  Thu, 04 Apr 2013 01:28:52 +0200
+  [ Alf Gaida ]
+  * rebuild closes #1125 #1126 
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 07 Apr 2013 13:28:08 +0200
 
 sidu-manual (0.12) unstable; urgency=low
 
