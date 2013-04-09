@@ -1,3 +1,9 @@
+sidu-manual (0.16) UNRELEASED; urgency=low
+
+  * updated menu_ro.cof
+
+ -- Ovidiu Angelescu <convbsd@siduction.net>  Tue, 09 April 2013 22:35:11 +0300
+
 sidu-manual (0.15) unstable; urgency=low
 
   [ J. Hamatoma ]
