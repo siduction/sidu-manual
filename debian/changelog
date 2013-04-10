@@ -1,8 +1,12 @@
-sidu-manual (0.16) UNRELEASED; urgency=low
+sidu-manual (0.17) UNRELEASED; urgency=low
 
+  [ Ovidiu Angelescu ]
   * added sidu-manual_ro.conf
 
- -- Ovidiu Angelescu <convbsd@siduction.net>  Wed, 10 April 2013 13:23:11 +0300
+  [ J. Hamatoma ]
+  * sidu-manual_ro.conf resetted: wrong format
+
+ -- J. Hamatoma <hama@siduction.net>  Wed, 10 Apr 2013 23:20:16 +0200
 
 sidu-manual (0.16) UNRELEASED; urgency=low
 
