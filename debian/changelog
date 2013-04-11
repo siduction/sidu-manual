@@ -1,3 +1,9 @@
+sidu-manual (0.18) UNRELEASED; urgency=low
+
+  * updated menu_ro.conf
+
+ -- Ovidiu Angelescu <convbsd@siduction.net>  Tue, 11 April 2013 20:50:11 +0300
+
 sidu-manual (0.17) UNRELEASED; urgency=low
 
   [ Ovidiu Angelescu ]
