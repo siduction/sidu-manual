@@ -1,6 +1,13 @@
 sidu-manual (0.20) UNRELEASED; urgency=low
 
+  [ Ovidiu Angelescu ]
   * changed mode to 755 for sidu-manual.desktop using rules
+
+  [ Alf Gaida ]
+  * added convbsd to uploaders 
+  * fix rules (make the find a little bit smarter)
+  * make the override_dh_fixperms complete
+  * rebuild refs #1173 #1170 
 
  -- Ovidiu Angelescu <convbsd@siduction.net>  Sun, 28 April 2013 21:10:11 +0300
 
