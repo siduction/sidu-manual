@@ -1,3 +1,9 @@
+sidu-manual (0.20) UNRELEASED; urgency=low
+
+  * changed mode to 755 for sidu-manual.desktop using rules
+
+ -- Ovidiu Angelescu <convbsd@siduction.net>  Sun, 28 April 2013 21:10:11 +0300
+
 sidu-manual (0.19) UNRELEASED; urgency=low
 
   * changed mode to 755 for sidu-manual.desktop

@@ -26,3 +26,6 @@ override_dh_auto_clean:
 	rm -rf icons/pixmaps
 	rm -rf icons/hicolor
 	dh_auto_clean
+	
+override_dh_fixperms:
+	chmod 755 /usr/share/applications/siduction/sidu-manual.desktop
