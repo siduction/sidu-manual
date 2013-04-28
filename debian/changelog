@@ -1,4 +1,4 @@
-sidu-manual (0.20) UNRELEASED; urgency=low
+sidu-manual (0.20) unstable; urgency=low
 
   [ Ovidiu Angelescu ]
   * changed mode to 755 for sidu-manual.desktop using rules
@@ -9,7 +9,7 @@ sidu-manual (0.20) UNRELEASED; urgency=low
   * make the override_dh_fixperms complete
   * rebuild refs #1173 #1170 
 
- -- Ovidiu Angelescu <convbsd@siduction.net>  Sun, 28 April 2013 21:10:11 +0300
+ -- Alf Gaida <agaida@siduction.org>  Sun, 28 Apr 2013 23:51:02 +0200
 
 sidu-manual (0.19) UNRELEASED; urgency=low
 
