@@ -1,3 +1,10 @@
+sidu-manual (0.22) UNRELEASED; urgency=low
+
+  * changed rules to be applied first dh_fixperms and after that 
+    to chmod 755 sidu-manual.desktop
+
+ -- Ovidiu Angelescu <convbsd@siduction.net>  Mon, 29 April 2013 18:48:11 +0300
+
 sidu-manual (0.21) UNRELEASED; urgency=low
 
   * changed rules to fix package
