@@ -1,8 +1,9 @@
-    [Desktop Entry]
-    Type=Application
-    Exec=sidu-manual-control start
-    Icon=sidu-manual
-    Name=sidu-manual
-    GenericName=sidu-manual
-    GenericName[de]=sidu-manual
-    Categories=System;
+[Desktop Entry]
+Type=Application
+Exec=sidu-manual-control start
+Icon=sidu-manual
+Name=sidu-manual
+Terminal=false
+GenericName=sidu-manual
+GenericName[de]=sidu-manual
+Categories=System;
