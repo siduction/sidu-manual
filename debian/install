@@ -4,10 +4,10 @@ source			usr/share/sidu-manual
 sidu-manual		usr/share/sidu-manual
 config			usr/share/sidu-manual
 templates		usr/share/sidu-manual
-sidu-manual.desktop   	usr/share/applications/siduction
+sidu-manual.desktop   	usr/share/applications
 icons/sidu-manual.svg	usr/share/icons/hicolor/scalable/apps
-icons/hicolor           	usr/share/icons
-icons/pixmaps           	usr/share/icons
+icons/hicolor           usr/share/icons
+icons/pixmaps           usr/share/icons
 etc/pywwetha		etc
 etc/virtualhosts.d	etc/pywwetha
 bin				usr/
