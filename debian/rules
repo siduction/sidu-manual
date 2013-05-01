@@ -26,7 +26,3 @@ override_dh_auto_clean:
 	rm -rf icons/pixmaps
 	rm -rf icons/hicolor
 	dh_auto_clean
-	
-override_dh_fixperms:
-	dh_fixperms
-	find debian -name sidu-manual.desktop -exec chmod 755 {} \;
