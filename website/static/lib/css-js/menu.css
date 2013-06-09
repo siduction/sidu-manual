@@ -50,9 +50,9 @@ ul#treeMenu li li label:hover,
 ul#treeMenu li li li label:hover{ text-decoration:underline; }
 
 
-#treeMenu a:visited,
+#treeMenu a:visited { color: #ff8000; },
 #treeMenu a:active,
-#treeMenu a:link { color: #ff8000; }
+#treeMenu a:link { color: white; }
 #treeMenu a { font-size: 0x85em; color: #ff8000; }
 
 #treeMenu input { display:none; }
