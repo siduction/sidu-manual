@@ -32,8 +32,7 @@ class LanguagePage(Page):
         @return: the modified body
         '''
         field = 'language'
-        ix = self.indexOfFieldValues(field, self._session._language)
-        body = self.fillOptionsSelectedByIndex(field, ix, body)
+        body = self.fillStaticSelected(field, body)
         return body
     
     def handleButton(self, button):

@@ -1,3 +1,9 @@
+sidu-manual (0.3.1) UNRELEASED; urgency=low
+
+  * fix: obsolete method indexOfFieldValues() replaced by fillStaticSelected() 
+
+ -- J. Hamatoma <hama@siduction.net>  Wed, 12 Jun 2013 21:31:25 +0200
+
 sidu-manual (0.24) unstable; urgency=low
 
   * install desktop file to /usr/share/applications
