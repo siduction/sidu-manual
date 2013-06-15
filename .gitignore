@@ -4,6 +4,8 @@ sqlite.db
 *~
 .directory
 .coverage
+Makefile
+
 ## don't track build crap
 debian/files
 debian/sidu-manual.debhelper.log
