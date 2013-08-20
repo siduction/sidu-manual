@@ -1,3 +1,10 @@
+sidu-manual (0.33) unstable; urgency=low
+
+  * fix: the page wm-dm now visible
+  * fix: wrong example in the search page
+
+ -- J. Hamatoma <hama@siduction.net>  Tue, 20 Aug 2013 22:26:30 +0200
+
 sidu-manual (0.32) unstable; urgency=low
 
   * change numbering - 0.3.1 << 0.24 and would never be installed
