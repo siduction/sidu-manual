@@ -1,3 +1,9 @@
+sidu-manual (0.34) unstable; urgency=low
+
+  * htm sources stripped: the unneccessary menu removed
+
+ -- J. Hamatoma <hama@siduction.net>  Tue, 20 Aug 2013 23:42:41 +0200
+
 sidu-manual (0.33) unstable; urgency=low
 
   * fix: the page wm-dm now visible
