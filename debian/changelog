@@ -1,3 +1,11 @@
+sidu-manual (0.35) unstable; urgency=low
+
+  * de+pl: wrong reference in menu: wm must be wm-df
+  * all *.htm renamed: the language is now separated by "_" instead of "-"
+  * restored: en/part-gdisk_en.htm 
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 22 Aug 2013 00:39:41 +0200
+
 sidu-manual (0.34) unstable; urgency=low
 
   * htm sources stripped: the unneccessary menu removed

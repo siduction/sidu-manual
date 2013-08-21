@@ -32,10 +32,10 @@ class Session(SessionBase):
         '''
         if language == None:
             language = self._language
-        fn = (self._homeDir + 'data/' + language + '/' + name + '-' 
+        fn = (self._homeDir + 'data/' + language + '/' + name + '_' 
             + language + '.htm')
         if not os.path.exists(fn) and language != 'en':
-            fn = (self._homeDir + 'data/en/' + name + '-en.htm')
+            fn = (self._homeDir + 'data/en/' + name + '_en.htm')
         return fn
     
     def translateInternalRefs(self, line):
