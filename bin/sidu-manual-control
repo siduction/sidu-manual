@@ -6,6 +6,7 @@ test -n "$CMD" || CMD=start
 case "$1" in                                                                                                            
 start)
 	pywwetha-control $CMD
+	sidu-base-control $CMD
 	if [ -n "${DISPLAY}" ] ; then
 	# Launches x-www-browser if we are in kde, xfce, lxde, rqt, gnome
 	        x-www-browser http://sidu-manual:8086
@@ -15,10 +16,11 @@ start)
 	fi
 	;;
 stop)
+	sidu-base-control $CMD
 	pywwetha-control $CMD
 	;;                                                                                                              
 *)                                                                                                                      
-        echo "unknown command! Use start stop."                                            
-        exit 1                                                                                                          
-        ;;                                                                                                              
+    echo "unknown command! Use start stop."                                            
+    exit 1                                                                                                          
+    ;;                                                                                                              
 esac                                                                                                                    

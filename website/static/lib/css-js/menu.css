@@ -30,40 +30,40 @@
 
 #menu a:visited,
 #menu a:active,
-#menu a:link { color: white; }
+#menu a:link { color: white }
 #menu li a:hover { text-decoration:underline;  }
 
-#menu ul {list-style:none; padding: 0; }
+#menu ul {list-style:none; padding: 0 }
 
-ul#treeMenu { color: #fff; background:#535D6C; margin: 0; padding: 5px 0;}
+ul#treeMenu { color: #fff; background:#535D6C; margin: 0; padding: 5px 0 }
 
 ul#treeMenu,
 ul#treeMenu ul,
-ul#treeMenu ul ul { margin: 0; }
+ul#treeMenu ul ul { margin: 0 }
 
 ul#treeMenu li,
 ul#treeMenu li li,
-ul#treeMenu li li li {	margin: 3px 0 0 1em; padding: 0; }
+ul#treeMenu li li li {	margin: 3px 0 0 1em; padding: 0 }
 
 ul#treeMenu li label:hover,
 ul#treeMenu li li label:hover,
-ul#treeMenu li li li label:hover{ text-decoration:underline; }
+ul#treeMenu li li li label:hover{ text-decoration:underline }
 
 
-#treeMenu a:visited { color: #ff8000; },
+#treeMenu a:visited { color: #ff8000 }
 #treeMenu a:active,
-#treeMenu a:link { color: white; }
-#treeMenu a { font-size: 0x85em; color: #ff8000; }
+		a:link { color: white }
+#treeMenu a { font-size: 0.85em; color: #ff8000 }
 
-#treeMenu input { display:none; }
+#treeMenu input { display:none }
 
 
-#treeMenu li input + ul  { display:none; !important;}
-#treeMenu li input:checked + ul  { display: block; }
+#treeMenu li input + ul  { display:none; !important }
+#treeMenu li input:checked + ul  { display: block }
 
 /* manual logo, manual-siduction-logo.png, links to siduction.org */
 
-#menu #menu-header { text-align:center; }
+#menu #menu-header { text-align:center }
 
 #menu #menu-header img {
 	width:65%;
@@ -74,7 +74,7 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	margin-bottom:5px;
 }
 
-#menu #menu-header img:hover { border:2px solid #D3D3D3; border-radius: 5px; }
+#menu #menu-header img:hover { border:2px solid #D3D3D3; border-radius: 5px }
 
 /* choose language logo, siduction-lang-100x64.png, links to flag-index */
 
@@ -86,14 +86,14 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	background: #fff;
 }
 
-#menu #flags-2 a { display:inline; }
+#menu #flags-2 a { display:inline }
 
 #menu #flags-2 img:hover {
 	border:2px solid #D3D3D3;
 	border-radius: 5px;
 }
 
-#menu #flags-2 { text-align:center; }
+#menu #flags-2 { text-align:center }
 
 /* donate logo */
 
@@ -106,17 +106,17 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	background: #fff;
 }
 
-#menu #menu-header-5 img:hover { border:2px solid #D3D3D3;	border-radius: 5px; }
+#menu #menu-header-5 img:hover { border:2px solid #D3D3D3;	border-radius: 5px }
 
-#menu #menu-header-5 { text-align:center; }
+#menu #menu-header-5 { text-align:center }
 
 /* search */
 #menu ul#top-list li { margin: 0; padding: 0;  }
 #menu ul#top-list img { margin: 5px 5px 0 35px;  }
-#menu ul#top-list img + b { position:absolute; margin: 5px 0 0 0; }
-#menu a > b:hover { text-decoration:underline; }
+#menu ul#top-list img + b { position:absolute; margin: 5px 0 0 0 }
+#menu a > b:hover { text-decoration:underline }
 
-#menu ul#top-list {	height: 30px; background:#535D6C; }
+#menu ul#top-list {	height: 30px; background:#535D6C }
 
 /* --- */
 
@@ -135,9 +135,9 @@ ul#treeMenu li li li label:hover{ text-decoration:underline; }
 	border:1px solid #EAEDF4;
 }
 
-#menu #flags a { display:inline; }
+#menu #flags a { display:inline }
 
-#menu img:hover { border:1px solid #6F9796; }
+#menu img:hover { border:1px solid #6F9796 }
 
 
 

@@ -1,8 +1,36 @@
+sidu-manual (0.36.1) unstable; urgency=low
+
+  * html files renamed from <name>-<lang> to <name>_<lang>.
+  * This removes the ambiguities to find the language if '-' is part of the name
+  * menu de: corrected: link wm-dm
+  * menu ro: link was translated
+  * texts for CheckPage and ExpertPage moved to sidu-base
+  * lamp-php_en.htm: html structure corrected
+  * pt-br/lamp-php_pt-br.htm: replaced by a new version
+  * buildHelpDb.sh: wrong path
+  * menu.css: syntax error removed
+  * sidu-base version: now 0.4.6 (text moves)
+  * sidu-manual-control controls now the shellserver
+  * ready for Djinn (a Django replacement)
+  * dependency of Django removed
+
+ -- J. Hamatoma <hama@siduction.net>  Sun, 01 Sep 2013 10:10:30 +0200
+
+sidu-manual (0.36) unstable; urgency=low
+
+  * fix: buildHelpDb.sh: wrong path to pyygle script
+  * checked links in menu: missing files imported from bluewater-manual
+  * some correction in menu config
+  * menu.css: syntax error (found by opera) removed
+  * help database updated
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 22 Aug 2013 23:28:58 +0200
+
 sidu-manual (0.35) unstable; urgency=low
 
   * de+pl: wrong reference in menu: wm must be wm-df
   * all *.htm renamed: the language is now separated by "_" instead of "-"
-  * restored: en/part-gdisk_en.htm 
+  * restored: en/part-gdisk_en.htm
 
  -- J. Hamatoma <hama@siduction.net>  Thu, 22 Aug 2013 00:39:41 +0200
 
@@ -28,10 +56,10 @@ sidu-manual (0.32) unstable; urgency=low
 sidu-manual (0.3.1) unstable; urgency=low
 
   [ J. Hamatoma ]
-  * fix: obsolete method indexOfFieldValues() replaced by fillStaticSelected() 
+  * fix: obsolete method indexOfFieldValues() replaced by fillStaticSelected()
 
   [ Alf Gaida ]
-  * rebuild closes #1255 
+  * rebuild closes #1255
 
  -- Alf Gaida <agaida@siduction.org>  Sat, 15 Jun 2013 12:14:49 +0200
 
@@ -45,14 +73,14 @@ sidu-manual (0.24) unstable; urgency=low
 sidu-manual (0.23) unstable; urgency=low
 
   * remove override_dh_fixperms
-  * refs #1175 
+  * refs #1175
 
  -- Alf Gaida <agaida@siduction.org>  Wed, 01 May 2013 14:33:38 +0200
 
 sidu-manual (0.22) unstable; urgency=low
 
   [ Ovidiu Angelescu ]
-  * changed rules to be applied first dh_fixperms and after that 
+  * changed rules to be applied first dh_fixperms and after that
     to chmod 755 sidu-manual.desktop
 
  -- Alf Gaida <agaida@siduction.org>  Wed, 01 May 2013 11:10:13 +0200
@@ -69,10 +97,10 @@ sidu-manual (0.20) unstable; urgency=low
   * changed mode to 755 for sidu-manual.desktop using rules
 
   [ Alf Gaida ]
-  * added convbsd to uploaders 
+  * added convbsd to uploaders
   * fix rules (make the find a little bit smarter)
   * make the override_dh_fixperms complete
-  * rebuild refs #1173 #1170 
+  * rebuild refs #1173 #1170
 
  -- Alf Gaida <agaida@siduction.org>  Sun, 28 Apr 2013 23:51:02 +0200
 
@@ -120,7 +148,7 @@ sidu-manual (0.15) unstable; urgency=low
   * LanguagePage: correct links
 
   [ Alf Gaida ]
-  * rebuild closes #1125 #1126 
+  * rebuild closes #1125 #1126
 
  -- Alf Gaida <agaida@siduction.org>  Sun, 07 Apr 2013 13:28:08 +0200
 
@@ -131,7 +159,7 @@ sidu-manual (0.12) unstable; urgency=low
   * file comparism check (checkPage)
 
   [ Alf Gaida ]
-  * rebuild refs #1126 #1125 
+  * rebuild refs #1126 #1125
 
  -- Alf Gaida <agaida@siduction.org>  Thu, 28 Mar 2013 21:58:11 +0100
 
@@ -144,14 +172,14 @@ sidu-manual (0.11) unstable; urgency=low
   * SearchPage: help can be switched on/off
 
   [ Alf Gaida ]
-  * rebuild closes #1130 
+  * rebuild closes #1130
 
  -- Alf Gaida <agaida@siduction.org>  Sun, 24 Mar 2013 18:27:24 +0100
 
 sidu-manual (0.10) unstable; urgency=low
 
   [ J. Hamatoma ]
-  * pyygle.py --> pyygle  
+  * pyygle.py --> pyygle
   * welcome is start page
   * help + fixes for the search page
 
@@ -168,7 +196,7 @@ sidu-manual (0.9) unstable; urgency=low
   * +LanguagePage
 
   [ Alf Gaida ]
-  * rebuild fixes #1112 
+  * rebuild fixes #1112
 
   [ J. Hamatoma ]
   * config.db moved to data/
@@ -177,7 +205,7 @@ sidu-manual (0.9) unstable; urgency=low
   * fix: pageframe design
   * search: handling of "no hits"
   * top menu
-  * 
+  *
 
  -- Alf Gaida <agaida@siduction.org>  Thu, 21 Mar 2013 00:50:51 +0100
 
@@ -190,7 +218,7 @@ sidu-manual (0.8.7) unstable; urgency=low
   * URL for search page
 
   [ Alf Gaida ]
-  * rebuild fixes #1107 
+  * rebuild fixes #1107
 
  -- Alf Gaida <agaida@siduction.org>  Tue, 12 Mar 2013 01:24:48 +0100
 
@@ -201,14 +229,14 @@ sidu-manual (0.8.4) unstable; urgency=low
   * create override_dh_auto_build target
   * create override_dh_auto_clean tartet
   * drop create-icons target
-  * rebuild fixes #1105 
+  * rebuild fixes #1105
 
  -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:36:51 +0100
 
 sidu-manual (0.8.3) unstable; urgency=low
 
   * gitignore modified
-  * added myself to Uploaders 
+  * added myself to Uploaders
   * added hendrikL to Uploaders
   * added devil to Uploaders
   * this silence linitian whinings:
@@ -217,20 +245,20 @@ sidu-manual (0.8.3) unstable; urgency=low
   * modified short-description, stop lintian whining
     W: sidu-manual: description-synopsis-starts-with-article
   * missed dependency python-support added, stopp lintian whining about
-    E: sidu-manual: missing-dependency-on-python-support 
+    E: sidu-manual: missing-dependency-on-python-support
     python-support (>= 0.90)
   * changed file modes to 644 for
     website/static/lib/images-common/images-grub2/*, stopp lintian
     complaining about: W: sidu-manual: executable-not-elf-or-script
   * changed file mode to 644 for website/static/lib/logos/siduction-book.png
-  * changed file mode to 644 for 
+  * changed file mode to 644 for
     website/static/lib/images-common/images-vm/kvm-gparted02.png
   * W: sidu-manual: binary-without-manpage usr/bin/sidu-manual-control
-    no override, this should be fixed 
+    no override, this should be fixed
   * current standards: 3.9.4
   * compat 9
   * fixes in copyright
-  
+
  -- Alf Gaida <agaida@siduction.org>  Mon, 11 Mar 2013 23:13:59 +0100
 
 sidu-manual (0.8.2) unstable; urgency=low
