@@ -1,17 +1,18 @@
 # Create your views here.
 from django.http import HttpResponse, HttpResponsePermanentRedirect
-from source.session import Session
+from msource.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets
 from webbasic.pagedata import PageData
-from source.searchpage import SearchPage
-from source.languagepage import LanguagePage
-from source.globalpage import GlobalPage
-from source.checkpage import CheckPage
-from source.expertpage import ExpertPage
+from msource.searchpage import SearchPage
+from msource.languagepage import LanguagePage
+from msource.globalpage import GlobalPage
+from msource.checkpage import CheckPage
+from msource.expertpage import ExpertPage
 
 def getSession(request):
-    session = Session(request, 'sidu-manual')
+    homeDir = request.documentRoot if hasattr(request, "documentRoot") else None
+    session = Session(request, homeDir)
     session._globalPage = GlobalPage(session, request.COOKIES)
     return session
 
@@ -30,11 +31,6 @@ def getMenu(session, request):
     menuHtml = menu.buildHtml(snippets)
     return menuHtml
 
-def writeCookies(response):
-    cookies =  PageData._cookie
-    for cookie in cookies:
-        response.set_cookie(cookie, cookies[cookie])
-
 def handlePage(page, request, session):
     page._globalPage = session._globalPage
     
@@ -48,7 +44,9 @@ def handlePage(page, request, session):
         session.trace('redirect to {:s} [{:s}]'.format(url, pageResult._caller))
         absUrl = session.buildAbsUrl(url)
         rc = HttpResponsePermanentRedirect(absUrl)
-    writeCookies(rc); 
+    cookies = request.COOKIES
+    for cookie in cookies:
+        rc.set_cookie(cookie, session.unicodeToAscii(cookies[cookie]))
     return rc
     
 def index(request):
@@ -80,7 +78,11 @@ def language(request):
     rc = handlePage(LanguagePage(session), request, session)
     return rc
 
-def staticPage(request, page):
+def staticPage(request, page = None):
+    if page == None:
+        page = request.META["PATH_INFO"]
+        if page.startswith("/"):
+            page = page[1:]
     session = getSession(request)
     menuHtml = getMenu(session, request)
     body = session.buildStaticPage(page, menuHtml)

@@ -1,3 +1,12 @@
+sidu-manual (0.36.2) unstable; urgency=low
+
+  * source renamed to msource
+    Djinn needs unique package names for simple switching
+    between applications
+  * new: sidu-manual.lintian-overrides
+
+ -- J. Hamatoma <hama@siduction.net>  Mon, 09 Sep 2013 11:50:20 +0200
+
 sidu-manual (0.36.1) unstable; urgency=low
 
   * html files renamed from <name>-<lang> to <name>_<lang>.

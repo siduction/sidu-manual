@@ -78,8 +78,13 @@ class CheckPage(Page):
             else:
                 message += msg
         self._resultBody = message
-            
-        message = self._snippets.get('KEY_DIFF').replace('{{message}}', message)
+         
+        #@ToDo   
+        #message = ""
+        #content = self._snippets.get('KEY_DIFF')
+        #if content != None:
+        #    message = content
+        #self._resultBody = self._resultBody.replace('{{message}}', message)
             
     def changeContent(self, body):
         '''Changes the template in a customized way.

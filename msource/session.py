@@ -13,7 +13,7 @@ class Session(SessionBase):
     classdocs
     '''
 
-    def __init__(self, request, application):
+    def __init__(self, request, homeDir = None):
         '''
         Constructor.
         @param request: the HTTP request info
@@ -22,7 +22,7 @@ class Session(SessionBase):
         '''
         super(Session, self).__init__(request,
             ['de', 'en', 'it', 'pl', 'pt-br', 'ro'], 
-            application)
+            "sidu-manual", homeDir)
         self._rexprPageLink = None
 
     def getNameOfStaticFile(self, name, language = None):
