@@ -13,6 +13,7 @@ from msource.expertpage import ExpertPage
 def getSession(request):
     homeDir = request.documentRoot if hasattr(request, "documentRoot") else None
     session = Session(request, homeDir)
+    # store globalpage for getMenu() and handlePage()
     session._globalPage = GlobalPage(session, request.COOKIES)
     return session
 
@@ -24,7 +25,9 @@ def getFields(request):
     
 def getMenu(session, request):
     fields = getFields(request)
-    menu = Menu(session, 'menu', True, fields)
+    expertMode = session._globalPage.getField("expert")
+    isExtended = expertMode == "T"
+    menu = Menu(session, 'menu', True, fields, isExtended)
     menu.read()
     snippets = HTMLSnippets(session)
     snippets.read('menu')

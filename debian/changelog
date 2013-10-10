@@ -1,3 +1,10 @@
+sidu-manual (2013.10.12) unstable; urgency=low
+
+  * adapted to sidu-base 0.4.8
+  * parameter of Menu.__init__(): isExtended
+
+ -- J. Hamatoma <hama@siduction.net>  Fri, 11 Oct 2013 00:00:56 +0200
+
 sidu-manual (2013.10.11) unstable; urgency=low
 
   * changed the rights of sidu-manual.desktop to 775
