@@ -1,4 +1,4 @@
-sidu-manual (2013.10.11) UNRELEASED; urgency=low
+sidu-manual (2013.10.11) unstable; urgency=low
 
   * changed the rights of sidu-manual.desktop to 775
     in postinst
