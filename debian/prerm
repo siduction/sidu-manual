@@ -1,29 +1,34 @@
 #! /bin/bash
+
+# prerm script for sidu-manual
+
 set -e
-PROJ=sidu-manual
-if grep -q $PROJ /etc/hosts ; then
-	sed -i -e "/127\.0\.0\.[0-9]*[ \t]*$PROJ/d" /etc/hosts
-	echo "virtual host removed: $PROJ"
-fi
 
 # delete the links from the toolkit:
-function RmLink(){
-	if [ -L $1 ] ; then
-		rm -f $1
-	fi
+function RmLink() {
+    if [ -L $1 ] ; then
+        rm -f $1
+    fi
 }
-pushd /usr/share/$PROJ >/dev/null
 
-RmLink public
+case "$1" in
+    remove|upgrade|deconfigure)
+        PROJ=sidu-manual
+        if grep -q $PROJ /etc/hosts ; then
+            sed -i -e "/127\.0\.0\.[0-9]*[ \t]*$PROJ/d" /etc/hosts
+            echo "virtual host removed: $PROJ"
+        fi
+        RmLink /usr/share/${PROJ}/public
+    ;;
 
-#cd backend
+    failed-upgrade)
+    ;;
 
-# Remove the links to the shellserver:
-cd /usr/share/sidu-base/backend
-
-popd >/dev/null
-
-# Debhelpertoken added, review needed
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
 
 #DEBHELPER#
 

@@ -1,40 +1,59 @@
 #! /bin/bash
+# postinst script for sidu-manual
+
 set -e
 
-if ! grep -q "sidu-manual" /etc/hosts ; then
-	# if the last newline is missing:
-	echo "" >>/etc/hosts
-	ADDR=86
-	while grep -q "127.0.0.$ADDR" /etc/hosts ; do
-		ADDR=$(expr $ADDR + 1)
-	done
-	echo "127.0.0.$ADDR sidu-manual" >>/etc/hosts
-	echo "virtual host installed: sidu-manual ($ADDR)"
-fi
-
-# Create the links from the toolkit:
-pushd /usr/share/sidu-manual >/dev/null
-SRC=../sidu-base
-function MkLink(){
-	if [ ! -L $1 ] ; then
-		ln -sf $2/$1 $1
-	fi
-}
-function MkLink2(){
-	if [ ! -L $2 ] ; then
-		ln -sf $1 $2
-	fi
+function MkLink() {
+    if [ ! -L $1 ] ; then
+        ln -sf $2/$1 $1
+    fi
 }
 
-# Create the links to the shellserver:
-SRC_INI=/usr/share/sidu-base/backend
-cd $SRC_INI
-SRC=../../sidu-manual/backend
-MkLink2 /var/cache/sidu-base/public /usr/share/sidu-manual
+function MkLink2() {
+    if [ ! -L $2 ] ; then
+        ln -sf $1 $2
+    fi
+}
 
-popd >/dev/null
+case "$1" in
+    configure)
+        if [ -f /etc/skel/Desktop/sidu-manual.desktop ]; then
+            chmod 755 /etc/skel/Desktop/sidu-manual.desktop
+        fi
+        if ! grep -q "sidu-manual" /etc/hosts ; then
+            # if the last newline is missing:
+            echo "" >>/etc/hosts
+            ADDR=86
+            while grep -q "127.0.0.$ADDR" /etc/hosts ; do
+                ADDR=$(expr $ADDR + 1)
+            done
+            echo "127.0.0.$ADDR sidu-manual" >>/etc/hosts
+            echo "virtual host installed: sidu-manual ($ADDR)"
+        fi
+
+        # Create the links from the toolkit:
+        pushd /usr/share/sidu-manual >/dev/null
+        SRC=../sidu-base
+
+        # Create the links to the shellserver:
+        SRC_INI=/usr/share/sidu-base/backend
+        cd $SRC_INI
+        SRC=../../sidu-manual/backend
+        MkLink2 /var/cache/sidu-base/public /usr/share/sidu-manual
+
+        popd >/dev/null
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
 
 #DEBHELPER#
 
 exit 0
- 
+

@@ -1,3 +1,11 @@
+sidu-manual (2013.10.11) UNRELEASED; urgency=low
+
+  * changed the rights of sidu-manual.desktop to 775
+    in postinst
+  * rewrite prerm and postinst using the common debian templates
+
+ -- Alf Gaida <agaida@siduction.org>  Thu, 10 Oct 2013 21:58:36 +0200
+
 sidu-manual (2013.10.10) unstable; urgency=low
 
   * sidu-manual.desktop installed in skel/Desktop too 
