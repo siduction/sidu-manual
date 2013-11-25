@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
 Exec=sidu-manual-control start

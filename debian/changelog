@@ -1,3 +1,10 @@
+sidu-manual (2013.10.13) UNRELEASED; urgency=low
+
+  * bring gpu_de and gpu_en.htm to current
+  * bring gpu_de and gpu_en.htm to current; closes #1395
+
+ -- Ferdinand Thommes <devil@siduction.org>  Mon, 25 Nov 2013 21:04:07 +0100
+
 sidu-manual (2013.10.11) unstable; urgency=low
 
   * changed the rights of sidu-manual.desktop to 775
