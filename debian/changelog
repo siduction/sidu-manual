@@ -1,9 +1,11 @@
-sidu-manual (2013.10.13) UNRELEASED; urgency=low
+sidu-manual (2013.10.14) UNRELEASED; urgency=low
 
   * bring gpu_de and gpu_en.htm to current
   * bring gpu_de and gpu_en.htm to current; closes #1395
+  * update  cd-content-de and -en.htm to current, adding new desktop
+    environments, updating specs and fixing typos
 
- -- Ferdinand Thommes <devil@siduction.org>  Mon, 25 Nov 2013 21:04:07 +0100
+ -- Ferdinand Thommes <devil@siduction.org>  Tue, 26 Nov 2013 16:00:13 +0100
 
 sidu-manual (2013.10.11) unstable; urgency=low
 

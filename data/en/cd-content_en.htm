@@ -23,16 +23,16 @@
 			<h2 id="top-header">Contents of the Live ISO</h2>
 							<p class="highlight-3">siduction only provides Debian dfsg-free software on the live-ISO, <a href="nf-firm-en.htm#non-free-firmware">please check this link for additional information on non-free sources for firmware</a>.</p>
 
-							<p>The ISO is completely based on Debian Sid (up to date as of 2011-12-21) enriched and stabilised with packages and scripts from siduction.  It comes with the latest enhanced siduction kernel, which is based on the most recent Vanilla Mainline Kernel with added patches. ACPI and DMA are enabled by default. </p>
+							<p>The ISO is completely based on Debian Sid, enriched and stabilised with packages and scripts from siduction. It comes with the latest enhanced siduction kernel, which is based on the most recent Vanilla Mainline Kernel with added patches. ACPI and DMA are enabled by default. </p>
 
 							<p><span class="highlight-3">A complete manifest with all installed applications of each of the release variants is included on each download mirror: </span><a href="cd-dl-burning-en.htm#download-siduction">siduction Mirrors, Downloading and Burning</a>.</p>
 
 							</div>
 		<div class="divider" id="release-vari">
-					<h2>Release ISO variations</h2>
-							<p>siduction offers 6 up-to-date live-ISO entry point release variations to Debian Sid and installing does not usually take longer than 1-10 minutes, depending on your hardware.</p>
+					<h2>Release ISO variants</h2>
+							<p>siduction offers 12 up-to-date live-ISO entry point release variants to Debian Sid and installing does usually take 1-10 minutes, depending on your hardware.</p>
 
-						      <h6> The variations are:</h6>
+						      <h6> The variants are:</h6>
 
 						<ol>
 							<li><b>KDE 32 bit </b>, live-ISO approximately 1GByte:<br />
@@ -41,21 +41,38 @@
 							<li><b>KDE 64 bit </b>, live-ISO approximately 1GByte:<br />
 							contains a medium set of applications for the KDE4 desktop. Adding more applications to suit your long term requirements is easily done via apt.</li>
 
-							<li><b>XFCE 32 bit</b>, live-ISO approximately 800MByte:<br />
+							<li><b>XFCE 32 bit</b>, live-ISO with ~ 720MByte:<br />
 							contains a fully featured Desktop Environment (not minimal), and has all the applications you need to be productive immediately. It has a smaller footprint than KDE4.</li>
 
-							<li><b>XFCE 64 bit </b>, live-ISO approximately 800MByte:<br />  contains a fully featured Desktop Environment (not minimal), and has all the applications you need to be productive immediately. It has a smaller footprint than KDE4.</li>
+							<li><b>XFCE 64 bit </b>, live-ISO with ~ 720MByte:<br />  contains a fully featured Desktop Environment (not minimal), and has all the applications you need to be productive immediately. It has a smaller footprint than KDE4.</li>
 
-							<li><b>LXDE 32 bit</b>, live-ISO approximately 650MByte:<br /> contains a light Desktop Environment. It has an even  smaller footprint than XFCE.</li>
-							<li><b>LXDE 64 bit</b>, live-ISO approximately 650MByte:<br /> contains a light Desktop Environment. It has an even  smaller footprint than XFCE.</li>
-						
+							<li><b>LXDE 32 bit</b>, live-ISO with ~ 620MByte:<br /> contains a light Desktop Environment. It has an even  smaller footprint than XFCE.</li>
+							<li><b>LXDE 64 bit</b>, live-ISO with ~ 620MByte:<br /> contains a light Desktop Environment. It has an even  smaller footprint than XFCE.</li>
+							
+							<li><b>Gnome3 32 bit </b> live-ISO with ~ 1GByte:<br />
+							Gnome-Desktop with Classic- and Flashback-Mode</li>
+							
+							<li><b>Gnome3 with 64 bit </b> live-ISO with ~ 1GByte:<br />
+							Gnome-Desktop with Classic- and Flashback-Mode</li>
+							
+							<li><b>RazorQt with 32 bit </b> live-ISO with ~ 730MByte:<br />
+							Qt-based lean desktop</li>
+							
+							<li><b>RazorQt with 64 bit </b> live-ISO with ~ 730MByte:<br />
+							Qt-based desktop</li>
+							
+							<li><b>NoX with 32 bit </b> live-ISO with ~ 320MByte:<br />
+							As the name suggests: no X</li>
+							
+							<li><b>NoX mit 64 bit </b> live-ISO with ~ 320MByte:<br />
+							As the name suggests: no X</li>
 						</ol>
 
 							<p><a href="cd-content-en.htm#apps-tools">Applications and tools</a></p>
 
 		</div>
 		<div class="divider" id="system-requirements">
-			<h2>Minimum System requirements for KDE4, XFCE and LXDE</h2>
+			<h2>Minimum System requirements for KDE4, Gnome3, XFCE RQT, LXDE, and NoX</h2>
 			 <h3>AMD64</h3>
 				<ul>
 					  <li>
@@ -71,9 +88,12 @@
 						<li>
 					<h5>RAM requirements:</h5>
 						<ul>
-							<li><b>KDE: </b>&ge;512 MByte RAM (&ge;1 GByte RAM recommended), &ge;1 GByte RAM for liveapt.)</li>
-							<li><b>XFCE: </b> &ge;512 MByte RAM.</li>
-							<li><b>LXDE: </b> &ge;512 MByte RAM.</li>
+							<li><b>KDE: </b>&ge;512 MByte RAM 
+							<li><b>Gnome: </b> &ge;512 MByte RAM.</li>
+							<li><b>XFCE: </b> &ge;256 MByte RAM.</li>
+							<li><b>LXDE: </b> &ge;256 MByte RAM.</li>
+							<li><b>RQT: </b> &ge;256 MByte RAM.</li>
+							<li><b>NoX: </b> &ge;128MByte RAM.</li>
 
 						</ul>
 						</li>
@@ -101,16 +121,19 @@
 						<li>
 					<h5>RAM requirements:</h5>
 						<ul>
-							<li><b>KDE: </b> &ge;512 MByte RAM (&ge;1 GByte RAM recommended), &ge;1 GByte RAM for liveapt.</li>
-							<li><b>XFCE: </b> &ge;512 MByte RAM.</li>
-							<li><b>LXDE: </b> &ge;512 MByte RAM.</li>
+							<li><b>KDE: </b>&ge;512MByte RAM 
+							<li><b>Gnome: </b> &ge;512MByte RAM.</li>
+							<li><b>XFCE: </b> &ge;256MByte RAM.</li>
+							<li><b>LXDE: </b> &ge;256MByte RAM.</li>
+							<li><b>RQT: </b> &ge;256MByte RAM.</li>
+							<li><b>NoX: </b> &ge;128MByte RAM.</li>
 						</ul>
 						</li>
 						      <li>VGA graphics card capable of at least 640x480 pixel resolution.</li>
 
 							<li>Optical disk drive or USB media.</li>
 
-							<li>&ge;3 GByte HDD space, &ge;10+ GByte recommended.</li>
+							<li>&ge;4 GByte HDD space, &ge;10+ GByte recommended.</li>
 						</ul>
 
 		      </div>
@@ -118,13 +141,15 @@
 					<h2>Applications and Tools</h2>
     							<p>The siduction-ISO holds a variety of different programs and tools that cover almost any need of a desktop-user in everyday life.</p>
 
-							<p>Choice of 3 major cutting edge Desktop Managers to access programs/applications: <br />
+							<p>Choice of 5 major cutting edge Desktop Managers to access programs/applications: <br />
 							<a href="http://www.kde.org/">KDE4 (en + de),</a> a top of the range desktop manager<br />
+							<a href="http://www.gnome.org/">Gnome3 (en + de),</a> a top of the range desktop manager<br />
 							<a href="http://www.xfce.org/">Xfce4 (en + de),</a> a medium weight desktop manager.<br />
-							<a href="http://www.lxde.org/">LXDE (en + de),</a> a lightweight desktop manager.</p>
-							<p><a href="http://fluxbox.org/">Fluxbox (en + de)</a> is included on KDE and XFCE variations as a lightweight desktop manager option. </p>
+							<a href="http://www.lxde.org/">LXDE (en + de),</a> a lightweight GTK+-based desktop manager.</p>
+							<a href="http://wwwrazor-qt.org/">RazorQt (en),</a> a lightweight Qt-based desktop manager.</p>
+							
 
-							<p>For surfing the Internet, depending on the release variation, there is  <a href="http://www.konqueror.org/">Konqueror</a> and <a href="http://www.mozilla.com/">iceweasel</a> or <a href="http://www.twotoasts.de/index.php?/pages/midori_summary.html/">midori</a>.</p>
+							<p>For surfing the Internet, depending on the release variant, there is  <a href="http://www.konqueror.org/">Konqueror</a> and <a href="http://www.mozilla.com/">iceweasel</a> or <a href="http://www.twotoasts.de/index.php?/pages/midori_summary.html/">midori</a>.</p>
 
 							<p>Office Productivity applications are Abiword and Gnumeric on the XFCE and LXDE variants, file managers are Dolphin and Thunar and PCmanFM.</p>
 
@@ -143,7 +168,7 @@
 							<p>This is experimental software. Use at your own risk. The siduction project, it's developers and team members cannot be held liable under any circumstances for damage to hardware or software, lost data, or other direct or indirect damage resulting from the use of this software. If you do not agree to these terms and conditions, you are not permitted to use or further distribute this software.</p>
 
 	</div>
-			<div id="rev">Content last revised 13/01/2012 1800 UTC</div>
+			<div id="rev">Content last revised 26/11/2013 1800 UTC</div>
 
 </div>
 </div>
