@@ -15,63 +15,101 @@
 */
 
 #menu {
-	width:200px;
-	font:normal 0.9em "DroidSansRegular", sans-serif;
-	float:left;
-	z-index:4;
-	padding-top:10px;
-	background:#fff;
-	border:1px solid #626B79;
-	margin-top: -2px;
-	margin-right:0px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
+    width:200px;
+    font:normal 0.9em "DroidSansRegular", sans-serif;
+    float:left;
+    z-index:4;
+    padding-top:10px;
+    background:#fff;
+    border:1px solid #626B79;
+    margin-top: -2px;
+    margin-right:0px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #menu a:visited,
 #menu a:active,
-#menu a:link { color: white }
-#menu li a:hover { text-decoration:underline;  }
+#menu a:link { 
+    color: white;
+}
 
-#menu ul {list-style:none; padding: 0 }
+#menu li a:hover {
+    text-decoration:underline;
+}
 
-ul#treeMenu { color: #fff; background:#535D6C; margin: 0; padding: 5px 0 }
+#menu ul {
+    list-style:none;
+    padding: 0
+}
+
+ul#treeMenu {
+    color: #fff;
+    background:#535D6C;
+    margin: 0;
+    padding: 5px 0;
+}
 
 ul#treeMenu,
 ul#treeMenu ul,
-ul#treeMenu ul ul { margin: 0 }
+ul#treeMenu ul ul {
+    margin: 0;
+}
 
 ul#treeMenu li,
 ul#treeMenu li li,
-ul#treeMenu li li li {	margin: 3px 0 0 1em; padding: 0 }
+ul#treeMenu li li li {
+    margin: 3px 0 0 1em;
+    padding: 0;
+}
 
 ul#treeMenu li label:hover,
 ul#treeMenu li li label:hover,
-ul#treeMenu li li li label:hover{ text-decoration:underline }
+ul#treeMenu li li li label:hover{
+    text-decoration:underline;
+}
 
 
-#treeMenu a:visited { color: #ff8000 }
+#treeMenu a:visited {
+    color: #ff8000;
+}
+
 #treeMenu a:active,
-		a:link { color: white }
-#treeMenu a { font-size: 0.85em; color: #ff8000 }
+#treeMenu a:link {
+    color: white;
+}
 
-#treeMenu input { display:none }
+#treeMenu a {
+    font-size: 0.85em;
+    color: #ff8000;
+}
+
+#treeMenu input {
+    display:none
+}
 
 
-#treeMenu li input + ul  { display:none; !important }
-#treeMenu li input:checked + ul  { display: block }
+#treeMenu li input + ul  {
+    display:none; !important;
+}
+
+#treeMenu li input:checked + ul {
+    display: block;
+}
 
 /* manual logo, manual-siduction-logo.png, links to siduction.org */
 
-#menu #menu-header { text-align:center }
+#menu #menu-header {
+    text-align:center;
+}
 
 #menu #menu-header img {
-	width:65%;
-	padding: 3px;
-	border:2px solid #fff;
-	border-radius: 5px;
-	background: #fff;
-	margin-bottom:5px;
+    width:65%;
+    padding: 3px;
+    border:2px solid #fff;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom:5px;
 }
 
 #menu #menu-header img:hover { border:2px solid #D3D3D3; border-radius: 5px }
@@ -79,65 +117,91 @@ ul#treeMenu li li li label:hover{ text-decoration:underline }
 /* choose language logo, siduction-lang-100x64.png, links to flag-index */
 
 #menu #flags-2 img {
-	margin-bottom:6px;
-	border:2px solid #fff;
-	border-radius: 5px;
-	width:40%;
-	background: #fff;
+    margin-bottom:6px;
+    border:2px solid #fff;
+    border-radius: 5px;
+    width:40%;
+    background: #fff;
 }
 
-#menu #flags-2 a { display:inline }
+#menu #flags-2 a {
+    display:inline;
+}
 
 #menu #flags-2 img:hover {
-	border:2px solid #D3D3D3;
-	border-radius: 5px;
+    border:2px solid #D3D3D3;
+    border-radius: 5px;
 }
 
-#menu #flags-2 { text-align:center }
+#menu #flags-2 {
+    text-align:center;
+}
 
 /* donate logo */
 
 #menu #menu-header-5  img {
-	margin-bottom: 4px;
-	padding:0px;
-	border:2px solid #fff;
-	border-radius: 5px;
-	width:33%;
-	background: #fff;
+    margin-bottom: 4px;
+    padding:0px;
+    border:2px solid #fff;
+    border-radius: 5px;
+    width:33%;
+    background: #fff;
 }
 
-#menu #menu-header-5 img:hover { border:2px solid #D3D3D3;	border-radius: 5px }
+#menu #menu-header-5 img:hover {
+    border:2px solid #D3D3D3;
+    border-radius: 5px;
+}
 
-#menu #menu-header-5 { text-align:center }
+#menu #menu-header-5 {
+    text-align:center;
+}
 
 /* search */
-#menu ul#top-list li { margin: 0; padding: 0;  }
-#menu ul#top-list img { margin: 5px 5px 0 35px;  }
-#menu ul#top-list img + b { position:absolute; margin: 5px 0 0 0 }
-#menu a > b:hover { text-decoration:underline }
+#menu ul#top-list li {
+    margin: 0;
+    padding: 0;
+}
 
-#menu ul#top-list {	height: 30px; background:#535D6C }
+#menu ul#top-list img {
+    margin: 5px 5px 0 35px;
+}
+
+#menu ul#top-list img + b {
+    position:absolute;
+     margin: 5px 0 0 0;
+}
+
+#menu a > b:hover {
+    text-decoration:underline;
+}
+
+#menu ul#top-list {
+    height: 30px;
+    background:#535D6C;
+}
 
 /* --- */
 
 #menu #flags {
-	text-align:center;
-	margin: -1px 0 -1px 1px;
-	line-height:12px;
-	padding:0;
+    text-align:center;
+    margin: -1px 0 -1px 1px;
+    line-height:12px;
+    padding:0;
 }
 
 
 #menu #flags img {
-	margin:1px;
-	width:20px;
-	height:12px;
-	border:1px solid #EAEDF4;
+    margin:1px;
+    width:20px;
+    height:12px;
+    border:1px solid #EAEDF4;
 }
 
-#menu #flags a { display:inline }
+#menu #flags a {
+    display:inline;
+}
 
-#menu img:hover { border:1px solid #6F9796 }
-
-
-
+#menu img:hover {
+    border:1px solid #6F9796;
+}
