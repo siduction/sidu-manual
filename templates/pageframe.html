@@ -19,48 +19,53 @@
     {{META_DYNAMIC}}
 </head>
 
-<body class="body-main">
-    <p>
-        <img class="header-img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/lib/logos/siduction-logo-web.png" />
-    </p>
-
-    <div id="top-navigation" class="clearfix">
-        <ul id="top-menu-list">
-            <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>
-            <li><a href="http://siduction.org/index.php?module=News">{{.txt_top_menu_blog}}</a></li>
-            <li><a href="http://wiki.siduction.de/">{{.txt_top_menu_wiki}}</a></li>
-            <li><a href="http://siduction.org/index.php?name=PNphpBB2&amp;lang={{!language}}">{{.txt_top_menu_forum}}</a></li>
-        </ul>
-    </div> <!-- top-navigation -->
-
-    <div id="bg" class="to-top">
-        <div id="menu">
-            <div id="menu-header">
-                <a href="http://siduction.org/"><img src="{{STATIC_URL}}/static/lib/logos/manual-siduction-logo.png" title="{{.txt_logo_title}}" alt="{{.txt_logo_alt}}" /></a>
+<body>
+    <div id="wrapper">
+        <div id="siduction-header">
+            <div id="header_logo">
+                <a class="pict_link" href="http://forum.siduction.org">
+                     <img id="header_logo_img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/lib/logos/logo.png">
+                </a>
             </div>
-            <ul id="top-list">
-                <li><a href="!search">
-                    <img src="/static/lib/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" />
-                    <b>{{.txt_search}}</b>
-                </a></li>
-            </ul>
-            <div id="flags-2">
-                <a href="!language"><img src="/static/lib/logos/siduction-lang-100x64.png" title="{{.txt_lang_switch}}" alt="{{.alt_lang_switch}}" /></a>
-            </div>
-            <div id="navi">
-                {{MENU}}
-            </div> <!-- navi -->
-            <div id="menu-header-5">
-                <a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="{{STATIC_URL}}/static/lib/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" /></a>
-            </div><!-- menu-header-5 -->
-        </div> <!-- menu -->
-        <div id="main-page">
-            {{CONTENT}}
-        </div> <!-- main-page -->
-    </div> <!-- bg -->
+            <div id="top-navigation">
+                <ul id="top-menu-list">
+                    <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>
+                    <li><a href="http://siduction.org/index.php?module=News">{{.txt_top_menu_blog}}</a></li>
+                    <li><a href="http://wiki.siduction.de/">{{.txt_top_menu_wiki}}</a></li>
+                    <li><a href="http://siduction.org/index.php?name=PNphpBB2&amp;lang={{!language}}">{{.txt_top_menu_forum}}</a></li>
+                </ul>
+            </div> <!-- top-navigation -->
+        </div> <!-- siduction-header -->
 
-    <div id="footer" class="clear">
-        {{.txt_footer}}
-    </div>
+        <div id="bg" class="to-top">
+            <div id="menu">
+                <div id="menu-header">
+                    <a href="http://siduction.org/"><img src="{{STATIC_URL}}/static/lib/logos/manual-siduction-logo.png" title="{{.txt_logo_title}}" alt="{{.txt_logo_alt}}" /></a>
+                </div>
+                <ul id="top-list">
+                    <li><a href="!search">
+                        <img src="/static/lib/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" />
+                        <b>{{.txt_search}}</b>
+                    </a></li>
+                </ul>
+                <div id="flags-2">
+                    <a href="!language"><img src="/static/lib/logos/siduction-lang-100x64.png" title="{{.txt_lang_switch}}" alt="{{.alt_lang_switch}}" /></a>
+                </div>
+                <div id="navi">
+                    {{MENU}}
+                </div> <!-- navi -->
+                <div id="menu-header-5">
+                    <a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="{{STATIC_URL}}/static/lib/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" /></a>
+                </div><!-- menu-header-5 -->
+            </div> <!-- menu -->
+            <div id="main-page">
+                {{CONTENT}}
+            </div> <!-- main-page -->
+        </div> <!-- bg -->
+
+        <div id="footer" class="clear">
+            {{.txt_footer}}
+        </div>
+    </div> <!-- wrapper -->
 </body>
 </html>

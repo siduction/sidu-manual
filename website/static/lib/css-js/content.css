@@ -89,27 +89,49 @@
     font-style: normal;
 }
 
-body,html,object,div{
-    margin:0;
-    padding:0;
+/* please no hard resets, if not really needed */
+body, td, th, tr {
+    color: #444444;
 }
+
+/* should be as is                                                */
+
 body {
-    font:normal 14px "DroidSansRegular", sans-serif;
-    background: #e7e7e7; /*#D3D3D3;*/
-    color:#000611;
+    background: #E7E7E7;
+    font: 78%/130% "DroidSansRegular","Verdana","Arial","Helvetica",sans-serif;
+    margin:0 auto;
+    padding: 3px 0;
+}
+
+div#wrapper {
+    max-width: 2300px;
+    min-width: 764px;
+    width: 937px;
     margin:0 auto;
 }
 
-.body-main {
-    max-width: 920px; /*width:95%;*/
-    min-width: 420px;
-    margin:0 auto;
-    padding-top:5px;
-    padding-bottom:15px;
+#siduction-header {
+    background: url("../logos/header.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    float: none;
+    height: 100px;
+    position: relative;
+    width: auto;
 }
+
+#header_logo {
+    float: left;
+}
+
+#header_logo_img {
+    margin: -1px 0 0 -12px;
+}
+
+a img {
+    border: 0 none;
+}
+
 
 #bg {
-    width:92.85%;
     background:#fff;
     margin-left:auto;
     margin-right: auto;
@@ -117,15 +139,6 @@ body {
     margin-bottom:10px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-}
-
-.header-img {
-    width: 100%;
-    min-width: 390px;
-    margin-top:5px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:0;
 }
 
 /*
