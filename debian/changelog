@@ -1,3 +1,10 @@
+sidu-manual (2013.11.30) unstable; urgency=low
+
+  * fix some css files, links are now visible again
+  * css file formated 
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 12:59:15 +0100
+
 sidu-manual (2013.11.26) unstable; urgency=low
 
   [ Ferdinand Thommes ]
@@ -9,7 +16,7 @@ sidu-manual (2013.11.26) unstable; urgency=low
   [ Alf Gaida ]
   * new build for unstable
 
- -- Alf Gaida <agaida@siduction.org>  Tue, 26 Nov 2013 20:46:46 +0100
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 12:58:12 +0100
 
 sidu-manual (2013.10.11) unstable; urgency=low
 
