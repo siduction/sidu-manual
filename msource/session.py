@@ -17,27 +17,27 @@ class Session(SessionBase):
         '''
         Constructor.
         @param request: the HTTP request info
-        @param application: the name of the application. Will be used while 
+        @param application: the name of the application. Will be used while
                             searching the configuration file
         '''
         super(Session, self).__init__(request,
-            ['de', 'en', 'it', 'pl', 'pt-br', 'ro'], 
+            ['de', 'en', 'it', 'pl', 'pt-br', 'ro'],
             "sidu-manual", homeDir)
         self._rexprPageLink = None
 
     def getNameOfStaticFile(self, name, language = None):
         '''Calculates the name of a static content file.
         @param name: the part of the filename without language and extension
-        @return: the full path of the file 
+        @return: the full path of the file
         '''
         if language == None:
             language = self._language
-        fn = (self._homeDir + 'data/' + language + '/' + name + '_' 
+        fn = (self._homeDir + 'data/' + language + '/' + name + '_'
             + language + '.htm')
         if not os.path.exists(fn) and language != 'en':
             fn = (self._homeDir + 'data/en/' + name + '_en.htm')
         return fn
-    
+
     def translateInternalRefs(self, line):
         '''Change all internal links in a given line.
         @param line: the line to change
@@ -47,10 +47,10 @@ class Session(SessionBase):
             self._rexprPageLink = re.compile(
                 r'href="([\w.-]*?)-([a-z]{2}(-[a-z]{2})?)[.]htm')
         line = self._rexprPageLink.sub(r'href="\1', line)
-        line = line.replace('href="../lib', 'href="/static')
-        line = line.replace('src="../lib', 'src="/static')
+        line = line.replace('href="..', 'href="/static')
+        line = line.replace('src="..', 'src="/static')
         return line
-    
+
     def getBodyOfStatic(self, filename):
         '''Extracts the body of a full html document.
         @param filename: the filename of the document with path
@@ -86,7 +86,7 @@ class Session(SessionBase):
                 if ix >= 0:
                     rc = rc[0:ix]
         return rc
-    
+
     def getTemplate(self, node):
         '''Gets a template file into a string.
         @param: node: the file's name without path
@@ -95,17 +95,17 @@ class Session(SessionBase):
         fn = self._homeDir + 'templates/' + node
         rc = Util.readFileAsString(fn)
         return rc
-    
+
     def buildStaticPage(self, page, menuBody):
         '''Builds a page from a given HTML body.
-        @param page: the name of the page: defines the 
+        @param page: the name of the page: defines the
         @param menuBody: the HTML code of the menu
-        @return: the HTML code of the page 
+        @return: the HTML code of the page
         '''
         fn = self.getNameOfStaticFile(page)
         content = self.getBodyOfStatic(fn)
-        params = {'content': content, 
-            'LANGUAGE' : 'de', 
+        params = {'content': content,
+            'LANGUAGE' : 'de',
             'txt_title' : 'sidu-help',
             'META_DYNAMIC' : '',
             'STATIC_URL' : '',
@@ -116,4 +116,4 @@ class Session(SessionBase):
         rc = self.getTemplate('pageframe.html')
         rc = self.replaceVars(rc, params)
         return rc
-        
+
