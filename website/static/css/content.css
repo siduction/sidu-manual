@@ -1,93 +1,16 @@
 /*
-* bluewater-manual OS menu.css copyright:
-* 2011-2012, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
-* 2006-2009, Harald Holt (h2)
-* 2006-2011, Trevor Walkley (bluewater)(trevor_walkley at aptenodytes.org)
+* sidu-manual content.css
+* copyright: 2013      Alf Gaida <agaida@siduction.org>
+*            2011-2012 Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
+*            2006-2009 Harold Hope (h2)
+*            2006-2011 Trevor Walkley (bluewater)(trevor_walkley at aptenodytes.org)
 *
 * released under GNU Free Documentation License.Permission is granted to copy, distribute
 * and/or modify this document under the terms of the GNU Free Documentation License,
 * Version 1.2 or any later version published by the Free Software Foundation; with no
 * Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
 *
-* Last updated by hendrikL 2012-02-11 09:15 hrs UTC
 */
-
-@font-face {
-    font-family: 'DroidSansRegular';
-    src: url('fonts/droidsans-webfont.eot');
-    src: url('fonts/droidsans-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidsans-webfont.woff') format('woff'),
-         url('fonts/droidsans-webfont.ttf') format('truetype'),
-         url('fonts/droidsans-webfont.svg#DroidSansRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DroidSansBold';
-    src: url('fonts/droidsans-bold-webfont.eot');
-    src: url('fonts/droidsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidsans-bold-webfont.woff') format('woff'),
-         url('fonts/droidsans-bold-webfont.ttf') format('truetype'),
-         url('fonts/droidsans-bold-webfont.svg#DroidSansBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DroidSansMonoRegular';
-    src: url('fonts/droidsansmono-webfont.eot');
-    src: url('fonts/droidsansmono-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidsansmono-webfont.woff') format('woff'),
-         url('fonts/droidsansmono-webfont.ttf') format('truetype'),
-         url('fonts/droidsansmono-webfont.svg#DroidSansMonoRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DroidSerifRegular';
-    src: url('fonts/droidserif-regular-webfont.eot');
-    src: url('fonts/droidserif-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidserif-regular-webfont.woff') format('woff'),
-         url('fonts/droidserif-regular-webfont.ttf') format('truetype'),
-         url('fonts/droidserif-regular-webfont.svg#DroidSerifRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DroidSerifBoldItalic';
-    src: url('fonts/droidserif-bolditalic-webfont.eot');
-    src: url('fonts/droidserif-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidserif-bolditalic-webfont.woff') format('woff'),
-         url('fonts/droidserif-bolditalic-webfont.ttf') format('truetype'),
-         url('fonts/droidserif-bolditalic-webfont.svg#DroidSerifBoldItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DroidSerifBold';
-    src: url('fonts/droidserif-bold-webfont.eot');
-    src: url('fonts/droidserif-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidserif-bold-webfont.woff') format('woff'),
-         url('fonts/droidserif-bold-webfont.ttf') format('truetype'),
-         url('fonts/droidserif-bold-webfont.svg#DroidSerifBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DroidSerifItalic';
-    src: url('fonts/droidserif-italic-webfont.eot');
-    src: url('fonts/droidserif-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/droidserif-italic-webfont.woff') format('woff'),
-         url('fonts/droidserif-italic-webfont.ttf') format('truetype'),
-         url('fonts/droidserif-italic-webfont.svg#DroidSerifItalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 /* please no hard resets, if not really needed */
 body, td, th, tr {
@@ -131,14 +54,17 @@ a img {
 }
 
 
-#bg {
-    background:#fff;
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: -18px;
-    margin-bottom:10px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+div.frame {
+    background: url("../logos/frame_repeat.png") repeat-y scroll right top #FEFEFE;
+    display: block;
+    margin: 0 13px;
+    padding: 0 10px;
+}
+
+#main_content_section {
+    min-height: 200px;
+    position: relative;
+    width: 100%;
 }
 
 /*

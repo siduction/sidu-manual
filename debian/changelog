@@ -1,8 +1,18 @@
-sidu-manual (2013.11.27) UNRELEASED; urgency=low
+sidu-manual (2013.11.30) UNRELEASED; urgency=low
 
+  * header improved
+  * new header graphics
+  * templates and css improved
+  * website/static cleanup
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 19:10:19 +0100
+
+sidu-manual (2013.11.27) unstable; urgency=low
+
+  [ Ferdinand Thommes ]
   * pdate cd-cd-burning-de and -en.htm in the manual
 
- -- Ferdinand Thommes <devil@siduction.org>  Sat, 30 Nov 2013 13:14:46 +0100
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 19:10:11 +0100
 
 sidu-manual (2013.11.30) unstable; urgency=low
 

@@ -47,8 +47,8 @@ class Session(SessionBase):
             self._rexprPageLink = re.compile(
                 r'href="([\w.-]*?)-([a-z]{2}(-[a-z]{2})?)[.]htm')
         line = self._rexprPageLink.sub(r'href="\1', line)
-        line = line.replace('href="../lib', 'href="/static/lib')
-        line = line.replace('src="../lib', 'src="/static/lib')
+        line = line.replace('href="../lib', 'href="/static')
+        line = line.replace('src="../lib', 'src="/static')
         return line
     
     def getBodyOfStatic(self, filename):
