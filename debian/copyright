@@ -16,7 +16,7 @@ Copyright: 2011-2012 Sven Strohmeier <se7enelven@gmail.com>
            2006-2011 Trevor Walkley (bluewater) <trevor_walkley@aptenodytes.org>
 License: GFDL-1.2+
 
-Files: lib/css-js/content.css lib/css-js/menu.css
+Files: css/content.css css/menu.css
 Copyright: 2011-2012 Hendrik Lehmbruch <hendrikl@siduction.net>
            2011-2012 Sven Strohmeier <se7enelven@gmail.com>
            2006-2011 Trevor Walkley <trevor_walkley@aptenodytes.org>
