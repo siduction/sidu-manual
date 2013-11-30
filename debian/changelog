@@ -313,11 +313,11 @@ sidu-manual (0.8.3) unstable; urgency=low
     E: sidu-manual: missing-dependency-on-python-support
     python-support (>= 0.90)
   * changed file modes to 644 for
-    website/static/lib/images-common/images-grub2/*, stopp lintian
+    website/static/images-common/images-grub2/*, stopp lintian
     complaining about: W: sidu-manual: executable-not-elf-or-script
   * changed file mode to 644 for website/static/lib/logos/siduction-book.png
   * changed file mode to 644 for
-    website/static/lib/images-common/images-vm/kvm-gparted02.png
+    website/static/images-common/images-vm/kvm-gparted02.png
   * W: sidu-manual: binary-without-manpage usr/bin/sidu-manual-control
     no override, this should be fixed
   * current standards: 3.9.4

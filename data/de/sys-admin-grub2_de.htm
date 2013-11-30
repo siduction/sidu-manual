@@ -103,13 +103,13 @@ apt-get purge grub-gfxboot
 apt-get install grub2 os-prober
 </pre>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
 							<p>Verwende die TAB-Taste, um OK zu wählen</p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
 							<p>Verwende die TAB-Taste, um OK zu wählen</p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
 
 							<p>Verwende die Tastaturpfeile und die Leertaste, um einen <span class="highlight-3">* (Stern) </span> zu setzen, auf welcher Festplatte Grub2 in den MBR geschrieben werden soll. <i>(Das folgende Beispiel zeigt eine Installation auf ein USB-Laufwerk)</i>.</p>
 
@@ -126,12 +126,12 @@ apt-get install install-usb-gui fll-iso2usb
 
 						<h6>Schritt 6:</h6>
 							<p> Starte Deinen PC neu und menu.cfg zeigt Kernel und Betriebssystem wie in diesem Beispiel an:</p>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
 
 							<p>Sollte etwas falsch gelaufen und Grub2 korrumpiert sein, lese <a href="sys-admin-grub2-de.htm#chroot">Überschriebener oder korrumpierter Grub2 im MBR</a> </p>
 
 				  <h3>Eingabe von Grub2-Bootoptionen mit Hilfe des Bearbeitungsmodus</h3>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
 							<p>Falls temporäre Änderungen bei den Boot-Optionen eines in Grub 2 gelisteten Kernels nötig sind, kann man die Kerneloptionen bearbeiten, indem die Taste <span class="highlight-2">e</span> gedrückt wird. Mit den Pfeiltasten geht man zu dem Kernel, der bearbeitet werden soll. Noch im Bearbeitungsmodus wird mit <span class="highlight-3">Ctrl+x</span> der Computer mit den neuen Optionen neu gestartet.</p>
 
 							<p>Ein Beispiel: um direkt in den Runlevel 3 zu starten, wird eine <span class="highlight-3">3</span> an das Ende der Zeile <span class="highlight-3">linux /boot/vmlinuz</span> gesetzt.</p>

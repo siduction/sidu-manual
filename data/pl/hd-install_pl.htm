@@ -102,11 +102,11 @@ dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/us
 sux
 install-gui.bash
 </pre>
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer1-pl.png" title="Welcome tab - siduction Installer" alt="siduction-Installer1" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer1-pl.png" title="Welcome tab - siduction Installer" alt="siduction-Installer1" /></div>
 		<div class="spacer02"></div>
 							<p><b>2.</b> Po przeczytaniu (i zrozumieniu) ostrzeżenia przechodzimy do wyboru partycji. </p>
 
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer2-pl.png" title="Partitioning tab - siduction Installer" alt="siduction-Installer2" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer2-pl.png" title="Partitioning tab - siduction Installer" alt="siduction-Installer2" /></div>
 							<p>Now choose where the installation is supposed to go to and we establish the mount points. Partitions which you do not establish mount points for, will be auto mounted (the swap partition will always be automatically mounted, when the system starts). </p>
 
 							<p><span class="highlight-2">NOTE: If you have your root partition ('/") formatted with your preferred file system, you can uncheck the "format with" checkbox, provided that the drop box reflects the file system of your choice.</span></p>
@@ -132,21 +132,21 @@ cfdisk
 
 							<p>Ponadto możesz w tym oknie zmienić strefę czasową.</p>
 
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer3-pl.png" title="Grub/Timesone tab - siduction Installer" alt="grub-to-mbr" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer3-pl.png" title="Grub/Timesone tab - siduction Installer" alt="grub-to-mbr" /></div>
 		<div class="spacer02"></div>
 							<p><b>4.</b> Dalej należy podać nazwę użytkownika i hasło oraz hasło roota (zapamiętaj je!). Nie wybieraj haseł, które łatwo odgadnąć. To add additional users, do so after installation via the terminal with <a href="hd-install-pl.htm#adduser"> adduser.</a>.</p>
 
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer4-pl.png" title="User/Password tab - siduction Installer" alt="choosing-pw" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer4-pl.png" title="User/Password tab - siduction Installer" alt="choosing-pw" /></div>
 		<div class="spacer02"></div>
 							<p><b>5.</b> Teraz wybierz nazwę instalacji (możesz wybrać nazwę, jaką chcesz, biorąc pod uwagę, że 'Nazwa hosta: nazwa hosta powinna składać się z tylko liter (i cyfr) i nie może zaczynać się cyfrą'.</p>
 
 							<p>After that you can choose whether ssh shall start automatically or not.</p>
 
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer5-pl.png" title="Network tab - siduction Installer" alt="hostname" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer5-pl.png" title="Network tab - siduction Installer" alt="hostname" /></div>
 		<div class="spacer02"></div>
 							<p><b>6.</b> To pytanie jest ostatnią szansą, aby sprawdzić ustawienia instalacji. Preczytaj je dokładnie, a następnie kliknij <span class="highlight-3">Zapisz konfigurację i dalej</span>.</p>
 
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer6-pl.png" title="Installation tab - siduction Installer" alt="installation-config" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer6-pl.png" title="Installation tab - siduction Installer" alt="installation-config" /></div>
 
 							<p>W tym miejscu jest możliwość zmiany/edycji pliku konfiguracyjnego a następnie uruchomienia procedury instalacyjnej przy zmienionej konfiguracji. Instalator nie wykonuje żadnych testów, a ty  <span class="highlight-3">nie możesz kliknąć "w tył" w instalatorze, ponieważ zmiany dokonane manualnie zostaną utracone.</span> </p>
 
@@ -154,7 +154,7 @@ cfdisk
 
 							<p><span class="highlight-2">Should the installer detect that you are trying to install over an old $HOME  it will warn you and will not let you proceed with the installation until you choose another user name.</span></p>
 
-		<div class="screenshot"><img src="../lib/images-pl/installer-pl/installer7-pl.png" title="Begin Installation - siduction Installer" alt="Begin Installtion" /></div>
+		<div class="screenshot"><img src="../images-pl/installer-pl/installer7-pl.png" title="Begin Installation - siduction Installer" alt="Begin Installtion" /></div>
 
 							<p>Aby rozpocząć instalację kliknij na <span class="highlight-3">Rozpocznij instalację</span>  Cały proces zajmuje, zależnie od twojego systemu, 5 - 15 minut, na starszych komputerach może to być nawet 60 minut.</p>
 

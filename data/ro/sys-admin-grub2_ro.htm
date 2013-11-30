@@ -102,13 +102,13 @@ apt-get purge grub-gfxboot
 apt-get install grub2 os-prober
 </pre>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
 							<p>Folosiți tasta 'Tab' pentru a selecta  'OK'</p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
 							<p>Folosiți tasta 'Tab' pentru a selecta  'OK'</p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
 
 							<p>Folosiți săgețile de la tastatură și tasta de spațiu pentru a plasa un <span class="highlight-3">* (asterisc) </span> ca să selectați pe a cărui MBR de hard drive urmează să scrie Grub2. <i>(Acest exemplu arată instalarea pe un USB drive)</i>.</p>
 
@@ -125,12 +125,12 @@ apt-get install install-usb-gui
 
 						<h6>Pasul 6:</h6>
 							<p> Reboot-ați PC-ul și <i>menu.cfg</i> va afișa lista cu kernel-urile și sistemele de operare așa:</p>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
 
 							<p>Dacă ceva e în neregulă sau merge prost uitați-vă la <a href="sys-admin-grub2-ro.htm#chroot">Suprascrierea sau stricarea lui Grub2 în MBR</a> </p>
 
 				  <h3>Modificarea opțiunilor de boot în Grub2 folosind ecranul de editare</h3>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
 							<p>Dacă, din anumite motive, trebuie să faceți niște modificări temporare ale opțiunilor de boot ale kernel-ului selectat în ecranul de boot al Grub2, apăsați litera<span class="highlight-2"> e </span> pentru a edita opțiunile  kernel-ului apoi, folosind tastele săgeți, deplasați-vă la linia pe care vreți s-o editați. După ce ați editat folosiți combinația <span class="highlight-3"> Ctrl+x </span> pentru a boot-a computerul cu noile voastre opțiuni.</p>
 
 							<p>De examplu, pentru a rula direct în nivelul 3, adăugați <span class="highlight-3">3</span> la sfârșitul liniei ce conține <span class="highlight-3"> linux /boot/vmlinuz</span>.</p>

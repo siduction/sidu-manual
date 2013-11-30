@@ -176,7 +176,7 @@ qemu -hda /dev/sdb -cdrom /percorso/verso/fdbasecd.iso -boot d
 </pre>
 							<p><span class="highlight-1">ctrl-alt</span> commuterà il controllo del mouse e della tastiera, permettendo quindi a ogni passo di cambiare desktop per rileggere le istruzioni.</p>
 
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU FreeDOS" alt="QEMU FreeDOS" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU FreeDOS" alt="QEMU FreeDOS" /></div>
 							<p>L'istruzione precedente avvia il CD di FreeDOS e collega la chiavetta USB come disco fisso master primario (qui la capacità di qemu di emulare il BIOS permette alla chiavetta USB di apparire al DOS come un normale disco fisso). Selezionate l'installatore dal menu di avvio virtualizzato di FreeDOS:</p>
 <pre>
 1) Continue to boot FreeDOS from CD-ROM
@@ -187,22 +187,22 @@ enter
 							<p>Mantenete la scelta di default, <span class="highlight-3">1</span>, e/o scegliete <span class="highlight-3">Yes</span> quando richiesto.</p>
 
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos Installation - 1" alt="freedos-inst1" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos Installation - 1" alt="freedos-inst1" /></div>
 
 		<div class="spacer02"></div>
-	<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos Installation - 2"  alt="freedos-inst2" /></div>
+	<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos Installation - 2"  alt="freedos-inst2" /></div>
 
 	<div class="spacer02"></div>
 
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos Installation - 3" alt="freedos-inst3" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos Installation - 3" alt="freedos-inst3" /></div>
 
 
 	<div class="spacer02"></div>
 
 							<p>L'installatore vi chiederà di riavviare - <span class="highlight-3">ma non fatelo ancora poiché è necessario correggere due errori dell'installatore FreeDOS per il mbr e il menù di avvio</span>. Premete la lettera <span class="highlight-3"><b>n</b></span>.</p>
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos Installation - do not reboot type n" alt="freedos-do not reboot type n" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos Installation - do not reboot type n" alt="freedos-do not reboot type n" /></div>
 
 	<div class="spacer02"></div>
 				<h3>Scrivere un settore d'avvio nella chiavetta USB</h3>
@@ -224,7 +224,7 @@ edit fdconfig.sys
 
 NOTA - è da leggere: <span class="highlight-3">1234?</span>
 </pre>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot23.jpg" title="Edit fdconfig.sys " alt="fdconfig.sys" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot23.jpg" title="Edit fdconfig.sys " alt="fdconfig.sys" /></div>
 	<div class="spacer02"></div>
 							<p><span class="highlight-2">Non cambiate altro dal momento che la linea dipende dal setup dell'installazione.</span></p>
 
