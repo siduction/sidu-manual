@@ -6,14 +6,17 @@
     top: 80px;
     width: 20em;
 }
+
 #top-navigation a {
-	color: white;
+    color: white;
 }
+
 #top-navigation a:visited {
-	color: white;
+    color: white;
 }
+
 #top-navigation a:hover {
-	color: #c66323;
+    color: #c66323;
 }
 
 #top-navigation ul {
@@ -28,7 +31,6 @@
     float: left;
     position: relative;
 }
-
 
 .clearfix:before, .clearfix:after {
     content: "\0020";

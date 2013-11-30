@@ -30,7 +30,7 @@
 
 #menu a:visited,
 #menu a:active,
-#menu a:link { 
+#menu a:link {
     color: white;
 }
 
@@ -169,7 +169,7 @@ ul#treeMenu li li li label:hover{
 
 #menu ul#top-list img + b {
     position:absolute;
-     margin: 5px 0 0 0;
+    margin: 5px 0 0 0;
 }
 
 #menu a > b:hover {

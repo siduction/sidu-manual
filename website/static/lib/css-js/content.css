@@ -90,62 +90,66 @@
 }
 
 body,html,object,div{
-	margin:0;
-	padding:0;
+    margin:0;
+    padding:0;
 }
 body {
-	font:normal 14px "DroidSansRegular", sans-serif;
-	background: #e7e7e7; /*#D3D3D3;*/
-	color:#000611;
-	margin:0 auto;
+    font:normal 14px "DroidSansRegular", sans-serif;
+    background: #e7e7e7; /*#D3D3D3;*/
+    color:#000611;
+    margin:0 auto;
 }
 
 .body-main {
-	max-width: 920px; /*width:95%;*/
-	min-width: 420px;
-	margin:0 auto;
-	padding-top:5px;
-	padding-bottom:15px;
-	}
+    max-width: 920px; /*width:95%;*/
+    min-width: 420px;
+    margin:0 auto;
+    padding-top:5px;
+    padding-bottom:15px;
+}
 
 #bg {
-	width:92.85%;
-	background:#fff;
-	margin-left:auto;
-	margin-right: auto;
-	margin-top: -18px;
-	margin-bottom:10px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	}
+    width:92.85%;
+    background:#fff;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: -18px;
+    margin-bottom:10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
 
 .header-img {
-	width: 100%;
-	min-width: 390px;
-	margin-top:5px;
-	margin-left:auto;
-	margin-right:auto;
-	padding:0;
-	}
+    width: 100%;
+    min-width: 390px;
+    margin-top:5px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:0;
+}
 
 /*
 URL underline on hover
 */
 
-a:link, a:active, a:visited {
-	border:none;text-decoration: none;
-	}
+a:link,
+a:active,
+a:visited {
+    border:none;
+    text-decoration: none;
+}
 
 a:hover {
-	border:none;text-decoration:underline;
-	}
+    border:none;
+    text-decoration:underline;
+}
 
 #main-page{
-	padding:7px 5px;
-	margin-left:25%;
-	z-index:2;
-	max-width: 705px;
-	min-width: 273px;
+    padding:7px 5px;
+    margin-left:25%;
+    z-index:2;
+    max-width: 705px;
+    min-width: 273px;
 }
 
 /*
@@ -153,64 +157,73 @@ note: this is the default, will create standard bordered cells and table
 */
 
 table {
-	border:1px solid #888;
-	border-collapse:collapse;
-	margin:0 1%;
+    border:1px solid #888;
+    border-collapse:collapse;
+    margin:0 1%;
 }
 
 table td, table th {
-	border:1px solid #888;
-	padding:4px;
+    border:1px solid #888;
+    padding:4px;
 }
+
 table th {
-	font-size:13px;
-	font-weight:bold;
-	background:#87898D;
-	color:#F5F8FF;
-	border-color:#525355;
+    font-size:13px;
+    font-weight:bold;
+    background:#87898D;
+    color:#F5F8FF;
+    border-color:#525355;
 }
+
 p {
-	margin-top:0;
-	padding:0 1%;
+    margin-top:0;
+    padding:0 1%;
 }
+
 ul, ol {
-	margin: 0 0 1em 0;
-	padding:0 1%;
+    margin: 0 0 1em 0;
+    padding:0 1%;
 }
 li {
-	margin:0 0 1em 18px;
-	padding:0 1%;
+    margin:0 0 1em 18px;
+    padding:0 1%;
 }
 h1,h2,h3,h4,h5,h6 {
-	font-weight:bold;
-	font-family: "DroidSansRegular", sans-serif;
-	margin-top:0;/* this must be 0 to fix a firefox css issue with this layout */
-	color:#040A2F;
-	margin-bottom:.1em;
-	margin-left: -3px;
-	padding:.2em;
-	border-radius:5px;
+    font-weight:bold;
+    font-family: "DroidSansRegular", sans-serif;
+    margin-top:0;/* this must be 0 to fix a firefox css issue with this layout */
+    color:#040A2F;
+    margin-bottom:.1em;
+    margin-left: -3px;
+    padding:.2em;
+    border-radius:5px;
 }
+
 h1 {
-	font-size:1.25em;
+    font-size:1.25em;
 }
+
 h2 {
-	border-top:1px solid #040A2F;
-	font-size:1.2em;/*18px;*/
-	background: #B9BCC0; /* #ebdede #d48588 */
-	margin-bottom:1em;
+    border-top:1px solid #040A2F;
+    font-size:1.2em;/*18px;*/
+    background: #B9BCC0; /* #ebdede #d48588 */
+    margin-bottom:1em;
 }
+
 h3 {
-	font-size:1.15em;
+    font-size:1.15em;
 }
+
 h4 {
-	font-size:1.1em;
+    font-size:1.1em;
 }
+
 h5 {
-	font-size:1.05em;
+    font-size:1.05em;
 }
+
 h6 {
-	font-size:1em;
+    font-size:1em;
 }
 
 /*
@@ -218,52 +231,76 @@ these are to handle cosmetic h1-h6 font size differences
 while retaining the correct h1-h6 level structures
 */
 
-.size-0 {font-size:10px;}
-.size-1 {font-size:11px;}
-.size-2 {font-size:12px;}
-.size-3 {font-size:13px;}
-.size-4 {font-size:14px;}
-.size-5 {font-size:15px;}
-.size-6 {font-size:16px;}
+.size-0 {
+    font-size:10px;
+}
+
+.size-1 {
+    font-size:11px;
+}
+
+.size-2 {
+    font-size:12px;
+}
+
+.size-3 {
+    font-size:13px;
+}
+
+.size-4 {
+    font-size:14px;
+}
+
+.size-5 {
+    font-size:15px;
+}
+
+.size-6 {
+    font-size:16px;
+}
+
 img {
-	border:none;
+    border:none;
 }
 
 .divider {
-	margin-bottom:1em;
-	padding-bottom:1em;
+    margin-bottom:1em;
+    padding-bottom:1em;
 }
 
  #rev {
-	font:italic 0.85em "DroidSerifRegular", serif;
-	margin-top:4em;
-	text-align:right;
-	color:#687A96;/* light greyish */
+    font:italic 0.85em "DroidSerifRegular", serif;
+    margin-top:4em;
+    text-align:right;
+    color:#687A96;/* light greyish */
 }
+
 #rev-f {
-	font:italic 0.85em "DroidSerifRegular", serif;
-	margin-top:4em;
-	text-align:center;
-	color:#000000;/* black */
+    font:italic 0.85em "DroidSerifRegular", serif;
+    margin-top:4em;
+    text-align:center;
+    color:#000000;/* black */
 }
 
 pre {
-	color:#000;
-	background:#ffffee;
-	border:1px solid #888;
-	font:normal 0.9em "DroidSansMonoRegular", monospace;
-	width:95%;
-	margin:1em auto 1em auto;
-	padding:6px;
-	text-align:left;
-	overflow:auto;
-	border-radius:5px;
+    color:#000;
+    background:#ffffee;
+    border:1px solid #888;
+    font:normal 0.9em "DroidSansMonoRegular", monospace;
+    width:95%;
+    margin:1em auto 1em auto;
+    padding:6px;
+    text-align:left;
+    overflow:auto;
+    border-radius:5px;
 }
+
 .center {
-	text-align:center;
-	margin-left:auto;
-	margin-right:auto;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
 }
+
 .spacer01 {height:15px;}
 .spacer02 {height:25px;}
 .spacer05 {height:50px;}
@@ -273,64 +310,69 @@ pre {
 .spacer25 {height:250px;}
 
 .path {
-	font-style:italic;
-	font-weight:bold;
+    font-style:italic;
+    font-weight:bold;
 }
+
 .box, .warning-box {
-	border:1px solid #888;
-	padding:3px;
-	border-radius:5px;
+    border:1px solid #888;
+    padding:3px;
+    border-radius:5px;
 }
 .data {
-	font-weight:bold;
+    font-weight:bold;
 }
 .highlight-1 {
-	color:#007676;/* tealish */
+    color:#007676;/* tealish */
 }
-.highlight-2, .warning-box {
-	color:red;
+
+.highlight-2,
+.warning-box {
+    color:red;
 }
 .highlight-3 {
-	color:#971171;/* violetish */
+    color:#971171;/* violetish */
 }
+
 .highlight-4 {
-	color:#B73304;/* orangish */
+    color:#B73304;/* orangish */
 }
+
 .highlight-5 {
-	color:#00B7EB;/* cyanish */
+    color:#00B7EB;/* cyanish */
 }
 
 .screenshot {
-	margin: 10px auto;
-	max-width:550px;
+    margin: 10px auto;
+    max-width:550px;
 }
 
 #main-page img {
-	width:100%;
+    width:100%;
 }
 
 #main-page li img {
-	width:100%;
-	}
+    width:100%;
+}
 
 .screenshot2 {
-	margin:10px auto;
-	max-width:550px;
-	text-align:center;
+    margin:10px auto;
+    max-width:550px;
+    text-align:center;
 }
 
 .thumbs {
-
-	max-width:400px;
-	height:160px;
-	text-align:center;
+    max-width:400px;
+    height:160px;
+    text-align:center;
 }
+
 .block {
-	margin:5px 5px 5px 25px;
+    margin:5px 5px 5px 25px;
 }
 
 .clear-both {
-        clear:both;
+    clear:both;
 }
 
 /*
@@ -339,52 +381,56 @@ pre {
 */
 
 dd {
-        padding:0 5px;
-        margin:0;
-        text-align:center;
+    padding:0 5px;
+    margin:0;
+    text-align:center;
 }
+
 dt {
-        text-align:center;
-        padding:0 5px;
+    text-align:center;
+    padding:0 5px;
 }
 
 #flag-container1 {
-        width:auto;
-        margin:3em auto;
+    width:auto;
+    margin:3em auto;
 }
 
 #flag-container2 {
-        width:55em;
-        margin:0em auto;
+    width:55em;
+    margin:0em auto;
 }
 
 #flag-container3 {
-        width:auto;
-        margin:2em auto;
+    width:auto;
+    margin:2em auto;
 }
 
 #flag-container4 {
-        width:auto;
-        margin:3em auto;
+    width:auto;
+    margin:3em auto;
 }
 
 #flag-container5 {
-        width:auto;
-        margin:3em auto;
+    width:auto;
+    margin:3em auto;
 }
+
 /* individual classes */
 .stacked-1 {
 
 }
+
 .stacked-1 dt {
-        padding:.5em;
+    padding:.5em;
 }
 .stacked-1 dt img {
-        width:200px;
-        height:150px;
+    width:200px;
+    height:150px;
 }
+
 .stacked-1 dd {
-        padding:.1em 1em;
+    padding:.1em 1em;
 }
 
 /*
@@ -394,101 +440,118 @@ this is for stacking pics down a page with a description if required
 .stacked-2 {
 
 }
+
 .stacked-2 dt {
-        text-align:left;
-        padding:.5em;
+    text-align:left;
+    padding:.5em;
 }
+
 .stacked-2 dt img {
-        width:200px;
-        height:150px;
+    width:200px;
+    height:150px;
 }
+
 .stacked-2 dd {
-        text-align:left;
-        padding:.1em 1em;
+    text-align:left;
+    padding:.1em 1em;
 }
 
 .stacked-3 {
-        float:left;
-        width:10em;
+    float:left;
+    width:10em;
 }
 .stacked-3 dt {
-        padding:.5em;
+    padding:.5em;
 }
 .stacked-3 dt img {
-        margin:1px;
-        width:50px;
-        height:30px;
-        border:2px solid #D3D3D3;
+    margin:1px;
+    width:50px;
+    height:30px;
+    border:2px solid #D3D3D3;
 }
+
 .stacked-3 dd {
-padding:.1em 1em;
+    padding:.1em 1em;
 }
+
 .stacked-3 dt img:hover {
-	border:2px solid #6F9796;
+    border:2px solid #6F9796;
 }
+
 .stacked-4 {
-         float:right;
-        width:10em;
+    float:right;
+    width:10em;
 }
+
 .stacked-4 dt {
-        padding:.5em;
+    padding:.5em;
 }
+
 .stacked-4 dt img {
-        margin:3px;
-        width:50px;
-        height:30px;
-        border:2px solid #EAEDF4;
+    margin:3px;
+    width:50px;
+    height:30px;
+    border:2px solid #EAEDF4;
 }
+
 .stacked-4 dd {
-        padding:.1em 1em;
+    padding:.1em 1em;
 }
 
 .stacked-5 {
 
 }
+
 .stacked-5 dt {
-        padding:.5em;
+    padding:.5em;
 }
+
 .stacked-5 dt img {
-        margin:3px;
-        width:100px;
-        height:75px;
-        border:2px solid #EAEDF4;
+    margin:3px;
+    width:100px;
+    height:75px;
+    border:2px solid #EAEDF4;
 }
+
 .stacked-5 dd {
-        padding:.1em 1em;
+    padding:.1em 1em;
 }
 
 .stacked-6 {
-        float:left;
-        width:10em;
+    float:left;
+    width:10em;
 }
+
 .stacked-6 dt {
-        padding:.5em;
+    padding:.5em;
 }
+
 .stacked-6 dt img {
-        margin:3px;
-        width:100px;
-        height:75px;
-        border:2px solid #EAEDF4;
+    margin:3px;
+    width:100px;
+    height:75px;
+    border:2px solid #EAEDF4;
 }
+
 .stacked-6 dd {
-padding:.1em 1em;
+    padding:.1em 1em;
 }
 
 /*
 #menu-header  img {
-	margin: 0 auto;
+     margin: 0 auto;
 */
 /*
-	width:160px;
-	height:55px;
-	border:2px solid #fff;
+    width:160px;
+    height:55px;
+    border:2px solid #fff;
 */
 /*
 }
 #menu-header img:hover {
-	border:2px solid #d3d3d3;
+    border:2px solid #d3d3d3;
 }
 */
-.center { text-align: center }
+.center {
+    text-align: center
+}
