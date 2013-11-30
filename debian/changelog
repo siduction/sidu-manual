@@ -1,3 +1,9 @@
+sidu-manual (2013.11.27) UNRELEASED; urgency=low
+
+  * pdate cd-cd-burning-de and -en.htm in the manual
+
+ -- Ferdinand Thommes <devil@siduction.org>  Sat, 30 Nov 2013 13:14:46 +0100
+
 sidu-manual (2013.11.26) unstable; urgency=low
 
   [ Ferdinand Thommes ]
