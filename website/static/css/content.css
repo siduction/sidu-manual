@@ -50,7 +50,7 @@ div#wrapper {
 }
 
 a img {
-    border: 0 none;
+    border: none;
 }
 
 
@@ -74,12 +74,12 @@ URL underline on hover
 a:link,
 a:active,
 a:visited {
-    border:none;
+    border: none;
     text-decoration: none;
 }
 
 a:hover {
-    border:none;
+    border: none;
     text-decoration:underline;
 }
 
@@ -96,13 +96,13 @@ note: this is the default, will create standard bordered cells and table
 */
 
 table {
-    border:1px solid #888;
+    border: 1px solid #888;
     border-collapse:collapse;
     margin:0 1%;
 }
 
 table td, table th {
-    border:1px solid #888;
+    border: 1px solid #888;
     padding:4px;
 }
 
@@ -111,7 +111,7 @@ table th {
     font-weight:bold;
     background:#87898D;
     color:#F5F8FF;
-    border-color:#525355;
+    border-color: #525355;
 }
 
 p {
@@ -135,7 +135,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom:.1em;
     margin-left: -3px;
     padding:.2em;
-    border-radius:5px;
+    border-radius: 5px;
 }
 
 h1 {
@@ -143,7 +143,7 @@ h1 {
 }
 
 h2 {
-    border-top:1px solid #040A2F;
+    border-top: 1px solid #040A2F;
     font-size:1.2em;/*18px;*/
     background: #B9BCC0; /* #ebdede #d48588 */
     margin-bottom:1em;
@@ -199,7 +199,7 @@ while retaining the correct h1-h6 level structures
 }
 
 img {
-    border:none;
+    border: none;
 }
 
 .divider {
@@ -224,14 +224,14 @@ img {
 pre {
     color:#000;
     background:#ffffee;
-    border:1px solid #888;
+    border: 1px solid #888;
     font:normal 0.9em "DroidSansMonoRegular", monospace;
     width:95%;
     margin:1em auto 1em auto;
     padding:6px;
     text-align:left;
     overflow:auto;
-    border-radius:5px;
+    border-radius: 5px;
 }
 
 .center {
@@ -254,9 +254,9 @@ pre {
 }
 
 .box, .warning-box {
-    border:1px solid #888;
+    border: 1px solid #888;
     padding:3px;
-    border-radius:5px;
+    border-radius: 5px;
 }
 .data {
     font-weight:bold;
@@ -406,7 +406,7 @@ this is for stacking pics down a page with a description if required
     margin:1px;
     width:50px;
     height:30px;
-    border:2px solid #D3D3D3;
+    border: 2px solid #D3D3D3;
 }
 
 .stacked-3 dd {
@@ -414,7 +414,7 @@ this is for stacking pics down a page with a description if required
 }
 
 .stacked-3 dt img:hover {
-    border:2px solid #6F9796;
+    border: 2px solid #6F9796;
 }
 
 .stacked-4 {
@@ -430,7 +430,7 @@ this is for stacking pics down a page with a description if required
     margin:3px;
     width:50px;
     height:30px;
-    border:2px solid #EAEDF4;
+    border: 2px solid #EAEDF4;
 }
 
 .stacked-4 dd {
@@ -449,7 +449,7 @@ this is for stacking pics down a page with a description if required
     margin:3px;
     width:100px;
     height:75px;
-    border:2px solid #EAEDF4;
+    border: 2px solid #EAEDF4;
 }
 
 .stacked-5 dd {
@@ -469,28 +469,9 @@ this is for stacking pics down a page with a description if required
     margin:3px;
     width:100px;
     height:75px;
-    border:2px solid #EAEDF4;
+    border: 2px solid #EAEDF4;
 }
 
 .stacked-6 dd {
     padding:.1em 1em;
-}
-
-/*
-#menu-header  img {
-     margin: 0 auto;
-*/
-/*
-    width:160px;
-    height:55px;
-    border:2px solid #fff;
-*/
-/*
-}
-#menu-header img:hover {
-    border:2px solid #d3d3d3;
-}
-*/
-.center {
-    text-align: center
 }
