@@ -43,6 +43,23 @@
     padding: 0
 }
 
+.menuitem {
+    background-color: #E7EAEF;
+    color: #000000;
+}
+
+.menuitem span.topslice {
+    background: url("../images/theme/main_block.png") no-repeat scroll 0 -30px rgba(0, 0, 0, 0);
+    display: block;
+    padding-left: 20px;
+}
+
+.menuitem span.topslice span {
+    background: url("../logos/ain_block.png") no-repeat scroll 100% -30px rgba(0, 0, 0, 0);
+    display: block;
+    height: 11px;
+}
+
 ul#treeMenu {
     color: #fff;
     background:#535D6C;

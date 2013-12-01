@@ -58,7 +58,7 @@ div.frame {
     background: url("../logos/frame_repeat.png") repeat-y scroll right top #FEFEFE;
     display: block;
     margin: 0 13px;
-    padding: 0 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 #main_content_section {
