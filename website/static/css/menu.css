@@ -21,7 +21,7 @@
     z-index:4;
     padding-top:10px;
     background:#fff;
-    border:1px solid #626B79;
+    /* border:1px solid #626B79; */
     margin-top: -2px;
     margin-right:0px;
     border-bottom-right-radius: 5px;
@@ -49,16 +49,32 @@
 }
 
 .menuitem span.topslice {
-    background: url("../images/theme/main_block.png") no-repeat scroll 0 -30px rgba(0, 0, 0, 0);
+    background: url("../logos/main_block.png") no-repeat scroll 0 -30px rgba(0, 0, 0, 0);
     display: block;
     padding-left: 20px;
 }
 
 .menuitem span.topslice span {
-    background: url("../logos/ain_block.png") no-repeat scroll 100% -30px rgba(0, 0, 0, 0);
+    background: url("../logos/main_block.png") no-repeat scroll 100% -30px rgba(0, 0, 0, 0);
     display: block;
     height: 11px;
 }
+
+.menuitem span.botslice {
+    background: url("../logos/main_block.png") no-repeat scroll 0 -40px rgba(0, 0, 0, 0);
+    display: block;
+    font-size: 5px;
+    line-height: 5px;
+    margin-bottom: 0.2em;
+    padding-left: 20px;
+}
+
+.menuitem span.botslice span {
+    background: url("../logos/main_block.png") no-repeat scroll 100% -40px rgba(0, 0, 0, 0);
+    display: block;
+    height: 11px;
+}
+
 
 ul#treeMenu {
     color: #fff;
