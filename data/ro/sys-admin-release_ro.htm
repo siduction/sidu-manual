@@ -27,7 +27,7 @@
 <h1>Note de Versiune Curentă pentru siduction 2012.2 - Riders on the Storm</h1>
 
 <p>Suntem mândri să vă prezentăm a doua versiune de test a siduction 2012.2 - <i>Riders on the Storm</i>. Siduction este o distribuţie linux  care are la bază Debian's instabil (unstable) şi vom încerca să facem o versiune nouă de patru ori pe an. Vă rugăm raportaţi orice bug descoperit în această versiune  de test (RC) pe forumul nostru sau pe <a href="http://chili.siduction.org/projects/siduction/issues/new">Chili</a>.</p>
-<p>Siduction 2012.2 vine cu 4 Medii Desktop: KDE SC, XFCE, LXDE şi Razor-qt, toate în variantele 32 şi 64 de biţi. Razor-Qt este ultimul mediu desktop care s-a alăturat ciclului nostru normal de vesiuni după ce a avut o versiune de dezvoltare (dev-release) în vară.</p> 
+<p>Siduction 2012.2 vine cu 4 Medii Desktop: KDE SC, XFCE, LXDE şi Razor-qt, toate în variantele 32 şi 64 de biţi. Razor-Qt este ultimul mediu desktop care s-a alăturat ciclului nostru normal de vesiuni după ce a avut o versiune de dezvoltare (dev-release) în vară.</p>
 <p>ISO-urile realizate au folosit <i>Debian Unstable</i>, cunscut sub numele de <i>sid</i>, din 2012-12-09. Pe lângă pachetele debian am adăugat câteva pachete şi scripturi proprii utile, programul nostru de instalare şi un kernel particularizat, linux-kernel 3.6-9, împreună cu serverul grafic XServer 1.12.4-4.</p>
 <p>Cum Debian 7 numit Wheezy a intrat pe 30 iunie in freeze, şi stim din experienţă că aceasta va mai dura, profităm de oportunitate pentru a prezenta utilizatorilor noştrii o nouă versiune de siduction.</p>
 <h3>Ce este nou?</h3>
@@ -61,7 +61,7 @@
 <p>
 <a href="http://siduction.org">Forumul siduction</a><br />
 <a href="http://news.siduction.org">Blog-ul siduction</a><br />
-<a href="http://git.siduction.org">Arhiva Git</a><br /> 
+<a href="http://git.siduction.org">Arhiva Git</a><br />
 <a href="http://siduction.org/index.php?module=news">Noutăţile siduction</a><br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug Tracker-ul siduction</a><br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">harta website-ului nostru</a>
@@ -69,10 +69,10 @@
 <p>Puteţi obţine ajutor  pe forum cât şi pe IRC. Canalele pe serverul
 OFTC-Network sunt <i>#siduction</i> pentru limba engleză şi <i>#siduction-core</i> dacă doriţi să participaţi în cadrul proiectului. Pe desktop-ul dumneavoastră există deasemenea o iconiţă care vă duce pe canalul de irc potrivit pentru a fi ajutaţi.
 </p>
-<p>Pentru a fi posibil ca siduction să fie folosit ca o ramură de test pentru Debian, ne introducem propriul bug-tracker. Utilizatorii care ştiu să trimită către Debian bug-uri în mod direct vor folosi Debian BTS (Bug Tracking System). Pentru utilizatorii nefamiliarizaţi cu Debian BTS am introdus aplicaţia <i>reportbug-ng</i>. 
+<p>Pentru a fi posibil ca siduction să fie folosit ca o ramură de test pentru Debian, ne introducem propriul bug-tracker. Utilizatorii care ştiu să trimită către Debian bug-uri în mod direct vor folosi Debian BTS (Bug Tracking System). Pentru utilizatorii nefamiliarizaţi cu Debian BTS am introdus aplicaţia <i>reportbug-ng</i>.
 Lăsaţi-mă să vă explic cum puteţi ajuta Siduction şi Debian raportând bug-uri.<br />
 Dacă consideraţi că aţi găsit un bug în un pachet debian, vă rugăm folosiţi  <i>reportbug-ng</i> şi puneţi numele pachetului în linia de adrese din partea superioară. Aplicaţia va căuta dacă exista bug-uri deja raportate pentru acel pachet şi dacă există vi le va arăta. Acum este timpul de a vedea dacă bug-ul dvs a fost deja raportat. Dacă este poate aveţi ceva relevant de adăugat poate chiar un patch pentru a-l corecta. Dacă nu atunci de data aceasta aţi terminat. Dacă bug-ul nu a fost raportat şi nu sunteţi familiarizat cu Debian BTS atunci puteţi folosi Bug Tracker-ul nostru
-<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">.</a> 
+<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">.</a>
 Aceasta este valabilă şi pentru pachetele siduction. Vom sorta bug-urile pentru dumneavoastră şi le vom introduce la locul potrivit dacă bug-ul poate fi reprodus. Pentru mai multe informaţii depre  bug-tracker căutaţi pe forum. Dacă toate acestea par prea complicate pentru dvs. atunci trimiteţi bug-ul direct pe forum.</p>
 <h4>Numele Versiunii</h4>
 
@@ -88,45 +88,46 @@ Pentru aceasta, vă rugăm deschideţi ca utilizatorul root<i>/etc/apt/sources.l
 <p>Dacă veţi instala sistemul de operare atunci şi firmware-linux-nonfree va fi instalat şi aceasta va permite să reporniţi după instalare computerul. În absenţa firmware-linux-nonfree după instalare veţi obţine un ecran pe care nu veţi putea distinge nimic folositor. Atenţie ! Dacă veţi reporni sistemul inainte de a porni programul de instalare al sistemului de operare toate modificările făcute vor fi pierdute.</p>
 <p>Dacă sistemul dumneavoastră are o placă de reţea wireless network, probabil că aceasta va funţiona de la început cu driverele incluse. Puteţi folosi scriptul <i>fw-detect</i> pentru a obţine informaţii despre driverul plăcii dvs. wireless. Unele componente ale sistemului dvs nu funcţionează corect făra firmware-ul adecvat. Programul de instalare vă va informa despre firmware-ul lipsă şi vă va ghida pentru instalarea acestuia.</p>
 
-<h3>Credite (mulţumiri) pentru  realizarea siduction 2012.2</h3>
+<h3>Credite (mulţumiri) pentru  realizarea siduction 2013.2</h3>
 
 <h4>Echipa Nucleu(Core):</h4>
 <p>
-Alf Gaida (agaida)<br />
-Axel Beu (ab)<br />
-Ferdinand Thommes (devil)<br />
-Hendrik Lehmbruch (hendrikl)<br />
-Holger Wagemann (holgerw)<br />
-Markus Meyer (coruja)<br />
-Stefan Tell (cryptosteve)<br />
-Tom Wroblewski (GoingEasy 9)<br />
-Torsten Wohlfarth (towo)<br />
+Alf Gaida (agaida) <br />
+Angelescu Ovidiu (convbsd) <br />
+Axel Beu (ab) <br />
+Ferdinand Thommes (devil) <br />
+Hendrik Lehmbruch (hendrikl) <br />
+Holger Wagemann (holgerw) <br />
+Markus Meyer (coruja) <br />
+Tom Wroblewski (GoingEasy9) <br />
+Torsten Wohlfarth (towo) <br />
 </p>
 
 <h4>Cei care întreţin mediile desktop siduction:</h4>
 <p>
-<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) (în curând)<br />
-<b>KDE</b>:		 	Ferdinand Thommes (devil)<br />	
-<b>LXDE</b>:    	Markus Meyer (coruja)<br />
-<b>noX</b>:		 	rolandx1<br />
-<b>Razor-qt</b>:	Alf Gaida (agaida)<br />
-<b>XFCE</b>:		Torsten Wolfahrt (towo)<br />
+<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) <br />
+<b>KDE</b>:		 	Ferdinand Thommes (devil) <br />
+<b>LXDE</b>:    	Markus Meyer (coruja) <br />
+<b>noX</b>:		 	Alf Gaida (agaida) <br />
+<b>Razor-qt</b>:	Alf Gaida (agaida) <br />
+<b>XFCE</b>:		Torsten Wohlfarth (towo) <br />
 </p>
 
 <h4>Echipa de Graficieni:</h4>
 <p>
-Hendrik Lehmbruch (hendrikl)<br />
-Sven Strohmeier (se7en)<br />
+Hendrik Lehmbruch (hendrikl) <br />
+Sven Strohmeier (se7en) <br />
 </p>
 
 <h4>Cod, idei şi atmosferă plăcută:</h4>
 <p>
-ayla<br />
-bluelupo<br />
-J. Hamatoma (hama)<br />
-Markus Schimpf (arno911)<br />
-Ulrich Beckmann (Bequimão)<br />
-zeppo</p>
+ayla <br />
+bluelupo <br />
+J. Hamatoma (hama) <br />
+Markus Schimpf (arno911) <br />
+Ulrich Beckmann (Bequimão) <br />
+zeppo <br />
+</p>
 
 <h3>Mulţumim!</h3>
 <p>Mulţumim deasemenea tuturor celor ce au testat cât şi celor ce au ajutat în orice alt fel. Implicarea utilizatorilor reprezintă realizarea noastră majoră.</p>
@@ -143,4 +144,4 @@ Ferdinand Thommes</p
 <div id="rev">Content last revised 30/11/2012 0235 UTC</div>
 </body>
 </html>
-	
+

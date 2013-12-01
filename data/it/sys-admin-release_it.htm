@@ -26,7 +26,7 @@
 
 <h1>Release Notes for siduction 2012.2 - Riders on the Storm</h1>
 <p>We are very happy to present to you the final release of siduction 2012.2 - <i>Riders on the Storm</i>. Siduction is a distribution based on Debian's unstable branch and we try to release snapshots quarterly.</p>
-<p>Siduction 2012.2 is shipped with 4 Desktop-Environments: KDE SC, XFCE, LXDE and Razor-qt,  all in 32- and 64-bit variants. Razor-Qt is the latest flavour that joins our regular release cycle after seeing a dev-release in the summer.</p> 
+<p>Siduction 2012.2 is shipped with 4 Desktop-Environments: KDE SC, XFCE, LXDE and Razor-qt,  all in 32- and 64-bit variants. Razor-Qt is the latest flavour that joins our regular release cycle after seeing a dev-release in the summer.</p>
 <p>The released images are a snapshot of Debian unstable, that also goes by the name of sid, from 2012-12-09. They are enhanced with some useful packages and scripts, our own installer and a custom patched version of the linux-kernel 3.6-9, accompanied by XServer 1.12.4-4.</p>
 <p>As the freeze for Debian 7 aka Wheezy will still last some months, we take the opportunity to update and consolidate our package-base with this new release.</p>
 <h3>What is new</h3>
@@ -60,7 +60,7 @@
 <h3>Our Resources</h3><br />
 <a href="http://siduction.org">siduction Forum</a><br />
 <a href="http://news.siduction.org">siduction Blog</a><br />
-<a href="http://git.siduction.org">Git Archive</a><br /> 
+<a href="http://git.siduction.org">Git Archive</a><br />
 <a href="http://siduction.org/index.php?module=news">Distro News</a><br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug-Tracker</a><br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">siduction-Map</a><br />
@@ -100,12 +100,12 @@ channel <i>#siduction-core</i> and talk to us about what you would like to do wi
 the project, or where you think you could help.</p>
 <br /><br />
 <h3>Hardware Tips</h3>
-<p>If you should own a ATI Radeon graphics accelerator, please use the failsafe option, when booting the Live-ISO. This option will add 
+<p>If you should own a ATI Radeon graphics accelerator, please use the failsafe option, when booting the Live-ISO. This option will add
 the cheatcodes <i>radeon.modeset=0 xmodule=vesa</i> to the Kernel bootline, so that you can boot to X. Before installing, on the Live-ISO, please install firmware-linux-nonfree.
 To do so, please open your <i>/etc/apt/sources.list.d/debian.list</i> with your
 favourite editor as root and append <i>contrib non-free</i> to the end of the first
 line. Save the edit and do:
-<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> If you install the operating system now, the package will be installed also, 
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> If you install the operating system now, the package will be installed also,
 preventing you from a garbled screen when first rebooting. Mind that if you reboot
 before installing the system, the changes you made will be lost.</p>
 <p>If your system has wireless network, this will probably not work out of the box
@@ -113,43 +113,48 @@ with free drivers, so you better start with wired network connected. You might w
 to use the script <i>fw-detect</i> to get information on wireless drivers. The
 installer will prompt you for any missing firmware and guide you through the process
 of installing it.</p><br />
-<h3>Credits for siduction 2012.2</h3>
+
+<h3>Credits for siduction 2013.2</h3>
+
 <h4>Core Team:</h4>
-Alf Gaida (agaida)
-<br />
-Axel Beu (ab)
-<br />
-Ferdinand Thommes (devil)
-<br />
-Hendrik Lehmbruch (hendrikl)
-<br />
-Holger Wagemann (holgerw)
-<br />
-Markus Meyer (coruja)
-<br />
-Stefan Tell (cryptosteve)
-<br />
-Tom Wroblewski (GoingEasy 9)
-<br />
-Torsten Wohlfarth (towo)<br />
+<p>
+Alf Gaida (agaida) <br />
+Angelescu Ovidiu (convbsd) <br />
+Axel Beu (ab) <br />
+Ferdinand Thommes (devil) <br />
+Hendrik Lehmbruch (hendrikl) <br />
+Holger Wagemann (holgerw) <br />
+Markus Meyer (coruja) <br />
+Tom Wroblewski (GoingEasy9) <br />
+Torsten Wohlfarth (towo) <br />
+</p>
+
 <h4>Maintainers of siduction Desktop Environments:</h4>
-<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) (coming soon)<br />
-<b>KDE</b>:		 	Ferdinand Thommes (devil)<br />	
-<b>LXDE</b>:    	Markus Meyer (coruja)<br />
-<b>noX</b>:		 	rolandx1<br />
-<b>Razor-qt</b>:	Alf Gaida (agaida)<br />
-<b>XFCE</b>:		Torsten Wolfahrt (towo)<br />
+<p>
+<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) (coming soon) <br />
+<b>KDE</b>:		 	Ferdinand Thommes (devil) <br />
+<b>LXDE</b>:    	Markus Meyer (coruja) <br />
+<b>noX</b>:		 	Alf Gaida (agaida) <br />
+<b>Razor-qt</b>:	Alf Gaida (agaida) <br />
+<b>XFCE</b>:		Torsten Wohlfarth (towo) <br />
+</p>
+
 <h4>Art Team:</h4>
-Hendrik Lehmbruch (hendrikl)<br />
-Sven Strohmeier (se7en)<br />
+<p>
+Hendrik Lehmbruch (hendrikl) <br />
+Sven Strohmeier (se7en) <br />
+</p>
+
 <h4>Code, Ideas, good Spirits:</h4>
-ayla<br />
-bluelupo<br />
-J. Hamatoma (hama)<br />
-Markus Schimpf (arno911)<br />
-Ulrich Beckmann (Bequimão)<br />
-zeppo<br />
-<br /><br />
+<p>
+ayla <br />
+bluelupo <br />
+J. Hamatoma (hama) <br />
+Markus Schimpf (arno911) <br />
+Ulrich Beckmann (Bequimão) <br />
+zeppo <br />
+</p>
+
 <h3>Thank you!</h3>
 <p>Also thank you very much, all the testers and all the people that gave us support
 in any possible way. This is also your achievement.</p>
