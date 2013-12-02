@@ -1,11 +1,12 @@
-sidu-manual (2013.11.30) UNRELEASED; urgency=low
+sidu-manual (2013.11.01) unstable; urgency=low
 
   * header improved
   * new header graphics
   * templates and css improved
   * website/static cleanup
+  * left site menu improved
 
- -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 19:10:19 +0100
+ -- Alf Gaida <agaida@siduction.org>  Mon, 02 Dec 2013 02:26:21 +0100
 
 sidu-manual (2013.11.27) unstable; urgency=low
 
