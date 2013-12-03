@@ -27,6 +27,17 @@
                      <img id="header_logo_img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/logos/logo.png">
                 </a>
             </div>
+            <div id="top-lang">
+                <form action="_language" method="get">
+                    <a href="_language?language=de&amp;button_select=x"><de</a>
+                    <a href="_language?language=en&amp;button_select=x">en</a>
+                    <a href="_language?language=it&amp;button_select=x">it</a>
+                    <a href="_language?language=pl&amp;button_select=x">pl</a>
+                    <a href="_language?language=pt-br&amp;button_select=x">pt-br</a>
+                    <a href="_language?language=ro&amp;button_select=x">ro</a>
+                    <input type="submit" name="button_select"/>
+                </form>
+            </div>
             <div id="top-navigation">
                 <ul id="top-menu-list">
                     <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>

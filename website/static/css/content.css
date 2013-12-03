@@ -19,6 +19,7 @@ body, td, th, tr {
 
 /* should be as is                                                */
 
+
 body {
     background: #E7E7E7;
     font: 78%/130% "DroidSansRegular","Verdana","Arial","Helvetica",sans-serif;
@@ -40,6 +41,12 @@ div#wrapper {
     position: relative;
     width: auto;
 }
+
+
+#top-lang input {
+    display: none;
+}
+
 
 #header_logo {
     float: left;
