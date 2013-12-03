@@ -1,3 +1,9 @@
+sidu-manual (2013.12.03) unstable; urgency=low
+
+  * language selection in header
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 00:01:31 +0100
+
 sidu-manual (2013.12.01) unstable; urgency=low
 
   * header improved
