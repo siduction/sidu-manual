@@ -1,3 +1,10 @@
+sidu-manual (2013.12.04) unstable; urgency=low
+
+  * piwik integration in pageframe.html - only proof of concept
+    (hama will do the technical correct implementation) 
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 00:37:27 +0100
+
 sidu-manual (2013.12.03) unstable; urgency=low
 
   * language selection in header

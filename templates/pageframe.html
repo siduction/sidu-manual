@@ -27,9 +27,9 @@
                      <img id="header_logo_img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/logos/logo.png">
                 </a>
             </div>
-            <div id="top-lang">
+            <div id="top-lang"> <!-- language selection top-menu -->
                 <form action="_language" method="get">
-                    <a href="_language?language=de&amp;button_select=x"><de</a>
+                    <a href="_language?language=de&amp;button_select=x">de</a>
                     <a href="_language?language=en&amp;button_select=x">en</a>
                     <a href="_language?language=it&amp;button_select=x">it</a>
                     <a href="_language?language=pl&amp;button_select=x">pl</a>
@@ -37,7 +37,7 @@
                     <a href="_language?language=ro&amp;button_select=x">ro</a>
                     <input type="submit" name="button_select"/>
                 </form>
-            </div>
+            </div>  <!-- language selection end -->
             <div id="top-navigation">
                 <ul id="top-menu-list">
                     <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>
@@ -119,6 +119,22 @@
         <div id="footer" class="clear">
             {{.txt_footer}}
         </div> <!-- footer -->
+
+        <!-- piwik integration start-->
+        <script type="text/javascript">
+            var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.siduction.org/" : "http://piwik.siduction.org/");
+            document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+            try {
+                var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 9);
+                piwikTracker.trackPageView();
+                piwikTracker.enableLinkTracking();
+            } catch( err ) {}
+        </script>
+        <noscript>
+            <p><img src="http://piwik.siduction.org/piwik.php?idsite=9" style="border:0" alt="" /></p>
+        </noscript>
+        <!-- piwik integration end -->
+
     </div> <!-- wrapper -->
 </body>
 </html>
