@@ -43,10 +43,14 @@ div#wrapper {
 }
 
 
+#top-lang {
+    float: right;
+    padding: 13px 30px 0 0;
+}
+
 #top-lang input {
     display: none;
 }
-
 
 #header_logo {
     float: left;

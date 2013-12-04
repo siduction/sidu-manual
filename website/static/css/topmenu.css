@@ -1,10 +1,9 @@
 #top-navigation {
-    right: 0;
+    position: relative;
+    float: right;
+    padding: 0 30px 0 0;
     color: white;
-    margin:  0px 50px 0 50px;
-    position: absolute;
-    top: 80px;
-    width: 20em;
+    top: 50px;
 }
 
 #top-navigation a {
@@ -27,8 +26,8 @@
 
 #top-navigation li {
     display: block;
-    margin: 0 0 0 5px;
+    margin: 0;
+    padding: 0 3px;
     float: left;
-    position: relative;
 }
 

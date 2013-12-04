@@ -29,6 +29,7 @@
             </div>
             <div id="top-lang"> <!-- language selection top-menu -->
                 <form action="_language" method="get">
+                    <span>{{.txt_lang_switch}}: </span>
                     <a href="_language?language=de&amp;button_select=x">de</a>
                     <a href="_language?language=en&amp;button_select=x">en</a>
                     <a href="_language?language=it&amp;button_select=x">it</a>
@@ -40,10 +41,16 @@
             </div>  <!-- language selection end -->
             <div id="top-navigation">
                 <ul id="top-menu-list">
-                    <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>
-                    <li><a href="http://siduction.org/index.php?module=News">{{.txt_top_menu_blog}}</a></li>
-                    <li><a href="http://wiki.siduction.de/">{{.txt_top_menu_wiki}}</a></li>
-                    <li><a href="http://siduction.org/index.php?name=PNphpBB2&amp;lang={{!language}}">{{.txt_top_menu_forum}}</a></li>
+                    <li><a href="{{.url_top_menu_manual}}">  {{.txt_top_menu_manual}}</a></li>
+                    <li><a href="{{.url_top_menu_news}}">    {{.txt_top_menu_news}}</a></li>
+                    <li><a href="{{.url_top_menu_reviews}}"> {{.txt_top_menu_reviews}}</a></li>
+                    <li><a href="{{.url_top_menu_wiki}}">    {{.txt_top_menu_wiki}}</a></li>
+                    <li><a href="{{.url_top_menu_bugs}}">    {{.txt_top_menu_bugs}}</a></li>
+                    <li><a href="{{.url_top_menu_packages}}">{{.txt_top_menu_packages}}</a></li>
+                    <li><a href="{{.url_top_menu_test}}">    {{.txt_top_menu_test}}</a></li>
+                    <li><a href="{{.url_top_menu_download}}">{{.txt_top_menu_download}}</a></li>
+                    <li><a href="{{.url_top_menu_donate}}">  {{.txt_top_menu_donate}}</a></li>
+                    <li><a href="{{.url_top_menu_imprint}}"> {{.txt_top_menu_imprint}}</a></li>
                 </ul>
             </div> <!-- top-navigation -->
         </div> <!-- siduction-header -->
@@ -120,18 +127,23 @@
             {{.txt_footer}}
         </div> <!-- footer -->
 
-        <!-- piwik integration start-->
+        <!-- Piwik -->
         <script type="text/javascript">
-            var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.siduction.org/" : "http://piwik.siduction.org/");
-            document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-            try {
-                var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 9);
-                piwikTracker.trackPageView();
-                piwikTracker.enableLinkTracking();
-            } catch( err ) {}
+            var _paq = _paq || [];
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+
+            (function() {
+                var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.siduction.org/";
+                _paq.push(["setTrackerUrl", u+"piwik.php"]);
+                _paq.push(["setSiteId", "9"]);
+                var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+                g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+            })();
         </script>
+        <!-- End Piwik Code -->
         <noscript>
-            <p><img src="http://piwik.siduction.org/piwik.php?idsite=9" style="border:0" alt="" /></p>
+            <img src="http://piwik.siduction.org/piwik.php?idsite=9&amp;rec=1" style="border:0" alt="" />
         </noscript>
         <!-- piwik integration end -->
 

@@ -1,3 +1,11 @@
+sidu-manual (2013.12.04.1) unstable; urgency=low
+
+  * some styling of the language menu 
+  * top navigation improved 
+  * piwik code improved
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 01:26:06 +0100
+
 sidu-manual (2013.12.04) unstable; urgency=low
 
   * piwik integration in pageframe.html - only proof of concept
