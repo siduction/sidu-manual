@@ -1,3 +1,9 @@
+sidu-manual (2013.12.04.3) UNRELEASED; urgency=low
+
+  * piwik code included (in pageframe as placeholder)
+
+ -- J. Hamatoma <hama@siduction.net>  Wed, 04 Dec 2013 23:42:12 +0100
+
 sidu-manual (2013.12.04.2) unstable; urgency=low
 
   * adapted to sidu-base 2013.12.03
@@ -7,8 +13,8 @@ sidu-manual (2013.12.04.2) unstable; urgency=low
 
 sidu-manual (2013.12.04.1) unstable; urgency=low
 
-  * some styling of the language menu 
-  * top navigation improved 
+  * some styling of the language menu
+  * top navigation improved
   * piwik code improved
 
  -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 01:26:06 +0100
@@ -16,7 +22,7 @@ sidu-manual (2013.12.04.1) unstable; urgency=low
 sidu-manual (2013.12.04) unstable; urgency=low
 
   * piwik integration in pageframe.html - only proof of concept
-    (hama will do the technical correct implementation) 
+    (hama will do the technical correct implementation)
 
  -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 00:37:27 +0100
 
@@ -46,7 +52,7 @@ sidu-manual (2013.11.27) unstable; urgency=low
 sidu-manual (2013.11.30) unstable; urgency=low
 
   * fix some css files, links are now visible again
-  * css file formated 
+  * css file formated
 
  -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 12:59:15 +0100
 
@@ -62,7 +68,6 @@ sidu-manual (2013.11.26) unstable; urgency=low
   * new build for unstable
 
  -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 12:58:12 +0100
->>>>>>> 45ce16965f22d9c8b8cbeee4dce49501ee204585
 
 sidu-manual (2013.10.11) unstable; urgency=low
 
@@ -74,7 +79,7 @@ sidu-manual (2013.10.11) unstable; urgency=low
 
 sidu-manual (2013.10.10) unstable; urgency=low
 
-  * sidu-manual.desktop installed in skel/Desktop too 
+  * sidu-manual.desktop installed in skel/Desktop too
 
  -- Alf Gaida <agaida@siduction.org>  Thu, 10 Oct 2013 00:46:20 +0200
 
