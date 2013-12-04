@@ -4,16 +4,16 @@
 <head>
 	<title>siduction Manuals - CD Downloading and Burning</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -23,7 +23,7 @@
 		<h2 id="top-header">Downloading the siduction ISO</h2>
 			<h6><span class="highlight-2">THIS IS VERY IMPORTANT:</span><span class="highlight-3"> siduction, as a Linux LIVE-CD, is based on high compression technology, and because of that, special care is needed when burning the ISO image. Only use high quality CD-media [or DVD+RW] and burn in <span class="highlight-2">DAO-mode (disk-at-once)</span> and not faster than x8.</span></h6>
 	<div class="spacer02"></div>
-					<h6 class="highlight-3">Please use your closest mirror. Mirrors with codeboxes underneath them get updated as soon as changes are uploaded (refer to  /etc/apt/sources.list.d/siduction.list).</h6>
+					<h6 class="highlight-3">Please use your closest mirror. Mirrors with codeboxes underneath them get updated as soon as changes are uploaded (refer to  /etc/apt/sources.list.d/siduction.list). We also recommend using our torrent files, if you have no mirror in your country.</h6>
 
 				<h4>Europe</h4>
 				<ul>
@@ -131,7 +131,7 @@ siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso
 $ md5sum file_to_check
 </pre>
 
-							<p>The sum will be written in the konsole.<br />
+							<p>The sum will be written in the console.<br />
 							With md5sum (486 kb) the md5sum can also be validated in Windows.</p>
 
 							<p>The ISO-Images of siduction are always offered with a md5sum file and should always be validated before burning. This guarantees that if problems occur, they are not to be sought in the downloaded files, and this keeps the forum free of problems that can't be pinned down because the ISO-file was damaged in the first place. You should do this in a konsole. Change to the directory with the Iso-File and the MD5-Sum and issue the command to have the md5-sum checked. </p>
@@ -170,7 +170,7 @@ md5sum: Warning: calculated checksum does not match!"
 							<p>You have several good options to burn in Windows.</p>
 
 			<h5>Open Source burners for Windows</h5>
-							<p><a href="http://cdrtfe.sourceforge.net/">cdrtfe</a>  :compatible for Windows 9x/ME/2000/XP (tested with Win95, Win98SE, Win2000, and WinXP) only for Win9x/ME: working ASPI Layer (e.g. Adaptec ASPI 4.60)</p>
+							<p><a href="http://cdrtfe.sourceforge.net/">cdrtfe</a>  :compatible for Windows 9x/ME/2000/XP, vista, / and 8 (tested with Win95, Win98SE, Win2000, and WinXP) only for Win9x/ME: working ASPI Layer (e.g. Adaptec ASPI 4.60)</p>
 
 							<p><a href="http://www.linuxliveusb.com">LinuxLive USB Creator</a>, an open source project, offers a GUI for MS Windows&#8482;, which enables an install of an siduction-i386.iso (32 bit) to a USB stick. <span class="highlight-3"> You need to use <span class="highlight-2">fromhd</span> bootline/cheatcode on the boot line</span>.</p>
 
@@ -184,17 +184,15 @@ md5sum: Warning: calculated checksum does not match!"
 				</ul>
 	</div>
 
-	<div class="divider" id="burn-linux">
-		<h2>Burning The CD With Linux</h2>
-			<h6><span class="highlight-2">THIS IS VERY IMPORTANT:</span><span class="highlight-3"> siduction, as a Linux LIVE-CD, is based on high compression technology, and because of that, special care is needed when burning the ISO image. Only use high quality CD-media [or DVD+RW] and burn in <span class="highlight-2">DAO-mode (disk-at-once)</span> and not faster than x8.</span></h6>
-	<div class="spacer02"></div>
 
 
-							<p>If you already run Linux on your machine you should burn the CD either by using the shell or with any of your installed burning programs.</p>
+	<p>If you already run Linux on your machine you should burn the CD either by using the shell or with any of your installed burning programs.</p>
 
 							<p>With siduction and other Linux distributions K3b comes as default cd-burning tool. Open it, select "Tools" -> "burn CD-Image..." and select the ISO-File to burn (e.g. siduction.iso).</p>
 
 							<p>K3B initially calculates the MD5-sum for the ISO-file (this takes a moment). When the checksum is equal to the checksum in the MD5-file (for example siduction.iso.md5) your download was successful and you can burn the file by hitting "Start".</p>
+							
+							<p>As the importance of media like CD or DVD for installing Linux distribtions decreases vastly, please also look at the possibility to put the ISO on a USB Pendrive or a SD-Card and install from there. This simple process is covered in the <a href="hd-ins-opts-oos-de.htm#raw-lin">Install Options</a> chapter of our manual.</p>
 
 							<p><span class="highlight-3">Problems with burning mostly happen with a frontend. You can burn directly from the shell with <a href="cd-no-gui-burn-en.htm"> burniso</a>.</span></p>
 
@@ -202,7 +200,7 @@ md5sum: Warning: calculated checksum does not match!"
 
 					  <h6>Also see <a href="hd-ins-opts-oos-en.htm#raw-usb">Writing siduction to a USB/SSD stick with any Linux, MS Windows or Mac OS X system (32 and 64 bit)</a>.</h6>
 
-			<div id="rev">Content last revised 08/01/2012 1800 UTC</div>
+			<div id="rev">Content last revised 30/11/2013 1800 UTC</div>
 </div>
 </div>
 </body>

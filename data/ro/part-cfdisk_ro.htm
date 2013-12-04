@@ -4,16 +4,16 @@
 <head>
 	<title>Manualul siduction - Utilizare cfdisk</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -72,7 +72,7 @@ cfdisk /dev/sda
 							<p>În primul ecran <i>cfdisk</i> va lista tabela de partiţii curentă cu numele şi câteva date despre fiecare partiţie. La baza ecranului sunt câteva butoane de comenzi active. Pentru a trece de la o partiţie la alta folosiţi <b>săgeţile sus/jos de la tastatură</b>. Pentru a muta între comenzi folosiţi <b>săgeţile stânga/dreapta de la tastatură.</b></p>
 
 				<h5>Ştergerea unei partiţii </h5>
-		<div class="screenshot"><img src="../lib/images-ro/cfdisk-ro/cfdisk0-ro.png" title="Delete a partition" alt="Delete a partition" /></div>
+		<div class="screenshot"><img src="../images-ro/cfdisk-ro/cfdisk0-ro.png" title="Delete a partition" alt="Delete a partition" /></div>
 							<p>Pentru a şterge o partiţie alegeţi-o cu săgeţile sus/jos apoi selectaţi comanda </p>
 <pre >
 Delete
@@ -83,7 +83,7 @@ Enter
 </pre>
 
 				<h5>Crearea unei noi partiţii</h5>
-		<div class="screenshot"><img src="../lib/images-ro/cfdisk-ro/cfdisk1-ro.png" title="Create a new partition" alt="Create a new partition" /></div>
+		<div class="screenshot"><img src="../images-ro/cfdisk-ro/cfdisk1-ro.png" title="Create a new partition" alt="Create a new partition" /></div>
 
 							<p>Pentru crearea unei noi partiţii folosiţi comanda:</p>
 <pre >
@@ -95,14 +95,14 @@ Units
 </pre>
 
 			<h5>Tipul Partiţiei</h5>
-		<div class="screenshot"><img src="../lib/images-ro/cfdisk-ro/cfdisk2-ro.png" title="Type of a partition 1" alt="Type of a partition 1" /></div>
+		<div class="screenshot"><img src="../images-ro/cfdisk-ro/cfdisk2-ro.png" title="Type of a partition 1" alt="Type of a partition 1" /></div>
 
 							<p>Pentru a seta tipul partiţiei <b>Linux swap</b> sau <b>Linux</b>, inseraţi poziţia actuală şi folosiţi comanda:</p>
 <pre >
 Type
 </pre>
 							<p>Veţi vedea o listă cu diferite tipuri de partiţii. Apăsaţi tasta <i>space</i> şi vedeţi mai multe. Găsiţi tipul de care aveţi nevoie şi introduceţi numărul corespunzător. (<b>Linux swap</b> este tip <b>82</b>, <b>Linux filesystems</b> trebuie să fie tip <b>83</b>)</p>
-		<div class="screenshot"><img src="../lib/images-ro/cfdisk-ro/cfdisk3-ro.png" title="Type of a partition 2" alt="Type of a partition 2" /></div>
+		<div class="screenshot"><img src="../images-ro/cfdisk-ro/cfdisk3-ro.png" title="Type of a partition 2" alt="Type of a partition 2" /></div>
 
 			<h5>Setarea unei partiţii ca partiţie de boot</h5>
 							<p>Nu este nevoie, în Linux, să faceţi o partiţie ca partiţie de boot, dar pentru alte sisteme de operare este necesar. Alegeți partiţia şi selectaţi comanda:<br /> <i>Notă: Când instalaţi pe un HD extern atunci o partiţie trebuie să fie boot-abilă</i></p>
@@ -116,7 +116,7 @@ Bootable
 Enter
 
 </pre>
-		<div class="screenshot"><img src="../lib/images-ro/cfdisk-ro/cfdisk4-ro.png" title="Write the result to disk" alt="Write the result to disk" /></div>
+		<div class="screenshot"><img src="../images-ro/cfdisk-ro/cfdisk4-ro.png" title="Write the result to disk" alt="Write the result to disk" /></div>
 
 			<h5>Ieşirea</h5>
 							<p>Pentru a ieşi din program selectaţi comanda <i>Quit</i>. După ieşirea din <i>cfdisk</i> şi înainte de pornirea formatării sau instalării trebuie să restartaţi computerul în siduction pentru ca acesta să recitească noua tabelă de partiţii.</p>

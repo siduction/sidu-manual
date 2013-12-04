@@ -4,16 +4,16 @@
 <head>
 	<title>Manuais do siduction - Atualização da BIOS com FreeDOS (RO)</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-  <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-  <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-  <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-  <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+  <style type="text/css" media="all">@import url("../css/menu.css");</style>
+  <style type="text/css" media="print">@import url("../css/print.css");</style>
+  <link rel ="shortcut icon" href="../favicon.ico" />
+  <script type="text/javascript" src="../js/menu2.js"></script>
   <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+    <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
    <![endif]-->
    <!--[if lt IE 7]>
-    <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+    <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
    <![endif]-->
 </head>
 <body class="body-main">
@@ -177,7 +177,7 @@ qemu -hda /dev/sdb -cdrom /path/to/fdbasecd.iso -boot d
 </pre>
 							<p><span class="highlight-1">ctrl-alt</span> alterna mouse e teclado, de forma a permitir que você troque de telas do desktop para reler quaisquer instruções em cada passo.</p>
 
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU FreeDOS" alt="QEMU FreeDOS" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU FreeDOS" alt="QEMU FreeDOS" /></div>
 							<p>Com isso, damos o boot no CD do FreeDOS e estabelecemos a pendrive como o HD Master primário (aqui, a BIOS emulada pelo qemu habilmente faz a pendrive ser vista pelo DOS como um HD comum). Vamos selecionar o instalador no menu do boot virtual do FreeDOS:</p>
 <pre>
 1) Continue to boot FreeDOS from CD-ROM
@@ -188,22 +188,22 @@ enter
 							<p>Continue a escolher as opções padrão <span class="highlight-3">1</span> e/ou <span class="highlight-3">Yes</span> quando solicitado.</p>
 
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos Installation - 1" alt="freedos-inst1" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos Installation - 1" alt="freedos-inst1" /></div>
 
 		<div class="spacer02"></div>
-	<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos Installation - 2"  alt="freedos-inst2" /></div>
+	<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos Installation - 2"  alt="freedos-inst2" /></div>
 
 	<div class="spacer02"></div>
 
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos Installation - 3" alt="freedos-inst3" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos Installation - 3" alt="freedos-inst3" /></div>
 
 
 	<div class="spacer02"></div>
 
 							<p>O instalador vai pedir que o computador seja reiniciado - <span class="highlight-3">mas não o faça ainda, pois teremos primeiro de sanar dois erros existentes no instalador, um referente à MBR e outro ao menu de boot</span>. Digite <span class="highlight-3"><b>n</b></span>.</p>
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos Installation - do not reboot type n" alt="freedos-do not reboot type n" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos Installation - do not reboot type n" alt="freedos-do not reboot type n" /></div>
 
 	<div class="spacer02"></div>
 				<h3>Como escrever um setor de boot ('bootsector') em seu dispositivo USB</h3>
@@ -225,7 +225,7 @@ edit fdconfig.sys
 
 NOTA: é para ficar assim: <span class="highlight-3">1234?SHELLHIGH=C:....</span>
 </pre>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot23.jpg" title="Edit fdconfig.sys " alt="fdconfig.sys" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot23.jpg" title="Edit fdconfig.sys " alt="fdconfig.sys" /></div>
 	<div class="spacer02"></div>
 							<p><span class="highlight-2">Não altere mais nada, pois a linha depende do que foi configurado em toda sua instalação.</span></p>
 

@@ -4,16 +4,16 @@
 <head>
 	<title>siduction Manuals - Upgrade BIOS FreeDOS </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -177,7 +177,7 @@ qemu -hda /dev/sdb -cdrom /path/to/fdbasecd.iso -boot d
 </pre>
 							<p><span class="highlight-1">ctrl-alt</span> will toggle mouse and keyboard grab and allow you to switch desktops to reread any instructions at each step.</p>
 
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU FreeDOS" alt="QEMU FreeDOS" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU FreeDOS" alt="QEMU FreeDOS" /></div>
 							<p>This boots the FreeDOS CD and maps the USB-Stick raw device as primary master HD (here qemu's BIOS emulation abililty makes the USB-Stick appear to DOS as an ordinary hard disk).  Select the installer from the start menu of the virtualised FreeDOS boot:</p>
 <pre>
 1) Continue to boot FreeDOS from CD-ROM
@@ -188,22 +188,22 @@ enter
 							<p>Keep choosing the default of <span class="highlight-3">1</span> and/or choosing <span class="highlight-3">Yes</span> when asked.</p>
 
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos Installation - 1" alt="freedos-inst1" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos Installation - 1" alt="freedos-inst1" /></div>
 
 		<div class="spacer02"></div>
-	<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos Installation - 2"  alt="freedos-inst2" /></div>
+	<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos Installation - 2"  alt="freedos-inst2" /></div>
 
 	<div class="spacer02"></div>
 
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos Installation - 3" alt="freedos-inst3" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos Installation - 3" alt="freedos-inst3" /></div>
 
 
 	<div class="spacer02"></div>
 
 							<p>The install asks you to reboot - <span class="highlight-3">don't do that yet, as there is a need to fix up two errors in the FreeDOS installer for the mbr and bootmenu</span>. Type the letter <span class="highlight-3"><b>n</b></span>.</p>
 	<div class="spacer02"></div>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos Installation - do not reboot type n" alt="freedos-do not reboot type n" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos Installation - do not reboot type n" alt="freedos-do not reboot type n" /></div>
 
 	<div class="spacer02"></div>
 				<h3>Writing a bootsector to your USB-Stick</h3>
@@ -223,7 +223,7 @@ edit fdconfig.sys
 (don't actually change this command, just add "1234?" to the begin of the line (before SHELLHIGH=C:\FDOS\command.com .....
 NOTE it is to read : <span class="highlight-3">1234?</span>
 </pre>
-		<div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot23.jpg" title="Edit fdconfig.sys " alt="fdconfig.sys" /></div>
+		<div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot23.jpg" title="Edit fdconfig.sys " alt="fdconfig.sys" /></div>
 	<div class="spacer02"></div>
 							<p><span class="highlight-2">Do not change anything else, as the line depends on your install setup.</span></p>
 

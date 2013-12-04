@@ -4,16 +4,16 @@
 <head>
 	<title>siduction Manuals - Graphics Drivers</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+	<style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -78,7 +78,7 @@ touch /etc/X11/xorg.conf.d/20-nvidia.conf
 <pre>
 #
 Section "Device"
-         Identifier      "Device 0"
+         Identifier      "Device0"
          Driver          "nvidia"
 EndSection
 # This is a trailing line, it is needed so that End Section is not the last line
@@ -103,31 +103,21 @@ BusID		 "PCI:1:0:0"
 
 							<p>Prepare the module:</p>
 <pre>
-apt-get install nvidia-kernel-source nvidia-kernel-common nvidia-kernel-dkms
-</pre>
-						
-<pre>
-apt-get install nvidia-glx
+apt-get install nvidia-driver
 </pre>
 
 						      <p>Reboot PC for installation of the module to take effect.</p>
 
-						      <p>When xorg updates you only need to reinstall nvidia-glx:</p>
+						      <p>When xorg updates you only need to reinstall nvidia-driver:</p>
 <pre>
-apt-get install --reinstall nvidia-glx
+apt-get install --reinstall nvidia-driver
 </pre>
-
-						      <p>When the nvidia-kernel-source is updated:</p>
-<pre>
-apt-get install --reinstall nvidia-glx
-</pre>
-						      <p>Reboot PC for installation of the module to take effect.</p>
 
 					      <h4>Naming scheme for legacy nvidia drivers in Debian</h4>
 						  <ul>
-						      <li>nvidia-kernel-legacy-71xx is for GeForce 2</li>
 						      <li>nvidia-kernel-legacy-96xx is for GeForce 4</li>
 						      <li>nvidia-kernel-legacy-173xx is for GeForce 5</li>
+						      <li>nvidia-kernel-legacy-304xx: GeForce 6</li>
 						  </ul>
 
 					<h5>Example for legacy 3d nvidia drivers using &le; GeForce 5xxx :</h5>
@@ -135,13 +125,13 @@ apt-get install --reinstall nvidia-glx
 							<p>For other legacy drivers just replace 173xx number with your driver number.</p>
 
 <pre>
-m-a a-i nvidia-kernel-legacy-173xx-source &amp;&amp; apt-get install nvidia-glx-legacy-173xx nvidia-kernel-legacy-173xx-dkms 
+apt-get install nvidia-legacy-173xx-driver
 </pre>
 						
 
-						      <p>When xorg updates you only need to reinstall nvidia-glx-legacy:</p>
+						      <p>When xorg updates you only need to reinstall nvidia-legacy:</p>
 <pre>
-apt-get install --reinstall nvidia-glx-legacy-173xx
+apt-get install --reinstall nvidia-legacy-173xx-driver (or the appropriate version)
 </pre>
 					<h4>Module load failure</h4>
 
@@ -154,7 +144,7 @@ modprobe nvidia
 		</div>
 
 
-	<div id="rev">Page last revised 08/01/2012 1800 UTC</div>
+	<div id="rev">Page last revised 25/11/2013 20:55 UTC</div>
 
 </div>
 </div>

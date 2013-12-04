@@ -1,9 +1,68 @@
-sidu-manual (2013.10.12) unstable; urgency=low
+sidu-manual (2013.12.04.2) unstable; urgency=low
 
-  * adapted to sidu-base 0.4.8
+  * adapted to sidu-base 2013.12.03
   * parameter of Menu.__init__(): isExtended
 
  -- J. Hamatoma <hama@siduction.net>  Fri, 11 Oct 2013 00:00:56 +0200
+
+sidu-manual (2013.12.04.1) unstable; urgency=low
+
+  * some styling of the language menu 
+  * top navigation improved 
+  * piwik code improved
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 01:26:06 +0100
+
+sidu-manual (2013.12.04) unstable; urgency=low
+
+  * piwik integration in pageframe.html - only proof of concept
+    (hama will do the technical correct implementation) 
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 00:37:27 +0100
+
+sidu-manual (2013.12.03) unstable; urgency=low
+
+  * language selection in header
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 04 Dec 2013 00:01:31 +0100
+
+sidu-manual (2013.12.01) unstable; urgency=low
+
+  * header improved
+  * new header graphics
+  * templates and css improved
+  * website/static cleanup
+  * left site menu improved
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 02 Dec 2013 02:26:21 +0100
+
+sidu-manual (2013.11.27) unstable; urgency=low
+
+  [ Ferdinand Thommes ]
+  * pdate cd-cd-burning-de and -en.htm in the manual
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 19:10:11 +0100
+
+sidu-manual (2013.11.30) unstable; urgency=low
+
+  * fix some css files, links are now visible again
+  * css file formated 
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 12:59:15 +0100
+
+sidu-manual (2013.11.26) unstable; urgency=low
+
+  [ Ferdinand Thommes ]
+  * bring gpu_de and gpu_en.htm to current
+  * bring gpu_de and gpu_en.htm to current; closes #1395
+  * update  cd-content-de and -en.htm to current, adding new desktop
+    environments, updating specs and fixing typos
+
+  [ Alf Gaida ]
+  * new build for unstable
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 30 Nov 2013 12:58:12 +0100
+>>>>>>> 45ce16965f22d9c8b8cbeee4dce49501ee204585
 
 sidu-manual (2013.10.11) unstable; urgency=low
 
@@ -284,11 +343,11 @@ sidu-manual (0.8.3) unstable; urgency=low
     E: sidu-manual: missing-dependency-on-python-support
     python-support (>= 0.90)
   * changed file modes to 644 for
-    website/static/lib/images-common/images-grub2/*, stopp lintian
+    website/static/images-common/images-grub2/*, stopp lintian
     complaining about: W: sidu-manual: executable-not-elf-or-script
   * changed file mode to 644 for website/static/lib/logos/siduction-book.png
   * changed file mode to 644 for
-    website/static/lib/images-common/images-vm/kvm-gparted02.png
+    website/static/images-common/images-vm/kvm-gparted02.png
   * W: sidu-manual: binary-without-manpage usr/bin/sidu-manual-control
     no override, this should be fixed
   * current standards: 3.9.4

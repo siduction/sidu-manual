@@ -4,14 +4,14 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
 <title>siduction Manuals - Upgrade BIOS FreeDOS </title> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style> <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-<link rel="shortcut icon" href="../lib/favicon/manual.ico" />
-<script type="text/javascript" src="../lib/css-js/menu2.js"></script> 
+<style type="text/css" media="all">@import url("../css/content.css");</style>
+<style type="text/css" media="all">@import url("../css/menu.css");</style> <style type="text/css" media="print">@import url("../css/print.css");</style>
+<link rel="shortcut icon" href="../favicon.ico" />
+<script type="text/javascript" src="../js/menu2.js"></script> 
 <!--[if lt IE 8]>
-<link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+<link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
 <![endif]--> <!--[if lt IE 7]> <link rel="stylesheet" type="text/css"
-href="../lib/css-js/ie_5-6_override.css"> <![endif]--> 
+href="../css/ie_5-6_override.css"> <![endif]--> 
 </head> 
 <body class="body-main">
 <div>
@@ -211,7 +211,7 @@ qemu -hda	/dev/sdb -cdrom /path/to/fdbasecd.iso -boot d
 Hostsystem. Damit kann man Desktops wechseln und jeden Schritt in der Anleitung					neu lesen.</p>
 
 		<div class="screenshot"><img
-		src="../lib/images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU
+		src="../images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU
 		FreeDOS" alt="QEMU FreeDOS" /></div> <p>Damit wird FreeDOS CD gebootet und der
 		USB-Stick wird als primäre Master-Festplatte erkannt (qemus Fähigkeit zur
 		BIOS-Emulation lässt den USB-Stick für DOS als gewöhnliche Festplatte
@@ -222,17 +222,17 @@ Hostsystem. Damit kann man Desktops wechseln und jeden Schritt in der Anleitung	
 		antwortet <span class="highlight-3">Yes</span>, falls angefragt.</p>
 
 	<div class="spacer02"></div> <div class="screenshot"><img
-	src="../lib/images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos
+	src="../images-common/images-qemu-freedos/qemu-boot02.jpg" title="Freedos
 	Installation - 1" alt="freedos-inst1" /></div>
 
 		<div class="spacer02"></div> <div class="screenshot"><img
-		src="../lib/images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos
+		src="../images-common/images-qemu-freedos/qemu-boot04.jpg" title="Freedos
 		Installation - 2"  alt="freedos-inst2" /></div>
 
 	<div class="spacer02"></div>
 
 	<div class="spacer02"></div> <div class="screenshot"><img
-	src="../lib/images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos
+	src="../images-common/images-qemu-freedos/qemu-boot09.jpg" title="Freedos
 	Installation - 3" alt="freedos-inst3" /></div>
 
  <div class="spacer02"></div>
@@ -240,7 +240,7 @@ Hostsystem. Damit kann man Desktops wechseln und jeden Schritt in der Anleitung	
 <p>Die Installationsroutine fordert nun zu einem Reboot auf - <span class="highlight-3">dies wird noch nicht gemacht, da noch zwei Fehler des FreeDOS Installers bezüglich mbr und Bootmenü behoben werden müssen</span>.
 Man gibt den Buchstaben <span class="highlight-3"><b>n</b></span> ein.</p> 
 
-<div class="spacer02"></div> <div class="screenshot"><img src="../lib/images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos 							Installation - N eingeben, nicht neustarten!" alt="freedos-do not reboot type n"/></div>
+<div class="spacer02"></div> <div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos 							Installation - N eingeben, nicht neustarten!" alt="freedos-do not reboot type n"/></div>
 
 	<div class="spacer02"></div> <h3>Schreiben eines Bootsektors auf den
 	USB-Stick</h3> <p>Der mbr-Fehler wird behoben durch:</p>
@@ -265,7 +265,7 @@ NOTE it is to read : <span class="highlight-3">1234?</span>
 </pre> 
 
 <div class="screenshot"><img
-src="../lib/images-common/images-qemu-freedos/qemu-boot23.jpg"
+src="../images-common/images-qemu-freedos/qemu-boot23.jpg"
 title="fdconfig.sys bearbeiten" alt="fdconfig.sys" /></div> <div
 class="spacer02"></div> <p><span class="highlight-2">Ansonsten darf nichts
 geändert werden, da die Zeile von dem Installations-Setup abhängt.</span></p>

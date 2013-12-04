@@ -4,16 +4,16 @@
 <head>
 	<title>siduction Manuals - CD DL and Burning -de</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -23,7 +23,7 @@
 		<h2 id="top-header">Die siduction ISO herunterladen</h2>
 			<h6><span class="highlight-2">WICHTIGE INFORMATION:</span><span class="highlight-3"> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im <span class="highlight-2">DAO-Modus (disk-at-once)</span> und nicht schneller als achtfach (8x).</span></h6>
 	<div class="spacer02"></div>
-					<h6 class="highlight-3">Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.</h6>
+					<h6 class="highlight-3">Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert. Auch die von uns angebotenen Torrents sind gut benutzbar.</h6>
 
 				<h4>Europa</h4>
 				<ul>
@@ -108,23 +108,22 @@ siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso
 
 							<p><span class="highlight-3">.iso</span> ist die für den Download angebotene Abbilddatei. </p>
 
-							<p>Die Dateien <span class="highlight-3">.md5 und .sha256</span> sind zur Überprüfung der Integrität der ISO.</p>
+							<p>Die Dateien <span class="highlight-3">.md5 und .sha256</span> dienen der Überprüfung der Integrität der ISO.</p>
 
-							<p>Die <span class="highlight-3">.gpg</span>-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.md5 .sha256) überprüft werden, ob sie verändert wurden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.</p>
+							<p>Die <span class="highlight-3">.gpg</span>-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.md5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.</p>
 
 							<p>Download-Links und Spiegelserver findet man auf <a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;pid=2">siduction.org</a></p>
+							
+							<p>Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.</p>
 
-							<p>Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den <a href="http://siduction.org/">siduction-Foren</a> oder im IRC  irc.oftc.net:6667 #siduction erreichbar.</p>
+							<p>Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den <a href="http://siduction.org/">siduction-Foren</a> oder im IRC  irc.oftc.net:6667 #siduction.de erreichbar.</p>
 
 	</div>
 	<div class="divider" id="md5">
 		<h2>md5sum und Integritätsprüfung von heruntergeladenen Dateien</h2>
 
-			<h6><span class="highlight-2">WICHTIGE INFORMATION:</span><span class="highlight-3"> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im <span class="highlight-2">DAO-Modus (disk-at-once)</span> und nicht schneller als achtfach (8x).</span></h6>
-	<div class="spacer02"></div>
 
-
-							<p>Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien ratsam ist.</p>
+							<p>Eine <span class="highlight-3">md5sum</span> ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dcem Netz immer ratsam ist und viel Zeit für die  Fehlersuche erspart.</p>
 
 							<p>Die Datei ist unbeschädigt heruntergeladen worden, wenn die md5sum der heruntergeladenen Datei mit der Summe in der MD5-Datei übereinstimmt. Unter Linux erhält man die md5sum einer Datei mit:</p>
 
@@ -176,7 +175,7 @@ man sha256sum
 								<p>Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.</p>
 
 					<h5>Open-Source-Brennsoftware für Windows</h5>
-							<p><a href="http://cdrtfe.sourceforge.net/">cdrtfe</a>: kompatibel mit Windows 9x/ME/2000/XP (getestet mit Win95, Win98SE, Win2000, WinXP). Nur für Win9x/ME: funktionierende ASPI-Layer (z. B. Adaptec ASPI 4.60)</p>
+							<p><a href="http://cdrtfe.sourceforge.net/">cdrtfe</a>: kompatibel mit Windows 9x/ME/2000/XP, Vista, 7 und 8. (getestet mit Win95, Win98SE, Win2000, WinXP). Nur für Win9x/ME: funktionierende ASPI-Layer (z. B. Adaptec ASPI 4.60)</p>
 
 							<p><a href="http://www.linuxliveusb.com">LinuxLive USB Creator</a>, ein Open-Source-Projekt, bietet eine GUI-Applikation für MS Windows&#8482;, welche es ermöglicht, eine siduction-i386.iso (32 bit) auf einen USB-Stick zu installieren. <span class="highlight-3"></span></p>
 
@@ -200,13 +199,15 @@ man sha256sum
 							<p>K3b berechnet zuerst die MD5-Summe des ISO-Files (dauert einen Moment). Stimmt die angezeigte Prüfsumme mit der angegebenen Zeichenfolge der sich im selben Ordner befindlichen MD5-Datei (z.B. siduction-Name.iso.md5) überein, war der Download erfolgreich und die Datei kann mit einem Klick auf "Start" gebrannt werden.</p>
 
 							<p>Klickt man auf die berechnete Prüfsumme, erscheint daneben ein Symbol. Klickt man wiederum darauf und fügt in das Feld die Prüfsumme aus der MD5-Datei ein, so werden die beiden Prüfsummen verglichen.</p>
+							
+							<p>Da die Bedeutung von Medien wie CD und DVD für das Erstellen von ISO-Images bei Linux-Distributionen ständig abnimmt, sei hier auf die Möglichkeit der Installation von einem USB-Stick / einer SD-Karte hingewiesen, die im Handbuch unter <a href="hd-ins-opts-oos-de.htm#raw-lin">Installationsoptionen</a> erläutert wird.</p>
 
 							<p><span class="highlight-3">Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript <a href="cd-no-gui-burn-de.htm"> burniso</a> verwenden.</span></p>
 
 	</div>
 					  <h6>Siehe auch <a href="hd-ins-opts-oos-de.htm#raw-usb">Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X)</a>.</h6>
 
-			<div id="rev">Page last revised 08/01/2012 1545 UTC</div>
+			<div id="rev">Page last revised 30/11/2013 1545 UTC</div>
 </div>
 </div>
 </body>

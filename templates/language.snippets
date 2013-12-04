@@ -1,23 +1,23 @@
 MAIN:
 <h1>{{language.title}}</h1>
 <form action="_language" method="get">
-<table border="0" width="100%">
-<tr>
-	<td><a href="_language?language=de&amp;button_select=x"><img src="/static/lib/flags/de-flag.png" alt="de" /></a></td>
-	<td><a href="_language?language=en&amp;button_select=x"><img src="/static/lib/flags/en-flag.png" alt="en" /></a></td>
-	<td><a href="_language?language=it&amp;button_select=x"><img src="/static/lib/flags/it-flag.png" alt="it" /></a></td>
-	<td><a href="_language?language=pl&amp;button_select=x"><img src="/static/lib/flags/pl-flag.png" alt="pl" /></a></td>
-	<td><a href="_language?language=pt-br&amp;button_select=x"><img src="/static/lib/flags/pt-br-flag.png" alt="pt-br" /></a></td>
-	<td><a href="_language?language=ro&amp;button_select=x"><img src="/static/lib/flags/ro-flag.png" alt="ro" /></a></td>
-</tr>
-</table>
-<p class="center">
-<br/>
-<select name="language" size="6">
-{{body_language}}
-</select>
-</p>
-<p class="center">
-<input type="submit" name="button_select" value="{{language.txt_select}}" />
-</p>
+    <table border="0" width="100%">
+        <tr>
+            <td><a href="_language?language=de&amp;button_select=x"><img src="/static/flags/de-flag.png" alt="de" /></a></td>
+            <td><a href="_language?language=en&amp;button_select=x"><img src="/static/flags/en-flag.png" alt="en" /></a></td>
+            <td><a href="_language?language=it&amp;button_select=x"><img src="/static/flags/it-flag.png" alt="it" /></a></td>
+            <td><a href="_language?language=pl&amp;button_select=x"><img src="/static/flags/pl-flag.png" alt="pl" /></a></td>
+            <td><a href="_language?language=pt-br&amp;button_select=x"><img src="/static/flags/pt-br-flag.png" alt="pt-br" /></a></td>
+            <td><a href="_language?language=ro&amp;button_select=x"><img src="/static/flags/ro-flag.png" alt="ro" /></a></td>
+        </tr>
+    </table>
+    <p class="center">
+        <br/>
+        <select name="language" size="6">
+            {{body_language}}
+        </select>
+    </p>
+    <p class="center">
+        <input type="submit" name="button_select" value="{{language.txt_select}}" />
+    </p>
 </form>

@@ -2,13 +2,13 @@
 <!--siduction Operating System Manual menu-version-02.13.2011.09.09 -->
 <!-- menu last updated by 13/01/2011 1300 UTC-->
 	<div id="menu-header">
-	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="Zu manual.siduction.org (Online Manual)" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../logos/manual-siduction-logo.png" title="Zu manual.siduction.org (Online Manual)" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
-		<li><a href="manual-search-de.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
+		<li><a href="manual-search-de.htm#search-on"> <img src="../logos/manual-search-22x22.png" title="Handbuch Suche" alt="Suche" />Suche online - offline</a> </li>
 	</ul>
 	<div id="flags-2">
-			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Wähle eine andere Sprache - Choose another language DE, EN" alt="lang-switch" /></a>
+			<a href="../flag-index.html"><img src="../logos/siduction-lang-100x64.png" title="Wähle eine andere Sprache - Choose another language DE, EN" alt="lang-switch" /></a>
 	</div>
 	<ul>
 <li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">siduction-Handbuch</a>
@@ -291,7 +291,7 @@
 </ul>
 
 <div id="menu-header-5">
-<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="../logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
 </div>
 
 <ul>

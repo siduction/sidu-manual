@@ -58,8 +58,8 @@ class SessionTest(TestCase):
         session = self.getSession()
         self.assertEquals('<a href="home">',
             session.translateInternalRefs('<a href="home-de.htm">'))
-        self.assertEquals('<img src="/static/lib/images-de/installer-de/installer1-de.png">',
-            session.translateInternalRefs('<img src="../lib/images-de/installer-de/installer1-de.png">'))
+        self.assertEquals('<img src="/static/images-de/installer-de/installer1-de.png">',
+            session.translateInternalRefs('<img src="../images-de/installer-de/installer1-de.png">'))
 
     def testGetBodyOfStatic(self):
         session = self.getSession()

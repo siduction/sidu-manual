@@ -1,0 +1,152 @@
+/*
+* bluewater-manual OS menu.css copyright:
+*
+* 2013, hama
+* 2011-2013, Hendrik Lehmbruch (hendrikL) (hendrikl@siduction.net)
+* 2006-2009, Harald Holt (h2)
+* 2006-2011, Trevor Walkley (bluewater)(trevor_walkley at aptenodytes.org)
+*
+* released under GNU Free Documentation License.Permission is granted to copy, distribute
+* and/or modify this document under the terms of the GNU Free Documentation License,
+* Version 1.2 or any later version published by the Free Software Foundation; with no
+* Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
+*
+* Last updated by hendrikL 2013-03-31 13:53:15 UTC
+*/
+
+#menu {
+    width:200px;
+    font:normal 0.9em "DroidSansRegular", sans-serif;
+    float:left;
+    padding-top:10px;
+    background:#fff;
+    margin-right:0px;
+}
+
+#menu a:visited,
+#menu a:active,
+#menu a:link {
+    color: white;
+}
+
+#menu li a:hover {
+    text-decoration:underline;
+}
+
+#menu ul {
+    list-style:none;
+    padding: 0
+}
+
+.menuitem {
+    background-color: #E7EAEF;
+    color: #000000;
+}
+
+.menuitem span.topslice {
+    background: url("../logos/main_block.png") no-repeat scroll 0 -30px rgba(0, 0, 0, 0);
+    display: block;
+    padding-left: 20px;
+}
+
+.menuitem span.topslice span {
+    background: url("../logos/main_block.png") no-repeat scroll 100% -30px rgba(0, 0, 0, 0);
+    display: block;
+    height: 11px;
+}
+
+.menuitem span.botslice {
+    background: url("../logos/main_block.png") no-repeat scroll 0 -40px rgba(0, 0, 0, 0);
+    display: block;
+    font-size: 5px;
+    line-height: 5px;
+    margin-bottom: 0.2em;
+    padding-left: 20px;
+}
+
+.menuitem span.botslice span {
+    background: url("../logos/main_block.png") no-repeat scroll 100% -40px rgba(0, 0, 0, 0);
+    display: block;
+    height: 11px;
+}
+
+
+ul#treeMenu {
+    color: #fff;
+    background:#535D6C;
+    margin: 0;
+    padding: 5px 0;
+}
+
+ul#treeMenu,
+ul#treeMenu ul,
+ul#treeMenu ul ul {
+    margin: 0;
+}
+
+ul#treeMenu li,
+ul#treeMenu li li,
+ul#treeMenu li li li {
+    margin: 3px 0 0 1em;
+    padding: 0;
+}
+
+ul#treeMenu li label:hover,
+ul#treeMenu li li label:hover,
+ul#treeMenu li li li label:hover{
+    text-decoration:underline;
+}
+
+
+#treeMenu a:visited {
+    color: #ff8000;
+}
+
+#treeMenu a:active,
+#treeMenu a:link {
+    color: white;
+}
+
+#treeMenu a {
+    font-size: 0.85em;
+    color: #ff8000;
+}
+
+#treeMenu input {
+    display:none
+}
+
+
+#treeMenu li input + ul  {
+    display:none; !important;
+}
+
+#treeMenu li input:checked + ul {
+    display: block;
+}
+
+
+/* search */
+#menu ul#top-list li {
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul#top-list img {
+    margin: 5px 5px 0 35px;
+}
+
+#menu ul#top-list img + b {
+    position:absolute;
+    margin: 5px 0 0 0;
+}
+
+#menu a > b:hover {
+    text-decoration:underline;
+}
+
+#menu ul#top-list {
+    height: 30px;
+    background:#535D6C;
+}
+

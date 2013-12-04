@@ -4,16 +4,16 @@
 <head>
 	<title>Manuais do siduction - cfdisk (RO)</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -73,7 +73,7 @@ cfdisk /dev/sda
 							<p>Na primeira tela, o cfdisk lista a tabela de partições atual, com os respectivos nomes e alguns dados sobre cada uma delas. Na parte inferior há alguns botões de comandos. Para mudar de uma partição para outra, use as <b>setas para cima e para baixo</b>. Para mudar de um comando para outro, use as <b>setas esquerda e direita.</b></p>
 
 			<h5>Apagar uma partição</h5>
-		<div class="screenshot"><img src="../lib/images-pt-br/cfdisk-pt-br/cfdisk0-pt-br.png" title="Delete a partition" alt="Delete a partition" /></div>
+		<div class="screenshot"><img src="../images-pt-br/cfdisk-pt-br/cfdisk0-pt-br.png" title="Delete a partition" alt="Delete a partition" /></div>
 
 							<p>Para apagar uma partição, marque-a usando as setas para cima/para baixo, selecione o comando:</p>
 <pre >
@@ -85,7 +85,7 @@ Enter
 </pre>
 
 			<h5>Criar uma nova partição</h5>
-		<div class="screenshot"><img src="../lib/images-pt-br/cfdisk-pt-br/cfdisk1-pt-br.png" title="Create a new partition" alt="Create a new partition" /></div>
+		<div class="screenshot"><img src="../images-pt-br/cfdisk-pt-br/cfdisk1-pt-br.png" title="Create a new partition" alt="Create a new partition" /></div>
 
 							<p>Para criar uma nova partição, use o comando:</p>
 <pre >
@@ -97,7 +97,7 @@ Unidades (ou Units)
 </pre>
 
 			<h5>Tipo da partição</h5>
-		<div class="screenshot"><img src="../lib/images-pt-br/cfdisk-pt-br/cfdisk2-pt-br.png" title="Type of a partition 1" alt="Type of a partition 1" /></div>
+		<div class="screenshot"><img src="../images-pt-br/cfdisk-pt-br/cfdisk2-pt-br.png" title="Type of a partition 1" alt="Type of a partition 1" /></div>
 
 							<p>Para escolher o tipo da partição, seja ela <b>Linux swap</b> ou <b>Linux</b>, marque-a e use o comando:</p>
 <pre >
@@ -105,7 +105,7 @@ Tipo (ou Type)
 </pre> .
 							<p>Surgirá uma lista com vários tipos. Se você pressionar [Espaço], ela será ainda maior. Encontre o tipo desejado e entre com o respectivo número no prompt. (<b>Linux swap</b> é Tipo <b>82</b>, sistemas de arquivos <b>Linux</b> devem ser do tipo <b>83</b>)</p>
 
-		<div class="screenshot"><img src="../lib/images-pt-br/cfdisk-pt-br/cfdisk3-pt-br.png" title="Type of a partition 2" alt="Type of a partition 2" /></div>
+		<div class="screenshot"><img src="../images-pt-br/cfdisk-pt-br/cfdisk3-pt-br.png" title="Type of a partition 2" alt="Type of a partition 2" /></div>
 
 			<h5>Tornar uma partição capaz de dar a partida no computador (Bootable Partition)</h5>
 							<p>Não há nenhuma necessidade de fazer esse tipo de partição no Linux, mas há sistemas operacionais que precisam disso. Basta marcar a partição e selecionar o comando. Nota: se a instalação for feita em um HD externo, então uma partição tem de ser do tipo 'Bootable':</p>
@@ -118,7 +118,7 @@ Bootable
 <pre >
 Enter
 </pre>
-		<div class="screenshot"><img src="../lib/images-pt-br/cfdisk-pt-br/cfdisk4-pt-br.png" title="Write the result to disk" alt="Write the result to disk" /></div>
+		<div class="screenshot"><img src="../images-pt-br/cfdisk-pt-br/cfdisk4-pt-br.png" title="Write the result to disk" alt="Write the result to disk" /></div>
 
 			<h5>Sair</h5>
 							<p>Para sair do programa, selecione o comando Sair (ou Quit). Depois de fechar o cfdisk e antes de começar a formatar e instalar, é preciso que você reinicie sua máquina para o siduction poder reler sua tabela de partições.</p>

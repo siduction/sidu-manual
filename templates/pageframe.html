@@ -2,63 +2,151 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="{{!language}}">
 <head>
-	<title>{{!title}}</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("{{STATIC_URL}}/static/lib/css-js/content.css");</style>
-	<style type="text/css" media="all">@import url("{{STATIC_URL}}/static/lib/css-js/topmenu.css");</style>
-    <style type="text/css" media="all">@import url("{{STATIC_URL}}/static/lib/css-js/menu.css");</style>
-    <style type="text/css" media="print">@import url("{{STATIC_URL}}/static/lib/css-js/print.css");</style>
-    <link rel ="shortcut icon" href="{{STATIC_URL}}/static/lib/favicon/manual.ico" />
-    <script type="text/javascript" src="{{STATIC_URL}}/static/lib/css-js/menu2.js"></script>
+    <title>{{!title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css" media="all">@import url("{{STATIC_URL}}/static/css/content.css");</style>
+    <style type="text/css" media="all">@import url("{{STATIC_URL}}/static/css/menu.css");</style>
+    <style type="text/css" media="print">@import url("{{STATIC_URL}}/static/css/print.css");</style>
+    <style type="text/css" media="all">@import url("{{STATIC_URL}}/static/css/topmenu.css");</style>
+    <link rel ="shortcut icon" href="{{STATIC_URL}}/static/favicon.ico" />
+    <script type="text/javascript" src="{{STATIC_URL}}/static/js/menu2.js"></script>
     <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/lib/css-js/ie_5-7_override.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/ie_5-7_override.css">
     <![endif]-->
     <!--[if lt IE 7]>
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/lib/css-js/ie_5-6_override.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/ie_5-6_override.css">
     <![endif]-->
-{{META_DYNAMIC}}
+    {{META_DYNAMIC}}
 </head>
-<body class="body-main">
-<p><img class="header-img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/lib/logos/siduction-logo-web.png" /></p>
-  <div id="top-navigation" class="clearfix">
-  <ul id="top-menu-list">
-   <li><a href="http://siduction.org">{{.txt_top_menu_news}}</a></li>
-   <li><a href="http://siduction.org/index.php?module=News">{{.txt_top_menu_blog}}</a></li>
-   <li><a href="http://wiki.siduction.de/">{{.txt_top_menu_wiki}}</a></li>
-   <li><a href="http://siduction.org/index.php?name=PNphpBB2&amp;lang={{!language}}">{{.txt_top_menu_forum}}</a></li>
-  </ul>
- </div> <!-- top-navigation -->
-<div id="bg" class="to-top">
 
-<div id="menu">
-	<div id="menu-header">
-	      <a href="http://siduction.org/"><img src="{{STATIC_URL}}/static/lib/logos/manual-siduction-logo.png" title="{{.txt_logo_title}}" alt="{{.txt_logo_alt}}" /></a>
-	</div>
+<body>
+    <div id="wrapper">
+        <div id="siduction-header">
+            <div id="header_logo">
+                <a class="pict_link" href="http://forum.siduction.org">
+                     <img id="header_logo_img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/logos/logo.png">
+                </a>
+            </div>
+            <div id="top-lang"> <!-- language selection top-menu -->
+                <form action="_language" method="get">
+                    <span>{{.txt_lang_switch}}: </span>
+                    <a href="_language?language=de&amp;button_select=x">de</a>
+                    <a href="_language?language=en&amp;button_select=x">en</a>
+                    <a href="_language?language=it&amp;button_select=x">it</a>
+                    <a href="_language?language=pl&amp;button_select=x">pl</a>
+                    <a href="_language?language=pt-br&amp;button_select=x">pt-br</a>
+                    <a href="_language?language=ro&amp;button_select=x">ro</a>
+                    <input type="submit" name="button_select"/>
+                </form>
+            </div>  <!-- language selection end -->
+            <div id="top-navigation">
+                <ul id="top-menu-list">
+                    <li><a href="{{.url_top_menu_manual}}">  {{.txt_top_menu_manual}}</a></li>
+                    <li><a href="{{.url_top_menu_news}}">    {{.txt_top_menu_news}}</a></li>
+                    <li><a href="{{.url_top_menu_reviews}}"> {{.txt_top_menu_reviews}}</a></li>
+                    <li><a href="{{.url_top_menu_wiki}}">    {{.txt_top_menu_wiki}}</a></li>
+                    <li><a href="{{.url_top_menu_bugs}}">    {{.txt_top_menu_bugs}}</a></li>
+                    <li><a href="{{.url_top_menu_packages}}">{{.txt_top_menu_packages}}</a></li>
+                    <li><a href="{{.url_top_menu_test}}">    {{.txt_top_menu_test}}</a></li>
+                    <li><a href="{{.url_top_menu_download}}">{{.txt_top_menu_download}}</a></li>
+                    <li><a href="{{.url_top_menu_donate}}">  {{.txt_top_menu_donate}}</a></li>
+                    <li><a href="{{.url_top_menu_imprint}}"> {{.txt_top_menu_imprint}}</a></li>
+                </ul>
+            </div> <!-- top-navigation -->
+        </div> <!-- siduction-header -->
 
-	<ul id="top-list">
-		<li><a href="!search"> 
-			<img src="/static/lib/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" />
-			<b>{{.txt_search}}</b>
-			</a></li>
-	</ul>
-	<div id="flags-2">
-			<a href="!language"><img src="/static/lib/logos/siduction-lang-100x64.png" title="{{.txt_lang_switch}}" alt="{{.alt_lang_switch}}" /></a>
-	</div>
-	<div id="navi">
-{{MENU}}
-	</div> <!-- navi -->
-	<div id="menu-header-5">
-		<a href="http://siduction.org/index.php?module=Content&amp;func=view&amp;pid=3"><img src="{{STATIC_URL}}/static/lib/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" /></a>
-	</div><!-- menu-header-5 -->
-</div> <!-- menu -->
+        <div class="frame" class="to-top">
+            <div id="main_content_section">
+                <div id="menu">
+                    <div class="menuitem">
+                        <span class="topslice">
+                            <span></span>
+                        </span>
+                        <a href="/">
+                            <img src="{{STATIC_URL}}/static/logos/manual-siduction-logo.png" title="{{.txt_logo_title}}" alt="{{.txt_logo_alt}}" />
+                        </a>
+                        <span class="botslice">
+                            <span></span>
+                        </span>
+                    </div> <!-- menuitem -->
 
-<div id="main-page">
-{{CONTENT}}
-</div> <!-- main-page -->
-</div> <!-- bg -->
+                    <div class="menuitem">
+                        <span class="topslice">
+                            <span></span>
+                        </span>
+                        <a href="!search">
+                            <img src="/static/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" />
+                            <b>{{.txt_search}}</b>
+                        </a>
+                        <span class="botslice">
+                            <span></span>
+                        </span>
+                    </div> <!-- menuitem -->
 
-<div id="footer" class="clear">
-{{.txt_footer}}
-</div>
+                    <div class="menuitem">
+                        <span class="topslice">
+                            <span></span>
+                        </span>
+                        <a href="!language"><img src="/static/logos/siduction-lang-100x64.png" title="{{.txt_lang_switch}}" alt="{{.alt_lang_switch}}" /></a>
+                        <span class="botslice">
+                            <span></span>
+                        </span>
+                    </div> <!-- menuitem -->
+
+                    <div class="menuitem">
+                        <span class="topslice">
+                            <span></span>
+                        </span>
+                        {{MENU}}
+                        <span class="botslice">
+                            <span></span>
+                        </span>
+                    </div> <!-- menuitem -->
+
+                    <div class="menuitem">
+                        <span class="topslice">
+                            <span></span>
+                        </span>
+                        <a href="http://forum.siduction.org/index.php?page=Donations">
+                           <img src="{{STATIC_URL}}/static/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" />
+                        </a>
+                        <span class="botslice">
+                            <span></span>
+                        </span>
+                    </div><!-- menuitem -->
+                </div> <!-- menu -->
+
+                <div id="main-page">
+                    {{CONTENT}}
+                </div> <!-- main-page -->
+
+            </div> <!-- main_content_section -->
+        </div> <!-- frame -->
+
+        <div id="footer" class="clear">
+            {{.txt_footer}}
+        </div> <!-- footer -->
+
+        <!-- Piwik -->
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+
+            (function() {
+                var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.siduction.org/";
+                _paq.push(["setTrackerUrl", u+"piwik.php"]);
+                _paq.push(["setSiteId", "9"]);
+                var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+                g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Piwik Code -->
+        <noscript>
+            <img src="http://piwik.siduction.org/piwik.php?idsite=9&amp;rec=1" style="border:0" alt="" />
+        </noscript>
+        <!-- piwik integration end -->
+
+    </div> <!-- wrapper -->
 </body>
 </html>

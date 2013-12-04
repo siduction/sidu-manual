@@ -4,16 +4,16 @@
 <head>
 	<title>siduction Manuals - Hard Disk Installation -de</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -99,11 +99,11 @@ dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/us
 
 							<p><b>1.</b> Das Installationsprogramm startet man bequem über: <span class="highlight-3"> das Icon am Desktop, über KMenu > System > siduction-installer.</span></p>
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer1-de.png" title="Begrüßung - siduction-Installer" alt="siduction-Installer1" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer1-de.png" title="Begrüßung - siduction-Installer" alt="siduction-Installer1" /></div>
 
 							<p><b>2.</b> Nach dem Lesen (und Verstehen) des Hinweistextes geht es weiter zur Partitionsauswahl.</p>
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer2-de.png" title="Partitionierung - siduction-Installer" alt="siduction-Installer2" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer2-de.png" title="Partitionierung - siduction-Installer" alt="siduction-Installer2" /></div>
 
 
 			<p class="highlight-3">Bitte vergewissere Dich nochmal, ob für alle Daten ein Backup angelegt wurde.</p>
@@ -116,14 +116,14 @@ dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/us
 
 
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer3-de.png" title="Grub/Zeitzone - siduction-Installer" alt="grub-to-mbr" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer3-de.png" title="Grub/Zeitzone - siduction-Installer" alt="grub-to-mbr" /></div>
 							<p><span class="highlight-2">ANMERKUNG: Die Root-Partiton ("&#47;") wird automatisch mit dem gewählten Filesystem formatiert.</span></p>
 
 							<p>Alle nicht gewählten Partitionen werden in <span class="highlight-3">/media/</span> eingebunden. <span class="highlight-3">Auch kann jetzt eine Datenpartition erstellt werden.</span><span class="highlight-1"> Mit einem "Linksklick" wird ein Auswahlmenü für die jeweilige Partition geöffnet.</span></p>
 							
 							<p><b>4.</b>  Auf dieser Seite könne weitere Partitionen angelegt werden. Wir empfehlen einen zusätzliche Partition für Dein /home/. Du kannst hier auch ein Daten Partition erstellen.  Einfach auf hinzufügen drücken. Alle weiteren Partition werden automatisch auf /media/ eingebunden. </p>
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer4-de.png" title="User/Passwort - siduction-Installer" alt="choosing-pw" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer4-de.png" title="User/Passwort - siduction-Installer" alt="choosing-pw" /></div>
 				<div class="spacer02"></div>
 							<p><b>5.</b>  Als Bootmanager verwenden wir <b>Grub im MBR</b>! Eine andere Wahl ist nur erfahrenen Nutzern empfohlen, die wissen, welche Folgen diese Entscheidung mit sich zieht. Grub erkennt automatisch, ob noch andere Betriebssysteme auf dem Computer installiert sind (z. B. Windows), und fügt diese seinem Bootmenü hinzu.</p>
 							
@@ -133,7 +133,7 @@ dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/us
 
 							<p>Im Anschluss daran kann ausgewählt werden, ob ssh automatisch beim Booten gestartet werden soll oder nicht.</p>
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer5-de.png" title="Netzwerk - siduction-Installer" alt="hostname" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer5-de.png" title="Netzwerk - siduction-Installer" alt="hostname" /></div>
 
 	<div class="spacer02"></div>
 							<p><b>6.</b> Als nächstes werden Benutzername, Benutzerpasswort und Rootpasswort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit <a href="hd-install-de.htm#adduser"> adduser</a> zugefügt werden.</p>
@@ -141,16 +141,16 @@ dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/us
 
 <p>Diese Abfrage ist die letzte Möglichkeit, die gewählten Einstellungen zu überprüfen. Du solltest noch einmal sorgfältig durchgelesen werden, danach bestätigt man durch <span class="highlight-3">das anklicken des "Weiter" Knopfes</span>.</p>
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer6-de.png" title="Installation - siduction-Installer" alt="installation-config" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer6-de.png" title="Installation - siduction-Installer" alt="installation-config" /></div>
 							<p><b>7.</b> Als nächstes wird der Computer Name festgelegt. Zusätzliche kann ssh eingechaltet werden.</p>
 
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer7-de.png" title="Installation - siduction-Installer" alt="installation-config" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer7-de.png" title="Installation - siduction-Installer" alt="installation-config" /></div>
 
 							<p>An diesem Punkt ist es möglich, die Konfigurationsdatei zu editieren und den Installationsprozess mit der angepassten Konfigurationsdatei zu starten. Die Installationsroutine führt keine Überprüfungen durch und <span class="highlight-3">der "Zurück"-Knopf soll nicht gedrückt werden, da ansonsten alle manuellen Änderungen rückgängig gemacht werden.</span> </p>
 
 
-		<div class="screenshot"><img src="../lib/images-de/installer-de/installer8-de.png" title="Start der Installation - siduction Installer" alt="Begin Installtion" /></div>
+		<div class="screenshot"><img src="../images-de/installer-de/installer8-de.png" title="Start der Installation - siduction Installer" alt="Begin Installtion" /></div>
 
 							<p>Um die Installation zu starten, klickt man auf <span class="highlight-3">Installation starten</span>. Der ganze Installationsprozess dauert - abhängig von der benutzten Hardware - zwischen fünf und fünfzehn Minuten. Auf sehr alten Systemen kann man mit bis zu einer Stunde rechnen.</p>
 

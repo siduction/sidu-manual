@@ -6,13 +6,13 @@
 <li><a></a></li>
 </ul>
 	<div id="menu-header">
-	      <a href="http://manual.siduction.org/"><img src="../lib/logos/manual-siduction-logo.png" title="La pagina manual.siduction.org, online Manualul" alt="siduction.org logo" /></a>
+	      <a href="http://manual.siduction.org/"><img src="../logos/manual-siduction-logo.png" title="La pagina manual.siduction.org, online Manualul" alt="siduction.org logo" /></a>
 	</div>
 	<ul id="top-list">
-		<li><a href="manual-search-ro.htm#search-on"> <img src="../lib/logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
+		<li><a href="manual-search-ro.htm#search-on"> <img src="../logos/manual-search-22x22.png" title="Caută în manual" alt="Caută" /> Caută Online sau Offline</a> </li>
 	</ul>
 	<div id="flags-2">
-			<a href="../flag-index.html"><img src="../lib/logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
+			<a href="../flag-index.html"><img src="../logos/siduction-lang-100x64.png" title="Alege altă limbă - Choose another language CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" alt="lang-switch CZ, DA, DE, EN, ES, FR, IT, JA, NL, PL, PT, RO, RU, UK" /></a>
 	</div>
 	<ul>
 <li onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-ro.htm">Manualul SO siduction</a>
@@ -297,7 +297,7 @@
 </ul>
 
 <div id="menu-header-5">
-<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../lib/logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
+<a href="http://siduction.org/index.php?module=inhalt&amp;func=view&amp;preview=1&amp;pid=3&amp;lang=en"><img src="../logos/siduction_donate_75.png" title="Donate" alt="Donate" /></a>
 </div>
 
 <ul>

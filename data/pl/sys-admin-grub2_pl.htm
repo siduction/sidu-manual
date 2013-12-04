@@ -4,16 +4,16 @@
 <head>
 	<title>Podręcznik siduction - Grub2</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -102,13 +102,13 @@ apt-get purge grub-gfxboot
 apt-get install grub2 os-prober
 </pre>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
 							<p>Użyj klawisz TAB, aby wybrać OK. </p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
 							<p>Użyj klawisz TAB, aby wybrać OK. </p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
 
 							<p>Użyj strzałek i space na klawiaturze, aby umieścić <span class="highlight-3">* (gwiazdka) </span> i wybrać dysk na którym w MBR grub2 będzie zapisany.  <i>(Ten przykład to instalacja na dysku USB)</i>.</p>
 
@@ -125,12 +125,12 @@ apt-get install install-usb-gui fll-iso2usb
 
 						<h6>Krok 6:</h6>
 							<p> Uruchom ponownie komputer i menu.cfg wyświetli jądra oraz system operacyjny i taką liste:</p>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
 
 							<p>Jeśli coś poszło nie tak i grub2 jest uszkodzony, przeczytaj <a href="sys-admin-grub2-pl.htm#chroot">Korzystanie z chroot, aby przywrócić nadpisane lub uszkodzone Grub w MBR</a> </p>
 
 				  <h3>Edycja opcji startowych w grub2 poprzez ekran edycji </h3>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
 							<p>Jeśli z jakiegoś powodu, musisz dokonać tymczasowych zmian w opcji bootowania jądra w grub2, naciśnij <span class="highlight-2"> e </span>. Do edycji opcji jądra przejdź za pomocą strzałek klawiatury do wiersza, którego chcesz edytować. Na ekranie edycji użyj kombinacji <span class="highlight-3"> Ctrl+x </span> do ponownego startowania komputera z edytowanymi opcjami. </p>
 
 							<p>Na przykład, aby przejść bezpośrednio do uruchomienia run level 3, dodaj <span class="highlight-3">3</span> na końcu linii <span class="highlight-3"> linux /boot/vmlinuz</span>.</p>

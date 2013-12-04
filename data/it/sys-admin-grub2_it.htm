@@ -4,16 +4,16 @@
 <head>
 	<title>Manuale siductions - Grub2</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -102,13 +102,13 @@ apt-get purge grub-gfxboot
 apt-get install grub2 os-prober
 </pre>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-2.png" title="Grub2" alt="Grub2" /></div>
 							<p>Utilizzate il tasto tab per selezionare OK</p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-3.png" title="Grub2" alt="Grub2" /></div>
 							<p>Utilizzate il tasto tab per selezionare OK</p>
 
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-convert-1.png" title="Grub2-conversion 1" alt="Grub2-conversion 1" /></div>
 
 							<p>Utilizzate le frecce e la barra spaziatrice della tastiera per mettere un <span class="highlight-3">* (asterisco) </span> per selezionare il disco fisso sul quale Grub2 dovrà scrivere l'MBR. <i>(Nell'esempio sopra riportato si installa su di un disco esterno USB)</i>.</p>
 
@@ -125,12 +125,12 @@ apt-get install install-usb-gui fll-iso2usb
 
 						<h6>Passo 6:</h6>
 							<p>Riavviate il PC e menu.cfg vi mostrerà il kernel e la lista dei sistemi operativi:</p>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-os-list.jpg" title="Grub2-OS list" alt="Grub2-OS list" /></div>
 
 							<p>Se dovesse esservi un errore o qualcosa andasse storto fate riferimento a <a href="sys-admin-grub2-it.htm#chroot">Grub2 sovrascritto o corrotto nell'MBR</a> </p>
 
 				  <h3>Modificare le opzioni d'avvio di Grub2 mediante la schermata di modifica</h3>
-<div class="screenshot"><img src="../lib/images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
+<div class="screenshot"><img src="../images-common/images-grub2/grub2-e-1.JPG" title="Grub2-Edit" alt="Grub2-Edit" /></div>
 							<p>Se, per qualche ragione, doveste apportare una modifica temporanea alle opzioni d'avvio di un kernel evidenziato in Grub2, premete la lettera <span class="highlight-2">e</span> e con i tasti freccia portatevi sulla linea che volete modificare; quindi, sempre dalla schermata di modifica, usate <span class="highlight-3"> Ctrl+x </span> per riavviare il computer con le opzioni modificate.</p>
 
 							<p>Per esempio, per avviare direttamente il sistema in level 3, aggiungete <span class="highlight-3">3</span> alla fine della linea <span class="highlight-3">linux /boot/vmlinuz</span>.</p>

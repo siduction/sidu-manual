@@ -4,16 +4,16 @@
 <head>
 	<title>siduction Manuals - Rolling Notes -de</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-        <style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-        <style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-        <link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-        <script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
         <![endif]-->
         <!--[if lt IE 7]>
-        <link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
 <body class="body-main">
@@ -66,9 +66,9 @@ eigenen gepatchten Version des Kernels 3.6-9 sowie Xserver 1.12.4-4 </p>
 <p>Für KDE SC hat das Team von Debian-KDE-QT die meisten Änderungen von 4.8.4 zu 4.8.5 nach 4.8.4-5 portiert, so dass wir effektiv ein 4.8.5 ausliefern.</p>
 <p></p> LXDE hat 2 neue Pakete bekommken: <i>lxpolkit</i>, was die <i>polkit</i> Variante von LXDE ist und <i>lxappearance-obconf</i>, ein Openbox-Konfigurations-Tool für lxappearance.
 <p>Sehr viel zeitaufwendige Änderungen sind auch diesmal wieder in den Umbau der Codebasis geflossen. So wurden die vom Vorgänger übernommenen Skripte zum Einbinden des jeweils aktuellen Artworks  wesentlich vereinfacht. Das Gleiche widerfährt gerade dem Unterbau des Handbuchs, wo es im Moment noch sehr zeitaufwändig ist, neue Themen einzufügen. Insgesamt haben wir seit dem letzten Release <a href="http://chili.siduction.org/projects/siduction/versions/13">118 Fehler beseitigt</a>, die meisten davon in der Code-Basis</p>
-<p>Wir haben weiterhin einen dringend benötigten <a href="http://de.news.siduction.org/2012/09/25/neuer-server-alte-webseite/">Webserver</a> von einem Core-Team Mitglied als großzügige Spende erhalten und in der Folge aufgesetzt.</p> 
+<p>Wir haben weiterhin einen dringend benötigten <a href="http://de.news.siduction.org/2012/09/25/neuer-server-alte-webseite/">Webserver</a> von einem Core-Team Mitglied als großzügige Spende erhalten und in der Folge aufgesetzt.</p>
 <p>Der Installer bietet weiterhin als Alternative auch <i>btrfs</i> als Dateisystem an. Bitte beachtet unbedingt die Warnungen in dem Zusammenhang.
-Die Unterstützung von <i>btrfs</i> ist immer noch als experimentell anzusehen und es sollte noch nicht auf Produktivsystemen eingesetzt werden. 
+Die Unterstützung von <i>btrfs</i> ist immer noch als experimentell anzusehen und es sollte noch nicht auf Produktivsystemen eingesetzt werden.
 Regelmäßige Back-Ups sind absolut Pflicht! Eine Einschränkung gilt es zu beachten: btrfs funktioniert derzeit nur mit einem herkömmlichen MBR, nicht mit GPT.</p>
 <br />
 <h3>Unsere Ressourcen</h3>
@@ -128,12 +128,12 @@ einfindest und uns sagst, wobei Du dem Projekt helfen kannst und möchtest.</p>
 <h3>Hardware Tips</h3>
 <p>Solltest Du eine ATI Radeon Grafikkarte besitzen, so benutze bitte beim Booten die
 "failsafe" Option. Diese Option hängt die Cheatcodes <i>radeon.modeset=0
-xmodule=vesa</i> 
+xmodule=vesa</i>
 an die Kernel-Bootline an und gewährleistet das Booten nach X. Vor der Installation vom Live-ISO installiere bitte <i>firmware-linux-nonfree</i>.
 Dazu öffne Deine <i>/etc/apt/sources.list.d/debian.list</i> mit Deinem bevorzugten
 Editor als Root und hänge <i>contrib non-free</i> ans Ende der ersten Zeile.
 Speichern und dann:
-<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> Wenn Du jetzt siduction installierst, wird das Paket mit in die Installation übernommen und gewährleistet, 
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> Wenn Du jetzt siduction installierst, wird das Paket mit in die Installation übernommen und gewährleistet,
 dass der Rechner beim Reboot nach der Installation nach X booten kann. Denk daran,
 dass, solltet ihr vor der Installation rebooten, die Änderungen verloren sind.</p>
 <p>Einige WLAN-Karten können nicht automatisch von den mitgelieferten freien Treibern
@@ -141,46 +141,48 @@ unterstützt werden, daher startest Du am besten mit kabelgebundenem Netz. Das S
 <i>fw-detect</i> liefert Informationen zur Einbindung entsprechender Firmware, der
 Installer führt dieses Skript ebenfalls aus und leitet Dich bei der
 Installation der benötigten Firmware an.</p><br/>
+
 <h3>Credits für siduction 2011.2</h3>
+
 <h4>Core Team:</h4>
-Alf Gaida (agaida)
-<br />
-Axel Beu (ab)
-<br />
-Ferdinand Thommes (devil)
-<br />
-Hendrik Lehmbruch (hendrikl)
-<br />
-Holger Wagemann (holgerw)
-<br />
-Markus Meyer (coruja)
-<br />
-Stefan Tell (cryptosteve)
-<br />
-Tom Wroblewski (GoingEasy 9)
-<br />
-Torsten Wohlfarth (towo)<br />
+<p>
+Alf Gaida (agaida) <br />
+Angelescu Ovidiu (convbsd) <br />
+Axel Beu (ab) <br />
+Ferdinand Thommes (devil) <br />
+Hendrik Lehmbruch (hendrikl) <br />
+Holger Wagemann (holgerw) <br />
+Markus Meyer (coruja) <br />
+Tom Wroblewski (GoingEasy9) <br />
+Torsten Wohlfarth (towo) <br />
+</p>
+
 <h4>Maintainer der siduction Desktop Environments:</h4>
-<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) (coming soon)<br />
-<b>KDE</b>:		 	Ferdinand Thommes (devil)<br />	
-<b>LXDE</b>:    	Markus Meyer (coruja)<br />
-<b>noX</b>:		 	rolandx1<br />
-<b>Razor-qt</b>:	Alf Gaida (agaida)<br />
-<b>XFCE</b>:		Torsten Wolfahrt (towo)<br />
+<p>
+<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd) <br />
+<b>KDE</b>:		 	Ferdinand Thommes (devil) <br />
+<b>LXDE</b>:    	Markus Meyer (coruja) <br />
+<b>noX</b>:		 	Alf Gaida (agaida) <br />
+<b>Razor-qt</b>:	Alf Gaida (agaida) <br />
+<b>XFCE</b>:		Torsten Wohlfarth (towo) <br />
+</p>
+
 <h4>Art Team:</h4>
-Hendrik Lehmbruch (hendrikl)
-<br />
-Sven Strohmeier (se7en)
-<br />
-<br />
+<p>
+Hendrik Lehmbruch (hendrikl) <br />
+Sven Strohmeier (se7en) <br />
+</p>
+
 <h4>Code, Ideen, Unterstützung:</h4>
-ayla<br />
-bluelupo<br />
-J. Hamatoma (hama)<br />
-Markus Schimpf (arno911)<br />
-Ulrich Beckmann (Bequimão)<br />
-zeppo<br />
-<br /><br />
+<p>
+ayla <br />
+bluelupo <br />
+J. Hamatoma (hama) <br />
+Markus Schimpf (arno911) <br />
+Ulrich Beckmann (Bequimão) <br />
+zeppo <br />
+</p>
+
 <h3>Danke!</h3>
 <p>Ebenso danken wir allen Testern und all den Leuten, die uns auf alle erdenklichen
 Arten unterstützt haben. Dieses Release ist auch Euer Verdienst!</p>
