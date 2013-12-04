@@ -1,8 +1,8 @@
-sidu-manual (2013.12.04.3) UNRELEASED; urgency=low
+sidu-manual (2013.12.04.4) unstable; urgency=low
 
   * piwik code included (in pageframe as placeholder)
 
- -- J. Hamatoma <hama@siduction.net>  Wed, 04 Dec 2013 23:42:12 +0100
+ -- J. Hamatoma <hama@siduction.net>  Wed, 04 Dec 2013 23:58:58 +0100
 
 sidu-manual (2013.12.04.2) unstable; urgency=low
 
