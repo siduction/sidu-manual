@@ -58,36 +58,16 @@
         <div class="frame" class="to-top">
             <div id="main_content_section">
                 <div id="menu">
-                    <div class="menuitem">
-                        <span class="topslice">
-                            <span></span>
-                        </span>
-                        <a href="/">
-                            <img src="{{STATIC_URL}}/static/logos/manual-siduction-logo.png" title="{{.txt_logo_title}}" alt="{{.txt_logo_alt}}" />
-                        </a>
-                        <span class="botslice">
-                            <span></span>
-                        </span>
-                    </div> <!-- menuitem -->
 
                     <div class="menuitem">
                         <span class="topslice">
                             <span></span>
                         </span>
-                        <a href="!search">
-                            <img src="/static/logos/manual-search-22x22.png" title="{{.txt_search}}" alt="{{.alt_search}}" />
-                            <b>{{.txt_search}}</b>
-                        </a>
-                        <span class="botslice">
-                            <span></span>
-                        </span>
-                    </div> <!-- menuitem -->
-
-                    <div class="menuitem">
-                        <span class="topslice">
-                            <span></span>
-                        </span>
-                        <a href="!language"><img src="/static/logos/siduction-lang-100x64.png" title="{{.txt_lang_switch}}" alt="{{.alt_lang_switch}}" /></a>
+                        <div class="center">
+                            <input type="text" name="phrases"></input> <br />
+                            <input type="submit" value="Suchen" name="button_search"></input> <br />
+                             <a href="!search"><b>{{.txt_search}}</b></a>
+                        </div>
                         <span class="botslice">
                             <span></span>
                         </span>
@@ -107,9 +87,11 @@
                         <span class="topslice">
                             <span></span>
                         </span>
-                        <a href="http://forum.siduction.org/index.php?page=Donations">
-                           <img src="{{STATIC_URL}}/static/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" />
-                        </a>
+                        <div class="center">
+                            <a href="{{.url_top_menu_donate}}">
+                                <img src="{{STATIC_URL}}/static/logos/siduction_donate_75.png" title="{{.txt_donate}}" alt="{{.txt_donate}}" />
+                            </a>
+                        </div>
                         <span class="botslice">
                             <span></span>
                         </span>
@@ -121,12 +103,13 @@
                 </div> <!-- main-page -->
 
             </div> <!-- main_content_section -->
+            <div style="clear:both;"></div>
         </div> <!-- frame -->
 
         <div id="footer" class="clear">
             {{.txt_footer}}
         </div> <!-- footer -->
-{{!piwik}}
+        {{!piwik}}
     </div> <!-- wrapper -->
 </body>
 </html>
