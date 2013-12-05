@@ -1,3 +1,9 @@
+sidu-manual (2013.12.05.2) UNRELEASED; urgency=low
+
+  * global search form
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 05 Dec 2013 23:10:49 +0100
+
 sidu-manual (2013.12.05) unstable; urgency=low
 
   * menu css improvements
