@@ -14,6 +14,66 @@
 * Last updated by hendrikL 2013-03-31 13:53:15 UTC
 */
 
+/* reviewed */
+
+ul#treeMenu {
+    margin: 0;
+    padding: 5px 0;
+}
+
+ul#treeMenu,
+ul#treeMenu ul,
+ul#treeMenu ul ul {
+    margin: 0;
+}
+
+ul#treeMenu li,
+ul#treeMenu li li,
+ul#treeMenu li li li {
+    margin: 3px 0 0 1em;
+    padding: 0;
+}
+
+ul#treeMenu li label:hover,
+ul#treeMenu li li label:hover,
+ul#treeMenu li li li label:hover{
+    text-decoration:underline;
+}
+
+#treeMenu a {
+    font-size: 0.85em;
+}
+
+#treeMenu input {
+    display:none
+}
+
+#treeMenu li input + ul  {
+    display:none; !important;
+}
+
+#treeMenu li input:checked + ul {
+    display: block;
+}
+
+/* in work */
+#treeMenu a:visited {
+    color: green;
+}
+
+#treeMenu a:active,
+#treeMenu a:link {
+    color: orange;
+}
+
+#menu a:visited,
+#menu a:active,
+#menu a:link {
+    /* color: white; */
+}
+
+/* not reviewed yet */
+
 #menu {
     width:200px;
     font:normal 0.9em "DroidSansRegular", sans-serif;
@@ -23,11 +83,6 @@
     margin-right:0px;
 }
 
-#menu a:visited,
-#menu a:active,
-#menu a:link {
-    color: white;
-}
 
 #menu li a:hover {
     text-decoration:underline;
@@ -71,59 +126,6 @@
 }
 
 
-ul#treeMenu {
-    color: #fff;
-    background:#535D6C;
-    margin: 0;
-    padding: 5px 0;
-}
-
-ul#treeMenu,
-ul#treeMenu ul,
-ul#treeMenu ul ul {
-    margin: 0;
-}
-
-ul#treeMenu li,
-ul#treeMenu li li,
-ul#treeMenu li li li {
-    margin: 3px 0 0 1em;
-    padding: 0;
-}
-
-ul#treeMenu li label:hover,
-ul#treeMenu li li label:hover,
-ul#treeMenu li li li label:hover{
-    text-decoration:underline;
-}
-
-
-#treeMenu a:visited {
-    color: #ff8000;
-}
-
-#treeMenu a:active,
-#treeMenu a:link {
-    color: white;
-}
-
-#treeMenu a {
-    font-size: 0.85em;
-    color: #ff8000;
-}
-
-#treeMenu input {
-    display:none
-}
-
-
-#treeMenu li input + ul  {
-    display:none; !important;
-}
-
-#treeMenu li input:checked + ul {
-    display: block;
-}
 
 
 /* search */
