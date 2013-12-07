@@ -1,3 +1,14 @@
+sidu-manual (2013.12.07.1) unstable; urgency=medium
+
+  * handling of static files for server improved
+    - debian/sidu-manual-server.dirs added
+    - debian/sidu-manual-server.links added
+    - dirs create /usr/share/sidu-manual/public
+    - links link /usr/share/sidu-manual/static into public
+  * server and data packages are lintian clean
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 07 Dec 2013 01:51:54 +0100
+
 sidu-manual (2013.12.07) unstable; urgency=medium
 
   * split packages:
