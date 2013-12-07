@@ -16,14 +16,53 @@ Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
 
 Package: sidu-manual
 Architecture: all
-Depends: ${misc:Depends},
+Depends:
+ ${misc:Depends},
+ python (>= 2.6),
+ python-support (>= 0.90),
+ pyygle (>=2013.12.03),
+ sidu-base(>= 2013.12.03),
+ sidu-manual-data,
+Conflicts:
+ sidu-manual-server,
+Description: manual for siduction
+ A framework manages the common view of the pages: the navigation (menu),
+ the header (with logo and links to other siduction sites) and the footer
+ are generated for each page from a single template.
+ . 
+ Client-Package with *.desktop and icons
+
+Package: sidu-manual-server
+Architecture: all
+Depends:
+ ${misc:Depends},
+ python (>= 2.6),
+ python-support (>= 0.90),
+ pyygle (>=2013.12.03),
+ sidu-base(>= 2013.12.03),
+ sidu-manual-data,
+Conflicts:
+ sidu-manual,
+Description: manual for siduction
+ A framework manages the common view of the pages: the navigation (menu),
+ the header (with logo and links to other siduction sites) and the footer
+ are generated for each page from a single template.
+ .
+ Server-package for without the desktop files
+
+Package: sidu-manual-data
+Architecture: all
+Depends: 
+ ${misc:Depends},
  python (>= 2.6),
  python-support (>= 0.90),
  pyygle (>=2013.12.03),
  sidu-base(>= 2013.12.03)
+Breaks:
+ sidu-manual (<< 2013.12.07),
+Replaces:
+ sidu-manual (<< 2013.12.07),,
 Description: manual for siduction
  The main content is a set of HTML files describing features, handling
  and tips for siduction.
- A framework manages the common view of the pages: the navigation (menu),
- the header (with logo and links to other siduction sites) and the footer
- are generated for each page from a single template.
+

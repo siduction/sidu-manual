@@ -1,9 +1,5 @@
-website                 usr/share/sidu-manual
-data                    usr/share/sidu-manual
 msource                 usr/share/sidu-manual
 sidu-manual             usr/share/sidu-manual
-config                  usr/share/sidu-manual
-templates               usr/share/sidu-manual
 sidu-manual.desktop   	usr/share/applications
 sidu-manual.desktop     etc/skel/Desktop/
 icons/sidu-manual.svg   usr/share/icons/hicolor/scalable/apps
@@ -12,3 +8,4 @@ icons/pixmaps           usr/share/icons
 etc/pywwetha            etc
 etc/virtualhosts.d      etc/pywwetha
 bin                     usr/
+website                 usr/share/sidu-manual

@@ -1,8 +1,22 @@
-sidu-manual (2013.12.05.2) UNRELEASED; urgency=low
+sidu-manual (2013.12.07) unstable; urgency=medium
 
+  * split packages:
+    - sidu-manual for clients
+    - sidu-manual-server for server installations
+    - sidu-manual-data contain data for booth packages
+  * note that sidu-manual would break sidu-manual-server and vice versa 
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 07 Dec 2013 00:54:13 +0100
+
+sidu-manual (2013.12.05.2) unstable; urgency=low
+
+  [ J. Hamatoma ]
   * global search form
 
- -- J. Hamatoma <hama@siduction.net>  Thu, 05 Dec 2013 23:10:49 +0100
+  [ Alf Gaida ]
+  * new release 
+
+ -- Alf Gaida <agaida@siduction.org>  Thu, 05 Dec 2013 23:20:12 +0100
 
 sidu-manual (2013.12.05) unstable; urgency=low
 
