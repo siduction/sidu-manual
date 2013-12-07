@@ -88,7 +88,15 @@ div.frame {
     margin: 0 auto;
 }
 
+/* css in work */
 
+.sm_item_0 {
+    background: #ffffff; 
+}
+
+.sm_item_1 {
+    background: #f9f9f9;
+}
 
 /* not reviewed yet - rework needed */
 

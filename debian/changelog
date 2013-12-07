@@ -1,3 +1,15 @@
+sidu-manual (2013.12.07.3) unstable; urgency=medium
+
+  * css-classes renamed - dumb typo 
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 07 Dec 2013 03:38:56 +0100
+
+sidu-manual (2013.12.07.2) unstable; urgency=medium
+
+  * alternate styles for search results
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 07 Dec 2013 03:10:30 +0100
+
 sidu-manual (2013.12.07.1) unstable; urgency=medium
 
   * handling of static files for server improved
