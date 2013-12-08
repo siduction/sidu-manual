@@ -91,11 +91,28 @@ div.frame {
 /* css in work */
 
 .sm_item_0 {
-    background: #ffffff; 
+    background: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin-bottom: 3px;
 }
 
 .sm_item_1 {
-    background: #f9f9f9;
+    background: #f1f1f1;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+.sm_link {
+    font-weight: bold;
+}
+
+.sm_doc {
+    display: none;    
+}
+
+.sm_hit {
 }
 
 /* not reviewed yet - rework needed */
