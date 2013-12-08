@@ -22,7 +22,9 @@ body, td, th, tr {
 
 body {
     background: #E7E7E7;
-    font: 78%/130% "DroidSansRegular","Verdana","Arial","Helvetica",sans-serif;
+    font-size: 14px;
+    line-height: 130%; 
+    font-family: "DroidSansRegular","Verdana","Arial","Helvetica",sans-serif;
     margin:0 auto;
     padding: 3px 0;
 }
@@ -94,18 +96,20 @@ div.frame {
     background: #ffffff;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .sm_item_1 {
     background: #f1f1f1;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .sm_link {
     font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .sm_doc {
@@ -115,6 +119,9 @@ div.frame {
 .sm_hit {
 }
 
+.sm_hit b {
+    color: red;
+}
 /* not reviewed yet - rework needed */
 
 
