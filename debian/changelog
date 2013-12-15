@@ -1,3 +1,9 @@
+sidu-manual (2013.12.16) UNRELEASED; urgency=low
+
+  * added release notes for 2013.2 RC1
+
+ -- Ferdinand Thommes <devil@siduction.org>  Sun, 15 Dec 2013 20:49:56 +0100
+
 sidu-manual (2013.12.15) unstable; urgency=medium
 
   * control modified, some Pre-Depends
