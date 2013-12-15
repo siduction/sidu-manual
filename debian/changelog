@@ -1,9 +1,13 @@
-sidu-manual (2013.12.17) UNRELEASED; urgency=low
+sidu-manual (2013.12.15.1) unstable; urgency=low
 
+  [ Ferdinand Thommes ]
   * added release notes for 2013.2 RC1
   * added username and pw to release notes
 
- -- Ferdinand Thommes <devil@siduction.org>  Sun, 15 Dec 2013 22:22:06 +0100
+  [ Alf Gaida ]
+  * build fix #1414
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 15 Dec 2013 22:42:59 +0100
 
 sidu-manual (2013.12.15) unstable; urgency=medium
 

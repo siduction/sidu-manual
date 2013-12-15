@@ -58,12 +58,12 @@ ul#treeMenu li li li label:hover{
 
 /* in work */
 #treeMenu a:visited {
-    color: green;
+    color: #444444;
 }
 
 #treeMenu a:active,
 #treeMenu a:link {
-    color: orange;
+    color: #444444;
 }
 
 #menu a:visited,
