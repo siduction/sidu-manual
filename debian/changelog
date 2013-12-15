@@ -1,3 +1,9 @@
+sidu-manual (2013.12.15) unstable; urgency=medium
+
+  * control modified, some Pre-Depends
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 15 Dec 2013 04:49:33 +0100
+
 sidu-manual (2013.12.08) unstable; urgency=medium
 
   * menu*.cfg reformated

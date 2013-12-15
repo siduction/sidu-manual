@@ -16,12 +16,11 @@ Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
 
 Package: sidu-manual
 Architecture: all
-Depends:
- ${misc:Depends},
- python (>= 2.6),
- python-support (>= 0.90),
+Pre-Depends:
  pyygle (>=2013.12.03),
  sidu-base(>= 2013.12.03),
+Depends:
+ ${misc:Depends},
  sidu-manual-data,
 Conflicts:
  sidu-manual-server,
@@ -34,12 +33,11 @@ Description: manual for siduction
 
 Package: sidu-manual-server
 Architecture: all
-Depends:
- ${misc:Depends},
- python (>= 2.6),
- python-support (>= 0.90),
+Pre-Depends:
  pyygle (>=2013.12.03),
  sidu-base(>= 2013.12.03),
+Depends:
+ ${misc:Depends},
  sidu-manual-data,
 Conflicts:
  sidu-manual,
@@ -54,10 +52,7 @@ Package: sidu-manual-data
 Architecture: all
 Depends: 
  ${misc:Depends},
- python (>= 2.6),
- python-support (>= 0.90),
- pyygle (>=2013.12.03),
- sidu-base(>= 2013.12.03)
+ sidu-manual | sidu-manual-server,
 Breaks:
  sidu-manual (<< 2013.12.07),
 Replaces:
