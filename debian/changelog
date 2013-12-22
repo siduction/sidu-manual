@@ -1,3 +1,9 @@
+sidu-manual (2013.12.22.2) unstable; urgency=low
+
+  * help db updated 
+
+ -- J. Hamatoma <hama@siduction.net>  Sun, 22 Dec 2013 18:43:54 +0100
+
 sidu-manual (2013.12.22) unstable; urgency=medium
 
   * moved releasenotes to attic, leave only en in place
