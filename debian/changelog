@@ -1,5 +1,13 @@
+sidu-manual (2013.12.22) unstable; urgency=medium
+
+  * moved releasenotes to attic, leave only en in place
+  * rebuild search dbs
+
+ -- Alf Gaida <agaida@siduction.org> Sun, 22 Dec 2013 17:03:47 +0100
+
 sidu-manual (2013.12.15.3) UNRELEASED; urgency=medium
 
+  [ Ferdinand Thommes ]
   * corrected nvidia entry
   * fixed date in release notes
 
