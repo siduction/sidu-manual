@@ -1,3 +1,9 @@
+sidu-manual (2013.12.22.3) UNRELEASED; urgency=medium
+
+  * added release notes
+
+ -- Ferdinand Thommes <devil@siduction.org>  Mon, 30 Dec 2013 21:49:05 +0100
+
 sidu-manual (2013.12.22.2) unstable; urgency=low
 
   * help db updated 
