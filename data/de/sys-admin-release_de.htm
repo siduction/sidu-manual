@@ -9,37 +9,31 @@
 <title>Release Notes</title>
 </head>
 <body>
-<div id="main_area">
-<form action="###URL_FORM###" method="get" enctype="text/plain">
-<div id="header">
-		<img class="logo" src="header-logo.png" alt="logo"/>
-</div> <!-- header -->
-<div id="content">
-<div id="text_area">
+<div id="main-page">
 <h1>Release Notes für siduction 2013.2 - December</h1>
 <p>
-Wir freuen uns sehr, euch jetzt siduction 2013.2 - <i>December</i> - vorstellen zu können. siduction erscheint zwei bis vier mal jährlich und 
+Wir freuen uns sehr, euch jetzt siduction 2013.2 - <i>December</i> - vorstellen zu können. siduction erscheint zwei bis vier mal jährlich und
 basiert auf dem Unstable-Zweig von Debian.
 </p>
-<p>Seit der Veröffentlichung des RC zu siduction 2013.2 vor einer Woche haben wir einige Fehler, die ihr uns gemeldet habt, ausgebügelt. Diese 
-betreffen Sprachpakete, das Handling von Unicode im Installer und weitere Stabilisierung bei Systemd. Wir hoffen, alle kritischen Bugs 
-beseitigt zu haben. 
-<p>siduction 2013.2 - <i>December</i> wird mit 5 Desktop-Umgebungen ausgeliefert: KDE SC, XFCE, Gnome 3, LXDE und Razor-qt,  alle jeweils in 
-32- und 64-bit Versionen. Von den angebotenen Varianten passt lediglich LXDE noch auf eine CD mit 700 MByte. Da aber das Medium CD zunehmend an 
-Bedeutung verliert, versuchen wir nicht, unsere Images unter dieser Marge zu halten, sondern empfehlen die Verwendung von USB-Sticks zur 
+<p>Seit der Veröffentlichung des RC zu siduction 2013.2 vor einer Woche haben wir einige Fehler, die ihr uns gemeldet habt, ausgebügelt. Diese
+betreffen Sprachpakete, das Handling von Unicode im Installer und weitere Stabilisierung bei Systemd. Wir hoffen, alle kritischen Bugs
+beseitigt zu haben.
+<p>siduction 2013.2 - <i>December</i> wird mit 5 Desktop-Umgebungen ausgeliefert: KDE SC, XFCE, Gnome 3, LXDE und Razor-qt,  alle jeweils in
+32- und 64-bit Versionen. Von den angebotenen Varianten passt lediglich LXDE noch auf eine CD mit 700 MByte. Da aber das Medium CD zunehmend an
+Bedeutung verliert, versuchen wir nicht, unsere Images unter dieser Marge zu halten, sondern empfehlen die Verwendung von USB-Sticks zur
 Installation. User und Passwort für die Live-CD lauten <i>siducer</i> und <i>live</i></p>.
 
-<p>Die veröffentlichten ISOs sind ein Snapshot von Debian Sid vom 30.12.2013, ergänzt mit ein paar nützlichen Paketen und Skripten, einem 
+<p>Die veröffentlichten ISOs sind ein Snapshot von Debian Sid vom 30.12.2013, ergänzt mit ein paar nützlichen Paketen und Skripten, einem
 Installer und unserer eigenen gepatchten Version des Kernels 3.12 sowie X-Server 1.14.5 </p>
-<p>Neben diesen Desktop-Umgebungen ist auch <i>noX</i> als Arbeitsumgebung ohne X-Server wieder vertreten. Neu hinzugekommen ist mit 
+<p>Neben diesen Desktop-Umgebungen ist auch <i>noX</i> als Arbeitsumgebung ohne X-Server wieder vertreten. Neu hinzugekommen ist mit
 <i>Xorg</i> ein Image, das einen X-Server und den minimalistischen Window-Manager Fluxbox mitbringt.</p>
-<p>Neu in diesem Release-Zyklus ist die Implementation von Systemd. Während Debian noch diskutiert, welches Init-System zukünftig verwendet 
-werden soll hat sich siduction bereits für Systemd entschieden. Es ist das technisch am weitesten entwickelte Konzept der vorhandenen 
-Init-Systeme. Sollte sich Debian für Ubuntus Upstart entscheiden, so werden wir aus verschiedenen Gründen diese Entscheidung nicht umsetzen 
-sondern bei Systemd bleiben. Bis wir eine eigene Sektion für Systemd in unser Handbuch einfügen, sollen die folgenden Beispiele für oft 
+<p>Neu in diesem Release-Zyklus ist die Implementation von Systemd. Während Debian noch diskutiert, welches Init-System zukünftig verwendet
+werden soll hat sich siduction bereits für Systemd entschieden. Es ist das technisch am weitesten entwickelte Konzept der vorhandenen
+Init-Systeme. Sollte sich Debian für Ubuntus Upstart entscheiden, so werden wir aus verschiedenen Gründen diese Entscheidung nicht umsetzen
+sondern bei Systemd bleiben. Bis wir eine eigene Sektion für Systemd in unser Handbuch einfügen, sollen die folgenden Beispiele für oft
 genutzte Befehle in Systemd Hilfestellung leisten. </p>
 <h3>Was gibts Neues</h3>
-<p>Wie bereits erwähnt haben wir, auch als Testgrundlage für Debian, das möglicherweise zukünftige Init-System bereits implementiert. Hier nun 
+<p>Wie bereits erwähnt haben wir, auch als Testgrundlage für Debian, das möglicherweise zukünftige Init-System bereits implementiert. Hier nun
 ein Abriss häufig benutzter Systemd-Kommandos zum Booten, Verwalten von Diensten und Protokollieren von Systemmeldungen: </p>
 <ul>
 <h4>Dienste</h4>
@@ -48,11 +42,11 @@ ein Abriss häufig benutzter Systemd-Kommandos zum Booten, Verwalten von Dienste
 <li>systemctl stop [NAME...] - Stoppe eine oder mehrere Units</li>
 <li>systemctl disable [NAME...] - Sperre eine oder mehrere Units</li>
 </ul>
-<p>Die Manpage <i>man systemctl</i> bietet weitere Informationen. Als kleine Hilfe haben wir <i>systemd-ui</i> in den Paketbestand aufgenommen. 
+<p>Die Manpage <i>man systemctl</i> bietet weitere Informationen. Als kleine Hilfe haben wir <i>systemd-ui</i> in den Paketbestand aufgenommen.
 Die GUI wird mit dem Befehl <i>systemadm</i> aufgerufen.</p>
 <ul>
 <h4>Runlevel wechseln, Reboot und Shutdown</h4>
-<p>Das Wechseln der Runlevel ist auch anders als bisher mit <i>sysvinit</i> gewohnt. Was bisher als <i>runlevel 3</i> bekannt war, heißt jetzt 
+<p>Das Wechseln der Runlevel ist auch anders als bisher mit <i>sysvinit</i> gewohnt. Was bisher als <i>runlevel 3</i> bekannt war, heißt jetzt
 <i>multi-user.target</i>, <i>init 5</i> wird zu <i>graphical.target:</i></p>
 <li>systemctl isolate graphical.target - Wechselt in die grafische Umgebung</li>
 <li>systemctl isolate multi-user.target - Wechselt in ein Terminal ohne X</li>
@@ -61,17 +55,17 @@ Die GUI wird mit dem Befehl <i>systemadm</i> aufgerufen.</p>
 </ul>
 <ul>
 <h4>Protokollieren mit dem Systemd Journal</h4>
-<p>Das Journal ist ein großer Zugewinn im Vergleich zum bisher verwendeten Syslog. Das Protokollieren beginnt jetzt früher im Bootvorgang. 
+<p>Das Journal ist ein großer Zugewinn im Vergleich zum bisher verwendeten Syslog. Das Protokollieren beginnt jetzt früher im Bootvorgang.
 Zudem ist es nun einfacher, einen verfeinerten selektiven Zugriff auf die in <i>/var/log/journal</i> gespeicherten Daten zu erhalten.</p>
 <li>journalctl --all - gibt das vollständige Journal des Systems und aller User aus</li>
 <li>journalctl -f - gibt eine Live-Ansicht der Daten aus, während sie protokolliert werden(früher: tail -f /var/log/messages)</li>
 <li>journalctl -b - zeigt das Protokoll des letzten Bootvorgangs</li>
 <li>journalctl -b -p err - zeigt den letzten Bootvorgang, limitiert auf Fehler der Priorität ERROR</li>
 <li>journalctl --since=yesterday - schränkt auf Meldungen der letzten 24 Stunden ein</li>
-<p>Das ist jedoch nur die Spitze des Eisbergs, mehr gibt es in <a href="http://0pointer.de/blog/projects/journalctl.html">Lennart Poetterings 
+<p>Das ist jedoch nur die Spitze des Eisbergs, mehr gibt es in <a href="http://0pointer.de/blog/projects/journalctl.html">Lennart Poetterings
 Blog</a>
-<p>Da wir noch das Kompatibilitätspaket <i>systemd-sysv</i> auf dem Image haben, könnt ihr momentan auch noch die gewohnten Befehle benutzen. 
-Ausnahme ist lediglich das Journal, da <i>syslog</i> nicht mehr vertreten ist. Wir haben Systemd so konfiguriert, dass die obigen 
+<p>Da wir noch das Kompatibilitätspaket <i>systemd-sysv</i> auf dem Image haben, könnt ihr momentan auch noch die gewohnten Befehle benutzen.
+Ausnahme ist lediglich das Journal, da <i>syslog</i> nicht mehr vertreten ist. Wir haben Systemd so konfiguriert, dass die obigen
 Journal-Befehle alle als normaler User funktionieren und keinen Root-Zugang benötigen.</p>
 </ul>
 <h3>Gnome</h3>
@@ -79,38 +73,38 @@ Journal-Befehle alle als normaler User funktionieren und keinen Root-Zugang ben�
 <p>Es gibt zwei Wege, eine Gnome-Session zu starten:</p>
   * <i>gnome-fallback</i>, das dem Gnome2-Look entspricht<br />
   * <i>gnome</i>, dass Gnome3 entspricht und Desktop-Effekte mitbringt<br /><br />
-Um Gnome3 starten zu können braucht es eine 3D-beschleunigte Grafikkarte. Nutzer von ATI-Karten müssen <i>firmware-linux-nonfree</i> 
+Um Gnome3 starten zu können braucht es eine 3D-beschleunigte Grafikkarte. Nutzer von ATI-Karten müssen <i>firmware-linux-nonfree</i>
 installieren, um Gnome3 nutzen zu können.
-Im Live-Mode ist standardmäßig Gnome-Fallback eingestellt. Nach der Installation wird auf Gnome3 umgeschaltet. Das bedeutet, dass Besitzer von 
+Im Live-Mode ist standardmäßig Gnome-Fallback eingestellt. Nach der Installation wird auf Gnome3 umgeschaltet. Das bedeutet, dass Besitzer von
 ATI-Karten vor der Installation <i>firmware-linux-nonfree</i> installieren müssen.</p>
 <h4>Boot-Cheatcode "gnome-shell --replace &"</h4>
-<p>Soll für eine Live-Session Gnome3 erzwungen werden, muss der Cheatcode <i>"gnome-shell --replace &</i> an die Kernel-Bootzeile anhängt 
-werden. Das funktioniert für Besitzer von ATI-Karten nur bei einem <a 
+<p>Soll für eine Live-Session Gnome3 erzwungen werden, muss der Cheatcode <i>"gnome-shell --replace &</i> an die Kernel-Bootzeile anhängt
+werden. Das funktioniert für Besitzer von ATI-Karten nur bei einem <a
 href="http://manual.siduction.org/de/hd-install-opts-de.htm#usb-from1">persistenten Overlay</a> auf einem USB-Stick.</p>
 <h3>Und sonst?</h3>
-<p>Zum zweiten Mal ist <b>noX</b>, das vor über einem Jahr als Development Release veröffentlicht wurde,  als offizielles Release mit dabei. Da 
+<p>Zum zweiten Mal ist <b>noX</b>, das vor über einem Jahr als Development Release veröffentlicht wurde,  als offizielles Release mit dabei. Da
 noX keine grafische Umgebung bietet, muss die Installation per <i>cli-installer</i> erfolgen.</p>
 <p><b>XFCE</b> ist in Version 4.10.1 mit dabei und solide wie immer.</p>
-<p>Für die <b>KDE SC</b> Anwender haben wir die letzte verfügbare Version KDE SC 4.11.4 paketiert. Für 4.12 hat die Zeit zum Testen nicht mehr 
-ausgereicht, das letzte KDE-Release im 4er-Zyklus sollte aber bald in unserem KDEnext-Repository verfügbar sein. Die Anpassungen in 
+<p>Für die <b>KDE SC</b> Anwender haben wir die letzte verfügbare Version KDE SC 4.11.4 paketiert. Für 4.12 hat die Zeit zum Testen nicht mehr
+ausgereicht, das letzte KDE-Release im 4er-Zyklus sollte aber bald in unserem KDEnext-Repository verfügbar sein. Die Anpassungen in
 <i>siduction-settings-kde</i> sind grundsätzlich abgeschlossen, vor dem Release wurden noch einige Änderungen am Farbschema vorgenommen.</p>
-<p><b>Razor-Qt</b> ist in einer leicht modifizierten Version 0.5.2 vertreten und bietet verbesserte Plugins und erhöhte Stabilität. Noch besser 
-wirds mit der bevorstehenden Verion 0.6, die für die Mutigen unter euch bereits in unserem <i>razorqt/next</i>-Repository liegt. Wir werden 0.6 
-irgendwann veröffentlichen und dann zu <i>lxde-qt</i> umschwenken, welches das Ergebnis des Zusammengehens von LXDE und Razor-qt unter dem 
+<p><b>Razor-Qt</b> ist in einer leicht modifizierten Version 0.5.2 vertreten und bietet verbesserte Plugins und erhöhte Stabilität. Noch besser
+wirds mit der bevorstehenden Verion 0.6, die für die Mutigen unter euch bereits in unserem <i>razorqt/next</i>-Repository liegt. Wir werden 0.6
+irgendwann veröffentlichen und dann zu <i>lxde-qt</i> umschwenken, welches das Ergebnis des Zusammengehens von LXDE und Razor-qt unter dem
 Qt-Framework darstellt.</p>
-<p>Somit ist dies ebenso das vermutlich letzte Release von <b>LXDE</b> in der jetzigen Form. Dieses Release von LXDE eilt der Debian-Version 
-etwas voraus, indem wir wegen Fehlern in den Debian-Paketen <i>pcmanfm</i>, <i>lxappearance</i> und <i>lxappearance-obconf</i> direkt von 
+<p>Somit ist dies ebenso das vermutlich letzte Release von <b>LXDE</b> in der jetzigen Form. Dieses Release von LXDE eilt der Debian-Version
+etwas voraus, indem wir wegen Fehlern in den Debian-Paketen <i>pcmanfm</i>, <i>lxappearance</i> und <i>lxappearance-obconf</i> direkt von
 Upstream, also den LXDE-Entwicklern, paketiert haben. Auch unsere Version von <i>Midori</i> ist Debian leicht voraus.</p>
-<p>Viel Zeit verschlang seit dem letzten Release wieder die Anpassung der von aptosid übernommenen Code-Basis. Diesmal wurde unter anderem das 
-frühere <i>bluewater-manual</i>, das jetzt <i>sidu-manual</i> heißt, völlig überholt und von statischen Webseiten nach Django konvertiert und 
-das Aussehen an die vor wenigen Wochen freigegebene neue <a href="http://siduction.org">siduction-Webpräsenz</a> angepasst. Nach Abschluss der 
-Konvertierung wird es viel einfacher sein, neue Beiträge in das Handbuch einzupflegen.</p><p>Insgesamt wurden <a 
+<p>Viel Zeit verschlang seit dem letzten Release wieder die Anpassung der von aptosid übernommenen Code-Basis. Diesmal wurde unter anderem das
+frühere <i>bluewater-manual</i>, das jetzt <i>sidu-manual</i> heißt, völlig überholt und von statischen Webseiten nach Django konvertiert und
+das Aussehen an die vor wenigen Wochen freigegebene neue <a href="http://siduction.org">siduction-Webpräsenz</a> angepasst. Nach Abschluss der
+Konvertierung wird es viel einfacher sein, neue Beiträge in das Handbuch einzupflegen.</p><p>Insgesamt wurden <a
 href="http://chili.siduction.org/projects/siduction/issues/report">über 170 Bugs</a> seit dem letzten Release geschlossen.</p>
-<p>Der Installer bietet weiterhin als Alternative auch <i>btrfs</i> als Dateisystem an. Bitte beachtet unbedingt die Warnungen in dem 
+<p>Der Installer bietet weiterhin als Alternative auch <i>btrfs</i> als Dateisystem an. Bitte beachtet unbedingt die Warnungen in dem
 Zusammenhang.
-Die Unterstützung von <i>btrfs</i> ist immer noch als experimentell anzusehen und es sollte noch nicht auf Produktivsystemen eingesetzt 
-werden. 
-Regelmäßige Backups sind absolut Pflicht! 
+Die Unterstützung von <i>btrfs</i> ist immer noch als experimentell anzusehen und es sollte noch nicht auf Produktivsystemen eingesetzt
+werden.
+Regelmäßige Backups sind absolut Pflicht!
 <br />
 <h3>Unsere Ressourcen</h3>
 <br />
@@ -157,29 +151,29 @@ reproduzierbar sind. Falls Dir das zu kompliziert ist, schreib einfach im Bug Th
 in unserem Forum, das klappt noch mindestens bis zum endgültigen Release.
 </p>
 <p>
-Woher kommt der Codename 'December?  Wir benennen unsere Releases nach Rocksongs. <a 
-href="https://en.wikipedia.org/wiki/Collective_Soul">Collective Soul</a> hatte einen Hit mit <a 
+Woher kommt der Codename 'December?  Wir benennen unsere Releases nach Rocksongs. <a
+href="https://en.wikipedia.org/wiki/Collective_Soul">Collective Soul</a> hatte einen Hit mit <a
 href="http://www.youtube.com/watch?v=D8Jurk6TUqI
 ">December</a> im Jahr 2005 und passt somit perfekt zum Zeitpunkt unseres Releases.
 </p>
 <p>
 Da wir immer nach weiteren Helfern suchen, freuen wir uns, wenn Du Dich im IRC-Kanal
 <i>#siduction-core</i>
-einfindest und uns sagst, wobei Du dem Projekt helfen kannst und möchtest. Wie Du weiter unten bei den Danksagungen sehen kannst, haben wir 
+einfindest und uns sagst, wobei Du dem Projekt helfen kannst und möchtest. Wie Du weiter unten bei den Danksagungen sehen kannst, haben wir
 derzeit <b>kein Art-Team</b>. Wenn Du uns dort aushelfen kannst, wären wir hocherfreut.</p>
 
 <br />
 <h3>Hardware Tipps</h3>
 <p>Solltest Du eine ATI Radeon Grafikkarte besitzen, so benutze bitte beim Booten die
 "failsafe" Option. Diese Option hängt die Cheatcodes <i>radeon.modeset=0
-xmodule=vesa</i> 
-an die Kernel-Bootline an und gewährleistet das Booten nach X. Vor der Installation vom Live-ISO installiere bitte 
+xmodule=vesa</i>
+an die Kernel-Bootline an und gewährleistet das Booten nach X. Vor der Installation vom Live-ISO installiere bitte
 <i>firmware-linux-nonfree</i>.
 Dazu öffne Deine <i>/etc/apt/sources.list.d/debian.list</i> mit Deinem bevorzugten
 Editor als Root und hänge <i>contrib non-free</i> ans Ende der ersten Zeile.
 Speichern und dann:
-<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> Wenn Du jetzt siduction installierst, wird das Paket mit in die 
-Installation übernommen und gewährleistet, 
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> Wenn Du jetzt siduction installierst, wird das Paket mit in die
+Installation übernommen und gewährleistet,
 dass der Rechner beim Reboot nach der Installation nach X booten kann. Denk daran,
 dass, solltet ihr vor der Installation rebooten, die Änderungen verloren sind.</p>
 <p>Einige WLAN-Karten können nicht automatisch von den mitgelieferten freien Treibern
@@ -187,8 +181,8 @@ unterstützt werden, daher startest Du am besten mit kabelgebundenem Netz. Das S
 <i>fw-detect</i> liefert Informationen zur Einbindung entsprechender Firmware, der
 Installer führt dieses Skript ebenfalls aus und leitet Dich bei der
 Installation der benötigten Firmware an.</p>
-<p>Zum Schluss noch ein Hinweis für die Anwender des Virtualisierers KVM. Das Frontend für die Kernel-basierte virtuelle Maschine KVM begann 
-als Fork von Qemu und ist nun mit allen Entwicklungen der letzten Jahre dorthin zurückgekehrt. Eine Anleitung zum neuen Quemu gibt es <a 
+<p>Zum Schluss noch ein Hinweis für die Anwender des Virtualisierers KVM. Das Frontend für die Kernel-basierte virtuelle Maschine KVM begann
+als Fork von Qemu und ist nun mit allen Entwicklungen der letzten Jahre dorthin zurückgekehrt. Eine Anleitung zum neuen Quemu gibt es <a
 href="http://wiki.siduction.de/index.php?title=Virtualize_siduction_with_qemu-system-x86_64">in unserem Wiki</a>.</p>
 <br/>
 <h3>Danksagung für siduction 2013.2</h3>
@@ -211,7 +205,7 @@ Torsten Wohlfarth (towo)
 <br />
 <h4>Maintainer der siduction Desktop Environments:</h4>
 <b>Gnome</b>:	 	Angelescu Ovidiu (convbsd)<br />
-<b>KDE</b>:		 	Ferdinand Thommes (devil)José Manuel Santamaría Lema (santa)<br />	
+<b>KDE</b>:		 	Ferdinand Thommes (devil)José Manuel Santamaría Lema (santa)<br />
 <b>LXDE</b>:    	Markus Meyer (coruja)<br />
 <b>noX</b>:		 	Alf Gaida (agaida)<br />
 <b>Razor-qt</b>:	Alf Gaida (agaida)<br />
@@ -240,9 +234,6 @@ Im Namen des gesamten siduction Teams:
 <br />
 Ferdinand Thommes
 </ul>
-</div>
-</div>
-</form>
-</div>
+</div> <!-- main-page -->
 </body>
-</html> 
+</html>

@@ -8,33 +8,27 @@
 <title>Release Notes</title>
 </head>
 <body>
-<div id="main_area">
-<form action="###URL_FORM###" method="get" enctype="text/plain">
-<div id="header">
-		<img class="logo" src="header-logo.png" alt="logo"/>
-</div> <!-- header -->
-<div id="content">
-<div id="text_area">
+<div id="main-page">
 <h1>Release Notes for siduction 2013.2</h1>
-<p>We are very happy to present to you the final release of siduction 2013.2 - <i>December</i>. siduction is a distribution based on Debian's 
+<p>We are very happy to present to you the final release of siduction 2013.2 - <i>December</i>. siduction is a distribution based on Debian's
 unstable branch and we try to release a few new snapshots over the course of each year.<p>
-<p>Since the release of the RC we have ironed out some nasty bugs with language-packs, unicode handling in the installer and stabilization 
+<p>Since the release of the RC we have ironed out some nasty bugs with language-packs, unicode handling in the installer and stabilization
 within systemd. We believe, that there is no release critical bugs left, so here we go.</p>
-<p>siduction 2013.2 - <i>December</i> is shipped with 5 desktop environments: KDE SC, XFCE, LXDE, Razor-Qt and GNOME, all in 32- and 64-bit 
-variants. From the included DEs this time around only LXDE fits on a CD with 700 MegaByte. But as CDs become more irrelevant with every day, we 
-are not too worried about this and recommend to use USB-Sticks for installation. </p> 
-<p>The released images are a snapshot of Debian unstable, that also goes by the name of Sid, from 2013-12-30. They are enhanced with some 
+<p>siduction 2013.2 - <i>December</i> is shipped with 5 desktop environments: KDE SC, XFCE, LXDE, Razor-Qt and GNOME, all in 32- and 64-bit
+variants. From the included DEs this time around only LXDE fits on a CD with 700 MegaByte. But as CDs become more irrelevant with every day, we
+are not too worried about this and recommend to use USB-Sticks for installation. </p>
+<p>The released images are a snapshot of Debian unstable, that also goes by the name of Sid, from 2013-12-30. They are enhanced with some
 useful packages and scripts, our own installer and a custom patched version of the linux-kernel 3.12, accompanied by X-Server 1.14.5-1.</p>
-<p>Besides those desktop environments we also include <i>noX</i>, which had it's premiere with the last release and is an environment without 
-X. There is, last, but not least, an image that listens to the name of <i>Xorg</i> and it features the minimal window manager Fluxbox on top of 
+<p>Besides those desktop environments we also include <i>noX</i>, which had it's premiere with the last release and is an environment without
+X. There is, last, but not least, an image that listens to the name of <i>Xorg</i> and it features the minimal window manager Fluxbox on top of
 X.</p>
-<p> New in this release cycle is the use of <i>Systemd</i>. While Debian is still discussing, what init system to use in the future, siduction 
-has decided to go with Systemd. It is the most technicaly advanced of the init systems at hand, besides that, even if Debian should decide to 
-go with Ubuntu's Upstart, for various reasons we will not follow them there. Until we have a section on systemd in our manual, we will help you 
+<p> New in this release cycle is the use of <i>Systemd</i>. While Debian is still discussing, what init system to use in the future, siduction
+has decided to go with Systemd. It is the most technicaly advanced of the init systems at hand, besides that, even if Debian should decide to
+go with Ubuntu's Upstart, for various reasons we will not follow them there. Until we have a section on systemd in our manual, we will help you
 out with some of the most used commands in systemd</p>
 
 <h3>What is new</h3>
-<p>As mentioned above we have taken a step into the possible future of Debian and implemented systemd into siduction as our new init system. 
+<p>As mentioned above we have taken a step into the possible future of Debian and implemented systemd into siduction as our new init system.
 Here is a cheat sheet with some of the commands that are new for booting, handling services and logging:</p>
 <ul>
 <h4>Handling Services</h4>
@@ -43,11 +37,11 @@ Here is a cheat sheet with some of the commands that are new for booting, handli
 <li>systemctl stop [NAME...] - Stop (deactivate) one or more units</li>
 <li>systemctl disable [NAME...] - Disable one or more unit files</li>
 </ul>
-<p>Check <i>man systemctl</i> for more information. For your comfort we also ship <i>systemd-ui</i>, which is called with the command 
+<p>Check <i>man systemctl</i> for more information. For your comfort we also ship <i>systemd-ui</i>, which is called with the command
 <i>systemadm</i>.</p>
 <ul>
 <h4>Changing Runlevels, Reboot and Shutdown</h4>
-<p>Changing runlevels is also different from <i>sysvinit</i>. What was known as <i>runlevel 3</i> is now <i>multi-user.target</i>, <i>init 
+<p>Changing runlevels is also different from <i>sysvinit</i>. What was known as <i>runlevel 3</i> is now <i>multi-user.target</i>, <i>init
 5</i> changes to <i>graphical.target:</i></p>
 <li>systemctl isolate graphical.target - Will take you to what you know as init 3</li>
 <li>systemctl isolate multi-user.target - Will take you to what you know as init 5</li>
@@ -56,17 +50,17 @@ Here is a cheat sheet with some of the commands that are new for booting, handli
 </ul>
 <ul>
 <h4>Logging with Systemd Journal</h4>
-Journal is a great win over the aged syslog. Logging starts earlier, which for sure was one of the backsides of syslog. Also there is commands 
+Journal is a great win over the aged syslog. Logging starts earlier, which for sure was one of the backsides of syslog. Also there is commands
 that give you tailored information at your fingertips.
 <li>journalctl --all - gives you the full journal of the system and all users</li>
 <li>journalctl -f - gives you a live view of the journal as it grows (used to be  tail -f /var/log/messages)</li>
 <li>journalctl -b - shows the log of the last boot</li>
 <li>journalctl -b -p err - shows the log of last boot, limited to the priority ERROR</li>
 <li>journalctl --since=yesterday - since Linux people normaly do not reboot much, this is limiting it more than -b</li>
-<p>That is only the tip of the iceberg, more is to be found on <a href="http://0pointer.de/blog/projects/journalctl.html">Lennart Poetterings 
+<p>That is only the tip of the iceberg, more is to be found on <a href="http://0pointer.de/blog/projects/journalctl.html">Lennart Poetterings
 blog</a>
-<p>Since we still ship a compatibility package called <i>systemd-sysv</i>, you can also continue to use the commands you are used to for now, 
-other than the ones for the journal. Besides that we set up systemd in a way, where you can use all the above commands for the journal as plain 
+<p>Since we still ship a compatibility package called <i>systemd-sysv</i>, you can also continue to use the commands you are used to for now,
+other than the ones for the journal. Besides that we set up systemd in a way, where you can use all the above commands for the journal as plain
 user, no root needed.</p>
 </ul>
 <h4>Gnome</h4>
@@ -74,40 +68,40 @@ user, no root needed.</p>
 <p>There are two ways to start your gnome-session:</p>
   * <i>gnome-fallback</i>, which implements the GNOME2 look<br />
   * <i>GNOME</i>,  which implements the GNOME3 look and desktop-effects<br /><br />
-To be able to start gnome as a gnome3-session, your videocard must be accelerated. Users of ATI graphic cards must have 
+To be able to start gnome as a gnome3-session, your videocard must be accelerated. Users of ATI graphic cards must have
 <i>firmware-linux-nonfree</i> installed to be able to launch GNOME3.
 By default in live mode gnome-fallback is started. After installation, GNOME3 mode is enabled.
 That means, users of ATI cards must install <i>firmware-linux-nonfree</i> before starting the installer.</p>
 <h4>Boot cheatcode "gnome"</h4>
-If you want to force a GNOME3-session even in live mode, you can use the cheatcode <i>gnome</i> to the kernel-bootline. This does not work for 
-users with ATI cards other than with a <a href="http://manual.siduction.org/en/hd-install-opts-en.htm#usb-from1"><i>persistent overlay</i></a> 
+If you want to force a GNOME3-session even in live mode, you can use the cheatcode <i>gnome</i> to the kernel-bootline. This does not work for
+users with ATI cards other than with a <a href="http://manual.siduction.org/en/hd-install-opts-en.htm#usb-from1"><i>persistent overlay</i></a>
 on a USB device.</p>
 <h3>And besides that?</h3>
-<p>We ship, for the second time, <b>noX</b> as an official release, which was introduced first in October 2012 as development release. As there 
+<p>We ship, for the second time, <b>noX</b> as an official release, which was introduced first in October 2012 as development release. As there
 is no graphical environment, you need to use <i>cli-installer</i> as root to run the installation.</p>
-<p><b>XFCE</b> is being shipped in version 4.10.1 and is as reliable as ever. Contrary to Gnome, XFCE stays away from shipping systemd code for 
+<p><b>XFCE</b> is being shipped in version 4.10.1 and is as reliable as ever. Contrary to Gnome, XFCE stays away from shipping systemd code for
 now.</p>
-<p>For our <b>KDE SC</b> users we packaged the latest available version KDE SC 4.11.4. The rewrite of <i> siduction-settings-kde</i> is 
+<p>For our <b>KDE SC</b> users we packaged the latest available version KDE SC 4.11.4. The rewrite of <i> siduction-settings-kde</i> is
 basicaly done, a few adjustments to colours and other small changes were made before the final release.</p>
-<p><b>Razor-Qt</b> is still on a slightly modified version 0.5.2, which has better plugins and overall functionality. This will be improved 
-even more with the upcoming version 0.6, which already is in our <i>razorqt/next</i> repository for the brave at heart. We will release this 
-sometime and then switch over to <i>lxde-qt</i>, which will be the product of Razor-qt and LXDE joining forces with Qt as base. Other than that 
+<p><b>Razor-Qt</b> is still on a slightly modified version 0.5.2, which has better plugins and overall functionality. This will be improved
+even more with the upcoming version 0.6, which already is in our <i>razorqt/next</i> repository for the brave at heart. We will release this
+sometime and then switch over to <i>lxde-qt</i>, which will be the product of Razor-qt and LXDE joining forces with Qt as base. Other than that
 all Qt versions of apps have been updated.</p>
-<p>This is probably the last release of <b>LXDE</b> as we know it in siduction. As mentioned above. LXDE goes together with Razor-Qt to form a 
-new DE based on Qt.This release of LXDE is ahead of Debian due to us working with LXDE upstream. That means that <i>pcmanfm</i>, 
-<i>lxappearance</i> and <i>lxappearance-obconf</i> are freshly packaged upstream versions. Also our version of <i>Midori</i> is slightly ahead 
+<p>This is probably the last release of <b>LXDE</b> as we know it in siduction. As mentioned above. LXDE goes together with Razor-Qt to form a
+new DE based on Qt.This release of LXDE is ahead of Debian due to us working with LXDE upstream. That means that <i>pcmanfm</i>,
+<i>lxappearance</i> and <i>lxappearance-obconf</i> are freshly packaged upstream versions. Also our version of <i>Midori</i> is slightly ahead
 of Debian.</p>
-<p>A lot of time consuming changes again went into adapting the codebase we forked to our needs. This time the former bluewater-manual base was 
-completely changed. We went from static pages to Django and adjusted the appearance to the siduction look and make it match <a 
-href="http://siduction.org">our new website</a> that we just launched a couple weeks ago. Work on the sidu-manual, as it is called now, is 
-ongoing to make it a lot easier to add new content than before.</p><p>All in all <a 
+<p>A lot of time consuming changes again went into adapting the codebase we forked to our needs. This time the former bluewater-manual base was
+completely changed. We went from static pages to Django and adjusted the appearance to the siduction look and make it match <a
+href="http://siduction.org">our new website</a> that we just launched a couple weeks ago. Work on the sidu-manual, as it is called now, is
+ongoing to make it a lot easier to add new content than before.</p><p>All in all <a
 href="http://chili.siduction.org/projects/siduction/issues/report">we closed more than 170 bugs</a> since the last final release.</p>
 <p> The installer offers <i>btrfs</i> still as an experimental filesystem. Please be careful if you use it and always backup your data.</p>
 
 <h3>Our Resources</h3><br />
 <a href="http://siduction.org">siduction Forum</a><br />
 <a href="http://news.siduction.org">siduction Blog</a><br />
-<a href="http://git.siduction.org">Git Archive</a><br /> 
+<a href="http://git.siduction.org">Git Archive</a><br />
 <a href="http://siduction.org/index.php?module=news">Distro News</a><br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug-Tracker</a><br />
 <a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">siduction-Map</a><br />
@@ -138,7 +132,7 @@ to complicated for now, feel free to use the bugs-thread on the forum for now,
 it will keep working until final release.</p>
 
 <p>Should you have wondered, where the codename 'December' comes from, let
-me tell you that we name our releases after famous rocksongs. <a href="https://en.wikipedia.org/wiki/Collective_Soul">Collective Soul</a> had a 
+me tell you that we name our releases after famous rocksongs. <a href="https://en.wikipedia.org/wiki/Collective_Soul">Collective Soul</a> had a
 hit with <a href="http://www.youtube.com/watch?v=D8Jurk6TUqI
 ">December</a> in 2005 and it perfectly fits our release date.
 </p>
@@ -146,28 +140,28 @@ hit with <a href="http://www.youtube.com/watch?v=D8Jurk6TUqI
 nothing we can tell you other than that we strive for 2-4 releases per year.</p>
 <p>As we are always looking for contributors, here is what to do: Come to IRC to
 channel <i>#siduction-core</i> and talk to us about what you would like to do within
-the project, or where you think you could help. As you will notice if you scroll down, we have <b>no art-team</b> at the moment. If you are 
+the project, or where you think you could help. As you will notice if you scroll down, we have <b>no art-team</b> at the moment. If you are
 willing and capable, talk to us.</p>
 <br /><br />
 <h3>Hardware Tips</h3>
-<p>If you should own a ATI Radeon graphics accelerator, please use the failsafe option, when booting the Live-ISO. This option will add 
-the cheatcodes <i>radeon.modeset=0 xmodule=vesa</i> to the Kernel bootline, so that you can boot to X. Before installing, on the Live-ISO, 
+<p>If you should own a ATI Radeon graphics accelerator, please use the failsafe option, when booting the Live-ISO. This option will add
+the cheatcodes <i>radeon.modeset=0 xmodule=vesa</i> to the Kernel bootline, so that you can boot to X. Before installing, on the Live-ISO,
 please install firmware-linux-nonfree.
 To do so, please open your <i>/etc/apt/sources.list.d/debian.list</i> with your
 favourite editor as root and append <i>contrib non-free</i> to the end of the first
 line. Save the edit and do:
-<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> If you install the operating system now, the package will be 
-installed also, preventing you from a garbled screen when first rebooting. Mind that if you rebootbefore installing the system, the changes you 
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> If you install the operating system now, the package will be
+installed also, preventing you from a garbled screen when first rebooting. Mind that if you rebootbefore installing the system, the changes you
 made will be lost.</p>
 <p>If your system has wireless network, this will probably not work out of the box
 with free drivers, so you better start with wired network connected. You might want
 to use the script <i>fw-detect</i> to get information on wireless drivers. The
 installer will prompt you for any missing firmware and guide you through the process
 of installing it.</p>
-<p>Last but not least a hint for users of the kernel based virtual machine KVM. The developement of a frontend for the kernelbased virtual 
-machine (kvm) has begun as a fork of qemu with the name qemu-kvm or short "kvm". Since qemu version 1.4 all patches of the kvm fork have been 
-integrated back into the qemu source. Also there has been much progress in the field of virtualization. So there is a lot of outdated 
-documentation around. We have a current <a 
+<p>Last but not least a hint for users of the kernel based virtual machine KVM. The developement of a frontend for the kernelbased virtual
+machine (kvm) has begun as a fork of qemu with the name qemu-kvm or short "kvm". Since qemu version 1.4 all patches of the kvm fork have been
+integrated back into the qemu source. Also there has been much progress in the field of virtualization. So there is a lot of outdated
+documentation around. We have a current <a
 href="http://wiki.siduction.de/index.php?title=Virtualize_siduction_with_qemu-system-x86_64">worksheet for Qemu in our wiki</a>.
 <br />
 <h3>Credits for siduction 2013.2</h3>
@@ -190,7 +184,7 @@ Torsten Wohlfarth (towo)
 <br />
 <h4>Maintainers of the siduction Desktop Environments:</h4>
 <b>GNOME</b>:	 	Angelescu Ovidiu (convbsd)<br />
-<b>KDE</b>:		 	Ferdinand Thommes (devil), José Manuel Santamaría Lema (santa)<br />	
+<b>KDE</b>:		 	Ferdinand Thommes (devil), José Manuel Santamaría Lema (santa)<br />
 <b>LXDE</b>:    	Markus Meyer (coruja)<br />
 <b>noX</b>:		 	Alf Gaida (agaida)<br />
 <b>Razor-qt</b>:	Alf Gaida (agaida)<br />
@@ -214,7 +208,6 @@ in any possible way. This is also your achievement.</p>
 And now enjoy!<br /><br />
 On behalf of the siduction team:<br />
 Ferdinand Thommes
-</div> <!-- text_area -->
-</div> <!-- content -->
+</div> <!-- main-page -->
 </body>
 </html>
