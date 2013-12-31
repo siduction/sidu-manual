@@ -1,3 +1,9 @@
+sidu-manual (2013.12.31.2) unstable; urgency=low
+
+  * help de+en updated
+
+ -- J. Hamatoma <hama@siduction.net>  Tue, 31 Dec 2013 02:39:43 +0100
+
 sidu-manual (2013.12.31) unstable; urgency=low
 
   * syntax errors in release notes
