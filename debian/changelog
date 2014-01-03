@@ -1,3 +1,9 @@
+sidu-manual (2013.12.31.3) UNRELEASED; urgency=medium
+
+  * substitute sux with su or suxterm
+
+ -- Ferdinand Thommes <devil@siduction.org>  Fri, 03 Jan 2014 23:10:47 +0100
+
 sidu-manual (2013.12.31.2) unstable; urgency=low
 
   * help de+en updated

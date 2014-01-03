@@ -195,7 +195,7 @@ update-grub
 						<ol>
 							<li>Um die Partitionen ([h,s]d[a..]X) zu identifizieren und bestätigen, muss man root (#) werden:
 <pre>
-$ sux
+$ suxterm
 </pre>
 							</li>
 							<li>Als root wird Folgendes eingegeben:
@@ -228,7 +228,7 @@ mount /dev/xdxx /media/xdxx
 
 							<p>Um Grub wiederherzustellen, falls er im MBR überschrieben oder korrumpiert wurde, muss eine <span class="highlight-3">chroot</span>-Umgebung aufgesetzt werden. <span class="highlight-3">Es kann jede live.iso verwendet werden, da die Chroot-Umgebung die Festplatteninstallation anspricht, sodass die gewünschte Grub-Version wiederhergestellt werden kann: grub1 (grub-legacy) oder grub2.</span></p>
 
-							<p>Man bootet in eine Deinem System entsprechende siduction.iso (32 oder 64 bit CD, DVD, USB-Stick oder SSD-Karte) und öffnet eine Konsole. Man tippt <span class="highlight-3">sux</span> und drückt die Eingabetaste, um root-Rechte zu erhalten.</p>
+							<p>Man bootet in eine Deinem System entsprechende siduction.iso (32 oder 64 bit CD, DVD, USB-Stick oder SSD-Karte) und öffnet eine Konsole. Man tippt <span class="highlight-3">suxterm</span> und drückt die Eingabetaste, um root-Rechte zu erhalten.</p>
 
 							<p>Mit <span class="highlight-3">fdisk -l oder blkid</span> stellt man sicher, welche Partition die Boot-Partition ist, und erhält die korrekten Bezeichnungen (falls eine graphische Oberfläche gewünscht ist, verwendet man <span class="highlight-3">Gparted</span>):</p>
 <pre>

@@ -69,7 +69,7 @@
 					  <li><a href="term-konsole-de.htm#term-cmds">Linux-Befehlsliste am Terminal</a></li>
 					</ul>
 					</li>
-			  <li><a href="term-konsole-de.htm#sux"> sux/sudo</a></li>
+			  <li><a href="term-konsole-de.htm#suxterm"> suxterm/sudo</a></li>
 		    </ul>
 		</li>
 <li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="cheatcodes-de.htm">Bootoptionen (Bootcodes)</a>
