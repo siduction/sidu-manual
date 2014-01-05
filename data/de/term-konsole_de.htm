@@ -33,7 +33,7 @@ username@hostname:~$
 
 								<p>"username" in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die <span class="highlight-3">Tilde ~</span> zeigt, man befindet sich in seinem Heimverzeichnis <span class="highlight-3">/home/username</span>, und das Dollarzeichen <span class="highlight-3">$</span> bedeutet, dass man im Terminal mit eingeschränkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausführen soll.</p>
 
-								<p>Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man <span class="highlight-3">sux</span> eingibt und Enter drückt, Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt.</p>
+								<p>Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man <span class="highlight-3">suxterm</span> eingibt und Enter drückt, Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt.</p>
 
 								<p>Ist die Eingabe korrekt, zeigt die Kommandozeile nun:</p>
 
@@ -46,7 +46,7 @@ username@hostname:~$
 # apt-get install [Paketname]
 </pre>
 
-								<p>bedeutet also: man öffnet ein Terminal, meldet sich als root an (sux) und führt dann den Befehl an einem Rootprompt # aus. <span class="highlight-4">Die Raute # wird nicht mit eingegeben</span>.</p>
+								<p>bedeutet also: man öffnet ein Terminal, meldet sich als root an (suxterm) und führt dann den Befehl an einem Rootprompt # aus. <span class="highlight-4">Die Raute # wird nicht mit eingegeben</span>.</p>
 
 								<p>Manchmal kann eine Konsole bzw. ein Terminal nicht mehr so reagieren wie gewünscht, dann muss eingegeben werden:</p>
 <pre>
@@ -98,7 +98,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u@\h\[\033[01;36m\]:\[\03
 
 				<h6>Änderung der Farbe für den Prompt von root#:</h6>
 <pre>
-sux
+suxterm
 &lt;editor&gt; /root/.bashrc
 </pre>
 							<p>In der Zeile 39 wird das Kommentarzeichen entfernt und sie sieht so aus:</p>
@@ -121,16 +121,16 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[01;31m\]:\[\03
 
 							<p>Es gibt eine Unmenge an Einstellungsmöglichkeiten für Hintergrundfarben. Wir empfehlen eine eher schlichte Einstellung.</p>
 	</div>
-	<div class="divider" id="sux">
-	<h2>Über sux</h2>
+	<div class="divider" id="suxterm">
+	<h2>Über suxterm</h2>
 							<p>Eine Anzahl von Befehlen muss mit Root-Rechten gestartet werden. Diese erhält man durch Eingabe von:</p>
 <pre>
-sux
+suxterm
 </pre>
 
-							<p>Im Gegensatz zum allgemeinen Befehl 'su' erlaubt  <span class="highlight-3">sux</span> das Ausführen von Programmen mit graphischer Oberfläche mit Root-Rechten. <span class="highlight-3">sux</span> transferiert unter Benutzung von 'su' die X-Eigenschaften an den Zielnutzer. (Siehe auch <a href="#sudo"> sudo</a>).</p>
+							<p>Im Gegensatz zum allgemeinen Befehl 'su' erlaubt  <span class="highlight-3">suxterm</span> das Ausführen von Programmen mit graphischer Oberfläche mit Root-Rechten. <span class="highlight-3">suxterm</span> transferiert unter Benutzung von 'su' die X-Eigenschaften an den Zielnutzer. (Siehe auch <a href="#sudo"> sudo</a>).</p>
 
-							<p>Beispiele für die Verwendung graphischer Anwendungen mittels sux sind: die Bearbeitung einer Konfigurationsdatei mit kwrite oder kate, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar. </p>
+							<p>Beispiele für die Verwendung graphischer Anwendungen mittels suxterm sind: die Bearbeitung einer Konfigurationsdatei mit kwrite oder kate, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar. </p>
 
 				  <h6>KDE: Tastatur-Optionen</h6>
 							<p>Start von krunner in KDE:</p>
@@ -177,7 +177,7 @@ su-to-root -X -c &lt;Anwendung&gt;
 					<h2>sudo ist nicht standardmäßig konfiguriert</h2>
 							<p>sudo ist nicht aktiviert nach einer Installation, sondern steht nur im Live-Modus zur Verfügung, da kein Root-Passwort gesetzt ist. Der Grund ist: falls ein Angreifer das Nutzer-Passwort abgreift, hat er nicht Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.</p>
 
-							<p>Ein anderes Problem mit sudo ist, dass  eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von <span class="highlight-3"><a href="#sux">sux</a>, kdesu, gksu oder su-to-root -X -c</span> wird empfohlen!</p>
+							<p>Ein anderes Problem mit sudo ist, dass  eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von <span class="highlight-3"><a href="#suxterm">suxterm</a>, kdesu, gksu oder su-to-root -X -c</span> wird empfohlen!</p>
 
 					  <h2>Arbeit als root</h2>
 							<p class="highlight-2">Achtung: Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, <b>was</b> man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.</p>
@@ -239,14 +239,14 @@ $ man apropos
 ./name_des_skripts
 </pre>
 
-							<p class="highlight-3">Einige Skripte benötigen root-Zugang (sux), abhängig vom Aufgabenbereich des Skripts.</p>
+							<p class="highlight-3">Einige Skripte benötigen root-Zugang (suxterm), abhängig vom Aufgabenbereich des Skripts.</p>
 
 			<h5>Installation und Ausführung von Skripten</h5>
-   							<p>Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, <span class="highlight-3">zum Beispiel nach /usr/local/bin</span>. Zum Kopieren und Einfügen in der Konsole kann auch die Maus benutzt werden, nachdem man mit <span class="highlight-3">sux</span> Root-Rechte erlangt hat.</p>
+   							<p>Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, <span class="highlight-3">zum Beispiel nach /usr/local/bin</span>. Zum Kopieren und Einfügen in der Konsole kann auch die Maus benutzt werden, nachdem man mit <span class="highlight-3">suxterm</span> Root-Rechte erlangt hat.</p>
 
-					<h6>Hier ein Beispiel, wie man wget mit <span class="highlight-3">root-Rechten (sux)</span> ausführt:</h6>
+					<h6>Hier ein Beispiel, wie man wget mit <span class="highlight-3">root-Rechten (suxterm)</span> ausführt:</h6>
 <pre>
-sux
+suxterm
 cd /usr/local/bin
 wget script-name
 </pre>

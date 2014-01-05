@@ -23,7 +23,7 @@
 		<h2 id="top-header">Partitionieren der Festplatte mit Gparted/KDE Partition Manager</h2>
 			<h5><span class="highlight-2">Bitte BEACHTEN: bezüglich der Benennung von Speichergeräten </span><a href="part-uuid-de.htm#uuid">bitte das Kapitel zu UUID, Partitionsbezeichnung und fstab zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.</a></h5>
 
-			<h5>Partitionierungsprogramme benötigen Rootrechte. Man startet sie in einer Konsole nach Eingabe von <span class="highlight-3">sux</span> und dem Rootpasswort. Auf einem Live-System ist kein Rootpasswort gesetzt, nach <span class="highlight-3">sux</span> drückt man die Eingabetaste "Enter". Siehe auch: <a href="live-mode-de.htm#rootpw" >Live-CD-Modus</a></h5>
+			<h5>Partitionierungsprogramme benötigen Rootrechte. Man startet sie in einer Konsole nach Eingabe von <span class="highlight-3">suxterm</span> und dem Rootpasswort. Auf einem Live-System ist kein Rootpasswort gesetzt, nach <span class="highlight-3">suxterm</span> drückt man die Eingabetaste "Enter". Siehe auch: <a href="live-mode-de.htm#rootpw" >Live-CD-Modus</a></h5>
 
 	<div class="spacer02"></div>
 							<p class="warning-box">Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen <b>sofortigen</b> Reboot, vorher dürfen <b>keine weiteren Änderungen</b> an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.<a href="part-gparted-de.htm#ntfs"> Bitte lese hier weiter.</a></p>
@@ -40,12 +40,12 @@
 
 						  <h3>KDE Partition Manager - in einem Terminal:</h3>
 <pre>
-sux
+suxterm
 partitionmanager
 </pre>
 						  <h3>Gparted - in einem Terminal:</h3>
 <pre>
-sux
+suxterm
 gparted
 </pre>
 
@@ -153,7 +153,7 @@ gparted
 							<p class="highlight-2"><b>Achtung</b>: Obwohl der Treiber ntfs-3g nun für stabil erklärt ist, empfehlen wir keine Benutzung ohne vorher die Daten zu sichern, vor allem nicht auf Arbeitsplattformen! Die Benutzung erfolgt auf eigene Gefahr, da ein Datenverlust nicht gänzlich ausgeschlossen werden kann!</p>
 
 							<p>In eine Konsole Folgendes eingegeben (<i>siehe das Kapitel <a href="part-cfdisk-de.htm#disknames" >Partitionieren der Festplatte</a>, wie die UUIDs der verschiedenen Partitionen ermittelt werden!)</i>:</p>
-<pre >sux
+<pre >suxterm
 apt-get update &amp;&amp; apt-get install ntfs-3g
 umount /media/xdxx
 mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
