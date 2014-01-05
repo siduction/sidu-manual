@@ -1,3 +1,9 @@
+sidu-manual (2014.01.05) unstable; urgency=medium
+
+  * manual menufile reworked
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 05 Jan 2014 13:32:40 +0100
+
 sidu-manual (2013.12.31.2) unstable; urgency=low
 
   * help de+en updated
@@ -31,7 +37,7 @@ sidu-manual (2013.12.22) unstable; urgency=medium
   * moved releasenotes to attic, leave only en in place
   * rebuild search dbs
 
- -- Alf Gaida <agaida@siduction.org> Sun, 22 Dec 2013 17:03:47 +0100
+ -- Alf Gaida <agaida@siduction.org>  Sun, 22 Dec 2013 17:03:47 +0100
 
 sidu-manual (2013.12.15.3) UNRELEASED; urgency=medium
 
