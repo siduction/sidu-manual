@@ -79,7 +79,7 @@ touch /etc/X11/xorg.conf.d/20-nvidia.conf
 <pre>
 #
 Section "Device"
-         Identifier      "Device 0"
+         Identifier      "Device0"
          Driver          "nvidia"
 EndSection
 # Acesta este doar un fragment necesar din fișier și deci linia "End Section" nu este ultima
@@ -103,33 +103,23 @@ BusID		 "PCI:1:0:0"
 					<h5>Pentru driverele 3D nvidia &ge; GeForce 6xxx:</h5>
 
 							<p>Pregătiți modulul:</p>
-<pre>
-apt-get install nvidia-kernel-source nvidia-kernel-common nvidia-kernel-dkms
-</pre>
 
 <pre>
-apt-get install nvidia-glx
+apt-get install nvidia-driver
 </pre>	
 
 							<p>Reboot-ați PC-ul pentru ca instalarea modulului să fie efectuată.</p>
 
-							<p>La actualizarea <i>'xorg'</i> trebuie doar să reinstalați <i>'nvidia-glx'</i>:</p>
+							<p>La actualizarea <i>'xorg'</i> trebuie doar să reinstalați <i>'nvidia-driver'</i>:</p>
 <pre>
-apt-get install --reinstall nvidia-glx
+apt-get install --reinstall nvidia-driver
 </pre>
-
-							<p>Când un nou driver nvidia devine disponibil în Debian sid prin <i>'apt'</i>:</p>
-<pre>
-m-a a-i nvidia-kernel-source
-apt-get install --reinstall nvidia-glx
-</pre>
-						      <p>Reboot-ați PC-ul ca instalarea modulului să aibă efect.</p>
 
 					      <h4>Formatul numelor pentru driverele legacy nvidia în Debian</h4>
 						  <ul>
-						      <li>nvidia-kernel-legacy-71xx este pentru GeForce 2</li>
 						      <li>nvidia-kernel-legacy-96xx este pentru GeForce 4</li>
 						      <li>nvidia-kernel-legacy-173xx este pentru GeForce 5</li>
+						      <li>nvidia-kernel-legacy-304xx este pentru GeForce 6</li>
 						  </ul>
 
 					<h5>Examplu de utilizare pentru drivere legacy 3d nvidia folosind &le; GeForce 5xxx :</h5>
@@ -137,12 +127,12 @@ apt-get install --reinstall nvidia-glx
 							<p>Pentru alte drivere legacy înlocuți doar numărul 173xx cu numărul driver-ului vostru.</p>
 
 <pre>
-m-a a-i nvidia-kernel-legacy-173xx-source &amp;&amp; apt-get install nvidia-glx-legacy-173xx nvidia-kernel-legacy-173xx-dkms
+apt-get install nvidia-legacy-173xx-driver
 </pre>
 
-					      <p>Când actualizați <i>xorg</i> trebuie doar să reinstalați <i>nvidia-glx-legacy</i>:</p>
+					      <p>Când actualizați <i>xorg</i> trebuie doar să reinstalați <i>nvidia-legacy</i>:</p>
 <pre>
-apt-get install --reinstall nvidia-glx-legacy-173xx
+apt-get install --reinstall nvidia-legacy-1733xx-driver (sau versiunea potrivita)
 </pre>
 					<h4>Eșercul încărcării Modulului</h4>
 
@@ -154,7 +144,7 @@ modprobe nvidia
 
 
       </div>
-	<div id="rev">Content last revised 30/11/2012 1200 UTC  </div>
+	<div id="rev">Content last revised 16/01/2014 16:33 UTC  </div>
 </div>
 </div>
 </body>
