@@ -1,8 +1,12 @@
-sidu-manual (2014.01.16) UNRELEASED; urgency=medium
+sidu-manual (2014.01.17) UNRELEASED; urgency=medium
 
+  [ Ovidiu Angelescu ]
   * romanian translation fix for #1396 gpu_ro.html
 
- -- Ovidiu Angelescu <convbsd@siduction.org>  Sun, 16 Jan 2014 16:41:40 +0300
+  [ Ferdinand Thommes ]
+  * release notes adapted
+
+ -- Ferdinand Thommes <devil@siduction.org>  Sun, 26 Jan 2014 19:41:57 +0100
 
 sidu-manual (2014.01.05) unstable; urgency=medium
 
