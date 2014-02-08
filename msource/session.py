@@ -5,6 +5,7 @@ Created on 03.02.2013
 '''
 import os, re, codecs
 from webbasic.sessionbase import SessionBase
+from webbasic.wikimediaconverter import MediaWikiConverter
 
 from util.util import Util
 
@@ -32,11 +33,19 @@ class Session(SessionBase):
         '''
         if language == None:
             language = self._language
-        fn = (self._homeDir + 'data/' + language + '/' + name + '_'
-            + language + '.htm')
-        if not os.path.exists(fn) and language != 'en':
-            fn = (self._homeDir + 'data/en/' + name + '_en.htm')
-        return fn
+        fn = "{:s}data/{:s}/{:s}_{:s}".format(self._homeDir, language, name,
+                language)
+        fn2 = fn + ".htm"
+        exists = os.path.exists(fn2)
+        if not exists:
+            fn2 = fn + ".txt"
+            exists = os.path.exists(fn2)
+        if not exists and language != 'en':
+            fn = self._homeDir + 'data/en/' + name + '_en'
+            fn2 = fn + ".htm"
+            if not exists(fn2):
+                fn2 =fn + ".txt"
+        return fn2
 
     def translateInternalRefs(self, line):
         '''Change all internal links in a given line.
@@ -96,6 +105,17 @@ class Session(SessionBase):
         rc = Util.readFileAsString(fn)
         return rc
 
+    def processWiki(self, name):
+        '''Returns a wiki page converted into HTML.
+        @param name:    the file containing the wiki text
+        @return:        "": file not readable
+                        otherwise: the wiki page convertet into HTML
+        '''
+        content = self.readFile(name)
+        if content.startswith("mediawiki"):
+            converter = MediaWikiConverter()
+            content = converter.convert(content)
+        return content
     def buildStaticPage(self, page, menuBody):
         '''Builds a page from a given HTML body.
         @param page: the name of the page: defines the
@@ -103,7 +123,10 @@ class Session(SessionBase):
         @return: the HTML code of the page
         '''
         fn = self.getNameOfStaticFile(page)
-        content = self.getBodyOfStatic(fn)
+        if fn.endswith(".htm"):
+            content = self.getBodyOfStatic(fn)
+        else:
+            content = self.processWiki(fn)
         params = {'content': content,
             'LANGUAGE' : 'de',
             'txt_title' : 'sidu-help',

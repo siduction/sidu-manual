@@ -1,0 +1,181 @@
+mediawiki
+== Notes for Authors ==
+
+=== The Syntax of the Articles===
+Articles can be written in HTML or in wiki syntax.
+The syntax is the same as used in WikiMedia (the engine behind Wikipedia)
+
+Articles writen in HTML must have the file extension .htm, Wiki articles have .txt.
+
+Wiki articles starts with the key word "mediawiki".
+
+=== The implemented Features ===
+
+We use examples to describe the features:
+
+==== Tags Inside a Paragraph ====
+
+'''Wiki''':
+ Concurrent non empty lines will be 
+ collected to one paragraph.
+
+ An empty line starts a new paragraph
+
+'''Result''':
+
+Concurrent non empty lines will be 
+collected to one paragraph.
+
+An empty line starts a new paragraph
+
+==== Tags Inside a Paragraph ====
+
+'''Wiki''':
+
+ <nowiki>
+ '''fat''' and ''italic'' can be combined: '''''fat and italic'''''
+ <span style="color:red">red</span>, <tt>fix width font</tt>, <small>small</small>
+ <strike>strike</strike>, <ins>ins</ins> and <del>del</del> are more rare.
+ Note:<br /> makes a newline, <code>code is possible too</code>
+ <blockquote>A block can be quoted,
+ </blockquote>
+ <nowiki>disables the wiki features</nowiki >
+ <pre> disables the automatic wrapping:
+ Newlines will be respected.</pre> 
+ </nowiki>
+
+ An empty line starts a new paragraph
+
+'''Result''':
+
+'''fat''' and ''italic'' can be combined: '''''fat and italic'''''
+
+<span style="color:red">red</span>, <tt>fix width font</tt>, <small>small</small>
+
+<strike>strike</strike>, <ins>ins</ins> and <del>del</del> are more rare.
+
+<blockquote>a blockquote is possible</blockquote>
+
+Note:<br /> makes a newline, <code>code is possible too</code>
+
+<<nowiki/>nowiki>disables the wiki features</nowiki >
+
+<pre> disables the automatic wrapping:
+Newlines will be respected.</pre> 
+
+==== Line blocks ====
+
+Lineblocks are defined by the first character(s) in the line:
+
+=====Headlines=====
+
+'''Wiki''':
+
+ ==Title==
+ ===Another title===
+ ====The third title====
+ starts  headlines of different levels. Please don't use level 1: This is reserved for the page title. 
+ 
+'''Result''':
+
+==Title==
+===Another title===
+====The third title====
+
+=====Lists=====
+'''Wiki''':
+
+ * unordered lists starts with '*'
+ ** 2nd level
+ * 1st level to
+ # unordered lists starts with '#'
+ ## 2nd level
+ # 1st level to
+ #* You can mix ordered and unordered lists
+ #*# really!
+ 
+'''Result''':
+
+* unordered lists starts with '*'
+** 2nd level
+* 1st level to
+# unordered lists starts with '#'
+## 2nd level
+# 1st level to
+#* You can mix ordered and unordered lists
+#*# really!
+
+=====Indention=====
+'''Wiki''':
+
+ : a paragraph can be indented by a starting colon
+ :: 2nd level
+ : 1st level too
+ 
+'''Result''':
+
+: a paragraph can be indented by a starting colon
+:: 2nd level
+: 1st level too
+
+=====Preformatted Text=====
+'''Wiki''':
+
+ lines starting with a blank are preformatted lines.
+ These lines have no wrapping,
+ the newline will be respected.
+ It is good for code.
+ 
+'''Result''':
+
+ lines starting with a blank are preformatted lines.
+ These lines have no wrapping,
+ the newline will be respected.
+ It is good for code.
+
+=====Table=====
+'''Wiki''':
+
+ {|
+ !Date|Name
+ |-
+ !2013.12.23||December
+ |-
+ |Unknown||Unknown
+ |}
+ 
+can be written in second way:
+
+ {|
+ !Date
+ !Name
+ |-
+ !2013.12.23
+ |December
+ |-
+ |Unknown
+ |Unknown
+ |}
+
+'''Result''':
+
+{|
+!Date|Name
+|-
+!2013.12.23||December
+|-
+|Unknown||Unknown
+|}
+
+{|
+!Date
+!Name
+|-
+!2013.12.23
+|December
+|-
+|Unknown
+|Unknown
+|}
+
+

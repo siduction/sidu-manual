@@ -18,7 +18,7 @@ Package: sidu-manual
 Architecture: all
 Pre-Depends:
  pyygle (>=2013.12.03),
- sidu-base(>= 2013.12.03),
+ sidu-base(>= 2014.02.08),
 Depends:
  ${misc:Depends},
  sidu-manual-data,
