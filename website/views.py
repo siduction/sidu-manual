@@ -3,12 +3,12 @@ from django.http import HttpResponse, HttpResponsePermanentRedirect
 from msource.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets
-from webbasic.pagedata import PageData
 from msource.searchpage import SearchPage
 from msource.languagepage import LanguagePage
 from msource.globalpage import GlobalPage
 from msource.checkpage import CheckPage
 from msource.expertpage import ExpertPage
+from util.util import Util
 
 def getSession(request):
     homeDir = request.documentRoot if hasattr(request, "documentRoot") else None
@@ -44,12 +44,13 @@ def handlePage(page, request, session):
         rc = HttpResponse(pageResult._body)
     else:
         url = pageResult._url
-        session.trace('redirect to {:s} [{:s}]'.format(url, pageResult._caller))
+        session.trace(u'redirect to {:s} [{:s}]'.format(
+            Util.toUnicode(url), pageResult._caller))
         absUrl = session.buildAbsUrl(url)
         rc = HttpResponsePermanentRedirect(absUrl)
     cookies = request.COOKIES
     for cookie in cookies:
-        rc.set_cookie(cookie, session.unicodeToAscii(cookies[cookie]))
+        rc.set_cookie(cookie, session.toUnicode(cookies[cookie]))
     return rc
     
 def index(request):

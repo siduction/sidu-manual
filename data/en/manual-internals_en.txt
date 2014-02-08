@@ -5,9 +5,9 @@ mediawiki
 Articles can be written in HTML or in wiki syntax.
 The syntax is the same as used in WikiMedia (the engine behind Wikipedia)
 
-Articles writen in HTML must have the file extension .htm, Wiki articles have .txt.
+Articles written in HTML must have the file extension .htm, Wiki articles have .txt.
 
-Wiki articles starts with the key word "mediawiki".
+Wiki articles start with the key word "mediawiki".
 
 === The implemented Features ===
 
@@ -34,7 +34,8 @@ An empty line starts a new paragraph
 
  <nowiki>
  '''fat''' and ''italic'' can be combined: '''''fat and italic'''''
- <span style="color:red">red</span>, <tt>fix width font</tt>, <small>small</small>
+ <span style="color:red">red</span>, <tt>fix width font</tt>
+ <small>small <big>big</big> should be used only inside small</small>
  <strike>strike</strike>, <ins>ins</ins> and <del>del</del> are more rare.
  Note:<br /> makes a newline, <code>code is possible too</code>
  <blockquote>A block can be quoted,
@@ -42,6 +43,8 @@ An empty line starts a new paragraph
  <nowiki>disables the wiki features</nowiki >
  <pre> disables the automatic wrapping:
  Newlines will be respected.</pre> 
+ <pre class="myclass" style="border: solid red 1px;">A class and/or 
+ a style can be defined with pre</pre>
  </nowiki>
 
  An empty line starts a new paragraph
@@ -50,7 +53,9 @@ An empty line starts a new paragraph
 
 '''fat''' and ''italic'' can be combined: '''''fat and italic'''''
 
-<span style="color:red">red</span>, <tt>fix width font</tt>, <small>small</small>
+<span style="color:red">red</span>, <tt>fix width font</tt>, 
+
+<small>small <big>big</big> should be used only inside small</small>.
 
 <strike>strike</strike>, <ins>ins</ins> and <del>del</del> are more rare.
 
@@ -63,6 +68,9 @@ Note:<br /> makes a newline, <code>code is possible too</code>
 <pre> disables the automatic wrapping:
 Newlines will be respected.</pre> 
 
+<pre class="myclass" style="border: solid red 1px;">A class and/or a style can be defined 
+with pre</pre>
+
 ==== Line blocks ====
 
 Lineblocks are defined by the first character(s) in the line:
@@ -74,8 +82,9 @@ Lineblocks are defined by the first character(s) in the line:
  ==Title==
  ===Another title===
  ====The third title====
- starts  headlines of different levels. Please don't use level 1: This is reserved for the page title. 
- 
+ starts  headlines of different levels. 
+Please don't use level 1: This is reserved for the page title. 
+
 '''Result''':
 
 ==Title==
@@ -85,10 +94,10 @@ Lineblocks are defined by the first character(s) in the line:
 =====Lists=====
 '''Wiki''':
 
- * unordered lists starts with '*'
+ * unordered lists start with '*'
  ** 2nd level
  * 1st level to
- # unordered lists starts with '#'
+ # unordered lists start with '#'
  ## 2nd level
  # 1st level to
  #* You can mix ordered and unordered lists
@@ -96,24 +105,26 @@ Lineblocks are defined by the first character(s) in the line:
  
 '''Result''':
 
-* unordered lists starts with '*'
+* unordered lists start with '*'
 ** 2nd level
 * 1st level to
-# unordered lists starts with '#'
+# unordered lists start with '#'
 ## 2nd level
 # 1st level to
 #* You can mix ordered and unordered lists
 #*# really!
 
-=====Indention=====
+=====Indenting=====
 '''Wiki''':
 
+ Normal text.
  : a paragraph can be indented by a starting colon
  :: 2nd level
  : 1st level too
  
 '''Result''':
 
+Normal text.
 : a paragraph can be indented by a starting colon
 :: 2nd level
 : 1st level too
@@ -162,20 +173,38 @@ can be written in second way:
 {|
 !Date|Name
 |-
-!2013.12.23||December
+|2013.12.23||December
 |-
 |Unknown||Unknown
 |}
+
+2nd version:
 
 {|
 !Date
 !Name
 |-
-!2013.12.23
+|2013.12.23
 |December
 |-
 |Unknown
 |Unknown
 |}
 
+=====Links=====
 
+'''Wiki''':
+
+ <nowiki>
+ Each URL is automatically a link: http://siduction.org
+ But you can choose another text: [http://siduction.org Siduction]
+ It is easy to insert a picture: http:static/logos/siduction_donate_75.png
+ </nowiki>
+
+'''Result''':
+
+Each URL is automatically a link: http://siduction.org
+
+But you can choose another text: [http://siduction.org Siduction]
+
+It is easy to insert a picture: http:static/logos/siduction_donate_75.png

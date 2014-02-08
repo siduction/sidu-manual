@@ -2,8 +2,8 @@
 /.settings
 /sqlite.db
 /*~
-/.directory
-/.coverage
+.directory
+.coverage
 /Makefile
 
 ## don't track build crap

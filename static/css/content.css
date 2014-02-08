@@ -374,7 +374,7 @@ pre {
 dd {
     padding:0 5px;
     margin:0;
-    text-align:center;
+    margin-left: 1em;
 }
 
 dt {
