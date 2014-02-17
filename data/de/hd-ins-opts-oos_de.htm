@@ -78,36 +78,9 @@ dd if=/home/username/siduction-11.1-onestepbeyond.iso of=/dev/sdf
 	<div class="divider" id="raw-ms">
 			    <h3>MS Windows&#8482;</h3>
 
-							<p>Das Vorgehen ist einfach. Installiere das Programm <a href="http://shounen.ru/soft/flashnul/">flashnul</a> (Link zur <a href="http://shounen.ru/soft/flashnul/#download">Download-Seite</a>).</p>
+							<p>Das Vorgehen ist einfach. Lade das kleine Tool <a href="http://sourceforge.net/p/usbwriter/wiki/Documentation/">USBWriter</a> herunter. Es muss nicht installiert werden. Nach dem Start des Werkzeugs beispielsweise vom Desktop aus muss lediglich das gewünschte ISO-Image sowie der USB-Stick ausgewählt werden. Hierbei ist große Aufmerksamkeit erforderlich, denn der Vorgang löscht alle Daten auf dem Device. Wird also das falsche Device gewählt, sind die Daten darauf verloren, sobald der <i>WRITE</i>-Button gedrückt wurde. In wenigen Minuten schreibt das Werkzeug das Image bootfähig auf das Gerät.</p>
 
-							<p>Merke Dir den genauen Namen von 'flashnul'. Nach dem Auspacken kann das Verzeichnis einen Namen flashnul-x.x haben (zum Beispiel: 'flashnul-1rc1.zip' wurde gespeichert, ausgepackt und in ein Verzeichnis flashnul-1rc1 installiert, das nochmal ein Verzeichnis flashnul-1rc1 enthält. In letzterem ist dann das ausführbare Programm mit den dazugehörigen Dateien. Auf diese Weise wird es im folgenden Beispiel verwendet).</p>
-
-							<p>Man steckt den Stick oder die Karte an.</p>
-
-							<p>Falls Du nach der Installation von flashnul nicht sicher sind, wohin der USB-Stick eingebunden wurde, führe den Befehl 'flashnul -p' aus, indem Du im Menü auf <span class="highlight-3">run</span> klicken und <span class="highlight-3">cmd</span> eingeben, um den Terminal zu starten. Danach wechselt man in das Programmverzeichnis von flashnul. In unserem Falle:</p>
-<pre>
-cd C:\Program Files\flashnul-1rc1\flashnul-1rc1\
-flashnul -p
-</pre>
-							<p>Die Ausgabe wird in etwa so aussehen:</p>
-<pre>
-Available physical drives:
-0       size = 60022480896 (55 Gb))
-1       size = 2003828736 (1911 Mb)
-</pre>
-							<p>Die gespeicherte ISO <span class="highlight-3">siduction-11.1-OneStepBeyond--i386-2011xxxxx</span> (umbenannt zu <span class="highlight-3">siduction-11.1-onestepbeyond.iso</span>) wird in das Programmverzeichnis von flashnul-1rc1 kopiert oder verschoben.</p>
-
-							<p>In unserem Beispiel zeigt die Ausgabe von 'flashnul -p' das USB-Gerät unter <span class="highlight-2">1</span>eingebunden. Somit wird - mit Administrator-Rechten - folgender Befehl eingegeben und im Anschluss die ENTER-Taste gedrückt:</p>
-<pre>
-flashnul 1 -L siduction-11.1-onestepbeyond.iso
-</pre>
-
-							<p>Mit MS Win7 sollen die Laufwerksbuchstaben angegeben werden, z.B. die Laufwerke D: und c:\:</p>
-<pre>
-flashnul D: -L c:\flash\siduction-11.1-onestepbeyond.iso
-</pre>
-
-							<p>USB/SSD sollte automatisch erkannt werden und die Menü-Option <span class="highlight-3">F4</span> sollte <span class="highlight-3">Hard Disk</span> ausgeben, andernfalls sollte <span class="highlight-3">F4 &gt;Hard Drive</span> aufgerufen oder <span class="highlight-3">fromhd</span> der Bootmenü-Zeile beigefügt werden.</p>
+							
 	</div>
     	<div class="divider" id="raw-mac">
 				<h3>Mac OS X&#8482;</h3>
@@ -129,7 +102,7 @@ dd if=/Users/username/Downloads/siduction-11.1-onestepbeyond.iso of=/dev/disk1
 							<p>USB/SSD sollte automatisch erkannt werden und die Menü-Option <span class="highlight-3">F4</span> sollte <span class="highlight-3">Hard Disk</span> ausgeben, andernfalls sollte <span class="highlight-3">F4 &gt;Hard Drive</span> aufgerufen oder <span class="highlight-3">fromhd</span> der Bootmenü-Zeile beigefügt werden.</p>
 
 	</div>
-	<div id="rev">Page last revised 08/01/2012 1545 UTC</div>
+	<div id="rev">Page last revised 17/02/2014 2045 UTC</div>
 
 </div>
 </div>

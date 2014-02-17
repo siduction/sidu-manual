@@ -1,3 +1,11 @@
+sidu-manual (2014.02.10) UNRELEASED; urgency=medium
+
+  * Exchanged flashnul (not available anymore) for USBWriter to dd
+    images to usb devices under Windows. Thanks to derBud for hinting to
+    that tool
+
+ -- Ferdinand Thommes <devil@siduction.org>  Mon, 17 Feb 2014 20:49:17 +0100
+
 sidu-manual (2014.02.09) unstable; urgency=medium
 
   * corrections in wiki syntax description

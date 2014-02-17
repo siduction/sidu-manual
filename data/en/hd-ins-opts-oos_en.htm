@@ -76,36 +76,7 @@ dd if=/home/username/siduction-11.1-onestepbeyond.iso of=/dev/sdf
 	<div class="divider" id="raw-ms">
 			    <h3>MS Windows&#8482; Systems</h3>
 
-							<p>This is fast and simple. Install a program called <a href="http://shounen.ru/soft/flashnul/">flashnul</a>, (<a href="http://shounen.ru/soft/flashnul/#download">download page</a>).</p>
-
-							<p>Note the name of 'flashnul' when you extract and install because it may show as a folder called flashnul-x.x, (for example, 'flashnul-1rc1.zip' downloaded, extracted and installed in Program Files has a folder called flashnul-1rc1, which will have a folder inside that one called flashnul-1rc1, which in turn, contains the flashnul program and associated files/folders and therefore will be used in throughout this example.)</p>
-
-							<p>Plug in your stick/card.</p>
-
-							<p>If you extracted and installed flashnul to Program Files and you are not sure of where the USB-Stick is mounted, study the output from 'flashnul -p' by clicking <span class="highlight-3">run</span> from the menu, then typing <span class="highlight-3">cmd</span> to bring up the terminal then change directories to the flashnul program folder that contains all individual files of the program, in this case:</p>
-<pre>
-cd C:\Program Files\flashnul-1rc1\flashnul-1rc1\
-flashnul -p
-</pre>
-							<p>The output should show something like:</p>
-<pre>
-Available physical drives:
-0       size = 60022480896 (55 Gb))
-1       size = 2003828736 (1911 Mb)
-</pre>
-							<p>Assuming an ISO called <span class="highlight-3">siduction-11.1-OneStepBeyond--i386-2011xxxxx</span> was downloaded, (you could rename it to <span class="highlight-3">siduction-11.1-onestepbeyond.iso</span>), cut and paste, (or copy it), to the flashnul-1rc1 folder that contains all individual files/folders of the program.</p>
-
-							<p>As the output example of 'flashnul -p'  showed the USB Device as being mounted on <span class="highlight-2">1</span>, type in the following and hit the enter key, (administrator privileges may be required):</p>
-<pre>
-flashnul 1 -L siduction-11.1-onestepbeyond.iso
-</pre>
-
-							<p>MS Win7 may need the actual drive letters specified, for example the D: and c:\ drives:</p>
-<pre>
-flashnul D: -L c:\flash\siduction-11.1-onestepbeyond.iso
-</pre>
-
-							<p>The USB/SSD should be recognised automatically and you should see the <span class="highlight-3">F4</span> menu option will say <span class="highlight-3">Hard Disk</span>, otherwise invoke <span class="highlight-3">F4 &gt;Hard Drive</span> or add <span class="highlight-3">fromhd</span> to the boot menu bootline.</p>
+							<p>This is fast and simple. Download the tool <a href="http://sourceforge.net/p/usbwriter/wiki/Documentation/">USBWriter</a>. It does not need to be installed, you can just start it from your desktop or your home. Select the image you want to write and the device to write it to (e.g. your usb pen) Be very careful when selecting the device, because the procedure deletes all data on the device. Selecting the wrong device or partition will lead to data loss! To start the process, just hit <i>WRITE</i>-Button. In a few minutes your image will be written to the device, ready for you to boot it.</p>
 	</div>
     	<div class="divider" id="raw-mac">
 				<h3>Mac OS X&#8482; Systems</h3>
