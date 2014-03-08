@@ -1,4 +1,13 @@
-sidu-manual (2014.02.10) UNRELEASED; urgency=medium
+sidu-manual (2014.03.07) unstable; urgency=medium
+
+  * systemd integration
+  * virtual host is now fix 127.0.0.86
+  * using sidu-control
+  * closes: #1492
+
+ -- J. Hamatoma <hama@siduction.net>  Sat, 08 Mar 2014 07:40:43 +0100
+
+sidu-manual (2014.02.10) unstable; urgency=medium
 
   * Exchanged flashnul (not available anymore) for USBWriter to dd
     images to usb devices under Windows. Thanks to derBud for hinting to

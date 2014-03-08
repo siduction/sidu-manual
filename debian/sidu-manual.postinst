@@ -2,6 +2,7 @@
 # postinst script for sidu-manual
 
 set -e
+PROJECT=sidu-manual
 
 function MkLink() {
     if [ ! -L $1 ] ; then
@@ -17,29 +18,29 @@ function MkLink2() {
 
 case "$1" in
     configure)
-        if [ -f /etc/skel/Desktop/sidu-manual.desktop ]; then
-            chmod 755 /etc/skel/Desktop/sidu-manual.desktop
+        if [ -f /etc/skel/Desktop/$PROJECT.desktop ]; then
+            chmod 755 /etc/skel/Desktop/$PROJECT.desktop
         fi
-        if ! grep -q "sidu-manual" /etc/hosts ; then
+        
+        # create/adapt virtual host:
+        if grep -q "$PROJECT" /etc/hosts ; then
+        	perl -pi -e "s/^.*$PROJECT.*/127.0.0.86 $PROJECT/;" /etc/hosts
+        else
             # if the last newline is missing:
-            echo "" >>/etc/hosts
-            ADDR=86
-            while grep -q "127.0.0.$ADDR" /etc/hosts ; do
-                ADDR=$(expr $ADDR + 1)
-            done
-            echo "127.0.0.$ADDR sidu-manual" >>/etc/hosts
-            echo "virtual host installed: sidu-manual ($ADDR)"
+            tail -n1 /etc/hosts | hd | grep -q "0a" || echo "" >>/etc/hosts
+            echo "127.0.0.86 $PROJECT" >>/etc/hosts
+            echo "virtual host installed: $PROJECT (127.0.0.86)"
         fi
 
         # Create the links from the toolkit:
-        pushd /usr/share/sidu-manual >/dev/null
+        pushd /usr/share/$PROJECT >/dev/null
         SRC=../sidu-base
 
         # Create the links to the shellserver:
         SRC_INI=/usr/share/sidu-base/backend
         cd $SRC_INI
-        SRC=../../sidu-manual/backend
-        MkLink2 /var/cache/sidu-base/public /usr/share/sidu-manual
+        SRC=../../$PROJECT/backend
+        MkLink2 /var/cache/sidu-base/public /usr/share/$PROJECT
 
         popd >/dev/null
     ;;

@@ -7,6 +7,7 @@ Uploaders: Alf Gaida <agaida@siduction.org>,
  Ferdinand Thommes <devil@siduction.org>,
  Ovidiu Angelescu <convbsd@siduction.net>, 
 Build-Depends: debhelper (>= 9),
+ dh-systemd,
  inkscape,
  imagemagick,
 Standards-Version: 3.9.5
@@ -18,7 +19,8 @@ Package: sidu-manual
 Architecture: all
 Pre-Depends:
  pyygle (>=2013.12.03),
- sidu-base(>= 2014.02.08),
+ sidu-base(>= 2014.03.07),
+ pywwetha (>= 2014.03.07)
 Depends:
  ${misc:Depends},
  sidu-manual-data,

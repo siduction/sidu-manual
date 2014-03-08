@@ -5,7 +5,7 @@
 export DH_VERBOSE=1
 
 %: 
-	dh $@ 
+	dh $@ --with systemd
 
 override_dh_auto_build:
 	# create XDG compatible icons from SVG
@@ -23,4 +23,5 @@ override_dh_auto_build:
 override_dh_auto_clean:
 	rm -rf icons/pixmaps
 	rm -rf icons/hicolor
+	find . -name \*.pyc | xargs rm -f
 	dh_auto_clean
