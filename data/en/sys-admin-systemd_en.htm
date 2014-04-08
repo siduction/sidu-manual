@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>siduction Manuals - Systemd</title>
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+        <style type="text/css" media="all">@import url("../css/menu.css");</style>
+        <style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+        <script type="text/javascript" src="../js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
+        <![endif]-->
+</head>
+<body	class="body-main">
+<div>
+<div id="main-page">
+	<div class="divider" id="systemd">
+			<h2 id="top-header">Systemd: system and service manager</h2>
+			<p><span class="highlight-3">Systemd is a system and service manager, that with it's init component competes with the weathered sysvinit and Ubuntu's upstart. It is developed mainly by Red Hat developers Lennart Poettering and Kay Sievers. Debian will use systemd as standard with the release of Debian 8 "Jessie", Ubuntu will give up upstart and also use systemd. Since the release of 2013.2 "December" siduction already ships systemd as our default init system and for different administration tasks.</span></p>
+<div class="spacer01"></div>
+			<p>If you are using an older version of siduction than 2013.2 "December" and would like to update to systemd, this is not complicated or error prone at all, it is a straight forward process of installing a few packages, setting some rights and letting the system know that you would like to boot with systemd from now on.</p>
+			<h3>Installing and setting up systemd</h3>
+			<p>Lets start with installing the needed packages:</p>
+			<pre>
+# apt update && apt install systemd libpam-systemd systemd-ui
+</pre>
+<p>It may happen that, because sysvinit is tagged as an  essential package, that you have to confirm the following warning</p>
+<pre>WARNING: The following essential packages will be removed: sysvinit
+This should NOT be done unless you know exactly what you are doing!
+You are about to do something potentially harmful.
+To continue type in the phrase 'Yes, do as I say!'</pre>
+<p>To answer that correctly, you need to type exactly that:</p>
+<pre>Yes, do as I say!</pre>
+<p>Now, if you like, you can install a fallback solution to be able to start your computer, should systemd refuse to boot:</p>
+<pre># cp -av /sbin/init /sbin/init.sysvinit</pre>
+<p>With this safety net you can always switch back to sysvinit ba adding to the kernel commandline at boot:</p>
+<pre>init=/sbin/init.sysvinit</pre>
+<p>Now you need to install one more package that will warrant compatibility to sysvinit for now, meaning you can choose if you want to use systemd's new commands or the ones you are used to:</p>
+<pre># apt install systemd-sysv</pre>
+</br>
+<p>To test systemd before switching to it by default, you can add the following boot parameter to the kernel commandline, when booting:</p>
+<pre>init=/lib/systemd/systemd
+</pre>
+<p>After a reboot you can check if systemd runs as PID 1 by:</p>
+<pre>ps -p 1
+</pre>
+<p>Your output should look something like:</p>
+<pre> 1 ?        00:00:07 systemd</pre>
+
+<p>That means, systemd is runnig as your first process, the init, that starts everything else.</p>
+</br>
+<p>If everything works ok, you can make the settings permanent. To use systemd as your init system permanently, you need to edit <span class="highlight-3">/etc/default/grub</span></p>
+<p>In the second paragraph you find a line like:</p>
+<pre>GRUB_CMDLINE_LINUX_DEFAULT="quiet"</pre>
+<p>Edit the line to make it look like:</p>
+<pre>GRUB_CMDLINE_LINUX_DEFAULT="quiet init=/lib/systemd/systemd"
+</pre>
+<p>To make the changes known to GRUB, you need to run:</p>
+<pre># update grub</pre>
+<p>Another reboot and check for PID 1 should show systemd as init. The initial install and testing is done now. Lets look at some things that systemd does better than sysvinit or that sysvinit does not do at all since it is a pure init handling service.</p>
+</br>
+<h3>Setting up the journal</h3>
+<p>First of all, and already in a good working state is the <i>journal</i>. It is a substitute for the trusty and rusty old <i>rsyslog</i>. Journal does a few things better than <i>rsyslog</i>. The biggest gain is, that it starts logging a lot earlier in the boot process than <i>rsyslog</i>. That is possible because it drafts from the kernels logging system <i>kmesg</i>. Besides that, the options to query the journal are superiour to the old ways. So you can either remove <i>rsyslog</i> now or later. The journal can also be read and queried as a simple user, no root needed. For that you have to add your user to a new group and grant the appropriate rights.</p>
+<p>First you set up the new group:</p>
+<pre># addgroup --system systemd-journal</pre>
+<p>Then you create a directory for the journal, as debian does not do that for you yet:</p>
+<pre># mkdir -p /var/log/journal</pre>
+<p>Now you set the ownership of that directory:</p>
+<pre># chown root:systemd-journal /var/log/journal</pre>
+<p>You just need to add  your user to the new group now and be done with it:</p>
+<pre># gpasswd -a $user systemd-journal</pre>
+<p>You need to substitute your actual user with $user</p>
+</br>
+<h3>Mastering journactl</h3>
+<p>Now you can access the journal as user. Lets see how that is done:</p>
+<ul>
+	<li>journalctl --all - gives you the full journal of the system and all users</li>
+	<li>journalctl -b – shows the protocol of the last boot</li>
+	<li>journalctl -b -p err  - limits it to the last boot and limits it to priority ERROR</li>
+	<li>journalctl --since=yesterday - since Linux people normaly do not reboot much, this is limiting it more than -b</li>
+	<li>journalctl /dev/sda - shows all logs of the kernel device node /dev/sda</li>
+	<li>journalctl /usr/bin/dbus-daemon - shows all logs generated by the D-Bus executable</li>
+	<li>journalctl -k -b -1 - shows all kernel logs from previous boot (-1))</li>
+	<li>journalctl -f - gives you a live view of the journal as it grows (used to be tail -f /var/log/messages)</li>
+	
+</ul>
+</br>
+<p>Another fine feature is the tab completion of journalctl. If you enter journalctl and hit your [TAB] key, you will get a list of possible options  </p>
+<pre>devil@siductionbox:~$ journalctl 
+_AUDIT_LOGINUID=             COREDUMP_EXE=                _MACHINE_ID=                 _SOURCE_REALTIME_TIMESTAMP=  _TRANSPORT=
+_AUDIT_SESSION=              __CURSOR=                    MESSAGE=                     SYSLOG_FACILITY=             _UDEV_DEVLINK=
+_BOOT_ID=                    ERRNO=                       MESSAGE_ID=                  SYSLOG_IDENTIFIER=           _UDEV_DEVNODE=
+_CMDLINE=                    _EXE=                        __MONOTONIC_TIMESTAMP=       SYSLOG_PID=                  _UDEV_SYSNAME=
+CODE_FILE=                   _GID=                        _PID=                        _SYSTEMD_CGROUP=             _UID=
+CODE_FUNC=                   _HOSTNAME=                   PRIORITY=                    _SYSTEMD_OWNER_UID=          
+CODE_LINE=                   _KERNEL_DEVICE=              __REALTIME_TIMESTAMP=        _SYSTEMD_SESSION=            
+_COMM=                       _KERNEL_SUBSYSTEM=           _SELINUX_CONTEXT=            _SYSTEMD_UNIT=         </pre>
+</br>
+<p>Most of these are self explanatory. Lets pick a common one like COMM for command and see what we can do with it:</p>
+<p>journalctl _COMM= will list the available apps:</p>
+<pre>devil@siductionbox:~$ journalctl _COMM=
+acpid            chrome           gpasswd          kdm              mtp-probe        pkexec           sensors          systemd-fsck     udisks-daemon
+acpi-fakekey     console-kit-dae  gpm              keyboard-setup   mysql            polkitd          sh               systemd-hostnam  umount
+acpi-support     console-setup    groupadd         loadcpufreq      networking       pulseaudio       smartmontools    systemd-journal  uptimed
+alsactl          cpufrequtils     hddtemp          logger           nfs-common       pywwetha         smbd             systemd-logind   useradd
+anacron          cron             hdparm           login            nmbd             pywwetha.py      ssh              systemd-modules  usermod
+apache2          cups             hp               lvm              ntp              resolvconf       sshd             systemd-shutdow  vboxdrv
+backlighthelper  dbus-daemon      hpfax            lvm2             ntpd             rpcbind          su               systemd-udevd    VBoxExtPackHelp
+bash             ddclient         ifup             mbmon            ntpdate          rpc.statd        sudo             teamviewerd      vdr
+bluetoothd       docvert-convert  irqbalance       mdadm            ofono            samba-ad-dc      sysstat          udev-configure-  winbind
+chfn             glances          kbd              mdadm-raid       ofonod           saned            systemd          udisksd          
+</pre>
+</br>
+<p>Now we can specify what we want to look at. 
+<pre>$ journalctl _COMM=ntp</pre> could output something like: </p>
+<pre>-- Logs begin at Fr 2014-01-17 00:40:01 CET, end at Di 2014-04-08 11:58:36 CEST. --
+Jan 17 14:27:33 siductionbox ntp[1221]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 01 00:21:20 siductionbox ntp[1187]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 14 14:17:05 siductionbox ntp[1127]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 14 14:22:25 siductionbox ntp[1195]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 14 23:23:38 siductionbox ntp[3162]: Stopping NTP server: ntpd.
+^[[1;39m-- Reboot --
+Mär 27 15:15:11 siductionbox ntp[12735]: Stopping NTP server: ntpd.</pre>
+</br>
+<p>You can now further finegrain that down to hours, minutes and even seconds with e.g.: 
+<pre>journalctl _COMM=dbus-daemon --since=2014-04-06 --until="2014-04-07 23:59:59"</pre>which will yield something like:</p>
+<pre>...
+Apr 07 22:59:04 siductionbox org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: in handle_supported
+Apr 07 22:59:04 siductionbox org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: in handle_list
+Apr 07 22:59:04 siductionbox org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: in handle_supported
+Apr 07 22:59:04 siductionbox org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: in handle_list
+Apr 07 23:03:09 siductionbox org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+Apr 07 23:03:09 siductionbox org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+Apr 07 23:03:09 siductionbox org.gtk.Private.AfcVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+Apr 07 23:03:09 siductionbox org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+</pre>
+</br>
+<h3>Handling services with systemd</h3>
+One of systemd's main jobs is to start, stop or query services. This is done by the <span class="highlight-3">systemctl<span>-command
+<ul>
+	<li>systemctl --all - shows all units, including dead/empty ones</li>
+	<li>systemctl --t [NAME] - lists only units of a particular type</li>
+	<li>systemctl list-units - lists all units (where unit is the term for a job/service</li>
+	<li>systemctl start [NAME...] - starts (activate) one or more units</li>
+	<li>systemctl stop [NAME...] - stops (deactivates) one or more units</li>
+	<li>systemctl disable [NAME...] - disables one or more unit files</li>
+	<li>systemctl status [Name] - shows runtime status of one or more units</li>
+	<li>systemctl reboot – reboots the system</li>
+	<li>systemctl poweroff - powers down the system</li>
+</ul>
+<p>Systemctl can be also paired with grep to do things like:</p>
+<pre>systemctl list-unit-files |grep enabled</pre>
+</br>
+<h3>Switching between runlevels</h3>
+<p>Systemd has new commands for switching, what was until now called runlevels. The new term is <span class="highlight-3">targets</span></p>
+<ul>
+<li>systemctl isolate graphical.target - will take you to what you know as init 5</li>
+<li>systemctl isolate multi-user.target - will take you to what you know as init 3</li>
+</ul>
+
+<h3>Important: Using the commands you used before systemd</h3>
+<p>As long as systemd-sysv is installed, you can decide if you want to use the old commands you are used to or learn and use the new ones. You can also use a mix of both. This goes for as long as systemd-sysv exists. Most likely it will at least be around until the end of life for the upcoming Debian 8 "Jessie", which means at least 4-5 years.</p>
+
+<h3>Other systemd functionality</h3>
+<p>Sysmtemd offers some more functionality. One of them is <a href="http://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> as the successor to the unmaintained ConsoleKit. At the time of writing Debian does not use it yet, but soon enough systend will handle session and power management. From what we understand now, logind will be optional, but as ConsoleKit is unmaintained, we will most probably make use of it. Last but not least, let me introduce one of the power options systemd offers. With <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> one can quickly spawn a virtualised container for debugging and testing things. There is a lot more to it, so more in depth information is available from the main developer, Lennart Poettering, in his <a href="http://0pointer.de/blog/projects">blog</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
