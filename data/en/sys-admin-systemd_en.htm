@@ -38,7 +38,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <pre>Yes, do as I say!</pre>
 <p>Now, if you like, you can install a fallback solution to be able to start your computer, should systemd refuse to boot:</p>
 <pre># cp -av /sbin/init /sbin/init.sysvinit</pre>
-<p>With this safety net you can always switch back to sysvinit ba adding to the kernel commandline at boot:</p>
+<p>With this safety net you can always switch back to sysvinit by adding to the kernel commandline at boot:</p>
 <pre>init=/sbin/init.sysvinit</pre>
 <p>Now you need to install one more package that will warrant compatibility to sysvinit for now, meaning you can choose if you want to use systemd's new commands or the ones you are used to:</p>
 <pre># apt install systemd-sysv</pre>
@@ -52,7 +52,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <p>Your output should look something like:</p>
 <pre> 1 ?        00:00:07 systemd</pre>
 
-<p>That means, systemd is runnig as your first process, the init, that starts everything else.</p>
+<p>That means, systemd is running as your first process, the init, that starts everything else.</p>
 </br>
 <p>If everything works ok, you can make the settings permanent. To use systemd as your init system permanently, you need to edit <span class="highlight-3">/etc/default/grub</span></p>
 <p>In the second paragraph you find a line like:</p>
@@ -76,7 +76,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <pre># gpasswd -a $user systemd-journal</pre>
 <p>You need to substitute your actual user with $user</p>
 </br>
-<h3>Mastering journactl</h3>
+<h3>Mastering journalctl</h3>
 <p>Now you can access the journal as user. Lets see how that is done:</p>
 <ul>
 	<li>journalctl --all - gives you the full journal of the system and all users</li>
@@ -172,20 +172,5 @@ One of systemd's main jobs is to start, stop or query services. This is done by 
 
 <h3>Other systemd functionality</h3>
 <p>Sysmtemd offers some more functionality. One of them is <a href="http://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> as the successor to the unmaintained ConsoleKit. At the time of writing Debian does not use it yet, but soon enough systend will handle session and power management. From what we understand now, logind will be optional, but as ConsoleKit is unmaintained, we will most probably make use of it. Last but not least, let me introduce one of the power options systemd offers. With <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> one can quickly spawn a virtualised container for debugging and testing things. There is a lot more to it, so more in depth information is available from the main developer, Lennart Poettering, in his <a href="http://0pointer.de/blog/projects">blog</a></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
