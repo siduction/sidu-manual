@@ -1,5 +1,6 @@
 msource                 usr/share/sidu-manual
-sidu-manual             usr/share/sidu-manual
+manual                  usr/share/sidu-manual
+djinn					usr/share/sidu-manual
 sidu-manual.desktop   	usr/share/applications
 sidu-manual.desktop     etc/skel/Desktop/
 icons/sidu-manual.svg   usr/share/icons/hicolor/scalable/apps

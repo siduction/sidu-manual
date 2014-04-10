@@ -13,20 +13,21 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
-import os.path
+import os.path, sys
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sidu-manual.settings")
 
+cdir = os.getcwd()
+if not cdir in sys.path:
+	sys.path.insert(0, cdir)
+	
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 if os.path.exists('/usr/share/pyshared/django/core/handlers/wsgi.py'):
 	from django.core.handlers.wsgi import WSGIHandler
-        application = WSGIHandler()
+	appl = WSGIHandler()
 else:
-        from django.core.wsgi import get_wsgi_application
-	application = get_wsgi_application()
-
-# Apply WSGI middleware here.
-# from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
+    	from django.core.wsgi import get_wsgi_application
+	appl = get_wsgi_application()
+application = appl

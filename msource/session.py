@@ -43,8 +43,10 @@ class Session(SessionBase):
         if not exists and language != 'en':
             fn = self._homeDir + 'data/en/' + name + '_en'
             fn2 = fn + ".htm"
-            if not exists(fn2):
+            if not os.path.exists(fn2):
                 fn2 =fn + ".txt"
+            if not os.path.exists(fn2):
+                raise Exception("not found: " + " full: " + name + fn2)
         return fn2
 
     def translateInternalRefs(self, line):
@@ -116,6 +118,7 @@ class Session(SessionBase):
             converter = MediaWikiConverter()
             content = converter.convert(content)
         return content
+    
     def buildStaticPage(self, page, menuBody):
         '''Builds a page from a given HTML body.
         @param page: the name of the page: defines the

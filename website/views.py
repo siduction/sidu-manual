@@ -1,5 +1,7 @@
 # Create your views here.
-from django.http import HttpResponse, HttpResponsePermanentRedirect
+import os.path
+
+from djinn.django.http import HttpResponse, HttpResponsePermanentRedirect
 from msource.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets
@@ -93,6 +95,16 @@ def staticPage(request, page = None):
     rc = HttpResponse(body)
     return rc
 
+def staticFiles(request):
+    url = request.META["PATH_INFO"]
+    documentRoot = request.META["DOCUMENT_ROOT"]
+    fn = documentRoot + url
+    if not os.path.exists(fn):
+        rc = ["File not found: " + fn]
+    else:
+        rc = ["File found: " + fn]
+    return rc
+    
 def home(request):
     session = getSession(request)
     homePage = session.getConfigOrNoneWithoutLanguage('.home.page')

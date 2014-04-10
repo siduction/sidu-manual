@@ -1,3 +1,13 @@
+sidu-manual (2014.04.08) unstable; urgency=medium
+
+  * changes to make running sidu-manual-server under passenger
+  * new dirs: djinn passenger
+  * django includes moved to djinn/django
+  * djinn can return binary static files
+  * error handling: more exceptions with better texts
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 10 Apr 2014 21:55:29 +0200
+
 sidu-manual (2014.03.07) unstable; urgency=medium
 
   * systemd integration

@@ -1,3 +1,5 @@
-msource                 usr/share/sidu-manual
-sidu-manual             usr/share/sidu-manual
-website                 usr/share/sidu-manual
+msource            usr/share/sidu-manual
+manual             usr/share/sidu-manual
+djinn              usr/share/sidu-manual
+website            usr/share/sidu-manual
+passenger/passenger_wsgi.py usr/share/sidu-manual
