@@ -19,8 +19,7 @@ Package: sidu-manual
 Architecture: all
 Pre-Depends:
  pyygle (>=2013.12.03),
- sidu-base(>= 2014.03.07),
- pywwetha (>= 2014.03.07)
+ sidu-base(>= 2014.04.11),
 Depends:
  ${misc:Depends},
  sidu-manual-data,
@@ -37,7 +36,7 @@ Package: sidu-manual-server
 Architecture: all
 Pre-Depends:
  pyygle (>=2013.12.03),
- sidu-base(>= 2013.12.03),
+ sidu-base(>= 2014.04.11),
 Depends:
  ${misc:Depends},
  sidu-manual-data,
