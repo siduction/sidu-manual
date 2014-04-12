@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 sidu-manual (2014.04.08) unstable; urgency=medium
 
   * changes to make running sidu-manual-server under passenger
@@ -7,6 +8,14 @@ sidu-manual (2014.04.08) unstable; urgency=medium
   * error handling: more exceptions with better texts
 
  -- J. Hamatoma <hama@siduction.net>  Thu, 10 Apr 2014 21:55:29 +0200
+=======
+sidu-manual (2014.03.09) UNRELEASED; urgency=medium
+
+  * add EN-version of systemd page
+  * fix typos in systemd page
+
+ -- Ferdinand Thommes <devil@siduction.org>  Tue, 08 Apr 2014 22:59:10 +0200
+>>>>>>> 95bdcfc89a685ae7cdc21b2fca9fe7c62facd212
 
 sidu-manual (2014.03.07) unstable; urgency=medium
 
