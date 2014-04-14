@@ -1,7 +1,7 @@
 # Create your views here.
 import os.path
 
-from djinn.django.http import HttpResponse, HttpResponsePermanentRedirect
+from mdjinn.django.http import HttpResponse, HttpResponsePermanentRedirect
 from msource.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets

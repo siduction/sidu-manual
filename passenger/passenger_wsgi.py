@@ -37,6 +37,6 @@ import manual.settings
 
 from manual.urls import getPatterns
 urlpatterns = getPatterns()
-from djinn.wsgihandler import WSGIHandler
+from mdjinn.wsgihandler import WSGIHandler
 application = WSGIHandler(urlpatterns)
 #application = myAppl

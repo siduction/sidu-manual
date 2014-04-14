@@ -5,6 +5,7 @@ from website import views
 def getPatterns():
     rc = patterns('',
         url(r'^/?$', views.home, name='home'),
+        url(r'^/?home', views.home, name='home'),
         url(r'^/?!search', views.search, name='search'),
         url(r'^/?static', views.search, name='staticFiles'),
         url(r'^/?[_!]language.*', views.language, name='language'),

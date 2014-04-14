@@ -4,9 +4,9 @@ Created on 07.09.2013
 @author: hm
 '''
 
-import logging, os.path
-from djinn.django.http import HttpResponse, HttpResponsePermanentRedirect
-logger = logging.getLogger(__name__)
+import logging, os.path, importlib
+from mdjinn.django.http import HttpResponse, HttpResponsePermanentRedirect
+logger = logging.getLogger("pywwetha")
 
 def dumpObj(obj):
     '''Returns a string describing an object instance
@@ -44,9 +44,13 @@ class WSGIHandler(object):
     Web Server Gateway Interface (WSGI)
     '''
 
-    def __init__(self, urlPatterns):
+    def __init__(self, urlPatterns = None):
         '''Constructor.
         '''
+        if urlPatterns == None:
+            moduleName = os.environ["URL_MODULE"]
+            module = importlib.import_module(moduleName)
+            urlPatterns = module.getPatterns()
         if urlPatterns[0] == '':
             urlPatterns = urlPatterns[1:]
         self._urlPatterns = urlPatterns
@@ -61,8 +65,8 @@ class WSGIHandler(object):
                      otherwise: an UrlInfo instance
         '''
         rc = None
-        #if url.startswith("/"):
-        #    url = url[1:]
+        if url.startswith("/"):
+            url = url[1:]
         for item in self._urlPatterns:
             if item._regExpr.search(url):
                 rc = item
