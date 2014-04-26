@@ -1,3 +1,9 @@
+sidu-manual (2014.04.26) unstable; urgency=medium
+
+  *  changed desktopfile - Name: Manual, Name[de]=Handbuch 
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 26 Apr 2014 12:25:05 +0200
+
 sidu-manual (2014.04.13) unstable; urgency=medium
 
   * djinn corrections
