@@ -1,8 +1,8 @@
-sidu-manual (2014.08.25) UNRELEASED; urgency=medium
+sidu-manual (2014.09.04) unstable; urgency=medium
 
   *  removed deprecated gnome cheatcode in all languages 
 
- -- Angelescu Ovidiu <convbsd@siduction.org>  Mon, 25 Aug 2014 01:54:05 +0300
+ -- Angelescu Ovidiu <convbsd@siduction.org>  Thu, 04 Sep 2014 22:03:19 +0300
 
 sidu-manual (2014.04.26) unstable; urgency=medium
 
