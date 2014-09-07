@@ -3,8 +3,7 @@
 Type=Application
 Exec=sidu-manual-control start
 Icon=sidu-manual
-Name=sidu-manual
+Name=Manual
 Terminal=false
-GenericName=sidu-manual
-GenericName[de]=sidu-manual
+Name[de]=Handbuch
 Categories=System;

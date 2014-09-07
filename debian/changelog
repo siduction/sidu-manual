@@ -1,8 +1,14 @@
-sidu-manual (2014.04.15) unstable; urgency=medium
+sidu-manual (2014.09.04) unstable; urgency=medium
 
-  * new version number
+  *  removed deprecated gnome cheatcode in all languages 
 
- -- J. Hamatoma <hama@siduction.net>  Tue, 15 Apr 2014 18:15:09 +0200
+ -- Angelescu Ovidiu <convbsd@siduction.org>  Thu, 04 Sep 2014 22:03:19 +0300
+
+sidu-manual (2014.04.26) unstable; urgency=medium
+
+  *  changed desktopfile - Name: Manual, Name[de]=Handbuch 
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 26 Apr 2014 12:25:05 +0200
 
 sidu-manual (2014.04.13) unstable; urgency=medium
 
