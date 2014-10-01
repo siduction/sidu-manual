@@ -6,7 +6,7 @@ Created on 13.03.2013
 import operator
 
 from webbasic.page import Page
-from webbasic.configcheck import ConfigChecker
+from webbasic.configchecker import ConfigChecker
 from webbasic.menucheck import MenuChecker
 from webbasic.filecheck import FileChecker
 
