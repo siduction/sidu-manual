@@ -1,3 +1,9 @@
+sidu-manual (2014.10.11) unstable; urgency=medium
+
+  * add pywwetha pre-dependency, bump standards 3.9.6
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 11 Oct 2014 20:26:44 +0200
+
 sidu-manual (2014.10.01) unstable; urgency=medium
 
   * configcheck renamed to configchecker
