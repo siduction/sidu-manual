@@ -1,9 +1,15 @@
-sidu-manual (2014.10.22) UNRELEASED; urgency=medium
+sidu-manual (2014.11.02) unstable; urgency=medium
 
   * special djinn implementation removed. Using now pywwetha version
   * correct redirection to welcome
 
  -- J. Hamatoma <hama@siduction.net>  Thu, 23 Oct 2014 00:10:46 +0200
+
+sidu-manual (2014.10.11) unstable; urgency=medium
+
+  * add pywwetha pre-dependency, bump standards 3.9.6
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 11 Oct 2014 20:26:44 +0200
 
 sidu-manual (2014.10.01) unstable; urgency=medium
 
