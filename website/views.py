@@ -1,7 +1,7 @@
 # Create your views here.
 import os.path
 
-from mdjinn.django.http import HttpResponse, HttpResponsePermanentRedirect
+from djinn.django.http import HttpResponse, HttpResponsePermanentRedirect
 from msource.session import Session
 from webbasic.menu import Menu
 from webbasic.htmlsnippets import HTMLSnippets
@@ -57,10 +57,7 @@ def handlePage(page, request, session):
     
 def index(request):
     session = getSession(request)
-    homePage = session.getConfigOrNoneWithoutLanguage('.home.page')
-    if homePage == None:
-        homePage = 'welcome'
-    absUrl = session.buildAbsUrl(homePage)
+    absUrl = session.buildAbsUrl('/welcome')
     rc = HttpResponsePermanentRedirect(absUrl) 
     return rc
 
