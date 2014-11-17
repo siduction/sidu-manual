@@ -4,7 +4,7 @@ sidu-manual (2014.10.12) UNRELEASED; urgency=medium
   * typo in part-gparted; closes #1730 
 
   [ Andreas Hausmann ]
-  * translated some phrase into german; closes #1729 , #1728 
+  * translated some phrase into german; closes #1729 , #1728  
 
  -- Andreas Hausmann <lovelock@web.de>  Sat, 15 Nov 2014 19:14:46 +0100
 
