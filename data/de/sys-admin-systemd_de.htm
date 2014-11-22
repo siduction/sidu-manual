@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Systemd - System- und Dienste-Manager</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="all">@import url("../css/content.css");</style>
+	<style type="text/css" media="all">@import url("../css/menu.css");</style>
+	<style type="text/css" media="print">@import url("../css/print.css");</style>
+        <link rel ="shortcut icon" href="../favicon.ico" />
+	<script type="text/javascript" src="../js/menu2.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-7_override.css">
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
+        <![endif]-->
+	</head>
+<body class="body-main">
+<div>
+<div id="main-page">
+	<div class="divider" id="apt-cook">
+		<h2 id="top-header">Systemd - System- und Dienste-Manager</h2>
+<p><span class="highlight-3">Systemd ist ein System- und Service-Manager, der mit seiner Init-Komponente in Konkurrenz zum alteingesessenen Sysvint und Ubuntus Upstart steht. Entwickelt wird es federführend von den Red Hat Entwicklern Lennart Poettering und Kay Sievers. Debian wird Systemd als Standard bei Debian 8 "Jessie" einführen, Ubuntu wird die Entwicklung von Upstart zugunsten von Systemd aufgeben. Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits Systemd als Standard-Init-System .</span></p>
+<div class="spacer01"></div>
+			<p>Wenn Du eine ältere Version als siduction 2013.2 "December" verwendest und auf Systemd umsteigen möchtest, so ist das weder schwierig noch fehleranfällig und in ein paar Schritten erledigt. Nach der Installation einiger Pakete und dem Setzen einiger Rechte muss lediglich noch sichergestellt werden, dass Systemd auch als Standard verwendet wird.</p>
+			<h3>Installation und Einrichten von Systemd</h3>
+			<p>Den Anfang macht die Installation der Pakete :</p>
+			<pre>
+# apt update && apt install systemd libpam-systemd systemd-ui
+</pre>
+<p>Es kann vorkommen, da Sysvinit ein essentielles Paket ist, das beim Entfernen desselbigen folgende Warnmeldung bestätigt werden muss.</p>
+<pre>WARNING: The following essential packages will be removed: sysvinit
+This should NOT be done unless you know exactly what you are doing!
+You are about to do something potentially harmful.
+To continue type in the phrase 'Yes, do as I say!'</pre>
+<p>Die Antwort muss lauten:</p>
+<pre>Yes, do as I say!</pre>
+<p>Jetzt ist der Zeitpunkt, eine kleine Sicherung einzubauen, falls Systemd sich einmal weigern sollte, den Rechner zu starten:</p>
+<pre># cp -av /sbin/init /sbin/init.sysvinit</pre>
+<p>Mit dieser Absicherung kann der Rechner notfalls mit Sysvinit gestartet werden, indem folgendes in die Bootzeile von GRUB angehängt wird:</p>
+<pre>init=/sbin/init.sysvinit</pre>
+<p>Nun bleibt nur noch ein Paket zu installieren, dass uns die Kompatibilität mit Sysvinit und den gewohnten Befehlen erhält:</p>
+<pre># apt install systemd-sysv</pre>
+</br>
+<p>Um Systemd zu testen bevor es als Standard festgelegt wird, kann während eines Reboots folgender Pfad an die Bootzeile in GRUB übergeben werden:</p>
+<pre>init=/lib/systemd/systemd
+</pre>
+<p>Nach erfolgtem Reboot kann der Erfolg überprüft werden:</p>
+<pre># ps -p 1
+</pre>
+<p>Die Ausgabe sollte in etwa so aussehen:</p>
+<pre> 1 ?        00:00:07 systemd</pre>
+
+<p>Das bedeutet, sysytemd läuft als PID 1, der erste Prozess beim Start des Rechners.</p>
+</br>
+<p>Wenn alles zur Zufriedenheit funktioniert, können die Einstellingen permanent gemacht werden, indem <span class="highlight-3">/etc/default/grub</span> editiert wird</p>
+<p>Im zweiten Absatz findet sich die Zeile:</p>
+<pre>GRUB_CMDLINE_LINUX_DEFAULT="quiet"</pre>
+<p>Die Zeile muss editiert werden, um dann so auszusehen:</p>
+<pre>GRUB_CMDLINE_LINUX_DEFAULT="quiet init=/lib/systemd/systemd"
+</pre>
+<p>Nun muss GRUB noch von der Änderung erfahren. Das erledigt ein:</p>
+<pre># update grub</pre>
+<p>Ein erneuter Neustart und der Check nach PID 1 sollte Systemd als PID 1 zeigen. Damit ist die Installation und Einrichtung abgeschlossen. Jetzt ist der Blick frei für die Dinge, die Systemd besser macht als der Vorgänger oder die Sysvinit als reiner Init-Dienst gar nicht konnte.</p>
+</br>
+<h3>Einrichten des Journal</h3>
+<p>Das <i>Journal</i> ist ein Ersatz für <i>Syslog</i> und macht einiges besser als sein Vorgänger. Journal protokolliert viel früher als Syslog, da es Informationen des Kernel-Loggers <i>kmesg</i> mit einbezieht. Zudem sind auch die Auswertungsmöglichkeiten des Journal deutlich besser als vorher. Das Journal kann außerdem auch als normaler User benutzt werden, wenn wir es entsprechend einrichten. Dazu müssen wir unseren User einer neuen Gruppe zufügen und die Rechte entsprechend setzten. Diese Schritte müssen nur bei siduction 2013.2 und früher vorgenommen werden. Bei siduction ab 2014.1 ist bereits alles entsprechend eingerichtet.</p>
+<p>Zunächst richten wir die Gruppe ein:</p>
+<pre># addgroup --system systemd-journal</pre>
+<p>Dann erstellen wir einen Ordner für das Journal, da das bei Debian noch nicht automatisch passiert:</p>
+<pre># mkdir -p /var/log/journal</pre>
+<p>Und nun zu den Rechten:</p>
+<pre># chown root:systemd-journal /var/log/journal</pre>
+<p>Nun fügen wir den neuen Nutzer noch der Gruppe hinzu:</p>
+<pre># gpasswd -a $user systemd-journal</pre>
+<p>Für$user muss hier der eigene User eingetragen werden</p>
+</br>
+<h3>Journalctl beherrschen</h3>
+<p>Jetzt kannst Du das Journal als einfacher User benutzen. Hier sind einige Beispiele:</p>
+<ul>
+	<li>journalctl --all - gibt das volle Journal aller User aus</li>
+	<li>journalctl -b – zeigt das Protokoll des letzten Bootvorgangs</li>
+	<li>journalctl -b -p err  - limitiert auf den letzten Boot und die Priorität ERROR</li>
+	<li>journalctl --since=yesterday - zeigt das Journal seit gestern</li>
+	<li>journalctl /dev/sda - zeigt das Journal der Gerätedatei /dev/sda</li>
+	<li>journalctl /usr/bin/dbus-daemon - zeigt alle Logs des D-Bus-Daemon</li>
+	<li>journalctl -k -b -1 - zeigt alle Kernelmeldungen des vorherigen Bootvorgangs (-1)</li>
+	<li>journalctl -f - zeigt eine Liveansicht des Journal; früher: tail -f /var/log/messages)</li>
+	
+	Der zusätzliche Parameter <b>-x</b> ergänzt die jeweilige Ausgabe um Hilfstexte, sofern vorhanden.
+	
+</ul>
+</br>
+<p>Eine weitere Neuerung beim Protokollieren ist die Tab-Vervollständigung für Journalctl. Wenn Du <i>journalctl</i> schreibst und die TAB-Taste drückst, erscheint eine Liste möglicher Vervollständigungen:</p>
+<pre>devil@siductionbox:~$ journalctl 
+_AUDIT_LOGINUID=             COREDUMP_EXE=                _MACHINE_ID=                 _SOURCE_REALTIME_TIMESTAMP=  _TRANSPORT=
+_AUDIT_SESSION=              __CURSOR=                    MESSAGE=                     SYSLOG_FACILITY=             _UDEV_DEVLINK=
+_BOOT_ID=                    ERRNO=                       MESSAGE_ID=                  SYSLOG_IDENTIFIER=           _UDEV_DEVNODE=
+_CMDLINE=                    _EXE=                        __MONOTONIC_TIMESTAMP=       SYSLOG_PID=                  _UDEV_SYSNAME=
+CODE_FILE=                   _GID=                        _PID=                        _SYSTEMD_CGROUP=             _UID=
+CODE_FUNC=                   _HOSTNAME=                   PRIORITY=                    _SYSTEMD_OWNER_UID=          
+CODE_LINE=                   _KERNEL_DEVICE=              __REALTIME_TIMESTAMP=        _SYSTEMD_SESSION=            
+_COMM=                       _KERNEL_SUBSYSTEM=           _SELINUX_CONTEXT=            _SYSTEMD_UNIT=         </pre>
+</br>
+<p>Die meisten davon sind selbsterklärend. Beispielsweise COMM, was für <i>command</i> steht, bedient eine Menge an Optionen:</p>
+<p><i>journalctl _COMM=</i> listet nach einem weiterer Druck auf TAB die möglichen Applikationen:</p>
+<pre>devil@siductionbox:~$ journalctl _COMM=
+acpid            chrome           gpasswd          kdm              mtp-probe        pkexec           sensors          systemd-fsck     udisks-daemon
+acpi-fakekey     console-kit-dae  gpm              keyboard-setup   mysql            polkitd          sh               systemd-hostnam  umount
+acpi-support     console-setup    groupadd         loadcpufreq      networking       pulseaudio       smartmontools    systemd-journal  uptimed
+alsactl          cpufrequtils     hddtemp          logger           nfs-common       pywwetha         smbd             systemd-logind   useradd
+anacron          cron             hdparm           login            nmbd             pywwetha.py      ssh              systemd-modules  usermod
+apache2          cups             hp               lvm              ntp              resolvconf       sshd             systemd-shutdow  vboxdrv
+backlighthelper  dbus-daemon      hpfax            lvm2             ntpd             rpcbind          su               systemd-udevd    VBoxExtPackHelp
+bash             ddclient         ifup             mbmon            ntpdate          rpc.statd        sudo             teamviewerd      vdr
+bluetoothd       docvert-convert  irqbalance       mdadm            ofono            samba-ad-dc      sysstat          udev-configure-  winbind
+chfn             glances          kbd              mdadm-raid       ofonod           saned            systemd          udisksd          
+</pre>
+</br>
+<p>Beispielsweise könnte etwas ähnliches für NTP aus dem Log filtern
+<pre>$ journalctl _COMM=ntp</pre> etwas ähnliches für NTP aus dem Log filtern: </p>
+<pre>-- Logs begin at Fr 2014-01-17 00:40:01 CET, end at Di 2014-04-08 11:58:36 CEST. --
+Jan 17 14:27:33 siductionbox ntp[1221]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 01 00:21:20 siductionbox ntp[1187]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 14 14:17:05 siductionbox ntp[1127]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 14 14:22:25 siductionbox ntp[1195]: Starting NTP server: ntpd.
+^[[1;39m-- Reboot --
+Feb 14 23:23:38 siductionbox ntp[3162]: Stopping NTP server: ntpd.
+^[[1;39m-- Reboot --
+Mär 27 15:15:11 siductionbox ntp[12735]: Stopping NTP server: ntpd.</pre>
+</br>
+<p>Jetzt kann man die Ausgabe weiter filtern und beispielsweise zeitlich eingrenzen: 
+<pre>journalctl _COMM=dbus-daemon --since=2014-04-06 --until="2014-04-07 23:59:59"</pre>:</p>
+<pre>...
+Apr 07 22:59:04 siductionbox org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: in handle_supported
+Apr 07 22:59:04 siductionbox org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: in handle_list
+Apr 07 22:59:04 siductionbox org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: in handle_supported
+Apr 07 22:59:04 siductionbox org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: in handle_list
+Apr 07 23:03:09 siductionbox org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+Apr 07 23:03:09 siductionbox org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+Apr 07 23:03:09 siductionbox org.gtk.Private.AfcVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+Apr 07 23:03:09 siductionbox org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
+</pre> 
+<p>Weitere Optionen bietet die Manpage von <i>journalctl</i>.Jetzt kann rsyslog entfernt werden, du kannst es aber auch neben dem Journal weiterlaufen lassen.</p>
+</br>
+<h3>Handhabung von Diensten mittels Systemd</h3>
+Einer der Jobs von Systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl <span class="highlight-3">systemctl<span>-c
+<ul>
+	<li>systemctl --all - shows all units, including dead/empty ones</li>
+	<li>systemctl --t [NAME] - lists only units of a particular type</li>
+	<li>systemctl list-units - lists all units (where unit is the term for a job/service</li>
+	<li>systemctl start [NAME...] - starts (activate) one or more units</li>
+	<li>systemctl stop [NAME...] - stops (deactivates) one or more units</li>
+	<li>systemctl disable [NAME...] - disables one or more unit files</li>
+	<li>systemctl status [Name] - shows runtime status of one or more units</li>
+	<li>systemctl reboot – reboots the system</li>
+	<li>systemctl poweroff - powers down the system</li>
+</ul>
+<p>Systemctl kann auch beispielsweise mit <i>grep </i> kombiniert werden:</p>
+<pre>systemctl list-unit-files |grep enabled</pre>
+
+</br>
+<h3>Zwischen Runleveln wechseln</h3>
+<p>Systemd kennt neue Regeln zum Wechseln zwischen dem, was bisher als Runlevel bekannt war Der neue Terminus ist <span class="highlight-3">targets</span></p>
+<ul>
+<li>systemctl isolate graphical.target - wechselt nach init 5</li>
+<li>systemctl isolate multi-user.target - wechselt nach init 3</li>
+</ul>
+<p>Weitere Optionen bietet die Manpage von <i>systemctl</i></p>.
+<h3>Wichtig: Nutzung der bisher gewohnten Befehle:</h3>
+<p>Solange <i>systemd-sysv</i> installiert ist, kannst Du selbst entscheiden, ob Du die gewohnten Befehle verwenden willst oder die neuen Befehle von Systemd übernehmen willst. Du kannst auch beide Arten mixen bis die neuen Befehle im Gedächtnis verankert sind. Diese Kompatibilität wird vermutlich für die Lebensspanne von Debian 8 "Jessie" erhalten bleiben, also rund 4-5 Jahre.</p>
+
+<h3>Andere Funktionen von Systemd</h3>
+<p>Systemd bietet noch weitere Funktionen. Eine davon ist <a href="http://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> als Ersatz für das nicht mehr weiter gepflegte <i>ConsoleKit</i>. Damit steuert Systemd Sitzungen und Powermanagement. Nicht zuletzt bietet Systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> und viele weitere. Ein Blick in die Linkliste auf 
+<a href="http://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu Systemd.</p>
+</body>
+</html>
+</body>
+</html>
+<div id="rev">Page last revised 22/11/2014 1800 UTC</div>

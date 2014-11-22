@@ -53,19 +53,15 @@ tremendous help with configuring the systemd daemon. </p>
 <p>You can safely assume this is the last siduction release shipping software from KDE's fourth cycle. Our next release will ship Frameworks 5 
 and Plasma 5.</p>
 <h4>GNOME</h4>
-<p>As GNOME is still pretty new in our release cycle, here is a few hints on how to run it:</p>
+<p>GNOME shipped version is 3.14.1 and it brings new things. As GNOME is still pretty new in our release cycle, here is a few hints on how to run it:</p>
 <p>There are two ways to start your gnome-session:</p>
-  * <i>gnome-fallback</i>, which implements the GNOME2 look<br />
+  * <i>GNOME-Classic</i>, which implements the GNOME2 look<br />
   * <i>GNOME</i>,  which implements the GNOME 3 look and desktop-effects<br /><br />
-To be able to start gnome as a gnome3-session, your videocard must be accelerated. Users of ATI graphic cards must have 
-<i>firmware-linux-nonfree</i> installed to be able to launch GNOME3.
-By default in live mode gnome-fallback is started. After installation, GNOME3 mode is enabled.
-That means, users of ATI cards must install <i>firmware-linux-nonfree</i> before starting the installer.</p>
-<h4>Boot cheatcode "gnome"</h4>
-If you want to force a GNOME 3-session even in live mode, you can use the cheatcode <i>gnome</i> to the kernel-bootline. This does not work for 
-users with ATI cards other than with a <a href="http://manual.siduction.org/en/hd-install-opts-en.htm#usb-from1"><i>persistent overlay</i></a> 
-on a USB device.</p>
-<p>We ship, for the second time, <b>noX</b> as an official release, which was introduced first in October 2012 as development release. As there 
+  To choose GNOME or GNOME-CLASSIC users should choose default session from the display manager menu. By default in live mode GNOME 3 is started but it will use software rendering. To use GNOME 3 with hardware rendering, users of ATI cards must install <i>firmware-linux-nonfree</i> before starting the installer.
+Boot cheatcode "gnome" was removed because it is now deprecated.
+Windows look in GNOME has changed because GNOME developers dropped minimize and maximize buttons. To minimize or maximize a window, you must use right click in the window title bar and choose minimize or maximize from the menu. Also, to maximize a window you can double click on the window title bar. We have added to Favourites Applications (aka Dash) some of most used applications. You will discover hexchat, transmission, libreoffice, siduction bug report tool, gnome-terminal and many more in Favourites Applications. 
+</p>
+<p>We ship, for the second time around, <b>noX</b> as an official release, which was introduced first in October 2012 as development release. As there 
 is no graphical environment, you need to use <i>cli-installer</i> as root to run the installation.</p>
 <p><b>XFCE</b> is still being shipped in version 4.10.1 and is as reliable as ever. It is a desktop environment that just gets out of your way 
 when work needs to be done.</p>
