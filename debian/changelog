@@ -1,3 +1,25 @@
+sidu-manual (2014.11.21) UNRELEASED; urgency=medium
+
+  * added release note_de
+
+ -- Ferdinand Thommes <devil@siduction.org>  Sat, 22 Nov 2014 14:56:45 +0100
+
+sidu-manual (2014.11.20) unstable; urgency=medium
+
+  * text corrections
+  * closes #1730
+  * closes #1729
+  * closes #1728
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 20 Nov 2014 09:19:03 +0100
+
+sidu-manual (2014.11.02) unstable; urgency=medium
+
+  * special djinn implementation removed. Using now pywwetha version
+  * correct redirection to welcome
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 23 Oct 2014 00:10:46 +0200
+
 sidu-manual (2014.10.12) UNRELEASED; urgency=medium
 
   [ Andreas Hausmann ]

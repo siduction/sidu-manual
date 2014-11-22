@@ -4,7 +4,7 @@ from website import views
 
 def getPatterns():
     rc = patterns('',
-        url(r'^/?$', views.home, name='home'),
+        url(r'^/?$', views.home, name='root'),
         url(r'^/?home', views.home, name='home'),
         url(r'^/?!search', views.search, name='search'),
         url(r'^/?static', views.search, name='staticFiles'),

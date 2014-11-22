@@ -5,7 +5,7 @@ Created on 08.04.2014
 '''
 import unittest, os.path
 
-from mdjinn.wsgihandler import WSGIHandler
+from mdjinn_not_active.wsgihandler import WSGIHandler
 from util.util import Util
 
 global_status = 0
