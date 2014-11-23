@@ -1,3 +1,9 @@
+sidu-manual (2014.11.24.3) UNRELEASED; urgency=medium
+
+  * edit of sys-admin-release_de.htm
+
+ -- Ferdinand Thommes <devil@siduction.org>  Sun, 23 Nov 2014 15:50:31 +0100
+
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 
   * menu for sys-admin-systemd_en
