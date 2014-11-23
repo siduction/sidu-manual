@@ -1,237 +1,183 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
 <link href="release.css" rel="stylesheet" type="text/css" />
 <title>Release Notes</title>
 </head>
 <body>
 <div id="main-page">
-<h1>Release Notes für siduction 2013.2.1 - December Fix-Release</h1>
-<p>
-Wir freuen uns sehr, euch jetzt siduction 2013.2.1 - <i>December</i> - als Fix-Release nachreichen zu dürfen. Siduction erscheint zwei bis vier mal jährlich und basiert auf dem Unstable-Zweig von Debian.
-</p>
-<p>Seit der Veröffentlichung von siduction 2013.2 vor rund drei Wochen haben wir einige Fehler, die ihr uns gemeldet habt, ausgebügelt. Diese
-betrafen vor allem den Installer und weitere Stabilisierung bei Systemd. Wir hoffen, nun alle kritischen Bugs
-beseitigt zu haben. Zudem wird gegenüber 2012.2 nun KDE 4.12.1 ausgeliefert.
-<p>siduction 2013.2 - <i>December</i> wird mit 5 Desktop-Umgebungen ausgeliefert: KDE SC, XFCE, Gnome 3, LXDE und Razor-qt,  alle jeweils in
-32- und 64-bit Versionen. Von den angebotenen Varianten passt lediglich LXDE noch auf eine CD mit 700 MByte. Da aber das Medium CD zunehmend an
-Bedeutung verliert, versuchen wir nicht, unsere Images unter dieser Marge zu halten, sondern empfehlen die Verwendung von USB-Sticks zur
-Installation. User und Passwort für die Live-CD lauten <i>siducer</i> und <i>live.</i></p>
-<p>Die veröffentlichten ISOs sind ein Snapshot von Debian Sid vom 30.12.2013, ergänzt mit ein paar nützlichen Paketen und Skripten, einem
-Installer und unserer eigenen gepatchten Version des Kernels 3.12 sowie X-Server 1.14.5 </p>
-<p>Neben diesen Desktop-Umgebungen ist auch <i>noX</i> als Arbeitsumgebung ohne X-Server wieder vertreten. Neu hinzugekommen ist mit
-<i>Xorg</i> ein Image, das einen X-Server und den minimalistischen Window-Manager Fluxbox mitbringt.</p>
-<p>Neu in diesem Release-Zyklus ist die Implementation von Systemd. Während Debian noch diskutiert, welches Init-System zukünftig verwendet
-werden soll hat sich siduction bereits für Systemd entschieden. Es ist das technisch am weitesten entwickelte Konzept der vorhandenen
-Init-Systeme. Sollte sich Debian für Ubuntus Upstart entscheiden, so werden wir aus verschiedenen Gründen diese Entscheidung nicht umsetzen
-sondern bei Systemd bleiben. Bis wir eine eigene Sektion für Systemd in unser Handbuch einfügen, sollen die folgenden Beispiele für oft
-genutzte Befehle in Systemd Hilfestellung leisten. </p>
-<h3>Was gibts Neues</h3>
-<p>Wie bereits erwähnt haben wir, auch als Testgrundlage für Debian, das möglicherweise zukünftige Init-System bereits implementiert. Hier nun
-ein Abriss häufig benutzter Systemd-Kommandos zum Booten, Verwalten von Diensten und Protokollieren von Systemmeldungen: </p>
-<ul>
-<h4>Dienste</h4>
-<li>systemctl list-units - Listet alle <i>Units</i> (wobei Unit einen Job oder Dienst bezeichnet)</li>
-<li>systemctl start [NAME...] - Starte eine oder mehrere Units</li>
-<li>systemctl stop [NAME...] - Stoppe eine oder mehrere Units</li>
-<li>systemctl disable [NAME...] - Sperre eine oder mehrere Units</li>
-</ul>
-<p>Die Manpage <i>man systemctl</i> bietet weitere Informationen. Als kleine Hilfe haben wir <i>systemd-ui</i> in den Paketbestand aufgenommen.
-Die GUI wird mit dem Befehl <i>systemadm</i> aufgerufen.</p>
-<ul>
-<h4>Runlevel wechseln, Reboot und Shutdown</h4>
-<p>Das Wechseln der Runlevel ist auch anders als bisher mit <i>sysvinit</i> gewohnt. Was bisher als <i>runlevel 3</i> bekannt war, heißt jetzt
-<i>multi-user.target</i>, <i>init 5</i> wird zu <i>graphical.target:</i></p>
-<li>systemctl isolate graphical.target - Wechselt in die grafische Umgebung</li>
-<li>systemctl isolate multi-user.target - Wechselt in ein Terminal ohne X</li>
-<li>systemctl reboot - Neustart des Systems</li>
-<li>systemctl poweroff - Herunterfahren des Systems</li>
-</ul>
-<ul>
-<h4>Protokollieren mit dem Systemd Journal</h4>
-<p>Das Journal ist ein großer Zugewinn im Vergleich zum bisher verwendeten Syslog. Das Protokollieren beginnt jetzt früher im Bootvorgang.
-Zudem ist es nun einfacher, einen verfeinerten selektiven Zugriff auf die in <i>/var/log/journal</i> gespeicherten Daten zu erhalten.</p>
-<li>journalctl --all - gibt das vollständige Journal des Systems und aller User aus</li>
-<li>journalctl -f - gibt eine Live-Ansicht der Daten aus, während sie protokolliert werden(früher: tail -f /var/log/messages)</li>
-<li>journalctl -b - zeigt das Protokoll des letzten Bootvorgangs</li>
-<li>journalctl -b -p err - zeigt den letzten Bootvorgang, limitiert auf Fehler der Priorität ERROR</li>
-<li>journalctl --since=yesterday - schränkt auf Meldungen der letzten 24 Stunden ein</li>
-<p>Das ist jedoch nur die Spitze des Eisbergs, mehr gibt es in <a href="http://0pointer.de/blog/projects/journalctl.html">Lennart Poetterings
-Blog</a>
-<p>Da wir noch das Kompatibilitätspaket <i>systemd-sysv</i> auf dem Image haben, könnt ihr momentan auch noch die gewohnten Befehle benutzen.
-Ausnahme ist lediglich das Journal, da <i>syslog</i> nicht mehr vertreten ist. Wir haben Systemd so konfiguriert, dass die obigen
-Journal-Befehle alle als normaler User funktionieren und keinen Root-Zugang benötigen.</p>
-</ul>
-<h3>Gnome</h3>
-<p>Da Gnome noch relativ neu in unserem Release-Zyklus ist, hier ein paar Tipps um eine Gnome-Session zu handhaben:</p>
-<p>Es gibt zwei Wege, eine Gnome-Session zu starten:</p>
-  * <i>gnome-fallback</i>, das dem Gnome2-Look entspricht<br />
-  * <i>gnome</i>, dass Gnome3 entspricht und Desktop-Effekte mitbringt<br /><br />
-Um Gnome3 starten zu können braucht es eine 3D-beschleunigte Grafikkarte. Nutzer von ATI-Karten müssen <i>firmware-linux-nonfree</i>
-installieren, um Gnome3 nutzen zu können.
-Im Live-Mode ist standardmäßig Gnome-Fallback eingestellt. Nach der Installation wird auf Gnome3 umgeschaltet. Das bedeutet, dass Besitzer von
-ATI-Karten vor der Installation <i>firmware-linux-nonfree</i> installieren müssen.</p>
-<h4>Boot-Cheatcode "gnome-shell --replace &"</h4>
-<p>Soll für eine Live-Session Gnome3 erzwungen werden, muss der Cheatcode <i>"gnome-shell --replace &</i> an die Kernel-Bootzeile anhängt
-werden. Das funktioniert für Besitzer von ATI-Karten nur bei einem <a
-href="http://manual.siduction.org/de/hd-install-opts-de.htm#usb-from1">persistenten Overlay</a> auf einem USB-Stick.</p>
-<h3>Und sonst?</h3>
-<p>Zum zweiten Mal ist <b>noX</b>, das vor über einem Jahr als Development Release veröffentlicht wurde,  als offizielles Release mit dabei. Da
-noX keine grafische Umgebung bietet, muss die Installation per <i>cli-installer</i> erfolgen.</p>
-<p><b>XFCE</b> ist in Version 4.10.1 mit dabei und solide wie immer.</p>
-<p>Für die <b>KDE SC</b> Anwender haben wir die letzte verfügbare Version KDE SC 4.11.4 paketiert. Für 4.12 hat die Zeit zum Testen nicht mehr
-ausgereicht, das letzte KDE-Release im 4er-Zyklus sollte aber bald in unserem KDEnext-Repository verfügbar sein. Die Anpassungen in
-<i>siduction-settings-kde</i> sind grundsätzlich abgeschlossen, vor dem Release wurden noch einige Änderungen am Farbschema vorgenommen.</p>
-<p><b>Razor-Qt</b> ist in einer leicht modifizierten Version 0.5.2 vertreten und bietet verbesserte Plugins und erhöhte Stabilität. Noch besser
-wirds mit der bevorstehenden Verion 0.6, die für die Mutigen unter euch bereits in unserem <i>razorqt/next</i>-Repository liegt. Wir werden 0.6
-irgendwann veröffentlichen und dann zu <i>lxde-qt</i> umschwenken, welches das Ergebnis des Zusammengehens von LXDE und Razor-qt unter dem
-Qt-Framework darstellt.</p>
-<p>Somit ist dies ebenso das vermutlich letzte Release von <b>LXDE</b> in der jetzigen Form. Dieses Release von LXDE eilt der Debian-Version
-etwas voraus, indem wir wegen Fehlern in den Debian-Paketen <i>pcmanfm</i>, <i>lxappearance</i> und <i>lxappearance-obconf</i> direkt von
-Upstream, also den LXDE-Entwicklern, paketiert haben. Auch unsere Version von <i>Midori</i> ist Debian leicht voraus.</p>
-<p>Viel Zeit verschlang seit dem letzten Release wieder die Anpassung der von aptosid übernommenen Code-Basis. Diesmal wurde unter anderem das
-frühere <i>bluewater-manual</i>, das jetzt <i>sidu-manual</i> heißt, völlig überholt und von statischen Webseiten nach Django konvertiert und
-das Aussehen an die vor wenigen Wochen freigegebene neue <a href="http://siduction.org">siduction-Webpräsenz</a> angepasst. Nach Abschluss der
-Konvertierung wird es viel einfacher sein, neue Beiträge in das Handbuch einzupflegen.</p><p>Insgesamt wurden <a
-href="http://chili.siduction.org/projects/siduction/issues/report">über 170 Bugs</a> seit dem letzten Release geschlossen.</p>
-<p>Der Installer bietet weiterhin als Alternative auch <i>btrfs</i> als Dateisystem an. Bitte beachtet unbedingt die Warnungen in dem
-Zusammenhang.
-Die Unterstützung von <i>btrfs</i> ist immer noch als experimentell anzusehen und es sollte noch nicht auf Produktivsystemen eingesetzt
-werden.
-Regelmäßige Backups sind absolut Pflicht!
-<br />
-<h3>Unsere Ressourcen</h3>
-<br />
-<a href="http://siduction.org">siduction Forum</a>
-<br />
-<a href="http://news.siduction.org">siduction Blog</a>
-<br />
-<a href="http://git.siduction.org">Git Archiv</a>
-<br />
-<a href="http://siduction.org/index.php?module=news">Distro News</a>
-<br />
-<a href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">Bug-Tracker</a><br />
-<a href="http://chili.siduction.org/projects/newsid-verwaltung/wiki/Map_Siduction">siduction-Map</a><br />
-<p><br />
-Support gibt es in unserem Forum und im IRC. Die Kanäle im OFTC Netzwerk sind
-<i>#siduction-de</i>
-für den deutschsprachigen Support und
-<i>#siduction-core</i>
-, falls Du bei uns mitmachen oder uns helfen willst. Auf dem Desktop findet sich
-außerdem ein Icon, mit dem man direkt in den Supportkanal gelangt, abhängig von der
-gewählten Systemsprache.
-</p>
-<p>Um auch als Testfeld für Debian dienen zu können, haben wir unseren eigenen
-Bugtracker. Lass Dir kurz erklären, wie Du uns und Debian helfen kannst, zum
-Beispiel mit
-Bug-Reports zu kaputten Paketen. Erfahrene Nutzer werden wissen, wie sie
-Fehlerberichte direkt an Debians BTS (Bug Tracking System) geben können. Für nicht so
-erfahrene User haben wir
-<i>reportbug-ng</i> vorinstalliert.</p>
-<p>Wenn Du denkst, einen Fehler in einem Debian-Paket gefunden zu haben, starte
-<i>reportbug-ng</i>
-und schreibe den Namen des Paketes in die Adresszeile oben. Die Anwendung wird nun
-die bereits bekannten Bugs durchstöbern und diese anzeigen. Jetzt ist es an Dir, zu
-bestimmen, ob "Dein" Fehler bereits bekannt ist oder ob es sich um einen bislang
-unbekannten Fehler handelt. Falls schon bekannt, überlege Dir, ob Du irgendwelche
-relevanten Information beisteuern kannst, oder vielleicht sogar einen Patch. Falls
-nicht, bist Du hier schon fertig. Wenn der Fehler noch nicht gemeldet wurde, und Du
-Dich nicht sonderlich gut mit dem BTS auskennst, kannst Du ihn in unserem <a
-href="http://chili.siduction.org/projects/newsid-verwaltung/issues/new">
-Bug-Tracker</a> posten.
-Hier gehören auch grundsätzlich alle Fehler in siduction-eigenen Paketen hin. Wir
-sortieren die Fehler dann und packen sie an die richtige Stelle, falls sie
-reproduzierbar sind. Falls Dir das zu kompliziert ist, schreib einfach im Bug Thread
-in unserem Forum, das klappt noch mindestens bis zum endgültigen Release.
-</p>
-<p>
-Woher kommt der Codename 'December?  Wir benennen unsere Releases nach Rocksongs. <a
-href="https://en.wikipedia.org/wiki/Collective_Soul">Collective Soul</a> hatte einen Hit mit <a
-href="http://www.youtube.com/watch?v=D8Jurk6TUqI
-">December</a> im Jahr 2005 und passt somit perfekt zum Zeitpunkt unseres Releases.
-</p>
-<p>
-Da wir immer nach weiteren Helfern suchen, freuen wir uns, wenn Du Dich im IRC-Kanal
-<i>#siduction-core</i>
-einfindest und uns sagst, wobei Du dem Projekt helfen kannst und möchtest. Wie Du weiter unten bei den Danksagungen sehen kannst, haben wir
-derzeit <b>kein Art-Team</b>. Wenn Du uns dort aushelfen kannst, wären wir hocherfreut.</p>
+<h1>Release Notes for siduction 2014.1.0</h1>
+<p>We are very happy to present to you the final release of siduction 2014.1 - <i>Indian Summer</i>. siduction is a distribution based on 
+Debian's unstable branch and we try to release a few new snapshots over the course of each year. For 2014 it will be just this final release. 
+We did a lot of stabilizing work in the past year, besides working on further integrating systemd and working on dev releases. We know it is 
+not ideal to have an install medium that is older than six months, so please accept our apologies for that, we will try to release more 
+often.<p>
+<p>All our flavours are in pretty good shape, so we will not waste time with an RC and do the real releasse right away.
+<p>siduction 2014.1 - <i>Indian Summer</i> is shipped with six desktop environments: KDE SC, XFCE, LXDE, LXQt, GNOME and Cinnamon, all in 32- 
+and 64-bit variants. From the included DEs this time around only LXDE fits on a CD with 700 MegaByte. But as CDs become more irrelevant with 
+every day, we are not too worried about this and recommend to use USB-Sticks for installation.</p> 
+<p>The released images are a snapshot of Debian unstable, that also goes by the name of Sid, from 2014-11-22. They are enhanced with some 
+useful packages and scripts, our own installer and a custom patched version of the linux-kernel 3.17, accompanied by X-Server 1.16.1.</p>
+<p>Besides those desktop environments we also include <i>noX</i>, which is an environment without X. There is, last, but not least, an image 
+that listens to the name of <i>Xorg</i> and it features the minimal window manager Fluxbox on top of X.</p>
+<p> A year ago we decided to release with <i>systemd</i>, while Debian was still discussing, what init system to use in the future. Meanwhile 
+Debian and Ubuntu have decided to go with systemd as well. It is the most technicaly advanced of the init systems at hand. We have a 
+preliminary section on systemd in our sidu-manual, which will be expanded and translated to other languages.</p>
 
-<br />
-<h3>Hardware Tipps</h3>
-<p>Solltest Du eine ATI Radeon Grafikkarte besitzen, so benutze bitte beim Booten die
-"failsafe" Option. Diese Option hängt die Cheatcodes <i>radeon.modeset=0
-xmodule=vesa</i>
-an die Kernel-Bootline an und gewährleistet das Booten nach X. Vor der Installation vom Live-ISO installiere bitte
-<i>firmware-linux-nonfree</i>.
-Dazu öffne Deine <i>/etc/apt/sources.list.d/debian.list</i> mit Deinem bevorzugten
-Editor als Root und hänge <i>contrib non-free</i> ans Ende der ersten Zeile.
-Speichern und dann:
-<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> Wenn Du jetzt siduction installierst, wird das Paket mit in die
-Installation übernommen und gewährleistet,
-dass der Rechner beim Reboot nach der Installation nach X booten kann. Denk daran,
-dass, solltet ihr vor der Installation rebooten, die Änderungen verloren sind.</p>
-<p>Einige WLAN-Karten können nicht automatisch von den mitgelieferten freien Treibern
-unterstützt werden, daher startest Du am besten mit kabelgebundenem Netz. Das Skript
-<i>fw-detect</i> liefert Informationen zur Einbindung entsprechender Firmware, der
-Installer führt dieses Skript ebenfalls aus und leitet Dich bei der
-Installation der benötigten Firmware an.</p>
-<p>Zum Schluss noch ein Hinweis für die Anwender des Virtualisierers KVM. Das Frontend für die Kernel-basierte virtuelle Maschine KVM begann
-als Fork von Qemu und ist nun mit allen Entwicklungen der letzten Jahre dorthin zurückgekehrt. Eine Anleitung zum neuen Quemu gibt es <a
-href="http://wiki.siduction.de/index.php?title=Virtualize_siduction_with_qemu-system-x86_64">in unserem Wiki</a>.</p>
-<br/>
-<h3>Danksagung für siduction 2013.2</h3>
-<h4>Core Team:</h4>
-Alf Gaida (agaida)
-<br />
-Angelescu Ovidiu (convbsd)
-<br />
-Axel Beu (ab)
-<br />
-Ferdinand Thommes (devil)
-<br />
-Hendrik Lehmbruch (hendrikl)
-<br />
-Markus Meyer (coruja)
-<br />
-Tom Wroblewski (GoingEasy 9)
-<br />
-Torsten Wohlfarth (towo)
-<br />
-<h4>Maintainer der siduction Desktop Environments:</h4>
-<b>Gnome</b>:	 	Angelescu Ovidiu (convbsd)<br />
-<b>KDE</b>:		 	Ferdinand Thommes (devil)José Manuel Santamaría Lema (santa)<br />
-<b>LXDE</b>:    	Markus Meyer (coruja)<br />
-<b>noX</b>:		 	Alf Gaida (agaida)<br />
-<b>Razor-qt</b>:	Alf Gaida (agaida)<br />
-<b>XFCE</b>:		Torsten Wolfahrt (towo)<br />
-<h4>Art Team:</h4>
-abgetaucht :)
-Ernsthaft, wir <b>brauchen</b> mehr Künstler für Release-Art
-<br />
-<br />
-<h4>Code, Ideen, Unterstützung:</h4>
-ayla<br />
-bluelupo<br />
-der_bud<br />
-J. Hamatoma (hama)<br />
-Joogi<br />
-Markus Schimpf (arno911)<br />
-musca<br />
+<h3>What is new</h3>
+<h4>Cinnamon</h4>
+<p>After our dev release of Cinnamon in October was well received, we are shipping Cinnamon as a full member of the siduction flavour family. 
+For further information on the innards of this GTK+ 3 driven desktop environment, please refer to the <a 
+href="http://news.siduction.org/2014/10/release-notes-for-sidcution-cinnamon-dev-release/">release notes</a> of that release.</p>
+<p>We gain two, we loose one. Razor-Qt is not released by us anymore as it is at it's end of life and merged into LXQt, which we have the 
+pleasure to talk about now, because that is the 2nd addition to our family. With our developer agaida being upstream of LXQt, we will always 
+have the very latest functional packages in our repositories. LXQt has matured a lot and deserves to be part of the family. Even though it has 
+not yet reached the polished swiftness of LXDE, it is on a good way. It has been completely built on Qt 5 and is in large parts prepared for 
+Wayland. </p>
+<h3>And besides that?</h3>
+<h4>KDE SC</h4>
+<p>KDE SC has matured to version 4.14.2, which is one of the last iterations of the KDE 4 chapter. We have taken Kickoff menu out and 
+implemented Homerun instead. Systemsettings has two new modules that debian does (not yet) have. One of them is called 'Desktop Search Advanced 
+and is a more detailed configuration module for Baloo, the successor of Nepomuk. Also, as a second search agent for Baloo besides Dolphin we 
+have integrated Milou into the panel. The other new module in systemsettings is labeled Systemd and ships a plethora of options that can be of 
+tremendous help with configuring the systemd daemon. </p>
+<p>You can safely assume this is the last siduction release shipping software from KDE's fourth cycle. Our next release will ship Frameworks 5 
+and Plasma 5.</p>
+<h4>GNOME</h4>
+<p>GNOME shipped version is 3.14.1 and it brings new things. As GNOME is still pretty new in our release cycle, here is a few hints on how to run it:</p>
+<p>There are two ways to start your gnome-session:</p>
+  * <i>GNOME-Classic</i>, which implements the GNOME2 look<br />
+  * <i>GNOME</i>,  which implements the GNOME 3 look and desktop-effects<br /><br />
+  To choose GNOME or GNOME-CLASSIC users should choose default session from the display manager menu. By default in live mode GNOME 3 is started but it will use software rendering. To use GNOME 3 with hardware rendering, users of ATI cards must install <i>firmware-linux-nonfree</i> before starting the installer.
+Boot cheatcode "gnome" was removed because it is now deprecated.
+Windows look in GNOME has changed because GNOME developers dropped minimize and maximize buttons. To minimize or maximize a window, you must use right click in the window title bar and choose minimize or maximize from the menu. Also, to maximize a window you can double click on the window title bar. We have added to Favourites Applications (aka Dash) some of most used applications. You will discover hexchat, transmission, libreoffice, siduction bug report tool, gnome-terminal and many more in Favourites Applications. 
+</p>
+<p>We ship, for the second time around, <b>noX</b> as an official release, which was introduced first in October 2012 as development release. As there 
+is no graphical environment, you need to use <i>cli-installer</i> as root to run the installation.</p>
+<p><b>XFCE</b> is still being shipped in version 4.10.1 and is as reliable as ever. It is a desktop environment that just gets out of your way 
+when work needs to be done.</p>
+<p>Next to <b>LXQt</b> we also ship the latest version of <b>LXDE</b>, which is also lightweight, but relies on GTK+ 2 instead of Qt. LXDE will 
+be developed as long as GTK+ 2 stays usable.</p>
+<p>A lot of time consuming changes again went into adapting the codebase we forked to our needs and integration of systemd.  Work on the 
+sidu-manual, as it is called now, is ongoing to make it a lot easier to add new content than before.</p><p>All in all <a 
+href="http://bugs.siduction.org/projects/siduction/issues/report">we closed around 230 bugs</a> since the last final release.</p>
+<p> The installer offers <i>btrfs</i> still as an experimental filesystem. Please be careful if you use it and always backup your data. Also, 
+the installer for now has been reduced to it's basic features until more sophisticated stuff works more reliably. Due to some internal changes 
+in fdisk some parts of the automatic partitioning have to be rewritten. as there was not enough time, we took that feature out for now.</p>
+<p>We had to makesome changes to the concept of our artwork. We used to devote each release to a rock song and try to have a matching artwork. 
+For two reasons we gave up on that idea. For one, for a while this year we had no art team at all. On the other hand it takes quite some time 
+to integrate artwork into the infrastructure in it's respective places and make it all work. With the new concept things became a bit easier, 
+all we basicaly need to do is alter the colours or patterns of the given artwork. The distro-art we are using for this and the following 
+releases for the forseeable future was created by Bob, a professional artist. Thanks a lot for your contribution!   </p>
+
+<h3>Our Resources</h3><br />
+<a href="http://siduction.org">siduction Forum</a><br />
+<a href="http://news.siduction.org">siduction Blog</a><br />
+<a href="http://git.siduction.org">Git Archive</a><br /> 
+<a href="http://siduction.org/index.php?module=news">Distro News</a><br />
+<a href="http://bugs.siduction.org/projects/siduction/issues/new">Bug-Tracker</a><br />
+<a href="http://bugs.siduction.org/projects/siduction/wiki/Map_Siduction">siduction-Map</a><br />
+<p>Support can be obtained on our forum as well as on IRC. The relevant channels on
+OFTC-Network are <i>#siduction</i> for english support or <i>#siduction-core</i>, if
+you like to join in and participate. On your desktop you also find an icon that takes
+you to the right channel for support, depending on the chosen language.</p>
+
+<p>To be able to act as a testbed for Debian, we are introducing our own bug-tracker.
+Let me explain how you can help us and Debian by submitting bugreports for broken
+packages. Weathered users will know how to file bugs directly with the Debian BTS
+(Bug Tracking System). For users not so comfortable with the system we have
+ <i>reportbug-ng</i> preinstalled.</p>
+<p>If you think, you found a bug in a Debian package,
+please start <i>reportbug-ng</i> and put the name of the package in the adressline on
+top. The app will now search through the already filed bugs for that package and show
+those. Now it's up to you to determine, if "your" bug has already been reported. If
+it is, ask yourself if you have anything relevant to add to this report or maybe even a
+patch. If not, you are done for this time. If the bug has not been reported yet
+and you are not familiar with the BTS yet, you may report the bug in our
+<a
+href="http://bugs.siduction.org/projects/siduction/issues/new">
+Bug-Tracker.</a></p>
+<p>That obviously goes for siduction packages as well. We will sort the bugs for you
+and file them in the appropriate place, if it's reproducible. Please look out for
+a forum post with more detailed info on the bug-tracker soon. If all this seems
+to complicated for now, feel free to use the bugs-thread on the forum for now,
+it will keep working until final release.</p>
+
+
+
+<p>There is nothing we can tell you about our release cycle other than that we strive for up to four releases per year, but that may vary 
+greatly, depending on developement of siduction and Debian Unstable.</p>
+<p>As we are always looking for contributors, here is what to do: Come to IRC to
+channel <i>#siduction-core</i> and talk to us about what you would like to do within
+the project, or where you think you could help. As you will notice if you scroll down, we have <b>no art-team</b> at the moment. If you are 
+willing and capable, talk to us.</p>
 <br /><br />
-<h3>Danke!</h3>
-<p>Ebenso danken wir allen Testern und all den Leuten, die uns auf alle erdenklichen
-Arten unterstützt haben. Dieses Release ist auch Euer Verdienst!</p>
-<p>Wir danken auch <b>Debian</b>, deren Basis wir uns bedienen</p>
+<h3>Hardware Tips</h3>
+<p>If you should own a ATI Radeon graphics accelerator, please use the failsafe option, when booting the Live-ISO. This option will add 
+the cheatcodes <i>radeon.modeset=0 xmodule=vesa</i> to the Kernel bootline, so that you can boot to X. Before installing, on the Live-ISO, 
+please install firmware-linux-nonfree.
+To do so, please open your <i>/etc/apt/sources.list.d/debian.list</i> with your
+favourite editor as root and append <i>contrib non-free</i> to the end of the first
+line. Save the edit and do:
+<pre>apt-get update &amp;&amp; apt-get install firmware-linux-nonfree</pre> If you install the operating system now, the package will be 
+installed also, preventing you from a garbled screen when first rebooting. Mind that if you rebootbefore installing the system, the changes you 
+made will be lost.</p>
+<p>If your system has wireless network, this will probably not work out of the box
+with free drivers, so you better start with wired network connected. You might want
+to use the script <i>fw-detect</i> to get information on wireless drivers. The
+installer will prompt you for any missing firmware and guide you through the process
+of installing it.</p>
+<p>Last but not least a hint for users of the kernel based virtual machine KVM. The developement of a frontend for the kernelbased virtual 
+machine (kvm) has begun as a fork of qemu with the name qemu-kvm or short "kvm". Since qemu version 1.4 all patches of the kvm fork have been 
+integrated back into the qemu source. Also there has been much progress in the field of virtualization. So there is a lot of outdated 
+documentation around. We have a current <a 
+href="http://wiki.siduction.de/index.php?title=Virtualize_siduction_with_qemu-system-x86_64">worksheet for Qemu in our wiki</a>.
+<br />
+<h3>Credits for siduction 2014.1</h3>
+<h4>Core Team:</h4>
+Alf Gaida (agaida) <br />
+Angelescu Ovidiu (convbsd) <br />
+Axel Beu (ab) <br />
+Ferdinand Thommes (devil) <br />
+J. Theede (musca) <br />
+Tom Wroblewski (GoingEasy9) <br />
+Torsten Wohlfarth (towo) <br />
+<br />
+
+<h4>Maintainers of the siduction Desktop Environments:</h4>
+<b>Cinnamon</b>:  J. Theede (musca) <br />
+<b>Gnome</b>:     Angelescu Ovidiu (convbsd) <br />
+<b>KDE</b>:	      Ferdinand Thommes (devil), José Manuel Santamaría Lema (santa)<br />	
+<b>LXDE</b>:      Alf Gaida (agaida) <br />
+<b>LXQt</b>:      Alf Gaida (agaida) <br />
+<b>noX</b>:       Alf Gaida (agaida) <br />
+<b>XFCE</b>:      Torsten Wohlfarth (towo) <br />
+<b>Xorg</b>:      agaida/convbsd <br />
+<br />
+<h4>Art Team:</h4>
+Bob<br />
+We <b>need</b> more contributors for siduction release art!
 <br />
 <br />
-Im Namen des gesamten siduction Teams:
+<h4>Code, ideas and support:</h4>
+ayla <br />
+bluelupo <br />
+der_bud <br />
+J. Hamatoma (hama) <br />
+Markus Schimpf (arno911) <br />
+bodhi<br />
 <br />
+<h3>Thank you!</h3>
+<p>Also thank you very much to all testers and all the people giving us support
+in any possible way. This is also your achievement.</p>
+<p>We also want to thank <b>Debian</b>, as we are using their base.</p>
+And now enjoy!<br />
+<br />
+On behalf of the siduction team:<br />
 Ferdinand Thommes
-</ul>
 </div> <!-- main-page -->
 </body>
 </html>

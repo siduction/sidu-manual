@@ -1,15 +1,26 @@
-sidu-manual (2014.11.22) unstable; urgency=medium
+sidu-manual (2014.11.24.2) unstable; urgency=medium
+
+  * menu for sys-admin-systemd_en
+  * adapting sys-admin-systemd_en+de for sidu-manual
+
+ -- J. Hamatoma <hama@siduction.net>  Sun, 23 Nov 2014 12:00:16 +0100
+
+sidu-manual (2014.11.24.1) unstable; urgency=medium
+
+  * data/de/sys-admin-release_de.htm copied from en
+  * some changes in credits* and sys-admin-release_en
+  * correct dir in development/build.. (fugly, but working)
+  * some new debian/rules (auto-create search)
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 23 Nov 2014 00:53:02 +0100
+
+sidu-manual (2014.11.23) unstable; urgency=medium
 
   [ Ferdinand Thommes ]
   * added release note_de
   * add sys-admin-systemd_en / _de for manual; refers to: #1736
   * uploaded release notes_en 2014.1
   * edited release notes_en
-
-  [ J. Hamatoma ]
-  * menu for sys-admin-systemd_en
-  * adapting sys-admin-systemd_en+de for sidu-manual
-  * updated search db (de+en only)
 
  -- J. Hamatoma <hama@siduction.net>  Sun, 23 Nov 2014 11:20:16 +0100
 
