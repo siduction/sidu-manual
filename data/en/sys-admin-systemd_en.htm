@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>siduction Manuals - Systemd</title>
-	<style type="text/css" media="all">@import url("../css/content.css");</style>
+   <title>siduction Manuals - RSYNC</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <style type="text/css" media="all">@import url("../css/content.css");</style>
         <style type="text/css" media="all">@import url("../css/menu.css");</style>
         <style type="text/css" media="print">@import url("../css/print.css");</style>
         <link rel ="shortcut icon" href="../favicon.ico" />
@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="../css/ie_5-6_override.css">
         <![endif]-->
 </head>
-<body	class="body-main">
+<body class="body-main">
 <div>
 <div id="main-page">
 	<div class="divider" id="systemd">
@@ -64,7 +64,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <pre># update grub</pre>
 <p>Another reboot and check for PID 1 should show systemd as init. The initial install and testing is done now. Lets look at some things that systemd does better than sysvinit or that sysvinit does not do at all since it is a pure init handling system.</p>
 </br>
-<h3>Setting up the journal</h3>
+<h3 id="journal">Setting up the journal</h3>
 <p>First of all, wevset up the <i>journal</i>. It is a substitute for the trusty and rusty old <i>rsyslog</i>. Journal does a few things better than <i>rsyslog</i>. The biggest gain is, that it starts logging a lot earlier in the boot process than <i>rsyslog</i>. That is possible because it drafts from the kernels logging system <i>kmesg</i>. Besides that, the options to query the journal are superiour to the old ways. So you can either remove <i>rsyslog</i> now or do that later. You can also run both side by side. The journal can also be read and queried as a simple user, no root needed. For that you have to add your user to a new group and grant the appropriate rights. The following steps are only needed if you run siduction 2013.2 or earlier. From siduction 2014.1 these settigs are integrated already.</p>
 <p>First you set up the new group:</p>
 <pre># addgroup --system systemd-journal</pre>
@@ -76,7 +76,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <pre># gpasswd -a $user systemd-journal</pre>
 <p>You need to substitute your actual user with $user</p>
 </br>
-<h3>Mastering journalctl</h3>
+<h3 id="journalctl">Mastering journalctl</h3>
 <p>Now you can access the journal as user. Lets see how that is done:</p>
 <ul>
 	<li>journalctl --all - gives you the full journal of the system and all users</li>
@@ -144,7 +144,7 @@ Apr 07 23:03:09 siductionbox org.gtk.Private.AfcVolumeMonitor[2006]: ### debug: 
 Apr 07 23:03:09 siductionbox org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
 </pre>
 </br>
-<h3>Handling services with systemd</h3>
+<h3 id="services">Handling services with systemd</h3>
 One of systemd's main jobs is to start, stop or query services. This is done by the <span class="highlight-3">systemctl<span>-command
 <ul>
 	<li>systemctl --all - shows all units, including dead/empty ones</li>
@@ -160,20 +160,23 @@ One of systemd's main jobs is to start, stop or query services. This is done by 
 <p>Systemctl can be also paired with grep to do things like:</p>
 <pre>systemctl list-unit-files |grep enabled</pre>
 </br>
-<h3>Switching between runlevels</h3>
+<h3 id="runlevels">Switching between runlevels</h3>
 <p>Systemd has new commands for switching, what was until now called runlevels. The new term is <span class="highlight-3">targets</span></p>
 <ul>
 <li>systemctl isolate graphical.target - will take you to what you know as init 5</li>
 <li>systemctl isolate multi-user.target - will take you to what you know as init 3</li>
 </ul>
 
-<h3>Important: Using the commands you used before systemd</h3>
+<h3 id="oldcommands">Important: Using the commands you used before systemd</h3>
 <p>As long as systemd-sysv is installed, you can decide if you want to use the old commands you are used to or learn and use the new ones. You can also use a mix of both. This goes for as long as systemd-sysv exists. Most likely it will at least be around until the end of life for the upcoming Debian 8 "Jessie", which means at least 4-5 years.</p>
 
-<h3>Other systemd functionality</h3>
+<h3 id="other">Other systemd functionality</h3>
 <p>Sysmtemd offers some more functionality. One of those is <a href="http://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> as the successor to the unmaintained <i>ConsoleKit</i>. Last but not least, let me introduce one of the power options systemd offers. With <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> one can quickly spawn a container for debugging and testing things. There is a lot more to it, so a look into the <a href="http://www.freedesktop.org/wiki/Software/systemd/">Linklist at Freedesktop</a>.</p> will reveal a lot more, including the systemd blog by Lennart Poettrering.
-</body>
-</html>
 </div>
 
 	<div id="rev">Page last revised by devil, 22/11/2014 2100 UTC</div>
+</div>
+</div>
+</body>
+</html>
+	
