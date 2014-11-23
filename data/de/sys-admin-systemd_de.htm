@@ -19,7 +19,7 @@
 <body class="body-main">
 <div>
 <div id="main-page">
-	<div class="divider" id="apt-cook">
+	<div class="divider" id="systemd">
 		<h2 id="top-header">Systemd - System- und Dienste-Manager</h2>
 <p><span class="highlight-3">Systemd ist ein System- und Service-Manager, der mit seiner Init-Komponente in Konkurrenz zum alteingesessenen Sysvint und Ubuntus Upstart steht. Entwickelt wird es federführend von den Red Hat Entwicklern Lennart Poettering und Kay Sievers. Debian wird Systemd als Standard bei Debian 8 "Jessie" einführen, Ubuntu wird die Entwicklung von Upstart zugunsten von Systemd aufgeben. Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits Systemd als Standard-Init-System .</span></p>
 <div class="spacer01"></div>
@@ -64,7 +64,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <pre># update grub</pre>
 <p>Ein erneuter Neustart und der Check nach PID 1 sollte Systemd als PID 1 zeigen. Damit ist die Installation und Einrichtung abgeschlossen. Jetzt ist der Blick frei für die Dinge, die Systemd besser macht als der Vorgänger oder die Sysvinit als reiner Init-Dienst gar nicht konnte.</p>
 </br>
-<h3>Einrichten des Journal</h3>
+<h3 id="journal">Einrichten des Journals</h3>
 <p>Das <i>Journal</i> ist ein Ersatz für <i>Syslog</i> und macht einiges besser als sein Vorgänger. Journal protokolliert viel früher als Syslog, da es Informationen des Kernel-Loggers <i>kmesg</i> mit einbezieht. Zudem sind auch die Auswertungsmöglichkeiten des Journal deutlich besser als vorher. Das Journal kann außerdem auch als normaler User benutzt werden, wenn wir es entsprechend einrichten. Dazu müssen wir unseren User einer neuen Gruppe zufügen und die Rechte entsprechend setzten. Diese Schritte müssen nur bei siduction 2013.2 und früher vorgenommen werden. Bei siduction ab 2014.1 ist bereits alles entsprechend eingerichtet.</p>
 <p>Zunächst richten wir die Gruppe ein:</p>
 <pre># addgroup --system systemd-journal</pre>
@@ -76,7 +76,7 @@ To continue type in the phrase 'Yes, do as I say!'</pre>
 <pre># gpasswd -a $user systemd-journal</pre>
 <p>Für$user muss hier der eigene User eingetragen werden</p>
 </br>
-<h3>Journalctl beherrschen</h3>
+<h3 id="journalctl">Journalctl beherrschen</h3>
 <p>Jetzt kannst Du das Journal als einfacher User benutzen. Hier sind einige Beispiele:</p>
 <ul>
 	<li>journalctl --all - gibt das volle Journal aller User aus</li>
@@ -147,7 +147,7 @@ Apr 07 23:03:09 siductionbox org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: 
 </pre> 
 <p>Weitere Optionen bietet die Manpage von <i>journalctl</i>.Jetzt kann rsyslog entfernt werden, du kannst es aber auch neben dem Journal weiterlaufen lassen.</p>
 </br>
-<h3>Handhabung von Diensten mittels Systemd</h3>
+<h3 id="services">Handhabung von Diensten mittels Systemd</h3>
 Einer der Jobs von Systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl <span class="highlight-3">systemctl<span>-c
 <ul>
 	<li>systemctl --all - shows all units, including dead/empty ones</li>
@@ -164,21 +164,22 @@ Einer der Jobs von Systemd ist es Dienste zu starten, zu stoppen oder sonstwie z
 <pre>systemctl list-unit-files |grep enabled</pre>
 
 </br>
-<h3>Zwischen Runleveln wechseln</h3>
+<h3 id="runlevels">Zwischen Runleveln wechseln</h3>
 <p>Systemd kennt neue Regeln zum Wechseln zwischen dem, was bisher als Runlevel bekannt war Der neue Terminus ist <span class="highlight-3">targets</span></p>
 <ul>
 <li>systemctl isolate graphical.target - wechselt nach init 5</li>
 <li>systemctl isolate multi-user.target - wechselt nach init 3</li>
 </ul>
 <p>Weitere Optionen bietet die Manpage von <i>systemctl</i></p>.
-<h3>Wichtig: Nutzung der bisher gewohnten Befehle:</h3>
+<h3 id="oldcommands">Wichtig: Nutzung der bisher gewohnten Befehle:</h3>
 <p>Solange <i>systemd-sysv</i> installiert ist, kannst Du selbst entscheiden, ob Du die gewohnten Befehle verwenden willst oder die neuen Befehle von Systemd übernehmen willst. Du kannst auch beide Arten mixen bis die neuen Befehle im Gedächtnis verankert sind. Diese Kompatibilität wird vermutlich für die Lebensspanne von Debian 8 "Jessie" erhalten bleiben, also rund 4-5 Jahre.</p>
 
-<h3>Andere Funktionen von Systemd</h3>
+<h3 id="other">Andere Funktionen von Systemd</h3>
 <p>Systemd bietet noch weitere Funktionen. Eine davon ist <a href="http://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> als Ersatz für das nicht mehr weiter gepflegte <i>ConsoleKit</i>. Damit steuert Systemd Sitzungen und Powermanagement. Nicht zuletzt bietet Systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> und viele weitere. Ein Blick in die Linkliste auf 
 <a href="http://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu Systemd.</p>
+<div id="rev">Seite zuletzt aktualisert 22.11.2014 1800 UTC</div>
+
+</div>
+</div>
 </body>
 </html>
-</body>
-</html>
-<div id="rev">Page last revised 22/11/2014 1800 UTC</div>

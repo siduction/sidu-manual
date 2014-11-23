@@ -11,6 +11,7 @@ Build-Depends: debhelper (>= 9),
  dh-systemd,
  inkscape,
  imagemagick,
+ pyygle,
 Standards-Version: 3.9.6
 Homepage: http://siduction.org
 Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
