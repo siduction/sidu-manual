@@ -1,6 +1,6 @@
 #! /bin/bash
 #set -x
-TRG=~/manuals
+TRG=../data
 test -d $TRG || mkdir $TRG
 PYGGLE=/usr/share/pyygle/pyygle_src/pyygle.py
 for lang in de en it pl pt-br ro ; do

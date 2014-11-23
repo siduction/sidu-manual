@@ -1,7 +1,9 @@
-sidu-manual (2014.11.24) unstable; urgency=medium
+sidu-manual (2014.11.24.1) unstable; urgency=medium
 
-  * gelöscht: data/de/sys-admin-release_de.htm
+  * data/de/sys-admin-release_de.htm copied from en
   * some changes in credits* and sys-admin-release_en
+  * correct dir in development/build.. (fugly, but working)
+  * some new debian/rules (auto-create search)
 
  -- Alf Gaida <agaida@siduction.org>  Sun, 23 Nov 2014 00:53:02 +0100
 
