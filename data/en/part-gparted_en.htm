@@ -23,7 +23,7 @@
 		<h2 id="top-header">Partitioning your HD using Gparted/KDE Partition Manager</h2>
 			<h5><span class="highlight-2">WARNING: for disk naming</span><a href="part-uuid-en.htm#uuid"> Please refer to UUID, Partition Labelling and fstab, as by default siduction uses UUID</a></h5>
 
-			<h5>Partitioning tools may request a root password, type <span class="highlight-3">sux</span> then your password. On a Live-ISO none is set <span class="highlight-3">sux</span> then press 'enter' . See: <a href="live-mode-en.htm#rootpw" >Live Mode</a></h5>
+			<h5>Partitioning tools may request a root password, type <span class="highlight-3">suxterm</span> then your password. On a Live-ISO none is set <span class="highlight-3">suxterm</span> then press 'enter' . See: <a href="live-mode-en.htm#rootpw" >Live Mode</a></h5>
 	<div class="spacer02"></div>
 							<p class="warning-box">Resizing the NTFS partition requires you to reboot the system immediately! DON'T DO any other operations on this partition before the reboot, otherwise you will get errors.<a href="part-gparted-en.htm#ntfs"> Please read this.</a></p>
 
@@ -39,12 +39,12 @@
 
 						  <h3>KDE Partition Manager - run in a terminal:</h3>
 <pre>
-sux
+suxterm
 partitionmanager
 </pre>
 						  <h3>Gparted - run in a terminal:</h3>
 <pre>
-sux
+suxterm
 gparted
 </pre>
 
@@ -149,7 +149,7 @@ gparted
 							<p class="highlight-2"><b>Be warned</b>: Whilst the ntfs-3g is stated to be 'stable', never use it without external backup, and of course not on production systems! If you do, it's your fault if your data gets lost, so use at your own risk!</p>
 
 							<p>Open a shell and enter the following commands:See <a href="part-cfdisk-en.htm#disknames" >Partitioning your HD - Disk Naming</a></p>
-<pre >sux
+<pre >suxterm
 apt-get update &amp;&amp; apt-get install ntfs-3g
 umount /media/xdxx
 mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
@@ -159,7 +159,7 @@ To get out of the konsole type: exit
 							<p>Now your NTFS Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 
 		</div>
-		<div id="rev">Content last revised 14/01/2012 1500 UTC</div>
+		<div id="rev">Content last revised 26/11/2014 2000 UTC</div>
 
 </div>
 </div>

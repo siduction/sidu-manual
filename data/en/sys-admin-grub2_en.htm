@@ -193,7 +193,7 @@ update-grub
 						<ol>
 							<li>To identify and confirm your partitions (e.g. [h,s]d[a..]X) all the following actions need root privileges, so to get root (#):
 <pre>
-$ sux
+$ su
 </pre>
 							</li>
 							<li>When in root type in:
@@ -226,7 +226,7 @@ mount /dev/xdxx /media/xdxx
 
 							<p>To recover Grub, if it has been overwritten or corrupted in the MBR, set up a <span class="highlight-3">chroot</span> environment. <span class="highlight-3">Any live.iso will suffice as the chroot takes you to your hard disk installed system so you can restore the appropriate grub version, grub1 (grub-legacy) or grub2.</span></p>
 
-							<p>Boot up a live siduction.iso that is appropriate for your system (32 or 64 bit CD, DVD, USB stick or an SSD card) and open the konsole. Type in <span class="highlight-3">sux</span> and press enter to give you root permissions.</p>
+							<p>Boot up a live siduction.iso that is appropriate for your system (32 or 64 bit CD, DVD, USB stick or an SSD card) and open the konsole. Type in <span class="highlight-3">su</span> and press enter to give you root permissions.</p>
 
 							<p>Using <span class="highlight-3">fdisk -l or blkid</span>, ascertain which partition is the boot partition and get the correct names. If you prefer a GUI use <span class="highlight-3">Gparted</span>:</p>
 <pre>

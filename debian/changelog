@@ -1,9 +1,10 @@
-sidu-manual (2014.11.24.4) UNRELEASED; urgency=medium
+sidu-manual (2014.11.24.5) UNRELEASED; urgency=medium
 
   * edit of sys-admin-release_de.htm
   * fixed mentions of sux in live-mode-en and -de
+  * substituted sux with su or suxterm as appropriate in en and de
 
- -- Ferdinand Thommes <devil@siduction.org>  Wed, 26 Nov 2014 19:50:32 +0100
+ -- Ferdinand Thommes <devil@siduction.org>  Wed, 26 Nov 2014 21:02:10 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 

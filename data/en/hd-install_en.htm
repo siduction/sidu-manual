@@ -220,20 +220,20 @@ man deluser
 							<p><span class="highlight-3">kuser</span> can create new user as well, however you will need to manually adjust the group permissions for that user.</p>
 
 	</div>
-	<div class="divider" id="sux">
-	<h2>About sux</h2>
+	<div class="divider" id="suxterm">
+	<h2>About suxterm</h2>
 							<p>Numerous commands need to be run with root privileges. To achieve this you type:</p>
 <pre>
-sux
+suxterm
 </pre>
 
-							<p>While the common command for becoming root is 'su'  using <span class="highlight-3">sux</span> instead will allow you run GUI / X11 applications from the command line and allow root to start graphical applications, as <span class="highlight-3">sux</span> is a wrapper around the standard su command which will transfer  your X credentials to the target user.</p>
+							<p>While the common command for becoming root is 'su'  using <span class="highlight-3">suxterm</span> instead will allow you run GUI / X11 applications from the command line and allow root to start graphical applications, as <span class="highlight-3">suxterm</span> is a wrapper around the standard su command which will transfer  your X credentials to the target user.</p>
 
 							<p>Some KDE applications require <span class="highlight-3">dbus-launch</span> in front of the application:</p>
 <pre>
 dbus-launch &lt;Application&gt;
 </pre>
-							<p>An example of running an X11 app via sux is to use a text editor to edit a root file like kwrite or kate, to do partitioning with gparted or an Xapp file manager like konqueror. You can also alter root files by right clicking the file and choosing 'edit-as-root', and entering your root password, this will call kdesu in the background.</p>
+							<p>An example of running an X11 app via suxterm is to use a text editor to edit a root file like kwrite or kate, to do partitioning with gparted or an Xapp file manager like konqueror. You can also alter root files by right clicking the file and choosing 'edit-as-root', and entering your root password, this will call kdesu in the background.</p>
 
 							<p>Unlike 'sudo', it  means that someone can't just come along and type 'sudo' and make potentially damaging changes to your system.</p>
 
@@ -241,7 +241,7 @@ dbus-launch &lt;Application&gt;
 
 							<p class="highlight-2">Under no circumstances should you be as root in the console/terminal to run applications that a standard user uses to go about being productive on a day to day basis, like sending emails, creating spreadsheets or surfing the internet and so forth. </p>
 	</div>
-	<div id="rev">Content last revised 11/03/2012 1800 UTC</div>
+	<div id="rev">Content last revised 26/11/2014 1800 UTC</div>
 
 </div>
 </div>
