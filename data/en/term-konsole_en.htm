@@ -34,7 +34,7 @@ username@hostname:~$
 
 							<p>You should recognise the username as your own login name. The <span class="highlight-3">~ (tilde)</span> indicates that you are in your home directory and <span class="highlight-3">$</span> indicates that you are logged in with user privilege. At the end you will have your cursor. This is your command line where you will enter the commands you want to execute.</p>
 
-							<p>A lot of commands need to be run with root privileges. To achieve this you type:<span class="highlight-3">sux</span> at the prompt and press enter. You will then be asked for your root password. Type your password and hit enter again (note that when you type your password, nothing will show on the screen).</p>
+							<p>A lot of commands need to be run with root privileges. To achieve this you type:<span class="highlight-3">suxterm</span> at the prompt and press enter. You will then be asked for your root password. Type your password and hit enter again (note that when you type your password, nothing will show on the screen).</p>
 
 							<p>If your password is correct the prompt will change to:</p>
 
@@ -50,7 +50,7 @@ root@hostname:/home/username#
 # apt-get install something
 </pre>
 
-							<p>Means: Open a terminal, become root (sux) and enter the command at the # prompt.  <span class="highlight-4">(Don't type the #)</span></p>
+							<p>Means: Open a terminal, become root (suxterm) and enter the command at the # prompt.  <span class="highlight-4">(Don't type the #)</span></p>
 
 							<p>Sometimes a konsole and/or terminal may become corrupted, type:</p>
 <pre>
@@ -102,7 +102,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u@\h\[\033[01;36m\]:\[\03
 
 				<h6>To change your root# prompt colour:</h6>
 <pre>
-sux
+suxterm
 &lt;editor&gt; /root/.bashrc
 </pre>
 							<p>Go to line 39 and uncomment it, thus:</p>
@@ -125,16 +125,16 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[01;31m\]:\[\03
 
 							<p>There are a plethora of options available for changing colours, however the recommendation is to keep it simple.</p>
 	</div>
-	<div class="divider" id="sux">
-	<h2>About sux</h2>
+	<div class="divider" id="suxterm">
+	<h2>About suxterm</h2>
 							<p>Numerous commands need to be run with root privileges. To achieve this you type in a terminal:</p>
 <pre>
-sux
+suxterm
 </pre>
 
-							<p>While the common command for becoming root is 'su',  using <span class="highlight-3">sux</span> instead will allow you run GUI / X11 applications from the command line and allow root to start graphical applications, as <span class="highlight-3">sux</span> is a wrapper around the standard su command which will transfer  your X credentials to the target user. (See also <a href="#sudo"> sudo</a>).</p>
+							<p>While the common command for becoming root is 'su',  using <span class="highlight-3">suxterm</span> instead will allow you run GUI / X11 applications from the command line and allow root to start graphical applications, as <span class="highlight-3">suxterm</span> is a wrapper around the standard su command which will transfer  your X credentials to the target user. (See also <a href="#sudo"> sudo</a>).</p>
 
-							<p>An example of running an X11 app via sux is to use a text editor to edit a root file with kwrite or kate, or to do partitioning with gparted or use an Xapp file manager like dolphin or thunar. </p>
+							<p>An example of running an X11 app via suxterm is to use a text editor to edit a root file with kwrite or kate, or to do partitioning with gparted or use an Xapp file manager like dolphin or thunar. </p>
 
 
 				<h6>KDE keyboard options</h6>
@@ -184,7 +184,7 @@ su-to-root -X -c &lt;Application&gt;
 					<h2>sudo is not supported</h2>
 							<p>sudo is not enabled by default on installation to hard disk. It is available for use on a live-ISO since no root password is preset. The reasoning behind this is so that if an attacker gets hold of the users password, they do not immediately get full super-user priviledges and make potentially damaging changes to your system.</p>
 
-							<p>Another issue with sudo is that it leads to running a root application with a users configuration, which may override or change permissions. In some cases, this can subsequently make an application unusable for the user. Use <span class="highlight-3"><a href="#sux">sux</a>, kdesu, gksu or su-to-root -X -c</span> as recommended!</p>
+							<p>Another issue with sudo is that it leads to running a root application with a users configuration, which may override or change permissions. In some cases, this can subsequently make an application unusable for the user. Use <span class="highlight-3"><a href="#suxterm">suxterm</a>, kdesu, gksu or su-to-root -X -c</span> as recommended!</p>
 
 					  <h2>Being in root</h2>
 							<p class="highlight-2">WARNING: While you are logged in as root, the system will not stop you from doing potentially dangerous things like deleting important files etc., you have to be absolutely sure about what you are doing, because it's very possible to seriously harm your system. </p>
@@ -246,14 +246,14 @@ $ apropos apt-
 ./name_of_shell-script
 </pre>
 
-							<p class="highlight-3">Some scripts require root access (sux) in a terminal and others do not, it depends entirely on the purpose of the script.</p>
+							<p class="highlight-3">Some scripts require root access (suxterm) in a terminal and others do not, it depends entirely on the purpose of the script.</p>
 
 			<h5>Script Installation and execution procedure</h5>
-   							<p>Use wget to download the script file, placing it wherever it has been recommended to place it <span class="highlight-3">(for example it may ask you to place it in /usr/local/bin) </span>, you can use your mouse copy and paste file name directly into your konsole window, after logging in as <span class="highlight-3">sux</span></p>
+   							<p>Use wget to download the script file, placing it wherever it has been recommended to place it <span class="highlight-3">(for example it may ask you to place it in /usr/local/bin) </span>, you can use your mouse copy and paste file name directly into your konsole window, after logging in as <span class="highlight-3">suxterm</span></p>
 
-					<h6>Example of using wget that requires <span class="highlight-3">root access (sux) </span></h6>
+					<h6>Example of using wget that requires <span class="highlight-3">root access (suxterm) </span></h6>
 <pre>
-sux
+suxterm
 cd /usr/local/bin
 wget script-name
 </pre>
@@ -286,7 +286,7 @@ Welcome to siduction-manuals http://manual.siduction.org
 
 	</div>
 
-	<div id="rev">Page last revised 017/01/2012 1800 UTC</div>
+	<div id="rev">Page last revised 26/11/2014 2000 UTC</div>
 
 </div>
 </div>
