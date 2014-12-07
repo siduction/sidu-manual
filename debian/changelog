@@ -1,10 +1,15 @@
-sidu-manual (2014.11.24.5) UNRELEASED; urgency=medium
+sidu-manual (2014.11.24.6) UNRELEASED; urgency=medium
 
+  [ Ferdinand Thommes ]
   * edit of sys-admin-release_de.htm
   * fixed mentions of sux in live-mode-en and -de
   * substituted sux with su or suxterm as appropriate in en and de
 
- -- Ferdinand Thommes <devil@siduction.org>  Wed, 26 Nov 2014 21:02:10 +0100
+  [ J. Hamatoma ]
+  * new tool: html2wiki.py
+  * usage: html2wiki.py <source1> <source2>...
+
+ -- J. Hamatoma <hama@siduction.net>  Sun, 07 Dec 2014 21:11:49 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 
