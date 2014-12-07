@@ -1,4 +1,4 @@
-sidu-manual (2014.11.24.6) UNRELEASED; urgency=medium
+sidu-manual (2014.12.07) UNRELEASED; urgency=medium
 
   [ Ferdinand Thommes ]
   * edit of sys-admin-release_de.htm
@@ -8,8 +8,9 @@ sidu-manual (2014.11.24.6) UNRELEASED; urgency=medium
   [ J. Hamatoma ]
   * new tool: html2wiki.py
   * usage: html2wiki.py <source1> <source2>...
+  * some corrections to use the command
 
- -- J. Hamatoma <hama@siduction.net>  Sun, 07 Dec 2014 21:11:49 +0100
+ -- J. Hamatoma <hama@siduction.net>  Sun, 07 Dec 2014 23:35:02 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 

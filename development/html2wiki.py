@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 '''
 Created on 30.11.2014
 
@@ -59,11 +60,11 @@ class StackOfParseState:
         @return:    -1: tag not found<br>
                     otherwise: the highest index of all entries with the tag
         '''
-        ix = len(self._stack)
+        ix = len(self._stack) - 1
         while ix >= 0:
-            ix -= 1
             if self._stack[ix]._tag == tag:
                 break
+            ix -= 1
         return ix
         
     def pop(self, tag, state):
@@ -288,7 +289,7 @@ class Document:
         while body != "":
             matcher = patternTag.search(body)
             if matcher == None:
-                self.outText(body)
+                self.outText(body, state)
                 body = ""
             else:
                 text = body[0:matcher.start(0)]
@@ -302,6 +303,8 @@ class Document:
                     state._endLine = lineNo
                     self.handleTagEnd(tag, state)
                     state = stack.pop(tag, state)
+                    if state == None:
+                        state = ParseState(tag)
                 else:
                     newState = stack.push(tag)
                     self.deriveState(state, newState)
@@ -332,8 +335,11 @@ class Document:
         @param oldState:    the prior state
         @param newState:    the current state
         '''
-        newState._prefixList = oldState._prefixList
-        newState._listLevel = oldState._listLevel
+        if newState == None or oldState == None:
+            pass
+        else:
+            newState._prefixList = oldState._prefixList
+            newState._listLevel = oldState._listLevel
         
     def endOfBlock(self, state):
         '''Handles the end of a block tag.
@@ -437,7 +443,7 @@ class Document:
         '''
         self.readLines()
         self.extractContent()
-        self._paragraphs = self.buildParagraphs("".join(self._lines))
+        self.parse("".join(self._lines))
      
     def out(self, text, state):
         '''Writes a text to the output file.
@@ -693,4 +699,4 @@ def main(argv):
 
       
 if __name__ == '__main__':
-    main(sys.argv[:1])
+    main(sys.argv[1:])
