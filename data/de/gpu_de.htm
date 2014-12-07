@@ -37,12 +37,12 @@
 							<p>Mehr Informationen zu <a href= "http://www.x.org/wiki/IntelGraphicsDriver"> Intel</a> &nbsp; <a href= "http://www.x.org/wiki/radeon"> ATI/AMD </a> &nbsp; <a href= "http://nouveau.freedesktop.org/wiki/FeatureMatrix"> nouveau</a>&nbsp; <a href= "http://xorg.freedesktop.org"> X.Org</a></p>
 	      </div>
 	      <div class="divider" id="x2d">
-			<h2>2D video drivers</h2>
+			<h2>2D Videotreiber</h2>
 
 							<p>X-Server-Treiber von X.Org (siehe xserver-xorg für eine eingehendere Beschreibung) bieten Unterstützung für Grafikkarten der nVidia-Serien Riva, TNT, GeForce und Quadro, für Grafikkarten der ATI-Serien Mach, Rage, Radeon und FireGL (mittels der Subtreiber atimisc, r128 und radeon) und für die freien 3D-Treiber von Intel. Sowohl Radeon als auch Intel unterstützen 2D-Beschleunigung (textured xv) zum Abspielen von Videos.</p>
 	      </div>
 	      <div class="divider" id="ati-3d">
-					  <h2>ATI/AMD 3D Drivers</h2>
+					  <h2>ATI/AMD 3D-Treiber</h2>
 							<p>3D (und somit auch KDE4-Animation) einiger Grafikkarten von ATI kann auch mit <span class="highlight-3">xserver-xorg-video-radeon</span> aktiviert werden. Im Augenblick sind Chipsets bis r700 unterstützt. Einen aktuellen Überblick gibt stets das <a href= "http://wiki.x.org/wiki/RadeonFeature"> Radeon-Wiki</a></p>
 
 							<p>Um nicht freie Firmware automatisch installiert zu bekommen, wenn sie für 2D- und 3D-Grafikkarten aktualisiert werden:</p>
@@ -54,7 +54,7 @@ apt-get install firmware-linux-nonfree
 	 </div>
 	<div class="divider" id="intel">
 					  <h2>Intel 2D and 3D</h2>
-							<p>Die 2D- und 3D-Grafikbeschleunigung sollte mit Intel-Treiber ohne Probleme funktionieren. Diese Funktionalität ist in die freien Intel-Serien inkludiert.</p>
+							<p>Die 2D- und 3D-Grafikbeschleunigung sollte mit Intel-Treiber ohne Probleme funktionieren. Diese Funktionalität ist in die freien Intel-Serien integriert.</p>
 		</div>
 	<div class="divider" id="nvidia">
 		<h2>Binäre, nicht quelloffene Treiber für nVidia mit dkms &amp; xorg.conf.d</h2>
@@ -93,7 +93,7 @@ lspci | grep -i vga
 <pre>
 01:00.0 VGA compatible controller:
 </pre>
-							<p>In unserem Beispiel wird die BusID 01:00.0 in einer neuen Zeile unter der Zeile mit dem Treiber ("Driver") eingefügt. Zu beachten jedoch ist, dass die Syntax in xorg.conf anders ist: <span class="highlight-3">PCI:x:y:z:</span> - führende Nullen werden nicht geschrieben und es werden nur Doppelpunkte verwendet. Der Eintrag ist daher:</p>
+							<p>In unserem Beispiel wird die BusID 01:00.0 in einer neuen Zeile unter der Zeile mit dem Treiber ("Driver") eingefügt. Zu beachten ist, dass die Syntax in xorg.conf anders ist: <span class="highlight-3">PCI:x:y:z:</span> - führende Nullen werden nicht geschrieben und es werden nur Doppelpunkte verwendet. Der Eintrag ist daher:</p>
 
 <pre>
 BusID		 "PCI:1:0:0"
@@ -138,7 +138,7 @@ apt-get install --reinstall nvidia-legacy-173xx-driver
 </pre>
 					<h4>Wenn das Modul nicht lädt</h4>
 
-							<p>Falls nvidia - aus welchem Grund auch immer nicht lädt:</p>
+							<p>Falls nvidia - aus welchem Grund auch immer, nicht lädt:</p>
 <pre>
 modprobe nvidia
 </pre>
@@ -148,7 +148,7 @@ modprobe nvidia
 
 		</div>
 
-	<div id="rev">Page last revised 25/11/2013 20:30 UTC</div>
+	<div id="rev">Page last revised 17/11/2014 19:30 UTC</div>
 
 </div>
 </div>

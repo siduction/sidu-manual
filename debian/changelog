@@ -1,3 +1,11 @@
+sidu-manual (2014.11.24.5) UNRELEASED; urgency=medium
+
+  * edit of sys-admin-release_de.htm
+  * fixed mentions of sux in live-mode-en and -de
+  * substituted sux with su or suxterm as appropriate in en and de
+
+ -- Ferdinand Thommes <devil@siduction.org>  Wed, 26 Nov 2014 21:02:10 +0100
+
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 
   * menu for sys-admin-systemd_en
@@ -39,6 +47,16 @@ sidu-manual (2014.11.02) unstable; urgency=medium
   * correct redirection to welcome
 
  -- J. Hamatoma <hama@siduction.net>  Thu, 23 Oct 2014 00:10:46 +0200
+
+sidu-manual (2014.10.12) UNRELEASED; urgency=medium
+
+  [ Andreas Hausmann ]
+  * typo in part-gparted; closes #1730 
+
+  [ Andreas Hausmann ]
+  * translated some phrase into german; closes #1729 , #1728  
+
+ -- Andreas Hausmann <lovelock@web.de>  Sat, 15 Nov 2014 19:14:46 +0100
 
 sidu-manual (2014.10.11) unstable; urgency=medium
 
