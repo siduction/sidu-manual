@@ -35,16 +35,16 @@ class Session(SessionBase):
             language = self._language
         fn = "{:s}data/{:s}/{:s}_{:s}".format(self._homeDir, language, name,
                 language)
-        fn2 = fn + ".htm"
+        fn2 = fn + ".txt"
         exists = os.path.exists(fn2)
         if not exists:
-            fn2 = fn + ".txt"
+            fn2 = fn + ".htm"
             exists = os.path.exists(fn2)
         if not exists and language != 'en':
             fn = self._homeDir + 'data/en/' + name + '_en'
-            fn2 = fn + ".htm"
+            fn2 = fn + ".txt"
             if not os.path.exists(fn2):
-                fn2 =fn + ".txt"
+                fn2 =fn + ".htm"
             if not os.path.exists(fn2):
                 raise Exception("not found: " + " full: " + name + fn2)
         return fn2
@@ -114,9 +114,12 @@ class Session(SessionBase):
                         otherwise: the wiki page convertet into HTML
         '''
         content = self.readFile(name)
-        if content.startswith("mediawiki"):
+        if content.startswith("<!--mediawiki-->"):
             converter = MediaWikiConverter()
-            content = converter.convert(content)
+            content = converter.convert(content[16:])
+        else:
+            self.error(None, "unknown wiki format in {:s}. expected: <!--mediawiki-->"
+                       .format(name))
         return content
     
     def buildStaticPage(self, page, menuBody):

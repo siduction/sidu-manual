@@ -20,7 +20,7 @@ class TestConverter(MediaWikiConverter):
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self._testAll = False
+        self._testAll = True
 
     def tearDown(self):
         pass
@@ -139,7 +139,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
             return
         doc = TestConverter()
         doc.parse("<div>X\n<pre>1<2&2>4\n2\n</pre>\n<pre>A\nB</pre></div>")
-        self.assertEquals(['X \n\n', '<pre>1<2&2>4\n2\n\n</pre>\n', '<pre>A\nB\n</pre>\n'],
+        self.assertEquals(['X \n\n', '<pre>1<2&2>4\n2\n</pre>\n', '<pre>A\nB</pre>\n'],
                           doc._lines)
                            
     def testHx(self):

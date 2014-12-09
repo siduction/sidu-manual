@@ -120,6 +120,7 @@ class Document:
         self._blockEndText = None
         if self._fnOutput != None:
             self._fpOut = open(self._fnOutput, "w")
+            self._fpOut.write("<!--mediawiki-->\n")
         self._patternBlockTags = re.compile(r'(div|ol|ul|li)$', re.IGNORECASE)
         self._patternNotSpace = re.compile(r'\S')
         self._patternHRef = re.compile(r'href="([^"]+)"', re.IGNORECASE)
@@ -585,7 +586,7 @@ class MediaWikiConverter (Document):
         '''
         if attr != None:
             self.out("<pre" + attr + ">", state)
-            self._blockEndText = "\n</pre>\n"
+            self._blockEndText = "</pre>\n"
         
     def onB(self, state, attr):
         '''Handles a bold start or end.

@@ -1,4 +1,4 @@
-sidu-manual (2014.12.07) UNRELEASED; urgency=medium
+sidu-manual (2014.12.08) UNRELEASED; urgency=medium
 
   [ Ferdinand Thommes ]
   * edit of sys-admin-release_de.htm
@@ -9,8 +9,12 @@ sidu-manual (2014.12.07) UNRELEASED; urgency=medium
   * new tool: html2wiki.py
   * usage: html2wiki.py <source1> <source2>...
   * some corrections to use the command
+  * wiki pages (*.txt) have precedence over html pages (*.htm)
+  * html2wiki.py inserts <!--mediawiki-->
+  * unicode issues in wiki2html
+  * html2wiki: superflous newline before </pre> removed
 
- -- J. Hamatoma <hama@siduction.net>  Sun, 07 Dec 2014 23:35:02 +0100
+ -- J. Hamatoma <hama@siduction.net>  Tue, 09 Dec 2014 23:56:32 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 
