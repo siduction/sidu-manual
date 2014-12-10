@@ -1,4 +1,4 @@
-sidu-manual (2014.12.08) UNRELEASED; urgency=medium
+sidu-manual (2014.12.09) UNRELEASED; urgency=medium
 
   [ Ferdinand Thommes ]
   * edit of sys-admin-release_de.htm
@@ -13,8 +13,9 @@ sidu-manual (2014.12.08) UNRELEASED; urgency=medium
   * html2wiki.py inserts <!--mediawiki-->
   * unicode issues in wiki2html
   * html2wiki: superflous newline before </pre> removed
+  * html2wiki: removing IE warning
 
- -- J. Hamatoma <hama@siduction.net>  Tue, 09 Dec 2014 23:56:32 +0100
+ -- J. Hamatoma <hama@siduction.net>  Thu, 11 Dec 2014 00:15:10 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 

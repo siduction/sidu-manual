@@ -281,6 +281,7 @@ class Document:
         '''Parses the html text.
         Search for HTML tags and call the translation methods of these elements.
         '''
+        body = re.sub(r'<!--\[if lt IE 10\][^\]]+?endif\]-->', '', body)
         stack = StackOfParseState(self)
         patternTag = re.compile(r'<(/)?(\w+)([^>]*?)(\s*/\s*)?>')
         # the following state is not part of the stack
@@ -522,7 +523,7 @@ class MediaWikiConverter (Document):
         @param attr:    attributes of the tag
         '''
         if attr.find('id="') >= 0 or attr.find('class="') >= 0:
-            self.out("<div" + attr + "></div>\n", state)
+            self.out("<div" + attr + " />\n", state)
 
     def onDiv(self, state, attr):
         '''Handles a DIV start or end.
