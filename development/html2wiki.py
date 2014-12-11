@@ -26,12 +26,13 @@ class ParseState:
         self._innerClass = None
         self._listLevel = 0
         self._removeNewlines = True
-        self._breakLines = True
+        self._breakLines = False
         self._textOutside = False
         self._startLine = 0
         self._endLine = 0
         self._prefixList = None
         self._attributes = None
+        self._stripBlanks = False
     
 class StackOfParseState:
     '''Maintains a stack of parser states.
@@ -263,6 +264,15 @@ class Document:
         @param text:    text to convert
         @param state:   the parser state
         '''
+        if state._stripBlanks:
+            ix = 0
+            if text.find('Alle Rechte') >= 0:
+                pass
+            while ix < len(text) and text[ix] == ' ':
+                ix += 1
+            if ix > 0:
+                text = text[ix:]
+            state._stripBlanks = False
         text = self.translateText(text, state)
         self.out(text, state)
 
@@ -283,7 +293,8 @@ class Document:
         '''
         body = re.sub(r'<!--\[if lt IE 10\][^\]]+?endif\]-->', '', body)
         stack = StackOfParseState(self)
-        patternTag = re.compile(r'<(/)?(\w+)([^>]*?)(\s*/\s*)?>')
+        #--------------------------12-2-3---34------45-------5-----67----7--6--1
+        patternTag = re.compile(r'<((/)?(\w+)([^>]*?)(\s*/\s*)?|!--((.|\n)*?)--)>')
         # the following state is not part of the stack
         # it will be not used in correct syntax (no text outside of tags)
         state = ParseState("div")
@@ -299,38 +310,42 @@ class Document:
                 body = body[matcher.end(0):]
                 if not self.isEmpty(text):
                     self.outText(text, state)
-                isEnd = matcher.group(1) != None
-                tag = matcher.group(2).lower()
-                if isEnd:
-                    state._endLine = lineNo
-                    self.handleTagEnd(tag, state)
-                    state = stack.pop(tag, state)
-                    if state == None:
-                        state = ParseState(tag)
+                # Comment?
+                if matcher.group(6) != None:
+                    self.onComment(matcher.group(6), state)
                 else:
-                    newState = stack.push(tag)
-                    self.deriveState(state, newState)
-                    state = newState
-                    state._startLine = lineNo
-                    attr = matcher.group(3)
-                    if attr != None:
-                        lineNo += attr.count("\n")
-                    self.handleTagStart(tag, state, attr)
-                    # <TAG/>?
-                    if matcher.group(4) != None:
+                    isEnd = matcher.group(2) != None
+                    tag = matcher.group(3).lower()
+                    if isEnd:
                         state._endLine = lineNo
                         self.handleTagEnd(tag, state)
                         state = stack.pop(tag, state)
-                    elif tag == 'pre':
-                        # ignore all '<' until '</pre>':
-                        ix = body.find("</pre>")
-                        if ix < 0:
-                            text = body
-                            body = ""
-                        else:
-                            text = body[0:ix]
-                            body = body[ix:]
-                        self.out(text, state)
+                        if state == None:
+                            state = ParseState(tag)
+                    else:
+                        newState = stack.push(tag)
+                        self.deriveState(state, newState)
+                        state = newState
+                        state._startLine = lineNo
+                        attr = matcher.group(4)
+                        if attr != None:
+                            lineNo += attr.count("\n")
+                        self.handleTagStart(tag, state, attr)
+                        # <TAG/>?
+                        if matcher.group(5) != None:
+                            state._endLine = lineNo
+                            self.handleTagEnd(tag, state)
+                            state = stack.pop(tag, state)
+                        elif tag == 'pre':
+                            # ignore all '<' until '</pre>':
+                            ix = body.find("</pre>")
+                            if ix < 0:
+                                text = body
+                                body = ""
+                            else:
+                                text = body[0:ix]
+                                body = body[ix:]
+                            self.out(text, state)
 
     def deriveState(self, oldState, newState):
         '''Derives some data from the prior state.
@@ -532,8 +547,10 @@ class MediaWikiConverter (Document):
                       otherwise: the tag attributes, e.g. class
         '''
         if attr != None:
+            state._stripBlanks = True
             self.handleAttributes(state, attr)
             self._blockEndText = "\n\n"
+            self._breakLines = True
      
     def onHx(self, state, attr):
         '''Handles a headline start or end.
@@ -677,7 +694,14 @@ class MediaWikiConverter (Document):
                 attr = ' ' + attr
             self.out("<{:s}{:s}>".format(tag, attr))
      
-       
+    def onComment(self, text, state):
+        '''Handles a comment.
+        @param text:    the comment itself
+        @param state: the current parser state
+        '''
+        text = text.replace("\n", ' ')
+        self.out("<!--{:s}-->".format(text), state)
+        
 def usage(err):
     '''Writes a usage message and stopps the program.
     '''

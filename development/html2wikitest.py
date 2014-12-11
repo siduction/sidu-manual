@@ -20,7 +20,7 @@ class TestConverter(MediaWikiConverter):
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self._testAll = True
+        self._testAll = False
 
     def tearDown(self):
         pass
@@ -79,6 +79,7 @@ class Test(unittest.TestCase):
         doc = TestConverter()
         doc._wrapLength = 5
         state = ParseState("div")
+        state._breakLines = True
         doc.out("1234. ((1*(2+(4))) and so on", state)
         self.assertEqual(doc._outLines[0], "1234.\n")
         self.assertEqual(doc._outLines[1], "((1*(\n")
@@ -135,7 +136,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
         self.assertEquals(["*1\n", "*2\n", "* X\n", "**A\n", "**B\n"], doc._lines)
 
     def testPre(self):
-        if False and not self._testAll:
+        if not self._testAll:
             return
         doc = TestConverter()
         doc.parse("<div>X\n<pre>1<2&2>4\n2\n</pre>\n<pre>A\nB</pre></div>")
@@ -155,10 +156,10 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
         doc = TestConverter()
         doc.parse('<div id="first" class="highlighed"><h1 id="x1">H1</h1></div>')
         self.assertEquals(['<div id="first" class="highlighed"></div>' + "\n\n\n",
-                '<div id="x1"></div>' + "\n= H1 =\n"],
+                '<div id="x1" />' + "\n= H1 =\n"],
                 doc._lines)
     def testA(self):
-        if False and not self._testAll:
+        if not self._testAll:
             return
         doc = TestConverter()
         doc.parse('<p>X<a href="http://bahn.de">Bahn</a>Y</p>')
@@ -170,7 +171,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
             return
         doc = TestConverter()
         doc.parse('<div>X<div class="screenshot"><img src="any" title="start" alt="s"/></div>Y</div>')
-        self.assertEquals(['X[[any|class=screenshot|alt=s|start]]\n\n', 'Y\n\n'],
+        self.assertEquals(['X<div class="screenshot" />\n[[any|class=screenshot|alt=s|start]]\n\n', 'Y\n\n'],
                 doc._lines)
      
     def testB(self):
