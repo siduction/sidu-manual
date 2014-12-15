@@ -1,4 +1,4 @@
-sidu-manual (2014.12.11) UNRELEASED; urgency=medium
+sidu-manual (2014.12.15) unstable; urgency=medium
 
   [ Ferdinand Thommes ]
   * edit of sys-admin-release_de.htm
@@ -22,7 +22,7 @@ sidu-manual (2014.12.11) UNRELEASED; urgency=medium
   ** better class/id derivation
   * pageframe.html: XHTML correctness improved: missing <div>
 
- -- J. Hamatoma <hama@siduction.net>  Tue, 16 Dec 2014 00:16:36 +0100
+ -- J. Hamatoma <hama@siduction.net>  Tue, 16 Dec 2014 00:40:49 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 

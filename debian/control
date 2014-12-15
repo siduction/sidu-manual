@@ -22,7 +22,7 @@ Architecture: all
 Pre-Depends:
  pyygle (>=2013.12.03),
  pywwetha (>=2014.09.29),
- sidu-base(>= 2014.09.26),
+ sidu-base(>= 2014.12.15),
 Depends:
  ${misc:Depends},
  sidu-manual-data,
