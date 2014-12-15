@@ -20,7 +20,7 @@ class TestConverter(MediaWikiConverter):
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self._testAll = False
+        self._testAll = True
 
     def tearDown(self):
         pass
@@ -70,7 +70,7 @@ class Test(unittest.TestCase):
         if not self._testAll:
             return
         doc = MediaWikiConverter(None)
-        state = ParseState("")
+        state = ParseState("", None)
         self.assertEquals("<& >", doc.translateText("&lt;&amp;\n   &gt;", state))
                 
     def testWrap(self):
@@ -78,7 +78,7 @@ class Test(unittest.TestCase):
             return
         doc = TestConverter()
         doc._wrapLength = 5
-        state = ParseState("div")
+        state = ParseState("div", None)
         state._breakLines = True
         doc.out("1234. ((1*(2+(4))) and so on", state)
         self.assertEqual(doc._outLines[0], "1234.\n")
@@ -126,21 +126,21 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
             return
         doc = TestConverter()
         doc.parse("<ol><li>1\n<ol><li>A</li><li>B</li></ol>\n</li><li>2</li><li>\nX</li></ol>")
-        self.assertEquals(["#1 \n", "##A\n", "##B\n", "#2\n", "# X\n"], doc._lines)
+        self.assertEquals(["#1 ", "##A\n", "##B\n", "#2\n", "# X\n"], doc._lines)
 
     def testUl(self):
         if not self._testAll:
             return
         doc = TestConverter()
         doc.parse("<ul><li>1</li><li>2</li><li>\nX<ul><li>A</li><li>B</li></ul>\n</li></ul>")
-        self.assertEquals(["*1\n", "*2\n", "* X\n", "**A\n", "**B\n"], doc._lines)
+        self.assertEquals(["*1\n", "*2\n", "* X", "**A\n", "**B\n"], doc._lines)
 
     def testPre(self):
         if not self._testAll:
             return
         doc = TestConverter()
         doc.parse("<div>X\n<pre>1<2&2>4\n2\n</pre>\n<pre>A\nB</pre></div>")
-        self.assertEquals(['X \n\n', '<pre>1<2&2>4\n2\n</pre>\n', '<pre>A\nB</pre>\n'],
+        self.assertEquals(['X ', '<pre>1<2&2>4\n2\n</pre>\n', '<pre>A\nB</pre>\n'],
                           doc._lines)
                            
     def testHx(self):
@@ -148,15 +148,15 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
             return
         doc = TestConverter()
         doc.parse("<div><h1>H1</h1><p>X</p><h2>H2</h2></div>")
-        self.assertEquals(["= H1 =\n", "X\n\n", "== H2 ==\n"],
+        self.assertEquals(["= H1 =\n\n", "X\n\n", "== H2 ==\n\n"],
                           doc._lines)
     def testId(self):
         if not self._testAll:
             return
         doc = TestConverter()
         doc.parse('<div id="first" class="highlighed"><h1 id="x1">H1</h1></div>')
-        self.assertEquals(['<div id="first" class="highlighed"></div>' + "\n\n\n",
-                '<div id="x1" />' + "\n= H1 =\n"],
+        self.assertEquals(['<!--class="highlighed"-->\n<span id="first"></span>\n',
+                '= <span id="x1"></span>H1 =\n\n'],
                 doc._lines)
     def testA(self):
         if not self._testAll:
@@ -167,11 +167,11 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
                 doc._lines)
      
     def testImg(self):
-        if False and not self._testAll:
+        if not self._testAll:
             return
         doc = TestConverter()
         doc.parse('<div>X<div class="screenshot"><img src="any" title="start" alt="s"/></div>Y</div>')
-        self.assertEquals(['X<div class="screenshot" />\n[[any|class=screenshot|alt=s|start]]\n\n', 'Y\n\n'],
+        self.assertEquals(['X[[any|class=screenshot|alt=s|start]]\n\n', 'Y\n\n'],
                 doc._lines)
      
     def testB(self):
@@ -198,6 +198,41 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
         self.assertEquals(['<span class="x">blabla</span>\n\n'],
                 doc._lines)
            
+    def testTable(self):
+        if not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('<table><tr><td>1_1</td><td>1_2</td></tr></table>')
+        self.assertEquals(['{| \n', '|-\n| 1_1\n', '| 1_2\n|}\n'],
+                doc._lines)
+        
+    def testTable2(self):
+        if not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('<table>\n<tr>\n<th>H_1</th>\n<th>H_2</th>\n</tr>\n'
+                  + '<tr>\n<td>A_1</td>\n<td>A_2</td>\n</tr>\n</table>\n')
+        self.assertEquals(['{| \n', '|+\n| H_1\n', '| H_2\n', '|-\n| A_1\n', 
+                           '| A_2\n|}\n '],
+                doc._lines)
+        
+    def testBr(self):
+        if not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('<p>a<br />\nb<br>\n</p>')
+        self.assertEquals(['a<br/>b<br/>\n\n'],
+                doc._lines)
+    def testBr2(self):
+        if False and not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('<p><span class="A">a</span><br />\n'
+                  + '<span class="B">b</span><br>c</p>')
+        self.assertEquals(['<span class="A">a</span><br/>'
+                           + '<span class="B">b</span><br/>c\n\n'],
+                doc._lines)
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testExtractContext']
     unittest.main()

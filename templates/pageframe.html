@@ -24,11 +24,12 @@
         <div id="siduction-header">
             <div id="header_logo">
                 <a class="pict_link" href="http://forum.siduction.org">
-                     <img id="header_logo_img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/logos/logo.png">
+                     <img id="header_logo_img" alt="{{.txt_alt_logo}}" src="{{STATIC_URL}}/static/logos/logo.png" />
                 </a>
             </div>
             <div id="top-lang"> <!-- language selection top-menu -->
                 <form action="_language" method="get">
+                <div>
                     <span>{{.txt_lang_switch}}: </span>
                     <a href="_language?language=de&amp;button_select=x">de</a>
                     <a href="_language?language=en&amp;button_select=x">en</a>
@@ -37,6 +38,7 @@
                     <a href="_language?language=pt-br&amp;button_select=x">pt-br</a>
                     <a href="_language?language=ro&amp;button_select=x">ro</a>
                     <input type="submit" name="button_select"/>
+                </div>
                 </form>
             </div>  <!-- language selection end -->
             <div id="top-navigation">
@@ -55,20 +57,21 @@
             </div> <!-- top-navigation -->
         </div> <!-- siduction-header -->
 
-        <div class="frame" class="to-top">
+        <div class="frame to-top">
             <div id="main_content_section">
                 <div id="menu">
-
                     <div class="menuitem">
                         <span class="topslice">
                             <span></span>
                         </span>
                         <div class="center">
                         	<form action="!search">
+                        	  <div>
                             	<input type="text" name="phrases"></input> <br />
                             	<input type="submit" value="Suchen" name="button_search"></input> <br />
                              <a href="!search"><b>{{.txt_search}}</b></a>
-                             </form>
+                             </div>
+                           </form>
                         </div>
                         <span class="botslice">
                             <span></span>

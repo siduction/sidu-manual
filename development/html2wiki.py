@@ -17,12 +17,18 @@ def error(msg):
     @param msg:    the message to write
     '''
     sys.stderr.write("+++ " + msg + "\n");
-    
+ 
+g_stateId = 0
+  
 class ParseState:
     '''Stores the state while the parsing process
+    @param parent: the ParseState above in the stack 
     '''
-    def __init__(self, tag):
+    def __init__(self, tag, parent):
+        global g_stateId
         self._tag = tag
+        self._id = g_stateId
+        g_stateId += 1
         self._innerClass = None
         self._listLevel = 0
         self._removeNewlines = True
@@ -33,6 +39,9 @@ class ParseState:
         self._prefixList = None
         self._attributes = None
         self._stripBlanks = False
+        self._blockEndText = None
+        self._parent = parent
+        self._rowState = None
     
 class StackOfParseState:
     '''Maintains a stack of parser states.
@@ -51,7 +60,8 @@ class StackOfParseState:
         @param tag:    the tag belonging to the state
         @return:        the new state (top of stack)
         '''
-        rc = ParseState(tag)
+        parent = None if len(self._stack) == 0 else self._stack[len(self._stack) - 1]
+        rc = ParseState(tag, parent)
         self._stack.append(rc)
         return rc
 
@@ -118,17 +128,17 @@ class Document:
         self._footerLines = 0
         self._fpOut = None
         self._blockEndReached = True
-        self._blockEndText = None
         if self._fnOutput != None:
             self._fpOut = open(self._fnOutput, "w")
             self._fpOut.write("<!--mediawiki-->\n")
-        self._patternBlockTags = re.compile(r'(div|ol|ul|li)$', re.IGNORECASE)
+        self._patternBlockTags = re.compile(r'(div|[ou]l|li|table|tbody|t[rdh])$', re.IGNORECASE)
         self._patternNotSpace = re.compile(r'\S')
         self._patternHRef = re.compile(r'href="([^"]+)"', re.IGNORECASE)
         self._patternAbsoluteUrl = re.compile(r'(https?|ftp):')
         self._patternSrc = re.compile(r'src="([^"]+)"', re.IGNORECASE)
         self._patternTitle = re.compile(r'title="([^"]+)"', re.IGNORECASE)
         self._patternAlt = re.compile(r'alt="([^"]+)"', re.IGNORECASE)
+        self._autoEnd = ['br']
         self._outBuffer = ""
         self._outLines = []
         self._wrapLength = 72
@@ -254,6 +264,8 @@ class Document:
         text = text.replace('&lt;', '<').replace('&gt;', '>')
         text = text.replace('&amp;', '&').replace("\t", ' ')
         if state._removeNewlines:
+            if self._outBuffer.endswith('<br/>') and text[0] == "\n":
+                text = text[1:]
             text = text.replace("\n", ' ')
         while text.find('  ') >= 0:
             text = text.replace('  ', ' ')
@@ -297,7 +309,7 @@ class Document:
         patternTag = re.compile(r'<((/)?(\w+)([^>]*?)(\s*/\s*)?|!--((.|\n)*?)--)>')
         # the following state is not part of the stack
         # it will be not used in correct syntax (no text outside of tags)
-        state = ParseState("div")
+        state = ParseState("div", None)
         lineNo = self._headerLines
         while body != "":
             matcher = patternTag.search(body)
@@ -321,7 +333,7 @@ class Document:
                         self.handleTagEnd(tag, state)
                         state = stack.pop(tag, state)
                         if state == None:
-                            state = ParseState(tag)
+                            state = ParseState(tag, None)
                     else:
                         newState = stack.push(tag)
                         self.deriveState(state, newState)
@@ -332,7 +344,7 @@ class Document:
                             lineNo += attr.count("\n")
                         self.handleTagStart(tag, state, attr)
                         # <TAG/>?
-                        if matcher.group(5) != None:
+                        if tag in self._autoEnd or matcher.group(5) != None:
                             state._endLine = lineNo
                             self.handleTagEnd(tag, state)
                             state = stack.pop(tag, state)
@@ -346,6 +358,7 @@ class Document:
                                 text = body[0:ix]
                                 body = body[ix:]
                             self.out(text, state)
+        self.endOfBlock(state)
 
     def deriveState(self, oldState, newState):
         '''Derives some data from the prior state.
@@ -364,7 +377,7 @@ class Document:
         '''
         if not self._blockEndReached:
             # avoid too many newlines after a line wrap (aligned to the line end):
-            value = self._blockEndText if self._blockEndText != None else ""
+            value = state._blockEndText if state._blockEndText != None else ""
             if value.startswith("\n") and len(self._outBuffer) == 0:
                 value = value[1:]
             self.out(value, state)
@@ -409,6 +422,23 @@ class Document:
             self.onA(state, attr)
         elif tag == "img":
             self.onImg(state, attr)
+        elif tag == "br":
+            self.onBr(state, attr)
+        elif tag == 'table':
+            self.endOfBlock(state)
+            self.onTable(state, attr)
+        elif tag == 'tbody':
+            self.endOfBlock(state)
+            self.onTBody(state, attr)
+        elif tag == 'tr':
+            self.endOfBlock(state)
+            self.onTr(state, attr)
+        elif tag == 'td':
+            self.endOfBlock(state)
+            self.onTd(state, attr)
+        elif tag == 'th':
+            self.endOfBlock(state)
+            self.onTh(state, attr)
         else:
             error("{:s}-{:d}: unknown tag: {:s}".format(
                 self._fnInput, state._startLine, tag))
@@ -452,6 +482,16 @@ class Document:
             self.onImg(state, None)
         elif tag == 'br':
             self.onBr(state, None)
+        elif tag == 'table':
+            self.onTable(state, None)
+        elif tag == 'tbody':
+            self.onTBody(state, None)
+        elif tag == 'tr':
+            self.onTr(state, None)
+        elif tag == 'td':
+            self.onTd(state, None)
+        elif tag == 'th':
+            self.onTh(state, None)
         else:
             self.onGeneric(state, None)
                       
@@ -529,7 +569,8 @@ class MediaWikiConverter (Document):
         # " wrap behind: !$%?>,;.:)}|*]\n  wrap above:  \t \&/=<-+#~{[{
         # note: |* # are wiki meta symbols at top of line:
         self.setWrapSettings(r'|\\&/=<+#~{\[{\t ', r'-+>!$%?>,;.:)}\]|*\n')
-        self._patternDivClass = re.compile('<div class="([^"]+)"></div>\n$')
+        self._patternDivClass = re.compile('<!--class="([^"]+)"-->\s*$')
+        self._openIds = []
 
     def handleAttributes(self, state, attr):
         '''Handles class and id for tags which don't have class or id.
@@ -537,9 +578,43 @@ class MediaWikiConverter (Document):
         @param state:   the current parser state
         @param attr:    attributes of the tag
         '''
-        if attr.find('id="') >= 0 or attr.find('class="') >= 0:
-            self.out("<div" + attr + " />\n", state)
+        ix = attr.find('id="')
+        if ix >= 0:
+            ix += 4
+            ix2 = attr.find('"', ix)
+            ident = attr[ix:ix2]
+            self._openIds.append(ident)
+        ix = attr.find('class="')
+        if ix >= 0:
+            ix += 7
+            ix2 = attr.find('"', ix)
+            ident = attr[ix:ix2]
+            self.out('<!--class="{:s}"-->\n'.format(ident), state)
 
+    def outAnchors(self, state, writeNewline = False):
+        '''Write all open (not written) anchors. 
+        @param state:   the current parser state
+        @param newline: True: write a newline after all id's<br>
+                        False: do nothing
+        '''
+        if len(self._openIds) > 0:
+            for ident in self._openIds:
+                self.out('<span id="{:s}"></span>'.format(ident), state)
+            if writeNewline:
+                self.out("\n", state)
+            self._openIds.clear()
+     
+    def pickOpenAnchor(self, attr):
+        '''Appends the first open anchor to the attributes.
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr.find('id="') <= 0 and len(self._openIds) > 0:
+            ident = self._openIds[0]
+            self._openIds = self.openIds[1:]
+            attr += ' id="{:s}"'.format(ident)
+        return attr
+               
     def onDiv(self, state, attr):
         '''Handles a DIV start or end.
         @param state: the current parser state
@@ -549,8 +624,9 @@ class MediaWikiConverter (Document):
         if attr != None:
             state._stripBlanks = True
             self.handleAttributes(state, attr)
-            self._blockEndText = "\n\n"
+            state._blockEndText = "\n\n"
             self._breakLines = True
+            self.outAnchors(state, True)
      
     def onHx(self, state, attr):
         '''Handles a headline start or end.
@@ -562,7 +638,8 @@ class MediaWikiConverter (Document):
             self.handleAttributes(state, attr)
             frame = "=" * (ord(state._tag[1]) - ord('0'))
             self.out(frame + ' ', state)
-            self._blockEndText = " " + frame + "\n"
+            self.outAnchors(state)
+            state._blockEndText = " " + frame + "\n\n"
      
     def onOl(self, state, attr):
         '''Handles an ordered list start or end.
@@ -573,7 +650,7 @@ class MediaWikiConverter (Document):
         if attr != None:
             self.handleAttributes(state, attr)
             state._prefixList = "#" * state._listLevel
-            self._blockEndText = ""
+            state._blockEndText = ""
         
     def onUl(self, state, attr):
         '''Handles an unordered list start or end.
@@ -584,7 +661,7 @@ class MediaWikiConverter (Document):
         if attr != None:
             self.handleAttributes(state, attr)
             state._prefixList = "*" * state._listLevel
-            self._blockEndText = ""
+            state._blockEndText = ""
         
     def onLi(self, state, attr):
         '''Handles a list item start or end.
@@ -594,7 +671,8 @@ class MediaWikiConverter (Document):
         '''
         if attr != None:
             self.out(state._prefixList, state)
-            self._blockEndText = "\n"
+            self.outAnchors(state)
+            state._blockEndText = "\n"
 
     def onPre(self, state, attr):
         '''Handles a pre section start or end.
@@ -603,8 +681,9 @@ class MediaWikiConverter (Document):
                       otherwise: the tag attributes, e.g. class
         '''
         if attr != None:
+            attr = self.pickOpenAnchor(attr)
             self.out("<pre" + attr + ">", state)
-            self._blockEndText = "</pre>\n"
+            state._blockEndText = "</pre>\n"
         
     def onB(self, state, attr):
         '''Handles a bold start or end.
@@ -660,7 +739,11 @@ class MediaWikiConverter (Document):
             title = self.getTitle(state._attributes)
             alt = self.getAlt(state._attributes)
             args = url
-            # transfer the class from the outer div:
+            # transfer the id from the outer div:
+            if len(self._openIds) > 0:
+                ident = self._openIds.pop()
+                args |= "id=" + ident
+            # transfer the class from the outer div:    
             matcher = self._patternDivClass.search(self._outBuffer)
             if matcher != None:
                 args += "|class=" + matcher.group(1)
@@ -678,8 +761,75 @@ class MediaWikiConverter (Document):
                       otherwise: the tag attributes, e.g. class
         '''
         if attr != None:
-            self.out("<br/>")
+            self.out("<br/>", state)
      
+    def onTable(self, state, attr):
+        '''Handles a table.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            if len(attr) > 0 and not attr.startswith(' '):
+                attr = ' ' + attr
+            self.endOfBlock(state)
+            self.out("{| " + attr + "\n", state)
+            state._blockEndText = "\n"
+        else:
+            self.out("|}\n", state)
+    
+    def onTBody(self, state, attr):
+        '''Handles a table body.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            pass
+
+    def onTr(self, state, attr):
+        '''Handles a table row.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            state._parent._rowState = None
+        
+    def onTd(self, state, attr):
+        '''Handles a table data.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            parent = state._parent
+            if parent._rowState == None or parent._rowState == 'th':
+                self.out("|-\n", state)
+                parent._rowState = "td"
+            if len(attr) > 0:
+                attr += " | " + attr
+            self.out("| " + attr, state)
+        else:
+            self.out("\n", state)
+        
+    def onTh(self, state, attr):
+        '''Handles a table column.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            parent = state._parent
+            if parent._rowState == None or parent._rowState == 'td':
+                self.out("|+\n", state)
+                parent._rowState = "th"
+            if len(attr) > 0:
+                attr += " | " + attr
+            self.out("| " + attr, state)
+        else:
+            self.out("\n", state)
+        
     def onGeneric(self, state, attr):
         '''Handles an italic start or end.
         @param state: the current parser state
@@ -692,7 +842,7 @@ class MediaWikiConverter (Document):
         else:
             if attr != "" and not attr.startswith(' '):
                 attr = ' ' + attr
-            self.out("<{:s}{:s}>".format(tag, attr))
+            self.out("<{:s}{:s}>".format(tag, attr), state)
      
     def onComment(self, text, state):
         '''Handles a comment.

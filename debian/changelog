@@ -1,4 +1,4 @@
-sidu-manual (2014.12.10) UNRELEASED; urgency=medium
+sidu-manual (2014.12.11) UNRELEASED; urgency=medium
 
   [ Ferdinand Thommes ]
   * edit of sys-admin-release_de.htm
@@ -12,13 +12,17 @@ sidu-manual (2014.12.10) UNRELEASED; urgency=medium
   * wiki pages (*.txt) have precedence over html pages (*.htm)
   * html2wiki.py inserts <!--mediawiki-->
   * unicode issues in wiki2html
-  * html2wiki: superflous newline before </pre> removed
-  * html2wiki: removing IE warning
-  * html2wiki: ParserState._breakLines corrected
-  * html2wiki: blanks starting a paragraph removed
-  * html2wiki: handling of a comment
+  * html2wiki:
+  ** superflous newline before </pre> removed
+  ** removing IE warning
+  ** ParserState._breakLines corrected
+  ** blanks starting a paragraph removed
+  ** handling of a comment
+  ** table, br
+  ** better class/id derivation
+  * pageframe.html: XHTML correctness improved: missing <div>
 
- -- J. Hamatoma <hama@siduction.net>  Thu, 11 Dec 2014 23:55:34 +0100
+ -- J. Hamatoma <hama@siduction.net>  Tue, 16 Dec 2014 00:16:36 +0100
 
 sidu-manual (2014.11.24.2) unstable; urgency=medium
 
