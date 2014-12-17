@@ -452,9 +452,6 @@ class Document:
         elif tag == 'th':
             self.endOfBlock(state)
             self.onTh(state, attr)
-        elif tag == 'em':
-            self.endOfBlock(state)
-            self.onEm(state, attr)
         else:
             error("{:s}-{:d}: unknown tag: {:s}".format(
                 self._fnInput, state._startLine, tag))
@@ -508,8 +505,6 @@ class Document:
             self.onTd(state, None)
         elif tag == 'th':
             self.onTh(state, None)
-        elif tag == 'em':
-            self.onEm(state, None)
         else:
             self.onGeneric(state, None)
 
@@ -719,14 +714,6 @@ class MediaWikiConverter (Document):
         '''
         self.out("''", state)
 
-    def onEm(self, state, attr):
-        '''Handles an emphasis start or end.
-        @param state: the current parser state
-        @param attr:  None: end of tag is reached<br>
-                      otherwise: the tag attributes, e.g. class
-        '''
-        self.out("''", state)
-        
     def onSpan(self, state, attr):
         '''Handles an italic start or end.
         @param state: the current parser state

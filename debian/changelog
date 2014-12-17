@@ -1,3 +1,13 @@
+sidu-manual (2014.12.17) unstable; urgency=medium
+
+  * automatic creation of a link (*.wiki -> *.txt)
+  * handling of &ge; and &le;
+  * improved handling of "\n" and blanks
+  * translation of <em>
+  * sysadmin-release.htm: lost text recovered. Normalized for html2wiki
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 18 Dec 2014 00:30:23 +0100
+
 sidu-manual (2014.12.15) unstable; urgency=medium
 
   [ Ferdinand Thommes ]
