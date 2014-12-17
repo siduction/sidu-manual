@@ -20,7 +20,7 @@ class TestConverter(MediaWikiConverter):
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self._testAll = True
+        self._testAll = False
 
     def tearDown(self):
         pass
@@ -126,21 +126,21 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
             return
         doc = TestConverter()
         doc.parse("<ol><li>1\n<ol><li>A</li><li>B</li></ol>\n</li><li>2</li><li>\nX</li></ol>")
-        self.assertEquals(["#1 ", "##A\n", "##B\n", "#2\n", "# X\n"], doc._lines)
+        self.assertEquals(["#1 \n", "##A\n", "##B\n", "#2\n", "#X\n"], doc._lines)
 
     def testUl(self):
-        if not self._testAll:
+        if False and not self._testAll:
             return
         doc = TestConverter()
-        doc.parse("<ul><li>1</li><li>2</li><li>\nX<ul><li>A</li><li>B</li></ul>\n</li></ul>")
-        self.assertEquals(["*1\n", "*2\n", "* X", "**A\n", "**B\n"], doc._lines)
+        doc.parse("<ul><li><b>True:</b>2&ge;1</li><li>2</li><li>\nX<ul><li>A</li><li>B</li></ul>\n</li></ul>")
+        self.assertEquals(["*'''True:'''2>=1\n", "*2\n", "*X\n", "**A\n", "**B\n"], doc._lines)
 
     def testPre(self):
         if not self._testAll:
             return
         doc = TestConverter()
         doc.parse("<div>X\n<pre>1<2&2>4\n2\n</pre>\n<pre>A\nB</pre></div>")
-        self.assertEquals(['X ', '<pre>1<2&2>4\n2\n</pre>\n', '<pre>A\nB</pre>\n'],
+        self.assertEquals(['X \n', '<pre>1<2&2>4\n2\n</pre>\n', '<pre>A\nB</pre>\n'],
                           doc._lines)
                            
     def testHx(self):
@@ -213,7 +213,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
         doc.parse('<table>\n<tr>\n<th>H_1</th>\n<th>H_2</th>\n</tr>\n'
                   + '<tr>\n<td>A_1</td>\n<td>A_2</td>\n</tr>\n</table>\n')
         self.assertEquals(['{| \n', '|+\n| H_1\n', '| H_2\n', '|-\n| A_1\n', 
-                           '| A_2\n|}\n '],
+                           '| A_2\n|}\n'],
                 doc._lines)
         
     def testBr(self):
@@ -224,7 +224,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
         self.assertEquals(['a<br/>b<br/>\n\n'],
                 doc._lines)
     def testBr2(self):
-        if False and not self._testAll:
+        if not self._testAll:
             return
         doc = TestConverter()
         doc.parse('<p><span class="A">a</span><br />\n'
@@ -233,6 +233,34 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
                            + '<span class="B">b</span><br/>c\n\n'],
                 doc._lines)
 
+    def testEmptyPre(self):
+        if not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('''<div><div><div>
+
+
+    </div>
+
+            <div id="rev">Page last revised 24/07/2012 1830 UTC</div>
+
+</div>
+</div>
+''')
+        self.assertEquals(['<span id="rev"></span>\nPage last revised 24/07/2012 1830 UTC\n\n'],
+                doc._lines)
+
+    def testNoBlockBr(self):
+        if not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('''<h4>Core Team:</h4>
+Alf Gaida (agaida) <br />
+<br />
+''')
+        self.assertEquals(['==== Core Team: ====\n\n',
+                           'Alf Gaida (agaida) <br/><br/>\n'],
+                doc._lines)
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testExtractContext']
     unittest.main()

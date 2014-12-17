@@ -131,6 +131,11 @@ class Document:
         if self._fnOutput != None:
             self._fpOut = open(self._fnOutput, "w")
             self._fpOut.write("<!--mediawiki-->\n")
+            linkName = self._fnOutput.replace(".wiki", ".txt")
+            if not os.path.exists(linkName):
+                src = os.path.basename(linkName).replace(".txt", ".wiki")
+                os.symlink(src, linkName)
+            
         self._patternBlockTags = re.compile(r'(div|[ou]l|li|table|tbody|t[rdh])$', re.IGNORECASE)
         self._patternNotSpace = re.compile(r'\S')
         self._patternHRef = re.compile(r'href="([^"]+)"', re.IGNORECASE)
@@ -262,9 +267,12 @@ class Document:
         @return:        the text without HTML meta symbols
         '''
         text = text.replace('&lt;', '<').replace('&gt;', '>')
+        text = text.replace('&le;', '<=').replace('&ge;', '>=')
         text = text.replace('&amp;', '&').replace("\t", ' ')
         if state._removeNewlines:
             if self._outBuffer.endswith('<br/>') and text[0] == "\n":
+                text = text[1:]
+            while text.startswith("\n"):
                 text = text[1:]
             text = text.replace("\n", ' ')
         while text.find('  ') >= 0:
@@ -278,8 +286,6 @@ class Document:
         '''
         if state._stripBlanks:
             ix = 0
-            if text.find('Alle Rechte') >= 0:
-                pass
             while ix < len(text) and text[ix] == ' ':
                 ix += 1
             if ix > 0:
@@ -314,12 +320,15 @@ class Document:
         while body != "":
             matcher = patternTag.search(body)
             if matcher == None:
-                self.outText(body, state)
+                if self._patternNotSpace.search(body) != None:
+                    self.outText(body, state)
                 body = ""
             else:
                 text = body[0:matcher.start(0)]
                 lineNo += text.count("\n")
                 body = body[matcher.end(0):]
+                if state == None:
+                    state = ParseState('?', None)
                 if not self.isEmpty(text):
                     self.outText(text, state)
                 # Comment?
@@ -358,6 +367,8 @@ class Document:
                                 text = body[0:ix]
                                 body = body[ix:]
                             self.out(text, state)
+        if state == None:
+            state = ParseState('', None)
         self.endOfBlock(state)
 
     def deriveState(self, oldState, newState):
@@ -381,6 +392,8 @@ class Document:
             if value.startswith("\n") and len(self._outBuffer) == 0:
                 value = value[1:]
             self.out(value, state)
+            if not self._outBuffer.endswith("\n"):
+                self.out("\n", state)
             self.outFlush()
             self._blockEndReached = True
            
@@ -414,7 +427,7 @@ class Document:
             self.onLi(state, attr)
         elif tag == "b" or tag == "strong":
             self.onB(state, attr)
-        elif tag == "i":
+        elif tag == "i" or tag == "em":
             self.onI(state, attr)
         elif tag == "span":
             self.onSpan(state, attr)
@@ -472,7 +485,7 @@ class Document:
             self.onLi(state, None)
         elif tag == 'b' or tag == 'strong':
             self.onB(state, None)
-        elif tag == 'i':
+        elif tag == 'i' or tag == 'em':
             self.onI(state, None)
         elif tag == 'span':
             self.onSpan(state, None)
@@ -838,7 +851,7 @@ class MediaWikiConverter (Document):
         '''
         tag = state._tag
         if attr == None:
-            self.out("</{:s}".format(tag))
+            self.out("</{:s}".format(tag), state)
         else:
             if attr != "" and not attr.startswith(' '):
                 attr = ' ' + attr
