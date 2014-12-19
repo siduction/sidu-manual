@@ -42,7 +42,8 @@ class ParseState:
         self._blockEndText = None
         self._parent = parent
         self._rowState = None
-    
+        self._defLevel = 0
+            
 class StackOfParseState:
     '''Maintains a stack of parser states.
     At the begin of each tag the state will be pushed and at the end this
@@ -136,7 +137,7 @@ class Document:
                 src = os.path.basename(linkName).replace(".txt", ".wiki")
                 os.symlink(src, linkName)
             
-        self._patternBlockTags = re.compile(r'(div|[ou]l|li|table|tbody|t[rdh])$', re.IGNORECASE)
+        self._patternBlockTags = re.compile(r'(div|[ou]l|li|d[ltd]|table|tbody|t[rdh])$', re.IGNORECASE)
         self._patternNotSpace = re.compile(r'\S')
         self._patternHRef = re.compile(r'href="([^"]+)"', re.IGNORECASE)
         self._patternAbsoluteUrl = re.compile(r'(https?|ftp):')
@@ -381,6 +382,7 @@ class Document:
         else:
             newState._prefixList = oldState._prefixList
             newState._listLevel = oldState._listLevel
+            newState._defLevel = oldState._defLevel
         
     def endOfBlock(self, state):
         '''Handles the end of a block tag.
@@ -425,6 +427,14 @@ class Document:
             self.onUl(state, attr)
         elif tag == "li":
             self.onLi(state, attr)
+        elif tag == "dl":
+            self.endOfBlock(state)
+            state._defLevel += 1
+            self.onDl(state, attr)
+        elif tag == "dt":
+            self.onDt(state, attr)
+        elif tag == "dd":
+            self.onDd(state, attr)
         elif tag == "b" or tag == "strong":
             self.onB(state, attr)
         elif tag == "i" or tag == "em":
@@ -483,6 +493,16 @@ class Document:
         elif tag == 'li':
             self.endOfBlock(state)
             self.onLi(state, None)
+        elif tag == 'dl':
+            self.endOfBlock(state)
+            state._defLevel -= 1
+            self.onDl(state, None)
+        elif tag == 'dt':
+            self.endOfBlock(state)
+            self.onDt(state, None)
+        elif tag == 'dd':
+            self.endOfBlock(state)
+            self.onDd(state, None)
         elif tag == 'b' or tag == 'strong':
             self.onB(state, None)
         elif tag == 'i' or tag == 'em':
@@ -684,6 +704,40 @@ class MediaWikiConverter (Document):
         '''
         if attr != None:
             self.out(state._prefixList, state)
+            self.outAnchors(state)
+            state._blockEndText = "\n"
+
+    def onDl(self, state, attr):
+        '''Handles a definition list start or end.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            self.handleAttributes(state, attr)
+            state._blockEndText = ""
+        
+    def onDt(self, state, attr):
+        '''Handles a definitioner term start or end.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            # indention is decremented by 1:
+            if state._defLevel > 1:
+                self.out(':' * (state._defLevel - 1), state)
+            self.outAnchors(state)
+            state._blockEndText = "\n"
+
+    def onDd(self, state, attr):
+        '''Handles a definition data start or end.
+        @param state: the current parser state
+        @param attr:  None: end of tag is reached<br>
+                      otherwise: the tag attributes, e.g. class
+        '''
+        if attr != None:
+            self.out(':' * state._defLevel, state)
             self.outAnchors(state)
             state._blockEndText = "\n"
 

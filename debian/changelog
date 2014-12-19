@@ -1,3 +1,9 @@
+sidu-manual (2014.12.18) unstable; urgency=medium
+
+  * handling of <dl>, <dt> and <dd>
+
+ -- J. Hamatoma <hama@siduction.net>  Sat, 20 Dec 2014 00:25:15 +0100
+
 sidu-manual (2014.12.17) unstable; urgency=medium
 
   * automatic creation of a link (*.wiki -> *.txt)

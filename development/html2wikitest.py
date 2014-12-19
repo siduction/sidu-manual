@@ -20,7 +20,7 @@ class TestConverter(MediaWikiConverter):
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self._testAll = False
+        self._testAll = True
 
     def tearDown(self):
         pass
@@ -261,6 +261,16 @@ Alf Gaida (agaida) <br />
         self.assertEquals(['==== Core Team: ====\n\n',
                            'Alf Gaida (agaida) <br/><br/>\n'],
                 doc._lines)
+        
+    def testDefList(self):
+        if not self._testAll:
+            return
+        doc = TestConverter()
+        doc.parse('<div><dl><dt>i1</dt><dd>step1</dd>'
+            + '<dt>i2</dt><dl><dt>i2-1</dt><dd>step2</dd></dl></dl>')
+        self.assertEquals(['i1\n', ':step1\n', 'i2\n',
+            ':i2-1\n', '::step2\n'], doc._lines)
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testExtractContext']
     unittest.main()
