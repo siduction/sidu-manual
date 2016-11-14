@@ -7,12 +7,12 @@ Uploaders: Alf Gaida <agaida@siduction.org>,
  Ferdinand Thommes <devil@siduction.org>,
  Ovidiu Angelescu <convbsd@siduction.net>,
  Andreas Hausmann <lovelock@web.de>,
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper (>= 10),
  dh-systemd,
  inkscape,
  imagemagick,
  pyygle,
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: http://siduction.org
 Vcs-git:  git://git3@git.siduction.org:code/sidu-manual
 Vcs-Browser: http://git.siduction.org/?p=code/sidu-manual.git
