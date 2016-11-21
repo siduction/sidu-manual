@@ -17,8 +17,7 @@ href="../css/ie_5-6_override.css"> <![endif]-->
 <div>
 <div id="main-page"> 
 <div class="divider" id="bois-prep">
-		<h2 id="top-header">Aktualisierung des BIOS mit FreeDOS</h2> <p>Man möchte
-		- oder sollte manchmal sogar - das BIOS eines Computers aktualisieren, wenn der
+		<h2 id="top-header">Aktualisierung des BIOS mit FreeDOS</h2> <p>Das BIOS eines Computers sollte ab und an aktualisiert wrerden, wenn der
 		Hersteller des Motherboards Verbesserungen der BIOS-Software vornimmt. Das
 		Installationsprogramm ist in der Regel eine Anwendung auf MS-DOS-Basis.</p>
 
@@ -27,7 +26,7 @@ href="../css/ie_5-6_override.css"> <![endif]-->
 							geeigneten Adapter) aktualisieren kann.</p>
 
 							<p>Als Erstes muss im BIOS das Booten von USB zugelassen
-							werden, und das BIOS muss mit USB-Festplatten umgehen können. Einige BIOS
+							werden, und das BIOS muss mit USB-Festplatten umgehen können. Einige BIOS-Varianten
 							akzeptieren USB-Diskettenlaufwerke, CD-ROMs oder ZIP-Laufwerke. Die meisten
 							davon können geeignet sein, aber eine BIOS-Aktualisierung kann sich schwieriger
 							gestalten. Oft ist das jedoch die einzige Möglichkeit (das betrifft vor allem
@@ -50,13 +49,12 @@ href="../css/ie_5-6_override.css"> <![endif]-->
 				zu keinem Zeitpunkt darf der USB-Stick eingebunden, d.h. gemountet werden. Es
 				muss peinlichst darauf geachtet werden, die richtige Gerätedatei (engl. device
 				node) zu wählen, ansonsten werden sämtliche Daten auf dem falschen Datenträger
-				(der Festplatte!) unwiderruflich gelöscht.</span></h5>
+				(möglicherweise der System-Festplatte!) unwiderruflich gelöscht.</span></h5>
 
 	<div class="spacer02"></div>
 
 							<p>Der USB-Stick wird angesteckt <span
-							class="highlight-2">und nicht eingebunden</span>. Mit den letzten Ausgaben von
-							dmesg ermittelt man, welche Gerätedatei dem USB-Stick zugewiesen wurde. In
+							class="highlight-2">und nicht eingebunden</span>. Mit dem Werkzeug <b>fdisk</b> ermittelt man, welche Gerätedatei dem USB-Stick zugewiesen wurde. In
 							unseren Beispielen wird <span class="highlight-3">/dev/sdb</span> verwendet.</p>
 
 							<p>Der USB-Stick wird gelöscht, <span
@@ -207,7 +205,7 @@ qemu -hda	/dev/sdb -cdrom /path/to/fdbasecd.iso -boot d
 </pre>
 
 <p><span class="highlight-1">ctrl-alt</span> schaltet Maus und Tastatur zwischen qemu und
-Hostsystem. Damit kann man Desktops wechseln und jeden Schritt in der Anleitung					neu lesen.</p>
+Hostsystem. Damit kann man Desktops wechseln und schrittweise gleichzeitig die Anleitung mitlesen.</p>
 
 		<div class="screenshot"><img
 		src="../images-common/images-qemu-freedos/qemu-boot01.jpg" title="QEMU
@@ -236,7 +234,7 @@ Hostsystem. Damit kann man Desktops wechseln und jeden Schritt in der Anleitung	
 
  <div class="spacer02"></div>
 
-<p>Die Installationsroutine fordert nun zu einem Reboot auf - <span class="highlight-3">dies wird noch nicht gemacht, da noch zwei Fehler des FreeDOS Installers bezüglich mbr und Bootmenü behoben werden müssen</span>.
+<p>Die Installationsroutine fordert nun zu einem Reboot auf - <span class="highlight-3">dies verschieben wir noch etwas, da noch zwei Fehler des FreeDOS Installers bezüglich mbr und Bootmenü behoben werden müssen</span>.
 Man gibt den Buchstaben <span class="highlight-3"><b>n</b></span> ein.</p> 
 
 <div class="spacer02"></div> <div class="screenshot"><img src="../images-common/images-qemu-freedos/qemu-boot18.jpg" title="Freedos 							Installation - N eingeben, nicht neustarten!" alt="freedos-do not reboot type n"/></div>
@@ -255,7 +253,7 @@ behoben, indem man ausführt:</p>
 cd \ edit fdconfig.sys
 </pre> 
 
-<p>und dieZeile beginnend mit command.com so abändert:</p> 
+<p>und dann die Zeile beginnend mit command.com so abändert:</p> 
 
 <pre>
 1234?SHELLHIGH=C:\FDOS\command.com C:\FDOS /D /P=C:\fdauto.bat /K set (don't
@@ -275,7 +273,7 @@ geändert werden, da die Zeile von dem Installations-Setup abhängt.</span></p>
 [alt]+[f]
 </pre>
 
-<p>Zurück beim Befehlszeilen-Prompt kann qemu verlassen werden.</p>
+<p>Zurück beim Befehlszeilen-Prompt kann qemu nun verlassen werden.</p>
 
 <p>Nun wird getestet, ob qemu den USB-Stick bootet.</p>
  							
@@ -283,7 +281,7 @@ geändert werden, da die Zeile von dem Installations-Setup abhängt.</span></p>
 qemu -hda /dev/sdb -boot c
 </pre>
 
-<p>Der USB-Stick ist nun bootfähig und enthält eine vollständige FreeDOS-Installation mit 5,4 MByte, um flashen zu können.
+<p>Der USB-Stick ist nun bootfähig und enthält eine vollständige FreeDOS-Installation mit 5,4 MByte, um das BIOS flashen zu können.
 Man sollte booten, ohne Treiber zu laden <span class="highlight-3">(Menüoption 4), himem.sys und emm386 könnten in die Flashing-Programme reinpfuschen!</span>:</p>
 
 <h3>Aktualisierung des BIOS</h3>
@@ -294,7 +292,7 @@ Die Einbindung des USB-Sticks wird danach gelöst.</p>
 <p> Der PC wird ausgeschaltet und der FreeDOS USB-Stick angesteckt. Der PC wird eingeschaltet, sodass der FreeDOS USB-Stick bootet, danach wird den Anweisungen des Herstellers des BIOS bzw. Motherboards gefolgt.</p>
 
 </div>
-			<div id="rev">Page last revised 08/01/2012 1545 UTC</div>
+			<div id="rev">Page last revised by devil on 17/08/2016 1745 UTC</div>
 </div>
 </div>
 </body>
