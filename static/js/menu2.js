@@ -133,5 +133,10 @@ function stopTime()
 // neutralize the default no js css action here:
 if ( dom )
 {
-	document.write( '<style type="text/css">ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:hover #sm5, ul li:hover #sm6, ul li:hover #sm7, ul li:hover #sm8, ul li:hover #sm9, ul li:hover #sm10, ul li:hover #sm11, ul li:hover #sm12, ul li:hover #sm13, ul li:hover #sm14, ul li:hover #sm15, ul li:hover #sm16, ul li:hover #sm17, ul li:hover #sm18, ul li:hover #sm19, ul li:hover #sm20, ul li:hover #sm21, ul li:hover #sm22, ul li:hover #sm23, ul li:hover #sm24, ul li:hover #sm25, ul li:hover #sm26, ul li:hover #sm27, ul li:hover #sm28, ul li:hover #sm29, ul li:hover #sm30 { display:none;}</style>' );
+	document.write( '<style type="text/css">ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4,'
+	+ ' ul li:hover #sm5, ul li:hover #sm6, ul li:hover #sm7, ul li:hover #sm8, ul li:hover #sm9, ul li:hover #sm10, '
+	+ 'ul li:hover #sm11, ul li:hover #sm12, ul li:hover #sm13, ul li:hover #sm14, ul li:hover #sm15, ul li:hover #sm16, '
+	+ 'ul li:hover #sm17, ul li:hover #sm18, ul li:hover #sm19, ul li:hover #sm20, ul li:hover #sm21, ul li:hover #sm22, '
+	+ 'ul li:hover #sm23, ul li:hover #sm24, ul li:hover #sm25, ul li:hover #sm26, ul li:hover #sm27, ul li:hover #sm28, '
+	+ 'ul li:hover #sm29, ul li:hover #sm30 { display:none;}</style>' );
 }
