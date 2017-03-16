@@ -1,8 +1,9 @@
-sidu-manual (2017.3.10) unstable; urgency=medium
+sidu-manual (2017.3.11) unstable; urgency=medium
 
+  [ J. Hamatoma ]
   * sidu-manual-server: wsgi_handler: default DOCUMENT_ROOT 
 
- -- J. Hamatoma <hama@siduction.net>  Thu, 16 Mar 2017 22:25:31 +0100
+ -- Alf Gaida <agaida@siduction.org>  Thu, 16 Mar 2017 22:50:53 +0100
 
 sidu-manual (2017.3.10) unstable; urgency=medium
 
