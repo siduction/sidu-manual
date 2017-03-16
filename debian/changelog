@@ -1,5 +1,11 @@
 sidu-manual (2017.3.10) unstable; urgency=medium
 
+  * sidu-manual-server: wsgi_handler: default DOCUMENT_ROOT 
+
+ -- J. Hamatoma <hama@siduction.net>  Thu, 16 Mar 2017 22:25:31 +0100
+
+sidu-manual (2017.3.10) unstable; urgency=medium
+
   * sidu-manual-server: removing mdjinn/ (no more used), copying djinn/ from pywwetha
   * passenger_wsgi.py: Enforces existence of environ["DOCUMENT_ROOT"], logging
 

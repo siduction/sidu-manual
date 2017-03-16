@@ -197,7 +197,7 @@ class WSGIHandler(object):
         '''
         
         application = environ["HTTP_HOST"]
-        docRoot = environ["DOCUMENT_ROOT"]
+        docRoot = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else "/usr/share/sidu-manual"
         self._environ = environ
         self._request = WSGIRequest(environ)
         
