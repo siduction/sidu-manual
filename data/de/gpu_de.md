@@ -1,6 +1,8 @@
 
 ##Open Source Xorg-Treiber für ATI/AMD , Intel & nVidia
 
+Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik findet hier keine Beachtung.  
+
 Das Grafiksystem unter Linux splittet sich in 4 separate Teile:
 
 + Kernel Treiber 
