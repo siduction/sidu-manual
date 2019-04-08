@@ -204,59 +204,59 @@ Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis z
 
 Nachdem die interne Datenbank aktualisiert wurde, kann man herausfinden, für welche Pakete eine neuere Version existiert (zuerst muss apt-show-versions installiert werden):
 
-apt-show-versions -u
-libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
-passwd/unstable upgradeable from 1:4.0.12-5 to 1:4.0.12-6
-teclasat/unstable upgradeable from 0.7m02-1 to 0.7n01-1
-libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3.........
+        root@siduction# apt-show-versions -u
+        libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
+        passwd/unstable upgradeable from 1:4.0.12-5 to 1:4.0.12-6
+        teclasat/unstable upgradeable from 0.7m02-1 to 0.7n01-1
+        libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3.........
 
 Die Aktualisierung eines einzelnes Pakets (hier z. B. debtags-1.6.6.0) kann unter Berücksichtigung der Abhängigkeiten vorgenommen werden mit:
 
-# apt-get install debtags-1.6.6.0
-Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
-Die folgenden Pakete werden ENTFERNT:
-  apt-index-watcher
-Die folgenden Pakete werden aktualisiert:
-  debtags
-1 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.
-Es müssen 660kB Archive geholt werden.
-Nach dem Auspacken werden 1991kB Plattenplatz freigegeben worden sein.
-Möchtest Du fortfahren [J/n]?
-Hole:1 http://ftp.de.debian.org unstable/main debtags 1.6.6 [660kB]
-Es wurden 660kB in 1s geholt (513kB/s)
-(Lese Datenbank ... 138695 Dateien und Verzeichnisse sind derzeit installiert.)
-Entferne apt-index-watcher ...
-(Lese Datenbank ... 138692 Dateien und Verzeichnisse sind derzeit installiert.)
-Vorbereiten zum Ersetzen von debtags 1.6.2 (durch .../debtags_1.6.6_i386.deb) ...
-Entpacke Ersatz für debtags ...
-Richte debtags ein (1.6.6) ...
-Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
+        root@siduction# apt-get install debtags-1.6.6.0
+        Paketlisten werden gelesen... Fertig
+        Abhängigkeitsbaum wird aufgebaut... Fertig
+        Die folgenden Pakete werden ENTFERNT:
+          apt-index-watcher
+        Die folgenden Pakete werden aktualisiert:
+          debtags
+        1 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.
+        Es müssen 660kB Archive geholt werden.
+        Nach dem Auspacken werden 1991kB Plattenplatz freigegeben worden sein.
+        Möchtest Du fortfahren [J/n]?
+        Hole:1 http://ftp.de.debian.org unstable/main debtags 1.6.6 [660kB]
+        Es wurden 660kB in 1s geholt (513kB/s)
+        (Lese Datenbank ... 138695 Dateien und Verzeichnisse sind derzeit installiert.)
+        Entferne apt-index-watcher ...
+        (Lese Datenbank ... 138692 Dateien und Verzeichnisse sind derzeit installiert.)
+        Vorbereiten zum Ersetzen von debtags 1.6.2 (durch .../debtags_1.6.6_i386.deb) ...
+        Entpacke Ersatz für debtags ...
+        Richte debtags ein (1.6.6) ...
+        Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
 
 (Nur) Downloaden
 
 Eine wenig bekannte, aber großartige Möglichkeit ist die Option -d:
 
-apt-get update && apt-get dist-upgrade -d
+        apt update && apt dist-upgrade -d
 
 -d ermöglicht, die Pakete eines dist-upgrades lokal zu speichern, ohne dass sie installiert werden. Dies kann in einer Konsole durchgeführt werden, während man in X ist. Der dist-upgrade selbst kann zu einem späteren Zeitpunkt in init 3 erfolgen. Dadurch erhält man auch die Möglichkeit, nach eventuellen Warnungen zu recherchieren und danach zu entscheiden, ob man die Aktualisierung durchführen möchte oder nicht:
 
-apt-get dist-upgrade -d
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-The following NEW packages will be installed:
-  elinks-data
-The following packages have been kept back:
-  git-core git-gui git-svn gitk icedove libmpich1.0ldbl
-The following packages will be upgraded:
-  alsa-base bsdutils ceni configure-ndiswrapper debhelper
-  discover1-data elinks file fuse-utils gnucash.........
-35 upgraded, 1 newly installed, 0 to remove and 6 not upgraded.
-Need to get 23.4MB of archives.
-After this operation, 594kB of additional disk space will be used.
-Möchtest Du fortfahren [J/n]?J 
+        root@siduction#apt-get dist-upgrade -d
+        Reading package lists... Done
+        Building dependency tree
+        Reading state information... Done
+        Calculating upgrade... Done
+        The following NEW packages will be installed:
+          elinks-data
+        The following packages have been kept back:
+          git-core git-gui git-svn gitk icedove libmpich1.0ldbl
+        The following packages will be upgraded:
+          alsa-base bsdutils ceni configure-ndiswrapper debhelper
+          discover1-data elinks file fuse-utils gnucash.........
+        35 upgraded, 1 newly installed, 0 to remove and 6 not upgraded.
+        Need to get 23.4MB of archives.
+        After this operation, 594kB of additional disk space will be used.
+        Möchtest Du fortfahren [J/n]?J 
 
 J lädt die zu aktualisierenden bzw. neu zu installierenden Pakete, ohne das installierte System zu verändern.
 
