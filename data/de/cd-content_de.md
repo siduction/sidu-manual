@@ -1,68 +1,84 @@
-
-##Inhalt der Live-ISO##
+## Inhalt der Live-ISO
 
 siduction stellt auf der Live-ISO, abgesehen von nicht freier Firmware, nur DFSG-freie Software zur Verfügung. Hinweise zur Installation proprietärer Software findet sich hier im Handbuch.
 
 Das ISO basiert ausschließlich auf zum Veröffentlichungszeitpunkt jeweils aktuellem Debian Sid, bereichert und stabilisiert durch eigene Pakete und Skripte aus den siduction-Repositories. Als Kernel wird der jeweils aktuelle Vanilla Mainline Kernel verwendet und mit Patches versehen. ACPI und DMA sind aktiviert.
 
 Eine komplette Manifest-Datei mit der Auflistung aller installierten Programme für jede einzele Veröffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver: ISO-Versionen, Spiegelserver, Brennen.
-Varianten der ISO
 
-siduction bietet neun aktuelle Images mit verschiedenen Desktopumgebungen (zwei auch ohne)) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. Üblicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.
+### Varianten der ISO
+
+siduction bietet sechs aktuelle Images mit verschiedenen Desktopumgebungen (zwei auch ohne)) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. Üblicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.
 Die Varianten sind:
 
-        KDE 64 Bit , live-ISO mit etwa 1,4 GByte:
-        - umfasst neben Plasma und KDE-Frameworks eine repräsentative Auswahl der KDE Applications. Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.  
-        
-        Cinnamon mit 64 Bit live-ISO mit etwa 1,2 GByte:
-        - GTK-basierter Desktop mit einer repräsentativen Auswahl an nützlicher Software.  
-        - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
-        
-        XFCE 64 Bit , live-ISO mit etwa 1,1 GByte:
-        - umfasst eine Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle  
-          Anwendungen, um sofort produktiv tätig sein zu können. Der Ressourcenaufwand ist  
-          geringer als mit KDE.  
-          
-        LXQt mit 64 Bit live-ISO mit etwa 1 GByte:
-        - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.  
-        - Der Fußabdruck ist etwas schmaler als bei XFCE  
+1. **KDE 64 Bit** , live-ISO mit etwa 1,4 GByte:
+    - umfasst neben Plasma und KDE-Frameworks eine repräsentative Auswahl der KDE Applications.  
+    - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-        Xorg mit 64 Bit live ISO mit etwa 1 GByte:
-        - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.  
-        - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen  
+---
 
-        NoX mit 64 Bit live-ISO mit etwa 630 MByte: 
-        - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
+2. **Cinnamon mit 64 Bit** , live-ISO mit etwa 1,2 GByte:
+     - GTK-basierter Desktop mit einer repräsentativen Auswahl an nützlicher Software.  
+     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-32 Bit ISO's bieten wir standardmäßig nicht mehr an. Wenn ein 32Bit IOS gewünscht ist,  
-wird ein solches auf Anfrage im IRC gerne erstellt. Testen können Wir ein solches ISO leider nicht.
+---
 
-Minimale Systemanforderungen Plasma, Gnome, XFCE, LXDE, LXQt, Cinnamon, Mate, Xorg und NoX
+3.  **XFCE 64 Bit** , live-ISO mit etwa 1,1 GByte:
+    - umfasst eine Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen, um sofort produktiv tätig sein zu können.
+    - Der Ressourcenaufwand ist geringer als mit KDE.
+---
+4.  **LXQt mit 64 Bit** ,  live-ISO mit etwa 1 GByte:
+     - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.  
+     - Der Fußabdruck ist etwas schmaler als bei XFCE
 
-###Prozessoranforderungen: 64Bit CPU###
+---
 
-        AMD64
-        Intel Core2
-        Intel Atom 330
-        jede x86-64/ EM64T fähige CPU oder neuer
-        neuere 64 bit fähige AMD Sempron and Intel Pentium 4 CPUs  
-        (achten Sie auf das "lm"-Flag in /proc/cpuinfo oder nutzt inxi -v3).
+5.  **Xorg mit 64 Bit** ,  live ISO mit etwa 1 GByte:
+      - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.  
+      - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen
 
-###Speicheranforderungen:###
+---
 
-        Plasma: ≥1 GByte RAM
-        Cinnamon: ≥512 MByte RAM
-        XFCE: ≥512 MByte RAM
-        LXQT: ≥256 MByte RAM
-        Xorg: ≥256 MByte RAM
-        NoX: ≥128MByte RAM
+6.  **NoX mit 64 Bit** ,  live-ISO mit etwa 630 MByte: 
+      - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
 
-        VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung.
-        optisches Laufwerk oder USB Medien.
-        ≥4GByte Festplattenspeicher, ≥10GByte empfohlen.
+---
 
+**32 Bit ISO's** bieten wir standardmäßig nicht mehr an.  
+Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen können wir ein solches ISO leider nicht.
 
-## Anwendungen und Hilfsprogramme##
+---
+
+### Minimale Systemanforderungen
+für: KDE-Plasma, Gnome, XFCE, LXDE, LXQt, Cinnamon, Mate, Xorg und NoX
+
+#### Prozessoranforderungen: 64Bit CPU
+
+    AMD64
+    Intel Core2
+    Intel Atom 330
+    jede x86-64/ EM64T fähige CPU oder neuer
+    neuere 64 bit fähige AMD Sempron and Intel Pentium 4 CPUs  
+    (achten Sie auf das "lm"-Flag in /proc/cpuinfo oder nutzt inxi -v3).
+
+#### Speicheranforderungen:
+
+    Plasma: ≥1 GByte RAM
+    Cinnamon: ≥512 MByte RAM
+    XFCE: ≥512 MByte RAM
+    LXQT: ≥256 MByte RAM
+    Xorg: ≥256 MByte RAM
+    NoX: ≥128MByte RAM
+
+    ≥4GByte Festplattenspeicher, ≥10GByte empfohlen.
+#### Sonstiges:
+
+    VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung.
+    optisches Laufwerk oder USB Medien.
+
+---
+
+## Anwendungen und Hilfsprogramme ##
 
 Als Internetbrowser werden (je nach Variante) [Firefox](https://mozilla.org), oder [Chromium](https://chromium.woolyss.com/download/de/#linux) mitgeliefert.
 

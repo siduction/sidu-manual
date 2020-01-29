@@ -1,22 +1,21 @@
-##Die siduction ISO herunterladen##
+## Die siduction ISO herunterladen ##
 
 **Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.**  
 
-####Europa####
+#### Europa ####
 
 + **Freie Universität Berlin/ spline (Student Project LInux NEtwork), Deutschland**  
-http://ftp.spline.de/mirrors/siduction/iso/  
-ftp://ftp.spline.de/pub/siduction/iso/
+    http://ftp.spline.de/mirrors/siduction/iso/  
+    ftp://ftp.spline.de/pub/siduction/iso/
 
 + **Universität Stuttgart**  
-        http://ftp.uni-stuttgart.de/siduction/iso/  
-        ftp://ftp.uni-stuttgart.de/siduction/iso/  
+    http://ftp.uni-stuttgart.de/siduction/iso/  
+    ftp://ftp.uni-stuttgart.de/siduction/iso/  
 
 + **Office Vienna**  
-https://siduction.office-vienna.at/iso/
+    https://siduction.office-vienna.at/iso/
 
-
-####Nordamerika####
+#### Nordamerika ####
 
 + **University of Delaware**  
     http://mirror.lug.udel.edu/pub/siduction/iso  
@@ -28,7 +27,7 @@ https://siduction.office-vienna.at/iso/
     ftp://ftp.gtlib.gatech.edu/pub/siduction/iso  
     rsync://rsync.gtlib.gatech.edu/siduction/iso  
 
-####Südamerika####
+#### Südamerika ####
 
 + **Universidade Estadual de Campinas (unicamp), São Paulo, Brasilien**  
     http://www.las.ic.unicamp.br/pub/siduction/iso/  
@@ -36,26 +35,26 @@ https://siduction.office-vienna.at/iso/
 
 
 &nbsp;
-###Dateidefinitionen auf den siduction-Spiegelservern###
+### Dateidefinitionen auf den siduction-Spiegelservern ###
 
 Jeder Spiegelserver umfasst folgende Dateien:
 
-        MD5SUM  
-        MD5SUM.gpg  
-        SHA256SUM  
-        SHA256SUM.gpg  
-        SOURCES  
-        siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.arch.manifest  
-        siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso  
+    MD5SUM  
+    MD5SUM.gpg  
+    SHA256SUM  
+    SHA256SUM.gpg  
+    SOURCES  
+    siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.arch.manifest  
+    siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso  
 
 
-Die .manifest-Datei listet alle Pakete der jeweiligen ISO.
+Die `.manifest`-Datei listet alle Pakete der jeweiligen ISO.
 
-.iso ist die für den Download angebotene Abbilddatei.
+`.iso` ist die für den Download angebotene Abbilddatei.
 
-Die Dateien .md5 und .sha256 dienen der Überprüfung der Integrität der ISO.
+Die Dateien `.md5` und `.sha256` dienen der Überprüfung der Integrität der ISO.
 
-Die .gpg-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.md5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.
+Die `.gpg`-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.md5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.
 
 Download-Links und Spiegelserver findet man auf [siduction.org](https://forum.siduction.org/index.php?page=7)
 
@@ -63,27 +62,27 @@ Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weiterver
 
 Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6667 #siduction-de erreichbar. 
 
-###md5sum und Integritätsprüfung von heruntergeladenen Dateien###
+### md5sum und Integritätsprüfung von heruntergeladenen Dateien ###
 
 Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dcem Netz immer ratsam ist und viel Zeit für die Fehlersuche erspart.
 
 Die Datei ist unbeschädigt heruntergeladen worden, wenn die md5sum der heruntergeladenen Datei mit der Summe in der MD5-Datei übereinstimmt. Unter Linux erhält man die md5sum einer Datei mit:
 
-        $ md5sum zu_prüfende_datei
+    $ md5sum zu_prüfende_datei
 
 Das dauert ein wenig und die Summe wird dann in der Konsole ausgegeben und kann dann mit der Summe wie sie in der entsprechenden *.md5 Datei hinterlegt ist manuell verglichen werden. Die md5 Datei kann dazu in einem Texteditor geöffnet werden. Mit dem md5summer (486 KB) kann die md5sum auch in Windows geprüft werden.
 
 Einfacher ist die Überprüfung unter Linux mit folgendem Befehl, ausgeführt in dem Verzeichnis, in welchen sich sowohl die ISO-Datei als auch die ISO.MD5-Datei befinden:
 
-        $ md5sum -c zu_prüfende_datei.md5
+    $ md5sum -c zu_prüfende_datei.md5
 
 Je nachdem ob die Prüfsummen übereinstimmen, erhält man vom Programm eine Meldung:
 
-        md5-Summe: zu_überprüfende_datei: ok
+    md5-Summe: zu_überprüfende_datei: ok
 
 oder
 
-        siduction-Name.iso: Fehlschlag md5sum: Warnung: 1 von 1 berechneten Prüfsumme stimmen nicht überein.
+    siduction-Name.iso: Fehlschlag md5sum: Warnung: 1 von 1 berechneten Prüfsumme stimmen nicht überein.
 
 Die ISO-Abbilddateien von siduction werden immer mit der entsprechenden md5sum zum Download angeboten und sollten stets vor dem Brennen geprüft werden.
 
@@ -94,11 +93,17 @@ siductionname.iso.md5
 
 Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
 
-        $ man sha256sum
+    $ man sha256sum
 
-###Eine Live-CD mit Windows brennen ###
+### Eine Live-CD mit Windows brennen ###
 
-**WICHTIGE INFORMATION: siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).**
+:::warning
+**WICHTIGE INFORMATION:**
+
+siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+:::
+
+---
 
 Selbstverständlich kann die CD auch in Windows gebrannt werden. Die heruntergeladene Datei muss als ISO-Abbilddatei gebrannt werden. Falls Winrar (oder ein anderes Archivierungsprogramm) mit einer ISO-Datei verknüpft ist, könnte dieses Programm die ISO-Datei als eine Archivdatei ansehen. Aus der ISO-Datei muss eine CD gebrannt werden.
 
@@ -114,9 +119,16 @@ Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.
 + CD/DVD Burner XP pro
 + Burncdcc von [terabyteunlimited](http://www.terabyteunlimited.com/utilities.html) kann nur ISO-Abbilddateien brennen.
 
-###Die CD mit Linux brennen###
+### Die CD mit Linux brennen ###
 
-**WICHTIGE INFORMATION: siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).**
+:::warning
+**WICHTIGE INFORMATION:**
+
+siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem 
+Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+:::
+
+---
 
 Wer bereits Linux auf dem Rechner hat, kann die CD mit jedem installierten Brennprogramm erstellen. Bei siduction ist K3b das Standard-Brennprogramm. Dort muss man den Menüpunkt "Extras" -> "ISO-Abbild brennen..." anklicken, das zu brennende ISO-File (z.B. siduction-2011.1.iso) auswählen und den Brennmodus DAO (Disk At Once) einstellen.
 
