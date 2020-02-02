@@ -1,6 +1,9 @@
 ### Hinweise für Autoren von MarkDown Dokumenten innerhalb des siduction Handbuchs
 Bei der Konvertierung der deutschen Handbuchseiten zu md traten einige Besonderheiten auf, die sicherlich auch für Autoren interessant sein dürften.
 
+Ich habe mich an die [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) gehalten  
+und das Ergebnis mit [markdown-it demo](https://markdown-it.github.io/) getestet.
+
 Hier ein kurzer Überblick.
 
 -----
@@ -13,12 +16,12 @@ Die inline span-Bereiche werden mit Backtick \` (normaler Text), Asterisk und Ba
 
 Folgende Vereinheitlichungen wurden vorgenommen:
 
-<span class="highlight-1> (ehemals grüner Text)  
-<span class="highlight-3> (ehemals violetter Text, ähnlich besuchter Links)  
-<span class="highlight-4> (ehemals brauner Text)  
+<span class="highlight-1"> (ehemals grüner Text)  
+<span class="highlight-3"> (ehemals violetter Text, ähnlich besuchter Links)  
+<span class="highlight-4"> (ehemals brauner Text)  
 Umwandlung in `Mustertext` (inline Bereich, hellgrau hinterlegt, Text rot)
 
-<span class="highlight-2> (ehemals roter Text)  
+<span class="highlight-2"> (ehemals roter Text)  
 Umwandlung in **`Mustertext`** (inline Bereich, hellgrau hinterlegt, Text rot und fett)
 
 ---
