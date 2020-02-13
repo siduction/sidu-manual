@@ -1,8 +1,10 @@
 ### Hinweise für Autoren von MarkDown Dokumenten innerhalb des siduction Handbuchs
+#### Das von mir geschriebene Script "html2md.pl" befindet sich im git-repo des Handbuchs im Ordner /sidu/development .
 Bei der Konvertierung der deutschen Handbuchseiten zu md traten einige Besonderheiten auf, die sicherlich auch für Autoren interessant sein dürften.
 
 Ich habe mich an die [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) gehalten  
-und das Ergebnis mit [markdown-it demo](https://markdown-it.github.io/) getestet.
+und das Ergebnis mit [markdown-it demo](https://markdown-it.github.io/) getestet.  
+Bitte mit diesem Dokument die Testseite gleich ausprobieren.
 
 Hier ein kurzer Überblick.
 
@@ -12,13 +14,22 @@ Hier ein kurzer Überblick.
 Anmerkung:  
 Innerhalb dieser Bereiche findet kein parsen durch MarkDown statt. Die zusätzlichen Textauszeichnungen *, **, ` und ~~ haben keine Wirkung auf den Text, sondern werden literal dargestellt.
 
-Die inline span-Bereiche werden mit Backtick \` (normaler Text), Asterisk und Backtick \*\` (kursiver Text) sowie doppeltem Asterisk und Backtick \*\*\` (fetter Text) dargestellt.
+Die **inline span-Bereiche** werden mit  
+Backtick \` `(normaler Text)`,  
+Asterisk und Backtick \*\` *`(kursiver Text)`*  
+doppeltem Asterisk und Backtick \*\*\` **`(fetter Text)`**  
+vor und in umgedrehter Reihenfolge hinter dem zu markierenden Text  und ohne Leerzeichen dargestellt.
+~~~
+Beispiel:
+**`(fetter Text)`**
+~~~
 
 Folgende Vereinheitlichungen wurden vorgenommen:
 
 <span class="highlight-1"> (ehemals grüner Text)  
-<span class="highlight-3"> (ehemals violetter Text, ähnlich besuchter Links)  
+<span class="highlight-3"> (ehemals magenta Text, ähnlich besuchter Links)  
 <span class="highlight-4"> (ehemals brauner Text)  
+<span class="highlight-5"> (ehemals hellblauer Text)  
 Umwandlung in `Mustertext` (inline Bereich, hellgrau hinterlegt, Text rot)
 
 <span class="highlight-2"> (ehemals roter Text)  
@@ -38,7 +49,7 @@ z.B.: ~~~ bash
 
     ~~~ bash
     user1@pc1:~$ TEXT=irgendwas
-    user1@pc1:~$ printf "\t$TEXT\n"
+    user1@pc1:~$ print "\t$TEXT\n"
         irgendwas
     ~~~
 
@@ -53,10 +64,27 @@ z.B.: ~~~ bash
     *   Text
 
     *   ~~~
-        code Block
+        2. Code Block
         ~~~
 *   Text
 *   Text
+
+---
+So sieht der md-Code aus:
+
+~~~
+*   Text
+*   ~~~
+    Code Block
+    ~~~
+    *   Text
+
+    *   ~~~
+        2. Code Block
+        ~~~
+*   Text
+*   Text
+~~~
 
 -----
 #### Warnungen
@@ -78,26 +106,26 @@ damit gehen alle Daten verloren!
 
 -----
 #### Anker
-<div class="divider" id="pkill"></div>
+<div class="divider" id="pkill"></div>  
+und  
+<a name="Absatz_3"> (Das ist seit HTML5 obsolet)
 
---> Ein Anker für internen Link
-  
 Der Link zu einem Anker ist in md problemlos möglich, der Anker selbst nur in HTML!  
 Das heißt, die Anker müssen bei der Konvertierung im md-Dokument erhalten bleiben bzw im HTML-Format hineingeschrieben werden.
 
 -----
 #### Überschriften
-In einigen HTML-Dokumenten befanden sich Überschriften <h6>. In der Darstellung in md ist die Schrift deutlich kleiner als die Standardschriftgröße. Ich habe sie bei der Konvertierung auf die Größe #### angehoben und die Überschriften <h5> und <h4> jeweils um einen Wert nach #### und ### vergrößert.
+In einigen HTML-Dokumenten befanden sich Überschriften <h6>. In der Darstellung in md ist die Schrift deutlich kleiner als die Standardschriftgröße. Soll das wirklich so bleiben???
 
 In einigen Dokumenten waren alle Überschriften zusätzlich Fett ausgezeichnet.  
 Dazu die Frage an die Autoren und Maintainer:  
-Wie sollen die Überschriften aussehen, einheitlich Normaltext oder fett?
+Wie sollen die Überschriften einheitlich aussehen, Normaltext oder fett?
 
 ---- 
 #### Header und Footer in den neuen Dateien? 
 Frage an die Autoren und Maintainer:  
-Was soll davon erhalten bleiben?
+Was soll, was muss davon erhalten bleiben?
 
 -----
 
-Stand 2020-02-01, Autor: akli
+Stand 2020-02-13, Autor: akli
