@@ -78,7 +78,7 @@ Die Grundfarben sind:
 Als $user mit einem Texteditor:
 
 ~~~
-$ <editor2 ~/.bashrc
+$ <editor> ~/.bashrc
 ~~~
 
 In der Zeile 39 wird das Kommentarzeichen entfernt und sie sieht so aus:
@@ -101,7 +101,7 @@ Die neue Farbe existiert nach Öffnen eines neuen Terminals.
 
 ~~~
 suxterm
-<editor2 /root/.bashrc
+<editor> /root/.bashrc
 ~~~
 
 In der Zeile 39 wird das Kommentarzeichen entfernt und sie sieht so aus:
@@ -160,7 +160,7 @@ Befehl ausführen
 danach:
 
 ~~~
-kdesu <Application2
+kdesu <Application>
 ~~~
 
 #### Xfce: Tastatur-Optionen
@@ -180,7 +180,7 @@ Befehl ausführen
 danach:
 
 ~~~
-gksu <Application2
+gksu <Application>
 ~~~
 
 #### Optionen für weitere Desktopumgebungen
@@ -195,7 +195,7 @@ Alt+F2
 danach:
 
 ~~~
-su-to-root -X -c <Anwendung2
+su-to-root -X -c <Anwendung>
 ~~~
 
 `Alle Tastatur-Optionen können in einem Terminal eingegeben werden.` 
@@ -230,7 +230,7 @@ $ man Befehl
 oder
 
 ~~~
-$ man -k <keyword2
+$ man -k <keyword>
 ~~~
 
 Dies ruft die "man page" eines Befehls auf. Die Navigation in den "man pages" erfolgt durch die Pfeiltasten, beendet werden sie mit "q" für quit. Beispiel:
@@ -322,5 +322,6 @@ Congratulations user
 You successfully downloaded and executed a bash script!
 Welcome to siduction-manuals http://manual.siduction.org
 ~~~
+-->
 
 <div id="rev">Page last revised 26/11/2014 2000 UTC</div>
