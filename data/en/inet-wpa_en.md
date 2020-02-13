@@ -1,0 +1,497 @@
+<div id="main-page"></div>
+<div class="divider" id="wpa-basic"></div>
+## Basic Guide To Get Wireless Working - WiFi
+
+`Due to the complexity of law, siduction will only provide dfsg-free software,  [please check this link for additional information on non-free sources for firmware](nf-firm-en.htm#non-free-firmware) `
+
+To get wlan WiFi working, you need a wired connection for just a few minutes to download the appropriate firmware.
+
+If a wired connection is not possible you will have to put the firmware on a removable device (pendrive e.g.) and install it as root from there using:
+
+~~~  
+#dpkg -i <firmware.deb>  
+~~~
+
+To find the appropriate firmware without knowing the make or brand of your wireless chip, you can use the command:
+
+~~~  
+#fw-detect  
+~~~
+
+This will give you the following information:
+
+~~~  
+#apt-get update  
+#apt-get install <name of firmware>  
+#modprobe -r <modulename>  
+#modprobe <modulename>  
+~~~
+
+Use the apt-get install line that fw-detect command gave you. After that is done, you need to issue some commands in konsole before configuring the device.
+
+You have to load the module now in order to be able to configure your device.
+
+As root in konsole do:
+
+~~~  
+modprobe -r <modulename>  
+modprobe <modulename>  
+~~~
+
+As &lt;modulename&gt; uses the info that fw-detect gave you before. A helpful function of Konsole can be used here: bash completion:  
+If you just write the first few letters of &lt;modulename&gt; and then hit the TAB key, it completes the module name (e.g. modprobe ipw TAB key) That also prevents misspelling.
+
+Both modprobe commands dont give any output if successful, so if the normal prompt returns, the module got loaded fine.
+
+You can check this with:
+
+~~~  
+#lsmod | grep <module>  
+~~~
+
+Now start Ceni from K-Menu - Internet or run it from konsole as root with  [Getting Online - Ceni](inet-ceni-en.htm#netcardconfig) . Your wireless WiFi device should be shown now and is ready to be configured.
+
+To set up a Wlan WiFi GUI see  [WiFi - roaming WPA-GUI](inet-wpagui-en.htm) 
+
+<div class="divider" id="wpa"></div>
+## Modes of Operation in wpasupplicant for Debian
+
+`Due to the complexity of law, siduction will only provide dfsg-free software,  [please check this link for additional information on non-free sources for firmware](nf-firm-en.htm#non-free-firmware) `
+
+The Debian wpasupplicant package provides two (2) convenient modes of operation that are closely integrated to the core networking infrastructure; ifupdown.
+
+#### Whats Covered
+
+<!--###### 1. Specifying the wpa_supplicant driver backend
+
+* Table of supported drivers  
+* Common Driver Recommendations 
+
+-->
+###### 2. Mode #1: Managed Mode
+
+* Examples  
+* Table of Common Options  
+* Important Notes About Managed Mode  
+* How It Works 
+
+###### 3. Mode #2: Roaming Mode
+
+* wpa_supplicant.conf  
+* /etc/network/interfaces  
+* Controlling the Roaming Daemon with wpa_action  
+* Fine Tuning the Roaming Setup  
+* The Logfile  
+* Using External Mapping Scripts (e.g. guessnet)  
+* /etc/network/interfaces with external mapping
+
+###### 4. Troubleshooting
+
+* Hidden ssids
+
+###### 5. Security Considerations
+
+* Configuration File Permissions
+
+<!--## 1. Specifying the wpa_supplicant driver backend
+
+The wext driver backend will be used for all interfaces that do not explicitly set 'wpa-driver' to the driver type required for that device. Users of linux 2.4 kernels, or 2.6 kernels less than 2.6.14 will be required to specify a wpa-driver type.
+
+### Supported drivers
+
+| Driver | Description | 
+| ---- | ---- |
+| wext | Linux wireless extensions (generic) | 
+
+
+---
+
+### Common Driver Recommendations
+
+The Intel Pro Wireless adapters (ipw2100, ipw2200 and ipw3945) all use the 'wext' backend, unless your kernel is older than 2.6.14
+
+Madwifi supports both the 'wext' and 'madwifi' driver backends. 'wext' is preferred, however 'madwifi' may work better in some circumstances.
+
+Ndiswrapper NO LONGER SUPPORTS the 'ndiswrapper' driver backend as of version 1.16. Therefore, 'wext' must be used unless you use an antiquated ndiswrapper release.
+
+Set the driver type in the interfaces(5) stanza for your device with the 'wpa-driver' option. For example:
+
+~~~  
+iface eth0 inet dhcp  
+wpa-driver wext  
+. . . . . more options  
+-->  
+~~~
+
+## 2. Mode #1: Managed Mode
+
+This mode provides the ability to establish a connection via wpa_supplicant to one known network. It is similar to how the wireless-tools package works. Each element required to establish the connection via wpa_supplicant is prefixed with 'wpa-' and followed by the value that will be used for that element.
+
+###### Examples of a Mode #1 wpa.conf file - Example 1.
+
+~~~  
+Example of a Mode #1 wpa.conf file - Example 1.  
+NOTE: the 'wpa-psk' value is only valid if:  
+1. It is a plaintext (ascii) string between 8 and 63 characters in length  
+2. It is a hexadecimal string of 64 characters  
+# Connect to access point of ssid 'NETBEER' with an encryption type of  
+# WPA-PSK/WPA2-PSK. It assumes the driver will use the 'wext' driver backend  
+# of wpa_supplicant because no wpa-driver option has been specified.  
+# The passphrase is given as a ASCII (plaintext) string. DHCP is used to  
+# obtain a network address.  
+#  
+iface wlan0 inet dhcp  
+wpa-ssid NETBEER  
+# plaintext passphrase  
+wpa-psk PlainTextSecret  
+# Connect to access point of ssid 'homezone' with an encryption type of  
+# WPA-PSK/WPA2-PSK, using the 'wext' driver backend of wpa_supplicant.  
+# The psk is given as an encoded hexadecimal string. DHCP is used to obtain  
+# a network address.  
+#  
+iface wlan0 inet dhcp  
+wpa-driver wext  
+wpa-ssid homezone  
+# hexadecimal psk is encoded from a plaintext passphrase  
+wpa-psk 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f  
+# Connect to access point of ssid 'HotSpot1' and bssid of '00:1a:2b:3c:4d:5e'  
+# with an encryption type of WPA-PSK/WPA2-PSK, using the the 'madwifi' driver  
+# backend of wpa_supplicant. The passphrase is given as a plaintext string.  
+# A static network address assignment is used.  
+#  
+iface ath0 inet static  
+wpa-driver madwifi  
+wpa-ssid HotSpot1  
+wpa-bssid 00:1a:2b:3c:4d:5e  
+# plaintext passphrase  
+wpa-psk madhotspot  
+wpa-key-mgmt WPA-PSK  
+wpa-pairwise TKIP CCMP  
+wpa-group TKIP CCMP  
+wpa-proto WPA RSN  
+# static ip settings  
+address 192.168.0.100  
+netmask 255.255.255.0  
+network 192.168.0.0  
+broadcast 192.168.0.255  
+gateway 192.168.0.1  
+# User supplied wpa_supplicant.conf is used for eth1. All network information  
+# is contained within the user supplied wpa_supplicant.conf. No wpa-driver type  
+# is specified, so wext is used. DHCP is used to obtain a network address.  
+#  
+iface eth1 inet dhcp  
+wpa-conf /path/to/wpa_supplicant.conf  
+~~~
+
+<div class="divider" id="wpa1"></div>
+## Table of Common Options
+
+A brief summary of common 'wpa-' options that may be used in the /etc/network/interfaces stanza for a wireless device. See the 'Important Notes About Managed Mode' section for information about valid and invalid 'wpa-' values.
+
+**`NOTE: ALL values are CASE SeNsItVe`**
+
+~~~  
+Element Example Value Description  
+======= ============= ===========  
+wpa-ssid plaintextstring sets the ssid of your network  
+wpa-bssid 00:1a:2b:3c:4d:5e the bssid of your AP  
+wpa-psk 0123456789...... your preshared wpa key. Use  
+wpa_passphrase(8) to generate your psk  
+from a passphrase and ssid pair  
+wpa-key-mgmt NONE, WPA-PSK, WPA-EAP, list of accepted authenticated key  
+IEEE8021X management protocols  
+wpa-group CCMP, TKIP, WEP104, list of accepted group ciphers for WPA  
+WEP40  
+wpa-pairwise CCMP, TKIP, NONE list of accepted pairwise ciphers for  
+WPA  
+wpa-auth-alg OPEN, SHARED, LEAP list of allowed IEEE 802.11  
+authentication algorithms  
+wpa-proto WPA, RSN list of accepted protocols  
+wpa-identity myplaintextname administrator provided username  
+(EAP authentication)  
+wpa-password myplaintextpassword your password (EAP authentication)  
+wpa-scan-ssid 0 or 1 toggles scanning of ssid with specific  
+Probe Request frames  
+wpa-ap-scan 0 or 1 or 2 adjusts the scanning logic of  
+wpa_supplicant  
+~~~
+
+The complete functionality of wpa_cli(8) should be implemented. Anything missing is considered a bug and should be reported as such. Patches are always welcome.
+
+## Important Notes About Managed Mode
+
+Almost all 'wpa-' options require there is at least a ssid specified. Only a handful of options have a global effect. These are: 'wpa-ap-scan' and 'wpa-preauthenticate'.
+
+Any 'wpa-' option given for a device in the interfaces(5) file is sufficient to trigger the wpa_supplicant daemon into action.
+
+The wpasupplicant ifupdown script makes assumptions about the 'type' of input that is valid for each option. For example, it assumes that some input is plaintext and wraps quotation marks around the input before passing it on to wpa_cli, which then adds the input to the network block being formed via the wpa_supplicant ctrl_interface socket.
+
+Running ifup manually with the '--verbose' option will reveal all of the commands used to form the network block via wpa_cli. If the value you used for any wpa-* option in /etc/network/interfaces is surrounded by double quotes, then it has been assumed to be of "plaintext" or "ascii" type input.
+
+Some input is assumed to be a hexadecimal string (eg. wpa-wep-key*). The value 'type' of the wpa-psk option however, is determined via a simple check for more than one non hexadecimal character.
+
+## How It Works
+
+As mentioned earlier, each wpa_supplicant specific element is prefixed with 'wpa-'. Each element correlates to a property of wpa_supplicant described in the wpa_supplicant.conf(5), wpa_supplicant(8) and wpa_cli(8) manpages.
+
+The supplicant is launched without any pre-configuration whatsoever, and wpa_cli forms a network configuration from the input provided by the 'wpa-*' lines. Initially, wpa_supplicant/wpa_cli does not directly set the properties of the device (like setting an essid with iwconfig, for example), rather it informs the device of what access point is suitable to associate with. Once the device has scanned the area, and found that the suitable access point is available for use, these properties are set.
+
+The script that does all the work is located at:
+
+~~~  
+/etc/wpa_supplicant/ifupdown.sh  
+/etc/wpa_supplicant/functions.sh  
+~~~
+
+ifupdown.sh is executed by run-parts, which in turn is invoked by ifupdown during the 'pre-up', 'pre-down' and 'post-down' phases.
+
+In the 'pre-up' phase, a wpa_supplicant daemon is launched followed by a series of wpa_cli commands that set up a network configuration according to what 'wpa-' options were used in /etc/network/interfaces for the physical device.
+
+If wpa-roam is used, a wpa_cli daemon is lauched in the 'post-up' phase.
+
+In the 'pre-down' phase, the wpa_cli daemon is killed if it exists.
+
+In the 'post-down' phase, the wpa_supplicant daemon is killed.
+
+## 3. Mode #2: Roaming Mode
+
+A self contained, simplistic roaming mechanism is provided by this package. It is in the form of a wpa_cli action script, /sbin/wpa_action, and it assumes control of ifupdown once activated. The wpa_action(8) manpage describes its technical details in great depth.
+
+To activate a roaming interface, adapt the following example interfaces(5) stanza:
+
+~~~  
+iface eth1 inet manual  
+wpa-driver wext  
+wpa-roam /path/to/wpa_supplicant.conf  
+~~~
+
+Two daemons are spawned from the above example; wpa_supplicant and wpa_cli. It is required to provide a wpa_supplicant.conf. A good starting point is provided by an example configuration file:
+
+~~~  
+# copy the template to /etc/wpa_supplicant/  
+cp /usr/share/doc/wpasupplicant/examples/wpa-roam.conf \  
+/etc/wpa_supplicant/wpa_supplicant.conf  
+# allow only root to read and write to file  
+chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf  
+NOTE: it is critical that the used wpa_supplicant.conf defines the location of  
+the 'ctrl_interface' so that a communication socket is created for the  
+wpa_cli (wpa-roam daemon) to attach. The mentioned example configuration,  
+/usr/share/doc/wpasupplicant/examples/wpa-roam.conf, has been set to a  
+sane default.  
+~~~
+
+It is required to edit this configuration file, and add the network blocks for all known networks. If you do not understand what this means, start reading the wpa_supplicant.conf(5) manpage now.
+
+For each network, you may specify a special option 'id_str'. It should be set to a simple text string. This text string forms the basis for network profiling; it correlates to a logical interface defined in the interfaces(5) file. When no 'id_str' is given for a network, wpa_action assumes it will use the 'default' logical interface as fallback. The fallback interface can be chosen via the 'wpa-default-iface' option.
+
+So what does all this mean? Lets illustrate it with a small example taken from the wpa_action(8) manpage.
+
+###### wpa_supplicant.conf example
+
+~~~  
+wpa_supplicant.conf example:  
+network={  
+ssid="foo"  
+key_mgmt=NONE  
+# this id_str will notify /sbin/wpa_action to 'ifup uni'  
+id_str="uni"  
+}  
+network={  
+ssid="bar"  
+psk=123456789...  
+# this id_str will notify /sbin/wpa_action to 'ifup home_static'  
+id_str="home_static"  
+}  
+network={  
+ssid=""  
+key_mgmt=NONE  
+# no 'id_str' parameter is given, /sbin/wpa_action will 'ifup default'  
+}  
+~~~
+
+<div class="divider" id="wpa2"></div>
+###### /etc/network/interfaces example
+
+~~~  
+/etc/network/interfaces example:  
+# the roaming interface MUST use the manual inet method  
+# 'allow-hotplug' or 'auto' ensures the daemon starts automatically  
+allow-hotplug eth1  
+iface eth1 inet manual  
+wpa-driver wext  
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf  
+# no id_str, 'default' is used as the fallback mapping target  
+iface default inet dhcp  
+# id_str="uni"  
+iface uni inet dhcp  
+# id_str="home_static"  
+iface home_static inet static  
+address 192.168.0.20  
+netmask 255.255.255.0  
+network 192.168.0.0  
+broadcast 192.168.0.255  
+gateway 192.168.0.1  
+~~~
+
+A logical interface is brought up via ifup, and taken down via ifdown, as wpa_supplicant associates and de-associates with the network associated to it by the 'id_str' option used in the wpa_supplicant.conf configuration file.
+
+A log of /sbin/wpa_action's actions is created at /var/log/wpa_action.log, please attach the log when reporting problems.
+
+## Interacting with wpa_supplicant with wpa_cli and wpa_gui
+
+The wpa_supplicant process can be interacted with by members of the "netdev" group if the example roaming configuration was used as is (or by whatever group or gid specified by the GROUP= crtl_interface parameter).
+
+~~~  
+# the default ctrl_interface option used in the example file  
+# /usr/share/doc/wpasupplicant/examples/wpa-roam.conf  
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev  
+To interact with the supplicant, the wpa_cli (command line) and wpa_gui (QT)  
+have been provided. With these you may connect, disconnect, add/delete new  
+network blocks, provide required interactive security information and so on.  
+~~~
+
+## Controlling the Roaming Daemon with wpa_action
+
+Once the roaming daemon is started, it assumes control of ifupdown. That is; wpa_cli calls ifup when wpa_supplicant has successfully associated with an access point, and calls ifdown when the connection is lost or terminated. While the roaming daemon is active, ifupdown should not be controlled directly by manually issued commands, rather /sbin/wpa_action is supplied to stop and reload the roaming daemon. For example, to stop the romaing daemon on the device 'eth1':
+
+~~~  
+wpa_action eth1 stop  
+~~~
+
+When it is required to update the roaming daemon with a new networks details, it can be done without stopping it. Edit the wpa_supplicant.conf file that is being used by the daemon with the new networks details, add optional network settings to /etc/network/interfaces that are specific to the new network (linked by the 'id_str') and then 'reload' the daemon like so:
+
+~~~  
+wpa_action eth1 reload  
+~~~
+
+For the complete technical details of what wpa_action can do, read the wpa_action(8) manpage.
+
+<div class="divider" id="wpa3"></div>
+## Fine Tuning the Roaming Setup
+
+You may face situations where multiple known access points are in close proximity. You can choose which one is preferred manually, with wpa_cli or wpa_gui, or you can give each network its own priority. This is provided by the 'priority' option of wpa_supplicant.conf.
+
+<div class="divider" id="wpa4"></div>
+## The Logfile
+
+All activity of the roaming dameon is logged to /var/log/wpa_action.log. The following information is logged:
+
+*time and date  
+*interface name and action event  
+*values of enviromental variables (WPA_ID, WPA_ID_STR, WPA_CTRL_DIR)  
+*ifupdown command executed  
+*wpa_cli status (based on WPA-PSK, network may display different info)  
+*bssid  
+*ssid  
+*id  
+*id_str  
+*pairwise_cipher  
+*group_cipher  
+*key_mgmt  
+*wpa_state  
+*ip_address
+
+<div class="divider" id="wpa5"></div>
+## Using External Mapping Scripts (e.g. guessnet)
+
+In addition to the internal mapping of logical interfaces via 'id_str', wpa_action can call external mapping scripts. A mapping script should return the name of the logical interface which should be brought up. Any mapping script that works from ifupdowns mapping mechanism (see man interfaces) should also work when called from wpa_action.
+
+To call a mapping script add a line 'wpa-mapping-script name-of-the-script' to the interfaces stanza of the physical roaming device. (You may have to specify the absolute path to the mapping script.)
+
+The contents of lines starting with wpa-map are passed to stdin of the mapping script. Since ifupdown allows only one wpa-map line you can append any number to wpa-map for additional lines. For example:
+
+~~~  
+iface wlan0 inet manual  
+wpa-driver wext  
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf  
+wpa-mapping-script guessnet-ifupdown  
+wpa-map0 home  
+wpa-map1 work  
+wpa-map2 school  
+# ... additional wpa-mapX lines as required  
+~~~
+
+By default the mapping script will only be used when no 'id_str' is available for the current network. If you want to completely disable 'id_str' matching and use only an external mapping script, use the 'wpa-mapping-script-priority 1' option to override default behaviour.
+
+If the mapping script returns an empty string wpa_action will fallback to using the 'default' interface, unless an alternative is defined by the 'wpa-roam-default-iface' option.
+
+Below is an advanced example, using guessnet-ifupdown as the external mapping script.
+
+###### /etc/network/interfaces with external mapping example
+
+~~~  
+/etc/network/interfaces with external mapping example:  
+allow-hotplug wlan0  
+iface wlan0 inet manual  
+wpa-driver wext  
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf  
+wpa-roam-default-iface default-wparoam  
+wpa-mapping-script guessnet-ifupdown  
+wpa-map default: default-guessnet  
+wpa-map0 home_static  
+wpa-map1 work_static  
+# school can only be chosen via 'id_str' matching  
+iface school inet dhcp  
+# resolvconf  
+dns-nameservers 11.22.33.44 55.66.77.88  
+iface home_static inet static  
+address 192.168.0.20  
+netmask 255.255.255.0  
+network 192.168.0.0  
+broadcast 192.168.0.255  
+gateway 192.168.0.1  
+test peer address 192.168.0.1 mac 00:01:02:03:04:05  
+iface work_static inet static  
+address 192.168.3.200  
+netmask 255.255.255.0  
+network 192.168.3.0  
+broadcast 192.168.3.255  
+gateway 192.168.3.1  
+test peer address 192.168.3.1 mac 00:01:02:03:04:05  
+iface default-guessnet inet dhcp  
+iface default-wparoam inet dhcp  
+~~~
+
+In this example wpa_action will use guessnet for the selection of a suitable logical interface only when no 'id_str' option has been provided for the current network in the provided wpa_supplicant.conf.
+
+The 'wpa-map' lines provide guessnet with the logical interfaces that are to be tested as well as the default interface to be used when all tests fail. The 'test' lines of each logical interface are used by guessnet to determine if we are actually connected to that network. For instance, guessnet will choose the logical interface 'home_static' if there's a device with an IP address of 192.168.0.1 and MAC of 00:01:02:03:04:05 on the current network. If all tests fail, the 'default-guessnet' interface will be configured.
+
+Please, read the guessnet(8) manpage for more information.
+
+## 4. Troubleshooting
+
+In order to debug connection, association and authentication problems, we suggest starting `wpa_cli -i &lt;interface&gt;` in a different shell, before starting the interface. Use the command 'level 0' first, to get all debug messages. Then use `ifup --verbose &lt;interface&gt;` to get verbose debug messages from the script starting wpasupplicant.
+
+<div class="divider" id="wpa6"></div>
+## Hidden ssids
+
+For reference, see #358137. In order to be able to associate to hidden ssids, please try to set the option 'ap_scan=1' in the global section, and 'scan_ssid=1' in your network block section of your wpa_supplicant.conf file. If you are using the managed mode, you can do so by these stanzas:
+
+~~~  
+iface eth1 inet dhcp  
+wpa-conf managed  
+wpa-ap-scan 1  
+wpa-scan-ssid 1  
+# additional options for your setup  
+~~~
+
+According to #368770, association can take a very long time to associate to WEP secured networks. In some cases, setting the parameter 'ap_scan=2' in the config file, (or using a 'wpa-ap-scan 2' stanza, which is equivalent) can greatly help to speed up association.
+
+Please note that setting ap_scan to the value of 2 also requires that all networks have a precisely defined security policy for for key_mgmt, pairwise, group and proto network policy variables.
+
+<div class="divider" id="wpa7"></div>
+## 5. Security Considerations
+
+##### Configuration of File Permissions
+
+It is important to keep PSK's and other sensitive information concerning your network settings private, therefore ensure that important configuration files containing such data are only readable by their owner. For example:
+
+~~~  
+chmod 0600 /etc/network/interfaces  
+# substitute the path of your wpa_supplicant.conf file  
+chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf  
+~~~
+
+By default, /etc/network/interfaces is world readable, and thus unsuitable for containing secret keys and passwords.
+
+<div id="rev">Page last revised 10/01/2012 1800 UTC</div>
