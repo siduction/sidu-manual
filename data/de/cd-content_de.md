@@ -50,7 +50,7 @@ Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne ers
 ---
 
 ### Minimale Systemanforderungen
-für: KDE-Plasma, Gnome, XFCE, LXDE, LXQt, Cinnamon, Mate, Xorg und NoX
+für: KDE-Plasma, XFCE, LXQt, Cinnamon, Xorg und NoX
 
 #### Prozessoranforderungen: 64Bit CPU
 

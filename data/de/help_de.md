@@ -20,7 +20,7 @@ Schnelle Hilfe kann einem viele Tränen ersparen und bietet die Möglichkeit, da
 
 ## Das siduction-Forum
 
-Das siduction-Forum bietet die Möglichkeit Fragen zu stellen und Antworten auf diese zu erhalten. Bevor ein neuer Beitrag erstellt wird, sollte die Forensuche benutzt werden, da die Wahrscheinlichkeit groß ist, dass diese oder eine ähnliche Frage schon einmal gestellt wurde. [Das Forum](http://siduction.org/module-PNphpBB2-main-newlang-deu.html)  ist auf Deutsch und Englisch verfügbar.
+Das siduction-Forum bietet die Möglichkeit Fragen zu stellen und Antworten auf diese zu erhalten. Bevor ein neuer Beitrag erstellt wird, sollte die Forensuche benutzt werden, da die Wahrscheinlichkeit groß ist, dass diese oder eine ähnliche Frage schon einmal gestellt wurde. [Das Forum](https://forum.siduction.org/index.php?name=PNphpBB2)  ist auf Deutsch und Englisch verfügbar.
 
 ## Das siduction-Wiki
 
@@ -39,7 +39,7 @@ Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki
 
 <!--Es gibt 2 Methoden #siduction zu erreichen:  
 -->  Indem man das `"IRC Chat #siduction"-Symbol`  auf dem Desktop anklickt oder einen anderen Chat-Client verwendet  
-<!-- 2) Indem man auf `Meet the Team`  im Menü der [siduction-Homepage](http://siduction.org)  klickt
+<!-- 2) Indem man auf `Meet the Team`  im Menü der [siduction-Homepage](http://siduction.org)  klickt -->
 
 ### Konversation
 
@@ -159,7 +159,7 @@ Im Runlevel 3 kann so in einen anderen Terminal/TTY gewechselt werden:
 
 ~~~
 # CTRL-ALT-F2
-$ siductionbox login: <username2 <password2 (nicht als root)
+$ siductionbox login: <username> <password> (nicht als root)
 danach gibt man ein:
 $ siduction-irc (dies startet irssi)
 ~~~
@@ -176,7 +176,7 @@ Im Runlevel 3 kann man das Terminal mit folgendem Befehl wechseln:
 
 ~~~
 # CTRL-ALT-F2
-$ siductionbox login: <username2 <password2 (nicht root!)
+$ siductionbox login: <username> <password> (nicht root!)
 danach eingeben
 $ weechat-curses
 ~~~
@@ -251,7 +251,7 @@ Im Textmodus (Runlevel 3) geht man so vor:
 
 ~~~
 # CTRL-ALT-F2
-$ siductionbox login: <username2 <password2 (nicht root!)
+$ siductionbox login: <username> <password> (nicht root!)
 danach gibt man ein:
 $ w3m siduction.org
 ~~~

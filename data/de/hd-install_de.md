@@ -164,7 +164,7 @@ Um eine existierende $home-Partition von siduction in eine neue Installation ein
 Um `neue Benutzer`  mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als root aus:
 
 ~~~
-adduser <nutzername2
+adduser <nutzername>
 ~~~
 
 Das Drücken der Eingabetaste Enter führt zu weiteren Optionen, die Feinstellungen ermöglichen. Es folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.
@@ -174,7 +174,7 @@ siduction spezifische Desktopsymbole (für das Handbuch und den IRC) müssen sel
 So entfernt man einen Benutzer
 
 ~~~
-deluser <nutzername2
+deluser <nutzername>
 ~~~
 
 Mehr Informationen:

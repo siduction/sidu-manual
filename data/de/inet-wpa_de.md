@@ -10,7 +10,7 @@ Falls eine kabelgebundene Netzwerkverbindung nicht hergestellt werden kann, best
 Die Firmware wird dann folgendermaßen installiert (der Befehl wird im Verzeichnis der gespeicherten Firmware ausgeführt):
 
 ~~~
-#dpkg -i <firmware.deb2
+#dpkg -i <firmware.deb>
 ~~~
 
 Um die richtige Firmware zu finden, wenn man nicht weiß, welcher WiFi-Chip im Computer eingebaut ist, wird dieser Befehl ausgeführt:
@@ -23,9 +23,9 @@ Damit erhält man folgende Information:
 
 ~~~
 #apt-get update
-#apt-get install <Name der Firmware2
-#modprobe -r <Modulname2
-#modprobe <Modulname2
+#apt-get install <Name der Firmware>
+#modprobe -r <Modulname>
+#modprobe <Modulname>
 ~~~
 
 Nun wird der Installationsbefehl ausgeführt, den fw-detect in der Zeile mit "apt get install" ausgegeben hat. Bevor die WiFi-Schnittstelle konfiguriert werden kann, muss das Modul noch geladen werden (der Modulname wird von fw-detect ausgegeben).
@@ -33,9 +33,9 @@ Nun wird der Installationsbefehl ausgeführt, den fw-detect in der Zeile mit "ap
 Dies geschieht als root mit diesen Konsolenbefehlen:
 
 ~~~
-modprobe -r <Modulname2>
+modprobe -r <Modulname>
 
-modprobe <Modulname2>
+modprobe <Modulname>
 ~~~
 
 &lt;Modulname&gt; wird durch den von fw-detect ausgegebenen realen Namen des Moduls ersetzt. Am einfachsten geschieht dies unter Verwendung der automatischen Textergänzung von Bash mittels Tabulator-Taste:  
@@ -47,7 +47,7 @@ Beide modprobe-Befehle geben keine Rückmeldung aus, falls die Module erfolgreic
 Mit folgendem Befehl kann geprüft werden, ob das Modul korrekt geladen wurde:
 
 ~~~
-#lsmod | grep <Modulname2>
+#lsmod | grep <Modulname>
 ~~~
 
 Nun kann Ceni gestartet werden: in K-Menü>Internet oder als root in einer Konsole. Siehe auch [Internet &amp; Netzwerk - Ceni](inet-ceni-de.htm#netcardconfig) . Die konfigurierbare WiFi-Schnittstelle sollte angezeigt werden.
