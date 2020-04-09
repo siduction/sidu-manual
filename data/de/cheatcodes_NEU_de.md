@@ -1,8 +1,18 @@
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: Review ausstehend**
+
+Änderungen 2020-03:
++ Geringe Anpassung an systemd in "Allgemeine Parameter des Linux-Kernels", da die alte Terminologie wohl noch länger erhalten bleibt.
++ Korrektur und Prüfung aller Links
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
 <div class="divider" id="cheatcodes">
 
 ## Bootoptionen (Cheatcodes)
 
- Wenn die möglichen Werte in dem "Werte"-Feld der Tabelle aufgelistet werden, müssen diese an die "Bootoption" mit einem  **`=`**  Zeichen angehängt werden. Wenn zum Beispiel 1280x1024 der gewünschte Wert für die Bootoption "screen" wäre, dann wird  `screen=1280x1024`  in die Grub-Befehlszeile eingegeben, für die Sprachauswahl (hier "Deutsch")  `lang=de` . Die Grub-Befrehlszeile lässtsich editieren, indem man, sobald man die Grub-Anzeige sieht, die Taste  `e`  drückt. Dann befindet man sich im Editiermodus. Jetzt kann man an die Kernelzeile (hinter  `quiet` ) den gewünschten Cheatcode einfügen. Der Bootvorgang wird mit  `Strg - X`  fortgesetzt. Man kann auch mehrere Cheatcodes hintereinander schreiben.
+ Wenn die möglichen Werte in dem "Werte"-Feld der Tabelle aufgelistet werden, müssen diese an die "Bootoption" mit einem  **`=`**  Zeichen angehängt werden. Wenn zum Beispiel 1280x1024 der gewünschte Wert für die Bootoption "screen" wäre, dann wird  `screen=1280x1024`  in die Grub-Befehlszeile eingegeben, für die Sprachauswahl (hier "Deutsch")  `lang=de` . Die Grub-Befrehlszeile lässtsich editieren, indem man, sobald man die Grub-Anzeige sieht, die Taste  `e`  drückt. Dann befindet man sich im Editiermodus. Jetzt kann man an die Kernelzeile (hinter  `quiet` ) den gewünschten Cheatcode einfügen. Der Bootvorgang wird mit  `Strg` + `X`  fortgesetzt. Man kann auch mehrere Cheatcodes hintereinander schreiben.
 
 [Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
@@ -10,14 +20,14 @@
 
 <div class="divider" id="cheatcodes-siduction">
 
-## siduction spezifische Parameter (nur Live-CD)
+### siduction spezifische Parameter (nur Live-CD)
 
 | Bootoption | Wert | Beschreibung | 
 | ---- | ---- | ---- |
 |  **blacklist**  | Name des Moduls | temporäre Deaktivierung von Modulen, bevor udev aktiv wird | 
 |  **desktop**  | kde | Desktopumgebung auswählen | 
 |  | fluxbox |  | 
-|  **fromiso**  |  | [bitte lies "Booten 'fromiso'"](hd-install-opts-de.htm#fromiso)  | 
+|  **fromiso**  |  | [bitte lies "Booten 'fromiso'"](hd-install-opts_de.htm#fromiso)  | 
 |  **hostname**  | myhostname | ändert den Netzwerknamen (hostname) des Live-CD-Systems | 
 |  **lang**  |  be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr, fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru, zh | setzt die Spracheinstellung, die Grundeinstellungen der Lokalisation (locales), das Tastaturlayout (in der Konsole wie in X), die Zeitzone und den Spiegelserver von Debian.  Mit der Langform  `lang=ll_cc`  oder  `lang=ll-cc`  bedeutet  `ll`  die Sprachauswahl und  `cc`  Tastaturlayout, Spiegelserver und Zeitzonenwahl (z.B.  `lang=fr-be` ). Die Grundeinstellung für Englisch ist en_US mit UTC als Zeitzone und für Deutsch, de mit Europe/Berlin als die Zeitzone. Beispiel für eine selbstgewählte Einstellung:  `lang=pt_PT tz=Pacific/Auckland`  | 
 |  **md5sum**  |  | testet die Prüfsumme der CD/DVD (zur Kontrolle, ob CD/DVD in Ordnung sind) | 
@@ -30,14 +40,14 @@
 |  **nomodeset**  | radeon.modeset=0 | ermöglicht zusammen mit  `xmodule=vesa`  ein sauberes Booten nach X bei Radeonkarten im Live-Mode | 
 |  **nonetwork**  |  | verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten | 
 |  **noswap**  |  | Keine Aktivierung der Swap-Partition | 
-|  **persist**  |  | [bitte lies "fromiso und persist"](hd-install-opts-de.htm#fromiso-persist)  | 
+|  **persist**  |  | [bitte lies "fromiso und persist"](hd-install-opts_de.htm#fromiso-persist)  | 
 |  **smouse**  |  | sucht mittels hwinfo nach seriellen Mauseingabegeräten | 
 |  **tz**  | tz=Europe/Dublin | setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird  `utc=yes`  angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy & paste:  `file:///usr/share/zoneinfo/`  in den Browser eingegeben wird . | 
 |  **toram**  |  | kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie | 
 
 ---
 
-#### Bootoptionen für den Grafikserver X
+### Bootoptionen für den Grafikserver X
 
 Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet werden, wenn man Bootoptionen für den Grafikserver X für die Grafikkarten Radeon, Intel oder MGA einsetzt.
 
@@ -65,12 +75,12 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 
 <div class="divider" id="cheatcodes-linux">
 
-## Allgemeine Parameter des Linux-Kernels
+### Allgemeine Parameter des Linux-Kernels
 
 | Bootoption | Wert | Beschreibung | 
 | ---- | ---- | ---- |
 |  **apm**  | off | schaltet Advanced Power Managment aus | 
-|  **target**  |  (z.B.) systemd.unit=multi-user.target  |  Boot-Ziele , die man manuell in der Grub-Bootzeile eingeben kann [Siehe auch siduction Runlevels - Ziel-Unit](sys-admin-gen-de.htm#ziel-unit)  | 
+|  **1, 2, 3, 5**  |  (z.B.) 3  |  Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann [Siehe auch siduction Runlevels - Ziel-Unit](sys-admin-gen_de.htm#ziel-unit)  | 
 |  **irqpoll**  |  | benutzt IRQ-Polling | 
 |  **mem**  | (z.b) 128M, 1G | benutzt die angegebene Speichergröße | 
 |  **noagp**  |  |  keine AGP-Unterstützung (Accelerated Graphics Port) | 
@@ -81,7 +91,7 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 |  **nosmp**  |  | verwendet keinen Symmetric Multi-Prozessor (mehrere CPUs oder CPUs mit Hyper-Threading) | 
 |  **pci**  | noacpi | kein ACPI für PCI-Geräte | 
 |  **quiet**  |  | es erfolgt keine Ausgabe am Bildschirm | 
-|  **vga**  | normal | mehr zu vga-Codes hier: [VGA-Bootoptionen](cheatcodes-vga-de.htm#vga)  | 
+|  **vga**  | normal | mehr zu vga-Codes hier: [VGA-Bootoptionen](cheatcodes-vga_de.htm#vga)  | 
 |  **video**  | (z.B.) DVI-0:800x600 | Für Grafikkarten mit aktiviertem KMS. Dies gilt für Intel- und ATI-Grafikkarten (Letztere mit Radeon-Treiber), wobei DVI-X/LVDS-X die Video-Ausgabe ist, die von xrandr gezeigt wird. | 
 
-<div id="rev">Page last revised 17/11/2014 19:20 UTC</div>
+<div id="rev">Page last revised by akli, 09/04/2020</div>
