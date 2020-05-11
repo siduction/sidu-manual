@@ -5,12 +5,12 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2020-05:
 + md codierung angepasst
 + Leerzeile zwischen text und code eingefügt (hendrikL) Mo 11. Mai 22:04:47 CEST 2020
-
++ Einleitung angepasst (devil)
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Aktualisierung des BIOS mit FreeDOS
 
-Das BIOS eines Computers sollte ab und an aktualisiert werden, wenn der Hersteller des Motherboards Verbesserungen der BIOS-Software vornimmt. Das Installationsprogramm ist in der Regel eine Anwendung auf MS-DOS-Basis.
+Das BIOS eines Computers sollte ab und an aktualisiert werden, wenn der Hersteller des Motherboards Verbesserungen der BIOS-Software vornimmt. Viele moderne PCs und Notebooks erlauben die Aktualisierung des BIOS/UEFI aus dem laufenden System per <a href="https://linuxnews.de/2017/10/firmware-updates-automatisieren/">fwupd</a> oder aus dem BIOS/UEFI selbst an. Besteht diese Möglichkeit nicht, lässt sich die Aktualisierung über eine Anwendung auf MS-DOS-Basis vornehmen.
 
 Wir stellen nun eine Möglichkeit vor, wie man das BIOS unter Linux von einem USB-Stick oder einer micro/mini/SD-Karte (mit einem geeigneten Adapter) aktualisieren kann.
 
@@ -247,4 +247,4 @@ Der FreeDOS USB-Stick wird in ein laufendes System angesteckt, eingebunden und d
 
 Der PC wird ausgeschaltet und der FreeDOS USB-Stick angesteckt. Der PC wird eingeschaltet, sodass der FreeDOS USB-Stick bootet, danach wird den Anweisungen des Herstellers des BIOS bzw. Motherboards gefolgt.
 
-<div id="rev">Page last revised by devil on 17/08/2016 1745 UTC</div>
+<div id="rev">Page last revised by devil on 11/05/2020 23:00 UTC</div>
