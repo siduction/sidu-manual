@@ -34,7 +34,7 @@ Der USB-Stick wird angesteckt und nicht eingebunden. Mit dem Werkzeug fdisk ermi
 
 Der USB-Stick wird gelöscht, wobei alle Daten verloren gehen. Man kann auch den ganzen USB-Stick löschen, nicht nur die ersten 16 MByte, wie im Beispiel. 
 
-~~~~
+~~~~ bash
 root@siduction# dd if=/dev/zero of=/dev/sdb bs=1M count=16
 16+0 records in
 16+0 records out
@@ -49,16 +49,17 @@ Das Partitions-Label wird auf FAT16 gesetzt, auf Sticks mit weniger als 2 GByte 
 
 Danach fdisk auf die Partition ausführen: 
 
-~~~~
+~~~~ text
   root@siduction# fdisk /dev/sdb
   fdisk /dev/sdb Device contains neither a valid DOS partition
   table, nor Sun, SGI or OSF disklabel Building a new DOS disklabel with disk
-  identifier 0xa8993739. Changes will remain in memory only, until you decide to
-  write them. After that, of course, the previous content won't be recoverable.
+  identifier 0xa8993739. Changes will remain in memory only, until you decide to write them. After that, of course, the previous content won't recoverable.
 
   Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
 ~~~~
-_Anlegen der Partition:_
+
+ _Anlegen der Partition:_
+
 ~~~~
   Command (m for help): n
   Command action
@@ -71,7 +72,9 @@ _Anlegen der Partition:_
   Last cylinder or +size or +sizeM or +sizeK (1-1018, default 1018):
   Using default value 1018
 ~~~~
+
 _Bestätigung des Anlegens der Partiton, indem die Partitionstabelle geschrieben wird:_
+
 ~~~~~
   Command (m for help): p
   Disk /dev/sdb: 2003 MByte, 2003828736 bytes 62 heads, 62 sectors/track, 1018
@@ -81,7 +84,9 @@ _Bestätigung des Anlegens der Partiton, indem die Partitionstabelle geschrieben
   Device Boot      Start         End      Blocks   Id  System
   /dev/sdb1            1        1018     1956595+  83  Linux
 ~~~~~
+
 _Setzen des korrekten Partitionslabels , '6' für FAT16:_
+
 ~~~~
   Command (m for help): t
   Selected partition 1
@@ -116,11 +121,15 @@ _Setzen des korrekten Partitionslabels , '6' für FAT16:_
 
     Changed system type of partition 1 to 6 (FAT16)
 ~~~~
+
 _Aktivierung der neuen und einzigen Partition:_
+
 ~~~~
   Command (m for help): a Partition number (1-4): 1
 ~~~~
+
 _Die neue Partitionstabelle wird nochmals geschrieben, und man bestätigt neuerlich, dass die Partition aktiviert wird:_
+
 ~~~~
   Command (m for help): p
   Disk /dev/sdb: 2003 MByte, 2003828736 bytes 62 heads, 62 sectors/track, 1018
@@ -130,7 +139,9 @@ _Die neue Partitionstabelle wird nochmals geschrieben, und man bestätigt neuerl
   Device Boot      Start         End      Blocks   Id  System 
   /dev/sdb1   *        1        1018     1956595+   6  FAT16
 ~~~~
+
 _Die neue Partitionstabelle wird auf dem USB-Stick gespeichert und fdisk beendet:_
+
 ~~~~
   Command (m for help): w 
   The partition table has been altered!
@@ -141,26 +152,33 @@ _Die neue Partitionstabelle wird auf dem USB-Stick gespeichert und fdisk beendet
   fdisk manual page for additional information. Syncing disks. 
   # exit
 ~~~~
+
 _Formatieren des neu aufgesetzten USB-Sticks:_
+
 ~~~~
   root@siduction# mkfs -t vfat -n FreeDOS /dev/sdb1
   root@siduction# exit
 ~~~~
+
 Die Vorbereitungsphase ist nun abgeschlossen. Der USB-Stick wurde partitioniert und formatiert. Nun kann der Installationsprozess begonnen werden.
 
 ### FreeDOS mit qemu booten
 
 Da DOS keine USB-Sticks kennt, muss man einen Weg finden, um FreeDOS eine normale "Festplatte" vorzugaukeln. Bei einem "Live-Boot" übernimmt das BIOS diese Funktion, in unserem Fall muss man zu diesem Zweck jedoch qemu verwenden:
+
 ~~~~
   Benutzer:siduction> qemu-system-i386 -hda	/dev/sdb -cdrom /path/to/fdbasecd.iso -boot d
 ~~~~
+
 _Damit wird FreeDOS CD gebootet und der USB-Stick wird als primäre Master-Festplatte erkannt (qemus Fähigkeit zur BIOS-Emulation lässt den USB-Stick für DOS als gewöhnliche Festplatte erscheinen). Nun wird der Installer im Boot-Menu des virtualisierten FreeDOS gewählt:  
 ctrl-alt schaltet Maus und Tastatur zwischen qemu und Hostsystem. Damit kann man Desktops wechseln und schrittweise gleichzeitig die Anleitung mitlesen._
 
 ![Image Info](../../static/images-common/images-qemu-freedos/qemu-boot01.jpg)
+
 ~~~~
   1) Continue to boot FreeDOS from CD-ROM 1
 ~~~~
+
 Man wählt die Grundeinstellung 1 bzw. antwortet Yes, falls angefragt.
 
 ![Image Info](../../static/images-common/images-qemu-freedos/qemu-boot02.jpg)  
@@ -184,29 +202,38 @@ Man gibt den Buchstaben n ein.
 ### Schreiben eines Bootsektors auf den USB-Stick
 
 Der mbr-Fehler wird behoben durch:
+
 ~~~~
   fdisk /mbr 1
 ~~~~
+
 Der Bootmenüfehler wird in der neuen fdconfig.sys behoben, indem man ausführt:
+
 ~~~~
   cd \ 
   edit fdconfig.sys
 ~~~~
+
 und dann die Zeile beginnend mit command.com so abändert:
+
 ~~~~
   1234?SHELLHIGH=C:\FDOS\command.com C:\FDOS /D /P=C:\fdauto.bat /K set
 ~~~~
+
 ![Image Info](../../static/images-common/images-qemu-freedos/qemu-boot23.jpg)
 
 `Ansonsten darf nichts geändert werden, da die Zeile von dem Installations-Setup abhängt.`
 
 Speichern und "edit" verlassen:
+
 ~~~~
   [alt]+[f]
 ~~~~
+
 Zurück beim Befehlszeilen-Prompt kann qemu nun verlassen werden.
 
 Nun wird getestet, ob qemu den USB-Stick bootet.
+
 ~~~~
   qemu-system-i386 -hda /dev/sdb
 ~~~~
