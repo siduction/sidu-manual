@@ -1,13 +1,13 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: In Arbeit**
+**Status: RC1**
 
 Änderungen 2020-05:
 + Cheatcodes: Text und Link eingefügt, Tabellen entfernt.
 + Entfernen von "Boot-Up Manager (bum)"
 + systemd erneuert
 + Beenden eines Prozesses aktualisiert
-+ Schriftarten in siduction aktualisiert und erweitert
++ Schriftarten in siduction aktualisiert und erweitert, Fehlerkorrektur in Userkonfiguration (10.05.2020)
 + CUPS aktualisiert
 + Sound in siduction aktualisiert
 + Korrektur und Aktualisierung aller Links
@@ -337,8 +337,8 @@ Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie 
 Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.
 
 + KDE Plasma  
-  Rechtsklick auf die Arbeitsfläche > `Systemeinstellungen` > `Schriftarten`  
-  Rechtsklick auf die Arbeitsfläche > `Systemeinstellungen` > `Anzeige-Einrichtung` > `Globale Skalierung`
+  `Systemeinstellungen` > `Schriftarten` > `Schriftarten`  
+  `Systemeinstellungen` > `Anzeige-Einrichtung` > `Anzeige-Einrichtung` > `Globale Skalierung`
 
 + Gnome (Twaek Tool)  
   `Anwendungen` > `Optimierungen` > `Schriften`
@@ -453,4 +453,4 @@ Die gewünschten Sound-Einstellungen werden als **`$user`**  von einem Terminal 
 $ alsamixer
 ~~~
 
-<div id="rev">Page last revised by akli, 09/05/2020</div>
+<div id="rev">Page last revised by akli, 10/05/2020</div>

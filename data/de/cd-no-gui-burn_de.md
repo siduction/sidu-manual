@@ -1,12 +1,20 @@
-## Eine CD/DVD ohne GUI brennen ##
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
 
-:::warning
-**WICHTIGE INFORMATION:**
+Änderungen 2020-04:
++ md-Notation angepasst
 
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+## Eine CD/DVD ohne GUI brennen
+
+**<warning>WICHTIGE INFORMATION:</warning>**
+<warning>
 siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
-:::
+</warning>
 
-### burniso ###
+### burniso
 
 Man benötigt zum Brennen einer CD/DVD nicht notwendigerweise eine grafische Benutzeroberfläche (GUI).
 
@@ -25,7 +33,7 @@ Als $Nutzer:
 
 Alle ISO-Abbilddateien im aktuellen Verzeichnis werden zur Auswahl angeboten, und der Brennvorgang startet sofort nach der Auswahl einer ISO-Datei. Daher soll man darauf achten, dass vor Start des Skripts bereits das Medium, auf das gebrannt wird, eingelegt ist.  
 
-### Welche Geräte verfügbar sind (als $Nutzer): ###
+### Welche Geräte verfügbar sind (als $Nutzer):
 
 Für ATAPI Geräte:
 
@@ -53,7 +61,7 @@ cdrdao Geräte-Check:
     ATA:1,0,0 AOPEN , CD-RW CRW2440 , 2.02
     ATA:1,1,0 _NEC , DVD_RW ND-3540A , 1.01
 
-### Nützliche Beispiele: ###  
+### Nützliche Beispiele:
 
 **Informationen über leere CDs/DVDs:**
 
@@ -141,3 +149,5 @@ oder so:
 **Um eine Sitzung zu schließen:**
 
     $ growisofs -M /dev/dvd=/dev/zero $
+
+<div id="rev">Page last revised by devil 20/11/2016</div>

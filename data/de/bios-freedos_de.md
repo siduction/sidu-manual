@@ -1,4 +1,13 @@
-###Aktualisierung des BIOS mit FreeDOS
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
+
+Änderungen 2020-05:
++ md codierung angepasst
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+## Aktualisierung des BIOS mit FreeDOS
 
 Das BIOS eines Computers sollte ab und an aktualisiert werden, wenn der Hersteller des Motherboards Verbesserungen der BIOS-Software vornimmt. Das Installationsprogramm ist in der Regel eine Anwendung auf MS-DOS-Basis.
 
@@ -6,27 +15,24 @@ Wir stellen nun eine Möglichkeit vor, wie man das BIOS unter Linux von einem US
 
 Als Erstes muss im BIOS das Booten von USB zugelassen werden, und das BIOS muss mit USB-Festplatten umgehen können. Einige BIOS-Varianten akzeptieren USB-Diskettenlaufwerke, CD-ROMs oder ZIP-Laufwerke. Die meisten davon können geeignet sein, aber eine BIOS-Aktualisierung kann sich schwieriger gestalten. Oft ist das jedoch die einzige Möglichkeit (das betrifft vor allem Netbooks). 
 
-**Drei Voraussetzungen:**
+### Drei Voraussetzungen:
 
-    
+1. ein USB-Stick: bevorzugt sind weniger als 2 GByte (FAT16 erlaubt nicht mehr als 2 GByte, aber eine vollständige FreeDOS-Installation benötigt nur 5.8 MByte). FAT16 ist empfohlen, da FAT32 nicht von jedem BIOS als bootfähig erkannt wird.
 
- 1. ein USB-Stick: bevorzugt sind weniger als 2 GByte (FAT16 erlaubt nicht mehr als 2 GByte, aber eine vollständige FreeDOS-Installation benötigt nur 5.8 MByte). FAT16 ist empfohlen, da FAT32 nicht von jedem BIOS als bootfähig erkannt wird.
-    
+2. ein FreeDOS-Installationsmedium: fdbasecd.iso (8MByte).
 
- 2. ein FreeDOS-Installationsmedium: fdbasecd.iso (8MByte).
-    
+3. qemu (apt-get install qemu): qemu wird für die Installationsroutine benötigt. Das emulierte qemu-BIOS führt dazu, dass FreeDOS den USB-Stick als normale Festplatte erkennt und man auf traditionelle Art installieren kann (man muss keine FreeDOS-CD brennen).
 
- 3. qemu (apt-get install qemu): qemu wird für die Installationsroutine benötigt. Das emulierte qemu-BIOS führt dazu, dass FreeDOS den USB-Stick als normale Festplatte erkennt und man auf traditionelle Art installieren kann (man muss keine FreeDOS-CD brennen).
-
-:::warning
-**SEHR WICHTIGE, KRITISCHE INFORMATION:**
+**<warning>SEHR WICHTIGE, KRITISCHE INFORMATION:</warning>**
+<warning>
 Zu keinem Zeitpunkt darf der USB-Stick eingebunden, d.h. gemountet werden. Es muss peinlichst darauf geachtet werden, die richtige Gerätedatei (engl. device node) zu wählen, ansonsten werden sämtliche Daten auf dem falschen Datenträger (möglicherweise der System-Festplatte!) unwiderruflich gelöscht.
-:::
+</warning>
+
 ---
+
 Der USB-Stick wird angesteckt und nicht eingebunden. Mit dem Werkzeug fdisk ermittelt man, welche Gerätedatei dem USB-Stick zugewiesen wurde. In unseren Beispielen wird /dev/sdb verwendet.
 
 Der USB-Stick wird gelöscht, wobei alle Daten verloren gehen. Man kann auch den ganzen USB-Stick löschen, nicht nur die ersten 16 MByte, wie im Beispiel. 
-
 
 ~~~~
 root@siduction# dd if=/dev/zero of=/dev/sdb bs=1M count=16
@@ -35,7 +41,7 @@ root@siduction# dd if=/dev/zero of=/dev/sdb bs=1M count=16
 16777216 bytes (17 MByte) copied, 2.35751 s, 7.1 MByte/s 
 root@siduction#
 ~~~~
-**Partitionieren des USB-Sticks**
+### Partitionieren des USB-Sticks
 
 Die korrekte Partitionierung und Formatierung des USB-Sticks ist vermutlich der schwierigste Teil.
 
@@ -142,7 +148,7 @@ _Formatieren des neu aufgesetzten USB-Sticks:_
 ~~~~
 Die Vorbereitungsphase ist nun abgeschlossen. Der USB-Stick wurde partitioniert und formatiert. Nun kann der Installationsprozess begonnen werden.
 
-**FreeDOS mit qemu booten**
+### FreeDOS mit qemu booten
 
 Da DOS keine USB-Sticks kennt, muss man einen Weg finden, um FreeDOS eine normale "Festplatte" vorzugaukeln. Bei einem "Live-Boot" übernimmt das BIOS diese Funktion, in unserem Fall muss man zu diesem Zweck jedoch qemu verwenden:
 ~~~~
@@ -166,7 +172,8 @@ Man wählt die Grundeinstellung 1 bzw. antwortet Yes, falls angefragt.
 &nbsp;  
 ![Image Info](../../static/images-common/images-qemu-freedos/qemu-boot09.jpg)  
 
-Die Installationsroutine fordert nun zu einem Reboot auf - **`dies verschieben wir noch etwas, da noch zwei Fehler des FreeDOS Installers bezüglich mbr und Bootmenü behoben werden müssen`**  
+Die Installationsroutine fordert nun zu einem Reboot auf -  
+**`dies verschieben wir noch etwas, da noch zwei Fehler des FreeDOS Installers bezüglich mbr und Bootmenü behoben werden müssen`**  
 Man gibt den Buchstaben n ein.  
 &nbsp;  
 &nbsp;  
@@ -174,7 +181,7 @@ Man gibt den Buchstaben n ein.
 ![Image Info](../../static/images-common/images-qemu-freedos/qemu-boot18.jpg)  
 &nbsp;  
 &nbsp;  
-**Schreiben eines Bootsektors auf den USB-Stick**
+### Schreiben eines Bootsektors auf den USB-Stick
 
 Der mbr-Fehler wird behoben durch:
 ~~~~
@@ -206,8 +213,10 @@ Nun wird getestet, ob qemu den USB-Stick bootet.
 
 Der USB-Stick ist nun bootfähig und enthält eine vollständige FreeDOS-Installation mit 5,4 MByte, um das BIOS flashen zu können. `Man sollte booten, ohne Treiber zu laden (Menüoption 4), himem.sys und emm386 könnten in die Flashing-Programme reinpfuschen!`
 
-**Aktualisierung des BIOS**
+### Aktualisierung des BIOS
 
 Der FreeDOS USB-Stick wird in ein laufendes System angesteckt, eingebunden und die benötigten   BIOS-  Dateien (Herstellerempfehlung) werden auf dem FreeDOS USB-Stick gespeichert. Die Einbindung des USB- Sticks wird danach gelöst.
 
 Der PC wird ausgeschaltet und der FreeDOS USB-Stick angesteckt. Der PC wird eingeschaltet, sodass der FreeDOS USB-Stick bootet, danach wird den Anweisungen des Herstellers des BIOS bzw. Motherboards gefolgt.
+
+<div id="rev">Page last revised by devil on 17/08/2016 1745 UTC</div>

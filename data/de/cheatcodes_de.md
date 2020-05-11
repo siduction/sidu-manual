@@ -1,6 +1,6 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: Review ausstehend**
+**Status: RC1**
 
 Änderungen 2020-04:
 + Geringe Anpassung an systemd in "Allgemeine Parameter des Linux-Kernels", da die alte Terminologie wohl noch länger erhalten bleibt.

@@ -1,8 +1,20 @@
-## Die siduction ISO herunterladen ##
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
+
+Änderungen 2020-05:
++ Inhalt aktualisiert
++ Korrektur und Prüfung aller Links
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+<div class="divider" id="download-siduction">
+
+## Die siduction ISO herunterladen
 
 **Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.**  
 
-#### Europa ####
+#### Europa
 
 + **Freie Universität Berlin/ spline (Student Project LInux NEtwork), Deutschland**  
     http://ftp.spline.de/mirrors/siduction/iso/  
@@ -15,7 +27,7 @@
 + **Office Vienna**  
     https://siduction.office-vienna.at/iso/
 
-#### Nordamerika ####
+#### Nordamerika
 
 + **University of Delaware**  
     http://mirror.lug.udel.edu/pub/siduction/iso  
@@ -27,15 +39,15 @@
     ftp://ftp.gtlib.gatech.edu/pub/siduction/iso  
     rsync://rsync.gtlib.gatech.edu/siduction/iso  
 
-#### Südamerika ####
+#### Südamerika
 
 + **Universidade Estadual de Campinas (unicamp), São Paulo, Brasilien**  
     http://www.las.ic.unicamp.br/pub/siduction/iso/  
     ftp://www.las.ic.unicamp.br/pub/siduction/iso/  
 
+-----
 
-&nbsp;
-### Dateidefinitionen auf den siduction-Spiegelservern ###
+### Dateidefinitionen auf den siduction-Spiegelservern
 
 Jeder Spiegelserver umfasst folgende Dateien:
 
@@ -62,7 +74,7 @@ Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weiterver
 
 Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6667 #siduction-de erreichbar. 
 
-### md5sum und Integritätsprüfung von heruntergeladenen Dateien ###
+### md5sum und Integritätsprüfung von heruntergeladenen Dateien
 
 Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dcem Netz immer ratsam ist und viel Zeit für die Fehlersuche erspart.
 
@@ -97,11 +109,10 @@ Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
 
 ### Eine Live-CD mit Windows brennen ###
 
-:::warning
-**WICHTIGE INFORMATION:**
-
+**<warning>WICHTIGE INFORMATION:</warning>**
+<warning>
 siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
-:::
+</warning>
 
 ---
 
@@ -117,20 +128,19 @@ Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.
 **Closed-Source- und proprietäre Brennsoftware für Windows**
 
 + CD/DVD Burner XP pro
-+ Burncdcc von [terabyteunlimited](http://www.terabyteunlimited.com/utilities.html) kann nur ISO-Abbilddateien brennen.
++ Burncdcc von [terabyteunlimited](https://www.terabyteunlimited.com/downloads-free-software.htm) kann nur ISO-Abbilddateien brennen.
 
-### Die CD mit Linux brennen ###
+### Die CD mit Linux brennen
 
-:::warning
-**WICHTIGE INFORMATION:**
-
+**<warning>WICHTIGE INFORMATION:</warning>**
+<warning>
 siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem 
 Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
-:::
+</warning>
 
 ---
 
-Wer bereits Linux auf dem Rechner hat, kann die CD mit jedem installierten Brennprogramm erstellen. Bei siduction ist K3b das Standard-Brennprogramm. Dort muss man den Menüpunkt "Extras" -> "ISO-Abbild brennen..." anklicken, das zu brennende ISO-File (z.B. siduction-2011.1.iso) auswählen und den Brennmodus DAO (Disk At Once) einstellen.
+Wer bereits Linux auf dem Rechner hat, kann die CD mit jedem installierten Brennprogramm erstellen. Bei siduction ist K3b das Standard-Brennprogramm. Dort muss man den Menüpunkt "Extras" -> "ISO-Abbild brennen..." anklicken, das zu brennende ISO-File (z.B. siduction-18.3.0-patience-kde-amd64-201805132121.iso) auswählen und den Brennmodus DAO (Disk At Once) einstellen.
 
 K3b berechnet zuerst die MD5-Summe des ISO-Files (dauert einen Moment). Stimmt die angezeigte Prüfsumme mit der angegebenen Zeichenfolge der sich im selben Ordner befindlichen MD5-Datei (z.B. siduction-Name.iso.md5) überein, war der Download erfolgreich und die Datei kann mit einem Klick auf "Start" gebrannt werden.
 
@@ -140,3 +150,5 @@ Da die Bedeutung von Medien wie CD und DVD für das Erstellen von ISO-Images bei
 
 Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript burniso verwenden.
 Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X).
+
+<div id="rev">Page last revised by akli 2020-05-11</div>
