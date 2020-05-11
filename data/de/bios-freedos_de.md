@@ -4,6 +4,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderungen 2020-05:
 + md codierung angepasst
++ Leerzeile zwischen text und code eingefügt (hendrikL) Mo 11. Mai 22:04:47 CEST 2020
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
