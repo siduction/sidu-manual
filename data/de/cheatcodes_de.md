@@ -6,6 +6,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Geringe Anpassung an systemd in "Allgemeine Parameter des Linux-Kernels", da die alte Terminologie wohl noch länger erhalten bleibt.
 + Korrektur und Prüfung aller Links
 + Integration von "cheatcodes-vga"
++ sieht gut aus!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
