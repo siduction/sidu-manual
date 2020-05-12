@@ -6,6 +6,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Entfernen nicht mehr unterstützter Varianten
 + Korrektur und Aktualisierung aller Links
 + Korrektur der Image-Größen, Typos beseitigt
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Inhalt der Live-ISO
