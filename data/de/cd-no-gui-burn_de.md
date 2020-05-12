@@ -4,6 +4,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderungen 2020-04:
 + md-Notation angepasst
++ Der Artikel sollte in ein noch zu erstellendes 'legacy manual' überführt werden. 
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 

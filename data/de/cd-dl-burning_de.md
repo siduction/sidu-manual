@@ -5,6 +5,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2020-05:
 + Inhalt aktualisiert
 + Korrektur und Prüfung aller Links
++ Inhalt überarbeitet
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -111,7 +112,7 @@ Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
 
 **<warning>WICHTIGE INFORMATION:</warning>**
 <warning>
-siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss, falls das Abbild auf ein optisches Medium gebrannt werden soll, besonders auf die Brennmethode des Abbilds geachtet werden. Bitte verwendet hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
 </warning>
 
 ---
@@ -135,7 +136,7 @@ Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.
 **<warning>WICHTIGE INFORMATION:</warning>**
 <warning>
 siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem 
-Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Bitte verwendet, falls das Abbild auf ein optisches Medium gebrannt werden soll, hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).  Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
 </warning>
 
 ---
@@ -146,9 +147,7 @@ K3b berechnet zuerst die MD5-Summe des ISO-Files (dauert einen Moment). Stimmt d
 
 Klickt man auf die berechnete Prüfsumme, erscheint daneben ein Symbol. Klickt man wiederum darauf und fügt in das Feld die Prüfsumme aus der MD5-Datei ein, so werden die beiden Prüfsummen verglichen.
 
-Da die Bedeutung von Medien wie CD und DVD für das Erstellen von ISO-Images bei Linux-Distributionen ständig abnimmt, sei hier auf die Möglichkeit der Installation von einem USB-Stick / einer SD-Karte hingewiesen, die im Handbuch unter Installationsoptionen erläutert wird.
-
 Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript burniso verwenden.
 Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X).
 
-<div id="rev">Page last revised by akli 2020-05-11</div>
+<div id="rev">Page last revised by devil 2020-05-12</div>
