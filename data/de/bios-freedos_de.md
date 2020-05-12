@@ -3,9 +3,12 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 **Status: RC1**
 
 Änderungen 2020-05:
-+ md codierung angepasst
-+ Leerzeile zwischen text und code eingefügt (hendrikL) Mo 11. Mai 22:04:47 CEST 2020
-+ Einleitung angepasst (devil)
+
+ + md codierung angepasst
+ + Leerzeile zwischen text und code eingefügt (hendrikL) Mo 11. Mai 22:04:47 CEST 2020
+ + Einleitung angepasst (devil)
+ + learning by doing, Schriftsatz
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Aktualisierung des BIOS mit FreeDOS
@@ -25,6 +28,7 @@ Als Erstes muss im BIOS das Booten von USB zugelassen werden, und das BIOS muss 
 3. qemu (apt-get install qemu): qemu wird für die Installationsroutine benötigt. Das emulierte qemu-BIOS führt dazu, dass FreeDOS den USB-Stick als normale Festplatte erkennt und man auf traditionelle Art installieren kann (man muss keine FreeDOS-CD brennen).
 
 **<warning>SEHR WICHTIGE, KRITISCHE INFORMATION:</warning>**
+
 <warning>
 Zu keinem Zeitpunkt darf der USB-Stick eingebunden, d.h. gemountet werden. Es muss peinlichst darauf geachtet werden, die richtige Gerätedatei (engl. device node) zu wählen, ansonsten werden sämtliche Daten auf dem falschen Datenträger (möglicherweise der System-Festplatte!) unwiderruflich gelöscht.
 </warning>
@@ -35,12 +39,12 @@ Der USB-Stick wird angesteckt und nicht eingebunden. Mit dem Werkzeug fdisk ermi
 
 Der USB-Stick wird gelöscht, wobei alle Daten verloren gehen. Man kann auch den ganzen USB-Stick löschen, nicht nur die ersten 16 MByte, wie im Beispiel. 
 
-~~~~ bash
-root@siduction# dd if=/dev/zero of=/dev/sdb bs=1M count=16
-16+0 records in
-16+0 records out
-16777216 bytes (17 MByte) copied, 2.35751 s, 7.1 MByte/s 
-root@siduction#
+~~~~
+ root@siduction# dd if=/dev/zero of=/dev/sdb bs=1M count=16
+ 16+0 records in
+ 16+0 records out
+ 16777216 bytes (17 MByte) copied, 2.35751 s, 7.1 MByte/s 
+ root@siduction#
 ~~~~
 ### Partitionieren des USB-Sticks
 
@@ -50,7 +54,7 @@ Das Partitions-Label wird auf FAT16 gesetzt, auf Sticks mit weniger als 2 GByte 
 
 Danach fdisk auf die Partition ausführen: 
 
-~~~~ text
+~~~~
   root@siduction# fdisk /dev/sdb
   fdisk /dev/sdb Device contains neither a valid DOS partition
   table, nor Sun, SGI or OSF disklabel Building a new DOS disklabel with disk
