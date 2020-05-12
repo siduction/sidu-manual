@@ -4,17 +4,25 @@ Bei der Konvertierung der deutschen Handbuchseiten zu md traten einige Besonderh
 
 Ich habe mich an die [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) gehalten und das Ergebnis mit dem **Markdown Viewer Webext** PlugIn für Firefox getestet.  
 Dabei verwendete ich folgende Einstellungen:  
-markdown "default"  
+markdown "github"  
 code style "default"  
 und den zusätzlichen css-Code
 
 ~~~ css
-p code {
-    color: #c00;
+code {
+    display: block;
+    background-color: #E8E8E8;
+    padding: 0.5em;
+}
+p code, li code {
+    display: inline;
+    color: #C00;
+    padding: 0.15em;
 }
 hr {
-    height: 2px;
+    height: 0.2em;
     background-color: darkgrey;
+    border: 0;
     margin-bottom: 2em;
 }
 warning {
@@ -144,7 +152,8 @@ In einigen HTML-Dokumenten befanden sich Überschriften `<h6>`. In der Darstellu
 
 In einigen Dokumenten waren alle Überschriften zusätzlich Fett ausgezeichnet.  
 Dazu die Frage an die Autoren und Maintainer:  
-Wie sollen die Überschriften einheitlich aussehen, Normaltext oder fett?
+Wie sollen die Überschriften einheitlich aussehen, Normaltext oder fett?  
+AKTUALISIERUNG 2020-05-12: Bei Verwendung des github-md-Dialktes erübrigt sich die Frage.
 
 ---- 
 

@@ -1,7 +1,11 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
+
 Änderungen 2020-03:
 + Entfernen der apt-get Befehle in "Die Verwaltung von Softwarepaketen" und "Aktualisierung des Systems - upgrade"
++ Entfernen von "WICHTIGE INFORMATION: ... Linux-LIVE-DVD/CD, ist sehr stark komprimiert. ... Brennen im DAO-Modus ... "
++ Hinzufügen "Download und Brennen" in Essenzielle Kapitel
 + Inhaltliche Anpassung in "Weitere Desktopumgebungen"
 + Korrektur und Aktualisierung aller Links
 
@@ -13,32 +17,31 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## siduction Kurzanleitung
 
-#### **`WICHTIGE INFORMATION:`** 
-`siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im` **`DAO-Modus (disk-at-once)`**  `und nicht schneller als achtfach (8x). Einfacher ist das Schreiben des Image auf einen USB-Stick mittels des Befehls dd.` 
-
----
-
 siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.
 
 ### Essenzielle Kapitel
 
-`Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:` 
+<warning>
+Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:
+</warning>
 
-+ [Terminal/Konsole](term-konsole_de.htm#term-kon)  - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.
++ [Terminal/Konsole](term-konsole_de.md#term-kon)  - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.
 
-+ [Partitionieren der Festplatte](part-gparted_de.htm#partition)  - Beschreibt, wie eine Festplatte partitioniert werden kann. 
++ [Partitionieren der Festplatte](part-gparted_de.md#partition)  - Beschreibt, wie eine Festplatte partitioniert werden kann. 
 
-+ [Installation auf einer Festplatte](hd-install_de.htm#install-prep)  - Beschreibt, wie siduction auf einer Festplatte installiert wird.
++ [siduction ISO herunterladen und DVD brennen](cd-dl-burning_de.md)  - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.
 
-+ [Installation auf USB-Geräte](hd-install-opts_de.htm#usb-hd)  - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.
++ [Installation auf einer Festplatte](hd-install_de.md#install-prep)  - Beschreibt, wie siduction auf einer Festplatte installiert wird.
 
-+ [Installation auf USB-Stick/SD von einem anderen System](hd-ins-opts-oos_de.htm#usb-hd#raw-usb)  - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.
++ [Installation auf USB-Geräte](hd-install-opts_de.md#usb-hd)  - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.
 
-+ [Nicht freie Treiber, Firmware und Quellen](gpu_de.htm#foss-xorg)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
++ [Installation auf USB-Stick/SD von einem anderen System](hd-ins-opts-oos_de.md#raw-usb)  - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.
 
-+ [Internetverbindung](inet-ceni_de.htm#netcardconfig)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
++ [Nicht freie Treiber, Firmware und Quellen](gpu_de.md#foss-xorg)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
 
-+ [Paketmanager und Systemaktualisierung](sys-admin-apt_de.htm#apt-cook)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
++ [Internetverbindung](inet-ceni_de.md#netcardconfig)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
+
++ [Paketmanager und Systemaktualisierung](sys-admin-apt_de.md#apt-cook)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
 
 ### Zur Stabilität von Debian Sid
 
@@ -53,9 +56,9 @@ Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Pr
 siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet apt und dpkg für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in `/etc/sources.list.d/*` 
 
 Debian Sid enthält mehr als 20.000 Programmpakete, womit die Chancen, ein für eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie man Programmpakete sucht, ist hier beschrieben:  
-[Programmsuche mit apt-cache bzw. apt](sys-admin-apt_de.htm#apt-cache)  
+[Programmsuche mit apt-cache bzw. apt](sys-admin-apt_de.md#apt-cache)  
 oder mit  
-[GUI-Paketsuche mit packagesearch](sys-admin-apt_de.htm#gui-pacsea) .
+[GUI-Paketsuche mit packagesearch](sys-admin-apt_de.md#gui-pacsea) .
 
 Ein Programmpaket wird mit diesem Befehl installiert:
 
@@ -63,7 +66,7 @@ Ein Programmpaket wird mit diesem Befehl installiert:
 apt install <Paketname>
 ~~~
  
-Siehe auch: [Neue Pakete installieren](sys-admin-apt_de.htm#apt-install) .
+Siehe auch: [Neue Pakete installieren](sys-admin-apt_de.md#apt-install) .
 
 Die Repositorien von Debian Sid werden in der Regel viermal am Tag mit aktualisierten bzw. neuen Softwarepaketen beschickt. Zur schnellen Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der Befehl
 
@@ -109,7 +112,7 @@ init 5
 ~~~
  
 **apt full-upgrade** ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
-[Aktualisierung eines installierten Systems - full-upgrade](sys-admin-apt_de.htm#apt-upgrade).
+[Aktualisierung eines installierten Systems - full-upgrade](sys-admin-apt_de.md#apt-upgrade).
 
 ### Konfiguration von Netzwerken
 
@@ -121,25 +124,25 @@ Der Startbefehl in der Konsole ist `Ceni`  oder `ceni` . Falls das Skript nicht 
 apt install ceni
 ~~~
 
-Mehr Informationen unter [Internet und Netzwerk - Ceni](inet-ceni_de.htm#netcardconfig) 
+Mehr Informationen unter [Internet und Netzwerk - Ceni](inet-ceni_de.md#netcardconfig) 
 
 ### Runlevels - Ziel-Unit
 
 Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).  
-Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](sys-admin-gen_de.htm#ziel-unit) beschrieben.
+Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](sys-admin-gen_de.md#ziel-unit) beschrieben.
 
 ### Weitere Desktopumgebungen
 
-Plasma, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.
+Plasma, Gnome, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.
 
 ### Hilfe im IRC und im Forum
 
 Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
-+ Mehr dazu im Kapitel [Wo es Hilfe gibt](help_de.htm#help-gen) .
++ Mehr dazu im Kapitel [Wo es Hilfe gibt](help_de.md#help-gen) .
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
 
-<div id="rev">Page last revised by akli, 09/04/2020</div>
+<div id="rev">Page last revised by akli, 12/05/2020</div>
 

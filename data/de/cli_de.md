@@ -1,3 +1,13 @@
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
+
+Änderungen 2020-05:
++ Inhalt nur redaktionell aktualisiert
++ Korrektur und Prüfung aller Links, Ubuntu-man entfernt, da mit 'man nmcli' identisch
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
 <div class="divider" id="nm on cli"></div>
 
 ## Network Manager in der Shell
@@ -10,10 +20,10 @@ In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen a
 
 ### Installation
 
-Falls der Networkmanager auf dem System noch nicht installiert ist, kann man dies nachholen.   Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM.
+Falls der Networkmanager auf dem System noch nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.
 
 ~~~
-apt-get install network-manager modemmanager mobile-broadband-provider-info plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn network-manager-pptp
+apt install network-manager modemmanager mobile-broadband-provider-info plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn network-manager-pptp
 ~~~
 
 ### Informationen zu WIFI Netzen anzeigen
@@ -133,9 +143,8 @@ nmcli dev disconnect iface wlan0 && sleep 2 && nmcli con up id BluelupoLAN && nm
     man nmcli
     ~~~
 
-+ [Ubuntuusers Wiki](http://wiki.ubuntuusers.de/NetworkManager?redirect=no) 
-+ [Ubuntu-Manpage von nmcli](http://manpages.ubuntu.com/manpages/maverick/man1/nmcli.1.html) 
++ [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
 
-<div id="rev">Page last revised by devil 20/11/2016</div>
+<div id="rev">Page last revised by akli 2020-05-12</div>
 
 nach einem Wiki-Eintrag von Bluelupo
