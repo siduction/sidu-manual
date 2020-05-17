@@ -1,3 +1,13 @@
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: in Arbeit**
+
+Änderungen 2020-05:
++ Inhalt
++ Korrektur und Prüfung aller Links noch nicht erledigt.
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
 <div class="divider" id="home-bu"></div>
 
 ## Sicherung des alten /home
