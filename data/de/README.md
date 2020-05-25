@@ -1,3 +1,5 @@
+##### We need someone who can translate this document!
+
 ### Hinweise für Autoren von MarkDown Dokumenten innerhalb des siduction Handbuchs
 #### Das von mir geschriebene Script "html2md.pl" befindet sich im git-repo des Handbuchs im Ordner /sidu/development .
 Bei der Konvertierung der deutschen Handbuchseiten zu md traten einige Besonderheiten auf, die sicherlich auch für Autoren interessant sein dürften.
