@@ -61,7 +61,7 @@ Beim Systemstart sorgen die qemu-kvm initscripts dafür, dass die nötigen Modul
 **`Als User:`** 
 
 ~~~
-$ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -cdrom <siduction.iso2
+$ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -cdrom <siduction.iso>
 ~~~
 
 #### Installieren einer siduction-*.iso auf ein KVM-Image
@@ -75,7 +75,7 @@ $ qemu-img create -f qcow2 siduction-2010-*-.img 12G
 Das siduction-*.iso wird mit folgenden Parametern gebootet, um KVM die Möglichkeit zur Erkennung eines QEMU-Festplattenimages zu geben:
 
 ~~~
-$ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -cdrom </path/to/siduction-*.iso2 -boot d </path/to/siduction-VM.img2
+$ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -cdrom </path/to/siduction-*.iso> -boot d </path/to/siduction-VM.img>
 ~~~
 
 Wenn die CR-ROM hochgefahren ist, klickt man auf den siduction-Installer, um das Installationsprogramm zu aktivieren (oder man verwendet das Menü), klickt auf den Reiter "Partitioning" und startet die bevorzugte Partitionierungsanwendung. Anleitungen finden sich im Kapitel [Partitionierung der Festplatte - traditionell, GPT und LVM](part-gparted-de.htm) . Eine Swap-Partition wird benötigt, wenn nicht genug RAM zur Verfügung steht. Die Formatierung benötigt einige Zeit.
@@ -87,19 +87,19 @@ Wenn die CR-ROM hochgefahren ist, klickt man auf den siduction-Installer, um das
 Nun steht eine VM zur Verfügung:
 
 ~~~
-$ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -drive if=virtio,boot=on,file=<path/to/siduction-VM.img2
+$ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -drive if=virtio,boot=on,file=<path/to/siduction-VM.img>
 ~~~
 
 Einige Gastsysteme unterstützen virtio nicht. In diesem Fall müssen beim Start von KVM andere Optionen gesetzt werden. Zum Beispiel:
 
 ~~~
-$ kvm -net nic, -net user -soundhw ac97 -m 512 -monitor stdio -hda </path/to/your_guest.img2 -cdrom your_other.iso -boot d
+$ kvm -net nic, -net user -soundhw ac97 -m 512 -monitor stdio -hda </path/to/your_guest.img> -cdrom your_other.iso -boot d
 ~~~
 
 oder
 
 ~~~
-$ kvm -net nic, -net user -soundhw ac97 -m 512 -monitor stdio -hda </path/to/your_guest.img2
+$ kvm -net nic, -net user -soundhw ac97 -m 512 -monitor stdio -hda </path/to/your_guest.img>
 ~~~
 
 Weitere Informationen: [KVM-Dokumentation](http://www.linux-kvm.org/page/Main_Page)  (Englisch).
@@ -150,11 +150,11 @@ Der Computer muss nun neu gestartet werden.
 
 Am besten werden die Assistenten von VirtualBox benutzt, um eine virtuelle Maschine für siduction zu erzeugen. Danach wird den Anweisungen für eine reguläre Installation von siduction gefolgt.
 
-[VirtualBox hat auf seiner Homepage eine umfassende englischsprachige Bedienungsanleitung, die man als PDF herunterladen kann.](http://www.virtualbox.org/)  
+VirtualBox hat auf seiner Homepage eine umfassende englischsprachige [Bedienungsanleitung](http://www.virtualbox.org/), die man als PDF herunterladen kann.  
 
 <div class="divider" id="qemu"></div>
 
-## >Eine QEMU Virtual Machine booten und installieren
+## Eine QEMU Virtual Machine booten und installieren
 
 + 1. Erstellen eines Festplattenabbilds (iso) für QEMU
 + 2. Booten der iso mit QEMU

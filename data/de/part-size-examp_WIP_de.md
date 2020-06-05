@@ -1,30 +1,66 @@
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
+
+Änderungen 2020-06
++ Inhalt vollständig überarbeitet.
++ Link geprüft und aktualisiert.
++ 
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
 <div class="divider" id="part-example"></div>
 
-## Partitionsgrößen: Beispiele
+## Partitionierung von Installationsmedien
 
- **`Für normalen Gebrauch empfehlen wir das Dateisystem ext4.`**
-Mit dem Partitionsmanager GParted werden Festplatten partitioniert und/oder formatiert. Das Programm hat eine grafische Benutzeroberfläche und ist selbsterklärend aufgebaut.
+## Beispiele und Größen
 
-Gparted ist auch in der Lage, Partitionen zu verkleinern oder zu verschieben und es können auch NTFS-Partitionen bearbeitet werden (jedoch mit der Einschränkung, dass nach Bearbeitung einer NTFS-Partition das System sofort neu gestartet werden muss, bevor weitere Bearbeitungsvorgänge durchgeführt werden). [Hier die umfassende englischsprachige Dokumentation von GParted](http://gparted.sourceforge.net/) . Änderungen an NTFS-Partitionen kann man auch mit proprietären Applikationen durchführen (z. B. Partition Magic™, Acronis™.
+### Partitionierungsprogramme
 
- **`IMMER EIN BACKUP DER WICHTIGEN DATEN MACHEN!`**
-Eine eingebundene Partition (auch swap) muss vor Bearbeitung gelöst werden (entweder mittels Rechtsklick in gparted oder im Terminal). Hier die Syntax für den Konsolenbefehl:
++ **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
+  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gpartrd_de.md) liefert weitere Informationen zum Programm.
 
-~~~
++ **fdisk / cfdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *msdos - MBR*.
+  *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere curses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md) liefert weitere Informationen zum Programm.
+
++ **gdisk / cgdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *GPT - UEFI*.
+  *gdisk* ist das klassische Textmodus-Programm. *cgdisk* hat eine benutzerfreundlichere curses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) liefert weitere Informationen zum Programm.
+
+<warning>**Achtung**</warning>
+<warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.</warning>
+
+### Hinweise
+
+**Eingebundene Partitionen** (auch swap) müssen vor Bearbeitung gelöst werden.  
+Im Terminal (ggf. als root) mit dem Befehl:
+
+~~~ sh
 umount /dev/sda1
 ~~~
 
 Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst: 
 
-~~~
+~~~ sh
 swapoff -a
 ~~~
 
-Anschließend kann der Partitionsmanager wieder gestartet werden. Prinzipiell reichen für eine Installation weniger als 5GB, aber damit wird man nicht viel Spass haben. Sinnvolles Mindestmaß sind etwa 12GB. Für Linux-Einsteiger empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Partitionen für ein separates /home und weitere Datenpartitionen angelegt werden.
+Die **Mindestanforderungen** für den sinnvollen Gebrauch einer siduction Installation betragen:
+
+| Installationssystem | \| Festplattenplatz |
+| :---:| :--: |
+| Siduction NOX | 5GB |
+| Siduction Xorg | 10GB |
+| Siduction LXQt | 10GB |
+| Siduction XFCE | 10GB |
+| Siduction Cinnamon | 10GB |
+| Siduction GNOME | 10GB |
+| Siduction  | 10GB |
+
+Linux-Einsteiger empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Partitionen für ein separates /home und weitere Datenpartitionen angelegt werden.
 
 Eine swap-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel `sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM` . Dies gilt hauptsächlich für Notebooks, die per  *suspend*  in den Energiesparmodus versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.
 
-Für den Datenaustausch mit einer Windows-Installation soll vfat (fat32) oder ext2 verwendet werden, damit ein Treiber für MS Windows™ zum gegenseitigen Zugriff auf Daten vorhanden ist. [XFS ist nicht unterstützt]. Siehe auch: [Ext2 Installable File System For MS Windows (Info auf Englisch)](http://www.fs-driver.org/)  und [NTFS Partitionen mit ntfs-3g beschreibbar machen](part-gparted-de.htm#hd-ntfs3g) .
+Für den Datenaustausch mit einer Windows-Installation soll vfat (fat32) oder ext2 verwendet werden. damit ein Treiber für MS Windows™ zum gegenseitigen Zugriff auf Daten vorhanden ist. Siehe auch: [Ext2 Installable File System For MS Windows (Info auf Englisch)](http://www.fs-driver.org/)  und [NTFS Partitionen mit ntfs-3g beschreibbar machen](part-gparted-de.htm#hd-ntfs3g).
 
 Wir empfehlen sich die Namen der Partitionen zu notieren.
 
@@ -87,6 +123,8 @@ Wir empfehlen sich die Namen der Partitionen zu notieren.
 | sdb1 | 59GB | ext4 | Daten | 
 | sda4 | 2 GB | Linux Swap | Linux Swap | 
 #### Allgemein
+
+[Hier die umfassende englischsprachige Dokumentation von GParted](https://gparted.org/index.php)
 
 Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiele sollten einen ersten Einblick in die Möglichkeiten bieten. 
 

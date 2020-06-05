@@ -23,7 +23,7 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 ~~~
 apt-get install $(<installed.txt)
 ~~~
-
+>
 installiert werden.
 
 #### RAM und Swap
@@ -82,11 +82,11 @@ Die zur Verfügung stehenden Sprachen hängen davon ab, in welche Sprachen das s
 
  **1.**  Das Installationsprogramm startet man bequem über: `das Icon am Desktop, über KMenu > System > siduction-installer.` 
 
-![siduction-Installer1](../images-de/installer-de/installer1-de.png "Begrüßung - siduction-Installer") 
+![siduction-Installer1](../../static/images-de/installer-de/installer1-de.png "Begrüßung - siduction-Installer") 
 
  **2.**  Nach dem Lesen (und Verstehen) des Hinweistextes geht es weiter zur Partitionsauswahl.
 
-![siduction-Installer2](../images-de/installer-de/installer2-de.png "Partitionierung - siduction-Installer") 
+![siduction-Installer2](../../static/images-de/installer-de/installer2-de.png "Partitionierung - siduction-Installer") 
 
  `Bitte vergewissere Dich nochmal, ob für alle Daten ein Backup angelegt wurde.`
 Wenn die Festplatte noch nicht partitioniert ist, kann man dies im Bereich `Start Part.-Manager`  durchführen, oder man liest im Handbuch die Kapitel [Partitionieren der Festplatte mit cfdisk](part-cfdisk-de.htm#disknames)  bzw. [Partitionieren mit Gparted](part-gparted-de.htm#partition) .
@@ -95,7 +95,7 @@ Wenn die Festplatte noch nicht partitioniert ist, kann man dies im Bereich `Star
 
  **3.**  Nun wird ausgewählt, wohin installiert wird, und die Mountpunkte werden festgelegt. Die Mountpunkte von Partitionen, für die kein Mountpunkt gewählt wurde, werden vom Installationsprogramm zugewiesen (die Swap-Partition wird immer automatisch während des Systemstarts eingebunden).
 
-![grub-to-mbr](../images-de/installer-de/installer3-de.png "Grub/Zeitzone - siduction-Installer") 
+![grub-to-mbr](../../static/images-de/installer-de/installer3-de.png "Grub/Zeitzone - siduction-Installer") 
 
 **`ANMERKUNG: Die Root-Partiton ("&#47;") wird automatisch mit dem gewählten Filesystem formatiert.`** 
 
@@ -103,7 +103,7 @@ Alle nicht gewählten Partitionen werden in `/media/`  eingebunden. `Auch kann j
 
  **4.**  Auf dieser Seite könne weitere Partitionen angelegt werden. Wir empfehlen einen zusätzliche Partition für Dein /home/. Du kannst hier auch ein Daten Partition erstellen. Einfach auf hinzufügen drücken. Alle weiteren Partition werden automatisch auf /media/ eingebunden. 
 
-![choosing-pw](../images-de/installer-de/installer4-de.png "User/Passwort - siduction-Installer") 
+![choosing-pw](../../static/images-de/installer-de/installer4-de.png "User/Passwort - siduction-Installer") 
 
 ---
 
@@ -115,7 +115,7 @@ Im Anschluss wird der Name der Installation gewählt. Der Name ist beliebig, abe
 
 Im Anschluss daran kann ausgewählt werden, ob ssh automatisch beim Booten gestartet werden soll oder nicht.
 
-![hostname](../images-de/installer-de/installer5-de.png "Netzwerk - siduction-Installer") 
+![hostname](../../static/images-de/installer-de/installer5-de.png "Netzwerk - siduction-Installer") 
 
 ---
 
@@ -123,7 +123,7 @@ Im Anschluss daran kann ausgewählt werden, ob ssh automatisch beim Booten gesta
 
 Diese Abfrage ist die letzte Möglichkeit, die gewählten Einstellungen zu überprüfen. Du solltest noch einmal sorgfältig durchgelesen werden, danach bestätigt man durch `das anklicken des "Weiter" Knopfes` .
 
-![installation-config](../images-de/installer-de/installer6-de.png "Installation - siduction-Installer") 
+![installation-config](../../static/images-de/installer-de/installer6-de.png "Installation - siduction-Installer") 
 
  **7.**  Als nächstes wird der Computer Name festgelegt. Zusätzliche kann ssh eingechaltet werden.
 
@@ -131,7 +131,7 @@ Diese Abfrage ist die letzte Möglichkeit, die gewählten Einstellungen zu über
 
 An diesem Punkt ist es möglich, die Konfigurationsdatei zu editieren und den Installationsprozess mit der angepassten Konfigurationsdatei zu starten. Die Installationsroutine führt keine Überprüfungen durch und `der "Zurück"-Knopf soll nicht gedrückt werden, da ansonsten alle manuellen Änderungen rückgängig gemacht werden.`  
 
-![Begin Installtion](../images-de/installer-de/installer8-de.png "Start der Installation - siduction Installer") 
+![Begin Installtion](../../static/images-de/installer-de/installer8-de.png "Start der Installation - siduction Installer") 
 
 Um die Installation zu starten, klickt man auf `Installation starten` . Der ganze Installationsprozess dauert - abhängig von der benutzten Hardware - zwischen fünf und fünfzehn Minuten. Auf sehr alten Systemen kann man mit bis zu einer Stunde rechnen.
 

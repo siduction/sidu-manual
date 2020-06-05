@@ -76,11 +76,19 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
     
     ![GParted Festplatteninformation](../../static/images-de/gparted-de/gparted02-de.png)
   
-+ #### Laufwerk  
-  Der Menüpunkt beherbergt die Option mit *"Partitionstabelle erstellen"* alle Daten zu vernichten oder das Gegenteil mit *"Datenrettung versuchen"*.
-    
-  ![GParted Partitionstabelle](../../static/images-de/gparted-de/gparted03-de.png)
++ #### Laufwerk
 
+  Hinter dem Menüpunkt *"Partitionstabelle erstellen"* verbergen sich eigentlich zwei Optionen
+  
+  1. Eine neue (leere) Partitionstabelle des **gleichen** Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
+  
+  2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
+    Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md).
+  
+      ![GParted Partitionstabelle](../../static/images-de/gparted-de/gparted03-de.png)
+
+  Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.
+    
   ![GParted Datenrettung](../../static/images-de/gparted-de/gparted04-de.png)
     
 + #### Partition
@@ -171,4 +179,4 @@ Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen so
 * Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
 
 
-<div id="rev">Page last revised by akli 2020-05-26 1445</div>
+<div id="rev">Page last revised by akli 2020-06-04</div>

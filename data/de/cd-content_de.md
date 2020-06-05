@@ -6,6 +6,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Entfernen nicht mehr unterstützter Varianten
 + Korrektur und Aktualisierung aller Links
 + Korrektur der Image-Größen, Typos beseitigt
+Änderungen 2020-06:
++ Speicheranforderungen aktualisiert
++ Disclaimer als Überschrift
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -71,14 +74,16 @@ für: KDE-Plasma, Gnome, XFCE, LXQt, Cinnamon, Xorg und NoX
 
 #### Speicheranforderungen:
 
-    Plasma: ≥1 GByte RAM
-    Cinnamon: ≥512 MByte RAM
-    XFCE: ≥512 MByte RAM
-    LXQT: ≥256 MByte RAM
-    Xorg: ≥256 MByte RAM
-    NoX: ≥128MByte RAM
+    KDE-Plasma: ≥ 2 GByte RAM
+    GNOME:      ≥ 2 GByte RAM
+    Cinnamon:   ≥ 1 GByte RAM
+    XFCE:       ≥ 1 GByte RAM
+    LXQT:       ≥ 512 MByte RAM
+    Xorg:       ≥ 512 MByte RAM
+    NoX:        ≥ 256 MByte RAM
 
-    ≥4GByte Festplattenspeicher, ≥10GByte empfohlen.
+    ≥ 5 GByte Festplattenspeicher für NOX
+    ≥10 GByte Festplattenspeicher für alle Anderen
     
 #### Sonstiges:
 
@@ -102,8 +107,9 @@ Zur Partitionierung von Festplatten werden [cfdisk](../part-cfdisk_de.md) und [G
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
 Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzele Veroffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver: ISO-Versionen, Spiegelserver, Brennen.
-Haftungsausschluss (Disclaimer)
+
+## Haftungsausschluss (Disclaimer)
 
 siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siduction-Projekt, seine Entwickler und Team-Mitglieder können unter keinen Umständen wegen Beschädigung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Schäden des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder verwenden noch verteilen.
 
-<div id="rev">Page last revised by devil 2020-05-12</div>
+<div id="rev">Page last revised by akli 2020-06-05</div>

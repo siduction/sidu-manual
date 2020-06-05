@@ -267,7 +267,7 @@
 					  <ul class="sub2-menu" id="sm13c">
 					    <li><a href="sys-admin-rdiff-de.htm#rdiff">Sicherung mit rdiff</a></li>
 					    <li><a href="sys-admin-rsync-de.htm#rsync">Sicherung mit rsync</a></li>
-					    <li><a href="home-de.htm#home-bu">Verschieben von /home</a></li>
+					    <li><a href="home-move_de.htm#home-bu">Verschieben von /home</a></li>
 					</ul>
 					</li>
 		<li><a href="sys-admin-gen-de.htm#fonts">CUPS, Schriften und Audio &#8658;</a>
