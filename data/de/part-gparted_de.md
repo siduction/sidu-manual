@@ -7,6 +7,8 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Korrektur und Prüfung aller Links.
 + Screenshot erneuert.
 + Kapitel zu ntfs-g3 entfernt.
+Änderungen 2020-06:
++ In den Hinweisen ext2 durch NTFS ersetzt, da der ext2-Treiber für WIN gravierende Probleme mit WIN10 hat.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -29,11 +31,10 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
 [Bitte lese hier weiter.](part-gparted_de.md#ntfs)
 
 + Eine Partition benötigt ein Dateisystem. Linux kann auf und mit verschiedenen Dateisystemen arbeiten.  
-  ext4 ist das empfohlene Dateisystem für siduction.  
-  ext2 ist ein geeignetes Dateisystem zur Datenspeicherung und zum Datentausch, da ein Treiber für MS Windows™ verfügbar ist: [Ext2-Dateisystem für MS-Windows (Treiber und englischsprachige Doku)](http://www.fs-driver.org/).  
-Für normalen Gebrauch empfehlen wir das Dateisystem ext4.
+  Für normalen Gebrauch empfehlen wir das Dateisystem ext4.  
+  NTFS sollte man verwenden, wenn die Partition auch von einer Windows-Installation benutzt werden soll. Siduction kann mit dem automatisch installierten *ntfs-3g* lesend und schreibend auf die Daten zugreifen.  
 
-+ Die gesamte GParted-Dokumentation findet sich auf der [GParted-Homepage](https://gparted.org/) in den Sprachen Englisch, Französisch und Spanisch.
++ Die gesamte GParted-Dokumentation findet sich in vielen Sprachen auf der [GParted-Homepage](https://gparted.org/documentation.php).
 
 ---
 
@@ -159,9 +160,9 @@ root@pc1:/# blkid
 /dev/sdb6: UUID="2ef32215-d545-4e12-bc00-d0099a218970" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-06"
 ~~~
 
-Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot einwandfrei durchführen.
+Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch */mnt/TEST_res* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
 
-**Wenn die UUID's für die Partitionen von** **`/`**, **`/home`** und **`swap`** **nicht mit den Einträgen in der** **`/etc/fstab`** **übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.**
+<warning>Wenn die UUID's für die Partitionen von **`/`**, **`/home`** und **`swap`** nicht mit den Einträgen in der **`/etc/fstab`** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.</warning>
 
 ---
 
@@ -179,4 +180,4 @@ Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen so
 * Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
 
 
-<div id="rev">Page last revised by akli 2020-06-04</div>
+<div id="rev">Page last revised by akli 2020-06-07</div>
