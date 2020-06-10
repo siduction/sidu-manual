@@ -18,7 +18,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ### Partitionierungsprogramme
 
 + **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
-  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gpartrd_de.md) liefert weitere Informationen zum Programm.
+  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md) liefert weitere Informationen zum Programm.
 
 + **fdisk / cfdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *msdos - MBR*.
   *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere curses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md) liefert weitere Informationen zum Programm.

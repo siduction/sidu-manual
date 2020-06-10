@@ -1,6 +1,6 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: In Arbeit**
+**Status: RC1**
 
 Änderungen 2020-06
 + Inhalt überarbeitet.

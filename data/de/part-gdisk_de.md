@@ -270,7 +270,7 @@ gdisk  /dev/sdb
 
 An der Eingabeaufforderung **`Command (? for help):`** geben wir den Befehl **`r`** ein, um in das Untermenü von *recovery & transformation* zu gelangen und anschließend das **`?`**.
 
-~~~ less
+~~~ sh
 recovery/transformation command (? for help): ?
 b use backup GPT header (rebuilding main)
 c load backup partition table from disk (rebuilding main)
@@ -294,7 +294,7 @@ x extra functionality (experts only)
 
 Ein drittes Menü, *experts* , erreicht man mit **x**  entweder vom *main menu*  oder dem *recovery & transformation menu*.
 
-~~~ less
+~~~ sh
 recovery/transformation command (? for help): x
 
 Expert command (? for help): ?
@@ -322,4 +322,4 @@ Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partition oder 
 
 Trotz alledem: die Optionen der Menüs `recovery & transformation`  und `experts`  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **b**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
 
-<div id="rev">Page last revised by akli 2020-06-03</div>
+<div id="rev">Page last revised by akli 2020-06-10</div>
