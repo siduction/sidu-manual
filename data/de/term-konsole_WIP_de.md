@@ -1,40 +1,50 @@
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: In Arbeit**
+
+Änderungen 2020-06
++ .
++ .
++ .
++ Link geprüft und korrigiert.
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
 <div class="divider" id="term-kon"></div>
 
 ## Definition von Terminal bzw. Konsole
 
-Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem ermöglicht, durch direkt ausgeführte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch häufig die `Shell`  oder `Kommandozeile`  genannt, ist ein äußerst mächtiges Werkzeug und den Aufwand, die Grundlagen seiner Handhabung zu lernen wert.
+Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem ermöglicht, durch direkt ausgeführte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch häufig die "Shell"  oder "Kommandozeile"  genannt, ist ein äußerst mächtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.
 
-In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des K-Menüs anklickt oder in K-Menü > System > Terminal aufruft, oder, noch einfacher, in die Suchleiste des K-Menü  *kons*  eintippt. 
+In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des Menüs anklickt oder in Menü > System > Terminal aufruft, oder, noch einfacher, in die Suchleiste des Menü  *kons* oder *term* eintippt. 
 
 Nach dem Aufrufen des Terminals sieht man die Eingabeaufforderung "prompt":
 
-~~~
+~~~ sh
 username@hostname:~$
 ~~~
 
-"username" in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die `Tilde ~`  zeigt, man befindet sich in seinem Heimverzeichnis `/home/username` , und das Dollarzeichen `$`  bedeutet, dass man im Terminal mit eingeschränkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausführen soll.
+"username" in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde `~`  zeigt, man befindet sich in seinem Heimverzeichnis `/home/username` , und das Dollarzeichen `$`  bedeutet, dass man im Terminal mit eingeschränkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausführen soll.
 
-Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man `suxterm`  eingibt und Enter drückt, Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt.
+Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man `su`  eingibt und `Enter` drückt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt.
 
 Ist die Eingabe korrekt, zeigt die Kommandozeile nun:
 
-~~~
+~~~ sh
 root@hostname:/home/username#
 ~~~
 
-:::warning
-**Achtung:**  
-Während man mit Root-Rechten eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, **was** man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.
-:::
+<warning>**Achtung:**</warning>
+<warning>Während man mit Root-Rechten eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, **was** man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.</warning>
 
-Zu beachten ist, dass das Dollarzeichen `$` durch eine Raute `#`  ersetzt wurde. In einem Terminal/einer Konsole bedeutet die Raute `#`  immer, dass man mit Root-Rechten angemeldet ist.  
-`Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor dem Prompt ($ oder #) ausgelassen. Ein Befehl wie:` 
+Zu beachten ist, dass das Dollarzeichen `$` durch eine Raute `#`  ersetzt wurde. In einem Terminal bedeutet die Raute `#`  immer, dass man mit Root-Rechten angemeldet ist.  
+Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor dem Prompt ($ oder #) ausgelassen. Ein Befehl wie:
 
 ~~~
-# apt-get install [Paketname]
+# apt install [Paketname]
 ~~~
 
-bedeutet also: man öffnet ein Terminal, meldet sich als root an (suxterm) und führt dann den Befehl an einem Rootprompt # aus. `Die Raute # wird nicht mit eingegeben`.
+bedeutet also: man öffnet ein Terminal, meldet sich als root an (su) und führt dann den Befehl an einem Rootprompt # aus. Die Raute `#` wird nicht mit eingegeben.
 
 Manchmal kann eine Konsole bzw. ein Terminal nicht mehr so reagieren wie gewünscht, dann muss eingegeben werden:
 
@@ -44,23 +54,22 @@ reset
 
 und die Eingabetaste (Enter) gedrückt werden.
 
-Wenn die Ausgabe einer Konsole bzw. eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von `ctrl+l`  behoben werden, was das Terminal-Fenster neu aufbaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, welche eine ncurses-Schnittstelle benutzen, zum Beispiel irssi.
+Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von `ctrl` + `l` behoben werden, was das Terminal-Fenster neu aufbaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, welche eine ncurses-Schnittstelle benutzen, zum Beispiel *cgdisk*.
 
-Eine Konsole bzw. ein Terminal können eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Drücken von `ctrl+s`  verursacht sein. In diesem Fall kann `ctrl+q`  versucht werden, um die Konsole wieder frei zu geben.
+Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Drücken von `ctrl` + `s` verursacht sein. In diesem Fall kann `ctrl` + `q`  versucht werden, um die Konsole wieder frei zu geben.
+
+---
 
 <div class="divider" id="colours"></div>
 
 ### Farbiges Terminal
 
-#### Prompts für `user:~ $`  und **`root:` `#`**
-
-Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **`root #`**  eine Aufgabe durchführt, die man als `user~$` machen wollte. Sie können auch eingesetzt werden, um als Lesezeichen für alle 100 Zeilen zu fungieren.
-
-In den Grundeinstellungen besitzen die Prompts für user~$ und root# den gleichen Farbton, aber es ist einfach die Farben zu ändern.
+Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als `root #` eine Aufgabe durchführt, die man als `user~$` machen wollte.  
+Deshalb ist in siduction in der Grundeinstellung für den Prompt von `root #` wird das Wort "root" in roter Farbe dargestellt.
 
 Die Grundfarben sind:
 
-~~~
+~~~ sh
 (die Syntax ist 00;XX)
 [00;30] Schwarz
 [00;31] Rot
@@ -125,11 +134,11 @@ Die neue Farbe existiert nach Öffnen eines neuen Terminals.
 
 Um die Hintergrundfarbe und die Fonts in einem Terminal zu ändern, finden sich die Optionen im Menü des Terminal.
 
-![Terminal colours](../images-common/images-terminal/terminal-colour-0.1.png "Terminal colours") 
+![Terminal colours](../../static/images-common/images-terminal/terminal-colour-0.1.png "Terminal colours") 
 
 Es gibt eine Unmenge an Einstellungsmöglichkeiten für Hintergrundfarben. Wir empfehlen eine eher schlichte Einstellung.
 
-<div class="divider" id="suxterm"></div>
+<div class="divider" id="su-to-root"></div>
 
 ## Über suxterm
 
@@ -174,13 +183,13 @@ Alt+F2
 oder Rechts-Klick auf dem Desktop und Auswahl von:
 
 ~~~
-Befehl ausführen
+Anwendungen > Programm starten
 ~~~
 
 danach:
 
 ~~~
-gksu <Application>
+su-to-root -X -c <Application>
 ~~~
 
 #### Optionen für weitere Desktopumgebungen
@@ -206,16 +215,14 @@ su-to-root -X -c <Anwendung>
 
 sudo ist nicht aktiviert nach einer Installation, sondern steht nur im Live-Modus zur Verfügung, da kein Root-Passwort gesetzt ist. Der Grund ist: falls ein Angreifer das Nutzer-Passwort abgreift, hat er nicht Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
 
-Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von `[suxterm](#suxterm) , kdesu, gksu oder su-to-root -X -c`  wird empfohlen!
+Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von `[su](#su) , kdesu oder su-to-root -X -c`  wird empfohlen!
 
 ## Arbeit als root
 
-::: warning
-**Achtung:**  
-Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein,  **was**  man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.
-:::
+<warning>**Achtung:**</warning>  
+<warning>Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein,  **was**  man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.</warning>
 
-**`Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, Büroprogramme u.a.`**
+**Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, Büroprogramme u.a.**
 
 <div class="divider" id="cli-help"></div>
 
