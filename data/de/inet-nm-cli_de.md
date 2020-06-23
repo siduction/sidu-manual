@@ -5,10 +5,12 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2020-05:
 + Inhalt nur redaktionell aktualisiert
 + Korrektur und Prüfung aller Links, Ubuntu-man entfernt, da mit 'man nmcli' identisch
+Änderungen 2020-06:
++ Dateinamen und Titelanker geändert um das Dokument sinnvoll in die Dateihirarchie zu integrieren.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-<div class="divider" id="nm on cli"></div>
+<div class="divider" id="inet-nm-cli"></div>
 
 ## Network Manager in der Shell
 

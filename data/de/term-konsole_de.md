@@ -90,6 +90,12 @@ Im Gegensatz zum allgemeinen Befehl 'su' erlaubt `su-to-root` das Ausführen von
 su-to-root -X -c <Programm>
 ~~~
 
+Wenn Fehlermeldungen mit Bezug zu *dbus* auftreten, ist die Eingabe zu erweitern:
+
+~~~
+su-to-root -X -c 'dbus-launch <Programm>'
+~~~
+
 Es öffnet sich ein weiteres Terminal, in das das root-Passwort einzugeben ist. Bei Erfolg startet das gewünschte Programm mit root-Rechten.  
 Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind: die Bearbeitung einer Konfigurationsdatei mit einem Texteditor, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar.
 
@@ -108,12 +114,12 @@ Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind:
 
 <div class="divider" id="sudo"></div>
 
-## sudo ist nicht standardmäßig konfiguriert
+### sudo ist nicht standardmäßig konfiguriert
 
 *sudo* steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.  
 Nach einer Installation ist *sudo* nicht aktiviert. Der Grund ist: Falls ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
 
-Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von *[su](#su)* oder [*su-to-root*](#su-to-root) wird empfohlen!
+Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von [*su*](#su) oder [*su-to-root*](#su-to-root) wird empfohlen!
 
 ---
 

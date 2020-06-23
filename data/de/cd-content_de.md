@@ -9,8 +9,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2020-06:
 + Speicheranforderungen aktualisiert
 + Disclaimer als Überschrift
++ Anker hinzugefügt
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+<div class="divider" id="inhalt"></div>
 
 ## Inhalt der Live-ISO
 
@@ -58,6 +61,8 @@ Die Varianten sind:
 Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen können wir ein solches ISO leider nicht.
 
 ---
+
+<div class="divider" id="min-hw"></div>
 
 ### Minimale Systemanforderungen
 
@@ -107,6 +112,8 @@ Zur Partitionierung von Festplatten werden [cfdisk](../part-cfdisk_de.md) und [G
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
 Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzele Veroffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver: ISO-Versionen, Spiegelserver, Brennen.
+
+<div class="divider" id="haftung"></div>
 
 ## Haftungsausschluss (Disclaimer)
 
