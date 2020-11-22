@@ -10,7 +10,7 @@ markdown "github"
 code style "default"  
 und den zusätzlichen css-Code
 
-~~~ css
+~~~css
 code {
     display: block;
     background-color: #E8E8E8;
@@ -19,6 +19,10 @@ code {
 p code, li code {
     display: inline;
     color: #C00;
+    padding: 0.15em;
+}
+li pre code {
+    color: #000;
     padding: 0.15em;
 }
 hr {
@@ -77,9 +81,9 @@ Auch innerhalb dieser Bereiche findet kein parsen durch MarkDown statt. Die zus�
 In den Zeilen vor und nach dem Block jeweils drei Tilden an den Zeilenanfang setzen "~~~". Dies hat gegenüber der Einrückung um vier Leerzeichen zwei wichtige Vorteile.
 
 1.  Es ist Syntax Highlighting realisierbar, indem nach den ersten Tilden der Dialekt angegeben wird.  
-z.B.: ~~~ bash
+z.B.: ~~~sh
 
-    ~~~ bash
+    ~~~sh
     user1@pc1:~$ $TEXT=irgendwas
     user1@pc1:~$ print "\t$TEXT\n"
         irgendwas
@@ -165,4 +169,4 @@ Was soll, was muss davon erhalten bleiben?
 
 -----
 
-Stand 2020-05-11, Autor: akli
+Stand 2020-11-22, Autor: akli
