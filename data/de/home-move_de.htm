@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Das Verzeichnis /home verschieben</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+<!-- h1              {display: none;}
+h1.title        {display: initial;} -->
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; background: yellow; line-height: 1.3em; border: 0.2em solid #CCC; padding: 0.4em;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Das Verzeichnis /home verschieben</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#vorbereitungen">Vorbereitungen</a></li>
+<li><a href="#sicherung-des-alten-home">Sicherung des alten /home</a></li>
+<li><a href="#kopieren-der-daten-von-home">Kopieren der Daten von /home</a></li>
+<li><a href="#fstab-anpassen">fstab anpassen</a></li>
+<li><a href="#altes-home-entfernen">Altes /home entfernen</a></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2020-05:</p>
+<ul>
+<li>Inhalt vollständig überarbeitet</li>
+<li>Korrektur und Prüfung aller Links.</li>
+</ul>
+<p>Änderungen 2020-12:</p>
+<ul>
+<li>Rechtschreib- und Layoutfehler korrigiert</li>
+<li>Inhalt teilweise überarbeitet.</li>
+<li>Für die Verwendung mit pandoc optimiert.</li>
+</ul>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<warning>
+Wichtige Information
+</warning>
+<warning>
+Ein existierendes <strong>/home</strong> soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
+</warning>
+<p>Sofern Daten gemeinsam für parallele Installationen bereit stehen sollen, ist es ratsam eine eigene Partition zu erstellen und diese z. B. unter <strong>/Daten</strong> einzuhängen.</p>
+<h2 id="vorbereitungen">Vorbereitungen</h2>
+<p>An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.<br />
+Die Ausgangslage:</p>
+<ul>
+<li>Die alte, mittlerweile zu kleine, Festplatte hat drei Partitionen (“/boot/efi”, “/”, “swap”).</li>
+<li>Es existiert bisher noch keine eigene Partition für “/home”.</li>
+<li>Eine zusätzliche eingebaute Festplatte hat vier Partitionen mit ext4-Dateisystem.<br />
+Davon benutzen wir die Partitionen “sdb4” für das neue “/home”.</li>
+</ul>
+<p>Unsere bisherige <strong>/etc/fstab</strong> hat den Inhalt:</p>
+<pre><code>$ cat /etc/fstab
+...
+# &lt;file system&gt;                         &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;    &lt;dump&gt;&lt;pass&gt;
+UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
+tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0</code></pre>
+<p>Von der zusätzlichen Festplatte benötigen wir die UUID-Informationen. Siehe auch die Handbuchseite <a href="part-uuid-de.md#uuid">Anpassung der fstab</a>.<br />
+Der Befehl <em>blkid</em> gibt uns Auskunft.</p>
+<pre><code>$ /sbin/blkid
+...
+/dev/sdb4: UUID=&quot;e2164479-3f71-4216-a4d4-af3321750322&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;000403b7-04&quot;</code></pre>
+<h2 id="sicherung-des-alten-home">Sicherung des alten /home</h2>
+<p>Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern wir als <em>Root</em> alles unterhalb von “/home” in einem tar-Archiv.</p>
+<pre><code># cd /home
+# tar cvzpf somewhere/home.tar.gz ./</code></pre>
+<h2 id="kopieren-der-daten-von-home">Kopieren der Daten von /home</h2>
+<p>Wir binden die neue Partition mit einem temporären Mountpoint ein und kopieren die Daten aus dem alten /home.</p>
+<p>Mountpoint erstellen und Partition einhängen:</p>
+<pre><code># mkdir /mnt/new-home
+# mount -t ext4 /dev/sdb4 /mnt/new-home</code></pre>
+<p>Daten kopieren Variante 1:</p>
+<pre><code># cd /home
+# cp -a ./ /mnt/new-home</code></pre>
+<p>Daten kopieren Variante 2 mit dem tar-Archiv der Datensicherung:</p>
+<pre><code># cd /mnt/new-home
+# cp somewhere/home.tar.gz ./
+# tar -xvpf home.tar.gz</code></pre>
+<p>Nun befinden sich alle Daten aus dem alten <em>home</em> auf der neuen Partition, bei Variante 2 zusätzlich das tar-Archiv.</p>
+<p>Jetz hängen wir die neue Partition wieder aus und entfernen den temporären Mountpoint:</p>
+<pre><code># umount /mnt/new-home
+# rmdir /mnt/new-home</code></pre>
+<h2 id="fstab-anpassen">fstab anpassen</h2>
+<p>Damit beim Systemstart die neue home-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei <em>fstab</em> geändert werden. Zusätzliche Informationen zur <em>fstab</em> bietet unser Handbuch <a href="part-uuid_de.md">Anpassung der fstab</a>.<br />
+Wir benötigen die oben bereits ausgelesene UUID-Information der home-Partition. Zuvor erstellen wir eine Sicherungskopie der <em>fstab</em> mit Datumsanhang:</p>
+<pre><code># cp /etc/fstab /etc/fstab_$(date +%F) 
+# mcedit /etc/fstab</code></pre>
+<p>Entsprechend unserem Beispiel fügen wir die folgende Zeile in die fstab ein.</p>
+<p><code>UUID=e2164479-3f71-4216-a4d4-af3321750322  /home  ext4  defaults,noatime 0 2</code></p>
+<p>Die fstab sollte nun so aussehen:</p>
+<pre><code># &lt;file system&gt;                         &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;    &lt;dump&gt;&lt;pass&gt;
+UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
+UUID=e2164479-3f71-4216-a4d4-af3321750322  /home       ext4    defaults,noatime 0 2
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
+tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0</code></pre>
+<p>Man speichert die Datei mit F2 und beendet den Editor mit F10.</p>
+<h2 id="altes-home-entfernen">Altes /home entfernen</h2>
+<p>Zum jetzigen Zeitpunkt ist unser altes “/home” Verzeichnis innerhalb von “/” noch aktiv und mit Daten gefüllt. Um das zu ändern, wechseln wir in den emergency-Modus mit:</p>
+<pre><code># systemctl isolate emergency.target</code></pre>
+<p>Nach Eingabe des Root Passwortes steht ein Terminal zur Verfügung. Der nächste Code-Block zeigt die Ein- und Ausgabe des Terminals der nun notwendigen Befehle.</p>
+<ul>
+<li>In das <strong>/</strong> Verzeichnis wechseln.</li>
+<li>Das <strong>/</strong> Verzeichnis listen.</li>
+<li>Das <strong>/home</strong> Verzeichnis nach <strong>/home_alt</strong> umbenennen.</li>
+<li>Ein neues, leeres <strong>/home</strong> Verzeichnis im Verzeichnisbaum erstellen.</li>
+<li>Die neu verwendete Partition nach <strong>/home</strong> einhängen.</li>
+<li>Wieder in die graphische Oberfläche hochfahren.</li>
+</ul>
+<pre><code>root@sidu:~# cd /
+root@sidu:/# ls
+  bin    etc         initrd.img.old  libx32      opt   sbin  usr
+  boot   fll         lib             lost+found  proc  srv   var
+  dev    home        lib32           media       root  sys   vmlinuz
+  disks  initrd.img  lib64           mnt         run   tmp   vmlinuz.old
+root@sidu:/# mv /home /home_alt
+root@sidu:/# mkdir /home
+root@sidu:/# mount /home
+root@sidu:/# systemctl default</code></pre>
+<p>Nachdem wieder in die graphische Oberfläche gewechstelt wurde, sieht der Desktop genauso aus wie zuvor und die neue <strong>/home</strong> Partition ist eingebunden. Wir überprüfen trotzdem ob tatsächlich die neue Partition <em>/dev/sdb4</em> verwendet wird.</p>
+<pre><code>$ mount | grep /home
+/dev/sdb4 on /home type ext4 (rw,noatime)</code></pre>
+<p>Unserem Beispiel entsprechend ist “sdb4” unter “/home” eingehängt.<br />
+Nachdem der Datenbestand im “/home” Verzeichnis überprüft wurde, können wir das alte home-Verzeichnis löschen.</p>
+<pre><code># rm -r /home_alt</code></pre>
+<p>Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.</p>
+<hr />
+<div id="rev">
+Zuletzt bearbeitet: 2020-12-02
+</div>
+</body>
+</html>

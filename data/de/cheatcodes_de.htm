@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Bootoptionen (Cheatcodes)</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+<!-- h1              {display: none;}
+h1.title        {display: initial;} -->
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; background: yellow; line-height: 1.3em; border: 0.2em solid #CCC; padding: 0.4em;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Bootoptionen (Cheatcodes)</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#info">Info</a></li>
+<li><a href="#siduction-spezifische-parameter-nur-live-cd">siduction spezifische Parameter (nur Live-CD)</a></li>
+<li><a href="#bootoptionen-für-den-grafikserver-x">Bootoptionen für den Grafikserver X</a></li>
+<li><a href="#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
+<li><a href="#vga-codes">VGA-Codes</a>
+<ul>
+<li><a href="#dezimal">Dezimal:</a></li>
+<li><a href="#hexadezimal">Hexadezimal:</a></li>
+<li><a href="#vesa">VESA:</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2020-04:</p>
+<ul>
+<li>Geringe Anpassung an systemd in “Allgemeine Parameter des Linux-Kernels”, da die alte Terminologie wohl noch länger erhalten bleibt.</li>
+<li>Korrektur und Prüfung aller Links</li>
+<li>Integration von “cheatcodes-vga”</li>
+<li>sieht gut aus!</li>
+</ul>
+<p>Änderungen 2020-12:</p>
+<ul>
+<li>Für die Verwendung mit pandoc optimiert.</li>
+<li>Inhalt teilweise überarbeitet.</li>
+</ul>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<h2 id="info">Info</h2>
+<p>Diese Handbuchseite enthält Tabellen zu den Bootoptionen für</p>
+<ol type="1">
+<li>siduction spezifische Parameter (nur Live-CD)</li>
+<li>Bootoptionen für den Grafikserver X</li>
+<li>Allgemeine Parameter des Linux-Kernels</li>
+<li>Werte für den allgemeinen Parameter <strong>vga</strong></li>
+</ol>
+<p>Sofern in dem “Werte”-Feld der Tabellen Werte aufgelistet werden, müssen diese an die betreffende Bootoption mit einem “<strong>=</strong>” Zeichen angehängt werden. Wenn zum Beispiel “1280x1024” der gewünschte Wert für die Bootoption “screen” wäre, dann wird “screen=1280x1024” in die Grub-Befehlszeile eingegeben, für die Sprachauswahl (hier “Deutsch”) “lang=de”. Die Grub-Befrehlszeile lässt sich editieren, indem man, sobald das Grub-Menue erscheint, die Taste <code>e</code> drückt. Danach befindet man sich im Editiermodus. Jetzt kann man mit den Pfeiltasten zur Kernelzeile navigieren und am Ende den oder die gewünschten Cheatcode einfügen. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <code>Strg</code>+<code>X</code> oder <code>F10</code> fortgesetzt.</p>
+<p><a href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)</a></p>
+<hr />
+<h2 id="siduction-spezifische-parameter-nur-live-cd">siduction spezifische Parameter (nur Live-CD)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bootoption</th>
+<th>Wert</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>blacklist</strong></td>
+<td>Name des Moduls</td>
+<td>temporäre Deaktivierung von Modulen, bevor udev aktiv wird</td>
+</tr>
+<tr class="even">
+<td><strong>desktop</strong></td>
+<td>kde</td>
+<td>Desktopumgebung auswählen</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>fluxbox</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>fromiso</strong></td>
+<td></td>
+<td><a href="hd-install-opts_de.md#fromiso">bitte lies “Booten ‘fromiso’”</a></td>
+</tr>
+<tr class="odd">
+<td><strong>hostname</strong></td>
+<td>myhostname</td>
+<td>ändert den Netzwerknamen (hostname) des Live-CD-Systems</td>
+</tr>
+<tr class="even">
+<td><strong>lang</strong></td>
+<td>be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr, fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru, zh</td>
+<td>setzt die Spracheinstellung, die Grundeinstellungen der Lokalisation (locales), das Tastaturlayout (in der Konsole wie in X), die Zeitzone und den Spiegelserver von Debian. Mit der Langform <strong>lang=ll_cc</strong> oder <strong>lang=ll-cc</strong> bedeutet <strong>ll</strong> die Sprachauswahl und <strong>cc</strong> Tastaturlayout, Spiegelserver und Zeitzonenwahl (z.B. “lang=fr-be” ). Die Grundeinstellung für Englisch ist en_US mit UTC als Zeitzone und für Deutsch, de mit Europe/Berlin als die Zeitzone. Beispiel für eine selbstgewählte Einstellung: “lang=pt_PT tz=Pacific/Auckland”</td>
+</tr>
+<tr class="odd">
+<td><strong>md5sum</strong></td>
+<td></td>
+<td>testet die Prüfsumme der CD/DVD (zur Kontrolle, ob CD/DVD in Ordnung sind)</td>
+</tr>
+<tr class="even">
+<td><strong>noaptlang</strong></td>
+<td></td>
+<td>Verhindert die Installation von Lokalisierungspaketen der gewählten Sprache</td>
+</tr>
+<tr class="odd">
+<td><strong>nocpufreq</strong></td>
+<td></td>
+<td>aktiviert kein Speedstep/Powernow</td>
+</tr>
+<tr class="even">
+<td><strong>nodhcp</strong></td>
+<td></td>
+<td>kein DHCP (DHCP versucht automatisch Ethernetverbindungen aufzubauen)</td>
+</tr>
+<tr class="odd">
+<td><strong>noeject</strong></td>
+<td></td>
+<td>entfernt CD/DVD nicht aus dem Laufwerk</td>
+</tr>
+<tr class="even">
+<td><strong>nofstab</strong></td>
+<td></td>
+<td>Verhindert das Schreiben einer neuen fstab</td>
+</tr>
+<tr class="odd">
+<td><strong>nointro</strong></td>
+<td></td>
+<td>überspringt die Ausgabe der index.html beim Start der Live-DVD/CD</td>
+</tr>
+<tr class="even">
+<td><strong>nomodeset</strong></td>
+<td>radeon.modeset=0</td>
+<td>ermöglicht zusammen mit <strong>xmodule=vesa</strong> ein sauberes Booten nach X bei Radeonkarten im Live-Mode</td>
+</tr>
+<tr class="odd">
+<td><strong>nonetwork</strong></td>
+<td></td>
+<td>verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten</td>
+</tr>
+<tr class="even">
+<td><strong>noswap</strong></td>
+<td></td>
+<td>Keine Aktivierung der Swap-Partition</td>
+</tr>
+<tr class="odd">
+<td><strong>persist</strong></td>
+<td></td>
+<td><a href="hd-install-opts_de.md#fromiso-persist">bitte lies “fromiso und persist”</a></td>
+</tr>
+<tr class="even">
+<td><strong>smouse</strong></td>
+<td></td>
+<td>sucht mittels hwinfo nach seriellen Mauseingabegeräten</td>
+</tr>
+<tr class="odd">
+<td><strong>tz</strong></td>
+<td>tz=Europe/Dublin</td>
+<td>setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird <strong>utc=yes</strong> angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy &amp; paste: <strong>file:///usr/share/zoneinfo/</strong> in den Browser eingegeben wird .</td>
+</tr>
+<tr class="even">
+<td><strong>toram</strong></td>
+<td></td>
+<td>kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bootoptionen-für-den-grafikserver-x">Bootoptionen für den Grafikserver X</h2>
+<p>Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet werden, wenn man Bootoptionen für den Grafikserver X für die Grafikkarten Radeon, Intel oder MGA einsetzt.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bootoption</th>
+<th>Wert</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>dpi</strong></td>
+<td>auto <em>oder</em> DPI-Zahl</td>
+<td>setzt die gewünschten Pixel pro Zoll für den Monitor. Die DPI für den Monitor erhält man, wenn man die Pixelanzahl der Monitorbreite durch den Zollwert der Diagonale dividiert und mit folgenden Werten multipliziert: 1,25 für einen 4:3-Bildschirm, 1,18 für einen 16:10-Bildschirm oder 1,147 für einen 16:9-Bildschirm. Für einen 24“-Bildschirm mit der Auflösung 1920x1080 ergibt das mittels 1,147x1920/24 dpi=92 oder für einen 15”-Bildschirm mit der Auflösung 1600x1200 ergibt das mittels 1.25x1600/15 dpi=133.</td>
+</tr>
+<tr class="even">
+<td><strong>hsync</strong></td>
+<td>80</td>
+<td>setzt die horizontale Frequenz des Monitors (in Kilohertz)</td>
+</tr>
+<tr class="odd">
+<td><strong>noml</strong></td>
+<td></td>
+<td>verhindert, dass die X.org-Konfiguration eine Liste von Modelines enthält, und bewirkt dadurch, dass der korrekte Mode automatisch erkannt wird</td>
+</tr>
+<tr class="even">
+<td><strong>noxrandr</strong></td>
+<td></td>
+<td>verhindert die Verwendung der Erweiterungen von RandR 1.2 durch die neuen X.org-Treiber und nutzt die alten Techniken zur Abfrage der Monitoreigenschaften</td>
+</tr>
+<tr class="odd">
+<td><strong>screen</strong></td>
+<td>1280x1024</td>
+<td>stellt benutzerdefinierte Auflösung für X ein (1280x1024 oder andere Bildschirmauflösungen)</td>
+</tr>
+<tr class="even">
+<td><strong>vsync</strong></td>
+<td>60</td>
+<td>setzt die vertikale Frequenz des Monitors (in Hertz), der Wert ist ein Beispiel</td>
+</tr>
+<tr class="odd">
+<td><strong>xdepth</strong></td>
+<td>Werte: 8 15 16 24</td>
+<td>setzt die Farbtiefe, die von X.org benutzt wird (nicht alle Treiber unterstützen 1 und 4)</td>
+</tr>
+<tr class="even">
+<td><strong>keytable</strong></td>
+<td>z.B. us, de, gb</td>
+<td>Tastaturlayout, das von X.org benutzt wird</td>
+</tr>
+<tr class="odd">
+<td><strong>xkbmodel</strong></td>
+<td>(z.B.) pc105</td>
+<td>Tastaturtyp, der von X.org benutzt wird (die Zahl bezeichnet die Anzahl der Tasten)</td>
+</tr>
+<tr class="even">
+<td><strong>xkboptions</strong></td>
+<td>(z.B.) grp:alt_shift_toggle</td>
+<td>Belegungsvariante der Tastatur, die von X.org benutzt wird</td>
+</tr>
+<tr class="odd">
+<td><strong>xkbvariant</strong></td>
+<td>(z.B.) nodeadkeys,</td>
+<td>Setzen einer Belegungsvariante der Tastatur</td>
+</tr>
+<tr class="even">
+<td><strong>xmode</strong></td>
+<td>800x600</td>
+<td>setzt die Bildschirmauflösung nach dem gegebenen Wert (1024x768, 1600x1200 etc.)</td>
+</tr>
+<tr class="odd">
+<td><strong>xmodule</strong> or <strong>xdriver</strong></td>
+<td>ati, fbdev, i810, intel, mga, nouveau, radeon, savage, vesa</td>
+<td>nutzt das gewählte X-Modul</td>
+</tr>
+<tr class="even">
+<td><strong>xrandr</strong></td>
+<td></td>
+<td>erzwingt X.org-Konfiguration unter Verwendung der neuen RandR-1.2-Erweiterungen der X.org-Treiber</td>
+</tr>
+<tr class="odd">
+<td><strong>xrate</strong></td>
+<td>XX</td>
+<td>erzwingt eine bevorzugte Wiederholungsfrequenz bei Treibern, die durch RandR 1.2 unterstützt sind. Diese Option muss in Verbindung mit der Bootoption xmode verwendet werden. Eine ausführliche Dokumentation findet sich <a href="http://wiki.debian.org/XStrikeForce/HowToRandR12">hier</a></td>
+</tr>
+<tr class="even">
+<td><strong>xhrefresh</strong></td>
+<td>75</td>
+<td>setzt die horizontale Frequenz des Monitors für X (in Kilohertz), der Wert ist Beispiel</td>
+</tr>
+<tr class="odd">
+<td><strong>xvrefresh</strong></td>
+<td>60</td>
+<td>setzt die vertikale Frequenz des Monitors für X (in Hertz), der Wert ist Beispiel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bootoption</th>
+<th>Wert</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>apm</strong></td>
+<td>off</td>
+<td>schaltet Advanced Power Managment aus</td>
+</tr>
+<tr class="even">
+<td><strong>1, 3, 5</strong></td>
+<td>(z.B.) 3</td>
+<td>Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite <a href="sys-admin-gen_de.md#ziel-unit">Runlevel - Ziel-Unit</a></td>
+</tr>
+<tr class="odd">
+<td><strong>irqpoll</strong></td>
+<td></td>
+<td>benutzt IRQ-Polling</td>
+</tr>
+<tr class="even">
+<td><strong>mem</strong></td>
+<td>(z.b) 128M, 1G</td>
+<td>benutzt die angegebene Speichergröße</td>
+</tr>
+<tr class="odd">
+<td><strong>noagp</strong></td>
+<td></td>
+<td>keine AGP-Unterstützung (Accelerated Graphics Port)</td>
+</tr>
+<tr class="even">
+<td><strong>noapic</strong></td>
+<td></td>
+<td>keine APIC-Abfrage (Advanced Programmable Interrupt Controller)</td>
+</tr>
+<tr class="odd">
+<td><strong>nodma</strong></td>
+<td></td>
+<td>keine Unterstützung für DMA (Direct Memory Access)</td>
+</tr>
+<tr class="even">
+<td><strong>noisapnpbios</strong></td>
+<td></td>
+<td>führt keine ISA-“Plug and Play”-Abfrage beim Start durch</td>
+</tr>
+<tr class="odd">
+<td><strong>nomce</strong></td>
+<td></td>
+<td>deaktiviert die Kernel-Option “Machine Check Exception”</td>
+</tr>
+<tr class="even">
+<td><strong>nosmp</strong></td>
+<td></td>
+<td>verwendet keinen Symmetric Multi-Prozessor (mehrere CPUs oder CPUs mit Hyper-Threading)</td>
+</tr>
+<tr class="odd">
+<td><strong>pci</strong></td>
+<td>noacpi</td>
+<td>kein ACPI für PCI-Geräte</td>
+</tr>
+<tr class="even">
+<td><strong>quiet</strong></td>
+<td></td>
+<td>es erfolgt keine Ausgabe am Bildschirm</td>
+</tr>
+<tr class="odd">
+<td><strong>vga</strong></td>
+<td>normal</td>
+<td>mehr zu vga-Codes hier: <a href="cheatcodes_NEU_de.md#vga">VGA-Bootoptionen</a></td>
+</tr>
+<tr class="even">
+<td><strong>video</strong></td>
+<td>(z.B.) DVI-0:800x600</td>
+<td>Für Grafikkarten mit aktiviertem KMS. Dies gilt für Intel- und ATI-Grafikkarten (Letztere mit Radeon-Treiber), wobei DVI-X/LVDS-X die Video-Ausgabe ist, die von xrandr gezeigt wird.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="vga-codes">VGA-Codes</h2>
+<p>Die folgenden Tabellen listen die Werte, die mit dem allgemeinen Parameter <strong>vga</strong> angegeben werden können.<br />
+Ein Anwendungsbeispiel ist <strong>vga=791</strong> (VESA-Code, Auflösung 1024x768 bei 64000 Farben)</p>
+<p>Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingabe von vga=0 in die Grubzeile gelöst werden.</p>
+<h3 id="dezimal">Dezimal:</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Farben</strong></th>
+<th style="text-align: center;"><strong>640x480</strong></th>
+<th style="text-align: center;"><strong>800x600</strong></th>
+<th style="text-align: center;"><strong>1024x768</strong></th>
+<th style="text-align: center;"><strong>1280x1024</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>256</strong></td>
+<td style="text-align: center;">257</td>
+<td style="text-align: center;">259</td>
+<td style="text-align: center;">261</td>
+<td style="text-align: center;">263</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>32k</strong></td>
+<td style="text-align: center;">272</td>
+<td style="text-align: center;">275</td>
+<td style="text-align: center;">278</td>
+<td style="text-align: center;">281</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>64k</strong></td>
+<td style="text-align: center;">273</td>
+<td style="text-align: center;">276</td>
+<td style="text-align: center;">279</td>
+<td style="text-align: center;">282</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>16M</strong></td>
+<td style="text-align: center;">274</td>
+<td style="text-align: center;">277</td>
+<td style="text-align: center;">280</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="hexadezimal">Hexadezimal:</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Farben</strong></th>
+<th style="text-align: center;"><strong>640x480</strong></th>
+<th style="text-align: center;"><strong>800x600</strong></th>
+<th style="text-align: center;"><strong>1024x768</strong></th>
+<th style="text-align: center;"><strong>1280x1024</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>256</strong></td>
+<td style="text-align: center;">0x101</td>
+<td style="text-align: center;">0x103</td>
+<td style="text-align: center;">0x105</td>
+<td style="text-align: center;">0x107</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>32k</strong></td>
+<td style="text-align: center;">0x110</td>
+<td style="text-align: center;">0x113</td>
+<td style="text-align: center;">0x116</td>
+<td style="text-align: center;">0x119</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>64k</strong></td>
+<td style="text-align: center;">0x111</td>
+<td style="text-align: center;">0x114</td>
+<td style="text-align: center;">0x117</td>
+<td style="text-align: center;">0x11A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>16M</strong></td>
+<td style="text-align: center;">0x112</td>
+<td style="text-align: center;">0x115</td>
+<td style="text-align: center;">0x118</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="vesa">VESA:</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Farben</strong></th>
+<th style="text-align: center;"><strong>640x480</strong></th>
+<th style="text-align: center;"><strong>800x600</strong></th>
+<th style="text-align: center;"><strong>1024x768</strong></th>
+<th style="text-align: center;"><strong>1280x1024</strong></th>
+<th style="text-align: center;"><strong>1600x1200</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>256</strong></td>
+<td style="text-align: center;">769</td>
+<td style="text-align: center;">771</td>
+<td style="text-align: center;">773</td>
+<td style="text-align: center;">775</td>
+<td style="text-align: center;">796</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>32k</strong></td>
+<td style="text-align: center;">784</td>
+<td style="text-align: center;">787</td>
+<td style="text-align: center;">790</td>
+<td style="text-align: center;">793</td>
+<td style="text-align: center;">797</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>64k</strong></td>
+<td style="text-align: center;">785</td>
+<td style="text-align: center;">788</td>
+<td style="text-align: center;">791</td>
+<td style="text-align: center;">794</td>
+<td style="text-align: center;">798</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>16M</strong></td>
+<td style="text-align: center;">786</td>
+<td style="text-align: center;">789</td>
+<td style="text-align: center;">792</td>
+<td style="text-align: center;">795</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div id="rev">
+Zuletzt bearbeitet: 2020-12-02
+</div>
+</body>
+</html>
