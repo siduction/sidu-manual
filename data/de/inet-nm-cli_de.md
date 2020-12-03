@@ -1,22 +1,26 @@
+% Network Manager im Terminal
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-05:
+
 + Inhalt nur redaktionell aktualisiert
 + Korrektur und Prüfung aller Links, Ubuntu-man entfernt, da mit 'man nmcli' identisch
 Änderungen 2020-06:
 + Dateinamen und Titelanker geändert um das Dokument sinnvoll in die Dateihirarchie zu integrieren.
 
+Änderungen 2020-12:
+
++ Für die Verwendung mit pandoc optimiert.
++ Inhalt teilweise überarbeitet.
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-<div class="divider" id="inet-nm-cli"></div>
+## Allgemeine Hinweise
 
-## Network Manager in der Shell
-
-### Allgemeine Hinweise
-
-Der Networkmanager ist mittlerweile ein sehr brauchbarer Ersatz für das Netzwerkkommando  *ifup, ifdown*  bzw.  *ifconfig*  in der Debianwelt geworden. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Es existiert ein leistungsfähiger Kommandozeilenclient  *nmcli*  für den täglichen Gebrauch des Networkmanagers.
+Der Networkmanager ist mittlerweile ein sehr brauchbarer Ersatz für das Netzwerkkommando  *ifup, ifdown*  bzw.  *ifconfig*  in der Debianwelt geworden. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Es existiert ein leistungsfähiger Kommandozeilenclient  **nmcli**  für den täglichen Gebrauch des Networkmanagers.
 
 In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen aus. Eine WLAN-Verbindung (Name: BluelupoWLAN, Interface wlp4s0 (früher; wlan)) und einer kabelgebundenen Verbindung (Name: BluelupoLAN, Interface enp2s0 (früher: eth0)). Bitte die Verbindungsnamen an eure Gegebenheiten anpassen.
 
@@ -25,120 +29,163 @@ In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen a
 Falls der Networkmanager auf dem System noch nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.
 
 ~~~
-apt install network-manager modemmanager mobile-broadband-provider-info plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn network-manager-pptp
+apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
+ plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn
 ~~~
 
-### Informationen zu WIFI Netzen anzeigen
+---
 
-Welche WLAN-Netze sind überhaupt am Standort verfügbar, das kann man sich in kompakter Form mit  *nmcli dev wifi list*  anzeigen lassen.
+## Network Manager 'nmcli' verwenden
 
-~~~
-nmcli dev wifi list
-SSID BSSID MODUS FREQUENZ RATE SIGNAL SICHERHEIT AKTIV 
-'WLAN01' 00:24:FE:A7:82:99 Infrastuktur 2412 MHz 54 MB/s 45 WPAWPA nein 
-'WLAN02' 34:08:04:DB:05:A0 Infrastuktur 2437 MHz 54 MB/s 37 WPA nein 
-'WLAN03' 00:1A:4F:DA:D5:1D Infrastuktur 2462 MHz 54 MB/s 29 WPAWPA nein 
-'WLAN04' C0:25:06:BB:10:3C Infrastuktur 2462 MHz 54 MB/s 19 WPAWPA nein 
-'WLAN05' 00:26:4D:4B:24:FF Infrastuktur 2437 MHz 54 MB/s 15 WPAWPA nein 
-
-(SSID aus Datenschutzgründen abgeändert)
-~~~
+Die Eingaben können sowohl in einem virtuellen Terminal (Tastenkombination `Str` + `Umschalt` + `F2`) als auch in der graphischen Oberfläche in einer Konsole getätigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgründen abgeändert.
 
 ### Konfigurierte Verbindungen anzeigen
 
-Mit dem Kommando  *nmcli c*  können die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.
+Mit dem Kommando  **nmcli c**  können die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.
 
 ~~~
 nmcli c
-NAME UUID TYP ZEITSTEMPEL-ECHT 
-BluelupoWLAN a9fc7143-11cb-e64a-b6b5-63c94600490c 802-11-wireless Fr 29 Jun 2012 11:06:48 CEST 
-BluelupoLAN b92aa237-1b70-4a2b-9bbb-da15a3f0e599 802-3-ethernet Fr 29 Jun 2012 06:17:58 CEST 
-BluelupoUMTS fe09a895-f5fa-4b94-8622-d03c4195721e gsm Fr 29 Jun 2012 10:37:30 CEST 
+NAME                         UUID                                  TYPE      DEVICE
+WirelessAdapter_2            4c247331-05bd-4ae6-812b-6c70b35dc348  wifi      wtx7ckd90b81bbd
+Kabelgebundene Verbindung 1  847d4195-3355-33bc-bea8-7a016ab86824  ethernet  evp0s3f76
+Kabelgebundene Verbindung 2  efc70b04-01f1-31fc-b948-5fd9ceca651d  ethernet  --
+MobilesNetzUMTS              fe0933bc-f5fa-4b94-8622-d03c4195721e  gsm       xyz72905dg34
 ~~~
 
-Im obigen Beispiel sind drei Verbindungen vorhanden WLAN, LAN und eine Mobile Breitbandverbindung.
+Im obigen Beispiel sind vier Verbindungen vorhanden WLAN, 2x LAN und eine Mobile Breitbandverbindung.
+
+### Informationen zu WIFI Netzen anzeigen
+
+Welche WLAN-Netze sind überhaupt am Standort verfügbar, das kann man sich in kompakter Form mit  **nmcli dev wifi list**  anzeigen lassen.
+
+~~~
+nmcli dev wifi list
+IN-USE  BSSID              SSID           MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
+*       14:CF:20:C6:1A:8F  WLAN-01        Infra  6     270 Mbit/s  92      ▂▄▆█  WPA2
+        54:67:64:3D:02:30  WLAN-02        Infra  1     405 Mbit/s  85      ▂▄▆█  WPA2
+        D0:AA:2A:17:EE:9B  WLAN-03        Infra  11    270 Mbit/s  52      ▂▄__  WPA2
+~~~
 
 ### Konfigurierte Geräte anzeigen
 
-Will man wissen welche Geräte (Interfaces) überhaupt dem Networkmanager bekannt sind ist  *nmcli d*  hilfreich.
+Will man wissen welche Geräte (Interfaces) überhaupt dem Networkmanager bekannt sind ist  **nmcli d**  hilfreich.
 
 ~~~
 nmcli d
-GERÄT TYP STATUS 
-ttyACM0 gsm nicht verbunden
-usb0 802-3-ethernet nicht verfügbar
-wlan0 802-11-wireless verbunden 
-eth0 802-3-ethernet nicht verfügbar
+DEVICE           TYPE      STATE            CONNECTION
+evp0s3f76        ethernet  verbunden        Kabelgebundene Verbindung 1 
+wtx7ckd90b81bbd  wifi      verbunden        Einhorn_2
+evp3u3           ethernet  nicht verfügbar  --
+ttyACM0          gsm       nicht verbunden  --
 ~~~
 
-Sehr detaillierte Informationen (Eigenschaften) gibt es mit  *nmcli dev show*  zum eigenen und dem am Ort verfügbaren WIFI-Netzen (hier im Beispiel aus Datenschutzgründen nicht aufgelistet).
+Sehr detaillierte Informationen (Eigenschaften) gibt es mit  **nmcli dev show**  zu den eigenen verfügbaren Verbindungen. Hier nur der Auszug für das WLAN.
 
 ~~~
 nmcli dev show
 [...]
-GENERAL.GERÄT: wlan0
-GENERAL.TYP: 802-11-wireless
-GENERAL.HERSTELLER: Intel Corporation
-GENERAL.PRODUKT: PRO/Wireless 3945ABG [Golan] Network Connection
-GENERAL.TREIBER: iwl3945
-GENERAL.HWADDR: 00:18:DE:55:11:0D
-GENERAL.STATUS: 100 (verbunden)
-GENERAL.GRUND: 0 (Kein Grund angegeben)
-GENERAL.UDI: /sys/devices/pci0000:00/0000:00:1c.1/0000:03:00.0/net/wlan0
-GENERAL.IP-IFACE: wlan0
-GENERAL.NM-VERWALTET: ja
-GENERAL.FIRMWARE-FEHLT: nein
-GENERAL.VERBINDUNG: /org/freedesktop/NetworkManager/ActiveConnection/3
-CAPABILITIES.TRÄGERFREQUENZERKENNUNG: nein
-CAPABILITIES.GESCHWINDIGKEIT: 54 Mb/s
-WIFI-PROPERTIES.WEP: ja
-WIFI-PROPERTIES.WPA: ja
-WIFI-PROPERTIES.WPA2: ja
-WIFI-PROPERTIES.TKIP: ja
-WIFI-PROPERTIES.CCMP: ja
+GENERAL.DEVICE:                         wtx7ckd90b81bbd
+GENERAL.TYPE:                           wifi
+GENERAL.HWADDR:                         7C:FA:83:C2:6B:BD
+GENERAL.MTU:                            1500
+GENERAL.STATE:                          100 (verbunden)
+GENERAL.CONNECTION:                     WirelessAdapter_2
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/2
+IP4.ADDRESS[1]:                         192.168.0.6/24
+IP4.GATEWAY:                            192.168.0.1
+IP4.ROUTE[1]:                           dst = 0.0.0.0/0, nh = 192.168.0.1, mt = 600
+IP4.ROUTE[2]:                           dst = 192.168.0.0/24, nh = 0.0.0.0, mt = 600
+IP4.DNS[1]:                             192.168.0.1
+IP4.DOMAIN[1]:                          home
+IP6.ADDRESS[1]:                         2a02:810d:cc0:c4c:7edd:90ff:feb2:1bbd/64
+IP6.ADDRESS[2]:                         fe80::7edd:90ff:feb2:1bbd/64
+IP6.GATEWAY:                            fe80::362c:c4ff:fe17:1bf1
+IP6.ROUTE[1]:                           dst = 2a02:810d:cc0:c4c::/64, nh = ::, mt = 256
+IP6.ROUTE[2]:                           dst = fe80::/64, nh = ::, mt = 256
+IP6.ROUTE[3]:                           dst = ::/0, nh = fe80::dc53:e2ff:fe81:6d46, mt = 1024
+IP6.ROUTE[4]:                           dst = ::/0, nh = fe80::362c:c4ff:fe17:1bf1, mt = 1024
+IP6.ROUTE[5]:                           dst = ff00::/8, nh = ::, mt = 256, table=255
 [...]
 ~~~
 
+Die Zugangsdaten zum WLAN kann man sich mit **nmcli dev wifi show** anzeigen lassen.
+
+~~~
+nmcli dev wifi show
+SSID: WirelessAdapter_2
+Sicherheit: WPA
+Passwort: <das steht jetzt nicht hier>
+
+  █████████████████████████████████
+  ██ ▄▄▄▄▄ █▀ █▀▀██▀▄ ▀▄██ ▄▄▄▄▄ ██
+  ██ █   █ █▀  █▄█ ▀ ▄ █▀█ █   █ ██
+  ██ █▄▄▄█ █▀█ █▄█▀▀▄█▀▄▀█ █▄▄▄█ ██
+  ██▄▄▄▄▄▄▄█▄█▄█ █▄█ █ ▀ █▄▄▄▄▄▄▄██
+  ██ ▀█▄▀▄▄▀█▀ █▄ ▀▀▀▀▀▀ ▀▀▄▀ █ ▄██
+  ██ ▄  ▄█▄▄▄ ▄█▄▄ █▀ ▄▄ ▄▀▄▀▄▀ ███
+  ██    ▄▀▄▀▀ ▀▀ ▀█▀██ ▄▄▀▄ ▄ ▀▀ ██
+  ███ ▀█ ▄▄▀▀▀ █▀▄▀▄▄▄█▀███▄█▀▄████
+  ██ ▄▀▄█ ▄██▄▀▄ ▀▀█  ▄ ▀███▀ █ ▄██
+  ███ ▀█ ▄▄▀▀▀ █▀▄▀▄▄▄█▀███▄█▀▄████
+  ██▄█▄█▄█▄▄ ▄▀▄▀▀█▄▄█▀▄ ▄▄▄ ▄ ████
+  ██ ▄▄▄▄▄ █▄ ▀█▀ ▄▄▀█▄  █▄█ ▀▄████
+  ██ █   █ █ ▄██▄█▄█▄▀▀  █▄█ ▀█  ██
+  ██ █▄▄▄█ ██▄█ ▀  ▄█▀▀█ ▄ ▄  ▄ ███
+  ██▄▄▄▄▄▄▄█▄▄▄▄█████▄▄▄█▄▄█▄▄█████
+  █████████████████████████████████
+  
+~~~
+
+Der zusätzlich generierte QR-Code vereinfacht den Login für Smartphone und Tablet.
+
 ### Verbindungen wechseln
 
-Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein  *nmcli con down id <Name>*  zwar funktioniert, die Verbindung wenn es eine Systemverbindung ist sofort wieder aufgebaut wird.
+Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein  *nmcli con down id <Name>*  zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.
+
+Um die automatische Verbindung zu verhindern hilft der Befehl **nmcli dev disconnect <Schnittstellenname>**.  
+Zuerst beenden wir die LAN-Verbindung und fragen danach den Status ab.
 
 ~~~
-Hier hilft folgendes Kommando.
-
-# nmcli dev disconnect iface eth0
+# nmcli dev disconnect evp0s3f76
+Gerät »evp0s3f76« wurde erfolgreich getrennt.
 # nmcli dev status
-GERÄT TYP STATUS 
-ttyACM0 gsm nicht verbunden
-usb0 802-3-ethernet nicht verfügbar
-wlan0 802-11-wireless nicht verbunden
-eth0 802-3-ethernet nicht verbunden 
+DEVICE           TYPE      STATE            CONNECTION 
+evp0s3f76        ethernet  nicht verbunden  --
+wtx7ckd90b81bbd  wifi      nicht verbunden  --
+evp3u3           ethernet  nicht verfügbar  --
+ttyACM0          gsm       nicht verbunden  --
 ~~~
 
+Jetzt die WLAN Verbindung aktivieren mit **nmcli con up id <Verbindungsname>**:
+
 ~~~
-Jetzt die WLAN Verbindung aktivieren
-# nmcli con up id BluelupoWLAN
+# nmcli con up id WirelessAdapter_2
+Verbindung wurde erfolgreich aktiviert 
 # nmcli dev status
-GERÄT TYP STATUS 
-ttyACM0 gsm nicht verbunden
-usb0 802-3-ethernet nicht verfügbar
-wlan0 802-11-wireless verbunden
-eth0 802-3-ethernet nicht verbunden 
+DEVICE           TYPE      STATE            CONNECTION 
+wtx7ckd90b81bbd  wifi      verbunden        WirelessAdapter_2
+evp0s3f76        ethernet  nicht verbunden  --
+evp3u3           ethernet  nicht verfügbar  --
+ttyACM0          gsm       nicht verbunden  --
 ~~~
 
 Man kann das Ganze noch in eine Kommandozeile packen, dann wird der Wechsel sofort durchgeführt.
 
-### Wechsel von einer LAN- zu einer WLAN-Verbindung
+Von LAN zu WLAN:
 
 ~~~
-nmcli dev disconnect iface eth0 && sleep 2 && nmcli con up id BluelupoWLAN && nmcli dev status
-
-Umgekehrt von WLAN auf LAN.
-
-nmcli dev disconnect iface wlan0 && sleep 2 && nmcli con up id BluelupoLAN && nmcli dev status
+nmcli dev disconnect evp0s3f76 && sleep 2 && nmcli con up id WirelessAdapter_2
 ~~~
 
-### Weiterführende Informationen
+Umgekehrt von WLAN zu LAN:
+
+~~~
+nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebundene Verbindung 1'
+~~~
+
+---
+
+## Weiterführende Informationen
 
 +       
     ~~~
@@ -147,6 +194,6 @@ nmcli dev disconnect iface wlan0 && sleep 2 && nmcli con up id BluelupoLAN && nm
 
 + [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
 
-<div id="rev">Page last revised by akli 2020-05-12</div>
+---
 
-nach einem Wiki-Eintrag von Bluelupo
+<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>

@@ -1,18 +1,26 @@
+% Partitionieren mit Gparted
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-05:
-+ Inhalt vollständig überarbeitet.
-+ Korrektur und Prüfung aller Links.
-+ Screenshot erneuert.
+
++ Inhalt vollständig überarbeitet.  
++ Korrektur und Prüfung aller Links.  
++ Screenshot erneuert.  
 + Kapitel zu ntfs-g3 entfernt.
+
 Änderungen 2020-06:
+
 + In den Hinweisen ext2 durch NTFS ersetzt, da der ext2-Treiber für WIN gravierende Probleme mit WIN10 hat.
 
-ENDE   INFOBEREICH FÜR DIE AUTOREN
+Änderungen 2020-12:
 
-<div class="divider" id="partition"></div>
++ Für die Verwendung mit pandoc optimiert.
++ Inhalt teilweise überarbeitet.
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Partitionieren der Festplatte mit GParted
 
@@ -58,14 +66,16 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
     
 ![GParted Geräteübersicht](../../static/images-de/gparted-de/gparted01-de.png)
 
-+ #### Bearbeiten
++ **Bearbeiten**
 
     Bearbeiten ist der 2. Menüpunkt von links. Er zeigt drei ausgegraute Optionen, die sehr wichtig sind und weiter unten erläutert werden.  
     + letzte Operationen rückgängig machen ("Undo last operations"),  
     + alle Operationen löschen ("clear all operations") und  
     + alle Operationen ausführen ("apply all operations").
     
-+ #### Ansicht
++ **Ansicht**
+
+    Der nächste Menüpunkt bietet die Anzeigeoptionen *"Laufwerksinformationen"* und *"Anstehende Operationen"*.
 
   + Laufwerksinformationen ("Device Information")  
     Im linken Rahmen stehen Details der Laufwerke wie Modell, Größe usw., die wichtig sind, wenn mehrere Datenträger im System vorhanden sind. Damit kann man kontrollieren, ob der richtige Datenträger zur Formatierung gewählt wurde.
@@ -77,7 +87,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
     
     ![GParted Festplatteninformation](../../static/images-de/gparted-de/gparted02-de.png)
   
-+ #### Laufwerk
++ **Laufwerk**
 
   Hinter dem Menüpunkt *"Partitionstabelle erstellen"* verbergen sich eigentlich zwei Optionen
   
@@ -86,50 +96,54 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
   2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
     Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md).
   
-      ![GParted Partitionstabelle](../../static/images-de/gparted-de/gparted03-de.png)
+  ![GParted Partitionstabelle](../../static/images-de/gparted-de/gparted03-de.png)
 
   Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.
     
   ![GParted Datenrettung](../../static/images-de/gparted-de/gparted04-de.png)
     
-+ #### Partition
++ **Partition**
 
   Der Menüpunkt "Partition" ist von größter Wichtigkeit. Für die unten ausgewählte Partition zeigt das Menü alle zur Verfügung stehenden Operationen abhängig davon an, ob die Partition eingehangen oder nicht eingehangen ist.  Beachten sollte man, dass einige der Unterpunkte auch kritische bzw. gefährliche Aktionen durchführen können.
   
   ![GParted Datenrettung](../../static/images-de/gparted-de/gparted07-de.png)
    
-+ #### Eine neue Partition erstellen
++ **Eine neue Partition erstellen**
 
   In der Toolbar erlaubt der Knopf Neu das Erstellen einer neuen Partition, wenn zuvor ein unzugeordneter Bereich gewählt wurde. Ein neues Fenster erlaubt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
     
   ![GParted Neue Partition](../../static/images-de/gparted-de/gparted05-de.png)
 
-+ #### Größe ändern/verschieben
++ **Größe ändern/verschieben**
 
   Die Partition kann mit der Maus verkleinert, vergrößert und verschoben werden. Alternativ trägt man die neuen Werte in die dafür vorgesehenen Felder ein.
     
   ![GParted Größenänderung](../../static/images-de/gparted-de/gparted08-de.png)
 
-+ #### Falls ein Fehler gemacht wurde
++ **Falls ein Fehler gemacht wurde**
 
   Im Menü "Bearbeiten" besteht die Möglichkeit *"Letzte Operation rückgängig machen"* oder *"Alle Operationen löschen"*. Der Bereich ist grün markiert.
     
   ![GParted rückgängig machen](../../static/images-de/gparted-de/gparted06-de.png)
 
-+ #### Anwenden
++ **Anwenden**
 
   Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü "Bearbeiten" den Punkt *"Alle Operationen anwenden"*. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
 
   ![GParted Ausführen und speichern](../../static/images-de/gparted-de/gparted09-de.png)
 
   Die Dauer der Operation hängt von der Größe der gewählten Partition ab.
+  
+---
+  
+### fstab anpassen
 
 <warning>
 Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
 </warning>
 
 Siehe dazu die Handbuchseite [Anpassung der fstab](part-uuid_de.md).  
-In einem root-Terminal geben wir die Befehle **`cat /etc/fstab`** und **`blkid`** ein und vergleichen die UUID's.
+In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUID's.
 
 ~~~
 root@pc1:/# cat /etc/fstab
@@ -155,29 +169,26 @@ root@pc1:/# blkid
 /dev/sda2: UUID="1c257cff-1c96-4c4f-811f-46a87bcf6abb" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="000403b7-02"
 /dev/sda3: UUID="35336532-0cc8-4613-9b1a-f31b12ea58c3" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="000403b7-03"
 /dev/sdb1: UUID="f5ed412d-7b7b-41c1-80ce-53337c82405b" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-01"
-/dev/sdb2: UUID="d5b01bbc-700c-43ce-a382-1ba95a59de78" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-02"
+/dev/sdb2: UUID="4c4b9246-2904-40d1-addc-724fc90a2b6a" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-02"
 /dev/sdb5: UUID="e2164479-3f71-4216-a4d4-af3321750322" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-05"
 /dev/sdb6: UUID="2ef32215-d545-4e12-bc00-d0099a218970" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-06"
 ~~~
 
 Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch */mnt/TEST_res* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
 
-<warning>Wenn die UUID's für die Partitionen von **`/`**, **`/home`** und **`swap`** nicht mit den Einträgen in der **`/etc/fstab`** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.</warning>
+<warning>Wenn die UUID's für die Partitionen von **/** (root), **/home** und **swap** nicht mit den Einträgen in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.</warning>
 
 ---
 
-<div class="divider" id="ntfs"></div>
-
 ### NTFS-Partitionsgrößen mit GParted ändern
 
-<warning>
-Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.
-</warning>
+**Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.**
 
 * Nach dem Neustart von Windows und dem Windows-Logo erscheint ein Fenster von **checkdisk**, das besagt, dass C:\\ auf Fehler überprüft wird.
 * Diesen AUTOCHECK bitte zu Ende laufen lassen: Windows muss das Filesystem nach einer Größenänderung überprüfen.
 * Nach der Überprüfung wird der Rechner automatisch das zweite Mal neu gestartet. Dies gewährleistet, dass das System problemlos laufen kann.
 * Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
 
+---
 
-<div id="rev">Page last revised by akli 2020-06-07</div>
+<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>

@@ -1,8 +1,11 @@
+% Installation vom Live-Medium
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
-Änderungen 2020-06:  
+Änderungen 2020-06:
+
 + Inhaltsverzeichnis eingefügt
 + teilweise neue Sortierung
 + auf calamares aktualisiert
@@ -10,28 +13,15 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Korrektur und Prüfung aller Links
 + Fehlerkorrektur, Screenshot aktualisiert und in den Sprachen en, es, fr, it zugefügt. (2020-07)
 
+Änderungen 2020-12:
+
++ Für die Verwendung mit pandoc optimiert.
++ Inhaltsverzeichnis wieder entfernt, da pandoc autonatisch eines erstellt.
++ Inhalt geringfügig überarbeitet.
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-<div class="divider" id="inst-live"></div>
-
-## Installation vom Live-Medium
-
-### Inhalt
-
-+ [Datensicherung](#backup)
-+ [Installationsvorbereitungen](#pre-install)
-    + HDD, RAM und Swap
-    + Partitionierung
-    + Dateisysteme
-    + Duplizierung einer siduction Installation
-+ [Das siduction-Installationsprogramm](#install) (Calamares)
-+ [Benutzer hinzufügen](#adduser)
-
----
-
-<div class="divider" id="backup"></div>
-
-### Datensicherung
+## Datensicherung
 
 **WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
 Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
@@ -42,35 +32,34 @@ Eine weitere Option ist Lucky Backup (muss installiert werden).
 
 ---
 
-<div class="divider" id="pre-install"></div>
-
-### Installationsvorbereitungen
+## Installationsvorbereitungen
 
 Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der `F2` oder `Entf`-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste `F12`, `F11` oder `F8` (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
 
 siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](cheatcodes_de.md) erläutert die möglichen Optionen.  
-Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu `From CD/DVD/ISO: ...` oder `From Stick/HDD: ...` navigiert und die Taste `e` betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste `F10` wird der Bootvorgang fortgesetzt.
+Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu "From CD/DVD/ISO: ..." oder "From Stick/HDD: ..." navigiert und die Taste `e` betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste `F10` wird der Bootvorgang fortgesetzt.
 
 **Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.**
 
 Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](hd-install-opts_de.md#usb-hd).
 
-#### HDD, RAM und Swap
+### HDD, RAM und Swap
 
 Die Mindesanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#min-hw) beschrieben.  
-Mit 10 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit in jedem Fall auf der sicheren Seite. 
+Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. 
 Auf PCs mit maximal 1 GB RAM sollte eine swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
 
-#### Partitionierung
+### Partitionierung
 
 Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
+
 + Auswahl der siduction-Variante
 + Größe der vorhandenen Laufwerke und des Arbeitsspeichers
 + Single-Boot, oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
 + Gemeinsame Nutzung von Daten für die installierten Systeme
 
 Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md).  
-Es ist eine gute Idee für das `/home`-Verzeichnis eine eigene Partition anzulegen, sofern das Festplattenvolumen nicht extrem begrenzt ist. Das Verzeichnis `/home` wird zu dem Ort, an dem die individuellen Konfigurationen abgelegt werden.  
+Es ist eine gute Idee für das **/home**-Verzeichnis eine eigene Partition anzulegen, sofern das Festplattenvolumen nicht extrem begrenzt ist. Das Verzeichnis **/home** wird zu dem Ort, an dem die individuellen Konfigurationen abgelegt werden.  
 Darüber hinaus empfiehlt sich auch eine eigene Datenpartition. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
@@ -78,7 +67,7 @@ Die Partitionierung kann während der Installation vorgenommen werden, oder bere
 [gdisk](part-gdisk_de.md), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
 [cfdisk](part-cfdisk_de.md), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
 
-#### Dateisysteme
+### Dateisysteme
 
 Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
 
@@ -86,7 +75,7 @@ Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mi
 
 Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugeifen.
 
-#### Duplizierung auf einem anderen Computer
+### Duplizierung auf einem anderen Computer
 
 Mit folgendem Konsolenbefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
 
@@ -105,9 +94,7 @@ installiert werden.
 
 ---
 
-<div class="divider" id="install"></div>
-
-### Das siduction-Installationsprogramm (Calamares)
+## Das siduction-Installationsprogramm (Calamares)
 
 Während der Installation sollte, wenn möglich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen für die Lokalisation und Zeit zu ermitteln.
 
@@ -138,9 +125,9 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    ![calamares work on partitions](../../static/images-de/install-hd-de/calamares-de_05.png "Partitionen bearbeiten")
    
    Wir benutzen die Partitionen  
-   sda7 für **`/`**  
-   sda8 für **`/home`**  
-   sda6 für **`/daten`** gemeinsam mit dem bereits auf sda3 und sda4 vonhanden Linux
+   sda7 für **/** (root)  
+   sda8 für **/home**  
+   sda6 für **/daten** gemeinsam mit dem bereits auf sda3 und sda4 vonhanden Linux
    
    Nach Auswählen der betreffenden Partition und Betätigen des Schalters *Ändern* öffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und für sda7 und sda8 auch die Formatierung mit dem Dateisystem **ext4** vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abglegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen möchten.  
    Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie während der Installation automatisch erkannt und integriert wird.  
@@ -174,9 +161,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
 ---
 
-<div class="divider" id="adduser"></div>
-
-### Benutzer hinzufügen
+## Benutzer hinzufügen
 
 Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als root aus:
 
@@ -201,4 +186,6 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Page last revised by akli 2020-07-03</div>
+---
+
+<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>

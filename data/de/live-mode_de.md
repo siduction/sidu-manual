@@ -1,67 +1,77 @@
+% Die siduction Live-DVD verwenden
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-06
+
 + 'suxterm' durch 'su' oder 'sudo' ersetzt.
 + Inhalte aktualisiert.
 + Link geprüft und korrigiert.
 
+Änderungen 2020-12:
+
++ Für die Verwendung mit pandoc optimiert.
++ Inhalt teilweise überarbeitet.
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-<div class="divider" id="rootpw"></div>
+## Eingerichtete User der Live-DVD
 
-## siduction-*.iso - Mit root-Rechten auf der Live-CD
+Auf der Live-DVD sind die User '**siducer**' und '**root**' (der Systemadministrator) eingerichtet.
 
-Auf der Live-CD ist der User '**siducer**' mit dem Passwort '**live**' eingerichtert. Für den Systemadministrator '**root**' ist kein Passwort gesetzt. Wir beschreiben hier mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.
-
-<warning>**Achtung:**</warning>
-<warning>Wann immer man mit root-Rechten arbeitet, sollte man wissen, was man macht. Für das Surfen im Internet und ähnliche Aktionen sind keine root-Rechte nötig.</warning>
+Für den User '**siducer**' ist das Passwort '**live**' gesetzt.  
+Für den User '**root**' (Systemadministrator) ist kein Passwort gesetzt.
 
 Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren bitte den User '**siducer**' mit dem Passwort '**live**' eingeben.
 
 ---
 
-### Mit root-Rechten auf der Live-CD arbeiten
+## Mit root-Rechten auf der Live-DVD arbeiten
 
-#### 1.
-Am einfachsten man öffnet ein Terminal und verschafft sich mit der Eingabe "**su**" root-Rechte.
+Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.
 
-Um jetzt ein Programm, das mit graphischer Oberfläche arbeitet zu starten, einfach den Programmnamen eingeben. 
+<warning>**Achtung:**</warning>
+<warning>Wann immer man mit root-Rechten arbeitet, sollte man genau wissen, was man macht. Für das Surfen im Internet und ähnliche Aktionen sind keine root-Rechte nötig.</warning>
 
-~~~ less
-root@siduction:~# geparted &
-~~~
+1.
+  Am einfachsten man öffnet ein Terminal und verschafft sich mit der Eingabe "**su**" root-Rechte.  
+  Um jetzt ein Programm, das mit graphischer Oberfläche arbeitet zu starten, einfach den Programmnamen eingeben. 
 
-Jetzt wird Gparted mit root-Rechten ausgeführt. Das "&" am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.
+  ~~~
+  root@siduction:~# geparted &
+  ~~~
 
-#### 2.
-Ein Befehlseingabefenster öffnen:  
-Die Tastenkombination `Alt` + `F2` benutzen um eine Programmstartzeile zu erhalten und darin den Befehl
+  Jetzt wird Gparted mit root-Rechten ausgeführt. Das "&" am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.
 
-~~~ sh
-sudo <Anwendung>  
-   oder  
-su-to-root -X -c <Anwendung>
-~~~
+2.
+  Ein Befehlseingabefenster öffnen:  
+  Die Tastenkombination `Alt` + `F2` benutzen um eine Programmstartzeile zu erhalten und darin den Befehl
 
-eingeben.  
-Es öffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt wird. Wenn ein temporäres root-Passwort gesetzt wurde, dieses eingeben, sonst einfach die 'Enter'-Taste betätigen.
+  ~~~
+  sudo <Anwendung>  
+     oder  
+  su-to-root -X -c <Anwendung>
+  ~~~
 
-#### 3.
-In ein Terminal ohne root-Rechte den Befehl
+  eingeben.  
+  Es öffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt wird. Nun einfach die `Enter`-Taste betätigen, es sei denn, es wurde wie weiter unten beschrieben ein temporäres root-Passwort gesetzt, das einzugeben ist.
 
-~~~ less
-sudo <Anwendung> &
-   oder
-su-to-root -X -c <Anwendung>
-~~~
+3.
+  In ein Terminal ohne root-Rechte den Befehl
 
-eingeben.  
+  ~~~
+  sudo <Anwendung> &
+     oder
+  su-to-root -X -c <Anwendung>
+  ~~~
 
-Bitte beachten:  
-*sudo* ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir empfehlen, den echten root-Account direkt zu nutzen.  
-Siehe [sudo](term-konsole_de.md#sudo)
+  eingeben.  
+
+  Bitte beachten:  
+  *sudo* ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir empfehlen, den echten root-Account direkt zu nutzen.  
+Siehe [warum sudo nicht konfiguriert ist](term-konsole_de.md#sudo)
 
 ---
 
@@ -69,7 +79,7 @@ Siehe [sudo](term-konsole_de.md#sudo)
 
 Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F1` auf die erste virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
 
-~~~ less
+~~~
 siducer@siduction:~$ su
 root@siduction:~# passwd siducer
 Geben Sie ein neues Passwort ein:
@@ -86,17 +96,17 @@ Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort
 
 ---
 
-<div class="divider" id="live-cd-installsoft"></div>
-
-### Die Installation von Software während einer Live-CD-Sitzung
+### Die Installation von Software während einer Live-DVD-Sitzung
 
 Die Befehlsfolge für die Installation von Software während einer Live-Sitzung gleicht der bei einer Festplatteninstallation.
 
-~~~ sh
+~~~
 apt update
-apt install ihr-gewünschtes-paket
+apt install <das-gewünschtes-paket>
 ~~~
 
-Allerdings gilt: Wenn Du die Live-CD herunterfährst, werden keine Änderungen behalten, außer wenn [fromiso und persist](hd-install-opts_de.md#fromiso-persist) aktiviert wird.
+Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten, außer wenn [fromiso und persist](hd-install-opts_de.md#fromiso-persist) aktiviert wird.
 
-<div id="rev">Page last revised by akli 2020-06-10</div>
+---
+
+<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>

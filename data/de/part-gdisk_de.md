@@ -1,18 +1,24 @@
+% Partitionieren mit gdisk
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-06
+
 + Inhalt vollständig überarbeitet.
 + Neue Aufteilung der Kapitel.
 + Veraltete Inhalte entfernt.
 + Link geprüft und korrigiert.
 
+Änderungen 2020-12:
+
++ Für die Verwendung mit pandoc optimiert.
++ Inhalt teilweise überarbeitet.
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-<div class="divider" id="gdisk-1"></div>
-
-## Partitionieren mit gdisk (GPT fdisk)
+## Warum gdisk (GPT fdisk) verwenden?
 
 *gdisk* leitet sich von **G**lobally Unique Identifier **P**artition **T**able (GPT) ab und ist eine Anwendung um Datenträger von jeder Größe zu partitionieren. *gdisk* wird unbedingt benötigt für **Datenträger, die größer als 2TB** sind.  
 *gdisk* sorgt dafür, dass Partitionen für SSDs eingerichtet sind (bzw. für Speicher, die keine 512 Byte großen Sektoren besitzen).
@@ -24,7 +30,7 @@ Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir 
 
 ### Wichtige Anmerkungen
 
-+ Die Begriffe UEFI und EFI sind austauschbar und bezeichnen das gleiche Konzept - **U**nified **E**xtensible **F**irmware Interface (englisch für Vereinheitlichte erweiterbare Firmware-Schnittstelle).  
++ Die Begriffe UEFI und EFI sind austauschbar und bezeichnen das gleiche Konzept - **U**nified **E**xtensible **F**irmware **I**nterface (englisch für Vereinheitlichte erweiterbare Firmware-Schnittstelle).  
   Siehe [Wikipedia UEFI](https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface).  
   Die GTP ist ein Teil des UEFI Standards.
 
@@ -38,7 +44,7 @@ Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir 
 
 + Booten von GPT-Datenträgern
 
-    + Dual- und Triple-Boot von GPT-Datenträgern mit Linux, BSD und Apple ist mit dem `EFI`-Modus mit 64 bit unterstützt.
+    + Dual- und Triple-Boot von GPT-Datenträgern mit Linux, BSD und Apple ist mit dem **EFI**-Modus mit 64 bit unterstützt.
 
     + Dual-Boot von GPT-Datenträgern mit Linux und MS Windows ist ab Windows Vista SP1 möglich. Voraussetzung ist dabei für Windows die 64 bit Version.
 
@@ -57,8 +63,6 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *
 
 ---
 
-<div class="divider" id="gdisk-2"></div>
-
 ## Partitionierung einer Festplatte
 
 <warning>**Daten zuvor sichern!**</warning>
@@ -69,13 +73,14 @@ Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm *cgd
 
 *cgdisk* ist die Curses-basierte Programmvariante von *gdisk*. Sie bietet eine benutzerfreundliche Bedienoberfläche innerhalb des Terminals.  
 Die Navigation erfolgt mittels der Pfeiltasten.
+
 + Für die Partitionen **`auf`** und **`ab`**
 + Für die Aktionsauswahl **`rechts`** und **`links`**.
 + Mit **`Enter`** wird die Auswahl bzw. Eingabe bestätigt.
 
 ### cgdisk starten  
 
-Der Startbefehl in einem root-Terminal lautet: **`cgdisk /dev/sdX`**.
+Der Startbefehl in einem root-Terminal lautet: **cgdisk /dev/sdX**.
 
 *cgdisk* startet mit einer Warnmeldung, wenn keine GPT gefunden wird.
 
@@ -83,7 +88,8 @@ Der Startbefehl in einem root-Terminal lautet: **`cgdisk /dev/sdX`**.
 
 Wir benötigen für die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, zwei HOME-, eine gemeinsame DATEN- sowie eine SWAP-Partition für den Auslagerungsspeicher. Zusätzlich die bereits oben erwähnte *EFI-System*-Partition (maximal 100MB) und die *BIOS-boot*-Partition (1MB).
 
-Das Startbild  
+Das Startbild
+
 ![Startbild](../../static/images-de/cgdisk-de/cgdisk_01.png)
 
 ### Partition erstellen
@@ -126,8 +132,6 @@ Mit *Verify* wird die Partitionierung überprüft und eventuelle Fehler werden a
 Hier ist alles in Ordnung.  
 Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl *Info*, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](part-gdisk_de.md#gdisk-7) zur Verfügung.
 
-<div class="divider" id="gdisk-3"></div>
-
 ### Partition löschen
 
 Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl *Delete*.
@@ -135,8 +139,6 @@ Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl *Dele
 ![Partition löschen](../../static/images-de/cgdisk-de/cgdisk_08.png)
 
 Bei Notwendigkeit verfahren wir mit anderen Partitionen genauso und können dann mit geänderten Werten die Partitionen wieder erstellen.
-
-<div class="divider" id="gdisk-4"></div>
 
 ### GPT schreiben
 
@@ -154,19 +156,17 @@ Da *cgdisk* nur Partitionen, aber keine Dateisysteme erstellt, muss jede der neu
 
 ---
 
-<div class="divider" id="gdisk-5"></div>
-
 ## Formatieren der Partitionen
 
 Wir bleiben im Root-Terminal und lassen uns die Pfade mit den Nummern für jede Partition anzeigen:
 
-~~~ sh
+~~~
 fdisk -l | grep /dev/sdb
 ~~~
 
 Der Befehl generiert die folgende Ausgabe:
 
-~~~ sh
+~~~
 Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 /dev/sdb1       2048    206847    204800  100M EFI System
 /dev/sdb2     206848    208895      2048    1M BIOS boot
@@ -180,11 +180,11 @@ Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 
 Mit diesen Informationen formatieren wir unsere zuvor erstellten Partitionen.
 
-Bitte unbedingt die **`man mke2fs`**, **`man mkfs.fat`** und **`man mkswap`** lesen.
+Bitte unbedingt die **man mke2fs**, **man mkfs.fat** und **man mkswap** lesen.
 
 Die EFI-Systempartition erhält ein FAT32 Dateisystem.
 
-~~~ sh
+~~~
 mkfs.vfat /dev/sdb1
 ~~~
 
@@ -193,41 +193,39 @@ Sofern der Bootmanager *GRUB* bei der Installation die *EFI-System*- und die *BI
 
 Die Linuxpartitionen 'sdb3', 'sdb4' und 'sdb6-8' formatieren wir mit *ext4*.
 
-~~~ sh
+~~~
 mkfs.ext4 /dev/sdb3
 ~~~
 
 Die Swap-Partition wird mit:
 
-~~~ sh
+~~~
 mkswap /dev/sdb5
 ~~~
 
 eingerichtet. Danach machen wir sie mit:
 
-~~~ sh
+~~~
 swapon /dev/sdb5
 ~~~
 
 dem System bekannt und kontrollieren, ob der Swap-Speicher verfügbar ist:
 
-~~~ sh
+~~~
 swapon -s
-Filename				Type		Size	Used	Priority
-/dev/sdb5                              	partition	8914940	0	-2
+Filename			Type		Size	Used	Priority
+/dev/sdb5          	partition	8914940	0	    -2
 ~~~
 
 Falls Swap korrekt erkannt wurde:
 
-~~~ sh
+~~~
 swapoff /dev/sdb5
 ~~~
 
 **Als nächstes ist es unbedingt notwendig, das System neu zu starten, damit das neue Partitionierungs- und Dateisystemschema vom Kernel eingelesen wird.** 
 
 ---
-
-<div class="divider" id="gdisk-6"></div>
 
 ## Booten mit GPT-UEFI oder GPT-BIOS
 
@@ -247,7 +245,8 @@ Diese Möglichkeiten sind:
 
 ### Booten mit UEFI
 
-Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte **EFI-System**-Partition (Typ `EF00` ) als erste Partition erstellt werden. Diese Partition enthält den/die Bootloader. Während der Installation von siduction wird jegliche Auswahlmöglichkeit, wohin der Bootloader installiert werden soll, in der install-gui ignoriert werden. Der Bootloader von siduction wird in der *EFI-System*-Partition unter `/efi/siduction`  gespeichert. Die EFI-Systempartition wird auch als `/boot/efi`  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *EFI-System*-Partition muss im Installer nicht extra angegeben werden.
+Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte **EFI System**-Partition (Typ "EF00" ) als erste Partition, und eine unformatierte **BIOS boot**-Partition (Typ "EF02" ) als zweite erstellt werden. Die erste Partition enthält den/die Bootloader.  
+Während der Installation von siduction wird jegliche Auswahlmöglichkeit der install-gui, wohin der Bootloader installiert werden soll, ignoriert, sofern die vorgenannten Partitionen existieren. Der Bootloader von siduction wird in der *EFI-System*-Partition unter "/efi/siduction"  gespeichert. Die EFI-Systempartition wird auch als "/boot/efi"  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *EFI-System*-Partition muss im Installer nicht extra angegeben werden.
 
 ### Booten mit BIOS
 
@@ -256,21 +255,19 @@ Die Partition sollte die Größe von 200MB haben. (Der Grund dieser Größe anst
 
 ---
 
-<div class="divider" id="gdisk-7"></div>
-
 ## Erweiterte Befehle von gdisk
 
 *gdisk* besitzt erweiterte Optionen und Sicherheitsmechanismen die in *cgdisk* nicht zur Verfügung stehen.
 
 Falls Probleme entdeckt wurden (z. B. überlappende Partitionen oder nicht entsprechende Haupt- und Sicherungspartitionstabellen), besteht die Möglichkeit, diese mit verschiedenen Optionen im Menü **recovery & transformation** zu beheben. Wir starten *gdisk* mit
 
-~~~ sh
+~~~
 gdisk  /dev/sdb
 ~~~
 
-An der Eingabeaufforderung **`Command (? for help):`** geben wir den Befehl **`r`** ein, um in das Untermenü von *recovery & transformation* zu gelangen und anschließend das **`?`**.
+An der Eingabeaufforderung **Command (? for help):** geben wir den Befehl **r** ein, um in das Untermenü von *recovery & transformation* zu gelangen und anschließend das **?**.
 
-~~~ sh
+~~~
 recovery/transformation command (? for help): ?
 b use backup GPT header (rebuilding main)
 c load backup partition table from disk (rebuilding main)
@@ -294,7 +291,7 @@ x extra functionality (experts only)
 
 Ein drittes Menü, *experts* , erreicht man mit **x**  entweder vom *main menu*  oder dem *recovery & transformation menu*.
 
-~~~ sh
+~~~
 recovery/transformation command (? for help): x
 
 Expert command (? for help): ?
@@ -318,8 +315,10 @@ z zap (destroy) GPT data structures and exit
 ? print this menu
 ~~~
 
-Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partition oder der GUIDs des Datenträgers (**c**  bzw. **g** ). Die Option **z**  zerstört augenblicklich die GPT-Datenstrukturen. Dies kann sinnvoll sein, wenn der GPT-Datenträger mit einem anderen Partitionierungsschema verwendet werden soll. Falls diese Strukturen nicht ausgelöscht werden, können einige Partitionierungsprogramme wegen des Vorhandenseins von zwei Partitionierungssystemen Probleme haben.
+Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID oder der GUIDs des Datenträgers (**c**  bzw. **g** ). Die Option **z**  zerstört augenblicklich die GPT-Datenstrukturen. Dies kann sinnvoll sein, wenn der GPT-Datenträger mit einem anderen Partitionierungsschema verwendet werden soll. Falls diese Strukturen nicht ausgelöscht werden, können einige Partitionierungsprogramme wegen des Vorhandenseins von zwei Partitionierungssystemen Probleme haben.
 
-Trotz alledem: die Optionen der Menüs `recovery & transformation`  und `experts`  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **b**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
+Trotz alledem: die Optionen der Menüs *recovery & transformation*  und *experts*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **b**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
 
-<div id="rev">Page last revised by akli 2020-06-10</div>
+---
+
+<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>

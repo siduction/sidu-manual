@@ -1,66 +1,23 @@
+% Partitionierung von Installationsmedien
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-06
-+ Inhalt vollständig überarbeitet.
-+ Link geprüft und aktualisiert.
-+ Entfernen des Hinweises auf ext2 Treiber für WIN, da offensichtlich buggy.
 
-ENDE   INFOBEREICH FÜR DIE AUTOREN
++ Inhalt vollständig überarbeitet.  
++ Link geprüft und aktualisiert.  
++ Entfernen des Hinweises auf ext2 Treiber für WIN, da offensichtlich buggy.  
 
-<div class="divider" id="part-example"></div>
+Änderungen 2020-12:
 
-## Partitionierung von Installationsmedien
++ Für die Verwendung mit pandoc optimiert.
++ Inhalt teilweise überarbeitet.
 
-## Beispiele und Größen
+ENDE INFOBEREICH FÜR DIE AUTOREN
 
-### Partitionierungsprogramme
-
-+ **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
-  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md) liefert weitere Informationen zum Programm.
-
-+ **fdisk / cfdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *msdos - MBR*.
-  *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere curses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md) liefert weitere Informationen zum Programm.
-
-+ **gdisk / cgdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *GPT - UEFI*.
-  *gdisk* ist das klassische Textmodus-Programm. *cgdisk* hat eine benutzerfreundlichere curses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) liefert weitere Informationen zum Programm.
-
-<warning>**Achtung**</warning>
-<warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.</warning>
-
-### Hinweise
-
-**Eingebundene Partitionen** (auch swap) müssen vor Bearbeitung gelöst werden.  
-Im Terminal (als root) mit dem Befehl:
-
-~~~ sh
-umount /dev/sda1
-~~~
-
-Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst: 
-
-~~~ sh
-swapoff -a
-~~~
-
----
-
-Die **Mindestanforderungen** für den sinnvollen Gebrauch einer siduction Installation betragen:
-
-| Installationssystem | Festplattenplatz |
-| :---:| :--: |
-| siduction NOX | 5GB |
-| siduction Xorg | 10GB |
-| siduction LXQt | 15GB |
-| siduction XFCE | 15GB |
-| siduction Cinnamon | 15GB |
-| siduction GNOME | 15GB |
-| siduction KDE Plasma | 15GB |
-
----
-
-**Allgemeine Hinweise**
+## Hinweise
 
 Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Partitionen für ein separates /home und weitere Datenpartitionen angelegt werden.
 
@@ -74,13 +31,29 @@ Die Anschaffung einer externen USB-Festplatte zur regelmäßigen Datensicherung 
 
 ---
 
-### Beispiele für Partitionierungen mit verschiedenen Plattengrößen:
+## Mindestanforderungen
+
+Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installation betragen:
+
+| Installationssystem | Festplattenplatz |
+| :---:| :--: |
+| siduction NOX | 5GB |
+| siduction Xorg | 10GB |
+| siduction LXQt | 15GB |
+| siduction XFCE | 15GB |
+| siduction Cinnamon | 15GB |
+| siduction GNOME | 15GB |
+| siduction KDE Plasma | 15GB |
+
+---
+
+## Beispiele für Partitionierungen mit verschiedenen Plattengrößen:
 
 Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden.
 
-## 1. Dual-Boot mit MS Windows und Linux
+### Dual-Boot mit MS Windows und Linux
 
-### 1 TB Festplatte:
+#### 1 TB Festplatte:
 
 | Partition | Size | Filesystem | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -89,10 +62,10 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | 2 | 200 GB | NTFS | Daten für MS Windows und Linux |
 | 3 | 30 GB | ext4 | / |
 | 4 | 70 GB | ext4 | /home |
-| 5 | 348 GB | ext4 | Daten für Linux |
-| 6 | 2 GB | Linux Swap | Linux Swap |
+| 5 | 346 GB | ext4 | Daten für Linux |
+| 6 | 4 GB | Linux Swap | Linux Swap |
 
-### 120 GB Festplatte:
+#### 120 GB Festplatte:
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -102,7 +75,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | 4 | 20 GB | ext4 | /home |
 | 5 | 2 GB | Linux Swap | Linux Swap |
 
-### 80 GB Festplatte:
+#### 80 GB Festplatte:
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -111,30 +84,29 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | 3 | 28 GB | ext4 | / (inkl. home) |
 | 4 | 2 GB | Linux Swap | Linux Swap |
 
----
 
-## 2. Linux allein
+### Linux allein
 
-### 500 GB Festplatte:
+#### 500 GB Festplatte:
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 30 GB | ext4 | / |
 | 2 | 70 GB | ext4 | /home |
 | 3 | 200 GB | ext4 | Daten |
-| 4 | 198 GB | ext4 | Daten |
-| 5 | 2 GB | Linux Swap | Linux Swap |
+| 4 | 196 GB | ext4 | Daten |
+| 5 | 4 GB | Linux Swap | Linux Swap |
 
-### 160 GB Festplatte:
+#### 160 GB Festplatte:
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 20 GB | ext4 | / |
 | 2 | 20 GB | ext4 | /home |
-| 3 | 118 GB | ext4 | Daten |
-| 4 | 2 GB | Linux Swap | Linux Swap |
+| 3 | 116 GB | ext4 | Daten |
+| 4 | 4 GB | Linux Swap | Linux Swap |
 
-### 60 GB Festplatte:
+#### 60 GB Festplatte:
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -144,7 +116,36 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 
 ---
 
-### Weiterführende Infos
+## Partitionierungsprogramme
+
++ **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
+  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md) liefert weitere Informationen zum Programm.
+
++ **fdisk / cfdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *msdos - MBR*.
+  *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md) liefert weitere Informationen zum Programm.
+
++ **gdisk / cgdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *GPT - UEFI*.
+  *gdisk* ist das klassische Textmodus-Programm. *cgdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) liefert weitere Informationen zum Programm.
+
+<warning>**Achtung**</warning>
+<warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.</warning>
+
+**Eingebundene Partitionen** (auch swap) müssen vor Bearbeitung gelöst werden.  
+Im Terminal (als root) mit dem Befehl:
+
+~~~
+umount /dev/sda1
+~~~
+
+Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst: 
+
+~~~
+swapoff -a
+~~~
+
+---
+
+## Weiterführende Infos
 
 [Hier die umfassende englischsprachige Dokumentation von GParted](https://gparted.org/index.php)
 
@@ -156,4 +157,6 @@ Für weitere Partitionierungsoptionen siehe:
 
 + [Installation auf eine verschlüsselte root-Partition](hd-install-crypt_de.md#install-crypt)
 
-<div id="rev">Page last revised by akli 2020-06-06</div>
+---
+
+<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>

@@ -1,34 +1,29 @@
+% siduction Systemadministration
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-05:
-+ Cheatcodes: Text und Link eingefügt, Tabellen entfernt.
-+ Entfernen von "Boot-Up Manager (bum)"
-+ systemd erneuert
-+ Beenden eines Prozesses aktualisiert
-+ Schriftarten in siduction aktualisiert und erweitert, Fehlerkorrektur in Userkonfiguration (10.05.2020)
-+ CUPS aktualisiert
-+ Sound in siduction aktualisiert
+
++ Cheatcodes: Text und Link eingefügt, Tabellen entfernt.  
++ Entfernen von "Boot-Up Manager (bum)"  
++ systemd erneuert  
++ Beenden eines Prozesses aktualisiert  
++ Schriftarten in siduction aktualisiert und erweitert, Fehlerkorrektur in Userkonfiguration (10.05.2020)  
++ CUPS aktualisiert  
++ Sound in siduction aktualisiert  
 + Korrektur und Aktualisierung aller Links
+
+Anderungen 2020-11:
+
++ Für die Verwendung mit pandoc optimiert.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## **Systemadministration allgemein**
-### Übersicht
-+ Bootoptionen (Cheatcodes)
-+ systemd
-+ Beenden eines Prozesses
-+ Passwortverwaltung
-+ Schriftarten in siduction
-+ CUPS (Drucksystem)
-+ Sound
+## Systemadministration allgemein
 
----
-
-<div class="divider" id="cheatcodes">
-
-## **Bootoptionen** (Cheatcodes)
+### Bootoptionen (Cheatcodes)
 
 Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` fortgesetzt.
 
@@ -43,20 +38,18 @@ Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bo
 
 ---
 
-<div class="divider" id="start-services"></div>
-
-## **systemd** - Dienste verwalten
+### systemd - Dienste verwalten
 
 systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am häufigsten zu tun haben sind:
 
-+ systemd.service
-+ systemd.target
-+ systemd.device
-+ systemd.timer
-+ systemd.mount
-+ systemd.path
++ systemd.service  
++ systemd.target  
++ systemd.device  
++ systemd.timer  
++ systemd.mount  
++ systemd.path  
 
-Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](sys-admin-systemd_de.md). Die vollständige Dokumentation ist in den man-Pages `systemd.unit`, `systemd.special` und jeweils `systemd.<Unit-Typ>` zu finden.
+Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](sys-admin-systemd_de.md). Die vollständige Dokumentation ist in den man-Pages **systemd.unit**, **systemd.special** und jeweils **systemd."Unit-Typ"** zu finden.
 
 Mit dem Befehl, je nach den Units und den notwendigen Rechten als *user* oder *root* aufgerufen,
 
@@ -64,7 +57,7 @@ Mit dem Befehl, je nach den Units und den notwendigen Rechten als *user* oder *r
 systemctl [OPTIONEN...] Befehl [UNIT...]
 ~~~
 
-wird das Systemd-System gesteuert. *systemctl* kennt die Autovervollständigung mittels `TAB` und die Anzeige aller Variationen mittels `TAB` `TAB`. Bitte die man-Page `systemctl` lesen.
+wird das Systemd-System gesteuert. *systemctl* kennt die Autovervollständigung mittels `TAB` und die Anzeige aller Variationen mittels `TAB` `TAB`. Bitte die man-Page **systemctl** lesen.
 
 Eine nach Typen sortierte Liste mit allen aktiven Units bzw. Unit-Dateien, geben die folgenden Befehle aus:
 
@@ -92,9 +85,9 @@ Zum beenden eines Dienstes dient auch der Befehl:
 $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 ~~~
 
-Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen `-s, --signal=` und `--kill-who=` bereit.
-+ `-s` sendet eines der Signale **SIGTERM, SIGINT, SIGSTOP**. Vorgabe ist **SIGTERM**.
-+ `--kill-who=` erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, werden den Kind-Prozessen, oder beiden das Signal gesendet. Vorgabe ist **all**.  
+Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen **-s, --signal=** und **--kill-who=** bereit.
++ **-s** sendet eines der Signale **SIGTERM, SIGINT, SIGSTOP**. Vorgabe ist **SIGTERM**.
++ **--kill-who=** erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, werden den Kind-Prozessen, oder beiden das Signal gesendet. Vorgabe ist **all**.  
 Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](sys-admin-gen_de.md#pkill) erläutert wird.
 
 
@@ -109,6 +102,7 @@ Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch gela
 Dies erzeugt eine Gruppe von Symlinks entsprechend den Anforderungen in der Konfiguration der Unit. Im Anschluss wird automatisch die Systemverwalterkonfiguration neu geladen.
 
 Der Befehl
+
 ~~~
 # systemctl disable <UNIT-Datei>
 ~~~
@@ -124,7 +118,6 @@ Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bl
 
 die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und der Service ist nicht mehr verfügbar und wird auch nicht automatisch gestartet.
 
-<div class="divider" id="ziel-unit"></div>
 
 ### systemd.target - Ziel-Unit (Runlevel)
 
@@ -135,13 +128,13 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 
 | Ziel-Unit | Beschreibung | 
 | ---- | ---- |
-| **emergency.target** | Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden.| 
-| **rescue.target** | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
-| **multi-user.target** | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#apt-upgrade) . |
-| **graphical.target** | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
-| **default.target** | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX). |
+| emergency.target | Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden. | 
+| rescue.target | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
+| multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#apt-upgrade) . |
+| graphical.target | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
+| default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX). |
 
-Ein Blick in die Dokumentation `man SYSTEMD.SPECIAL(7)` ist obligatorisch um die Zusammenhänge der verschiedenen *.target* - *Unit* zu verstehen.
+Ein Blick in die Dokumentation **man SYSTEMD.SPECIAL(7)** ist obligatorisch um die Zusammenhänge der verschiedenen *.target* - *Unit* zu verstehen.
  
 Um in den Runlevel zur Systemaktualisierung zu wechseln, ist im Terminal folgender Befehl als root zu verwenden:
 
@@ -149,7 +142,7 @@ Um in den Runlevel zur Systemaktualisierung zu wechseln, ist im Terminal folgend
 # systemctl isolate multi-user.target
 ~~~
 
-Wichtig ist hierbei der Befehl "*isolate*", der dafür sorgt, dass alle Dienste und Services, welche die gewählte Unit **nicht** anfordert, beendet werden.
+Wichtig ist hierbei der Befehl **isolate**, der dafür sorgt, dass alle Dienste und Services, welche die gewählte Unit **nicht** anfordert, beendet werden.
 
 Um das System herunter zu fahren bzw. neu zu starten, sollte der Befehl 
 
@@ -163,11 +156,10 @@ verwendet werden. *poweroff* bzw. *reboot* (jeweils ohne *.target*) ist ein Befe
 
 ---
 
-<div class="divider" id="pkill"></div>
+## Beenden eines Prozesses
 
-## **Beenden eines Prozesses**
 ### pgrep und pkill
-Unabhängig von systemd ist `pgrep` und `pkill` ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder Root-Rechten in einer Konsole oder TTY ausgeführt:
+Unabhängig von systemd ist **pgrep** und **pkill** ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder Root-Rechten in einer Konsole oder TTY ausgeführt:
 
 ~~~
 $ pgreg <tab> <tab>
@@ -197,7 +189,7 @@ $ pkill firefox-esr
 ~~~
 
 beendet Firefox mit dem Standardsignal *SIGTERM*.  
-Mit der Option **--signal**, gefolgt von der Signalnummer oder dem Signalnamen, sendet pkill das gewünschte Signal an den Prozess. Eine übersichtliche Liste der Signale erhält man mit `kill -L`.
+Mit der Option **--signal**, gefolgt von der Signalnummer oder dem Signalnamen, sendet pkill das gewünschte Signal an den Prozess. Eine übersichtliche Liste der Signale erhält man mit *kill -L*.
 
 ### htop
 
@@ -205,13 +197,12 @@ Im Terminal eingegeben, ist htop eine gute Alternative, da sehr viele nützliche
 
 ### Notausgang
 
-Als letzten Rettungsanker bevor der Netzstecker gezogen wird, kann man den Befehl 'killall -9' im Terminal absetzen.
+Als letzten Rettungsanker bevor der Netzstecker gezogen wird, kann man den Befehl *killall -9* im Terminal absetzen.
 
 ---
 
-<div class="divider" id="pw-lost"></div>
+## Passwortverwaltung
 
-## **Passwortverwaltung**
 ### Vergessenes Rootpasswort
 
 Ein vergessenes Rootpasswort kann nicht wiederhergestellt werden, aber ein neues kann gesetzt werden.
@@ -230,23 +221,21 @@ Nun folgen ein chroot in die Rootpartition (chroot=changed root ... "veränderte
 chroot /media/sdb2 passwd
 ~~~
 
-<div class="divider" id="pw-new"></div>
-
 ### Setzen neuer Passwörter
 
-Um ein User-Passwort zu ändern, als `$ user` :
+Um ein User-Passwort zu ändern, als **$ user** :
 
 ~~~
 $ passwd
 ~~~
 
-Um das Root-Passwort zu ändern, als `# root` :
+Um das Root-Passwort zu ändern, als **# root** :
 
 ~~~
 # passwd
 ~~~
 
-Um ein User-Passwort als Administrator zu ändern, als `# root` :
+Um ein User-Passwort als Administrator zu ändern, als **# root** :
 
 ~~~
 # passwd <user>
@@ -254,42 +243,41 @@ Um ein User-Passwort als Administrator zu ändern, als `# root` :
 
 ---
 
-<div class="divider" id="fonts"></div>
-
-## **Schriftarten in siduction**
+## Schriftarten in siduction
 
 Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig vorab die richtigen Einstellungen und Konfigurationen der Hardware zu prüfen.
 
 ### Einstellungen prüfen 
 
-- Korrekte Grafiktreiber  
+- **Korrekte Grafiktreiber**  
     Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf folgender Seite des [Handbuchs](gpu_de.md#foss-xorg).
     
-- Korrekte Bildschirmauflösungen und Bildwiederholungsraten  
-    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
+- **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
+    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
     
     Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
     
-    ~~~
+   ~~~
     $ xrandr  
     Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
     HDMI-1 disconnected (normal left inverted right x axis y axis)  
     HDMI-2 connected 1680x1050+0+0 (normal left inverted right x axis y axis) 474mm x 296mm  
-       1680x1050     59.95*+  
-       1280x1024     75.02    60.02  
-       1440x900      59.90  
-       1024x768      75.03    60.00  
-       800x600       75.00    60.32  
-       640x480       75.00    59.94  
-       720x400       70.08  
+      1680x1050     59.95*+  
+      1280x1024     75.02    60.02  
+      1440x900      59.90  
+      1024x768      75.03    60.00  
+      800x600       75.00    60.32  
+      640x480       75.00    59.94  
+      720x400       70.08  
     DP-1 disconnected (normal left inverted right x axis y axis)  
-    ~~~
-    Der mit `*` markierte Wert kennzeichnet die verwendete Einstellung,  
+   ~~~
+    
+    Der mit **\*** markierte Wert kennzeichnet die verwendete Einstellung,  
     1680 x 1050 Pixel bei einer physikalischen Größe von 474 x 296 mm.
     Zusätzlich berechnen wir die tatsächliche Auflösung in Px/inch (dpi) um einen Anhaltspunkt für die Einstellungen der Schriften zu erhalten. Mit den oben ausgegebenen Werten erhalten wir 90 dpi.  
     1680 Px `x` 25,4 mm/inch `:` 474 mm `=` 90 Px/inch (dpi)
 
-- Überprüfung  
+- **Überprüfung**  
     Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.  
     
     Bei größeren Differenzen greifen wir in die Konfiguration ein. Siehe die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
@@ -304,16 +292,20 @@ Die systemweite Grundkonfiguration erfolgt im Terminal als root mittels:
 # dpkg-reconfigure fontconfig-config
 ~~~
 
-Bei den aufgerufenen Dialogen haben sich diese Einstellungen bewährt:  
+Bei den aufgerufenen Dialogen haben sich diese Einstellungen bewährt:
+
 1. Bitte wählen Sie zur Bildschirmdarstellung die bevorzugte Methode zum Schriftabgleich (font tuning) aus.  
-    -> autohinter
+   "autohinter"  
+      
 2. Bitte wählen Sie, inwieweit Font-Hinting standardmäßig angewendet wird.  
-    -> mittel
+   "mittel"  
+      
 3. Die Einbeziehung der Subpixel-Ebene verbessert die Textdarstellung auf Flachbildschirmen (LCD)  
-    -> automatisch
+   "automatisch"  
+      
 4. Standardmäßig nutzen Anwendungen, die fontconfig unterstützen, nur Outline-Schriften.  
     Standardmäßig Bitmap-Schriften verwenden?  
-    -> nein
+   "nein"
 
 Anschließend ist 
 
@@ -337,14 +329,14 @@ Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie 
 Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.
 
 + KDE Plasma  
-  `Systemeinstellungen` > `Schriftarten` > `Schriftarten`  
-  `Systemeinstellungen` > `Anzeige-Einrichtung` > `Anzeige-Einrichtung` > `Globale Skalierung`
+  *Systemeinstellungen* > *Schriftarten* > *Schriftarten*  
+  *Systemeinstellungen* > *Anzeige-Einrichtung* > *Anzeige-Einrichtung* > *Globale Skalierung*
 
 + Gnome (Twaek Tool)  
-  `Anwendungen` > `Optimierungen` > `Schriften`
+  *Anwendungen* > *Optimierungen* > *Schriften*
 
 + XFCE  
-  `Einstellungen` > `Erscheinungsbild` > Reiter: `Schriften`
+  *Einstellungen* > *Erscheinungsbild* > Reiter: *Schriften*
 
 **Begriffserklärung**  
 *Kantenglättung / Antialising* :  
@@ -359,7 +351,8 @@ Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bild
 *DPI-Wert / Skalierungsfaktor* :  
 Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Bei der Bildausgabe auf zwei Geräten mit stark unterschiedlicher Auflösung bitte die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md) beachten. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
 
-**4k Auflösung**: 3840 x 2160 (16:9)  
+**4k Auflösung**: 3840 x 2160 (16:9)
+
 | Diagonale | X-Achse |	Y-Achse | DPI |
 | :----: | :----: | :----: | :----: |
 | 24 Zoll | 531 mm | 299 mm	| 184 |
@@ -369,13 +362,11 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 | 37 Zoll | 819 mm | 461 mm	| 119 |
 | 42 Zoll | 930 mm | 523 mm	| 105 |
 
-Demnach ist bei **4k-Bildschirmen** mit 24 Zoll Diagonale ein Skalierungsfaktor von 2,0 und mit 37 Zoll Diagonale ein Skalierungsfaktor von 1,2 erforderlich um etwa gleiche Darstellungen entsprechend SXGA oder WSXGA Bildschirmen zu erhalten.
+Demnach ist bei **4k-Bildschirmen** mit 24 Zoll Diagonale ein Skalierungsfaktor von 2,0 und mit 37 Zoll Diagonale ein Skalierungsfaktor von 1,2 erforderlich um etwa gleiche Darstellungen entsprechend SXGA oder WSXGA Bildschirmen mit 90 DPI zu erhalten.
 
 ---
 
-<div class="divider" id="cups"></div>
-
-## **CUPS**
+## CUPS - das Drucksystem
 
 KDE hat einen großen Abschnitt zu CUPS in der KDE-Hilfe. Trotzdem folgt nun eine Anleitung, was man bei Problemen mit CUPS nach einem full-upgrade tun kann. Eine der bekannten Lösungen ist:
 
@@ -406,28 +397,29 @@ Die Firma Samsung lieferte eigene Linux-Treiber für ihre Drucker. Nach dem Verk
 
 ---
 
-<div class="divider" id="sound"></div>
+## Sound in siduction
 
-## **Sound in siduction**
+*In älteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.*
 
-`In der Grundeinstellung ist der Ton bei siduction deaktiviert.` 
+Die meisten Tonprobleme lassen sich lösen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer öffnet und das Häkchen von "stumm" oder "mute" entfernt bzw. den entsprechenden Schieber betätigt. Ist das Lautsprecher-Symbol nicht vorhanden, genügt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl
 
-Die meisten Tonprobleme lassen sich lösen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer öffnet und das Häkchen von "stumm" oder "mute" entfernt bzw. den entsprechenden Schieber betätigt. Ist das Lautsprecher-Symbol nicht vorhanden, genügt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl  
-in KDE:   `Kontrollleiste Optionen` > `Miniprogramme hinzufügen...`  
-in XFCE:  `Leiste` > `Neue Elemente hinzufügen...`  
+in KDE:   *Kontrollleiste Optionen* > *Miniprogramme hinzufügen...*  
+in XFCE:  *Leiste* > *Neue Elemente hinzufügen...*
+
 und das gewünschte Modul auswählen.
 
-#### KDE Plasma
+### KDE Plasma
 
 Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet das Einstellungsfenster für die Soundausgabe. Die Benutzerführung ist selbsterklärend.
 
-#### GNOME
+### GNOME
 
 Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet ein Drop-down-Menü, dass einen Schieber für die Lautstärke enthält.  
-Weitere Einstellungen sind wie folgt möglich:  
-Rechtsklick auf die Arbeitsfläche > `Einstellungen` > `Audio`
+Weitere Einstellungen sind wie folgt möglich:
 
-#### XFCE Puls-Audio
+Rechtsklick auf die Arbeitsfläche > *Einstellungen* > *Audio*
+
+### XFCE Puls-Audio
 
 Die Einstellungen erfolgen über das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerführung selbsterklärend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl
 
@@ -447,10 +439,12 @@ Wer alsamixer bevorzugt, findet diesen im Paket alsa-utils:
 # exit
 ~~~
 
-Die gewünschten Sound-Einstellungen werden als **`$user`**  von einem Terminal vorgenommen:
+Die gewünschten Sound-Einstellungen werden als **$user** von einem Terminal vorgenommen:
 
 ~~~
 $ alsamixer
 ~~~
 
-<div id="rev">Page last revised by akli, 10/05/2020</div>
+---
+
+<div id="rev">Zuletzt bearbeitet: 2020-11-29</div>

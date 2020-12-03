@@ -1,19 +1,25 @@
+% siduction Kurzanleitung
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Änderungen 2020-03:
-+ Entfernen der apt-get Befehle in "Die Verwaltung von Softwarepaketen" und "Aktualisierung des Systems - upgrade"
-+ Entfernen von "WICHTIGE INFORMATION: ... Linux-LIVE-DVD/CD, ist sehr stark komprimiert. ... Brennen im DAO-Modus ... "
-+ Hinzufügen "Download und Brennen" in Essenzielle Kapitel
-+ Inhaltliche Anpassung in "Weitere Desktopumgebungen"
-+ Korrektur und Aktualisierung aller Links
+
++ Entfernen der apt-get Befehle in "Die Verwaltung von Softwarepaketen" und "Aktualisierung des Systems - upgrade"  
++ Entfernen von "WICHTIGE INFORMATION: ... Linux-LIVE-DVD/CD, ist sehr stark komprimiert. ... Brennen im DAO-Modus ... "  
++ Hinzufügen "Download und Brennen" in Essenzielle Kapitel  
++ Inhaltliche Anpassung in "Weitere Desktopumgebungen"  
++ Korrektur und Aktualisierung aller Links  
+
+Änderungen 2020-11:
+
++ Für die Verwendung mit pandoc optimiert.
++ Inhalt teilweise überarbeitet.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ------------------------------------------------
-
-<div class="divider" id="welcome-quick"></div>
 
 ## siduction Kurzanleitung
 
@@ -116,9 +122,9 @@ init 5
 
 ### Konfiguration von Netzwerken
 
-'Ceni'  ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends  **`wireless-tools`**  bzw.  **`wpasupplicant`**  zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
+'Ceni'  ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends  **wireless-tools**  bzw.  **wpasupplicant**  zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
 
-Der Startbefehl in der Konsole ist `Ceni`  oder `ceni` . Falls das Skript nicht vorhanden ist, installiert man es mit:
+Der Startbefehl in der Konsole ist **Ceni**  oder **ceni** . Falls das Skript nicht vorhanden ist, installiert man es mit:
 
 ~~~
 apt install ceni
@@ -143,6 +149,6 @@ Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
+---
 
-<div id="rev">Page last revised by akli, 12/05/2020</div>
-
+<div id="rev">Zuletzt bearbeitet: 2020-11-29</div>
