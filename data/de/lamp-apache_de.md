@@ -1,80 +1,27 @@
-<div class="divider" id="serv-apache"></div>
+% LAMP - Apache 
 
-## siduction LAMP-Stack
-Das Akronym LAMP bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Websites oder Server zu betreiben:  
-Linux: Betriebssystem  
-Apache: Web-Server  
-MySQL: Datenbank-Management bzw. Datenbank-Server  
-Perl, PHP und/oder Python: Skriptsprachen  
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
+
+Änderungen 2020-12:
+
++ Inhalt überarbeitet.
++ Für die Verwendung mit pandoc optimiert.
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+---
+
+## Apache
 
 
-#### Zur Beachtung: Der Desktop-PC, mit dem täglich gearbeitet wird, soll nicht als Server dienen. Als Server soll ein eigener PC verwendet werden, der ansonsten keine weiteren Aufgaben erfüllt.
-Verwendungsmöglichkeiten als Server:  
-1. `ein lokaler Testserver für Webdesigner ohne Internetverbindung (siehe dieses Kapitel)`  
-2. ein privater (Daten-)Server mit Internetverbindung  
-3. ein privater Webserver mit umfassender Internetverbindung  
-4. ein kommerzieller Webserver (nicht behandelt in diesem Handbuch)  
-
-
-#### Minimale Voraussetzungen
-Mindestens 256MB RAM. Weniger RAM wird Probleme bereiten, da ein Server mit MySQL viel RAM benötigt, um ansprechend zu laufen. Ohne ausreichenden Speicher gibt MySQL folgende Fehlermeldung aus: "cannot connect to mysql.sock".
-
-Die zu installierenden Pakete sind:
-
-~~~
-apache2  
-apache2-utils  
-apache2-mpm-prefork  
-php5 php5-common  
-mysql-server  
-mysql-common  
-libapache2-mod-php5  
-php5-mysql  
-phpmyadmin  
-~~~
-
- **`ACHTUNG! `**
-
-~~~
-apt-get remove --purge splashy  
-~~~
-
- **`Splashy kann nicht mit mysql!`**
+Der Apache Webserver ist geladen und lässt sich problemlos händeln. 
 
 Die Konfigurationsdatei für Apache befindet sich hier:   
-`/etc/apache2/apache2.conf  
-` , und das Web-Verzeichnis ist hier:   
-`/var/www  
-` 
-
-Um zu prüfen, ob php installiert ist und korrekt läuft, wird eine Datei test.php in /var/www mit der Funktion phpinfo() auf die Art erstellt, wie es hier angegeben ist:
-
-~~~ php
-mcedit /var/www/test.php  
-
-# test.php  
-<? phpinfo(); ?>  
-~~~
-
-Danach wird der Browser dorthin gelinkt:
-
-~~~
-http://localhost/test.php  
-oder  
-http://yourip:80/test.php  
-~~~
-
-Dies zeigt alle php-Konfigurationen und Grundeinstellungen.
-
-Die Einstellungen können nun angepasst werden bzw. virtuelle Domains können mit Hilfe der Apache-Konfiguration eingerichtet werden.
-
-Um die Installation zu testen, wird Folgendes in die URL-Zeile des Browsers eingegeben:
-
-~~~
-http://youripaddress/apache2-default/  
-~~~
-
-Wenn die Installation erfolgreich und korrekt erfolgt ist, sieht man eine Begrüßungsnachricht.
+**/etc/apache2/apache2.conf**  
+und das Web-Verzeichnis ist hier:   
+**/var/www/**  
 
 Das Rootverzeichnis für apache2 ist   
 `/var/www  
@@ -88,18 +35,11 @@ ln -s /home/myself/www /var/www
 
 Danach kann die Website innerhalb des $HOME als normaler User editiert werden.
 
-<div class="divider" id="serv-ftp"></div>
-
-## FTP-Clients
-Empfohlen ist SSH (Informationen im Handbuch unter [SSH](ssh-de.htm#ssh) ),  
-
-
-<div class="divider" id="serv-sec"></div>
 
 ## Aktivieren von Sicherheitsprotokollen für Webserver
 ### Firewalls
-**`Ohne Firewall gibt es absolut keine Sicherheit für Server. Empfohlene Vorgehensweise ist, ALLES zu blockieren, solange es nicht benötigt ist, und nach Gebrauch wieder zu blockieren.  
-`** 
+
+**Ohne Firewall gibt es absolut keine Sicherheit für Server. Empfohlene Vorgehensweise ist, ALLES zu blockieren, solange es nicht benötigt ist, und nach Gebrauch wieder zu blockieren.** 
 
 ~~~
 21 (ftp)  
@@ -122,7 +62,7 @@ Zum Beispiel:
 2. Zugang hat man mit: http://localhost/~root/  
 ~~~
 
- **`Dies erlaubt Clients, das ganze Dateisystem zu durchsuchen! Um dies zu verhindern, muss Folgendes zur Server-Konfiguration gefügt werden:`**
+ **Dies erlaubt Clients, das ganze Dateisystem zu durchsuchen! Um dies zu verhindern, muss Folgendes zur Server-Konfiguration gefügt werden:**
 
 ~~~
 <Directory />  
@@ -152,9 +92,10 @@ Auch sollte man Experimente mit der Anweisung UserDir vermeiden; eine Konfigurat
 UserDir disabled root  
 ~~~
 
-<div class="divider" id="serv-ssl"></div>
+---
 
 ## SSL
+
 Ausführen des Skripts “apache2-ssl-certificate”
 
 ~~~
@@ -173,9 +114,9 @@ Generating a 1024 bit RSA private key
 writing new private key to '/etc/apache2/ssl/apache.pem'  
 --------  
 You are about to be asked to enter information that will be incorporated into your certificate request.  
------------  
+--------  
 What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some blank. For some fields there will be a default value,  
-----------  
+--------  
 If you enter '.', the field will be left blank.  
 ~~~
 
@@ -216,7 +157,7 @@ Wenn Einstellungen der Basiskonfiguration in /etc/apache2/apache2.conf und die G
 Der Apache-Server wird mit folgendem Befehl neu gestartet:
 
 ~~~
-#/etc/init.d/apache2 restart  
+# systemctl restart apache2  
 ~~~
 
 Nun wird die Port-Adresse /etc/apache2/ports.conf angepasst. In der Grundeinstellung wird auf Port 80 gelauscht, und da mit SSL installiert wird, hat dies auf Port 443 geändert zu werden.
@@ -260,9 +201,9 @@ Neustart des Apache-Servers
 /etc/init.d/apache2 restart  
 ~~~
 
-Nun soll die Sandbox eines Testservers eingerichtet sein. Dieser Testserver soll   
-**`NICHT mit dem Internet verbunden werden. Zu diesem Zweck soll ausschließlich ein PC verwendet werden, der als Server dienen soll!  
-`** 
+Nun soll die Sandbox eines Testservers eingerichtet sein. Dieser Testserver soll
+
+**NICHT mit dem Internet verbunden werden. Zu diesem Zweck soll ausschließlich ein PC verwendet werden, der als Server dienen soll!** 
 
 Quellen:
 
@@ -272,4 +213,6 @@ Quellen:
 
 [http://www.debianhelp.co.uk/webserver.htm](http://www.debianhelp.co.uk/webserver.htm) 
 
-Page last revised 10/01/2012 1845 UTC  
+---
+
+<div id="rev">Zuletzt bearbeitet: 2020-12-05</div>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>LAMP-Testserver für Entwickler (lokal)</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; background: yellow; line-height: 1.3em; border: 0.2em solid #CCC; padding: 0.4em;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">LAMP-Testserver für Entwickler (lokal)</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#siduction-lamp-stack">siduction LAMP-Stack</a>
+<ul>
+<li><a href="#vorbereitungen">Vorbereitungen</a></li>
+</ul></li>
+<li><a href="#server-installieren">Server installieren</a>
+<ul>
+<li><a href="#apache">Apache</a></li>
+<li><a href="#mariadb">MariaDb</a></li>
+<li><a href="#php">PHP</a></li>
+<li><a href="#phpmyadmin">phpMyAdmin</a></li>
+<li><a href="#weitere-software">Weitere Software</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#html-seiten-ladefehler">HTML-Seiten-Ladefehler</a></li>
+<li><a href="#php-1">PHP</a></li>
+<li><a href="#wenn-nichts-hilft">Wenn nichts hilft</a></li>
+</ul></li>
+<li><a href="#sicherheit">Sicherheit</a></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2020-12:</p>
+<ul>
+<li>Inhalt fast vollständig erneuert.</li>
+<li>Für die Verwendung mit pandoc optimiert.</li>
+</ul>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<hr />
+<h2 id="siduction-lamp-stack">siduction LAMP-Stack</h2>
+<p>Das Akronym <strong>LAMP</strong> bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Websiten zu betreiben:</p>
+<ul>
+<li><strong>L</strong>inux: Betriebssystem<br />
+</li>
+<li><strong>A</strong>pache: Web-Server<br />
+</li>
+<li><strong>M</strong>ariaDb: Datenbank-Server (ab Debian 9 ‘Stretch’, zuvor MySql)<br />
+</li>
+<li><strong>P</strong>HP, Perl und/oder Python: Skriptsprachen</li>
+</ul>
+<p>Verwendungsmöglichkeiten als Server:</p>
+<ol type="1">
+<li><strong>ein lokaler Testserver für Webdesigner ohne Internetverbindung (siehe dieses Kapitel)</strong><br />
+</li>
+<li>ein privater (Daten-)Server mit Internetverbindung<br />
+</li>
+<li>ein privater Webserver mit umfassender Internetverbindung<br />
+</li>
+<li>ein kommerzieller Webserver (nicht behandelt in diesem Handbuch)</li>
+</ol>
+<warning>
+Zur Beachtung:
+</warning>
+<warning>
+Der Desktop-PC, mit dem täglich gearbeitet wird, soll nicht als Server dienen. Als Server soll ein eigener PC verwendet werden, der ansonsten keine weiteren Aufgaben erfüllt.
+</warning>
+<p>Im Server-PC sollte mindestens 500MB RAM Arbeitsspeicher zur Verfügung stehen. Weniger RAM wird Probleme bereiten, da ein Server mit MariaDb/MySQL viel RAM benötigt, um ansprechend zu laufen.</p>
+<p>Die zu installierenden Pakete sind:</p>
+<pre><code>apache2  
+mariadb-server  
+mariadb-client  
+php  
+php7.4-mysql  
+phpmyadmin  </code></pre>
+<p>Wie bei siduction üblich, erledigen wir die Installationen im “multi-user.target” (init 3) im Terminal.</p>
+<h3 id="vorbereitungen">Vorbereitungen</h3>
+<p>Falls der Kommandozeilenbrowser <em>w3m</em> noch nicht installiert wurde, holen wir das jetzt nach:</p>
+<pre><code># apt update
+# apt install w3m</code></pre>
+<p>Das ermöglicht es uns <em>Apache</em> und <em>PHP</em> sofort im Terminal zu testen und erst nach Abschluss aller notwendigen Installationen wieder in die graphische Oberfläche zurückzukehren.</p>
+<p>Nun räumen wir noch apt auf.<br />
+Der Befehl <em>apt autoremove</em> sollte zu der folgenden Ausgabe führen. Wenn nicht, bestätigen wir das Entfernen nicht mehr benötigter Pakete mit <code>j</code>.</p>
+<pre><code>#apt autremove
+Paketlisten werden gelesen... Fertig
+Abhängigkeitsbaum wird aufgebaut.
+Statusinformationen werden eingelesen.... Fertig
+0 aktualisiert, 0 neu installiert, 0 zu entfernen und 0 nicht aktualisiert.</code></pre>
+<p>Diese Maßnahme erleichtert uns im Fall einer fehlerhaften Installation die Reparatur ganz wesentlich.<br />
+Siehe unten <a href="#troubleshooting">Troubleshooting</a></p>
+<p>Es ist sinnvoll sich bereits vor der Installation einige Daten zu notieren:</p>
+<p>Während der Installation notwendig:</p>
+<ul>
+<li>Ein <strong>Passwort</strong> für den Datenbankbenutzer <strong>phpmyadmin</strong>.</li>
+</ul>
+<p>Später, für die Konfiguration von MariaDb notwendig:</p>
+<ul>
+<li>Den <strong>Namen der Datenbank</strong> die verwendet werden soll.<br />
+</li>
+<li>Den <strong>Benutzernamen</strong> des Datenbank Administrators (Login-Name).<br />
+</li>
+<li>Das <strong>Passwort</strong> für den Datenbank Administrator.</li>
+</ul>
+<hr />
+<h2 id="server-installieren">Server installieren</h2>
+<hr />
+<h3 id="apache">Apache</h3>
+<p>Die Installation des Webservers Apache erfordert nur die beiden folgenden Befehle. Der install-Befehl holt sich noch die zusätzlichen Pakete <em>apache2-data</em> und <em>apache2-utils</em> herein. Anschließend fragen wir den Status von Apache ab und testen gleich die Start- und Stop-Anweisungen.</p>
+<pre><code># apt update
+# apt install apache2
+[...]
+Die folgenden NEUEN Pakete werden installiert:
+  apache2 apache2-data apache2-utils
+[...]
+Möchten Sie fortfahren? [J/n] j
+[...]
+
+# systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sun 2020-12-06 14:24:44 CET; 4min 8s ago
+[...]</code></pre>
+<p>Wie zu erkennen ist, wurde Apache sofort aktiviert.</p>
+<pre><code># service apache2 stop
+# systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Sun 2020-12-06 14:30:27 CET; 6s ago
+[...]
+
+# service apache2 start
+# systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sun 2020-12-06 14:30:59 CET; 3s ago
+[...]</code></pre>
+<p>Der Apache Webserver ist geladen und lässt sich problemlos händeln. Jetzt prüfen wir seine Funktion mit:</p>
+<pre><code>w3m http://localhost/index.html</code></pre>
+<p>Es zeigt uns die Apache-Begrüßungsseite mit <strong>It works!</strong> Wir beenden w3m mit <code>q</code> und bestätigen mit <code>y</code>.</p>
+<p>Die Konfigurationsdatei für Apache befindet sich hier:<br />
+<strong>/etc/apache2/apache2.conf</strong><br />
+und das Web-Verzeichnis ist hier:<br />
+<strong>/var/www/</strong></p>
+<p>Weitere Informationen und Hinweise zur Absicherung befinden sich auf unserer Handbuchseite <a href="./lamp-apache_de.htm">LAMP-Apache</a></p>
+<hr />
+<h3 id="mariadb">MariaDb</h3>
+<p>Die Installation von MariaDb gestaltet sich ähnlich einfach in dem die Metapakete “mariadb-server” und “mariadb-client” angefordert werden.</p>
+<pre><code># apt install mariadb-server mariadb-client
+[...]
+Die folgenden NEUEN Pakete werden installiert:  
+  galera-4 libcgi-fast-perl libcgi-pm-perl libdbd-mariadb-perl libfcgi-perl libhtml-template-perl libmariadb3  
+  mariadb-client mariadb-client-10.5 mariadb-client-core-10.5 mariadb-common mariadb-server mariadb-server-10.5  
+  mariadb-server-core-10.5 mysql-common socat
+[...]
+Möchten Sie fortfahren? [J/n] j</code></pre>
+<p>Weitere Informationen zu MariaDb und der Konfiguration liefert unser Handbuch in <a href="./lamp-sql_de.htm">LAMP-MariaDB</a>.</p>
+<hr />
+<h3 id="php">PHP</h3>
+<p>Zur Installation der Scriptsprache PHP genügt der Befehl:</p>
+<pre><code># apt install php
+[...]
+Die folgenden NEUEN Pakete werden installiert:
+  apache2-bin libapache2-mod-php7.4 libaprutil1-dbd-sqlite3 libaprutil1-ldap php
+  php-common php7.4 php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline
+[...]
+Möchten Sie fortfahren? [J/n] j</code></pre>
+<p>Wie schon zuvor, holt das Metapaket eine ganze Reihe von Abhängigkeiten zusätzlich herein.<br />
+Um nach der Installation zu prüfen, ob php korrekt läuft, wird die Datei <em>info.php</em> in <em>/var/www/html</em> mit der Funktion phpinfo() auf die Art erstellt, wie es hier angegeben ist:</p>
+<pre><code>mcedit /var/www/html/info.php  </code></pre>
+<p>Den folgenden Text einfügen</p>
+<pre><code>&lt;?php
+phpinfo();
+?&gt;</code></pre>
+<p>mit <code>F2</code> speichern, <code>F10</code> beendet mcedit.</p>
+<p>Danach wird der Terminal-Browser w3c dorthin gelinkt:</p>
+<pre><code>w3m http://localhost/info.php  
+oder  
+w3m http://yourip:80/info.php  </code></pre>
+<pre><code>PHP logo
+
+PHP Version 7.4.11
+
+System       Linux &lt;hostname&gt; 5.9.13-towo.1-siduction-amd64 ...
+Build Date   Oct 6 2020 10:34:39
+server API   Apache 2.0 Handler
+...</code></pre>
+<p>Erhalten wir eine Ausgabe, die wie oben gezeigt beginnt und alle php-Konfigurationen und Grundeinstellungen enthält, so funktioniert PHP und benutzt als <em>server API</em> den <em>Apache 2.0 Handler</em>.</p>
+<p>Wir beenden w3m mit <code>q</code> und bestätigen mit <code>y</code>.</p>
+<p>Jetzt fehlt noch die Unterstützung für MariaDB/mysql in PHP. Wir benötigen das PHP-Modul <em>php7.4-mysql</em>.</p>
+<pre><code># apt install php7.4-mysql</code></pre>
+<p>Wenn wir jetzt wieder die Seite “http://localhost/info.php” aufrufen, finden wir im Bereich der Module (sie sind alphabetisch sortiert) die Einträge zu <em>mysqli</em> und <em>mysqlnd</em>.</p>
+<p>Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enthält die Handbuchseite <a href="./lamp-php_de.htm">LAMP-PHP</a>.</p>
+<hr />
+<h3 id="phpmyadmin">phpMyAdmin</h3>
+<p>Um die Datenbank MariaDb zu administrieren benötigen wir <em>phpmyadmin</em>:</p>
+<pre><code># apt install phpmyadmin
+[...]
+Die folgenden NEUEN Pakete werden installiert:
+  dbconfig-common dbconfig-mysql icc-profiles-free libjs-openlayers libjs-sphinxdoc libjs-underscore libonig5 libzip4
+  php-bacon-qr-code php-bz2 php-dasprid-enum php-gd php-google-recaptcha php-mbstring php-mysql
+  php-phpmyadmin-motranslator php-phpmyadmin-shapefile php-phpmyadmin-sql-parser php-phpseclib php-psr-cache
+  php-psr-container php-psr-log php-symfony-cache php-symfony-cache-contracts php-symfony-expression-language
+  php-symfony-service-contracts php-symfony-var-exporter php-tcpdf php-twig php-twig-extensions php-xml php-zip
+  php7.4-bz2 php7.4-gd php7.4-mbstring php7.4-xml php7.4-zip phpmyadmin
+0 aktualisiert, 38 neu installiert, 0 zu entfernen und 60 nicht aktualisiert.
+Es müssen noch 15,7 MB von 15,8 MB an Archiven heruntergeladen werden.
+Nach dieser Operation werden 70,9 MB Plattenplatz zusätzlich benutzt.
+Möchten Sie fortfahren? [J/n]  j</code></pre>
+<p>Während der Installation erscheinen die zwei Dialoge.<br />
+Im ersten, zu Beginn, wählen wir “<em>apache2</em>” und bestätigen mit “<em>ok</em>”</p>
+<pre><code>  ┌──────────────────────────┤ Configuring phpmyadmin ├───────────────────────────────┐
+  │ Bitte wählen Sie den Webserver aus, der automatisch zum Betrieb von phpMyAdmin    │
+  │ konfiguriert werden soll.                                                         │
+  │ Webserver, die automatisch konfiguriert werden sollen:                            │
+  │                                                                                   │
+  │    [x] apache2                                                                    │
+  │    [ ] lighttpd                                                                   │
+  │                                       &lt;Ok&gt;                                        │
+  └───────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<p>im zweiten, am Ende der Installation, wählen wir “<em>ja</em>” aus.</p>
+<pre><code>  ┌──────────────────────────┤ Configuring phpmyadmin ├───────────────────────────────┐
+  │ Für das Paket phpmyadmin muss eine Datenbank installiert und konfiguriert sein,   │
+  │ bevor es benutzt werden kann. Dies kann optional mit Hilfe von dbconfig-common    │
+  │ geschehen.                                                                        │
+  │ Falls Sie ein erfahrener Datenbankadministrator sind und wissen, dass Sie diese   │
+  │ Konfigurationmanuell durchführen möchten oder, falls Ihre Datenbank bereits       │
+  │ installiert und konfiguriert ist, verwerfen Sie diese Option. Details zur         │
+  │ manuellen Installation sind üblicherweise in /usr/share/doc/phpmyadmin zu finden. │
+  │ Andernfalls sollte diese Option wahrscheinlich gewählt werden.                    │
+  │                                                                                   │
+  │ Konfigurieren der Datenbank für phpmyadmin mit dbconfig-common?                   │
+  │                                                                                   │
+  │                  &lt;Ja&gt;                              &lt;Nein&gt;                         │
+  └───────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<p>In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer <em>phpmyadmin</em> (siehe das Kapitel <em>Vorbereitungen</em>).</p>
+<h3 id="weitere-software">Weitere Software</h3>
+<p>Wer sich mit der Entwicklung von Webseiten befasst, kann jetzt zum Beispiel ein CMS wie WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch MariaDb z.B. entsprechend unserer Handbuchseite <a href="./lamp-sql:de.htm">LAMP-MariaDb</a> konfigurieren und eine neue, leere Datenbank anlegen.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Die hier aufgeführten Beispiele zeigen exemplarisch einige Möglichkeiten der Fehlersuche. Sollte unmittelbar nach der Installation der Aufruf der Dateien <em>index.html</em> und <em>info.php</em> fehlschlagen, bitte unbedingt zuerst die Gruppenzugehörigkeit des Webseitenverzeichnisses überprüfen und ggf. ändern:</p>
+<pre><code># ls -l /var/ | grep www
+drwxr-xr-x 3 root root 31 14. Dez 18:30
+
+  dann:
+  
+# chgrp -R www-data /var/www/
+# chmod -R g+w /var/www/</code></pre>
+<p>Nun sollten sich die Seiten aufrufen lassen.</p>
+<h3 id="html-seiten-ladefehler">HTML-Seiten-Ladefehler</h3>
+<p>Die Webseite <strong>http://localhost/index.html</strong> wird nicht angezeigt und der Browser meldet einen Seiten-Ladefehler.</p>
+<p>Wir fragen den Status des Apache Webservers ab:</p>
+<pre><code># service apache2 status
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Mon 2020-12-14 18:04:51 CET; 2s ago
+[...]</code></pre>
+<p>Apache wurde nicht gestartet, also versuchen wir es mit:</p>
+<pre><code># service apache2 start
+Job for apache2.service failed because the control process exited with error code.
+See &quot;systemctl status apache2.service&quot; and &quot;journalctl -xe&quot; for details.</code></pre>
+<p>Jetzt erhalten wir eine Fehlermeldung und den Hinweis auf “systemctl status apache2.service”.<br />
+Der etwas kürzere Aufruf “<em>service apache2 status</em>” erfüllt den gleichen Zweck:</p>
+<pre><code># service apache2 status
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Mon 2020-12-14 18:29:23 CET; 13min ago
+       Docs: https://httpd.apache.org/docs/2.4/
+    Process: 4420 ExecStart=/usr/sbin/apachectl start (code=exited, status=1/FAILURE)
+
+Dez 14 18:29:23 lap1 systemd[1]: Starting The Apache HTTP Server...
+Dez 14 18:29:23 lap1 apachectl[4423]: AH00526: Syntax error on line 63 of /etc/apache2/conf-enabled/security.conf:
+[...]</code></pre>
+<p>Wir sehen, dass die Datei <em>security.conf</em> in Zeile 63 einen Fehler aufweist.<br />
+Wir bearbeiten die Datei und versuchen es noch einmal.<br />
+<strong>Generell ist nach jeder Änderung der Konfiguration ein Restart des Apache und das Leeren des Browsercache notwendig.</strong></p>
+<h3 id="php-1">PHP</h3>
+<h4 id="info.php-nur-weiße-seite">info.php nur weiße Seite</h4>
+<p>Das bedeutet, dass PHP aktiv ist, aber die Seite nicht anzeigen kann.<br />
+Bitte überprüfen:</p>
+<ul>
+<li><p>Der Inhalt der Datei <em>info.php</em> muss exakt dem im Kapitel PHP gegebenem Beispiel entsprechen.</p></li>
+<li><p>Die Dateirechte, wie zu Beginn des Kapitels Troubleshooting erläutert, prüfen und ggf. ändern.</p></li>
+<li><p>Zusätzliche PHP-Module wurden installiert oder die Konfiguration geändert und der Webserver nicht neu gestartet.<br />
+Dann hilft:</p>
+<pre><code># service apache2 restart</code></pre></li>
+</ul>
+<h4 id="phpmyadmin---error">phpMyAdmin - Error</h4>
+<p>Der Aufruf von <em>http://localhost/phpmyadmin</em> schlägt mit der Meldung <em>phpMyAdmin - Error</em> fehl und die folgenden Informationen werden angezeigt.</p>
+<pre><code>Error during session start; please check your PHP and/or webserver log file and  
+configure your PHP installation properly. Also ensure that cookies are enabled  
+in your browser.
+
+session_start(): open(SESSION_FILE, O_RDWR) failed: Permission denied (13)
+session_start(): Failed to read session data: files (path: /var/lib/php/sessions)</code></pre>
+<p>Die Berechtigungen für den Ordner <em>/var/lib/php/sessions</em> ändern:</p>
+<pre><code># chmod 777 /var/lib/php/sessions</code></pre>
+<p>Nun ist der Login zu phpmyadmin möglich.</p>
+<h3 id="wenn-nichts-hilft">Wenn nichts hilft</h3>
+<p>Die Installation des LAMP-Stack ist, da meist alles ohne Probleme abläuft, schnell erledigt. Eine Fehlersuche kann jedoch Stunden in Anspruch nehmen.<br />
+Deshalb ist es, sofern die zuvor genannten Maßnahmen zu keiner Lösung führen, sinnvoll den LAMP-Stack oder Teile davon zu entfernen und neu zu installieren. Wenn, wie im Kapitel <em>Vorbereitungen</em> erwähnt, apt aufgeräumt wurde, hilft der Befehl “<em>apt purge</em>” um die zuvor installierten Pakete mit ihren Konfigurationsdateien zu entfernen ohne das irgendwelche anderen Pakete stören.</p>
+<p>Hier ein Beispiel mit Apache:</p>
+<pre><code># apt purge apache2
+Paketlisten werden gelesen... Fertig
+Abhängigkeitsbaum wird aufgebaut.
+Statusinformationen werden eingelesen.... Fertig
+Die folgenden Pakete wurden automatisch installiert und werden nicht mehr benötigt:
+apache2-data apache2-utils
+Verwenden Sie »apt autoremove«, um sie zu entfernen.
+Die folgenden Pakete werden ENTFERNT:
+  apache2*
+0 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.</code></pre>
+<p><em>Apache2</em> wurde entfernt und die Pakete <em>apache2-data</em> und <em>apache2-utils</em> blieben noch erhalten.<br />
+Jetzt bitte <strong>nicht apt autoremove verwenden</strong>, denn dann bleiben die Konfigurationsdateien, in denen sehr wahrscheinlich der Fehler liegt, zurück.<br />
+Wir verwenden den Befehl “<em>apt purge</em>”.</p>
+<pre><code># apt purge apache2-data apache2-utils</code></pre>
+<p>Bei Bedarf verfahren wir mit den anderen Programmteile ebenso. Anschließend starten wir einen neuen Versuch.</p>
+<hr />
+<h2 id="sicherheit">Sicherheit</h2>
+<p>Die bis hierher erklärte Installation führt zu einem Webserver der <strong>“offen wie ein Scheunentor für Jedermann ist”</strong>. Deshalb sollte er ausschließlich autark an einem Arbeitsplatz verwendet und nicht mit dem privaten Netzwerk und auf keinen Fall mit dem Internet verbunden werden.</p>
+<p>Für die Absicherung des Servers bitte die Handbuchseiten</p>
+<p><a href="./lamp-apache_de.htm">LAMP-Apache</a><br />
+<a href="./lamp-sql_de.htm">LAMP-MariaDB</a><br />
+<a href="./lamp-php_de.htm">LAMP-PHP</a></p>
+<p>bezüglich der Konfiguration beachten.</p>
+<hr />
+<div id="rev">
+Zuletzt bearbeitet: 2020-12-18
+</div>
+</body>
+</html>
