@@ -7,8 +7,6 @@
   <title>Installation vom Live-Medium</title>
 <style>
 body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
-<!-- h1              {display: none;}
-h1.title        {display: initial;} -->
 p               {line-height: 1.3;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
 p code, li code {display: inline; color: #800; padding: 0.15em;}
@@ -104,28 +102,28 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 <h2 id="das-siduction-installationsprogramm-calamares">Das siduction-Installationsprogramm (Calamares)</h2>
 <p>Während der Installation sollte, wenn möglich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen für die Lokalisation und Zeit zu ermitteln.</p>
 <ol type="1">
-<li><p>Das Installationsprogramm startet man bequem über das Icon <img src="../../static/images-de/install-hd-de/calamares-de_00.png" alt="calamares icon" /> am Desktop oder im Menü: <em>System</em> &gt; <em>System installieren</em>.</p></li>
+<li><p>Das Installationsprogramm startet man bequem über das Icon <img src="../../static/images-de/install_hd-de/calamares-de_00.png" alt="calamares icon" /> am Desktop oder im Menü: <em>System</em> &gt; <em>System installieren</em>.</p></li>
 <li><p>Nach einem Doppelklick auf das Icon startet Calamares und wir sehen das “Willkommen” - Fenster.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_01.png" title="Willkommen" alt="" /><figcaption>calamares welcome</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_01.png" title="Willkommen" alt="" /><figcaption>calamares welcome</figcaption>
 </figure>
 <p>Sofern eine Internetverbindung besteht, ist hier bereits die richtige Sprache eingestellt.</p></li>
 <li><p>Im nächsten Fenster “Standort” besteht die Möglichkeit Änderungen zur <em>Region</em>, der <em>Zeitzone</em> und <em>Systemsprache</em>, sowie dem <em>Format</em> für das Datum und die Zahlen vorzunehmen.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_02.png" title="Standort" alt="" /><figcaption>calamares location</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_02.png" title="Standort" alt="" /><figcaption>calamares location</figcaption>
 </figure></li>
 <li><p>Es folgen die Einstellungen zur Tastatur.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_03.png" title="Tastatur" alt="" /><figcaption>calamares keyboard</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_03.png" title="Tastatur" alt="" /><figcaption>calamares keyboard</figcaption>
 </figure>
 <p>Im oberen Teil wird die Tastatur graphisch dargestellt und die Änderungen werden sofort sichtbar. Ganz unten befindet sich eine Eingabezeile um das Tastaturlayout zu testen.</p></li>
 <li><p>Im nächsten Schritt erreichen wir die bereits oben erwähnte Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n) siduction verwendet.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_04.png" title="Partitionen" alt="" /><figcaption>calamares partitions</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_04.png" title="Partitionen" alt="" /><figcaption>calamares partitions</figcaption>
 </figure>
 <p>In unserem Beispiel verwenden wir die <em>Manuelle Partitionierung</em> weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel auswählen. Nach einem Klick auf <em>Weiter</em> erscheint das nächste Fenster, in dem wir die einzelnen Partitionen auswählen und bearbeiten können.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_05.png" title="Partitionen bearbeiten" alt="" /><figcaption>calamares work on partitions</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_05.png" title="Partitionen bearbeiten" alt="" /><figcaption>calamares work on partitions</figcaption>
 </figure>
 <p>Wir benutzen die Partitionen<br />
 sda7 für <strong>/</strong> (root)<br />
@@ -135,11 +133,11 @@ sda6 für <strong>/daten</strong> gemeinsam mit dem bereits auf sda3 und sda4 vo
 Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie während der Installation automatisch erkannt und integriert wird.<br />
 Das Ergebnis unserer Bemühungen sehen wir im nächsten Bild.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares partitions finish</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares partitions finish</figcaption>
 </figure></li>
 <li><p>Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Rootpasswort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit <a href="#adduser">adduser</a> hinzugefügt werden.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares users</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares users</figcaption>
 </figure>
 <p>Vor der Verwendung der beiden Optionen<br />
 “Automatisches Einloggen ohne Passwortabfrage” und<br />
@@ -147,15 +145,15 @@ Das Ergebnis unserer Bemühungen sehen wir im nächsten Bild.</p>
 wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherheitsrisiko dar (siehe auch <a href="term-konsole_de.md#sudo">sudo</a>). Sind beide Optionen aktiviert ist die Eingabe von Passwörtern nur noch eine Farce!</p></li>
 <li><p>Nach Betätigen der Taste <em>Weiter</em> erscheint eine Zusammenfassung aller zuvor getätigten Eingaben. Jetzt besteht noch die Möglichkeit über <em>Zurück</em> Änderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, öffnet ein Klick auf <em>Installieren</em> das kleine Warnfenster in dem wir die Installation bestätigen müssen.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares summary</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares summary</figcaption>
 </figure></li>
 <li><p>Nun startet die Installation. Dies dauert je nach Hardware einige Zeit. Der Fortschritt wird entsprechend angezeigt. Auch wenn es etwas länger dauert, bitte die Installation nicht abbrechen, sondern dem Prozess Zeit geben.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_09.png" title="Installieren" alt="" /><figcaption>calamares install</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_09.png" title="Installieren" alt="" /><figcaption>calamares install</figcaption>
 </figure></li>
 <li><p>Am Ende erhalten wir die Möglichkeit zu einem Reboot in das neu installierte System.</p>
 <figure>
-<img src="../../static/images-de/install-hd-de/calamares-de_10.png" title="Beenden" alt="" /><figcaption>calamares reboot</figcaption>
+<img src="../../static/images-de/install_hd-de/calamares-de_10.png" title="Beenden" alt="" /><figcaption>calamares reboot</figcaption>
 </figure>
 <p>Vor dem Reboot die CD aus dem Laufwerk nehmen!</p></li>
 </ol>
@@ -172,7 +170,7 @@ wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherhe
 man deluser</code></pre>
 <hr />
 <div id="rev">
-Zuletzt bearbeitet: 2020-12-02
+Zuletzt bearbeitet: 2020-12-28
 </div>
 </body>
 </html>
