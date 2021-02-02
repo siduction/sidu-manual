@@ -24,6 +24,7 @@ table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collaps
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; background: yellow; line-height: 1.3em; border: 0.2em solid #CCC; padding: 0.4em;}
+img             {border: 0.1em solid #CCC;}
 #rev            {float:right; font-size: 0.8em; color: #888;}
 </style>
 $for(header-includes)$
