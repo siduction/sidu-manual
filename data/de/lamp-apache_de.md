@@ -2,217 +2,460 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
-Änderungen 2020-12:
+Änderungen 2020-12 bis 2021-01:
 
-+ Inhalt überarbeitet.
++ Inhalt überarbeitet.  
 + Für die Verwendung mit pandoc optimiert.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-## Apache
+## Apache einrichten
 
+Diese Handbuchseite basiert auf Apache 2.4.46.
 
-Der Apache Webserver ist geladen und lässt sich problemlos händeln. 
+Unserem Beispiel aus der Installationsanleitung entsprechend, wollen wir einen *LAMP-Testserver für Entwickler* aufsetzen, der über LAN direkt mit dem Arbeitsplatz-PC verbunden ist. Darüber hinaus soll es aus Gründen der Sicherheit für den Server keine Verbindung zu einem lokalen Netzwerk oder gar zum Internet geben.  
+Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und Software- Aktualisierungen über eine zweite Netzwerkschnittstelle mit dem Internet verbunden.
 
-Die Konfigurationsdatei für Apache befindet sich hier:   
-**/etc/apache2/apache2.conf**  
-und das Web-Verzeichnis ist hier:   
-**/var/www/**  
+### Apache im Dateisystem
 
-Das Rootverzeichnis für apache2 ist   
-`/var/www  
-` . Dies muss folgendermaßen angepasst werden:   
+Debian hat die Dateien des Apache entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
++ In **/usr/sbin/** das ausführbare Programm *apache2*.  
++ In **/usr/lib/apache2/modules/** die installierten Module für Apache.  
++ In **/usr/share/apache2/** Dateien, die auch für andere Programme verfügbar sind.  
++ In **/etc/apache2/** die Konfigurationsverzeichnisse und -dateien.  
++ In **/var/www/html/** die vom Benutzer angelegte Webseite.
++ In **/run/apache2/, /run/lock/apache2/** zur Laufzeit notwendige Systemdateien.
++ In **/var/log/apache2/** verschiedene Log-Dateien.
 
-~~~
-mkdir /home/myself/www  
-ln -s /home/myself/www /var/www  
-~~~
+Wichtig ist die Unterscheidung zwischen den verwendeten Variablen *ServerRoot* und *DocumentRoot*.
 
-Danach kann die Website innerhalb des $HOME als normaler User editiert werden.
+**ServerRoot** ist das Konfigurationsverzeichnis, also "*/etc/apache2/*".  
+**DocumentRoot** beinhaltet die Webseitendaten, also "*/var/www/html/*".
 
+### Verbindung zum Server
 
-## Aktivieren von Sicherheitsprotokollen für Webserver
-### Firewalls
+Die Verbindung zwischen Testserver und PC wird in das IPv4-Netzwerksegment **192.168.3.xxx** gelegt, während die Internetverbindung des PC außerhalb dieses Netzwerksegmentes erfolgt. Die verwendeten Daten sind:
 
-**Ohne Firewall gibt es absolut keine Sicherheit für Server. Empfohlene Vorgehensweise ist, ALLES zu blockieren, solange es nicht benötigt ist, und nach Gebrauch wieder zu blockieren.** 
+**Server**  
+IP: 192.168.3.1/24  
+Name: server1.org  
+Alias: www.server1.org
 
-~~~
-21 (ftp)  
-22 (SSH)  
-25 110 (email)  
-443 (SSL-http or https)  
-993 (imap ssl)  
-995 (pop3 ssl)  
-80 (http)  
-und auch jeder andere verwendete Port!  
-~~~
+**PC**  
+IP: 192.168.3.10/24  
+Name: pc1
 
-### Grundsätzlicher Schutz von Server-Dateien
-Ein Aspekt von Apache, der gelegentlich missverstanden wird, ist der in der Grundeinstellung festgelegte Zugang. Das bedeutet, solange die Konfiguration nicht verändert ist, kann der Server Clients bedienen, wenn der Server seinen Weg zu einem File mittels nomaler URL-Mapping-Regeln finden kann.
+Wir legen von der Datei */etc/hosts* auf dem Server und auf dem PC eine Sicherungskopie an und fügen beiden die notwendigen Zeilen hinzu.
 
-Zum Beispiel:
++ Server */etc/hosts*:
+  
+  ~~~
+  # cp /etc/hosts /etc/hosts_$(date +%f)
+  # echo "192.168.3.1 server1.org   www.server1.org" >> /etc/hosts
+  # echo "192.168.3.10 pc1" >> /etc/hosts
+  ~~~
 
-~~~
-1. # cd /; ln -s / public_html  
-2. Zugang hat man mit: http://localhost/~root/  
-~~~
++ PC */etc/hosts*:
+  
+  ~~~
+  # cp /etc/hosts /etc/hosts_$(date +%f)
+  # echo "192.168.3.1 server1.org   www.server1.org" >> /etc/hosts
+  ~~~
 
- **Dies erlaubt Clients, das ganze Dateisystem zu durchsuchen! Um dies zu verhindern, muss Folgendes zur Server-Konfiguration gefügt werden:**
+Als nächstes geben wir im *NetworkManager* die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von "*Automatisch (DHCP)*" auf "*Manuell*" geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.
 
-~~~
-<Directory />  
-   Order Deny,Allow  
-   Deny from all  
-</Directory>  
-~~~
+![Server - Dateneingabe im NetworkManager](../../static/images-de/lamp_apache-de/server_lan.png)
 
-Dies verbietet grundsätzlich Zugang zu Bereichen des Dateisystems. Dementsprechend müssen &lt;Directory&gt;-Blöcke der Konfiguration beigefügt sein, welche Zugriff ausschließlich zu erlaubten Bereichen gestatten. Zum Beispiel:
+Zusätzlich sollte im Reiter "*Allgemein*" die Option "*Automatisch mit Priorität verbinden*" aktiviert sein.  
+Sinngemäß nehmen wir am PC die entsprechenden Einstellungen für die verwendete LAN-Schnittstelle vor.
 
-~~~
-<Directory /usr/users/*/public_html>  
-   Order Deny,Allow  
-   Allow from all  
-</Directory>  
-<Directory /usr/local/httpd>  
-   Order Deny,Allow  
-   Allow from all  
-</Directory>  
-~~~
-
-Besondere Aufmerksamkeit muss dem Zusammenspiel der Anweisungen &lt;Location&gt; und &lt;Directory&gt; geschenkt werden. Zum Beispiel, eine Anweisung &lt;Directory /&gt; kann den Zugang unterbinden, eine Anweisung &lt;Location /&gt; kann dieses Verbot jedoch überschreiben und somit umgehen.
-
-Auch sollte man Experimente mit der Anweisung UserDir vermeiden; eine Konfiguration "./" hätte für root denselben Effekt, wie er im ersten Beispiel gezeigt wurde. Für die Version Apache 1.3 oder höher empfehlen wir nachdrücklichst, folgende Zeile in der Konfigurationsdatei einzufügen:
+Am PC testen wir die Verbindung in der Konsole mit
 
 ~~~
-UserDir disabled root  
+$ ping -c3 www.server1.org
+~~~
+
+und bei Erfolg prüfen wir gleich die Funktion von Apache, indem wir in die Adresszeile des Webbrowsers "*http://www.server1.org/index.html*" eingeben.
+
+Die Apache-Begrüßungsseite mit "*It works!*" sollte erscheinen.
+
+### Apache Konfiguration
+
+Die Konfigurationsdateien und -verzeichnisse befindet sich im "*ServerRoot*" Verzeichnis "*/etc/apache2/*".  
+Die zentrale Konfigurationsdatei ist "*apache2.conf*". Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt über Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die benötigten eingebunden werden.
+
+Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss "*.conf*" lauten. Die gültigen Direktiven, die in den Konfigurationsdateien verwendet werden dürfen, beschreibt die [Apache Dokumentation](https://httpd.apache.org/docs/current/de/) ausführlich.
+
+Die Dateien liegen in den Verzeichnissen 
+
+"*/etc/apache2/conf-available*",  
+"*/etc/apache2/mods-available*" und  
+"*/etc/apache2/sites-available*".
+
+Ihre Aktivierungs-Links finden wir in
+
+"*/etc/apache2/conf-enable*",  
+"*/etc/apache2/mods-enable*" und  
+"*/etc/apache2/sites-enable*".
+
+Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle "*a2enconf*" und "*a2disconf*". Das erstellt oder entfernt die Aktivierungs-Links.
+
+~~~
+# a2enconf NAME_DER_DATEI.conf 
+~~~
+
+Aktiviert die Konfiguration. Die Deaktivierung erfolgt entsprechend mit:
+
+~~~
+# a2disconf NAME_DER_DATEI.conf 
+~~~
+
+In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen "*a2enmod*", "*a2ensite*" und "*a2dismod*", "*a2dissite*".
+
+Der Apache Webserver liest mit dem Befehl
+
+~~~
+# systemctl reload apache2.service
+~~~
+
+die geänderte Konfiguration ein.
+
+Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und passen die Konfiguration an die Serverdaten an.
+
+1. Datei "*/etc/apache2/apache2.conf*"
+   
+   Es ist eine der wenigen Ausnahmen die *apache2.conf* zu editieren. Wir fügen zu Beginn des Abschnits *Global configuration* die folgende Zeile ein:
+   
+   ~~~
+   ServerName 192.168.3.1
+   ~~~
+   
+   Hiermit teilen wir dem Apache-Webserver die IP-Adresse mit, unter der das Entwicklungsprojekt erreichbar sein soll und unterdrücken Umleitungen zur IP 127.0.1.1 mit Fehlermeldungen.
+
+2. Neue "*sites*"-Datei
+   
+   Mit dem Texteditor unserer Wahl erstellen wir die Datei "*/etc/apache2/sites-available/server1.conf*" z. B.
+   
+   ~~~
+   # mcedit /etc/apache2/sites-available/server1.conf
+   ~~~
+   
+   und fügen den folgenden Inhalt ein, speichern die Datei und beenden den Editor.
+   
+   ~~~
+   <VirtualHost *:80>
+	   ServerName server1.org
+	   ServerAlias www.server1.org
+	   ServerAdmin webmaster@localhost
+	   DocumentRoot /var/www/html
+	   ErrorLog ${APACHE_LOG_DIR}/error_server1.log
+	   CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
+   </VirtualHost>
+   ~~~
+   
+   Anschließend stellen wir die Konfiguration auf den neuen "*VirtualHost*" um und geben die Änderungen dem Apache Webserver bekannt.
+   
+   ~~~
+   # a2ensite server1.conf 
+     Enabling site server1.
+   [...]
+        
+   # a2dissite 000-default.conf 
+     Site 000-default disabled.
+   [...]
+     
+   # systemctl reload apache2.service
+   ~~~
+
+---
+
+## Benutzer und Rechte
+
+Der Apache Webserver läuft mit der USER.GROUP "*www-data.www-data*" und "*DocumentRoot*" gehört unmittelbar nach der Installation "*root.root*".  
+Um Benutzern Schreibrechte für die in "*DocumentRoot*" enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe "*www-data*" zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
+Wir nennen die neue Gruppe "*developer*".
+
+### Mit CMS
+
+Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung von Webseiten-Inhalten) hinzugefügt, bereiten wir "*DocumentRoot*" entsprechend vor:
+
+1. Gruppe anlegen und dem Benutzer zuweisen.
+  
+   ~~~
+   # groupadd developer
+   # adduser BENUTZERNAME developer
+   # chgrp developer /var/www/html
+   ~~~
+   
+   Um die neuen Rechte zu aktivieren, muss man sich einmal ab- und neu anmelden oder als Benutzer den Befehl newgrp verwenden.
+   
+   ~~~
+   $ newgrp developer
+   ~~~
+
+2. SGID-Bit für "*DocumentRoot*" setzen,  
+   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe "*developer*" erben.
+   
+   ~~~
+   # chmod g+s /var/www/html
+   ~~~
+
+3. Eigentümer und Dateirechte anpassen,  
+   damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läft.  
+   Wir schauen uns die derzeitigen Rechte an:
+   
+   ~~~
+   # ls -la /var/www/html
+   insgesamt 24
+   drwxr-sr-x 2 root developer  4096  9. Jan 19:32 .           (DocumentRoot mit SGID-Bit)
+   drwxr-xr-x 3 root root       4096  9. Jan 19:04 ..          (Das übergeordnete Verzeichnis /var/www)
+   -rw-r--r-- 1 root developer 10701  9. Jan 19:04 index.html
+   -rw-r--r-- 1 root developer    20  9. Jan 19:32 info.php
+   ~~~
+   
+   Wir ändern für "*DocumentRoot*" den Eigentümer zu "*www-data*", geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
+   
+   ~~~
+   # chown -R www-data /var/www/html
+   # chmod -R g+w /var/www/html
+   # chmod -R o-r /var/www/html
+   ~~~
+   
+   Das Ergebnis überprüfen wir noch einmal.
+   
+   ~~~
+   # ls -la /var/www/html
+   insgesamt 24
+   dr-xrws--x 2 www-data developer  4096  9. Jan 19:32 .
+   drwxr-xr-x 3 root     root       4096  9. Jan 19:04 ..
+   -rw-rw---- 1 www-data developer 10701  9. Jan 19:04 index.html
+   -rw-rw---- 1 www-data developer    20  9. Jan 19:32 info.php
+   ~~~
+
+   Jetzt haben in "*DocumentRoot*" nur Mitglieder der Gruppe "*developer*" Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
+
+4. Nachteile dieser Einstellungen
+   
+   Beim Anlegen neuer Verzeichnisse und Dateien unterhalb "*DocumentRoot*" ist der Eigentümer der jeweilige "*User*" und nicht "*www-data*". Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
+   Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb "*DocumentRoot*" überwacht und die Eigentümer- und Dateirechte anpasst.
+
+### Ohne CMS
+
+Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an "*DocumentRoot*" entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in "*DocumentRoot*".
+
+~~~
+# chmod -R u-w /var/www/html
 ~~~
 
 ---
 
-## SSL
+## Sicherheit
 
-Ausführen des Skripts “apache2-ssl-certificate”
+### Standard Konfiguration in Apache
 
-~~~
-# apache2-ssl-certificate  
-~~~
+Wichtige Absicherungen enthält die Datei "*/etc/apache2/apache2.conf*" bereits standardmäßig.
 
-Folgender Dialog wird gestartet, um alle benötigten Informationen eintragen zu können:
+Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und geben dann die beiden vom Apache-Webserver verwendeten Verzeichnisse "*/usr/share*" und "*/var/www*" frei.
 
 ~~~
-Creating self-signed certificate  
-replace it with one signed by a certification authority (CA) enter your ServerName at the Common Name prompt. If you want your certificate to expire after x days call this programm  
-with -days x  
------  
-Generating a 1024 bit RSA private key  
---------  
-writing new private key to '/etc/apache2/ssl/apache.pem'  
---------  
-You are about to be asked to enter information that will be incorporated into your certificate request.  
---------  
-What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some blank. For some fields there will be a default value,  
---------  
-If you enter '.', the field will be left blank.  
+<Directory />
+	Options FollowSymLinks
+	AllowOverride None
+	Require all denied
+</Directory>
+
+<Directory /usr/share>
+	AllowOverride None
+	Require all granted
+</Directory>
+
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride None
+	Require all granted
+</Directory>
 ~~~
 
-~~~
-Country Name (2 letter code) [GB]:  
-State or Province Name (full name) [Some-State]:  
-Locality Name (eg, city) []:  
-Organization Name (eg, company; recommended) []:  
-Organizational Unit Name (eg, section) []:  
-server name (eg. ssl.domain.tld; required!!!) []:  
-Email Address []:  
-~~~
+Die Optionen "*FollowSymLinks*" und "*Indexes*" bergen ein Sicherheitsrisiko und sollten geändert werden, sofern sie nicht unbedingt notwendig sind. Siehe weiter unten.
 
-Ausführen des Skripts “a2enmod ssl” i.e
+Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.htpasswd*".
 
 ~~~
-# a2enmod ssl  
+<FilesMatch "^\.ht">
+	Require all denied
+</FilesMatch>
 ~~~
 
-Dieses generiert automatisch einen symbolischen Link zwischen mods-available und mods-enabled.
+### Weitere Konfigurationen
 
-Danach legt man eine Kopie von '/etc/apache2/sites-available/default' im Ordner /etc/apache2/sites-available/ an und benennt sie 'ssl':
++ In der Datei **/etc/apache2/apache2.conf**
+  
+  **FollowSymLinks** kann dazu führen, dass Inhalte außerhalb "*DocumentRoot*" gelistet werden.  
+  **Indexes** listet den Inhalt eines Verzeichnisses, sofern keine "*index.html*" oder "*index.php*" usw. vorhanden ist.
+  
+  Es ist empfehlenswert "*FollowSymLinks*" zu entfernen und die Projektdaten alle unterhalb "*DocumentRoot*" abzulegen. Für die Option "*Indexes*" ist der Eintrag zu ändern in
+  
+  ~~~
+  Options -Indexes
+  ~~~
 
-~~~
-# cp /etc/apache2/sites-available/default /etc/apache2/sites-available/ssl  
-~~~
+  wenn die Anzeige des Verzeichnisinhaltes **nicht** erwünscht ist.  
+  Alternativ erstellt man in dem Verzeichnis eine leere "*index*"-Datei, die an Stelle des Verzeichnisinhaltes an den Client ausgeliefert wird. Zum Beispiel für das "*upload*"-Verzeichnis:
+  
+  ~~~
+  $ echo "<!DOCTYPE html>" > /var/www/html/upload/index.html
+       oder
+  $ echo "<?php" > /var/www/html/upload/index.php
+  ~~~
 
-Schließlich erstellt man einen symbolischen Link zu dieser neuen Konfigurationsdatei, um sie zu nutzen:
++ In der Host-Konfiguration **/etc/apache2/sites-available/server1.conf**
+  
+  können wir mit dem "*\<Directory\>*"-Block alle IP-Adressen sperren, außer die darin gelisteten.
+  
+  ~~~
+  <Directory "/var/www/html">
+	  Order deny,allow
+	  Deny from all
+	  Allow from 192.168.3.10
+	  Allow from 192.168.3.1
+  </Directory>
+  ~~~
 
-~~~
-# ln -s /etc/apache2/sites-available/ssl /etc/apache2/sites-enabled/  
-(oder)  
-#a2ensite ssl  
-~~~
++ **"merging"** der Konfiguration
+  
+  Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb "*ServerRoot*" und auf die "*.htaccess*"-Dateien in "*DocumentRoot*". Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gewünschte Wirkung zu erzielen.  
+  Wir empfehlen dringend die Webseite  
+  [apache.org - How the sections are merged](https://httpd.apache.org/docs/current/de/sections.html#merging)  
+  intensiv zu Rate zu ziehen.
 
-Wenn Einstellungen der Basiskonfiguration in /etc/apache2/apache2.conf und die Grundeinstellung der Document-Route in /etc/apache2/sites-available/default geändert sind, muss der Apache-Server neu gestartet werden.
++ Der **Eigentümer** von "*DocumentRoot*"
+  
+  ist nach der Installion "*root.root*" und sollte unbedingt geändert werden. Siehe hierzu das Kapitel [Benutzer und Rechte](#benutzer-und-rechte).
 
-Der Apache-Server wird mit folgendem Befehl neu gestartet:
+### HTTPS verwenden
 
-~~~
-# systemctl restart apache2  
-~~~
+Ohne HTTPS geht heute kein Webseitenprojekt an den Start.  
+Wie man ein Zertifikat erlangt beschreibt die Webseite [HTTP-Guide](https://www.https-guide.de/) ausführlich und leicht verständlich.
 
-Nun wird die Port-Adresse /etc/apache2/ports.conf angepasst. In der Grundeinstellung wird auf Port 80 gelauscht, und da mit SSL installiert wird, hat dies auf Port 443 geändert zu werden.
-
-~~~
-Listen 443  
-~~~
-
-/etc/apache2/sites-available/ssl (oder wie immer die ssl-Konfigurationsdatei benannt wurde) wird editiert und Port 80 wird auf 443 geändert.
-
-Darunter werden zwei Zeilen in /etc/apache2/apache2.conf eingefügt:
-
-~~~
-SSLEngine On  
-SSLCertificateFile /etc/apache2/ssl/apache.pem  
-~~~
-
-Die Datei des SSLCertificateFile /etc/apache2/ssl/apache.pem wird editiert und der Ort der Zertifikatsdateien sowie Zertifikatsschlüssel eingegeben. Zum Beispiel:
-
-~~~
-SSLCertificateFile /etc/apache2/ssl/online.test.net.crt  
-SSLCertificateKeyFile /etc/apache2/ssl/online.test.net.key  
-~~~
-
-Um ServerSignature auf off (aus) zu setzen, wird /etc/apache2/apache2.conf editiert, und zwei Zeilen werden eingefügt:
-
-~~~
-ServerSignature Off  
-ServerTokens ProductOnly  
-~~~
-
-Wenn andere Typen von Index-Dateien gewünscht sind, muss folgende Zeile in der Datei /etc/apache2/apache2.conf angepasst werden:
+Wir legen zuerst die nötigen Ordner innerhalb "*DocumentRoot*" an:
 
 ~~~
-DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.shtml  
+# cd /etc/apache2/
+/etc/apache2/# mkdir ssl ssl/certs ssl/privat
 ~~~
 
-Neustart des Apache-Servers
+In diesen legen wir die Certifikatsdatei *server1.org.crt* und den privaten Schlüssel *server1.org.key* ab.
+
+Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.
 
 ~~~
-/etc/init.d/apache2 restart  
+/etc/apache2/# chown -R root.root ssl
+/etc/apache2/# chmod -R o-rwx ssl
+/etc/apache2/# chmod -R g-rwx ssl
+/etc/apache2/# chmod u-w ssl/certs/server1.org.crt
+/etc/apache2/# chmod u-w ssl/private/server1.org.key
 ~~~
 
-Nun soll die Sandbox eines Testservers eingerichtet sein. Dieser Testserver soll
+Der ls-Befehl zur Kontrolle:
 
-**NICHT mit dem Internet verbunden werden. Zu diesem Zweck soll ausschließlich ein PC verwendet werden, der als Server dienen soll!** 
+~~~
+/etc/apache2/# ls -la ssl
+   insgesamt 20
+   drwx------ 5 root root 4096 25. Jan 18:17 .
+   drwxr-xr-x 9 root root 4096 25. Jan 18:43 ..
+   drwx------ 2 root root 4096 25. Jan 18:16 certs
+   drwx------ 2 root root 4096 25. Jan 18:16 private
+   
+/etc/apache2/# ls -l ssl/certs
+   -r-------- 1 root root 1216 25. Jan 15:27 server1.org.crt
+~~~
 
-Quellen:
+#### Integration in Apache2
 
-[http://www.mysql-apache-php.com](http://www.mysql-apache-php.com/) 
+Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei "*/etc/apache2/sites-available/server1.conf*" zu bearbeiten.
 
-[http://httpd.apache.org/docs/1.3/misc/security_tips.html](http://httpd.apache.org/docs/1.3/misc/security_tips.html) 
++ Eine neue VirtualHost-Directive wird zu Beginn eingefügt. Diese leitet eingehende Client-Anfragen von Port 80 mittels "*Redirect*" auf Port 443 (ssl) weiter.
 
-[http://www.debianhelp.co.uk/webserver.htm](http://www.debianhelp.co.uk/webserver.htm) 
++ Die bisherige VirtualHost-Directive wird auf Port 443 umgeschrieben.
+
++ Nach den Standard Host-Anweisungen fügen wir die SSL-Anweisungen ein.
+
++ Für den Fall, dass unser Webprojekt dynamisch generierte Webseiten enthalten soll, werden die beiden letzten FileMatch- und Directory-Direktiven mit der "*SSLOptions*"-Anweisung eingefügt.
+
+Die erweiterte "*server1.conf*" weist dann folgenden Inhalt auf:
+
+~~~
+<VirtualHost *:80>
+    ServerName server1.org
+    ServerAlias www.server1.org
+    Redirect / https://server1.org/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName server1.org
+    ServerAlias www.server1.org
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog ${APACHE_LOG_DIR}/error_server1.log
+    CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
+    
+    SSLEngine on
+    SSLProtocol all -SSLv2 -SSLv3
+    SSLCertificateFile	    /etc/apache2/ssl/certs/server1.org.crt
+    SSLCertificateKeyFile	/etc/apache2/ssl/private/server1.org.key
+    
+    <Directory "/var/www/html">
+    	Order deny,allow
+    	Deny from all
+    	Allow from 192.168.3.10
+    	Allow from 192.168.3.1
+    </Directory>
+
+    <FilesMatch "\.(cgi|shtml|phtml|php)$">
+    	SSLOptions +StdEnvVars
+    </FilesMatch>
+
+    <Directory /usr/lib/cgi-bin>
+    	SSLOptions +StdEnvVars
+    </Directory>
+</VirtualHost>
+~~~
+
+Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf "*ServerRoot*" liegt (das ist die Regel), können wir in "*DocumentRoot*" die Datei "*.htaccess*" um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.
+
+~~~
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+~~~
+
+### Sicherheits Tipps
+  
++ Die Apache Dokumentation enhält eine empfehlenswerte Seite mit diversen Tipps zur Absicherung.  
+  [apache.org - Security Tipps](https://httpd.apache.org/docs/current/de/misc/security_tips.html) (englisch)
+  
++ Darüber hinaus finden sich im Internet zahlreiche Hinweise zum sicheren Betrieb des Apache Webservers.
+  
++ Die regelmäßige Kontrolle der Logdateien in "*/var/log/apache2/*" hilft um Fehler oder Sicherheitslücken zu erkennen.
+  
++ Sollte der Server, anders als in dieser Handbuchseite vorgesehen, mit dem lokalen Netzwerk oder mit dem Internet verbunden werden, ist eine Firewall unerlässlich.
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-05</div>
+## Quellen:
+
+[apache.org - Dokumentation](https://httpd.apache.org/docs/current/de/) (teilweise deutsch)  
+[apache.org - Konfigurationsdateien](https://httpd.apache.org/docs/current/de/configuring.html)  
+[apache.org - SSL Howto](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)  
+[HTTPS Guide - Servercertifikate erstellen und integrieren](https://www.https-guide.de/)
+
+---
+
+<div id="rev">Zuletzt bearbeitet: 2021-01-30</div>

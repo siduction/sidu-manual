@@ -4,7 +4,7 @@ ANFANG   INFOBEREICH FÜR DIE AUTOREN
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC2**
 
-Änderungen 2020-12:
+Änderungen 2020-12 bis 2021-02:
 
 + Inhalt fast vollständig erneuert.
 + Für die Verwendung mit pandoc optimiert.
@@ -19,7 +19,7 @@ Das Akronym **LAMP** bezieht sich auf eine Reihe freier Software, die gemeinsam 
 
 + **L**inux: Betriebssystem  
 + **A**pache: Web-Server  
-+ **M**ariaDb: Datenbank-Server (ab Debian 9 'Stretch', zuvor MySql)  
++ **M**ariaDb: Datenbank-Server (ab Debian 9 'Stretch', zuvor mySQL)  
 + **P**HP, Perl und/oder Python: Skriptsprachen  
 
 Verwendungsmöglichkeiten als Server:
@@ -27,7 +27,10 @@ Verwendungsmöglichkeiten als Server:
 1. **ein lokaler Testserver für Webdesigner ohne Internetverbindung (siehe dieses Kapitel)**  
 2. ein privater (Daten-)Server mit Internetverbindung  
 3. ein privater Webserver mit umfassender Internetverbindung  
-4. ein kommerzieller Webserver (nicht behandelt in diesem Handbuch)  
+4. ein kommerzieller Webserver
+
+Unser Ziel ist es, einen LAMP-Testserver für Entwickler aufsetzen, der über LAN direkt mit dem Arbeitsplatz-PC verbunden ist. Darüber hinaus soll es aus Gründen der Sicherheit für den Server keine Verbindung zu einem lokalen Netzwerk oder gar zum Internet geben.
+Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und Software- Aktualisierungen über eine zweite Netzwerkschnittstelle mit dem Internet verbunden.
 
 <warning>Zur Beachtung:</warning>
 <warning>Der Desktop-PC, mit dem täglich gearbeitet wird, soll nicht als Server dienen. Als Server soll ein eigener PC verwendet werden, der ansonsten keine weiteren Aufgaben erfüllt.</warning>
@@ -72,25 +75,33 @@ Statusinformationen werden eingelesen.... Fertig
 Diese Maßnahme erleichtert uns im Fall einer fehlerhaften Installation die Reparatur ganz wesentlich.  
 Siehe unten [Troubleshooting](#troubleshooting)
 
-Es ist sinnvoll sich bereits vor der Installation einige Daten zu notieren:
+Es ist sinnvoll sich bereits vor der Installation einige Daten zu notieren.
 
 Während der Installation notwendig:
 
-+ Ein **Passwort** für den Datenbankbenutzer **phpmyadmin**.
++ Ein **Passwort** für den Datenbankbenutzer **root** in *phpMyAdmin*.
 
-Später, für die Konfiguration von MariaDb notwendig:
+Später, für die Konfiguration notwendig:
 
-+ Den **Namen der Datenbank** die verwendet werden soll.  
-+ Den **Benutzernamen** des Datenbank Administrators (Login-Name).  
-+ Das **Passwort** für den Datenbank Administrator.
++ **Apache**  
+    + *Server Name*
+    + *Server Alias*
+    + *IP-Adresse* des Servers
+    + *Name* des PC
+    + *IP-Adresse* des PC
+
++ **MariaDB:**  
+    + Den *Namen der Datenbank* die für das Entwicklungsprojekt verwendet werden soll.  
+    + Den *Namen* (Login-Name) eines neuen Datendank-Benutzers für das Entwicklungsprojekt.  
+    + Das *Passwort* für den neuen Datendank-Benutzer.
+    + Den *Namen* (Login-Name) eines neuen Datenbank Administrators.  
+    + Das *Passwort* für den Datenbank Administrator.
 
 ---
 
 ## Server installieren
 
----
-
-### Apache
+### 1. Apache
 
 Die Installation des Webservers Apache erfordert nur die beiden folgenden Befehle. Der install-Befehl holt sich noch die zusätzlichen Pakete *apache2-data* und *apache2-utils* herein. Anschließend fragen wir den Status von Apache ab und testen gleich die Start- und Stop-Anweisungen.
 
@@ -104,7 +115,7 @@ Die folgenden NEUEN Pakete werden installiert:
 Möchten Sie fortfahren? [J/n] j
 [...]
 
-# systemctl status apache2
+# systemctl status apache2.service
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2020-12-06 14:24:44 CET; 4min 8s ago
@@ -114,15 +125,15 @@ Möchten Sie fortfahren? [J/n] j
 Wie zu erkennen ist, wurde Apache sofort aktiviert.
 
 ~~~
-# service apache2 stop
-# systemctl status apache2
+# systemctl stop apache2.service
+# systemctl status apache2.service
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: inactive (dead) since Sun 2020-12-06 14:30:27 CET; 6s ago
 [...]
 
-# service apache2 start
-# systemctl status apache2
+# systemctl start apache2.service
+# systemctl status apache2.service
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2020-12-06 14:30:59 CET; 3s ago
@@ -135,19 +146,18 @@ Der Apache Webserver ist geladen und lässt sich problemlos händeln. Jetzt prü
 w3m http://localhost/index.html
 ~~~
 
-Es zeigt uns die Apache-Begrüßungsseite mit **It works!**
+Die Apache-Begrüßungsseite mit **It works!** erscheint.  
 Wir beenden w3m mit `q` und bestätigen mit `y`.
 
-Die Konfigurationsdatei für Apache befindet sich hier:  
-**/etc/apache2/apache2.conf**  
-und das Web-Verzeichnis ist hier:  
-**/var/www/**
+Als **ServerRoot** wird das Verzeichnis **/etc/apache2/** bezeichnet. Es enthält die Konfiguration.  
+Als **DocumentRoot** wird das Verzeichnis **/var/www/html/** bezeichnet. Es enthält die Dateien der Webseite.
 
-Weitere Informationen und Hinweise zur Absicherung befinden sich auf unserer Handbuchseite [LAMP-Apache](./lamp-apache_de.htm)
+Für weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite  
+[LAMP-Apache](./lamp-apache_de.htm) lesen.
 
 ---
 
-### MariaDb
+### 2. MariaDb
 
 Die Installation von MariaDb gestaltet sich ähnlich einfach in dem die Metapakete "mariadb-server" und "mariadb-client" angefordert werden.
 
@@ -166,7 +176,7 @@ Weitere Informationen zu MariaDb und der Konfiguration liefert unser Handbuch in
 
 ---
 
-### PHP
+### 3. PHP
 
 Zur Installation der Scriptsprache PHP genügt der Befehl:
 
@@ -197,7 +207,7 @@ phpinfo();
 
 mit `F2` speichern, `F10` beendet mcedit.
 
-Danach wird der Terminal-Browser w3c dorthin gelinkt:
+Danach wird der Terminal-Browser w3m dorthin gelinkt:
 
 ~~~
 w3m http://localhost/info.php  
@@ -232,7 +242,7 @@ Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Modu
 
 ---
 
-### phpMyAdmin
+### 4. phpMyAdmin
 
 Um die Datenbank MariaDb zu administrieren benötigen wir *phpmyadmin*:
 
@@ -275,7 +285,7 @@ im zweiten, am Ende der Installation, wählen wir "*ja*" aus.
   │ bevor es benutzt werden kann. Dies kann optional mit Hilfe von dbconfig-common    │
   │ geschehen.                                                                        │
   │ Falls Sie ein erfahrener Datenbankadministrator sind und wissen, dass Sie diese   │
-  │ Konfigurationmanuell durchführen möchten oder, falls Ihre Datenbank bereits       │
+  │ Konfiguration manuell durchführen möchten oder, falls Ihre Datenbank bereits      │
   │ installiert und konfiguriert ist, verwerfen Sie diese Option. Details zur         │
   │ manuellen Installation sind üblicherweise in /usr/share/doc/phpmyadmin zu finden. │
   │ Andernfalls sollte diese Option wahrscheinlich gewählt werden.                    │
@@ -290,25 +300,33 @@ In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer
 
 ### Weitere Software
 
-Wer sich mit der Entwicklung von Webseiten befasst, kann jetzt zum Beispiel ein CMS wie WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch MariaDb z.B. entsprechend unserer Handbuchseite [LAMP-MariaDb](./lamp-sql:de.htm) konfigurieren und eine neue, leere Datenbank anlegen.
+Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.htm) und [LAMP-MariaDb](./lamp-sql_de.htm) für die Konfiguration des Servers und MariaDb berücksichtigen.
 
 ---
 
 ## Troubleshooting
 
-Die hier aufgeführten Beispiele zeigen exemplarisch einige Möglichkeiten der Fehlersuche. Sollte unmittelbar nach der Installation der Aufruf der Dateien *index.html* und *info.php* fehlschlagen, bitte unbedingt zuerst die Gruppenzugehörigkeit des Webseitenverzeichnisses überprüfen und ggf. ändern:
+Die hier aufgeführten Beispiele zeigen exemplarisch einige Möglichkeiten der Fehlersuche.
+
+### Dateirecht in "DocumentRoot"
+
+Sollte unmittelbar nach der Installation der Aufruf der Dateien *index.html* und *info.php* fehlschlagen, bitte unbedingt zuerst die Eigentümer- und Gruppenzugehörigkeit des Webseitenverzeichnisses überprüfen und ggf. ändern:
 
 ~~~
-# ls -l /var/ | grep www
-drwxr-xr-x 3 root root 31 14. Dez 18:30
-
-  dann:
-  
-# chgrp -R www-data /var/www/
-# chmod -R g+w /var/www/
+# ls -la /var/www/html
+drwxr-xr-x 2 www-data www-data  4096 14. Dez 18:56 .
+drwxr-xr-x 3 root     root      4096 14. Dez 18:30 ..
+-rw-r--r-- 1 www-data www-data 10701 14. Dez 19:04 index.html
+-rw-r--r-- 1 root     root        20 14. Dez 19:32 info.php
 ~~~
 
-Nun sollten sich die Seiten aufrufen lassen.
+In diesem Fall wird die Apache Testseite angezeigt, die PHP-Statusseite nicht. Dann hilft ein beherztes
+
+~~~
+# chown -R www-data.www-data /var/www/html
+~~~
+
+Nun sollten sich beide Seiten aufrufen lassen.
 
 ### HTML-Seiten-Ladefehler
 
@@ -317,26 +335,7 @@ Die Webseite **http://localhost/index.html** wird nicht angezeigt und der Browse
 Wir fragen den Status des Apache Webservers ab:
 
 ~~~
-# service apache2 status
-● apache2.service - The Apache HTTP Server
-     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
-     Active: inactive (dead) since Mon 2020-12-14 18:04:51 CET; 2s ago
-[...]
-~~~
-
-Apache wurde nicht gestartet, also versuchen wir es mit:
-
-~~~
-# service apache2 start
-Job for apache2.service failed because the control process exited with error code.
-See "systemctl status apache2.service" and "journalctl -xe" for details.
-~~~
-
-Jetzt erhalten wir eine Fehlermeldung und den Hinweis auf "systemctl status apache2.service".  
-Der etwas kürzere Aufruf "*service apache2 status*" erfüllt den gleichen Zweck:
-
-~~~
-# service apache2 status
+# systemctl status apache2.service
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: failed (Result: exit-code) since Mon 2020-12-14 18:29:23 CET; 13min ago
@@ -349,8 +348,22 @@ Dez 14 18:29:23 lap1 apachectl[4423]: AH00526: Syntax error on line 63 of /etc/a
 ~~~
 
 Wir sehen, dass die Datei *security.conf* in Zeile 63 einen Fehler aufweist.  
-Wir bearbeiten die Datei und versuchen es noch einmal.  
-**Generell ist nach jeder Änderung der Konfiguration ein Restart des Apache und das Leeren des Browsercache notwendig.**
+Wir bearbeiten die Datei und versuchen es noch einmal.
+
+~~~
+# systemctl start apache2.service
+# systemctl status apache2.service
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2020-12-14 18:34:59 CET; 3s ago
+[...]
+~~~
+
+Generell ist nach jeder Änderung der Konfiguration ein Reload oder Restart des Apache notwendig.
+
+#### Apache Log-Dateien prüfen
+
+Ein Blick in die Logdateien unter “*/var/log/apache2/*” hilft um Fehler in der Konfiguration des Netzwerks oder des Apache Servers zu erkennen.
 
 ### PHP
 
@@ -367,12 +380,12 @@ Bitte überprüfen:
   Dann hilft:
   
   ~~~
-  # service apache2 restart
+  # systemctl restart apache2.service
   ~~~
   
 #### phpMyAdmin - Error
 
-Der Aufruf von *http://localhost/phpmyadmin* schlägt mit der Meldung *phpMyAdmin - Error* fehl und die folgenden Informationen werden angezeigt.
+Der Aufruf von *http://localhost/phpmyadmin* schlägt mit der Meldung "*phpMyAdmin - Error*" fehl und die folgenden Informationen werden angezeigt.
 
 ~~~
 Error during session start; please check your PHP and/or webserver log file and  
@@ -383,17 +396,91 @@ session_start(): open(SESSION_FILE, O_RDWR) failed: Permission denied (13)
 session_start(): Failed to read session data: files (path: /var/lib/php/sessions)
 ~~~
 
-Die Berechtigungen für den Ordner */var/lib/php/sessions* ändern:
+Die Berechtigungen für den Ordner */var/lib/php/sessions* prüfen:
 
 ~~~
-# chmod 777 /var/lib/php/sessions
+# ls -l /var/lib/php/
+~~~
+
+Die Ausgabe sollte diese Zeile enthalten:
+
+~~~
+drwx-wx-wt 2 root root 4096 14. Dez 17:32 sessions
+~~~
+
+Zu beachten ist das Sticky-Bit (**t**) und der Eigentümer **root.root**. Bei Abweichungen beheben wir den Fehler.
+
+~~~
+# chmod 1733 /var/lib/php/sessions
+# chown root.root /var/lib/php/sessions
 ~~~
 
 Nun ist der Login zu phpmyadmin möglich.
 
+### Statusaugaben, Log-Dateien
+
+#### Apache
+
+Der Konfigurationsstatus des Apache Webservers wird mit "*apache2ctl -S*" augegeben.  
+Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar nach der Installation.
+
+~~~
+# apache2ctl -S
+  AH00558: apache2: Could not reliably determine the server's
+  fully qualified domain name, using 127.0.1.1. Set the 'ServerName'
+  directive globally to suppress this message
+  VirtualHost configuration:
+  [::1]:80               127.0.0.1 (/etc/apache2/sites-enabled/000-default.conf:1)
+  127.0.0.1:80           127.0.0.1 (/etc/apache2/sites-enabled/000-default.conf:1)
+  ServerRoot: "/etc/apache2"
+  Main DocumentRoot: "/var/www/html"
+  Main ErrorLog: "/var/log/apache2/error.log"
+  Mutex default: dir="/var/run/apache2/" mechanism=default 
+  Mutex mpm-accept: using_defaults
+  Mutex watchdog-callback: using_defaults
+  PidFile: "/var/run/apache2/apache2.pid"
+  Define: DUMP_VHOSTS
+  Define: DUMP_RUN_CFG
+  User: name="www-data" id=33
+  Group: name="www-data" id=33
+~~~
+
+Die Handbuchseite [LAMP-Apache](./lamp-apache_de.htm) enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.  
+Das Verzeichnis */var/log/apache2/* enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.
+
+#### MariaDB
+
+In der Konsole zeigt der Befehl
+
+~~~
+# systemctl status mariadb.service
+~~~
+
+den aktuellen Status von MariaDB und die letzten zehn Logeinträge.  
+Die letzten zwanzig Zeilen des Systemd-Journals zeigt der Befehl
+
+~~~
+# journctl -n 20 -u mariadb.service
+~~~
+
+und
+
+~~~
+# journctl -f -u mariadb.service
+~~~
+
+hält die Verbindung zum Journal offen und zeigt laufend die neuen Einträge.  
+Weitere Informationen liefert die Handbuchseite [LAMP-MariaDB](./lamp-sql_de.htm).
+
+#### PHP
+
+Die Fehlermeldungen von PHP speichert der Apache Server in seinen Log-Dateien unter */var/log/apache2/*. Fehlerhafte PHP-Funktionen erzeugen eine Meldung in der aufgerufenen Webseite.  
+Dieses Verhalten lässt sich in den *php.ini*-Dateien des jeweiligen Interface konfigurieren.  
+Siehe die Handbuchseite [LAMP-PHP](./lamp-php_de.htm).
+
 ### Wenn nichts hilft
 
-Die Installation des LAMP-Stack ist, da meist alles ohne Probleme abläuft, schnell erledigt. Eine Fehlersuche kann jedoch Stunden in Anspruch nehmen.  
+Die Installation des LAMP-Stack ist in weniger als fünfzehn Minuten erledigt. Eine Fehlersuche kann jedoch Stunden in Anspruch nehmen.  
 Deshalb ist es, sofern die zuvor genannten Maßnahmen zu keiner Lösung führen, sinnvoll den LAMP-Stack oder Teile davon zu entfernen und neu zu installieren. Wenn, wie im Kapitel *Vorbereitungen* erwähnt, apt aufgeräumt wurde, hilft der Befehl "*apt purge*" um die zuvor installierten Pakete mit ihren Konfigurationsdateien zu entfernen ohne das irgendwelche anderen Pakete stören.
 
 Hier ein Beispiel mit Apache:
@@ -411,8 +498,8 @@ Die folgenden Pakete werden ENTFERNT:
 0 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.
 ~~~
 
-*Apache2* wurde entfernt und die Pakete *apache2-data* und *apache2-utils* blieben noch erhalten.  
-Jetzt bitte **nicht apt autoremove  verwenden**, denn dann bleiben die Konfigurationsdateien, in denen sehr wahrscheinlich der Fehler liegt, zurück.  
+*Apache2* wird entfernt und die Pakete *apache2-data* und *apache2-utils* blieben noch erhalten.  
+Jetzt bitte **nicht apt autoremove  verwenden**, denn dann bleiben die Konfigurationsdateien, in denen möglicherweise der Fehler liegt, zurück.  
 Wir verwenden den Befehl "*apt purge*".
 
 ~~~
@@ -435,6 +522,8 @@ Für die Absicherung des Servers bitte die Handbuchseiten
 
 bezüglich der Konfiguration beachten.
 
+Danach kann der Server, ausschließlich für System- und Software- Aktualisierungen, temporär über eine zweite Netzwerkschnittstelle mit dem Internet verbunden werden.
+
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-18</div>
+<div id="rev">Zuletzt bearbeitet: 2021-02-02</div>
