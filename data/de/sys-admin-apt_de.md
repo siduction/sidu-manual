@@ -15,6 +15,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Inhalte überarbeitet und teilweise neu gruppiert.
 + Für die Verwendung mit pandoc optimiert.
 
+Änderungen 2021-02:
+
++ "Systemaktualisierung nicht mit Live-Medium" eingefügt.
++ Kleinere Fehlerkorrektur.
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Was bedeutet APT?
@@ -271,7 +276,7 @@ Bitte bedenkt, dass hold nur eine Notfallmaßnahme ist. Man wird sich Probleme e
 
 Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das Installieren älterer Versionen gelingen, es kann aber auch spektakulär fehlschlagen. Mehr Informationen im englischsprachigen Debian-Handbuch unter dem Kapitel Emergency downgrading.
 
-Obowhl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:
+Obwohl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:
 
 Die Quellen von Unstable werden in /etc/apt/sources.list.d/debian.list mit einem Rautezeichen "#" versehen  
 Die Quellen für Testing werden /etc/apt/sources.list.d/debian.list zugefügt und und die weiteren Befehle ausgeführt:  
@@ -281,13 +286,13 @@ apt update
 apt install kmahjongg/testing
 ~~~
 
-Das nun installierte Paket wird nun vor Aktualisierungen geschützt, auf Hold gesetzt:
+Das nun installierte Paket wird vor Aktualisierungen geschützt, auf Hold gesetzt:
 
 ~~~
 apt-mark hold kmahjongg
 ~~~
 
-nun werden die Quellen für Testing mit einem Rautezeichen "#" in /etc/apt/sources.list.d/debian.list versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
+anschließend werden die Quellen für Testing mit einem Rautezeichen "#" in /etc/apt/sources.list.d/debian.list versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
 
 ~~~
 apt update
@@ -305,12 +310,16 @@ apt install kmahjongg / apt full-upgrade
 
 ## Aktualisierung des Systems
 
-Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt Downgrade bzw. "Hold" eines Pakets.
+Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](#holddowngraden-eines-pakets) eines Pakets.
 
 Ein einfaches "apt upgrade" von Debian Sid ist nicht empfohlen.
 
 Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?  
 Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.
+
+### Aktualisierung nicht mit Live-Medium
+
+Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang, erklären auch weshalb nicht in der graphischen Oberfläche aktualisiert werden darf und warum "*apt*" zu verwenden ist.
 
 ### Aktualisierbare Pakete
 
@@ -378,12 +387,9 @@ After this operation, 594kB of additional disk space will be used.
 Möchtest Du fortfahren [J/n]?J 
 ~~~
 
-`J` lädt die zu aktualisierenden bzw. neu zu installierenden Pakete, ohne das installierte System zu verändern.
+**`J`** lädt die zu aktualisierenden bzw. neu zu installierenden Pakete, ohne das installierte System zu verändern.
 
-**Bitte NIEMALS eine Systemaktualisierung in der graphischen Umgebung X durchführen.**  
-Besuche vor einer Systemaktualisierung die siduction-Homepage, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches täglich neue Programmpakete in seine Repositorien aufnimmt.
-
-Nach dem Download der Pakete mittels 'full-upgrade -d' können diese jederzeit entsprechend dem Vorgehen im folgendem Absatz installiert werden.
+Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit entsprechend dem Vorgehen im folgendem Absatz installiert werden.
 
 ---
 
@@ -392,10 +398,12 @@ Nach dem Download der Pakete mittels 'full-upgrade -d' können diese jederzeit e
 <warning>**Warnhinweis:**</warning>
 <warning>Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann große, nicht unterstützbare Probleme mit sich bringen!</warning>
 
+Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.
+
 Zu beachten ist der folgende Ablauf:
 
 1. Aus der Desktopumgebung abmelden
-2. In den Textmodus gehen mit Ctrl+Alt+F2
+2. In den Textmodus gehen mit **`Ctrl`** + **`Alt`** + **`F2`**
 3. Einloggen als root
 
 und dann folgende Befehle ausführen:
@@ -420,7 +428,7 @@ Die genannten Programme sind exzellent für eine Installation von *Debian stable
 
 Paketmanager wie adept, synaptic und kpackage sind - technisch gesprochen - nicht-deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.
 
-Weiterhin ist zu beachten, dass ALLE GUI-Paketmanager in X ausgeführt werden müssen, und Systemaktualisierungen in X (oder selbst ein ohnehin nicht empfohlenes 'apt upgrade') werden früher oder später dazu führen, dass man sein System irreversibel beschädigt hat.
+Weiterhin ist zu beachten, dass ALLE GUI-Paketmanager in X ausgeführt werden müssen. Systemaktualisierungen in X (selbst ein ohnehin nicht empfohlenes 'apt upgrade') werden früher oder später dazu führen, dass man sein System irreversibel beschädigt.
 
 Im Gegensatz dazu führt apt ausschließlich das durch, was angefragt ist. Bei unvollständigen Abhängigkeiten in Sid, sprich: wenn das System bricht (dies kann in Sid bei Strukturänderungen vorkommen), können die Ursachen genau festgestellt und dadurch repariert oder umgangen werden. Das eigene System "bricht" nicht. Falls also eine Systemaktualisierung dem Gefühl nach das halbe System löschen möchte, überlässt apt dem Administrator die Entscheidung, was zu tun ist, und handelt nicht eigenmächtig.
 
@@ -462,7 +470,8 @@ Section: doc
 Maintainer: Josip Rodin <joy-packages@debian.org>
 Installed-Size: 106 kB
 Provides: man-browser
-Depends: libc6 (>= 2.14), libgcc1 (>= 1:3.0), libglib2.0-0 (>= 2.12.0), libgtk2.0-0 (>= 2.8.0), libstdc++6 (>= 5), man-db, xterm | x-terminal-emulator
+Depends: libc6 (>= 2.14), libgcc1 (>= 1:3.0), libglib2.0-0 (>= 2.12.0),
+ libgtk2.0-0 (>= 2.8.0), libstdc++6 (>= 5), man-db, xterm | x-terminal-emulator
 Suggests: gv, man2html, httpd, sensible-browser, evince
 Tag: implemented-in::c, interface::graphical, interface::web, interface::x11,
  role::program, uitoolkit::gtk, use::browsing, use::viewing, web::cgi,
@@ -523,4 +532,4 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-11-30</div>
+<div id="rev">Zuletzt bearbeitet: 2021-02-05</div>
