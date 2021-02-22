@@ -197,7 +197,7 @@ drwxr-xr-x 3 root     root       4096  9. Jan 19:04 ..
 <p>Jetzt haben in “<em>DocumentRoot</em>” nur Mitglieder der Gruppe “<em>developer</em>” Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.</p></li>
 <li><p>Nachteile dieser Einstellungen</p>
 <p>Beim Anlegen neuer Verzeichnisse und Dateien unterhalb “<em>DocumentRoot</em>” ist der Eigentümer der jeweilige “<em>User</em>” und nicht “<em>www-data</em>”. Dadurch kann der Apache-Webserver die Dateien nicht lesen.<br />
-Abhilfe schafft eine “<em>Systemd Path Unit</em>”, die Änderungen unterhalb “<em>DocumentRoot</em>” überwacht und die Eigentümer- und Dateirechte anpasst.</p></li>
+Abhilfe schafft eine “<em>Systemd Path Unit</em>”, die Änderungen unterhalb “<em>DocumentRoot</em>” überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite <a href="./systemd-path_de.htm#systemd.path">Systemd-Path</a>.)</p></li>
 </ol>
 <h3 id="ohne-cms">Ohne CMS</h3>
 <p>Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an “<em>DocumentRoot</em>” entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in “<em>DocumentRoot</em>”.</p>
