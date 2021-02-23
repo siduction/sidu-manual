@@ -77,20 +77,61 @@ An einem Beispiel, das auf der Konfiguration des Apache-Webservers entsprechend 
 
 Zuerst eine graphische Übersicht, die die Abhängigkeiten der *systemd-Units* unseres Beispiels darstellt:
 
-![Path-Unit Beispiel](../../static/images-de/systemd_de/path-unit.png)
+~~~
 
-Der weiß hinterlegte Teil in der Graphik verdeutlicht die Kernfunktion der *.path-Unit*. Sie überwacht die Datei "*/var/www/changed*" und aktiviert bei Änderungen die zugehörige *.service-Unit*. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis "*/var/www/html/*" aus und stellt die Datei "*/var/www/changed*" zurück.  
-Die im grau hinterlegten Bereich gezeigte .service-Unit "*webserver-watch.service*" übernimmt die rekursive Überwachung von *DocumentRoot* des Apache-Webservers.
+  ┌───────────────────────┐
+  │ server1-watch.service │
+  └───┬─────────────┬─────┘
+      │             ▲
+      │      überwacht rekursiv 
+      ▼             ▲
+ schreibt nach      │
+      ▼             │
+      │    ┌────────┴────────────┐
+      │    │  APACHE WEBSERVER   │
+      │    │    DokumentRoot:    │
+      │    │ /var/www/html/…/…/… ├┐
+      │    ├─────────────────────┤│
+      │    │       DATEI:        ││
+      └────┤ /var/www/changed    ││
+           └─┬───────────┬───────┘│
+             │           │        │
+  ╔══════════│═══════════│════════│═╗
+  ║          ▼           │        │ ║
+  ║      überwacht       │        │ ║
+  ║          ▼           │        │ ║
+  ║   ┌──────┴───────┐   │        │ ║
+  ║   │ server1.path │   │        │ ║
+  ║   └──────┬───────┘   │        │ ║
+  ║          ▼           │        │ ║
+  ║      aktiviert       │        │ ║
+  ║          ▼           │        │ ║
+  ║          │           │        │ ║
+  ║          │           │        │ ║
+  ║ ┌────────┴────────┐  │        │ ║
+  ║ │ server1.service │  │        │ ║
+  ║ └────────┬────────┘  │        │ ║
+  ║          ▼           │        │ ║
+  ║      führt aus       │        │ ║
+  ║          ▼           │        │ ║
+  ║          └───────────┴────────┘ ║
+  ║                                 ║
+  ╚═════════════════════════════════╝
+
+~~~
+
+Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der *.path-Unit*. Die *server1.path*-Unit überwacht die Datei "*/var/www/changed*" und aktiviert bei Änderungen die zugehörige *server1.service*-Unit. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis "*/var/www/html/*" aus und stellt die Datei "*/var/www/changed*" zurück.  
+Die außerhalb der Umrandung liegende "*server1-watch.service*"-Unit übernimmt die rekursive Überwachung von *DocumentRoot* des Apache-Webservers.
 
 ### .path-Unit anlegen
 
-Wir legen die Datei *webserver.path* im Verzeichnis */lib/systemd/system/*, die die Datei */var/www/changed* auf Änderungen überwacht, mit folgendem Inhalt an:
+Wir legen die Datei *server1.path* im Verzeichnis */lib/systemd/system/*, die die Datei */var/www/changed* auf Änderungen überwacht, mit folgendem Inhalt an:
 
 ~~~
 [Unit]
-Description=Monitoring "webserver-changed" file!
-BindsTo=webserver-watch.service
-After=webserver-watch.service
+Description=Monitoring "changed" file!
+BindsTo=server1-watch.service
+After=server1-watch.service
 
 [Path]
 PathModified=/var/www/changed
@@ -103,7 +144,7 @@ WantedBy=multi-user.target
 
 Sektion [Unit]:  
 Die Option "*BindsTo=*" stellt die stärkste verfügbare Bindung zweier systemd-Einheiten aneinander dar. Falls eine von ihnen während des Starts oder des Betriebs in einen Fehlerzustand übergeht, wird die andere auch unmittelbar beendet.  
-Zusammen mit der Option "*After=*" wird erreicht, dass die *webserver.path-Unit* erst startet, wenn die *webserver-watch.service-Unit* ihren erfolgreichen Start an systemd zurückmeldet.
+Zusammen mit der Option "*After=*" wird erreicht, dass die *server1.path*-Unit erst startet, nachdem die *server1-watch.service*-Unit ihren erfolgreichen Start an systemd zurückmeldet.
 
 Sektion [Path]:  
 "*PathModifid=*" ist die richtige Wahl. Die Option reagiert auf Änderungen in der Datei */var/www/changed*, selbst wenn die Datei nicht geschlossen wird.  
@@ -111,13 +152,13 @@ Die Option "*PathModifid=*" (oder andere, siehe oben) kann mehrfach angegeben we
 
 ### .service-Unit anlegen
 
-Die *webserver.service-Unit* wird von der *webserver.path-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reichen die Beschreibung der Unit in der Sektion *[Unit]*, und in der Sektion *[Service]* die auszuführenden Befehle, aus.
+Die *server1.service*-Unit wird von der *server1.path*-Unit aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reichen die Beschreibung der Unit in der Sektion *[Unit]*, und in der Sektion *[Service]* die auszuführenden Befehle, aus.
 
-Wir legen die Datei *webserver.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei *server1.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
-Description="Change permissions in webserver folder"
+Description=Change permissions in server1 folder
 
 [Service]
 Type=oneshot
@@ -135,13 +176,13 @@ Zuerst wird die Datei */var/www/changed* auf 0-Bite zurückgesetzt und danach de
 
 #### Zusätzliche .service-Unit anlegen
 
-Da die *.path-Unit* Verzeichnisse nicht rekursiv überwachen kann, benötigen wir für unser Beispiel eine zusätzliche *.service-Unit*. Wir legen die Datei *webserver-watch.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Da die *.path-Unit* Verzeichnisse nicht rekursiv überwachen kann, benötigen wir für unser Beispiel eine zusätzliche *.service-Unit*. Wir legen die Datei *server1-watch.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
-Description=Watching webservers folder.
-Before=webserver.path
-Wants=webserver.path
+Description=Watching server1 folder.
+Before=server1.path
+Wants=server1.path
 
 [Service]
 Type=forking
@@ -157,31 +198,31 @@ Interressant ist, dass systemd intern das inotify-API für *.path-Unit* verwende
 #### Erklärungen
 
 Die Sektion [Unit]:  
-"*Before=*" und "*Wants=*" sind die entsprechenden Korrellationen zu "*BindsTo=*" und "*After=*" aus der *webserver.service-Unit*.
+"*Before=*" und "*Wants=*" sind die entsprechenden Korrellationen zu "*BindsTo=*" und "*After=*" aus der *server1.service-Unit*.
 
 Sektion [Service]:  
 *inotifywait* protokolliert in die Datei */var/www/changed*, die außerhalb von *DocumentRoot* des Apache-Webservers liegt.
 
 ### .path-Unit eingliedern
 
-Auf Grund der Abhängigkeit gliedern wir zuerst die *webserver.path-Unit* und dann die *webserver-watch.service-Unit* in systemd ein. Die *webserver.service-Unit* benötigt und beinhaltet keine [Install]-Sektion. Bei dem Versuch sie einzugliedern erhielten wir eine Fehlermeldung.
+Auf Grund der Abhängigkeit gliedern wir zuerst die *server1.path-Unit* und dann die *server1-watch.service-Unit* in systemd ein. Die *server1.service-Unit* benötigt und beinhaltet keine [Install]-Sektion. Bei dem Versuch sie einzugliedern erhielten wir eine Fehlermeldung.
 
 ~~~
-# systemctl enable webserver.path
-Created symlink /etc/systemd/system/multi-user.target.wants/webserver.path \
-  → /lib/systemd/system/webserver.path.
+# systemctl enable server1.path
+Created symlink /etc/systemd/system/multi-user.target.wants/server1.path \
+  → /lib/systemd/system/server1.path.
   
-# systemctl enable webserver-watch.service
-Created symlink /etc/systemd/system/multi-user.target.wants/webserver-watch.service \
-  → /lib/systemd/system/webserver-watch.service.
+# systemctl enable server1-watch.service
+Created symlink /etc/systemd/system/multi-user.target.wants/server1-watch.service \
+  → /lib/systemd/system/server1-watch.service.
 ~~~
 
 Nun ist das Monitoring auch gleich aktiv, wie uns die Statusausgaben aller drei Units zeigen.
 
 ~~~
-# systemctl status webserver-watch.service
-● webserver-watch.service - Watching webservers folder.
-     Loaded: loaded (/lib/systemd/system/webserver-watch.service; enabled; vendor preset: enabled)
+# systemctl status server1-watch.service
+● server1-watch.service - Watching server1 folder.
+     Loaded: loaded (/lib/systemd/system/server1-watch.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2021-02-21 19:25:20 CET; 1min 49s ago
     Process: 23788 ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/ \
       (code=exited, status=0/SUCCESS)
@@ -189,45 +230,45 @@ Nun ist das Monitoring auch gleich aktiv, wie uns die Statusausgaben aller drei 
       Tasks: 1 (limit: 2322)
      Memory: 216.0K
         CPU: 5ms
-     CGroup: /system.slice/webserver-watch.service
+     CGroup: /system.slice/server1-watch.service
              └─23790 inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/
 
-Feb 21 19:25:20 lap1 systemd[1]: Starting Watching webservers folder....
-Feb 21 19:25:20 lap1 systemd[1]: Started Watching webservers folder..
+Feb 21 19:25:20 lap1 systemd[1]: Starting Watching server1 folder....
+Feb 21 19:25:20 lap1 systemd[1]: Started Watching server1 folder..
 
-# systemctl status webserver.path
-● webserver.path - Monitoring "webserver-changed" file!
-     Loaded: loaded (/lib/systemd/system/webserver.path; enabled; vendor preset: enabled)
+# systemctl status server1.path
+● server1.path - Monitoring "changed" file!
+     Loaded: loaded (/lib/systemd/system/server1.path; enabled; vendor preset: enabled)
      Active: active (waiting) since Sun 2021-02-21 19:25:20 CET; 3min 27s ago
-   Triggers: ● webserver.service
+   Triggers: ● server1.service
 
-Feb 21 19:25:20 lap1 systemd[1]: Started Monitoring "webserver-changed" file!.
+Feb 21 19:25:20 lap1 systemd[1]: Started Monitoring "changed" file!.
 
-# systemctl status webserver.service
-● webserver.service - Change permissions in webservers folder
-     Loaded: loaded (/lib/systemd/system/webserver.service; static)
+# systemctl status server1.service
+● server1.service - Change permissions in server1 folder
+     Loaded: loaded (/lib/systemd/system/server1.service; static)
      Active: inactive (dead)
-TriggeredBy: ● webserver.path
+TriggeredBy: ● server1.path
 ~~~
 
-Der Status "Active: inactive (dead)" der letzten Ausgabe ist der normale Zustand für die Unit *webserver.service*, denn diese Unit ist nur dann aktiv, wenn sie von *webserver.path* angestoßen wurde ihre Befehlskette auszuführen. Danach geht sie wieder in den inaktiven Zustand über.
+Der Status "Active: inactive (dead)" der letzten Ausgabe ist der normale Zustand für die Unit *server1.service*, denn diese Unit ist nur dann aktiv, wenn sie von *server1.path* angestoßen wurde ihre Befehlskette auszuführen. Danach geht sie wieder in den inaktiven Zustand über.
 
-#### webserver.service-Unit manuell ausführen
+#### server1.service-Unit manuell ausführen
 
 Sollte es einmal hilfreich oder nötig sein die Dateirechte in *DocumentRoot* des Apache-Webservers manuell zu ändern, setzen wir einfach diesen Befehl ab:
 
 ~~~
-# systemctl start webserver.service
+# systemctl start server1.service
 ~~~
 
 Eine erneute Statusabfrage generiert zusätzlich einige Protokollzeilen, denen wir den erfolgreichen Durchlauf der Befehlskette entnehmen können.
 
 ~~~
-# systemctl status webserver.service
-● webserver.service - Change permissions in webservers folder
-     Loaded: loaded (/lib/systemd/system/webserver.service; static)
+# systemctl status server1.service
+● server1.service - Change permissions in server1 folder
+     Loaded: loaded (/lib/systemd/system/server1.service; static)
      Active: inactive (dead) since Mon 2021-02-22 17:55:36 CET; 1min 43s ago
-TriggeredBy: ● webserver.path
+TriggeredBy: ● server1.path
     Process: 2822 ExecStartPre=truncate -s 0 /var/www/changed (code=exited, status=0/SUCCESS)
     Process: 2823 ExecStart=chown -R www-data /var/www/html1/ (code=exited, status=0/SUCCESS)
     Process: 2824 ExecStart=chmod -R g+w /var/www/html1/ (code=exited, status=0/SUCCESS)
@@ -235,9 +276,9 @@ TriggeredBy: ● webserver.path
    Main PID: 2825 (code=exited, status=0/SUCCESS)
         CPU: 19ms
 
-Feb 22 17:55:36 lap1 systemd[1]: Starting Change permissions in webservers folder...
-Feb 22 17:55:36 lap1 systemd[1]: webserver.service: Succeeded.
-Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in webservers folder.
+Feb 22 17:55:36 lap1 systemd[1]: Starting Change permissions in server1 folder...
+Feb 22 17:55:36 lap1 systemd[1]: server1.service: Succeeded.
+Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.
 ~~~
 
 ---
