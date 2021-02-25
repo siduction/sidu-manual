@@ -6,9 +6,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderungen 2020-12:
 
-+ 
-+ 
-+ 
++ Für die Verwendung mit pandoc optimiert.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -133,4 +131,4 @@ kernel-remover
 
 ---
 
-<div id="rev">Page last revised 15/01/2012 1445 UTC</div>
+<div id="rev">Seite zuletzt aktualisert 2012-01-15</div>
