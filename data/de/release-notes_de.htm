@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>siduction Release Notes</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; background: yellow; line-height: 1.3em; border: 0.2em solid #CCC; padding: 0.4em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">siduction Release Notes</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 »C-Blues« Point Release</a>
+<ul>
+<li><a href="#dosfstools-ist-die-ursache">Dosfstools ist die Ursache</a></li>
+<li><a href="#die-abhilfe-downgrade">Die Abhilfe: Downgrade</a></li>
+</ul></li>
+<li><a href="#release-notes-für-siduction-2021.1.0-c-blues">Release Notes für siduction 2021.1.0 »C-Blues«</a>
+<ul>
+<li><a href="#was-gibts-neues">Was gibt´s Neues?</a></li>
+<li><a href="#plasma">Plasma</a></li>
+<li><a href="#inet-wifi-daemon">iNet WiFi Daemon</a></li>
+<li><a href="#iwd-installieren">iwd installieren</a></li>
+<li><a href="#warum-gab-es-seit-2018-kein-release">Warum gab es seit 2018 kein Release?</a></li>
+<li><a href="#offizielle-releases-und-isobuilds">Offizielle Releases und Isobuilds</a></li>
+<li><a href="#non-free-und-contrib-pakete">Non-free und contrib Pakete</a></li>
+<li><a href="#non-free-software-entfernen">Non-Free-Software entfernen</a></li>
+<li><a href="#installationshinweise-und-bekannte-probleme">Installationshinweise und bekannte Probleme</a></li>
+</ul></li>
+<li><a href="#credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</a>
+<ul>
+<li><a href="#das-core-team">Das Core Team</a></li>
+<li><a href="#code-ideen-and-unterstützung">Code, Ideen and Unterstützung:</a></li>
+<li><a href="#danke">Danke!</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2021-02:</p>
+<ul>
+<li>Übersetzung aus <a href="https://news.siduction.org/">siduction News</a></li>
+</ul>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<h2 id="siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 »C-Blues« Point Release</h2>
+<p>Um den Fehler zu umgehen, dass der Calamares-Installer im EFI-Mode keine GPT Partitionen erstellen kann, haben wir siduction 2021.1.1 veröffentlicht.<br />
+Für die fachlich interessierten Nutzer unter uns möchte ich den Hintergrund <a href="https://github.com/calamares/calamares/issues/1637">dieses Bug</a> etwas erläutern. Die neue Version 4.2 des <a href="https://github.com/dosfstools/dosfstools">dosfstools</a> verhindert, dass das von Calamares genutzte und im Kern des KDE-Partition-Managers agierende <a href="https://github.com/KDE/kpmcore">kpmcore</a>, GPT Partitionen erstellt.</p>
+<h3 id="dosfstools-ist-die-ursache">Dosfstools ist die Ursache</h3>
+<p>Leere Labels sind in Dosfstools nicht mehr erlaubt, gleichzeitig wurde die Art Labels zurückzusetzen geändert. In dem Spezialfall eine fat32 EFI System Partition zu erstellen, ist noch kein Label vorhanden der zurückgesetzt werden kann, weil die Partition zu diesem Zeitpunkt noch nicht existiert. Aus diesem Grund scheitert die Installation. Wird Calamares eine bereits zuvor erstellte Partition zugewiesen, funktioniert alles wie erwartet.</p>
+<h3 id="die-abhilfe-downgrade">Die Abhilfe: Downgrade</h3>
+<p>Bis zur Bereitstellung einer fehlerbereinigten Version von dosfstools in den Repositorien wird wohl noch einige Zeit vergehen, deshalb haben wir uns dazu entschlossen dosfstools auf die Version 4.1.2 zu downgraden. Das Paket trägt jetzt die Bezeichnung <em>dosfstools 4.2-1.1~really4.1-2</em> .<br />
+Das Release wird nur bei einer Neuinstallation mit Calamares benötigt. Deshalb erhielt noX auch kein Update, denn es hat nur den cli-installer und kein Calamares. Benutzer, die siduction bereits installiert haben, betrifft dieses Release nicht.</p>
+<hr />
+<h2 id="release-notes-für-siduction-2021.1.0-c-blues">Release Notes für siduction 2021.1.0 »C-Blues«</h2>
+<p>Das siduction Team ist stolz darauf ihnen siduction 2021.1.0 zu präsentieren. Nach einer langen Pause von fast 3 Jahren freuen wir uns mit einem offiziellen Release wieder zurück zu sein. Wir nennen es »C-Blues«, und man kann leicht erraten wofür das »C« in dieser turbulenten Zeit steht.</p>
+<h3 id="was-gibts-neues">Was gibt´s Neues?</h3>
+<p>Wir bieten mit siduction 2021.1.0 die Desktop-Varianten<br />
+KDE Plasma 5.20.5,<br />
+LXQt 0.16.0-1,<br />
+Cinnamon 4.8.6,<br />
+Xfce 4.16,<br />
+Lxde 10+nmu1,<br />
+Xorg und noX,<br />
+GNOME und MATE zur Zeit leider nicht. Sie kommen eventuell später. Selbsverständlich sind sie aus den Repositorien installierbar.</p>
+<p>Die Images des Release sind ein Snapshot vom 14.02.2021 von Debian unstable (auch als Sid bekannt), die wir um einige nützliche Pakete und Scripte, den auf Calamares basierenden Installer und einen speziell angepassten Linux Kernel 5.10.15 mit Systemd 247.3 erweiterten.</p>
+<h3 id="plasma">Plasma</h3>
+<p>Plasma, das im vergangenen Jahr eine erstaunliche Entwicklung durchgemacht hat, ist unser Favorit. Wir haben es mit den aktuellsten Neuerungen, die in das kommende Plasma 5.21 einfließen werden, ausgestattet. Zum Beispiel der neue <em>system monitor</em> als Nachfolger von <em>ksysguard</em>, die Konferenz Teilnahmesoftware <em>Kongress</em> und schließlich, nach Jahren der Entwiklung, <em>kio-fuse</em>.<br />
+Letzteres ermöglicht Remote-Verzeichnisse in die root-Hierarchie des lokalen Dateisystems einzuhängen, was die Einsatzmöglichkeiten von KDE abdeckt um Zugriffe auf Ressourcen wie SSH, SAMBA/Windows, FTP, TAR/GZip/BZip2, WebDav und andere zu POSIX kompatieble Anwendungen wie Firefox, OpenOffice, GNOME Programme, Shell Werkzeuge und weitere zu erhalten. Ein sehr nützliches Werkzeug.</p>
+<h3 id="inet-wifi-daemon">iNet WiFi Daemon</h3>
+<p>Die Varianten Xorg und noX kommen mit einem neuen Programm um sich mit WiFi-Hardware zu verbinden. Intels <a href="https://wiki.debian.org/NetworkManager/iwd">iNet wireless daemon</a> (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller; iwd ist der Nachfolger. Weiterführende Informationen bietet das <a href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a>.</p>
+<p>Wer in Xorg und noX weiterhin <em>wpa_supplicant</em> anstatt <em>iwd</em> nutzen möchte, befolgt die folgende Anleitung:</p>
+<ul>
+<li>Den iwd.service stoppen und maskieren.</li>
+<li>Den NetworkManager.service stoppen.</li>
+<li>Die Datei /etc/NetworkManger/conf.d/nm.conf umbenennen.</li>
+<li>Demaskieren und starten des wpa_supplicant.service.</li>
+<li>Den NetworkManager.service wieder starten.</li>
+</ul>
+<p>Jetzt wird wpa_supplicant für die Verbindung mit der WiFi-Hardware benutzt.</p>
+<h3 id="iwd-installieren">iwd installieren</h3>
+<p>Wer möchte, kann iwd auch in den anderen Varianten nutzen, entweder eigenständig, oder in Verbindung mit dem Network-Manager.</p>
+<p>Einfach die folgenden Befehle als root im Terminal ausführen um iwd zu nutzen:</p>
+<pre><code># apt update
+# apt install iwd
+# systemctl stop wpa_supplicant.service
+# systemctl mask wpa_supplicant.service
+# systemctl stop NetworkManager.service
+# touch /etc/NetworkManager/conf.d/nm.conf
+# echo -e &quot;[device]\nwifi.backend=iwd&quot; &gt; /etc/NetworkManager/conf.d/nm.conf
+# touch /etc/iwd/main.conf
+# echo -e &quot;[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd&quot; &gt; /etc/iwd/main.conf
+# systemctl enable -now iwd.service
+# systemctl start NetworkManager.service</code></pre>
+<p>Jetzt ist man in der Lage im Terminal mit dem Befehl <strong><code>iwctl</code></strong> eine interaktive Schell zu starten. Die Eingabe von “help” gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man <strong><code>nmtui</code></strong> oder <strong><code>nmcli</code></strong> im Terminal bzw. den Network-Manager in der graphischen Oberfläche benutzen.</p>
+<h3 id="warum-gab-es-seit-2018-kein-release">Warum gab es seit 2018 kein Release?</h3>
+<p>Als die Pandemie uns erreichte, waren wir in der frühen Entwicklungsphase für ein neues Release. Die Änderungen an der Infrastruktur waren größten Teils erledigt. Kurz danach, im April 2020, verschwand Alf (agaida), unser Hauptentwickler, von der Erdoberfläche und wurde seither nicht gesehen. Wir haben keine Ahnung was passiert sein könnte, denn alle Anfragen und Kontaktversuche zu ihm blieben unbeantwortet. Hallo Alf, wenn du dies liest, bitte melde dich. Wir vermissen dich.</p>
+<p>Es ist traurig, das agaida für uns verschollen blieb. Später im Jahr setzte sich die Meinung durch, dass es Zeit für ein neues Release ohne ihn sei, aber basierend auf der bereits zuvor von ihm geleisteten Arbeit. Nun, wir schüttelten unseren Corona blues ab und - trala - hier ist es, brandneu, glänzend und noch heiß, bereit zum Download auf den Servern.</p>
+<h3 id="offizielle-releases-und-isobuilds">Offizielle Releases und Isobuilds</h3>
+<p>Zwischen den offiziellen Releases erstellten wir von Zeit zu Zeit neue Images um die Nachfrage nach aktueller Software für neue Installationen zu befriedigen. Diese Images auf isobuilds sind inoffiziell, wurden und werden weiterhin erstellt, und dienen vor allem als erweiterte Testplattform für Booten und Installation auf verschiedenster Hardware. So weit keine Probleme auftreten, ist es uns möglich etwa monatlich aktuelle Releases von GNOME und MATE neben den anderen zu präsentieren.</p>
+<h3 id="non-free-und-contrib-pakete">Non-free und contrib Pakete</h3>
+<p>Die folgenden non-free und contrib Pakete werden automatisch installiert:</p>
+<h4 id="non-free">Non-Free</h4>
+<ul>
+<li>amd64-microcode - Processor microcode firmware for AMD CPUs<br />
+</li>
+<li>firmware-amd-graphics - Binary firmware for AMD/ATI graphics chips<br />
+</li>
+<li>firmware-atheros - Binary firmware for Atheros wireless cards<br />
+</li>
+<li>firmware-bnx2 - Binary firmware for Broadcom NetXtremeII<br />
+</li>
+<li>firmware-bnx2x - Binary firmware for Broadcom NetXtreme II 10Gb<br />
+</li>
+<li>firmware-brcm80211 - Binary firmware for Broadcom 802.11 wireless card<br />
+</li>
+<li>firmware-crystalhd - Crystal HD Video Decoder (firmware)<br />
+</li>
+<li>firmware-intelwimax - Binary firmware for Intel WiMAX Connection<br />
+</li>
+<li>firmware-iwlwifi - Binary firmware for Intel Wireless cards<br />
+</li>
+<li>firmware-libertas - Binary firmware for Marvell Libertas 8xxx wireless car<br />
+</li>
+<li>firmware-linux-nonfree - Binary firmware for various drivers in the Linux kernel<br />
+</li>
+<li>firmware-misc-nonfree - Binary firmware for various drivers in the Linux kernel<br />
+</li>
+<li>firmware-myricom - Binary firmware for Myri-10G Ethernet adapters<br />
+</li>
+<li>firmware-netxen - Binary firmware for QLogic Intelligent Ethernet (3000)<br />
+</li>
+<li>firmware-qlogic - Binary firmware for QLogic HBAs<br />
+</li>
+<li>firmware-realtek - Binary firmware for Realtek wired/wifi/BT adapters<br />
+</li>
+<li>firmware-ti-connectivity - Binary firmware for TI Connectivity wireless network<br />
+</li>
+<li>firmware-zd1211 - binary firmware for the zd1211rw wireless driver<br />
+</li>
+<li>intel-microcode - Processor microcode firmware for Intel CPUs</li>
+</ul>
+<h4 id="contrib">Contrib</h4>
+<ul>
+<li>b43-fwcutter - utility for extracting Broadcom 43xx firmware<br />
+</li>
+<li>firmware-b43-installer - firmware installer for the b43 driver<br />
+</li>
+<li>firmware-b43legacy-installer - firmware installer for the b43legacy driver<br />
+</li>
+<li>iucode-tool - Intel processor microcode</li>
+</ul>
+<h3 id="non-free-software-entfernen">Non-Free-Software entfernen</h3>
+<p>Zur Zeit bietet der Installer keine Möglichkeit Pakete, die nicht mit den Anforderungen der DFSG (Debian Free Software Guidelines) übereinstimmen, von der Installation auszuschließen. Das bedeutet, dass non-free Pakete wie unfreie Firmware, standardmäßig mit installiert werden. Der Befehl <strong><code>vrms</code></strong> gibt eine Liste mit diesen Paketen aus. So kann man unerwünschte Pakete manuell entfernen. Alternativ benutzt man den Befehl <strong><code>apt purge $(vrms -s)</code></strong> oder unser Script <strong><code>remove-nonfree</code></strong> nach der Installation.</p>
+<h3 id="installationshinweise-und-bekannte-probleme">Installationshinweise und bekannte Probleme</h3>
+<ul>
+<li>Möchte man eine bereits existierende /home- (oder andere Daten-) Partition weiter nutzen, sollte man dies nach der Installation und nicht mit dem Calamares Installer tun. Hinweise hierzu bitte in der Handbuchseite <a href="https://manual.siduction.org/home-move_de.htm">Das Verzeichnis /home verschieben</a> nachlesen.</li>
+<li>Der Calamares-Installer hat einen <a href="https://github.com/calamares/calamares/issues/1637">bug</a>, der die Erstellung von GPT Partitionen verhindert. In diesem Fall bitte vor der Installation die Partitionen manuell erstellen oder den <strong><code>cli-installer</code></strong> verwenden.</li>
+<li>Verschlüsselungs-Setup mit LUKS oder ähnlichem unterstützt das Installer Framework zur Zeit nicht. Das Verschlüsselungs-Setup sollte besser im Voraus erstellt und der <strong><code>cli-installer</code></strong> im Terminal benutzt werden.</li>
+<li>Mit einigen Intel GPUs in der Hardware kann das System kurz nach dem Boot einfrieren. Um dieses Verhalten zu umgehen, ist es nötig im Bootmenü an die Kernelzeile den Parameter <strong><code>intel_iommu=igfx_off</code></strong> anzuhängen.</li>
+</ul>
+<h2 id="credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</h2>
+<h3 id="das-core-team">Das Core Team</h3>
+<p>Alf Gaida (agaida)<br />
+Axel Beu (ab)<br />
+Torsten Wohlfarth (towo)<br />
+Hendrik Lehmbruch (hendrikL)<br />
+Ferdinand Thommes (devil)</p>
+<h3 id="code-ideen-and-unterstützung">Code, Ideen and Unterstützung:</h3>
+<p>der_bud<br />
+Markus Meyer (coruja)<br />
+Axel Konrad (akli) für seine Arbeit bei der Erneuerung des Handbuches</p>
+<h3 id="danke">Danke!</h3>
+<p>Wir möchten allen, die zu siduction beigetragen haben und weiter beitragen, danken. Es ist eure Leistung und euer Verdienst. Natürlich gilt unser Dank ebenfalls der großartigen Debian Gemeinschaft, der Basis von siduction.</p>
+<p>Und nun viel Spaß!</p>
+<p>Im Namen des siduction Team:</p>
+<p><strong>Ferdinand Thommes</strong></p>
+<hr />
+<div id="rev">
+Zuletzt bearbeitet: 2021-02-25
+</div>
+</body>
+</html>
