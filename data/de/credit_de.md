@@ -9,6 +9,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Inhalte aktualisiert.
 + Für die Verwendung mit pandoc optimiert.
 
+Änderung 26-02-2021
++ Inhalt aktualisiert
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
@@ -27,65 +30,33 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 ### Core Team:
 
-+ Alf Gaida (agaida) 
-
-+ Angelescu Ovidiu (convbsd) 
++ Alf Gaida (agaida)
 
 + Axel Beu (ab) 
 
 + Ferdinand Thommes (devil) 
 
-+ J. Theede (musca) 
++ Hendrik Lehmbruch (hendrikL)
 
 + Torsten Wohlfarth (towo)
 
 ---
 
-### Maintainer der siduction Desktop Environments:
-
-+ **Cinnamon** : J. Theede (musca) 
-
-+ **Mate** : J. Theede (musca) 
-
-+ **Gnome** : Angelescu Ovidiu (convbsd) 
-
-+ **KDE** : Ferdinand Thommes (devil) 
-
-+ **LXDE** : Alf Gaida (agaida) 
-
-+ **LXQt** : Alf Gaida (agaida) 
-
-+ **noX** : Alf Gaida (agaida) 
-
-+ **XFCE** : Torsten Wohlfarth (towo) 
-
-+ **Xorg** : agaida/convbsd 
-
----
-
 ### Art Team:
 
-+ Bob
++ hendrikL
 
-We **need** more contributors for siduction release art!
+We **need** contributors for siduction release art!
 
 ---
 
 ### Code, Ideen, Unterstützung, Handbuch:
 
-+ ayla 
++ der_bud
 
-+ bluelupo 
-
-+ der_bud 
-
-+ J. Hamatoma (hama) 
++ coruja
 
 + A. Konrad (akli)
-
-+ Markus Schimpf (arno911) 
-
-+ piper
 
 ---
 
