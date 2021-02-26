@@ -44,6 +44,12 @@ Diese Information ist auch überaus wichtig, sollte man Probleme mit der Grafik 
 
 Propritäre Treiber gibt es faktisch nur noch für nVidia Grafikkarten. AMD hat zwar auch einen propritären Treiber namens amdgpu-pro, dieser unterstützt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Außerdem ist dieser Treiber eher für professionelle Karten denn für Desktop Karten konzipiert.
 
+Der propritäre Treiber von nvidia ist mit einem einfachen
+~~~
+apt install nvidia-driver
+~~~
+zu installieren. Voraussetzung hierfür ist contrib und nonfree in den sourcen.
+
 Um vom proprietären Treiber von Nvidia auf nouveau zu wechseln, siehe den [Eintrag im siduction Wiki.](http://wiki.siduction.de/index.php?title=Wie_entferne_ich_propriet%C3%A4re_nVidia-Treiber%3F)
 
 Mehr Informationen zu [Intel](http://www.x.org/wiki/IntelGraphicsDriver)    [ATI/AMD](http://www.x.org/wiki/radeon)   [nouveau](http://nouveau.freedesktop.org/wiki/FeatureMatrix)  [X.Org](http://xorg.freedesktop.org/).
