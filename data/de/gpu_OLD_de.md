@@ -76,9 +76,9 @@ nVidia teilt seine Grafikkarten-Treiber in 7 Generationen auf:
 5. GeForce 8000 and 9000 series GPUs
 6. GeForce 400 und 500 series GPUs (Fermi GF1xx)
 7. Geforce 600, 700, 800 (Kepler GK1xx GK2xx, Maxwell GM1xx GM2xx, );  
-   Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx  (Turing TU1xx)
+   Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx  (Turing TU1xx); Geforce 30xx (Ampere GA1xx)
 
-Karten der Generationen 1 - 4 werden seitens nVidia nicht mehr unterstützt, es gibt hierfür nur alte Treiber-Versionen, die weder mit aktuellen Kerneln, noch mit aktuellen Versionen des Xorg-Servers funktionieren. Für eine komplette und aktuelle Liste unterstützter Grafikchips konsultiere bitte "Supported Products List" auf der [Downloadseite für NVIDIA-Linux Grafiktreiber](http://www.nvidia.com/object/unix.html).  
+Karten der Generationen 1 - 5 werden seitens nVidia nicht mehr unterstützt, es gibt hierfür nur alte Treiber-Versionen, die weder mit aktuellen Kerneln, noch mit aktuellen Versionen des Xorg-Servers funktionieren. Für eine komplette und aktuelle Liste unterstützter Grafikchips konsultiere bitte "Supported Products List" auf der [Downloadseite für NVIDIA-Linux Grafiktreiber](http://www.nvidia.com/object/unix.html).  
 
 Debian stellt folgende Versionen der binären Treiber zur Verfügung:
 
@@ -105,6 +105,8 @@ Wenn das fehlerfrei durchgelaufen ist noch ein
 
     mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection' > /etc/X11/xorg.conf.d/20-nvidia.conf  
 
-ausführen, um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.  
+ausführen, um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.
+
+Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr supportet werden, ist damit zu rechnen, dass selbige mit einem neuen Kernel oder neuem Xorg nicht mehr funktionieren.
 
 Problematisch sind Notebooks mit Hybridgrafik Intel/nVidia, sogenannte Optimus Hardware. Hier wurde früher auf [Bumblebee](https://wiki.debian.org/Bumblebee) verwiesen, diese Lösung ist aber alles Andere, als optimal. nVidia selbst empfielt hingegen diese Setups per [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/) zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es geht, zu vermeiden. Tipps zur Einrichtung für Optimus Hardware können wir hier nicht geben.
