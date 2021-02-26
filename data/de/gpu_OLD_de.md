@@ -33,8 +33,10 @@ Anmerkung: xorg.conf wird für Open-Source-Treiber in der Regel nicht mehr benö
 
 Welche Grafikhardware verbaut ist erfährt man relativ einfach
 
-    inxi -G
-    lspci | egrep -i "vga|3d|display"
+~~~
+inxi -G
+lspci | egrep -i "vga|3d|display"
+~~~
 
 Diese Information ist auch überaus wichtig, sollte man Probleme mit der Grafik haben und Hilfe im Forum oder dem IRC suchen.
 
