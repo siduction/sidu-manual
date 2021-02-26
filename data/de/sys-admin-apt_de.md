@@ -2,9 +2,9 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
-Änderungen 2020-06:
+Änderungen 2020-6:
 
 + "apt und apt-get" eingefügt.
 + Korrektur und Aktualisierung aller Links
@@ -19,6 +19,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + "Systemaktualisierung nicht mit Live-Medium" eingefügt.
 + Kleinere Fehlerkorrektur.
+
+Änderungen 2021-2
+
++ Review (devil)
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -68,9 +72,9 @@ extra.list
 fixes.list
 ~~~
 
-Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann ("mirror switching"), und auch das Ergänzen oder Austauschen von Quell-Listen ist so einfacher zu gestalten.
+Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann ("mirror switching"), und auch das Ergänzen oder Austauschen von Quellen-Listen ist so einfacher zu gestalten.
 
-Eigene Quell-Listen-Dateien können mit der Benennung /etc/apt/sources.list.d/*.list hinzugefügt werden. Auf einem siduction  könnte /etc/apt/sources.list.d/extra.list zum Beispiel so aussehen:
+Eigene Quellen-Listen-Dateien können mit der Benennung /etc/apt/sources.list.d/*.list hinzugefügt werden. Auf einem siduction  könnte /etc/apt/sources.list.d/extra.list zum Beispiel so aussehen:
 
 ~~~
 This is the default mirror, choosen at first boot.
@@ -206,7 +210,7 @@ Trigger für libc-bin (2.28-8) werden verarbeitet ...
  
 ### Pakete entfernen
 
-Der Befehl **apt remove <Paketname>** entfernt ein Paket. Abhängigkeiten werden nicht mit vom System entfernt:
+Der Befehl **apt remove <Paketname>** entfernt ein Paket. Abhängigkeiten werden dabei nicht entfernt:
 
 ~~~
 root@siduction# apt remove gaim
@@ -226,7 +230,7 @@ Entfernen von funtools (1.4.7-4) ...
 Trigger für man-db (2.8.5-2) werden verarbeitet ...
 ~~~
 
-In dem letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie können bei einer späteren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf benötigt:
+Im letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie können bei einer späteren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf benötigt:
 
 ~~~
 apt purge funtools
@@ -312,14 +316,16 @@ apt install kmahjongg / apt full-upgrade
 
 Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](#holddowngraden-eines-pakets) eines Pakets.
 
-Ein einfaches "apt upgrade" von Debian Sid ist nicht empfohlen.
+Ein einfaches "apt upgrade" von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein **apt upgrade** von der Situation nichtr betroffene Pakete aktualieren.
 
 Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?  
-Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.
+Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals täglich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden. 
+
+Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.
 
 ### Aktualisierung nicht mit Live-Medium
 
-Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang, erklären auch weshalb nicht in der graphischen Oberfläche aktualisiert werden darf und warum "*apt*" zu verwenden ist.
+Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum "*apt*" verwendet werden sollte.
 
 ### Aktualisierbare Pakete
 
@@ -331,6 +337,11 @@ libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
 passwd/unstable upgradeable from 1:4.0.12-5 to 1:4.0.12-6
 teclasat/unstable upgradeable from 0.7m02-1 to 0.7n01-1
 libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3.........
+~~~
+
+Das gleiche erreicht man mit: 
+~~~
+apt list --upgradable
 ~~~
 
 Die Aktualisierung eines einzelnes Pakets (hier z. B. debtags-1.6.6.0) kann unter Berücksichtigung der Abhängigkeiten vorgenommen werden mit:
@@ -396,7 +407,7 @@ Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit
 ### full-upgrade ausführen
 
 <warning>**Warnhinweis:**</warning>
-<warning>Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann große, nicht unterstützbare Probleme mit sich bringen!</warning>
+<warning>Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Probleme führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!</warning>
 
 Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.
 
@@ -416,7 +427,7 @@ apt clean
 init 5 && exit
 ~~~
 
-Bitte NIEMALS eine Systemaktualisierung mit einem Programm wie synaptic, adept oder kpackage durchführen!
+Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpackage absehen!
 
 ---
 
@@ -497,7 +508,7 @@ Auflistung... Fertig
 gman/unstable,now 0.9.3-5.3 amd64  [installiert]
 ~~~
 
-Der Befehl **aptitude** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind.
+Der Befehl **aptitude** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo  von Debian Unstable oft "zu schlau".
 
 ![aptitude](../../static/images-de/apt/aptitude.png)
 
@@ -532,4 +543,4 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2021-02-05</div>
+<div id="rev">Zuletzt bearbeitet: 2021-02-26</div>
