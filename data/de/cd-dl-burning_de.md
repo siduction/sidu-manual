@@ -15,6 +15,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt geringfügig überarbeitet.
 
+Änderung 26.02.2021
+
++ mirror Süpdamerika (entfernt) scheint nicht mehr zu funktionieren, bzw nicht mehr zu existieren!
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Die siduction ISO herunterladen
@@ -44,13 +48,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 + **Georgia Tech**  
     http://www.gtlib.gatech.edu/pub/siduction/iso  
     ftp://ftp.gtlib.gatech.edu/pub/siduction/iso  
-    rsync://rsync.gtlib.gatech.edu/siduction/iso  
-
-### Südamerika
-
-+ **Universidade Estadual de Campinas (unicamp), São Paulo, Brasilien**  
-    http://www.las.ic.unicamp.br/pub/siduction/iso/  
-    ftp://www.las.ic.unicamp.br/pub/siduction/iso/  
+    rsync://rsync.gtlib.gatech.edu/siduction/iso 
 
 -----
 
