@@ -2,18 +2,21 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02:
 
 + Neu "systemd-timer Unit"
 + Für die Verwendung mit pandoc optimiert.
 
+Änderungen 2021-02 
++ Review
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-## systemd der System- und Dienste-Manager
+## Systemd, der System- und Dienste-Manager
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.timer**, mit der zeitgesteuert Aktionen ausgelöst werden können.
@@ -88,7 +91,7 @@ Type=oneshot
 ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/<user> /mnt/sdb5/backup/home/
 ~~~
 
-Den Sting \<user\> bitte durch den eigenen User ersetzen.
+Den String \<user\> bitte durch den eigenen User ersetzen.
 
 ### .timer-Unit eingliedern
 
@@ -139,4 +142,4 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-16</div>
+<div id="rev">Seite zuletzt aktualisert 2021-02-27</div>
