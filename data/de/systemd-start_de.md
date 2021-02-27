@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02:
 
@@ -10,6 +10,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Umorganisation in "systemd-start" mit Link auf alle weiteren, im Handbuch aufgeführten, Unit-Typen.
 + Korrektur und Aktualisierung aller Links
 + Für die Verwendung mit pandoc optimiert.
++ Review 
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -39,17 +40,17 @@ Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateie
 
 ### Units
 
-Die folgenden Unit-Typen sind verfügbar und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
+Die folgenden Unit-Typen sind verfügbar und, sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
 
 1. **Dienste-Units** ([systemd.service](./systemd-service_de.htm)), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
 
 2. **Socket-Units** (systemd.socket), die lokale IPC- oder Netzwerk-Sockets in dem System kapseln, nützlich für Socket-basierte Aktivierung.
 
-3. **Ziel-Units** ([systemd.target](./systemd-target_de.htm)) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
+3. **Target-Units** ([systemd.target](./systemd-target_de.htm)) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
 
-4. **Geräte-Units** (systemd.device) legen Kernel-Geräte in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.
+4. **Geräte-Units** (systemd.device) legen Kernel-Geräte (alle Block- und Netzwerkgeräte) in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.
 
-5. **Einhänge-Units** ([systemd.mount](./systemd-mount_de.htm)) steuern Einhängepunkte in dem Dateisystem.
+5. **Mount-Units** ([systemd.mount](./systemd-mount_de.htm)) steuern Einhängepunkte im Dateisystem.
 
 6. **Automount-Units** ([systemd.automount](./systemd-automount_de.htm)) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
 
@@ -59,9 +60,9 @@ Die folgenden Unit-Typen sind verfügbar und sofern verlinkt, führt der Link zu
 
 9. **Pfad-Units** ([systemd.path](./systemd-path_de.htm)) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
 
-10. **Scheiben-Units** (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.
+10. **Slice-Units** (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.
 
-11. **Bereichs-Units** (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.
+11. **Scope-Units** (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.
 
 ### systemd im Dateisystem
 
@@ -71,7 +72,7 @@ Das Verzeichnis **/run/systemd/system/** beinhaltet zur Laufzeit erstellte Unit-
 
 ### Weitere Funktionen von systemd
 
-Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html)  als Ersatz für das nicht mehr weiter gepflegte  *ConsoleKit* . Damit steuert systemd Sitzungen und Powermanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html)  und viele weitere. Ein Blick in die Linkliste auf   [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/)  ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu systemd.
+Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html)  als Ersatz für das nicht mehr weiter gepflegte  *ConsoleKit* . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html)  und viele weitere. Ein Blick in die Linkliste auf   [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/)  ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu systemd.
 
 ---
 
@@ -92,6 +93,10 @@ Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konf
  
 + systemctl enable [NAME] - gliedert eine Unit in systemd ein.
 + systemctl disable [NAME] - entfernt eine Unit aus systemd.
+
+Oft ist es nötig, "systemctl start" und "systemctl enable" für eine Unit durchzuführen, um sie sowohl sofort als auch nach einem Reboot verfügbar zu machen. Beide Optionen vereint der Befehl:
+
++ systemctl enable --now [NAME]
 
 Nachfolgend zwei Befehle deren Funktion unsere Handbuchseite [Systemd-Target](./systemd-target_de.htm) beschreibt.
 
@@ -144,4 +149,4 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-18</div>
+<div id="rev">Seite zuletzt aktualisert 2021-02-27</div>
