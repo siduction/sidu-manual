@@ -64,7 +64,6 @@ Darüber hinaus empfiehlt sich auch eine eigene Datenpartition. Die Vorteile fü
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
 [Gparted](part-gparted_de.md), ein Programm für die graphische Oberfläche
-[KDE Partition Manager] ein weiteres Programm für die graphische Oberfläche
 [gdisk](part-gdisk_de.md), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
 [cfdisk](part-cfdisk_de.md), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
 
