@@ -78,7 +78,7 @@ Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne ers
 
 ## Minimale Systemanforderungen
 
-für: KDE-Plasma, Gnome, XFCE, LXQt, Cinnamon, Xorg und NoX
+für: KDE-Plasma, Gnome, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 
 ### Prozessoranforderungen: 64Bit CPU
 
@@ -96,6 +96,7 @@ für: KDE-Plasma, Gnome, XFCE, LXQt, Cinnamon, Xorg und NoX
     Cinnamon:   ≥ 4 GByte RAM
     XFCE:       ≥ 4 GByte RAM
     LXQT:       ≥ 512 MByte RAM
+    Lxde        ≥ 512 MByte RAM
     Xorg:       ≥ 512 MByte RAM
     NoX:        ≥ 256 MByte RAM
 
