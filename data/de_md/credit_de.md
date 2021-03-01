@@ -60,7 +60,7 @@ We **need** contributors for siduction release art!
 
 + Markus Meyer (coruja)
 
-+ A. Konrad (akli) (for his work on getting the manual back in shape)
++ A.Konrad (akli) (for his work on getting the manual back in shape)
 
 ---
 
