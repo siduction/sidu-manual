@@ -23,6 +23,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + Hinweis zum gnome-iso entfernt
 + kurzer Hinweis auf iwd in xorg und nox eingefügt
++ lxde hinzugefügt
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -57,11 +58,17 @@ Die Varianten sind:
      - Der Fußabdruck ist etwas schmaler als bei XFCE
      - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-5.  **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
+5.  **LXde mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
+     - umfasst eine Desktopumgebung mit einer Auswahl an gtk-Applikationen.  
+     - Der Fußabdruck ist schmaler als bei XFCE
+     - geeignet für ältere Hardware
+     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+
+6.  **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
       - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.  
       - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen
 
-6.  **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
+7.  **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
       - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
 
 **32 Bit ISO's** bieten wir standardmäßig nicht mehr an.  
