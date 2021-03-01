@@ -23,7 +23,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + Hinweis zum gnome-iso entfernt
 + kurzer Hinweis auf iwd in xorg und nox eingefügt
-+ lxde hinzugefügt
++ lxde hinzugefügt 
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -59,7 +59,7 @@ Die Varianten sind:
      - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
 5.  **LXde mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
-     - umfasst eine Desktopumgebung mit einer Auswahl an gtk-Applikationen.  
+     - umfasst eine Desktopumgebung mit einer Auswahl an GTK-Applikationen.  
      - Der Fußabdruck ist schmaler als bei XFCE
      - geeignet für ältere Hardware
      - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
