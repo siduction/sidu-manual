@@ -1,7 +1,9 @@
 % Netzwerk - ceni
 
 ANFANG INFOBEREICH FÜR DIE AUTOREN
+
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
+
 Status: Old - Obsolet
 
 2021-02-03
