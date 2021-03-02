@@ -52,7 +52,7 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
   port 6667
   ~~~
 
-+ [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
++ [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?randomnick=1&channels=siduction-de&prompt=1) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
 
 ### siduction-paste
