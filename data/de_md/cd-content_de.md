@@ -9,7 +9,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Entfernen nicht mehr unterstützter Varianten
 + Korrektur und Aktualisierung aller Links
 + Korrektur der Image-Größen, Typos beseitigt
+
 Änderungen 2020-06:
+
 + Speicheranforderungen aktualisiert
 + Disclaimer als Überschrift
 + Anker hinzugefügt
@@ -23,7 +25,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + Hinweis zum gnome-iso entfernt
 + kurzer Hinweis auf iwd in xorg und nox eingefügt
-+ lxde hinzugefügt 
++ lxde hinzugefügt
+
+Frage 2021-02-03
+
++ In diesem Dokument gibt es Links zu Netzwerkkonfigurationen die im Grunde nicht mehr gebraucht werden
+ (WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md)).
+  Wir haben IWD und Network-Manger und auch conman, was braucht es da noch wpagui?
+  Ich glaube wir müssen den ganzen Netzwerkabschnitt im Handbuch überdenken!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
