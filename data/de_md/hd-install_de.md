@@ -16,8 +16,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2020-12:
 
 + Für die Verwendung mit pandoc optimiert.
-+ Inhaltsverzeichnis wieder entfernt, da pandoc autonatisch eines erstellt.
++ Inhaltsverzeichnis wieder entfernt, da pandoc automatisch eines erstellt.
 + Inhalt geringfügig überarbeitet.
+
+Änderungen 2021-02:
+
++ Review (nicht abgeschlossen)
++ Empfehlung von Lucky Backup mit BackInTime ersetzt. Das letzte wirkliche Release von Lucky Backup war 2014.
++ Empfehlung für eigene Home-Partition entfernt, dadurch werden im Abschnitt Partitionierung einige neue Screenshots erforderlich
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -28,13 +34,13 @@ Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder D
 Siehe auch  
 [Backup mit rdiff](sys-admin-rdiff_de.md)  
 [Backup mit rsync](sys-admin-rsync_de.md)  
-Eine weitere Option ist Lucky Backup (muss installiert werden).
+Eine weitere Option ist BackInTime (muss installiert werden).
 
 ---
 
 ## Installationsvorbereitungen
 
-Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der `F2` oder `Entf`-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste `F12`, `F11` oder `F8` (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
+Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der `F2` oder `Entf`-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste `F12`, `F11` `F7` oder `F8` (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
 
 siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](cheatcodes_de.md) erläutert die möglichen Optionen.  
 Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu "From CD/DVD/ISO: ..." oder "From Stick/HDD: ..." navigiert und die Taste `e` betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste `F10` wird der Bootvorgang fortgesetzt.
@@ -45,9 +51,9 @@ Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist
 
 ### HDD, RAM und Swap
 
-Die Mindesanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#min-hw) beschrieben.  
+Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#min-hw) beschrieben.  
 Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. 
-Auf PCs mit maximal 1 GB RAM sollte eine swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
+Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
 
 ### Partitionierung
 
@@ -55,16 +61,15 @@ Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
 
 + Auswahl der siduction-Variante
 + Größe der vorhandenen Laufwerke und des Arbeitsspeichers
-+ Single-Boot, oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
++ Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
 + Gemeinsame Nutzung von Daten für die installierten Systeme
 
 Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md).  
-Es ist eine gute Idee für das **/home**-Verzeichnis eine eigene Partition anzulegen, sofern das Festplattenvolumen nicht extrem begrenzt ist. Das Verzeichnis **/home** wird zu dem Ort, an dem die individuellen Konfigurationen abgelegt werden.  
-Darüber hinaus empfiehlt sich auch eine eigene Datenpartition. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
+Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
-[Gparted](part-gparted_de.md), ein Programm für die graphische Oberfläche  
-[KDE Partition Manager], ein weiteres Programm für die graphische Oberfläche  
+[Gparted](part-gparted_de.md), ein Programm für die graphische Oberfläche für GTK-Desktops  
+[KDE Partition Manager], ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
 [gdisk](part-gdisk_de.md), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
 [cfdisk](part-cfdisk_de.md), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
 
@@ -72,9 +77,9 @@ Die Partitionierung kann während der Installation vorgenommen werden, oder bere
 
 Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
 
-Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mit dem **NTFS** Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugeifen; für Windows ist es das Standarddateisystem.
+Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mit dem **NTFS** Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen; für Windows ist es das Standarddateisystem.
 
-Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugeifen.
+Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugreifen.
 
 ### Duplizierung auf einem anderen Computer
 
@@ -105,7 +110,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
    ![calamares welcome](../../static/images-de/install_hd-de/calamares-de_01.png "Willkommen")
    
-   Sofern eine Internetverbindung besteht, ist hier bereits die richtige Sprache eingestellt.
+   Sofern eine Internetverbindung besteht, sollte hier bereits die richtige Sprache eingestellt sein.
 
 3. Im nächsten Fenster "Standort" besteht die Möglichkeit Änderungen zur *Region*, der *Zeitzone* und *Systemsprache*, sowie dem *Format* für das Datum und die Zahlen vorzunehmen.
 
@@ -126,9 +131,8 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    ![calamares work on partitions](../../static/images-de/install_hd-de/calamares-de_05.png "Partitionen bearbeiten")
    
    Wir benutzen die Partitionen  
-   sda7 für **/** (root)  
-   sda8 für **/home**  
-   sda6 für **/daten** gemeinsam mit dem bereits auf sda3 und sda4 vonhanden Linux
+   ...
+   <!-- muss neu erstellt werden, samt Screenshots --> 
    
    Nach Auswählen der betreffenden Partition und Betätigen des Schalters *Ändern* öffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und für sda7 und sda8 auch die Formatierung mit dem Dateisystem **ext4** vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abglegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen möchten.  
    Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie während der Installation automatisch erkannt und integriert wird.  
@@ -137,7 +141,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    ![calamares partitions finish](../../static/images-de/install_hd-de/calamares-de_06.png "Partitionen Ergebnis")
 
 
-6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Rootpasswort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#adduser) hinzugefügt werden.
+6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#adduser) hinzugefügt werden.
 
    ![calamares users](../../static/images-de/install_hd-de/calamares-de_07.png "Benutzer")
    
@@ -189,4 +193,4 @@ man deluser
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-28</div>
+<div id="rev">Zuletzt bearbeitet: 2021-03-02</div>
