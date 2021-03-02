@@ -2,14 +2,16 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC2 - RC3**
 
 Änderungen 2020-05:
 
 + Entfernen nicht mehr unterstützter Varianten
 + Korrektur und Aktualisierung aller Links
 + Korrektur der Image-Größen, Typos beseitigt
+
 Änderungen 2020-06:
+
 + Speicheranforderungen aktualisiert
 + Disclaimer als Überschrift
 + Anker hinzugefügt
@@ -18,6 +20,19 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + Für die Verwendung mit pandoc optimiert (auch Anker entfernt).
 + Inhalt teilweise überarbeitet.
+
+Änderung 2021-03-01:
+
++ Hinweis zum gnome-iso entfernt
++ kurzer Hinweis auf iwd in xorg und nox eingefügt
++ lxde hinzugefügt
+
+Frage 2021-02-03
+
++ In diesem Dokument gibt es Links zu Netzwerkkonfigurationen die im Grunde nicht mehr gebraucht werden
+ (WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md)).
+  Wir haben IWD und Network-Manger und auch conman, was braucht es da noch wpagui?
+  Ich glaube wir müssen den ganzen Netzwerkabschnitt im Handbuch überdenken!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -34,26 +49,28 @@ Eine komplette Manifest-Datei mit der Auflistung aller installierten Programme f
 siduction bietet sieben aktuelle Images mit verschiedenen Desktop-Umgebungen (zwei auch ohne) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. Üblicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.  
 Die Varianten sind:
 
-1. **KDE 64 Bit** , live-ISO mit etwa 2,7 GByte:
+1. **KDE 64 Bit** , live-ISO mit etwa 2,8 GByte:
     - Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repräsentativen Auswahl der KDE Applications.  
     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-2. **Gnome mit 64 Bit** , live-ISO mit etwa 2,2 GByte:
-     - Gnome-3 Desktop mit Classic- und Flashback-Mode. GTK-basiert, mit einer umfangreichen Auswahl an Software.  
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
-
-3. **Cinnamon mit 64 Bit** , live-ISO mit etwa 2.3 GByte:
+2. **Cinnamon mit 64 Bit** , live-ISO mit etwa 2.3 GByte:
      - GTK-basierter Desktop mit einer repräsentativen Auswahl an nützlicher Software.  
      - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-4.  **XFCE 64 Bit** , live-ISO mit etwa 2,3 GByte:
+3.  **XFCE 64 Bit** , live-ISO mit etwa 2,3 GByte:
     - umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv tätig sein zu können.  
     - Der Ressourcenaufwand ist geringer als mit KDE.  
     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
     
-5.  **LXQt mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
+4.  **LXQt mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
      - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.  
      - Der Fußabdruck ist etwas schmaler als bei XFCE
+     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+
+5.  **LXde mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
+     - umfasst eine Desktopumgebung mit einer Auswahl an GTK-Applikationen.  
+     - Der Fußabdruck ist schmaler als bei XFCE
+     - geeignet für ältere Hardware
      - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
 6.  **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
@@ -70,7 +87,7 @@ Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne ers
 
 ## Minimale Systemanforderungen
 
-für: KDE-Plasma, Gnome, XFCE, LXQt, Cinnamon, Xorg und NoX
+für: KDE-Plasma, Gnome, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 
 ### Prozessoranforderungen: 64Bit CPU
 
@@ -83,11 +100,12 @@ für: KDE-Plasma, Gnome, XFCE, LXQt, Cinnamon, Xorg und NoX
 
 ### Speicheranforderungen:
 
-    KDE-Plasma: ≥ 2 GByte RAM
-    GNOME:      ≥ 2 GByte RAM
-    Cinnamon:   ≥ 1 GByte RAM
-    XFCE:       ≥ 1 GByte RAM
+    KDE-Plasma: ≥ 4 GByte RAM
+    GNOME:      ≥ 4 GByte RAM
+    Cinnamon:   ≥ 4 GByte RAM
+    XFCE:       ≥ 4 GByte RAM
     LXQT:       ≥ 512 MByte RAM
+    Lxde        ≥ 512 MByte RAM
     Xorg:       ≥ 512 MByte RAM
     NoX:        ≥ 256 MByte RAM
 
@@ -105,9 +123,9 @@ für: KDE-Plasma, Gnome, XFCE, LXQt, Cinnamon, Xorg und NoX
 
 Als Internetbrowser werden (je nach Variante) [Firefox](https://mozilla.org), oder [Chromium](https://chromium.woolyss.com/download/de/#linux) mitgeliefert.
 
-Als Bürosoftware werden bei XFCE und LXDE Abiword und Gnumeric vorinstalliert. Als Dateimanager stehen unter anderem Dolphin,Thunar und PCManFM zur Verfügung.
+Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin,Thunar und PCManFM zur Verfügung.
 
-Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung, und für WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md). Aus eher historischen Gründen steht auch noch [ceni](./inet-ceni_de.md) zur Konfiguration zur Verfügung
+Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung, und für WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md). Xorg und nox werden mit iwd als ausgeliefert, dieser kann via nmtui/nmcli oder iwctl konfiguriert werden. 
 
 Informationen zu nicht freien Treibern findet man [hier](./nf-firm_de.md)
 

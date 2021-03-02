@@ -1,4 +1,19 @@
-<div class="divider" id="netcardconfig"></div>
+% Netzwerk - ceni
+
+ ANFANG   INFOBEREICH FÜR DIE AUTOREN
+ 
+ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
+ 
+ **Status: Old - Obsolet**
+
+2021-02-03
+
+Frage: 
+
+Ceni ist auf keinem unser iso's  installiert, der Network-Manger (nmtui, nmcli) hat die aufgabe das netzwerk zu konfigurieren übernommen.
+Ergo, diese Seite hat höchstens einen historischen Wert aber ist ansonsten Sinnfrei.
+
+Braucht es diese Seite dann noch?
 
 ## Konfiguration einer Netzwerkverbindung mit Ceni
 

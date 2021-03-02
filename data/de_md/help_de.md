@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC2-RC3**
 
 Änderungen 2020-04:
 
@@ -14,6 +14,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Layout- und Rechtschreibfehler korrigiert
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt teilweise überarbeitet.
+
+Änderungen 2021-02-03
+
++ Link für web-irc geändert
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -52,7 +56,7 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
   port 6667
   ~~~
 
-+ [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
++ [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
 
 ### siduction-paste
