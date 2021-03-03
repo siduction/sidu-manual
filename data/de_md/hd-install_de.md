@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC1**
 
 Änderungen 2020-06:
 
@@ -24,6 +24,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Review (nicht abgeschlossen)
 + Empfehlung von Lucky Backup mit BackInTime ersetzt. Das letzte wirkliche Release von Lucky Backup war 2014.
 + Empfehlung für eigene Home-Partition entfernt, dadurch werden im Abschnitt Partitionierung einige neue Screenshots erforderlich
+
+Änderungen 2021-03:
+
++ Nach RC1 zurückgestuft.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
