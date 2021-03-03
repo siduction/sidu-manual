@@ -1,4 +1,6 @@
-<div class="divider" id="hotswitch"></div>
+Änderung: 03-2021
+
+OBSOLET?
 
 ## Fliegender Wechsel zwischen LAN und WLAN
 
