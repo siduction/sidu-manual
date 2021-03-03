@@ -1,4 +1,6 @@
-<div class="divider" id="wpa-roaming-gui"></div>
+Änderung: 03-2021
+
+OBSOLET?
 
 ## Verwendung von wpa_gui
 
