@@ -1,4 +1,6 @@
-<div class="divider" id="net-set1"></div>
+Änderung: 03-2021
+
+OBSOLET?
 
 ## Aufsetzen von WiFi-Roaming
 
