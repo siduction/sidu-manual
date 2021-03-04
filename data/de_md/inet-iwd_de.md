@@ -31,17 +31,17 @@ Wer möchte, kann iwd als Ersatz für wpa-supplicant nutzen, entweder eigenstän
 Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
 ~~~
-# apt update
-# apt install iwd
-# systemctl stop wpa_supplicant.service
-# systemctl mask wpa_supplicant.service
-# systemctl stop NetworkManager.service
-# touch /etc/NetworkManager/conf.d/nm.conf
-# echo -e "[device]\nwifi.backend=iwd" > /etc/NetworkManager/conf.d/nm.conf
-# touch /etc/iwd/main.conf
-# echo -e "[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd" > /etc/iwd/main.conf
-# systemctl enable -now iwd.service
-# systemctl start NetworkManager.service
+apt update
+apt install iwd
+systemctl stop wpa_supplicant.service
+systemctl mask wpa_supplicant.service
+systemctl stop NetworkManager.service
+touch /etc/NetworkManager/conf.d/nm.conf
+echo -e "[device]\nwifi.backend=iwd" > /etc/NetworkManager/conf.d/nm.conf
+touch /etc/iwd/main.conf
+echo -e "[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd" > /etc/iwd/main.conf
+systemctl enable -now iwd.service
+systemctl start NetworkManager.service
 ~~~
 
 Jetzt ist man in der Lage im Terminal mit dem Befehl **`iwctl`** eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **`nmtui`** oder **`nmcli`** im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
@@ -54,7 +54,7 @@ Jetzt ist man in der Lage im Terminal mit dem Befehl **`iwctl`** eine interaktiv
 Der schnellste Weg, iwd zu nutzen, ist, eine Konsole zu öffnen und diesen Befehl einzugeben:
 
 ~~~
-iwctl
+nmtui
 ~~~
 
 ## Internetverbindung mit einem 56k Einwahlmodem
@@ -82,4 +82,4 @@ apt-get install shorewall6
 für IPv6 Verbindungen
 [Shorewall- Ein grafisches Konfigurationstool für Netfilter in Linux.](http://www.shorewall.net/)  [Hinweis: Shorewall nicht auf entfernten Rechnern installieren, ihr schliesst euch ziemlich sicher selbst vom Zugang zum Server aus!] 
 
-<div id="rev">Page last revised 02/08/2012 1545 UTC</div>
+<div id="rev">Page last revised 04-03-2021</div>
