@@ -39,8 +39,14 @@ Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
     Wobei die zweite Möglichkeit die einfachere ist.
     Möchte man iwd ohne NetworkManager nutzen, muss man sich darüber keine Gedanken machen
 
-Vorrausgesetzt der NetworkManager ist schon installiert, als erstes wird **iwd** installiert, dann wird der **wpa_supplicant.service** gestopt und maskiert, dann der **NetworkManager.service** angehalten.
-Nun wird die Datei `/etc/NetworkManager/conf.d/nm.conf` angelegt und **iwd** dort eingetragen, dann legen wir die Datei `/etc/iwd/main.conf` an und befüllen diese mit entsprechendem Inhalt, starten den **iwd.service** und **NetworkManager.service**.
+Vorrausgesetzt der NetworkManager ist installiert, 
++ als erstes wird **iwd** installiert, 
++ dann wird der **wpa_supplicant.service** gestopt und maskiert,
++ dann der **NetworkManager.service** angehalten,
++ nun die Datei `/etc/NetworkManager/conf.d/nm.conf` angelegt und **iwd** dort eingetragen, 
++ dann legen wir die Datei `/etc/iwd/main.conf` an und befüllen diese mit entsprechendem Inhalt, 
++ aktivieren und starten den **iwd.service**, 
++ und starten den **NetworkManager.service**.
 
 ~~~
 apt update
