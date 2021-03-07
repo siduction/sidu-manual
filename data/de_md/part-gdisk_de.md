@@ -16,6 +16,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt teilweise überarbeitet.
 
+Änderungen 2021-03
+
++ Partitionierung ohne Home-Partition.
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Warum gdisk (GPT fdisk) verwenden?
@@ -86,7 +90,8 @@ Der Startbefehl in einem root-Terminal lautet: **cgdisk /dev/sdX**.
 
 ![Warnmeldung](../../static/images-de/cgdisk-de/cgdisk_00.png)
 
-Wir benötigen für die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, zwei HOME-, eine gemeinsame DATEN- sowie eine SWAP-Partition für den Auslagerungsspeicher. Zusätzlich die bereits oben erwähnte *EFI-System*-Partition (maximal 100MB) und die *BIOS-boot*-Partition (1MB).
+Wir benötigen für die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, eine gemeinsame DATEN- sowie eine SWAP-Partition für den Auslagerungsspeicher. Zusätzlich die bereits oben erwähnte *EFI-System*-Partition (maximal 100MB) und die *BIOS-boot*-Partition (1MB).  
+Wir empfehlen, das **/home**-Verzeichnis auf der ROOT-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
 
 Das Startbild
 
@@ -106,15 +111,14 @@ Nach Eingabe von "L" erscheint eine lange Liste mit den Codes und ihrer Verwendu
 ef00 für EFI-System  
 ef02 für BIOS-boot  
 8200 für Swap  
-8302 für Linux Home  
 8304 für Linux Root  
-0700 für Daten (MS basic data), um einem Windows System Zugriff auf die Daten zu ermöglichen.
+8300 für Linux Daten
 
-Wir tragen also "ef00" ein und bestätigen. Anschließend dürfen wir optional noch einen Namen (Label) vergeben, was im Beispiel getan wurde, und die Eingabe wieder bestätigen. Mit den Partitionen für BIOS-boot, Linux-root, Linux-Home und Swap wird nach gleichem Muster verfahren. Das nächst Bild zeigt das Ergebnis unserer Bemühungen. Wie wir sehen ist noch reichlich Platz für ein zweites System und vor allem für eine gemeinsam genutzte Daten-Partition vorhanden (Typ 0700), da unsere Home-Partitionen nicht besonders groß ausfallen.
+Wir tragen also "ef00" ein und bestätigen. Anschließend dürfen wir optional noch einen Namen (Label) vergeben, was im Beispiel getan wurde, und die Eingabe wieder bestätigen. Mit den Partitionen für BIOS-boot, Linux-root und Swap wird nach gleichem Muster verfahren. Das nächst Bild zeigt das Ergebnis unserer Bemühungen. Wie wir sehen ist noch reichlich Platz für ein zweites System und vor allem für eine gemeinsam genutzte Daten-Partition vorhanden.
 
 ![Erster Teil](../../static/images-de/cgdisk-de/cgdisk_04.png)
 
-Nachdem die drei Partitionen erstellt wurden, sehen wir die Aufteilung der gesamten Festplatte im nächste Bild. 
+Nachdem die zwei Partitionen erstellt wurden, sehen wir die Aufteilung der gesamten Festplatte im nächste Bild. 
 
 ![Gemeinsame Verwendung](../../static/images-de/cgdisk-de/cgdisk_05.png)
 
@@ -170,12 +174,10 @@ Der Befehl generiert die folgende Ausgabe:
 Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 /dev/sdb1       2048    206847    204800  100M EFI System
 /dev/sdb2     206848    208895      2048    1M BIOS boot
-/dev/sdb3     208896  42151935  41943040   20G Linux root (x86-64)
-/dev/sdb4   42151936  73609215  31457280   15G Linux home
-/dev/sdb5   73609216  81997823   8388608    4G Linux swap
-/dev/sdb6   81997824 239284223 157286400   75G Linux filesystem
-/dev/sdb7  239284224 281227263  41943040   20G Linux root (x86-64)
-/dev/sdb8  281227264 312580095  31352832   15G Linux home
+/dev/sdb3     208896  52637695  52428800   25G Linux root (x86-64)
+/dev/sdb4   52637696  61026303   8388608    4G Linux swap
+/dev/sdb5   61026304 260255743 199229440   95G Linux filesystem
+/dev/sdb6  260255744 312581808  52326064   25G Linux root (x86-64)
 ~~~
 
 Mit diesen Informationen formatieren wir unsere zuvor erstellten Partitionen.
@@ -191,7 +193,7 @@ mkfs.vfat /dev/sdb1
 **Die BIOS_Boot-Partition darf nicht formatiert werden!**  
 Sofern der Bootmanager *GRUB* bei der Installation die *EFI-System*- und die *BIOS\_Boot*-Partition findet, benutzt er sie, gleichgültig, welches Installationsziel wir angegeben haben.
 
-Die Linuxpartitionen 'sdb3', 'sdb4' und 'sdb6-8' formatieren wir mit *ext4*.
+Die Linuxpartitionen 'sdb3', 'sdb5' und 'sdb6' formatieren wir mit *ext4*.
 
 ~~~
 mkfs.ext4 /dev/sdb3
@@ -200,13 +202,13 @@ mkfs.ext4 /dev/sdb3
 Die Swap-Partition wird mit:
 
 ~~~
-mkswap /dev/sdb5
+mkswap /dev/sdb4
 ~~~
 
 eingerichtet. Danach machen wir sie mit:
 
 ~~~
-swapon /dev/sdb5
+swapon /dev/sdb4
 ~~~
 
 dem System bekannt und kontrollieren, ob der Swap-Speicher verfügbar ist:
@@ -214,13 +216,13 @@ dem System bekannt und kontrollieren, ob der Swap-Speicher verfügbar ist:
 ~~~
 swapon -s
 Filename			Type		Size	Used	Priority
-/dev/sdb5          	partition	8914940	0	    -2
+/dev/sdb4          	partition	4194304	0	    -2
 ~~~
 
 Falls Swap korrekt erkannt wurde:
 
 ~~~
-swapoff /dev/sdb5
+swapoff /dev/sdb4
 ~~~
 
 **Als nächstes ist es unbedingt notwendig, das System neu zu starten, damit das neue Partitionierungs- und Dateisystemschema vom Kernel eingelesen wird.** 
@@ -321,4 +323,4 @@ Trotz alledem: die Optionen der Menüs *recovery & transformation*  und *experts
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>
+<div id="rev">Zuletzt bearbeitet: 2021-03-07</div>
