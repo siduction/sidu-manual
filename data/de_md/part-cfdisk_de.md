@@ -14,12 +14,17 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt teilweise überarbeitet.
+    + Die Bilder sind auch für die englische Handbuchseite verwendbar.
+
+Änderungen 2021-03:
+
++ home-Partition entfernt.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Benennungspraxis für Festplatten und Partitionen
+## Benennung von Speichergeräten
 
-**Bitte BEACHTEN: bezüglich der Benennung von Speichergeräten**  
+**Bitte BEACHTEN:**  
 siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](part-uuid_de.md#uuid) zu Rate ziehen.
 
 ### Für Festplatten
@@ -128,11 +133,11 @@ root@pc1:/#
 cfdisk /dev/sda
 ~~~
 
-Das folgende Beispiel bitte nur auf einer Festplatte anwenden, deren Betriebssystem aktuell nicht genutzt wird, da alle Daten der geänderten Partitionen verloren gehen.
+**cfdisk** nur auf einer Festplatte anwenden, deren sämtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der geänderten Partitionstabelle verloren.
 
 ### Die Bedienoberfläche
 
-Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten `auf`, `ab`. Um Befehle auszuwählen, benutzt man die Pfeiltasten `rechts`, `links`. Um Befehle auszuführen betätigt man die `Enter` Taste.
+Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten `auf` und `ab`, um Befehle auszuwählen, die Pfeiltasten `rechts` und `links`. Mit der `Enter` Taste wird der Befehl ausgeführt.
 
 ![cfdisk - Start](../../static/images-de/cfdisk-de/cfdisk_01.png)
 
@@ -142,13 +147,13 @@ Wir haben auf der Beispielfestplatte drei Partitionen.
 | --- | ---: | :---: | ---: |
 | /dev/sda1 | 8,5G | 82 Swap | - |
 | /dev/sda2 | 50,0G | 83 Linux | / |
-| /dev/sda3 | 60,8G | 83 Linux | /home |
+| /dev/sda3 | 60,8G | 83 Linux | /Daten |
 
-Aus der Home-Partition möchten wir die Verzeichnisse 'Bilder' und 'Download' in eigene Partitionen auslagern und dafür mehr Platz schaffen. Die Root-Partition ist mit 50 GB überdimensioniert. Die Partition für die Bilder soll auch für ein auf einer weiteren Festplatte residierendes Windows zugänglich sein.
+Aus der Daten-Partition möchten wir die Verzeichnisse 'Bilder' und 'Musik' in eigene Partitionen auslagern und dafür mehr Platz schaffen. Gleichzeitig sollen diese auch für ein auf einer weiteren Festplatte residierendes Windows zugänglich sein. Die Root-Partition ist mit 50 GB überdimensioniert und wird verkleinert.
 
 ### Löschen einer Partition
 
-Um Platz zu schaffen, löschen wir die Home-Partition und verkleinern anschließend die Root-Partition.
+Um Platz zu schaffen, löschen wir die Daten-Partition und verkleinern anschließend die Root-Partition.
 
 Um die Partition /dev/sda3 zu löschen, wird sie mit den auf-ab-Tasten markiert und der Befehl **Delete** mit den Pfeiltasten links-rechts gewählt und durch **`Enter`** bestätigt.
 
@@ -170,7 +175,7 @@ Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt aut
 
 ![Create a new partition](../../static/images-de/cfdisk-de/cfdisk_05.png)
 
-Anschließend ist die neue Größe von '15G' für die Home-Partition einzugeben.
+Anschließend ist die neue Größe von '15G' für die Daten-Partition einzugeben.
 
 ![Create a new partition - Size](../../static/images-de/cfdisk-de/cfdisk_06.png)
 
@@ -178,11 +183,11 @@ Jetzt muss zwischen einer **primären** oder einer **erweiterten** (extended) Pa
 
 ![Create a new partition - prim](../../static/images-de/cfdisk-de/cfdisk_07.png)
 
-Danach wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl ist **extended** zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt) in der die beiden Partitionen für unsere Daten anzulegen sind.
+Danach wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl ist **extended** zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt) in der die zwei zusätzlichen Partitionen anzulegen sind.
 
 ![extended partition](../../static/images-de/cfdisk-de/cfdisk_08.png)
 
-Zum Schluss sind die zwei Partitionen für 'Download' und 'Bilder' entsprechend dem oben gezeigten Vorgehen in der gewünschten Größe anzulegen. Da nur noch logische Partitionen möglich sind, entfällt die Auswahl zwischen einer primären und einer erweiterten Partition.
+Zum Schluss sind die Partitionen für 'Musik' und 'Bilder' entsprechend dem oben gezeigten Vorgehen in der gewünschten Größe anzulegen. Da nur noch logische Partitionen möglich sind, entfällt die Auswahl zwischen primärer und erweiterter Partition.
 
 ![partition finished](../../static/images-de/cfdisk-de/cfdisk_09.png)
 
@@ -194,7 +199,7 @@ Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition un
 
 ![partition type](../../static/images-de/cfdisk-de/cfdisk_10.png)
 
-Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gewählt wird. In unserem Beispiel wählen wir für die Partition /dev/sda6, die die Bilder aufnehmen soll, **7 HPFS/NTFS/exFAT** aus. So kann das oben erwähnte Windows auf die Partition zugreifen.
+Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gewählt wird. In unserem Beispiel wählen wir für die Partitionen /dev/sda5 und /dev/sda6 "**7 HPFS/NTFS/exFAT**" aus. So kann das oben erwähnte Windows auf die Partition zugreifen.
 
 ![partition type](../../static/images-de/cfdisk-de/cfdisk_11.png)
 
@@ -212,7 +217,7 @@ Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **Write** 
 
 ### Beenden
 
-Um das Programm nun zu verlassen, wird der Befehl **Quit** benutzt. Nach Beendigung von **cfdisk** und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einlesen zu lassen.
+Mit dem Befehl **Quit** verlassen wir das Programm. Nach Beendigung von **cfdisk** und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.
 
 ---
 
@@ -282,4 +287,4 @@ Jetzt kann die Installation beginnen.
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>
+<div id="rev">Zuletzt bearbeitet: 2021-03-08</div>
