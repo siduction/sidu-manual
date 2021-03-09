@@ -107,7 +107,7 @@ Dies sollte selbsterklärend sein!
 
 Als erstes sollte die Hilfe zu *iwd* aufgerufen werden, um zu sehen was alles möglich ist.
 
-Dafür geben wir im Terminal den Befhle *`iwctl`* ein, dann am Eingabe-Prompt *help*.
+Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *help*.
 ```
 :~$ iwctl
 [iwd]# help
