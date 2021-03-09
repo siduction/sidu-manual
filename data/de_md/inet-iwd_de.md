@@ -4,7 +4,7 @@
  
  Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
  
- **Status: WIP**
+ **Status: RC2**
  
  Änderungen: 2021-03-04
  + initial commit
@@ -16,7 +16,7 @@
     + ~~firewall software?~~
  + Installation und nutzung von IWD erklären
     + Komandozeile: nmcli/nmtui/iwctl
-       + iwctl [RC3]
+       + ~~iwctl [RC3]~~
        + nmcli []
        + nmtui []
     + grafische Programme:
@@ -24,6 +24,11 @@
        + iwgtk? (gibt es nicht in debian, ist aber gut zu nutzen)
        + conman
  + Deaktivierung von IWD  zurück zu wpa_supplicant
+
+ Änderung 2021-03-09
+ 
+ + Nutzung von iwctl, done
+ + Status von WIP nach RC2 gestuft 
  
 ENDE   INFOBEREICH FÜR DIE AUTOREN
  
@@ -102,8 +107,7 @@ Dies sollte selbsterklärend sein!
 
 Als erstes sollte die Hilfe zu *iwd* aufgerufen werden, um zu sehen was alles möglich ist.
 
-Dafür geben wir im Terminal folgenden Befhle ein 'iwctl',
-am Eingabe-prompt dann 'help'
+Dafür geben wir im Terminal den Befhle *`iwctl`* ein, dann am Eingabe-Prompt *help*.
 ```
 :~$ iwctl
 [iwd]# help
@@ -128,9 +132,9 @@ Um heraus zu finden, welche wifi Schnittstelle wir nutzen folgenden Befehl.
 --------------------------------------------------------------------------------
   Name                Address             Powered   Adapter   Mode
 --------------------------------------------------------------------------------
-  wlan0               00:01:02::03:04   on        phy0      station
+  wlan0               00:01:02:03:04:05   on        phy0      station
 ```
-In diesem Falle ist es *wlan0*und es läuft (*Powered on*) im *station* mode.
+In diesem Falle ist es *wlan0* und es läuft (*Powered on*) im *station* mode.
 
 Nun scannen wir nach einem aktiven Netzwerk
 ```
@@ -139,11 +143,11 @@ Nun scannen wir nach einem aktiven Netzwerk
 ```
 Nun können wir uns zu unserem Netzwerk verbinden.
 ```
-station wlan0 connect SSID
+[iwd]# station wlan0 connect SSID
 ```
 (*SSID* bezeichnet den Name des Netzwerkes)
 
-Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *station list* oder *station wlan0 get-networks* Nachprüfen.
+Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *"station list"* oder *"station wlan0 get-networks"* Nachprüfen.
 
 ```
 [iwd]# station list
@@ -153,7 +157,7 @@ Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbund
 --------------------------------------------------------------------------------
   wlan0               connected
 ```
-Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen informationen schon hat
+Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Informationen hat!
 
 ```
 iwctl --passphrase passphrase station device connect SSID
