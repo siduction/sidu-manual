@@ -12,10 +12,14 @@
  
  TODO:
  + Dokument aufräumen
-    + braucht es noch das modem?
-    + firewall software?
+    + ~~braucht es noch das modem?~~
+    + ~~firewall software?~~
+    + (es geht um iwd, nicht modem noch firewall)
  + Installation und nutzung von IWD erklären
     + Komandozeile: nmcli/nmtui/iwctl
+       + iwctl [WIP]
+       + nmcli []
+       + nmtui []
     + grafische Programme:
        + NetworkManager
        + iwgtk gibt es nicht in debian, ist aber gut zu nutzen
@@ -93,29 +97,41 @@ Der schnellste und einfachste Weg iwd zu nutzen ist, eine Konsole zu öffnen und
 nmtui
 ~~~
 
-## Internetverbindung mit einem 56k Einwahlmodem
+Dies sollte selbsterklärend sein!
 
-KDE hat ein Frontend für Einwahlmodems: `KPPP (Einwahl ins Internet)` . Es befindet sich in KDE-Start-Menü > Internet > KPPP - Einwahl ins Internet.
+## Eine wifi Verbindung mit *iwctl* einrichten
 
-Die Anwendung hat eine interne Hilfe und bietet eine gut verständliche Anleitung zum Aufsetzen der Verbindung.
+Der Befehl lautet in der Konsole / im Terminal
+```
+iwctl --passphrase passphrase station device connect SSID
+```
+Als erstes sollte die Hilfe zu *iwd* aufgerufen werden, um zu sehen was alles möglich ist.
 
-<div class="divider" id="firewalls"></div>
+Dafür geben wir im Terminal folgenden Befhle ein 'iwctl',
+am Eingabe-prompt dann 'help'
+```
+:~$ iwctl
+[iwd]# help
 
-## Firewalls
+                               iwctl version 1.12                              
+--------------------------------------------------------------------------------
+  Usage
+--------------------------------------------------------------------------------
+  iwctl [--options] [commands]
+                               Available options
+--------------------------------------------------------------------------------
+  Options                                           Description                 
+--------------------------------------------------------------------------------
 
-Firewalls werden normalerweise nicht benötigt, wenn man sich hinter einem ordentlich konfigurierten Router befindet. Dennoch spielen sie eine sehr wichtige Rolle bei der Sicherheit, wenn man sich direkt über ein DSL-(USB-)Modem oder ein Einwahlmodem ins Internet verbinden muss:
-
-~~~
-apt-get install shorewall
-~~~
-
-oder
-
-~~~
-apt-get install shorewall6 
-~~~
-
-für IPv6 Verbindungen
-[Shorewall- Ein grafisches Konfigurationstool für Netfilter in Linux.](http://www.shorewall.net/)  [Hinweis: Shorewall nicht auf entfernten Rechnern installieren, ihr schliesst euch ziemlich sicher selbst vom Zugang zum Server aus!] 
+[...] hier steht jetzt eine ganze Menge, welches ich hier nicht auflisten kann!
+```
+```
+[iwd]# station list
+                            Devices in Station Mode
+--------------------------------------------------------------------------------
+  Name                State          Scanning
+--------------------------------------------------------------------------------
+  wlan0               disconnected
+```
 
 <div id="rev">Page last revised 04-03-2021</div>
