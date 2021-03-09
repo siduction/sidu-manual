@@ -84,7 +84,8 @@ Jetzt ist man in der Lage im Terminal mit dem Befehl **`iwctl`** eine interaktiv
 
 ## Konfiguration einer Netzwerkverbindung mit IWD
 
-`Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss. Weitere Informationen dazu im Kapitel [Hardware mit nicht freier Firmware](nf-firm-de.htm#non-free-firmware) .` 
+    Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss.
+    Weitere Informationen dazu im Kapitel [Hardware mit nicht freier Firmware](nf-firm-de.htm#non-free-firmware) .
 
 Der schnellste und einfachste Weg iwd zu nutzen ist, eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
 
