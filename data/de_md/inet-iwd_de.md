@@ -11,18 +11,17 @@
  + WIP
  
  TODO:
- + Dokument aufräumen
+ + Dokument aufräumen [done] (es geht um iwd, nicht modem noch firewall)
     + ~~braucht es noch das modem?~~
     + ~~firewall software?~~
-    + (es geht um iwd, nicht modem noch firewall)
  + Installation und nutzung von IWD erklären
     + Komandozeile: nmcli/nmtui/iwctl
-       + iwctl [WIP]
+       + iwctl [RC3]
        + nmcli []
        + nmtui []
     + grafische Programme:
        + NetworkManager
-       + iwgtk gibt es nicht in debian, ist aber gut zu nutzen
+       + iwgtk? (gibt es nicht in debian, ist aber gut zu nutzen)
        + conman
  + Deaktivierung von IWD  zurück zu wpa_supplicant
  
@@ -83,7 +82,7 @@ EnableNetworkConfiguration=true
 NameResolvingService=systemd
 ~~~
 
-Jetzt ist man in der Lage im Terminal mit dem Befehl **`iwctl`** eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **`nmtui`** oder **`nmcli`** im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
+Jetzt ist man in der Lage im Terminal mit dem Befehl *`iwctl`* eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man *`nmtui`* oder *`nmcli`* im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
  
 
 ## Konfiguration einer Netzwerkverbindung mit IWD
@@ -101,10 +100,6 @@ Dies sollte selbsterklärend sein!
 
 ## Eine wifi Verbindung mit *iwctl* einrichten
 
-Der Befehl lautet in der Konsole / im Terminal
-```
-iwctl --passphrase passphrase station device connect SSID
-```
 Als erstes sollte die Hilfe zu *iwd* aufgerufen werden, um zu sehen was alles möglich ist.
 
 Dafür geben wir im Terminal folgenden Befhle ein 'iwctl',
@@ -125,13 +120,46 @@ am Eingabe-prompt dann 'help'
 
 [...] hier steht jetzt eine ganze Menge, welches ich hier nicht auflisten kann!
 ```
+Um heraus zu finden, welche wifi Schnittstelle wir nutzen folgenden Befehl.
+
+```
+[iwd]# device list
+                                    Devices                                   *
+--------------------------------------------------------------------------------
+  Name                Address             Powered   Adapter   Mode
+--------------------------------------------------------------------------------
+  wlan0               00:01:02::03:04   on        phy0      station
+```
+In diesem Falle ist es *wlan0*und es läuft (*Powered on*) im *station* mode.
+
+Nun scannen wir nach einem aktiven Netzwerk
+```
+[iwd]# station wlan0 scan
+[iwd]# station wlan0 get-networks
+```
+Nun können wir uns zu unserem Netzwerk verbinden.
+```
+station wlan0 connect SSID
+```
+(*SSID* bezeichnet den Name des Netzwerkes)
+
+Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *station list* oder *station wlan0 get-networks* Nachprüfen.
+
 ```
 [iwd]# station list
                             Devices in Station Mode
 --------------------------------------------------------------------------------
   Name                State          Scanning
 --------------------------------------------------------------------------------
-  wlan0               disconnected
+  wlan0               connected
 ```
+Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen informationen schon hat
 
-<div id="rev">Page last revised 04-03-2021</div>
+```
+iwctl --passphrase passphrase station device connect SSID
+```
+als Bsp.:
+```
+iwctl --passphrase AchG3hDochH31m station wlan0 connect HomeOffice
+```
+<div id="rev">Page last revised 09-03-2021</div>
