@@ -210,7 +210,7 @@ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 + NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
 + conman ist ein von Intel entwickelter Netzwerkmanager welch klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
-+ iwgtk, ist nicht in debian-quellen, er muss aus dem Sourcecode gebaut werden, welcher auf [github](https://github.com/J-Lentz/iwgtk) zu finden ist.
++ iwgtk, ist nicht in debian-quellen, er muss aus dem Sourcecode gebaut werden welcher auf [github](https://github.com/J-Lentz/iwgtk) zu finden ist.
 
 ### Zurück zum wpa_supplicant
 
