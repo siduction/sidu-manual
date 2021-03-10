@@ -134,7 +134,7 @@ Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht 
 nmcli dev WiFi con "ssid" password password name "name"
 
 ```
-(*ssid* bezeichnet den Name des Netzwerkes)
+(*ssid* bezeichnet den Namen des Netzwerkes)
 
 Zum Beispiel:
 ```
@@ -183,7 +183,7 @@ Jetzt können wir uns zu unserem Netzwerk verbinden.
 ```
 [iwd]# station wlan0 connect SSID
 ```
-(*SSID* bezeichnet den Name des Netzwerkes)
+(*SSID* bezeichnet den Namen des Netzwerkes)
 
 Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *"station list"* oder *"station wlan0 get-networks"* Nachprüfen.
 
