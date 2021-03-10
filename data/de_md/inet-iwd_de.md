@@ -20,9 +20,9 @@
        + ~~nmcli [RC3]~~
        + ~~nmtui [RC3]~~
     + grafische Programme:
-       + NetworkManager
+       + ~~NetworkManager~~
        + iwgtk? (gibt es nicht in debian, ist aber gut zu nutzen)
-       + conman
+       + ~~conman~~
  + ~~Deaktivierung von IWD  zurück zu wpa_supplicant~~
 
  Änderung 2021-03-09
@@ -34,6 +34,7 @@
  
  + nmcli & nmtui, done
  + wpa_supplicant, done
+ + grafische Programme, WIP
  
 ENDE   INFOBEREICH FÜR DIE AUTOREN
  
@@ -205,6 +206,12 @@ Zum Beispiel:
 iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 ```
+### Grafische Programme zur Konfiguration eines WiFi Netzwerkes
+
++ NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
++ conman ist ein von Intel entwickelter Netzwerkmanager welch klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
++ iwgtk, ist nicht in debian-quellen, er muss aus dem Sourcecode gebaut werden, welcher auf [github](https://github.com/J-Lentz/iwgtk) zu finden ist.
+
 ### Zurück zum wpa_supplicant
 
 *(Vorausgstezt NetworkManager und wpa_supplicant sind installiert)*
@@ -217,7 +224,7 @@ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 ```
 systemctl stop iwd.service
-systemctl mask iwd.service
+systemctl mask iwd.servicenetwork-manager-gnome
 systemctl stop NetworkManager.service
 mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
 systemctl unmask wpa_supplicant.service
