@@ -15,7 +15,7 @@
     + ~~braucht es noch das modem?~~
     + ~~firewall software?~~
  + Installation und nutzung von IWD erklären
-    + Komandozeile: nmcli/nmtui/iwctl
+    + ~~Komandozeile: nmcli/nmtui/iwctl~~
        + ~~iwctl [RC3]~~
        + ~~nmcli [RC3]~~
        + ~~nmtui [RC3]~~
@@ -23,7 +23,7 @@
        + NetworkManager
        + iwgtk? (gibt es nicht in debian, ist aber gut zu nutzen)
        + conman
- + Deaktivierung von IWD  zurück zu wpa_supplicant
+ + ~~Deaktivierung von IWD  zurück zu wpa_supplicant~~
 
  Änderung 2021-03-09
  
@@ -33,12 +33,19 @@
  Änderung 2021-03-10
  
  + nmcli & nmtui, done
+ + wpa_supplicant, done
  
 ENDE   INFOBEREICH FÜR DIE AUTOREN
  
-## IWD installieren
+## IWD
 
-Wer möchte, kann iwd als Ersatz für wpa-supplicant nutzen, entweder eigenständig, oder in Verbindung mit dem NetworkManager. 
+Intels  [iNet wireless daemon](https://wiki.debian.org/NetworkManager/iwd) (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller; ist iwd der Nachfolger. 
+
+Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinux.org/index.php/Iwd).
+
+Wer möchte, kann iwd als Ersatz für wpa_supplicant nutzen, entweder eigenständig oder in Verbindung mit dem NetworkManager. 
+
+### IWD installieren
 
 Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
@@ -47,12 +54,17 @@ Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
     Möchte man dieses so gibt es zwei Möglichkeiten (eigentlich nur eine):
 
         1. NetworkManager aus den Sourcen installieren
-        2. den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird so man apt nutzt.
+        2. den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird, so man apt nutzt.
 
     Wobei die zweite Möglichkeit die einfachere ist.
-    Möchte man iwd ohne NetworkManager nutzen, muss man sich darüber keine Gedanken machen
+    
+    Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen
+    
+    Weiterhin machen wir darauf Aufmerksam, dass siduction systemd nutzt.
+    Wir werden also nicht darauf eingehen wie iwd ohne systemd konfiguriert wird!
 
-Vorrausgesetzt der NetworkManager ist installiert, 
+Vorrausgesetzt der NetworkManager ist installiert,```
+
 + als erstes wird **iwd** installiert, 
 + dann wird der **wpa_supplicant.service** gestopt und maskiert,
 + dann der **NetworkManager.service** angehalten,
@@ -68,7 +80,7 @@ systemctl stop wpa_supplicant.service
 systemctl mask wpa_supplicant.service
 systemctl stop NetworkManager.service
 touch /etc/NetworkManager/conf.d/nm.conf
-echo -e "[device]\nwifi.backend=iwd" > /etc/NetworkManager/conf.d/nm.conf
+echo -e "[device]\nWiFi.backend=iwd" > /etc/NetworkManager/conf.d/nm.conf
 touch /etc/iwd/main.conf
 echo -e "[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd" > /etc/iwd/main.conf
 systemctl enable -now iwd.service
@@ -76,12 +88,14 @@ systemctl start NetworkManager.service
 ~~~
 
 Schauen ob es geklappt hat
+
 + /etc/NetworkManager/conf.d/nm.conf
 ~~~
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
-wifi.backend=iwd
+WiFi.backend=iwd
 ~~~~
+
 + /etc/iwd/main.conf
 ~~~
 ~$ cat /etc/iwd/main.conf
@@ -92,15 +106,17 @@ EnableNetworkConfiguration=true
 NameResolvingService=systemd
 ~~~
 
-Jetzt ist man in der Lage im Terminal mit dem Befehl *`iwctl`* eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man *`nmtui`* oder *`nmcli`* im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
+Jetzt ist man in der Lage im Terminal mit dem Befehl [**iwctl**](#iwctl) eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **nmtui** oder [**nmcli**](#nmcli) im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
 
     Anmerkung:
     Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss, bzw via LAN!
-    Weitere Informationen dazu im Kapitel [Hardware mit nicht freier Firmware](nf-firm-de.htm#non-free-firmware). 
+    Weitere Informationen:
 
-## Konfiguration einer Netzwerkverbindung mit IWD
+[Hardware mit nicht freier Firmware](nf-firm_de.md). 
 
-Der schnellste und einfachste Weg iwd zu nutzen ist, eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
+### Konfiguration einer Netzwerkverbindung mit IWD
+
+Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
 
 ~~~
 nmtui
@@ -108,25 +124,26 @@ nmtui
 
 Dies sollte selbsterklärend sein!
 
-## Eine wifi Verbindung mit *nmcli* aufbauen
+### <a name="nmcli"></a>Eine WiFi Verbindung mit *nmcli* aufbauen
 
-Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des Network-Managers in der Kommandozeile einzurichten.
+Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des NetworkManagers in der Kommandozeile einzurichten.
 
 Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu *nmcli* finden sie auf folgender Seite, [inet-nm-cli_de](inet-nm-cli_de.md)
 
 ```
-nmcli dev wifi con "ssid" password suppergeheim name "name"
+nmcli dev WiFi con "ssid" password password name "name"
 
 ```
+(*ssid* bezeichnet den Name des Netzwerkes)
 
 Zum Beispiel:
 ```
-nmcli dev wifi con "HomeOffice" password 8chG3hD0chH31m name "HomeOffice"
+nmcli dev WiFi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
 
 ```
-## Eine wifi Verbindung mit *iwctl* einrichten, ohne den Network-Manager
+### <a name="iwctl"></a>Eine WiFi Verbindung mit *iwctl* einrichten, ohne den NetworkManager
 
-Als erstes sollte die Hilfe zu *iwd* aufgerufen werden, um zu sehen was alles möglich ist.
+Als erstes sollte die Hilfe zu *iwctl* aufgerufen werden, um zu sehen was alles möglich ist.
 
 Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *help*.
 ```
@@ -145,7 +162,7 @@ Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *h
 
 [...] hier steht jetzt eine ganze Menge, welches ich hier nicht auflisten kann!
 ```
-Um heraus zu finden welche wifi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
+Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 
 ```
 [iwd]# device list
@@ -185,6 +202,28 @@ iwctl --passphrase passphrase station device connect SSID
 ```
 Zum Beispiel:
 ```
-iwctl --passphrase 8chG3hD0chH31m station wlan0 connect HomeOffice
+iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
+
 ```
+### Zurück zum wpa_supplicant
+
+*(Vorausgstezt NetworkManager und wpa_supplicant sind installiert)*
+
++ Den **iwd.service** stoppen und maskieren.
++ Den **NetworkManager.service** stoppen.
++ Die Datei **/etc/NetworkManger/conf.d/nm.conf** umbenennen.
++ Demaskieren und starten des **wpa_supplicant.service**.
++ Den **NetworkManager.service** wieder starten.
+
+```
+systemctl stop iwd.service
+systemctl mask iwd.service
+systemctl stop NetworkManager.service
+mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
+systemctl unmask wpa_supplicant.service
+systemctl enable --now wpa_supplicant.service
+systemctl start NetworkManager.service
+```
+Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
+
 <div id="rev">Page last revised 10-03-2021</div>
