@@ -17,8 +17,8 @@
  + Installation und nutzung von IWD erklären
     + Komandozeile: nmcli/nmtui/iwctl
        + ~~iwctl [RC3]~~
-       + nmcli []
-       + nmtui []
+       + ~~nmcli [RC3]~~
+       + ~~nmtui [RC3]~~
     + grafische Programme:
        + NetworkManager
        + iwgtk? (gibt es nicht in debian, ist aber gut zu nutzen)
@@ -30,6 +30,10 @@
  + Nutzung von iwctl, done
  + Status von WIP nach RC2 gestuft 
  
+ Änderung 2021-03-10
+ 
+ + nmcli & nmtui, done
+ 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
  
 ## IWD installieren
@@ -38,6 +42,7 @@ Wer möchte, kann iwd als Ersatz für wpa-supplicant nutzen, entweder eigenstän
 
 Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
+    Anmerkung:
     Unter debian ist es leider nicht möglich den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
     Möchte man dieses so gibt es zwei Möglichkeiten (eigentlich nur eine):
 
@@ -88,12 +93,12 @@ NameResolvingService=systemd
 ~~~
 
 Jetzt ist man in der Lage im Terminal mit dem Befehl *`iwctl`* eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man *`nmtui`* oder *`nmcli`* im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
- 
+
+    Anmerkung:
+    Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss, bzw via LAN!
+    Weitere Informationen dazu im Kapitel [Hardware mit nicht freier Firmware](nf-firm-de.htm#non-free-firmware). 
 
 ## Konfiguration einer Netzwerkverbindung mit IWD
-
-    Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss.
-    Weitere Informationen dazu im Kapitel [Hardware mit nicht freier Firmware](nf-firm-de.htm#non-free-firmware) .
 
 Der schnellste und einfachste Weg iwd zu nutzen ist, eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
 
@@ -103,7 +108,23 @@ nmtui
 
 Dies sollte selbsterklärend sein!
 
-## Eine wifi Verbindung mit *iwctl* einrichten
+## Eine wifi Verbindung mit *nmcli* aufbauen
+
+Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des Network-Managers in der Kommandozeile einzurichten.
+
+Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu *nmcli* finden sie auf folgender Seite, [inet-nm-cli_de](inet-nm-cli_de.md)
+
+```
+nmcli dev wifi con "ssid" password suppergeheim name "name"
+
+```
+
+Zum Beispiel:
+```
+nmcli dev wifi con "HomeOffice" password 8chG3hD0chH31m name "HomeOffice"
+
+```
+## Eine wifi Verbindung mit *iwctl* einrichten, ohne den Network-Manager
 
 Als erstes sollte die Hilfe zu *iwd* aufgerufen werden, um zu sehen was alles möglich ist.
 
@@ -124,7 +145,7 @@ Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *h
 
 [...] hier steht jetzt eine ganze Menge, welches ich hier nicht auflisten kann!
 ```
-Um heraus zu finden, welche wifi Schnittstelle wir nutzen folgenden Befehl.
+Um heraus zu finden welche wifi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 
 ```
 [iwd]# device list
@@ -141,7 +162,7 @@ Nun scannen wir nach einem aktiven Netzwerk
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ```
-Nun können wir uns zu unserem Netzwerk verbinden.
+Jetzt können wir uns zu unserem Netzwerk verbinden.
 ```
 [iwd]# station wlan0 connect SSID
 ```
@@ -162,8 +183,8 @@ Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Info
 ```
 iwctl --passphrase passphrase station device connect SSID
 ```
-als Bsp.:
+Zum Beispiel:
 ```
-iwctl --passphrase AchG3hDochH31m station wlan0 connect HomeOffice
+iwctl --passphrase 8chG3hD0chH31m station wlan0 connect HomeOffice
 ```
-<div id="rev">Page last revised 09-03-2021</div>
+<div id="rev">Page last revised 10-03-2021</div>
