@@ -2,7 +2,7 @@
 
 Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik findet hier keine Beachtung.  
 
-Das Grafiksystem unter Linux splittet sich in 4 separate Teile:
+Das Grafiksystem unter Linux aus 4 grundlegenden Teilen:
 
 + Kernel Treiber 
     - radeon/amdgpu (ATI/AMD Grafik)
@@ -20,6 +20,8 @@ Das Grafiksystem unter Linux splittet sich in 4 separate Teile:
     - xserver-xorg-video-nouveau
     
 _Xorg kann auch den modesetting-ddx verwenden, welcher mittlerweile Bestandteil des Xservers selbst ist. Dieser wird automatisch für Intel Grafik benutzt und auch dann, wenn kein spezielles xserver-xorgvideo-foo Paket installiert ist._
+
+---
 
 + dri/mesa 
     - libgl1-mesa-glx
