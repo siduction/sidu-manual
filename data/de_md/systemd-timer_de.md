@@ -12,6 +12,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2021-02 
 + Review
 
+Änderungen 2021-03 
++ Minuten -> Sekunden
++ geringe Layout Änderung
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
@@ -45,7 +49,7 @@ Wir erstellen in dem Beispiel ein regelmäßiges Backup mit *rsync*.
 
 ### .timer-Unit anlegen
 
-Wir legen die Datei *backup.timer* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei **backup.timer** im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -70,7 +74,7 @@ Es stehen zwei Timer-Typen zur Verfügung:
     und  
 2. Monotonic timers,  
     die mit den Optionen `OnActiveSec=, OnBootSec=, OnStartupSec=, OnUnitActiveSec=, OnUnitInactiveSec=` einen zu der Option relativen Zeitgeber definiert.  
-    "*OnBootSec=90*" bedeutet "90 Minuten nach den Booten" und  
+    "*OnBootSec=90*" bedeutet "90 Sekunden nach dem Booten" und  
     "*OnUnitActiveSec=1d*" bedeutet "Einen Tag nachdem der Zeitgeber letztmalig aktiviert wurde".  
     Beide Optionen zusammen lösen die zugehörige *.service-Unit* 90 Sekunden nach den Booten und dann genau im 24 Stunden-Takt aus, solange die Maschine nicht heruntergefahren wird.
 
@@ -80,7 +84,7 @@ Die im Beispiel enthaltene Option "*Persistent=*" speichert den Zeitpunkt, zu de
 
 Die *.service-Unit* wird von der *.timer-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reicht die Beschreibung der Unit in der Sektion *[Unit]* und in der Sektion *[Service]* der auszuführende Befehl nach der Option *ExecStart=* aus.
 
-Wir legen die Datei *backup.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei **backup.service** im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
