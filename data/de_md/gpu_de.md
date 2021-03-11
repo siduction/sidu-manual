@@ -1,3 +1,8 @@
+ANFANG INFOBEREICH FÜR DIE AUTOREN
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
+Status: RC3
+
+
 ## Open Source Xorg-Treiber für ATI/AMD , Intel & nVidia
 
 Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik findet hier keine Beachtung.  
