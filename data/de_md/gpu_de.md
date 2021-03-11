@@ -1,6 +1,6 @@
-ANFANG INFOBEREICH FÜR DIE AUTOREN
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
-Status: RC3
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC2**
 
 
 ## Open Source Xorg-Treiber für ATI/AMD , Intel & nVidia
