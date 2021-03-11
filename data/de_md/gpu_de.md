@@ -2,7 +2,7 @@
 
 Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik findet hier keine Beachtung.  
 
-Das Grafiksystem unter Linux aus 4 grundlegenden Teilen:
+Das Grafiksystem unter Linux besteht aus 4 grundlegenden Teilen:
 
 + Kernel Treiber 
     - radeon/amdgpu (ATI/AMD Grafik)
@@ -28,6 +28,8 @@ _Xorg kann auch den modesetting-ddx verwenden, welcher mittlerweile Bestandteil 
     - libgl1-mesa-dri
     - libgl1-mesa-drivers
 _Dieser Teil von Xorg ist die freie OpenGL Schnittstelle für Xorg._
+
+---
 
 Open Source Xorg-Treiber für nVidia (modesetting/nouveau), ATI/AMD (modesetting/radeon/amdgpu), Intel (modesetting/intel) und weitere sind mit siduction vorinstalliert.
 
