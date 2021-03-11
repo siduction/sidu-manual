@@ -4,13 +4,14 @@ ANFANG   INFOBEREICH FÜR DIE AUTOREN
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC3**
 
-Änderungen 2021-02:
+Änderungen 2021-02 bis 03:
 
 + Entfernen des Kapitels "Installation und Einrichten von systemd"
 + Umorganisation in "systemd-start" mit Link auf alle weiteren, im Handbuch aufgeführten, Unit-Typen.
 + Korrektur und Aktualisierung aller Links
 + Für die Verwendung mit pandoc optimiert.
-+ Review 
++ Review
++ Link zu systemd.automount auf systemd.mount gesetzt, da beides in systemd.mount behandelt wird.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -52,7 +53,7 @@ Die folgenden Unit-Typen sind verfügbar und, sofern verlinkt, führt der Link z
 
 5. **Mount-Units** ([systemd.mount](./systemd-mount_de.htm)) steuern Einhängepunkte im Dateisystem.
 
-6. **Automount-Units** ([systemd.automount](./systemd-automount_de.htm)) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
+6. **Automount-Units** ([systemd.automount](./systemd-mount_de.htm)) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
 
 7. **Zeitgeber-Units** ([systemd.timer](./systemd-timer_de.htm)) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
 
@@ -149,4 +150,4 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-27</div>
+<div id="rev">Seite zuletzt aktualisert 2021-03-12</div>
