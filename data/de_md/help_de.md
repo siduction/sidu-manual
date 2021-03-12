@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2-RC3**
+**Status: RC3**
 
 Änderungen 2020-04:
 
@@ -308,4 +308,4 @@ $ inxi --help
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-03-12</div>
