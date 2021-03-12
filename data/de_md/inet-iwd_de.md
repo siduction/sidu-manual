@@ -4,7 +4,7 @@
  
  Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
  
- **Status: RC2**
+ **Status: RC3**
  
  Änderungen: 2021-03-04
  + initial commit
@@ -35,6 +35,9 @@
  + nmcli & nmtui, done
  + wpa_supplicant, done
  + grafische Programme, WIP
+
+Änderung 2021-03-12
+status RC3
  
 ENDE   INFOBEREICH FÜR DIE AUTOREN
  
@@ -209,8 +212,8 @@ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 ### Grafische Programme zur Konfiguration eines WiFi Netzwerkes
 
 + NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
-+ conman ist ein von Intel entwickelter Netzwerkmanager welch klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
-+ iwgtk, ist nicht in debian-quellen, er muss aus dem Sourcecode gebaut werden welcher auf [github](https://github.com/J-Lentz/iwgtk) zu finden ist.
++ conman ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
++ iwgtk, ist nicht in debian-quellen, er muss aus dem Sourcecode gebaut werden, auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
 
 ### Zurück zum wpa_supplicant
 
