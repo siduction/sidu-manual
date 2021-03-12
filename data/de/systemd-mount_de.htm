@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Systemad - mount</title>
+  <title>Systemd - mount</title>
 <style>
 body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
 p               {line-height: 1.3;}
@@ -21,7 +21,7 @@ img             {border: 0.1em solid #CCC;}
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Systemad - mount</h1>
+<h1 class="title">Systemd - mount</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -159,7 +159,7 @@ WantedBy=remote-fs.target
 WantedBy=multi-user.target</code></pre>
 <p>Anschließend:</p>
 <pre><code># systemctl enable --now home-&lt;user&gt;-www_data.automount</code></pre>
-<p>Jetz wird das “document-root”-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis “/home/&lt;user&gt;/www_data” wechseln.<br />
+<p>Jetzt wird das “document-root”-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis “/home/&lt;user&gt;/www_data” wechseln.<br />
 Die Statusabfrage bestätigt die Aktion.</p>
 <pre><code># systemctl status home-&lt;user&gt;-www_data.mount --no-pager
 ● home-&lt;user&gt;-www_data.mount - Mount server1/var/www/ using NFS

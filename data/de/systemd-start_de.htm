@@ -37,13 +37,15 @@ img             {border: 0.1em solid #CCC;}
 </nav>
 <p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2021-02:</p>
+<strong>Status: RC3</strong></p>
+<p>Änderungen 2021-02 bis 03:</p>
 <ul>
 <li>Entfernen des Kapitels “Installation und Einrichten von systemd”</li>
 <li>Umorganisation in “systemd-start” mit Link auf alle weiteren, im Handbuch aufgeführten, Unit-Typen.</li>
 <li>Korrektur und Aktualisierung aller Links</li>
 <li>Für die Verwendung mit pandoc optimiert.</li>
+<li>Review</li>
+<li>Link zu systemd.automount auf systemd.mount gesetzt, da beides in systemd.mount behandelt wird.</li>
 </ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <hr />
@@ -61,26 +63,26 @@ Entwickelt wird es federführend von den Red Hat Entwicklern Lennart Poettering 
 Units können “<em>aktiv</em>” oder “<em>inaktiv</em>”, sowie im Prozess der “<em>Aktivierung</em>” oder “<em>Deaktivierung</em>”, d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand “<em>fehlgeschlagen</em>” ist auch verfügbar, der sehr ähnlich zu “<em>inaktiv</em>” ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite <a href="./systemd-journald_de.htm">Sytemd-Journal</a>.<br />
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.</p>
 <h3 id="units">Units</h3>
-<p>Die folgenden Unit-Typen sind verfügbar und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:</p>
+<p>Die folgenden Unit-Typen sind verfügbar und, sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:</p>
 <ol type="1">
 <li><p><strong>Dienste-Units</strong> (<a href="./systemd-service_de.htm">systemd.service</a>), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern.</p></li>
 <li><p><strong>Socket-Units</strong> (systemd.socket), die lokale IPC- oder Netzwerk-Sockets in dem System kapseln, nützlich für Socket-basierte Aktivierung.</p></li>
-<li><p><strong>Ziel-Units</strong> (<a href="./systemd-target_de.htm">systemd.target</a>) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.</p></li>
-<li><p><strong>Geräte-Units</strong> (systemd.device) legen Kernel-Geräte in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.</p></li>
-<li><p><strong>Einhänge-Units</strong> (<a href="./systemd-mount_de.htm">systemd.mount</a>) steuern Einhängepunkte in dem Dateisystem.</p></li>
-<li><p><strong>Automount-Units</strong> (<a href="./systemd-automount_de.htm">systemd.automount</a>) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.</p></li>
+<li><p><strong>Target-Units</strong> (<a href="./systemd-target_de.htm">systemd.target</a>) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.</p></li>
+<li><p><strong>Geräte-Units</strong> (systemd.device) legen Kernel-Geräte (alle Block- und Netzwerkgeräte) in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.</p></li>
+<li><p><strong>Mount-Units</strong> (<a href="./systemd-mount_de.htm">systemd.mount</a>) steuern Einhängepunkte im Dateisystem.</p></li>
+<li><p><strong>Automount-Units</strong> (<a href="./systemd-mount_de.htm">systemd.automount</a>) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.</p></li>
 <li><p><strong>Zeitgeber-Units</strong> (<a href="./systemd-timer_de.htm">systemd.timer</a>) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.</p></li>
 <li><p><strong>Auslagerungs-Units</strong> (systemd.swap) sind ähnlich zu Einhänge-Units und kapseln Speicherauslagerungspartitionen oder -dateien des Betriebssystems.</p></li>
 <li><p><strong>Pfad-Units</strong> (<a href="./systemd-path_de.htm">systemd.path</a>) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.</p></li>
-<li><p><strong>Scheiben-Units</strong> (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.</p></li>
-<li><p><strong>Bereichs-Units</strong> (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.</p></li>
+<li><p><strong>Slice-Units</strong> (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.</p></li>
+<li><p><strong>Scope-Units</strong> (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.</p></li>
 </ol>
 <h3 id="systemd-im-dateisystem">systemd im Dateisystem</h3>
 <p>Die Unit-Dateien mit den Direktiven für systemd befinden sich im Verzeichnis <strong>/lib/systemd/system/</strong>. Das ist unabhängig vom Status der Unit in systemd.<br />
 Die Steuerung des Status (enabled, disabled) einer Unit erfolgt über Symlink im Verzeichnis <strong>/etc/systemd/system/</strong>.<br />
 Das Verzeichnis <strong>/run/systemd/system/</strong> beinhaltet zur Laufzeit erstellte Unit-Dateien.</p>
 <h3 id="weitere-funktionen-von-systemd">Weitere Funktionen von systemd</h3>
-<p>Systemd bietet noch weitere Funktionen. Eine davon ist <a href="https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> als Ersatz für das nicht mehr weiter gepflegte <em>ConsoleKit</em> . Damit steuert systemd Sitzungen und Powermanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> und viele weitere. Ein Blick in die Linkliste auf <a href="https://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu systemd.</p>
+<p>Systemd bietet noch weitere Funktionen. Eine davon ist <a href="https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> als Ersatz für das nicht mehr weiter gepflegte <em>ConsoleKit</em> . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> und viele weitere. Ein Blick in die Linkliste auf <a href="https://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu systemd.</p>
 <hr />
 <h3 id="handhabung-von-diensten-mittels-systemd">Handhabung von Diensten mittels systemd</h3>
 <p>Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl “<em>systemctl</em>”.</p>
@@ -98,6 +100,10 @@ Das Verzeichnis <strong>/run/systemd/system/</strong> beinhaltet zur Laufzeit er
 <ul>
 <li>systemctl enable [NAME] - gliedert eine Unit in systemd ein.</li>
 <li>systemctl disable [NAME] - entfernt eine Unit aus systemd.</li>
+</ul>
+<p>Oft ist es nötig, “systemctl start” und “systemctl enable” für eine Unit durchzuführen, um sie sowohl sofort als auch nach einem Reboot verfügbar zu machen. Beide Optionen vereint der Befehl:</p>
+<ul>
+<li>systemctl enable –now [NAME]</li>
 </ul>
 <p>Nachfolgend zwei Befehle deren Funktion unsere Handbuchseite <a href="./systemd-target_de.htm">Systemd-Target</a> beschreibt.</p>
 <ul>
@@ -128,7 +134,7 @@ disabled</code></pre>
 <p>Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden “start”-Befehl aktivieren wir die Unit wieder.</p>
 <hr />
 <div id="rev">
-Seite zuletzt aktualisert 2021-02-18
+Seite zuletzt aktualisert 2021-03-12
 </div>
 </body>
 </html>

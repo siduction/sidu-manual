@@ -1,4 +1,4 @@
-% Systemad - mount
+% Systemd - mount
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
@@ -174,7 +174,7 @@ Anschließend:
 # systemctl enable --now home-<user>-www_data.automount
 ~~~
 
-Jetz wird das "document-root"-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis "/home/\<user\>/www_data" wechseln.  
+Jetzt wird das "document-root"-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis "/home/\<user\>/www_data" wechseln.  
 Die Statusabfrage bestätigt die Aktion.
 
 ~~~
