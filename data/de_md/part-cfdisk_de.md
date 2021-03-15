@@ -19,8 +19,22 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2021-03:
 
 + home-Partition entfernt.
++ Zu Beginn Hinweis "fdisk nur für alte Hardware" eingefügt.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+---
+
+## Verwendung von fdisk
+
+**fdisk** und **cfdisk** erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einführung von GPT-Partitionstabellen auf Basis des UEFI. 
+
+Der neuere Standard **G**lobally Unique Identifier **P**artition **T**able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in [Wikipedia GUID-Partitionstabelle](https://de.wikipedia.org/wiki/GUID_Partition_Table)
+
+Wir empfehlen die Partitionierung mit *fdisk* und *cfdisk* ausschließlich für ältere Hardware.  
+Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) zu Rate ziehen.
+
+---
 
 ## Benennung von Speichergeräten
 
@@ -29,26 +43,14 @@ siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. B
 
 ### Für Festplatten
 
-Seit udev den Universal Unique Identifier (UUID) übernommen hat, wird für alle Festplatten, Laufwerke, gleichgültig über welche Schnittstelle sie angeschlossen sind, eine Benennung die aus einer Kombination von drei Buchstaben verwendet. Zum Beispiel "sda" für die erste Festplatte.
-
-Welche Hardware auch immer eingesetzt wird (IDE, SATA , SCSI, SSD oder M2-HD, einzig der dritte Buchstabe unterscheidet nun die verschiedenen Festplatten oder Laufwerke: "/dev/sda", "/dev/sdb", "/dev/sdc"  usw.
-
 Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl von der Live-CD als auch bei einem installierten siduction.
 
 Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Geräte enthält. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit **su** zu root und geben **fdisk -l** ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe ähnlich der unten gezeigten.
 
-Mit dem Befehl
-
 ~~~
-fdisk -l > /home/<MEIN USER NAME>/Dokumente/fdisk-l_Ausgabe
-~~~
-
-erhalten wir eine Text-Datei mit dem gleichen Inhalt.
-
-~~~
-user1@pc1:~$ su
+user1@pc1:/$ su
 Passwort:
-fdisk -l
+root@pc1:/# fdisk -l
 
 Disk /dev/sda: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 Disk model: FUJITSU MHY2160B
@@ -82,6 +84,14 @@ Device     Boot     Start       End   Sectors  Size Id Type
 /dev/sdb3       122687488 250068991 127381504 60,8G 83 Linux
 ~~~
 
+Mit dem Befehl
+
+~~~
+# fdisk -l > /home/<MEIN USER NAME>/Dokumente/fdisk-l_Ausgabe
+~~~
+
+erhalten wir eine Text-Datei mit dem gleichen Inhalt.
+
 ### Für Partitionen
 
 Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.
@@ -113,9 +123,6 @@ Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 
 **/dev/sda5**  kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Gerät). Sie befindet sich auf der ersten Festplatte des Computers (abhängig von der BIOS-Konfiguration).
 
 **/dev/sdb3**  kann nur eine primäre oder erweiterte Partition sein. Der Buchstabe "b" indiziert, dass diese Partition sich auf einem anderen Gerät befindet als die Partition des ersten Beispiels, welche den Buchstaben "a" enthält.
-
-Der neuere Standard **G**lobally Unique Identifier **P**artition **T**able (GPT), der Teil des UEFI-Standards ist, wird den MBR ersetzen und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in [Wikipedia GUID-Partitionstabelle](https://de.wikipedia.org/wiki/GUID_Partition_Table)  
-Zum Partitionieren mit GPT bitte die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) zu Rate ziehen.
 
 ---
 

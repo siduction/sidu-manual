@@ -25,6 +25,7 @@ img             {border: 0.1em solid #CCC;}
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
+<li><a href="#verwendung-von-fdisk">Verwendung von fdisk</a></li>
 <li><a href="#benennung-von-speichergeräten">Benennung von Speichergeräten</a>
 <ul>
 <li><a href="#für-festplatten">Für Festplatten</a></li>
@@ -69,22 +70,25 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 <p>Änderungen 2021-03:</p>
 <ul>
 <li>home-Partition entfernt.</li>
+<li>Zu Beginn Hinweis “fdisk nur für alte Hardware” eingefügt.</li>
 </ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<hr />
+<h2 id="verwendung-von-fdisk">Verwendung von fdisk</h2>
+<p><strong>fdisk</strong> und <strong>cfdisk</strong> erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einführung von GPT-Partitionstabellen auf Basis des UEFI.</p>
+<p>Der neuere Standard <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in <a href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle</a></p>
+<p>Wir empfehlen die Partitionierung mit <em>fdisk</em> und <em>cfdisk</em> ausschließlich für ältere Hardware.<br />
+Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite <a href="part-gdisk_de.md">Partitionieren mit gdisk</a> zu Rate ziehen.</p>
+<hr />
 <h2 id="benennung-von-speichergeräten">Benennung von Speichergeräten</h2>
 <p><strong>Bitte BEACHTEN:</strong><br />
 siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. Bitte das Kapitel <a href="part-uuid_de.md#uuid">Benennung nach UUID</a> zu Rate ziehen.</p>
 <h3 id="für-festplatten">Für Festplatten</h3>
-<p>Seit udev den Universal Unique Identifier (UUID) übernommen hat, wird für alle Festplatten, Laufwerke, gleichgültig über welche Schnittstelle sie angeschlossen sind, eine Benennung die aus einer Kombination von drei Buchstaben verwendet. Zum Beispiel “sda” für die erste Festplatte.</p>
-<p>Welche Hardware auch immer eingesetzt wird (IDE, SATA , SCSI, SSD oder M2-HD, einzig der dritte Buchstabe unterscheidet nun die verschiedenen Festplatten oder Laufwerke: “/dev/sda”, “/dev/sdb”, “/dev/sdc” usw.</p>
 <p>Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl von der Live-CD als auch bei einem installierten siduction.</p>
 <p>Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Geräte enthält. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit <strong>su</strong> zu root und geben <strong>fdisk -l</strong> ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe ähnlich der unten gezeigten.</p>
-<p>Mit dem Befehl</p>
-<pre><code>fdisk -l &gt; /home/&lt;MEIN USER NAME&gt;/Dokumente/fdisk-l_Ausgabe</code></pre>
-<p>erhalten wir eine Text-Datei mit dem gleichen Inhalt.</p>
-<pre><code>user1@pc1:~$ su
+<pre><code>user1@pc1:/$ su
 Passwort:
-fdisk -l
+root@pc1:/# fdisk -l
 
 Disk /dev/sda: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 Disk model: FUJITSU MHY2160B
@@ -116,6 +120,9 @@ Device     Boot     Start       End   Sectors  Size Id Type
 /dev/sdb1            2048  17831935  17829888  8,5G 82 Linux swap / Solaris
 /dev/sdb2        17831936 122687487 104855552   50G 83 Linux
 /dev/sdb3       122687488 250068991 127381504 60,8G 83 Linux</code></pre>
+<p>Mit dem Befehl</p>
+<pre><code># fdisk -l &gt; /home/&lt;MEIN USER NAME&gt;/Dokumente/fdisk-l_Ausgabe</code></pre>
+<p>erhalten wir eine Text-Datei mit dem gleichen Inhalt.</p>
 <h3 id="für-partitionen">Für Partitionen</h3>
 <p>Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.</p>
 <p>Es gibt folgende Partitionstypen:<br />
@@ -138,8 +145,6 @@ Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 
                |sda5|sda6|sda7|</code></pre>
 <p><strong>/dev/sda5</strong> kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Gerät). Sie befindet sich auf der ersten Festplatte des Computers (abhängig von der BIOS-Konfiguration).</p>
 <p><strong>/dev/sdb3</strong> kann nur eine primäre oder erweiterte Partition sein. Der Buchstabe “b” indiziert, dass diese Partition sich auf einem anderen Gerät befindet als die Partition des ersten Beispiels, welche den Buchstaben “a” enthält.</p>
-<p>Der neuere Standard <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT), der Teil des UEFI-Standards ist, wird den MBR ersetzen und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in <a href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle</a><br />
-Zum Partitionieren mit GPT bitte die Handbuchseite <a href="part-gdisk_de.md">Partitionieren mit gdisk</a> zu Rate ziehen.</p>
 <hr />
 <h2 id="cfdisk-verwenden">Cfdisk verwenden</h2>
 <warning>
