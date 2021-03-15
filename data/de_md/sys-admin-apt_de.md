@@ -19,10 +19,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + "Systemaktualisierung nicht mit Live-Medium" eingefügt.
 + Kleinere Fehlerkorrektur.
-
-Änderungen 2021-2
-
 + Review (devil)
+
+Änderungen 2021-03
+
++ Rechtschreibfehler bereinigt.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -149,7 +150,7 @@ Aktualisierung für 48 Pakete verfügbar. Führen Sie »apt list --upgradable« 
 
 ### Pakete installieren
 
-Ist und der Name des Pakets bekannt, reicht der Befehl **apt install <Paketname>**.  
+Ist uns der Name des Pakets bekannt, reicht der Befehl **apt install <Paketname>**.  
 (Weiter unten wird gezeigt, wie man ein Paket finden kann.)
 
 <warning>**Warnhinweis:**</warning>
@@ -283,7 +284,7 @@ Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das 
 Obwohl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:
 
 Die Quellen von Unstable werden in /etc/apt/sources.list.d/debian.list mit einem Rautezeichen "#" versehen  
-Die Quellen für Testing werden /etc/apt/sources.list.d/debian.list zugefügt und und die weiteren Befehle ausgeführt:  
+Die Quellen für Testing werden /etc/apt/sources.list.d/debian.list zugefügt und die weiteren Befehle ausgeführt:  
 
 ~~~
 apt update
@@ -316,7 +317,7 @@ apt install kmahjongg / apt full-upgrade
 
 Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](#holddowngraden-eines-pakets) eines Pakets.
 
-Ein einfaches "apt upgrade" von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein **apt upgrade** von der Situation nichtr betroffene Pakete aktualieren.
+Ein einfaches "apt upgrade" von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein **apt upgrade** von der Situation nicht betroffene Pakete aktualisieren.
 
 Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?  
 Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals täglich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden. 
@@ -543,4 +544,4 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2021-02-26</div>
+<div id="rev">Zuletzt bearbeitet: 2021-03-15</div>

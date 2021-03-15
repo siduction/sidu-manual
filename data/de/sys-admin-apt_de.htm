@@ -54,8 +54,8 @@ img             {border: 0.1em solid #CCC;}
 </nav>
 <p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-06:</p>
+<strong>Status: RC3</strong></p>
+<p>Änderungen 2020-6:</p>
 <ul>
 <li>“apt und apt-get” eingefügt.</li>
 <li>Korrektur und Aktualisierung aller Links</li>
@@ -70,6 +70,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 <ul>
 <li>“Systemaktualisierung nicht mit Live-Medium” eingefügt.</li>
 <li>Kleinere Fehlerkorrektur.</li>
+<li>Review (devil)</li>
+</ul>
+<p>Änderungen 2021-03</p>
+<ul>
+<li>Rechtschreibfehler bereinigt.</li>
 </ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="was-bedeutet-apt">Was bedeutet APT?</h2>
@@ -163,8 +168,8 @@ Eine vollständige Beschreibung des APT-Systems findet man in <a href="https://w
 <pre><code>debian.list
 extra.list
 fixes.list</code></pre>
-<p>Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann (“mirror switching”), und auch das Ergänzen oder Austauschen von Quell-Listen ist so einfacher zu gestalten.</p>
-<p>Eigene Quell-Listen-Dateien können mit der Benennung /etc/apt/sources.list.d/*.list hinzugefügt werden. Auf einem siduction könnte /etc/apt/sources.list.d/extra.list zum Beispiel so aussehen:</p>
+<p>Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann (“mirror switching”), und auch das Ergänzen oder Austauschen von Quellen-Listen ist so einfacher zu gestalten.</p>
+<p>Eigene Quellen-Listen-Dateien können mit der Benennung /etc/apt/sources.list.d/*.list hinzugefügt werden. Auf einem siduction könnte /etc/apt/sources.list.d/extra.list zum Beispiel so aussehen:</p>
 <pre><code>This is the default mirror, choosen at first boot.
 # One might consider to choose the geographical nearest or the fastest mirror.
 deb     http://packages.siduction.org/extra unstable main contrib non-free
@@ -211,7 +216,7 @@ Aktualisierung für 48 Pakete verfügbar. Führen Sie »apt list --upgradable« 
 <hr />
 <h2 id="pakete-verwalten">Pakete verwalten</h2>
 <h3 id="pakete-installieren">Pakete installieren</h3>
-<p>Ist und der Name des Pakets bekannt, reicht der Befehl <strong>apt install <Paketname></strong>.<br />
+<p>Ist uns der Name des Pakets bekannt, reicht der Befehl <strong>apt install <Paketname></strong>.<br />
 (Weiter unten wird gezeigt, wie man ein Paket finden kann.)</p>
 <warning>
 <strong>Warnhinweis:</strong>
@@ -264,7 +269,7 @@ Trigger für man-db (2.8.5-2) werden verarbeitet ...
 Trigger für libc-bin (2.28-8) werden verarbeitet ...</code></pre>
 <hr />
 <h3 id="pakete-entfernen">Pakete entfernen</h3>
-<p>Der Befehl <strong>apt remove <Paketname></strong> entfernt ein Paket. Abhängigkeiten werden nicht mit vom System entfernt:</p>
+<p>Der Befehl <strong>apt remove <Paketname></strong> entfernt ein Paket. Abhängigkeiten werden dabei nicht entfernt:</p>
 <pre><code>root@siduction# apt remove gaim
 Paketlisten werden gelesen... Fertig
 Abhängigkeitsbaum wird aufgebaut.
@@ -280,7 +285,7 @@ Möchten Sie fortfahren? [J/n] j
 (Lese Datenbank ... 279786 Dateien und Verzeichnisse sind derzeit installiert.)
 Entfernen von funtools (1.4.7-4) ...
 Trigger für man-db (2.8.5-2) werden verarbeitet ...</code></pre>
-<p>In dem letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie können bei einer späteren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf benötigt:</p>
+<p>Im letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie können bei einer späteren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf benötigt:</p>
 <pre><code>apt purge funtools</code></pre>
 <p>So werden auch die Konfigurationsdateien mit entfernt. Will man sehen, ob Konfigurationsdateien von bereits entfernten Programmen noch auf dem System verblieben sind, kommt man mit <strong>dpkg</strong> ganz einfach zu einem Ergebnis:</p>
 <pre><code>dpkg -l | grep ^rc
@@ -305,7 +310,7 @@ rc  systemd-coredump   240-1           amd64  tools for storing and retrieving c
 <p>Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das Installieren älterer Versionen gelingen, es kann aber auch spektakulär fehlschlagen. Mehr Informationen im englischsprachigen Debian-Handbuch unter dem Kapitel Emergency downgrading.</p>
 <p>Obwohl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:</p>
 <p>Die Quellen von Unstable werden in /etc/apt/sources.list.d/debian.list mit einem Rautezeichen “#” versehen<br />
-Die Quellen für Testing werden /etc/apt/sources.list.d/debian.list zugefügt und und die weiteren Befehle ausgeführt:</p>
+Die Quellen für Testing werden /etc/apt/sources.list.d/debian.list zugefügt und die weiteren Befehle ausgeführt:</p>
 <pre><code>apt update
 apt install kmahjongg/testing</code></pre>
 <p>Das nun installierte Paket wird vor Aktualisierungen geschützt, auf Hold gesetzt:</p>
@@ -319,11 +324,12 @@ apt install kmahjongg / apt full-upgrade</code></pre>
 <hr />
 <h2 id="aktualisierung-des-systems">Aktualisierung des Systems</h2>
 <p>Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: <strong>apt full-upgrade</strong>. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt <a href="#holddowngraden-eines-pakets">Downgrade bzw. “Hold”</a> eines Pakets.</p>
-<p>Ein einfaches “apt upgrade” von Debian Sid ist nicht empfohlen.</p>
+<p>Ein einfaches “apt upgrade” von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein <strong>apt upgrade</strong> von der Situation nicht betroffene Pakete aktualisieren.</p>
 <p>Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?<br />
-Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.</p>
+Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals täglich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden.</p>
+<p>Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.</p>
 <h3 id="aktualisierung-nicht-mit-live-medium">Aktualisierung nicht mit Live-Medium</h3>
-<p>Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang, erklären auch weshalb nicht in der graphischen Oberfläche aktualisiert werden darf und warum “<em>apt</em>” zu verwenden ist.</p>
+<p>Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum “<em>apt</em>” verwendet werden sollte.</p>
 <h3 id="aktualisierbare-pakete">Aktualisierbare Pakete</h3>
 <p>Nachdem die interne Datenbank aktualisiert wurde, kann man herausfinden, für welche Pakete eine neuere Version existiert (zuerst muss apt-show-versions installiert werden):</p>
 <pre><code>root@siduction# apt-show-versions -u
@@ -331,6 +337,7 @@ libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
 passwd/unstable upgradeable from 1:4.0.12-5 to 1:4.0.12-6
 teclasat/unstable upgradeable from 0.7m02-1 to 0.7n01-1
 libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3.........</code></pre>
+<p>Das gleiche erreicht man mit: ~~~ apt list –upgradable ~~~</p>
 <p>Die Aktualisierung eines einzelnes Pakets (hier z. B. debtags-1.6.6.0) kann unter Berücksichtigung der Abhängigkeiten vorgenommen werden mit:</p>
 <pre><code>root@siduction# apt install debtags-1.6.6.0
 Paketlisten werden gelesen... Fertig
@@ -380,7 +387,7 @@ Möchtest Du fortfahren [J/n]?J </code></pre>
 <strong>Warnhinweis:</strong>
 </warning>
 <warning>
-Eine Systemaktualisierung, die <strong>nicht</strong> im ‘multi-user.target’ (ehemals Runlevel 3) durchgeführt wird, kann große, nicht unterstützbare Probleme mit sich bringen!
+Eine Systemaktualisierung, die <strong>nicht</strong> im ‘multi-user.target’ (ehemals Runlevel 3) durchgeführt wird, kann zu Probleme führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 </warning>
 <p>Besuche vor einer Systemaktualisierung die <a href="https://forum.siduction.org/">siduction-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.</p>
 <p>Zu beachten ist der folgende Ablauf:</p>
@@ -395,7 +402,7 @@ apt update
 apt full-upgrade
 apt clean
 init 5 &amp;&amp; exit</code></pre>
-<p>Bitte NIEMALS eine Systemaktualisierung mit einem Programm wie synaptic, adept oder kpackage durchführen!</p>
+<p>Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpackage absehen!</p>
 <hr />
 <h2 id="gründe-warum-man-nur-apt-für-eine-systemaktualisierung-verwenden-soll">Gründe, warum man nur apt für eine Systemaktualisierung verwenden soll</h2>
 <p>Paketmanager wie adept, synaptic und kpackage können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Das sind keine Fehler in diesen Programmen oder Fehler der Entwickler.</p>
@@ -449,7 +456,7 @@ Description: small man(1) front-end for X
 <pre><code>user1@pc1:~$ apt list gman
 Auflistung... Fertig
 gman/unstable,now 0.9.3-5.3 amd64  [installiert]</code></pre>
-<p>Der Befehl <strong>aptitude</strong> (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind.</p>
+<p>Der Befehl <strong>aptitude</strong> (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft “zu schlau”.</p>
 <figure>
 <img src="../../static/images-de/apt/aptitude.png" alt="" /><figcaption>aptitude</figcaption>
 </figure>
@@ -473,7 +480,7 @@ apt install packagesearch</code></pre>
 <p>Eine vollständige Beschreibung des APT-Systems findet man in <a href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
 <hr />
 <div id="rev">
-Zuletzt bearbeitet: 2021-02-05
+Zuletzt bearbeitet: 2021-03-15
 </div>
 </body>
 </html>
