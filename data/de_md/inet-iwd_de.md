@@ -27,17 +27,17 @@
 
  Änderung 2021-03-09
  
- + Nutzung von iwctl, done
- + Status von WIP nach RC2 gestuft 
+ + ~~Nutzung von iwctl, done~~
+ + ~~Status von WIP nach RC2 gestuft~~ 
  
  Änderung 2021-03-10
  
- + nmcli & nmtui, done
- + wpa_supplicant, done
- + grafische Programme, WIP
+ + ~~nmcli & nmtui, done~~
+ + ~~wpa_supplicant, done~~
+ + ~~grafische Programme, WIP~~
 
-Änderung 2021-03-12
-status RC3
+ Änderung 2021-03-24
+ status RC3
  
 ENDE   INFOBEREICH FÜR DIE AUTOREN
  
@@ -84,9 +84,9 @@ systemctl stop wpa_supplicant.service
 systemctl mask wpa_supplicant.service
 systemctl stop NetworkManager.service
 touch /etc/NetworkManager/conf.d/nm.conf
-echo -e "[device]\nWiFi.backend=iwd" > /etc/NetworkManager/conf.d/nm.conf
+echo -e '[device]\nWiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
 touch /etc/iwd/main.conf
-echo -e "[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd" > /etc/iwd/main.conf
+echo -e '[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
 systemctl enable -now iwd.service
 systemctl start NetworkManager.service
 ~~~
@@ -213,7 +213,7 @@ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 + NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
 + conman ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
-+ iwgtk, ist nicht in debian-quellen, er muss aus dem Sourcecode gebaut werden, auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
++ iwgtk, ist nicht in debian-quellen, es muss aus dem Sourcecode gebaut werden und ist auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
 
 ### Zurück zum wpa_supplicant
 
@@ -236,4 +236,4 @@ systemctl start NetworkManager.service
 ```
 Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
 
-<div id="rev">Page last revised 10-03-2021</div>
+<div id="rev">Page last revised 24-03-2021</div>
