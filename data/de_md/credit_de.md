@@ -62,6 +62,7 @@ We **need** contributors for siduction release art!
 
 + A.Konrad (akli) (for his work on getting the manual back in shape)
 
++ Vinzenz Vietzke (vinzv)
 ---
 
 ### Credit für das original manual Team.
