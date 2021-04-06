@@ -12,6 +12,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Für die Verwendung mit pandoc optimiert.
 + Review
 + Link zu systemd.automount auf systemd.mount gesetzt, da beides in systemd.mount behandelt wird.
++ Absätze "Unit-Dateien" und "Quellen" eingefügt.
+
+Änderungen 2021-04
+
++ Durch "systemd-unit-datei" erforderliche Anpassungen
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -39,9 +44,16 @@ Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens 
 Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.htm).  
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
 
-### Units
+### Unit-Dateien
 
-Die folgenden Unit-Typen sind verfügbar und, sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
+Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
+Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ, und können die generischen Sektionen "[Unit]" und "[Install]" enthalten.  
+Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm) erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen "[Unit]" und "[Install]".
+
+#### Unit Typen
+
+Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite [systemd.unit](./systemd-unit_de.htm) zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.  
+Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
 
 1. **Dienste-Units** ([systemd.service](./systemd-service_de.htm)), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
 
@@ -67,7 +79,7 @@ Die folgenden Unit-Typen sind verfügbar und, sofern verlinkt, führt der Link z
 
 ### systemd im Dateisystem
 
-Die Unit-Dateien mit den Direktiven für systemd befinden sich im Verzeichnis **/lib/systemd/system/**. Das ist unabhängig vom Status der Unit in systemd.  
+Die Unit-Dateien, die durch den Paketverwalter der Distribution installiert wurden, befinden sich im Verzeichnis **/lib/systemd/system/**. Selbst erstellte Unit-Dateien legen wir im Verzeichnis **/usr/local/lib/systemd/system/** ab. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)  
 Die Steuerung des Status (enabled, disabled) einer Unit erfolgt über Symlink im Verzeichnis **/etc/systemd/system/**.  
 Das Verzeichnis **/run/systemd/system/** beinhaltet zur Laufzeit erstellte Unit-Dateien.
 
@@ -150,4 +162,12 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-03-12</div>
+## Quellen
+
+[Deutsche Manpage 'systemd'](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html)  
+[Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
+[Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
+
+---
+
+<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

@@ -6,8 +6,12 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderungen 2021-02 bis 03:
 
-+ Neu "systemd-mount Unit"
++ Neu "systemd-mount Unit"  
 + Für die Verwendung mit pandoc optimiert.
+
+Änderungen 2021-04
+
++ Durch "systemd-unit-datei" erforderliche Anpassungen
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -15,7 +19,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## systemd der System- und Dienste-Manager
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit **.mount** und **.automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
 
 ---
@@ -92,7 +96,7 @@ Dabei ist zu beachten, keine Bindestriche "-" in den Dateinamen zu verwenden, de
 
 + unzulässig: /data/home-backup
 + zulässig: /data/home_backup
-+ zulässig: /data/home\x2dbackup
++ zulässig: /data/home\\x2dbackup
 
 Um einen fehlerfreien Dateinamen für die *.mount*- und *.automount*-Unit zu erhalten, verwenden wir im Terminal den Befehl "systemd-escape".
 
@@ -104,7 +108,7 @@ $ systemd-escape -p --suffix=mount "/data/home-backup"
 ### Festplatten-Partition
 
 Eine Partition soll nach jedem Systemstart unter "/disks/TEST" erreichbar sein.  
-Wir erstellen mit einem Texteditor die Datei "disks-TEST.mount" im Verzeichnis "/lib/systemd/system/".
+Wir erstellen mit einem Texteditor die Datei "disks-TEST.mount" im Verzeichnis "/usr/local/lib/systemd/system/". (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)
 
 ~~~
 [Unit]
@@ -132,7 +136,7 @@ Anschließend aktivieren und starten wir die neue *.mount*-Unit.
 ### NFS
 
 Das "document-root"-Verzeichnis eines Apache Webservers im heimischen Netzwerk soll in das Home-Verzeichnis des Arbeitsplatz-Rechners mittels NFS eingehängt werden.  
-Wir erstellen mit einem Texteditor die Datei "home-\<user\>-www_data.mount" im Verzeichnis "/lib/systemd/system/".  
+Wir erstellen mit einem Texteditor die Datei "home-\<user\>-www_data.mount" im Verzeichnis "/usr/local/lib/systemd/system/".  
 "\<user\>" bitte mit dem eigenen Namen ersetzen.
 
 ~~~
@@ -180,7 +184,8 @@ Die Statusabfrage bestätigt die Aktion.
 ~~~
 # systemctl status home-<user>-www_data.mount --no-pager
 ● home-<user>-www_data.mount - Mount server1/var/www/ using NFS
-     Loaded: loaded (/lib/systemd/system/home-<user>-www_data.mount; disabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.mount; \
+             disabled; vendor preset: enabled)
      Active: active (mounted) since Wed 2021-03-10 16:27:58 CET; 8min ago
 TriggeredBy: ● home-<user>-www_data.automount
       Where: /home/<user>/www_data
@@ -193,7 +198,8 @@ TriggeredBy: ● home-<user>-www_data.automount
 
 # systemctl status home-<user>-www_data.automount --no-pager
 ● home-<user>-www_data.automount - Automount server1/var/www/ usuing NFS
-     Loaded: loaded (/lib/systemd/system/home-<user>-www_data.automount; enabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.automount; \
+             enabled; vendor preset: enabled)
      Active: active (running) since Wed 2021-03-10 16:27:58 CET; 8min ago
    Triggers: ● home-<user>-www_data.mount
       Where: /home/<user>/www_data
@@ -238,9 +244,9 @@ Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beisp
 [Manjaro Forum, systemd.mount](https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191)  
 [Manjaro Forum, Use systemd to mount ANY device](https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185)  
 [Linuxnews, nfs per systemd](https://linuxnews.de/2019/12/nfs-freigaben-per-systemd-einbinden/)  
-[Debianforum, Netzlaufwerke einbinden](https://wiki.debianforum.de/Netzlaufwerke_einbinden)
+[Debianforum, Netzlaufwerke einbinden](https://wiki.debianforum.de/Netzlaufwerke_einbinden)  
 [Ubuntuusers, Mount-Units](https://wiki.ubuntuusers.de/systemd/Mount_Units/)
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-03-10</div>
+<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

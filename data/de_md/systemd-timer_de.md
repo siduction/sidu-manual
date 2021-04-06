@@ -16,13 +16,17 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Minuten -> Sekunden
 + geringe Layout Änderung
 
+Änderungen 2021-04
+
++ Durch "systemd-unit-datei" erforderliche Anpassungen
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
 ## Systemd, der System- und Dienste-Manager
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.timer**, mit der zeitgesteuert Aktionen ausgelöst werden können.
 
 ---
@@ -37,7 +41,7 @@ Auch ist es möglich, dass eine "*.timer*"-Unit die gewünschten Aktionen nur ei
 
 ### Benötigte Dateien
 
-Die **systemd-timer**-Unit benötigt zwei Dateien mit dem gleichen Basename im Verzeichnis */lib/systemd/system/* für ihre Funktion. Das sind die
+Die **systemd-timer**-Unit benötigt zwei Dateien mit dem gleichen Basename im Verzeichnis */usr/local/lib/systemd/system/* für ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
 
 + Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Auslöser für die Service-Unit enthält  
     und die  
@@ -49,7 +53,7 @@ Wir erstellen in dem Beispiel ein regelmäßiges Backup mit *rsync*.
 
 ### .timer-Unit anlegen
 
-Wir legen die Datei **backup.timer** im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei **backup.timer** im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -84,7 +88,7 @@ Die im Beispiel enthaltene Option "*Persistent=*" speichert den Zeitpunkt, zu de
 
 Die *.service-Unit* wird von der *.timer-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reicht die Beschreibung der Unit in der Sektion *[Unit]* und in der Sektion *[Service]* der auszuführende Befehl nach der Option *ExecStart=* aus.
 
-Wir legen die Datei **backup.service** im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei **backup.service** im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -104,7 +108,7 @@ Mit dem folgenden Befehl gliedern wir die *.timer-Unit* in systemd ein.
 ~~~
 # systemctl enable backup.timer
 Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
-  → /lib/systemd/system/backup.timer.
+  → /usr/local/lib/systemd/system/backup.timer.
 ~~~
 
 Der analoge Befehl für die *.service-Unit* ist nicht notwendig und würde auch zu einem Fehler führen, da in ihr keine *[Install]* Sektion enthalten ist.
@@ -146,4 +150,4 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-27</div>
+<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

@@ -9,13 +9,17 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Neu "systemd-path Unit"
 + Für die Verwendung mit pandoc optimiert.
 
+Änderungen 2021-04:
+
++ Durch "systemd-unit-datei" erforderliche Anpassungen
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
 ## systemd der System- und Dienste-Manager
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.path**, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.
 
 ---
@@ -30,7 +34,7 @@ Die Pfad-spezifischen Optionen werden in dem Abschnitt *[Path]* konfiguriert.
 
 ### Benötigte Dateien
 
-Die **systemd-path**-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung, im Verzeichnis */lib/systemd/system/*. Das sind die
+Die **systemd-path**-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung, im Verzeichnis */usr/local/lib/systemd/system/*. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
 
 + Path-Unit-Datei (\<name\>.path), welche die Überwachung und den Auslöser für die Service-Unit enthält  
     und die  
@@ -125,7 +129,7 @@ Die außerhalb der Umrandung liegende "*server1-watch.service*"-Unit übernimmt 
 
 ### .path-Unit anlegen
 
-Wir legen die Datei *server1.path* im Verzeichnis */lib/systemd/system/*, die die Datei */var/www/changed* auf Änderungen überwacht, mit folgendem Inhalt an:
+Wir legen die Datei *server1.path* im Verzeichnis */usr/local/lib/systemd/system/*, die die Datei */var/www/changed* auf Änderungen überwacht, mit folgendem Inhalt an:
 
 ~~~
 [Unit]
@@ -154,7 +158,7 @@ Die Option "*PathModifid=*" (oder andere, siehe oben) kann mehrfach angegeben we
 
 Die *server1.service*-Unit wird von der *server1.path*-Unit aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reichen die Beschreibung der Unit in der Sektion *[Unit]*, und in der Sektion *[Service]* die auszuführenden Befehle, aus.
 
-Wir legen die Datei *server1.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei *server1.service* im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -176,7 +180,7 @@ Zuerst wird die Datei */var/www/changed* auf 0-Bite zurückgesetzt und danach de
 
 #### Zusätzliche .service-Unit anlegen
 
-Da die *.path-Unit* Verzeichnisse nicht rekursiv überwachen kann, benötigen wir für unser Beispiel eine zusätzliche *.service-Unit*. Wir legen die Datei *server1-watch.service* im Verzeichnis */lib/systemd/system/* mit folgendem Inhalt an.
+Da die *.path-Unit* Verzeichnisse nicht rekursiv überwachen kann, benötigen wir für unser Beispiel eine zusätzliche *.service-Unit*. Wir legen die Datei *server1-watch.service* im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -210,11 +214,11 @@ Auf Grund der Abhängigkeit gliedern wir zuerst die *server1.path-Unit* und dann
 ~~~
 # systemctl enable server1.path
 Created symlink /etc/systemd/system/multi-user.target.wants/server1.path \
-  → /lib/systemd/system/server1.path.
+  → /usr/local/lib/systemd/system/server1.path.
   
 # systemctl enable server1-watch.service
 Created symlink /etc/systemd/system/multi-user.target.wants/server1-watch.service \
-  → /lib/systemd/system/server1-watch.service.
+  → /usr/local/lib/systemd/system/server1-watch.service.
 ~~~
 
 Nun ist das Monitoring auch gleich aktiv, wie uns die Statusausgaben aller drei Units zeigen.
@@ -222,7 +226,7 @@ Nun ist das Monitoring auch gleich aktiv, wie uns die Statusausgaben aller drei 
 ~~~
 # systemctl status server1-watch.service
 ● server1-watch.service - Watching server1 folder.
-     Loaded: loaded (/lib/systemd/system/server1-watch.service; enabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/server1-watch.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2021-02-21 19:25:20 CET; 1min 49s ago
     Process: 23788 ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/ \
       (code=exited, status=0/SUCCESS)
@@ -238,7 +242,7 @@ Feb 21 19:25:20 lap1 systemd[1]: Started Watching server1 folder..
 
 # systemctl status server1.path
 ● server1.path - Monitoring "changed" file!
-     Loaded: loaded (/lib/systemd/system/server1.path; enabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/server1.path; enabled; vendor preset: enabled)
      Active: active (waiting) since Sun 2021-02-21 19:25:20 CET; 3min 27s ago
    Triggers: ● server1.service
 
@@ -246,7 +250,7 @@ Feb 21 19:25:20 lap1 systemd[1]: Started Monitoring "changed" file!.
 
 # systemctl status server1.service
 ● server1.service - Change permissions in server1 folder
-     Loaded: loaded (/lib/systemd/system/server1.service; static)
+     Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)
      Active: inactive (dead)
 TriggeredBy: ● server1.path
 ~~~
@@ -266,7 +270,7 @@ Eine erneute Statusabfrage generiert zusätzlich einige Protokollzeilen, denen w
 ~~~
 # systemctl status server1.service
 ● server1.service - Change permissions in server1 folder
-     Loaded: loaded (/lib/systemd/system/server1.service; static)
+     Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)
      Active: inactive (dead) since Mon 2021-02-22 17:55:36 CET; 1min 43s ago
 TriggeredBy: ● server1.path
     Process: 2822 ExecStartPre=truncate -s 0 /var/www/changed (code=exited, status=0/SUCCESS)
@@ -292,4 +296,4 @@ Ein anders gelagertes Beispiel:
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-22</div>
+<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

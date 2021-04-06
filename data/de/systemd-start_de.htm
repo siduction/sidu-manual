@@ -28,11 +28,12 @@ img             {border: 0.1em solid #CCC;}
 <li><a href="#systemd-der-system--und-dienste-manager">systemd der System- und Dienste-Manager</a>
 <ul>
 <li><a href="#konzepte">Konzepte</a></li>
-<li><a href="#units">Units</a></li>
+<li><a href="#unit-dateien">Unit-Dateien</a></li>
 <li><a href="#systemd-im-dateisystem">systemd im Dateisystem</a></li>
 <li><a href="#weitere-funktionen-von-systemd">Weitere Funktionen von systemd</a></li>
 <li><a href="#handhabung-von-diensten-mittels-systemd">Handhabung von Diensten mittels systemd</a></li>
 </ul></li>
+<li><a href="#quellen">Quellen</a></li>
 </ul>
 </nav>
 <p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
@@ -46,6 +47,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 <li>Für die Verwendung mit pandoc optimiert.</li>
 <li>Review</li>
 <li>Link zu systemd.automount auf systemd.mount gesetzt, da beides in systemd.mount behandelt wird.</li>
+<li>Absätze “Unit-Dateien” und “Quellen” eingefügt.</li>
+</ul>
+<p>Änderungen 2021-04</p>
+<ul>
+<li>Durch “systemd-unit-datei” erforderliche Anpassungen</li>
 </ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <hr />
@@ -62,8 +68,13 @@ Entwickelt wird es federführend von den Red Hat Entwicklern Lennart Poettering 
 <p>Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens “<em>Units</em>” in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.<br />
 Units können “<em>aktiv</em>” oder “<em>inaktiv</em>”, sowie im Prozess der “<em>Aktivierung</em>” oder “<em>Deaktivierung</em>”, d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand “<em>fehlgeschlagen</em>” ist auch verfügbar, der sehr ähnlich zu “<em>inaktiv</em>” ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite <a href="./systemd-journald_de.htm">Sytemd-Journal</a>.<br />
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.</p>
-<h3 id="units">Units</h3>
-<p>Die folgenden Unit-Typen sind verfügbar und, sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:</p>
+<h3 id="unit-dateien">Unit-Dateien</h3>
+<p>Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.<br />
+Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ, und können die generischen Sektionen “[Unit]” und “[Install]” enthalten.<br />
+Die Handbuchseite <a href="./systemd-unit-datei_de.htm">Systemd Unit-Datei</a> erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen “[Unit]” und “[Install]”.</p>
+<h4 id="unit-typen">Unit Typen</h4>
+<p>Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite <a href="./systemd-unit_de.htm">systemd.unit</a> zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.<br />
+Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:</p>
 <ol type="1">
 <li><p><strong>Dienste-Units</strong> (<a href="./systemd-service_de.htm">systemd.service</a>), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern.</p></li>
 <li><p><strong>Socket-Units</strong> (systemd.socket), die lokale IPC- oder Netzwerk-Sockets in dem System kapseln, nützlich für Socket-basierte Aktivierung.</p></li>
@@ -78,7 +89,7 @@ Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateie
 <li><p><strong>Scope-Units</strong> (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.</p></li>
 </ol>
 <h3 id="systemd-im-dateisystem">systemd im Dateisystem</h3>
-<p>Die Unit-Dateien mit den Direktiven für systemd befinden sich im Verzeichnis <strong>/lib/systemd/system/</strong>. Das ist unabhängig vom Status der Unit in systemd.<br />
+<p>Die Unit-Dateien, die durch den Paketverwalter der Distribution installiert wurden, befinden sich im Verzeichnis <strong>/lib/systemd/system/</strong>. Selbst erstellte Unit-Dateien legen wir im Verzeichnis <strong>/usr/local/lib/systemd/system/</strong> ab. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.)<br />
 Die Steuerung des Status (enabled, disabled) einer Unit erfolgt über Symlink im Verzeichnis <strong>/etc/systemd/system/</strong>.<br />
 Das Verzeichnis <strong>/run/systemd/system/</strong> beinhaltet zur Laufzeit erstellte Unit-Dateien.</p>
 <h3 id="weitere-funktionen-von-systemd">Weitere Funktionen von systemd</h3>
@@ -133,8 +144,13 @@ disabled</code></pre>
 <pre><code># systemctl stop &lt;unit&gt;</code></pre>
 <p>Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden “start”-Befehl aktivieren wir die Unit wieder.</p>
 <hr />
+<h2 id="quellen">Quellen</h2>
+<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.1.de.html">Deutsche Manpage ‘systemd’</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutsche Manpage ‘systemd.unit’</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html">Deutsche Manpage ‘systemd.syntax’</a></p>
+<hr />
 <div id="rev">
-Seite zuletzt aktualisert 2021-03-12
+Seite zuletzt aktualisert 2021-04-06
 </div>
 </body>
 </html>

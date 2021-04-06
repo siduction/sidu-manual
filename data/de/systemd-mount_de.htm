@@ -45,13 +45,18 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 <strong>Status: RC2</strong></p>
 <p>Änderungen 2021-02 bis 03:</p>
 <ul>
-<li>Neu “systemd-mount Unit”</li>
+<li>Neu “systemd-mount Unit”<br />
+</li>
 <li>Für die Verwendung mit pandoc optimiert.</li>
+</ul>
+<p>Änderungen 2021-04</p>
+<ul>
+<li>Durch “systemd-unit-datei” erforderliche Anpassungen</li>
 </ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <hr />
 <h2 id="systemd-der-system--und-dienste-manager">systemd der System- und Dienste-Manager</h2>
-<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.htm">Systemd-Start</a>.<br />
+<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.htm">Systemd-Start</a>. Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.htm">Systemd Unit-Datei</a>.<br />
 In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit <strong>.mount</strong> und <strong>.automount</strong>. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.</p>
 <hr />
 <h2 id="systemd-mount">systemd-mount</h2>
@@ -103,14 +108,14 @@ Dabei ist zu beachten, keine Bindestriche “-” in den Dateinamen zu verwenden
 <ul>
 <li>unzulässig: /data/home-backup</li>
 <li>zulässig: /data/home_backup</li>
-<li>zulässig: /data/home2dbackup</li>
+<li>zulässig: /data/home\x2dbackup</li>
 </ul>
 <p>Um einen fehlerfreien Dateinamen für die <em>.mount</em>- und <em>.automount</em>-Unit zu erhalten, verwenden wir im Terminal den Befehl “systemd-escape”.</p>
 <pre><code>$ systemd-escape -p --suffix=mount &quot;/data/home-backup&quot;
   data/home\x2dbackup.mount</code></pre>
 <h3 id="festplatten-partition">Festplatten-Partition</h3>
 <p>Eine Partition soll nach jedem Systemstart unter “/disks/TEST” erreichbar sein.<br />
-Wir erstellen mit einem Texteditor die Datei “disks-TEST.mount” im Verzeichnis “/lib/systemd/system/”.</p>
+Wir erstellen mit einem Texteditor die Datei “disks-TEST.mount” im Verzeichnis “/usr/local/lib/systemd/system/”. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.)</p>
 <pre><code>[Unit]
 Description=Mount /dev/sdb7 at /disks/TEST
 After=blockdev@dev-disk-by\x2duuid-a7af4b19\x2df29d\x2d43bc\x2d3b12\x2d87924fc3d8c7.target
@@ -129,7 +134,7 @@ WantedBy=multi-user.target</code></pre>
 <pre><code># systemctl enable --now disks-TEST.mount</code></pre>
 <h3 id="nfs">NFS</h3>
 <p>Das “document-root”-Verzeichnis eines Apache Webservers im heimischen Netzwerk soll in das Home-Verzeichnis des Arbeitsplatz-Rechners mittels NFS eingehängt werden.<br />
-Wir erstellen mit einem Texteditor die Datei “home-&lt;user&gt;-www_data.mount” im Verzeichnis “/lib/systemd/system/”.<br />
+Wir erstellen mit einem Texteditor die Datei “home-&lt;user&gt;-www_data.mount” im Verzeichnis “/usr/local/lib/systemd/system/”.<br />
 “&lt;user&gt;” bitte mit dem eigenen Namen ersetzen.</p>
 <pre><code>[Unit]
 Description=Mount server1/var/www/ using NFS
@@ -163,7 +168,8 @@ WantedBy=multi-user.target</code></pre>
 Die Statusabfrage bestätigt die Aktion.</p>
 <pre><code># systemctl status home-&lt;user&gt;-www_data.mount --no-pager
 ● home-&lt;user&gt;-www_data.mount - Mount server1/var/www/ using NFS
-     Loaded: loaded (/lib/systemd/system/home-&lt;user&gt;-www_data.mount; disabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/home-&lt;user&gt;-www_data.mount; \
+             disabled; vendor preset: enabled)
      Active: active (mounted) since Wed 2021-03-10 16:27:58 CET; 8min ago
 TriggeredBy: ● home-&lt;user&gt;-www_data.automount
       Where: /home/&lt;user&gt;/www_data
@@ -176,7 +182,8 @@ TriggeredBy: ● home-&lt;user&gt;-www_data.automount
 
 # systemctl status home-&lt;user&gt;-www_data.automount --no-pager
 ● home-&lt;user&gt;-www_data.automount - Automount server1/var/www/ usuing NFS
-     Loaded: loaded (/lib/systemd/system/home-&lt;user&gt;-www_data.automount; enabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/home-&lt;user&gt;-www_data.automount; \
+             enabled; vendor preset: enabled)
      Active: active (running) since Wed 2021-03-10 16:27:58 CET; 8min ago
    Triggers: ● home-&lt;user&gt;-www_data.mount
       Where: /home/&lt;user&gt;/www_data
@@ -210,10 +217,11 @@ Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
 <a href="https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191">Manjaro Forum, systemd.mount</a><br />
 <a href="https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185">Manjaro Forum, Use systemd to mount ANY device</a><br />
 <a href="https://linuxnews.de/2019/12/nfs-freigaben-per-systemd-einbinden/">Linuxnews, nfs per systemd</a><br />
-<a href="https://wiki.debianforum.de/Netzlaufwerke_einbinden">Debianforum, Netzlaufwerke einbinden</a> <a href="https://wiki.ubuntuusers.de/systemd/Mount_Units/">Ubuntuusers, Mount-Units</a></p>
+<a href="https://wiki.debianforum.de/Netzlaufwerke_einbinden">Debianforum, Netzlaufwerke einbinden</a><br />
+<a href="https://wiki.ubuntuusers.de/systemd/Mount_Units/">Ubuntuusers, Mount-Units</a></p>
 <hr />
 <div id="rev">
-Seite zuletzt aktualisert 2021-03-10
+Seite zuletzt aktualisert 2021-04-06
 </div>
 </body>
 </html>

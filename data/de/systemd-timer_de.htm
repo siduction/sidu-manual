@@ -48,10 +48,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 </ul>
 <p>Änderungen 2021-02 + Review</p>
 <p>Änderungen 2021-03 + Minuten -&gt; Sekunden + geringe Layout Änderung</p>
+<p>Änderungen 2021-04</p>
+<ul>
+<li>Durch “systemd-unit-datei” erforderliche Anpassungen</li>
+</ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <hr />
 <h2 id="systemd-der-system--und-dienste-manager">Systemd, der System- und Dienste-Manager</h2>
-<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.htm">Systemd-Start</a>.<br />
+<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.htm">Systemd-Start</a>. Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.htm">Systemd Unit-Datei</a>.<br />
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit <strong>systemd.timer</strong>, mit der zeitgesteuert Aktionen ausgelöst werden können.</p>
 <hr />
 <h2 id="systemd-timer">systemd-timer</h2>
@@ -60,7 +64,7 @@ Bei entsprechender Konfiguration können verpasste Läufe, während die Maschine
 Auch ist es möglich, dass eine “<em>.timer</em>”-Unit die gewünschten Aktionen nur ein einziges Mal zu einem vorher definierten Termin auslöst.</p>
 <hr />
 <h3 id="benötigte-dateien">Benötigte Dateien</h3>
-<p>Die <strong>systemd-timer</strong>-Unit benötigt zwei Dateien mit dem gleichen Basename im Verzeichnis <em>/lib/systemd/system/</em> für ihre Funktion. Das sind die</p>
+<p>Die <strong>systemd-timer</strong>-Unit benötigt zwei Dateien mit dem gleichen Basename im Verzeichnis <em>/usr/local/lib/systemd/system/</em> für ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
 <ul>
 <li>Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Auslöser für die Service-Unit enthält<br />
 und die<br />
@@ -70,7 +74,7 @@ und die<br />
 <p>Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in <em>/usr/local/bin/</em>, das von der Service-Unit ausgeführt wird.</p>
 <p>Wir erstellen in dem Beispiel ein regelmäßiges Backup mit <em>rsync</em>.</p>
 <h3 id="timer-unit-anlegen">.timer-Unit anlegen</h3>
-<p>Wir legen die Datei <strong>backup.timer</strong> im Verzeichnis <em>/lib/systemd/system/</em> mit folgendem Inhalt an.</p>
+<p>Wir legen die Datei <strong>backup.timer</strong> im Verzeichnis <em>/usr/local/lib/systemd/system/</em> mit folgendem Inhalt an.</p>
 <pre><code>[Unit]
 Description=&quot;Backup my home directory&quot;
 
@@ -98,7 +102,7 @@ Beide Optionen zusammen lösen die zugehörige <em>.service-Unit</em> 90 Sekunde
 <p>Die im Beispiel enthaltene Option “<em>Persistent=</em>” speichert den Zeitpunkt, zu dem die <em>.service-Unit</em> das letzte Mal ausgelöst wurde, als leere Datei im Verzeichnis <em>/var/lib/systemd/timers/</em>. Dies ist nützlich, um verpasste Läufe, als die Maschine ausgeschaltet war, nachzuholen.</p>
 <h3 id="service-unit-anlegen">.service-Unit anlegen</h3>
 <p>Die <em>.service-Unit</em> wird von der <em>.timer-Unit</em> aktiviert und kontrolliert und benötigt daher keine <em>[Install]</em> Sektion. Somit reicht die Beschreibung der Unit in der Sektion <em>[Unit]</em> und in der Sektion <em>[Service]</em> der auszuführende Befehl nach der Option <em>ExecStart=</em> aus.</p>
-<p>Wir legen die Datei <strong>backup.service</strong> im Verzeichnis <em>/lib/systemd/system/</em> mit folgendem Inhalt an.</p>
+<p>Wir legen die Datei <strong>backup.service</strong> im Verzeichnis <em>/usr/local/lib/systemd/system/</em> mit folgendem Inhalt an.</p>
 <pre><code>[Unit]
 Description=&quot;Command to backup my home directory&quot;
 
@@ -110,7 +114,7 @@ ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/back
 <p>Mit dem folgenden Befehl gliedern wir die <em>.timer-Unit</em> in systemd ein.</p>
 <pre><code># systemctl enable backup.timer
 Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
-  → /lib/systemd/system/backup.timer.</code></pre>
+  → /usr/local/lib/systemd/system/backup.timer.</code></pre>
 <p>Der analoge Befehl für die <em>.service-Unit</em> ist nicht notwendig und würde auch zu einem Fehler führen, da in ihr keine <em>[Install]</em> Sektion enthalten ist.</p>
 <h3 id="timer-unit-manuell-auslösen">.timer-Unit manuell auslösen</h3>
 <p>Es wird nicht die <em>.timer-Unit</em>, sondern die von ihr auszulösende <em>.service-Unit</em> aufgerufen.</p>
@@ -138,7 +142,7 @@ Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
 <a href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
 <hr />
 <div id="rev">
-Seite zuletzt aktualisert 2021-02-27
+Seite zuletzt aktualisert 2021-04-06
 </div>
 </body>
 </html>
