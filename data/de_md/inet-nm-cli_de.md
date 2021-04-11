@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-05:
 
@@ -11,7 +11,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 Änderungen 2020-06:
 + Dateinamen und Titelanker geändert um das Dokument sinnvoll in die Dateihirarchie zu integrieren.
 
-Änderungen 2020-12:
+Änderungen 2021-04:
 
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt teilweise überarbeitet.
@@ -196,4 +196,4 @@ nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebunde
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2020-04-11</div>
