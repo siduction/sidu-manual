@@ -2,7 +2,11 @@
 
 ## Basisanleitung zum Aufsetzen einer WLAN-Verbindung: WiFi
 
- `Aufgrund der komplexen rechtlichen Situation stellt siduction nur freie Software im Sinne des Debian Free Software Guide (dfsg) zur Verfügung. [Hier finden sich zusätzliche Informationen zu nicht freier Firmware.](nf-firm-de.htm#non-free-firmware) `
+    Aufgrund der komplexen rechtlichen Situation stellt siduction nur freie Software  
+    im Sinne des Debian Free Software Guide (dfsg)  zur Verfügung.
+    
+[Hier finden sich zusätzliche Informationen zu nicht freier Firmware.](nf-firm_de.md)`
+ 
 Um WiFi aufzusetzen, braucht man für ein paar Minuten eine kabelgebundene Netzwerkverbindung um die entsprechende Firmware aus dem Internet laden zu können.
 
 Falls eine kabelgebundene Netzwerkverbindung nicht hergestellt werden kann, besteht die Möglichkeit, die benötigte Firmware auch von einem Wechselmedium (CD-R, USB-Stick u.a.) zu installieren.

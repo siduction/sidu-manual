@@ -60,6 +60,16 @@ Wer in Xorg und noX weiterhin *wpa_supplicant* anstatt *iwd* nutzen möchte, bef
 + Demaskieren und starten des wpa_supplicant.service.
 + Den NetworkManager.service wieder starten.
 
+~~~
+# systemctl stop iwd.service
+# systemctl mask iwd.service
+# sudo systemctl stop NetworkManager.service
+# sudo mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
+# systemctl unmask wpa_supplicant.service
+# systemctl enable –now wpa_supplicant.service
+# systemctl start NetworkManager.service
+~~~
+
 Jetzt wird wpa_supplicant für die Verbindung mit der WiFi-Hardware benutzt.
 
 ### iwd installieren
@@ -75,9 +85,9 @@ Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 # systemctl mask wpa_supplicant.service
 # systemctl stop NetworkManager.service
 # touch /etc/NetworkManager/conf.d/nm.conf
-# echo -e "[device]\nwifi.backend=iwd" > /etc/NetworkManager/conf.d/nm.conf
+# echo -e '[device]\nwifi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
 # touch /etc/iwd/main.conf
-# echo -e "[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd" > /etc/iwd/main.conf
+# echo -e '[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
 # systemctl enable -now iwd.service
 # systemctl start NetworkManager.service
 ~~~
