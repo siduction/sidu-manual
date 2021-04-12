@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2 - RC3**
+**Status: RC3**
 
 Änderungen 2020-05:
 
@@ -33,12 +33,18 @@ Frage 2021-02-03
  (WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md)).
   Wir haben IWD und Network-Manger und auch conman, was braucht es da noch wpagui?
   Ich glaube wir müssen den ganzen Netzwerkabschnitt im Handbuch überdenken!
+  
+Änderungen 2021-04-12:
+
++ Link und Hinweis zu wpa-gui entfernt, Links zu NetworkManager und IWD hinzugefügt.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-siduction stellt auf der Live-ISO, abgesehen von nicht freier Firmware, nur DFSG-freie Software zur Verfügung. Hinweise zur Installation proprietärer Software finden sich hier im Handbuch.
+## Hinweis zur Software auf dem Live-ISO
+
+siduction stellt auf der Live-ISO DFSG-freie Software zur Verfügung als auch nicht freie Firmware. Zur Deinstallation proprietärer Software benutzt man den Befehl **`apt purge $(vrms -s)`** oder unser Script **`remove-nonfree`** nach der Installation.
 
 Das ISO basiert ausschließlich auf zum Veröffentlichungszeitpunkt jeweils aktuellem Debian Sid, bereichert und stabilisiert durch eigene Pakete und Skripte aus den siduction-Repositories. Als Kernel wird der jeweils aktuelle Vanilla Mainline Kernel verwendet und mit Patches versehen. ACPI und DMA sind aktiviert.
 
@@ -87,7 +93,7 @@ Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne ers
 
 ## Minimale Systemanforderungen
 
-für: KDE-Plasma, Gnome, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
+für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 
 ### Prozessoranforderungen: 64Bit CPU
 
@@ -101,7 +107,7 @@ für: KDE-Plasma, Gnome, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 ### Speicheranforderungen:
 
     KDE-Plasma: ≥ 4 GByte RAM
-    GNOME:      ≥ 4 GByte RAM
+    Mate:      ≥ 4 GByte RAM
     Cinnamon:   ≥ 4 GByte RAM
     XFCE:       ≥ 4 GByte RAM
     LXQT:       ≥ 512 MByte RAM
@@ -125,7 +131,9 @@ Als Internetbrowser werden (je nach Variante) [Firefox](https://mozilla.org), od
 
 Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin,Thunar und PCManFM zur Verfügung.
 
-Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung, und für WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md). Xorg und nox werden mit iwd als ausgeliefert, dieser kann via nmtui/nmcli oder iwctl konfiguriert werden. 
+Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung.
+
+Xorg und nox werden mit [IWD](./inet-iwd_de.md) als ausgeliefert, dieser kann via [nmtui/nmcli](./inet-nm-cli_de.md) oder [iwctl](./inet-iwd_de.md) konfiguriert werden. 
 
 Informationen zu nicht freien Treibern findet man [hier](./nf-firm_de.md)
 
@@ -143,4 +151,4 @@ siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siductio
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-04-12</div>
