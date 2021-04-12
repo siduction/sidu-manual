@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-05:
 
@@ -17,9 +17,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderung 26.02.2021
 
-+ mirror Süpdamerika (entfernt) scheint nicht mehr zu funktionieren, bzw nicht mehr zu existieren!
++ Mirror Südamerika (entfernt) scheint nicht mehr zu funktionieren, bzw nicht mehr zu existieren!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+---
 
 ## Die siduction ISO herunterladen
 
@@ -155,4 +157,4 @@ Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Wi
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-04-12</div>
