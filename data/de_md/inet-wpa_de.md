@@ -1,5 +1,17 @@
 <div class="divider" id="wpa-basic"></div>
 
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: OBSOLET**
+
+Änderungen 2021-04
+Diese Anleitung wird wirklich nicht mehr gebraucht.
+WIFI und roaming mit wpa_supplicant wird Heutzutage via NetworkManager eingerichtet.
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+---
+
 ## Basisanleitung zum Aufsetzen einer WLAN-Verbindung: WiFi
 
     Aufgrund der komplexen rechtlichen Situation stellt siduction nur freie Software  
