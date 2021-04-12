@@ -94,7 +94,7 @@ Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.free
 Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl "*systemctl*".
 
 + systemctl --all - listet alle Units, aktive und inaktive.
-+ systemctl --t [NAME] - listet nur Units des bezeichneten Typ.
++ systemctl -t [NAME] - listet nur Units des bezeichneten Typ.
 + systemctl list-units - listet alle aktiven Units.
 + systemctl start [NAME...] - startet (aktiviert) eine oder mehrere Units.
 + systemctl stop [NAME...] - (deaktiviert) eine oder mehrere Units.
