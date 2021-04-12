@@ -1,6 +1,18 @@
 
 <div class="divider" id="install-add"></div>
 
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: OBSOLET**
+
+Änderungen 2021-04  
+Vollkommen veraltet  
+Einzig das Kapitel "Desktop friert ein" ist noch interesant.  
+Der Rest wie KDM usw. ist so etwas von 2012...  
+Wenn kein Einspruch kommt wird es in naher Zukunft entfernt.
+
+ENDE   INFOBEREICH FÜR DIE AUTOREN
+---
 ## Einige nützliche Programme, die nicht auf KDE Lite vorhanden sind
 
  `Die Aktivierung von non-free in /etc/apt/sources.list.d/debian.list kann notwendig sein` .
