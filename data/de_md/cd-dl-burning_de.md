@@ -22,6 +22,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
+# siduction ISO download und brennen
 
 ## Die siduction ISO herunterladen
 
@@ -157,4 +158,4 @@ Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Wi
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2021-04-12</div>
+<div id="rev">Zuletzt bearbeitet: 2021-04-13</div>
