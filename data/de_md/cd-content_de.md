@@ -41,6 +41,7 @@ Frage 2021-02-03
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
+# Inhalt der Live-ISO
 
 ## Hinweis zur Software auf dem Live-ISO
 
@@ -123,8 +124,6 @@ für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
     VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung.
     optisches Laufwerk oder USB Medien.
 
----
-
 ## Anwendungen und Hilfsprogramme
 
 Als Internetbrowser werden (je nach Variante) [Firefox](https://mozilla.org), oder [Chromium](https://chromium.woolyss.com/download/de/#linux) mitgeliefert.
@@ -142,8 +141,6 @@ Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md), [gdisk
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
 Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzele Veroffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver.
-
----
 
 ## Haftungsausschluss (Disclaimer)
 
