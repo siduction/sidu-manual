@@ -86,7 +86,7 @@ systemctl stop NetworkManager.service
 touch /etc/NetworkManager/conf.d/nm.conf
 echo -e '[device]\nWiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
 touch /etc/iwd/main.conf
-echo -e '[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
+echo -e '[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
 systemctl enable -now iwd.service
 systemctl start NetworkManager.service
 ~~~
