@@ -24,7 +24,7 @@ monofont="Liberation Mono"
 language=german
 #language=swedish
 nohyphenation=false
-
+linkcolor=blue 
 columns=onecolumn
 #columns=twocolumn
 
@@ -37,7 +37,7 @@ geometry=portrait
 
 # the command
 pandoc -N --toc -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath \
--V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin \
+-V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor \
 -V margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
 -V geometry=$geometry -V alignment=$alignment -V columns=$columns \
 -V fontsize=$fontsize -V nohyphenation=$nohyphenation \
