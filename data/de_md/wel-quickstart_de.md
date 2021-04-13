@@ -21,11 +21,11 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ------------------------------------------------
 
-## siduction Kurzanleitung
+# siduction Kurzanleitung
 
 siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.
 
-### Essenzielle Kapitel
+## Essenzielle Kapitel
 
 <warning>
 Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:
@@ -49,15 +49,15 @@ Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei
 
 + [Paketmanager und Systemaktualisierung](sys-admin-apt_de.md#apt-cook)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
 
-### Zur Stabilität von Debian Sid
+## Zur Stabilität von Debian Sid
 
 'Sid' ist der Name des Unstable-Repositories von Debian. Debian Sid wird regelmäßig mit neuen Softwarepaketen beschickt, wodurch diese Debian-Distribution sehr zeitnah die neuesten Versionen der jeweiligen Programme enthält. Dies bedeutet aber auch, dass zwischen einer Veröffentlichung im Upstream (von den Softwareentwicklern) und der Verteilung in Debian Sid weniger Zeit ist, um die Pakete zu testen.
 
-### Der siduction-Kernel
+## Der siduction-Kernel
 
 Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Problembehebung, erweiterte und aktualisierte Funktionen, Leistungsoptimierung, höhere Stabilität. Basis ist immer der aktuelle Kernel von [http://www.kernel.org/](https://www.kernel.org/) . 
 
-### Die Verwaltung von Softwarepaketen
+## Die Verwaltung von Softwarepaketen
 
 siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet apt und dpkg für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in `/etc/sources.list.d/*` 
 
@@ -120,28 +120,28 @@ init 5
 **apt full-upgrade** ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
 [Aktualisierung eines installierten Systems - full-upgrade](sys-admin-apt_de.md#apt-upgrade).
 
-### Konfiguration von Netzwerken
+## Konfiguration von Netzwerken
 
-'Ceni'  ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends  **wireless-tools**  bzw.  **wpasupplicant**  zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
+'nmcli'  ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends  **wireless-tools**  bzw.  **wpasupplicant**  zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
 
-Der Startbefehl in der Konsole ist **Ceni**  oder **ceni** . Falls das Skript nicht vorhanden ist, installiert man es mit:
+Der Startbefehl in der Konsole ist **nmcli**  oder **nmtui** . Falls das Skript nicht vorhanden ist, installiert man es mit:
 
 ~~~
-apt install ceni
+apt install network-manager
 ~~~
 
 Mehr Informationen unter [Internet und Netzwerk - Ceni](inet-ceni_de.md#netcardconfig) 
 
-### Runlevels - Ziel-Unit
+## Runlevels - Ziel-Unit
 
 Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).  
 Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](sys-admin-gen_de.md#ziel-unit) beschrieben.
 
-### Weitere Desktopumgebungen
+## Weitere Desktopumgebungen
 
 Plasma, Gnome, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.
 
-### Hilfe im IRC und im Forum
+## Hilfe im IRC und im Forum
 
 Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
