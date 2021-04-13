@@ -13,14 +13,14 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-## Apache einrichten
+# Apache einrichten
 
 Diese Handbuchseite basiert auf Apache 2.4.46.
 
 Unserem Beispiel aus der Installationsanleitung entsprechend, wollen wir einen *LAMP-Testserver für Entwickler* aufsetzen, der über LAN direkt mit dem Arbeitsplatz-PC verbunden ist. Darüber hinaus soll es aus Gründen der Sicherheit für den Server keine Verbindung zu einem lokalen Netzwerk oder gar zum Internet geben.  
 Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und Software- Aktualisierungen über eine zweite Netzwerkschnittstelle mit dem Internet verbunden.
 
-### Apache im Dateisystem
+## Apache im Dateisystem
 
 Debian hat die Dateien des Apache entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
@@ -37,7 +37,7 @@ Wichtig ist die Unterscheidung zwischen den verwendeten Variablen *ServerRoot* u
 **ServerRoot** ist das Konfigurationsverzeichnis, also "*/etc/apache2/*".  
 **DocumentRoot** beinhaltet die Webseitendaten, also "*/var/www/html/*".
 
-### Verbindung zum Server
+## Verbindung zum Server
 
 Die Verbindung zwischen Testserver und PC wird in das IPv4-Netzwerksegment **192.168.3.xxx** gelegt, während die Internetverbindung des PC außerhalb dieses Netzwerksegmentes erfolgt. Die verwendeten Daten sind:
 
@@ -84,7 +84,7 @@ und bei Erfolg prüfen wir gleich die Funktion von Apache, indem wir in die Adre
 
 Die Apache-Begrüßungsseite mit "*It works!*" sollte erscheinen.
 
-### Apache Konfiguration
+## Apache Konfiguration
 
 Die Konfigurationsdateien und -verzeichnisse befindet sich im "*ServerRoot*" Verzeichnis "*/etc/apache2/*".  
 Die zentrale Konfigurationsdatei ist "*apache2.conf*". Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt über Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die benötigten eingebunden werden.
@@ -172,15 +172,13 @@ Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und 
    # systemctl reload apache2.service
    ~~~
 
----
-
-## Benutzer und Rechte
+# Benutzer und Rechte
 
 Der Apache Webserver läuft mit der USER.GROUP "*www-data.www-data*" und "*DocumentRoot*" gehört unmittelbar nach der Installation "*root.root*".  
 Um Benutzern Schreibrechte für die in "*DocumentRoot*" enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe "*www-data*" zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
 Wir nennen die neue Gruppe "*developer*".
 
-### Mit CMS
+## Mit CMS
 
 Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung von Webseiten-Inhalten) hinzugefügt, bereiten wir "*DocumentRoot*" entsprechend vor:
 
@@ -244,7 +242,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    Beim Anlegen neuer Verzeichnisse und Dateien unterhalb "*DocumentRoot*" ist der Eigentümer der jeweilige "*User*" und nicht "*www-data*". Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
    Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb "*DocumentRoot*" überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](./systemd-path_de.htm#systemd.path).)
 
-### Ohne CMS
+## Ohne CMS
 
 Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an "*DocumentRoot*" entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in "*DocumentRoot*".
 
@@ -252,11 +250,9 @@ Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwen
 # chmod -R u-w /var/www/html
 ~~~
 
----
+# Sicherheit
 
-## Sicherheit
-
-### Standard Konfiguration in Apache
+## Standard Konfiguration in Apache
 
 Wichtige Absicherungen enthält die Datei "*/etc/apache2/apache2.conf*" bereits standardmäßig.
 
@@ -291,7 +287,7 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 </FilesMatch>
 ~~~
 
-### Weitere Konfigurationen
+## Weitere Konfigurationen
 
 + In der Datei **/etc/apache2/apache2.conf**
   
@@ -337,7 +333,7 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
   
   ist nach der Installion "*root.root*" und sollte unbedingt geändert werden. Siehe hierzu das Kapitel [Benutzer und Rechte](#benutzer-und-rechte).
 
-### HTTPS verwenden
+## HTTPS verwenden
 
 Ohne HTTPS geht heute kein Webseitenprojekt an den Start.  
 Wie man ein Zertifikat erlangt beschreibt die Webseite [HTTP-Guide](https://www.https-guide.de/) ausführlich und leicht verständlich.
@@ -375,7 +371,7 @@ Der ls-Befehl zur Kontrolle:
    -r-------- 1 root root 1216 25. Jan 15:27 server1.org.crt
 ~~~
 
-#### Integration in Apache2
+## Integration in Apache2
 
 Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei "*/etc/apache2/sites-available/server1.conf*" zu bearbeiten.
 
@@ -436,7 +432,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 ~~~
 
-### Sicherheits Tipps
+## Sicherheits Tipps
   
 + Die Apache Dokumentation enhält eine empfehlenswerte Seite mit diversen Tipps zur Absicherung.  
   [apache.org - Security Tipps](https://httpd.apache.org/docs/current/de/misc/security_tips.html) (englisch)
@@ -447,9 +443,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   
 + Sollte der Server, anders als in dieser Handbuchseite vorgesehen, mit dem lokalen Netzwerk oder mit dem Internet verbunden werden, ist eine Firewall unerlässlich.
 
----
-
-## Quellen:
+# Quellen:
 
 [apache.org - Dokumentation](https://httpd.apache.org/docs/current/de/) (teilweise deutsch)  
 [apache.org - Konfigurationsdateien](https://httpd.apache.org/docs/current/de/configuring.html)  

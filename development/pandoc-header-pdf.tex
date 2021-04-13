@@ -1,12 +1,29 @@
 % Contents of pandoc-header-pdf.tex
-\usepackage{xcolor}
 
+% german language support
+% you need to install texlive-lang-german
+% comment it out, if compiling for
+% another languge
+% maybe you need another lang package
+% for LANG=C (en) you don't need an aditional package
+\usepackage[ngerman]{babel}
+
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhead[C]{}
+    \fancyhead[CE,R]{\textbf{siduction Manual}}
+    \fancyfoot[L,R]{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{xcolor}
 \lstset{
     basicstyle=\ttfamily\footnotesize, 
-    % fontsize definitions scriptsize,small,tiny,normalsize,
+    % fontsize definitions: scriptsize,small,tiny,normalsize
     % codeline numbering
     %numbers=left,
-    %numberstyle=\footnotesize,
+    %numberstyle=\scriptsize,
     %stepnumber=1,
     %numbersep=5pt,
     % code highlight
@@ -14,8 +31,6 @@
     %keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
     %stringstyle=\color[rgb]{0.31,0.60,0.02},
     %commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
-    % wollen wir frames?
-    %frame=none,
     frame=single,
     framerule=0pt,
     framexleftmargin=5pt,
@@ -32,5 +47,6 @@
     breakatwhitespace=true,
     breakautoindent=true,
     linewidth=\textwidth,
-    xleftmargin=10pt
+    xleftmargin=10pt,
+    xrightmargin=35pt,
 }
