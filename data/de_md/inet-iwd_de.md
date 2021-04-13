@@ -49,7 +49,7 @@ Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinu
 
 Wer möchte, kann iwd als Ersatz für wpa_supplicant nutzen, entweder eigenständig oder in Verbindung mit dem NetworkManager. 
 
-# IWD installieren
+## IWD installieren
 
 Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
@@ -118,7 +118,7 @@ Jetzt ist man in der Lage im Terminal mit dem Befehl [**iwctl**](#iwctl) eine in
 
 [Hardware mit nicht freier Firmware](nf-firm_de.md). 
 
-# Konfiguration einer Netzwerkverbindung mit IWD
+## Konfiguration einer Netzwerkverbindung mit IWD
 
 Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
 
@@ -128,7 +128,7 @@ nmtui
 
 Dies sollte selbsterklärend sein!
 
-## <a name="nmcli"></a>Eine WiFi Verbindung mit *nmcli* aufbauen
+### <a name="nmcli"></a>Eine WiFi Verbindung mit *nmcli* aufbauen
 
 Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des NetworkManagers in der Kommandozeile einzurichten.
 
@@ -145,7 +145,7 @@ Zum Beispiel:
 nmcli dev WiFi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
 
 ```
-## <a name="iwctl"></a>Eine WiFi Verbindung mit *iwctl* einrichten, ohne den NetworkManager
+### <a name="iwctl"></a>Eine WiFi Verbindung mit *iwctl* einrichten, ohne den NetworkManager
 
 Als erstes sollte die Hilfe zu *iwctl* aufgerufen werden, um zu sehen was alles möglich ist.
 
@@ -209,13 +209,13 @@ Zum Beispiel:
 iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 ```
-## Grafische Programme zur Konfiguration eines WiFi Netzwerkes
+### Grafische Programme zur Konfiguration eines WiFi Netzwerkes
 
 + NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
 + conman ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
 + iwgtk, ist nicht in debian-quellen, es muss aus dem Sourcecode gebaut werden und ist auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
 
-# Zurück zum wpa_supplicant
+## Zurück zum wpa_supplicant
 
 *(Vorausgstezt NetworkManager und wpa_supplicant sind installiert)*
 
