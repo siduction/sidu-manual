@@ -1,5 +1,8 @@
 % Contents of pandoc-header-pdf.tex
 
+% Copyright Hendrik Lehmbruch 2021, wtfpl 2.0
+% see http://www.wtfpl.net/txt/copying/
+
 % german language support
 % you need to install texlive-lang-german
 % comment it out, if compiling for
@@ -36,16 +39,17 @@
 \lstset{
     basicstyle=\ttfamily\footnotesize, 
     % fontsize definitions: scriptsize,small,tiny,normalsize
-    % codeline numbering
+    % codeline numberinghttp://www.wtfpl.net/txt/copying/
     %numbers=left,
     %numberstyle=\scriptsize,
     %stepnumber=1,
     %numbersep=5pt,
     % code highlight
-    %language=bash,
-    %keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
-    %stringstyle=\color[rgb]{0.31,0.60,0.02},
-    %commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
+    language=sh,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{red},
+    rulecolor=\color{blue},
+    commentstyle=\color[RGB]{0,85,0}\itshape,
     frame=single,
     framerule=0pt,
     framexleftmargin=5pt,
@@ -64,4 +68,5 @@
     linewidth=\textwidth,
     xleftmargin=10pt,
     xrightmargin=20pt,
+    basewidth=0.5em,
 }

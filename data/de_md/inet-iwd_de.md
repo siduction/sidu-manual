@@ -94,14 +94,14 @@ systemctl start NetworkManager.service
 Schauen ob es geklappt hat
 
 + /etc/NetworkManager/conf.d/nm.conf
-~~~
+~~~sh
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
 WiFi.backend=iwd
 ~~~~
 
 + /etc/iwd/main.conf
-~~~
+~~~sh
 ~$ cat /etc/iwd/main.conf
 [General]
 EnableNetworkConfiguration=true
@@ -122,7 +122,7 @@ Jetzt ist man in der Lage im Terminal mit dem Befehl [**iwctl**](#iwctl) eine in
 
 Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
 
-~~~
+~~~sh
 nmtui
 ~~~
 
@@ -134,7 +134,7 @@ Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des Netw
 
 Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu *nmcli* finden sie auf folgender Seite, [inet-nm-cli_de](inet-nm-cli_de.md)
 
-```
+```sh
 nmcli dev WiFi con "ssid" password password name "name"
 
 ```
@@ -150,7 +150,8 @@ nmcli dev WiFi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
 Als erstes sollte die Hilfe zu *iwctl* aufgerufen werden, um zu sehen was alles möglich ist.
 
 Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *help*.
-```
+
+```sh
 :~$ iwctl
 [iwd]# help
 
@@ -168,7 +169,7 @@ Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *h
 ```
 Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 
-```
+```sh
 [iwd]# device list
                                     Devices                                   *
 --------------------------------------------------------------------------------
@@ -179,19 +180,21 @@ Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Bef
 In diesem Falle ist es *wlan0* und es läuft (*Powered on*) im *station* mode.
 
 Nun scannen wir nach einem aktiven Netzwerk
-```
+
+```sh
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ```
 Jetzt können wir uns zu unserem Netzwerk verbinden.
-```
+
+```sh
 [iwd]# station wlan0 connect SSID
 ```
 (*SSID* bezeichnet den Namen des Netzwerkes)
 
 Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *"station list"* oder *"station wlan0 get-networks"* Nachprüfen.
 
-```
+```sh
 [iwd]# station list
                             Devices in Station Mode
 --------------------------------------------------------------------------------
@@ -201,11 +204,12 @@ Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbund
 ```
 Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Informationen hat!
 
-```
+```sh
 iwctl --passphrase passphrase station device connect SSID
 ```
 Zum Beispiel:
-```
+
+```sh
 iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 ```
@@ -225,7 +229,7 @@ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 + Demaskieren und starten des **wpa_supplicant.service**.
 + Den **NetworkManager.service** wieder starten.
 
-```
+```sh
 systemctl stop iwd.service
 systemctl mask iwd.servicenetwork-manager-gnome
 systemctl stop NetworkManager.service
