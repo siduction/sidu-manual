@@ -16,9 +16,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt geringfügig überarbeitet.
 
+Änderungen 2021-04-13
++ chapter hirachy fixed
++ added code tags
+
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
+# Bios
 
 Das BIOS eines Computers sollte ab und an aktualisiert werden, wenn der Hersteller des Motherboards Verbesserungen der BIOS-Software vornimmt. Viele moderne PCs und Notebooks erlauben die Aktualisierung des BIOS/UEFI aus dem laufenden System per [fwupd](https://linuxnews.de/2017/10/firmware-updates-automatisieren/) oder aus dem BIOS/UEFI selbst an. Besteht diese Möglichkeit nicht, lässt sich die Aktualisierung über eine Anwendung auf MS-DOS-Basis vornehmen.
 
@@ -43,15 +48,13 @@ Der USB-Stick wird angesteckt und nicht eingebunden. Mit dem Werkzeug fdisk ermi
 
 Der USB-Stick wird gelöscht, wobei alle Daten verloren gehen. Man kann auch den ganzen USB-Stick löschen, nicht nur die ersten 16 MByte, wie im Beispiel. 
 
-~~~
+~~~sh
  root@siduction# dd if=/dev/zero of=/dev/sdb bs=1M count=16
  16+0 records in
  16+0 records out
  16777216 bytes (17 MByte) copied, 2.35751 s, 7.1 MByte/s 
  root@siduction#
 ~~~
-
----
 
 ## Partitionieren des USB-Sticks
 
@@ -61,19 +64,19 @@ Das Partitions-Label wird auf FAT16 gesetzt, auf Sticks mit weniger als 2 GByte 
 
 Danach fdisk auf die Partition ausführen: 
 
-~~~
- root@siduction# fdisk /dev/sdb
- fdisk /dev/sdb Device contains neither a valid DOS partition
- table, nor Sun, SGI or OSF disklabel Building a new DOS disklabel with disk
- identifier 0xa8993739. Changes will remain in memory only, until you decide to write them.
- After that, of course, the previous content won`t recoverable.
+~~~sh
+root@siduction# fdisk /dev/sdb
+fdisk /dev/sdb Device contains neither a valid DOS partition
+table, nor Sun, SGI or OSF disklabel Building a new DOS disklabel with disk
+identifier 0xa8993739. Changes will remain in memory only, until you decide to write them.
+After that, of course, the previous content wont recoverable.
 
- Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
+Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
 ~~~
 
-_Anlegen der Partition:_
+Anlegen der Partition:
 
-~~~
+~~~sh
  Command (m for help): n
  Command action
      e   extended
@@ -88,7 +91,7 @@ _Anlegen der Partition:_
 
 _Bestätigung des Anlegens der Partiton, indem die Partitionstabelle geschrieben wird:_
 
-~~~
+~~~sh
  Command (m for help): p
  Disk /dev/sdb: 2003 MByte, 2003828736 bytes 62 heads, 62 sectors/track, 1018
  cylinders Units = cylinders of 3844 * 512 = 1968128 bytes Disk identifier:
@@ -100,16 +103,16 @@ _Bestätigung des Anlegens der Partiton, indem die Partitionstabelle geschrieben
 
 _Setzen des korrekten Partitionslabels , '6' für FAT16:_
 
-~~~
+~~~sh
   Command (m for help): t
   Selected partition 1
   Hex code (type L to list codes): l
 
    0  Empty            1e  Hidden W95 FAT1 80  Old Minix       be  Solaris boot
    1  FAT12            24  NEC DOS         81  Minix / old Lin bf  Solaris
-   2  XENIX root       39  Plan 9          82  Linux swap / So c1  DRDOS/sec (FAT-
-   3  XENIX usr        3c  PartitionMagic  83  Linux           c4  DRDOS/sec (FAT-
-   4  FAT16 <32M       40  Venix 80286     84  OS/2 hidden C:  c6  DRDOS/sec (FAT-
+   2  XENIX root       39  Plan 9          82  Linux swap / So c1  DRDOS/sec-
+   3  XENIX usr        3c  PartitionMagic  83  Linux           c4  DRDOS/sec
+   4  FAT16 <32M       40  Venix 80286     84  OS/2 hidden C:  c6  DRDOS/sec
    5  Extended         41  PPC PReP Boot   85  Linux extended  c7  Syrinx
    6  FAT16            42  SFS             86  NTFS volume set da  Non-FS data
    7  HPFS/NTFS        4d  QNX4.x          87  NTFS volume set db  CP/M / CTOS / .
@@ -120,7 +123,7 @@ _Setzen des korrekten Partitionslabels , '6' für FAT16:_
    c  W95 FAT32 (LBA)  52  CP/M            9f  BSD/OS          e4  SpeedStor
    e  W95 FAT16 (LBA)  53  OnTrack DM6 Aux a0  IBM Thinkpad hi eb  BeOS fs
    f  W95 Ext d (LBA)  54  OnTrackDM6      a5  FreeBSD         ee  EFI GPT
-   10  OPUS            55  EZ-Drive        a6  OpenBSD         ef  EFI (FAT-12/16/
+   10  OPUS            55  EZ-Drive        a6  OpenBSD         ef  EFI
    11  Hidden FAT12    56  Golden Bow      a7  NeXTSTEP        f0  Linux/PA-RISC b
    12  Compaq diagnost 5c  Priam Edisk     a8  Darwin UFS      f1  SpeedStor
    14  Hidden FAT16 <3 61  SpeedStor       a9  NetBSD          f4  SpeedStor
@@ -137,13 +140,13 @@ _Setzen des korrekten Partitionslabels , '6' für FAT16:_
 
 _Aktivierung der neuen und einzigen Partition:_
 
-~~~
+~~~sh
   Command (m for help): a Partition number (1-4): 1
 ~~~
 
 _Die neue Partitionstabelle wird nochmals geschrieben, und man bestätigt neuerlich, dass die Partition aktiviert wird:_
 
-~~~
+~~~sh
   Command (m for help): p
   Disk /dev/sdb: 2003 MByte, 2003828736 bytes 62 heads, 62 sectors/track, 1018
   cylinders Units = cylinders of 3844 * 512 = 1968128 bytes Disk identifier:
@@ -155,7 +158,7 @@ _Die neue Partitionstabelle wird nochmals geschrieben, und man bestätigt neuerl
 
 _Die neue Partitionstabelle wird auf dem USB-Stick gespeichert und fdisk beendet:_
 
-~~~
+~~~sh
   Command (m for help): w 
   The partition table has been altered!
 
@@ -168,7 +171,7 @@ _Die neue Partitionstabelle wird auf dem USB-Stick gespeichert und fdisk beendet
 
 _Formatieren des neu aufgesetzten USB-Sticks:_
 
-~~~
+~~~sh
   root@siduction# mkfs -t vfat -n FreeDOS /dev/sdb1
   root@siduction# exit
 ~~~
@@ -181,7 +184,7 @@ Die Vorbereitungsphase ist nun abgeschlossen. Der USB-Stick wurde partitioniert 
 
 Da DOS keine USB-Sticks kennt, muss man einen Weg finden, um FreeDOS eine normale "Festplatte" vorzugaukeln. Bei einem "Live-Boot" übernimmt das BIOS diese Funktion, in unserem Fall muss man zu diesem Zweck jedoch qemu verwenden:
 
-~~~
+~~~sh
   Benutzer:siduction> qemu-system-i386 -hda	/dev/sdb -cdrom /path/to/fdbasecd.iso -boot d
 ~~~
 
@@ -191,7 +194,7 @@ _ctrl-alt_ schaltet Maus und Tastatur zwischen qemu und Hostsystem. Damit kann m
 
 ![Startmenü](../../static/images-common/images-qemu-freedos/qemu-boot01.jpg)
 
-~~~
+~~~sh
   1) Continue to boot FreeDOS from CD-ROM 1
 ~~~
 
@@ -222,20 +225,20 @@ Man gibt den Buchstaben _'n'_ ein.
 
 Der mbr-Fehler wird behoben durch:
 
-~~~
+~~~sh
   fdisk /mbr 1
 ~~~
 
 Der Bootmenüfehler wird in der neuen fdconfig.sys behoben, indem man ausführt:
 
-~~~
+~~~sh
   cd \ 
   edit fdconfig.sys
 ~~~
 
 und dann die Zeile beginnend mit command.com so abändert:
 
-~~~
+~~~sh
   1234?SHELLHIGH=C:\FDOS\command.com C:\FDOS /D /P=C:\fdauto.bat /K set
 ~~~
 
@@ -245,7 +248,7 @@ und dann die Zeile beginnend mit command.com so abändert:
 
 Speichern und "edit" verlassen:
 
-~~~
+~~~sh
   [alt]+[f]
 ~~~
 
@@ -253,7 +256,7 @@ Zurück beim Befehlszeilen-Prompt kann qemu nun verlassen werden.
 
 Nun wird getestet, ob qemu den USB-Stick bootet.
 
-~~~
+~~~sh
   qemu-system-i386 -hda /dev/sdb
 ~~~
 
@@ -269,4 +272,4 @@ Der PC wird ausgeschaltet und der FreeDOS USB-Stick angesteckt. Der PC wird eing
 
 ---
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-04-13</div>
