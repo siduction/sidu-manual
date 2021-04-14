@@ -34,10 +34,13 @@ Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siductio
 
 ## Wichtige Information
 ~~~text
-Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören. Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
-Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden. 
+Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören.
+Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
+Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, 
+dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden. 
 MS Windows hingegen scheint nur eine Partition zu erlauben. 
-Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an. Sichere Deine Daten!
+Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an.
+Sichere Deine Daten!
 ~~~
 
 ## Linux-Betriebssysteme
