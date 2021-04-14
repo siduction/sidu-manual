@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-06:
 
@@ -32,7 +32,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Screenshot für die Sprachen de, en, es, fr und it ohne Home-Partition erneuert.
 + Nach RC2 gestuft.
 
+Änderungen 2021-04:
+ + Kapitel Hierarchi für md2pdf angepasst
+ + code Tags
+ + RC3
+ 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+# Installation
 
 ## Datensicherung
 
@@ -42,8 +49,6 @@ Siehe auch
 [Backup mit rdiff](sys-admin-rdiff_de.md)  
 [Backup mit rsync](sys-admin-rsync_de.md)  
 Eine weitere Option ist BackInTime (muss installiert werden).
-
----
 
 ## Installationsvorbereitungen
 
@@ -72,7 +77,7 @@ Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
 + Gemeinsame Nutzung von Daten für die installierten Systeme
 
 Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md).  
-Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
+Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählem auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt werden und gegebenen falls auf das **home**-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
 [Gparted](part-gparted_de.md), ein Programm für die graphische Oberfläche für GTK-Desktops  
@@ -92,20 +97,18 @@ Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartit
 
 Mit folgendem Konsolenbefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
 
-~~~
-# dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/username/installed.txt
+~~~sh
+~# dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/username/installed.txt
 ~~~
 
 Am besten wird diese Textdatei auf einen USB-Stick oder einen Datenträger nach Wahl kopiert.  
 Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz verwendet, um die benötigten Programmpakete zu installieren. Die gesamte Paketliste kann per
 
-~~~
-# apt install $(/home/username/installed.txt)
+~~~sh
+~# apt install $(/home/username/installed.txt)
 ~~~
 
 installiert werden.
-
----
 
 ## Das siduction-Installationsprogramm (Calamares)
 
@@ -171,14 +174,12 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
    Vor dem Reboot die CD aus dem Laufwerk nehmen!
 
----
-
 ## Benutzer hinzufügen
 
 Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als root aus:
 
-~~~
-# adduser <nutzername>
+~~~sh
+~# adduser <nutzername>
 ~~~
 
 Das Drücken der Eingabetaste Enter führt zu weiteren Optionen, die Feinstellungen ermöglichen. Es folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.
@@ -187,13 +188,13 @@ siduction spezifische Desktopsymbole (für das Handbuch und den IRC) müssen sel
 
 So entfernt man einen Benutzer
 
-~~~
-# deluser <nutzername>
+~~~sh
+~# deluser <nutzername>
 ~~~
 
 Mehr Informationen:
 
-~~~
+~~~sh
 man adduser
 man deluser
 ~~~
