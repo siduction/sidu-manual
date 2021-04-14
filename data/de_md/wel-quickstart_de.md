@@ -27,7 +27,7 @@ siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kan
 
 ## Essenzielle Kapitel
 
-:::Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:\:::
+<warning>Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:</warning>
 
 + [Terminal/Konsole](term-konsole_de.md#term-kon)  - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.
 
