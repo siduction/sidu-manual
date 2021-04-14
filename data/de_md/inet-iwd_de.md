@@ -53,19 +53,21 @@ Wer möchte, kann iwd als Ersatz für wpa_supplicant nutzen, entweder eigenstän
 
 Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
-    Anmerkung:
-    Unter debian ist es leider nicht möglich den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
-    Möchte man dieses so gibt es zwei Möglichkeiten (eigentlich nur eine):
+~~~note
+Anmerkung:
+ Unter debian ist es leider nicht möglich den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
+ Möchte man dieses so gibt es zwei Möglichkeiten (eigentlich nur eine):
 
-        1. NetworkManager aus den Sourcen installieren
-        2. den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird, so man apt nutzt.
+    1. NetworkManager aus den Sourcen installieren
+    2. den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird, so man apt nutzt.
 
-    Wobei die zweite Möglichkeit die einfachere ist.
+ Wobei die zweite Möglichkeit die einfachere ist.
     
-    Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen
+ Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen
     
-    Weiterhin machen wir darauf Aufmerksam, dass siduction systemd nutzt.
-    Wir werden also nicht darauf eingehen wie iwd ohne systemd konfiguriert wird!
+ Weiterhin machen wir darauf Aufmerksam, dass siduction systemd nutzt.
+ Wir werden also nicht darauf eingehen wie iwd ohne systemd konfiguriert wird!
+~~~
 
 Vorrausgesetzt der NetworkManager ist installiert,```
 
@@ -101,6 +103,7 @@ WiFi.backend=iwd
 ~~~~
 
 + /etc/iwd/main.conf
+
 ~~~sh
 ~$ cat /etc/iwd/main.conf
 [General]
@@ -112,10 +115,12 @@ NameResolvingService=systemd
 
 Jetzt ist man in der Lage im Terminal mit dem Befehl [**iwctl**](#iwctl) eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **nmtui** oder [**nmcli**](#nmcli) im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
 
-    Anmerkung:
-    Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss, bzw via LAN!
-    Weitere Informationen:
+~~~note
+Hinweis:
+ Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss, bzw via LAN!
+~~~
 
+**Weitere Informationen:**  
 [Hardware mit nicht freier Firmware](nf-firm_de.md). 
 
 ## Konfiguration einer Netzwerkverbindung mit IWD

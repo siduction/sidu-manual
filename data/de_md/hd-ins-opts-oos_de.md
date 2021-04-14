@@ -1,5 +1,5 @@
 % Installation auf USB-Stick / Speicherkarte
-
+-----------------
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC3**
@@ -15,6 +15,8 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Inhalt teilweise überarbeitet.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+-----------------------------------------
 
 # Installation auf USB-Stick / Speicherkarte
 
@@ -33,7 +35,7 @@ Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siductio
 + Sichere das Betriebssystem und alle deine Daten auf den Geräten die du für die Herstellung des siduction-USB-Mediums verwenden möchtest. Ein kleiner Tippfehler kann alle deine Daten zerstören!
 
 ## Wichtige Information
-~~~text
+~~~note
 Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören.
 Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
 Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, 
