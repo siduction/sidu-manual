@@ -1,5 +1,5 @@
 % Installation auf USB-Stick / Speicherkarte
------------------
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC3**
@@ -15,8 +15,6 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Inhalt teilweise überarbeitet.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
-
------------------------------------------
 
 # Installation auf USB-Stick / Speicherkarte
 
@@ -109,7 +107,5 @@ Angenommen die gespeicherte ISO "siduction-18.3.0-patience-kde-amd64-20180513212
 ~~~sh
 dd if=/Users/username/Downloads/siduction-18.3.0-patience-kde.iso of=/dev/disk1
 ~~~
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-12-02</div>

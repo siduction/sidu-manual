@@ -18,7 +18,6 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
 # Credit
 
 ## Das siduction-Team
@@ -48,8 +47,6 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 We **need** contributors for siduction release art!
 
----
-
 ### Code, Ideen, Unterstützung, Handbuch:
 
 + der_bud
@@ -59,7 +56,6 @@ We **need** contributors for siduction release art!
 + A.Konrad (akli) (for his work on getting the manual back in shape)
 
 + Vinzenz Vietzke (vinzv)
----
 
 ### Credit für das original manual Team.
 

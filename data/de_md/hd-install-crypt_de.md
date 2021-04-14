@@ -1,6 +1,6 @@
 % Installation auf eine verschlüsselte root-Partition
 
----------------------------
+
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC2**
@@ -10,7 +10,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE INFOBEREICH FÜR DIE AUTOREN
 
----------------------------
+
 
 # Installation auf eine verschlüsselte root-Partition
 
@@ -89,10 +89,14 @@ Man benötigt zumindest ein nicht verschlüsseltes `/boot` -Dateisystem und ein 
     mkfs.ext4 /dev/mapper/cryptvg-home
     ~~~
 
-8.   **Der Installer kann nun gestartet werden, in dem folgende Optionen benutzt werden sollen:** 
+8.   **Der Installer kann nun gestartet werden, in dem folgende Optionen benutzt werden sollen:**  
+
         `vg-boot` für `/boot`,  
+        
         `cryptvg-root` für `/`,  
+        
         `cryptvg-home` für `/home`,  
+        
         und `cryptvg-swap` für `swap` sollten automatisch erkannt werden. 
 
 Das installierte System sollte eine Kernel-Befehlszeile mit folgenden Optionen aufweisen:
@@ -148,17 +152,15 @@ Die Partition `/boot` wird mit ext4 formatiert, falls dies noch nicht erledigt w
 
 Für die `verschlüsselte swap`  muss das Gerät `/dev/sda2`  zunächst formatiert und als verschlüsseltes Gerät geöffnet werden - wie vg-crypt oben, aber unter einem anderen Namen: swap.
 
-1.       
-    ~~~sh
++ 1.  
+   ~~~sh
     cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda2
     ~~~
-
-2.       
++ 2.  
     ~~~sh
     cryptsetup luksOpen /dev/sda2 swap
     ~~~
-
-3.       
++ 3.  
     ~~~sh
     echo "swap UUID=$(blkid -o value -s UUID /dev/sda2) none luks" >> /etc/crypttab
     ~~~
@@ -216,5 +218,5 @@ man cryptsetup
 [KVM how to use encrypted images](http://blog.bodhizazen.net/linux/kvm-how-to-use-encrypted-images/)  (Englisch)  
 [siduction-WIKI-Eintrag](http://wiki.siduction.de/index.php?title=Installation_auf_einer_verschl%C3%Bcsselten_Festplatte)   
 
----
+
 <div id="rev">Page last revised 2021-04-14</div>

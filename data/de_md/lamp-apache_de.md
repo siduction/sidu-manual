@@ -11,7 +11,6 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
 
 # Apache einrichten
 
@@ -450,6 +449,6 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 [apache.org - SSL Howto](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)  
 [HTTPS Guide - Servercertifikate erstellen und integrieren](https://www.https-guide.de/)
 
----
+
 
 <div id="rev">Zuletzt bearbeitet: 2021-01-30</div>

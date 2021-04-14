@@ -199,6 +199,4 @@ man adduser
 man deluser
 ~~~
 
----
-
 <div id="rev">Zuletzt bearbeitet: 2021-03-04</div>

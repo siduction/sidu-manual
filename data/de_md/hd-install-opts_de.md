@@ -6,21 +6,21 @@
 Änderungen 2021-04
 + für Pandoc vorbereitet
 
------------------------
+
 
 # fromiso
 
 ## Booten "fromiso" - Überblick
 
  **`Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.`**
-Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte (ext2/3/4). Das ist viel schneller als von einer CD (Festplatten-Installationen "fromiso" dauern nur einen Bruchteil der Zeit).
+Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte (ext4). Das ist viel schneller als von einer CD (Festplatten-Installationen "fromiso" dauern nur einen Bruchteil der Zeit).
 
 Dies ist natürlich viel schneller als von einem CD/DVD-Laufwerk, und das Laufwerk steht gleichzeitig zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.
 
 ## Voraussetzungen:
 
 * eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)  
-* eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie ext2/3/4  
+* eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie ext4  
 
 <div class="divider" id="grub2-fromiso"></div>
 
@@ -42,7 +42,7 @@ Im Anschluss öffnet man einen Editor der Wahl (kwrite, mcedit, vim ...):
 mcedit /etc/default/grub2-fll-fromiso
 ~~~
 
-In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`**  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der `"Anführungszeichen"`  mit den eigenen Parametern.
+In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`**  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der *`Anführungszeichen`* mit den eigenen Parametern.
 
 Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen (die zur Demonstration `hervorgehobenen`  Zeilen wurden geändert):
 
@@ -125,16 +125,17 @@ Die vielleicht ideale Verwendung von persist ist mit install-usb-gui, womit ein 
 **persist**  auf einem FAT-Dateisystem (üblich für DOS/Windows9x und Standard auf Flash-Drives) bedarf der Erstellung einer großen Datei, welche als Loop-Gerät eingebunden wird. Diese Datei muss formatiert werden.
 
 ~~~note
-Für USB-Sticks/SSD-Cards sind ext2 und vfat die empfohlenen Dateisysteme. Sie bieten vermutlich die beste plattformübergreifende Kompatibilität zur Datenrettung im Notfall. Bei Verwendung von ext2 muss auf "MS Windows&#8482;"-Installationen für den Datenaustausch ein ext2-Treiber verfügbar sein. Ein Wiederbeschreiben von Flash-Speichergeräten hängt von den technischen Spezifikationen des USB-Sticks/SSD-Cards ab.` 
+Anmerkung: 
+ Für USB-Sticks/SSD-Cards sind ext4 und vfat die empfohlenen Dateisysteme. Sie bieten vermutlich die beste plattformübergreifende Kompatibilität zur Datenrettung im Notfall.  Bei Verwendung von ext4 muss auf "MS Windows&#8482;"-Installationen für den Datenaustausch ein ext4 Treiber verfügbar sein. Ein Wiederbeschreiben von Flash-Speichergeräten hängt von den technischen Spezifikationen des USB-Sticks SSD-Cards ab.` 
 ~~~
 
-### vfat +ext2 Dateiystem
+### vfat +ext4 Dateiystem
 
-Wenn vfat oder ext2 verwendet wird, wird der persist-Modus mittels einer Datei ermöglicht, die maximal 2GB groß sein kann, aber mindestens 100MB groß sein soll (weniger macht keinen Sinn). Diese Datei sollte `siduction-rw`  benannt werden. 
+Wenn vfat oder ext4 verwendet wird, wird der persist-Modus mittels einer Datei ermöglicht, die maximal 2GB groß sein kann, aber mindestens 100MB groß sein soll (weniger macht keinen Sinn). Diese Datei sollte `siduction-rw`  benannt werden. 
 
 ### Beispiel, wie man persist nach erfolgter Installation setzt
 
-Wenn man nicht sicher ist, wie der Mount-Punkt heißt, wird der USB-Stick eingebunden und der Befehl `ls -lh /media`  ausgeführt, um eine Liste mit allen Mount-Punkten des Systems zu erhalten. Man schaut nach einem Eintrag wie `drwxr-xr-x 6 username root 4.0K Jan 1 1970 disk` . Falls die Ausgabe anders lautet als `"/media/disk"`  in unserem Beispiel, muss die Zeile unseres Beispiels durch den wirklichen Mount-Punkt ersetzt werden (z.B. "/media/disk-1"):
+Wenn man nicht sicher ist, wie der Mount-Punkt heißt, wird der USB-Stick eingebunden und der Befehl `ls -lh /media`  ausgeführt, um eine Liste mit allen Mount-Punkten des Systems zu erhalten. Man schaut nach einem Eintrag wie `drwxr-xr-x 6 username root 4.0K Jan 1 1970 disk` . Falls die Ausgabe anders lautet als *`/media/disk`*  in unserem Beispiel, muss die Zeile unseres Beispiels durch den wirklichen Mount-Punkt ersetzt werden (z.B. "/media/disk-1"):
 
 Um das Beispiel fortzusetzen: der Befehl `df -h`  schafft Klarheit:
 
@@ -164,7 +165,7 @@ mkdir $disk-1/siduction
 Erstellen der persistenten Partition:
 
 ~~~sh
-dd if=/dev/zero of=$disk-1/siduction/siduction-rw bs=1M count=$size && echo 'y' | LANG=C /sbin/mkfs.ext2 $disk-1/siduction/siduction-rw && tune2fs -c 0 "$disk-1/siduction/siduction-rw"
+dd if=/dev/zero of=$disk-1/siduction/siduction-rw bs=1M count=$size && echo 'y' | LANG=C /sbin/mkfs.ext4 $disk-1/siduction/siduction-rw && tune2fs -c 0 "$disk-1/siduction/siduction-rw"
 ~~~
 
  **`NTFS-Partitionen [das gebräuchliche Dateisystem von Windows-Installationen (NT/2000/XP) können NICHT für Persistenz verwendet werden.`**
@@ -187,9 +188,11 @@ Eine Abbilddatei siduction.iso.
 
 ### USB/SSD fromiso-Installation, siduction-on-a-stick
 
-~~~note
- Der USB-Speicher wird mit ext2 oder fat32 (mindestens 2GB) vorformatiert. Er soll nur eine als bootfähig markierte Partition haben (einige BIOS verlangen das Bootfähig-Flag).
+~~~text
+Anmerkung:
+ Der USB-Speicher wird mit ext4 oder fat32 (mindestens 2GB) vorformatiert. Er soll nur eine als bootfähig markierte Partition haben (einige BIOS verlangen das Bootfähig-Flag).
 ~~~
+
 Falls ein Formatierungs-Tool mit einer graphischen Oberfläche wie gparted verwendet wird, lösche bitte eine existierende Partition und erstelle eine neue, bevor Du diese formatierst.
 
 ### USB-fromiso von einer siduction-Festplatteninstallation:
@@ -212,7 +215,7 @@ Schließlich hat man ein bootfähiges USB/SSD. Falls "persist" nicht gewählt wu
 fll-iso2usb -D /dev/sdb -f none --iso /home/siduction/siduction.iso -p -- lang=no tz=Pacific/Auckland
 ~~~
 
-Dieser Befehl installiert das ISO auf das USB-Speichergerät `sdb`  mit persist, mit norwegischer Sprache und Lokalisation sowie der Zeitzone Pacific/Auckland (NZL) in der Grub-Befehlszeile.
+Dieser Befehl installiert das ISO auf das USB-Speichergerät `sdb` mit persist, mit norwegischer Sprache und Lokalisation sowie der Zeitzone Pacific/Auckland (NZL) in der Grub-Befehlszeile.
 
 Die Konfiguration von X (Grafikkarte, Tastatur, Maus) bzw. die Netzwerkkarten wurden nicht gespeichert, womit dieses Vorgehen ideal ist, falls diese Installation auf mehreren Computern verwendet werden soll.
 

@@ -79,18 +79,18 @@ Vorrausgesetzt der NetworkManager ist installiert,```
 + aktivieren und starten den **iwd.service**, 
 + und starten den **NetworkManager.service**.
 
-~~~
-apt update
-apt install iwd
-systemctl stop wpa_supplicant.service
-systemctl mask wpa_supplicant.service
-systemctl stop NetworkManager.service
-touch /etc/NetworkManager/conf.d/nm.conf
-echo -e '[device]\nWiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
-touch /etc/iwd/main.conf
-echo -e '[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
-systemctl enable -now iwd.service
-systemctl start NetworkManager.service
+~~~sh
+~# apt update
+~# apt install iwd
+~# systemctl stop wpa_supplicant.service
+~# systemctl mask wpa_supplicant.service
+~# systemctl stop NetworkManager.service
+~# touch /etc/NetworkManager/conf.d/nm.conf
+~# echo -e '[device]\nWiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
+~# touch /etc/iwd/main.conf
+~# echo -e '[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
+~# systemctl enable -now iwd.service
+~# systemctl start NetworkManager.service
 ~~~
 
 Schauen ob es geklappt hat
@@ -128,7 +128,7 @@ Hinweis:
 Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
 
 ~~~sh
-nmtui
+~$ nmtui
 ~~~
 
 Dies sollte selbsterklärend sein!
@@ -140,7 +140,7 @@ Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des Netw
 Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu *nmcli* finden sie auf folgender Seite, [inet-nm-cli_de](inet-nm-cli_de.md)
 
 ```sh
-nmcli dev WiFi con "ssid" password password name "name"
+~$ nmcli dev WiFi con "ssid" password password name "name"
 
 ```
 (*ssid* bezeichnet den Namen des Netzwerkes)
@@ -215,7 +215,7 @@ iwctl --passphrase passphrase station device connect SSID
 Zum Beispiel:
 
 ```sh
-iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
+~$ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 ```
 ### Grafische Programme zur Konfiguration eines WiFi Netzwerkes
@@ -235,13 +235,13 @@ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 + Den **NetworkManager.service** wieder starten.
 
 ```sh
-systemctl stop iwd.service
-systemctl mask iwd.servicenetwork-manager-gnome
-systemctl stop NetworkManager.service
-mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
-systemctl unmask wpa_supplicant.service
-systemctl enable --now wpa_supplicant.service
-systemctl start NetworkManager.service
+~# systemctl stop iwd.service
+~# systemctl mask iwd.servicenetwork-manager-gnome
+~# systemctl stop NetworkManager.service
+~# mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
+~# systemctl unmask wpa_supplicant.service
+~# systemctl enable --now wpa_supplicant.service
+~# systemctl start NetworkManager.service
 ```
 Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
 
