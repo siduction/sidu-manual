@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-05:
 
@@ -15,6 +15,8 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 + Inhalt teilweise überarbeitet.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
+
+# Installation auf USB-Stick / Speicherkarte
 
 ## Installation einer siduction-ISO auf USB-Stick, SSD-Karte, SHDC-Gerät unter Verwendung einer anderen Linuxdistribution, MS Windows&#8482; oder Mac OS X&#8482;
 
@@ -30,34 +32,35 @@ Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siductio
 + USB/SSD sollte automatisch erkannt werden und die Menü-Option **F4**  sollte **Hard Disk**  ausgeben, andernfalls sollte **F4 > Hard Drive**  aufgerufen oder **fromhd** der Bootmenü-Zeile beigefügt werden.
 + Sichere das Betriebssystem und alle deine Daten auf den Geräten die du für die Herstellung des siduction-USB-Mediums verwenden möchtest. Ein kleiner Tippfehler kann alle deine Daten zerstören!
 
-<warning>**Wichtige Information**</warning>
-<warning>
-Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören. Der Datenverlust hängt von der Größe der siduction-*.iso ab. Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden. MS Windows hingegen scheint nur eine Partition zu erlauben. Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an. Sichere Deine Daten!
-</warning>
-
----
+## Wichtige Information
+~~~text
+Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören. Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
+Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden. 
+MS Windows hingegen scheint nur eine Partition zu erlauben. 
+Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an. Sichere Deine Daten!
+~~~
 
 ## Linux-Betriebssysteme
 
 Stecke Deinen USB-Stick oder Kartenleser mit der Karte, auf die geschrieben werden soll, an und führe folgenden Befehl aus:
 
-~~~
+~~~sh
 cat /home/username/siduction-18.3.0-patience-kde.iso > /dev/sdX
 ~~~
 
 oder
 
-~~~
+~~~sh
 dd if=/path/to/siduction-*.iso of=/dev/sdX
 ~~~
 
 Um herauszufinden, was das X in sdX ist, bitte als root  *fdisk -l*  oder *dmesg* aufrufen.
 
-#### Beispiel:
+### Beispiel:
 
 Führe den Befehl **dmesg -w** aus, schließe Dein Gerät an, und beachte die Ausgabe:
 
-~~~
+~~~sh
 sd 13:0:0:0: [sdc] Write Protect is off
 sd 13:0:0:0: [sdc] Mode Sense: 23 00 00 00
 sd 13:0:0:0: [sdc] Write cache: disabled, read cache: enabled
@@ -68,41 +71,37 @@ Das Speichergerät wir hier mit dem Laufwerksbezeichner **sdc** erkannt.
 Anschließend wird *dmesg* mit der Tastenkombination `Strg`+`c` beendet.  
 Angenommen die gespeicherte ISO "siduction-18.3.0-patience-kde-amd64-201805132121.iso"  wurde zu "siduction-18.3.0-patience-kde.iso"  umbenannt, so ist der auszuführende Befehl:
 
-~~~
+~~~sh
 cat /home/username/siduction-18.3.0-patience-kde.iso > /dev/sdc
 ~~~
 
 oder
 
-~~~
+~~~sh
 dd if=/home/username/siduction-18.3.0-patience-kde.iso of=/dev/sdc
 ~~~
-
----
 
 ## MS Windows&#8482;
 
 Das Vorgehen ist einfach. Lade das kleine Tool [USBWriter](https://sourceforge.net/p/usbwriter/wiki/Documentation/)  herunter. Es muss nicht installiert werden. Nach dem Start des Werkzeugs beispielsweise vom Desktop aus muss lediglich das gewünschte ISO-Image sowie der USB-Stick ausgewählt werden. Hierbei ist große Aufmerksamkeit erforderlich, denn der Vorgang löscht alle Daten auf dem Device. Wird also das falsche Device gewählt, sind die Daten darauf verloren, sobald der  *WRITE* -Button gedrückt wurde. In wenigen Minuten schreibt das Werkzeug das Image bootfähig auf das Gerät.
 
----
-
 ## Mac OS X&#8482;
 
 Schließe Dein USB-Gerät an, Mac OS X sollte es automatisch einbinden. Im Terminal (unter Applications &gt; Utilities), wird dieser Befehl ausgeführt:
 
-~~~
+~~~sh
 diskutil list
 ~~~
 
 Stelle die Bezeichnung des USB-Geräts fest und binde die Partitionen des Geräts aus (unmount). In unserem Beispiel ist die Bezeichnung /dev/disk1:
 
-~~~
+~~~sh
 diskutil unmountDisk /dev/disk1
 ~~~
 
 Angenommen die gespeicherte ISO "siduction-18.3.0-patience-kde-amd64-201805132121.iso"  wurde zu "siduction-18.3.0-patience-kde.iso"  umbenannt und in "/Users/username/Downloads/"  gespeichert, und das USB-Gerät hat die Bezeichnung "disk1" , so führt man folgenden Befehl aus:
 
-~~~
+~~~sh
 dd if=/Users/username/Downloads/siduction-18.3.0-patience-kde.iso of=/dev/disk1
 ~~~
 

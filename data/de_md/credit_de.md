@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2-RC3**
+**Status: RC3**
 
 Änderungen 2021-02
 
@@ -19,6 +19,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
+# Credit
 
 ## Das siduction-Team
 
@@ -26,11 +27,8 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 Über dieses [Kontaktformular](https://forum.siduction.org/index.php?action=contact) erreichst du das siduction-Team.
 
----
 
 ## Credit für siduction 2021.1.0
-
----
 
 ### Core Team:
 
@@ -43,8 +41,6 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 + Hendrik Lehmbruch (hendrikL)
 
 + Torsten Wohlfarth (towo)
-
----
 
 ### Art Team:
 
