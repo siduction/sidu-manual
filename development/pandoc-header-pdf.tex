@@ -12,6 +12,17 @@
 % https://www.namsu.de/Extra/papt search latex babelakete/Babel_V2017.html
 \usepackage[main=ngerman, english]{babel}
 
+% adding a logo to the title
+\usepackage{titling}
+    \pretitle{\begin{center}
+    \includegraphics[width=111.9mm,height=21.7mm]{../static/logos/logo-manual.png}\LARGE\\}
+    \posttitle{\end{center}\hskip 2em}
+    \preauthor{\begin{center}\large \lineskip 0.5em%
+    \begin{tabular}[t]{c}}
+    \postauthor{\end{tabular}\par\end{center}}
+    \predate{\begin{center}\large}
+    \postdate{\par\end{center}}
+
 % new '# title', new page
 \usepackage{titlesec}
     \newcommand{\sectionbreak}{\clearpage}

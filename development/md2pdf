@@ -5,7 +5,7 @@
 # Copyright Hendrik Lehmbruch 2021, GPL licensed (see COPYING for details)
 # directories 
 header=./pandoc-header-pdf.tex
-searchpath=./:../../de_md/:../static/images-de/
+searchpath=./:../../de_md/:../static/images-de/:../static/logos/
 
 # page options
 paper=a4paper

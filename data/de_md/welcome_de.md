@@ -1,4 +1,4 @@
-% siduction Handbuch
+% Handbuch
 % siduction Team
 % April 2021
 
