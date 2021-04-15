@@ -37,7 +37,8 @@ geometry=portrait
 #alignment=center
 
 # the command
-pandoc -N --toc -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath \
+pandoc -N --toc -p --pdf-engine=xelatex --listings -H $header \
+--resource-path=$searchpath --highlight-style tango \
 -V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor \
 -V margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
 -V geometry=$geometry -V alignment=$alignment -V columns=$columns \

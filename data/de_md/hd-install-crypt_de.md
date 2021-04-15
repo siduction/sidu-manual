@@ -199,7 +199,7 @@ Die erstellte `/dev/mapper/cryptroot`  wird formatiert, damit der Installer sie 
 Das installierte System sollte eine Kernel-Befehlszeile mit folgenden Optionen aufweisen (UUID wird benutzt):
 
 ~~~sh
-root=/dev/mapper/cryptroot cryptopts=source=UUID=12345678-1234-1234-1234-1234567890AB,target=cryptroot
+root=/dev/mapper/cryptroot cryptopts=source=UUID=12345678-1234-1234-1234-1234567890AB, target=cryptroot
 ~~~
 
 /boot ist nun eine normale Partition, die swap-Partition ist verschlüsselt wie eine gemeinsame Partition für root und /home.

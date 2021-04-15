@@ -10,6 +10,8 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
+# Release Notes 
+
 ##  siduction 2021.1.1 »C-Blues« Point Release
 
 Um den Fehler zu umgehen, dass der Calamares-Installer im EFI-Mode keine GPT Partitionen erstellen kann, haben wir siduction 2021.1.1 veröffentlicht.  
@@ -23,8 +25,6 @@ Leere Labels sind in Dosfstools nicht mehr erlaubt, gleichzeitig wurde die Art, 
 
 Bis zur Bereitstellung einer fehlerbereinigten Version von dosfstools in den Repositorien wird wohl noch einige Zeit vergehen, deshalb haben wir uns dazu entschlossen, dosfstools auf die Version 4.1.2 zu downgraden. Das Paket trägt jetzt die Bezeichnung *dosfstools 4.2-1.1~really4.1-2* .  
 Das Release wird nur bei einer Neuinstallation mit Calamares benötigt. Deshalb erhielt noX auch kein Update, denn es hat nur den CLI-Installer und kein Calamares. Benutzer, die siduction bereits installiert haben, betrifft dieses Release nicht.
-
----
 
 ##  Release Notes für siduction 2021.1.0 »C-Blues«
 
@@ -60,14 +60,14 @@ Wer in Xorg und noX weiterhin *wpa_supplicant* anstatt *iwd* nutzen möchte, bef
 + Demaskieren und starten des wpa_supplicant.service.
 + Den NetworkManager.service wieder starten.
 
-~~~
-# systemctl stop iwd.service
-# systemctl mask iwd.service
-# sudo systemctl stop NetworkManager.service
-# sudo mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
-# systemctl unmask wpa_supplicant.service
-# systemctl enable –now wpa_supplicant.service
-# systemctl start NetworkManager.service
+~~~sh
+~# systemctl stop iwd.service
+~# systemctl mask iwd.service
+~# sudo systemctl stop NetworkManager.service
+~# sudo mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
+~# systemctl unmask wpa_supplicant.service
+~# systemctl enable –now wpa_supplicant.service
+~# systemctl start NetworkManager.service
 ~~~
 
 Jetzt wird wpa_supplicant für die Verbindung mit der WiFi-Hardware benutzt.
@@ -78,18 +78,18 @@ Wer möchte, kann iwd auch in den anderen Varianten nutzen, entweder eigenständ
 
 Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
-~~~
-# apt update
-# apt install iwd
-# systemctl stop wpa_supplicant.service
-# systemctl mask wpa_supplicant.service
-# systemctl stop NetworkManager.service
-# touch /etc/NetworkManager/conf.d/nm.conf
-# echo -e '[device]\nwifi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
-# touch /etc/iwd/main.conf
-# echo -e '[General]\nEnableNetworkConfiguration=true\n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
-# systemctl enable -now iwd.service
-# systemctl start NetworkManager.service
+~~~sh
+~# apt update
+~# apt install iwd
+~# systemctl stop wpa_supplicant.service
+~# systemctl mask wpa_supplicant.service
+~# systemctl stop NetworkManager.service
+~# touch /etc/NetworkManager/conf.d/nm.conf
+~# echo -e '[device]\nwifi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
+~# touch /etc/iwd/main.conf
+~# echo -e '[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
+~# systemctl enable -now iwd.service
+~# systemctl start NetworkManager.service
 ~~~
 
 Jetzt ist man in der Lage im Terminal mit dem Befehl **`iwctl`** eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **`nmtui`** oder **`nmcli`** im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
