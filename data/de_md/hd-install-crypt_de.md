@@ -14,8 +14,11 @@ ENDE INFOBEREICH FÜR DIE AUTOREN
 
 # Installation auf eine verschlüsselte root-Partition
 
-**Anmerkung: Es gibt Wichtiges zu beachten, wenn Root- oder Datenpartitionen verschlüsselt werden. Darunter:**  
- 
+~~~note
+Anmerkung:
+ Es gibt Wichtiges zu beachten, wenn Root- oder Datenpartitionen verschlüsselt werden. Darunter;  
+~~~
+
 +  Folgende Anleitung beinhaltet nur Grundlegendes. Wir raten, mehr über LUKS, cryptsetup und Verschlüsselung in Erfahrung zu bringen. Weitere Quellen sind am Ende dieser Seite verlinkt. Die gelisteten Informationen sind nur erste weitere Schritte. Englischkenntnisse sind notwendig. 
 +  cryptsetup kann keine existierende Datenpartition verschlüsseln, daher muss eine neue Partition erstellt werden, die mit cryptsetup aufgesetzt wird. Im Anschluss können Daten auf diese Partition geschrieben werden. 
 +  Es können auch Schlüsseldateien verwendet werden. Für Daten können Mehrfachschlüssel verwendet werden (bis zu maximal acht). Dies wird in dieser Anleitung nicht erläutert. 
@@ -128,10 +131,8 @@ Es ist möglich, für swap Schlüssel von innerhalb des verschlüsselten Systems
 
 + Es gibt nur drei Partitionen auf der Festplatte:
 
-    `/boot`  mit 250MB
-
-    `/swap`  mit 2GB
-
+    `/boot`  mit 250MB  
+    `/swap`  mit 2GB  
     **`/`**  und `/home`  vereint: Rest. 
 
 + Es werden zwei Passwörter verwendet, eines für swap, das andere für die gemeinsame Partition für **`/`**  und `/home` . 
@@ -152,15 +153,14 @@ Die Partition `/boot` wird mit ext4 formatiert, falls dies noch nicht erledigt w
 
 Für die `verschlüsselte swap`  muss das Gerät `/dev/sda2`  zunächst formatiert und als verschlüsseltes Gerät geöffnet werden - wie vg-crypt oben, aber unter einem anderen Namen: swap.
 
-+ 1.  
    ~~~sh
     cryptsetup --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda2
     ~~~
-+ 2.  
+ 
     ~~~sh
     cryptsetup luksOpen /dev/sda2 swap
     ~~~
-+ 3.  
+ 
     ~~~sh
     echo "swap UUID=$(blkid -o value -s UUID /dev/sda2) none luks" >> /etc/crypttab
     ~~~

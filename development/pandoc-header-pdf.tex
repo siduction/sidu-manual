@@ -67,10 +67,10 @@
     %numbersep=5pt,
     % code highlight
     basicstyle=\color[RGB]{40,1,196},
-    keywordstyle=\color[RGB]{42,161,152}\bfseries,
+    keywordstyle=\color[RGB]{42,161,152},
     stringstyle=\color[RGB]{28,139,210},
     numberstyle=\color[RGB]{108,113,196},
-    % identifierstyle=\color{black}, %[RGB]{0,85,255},
+    identifierstyle=\color[RGB]{0,0,74},
     commentstyle=\color[RGB]{0,85,0},
     rulecolor=\color{red},
     frame=single,
@@ -92,3 +92,7 @@
     xleftmargin=10pt,
     xrightmargin=20pt,
 }
+
+\usepackage{tcolorbox}
+    \newtcolorbox{myquote}{colback=red!5!white, colframe=red!75!black}
+    \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}

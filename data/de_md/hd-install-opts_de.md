@@ -12,7 +12,8 @@
 
 ## Booten "fromiso" - Überblick
 
- **`Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.`**
+ **Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.**
+ 
 Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte (ext4). Das ist viel schneller als von einer CD (Festplatten-Installationen "fromiso" dauern nur einen Bruchteil der Zeit).
 
 Dies ist natürlich viel schneller als von einem CD/DVD-Laufwerk, und das Laufwerk steht gleichzeitig zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.
@@ -21,8 +22,6 @@ Dies ist natürlich viel schneller als von einem CD/DVD-Laufwerk, und das Laufwe
 
 * eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)  
 * eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie ext4  
-
-<div class="divider" id="grub2-fromiso"></div>
 
 ## fromiso mit Grub2
 
