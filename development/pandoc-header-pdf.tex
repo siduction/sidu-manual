@@ -12,20 +12,30 @@
 % https://www.namsu.de/Extra/papt search latex babelakete/Babel_V2017.html
 \usepackage[main=ngerman, english]{babel}
 
-% adding a logo to the title
+\usepackage{fontenc}
+\usepackage{geometry}
+    
 \usepackage{titling}
+   
+    % adding a logo to the title
     \pretitle{\begin{center}
-    \includegraphics[width=111.9mm,height=21.7mm]{../static/logos/logo-manual.png}\LARGE\\}
+    \includegraphics[width=111.9mm,height=21.7mm]{../static/logos/logo-manual.png}\Huge\\}
     \posttitle{\end{center}\hskip 2em}
-    \preauthor{\begin{center}\large \lineskip 0.5em%
+    
+    \preauthor{\begin{center}\LARGE
     \begin{tabular}[t]{c}}
     \postauthor{\end{tabular}\par\end{center}}
     \predate{\begin{center}\large}
     \postdate{\par\end{center}}
 
-% new '# title', new page
+
+
 \usepackage{titlesec}
+    % new '# title' (section), new page
     \newcommand{\sectionbreak}{\clearpage}
+    % colorfull sections
+    \titleformat*{\section}{\Large\bfseries\sffamily\color[RGB]{0,0,136}}
+    \titleformat*{\subsection}{\large\bfseries\sffamily\color[RGB]{225,150,0}}
 
 % header and footer
 \usepackage{fancyhdr}
