@@ -1,6 +1,6 @@
 % Handbuch
 % siduction Team
-% April 2021
+% 2021
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
