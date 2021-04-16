@@ -115,8 +115,7 @@ Als erstes sollte die Hilfe zu *iwctl* aufgerufen werden, um zu sehen was alles 
 
 Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *help*.
 
-
-![iwctl help](../../static/images-de/iwd-de/iwctl-help.png){ width=75% }
+ ![iwctl help](../../static/images-de/iwd-de/iwctl-help.png)
 
 Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 
