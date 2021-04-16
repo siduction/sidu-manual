@@ -13,11 +13,6 @@ paper=a4paper
 #vmargin=3.5cm
 margin=20mm
 fontsize=10pt
-#fontsize=11pt
-#fontsize=12pt
-#mainfont=Cambria
-#sansfont=Corbel
-#monofont=Consolas
 mainfont="Liberation Sans"
 sansfont="Liberation Sans"
 monofont="Liberation Mono"
@@ -29,6 +24,9 @@ linkcolor=blue
 columns=onecolumn
 #columns=twocolumn
 
+date="`date -u`"
+# "`date -u '+%Y-%m-%d'`" 
+
 geometry=portrait
 #geometry=landscape
 
@@ -37,8 +35,8 @@ geometry=portrait
 #alignment=center
 
 # the command
-pandoc -N --toc -p --pdf-engine=xelatex --listings -H $header \
---resource-path=$searchpath \
+pandoc -N --toc -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath \
+-M  date="$date" \
 -V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor \
 -V margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
 -V geometry=$geometry -V alignment=$alignment -V columns=$columns \

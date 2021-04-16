@@ -1,23 +1,5 @@
 % Network Manager im Terminal
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Inhalt nur redaktionell aktualisiert
-+ Korrektur und Prüfung aller Links, Ubuntu-man entfernt, da mit 'man nmcli' identisch
-Änderungen 2020-06:
-+ Dateinamen und Titelanker geändert um das Dokument sinnvoll in die Dateihirarchie zu integrieren.
-
-Änderungen 2021-04:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 # nmcli
 
 ## Allgemeine Hinweise
@@ -66,10 +48,9 @@ Sehr detaillierte Informationen (Eigenschaften) gibt es mit  **nmcli dev show** 
 
 ![nmcli dev show](../../static/images-de/nmcli-de/nmcli-dev-show.png)
 
-
 Die Zugangsdaten zum WLAN kann man sich mit **nmcli dev wifi show** anzeigen lassen.
 
-![nmcli dev wifi schow DE](../../static/images-de/nmcli-de/nmcli-dev-wifi-show-de.png)
+![nmcli dev wifi show](../../static/images-de/nmcli-de/nmcli-dev-wifi-show-de.png)
 
 Der zusätzlich generierte QR-Code vereinfacht den Login für Smartphone und Tablet.
 

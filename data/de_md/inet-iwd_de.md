@@ -1,46 +1,5 @@
 % Netzwerk - IWD
 
- ANFANG   INFOBEREICH FÜR DIE AUTOREN
- 
- Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
- 
- **Status: RC3**
- 
- Änderungen: 2021-03-04
- + initial commit
- + WIP
- 
- TODO:
- + Dokument aufräumen [done] (es geht um iwd, nicht modem noch firewall)
-    + ~~braucht es noch das modem?~~
-    + ~~firewall software?~~
- + Installation und nutzung von IWD erklären
-    + ~~Komandozeile: nmcli/nmtui/iwctl~~
-       + ~~iwctl [RC3]~~
-       + ~~nmcli [RC3]~~
-       + ~~nmtui [RC3]~~
-    + grafische Programme:
-       + ~~NetworkManager~~
-       + iwgtk? (gibt es nicht in debian, ist aber gut zu nutzen)
-       + ~~conman~~
- + ~~Deaktivierung von IWD  zurück zu wpa_supplicant~~
-
- Änderung 2021-03-09
- 
- + ~~Nutzung von iwctl, done~~
- + ~~Status von WIP nach RC2 gestuft~~ 
- 
- Änderung 2021-03-10
- 
- + ~~nmcli & nmtui, done~~
- + ~~wpa_supplicant, done~~
- + ~~grafische Programme, WIP~~
-
- Änderung 2021-03-24
- status RC3
- 
-ENDE   INFOBEREICH FÜR DIE AUTOREN
- 
 # IWD
 
 Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller; ist iwd der Nachfolger. 
@@ -156,22 +115,9 @@ Als erstes sollte die Hilfe zu *iwctl* aufgerufen werden, um zu sehen was alles 
 
 Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *help*.
 
-```sh
-:~$ iwctl
-[iwd]# help
 
-                               iwctl version 1.12                              
---------------------------------------------------------------------------------
-  Usage
---------------------------------------------------------------------------------
-  iwctl [--options] [commands]
-                               Available options
---------------------------------------------------------------------------------
-  Options                                           Description                 
---------------------------------------------------------------------------------
+![iwctl help](../../static/images-de/iwd-de/iwctl-help.png){ width=75% }
 
-[...] hier steht jetzt eine ganze Menge, welches ich hier nicht auflisten kann!
-```
 Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 
 ```sh
