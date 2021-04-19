@@ -32,6 +32,7 @@
 \usepackage{titlesec}
     % new '# title' (section), new page
     \newcommand{\sectionbreak}{\clearpage}
+    \newcommand{\subsectionbreak}{\clearpage}
     % colorfull sections
     \titleformat*{\section}{\Large\bfseries\sffamily\color[RGB]{0,0,136}}
     \titleformat*{\subsection}{\large\bfseries\sffamily\color[RGB]{225,150,0}}
@@ -57,6 +58,7 @@
 
 % code-block style
 \usepackage{xcolor}
+\usepackage{MnSymbol}% benoetigt fuer 'prebreak='
 \lstset{
     basicstyle=\ttfamily\scriptsize, 
     % fontsize definitions: scriptsize,small,tiny,normalsize, footnotesize,
@@ -64,7 +66,7 @@
     %numbers=left,
     %numberstyle=\scriptsize,
     %stepnumber=1,
-    %numbersep=5pt,
+    %numbersep=8pt,
     % code highlight
     basicstyle=\color[RGB]{40,1,196},
     keywordstyle=\color[RGB]{42,161,152},
@@ -75,22 +77,24 @@
     rulecolor=\color{red},
     frame=single,
     framerule=0pt,
-    framexleftmargin=5pt,
+    framexleftmargin=3pt,
     framexrightmargin=5pt,
-    framextopmargin=5pt,
-    framexbottommargin=5pt,
-    backgroundcolor=\color[RGB]{235,238,239},
+    framextopmargin=2pt,
+    framexbottommargin=2pt,
+    backgroundcolor=\color[RGB]{230,230,230},
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
     captionpos=b,
     breaklines=true,
-    breakatwhitespace=true,
+    prebreak={\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\rhookswarrow}}},
+    %breakatwhitespace=true,
     breakautoindent=true,
     linewidth=\textwidth,
-    xleftmargin=10pt,
-    xrightmargin=20pt,
+    xleftmargin=14pt,
+    %xrightmargin=20pt,
 }
 
 \usepackage{tcolorbox}

@@ -9,12 +9,12 @@ searchpath=./:../../de_md/:../static/images-de/:../static/logos/
 
 # page options
 paper=a4paper
-#hmargin=3cm
-#vmargin=3.5cm
-margin=20mm
-fontsize=10pt
+#hmargin=2cm
+#vmargin=3.0cm
+#margin=20mm
+#fontsize=10pt
 #fontsize=11pt
-#fontsize=12pt
+fontsize=12pt
 #mainfont=Cambria
 #sansfont=Corbel
 #monofont=Consolas
@@ -37,10 +37,10 @@ geometry=portrait
 #alignment=center
 
 # the command
-pandoc -N --toc -p --pdf-engine=xelatex --listings -H $header \
+pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header \
 --resource-path=$searchpath --highlight-style tango \
 -V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor \
--V margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
+-V geometry:margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
 -V geometry=$geometry -V alignment=$alignment -V columns=$columns \
 -V fontsize=$fontsize -V nohyphenation=$nohyphenation \
 $@
