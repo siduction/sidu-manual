@@ -1,15 +1,11 @@
 % Contents of pandoc-header-pdf.tex
 
-% Copyright Hendrik Lehmbruch 2021, wtfpl 2.0
-% see http://www.wtfpl.net/txt/copying/
-
 % german language support
 % you need to install texlive-lang-german
-% comment it out, if compiling for another languge
-% maybe you need another lang package (apt search latex babel)
+% comment it out, if compiling for
+% another languge
+% maybe you need another lang package
 % for LANG=C (en) you don't need an aditional package
-% \usepackage[english,spanish,swedish,portuges,ngerman]{babel}
-% https://www.namsu.de/Extra/papt search latex babelakete/Babel_V2017.html
 \usepackage[main=ngerman, english]{babel}
 
 \usepackage{fontenc}
@@ -19,14 +15,14 @@
    
     % adding a logo to the title
     \pretitle{\begin{center}
-    \includegraphics[width=111.9mm,height=21.7mm]{../static/logos/logo-manual.png}\Huge\\}
+    \includegraphics[width=111.9mm,height=21.7mm]{../../static/logos/logo-manual.png}\Huge\\}
     \posttitle{\end{center}\hskip 2em}
     
     % author and date style
     \preauthor{\begin{center}\LARGE
-    \begin{tabular}[t]{c}}
+    \begin{tabular}[t]{c}The siduction Team}
     \postauthor{\end{tabular}\par\end{center}}
-    \predate{\begin{center}\large}
+    \predate{\begin{center}\footnotesize}
     \postdate{\par\end{center}}
 
 \usepackage{titlesec}
@@ -34,47 +30,41 @@
     \newcommand{\sectionbreak}{\clearpage}
     \newcommand{\subsectionbreak}{\clearpage}
     % colorfull sections
-    \titleformat*{\section}{\Large\bfseries\sffamily\color[RGB]{0,0,136}}
-    \titleformat*{\subsection}{\large\bfseries\sffamily\color[RGB]{225,150,0}}
-
-% header and footer
+    %\titleformat*{\section}{\Large\bfseries\sffamily}%\color[RGB]{0,0,136}}
+    %\titleformat*{\subsection}{\large\bfseries\sffamily}%\color[RGB]{225,150,0}}
+    
 \usepackage{fancyhdr}
     % extra side for the table of contents
-    \fancypagestyle{toc}{%
-    \fancyhf{}%
-    \fancyhead[Re]{\thepage}%
-    \fancyhead[Re]{\textsl{TABLE OF CONTENTS}}%
-    \fancyfoot[C]{\thepage}}
-    
+    \fancypagestyle{toc}
+    \fancyhf{}
+    \fancyhead[Re]{\thepage}
+    \fancyhead[Re]{\textsl{TABLE OF CONTENTS}}
+    \fancyfoot[C]{\thepage}
+
     % define header and footer
     \pagestyle{fancy}
     \fancyhead[C]{}
-    \fancyhead[L]{\textsl{\leftmark}}
-    \fancyhead[R]{\textbf{siduction Manual}}
+    \fancyhead[LE,R]{\textbf{siduction Manual}}
     \fancyfoot[L,R]{}
     \fancyfoot[C]{\thepage}
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0.4pt}
 
-% code-block style
 \usepackage{xcolor}
-\usepackage{MnSymbol}% benoetigt fuer 'prebreak='
+\usepackage{MnSymbol}
 \lstset{
-    basicstyle=\ttfamily\scriptsize, 
-    % fontsize definitions: scriptsize,small,tiny,normalsize, footnotesize,
-    % codeline numberinghttp://www.wtfpl.net/txt/copying/
-    %numbers=left,
-    %numberstyle=\scriptsize,
-    %stepnumber=1,
-    %numbersep=8pt,
+    basicstyle=\ttfamily\footnotesize, 
+    % fontsize definitions: scriptsize,small,tiny,normalsize
+    % codeline numbering
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
     % code highlight
-    basicstyle=\color[RGB]{40,1,196},
-    keywordstyle=\color[RGB]{42,161,152},
-    stringstyle=\color[RGB]{28,139,210},
-    numberstyle=\color[RGB]{108,113,196},
-    identifierstyle=\color[RGB]{0,0,74},
-    commentstyle=\color[RGB]{0,85,0},
-    rulecolor=\color{red},
+    %language=bash,
+    %keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
+    %stringstyle=\color[rgb]{0.31,0.60,0.02},
+    %commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
     frame=single,
     framerule=0pt,
     framexleftmargin=3pt,
@@ -90,13 +80,13 @@
     breaklines=true,
     prebreak={\raisebox{0ex}[0ex][0ex]
         {\ensuremath{\rhookswarrow}}},
-    %breakatwhitespace=true,
+    breakatwhitespace=true,
     breakautoindent=true,
     linewidth=\textwidth,
     xleftmargin=14pt,
-    %xrightmargin=20pt,
+    %xrightmargin=35pt,
 }
-
-\usepackage{tcolorbox}
-    \newtcolorbox{myquote}{colback=red!5!white, colframe=red!75!black}
-    \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+% test quote (>) as warning
+%\usepackage{tcolorbox}
+    %\newtcolorbox{myquote}{colback=red!5!white, colframe=red!75!black}
+    %\renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
