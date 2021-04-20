@@ -2,10 +2,10 @@
 # Wrapper script around pandoc
 # Provides templates to apply with pdf processing
 # Copyright Claes Holmerson 2010, GPL licensed (see COPYING for details)
-# Copyright Hendrik Lehmbruch 2021, GPL licensed (see COPYING for details)
+
 # directories 
-header=./pandoc-header-pdf.tex
-searchpath=./:../../de_md/:../static/images-de/:../static/logos/
+header=../../development/pandoc-header-pdf_akli.tex
+searchpath=./:../../de_md/:../static/images-de/
 
 # page options
 paper=a4paper
@@ -24,7 +24,6 @@ monofont="Liberation Mono"
 language=german
 #language=swedish
 nohyphenation=false
-linkcolor=blue
 
 columns=onecolumn
 #columns=twocolumn
@@ -36,11 +35,17 @@ geometry=portrait
 #alignment=flushright
 #alignment=center
 
+linkcolor=blue
+
+
+date="`date -u`"
+# "`date -u '+%Y-%m-%d'`" 
+
 # the command
-pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header \
---resource-path=$searchpath --highlight-style tango \
--V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor \
+pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath \
+-M  date="$date" \
+-V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin \
 -V geometry:margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
 -V geometry=$geometry -V alignment=$alignment -V columns=$columns \
--V fontsize=$fontsize -V nohyphenation=$nohyphenation \
+-V fontsize=$fontsize -V nohyphenation=$nohyphenation -V linkcolor=$linkcolor \
 $@
