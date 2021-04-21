@@ -28,7 +28,7 @@ Diese Handbuchseite enthält Tabellen zu den Bootoptionen für
 3. Allgemeine Parameter des Linux-Kernels
 4. Werte für den allgemeinen Parameter **vga**
  
-Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese an die betreffende Bootoption mit einem "**=**" Zeichen angehängt werden. Wenn zum Beispiel "1280x1024" der gewünschte Wert für die Bootoption "screen" wäre, dann wird "screen=1280x1024" in die Grub-Befehlszeile eingegeben, für die Sprachauswahl (hier "Deutsch") "lang=de". Die Grub-Befrehlszeile lässt sich editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Danach befindet man sich im Editiermodus. Jetzt kann man mit den Pfeiltasten zur Kernelzeile navigieren und am Ende den oder die gewünschten Cheatcode einfügen. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` oder `F10` fortgesetzt.
+Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese an die betreffende Bootoption mit einem "**=**" Zeichen angehängt werden. Wenn zum Beispiel "1280x1024" der gewünschte Wert für die Bootoption "screen" wäre, dann wird "screen=1280x1024" in die Grub-Befehlszeile eingegeben, für die Sprachauswahl (hier "Deutsch") "lang=de". Die Grub-Befehlszeile lässt sich editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Danach befindet man sich im Editiermodus. Jetzt kann man mit den Pfeiltasten zur Kernelzeile navigieren und am Ende den oder die gewünschten Cheatcode einfügen. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` oder `F10` fortgesetzt.
 
 [Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
