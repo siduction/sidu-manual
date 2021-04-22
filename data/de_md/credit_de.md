@@ -33,7 +33,7 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 + Alf Gaida (agaida)
 
-+ Axel Beu (ab) 
++ Axel Beu (ab) 2021 †
 
 + Ferdinand Thommes (devil) 
 
