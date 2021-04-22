@@ -153,7 +153,7 @@ Zur Zeit bietet der Installer keine Möglichkeit Pakete, die nicht mit den Anfor
 ### Das Core Team
 
 Alf Gaida (agaida)  
-Axel Beu (ab) 2021 †
+Axel Beu (ab) 2021 †  
 Torsten Wohlfarth (towo)  
 Hendrik Lehmbruch (hendrikL)  
 Ferdinand Thommes (devil)
