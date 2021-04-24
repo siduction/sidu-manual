@@ -1,6 +1,0 @@
-?package(sidu-manual):needs="X11"\
-  section="Applications/System/Administration"\
-  title="Sidu-Manual"\
-  command="/usr/bin/sidu-manual-control start"\
-  hints="Siduction Manual"\
-  icon="/usr/share/icons/sidu-manual.xpm"

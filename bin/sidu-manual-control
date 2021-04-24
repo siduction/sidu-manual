@@ -1,4 +1,0 @@
-#! /bin/bash
-# usage: sidu-manual-control start|stop|restart
-
-sidu-control browser sidu-manual $1

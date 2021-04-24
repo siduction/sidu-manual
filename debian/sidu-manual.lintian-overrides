@@ -1,2 +1,0 @@
-# There will be probably never ever a man-page for sidu-manual-control
-sidu-manual: binary-without-manpage usr/bin/sidu-manual-control
