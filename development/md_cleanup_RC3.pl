@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 #
 # Autor: Axel Konrad (akli)
-# Status am 20.04.2021: Zu Testzwecken freigegeben.
+# Status am 25.04.2021: Zu Testzwecken freigegeben.
 # Aufruf:   Zuerst im grep-Befehl den richtigen Pfad zu den md-Dateien eintragen.
-#           Im LINUX Terminal './<Pfad_zu>/md_cleanup.pl'
+#           Im LINUX Terminal './<Pfad_zu>/md_cleanup_RC3.pl'
 #           Für jede Datei, die das Suchmuster von grep enthält, legt das Script
 #           eine Datei mit gleichem Namen im Unterordner /clean an.
 #           Der Bereich "INFOBEREICH FÜR DIE AUTOREN" und die horizontalen
@@ -18,13 +18,13 @@ my ($DATEI, $FILE, $DIR, $END, $SCHREIBEN);
 my (@QUELLE, @NEU, @DATEIEN);
 
 # In dieser Zeile den richtigen Pfad zu den md-Dateien eintragen.
-system "grep -l -e RC3 ~/git/test/data/de_md/* 2>/dev/null > ~/clean_dateien";
+system "grep -l -e RC3 ~/git/test/data/de_md/* 2>/dev/null > ./clean_dateien";
 
-open DATEI, "</home/scholle1/clean_dateien";
+open DATEI, "<./clean_dateien";
 @DATEIEN = <DATEI>;
 close DATEI;
 
-system "rm ~/clean_dateien";
+system "rm ./clean_dateien";
 
 foreach (@DATEIEN) {
     chomp $_;
