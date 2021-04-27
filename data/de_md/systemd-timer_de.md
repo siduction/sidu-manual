@@ -22,22 +22,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
-
-## Systemd, der System- und Dienste-Manager
+## systemd-timer
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.timer**, mit der zeitgesteuert Aktionen ausgelöst werden können.
 
----
-
-##  systemd-timer
-
 Die "*.timer*"-Unit wird meist eingesetzt, um regelmäßig anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige "*.service*"-Unit notwendig, in der die Aktionen definiert sind. Sobald der Systemzeitgeber mit der in der "*.timer*"-Unit definierten Zeit übereinstimmt, aktiviert die "*.timer*"-Unit die gleichnamige "*.service*"-Unit.  
 Bei entsprechender Konfiguration können verpasste Läufe, während die Maschine ausgeschaltet war, nachgeholt werden.  
 Auch ist es möglich, dass eine "*.timer*"-Unit die gewünschten Aktionen nur ein einziges Mal zu einem vorher definierten Termin auslöst.
-
----
 
 ### Benötigte Dateien
 
@@ -67,8 +59,7 @@ Persistent=true
 WantedBy=timers.target
 ~~~
 
-#### Erklärungen
-
+**Erklärungen**  
 Die *.timer-Unit* muss zwingend die Sektion *[Timer]* enthalten, in der festgelegt wird wann und wie die zugehörige *.service-Unit* ausgelöst wird.  
 Es stehen zwei Timer-Typen zur Verfügung:
 
@@ -125,7 +116,7 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 
 "*cron*" und "*anacron*" sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer können eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.
  
-#### Nutzen
+**Nutzen**
 
 + Jobs können Abhängigkeiten haben (von anderen Systemd-Diensten abhängen).
 + Timer Units werden im Systemd-Journal geloggt.
@@ -134,20 +125,15 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 + Systemd Timer Units können von Ereignissen wie dem Booten oder Hardware-Änderungen ausgelöst werden.
 + Sie können auf einfache Weise mit systemctl aktiviert oder deaktiviert werden.
 
-
-#### Vorbehalte
+**Vorbehalte**
 
 + Die Konfiguration eines Cron-Jobs ist ein einfacher Vorgang.
 + Cron kann E-Mails mit Hilfe der MAILTO-Variablen senden. 
 
----
-
-## Quellen
+### Quellen systemd-timer
 
 [Deutsche Manpage 'systemd.timer'](https://manpages.debian.org/testing/manpages-de/systemd.timer.5.de.html)  
 [Archlinux Wiki, Timers](https://wiki.archlinux.org/index.php/Systemd/Timers)  
 [PRO-LINUX.DE, Systemd Timer Units...](https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html)
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

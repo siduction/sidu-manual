@@ -11,20 +11,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
-
-## systemd der System- und Dienste-Manager
+## systemd-service
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.service**. Die Unit-Datei mit der Namensendung ".service" ist der am häufigsten anzutreffende Unit-Typ in systemd.
 
----
-
-## systemd.service
-
 Die Servic-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen über den Dienst und den Prozess, den er überwacht, konfiguriert. 
 
-### .service-Unit anlegen
+### service-Unit anlegen
 
 Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis */usr/local/lib/systemd/system/* ab. (Ggf. ist das Verzeichnis mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das hat den Vorteil, dass sie Vorrang gegenüber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie Änderungsdateien, die mit **`systemctl edit <UNIT_DATEI>`** erzeugt wurden, im seinerseits vorrangigen Verzeichnis */etc/systemd/system/* abgelegt werden. Siehe: [Hirarchie der Ladepfade](./systemd-unit-datei_de.htm#ladepfad-der-unit-dateien).
  
@@ -32,7 +26,7 @@ Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis */usr/local/
 
 Für diese Sektion sind über dreißig Optionen verfügbar, von denen wir hier besonders häufig verwendete beschreiben.
 
----               ---
+---               ----
 Type=             PIDFile=
 RemainAfterExit=  GuessMainPID=
 ExecStart=        Restart=
@@ -49,7 +43,7 @@ TimeoutSec=       USBFunctionStrings=
 RuntimeMaxSec=    Sockets=
 WatchdogSec=      BusName=
                   OOMPolicy=
----               ---
+---               ----
 
 + **Type=**  
     Definiert den Prozessstarttyp und ist damit eine der wichtigsten Optionen.  
@@ -111,34 +105,30 @@ WatchdogSec=      BusName=
     Die erlaubten Werte sind: no, always, on-success, on-failure, on-abnormal, on-abort oder on-watchdog.  
     Folgende Tabelle zeigt den Effekt der *Restart=* Einstellung auf die Exit-Gründe.
        
-    ------------------- ---- -------- ------------ ------------ ------------- ---------- -------------
-    ► Restart= ►         no   always   on-success   on-failure   on-abnormal   on-abort   on-watchdog
+    ------------------- -------- --------- --------- ---------- ------- ----------
+                                  on        on        on         on      on
+    ► Restart= ►         always   success   failure   abnormal   abort   watchdog
     ▼ Exit-Grund ▼
-    Sauberer Exit              X        X
-    Unsauberer Exit            X                     X
-    Unsauberes Signal          X                     X            X            X
-    Zeitüberschreitung         X                     X            X
-    Watchdog                   X                     X            X                        X
-    ------------------- ---- -------- ------------ ------------ ------------- ---------- -------------
+    Sauberer Exit          X        X
+    Unsauberer Exit        X                  X
+    Unsauberes Signal      X                  X         X          X
+    Zeitüberschreitung     X                  X         X
+    Watchdog               X                  X         X                  X
+    ------------------- -------- --------- --------- ---------- ------- ----------
     
     Die bei Bedarf gesetzten Optionen *RestartPreventExitStatus=* und *RestartForceExitStatus=* ändern dieses Verhalten.
 
-### Beispiele
-
+**Beispiele**  
 Einige selbst erstellte Service-Units finden sich auf unseren Handbuchseiten
 
 [service-Unit für systemd Timer](./systemd-timer_de.htm#service-unit-anlegen)  
-[service-Unit für systemd Path](./systemd-path_de.htm#service-unit-anlegen)
+[service-Unit für systemd Path](./systemd-path_de.htm#service-unit-anlegen)  
+und mit der bevorzugten Suchmaschine im Internet.  
+[LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)
 
-und mit der bevorzugten Suchmaschine im Internet. 
-
----
-
-## Quellen
+### Quellen systemd-service
 
 [Deutsche Manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
 [LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-04-07</div>

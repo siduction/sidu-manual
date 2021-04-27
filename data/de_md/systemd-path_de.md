@@ -15,22 +15,14 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
-
-## systemd der System- und Dienste-Manager
+## systemd-path
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.path**, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.
 
----
-
-## systemd.path
-
 Die "*.path-Unit*" ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.  
 Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service Unit ausführen. Die "*.path-Unit*" ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.  
 Die Pfad-spezifischen Optionen werden in dem Abschnitt *[Path]* konfiguriert.
-
----
 
 ### Benötigte Dateien
 
@@ -75,54 +67,13 @@ Die speziellen Optionen sind:
 + DirectoryMode=  
     legt bei Verwendung, für das zuvor erstellte Verzeichnis, den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.
 
-#### Das Beispiel
+**Ein Beispiel**  
 
-An einem Beispiel, das auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite [LAMP - Apache, Benutzer und Rechte](./lamp-apache_de.htm#benutzer-und-rechte) basiert, wollen wir das Zusammenspiel der *.path-Unit* mit anderen *systemd-Unit* verdeutlichen.
+Auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite [LAMP - Apache, Benutzer und Rechte](./lamp-apache_de.htm#benutzer-und-rechte) basierend, wollen wir das Zusammenspiel der *.path-Unit* mit anderen *systemd-Unit* verdeutlichen.
 
-Zuerst eine graphische Übersicht, die die Abhängigkeiten der *systemd-Units* unseres Beispiels darstellt:
+Die Abbildung *path-Unit-Funktion* stellt die Abhängigkeiten der systemd-Units unseres Beispiels dar.
 
-~~~
-
-  ┌───────────────────────┐
-  │ server1-watch.service │
-  └───┬─────────────┬─────┘
-      │             ▲
-      │      überwacht rekursiv 
-      ▼             ▲
- schreibt nach      │
-      ▼             │
-      │    ┌────────┴────────────┐
-      │    │  APACHE WEBSERVER   │
-      │    │    DokumentRoot:    │
-      │    │ /var/www/html/…/…/… ├┐
-      │    ├─────────────────────┤│
-      │    │       DATEI:        ││
-      └────┤ /var/www/changed    ││
-           └─┬───────────┬───────┘│
-             │           │        │
-  ╔══════════│═══════════│════════│═╗
-  ║          ▼           │        │ ║
-  ║      überwacht       │        │ ║
-  ║          ▼           │        │ ║
-  ║   ┌──────┴───────┐   │        │ ║
-  ║   │ server1.path │   │        │ ║
-  ║   └──────┬───────┘   │        │ ║
-  ║          ▼           │        │ ║
-  ║      aktiviert       │        │ ║
-  ║          ▼           │        │ ║
-  ║          │           │        │ ║
-  ║          │           │        │ ║
-  ║ ┌────────┴────────┐  │        │ ║
-  ║ │ server1.service │  │        │ ║
-  ║ └────────┬────────┘  │        │ ║
-  ║          ▼           │        │ ║
-  ║      führt aus       │        │ ║
-  ║          ▼           │        │ ║
-  ║          └───────────┴────────┘ ║
-  ║                                 ║
-  ╚═════════════════════════════════╝
-
-~~~
+![path-Unit Funktion](../../static/images-de/systemd-de/path_01.svg)
 
 Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der *.path-Unit*. Die *server1.path*-Unit überwacht die Datei "*/var/www/changed*" und aktiviert bei Änderungen die zugehörige *server1.service*-Unit. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis "*/var/www/html/*" aus und stellt die Datei "*/var/www/changed*" zurück.  
 Die außerhalb der Umrandung liegende "*server1-watch.service*"-Unit übernimmt die rekursive Überwachung von *DocumentRoot* des Apache-Webservers.
@@ -144,8 +95,7 @@ PathModified=/var/www/changed
 WantedBy=multi-user.target
 ~~~
 
-#### Erklärungen
-
+**Erklärungen**  
 Sektion [Unit]:  
 Die Option "*BindsTo=*" stellt die stärkste verfügbare Bindung zweier systemd-Einheiten aneinander dar. Falls eine von ihnen während des Starts oder des Betriebs in einen Fehlerzustand übergeht, wird die andere auch unmittelbar beendet.  
 Zusammen mit der Option "*After=*" wird erreicht, dass die *server1.path*-Unit erst startet, nachdem die *server1-watch.service*-Unit ihren erfolgreichen Start an systemd zurückmeldet.
@@ -172,8 +122,7 @@ ExecStart=/usr/bin/chmod -R g+w /var/www/html/
 ExecStart=/usr/bin/chmod -R o-r /var/www/html/
 ~~~
 
-#### Erklärungen
-
+**Erklärungen**  
 Sektion [Service]:  
 "*ExecStart=*"-Befehle werden nur ausgeführt, nachdem sich alle "*ExecStartPre=*"-Befehle erfolgreich beendet haben.
 Zuerst wird die Datei */var/www/changed* auf 0-Bite zurückgesetzt und danach der Rest ausgeführt.
@@ -199,8 +148,7 @@ WantedBy=multi-user.target
 Anmerkung:  
 Interressant ist, dass systemd intern das inotify-API für *.path-Unit* verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.
 
-#### Erklärungen
-
+**Erklärungen**  
 Die Sektion [Unit]:  
 "*Before=*" und "*Wants=*" sind die entsprechenden Korrellationen zu "*BindsTo=*" und "*After=*" aus der *server1.service-Unit*.
 
@@ -213,12 +161,10 @@ Auf Grund der Abhängigkeit gliedern wir zuerst die *server1.path-Unit* und dann
 
 ~~~
 # systemctl enable server1.path
-Created symlink /etc/systemd/system/multi-user.target.wants/server1.path \
-  → /usr/local/lib/systemd/system/server1.path.
+Created symlink /etc/systemd/system/multi-user.target.wants/server1.path /usr/local/lib/systemd/system/server1.path.
   
 # systemctl enable server1-watch.service
-Created symlink /etc/systemd/system/multi-user.target.wants/server1-watch.service \
-  → /usr/local/lib/systemd/system/server1-watch.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/server1-watch.service /usr/local/lib/systemd/system/server1-watch.service.
 ~~~
 
 Nun ist das Monitoring auch gleich aktiv, wie uns die Statusausgaben aller drei Units zeigen.
@@ -228,8 +174,7 @@ Nun ist das Monitoring auch gleich aktiv, wie uns die Statusausgaben aller drei 
 ● server1-watch.service - Watching server1 folder.
      Loaded: loaded (/usr/local/lib/systemd/system/server1-watch.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2021-02-21 19:25:20 CET; 1min 49s ago
-    Process: 23788 ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/ \
-      (code=exited, status=0/SUCCESS)
+    Process: 23788 ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/ (code=exited, status=0/SUCCESS)
    Main PID: 23790 (inotifywait)
       Tasks: 1 (limit: 2322)
      Memory: 216.0K
@@ -257,7 +202,7 @@ TriggeredBy: ● server1.path
 
 Der Status "Active: inactive (dead)" der letzten Ausgabe ist der normale Zustand für die Unit *server1.service*, denn diese Unit ist nur dann aktiv, wenn sie von *server1.path* angestoßen wurde ihre Befehlskette auszuführen. Danach geht sie wieder in den inaktiven Zustand über.
 
-#### server1.service-Unit manuell ausführen
+### service-Unit manuell ausführen
 
 Sollte es einmal hilfreich oder nötig sein die Dateirechte in *DocumentRoot* des Apache-Webservers manuell zu ändern, setzen wir einfach diesen Befehl ab:
 
@@ -285,15 +230,11 @@ Feb 22 17:55:36 lap1 systemd[1]: server1.service: Succeeded.
 Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.
 ~~~
 
----
-
-## Quellen
+### Quellen systemd-path
 
 [Deutsche Manpage 'systemd.path'](https://manpages.debian.org/testing/manpages-de/systemd.path.5.de.html)
 
 Ein anders gelagertes Beispiel:  
 [PRO-LINUX.DE, Systemd Path Units...](https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html)
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

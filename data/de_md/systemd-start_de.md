@@ -20,16 +20,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
-
-# systemd
-
 ## systemd der System- und Dienste-Manager
 
 *Anmerkung:*  
 *Die folgende, allgemeine Einführung zu systemd wurde überwiegend der ins [deutsche übersetzten Manpage](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html) entnommen. Der Dank geht an Helge Kreutzmann.*
-
----
 
 **systemd** ist ein System- und Diensteverwalter, der beim Systemstart als erster Prozess (als PID 1) ausgeführt wird und somit als **Init-System** agiert, das System hochfährt und auf Anwendungsebene **Dienste verwaltet.**  
 Entwickelt wird es federführend von den Red Hat Entwicklern Lennart Poettering und Kay Sievers.
@@ -38,21 +32,17 @@ In Debian wurde die Einführung des systemd als Standard-Init-System lange, kont
 
 Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.
 
----
-
-### Konzepte
+## Konzeption des systemd
 
 Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens "*Units*" in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
 Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.htm).  
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
 
-### Unit-Dateien
-
 Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
 Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ, und können die generischen Sektionen "[Unit]" und "[Install]" enthalten.  
 Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm) erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen "[Unit]" und "[Install]".
 
-#### Unit Typen
+### Unit Typen
 
 Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite [systemd.unit](./systemd-unit_de.htm) zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.  
 Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
@@ -89,17 +79,15 @@ Das Verzeichnis **/run/systemd/system/** beinhaltet zur Laufzeit erstellte Unit-
 
 Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html)  als Ersatz für das nicht mehr weiter gepflegte  *ConsoleKit* . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html)  und viele weitere. Ein Blick in die Linkliste auf   [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/)  ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu systemd.
 
----
-
-### Handhabung von Diensten mittels systemd
+### Handhabung von Diensten
 
 Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl "*systemctl*".
 
 + systemctl --all - listet alle Units, aktive und inaktive.
 + systemctl -t [NAME] - listet nur Units des bezeichneten Typ.
 + systemctl list-units - listet alle aktiven Units.
-+ systemctl start [NAME...] - startet (aktiviert) eine oder mehrere Units.
-+ systemctl stop [NAME...] - (deaktiviert) eine oder mehrere Units.
++ systemctl start [NAME...] - startet eine oder mehrere Units.
++ systemctl stop [NAME...] - stopt eine oder mehrere Units.
 + systemctl restart [NAME] - stopt eine Unit und startet sie sofort wieder. Wird z.B. verwendet um die geänderte Konfiguration eines Dienstes neu einzulesen.
 + systemctl status [Name] - zeigt den derzeitigen Status einer Unit.
 + systemctl is-enabled [Name] - zeigt nur den Wert "enabled" oder "disabled" des Status einer Unit.
@@ -118,8 +106,7 @@ Nachfolgend zwei Befehle deren Funktion unsere Handbuchseite [Systemd-Target](./
 + systemctl reboot – Führt einen Reboot aus
 + systemctl poweroff - Fährt das System herunter und schaltet den Strom, sofern technisch möglich, aus.
 
-#### Beispiel
-
+**Beispiel**  
 Anhand von Bluetooth demonstrieren wir die Funktionalität des systemd.  
 Zuerst die Statusabfrage im Kurzformat.
 
@@ -162,14 +149,10 @@ Um eine Unit nur zeitweise zu deaktivieren, verwenden wir den Befehl
 
 Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "start"-Befehl aktivieren wir die Unit wieder.
 
----
-
-## Quellen
+### Quellen systemd
 
 [Deutsche Manpage 'systemd'](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html)  
 [Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
 [Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

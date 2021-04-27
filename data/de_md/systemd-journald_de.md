@@ -13,13 +13,13 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-Das Systemjournal besteht aus dem **systemd-journald**, der Protokollmeldungen sammelt und speichert, und dem **journalctl**, das der Verwaltung, Abfrage und Ausgabe der gesammelten Protokollmeldungen dient.
+## Systemjournal
 
----
+Das Systemjournal besteht aus dem *systemd-journald*, kurz **journald**, der Protokollmeldungen sammelt und speichert, und dem **journalctl**, das der Verwaltung, Abfrage und Ausgabe der gesammelten Protokollmeldungen dient.
 
-## systemd-journald
+### journald
 
-*systemd-journald* ist ein Systemdienst, der mit Hilfe der Unit *systemd-journald.service* (und seiner zugehörigen Socket-Units) Protokollmeldungen sammelt und speichert.  
+*journald* ist ein Systemdienst, der mit Hilfe der Unit *systemd-journald.service* (und seiner zugehörigen Socket-Units) Protokollmeldungen sammelt und speichert.  
 Es erstellt und verwaltet strukturierte, indizierte Journale, basierend auf den Protokollmeldungen aus:
 
 + Kernel-Protokollmeldungen
@@ -28,22 +28,20 @@ Es erstellt und verwaltet strukturierte, indizierte Journale, basierend auf den 
 + Standardausgabe und Standardfehlerausgabe der Dienste-Units
 + Audit-Aufzeichnungen, stammend aus dem Kernel-Audit-Subsystem
 
-*systemd-journald* erlaubt Journal-"Namensräume". Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokolldatenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.
+*journald* erlaubt Journal-"Namensräume". Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokolldatenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.
 
-Der *systemd-journald* speichert die Protokolldaten standardmäßig dauerhaft unter  
+Der *journald* speichert die Protokolldaten standardmäßig dauerhaft unter  
 */var/log/journal/MASCHINENKENNUNG*.
 
 Protokolldaten für andere Namensräume befinden sich in  
 */var/log/journal/MASCHINENKENNUNG.NAMENSRAUM*.
 
-### systemd-cat
-
-*systemd-cat* bietet zwei Möglichkeiten um Daten eines Prozesses an das Journal weiterzugeben.  
+Der Befehl **systemd-cat** bietet zwei Möglichkeiten um unabhängig von systemd-Units Daten eines Prozesses an das Journal weiterzugeben.  
 
 1. **`systemd-cat <Programm> <Option(en)>`**  
   Mit einem Programmaufruf oder Befehl verwendet, leitet *systemd-cat* alle Standardeingaben, Standardausgaben und Standardfehlerausgaben eines Prozesses zum Journal um.  
 2. **In einer Pipe verwendet,**  
-  dient *systemd-cat* als Filterwerkzeug, um die vom vorherigen Weiterleitungselement erstellte Ausgabe an das Journal zu senden.
+  dient *systemd-cat* als Filterwerkzeug, um die zuvor erstellte Ausgabe an das Journal zu senden.
 
 Falls kein Parameter übergeben wurde, wird *systemd-cat* alles, was es von der Standardeingabe liest, an das Journal schicken. Die man-page [systemd-cat.1.de](https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html) bietet weitere Informationen.
 
@@ -52,9 +50,7 @@ Falls kein Parameter übergeben wurde, wird *systemd-cat* alles, was es von der 
 Die *systemd-journal*-Module *upload*, *remote* und *gatewayd* ermöglichen das Versenden und Empfangen von Systemprotokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.  
 Für weitere Informationen bitte die man-pages [journal upload](https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html), [journal remote](https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html) und [journal gatewayd](https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html) lesen.
 
----
-
-## journald.conf
+### journald.conf
 
 Die folgenden Dateien konfigurieren verschiedene Parameter des Systemd-Journal-Dienstes.
 
@@ -77,8 +73,6 @@ Standardmäßig sammelt nur der Vorgabe-Namensraum Kernel- und Auditprotokollnac
 Wenn Pakete die Konfiguration anpassen müssen, können sie Konfigurationsschnipsel in */usr/lib/systemd/\*.conf.d/* oder */usr/local/lib/systemd/\*.conf.d/* installieren.
 
 Die Hauptkonfigurationsdatei wird vor jeder anderen aus den Konfigurationsverzeichnissen gelesen und hat die niedrigste Priorität. Einträge in einer Datei in jedem der Konfigurationsverzeichnisse setzen Einträge in der Hauptkonfigurationsdatei außer Kraft. Dateien in den Unterverzeichnissen *\*.conf.d/* werden nach ihrem Dateinamen sortiert, unabhängig davon, in welchem Unterverzeichnis sie sich befinden. Sofern eigene Konfigurationsdateien nötig sind, wird empfohlen, allen Dateinamen in diesen Unterverzeichnissen eine zweistellige Zahl und einen Bindestrich voranzustellen, um die Sortierung der Dateien zu vereinfachen. 
-
----
 
 ## journalctl
 
@@ -165,9 +159,7 @@ Die folgenden Optionen behandeln die Verwaltung der von *journald* geschriebenen
 + **- -verify**  
   Prüft die Journal-Dateien auf interne Konsistenz.
 
----
-
-## journalctl beherrschen
+### journalctl beherrschen
 
 Wie oben unter [Rechte](#rechte) beschrieben, kannst du das Journal als einfacher User benutzen. Hier sind einige Beispiele:
 
@@ -299,9 +291,7 @@ Apr 07 23:03:09 pc1 org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owne
 
 Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur die gesuchten Journaleinträge angezeigt werden. Die man-page von [journalctl](https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html) beschreibt alle Optionen ausführlich.
 
----
-
-## Quellen
+### Quellen
 
 [systemd-journald](https://manpages.debian.org/testing/manpages-de/systemd-journald.8.de.html)  
 [journald Konfiguration](https://manpages.debian.org/testing/manpages-de/journald.conf.5.de.html)  

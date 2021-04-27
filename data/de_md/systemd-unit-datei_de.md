@@ -11,16 +11,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
-
-## systemd der System- und Dienste-Manager
+## systemd unit-Datei
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
 In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
-
----
-
-## Unit-Datei
 
 Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedene Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
 Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ enthalten. Die generischen Sektionen "[Unit]" am Beginn und "[Install]" am Ende der Datei sind optional, wobei die Sektion "[Unit]" dringend empfohlen wird. 
@@ -80,13 +74,11 @@ Der Befehl
 bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`** gestartet und mit **`systemctl stop <UNIT_DATEI>`** gestopt werden.  
 Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */dev/null* ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand "masked" und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.
 
----
-
-## Sektionen der Unit-Datei
+### Sektionen der Unit-Datei
 
 Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ spezifischen Sektion und der Sektion [Install]. Die Typ spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ spezifische Sektion enthalten.
 
-### Sektion [Unit]
+#### Sektion [Unit]
 
 Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
 
@@ -182,7 +174,7 @@ Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhäng
 
 Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in der [Deutschen Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html) nachlesen.
 
-### Typ spezifische Sektion
+#### Typ spezifische Sektion
 
 Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
 
@@ -208,7 +200,7 @@ Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausfüh
 
 + [[Scope]](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html) konfiguriert eine Gruppe von extern erstellten Prozessen.
 
-### Sektion [Install]
+#### Sektion [Install]
 
 Unit-Dateien können diese Sektion enthalten.  
 Die Optionen der *[Install]*-Sektion werden von den Befehlen **`systemctl enable <UNIT_DATEI>`** und **`systemctl disable <UNIT_DATEI>`** während der Installation einer Unit verwandt.  
@@ -244,11 +236,7 @@ Beschreibung der Optionen:
 Hinweis:
 Um die Konfiguration einer Unit-Datei zu prüfen, eignet sich der Befehl **`systemd-analyze verify <UNIT_DATEI>`**.
 
----
-
-## Beispiel
-
-### cupsd
+### Beispiel cupsd
 
 Der *cupsd*, Auftragsplaner (Scheduler) für das Common UNIX Printing System, wird von systemd mit seinen drei Unit Dateien "*cups.socket*", "*cups.service*" und "*cups.path*" gesteuert und eignet sich gut, um die Abhängigkeiten zu verdeutlichen.  
 Hier die drei Dateien.
@@ -304,8 +292,7 @@ ListenStream=/run/cups/cups.sock
 WantedBy=sockets.target
 ~~~
 
-#### Die Sektion [Unit]
-
+**Die Sektion [Unit]**  
 enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien *cups.path* und *cups.socket* zusätzlich die  Bindungsabhängigkeit *PartOf=cups.service*, was bedeutet, dass diese zwei Units abhängig von *cups.service* gestoppt oder neu gestartet werden.  
 Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungsabhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
 
@@ -332,8 +319,7 @@ Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd
 [...]
 ~~~
 
-#### Die Sektion [Install]
-
+**Die Sektion [Install]**  
 der *cups.service*-Unit enthält mit der Option "Also=cups.socket cups.path" die Anweisung, diese beiden Units auch zu installieren und alle drei Units haben unterschiedliche "WantedBy=" Optionen:
 
 + cups.socket:  WantedBy=sockets.target  
@@ -393,69 +379,103 @@ Weiter oben stellten wir fest, dass der Start einer *cups.xxx*-Unit ausreicht, u
 Während des gesamten Bootprozesses werden die drei *cups.xxx*-Units wiederholt bei systemd zur Aktivierung angefordert. Das härtet den *cupsd* gegen unvorhergesehene Fehler, spielt für systemd aber keine Rolle, denn es ist unerheblich wie oft ein Service angefordert wird, wenn er sich in der Warteschlange befindet.  
 Zusätzlich fordert immer dann das *printer.target* den *cups.service* an, wenn ein Drucker neu von systemd erkannt wird.
 
----
-
-## Werkzeuge
+### Werkzeuge
 
 Systemd beinhaltet einige nützliche Werkzeuge für die Analyse, Prüfung und Bearbeitung der Unit-Dateien.  
 Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html)  und [systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html) zu Rate ziehen.
 
 
-+ 
++ edit
+  
   ~~~
   # systemctl edit <UNIT_DATEI>
   # systemctl edit --full <UNIT_DATEI>
   # systemctl edit --full --force <UNIT_DATEI>
   ~~~
-  
+ 
   *systemctl edit* öffnet die ausgewählte Unit-Datei im konfigurierten Editor.
   
-  Der Befehl **systemctl edit <UNIT_DATEI>** erstellt unterhalb */etc/systemd/system/* ein neues Verzeichnis mit dem Namen "\<UNIT_DATEI\>.d" und darin die Datei "override.conf", die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) inklusive */etc/systemd/system/* abwärts eingetragen sind.
+  **systemctl edit <UNIT_DATEI>** erstellt unterhalb */etc/systemd/system/* ein neues Verzeichnis mit dem Namen "\<UNIT_DATEI\>.d" und darin die Datei "override.conf", die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) inklusive */etc/systemd/system/* abwärts eingetragen sind.
   
-  Der Befehl **systemctl edit - -full <UNIT_DATEI>** erstellt eine neue, namensgleiche Datei im Verzeichnis */etc/systemd/system/*. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) unterhalb */etc/systemd/system/* eingetragen sind. Dateien, die sich bereits im Verzeichnis */etc/systemd/system/* befinden, werden überschrieben.
+  **systemctl edit - -full <UNIT_DATEI>** erstellt eine neue, namensgleiche Datei im Verzeichnis */etc/systemd/system/*. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) unterhalb */etc/systemd/system/* eingetragen sind. Dateien, die sich bereits im Verzeichnis */etc/systemd/system/* befinden, werden überschrieben.
   
-  Der Befehl **systemctl edit - -full - -force <UNIT_DATEI>** erstellt eine neue Datei im Verzeichnis */etc/systemd/system/*. Ohne die Option *- -full* würde nur eine Datei "override.conf" im neuen Verzeichnis */etc/systemd/system/\<UNIT_DATEI\>.d* generiert, der die zugehörige Unit-Datei fehlt.
-  
+  **systemctl edit - -full - -force <UNIT_DATEI>** erstellt eine neue Datei im Verzeichnis */etc/systemd/system/*. Ohne die Option *- -full* würde nur eine Datei "override.conf" im neuen Verzeichnis */etc/systemd/system/\<UNIT_DATEI\>.d* generiert, der die zugehörige Unit-Datei fehlt.
+   
   Wird der Editor beendet, so führt systemd automatisch den Befehl **`systemctl daemon-reload`** aus.
 
-+ ~~~
++ revert
+  
+  ~~~
   # systemctl revert <UNIT_DATEI>
   ~~~
   
   macht die mit *systemctl edit* und *systemctl edit - -full* vorgenommenen Änderungen an Unit-Dateien rückgängig. Dies gilt nicht für geänderte Unit-Dateien die sich bereits im Verzeichnis */etc/systemd/system/* befanden.  
   Zusätzlich bewirkt der Befehl die Rücknahme der mit *systemctl mask* vorgenommenen Änderungen.
 
-+ ~~~
++ daemon-reload
+  
+  ~~~
   # systemctl daemon-reload
   ~~~
   
   Lädt die Systemverwalterkonfiguration neu. Dies führt alle Generatoren neu aus, lädt alle Unit-Dateien neu und erstellt den gesamten Abhängigkeitsbaum neu.
 
-+ ~~~
-  # systemctl cat <UNIT_DATEI>
++ cat
+  
+  ~~~
+  $ systemctl cat <UNIT_DATEI>
   ~~~
   
   Gibt entsprechend des Konsolebefehls *cat* den Inhalt der Unit-Datei und aller zugehörigen Änderungen aus.
 
-+ ~~~
-  # systemd-analyze verify <UNIT_DATEI>
++ analyze verify
+  
+  ~~~
+  $ systemd-analyze verify <UNIT_DATEI>
   ~~~
   
   überprüft die Konfigurationseinstellungen einer Unit-Datei und gibt Hinweise aus. Dies ist ein sehr hilfreicher Befehl um die Konfiguration selbst erstellter oder geänderter Unit-Dateien zu prüfen.
 
-+ ~~~
++ systemd-delta
+
+  ~~~
+  $ systemd-delta
+  ~~~
+  
+  präsentiert in der Ausgabe Unit-Dateien und die vorgenommenen Änderungen an ihnen. Das Schlüsselwort am Anfang der Zeile definiert die Art der Änderung bzw. Konfiguration.  
+  Hier ein Beispiel:
+
+  ~~~
+  $ systemd-delta --no-pager
+  [MASKED]     /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
+  [OVERRIDDEN] /etc/tmpfiles.d/screen-cleanup.conf → /usr/lib/tmpfiles.d/screen-cleanup.conf
+  [MASKED]     /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
+  [EQUIVALENT] /etc/systemd/system/tmp.mount → /lib/systemd/system/tmp.mount
+  [EXTENDED]   /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
+  [EXTENDED]   /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
+  
+  6 overridden configuration files found.
+  ~~~
+
++ analyze dump
+  
+  ~~~
   $ systemd-analyze dump > systemd_dump.txt
   ~~~
   
   erstellt die Textdatei *systemd_dump.txt* mit der vollständigen Konfiguration alle Units des systemd. Die sehr lange Textdatei gibt Aufschluss über alle Konfigurationseinstellungen aller systemd-Units und lässt sich mit einem Texteditor und unter Verwendung von RegEx-Pattern gut durchsuchen.
 
-+ ~~~
++ analyze plot
+  
+  ~~~
   $ systemd-analyze plot > bootup.svg
   ~~~
   
   erstellt die Datei *bootup.svg* mit der zeitlichen Abfolge des Bootprozesses. Es ist eine graphisch aufbereitete Auflistung des Bootprozesses mit den Start- und Endzeitpunkten aller Units, welche Zeit sie beanspruchten und ihren Aktivitätszuständen.
 
-+ ~~~
++ analyze dot
+  
+  ~~~
   $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
     '*.target' | dot -Tsvg > targets.svg
     Color legend: black     = Requires
@@ -463,16 +483,13 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
                   dark grey = Wants
                   red       = Conflicts
                   green     = After
-
   ~~~
-  
+ 
   erstellt das Flussdiagramm *targets.svg*, dass die Abhängigkeiten der im Bootprozess verwendeten Targets darstellt. Die Beziehungen der *.target*-Units werden zur besseren Übersicht farblich dargestellt.
 
 Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgelieferten Werkzeuge dar. Bitte entnehme den man-Pages die vollständige Dokumentation.
 
----
-
-## Quellen
+### Quellen systemd-unit-Datei
 
 [Deutsche Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
 [Deutsche Manpage, systemd.syntax](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)  
@@ -485,7 +502,5 @@ Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgeliefe
 [Deutsche Manpage, systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html)
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-04-06</div>

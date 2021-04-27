@@ -15,16 +15,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
-
-## systemd der System- und Dienste-Manager
+## systemd-mount
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm). Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit **.mount** und **.automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
-
----
-
-## systemd-mount
 
 Die **.mount**-Unit ist eine Konfigurationsdatei, die für systemd Informationen über einen Einhängepunkt bereitstellt.  
 Die **.automount**-Unit überwacht das Dateisystem und aktiviert die gleichnamige *.mount-Unit*, wenn das darin bezeichnete Dateisystem verfügbar ist.
@@ -72,8 +66,6 @@ Die *.mount*-Unit verfügt über die folgenden Optionen in der zwingend erforder
 + **TimeoutSec=** (Vorgabewert aus der Option *DefaultTimeoutStartSec=* in systemd-system.conf)  
     Konfiguriert die Zeit, die auf das Beenden des Einhängebefehls gewartet wird. Falls ein Befehl sich nicht innerhalb der konfigurierten Zeit beendet, wird die Einhängung als fehlgeschlagen betrachtet und wieder heruntergefahren. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie »5min 20s«. Durch Übergabe von »0« wird die Zeitüberschreitungslogik deaktiviert.
 
-
-
 ### Inhalt der automount-Unit
 
 Die *.automount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:
@@ -87,9 +79,7 @@ Die *.automount*-Unit verfügt über die folgenden Optionen in der zwingend erfo
 + **TimeoutIdleSec=** (Standard: 0)  
     Bestimmt die Zeit der Inaktivität, nach der systemd versucht das Dateisystem auszuhängen. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie »5min 20s«. Der Wert "0" deaktiviert die Option.
 
----
-
-## Beispiele
+### Beispiele
 
 Systemd liest den Einhängepunkt aus dem Namen der *.mount*- und *.automount*-Units. Deshalb müssen sie nach dem Einhängepunkt, den sie steuern, benannt sein.  
 Dabei ist zu beachten, keine Bindestriche "-" in den Dateinamen zu verwenden, denn sie deklarieren ein neues Unterverzeichnis im Verzeichnisbaum. Einige Beispiele:
@@ -105,8 +95,7 @@ $ systemd-escape -p --suffix=mount "/data/home-backup"
   data/home\x2dbackup.mount
 ~~~
 
-### Festplatten-Partition
-
+**Festplatten-Partition**  
 Eine Partition soll nach jedem Systemstart unter "/disks/TEST" erreichbar sein.  
 Wir erstellen mit einem Texteditor die Datei "disks-TEST.mount" im Verzeichnis "/usr/local/lib/systemd/system/". (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)
 
@@ -133,8 +122,7 @@ Anschließend aktivieren und starten wir die neue *.mount*-Unit.
 # systemctl enable --now disks-TEST.mount
 ~~~
 
-### NFS
-
+**NFS**  
 Das "document-root"-Verzeichnis eines Apache Webservers im heimischen Netzwerk soll in das Home-Verzeichnis des Arbeitsplatz-Rechners mittels NFS eingehängt werden.  
 Wir erstellen mit einem Texteditor die Datei "home-\<user\>-www_data.mount" im Verzeichnis "/usr/local/lib/systemd/system/".  
 "\<user\>" bitte mit dem eigenen Namen ersetzen.
@@ -184,8 +172,7 @@ Die Statusabfrage bestätigt die Aktion.
 ~~~
 # systemctl status home-<user>-www_data.mount --no-pager
 ● home-<user>-www_data.mount - Mount server1/var/www/ using NFS
-     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.mount; \
-             disabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.mount; disabled; vendor preset: enabled)
      Active: active (mounted) since Wed 2021-03-10 16:27:58 CET; 8min ago
 TriggeredBy: ● home-<user>-www_data.automount
       Where: /home/<user>/www_data
@@ -198,8 +185,7 @@ TriggeredBy: ● home-<user>-www_data.automount
 
 # systemctl status home-<user>-www_data.automount --no-pager
 ● home-<user>-www_data.automount - Automount server1/var/www/ usuing NFS
-     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.automount; \
-             enabled; vendor preset: enabled)
+     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.automount; enabled; vendor preset: enabled)
      Active: active (running) since Wed 2021-03-10 16:27:58 CET; 8min ago
    Triggers: ● home-<user>-www_data.mount
       Where: /home/<user>/www_data
@@ -230,14 +216,10 @@ Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
 [...]
 ~~~
 
-
-### Weitere Beispiele
-
+**Weitere Beispiele**  
 Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *.mount*- und *.automount*-Unit. Das Kapitel "Quellen" enhält einige Webseiten mit eine ganze Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
 
----
-
-## Quellen
+### Quellen sytemd-mount
 
 [Deutsche Manpage, systemd.mount](https://manpages.debian.org/testing/manpages-de/systemd-mount.1.de.html)  
 [Deutsche Manpage, mount](https://manpages.debian.org/testing/manpages-de/mount.8.de.html)  
@@ -246,7 +228,5 @@ Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beisp
 [Linuxnews, nfs per systemd](https://linuxnews.de/2019/12/nfs-freigaben-per-systemd-einbinden/)  
 [Debianforum, Netzlaufwerke einbinden](https://wiki.debianforum.de/Netzlaufwerke_einbinden)  
 [Ubuntuusers, Mount-Units](https://wiki.ubuntuusers.de/systemd/Mount_Units/)
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-04-06</div>
