@@ -47,23 +47,23 @@ Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md) erläutert de
 Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite [systemd.unit](./systemd-unit_de.md) zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.  
 Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
 
-1. **Dienste-Units** ([systemd.service](./systemd-service_de.md), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
+1. **Dienste-Units** [(systemd.service)](./systemd-service_de.md), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
 
 2. **Socket-Units** (systemd.socket), die lokale IPC- oder Netzwerk-Sockets in dem System kapseln, nützlich für Socket-basierte Aktivierung.
 
-3. **Target-Units** ([systemd.target](./systemd-target_de.md) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
+3. **Target-Units** [(systemd.target)](./systemd-target_de.md) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
 
 4. **Geräte-Units** (systemd.device) legen Kernel-Geräte (alle Block- und Netzwerkgeräte) in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.
 
-5. **Mount-Units** ([systemd.mount](./systemd-mount_de.md) steuern Einhängepunkte im Dateisystem.
+5. **Mount-Units** [(systemd.mount)](./systemd-mount_de.md) steuern Einhängepunkte im Dateisystem.
 
-6. **Automount-Units** ([systemd.automount](./systemd-mount_de.md) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
+6. **Automount-Units** [(systemd.automount)](./systemd-mount_de.md) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
 
-7. **Zeitgeber-Units** ([systemd.timer](./systemd-timer_de.md) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
+7. **Zeitgeber-Units** [(systemd.timer)](./systemd-timer_de.md) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
 
 8. **Auslagerungs-Units** (systemd.swap) sind ähnlich zu Einhänge-Units und kapseln Speicherauslagerungspartitionen oder -dateien des Betriebssystems.
 
-9. **Pfad-Units** ([systemd.path](./systemd-path_de.md) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
+9. **Pfad-Units** [(systemd.path)](./systemd-path_de.md) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
 
 10. **Slice-Units** (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.
 
