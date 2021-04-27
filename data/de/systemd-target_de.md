@@ -13,7 +13,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## systemd.target - Ziel-Unit (Runlevel)
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md)  
 Jetzt erklären wir die Funktion der Unit **systemd.target**, die den allgenein bekannten Runleveln ähneln, etwas ausführlicher.
 
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.

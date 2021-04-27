@@ -37,7 +37,7 @@ Das Handbuch des siduction Betriebssystems ist eine Referenz zum Kennenlernen de
 
 ---
 
-Für Schnellentschlossene geht es hier weiter zur [Kurzanleitung](./wel-quickstart_de.htm).
+Für Schnellentschlossene geht es hier weiter zur [Kurzanleitung](./wel-quickstart_de.md)
 
 ---
 

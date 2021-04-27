@@ -146,7 +146,7 @@ cfdisk /dev/sda
 
 Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten `auf` und `ab`, um Befehle auszuwählen, die Pfeiltasten `rechts` und `links`. Mit der `Enter` Taste wird der Befehl ausgeführt.
 
-![cfdisk - Start](../../static/images-de/cfdisk-de/cfdisk_01.png)
+![cfdisk - Start](./images/cfdisk/cfdisk_01.png)
 
 Wir haben auf der Beispielfestplatte drei Partitionen.
 
@@ -164,39 +164,39 @@ Um Platz zu schaffen, löschen wir die Daten-Partition und verkleinern anschlie�
 
 Um die Partition /dev/sda3 zu löschen, wird sie mit den auf-ab-Tasten markiert und der Befehl **Delete** mit den Pfeiltasten links-rechts gewählt und durch **`Enter`** bestätigt.
 
-![Delete a partition](../../static/images-de/cfdisk-de/cfdisk_02.png) 
+![Delete a partition](./images/cfdisk/cfdisk_02.png) 
 
 ### Größe einer Partition ändern
 
 Die Partition /dev/sda2 wird markiert und der Befehl **Resize** ausgewählt und bestätigt.
 
-![Resize a partition](../../static/images-de/cfdisk-de/cfdisk_03.png)
+![Resize a partition](./images/cfdisk/cfdisk_03.png)
 
 Anschließend erfolgt die Eingabe der neuen Größe von '20G'
 
-![New Size of a partition](../../static/images-de/cfdisk-de/cfdisk_04.png)
+![New Size of a partition](./images/cfdisk/cfdisk_04.png)
 
 ### Erstellen einer neuen Partition
 
 Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf **New**, die zu bestätigen ist.
 
-![Create a new partition](../../static/images-de/cfdisk-de/cfdisk_05.png)
+![Create a new partition](./images/cfdisk/cfdisk_05.png)
 
 Anschließend ist die neue Größe von '15G' für die Daten-Partition einzugeben.
 
-![Create a new partition - Size](../../static/images-de/cfdisk-de/cfdisk_06.png)
+![Create a new partition - Size](./images/cfdisk/cfdisk_06.png)
 
 Jetzt muss zwischen einer **primären** oder einer **erweiterten** (extended) Partition entschieden werden. Wir entscheiden uns für eine primäre Partition.
 
-![Create a new partition - prim](../../static/images-de/cfdisk-de/cfdisk_07.png)
+![Create a new partition - prim](./images/cfdisk/cfdisk_07.png)
 
 Danach wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl ist **extended** zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt) in der die zwei zusätzlichen Partitionen anzulegen sind.
 
-![extended partition](../../static/images-de/cfdisk-de/cfdisk_08.png)
+![extended partition](./images/cfdisk/cfdisk_08.png)
 
 Zum Schluss sind die Partitionen für 'Musik' und 'Bilder' entsprechend dem oben gezeigten Vorgehen in der gewünschten Größe anzulegen. Da nur noch logische Partitionen möglich sind, entfällt die Auswahl zwischen primärer und erweiterter Partition.
 
-![partition finished](../../static/images-de/cfdisk-de/cfdisk_09.png)
+![partition finished](./images/cfdisk/cfdisk_09.png)
 
 So sieht das Ergebnis aus.
 
@@ -204,11 +204,11 @@ So sieht das Ergebnis aus.
 
 Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition und wählt den Befehl **Type** aus.
 
-![partition type](../../static/images-de/cfdisk-de/cfdisk_10.png)
+![partition type](./images/cfdisk/cfdisk_10.png)
 
 Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gewählt wird. In unserem Beispiel wählen wir für die Partitionen /dev/sda5 und /dev/sda6 "**7 HPFS/NTFS/exFAT**" aus. So kann das oben erwähnte Windows auf die Partition zugreifen.
 
-![partition type](../../static/images-de/cfdisk-de/cfdisk_11.png)
+![partition type](./images/cfdisk/cfdisk_11.png)
 
 ### Eine Partition bootfähig machen
 
@@ -218,7 +218,7 @@ Für Linux besteht kein Grund, eine Partition bootfähig zu machen, aber einige 
 
 Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **Write** gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.
 
-![partition select type](../../static/images-de/cfdisk-de/cfdisk_12.png)
+![partition select type](./images/cfdisk/cfdisk_12.png)
 
 **Da damit alle Daten auf der entsprechenden Festplatte/Partition gelöscht werden** , sollte man sich seiner Sache wirklich sicher sein, bevor man **yes** eintippt und noch einmal mit der Entertaste bestätigt.
 

@@ -60,11 +60,11 @@ Nach dem Klick auf den Starter öffnet sich ein Dialog zur Abgefrage des root-Pa
 
 Wenn GParted startet, öffnet sich das Programmfenster und die vorhandenen Laufwerke werden ausgelesen.
 
-![GParted Startfenster](../../static/images-de/gparted-de/gparted00-de.png)
+![GParted Startfenster](./images/gparted/gparted00-de.png)
 
 Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einlesen der Laufwerke, zur Auswahl eines Laufwerkes oder zum Beenden des Programms.
     
-![GParted Geräteübersicht](../../static/images-de/gparted-de/gparted01-de.png)
+![GParted Geräteübersicht](./images/gparted/gparted01-de.png)
 
 + **Bearbeiten**
 
@@ -85,7 +85,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
     
   Die beiden Bereiche sind grün markiert.
     
-    ![GParted Festplatteninformation](../../static/images-de/gparted-de/gparted02-de.png)
+    ![GParted Festplatteninformation](./images/gparted/gparted02-de.png)
   
 + **Laufwerk**
 
@@ -96,41 +96,41 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
   2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
     Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md).
   
-  ![GParted Partitionstabelle](../../static/images-de/gparted-de/gparted03-de.png)
+  ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
 
   Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.
     
-  ![GParted Datenrettung](../../static/images-de/gparted-de/gparted04-de.png)
+  ![GParted Datenrettung](./images/gparted/gparted04-de.png)
     
 + **Partition**
 
   Der Menüpunkt "Partition" ist von größter Wichtigkeit. Für die unten ausgewählte Partition zeigt das Menü alle zur Verfügung stehenden Operationen abhängig davon an, ob die Partition eingehangen oder nicht eingehangen ist.  Beachten sollte man, dass einige der Unterpunkte auch kritische bzw. gefährliche Aktionen durchführen können.
   
-  ![GParted Datenrettung](../../static/images-de/gparted-de/gparted07-de.png)
+  ![GParted Datenrettung](./images/gparted/gparted07-de.png)
    
 + **Eine neue Partition erstellen**
 
   In der Toolbar erlaubt der Knopf Neu das Erstellen einer neuen Partition, wenn zuvor ein unzugeordneter Bereich gewählt wurde. Ein neues Fenster erlaubt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
     
-  ![GParted Neue Partition](../../static/images-de/gparted-de/gparted05-de.png)
+  ![GParted Neue Partition](./images/gparted/gparted05-de.png)
 
 + **Größe ändern/verschieben**
 
   Die Partition kann mit der Maus verkleinert, vergrößert und verschoben werden. Alternativ trägt man die neuen Werte in die dafür vorgesehenen Felder ein.
     
-  ![GParted Größenänderung](../../static/images-de/gparted-de/gparted08-de.png)
+  ![GParted Größenänderung](./images/gparted/gparted08-de.png)
 
 + **Falls ein Fehler gemacht wurde**
 
   Im Menü "Bearbeiten" besteht die Möglichkeit *"Letzte Operation rückgängig machen"* oder *"Alle Operationen löschen"*. Der Bereich ist grün markiert.
     
-  ![GParted rückgängig machen](../../static/images-de/gparted-de/gparted06-de.png)
+  ![GParted rückgängig machen](./images/gparted/gparted06-de.png)
 
 + **Anwenden**
 
   Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü "Bearbeiten" den Punkt *"Alle Operationen anwenden"*. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
 
-  ![GParted Ausführen und speichern](../../static/images-de/gparted-de/gparted09-de.png)
+  ![GParted Ausführen und speichern](./images/gparted/gparted09-de.png)
 
   Die Dauer der Operation hängt von der Größe der gewählten Partition ab.
   

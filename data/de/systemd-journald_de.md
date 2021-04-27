@@ -6,7 +6,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderungen 2021-02 bis 03:
 
-+ Datei neu angelegt und Journald aus systemd-start_de.md entfernt.
++ Datei neu angelegt und Journald aus systemd-start_de.md)entfernt.
 + Für die Verwendung mit pandoc optimiert.
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN

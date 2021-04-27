@@ -68,7 +68,7 @@ Wir legen von der Datei */etc/hosts* auf dem Server und auf dem PC eine Sicherun
 
 Als nächstes geben wir im *NetworkManager* die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von "*Automatisch (DHCP)*" auf "*Manuell*" geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.
 
-![Server - Dateneingabe im NetworkManager](../../static/images-de/lamp_apache-de/server_lan.png)
+![Server - Dateneingabe im NetworkManager](./images/lamp_apache/server_lan.png)
 
 Zusätzlich sollte im Reiter "*Allgemein*" die Option "*Automatisch mit Priorität verbinden*" aktiviert sein.  
 Sinngemäß nehmen wir am PC die entsprechenden Einstellungen für die verwendete LAN-Schnittstelle vor.

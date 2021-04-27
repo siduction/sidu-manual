@@ -35,35 +35,35 @@ Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits syste
 ## Konzeption des systemd
 
 Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens "*Units*" in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
-Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.htm).  
+Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.md).  
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
 
 Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
 Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ, und können die generischen Sektionen "[Unit]" und "[Install]" enthalten.  
-Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.htm) erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen "[Unit]" und "[Install]".
+Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md) erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen "[Unit]" und "[Install]".
 
 ### Unit Typen
 
-Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite [systemd.unit](./systemd-unit_de.htm) zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.  
+Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite [systemd.unit](./systemd-unit_de.md) zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.  
 Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
 
-1. **Dienste-Units** ([systemd.service](./systemd-service_de.htm)), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
+1. **Dienste-Units** ([systemd.service](./systemd-service_de.md), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
 
 2. **Socket-Units** (systemd.socket), die lokale IPC- oder Netzwerk-Sockets in dem System kapseln, nützlich für Socket-basierte Aktivierung.
 
-3. **Target-Units** ([systemd.target](./systemd-target_de.htm)) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
+3. **Target-Units** ([systemd.target](./systemd-target_de.md) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
 
 4. **Geräte-Units** (systemd.device) legen Kernel-Geräte (alle Block- und Netzwerkgeräte) in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.
 
-5. **Mount-Units** ([systemd.mount](./systemd-mount_de.htm)) steuern Einhängepunkte im Dateisystem.
+5. **Mount-Units** ([systemd.mount](./systemd-mount_de.md) steuern Einhängepunkte im Dateisystem.
 
-6. **Automount-Units** ([systemd.automount](./systemd-mount_de.htm)) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
+6. **Automount-Units** ([systemd.automount](./systemd-mount_de.md) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
 
-7. **Zeitgeber-Units** ([systemd.timer](./systemd-timer_de.htm)) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
+7. **Zeitgeber-Units** ([systemd.timer](./systemd-timer_de.md) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
 
 8. **Auslagerungs-Units** (systemd.swap) sind ähnlich zu Einhänge-Units und kapseln Speicherauslagerungspartitionen oder -dateien des Betriebssystems.
 
-9. **Pfad-Units** ([systemd.path](./systemd-path_de.htm)) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
+9. **Pfad-Units** ([systemd.path](./systemd-path_de.md) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
 
 10. **Slice-Units** (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.
 
@@ -101,7 +101,7 @@ Oft ist es nötig, "systemctl start" und "systemctl enable" für eine Unit durch
 
 + systemctl enable --now [NAME]
 
-Nachfolgend zwei Befehle deren Funktion unsere Handbuchseite [Systemd-Target](./systemd-target_de.htm) beschreibt.
+Nachfolgend zwei Befehle deren Funktion unsere Handbuchseite [Systemd-Target](./systemd-target_de.md) beschreibt.
 
 + systemctl reboot – Führt einen Reboot aus
 + systemctl poweroff - Fährt das System herunter und schaltet den Strom, sofern technisch möglich, aus.

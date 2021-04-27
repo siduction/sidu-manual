@@ -13,7 +13,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## systemd unit-Datei
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.htm).  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md)  
 In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
 
 Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedene Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
@@ -178,23 +178,23 @@ Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in 
 
 Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
 
-+ [[Service]](./systemd-service_de.htm) konfiguriert einen Dienst
++ [[Service]](./systemd-service_de.md)konfiguriert einen Dienst
 
 + [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) konfiguriert ein Socket
 
 + [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) konfiguriert ein Gerät
 
-+ [[Mount]](./systemd-mount_de.htm) konfiguriert einen Einhängepunkt
++ [[Mount]](./systemd-mount_de.md)konfiguriert einen Einhängepunkt
 
-+ [[Automount]](./systemd-mount_de.htm) konfiguriert einen Selbsteinhängepunkt
++ [[Automount]](./systemd-mount_de.md)konfiguriert einen Selbsteinhängepunkt
 
 + [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
 
-+ [[Target]](./systemd-target_de.htm) konfiguriert ein Startziel
++ [[Target]](./systemd-target_de.md)konfiguriert ein Startziel
 
-+ [[Path]](./systemd-path_de.htm) konfiguriert einen überwachten Dateipfad
++ [[Path]](./systemd-path_de.md)konfiguriert einen überwachten Dateipfad
 
-+ [[Timer]](./systemd-timer_de.htm) konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
++ [[Timer]](./systemd-timer_de.md)konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
 
 + [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungsscheibe
 

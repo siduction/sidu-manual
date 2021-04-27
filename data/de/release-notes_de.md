@@ -144,7 +144,7 @@ Zur Zeit bietet der Installer keine Möglichkeit Pakete, die nicht mit den Anfor
 
 ### Installationshinweise und bekannte Probleme
 
-+ Möchte man eine bereits existierende /home- (oder andere Daten-) Partition weiter nutzen, sollte man dies nach der Installation und nicht mit dem Calamares Installer tun. Hinweise hierzu bitte in der Handbuchseite [Das Verzeichnis /home verschieben](https://manual.siduction.org/home-move_de.htm) nachlesen.
++ Möchte man eine bereits existierende /home- (oder andere Daten-) Partition weiter nutzen, sollte man dies nach der Installation und nicht mit dem Calamares Installer tun. Hinweise hierzu bitte in der Handbuchseite [Das Verzeichnis /home verschieben](https://manual.siduction.org/home-move_de.md)nachlesen.
 + Verschlüsselungs-Setup mit LUKS oder ähnlichem unterstützt Calamares zur Zeit nicht. Das Verschlüsselungs-Setup sollte besser im Voraus erstellt und der **`cli-installer`** im Terminal benutzt werden.
 + Mit einigen Intel GPUs bei einigen Geräten kann das System kurz nach dem Boot einfrieren. Um dieses Verhalten zu umgehen, ist es nötig, im Bootmenü an die Kernelzeile den Parameter **`intel_iommu=igfx_off`** anzuhängen.
 

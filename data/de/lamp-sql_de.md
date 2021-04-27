@@ -31,7 +31,7 @@ Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht 
 
 ### Erstkonfiguration
 
-Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.htm) beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
+Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md)beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
 
 Deshalb rufen wir das Programm **mysql_secure_installation** im root-Terminal auf.  
 Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: "«- - [ ]".
@@ -229,38 +229,38 @@ Wie zuvor gesehen, lässt sich MariaDB vollständig über die Komandozeile verwa
 
 Wir verwenden das für weniger erfahrene Benutzer besser geeignete Progrann *phpMyAdmin* und geben in die Adresszeile des Browsers  
 **http://localhost/phpmyadmin/**  
-ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](./lamp-apache_de.htm) bereits durchlaufen haben, lautet der Aufruf  
+ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](./lamp-apache_de.md)bereits durchlaufen haben, lautet der Aufruf  
 **https://server1.org/phpmyadmin/**
 
 Um, wie oben angeführt, dem Datenbank-Admin *root* die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin *chef* mit seinem Passwort.
 
-![Loginfenster](../../static/images-de/phpmyadmin-de/login.png)
+![Loginfenster](./images/phpmyadmin/login.png)
 
 Im Startfenster sehen wir in der linken Spalte alle Datenbanken. Im Hauptteil wählen wir den Reiter **`Benutzerkonten`**.
 
-![Startfenster](../../static/images-de/phpmyadmin-de/startfenster.png)
+![Startfenster](./images/phpmyadmin/startfenster.png)
 
 Die Benutzerkontenübersicht stellt alle Benutzer und in Kurzform deren Rechte dar. Wir wählen hier für den Benutzer *root* den Schalter **`Rechte ändern`**.
 
-![Benutzerkonten](../../static/images-de/phpmyadmin-de/benutzerkonten.png)
+![Benutzerkonten](./images/phpmyadmin/benutzerkonten.png)
 
 Nun sehen wir für den Benutzer *root* die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich "*Administration*" das Recht "*Super*" (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den **`OK`**-Button anklicken (im Screenshot nicht sichtbar). 
 
-![Rechte eines Benutzers verwalten (1a, 1b)](../../static/images-de/phpmyadmin-de/root-rechte.png)
+![Rechte eines Benutzers verwalten (1a, 1b)](./images/phpmyadmin/root-rechte.png)
 
 Anschließend gehen wir über den **`Datenbank`**-Schalter (2) zur nächsten Seite.
 
-![Rechte eines Benutzers verwalten (2) ](../../static/images-de/phpmyadmin-de/root-rechte-2.png)
+![Rechte eines Benutzers verwalten (2) ](./images/phpmyadmin/root-rechte-2.png)
 
 Nach Auswahl der Datenbank "*mysql*" und **`OK`** öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank "*mysql*" für den Benutzer "*root*".
 
-![Rechte eines Benutzers verwalten (DB mysql) ](../../static/images-de/phpmyadmin-de/root-rechte-3.png)
+![Rechte eines Benutzers verwalten (DB mysql) ](./images/phpmyadmin/root-rechte-3.png)
 
 Ausgewählt wird ausschließlich die Methode "*SELECT*". Ein Klick auf **`OK`** führt den sql-Befehl aus.
 
 Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Ikon.
 
-![phpMyAdmin beenden](../../static/images-de/phpmyadmin-de/abmelden.png)
+![phpMyAdmin beenden](./images/phpmyadmin/abmelden.png)
 
 phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter **`Exportieren`** im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
 

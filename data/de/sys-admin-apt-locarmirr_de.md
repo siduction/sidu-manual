@@ -57,7 +57,7 @@ Möchten Sie fortfahren? [J]
 
 Während der Installation von *apt-cacher* erfolgt automatisch die grundlegende Konfiguration.
 
-![Konfiguration von apt-cacher](../../static/images-de/apt-localmirror-de/apt-cacher-config.png)
+![Konfiguration von apt-cacher](./images/apt-localmirror/apt-cacher-config.png)
 
 Der empfohlene Deamonmodus "*deamon*" wird beibehalten und bestätigt.
 
