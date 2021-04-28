@@ -16,13 +16,13 @@
 \usepackage{geometry}
 
 \usepackage{titling}
-
+   
     % adding a logo to the title
     \pretitle{\begin{center}
     % change path to loge if necessary!
     \includegraphics[width=111.9mm,height=21.7mm]{../../sys-images/logo-manual.png}\Huge\\}
     \posttitle{\end{center}\hskip 2em}
-
+    
     % author and date style
     \preauthor{\begin{center}\LARGE
     \begin{tabular}[t]{c}}
@@ -61,21 +61,25 @@
 \usepackage{xcolor}
 \usepackage{MnSymbol}% benoetigt fuer 'prebreak='
 \lstset{
-    basicstyle=\ttfamily\scriptsize, 
-    % fontsize definitions: scriptsize,small,tiny,normalsize, footnotesize,
-    % codeline numberinghttp://www.wtfpl.net/txt/copying/
+    basicstyle=\ttfamily\footnotesize, 
+    % fontsize definitions: scriptsize,small,tiny,normalsize
+    % codeline numbering
     %numbers=left,
     %numberstyle=\scriptsize,
     %stepnumber=1,
     %numbersep=8pt,
     % code highlight
-    basicstyle=\color[RGB]{40,1,196},
-    keywordstyle=\color[RGB]{42,161,152},
-    stringstyle=\color[RGB]{28,139,210},
-    numberstyle=\color[RGB]{108,113,196},
-    identifierstyle=\color[RGB]{0,0,74},
-    commentstyle=\color[RGB]{0,85,0},
-    rulecolor=\color{red},
+    %language=bash,
+    %basicstyle=\color[RGB]{40,1,196},
+    %keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
+    %keywordstyle=\color[RGB]{42,161,152},
+    %stringstyle=\color[rgb]{0.31,0.60,0.02},
+    %stringstyle=\color[RGB]{28,139,210},
+    %numberstyle=\color[RGB]{108,113,196},
+    %identifierstyle=\color[RGB]{0,0,74},
+    %commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
+    %commentstyle=\color[RGB]{0,85,0},
+    %rulecolor=\color{red},
     frame=single,
     framerule=0pt,
     framexleftmargin=3pt,

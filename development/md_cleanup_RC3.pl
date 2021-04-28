@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 #
 # Autor: Axel Konrad (akli)
+# Copyright Axel Konrad 2021, wtfpl 2.0
+# see http://www.wtfpl.net/txt/copying/
+#
 # Status am 28.04.2021: Zu Testzwecken freigegeben.
 # Aufruf:   Zuerst im grep-Befehl den richtigen Pfad zu den md-Dateien eintragen.
 #           Im LINUX Terminal './<Pfad_zu>/md_cleanup_RC3.pl'
@@ -28,6 +31,7 @@ system "rm ./clean_dateien";
 
 foreach (@DATEIEN) {
     chomp $_;
+    next if (! -f $_);
     $DIR = "";
     
 # Dateinamen zerlegen und Unterverzeichnis einfügen.
