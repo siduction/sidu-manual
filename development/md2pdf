@@ -3,9 +3,10 @@
 # Provides templates to apply with pdf processing
 # Copyright Claes Holmerson 2010, GPL licensed (see COPYING for details)
 # Copyright Hendrik Lehmbruch 2021, GPL licensed (see COPYING for details)
-# directories 
-header=./pandoc-header-pdf.tex
-searchpath=./:../../de_md/:../static/images-de/:../static/logos/
+#
+# directories, based on the fact we use it in folder contain .md-files.
+header=../../development/pandoc-header-pdf.tex
+searchpath=./:./images/:../../sys-images/
 
 # page options
 paper=a4paper

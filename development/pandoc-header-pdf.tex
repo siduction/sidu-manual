@@ -19,7 +19,8 @@
 
     % adding a logo to the title
     \pretitle{\begin{center}
-    \includegraphics[width=111.9mm,height=21.7mm]{../static/logos/logo-manual.png}\Huge\\}
+    % change path to loge if necessary!
+    \includegraphics[width=111.9mm,height=21.7mm]{../../sys-images/logo-manual.png}\Huge\\}
     \posttitle{\end{center}\hskip 2em}
 
     % author and date style
@@ -49,8 +50,8 @@
     % define header and footer
     \pagestyle{fancy}
     \fancyhead[C]{}
-    \fancyhead[L]{\textsl{\leftmark}}
-    \fancyhead[R]{\textbf{siduction Manual}}
+    \fancyhead[L]{\textbf{siduction Manual}}
+    \fancyhead[R]{\textsl{\rightmark}}
     \fancyfoot[L,R]{}
     \fancyfoot[C]{\thepage}
     \renewcommand{\headrulewidth}{0.4pt}

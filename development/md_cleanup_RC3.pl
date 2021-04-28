@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #
 # Autor: Axel Konrad (akli)
-# Status am 25.04.2021: Zu Testzwecken freigegeben.
+# Status am 28.04.2021: Zu Testzwecken freigegeben.
 # Aufruf:   Zuerst im grep-Befehl den richtigen Pfad zu den md-Dateien eintragen.
 #           Im LINUX Terminal './<Pfad_zu>/md_cleanup_RC3.pl'
 #           Für jede Datei, die das Suchmuster von grep enthält, legt das Script
@@ -18,7 +18,7 @@ my ($DATEI, $FILE, $DIR, $END, $SCHREIBEN);
 my (@QUELLE, @NEU, @DATEIEN);
 
 # In dieser Zeile den richtigen Pfad zu den md-Dateien eintragen.
-system "grep -l -e RC3 ~/git/test/data/de_md/* 2>/dev/null > ./clean_dateien";
+system "grep -l -e RC3 ~/git/sidu-manual/data/de/* 2>/dev/null > ./clean_dateien";
 
 open DATEI, "<./clean_dateien";
 @DATEIEN = <DATEI>;
