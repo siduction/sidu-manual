@@ -25,7 +25,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-## Verwendung von fdisk
+## Partitionieren mit fdisk
 
 **fdisk** und **cfdisk** erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einführung von GPT-Partitionstabellen auf Basis des UEFI. 
 
@@ -34,14 +34,12 @@ Der neuere Standard **G**lobally Unique Identifier **P**artition **T**able (GPT)
 Wir empfehlen die Partitionierung mit *fdisk* und *cfdisk* ausschließlich für ältere Hardware.  
 Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) zu Rate ziehen.
 
----
-
-## Benennung von Speichergeräten
+### Benennung von Speichergeräten
 
 **Bitte BEACHTEN:**  
 siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](part-uuid_de.md#uuid) zu Rate ziehen.
 
-### Für Festplatten
+#### Festplatten
 
 Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl von der Live-CD als auch bei einem installierten siduction.
 
@@ -92,7 +90,7 @@ Mit dem Befehl
 
 erhalten wir eine Text-Datei mit dem gleichen Inhalt.
 
-### Für Partitionen
+#### Partitionen
 
 Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.
 
@@ -102,7 +100,7 @@ primäre, erweiterte und logische.
 Die logischen Partitionen befinden sich innerhalb der erweiterten Partition. Es sind maximal vier primäre bzw. drei primäre und eine erweiterte Partition anlegbar. Die erweiterte Partition wiederum kann bis zu elf logische Partitionen enthalten.  
 Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 (zum Beispiel sda1 bis sda4). Logische Partitionen sind immer gebündelt und Teil einer erweiterten Partition. Mit libata können maximal elf logische Partitionen definiert werden, und ihre Bezeichnungen beginnen mit Nummer 5 und enden höchstens mit Nummer 15.
 
-### Beispiele
+**Beispiele**
 
 ~~~
 4 Partitionen (alles primäre):
@@ -124,9 +122,7 @@ Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 
 
 **/dev/sdb3**  kann nur eine primäre oder erweiterte Partition sein. Der Buchstabe "b" indiziert, dass diese Partition sich auf einem anderen Gerät befindet als die Partition des ersten Beispiels, welche den Buchstaben "a" enthält.
 
----
-
-## Cfdisk verwenden
+### Cfdisk verwenden
 
 <warning>**Daten zuvor sichern!**</warning>
 <warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.</warning>
@@ -142,7 +138,7 @@ cfdisk /dev/sda
 
 **cfdisk** nur auf einer Festplatte anwenden, deren sämtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der geänderten Partitionstabelle verloren.
 
-### Die Bedienoberfläche
+#### Die Bedienoberfläche
 
 Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten `auf` und `ab`, um Befehle auszuwählen, die Pfeiltasten `rechts` und `links`. Mit der `Enter` Taste wird der Befehl ausgeführt.
 
@@ -158,7 +154,7 @@ Wir haben auf der Beispielfestplatte drei Partitionen.
 
 Aus der Daten-Partition möchten wir die Verzeichnisse 'Bilder' und 'Musik' in eigene Partitionen auslagern und dafür mehr Platz schaffen. Gleichzeitig sollen diese auch für ein auf einer weiteren Festplatte residierendes Windows zugänglich sein. Die Root-Partition ist mit 50 GB überdimensioniert und wird verkleinert.
 
-### Löschen einer Partition
+#### Löschen einer Partition
 
 Um Platz zu schaffen, löschen wir die Daten-Partition und verkleinern anschließend die Root-Partition.
 
@@ -166,7 +162,7 @@ Um die Partition /dev/sda3 zu löschen, wird sie mit den auf-ab-Tasten markiert 
 
 ![Delete a partition](./images/cfdisk/cfdisk_02.png) 
 
-### Größe einer Partition ändern
+#### Größe einer Partition ändern
 
 Die Partition /dev/sda2 wird markiert und der Befehl **Resize** ausgewählt und bestätigt.
 
@@ -176,7 +172,7 @@ Anschließend erfolgt die Eingabe der neuen Größe von '20G'
 
 ![New Size of a partition](./images/cfdisk/cfdisk_04.png)
 
-### Erstellen einer neuen Partition
+#### Erstellen einer neuen Partition
 
 Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf **New**, die zu bestätigen ist.
 
@@ -200,7 +196,7 @@ Zum Schluss sind die Partitionen für 'Musik' und 'Bilder' entsprechend dem oben
 
 So sieht das Ergebnis aus.
 
-### Partitionstyp
+#### Partitionstyp
 
 Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition und wählt den Befehl **Type** aus.
 
@@ -210,11 +206,11 @@ Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partiti
 
 ![partition type](./images/cfdisk/cfdisk_11.png)
 
-### Eine Partition bootfähig machen
+#### Eine Partition bootfähig machen
 
 Für Linux besteht kein Grund, eine Partition bootfähig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl **Bootable** gewählt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootfähig gemacht werden).
 
-### Das Ergebnis auf die Platte schreiben
+#### Partitionstabelle schreiben
 
 Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **Write** gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.
 
@@ -222,22 +218,16 @@ Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **Write** 
 
 **Da damit alle Daten auf der entsprechenden Festplatte/Partition gelöscht werden** , sollte man sich seiner Sache wirklich sicher sein, bevor man **yes** eintippt und noch einmal mit der Entertaste bestätigt.
 
-### Beenden
+#### Cfdisk beenden
 
 Mit dem Befehl **Quit** verlassen wir das Programm. Nach Beendigung von **cfdisk** und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.
 
----
-
-## Formatieren von Partitionen
-
-### Grundlagen
+### Formatieren von Partitionen
 
 Es gibt für Linux verschiedene Filesysteme, die man benutzen kann. Da wären **Ext2**, **Ext4**, **ReiserFs** und für erfahrenere Anwender **XFS**, **JFS** und **ZFS**.  
 Ext2 kann von Interesse sein, wenn man von Windows aus zugreifen möchte, da es Windows-Treiber für dieses Dateisystem gibt. [Ext2-Dateisystem für MS Windows (Treiber und englischsprachige Doku)](http://www.fs-driver.org/).
 
 Für normalen Gebrauch empfehlen wir das Dateisystem ext4. Ext4 ist das Standard-Dateisystem von siduction. 
-
-### Formatieren
 
 Nach Beendigung von cfdisk wird die Root-Konsole weiter verwendet. Eine Formatierung erfordert Root-Rechte.  
 Der Befehl lautet **mkfs.ext4 /dev/sdaX**. Für "X" trägt man die Nummer der ausgewählten Partition ein.
@@ -291,7 +281,5 @@ Filename        Type        Size      Used   Priority
 Wird die Swap-Partition korrekt erkannt, starten wir den Computer neu.
 
 Jetzt kann die Installation beginnen.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-03-08</div>

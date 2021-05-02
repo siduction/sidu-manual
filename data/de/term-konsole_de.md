@@ -18,7 +18,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Definition von Terminal bzw. Konsole
+# Systemadministration
+
+## Terminal / Konsole / Shell / Kommandozeile
 
 Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem ermöglicht, durch direkt ausgeführte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch häufig die "Shell"  oder "Kommandozeile"  genannt, ist ein äußerst mächtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.
 
@@ -52,9 +54,7 @@ bedeutet also: man öffnet ein Terminal, meldet sich als root an (su) und führt
 Ein weiterer Hinweis:  
 Für User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Ausführen eines Befehls keine Meldung erscheint, sondern nur wieder der leere Prompt. Diese Funktion ist gewollt und bedeutet, dass der Befehl fehlerfrei ausgeführt wurde. (Im obigen Beispiel erhielten die Gruppenmitglieder Schreibrechte an der \<Datei\>.)
 
----
-
-## Arbeit als root
+### Arbeit als root
 
 <warning>**Achtung:**  
 Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, *was* man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.</warning>
@@ -63,7 +63,7 @@ Berücksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, au
 
 Deshalb: **Arbeiten als Root nur dort wo es wirklich notwendig ist!**
 
-### Über su
+**Über su**
 
 Eine Anzahl von Befehlen muss mit Root-Rechten gestartet werden. Diese Rechte erhält man durch Eingabe von **su**. Nach der Eingabe des richtigen Passwortes erscheint der Root-Prompt.
 
@@ -82,7 +82,7 @@ $
 
 und es erscheint wieder der Promt für den User.
 
-### Über su-to-root
+**Über su-to-root**
 
 Im Gegensatz zum allgemeinen Befehl **su** erlaubt **su-to-root** das Ausführen von Programmen mit graphischer Oberfläche mit Root-Rechten. **su-to-root** transferiert unter Benutzung von 'su' die X-Eigenschaften an den Zielnutzer. Die Eingabe lautet:
 
@@ -99,7 +99,7 @@ su-to-root -X -c 'dbus-launch <Programm>'
 Es öffnet sich ein weiteres Terminal, in das das root-Passwort einzugeben ist. Bei Erfolg startet das gewünschte Programm mit root-Rechten.  
 Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind: die Bearbeitung einer Konfigurationsdatei mit einem Texteditor, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar.
 
-#### Verwendung in den Desktopumgebungen:
+**Verwendung in den Desktopumgebungen:**
 
 + Plasma (KDE und LXQt)  
   Der Befehl ist in Plasma nicht notwendig und wird nicht unterstützt, denn für Programme, die root-Rechte benötigen erfolgt eine Passwortabfrage und beim Editor erfolgt die Abfrage wenn man die geänderte Datei speichern möchte. Deshalb nur **su** im Terminal verwenden, wenn nötig.
@@ -109,16 +109,14 @@ Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind:
   Hier entfaltet der Befehl seine volle Macht, und man ist in der Lage das gewünschte graphische Programm mit root-Rechten zu starten. Mann ist jedoch auch in der Pflicht zu beachten, wann und mit welchem Programm root-Rechte wirklich erforderlich sind.  
 + **Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, Büroprogramme u.a.**
 
-### sudo ist nicht konfiguriert
+**sudo ist nicht konfiguriert**
 
 **sudo** steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.  
 Nach einer Installation ist **sudo** nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
 
 Ein anderes Problem mit **sudo** ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von [*su*](#su) oder [*su-to-root*](#su-to-root) wird empfohlen!
 
----
-
-## Farbiges Terminal
+### Farbiges Terminal
 
 Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root #** eine Aufgabe durchführt, die man als **user $** machen wollte.  
 Deshalb ist in siduction in der Grundeinstellung der Prompt des **user $** grün, blau und weiß, und bei dem von **root #** wird das Wort "root" in roter Farbe dargestellt.  
@@ -127,7 +125,7 @@ Deshalb ist in siduction in der Grundeinstellung der Prompt des **user $** grün
 
 Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunten Prompts. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
 
-### Farbe des Prompt ändern
+**Farbe des Prompt ändern**
 
 Bevor die Konfigurationsdatei geändert wird, erstellen wir im Terminal erst eine Sicherungskopie mit einem Datumsstempel.
 
@@ -188,13 +186,11 @@ Dieses Codebeispiel erzeugt einen Promt, in dem **Username @ Hostname** grün un
 
 Die neuen Farben und Formate erscheinen nach öffnen eines neuen Terminals.
 
-### Farbeinstellungen des Terminals
+**Farbeinstellungen des Terminals**
 
 Im Menü des Terminals gibt es unter *Bearbeiten* - *Einstellungen...* - Reiter *Farben* eine Unmenge an Einstellungsmöglichkeiten. Wir empfehlen eine eher schlichte Einstellung.
 
----
-
-## Wenn das Terminal "hängt"
+### Wenn das Terminal "hängt"
 
 Manchmal kann ein Terminal nicht mehr so reagieren wie gewünscht. Das liegt meist daran, dass sich ein Programm fehlerfaft beendet und das Teminal in einem abnormalen Zustand zurückgelassen hat. Dann muss
 
@@ -208,9 +204,7 @@ Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das D
 
 Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Drücken von `Strg` + `s` verursacht sein. In diesem Fall kann `Strg` + `q`  versucht werden, um die Konsole wieder frei zu geben.
 
----
-
-## Hilfe in der Kommandozeile
+### Hilfe im Terminal
 
 Die meisten Befehle/Programme haben eine Kommandozeilenhilfe und auch Anleitungen. Die Anleitungen werden "man page" oder "manual page" genannt. Die Syntax zum Aufrufen der "man page" ist:
 
@@ -250,9 +244,7 @@ Eine sehr gute Einführung in die Konsole BASH findet sich auf [linuxcommand.org
 
 Natürlich kann auch die favorisierte Suchmaschine verwendet werden, um mehr zu finden.
 
----
-
-## Skripte und wie man sie nutzt
+### Skripte benutzen
 
 Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu bündeln. Die Eingabe des Dateinamen des Skripts führt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr nützlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.
 
@@ -263,14 +255,12 @@ Ein Skript wird in der Konsole folgendermaßen gestartet, wenn man sich im gleic
 ~~~
 
 Einige Skripte benötigen root-Zugang, abhängig vom Aufgabenbereich des Skripts.
- 
-### Installation und Ausführung
+
+**Installation und Ausführung**
 
 Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, zum Beispiel nach **/usr/local/bin**. Zum Kopieren und Einfügen in der Konsole kann auch die Maus benutzt werden, nachdem man mit **su** Root-Rechte erlangt hat.
 
-#### Beispiel mit wget und root-Rechten
-
-
+**Beispiel mit wget und root-Rechten**
 
 ~~~
 $ su
@@ -295,7 +285,7 @@ aus, um das Script zu starten.
 
 Die Datei kann auch mit einem Browser auf den Computer geladen und an den geeigneten Ort verschoben werden, aber sie muss auch dann ausführbar gemacht werden.
 
-#### Beispiel mit wget als Nutzer
+**Beispiel mit wget als Nutzer**
 
 So speichert man als Nutzer eine Datei im \$HOME (der Promt ist '$'):
 
@@ -311,7 +301,5 @@ $ ./user-script-name.sh
 ~~~
 
 Das funktioniert als *user* natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-11-29</div>

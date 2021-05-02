@@ -30,16 +30,14 @@ Mit drei Grundbegriffen sollte man vertraut sein:
 + **Volumengruppe (Volume Group):**  Eine Volumengruppe besteht aus *Physischen Volumen* und ist der Speicherort von *Logischen Volumen*. Eine Volumengruppe kann als "virtuelles Laufwerk" gesehen werden, das aus *Physischen Volumen* zusammengesetzt ist. Zum Verständnis einige Beispiele:
 
   + Mehrere Speichergeräte (z. B. Festplatten, SSD's, M2-Disks, externe USB-Festplatten usw.) können zu einer Volumengruppe (einem virtuellen Laufwerk) zusammengefasst werden.
-  
+
   + Mehrere Partitionen eines Speichergerätes können zu einer Volumengruppe (einem virtuellen Laufwerk) zusammengefasst werden.
-  
+
   + Eine Kombination aus den beiden vorgenannten Möglichkeiten. Z. B. drei SSD's, wovon von der ersten nur zwei Partitionen und die beiden anderen vollständig in der Volumengruppe zusammengefasst werden.
 
 + **Logisches Volumen (Logical Volume):**  Logische Volumen werden inerhalb einer *Volumengruppe* erstellt und in das System eingebunden. Man kann sie auch als "virtuelle" Partitionen verstehen. Sie sind dynamisch veränderbar, können in der Größe verändert, neu erstellt, entfernt und verwendet werden. Ein logisches Volumen kann sich innerhalb der Volumengruppe über mehrere physische Volumen erstrecken.
 
----
-
-## Sechs Schritte, die benötigt werden
+### Sechs Schritte, die benötigt werden
 
 <warning>**Achtung**</warning>
 <warning>Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.</warning>
@@ -50,7 +48,7 @@ Als Partitionierungsprogramm werden cfdisk oder gdisk benötigt, da zur Zeit GPa
 
 Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 
-### Schritt 1: Erstellung einer Partitionstabelle:
+### Schritt 1: Erstellung einer Partitionstabelle
 
 ~~~
 cfdisk /dev/sda
@@ -76,7 +74,7 @@ pvcreate /dev/sda1
 Der Befehl erstellt auf der ersten Partition der ersten Festplatte das physische Volumen.  
 Dieser Vorgang wird nach Bedarf auf jeder Partition wiederholt.
 
-### Schritt 3: Erstellen einer Volumengruppe:
+### Schritt 3: Erstellen einer Volumengruppe
 
 Nun fügen wir die physischen Volumen einer Volumengruppe mit dem Namen *vulcan* hinzu (in unserem Beispiel drei Laufwerke):
 
@@ -96,7 +94,7 @@ vgdisplay zeigt die Größe mit:
 vgdisplay vulcan
 ~~~
 
-### Schritt 4: Erstellung eines logischen Volumens.
+### Schritt 4: Erstellung eines logischen Volumens
 
 An dieser Stelle muss entschieden werden, wie groß das logische Volumen zu Beginn sein soll. Ein Vorteil von LVM ist die Möglichkeit, die Größe ohne Reboot anpassen zu können.
 
@@ -106,7 +104,7 @@ In unserem Beispiel wünschen wir uns ein 300GB großes Volumen mit dem Namen *s
 lvcreate -n spock --size 300g vulcan
 ~~~
 
-### Schritt 5: Formatieren des logischen Volumens:
+### Schritt 5: Formatieren des logischen Volumens
 
 Bitte habe etwas Geduld, dieser Vorgang kann längere Zeit in Anspruch nehmen.
 
@@ -114,7 +112,7 @@ Bitte habe etwas Geduld, dieser Vorgang kann längere Zeit in Anspruch nehmen.
 mkfs.ext4 /dev/vulcan/spock
 ~~~
 
-### Schritt 6: Einbindung des logischen Volumens:
+### Schritt 6: Einbindung des logischen Volumens
 
 Erstellen des Mountpoints mit
 
@@ -147,13 +145,11 @@ Die Schritte 4 bis 6 können wir nun für das neu zu erstellende logische Volume
 
 Ein einfacher LVM sollte nun erstellt sein.
 
----
-
-## Größenänderung eines Volumens
+### Größenänderung eines Volumens
 
 Wir empfehlen die Verwendung einer Live-ISO, um Partitionsgrößen zu ändern. Obwohl die Vergrößerung einer Partition des laufenden Systems ohne Fehler durchgeführt werden kann, ist dies bei der Verkleinerung einer Partition nicht der Fall. Anomalien können zu einem Datenverlust führen, vor allem wenn die Verzeichnisse **/** (root) oder **/home** betroffen sind.
 
-### Beispiel einer Vergrößerung
+**Beispiel einer Vergrößerung**
 
 Eine Partition soll von 300GB auf 500GB vergrößert werden:
 
@@ -179,7 +175,7 @@ resize2fs /dev/vulcan/spock
 mount /media/spock
 ~~~
 
-### Beispiel einer Verkleinerung
+**Beispiel einer Verkleinerung**
 
 Eine Partition wird von 500GB auf 280GB verkleinert:
 
@@ -205,13 +201,11 @@ mount /media/spock
 Auch hier ist dem Befehl *lvreduce* als Option der Wert für die Größen**änderung** anzugeben.  
 Der erneute *resize2sf*-Befehl passt das Dateisystem exakt an die Größe des logischen Volumens an.
 
----
-
-## LVM mit einem GUI-Programm verwalten
+### LVM mit einem GUI-Programm verwalten
 
 *Gparted* bietet die Möglichkeit zur Verwaltung von bereits angelegten *Logical Volumes*. Das Programm wird als root ausgeführt.
 
-## Weitere Informationen:
+### Weitere Informationen
 
 +  [Logical Volume Manager - Wikipedia](https://de.wikipedia.org/wiki/Logical_Volume_Manager)  (Deutsch)
 
@@ -222,7 +216,5 @@ Der erneute *resize2sf*-Befehl passt das Dateisystem exakt an die Größe des lo
 +  [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  (Englisch)
 
 + [Größenänderung von Linuxpartitionen - Teil 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)  (Englisch)
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-12-01</div>

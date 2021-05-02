@@ -16,11 +16,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-# Installation auf USB-Stick / Speicherkarte
+## Installation auf USB-Stick / Speicherkarte
 
-## Installation einer siduction-ISO auf USB-Stick, SSD-Karte, SHDC-Gerät unter Verwendung einer anderen Linuxdistribution, MS Windows&#8482; oder Mac OS X&#8482;
-
-Unabhängig vom verwendeten Betriebssytem ermöglichen die nachfolgend beschriebenen Methoden die Installation einer siduction-ISO auf einem USB-Stick, einer SSD-Karte, einem SHDC-Gerät (Secure Digital High Capacity card).
+**Nachfolgend beschrieben wir Methoden der Installation einer siduction-ISO auf einen USB-Stick, eine SSD-Karte, einem SHDC-Gerät (Secure Digital High Capacity card) jeweils unter Verwendung einer anderen Linuxdistribution, MS Windows&#8482; oder Mac OS X&#8482;.**
 
 Dabei wird das siduction-ISO auf das Gerät geschrieben. Auch wenn die Option persist nicht möglich ist, kann man "siduction auf einem Stick" haben.
 
@@ -32,7 +30,8 @@ Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siductio
 + USB/SSD sollte automatisch erkannt werden und die Menü-Option **F4**  sollte **Hard Disk**  ausgeben, andernfalls sollte **F4 > Hard Drive**  aufgerufen oder **fromhd** der Bootmenü-Zeile beigefügt werden.
 + Sichere das Betriebssystem und alle deine Daten auf den Geräten die du für die Herstellung des siduction-USB-Mediums verwenden möchtest. Ein kleiner Tippfehler kann alle deine Daten zerstören!
 
-## Wichtige Information
+### Wichtige Information
+
 ~~~note
 Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören.
 Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
@@ -43,7 +42,7 @@ Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht a
 Sichere Deine Daten!
 ~~~
 
-## Linux-Betriebssysteme
+### Mit Linux-Betriebssystemen
 
 Stecke Deinen USB-Stick oder Kartenleser mit der Karte, auf die geschrieben werden soll, an und führe folgenden Befehl aus:
 
@@ -59,8 +58,7 @@ dd if=/path/to/siduction-*.iso of=/dev/sdX
 
 Um herauszufinden, was das X in sdX ist, bitte als root  *fdisk -l*  oder *dmesg* aufrufen.
 
-### Beispiel:
-
+**Beispiel:**  
 Führe den Befehl **dmesg -w** aus, schließe Dein Gerät an, und beachte die Ausgabe:
 
 ~~~sh
@@ -84,11 +82,11 @@ oder
 dd if=/home/username/siduction-18.3.0-patience-kde.iso of=/dev/sdc
 ~~~
 
-## MS Windows&#8482;
+### Mit MS Windows&#8482;
 
-Das Vorgehen ist einfach. Lade das kleine Tool [USBWriter](https://sourceforge.net/p/usbwriter/wiki/Documentation/)  herunter. Es muss nicht installiert werden. Nach dem Start des Werkzeugs beispielsweise vom Desktop aus muss lediglich das gewünschte ISO-Image sowie der USB-Stick ausgewählt werden. Hierbei ist große Aufmerksamkeit erforderlich, denn der Vorgang löscht alle Daten auf dem Device. Wird also das falsche Device gewählt, sind die Daten darauf verloren, sobald der  *WRITE* -Button gedrückt wurde. In wenigen Minuten schreibt das Werkzeug das Image bootfähig auf das Gerät.
+Das Vorgehen ist einfach. Lade das kleine Tool [USBWriter](https://sourceforge.net/p/usbwriter/wiki/Documentation/)  herunter. Es muss nicht installiert werden. Nach dem Start des Werkzeugs, beispielsweise vom Desktop aus, muss lediglich das gewünschte ISO-Image sowie der USB-Stick ausgewählt werden. Hierbei ist große Aufmerksamkeit erforderlich, denn der Vorgang löscht alle Daten auf dem Device. Wird also das falsche Device gewählt, sind die Daten darauf verloren, sobald der *WRITE*-Button gedrückt wurde. In wenigen Minuten schreibt das Werkzeug das Image bootfähig auf das Gerät.
 
-## Mac OS X&#8482;
+### Mit Mac OS X&#8482;
 
 Schließe Dein USB-Gerät an, Mac OS X sollte es automatisch einbinden. Im Terminal (unter Applications &gt; Utilities), wird dieser Befehl ausgeführt:
 

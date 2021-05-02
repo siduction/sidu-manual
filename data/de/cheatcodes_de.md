@@ -19,22 +19,22 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 # Bootoptionen (Cheatcodes)
 
-## Info
+## Bootoptionen (Cheatcodes)
+
+**Info**
 
 Diese Handbuchseite enthält Tabellen zu den Bootoptionen für
 
-1. siduction spezifische Parameter (nur Live-CD)
+1. siduction spezifische Parameter (nur Live-DVD)
 2. Bootoptionen für den Grafikserver X
 3. Allgemeine Parameter des Linux-Kernels
 4. Werte für den allgemeinen Parameter **vga**
- 
+
 Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese an die betreffende Bootoption mit einem "**=**" Zeichen angehängt werden. Wenn zum Beispiel "1280x1024" der gewünschte Wert für die Bootoption "screen" wäre, dann wird "screen=1280x1024" in die Grub-Befehlszeile eingegeben, für die Sprachauswahl (hier "Deutsch") "lang=de". Die Grub-Befehlszeile lässt sich editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Danach befindet man sich im Editiermodus. Jetzt kann man mit den Pfeiltasten zur Kernelzeile navigieren und am Ende den oder die gewünschten Cheatcode einfügen. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` oder `F10` fortgesetzt.
 
 [Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
----
-
-## siduction spezifische Parameter (nur Live-CD)
+### siduction spezifische Parameter (nur Live-DVD)
 
 | Bootoption | Wert | Beschreibung | 
 | ---- | ---- | ---- |
@@ -58,9 +58,7 @@ Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese 
 |  tz  | tz=Europe/Dublin | setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird **utc=yes** angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy & paste: **file:///usr/share/zoneinfo/** in den Browser eingegeben wird . | 
 |  toram  |  | kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie | 
 
----
-
-## Bootoptionen für den Grafikserver X
+### Bootoptionen für den Grafikserver X
 
 Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet werden, wenn man Bootoptionen für den Grafikserver X für die Grafikkarten Radeon, Intel oder MGA einsetzt.
 
@@ -84,9 +82,7 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 |  xhrefresh  | 75 | setzt die horizontale Frequenz des Monitors für X (in Kilohertz), der Wert ist Beispiel | 
 |  xvrefresh  | 60 | setzt die vertikale Frequenz des Monitors für X (in Hertz), der Wert ist Beispiel | 
 
----
-
-## Allgemeine Parameter des Linux-Kernels
+### Allgemeine Parameter des Linux-Kernels
 
 | Bootoption | Wert | Beschreibung | 
 | ---- | ---- | ---- |
@@ -105,16 +101,14 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 |  vga  | normal | mehr zu vga-Codes hier: [VGA-Bootoptionen](cheatcodes_de.md#vga)  | 
 |  video  | (z.B.) DVI-0:800x600 | Für Grafikkarten mit aktiviertem KMS. Dies gilt für Intel- und ATI-Grafikkarten (Letztere mit Radeon-Treiber), wobei DVI-X/LVDS-X die Video-Ausgabe ist, die von xrandr gezeigt wird. | 
 
----
-
-## VGA-Codes
+### VGA-Codes
 
 Die folgenden Tabellen listen die Werte, die mit dem allgemeinen Parameter **vga** angegeben werden können.  
 Ein Anwendungsbeispiel ist **vga=791** (VESA-Code, Auflösung 1024x768 bei 64000 Farben)
 
 Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingabe von vga=0 in die Grubzeile gelöst werden.
 
-### Dezimal:
+#### Dezimal
 
 |  Farben  |  640x480  |  800x600  |  1024x768  |  1280x1024  | 
 | :----: | :----: | :----: | :----: | :----: |
@@ -123,9 +117,7 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  64k  | 273 | 276 | 279 | 282 | 
 |  16M  | 274 | 277 | 280 | 
 
----
-
-### Hexadezimal:
+#### Hexadezimal
 
 |  Farben  |  640x480  |  800x600  |  1024x768  |  1280x1024  | 
 | :----: | :----: | :----: | :----: | :----: |
@@ -134,9 +126,7 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  64k  | 0x111 | 0x114 | 0x117 | 0x11A | 
 |  16M  | 0x112 | 0x115 | 0x118 | 
 
----
-
-### VESA:
+#### VESA
 
 |  Farben  |  640x480  |  800x600  |  1024x768  |  1280x1024  |  1600x1200  | 
 | :----: | :----: | :----: | :----: | :----: | :----: 
@@ -144,7 +134,5 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  32k  | 784 | 787 | 790 | 793 | 797 | 
 |  64k  | 785 | 788 | 791 | 794 | 798 | 
 |  16M  | 786 | 789 | 792 | 795 | 
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-12-04</div>

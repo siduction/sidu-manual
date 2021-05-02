@@ -1,4 +1,4 @@
-% Das Verzeichnis /home verschieben
+% /home verschieben
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
@@ -22,6 +22,8 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
+## Das Verzeichnis /home verschieben
+
 <warning>Wichtige Information</warning>
 <warning>
 Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
@@ -31,9 +33,7 @@ Deshalb raten wir generell davon ab eine /home-Partition anzulegen.
 Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter **/Daten** eingehängt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 Sofern Daten gemeinsam für parallele Installationen bereit stehen sollen, ist diese Vorgehensweise besonders ratsam.
 
----
-
-## Vorbereitungen
+### Vorbereitungen
 
 An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.  
 Die Ausgangslage:
@@ -64,7 +64,7 @@ $ /sbin/blkid
 /dev/sdb4: UUID="e2164479-3f71-4216-a4d4-af3321750322" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="000403b7-04"
 ~~~
 
-### Sicherung des alten /home
+#### Sicherung des alten /home
 
 Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern wir als *Root* alles unterhalb von "/home" in einem tar-Archiv. 
 
@@ -73,7 +73,7 @@ Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern 
 # tar cvzpf somewhere/home.tar.gz ./
 ~~~
 
-### Mountpoint der Daten-Partition
+#### Mountpoint der Daten-Partition
 
 Wir erstellen das Verzeichnis "*Daten*" underhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
 
@@ -85,11 +85,9 @@ Mountpoint erstellen und Partition einhängen (als root):
 # mount -t ext4 /dev/sdb4 /Daten
 ~~~
 
----
+### Private Daten verschieben
 
-## Private Daten verschieben
-
-### Analyse von /home
+#### Analyse von /home
 
 Wir schauen uns erst einmal unser Home-Verzeichnis genau an.  
 (Die Ausgabe wurde zur besseren Übersicht sortiert.)
@@ -135,7 +133,7 @@ der Internetbrowser "*.mozilla*" und
 das Mailprogramm "*.thunderbird*".  
 Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch viele private Daten. Deshalb wandern sie zusätzlich auf die neue Daten-Partition.
 
-### Kopieren der privaten Daten
+#### Kopieren der privaten Daten
 
 Zum Kopieren benutzen wir den Befehl "*cp*" mit der Archiv-Option "*-a*", so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
 
@@ -171,7 +169,7 @@ Die Prüfung der Kopieraktion auf Fehler erfolgt mit dem Befehl **`dirdiff /home
 
 Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der neuen Partition.
 
-### Löschen in /home
+#### Löschen in /home
 
 Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
 Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Musik*") um dort Dateien abzulegen. Um den Zugriff der Anwendungen auf die Verzeichnisse zu ermöglichen müssen wir in "*/home/\<user\>*" Link einfügen, die auf die Daten-Partition verweisen.
@@ -194,9 +192,7 @@ Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etw
 
 Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz von weniger als 10 MB.
 
----
-
-## fstab anpassen
+### fstab anpassen
 
 Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](part-uuid_de.md).  
 Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der *fstab* mit Datumsanhang:
@@ -223,10 +219,6 @@ tmpfs                                      /tmp        tmpfs   defaults,noatime,
 
 Man speichert die Datei mit F2 und beendet den Editor mit F10.
 
----
-
 Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-03-06</div>

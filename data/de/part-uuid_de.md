@@ -17,7 +17,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## UUID (Universally Unique Identifier) und Partitions-Label
+## UUID - Benennung von Blockgeräten
+
+**UUID (Universally Unique Identifier) und Partitions-Label**
 
 Die dauerhafte Benennung (persistent naming) von Blockgeräten wurde mit Einführung von udev ermöglicht. Der Vorteil ist die Unabhängigkeit von den verwendeten Controllern, sowie der Art und der Anzahl der angeschlossenen Geräte. Die bei der Installation von siduction erstellte *fstab* enthält entsprechende Einträge für alle zu diesem Zeitpunkt angeschlossenen Blockgeräte.
 
@@ -40,7 +42,7 @@ Zur Zeit werden in Linux fünf Arten von Bezeichnern für Blockgeräte verwendet
 
 5. **LABEL**  
   Label sind von uns selbst vergebene, leicht wiedererkennbare Bezeichner. Sie sind nicht unique, deshalb muss sehr genau darauf geachtet werden Namensüberschneidungen zu vermeiden. 
-  
+
 **In der Grundeinstellung benutzt siduction aus oben genannten Gründen UUID in der /etc/fstab.**
 
 ### Label verwenden
@@ -77,8 +79,6 @@ Die Syntax in der fstab für das *file system* ist **LABEL=\<label\>**.
 <warning>Unbedingt zu beachten ist:  
 Die Labels müssen eine singuläre Bezeichnung haben, um bei der Einbindung funktionieren zu können. Das gilt auch für externe Geräte (Festplatten, Sticks etc.), die via USB oder Firewire eingebunden werden.</warning>
 
----
-
 ## Die fstab
 
 Die Datei /etc/fstab wird während des Systemstarts ausgelesen um die gewünschten Partitionen einzuhängen. Hier ein Beispiel einer fstab.
@@ -105,7 +105,7 @@ $ mount /mnt/TEST_res
 $ mount LABEL=TEST_HOME
 ~~~
 
-### Anpassung der fstab und Erstellung neuer Einhängepunkte
+### Anpassung der fstab
 
 Um neu erstellte Partitionen nutzen zu können (nehmen wir sda5 und sdb7 als Beispiele), die nicht in der fstab erscheinen oder sich nicht mit den zuvor genannten Befehlen mounten lassen, tippt man als user ($) folgenden Befehl in die Konsole:
 
@@ -139,7 +139,7 @@ Der nächste Schritt ist, die UUID/Partitionen in die /etc/fstab einzutragen. Um
 UUID=2ef32215-d545-4e12-bc00-d0099a218970  /media/disk1part5 ext4 auto,users,exec 0 2
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5  /media/disk2part7 ext4 auto,users,exec 0 2
 ~~~
-    
+
 ### Erstellung neuer Einhängepunkte
   
 **Anmerkung:**
@@ -147,8 +147,7 @@ Ein Einhängepunkt, der in fstab festgelegt wird, muss einem existierenden Verze
 
 Wenn nun die Partitionierungstabelle nach der Installation verändert und fstab angepasst wurde (zum Beispiel wurden zwei neue Partitionen angelegt), existiert noch kein Einhängepunkt. Er muss manuell angelegt werden.
 
-#### Beispiel:
-
+**Beispiel**  
 Als erstes werden wir zu **Root** und ermitteln die bestehenden Einhängepunkte:
 
 ~~~
@@ -183,7 +182,5 @@ man mount
 ~~~
 
 Natürlich muss man sich nicht an das Namensschema *'diskXpartX'* halten. Einhängepunkte (mountpoints) und die dazugehörigen Bezeichner in der fstab können sinnvoll mit z.B. *'data'* oder *'music'* benannt werden.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-12-01</div>

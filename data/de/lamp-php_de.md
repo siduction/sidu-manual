@@ -77,11 +77,9 @@ drwxr-xr-x 2 root root 4096  1. Feb 13:22 mods-available
 Jedes der Verzeichnisse *apache2*, *cgi*, *cli* und *fpm* enthält einen Ordner *conf.d* und eine Datei *php.ini*.  
 Die jeweilige *php.ini* beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner *conf.d* enthält die Link zu den aktivierten Modulen.
 
----
+### PHP Module
 
-## Module
-
-### Abfragen
+#### Abfragen
 
 Für PHP steht eine Vielzahl von Modulen zu Verfügung. Welche bereits installiert wurden, erfährt man mit
 
@@ -134,7 +132,7 @@ unknown ok not-installed php7.4-xsl
 
 Jetzt kennen wir die genauen Bezeichnungen der Module.
 
-### Info
+**Info**
 
 Ausführlichere Beschreibungen zu den Modulen liefert der Befehl
 
@@ -142,7 +140,7 @@ Ausführlichere Beschreibungen zu den Modulen liefert der Befehl
 # apt show <Modulname>
 ~~~
 
-### Installation
+**Installation**
 
 Um Module zu installieren verwenden wir z.B.:
 
@@ -157,7 +155,7 @@ Anschließend starten wir den Apache neu:
 # systemctl restart apache2.service
 ~~~
 
-### Handling
+**Handling**
 
 Der Zustand der PHP-Module ist während der Laufzeit veränderbar. Das ermöglicht auch die Steuerung von Modulen in Scripten um sie vor der Verwendung zu laden und nachher wieder zu entladen.
 
@@ -203,9 +201,7 @@ imagick (Enabled for apache2 by local administrator)
 
 Bei dem Modul *imagick* zeigt uns der String "*Enabled for apache2 by local administrator*", dass es nicht wie das *zip*-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen *phpdismod* und *phpenmod* für diese Modul.
 
----
-
-## Log
+### Log
 
 Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter */var/log/apache2/*. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.  
 Alternativ lassen wir uns die Log-Funktionen anzeigen.
@@ -223,14 +219,10 @@ opcache.error_log 	=> no value
 
 In den Dateien */etc/php/7.4/\<Interface\>/php.ini* haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
 
----
-
-## Quellen:
+### Quellen
 
 [PHP - deutsches Handbuch](https://www.php.net/manual/de/)  
 [PHP - aktuelle Meldungen](https://www.php.net/)  
 [tecadmin - Modulhandling](https://tecadmin.net/enable-disable-php-modules-ubuntu/) (englisch)
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-02-02</div>

@@ -18,23 +18,23 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ## systemd-mount
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md)  
-In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit **.mount** und **.automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
+In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit **mount** und **automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
 
-Die **.mount**-Unit ist eine Konfigurationsdatei, die für systemd Informationen über einen Einhängepunkt bereitstellt.  
-Die **.automount**-Unit überwacht das Dateisystem und aktiviert die gleichnamige *.mount-Unit*, wenn das darin bezeichnete Dateisystem verfügbar ist.
+Die **mount**-Unit ist eine Konfigurationsdatei, die für systemd Informationen über einen Einhängepunkt bereitstellt.  
+Die **automount**-Unit überwacht das Dateisystem und aktiviert die gleichnamige *.mount-Unit*, wenn das darin bezeichnete Dateisystem verfügbar ist.
 
-Für unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die *.mount*-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuhängen.  
-Bei Netzwerk-Dateisystemen bietet die *.mount*-Unit den Vorteil, Abhängigkeiten deklarieren zu können, damit die Unit erst aktiv wird, wenn das Netzwerk bereit steht. Auch hier benutzen wir nur die *.mount*-Unit und aktivieren und starten sie, um das Netzwerk-Dateisystemen bei jedem Boot einzuhängen. Die *.mount*-Unit unterstützt alle Arten von Netzwerk-Dateisystemen (NFS, SMB, FTP, WEBDAV, SFTP, SSH).
+Für unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die *mount*-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuhängen.  
+Bei Netzwerk-Dateisystemen bietet die *mount*-Unit den Vorteil, Abhängigkeiten deklarieren zu können, damit die Unit erst aktiv wird, wenn das Netzwerk bereit steht. Auch hier benutzen wir nur die *mount*-Unit und aktivieren und starten sie, um das Netzwerk-Dateisystemen bei jedem Boot einzuhängen. Die *mount*-Unit unterstützt alle Arten von Netzwerk-Dateisystemen (NFS, SMB, FTP, WEBDAV, SFTP, SSH).
 
-Entfernbare Geräte, wie USB-Sticks, und Netzwerk-Dateisysteme, die nicht permanent erreichbar sind, müssen immer an eine *.automount*-Unit gekoppelt werden. In diesem Fall darf die *.mount*-Unit nicht aktiviert werden und sollte auch keine [Install]-Sektion enthalten.
+Entfernbare Geräte, wie USB-Sticks, und Netzwerk-Dateisysteme, die nicht permanent erreichbar sind, müssen immer an eine *.automount*-Unit gekoppelt werden. In diesem Fall darf die *mount*-Unit nicht aktiviert werden und sollte auch keine [Install]-Sektion enthalten.
 
-*.mount*- und *.automount*-Units müssen nach dem Einhängepunkt, den sie steuern, benannt sein. Beispiel: Der Einhängepunkt "/home/musteruser" muss in einer Unit-Datei "home-musteruser.mount", bzw. "home-musteruser.automount", konfiguriert werden.
+*mount*- und *automount*-Units müssen nach dem Einhängepunkt, den sie steuern, benannt sein. Beispiel: Der Einhängepunkt "/home/musteruser" muss in einer Unit-Datei "home-musteruser.mount", bzw. "home-musteruser.automount", konfiguriert werden.
 
-Die in der "*/etc/fstab*" deklarierten Geräte und ihre Einhängepunkte übersetzt systemd in der frühen Bootphase mit Hilfe des "*systemd-fstab-generators*" in native *.mount*-Units.
+Die in der "*/etc/fstab*" deklarierten Geräte und ihre Einhängepunkte übersetzt systemd in der frühen Bootphase mit Hilfe des "*systemd-fstab-generators*" in native *mount*-Units.
 
 ### Inhalt der mount-Unit
 
-Die *.mount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Mount]-Sektion:
+Die *mount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Mount]-Sektion:
 
 + **What=** (Pflicht)  
  	Enthält den absoluten Pfad des eingehängten Geräts, also z.B. Festplatten-Partitionen wie /dev/sda8 oder eine Netzwerkfreigabe wie NFSv4 oder Samba.
@@ -68,7 +68,7 @@ Die *.mount*-Unit verfügt über die folgenden Optionen in der zwingend erforder
 
 ### Inhalt der automount-Unit
 
-Die *.automount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:
+Die *automount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:
 
 + **Where=** (Pflicht)  
  	Hier wird der Einhängepunkt (mount point) festgelegt, d.h. der Ordner, in den die Partition, das Netzlaufwerk oder Gerät eingehängt werden soll. Falls dieser nicht existiert, wird er beim Einhängen erzeugt.
@@ -81,14 +81,14 @@ Die *.automount*-Unit verfügt über die folgenden Optionen in der zwingend erfo
 
 ### Beispiele
 
-Systemd liest den Einhängepunkt aus dem Namen der *.mount*- und *.automount*-Units. Deshalb müssen sie nach dem Einhängepunkt, den sie steuern, benannt sein.  
+Systemd liest den Einhängepunkt aus dem Namen der *mount*- und *automount*-Units. Deshalb müssen sie nach dem Einhängepunkt, den sie steuern, benannt sein.  
 Dabei ist zu beachten, keine Bindestriche "-" in den Dateinamen zu verwenden, denn sie deklarieren ein neues Unterverzeichnis im Verzeichnisbaum. Einige Beispiele:
 
 + unzulässig: /data/home-backup
 + zulässig: /data/home_backup
 + zulässig: /data/home\\x2dbackup
 
-Um einen fehlerfreien Dateinamen für die *.mount*- und *.automount*-Unit zu erhalten, verwenden wir im Terminal den Befehl "systemd-escape".
+Um einen fehlerfreien Dateinamen für die *mount*- und *automount*-Unit zu erhalten, verwenden wir im Terminal den Befehl "systemd-escape".
 
 ~~~
 $ systemd-escape -p --suffix=mount "/data/home-backup"
@@ -217,7 +217,7 @@ Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
 ~~~
 
 **Weitere Beispiele**  
-Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *.mount*- und *.automount*-Unit. Das Kapitel "Quellen" enhält einige Webseiten mit eine ganze Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
+Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *mount*- und *automount*-Unit. Das Kapitel "Quellen" enhält einige Webseiten mit eine ganze Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
 
 ### Quellen sytemd-mount
 

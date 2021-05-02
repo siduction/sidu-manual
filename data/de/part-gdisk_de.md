@@ -22,7 +22,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Warum gdisk (GPT fdisk) verwenden?
+## Partitionieren mit gdisk
+
+**Warum gdisk (GPT fdisk) verwenden?**
 
 *gdisk* leitet sich von **G**lobally Unique Identifier **P**artition **T**able (GPT) ab und ist eine Anwendung um Datenträger von jeder Größe zu partitionieren. *gdisk* wird unbedingt benötigt für **Datenträger, die größer als 2TB** sind.  
 *gdisk* sorgt dafür, dass Partitionen für SSDs eingerichtet sind (bzw. für Speicher, die keine 512 Byte großen Sektoren besitzen).
@@ -32,7 +34,7 @@ Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inh�
 Falls GPT auf kleinen USB/SSD-Datenträgern eingesetzt wird (zum Beispiel auf einem USB-Stick mit 8GB), könnte sich dies kontraproduktiv auswirken, wenn Daten zwischen verschiedenen Computern oder Betriebssystemen ausgetauscht werden sollen.  
 Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser *fdisk*, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md).
 
-### Wichtige Anmerkungen
+**Wichtige Anmerkungen**
 
 + Die Begriffe UEFI und EFI sind austauschbar und bezeichnen das gleiche Konzept - **U**nified **E**xtensible **F**irmware **I**nterface (englisch für Vereinheitlichte erweiterbare Firmware-Schnittstelle).  
   Siehe [Wikipedia UEFI](https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface).  
@@ -55,7 +57,7 @@ Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir 
 + Graphische Partitionierungsprogramme für GPT  
 Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *gparted* und *partitionmanager* GPT-Datenträger. Trotzdem empfehlen wir gdisk, um unerwünschten Anomalien vorzubeugen. *Gparted - gparted* sowie *KDE Partition Manager - partitionmanager* (und andere) sind dennoch großartige Hilfsmittel besonders um die Partitionierung zu visualisieren.
 
-### Grundlegende Lektüre:
+**Grundlegende Lektüre:**
 
 + man gdisk
 
@@ -65,9 +67,7 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *
 
 + [Wikipedia GUID-Partitionstabelle (Deutsch)](https://de.wikipedia.org/wiki/GUID_Partition_Table)
 
----
-
-## Partitionierung einer Festplatte
+### Partitionierung einer Festplatte
 
 <warning>**Daten zuvor sichern!**</warning>
 <warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.</warning>
@@ -82,7 +82,7 @@ Die Navigation erfolgt mittels der Pfeiltasten.
 + Für die Aktionsauswahl **`rechts`** und **`links`**.
 + Mit **`Enter`** wird die Auswahl bzw. Eingabe bestätigt.
 
-### cgdisk starten  
+### cgdisk verwenden  
 
 Der Startbefehl in einem root-Terminal lautet: **cgdisk /dev/sdX**.
 
@@ -97,7 +97,7 @@ Das Startbild
 
 ![Startbild](./images/cgdisk/cgdisk_01.png)
 
-### Partition erstellen
+#### Partition erstellen
 
 Wir wählen *New* und bestätigen mit *Enter*. Mit einem zweiten *Enter* übernehmen wir den voreingestellten ersten Sektor für die neue Partition. Dann geben wir die gewünschte Größe von "100M" für die *EFI-System*-Partition ein und bestätigen die Eingabe.
 
@@ -136,7 +136,7 @@ Mit *Verify* wird die Partitionierung überprüft und eventuelle Fehler werden a
 Hier ist alles in Ordnung.  
 Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl *Info*, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](part-gdisk_de.md#gdisk-7) zur Verfügung.
 
-### Partition löschen
+#### Partition löschen
 
 Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl *Delete*.
 
@@ -144,7 +144,7 @@ Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl *Dele
 
 Bei Notwendigkeit verfahren wir mit anderen Partitionen genauso und können dann mit geänderten Werten die Partitionen wieder erstellen.
 
-### GPT schreiben
+#### GPT schreiben
 
 Entspricht die Partitionierung der Festplatte unseren Vorstellungen prüfen wir noch einmal mit dem Befehl *Verify* ob alles in Ordnung ist. Werden keine Fehler angezeigt, wählen wir *Write* und
 
@@ -158,9 +158,7 @@ Der Warnhinweis sollte ernst genommen werden, denn nach Betätigung der *Enter*-
 
 Da *cgdisk* nur Partitionen, aber keine Dateisysteme erstellt, muss jede der neuen Partitionen formatiert werden. Mit *Quit*  wird *cgdisk* beendet.
 
----
-
-## Formatieren der Partitionen
+### Formatieren der Partitionen
 
 Wir bleiben im Root-Terminal und lassen uns die Pfade mit den Nummern für jede Partition anzeigen:
 
@@ -227,9 +225,7 @@ swapoff /dev/sdb4
 
 **Als nächstes ist es unbedingt notwendig, das System neu zu starten, damit das neue Partitionierungs- und Dateisystemschema vom Kernel eingelesen wird.** 
 
----
-
-## Booten mit GPT-UEFI oder GPT-BIOS
+### Booten mit GPT-UEFI oder GPT-BIOS
 
 Falls ein bootbarer Datenträger mit GPT erstellt werden soll, gibt es zwei Möglichkeiten den Bootsektor eines GPT-Datenträgers zu erstellen.
 
@@ -245,19 +241,17 @@ Diese Möglichkeiten sind:
 
 + Das BIOS soll zum Booten des GPT-Datenträgers verwendet werden.
 
-### Booten mit UEFI
+#### Booten mit UEFI
 
 Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte **EFI System**-Partition (Typ "EF00" ) als erste Partition, und eine unformatierte **BIOS boot**-Partition (Typ "EF02" ) als zweite erstellt werden. Die erste Partition enthält den/die Bootloader.  
 Während der Installation von siduction wird jegliche Auswahlmöglichkeit der install-gui, wohin der Bootloader installiert werden soll, ignoriert, sofern die vorgenannten Partitionen existieren. Der Bootloader von siduction wird in der *EFI-System*-Partition unter "/efi/siduction"  gespeichert. Die EFI-Systempartition wird auch als "/boot/efi"  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *EFI-System*-Partition muss im Installer nicht extra angegeben werden.
 
-### Booten mit BIOS
+#### Booten mit BIOS
 
 Falls das System kein UEFI besitzt, muss als erste eine **BIOS-Boot**-Partition erstellt werden. Diese ersetzt den Sektor eines MBR-partitionierten Datenträgers, der sich zwischen der Partitionierungstabelle und der ersten Partition befindet, und in diesen wird Grub direkt geschrieben.  
 Die Partition sollte die Größe von 200MB haben. (Der Grund dieser Größe anstelle der konventionellen 32MB liegt darin, um für den Fall eines Wechsels zu UEFI eine ausreichend große Partition zur Verfügung zu haben.)
 
----
-
-## Erweiterte Befehle von gdisk
+### Erweiterte Befehle von gdisk
 
 *gdisk* besitzt erweiterte Optionen und Sicherheitsmechanismen die in *cgdisk* nicht zur Verfügung stehen.
 
@@ -320,7 +314,5 @@ z zap (destroy) GPT data structures and exit
 Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID oder der GUIDs des Datenträgers (**c**  bzw. **g** ). Die Option **z**  zerstört augenblicklich die GPT-Datenstrukturen. Dies kann sinnvoll sein, wenn der GPT-Datenträger mit einem anderen Partitionierungsschema verwendet werden soll. Falls diese Strukturen nicht ausgelöscht werden, können einige Partitionierungsprogramme wegen des Vorhandenseins von zwei Partitionierungssystemen Probleme haben.
 
 Trotz alledem: die Optionen der Menüs *recovery & transformation*  und *experts*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **b**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-03-07</div>

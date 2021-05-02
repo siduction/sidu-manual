@@ -17,7 +17,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Eingerichtete User der Live-DVD
+## Live-DVD verwenden
+
+### Eingerichtete User der Live-DVD
 
 Auf der Live-DVD sind die User '**siducer**' und '**root**' (der Systemadministrator) eingerichtet.
 
@@ -26,9 +28,7 @@ Für den User '**root**' (Systemadministrator) ist kein Passwort gesetzt.
 
 Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren bitte den User '**siducer**' mit dem Passwort '**live**' eingeben.
 
----
-
-## Mit root-Rechten auf der Live-DVD arbeiten
+### Mit root-Rechten auf der Live-DVD arbeiten
 
 Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.
 
@@ -73,8 +73,6 @@ Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechte
   *sudo* ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir empfehlen, den echten root-Account direkt zu nutzen.  
 Siehe [warum sudo nicht konfiguriert ist](term-konsole_de.md#sudo)
 
----
-
 ### Ein neues Passwort setzen
 
 Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F1` auf die erste virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
@@ -94,8 +92,6 @@ Mit der Tastenkombination `Alt` + `F7` gelangt man wieder zur graphischen Oberfl
 
 Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort vergeben, allerdings ohne den Benutzernamen 'siducer' einzugeben. Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als 'root' möglich.
 
----
-
 ### Die Installation von Software während einer Live-DVD-Sitzung
 
 Die Befehlsfolge für die Installation von Software während einer Live-Sitzung gleicht der bei einer Festplatteninstallation.
@@ -106,7 +102,5 @@ apt install <das-gewünschtes-paket>
 ~~~
 
 Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten, außer wenn [fromiso und persist](hd-install-opts_de.md#fromiso-persist) aktiviert wird.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-12-02</div>

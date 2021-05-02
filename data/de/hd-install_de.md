@@ -41,7 +41,9 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 # Installation
 
-## Datensicherung
+## Installation auf HDD
+
+### Datensicherung
 
 **WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
 Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
@@ -50,7 +52,7 @@ Siehe auch
 [Backup mit rsync](sys-admin-rsync_de.md)  
 Eine weitere Option ist BackInTime (muss installiert werden).
 
-## Installationsvorbereitungen
+### Installationsvorbereitungen
 
 Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der `F2` oder `Entf`-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste `F12`, `F11` `F7` oder `F8` (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
 
@@ -61,7 +63,7 @@ Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeil
 
 Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](hd-install-opts_de.md#usb-hd).
 
-### HDD, RAM und Swap
+#### HDD, RAM und Swap
 
 Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#min-hw) beschrieben.  
 Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. 
@@ -85,7 +87,7 @@ Die Partitionierung kann während der Installation vorgenommen werden, oder bere
 [gdisk](part-gdisk_de.md), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
 [cfdisk](part-cfdisk_de.md), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
 
-### Dateisysteme
+#### Dateisysteme
 
 Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
 
@@ -93,7 +95,7 @@ Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mi
 
 Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugreifen.
 
-### Duplizierung auf einem anderen Computer
+### Duplizierung auf einen anderen Computer
 
 Mit folgendem Konsolenbefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
 
@@ -110,7 +112,7 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 
 installiert werden.
 
-## Das siduction-Installationsprogramm (Calamares)
+### Das siduction-Installationsprogramm (Calamares)
 
 Während der Installation sollte, wenn möglich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen für die Lokalisation und Zeit zu ermitteln.
 
@@ -119,7 +121,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 2. Nach einem Doppelklick auf das Icon startet Calamares und wir sehen das "Willkommen" - Fenster.
 
    ![calamares welcome](./images/install-hd/calamares-de_01.png "Willkommen")
-   
+
    Sofern eine Internetverbindung besteht, sollte hier bereits die richtige Sprache eingestellt sein.
 
 3. Im nächsten Fenster "Standort" besteht die Möglichkeit Änderungen zur *Region*, der *Zeitzone* und *Systemsprache*, sowie dem *Format* für das Datum und die Zahlen vorzunehmen.
@@ -129,32 +131,32 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 4. Es folgen die Einstellungen zur Tastatur.
 
    ![calamares keyboard](./images/install-hd/calamares-de_03.png "Tastatur")
-   
+
    Im oberen Teil wird die Tastatur graphisch dargestellt und die Änderungen werden sofort sichtbar. Ganz unten befindet sich eine Eingabezeile um das Tastaturlayout zu testen.
 
 5. Im nächsten Schritt erreichen wir die bereits oben erwähnte Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n) siduction verwendet.
 
    ![calamares partitions](./images/install-hd/calamares-de_04.png "Partitionen")
-   
+
    In unserem Beispiel verwenden wir die *Manuelle Partitionierung* weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel auswählen. Nach einem Klick auf *Weiter* erscheint das nächste Fenster, in dem wir die einzelnen Partitionen auswählen und bearbeiten können.
-   
+
    ![calamares work on partitions](./images/install-hd/calamares-de_05.png "Partitionen bearbeiten")
-   
+
    Wir benutzen die Partitionen  
    sda7 für / (root)  
    sda6 für /daten gemeinsam mit dem bereits auf sda3 und sda4 vonhanden Linux
-   
+
    Nach Auswählen der betreffenden Partition und Betätigen des Schalters *Ändern* öffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und für sda7 auch die Formatierung mit dem Dateisystem **ext4** vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abglegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen möchten.  
    Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie während der Installation automatisch erkannt und integriert wird.  
    Das Ergebnis unserer Bemühungen sehen wir im nächsten Bild.
-   
+
    ![calamares partitions finish](./images/install-hd/calamares-de_06.png "Partitionen Ergebnis")
 
 
 6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#adduser) hinzugefügt werden.
 
    ![calamares users](./images/install-hd/calamares-de_07.png "Benutzer")
-   
+
    Vor der Verwendung der beiden Optionen  
    "Automatisches Einloggen ohne Passwortabfrage" und  
    "Nutze das gleiche Passwort auch für das Administratorenkonto"  
@@ -174,7 +176,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
    Vor dem Reboot die CD aus dem Laufwerk nehmen!
 
-## Benutzer hinzufügen
+### Benutzer hinzufügen
 
 Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als root aus:
 

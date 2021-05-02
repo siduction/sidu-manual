@@ -13,7 +13,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
 
-## MariaDB
+## MariaDB einrichten
 
 ### MariaDB im Dateisystem
 
@@ -105,9 +105,7 @@ Thanks for using MariaDB!
 
 Im Ergebnis hat der Benutzer *root* ein (hoffentlich sicheres) Passwort erhalten und er kann sich nicht mehr remote einloggen. Der Benutzer *anonymous* und die Datenbank *Test* wurden entfernt.
 
----
-
-## MariaDB CLI
+### MariaDB CLI
 
 Das Commandline Interface erreichen wir im Terminal durch die Eingabe von "*mariadb -u \<user\> -p*". Nach der Eingabe des Passwortes sehen wir die Begrüßung und den neuen Promt `MariaDB [(none)]>`.
 
@@ -122,7 +120,7 @@ MariaDB [(none)]>
 Aus Sicherheitsgründen loggen wir uns nur zu Beginn als **Benutzer root** ein, um die Projektdatenbank, einen  Benutzer für die alltäglichen Arbeiten an dieser und einen Benutzer als Ersatz für *root* anzulegen.  
 Später im Abschnitt [phpMyAdmin](#phpmyadmin) entziehen wir dem Benutzer *root* die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
 
-### Eine Datenbank anlegen
+#### Eine Datenbank anlegen
 
 Wir sind noch im Terminal angemeldet und erstellen für unser Projekt eine neue Datenbank:
 
@@ -133,7 +131,7 @@ Query OK, 1 row affected (0.002 sec)
 
 Das ist schon alles. Falls wir diese Datenbank löschen wollen lautet der Befehl "DROP DATABASE sidu;"
 
-### Einen Benutzer anlegen
+#### Einen Benutzer anlegen
 
 Zuerst erstellen wir unseren Projekt-Benutzer mit dem Namen *tomtom* und weisen ihm ausschließlich alle Rechte an der Projekt-Datenbank *sidu* zu:
 
@@ -171,7 +169,7 @@ Bey
 #
 ~~~
 
-### Abfragen
+#### Abfragen
 
 Wir schauen uns das Ergebnis in Terminal an, diesmal als Benutzer "*chef*".  
 Zuerst die Benutzer und dann die vorhandenen Datenbanken.
@@ -221,9 +219,7 @@ MariaDB [(none)]> SHOW DATABASES;
 
 Es ist gut zu erkennen, dass der Benutzer "*tomtom*" keinen Zugriff auf systemrelevante Daten erhält.
 
----
-
-## phpMyAdmin
+### phpMyAdmin
 
 Wie zuvor gesehen, lässt sich MariaDB vollständig über die Komandozeile verwalten. Wer die Syntax beherrscht, und dafür ist profundes Fachwissen erforderlich, kommt auf diesem Weg schnell zum gewünschten Ergebnis.
 
@@ -264,9 +260,7 @@ Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte
 
 phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter **`Exportieren`** im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
 
----
-
-## Integration in Systemd
+### Integration in Systemd
 
 Die Steuerung von MariaDB wurde in Debian, und damit auch in siduction, in den Systemd integriert. MariaDB startet automatisch beim Booten des Servers. Die Steuerungsaufrufe lauten:
 
@@ -279,9 +273,7 @@ Genaue Informationen enthält die externe Webseite [MariaDB Systemd](https://mar
 
 Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf den Systemd beziehen.
 
----
-
-## Log
+### Log
 
 Das Systemd Journal enthält Meldungen über den Startprozess des *mariadb.service*. Es ist die erste Anlaufstelle wenn Fehler auftreten.  
 In der Konsole zeigt der Befehl "*journalctl*" die Meldungen zu MariaDB mit:
@@ -307,9 +299,7 @@ MariaDB [(none)]> SET GLOBAL general_log=1;
 Das erstellt eine Log-Datei nach dem Muster *\<Host\>.log* im Verzeichnis */var/lib/mysql/*.  
 **Achtung**: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Atkionen zu beobachten.
 
----
-
-## Quellen
+### Quellen
 
 [MariaDB Dokumentation](https://mariadb.com/kb/en/documentation/) (englisch)  
 [MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (englisch)  
@@ -320,7 +310,5 @@ man mariadb
 ~~~
 
 [phpMyAdmin Dokumentation](https://docs.phpmyadmin.net/de/latest/) (deutsch)
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-02-02</div>

@@ -43,7 +43,7 @@ Bei den Ziel-Unit sind drei Besonderheiten zu beachten:
     | rescue.target | systemd.unit=rescue.target | 1 |
     | multi-user.target | systemd.unit=multi-user.target | 3 |
     | graphical.target | systemd.unit=graphical.target | 5 |
-    
+
     Die alten Runlevel 2 und 4 verweisen auf multi-user.target
 
 2. Die Verwendung im **Terminal** während einer laufenden Sitzung.

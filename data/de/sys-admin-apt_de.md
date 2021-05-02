@@ -27,12 +27,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Was bedeutet APT?
+## APT Paketverwaltung
 
 APT ist eine Abkürzung für **A**dvanced **P**ackaging **T**ool und stellt eine Sammlung von Programmen und Skripten bereit, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterstützt.  
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
-
----
 
 ### apt und apt-get
 
@@ -53,9 +51,7 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 | [apt show](sys-admin-apt_de.md#search) | apt-cache show  | Anzeige der Details eines Paketes. |
 | [apt list](sys-admin-apt_de.md#search) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
 
----
-
-## Liste der Quellen (sources.list)
+### Liste der Quellen (sources.list)
 
 Das "APT"-System benötigt eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei sources.list. Moderne Systeme benutzen mittlerweile  modularisierte Sourcen um die Übersicht zu verbessern.
 
@@ -123,9 +119,7 @@ In diesem Beispiel wird der US-amerikanische Debian-Spiegelserver beginnend mit 
 
 [Liste der aktuell verfügbaren Debian-Server und deren Spiegelserver.](https://www.debian.org/mirrors/)
 
----
-
-## apt update
+### apt update
 
 Um aktualisierte Informationen über die Pakete zu erhalten, wird eine Datenbank mit den benötigten Einträgen vorgehalten. Das Programm apt benutzt sie bei der Installation eines Pakets, um alle Abhängigkeiten aufzulösen und somit zu garantieren, dass die ausgewählten Pakete funktionieren. Die Erstellung bzw. Aktualisierung dieser Datenbank wird mit dem Befehl **apt update** durchgeführt.
 
@@ -143,10 +137,6 @@ Abhängigkeitsbaum wird aufgebaut.
 Statusinformationen werden eingelesen.... Fertig
 Aktualisierung für 48 Pakete verfügbar. Führen Sie »apt list --upgradable« aus, um sie anzuzeigen.
 ~~~
-
----
-
-## Pakete verwalten
 
 ### Pakete installieren
 
@@ -206,9 +196,7 @@ funtools (1.4.7-4) wird eingerichtet ...
 Trigger für man-db (2.8.5-2) werden verarbeitet ...
 Trigger für libc-bin (2.28-8) werden verarbeitet ...
 ~~~
- 
----
- 
+
 ### Pakete entfernen
 
 Der Befehl **apt remove <Paketname>** entfernt ein Paket. Abhängigkeiten werden dabei nicht entfernt:
@@ -250,8 +238,6 @@ rc  systemd-coredump   240-1           amd64  tools for storing and retrieving c
 ~~~
 
 Die hier gelisteten Pakete wurden removed, ohne purgen.
-
----
 
 ### Hold/Downgraden eines Pakets
 
@@ -311,9 +297,7 @@ apt update
 apt install kmahjongg / apt full-upgrade
 ~~~
 
----
-
-## Aktualisierung des Systems
+### Aktualisierung des Systems
 
 Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](#holddowngraden-eines-pakets) eines Pakets.
 
@@ -324,7 +308,7 @@ Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis z
 
 Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.
 
-### Aktualisierung nicht mit Live-Medium
+**Aktualisierung nicht mit Live-Medium**
 
 Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum "*apt*" verwendet werden sollte.
 
@@ -370,7 +354,7 @@ Richte debtags ein (1.6.6) ...
 Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
 ~~~
 
-### (Nur) Downloaden
+**(Nur) Downloaden**
 
 Eine wenig bekannte, aber großartige Möglichkeit ist die Option -d:
 
@@ -403,8 +387,6 @@ Möchtest Du fortfahren [J/n]?J
 
 Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit entsprechend dem Vorgehen im folgendem Absatz installiert werden.
 
----
-
 ### full-upgrade ausführen
 
 <warning>**Warnhinweis:**</warning>
@@ -430,9 +412,7 @@ init 5 && exit
 
 Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpackage absehen!
 
----
-
-## Gründe, warum man nur apt für eine Systemaktualisierung verwenden soll
+### Gründe, warum man nur apt für eine Systemaktualisierung verwenden soll
 
 Paketmanager wie adept, synaptic und kpackage können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Das sind keine Fehler in diesen Programmen oder Fehler der Entwickler.
 
@@ -446,13 +426,11 @@ Im Gegensatz dazu führt apt ausschließlich das durch, was angefragt ist. Bei u
 
 Dies ist der Grund, warum Debian-Builds apt nutzen und nicht andere Paketmanager.
 
----
-
-## Programmpakete suchen
+### Programmpakete suchen
 
 Das APT-System bietet eine Reihe nützlicher Suchbefehle, mit denen die APT-Datenbank durchsucht und Informationen über die Pakete ausgegeben werden. Zusätzlich existieren einige Programme, die die Suche graphisch aufbereiten.
 
-### Paketsuche im Terminal
+#### Paketsuche im Terminal
 
 Mit dem einfachen Befehl **apt search <Suchmuster>** erhält man die Liste aller Pakete, die das Suchmuster enthalten. Die Suche mit *search* erlaubt die Verwendung von regex-Begriffen.
 
@@ -513,9 +491,7 @@ Der Befehl **aptitude** (im Terminal) öffnet das gleichnamige Programm in einer
 
 ![aptitude](./images/apt/aptitude.png)
 
----
-
-### Graphische Paketsuche
+#### Graphische Paketsuche
 
 Das Programm **packagesearch** eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird "packagesearch" nicht automatisch instaliert; deshalb:
 
@@ -538,10 +514,6 @@ Folgende Suchkriterien stehen zur Auswahl:
 
 Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch welche Dateien in einem Paket geschnürt sind. Weitere ausführliche Informationen zur Verwendung von packagesearch findet man unter *Help* > *Contents*.  Derzeit ist die Benutzerführung von packagesearch ausschließlich Englisch.
 
----
-
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-03-15</div>

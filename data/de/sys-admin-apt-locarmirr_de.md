@@ -11,9 +11,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
----
+## Lokaler APT-Mirror
 
-## Apt-Cacher, ein Proxy-Server für Debian-Pakete
+**Apt-Cacher, ein Proxy-Server für Debian-Pakete**
 
 **Apt-Cacher** ist ein Proxy-Server, der mehreren lokalen Computern den Zugang zu
 einem Debian-Pakete-Cache ermöglicht.  
@@ -29,9 +29,7 @@ Nutzern, die mehrere PC ihr Eigen nennen und sparsam mit Bandbreite und Download
 + 6 GB freier Speicherplatz für den Cache auf dem Server.
 + LAN-Verbindung zu den anderen Geräten.
 
----
-
-## Apt-Cacher Setup
+### Apt-Cacher Setup
 
 Das Setup für *Apt-Cacher* erfolgt in zwei Schritten.  
 Als Erstes wird *Apt-Cacher* auf dem als APT-Proxy-Server ausgewählten PC installiert und anschließend konfiguriert man alle Client-PC's so, dass sie den APT-Proxy-Server benutzen.
@@ -66,7 +64,7 @@ Der Cache, in dem in Zukunft alle heruntergeladenen Pakete abgelegt werden, befi
 und die Konfigurationsdateien in  
 */etc/apt-cacher/* .
 
-### Server Konfiguration
+**Server Konfiguration**
 
 In das Verzeichnis */etc/apt-cacher/* wechseln wir sogleich und bearbeiten die Datei "*apt-cacher.conf*".
 
@@ -119,7 +117,7 @@ LISTEN 0      4096         0.0.0.0:3142        0.0.0.0:
 
 Bei dieser Ausgabe ist alles in Ordnung.
 
-### Import vorhandener .deb's
+**Import vorhandener .deb's**
 
 **Apt-Cacher** verfügt jetzt über ein Importscript, das auf dem PC bereits vorhandene Debian Archive importiert. Es erspart den nochmaligen Download der Pakete. Dem Aufruf geben wir das vorhandene Archivverzeichnis mit:
 
@@ -150,7 +148,5 @@ Ein anschließendes
 
 sollte ohne Fehlermeldungen durchlaufen.  
 Der erste Aufruf von **`# apt full-upgrade`** auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller und zur Zufriedenheit ab.
-
----
 
 <div id="rev">Seite zuletzt aktualisert 2021-02-10</div>

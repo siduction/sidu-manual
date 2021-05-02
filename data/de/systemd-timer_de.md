@@ -43,7 +43,7 @@ Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in */usr/l
 
 Wir erstellen in dem Beispiel ein regelmäßiges Backup mit *rsync*.
 
-### .timer-Unit anlegen
+### timer-Unit anlegen
 
 Wir legen die Datei **backup.timer** im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
 
@@ -75,7 +75,7 @@ Es stehen zwei Timer-Typen zur Verfügung:
 
 Die im Beispiel enthaltene Option "*Persistent=*" speichert den Zeitpunkt, zu dem die *.service-Unit* das letzte Mal ausgelöst wurde, als leere Datei im Verzeichnis */var/lib/systemd/timers/*. Dies ist nützlich, um verpasste Läufe, als die Maschine ausgeschaltet war, nachzuholen.
 
-### .service-Unit anlegen
+### service-Unit anlegen
 
 Die *.service-Unit* wird von der *.timer-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reicht die Beschreibung der Unit in der Sektion *[Unit]* und in der Sektion *[Service]* der auszuführende Befehl nach der Option *ExecStart=* aus.
 
@@ -92,7 +92,7 @@ ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/<user> /mnt/sdb5/backup/hom
 
 Den String \<user\> bitte durch den eigenen User ersetzen.
 
-### .timer-Unit eingliedern
+### timer-Unit eingliedern
 
 Mit dem folgenden Befehl gliedern wir die *.timer-Unit* in systemd ein.
 
@@ -104,7 +104,7 @@ Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
 
 Der analoge Befehl für die *.service-Unit* ist nicht notwendig und würde auch zu einem Fehler führen, da in ihr keine *[Install]* Sektion enthalten ist.
 
-### .timer-Unit manuell auslösen
+### timer-Unit manuell auslösen
 
 Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Unit* aufgerufen.
 
@@ -112,10 +112,10 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 # systemctl start backup.service
 ~~~
 
-### .timer-Unit als cron Ersatz
+### timer-Unit als cron Ersatz
 
 "*cron*" und "*anacron*" sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer können eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.
- 
+
 **Nutzen**
 
 + Jobs können Abhängigkeiten haben (von anderen Systemd-Diensten abhängen).

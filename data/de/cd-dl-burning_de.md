@@ -22,13 +22,13 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ---
-# siduction ISO download und brennen
+## ISO download und brennen
 
-## Die siduction ISO herunterladen
+### siduction ISO herunterladen
 
 **Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.**  
 
-### Europa
+#### Europa
 
 + **Freie Universität Berlin/ spline (Student Project LInux NEtwork), Deutschland**  
     http://ftp.spline.de/mirrors/siduction/iso/  
@@ -41,7 +41,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 + **Office Vienna**  
     https://siduction.office-vienna.at/iso/
 
-### Nordamerika
+#### Nordamerika
 
 + **University of Delaware**  
     http://mirror.lug.udel.edu/pub/siduction/iso  
@@ -53,9 +53,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
     ftp://ftp.gtlib.gatech.edu/pub/siduction/iso  
     rsync://rsync.gtlib.gatech.edu/siduction/iso 
 
------
-
-## Dateidefinitionen auf den siduction-Spiegelservern
+### Dateien der siduction-Spiegelserver
 
 Jeder Spiegelserver umfasst folgende Dateien:
 
@@ -82,7 +80,7 @@ Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weiterver
 
 Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6667 #siduction-de erreichbar. 
 
-### md5sum und Integritätsprüfung von heruntergeladenen Dateien
+#### md5sum und Integritätsprüfung
 
 Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dem Netz immer ratsam ist und viel Zeit für die Fehlersuche erspart.
 
@@ -115,9 +113,7 @@ Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
 
     $ man sha256sum
 
----
-
-## Eine Live-DVD mit Windows brennen
+### Live-DVD mit Windows brennen
 
 <warning>**WICHTIGE INFORMATION:**</warning>
 <warning>
@@ -128,19 +124,17 @@ Selbstverständlich kann die DVD auch in Windows gebrannt werden. Die herunterge
 
 Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.  
 
-### Open-Source-Brennsoftware für Windows
+#### Open-Source-Software für Windows
 
 + cdrtfe: kompatibel mit Windows 9x/ME/2000/XP, Vista, 7 und 8. (getestet mit Win95, Win98SE, Win2000, WinXP). Nur für Win9x/ME: funktionierende ASPI-Layer (z. B. Adaptec ASPI 4.60)
 + LinuxLive USB Creator, ein Open-Source-Projekt, bietet eine GUI-Applikation für MS Windows™, welche es ermöglicht, eine siduction-i386.iso (32 bit) auf einen USB-Stick zu installieren.  
 
-### Closed-Source- und proprietäre Brennsoftware für Windows
+#### Closed-Source- und proprietäre Software für Windows
 
 + CD/DVD Burner XP pro
 + Burncdcc von [terabyteunlimited](https://www.terabyteunlimited.com/downloads-free-software.htm) kann nur ISO-Abbilddateien brennen.
 
----
-
-## Die DVD mit Linux brennen
+### Die DVD mit Linux brennen
 
 <warning>**WICHTIGE INFORMATION:**</warning>
 <warning>
@@ -155,7 +149,5 @@ Klickt man auf die berechnete Prüfsumme, erscheint daneben ein Symbol. Klickt m
 
 Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript burniso verwenden.
 Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X).
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-04-13</div>

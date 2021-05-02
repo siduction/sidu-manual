@@ -19,8 +19,6 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-------------------------------------------------
-
 # siduction Kurzanleitung
 
 siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.
@@ -69,7 +67,7 @@ Ein Programmpaket wird mit diesem Befehl installiert:
 ~~~
 apt install <Paketname>
 ~~~
- 
+
 Siehe auch: [Neue Pakete installieren](sys-admin-apt_de.md#apt-install) .
 
 Die Repositorien von Debian Sid werden in der Regel viermal am Tag mit aktualisierten bzw. neuen Softwarepaketen beschickt. Zur schnellen Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der Befehl
@@ -80,15 +78,14 @@ apt update
 
 ist vor jeder Neuinstallation eines Softwarepakets notwendig, um die lokale Datenbank mit dem Softwareangebot der Repositorien zu synchronisieren.
 
-### Die Nutzung anderer auf Debian basierender Repositorien, Quellen und RPMs
-
+**Die Nutzung anderer auf Debian basierender Repositorien, Quellen und RPMs**  
 Installationen aus Quellcode sind nicht unterstützt. Empfohlen ist eine Kompilierung als User (nicht als root) und die Platzierung der Anwendung im Home-Verzeichnis, ohne dass sie ins System installiert wird. Die Verwendung von  *checkinstall*  zum Erzeugen von DEB-Paketen sollte auf die rein private Nutzung beschränkt bleiben. Konvertierungsprogramme für RPM-Pakete wie  *alien*  sind nicht empfohlen.
 
 Andere bekannte (und weniger bekannte) Distributionen, die auf Debian basieren, erstellen neue, von Debian verschieden strukturierte Pakete und verwenden oft andere Verzeichnisse, in denen bei der Installation Programme, Skripte und Dateien abgelegt werden, als Debian. Dies kann zu instabilen Systemen führen. Manche Pakete lassen sich wegen nicht auflösbarer Abhängigkeiten, unterschiedlicher Benennungskonventionen oder unterschiedlicher Versionierung überhaupt nicht installieren. Eine unterschiedliche Version von glibc zum Beispiel kann dazu führen, dass kein Programm lauffähig ist.
 
 Aus diesem Grund sollen die Repositorien von Debian benutzt werden, um die benötigten Softwarepakete zu installieren. Andere Softwarequellen können nur schwer oder gar nicht von siduction unterstützt werden. Darunter fallen auch Pakete und PPAs von Ubuntu.
 
-### Aktualisierung des Systems - upgrade
+## Aktualisierung des Systems - upgrade
 
 Ein upgrade ist nur bei beendetem Grafikserver X durchzuführen. Um den Grafikserver zu beenden, gibt man als **root** den Befehl
 
@@ -114,7 +111,7 @@ Anschließend startet man mit folgendem Befehl wieder die graphische Oberfläche
 ~~~
 init 5
 ~~~
- 
+
 **apt full-upgrade** ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
 [Aktualisierung eines installierten Systems - full-upgrade](sys-admin-apt_de.md#apt-upgrade).
 

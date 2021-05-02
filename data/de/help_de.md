@@ -21,7 +21,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Wo man Hilfe bekommen kann
+## siduction Hilfe
 
 Schnelle Hilfe kann einem viele Tränen ersparen und bietet die Möglichkeit, das weiter zu machen, was wirklich wichtig ist im Leben. Dieses Thema ist nach Bereichen gegliedert, wo die Distribution siduction Hilfe anbietet:
 
@@ -39,8 +39,8 @@ Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki
 
 **Der IRC soll nie als "root" betreten werden, sondern nur als normaler Nutzer.**  
 Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe gegeben werden kann.
- 
-#### Verhaltensregel im IRC
+
+#### Verhaltensregeln im IRC
 
 * Ein freundlicher Umgangston ist obligatorisch, denn wir leisten den Support alle ehrenamtlich.
 * Hilfreich ist es, eine nach bestem Wissen genaue Anfrage zu stellen und nach Möglichkeit zuvor im siduction-Wiki nach Lösungen zu suchen.
@@ -71,7 +71,7 @@ oder
 $ command | siduction-paste
 ~~~
 
-#### Beispiel für siduction-paste &lt;file&gt;
+**Beispiel für siduction-paste &lt;file&gt;**
 
 ~~~
 $ siduction-paste /etc/fstab
@@ -80,7 +80,7 @@ Your paste can be seen here: http://paste.siduction.org/xyz.html
 
 Der Link <http://paste.siduction.org/xyz.html>  muss danach im IRC-Channel #siduction-de eingegeben werden.
 
-#### Beispiel für command | siduction-paste 
+**Beispiel für command | siduction-paste**
 
 ~~~
 $ fdisk -l | siduction-paste
@@ -96,13 +96,11 @@ $ siduction-paste -s
 Jetzt bleiben einige Sekunden Zeit, um zum abzulichtenden Objekt zu navigieren. Bitte denkt daran, dass diese Funktion die Installation von  *scrot*  voraussetzt.  
 Auch hier muss danach der Link <http://siduction.paste.org/yzx.html> im IRC-Channel #siduction-de eingegeben werden.
 
----
-
-## Nützliche Helfer im Textmodus (tty) und in init 3 
+### Nützliche Helfer im Textmodus (tty) und in init 3 
 
 Normalerweise verwendet man den Textmodus Runlevel 3 (init 3 bzw. journalctl isolate multi-user.target), wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
 
-### gpm
+#### gpm
 
 Ein hilfreiches Programm im Textmodus ist **gpm** . Dieses ermöglicht, die Maus zum Kopieren und Einfügen im Terminal zu benutzen.
 
@@ -126,7 +124,7 @@ Bei Erfolg findet sich in der Ausgabe auch eine Zeile ähnlich der folgenden.
 
 Nun sollte man seine Maus im Textmodus (tty) nutzen können.
 
-### Dateimanager und Textbearbeitung
+#### Dateimanager und Textbearbeitung
 
 Midnight Commander ist ein einfach zu bedienender Dateimanager im Text-Modus (tty) und Texteditor. Er wird mit siduction ausgeliefert.
 
@@ -152,16 +150,14 @@ Weitere Informationen auf der Manpage:
 $ man mc
 ~~~
 
----
+### siduction IRC-Support im Textmodus (init 3)
 
-## siduction IRC-Support im Textmodus (init 3)
-
-### Verhaltensregel im IRC
+#### Verhaltensregel im IRC
 
  **Der IRC soll nie als "root" betreten werden, sondern nur als normaler Nutzer.**  
  Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe gegeben werden kann.
- 
-### IRC im Textmodus
+
+#### IRC im Textmodus
 
 Das Programm *irssi* stellt einen IRC-Client im Textmodus oder der Konsole bereit und ist in siduction aktiviert.  
 Mit der Tastenkombination `CTRL`+`ALT`+`F2` oder `F3` usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
@@ -218,9 +214,7 @@ Die folgenden Link bieten weitere Informationen.
 [Dokumentationsseite von irssi (Englisch)](https://irssi.org/documentation)  
 [Dokumentationsseite von WeeChat (Deutsch)](https://www.weechat.org/) 
 
----
-
-## Surfen im Internet im Textmodus
+### Surfen im Internet im Textmodus
 
 Der Kommandozeilenbrowser w3m ermöglicht das Surfen im Internet in einem Terminal bzw. einer Konsole oder im Textmodus
 
@@ -260,9 +254,7 @@ Mehr Informationen gibt es auf der [Dokumentationsseite von w3m (Englisch)](http
 
 Es ist ratsam, sich vor einem Notfall mit **elinks/w3m, irssi/weechat, midnight commander** vertraut zu machen. Drucke diese Datei aus, um im Notfall die Informationen griffbereit zu haben.
 
----
-
-## inxi
+### inxi
 
 Inxi ist ein System-Informations-Skript, welches unabhängig von einzelnen IRC-Clients funktioniert. Dieses Skript gibt verschiedene Informationen über die benutzte Hard- und Software aus, sodass andere Nutzer in #siduction bei der Fehlerdiagnose besser helfen können. Oder in einer Konsole ausgeführt, kann man selbst Informationen über das eigene System erhalten.
 
@@ -296,16 +288,12 @@ Hilfe zu inxi
 $ inxi --help
 ~~~
 
----
-
-## Weitere nützliche Links
+### Nützliche Links
 
 [Debian Referenzkarte - zum Ausdruck auf ein Einzelblatt](https://www.debian.org/doc/user-manuals#refcard)  
 [HOWTOs von der Debian-Seite](https://www.debian.org/doc/#howtos)  (ist automatisch auf Deutsch, wenn Browser lokalisiert ist)  
 [Debian-Referenz: Grundlagen und Systemadministration](http://qref.sourceforge.net/index.de.php) Dokumente verfügbar als HTML, Text, PDF und PS  
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-03-12</div>

@@ -33,10 +33,8 @@ Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bo
 2. [Bootoptionen für den Grafikserver X](cheatcodes_de.md#cheatcodes-x)
 3. [Allgemeine Parameter des Linux-Kernels](cheatcodes_de.md#cheatcodes-linux)
 4. [Werte für den allgemeinen Parameter **vga**](cheatcodes_de.md#vga)
- 
-[Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
----
+[Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
 ### systemd - Dienste verwalten
 
@@ -135,7 +133,7 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 | default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX). |
 
 Ein Blick in die Dokumentation **man SYSTEMD.SPECIAL(7)** ist obligatorisch um die Zusammenhänge der verschiedenen *.target* - *Unit* zu verstehen.
- 
+
 Um in den Runlevel zur Systemaktualisierung zu wechseln, ist im Terminal folgender Befehl als root zu verwenden:
 
 ~~~
@@ -154,11 +152,10 @@ Um das System herunter zu fahren bzw. neu zu starten, sollte der Befehl
 
 verwendet werden. *poweroff* bzw. *reboot* (jeweils ohne *.target*) ist ein Befehl, der mehrere Unit in der richtigen Reihenfolge hereinholt, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
 
----
+### Beenden eines Prozesses
 
-## Beenden eines Prozesses
+**pgrep und pkill**
 
-### pgrep und pkill
 Unabhängig von systemd ist **pgrep** und **pkill** ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder Root-Rechten in einer Konsole oder TTY ausgeführt:
 
 ~~~
@@ -191,17 +188,13 @@ $ pkill firefox-esr
 beendet Firefox mit dem Standardsignal *SIGTERM*.  
 Mit der Option **--signal**, gefolgt von der Signalnummer oder dem Signalnamen, sendet pkill das gewünschte Signal an den Prozess. Eine übersichtliche Liste der Signale erhält man mit *kill -L*.
 
-### htop
+**htop**
 
 Im Terminal eingegeben, ist htop eine gute Alternative, da sehr viele nützliche Informationen zu den Prozessen und zur Systemauslastung präsentiert werden. Dazu zählen eine Baumdarstellung, Filter- und Suchfunktion, Kill-Signal und einiges mehr. Die Bedienung ist selbsterklärend.
 
-### Notausgang
+**Notausgang**
 
 Als letzten Rettungsanker bevor der Netzstecker gezogen wird, kann man den Befehl *killall -9* im Terminal absetzen.
-
----
-
-## Passwortverwaltung
 
 ### Vergessenes Rootpasswort
 
@@ -241,22 +234,20 @@ Um ein User-Passwort als Administrator zu ändern, als **# root** :
 # passwd <user>
 ~~~
 
----
-
-## Schriftarten in siduction
+### Schriftarten in siduction
 
 Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig vorab die richtigen Einstellungen und Konfigurationen der Hardware zu prüfen.
 
-### Einstellungen prüfen 
+**Einstellungen prüfen **
 
 - **Korrekte Grafiktreiber**  
     Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf folgender Seite des [Handbuchs](gpu_de.md#foss-xorg).
-    
+
 - **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
     Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
-    
+
     Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
-    
+
    ~~~
     $ xrandr  
     Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
@@ -271,7 +262,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
       720x400       70.08  
     DP-1 disconnected (normal left inverted right x axis y axis)  
    ~~~
-    
+
     Der mit **\*** markierte Wert kennzeichnet die verwendete Einstellung,  
     1680 x 1050 Pixel bei einer physikalischen Größe von 474 x 296 mm.
     Zusätzlich berechnen wir die tatsächliche Auflösung in Px/inch (dpi) um einen Anhaltspunkt für die Einstellungen der Schriften zu erhalten. Mit den oben ausgegebenen Werten erhalten wir 90 dpi.  
@@ -279,10 +270,10 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
 
 - **Überprüfung**  
     Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.  
-    
+
     Bei größeren Differenzen greifen wir in die Konfiguration ein. Siehe die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
-    
-### Basiskonfuguration der Schriftarten
+
+**Basiskonfuguration der Schriftarten**
 
 siduction nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. In der graphischen Oberfläche kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gewünschte Schriftbild zu erhalten. 
 
@@ -296,13 +287,13 @@ Bei den aufgerufenen Dialogen haben sich diese Einstellungen bewährt:
 
 1. Bitte wählen Sie zur Bildschirmdarstellung die bevorzugte Methode zum Schriftabgleich (font tuning) aus.  
    "autohinter"  
-      
+
 2. Bitte wählen Sie, inwieweit Font-Hinting standardmäßig angewendet wird.  
    "mittel"  
-      
+
 3. Die Einbeziehung der Subpixel-Ebene verbessert die Textdarstellung auf Flachbildschirmen (LCD)  
    "automatisch"  
-      
+
 4. Standardmäßig nutzen Anwendungen, die fontconfig unterstützen, nur Outline-Schriften.  
     Standardmäßig Bitmap-Schriften verwenden?  
    "nein"
@@ -347,7 +338,7 @@ Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich
 
 *Hinting* :  
 Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei **4K**-Bildschirmen ist Hinting meist nicht notwendig.
-  
+
 *DPI-Wert / Skalierungsfaktor* :  
 Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Bei der Bildausgabe auf zwei Geräten mit stark unterschiedlicher Auflösung bitte die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md) beachten. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
 
@@ -364,9 +355,7 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 
 Demnach ist bei **4k-Bildschirmen** mit 24 Zoll Diagonale ein Skalierungsfaktor von 2,0 und mit 37 Zoll Diagonale ein Skalierungsfaktor von 1,2 erforderlich um etwa gleiche Darstellungen entsprechend SXGA oder WSXGA Bildschirmen mit 90 DPI zu erhalten.
 
----
-
-## CUPS - das Drucksystem
+### CUPS - das Drucksystem
 
 KDE hat einen großen Abschnitt zu CUPS in der KDE-Hilfe. Trotzdem folgt nun eine Anleitung, was man bei Problemen mit CUPS nach einem full-upgrade tun kann. Eine der bekannten Lösungen ist:
 
@@ -395,9 +384,7 @@ Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dial
 Die Firma Samsung lieferte eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die *hplib* auf. Eine Lösung für den Betrieb der Samsung Drucker bietet unser Wiki:  
 [Samsung Printer Driver](https://wiki.siduction.de/index.php?title=Samsung_Printer_Drivers)
 
----
-
-## Sound in siduction
+### Sound in siduction
 
 *In älteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.*
 
@@ -408,18 +395,18 @@ in XFCE:  *Leiste* > *Neue Elemente hinzufügen...*
 
 und das gewünschte Modul auswählen.
 
-### KDE Plasma
+**KDE Plasma**
 
 Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet das Einstellungsfenster für die Soundausgabe. Die Benutzerführung ist selbsterklärend.
 
-### GNOME
+**GNOME**
 
 Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet ein Drop-down-Menü, dass einen Schieber für die Lautstärke enthält.  
 Weitere Einstellungen sind wie folgt möglich:
 
 Rechtsklick auf die Arbeitsfläche > *Einstellungen* > *Audio*
 
-### XFCE Puls-Audio
+**XFCE Puls-Audio**
 
 Die Einstellungen erfolgen über das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerführung selbsterklärend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl
 
@@ -429,7 +416,7 @@ $ pavucontrol
 
 behelfen und nimmt im neu geöffneten Fenster die Einstellungen vor.
 
-### Alsamixer
+**Alsamixer**
 
 Wer alsamixer bevorzugt, findet diesen im Paket alsa-utils:
 
@@ -444,7 +431,5 @@ Die gewünschten Sound-Einstellungen werden als **$user** von einem Terminal vor
 ~~~
 $ alsamixer
 ~~~
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-11-29</div>

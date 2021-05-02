@@ -1,4 +1,4 @@
-%Grafiktreiber nVidea, Intel, ATA/AMD
+% Grafiktreiber nVidea, Intel, ATA/AMD
 
 # Hardware
 
@@ -96,7 +96,7 @@ Debian stellt folgende Versionen der binären Treiber zur Verfügung:
     - nvidia-legacy-390xx-driver (für 6.)
     - nvidia-driver (für 7.)
 
-Da es sich hier aber um propritäre Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch für die Firmware für freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist automatisch der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Außerdem sind die Pakete gcc, make und dkms notwendig. NAchdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:  
+Da es sich hier aber um propritäre Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch für die Firmware für freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist automatisch der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Außerdem sind die Pakete gcc, make und dkms notwendig. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:  
 
 **GeForce 8000 and 9000 series**
 

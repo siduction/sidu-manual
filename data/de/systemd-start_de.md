@@ -22,7 +22,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 # Systemadministration - systemd
 
-## systemd der System- und Dienste-Manager
+## Systemd der System- und Dienste-Manager
 
 *Anmerkung:*  
 *Die folgende, allgemeine Einführung zu systemd wurde überwiegend der ins [deutsche übersetzten Manpage](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html) entnommen. Der Dank geht an Helge Kreutzmann.*
@@ -34,7 +34,7 @@ In Debian wurde die Einführung des systemd als Standard-Init-System lange, kont
 
 Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.
 
-## Konzeption des systemd
+### Konzeption des systemd
 
 Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens "*Units*" in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
 Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.md).  
@@ -71,7 +71,7 @@ Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link z
 
 11. **Scope-Units** (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.
 
-### systemd im Dateisystem
+### Systemd im Dateisystem
 
 Die Unit-Dateien, die durch den Paketverwalter der Distribution installiert wurden, befinden sich im Verzeichnis **/lib/systemd/system/**. Selbst erstellte Unit-Dateien legen wir im Verzeichnis **/usr/local/lib/systemd/system/** ab. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)  
 Die Steuerung des Status (enabled, disabled) einer Unit erfolgt über Symlink im Verzeichnis **/etc/systemd/system/**.  
@@ -95,7 +95,7 @@ Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie z
 + systemctl is-enabled [Name] - zeigt nur den Wert "enabled" oder "disabled" des Status einer Unit.
 
 Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Unit beachtet und ggf. Standardabhängikeiten hinzugefügt damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.
- 
+
 + systemctl enable [NAME] - gliedert eine Unit in systemd ein.
 + systemctl disable [NAME] - entfernt eine Unit aus systemd.
 
@@ -135,7 +135,7 @@ Anschließend deaktivieren wir die Unit "*bluetooth.service*".
   Removed /etc/systemd/system/dbus-org.bluez.service.
   Removed /etc/systemd/system/bluetooth.target.wants/bluetooth.service.
 ~~~
-  
+
 In der Ausgabe ist gut zu erkennen, dass die Link (nicht die Unit-Datei selbst) entfernt wurden. Damit startet der "*bluetooth.service*" beim Booten des PC/Laptop nicht mehr automatisch. Zur Kontrolle fragen wir den Status nach einem Reboot ab.
 
 ~~~

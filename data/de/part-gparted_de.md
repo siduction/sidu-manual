@@ -22,7 +22,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Partitionieren der Festplatte mit GParted
+## Partitionieren mit GParted
 
 Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Daher ist es eine gute Idee, folgende Anleitung einmal gelesen zu haben, um mit dem Konzept eines Partitionsmanagers vertraut zu werden.
 
@@ -44,8 +44,6 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
 
 + Die gesamte GParted-Dokumentation findet sich in vielen Sprachen auf der [GParted-Homepage](https://gparted.org/documentation.php).
 
----
-
 ### GParted verwenden
 
 Der Programmstarter  für GParted befindet sich in
@@ -63,7 +61,7 @@ Wenn GParted startet, öffnet sich das Programmfenster und die vorhandenen Laufw
 ![GParted Startfenster](./images/gparted/gparted00-de.png)
 
 Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einlesen der Laufwerke, zur Auswahl eines Laufwerkes oder zum Beenden des Programms.
-    
+
 ![GParted Geräteübersicht](./images/gparted/gparted01-de.png)
 
 + **Bearbeiten**
@@ -72,7 +70,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
     + letzte Operationen rückgängig machen ("Undo last operations"),  
     + alle Operationen löschen ("clear all operations") und  
     + alle Operationen ausführen ("apply all operations").
-    
+
 + **Ansicht**
 
     Der nächste Menüpunkt bietet die Anzeigeoptionen *"Laufwerksinformationen"* und *"Anstehende Operationen"*.
@@ -82,48 +80,48 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
   + Anstehende Operationen ("Pending Operations")  
     In einem unten sich öffnenden Rahmen werden die austehenden Operationen angezeigt. Diese Information ist sehr nützlich, um einen Überblick darüber zu haben, welche Operationen durchgeführt werden sollen. Der Rahmen öffnet sich auch automatisch, sobald für ein Laufwerk eine Operationen angefordert wird.
-    
+
   Die beiden Bereiche sind grün markiert.
-    
+
     ![GParted Festplatteninformation](./images/gparted/gparted02-de.png)
-  
+
 + **Laufwerk**
 
   Hinter dem Menüpunkt *"Partitionstabelle erstellen"* verbergen sich eigentlich zwei Optionen
-  
+
   1. Eine neue (leere) Partitionstabelle des **gleichen** Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
-  
+
   2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
     Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md).
-  
+
   ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
 
   Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.
-    
+
   ![GParted Datenrettung](./images/gparted/gparted04-de.png)
-    
+
 + **Partition**
 
   Der Menüpunkt "Partition" ist von größter Wichtigkeit. Für die unten ausgewählte Partition zeigt das Menü alle zur Verfügung stehenden Operationen abhängig davon an, ob die Partition eingehangen oder nicht eingehangen ist.  Beachten sollte man, dass einige der Unterpunkte auch kritische bzw. gefährliche Aktionen durchführen können.
-  
+
   ![GParted Datenrettung](./images/gparted/gparted07-de.png)
-   
+
 + **Eine neue Partition erstellen**
 
   In der Toolbar erlaubt der Knopf Neu das Erstellen einer neuen Partition, wenn zuvor ein unzugeordneter Bereich gewählt wurde. Ein neues Fenster erlaubt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
-    
+
   ![GParted Neue Partition](./images/gparted/gparted05-de.png)
 
 + **Größe ändern/verschieben**
 
   Die Partition kann mit der Maus verkleinert, vergrößert und verschoben werden. Alternativ trägt man die neuen Werte in die dafür vorgesehenen Felder ein.
-    
+
   ![GParted Größenänderung](./images/gparted/gparted08-de.png)
 
 + **Falls ein Fehler gemacht wurde**
 
   Im Menü "Bearbeiten" besteht die Möglichkeit *"Letzte Operation rückgängig machen"* oder *"Alle Operationen löschen"*. Der Bereich ist grün markiert.
-    
+
   ![GParted rückgängig machen](./images/gparted/gparted06-de.png)
 
 + **Anwenden**
@@ -133,9 +131,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
   ![GParted Ausführen und speichern](./images/gparted/gparted09-de.png)
 
   Die Dauer der Operation hängt von der Größe der gewählten Partition ab.
-  
----
-  
+
 ### fstab anpassen
 
 <warning>
@@ -178,8 +174,6 @@ Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, na
 
 <warning>Wenn die UUID's für die Partitionen von **/** (root), **/home** und **swap** nicht mit den Einträgen in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.</warning>
 
----
-
 ### NTFS-Partitionsgrößen mit GParted ändern
 
 **Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.**
@@ -188,7 +182,5 @@ Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, na
 * Diesen AUTOCHECK bitte zu Ende laufen lassen: Windows muss das Filesystem nach einer Größenänderung überprüfen.
 * Nach der Überprüfung wird der Rechner automatisch das zweite Mal neu gestartet. Dies gewährleistet, dass das System problemlos laufen kann.
 * Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-12-01</div>

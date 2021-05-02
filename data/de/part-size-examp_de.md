@@ -23,7 +23,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE INFOBEREICH FÜR DIE AUTOREN
 
-## Hinweise
+## Partitionierung von Installationsmedien
 
 Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden.
 
@@ -38,9 +38,7 @@ Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiel
 
 Die Anschaffung einer externen USB-Festplatte zur regelmäßigen Datensicherung ist ebenso eine Überlegung wert.
 
----
-
-## Mindestanforderungen
+### Mindestanforderungen
 
 Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installation betragen:
 
@@ -54,19 +52,17 @@ Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installati
 | siduction Cinnamon | 15GB |
 | siduction KDE Plasma | 15GB |
 
----
-
-## Beispiele für Partitionierungen mit verschiedenen Plattengrößen:
+### Beispiele mit verschiedenen Plattengrößen
 
 Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden.
 
-Als Partitionstabelle sollte der Typ "*GPT*" gewählt werden. So kann man die Vorteile gegenüber "*MBR*" nutzen. Nur bei alter Hardware ist "*MBR*" noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk, warum GPT](part-gdisk_de.htm#warum-gdisk-gpt-fdisk-verwenden).
+Als Partitionstabelle sollte der Typ "*GPT*" gewählt werden. So kann man die Vorteile gegenüber "*MBR*" nutzen. Nur bei alter Hardware ist "*MBR*" noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk, warum GPT](part-gdisk_de.md#warum-gdisk-gpt-fdisk-verwenden).
 
 Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.
 
-### Dual-Boot mit MS Windows und Linux
+**Dual-Boot mit MS Windows und Linux**
 
-#### 1 TB Festplatte:
+**1 TB Festplatte:**
 
 | Partition | Size | Filesystem | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -79,7 +75,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 | 7 | 416 GB | ext4 | Daten für Linux |
 | 8 | 4 GB | Linux Swap | Linux Swap |
 
-#### 120 GB Festplatte:
+**120 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -90,7 +86,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 | 5 | 30 GB | ext4 | / (Linux root) |
 | 6 | 2 GB | Linux Swap | Linux Swap |
 
-#### 80 GB Festplatte:
+**80 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -102,9 +98,9 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 | 6 | 2 GB | Linux Swap | Linux Swap |
 
 
-### Linux allein
+**Linux allein**
 
-#### 500 GB Festplatte:
+**500 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -115,7 +111,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 | 5 | 216 GB | ext4 | Daten_2 |
 | 6 | 4 GB | Linux Swap | Linux Swap |
 
-#### 160 GB Festplatte:
+**160 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -125,7 +121,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 | 3 | 130 GB | ext4 | Daten |
 | 4 | 4 GB | Linux Swap | Linux Swap |
 
-#### 60 GB Festplatte:
+**60 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -135,9 +131,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 | 4 | 33 GB | ext4 | Daten |
 | 5 | 2 GB | Linux Swap | Linux Swap |
 
----
-
-## Partitionierungsprogramme
+### Partitionierungsprogramme
 
 + **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
   *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md) liefert weitere Informationen zum Programm.
@@ -168,9 +162,7 @@ Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst:
 # swapoff -a
 ~~~
 
----
-
-## Weiterführende Infos
+### Weiterführende Infos
 
 [Hier die umfassende englischsprachige Dokumentation von GParted](https://gparted.org/index.php)
 
@@ -181,7 +173,5 @@ Für weitere Partitionierungsoptionen siehe:
 + Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](part-gdisk_de.md)
 
 + [Installation auf eine verschlüsselte root-Partition](hd-install-crypt_de.md#install-crypt)
-
----
 
 <div id="rev">Zuletzt bearbeitet: 2020-03-04</div>
