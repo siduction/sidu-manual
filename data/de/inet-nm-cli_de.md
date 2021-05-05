@@ -1,8 +1,10 @@
 % Network Manager im Terminal
 
-# nmcli
+# Netzwerk
 
-## Allgemeine Hinweise
+## nmcli
+
+**Allgemeine Hinweise**
 
 Der Networkmanager ist mittlerweile ein sehr brauchbarer Ersatz für das Netzwerkkommando  *ifup, ifdown*  bzw.  *ifconfig*  in der Debianwelt geworden. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Es existiert ein leistungsfähiger Kommandozeilenclient  **nmcli**  für den täglichen Gebrauch des Networkmanagers.
 
@@ -17,48 +19,46 @@ apt install network-manager modemmanager mobile-broadband-provider-info network-
  plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn
 ~~~
 
----
-
-## Network Manager 'nmcli' verwenden
+### Network Manager verwenden
 
 Die Eingaben können sowohl in einem virtuellen Terminal (Tastenkombination `Str` + `Umschalt` + `F2`) als auch in der graphischen Oberfläche in einer Konsole getätigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgründen abgeändert.
 
-### Konfigurierte Verbindungen anzeigen
+**Konfigurierte Verbindungen anzeigen**
 
-Mit dem Kommando  **nmcli c**  können die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.
+Mit dem Kommando  **`nmcli c`**  können die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.
 
 ![nmcli c](./images/nmcli/nmcli-c.png)
 
 Im obigen Beispiel sind vier Verbindungen vorhanden WLAN, 2x LAN und eine Mobile Breitbandverbindung.
 
-### Informationen zu WIFI Netzen anzeigen
+**Informationen zu WIFI Netzen anzeigen**
 
-Welche WLAN-Netze sind überhaupt am Standort verfügbar, das kann man sich in kompakter Form mit  **nmcli dev wifi list**  anzeigen lassen.
+Welche WLAN-Netze sind überhaupt am Standort verfügbar, das kann man sich in kompakter Form mit  **`nmcli dev wifi list`**  anzeigen lassen.
 
 ![nmcli dev wifi list](./images/nmcli/nmcli-list.png)
 
 
-### Konfigurierte Geräte anzeigen
+**Konfigurierte Geräte anzeigen**
 
-Will man wissen welche Geräte (Interfaces) überhaupt dem Networkmanager bekannt sind ist  **nmcli d**  hilfreich.
+Will man wissen welche Geräte (Interfaces) überhaupt dem Networkmanager bekannt sind ist  **`nmcli d`**  hilfreich.
 
 ![nmcli d](./images/nmcli/nmcli-d.png)
 
-Sehr detaillierte Informationen (Eigenschaften) gibt es mit  **nmcli dev show**  zu den eigenen verfügbaren Verbindungen. Hier nur der Auszug für das WLAN.
+Sehr detaillierte Informationen (Eigenschaften) gibt es mit  **`nmcli dev show`**  zu den eigenen verfügbaren Verbindungen. Hier nur der Auszug für das WLAN.
 
 ![nmcli dev show](./images/nmcli/nmcli-dev-show.png)
 
-Die Zugangsdaten zum WLAN kann man sich mit **nmcli dev wifi show** anzeigen lassen.
+Die Zugangsdaten zum WLAN kann man sich mit **`nmcli dev wifi show`** anzeigen lassen.
 
 ![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show-de.png)
 
 Der zusätzlich generierte QR-Code vereinfacht den Login für Smartphone und Tablet.
 
-### Verbindungen wechseln
+**Verbindungen wechseln**
 
 Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein  *nmcli con down id <Name>*  zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.
 
-Um die automatische Verbindung zu verhindern hilft der Befehl **nmcli dev disconnect <Schnittstellenname>**.  
+Um die automatische Verbindung zu verhindern hilft der Befehl **`nmcli dev disconnect <Schnittstellenname>`**.  
 Zuerst beenden wir die LAN-Verbindung und fragen danach den Status ab.
 
 ~~~
@@ -72,7 +72,7 @@ evp3u3           ethernet  nicht verfügbar  --
 ttyACM0          gsm       nicht verbunden  --
 ~~~
 
-Jetzt die WLAN Verbindung aktivieren mit **nmcli con up id <Verbindungsname>**:
+Jetzt die WLAN Verbindung aktivieren mit **`nmcli con up id <Verbindungsname>`**:
 
 ~~~
 # nmcli con up id Einhorn_2
@@ -100,17 +100,14 @@ Umgekehrt von WLAN zu LAN:
 nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebundene Verbindung 1'
 ~~~
 
----
-
-## Weiterführende Informationen
+### Weiterführende Informationen
 
 +       
-    ~~~
-    man nmcli
-    ~~~
+  ~~~
+  man nmcli
+  ~~~
 
 + [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
 
----
 
 <div id="rev">Zuletzt bearbeitet: 2021-04-19</div>

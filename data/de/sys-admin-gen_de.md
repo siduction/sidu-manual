@@ -117,7 +117,7 @@ Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bl
 die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und der Service ist nicht mehr verfügbar und wird auch nicht automatisch gestartet.
 
 
-### systemd.target - Ziel-Unit (Runlevel)
+### systemd-target ehemals Runlevel
 
 Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.  
 Die alten sysvinit-Befehle werden weiterhin unterstützt. (hierzu ein Zitat aus *man systemd*: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")  

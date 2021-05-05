@@ -1,25 +1,6 @@
 % Bootoptionen (Cheatcodes)
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-04:
-
-+ Geringe Anpassung an systemd in "Allgemeine Parameter des Linux-Kernels", da die alte Terminologie wohl noch länger erhalten bleibt.
-+ Korrektur und Prüfung aller Links
-+ Integration von "cheatcodes-vga"
-+ sieht gut aus!
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-# Bootoptionen (Cheatcodes)
-
-## Bootoptionen (Cheatcodes)
+## Bootoptionen Cheatcodes
 
 **Info**
 
@@ -34,10 +15,12 @@ Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese 
 
 [Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
-### siduction spezifische Parameter (nur Live-DVD)
+### siduction spezifische Parameter
+
+Diese Bootoptionen gelten nur für die Live-DVD.
 
 | Bootoption | Wert | Beschreibung | 
-| ---- | ---- | ---- |
+| ---- | ----- | ------- |
 |  blacklist  | Name des Moduls | temporäre Deaktivierung von Modulen, bevor udev aktiv wird | 
 |  desktop  | kde, gnome, fluxbox | Desktopumgebung auswählen | 
 |  fromiso  |  | [bitte lies "Booten 'fromiso'"](hd-install-opts_de.md#fromiso)  | 
@@ -53,7 +36,7 @@ Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese 
 |  nomodeset  | radeon.modeset=0 | ermöglicht zusammen mit **xmodule=vesa** ein sauberes Booten nach X bei Radeonkarten im Live-Mode | 
 |  nonetwork  |  | verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten | 
 |  noswap  |  | Keine Aktivierung der Swap-Partition | 
-|  persist  |  | [bitte lies "fromiso und persist"](hd-install-opts_de.md#fromiso-persist)  | 
+|  persist  |  | [bitte lies "fromiso und persist"](hd-install-opts_de.md#fromiso)  | 
 |  smouse  |  | sucht mittels hwinfo nach seriellen Mauseingabegeräten | 
 |  tz  | tz=Europe/Dublin | setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird **utc=yes** angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy & paste: **file:///usr/share/zoneinfo/** in den Browser eingegeben wird . | 
 |  toram  |  | kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie | 
@@ -63,7 +46,7 @@ Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese 
 Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet werden, wenn man Bootoptionen für den Grafikserver X für die Grafikkarten Radeon, Intel oder MGA einsetzt.
 
 | Bootoption | Wert | Beschreibung | 
-| ---- | ---- | ---- |
+| --- | ----- | -------- |
 |  dpi  | auto  *oder*  DPI-Zahl | setzt die gewünschten Pixel pro Zoll für den Monitor. Die DPI für den Monitor erhält man, wenn man die Pixelanzahl der Monitorbreite durch den Zollwert der Diagonale dividiert und mit folgenden Werten multipliziert: 1,25 für einen 4:3-Bildschirm, 1,18 für einen 16:10-Bildschirm oder 1,147 für einen 16:9-Bildschirm. Für einen 24"-Bildschirm mit der Auflösung 1920x1080 ergibt das mittels 1,147x1920/24 dpi=92 oder für einen 15"-Bildschirm mit der Auflösung 1600x1200 ergibt das mittels 1.25x1600/15 dpi=133. | 
 |  hsync  | 80 | setzt die horizontale Frequenz des Monitors (in Kilohertz) | 
 |  noml  |  | verhindert, dass die X.org-Konfiguration eine Liste von Modelines enthält, und bewirkt dadurch, dass der korrekte Mode automatisch erkannt wird | 
@@ -85,9 +68,9 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 ### Allgemeine Parameter des Linux-Kernels
 
 | Bootoption | Wert | Beschreibung | 
-| ---- | ---- | ---- |
+| --- | ----- | -------- |
 |  apm  | off | schaltet Advanced Power Managment aus | 
-|  1, 3, 5  |  (z.B.) 3  |  Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite [Runlevel - Ziel-Unit](sys-admin-gen_de.md#ziel-unit)  | 
+|  1, 3, 5  |  (z.B.) 3  |  Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite [Runlevel - Ziel-Unit](sys-admin-gen_de.md#systemd-target-ehemals-runlevel)  | 
 |  irqpoll  |  | benutzt IRQ-Polling | 
 |  mem  | (z.b) 128M, 1G | benutzt die angegebene Speichergröße | 
 |  noagp  |  |  keine AGP-Unterstützung (Accelerated Graphics Port) | 
@@ -98,7 +81,7 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 |  nosmp  |  | verwendet keinen Symmetric Multi-Prozessor (mehrere CPUs oder CPUs mit Hyper-Threading) | 
 |  pci  | noacpi | kein ACPI für PCI-Geräte | 
 |  quiet  |  | es erfolgt keine Ausgabe am Bildschirm | 
-|  vga  | normal | mehr zu vga-Codes hier: [VGA-Bootoptionen](cheatcodes_de.md#vga)  | 
+|  vga  | normal | mehr zu vga-Codes im nächsten Absatz | 
 |  video  | (z.B.) DVI-0:800x600 | Für Grafikkarten mit aktiviertem KMS. Dies gilt für Intel- und ATI-Grafikkarten (Letztere mit Radeon-Treiber), wobei DVI-X/LVDS-X die Video-Ausgabe ist, die von xrandr gezeigt wird. | 
 
 ### VGA-Codes
@@ -108,7 +91,7 @@ Ein Anwendungsbeispiel ist **vga=791** (VESA-Code, Auflösung 1024x768 bei 64000
 
 Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingabe von vga=0 in die Grubzeile gelöst werden.
 
-#### Dezimal
+**Dezimal**
 
 |  Farben  |  640x480  |  800x600  |  1024x768  |  1280x1024  | 
 | :----: | :----: | :----: | :----: | :----: |
@@ -117,7 +100,7 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  64k  | 273 | 276 | 279 | 282 | 
 |  16M  | 274 | 277 | 280 | 
 
-#### Hexadezimal
+**Hexadezimal**
 
 |  Farben  |  640x480  |  800x600  |  1024x768  |  1280x1024  | 
 | :----: | :----: | :----: | :----: | :----: |
@@ -126,7 +109,7 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  64k  | 0x111 | 0x114 | 0x117 | 0x11A | 
 |  16M  | 0x112 | 0x115 | 0x118 | 
 
-#### VESA
+**VESA**
 
 |  Farben  |  640x480  |  800x600  |  1024x768  |  1280x1024  |  1600x1200  | 
 | :----: | :----: | :----: | :----: | :----: | :----: 
@@ -135,4 +118,4 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  64k  | 785 | 788 | 791 | 794 | 798 | 
 |  16M  | 786 | 789 | 792 | 795 | 
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-04</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>

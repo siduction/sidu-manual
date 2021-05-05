@@ -2,31 +2,9 @@
 
 # Siduction Handbuch
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+## Willkommen
 
-**DIESE SEITE MUSS IMMER DIE ERSTE SEITE SEIN**
-pandoc -i seite1.md seite2.md ... usw -o manual.pdf
-
-Änderungen 2021-02
-
-+ Inhalte aktualisiert.
-+ Link geprüft und korrigiert.
-
-Änderung 2021-04-13
-+ für pandoc md nach pdf optimiert, die oberen % bezeichnen den Titel, den Author und das Datum (% \title, % \author, %\date)
-+ fixed Kapitel Hierarchie ( wichtig, Seite immer mit '# KAPITEL' starten alle anderen Kapitel  als unter Kapitel ## bzw ### Kategorie. So wird der Themen Begin auf einer neuen Seite gewährleistet
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
----
-
-# siduction Manual 
-
-## Willkommen zum Handbuch
-
-**des siduction™ GNU/Linux-Betriebssystems**
+**Das siduction™ GNU/Linux-Betriebssystems**
 
 Der Name **siduction** ist ein Wortspiel aus zwei Begriffen. Dem Wort **sid**, dem Codenamen von Debian Unstable und **seduction**, im Sinne von verführen.
 
@@ -35,7 +13,7 @@ Siehe auch [DFSG](https://de.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
 
 ### Allgemeines
 
-Für Schnellentschlossene geht es hier weiter zur [Kurzanleitung](./wel-quickstart_de.md)
+Für Schnellentschlossene geht es hier weiter zur [Kurzanleitung](./wel-quickstart_de.md#siduction-kurzanleitung)
 
 Das Handbuch des siduction Betriebssystems ist eine Referenz zum Kennenlernen des Systems wie auch zum Auffrischen der Kenntnisse über das System. Es vermittelt nicht nur Grundlagenwissen, sondern umfasst auch komplexe Themenkreise und unterstützt die Arbeit als Administrator von siduction-Systemen.
 
@@ -49,7 +27,7 @@ Um Hilfe für ein spezifisches vorinstalliertes oder selbst installiertes Anwend
 
 Fast alle Anwendungsprogramme bieten Hilfestellung mittels einer zugehörigen "*Manual-Page*" (kurz Manpage). Sie wird im Terminal durch den Befehl **`man <Paketname>`** aufgerufen. Auch kann nachgesehen werden, ob sich eine Dokumentation in */usr/share/doc/\<paketname\>* befindet.
 
-### Copyright, Rechts- und Lizenzhinweise
+### Copyright Rechts- und Lizenzhinweise
 
 Alle Rechte © 2006-2021 des siduction-manual sind lizenziert unter der [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt). Eine informelle Übersetzung dieser Lizenz ins Deutsche befindet sich [hier](https://www.selflinux.org/selflinux/html/gfdl_de.html).  
 Dies gestattet das Dokument nach den Bestimmungen der GNU Free Document License Version 1.3 oder neuer (wie veröffentlicht bei der Free Software Foundation) zu kopieren, verbreiten und/oder zu ändern; ohne unveränderliche Sektionen und ohne Umschlagstexte (Vorderseitentexte, Rückseitentexte).

@@ -1,20 +1,6 @@
 % Installation auf USB-Stick / Speicherkarte
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Inhalt aktualisiert
-+ Korrektur und Prüfung aller Links
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
+# Installation
 
 ## Installation auf USB-Stick / Speicherkarte
 
@@ -22,7 +8,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 Dabei wird das siduction-ISO auf das Gerät geschrieben. Auch wenn die Option persist nicht möglich ist, kann man "siduction auf einem Stick" haben.
 
-Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siduction-System die empfohlene Methode, da man dadurch keinerlei Einschränkungen ausgesetzt ist. Siehe auch: [USB/SSD fromiso Installation - siduction-on-a-stick](hd-install-opts-de.md#usb-from1) .
+Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siduction-System die empfohlene Methode, da man dadurch keinerlei Einschränkungen ausgesetzt ist. Siehe auch: [USB/SSD fromiso Installation - siduction-on-a-stick](hd-install-opts-de.md#fromiso) .
 
 ### Voraussetzungen
 
@@ -106,4 +92,4 @@ Angenommen die gespeicherte ISO "siduction-18.3.0-patience-kde-amd64-20180513212
 dd if=/Users/username/Downloads/siduction-18.3.0-patience-kde.iso of=/dev/disk1
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>

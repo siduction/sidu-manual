@@ -1,18 +1,8 @@
 % siduction Release Notes
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02:
-
-+ Übersetzung aus [siduction News](https://news.siduction.org/)
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Release Notes 
 
-###  siduction 2021.1.1 »C-Blues« Point Release
+###  siduction 2021.1.1 C-Blues Point Release
 
 Um den Fehler zu umgehen, dass der Calamares-Installer im EFI-Mode keine GPT Partitionen erstellen kann, haben wir siduction 2021.1.1 veröffentlicht.  
 Für die fachlich interessierten Nutzer unter uns möchte ich den Hintergrund [dieses Bug](https://github.com/calamares/calamares/issues/1637) etwas erläutern. Die neue Version 4.2 der [dosfstools](https://github.com/dosfstools/dosfstools) verhindert, dass das von Calamares genutzte und im Kern des KDE-Partition-Managers agierende [kpmcore](https://github.com/KDE/kpmcore), GPT Partitionen erstellt. 
@@ -21,16 +11,16 @@ Für die fachlich interessierten Nutzer unter uns möchte ich den Hintergrund [d
 
 Leere Labels sind in Dosfstools nicht mehr erlaubt, gleichzeitig wurde die Art, Labels zurückzusetzen geändert. In dem Spezialfall, eine fat32 EFI System Partition zu erstellen, ist noch kein Label vorhanden das zurückgesetzt werden kann, weil die Partition zu diesem Zeitpunkt noch nicht existiert. Aus diesem Grund scheitert die Installation. Wird Calamares eine bereits zuvor erstellte Partition zugewiesen, funktioniert alles wie erwartet.
 
-#### Die Abhilfe: Downgrade
+#### Die Abhilfe Downgrade
 
 Bis zur Bereitstellung einer fehlerbereinigten Version von dosfstools in den Repositorien wird wohl noch einige Zeit vergehen, deshalb haben wir uns dazu entschlossen, dosfstools auf die Version 4.1.2 zu downgraden. Das Paket trägt jetzt die Bezeichnung *dosfstools 4.2-1.1~really4.1-2* .  
 Das Release wird nur bei einer Neuinstallation mit Calamares benötigt. Deshalb erhielt noX auch kein Update, denn es hat nur den CLI-Installer und kein Calamares. Benutzer, die siduction bereits installiert haben, betrifft dieses Release nicht.
 
-###  siduction 2021.1.0 »C-Blues«
+###  siduction 2021.1.0 C-Blues
 
 Das siduction Team ist stolz darauf, euch siduction 2021.1.0 zu präsentieren. Nach einer langen Pause von fast 3 Jahren freuen wir uns mit einem offiziellen Release wieder zurück zu sein. Wir nennen es »C-Blues«, und man kann leicht erraten wofür das »C« in dieser turbulenten Zeit steht. 
 
-#### Was gibt´s Neues?
+#### Was gibts Neues
 
 Wir bieten mit siduction 2021.1.0 die Desktop-Varianten  
 KDE Plasma 5.20.5,  
@@ -94,7 +84,7 @@ Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
 Jetzt ist man in der Lage im Terminal mit dem Befehl **`iwctl`** eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **`nmtui`** oder **`nmcli`** im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
 
-### Warum gab es seit 2018 kein Release?
+### Warum gab es seit 2018 kein Release
 
 Als die Pandemie uns erreichte, waren wir in der frühen Entwicklungsphase für ein neues Release. Die Änderungen an der Infrastruktur waren größten Teils erledigt. Kurz danach, im April 2020, verschwand Alf (agaida), unser Hauptentwickler, von der Erdoberfläche und wurde seither nicht gesehen. Wir haben keine Ahnung was passiert sein könnte, denn alle Anfragen und Kontaktversuche zu ihm blieben unbeantwortet. Hallo Alf, wenn du dies liest, komm vorbei und sag was. Wir vermissen dich.
 
@@ -142,7 +132,7 @@ Zur Zeit bietet der Installer keine Möglichkeit Pakete, die nicht mit den Anfor
 
 ### Installationshinweise und bekannte Probleme
 
-+ Möchte man eine bereits existierende /home- (oder andere Daten-) Partition weiter nutzen, sollte man dies nach der Installation und nicht mit dem Calamares Installer tun. Hinweise hierzu bitte in der Handbuchseite [Das Verzeichnis /home verschieben](https://manual.siduction.org/home-move_de.md)nachlesen.
++ Möchte man eine bereits existierende /home- (oder andere Daten-) Partition weiter nutzen, sollte man dies nach der Installation und nicht mit dem Calamares Installer tun. Hinweise hierzu bitte in der Handbuchseite [Das Verzeichnis /home verschieben](home-move_de.md#das-verzeichnis-home-verschieben) nachlesen.
 + Verschlüsselungs-Setup mit LUKS oder ähnlichem unterstützt Calamares zur Zeit nicht. Das Verschlüsselungs-Setup sollte besser im Voraus erstellt und der **`cli-installer`** im Terminal benutzt werden.
 + Mit einigen Intel GPUs bei einigen Geräten kann das System kurz nach dem Boot einfrieren. Um dieses Verhalten zu umgehen, ist es nötig, im Bootmenü an die Kernelzeile den Parameter **`intel_iommu=igfx_off`** anzuhängen.
 
@@ -156,13 +146,13 @@ Torsten Wohlfarth (towo)
 Hendrik Lehmbruch (hendrikL)  
 Ferdinand Thommes (devil)
 
-#### Code, Ideen and Unterstützung
+#### Code Ideen und Unterstützung
 
 der_bud  
 Markus Meyer (coruja)  
 Axel Konrad (akli) für seine Arbeit bei der Erneuerung des Handbuches
 
-#### Danke!
+#### Danke
 
 Wir möchten allen, die zu siduction beigetragen haben und weiter beitragen, danken. Es ist eure Leistung und euer Verdienst. Natürlich gilt unser Dank ebenfalls der großartigen Debian Gemeinschaft, der Basis von siduction.
 
@@ -172,4 +162,4 @@ Im Namen des siduction Team:
 
 **Ferdinand Thommes**
 
-<div id="rev">Zuletzt bearbeitet: 2021-02-25</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>

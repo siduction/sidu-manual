@@ -1,46 +1,6 @@
 % Inhalt der Live-ISO
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Entfernen nicht mehr unterstützter Varianten
-+ Korrektur und Aktualisierung aller Links
-+ Korrektur der Image-Größen, Typos beseitigt
-
-Änderungen 2020-06:
-
-+ Speicheranforderungen aktualisiert
-+ Disclaimer als Überschrift
-+ Anker hinzugefügt
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert (auch Anker entfernt).
-+ Inhalt teilweise überarbeitet.
-
-Änderung 2021-03-01:
-
-+ Hinweis zum gnome-iso entfernt
-+ kurzer Hinweis auf iwd in xorg und nox eingefügt
-+ lxde hinzugefügt
-
-Frage 2021-02-03
-
-+ In diesem Dokument gibt es Links zu Netzwerkkonfigurationen die im Grunde nicht mehr gebraucht werden
- (WIFI konsultiert man am besten die [WIFI-Roaming-Dokumentation](./inet-wpagui_de.md)).
-  Wir haben IWD und Network-Manger und auch conman, was braucht es da noch wpagui?
-  Ich glaube wir müssen den ganzen Netzwerkabschnitt im Handbuch überdenken!
-  
-Änderungen 2021-04-12:
-
-+ Link und Hinweis zu wpa-gui entfernt, Links zu NetworkManager und IWD hinzugefügt.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
-# ISO's
+# ISO s
 
 ## Inhalt der Live-ISO
 
@@ -131,17 +91,17 @@ Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter 
 
 Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung.
 
-Xorg und nox werden mit [IWD](./inet-iwd_de.md) als ausgeliefert, dieser kann via [nmtui/nmcli](./inet-nm-cli_de.md) oder [iwctl](./inet-iwd_de.md) konfiguriert werden. 
+Xorg und nox werden mit [IWD](./inet-iwd_de.md#iwd) als ausgeliefert, dieser kann via [nmtui/nmcli](./inet-nm-cli_de.md#nmcli) oder [iwctl](./inet-iwd_de.md#wifi-verbindung-mit-iwctl) konfiguriert werden. 
 
-Informationen zu nicht freien Treibern findet man [hier](./nf-firm_de.md)
+Informationen zu nicht freien Treibern findet man [hier](./nf-firm_de.md#nicht-freie-quellen-für-apt-freischalten)
 
-Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md), [gdisk und cgdisk](./part-gdisk_de.md) und [GParted](https://gparted.sourceforge.io/) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
+Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md#partitionieren-mit-fdisk), [gdisk und cgdisk](./part-gdisk_de.md#partitionieren-mit-gdisk) und [GParted](./part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
 
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
 Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzele Veroffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver.
 
-### Haftungsausschluss (Disclaimer)
+### Haftungsausschluss_Disclaimer
 
 siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siduction-Projekt, seine Entwickler und Team-Mitglieder können unter keinen Umständen wegen Beschädigung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Schäden des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder verwenden noch verteilen.
 

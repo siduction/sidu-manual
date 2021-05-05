@@ -1,24 +1,4 @@
-% Credit
-
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02
-
-+ Inhalte aktualisiert.
-+ Für die Verwendung mit pandoc optimiert.
-
-Änderung 26-02-2021
-+ Inhalt aktualisiert
-
-Änderung 2021-03-01
-
-+ Inhalt aktualisiert
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
-# Credit
+% Das siduction-Team
 
 ## Das siduction-Team
 
@@ -29,7 +9,7 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 ### Credit für siduction 2021.1.0
 
-#### Core Team:
+#### Core Team
 
 + Alf Gaida (agaida)
 
@@ -41,13 +21,13 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 + Torsten Wohlfarth (towo)
 
-#### Art Team:
+#### Art Team
 
 + hendrikL
 
 We **need** contributors for siduction release art!
 
-#### Code, Ideen, Unterstützung, Handbuch:
+#### Code Ideen Unterstützung Handbuch
 
 + der_bud
 
@@ -57,7 +37,7 @@ We **need** contributors for siduction release art!
 
 + Vinzenz Vietzke (vinzv)
 
-#### Credit für das original manual Team.
+#### Credit für das original manual Team
 
 + Trevor Walkley (bluewater)
 
@@ -99,4 +79,4 @@ We **need** contributors for siduction release art!
 
 **Wir möchten allen, die zu siduction beigetragen haben und weiter beitragen genauso danken, wie den ursprünglichen Erstellern und Übersetzern des bluewater-manual**
 
-<div id="rev">Zuletzt bearbeitet: 2021-04-27</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>

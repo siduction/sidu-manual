@@ -30,8 +30,8 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
 
 + Zuerst immer ein Daten-Backup anlegen!  
   Zum Beispiel mit  
-  *rdiff-backup* siehe [Systemsicherung mit rdiff-backup](sys-admin-rdiff_de.md) oder  
-  *rsync* siehe [Backup mit rsync](sys-admin-rsync_de.md).
+  *rdiff-backup* siehe [Systemsicherung mit rdiff-backup](sys-admin-rdiff_de.md#systemsicherung-mit-rdiff-backup) oder  
+  *rsync* siehe [Backup mit rsync](sys-admin-rsync_de.md#backup-mit-rsync).
 
 + Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](part-uuid-de.htm#uuid) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
 
@@ -92,7 +92,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
   1. Eine neue (leere) Partitionstabelle des **gleichen** Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
 
   2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
-    Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md).
+    Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
 
   ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
 
@@ -138,7 +138,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
 </warning>
 
-Siehe dazu die Handbuchseite [Anpassung der fstab](part-uuid_de.md).  
+Siehe dazu die Handbuchseite [Anpassung der fstab](part-uuid_de.md#die-fstab).  
 In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUID's.
 
 ~~~

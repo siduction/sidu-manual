@@ -1,26 +1,5 @@
 % Die siduction Hilfe
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-04:
-
-+ Inhalt aktualisiert
-+ Korrektur und Prüfung aller Links
-
-Änderungen 2020-12:
-
-+ Layout- und Rechtschreibfehler korrigiert
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-Änderungen 2021-02-03
-
-+ Link für web-irc geändert
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## siduction Hilfe
 
 Schnelle Hilfe kann einem viele Tränen ersparen und bietet die Möglichkeit, das weiter zu machen, was wirklich wichtig ist im Leben. Dieses Thema ist nach Bereichen gegliedert, wo die Distribution siduction Hilfe anbietet:
@@ -40,13 +19,13 @@ Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki
 **Der IRC soll nie als "root" betreten werden, sondern nur als normaler Nutzer.**  
 Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe gegeben werden kann.
 
-#### Verhaltensregeln im IRC
+**Verhaltensregeln im IRC**
 
 * Ein freundlicher Umgangston ist obligatorisch, denn wir leisten den Support alle ehrenamtlich.
 * Hilfreich ist es, eine nach bestem Wissen genaue Anfrage zu stellen und nach Möglichkeit zuvor im siduction-Wiki nach Lösungen zu suchen.
 * Bitte niemals gleichzeitig im IRC und Forum eine Anfrage stellen. Bestenfalls reiben wir uns verwundert die Augen.
 
-#### siduction erreichen
+**siduction erreichen**
 
 + Klicke einfach auf das **"IRC Chat #siduction"-Symbol**  auf dem Desktop oder verwende den kmenu-Eintrag von koversation.  
 Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingeben:
@@ -71,7 +50,7 @@ oder
 $ command | siduction-paste
 ~~~
 
-**Beispiel für siduction-paste &lt;file&gt;**
+**Beispiel für siduction-paste \<file\>;**
 
 ~~~
 $ siduction-paste /etc/fstab
@@ -96,15 +75,15 @@ $ siduction-paste -s
 Jetzt bleiben einige Sekunden Zeit, um zum abzulichtenden Objekt zu navigieren. Bitte denkt daran, dass diese Funktion die Installation von  *scrot*  voraussetzt.  
 Auch hier muss danach der Link <http://siduction.paste.org/yzx.html> im IRC-Channel #siduction-de eingegeben werden.
 
-### Nützliche Helfer im Textmodus (tty) und in init 3 
+### Nützliche Helfer im Textmodus
 
 Normalerweise verwendet man den Textmodus Runlevel 3 (init 3 bzw. journalctl isolate multi-user.target), wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
 
-#### gpm
+**gpm**
 
-Ein hilfreiches Programm im Textmodus ist **gpm** . Dieses ermöglicht, die Maus zum Kopieren und Einfügen im Terminal zu benutzen.
+ ist ein hilfreiches Programm im Textmodus. Dieses ermöglicht, die Maus zum Kopieren und Einfügen im Terminal zu benutzen.
 
-**gpm** ist in siduction vorkonfiguriert. Falls dem nicht so ist:
+*gpm* ist in siduction vorkonfiguriert. Falls dem nicht so ist:
 
 ~~~
 $ gpm -t imps2 -m /dev/input/mice
@@ -124,7 +103,7 @@ Bei Erfolg findet sich in der Ausgabe auch eine Zeile ähnlich der folgenden.
 
 Nun sollte man seine Maus im Textmodus (tty) nutzen können.
 
-#### Dateimanager und Textbearbeitung
+**Dateimanager und Textbearbeitung**
 
 Midnight Commander ist ein einfach zu bedienender Dateimanager im Text-Modus (tty) und Texteditor. Er wird mit siduction ausgeliefert.
 
@@ -150,14 +129,14 @@ Weitere Informationen auf der Manpage:
 $ man mc
 ~~~
 
-### siduction IRC-Support im Textmodus (init 3)
+### siduction IRC-Support im Textmodus
 
-#### Verhaltensregel im IRC
+**Verhaltensregel im IRC**
 
  **Der IRC soll nie als "root" betreten werden, sondern nur als normaler Nutzer.**  
  Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe gegeben werden kann.
 
-#### IRC im Textmodus
+**IRC im Textmodus**
 
 Das Programm *irssi* stellt einen IRC-Client im Textmodus oder der Konsole bereit und ist in siduction aktiviert.  
 Mit der Tastenkombination `CTRL`+`ALT`+`F2` oder `F3` usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
@@ -296,4 +275,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-12</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>

@@ -1,16 +1,19 @@
 % fromiso
 
-**STATUS**
-**RC1**
+ANFANG   INFOBEREICH FÜR DIE AUTOREN  
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
+**Status: RC1**
 
 Änderungen 2021-04
 + für Pandoc vorbereitet
 
+ENDE INFOBEREICH FÜR DIE AUTOREN
 
+# Installation
 
-# fromiso
+## fromiso
 
-## Booten "fromiso" - Überblick
+### Booten "fromiso" - Überblick
 
  **Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.**
  
@@ -18,12 +21,12 @@ Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte (ext4). Das ist 
 
 Dies ist natürlich viel schneller als von einem CD/DVD-Laufwerk, und das Laufwerk steht gleichzeitig zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.
 
-## Voraussetzungen:
+**Voraussetzungen**
 
 * eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)  
 * eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie ext4  
 
-## fromiso mit Grub2
+### fromiso mit Grub2
 
 siduction liefert eine grub2-Datei mit der Bezeichnung 60_fll-fromiso, um einen fromiso-Eintrag im grub2-Menü zu generieren. Die Konfigurationsdatei für fromiso ist `grub2-fll-fromiso` , mit dem Pfad `/etc/default/grub2-fll-fromiso` .
 
@@ -90,9 +93,9 @@ update-grub
 
 Die Grub2-Konfigurationsdatei grub.cfg wird damit aktualisiert und erkennt die im angegebenen Verzeichnis platzierten ISOs. Diese stehen beim nächsten Neustart zur Wahl.
 
-## Allgemeine Informationen zu fromiso und persist
+### Allgemeine Informationen zu fromiso und persist
 
-### Firmware
+**Firmware**
 
 Dies gilt für alle Anwendungen mit Persist, außer Installationen auf RAW-Geräte. Für RAW-Geräte siehe [Installation einer siduction-ISO auf einen USB-Stick, eine SSD-Karte, einem SHDC-Gerät unter Verwendung einer anderen Linuxdistribution, MS Windows oder Mac OS X](hd-ins-opts-oos-de.htm#raw-usb) 
 
@@ -283,4 +286,4 @@ Für traditionelle BIOS-Systeme können diese Dateien bearbeitet werden: `/boot/
 
 Siehe [Allgemeine Informationen zu fromiso und persist](hd-install-opts-de.htm#fromiso-persist) 
 
-<div id="rev">Page last revised 2021-04-12</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>

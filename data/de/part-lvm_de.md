@@ -39,107 +39,107 @@ Mit drei Grundbegriffen sollte man vertraut sein:
 
 ### Sechs Schritte, die benötigt werden
 
-<warning>**Achtung**</warning>
-<warning>Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.</warning>
+>**Achtung**
+>Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.</warning>
 
 Als Partitionierungsprogramm werden cfdisk oder gdisk benötigt, da zur Zeit GParted bzw. der KDE-Partitionsmanager (partitionmanager) das Anlegen von *Logical Volumes* nicht unterstützen. Siehe auch die Handbuchseiten:  
-[Partitionieren mit cfdisk (msdos-MBR)](part-cfdisk_de.md)  
-[Partitionieren mit gdisk (GPT-UEFI)](part-disk_de.md)
+[Partitionieren mit cfdisk (msdos-MBR)](part-cfdisk_de.md#partitionieren-mit-cfdisk)  
+[Partitionieren mit gdisk (GPT-UEFI)](part-disk_de.md#partitionieren-mit-gdisk)
 
 Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 
-### Schritt 1: Erstellung einer Partitionstabelle
+1. Erstellung einer Partitionstabelle
 
-~~~
-cfdisk /dev/sda
-n    -> erstellt eine neue Partition auf dem Laufwerk
-p    -> diese Partition wird eine primäre Partition
-1    -> die Partition erhält die Nummer 1 als Identifikation
-### size allocation  ### setzt den ersten und letzten Zylinder auf Default-Werte. Drücke ENTER, um das gesamte Laufwerk zu umspannen
-t    -> wählt den zu erstellenden Partitionstyp
-8e   -> der Hex-Code für eine Linux-LVM
-W    -> schreibt Veränderungen auf das Laufwerk.
-~~~
+   ~~~
+   cfdisk /dev/sda
+   n    -> erstellt eine neue Partition auf dem Laufwerk
+   p    -> diese Partition wird eine primäre Partition
+   1    -> die Partition erhält die Nummer 1 als Identifikation
+   ### size allocation  ### setzt den ersten und letzten Zylinder auf Default-Werte. Drücke ENTER, um das gesamte Laufwerk zu umspannen
+   t    -> wählt den zu erstellenden Partitionstyp
+   8e   -> der Hex-Code für eine Linux-LVM
+   W    -> schreibt Veränderungen auf das Laufwerk.
+   ~~~
 
-Der Befehl "W" schreibt die Partitionierungstabelle. Falls bis zu diesem Punkt ein Fehler gemacht wurde, kann das vorhandene Partitionierungs-Layout wieder hergestellt werden. Zu diesen Zweck gibt man den Befehl "q" ein, *cfdisk* beendet sich ohne Schreibvorgang, und alles bleibt wie es zuvor war.
+   Der Befehl "W" schreibt die Partitionierungstabelle. Falls bis zu diesem Punkt ein Fehler gemacht wurde, kann das vorhandene Partitionierungs-Layout wieder hergestellt werden. Zu diesen Zweck gibt man den Befehl "q" ein, *cfdisk* beendet sich ohne Schreibvorgang, und alles bleibt wie es zuvor war.
 
-Falls die Volumengruppe mehr als ein Physische Volumen (Laufwerk) umspannen soll, muss obiger Vorgang auf jedem physischen Volumen durchgeführt werden.
+   Falls die Volumengruppe mehr als ein Physische Volumen (Laufwerk) umspannen soll, muss obiger Vorgang auf jedem physischen Volumen durchgeführt werden.
 
-### Schritt 2: Erstellen eines physischen Volumens
+2. Erstellen eines physischen Volumens
 
-~~~
-pvcreate /dev/sda1
-~~~
+   ~~~
+   pvcreate /dev/sda1
+   ~~~
 
-Der Befehl erstellt auf der ersten Partition der ersten Festplatte das physische Volumen.  
-Dieser Vorgang wird nach Bedarf auf jeder Partition wiederholt.
+   Der Befehl erstellt auf der ersten Partition der ersten Festplatte das physische Volumen.  
+   Dieser Vorgang wird nach Bedarf auf jeder Partition wiederholt.
 
-### Schritt 3: Erstellen einer Volumengruppe
+3. Erstellen einer Volumengruppe
 
-Nun fügen wir die physischen Volumen einer Volumengruppe mit dem Namen *vulcan* hinzu (in unserem Beispiel drei Laufwerke):
+   Nun fügen wir die physischen Volumen einer Volumengruppe mit dem Namen *vulcan* hinzu (in unserem Beispiel drei Laufwerke):
 
-~~~
-vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1
-~~~
+   ~~~
+   vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1
+   ~~~
 
-Falls dieser Schritt korrekt durchgeführt wurde, kann das Ergebnis in der Ausgabe folgenden Befehls gesehen werden:
+   Falls dieser Schritt korrekt durchgeführt wurde, kann das Ergebnis in der Ausgabe folgenden Befehls gesehen werden:
 
-~~~
-vgscan
-~~~
+   ~~~
+   vgscan
+   ~~~
 
-vgdisplay zeigt die Größe mit:
+   vgdisplay zeigt die Größe mit:
 
-~~~
-vgdisplay vulcan
-~~~
+   ~~~
+   vgdisplay vulcan
+   ~~~
 
-### Schritt 4: Erstellung eines logischen Volumens
+4. Erstellung eines logischen Volumens
 
-An dieser Stelle muss entschieden werden, wie groß das logische Volumen zu Beginn sein soll. Ein Vorteil von LVM ist die Möglichkeit, die Größe ohne Reboot anpassen zu können.
+   An dieser Stelle muss entschieden werden, wie groß das logische Volumen zu Beginn sein soll. Ein Vorteil von LVM ist die Möglichkeit, die Größe ohne Reboot anpassen zu können.
 
-In unserem Beispiel wünschen wir uns ein 300GB großes Volumen mit dem Namen *spock* innerhalb der Volumengruppe Namens vulcan:
+   In unserem Beispiel wünschen wir uns ein 300GB großes Volumen mit dem Namen *spock* innerhalb der Volumengruppe Namens vulcan:
 
-~~~
-lvcreate -n spock --size 300g vulcan
-~~~
+   ~~~
+   lvcreate -n spock --size 300g vulcan
+   ~~~
 
-### Schritt 5: Formatieren des logischen Volumens
+5. Formatieren des logischen Volumens
 
-Bitte habe etwas Geduld, dieser Vorgang kann längere Zeit in Anspruch nehmen.
+   Bitte habe etwas Geduld, dieser Vorgang kann längere Zeit in Anspruch nehmen.
 
-~~~
-mkfs.ext4 /dev/vulcan/spock
-~~~
+   ~~~
+   mkfs.ext4 /dev/vulcan/spock
+   ~~~
 
-### Schritt 6: Einbindung des logischen Volumens
+6. Einbindung des logischen Volumens
 
-Erstellen des Mountpoints mit
+   Erstellen des Mountpoints mit
 
-~~~
-mkdir /media/spock/
-~~~
+   ~~~
+   mkdir /media/spock/
+   ~~~
 
-Um das Volumen während des Bootvorgangs einzubinden, muss fstab mit einem Texteditor angepasst werden.  
-Die Verwendung von **/dev/vulcan/spock**  ist bei einem LVM der Verwendung von UUID-Nummern vorzuziehen, da es damit einfacher ist das Dateisystem zu klonen (keine UUID-Kollisionen). Besonders mit einem LVM können Dateisysteme mit gleicher UUID-Nummer erstellt werden (Musterbeispiel: Snapshots).
+   Um das Volumen während des Bootvorgangs einzubinden, muss fstab mit einem Texteditor angepasst werden.  
+   Die Verwendung von **/dev/vulcan/spock**  ist bei einem LVM der Verwendung von UUID-Nummern vorzuziehen, da es damit einfacher ist das Dateisystem zu klonen (keine UUID-Kollisionen). Besonders mit einem LVM können Dateisysteme mit gleicher UUID-Nummer erstellt werden (Musterbeispiel: Snapshots).
 
-~~~
-mcedit /etc/fstab
-~~~
+   ~~~
+   mcedit /etc/fstab
+   ~~~
 
-und dann die folgende Zeile entsprechend unseres Beispiels einfügen.
+   und dann die folgende Zeile entsprechend unseres Beispiels einfügen.
 
-~~~
-/dev/vulcan/spock /media/spock/ ext4 auto,users,rw,exec,dev,relatime 0 2
-~~~
+   ~~~
+   /dev/vulcan/spock /media/spock/ ext4 auto,users,rw,exec,dev,relatime 0 2
+   ~~~
 
-Optional:  
-Der Besitzer des Volumens kann geändert werden, sodass andere Nutzer Lese- bzw. Schreibzugang zum Logical Volumen haben:
+   Optional:  
+   Der Besitzer des Volumens kann geändert werden, sodass andere Nutzer Lese- bzw. Schreibzugang zum Logical Volumen haben:
 
-~~~
-chown root:users /media/spock
-chmod 775 /media/spock
-~~~
+   ~~~
+   chown root:users /media/spock
+   chmod 775 /media/spock
+   ~~~
 
 Die Schritte 4 bis 6 können wir nun für das neu zu erstellende logische Volumen "kirk" wiederholen.
 
@@ -217,4 +217,4 @@ Der erneute *resize2sf*-Befehl passt das Dateisystem exakt an die Größe des lo
 
 + [Größenänderung von Linuxpartitionen - Teil 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)  (Englisch)
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>

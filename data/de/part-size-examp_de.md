@@ -134,17 +134,17 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
 ### Partitionierungsprogramme
 
 + **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
-  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md) liefert weitere Informationen zum Programm.
+  *Gparted* ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. *Gparted* unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md#partitionieren-mit-gparted) liefert weitere Informationen zum Programm.
 
 + **KDE Partition Manager** Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
   Der *KDE Partition Manager* ist das Standard-Partitionierungsprogramm für den KDE Destktop, einfach zu bedienen und genauso umfangreich wie *Gparted*.
 
 + **gdisk / cgdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *GPT - UEFI*.  
-  *gdisk* ist das klassische Textmodus-Programm. *cgdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md) liefert weitere Informationen zum Programm.
+  *gdisk* ist das klassische Textmodus-Programm. *cgdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk) liefert weitere Informationen zum Programm.
 
 + **fdisk / cfdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *msdos - MBR*.  
   Hinweis: *fdisk* sollte nur noch für alte Hardware, die *GPT - UEFI* nicht unterstützt verwendet werden.  
-  *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md) liefert weitere Informationen zum Programm.
+  *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
 
 <warning>**Achtung**</warning>
 <warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.</warning>
@@ -170,8 +170,8 @@ Für weitere Partitionierungsoptionen siehe:
 
 + Logical Volume Manager [LVM-Partitionierung](part-lvm_de.md#part-lvm)
 
-+ Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](part-gdisk_de.md)
++ Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](part-gdisk_de.md#partitionieren-mit-gdisk)
 
-+ [Installation auf eine verschlüsselte root-Partition](hd-install-crypt_de.md#install-crypt)
++ [Installation auf eine verschlüsselte root-Partition](hd-install-crypt_de.md#installation-auf-verschlüsselte-root-partition)
 
-<div id="rev">Zuletzt bearbeitet: 2020-03-04</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>

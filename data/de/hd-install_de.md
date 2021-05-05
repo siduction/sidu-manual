@@ -1,44 +1,5 @@
 % Installation vom Live-Medium
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-06:
-
-+ Inhaltsverzeichnis eingefügt
-+ teilweise neue Sortierung
-+ auf calamares aktualisiert
-+ suxterm entfernt
-+ Korrektur und Prüfung aller Links
-+ Fehlerkorrektur, Screenshot aktualisiert und in den Sprachen en, es, fr, it zugefügt. (2020-07)
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhaltsverzeichnis wieder entfernt, da pandoc automatisch eines erstellt.
-+ Inhalt geringfügig überarbeitet.
-
-Änderungen 2021-02:
-
-+ Review (nicht abgeschlossen)
-+ Empfehlung von Lucky Backup mit BackInTime ersetzt. Das letzte wirkliche Release von Lucky Backup war 2014.
-+ Empfehlung für eigene Home-Partition entfernt, dadurch werden im Abschnitt Partitionierung einige neue Screenshots erforderlich
-
-Änderungen 2021-03:
-
-+ Nach RC1 zurückgestuft.
-+ Installation mit Calamares Punt 5.: Text ohne /home
-+ Screenshot für die Sprachen de, en, es, fr und it ohne Home-Partition erneuert.
-+ Nach RC2 gestuft.
-
-Änderungen 2021-04:
- + Kapitel Hierarchi für md2pdf angepasst
- + code Tags
- + RC3
- 
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 # Installation
 
 ## Installation auf HDD
@@ -48,24 +9,24 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 **WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
 Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
 Siehe auch  
-[Backup mit rdiff](sys-admin-rdiff_de.md)  
-[Backup mit rsync](sys-admin-rsync_de.md)  
+[Backup mit rdiff](sys-admin-rdiff_de.md#systemsicherung-mit-rdiff-backup)  
+[Backup mit rsync](sys-admin-rsync_de.md#backup-mit-rsync)  
 Eine weitere Option ist BackInTime (muss installiert werden).
 
 ### Installationsvorbereitungen
 
 Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der `F2` oder `Entf`-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste `F12`, `F11` `F7` oder `F8` (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
 
-siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](cheatcodes_de.md) erläutert die möglichen Optionen.  
+siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](cheatcodes_de.md#bootoptionen-cheatcodes) erläutert die möglichen Optionen.  
 Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu "From CD/DVD/ISO: ..." oder "From Stick/HDD: ..." navigiert und die Taste `e` betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste `F10` wird der Bootvorgang fortgesetzt.
 
 **Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.**
 
-Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](hd-install-opts_de.md#usb-hd).
+Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](hd-install-opts_de.md#fromiso).
 
-#### HDD, RAM und Swap
+**HDD, RAM und Swap**
 
-Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#min-hw) beschrieben.  
+Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#minimale-systemanforderungen) beschrieben.  
 Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. 
 Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
 
@@ -78,16 +39,16 @@ Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
 + Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
 + Gemeinsame Nutzung von Daten für die installierten Systeme
 
-Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md).  
+Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md#partitionierung-von-installationsmedien).  
 Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählem auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt werden und gegebenen falls auf das **home**-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
-[Gparted](part-gparted_de.md), ein Programm für die graphische Oberfläche für GTK-Desktops  
-[KDE Partition Manager], ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
-[gdisk](part-gdisk_de.md), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
-[cfdisk](part-cfdisk_de.md), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
+[Gparted](part-gparted_de.md#partitionieren-mit-gparted), ein Programm für die graphische Oberfläche für GTK-Desktops  
+KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
+[gdisk](part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
+[cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
 
-#### Dateisysteme
+### Dateisysteme
 
 Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
 
@@ -112,7 +73,7 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 
 installiert werden.
 
-### Das siduction-Installationsprogramm (Calamares)
+### Das Installationsprogramm Calamares
 
 Während der Installation sollte, wenn möglich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen für die Lokalisation und Zeit zu ermitteln.
 
@@ -153,14 +114,14 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    ![calamares partitions finish](./images/install-hd/calamares-de_06.png "Partitionen Ergebnis")
 
 
-6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#adduser) hinzugefügt werden.
+6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#benutzer-hinzufügen) hinzugefügt werden.
 
    ![calamares users](./images/install-hd/calamares-de_07.png "Benutzer")
 
    Vor der Verwendung der beiden Optionen  
    "Automatisches Einloggen ohne Passwortabfrage" und  
    "Nutze das gleiche Passwort auch für das Administratorenkonto"  
-   wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherheitsrisiko dar (siehe auch [sudo](term-konsole_de.md#sudo)). Sind beide Optionen aktiviert ist die Eingabe von Passwörtern nur noch eine Farce!
+   wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherheitsrisiko dar (siehe auch [sudo](term-konsole_de.md#arbeit-als-root)). Sind beide Optionen aktiviert ist die Eingabe von Passwörtern nur noch eine Farce!
 
 7. Nach Betätigen der Taste *Weiter* erscheint eine Zusammenfassung aller zuvor getätigten Eingaben. Jetzt besteht noch die Möglichkeit über *Zurück* Änderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, öffnet ein Klick auf *Installieren* das kleine Warnfenster in dem wir die Installation bestätigen müssen.
 
@@ -201,4 +162,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-04</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
