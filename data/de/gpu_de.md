@@ -2,13 +2,24 @@
 
 # Hardware
 
-## Grafiktreiber nVidea, Intel, ATA/AMD
+## Grafiktreiber
 
-### Open Source Xorg-Treiber für ATI/AMD , Intel & nVidia
+**für nVidea, Intel, ATI/AMD**
 
 Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik findet hier keine Beachtung.  
 
-Das Grafiksystem unter Linux besteht aus 4 grundlegenden Teilen:
+### Open Source Xorg-Treiber
+
+Welche Grafikhardware verbaut ist erfährt man relativ einfach
+
+~~~sh
+inxi -G
+lspci | egrep -i "vga|3d|display"
+~~~
+
+Diese Information ist auch überaus wichtig, sollte man Probleme mit der Grafik haben und Hilfe im Forum oder dem IRC suchen.
+
+**Das Grafiksystem unter Linux besteht aus 4 grundlegenden Teilen:**
 
 + Kernel Treiber 
     - radeon/amdgpu (ATI/AMD Grafik)
@@ -23,26 +34,17 @@ Das Grafiksystem unter Linux besteht aus 4 grundlegenden Teilen:
     - xserver-xorg-video-intel
     - xserver-xorg-video-nouveau
     
-_Xorg kann auch den modesetting-ddx verwenden, welcher mittlerweile Bestandteil des Xservers selbst ist. Dieser wird automatisch für Intel Grafik benutzt und auch dann, wenn kein spezielles xserver-xorgvideo-foo Paket installiert ist._
+  _Xorg kann auch den modesetting-ddx verwenden, welcher mittlerweile Bestandteil des Xservers selbst ist. Dieser wird automatisch für Intel Grafik benutzt und auch dann, wenn kein spezielles xserver-xorgvideo-foo Paket installiert ist._
 
 + dri/mesa 
     - libgl1-mesa-glx
     - libgl1-mesa-dri
     - libgl1-mesa-drivers
-_Dieser Teil von Xorg ist die freie OpenGL Schnittstelle für Xorg._
+  _Dieser Teil von Xorg ist die freie OpenGL Schnittstelle für Xorg._
 
 Open Source Xorg-Treiber für nVidia (modesetting/nouveau), ATI/AMD (modesetting/radeon/amdgpu), Intel (modesetting/intel) und weitere sind mit siduction vorinstalliert.
 
 Anmerkung: xorg.conf wird für Open-Source-Treiber in der Regel nicht mehr benötigt Ausnahmen sind z.B. Mehrschirmbetrieb.
-
-Welche Grafikhardware verbaut ist erfährt man relativ einfach
-
-~~~sh
-inxi -G
-lspci | egrep -i "vga|3d|display"
-~~~
-
-Diese Information ist auch überaus wichtig, sollte man Probleme mit der Grafik haben und Hilfe im Forum oder dem IRC suchen.
 
 ### Propritäre Treiber
 
@@ -74,7 +76,9 @@ apt update && apt install firmware-linux-nonfree
 
 sinnvoll. Damit installiert man zwar mehr Firmwares, als man evtl. benötigt, das sollte aber kein Nachteil sein.
 
-### Binäre, nicht quelloffene Treiber für nVidia mit dkms & xorg.conf.d
+### nVidia closed Source Treiber
+
+**Auswahl, Installation mit dkms-Unterstützung und Integration in xorg**
 
 nVidia teilt seine Grafikkarten-Treiber in 7 Generationen auf:
 
@@ -96,7 +100,7 @@ Debian stellt folgende Versionen der binären Treiber zur Verfügung:
     - nvidia-legacy-390xx-driver (für 6.)
     - nvidia-driver (für 7.)
 
-Da es sich hier aber um propritäre Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch für die Firmware für freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist automatisch der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Außerdem sind die Pakete gcc, make und dkms notwendig. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:  
+Da es sich hier aber um propritäre Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch für die Firmware für freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Außerdem sind die Pakete gcc, make und dkms notwendig. Mit dkms werden zusätzlich installierte (nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:  
 
 **GeForce 8000 and 9000 series**
 
@@ -128,5 +132,5 @@ Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr supportet werden, 
 
 Problematisch sind Notebooks mit Hybridgrafik Intel/nVidia, sogenannte Optimus Hardware. Hier wurde früher auf [Bumblebee](https://wiki.debian.org/Bumblebee) verwiesen, diese Lösung ist aber alles Andere, als optimal. nVidia selbst empfielt hingegen diese Setups per [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/) zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es geht, zu vermeiden. Tipps zur Einrichtung für Optimus Hardware können wir hier nicht geben.
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-01</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
 
