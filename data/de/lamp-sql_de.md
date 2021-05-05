@@ -31,7 +31,7 @@ Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht 
 
 ### Erstkonfiguration
 
-Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md)beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
+Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md#lamp-webserver)beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
 
 Deshalb rufen wir das Programm **mysql_secure_installation** im root-Terminal auf.  
 Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: "«- - [ ]".
@@ -225,7 +225,7 @@ Wie zuvor gesehen, lässt sich MariaDB vollständig über die Komandozeile verwa
 
 Wir verwenden das für weniger erfahrene Benutzer besser geeignete Progrann *phpMyAdmin* und geben in die Adresszeile des Browsers  
 **http://localhost/phpmyadmin/**  
-ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](./lamp-apache_de.md)bereits durchlaufen haben, lautet der Aufruf  
+ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](./lamp-apache_de.md#lamp-webserver)bereits durchlaufen haben, lautet der Aufruf  
 **https://server1.org/phpmyadmin/**
 
 Um, wie oben angeführt, dem Datenbank-Admin *root* die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin *chef* mit seinem Passwort.

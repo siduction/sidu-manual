@@ -11,9 +11,11 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## Netzwerk
+# Netzwerk
 
-### LAMP-Webserver für Entwickler (lokal)
+## LAMP-Webserver
+
+**Ein lokaler Testserver für Entwickler**
 
 Das Akronym **LAMP** bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Websiten zu betreiben:
 
@@ -149,7 +151,7 @@ Als **ServerRoot** wird das Verzeichnis **/etc/apache2/** bezeichnet. Es enthäl
 Als **DocumentRoot** wird das Verzeichnis **/var/www/html/** bezeichnet. Es enthält die Dateien der Webseite.
 
 Für weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite  
-[LAMP-Apache](./lamp-apache_de.md)lesen.
+[LAMP-Apache](./lamp-apache_de.md#apache-einrichten)lesen.
 
 ### MariaDb installieren
 
@@ -166,7 +168,7 @@ Die folgenden NEUEN Pakete werden installiert:
 Möchten Sie fortfahren? [J/n] j
 ~~~
 
-Weitere Informationen zu MariaDb und der Konfiguration liefert unser Handbuch in [LAMP-MariaDB](./lamp-sql_de.md)
+Weitere Informationen zu MariaDb und der Konfiguration liefert unser Handbuch in [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten)
 
 ### PHP installieren
 
@@ -230,7 +232,7 @@ Jetzt fehlt noch die Unterstützung für MariaDB/mysql in PHP. Wir benötigen da
 
 Wenn wir jetzt wieder die Seite "http://localhost/info.php" aufrufen, finden wir im Bereich der Module (sie sind alphabetisch sortiert) die Einträge zu *mysqli* und *mysqlnd*.
 
-Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enthält die Handbuchseite [LAMP-PHP](./lamp-php_de.md)
+Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enthält die Handbuchseite [LAMP-PHP](./lamp-php_de.md#php-einrichten)
 
 ### phpMyAdmin installieren
 
@@ -290,9 +292,9 @@ In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer
 
 ### Weitere Software
 
-Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md)und [LAMP-MariaDb](./lamp-sql_de.md)für die Konfiguration des Servers und MariaDb berücksichtigen.
+Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten)und [LAMP-MariaDb](./lamp-sql_de.md#mariadb-einrichten)für die Konfiguration des Servers und MariaDb berücksichtigen.
 
-### Statusaugaben, Log-Dateien
+### Statusaugaben Log-Dateien
 
 **Apache**
 
@@ -320,7 +322,7 @@ Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar n
   Group: name="www-data" id=33
 ~~~
 
-Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md)enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.  
+Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md#apache-einrichten)enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.  
 Das Verzeichnis */var/log/apache2/* enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.
 
 **MariaDB**
@@ -345,13 +347,13 @@ und
 ~~~
 
 hält die Verbindung zum Journal offen und zeigt laufend die neuen Einträge.  
-Weitere Informationen liefert die Handbuchseite [LAMP-MariaDB](./lamp-sql_de.md)
+Weitere Informationen liefert die Handbuchseite [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten)
 
 **PHP**
 
 Die Fehlermeldungen von PHP speichert der Apache Server in seinen Log-Dateien unter */var/log/apache2/*. Fehlerhafte PHP-Funktionen erzeugen eine Meldung in der aufgerufenen Webseite.  
 Dieses Verhalten lässt sich in den *php.ini*-Dateien des jeweiligen Interface konfigurieren.  
-Siehe die Handbuchseite [LAMP-PHP](./lamp-php_de.md)
+Siehe die Handbuchseite [LAMP-PHP](./lamp-php_de.md#php-einrichten)
 
 ### Troubleshooting
 
@@ -500,9 +502,9 @@ Die bis hierher erklärte Installation führt zu einem Webserver der **"offen wi
 
 Für die Absicherung des Servers bitte die Handbuchseiten
 
-[LAMP-Apache](./lamp-apache_de.md) 
-[LAMP-MariaDB](./lamp-sql_de.md) 
-[LAMP-PHP](./lamp-php_de.md)
+[LAMP-Apache](./lamp-apache_de.md#apache-einrichten) 
+[LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten) 
+[LAMP-PHP](./lamp-php_de.md#php-einrichten)
 
 bezüglich der Konfiguration beachten.
 

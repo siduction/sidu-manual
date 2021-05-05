@@ -64,7 +64,7 @@ $ /sbin/blkid
 /dev/sdb4: UUID="e2164479-3f71-4216-a4d4-af3321750322" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="000403b7-04"
 ~~~
 
-#### Sicherung des alten /home
+**Sicherung des alten /home**
 
 Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern wir als *Root* alles unterhalb von "/home" in einem tar-Archiv. 
 
@@ -73,7 +73,7 @@ Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern 
 # tar cvzpf somewhere/home.tar.gz ./
 ~~~
 
-#### Mountpoint der Daten-Partition
+**Mountpoint der Daten-Partition**
 
 Wir erstellen das Verzeichnis "*Daten*" underhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
 
@@ -87,7 +87,7 @@ Mountpoint erstellen und Partition einhängen (als root):
 
 ### Private Daten verschieben
 
-#### Analyse von /home
+**Analyse von /home**
 
 Wir schauen uns erst einmal unser Home-Verzeichnis genau an.  
 (Die Ausgabe wurde zur besseren Übersicht sortiert.)
@@ -133,7 +133,7 @@ der Internetbrowser "*.mozilla*" und
 das Mailprogramm "*.thunderbird*".  
 Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch viele private Daten. Deshalb wandern sie zusätzlich auf die neue Daten-Partition.
 
-#### Kopieren der privaten Daten
+**Kopieren der privaten Daten**
 
 Zum Kopieren benutzen wir den Befehl "*cp*" mit der Archiv-Option "*-a*", so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
 
@@ -169,7 +169,7 @@ Die Prüfung der Kopieraktion auf Fehler erfolgt mit dem Befehl **`dirdiff /home
 
 Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der neuen Partition.
 
-#### Löschen in /home
+**Löschen in /home**
 
 Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
 Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Musik*") um dort Dateien abzulegen. Um den Zugriff der Anwendungen auf die Verzeichnisse zu ermöglichen müssen wir in "*/home/\<user\>*" Link einfügen, die auf die Daten-Partition verweisen.
@@ -194,7 +194,7 @@ Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz
 
 ### fstab anpassen
 
-Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](part-uuid_de.md).  
+Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](part-uuid_de.md#anpassung-der-fstab).  
 Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der *fstab* mit Datumsanhang:
 
 ~~~
@@ -221,4 +221,4 @@ Man speichert die Datei mit F2 und beendet den Editor mit F10.
 
 Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-06</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>

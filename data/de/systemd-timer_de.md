@@ -1,30 +1,8 @@
 % Systemd - timer
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02:
-
-+ Neu "systemd-timer Unit"
-+ Für die Verwendung mit pandoc optimiert.
-
-Änderungen 2021-02 
-+ Review
-
-Änderungen 2021-03 
-+ Minuten -> Sekunden
-+ geringe Layout Änderung
-
-Änderungen 2021-04
-
-+ Durch "systemd-unit-datei" erforderliche Anpassungen
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## systemd-timer
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md)  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md#systemd-unit-datei)  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.timer**, mit der zeitgesteuert Aktionen ausgelöst werden können.
 
 Die "*.timer*"-Unit wird meist eingesetzt, um regelmäßig anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige "*.service*"-Unit notwendig, in der die Aktionen definiert sind. Sobald der Systemzeitgeber mit der in der "*.timer*"-Unit definierten Zeit übereinstimmt, aktiviert die "*.timer*"-Unit die gleichnamige "*.service*"-Unit.  
@@ -42,6 +20,23 @@ Die **systemd-timer**-Unit benötigt zwei Dateien mit dem gleichen Basename im V
 Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in */usr/local/bin/*, das von der Service-Unit ausgeführt wird.
 
 Wir erstellen in dem Beispiel ein regelmäßiges Backup mit *rsync*.
+
+### service-Unit anlegen
+
+Die *.service-Unit*, die das Backup ausführt, wird von der *.timer-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reicht die Beschreibung der Unit in der Sektion *[Unit]*. Ihrer Sektion *[Service]* enthält den auszuführenden Befehl nach der Option *ExecStart=*.
+
+Wir legen die Datei **backup.service** im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
+
+~~~
+[Unit]
+Description="Command to backup my home directory"
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/<user> /mnt/sdb5/backup/home/
+~~~
+
+Den String \<user\> bitte durch den eigenen User ersetzen.
 
 ### timer-Unit anlegen
 
@@ -75,24 +70,7 @@ Es stehen zwei Timer-Typen zur Verfügung:
 
 Die im Beispiel enthaltene Option "*Persistent=*" speichert den Zeitpunkt, zu dem die *.service-Unit* das letzte Mal ausgelöst wurde, als leere Datei im Verzeichnis */var/lib/systemd/timers/*. Dies ist nützlich, um verpasste Läufe, als die Maschine ausgeschaltet war, nachzuholen.
 
-### service-Unit anlegen
-
-Die *.service-Unit* wird von der *.timer-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reicht die Beschreibung der Unit in der Sektion *[Unit]* und in der Sektion *[Service]* der auszuführende Befehl nach der Option *ExecStart=* aus.
-
-Wir legen die Datei **backup.service** im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
-
-~~~
-[Unit]
-Description="Command to backup my home directory"
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/<user> /mnt/sdb5/backup/home/
-~~~
-
-Den String \<user\> bitte durch den eigenen User ersetzen.
-
-### timer-Unit eingliedern
+**timer-Unit eingliedern**
 
 Mit dem folgenden Befehl gliedern wir die *.timer-Unit* in systemd ein.
 
@@ -104,7 +82,7 @@ Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
 
 Der analoge Befehl für die *.service-Unit* ist nicht notwendig und würde auch zu einem Fehler führen, da in ihr keine *[Install]* Sektion enthalten ist.
 
-### timer-Unit manuell auslösen
+**timer-Unit manuell auslösen**
 
 Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Unit* aufgerufen.
 
@@ -136,4 +114,4 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 [Archlinux Wiki, Timers](https://wiki.archlinux.org/index.php/Systemd/Timers)  
 [PRO-LINUX.DE, Systemd Timer Units...](https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>
+<div id="rev">Seite zuletzt aktualisert 2021-05-05</div>

@@ -13,7 +13,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## systemd unit-Datei
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md)  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager)  
 In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
 
 Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedene Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
@@ -78,7 +78,7 @@ Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */d
 
 Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ spezifischen Sektion und der Sektion [Install]. Die Typ spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ spezifische Sektion enthalten.
 
-#### Sektion [Unit]
+#### Sektion Unit
 
 Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
 
@@ -178,29 +178,29 @@ Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in 
 
 Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
 
-+ [[Service]](./systemd-service_de.md)konfiguriert einen Dienst
++ [[Service]](./systemd-service_de.md#systemd-service)konfiguriert einen Dienst
 
 + [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) konfiguriert ein Socket
 
 + [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) konfiguriert ein Gerät
 
-+ [[Mount]](./systemd-mount_de.md)konfiguriert einen Einhängepunkt
++ [[Mount]](./systemd-mount_de.md#systemd-mount)konfiguriert einen Einhängepunkt
 
-+ [[Automount]](./systemd-mount_de.md)konfiguriert einen Selbsteinhängepunkt
++ [[Automount]](./systemd-mount_de.md#systemd-mount)konfiguriert einen Selbsteinhängepunkt
 
 + [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
 
-+ [[Target]](./systemd-target_de.md)konfiguriert ein Startziel
++ [[Target]](./systemd-target_de.md#systemd-target)konfiguriert ein Startziel
 
-+ [[Path]](./systemd-path_de.md)konfiguriert einen überwachten Dateipfad
++ [[Path]](./systemd-path_de.md#systemd-path)konfiguriert einen überwachten Dateipfad
 
-+ [[Timer]](./systemd-timer_de.md)konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
++ [[Timer]](./systemd-timer_de.md#systemd-timer)konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
 
 + [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungsscheibe
 
 + [[Scope]](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html) konfiguriert eine Gruppe von extern erstellten Prozessen.
 
-#### Sektion [Install]
+#### Sektion Install
 
 Unit-Dateien können diese Sektion enthalten.  
 Die Optionen der *[Install]*-Sektion werden von den Befehlen **`systemctl enable <UNIT_DATEI>`** und **`systemctl disable <UNIT_DATEI>`** während der Installation einer Unit verwandt.  
@@ -503,4 +503,4 @@ Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgeliefe
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>
+<div id="rev">Seite zuletzt aktualisert 2021-05-05</div>

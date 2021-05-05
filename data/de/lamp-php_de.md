@@ -79,7 +79,7 @@ Die jeweilige *php.ini* beinhaltet die Konfiguration für das entsprechende Inte
 
 ### PHP Module
 
-#### Abfragen
+**Abfragen**
 
 Für PHP steht eine Vielzahl von Modulen zu Verfügung. Welche bereits installiert wurden, erfährt man mit
 

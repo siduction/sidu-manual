@@ -23,7 +23,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Systemadministration allgemein
 
-### Bootoptionen (Cheatcodes)
+### Bootoptionen Cheatcodes
 
 Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` fortgesetzt.
 
@@ -47,7 +47,7 @@ systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am hä
 + systemd.mount  
 + systemd.path  
 
-Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](sys-admin-systemd_de.md). Die vollständige Dokumentation ist in den man-Pages **systemd.unit**, **systemd.special** und jeweils **systemd."Unit-Typ"** zu finden.
+Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager). Die vollständige Dokumentation ist in den man-Pages **systemd.unit**, **systemd.special** und jeweils **systemd."Unit-Typ"** zu finden.
 
 Mit dem Befehl, je nach den Units und den notwendigen Rechten als *user* oder *root* aufgerufen,
 
@@ -89,7 +89,7 @@ Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen **-s, --signal=** und 
 Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](sys-admin-gen_de.md#pkill) erläutert wird.
 
 
-### systemd - UNIT in den Bootprozess einfügen
+### systemd - UNIT eingliedern
 
 Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als root:
 
@@ -121,7 +121,7 @@ die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und d
 
 Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.  
 Die alten sysvinit-Befehle werden weiterhin unterstützt. (hierzu ein Zitat aus *man systemd*: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")  
-Ausführlichere Informationen zum systemd enthält die Handbuchseite [Systemadministration.systemd](sys-admin-systemd_de.md).  
+Ausführlichere Informationen zum systemd enthält die Handbuchseite [Systemadministration.systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager).  
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.
 
 | Ziel-Unit | Beschreibung | 
@@ -244,7 +244,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
     Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf folgender Seite des [Handbuchs](gpu_de.md#foss-xorg).
 
 - **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
-    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
+    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung)
 
     Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
 
@@ -271,7 +271,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
 - **Überprüfung**  
     Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.  
 
-    Bei größeren Differenzen greifen wir in die Konfiguration ein. Siehe die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md)
+    Bei größeren Differenzen greifen wir in die Konfiguration ein. Siehe die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung)
 
 **Basiskonfuguration der Schriftarten**
 
@@ -313,7 +313,9 @@ Manchmal bedeutet der Neuaufbau des Font-Caches eine Lösung (der erste Befehl g
 # apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
 ~~~
 
-### Userkonfiguration Darstellungsart, Größe, 4K-Display
+### Userkonfiguration
+
+**Darstellungsart, Größe, 4K-Display**
 
 Beachtet werden muss, dass jede Schriftart ein ideales Größenspektrum besitzt, sodass identische Größeneinstellungen nicht bei jeder Schriftart zu einem gleich guten Ergebnis führen muss.  
 Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie werden auf dem Desktop sofort wirksam, Anwendungen müssen zum Teil neu gestartet werden.  
@@ -340,7 +342,7 @@ Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich
 Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei **4K**-Bildschirmen ist Hinting meist nicht notwendig.
 
 *DPI-Wert / Skalierungsfaktor* :  
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Bei der Bildausgabe auf zwei Geräten mit stark unterschiedlicher Auflösung bitte die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md) beachten. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
+Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Bei der Bildausgabe auf zwei Geräten mit stark unterschiedlicher Auflösung bitte die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung) beachten. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
 
 **4k Auflösung**: 3840 x 2160 (16:9)
 
@@ -432,4 +434,4 @@ Die gewünschten Sound-Einstellungen werden als **$user** von einem Terminal vor
 $ alsamixer
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2020-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>

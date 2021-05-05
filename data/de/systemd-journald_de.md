@@ -45,12 +45,12 @@ Der Befehl **systemd-cat** bietet zwei Möglichkeiten um unabhängig von systemd
 
 Falls kein Parameter übergeben wurde, wird *systemd-cat* alles, was es von der Standardeingabe liest, an das Journal schicken. Die man-page [systemd-cat.1.de](https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html) bietet weitere Informationen.
 
-#### journald über das Netzwerk
+### journald über das Netzwerk
 
 Die *systemd-journal*-Module *upload*, *remote* und *gatewayd* ermöglichen das Versenden und Empfangen von Systemprotokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.  
 Für weitere Informationen bitte die man-pages [journal upload](https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html), [journal remote](https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html) und [journal gatewayd](https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html) lesen.
 
-#### journald.conf
+### journald.conf
 
 Die folgenden Dateien konfigurieren verschiedene Parameter des Systemd-Journal-Dienstes.
 
@@ -68,7 +68,7 @@ Einem bestimmten Journal-Namensraum können Dienste-Units mittels der Unit-Datei
 
 Standardmäßig sammelt nur der Vorgabe-Namensraum Kernel- und Auditprotokollnachrichten.
 
-#### Rangfolge
+**Rangfolge**
 
 Wenn Pakete die Konfiguration anpassen müssen, können sie Konfigurationsschnipsel in */usr/lib/systemd/\*.conf.d/* oder */usr/local/lib/systemd/\*.conf.d/* installieren.
 
