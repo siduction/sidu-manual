@@ -168,7 +168,7 @@ Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst:
 
 Für weitere Partitionierungsoptionen siehe:
 
-+ Logical Volume Manager [LVM-Partitionierung](part-lvm_de.md#part-lvm)
++ Logical Volume Manager [LVM-Partitionierung](part-lvm_de.md#lvm-partitionierung---logical-volume-manager)
 
 + Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](part-gdisk_de.md#partitionieren-mit-gdisk)
 

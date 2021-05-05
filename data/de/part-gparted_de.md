@@ -33,10 +33,10 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
   *rdiff-backup* siehe [Systemsicherung mit rdiff-backup](sys-admin-rdiff_de.md#systemsicherung-mit-rdiff-backup) oder  
   *rsync* siehe [Backup mit rsync](sys-admin-rsync_de.md#backup-mit-rsync).
 
-+ Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](part-uuid-de.htm#uuid) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
++ Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](part-uuid-de.htm#uuid---benennung-von-blockgeräten) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
 
 + Größenänderungen bei **NTFS-Partitionen** erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.
-[Bitte lese hier weiter.](part-gparted_de.md#ntfs)
+[Bitte lese hier weiter.](#ntfs-partitionsgrößen-mit-gparted-ändern)
 
 + Eine Partition benötigt ein Dateisystem. Linux kann auf und mit verschiedenen Dateisystemen arbeiten.  
   Für normalen Gebrauch empfehlen wir das Dateisystem ext4.  

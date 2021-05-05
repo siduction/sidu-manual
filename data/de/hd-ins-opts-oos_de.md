@@ -1,8 +1,6 @@
 % Installation auf USB-Stick / Speicherkarte
 
-# Installation
-
-## Installation auf USB-Stick / Speicherkarte
+## Installation auf USB-Stick - Speicherkarte
 
 **Nachfolgend beschrieben wir Methoden der Installation einer siduction-ISO auf einen USB-Stick, eine SSD-Karte, einem SHDC-Gerät (Secure Digital High Capacity card) jeweils unter Verwendung einer anderen Linuxdistribution, MS Windows&#8482; oder Mac OS X&#8482;.**
 
@@ -68,11 +66,11 @@ oder
 dd if=/home/username/siduction-18.3.0-patience-kde.iso of=/dev/sdc
 ~~~
 
-### Mit MS Windows&#8482;
+### Mit MS Windows
 
 Das Vorgehen ist einfach. Lade das kleine Tool [USBWriter](https://sourceforge.net/p/usbwriter/wiki/Documentation/)  herunter. Es muss nicht installiert werden. Nach dem Start des Werkzeugs, beispielsweise vom Desktop aus, muss lediglich das gewünschte ISO-Image sowie der USB-Stick ausgewählt werden. Hierbei ist große Aufmerksamkeit erforderlich, denn der Vorgang löscht alle Daten auf dem Device. Wird also das falsche Device gewählt, sind die Daten darauf verloren, sobald der *WRITE*-Button gedrückt wurde. In wenigen Minuten schreibt das Werkzeug das Image bootfähig auf das Gerät.
 
-### Mit Mac OS X&#8482;
+### Mit Mac OS X
 
 Schließe Dein USB-Gerät an, Mac OS X sollte es automatisch einbinden. Im Terminal (unter Applications &gt; Utilities), wird dieser Befehl ausgeführt:
 

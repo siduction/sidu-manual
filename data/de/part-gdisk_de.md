@@ -32,7 +32,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung *gdisk* für 128 Partitionen eingestellt ist.
 
 Falls GPT auf kleinen USB/SSD-Datenträgern eingesetzt wird (zum Beispiel auf einem USB-Stick mit 8GB), könnte sich dies kontraproduktiv auswirken, wenn Daten zwischen verschiedenen Computern oder Betriebssystemen ausgetauscht werden sollen.  
-Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser *fdisk*, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-cfdisk).
+Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser *fdisk*, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk).
 
 **Wichtige Anmerkungen**
 
@@ -134,7 +134,7 @@ Mit *Verify* wird die Partitionierung überprüft und eventuelle Fehler werden a
 ![Partition Verify](./images/cgdisk/cgdisk_07.png)
 
 Hier ist alles in Ordnung.  
-Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl *Info*, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](part-gdisk_de.md#gdisk-7) zur Verfügung.
+Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl *Info*, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](part-gdisk_de.md#erweiterte-befehle-von-gdisk) zur Verfügung.
 
 #### Partition löschen
 

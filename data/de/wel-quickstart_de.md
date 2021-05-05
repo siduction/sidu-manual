@@ -29,23 +29,23 @@ siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kan
 
 <warning>Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:</warning>
 
-+ [Terminal/Konsole](term-konsole_de.md#term-kon)  - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.
++ [Terminal/Konsole](term-konsole_de.md#terminal---kommandozeile)  - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.
 
-+ [Partitionieren der Festplatte](part-gparted_de.md#partition)  - Beschreibt, wie eine Festplatte partitioniert werden kann. 
++ [Partitionieren der Festplatte](part-gparted_de.md#partitionieren-mit-gparted)  - Beschreibt, wie eine Festplatte partitioniert werden kann. 
 
 + [siduction ISO herunterladen und DVD brennen](cd-dl-burning_de.md#iso-download-und-brennen)  - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.
 
-+ [Installation auf einer Festplatte](hd-install_de.md#install-prep)  - Beschreibt, wie siduction auf einer Festplatte installiert wird.
++ [Installation auf einer Festplatte](hd-install_de.md#installation-auf-hdd)  - Beschreibt, wie siduction auf einer Festplatte installiert wird.
 
-+ [Installation auf USB-Geräte](hd-install-opts_de.md#usb-hd)  - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.
++ [Installation auf USB-Geräte]()  - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.
 
-+ [Installation auf USB-Stick/SD von einem anderen System](hd-ins-opts-oos_de.md#raw-usb)  - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.
++ [Installation auf USB-Stick/SD von einem anderen System](hd-ins-opts-oos_de.md#installation-auf-usb-stick---speicherkarte)  - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.
 
-+ [Nicht freie Treiber, Firmware und Quellen](gpu_de.md#foss-xorg)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
++ [Nicht freie Treiber, Firmware und Quellen](gpu_de.md#grafiktreiber)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
 
-+ [Internetverbindung](inet-ceni_de.md#netcardconfig)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
++ [Internetverbindung](inet-nm-cli_de.md#nmcli)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
 
-+ [Paketmanager und Systemaktualisierung](sys-admin-apt_de.md#apt-cook)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
++ [Paketmanager und Systemaktualisierung](sys-admin-apt_de.md#apt-paketverwaltung)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
 
 ### Zur Stabilität von Debian Sid
 
@@ -60,7 +60,7 @@ Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Pr
 siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet apt und dpkg für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in `/etc/sources.list.d/*` 
 
 Debian Sid enthält mehr als 20.000 Programmpakete, womit die Chancen, ein für eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie man Programmpakete sucht, ist hier beschrieben:  
-[Programmsuche mit apt-cache bzw. apt](sys-admin-apt_de.md#apt-cache)  
+[Programmsuche mit apt-cache bzw. apt](sys-admin-apt_de.md#programmpakete-suchen)  
 oder mit  
 [GUI-Paketsuche mit packagesearch](sys-admin-apt_de.md#graphische-paketsuche) .
 
@@ -70,7 +70,7 @@ Ein Programmpaket wird mit diesem Befehl installiert:
 apt install <Paketname>
 ~~~
 
-Siehe auch: [Neue Pakete installieren](sys-admin-apt_de.md#apt-install) .
+Siehe auch: [Neue Pakete installieren](sys-admin-apt_de.md#pakete-installieren) .
 
 Die Repositorien von Debian Sid werden in der Regel viermal am Tag mit aktualisierten bzw. neuen Softwarepaketen beschickt. Zur schnellen Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der Befehl
 
@@ -115,7 +115,7 @@ init 5
 ~~~
 
 **apt full-upgrade** ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
-[Aktualisierung eines installierten Systems - full-upgrade](sys-admin-apt_de.md#apt-upgrade).
+[Aktualisierung eines installierten Systems - full-upgrade](sys-admin-apt_de.md#aktualisierung-des-systems).
 
 ### Konfiguration von Netzwerken
 
@@ -127,12 +127,12 @@ Der Startbefehl in der Konsole ist **nmcli**  oder **nmtui** . Falls das Skript 
 apt install network-manager
 ~~~
 
-Mehr Informationen unter [Internet und Netzwerk - Ceni](inet-ceni_de.md#netcardconfig) 
+Mehr Informationen unter [Netzwerk - nmcli](inet-nm-cli_de.md#nmcli) 
 
 ### Runlevels - Ziel-Unit
 
 Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).  
-Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](sys-admin-gen_de.md#ziel-unit) beschrieben.
+Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](systemd-target_de.md#systemd-target---ziel-unit) beschrieben.
 
 ### Weitere Desktopumgebungen
 
@@ -142,7 +142,7 @@ Plasma, Gnome, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.
 
 Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
-+ Mehr dazu im Kapitel [Wo es Hilfe gibt](help_de.md#help-gen) .
++ Mehr dazu im Kapitel [Wo es Hilfe gibt](help_de.md#siduction-hilfe) .
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 

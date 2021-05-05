@@ -1,4 +1,4 @@
-% Die siduction Live-DVD verwenden
+% Live-DVD verwenden
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
