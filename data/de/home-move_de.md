@@ -55,7 +55,7 @@ UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 
 tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0
 ~~~
 
-Von der zusätzlichen Festplatte benötigen wir die UUID-Informationen. Siehe auch die Handbuchseite [Anpassung der fstab](part-uuid-de.md#uuid).  
+Von der zusätzlichen Festplatte benötigen wir die UUID-Informationen. Siehe auch die Handbuchseite [Anpassung der fstab](#fstab-anpassen).  
 Der Befehl *blkid* gibt uns Auskunft.
 
 ~~~
@@ -194,7 +194,7 @@ Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz
 
 ### fstab anpassen
 
-Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](part-uuid_de.md#anpassung-der-fstab).  
+Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](#anpassung-der-fstab).  
 Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der *fstab* mit Datumsanhang:
 
 ~~~

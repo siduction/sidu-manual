@@ -38,18 +38,18 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 
 | apt | apt-get | Kurzinfo |
 | --- | --- | --- |
-| [apt update](sys-admin-apt_de.md#update) | apt-get update | Auffrischen der Paketdatenbank. |
+| [apt update](#aktualisierung-des-systems) | apt-get update | Auffrischen der Paketdatenbank. |
 | apt upgrade | apt-get upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen. |
-| [apt full-upgrade](sys-admin-apt_de.md#full-upgrade) | apt-get dist-upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn daduch bereits installierte Pakete entfernt werden müssen. |
-| [apt full-upgrade -d](sys-admin-apt_de.md#full-upgrade-d) | apt-get dist-upgrade -d | Aktualisierung das System wie zuvor, jedoch wird nur der Download durchgeführt und nichts installiert.  |
-| [apt install](sys-admin-apt_de.md#install) | apt-get install | Installieren eines oder mehrerer Pakete. |
-| [apt remove](sys-admin-apt_de.md#remove) | apt-get remove | Entfernen eines oder mehrerer Pakete. |
-| [apt purge](sys-admin-apt_de.md#purge) | apt-get purge | Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien. |
-| - | [apt-mark hold](sys-admin-apt_de.md#hold) | Verhindert, dass apt eine andere Version das Paketes installiert.  |
-| - | [apt-mark unhold](sys-admin-apt_de.md#hold)  | Hebt den Befehl 'apt-mark hold' auf. |
-| [apt search](sys-admin-apt_de.md#search) | apt-get search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
-| [apt show](sys-admin-apt_de.md#search) | apt-cache show  | Anzeige der Details eines Paketes. |
-| [apt list](sys-admin-apt_de.md#search) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
+| [apt full-upgrade](#full-upgrade-ausführen) | apt-get dist-upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn daduch bereits installierte Pakete entfernt werden müssen. |
+| apt full-upgrade -d | apt-get dist-upgrade -d | Aktualisierung das System wie zuvor, jedoch wird nur der Download durchgeführt und nichts installiert.  |
+| [apt install](#pakete-installieren) | apt-get install | Installieren eines oder mehrerer Pakete. |
+| [apt remove](#pakete-entfernen) | apt-get remove | Entfernen eines oder mehrerer Pakete. |
+| [apt purge](#pakete-entfernen) | apt-get purge | Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien. |
+| - | [apt-mark hold](#hold-oder-downgraden-eines-pakets) | Verhindert, dass apt eine andere Version das Paketes installiert.  |
+| - | [apt-mark unhold](#hold-oder-downgraden-eines-pakets)  | Hebt den Befehl 'apt-mark hold' auf. |
+| [apt search](#paketsuche-im-terminal) | apt-get search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
+| [apt show](#paketsuche-im-terminal) | apt-cache show  | Anzeige der Details eines Paketes. |
+| [apt list](#paketsuche-im-terminal) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
 
 ### Liste der Quellen (sources.list)
 
@@ -239,11 +239,11 @@ rc  systemd-coredump   240-1           amd64  tools for storing and retrieving c
 
 Die hier gelisteten Pakete wurden removed, ohne purgen.
 
-### Hold/Downgraden eines Pakets
+### Hold oder Downgraden eines Pakets
 
 Manchmal kann es notwendig sein, auf eine frühere Version eines Pakets zurückzugreifen, da die neueste Version einen gravierenden Fehler aufweist.
 
-#### Hold (Halten)
+**Hold (Halten)**
 
 ~~~
 apt-mark hold <paket>
@@ -263,7 +263,7 @@ apt-mark showhold
 
 Bitte bedenkt, dass hold nur eine Notfallmaßnahme ist. Man wird sich Probleme einhandeln, wenn man vergisst, einen hold wieder zeitnah aufzuheben. Das gilt umso mehr, je mehr (essentielle) Abhängigkeiten das Paket hat. Also: holds bitte nur im Notfall und schnellstmöglich wieder aufheben.
 
-#### Downgraden (Deaktualisierung)
+**Downgraden (Deaktualisierung)**
 
 Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das Installieren älterer Versionen gelingen, es kann aber auch spektakulär fehlschlagen. Mehr Informationen im englischsprachigen Debian-Handbuch unter dem Kapitel Emergency downgrading.
 
@@ -299,7 +299,7 @@ apt install kmahjongg / apt full-upgrade
 
 ### Aktualisierung des Systems
 
-Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](#holddowngraden-eines-pakets) eines Pakets.
+Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](#hold-oder-downgraden-eines-pakets) eines Pakets.
 
 Ein einfaches "apt upgrade" von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein **apt upgrade** von der Situation nicht betroffene Pakete aktualisieren.
 

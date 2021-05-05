@@ -190,7 +190,7 @@ Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausfüh
 
 + [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
 
-+ [[Target]](./systemd-target_de.md#systemd-target)konfiguriert ein Startziel
++ [[Target]](./systemd-target_de.md#systemd-target---ziel-unit)konfiguriert ein Startziel
 
 + [[Path]](./systemd-path_de.md#systemd-path)konfiguriert einen überwachten Dateipfad
 

@@ -161,7 +161,7 @@ Die folgenden Optionen behandeln die Verwaltung der von *journald* geschriebenen
 
 ### journalctl beherrschen
 
-Wie oben unter [Rechte](#rechte) beschrieben, kannst du das Journal als einfacher User benutzen. Hier sind einige Beispiele:
+Wie oben unter Rechte beschrieben, kannst du das Journal als einfacher User benutzen. Hier sind einige Beispiele:
 
 ---------------------------------    ------------------------------------------------------------------------
 journalctl                           das volle Journal aller User, älteste Einträge zuerst

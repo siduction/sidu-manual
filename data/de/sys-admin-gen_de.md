@@ -29,10 +29,10 @@ Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem 
 
 Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bootoptionen.
 
-1. [siduction spezifische Parameter (nur Live-CD)](cheatcodes_de.md#cheatcodes-siduction)
-2. [Bootoptionen für den Grafikserver X](cheatcodes_de.md#cheatcodes-x)
-3. [Allgemeine Parameter des Linux-Kernels](cheatcodes_de.md#cheatcodes-linux)
-4. [Werte für den allgemeinen Parameter **vga**](cheatcodes_de.md#vga)
+1. [siduction spezifische Parameter (nur Live-CD)](cheatcodes_de.md#siduction-spezifische-parameter)
+2. [Bootoptionen für den Grafikserver X](cheatcodes_de.md#bootoptionen-für-den-grafikserver-x)
+3. [Allgemeine Parameter des Linux-Kernels](cheatcodes_de.md#allgemeine-parameter-des-linux-kernels)
+4. [Werte für den allgemeinen Parameter **vga**](cheatcodes_de.md#vga-codes)
 
 [Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
@@ -86,7 +86,7 @@ $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen **-s, --signal=** und **--kill-who=** bereit.
 + **-s** sendet eines der Signale **SIGTERM, SIGINT, SIGSTOP**. Vorgabe ist **SIGTERM**.
 + **--kill-who=** erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, werden den Kind-Prozessen, oder beiden das Signal gesendet. Vorgabe ist **all**.  
-Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](sys-admin-gen_de.md#pkill) erläutert wird.
+Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](#beenden-eines-prozesses) erläutert wird.
 
 
 ### systemd - UNIT eingliedern
@@ -128,7 +128,7 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 | ---- | ---- |
 | emergency.target | Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden. | 
 | rescue.target | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
-| multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#apt-upgrade) . |
+| multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#aktualisierung-des-systems) . |
 | graphical.target | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
 | default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX). |
 
@@ -241,7 +241,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
 **Einstellungen prüfen **
 
 - **Korrekte Grafiktreiber**  
-    Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf folgender Seite des [Handbuchs](gpu_de.md#foss-xorg).
+    Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite [Grafiktreiber](gpu_de.md#grafiktreiber) des Handbuchs.
 
 - **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
     Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung)

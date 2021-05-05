@@ -1,4 +1,4 @@
-% Terminal - Konsole
+% Terminal - Kommandozeile
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
@@ -20,7 +20,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 # Systemadministration
 
-## Terminal / Konsole / Shell / Kommandozeile
+## Terminal - Kommandozeile
 
 Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem ermöglicht, durch direkt ausgeführte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch häufig die "Shell"  oder "Kommandozeile"  genannt, ist ein äußerst mächtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.
 
@@ -34,7 +34,7 @@ username@hostname:~$
 
 **username** in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde **~**  zeigt, man befindet sich in seinem Heimverzeichnis **/home/username** , und das Dollarzeichen (der Promt) **$**  bedeutet, dass man im Terminal mit eingeschränkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausführen soll.
 
-Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man **su**  eingibt und `Enter` drückt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten [Arbeit als root](#root))
+Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man **su**  eingibt und `Enter` drückt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten [Arbeit als root](#arbeit-als-root))
 
 Ist die Eingabe korrekt, zeigt die Kommandozeile nun:
 

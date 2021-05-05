@@ -151,7 +151,7 @@ Als **ServerRoot** wird das Verzeichnis **/etc/apache2/** bezeichnet. Es enthäl
 Als **DocumentRoot** wird das Verzeichnis **/var/www/html/** bezeichnet. Es enthält die Dateien der Webseite.
 
 Für weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite  
-[LAMP-Apache](./lamp-apache_de.md#apache-einrichten)lesen.
+[LAMP-Apache](./lamp-apache_de.md#apache-einrichten) lesen.
 
 ### MariaDb installieren
 
@@ -257,36 +257,11 @@ Möchten Sie fortfahren? [J/n]  j
 Während der Installation erscheinen die zwei Dialoge.  
 Im ersten, zu Beginn, wählen wir "*apache2*" und bestätigen mit "*ok*"
 
-~~~
-  ┌──────────────────────────┤ Configuring phpmyadmin ├───────────────────────────────┐
-  │ Bitte wählen Sie den Webserver aus, der automatisch zum Betrieb von phpMyAdmin    │
-  │ konfiguriert werden soll.                                                         │
-  │ Webserver, die automatisch konfiguriert werden sollen:                            │
-  │                                                                                   │
-  │    [x] apache2                                                                    │
-  │    [ ] lighttpd                                                                   │
-  │                                       <Ok>                                        │
-  └───────────────────────────────────────────────────────────────────────────────────┘
-~~~ 
+![PHPMyAdmin Webserverauswahl](./images/lamp-start/phpmyadmin01-de.png)
 
 im zweiten, am Ende der Installation, wählen wir "*ja*" aus.
 
-~~~
-  ┌──────────────────────────┤ Configuring phpmyadmin ├───────────────────────────────┐
-  │ Für das Paket phpmyadmin muss eine Datenbank installiert und konfiguriert sein,   │
-  │ bevor es benutzt werden kann. Dies kann optional mit Hilfe von dbconfig-common    │
-  │ geschehen.                                                                        │
-  │ Falls Sie ein erfahrener Datenbankadministrator sind und wissen, dass Sie diese   │
-  │ Konfiguration manuell durchführen möchten oder, falls Ihre Datenbank bereits      │
-  │ installiert und konfiguriert ist, verwerfen Sie diese Option. Details zur         │
-  │ manuellen Installation sind üblicherweise in /usr/share/doc/phpmyadmin zu finden. │
-  │ Andernfalls sollte diese Option wahrscheinlich gewählt werden.                    │
-  │                                                                                   │
-  │ Konfigurieren der Datenbank für phpmyadmin mit dbconfig-common?                   │
-  │                                                                                   │
-  │                  <Ja>                              <Nein>                         │
-  └───────────────────────────────────────────────────────────────────────────────────┘
-~~~
+![PHPMyAdmin Datenbank](./images/lamp-start/phpmyadmin02-de.png)
 
 In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer *phpmyadmin* (siehe das Kapitel *Vorbereitungen*).
 
@@ -322,7 +297,7 @@ Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar n
   Group: name="www-data" id=33
 ~~~
 
-Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md#apache-einrichten)enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.  
+Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.  
 Das Verzeichnis */var/log/apache2/* enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.
 
 **MariaDB**
@@ -510,4 +485,4 @@ bezüglich der Konfiguration beachten.
 
 Danach kann der Server, ausschließlich für System- und Software- Aktualisierungen, temporär über eine zweite Netzwerkschnittstelle mit dem Internet verbunden werden.
 
-<div id="rev">Zuletzt bearbeitet: 2021-02-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
