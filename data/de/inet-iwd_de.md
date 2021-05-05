@@ -1,7 +1,5 @@
 % Netzwerk - IWD
 
-# Netzwerk
-
 ## IWD
 
 Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. 
