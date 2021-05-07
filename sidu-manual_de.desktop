@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=xdg-open siduction-manual_de.pdf
+Icon=sidu-manual
+Name=Manual
+Terminal=false
+Name[de]=Handbuch
+Categories=System;

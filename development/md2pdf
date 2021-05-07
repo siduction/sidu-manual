@@ -3,6 +3,7 @@
 # Provides templates to apply with pdf processing
 # Copyright Claes Holmerson 2010, GPL licensed (see COPYING for details)
 # Copyright Hendrik Lehmbruch 2021, GPL licensed (see COPYING for details)
+# Copyright Axel Konrad 2021, GPL licensed (see COPYING for details)
 # Added code to generate siduction manual.
 # Name: md2pdf within siduction manual /development folder.
 # Usage:

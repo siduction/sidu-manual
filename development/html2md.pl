@@ -6,6 +6,8 @@
 #         Es wird eine .md Datei mit gleichem Namen angelegt.
 #         Im Script sind drei Bereiche markiert, die für Testzwecke
 #         auszukommentieren sind. Die Ausgabe erfolg dann in die Konsole.
+# Copyright Axel Konrad 2021, wtfpl 2.0
+# see http://www.wtfpl.net/txt/copying/
 #
 # Das Script konvertiert HTML-Inhalte in md um und ist speziell auf die Inhalte des siduction Handbuchs abgestimmt.
 #
