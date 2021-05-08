@@ -76,8 +76,8 @@ Der Name des Labels einer NTFS- und FAT-Partition sollte nur aus Großbuchstaben
 
 Die Syntax in der fstab für das *file system* ist **LABEL=\<label\>**.
 
-<warning>Unbedingt zu beachten ist:  
-Die Labels müssen eine singuläre Bezeichnung haben, um bei der Einbindung funktionieren zu können. Das gilt auch für externe Geräte (Festplatten, Sticks etc.), die via USB oder Firewire eingebunden werden.</warning>
+> Unbedingt zu beachten ist:  
+Die Labels müssen eine singuläre Bezeichnung haben, um bei der Einbindung funktionieren zu können. Das gilt auch für externe Geräte (Festplatten, Sticks etc.), die via USB oder Firewire eingebunden werden.
 
 ## Die fstab
 

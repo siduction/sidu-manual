@@ -56,8 +56,8 @@ Für User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Au
 
 ### Arbeit als root
 
-<warning>**Achtung:**  
-Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, *was* man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.</warning>
+> **Achtung:**  
+> Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, *was* man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.
 
 Berücksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgeführt werden. Der einfache copy-Befehl *cp \<Quelle\> \<Ziel\>* in einem User-Verzeichnis führt zu Dateien mit dem Eigentümer *ROOT* im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.
 

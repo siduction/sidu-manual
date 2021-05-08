@@ -134,9 +134,8 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 ### fstab anpassen
 
-<warning>
-Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
-</warning>
+> Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
+
 
 Siehe dazu die Handbuchseite [Anpassung der fstab](part-uuid_de.md#die-fstab).  
 In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUID's.
@@ -172,7 +171,7 @@ root@pc1:/# blkid
 
 Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch */mnt/TEST_res* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
 
-<warning>Wenn die UUID's für die Partitionen von **/** (root), **/home** und **swap** nicht mit den Einträgen in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.</warning>
+> Wenn die UUID's für die Partitionen von **/** (root), **/home** und **swap** nicht mit den Einträgen in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
 
 ### NTFS-Partitionsgrößen mit GParted ändern
 

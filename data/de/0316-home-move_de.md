@@ -24,10 +24,8 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Das Verzeichnis /home verschieben
 
-<warning>Wichtige Information</warning>
-<warning>
-Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
-</warning>
+> Wichtige Information
+> Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
 
 Deshalb raten wir generell davon ab eine /home-Partition anzulegen.  
 Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter **/Daten** eingehängt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
@@ -194,7 +192,7 @@ Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz
 
 ### fstab anpassen
 
-Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](#anpassung-der-fstab).  
+Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](0311-part-uuid_de.md#anpassung-der-fstab).  
 Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der *fstab* mit Datumsanhang:
 
 ~~~

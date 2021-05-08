@@ -124,8 +124,8 @@ Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 
 
 ### Cfdisk verwenden
 
-<warning>**Daten zuvor sichern!**</warning>
-<warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.</warning>
+> **Daten zuvor sichern!**
+> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
 
 **cfdisk** wird in einer Konsole als root gestartet (nach "su" ist die Eingabe des root-Passworts gefordert):
 

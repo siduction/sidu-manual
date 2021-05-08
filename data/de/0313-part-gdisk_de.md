@@ -69,8 +69,8 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *
 
 ### Partitionierung einer Festplatte
 
-<warning>**Daten zuvor sichern!**</warning>
-<warning>Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.</warning>
+> **Daten zuvor sichern!**
+> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
 
 In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine *EFI-System*-Partition und für die zweite Stufe des GRUB-Bootloader eine *BIOS-boot*-Partition.  
 Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm *cgdisk*, das GPT mit UEFI unterstützt.

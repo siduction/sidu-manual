@@ -93,10 +93,9 @@ Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
 
 ### Live-DVD mit Windows brennen
 
-<warning>**WICHTIGE INFORMATION:**</warning>
-<warning>
-siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
-</warning>
+> **WICHTIGE INFORMATION:**
+> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
+
 
 Selbstverständlich kann die DVD auch in Windows gebrannt werden. Die heruntergeladene Datei muss als ISO-Abbilddatei gebrannt werden. Falls Winrar (oder ein anderes Archivierungsprogramm) mit einer ISO-Datei verknüpft ist, könnte dieses Programm die ISO-Datei als eine Archivdatei ansehen. Aus der ISO-Datei muss eine DVD gebrannt werden.
 
@@ -114,10 +113,9 @@ Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.
 
 ### Die DVD mit Linux brennen
 
-<warning>**WICHTIGE INFORMATION:**</warning>
-<warning>
-siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
-</warning>
+> **WICHTIGE INFORMATION:**
+> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
+
 
 Wer bereits Linux auf dem Rechner hat, kann die DVD mit jedem installierten Brennprogramm erstellen. Bei siduction ist K3b das Standard-Brennprogramm. Dort muss man den Menüpunkt "Extras" -> "ISO-Abbild brennen..." anklicken, das zu brennende ISO-File (z.B. siduction-18.3.0-patience-kde-amd64-201805132121.iso) auswählen und den Brennmodus DAO (Disk At Once) einstellen.
 
