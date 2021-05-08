@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>LAMP - Apache</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #CCC; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">LAMP - Apache</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#apache-einrichten">Apache einrichten</a>
+<ul>
+<li><a href="#apache-im-dateisystem">Apache im Dateisystem</a></li>
+<li><a href="#verbindung-zum-server">Verbindung zum Server</a></li>
+<li><a href="#apache-konfiguration">Apache Konfiguration</a></li>
+<li><a href="#benutzer-und-rechte">Benutzer und Rechte</a></li>
+<li><a href="#sicherheit---standard-konfiguration-in-apache">Sicherheit - Standard Konfiguration in Apache</a></li>
+<li><a href="#sicherheit---weitere-konfigurationen">Sicherheit - weitere Konfigurationen</a></li>
+<li><a href="#https-verwenden">HTTPS verwenden</a></li>
+<li><a href="#sicherheits-tipps">Sicherheits Tipps</a></li>
+<li><a href="#integration-in-apache2">Integration in Apache2</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="apache-einrichten">Apache einrichten</h2>
+<p>Diese Handbuchseite basiert auf Apache 2.4.46.</p>
+<p>Unserem Beispiel aus der Installationsanleitung entsprechend, wollen wir einen <em>LAMP-Testserver für Entwickler</em> aufsetzen, der über LAN direkt mit dem Arbeitsplatz-PC verbunden ist. Darüber hinaus soll es aus Gründen der Sicherheit für den Server keine Verbindung zu einem lokalen Netzwerk oder gar zum Internet geben.<br />
+Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und Software- Aktualisierungen über eine zweite Netzwerkschnittstelle mit dem Internet verbunden.</p>
+<h3 id="apache-im-dateisystem">Apache im Dateisystem</h3>
+<p>Debian hat die Dateien des Apache entsprechend ihrer Funktion vollständig in das Dateisystem integriert.</p>
+<ul>
+<li>In <strong>/usr/sbin/</strong> das ausführbare Programm <em>apache2</em>.<br />
+</li>
+<li>In <strong>/usr/lib/apache2/modules/</strong> die installierten Module für Apache.<br />
+</li>
+<li>In <strong>/usr/share/apache2/</strong> Dateien, die auch für andere Programme verfügbar sind.<br />
+</li>
+<li>In <strong>/etc/apache2/</strong> die Konfigurationsverzeichnisse und -dateien.<br />
+</li>
+<li>In <strong>/var/www/html/</strong> die vom Benutzer angelegte Webseite.</li>
+<li>In <strong>/run/apache2/, /run/lock/apache2/</strong> zur Laufzeit notwendige Systemdateien.</li>
+<li>In <strong>/var/log/apache2/</strong> verschiedene Log-Dateien.</li>
+</ul>
+<p>Wichtig ist die Unterscheidung zwischen den verwendeten Variablen <em>ServerRoot</em> und <em>DocumentRoot</em>.</p>
+<p><strong>ServerRoot</strong> ist das Konfigurationsverzeichnis, also “<em>/etc/apache2/</em>”.<br />
+<strong>DocumentRoot</strong> beinhaltet die Webseitendaten, also “<em>/var/www/html/</em>”.</p>
+<h3 id="verbindung-zum-server">Verbindung zum Server</h3>
+<p>Die Verbindung zwischen Testserver und PC wird in das IPv4-Netzwerksegment <strong>192.168.3.xxx</strong> gelegt, während die Internetverbindung des PC außerhalb dieses Netzwerksegmentes erfolgt. Die verwendeten Daten sind:</p>
+<p><strong>Server</strong><br />
+IP: 192.168.3.1/24<br />
+Name: server1.org<br />
+Alias: www.server1.org</p>
+<p><strong>PC</strong><br />
+IP: 192.168.3.10/24<br />
+Name: pc1</p>
+<p>Wir legen von der Datei <em>/etc/hosts</em> auf dem Server und auf dem PC eine Sicherungskopie an und fügen beiden die notwendigen Zeilen hinzu.</p>
+<ul>
+<li><p>Server <em>/etc/hosts</em>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">cp</span> /etc/hosts /etc/hosts_<span class="va">$(</span><span class="fu">date</span> +%f<span class="va">)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;192.168.3.1 server1.org   www.server1.org&quot;</span> <span class="op">&gt;&gt;</span> /etc/hosts</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;192.168.3.10 pc1&quot;</span> <span class="op">&gt;&gt;</span> /etc/hosts</span></code></pre></div></li>
+<li><p>PC <em>/etc/hosts</em>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">cp</span> /etc/hosts /etc/hosts_<span class="va">$(</span><span class="fu">date</span> +%f<span class="va">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;192.168.3.1 server1.org   www.server1.org&quot;</span> <span class="op">&gt;&gt;</span> /etc/hosts</span></code></pre></div></li>
+</ul>
+<p>Als nächstes geben wir im <em>NetworkManager</em> die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von “<em>Automatisch (DHCP)</em>” auf “<em>Manuell</em>” geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.</p>
+<figure>
+<img src="./images/lamp-apache/server_lan.png" alt="" /><figcaption>Server - Dateneingabe im NetworkManager</figcaption>
+</figure>
+<p>Zusätzlich sollte im Reiter “<em>Allgemein</em>” die Option “<em>Automatisch mit Priorität verbinden</em>” aktiviert sein.<br />
+Sinngemäß nehmen wir am PC die entsprechenden Einstellungen für die verwendete LAN-Schnittstelle vor.</p>
+<p>Am PC testen wir die Verbindung in der Konsole mit</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">ping</span> -c3 www.server1.org</span></code></pre></div>
+<p>und bei Erfolg prüfen wir gleich die Funktion von Apache, indem wir in die Adresszeile des Webbrowsers “<em>http://www.server1.org/index.html</em>” eingeben.</p>
+<p>Die Apache-Begrüßungsseite mit “<em>It works!</em>” sollte erscheinen.</p>
+<h3 id="apache-konfiguration">Apache Konfiguration</h3>
+<p>Die Konfigurationsdateien und -verzeichnisse befindet sich im “<em>ServerRoot</em>” Verzeichnis “<em>/etc/apache2/</em>”.<br />
+Die zentrale Konfigurationsdatei ist “<em>apache2.conf</em>”. Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt über Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die benötigten eingebunden werden.</p>
+<p>Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss “<em>.conf</em>” lauten. Die gültigen Direktiven, die in den Konfigurationsdateien verwendet werden dürfen, beschreibt die <a href="https://httpd.apache.org/docs/current/de/">Apache Dokumentation</a> ausführlich.</p>
+<p>Die Dateien liegen in den Verzeichnissen</p>
+<p>“<em>/etc/apache2/conf-available</em>”,<br />
+“<em>/etc/apache2/mods-available</em>” und<br />
+“<em>/etc/apache2/sites-available</em>”.</p>
+<p>Ihre Aktivierungs-Links finden wir in</p>
+<p>“<em>/etc/apache2/conf-enable</em>”,<br />
+“<em>/etc/apache2/mods-enable</em>” und<br />
+“<em>/etc/apache2/sites-enable</em>”.</p>
+<p>Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle “<em>a2enconf</em>” und “<em>a2disconf</em>”. Das erstellt oder entfernt die Aktivierungs-Links.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">a2enconf</span> NAME_DER_DATEI.conf </span></code></pre></div>
+<p>Aktiviert die Konfiguration. Die Deaktivierung erfolgt entsprechend mit:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">a2disconf</span> NAME_DER_DATEI.conf </span></code></pre></div>
+<p>In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen “<em>a2enmod</em>”, “<em>a2ensite</em>” und “<em>a2dismod</em>”, “<em>a2dissite</em>”.</p>
+<p>Der Apache Webserver liest mit dem Befehl</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">systemctl</span> reload apache2.service</span></code></pre></div>
+<p>die geänderte Konfiguration ein.</p>
+<p>Nun kommen wir wieder auf unseren <em>LAMP-Testserver für Entwickler</em> zurück und passen die Konfiguration an die Serverdaten an.</p>
+<ol type="1">
+<li><p>Datei “<em>/etc/apache2/apache2.conf</em>”</p>
+<p>Es ist eine der wenigen Ausnahmen die <em>apache2.conf</em> zu editieren. Wir fügen zu Beginn des Abschnits <em>Global configuration</em> die folgende Zeile ein:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">ServerName</span> 192.168.3.1</span></code></pre></div>
+<p>Hiermit teilen wir dem Apache-Webserver die IP-Adresse mit, unter der das Entwicklungsprojekt erreichbar sein soll und unterdrücken Umleitungen zur IP 127.0.1.1 mit Fehlermeldungen.</p></li>
+<li><p>Neue “<em>sites</em>”-Datei</p>
+<p>Mit dem Texteditor unserer Wahl erstellen wir die Datei “<em>/etc/apache2/sites-available/server1.conf</em>” z. B.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">mcedit</span> /etc/apache2/sites-available/server1.conf</span></code></pre></div>
+<p>und fügen den folgenden Inhalt ein, speichern die Datei und beenden den Editor.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode apache"><code class="sourceCode apache"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">&lt;VirtualHost</span><span class="at"> *:80</span><span class="fu">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    ServerName<span class="st"> server1.org</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    ServerAlias<span class="st"> www.server1.org</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>    ServerAdmin<span class="st"> webmaster@localhost</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>    DocumentRoot<span class="st"> /var/www/html</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>    ErrorLog<span class="st"> ${APACHE_LOG_DIR}/error_server1.log</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>    CustomLog<span class="st"> ${APACHE_LOG_DIR}/access_server1.log combined</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a><span class="fu">&lt;/VirtualHost&gt;</span></span></code></pre></div>
+<p>Anschließend stellen wir die Konfiguration auf den neuen “<em>VirtualHost</em>” um und geben die Änderungen dem Apache Webserver bekannt.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="co"># a2ensite server1.conf </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  <span class="ex">Enabling</span> site server1.</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>[<span class="ex">...</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="co"># a2dissite 000-default.conf </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>  <span class="ex">Site</span> 000-default disabled.</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>[<span class="ex">...</span>]</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="ex">systemctl</span> reload apache2.service</span></code></pre></div></li>
+</ol>
+<h3 id="benutzer-und-rechte">Benutzer und Rechte</h3>
+<p>Der Apache Webserver läuft mit der USER.GROUP “<em>www-data.www-data</em>” und “<em>DocumentRoot</em>” gehört unmittelbar nach der Installation “<em>root.root</em>”.<br />
+Um Benutzern Schreibrechte für die in “<em>DocumentRoot</em>” enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe “<em>www-data</em>” zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.<br />
+Wir nennen die neue Gruppe “<em>developer</em>”.</p>
+<p><strong>Mit CMS</strong></p>
+<p>Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung von Webseiten-Inhalten) hinzugefügt, bereiten wir “<em>DocumentRoot</em>” entsprechend vor:</p>
+<ol type="1">
+<li><p>Gruppe anlegen und dem Benutzer zuweisen.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">groupadd</span> developer</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">adduser</span> BENUTZERNAME developer</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="fu">chgrp</span> developer /var/www/html</span></code></pre></div>
+<p>Um die neuen Rechte zu aktivieren, muss man sich einmal ab- und neu anmelden oder als Benutzer den Befehl newgrp verwenden.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">newgrp</span> developer</span></code></pre></div></li>
+<li><p>SGID-Bit für “<em>DocumentRoot</em>” setzen,<br />
+damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe “<em>developer</em>” erben.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">chmod</span> g+s /var/www/html</span></code></pre></div></li>
+<li><p>Eigentümer und Dateirechte anpassen,<br />
+damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läft.<br />
+Wir schauen uns die derzeitigen Rechte an:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="co"># ls -la /var/www/html</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">insgesamt</span> 24</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ex">drwxr-sr-x</span> 2 root developer  4096  9. Jan 19:32 .           (DocumentRoot mit SGID-Bit)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="ex">drwxr-xr-x</span> 3 root root       4096  9. Jan 19:04 ..          (Das übergeordnete Verzeichnis /var/www)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 root developer 10701  9. Jan 19:04 index.html</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 root developer    20  9. Jan 19:32 info.php</span></code></pre></div>
+<p>Wir ändern für “<em>DocumentRoot</em>” den Eigentümer zu “<em>www-data</em>”, geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">chown</span> -R www-data /var/www/html</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="fu">chmod</span> -R g+w /var/www/html</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="fu">chmod</span> -R o-r /var/www/html</span></code></pre></div>
+<p>Das Ergebnis überprüfen wir noch einmal.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="co"># ls -la /var/www/html</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">insgesamt</span> 24</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="ex">dr-xrws--x</span> 2 www-data developer  4096  9. Jan 19:32 .</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="ex">drwxr-xr-x</span> 3 root     root       4096  9. Jan 19:04 ..</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a><span class="ex">-rw-rw----</span> 1 www-data developer 10701  9. Jan 19:04 index.html</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a><span class="ex">-rw-rw----</span> 1 www-data developer    20  9. Jan 19:32 info.php</span></code></pre></div>
+<p>Jetzt haben in “<em>DocumentRoot</em>” nur Mitglieder der Gruppe “<em>developer</em>” Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.</p></li>
+<li><p>Nachteile dieser Einstellungen</p>
+<p>Beim Anlegen neuer Verzeichnisse und Dateien unterhalb “<em>DocumentRoot</em>” ist der Eigentümer der jeweilige “<em>User</em>” und nicht “<em>www-data</em>”. Dadurch kann der Apache-Webserver die Dateien nicht lesen.<br />
+Abhilfe schafft eine “<em>Systemd Path Unit</em>”, die Änderungen unterhalb “<em>DocumentRoot</em>” überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite <a href="./0415-systemd-path_de.html#systemd-path">Systemd-Path</a>.)</p></li>
+</ol>
+<p><strong>Ohne CMS</strong></p>
+<p>Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an “<em>DocumentRoot</em>” entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in “<em>DocumentRoot</em>”.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="fu">chmod</span> -R u-w /var/www/html</span></code></pre></div>
+<h3 id="sicherheit---standard-konfiguration-in-apache">Sicherheit - Standard Konfiguration in Apache</h3>
+<p>Wichtige Absicherungen enthält die Datei “<em>/etc/apache2/apache2.conf</em>” bereits standardmäßig.</p>
+<p>Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und geben dann die beiden vom Apache-Webserver verwendeten Verzeichnisse “<em>/usr/share</em>” und “<em>/var/www</em>” frei.</p>
+<pre class="apacheconf"><code>&lt;Directory /&gt;
+    Options FollowSymLinks
+    AllowOverride None
+    Require all denied
+&lt;/Directory&gt;
+
+&lt;Directory /usr/share&gt;
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+
+&lt;Directory /var/www/&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;</code></pre>
+<p>Die Optionen “<em>FollowSymLinks</em>” und “<em>Indexes</em>” bergen ein Sicherheitsrisiko und sollten geändert werden, sofern sie nicht unbedingt notwendig sind. Siehe weiter unten.</p>
+<p>Die folgende Direktive unterbindet die Anzeige der Dateien “<em>.htaccess</em>” und “<em>.htpasswd</em>”.</p>
+<pre class="apacheconf"><code>&lt;FilesMatch &quot;^\.ht&quot;&gt;
+    Require all denied
+&lt;/FilesMatch&gt;</code></pre>
+<h3 id="sicherheit---weitere-konfigurationen">Sicherheit - weitere Konfigurationen</h3>
+<ul>
+<li><p>In der Datei <strong>/etc/apache2/apache2.conf</strong></p>
+<p><strong>FollowSymLinks</strong> kann dazu führen, dass Inhalte außerhalb “<em>DocumentRoot</em>” gelistet werden.<br />
+<strong>Indexes</strong> listet den Inhalt eines Verzeichnisses, sofern keine “<em>index.html</em>” oder “<em>index.php</em>” usw. vorhanden ist.</p>
+<p>Es ist empfehlenswert “<em>FollowSymLinks</em>” zu entfernen und die Projektdaten alle unterhalb “<em>DocumentRoot</em>” abzulegen. Für die Option “<em>Indexes</em>” ist der Eintrag zu ändern in</p>
+<pre class="apacheconf"><code>Options -Indexes</code></pre>
+<p>wenn die Anzeige des Verzeichnisinhaltes <strong>nicht</strong> erwünscht ist.<br />
+Alternativ erstellt man in dem Verzeichnis eine leere “<em>index</em>”-Datei, die an Stelle des Verzeichnisinhaltes an den Client ausgeliefert wird. Zum Beispiel für das “<em>upload</em>”-Verzeichnis:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>$ <span class="bu">echo</span> <span class="st">&quot;&lt;!DOCTYPE html&gt;&quot;</span> <span class="op">&gt;</span> /var/www/html/upload/index.html</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>     <span class="ex">oder</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>$ <span class="bu">echo</span> <span class="st">&quot;&lt;?php&quot;</span> <span class="op">&gt;</span> /var/www/html/upload/index.php</span></code></pre></div></li>
+<li><p>In der Host-Konfiguration <strong>/etc/apache2/sites-available/server1.conf</strong></p>
+<p>können wir mit dem “<em>&lt;Directory&gt;</em>”-Block alle IP-Adressen sperren, außer die darin gelisteten.</p>
+<pre class="apacheconf"><code>&lt;Directory &quot;/var/www/html&quot;&gt;
+    Order deny,allow
+    Deny from all
+    Allow from 192.168.3.10
+    Allow from 192.168.3.1
+&lt;/Directory&gt;</code></pre></li>
+<li><p><strong>“merging”</strong> der Konfiguration</p>
+<p>Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb “<em>ServerRoot</em>” und auf die “<em>.htaccess</em>”-Dateien in “<em>DocumentRoot</em>”. Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gewünschte Wirkung zu erzielen.<br />
+Wir empfehlen dringend die Webseite<br />
+<a href="https://httpd.apache.org/docs/current/de/sections.html#merging">apache.org - How the sections are merged</a><br />
+intensiv zu Rate zu ziehen.</p></li>
+<li><p>Der <strong>Eigentümer</strong> von “<em>DocumentRoot</em>”</p>
+<p>ist nach der Installion “<em>root.root</em>” und sollte unbedingt geändert werden. Siehe hierzu das Kapitel <a href="#benutzer-und-rechte">Benutzer und Rechte</a>.</p></li>
+</ul>
+<h3 id="https-verwenden">HTTPS verwenden</h3>
+<p>Ohne HTTPS geht heute kein Webseitenprojekt an den Start.<br />
+Wie man ein Zertifikat erlangt beschreibt die Webseite <a href="https://www.https-guide.de/">HTTP-Guide</a> ausführlich und leicht verständlich.</p>
+<p>Wir legen zuerst die nötigen Ordner innerhalb “<em>DocumentRoot</em>” an:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="bu">cd</span> /etc/apache2/</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">mkdir</span> ssl ssl/certs ssl/privat</span></code></pre></div>
+<p>In diesen legen wir die Certifikatsdatei <em>server1.org.crt</em> und den privaten Schlüssel <em>server1.org.key</em> ab.</p>
+<p>Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chown</span> -R root.root ssl</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> -R o-rwx ssl</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> -R g-rwx ssl</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> u-w ssl/certs/server1.org.crt</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> u-w ssl/private/server1.org.key</span></code></pre></div>
+<p>Der ls-Befehl zur Kontrolle:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">ls</span> -la ssl</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>   <span class="ex">insgesamt</span> 20</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>   <span class="ex">drwx------</span> 5 root root 4096 25. Jan 18:17 .</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>   <span class="ex">drwxr-xr-x</span> 9 root root 4096 25. Jan 18:43 ..</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a>   <span class="ex">drwx------</span> 2 root root 4096 25. Jan 18:16 certs</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a>   <span class="ex">drwx------</span> 2 root root 4096 25. Jan 18:16 private</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">ls</span> -l ssl/certs</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true"></a>   <span class="ex">-r--------</span> 1 root root 1216 25. Jan 15:27 server1.org.crt</span></code></pre></div>
+<h3 id="sicherheits-tipps">Sicherheits Tipps</h3>
+<ul>
+<li><p>Die Apache Dokumentation enhält eine empfehlenswerte Seite mit diversen Tipps zur Absicherung.<br />
+<a href="https://httpd.apache.org/docs/current/de/misc/security_tips.html">apache.org - Security Tipps</a> (englisch)</p></li>
+<li><p>Darüber hinaus finden sich im Internet zahlreiche Hinweise zum sicheren Betrieb des Apache Webservers.</p></li>
+<li><p>Die regelmäßige Kontrolle der Logdateien in “<em>/var/log/apache2/</em>” hilft um Fehler oder Sicherheitslücken zu erkennen.</p></li>
+<li><p>Sollte der Server, anders als in dieser Handbuchseite vorgesehen, mit dem lokalen Netzwerk oder mit dem Internet verbunden werden, ist eine Firewall unerlässlich.</p></li>
+</ul>
+<h3 id="integration-in-apache2">Integration in Apache2</h3>
+<p>Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei “<em>/etc/apache2/sites-available/server1.conf</em>” zu bearbeiten.</p>
+<ul>
+<li><p>Eine neue VirtualHost-Directive wird zu Beginn eingefügt. Diese leitet eingehende Client-Anfragen von Port 80 mittels “<em>Redirect</em>” auf Port 443 (ssl) weiter.</p></li>
+<li><p>Die bisherige VirtualHost-Directive wird auf Port 443 umgeschrieben.</p></li>
+<li><p>Nach den Standard Host-Anweisungen fügen wir die SSL-Anweisungen ein.</p></li>
+<li><p>Für den Fall, dass unser Webprojekt dynamisch generierte Webseiten enthalten soll, werden die beiden letzten FileMatch- und Directory-Direktiven mit der “<em>SSLOptions</em>”-Anweisung eingefügt.</p></li>
+</ul>
+<p>Die erweiterte “<em>server1.conf</em>” weist dann folgenden Inhalt auf:</p>
+<pre class="apacheconf"><code>&lt;VirtualHost *:80&gt;
+    ServerName server1.org
+    ServerAlias www.server1.org
+    Redirect / https://server1.org/
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+    ServerName server1.org
+    ServerAlias www.server1.org
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog ${APACHE_LOG_DIR}/error_server1.log
+    CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
+
+    SSLEngine on
+    SSLProtocol all -SSLv2 -SSLv3
+    SSLCertificateFile      /etc/apache2/ssl/certs/server1.org.crt
+    SSLCertificateKeyFile   /etc/apache2/ssl/private/server1.org.key
+
+    &lt;Directory &quot;/var/www/html&quot;&gt;
+        Order deny,allow
+        Deny from all
+        Allow from 192.168.3.10
+        Allow from 192.168.3.1
+    &lt;/Directory&gt;
+
+    &lt;FilesMatch &quot;\.(cgi|shtml|phtml|php)$&quot;&gt;
+        SSLOptions +StdEnvVars
+    &lt;/FilesMatch&gt;
+
+    &lt;Directory /usr/lib/cgi-bin&gt;
+        SSLOptions +StdEnvVars
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+<p>Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf “<em>ServerRoot</em>” liegt (das ist die Regel), können wir in “<em>DocumentRoot</em>” die Datei “<em>.htaccess</em>” um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.</p>
+<pre class="apacheconf"><code>&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+&lt;/IfModule&gt;</code></pre>
+<h3 id="quellen">Quellen</h3>
+<p><a href="https://httpd.apache.org/docs/current/de/">apache.org - Dokumentation</a> (teilweise deutsch)<br />
+<a href="https://httpd.apache.org/docs/current/de/configuring.html">apache.org - Konfigurationsdateien</a><br />
+<a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org - SSL Howto</a><br />
+<a href="https://www.https-guide.de/">HTTPS Guide - Servercertifikate erstellen und integrieren</a></p>
+<div id="rev">
+Zuletzt bearbeitet: 2021-01-30
+</div>
+</body>
+</html>

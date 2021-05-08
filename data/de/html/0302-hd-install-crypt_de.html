@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Installation auf verschlüsselte root-Partition</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #CCC; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Installation auf verschlüsselte root-Partition</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#installation-auf-verschlüsselte-root-partition">Installation auf verschlüsselte root-Partition</a>
+<ul>
+<li><a href="#verschlüsselung-innerhalb-von-lvm-gruppen">Verschlüsselung innerhalb von LVM-Gruppen</a></li>
+<li><a href="#crypt-mit-traditioneller-partitionierung">crypt mit traditioneller Partitionierung</a>
+<ul>
+<li><a href="#grundannahmen">Grundannahmen</a></li>
+<li><a href="#die-partition-boot">Die Partition /boot</a></li>
+<li><a href="#verschlüsselte-swap-partition">Verschlüsselte swap-Partition</a></li>
+<li><a href="#verschlüsselte-partition">Verschlüsselte Partition /</a></li>
+</ul></li>
+<li><a href="#start-des-installers">Start des Installers</a></li>
+<li><a href="#weitere-informationen">Weitere Informationen</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="installation-auf-verschlüsselte-root-partition">Installation auf verschlüsselte root-Partition</h2>
+<pre class="note"><code>Anmerkung:
+ Es gibt Wichtiges zu beachten, wenn Root- oder Datenpartitionen verschlüsselt werden. Darunter;  </code></pre>
+<ul>
+<li>Folgende Anleitung beinhaltet nur Grundlegendes. Wir raten, mehr über LUKS, cryptsetup und Verschlüsselung in Erfahrung zu bringen. Weitere Quellen sind am Ende dieser Seite verlinkt. Die gelisteten Informationen sind nur erste weitere Schritte. Englischkenntnisse sind notwendig.</li>
+<li>cryptsetup kann keine existierende Datenpartition verschlüsseln, daher muss eine neue Partition erstellt werden, die mit cryptsetup aufgesetzt wird. Im Anschluss können Daten auf diese Partition geschrieben werden.</li>
+<li>Es können auch Schlüsseldateien verwendet werden. Für Daten können Mehrfachschlüssel verwendet werden (bis zu maximal acht). Dies wird in dieser Anleitung nicht erläutert.</li>
+<li>Bitte vergiss nicht Deine Passwörter! Ohne sie kann auf die Daten nicht mehr zugegriffen werden! Auch mittels chroot mit Passwörtern kann nur auf /boot zugegriffen werden.</li>
+<li>Das Passwort wird früh im Bootprozess abgefragt und das System startet danach wie vorgesehen.</li>
+</ul>
+<p><strong>Verschlüsselungsbeispiele:</strong></p>
+<ul>
+<li><a href="hd-install-crypt-de.htm#lvm">Verschlüsselung innerhalb von LVM-Gruppen</a> .</li>
+<li><a href="hd-install-crypt-de.htm#simple">Anmerkungen zur Verschlüsselung mit traditioneller Partitionierung</a> .</li>
+</ul>
+<h3 id="verschlüsselung-innerhalb-von-lvm-gruppen">Verschlüsselung innerhalb von LVM-Gruppen</h3>
+<pre class="note"><code>Anmerkung:
+ Dieses Beispiel nutzt die Verschlüsselung innerhalb des LVM-Volumens, um /home von `/` abzutrennen 
+ und eine Swap-Partition zu haben, ohne multiple Passwörter verwenden zu müssen.</code></pre>
+<p>Bevor der Installer gestartet werden kann, muss das Dateisystem, welches für die Installation verwendet wird, vorbereitet werden. Eine einfache Anleitung dazu findet sich im Kapitel <a href="part-lvm-de.htm#part=lvm">Logical Volume Manager - LVM-Partitionierung</a> .</p>
+<p>Man benötigt zumindest ein nicht verschlüsseltes <code>/boot</code> -Dateisystem und ein verschlüsseltes Dateisystem für <strong><code>/</code></strong> . Ferner sind verschlüsselte Dateisysteme für <code>/home und swap</code> anzulegen.</p>
+<ol type="1">
+<li><p>Falls nicht geplant ist, eine existierende LVM-Gruppe zu verwenden, wird eine normale LVM-Gruppe angelegt. In diesem Beispiel wird angenommen, dass die LVM-Gruppe <code>vg</code> benannt ist und Boot sowie verschlüsselte Daten beinhaltet.</p></li>
+<li><p>Ein LVM wird für /boot und die verschlüsselten Daten benötigt. Mit <code>lvcreate</code> werden LVMs in <code>vg</code> mit gewünschter Größe erstellt:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">lvcreate</span> -n boot --size 250m vg</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">lvcreate</span> -n crypt --size 300g vg</span></code></pre></div>
+<p>Mit diesen Befehlen wurden die LVMs “boot” und “crypt” benannt, ihre Größen sind 250MByte bzw. 300GByte.</p></li>
+<li><p>Nun wird das Dateisystem für <code>/boot</code> erstellt, damit es im Installer vorhanden ist:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">mkfs.ext4</span> /dev/mapper/vg-boot</span></code></pre></div></li>
+<li><p><code>cryptsetup</code> wird nun verwendet, um <code>vg-crypt</code> zu verschlüsseln. Dabei wird die schnellere Option xts mit dem stärksten Schlüssel (Länge: 512bit) verwendet. Danach wird das Dateisystem geöffnet. Es wird zweimal nach dem Passwort gefragt, um es zu setzen, und ein drittes Mal, um das Dateisystem zu öffnen. Geöffnet wird es mit den Default-Bootoptionen von cryptopt und dem Zielnamen cryptroot:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/mapper/vg-crypt</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> luksOpen /dev/mapper/vg-crypt cryptroot</span></code></pre></div></li>
+<li><p>Nun wird die LVM innerhalb des verschlüsselten Dateisystems verwendet, um eine zweite LVM-Gruppe zu erstellen, welche für <code>/swap</code> und <code>/home</code> verwendet wird. Man verwendet <code>pvcreate</code> cryptroot zur Erstellung eines physischen LVM und <code>vgcreate</code> , um eine weitere LVM-Gruppe zu erstellen. Wir nennen sie <code>cryptvg</code> :</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">pvcreate</span> /dev/mapper/cryptroot</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">vgcreate</span> cryptvg /dev/mapper/cryptroot</span></code></pre></div></li>
+<li><p>Als nächstes verwenden wir <code>lvcreate</code> mit der neuen verschlüsselten LVM-Gruppe <code>cryptvg</code> , um die LVMs <strong><code>/</code></strong> , <code>/swap</code> und <code>/home</code> mit der gewünschten Größe zu erstellen:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">lvcreate</span> -n swap --size 2g cryptvg</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">lvcreate</span> -n root --size 40g cryptvg</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="ex">lvcreate</span> -n home --size 80g cryptvg</span></code></pre></div>
+<p>Nun wurden die LVMs swap, root und home mit den Größen 2GB, 40GB bzw. 80GB erstellt.</p></li>
+<li><p>Nun werden die Dateisysteme für cryptvg-swap, cryptvg-root und cryptvg-home erstellt, damit sie für den Installer vorhanden sind:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">mkswap</span> /dev/mapper/cryptvg-swap</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">mkfs.ext4</span> /dev/mapper/cryptvg-root</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">mkfs.ext4</span> /dev/mapper/cryptvg-home</span></code></pre></div></li>
+<li><p><strong>Der Installer kann nun gestartet werden, in dem folgende Optionen benutzt werden sollen:</strong></p>
+<p><code>vg-boot</code> für <code>/boot</code>,</p>
+<p><code>cryptvg-root</code> für <code>/</code>,</p>
+<p><code>cryptvg-home</code> für <code>/home</code>,</p>
+<p>und <code>cryptvg-swap</code> für <code>swap</code> sollten automatisch erkannt werden.</p></li>
+</ol>
+<p>Das installierte System sollte eine Kernel-Befehlszeile mit folgenden Optionen aufweisen:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="va">root=</span>/dev/mapper/cryptvg-root <span class="va">cryptopts=</span>source=<span class="ex">/dev/mapper</span>/<span class="ex">vg-crypt</span>,target=cryptroot,lvm=cryptvg-root</span></code></pre></div>
+<p>crypt und boot sind innerhalb der LVM-Gruppe vg und root, home wie swap sind innerhalb der LVM-Gruppe vgcrypt (innerhalb des passwortgeschützten verschlüsselten Bereichs).</p>
+<pre class="note"><code>Falls auf ein bereits verschlüsseltes LVM-Volume installiert wird, muss dem Installer diese Information bereitgestellt werden:</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> luksOpen /dev/mapper/cryptvg-root cryptvg</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">vgchange</span> -a y</span></code></pre></div>
+<h3 id="crypt-mit-traditioneller-partitionierung">crypt mit traditioneller Partitionierung</h3>
+<p>Als erstes muss das Layout der Festplatte festgelegt werden. Es werden mindestens zwei Partitionen benötigt, eine normale Partition für <code>/boot</code> und eine für die verschlüsselten Daten.</p>
+<p>Falls swap benötigt wird (swap sollte auch verschlüsselt sein), wird eine dritte Partition benötigt. Das Passwort für swap muss während des Bootvorgangs extra eingegeben werden (es gibt zwei Passwortabfragen).</p>
+<p>Es ist möglich, für swap Schlüssel von innerhalb des verschlüsselten Systems zu benutzen, dann jedoch ist ein suspend-to-disk nicht möglich. Aus diesem Grund ist es langfristig besser, LVMs mit voll verschlüsselten Partitionen und Schlüsseln zu verwenden..</p>
+<h4 id="grundannahmen">Grundannahmen</h4>
+<ul>
+<li><p>Es gibt nur drei Partitionen auf der Festplatte:</p>
+<p><code>/boot</code> mit 250MB<br />
+<code>/swap</code> mit 2GB<br />
+<strong><code>/</code></strong> und <code>/home</code> vereint: Rest.</p></li>
+<li><p>Es werden zwei Passwörter verwendet, eines für swap, das andere für die gemeinsame Partition für <strong><code>/</code></strong> und <code>/home</code> .</p></li>
+</ul>
+<p>Nach Abschluss der Partitionierung müssen die verschlüsselten Partitionen vorbereitet werden, damit sie vom Installer erkannt werden.</p>
+<p>Falls ein Partitionierungsprogramm mit graphischer Oberfläche benutzt wurde, muss dieses beendet werden und ein Terminal geöffnet, da die Verschlüsselungsbefehle über die Befehlszeile eingegeben werden.</p>
+<h4 id="die-partition-boot">Die Partition /boot</h4>
+<p>Die Partition <code>/boot</code> wird mit ext4 formatiert, falls dies noch nicht erledigt wurde:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">/sbin/mkfs.ext4</span> /dev/sda1</span></code></pre></div>
+<h4 id="verschlüsselte-swap-partition">Verschlüsselte swap-Partition</h4>
+<p>Für die <code>verschlüsselte swap</code> muss das Gerät <code>/dev/sda2</code> zunächst formatiert und als verschlüsseltes Gerät geöffnet werden - wie vg-crypt oben, aber unter einem anderen Namen: swap.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda2</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> luksOpen /dev/sda2 swap</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;swap UUID=</span><span class="va">$(</span><span class="ex">blkid</span> -o value -s UUID /dev/sda2<span class="va">)</span><span class="st"> none luks&quot;</span> <span class="op">&gt;&gt;</span> /etc/crypttab</span></code></pre></div>
+<p>Die erstellte <code>/dev/mapper/swap</code> wird formatiert, damit der Installer sie erkennen kann:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="ex">/sbin/mkswap</span> /dev/mapper/swap</span></code></pre></div>
+<h4 id="verschlüsselte-partition">Verschlüsselte Partition /</h4>
+<p>Für die <code>verschlüsselte /</code> muss das Gerät <code>/dev/sda3</code> zunächst formatiert und als verschlüsseltes Gerät geöffnet werden - wie vg-crypt oben.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> --verify-passphrase --cipher aes-xts-plain:sha512 luksFormat /dev/sda3</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="ex">cryptsetup</span> luksOpen /dev/sda3 cryptroot</span></code></pre></div>
+<p>Die erstellte <code>/dev/mapper/cryptroot</code> wird formatiert, damit der Installer sie sehen kann:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="ex">/sbin/mkfs.ext4</span> /dev/mapper/cryptroot</span></code></pre></div>
+<h3 id="start-des-installers">Start des Installers</h3>
+<p><strong>Nun kann der Installer geöffent werden und folgende Optionen sind zu benutzen:</strong><br />
+<code>sda1</code> für <code>/boot</code><br />
+<code>cryptroot</code> für <strong><code>/</code></strong> und <code>/home</code><br />
+<code>swap</code> sollten automatisch erkannt werden.</p>
+<p>Das installierte System sollte eine Kernel-Befehlszeile mit folgenden Optionen aufweisen (UUID wird benutzt):</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="va">root=</span>/dev/mapper/cryptroot <span class="va">cryptopts=</span>source=<span class="va">UUID=</span>12345678-1234-1234-1234-1234567890AB, <span class="va">target=</span>cryptroot</span></code></pre></div>
+<p>/boot ist nun eine normale Partition, die swap-Partition ist verschlüsselt wie eine gemeinsame Partition für root und /home.</p>
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+<p>Unbedingt zu lesen:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="fu">man</span> cryptsetup</span></code></pre></div>
+<p><a href="http://code.google.com/p/cryptsetup/">LUKS</a> (Englisch)<br />
+<a href="http://www.redhat.com/">Redhat</a> und <a href="http://www.redhat.com/Fedora/">Fedora</a><br />
+<a href="http://www.enterprisenetworkingplanet.com/netsecur/article.php/3683011">Protect Your Stuff With Encrypted Linux Partitions</a> (Englisch)<br />
+<a href="http://blog.bodhizazen.net/linux/kvm-how-to-use-encrypted-images/">KVM how to use encrypted images</a> (Englisch)<br />
+<a href="http://wiki.siduction.de/index.php?title=Installation_auf_einer_verschl%C3%Bcsselten_Festplatte">siduction-WIKI-Eintrag</a></p>
+<div id="rev">
+Page last revised 2021-04-14
+</div>
+</body>
+</html>

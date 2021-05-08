@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>siduction ISO download und brennen</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #CCC; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">siduction ISO download und brennen</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#iso-download-und-brennen">ISO download und brennen</a>
+<ul>
+<li><a href="#siduction-iso-herunterladen">siduction ISO herunterladen</a></li>
+<li><a href="#dateien-der-siduction-spiegelserver">Dateien der siduction-Spiegelserver</a></li>
+<li><a href="#md5sum-und-integritätsprüfung">md5sum und Integritätsprüfung</a></li>
+<li><a href="#live-dvd-mit-windows-brennen">Live-DVD mit Windows brennen</a></li>
+<li><a href="#die-dvd-mit-linux-brennen">Die DVD mit Linux brennen</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="iso-download-und-brennen">ISO download und brennen</h2>
+<h3 id="siduction-iso-herunterladen">siduction ISO herunterladen</h3>
+<p><strong>Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.</strong></p>
+<p><strong>Europa</strong></p>
+<ul>
+<li><p><strong>Freie Universität Berlin/ spline (Student Project LInux NEtwork), Deutschland</strong><br />
+http://ftp.spline.de/mirrors/siduction/iso/<br />
+ftp://ftp.spline.de/pub/siduction/iso/</p></li>
+<li><p><strong>Universität Stuttgart</strong><br />
+http://ftp.uni-stuttgart.de/siduction/iso/<br />
+ftp://ftp.uni-stuttgart.de/siduction/iso/</p></li>
+<li><p><strong>Office Vienna</strong><br />
+https://siduction.office-vienna.at/iso/</p></li>
+</ul>
+<p><strong>Nordamerika</strong></p>
+<ul>
+<li><p><strong>University of Delaware</strong><br />
+http://mirror.lug.udel.edu/pub/siduction/iso<br />
+ftp://ftp.lug.udel.edu/pub/siduction/iso<br />
+rsync://rsync.lug.udel.edu/siduction/iso</p></li>
+<li><p><strong>Georgia Tech</strong><br />
+http://www.gtlib.gatech.edu/pub/siduction/iso<br />
+ftp://ftp.gtlib.gatech.edu/pub/siduction/iso<br />
+rsync://rsync.gtlib.gatech.edu/siduction/iso</p></li>
+</ul>
+<h3 id="dateien-der-siduction-spiegelserver">Dateien der siduction-Spiegelserver</h3>
+<p>Jeder Spiegelserver umfasst folgende Dateien:</p>
+<p>siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.arch.manifest<br />
+siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso<br />
+MD5SUM<br />
+MD5SUM.gpg<br />
+SHA256SUM<br />
+SHA256SUM.gpg<br />
+SOURCES</p>
+<p>Die <strong>.manifest</strong>-Datei listet alle Pakete der jeweiligen ISO.</p>
+<p><strong>.iso</strong> ist die für den Download angebotene Abbilddatei.</p>
+<p>Die Dateien <strong>.md5</strong> und <strong>.sha256</strong> dienen der Überprüfung der Integrität der ISO.</p>
+<p>Die <strong>.gpg</strong>-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.html5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.</p>
+<p>Download-Links und Spiegelserver findet man auf <a href="https://forum.siduction.org/index.php?page=7">siduction.org</a></p>
+<p>Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.</p>
+<p>Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den <a href="https://siduction.org">siduction-Foren</a> oder im IRC irc.oftc.net:6667 #siduction-de erreichbar.</p>
+<h3 id="md5sum-und-integritätsprüfung">md5sum und Integritätsprüfung</h3>
+<p>Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dem Netz immer ratsam ist und viel Zeit für die Fehlersuche erspart.</p>
+<p>Die Datei ist unbeschädigt heruntergeladen worden, wenn die md5sum der heruntergeladenen Datei mit der Summe in der MD5-Datei übereinstimmt. Unter Linux erhält man die md5sum einer Datei mit:</p>
+<pre><code>$ md5sum zu_prüfende_datei</code></pre>
+<p>Das dauert ein wenig und die Summe wird dann in der Konsole ausgegeben und kann dann mit der Summe wie sie in der entsprechenden *.md5 Datei hinterlegt ist manuell verglichen werden. Die md5 Datei kann dazu in einem Texteditor geöffnet werden. Mit dem md5summer (486 KB) kann die md5sum auch in Windows geprüft werden.</p>
+<p>Einfacher ist die Überprüfung unter Linux mit folgendem Befehl, ausgeführt in dem Verzeichnis, in welchen sich sowohl die ISO-Datei als auch die ISO.MD5-Datei befinden:</p>
+<pre><code>$ md5sum -c zu_prüfende_datei.md5</code></pre>
+<p>Je nachdem ob die Prüfsummen übereinstimmen, erhält man vom Programm eine Meldung:</p>
+<pre><code>md5-Summe: zu_überprüfende_datei: ok</code></pre>
+<p>oder</p>
+<pre><code>siduction-Name.iso: Fehlschlag md5sum: Warnung: 1 von 1 berechneten Prüfsumme stimmen nicht überein.</code></pre>
+<p>Die ISO-Abbilddateien von siduction werden immer mit der entsprechenden md5sum zum Download angeboten und sollten stets vor dem Brennen geprüft werden.</p>
+<p>Diese Dateien werden vom Spiegelserver heruntergeladen:</p>
+<p>siductionname.iso siductionname.iso.md5</p>
+<p>Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter</p>
+<pre><code>$ man sha256sum</code></pre>
+<h3 id="live-dvd-mit-windows-brennen">Live-DVD mit Windows brennen</h3>
+<warning>
+<strong>WICHTIGE INFORMATION:</strong><br />siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
+</warning>
+<p>Selbstverständlich kann die DVD auch in Windows gebrannt werden. Die heruntergeladene Datei muss als ISO-Abbilddatei gebrannt werden. Falls Winrar (oder ein anderes Archivierungsprogramm) mit einer ISO-Datei verknüpft ist, könnte dieses Programm die ISO-Datei als eine Archivdatei ansehen. Aus der ISO-Datei muss eine DVD gebrannt werden.</p>
+<p>Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.</p>
+<p><strong>Open-Source-Software für Windows</strong></p>
+<ul>
+<li>cdrtfe: kompatibel mit Windows 9x/ME/2000/XP, Vista, 7 und 8. (getestet mit Win95, Win98SE, Win2000, WinXP). Nur für Win9x/ME: funktionierende ASPI-Layer (z. B. Adaptec ASPI 4.60)</li>
+<li>LinuxLive USB Creator, ein Open-Source-Projekt, bietet eine GUI-Applikation für MS Windows™, welche es ermöglicht, eine siduction-i386.iso (32 bit) auf einen USB-Stick zu installieren.</li>
+</ul>
+<p><strong>Closed-Source- und proprietäre Software für Windows</strong></p>
+<ul>
+<li>CD/DVD Burner XP pro</li>
+<li>Burncdcc von <a href="https://www.terabyteunlimited.com/downloads-free-software.htm">terabyteunlimited</a> kann nur ISO-Abbilddateien brennen.</li>
+</ul>
+<h3 id="die-dvd-mit-linux-brennen">Die DVD mit Linux brennen</h3>
+<warning>
+<strong>WICHTIGE INFORMATION:</strong><br />siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
+</warning>
+<p>Wer bereits Linux auf dem Rechner hat, kann die DVD mit jedem installierten Brennprogramm erstellen. Bei siduction ist K3b das Standard-Brennprogramm. Dort muss man den Menüpunkt “Extras” -&gt; “ISO-Abbild brennen…” anklicken, das zu brennende ISO-File (z.B. siduction-18.3.0-patience-kde-amd64-201805132121.iso) auswählen und den Brennmodus DAO (Disk At Once) einstellen.</p>
+<p>K3b berechnet zuerst die MD5-Summe des ISO-Files (dauert einen Moment). Stimmt die angezeigte Prüfsumme mit der angegebenen Zeichenfolge der sich im selben Ordner befindlichen MD5-Datei (z.B. siduction-Name.iso.html5) überein, war der Download erfolgreich und die Datei kann mit einem Klick auf “Start” gebrannt werden.</p>
+<p>Klickt man auf die berechnete Prüfsumme, erscheint daneben ein Symbol. Klickt man wiederum darauf und fügt in das Feld die Prüfsumme aus der MD5-Datei ein, so werden die beiden Prüfsummen verglichen.</p>
+<p>Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript burniso verwenden. Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X).</p>
+<div id="rev">
+Zuletzt bearbeitet: 2021-05-05
+</div>
+</body>
+</html>

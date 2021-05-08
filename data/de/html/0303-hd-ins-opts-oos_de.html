@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Installation auf USB-Stick / Speicherkarte</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #CCC; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Installation auf USB-Stick / Speicherkarte</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#installation-auf-usb-stick---speicherkarte">Installation auf USB-Stick - Speicherkarte</a>
+<ul>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+<li><a href="#wichtige-information">Wichtige Information</a></li>
+<li><a href="#mit-linux-betriebssystemen">Mit Linux-Betriebssystemen</a></li>
+<li><a href="#mit-ms-windows">Mit MS Windows</a></li>
+<li><a href="#mit-mac-os-x">Mit Mac OS X</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="installation-auf-usb-stick---speicherkarte">Installation auf USB-Stick - Speicherkarte</h2>
+<p><strong>Nachfolgend beschrieben wir Methoden der Installation einer siduction-ISO auf einen USB-Stick, eine SSD-Karte, einem SHDC-Gerät (Secure Digital High Capacity card) jeweils unter Verwendung einer anderen Linuxdistribution, MS Windows™ oder Mac OS X™.</strong></p>
+<p>Dabei wird das siduction-ISO auf das Gerät geschrieben. Auch wenn die Option persist nicht möglich ist, kann man “siduction auf einem Stick” haben.</p>
+<p>Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siduction-System die empfohlene Methode, da man dadurch keinerlei Einschränkungen ausgesetzt ist. Siehe auch: <a href="hd-install-opts-de.html#fromiso">USB/SSD fromiso Installation - siduction-on-a-stick</a> .</p>
+<h3 id="voraussetzungen">Voraussetzungen</h3>
+<ul>
+<li>Das BIOS des PC, auf dem Du siduction-on-a-stick/card starten möchtest, muss das Booten mittels eines USB-Sticks bzw. einer SSD-Karte erlauben. Normalerweise ist dies der Fall, wenn im BIOS des PC diese Bootoption angeboten wird.</li>
+<li>USB/SSD sollte automatisch erkannt werden und die Menü-Option <strong>F4</strong> sollte <strong>Hard Disk</strong> ausgeben, andernfalls sollte <strong>F4 &gt; Hard Drive</strong> aufgerufen oder <strong>fromhd</strong> der Bootmenü-Zeile beigefügt werden.</li>
+<li>Sichere das Betriebssystem und alle deine Daten auf den Geräten die du für die Herstellung des siduction-USB-Mediums verwenden möchtest. Ein kleiner Tippfehler kann alle deine Daten zerstören!</li>
+</ul>
+<h3 id="wichtige-information">Wichtige Information</h3>
+<pre class="note"><code>Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören.
+Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
+Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, 
+dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden. 
+MS Windows hingegen scheint nur eine Partition zu erlauben. 
+Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an.
+Sichere Deine Daten!</code></pre>
+<h3 id="mit-linux-betriebssystemen">Mit Linux-Betriebssystemen</h3>
+<p>Stecke Deinen USB-Stick oder Kartenleser mit der Karte, auf die geschrieben werden soll, an und führe folgenden Befehl aus:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">cat</span> /home/username/siduction-18.3.0-patience-kde.iso <span class="op">&gt;</span> /dev/sdX</span></code></pre></div>
+<p>oder</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">dd</span> if=/path/to/siduction-*.iso of=/dev/sdX</span></code></pre></div>
+<p>Um herauszufinden, was das X in sdX ist, bitte als root <em>fdisk -l</em> oder <em>dmesg</em> aufrufen.</p>
+<p><strong>Beispiel:</strong><br />
+Führe den Befehl <strong>dmesg -w</strong> aus, schließe Dein Gerät an, und beachte die Ausgabe:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">sd</span> 13:0:0:0: [sdc] Write Protect is off</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">sd</span> 13:0:0:0: [sdc] Mode Sense: 23 00 00 00</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">sd</span> 13:0:0:0: [sdc] Write cache: disabled, read cache: enabled</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">sd</span> 13:0:0:0: [sdc] Attached SCSI removable disk</span></code></pre></div>
+<p>Das Speichergerät wir hier mit dem Laufwerksbezeichner <strong>sdc</strong> erkannt.<br />
+Anschließend wird <em>dmesg</em> mit der Tastenkombination <code>Strg</code>+<code>c</code> beendet.<br />
+Angenommen die gespeicherte ISO “siduction-18.3.0-patience-kde-amd64-201805132121.iso” wurde zu “siduction-18.3.0-patience-kde.iso” umbenannt, so ist der auszuführende Befehl:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">cat</span> /home/username/siduction-18.3.0-patience-kde.iso <span class="op">&gt;</span> /dev/sdc</span></code></pre></div>
+<p>oder</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">dd</span> if=/home/username/siduction-18.3.0-patience-kde.iso of=/dev/sdc</span></code></pre></div>
+<h3 id="mit-ms-windows">Mit MS Windows</h3>
+<p>Das Vorgehen ist einfach. Lade das kleine Tool <a href="https://sourceforge.net/p/usbwriter/wiki/Documentation/">USBWriter</a> herunter. Es muss nicht installiert werden. Nach dem Start des Werkzeugs, beispielsweise vom Desktop aus, muss lediglich das gewünschte ISO-Image sowie der USB-Stick ausgewählt werden. Hierbei ist große Aufmerksamkeit erforderlich, denn der Vorgang löscht alle Daten auf dem Device. Wird also das falsche Device gewählt, sind die Daten darauf verloren, sobald der <em>WRITE</em>-Button gedrückt wurde. In wenigen Minuten schreibt das Werkzeug das Image bootfähig auf das Gerät.</p>
+<h3 id="mit-mac-os-x">Mit Mac OS X</h3>
+<p>Schließe Dein USB-Gerät an, Mac OS X sollte es automatisch einbinden. Im Terminal (unter Applications &gt; Utilities), wird dieser Befehl ausgeführt:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">diskutil</span> list</span></code></pre></div>
+<p>Stelle die Bezeichnung des USB-Geräts fest und binde die Partitionen des Geräts aus (unmount). In unserem Beispiel ist die Bezeichnung /dev/disk1:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">diskutil</span> unmountDisk /dev/disk1</span></code></pre></div>
+<p>Angenommen die gespeicherte ISO “siduction-18.3.0-patience-kde-amd64-201805132121.iso” wurde zu “siduction-18.3.0-patience-kde.iso” umbenannt und in “/Users/username/Downloads/” gespeichert, und das USB-Gerät hat die Bezeichnung “disk1” , so führt man folgenden Befehl aus:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">dd</span> if=/Users/username/Downloads/siduction-18.3.0-patience-kde.iso of=/dev/disk1</span></code></pre></div>
+<div id="rev">
+Zuletzt bearbeitet: 2021-05-03
+</div>
+</body>
+</html>

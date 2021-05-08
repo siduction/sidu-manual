@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Partitionierung von “Logical Volume”</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #CCC; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Partitionierung von “Logical Volume”</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung - Logical Volume Manager</a>
+<ul>
+<li><a href="#sechs-schritte-die-benötigt-werden">Sechs Schritte, die benötigt werden</a></li>
+<li><a href="#größenänderung-eines-volumens">Größenänderung eines Volumens</a></li>
+<li><a href="#lvm-mit-einem-gui-programm-verwalten">LVM mit einem GUI-Programm verwalten</a></li>
+<li><a href="#weitere-informationen">Weitere Informationen</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="lvm-partitionierung---logical-volume-manager">LVM-Partitionierung - Logical Volume Manager</h2>
+<p><strong>Es folgt nun eine Basiseinführung. Es liegt am geschätzten Leser, sich tiefer in die Materie einzuarbeiten. Weitere Informationsquellen finden sich am Ende dieses Textes gelistet - die Liste erhebt keinen Anspruch auf Vollständigkeit.</strong></p>
+<p>Das Arbeiten mit <em>Logical Volumes</em> ist viel einfacher als die meisten User glauben. Die beste Eigenschaft von LVM ist, dass Änderungen wirksam werden ohne dafür das System neu starten zu müssen. <em>Logical Volumes</em> können mehrere Festplatten umspannen und sind skalierbar. Dies unterscheidet sie von anderen Methoden der Festplattenpartitionierung.</p>
+<p>Mit drei Grundbegriffen sollte man vertraut sein:</p>
+<ul>
+<li><p><strong>Physisches Volumen (Physical Volume):</strong> Diese sind die physischen, real vorhandenen, Festplatten oder Partitionen wie zum Beispiel /dev/sda oder /dev/sdb1 und werden zum Einbinden/Aushängen verwendet. Mit LVM können mehrere physische Volumen in Volumengruppen zusammengefasst werden.</p></li>
+<li><p><strong>Volumengruppe (Volume Group):</strong> Eine Volumengruppe besteht aus <em>Physischen Volumen</em> und ist der Speicherort von <em>Logischen Volumen</em>. Eine Volumengruppe kann als “virtuelles Laufwerk” gesehen werden, das aus <em>Physischen Volumen</em> zusammengesetzt ist. Zum Verständnis einige Beispiele:</p>
+<ul>
+<li><p>Mehrere Speichergeräte (z. B. Festplatten, SSD’s, M2-Disks, externe USB-Festplatten usw.) können zu einer Volumengruppe (einem virtuellen Laufwerk) zusammengefasst werden.</p></li>
+<li><p>Mehrere Partitionen eines Speichergerätes können zu einer Volumengruppe (einem virtuellen Laufwerk) zusammengefasst werden.</p></li>
+<li><p>Eine Kombination aus den beiden vorgenannten Möglichkeiten. Z. B. drei SSD’s, wovon von der ersten nur zwei Partitionen und die beiden anderen vollständig in der Volumengruppe zusammengefasst werden.</p></li>
+</ul></li>
+<li><p><strong>Logisches Volumen (Logical Volume):</strong> Logische Volumen werden inerhalb einer <em>Volumengruppe</em> erstellt und in das System eingebunden. Man kann sie auch als “virtuelle” Partitionen verstehen. Sie sind dynamisch veränderbar, können in der Größe verändert, neu erstellt, entfernt und verwendet werden. Ein logisches Volumen kann sich innerhalb der Volumengruppe über mehrere physische Volumen erstrecken.</p></li>
+</ul>
+<h3 id="sechs-schritte-die-benötigt-werden">Sechs Schritte, die benötigt werden</h3>
+<warning>
+<strong>Achtung</strong><br />Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.
+</warning>
+<p>Als Partitionierungsprogramm werden cfdisk oder gdisk benötigt, da zur Zeit GParted bzw. der KDE-Partitionsmanager (partitionmanager) das Anlegen von <em>Logical Volumes</em> nicht unterstützen. Siehe auch die Handbuchseiten:<br />
+<a href="part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit cfdisk (msdos-MBR)</a><br />
+<a href="part-disk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT-UEFI)</a></p>
+<p>Alle folgenden Befehle und Aktionen erfordern root-Rechte.</p>
+<ol type="1">
+<li><p>Erstellung einer Partitionstabelle</p>
+<pre><code>cfdisk /dev/sda
+n    -&gt; erstellt eine neue Partition auf dem Laufwerk
+p    -&gt; diese Partition wird eine primäre Partition
+1    -&gt; die Partition erhält die Nummer 1 als Identifikation
+### size allocation  ### setzt den ersten und letzten Zylinder auf Default-Werte. Drücke ENTER, um das gesamte Laufwerk zu umspannen
+t    -&gt; wählt den zu erstellenden Partitionstyp
+8e   -&gt; der Hex-Code für eine Linux-LVM
+W    -&gt; schreibt Veränderungen auf das Laufwerk.</code></pre>
+<p>Der Befehl “W” schreibt die Partitionierungstabelle. Falls bis zu diesem Punkt ein Fehler gemacht wurde, kann das vorhandene Partitionierungs-Layout wieder hergestellt werden. Zu diesen Zweck gibt man den Befehl “q” ein, <em>cfdisk</em> beendet sich ohne Schreibvorgang, und alles bleibt wie es zuvor war.</p>
+<p>Falls die Volumengruppe mehr als ein Physische Volumen (Laufwerk) umspannen soll, muss obiger Vorgang auf jedem physischen Volumen durchgeführt werden.</p></li>
+<li><p>Erstellen eines physischen Volumens</p>
+<pre><code>pvcreate /dev/sda1</code></pre>
+<p>Der Befehl erstellt auf der ersten Partition der ersten Festplatte das physische Volumen.<br />
+Dieser Vorgang wird nach Bedarf auf jeder Partition wiederholt.</p></li>
+<li><p>Erstellen einer Volumengruppe</p>
+<p>Nun fügen wir die physischen Volumen einer Volumengruppe mit dem Namen <em>vulcan</em> hinzu (in unserem Beispiel drei Laufwerke):</p>
+<pre><code>vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1</code></pre>
+<p>Falls dieser Schritt korrekt durchgeführt wurde, kann das Ergebnis in der Ausgabe folgenden Befehls gesehen werden:</p>
+<pre><code>vgscan</code></pre>
+<p>vgdisplay zeigt die Größe mit:</p>
+<pre><code>vgdisplay vulcan</code></pre></li>
+<li><p>Erstellung eines logischen Volumens</p>
+<p>An dieser Stelle muss entschieden werden, wie groß das logische Volumen zu Beginn sein soll. Ein Vorteil von LVM ist die Möglichkeit, die Größe ohne Reboot anpassen zu können.</p>
+<p>In unserem Beispiel wünschen wir uns ein 300GB großes Volumen mit dem Namen <em>spock</em> innerhalb der Volumengruppe Namens vulcan:</p>
+<pre><code>lvcreate -n spock --size 300g vulcan</code></pre></li>
+<li><p>Formatieren des logischen Volumens</p>
+<p>Bitte habe etwas Geduld, dieser Vorgang kann längere Zeit in Anspruch nehmen.</p>
+<pre><code>mkfs.ext4 /dev/vulcan/spock</code></pre></li>
+<li><p>Einbindung des logischen Volumens</p>
+<p>Erstellen des Mountpoints mit</p>
+<pre><code>mkdir /media/spock/</code></pre>
+<p>Um das Volumen während des Bootvorgangs einzubinden, muss fstab mit einem Texteditor angepasst werden.<br />
+Die Verwendung von <strong>/dev/vulcan/spock</strong> ist bei einem LVM der Verwendung von UUID-Nummern vorzuziehen, da es damit einfacher ist das Dateisystem zu klonen (keine UUID-Kollisionen). Besonders mit einem LVM können Dateisysteme mit gleicher UUID-Nummer erstellt werden (Musterbeispiel: Snapshots).</p>
+<pre><code>mcedit /etc/fstab</code></pre>
+<p>und dann die folgende Zeile entsprechend unseres Beispiels einfügen.</p>
+<pre><code>/dev/vulcan/spock /media/spock/ ext4 auto,users,rw,exec,dev,relatime 0 2</code></pre>
+<p>Optional:<br />
+Der Besitzer des Volumens kann geändert werden, sodass andere Nutzer Lese- bzw. Schreibzugang zum Logical Volumen haben:</p>
+<pre><code>chown root:users /media/spock
+chmod 775 /media/spock</code></pre></li>
+</ol>
+<p>Die Schritte 4 bis 6 können wir nun für das neu zu erstellende logische Volumen “kirk” wiederholen.</p>
+<p>Ein einfacher LVM sollte nun erstellt sein.</p>
+<h3 id="größenänderung-eines-volumens">Größenänderung eines Volumens</h3>
+<p>Wir empfehlen die Verwendung einer Live-ISO, um Partitionsgrößen zu ändern. Obwohl die Vergrößerung einer Partition des laufenden Systems ohne Fehler durchgeführt werden kann, ist dies bei der Verkleinerung einer Partition nicht der Fall. Anomalien können zu einem Datenverlust führen, vor allem wenn die Verzeichnisse <strong>/</strong> (root) oder <strong>/home</strong> betroffen sind.</p>
+<p><strong>Beispiel einer Vergrößerung</strong></p>
+<p>Eine Partition soll von 300GB auf 500GB vergrößert werden:</p>
+<pre><code>umount /media/spock/</code></pre>
+<p>Erweitern des logischen Volumens:</p>
+<pre><code>lvextend -L+200g /dev/vulcan/spock</code></pre>
+<p>Dem Befehl <em>lvextend</em> ist als Option der Wert für die Größen<strong>änderung</strong> anzugeben und nicht die gewünscht Gesamtgröße.</p>
+<p>Anschließend die Größe des Dateisystems ändern:<br />
+Der erste Befehl führt zwangsweise eine Check durch, auch wenn das Dateisystem sauber zu sein scheint,<br />
+der letzte Befehl hängt das logische Volumen wieder ein.</p>
+<pre><code>e2fsck -f /dev/vulcan/spock
+resize2fs /dev/vulcan/spock
+mount /media/spock</code></pre>
+<p><strong>Beispiel einer Verkleinerung</strong></p>
+<p>Eine Partition wird von 500GB auf 280GB verkleinert:</p>
+<pre><code>umount /media/spock/</code></pre>
+<p>Die Größe des Dateisystems verringern:</p>
+<pre><code>e2fsck -f /dev/vulcan/spock
+resize2fs /dev/vulcan/spock 280g</code></pre>
+<p>Danach wird das logische Volumen geändert.</p>
+<pre><code>lvreduce -L-220g /dev/vulcan/spock
+resize2fs /dev/vulcan/spock
+mount /media/spock</code></pre>
+<p>Auch hier ist dem Befehl <em>lvreduce</em> als Option der Wert für die Größen<strong>änderung</strong> anzugeben.<br />
+Der erneute <em>resize2sf</em>-Befehl passt das Dateisystem exakt an die Größe des logischen Volumens an.</p>
+<h3 id="lvm-mit-einem-gui-programm-verwalten">LVM mit einem GUI-Programm verwalten</h3>
+<p><em>Gparted</em> bietet die Möglichkeit zur Verwaltung von bereits angelegten <em>Logical Volumes</em>. Das Programm wird als root ausgeführt.</p>
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+<ul>
+<li><p><a href="https://de.wikipedia.org/wiki/Logical_Volume_Manager">Logical Volume Manager - Wikipedia</a> (Deutsch)</p></li>
+<li><p><a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-1/">Working with logical volumes #1</a> (Englisch)</p></li>
+<li><p><a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-2/">Working with logical volumes #2</a> (Englisch)</p></li>
+<li><p><a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-3/">Working with logical volumes #3</a> (Englisch)</p></li>
+<li><p><a href="https://developer.ibm.com/tutorials/l-resizing-partitions-2/">Größenänderung von Linuxpartitionen - Teil 2 (IBM)</a> (Englisch)</p></li>
+</ul>
+<div id="rev">
+Zuletzt bearbeitet: 2021-05-04
+</div>
+</body>
+</html>
