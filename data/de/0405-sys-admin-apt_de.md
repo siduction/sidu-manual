@@ -412,7 +412,7 @@ init 5 && exit
 
 Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpackage absehen!
 
-### Gründe, warum man nur apt für eine Systemaktualisierung verwenden soll
+### Warum ausschließlich apt verwenden
 
 Paketmanager wie adept, synaptic und kpackage können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Das sind keine Fehler in diesen Programmen oder Fehler der Entwickler.
 
