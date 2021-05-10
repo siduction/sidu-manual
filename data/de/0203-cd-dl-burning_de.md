@@ -93,7 +93,7 @@ Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
 
 ### Live-DVD mit Windows brennen
 
-> **WICHTIGE INFORMATION:**
+> **WICHTIGE INFORMATION:**  
 > siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
 
 
