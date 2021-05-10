@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-06
 
@@ -15,6 +15,10 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + Für die Verwendung mit pandoc optimiert.
 + Inhalt teilweise überarbeitet.
+
+Änderungen 2021-05:
++ Hinweis zum aktivieren von sudo
++ doas als alternative zu sudo
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -107,7 +111,7 @@ Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind:
   Das Verhalten ist dem in Plasma ähnlich, mit der Ausnahme, dass der Befehl (su-to-root) unterstützt wird, aber nicht notwendig ist.
 + XFCE und Xorg  
   Hier entfaltet der Befehl seine volle Macht, und man ist in der Lage das gewünschte graphische Programm mit root-Rechten zu starten. Mann ist jedoch auch in der Pflicht zu beachten, wann und mit welchem Programm root-Rechte wirklich erforderlich sind.  
-+ **Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, Büroprogramme u.a.**
+> **Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, Büroprogramme u.a.**
 
 **sudo ist nicht konfiguriert**
 
@@ -115,6 +119,15 @@ Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind:
 Nach einer Installation ist **sudo** nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
 
 Ein anderes Problem mit **sudo** ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von [*su*](#su) oder [*su-to-root*](#su-to-root) wird empfohlen!
+
+Sollte man trotz aller Warnungen *sudo* nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!
+
+Dies kann mit dem Befehl "adduser BENUTZER GRUPPE" als root ausgeführt werden.
+
+Als Alternative zu *sudo* kann auch *doas* (apt install doas) genommen und eingerichtet werden.
+
+* https://man.openbsd.org/doas
+* https://github.com/slicer69/doas
 
 ### Farbiges Terminal
 
@@ -266,7 +279,7 @@ Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am
 $ su
 Passwort:
 # cd /usr/local/bin
-# wget ftp://<entfernter_server>/script-name.sh
+# wget -c ftp://<entfernter_server>/script-name.sh
 ~~~
 
 Danach muss die Datei ausführbar gemacht werden:
@@ -290,7 +303,7 @@ Die Datei kann auch mit einem Browser auf den Computer geladen und an den geeign
 So speichert man als Nutzer eine Datei im \$HOME (der Promt ist '$'):
 
 ~~~
-$ wget ftp://<entfernter_server>/user-script-name.sh
+$ wget -c ftp://<entfernter_server>/user-script-name.sh
 $ chmod +x user-script-name.sh
 ~~~
 
@@ -302,4 +315,4 @@ $ ./user-script-name.sh
 
 Das funktioniert als *user* natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
 
-<div id="rev">Zuletzt bearbeitet: 2020-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
