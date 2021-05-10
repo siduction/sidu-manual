@@ -14,11 +14,10 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Verfügbare Kernel:
 
-+ **siduction-amd64**  - Linux Kernel für 64-bit PCs mit AMD64 oder Intel 64 CPU.
-+ Nur auf Anfrage in Chat:  
-  **siduction-686** - Linux Kernel für die i686-Prozessorfamilie
++ **linux-image-siduction-amd64  +  linux-headers-siduction-amd64**  - Linux Kernel für 64-bit PCs mit AMD64 oder Intel 64 CPU.
++ 32 bit Kernel stellen wir nicht mehr zur Verfügung, hier kann der Debian Kernel, oder alternativ der Liquorix-Kernel (https://liquorix.net/) verwendet werden.
 
-Die Kernel von siduction befinden sich im siduction-Repository als .deb und werden bei einer Systemaktualisierung automatisch berücksichtigt.
+Die Kernel von siduction befinden sich im siduction-Repository als .deb und werden bei einer Systemaktualisierung automatisch berücksichtigt, sofern die Metapakete für Image und Headers installiert sind.
 
 ---
 
@@ -33,7 +32,7 @@ Die Kernel von siduction befinden sich im siduction-Repository als .deb und werd
 2. Installation des aktuellen Kernels:
 
   ~~~
-  apt install linux-image-siduction-686 linux-headers-siduction-686
+  apt install linux-image-siduction-amd64 linux-headers-siduction-amd64
   ~~~
 
 3. Neustart des Computers, um den neuen Kernel zu laden.
@@ -44,80 +43,9 @@ Die Kernel von siduction befinden sich im siduction-Repository als .deb und werd
 
 ### Module
 
-Mit diesem Befehl können die benötigten Module ermittelt werden (bitte kopieren und in eine Konsole einfügen):
-
-~~~
-apt-cache search 5.*.*-towo.*-siduction| awk '/modules/{print $1}'
-~~~
-
-Damit erhält man eine ausführliche Beschreibung eines jeden Moduls (bitte kopieren und in eine Konsole einfügen):
-
-~~~
-apt-cache search 5.*.*-towo.*-siduction   **? Findet alle 5er Kernel und Header**
-~~~
-
-So installiert man benötigte Module (zum Beispiel virtual-ose und qc-usb):
-
-~~~
-apt-get install virtualbox-ose-modules-3.2.0.towo.7-siduction-686 (BEISPIEL)
-apt-get install qc-usb-modules-3.2.0.towo.7-siduction-686 (BEISPIEL)
-~~~
-
-So überprüft man, welche Module in den Kernel geladen sind:
-
-~~~less
-ls /sys/module/
-oder
-cat /proc/modules
-~~~
-
-### Beispiel: Installation eines Moduls
-
-"speakup"  mit module-assistant
-Man stellt sicher, dass **contrib non-free**  in der Quellenliste **/etc/apt/sources.list.d/debian.list**  angefügt ist: 
-
-~~~less
-apt-cache search speakup-s
-speakup-source - Source of the speakup kernel modules
-~~~
-
-Vorbereitung des Moduls:
-
-~~~
-m-a prepare
-m-a a-i speakup-source
-~~~
-
-Nun folgt die Aktivierung des "Dynamic Module-Assistant Kernel Module Support" für speakup, sodass bei der nächsten Kernelaktualisierung das Modul speakup ebenfalls vorbereitet wird, ohne dass man eingreifen muss. Dazu fügt man **speakup-source** in die Konfigurationsdatei **/etc/default/dmakms** ein. 
-
-~~~
-mcedit /etc/default/dmakms
-speakup-source
-~~~
-
-Dies wiederholt man für jedes Kernelmodul, das zu module-assistant kompatibel ist.
-
-Die Linux-Headers müssen mit dem dazugehörigen Linux-Image installiert sein, damit module-assistand Kernelmodule kompilieren kann.
-
-### Wenn ein Modul nicht lädt
-
-Falls ein Modul - aus welchem Grund auch immer (neue Xorg-Komponente o.a.) - nicht lädt:
-
-~~~
-modprobe <module>
-~~~
-
-und reboot.
-
-Sollte das Modul nach dem Neustart immer noch nicht laden:
-
-~~~
-m-a a-i -f module-source
-~~~
-
-Damit wird das Modul neu kompiliert, **danach reboot**.
-
----
+Der Kernel bringt in der Regel alle benötigten Kernel-Module mit. Für 3rd Party Module wird in siduction dkms empfohlen.
+Hierzu ist es notwendig, das Paket **build-essential** zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicher zu stellen,
+dass contrib und non-free in den Sourcen aktiviert ist.
 
 ## Entfernen alter Kernel (kernel remover)
 
@@ -131,4 +59,4 @@ kernel-remover
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2012-01-15</div>
+<div id="rev">Seite zuletzt aktualisert 2021-0510</div>
