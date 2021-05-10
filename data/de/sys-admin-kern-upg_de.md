@@ -2,11 +2,14 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC3**
 
 Änderungen 2020-12:
 
 + Für die Verwendung mit pandoc optimiert.
+
+Änderungen 2021-05:
++ finalisiert
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
