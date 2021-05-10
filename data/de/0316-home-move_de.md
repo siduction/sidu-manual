@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC§**
 
 Änderungen 2020-05:
 
@@ -19,6 +19,9 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 + /home-Partition entfernt Erklärung unter Hinweise eingefügt.
 + Den weiteren Inhalt entsprechend angepasst.
+
+Änderungen 2021-05:
+Leichte umformulierung, warnug eingefügt, Status RC 3
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
@@ -170,9 +173,9 @@ Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der n
 **Löschen in /home**
 
 Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Musik*") um dort Dateien abzulegen. Um den Zugriff der Anwendungen auf die Verzeichnisse zu ermöglichen müssen wir in "*/home/\<user\>*" Link einfügen, die auf die Daten-Partition verweisen.
+Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Musik*") um dort Dateien abzulegen. Um den Zugriff der Anwendungen auf die Verzeichnisse zu ermöglichen müssen diese zurück verlinkt werden, somit auf entsprechende Verzeichnisse der /daten Partition verweisen.
 
-Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etwas falsches gelöscht wird.
+> Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etwas falsches gelöscht wird.
 
 ~~~
 ~$ rm -r Bilder/ && ln -s /Daten/Bilder/ ./Bilder
@@ -219,4 +222,4 @@ Man speichert die Datei mit F2 und beendet den Editor mit F10.
 
 Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
