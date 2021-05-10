@@ -1,5 +1,7 @@
 % Netzwerk - IWD
 
+## IWD statt wpa_supplicant
+
 Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. 
 
 Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinux.org/index.php/Iwd) bzw. das [debian wiki](https://wiki.debian.org/NetworkManager/iwd). 
