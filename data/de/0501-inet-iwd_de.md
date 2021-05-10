@@ -191,7 +191,7 @@ Zum Beispiel:
 
 ~~~sh
 ~# systemctl stop iwd.service
-~# systemctl mask iwd.servicenetwork-manager-gnome
+~# systemctl mask iwd.service
 ~# systemctl stop NetworkManager.service
 ~# mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~
 ~# systemctl unmask wpa_supplicant.service
@@ -201,4 +201,4 @@ Zum Beispiel:
 
 Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
+<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
