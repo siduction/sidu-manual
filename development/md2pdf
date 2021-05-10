@@ -53,7 +53,7 @@ geometry=portrait
 #  - pandoc ausführen
 #  - Sicherung zurückkopieren und Sicherungsordner löschen.
 
-mkdir ../sicherung/ && cp ./* ../sicherung/ 2>/dev/null
+mkdir ../sicherung/ && cp ./0* ../sicherung/ 2>/dev/null
 
 cd ../sicherung/ && LISTE=$(ls ./*) && cd ../de/
 
