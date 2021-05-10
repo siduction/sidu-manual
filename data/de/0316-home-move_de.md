@@ -82,7 +82,7 @@ Mountpoint erstellen und Partition einhängen (als root):
 
 ~~~
 # mkdir /Daten
-# chown <user>.<group> /Daten
+# chown <user>:<group> /Daten
 # mount -t ext4 /dev/sdb4 /Daten
 ~~~
 

@@ -349,7 +349,7 @@ drwxr-xr-x 3 root     root      4096 14. Dez 18:30 ..
 In diesem Fall wird die Apache Testseite angezeigt, die PHP-Statusseite nicht. Dann hilft ein beherztes
 
 ~~~
-# chown -R www-data.www-data /var/www/html
+# chown -R www-data:www-data /var/www/html
 ~~~
 
 Nun sollten sich beide Seiten aufrufen lassen.
@@ -436,7 +436,7 @@ Zu beachten ist das Sticky-Bit (**t**) und der Eigentümer **root.root**. Bei Ab
 
 ~~~
 # chmod 1733 /var/lib/php/sessions
-# chown root.root /var/lib/php/sessions
+# chown root:root /var/lib/php/sessions
 ~~~
 
 Nun ist der Login zu phpmyadmin möglich.
