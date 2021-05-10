@@ -59,4 +59,4 @@ kernel-remover
 
 ---
 
-<div id="rev">Seite zuletzt aktualisert 2021-0510</div>
+<div id="rev">Seite zuletzt aktualisert 2021-05-10</div>
