@@ -32,7 +32,7 @@ Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren 
 
 Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.
 
-> **Achtung:**
+> **Achtung:**  
 > Wann immer man mit root-Rechten arbeitet, sollte man genau wissen, was man macht. Für das Surfen im Internet und ähnliche Aktionen sind keine root-Rechte nötig.
 
 1.

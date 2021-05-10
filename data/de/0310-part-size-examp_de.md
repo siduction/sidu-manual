@@ -146,7 +146,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
   Hinweis: *fdisk* sollte nur noch für alte Hardware, die *GPT - UEFI* nicht unterstützt verwendet werden.  
   *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
 
-> **Achtung**
+> **Achtung**  
 > Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.
 
 **Eingebundene Partitionen** (auch swap) müssen vor Bearbeitung gelöst werden.  

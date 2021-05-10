@@ -69,7 +69,7 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *
 
 ### Partitionierung einer Festplatte
 
-> **Daten zuvor sichern!**
+> **Daten zuvor sichern!**  
 > Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
 
 In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine *EFI-System*-Partition und für die zweite Stufe des GRUB-Bootloader eine *BIOS-boot*-Partition.  

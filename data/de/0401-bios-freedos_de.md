@@ -38,7 +38,7 @@ Als Erstes muss im BIOS das Booten von USB zugelassen werden, und das BIOS muss 
 
 3. qemu (apt-get install qemu): qemu wird für die Installationsroutine benötigt. Das emulierte qemu-BIOS führt dazu, dass FreeDOS den USB-Stick als normale Festplatte erkennt und man auf traditionelle Art installieren kann (man muss keine FreeDOS-CD brennen).
 
-> **SEHR WICHTIGE, KRITISCHE INFORMATION:**
+> **SEHR WICHTIGE, KRITISCHE INFORMATION:**  
 > Zu keinem Zeitpunkt darf der USB-Stick eingebunden, d.h. gemountet werden. Es muss peinlichst darauf geachtet werden, die richtige Gerätedatei (engl. device node) zu wählen, ansonsten werden sämtliche Daten auf dem falschen Datenträger (möglicherweise der System-Festplatte!) unwiderruflich gelöscht.
 
 

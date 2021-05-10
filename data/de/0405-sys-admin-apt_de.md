@@ -143,7 +143,7 @@ Aktualisierung für 48 Pakete verfügbar. Führen Sie »apt list --upgradable« 
 Ist uns der Name des Pakets bekannt, reicht der Befehl **apt install <Paketname>**.  
 (Weiter unten wird gezeigt, wie man ein Paket finden kann.)
 
-> **Warnhinweis:**
+> **Warnhinweis:**  
 > Pakete, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) installiert werden, können große, nicht unterstützbare Probleme mit sich bringen!
 
 Deshalb empfehlen wir folgenden Ablauf:
@@ -389,7 +389,7 @@ Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit
 
 ### full-upgrade ausführen
 
-> **Warnhinweis:**
+> **Warnhinweis:**  
 > Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Probleme führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 
 Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.

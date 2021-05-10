@@ -2,7 +2,7 @@
 
 ## DVD ohne GUI brennen
 
-> **WICHTIGE INFORMATION:**
+> **WICHTIGE INFORMATION:**  
 > siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
 
 

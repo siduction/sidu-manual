@@ -27,7 +27,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Das Verzeichnis /home verschieben
 
-> Wichtige Information
+> Wichtige Information  
 > Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
 
 Deshalb raten wir generell davon ab eine /home-Partition anzulegen.  
