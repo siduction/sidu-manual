@@ -125,11 +125,11 @@ Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Bef
 
 ~~~sh
 [iwd]# device list
-                                    Devices                                   *
---------------------------------------------------------------------------------
-  Name                Address             Powered   Adapter   Mode
---------------------------------------------------------------------------------
-  wlan0               00:01:02:03:04:05   on        phy0      station
+                     Devices                                *
+-------------------------------------------------------------
+  Name    Address             Powered   Adapter   Mode
+-------------------------------------------------------------
+  wlan0   00:01:02:03:04:05   on        phy0      station
 ~~~
 
 In diesem Falle ist es *wlan0* und es läuft (*Powered on*) im *station* mode.
@@ -153,11 +153,11 @@ Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbund
 
 ~~~sh
 [iwd]# station list
-                            Devices in Station Mode
---------------------------------------------------------------------------------
-  Name                State          Scanning
---------------------------------------------------------------------------------
-  wlan0               connected
+               Devices in Station Mode
+---------------------------------------------
+  Name         State          Scanning
+---------------------------------------------
+  wlan0        connected
 ~~~
 
 Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Informationen hat!
