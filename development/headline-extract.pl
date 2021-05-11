@@ -21,6 +21,7 @@
 #
 use strict;
 use File::Basename;
+#use Unicode::Normalize;
 
 my ($FILE, $H_CLASS, $H_TEXT, $LINK);
 my (@QUELLE, @DATEIEN, @HLTEXT, @HLFILE);
@@ -73,7 +74,7 @@ while (@DATEIEN) {
         
         $_ = sprintf "%s~%4s~%s~%s\n", $H_TEXT, $H_CLASS, $FILE, $LINK;
         push @HLTEXT,$_;
-        @HLTEXT = sort @HLTEXT;
+        @HLTEXT = sort { "\L$a" cmp "\L$b" } @HLTEXT;
     }
 }
 
