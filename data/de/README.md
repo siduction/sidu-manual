@@ -1,172 +1,133 @@
-##### We need someone who can translate this document!
+**We need someone who can translate this document!**
 
-### Hinweise für Autoren von MarkDown Dokumenten innerhalb des siduction Handbuchs
-#### Das von mir geschriebene Script "html2md.pl" befindet sich im git-repo des Handbuchs im Ordner /sidu/development .
-Bei der Konvertierung der deutschen Handbuchseiten zu md traten einige Besonderheiten auf, die sicherlich auch für Autoren interessant sein dürften.
+# Hinweise für Autoren
 
-Ich habe mich an die [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) gehalten und das Ergebnis mit dem **Markdown Viewer Webext** PlugIn für Firefox getestet.  
-Dabei verwendete ich folgende Einstellungen:  
+der MarkDown Dokumente innerhalb des siduction Handbuchs.
+
+Ich habe mich an die [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) gehalten und das Ergebnis mit dem **Markdown Viewer Webext** PlugIn für Firefox getestet. Die dabei verwendeten Einstellungen stehen in der Datei [/development/css_FF_Plugin_Markdown-Viewer-Webext](https://github.com/siduction/sidu-manual/blob/WIP/development/css_FF_Plugin_Markdown-Viewer-Webext).  
+Die Einstellungen des Plugin lauten:  
 markdown "github"  
-code style "default"  
-und den zusätzlichen css-Code
+code style "default"
 
-~~~css
-code {
-    display: block;
-    background-color: #E8E8E8;
-    padding: 0.5em;
-}
-p code, li code {
-    display: inline;
-    color: #C00;
-    padding: 0.15em;
-}
-li pre code {
-    color: #000;
-    padding: 0.15em;
-}
-hr {
-    height: 0.2em;
-    background-color: darkgrey;
-    border: 0;
-    margin-bottom: 2em;
-}
-warning {
-    display: block;
-    background-color: yellow;
-    line-height: 1.3em;
-    font-size: 1em;
-    padding: 10px;
-}
+## Dateinamen
+
+Die Dateinamen des neuen Handbuches beginnen mit einer vierstelligen Ziffer gefolgt von einem Bindestrich.  
+Die ersten zwei Ziffern ordnen die Datei der Hauptgruppe zu, z.B. "03XX-" für die Hauptgruppe "Installation".  
+Ziffer drei und vier reiht die Datei innerhalb der Hauptgruppe ein.  
+Lücken in der Ziffernfolge sind für die Erzeugung der .html-Dateien und des PDF unschädlich und für eventuell zukünftig hinzukommende Dateien sinnvoll.
+
+## Überblick MD-Code
+
+### Titel
+
+Jede .md-Datei benötigt in der ersten Zeile einen Titel in der Notation **`% Mein Titel`**. Der Text des Titels darf ruhig von der ersten im Dokument verwendeten Überschrift abweichen. Er ist für die Erstellung der .html-Dateien notwendig und wird im Webbrowser in der Titelzeile oder dem Tab angezeigt.
+
+### Überschriften
+
++ Überschriftenklassen:  
+  + **#**  
+    Nur für Hauptgruppen und nur einmal in der ersten Datei der Hauptgruppe verwenden.  
+    Hauptgruppen sind z.B.: "Installation", "Systemadministration" oder "Netzwerk".  
+  + **##** und **###**  
+    Standard in den .md-Dateien.  
+  + **####**  
+    Selten bis nicht anzutreffen in .md-Dateien.  
+    Diese Überschriften integriert pandoc (LaTex) als fett ausgezeichneten Text in die erste Zeile des folgenden Absatzes. Das führt besonders bei folgenden Listen oder Tabellen zu unerwarteten und unerwünschten Effekten. Meistens ist ein Zeile mit fettem Text sinnvoller.  
++ Sonderzeichen  
+  Erlaubt sind das **Leerzeichen**, der **Punkt** und der **Bindestrich** bzw. das Minuszeichen.  
+  Nicht erlaubt sind diese, und noch viele weitere Zeichen:
+  
+  ~~~
+  , ; : ! ? ^ " ´ ` ' „ “ § $ % & / \  
+  ( ) { } [ ] + * ~ # | < > » « &#8482 &gth;
+  ~~~
+  
++ Überschriften einzigartig, prägnant und kurz  
+  + Überschriften, auf die eventuell verlinkt wird, müssen einzigartig sein.  
+  + Überschriften sollen kurz sein.  
++ Sparsam mit Überschriften umgehen  
+  + Bitte Überschriften sparsam einsetzen.  
+    Eine Überschrift, dann ein Absatz mit zwei oder drei Zeilen und wieder eine Überschrift ist Unsinn.
+    
+### Hervorgehobener Text
+
+Innerhalb dieser Bereiche findet kein parsen durch MarkDown statt. Die zusätzlichen Textauszeichnungen **\***, **\*\***, **\`** und **\~~** haben keine Wirkung auf den Text und codierte Zeichen **`&gth;`** werden literal dargestellt.
+
++ **inline Bereiche** werden mit  
+  Backtick \` `(normaler Text)`,  
+  Asterisk und Backtick \*\` *`(kursiver Text)`*  
+  doppeltem Asterisk und Backtick \*\*\` **`(fetter Text)`**  
+  vor und in umgedrehter Reihenfolge hinter dem zu markierenden Text  und ohne Leerzeichen dargestellt.
+  ~~~
+  Beispiel:
+  **`(fetter Text)`**
+  ~~~
+
++ **Absätze, Qellcode**  
+  Vor und nach dem Block jeweils eine Leerzeile einfügen. Die erste und die letzte Zeile besteht aus drei Tilden "\~\~\~". Dies hat gegenüber der Einrückung um vier Leerzeichen zwei wichtige Vorteile.  
+  + Es ist Syntax Highlighting realisierbar, indem nach den ersten Tilden der Dialekt angegeben wird. z.B.: \~\~\~sh  
+  + Die Einrückungen innerhalb von Listen sind für Code-Blöcke und Text bei Verwendung der Tilden gleich. Wenn nur Leerzeicheneinrückung für beide Funktionen vorgenommen wird, geht spätestens ab der zweiten Ebene die Übersicht und damit die Lesbarkeit komplett verloren.  
+    Im unteren Beispiel (mit Tilden) sind die Einrückungen für beide Ebenen und Funktionen identisch. Quellcode und Bildschirmanzeige gleichen sich bis auf die am Bildschirm nicht sichtbaren Tilden.  
+    
+    * Text
+
+      ~~~     
+      Code_Block  
+      ~~~  
+
+      * Text  
+
+        ~~~  
+        Code_Block_2  
+        ~~~  
+
+    So sieht der md-Code aus:
+
 ~~~
+    * Text
 
-Hier ein kurzer Überblick.
+      ~~~
+      Code_Block
+      ~~~
 
------
-#### Hervorgehobener Text
+      * Text
 
-Anmerkung:  
-Innerhalb dieser Bereiche findet kein parsen durch MarkDown statt. Die zusätzlichen Textauszeichnungen *, **, ` und ~~ haben keine Wirkung auf den Text, sondern werden literal dargestellt.
-
-Die **inline span-Bereiche** werden mit  
-Backtick \` `(normaler Text)`,  
-Asterisk und Backtick \*\` *`(kursiver Text)`*  
-doppeltem Asterisk und Backtick \*\*\` **`(fetter Text)`**  
-vor und in umgedrehter Reihenfolge hinter dem zu markierenden Text  und ohne Leerzeichen dargestellt.
-~~~
-Beispiel:
-**`(fetter Text)`**
-~~~
-
-Folgende Vereinheitlichungen wurden vorgenommen:
-
-`<span class="highlight-1">` (ehemals grüner Text)  
-`<span class="highlight-3">` (ehemals magenta Text, ähnlich besuchter Links)  
-`<span class="highlight-4">` (ehemals brauner Text)  
-`<span class="highlight-5">` (ehemals hellblauer Text)  
-Umwandlung in `Mustertext` (inline Bereich, hellgrau hinterlegt, Text rot)
-
-`<span class="highlight-2">` (ehemals roter Text)  
-Umwandlung in **`Mustertext`** (inline Bereich, hellgrau hinterlegt, Text rot und fett)
-
----
-
-#### Qellcode, hervorgehobene Absätze
-
-In HTML: `<pre>` und `<code>`
-
-Anmerkung:  
-Auch innerhalb dieser Bereiche findet kein parsen durch MarkDown statt. Die zusätzlichen Textauszeichnungen *, **, ` und ~~ haben keine Wirkung auf den Text, sondern werden literal dargestellt. Ebenso die Zeichen <, > und &. Die Notation \&gt; usw. ist nicht notwendig!
-
-In den Zeilen vor und nach dem Block jeweils drei Tilden an den Zeilenanfang setzen "~~~". Dies hat gegenüber der Einrückung um vier Leerzeichen zwei wichtige Vorteile.
-
-1.  Es ist Syntax Highlighting realisierbar, indem nach den ersten Tilden der Dialekt angegeben wird.  
-z.B.: ~~~sh
-
-    ~~~sh
-    user1@pc1:~$ $TEXT=irgendwas
-    user1@pc1:~$ print "\t$TEXT\n"
-        irgendwas
-    ~~~
-
-2.  Die Einrückungen innerhalb von Listen sind für Code-Blöcke und Text bei Verwendung der Tilden gleich. Wenn nur Leerzeicheneinrückung für beide Funktionen vorgenommen wird, geht spätestens ab der zweiten Ebene die Übersicht und damit die Lesbarkeit komplett verloren.
-
-    Im unteren Beispiel sind die Einrückungen für beide Ebenen und Funktionen identisch. Quellcode und Bildschirmanzeige gleichen sich bis auf die am Bildschirm nicht sichtbaren Tilden.
-*   Text
-*   ~~~
-    Code_Block
-    ~~~
-    *   Text
-
-    *   ~~~
+        ~~~
         Code_Block_2
         ~~~
-*   Text
-*   Text
-
----
-So sieht der md-Code aus:
-
 ~~~
-*   Text
-*   ~~~
-    Code_Block
+
+### Warnungen
+
+Bei besonders wichtigen Hinweisen die Zeilen quoten: "> "  
+Das erzeugt in MD ein Zitat (einen Einzug mit grauem, senkrechten Balken und ausgegrauter Schrift), in PDF- und .html-Dokumenten ein farblich hinterlegtes Blockelement mit Padding.
+
++ **Zeilenumbruch** innerhalb der Warnungen:  
+    Die Zeilen **müssen** mit **zwei Leerzeichen** enden!  
+    Beispiel:
+    
+    > **Achtung:**  
+    > Damit gehen alle Daten verloren!
+
+    So sieht der Qulltext aus:
     ~~~
-    *   Text
+    > **Achtung**  
+    > Damit gehen alle Daten verloren!
+    ~~~
 
-    *   ~~~
-        Code_Block_2
-        ~~~
-*   Text
-*   Text
+### Footer in den neuen Dateien
+
+Die letzte Zeile der .md-Dateien enthält den Bearbeitungshinweis in HTML-Notation:
+
+~~~
+<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>
 ~~~
 
------
+Er wird in .md-Dateien (nur lokal im FF) und .html-Dateien rechtsbündig, verkleinert und ausgegraut dargestellt.
 
-#### Warnungen
+### Tabellen, Listen , Link, sonstiges
 
-Bei besonders wichtigen Hinweisen `<warning>` als HTML-Tag verwenden!  
-Das erzeugt ein gelb hinterlegtes Blockelement mit Padding.  
-Für den Titel als Einzeiler innerhalb der md-Betonung fett `**` und für den Inhalt die HTML-Tag je auf einer eigenen Zeile.
+Alles weitere richtet sich nach [GitHub Flavored Markdown Spec](https://github.github.com/gfm/), allerdings mit einer Ausnahme.  
+**Keine horizontalen Linen** verwenden.
 
-**<warning>Achtung:</warning>**
-<warning>
-Damit gehen alle Daten verloren!
-</warning>
-
-So sieht der Qulltext aus:
-~~~
-**<warning>Achtung</warning>**
-<warning>
-Damit gehen alle Daten verloren!
-</warning>
-~~~
-
------
-#### Anker
-`<div class="divider" id="pkill"></div>`
-und  
-`<a name="Absatz_3">` (Das ist seit HTML5 obsolet)
-
-Der Link zu einem Anker ist in md problemlos möglich, der Anker selbst nur in HTML!  
-Das heißt, die Anker müssen bei der Konvertierung im md-Dokument erhalten bleiben bzw im HTML-Format hineingeschrieben werden.
-
------
-
-#### Überschriften
-In einigen HTML-Dokumenten befanden sich Überschriften `<h6>`. In der Darstellung in md ist die Schrift deutlich kleiner als die Standardschriftgröße. Soll das wirklich so bleiben???
-
-In einigen Dokumenten waren alle Überschriften zusätzlich Fett ausgezeichnet.  
-Dazu die Frage an die Autoren und Maintainer:  
-Wie sollen die Überschriften einheitlich aussehen, Normaltext oder fett?  
-AKTUALISIERUNG 2020-05-12: Bei Verwendung des github-md-Dialktes erübrigt sich die Frage.
-
----- 
-
-#### Header und Footer in den neuen Dateien? 
-Frage an die Autoren und Maintainer:  
-Was soll, was muss davon erhalten bleiben?
-
------
-
-Stand 2020-11-22, Autor: akli
+Stand 2021-05-11, Autor: akli
