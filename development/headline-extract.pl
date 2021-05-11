@@ -8,19 +8,21 @@
 #
 # Verwendung für das siduktion Handbuch.
 # Extrahieren und aufbereiten der Überschriften aus den .md-Dateien
-# des Ordners "sidu-manual/data/de/"
+# des Ordners "sidu-manual/data/de/". Es werden ausschließlich
+# nummerierte Dateien ausgewertet.
 #
-# Aufruf: In den Ordner /development/ wechseln und "./headline-extract.pl"
-# eingeben. Die erstellten Überschriftenlisten mit den Namen
+# Aufruf: In den Ordner data/de/ wechseln und
+# "../../development/headline-extract.pl." eingeben.
+# Die erstellten Überschriftenlisten mit den Namen
 # "headline-by-file"
 #   und
 # "headline-by-text"
-# befinden sich dann im gleichen Ordner.
+# befinden sich dann im Ordner /development.
 #
 use strict;
 use File::Basename;
 
-my ($FILE, $H_CLASS, $H_TEXT);
+my ($FILE, $H_CLASS, $H_TEXT, $LINK);
 my (@QUELLE, @DATEIEN, @HLTEXT, @HLFILE);
 
 
@@ -29,13 +31,14 @@ my (@QUELLE, @DATEIEN, @HLTEXT, @HLFILE);
 @DATEIEN = glob "*";
 
 while (@DATEIEN) {
-    chomp($FILE = shift @DATEIEN);
-
+    $_ = shift @DATEIEN;
+    chomp($_);
+    next unless (/^\d{4}-.*/);
+    $FILE = $_;
     
-    open(DATEI, "$FILE") || die "$FILE nicht gefunden\n";
+    open(DATEI, "$_") || die "$_ nicht gefunden\n";
     @QUELLE=<DATEI>;
     close(DATEI);
-
 
 ######## Beginn Überschriften suchen.
 
@@ -60,12 +63,17 @@ while (@DATEIEN) {
 
         $H_TEXT = $_;
         $H_TEXT =~ s/^#{1,4} (.*)/$1/; 
-    
-        $_ = sprintf "  %-34s %-4s %-s\n", $FILE, $H_CLASS, $H_TEXT;
+        
+        $LINK = "\[\]\($FILE\#$H_TEXT\)";
+        $LINK =~ s!(.*)!\L$1!;
+        $LINK =~ s!( )!-!g;
+        $_ = sprintf "%s   %s %s   Link: %s\n", $FILE, $H_CLASS, $H_TEXT, $LINK;
+#        $_ = sprintf "%-26s %-4s %-40s %-40s\n", $FILE, $H_CLASS, $H_TEXT, $LINK;
         push @HLFILE,$_;
-    
-        $_ = sprintf "  %-46s %-4s %-s\n", $H_TEXT, $H_CLASS, $FILE;
+        
+        $_ = sprintf "%s~%4s~%s~%s\n", $H_TEXT, $H_CLASS, $FILE, $LINK;
         push @HLTEXT,$_;
+        @HLTEXT = sort @HLTEXT;
     }
 }
 
@@ -80,10 +88,9 @@ foreach (@HLFILE) {
 close(DATEI);
 
 
-@HLTEXT = sort @HLTEXT;
-
 open (DATEI, ">", "../../development/headline-by-text") || die "Kann nicht schreiben.\n";
 foreach (@HLTEXT) {
+    s!(.*?)~(.*?)~(.*?)~(.*?)!$2 $1   $3   Link: $4!;
     print DATEI "$_";
 #    print "$_";
 }
