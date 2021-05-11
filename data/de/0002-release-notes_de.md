@@ -2,7 +2,7 @@
 
 ## Release Notes 
 
-###  siduction 2021.1.1 C-Blues Point Release
+### siduction 2021.1.1 C-Blues Point Release
 
 Um den Fehler zu umgehen, dass der Calamares-Installer im EFI-Mode keine GPT Partitionen erstellen kann, haben wir siduction 2021.1.1 veröffentlicht.  
 Für die fachlich interessierten Nutzer unter uns möchte ich den Hintergrund [dieses Bug](https://github.com/calamares/calamares/issues/1637) etwas erläutern. Die neue Version 4.2 der [dosfstools](https://github.com/dosfstools/dosfstools) verhindert, dass das von Calamares genutzte und im Kern des KDE-Partition-Managers agierende [kpmcore](https://github.com/KDE/kpmcore), GPT Partitionen erstellt. 
@@ -16,7 +16,7 @@ Leere Labels sind in Dosfstools nicht mehr erlaubt, gleichzeitig wurde die Art, 
 Bis zur Bereitstellung einer fehlerbereinigten Version von dosfstools in den Repositorien wird wohl noch einige Zeit vergehen, deshalb haben wir uns dazu entschlossen, dosfstools auf die Version 4.1.2 zu downgraden. Das Paket trägt jetzt die Bezeichnung *dosfstools 4.2-1.1~really4.1-2* .  
 Das Release wird nur bei einer Neuinstallation mit Calamares benötigt. Deshalb erhielt noX auch kein Update, denn es hat nur den CLI-Installer und kein Calamares. Benutzer, die siduction bereits installiert haben, betrifft dieses Release nicht.
 
-###  siduction 2021.1.0 C-Blues
+### siduction 2021.1.0 C-Blues
 
 Das siduction Team ist stolz darauf, euch siduction 2021.1.0 zu präsentieren. Nach einer langen Pause von fast 3 Jahren freuen wir uns mit einem offiziellen Release wieder zurück zu sein. Wir nennen es »C-Blues«, und man kann leicht erraten wofür das »C« in dieser turbulenten Zeit steht. 
 
