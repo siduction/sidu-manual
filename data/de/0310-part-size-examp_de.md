@@ -56,7 +56,7 @@ Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installati
 
 Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden.
 
-Als Partitionstabelle sollte der Typ "*GPT*" gewählt werden. So kann man die Vorteile gegenüber "*MBR*" nutzen. Nur bei alter Hardware ist "*MBR*" noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk, warum GPT](part-gdisk_de.md#warum-gdisk-gpt-fdisk-verwenden).
+Als Partitionstabelle sollte der Typ "*GPT*" gewählt werden. So kann man die Vorteile gegenüber "*MBR*" nutzen. Nur bei alter Hardware ist "*MBR*" noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
 
 Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.
 

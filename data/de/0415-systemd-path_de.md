@@ -104,7 +104,7 @@ Sektion [Path]:
 "*PathModifid=*" ist die richtige Wahl. Die Option reagiert auf Änderungen in der Datei */var/www/changed*, selbst wenn die Datei nicht geschlossen wird.  
 Die Option "*PathModifid=*" (oder andere, siehe oben) kann mehrfach angegeben werden.
 
-### service-Unit anlegen
+### service-Unit für path
 
 Die *server1.service*-Unit wird von der *server1.path*-Unit aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reichen die Beschreibung der Unit in der Sektion *[Unit]*, und in der Sektion *[Service]* die auszuführenden Befehle, aus.
 

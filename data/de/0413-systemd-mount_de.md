@@ -219,7 +219,7 @@ Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
 **Weitere Beispiele**  
 Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *mount*- und *automount*-Unit. Das Kapitel "Quellen" enhält einige Webseiten mit eine ganze Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
 
-### Quellen sytemd-mount
+### Quellen systemd-mount
 
 [Deutsche Manpage, systemd.mount](https://manpages.debian.org/testing/manpages-de/systemd-mount.1.de.html)  
 [Deutsche Manpage, mount](https://manpages.debian.org/testing/manpages-de/mount.8.de.html)  

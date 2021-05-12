@@ -21,7 +21,7 @@ Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in */usr/l
 
 Wir erstellen in dem Beispiel ein regelmäßiges Backup mit *rsync*.
 
-### service-Unit anlegen
+### service-Unit für timer
 
 Die *.service-Unit*, die das Backup ausführt, wird von der *.timer-Unit* aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reicht die Beschreibung der Unit in der Sektion *[Unit]*. Ihrer Sektion *[Service]* enthält den auszuführenden Befehl nach der Option *ExecStart=*.
 

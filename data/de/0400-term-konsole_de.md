@@ -204,7 +204,7 @@ Die neuen Farben und Formate erscheinen nach öffnen eines neuen Terminals.
 
 Im Menü des Terminals gibt es unter *Bearbeiten* - *Einstellungen...* - Reiter *Farben* eine Unmenge an Einstellungsmöglichkeiten. Wir empfehlen eine eher schlichte Einstellung.
 
-### Wenn das Terminal "hängt"
+### Wenn das Terminal hängt
 
 Manchmal kann ein Terminal nicht mehr so reagieren wie gewünscht. Das liegt meist daran, dass sich ein Programm fehlerfaft beendet und das Teminal in einem abnormalen Zustand zurückgelassen hat. Dann muss
 

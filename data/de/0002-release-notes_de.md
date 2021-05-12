@@ -62,7 +62,7 @@ Wer in Xorg und noX weiterhin *wpa_supplicant* anstatt *iwd* nutzen möchte, bef
 
 Jetzt wird wpa_supplicant für die Verbindung mit der WiFi-Hardware benutzt.
 
-#### iwd installieren
+**iwd installieren**
 
 Wer möchte, kann iwd auch in den anderen Varianten nutzen, entweder eigenständig, oder in Verbindung mit dem NetworkManager. 
 

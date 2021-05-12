@@ -23,13 +23,13 @@ Nutzern, die mehrere PC ihr Eigen nennen und sparsam mit Bandbreite und Download
 
 **Apt-Cacher** ist kein universeller Proxy-Server. Wer dies trotzdem versucht, wird einige unliebsame Überraschungen im Netzwerk erleben.
 
-### Voraussetzungen
+**Voraussetzungen**
 
 + Ein PC, auf dem der lokale APT-Proxy-Server eingerichtet wird.
 + 6 GB freier Speicherplatz für den Cache auf dem Server.
 + LAN-Verbindung zu den anderen Geräten.
 
-### Apt-Cacher Setup
+**Apt-Cacher Setup**
 
 Das Setup für *Apt-Cacher* erfolgt in zwei Schritten.  
 Als Erstes wird *Apt-Cacher* auf dem als APT-Proxy-Server ausgewählten PC installiert und anschließend konfiguriert man alle Client-PC's so, dass sie den APT-Proxy-Server benutzen.

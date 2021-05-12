@@ -8,23 +8,16 @@ Dabei wird das siduction-ISO auf das Gerät geschrieben. Auch wenn die Option pe
 
 Falls persist benötigt wird, ist install-usb-gui bei einem vorhandenen siduction-System die empfohlene Methode, da man dadurch keinerlei Einschränkungen ausgesetzt ist. Siehe auch: [USB/SSD fromiso Installation - siduction-on-a-stick](hd-install-opts-de.md#fromiso) .
 
-### Voraussetzungen
+**Voraussetzungen**
 
 + Das BIOS des PC, auf dem Du siduction-on-a-stick/card starten möchtest, muss das Booten mittels eines USB-Sticks bzw. einer SSD-Karte erlauben. Normalerweise ist dies der Fall, wenn im BIOS des PC diese Bootoption angeboten wird.
 + USB/SSD sollte automatisch erkannt werden und die Menü-Option **F4**  sollte **Hard Disk**  ausgeben, andernfalls sollte **F4 > Hard Drive**  aufgerufen oder **fromhd** der Bootmenü-Zeile beigefügt werden.
 + Sichere das Betriebssystem und alle deine Daten auf den Geräten die du für die Herstellung des siduction-USB-Mediums verwenden möchtest. Ein kleiner Tippfehler kann alle deine Daten zerstören!
 
-### Wichtige Information
-
-~~~note
-Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören.
-Der Datenverlust hängt von der Größe der siduction-*.iso ab. 
-Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, 
-dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden. 
-MS Windows hingegen scheint nur eine Partition zu erlauben. 
-Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an.
-Sichere Deine Daten!
-~~~
+> Wichtige Information  
+> Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben und zerstören. Der Datenverlust hängt von der Größe der siduction-*.iso ab.  
+> Was Linux betrifft, wird der gegebene Speicherplatz nicht beschränkt und es kann sein, dass Daten wiedergewonnen werden können, welche nicht durch die ISO zerstört wurden.  
+> MS Windows hingegen scheint nur eine Partition zu erlauben. Gehe also keine Risiken eines Datenverlustes ein und wende diese Methode nicht auf einer Deiner 100+ GB Festplatten an. Sichere Deine Daten!
 
 ### Mit Linux-Betriebssystemen
 

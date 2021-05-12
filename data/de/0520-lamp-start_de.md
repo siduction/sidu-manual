@@ -11,8 +11,6 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-# Netzwerk
-
 ## LAMP-Webserver
 
 **Ein lokaler Testserver für Entwickler**
@@ -52,7 +50,7 @@ phpmyadmin
 
 Wie bei siduction üblich, erledigen wir die Installationen im "multi-user.target" (init 3) im Terminal.
 
-### Vorbereitungen
+**Vorbereitungen**
 
 Falls der Kommandozeilenbrowser *w3m* noch nicht installiert wurde, holen wir das jetzt nach:
 

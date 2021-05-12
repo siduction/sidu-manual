@@ -273,7 +273,7 @@ Genaue Informationen enthält die externe Webseite [MariaDB Systemd](https://mar
 
 Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf den Systemd beziehen.
 
-### Log
+### MariaDB Log
 
 Das Systemd Journal enthält Meldungen über den Startprozess des *mariadb.service*. Es ist die erste Anlaufstelle wenn Fehler auftreten.  
 In der Konsole zeigt der Befehl "*journalctl*" die Meldungen zu MariaDB mit:
@@ -299,7 +299,7 @@ MariaDB [(none)]> SET GLOBAL general_log=1;
 Das erstellt eine Log-Datei nach dem Muster *\<Host\>.log* im Verzeichnis */var/lib/mysql/*.  
 **Achtung**: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Atkionen zu beobachten.
 
-### Quellen
+### Quellen MariaDB
 
 [MariaDB Dokumentation](https://mariadb.com/kb/en/documentation/) (englisch)  
 [MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (englisch)  

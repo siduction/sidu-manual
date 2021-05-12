@@ -10,8 +10,6 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 ENDE INFOBEREICH FÜR DIE AUTOREN
 
-
-
 ## Installation auf verschlüsselte root-Partition
 
 ~~~note
@@ -129,7 +127,7 @@ Falls swap benötigt wird (swap sollte auch verschlüsselt sein), wird eine drit
 
 Es ist möglich, für swap Schlüssel von innerhalb des verschlüsselten Systems zu benutzen, dann jedoch ist ein suspend-to-disk nicht möglich. Aus diesem Grund ist es langfristig besser, LVMs mit voll verschlüsselten Partitionen und Schlüsseln zu verwenden..
 
-#### Grundannahmen
+**Grundannahmen**
 
 + Es gibt nur drei Partitionen auf der Festplatte:
 
@@ -143,7 +141,7 @@ Nach Abschluss der Partitionierung müssen die verschlüsselten Partitionen vorb
 
 Falls ein Partitionierungsprogramm mit graphischer Oberfläche benutzt wurde, muss dieses beendet werden und ein Terminal geöffnet, da die Verschlüsselungsbefehle über die Befehlszeile eingegeben werden.
 
-#### Die Partition /boot
+**Die Partition /boot**
 
 Die Partition `/boot` wird mit ext4 formatiert, falls dies noch nicht erledigt wurde:
 
@@ -151,7 +149,7 @@ Die Partition `/boot` wird mit ext4 formatiert, falls dies noch nicht erledigt w
 /sbin/mkfs.ext4 /dev/sda1
 ~~~
 
-#### Verschlüsselte swap-Partition
+**Verschlüsselte swap-Partition**
 
 Für die `verschlüsselte swap`  muss das Gerät `/dev/sda2`  zunächst formatiert und als verschlüsseltes Gerät geöffnet werden - wie vg-crypt oben, aber unter einem anderen Namen: swap.
 
@@ -173,7 +171,7 @@ Die erstellte `/dev/mapper/swap`  wird formatiert, damit der Installer sie erken
 /sbin/mkswap /dev/mapper/swap
 ~~~
 
-#### Verschlüsselte Partition / 
+**Verschlüsselte Partition /**
 
 Für die `verschlüsselte /`  muss das Gerät `/dev/sda3`  zunächst formatiert und als verschlüsseltes Gerät geöffnet werden - wie vg-crypt oben.
 
@@ -221,4 +219,4 @@ man cryptsetup
 [siduction-WIKI-Eintrag](http://wiki.siduction.de/index.php?title=Installation_auf_einer_verschl%C3%Bcsselten_Festplatte)  
 
 
-<div id="rev">Page last revised 2021-04-14</div>
+<div id="rev">Zuletzt bearbeitet: 2021-04-14</div>

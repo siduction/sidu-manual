@@ -249,7 +249,7 @@ Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwen
 chmod -R u-w /var/www/html
 ~~~
 
-### Sicherheit - Standard Konfiguration in Apache
+### Sicherheit - Apache Standard
 
 Wichtige Absicherungen enthält die Datei "*/etc/apache2/apache2.conf*" bereits standardmäßig.
 
@@ -440,13 +440,11 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 ~~~
 
-### Quellen
+### Quellen Apache
 
 [apache.org - Dokumentation](https://httpd.apache.org/docs/current/de/) (teilweise deutsch)  
 [apache.org - Konfigurationsdateien](https://httpd.apache.org/docs/current/de/configuring.html)  
 [apache.org - SSL Howto](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)  
 [HTTPS Guide - Servercertifikate erstellen und integrieren](https://www.https-guide.de/)
-
-
 
 <div id="rev">Zuletzt bearbeitet: 2021-01-30</div>

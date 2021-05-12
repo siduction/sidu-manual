@@ -1,31 +1,6 @@
 % home verschieben
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC§**
-
-Änderungen 2020-05:
-
-+ Inhalt vollständig überarbeitet
-+ Korrektur und Prüfung aller Links.
-
-Änderungen 2020-12:
-
-+ Rechtschreib- und Layoutfehler korrigiert
-+ Inhalt teilweise überarbeitet.
-+ Für die Verwendung mit pandoc optimiert.
-
-Änderungen 2021-03:
-
-+ /home-Partition entfernt Erklärung unter Hinweise eingefügt.
-+ Den weiteren Inhalt entsprechend angepasst.
-
-Änderungen 2021-05:
-Leichte umformulierung, warnug eingefügt, Status RC 3
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
-## Das Verzeichnis /home verschieben
+## Das Verzeichnis home verschieben
 
 > Wichtige Information  
 > Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
@@ -34,7 +9,7 @@ Deshalb raten wir generell davon ab eine /home-Partition anzulegen.
 Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter **/Daten** eingehängt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 Sofern Daten gemeinsam für parallele Installationen bereit stehen sollen, ist diese Vorgehensweise besonders ratsam.
 
-### Vorbereitungen
+**Vorbereitungen**
 
 An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.  
 Die Ausgangslage:

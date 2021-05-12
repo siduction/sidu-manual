@@ -201,7 +201,7 @@ imagick (Enabled for apache2 by local administrator)
 
 Bei dem Modul *imagick* zeigt uns der String "*Enabled for apache2 by local administrator*", dass es nicht wie das *zip*-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen *phpdismod* und *phpenmod* für diese Modul.
 
-### Log
+### Apache Log
 
 Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter */var/log/apache2/*. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.  
 Alternativ lassen wir uns die Log-Funktionen anzeigen.
@@ -219,7 +219,7 @@ opcache.error_log 	=> no value
 
 In den Dateien */etc/php/7.4/\<Interface\>/php.ini* haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
 
-### Quellen
+### Quellen PHP
 
 [PHP - deutsches Handbuch](https://www.php.net/manual/de/)  
 [PHP - aktuelle Meldungen](https://www.php.net/)  

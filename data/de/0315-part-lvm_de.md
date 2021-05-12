@@ -37,7 +37,7 @@ Mit drei Grundbegriffen sollte man vertraut sein:
 
 + **Logisches Volumen (Logical Volume):**  Logische Volumen werden inerhalb einer *Volumengruppe* erstellt und in das System eingebunden. Man kann sie auch als "virtuelle" Partitionen verstehen. Sie sind dynamisch veränderbar, können in der Größe verändert, neu erstellt, entfernt und verwendet werden. Ein logisches Volumen kann sich innerhalb der Volumengruppe über mehrere physische Volumen erstrecken.
 
-### Sechs Schritte, die benötigt werden
+### Sechs Schritte zu Logical Volumen
 
 > **Achtung**  
 > Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.
@@ -205,7 +205,7 @@ Der erneute *resize2sf*-Befehl passt das Dateisystem exakt an die Größe des lo
 
 *Gparted* bietet die Möglichkeit zur Verwaltung von bereits angelegten *Logical Volumes*. Das Programm wird als root ausgeführt.
 
-### Weitere Informationen
+### Weitere Infos
 
 +  [Logical Volume Manager - Wikipedia](https://de.wikipedia.org/wiki/Logical_Volume_Manager)  (Deutsch)
 
