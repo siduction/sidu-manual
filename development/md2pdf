@@ -54,27 +54,23 @@ geometry=portrait
 #  - pandoc ausführen
 #  - Sicherung zurückkopieren und Sicherungsordner löschen.
 
-mkdir ../sicherung/ && cp ./0* ../sicherung/ 2>/dev/null
+mkdir ../sicherung/ || exit 1
 
-cd ../sicherung/ && LISTE=$(ls ./*) && cd ../de/
+cp ./* ../sicherung/ 2>/dev/null
 
-for i in ./*; do sed -i -E '/^% \w/d' "$i"; done 2>/dev/null
+LISTE=$(ls [[:digit:]]*)
+
+for i in $LISTE ; do sed -i -E '/^% \w/d' "$i"; done 
 
 sed -i -e '1 i% Siduction Handbuch' -e '1 i% siduction Team' -e "1 i% $(date +%F)" 0000-*
 
-for i in *; do sed -i -e 's/([-_./[:alnum:]]*de.md#/(#/g' "$i"; done 2>/dev/null
+for i in $LISTE ; do sed -i -e 's/([-_./[:alnum:]]*de.md#/(#/g' "$i"; done
 
-mkdir ./pdf 2>/dev/null
+if [ ! -d ./pdf ]; then mkdir ./pdf; fi
 
 echo PDF in Arbeit.
 
-pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header \
---resource-path=$searchpath --highlight-style tango \
--V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor \
--V geometry:margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
--V geometry=$geometry -V alignment=$alignment -V columns=$columns \
--V fontsize=$fontsize -V nohyphenation=$nohyphenation \
-$LISTE -o ./pdf/siduction-manual_de.pdf
+pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath --highlight-style tango -V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor -V geometry:margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" -V geometry=$geometry -V alignment=$alignment -V columns=$columns -V fontsize=$fontsize -V nohyphenation=$nohyphenation $LISTE -o ./pdf/siduction-manual_de.pdf
 
 cp ../sicherung/* ./ && rm -r ../sicherung
 
