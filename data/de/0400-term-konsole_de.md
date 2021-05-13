@@ -1,27 +1,5 @@
 % Terminal - Kommandozeile
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-06
-
-+ Inhalte aktualisiert.  
-+ Überholte Teile entfernt.  
-+ Reihenfolge geändert.  
-+ Link geprüft und korrigiert.  
-
-Änderungen 2020-11:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-Änderungen 2021-05:
-+ Hinweis zum aktivieren von sudo
-+ doas als alternative zu sudo
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 # Systemadministration
 
 ## Terminal - Kommandozeile

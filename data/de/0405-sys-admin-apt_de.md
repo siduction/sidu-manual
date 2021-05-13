@@ -1,32 +1,5 @@
 % Ein kleines APT-Kochbuch
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-6:
-
-+ "apt und apt-get" eingefügt.
-+ Korrektur und Aktualisierung aller Links
-+ md-Notation überarbeitet.
-
-Änderungen 2020-11:
-
-+ Inhalte überarbeitet und teilweise neu gruppiert.
-+ Für die Verwendung mit pandoc optimiert.
-
-Änderungen 2021-02:
-
-+ "Systemaktualisierung nicht mit Live-Medium" eingefügt.
-+ Kleinere Fehlerkorrektur.
-+ Review (devil)
-
-Änderungen 2021-03
-
-+ Rechtschreibfehler bereinigt.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## APT Paketverwaltung
 
 APT ist eine Abkürzung für **A**dvanced **P**ackaging **T**ool und stellt eine Sammlung von Programmen und Skripten bereit, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterstützt.  
