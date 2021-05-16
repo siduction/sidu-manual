@@ -74,9 +74,8 @@ while (@QUELLE) {
 # (Für Testzwecke auf der Konsole auskommentieren.)
                                                 
 open (DATEI, ">", $SCHREIBEN) || die "Kann nicht schreiben.\n";
-foreach (@QUELLE) {
-    print DATEI "$_";
-#    print "$_";
-}
+    print DATEI @QUELLE;
+#    print @QUELLE;
 close(DATEI);
 
+__END__

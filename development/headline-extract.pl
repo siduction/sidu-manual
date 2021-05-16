@@ -68,8 +68,7 @@ while (@DATEIEN) {
         $LINK = "\[\]\($FILE\#$H_TEXT\)";
         $LINK =~ s!(.*)!\L$1!;
         $LINK =~ s!( )!-!g;
-        $_ = sprintf "%s   %s %s   Link: %s\n", $FILE, $H_CLASS, $H_TEXT, $LINK;
-#        $_ = sprintf "%-26s %-4s %-40s %-40s\n", $FILE, $H_CLASS, $H_TEXT, $LINK;
+        $_ = "$FILE   $H_CLASS $H_TEXT   Link: $LINK\n";
         push @HLFILE,$_;
         
         $_ = sprintf "%s~%4s~%s~%s\n", $H_TEXT, $H_CLASS, $FILE, $LINK;
@@ -82,10 +81,8 @@ while (@DATEIEN) {
 # (Für Testzwecke auf der Konsole auskommentieren.)
 
 open (DATEI, ">", "../../development/headline-by-file") || die "Kann nicht schreiben.\n";
-foreach (@HLFILE) {
-    print DATEI "$_";
-#    print "$_";
-}
+print DATEI @HLFILE;
+#    print @HLFILE;
 close(DATEI);
 
 

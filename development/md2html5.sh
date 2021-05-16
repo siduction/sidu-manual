@@ -15,18 +15,20 @@
 # Die Pfade bei Abweichungen an die individuellen Gegebenheiten angepassen.
 #
 
-if [ ! -d ../de_html/ ]
+if [ ! -d ./html/ ]
 then
-   mkdir ../de_html/
+   mkdir ./html/
 fi
 
-mkdir ../../arbeit/ && cp ./* ../../arbeit/ 2>/dev/null
+mkdir ../../arbeit/ || exit 1
+
+cp ./0* ../../arbeit/ 2>/dev/null
 
 cd ../../arbeit/ 
 
 for i in *;
 do
-    ../development/md2html_pre.pl "$i" && pandoc -s --template=../development/pandoc_template.html5 --toc --toc-depth=4 "$i" -o ../data/de_html/$(basename $i .md).html;
+    ../development/md2html_pre.pl "$i" && pandoc -s --template=../development/pandoc_template.html5 --toc --toc-depth=4 "$i" -o ../data/de/html/$(basename $i .md | sed 's#[[:digit:]]\{4\}-\(.*\)#\1.html#');
 done
 
 cd ../data/de/
