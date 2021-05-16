@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Aktualisierung des BIOS mit FreeDOS</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Aktualisierung des BIOS mit FreeDOS</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#aktualisierung-des-bios-mit-freedos">Aktualisierung des BIOS mit FreeDOS</a>
+<ul>
+<li><a href="#drei-voraussetzungen">Drei Voraussetzungen</a></li>
+<li><a href="#partitionieren-des-usb-sticks">Partitionieren des USB-Sticks</a></li>
+<li><a href="#freedos-mit-qemu-booten">FreeDOS mit qemu booten</a></li>
+<li><a href="#schreiben-des-bootsektors-auf-den-usb-stick">Schreiben des Bootsektors auf den USB-Stick</a></li>
+<li><a href="#aktualisierung-des-bios">Aktualisierung des BIOS</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2020-05:</p>
+<ul>
+<li>md codierung angepasst</li>
+<li>Leerzeile zwischen text und code eingefügt (hendrikL) Mo 11. Mai 22:04:47 CEST 2020</li>
+<li>Einleitung angepasst (devil)</li>
+<li>learning by doing, Schriftsatz</li>
+</ul>
+<p>Änderungen 2020-12:</p>
+<ul>
+<li>Für die Verwendung mit pandoc optimiert.</li>
+<li>Inhalt geringfügig überarbeitet.</li>
+</ul>
+<p>Änderungen 2021-04-13 + chapter hirachy fixed + added code tags</p>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<h2 id="aktualisierung-des-bios-mit-freedos">Aktualisierung des BIOS mit FreeDOS</h2>
+<p>Das BIOS eines Computers sollte ab und an aktualisiert werden, wenn der Hersteller des Motherboards Verbesserungen der BIOS-Software vornimmt. Viele moderne PCs und Notebooks erlauben die Aktualisierung des BIOS/UEFI aus dem laufenden System per <a href="https://linuxnews.de/2017/10/firmware-updates-automatisieren/">fwupd</a> oder aus dem BIOS/UEFI selbst an. Besteht diese Möglichkeit nicht, lässt sich die Aktualisierung über eine Anwendung auf MS-DOS-Basis vornehmen.</p>
+<p>Wir stellen nun eine Möglichkeit vor, wie man das BIOS unter Linux von einem USB-Stick oder einer micro/mini/SD-Karte (mit einem geeigneten Adapter) aktualisieren kann.</p>
+<p>Als Erstes muss im BIOS das Booten von USB zugelassen werden, und das BIOS muss mit USB-Festplatten umgehen können. Einige BIOS-Varianten akzeptieren USB-Diskettenlaufwerke, CD-ROMs oder ZIP-Laufwerke. Die meisten davon können geeignet sein, aber eine BIOS-Aktualisierung kann sich schwieriger gestalten. Oft ist das jedoch die einzige Möglichkeit (das betrifft vor allem Netbooks).</p>
+<h3 id="drei-voraussetzungen">Drei Voraussetzungen</h3>
+<ol type="1">
+<li><p>ein USB-Stick: bevorzugt sind weniger als 2 GByte (FAT16 erlaubt nicht mehr als 2 GByte, aber eine vollständige FreeDOS-Installation benötigt nur 5.8 MByte). FAT16 ist empfohlen, da FAT32 nicht von jedem BIOS als bootfähig erkannt wird.</p></li>
+<li><p>ein FreeDOS-Installationsmedium: fdbasecd.iso (8MByte).</p></li>
+<li><p>qemu (apt-get install qemu): qemu wird für die Installationsroutine benötigt. Das emulierte qemu-BIOS führt dazu, dass FreeDOS den USB-Stick als normale Festplatte erkennt und man auf traditionelle Art installieren kann (man muss keine FreeDOS-CD brennen).</p></li>
+</ol>
+<warning>
+<strong>SEHR WICHTIGE, KRITISCHE INFORMATION:</strong> <br />Zu keinem Zeitpunkt darf der USB-Stick eingebunden, d.h. gemountet werden. Es muss peinlichst darauf geachtet werden, die richtige Gerätedatei (engl. device node) zu wählen, ansonsten werden sämtliche Daten auf dem falschen Datenträger (möglicherweise der System-Festplatte!) unwiderruflich gelöscht.
+</warning>
+<p>Der USB-Stick wird angesteckt und nicht eingebunden. Mit dem Werkzeug fdisk ermittelt man, welche Gerätedatei dem USB-Stick zugewiesen wurde. In unseren Beispielen wird /dev/sdb verwendet.</p>
+<p>Der USB-Stick wird gelöscht, wobei alle Daten verloren gehen. Man kann auch den ganzen USB-Stick löschen, nicht nur die ersten 16 MByte, wie im Beispiel.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a> <span class="ex">root@siduction</span># dd if=/dev/zero of=/dev/sdb bs=1M count=16</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a> <span class="ex">16+0</span> records in</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a> <span class="ex">16+0</span> records out</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a> <span class="ex">16777216</span> bytes (17 MByte) <span class="ex">copied</span>, 2.35751 s, 7.1 MByte/s </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a> <span class="ex">root@siduction</span>#</span></code></pre></div>
+<h3 id="partitionieren-des-usb-sticks">Partitionieren des USB-Sticks</h3>
+<p>Die korrekte Partitionierung und Formatierung des USB-Sticks ist vermutlich der schwierigste Teil.</p>
+<p>Das Partitions-Label wird auf FAT16 gesetzt, auf Sticks mit weniger als 2 GByte (dies bietet bessere Kompatibilität).</p>
+<p>Danach fdisk auf die Partition ausführen:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">root@siduction</span># fdisk /dev/sdb</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">fdisk</span> /dev/sdb Device contains neither a valid DOS partition</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">table</span>, nor Sun, SGI or OSF disklabel Building a new DOS disklabel with disk</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">identifier</span> 0xa8993739. Changes will remain in memory only, until you decide to write them.</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">After</span> that, of course, the previous content wont recoverable.</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="ex">Warning</span>: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)</span></code></pre></div>
+<p>Anlegen der Partition:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a> <span class="ex">Command</span> (m for help)<span class="bu">:</span> n</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a> <span class="ex">Command</span> action</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>     <span class="ex">e</span>   extended</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>     <span class="ex">p</span>   primary partition (1-4)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a> <span class="ex">p</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a> <span class="ex">Partition</span> number (1-4)<span class="bu">:</span> 1</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a> <span class="ex">First</span> cylinder (1-1018, default 1)<span class="bu">:</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a> <span class="ex">Using</span> default value 1</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a> <span class="ex">Last</span> cylinder or +size or +sizeM or +sizeK (1-1018, default 1018)<span class="bu">:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a> <span class="ex">Using</span> default value 1018</span></code></pre></div>
+<p><em>Bestätigung des Anlegens der Partiton, indem die Partitionstabelle geschrieben wird:</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a> <span class="ex">Command</span> (m for help)<span class="bu">:</span> p</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a> <span class="ex">Disk</span> /dev/sdb: 2003 MByte, 2003828736 bytes 62 heads, 62 sectors/track, 1018</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a> <span class="ex">cylinders</span> Units = cylinders of 3844 * 512 = 1968128 bytes Disk identifier:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a> <span class="ex">0xa8993739</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a> <span class="ex">Device</span> Boot      Start         End      Blocks   Id  System</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a> <span class="ex">/dev/sdb1</span>            1        1018     1956595+  83  Linux</span></code></pre></div>
+<p><em>Setzen des korrekten Partitionslabels , ‘6’ für FAT16:</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>  <span class="ex">Command</span> (m for help)<span class="bu">:</span> t</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  <span class="ex">Selected</span> partition 1</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  <span class="ex">Hex</span> code (type L to list codes)<span class="bu">:</span> l</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>   <span class="ex">0</span>  Empty            1e  Hidden W95 FAT1 80  Old Minix       be  Solaris boot</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>   <span class="ex">1</span>  FAT12            24  NEC DOS         81  Minix / old Lin bf  Solaris</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>   <span class="ex">2</span>  XENIX root       39  Plan 9          82  Linux swap / So c1  DRDOS/sec-</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>   <span class="ex">3</span>  XENIX usr        3c  PartitionMagic  83  Linux           c4  DRDOS/sec</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>   <span class="ex">4</span>  FAT16 <span class="op">&lt;</span>32M       40  Venix 80286     84  OS/2 hidden C:  c6  DRDOS/sec</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>   <span class="ex">5</span>  Extended         41  PPC PReP Boot   85  Linux extended  c7  Syrinx</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>   <span class="ex">6</span>  FAT16            42  SFS             86  NTFS volume set da  Non-FS data</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>   <span class="ex">7</span>  HPFS/NTFS        4d  QNX4.x          87  NTFS volume set db  CP/M / CTOS / .</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a>   <span class="ex">8</span>  AIX              4e  QNX4.x 2nd part 88  Linux plaintext de  Dell Utility</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>   <span class="ex">9</span>  AIX bootable     4f  QNX4.x 3rd part 8e  Linux LVM       df  BootIt</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>   <span class="ex">a</span>  OS/2 Boot Manag  50  OnTrack DM      93  Amoeba          e1  DOS access</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>   <span class="ex">b</span>  W95 FAT32        51  OnTrack DM6 Aux 94  Amoeba BBT      e3  DOS R/O</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>   <span class="ex">c</span>  W95 FAT32 (LBA)  <span class="ex">52</span>  CP/M            9f  BSD/OS          e4  SpeedStor</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>   <span class="ex">e</span>  W95 FAT16 (LBA)  <span class="ex">53</span>  OnTrack DM6 Aux a0  IBM Thinkpad hi eb  BeOS fs</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a>   <span class="ex">f</span>  W95 Ext d (LBA)  <span class="ex">54</span>  OnTrackDM6      a5  FreeBSD         ee  EFI GPT</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a>   <span class="ex">10</span>  OPUS            55  EZ-Drive        a6  OpenBSD         ef  EFI</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a>   <span class="ex">11</span>  Hidden FAT12    56  Golden Bow      a7  NeXTSTEP        f0  Linux/PA-RISC b</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a>   <span class="ex">12</span>  Compaq diagnost 5c  Priam Edisk     a8  Darwin UFS      f1  SpeedStor</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a>   <span class="ex">14</span>  Hidden FAT16 <span class="op">&lt;</span>3 61  SpeedStor       a9  NetBSD          f4  SpeedStor</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a>   <span class="ex">16</span>  Hidden FAT16    63  GNU HURD or Sys ab  Darwin boot     f2  DOS secondary</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a>   <span class="ex">17</span>  Hidden HPFS/NTF 64  Novell Netware  b7  BSDI fs         fd  Linux raid auto</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a>   <span class="ex">18</span>  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fe  LANstep</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true"></a>   <span class="ex">1b</span>  Hidden W95 FAT3 70  DiskSecure Mult bb  Boot Wizard hid ff  BBT</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true"></a>   <span class="ex">1c</span>  Hidden W95 FAT3 75  PC/IX</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true"></a>   <span class="ex">Hex</span> code (type L to list codes)<span class="bu">:</span> 6</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true"></a>    <span class="ex">Changed</span> system type of partition 1 to 6 (FAT16)</span></code></pre></div>
+<p><em>Aktivierung der neuen und einzigen Partition:</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>  <span class="ex">Command</span> (m for help)<span class="bu">:</span> a Partition number (1-4)<span class="bu">:</span> 1</span></code></pre></div>
+<p><em>Die neue Partitionstabelle wird nochmals geschrieben, und man bestätigt neuerlich, dass die Partition aktiviert wird:</em></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>  <span class="ex">Command</span> (m for help)<span class="bu">:</span> p</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  <span class="ex">Disk</span> /dev/sdb: 2003 MByte, 2003828736 bytes 62 heads, 62 sectors/track, 1018</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  <span class="ex">cylinders</span> Units = cylinders of 3844 * 512 = 1968128 bytes Disk identifier:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>  <span class="ex">0xa8993739</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>  <span class="ex">Device</span> Boot      Start         End      Blocks   Id  System </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>  <span class="ex">/dev/sdb1</span>   *        1        1018     1956595+   6  FAT16</span></code></pre></div>
+<p><em>Die neue Partitionstabelle wird auf dem USB-Stick gespeichert und fdisk beendet:</em></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>  <span class="ex">Command</span> (m for help)<span class="bu">:</span> w </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="ex">The</span> partition table has been altered!</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>  <span class="ex">Calling</span> ioctl() <span class="ex">to</span> re-read partition table.</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>  <span class="ex">WARNING</span>: If you have created or modified any DOS 6.x partitions, please see the</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>  <span class="ex">fdisk</span> manual page for additional information. Syncing disks. </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>  <span class="co"># exit</span></span></code></pre></div>
+<p><em>Formatieren des neu aufgesetzten USB-Sticks:</em></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>  <span class="ex">root@siduction</span># mkfs -t vfat -n FreeDOS /dev/sdb1</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  <span class="ex">root@siduction</span># exit</span></code></pre></div>
+<p>Die Vorbereitungsphase ist nun abgeschlossen. Der USB-Stick wurde partitioniert und formatiert. Nun kann der Installationsprozess begonnen werden.</p>
+<h3 id="freedos-mit-qemu-booten">FreeDOS mit qemu booten</h3>
+<p>Da DOS keine USB-Sticks kennt, muss man einen Weg finden, um FreeDOS eine normale “Festplatte” vorzugaukeln. Bei einem “Live-Boot” übernimmt das BIOS diese Funktion, in unserem Fall muss man zu diesem Zweck jedoch qemu verwenden:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>  <span class="ex">Benutzer</span>:siduction<span class="op">&gt;</span> qemu-system-i386 -hda /dev/sdb -cdrom /path/to/fdbasecd.iso -boot d</span></code></pre></div>
+<p>Damit wird FreeDOS CD gebootet und der USB-Stick wird als primäre Master-Festplatte erkannt (qemus Fähigkeit zur BIOS-Emulation lässt den USB-Stick für DOS als gewöhnliche Festplatte erscheinen). Nun wird der Installer im Boot-Menu des virtualisierten FreeDOS gewählt:</p>
+<p><em>ctrl-alt</em> schaltet Maus und Tastatur zwischen qemu und Hostsystem. Damit kann man Desktops wechseln und schrittweise gleichzeitig die Anleitung mitlesen.</p>
+<figure>
+<img src="./images/images-qemu-freedos/qemu-boot01.jpg" alt="" /><figcaption>Startmenü</figcaption>
+</figure>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>  <span class="ex">1</span>) <span class="ex">Continue</span> to boot FreeDOS from CD-ROM 1</span></code></pre></div>
+<p>Man wählt die Grundeinstellung 1 bzw. antwortet Yes, falls angefragt.</p>
+<figure>
+<img src="./images/images-qemu-freedos/qemu-boot02.jpg" alt="" /><figcaption>Installieren</figcaption>
+</figure>
+<p> <br />
+ </p>
+<figure>
+<img src="./images/images-qemu-freedos/qemu-boot04.jpg" alt="" /><figcaption>Weiter</figcaption>
+</figure>
+<p> <br />
+ </p>
+<figure>
+<img src="./images/images-qemu-freedos/qemu-boot09.jpg" alt="" /><figcaption>Ordner auswählen</figcaption>
+</figure>
+<p>Die Installationsroutine fordert nun zu einem Reboot auf -<br />
+<strong>dies verschieben wir noch etwas, da noch zwei Fehler des FreeDOS Installers bezüglich mbr und Bootmenü behoben werden müssen</strong></p>
+<p>Man gibt den Buchstaben <em>‘n’</em> ein.</p>
+<figure>
+<img src="./images/images-qemu-freedos/qemu-boot18.jpg" alt="" /><figcaption>Kein reboot</figcaption>
+</figure>
+<h3 id="schreiben-des-bootsektors-auf-den-usb-stick">Schreiben des Bootsektors auf den USB-Stick</h3>
+<p>Der mbr-Fehler wird behoben durch:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>  <span class="ex">fdisk</span> /mbr 1</span></code></pre></div>
+<p>Der Bootmenüfehler wird in der neuen fdconfig.sys behoben, indem man ausführt:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>  <span class="bu">cd</span> <span class="dt">\ </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>  <span class="ex">edit</span> fdconfig.sys</span></code></pre></div>
+<p>und dann die Zeile beginnend mit command.com so abändert:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>  <span class="ex">1234?SHELLHIGH</span>=C:\FDOS\command.com C:\FDOS /D /P=C:\fdauto.bat /K set</span></code></pre></div>
+<figure>
+<img src="./images/images-qemu-freedos/qemu-boot23.jpg" alt="" /><figcaption>fdconfig.sys bearbeiten</figcaption>
+</figure>
+<p><strong>Ansonsten darf nichts geändert werden, da die Zeile von dem Installations-Setup abhängt.</strong></p>
+<p>Speichern und “edit” verlassen:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>  [<span class="ex">alt</span>]+[f]</span></code></pre></div>
+<p>Zurück beim Befehlszeilen-Prompt kann qemu nun verlassen werden.</p>
+<p>Nun wird getestet, ob qemu den USB-Stick bootet.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>  <span class="ex">qemu-system-i386</span> -hda /dev/sdb</span></code></pre></div>
+<p>Der USB-Stick ist nun bootfähig und enthält eine vollständige FreeDOS-Installation mit 5,4 MByte, um das BIOS flashen zu können. Man sollte booten, ohne Treiber zu laden (Menüoption 4), himem.sys und emm386 könnten in die Flashing-Programme reinpfuschen!</p>
+<h3 id="aktualisierung-des-bios">Aktualisierung des BIOS</h3>
+<p>Der FreeDOS USB-Stick wird in ein laufendes System angesteckt, eingebunden und die benötigten BIOS- Dateien (Herstellerempfehlung) werden auf dem FreeDOS USB-Stick gespeichert. Die Einbindung des USB- Sticks wird danach gelöst.</p>
+<p>Der PC wird ausgeschaltet und der FreeDOS USB-Stick angesteckt. Der PC wird eingeschaltet, sodass der FreeDOS USB-Stick bootet, danach wird den Anweisungen des Herstellers des BIOS bzw. Motherboards gefolgt.</p>
+<div id="rev">
+Zuletzt bearbeitet: 2021-04-13
+</div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Systemd - Unit-Datei</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Systemd - Unit-Datei</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#systemd-unit-datei">systemd unit-Datei</a>
+<ul>
+<li><a href="#ladepfad-der-unit-dateien">Ladepfad der Unit-Dateien</a></li>
+<li><a href="#aktivierung-der-unit-datei">Aktivierung der Unit-Datei</a></li>
+<li><a href="#sektionen-der-unit-datei">Sektionen der Unit-Datei</a>
+<ul>
+<li><a href="#sektion-unit">Sektion Unit</a></li>
+<li><a href="#typ-spezifische-sektion">Typ spezifische Sektion</a></li>
+<li><a href="#sektion-install">Sektion Install</a></li>
+</ul></li>
+<li><a href="#beispiel-cupsd">Beispiel cupsd</a></li>
+<li><a href="#werkzeuge">Werkzeuge</a></li>
+<li><a href="#quellen-systemd-unit-datei">Quellen systemd-unit-Datei</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2021-04:</p>
+<ul>
+<li>Neu “systemd-unit”</li>
+<li>Für die Verwendung mit pandoc optimiert.</li>
+</ul>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<h2 id="systemd-unit-datei">systemd unit-Datei</h2>
+<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a><br />
+In der vorliegenden Handbuchseite erklären wir den Aufbau der <strong>Unit-Dateien</strong> und die generischen Sektionen “[Unit]” und “[Install]”.</p>
+<p>Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art “<em>Schlüssel=Wert</em>” in verschiedene Sektionen. Leere Zeilen und solche, die mit “#” oder “;” beginnen, werden ignoriert. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ enthalten. Die generischen Sektionen “[Unit]” am Beginn und “[Install]” am Ende der Datei sind optional, wobei die Sektion “[Unit]” dringend empfohlen wird.</p>
+<h3 id="ladepfad-der-unit-dateien">Ladepfad der Unit-Dateien</h3>
+<p>Die Ausgabe zeigt die Reihenfolge der Verzeichnisse, aus denen die Unit-Dateien geladen werden.</p>
+<pre><code># systemd-analyze unit-paths
+/etc/systemd/system.control
+/run/systemd/system.control
+/run/systemd/transient
+/run/systemd/generator.early
+/etc/systemd/system
+/etc/systemd/system.attached
+/run/systemd/system
+/run/systemd/system.attached
+/run/systemd/generator
+/usr/local/lib/systemd/system
+/lib/systemd/system
+/usr/lib/systemd/system
+/run/systemd/generator.late</code></pre>
+<p>Unit-Dateien, die in früher aufgeführten Verzeichnissen gefunden werden, setzen Dateien mit dem gleichen Namen in Verzeichnissen, die weiter unten in der Liste aufgeführt sind, außer Kraft. So hat eine Datei in “/etc/systemd/system” Vorrang vor der gleichnamigen in “/lib/systemd/system”.</p>
+<p>Nur ein Teil der zuvor aufgeführten Verzeichnisse existiert per default in siduction. Die Verzeichnisse</p>
+<ul>
+<li><strong>/lib/systemd/system/</strong><br />
+beinhalten System-Units, die durch den Paketverwalter der Distribution installiert wurden und ggf. vom Administrator erstellte Unit-Dateien.<br />
+</li>
+<li><strong>/etc/systemd/system/</strong><br />
+beinhalten Symlinks auf Unit-Dateien in <em>/lib/systemd/system/</em> für aktivierte Units und ggf. vom Administrator erstellte Unit-Dateien.<br />
+</li>
+<li><strong>/usr/local/lib/systemd/system/</strong><br />
+dieses Verzeichnis muss erstellt werden und ist für vom Administrator erstellte Unit-Dateien vorgesehen.<br />
+</li>
+<li><strong>/run/systemd/</strong><br />
+beinhalten Laufzeit-Units und dynamische Konfiguration für flüchtige Units. Für den Administrator hat dieses Verzeichnis ausschließlich informellen Wert.</li>
+</ul>
+<p>Wir empfehlen eigene Unit-Dateien in <em>/usr/local/lib/systemd/system/</em> abzulegen.</p>
+<h3 id="aktivierung-der-unit-datei">Aktivierung der Unit-Datei</h3>
+<p>Um systemd die Konfiguration einer Unit zugänglich zu machen, muss die Unit-Datei aktiviert werden. Dies geschieht mit dem Aufruf:</p>
+<pre><code># systemctl daemon-reload
+# systemctl enable --now &lt;UNIT_DATEI&gt;</code></pre>
+<p>Der erste Befehl lädt die komplette Daemon-Konfiguration neu, der zweite startet die Unit <UNIT_DATEI> sofort (Option “–now”) und gliedert sie in systemd ein, sodass sie bei jedem Neustart des PC ausgeführt wird.<br />
+Der Befehl</p>
+<pre><code># systemctl disable &lt;UNIT_DATEI&gt;</code></pre>
+<p>bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl <strong><code>systemctl start &lt;UNIT_DATEI&gt;</code></strong> gestartet und mit <strong><code>systemctl stop &lt;UNIT_DATEI&gt;</code></strong> gestopt werden.<br />
+Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf <em>/dev/null</em> ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand “masked” und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.</p>
+<h3 id="sektionen-der-unit-datei">Sektionen der Unit-Datei</h3>
+<p>Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ spezifischen Sektion und der Sektion [Install]. Die Typ spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung “<em>.timer</em>” und muss “[Timer]” als Typ spezifische Sektion enthalten.</p>
+<h4 id="sektion-unit">Sektion Unit</h4>
+<p>Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.</p>
+<ol type="1">
+<li><p>Allgemeine Optionen</p>
+<ol type="a">
+<li><p>“<em>Description=</em>”<br />
+Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint (“Starting <em>description</em>…”) und dort als Suchmuster verwand werden kann.</p></li>
+<li><p>“<em>Documentation=</em>”<br />
+Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z. B.: “Documentation=man:cupsd(8)” oder “Documentation=http://www.cups.org/doc/man-cupsd.html”.</p></li>
+</ol></li>
+<li><p>Bindungsabhängigkeiten zu anderen Units</p>
+<ol type="a">
+<li><p>“<em>Wants=</em>”<br />
+Hier aufgeführte Units werden mit der konfigurierten Unit gestartet.</p></li>
+<li><p>“<em>Requires=</em>”<br />
+Ähnlich zu <em>Wants=</em>, erklärt aber eine stärkerere Bindung an die aufgeführten Units.<br />
+Wenn diese Unit aktiviert wird, werden die aufgeführten Units ebenfalls aktiviert.<br />
+Schlägt die Aktivierung einer der anderen Units fehl <strong>und</strong> die Ordnungsabhängigkeit <em>After=</em> ist auf die fehlgeschlagene Unit gesetzt, dann wird diese Unit nicht gestartet.<br />
+Falls eine der anderen Units inaktiv wird, bleibt diese Unit aktiv, nur wenn eine der anderen Units gestoppt wird, wird diese Unit auch gestoppt.</p></li>
+<li><p>“<em>Requisite=</em>”<br />
+Ähnlich zu <em>Requires=</em>. Der Start dieser Unit wird sofort fehlschlagen, wenn die hier aufgeführten Units noch nicht gestartet wurden. <em>Requisite=</em> sollte mit der Ordnungsabhängigkeit <em>After=</em> kombiniert werden, um sicherzustellen, dass diese Unit nicht vor der anderen Unit gestartet wird.</p></li>
+<li><p>“<em>BindsTo=</em>”<br />
+<em>BindsTo=</em> ist der stärkste Abhängigkeitstyp: Es bewirkt zusätzlich zu den Eigenschaften von <em>Requires=</em>, dass die gebundene Unit im aktiven Status sein muss, damit diese Unit auch aktiv sein kann.<br />
+Beim Stoppen oder inaktivem Zustand der gebundenen Unit wird diese Unit immer gestoppt.<br />
+Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht, in einem aktiven Zustand ist, sollte <em>BindsTo=</em> am besten mit der Ordnungsabhängigkeit <em>After=</em> kombiniert werden.</p></li>
+<li><p>“<em>PartOf=</em>”<br />
+Ähnlich zu <em>Requires=</em>, aber begrenzt auf das Stoppen und Neustarten von Units.<br />
+Wenn Systemd die hier aufgeführten Units stoppt oder neustartet, wird die Aktion zu dieser Unit weitergeleitet.<br />
+Das ist eine Einwegeabhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.</p></li>
+<li><p>“<em>Conflicts=</em>”<br />
+Deklariert negative Anforderungsabhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.<br />
+<em>Conflicts=</em> bewirkt, dass die aufgeführte Unit gestoppt wird, wenn diese Unit startet und umgekehrt.<br />
+Da <em>Conflicts=</em> keine Ordnungsabhängigkeit beinhaltet, muss eine Abhängigkeit <em>After=</em> oder <em>Before=</em> erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.</p></li>
+</ol></li>
+<li><p>Ordnungsabhängigkeiten zu anderen Units</p>
+<ol type="a">
+<li><p>“<em>Before=</em>”<br />
+Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. <em>Before=</em> stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierte Unit abgeschlossen ist.<br />
+Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.</p></li>
+<li><p>“<em>After=</em>”<br />
+Diese Einstellung stellt das Gegenteil von <em>Before=</em> sicher. Die aufgeführte Unit muss vollständig gestartet sein, bevor die konfigurierte Unit gestartet wird.</p></li>
+<li><p>“<em>OnFailure=</em>”<br />
+Units, die aktiviert werden, wenn diese Unit den Zustand »failed« einnimmt.</p></li>
+</ol></li>
+<li><p>Bedingungen<br />
+Unit-Dateien können auch eine Reihe von Bedingungen enthalten.<br />
+Bevor die Unit gestartet wird, wird Systemd nachweisen, dass die festgelegten Bedingungen wahr sind. Falls nicht, wird das Starten der Unit (fast ohne Ausgabe) übersprungen.<br />
+Fehlschlagende Bedingungen führen nicht dazu, dass die Unit in den Zustand »failed« überführt wird.<br />
+Falls mehrere Bedingungen festgelegt sind, wird die Unit ausgeführt, falls alle von ihnen zutreffen.<br />
+In diesem Abschnitt führen wir nur Bedingungen auf, die uns für selbst erstellte Units hilfreich erscheinen, denn viele Bedingungen dienen dazu, um Units zu überspringen, die auf dem lokalen System nicht zutreffen.<br />
+Der Befehl <strong><code>systemd-analyze verify &lt;UNIT_DATEI&gt;</code></strong> kann zum Testen von Bedingungen verwandt werden.</p>
+<ol type="a">
+<li><p>“<em>ConditionVirtualization=</em>”<br />
+Prüft, ob das System in einer virtualisierten Umgebung ausgeführt wird und testet optional, ob es eine bestimmte Implementierung ist.</p></li>
+<li><p>“<em>ConditionACPower=</em>”<br />
+Prüft, ob das System zum Zeitpunkt der Aktivierung der Unit am Netz hängt oder ausschließlich über Akku läuft.</p></li>
+<li><p>“<em>ConditionPathExists=</em>”<br />
+Prüft auf die Existenz einer Datei. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionPathExistsGlob=</em>”<br />
+Wie zuvor, nur dass ein Suchmuster angegeben wird. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionPathIsDirectory=</em>”<br />
+Prüft auf die Existenz eines Verzeichnisses. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionPathIsSymbolicLink=</em>”<br />
+Überprüft ob ein bestimmter Pfad existiert und ein symbolischer Link ist. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionPathIsMountPoint=</em>”<br />
+Überprüft ob ein bestimmter Pfad existiert und ein Einhängepunkt ist. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionPathIsReadWrite=</em>”<br />
+Überprüft ob das zugrundeliegende Dateisystem les- und schreibbar ist. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionDirectoryNotEmpty=</em>”<br />
+Überprüft ob ein bestimmter Pfad existiert und ein nicht leeres Verzeichnis ist. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionFileNotEmpty=</em>”<br />
+Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale Datei mit einer von Null verschiedenen Größe bezieht. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+<li><p>“<em>ConditionFileIsExecutable=</em>”<br />
+Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale, als ausführbar gekennzeichnete Datei bezieht. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
+</ol></li>
+</ol>
+<p>Die vollständige Dokumentation zu allen Optionen der Sektion “[Unit]” bitte in der <a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutschen Manpage, systemd.unit</a> nachlesen.</p>
+<h4 id="typ-spezifische-sektion">Typ spezifische Sektion</h4>
+<p>Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.</p>
+<ul>
+<li><p><a href="./systemd-service_de.html#systemd-service">[Service]</a>konfiguriert einen Dienst</p></li>
+<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">[Socket]</a> konfiguriert ein Socket</p></li>
+<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">[Device]</a> konfiguriert ein Gerät</p></li>
+<li><p><a href="./systemd-mount_de.html#systemd-mount">[Mount]</a>konfiguriert einen Einhängepunkt</p></li>
+<li><p><a href="./systemd-mount_de.html#systemd-mount">[Automount]</a>konfiguriert einen Selbsteinhängepunkt</p></li>
+<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">[Swap]</a> konfiguriert eine Auslagerungsdatei oder -partition</p></li>
+<li><p><a href="./systemd-target_de.html#systemd-target---ziel-unit">[Target]</a>konfiguriert ein Startziel</p></li>
+<li><p><a href="./systemd-path_de.html#systemd-path">[Path]</a>konfiguriert einen überwachten Dateipfad</p></li>
+<li><p><a href="./systemd-timer_de.html#systemd-timer">[Timer]</a>konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber</p></li>
+<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">[Slice]</a> konfiguriert eine Ressourcenverwaltungsscheibe</p></li>
+<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">[Scope]</a> konfiguriert eine Gruppe von extern erstellten Prozessen.</p></li>
+</ul>
+<h4 id="sektion-install">Sektion Install</h4>
+<p>Unit-Dateien können diese Sektion enthalten.<br />
+Die Optionen der <em>[Install]</em>-Sektion werden von den Befehlen <strong><code>systemctl enable &lt;UNIT_DATEI&gt;</code></strong> und <strong><code>systemctl disable &lt;UNIT_DATEI&gt;</code></strong> während der Installation einer Unit verwandt.<br />
+Unit-Dateien ohne <em>[Install]</em>-Sektion lassen sich manuell mit dem Befehl <strong><code>systemctl start &lt;UNIT_DATEI&gt;</code></strong>, oder von einer anderen Unit-Datei starten.</p>
+<p>Beschreibung der Optionen:</p>
+<ul>
+<li><p>“<em>Alias=</em>”<br />
+Eine Liste von zusätzlichen Namen, unter der diese Unit installiert werden soll. Die hier aufgeführten Namen müssen die gleiche Endung wie die Unit-Datei haben.</p></li>
+<li><p>“<em>WantedBy=</em>”<br />
+Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.<br />
+Im .wants/-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ <em>Wants=</em> von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.<br />
+Verhält sich wie die Option <em>Wants=</em> in der Sektion <em>[Unit]</em>.</p>
+<p>Beispiel:<br />
+WantedBy=graphical.target</p>
+<p>Das teilt systemd mit, die Unit beim Starten von graphical.target (früher “init 5”) hereinzuziehen.</p></li>
+<li><p>“<em>RequiredBy=</em>”<br />
+Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.<br />
+Im .requires/-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ <em>Requires=</em> von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.<br />
+Verhält sich wie die Option <em>Requires=</em> in der Sektion <em>[Unit]</em>.</p></li>
+<li><p>“<em>Also=</em>”<br />
+Zusätzliche Units, die installiert/deinstalliert werden sollen, wenn diese Unit installiert/deinstalliert wird.</p></li>
+<li><p>“<em>DefaultInstance=</em>”<br />
+Diese Option zeigt nur bei Vorlagen-Unit-Dateien Wirkung.<br />
+Deklariert, welche Instanz der Unit freigegeben werden soll. Die angegebene Zeichenkette muss zur Identifizierung einer Instanz geeignet sein.</p></li>
+</ul>
+<p>Hinweis: Um die Konfiguration einer Unit-Datei zu prüfen, eignet sich der Befehl <strong><code>systemd-analyze verify &lt;UNIT_DATEI&gt;</code></strong>.</p>
+<h3 id="beispiel-cupsd">Beispiel cupsd</h3>
+<p>Der <em>cupsd</em>, Auftragsplaner (Scheduler) für das Common UNIX Printing System, wird von systemd mit seinen drei Unit Dateien “<em>cups.socket</em>”, “<em>cups.service</em>” und “<em>cups.path</em>” gesteuert und eignet sich gut, um die Abhängigkeiten zu verdeutlichen.<br />
+Hier die drei Dateien.</p>
+<pre><code>Datei /lib/systemd/system/cups.service:
+
+[Unit]
+Description=CUPS Scheduler
+Documentation=man:cupsd(8)
+After=network.target sssd.service ypbind.service nslcd.service
+Requires=cups.socket
+    After=cups.socket (nicht in der Datei, da implizit vorhanden.)
+    After=cups.path   (nicht in der Datei, da implizit vorhanden.)
+
+[Service]
+ExecStart=/usr/sbin/cupsd -l
+Type=notify
+Restart=on-failure
+
+[Install]
+Also=cups.socket cups.path
+WantedBy=printer.target</code></pre>
+<pre><code>Datei /lib/systemd/system/cups.path:
+
+[Unit]
+Description=CUPS Scheduler
+PartOf=cups.service
+    Before=cups.service (nicht in der Datei, da implizit vorhanden.)
+
+[Path]
+PathExists=/var/cache/cups/org.cups.cupsd
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<pre><code>Datei /lib/systemd/system/cups.socket:
+
+[Unit]
+Description=CUPS Scheduler
+PartOf=cups.service
+    Before=cups.service (nicht in der Datei, da implizit vorhanden.)
+
+[Socket]
+ListenStream=/run/cups/cups.sock
+
+[Install]
+WantedBy=sockets.target</code></pre>
+<p><strong>Die Sektion [Unit]</strong><br />
+enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien <em>cups.path</em> und <em>cups.socket</em> zusätzlich die Bindungsabhängigkeit <em>PartOf=cups.service</em>, was bedeutet, dass diese zwei Units abhängig von <em>cups.service</em> gestoppt oder neu gestartet werden.<br />
+Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit “Before=” zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der <em>cups.service</em>-Unit die Ordnungsabhängigkeiten “After=cups.socket” und “After=cups.path” einzutragen. (Siehe unten die Ausgabe von “systemd-analyze dump” mit dem Vermerk “destination-implicit”.) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon welche Unit zuerst startet, immer alle drei Units starten und die <em>cups.service</em>-Unit erst, nachdem der Start der <em>cups.path</em>-Unit und der <em>cups.socket</em>-Unit erfolgreich abgeschlossen wurde.</p>
+<p>Die vollständige Konfiguration der Units erhalten wir mit dem Befehl <strong><code>systemd-analyze dump</code></strong>, der eine sehr, sehr lange Liste ( &gt; 32000 Zeilen) des systemd Serverstatus ausgibt.</p>
+<pre><code># systemd-analyze dump
+[...]
+-&gt; Unit cups.service:
+    Description: CUPS Scheduler.service
+    [...]
+    WantedBy: printer.target (destination-file)
+    ConsistsOf: cups.socket (destination-file)
+    ConsistsOf: cups.path (destination-file)
+    Before: printer.target (destination-default)
+    After: cups.socket (destination-implicit)
+    After: cups.path (destination-implicit)
+[...]
+-&gt; Unit printer.target:
+    Description: Printer
+    [...]
+    Wants: cups.service (origin-file)
+    After: cups.service (origin-default)
+[...]</code></pre>
+<p><strong>Die Sektion [Install]</strong><br />
+der <em>cups.service</em>-Unit enthält mit der Option “Also=cups.socket cups.path” die Anweisung, diese beiden Units auch zu installieren und alle drei Units haben unterschiedliche “WantedBy=” Optionen:</p>
+<ul>
+<li>cups.socket: WantedBy=sockets.target<br />
+</li>
+<li>cups.path: WantedBy=multi-user.target<br />
+</li>
+<li>cups.service: WantedBy=printer.target</li>
+</ul>
+<p>Um zu verstehen, warum unterschiedliche Werte für die Option “WantedBy=” Verwendung finden, benötigen wir zusätzliche Informationen, die wir mit den Befehlen <em>systemd-analyze dot</em> und <em>systemd-analyze plot</em> erhalten.</p>
+<pre><code>$ systemd-analyze dot --to-pattern=&#39;*.target&#39; --from-pattern=\
+    &#39;*.target&#39; | dot -Tsvg &gt; targets.svg
+
+$ systemd-analyze plot &gt; bootup.svg</code></pre>
+<p>Der erste liefert uns ein Flussdiagramm mit den Abhängigkeiten der verschiedenen <em>Targets</em> zueinander und der zweite eine graphisch aufbereitete Auflistung des Bootprozesses mit den Zeitpunkten wann ein Prozess gestartet wurde, welche Zeit er beanspruchte und seinen Aktivitätszustand.</p>
+<p>Der <em>targets.svg</em> und der <em>bootup.svg</em> entnehmen wir, dass</p>
+<ol type="1">
+<li><p><strong>sysinit.target</strong><br />
+aktiviert wird und</p></li>
+<li><p><strong>basic.target</strong><br />
+erst startet, wenn <em>sysinit.target</em> erreicht wurde.</p>
+<ol type="1">
+<li><p><strong>sockets.target</strong><br />
+von <em>basic.target</em> angefordert wird,</p>
+<ol type="1">
+<li><strong>cups.socket</strong><br />
+und alle weiteren <em>.socket</em>-Units von <em>sockets.target</em> hereingeholt werden.</li>
+</ol></li>
+<li><p><strong>paths.target</strong><br />
+von <em>basic.target</em> angefordert wird,</p>
+<ol type="1">
+<li><strong>cups.path</strong><br />
+und alle weiteren <em>.path</em>-Units von <em>paths.target</em> hereingeholt werden.</li>
+</ol></li>
+</ol></li>
+<li><p><strong>network.target</strong><br />
+erst startet, wenn <em>basic.target</em> erreicht wurde.</p></li>
+<li><p><strong>cups.service</strong><br />
+erst startet, wenn <em>network.target</em> erreicht wurde.</p></li>
+<li><p><strong>multi-user.target</strong><br />
+erst startet, wenn <em>network.target</em> erreicht wurde.</p></li>
+<li><p><strong>multi-user.target</strong><br />
+erst dann erreicht wird, wenn <em>cups.service</em> erfolgreich gestartet wurde.<br />
+(Genau genommen liegt es daran, dass der <em>cups-browsed.service</em>, der vom<br />
+<em>cups.service</em> abhängt, erfolgreich gestartet sein muss.)</p></li>
+<li><p><strong>printer.target</strong><br />
+wird erst aktiv, wenn Systemd dynamisch Geräte-Units für die Drucker generiert.<br />
+Dazu müssen die Drucker angeschlossen und eingeschaltet sein.</p></li>
+</ol>
+<p>Weiter oben stellten wir fest, dass der Start einer <em>cups.xxx</em>-Unit ausreicht, um alle drei Units hereinzuholen. Betrachten wir noch einmal die “WantedBy=”-Optionen in der [Install]-Sektion, so haben wir die <em>cups.socket</em>-Unit, die über das <em>sockets.target</em> bereits während des <em>basic.target</em> hereingeholt wird, die <em>cups.path</em>-Unit, die während des <em>multi-user.target</em> hereingeholt wird und den <em>cups.service</em>, der vom <em>printer.target</em> hereingeholt wird.<br />
+Während des gesamten Bootprozesses werden die drei <em>cups.xxx</em>-Units wiederholt bei systemd zur Aktivierung angefordert. Das härtet den <em>cupsd</em> gegen unvorhergesehene Fehler, spielt für systemd aber keine Rolle, denn es ist unerheblich wie oft ein Service angefordert wird, wenn er sich in der Warteschlange befindet.<br />
+Zusätzlich fordert immer dann das <em>printer.target</em> den <em>cups.service</em> an, wenn ein Drucker neu von systemd erkannt wird.</p>
+<h3 id="werkzeuge">Werkzeuge</h3>
+<p>Systemd beinhaltet einige nützliche Werkzeuge für die Analyse, Prüfung und Bearbeitung der Unit-Dateien.<br />
+Bitte auch die Manpages <a href="https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html">systemd-analyze</a> und <a href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">systemctl</a> zu Rate ziehen.</p>
+<ul>
+<li><p>edit</p>
+<pre><code># systemctl edit &lt;UNIT_DATEI&gt;
+# systemctl edit --full &lt;UNIT_DATEI&gt;
+# systemctl edit --full --force &lt;UNIT_DATEI&gt;</code></pre>
+<p><em>systemctl edit</em> öffnet die ausgewählte Unit-Datei im konfigurierten Editor.</p>
+<p><strong>systemctl edit <UNIT_DATEI></strong> erstellt unterhalb <em>/etc/systemd/system/</em> ein neues Verzeichnis mit dem Namen “&lt;UNIT_DATEI&gt;.d” und darin die Datei “override.conf”, die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der <a href="#ladepfad-der-unit-dateien">Hirarchie der Ladepfade</a> inklusive <em>/etc/systemd/system/</em> abwärts eingetragen sind.</p>
+<p><strong>systemctl edit - -full <UNIT_DATEI></strong> erstellt eine neue, namensgleiche Datei im Verzeichnis <em>/etc/systemd/system/</em>. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der <a href="#ladepfad-der-unit-dateien">Hirarchie der Ladepfade</a> unterhalb <em>/etc/systemd/system/</em> eingetragen sind. Dateien, die sich bereits im Verzeichnis <em>/etc/systemd/system/</em> befinden, werden überschrieben.</p>
+<p><strong>systemctl edit - -full - -force <UNIT_DATEI></strong> erstellt eine neue Datei im Verzeichnis <em>/etc/systemd/system/</em>. Ohne die Option <em>- -full</em> würde nur eine Datei “override.conf” im neuen Verzeichnis <em>/etc/systemd/system/&lt;UNIT_DATEI&gt;.d</em> generiert, der die zugehörige Unit-Datei fehlt.</p>
+<p>Wird der Editor beendet, so führt systemd automatisch den Befehl <strong><code>systemctl daemon-reload</code></strong> aus.</p></li>
+<li><p>revert</p>
+<pre><code># systemctl revert &lt;UNIT_DATEI&gt;</code></pre>
+<p>macht die mit <em>systemctl edit</em> und <em>systemctl edit - -full</em> vorgenommenen Änderungen an Unit-Dateien rückgängig. Dies gilt nicht für geänderte Unit-Dateien die sich bereits im Verzeichnis <em>/etc/systemd/system/</em> befanden.<br />
+Zusätzlich bewirkt der Befehl die Rücknahme der mit <em>systemctl mask</em> vorgenommenen Änderungen.</p></li>
+<li><p>daemon-reload</p>
+<pre><code># systemctl daemon-reload</code></pre>
+<p>Lädt die Systemverwalterkonfiguration neu. Dies führt alle Generatoren neu aus, lädt alle Unit-Dateien neu und erstellt den gesamten Abhängigkeitsbaum neu.</p></li>
+<li><p>cat</p>
+<pre><code>$ systemctl cat &lt;UNIT_DATEI&gt;</code></pre>
+<p>Gibt entsprechend des Konsolebefehls <em>cat</em> den Inhalt der Unit-Datei und aller zugehörigen Änderungen aus.</p></li>
+<li><p>analyze verify</p>
+<pre><code>$ systemd-analyze verify &lt;UNIT_DATEI&gt;</code></pre>
+<p>überprüft die Konfigurationseinstellungen einer Unit-Datei und gibt Hinweise aus. Dies ist ein sehr hilfreicher Befehl um die Konfiguration selbst erstellter oder geänderter Unit-Dateien zu prüfen.</p></li>
+<li><p>systemd-delta</p>
+<pre><code>$ systemd-delta</code></pre>
+<p>präsentiert in der Ausgabe Unit-Dateien und die vorgenommenen Änderungen an ihnen. Das Schlüsselwort am Anfang der Zeile definiert die Art der Änderung bzw. Konfiguration.<br />
+Hier ein Beispiel:</p>
+<pre><code>$ systemd-delta --no-pager
+[MASKED]     /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
+[OVERRIDDEN] /etc/tmpfiles.d/screen-cleanup.conf → /usr/lib/tmpfiles.d/screen-cleanup.conf
+[MASKED]     /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
+[EQUIVALENT] /etc/systemd/system/tmp.mount → /lib/systemd/system/tmp.mount
+[EXTENDED]   /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
+[EXTENDED]   /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
+
+6 overridden configuration files found.</code></pre></li>
+<li><p>analyze dump</p>
+<pre><code>$ systemd-analyze dump &gt; systemd_dump.txt</code></pre>
+<p>erstellt die Textdatei <em>systemd_dump.txt</em> mit der vollständigen Konfiguration alle Units des systemd. Die sehr lange Textdatei gibt Aufschluss über alle Konfigurationseinstellungen aller systemd-Units und lässt sich mit einem Texteditor und unter Verwendung von RegEx-Pattern gut durchsuchen.</p></li>
+<li><p>analyze plot</p>
+<pre><code>$ systemd-analyze plot &gt; bootup.svg</code></pre>
+<p>erstellt die Datei <em>bootup.svg</em> mit der zeitlichen Abfolge des Bootprozesses. Es ist eine graphisch aufbereitete Auflistung des Bootprozesses mit den Start- und Endzeitpunkten aller Units, welche Zeit sie beanspruchten und ihren Aktivitätszuständen.</p></li>
+<li><p>analyze dot</p>
+<pre><code>$ systemd-analyze dot --to-pattern=&#39;*.target&#39; --from-pattern=\
+  &#39;*.target&#39; | dot -Tsvg &gt; targets.svg
+  Color legend: black     = Requires
+                dark blue = Requisite
+                dark grey = Wants
+                red       = Conflicts
+                green     = After</code></pre>
+<p>erstellt das Flussdiagramm <em>targets.svg</em>, dass die Abhängigkeiten der im Bootprozess verwendeten Targets darstellt. Die Beziehungen der <em>.target</em>-Units werden zur besseren Übersicht farblich dargestellt.</p></li>
+</ul>
+<p>Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgelieferten Werkzeuge dar. Bitte entnehme den man-Pages die vollständige Dokumentation.</p>
+<h3 id="quellen-systemd-unit-datei">Quellen systemd-unit-Datei</h3>
+<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutsche Manpage, systemd.unit</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html">Deutsche Manpage, systemd.syntax</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">Deutsche Manpage, systemd.device</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">Deutsche Manpage, systemd.scope</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">Deutsche Manpage, systemd.slice</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">Deutsche Manpage, systemd.socket</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">Deutsche Manpage, systemd.swap</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html">Deutsche Manpage, systemd-analyze</a><br />
+<a href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">Deutsche Manpage, systemctl</a></p>
+<p>Dank an Helge Kreuzmann für die deutschen Übersetzungen.</p>
+<div id="rev">
+Seite zuletzt aktualisert 2021-05-05
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Network Manager im Terminal</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Network Manager im Terminal</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#netzwerk">Netzwerk</a>
+<ul>
+<li><a href="#nmcli">nmcli</a>
+<ul>
+<li><a href="#network-manager-verwenden">Network Manager verwenden</a></li>
+<li><a href="#weiterführende-informationen">Weiterführende Informationen</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="netzwerk">Netzwerk</h1>
+<h2 id="nmcli">nmcli</h2>
+<p><strong>Allgemeine Hinweise</strong></p>
+<p>Der Networkmanager ist mittlerweile ein sehr brauchbarer Ersatz für das Netzwerkkommando <em>ifup, ifdown</em> bzw. <em>ifconfig</em> in der Debianwelt geworden. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Es existiert ein leistungsfähiger Kommandozeilenclient <strong>nmcli</strong> für den täglichen Gebrauch des Networkmanagers.</p>
+<p>In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen aus. Eine WLAN-Verbindung (Name: Einhorn_2, Interface wtx7ckd90b81bbd, (früher; wlan)) und einer kabelgebundenen Verbindung (Name: Kabelgebundene Verbindung 1, Interface evp0s3f76 (früher: eth0)). Bitte die Verbindungsnamen an eure Gegebenheiten anpassen.</p>
+<p><strong>Installation des Network Managers</strong></p>
+<p>Falls der Networkmanager auf dem System noch nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">apt</span> install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a> <span class="ex">plasma-widget-networkmanagement</span> network-manager-vpnc network-manager-openvpn</span></code></pre></div>
+<h3 id="network-manager-verwenden">Network Manager verwenden</h3>
+<p>Die Eingaben können sowohl in einem virtuellen Terminal (Tastenkombination <code>Str</code> + <code>Umschalt</code> + <code>F2</code>) als auch in der graphischen Oberfläche in einer Konsole getätigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgründen abgeändert.</p>
+<p><strong>Konfigurierte Verbindungen anzeigen</strong></p>
+<p>Mit dem Kommando <strong><code>nmcli c</code></strong> können die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.</p>
+<figure>
+<img src="./images/nmcli/nmcli-c.png" alt="" /><figcaption>nmcli c</figcaption>
+</figure>
+<p>Im obigen Beispiel sind vier Verbindungen vorhanden WLAN, 2x LAN und eine Mobile Breitbandverbindung.</p>
+<p><strong>Informationen zu WIFI Netzen anzeigen</strong></p>
+<p>Welche WLAN-Netze sind überhaupt am Standort verfügbar, das kann man sich in kompakter Form mit <strong><code>nmcli dev wifi list</code></strong> anzeigen lassen.</p>
+<figure>
+<img src="./images/nmcli/nmcli-list.png" alt="" /><figcaption>nmcli dev wifi list</figcaption>
+</figure>
+<p><strong>Konfigurierte Geräte anzeigen</strong></p>
+<p>Will man wissen welche Geräte (Interfaces) überhaupt dem Networkmanager bekannt sind ist <strong><code>nmcli d</code></strong> hilfreich.</p>
+<figure>
+<img src="./images/nmcli/nmcli-d.png" alt="" /><figcaption>nmcli d</figcaption>
+</figure>
+<p>Sehr detaillierte Informationen (Eigenschaften) gibt es mit <strong><code>nmcli dev show</code></strong> zu den eigenen verfügbaren Verbindungen. Hier nur der Auszug für das WLAN.</p>
+<figure>
+<img src="./images/nmcli/nmcli-dev-show.png" alt="" /><figcaption>nmcli dev show</figcaption>
+</figure>
+<p>Die Zugangsdaten zum WLAN kann man sich mit <strong><code>nmcli dev wifi show</code></strong> anzeigen lassen.</p>
+<figure>
+<img src="./images/nmcli/nmcli-dev-wifi-show-de.png" alt="" /><figcaption>nmcli dev wifi show</figcaption>
+</figure>
+<p>Der zusätzlich generierte QR-Code vereinfacht den Login für Smartphone und Tablet.</p>
+<p><strong>Verbindungen wechseln</strong></p>
+<p>Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein <em>nmcli con down id <Name></em> zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.</p>
+<p>Um die automatische Verbindung zu verhindern hilft der Befehl <strong><code>nmcli dev disconnect &lt;Schnittstellenname&gt;</code></strong>.<br />
+Zuerst beenden wir die LAN-Verbindung und fragen danach den Status ab.</p>
+<pre><code># nmcli dev disconnect evp0s3f76
+Gerät »evp0s3f76« wurde erfolgreich getrennt.
+# nmcli dev status
+DEVICE           TYPE      STATE            CONNECTION 
+evp0s3f76        ethernet  nicht verbunden  --
+wtx7ckd90b81bbd  wifi      nicht verbunden  --
+evp3u3           ethernet  nicht verfügbar  --
+ttyACM0          gsm       nicht verbunden  --</code></pre>
+<p>Jetzt die WLAN Verbindung aktivieren mit <strong><code>nmcli con up id &lt;Verbindungsname&gt;</code></strong>:</p>
+<pre><code># nmcli con up id Einhorn_2
+Verbindung wurde erfolgreich aktiviert 
+# nmcli dev status
+DEVICE           TYPE      STATE            CONNECTION 
+wtx7ckd90b81bbd  wifi      verbunden        Einhorn_2
+evp0s3f76        ethernet  nicht verbunden  --
+evp3u3           ethernet  nicht verfügbar  --
+ttyACM0          gsm       nicht verbunden  --</code></pre>
+<p>Man kann das Ganze noch in eine Kommandozeile packen, dann wird der Wechsel sofort durchgeführt.</p>
+<p>Von LAN zu WLAN:</p>
+<pre><code>nmcli dev disconnect evp0s3f76 &amp;&amp; sleep 2 &amp;&amp; nmcli con up id Einhorn_2</code></pre>
+<p>Umgekehrt von WLAN zu LAN:</p>
+<pre><code>nmcli dev disconnect wtx7ckd90b81bbd &amp;&amp; sleep 2 &amp;&amp; nmcli con up id &#39;Kabelgebundene Verbindung 1&#39;</code></pre>
+<h3 id="weiterführende-informationen">Weiterführende Informationen</h3>
+<ul>
+<li><pre><code>man nmcli</code></pre></li>
+<li><a href="https://wiki.ubuntuusers.de/NetworkManager?redirect=no">Ubuntuusers Wiki</a></li>
+</ul>
+<div id="rev">
+Zuletzt bearbeitet: 2021-04-19
+</div>
+</body>
+</html>

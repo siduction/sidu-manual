@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quickstart</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Quickstart</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quickstart">Quickstart</a>
+<ul>
+<li><a href="#siduction-kurzanleitung">siduction Kurzanleitung</a>
+<ul>
+<li><a href="#essenzielle-kapitel">Essenzielle Kapitel</a></li>
+<li><a href="#zur-stabilität-von-debian-sid">Zur Stabilität von Debian Sid</a></li>
+<li><a href="#der-siduction-kernel">Der siduction-Kernel</a></li>
+<li><a href="#die-verwaltung-von-softwarepaketen">Die Verwaltung von Softwarepaketen</a></li>
+<li><a href="#aktualisierung-des-systems---upgrade">Aktualisierung des Systems - upgrade</a></li>
+<li><a href="#konfiguration-von-netzwerken">Konfiguration von Netzwerken</a></li>
+<li><a href="#runlevels---ziel-unit">Runlevels - Ziel-Unit</a></li>
+<li><a href="#weitere-desktopumgebungen">Weitere Desktopumgebungen</a></li>
+<li><a href="#hilfe-im-irc-und-im-forum">Hilfe im IRC und im Forum</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
+Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
+<strong>Status: RC2</strong></p>
+<p>Änderungen 2020-03:</p>
+<ul>
+<li>Entfernen der apt-get Befehle in “Die Verwaltung von Softwarepaketen” und “Aktualisierung des Systems - upgrade”<br />
+</li>
+<li>Entfernen von “WICHTIGE INFORMATION: … Linux-LIVE-DVD/CD, ist sehr stark komprimiert. … Brennen im DAO-Modus …”<br />
+</li>
+<li>Hinzufügen “Download und Brennen” in Essenzielle Kapitel<br />
+</li>
+<li>Inhaltliche Anpassung in “Weitere Desktopumgebungen”<br />
+</li>
+<li>Korrektur und Aktualisierung aller Links</li>
+</ul>
+<p>Änderungen 2020-11:</p>
+<ul>
+<li>Für die Verwendung mit pandoc optimiert.</li>
+<li>Inhalt teilweise überarbeitet.</li>
+</ul>
+<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
+<h1 id="quickstart">Quickstart</h1>
+<h2 id="siduction-kurzanleitung">siduction Kurzanleitung</h2>
+<p>siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.</p>
+<h3 id="essenzielle-kapitel">Essenzielle Kapitel</h3>
+<warning>
+Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:
+</warning>
+<ul>
+<li><p><a href="term-konsole_de.html#terminal---kommandozeile">Terminal/Konsole</a> - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.</p></li>
+<li><p><a href="part-gparted_de.html#partitionieren-mit-gparted">Partitionieren der Festplatte</a> - Beschreibt, wie eine Festplatte partitioniert werden kann.</p></li>
+<li><p><a href="cd-dl-burning_de.html#iso-download-und-brennen">siduction ISO herunterladen und DVD brennen</a> - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.</p></li>
+<li><p><a href="hd-install_de.html#installation-auf-hdd">Installation auf einer Festplatte</a> - Beschreibt, wie siduction auf einer Festplatte installiert wird.</p></li>
+<li><p><a href="">Installation auf USB-Geräte</a> - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.</p></li>
+<li><p><a href="hd-ins-opts-oos_de.html#installation-auf-usb-stick---speicherkarte">Installation auf USB-Stick/SD von einem anderen System</a> - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.</p></li>
+<li><p><a href="gpu_de.html#grafiktreiber">Nicht freie Treiber, Firmware und Quellen</a> - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.</p></li>
+<li><p><a href="inet-nm-cli_de.html#nmcli">Internetverbindung</a> - Beschreibt, wie man sich mit dem Internet verbinden kann.</p></li>
+<li><p><a href="sys-admin-apt_de.html#apt-paketverwaltung">Paketmanager und Systemaktualisierung</a> - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.</p></li>
+</ul>
+<h3 id="zur-stabilität-von-debian-sid">Zur Stabilität von Debian Sid</h3>
+<p>‘Sid’ ist der Name des Unstable-Repositories von Debian. Debian Sid wird regelmäßig mit neuen Softwarepaketen beschickt, wodurch diese Debian-Distribution sehr zeitnah die neuesten Versionen der jeweiligen Programme enthält. Dies bedeutet aber auch, dass zwischen einer Veröffentlichung im Upstream (von den Softwareentwicklern) und der Verteilung in Debian Sid weniger Zeit ist, um die Pakete zu testen.</p>
+<h3 id="der-siduction-kernel">Der siduction-Kernel</h3>
+<p>Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Problembehebung, erweiterte und aktualisierte Funktionen, Leistungsoptimierung, höhere Stabilität. Basis ist immer der aktuelle Kernel von <a href="https://www.kernel.org/">http://www.kernel.org/</a> .</p>
+<h3 id="die-verwaltung-von-softwarepaketen">Die Verwaltung von Softwarepaketen</h3>
+<p>siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet apt und dpkg für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in <code>/etc/sources.list.d/*</code></p>
+<p>Debian Sid enthält mehr als 20.000 Programmpakete, womit die Chancen, ein für eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie man Programmpakete sucht, ist hier beschrieben:<br />
+<a href="sys-admin-apt_de.html#programmpakete-suchen">Programmsuche mit apt-cache bzw. apt</a><br />
+oder mit<br />
+<a href="sys-admin-apt_de.html#graphische-paketsuche">GUI-Paketsuche mit packagesearch</a> .</p>
+<p>Ein Programmpaket wird mit diesem Befehl installiert:</p>
+<pre><code>apt install &lt;Paketname&gt;</code></pre>
+<p>Siehe auch: <a href="sys-admin-apt_de.html#pakete-installieren">Neue Pakete installieren</a> .</p>
+<p>Die Repositorien von Debian Sid werden in der Regel viermal am Tag mit aktualisierten bzw. neuen Softwarepaketen beschickt. Zur schnellen Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der Befehl</p>
+<pre><code>apt update</code></pre>
+<p>ist vor jeder Neuinstallation eines Softwarepakets notwendig, um die lokale Datenbank mit dem Softwareangebot der Repositorien zu synchronisieren.</p>
+<p><strong>Die Nutzung anderer auf Debian basierender Repositorien, Quellen und RPMs</strong><br />
+Installationen aus Quellcode sind nicht unterstützt. Empfohlen ist eine Kompilierung als User (nicht als root) und die Platzierung der Anwendung im Home-Verzeichnis, ohne dass sie ins System installiert wird. Die Verwendung von <em>checkinstall</em> zum Erzeugen von DEB-Paketen sollte auf die rein private Nutzung beschränkt bleiben. Konvertierungsprogramme für RPM-Pakete wie <em>alien</em> sind nicht empfohlen.</p>
+<p>Andere bekannte (und weniger bekannte) Distributionen, die auf Debian basieren, erstellen neue, von Debian verschieden strukturierte Pakete und verwenden oft andere Verzeichnisse, in denen bei der Installation Programme, Skripte und Dateien abgelegt werden, als Debian. Dies kann zu instabilen Systemen führen. Manche Pakete lassen sich wegen nicht auflösbarer Abhängigkeiten, unterschiedlicher Benennungskonventionen oder unterschiedlicher Versionierung überhaupt nicht installieren. Eine unterschiedliche Version von glibc zum Beispiel kann dazu führen, dass kein Programm lauffähig ist.</p>
+<p>Aus diesem Grund sollen die Repositorien von Debian benutzt werden, um die benötigten Softwarepakete zu installieren. Andere Softwarequellen können nur schwer oder gar nicht von siduction unterstützt werden. Darunter fallen auch Pakete und PPAs von Ubuntu.</p>
+<h3 id="aktualisierung-des-systems---upgrade">Aktualisierung des Systems - upgrade</h3>
+<p>Ein upgrade ist nur bei beendetem Grafikserver X durchzuführen. Um den Grafikserver zu beenden, gibt man als <strong>root</strong> den Befehl</p>
+<pre><code>init 3</code></pre>
+<p>in eine Konsole ein. Danach sind Systemaktualisierungen sicher durchführbar. Zuerst die lokale Paketdatenbank auffrischen mit</p>
+<pre><code>apt update</code></pre>
+<p>dann mit einer der beiden Varianten das System aktualisieren.</p>
+<pre><code>apt upgrade
+apt full-upgrade</code></pre>
+<p>Anschließend startet man mit folgendem Befehl wieder die graphische Oberfläche:</p>
+<pre><code>init 5</code></pre>
+<p><strong>apt full-upgrade</strong> ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:<br />
+<a href="sys-admin-apt_de.html#aktualisierung-des-systems">Aktualisierung eines installierten Systems - full-upgrade</a>.</p>
+<h3 id="konfiguration-von-netzwerken">Konfiguration von Netzwerken</h3>
+<p>‘nmcli’ ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends <strong>wireless-tools</strong> bzw. <strong>wpasupplicant</strong> zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.</p>
+<p>Der Startbefehl in der Konsole ist <strong>nmcli</strong> oder <strong>nmtui</strong> . Falls das Skript nicht vorhanden ist, installiert man es mit:</p>
+<pre><code>apt install network-manager</code></pre>
+<p>Mehr Informationen unter <a href="inet-nm-cli_de.html#nmcli">Netzwerk - nmcli</a></p>
+<h3 id="runlevels---ziel-unit">Runlevels - Ziel-Unit</h3>
+<p>Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).<br />
+Die Konfiguration der Runlevel ist im Kapitel <a href="systemd-target_de.html#systemd-target---ziel-unit">siduction-Runlevels - Ziel-Unit</a> beschrieben.</p>
+<h3 id="weitere-desktopumgebungen">Weitere Desktopumgebungen</h3>
+<p>Plasma, Gnome, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.</p>
+<h3 id="hilfe-im-irc-und-im-forum">Hilfe im IRC und im Forum</h3>
+<p>Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.</p>
+<ul>
+<li><p>Mehr dazu im Kapitel <a href="help_de.html#siduction-hilfe">Wo es Hilfe gibt</a> .</p></li>
+<li><p><a href="https://webchat.oftc.net/">Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen</a> : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.</p></li>
+</ul>
+<div id="rev">
+Zuletzt bearbeitet: 2020-11-29
+</div>
+</body>
+</html>

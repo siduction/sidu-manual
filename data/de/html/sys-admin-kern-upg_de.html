@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Neue Kernel installieren</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Neue Kernel installieren</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#verfügbare-kernel">Verfügbare Kernel:</a>
+<ul>
+<li><a href="#kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung ohne Systemaktualisierung</a></li>
+<li><a href="#module">Module</a></li>
+<li><a href="#entfernen-alter-kernel">Entfernen alter Kernel</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="verfügbare-kernel">Verfügbare Kernel:</h2>
+<ul>
+<li><strong>linux-image-siduction-amd64 + linux-headers-siduction-amd64</strong> - Linux Kernel für 64-bit PCs mit AMD64 oder Intel 64 CPU.</li>
+<li>32 bit Kernel stellen wir nicht mehr zur Verfügung, hier kann der Debian Kernel, oder alternativ der Liquorix-Kernel (https://liquorix.net/) verwendet werden.</li>
+</ul>
+<p>Die Kernel von siduction befinden sich im siduction-Repository als .deb und werden bei einer Systemaktualisierung automatisch berücksichtigt, sofern die Metapakete für Image und Headers installiert sind.</p>
+<h3 id="kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung ohne Systemaktualisierung</h3>
+<ol type="1">
+<li>Aktualisierung der Paketdatenbank:</li>
+</ol>
+<pre><code>apt update</code></pre>
+<ol start="2" type="1">
+<li>Installation des aktuellen Kernels:</li>
+</ol>
+<pre><code>apt install linux-image-siduction-amd64 linux-headers-siduction-amd64</code></pre>
+<ol start="3" type="1">
+<li>Neustart des Computers, um den neuen Kernel zu laden.</li>
+</ol>
+<p>Falls sich mit dem neuen Kernel Probleme zeigen, kann man nach einem Neustart einen älteren Kernel wählen.</p>
+<h3 id="module">Module</h3>
+<p>Der Kernel bringt in der Regel alle benötigten Kernel-Module mit. Für 3rd Party Module wird in siduction dkms empfohlen. Hierzu ist es notwendig, das Paket <strong>build-essential</strong> zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicher zu stellen, dass contrib und non-free in den Sourcen aktiviert ist.</p>
+<h3 id="entfernen-alter-kernel">Entfernen alter Kernel</h3>
+<p>Nach erfolgreicher Installation eines neuen Kernels können alte Kernel entfernt werden. Es ist jedoch empfohlen, alte Kernel einige Tage zu behalten. Falls mit dem neuen Kernel Probleme auftauchen, kann in einen der alten Kernel gebootet werden, welche im Grub-Startbildschirm gelistet sind.</p>
+<p>Zur Entfernung alter Kernel ist das Skript “kernel-remover” installiert:</p>
+<pre><code>kernel-remover</code></pre>
+<div id="rev">
+Seite zuletzt aktualisert 2021-05-10
+</div>
+</body>
+</html>
