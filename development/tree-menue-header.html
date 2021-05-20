@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style> 
+    ul, #treeMenue {
+      list-style-type: none;
+      user-select: none;
+    }
+    label {
+       line-height: 2em;
+    }
+    .versteckt ul { display: none; }
+    .versteckt input[type=checkbox] { display: none; }
+    .versteckt input:checked ~ ul { display: block; }
+    .versteckt { 
+        position: relative; 
+        padding-left: 1.2em;
+    }
+    .versteckt label:after {
+        content: "\25B6";
+        position: absolute;
+        top: -0.1em; left: 0;
+        text-align: center;
+        color: gray;
+        transition: all 0.5em;
+    }
+    .versteckt input:checked ~ label:after { 
+        transform: rotate(35deg);
+        color: #B22;
+    }
+</style>
+</head>
+<body>
+<ul id="treeMenu">
+	<li><h3>Siduction Handbuch</h3>

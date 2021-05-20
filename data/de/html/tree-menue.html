@@ -5,29 +5,29 @@
   <style> 
     ul, #treeMenue {
       list-style-type: none;
-    }
-    .versteckt ul { display: none; }
-    .versteckt input:checked ~ ul { display: block; }
-    .versteckt input[type=checkbox] { display: none; }
-    
-    .versteckt { 
-        position: relative; 
-        padding-left: 1.5em !important;
-    }
-
-    .versteckt label:after {
-        content: "\25B6";
-        position: absolute;
-        top: 0; left: 0;
-        text-align: center;
-        color: blue;
-        transition: all 0.5em;
-    }
-    .versteckt input:checked ~ label:after { 
-        transform: rotate(45deg);
+      user-select: none;
     }
     label {
        line-height: 2em;
+    }
+    .versteckt ul { display: none; }
+    .versteckt input[type=checkbox] { display: none; }
+    .versteckt input:checked ~ ul { display: block; }
+    .versteckt { 
+        position: relative; 
+        padding-left: 1.2em;
+    }
+    .versteckt label:after {
+        content: "\25B6";
+        position: absolute;
+        top: -0.1em; left: 0;
+        text-align: center;
+        color: gray;
+        transition: all 0.5em;
+    }
+    .versteckt input:checked ~ label:after { 
+        transform: rotate(35deg);
+        color: #B22;
     }
 </style>
 </head>
@@ -35,63 +35,62 @@
 <ul id="treeMenu">
 	<li><h3>Siduction Handbuch</h3>
 	<li class="versteckt">
-	    <input type="checkbox" id="Willkommen"/>
-        <label for="Willkommen">Willkommen</label>
-            <ul>
-		        <li><a target= "main" href="welcome_de.html">Willkommen</a>
-				<li><a target= "main" href="welcome_de.html#allgemeines">Allgemeines</a></li>
-				<li><a target= "main" href="welcome_de.html#copyright-rechts--und-lizenzhinweise">Copyright Rechts- und Lizenzhinweise</a></li>
-				<li><a target= "main" href="welcome_de.html#haftungsausschluss">Haftungsausschluss</a></li>
-			</ul>
-		</li>
-		<li class="versteckt">
-		    <input type="checkbox" id="Das siduction-Team"/>
-            <label for="Das siduction-Team">Das siduction-Team</label>
-              <ul>
-		        <li><a target= "main" href="credit_de.html">Das siduction-Team</a>
-				<li><a target= "main" href="credit_de.html#credit-für-siduction-2021.1.0">Credit für siduction 2021.1.0</a></li>
-			</ul>
-		</li>
-		<li class="versteckt">
-		    <input type="checkbox" id="Release Notes"/>
-            <label for="Release Notes">Release Notes</label>
-               <ul>
-		        <li><a target= "main" href="release-notes_de.html">Release Notes </a>
-				<li><a target= "main" href="release-notes_de.html#siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 C-Blues Point Release</a></li>
-				<li><a target= "main" href="release-notes_de.html#siduction-2021.1.0-c-blues">siduction 2021.1.0 C-Blues</a></li>
-				<li><a target= "main" href="release-notes_de.html#warum-gab-es-seit-2018-kein-release">Warum gab es seit 2018 kein Release</a></li>
-				<li><a target= "main" href="release-notes_de.html#offizielle-releases-und-isobuilds">Offizielle Releases und Isobuilds</a></li>
-				<li><a target= "main" href="release-notes_de.html#non-free-und-contrib-pakete">Non-free und contrib Pakete</a></li>
-				<li><a target= "main" href="release-notes_de.html#installationshinweise-und-bekannte-probleme">Installationshinweise und bekannte Probleme</a></li>
-				<li><a target= "main" href="release-notes_de.html#credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</a></li>
-			</ul>
-		</li>
-		<li class="versteckt">
-		    <input type="checkbox" id="siduction Hilfe"/>
-            <label for="siduction Hilfe">siduction Hilfe</label>
-               <ul>
-		        <li><a target= "main" href="help_de.html">siduction Hilfe</a>
-				<li><a target= "main" href="help_de.html#das-siduction-forum">Das siduction-Forum</a></li>
-				<li><a target= "main" href="help_de.html#das-siduction-wiki">Das siduction-Wiki</a></li>
-				<li><a target= "main" href="help_de.html#irc---interaktiver-livesupport-">IRC - interaktiver Livesupport </a></li>
-				<li><a target= "main" href="help_de.html#siduction-paste">siduction-paste</a></li>
-				<li><a target= "main" href="help_de.html#nützliche-helfer-im-textmodus">Nützliche Helfer im Textmodus</a></li>
-				<li><a target= "main" href="help_de.html#siduction-irc-support-im-textmodus">siduction IRC-Support im Textmodus</a></li>
-				<li><a target= "main" href="help_de.html#surfen-im-internet-im-textmodus">Surfen im Internet im Textmodus</a></li>
-				<li><a target= "main" href="help_de.html#inxi">inxi</a></li>
-				<li><a target= "main" href="help_de.html#nützliche-links">Nützliche Links</a></li>
-			</ul>
-		</li>
+		<input type="checkbox" id="M1"/>
+		<label for="M1">Willkommen</label>
+		<ul>
+			<li><a target= "main" href="welcome_de.html">Willkommen</a></li>
+			<li><a target= "main" href="welcome_de.html#copyright-rechts--und-lizenzhinweise">Copyright Rechts- und Lizenzhinweise</a></li>
+			<li><a target= "main" href="welcome_de.html#haftungsausschluss">Haftungsausschluss</a></li>
+			<li class="versteckt">
+				<input type="checkbox" id="M1_1"/>
+				<label for="M1_1">Das siduction-Team</label>
+				<ul>
+					<li><a target= "main" href="credit_de.html#das-siduction-team">Das siduction-Team</a></li>
+					<li><a target= "main" href="credit_de.html#credit-für-siduction-2021.1.0">Credit für siduction 2021.1.0</a></li>
+				</ul>
+			</li>
+			<li class="versteckt">
+				<input type="checkbox" id="M1_2"/>
+				<label for="M1_2">Release Notes </label>
+				<ul>
+					<li><a target= "main" href="release-notes_de.html#release-notes-">Release Notes </a></li>
+					<li><a target= "main" href="release-notes_de.html#siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 C-Blues Point Release</a></li>
+					<li><a target= "main" href="release-notes_de.html#siduction-2021.1.0-c-blues">siduction 2021.1.0 C-Blues</a></li>
+					<li><a target= "main" href="release-notes_de.html#warum-gab-es-seit-2018-kein-release">Warum gab es seit 2018 kein Release</a></li>
+					<li><a target= "main" href="release-notes_de.html#offizielle-releases-und-isobuilds">Offizielle Releases und Isobuilds</a></li>
+					<li><a target= "main" href="release-notes_de.html#non-free-und-contrib-pakete">Non-free und contrib Pakete</a></li>
+					<li><a target= "main" href="release-notes_de.html#installationshinweise-und-bekannte-probleme">Installationshinweise und bekannte Probleme</a></li>
+					<li><a target= "main" href="release-notes_de.html#credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</a></li>
+				</ul>
+			</li>
+			<li class="versteckt">
+				<input type="checkbox" id="M1_3"/>
+				<label for="M1_3">siduction Hilfe</label>
+				<ul>
+					<li><a target= "main" href="help_de.html#siduction-hilfe">siduction Hilfe</a></li>
+					<li><a target= "main" href="help_de.html#das-siduction-forum">Das siduction-Forum</a></li>
+					<li><a target= "main" href="help_de.html#das-siduction-wiki">Das siduction-Wiki</a></li>
+					<li><a target= "main" href="help_de.html#irc---interaktiver-livesupport-">IRC - interaktiver Livesupport </a></li>
+					<li><a target= "main" href="help_de.html#siduction-paste">siduction-paste</a></li>
+					<li><a target= "main" href="help_de.html#nützliche-helfer-im-textmodus">Nützliche Helfer im Textmodus</a></li>
+					<li><a target= "main" href="help_de.html#siduction-irc-support-im-textmodus">siduction IRC-Support im Textmodus</a></li>
+					<li><a target= "main" href="help_de.html#surfen-im-internet-im-textmodus">Surfen im Internet im Textmodus</a></li>
+					<li><a target= "main" href="help_de.html#inxi">inxi</a></li>
+					<li><a target= "main" href="help_de.html#nützliche-links">Nützliche Links</a></li>
+				</ul>
+			</li>
+		</ul>
 	</li>
 	<li class="versteckt">
-		<input type="checkbox" id="Quickstart"/>
-        <label for="Quickstart">Quickstart</label>
+		<input type="checkbox" id="M2"/>
+		<label for="M2">Quickstart</label>
 		<ul>
+			<li><a target= "main" href="wel-quickstart_de.html">Quickstart</a></li>
 			<li class="versteckt">
-			    <input type="checkbox" id="siduction Kurzanleitung"/>
-                <label for="siduction Kurzanleitung">siduction Kurzanleitung</label>
-                <ul>
-			        <li><a target= "main" href="wel-quickstart_de.html">siduction Kurzanleitung</a>
+				<input type="checkbox" id="M2_1"/>
+				<label for="M2_1">siduction Kurzanleitung</label>
+				<ul>
+					<li><a target= "main" href="wel-quickstart_de.html#siduction-kurzanleitung">siduction Kurzanleitung</a></li>
 					<li><a target= "main" href="wel-quickstart_de.html#essenzielle-kapitel">Essenzielle Kapitel</a></li>
 					<li><a target= "main" href="wel-quickstart_de.html#zur-stabilität-von-debian-sid">Zur Stabilität von Debian Sid</a></li>
 					<li><a target= "main" href="wel-quickstart_de.html#der-siduction-kernel">Der siduction-Kernel</a></li>
@@ -106,14 +105,15 @@
 		</ul>
 	</li>
 	<li class="versteckt">
-		<input type="checkbox" id="ISO s"/>
-        <label for="ISO s">ISO s</label>
+		<input type="checkbox" id="M3"/>
+		<label for="M3">ISO s</label>
 		<ul>
+			<li><a target= "main" href="cd-content_de.html">ISO s</a></li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Inhalt der Live-ISO"/>
-                <label for="Inhalt der Live-ISO">Inhalt der Live-ISO</label>
-                <ul>
-			        <li><a target= "main" href="cd-content_de.html">Inhalt der Live-ISO</a>
+				<input type="checkbox" id="M3_1"/>
+				<label for="M3_1">Inhalt der Live-ISO</label>
+				<ul>
+					<li><a target= "main" href="cd-content_de.html#inhalt-der-live-iso">Inhalt der Live-ISO</a></li>
 					<li><a target= "main" href="cd-content_de.html#hinweis-zur-software-auf-dem-live-iso">Hinweis zur Software auf dem Live-ISO</a></li>
 					<li><a target= "main" href="cd-content_de.html#varianten-der-iso">Varianten der ISO</a></li>
 					<li><a target= "main" href="cd-content_de.html#minimale-systemanforderungen">Minimale Systemanforderungen</a></li>
@@ -122,10 +122,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Live-DVD verwenden"/>
-                <label for="Live-DVD verwenden">Live-DVD verwenden</label>
-                <ul>
-			        <li><a target= "main" href="live-mode_de.html">Live-DVD verwenden</a>
+				<input type="checkbox" id="M3_2"/>
+				<label for="M3_2">Live-DVD verwenden</label>
+				<ul>
+					<li><a target= "main" href="live-mode_de.html#live-dvd-verwenden">Live-DVD verwenden</a></li>
 					<li><a target= "main" href="live-mode_de.html#eingerichtete-user-der-live-dvd">Eingerichtete User der Live-DVD</a></li>
 					<li><a target= "main" href="live-mode_de.html#mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der Live-DVD</a></li>
 					<li><a target= "main" href="live-mode_de.html#ein-neues-passwort-setzen">Ein neues Passwort setzen</a></li>
@@ -133,10 +133,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Bootoptionen Cheatcodes"/>
-                <label for="Bootoptionen Cheatcodes">Bootoptionen Cheatcodes</label>
-                <ul>
-			        <li><a target= "main" href="cheatcodes_de.html">Bootoptionen Cheatcodes</a>
+				<input type="checkbox" id="M3_3"/>
+				<label for="M3_3">Bootoptionen Cheatcodes</label>
+				<ul>
+					<li><a target= "main" href="cheatcodes_de.html#bootoptionen-cheatcodes">Bootoptionen Cheatcodes</a></li>
 					<li><a target= "main" href="cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter</a></li>
 					<li><a target= "main" href="cheatcodes_de.html#bootoptionen-für-den-grafikserver-x">Bootoptionen für den Grafikserver X</a></li>
 					<li><a target= "main" href="cheatcodes_de.html#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
@@ -144,10 +144,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="ISO download und brennen"/>
-                <label for="ISO download und brennen">ISO download und brennen</label>
-                <ul>
-			        <li><a target= "main" href="cd-dl-burning_de.html">ISO download und brennen</a>
+				<input type="checkbox" id="M3_4"/>
+				<label for="M3_4">ISO download und brennen</label>
+				<ul>
+					<li><a target= "main" href="cd-dl-burning_de.html#iso-download-und-brennen">ISO download und brennen</a></li>
 					<li><a target= "main" href="cd-dl-burning_de.html#siduction-iso-herunterladen">siduction ISO herunterladen</a></li>
 					<li><a target= "main" href="cd-dl-burning_de.html#dateien-der-siduction-spiegelserver">Dateien der siduction-Spiegelserver</a></li>
 					<li><a target= "main" href="cd-dl-burning_de.html#md5sum-und-integritätsprüfung">md5sum und Integritätsprüfung</a></li>
@@ -156,10 +156,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="DVD ohne GUI brennen"/>
-                <label for="DVD ohne GUI brennen">DVD ohne GUI brennen</label>
-                <ul>
-			        <li><a target= "main" href="cd-no-gui-burn_de.html">DVD ohne GUI brennen</a>
+				<input type="checkbox" id="M3_5"/>
+				<label for="M3_5">DVD ohne GUI brennen</label>
+				<ul>
+					<li><a target= "main" href="cd-no-gui-burn_de.html#dvd-ohne-gui-brennen">DVD ohne GUI brennen</a></li>
 					<li><a target= "main" href="cd-no-gui-burn_de.html#burniso">burniso</a></li>
 					<li><a target= "main" href="cd-no-gui-burn_de.html#verfügbare-geräte">Verfügbare Geräte</a></li>
 					<li><a target= "main" href="cd-no-gui-burn_de.html#nützliche-beispiele">Nützliche Beispiele</a></li>
@@ -168,14 +168,15 @@
 		</ul>
 	</li>
 	<li class="versteckt">
-		<input type="checkbox" id="Installation"/>
-        <label for="Installation">Installation</label>
+		<input type="checkbox" id="M4"/>
+		<label for="M4">Installation</label>
 		<ul>
+			<li><a target= "main" href="hd-install_de.html">Installation</a></li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Installation auf HDD"/>
-                <label for="Installation auf HDD">Installation auf HDD</label>
-                <ul>
-			        <li><a target= "main" href="hd-install_de.html">Installation auf HDD</a>
+				<input type="checkbox" id="M4_1"/>
+				<label for="M4_1">Installation auf HDD</label>
+				<ul>
+					<li><a target= "main" href="hd-install_de.html#installation-auf-hdd">Installation auf HDD</a></li>
 					<li><a target= "main" href="hd-install_de.html#datensicherung">Datensicherung</a></li>
 					<li><a target= "main" href="hd-install_de.html#installationsvorbereitungen">Installationsvorbereitungen</a></li>
 					<li><a target= "main" href="hd-install_de.html#partitionierung">Partitionierung</a></li>
@@ -186,10 +187,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Installation auf verschlüsselte root-Partition"/>
-                <label for="Installation auf verschlüsselte root-Partition">Installation auf verschlüsselte root-Partition</label>
-                <ul>
-			        <li><a target= "main" href="hd-install-crypt_de.html">Installation auf verschlüsselte root-Partition</a>
+				<input type="checkbox" id="M4_2"/>
+				<label for="M4_2">Installation auf verschlüsselte root-Partition</label>
+				<ul>
+					<li><a target= "main" href="hd-install-crypt_de.html#installation-auf-verschlüsselte-root-partition">Installation auf verschlüsselte root-Partition</a></li>
 					<li><a target= "main" href="hd-install-crypt_de.html#verschlüsselung-innerhalb-von-lvm-gruppen">Verschlüsselung innerhalb von LVM-Gruppen</a></li>
 					<li><a target= "main" href="hd-install-crypt_de.html#crypt-mit-traditioneller-partitionierung">crypt mit traditioneller Partitionierung</a></li>
 					<li><a target= "main" href="hd-install-crypt_de.html#start-des-installers">Start des Installers</a></li>
@@ -197,20 +198,20 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Installation auf USB-Stick - Speicherkarte"/>
-                <label for="Installation auf USB-Stick - Speicherkarte">Installation auf USB-Stick - Speicherkarte</label>
-                <ul>
-			        <li><a target= "main" href="hd-ins-opts-oos_de.html">Installation auf USB-Stick - Speicherkarte</a>
+				<input type="checkbox" id="M4_3"/>
+				<label for="M4_3">Installation auf USB-Stick - Speicherkarte</label>
+				<ul>
+					<li><a target= "main" href="hd-ins-opts-oos_de.html#installation-auf-usb-stick---speicherkarte">Installation auf USB-Stick - Speicherkarte</a></li>
 					<li><a target= "main" href="hd-ins-opts-oos_de.html#mit-linux-betriebssystemen">Mit Linux-Betriebssystemen</a></li>
 					<li><a target= "main" href="hd-ins-opts-oos_de.html#mit-ms-windows">Mit MS Windows</a></li>
 					<li><a target= "main" href="hd-ins-opts-oos_de.html#mit-mac-os-x">Mit Mac OS X</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Partitionierung von Installationsmedien"/>
-                <label for="Partitionierung von Installationsmedien">Partitionierung von Installationsmedien</label>
-                <ul>
-			        <li><a target= "main" href="part-size-examp_de.html">Partitionierung von Installationsmedien</a>
+				<input type="checkbox" id="M4_4"/>
+				<label for="M4_4">Partitionierung von Installationsmedien</label>
+				<ul>
+					<li><a target= "main" href="part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung von Installationsmedien</a></li>
 					<li><a target= "main" href="part-size-examp_de.html#mindestanforderungen">Mindestanforderungen</a></li>
 					<li><a target= "main" href="part-size-examp_de.html#beispiele-mit-verschiedenen-plattengrößen">Beispiele mit verschiedenen Plattengrößen</a></li>
 					<li><a target= "main" href="part-size-examp_de.html#partitionierungsprogramme">Partitionierungsprogramme</a></li>
@@ -218,28 +219,28 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="UUID - Benennung von Blockgeräten"/>
-                <label for="UUID - Benennung von Blockgeräten">UUID - Benennung von Blockgeräten</label>
-                <ul>
-			        <li><a target= "main" href="part-uuid_de.html">UUID - Benennung von Blockgeräten</a>
+				<input type="checkbox" id="M4_5"/>
+				<label for="M4_5">UUID - Benennung von Blockgeräten</label>
+				<ul>
+					<li><a target= "main" href="part-uuid_de.html#uuid---benennung-von-blockgeräten">UUID - Benennung von Blockgeräten</a></li>
 					<li><a target= "main" href="part-uuid_de.html#arten-der-benennung-von-blockgeräten">Arten der Benennung von Blockgeräten</a></li>
 					<li><a target= "main" href="part-uuid_de.html#label-verwenden">Label verwenden</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Die fstab"/>
-                <label for="Die fstab">Die fstab</label>
-                <ul>
-			        <li><a target= "main" href="part-uuid_de.html">Die fstab</a>
+				<input type="checkbox" id="M4_6"/>
+				<label for="M4_6">Die fstab</label>
+				<ul>
+					<li><a target= "main" href="part-uuid_de.html#die-fstab">Die fstab</a></li>
 					<li><a target= "main" href="part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a></li>
 					<li><a target= "main" href="part-uuid_de.html#erstellung-neuer-einhängepunkte">Erstellung neuer Einhängepunkte</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Partitionieren mit GParted"/>
-                <label for="Partitionieren mit GParted">Partitionieren mit GParted</label>
-                <ul>
-			        <li><a target= "main" href="part-gparted_de.html">Partitionieren mit GParted</a>
+				<input type="checkbox" id="M4_7"/>
+				<label for="M4_7">Partitionieren mit GParted</label>
+				<ul>
+					<li><a target= "main" href="part-gparted_de.html#partitionieren-mit-gparted">Partitionieren mit GParted</a></li>
 					<li><a target= "main" href="part-gparted_de.html#wichtige-hinweise">Wichtige Hinweise</a></li>
 					<li><a target= "main" href="part-gparted_de.html#gparted-verwenden">GParted verwenden</a></li>
 					<li><a target= "main" href="part-gparted_de.html#fstab-anpassen">fstab anpassen</a></li>
@@ -247,10 +248,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Partitionieren mit gdisk"/>
-                <label for="Partitionieren mit gdisk">Partitionieren mit gdisk</label>
-                <ul>
-			        <li><a target= "main" href="part-gdisk_de.html">Partitionieren mit gdisk</a>
+				<input type="checkbox" id="M4_8"/>
+				<label for="M4_8">Partitionieren mit gdisk</label>
+				<ul>
+					<li><a target= "main" href="part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a></li>
 					<li><a target= "main" href="part-gdisk_de.html#partitionierung-einer-festplatte">Partitionierung einer Festplatte</a></li>
 					<li><a target= "main" href="part-gdisk_de.html#cgdisk-verwenden--">cgdisk verwenden  </a></li>
 					<li><a target= "main" href="part-gdisk_de.html#formatieren-der-partitionen">Formatieren der Partitionen</a></li>
@@ -259,20 +260,20 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Partitionieren mit fdisk"/>
-                <label for="Partitionieren mit fdisk">Partitionieren mit fdisk</label>
-                <ul>
-			        <li><a target= "main" href="part-cfdisk_de.html">Partitionieren mit fdisk</a>
+				<input type="checkbox" id="M4_9"/>
+				<label for="M4_9">Partitionieren mit fdisk</label>
+				<ul>
+					<li><a target= "main" href="part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit fdisk</a></li>
 					<li><a target= "main" href="part-cfdisk_de.html#benennung-von-speichergeräten">Benennung von Speichergeräten</a></li>
 					<li><a target= "main" href="part-cfdisk_de.html#cfdisk-verwenden">Cfdisk verwenden</a></li>
 					<li><a target= "main" href="part-cfdisk_de.html#formatieren-von-partitionen">Formatieren von Partitionen</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="LVM-Partitionierung - Logical Volume Manager"/>
-                <label for="LVM-Partitionierung - Logical Volume Manager">LVM-Partitionierung - Logical Volume Manager</label>
-                <ul>
-			        <li><a target= "main" href="part-lvm_de.html">LVM-Partitionierung - Logical Volume Manager</a>
+				<input type="checkbox" id="M4_10"/>
+				<label for="M4_10">LVM-Partitionierung - Logical Volume Manager</label>
+				<ul>
+					<li><a target= "main" href="part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung - Logical Volume Manager</a></li>
 					<li><a target= "main" href="part-lvm_de.html#sechs-schritte-zu-logical-volumen">Sechs Schritte zu Logical Volumen</a></li>
 					<li><a target= "main" href="part-lvm_de.html#größenänderung-eines-volumens">Größenänderung eines Volumens</a></li>
 					<li><a target= "main" href="part-lvm_de.html#lvm-mit-einem-gui-programm-verwalten">LVM mit einem GUI-Programm verwalten</a></li>
@@ -280,10 +281,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Das Verzeichnis home verschieben"/>
-                <label for="Das Verzeichnis home verschieben">Das Verzeichnis home verschieben</label>
-                <ul>
-			        <li><a target= "main" href="home-move_de.html">Das Verzeichnis home verschieben</a>
+				<input type="checkbox" id="M4_11"/>
+				<label for="M4_11">Das Verzeichnis home verschieben</label>
+				<ul>
+					<li><a target= "main" href="home-move_de.html#das-verzeichnis-home-verschieben">Das Verzeichnis home verschieben</a></li>
 					<li><a target= "main" href="home-move_de.html#private-daten-verschieben">Private Daten verschieben</a></li>
 					<li><a target= "main" href="home-move_de.html#fstab-anpassen">fstab anpassen</a></li>
 				</ul>
@@ -291,14 +292,15 @@
 		</ul>
 	</li>
 	<li class="versteckt">
-		<input type="checkbox" id="Systemadministration"/>
-        <label for="Systemadministration">Systemadministration</label>
+		<input type="checkbox" id="M5"/>
+		<label for="M5">Systemadministration</label>
 		<ul>
+			<li><a target= "main" href="term-konsole_de.html">Systemadministration</a></li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Terminal - Kommandozeile"/>
-                <label for="Terminal - Kommandozeile">Terminal - Kommandozeile</label>
-                <ul>
-			        <li><a target= "main" href="term-konsole_de.html">Terminal - Kommandozeile</a>
+				<input type="checkbox" id="M5_1"/>
+				<label for="M5_1">Terminal - Kommandozeile</label>
+				<ul>
+					<li><a target= "main" href="term-konsole_de.html#terminal---kommandozeile">Terminal - Kommandozeile</a></li>
 					<li><a target= "main" href="term-konsole_de.html#arbeit-als-root">Arbeit als root</a></li>
 					<li><a target= "main" href="term-konsole_de.html#farbiges-terminal">Farbiges Terminal</a></li>
 					<li><a target= "main" href="term-konsole_de.html#wenn-das-terminal-hängt">Wenn das Terminal hängt</a></li>
@@ -308,10 +310,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Aktualisierung des BIOS mit FreeDOS"/>
-                <label for="Aktualisierung des BIOS mit FreeDOS">Aktualisierung des BIOS mit FreeDOS</label>
-                <ul>
-			        <li><a target= "main" href="bios-freedos_de.html">Aktualisierung des BIOS mit FreeDOS</a>
+				<input type="checkbox" id="M5_2"/>
+				<label for="M5_2">Aktualisierung des BIOS mit FreeDOS</label>
+				<ul>
+					<li><a target= "main" href="bios-freedos_de.html#aktualisierung-des-bios-mit-freedos">Aktualisierung des BIOS mit FreeDOS</a></li>
 					<li><a target= "main" href="bios-freedos_de.html#drei-voraussetzungen">Drei Voraussetzungen</a></li>
 					<li><a target= "main" href="bios-freedos_de.html#partitionieren-des-usb-sticks">Partitionieren des USB-Sticks</a></li>
 					<li><a target= "main" href="bios-freedos_de.html#freedos-mit-qemu-booten">FreeDOS mit qemu booten</a></li>
@@ -320,10 +322,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Systemadministration allgemein"/>
-                <label for="Systemadministration allgemein">Systemadministration allgemein</label>
-                <ul>
-			        <li><a target= "main" href="sys-admin-gen_de.html">Systemadministration allgemein</a>
+				<input type="checkbox" id="M5_3"/>
+				<label for="M5_3">Systemadministration allgemein</label>
+				<ul>
+					<li><a target= "main" href="sys-admin-gen_de.html#systemadministration-allgemein">Systemadministration allgemein</a></li>
 					<li><a target= "main" href="sys-admin-gen_de.html#bootoptionen-cheatcodes">Bootoptionen Cheatcodes</a></li>
 					<li><a target= "main" href="sys-admin-gen_de.html#systemd---dienste-verwalten">systemd - Dienste verwalten</a></li>
 					<li><a target= "main" href="sys-admin-gen_de.html#systemd.service-">systemd.service </a></li>
@@ -339,10 +341,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="APT Paketverwaltung"/>
-                <label for="APT Paketverwaltung">APT Paketverwaltung</label>
-                <ul>
-			        <li><a target= "main" href="sys-admin-apt_de.html">APT Paketverwaltung</a>
+				<input type="checkbox" id="M5_4"/>
+				<label for="M5_4">APT Paketverwaltung</label>
+				<ul>
+					<li><a target= "main" href="sys-admin-apt_de.html#apt-paketverwaltung">APT Paketverwaltung</a></li>
 					<li><a target= "main" href="sys-admin-apt_de.html#apt-und-apt-get">apt und apt-get</a></li>
 					<li><a target= "main" href="sys-admin-apt_de.html#liste-der-quellen-(sources.list)">Liste der Quellen (sources.list)</a></li>
 					<li><a target= "main" href="sys-admin-apt_de.html#apt-update">apt update</a></li>
@@ -357,19 +359,19 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Lokaler APT-Mirror"/>
-                <label for="Lokaler APT-Mirror">Lokaler APT-Mirror</label>
-                <ul>
-			        <li><a target= "main" href="sys-admin-apt-locarmirr_de.html">Lokaler APT-Mirror</a>
+				<input type="checkbox" id="M5_5"/>
+				<label for="M5_5">Lokaler APT-Mirror</label>
+				<ul>
+					<li><a target= "main" href="sys-admin-apt-locarmirr_de.html#lokaler-apt-mirror">Lokaler APT-Mirror</a></li>
 					<li><a target= "main" href="sys-admin-apt-locarmirr_de.html#server-installieren">Server installieren</a></li>
 					<li><a target= "main" href="sys-admin-apt-locarmirr_de.html#client-konfiguration">Client Konfiguration</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Systemd der System- und Dienste-Manager"/>
-                <label for="Systemd der System- und Dienste-Manager">Systemd der System- und Dienste-Manager</label>
-                <ul>
-			        <li><a target= "main" href="systemd-start_de.html">Systemd der System- und Dienste-Manager</a>
+				<input type="checkbox" id="M5_6"/>
+				<label for="M5_6">Systemd der System- und Dienste-Manager</label>
+				<ul>
+					<li><a target= "main" href="systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd der System- und Dienste-Manager</a></li>
 					<li><a target= "main" href="systemd-start_de.html#konzeption-des-systemd">Konzeption des systemd</a></li>
 					<li><a target= "main" href="systemd-start_de.html#unit-typen">Unit Typen</a></li>
 					<li><a target= "main" href="systemd-start_de.html#systemd-im-dateisystem">Systemd im Dateisystem</a></li>
@@ -379,10 +381,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="systemd unit-Datei"/>
-                <label for="systemd unit-Datei">systemd unit-Datei</label>
-                <ul>
-			        <li><a target= "main" href="systemd-unit-datei_de.html">systemd unit-Datei</a>
+				<input type="checkbox" id="M5_7"/>
+				<label for="M5_7">systemd unit-Datei</label>
+				<ul>
+					<li><a target= "main" href="systemd-unit-datei_de.html#systemd-unit-datei">systemd unit-Datei</a></li>
 					<li><a target= "main" href="systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Ladepfad der Unit-Dateien</a></li>
 					<li><a target= "main" href="systemd-unit-datei_de.html#aktivierung-der-unit-datei">Aktivierung der Unit-Datei</a></li>
 					<li><a target= "main" href="systemd-unit-datei_de.html#sektionen-der-unit-datei">Sektionen der Unit-Datei</a></li>
@@ -392,20 +394,20 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="systemd-service"/>
-                <label for="systemd-service">systemd-service</label>
-                <ul>
-			        <li><a target= "main" href="systemd-service_de.html">systemd-service</a>
+				<input type="checkbox" id="M5_8"/>
+				<label for="M5_8">systemd-service</label>
+				<ul>
+					<li><a target= "main" href="systemd-service_de.html#systemd-service">systemd-service</a></li>
 					<li><a target= "main" href="systemd-service_de.html#service-unit-anlegen">service-Unit anlegen</a></li>
 					<li><a target= "main" href="systemd-service_de.html#sektion-service">Sektion Service</a></li>
 					<li><a target= "main" href="systemd-service_de.html#quellen-systemd-service">Quellen systemd-service</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="systemd-mount"/>
-                <label for="systemd-mount">systemd-mount</label>
-                <ul>
-			        <li><a target= "main" href="systemd-mount_de.html">systemd-mount</a>
+				<input type="checkbox" id="M5_9"/>
+				<label for="M5_9">systemd-mount</label>
+				<ul>
+					<li><a target= "main" href="systemd-mount_de.html#systemd-mount">systemd-mount</a></li>
 					<li><a target= "main" href="systemd-mount_de.html#inhalt-der-mount-unit">Inhalt der mount-Unit</a></li>
 					<li><a target= "main" href="systemd-mount_de.html#inhalt-der-automount-unit">Inhalt der automount-Unit</a></li>
 					<li><a target= "main" href="systemd-mount_de.html#beispiele">Beispiele</a></li>
@@ -413,19 +415,19 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="systemd-target - Ziel-Unit"/>
-                <label for="systemd-target - Ziel-Unit">systemd-target - Ziel-Unit</label>
-                <ul>
-			        <li><a target= "main" href="systemd-target_de.html">systemd-target - Ziel-Unit</a>
+				<input type="checkbox" id="M5_10"/>
+				<label for="M5_10">systemd-target - Ziel-Unit</label>
+				<ul>
+					<li><a target= "main" href="systemd-target_de.html#systemd-target---ziel-unit">systemd-target - Ziel-Unit</a></li>
 					<li><a target= "main" href="systemd-target_de.html#besonderheiten">Besonderheiten</a></li>
 					<li><a target= "main" href="systemd-target_de.html#quellen-systemd-target">Quellen systemd-target</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="systemd-path"/>
-                <label for="systemd-path">systemd-path</label>
-                <ul>
-			        <li><a target= "main" href="systemd-path_de.html">systemd-path</a>
+				<input type="checkbox" id="M5_11"/>
+				<label for="M5_11">systemd-path</label>
+				<ul>
+					<li><a target= "main" href="systemd-path_de.html#systemd-path">systemd-path</a></li>
 					<li><a target= "main" href="systemd-path_de.html#benötigte-dateien">Benötigte Dateien</a></li>
 					<li><a target= "main" href="systemd-path_de.html#path-unit-optionen">path-Unit Optionen</a></li>
 					<li><a target= "main" href="systemd-path_de.html#path-unit-anlegen">path-Unit anlegen</a></li>
@@ -436,10 +438,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="systemd-timer"/>
-                <label for="systemd-timer">systemd-timer</label>
-                <ul>
-			        <li><a target= "main" href="systemd-timer_de.html">systemd-timer</a>
+				<input type="checkbox" id="M5_12"/>
+				<label for="M5_12">systemd-timer</label>
+				<ul>
+					<li><a target= "main" href="systemd-timer_de.html#systemd-timer">systemd-timer</a></li>
 					<li><a target= "main" href="systemd-timer_de.html#benötigte-dateien">Benötigte Dateien</a></li>
 					<li><a target= "main" href="systemd-timer_de.html#service-unit-für-timer">service-Unit für timer</a></li>
 					<li><a target= "main" href="systemd-timer_de.html#timer-unit-anlegen">timer-Unit anlegen</a></li>
@@ -448,10 +450,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Systemjournal"/>
-                <label for="Systemjournal">Systemjournal</label>
-                <ul>
-			        <li><a target= "main" href="systemd-journald_de.html">Systemjournal</a>
+				<input type="checkbox" id="M5_13"/>
+				<label for="M5_13">Systemjournal</label>
+				<ul>
+					<li><a target= "main" href="systemd-journald_de.html#systemjournal">Systemjournal</a></li>
 					<li><a target= "main" href="systemd-journald_de.html#journald">journald</a></li>
 					<li><a target= "main" href="systemd-journald_de.html#journald-über-das-netzwerk">journald über das Netzwerk</a></li>
 					<li><a target= "main" href="systemd-journald_de.html#journald.conf">journald.conf</a></li>
@@ -461,10 +463,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Verfügbare Kernel"/>
-                <label for="Verfügbare Kernel">Verfügbare Kernel</label>
-                <ul>
-			        <li><a target= "main" href="sys-admin-kern-upg_de.html">Verfügbare Kernel</a>
+				<input type="checkbox" id="M5_14"/>
+				<label for="M5_14">Verfügbare Kernel:</label>
+				<ul>
+					<li><a target= "main" href="sys-admin-kern-upg_de.html#verfügbare-kernel:">Verfügbare Kernel:</a></li>
 					<li><a target= "main" href="sys-admin-kern-upg_de.html#kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung ohne Systemaktualisierung</a></li>
 					<li><a target= "main" href="sys-admin-kern-upg_de.html#module">Module</a></li>
 					<li><a target= "main" href="sys-admin-kern-upg_de.html#entfernen-alter-kernel">Entfernen alter Kernel</a></li>
@@ -473,23 +475,24 @@
 		</ul>
 	</li>
 	<li class="versteckt">
-		<input type="checkbox" id="Netzwerk"/>
-        <label for="Netzwerk">Netzwerk</label>
+		<input type="checkbox" id="M6"/>
+		<label for="M6">Netzwerk</label>
 		<ul>
+			<li><a target= "main" href="inet-nm-cli_de.html">Netzwerk</a></li>
 			<li class="versteckt">
-			    <input type="checkbox" id="nmcli"/>
-                <label for="nmcli">nmcli</label>
-                <ul>
-			        <li><a target= "main" href="inet-nm-cli_de.html">nmcli</a>
+				<input type="checkbox" id="M6_1"/>
+				<label for="M6_1">nmcli</label>
+				<ul>
+					<li><a target= "main" href="inet-nm-cli_de.html#nmcli">nmcli</a></li>
 					<li><a target= "main" href="inet-nm-cli_de.html#network-manager-verwenden">Network Manager verwenden</a></li>
 					<li><a target= "main" href="inet-nm-cli_de.html#weiterführende-informationen">Weiterführende Informationen</a></li>
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="IWD statt wpa_supplicant"/>
-                <label for="IWD statt wpa_supplicant">IWD statt wpa_supplicant</label>
-                <ul>
-			        <li><a target= "main" href="inet-iwd_de.html">IWD statt wpa_supplicant</a>
+				<input type="checkbox" id="M6_2"/>
+				<label for="M6_2">IWD statt wpa_supplicant</label>
+				<ul>
+					<li><a target= "main" href="inet-iwd_de.html#iwd-statt-wpa_supplicant">IWD statt wpa_supplicant</a></li>
 					<li><a target= "main" href="inet-iwd_de.html#iwd-installieren">IWD installieren</a></li>
 					<li><a target= "main" href="inet-iwd_de.html#wifi-verbindung-mit-iwd">WiFi Verbindung mit IWD</a></li>
 					<li><a target= "main" href="inet-iwd_de.html#wifi-verbindung-mit-nmcli">WiFi Verbindung mit nmcli</a></li>
@@ -499,10 +502,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="LAMP-Webserver"/>
-                <label for="LAMP-Webserver">LAMP-Webserver</label>
-                <ul>
-			        <li><a target= "main" href="lamp-start_de.html">LAMP-Webserver</a>
+				<input type="checkbox" id="M6_3"/>
+				<label for="M6_3">LAMP-Webserver</label>
+				<ul>
+					<li><a target= "main" href="lamp-start_de.html#lamp-webserver">LAMP-Webserver</a></li>
 					<li><a target= "main" href="lamp-start_de.html#apache-installieren">Apache installieren</a></li>
 					<li><a target= "main" href="lamp-start_de.html#mariadb-installieren">MariaDb installieren</a></li>
 					<li><a target= "main" href="lamp-start_de.html#php-installieren">PHP installieren</a></li>
@@ -514,10 +517,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Apache einrichten"/>
-                <label for="Apache einrichten">Apache einrichten</label>
-                <ul>
-			        <li><a target= "main" href="lamp-apache_de.html">Apache einrichten</a>
+				<input type="checkbox" id="M6_4"/>
+				<label for="M6_4">Apache einrichten</label>
+				<ul>
+					<li><a target= "main" href="lamp-apache_de.html#apache-einrichten">Apache einrichten</a></li>
 					<li><a target= "main" href="lamp-apache_de.html#apache-im-dateisystem">Apache im Dateisystem</a></li>
 					<li><a target= "main" href="lamp-apache_de.html#verbindung-zum-server">Verbindung zum Server</a></li>
 					<li><a target= "main" href="lamp-apache_de.html#apache-konfiguration">Apache Konfiguration</a></li>
@@ -531,10 +534,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="MariaDB einrichten"/>
-                <label for="MariaDB einrichten">MariaDB einrichten</label>
-                <ul>
-			        <li><a target= "main" href="lamp-sql_de.html">MariaDB einrichten</a>
+				<input type="checkbox" id="M6_5"/>
+				<label for="M6_5">MariaDB einrichten</label>
+				<ul>
+					<li><a target= "main" href="lamp-sql_de.html#mariadb-einrichten">MariaDB einrichten</a></li>
 					<li><a target= "main" href="lamp-sql_de.html#mariadb-im-dateisystem">MariaDB im Dateisystem</a></li>
 					<li><a target= "main" href="lamp-sql_de.html#erstkonfiguration">Erstkonfiguration</a></li>
 					<li><a target= "main" href="lamp-sql_de.html#mariadb-cli">MariaDB CLI</a></li>
@@ -545,10 +548,10 @@
 				</ul>
 			</li>
 			<li class="versteckt">
-			    <input type="checkbox" id="PHP einrichten"/>
-                <label for="PHP einrichten">PHP einrichten</label>
-                <ul>
-			        <li><a target= "main" href="lamp-php_de.html">PHP einrichten</a>
+				<input type="checkbox" id="M6_6"/>
+				<label for="M6_6">PHP einrichten</label>
+				<ul>
+					<li><a target= "main" href="lamp-php_de.html#php-einrichten">PHP einrichten</a></li>
 					<li><a target= "main" href="lamp-php_de.html#php-im-dateisystem">PHP im Dateisystem</a></li>
 					<li><a target= "main" href="lamp-php_de.html#php-unterstützung-für-apache2">PHP-Unterstützung für Apache2</a></li>
 					<li><a target= "main" href="lamp-php_de.html#php-konfiguration">PHP Konfiguration</a></li>
@@ -560,15 +563,16 @@
 		</ul>
 	</li>
 	<li class="versteckt">
-		<input type="checkbox" id="Hardware"/>
-        <label for="Hardware">Hardware</label>
+		<input type="checkbox" id="M7"/>
+		<label for="M7">Hardware</label>
 		<ul>
+			<li><a target= "main" href="gpu_de.html">Hardware</a></li>
 			<li class="versteckt">
-			    <input type="checkbox" id="Grafiktreiber"/>
-                <label for="Grafiktreiber">Grafiktreiber</label>
-                <ul>
-			        <li><a target= "main" href="gpu_de.html">Grafiktreiber</a>
-					<li><a target= "main" href="gpu_de.html#pfeil-source-xorg-treiber">pfeil Source Xorg-Treiber</a></li>
+				<input type="checkbox" id="M7_1"/>
+				<label for="M7_1">Grafiktreiber</label>
+				<ul>
+					<li><a target= "main" href="gpu_de.html#grafiktreiber">Grafiktreiber</a></li>
+					<li><a target= "main" href="gpu_de.html#open-source-xorg-treiber">Open Source Xorg-Treiber</a></li>
 					<li><a target= "main" href="gpu_de.html#propritäre-treiber">Propritäre Treiber</a></li>
 					<li><a target= "main" href="gpu_de.html#2d-videotreiber">2D Videotreiber</a></li>
 					<li><a target= "main" href="gpu_de.html#3d-treiber">3D Treiber</a></li>
@@ -578,5 +582,3 @@
 		</ul>
 	</li>
 </ul>
-</body>
-</html>

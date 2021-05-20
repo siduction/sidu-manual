@@ -12,7 +12,7 @@
 # zu formen. Es werden ausschließlich nummerierte Dateien ausgewertet.
 # 
 # Aufruf: In den Ordner data/de/ wechseln und
-# "../../development/menue-extract.pl." eingeben.
+# "../../development/menue-extract.pl" eingeben.
 # Das erstellte Menue mit dem Namen
 # "tree-menue.html"
 # befinden sich dann im Ordner data/de/html/.
@@ -23,10 +23,18 @@ use File::Basename;
 my ($FILE, $NR, $EBENE1, $EBENE2, $CLASS, $TEXT, $LINK, $LINK2);
 my (@DATEIEN, @QUELLE, @LAGER, @MENU_FILE);
 
+######## HTML Anfang erzeugen
+
+open HEADER, "../../development/tree-menue-header.html"
+    or die "Kann HTML-Header nicht öffnen. ($1)";
+
+while (<HEADER>) {
+    push @MENU_FILE, "$_";
+}
+
+close HEADER;
 
 ######## Dateien des Ordners einlesen und einzeln verarbeiten.
-
-push @MENU_FILE, "<ul id=\"treeMenu\">\n";
 
 @DATEIEN = glob "*";
 
@@ -59,6 +67,7 @@ while (@DATEIEN) {
         push @LAGER , "$_";
     }
 
+######## Beginn Überschriften auswerten.
     START: while (@LAGER) {
         $_ = shift @LAGER;
         chomp($_);
@@ -70,7 +79,8 @@ while (@DATEIEN) {
             $EBENE1 ++;
             $EBENE2 = 0;
             &LINK_LINE;
-            push @MENU_FILE, "\t<li><label for=\"M$EBENE1 class=\"open\">$TEXT</label>\n\t\t  <input name=\"tree\"  id=\"M$EBENE1\" type=\"checkbox\" />\n\t\t<ul>\n";
+            $LINK2 = "\t\t\t<li>$LINK2</li>\n";
+            push @MENU_FILE, "\t<li class=\"versteckt\">\n\t\t<input type=\"checkbox\" id=\"M$EBENE1\"/>\n\t\t<label for=\"M$EBENE1\">$TEXT</label>\n\t\t<ul>\n$LINK2";
             $_ = shift @LAGER;
             chomp($_);
             
@@ -90,11 +100,12 @@ while (@DATEIEN) {
                         next START;
                     }
                 }
-                push @MENU_FILE, "\t\t</ul>\n\t</li>\n";
+#                push @MENU_FILE, "\t\t</ul>\n\t</li>\n";
             } else {            # Hier Überschrift Klasse ##
                 $EBENE2 ++;
                 &LINK_LINE;
-                push @MENU_FILE, "\t\t\t<li><label for=\"M$EBENE1" . "_" . "$EBENE2 class=\"open\">$LINK2</label>\n\t\t\t\t  <input name=\"tree\"  id=\"M$EBENE1" . "_" . "$EBENE2\" type=\"checkbox\" />\n\t\t\t\t<ul>\n";
+                $LINK = "\t\t\t\t\t<li>$LINK</li>\n";
+                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK";
                 while (@LAGER) {
                     $_ = shift @LAGER;
                     if (/^### /) {
@@ -114,7 +125,8 @@ while (@DATEIEN) {
         } else {
             $EBENE2 ++;
             &LINK_LINE;
-            push @MENU_FILE, "\t\t\t<li><label for=\"M$EBENE1" . "_" . "$EBENE2 class=\"open\">$LINK2</label>\n\t\t\t\t  <input name=\"tree\"  id=\"M$EBENE1" . "_" . "$EBENE2\" type=\"checkbox\" />\n\t\t\t\t<ul>\n";
+                $LINK = "\t\t\t\t\t<li>$LINK</li>\n";
+                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK";
             while (@LAGER) {
                 $_ = shift @LAGER;
                 if (/^### /) {
@@ -146,8 +158,8 @@ sub LINK_LINE {
         $LINK = "$FILE\#$TEXT";
         $LINK =~ s!(.*)!\L$1!;
         $LINK =~ s!( )!-!g;
-        $LINK = "<a href=\"$LINK\">$TEXT</a>";
-        $LINK2 = "<a href=\"$FILE\">$TEXT</a>";
+        $LINK = "<a target= \"main\" href=\"$LINK\">$TEXT</a>";
+        $LINK2 = "<a target= \"main\" href=\"$FILE\">$TEXT</a>";
 }
 
 ######## In Ausgabedateien schreiben.
