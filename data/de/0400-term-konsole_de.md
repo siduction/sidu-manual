@@ -97,7 +97,7 @@ Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind:
 **sudo** steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.  
 Nach einer Installation ist **sudo** nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
 
-Ein anderes Problem mit **sudo** ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von [*su*](#su) oder [*su-to-root*](#su-to-root) wird empfohlen!
+Ein anderes Problem mit **sudo** ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von [*su*](#über-su) oder [*su-to-root*](#über-su-to-root) wird empfohlen!
 
 Sollte man trotz aller Warnungen *sudo* nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!
 

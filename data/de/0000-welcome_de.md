@@ -1,8 +1,6 @@
 % Siduction Handbuch
 
-# Siduction Handbuch
-
-## Willkommen
+# Willkommen
 
 **Das siduction™ GNU/Linux-Betriebssystems**
 
