@@ -145,7 +145,7 @@ while (@DATEIEN) {
     }
 }
 
-push @MENU_FILE, "\t\t</ul>\n\t</li>\n</ul>\n";
+push @MENU_FILE, "\t\t</ul>\n\t</li>\n</ul>\n</body>\n</html>\n";
 
 sub LINK_LINE {
                 # Zeilen zerlegen und neu zusammensetzen.
