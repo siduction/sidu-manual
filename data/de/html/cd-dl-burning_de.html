@@ -71,7 +71,7 @@ SHA256SUM.gpg<br />
 SOURCES</p>
 <p>Die <strong>.manifest</strong>-Datei listet alle Pakete der jeweiligen ISO.</p>
 <p><strong>.iso</strong> ist die für den Download angebotene Abbilddatei.</p>
-<p>Die Dateien <strong>.md5</strong> und <strong>.sha256</strong> dienen der Überprüfung der Integrität der ISO.</p>
+<p>Die Dateien <strong>.html5</strong> und <strong>.sha256</strong> dienen der Überprüfung der Integrität der ISO.</p>
 <p>Die <strong>.gpg</strong>-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.html5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.</p>
 <p>Download-Links und Spiegelserver findet man auf <a href="https://forum.siduction.org/index.php?page=7">siduction.org</a></p>
 <p>Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.</p>
@@ -80,16 +80,16 @@ SOURCES</p>
 <p>Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dem Netz immer ratsam ist und viel Zeit für die Fehlersuche erspart.</p>
 <p>Die Datei ist unbeschädigt heruntergeladen worden, wenn die md5sum der heruntergeladenen Datei mit der Summe in der MD5-Datei übereinstimmt. Unter Linux erhält man die md5sum einer Datei mit:</p>
 <pre><code>$ md5sum zu_prüfende_datei</code></pre>
-<p>Das dauert ein wenig und die Summe wird dann in der Konsole ausgegeben und kann dann mit der Summe wie sie in der entsprechenden *.md5 Datei hinterlegt ist manuell verglichen werden. Die md5 Datei kann dazu in einem Texteditor geöffnet werden. Mit dem md5summer (486 KB) kann die md5sum auch in Windows geprüft werden.</p>
+<p>Das dauert ein wenig und die Summe wird dann in der Konsole ausgegeben und kann dann mit der Summe wie sie in der entsprechenden *.html5 Datei hinterlegt ist manuell verglichen werden. Die md5 Datei kann dazu in einem Texteditor geöffnet werden. Mit dem md5summer (486 KB) kann die md5sum auch in Windows geprüft werden.</p>
 <p>Einfacher ist die Überprüfung unter Linux mit folgendem Befehl, ausgeführt in dem Verzeichnis, in welchen sich sowohl die ISO-Datei als auch die ISO.MD5-Datei befinden:</p>
-<pre><code>$ md5sum -c zu_prüfende_datei.md5</code></pre>
+<pre><code>$ md5sum -c zu_prüfende_datei.html5</code></pre>
 <p>Je nachdem ob die Prüfsummen übereinstimmen, erhält man vom Programm eine Meldung:</p>
 <pre><code>md5-Summe: zu_überprüfende_datei: ok</code></pre>
 <p>oder</p>
 <pre><code>siduction-Name.iso: Fehlschlag md5sum: Warnung: 1 von 1 berechneten Prüfsumme stimmen nicht überein.</code></pre>
 <p>Die ISO-Abbilddateien von siduction werden immer mit der entsprechenden md5sum zum Download angeboten und sollten stets vor dem Brennen geprüft werden.</p>
 <p>Diese Dateien werden vom Spiegelserver heruntergeladen:</p>
-<p>siductionname.iso siductionname.iso.md5</p>
+<p>siductionname.iso siductionname.iso.html5</p>
 <p>Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter</p>
 <pre><code>$ man sha256sum</code></pre>
 <h3 id="live-dvd-mit-windows-brennen">Live-DVD mit Windows brennen</h3>

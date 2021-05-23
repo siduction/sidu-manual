@@ -156,7 +156,7 @@ Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etw
 ~$ rm -r .thunderbird/ &amp;&amp; ln -s /Daten/.thunderbird/ ./.thunderbird</code></pre>
 <p>Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz von weniger als 10 MB.</p>
 <h3 id="fstab-anpassen">fstab anpassen</h3>
-<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei <em>fstab</em> geändert werden. Zusätzliche Informationen zur <em>fstab</em> bietet unser Handbuch <a href="0311-part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
+<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei <em>fstab</em> geändert werden. Zusätzliche Informationen zur <em>fstab</em> bietet unser Handbuch <a href="part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
 Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der <em>fstab</em> mit Datumsanhang:</p>
 <pre><code># cp /etc/fstab /etc/fstab_$(date +%F) 
 # mcedit /etc/fstab</code></pre>

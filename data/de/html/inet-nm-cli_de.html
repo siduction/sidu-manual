@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Network Manager im Terminal</title>
+  <title>Network Manager</title>
 <style>
 body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
 p               {line-height: 1.3;}
@@ -21,27 +21,23 @@ img             {border: 0.1em solid #CCC;}
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Network Manager im Terminal</h1>
+<h1 class="title">Network Manager</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#netzwerk">Netzwerk</a>
-<ul>
-<li><a href="#nmcli">nmcli</a>
+<li><a href="#network-manager-kommandline-tool">Network Manager Kommandline Tool</a>
 <ul>
 <li><a href="#network-manager-verwenden">Network Manager verwenden</a></li>
 <li><a href="#weiterführende-informationen">Weiterführende Informationen</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="netzwerk">Netzwerk</h1>
-<h2 id="nmcli">nmcli</h2>
+<h2 id="network-manager-kommandline-tool">Network Manager Kommandline Tool</h2>
 <p><strong>Allgemeine Hinweise</strong></p>
-<p>Der Networkmanager ist mittlerweile ein sehr brauchbarer Ersatz für das Netzwerkkommando <em>ifup, ifdown</em> bzw. <em>ifconfig</em> in der Debianwelt geworden. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Es existiert ein leistungsfähiger Kommandozeilenclient <strong>nmcli</strong> für den täglichen Gebrauch des Networkmanagers.</p>
+<p>Der Networkmanager ist mittlerweile in allen graphischen Oberflächen von siduction integriert und größtenteils selbsterklärend. Er ersetzt die im Terminal benutzten Netzwerkkommandos <em>ifup, ifdown</em> bzw. <em>ifconfig</em>. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Steht keine graphische Oberfläche zur Verfügung, oder wird die Komandozeile bevorzugt, existiert mit <strong>nmcli</strong> ein leistungsfähiger Kommandozeilenclient für den täglichen Gebrauch des Networkmanagers.</p>
 <p>In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen aus. Eine WLAN-Verbindung (Name: Einhorn_2, Interface wtx7ckd90b81bbd, (früher; wlan)) und einer kabelgebundenen Verbindung (Name: Kabelgebundene Verbindung 1, Interface evp0s3f76 (früher: eth0)). Bitte die Verbindungsnamen an eure Gegebenheiten anpassen.</p>
 <p><strong>Installation des Network Managers</strong></p>
-<p>Falls der Networkmanager auf dem System noch nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.</p>
+<p>Falls der Networkmanager auf dem System nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">apt</span> install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a> <span class="ex">plasma-widget-networkmanagement</span> network-manager-vpnc network-manager-openvpn</span></code></pre></div>
 <h3 id="network-manager-verwenden">Network Manager verwenden</h3>
@@ -103,7 +99,7 @@ ttyACM0          gsm       nicht verbunden  --</code></pre>
 <li><a href="https://wiki.ubuntuusers.de/NetworkManager?redirect=no">Ubuntuusers Wiki</a></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2021-04-19
+Zuletzt bearbeitet: 2021-05-22
 </div>
 </body>
 </html>

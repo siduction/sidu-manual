@@ -25,8 +25,6 @@ img             {border: 0.1em solid #CCC;}
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#systemadministration">Systemadministration</a>
-<ul>
 <li><a href="#terminal---kommandozeile">Terminal - Kommandozeile</a>
 <ul>
 <li><a href="#arbeit-als-root">Arbeit als root</a></li>
@@ -36,10 +34,8 @@ img             {border: 0.1em solid #CCC;}
 <li><a href="#linux-konsolenbefehle">Linux Konsolenbefehle</a></li>
 <li><a href="#skripte-benutzen">Skripte benutzen</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="systemadministration">Systemadministration</h1>
 <h2 id="terminal---kommandozeile">Terminal - Kommandozeile</h2>
 <p>Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem ermöglicht, durch direkt ausgeführte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch häufig die “Shell” oder “Kommandozeile” genannt, ist ein äußerst mächtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.</p>
 <p>In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des Menüs anklickt oder in Menü &gt; System &gt; Terminal aufruft, oder, noch einfacher, in die Suchleiste des Menü <em>kons</em> oder <em>term</em> eintippt.</p>
@@ -92,7 +88,7 @@ Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutz
 <p><strong>sudo ist nicht konfiguriert</strong></p>
 <p><strong>sudo</strong> steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.<br />
 Nach einer Installation ist <strong>sudo</strong> nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.</p>
-<p>Ein anderes Problem mit <strong>sudo</strong> ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von <a href="#su"><em>su</em></a> oder <a href="#su-to-root"><em>su-to-root</em></a> wird empfohlen!</p>
+<p>Ein anderes Problem mit <strong>sudo</strong> ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von <a href="#über-su"><em>su</em></a> oder <a href="#über-su-to-root"><em>su-to-root</em></a> wird empfohlen!</p>
 <p>Sollte man trotz aller Warnungen <em>sudo</em> nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!</p>
 <p>Dies kann mit dem Befehl “adduser BENUTZER GRUPPE” als root ausgeführt werden.</p>
 <p>Als Alternative zu <em>sudo</em> kann auch <em>doas</em> (apt install doas) genommen und eingerichtet werden.</p>

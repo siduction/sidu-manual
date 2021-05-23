@@ -54,7 +54,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 </ul>
 <p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="systemd-path">systemd-path</h2>
-<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./0410-systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./0411-systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
+<p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit <strong>systemd.path</strong>, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.</p>
 <p>Die “<em>.path-Unit</em>” ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.<br />
 Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service Unit ausführen. Die “<em>.path-Unit</em>” ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.<br />
@@ -98,7 +98,7 @@ das zu beobachtenden Verzeichnis wird vor der Beobachtung erstellt.</p></li>
 legt bei Verwendung, für das zuvor erstellte Verzeichnis, den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.</p></li>
 </ul>
 <p><strong>Ein Beispiel</strong></p>
-<p>Auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite <a href="./0521-lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a> basierend, wollen wir das Zusammenspiel der <em>.path-Unit</em> mit anderen <em>systemd-Unit</em> verdeutlichen.</p>
+<p>Auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite <a href="./lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a> basierend, wollen wir das Zusammenspiel der <em>.path-Unit</em> mit anderen <em>systemd-Unit</em> verdeutlichen.</p>
 <p>Die Abbildung <em>path-Unit-Funktion</em> stellt die Abhängigkeiten der systemd-Units unseres Beispiels dar.</p>
 <figure>
 <img src="./images/systemd/path_01.svg" alt="" /><figcaption>path-Unit Funktion</figcaption>
