@@ -20,7 +20,7 @@
 use strict;
 use File::Basename;
 
-my ($FILE, $NR, $EBENE1, $EBENE2, $CLASS, $TEXT, $LINK, $LINK2);
+my ($FILE, $NR, $EBENE1, $EBENE2, $CLASS, $TEXT, $LINK, $LINK2, $LINK1);
 my (@DATEIEN, @QUELLE, @LAGER, @MENU_FILE);
 
 ######## HTML Anfang erzeugen
@@ -71,7 +71,7 @@ while (@DATEIEN) {
     START: while (@LAGER) {
         $_ = shift @LAGER;
         chomp($_);
-        
+
         if (/^# /) {
             if ($NR > 1) {
                 push @MENU_FILE, "\t\t</ul>\n\t</li>\n";
@@ -79,8 +79,12 @@ while (@DATEIEN) {
             $EBENE1 ++;
             $EBENE2 = 0;
             &LINK_LINE;
-            $LINK2 = "\t\t\t<li>$LINK2</li>\n";
-            push @MENU_FILE, "\t<li class=\"versteckt\">\n\t\t<input type=\"checkbox\" id=\"M$EBENE1\"/>\n\t\t<label for=\"M$EBENE1\">$TEXT</label>\n\t\t<ul>\n$LINK2";
+            $LINK1 = "\t\t\t<li>$LINK1</li>\n";
+            push @MENU_FILE, "\t<li class=\"versteckt\">\n\t\t<input type=\"checkbox\" id=\"M$EBENE1\"/>\n\t\t<label for=\"M$EBENE1\">$TEXT</label>\n\t\t<ul>\n$LINK1";
+            next;
+         }   
+         
+        if (/^# / && $#LAGER > 0) {
             $_ = shift @LAGER;
             chomp($_);
             
@@ -100,12 +104,12 @@ while (@DATEIEN) {
                         next START;
                     }
                 }
-#                push @MENU_FILE, "\t\t</ul>\n\t</li>\n";
-            } else {            # Hier Überschrift Klasse ##
+
+            } elsif (/^## /) {            # Hier Überschrift Klasse ##
                 $EBENE2 ++;
                 &LINK_LINE;
-                $LINK = "\t\t\t\t\t<li>$LINK</li>\n";
-                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK";
+                $LINK2 = "\t\t\t\t\t<li>$LINK2</li>\n";
+                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK2";
                 while (@LAGER) {
                     $_ = shift @LAGER;
                     if (/^### /) {
@@ -125,8 +129,8 @@ while (@DATEIEN) {
         } else {
             $EBENE2 ++;
             &LINK_LINE;
-                $LINK = "\t\t\t\t\t<li>$LINK</li>\n";
-                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK";
+                $LINK2 = "\t\t\t\t\t<li>$LINK2</li>\n";
+                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK2";
             while (@LAGER) {
                 $_ = shift @LAGER;
                 if (/^### /) {
@@ -159,7 +163,12 @@ sub LINK_LINE {
         $LINK =~ s!(.*)!\L$1!;
         $LINK =~ s!( )!-!g;
         $LINK = "<a target= \"main\" href=\"$LINK\">$TEXT</a>";
-        $LINK2 = "<a target= \"main\" href=\"$FILE\">$TEXT</a>";
+        $LINK1 = "<a target= \"main\" href=\"$FILE\">$TEXT</a>";
+        
+        $LINK2 = "$FILE";
+        $LINK2 =~ s!(.*)!\L$1!;
+        $LINK2 =~ s!( )!-!g;
+        $LINK2 = "<a target= \"main\" href=\"$LINK2\">$TEXT</a>";
 }
 
 ######## In Ausgabedateien schreiben.

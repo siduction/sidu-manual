@@ -13,8 +13,9 @@
 use strict;
 use File::Basename;
 
-my ($SCHREIBEN, $LAGER);
+my ($SCHREIBEN, $LAGER, $NR);
 my (@QUELLE, @NEU);
+my %ZEILEN = ();
 
 open(DATEI, "<$ARGV[0]") || die "$ARGV[0] nicht gefunden\n";
 @QUELLE=<DATEI>;
@@ -23,6 +24,32 @@ close(DATEI);
 $SCHREIBEN = "$ARGV[0]";
 
 ######## Beginn inhaltliche Bearbeitung der Dateien.
+# Klasse 1 Überschriften aus den "XX00-"Dateien entfernen.
+
+#$_ = ;
+$NR = 0 ;
+if ($SCHREIBEN =~ /\d{2}00/) {
+    while (@QUELLE) {
+        $NR ++;
+        $_ = shift @QUELLE;
+        if (/^\# /){
+            $NR --;
+            shift @QUELLE;
+            while ($NR > 0) {
+                unshift @QUELLE, $ZEILEN{"$NR"};
+                $NR --;
+            } 
+            last;
+        } else {
+            $ZEILEN{"$NR"} = $_;
+        }
+    }
+        # Anker-Teil aus den Link der "XX00-"Dateien entfernen,
+        #  damit auch der Titel der Zielseite angezeigt wird.
+    foreach (@QUELLE) {
+        s/(.*?\.md).*?\)/$1\)/g;
+    }
+}   
 
 while (@QUELLE) {                                
     $_ = shift @QUELLE;
@@ -60,9 +87,10 @@ while (@QUELLE) {
         $_ = "<warning>$LAGER";
         }
     }
-            
-    # Handbuch interne Link auf .html ändern
-    s/(\(.*?\.)md/$1html/g;
+#    if 
+    # Handbuch interne Link auf .html ändern und Zifferncode entfernen.
+    s/(.*?\.)md/$1html/g;
+    s/\d{4}-(.*?\.html)/$1/g;
     $_ = "$_\n";
     push @NEU,$_;
 }
