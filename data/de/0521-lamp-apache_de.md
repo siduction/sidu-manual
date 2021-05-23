@@ -239,7 +239,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 4. Nachteile dieser Einstellungen
 
    Beim Anlegen neuer Verzeichnisse und Dateien unterhalb "*DocumentRoot*" ist der Eigentümer der jeweilige "*User*" und nicht "*www-data*". Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
-   Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb "*DocumentRoot*" überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](./0415-systemd-path_de.md#systemd-path).)
+   Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb "*DocumentRoot*" überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](./0715-systemd-path_de.md#systemd-path).)
 
 **Ohne CMS**
 

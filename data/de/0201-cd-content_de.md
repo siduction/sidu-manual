@@ -1,7 +1,5 @@
 % Inhalt der Live-ISO
 
-# ISO s
-
 ## Inhalt der Live-ISO
 
 ### Hinweis zur Software auf dem Live-ISO

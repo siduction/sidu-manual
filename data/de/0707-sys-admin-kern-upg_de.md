@@ -1,6 +1,8 @@
 % Neue Kernel installieren
 
-## Verfügbare Kernel
+## Kernel Upgrade
+
+Siduction stellt folgende Kernel bereit:
 
 + **linux-image-siduction-amd64  +  linux-headers-siduction-amd64**  - Linux Kernel für 64-bit PCs mit AMD64 oder Intel 64 CPU.
 + 32 bit Kernel stellen wir nicht mehr zur Verfügung, hier kann der Debian Kernel, oder alternativ der Liquorix-Kernel (https://liquorix.net/) verwendet werden.

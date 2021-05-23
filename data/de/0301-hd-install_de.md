@@ -1,6 +1,4 @@
-% Installation vom Live-Medium
-
-# Installation
+% Installation auf HDD
 
 ## Installation auf HDD
 

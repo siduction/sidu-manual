@@ -13,7 +13,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## systemd-service
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md#systemd-unit-datei)  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./0711-systemd-unit-datei_de.md#systemd-unit-datei)  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.service**. Die Unit-Datei mit der Namensendung ".service" ist der am häufigsten anzutreffende Unit-Typ in systemd.
 
 Die Servic-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen über den Dienst und den Prozess, den er überwacht, konfiguriert. 
@@ -121,8 +121,8 @@ WatchdogSec=      BusName=
 **Beispiele**  
 Einige selbst erstellte Service-Units finden sich auf unseren Handbuchseiten
 
-[service-Unit für systemd Timer](./0416-systemd-timer_de.md#service-unit-anlegen)  
-[service-Unit für systemd Path](./0415-systemd-path_de.md#service-unit-anlegen)  
+[service-Unit für systemd Timer](./0716-systemd-timer_de.md#service-unit-anlegen)  
+[service-Unit für systemd Path](./0715-systemd-path_de.md#service-unit-anlegen)  
 und mit der bevorzugten Suchmaschine im Internet.  
 [LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)
 
