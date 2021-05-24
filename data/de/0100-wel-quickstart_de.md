@@ -119,7 +119,7 @@ init 5
 
 ### Konfiguration von Netzwerken
 
-'nmcli'  ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends  **wireless-tools**  bzw.  **wpasupplicant**  zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
+Der in allen graphischen Oberflächen von siduction integriert **Networkmanager** bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript **nmcli** Zugang zur Funktionalität der Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends **wireless-tools** bzw. **wpasupplicant** zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
 
 Der Startbefehl in der Konsole ist **nmcli**  oder **nmtui** . Falls das Skript nicht vorhanden ist, installiert man es mit:
 
@@ -127,7 +127,9 @@ Der Startbefehl in der Konsole ist **nmcli**  oder **nmtui** . Falls das Skript 
 apt install network-manager
 ~~~
 
-Mehr Informationen unter [Netzwerk - nmcli](inet-nm-cli_de.md#nmcli) 
+Mehr Informationen unter [Netzwerk - nmcli](inet-nm-cli_de.md#nmcli)
+
+Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite [IWD statt wpa_supplicant](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) über die Vorgehensweise.
 
 ### Runlevels - Ziel-Unit
 
