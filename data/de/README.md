@@ -31,8 +31,8 @@ Jede .md-Datei benötigt in der ersten Zeile einen Titel in der Notation **`% Me
   + **##** und **###**  
     Standard in den .md-Dateien.  
   + **####**  
-    Selten bis nicht anzutreffen in .md-Dateien.  
-    Diese Überschriften integriert pandoc (LaTex) als fett ausgezeichneten Text in die erste Zeile des folgenden Absatzes. Das führt besonders bei folgenden Listen oder Tabellen zu unerwarteten und unerwünschten Effekten. Meistens ist ein Zeile mit fettem Text sinnvoller.  
+    Selten bis nicht anzutreffen in .md-Dateien. Meistens ist ein Zeile mit fettem Text sinnvoller.  
+    Diese Überschriften integriert pandoc (LaTex) als fett ausgezeichneten Text in die erste Zeile des folgenden Absatzes. Das führt besonders bei folgenden Listen oder Tabellen zu unerwarteten und unerwünschten Effekten.  
 + Sonderzeichen  
   Erlaubt sind das **Leerzeichen**, der **Punkt** und der **Bindestrich** bzw. das Minuszeichen.  
   Verboten sind diese, und noch viele weitere Zeichen, weil eine Verlinkung auf Überschriften mit diesen Zeichen nicht möglich ist:
@@ -63,7 +63,7 @@ Soll auf Handbuch interne Seiten verlinkt werden, **muss** der Link **immer** ei
   ~~~
 
 + Überschriftenlisten  
-  Die Dateien [headline-by-file](https://github.com/siduction/sidu-manual/blob/WIP/development/headline-by-file) und [headline-by-text](https://github.com/siduction/sidu-manual/blob/WIP/development/headline-by-text) unterstützen dich beim Verlinken auf Handbuch internen Seiten.
+  Die Dateien [headline-by-file](https://github.com/siduction/sidu-manual/blob/WIP/development/headline-by-file) und [headline-by-text](https://github.com/siduction/sidu-manual/blob/WIP/development/headline-by-text) unterstützen dich beim Verlinken auf Handbuch interne Seiten.
     
 ### Hervorgehobener Text
 
@@ -79,7 +79,7 @@ Innerhalb dieser Bereiche findet kein parsen durch MarkDown statt. Die zusätzli
   **`(fetter Text)`**
   ~~~
 
-+ **Absätze Qellcode**  
++ **Absätze Quellcode**  
   Vor und nach dem Block jeweils eine Leerzeile einfügen. Die erste und die letzte Zeile besteht aus drei Tilden "\~\~\~". Dies hat gegenüber der Einrückung um vier Leerzeichen zwei wichtige Vorteile.  
   + Es ist Syntax Highlighting realisierbar, indem nach den ersten Tilden der Dialekt angegeben wird. z.B.: \~\~\~sh  
   + Die Einrückungen innerhalb von Listen sind für Code-Blöcke und Text bei Verwendung der Tilden gleich. Wenn nur Leerzeicheneinrückung für beide Funktionen vorgenommen wird, geht spätestens ab der zweiten Ebene die Übersicht und damit die Lesbarkeit komplett verloren.  
@@ -146,4 +146,4 @@ Er wird in .md-Dateien (nur lokal im FF) und .html-Dateien rechtsbündig, verkle
 Alles weitere richtet sich nach [GitHub Flavored Markdown Spec](https://github.github.com/gfm/), allerdings mit einer Ausnahme.  
 **Keine horizontalen Linen** verwenden.
 
-Stand 2021-05-11, Autor: akli
+Stand 2021-06-08, Autor: akli
