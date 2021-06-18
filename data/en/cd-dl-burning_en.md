@@ -9,61 +9,103 @@
 
 ###### Please use your closest mirror. Mirrors with codeboxes underneath them get updated as soon as changes are uploaded (refer to /etc/apt/sources.list.d/siduction.list). We also recommend using our torrent files, if you have no mirror in your country.
 
-#### Europe
+**Europe**  
 
-+  **Free University Berlin/ spline (Student Project LInux NEtwork), Germany:**   
-    [http://ftp.spline.de/pub/siduction/iso](http://ftp.spline.de/pub/siduction/iso)   
-    [ftp://ftp.spline.de/pub/siduction/iso](ftp://ftp.spline.de/pub/siduction/iso)   
-   rsync://ftp.spline.de/siduction/iso  
++ **Office Vienna, Austria**  
+https://siduction.office-vienna.at/
 
-~~~  
-deb ftp://ftp.spline.de/pub/siduction/base unstable main  
-deb ftp://ftp.spline.de/pub/siduction/fixes unstable main  
-deb-src ftp://ftp.spline.de/pub/siduction/base unstable main  
-deb-src ftp://ftp.spline.de/pub/siduction/fixes unstable main  
-~~~
++ **Freie Universität Berlin/spline (Student Project LInux NEtwork), Germany**  
+http://ftp.spline.de/pub/siduction/
+https://ftp.spline.de/pub/siduction/
+ftp://ftp.spline.de/pub/siduction/
 
-#### North America
++ **Universität Stuttgart, Germany**  
+http://ftp.uni-stuttgart.de/siduction/
+https://ftp.uni-stuttgart.de/siduction/
+ftp://ftp.uni-stuttgart.de/siduction/
 
-+  **`University of Delaware`**   
-    [http://mirror.lug.udel.edu/pub/siduction/iso](http://mirror.lug.udel.edu/pub/siduction/iso)   
-    [ftp://ftp.lug.udel.edu/pub/siduction/iso](ftp://ftp.lug.udel.edu/pub/siduction/iso) rsync://rsync.lug.udel.edu/siduction/iso  
++ **Academic Computer Club, Universität Umeå, Sweden**  
+http://ftp.acc.umu.se/mirror/siduction.org/
+https://ftp.acc.umu.se/mirror/siduction.org/
+rsync://ftp.acc.umu.se/mirror/siduction.org/
 
-~~~  
-deb ftp://ftp.lug.udel.edu/pub/siduction/base unstable main  
-deb-src ftp://ftp.lug.udel.edu/pub/siduction/base unstable main  
-deb ftp://ftp.lug.udel.edu/pub/siduction/fixes unstable main  
-deb-src ftp://ftp.lug.udel.edu/pub/siduction/fixes unstable main  
-~~~
++ **Dotsrc.org, Universität Aalborg, Denmark**  
+http://mirrors.dotsrc.org/siduction/
+https://mirrors.dotsrc.org/siduction/
+ftp://mirrors.dotsrc.org/siduction/
+rsync://mirrors.dotsrc.org/siduction/
 
-+  **`Georgia Tech`**   
-    [http://www.gtlib.gatech.edu/pub/siduction/iso](http://www.gtlib.gatech.edu/pub/siduction/iso)   
-    [ftp://ftp.gtlib.gatech.edu/pub/siduction/iso](ftp://ftp.gtlib.gatech.edu/pub/siduction/iso)  rsync://rsync.gtlib.gatech.edu/siduction/iso  
++ **Yandex, Moskau, Russia**  
+https://mirror.yandex.ru/mirrors/siduction/
+http://mirror.yandex.ru/mirrors/siduction/
+ftp://mirror.yandex.ru/mirrors/siduction/
+rsync://mirror.yandex.ru/mirrors/siduction/
 
-#### South America
++ **GARR Consortium, Italy**  
+http://siduction.mirror.garr.it/
+https://siduction.mirror.garr.it/
 
-+  **`Universidade Estadual de Campinas (unicamp), São Paulo, Brasilien`**   
-    [http://www.las.ic.unicamp.br/pub/siduction/iso/](http://www.las.ic.unicamp.br/pub/siduction/iso/)   
-    [ftp://www.las.ic.unicamp.br/pub/siduction/iso/](ftp://www.las.ic.unicamp.br/pub/siduction/iso/)   
++ **Quantum Mirror, Hungary**  
+http://quantum-mirror.hu/mirrors/pub/siduction/
+https://quantum-mirror.hu/mirrors/pub/siduction/
+rsync://quantum-mirror.hu/siduction/
 
-~~~  
-deb ftp://www.las.ic.unicamp.br/pub/siduction/base unstable main  
-deb-src ftp://www.las.ic.unicamp.br/pub/siduction/base unstable main  
-deb ftp://www.las.ic.unicamp.br/pub/siduction/fixes unstable main  
-deb-src ftp://www.las.ic.unicamp.br/pub/siduction/fixes unstable main  
-~~~
++ **Belnet, Brüssel, Belgium**  
+http://ftp.belnet.be/mirror/siduction/
+https://ftp.belnet.be/mirror/siduction/
+ftp://ftp.belnet.be/mirror/siduction/
+rsync://ftp.belnet.be/siduction/
 
-#### Asia
++ **Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Germany**  
+http://ftp.gwdg.de/pub/linux/siduction/
+https://ftp.gwdg.de/pub/linux/siduction/
+ftp://ftp.gwdg.de/pub/linux/siduction/
+rsync://ftp.gwdg.de/pub/linux/siduction/
 
-+   
++ **RWTH Aachen, Germany**  
+https://ftp.halifax.rwth-aachen.de/siduction/
+rsync://ftp.halifax.rwth-aachen.de/siduction/
+ftp://ftp.halifax.rwth-aachen.de/siduction/
+http://ftp.halifax.rwth-aachen.de/siduction/
 
-#### Africa
++ **Easy Lee, Amsterdam, Netherlands**  
+https://mirror.easylee.nl/siduction/
+http://mirror.easylee.nl/siduction/
+rsync://mirror.easylee.nl/siduction/
 
-+   
++ **Studenten Net Twente, Netherlands**  
+http://ftp.snt.utwente.nl/pub/linux/siduction/
+https://ftp.snt.utwente.nl/pub/linux/siduction/
+ftp://ftp.snt.utwente.nl/pub/linux/siduction/
+rsync://ftp.snt.utwente.nl/siduction/
 
-#### Australia
+**Asia**
 
-+   
++ **KoDDOS, Amarutu Technology, Hong Kong**  
+https://mirror-hk.koddos.net/siduction/
+http://mirror-hk.koddos.net/siduction/
+rsync://mirror-hk.koddos.net/siduction/
+
+**South America**
+
++ **Corporación Ecuatoriana para el Desarrollo de la Investigación y la Academia, Cuenca, Ecuador**  
+https://mirror.cedia.org.ec/siduction/
+http://mirror.cedia.org.ec/siduction/
+rsync://mirror.cedia.org.ec/siduction/
+
+**North America**
+
++ **Department of Mathematics, Princeton University, United States**  
+http://mirror.math.princeton.edu/pub/siduction/
+https://mirror.math.princeton.edu/pub/siduction/
+
++ **Georgia Tech Software Library (GTlib), Atlanta, United States**  
+http://www.gtlib.gatech.edu/pub/siduction/
+ftp://ftp.gtlib.gatech.edu/pub/siduction/
+rsync://rsync.gtlib.gatech.edu/siduction/
+
++ **Liquorix.net, United States**  
+https://liquorix.net/siduction/
 
 <div class="divider" id="siduction-def"></div>
 ### Definitions of files on each mirror
