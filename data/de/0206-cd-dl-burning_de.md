@@ -12,93 +12,93 @@
 https://siduction.office-vienna.at/
 
 + **Freie Universität Berlin/spline (Student Project LInux NEtwork), Deutschland**  
-http://ftp.spline.de/pub/siduction/
-https://ftp.spline.de/pub/siduction/
+http://ftp.spline.de/pub/siduction/  
+https://ftp.spline.de/pub/siduction/  
 ftp://ftp.spline.de/pub/siduction/
 
 + **Universität Stuttgart, Deutschland**  
-http://ftp.uni-stuttgart.de/siduction/
-https://ftp.uni-stuttgart.de/siduction/
+http://ftp.uni-stuttgart.de/siduction/  
+https://ftp.uni-stuttgart.de/siduction/  
 ftp://ftp.uni-stuttgart.de/siduction/
 
 + **Academic Computer Club, Universität Umeå, Schweden**  
-http://ftp.acc.umu.se/mirror/siduction.org/
-https://ftp.acc.umu.se/mirror/siduction.org/
+http://ftp.acc.umu.se/mirror/siduction.org/  
+https://ftp.acc.umu.se/mirror/siduction.org/  
 rsync://ftp.acc.umu.se/mirror/siduction.org/
 
 + **Dotsrc.org, Universität Aalborg, Dänemark**  
-http://mirrors.dotsrc.org/siduction/
-https://mirrors.dotsrc.org/siduction/
-ftp://mirrors.dotsrc.org/siduction/
+http://mirrors.dotsrc.org/siduction/  
+https://mirrors.dotsrc.org/siduction/  
+ftp://mirrors.dotsrc.org/siduction/  
 rsync://mirrors.dotsrc.org/siduction/
 
 + **Yandex, Moskau, Russland**  
-https://mirror.yandex.ru/mirrors/siduction/
-http://mirror.yandex.ru/mirrors/siduction/
-ftp://mirror.yandex.ru/mirrors/siduction/
+https://mirror.yandex.ru/mirrors/siduction/  
+http://mirror.yandex.ru/mirrors/siduction/  
+ftp://mirror.yandex.ru/mirrors/siduction/  
 rsync://mirror.yandex.ru/mirrors/siduction/
 
 + **GARR Consortium, Italien**  
-http://siduction.mirror.garr.it/
+http://siduction.mirror.garr.it/  
 https://siduction.mirror.garr.it/
 
 + **Quantum Mirror, Ungarn**  
-http://quantum-mirror.hu/mirrors/pub/siduction/
-https://quantum-mirror.hu/mirrors/pub/siduction/
+http://quantum-mirror.hu/mirrors/pub/siduction/  
+https://quantum-mirror.hu/mirrors/pub/siduction/  
 rsync://quantum-mirror.hu/siduction/
 
 + **Belnet, Brüssel, Belgien**  
-http://ftp.belnet.be/mirror/siduction/
-https://ftp.belnet.be/mirror/siduction/
-ftp://ftp.belnet.be/mirror/siduction/
+http://ftp.belnet.be/mirror/siduction/  
+https://ftp.belnet.be/mirror/siduction/  
+ftp://ftp.belnet.be/mirror/siduction/  
 rsync://ftp.belnet.be/siduction/
 
 + **Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Deutschland**  
-http://ftp.gwdg.de/pub/linux/siduction/
-https://ftp.gwdg.de/pub/linux/siduction/
-ftp://ftp.gwdg.de/pub/linux/siduction/
+http://ftp.gwdg.de/pub/linux/siduction/  
+https://ftp.gwdg.de/pub/linux/siduction/  
+ftp://ftp.gwdg.de/pub/linux/siduction/  
 rsync://ftp.gwdg.de/pub/linux/siduction/
 
 + **RWTH Aachen, Deutschland**  
-https://ftp.halifax.rwth-aachen.de/siduction/
-rsync://ftp.halifax.rwth-aachen.de/siduction/
-ftp://ftp.halifax.rwth-aachen.de/siduction/
+https://ftp.halifax.rwth-aachen.de/siduction/  
+rsync://ftp.halifax.rwth-aachen.de/siduction/  
+ftp://ftp.halifax.rwth-aachen.de/siduction/  
 http://ftp.halifax.rwth-aachen.de/siduction/
 
 + **Easy Lee, Amsterdam, Niederlande**  
-https://mirror.easylee.nl/siduction/
-http://mirror.easylee.nl/siduction/
+https://mirror.easylee.nl/siduction/  
+http://mirror.easylee.nl/siduction/  
 rsync://mirror.easylee.nl/siduction/
 
 + **Studenten Net Twente, Niederlande**  
-http://ftp.snt.utwente.nl/pub/linux/siduction/
-https://ftp.snt.utwente.nl/pub/linux/siduction/
-ftp://ftp.snt.utwente.nl/pub/linux/siduction/
+http://ftp.snt.utwente.nl/pub/linux/siduction/  
+https://ftp.snt.utwente.nl/pub/linux/siduction/  
+ftp://ftp.snt.utwente.nl/pub/linux/siduction/  
 rsync://ftp.snt.utwente.nl/siduction/
 
 **Asien**
 
 + **KoDDOS, Amarutu Technology, Hongkong**  
-https://mirror-hk.koddos.net/siduction/
-http://mirror-hk.koddos.net/siduction/
+https://mirror-hk.koddos.net/siduction/  
+http://mirror-hk.koddos.net/siduction/  
 rsync://mirror-hk.koddos.net/siduction/
 
 **Südamerika**
 
 + **Corporación Ecuatoriana para el Desarrollo de la Investigación y la Academia, Cuenca**  
-https://mirror.cedia.org.ec/siduction/
-http://mirror.cedia.org.ec/siduction/
+https://mirror.cedia.org.ec/siduction/  
+http://mirror.cedia.org.ec/siduction/  
 rsync://mirror.cedia.org.ec/siduction/
 
 **Nordamerika**
 
 + **Department of Mathematics, Princeton University, United States**  
-http://mirror.math.princeton.edu/pub/siduction/
+http://mirror.math.princeton.edu/pub/siduction/  
 https://mirror.math.princeton.edu/pub/siduction/
 
 + **Georgia Tech Software Library (GTlib), Atlanta, United States**  
-http://www.gtlib.gatech.edu/pub/siduction/
-ftp://ftp.gtlib.gatech.edu/pub/siduction/
+http://www.gtlib.gatech.edu/pub/siduction/  
+ftp://ftp.gtlib.gatech.edu/pub/siduction/  
 rsync://rsync.gtlib.gatech.edu/siduction/
 
 + **Liquorix.net, United States**  
@@ -199,4 +199,4 @@ Klickt man auf die berechnete Prüfsumme, erscheint daneben ein Symbol. Klickt m
 Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript burniso verwenden.
 Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X).
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
+<div id="rev">Zuletzt bearbeitet: 2021-06-18</div>
