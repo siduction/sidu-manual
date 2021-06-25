@@ -1,3 +1,5 @@
+**Status: RC1**
+
 <div class="divider" id="configure"></div>
 
 ## SAMBA-Konfiguration, um mit siduction über das Netzwerk auf Windows-Freigaben zugreifen zu können
@@ -53,7 +55,6 @@ Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab`  nach 
 Samba befindet sich nicht auf der Live-CD, daher sind folgende Schritte notwendig, um einen Samba-Netzwerkzugang zu erhalten:
 
 ~~~
-suxterm
 apt-get update
 apt-get install samba samba-tools smbclient smbfs samba-common-bin
 ~~~
@@ -98,7 +99,7 @@ public = yes
 Neustart des Samba-Servers:
 
 ~~~
-/etc/init.d/samba restart
+systemctl restart smbd.service
 ~~~
 
 ## Überprüfen von Samba-Freigaben
@@ -149,19 +150,19 @@ Falls kein Passwort gesetzt wurde, wird bei der Passwortanfrage die Taste ENTER 
  Samba wird gestartet und gestoppt mit:
 
 ~~~
-/etc/init.d/samba start
+systemctl start smbd.service
 ~~~
 
 beziehungsweise
 
 ~~~
-/etc/init.d/samba stop
+systemctl stop smbd.service
 ~~~
 
 Samba kann auch automatisch beim Booten gestartet werden:
 
 ~~~
-update-rc.d samba defaults
+systemctl enable --now smbd.service
 ~~~
 
 Samba startet jetzt beim Booten.
