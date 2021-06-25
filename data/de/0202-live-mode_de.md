@@ -51,8 +51,6 @@ Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechte
 
   ~~~
   sudo <Anwendung>  
-     oder  
-  su-to-root -X -c <Anwendung>
   ~~~
 
   eingeben.  
@@ -63,8 +61,6 @@ Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechte
 
   ~~~
   sudo <Anwendung> &
-     oder
-  su-to-root -X -c <Anwendung>
   ~~~
 
   eingeben.  
@@ -97,10 +93,12 @@ Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort
 Die Befehlsfolge für die Installation von Software während einer Live-Sitzung gleicht der bei einer Festplatteninstallation.
 
 ~~~
-apt update
-apt install <das-gewünschtes-paket>
+sudo apt update
+sudo apt install <das-gewünschtes-paket>
 ~~~
+
+alternativ kann das Ganze natürlich auch in einer Root-Shell ohne voran gestelltes sudo erfolgen.
 
 Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten, außer wenn [fromiso und persist](hd-install-opts_de.md#fromiso-persist) aktiviert wird.
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-06-25</div>
