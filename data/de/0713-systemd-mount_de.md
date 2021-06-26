@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02 bis 03:
 
@@ -18,7 +18,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ## systemd-mount
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md#systemd-unit-datei)  
-In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit **mount** und **automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
+In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Units **mount** und **automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
 
 Die **mount**-Unit ist eine Konfigurationsdatei, die für systemd Informationen über einen Einhängepunkt bereitstellt.  
 Die **automount**-Unit überwacht das Dateisystem und aktiviert die gleichnamige *.mount-Unit*, wenn das darin bezeichnete Dateisystem verfügbar ist.
@@ -229,4 +229,4 @@ Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beisp
 [Debianforum, Netzlaufwerke einbinden](https://wiki.debianforum.de/Netzlaufwerke_einbinden)  
 [Ubuntuusers, Mount-Units](https://wiki.ubuntuusers.de/systemd/Mount_Units/)
 
-<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>
+<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
