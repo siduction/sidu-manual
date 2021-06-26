@@ -19,7 +19,7 @@ Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" o
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
 
 Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
-Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ, und können die generischen Sektionen "[Unit]" und "[Install]" enthalten.  
+Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typs haben und können die generischen Sektionen "[Unit]" und "[Install]" enthalten.  
 Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md#systemd-unit-datei) erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen "[Unit]" und "[Install]".
 
 ### Unit Typen
@@ -29,7 +29,7 @@ Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link z
 
 1. **Dienste-Units** [(systemd.service)](./systemd-service_de.md#systemd-service), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
 
-2. **Socket-Units** (systemd.socket), die lokale IPC- oder Netzwerk-Sockets in dem System kapseln, nützlich für Socket-basierte Aktivierung.
+2. **Socket-Units** (systemd.socket), die lokale IPC- oder Netzwerk-Sockets im System kapseln, nützlich für Socket-basierte Aktivierung.
 
 3. **Target-Units** [(systemd.target)](./systemd-target_de.md#systemd-target---ziel-unit) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
 
@@ -37,11 +37,11 @@ Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link z
 
 5. **Mount-Units** [(systemd.mount)](./systemd-mount_de.md#systemd-mount) steuern Einhängepunkte im Dateisystem.
 
-6. **Automount-Units** [(systemd.automount)](./systemd-mount_de.md#systemd-mount) stellen Selbsteinhänge-Fähigkeiten bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
+6. **Automount-Units** [(systemd.automount)](./systemd-mount_de.md#systemd-mount) stellen Fähigkeiten zum Selbsteinhängen bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
 
 7. **Zeitgeber-Units** [(systemd.timer)](./systemd-timer_de.md#systemd-timer) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
 
-8. **Auslagerungs-Units** (systemd.swap) sind ähnlich zu Einhänge-Units und kapseln Speicherauslagerungspartitionen oder -dateien des Betriebssystems.
+8. **Auslagerungs-Units** (systemd.swap) sind ähnlich zu Einhänge-Units und kapseln Speicherauslagerungs-Partitionen oder -Dateien des Betriebssystems.
 
 9. **Pfad-Units** [(systemd.path)](./systemd-path_de.md#systemd-path) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
 
@@ -57,7 +57,7 @@ Das Verzeichnis **/run/systemd/system/** beinhaltet zur Laufzeit erstellte Unit-
 
 ### Weitere Funktionen von systemd
 
-Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html)  als Ersatz für das nicht mehr weiter gepflegte  *ConsoleKit* . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen einen Containers (ähnlich einer Chroot) mittels [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html)  und viele weitere. Ein Blick in die Linkliste auf   [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/)  ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Lennart Poettering zu systemd.
+Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html)  als Ersatz für das nicht mehr weiter gepflegte  *ConsoleKit* . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen eines Containers (ähnlich einer Chroot) mittels [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html)  und viele weitere. Ein Blick in die Linkliste auf   [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/)  ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Hauptentwickler Lennart Poettering zu systemd.
 
 ### Handhabung von Diensten
 
@@ -67,12 +67,12 @@ Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie z
 + systemctl -t [NAME] - listet nur Units des bezeichneten Typ.
 + systemctl list-units - listet alle aktiven Units.
 + systemctl start [NAME...] - startet eine oder mehrere Units.
-+ systemctl stop [NAME...] - stopt eine oder mehrere Units.
-+ systemctl restart [NAME] - stopt eine Unit und startet sie sofort wieder. Wird z.B. verwendet um die geänderte Konfiguration eines Dienstes neu einzulesen.
++ systemctl stop [NAME...] - stoppt eine oder mehrere Units.
++ systemctl restart [NAME] - stoppt eine Unit und startet sie sofort wieder. Wird z.B. verwendet um die geänderte Konfiguration eines Dienstes neu einzulesen.
 + systemctl status [Name] - zeigt den derzeitigen Status einer Unit.
 + systemctl is-enabled [Name] - zeigt nur den Wert "enabled" oder "disabled" des Status einer Unit.
 
-Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Unit beachtet und ggf. Standardabhängikeiten hinzugefügt damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.
+Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Units beachtet und ggf. Standardabhängikeiten hinzugefügt, damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.
 
 + systemctl enable [NAME] - gliedert eine Unit in systemd ein.
 + systemctl disable [NAME] - entfernt eine Unit aus systemd.
@@ -135,4 +135,4 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 [Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
 [Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>
+<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
