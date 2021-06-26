@@ -178,23 +178,23 @@ Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in 
 
 Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
 
-+ [[Service]](./systemd-service_de.md#systemd-service)konfiguriert einen Dienst
++ [[Service]](./systemd-service_de.md#systemd-service) konfiguriert einen Dienst
 
 + [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) konfiguriert ein Socket
 
 + [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) konfiguriert ein Gerät
 
-+ [[Mount]](./systemd-mount_de.md#systemd-mount)konfiguriert einen Einhängepunkt
++ [[Mount]](./systemd-mount_de.md#systemd-mount) konfiguriert einen Einhängepunkt
 
-+ [[Automount]](./systemd-mount_de.md#systemd-mount)konfiguriert einen Selbsteinhängepunkt
++ [[Automount]](./systemd-mount_de.md#systemd-mount) konfiguriert einen Selbsteinhängepunkt
 
-+ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html)konfiguriert eine Auslagerungsdatei oder -partition
++ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
 
-+ [[Target]](./systemd-target_de.md#systemd-target---ziel-unit)konfiguriert ein Startziel
++ [[Target]](./systemd-target_de.md#systemd-target---ziel-unit) konfiguriert ein Startziel
 
-+ [[Path]](./systemd-path_de.md#systemd-path)konfiguriert einen überwachten Dateipfad
++ [[Path]](./systemd-path_de.md#systemd-path) konfiguriert einen überwachten Dateipfad
 
-+ [[Timer]](./systemd-timer_de.md#systemd-timer)konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
++ [[Timer]](./systemd-timer_de.md#systemd-timer) konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
 
 + [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungs-Slice
 
