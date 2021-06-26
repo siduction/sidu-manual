@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-04:
 
@@ -16,7 +16,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./0711-systemd-unit-datei_de.md#systemd-unit-datei)  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.service**. Die Unit-Datei mit der Namensendung ".service" ist der am häufigsten anzutreffende Unit-Typ in systemd.
 
-Die Servic-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen über den Dienst und den Prozess, den er überwacht, konfiguriert. 
+Die Service-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen über den Dienst und den Prozess, den er überwacht, konfiguriert. 
 
 ### service-Unit anlegen
 
@@ -46,7 +46,7 @@ WatchdogSec=      BusName=
 ---               ----
 
 + **Type=**  
-    Definiert den Prozessstarttyp und ist damit eine der wichtigsten Optionen.  
+    Definiert den Prozess-Starttyp und ist damit eine der wichtigsten Optionen.  
     Die möglichen Werte sind: simple, exec, forking, oneshot, dbus, notify oder idle.  
     Der Standard *simple* wird verwendet, falls *ExecStart=* festgelegt ist, aber weder *Type=* noch *BusName=* gesetzt sind.
 
@@ -131,4 +131,4 @@ und mit der bevorzugten Suchmaschine im Internet.
 [Deutsche Manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
 [LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
 
-<div id="rev">Seite zuletzt aktualisert 2021-04-07</div>
+<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
