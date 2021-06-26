@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-04:
 
@@ -16,7 +16,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager)  
 In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
 
-Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedene Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
+Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedenen  Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
 Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ enthalten. Die generischen Sektionen "[Unit]" am Beginn und "[Install]" am Ende der Datei sind optional, wobei die Sektion "[Unit]" dringend empfohlen wird. 
 
 ### Ladepfad der Unit-Dateien
@@ -76,7 +76,7 @@ Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */d
 
 ### Sektionen der Unit-Datei
 
-Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ spezifischen Sektion und der Sektion [Install]. Die Typ spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ spezifische Sektion enthalten.
+Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ-spezifische Sektion enthalten.
 
 #### Sektion Unit
 
@@ -85,7 +85,7 @@ Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhäng
 1. Allgemeine Optionen
 
     a. "*Description=*"  
-       Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint ("Starting *description*...") und dort als Suchmuster verwand werden kann.
+       Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint ("Starting *description*...") und dort als Suchmuster verwandt werden kann.
 
     b. "*Documentation=*"  
        Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z. B.: "Documentation=man:cupsd(8)" oder "Documentation=http://www.cups.org/doc/man-cupsd.html".
@@ -107,22 +107,22 @@ Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhäng
     d. "*BindsTo=*"  
        *BindsTo=* ist der stärkste Abhängigkeitstyp: Es bewirkt zusätzlich zu den Eigenschaften von *Requires=*, dass die gebundene Unit im aktiven Status sein muss, damit diese Unit auch aktiv sein kann.  
        Beim Stoppen oder inaktivem Zustand der gebundenen Unit wird diese Unit immer gestoppt.  
-       Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht, in einem aktiven Zustand ist, sollte *BindsTo=* am besten mit der Ordnungsabhängigkeit *After=* kombiniert werden.
+       Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht in einem aktiven Zustand ist, sollte *BindsTo=* am besten mit der Ordnungsabhängigkeit *After=* kombiniert werden.
 
     e. "*PartOf=*"  
        Ähnlich zu *Requires=*, aber begrenzt auf das Stoppen und Neustarten von Units.  
        Wenn Systemd die hier aufgeführten Units stoppt oder neustartet, wird die Aktion zu dieser Unit weitergeleitet.  
-       Das ist eine Einwegeabhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.
+       Das ist eine Einwege-Abhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.
 
     f. "*Conflicts=*"  
-       Deklariert negative Anforderungsabhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.  
+       Deklariert negative Anforderungs-Abhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.  
        *Conflicts=* bewirkt, dass die aufgeführte Unit gestoppt wird, wenn diese Unit startet und umgekehrt.  
-       Da *Conflicts=* keine Ordnungsabhängigkeit beinhaltet, muss eine Abhängigkeit *After=* oder *Before=* erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.
+       Da *Conflicts=* keine Ordnungs-Abhängigkeit beinhaltet, muss eine Abhängigkeit *After=* oder *Before=* erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.
 
 3. Ordnungsabhängigkeiten zu anderen Units
 
     a. "*Before=*"  
-       Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. *Before=* stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierte Unit abgeschlossen ist.  
+       Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. *Before=* stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierten Unit abgeschlossen ist.  
        Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.
 
     b. "*After=*"  
@@ -174,7 +174,7 @@ Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhäng
 
 Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in der [Deutschen Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html) nachlesen.
 
-#### Typ spezifische Sektion
+#### Typ-spezifische Sektion
 
 Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
 
@@ -188,7 +188,7 @@ Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausfüh
 
 + [[Automount]](./systemd-mount_de.md#systemd-mount)konfiguriert einen Selbsteinhängepunkt
 
-+ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
++ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html)konfiguriert eine Auslagerungsdatei oder -partition
 
 + [[Target]](./systemd-target_de.md#systemd-target---ziel-unit)konfiguriert ein Startziel
 
@@ -196,7 +196,7 @@ Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausfüh
 
 + [[Timer]](./systemd-timer_de.md#systemd-timer)konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
 
-+ [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungsscheibe
++ [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungs-Slice
 
 + [[Scope]](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html) konfiguriert eine Gruppe von extern erstellten Prozessen.
 
@@ -293,8 +293,8 @@ WantedBy=sockets.target
 ~~~
 
 **Die Sektion [Unit]**  
-enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien *cups.path* und *cups.socket* zusätzlich die  Bindungsabhängigkeit *PartOf=cups.service*, was bedeutet, dass diese zwei Units abhängig von *cups.service* gestoppt oder neu gestartet werden.  
-Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungsabhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
+enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien *cups.path* und *cups.socket* enthalten zusätzlich die  Bindungsabhängigkeit *PartOf=cups.service*, was bedeutet, dass diese zwei Units abhängig von *cups.service* gestoppt oder neu gestartet werden.  
+Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen Service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungs-Abhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
 
 Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd-analyze dump`**, der eine sehr, sehr lange Liste ( > 32000 Zeilen) des systemd Serverstatus ausgibt. 
 
