@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02:
 
@@ -21,15 +21,15 @@ Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbu
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.path**, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.
 
 Die "*.path-Unit*" ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.  
-Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service Unit ausführen. Die "*.path-Unit*" ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.  
+Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die "*.path-Unit*" ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.  
 Die Pfad-spezifischen Optionen werden in dem Abschnitt *[Path]* konfiguriert.
 
 ### Benötigte Dateien
 
-Die **systemd-path**-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung, im Verzeichnis */usr/local/lib/systemd/system/*. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
+Die **systemd-path**-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung im Verzeichnis */usr/local/lib/systemd/system/*. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
 
 + Path-Unit-Datei (\<name\>.path), welche die Überwachung und den Auslöser für die Service-Unit enthält  
-    und die  
+    und  
 + Service-Unit-Datei (\<name\>.service), welche die zu startende Aktion enthält.  
     Für umfangreichere Aktionen erstellt man zusätzlich ein Skript in */usr/local/bin/*, das von der Service-Unit ausgeführt wird.
 
@@ -43,14 +43,14 @@ Die speziellen Optionen sind:
     prüft, ob der betreffende Pfad existiert. Wenn es zutrifft, wird die zugehörige Unit aktiviert.
 
 + PathExistsGlob=  
-    Wie oben, unterstützt Datei-Glob-Ausdrücke.
+    Wie oben, unterstützt Datei-Glob-Ausdrücke (siehe dazu auch die Ausgabe von man glob.
 
 + PathChanged=  
     beobachtet eine Datei oder einen Pfad und aktiviert die zugehörige Unit, wenn Änderungen auftreten.  
     Aktionsauslösende Änderungen sind:
     + Erstellen und Löschen von Dateien.  
     + Atribute, Rechte, Eigentümer.  
-    + Schließen der zu beobachtenden Datei nach Schreibzugriff und schließen irgendeiner Datei nach Schreibzugriff bei Beobachtung des Pfades.
+    + Schließen der zu beobachtenden Datei nach Schreibzugriff und Schließen irgendeiner Datei nach Schreibzugriff bei Beobachtung des Pfades.
 
 + PathModified=  
     wie zuvor, aber zusätzlich wird die zugehörige Unit bei einfachen Schreibzugriffen aktiviert, auch wenn die Datei nicht geschlossen wird.
@@ -65,7 +65,7 @@ Die speziellen Optionen sind:
     das zu beobachtenden Verzeichnis wird vor der Beobachtung erstellt.
 
 + DirectoryMode=  
-    legt bei Verwendung, für das zuvor erstellte Verzeichnis, den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.
+    legt bei Verwendung für das zuvor erstellte Verzeichnis den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.
 
 **Ein Beispiel**  
 
@@ -237,4 +237,4 @@ Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.
 Ein anders gelagertes Beispiel:  
 [PRO-LINUX.DE, Systemd Path Units...](https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-04-06</div>
+<div id="rev">Seite zuletzt aktualisert 2021-06-30</div>
