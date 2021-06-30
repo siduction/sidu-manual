@@ -370,6 +370,8 @@ Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.si
 Zu beachten ist der folgende Ablauf:
 
 1. Aus der Desktopumgebung abmelden
+  (diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht)
+  
 2. In den Textmodus gehen mit **`Ctrl`** + **`Alt`** + **`F2`**
 3. Einloggen als root
 
