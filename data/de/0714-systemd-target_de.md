@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02:
 
@@ -14,7 +14,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ## systemd-target - Ziel-Unit
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./11-systemd-unit-datei_de.md#systemd-unit-datei).  
-Jetzt erklären wir die Funktion der Unit **systemd.target**, die den allgenein bekannten Runleveln ähneln, etwas ausführlicher.
+Jetzt erklären wir die Funktion der Unit **systemd.target**, die den allgemein bekannten Runleveln ähneln, etwas ausführlicher.
 
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.
 
@@ -24,18 +24,18 @@ Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus 
 | --- | -------- |
 | **emergency.target** | Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden.| 
 | **rescue.target** | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
-| **multi-user.target** | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#full-upgrade-ausführen) . |
+| **multi-user.target** | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird in besonderen Fällen (wenn X selbst oder die Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#full-upgrade-ausführen) . |
 | **graphical.target** | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
-| **default.target** | Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX). |
+| **default.target** | Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer bei der Variante noX). |
 
 Ein Blick in die Dokumentation "*man SYSTEMD.SPECIAL(7)*" ist obligatorisch um die Zusammenhänge der verschiedenen *.target-Unit* zu verstehen.
 
 ### Besonderheiten
 
-Bei den Ziel-Unit sind drei Besonderheiten zu beachten:
+Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 
 1. Die Verwendung auf der **Kernel-Befehszeile** beim Bootvorgang.  
-    Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste `e` drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: "systemd.unit=xxxxxxx.target" an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen Entsprechungen auf.
+    Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste `e` drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: "systemd.unit=xxxxxxx.target" an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen numerischen Entsprechungen auf.
 
     | Ziel-Unit | Kernel-Befehl | Kernel-Befehl alt |
     | --------- | ------------- | :---: |
@@ -57,8 +57,8 @@ Bei den Ziel-Unit sind drei Besonderheiten zu beachten:
     | graphical.target | systemctl isolate graphical.target | init 5 |
 
 
-3. Ziel-Unit, die **nicht direkt aufgerufen** werden sollen.  
-    Eine ganze Reihe von Ziel-Unit sind dazu da während des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abhängigkeiten zu gruppieren. Die folgende Liste zeigt drei häufig verwendete Kommandos die **nicht** mit der Syntax "isolate xxxxxxx.target" aufgerufen werden sollen.
+3. Ziel-Units, die **nicht direkt aufgerufen** werden sollen.  
+    Eine ganze Reihe von Ziel-Units sind dazu da während des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abhängigkeiten zu gruppieren. Die folgende Liste zeigt drei häufig verwendete Kommandos die **nicht** mit der Syntax "isolate xxxxxxx.target" aufgerufen werden sollen.
 
     | Ziel | Terminal-Befehl | init-Befehl alt |
     | -------- | --------------- | :--------: |
@@ -66,10 +66,10 @@ Bei den Ziel-Unit sind drei Besonderheiten zu beachten:
     | poweroff | systemctl poweroff | init 0 |
     | reboot | systemctl reboot | init 6 |
 
-    *halt*, *poweroff* und *reboot* holen mehrere Unit in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
+    *halt*, *poweroff* und *reboot* holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
 
 ### Quellen systemd-target
 
 [Manpage systemd.target, de](https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-14</div>
+<div id="rev">Seite zuletzt aktualisert 2021-06-30</div>
