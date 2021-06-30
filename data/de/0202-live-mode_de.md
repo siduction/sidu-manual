@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-06
 
@@ -74,31 +74,36 @@ Siehe [warum sudo nicht konfiguriert ist](term-konsole_de.md#arbeit-als-root)
 Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F1` auf die erste virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
 
 ~~~
-siducer@siduction:~$ su
-root@siduction:~# passwd siducer
+siducer@siduction:~$ passwd
 Geben Sie ein neues Passwort ein:
 Geben Sie das neue Passwort erneut ein:
 passwd: Passwort erfolgreich geändert
-root@siduction:~# exit
 siducer@siduction:~$
 ~~~
 
 Dieses neue Passwort für **siducer** kann den Rest der Live-Sitzung verwendet werden.  
 Mit der Tastenkombination `Alt` + `F7` gelangt man wieder zur graphischen Oberfläche und meldet sich mit dem neuen Passwort an.
 
-Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort vergeben, allerdings ohne den Benutzernamen 'siducer' einzugeben. Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als 'root' möglich.
+Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort vergeben, allerdings muss man vorher per su root werden. 
+Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als 'root' möglich.
 
 ### Software-Installation bei Live-Sitzung
 
 Die Befehlsfolge für die Installation von Software während einer Live-Sitzung gleicht der bei einer Festplatteninstallation.
+Voraussetzung ist ein root-Terminal, 
+
+~~~
+apt update
+apt install <das-gewünschtes-paket>
+~~~
+
+oder ein vorangestelltes sudo vor die Befehle.
 
 ~~~
 sudo apt update
 sudo apt install <das-gewünschtes-paket>
 ~~~
 
-alternativ kann das Ganze natürlich auch in einer Root-Shell ohne voran gestelltes sudo erfolgen.
+Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten.
 
-Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten, außer wenn [fromiso und persist](hd-install-opts_de.md#fromiso-persist) aktiviert wird.
-
-<div id="rev">Zuletzt bearbeitet: 2021-06-25</div>
+<div id="rev">Zuletzt bearbeitet: 2021-06-30</div>
