@@ -2,7 +2,11 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
+
+Änderungen 2021-06
+
++von towo auf RC3 gesetzt, nach Begutachtung des Artikels
 
 Änderungen 2020-03:
 
