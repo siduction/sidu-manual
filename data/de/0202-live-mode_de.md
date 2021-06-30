@@ -19,9 +19,9 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Live-DVD verwenden
 
-### Eingerichtete User der Live-DVD
+### Eingerichtete User auf dem Live-Medium
 
-Auf der Live-DVD sind die User '**siducer**' und '**root**' (der Systemadministrator) eingerichtet.
+Auf dem Live-Medium sind die User '**siducer**' und '**root**' (der Systemadministrator) eingerichtet.
 
 Für den User '**siducer**' ist das Passwort '**live**' gesetzt.  
 Für den User '**root**' (Systemadministrator) ist kein Passwort gesetzt.
