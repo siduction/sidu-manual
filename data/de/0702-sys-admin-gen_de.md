@@ -68,7 +68,7 @@ mit der Option *-a* werden auch alle inaktiven Units bzw. Unit-Dateien ausgegebe
 
 ### systemd.service 
 
-Zum starten oder stoppen einer .service-Unit die Befehle:
+Zum Starten oder Stoppen einer .service-Unit die Befehle:
 
 ~~~
 $ systemctl start <UNIT>.service
@@ -76,8 +76,8 @@ $ systemctl stop <UNIT>.service
 $ systemctl restart <UNIT>.service
 ~~~
 
-verwenden. *"Restart"* ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion root-Rechte nötig sind, wird das root-Passwort abgefragt.  
-Zum beenden eines Dienstes dient auch der Befehl:
+verwenden. *"Restart"* ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion Root-Rechte nötig sind, wird das Root-Passwort abgefragt.  
+Zum Beenden eines Dienstes dient auch der Befehl:
 
 ~~~
 $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
@@ -85,13 +85,13 @@ $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 
 Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen **-s, --signal=** und **--kill-who=** bereit.
 + **-s** sendet eines der Signale **SIGTERM, SIGINT, SIGSTOP**. Vorgabe ist **SIGTERM**.
-+ **--kill-who=** erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, werden den Kind-Prozessen, oder beiden das Signal gesendet. Vorgabe ist **all**.  
++ **--kill-who=** erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist **all**.  
 Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](#beenden-eines-prozesses) erläutert wird.
 
 
 ### systemd - UNIT eingliedern
 
-Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als root:
+Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als Root:
 
 ~~~
 # systemctl enable <UNIT-Datei>
@@ -108,7 +108,7 @@ Der Befehl
 entfernt die Symlinks wieder.
 
 **Beispiel**  
-Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden möchte, entfernt der Befehl (als root):
+Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden möchte, entfernt der Befehl (als Root):
 
 ~~~
 # systemctl disable bluetooth.service
@@ -130,7 +130,7 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 | rescue.target | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
 | multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#aktualisierung-des-systems) . |
 | graphical.target | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
-| default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX). |
+| default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer noX). |
 
 Ein Blick in die Dokumentation **man SYSTEMD.SPECIAL(7)** ist obligatorisch um die Zusammenhänge der verschiedenen *.target* - *Unit* zu verstehen.
 
@@ -325,7 +325,7 @@ Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.
   *Systemeinstellungen* > *Schriftarten* > *Schriftarten*  
   *Systemeinstellungen* > *Anzeige-Einrichtung* > *Anzeige-Einrichtung* > *Globale Skalierung*
 
-+ Gnome (Twaek Tool)  
++ Gnome (Tweak Tool)  
   *Anwendungen* > *Optimierungen* > *Schriften*
 
 + XFCE  
@@ -434,4 +434,4 @@ Die gewünschten Sound-Einstellungen werden als **$user** von einem Terminal vor
 $ alsamixer
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
+<div id="rev">Zuletzt bearbeitet: 2021-06-30</div>
