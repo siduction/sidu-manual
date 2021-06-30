@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02 bis 03:
 
@@ -23,12 +23,12 @@ Das Systemjournal besteht aus dem *systemd-journald*, kurz **journald**, der Pro
 Es erstellt und verwaltet strukturierte, indizierte Journale, basierend auf den Protokollmeldungen aus:
 
 + Kernel-Protokollmeldungen
-+ Einfache Systemprotokollmeldungen
-+ Strukturierte Systemprotokollmeldungen über die native Journal-API
++ Einfache System-Protokollmeldungen
++ Strukturierte System-Protokollmeldungen über die native Journal-API
 + Standardausgabe und Standardfehlerausgabe der Dienste-Units
 + Audit-Aufzeichnungen, stammend aus dem Kernel-Audit-Subsystem
 
-*journald* erlaubt Journal-"Namensräume". Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokolldatenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.
+*journald* erlaubt Journal-"Namensräume" (namespaces). Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokoll-Datenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.
 
 Der *journald* speichert die Protokolldaten standardmäßig dauerhaft unter  
 */var/log/journal/MASCHINENKENNUNG*.
@@ -47,7 +47,7 @@ Falls kein Parameter übergeben wurde, wird *systemd-cat* alles, was es von der 
 
 ### journald über das Netzwerk
 
-Die *systemd-journal*-Module *upload*, *remote* und *gatewayd* ermöglichen das Versenden und Empfangen von Systemprotokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.  
+Die *systemd-journal*-Module *upload*, *remote* und *gatewayd* ermöglichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.  
 Für weitere Informationen bitte die man-pages [journal upload](https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html), [journal remote](https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html) und [journal gatewayd](https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html) lesen.
 
 ### journald.conf
@@ -161,7 +161,7 @@ Die folgenden Optionen behandeln die Verwaltung der von *journald* geschriebenen
 
 ### journalctl beherrschen
 
-Wie oben unter Rechte beschrieben, kannst du das Journal als einfacher User benutzen. Hier sind einige Beispiele:
+Wie oben unter Rechte beschrieben, kannst Du das Journal als einfacher User benutzen. Hier sind einige Beispiele:
 
 ---------------------------------    ------------------------------------------------------------------------
 journalctl                           das volle Journal aller User, älteste Einträge zuerst
@@ -303,4 +303,4 @@ Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisert 2021-03-20</div>
+<div id="rev">Seite zuletzt aktualisert 2021-06-30</div>
