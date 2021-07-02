@@ -18,7 +18,7 @@
 
 Anmerkung: Falls Du auf ein Image einer virtuellen Maschine installieren willst, benötigen die meisten Linuxdistributionen eine Zuordnung von nur 12GB. Für MS Windows in einer virtuellen Maschine werden ungefähr 30GB oder mehr benötigt. Letztlich hängt die Zuordnung der Größe jedoch von Deinen Anforderungen ab.
 
-Die einem Image zugeordnete Größe verbraucht keinen Speicherplatz auf der Festplatte, solange keine Daten im Image gespeichert sind. Auch dann wird der Speicherplatz dynamisch verwaltet und nur soviel verwendet, wie Daten im Image gespeichert sind. Dies wird durch qcow2 ermöglicht.
+Die einem Image zugeordnete Größe verbraucht keinen Speicherplatz auf der Festplatte, solange keine Daten im Image gespeichert sind. Auch dann wird der Speicherplatz dynamisch verwaltet und nur soviel verwendet, wie Daten im Image gespeichert sind. Dies wird durch [https://en.wikipedia.org/wiki/Qcow](qcow2) ermöglicht.
 
 <div class="divider" id="kvm"></div>
 
@@ -36,21 +36,21 @@ cat /proc/cpuinfo | egrep --color=always 'vmx|svm'
 
 Falls `svm`  oder `vmx`  im Feld der CPU-Flags erscheint, unterstützt das System KVM. (Falls nicht, sollten die Einstellungen im BIOS nochmal überprüft werden, oder man sucht im Internet nach den Einstellungsoptionen des jeweiligen BIOS).
 
-Falls das BIOS KVM nicht unterstützt, empfehlen sich [Virtualbox](hd-install-vmopts-de.htm#vbox)   oder [QEMU](hd-install-vmopts-de.htm#qemu) 
+Falls das BIOS KVM nicht unterstützt, empfehlen sich [Virtualbox](hd-install-vmopts-de.htm#vbox) oder [QEMU](hd-install-vmopts-de.htm#qemu) 
 
-Um KVM zu installieren und starten, muss sichergegangen werden, dass keine Virtualbox-Module geladen sind (--purge ist die beste Option). Abhängig vom Chipset werden folgende Befehle durchgeführt:
+Um KVM zu installieren und starten, muss sichergestellt sein, dass keine Virtualbox-Module geladen sind (--purge ist die beste Option). Abhängig vom Chipset werden folgende Befehle durchgeführt:
 
 Für `vmx` :
 
 ~~~
-apt-get install qemu-kvm qemu-utils
+apt install qemu-kvm qemu-utils
 modprobe kvm-intel
 ~~~
 
 Für `svm` :
 
 ~~~
-apt-get install qemu-kvm qemu-utils
+apt install qemu-kvm qemu-utils
 modprobe kvm-amd
 ~~~
 
@@ -62,6 +62,11 @@ Beim Systemstart sorgen die qemu-kvm initscripts dafür, dass die nötigen Modul
 
 ~~~
 $ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -cdrom <siduction.iso>
+
+Wird eine grafische Lösung bevorzugt, so kann auf  **`virt-manager`** zurückgegriffen werden.
+
+~~~
+sudo apt install virt-manager
 ~~~
 
 #### Installieren einer siduction-*.iso auf ein KVM-Image
@@ -104,13 +109,13 @@ $ kvm -net nic, -net user -soundhw ac97 -m 512 -monitor stdio -hda </path/to/you
 
 Weitere Informationen: [KVM-Dokumentation](http://www.linux-kvm.org/page/Main_Page)  (Englisch).
 
-#### Verwaltung einer KVMInstallation
+#### Verwaltung einer KVM-Installation
 
 ~~~
-apt-get install aqemu
+apt install aqemu
 ~~~
 
-Beim Benutzen des (englischsprachigen) AQEMU wird im Reiter "General" bei "Emulator Type" im Drop-Down-Menü "KVM mode" gewählt. Für AQEMU gibt es praktisch keine Dokumentation, daher muss man sich selbst in der selbsterklärenden Benutzerführung zurechtfinden. Ein guter Startpunkt dabei sind der Menüpunkt "VM" und der Reiter "General".
+Beim Benutzen des (englischsprachigen) AQEMU wird im Reiter "General" bei "Emulator Type" im Drop-Down-Menü "KVM mode" gewählt. Für AQEMU gibt es praktisch keine Dokumentation, daher muss man sich selbst in der selbsterklärenden Benutzerführung zurechtfinden. Ein guter Startpunkt dabei sind der Menüpunkt "VM" und der Reiter "General". alternativ kann das oben erwähnte virt-manager genutzt werden.
 
 <div class="divider" id="vbox"></div>
 
@@ -131,18 +136,18 @@ Die Schritte:
 ### Installation:
 
 ~~~
-apt-get update
-apt-get install virtualbox virtualbox-dkms
+apt update
+apt install virtualbox virtualbox-dkms
 ~~~
 
 oder 
 
 ~~~
-apt-get update
-apt-get install virtualbox-qt virtualbox-dkms
+apt update
+apt install virtualbox-qt virtualbox-dkms
 ~~~
 
-für Installationen mit KDE oder Razor-Qt
+für Installationen mit KDE Plasma oder LXQt
 
 Der Computer muss nun neu gestartet werden.
 
@@ -163,7 +168,7 @@ VirtualBox hat auf seiner Homepage eine umfassende englischsprachige [Bedienungs
 Ein grafisches Hilfsprogramm auf QT-Basis ist zur Unterstützung einer QEMU-Konfiguration installierbar:
 
 ~~~
-apt-get install qtemu
+apt install qtemu
 ~~~
 
 ### Erstellen eines Festplattenimages (iso)
@@ -173,7 +178,7 @@ Um qemu laufen lassen zu können, braucht man ein Festplattenabbild. Das ist ein
 Man verwendet den Befehl:
 
 ~~~
-qemu-img create -f qcow siduction.qcow 3G
+qemu-img create -f qcow siduction.qcow 5G
 ~~~
 
 Damit erstellt man eine Abbilddatei mit dem Namen "siduction.qcow". Der Parameter "3G" spezifiziert die Größe der Platte, in diesem Fall 3 GB. Das Suffix M wird für Megabyte verwendet (zum Beispiel "256M"). Man muss sich über die Größe jedoch keine zu großen Gedanken machen - das Format qcow komprimiert das Abbild, sodass der unbenutzte Platz sich nicht auf die Größe der Datei aufaddiert.
