@@ -63,11 +63,6 @@ Beim Systemstart sorgen die qemu-kvm initscripts dafür, dass die nötigen Modul
 ~~~
 $ kvm -net nic,model=virtio -net user -soundhw ac97 -m 512 -monitor stdio -cdrom <siduction.iso>
 
-Wird eine grafische Lösung bevorzugt, so kann auf  **`virt-manager`** zurückgegriffen werden.
-
-~~~
-sudo apt install virt-manager
-~~~
 
 #### Installieren einer siduction-*.iso auf ein KVM-Image
 
@@ -115,7 +110,7 @@ Weitere Informationen: [KVM-Dokumentation](http://www.linux-kvm.org/page/Main_Pa
 apt install aqemu
 ~~~
 
-Beim Benutzen des (englischsprachigen) AQEMU wird im Reiter "General" bei "Emulator Type" im Drop-Down-Menü "KVM mode" gewählt. Für AQEMU gibt es praktisch keine Dokumentation, daher muss man sich selbst in der selbsterklärenden Benutzerführung zurechtfinden. Ein guter Startpunkt dabei sind der Menüpunkt "VM" und der Reiter "General". alternativ kann das oben erwähnte virt-manager genutzt werden.
+Beim Benutzen des (englischsprachigen) AQEMU wird im Reiter "General" bei "Emulator Type" im Drop-Down-Menü "KVM mode" gewählt. Für AQEMU gibt es praktisch keine Dokumentation, daher muss man sich selbst in der selbsterklärenden Benutzerführung zurechtfinden. Ein guter Startpunkt dabei sind der Menüpunkt "VM" und der Reiter "General".
 
 <div class="divider" id="vbox"></div>
 
@@ -136,15 +131,13 @@ Die Schritte:
 ### Installation:
 
 ~~~
-apt update
-apt install virtualbox virtualbox-dkms
+apt update && apt install virtualbox virtualbox-dkms
 ~~~
 
 oder 
 
 ~~~
-apt update
-apt install virtualbox-qt virtualbox-dkms
+apt update && apt install virtualbox-qt virtualbox-dkms
 ~~~
 
 für Installationen mit KDE Plasma oder LXQt
