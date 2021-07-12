@@ -12,7 +12,7 @@ Die IANA hat dem Protokoll den TCP-Port 22 zugeordnet, jedoch lassen sich in den
 
 ## Verwendung guter Sicherheitsprotokolle mit SSH
 
-Es ist nicht sicher Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen Angreifer nicht die Möglichkeit haben, über zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuführen. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl möglicher Versuche einzuschränken.
+Es ist nicht sicher, Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen Angreifer nicht die Möglichkeit haben, über zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuführen. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl möglicher Versuche einzuschränken.
 
 Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu bearbeiten:
 
@@ -90,13 +90,11 @@ Schlussendlich:
 
 Nun hat man eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn man einen Benutzer hinzugefügt hat, der speziell zur Verwendung mit SSH dient.
 
-`Anmerkung:`  Falls ssh eine Verbindung verweigert und man eine Fehlermeldung erhält, sucht man in $HOME nach dem versteckten Verzeichnis `.ssh` , löscht die Datei `known_hosts`  und versucht einen neuen Verbindungsaufbau. Dieses Problem tritt hauptsächlich auf, wenn man die IP-Adresse dynamisch zugewiesen hat (DCHP).
-
 <div class="divider" id="ssh-x"></div>
 
 ## X-Window Programme über SSH-verschlüsselte lokale Netzwerkverbindungen verwenden
 
-ssh -X ermöglicht die Verbindung zu einem entfernten Computer und die Anzeige dessen Grafikservers X auf dem eigenen lokalen Computer. Den Befehl gibt man als Benutzer (nicht als Root) ein (und man beachte, dass X ein Großbuchstabe ist):
+ssh -X ermöglicht die Verbindung zu einem entfernten Computer und die Anzeige von dessen Grafikserver X auf dem eigenen lokalen Computer. Den Befehl gibt man als Benutzer (nicht als Root) ein (und man beachte, dass X ein Großbuchstabe ist):
 
 ~~~
 $ ssh -X username@xxx.xxx.xxx.xxx (or IP)
@@ -239,10 +237,10 @@ Auf Seite des Clients muss vermutlich sshfs erst installiert werden:
 
 
 ~~~
-apt-get update && apt-get install sshfs
+apt update && apt install sshfs
 ~~~
 
-*`fuse`*  `und`  *`groups`*  `sind ab siduction 2011.1 auf dem ISO und müssen nicht extra installiert werden.` 
+*`fuse3`* `und`  *`groups`*  `sind bereits auf dem ISO und müssen nicht extra installiert werden.` 
 
 Das Einbinden eines entfernten Dateisystems ist sehr einfach:
 
@@ -313,4 +311,4 @@ und
 umount lokaler_mountpunkt
 ~~~
 
-<div id="rev">Page last revised 10/01/2012 1545 UTC</div>
+<div id="rev">Page last revised 12/07/2021 1545 UTC</div>
