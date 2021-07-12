@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-12 bis 2021-01:
 
@@ -447,4 +447,4 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 [apache.org - SSL Howto](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)  
 [HTTPS Guide - Servercertifikate erstellen und integrieren](https://www.https-guide.de/)
 
-<div id="rev">Zuletzt bearbeitet: 2021-01-30</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-12</div>
