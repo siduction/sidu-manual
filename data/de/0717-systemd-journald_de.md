@@ -1,18 +1,5 @@
 % Systemjournal
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02 bis 03:
-
-+ Datei neu angelegt und Journald aus systemd-start_de.md)entfernt.
-+ Für die Verwendung mit pandoc optimiert.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
----
-
 ## Systemjournal
 
 Das Systemjournal besteht aus dem *systemd-journald*, kurz **journald**, der Protokollmeldungen sammelt und speichert, und dem **journalctl**, das der Verwaltung, Abfrage und Ausgabe der gesammelten Protokollmeldungen dient.
@@ -163,17 +150,17 @@ Die folgenden Optionen behandeln die Verwaltung der von *journald* geschriebenen
 
 Wie oben unter Rechte beschrieben, kannst Du das Journal als einfacher User benutzen. Hier sind einige Beispiele:
 
----------------------------------    ------------------------------------------------------------------------
-journalctl                           das volle Journal aller User, älteste Einträge zuerst
-journalctl -r                        wie zuvor, neueste Einträge zuerst
-journalctl -b                        zeigt das Protokoll des letzten Bootvorgangs
-journalctl -b -1 -k                  zeigt vom vorletzten Bootvorgang (-1) alle Kernelmeldungen
-journalctl -b -p err                 limitiert auf den letzten Boot und die Priorität ERROR
-journalctl --since=yesterday         zeigt das Journal seit gestern
-journalctl /dev/sda                  zeigt das Journal der Gerätedatei /dev/sda
-journalctl /usr/bin/dbus-daemon      zeigt alle Logs des D-Bus-Daemon
-journalctl -f                        zeigt eine Liveansicht des Journal (früher: tail -f /var/log/messages)
----------------------------------    ------------------------------------------------------------------------
+| Befehl | Anzeige |
+| --- | ----- |
+| journalctl | das volle Journal aller User, älteste Einträge zuerst |
+| journalctl -r | wie zuvor, neueste Einträge zuerst |
+| journalctl -b | das Protokoll des letzten Bootvorgangs |
+| journalctl -b -1 -k | vom vorletzten Bootvorgang (-1) alle Kernelmeldungen |
+| journalctl -b -p err | limitiert auf den letzten Boot und die Priorität ERROR |
+| journalctl --since=yesterday | das Journal seit gestern |
+| journalctl /dev/sda | das Journal der Gerätedatei /dev/sda |
+| journalctl /usr/bin/dbus-daemon | alle Logs des D-Bus-Daemon |
+| journalctl -f | Liveansicht des Journal (früher: tail -f /var/log/messages) |
 
 Die Option "*--list-boots*" gibt die entsprechende Liste aus.
 
@@ -303,4 +290,4 @@ Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-30</div>
+<div id="rev">Seite zuletzt aktualisert 2021-07-15</div>
