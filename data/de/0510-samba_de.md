@@ -80,7 +80,7 @@ Samba-Server aufsetzt.
 Unsere Empfehlungen zu diesem Thema:
 
 https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian
-https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html
+https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html  
 https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debian-10-buster-ein/
 
 Es finden sich noch viele Seiten zu diesem Thema im Netz.
