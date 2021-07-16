@@ -49,8 +49,23 @@ umount /media/server_share
 Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab`  nach folgendem Muster ergänzt werden:
 
 ~~~
-//server/share /mnt/server_share cifs defaults,username=your_username,password=**********,file_mode=0777,dir_mode=0777 0 0
+//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,user=username,password=**********,uid=$UID,gig=$GID 0 0
 ~~~
+Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben.
+Als bessere Variante erzeigt man **`~.smbcredentials`** mit folgendem Inhalt an:
+
+~~~
+username=<benutzer>
+password=<passwort>
+~~~
+
+Der resultierende Eintrag für /etc/fstab ist dann
+
+~~~
+//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,credentials=</pfad/zu/.smbcredentials>,uid=$UID,gig=$GID 0 0
+~~~
+$UID und $GID ist die enstprechende uid und gid des users, dem das Share gegeben werden soll.
+Man kann aber auch uid=username gid=users schreiben.
 
 <div class="divider" id="setup"></div>
 
