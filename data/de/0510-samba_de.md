@@ -28,7 +28,7 @@ mkdir -p /media/server_share
 Eine Freigabe wird mit diesem Befehl eingehängt:
 
 ~~~
-mount -t cifs -o username=Administrator,uid=username_des_users //server/share /mnt/server_share
+mount -t cifs -o username=Administrator,uid=$UID,gid=$GID //server/share /mnt/server_share
 ~~~
 
 sollte es hier zu einer Fehlermeldung kommen, dann kann das an der verwendeten SMB Protokoll-Version liegen.
@@ -37,7 +37,7 @@ SMB nur per Version 1.0 bereit stellen. Um auf solch eine Freigabe zugreifen zu 
 dann noch **`vers=1.0`** benötigt. Der komplette Befehl lautet dann
 
 ~~~
-mount -t cifs -o username=Administrator,vers=1.0,uid=username_des_users //server/share /mnt/server_share
+mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/share /mnt/server_share
 ~~~
 
 Eine Verbindung wird mit diesem Befehl beendet:
