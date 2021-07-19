@@ -2,9 +2,9 @@
 
 # Willkommen
 
-**Das siduction™ GNU/Linux-Betriebssystems**
+**Das siduction™ GNU/Linux-Betriebssystem**
 
-Der Name **siduction** ist ein Wortspiel aus zwei Begriffen. Dem Wort **sid**, dem Codenamen von Debian Unstable und **seduction**, im Sinne von verführen.
+Der Name **siduction** ist ein Wortspiel aus zwei Begriffen: Dem Wort **sid**, also dem Codenamen von Debian Unstable und **seduction**, im Sinne von verführen.
 
 siduction ist ein Betriebssystem, das auf dem [Linux-Kernel](https://kernel.org) und dem [GNU-Projekt](https://gnu.org) basiert. Dazu kommen Anwendungsprogramme von [Debian](https://debian.org). siduction ist den Grundwerten des [Debian Gesellschaftsvertrags](https://www.debian.org/social_contract.de.html) und den daran anschließenden "*Debian Free Software Guidelines*" verpflichtet.  
 Siehe auch [DFSG](https://de.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
@@ -40,4 +40,4 @@ Dies ist experimentelle Software. Benutzung geschieht auf eigenes Risiko. Das si
 
 Solltest Du mit diesen Bedingungen nicht einverstanden sein, so ist es Dir nicht gestattet, diese Software weiter zu benutzen oder zu verteilen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-02-07</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-19</div>
