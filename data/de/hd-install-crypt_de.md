@@ -1,6 +1,5 @@
 % Installation auf verschlüsselte root-Partition
 
-
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC2**
@@ -12,10 +11,8 @@ ENDE INFOBEREICH FÜR DIE AUTOREN
 
 ## Installation auf verschlüsselte root-Partition
 
-~~~note
-Anmerkung:
- Es gibt Wichtiges zu beachten, wenn Root- oder Datenpartitionen verschlüsselt werden. Darunter;  
-~~~
+> Anmerkung:  
+> Es gibt Wichtiges zu beachten, wenn Root- oder Datenpartitionen verschlüsselt werden. Darunter;  
 
 +  Folgende Anleitung beinhaltet nur Grundlegendes. Wir raten, mehr über LUKS, cryptsetup und Verschlüsselung in Erfahrung zu bringen. Weitere Quellen sind am Ende dieser Seite verlinkt. Die gelisteten Informationen sind nur erste weitere Schritte. Englischkenntnisse sind notwendig. 
 +  cryptsetup kann keine existierende Datenpartition verschlüsseln, daher muss eine neue Partition erstellt werden, die mit cryptsetup aufgesetzt wird. Im Anschluss können Daten auf diese Partition geschrieben werden. 
@@ -30,7 +27,7 @@ Anmerkung:
 
 ### Verschlüsselung innerhalb von LVM-Gruppen
 
-~~~note
+~~~
 Anmerkung:
  Dieses Beispiel nutzt die Verschlüsselung innerhalb des LVM-Volumens, um /home von `/` abzutrennen 
  und eine Swap-Partition zu haben, ohne multiple Passwörter verwenden zu müssen.
@@ -218,5 +215,38 @@ man cryptsetup
 [KVM how to use encrypted images](http://blog.bodhizazen.net/linux/kvm-how-to-use-encrypted-images/)  (Englisch)  
 [siduction-WIKI-Eintrag](http://wiki.siduction.de/index.php?title=Installation_auf_einer_verschl%C3%Bcsselten_Festplatte)  
 
+**Ab hier der neue Text**
 
-<div id="rev">Zuletzt bearbeitet: 2021-04-14</div>
+Die gesamte Festplatte mit 200GB Größe als eine Partition (/dev/sda1).
+Bootloader auf externem USB-Stick.
+
+Festplatte verschlüsseln und gleich öffnen:
+
+~~~
+cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 /dev/sda1
+cryptsetup luksOpen /dev/sda1
+~~~
+
+Anschließend LVM einrichten. Eine Anleitung zu LVM bietet diese [Handbuchseite](0315-part-lvm_de.md#lvm-partitionierung---logical-volume-manager).
+
+~~~
+pvcreate /dev/mapper/safe
+vgcreate VGsafe /dev/mapper/safe
+lvcreate -n LVroot -L 50G /dev/VGsafe
+lvcreate -n LVdaten -L 145G /dev/VGsafe
+lvcreate -n LVswap -L 5G /dev/VGsafe
+~~~
+
+Nun benötigen wir nur noch die passenden Dateisysteme in den Logical Volumen.
+
+~~~
+mkfs.ext4 /dev/VGsafe/LVroot
+mkfs.ext4 /dev/VGsafe/LVdaten
+mkswap /dev/VGsafe/LVswap
+~~~
+
+
+
+
+
+<div id="rev">Zuletzt bearbeitet: 2021-07-18</div>
