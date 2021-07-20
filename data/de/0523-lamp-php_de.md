@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-12 bis 2021-02:
 
@@ -21,8 +21,8 @@ PHP ist in siduction nach der Installation mit der standardmäßigen Konfigurati
 
 Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
-+ In **/usr/bin/** das ausführbare Programm *php7.4*  
-    + und der Link *php*, der über */etc/alternatives/php* auf */usr/bin/php7.4* verweist.  
++ In **/usr/bin/** das ausführbare Programm *php7.x*  
+    + und der Link *php*, der über */etc/alternatives/php* auf */usr/bin/php7.x* verweist.  
 + In **/usr/lib/php/** die installierten Module.  
 + In **/usr/share/php/** und **/usr/share/php\<Modul\>** gemeinsam genutzte Programmteile und Module.  
 + In **/etc/php/** die Konfigurationsverzeichnisse und -dateien.  
@@ -31,14 +31,14 @@ Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das D
 ### PHP-Unterstützung für Apache2
 
 Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit:
-
+(dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)
 ~~~
 # ls /etc/apache2/mods-enabled/* | grep php
-/etc/apache2/mods-enabled/php7.4.conf
-/etc/apache2/mods-enabled/php7.4.load
+/etc/apache2/mods-enabled/php7.x.conf
+/etc/apache2/mods-enabled/php7.x.load
 ~~~
 
-und erkennen, dass Apache das PHP-Modul für die Version 7.4 geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung "*.php*" zu verarbeiten, muss in der Apache Konfigurationsdatei *dir.conf* die Direktive *DirectoryIndex* den Wert *index.php* enthalten. Auch das prüfen wir:
+und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung "*.php*" zu verarbeiten, muss in der Apache Konfigurationsdatei *dir.conf* die Direktive *DirectoryIndex* den Wert *index.php* enthalten. Auch das prüfen wir:
 
 ~~~
 # cat /etc/apache2/mods-available/dir.conf
@@ -51,21 +51,21 @@ Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert *index.
 
 ### PHP Konfiguration
 
-Das Verzeichnis */etc/php/7.4/* enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.  
+Das Verzeichnis */etc/php/7.x/* enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.  
 Die Ausgabe zeigt den Zustand nach der Erstinstallation.
 
 ~~~
-# ls -l /etc/php/7.4/
+# ls -l /etc/php/7.x/
 insgesamt 20
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
 drwxr-xr-x 2 root root 4096 18. Dez 16:54 mods-available
 ~~~
 
-Mit den weiter unten installierten Modulen *php7.4-cgi* und *php7.4-fpm* sind zwei neue Verzeichnise hinzugekommen.
+Mit den weiter unten installierten Modulen *php7.x-cgi* und *php7.x-fpm* sind zwei neue Verzeichnise hinzugekommen.
 
 ~~~
-# ls -l /etc/php/7.4/
+# ls -l /etc/php/7.x/
 insgesamt 20
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
 drwxr-xr-x 3 root root 4096  1. Feb 21:23 cgi
@@ -75,7 +75,7 @@ drwxr-xr-x 2 root root 4096  1. Feb 13:22 mods-available
 ~~~
 
 Jedes der Verzeichnisse *apache2*, *cgi*, *cli* und *fpm* enthält einen Ordner *conf.d* und eine Datei *php.ini*.  
-Die jeweilige *php.ini* beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner *conf.d* enthält die Link zu den aktivierten Modulen.
+Die jeweilige *php.ini* beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner *conf.d* enthält die Links zu den aktivierten Modulen.
 
 ### PHP Module
 
@@ -145,7 +145,7 @@ Ausführlichere Beschreibungen zu den Modulen liefert der Befehl
 Um Module zu installieren verwenden wir z.B.:
 
 ~~~
-# apt install php7.4-cgi php7.4-fpm
+# apt install php7.x-cgi php7.x-fpm
 ~~~
 
 Die beiden Module unterstützen CGI-Scripte und Fast/CGI Requests.  
@@ -217,7 +217,7 @@ opcache.error_log 	=> no value
 [...]
 ~~~
 
-In den Dateien */etc/php/7.4/\<Interface\>/php.ini* haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
+In den Dateien */etc/php/7.x/\<Interface\>/php.ini* haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
 
 ### Quellen PHP
 
@@ -225,4 +225,4 @@ In den Dateien */etc/php/7.4/\<Interface\>/php.ini* haben wir die Möglichkeit d
 [PHP - aktuelle Meldungen](https://www.php.net/)  
 [tecadmin - Modulhandling](https://tecadmin.net/enable-disable-php-modules-ubuntu/) (englisch)
 
-<div id="rev">Zuletzt bearbeitet: 2021-02-02</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-20</div>
