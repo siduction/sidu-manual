@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-12 bis 2021-02:
 
@@ -33,7 +33,7 @@ Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht 
 
 Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md#lamp-webserver)beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
 
-Deshalb rufen wir das Programm **mysql_secure_installation** im root-Terminal auf.  
+Deshalb rufen wir das Programm **mysql_secure_installation** im Root-Terminal auf.  
 Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: "«- - [ ]".
 
 ~~~
@@ -254,11 +254,11 @@ Nach Auswahl der Datenbank "*mysql*" und **`OK`** öffnet sich diesmal ein Fenst
 
 Ausgewählt wird ausschließlich die Methode "*SELECT*". Ein Klick auf **`OK`** führt den sql-Befehl aus.
 
-Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Ikon.
+Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
 
 ![phpMyAdmin beenden](./images/phpmyadmin/abmelden.png)
 
-phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter **`Exportieren`** im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
+phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken, ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter **`Exportieren`** im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
 
 ### Integration in Systemd
 
@@ -271,7 +271,7 @@ Die Steuerung von MariaDB wurde in Debian, und damit auch in siduction, in den S
 Start- und Fehlermeldungen des Servers fließen in das Systemd Journal ein.  
 Genaue Informationen enthält die externe Webseite [MariaDB Systemd](https://mariadb.com/kb/en/systemd/).
 
-Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf den Systemd beziehen.
+Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf Systemd beziehen.
 
 ### MariaDB Log
 
@@ -311,4 +311,4 @@ man mariadb
 
 [phpMyAdmin Dokumentation](https://docs.phpmyadmin.net/de/latest/) (deutsch)
 
-<div id="rev">Zuletzt bearbeitet: 2020-02-02</div>
+<div id="rev">Zuletzt bearbeitet: 2020-07-20</div>
