@@ -33,7 +33,7 @@ siduction liefert eine grub2-Datei mit der Bezeichnung 60_fll-fromiso, um einen 
  Als erstes öffnet man einen Terminal und wird root mit:
 
 ~~~sh
-suxterm
+su
 apt-get update
 apt-get install grub2-fll-fromiso
 ~~~
