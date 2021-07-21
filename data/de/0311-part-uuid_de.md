@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-05:
 
@@ -21,7 +21,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 **UUID (Universally Unique Identifier) und Partitions-Label**
 
-Die dauerhafte Benennung (persistent naming) von Blockgeräten wurde mit Einführung von udev ermöglicht. Der Vorteil ist die Unabhängigkeit von den verwendeten Controllern, sowie der Art und der Anzahl der angeschlossenen Geräte. Die bei der Installation von siduction erstellte *fstab* enthält entsprechende Einträge für alle zu diesem Zeitpunkt angeschlossenen Blockgeräte.
+Die dauerhafte Benennung (persistent naming) von Blockgeräten wurde mit Einführung von udev ermöglicht. Der Vorteil ist die Unabhängigkeit von den verwendeten Controllern, sowie der Art und der Anzahl der angeschlossenen Geräte. Die bei der Installation von siduction erstellte Datei *fstab* enthält entsprechende Einträge für alle zu diesem Zeitpunkt angeschlossenen Blockgeräte.
 
 ### Arten der Benennung von Blockgeräten
 
@@ -183,4 +183,4 @@ man mount
 
 Natürlich muss man sich nicht an das Namensschema *'diskXpartX'* halten. Einhängepunkte (mountpoints) und die dazugehörigen Bezeichner in der fstab können sinnvoll mit z.B. *'data'* oder *'music'* benannt werden.
 
-<div id="rev">Zuletzt bearbeitet: 2020-12-01</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-21</div>
