@@ -174,4 +174,4 @@ Für weitere Partitionierungsoptionen siehe:
 
 + [Installation auf eine verschlüsselte root-Partition](hd-install-crypt_de.md#installation-auf-verschlüsselte-root-partition)
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-21</div>
