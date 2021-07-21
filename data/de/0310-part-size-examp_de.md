@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-06
 
@@ -25,12 +25,12 @@ ENDE INFOBEREICH FÜR DIE AUTOREN
 
 ## Partitionierung von Installationsmedien
 
-Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden.
+Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates /home, falls gewünscht.
 
-Wir raten generell davon ab eine /home-Partition anzulegen.  
+Wir raten aber eher davon ab eine /home-Partition anzulegen.  
 Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
 
-Eine swap-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM. Dies gilt hauptsächlich für Notebooks, die per *suspend* in den Energiesparmodus versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.
+Eine swap-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM. Dies gilt hauptsächlich für Notebooks, die per *hibernate* in den Ruhezustand versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.
 
 Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit **ntfs** formatiert werden. Siduction kann mit dem automatisch installierten *ntfs-3g* lesend und schreibend auf die Daten zugreifen.
 
@@ -147,7 +147,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ "*GPT*", für deren F
   *fdisk* ist das klassische Textmodus-Programm. *cfdisk* hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
 
 > **Achtung**  
-> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.
+> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht werden, immer zuvor auf einem anderen Datenträger sichern.
 
 **Eingebundene Partitionen** (auch swap) müssen vor Bearbeitung gelöst werden.  
 Im Terminal (als root) mit dem Befehl:
@@ -156,7 +156,7 @@ Im Terminal (als root) mit dem Befehl:
 # umount /dev/sda1
 ~~~
 
-Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst: 
+Die Einbindung einer Swap-Partition wird mit diesem Befehl gelöst: 
 
 ~~~
 # swapoff -a
