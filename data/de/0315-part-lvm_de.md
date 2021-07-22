@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-06
 
@@ -19,7 +19,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## LVM-Partitionierung - Logical Volume Manager
 
-**Es folgt nun eine Basiseinführung. Es liegt am geschätzten Leser, sich tiefer in die Materie einzuarbeiten. Weitere Informationsquellen finden sich am Ende dieses Textes gelistet - die Liste erhebt keinen Anspruch auf Vollständigkeit.**
+**Es folgt nun eine Basiseinführung. Es liegt am geschätzten Leser, sich tiefer in die Materie einzuarbeiten. Weitere Informationsquellen finden sich am Ende dieses Textes - die Liste erhebt keinen Anspruch auf Vollständigkeit.**
 
 Das Arbeiten mit *Logical Volumes* ist viel einfacher als die meisten User glauben. Die beste Eigenschaft von LVM ist, dass Änderungen wirksam werden ohne dafür das System neu starten zu müssen. *Logical Volumes* können mehrere Festplatten umspannen und sind skalierbar. Dies unterscheidet sie von anderen Methoden der Festplattenpartitionierung.
 
@@ -37,7 +37,7 @@ Mit drei Grundbegriffen sollte man vertraut sein:
 
 + **Logisches Volumen (Logical Volume):**  Logische Volumen werden inerhalb einer *Volumengruppe* erstellt und in das System eingebunden. Man kann sie auch als "virtuelle" Partitionen verstehen. Sie sind dynamisch veränderbar, können in der Größe verändert, neu erstellt, entfernt und verwendet werden. Ein logisches Volumen kann sich innerhalb der Volumengruppe über mehrere physische Volumen erstrecken.
 
-### Sechs Schritte zu Logical Volumen
+### Sechs Schritte zu Logical Volumes
 
 > **Achtung**  
 > Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.
