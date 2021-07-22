@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-06
 
@@ -26,10 +26,10 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 **Warum gdisk (GPT fdisk) verwenden?**
 
-*gdisk* leitet sich von **G**lobally Unique Identifier **P**artition **T**able (GPT) ab und ist eine Anwendung um Datenträger von jeder Größe zu partitionieren. *gdisk* wird unbedingt benötigt für **Datenträger, die größer als 2TB** sind.  
+*gdisk* leitet sich von **G**lobally Unique Identifier **P**artition **T**able (GPT) ab und ist eine Anwendung, um Datenträger von jeder Größe zu partitionieren. *gdisk* wird unbedingt benötigt für **Datenträger, die größer als 2TB** sind.  
 *gdisk* sorgt dafür, dass Partitionen für SSDs eingerichtet sind (bzw. für Speicher, die keine 512 Byte großen Sektoren besitzen).
 
-Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung *gdisk* für 128 Partitionen eingestellt ist.
+Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung *gdisk* standardmäßig für 128 Partitionen eingestellt ist.
 
 Falls GPT auf kleinen USB/SSD-Datenträgern eingesetzt wird (zum Beispiel auf einem USB-Stick mit 8GB), könnte sich dies kontraproduktiv auswirken, wenn Daten zwischen verschiedenen Computern oder Betriebssystemen ausgetauscht werden sollen.  
 Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser *fdisk*, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk).
@@ -70,7 +70,7 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *
 ### Partitionierung einer Festplatte
 
 > **Daten zuvor sichern!**  
-> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
+> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.
 
 In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine *EFI-System*-Partition und für die zweite Stufe des GRUB-Bootloader eine *BIOS-boot*-Partition.  
 Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm *cgdisk*, das GPT mit UEFI unterstützt.
