@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderunge 2021-05
 + Überarbeitet
@@ -142,7 +142,7 @@ Um grub2 neu zu schreiben oder wiederherzustellen, muss in eine *siduction.iso* 
 
 1. Um die Partitionen ([h,s]d[a..]X) zu identifizieren und bestätigen, muss man root (#) werden:      
     ~~~
-    $ suxterm
+    $ su
     ~~~
 
 2. Als root wird Folgendes eingegeben:      
@@ -253,4 +253,4 @@ Ctrl+d
 
 Starte Deinen PC neu.
 
-<div id="rev">Page last revised 2021-05-10</div>
+<div id="rev">Page last revised 2021-07-22</div>
