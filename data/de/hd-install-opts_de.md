@@ -100,4 +100,4 @@ Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des L
 System dann sehr schnell reagiert und man kann das Medium dann auch entfernen. Das ist nützlich, wenn der Start von einem USB-Stick erfolgte,  
 und man diesen USB Port anderweitig benutzen will.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-21</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-22</div>
