@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2021-02:
 
@@ -17,7 +17,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 **Apt-Cacher** ist ein Proxy-Server, der mehreren lokalen Computern den Zugang zu
 einem Debian-Pakete-Cache ermöglicht.  
-Die, zur Installation von einem Computer bei dem Cache angeforderten Pakete, müssen nur einmal von Debian Spiegelservern geladen werden, gleichgültig wie viele Geräte diese Pakete benötigen. Dies spart Netzwerkbandbreite, erhöht die Geschwindigkeit für die Benutzer und reduziert die Last an den Spiegelservern.
+Die zur Installation von einem Computer bei dem Cache angeforderten Pakete müssen nur einmal von Debian Spiegelservern geladen werden, gleichgültig wie viele Geräte diese Pakete benötigen. Dies spart Netzwerkbandbreite, erhöht die Geschwindigkeit für die Benutzer und reduziert die Last an den Spiegelservern.
 
 Nutzern, die mehrere PC ihr Eigen nennen und sparsam mit Bandbreite und Downloadvolumen umgehen und gleichzeitig die Geschwindigkeit bei Systemaktualisierungen erhöhen wollen, bietet **apt-cacher** die ideale Lösung um all diese Ziele zu erreichen.
 
@@ -66,7 +66,7 @@ und die Konfigurationsdateien in
 
 **Server Konfiguration**
 
-In das Verzeichnis */etc/apt-cacher/* wechseln wir sogleich und bearbeiten die Datei "*apt-cacher.conf*".
+Wir wechseln in das Verzeichnis */etc/apt-cacher/* und bearbeiten die Datei "*apt-cacher.conf*".
 
 ~~~
 # cd /etc/apt-cacher
@@ -80,7 +80,7 @@ Aus Sicherheitsgründen ersetzen wir das Platzhalterzeichen (**\***). das allen 
 #allowed_hosts = *
 ~~~
 
-ändern in
+beispielsweise ändern in
 
 ~~~
 allowed_hosts = '192.168.3.10-20'
@@ -89,12 +89,12 @@ allowed_hosts = '192.168.3.10-20'
 Die IP-Adressen sind natürlich an die eigenen Gegebenheiten anzupassen. Erläuterungen zur Syntax befinden sich in der Datei unmittelbar vor der Direktive.  
 Wird im eigenen Netzwerk ein DHCP-Server betrieben, so ist es notwendig dem APT-Proxy-Server eine feste IP zuzuordnen, z.B. "*192.168.3.5*" .
 
-Wichtig für uns sind aus der Datei "*apt-cacher.conf*" der *User* und die *Gruppe* mit der der Deamon läuft und der Port auf den der Deamon lauscht:
+Wichtig für uns sind aus der Datei "*apt-cacher.conf*" der *User* und die *Gruppe* mit der der Daemon läuft und der Port auf den der Daemon lauscht:
 
 ~~~
 group = www-data
 user = www-data
-deamon_port = 3142
+daemon_port = 3142
 ~~~
 
 Das sind die voreingestellten Werte, die wir nicht verändern. Nach dem Speichern der Datei beenden wir *mcedit*.
@@ -147,6 +147,6 @@ Ein anschließendes
 ~~~
 
 sollte ohne Fehlermeldungen durchlaufen.  
-Der erste Aufruf von **`# apt full-upgrade`** auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller und zur Zufriedenheit ab.
+Der erste Aufruf von **`# apt full-upgrade`** auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu benötigen
 
-<div id="rev">Seite zuletzt aktualisert 2021-02-10</div>
+<div id="rev">Seite zuletzt aktualisert 2021-07-22</div>
