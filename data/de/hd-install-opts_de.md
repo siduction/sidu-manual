@@ -93,6 +93,11 @@ update-grub
 
 Die Grub2-Konfigurationsdatei grub.cfg wird damit aktualisiert und erkennt die im angegebenen Verzeichnis platzierten ISOs. Diese stehen beim nächsten Neustart zur Wahl.
 
+## toram
 
+Eine weitere Nützliche Option beim Booten von einem Live Medium ist `toram`. Selbige ist empfehlenswert, wenn der rechner über ausreichend  
+Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den Ram kopiert. Das hat den Vorteil, dass das   
+System dann sehr schnell reagiert und man kann das Medium dann auch entfernen. Das ist nützlich, wenn der Start von einem USB-Stick erfolgte,  
+und man diesen USB Port anderweitig benutzen will.
 
 <div id="rev">Zuletzt bearbeitet: 2021-07-21</div>
