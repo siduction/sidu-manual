@@ -1,17 +1,5 @@
 % LAMP - Apache 
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-12 bis 2021-01:
-
-+ Inhalt überarbeitet.  
-+ Für die Verwendung mit pandoc optimiert.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
-
 ## Apache einrichten
 
 Diese Handbuchseite basiert auf Apache 2.4.46.

@@ -32,9 +32,9 @@ Im Anschluss öffnet man einen Editor der Wahl (kwrite, mcedit, vim ...):
 mcedit /etc/default/grub2-fll-fromiso
 ~~~
 
-In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`**  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anführungszeichen *`"`* mit den eigenen Parametern. 
+In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen (**#**)  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anführungszeichen (**"**) mit den eigenen Parametern. 
 
-Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen (die zur Demonstration `hervorgehobenen` Zeilen wurden geändert):
+Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen:
 
 ~~~sh
 # Defaults for grub2-fll-fromiso update-grub helper
@@ -49,19 +49,19 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 # default: /srv/ISO
 ## Achtung: Dies ist der Pfad zum Verzeichnis, in dem das oder die ISO(s) liegen,  
 ## der Pfad soll das eigentliche siduction.iso nicht inkludieren.
-'FLL_GRUB2_ISO_LOCATION="/media/disk1part4"'
+FLL_GRUB2_ISO_LOCATION="/media/disk1part4"
 
 # array for defining ISO prefices --> siduction-*.iso
 # default: "siduction- fullstory-"
-'FLL_GRUB2_ISO_PREFIX="siduction-"'
+FLL_GRUB2_ISO_PREFIX="siduction-"
 
 # set default language
 # default: en_US
-'FLL_GRUB2_LANG="de_DE"'
+FLL_GRUB2_LANG="de_DE"
 
 # override the default timezone.
 # default: UTC
-'FLL_GRUB2_TZ="Europe/Berlin"' 
+FLL_GRUB2_TZ="Europe/Berlin" 
 
 # kernel framebuffer resolution, see
 # http://manual.siduction.org/de/cheatcodes-vga-de.htm#vga
@@ -70,7 +70,7 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 
 # additional cheatcodes
 # default: noeject
-'FLL_GRUB2_CHEATCODE="noeject nointro"' 
+FLL_GRUB2_CHEATCODE="noeject nointro" 
 ~~~
 
 Speichere die Änderungen, schließe den Editor und führe als root folgenden Befehl in einem Terminal aus:
@@ -81,7 +81,7 @@ update-grub
 
 Die Grub2-Konfigurationsdatei grub.cfg wird damit aktualisiert und erkennt die im angegebenen Verzeichnis platzierten ISOs. Diese stehen beim nächsten Neustart zur Wahl.
 
-## toram
+### toram
 
 Eine weitere Nützliche Option beim Booten von einem Live Medium ist `toram`. Selbige ist empfehlenswert, wenn der rechner über ausreichend  
 Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den Ram kopiert. Das hat den Vorteil, dass das   

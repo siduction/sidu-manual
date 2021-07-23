@@ -1,20 +1,5 @@
 % Systemd - path
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02:
-
-+ Neu "systemd-path Unit"
-+ Für die Verwendung mit pandoc optimiert.
-
-Änderungen 2021-04:
-
-+ Durch "systemd-unit-datei" erforderliche Anpassungen
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## systemd-path
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./0411-systemd-unit-datei_de.md#systemd-unit-datei).  

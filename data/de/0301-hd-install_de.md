@@ -6,10 +6,6 @@
 
 **WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
 Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
-Siehe auch  
-[Backup mit rdiff](sys-admin-rdiff_de.md#systemsicherung-mit-rdiff-backup)  
-[Backup mit rsync](sys-admin-rsync_de.md#backup-mit-rsync)  
-Eine weitere Option ist BackInTime (muss installiert werden).
 
 ### Installationsvorbereitungen
 

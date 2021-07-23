@@ -1,26 +1,5 @@
 % siduction Systemadministration
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Cheatcodes: Text und Link eingefügt, Tabellen entfernt.  
-+ Entfernen von "Boot-Up Manager (bum)"  
-+ systemd erneuert  
-+ Beenden eines Prozesses aktualisiert  
-+ Schriftarten in siduction aktualisiert und erweitert, Fehlerkorrektur in Userkonfiguration (10.05.2020)  
-+ CUPS aktualisiert  
-+ Sound in siduction aktualisiert  
-+ Korrektur und Aktualisierung aller Links
-
-Anderungen 2020-11:
-
-+ Für die Verwendung mit pandoc optimiert.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Systemadministration allgemein
 
 ### Bootoptionen Cheatcodes
@@ -244,7 +223,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
     Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite [Grafiktreiber](gpu_de.md#grafiktreiber) des Handbuchs.
 
 - **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
-    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung)
+    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.
 
     Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
 
@@ -270,8 +249,6 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
 
 - **Überprüfung**  
     Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.  
-
-    Bei größeren Differenzen greifen wir in die Konfiguration ein. Siehe die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung)
 
 **Basiskonfuguration der Schriftarten**
 
@@ -342,7 +319,7 @@ Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich
 Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei **4K**-Bildschirmen ist Hinting meist nicht notwendig.
 
 *DPI-Wert / Skalierungsfaktor* :  
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Bei der Bildausgabe auf zwei Geräten mit stark unterschiedlicher Auflösung bitte die Handbuchseite [Ändern der Bildschirmauflösung](hw-dev-mon_de.md#ändern-der-bildschirmauflösung) beachten. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
+Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
 
 **4k Auflösung**: 3840 x 2160 (16:9)
 

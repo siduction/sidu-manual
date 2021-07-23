@@ -1,27 +1,5 @@
 % Partitionieren mit Gparted
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Inhalt vollständig überarbeitet.  
-+ Korrektur und Prüfung aller Links.  
-+ Screenshot erneuert.  
-+ Kapitel zu ntfs-g3 entfernt.
-
-Änderungen 2020-06:
-
-+ In den Hinweisen ext2 durch NTFS ersetzt, da der ext2-Treiber für WIN gravierende Probleme mit WIN10 hat.
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Partitionieren mit GParted
 
 Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Daher ist es eine gute Idee, folgende Anleitung einmal gelesen zu haben, um mit dem Konzept eines Partitionsmanagers vertraut zu werden.
@@ -29,9 +7,6 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
 ### Wichtige Hinweise
 
 + Zuerst immer ein Daten-Backup anlegen!  
-  Zum Beispiel mit  
-  *rdiff-backup* siehe [Systemsicherung mit rdiff-backup](sys-admin-rdiff_de.md#systemsicherung-mit-rdiff-backup) oder  
-  *rsync* siehe [Backup mit rsync](sys-admin-rsync_de.md#backup-mit-rsync).
 
 + Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](part-uuid-de.htm#uuid---benennung-von-blockgeräten) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
 

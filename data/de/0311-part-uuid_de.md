@@ -1,22 +1,5 @@
 % UUID - Benennung von Blockgeräten
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Inhalt vollständig überarbeitet.
-+ Neue Aufteilung der Kapitel.
-+ Veraltete Inhalte entfernt.
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## UUID - Benennung von Blockgeräten
 
 **UUID (Universally Unique Identifier) und Partitions-Label**

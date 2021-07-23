@@ -1,28 +1,5 @@
 % Partitionierung von Installationsmedien
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-06
-
-+ Inhalt vollständig überarbeitet.  
-+ Link geprüft und aktualisiert.  
-+ Entfernen des Hinweises auf ext2 Treiber für WIN, da offensichtlich buggy.  
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-Änderungen 202-03:
-
-+ Gnome entfernt, LXde hinzugefügt.
-+ /home-Partition entfernt Erklärung unter Hinweise eingefügt.
-+ KDE Partition Manager hinzugefügt.
-
-ENDE INFOBEREICH FÜR DIE AUTOREN
-
 ## Partitionierung von Installationsmedien
 
 Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates /home, falls gewünscht.
@@ -171,7 +148,5 @@ Für weitere Partitionierungsoptionen siehe:
 + Logical Volume Manager [LVM-Partitionierung](part-lvm_de.md#lvm-partitionierung---logical-volume-manager)
 
 + Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](part-gdisk_de.md#partitionieren-mit-gdisk)
-
-+ [Installation auf eine verschlüsselte root-Partition](hd-install-crypt_de.md#installation-auf-verschlüsselte-root-partition)
 
 <div id="rev">Zuletzt bearbeitet: 2021-07-21</div>

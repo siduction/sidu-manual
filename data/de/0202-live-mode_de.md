@@ -1,22 +1,5 @@
 % Live-DVD verwenden
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-06
-
-+ 'suxterm' durch 'su' oder 'sudo' ersetzt.
-+ Inhalte aktualisiert.
-+ Link geprüft und korrigiert.
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Live-DVD verwenden
 
 ### Eingerichtete User auf dem Live-Medium

@@ -1,16 +1,5 @@
 % Systemd - target
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02:
-
-+ Neu "Init-System - .target Ziel-Unit"
-+ Für die Verwendung mit pandoc optimiert.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## systemd-target - Ziel-Unit
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./11-systemd-unit-datei_de.md#systemd-unit-datei).  

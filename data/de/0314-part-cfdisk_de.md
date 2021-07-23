@@ -1,30 +1,5 @@
 % Partitionieren mit cfdisk
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-05:
-
-+ Inhalt vollständig überarbeitet.
-+ Neue Aufteilung der Kapitel.
-+ Veraltete Inhalte entfernt.
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-    + Die Bilder sind auch für die englische Handbuchseite verwendbar.
-
-Änderungen 2021-03:
-
-+ home-Partition entfernt.
-+ Zu Beginn Hinweis "fdisk nur für alte Hardware" eingefügt.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
----
-
 ## Partitionieren mit fdisk
 
 **fdisk** und **cfdisk** erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einführung von GPT-Partitionstabellen auf Basis des UEFI. 
@@ -39,7 +14,7 @@ Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite [Partitionieren
 **Bitte BEACHTEN:**  
 siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen.
 
-#### Festplatten
+**Festplatten**
 
 Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl vom Live-ISO als auch bei einem installierten siduction.
 
@@ -90,7 +65,7 @@ Mit dem Befehl
 
 erhalten wir eine Text-Datei mit dem gleichen Inhalt.
 
-#### Partitionen
+**Partitionen**
 
 Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.
 

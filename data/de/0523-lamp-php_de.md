@@ -1,18 +1,5 @@
 % LAMP - PHP
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-12 bis 2021-02:
-
-+ Inhalt überarbeitet.
-+ Für die Verwendung mit pandoc optimiert. 
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
----
-
 ## PHP einrichten
 
 PHP ist in siduction nach der Installation mit der standardmäßigen Konfiguration sofort einsatzfähig.  

@@ -14,8 +14,6 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Neue Kernel installieren](0707-sys-admin-kern-upg_de.md#kernel-upgrade), Kernel-Aktualisierung ohne Systemaktualisierung, 3rd Party Module und alte Kernel entfernen.
 
-+ [Aktualisierung des BIOS mit FreeDOS](0708-bios-freedos_de.md#aktualisierung-des-bios-mit-freedos). In vier Schritten wird die Aktualisierung des BIOS, mittels einer Installation von FreeDOS auf einem USB-Stick oder einer Speicherkarte, ausführlich beschrieben.
-
 + [Systemd der System- und Dienste-Manager](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager), Konzeption des systemd, Unit Typen, Systemd im Dateisystem und die Handhabung von Diensten.
 
 + [Die systemd unit-Datei](0711-systemd-unit-datei_de.md#systemd-unit-datei), Verzeichnisse und Hirarchien der Unit-Dateien, die Eingliederung in systemd, der Aufbau der Unit-Datei mit Beschreibung zahlreicher Optionen, die Funktion der Unit-Dateien am Beispiel von CUPS und die Werkzeuge, die systemd bereitstellt,

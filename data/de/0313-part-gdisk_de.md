@@ -1,27 +1,5 @@
 % Partitionieren mit gdisk
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-06
-
-+ Inhalt vollständig überarbeitet.
-+ Neue Aufteilung der Kapitel.
-+ Veraltete Inhalte entfernt.
-+ Link geprüft und korrigiert.
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-Änderungen 2021-03
-
-+ Partitionierung ohne Home-Partition.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Partitionieren mit gdisk
 
 **Warum gdisk (GPT fdisk) verwenden?**

@@ -1,28 +1,5 @@
 % Quickstart
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-06
-
-+von towo auf RC3 gesetzt, nach Begutachtung des Artikels
-
-Änderungen 2020-03:
-
-+ Entfernen der apt-get Befehle in "Die Verwaltung von Softwarepaketen" und "Aktualisierung des Systems - upgrade"  
-+ Entfernen von "WICHTIGE INFORMATION: ... Linux-LIVE-DVD/CD, ist sehr stark komprimiert. ... Brennen im DAO-Modus ... "  
-+ Hinzufügen "Download und Brennen" in Essenzielle Kapitel  
-+ Inhaltliche Anpassung in "Weitere Desktopumgebungen"  
-+ Korrektur und Aktualisierung aller Links  
-
-Änderungen 2020-11:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 # Quickstart
 
 ## siduction Kurzanleitung
@@ -47,7 +24,7 @@ siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kan
 
 + [Nicht freie Treiber, Firmware und Quellen](gpu_de.md#grafiktreiber)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
 
-+ [Internetverbindung](inet-nm-cli_de.md#nmcli)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
++ [Internetverbindung](0500-network_de.md#netzwerk)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
 
 + [Paketmanager und Systemaktualisierung](sys-admin-apt_de.md#apt-paketverwaltung)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
 
@@ -131,7 +108,7 @@ Der Startbefehl in der Konsole ist **nmcli**  oder **nmtui** . Falls das Skript 
 apt install network-manager
 ~~~
 
-Mehr Informationen unter [Netzwerk - nmcli](inet-nm-cli_de.md#nmcli)
+Mehr Informationen unter [Netzwerk - nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool)
 
 Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite [IWD statt wpa_supplicant](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) über die Vorgehensweise.
 

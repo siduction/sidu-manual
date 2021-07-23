@@ -20,7 +20,7 @@ Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese 
 Diese Bootoptionen gelten nur für die Live-DVD.
 
 | Bootoption | Wert | Beschreibung | 
-| ---- | ----- | ------- |
+| ---- | ---- | --------- |
 |  blacklist  | Name des Moduls | temporäre Deaktivierung von Modulen, bevor udev aktiv wird | 
 |  desktop  | kde, gnome, fluxbox | Desktopumgebung auswählen | 
 |  fromiso  |  | [bitte lies "Booten 'fromiso'"](hd-install-opts_de.md#fromiso)  | 
@@ -46,7 +46,7 @@ Diese Bootoptionen gelten nur für die Live-DVD.
 Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet werden, wenn man Bootoptionen für den Grafikserver X für die Grafikkarten Radeon, Intel oder MGA einsetzt.
 
 | Bootoption | Wert | Beschreibung | 
-| --- | ----- | -------- |
+| --- | ---- | ---------- |
 |  dpi  | auto  *oder*  DPI-Zahl | setzt die gewünschten Pixel pro Zoll für den Monitor. Die DPI für den Monitor erhält man, wenn man die Pixelanzahl der Monitorbreite durch den Zollwert der Diagonale dividiert und mit folgenden Werten multipliziert: 1,25 für einen 4:3-Bildschirm, 1,18 für einen 16:10-Bildschirm oder 1,147 für einen 16:9-Bildschirm. Für einen 24"-Bildschirm mit der Auflösung 1920x1080 ergibt das mittels 1,147x1920/24 dpi=92 oder für einen 15"-Bildschirm mit der Auflösung 1600x1200 ergibt das mittels 1.25x1600/15 dpi=133. | 
 |  hsync  | 80 | setzt die horizontale Frequenz des Monitors (in Kilohertz) | 
 |  noml  |  | verhindert, dass die X.org-Konfiguration eine Liste von Modelines enthält, und bewirkt dadurch, dass der korrekte Mode automatisch erkannt wird | 
@@ -68,7 +68,7 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 ### Allgemeine Parameter des Linux-Kernels
 
 | Bootoption | Wert | Beschreibung | 
-| --- | ----- | -------- |
+| --- | ---- | ---------- |
 |  apm  | off | schaltet Advanced Power Managment aus | 
 |  1, 3, 5  |  (z.B.) 3  |  Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite [Runlevel - Ziel-Unit](sys-admin-gen_de.md#systemd-target-ehemals-runlevel)  | 
 |  irqpoll  |  | benutzt IRQ-Polling | 

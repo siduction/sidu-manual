@@ -1,16 +1,5 @@
 % Lokaler APT-Mirror
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-02:
-
-+ Von "approx" auf "apt-cacher" umgestellt.
-+ Für die Verwendung mit pandoc optimiert.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Lokaler APT-Mirror
 
 **Apt-Cacher, ein Proxy-Server für Debian-Pakete**

@@ -1,16 +1,5 @@
 % LAMP-Testserver für Entwickler (lokal)
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
-
-Änderungen 2020-12 bis 2021-02:
-
-+ Inhalt fast vollständig erneuert.
-+ Für die Verwendung mit pandoc optimiert.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## LAMP-Webserver
 
 **Ein lokaler Testserver für Entwickler**
@@ -91,10 +80,10 @@ Später, für die Konfiguration notwendig:
     + *IP-Adresse* des PC
 
 + **MariaDB:**  
-    + Den *Namen der Datenbank* die für das Entwicklungsprojekt verwendet werden soll.  
-    + Den *Namen* (Login-Name) eines neuen Datendank-Benutzers für das Entwicklungsprojekt.  
+    + Den *Namen der Datenbank* die für das Entwicklungsprojekt verwendet werden soll.
+    + Den *Namen* (Login-Name) eines neuen Datendank-Benutzers für das Entwicklungsprojekt.
     + Das *Passwort* für den neuen Datendank-Benutzer.
-    + Den *Namen* (Login-Name) eines neuen Datenbank Administrators.  
+    + Den *Namen* (Login-Name) eines neuen Datenbank Administrators.
     + Das *Passwort* für den Datenbank Administrator.
 
 ### Apache installieren
@@ -265,7 +254,7 @@ In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer
 
 ### Weitere Software
 
-Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten)und [LAMP-MariaDb](./lamp-sql_de.md#mariadb-einrichten)für die Konfiguration des Servers und MariaDb berücksichtigen.
+Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) und [LAMP-MariaDb](./lamp-sql_de.md#mariadb-einrichten)für die Konfiguration des Servers und MariaDb berücksichtigen.
 
 ### Statusaugaben Log-Dateien
 

@@ -89,9 +89,7 @@ Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter 
 
 Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung.
 
-Xorg und nox werden mit [IWD](./inet-iwd_de.md#iwd) als ausgeliefert, dieser kann via [nmtui/nmcli](./inet-nm-cli_de.md#nmcli) oder [iwctl](./inet-iwd_de.md#wifi-verbindung-mit-iwctl) konfiguriert werden. 
-
-Informationen zu nicht freien Treibern findet man [hier](./nf-firm_de.md#nicht-freie-quellen-für-apt-freischalten)
+Xorg und nox werden mit [IWD](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) als ausgeliefert, dieser kann via [nmtui/nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool) oder [iwctl](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) konfiguriert werden. 
 
 Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md#partitionieren-mit-fdisk), [gdisk und cgdisk](./part-gdisk_de.md#partitionieren-mit-gdisk) und [GParted](./part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
 

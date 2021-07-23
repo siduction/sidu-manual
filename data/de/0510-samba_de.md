@@ -1,8 +1,10 @@
-**Status: RC3**
+% SAMBA
 
-<div class="divider" id="configure"></div>
+## SAMBA
 
-## SAMBA-Konfiguration, um mit siduction über das Netzwerk auf Windows-Freigaben zugreifen zu können
+### Client-Konfiguration
+
+**um mit siduction über das Netzwerk auf Windows-Freigaben zugreifen zu können**
 
 + Alle Befehle werden in einem Terminal oder einer Konsole als  **root**  ausgeführt.
 
@@ -69,9 +71,7 @@ credentials=</pfad/zu/.smbcredentials>,uid=$UID,gig=$GID 0 0
 $UID und $GID ist die enstprechende uid und gid des users, dem das Share gegeben werden soll.
 Man kann aber auch uid=username gid=users schreiben.
 
-<div class="divider" id="setup"></div>
-
-## siduction als Samba-Server aufsetzen
+### siduction als Samba-Server
 
 Natürlich kann siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu 
 beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo's bereit, wie man einen
@@ -85,4 +85,4 @@ https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debia
 
 Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.
 
-<div id="rev">Page last revised 16/07/2021 1045 UTC</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>

@@ -1,16 +1,14 @@
-<div class="divider" id="ssh"></div>
+% Secure Shell
 
 ## SSH
 
- *Definition von SSH aus [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)* :
+**Definition von SSH aus [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
 Secure Shell oder SSH bezeichnet sowohl ein Netzwerkprotokoll als auch entsprechende Programme, mit deren Hilfe man auf eine sichere Art und Weise eine verschlüsselte Netzwerkverbindung mit einem entfernten Gerät herstellen kann. Häufig wird diese Methode verwendet, um sich eine entfernte Kommandozeile quasi auf den lokalen Rechner zu holen, das heißt, auf der lokalen Konsole werden die Ausgaben der entfernten Konsole ausgegeben und die lokalen Tastatureingaben werden an den entfernten Rechner gesendet. Hierdurch wird der Effekt erreicht, als säße man vor der entfernten Konsole, was beispielsweise sehr gut zur Fernwartung eines in einem entfernten Rechenzentrum stehenden Root-Servers genutzt werden kann. Die neuere Protokoll-Version SSH-2 bietet weitere Funktionen wie Datenübertragung per SFTP.
 
 Die IANA hat dem Protokoll den TCP-Port 22 zugeordnet, jedoch lassen sich in den Konfigurationsdateien des Daemons auch beliebige andere Ports auswählen, um z.B. Angriffe zu erschweren, da der SSH-Port dem Angreifer nicht bekannt ist.
 
-<div class="divider" id="ssh-s"></div>
-
-## Verwendung guter Sicherheitsprotokolle mit SSH
+### SSH absichern 
 
 Es ist nicht sicher, Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen Angreifer nicht die Möglichkeit haben, über zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuführen. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl möglicher Versuche einzuschränken.
 
@@ -20,15 +18,15 @@ Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu 
 /etc/ssh/sshd_config
 ~~~
 
-#### Folgende Einstellungen können zur Erhöhung der Sicherheit angepasst werden:
+**Folgende Einstellungen können zur Erhöhung der Sicherheit angepasst werden:**
 
-`Port <gewünschter Port2:`  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
+`Port <gewünschter Port>:`  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
 
 ~~~
 Port 5874
 ~~~
 
-`ListenAddress <IP des Rechners oder der Netzwerkschnittstelle2:`  Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern kein lokaler DNS-Server verwendet wird. Aber wenn etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS-Servers aufgesetzt werden soll und diese Anweisungen benötigt werden, kann sich leicht ein gravierender Fehler einschleichen. Wir verwenden eine statische IP für das Beispiel:
+`ListenAddress <IP des Rechners oder der Netzwerkschnittstelle>:`  Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern kein lokaler DNS-Server verwendet wird. Aber wenn etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS-Servers aufgesetzt werden soll und diese Anweisungen benötigt werden, kann sich leicht ein gravierender Fehler einschleichen. Wir verwenden eine statische IP für das Beispiel:
 
 ~~~
 ListenAddress 192.168.2.134
@@ -36,7 +34,7 @@ ListenAddress 192.168.2.134
 
 Protokoll 2 ist bereits Grundeinstellung bei Debian, aber man sollte sicher sein und daher nochmals überprüfen.
 
-`LoginGraceTime <Zeitrahmen des Anmeldevorgangs2:`  Die erlaubte Zeitspanne beträgt als Standard absurde 600 Sekunden. Da man für gewöhnlich keine zehn Minuten benötigt, um Benutzernamen und Passwort einzugeben, stellen wir eine etwas vernünftigere Zeitspanne ein:
+`LoginGraceTime <Zeitrahmen des Anmeldevorgangs>:`  Die erlaubte Zeitspanne beträgt als Standard absurde 600 Sekunden. Da man für gewöhnlich keine zehn Minuten benötigt, um Benutzernamen und Passwort einzugeben, stellen wir eine etwas vernünftigere Zeitspanne ein:
 
 ~~~
 LoginGraceTime 45
@@ -44,7 +42,7 @@ LoginGraceTime 45
 
 Nun hat man 45 Sekunden Zeit zum Anmelden, und Hacker haben keine zehn Minuten bei jedem Versuch, das Passwort zu knacken.
 
-`PermitRootLogin <yes2:`  Warum Debian hier Erlaubnis zur Anmeldung als Root erteilt, ist nicht nachvollziehbar. Wir korrigieren zu 'no':
+`PermitRootLogin <yes>:`  Warum Debian hier Erlaubnis zur Anmeldung als Root erteilt, ist nicht nachvollziehbar. Wir korrigieren zu 'no':
 
 ~~~
 PermitRootLogin no
@@ -54,7 +52,7 @@ PermitRootLogin no
 StrictModes yes
 ~~~
 
-`MaxAuthTries <Anzahl der erlaubten Anmeldungsversuche2:`  Mehr als 3 oder 4 Versuche sollten nicht ermöglicht werden:
+`MaxAuthTries <Anzahl der erlaubten Anmeldungsversuche>:`  Mehr als 3 oder 4 Versuche sollten nicht ermöglicht werden:
 
 ~~~
 MaxAuthTries 2
@@ -64,19 +62,19 @@ Folgende Einstellungen müssen hinzugefügt werden, so sie nicht vorhanden sind:
 
 AllowUsers: Benutzernamen, welchen der Zugriff via SSH erlaubt ist, getrennt durch Leerzeichen  
 
-`AllowUsers <xxx2:`  Nur eingetragene Benutzer können den Zugang verwenden, und dies nur mit Benutzerrechten. Mit `adduser`  sollte man einen User hinzufügen, der speziell zur Nutzung von SSH verwendet wird:
+`AllowUsers <xxx>:`  Nur eingetragene Benutzer können den Zugang verwenden, und dies nur mit Benutzerrechten. Mit `adduser`  sollte man einen User hinzufügen, der speziell zur Nutzung von SSH verwendet wird:
 
 ~~~
 AllowUsers werauchimmer
 ~~~
 
-`PermitEmptyPasswords <xxx2:`  dem Benutzer soll ein schönes langes Passwort gegeben werden, das man in einer Million Jahren nicht erraten kann. Dieser Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit `su`  Root werden:
+`PermitEmptyPasswords <xxx>:`  dem Benutzer soll ein schönes langes Passwort gegeben werden, das man in einer Million Jahren nicht erraten kann. Dieser Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit `su`  Root werden:
 
 ~~~
 PermitEmptyPasswords no
 ~~~
 
-`PasswordAuthentication <xxx2:`  natürlich muss hier 'yes' gesetzt werden. Es sei denn, man verwendet einen KeyLogin.
+`PasswordAuthentication <xxx>:`  natürlich muss hier 'yes' gesetzt werden. Es sei denn, man verwendet einen KeyLogin.
 
 ~~~
 PasswordAuthentication yes [wenn man keine keys verwendet]
@@ -90,9 +88,7 @@ Schlussendlich:
 
 Nun hat man eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn man einen Benutzer hinzugefügt hat, der speziell zur Verwendung mit SSH dient.
 
-<div class="divider" id="ssh-x"></div>
-
-## X-Window Programme über SSH-verschlüsselte lokale Netzwerkverbindungen verwenden
+### SSH für X-Window Programme
 
 ssh -X ermöglicht die Verbindung zu einem entfernten Computer und die Anzeige von dessen Grafikserver X auf dem eigenen lokalen Computer. Den Befehl gibt man als Benutzer (nicht als Root) ein (und man beachte, dass X ein Großbuchstabe ist):
 
@@ -120,46 +116,44 @@ $man ssh
 
 `Anmerkung:`  Falls ssh eine Verbindung verweigert und man eine Fehlermeldung erhält, sucht man in $HOME nach dem versteckten Verzeichnis `.ssh` , löscht die Datei `known_hosts`  und versucht einen neuen Verbindungsaufbau. Dieses Problem tritt hauptsächlich auf, wenn man die IP-Adresse dynamisch zugewiesen hat (DCHP).
 
-<div class="divider" id="ssh-scp"></div>
+### Kopieren scp via ssh
 
-## Kopieren von Dateien und Verzeichnissen mit scp via ssh
-
-scp ist ein Befehlszeilenprogramm (Terminal/CLI), um Dateien zwischen Netzwerkcomputern zu kopieren. Es verwendet ssh zur Authentifizierung und zum sicheren Datentransfer, daher verlangt scp zur Anmeldung ein Passwort bzw. eine Passphrase.
+**scp** ist ein Befehlszeilenprogramm (Terminal/CLI), um Dateien zwischen Netzwerkcomputern zu kopieren. Es verwendet ssh zur Authentifizierung und zum sicheren Datentransfer, daher verlangt scp zur Anmeldung ein Passwort bzw. eine Passphrase.
 
 So man ssh-Rechte an einem Netzwerk-PC oder Netzwerk-Server besitzt, ermöglicht scp das Kopieren von Partitionen, Verzeichnissen oder Dateien zu oder von einem Netzwerkcomputer (bzw. zu einem Bereich auf selbigem), für den man Zugangsrechte besitzt. Dies kann zum Beispiel ein PC oder Server im lokalen Netzwerk sein oder aber auch ein Computer in einem fremden Netzwerk oder ein lokales USB-Laufwerk. Der Kopiervorgang kann zwischen entfernten Computern/Speichergeräten stattfinden.
 
 Es können rekursiv auch ganze Partitionen bzw. Verzeichnisse mit dem Befehl `scp -r`  kopiert werden. Zu beachten ist, dass scp -r auch symbolischen Links im Verzeichnisbaum folgt.
 
-### Beispiele:
+**Beispiele:**
 
 `Beispiel 1:`  Kopieren einer Partition:
 
 ~~~
-scp -r <user2@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
+scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
 ~~~
 
 `Beispiel 2:`  Kopieren eines Verzeichnisses auf einer Partition, in diesem Fall eines Verzeichnisses mit der Bezeichnung "photos" im $HOME:
 
 ~~~
-scp -r <user2@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
+scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
 ~~~
 
 `Beispiel 3:`  Kopieren einer Datei in einem Verzeichnis einer Partition, in diesem Fall eine Datei im $HOME:
 
 ~~~
-scp <user2@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
+scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
 ~~~
 
 `Beispiel 4:`  Kopieren einer Datei auf einer Partition:
 
 ~~~
-scp <user2@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
+scp <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
 ~~~
 
 `Beispiel 5:`  Falls man sich im Laufwerk bzw. Verzeichnis befindet, in das ein Verzeichnis bzw. eine Datei kopiert werden soll, verwendet man einen '**` **.** `** ' (Punkt):
 
 ~~~
-scp -r <user2@xxx.xxx.x.xxx:/media/disk1part6/filename.txt**`** .** `** 
+scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt**`** .** `** 
 ~~~
 
 Weitere Informationen:
@@ -168,9 +162,9 @@ Weitere Informationen:
 man scp
 ~~~
 
-<div class="divider" id="ssh-w"></div>
+### Entfernter Zugriff von einem Windows-PC
 
-## Entfernter Zugriff von einem Windows-PC unter Nutzung von SSH und X-Forwarding:
+unter Nutzung von SSH und X-Forwarding:
 
 * Herunterladen und Brennen der [Cygwin XLiveCD](http://xlivecd.indiana.edu/)  
 * Die CD ins Laufwerk einlegen und auf den automatischen Start (autorun) warten  
@@ -185,9 +179,7 @@ ssh -X username@xxx.xxx.xxx.xxx
 
 Wichtig: hosts.allow muss einen Eintrag beinhalten, der auch Rechnern aus anderen Netzwerken den Zugriff erlaubt. Wenn man einen Router oder eine NAT-Firewall verwendet, muss Port 22 zum Linuxrechner weitergeleitet sein (portforwarding).
 
-<div class="divider" id="ssh-f"></div>
-
-## SSH mit Dolphin
+### SSH mit Dolphin
 
 Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das `sftp-` Protokoll benutzen, welches in ssh vorhanden ist.
 
@@ -227,9 +219,7 @@ sftp://user@ip:port
 
 'user@ip:port' - dies ist die Standardsyntax für viele Protokolle/Programme wie sftp und smb.
 
-<div class="divider" id="ssh-fs"></div>
-
-## SSHFS - auf einem entfernten Computer mounten
+### SSHFS - auf einem entfernten Computer mounten
 
 SSHFS ist eine einfache, schnelle und sichere Methode unter Verwendung von FUSE, um ein entferntes Dateisystem einzubinden. Auf Serverseite benötigt man ausschließlich einen laufenden ssh-daemon.
 
@@ -267,7 +257,6 @@ sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,
 Als nächstes muss das Kommentarzeichen vor `user_allow_other`  in `/etc/fuse.conf`  weggenommen werden:
 
 ~~~
- 
 # Allow non-root users to specify the 'allow_other' or 'allow_root'
 # mount options.
 #
@@ -290,13 +279,13 @@ cat /etc/group | grep fuse
 Die Antwort sollte in etwa so aussehen:
 
 ~~~
-fuse:x:117: <nutzername2
+fuse:x:117: <nutzername>
 ~~~
 
 Falls der Nutzername (username) nicht gelistet ist, verwendet man als root den Befehl adduser:
 
 ~~~
-adduser <nutzername2 fuse
+adduser <nutzername> fuse
 ~~~
 
 `Zur Beachtung: Der Benutzer wird erst nach einem neuerlichen Einloggen Mitglied der Gruppe "fuse" sein.` Jetzt sollte der gewünschte Nutzername gelistet und folgender Befehl ausführbar sein:
@@ -311,4 +300,4 @@ und
 umount lokaler_mountpunkt
 ~~~
 
-<div id="rev">Page last revised 12/07/2021 1545 UTC</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>

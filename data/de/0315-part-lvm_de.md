@@ -1,22 +1,5 @@
 % Partitionierung von "Logical Volume"
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2020-06
-
-+ Inhalt überarbeitet.  
-+ Link geprüft und ggf. entfernt oder aktualisiert.  
-+ "system-config-lvm" durch Hinweis auf gparted ersetzt.  
-
-Änderungen 2020-12:
-
-+ Für die Verwendung mit pandoc optimiert.
-+ Inhalt teilweise überarbeitet.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## LVM-Partitionierung - Logical Volume Manager
 
 **Es folgt nun eine Basiseinführung. Es liegt am geschätzten Leser, sich tiefer in die Materie einzuarbeiten. Weitere Informationsquellen finden sich am Ende dieses Textes - die Liste erhebt keinen Anspruch auf Vollständigkeit.**
