@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Änderungen 2020-05:
 
@@ -382,9 +382,7 @@ http://localhost:631
 
 Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in **root** zu ändern und das **Root-Passwort** einzugeben.
 
-[Die OpenPrinting-Datenbank](https://wiki.linuxfoundation.org/openprinting/database/databaseintro)  beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung.  
-Die Firma Samsung lieferte eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die *hplib* auf. Eine Lösung für den Betrieb der Samsung Drucker bietet unser Wiki:  
-[Samsung Printer Driver](https://wiki.siduction.de/index.php?title=Samsung_Printer_Drivers)
+[Die OpenPrinting-Datenbank](https://wiki.linuxfoundation.org/openprinting/database/databaseintro)  beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die *hplib* auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket **printer-driver-splix**. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per        [IPP-Everywhere](https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/).
 
 ### Sound in siduction
 
@@ -408,7 +406,7 @@ Weitere Einstellungen sind wie folgt möglich:
 
 Rechtsklick auf die Arbeitsfläche > *Einstellungen* > *Audio*
 
-**XFCE Puls-Audio**
+**XFCE Pulse-Audio**
 
 Die Einstellungen erfolgen über das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerführung selbsterklärend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl
 
