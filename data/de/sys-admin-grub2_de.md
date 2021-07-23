@@ -2,15 +2,21 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
+**Status: RC1**
 
-Änderunge 2021-05
+Änderungen 2021-05
 + Überarbeitet
 + grub legacy entfernt
 
-ENDE   INFOBEREICH FÜR DIE AUTOREN
+Rückstufung 2021-07
++ Viele Formatfehler
++ suxterm
++ kaputte Links
++ Überlange Überschriften
++ Überschriften mit verbotenen Zeichen
++ HTML-Tag <span class="highlight-2">
 
----
+ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## GRUB 2
 
