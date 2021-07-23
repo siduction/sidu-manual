@@ -39,27 +39,6 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-03:</p>
-<ul>
-<li>Entfernen der apt-get Befehle in “Die Verwaltung von Softwarepaketen” und “Aktualisierung des Systems - upgrade”<br />
-</li>
-<li>Entfernen von “WICHTIGE INFORMATION: … Linux-LIVE-DVD/CD, ist sehr stark komprimiert. … Brennen im DAO-Modus …”<br />
-</li>
-<li>Hinzufügen “Download und Brennen” in Essenzielle Kapitel<br />
-</li>
-<li>Inhaltliche Anpassung in “Weitere Desktopumgebungen”<br />
-</li>
-<li>Korrektur und Aktualisierung aller Links</li>
-</ul>
-<p>Änderungen 2020-11:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-<li>Inhalt teilweise überarbeitet.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="siduction-kurzanleitung">siduction Kurzanleitung</h2>
 <p>siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.</p>
 <h3 id="essenzielle-kapitel">Essenzielle Kapitel</h3>
@@ -74,7 +53,7 @@ Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei
 <li><p><a href="">Installation auf USB-Geräte</a> - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.</p></li>
 <li><p><a href="hd-ins-opts-oos_de.html">Installation auf USB-Stick/SD von einem anderen System</a> - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.</p></li>
 <li><p><a href="gpu_de.html">Nicht freie Treiber, Firmware und Quellen</a> - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.</p></li>
-<li><p><a href="inet-nm-cli_de.html">Internetverbindung</a> - Beschreibt, wie man sich mit dem Internet verbinden kann.</p></li>
+<li><p><a href="network_de.html">Internetverbindung</a> - Beschreibt, wie man sich mit dem Internet verbinden kann.</p></li>
 <li><p><a href="sys-admin-apt_de.html">Paketmanager und Systemaktualisierung</a> - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.</p></li>
 </ul>
 <h3 id="zur-stabilität-von-debian-sid">Zur Stabilität von Debian Sid</h3>
@@ -110,10 +89,11 @@ apt full-upgrade</code></pre>
 <p><strong>apt full-upgrade</strong> ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:<br />
 <a href="sys-admin-apt_de.html">Aktualisierung eines installierten Systems - full-upgrade</a>.</p>
 <h3 id="konfiguration-von-netzwerken">Konfiguration von Netzwerken</h3>
-<p>‘nmcli’ ist ein Skript zur schnellen Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends <strong>wireless-tools</strong> bzw. <strong>wpasupplicant</strong> zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.</p>
+<p>Der in allen graphischen Oberflächen von siduction integriert <strong>Networkmanager</strong> bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript <strong>nmcli</strong> Zugang zur Funktionalität der Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends <strong>wireless-tools</strong> bzw. <strong>wpasupplicant</strong> zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.</p>
 <p>Der Startbefehl in der Konsole ist <strong>nmcli</strong> oder <strong>nmtui</strong> . Falls das Skript nicht vorhanden ist, installiert man es mit:</p>
 <pre><code>apt install network-manager</code></pre>
 <p>Mehr Informationen unter <a href="inet-nm-cli_de.html">Netzwerk - nmcli</a></p>
+<p>Intels <a href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (<strong>IWD</strong>) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite <a href="inet-iwd_de.html">IWD statt wpa_supplicant</a> über die Vorgehensweise.</p>
 <h3 id="runlevels---ziel-unit">Runlevels - Ziel-Unit</h3>
 <p>Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).<br />
 Die Konfiguration der Runlevel ist im Kapitel <a href="systemd-target_de.html">siduction-Runlevels - Ziel-Unit</a> beschrieben.</p>

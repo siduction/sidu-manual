@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>fromiso</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">fromiso</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#fromiso">fromiso</a>
+<ul>
+<li><a href="#booten-fromiso---überblick">Booten “fromiso” - Überblick</a></li>
+<li><a href="#fromiso-mit-grub2">fromiso mit Grub2</a></li>
+<li><a href="#toram">toram</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="fromiso">fromiso</h2>
+<h3 id="booten-fromiso---überblick">Booten “fromiso” - Überblick</h3>
+<p>Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte mit dem Dateisystem ext4. <strong>Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.</strong></p>
+<p>Der Start von einer “fromiso” Festplatten-Installationen dauert nur einen Bruchteil der Zeit, die ein Start von einer CD benötigt. Außerdem steht gleichzeitig das CD/DVD-Laufwerk zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.</p>
+<p><strong>Voraussetzungen</strong></p>
+<ul>
+<li>eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)<br />
+</li>
+<li>eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie ext4</li>
+</ul>
+<h3 id="fromiso-mit-grub2">fromiso mit Grub2</h3>
+<p>siduction liefert eine grub2-Datei mit der Bezeichnung 60_fll-fromiso, um einen fromiso-Eintrag im grub2-Menü zu generieren. Die Konfigurationsdatei für fromiso ist im Paket <code>grub2-fll-fromiso</code> , mit dem Pfad <code>/etc/default/grub2-fll-fromiso</code> .</p>
+<p>Als erstes öffnet man einen Terminal und wird root mit:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">su</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">apt-get</span> install grub2-fll-fromiso</span></code></pre></div>
+<p>Im Anschluss öffnet man einen Editor der Wahl (kwrite, mcedit, vim …):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">mcedit</span> /etc/default/grub2-fll-fromiso</span></code></pre></div>
+<p>In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen (<strong>#</strong>) entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anführungszeichen (<strong>"</strong>) mit den eigenen Parametern.</p>
+<p>Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># Defaults for grub2-fll-fromiso update-grub helper</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co"># sourced by grub2&#39;s update-grub</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co"># installed at /etc/default/grub2-fll-fromiso by the maintainer scripts</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co"># This is a POSIX shell fragment</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co"># specify where to look for the ISO</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co"># default: /srv/ISO</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">## Achtung: Dies ist der Pfad zum Verzeichnis, in dem das oder die ISO(s) liegen,  </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">## der Pfad soll das eigentliche siduction.iso nicht inkludieren.</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="va">FLL_GRUB2_ISO_LOCATION=</span><span class="st">&quot;/media/disk1part4&quot;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="co"># array for defining ISO prefices --&gt; siduction-*.iso</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a><span class="co"># default: &quot;siduction- fullstory-&quot;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a><span class="va">FLL_GRUB2_ISO_PREFIX=</span><span class="st">&quot;siduction-&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a><span class="co"># set default language</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a><span class="co"># default: en_US</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a><span class="va">FLL_GRUB2_LANG=</span><span class="st">&quot;de_DE&quot;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a><span class="co"># override the default timezone.</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a><span class="co"># default: UTC</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a><span class="va">FLL_GRUB2_TZ=</span><span class="st">&quot;Europe/Berlin&quot;</span> </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a><span class="co"># kernel framebuffer resolution, see</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a><span class="co"># http://manual.siduction.org/de/cheatcodes-vga-de.htm#vga</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a><span class="co"># default: 791</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a><span class="co">#FLL_GRUB2_VGA=&quot;791&quot;</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a><span class="co"># additional cheatcodes</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true"></a><span class="co"># default: noeject</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true"></a><span class="va">FLL_GRUB2_CHEATCODE=</span><span class="st">&quot;noeject nointro&quot;</span> </span></code></pre></div>
+<p>Speichere die Änderungen, schließe den Editor und führe als root folgenden Befehl in einem Terminal aus:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">update-grub</span></span></code></pre></div>
+<p>Die Grub2-Konfigurationsdatei grub.cfg wird damit aktualisiert und erkennt die im angegebenen Verzeichnis platzierten ISOs. Diese stehen beim nächsten Neustart zur Wahl.</p>
+<h3 id="toram">toram</h3>
+<p>Eine weitere Nützliche Option beim Booten von einem Live Medium ist <code>toram</code>. Selbige ist empfehlenswert, wenn der rechner über ausreichend<br />
+Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den Ram kopiert. Das hat den Vorteil, dass das<br />
+System dann sehr schnell reagiert und man kann das Medium dann auch entfernen. Das ist nützlich, wenn der Start von einem USB-Stick erfolgte,<br />
+und man diesen USB Port anderweitig benutzen will.</p>
+<div id="rev">
+Zuletzt bearbeitet: 2021-07-23
+</div>
+</body>
+</html>

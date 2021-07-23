@@ -36,24 +36,14 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-12 bis 2021-02:</p>
-<ul>
-<li>Inhalt überarbeitet.</li>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
-<hr />
 <h2 id="php-einrichten">PHP einrichten</h2>
 <p>PHP ist in siduction nach der Installation mit der standardmäßigen Konfiguration sofort einsatzfähig.</p>
 <h3 id="php-im-dateisystem">PHP im Dateisystem</h3>
 <p>Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das Dateisystem integriert.</p>
 <ul>
-<li>In <strong>/usr/bin/</strong> das ausführbare Programm <em>php7.4</em>
+<li>In <strong>/usr/bin/</strong> das ausführbare Programm <em>php7.x</em>
 <ul>
-<li>und der Link <em>php</em>, der über <em>/etc/alternatives/php</em> auf <em>/usr/bin/php7.4</em> verweist.<br />
+<li>und der Link <em>php</em>, der über <em>/etc/alternatives/php</em> auf <em>/usr/bin/php7.x</em> verweist.<br />
 </li>
 </ul></li>
 <li>In <strong>/usr/lib/php/</strong> die installierten Module.<br />
@@ -65,26 +55,23 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 <li>In <strong>/var/lib/php/</strong> der zur Laufzeit aktuelle Zustand der Module und Sessions.</li>
 </ul>
 <h3 id="php-unterstützung-für-apache2">PHP-Unterstützung für Apache2</h3>
-<p>Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit:</p>
-<pre><code># ls /etc/apache2/mods-enabled/* | grep php
-/etc/apache2/mods-enabled/php7.4.conf
-/etc/apache2/mods-enabled/php7.4.load</code></pre>
-<p>und erkennen, dass Apache das PHP-Modul für die Version 7.4 geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung “<em>.php</em>” zu verarbeiten, muss in der Apache Konfigurationsdatei <em>dir.conf</em> die Direktive <em>DirectoryIndex</em> den Wert <em>index.php</em> enthalten. Auch das prüfen wir:</p>
+<p>Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit: (dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4) ~~~ # ls /etc/apache2/mods-enabled/* | grep php /etc/apache2/mods-enabled/php7.x.conf /etc/apache2/mods-enabled/php7.x.load ~~~</p>
+<p>und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung “<em>.php</em>” zu verarbeiten, muss in der Apache Konfigurationsdatei <em>dir.conf</em> die Direktive <em>DirectoryIndex</em> den Wert <em>index.php</em> enthalten. Auch das prüfen wir:</p>
 <pre><code># cat /etc/apache2/mods-available/dir.conf
 &lt;IfModule mod_dir.c&gt;
     DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
 &lt;/IfModule&gt;</code></pre>
 <p>Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert <em>index.php</em> enthalten ist.</p>
 <h3 id="php-konfiguration">PHP Konfiguration</h3>
-<p>Das Verzeichnis <em>/etc/php/7.4/</em> enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.<br />
+<p>Das Verzeichnis <em>/etc/php/7.x/</em> enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.<br />
 Die Ausgabe zeigt den Zustand nach der Erstinstallation.</p>
-<pre><code># ls -l /etc/php/7.4/
+<pre><code># ls -l /etc/php/7.x/
 insgesamt 20
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
 drwxr-xr-x 2 root root 4096 18. Dez 16:54 mods-available</code></pre>
-<p>Mit den weiter unten installierten Modulen <em>php7.4-cgi</em> und <em>php7.4-fpm</em> sind zwei neue Verzeichnise hinzugekommen.</p>
-<pre><code># ls -l /etc/php/7.4/
+<p>Mit den weiter unten installierten Modulen <em>php7.x-cgi</em> und <em>php7.x-fpm</em> sind zwei neue Verzeichnise hinzugekommen.</p>
+<pre><code># ls -l /etc/php/7.x/
 insgesamt 20
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
 drwxr-xr-x 3 root root 4096  1. Feb 21:23 cgi
@@ -92,7 +79,7 @@ drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
 drwxr-xr-x 4 root root 4096  1. Feb 21:23 fpm
 drwxr-xr-x 2 root root 4096  1. Feb 13:22 mods-available</code></pre>
 <p>Jedes der Verzeichnisse <em>apache2</em>, <em>cgi</em>, <em>cli</em> und <em>fpm</em> enthält einen Ordner <em>conf.d</em> und eine Datei <em>php.ini</em>.<br />
-Die jeweilige <em>php.ini</em> beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner <em>conf.d</em> enthält die Link zu den aktivierten Modulen.</p>
+Die jeweilige <em>php.ini</em> beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner <em>conf.d</em> enthält die Links zu den aktivierten Modulen.</p>
 <h3 id="php-module">PHP Module</h3>
 <p><strong>Abfragen</strong></p>
 <p>Für PHP steht eine Vielzahl von Modulen zu Verfügung. Welche bereits installiert wurden, erfährt man mit</p>
@@ -142,7 +129,7 @@ unknown ok not-installed php7.4-xsl</code></pre>
 <pre><code># apt show &lt;Modulname&gt;</code></pre>
 <p><strong>Installation</strong></p>
 <p>Um Module zu installieren verwenden wir z.B.:</p>
-<pre><code># apt install php7.4-cgi php7.4-fpm</code></pre>
+<pre><code># apt install php7.x-cgi php7.x-fpm</code></pre>
 <p>Die beiden Module unterstützen CGI-Scripte und Fast/CGI Requests.<br />
 Anschließend starten wir den Apache neu:</p>
 <pre><code># systemctl restart apache2.service</code></pre>
@@ -186,13 +173,13 @@ log_errors_max_len  =&gt; 1024
 mail.log            =&gt; no value
 opcache.error_log   =&gt; no value
 [...]</code></pre>
-<p>In den Dateien <em>/etc/php/7.4/&lt;Interface&gt;/php.ini</em> haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.</p>
+<p>In den Dateien <em>/etc/php/7.x/&lt;Interface&gt;/php.ini</em> haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.</p>
 <h3 id="quellen-php">Quellen PHP</h3>
 <p><a href="https://www.php.net/manual/de/">PHP - deutsches Handbuch</a><br />
 <a href="https://www.php.net/">PHP - aktuelle Meldungen</a><br />
 <a href="https://tecadmin.net/enable-disable-php-modules-ubuntu/">tecadmin - Modulhandling</a> (englisch)</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-02-02
+Zuletzt bearbeitet: 2021-07-20
 </div>
 </body>
 </html>

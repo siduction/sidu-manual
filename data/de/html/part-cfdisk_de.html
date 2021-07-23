@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Partitionieren mit cfdick</title>
+  <title>Partitionieren mit cfdisk</title>
 <style>
 body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
 p               {line-height: 1.3;}
@@ -21,17 +21,13 @@ img             {border: 0.1em solid #CCC;}
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Partitionieren mit cfdick</h1>
+<h1 class="title">Partitionieren mit cfdisk</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#partitionieren-mit-fdisk">Partitionieren mit fdisk</a>
 <ul>
-<li><a href="#benennung-von-speichergeräten">Benennung von Speichergeräten</a>
-<ul>
-<li><a href="#festplatten">Festplatten</a></li>
-<li><a href="#partitionen">Partitionen</a></li>
-</ul></li>
+<li><a href="#benennung-von-speichergeräten">Benennung von Speichergeräten</a></li>
 <li><a href="#cfdisk-verwenden">Cfdisk verwenden</a>
 <ul>
 <li><a href="#die-bedienoberfläche">Die Bedienoberfläche</a></li>
@@ -47,30 +43,6 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-05:</p>
-<ul>
-<li>Inhalt vollständig überarbeitet.</li>
-<li>Neue Aufteilung der Kapitel.</li>
-<li>Veraltete Inhalte entfernt.</li>
-</ul>
-<p>Änderungen 2020-12:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-<li>Inhalt teilweise überarbeitet.
-<ul>
-<li>Die Bilder sind auch für die englische Handbuchseite verwendbar.</li>
-</ul></li>
-</ul>
-<p>Änderungen 2021-03:</p>
-<ul>
-<li>home-Partition entfernt.</li>
-<li>Zu Beginn Hinweis “fdisk nur für alte Hardware” eingefügt.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
-<hr />
 <h2 id="partitionieren-mit-fdisk">Partitionieren mit fdisk</h2>
 <p><strong>fdisk</strong> und <strong>cfdisk</strong> erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einführung von GPT-Partitionstabellen auf Basis des UEFI.</p>
 <p>Der neuere Standard <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in <a href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle</a></p>
@@ -79,8 +51,8 @@ Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite <a href="part-g
 <h3 id="benennung-von-speichergeräten">Benennung von Speichergeräten</h3>
 <p><strong>Bitte BEACHTEN:</strong><br />
 siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. Bitte das Kapitel <a href="part-uuid_de.html#uuid---benennung-von-blockgeräten">Benennung nach UUID</a> zu Rate ziehen.</p>
-<h4 id="festplatten">Festplatten</h4>
-<p>Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl von der Live-CD als auch bei einem installierten siduction.</p>
+<p><strong>Festplatten</strong></p>
+<p>Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl vom Live-ISO als auch bei einem installierten siduction.</p>
 <p>Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Geräte enthält. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit <strong>su</strong> zu root und geben <strong>fdisk -l</strong> ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe ähnlich der unten gezeigten.</p>
 <pre><code>user1@pc1:/$ su
 Passwort:
@@ -119,7 +91,7 @@ Device     Boot     Start       End   Sectors  Size Id Type
 <p>Mit dem Befehl</p>
 <pre><code># fdisk -l &gt; /home/&lt;MEIN USER NAME&gt;/Dokumente/fdisk-l_Ausgabe</code></pre>
 <p>erhalten wir eine Text-Datei mit dem gleichen Inhalt.</p>
-<h4 id="partitionen">Partitionen</h4>
+<p><strong>Partitionen</strong></p>
 <p>Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.</p>
 <p>Es gibt folgende Partitionstypen:<br />
 primäre, erweiterte und logische.</p>

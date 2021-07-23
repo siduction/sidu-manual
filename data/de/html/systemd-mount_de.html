@@ -34,23 +34,9 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2021-02 bis 03:</p>
-<ul>
-<li>Neu “systemd-mount Unit”<br />
-</li>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>Änderungen 2021-04</p>
-<ul>
-<li>Durch “systemd-unit-datei” erforderliche Anpassungen</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="systemd-mount">systemd-mount</h2>
 <p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
-In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Unit <strong>mount</strong> und <strong>automount</strong>. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.</p>
+In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Units <strong>mount</strong> und <strong>automount</strong>. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.</p>
 <p>Die <strong>mount</strong>-Unit ist eine Konfigurationsdatei, die für systemd Informationen über einen Einhängepunkt bereitstellt.<br />
 Die <strong>automount</strong>-Unit überwacht das Dateisystem und aktiviert die gleichnamige <em>.mount-Unit</em>, wenn das darin bezeichnete Dateisystem verfügbar ist.</p>
 <p>Für unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die <em>mount</em>-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuhängen.<br />
@@ -207,7 +193,7 @@ Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beisp
 <a href="https://wiki.debianforum.de/Netzlaufwerke_einbinden">Debianforum, Netzlaufwerke einbinden</a><br />
 <a href="https://wiki.ubuntuusers.de/systemd/Mount_Units/">Ubuntuusers, Mount-Units</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-04-06
+Seite zuletzt aktualisert 2021-06-26
 </div>
 </body>
 </html>

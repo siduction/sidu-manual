@@ -32,7 +32,7 @@ img             {border: 0.1em solid #CCC;}
 <li><a href="#sektionen-der-unit-datei">Sektionen der Unit-Datei</a>
 <ul>
 <li><a href="#sektion-unit">Sektion Unit</a></li>
-<li><a href="#typ-spezifische-sektion">Typ spezifische Sektion</a></li>
+<li><a href="#typ-spezifische-sektion">Typ-spezifische Sektion</a></li>
 <li><a href="#sektion-install">Sektion Install</a></li>
 </ul></li>
 <li><a href="#beispiel-cupsd">Beispiel cupsd</a></li>
@@ -41,19 +41,10 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2021-04:</p>
-<ul>
-<li>Neu “systemd-unit”</li>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="systemd-unit-datei">systemd unit-Datei</h2>
 <p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a><br />
 In der vorliegenden Handbuchseite erklären wir den Aufbau der <strong>Unit-Dateien</strong> und die generischen Sektionen “[Unit]” und “[Install]”.</p>
-<p>Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art “<em>Schlüssel=Wert</em>” in verschiedene Sektionen. Leere Zeilen und solche, die mit “#” oder “;” beginnen, werden ignoriert. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ enthalten. Die generischen Sektionen “[Unit]” am Beginn und “[Install]” am Ende der Datei sind optional, wobei die Sektion “[Unit]” dringend empfohlen wird.</p>
+<p>Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art “<em>Schlüssel=Wert</em>” in verschiedenen Sektionen. Leere Zeilen und solche, die mit “#” oder “;” beginnen, werden ignoriert. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ enthalten. Die generischen Sektionen “[Unit]” am Beginn und “[Install]” am Ende der Datei sind optional, wobei die Sektion “[Unit]” dringend empfohlen wird.</p>
 <h3 id="ladepfad-der-unit-dateien">Ladepfad der Unit-Dateien</h3>
 <p>Die Ausgabe zeigt die Reihenfolge der Verzeichnisse, aus denen die Unit-Dateien geladen werden.</p>
 <pre><code># systemd-analyze unit-paths
@@ -96,14 +87,14 @@ Der Befehl</p>
 <p>bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl <strong><code>systemctl start &lt;UNIT_DATEI&gt;</code></strong> gestartet und mit <strong><code>systemctl stop &lt;UNIT_DATEI&gt;</code></strong> gestopt werden.<br />
 Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf <em>/dev/null</em> ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand “masked” und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.</p>
 <h3 id="sektionen-der-unit-datei">Sektionen der Unit-Datei</h3>
-<p>Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ spezifischen Sektion und der Sektion [Install]. Die Typ spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung “<em>.timer</em>” und muss “[Timer]” als Typ spezifische Sektion enthalten.</p>
+<p>Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung “<em>.timer</em>” und muss “[Timer]” als Typ-spezifische Sektion enthalten.</p>
 <h4 id="sektion-unit">Sektion Unit</h4>
 <p>Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.</p>
 <ol type="1">
 <li><p>Allgemeine Optionen</p>
 <ol type="a">
 <li><p>“<em>Description=</em>”<br />
-Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint (“Starting <em>description</em>…”) und dort als Suchmuster verwand werden kann.</p></li>
+Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint (“Starting <em>description</em>…”) und dort als Suchmuster verwandt werden kann.</p></li>
 <li><p>“<em>Documentation=</em>”<br />
 Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z. B.: “Documentation=man:cupsd(8)” oder “Documentation=http://www.cups.org/doc/man-cupsd.html”.</p></li>
 </ol></li>
@@ -121,20 +112,20 @@ Falls eine der anderen Units inaktiv wird, bleibt diese Unit aktiv, nur wenn ein
 <li><p>“<em>BindsTo=</em>”<br />
 <em>BindsTo=</em> ist der stärkste Abhängigkeitstyp: Es bewirkt zusätzlich zu den Eigenschaften von <em>Requires=</em>, dass die gebundene Unit im aktiven Status sein muss, damit diese Unit auch aktiv sein kann.<br />
 Beim Stoppen oder inaktivem Zustand der gebundenen Unit wird diese Unit immer gestoppt.<br />
-Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht, in einem aktiven Zustand ist, sollte <em>BindsTo=</em> am besten mit der Ordnungsabhängigkeit <em>After=</em> kombiniert werden.</p></li>
+Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht in einem aktiven Zustand ist, sollte <em>BindsTo=</em> am besten mit der Ordnungsabhängigkeit <em>After=</em> kombiniert werden.</p></li>
 <li><p>“<em>PartOf=</em>”<br />
 Ähnlich zu <em>Requires=</em>, aber begrenzt auf das Stoppen und Neustarten von Units.<br />
 Wenn Systemd die hier aufgeführten Units stoppt oder neustartet, wird die Aktion zu dieser Unit weitergeleitet.<br />
-Das ist eine Einwegeabhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.</p></li>
+Das ist eine Einwege-Abhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.</p></li>
 <li><p>“<em>Conflicts=</em>”<br />
-Deklariert negative Anforderungsabhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.<br />
+Deklariert negative Anforderungs-Abhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.<br />
 <em>Conflicts=</em> bewirkt, dass die aufgeführte Unit gestoppt wird, wenn diese Unit startet und umgekehrt.<br />
-Da <em>Conflicts=</em> keine Ordnungsabhängigkeit beinhaltet, muss eine Abhängigkeit <em>After=</em> oder <em>Before=</em> erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.</p></li>
+Da <em>Conflicts=</em> keine Ordnungs-Abhängigkeit beinhaltet, muss eine Abhängigkeit <em>After=</em> oder <em>Before=</em> erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.</p></li>
 </ol></li>
 <li><p>Ordnungsabhängigkeiten zu anderen Units</p>
 <ol type="a">
 <li><p>“<em>Before=</em>”<br />
-Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. <em>Before=</em> stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierte Unit abgeschlossen ist.<br />
+Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. <em>Before=</em> stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierten Unit abgeschlossen ist.<br />
 Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.</p></li>
 <li><p>“<em>After=</em>”<br />
 Diese Einstellung stellt das Gegenteil von <em>Before=</em> sicher. Die aufgeführte Unit muss vollständig gestartet sein, bevor die konfigurierte Unit gestartet wird.</p></li>
@@ -174,19 +165,19 @@ Prüft auf die Existenz eines Verzeichnisses. Mit einem Ausrufezeichen (“!”)
 </ol></li>
 </ol>
 <p>Die vollständige Dokumentation zu allen Optionen der Sektion “[Unit]” bitte in der <a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutschen Manpage, systemd.unit</a> nachlesen.</p>
-<h4 id="typ-spezifische-sektion">Typ spezifische Sektion</h4>
+<h4 id="typ-spezifische-sektion">Typ-spezifische Sektion</h4>
 <p>Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.</p>
 <ul>
-<li><p><a href="./systemd-service_de.html#systemd-service">[Service]</a>konfiguriert einen Dienst</p></li>
+<li><p><a href="./systemd-service_de.html#systemd-service">[Service]</a> konfiguriert einen Dienst</p></li>
 <li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">[Socket]</a> konfiguriert ein Socket</p></li>
 <li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">[Device]</a> konfiguriert ein Gerät</p></li>
-<li><p><a href="./systemd-mount_de.html#systemd-mount">[Mount]</a>konfiguriert einen Einhängepunkt</p></li>
-<li><p><a href="./systemd-mount_de.html#systemd-mount">[Automount]</a>konfiguriert einen Selbsteinhängepunkt</p></li>
+<li><p><a href="./systemd-mount_de.html#systemd-mount">[Mount]</a> konfiguriert einen Einhängepunkt</p></li>
+<li><p><a href="./systemd-mount_de.html#systemd-mount">[Automount]</a> konfiguriert einen Selbsteinhängepunkt</p></li>
 <li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">[Swap]</a> konfiguriert eine Auslagerungsdatei oder -partition</p></li>
-<li><p><a href="./systemd-target_de.html#systemd-target---ziel-unit">[Target]</a>konfiguriert ein Startziel</p></li>
-<li><p><a href="./systemd-path_de.html#systemd-path">[Path]</a>konfiguriert einen überwachten Dateipfad</p></li>
-<li><p><a href="./systemd-timer_de.html#systemd-timer">[Timer]</a>konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber</p></li>
-<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">[Slice]</a> konfiguriert eine Ressourcenverwaltungsscheibe</p></li>
+<li><p><a href="./systemd-target_de.html#systemd-target---ziel-unit">[Target]</a> konfiguriert ein Startziel</p></li>
+<li><p><a href="./systemd-path_de.html#systemd-path">[Path]</a> konfiguriert einen überwachten Dateipfad</p></li>
+<li><p><a href="./systemd-timer_de.html#systemd-timer">[Timer]</a> konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber</p></li>
+<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">[Slice]</a> konfiguriert eine Ressourcenverwaltungs-Slice</p></li>
 <li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">[Scope]</a> konfiguriert eine Gruppe von extern erstellten Prozessen.</p></li>
 </ul>
 <h4 id="sektion-install">Sektion Install</h4>
@@ -261,8 +252,8 @@ ListenStream=/run/cups/cups.sock
 [Install]
 WantedBy=sockets.target</code></pre>
 <p><strong>Die Sektion [Unit]</strong><br />
-enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien <em>cups.path</em> und <em>cups.socket</em> zusätzlich die Bindungsabhängigkeit <em>PartOf=cups.service</em>, was bedeutet, dass diese zwei Units abhängig von <em>cups.service</em> gestoppt oder neu gestartet werden.<br />
-Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit “Before=” zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der <em>cups.service</em>-Unit die Ordnungsabhängigkeiten “After=cups.socket” und “After=cups.path” einzutragen. (Siehe unten die Ausgabe von “systemd-analyze dump” mit dem Vermerk “destination-implicit”.) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon welche Unit zuerst startet, immer alle drei Units starten und die <em>cups.service</em>-Unit erst, nachdem der Start der <em>cups.path</em>-Unit und der <em>cups.socket</em>-Unit erfolgreich abgeschlossen wurde.</p>
+enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien <em>cups.path</em> und <em>cups.socket</em> enthalten zusätzlich die Bindungsabhängigkeit <em>PartOf=cups.service</em>, was bedeutet, dass diese zwei Units abhängig von <em>cups.service</em> gestoppt oder neu gestartet werden.<br />
+Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit “Before=” zu ihrer namensgleichen Service-Unit ein. Deshalb ist es nicht notwendig in der <em>cups.service</em>-Unit die Ordnungs-Abhängigkeiten “After=cups.socket” und “After=cups.path” einzutragen. (Siehe unten die Ausgabe von “systemd-analyze dump” mit dem Vermerk “destination-implicit”.) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die <em>cups.service</em>-Unit erst, nachdem der Start der <em>cups.path</em>-Unit und der <em>cups.socket</em>-Unit erfolgreich abgeschlossen wurde.</p>
 <p>Die vollständige Konfiguration der Units erhalten wir mit dem Befehl <strong><code>systemd-analyze dump</code></strong>, der eine sehr, sehr lange Liste ( &gt; 32000 Zeilen) des systemd Serverstatus ausgibt.</p>
 <pre><code># systemd-analyze dump
 [...]

@@ -36,16 +36,6 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2021-02 bis 03:</p>
-<ul>
-<li>Datei neu angelegt und Journald aus systemd-start_de.html)entfernt.</li>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
-<hr />
 <h2 id="systemjournal">Systemjournal</h2>
 <p>Das Systemjournal besteht aus dem <em>systemd-journald</em>, kurz <strong>journald</strong>, der Protokollmeldungen sammelt und speichert, und dem <strong>journalctl</strong>, das der Verwaltung, Abfrage und Ausgabe der gesammelten Protokollmeldungen dient.</p>
 <h3 id="journald">journald</h3>
@@ -53,12 +43,12 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 Es erstellt und verwaltet strukturierte, indizierte Journale, basierend auf den Protokollmeldungen aus:</p>
 <ul>
 <li>Kernel-Protokollmeldungen</li>
-<li>Einfache Systemprotokollmeldungen</li>
-<li>Strukturierte Systemprotokollmeldungen über die native Journal-API</li>
+<li>Einfache System-Protokollmeldungen</li>
+<li>Strukturierte System-Protokollmeldungen über die native Journal-API</li>
 <li>Standardausgabe und Standardfehlerausgabe der Dienste-Units</li>
 <li>Audit-Aufzeichnungen, stammend aus dem Kernel-Audit-Subsystem</li>
 </ul>
-<p><em>journald</em> erlaubt Journal-“Namensräume”. Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokolldatenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.</p>
+<p><em>journald</em> erlaubt Journal-“Namensräume” (namespaces). Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokoll-Datenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.</p>
 <p>Der <em>journald</em> speichert die Protokolldaten standardmäßig dauerhaft unter<br />
 <em>/var/log/journal/MASCHINENKENNUNG</em>.</p>
 <p>Protokolldaten für andere Namensräume befinden sich in<br />
@@ -73,7 +63,7 @@ dient <em>systemd-cat</em> als Filterwerkzeug, um die zuvor erstellte Ausgabe an
 </ol>
 <p>Falls kein Parameter übergeben wurde, wird <em>systemd-cat</em> alles, was es von der Standardeingabe liest, an das Journal schicken. Die man-page <a href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a> bietet weitere Informationen.</p>
 <h3 id="journald-über-das-netzwerk">journald über das Netzwerk</h3>
-<p>Die <em>systemd-journal</em>-Module <em>upload</em>, <em>remote</em> und <em>gatewayd</em> ermöglichen das Versenden und Empfangen von Systemprotokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.<br />
+<p>Die <em>systemd-journal</em>-Module <em>upload</em>, <em>remote</em> und <em>gatewayd</em> ermöglichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.<br />
 Für weitere Informationen bitte die man-pages <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html">journal upload</a>, <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html">journal remote</a> und <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html">journal gatewayd</a> lesen.</p>
 <h3 id="journald.conf">journald.conf</h3>
 <p>Die folgenden Dateien konfigurieren verschiedene Parameter des Systemd-Journal-Dienstes.</p>
@@ -162,44 +152,54 @@ Bittet den Journal-Daemon, die Journal-Dateien zu rotieren. Journal-Dateien-Rota
 Prüft die Journal-Dateien auf interne Konsistenz.</p></li>
 </ul>
 <h3 id="journalctl-beherrschen">journalctl beherrschen</h3>
-<p>Wie oben unter Rechte beschrieben, kannst du das Journal als einfacher User benutzen. Hier sind einige Beispiele:</p>
+<p>Wie oben unter Rechte beschrieben, kannst Du das Journal als einfacher User benutzen. Hier sind einige Beispiele:</p>
 <table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Befehl</th>
+<th>Anzeige</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">journalctl</td>
-<td style="text-align: left;">das volle Journal aller User, älteste Einträge zuerst</td>
+<td>journalctl</td>
+<td>das volle Journal aller User, älteste Einträge zuerst</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">journalctl -r</td>
-<td style="text-align: left;">wie zuvor, neueste Einträge zuerst</td>
+<td>journalctl -r</td>
+<td>wie zuvor, neueste Einträge zuerst</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">journalctl -b</td>
-<td style="text-align: left;">zeigt das Protokoll des letzten Bootvorgangs</td>
+<td>journalctl -b</td>
+<td>das Protokoll des letzten Bootvorgangs</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">journalctl -b -1 -k</td>
-<td style="text-align: left;">zeigt vom vorletzten Bootvorgang (-1) alle Kernelmeldungen</td>
+<td>journalctl -b -1 -k</td>
+<td>vom vorletzten Bootvorgang (-1) alle Kernelmeldungen</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">journalctl -b -p err</td>
-<td style="text-align: left;">limitiert auf den letzten Boot und die Priorität ERROR</td>
+<td>journalctl -b -p err</td>
+<td>limitiert auf den letzten Boot und die Priorität ERROR</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">journalctl –since=yesterday</td>
-<td style="text-align: left;">zeigt das Journal seit gestern</td>
+<td>journalctl –since=yesterday</td>
+<td>das Journal seit gestern</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">journalctl /dev/sda</td>
-<td style="text-align: left;">zeigt das Journal der Gerätedatei /dev/sda</td>
+<td>journalctl /dev/sda</td>
+<td>das Journal der Gerätedatei /dev/sda</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">journalctl /usr/bin/dbus-daemon</td>
-<td style="text-align: left;">zeigt alle Logs des D-Bus-Daemon</td>
+<td>journalctl /usr/bin/dbus-daemon</td>
+<td>alle Logs des D-Bus-Daemon</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">journalctl -f</td>
-<td style="text-align: left;">zeigt eine Liveansicht des Journal (früher: tail -f /var/log/messages)</td>
+<td>journalctl -f</td>
+<td>Liveansicht des Journal (früher: tail -f /var/log/messages)</td>
 </tr>
 </tbody>
 </table>
@@ -306,7 +306,7 @@ Apr 07 23:03:09 pc1 org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owne
 <a href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a></p>
 <p>Dank an Helge Kreuzmann für die deutschen Übersetzungen.</p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-03-20
+Seite zuletzt aktualisert 2021-07-15
 </div>
 </body>
 </html>

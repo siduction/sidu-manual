@@ -42,32 +42,6 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-05:</p>
-<ul>
-<li>Cheatcodes: Text und Link eingefügt, Tabellen entfernt.<br />
-</li>
-<li>Entfernen von “Boot-Up Manager (bum)”<br />
-</li>
-<li>systemd erneuert<br />
-</li>
-<li>Beenden eines Prozesses aktualisiert<br />
-</li>
-<li>Schriftarten in siduction aktualisiert und erweitert, Fehlerkorrektur in Userkonfiguration (10.05.2020)<br />
-</li>
-<li>CUPS aktualisiert<br />
-</li>
-<li>Sound in siduction aktualisiert<br />
-</li>
-<li>Korrektur und Aktualisierung aller Links</li>
-</ul>
-<p>Anderungen 2020-11:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="systemadministration-allgemein">Systemadministration allgemein</h2>
 <h3 id="bootoptionen-cheatcodes">Bootoptionen Cheatcodes</h3>
 <p>Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste <code>e</code> drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <code>Strg</code>+<code>X</code> fortgesetzt.</p>
@@ -103,24 +77,24 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 $ systemctl list-unit-files     # für Unit-Dateien</code></pre>
 <p>mit der Option <em>-a</em> werden auch alle inaktiven Units bzw. Unit-Dateien ausgegeben.</p>
 <h3 id="systemd.service">systemd.service</h3>
-<p>Zum starten oder stoppen einer .service-Unit die Befehle:</p>
+<p>Zum Starten oder Stoppen einer .service-Unit die Befehle:</p>
 <pre><code>$ systemctl start &lt;UNIT&gt;.service
 $ systemctl stop &lt;UNIT&gt;.service
 $ systemctl restart &lt;UNIT&gt;.service</code></pre>
-<p>verwenden. <em>“Restart”</em> ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion root-Rechte nötig sind, wird das root-Passwort abgefragt.<br />
-Zum beenden eines Dienstes dient auch der Befehl:</p>
+<p>verwenden. <em>“Restart”</em> ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion Root-Rechte nötig sind, wird das Root-Passwort abgefragt.<br />
+Zum Beenden eines Dienstes dient auch der Befehl:</p>
 <pre><code>$ systemctl kill -s SIGSTOP --kill-who=control &lt;UNIT&gt;.service</code></pre>
-<p>Mit <em>“kill”</em> stehen im Gegensatz zu <em>“stop”</em> die Optionen <strong>-s, –signal=</strong> und <strong>–kill-who=</strong> bereit. + <strong>-s</strong> sendet eines der Signale <strong>SIGTERM, SIGINT, SIGSTOP</strong>. Vorgabe ist <strong>SIGTERM</strong>. + <strong>–kill-who=</strong> erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind <strong>main, control, all</strong>. Damit wird dem Hauptprozess, werden den Kind-Prozessen, oder beiden das Signal gesendet. Vorgabe ist <strong>all</strong>.<br />
+<p>Mit <em>“kill”</em> stehen im Gegensatz zu <em>“stop”</em> die Optionen <strong>-s, –signal=</strong> und <strong>–kill-who=</strong> bereit. + <strong>-s</strong> sendet eines der Signale <strong>SIGTERM, SIGINT, SIGSTOP</strong>. Vorgabe ist <strong>SIGTERM</strong>. + <strong>–kill-who=</strong> erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind <strong>main, control, all</strong>. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist <strong>all</strong>.<br />
 Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl <em>pkill</em>, der weiter unten im Abschnitt <a href="#beenden-eines-prozesses">Beenden eines Prozesses</a> erläutert wird.</p>
 <h3 id="systemd---unit-eingliedern">systemd - UNIT eingliedern</h3>
-<p>Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als root:</p>
+<p>Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als Root:</p>
 <pre><code># systemctl enable &lt;UNIT-Datei&gt;</code></pre>
 <p>Dies erzeugt eine Gruppe von Symlinks entsprechend den Anforderungen in der Konfiguration der Unit. Im Anschluss wird automatisch die Systemverwalterkonfiguration neu geladen.</p>
 <p>Der Befehl</p>
 <pre><code># systemctl disable &lt;UNIT-Datei&gt;</code></pre>
 <p>entfernt die Symlinks wieder.</p>
 <p><strong>Beispiel</strong><br />
-Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden möchte, entfernt der Befehl (als root):</p>
+Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden möchte, entfernt der Befehl (als Root):</p>
 <pre><code># systemctl disable bluetooth.service</code></pre>
 <p>die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und der Service ist nicht mehr verfügbar und wird auch nicht automatisch gestartet.</p>
 <h3 id="systemd-target-ehemals-runlevel">systemd-target ehemals Runlevel</h3>
@@ -158,7 +132,7 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 </tr>
 <tr class="odd">
 <td>default.target</td>
-<td>Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX).</td>
+<td>Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer noX).</td>
 </tr>
 </tbody>
 </table>
@@ -213,7 +187,7 @@ Mit der Option <strong>–signal</strong>, gefolgt von der Signalnummer oder dem
 <li><p><strong>Korrekte Grafiktreiber</strong><br />
 Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite <a href="gpu_de.html#grafiktreiber">Grafiktreiber</a> des Handbuchs.</p></li>
 <li><p><strong>Korrekte Bildschirmauflösungen und Bildwiederholungsraten</strong><br />
-Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben. Sollte dies der Fall sein, gehe bitte zu der Handbuchseite <a href="hw-dev-mon_de.html#ändern-der-bildschirmauflösung">Ändern der Bildschirmauflösung</a></p>
+Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.</p>
 <p>Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:</p>
 <pre><code> $ xrandr  
  Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
@@ -231,8 +205,7 @@ Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, ent
 1680 x 1050 Pixel bei einer physikalischen Größe von 474 x 296 mm. Zusätzlich berechnen wir die tatsächliche Auflösung in Px/inch (dpi) um einen Anhaltspunkt für die Einstellungen der Schriften zu erhalten. Mit den oben ausgegebenen Werten erhalten wir 90 dpi.<br />
 1680 Px <code>x</code> 25,4 mm/inch <code>:</code> 474 mm <code>=</code> 90 Px/inch (dpi)</p></li>
 <li><p><strong>Überprüfung</strong><br />
-Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.</p>
-<p>Bei größeren Differenzen greifen wir in die Konfiguration ein. Siehe die Handbuchseite <a href="hw-dev-mon_de.html#ändern-der-bildschirmauflösung">Ändern der Bildschirmauflösung</a></p></li>
+Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.</p></li>
 </ul>
 <p><strong>Basiskonfuguration der Schriftarten</strong></p>
 <p>siduction nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. In der graphischen Oberfläche kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gewünschte Schriftbild zu erhalten.</p>
@@ -265,7 +238,7 @@ Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.</p>
 <li><p>KDE Plasma<br />
 <em>Systemeinstellungen</em> &gt; <em>Schriftarten</em> &gt; <em>Schriftarten</em><br />
 <em>Systemeinstellungen</em> &gt; <em>Anzeige-Einrichtung</em> &gt; <em>Anzeige-Einrichtung</em> &gt; <em>Globale Skalierung</em></p></li>
-<li><p>Gnome (Twaek Tool)<br />
+<li><p>Gnome (Tweak Tool)<br />
 <em>Anwendungen</em> &gt; <em>Optimierungen</em> &gt; <em>Schriften</em></p></li>
 <li><p>XFCE<br />
 <em>Einstellungen</em> &gt; <em>Erscheinungsbild</em> &gt; Reiter: <em>Schriften</em></p></li>
@@ -278,7 +251,7 @@ Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich
 <p><em>Hinting</em> :<br />
 Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei <strong>4K</strong>-Bildschirmen ist Hinting meist nicht notwendig.</p>
 <p><em>DPI-Wert / Skalierungsfaktor</em> :<br />
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem <strong>4K</strong>-Bildschirm schnell verbessern. Bei der Bildausgabe auf zwei Geräten mit stark unterschiedlicher Auflösung bitte die Handbuchseite <a href="hw-dev-mon_de.html#ändern-der-bildschirmauflösung">Ändern der Bildschirmauflösung</a> beachten. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei <strong>4k</strong>-Bildschirmen.</p>
+Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem <strong>4K</strong>-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei <strong>4k</strong>-Bildschirmen.</p>
 <p><strong>4k Auflösung</strong>: 3840 x 2160 (16:9)</p>
 <table>
 <thead>
@@ -342,9 +315,7 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 <p>Im Anschluss daran wird ein Web-Browser geöffnet und in die Adresszeile eingegeben:</p>
 <p>http://localhost:631</p>
 <p>Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in <strong>root</strong> zu ändern und das <strong>Root-Passwort</strong> einzugeben.</p>
-<p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung.<br />
-Die Firma Samsung lieferte eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>hplib</em> auf. Eine Lösung für den Betrieb der Samsung Drucker bietet unser Wiki:<br />
-<a href="https://wiki.siduction.de/index.php?title=Samsung_Printer_Drivers">Samsung Printer Driver</a></p>
+<p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>hplib</em> auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket <strong>printer-driver-splix</strong>. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per <a href="https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/">IPP-Everywhere</a>.</p>
 <h3 id="sound-in-siduction">Sound in siduction</h3>
 <p><em>In älteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.</em></p>
 <p>Die meisten Tonprobleme lassen sich lösen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer öffnet und das Häkchen von “stumm” oder “mute” entfernt bzw. den entsprechenden Schieber betätigt. Ist das Lautsprecher-Symbol nicht vorhanden, genügt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl</p>
@@ -357,7 +328,7 @@ in XFCE: <em>Leiste</em> &gt; <em>Neue Elemente hinzufügen…</em></p>
 <p>Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet ein Drop-down-Menü, dass einen Schieber für die Lautstärke enthält.<br />
 Weitere Einstellungen sind wie folgt möglich:</p>
 <p>Rechtsklick auf die Arbeitsfläche &gt; <em>Einstellungen</em> &gt; <em>Audio</em></p>
-<p><strong>XFCE Puls-Audio</strong></p>
+<p><strong>XFCE Pulse-Audio</strong></p>
 <p>Die Einstellungen erfolgen über das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerführung selbsterklärend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl</p>
 <pre><code>$ pavucontrol</code></pre>
 <p>behelfen und nimmt im neu geöffneten Fenster die Einstellungen vor.</p>
@@ -369,7 +340,7 @@ Weitere Einstellungen sind wie folgt möglich:</p>
 <p>Die gewünschten Sound-Einstellungen werden als <strong>$user</strong> von einem Terminal vorgenommen:</p>
 <pre><code>$ alsamixer</code></pre>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-05
+Zuletzt bearbeitet: 2021-06-30
 </div>
 </body>
 </html>

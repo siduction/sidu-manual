@@ -37,24 +37,9 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-05:</p>
-<ul>
-<li>Inhalt vollständig überarbeitet.</li>
-<li>Neue Aufteilung der Kapitel.</li>
-<li>Veraltete Inhalte entfernt.</li>
-</ul>
-<p>Änderungen 2020-12:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-<li>Inhalt teilweise überarbeitet.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="uuid---benennung-von-blockgeräten">UUID - Benennung von Blockgeräten</h2>
 <p><strong>UUID (Universally Unique Identifier) und Partitions-Label</strong></p>
-<p>Die dauerhafte Benennung (persistent naming) von Blockgeräten wurde mit Einführung von udev ermöglicht. Der Vorteil ist die Unabhängigkeit von den verwendeten Controllern, sowie der Art und der Anzahl der angeschlossenen Geräte. Die bei der Installation von siduction erstellte <em>fstab</em> enthält entsprechende Einträge für alle zu diesem Zeitpunkt angeschlossenen Blockgeräte.</p>
+<p>Die dauerhafte Benennung (persistent naming) von Blockgeräten wurde mit Einführung von udev ermöglicht. Der Vorteil ist die Unabhängigkeit von den verwendeten Controllern, sowie der Art und der Anzahl der angeschlossenen Geräte. Die bei der Installation von siduction erstellte Datei <em>fstab</em> enthält entsprechende Einträge für alle zu diesem Zeitpunkt angeschlossenen Blockgeräte.</p>
 <h3 id="arten-der-benennung-von-blockgeräten">Arten der Benennung von Blockgeräten</h3>
 <p>Zur Zeit werden in Linux fünf Arten von Bezeichnern für Blockgeräte verwendet. Alle Bezeichner sind unterhalb des Verzeichnisses <strong>/dev/disk/</strong> zu finden und werden vom System automatisch erstellt. Für <em>Label</em> gilt dies nur, sofern diese den Blockgeräten zuvor zugewiesen wurden.</p>
 <ol type="1">
@@ -181,7 +166,7 @@ mount /media/disk2part7</code></pre>
 <pre><code>man mount</code></pre>
 <p>Natürlich muss man sich nicht an das Namensschema <em>‘diskXpartX’</em> halten. Einhängepunkte (mountpoints) und die dazugehörigen Bezeichner in der fstab können sinnvoll mit z.B. <em>‘data’</em> oder <em>‘music’</em> benannt werden.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2020-12-01
+Zuletzt bearbeitet: 2021-07-21
 </div>
 </body>
 </html>

@@ -40,30 +40,17 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2021-02:</p>
-<ul>
-<li>Neu “systemd-path Unit”</li>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>Änderungen 2021-04:</p>
-<ul>
-<li>Durch “systemd-unit-datei” erforderliche Anpassungen</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="systemd-path">systemd-path</h2>
 <p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit <strong>systemd.path</strong>, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.</p>
 <p>Die “<em>.path-Unit</em>” ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.<br />
-Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service Unit ausführen. Die “<em>.path-Unit</em>” ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.<br />
+Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die “<em>.path-Unit</em>” ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.<br />
 Die Pfad-spezifischen Optionen werden in dem Abschnitt <em>[Path]</em> konfiguriert.</p>
 <h3 id="benötigte-dateien">Benötigte Dateien</h3>
-<p>Die <strong>systemd-path</strong>-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung, im Verzeichnis <em>/usr/local/lib/systemd/system/</em>. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
+<p>Die <strong>systemd-path</strong>-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung im Verzeichnis <em>/usr/local/lib/systemd/system/</em>. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
 <ul>
 <li>Path-Unit-Datei (&lt;name&gt;.path), welche die Überwachung und den Auslöser für die Service-Unit enthält<br />
-und die<br />
+und<br />
 </li>
 <li>Service-Unit-Datei (&lt;name&gt;.service), welche die zu startende Aktion enthält.<br />
 Für umfangreichere Aktionen erstellt man zusätzlich ein Skript in <em>/usr/local/bin/</em>, das von der Service-Unit ausgeführt wird.</li>
@@ -75,7 +62,7 @@ Für umfangreichere Aktionen erstellt man zusätzlich ein Skript in <em>/usr/loc
 <li><p>PathExists=<br />
 prüft, ob der betreffende Pfad existiert. Wenn es zutrifft, wird die zugehörige Unit aktiviert.</p></li>
 <li><p>PathExistsGlob=<br />
-Wie oben, unterstützt Datei-Glob-Ausdrücke.</p></li>
+Wie oben, unterstützt Datei-Glob-Ausdrücke (siehe dazu auch die Ausgabe von man glob.</p></li>
 <li><p>PathChanged=<br />
 beobachtet eine Datei oder einen Pfad und aktiviert die zugehörige Unit, wenn Änderungen auftreten.<br />
 Aktionsauslösende Änderungen sind:</p>
@@ -84,7 +71,7 @@ Aktionsauslösende Änderungen sind:</p>
 </li>
 <li>Atribute, Rechte, Eigentümer.<br />
 </li>
-<li>Schließen der zu beobachtenden Datei nach Schreibzugriff und schließen irgendeiner Datei nach Schreibzugriff bei Beobachtung des Pfades.</li>
+<li>Schließen der zu beobachtenden Datei nach Schreibzugriff und Schließen irgendeiner Datei nach Schreibzugriff bei Beobachtung des Pfades.</li>
 </ul></li>
 <li><p>PathModified=<br />
 wie zuvor, aber zusätzlich wird die zugehörige Unit bei einfachen Schreibzugriffen aktiviert, auch wenn die Datei nicht geschlossen wird.</p></li>
@@ -95,7 +82,7 @@ die zu aktivierende, zugehörige Unit. Zu beachten ist auch, dass die <em>.path-
 <li><p>MakeDirectory=<br />
 das zu beobachtenden Verzeichnis wird vor der Beobachtung erstellt.</p></li>
 <li><p>DirectoryMode=<br />
-legt bei Verwendung, für das zuvor erstellte Verzeichnis, den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.</p></li>
+legt bei Verwendung für das zuvor erstellte Verzeichnis den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.</p></li>
 </ul>
 <p><strong>Ein Beispiel</strong></p>
 <p>Auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite <a href="./lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a> basierend, wollen wir das Zusammenspiel der <em>.path-Unit</em> mit anderen <em>systemd-Unit</em> verdeutlichen.</p>
@@ -220,7 +207,7 @@ Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.<
 <p>Ein anders gelagertes Beispiel:<br />
 <a href="https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html">PRO-LINUX.DE, Systemd Path Units…</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-04-06
+Seite zuletzt aktualisert 2021-06-30
 </div>
 </body>
 </html>

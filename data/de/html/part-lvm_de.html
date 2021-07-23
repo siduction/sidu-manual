@@ -27,32 +27,15 @@ img             {border: 0.1em solid #CCC;}
 <ul>
 <li><a href="#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung - Logical Volume Manager</a>
 <ul>
-<li><a href="#sechs-schritte-zu-logical-volumen">Sechs Schritte zu Logical Volumen</a></li>
+<li><a href="#sechs-schritte-zu-logical-volumes">Sechs Schritte zu Logical Volumes</a></li>
 <li><a href="#größenänderung-eines-volumens">Größenänderung eines Volumens</a></li>
 <li><a href="#lvm-mit-einem-gui-programm-verwalten">LVM mit einem GUI-Programm verwalten</a></li>
 <li><a href="#weitere-infos">Weitere Infos</a></li>
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-06</p>
-<ul>
-<li>Inhalt überarbeitet.<br />
-</li>
-<li>Link geprüft und ggf. entfernt oder aktualisiert.<br />
-</li>
-<li>“system-config-lvm” durch Hinweis auf gparted ersetzt.</li>
-</ul>
-<p>Änderungen 2020-12:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-<li>Inhalt teilweise überarbeitet.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="lvm-partitionierung---logical-volume-manager">LVM-Partitionierung - Logical Volume Manager</h2>
-<p><strong>Es folgt nun eine Basiseinführung. Es liegt am geschätzten Leser, sich tiefer in die Materie einzuarbeiten. Weitere Informationsquellen finden sich am Ende dieses Textes gelistet - die Liste erhebt keinen Anspruch auf Vollständigkeit.</strong></p>
+<p><strong>Es folgt nun eine Basiseinführung. Es liegt am geschätzten Leser, sich tiefer in die Materie einzuarbeiten. Weitere Informationsquellen finden sich am Ende dieses Textes - die Liste erhebt keinen Anspruch auf Vollständigkeit.</strong></p>
 <p>Das Arbeiten mit <em>Logical Volumes</em> ist viel einfacher als die meisten User glauben. Die beste Eigenschaft von LVM ist, dass Änderungen wirksam werden ohne dafür das System neu starten zu müssen. <em>Logical Volumes</em> können mehrere Festplatten umspannen und sind skalierbar. Dies unterscheidet sie von anderen Methoden der Festplattenpartitionierung.</p>
 <p>Mit drei Grundbegriffen sollte man vertraut sein:</p>
 <ul>
@@ -65,7 +48,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
 </ul></li>
 <li><p><strong>Logisches Volumen (Logical Volume):</strong> Logische Volumen werden inerhalb einer <em>Volumengruppe</em> erstellt und in das System eingebunden. Man kann sie auch als “virtuelle” Partitionen verstehen. Sie sind dynamisch veränderbar, können in der Größe verändert, neu erstellt, entfernt und verwendet werden. Ein logisches Volumen kann sich innerhalb der Volumengruppe über mehrere physische Volumen erstrecken.</p></li>
 </ul>
-<h3 id="sechs-schritte-zu-logical-volumen">Sechs Schritte zu Logical Volumen</h3>
+<h3 id="sechs-schritte-zu-logical-volumes">Sechs Schritte zu Logical Volumes</h3>
 <warning>
 <strong>Achtung</strong> <br />Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.
 </warning>

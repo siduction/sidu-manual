@@ -32,18 +32,9 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2021-02:</p>
-<ul>
-<li>Neu “Init-System - .target Ziel-Unit”</li>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="systemd-target---ziel-unit">systemd-target - Ziel-Unit</h2>
 <p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./11-systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
-Jetzt erklären wir die Funktion der Unit <strong>systemd.target</strong>, die den allgenein bekannten Runleveln ähneln, etwas ausführlicher.</p>
+Jetzt erklären wir die Funktion der Unit <strong>systemd.target</strong>, die den allgemein bekannten Runleveln ähneln, etwas ausführlicher.</p>
 <p>Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als <strong>Ziel-Unit</strong>. Sie besitzen die Erweiterung <strong>.target</strong>.</p>
 <p>Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus <em>man systemd</em>: “… wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.”)</p>
 <table>
@@ -68,7 +59,7 @@ Jetzt erklären wir die Funktion der Unit <strong>systemd.target</strong>, die d
 </tr>
 <tr class="odd">
 <td><strong>multi-user.target</strong></td>
-<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. <a href="sys-admin-apt_de.html#full-upgrade-ausführen">Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt</a> .</td>
+<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. <a href="sys-admin-apt_de.html#full-upgrade-ausführen">Auf dieser Unit wird in besonderen Fällen (wenn X selbst oder die Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung (dist-upgrade) durchgeführt</a> .</td>
 </tr>
 <tr class="even">
 <td><strong>graphical.target</strong></td>
@@ -76,16 +67,16 @@ Jetzt erklären wir die Funktion der Unit <strong>systemd.target</strong>, die d
 </tr>
 <tr class="odd">
 <td><strong>default.target</strong></td>
-<td>Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer NoX).</td>
+<td>Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer bei der Variante noX).</td>
 </tr>
 </tbody>
 </table>
 <p>Ein Blick in die Dokumentation “<em>man SYSTEMD.SPECIAL(7)</em>” ist obligatorisch um die Zusammenhänge der verschiedenen <em>.target-Unit</em> zu verstehen.</p>
 <h3 id="besonderheiten">Besonderheiten</h3>
-<p>Bei den Ziel-Unit sind drei Besonderheiten zu beachten:</p>
+<p>Bei den Ziel-Units sind drei Besonderheiten zu beachten:</p>
 <ol type="1">
 <li><p>Die Verwendung auf der <strong>Kernel-Befehszeile</strong> beim Bootvorgang.<br />
-Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste <code>e</code> drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: “systemd.unit=xxxxxxx.target” an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen Entsprechungen auf.</p>
+Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste <code>e</code> drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: “systemd.unit=xxxxxxx.target” an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen numerischen Entsprechungen auf.</p>
 <table>
 <thead>
 <tr class="header">
@@ -150,8 +141,8 @@ Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen
 </tr>
 </tbody>
 </table></li>
-<li><p>Ziel-Unit, die <strong>nicht direkt aufgerufen</strong> werden sollen.<br />
-Eine ganze Reihe von Ziel-Unit sind dazu da während des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abhängigkeiten zu gruppieren. Die folgende Liste zeigt drei häufig verwendete Kommandos die <strong>nicht</strong> mit der Syntax “isolate xxxxxxx.target” aufgerufen werden sollen.</p>
+<li><p>Ziel-Units, die <strong>nicht direkt aufgerufen</strong> werden sollen.<br />
+Eine ganze Reihe von Ziel-Units sind dazu da während des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abhängigkeiten zu gruppieren. Die folgende Liste zeigt drei häufig verwendete Kommandos die <strong>nicht</strong> mit der Syntax “isolate xxxxxxx.target” aufgerufen werden sollen.</p>
 <table>
 <thead>
 <tr class="header">
@@ -178,12 +169,12 @@ Eine ganze Reihe von Ziel-Unit sind dazu da während des Bootvorgangs oder des .
 </tr>
 </tbody>
 </table>
-<p><em>halt</em>, <em>poweroff</em> und <em>reboot</em> holen mehrere Unit in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.</p></li>
+<p><em>halt</em>, <em>poweroff</em> und <em>reboot</em> holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.</p></li>
 </ol>
 <h3 id="quellen-systemd-target">Quellen systemd-target</h3>
 <p><a href="https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html">Manpage systemd.target, de</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-02-14
+Seite zuletzt aktualisert 2021-06-30
 </div>
 </body>
 </html>

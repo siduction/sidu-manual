@@ -44,31 +44,11 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-06</p>
-<ul>
-<li>Inhalt vollständig überarbeitet.</li>
-<li>Neue Aufteilung der Kapitel.</li>
-<li>Veraltete Inhalte entfernt.</li>
-<li>Link geprüft und korrigiert.</li>
-</ul>
-<p>Änderungen 2020-12:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-<li>Inhalt teilweise überarbeitet.</li>
-</ul>
-<p>Änderungen 2021-03</p>
-<ul>
-<li>Partitionierung ohne Home-Partition.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="partitionieren-mit-gdisk">Partitionieren mit gdisk</h2>
 <p><strong>Warum gdisk (GPT fdisk) verwenden?</strong></p>
-<p><em>gdisk</em> leitet sich von <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT) ab und ist eine Anwendung um Datenträger von jeder Größe zu partitionieren. <em>gdisk</em> wird unbedingt benötigt für <strong>Datenträger, die größer als 2TB</strong> sind.<br />
+<p><em>gdisk</em> leitet sich von <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT) ab und ist eine Anwendung, um Datenträger von jeder Größe zu partitionieren. <em>gdisk</em> wird unbedingt benötigt für <strong>Datenträger, die größer als 2TB</strong> sind.<br />
 <em>gdisk</em> sorgt dafür, dass Partitionen für SSDs eingerichtet sind (bzw. für Speicher, die keine 512 Byte großen Sektoren besitzen).</p>
-<p>Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung <em>gdisk</em> für 128 Partitionen eingestellt ist.</p>
+<p>Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung <em>gdisk</em> standardmäßig für 128 Partitionen eingestellt ist.</p>
 <p>Falls GPT auf kleinen USB/SSD-Datenträgern eingesetzt wird (zum Beispiel auf einem USB-Stick mit 8GB), könnte sich dies kontraproduktiv auswirken, wenn Daten zwischen verschiedenen Computern oder Betriebssystemen ausgetauscht werden sollen.<br />
 Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser <em>fdisk</em>, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite <a href="part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a>.</p>
 <p><strong>Wichtige Anmerkungen</strong></p>
@@ -100,7 +80,7 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie <
 </ul>
 <h3 id="partitionierung-einer-festplatte">Partitionierung einer Festplatte</h3>
 <warning>
-<strong>Daten zuvor sichern!</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
+<strong>Daten zuvor sichern!</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.
 </warning>
 <p>In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine <em>EFI-System</em>-Partition und für die zweite Stufe des GRUB-Bootloader eine <em>BIOS-boot</em>-Partition.<br />
 Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm <em>cgdisk</em>, das GPT mit UEFI unterstützt.</p>

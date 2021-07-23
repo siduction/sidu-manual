@@ -34,34 +34,11 @@ img             {border: 0.1em solid #CCC;}
 </ul></li>
 </ul>
 </nav>
-<p>ANFANG INFOBEREICH FÜR DIE AUTOREN<br />
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!<br />
-<strong>Status: RC2</strong></p>
-<p>Änderungen 2020-06</p>
-<ul>
-<li>Inhalt vollständig überarbeitet.<br />
-</li>
-<li>Link geprüft und aktualisiert.<br />
-</li>
-<li>Entfernen des Hinweises auf ext2 Treiber für WIN, da offensichtlich buggy.</li>
-</ul>
-<p>Änderungen 2020-12:</p>
-<ul>
-<li>Für die Verwendung mit pandoc optimiert.</li>
-<li>Inhalt teilweise überarbeitet.</li>
-</ul>
-<p>Änderungen 202-03:</p>
-<ul>
-<li>Gnome entfernt, LXde hinzugefügt.</li>
-<li>/home-Partition entfernt Erklärung unter Hinweise eingefügt.</li>
-<li>KDE Partition Manager hinzugefügt.</li>
-</ul>
-<p>ENDE INFOBEREICH FÜR DIE AUTOREN</p>
 <h2 id="partitionierung-von-installationsmedien">Partitionierung von Installationsmedien</h2>
-<p>Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden.</p>
-<p>Wir raten generell davon ab eine /home-Partition anzulegen.<br />
+<p>Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates /home, falls gewünscht.</p>
+<p>Wir raten aber eher davon ab eine /home-Partition anzulegen.<br />
 Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
-<p>Eine swap-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM. Dies gilt hauptsächlich für Notebooks, die per <em>suspend</em> in den Energiesparmodus versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.</p>
+<p>Eine swap-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM. Dies gilt hauptsächlich für Notebooks, die per <em>hibernate</em> in den Ruhezustand versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.</p>
 <p>Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit <strong>ntfs</strong> formatiert werden. Siduction kann mit dem automatisch installierten <em>ntfs-3g</em> lesend und schreibend auf die Daten zugreifen.</p>
 <p>Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiele sollten einen ersten Einblick in die Möglichkeiten bieten.</p>
 <p>Die Anschaffung einer externen USB-Festplatte zur regelmäßigen Datensicherung ist ebenso eine Überlegung wert.</p>
@@ -418,12 +395,12 @@ Hinweis: <em>fdisk</em> sollte nur noch für alte Hardware, die <em>GPT - UEFI</
 <em>fdisk</em> ist das klassische Textmodus-Programm. <em>cfdisk</em> hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite <a href="part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a> liefert weitere Informationen zum Programm.</p></li>
 </ul>
 <warning>
-<strong>Achtung</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.
+<strong>Achtung</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht werden, immer zuvor auf einem anderen Datenträger sichern.
 </warning>
 <p><strong>Eingebundene Partitionen</strong> (auch swap) müssen vor Bearbeitung gelöst werden.<br />
 Im Terminal (als root) mit dem Befehl:</p>
 <pre><code># umount /dev/sda1</code></pre>
-<p>Die Einbindung einer swap-Partition wird mit diesem Befehl gelöst:</p>
+<p>Die Einbindung einer Swap-Partition wird mit diesem Befehl gelöst:</p>
 <pre><code># swapoff -a</code></pre>
 <h3 id="weiterführende-infos">Weiterführende Infos</h3>
 <p><a href="https://gparted.org/index.php">Hier die umfassende englischsprachige Dokumentation von GParted</a></p>
@@ -431,10 +408,9 @@ Im Terminal (als root) mit dem Befehl:</p>
 <ul>
 <li><p>Logical Volume Manager <a href="part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung</a></p></li>
 <li><p>Partitionierung mit GPT zur Unterstützung von UEFI <a href="part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT fdisk)</a></p></li>
-<li><p><a href="hd-install-crypt_de.html#installation-auf-verschlüsselte-root-partition">Installation auf eine verschlüsselte root-Partition</a></p></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-04
+Zuletzt bearbeitet: 2021-07-21
 </div>
 </body>
 </html>

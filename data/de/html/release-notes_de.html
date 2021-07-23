@@ -27,30 +27,15 @@ img             {border: 0.1em solid #CCC;}
 <ul>
 <li><a href="#release-notes">Release Notes</a>
 <ul>
-<li><a href="#siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 C-Blues Point Release</a>
-<ul>
-<li><a href="#dosfstools-ist-die-ursache">Dosfstools ist die Ursache</a></li>
-<li><a href="#die-abhilfe-downgrade">Die Abhilfe Downgrade</a></li>
-</ul></li>
-<li><a href="#siduction-2021.1.0-c-blues">siduction 2021.1.0 C-Blues</a>
-<ul>
+<li><a href="#siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 C-Blues Point Release</a></li>
+<li><a href="#siduction-2021.1.0-c-blues">siduction 2021.1.0 C-Blues</a></li>
 <li><a href="#was-gibts-neues">Was gibts Neues</a></li>
-<li><a href="#plasma">Plasma</a></li>
-<li><a href="#inet-wifi-daemon">iNet WiFi Daemon</a></li>
-</ul></li>
 <li><a href="#warum-gab-es-seit-2018-kein-release">Warum gab es seit 2018 kein Release</a></li>
 <li><a href="#offizielle-releases-und-isobuilds">Offizielle Releases und Isobuilds</a></li>
-<li><a href="#non-free-und-contrib-pakete">Non-free und contrib Pakete</a>
-<ul>
-<li><a href="#non-free-software-entfernen">Non-Free-Software entfernen</a></li>
-</ul></li>
+<li><a href="#non-free-und-contrib-pakete">Non-free und contrib Pakete</a></li>
 <li><a href="#installationshinweise-und-bekannte-probleme">Installationshinweise und bekannte Probleme</a></li>
-<li><a href="#credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</a>
-<ul>
-<li><a href="#das-core-team">Das Core Team</a></li>
-<li><a href="#code-ideen-und-unterstützung">Code Ideen und Unterstützung</a></li>
+<li><a href="#credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</a></li>
 <li><a href="#danke">Danke</a></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -58,14 +43,14 @@ img             {border: 0.1em solid #CCC;}
 <h3 id="siduction-2021.1.1-c-blues-point-release">siduction 2021.1.1 C-Blues Point Release</h3>
 <p>Um den Fehler zu umgehen, dass der Calamares-Installer im EFI-Mode keine GPT Partitionen erstellen kann, haben wir siduction 2021.1.1 veröffentlicht.<br />
 Für die fachlich interessierten Nutzer unter uns möchte ich den Hintergrund <a href="https://github.com/calamares/calamares/issues/1637">dieses Bug</a> etwas erläutern. Die neue Version 4.2 der <a href="https://github.com/dosfstools/dosfstools">dosfstools</a> verhindert, dass das von Calamares genutzte und im Kern des KDE-Partition-Managers agierende <a href="https://github.com/KDE/kpmcore">kpmcore</a>, GPT Partitionen erstellt.</p>
-<h4 id="dosfstools-ist-die-ursache">Dosfstools ist die Ursache</h4>
+<p><strong>Dosfstools ist die Ursache</strong></p>
 <p>Leere Labels sind in Dosfstools nicht mehr erlaubt, gleichzeitig wurde die Art, Labels zurückzusetzen geändert. In dem Spezialfall, eine fat32 EFI System Partition zu erstellen, ist noch kein Label vorhanden das zurückgesetzt werden kann, weil die Partition zu diesem Zeitpunkt noch nicht existiert. Aus diesem Grund scheitert die Installation. Wird Calamares eine bereits zuvor erstellte Partition zugewiesen, funktioniert alles wie erwartet.</p>
-<h4 id="die-abhilfe-downgrade">Die Abhilfe Downgrade</h4>
+<p><strong>Die Abhilfe: Downgrade</strong></p>
 <p>Bis zur Bereitstellung einer fehlerbereinigten Version von dosfstools in den Repositorien wird wohl noch einige Zeit vergehen, deshalb haben wir uns dazu entschlossen, dosfstools auf die Version 4.1.2 zu downgraden. Das Paket trägt jetzt die Bezeichnung <em>dosfstools 4.2-1.1~really4.1-2</em> .<br />
 Das Release wird nur bei einer Neuinstallation mit Calamares benötigt. Deshalb erhielt noX auch kein Update, denn es hat nur den CLI-Installer und kein Calamares. Benutzer, die siduction bereits installiert haben, betrifft dieses Release nicht.</p>
 <h3 id="siduction-2021.1.0-c-blues">siduction 2021.1.0 C-Blues</h3>
 <p>Das siduction Team ist stolz darauf, euch siduction 2021.1.0 zu präsentieren. Nach einer langen Pause von fast 3 Jahren freuen wir uns mit einem offiziellen Release wieder zurück zu sein. Wir nennen es »C-Blues«, und man kann leicht erraten wofür das »C« in dieser turbulenten Zeit steht.</p>
-<h4 id="was-gibts-neues">Was gibts Neues</h4>
+<h3 id="was-gibts-neues">Was gibts Neues</h3>
 <p>Wir bieten mit siduction 2021.1.0 die Desktop-Varianten<br />
 KDE Plasma 5.20.5,<br />
 LXQt 0.16.0-1,<br />
@@ -75,10 +60,10 @@ Lxde 10+nmu1,<br />
 Xorg und noX,<br />
 GNOME und MATE zur Zeit leider nicht. Sie kommen eventuell später. Selbsverständlich sind sie aus den Repositorien installierbar.</p>
 <p>Die Abbilder des Release sind ein Snapshot von Debian unstable (auch als Sid bekannt) vom 14.02.2021, die wir um einige nützliche Pakete und Scripte, den auf Calamares basierenden Installer und einen speziell angepassten Linux Kernel 5.10.15 erweiterten. Systemd steht bei Version 247.3</p>
-<h4 id="plasma">Plasma</h4>
+<p><strong>Plasma</strong></p>
 <p>Plasma, das im vergangenen Jahr eine erstaunliche Entwicklung durchgemacht hat, ist immer noch unser Haupt-Desktop. Wir haben es mit einigen der aktuellen Neuerungen ausgestattet, die in das kommende Plasma 5.21 einfließen werden. Zum Beispiel der neue <em>system monitor</em> als Nachfolger von <em>ksysguard</em>, der Konferenz-Kalender <em>Kongress</em> und schließlich, nach Jahren der Entwicklung, <em>kio-fuse</em>.<br />
 Letzteres ermöglicht Remote-Verzeichnisse in die Root-Hierarchie des lokalen Dateisystems einzuhängen, was die Einsatzmöglichkeiten von KDE abdeckt um Zugriffe auf Ressourcen wie SSH, SAMBA/Windows, FTP, TAR/GZip/BZip2, WebDav und andere zu POSIX kompatieble Anwendungen wie Firefox, OpenOffice, GNOME, Shell Werkzeuge zu erhalten. Ein sehr nützliches Werkzeug.</p>
-<h4 id="inet-wifi-daemon">iNet WiFi Daemon</h4>
+<p><strong>iNet WiFi Daemon</strong></p>
 <p>Die Varianten Xorg und noX kommen mit einem neuen Programm um sich mit WiFi-Hardware zu verbinden. Intels <a href="https://wiki.debian.org/NetworkManager/iwd">iNet wireless daemon</a> (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller; ist iwd der Nachfolger. Weiterführende Informationen bietet das <a href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a>.</p>
 <p>Wer in Xorg und noX weiterhin <em>wpa_supplicant</em> anstatt <em>iwd</em> nutzen möchte, befolgt die folgende Anleitung:</p>
 <ul>
@@ -144,7 +129,7 @@ Server</p>
 + firmware-b43-installer - firmware installer for the b43 driver<br />
 + firmware-b43legacy-installer - firmware installer for the b43legacy driver<br />
 + iucode-tool - Intel processor microcode</p>
-<h4 id="non-free-software-entfernen">Non-Free-Software entfernen</h4>
+<p><strong>Non-Free-Software entfernen</strong></p>
 <p>Zur Zeit bietet der Installer keine Möglichkeit Pakete, die nicht mit den Anforderungen der DFSG (Debian Free Software Guidelines) übereinstimmen, von der Installation auszuschließen. Das bedeutet, dass non-free Pakete wie unfreie Firmware, standardmäßig mit installiert werden. Der Befehl <strong><code>vrms</code></strong> gibt eine Liste mit diesen Paketen aus. So kann man unerwünschte Pakete manuell entfernen. Alternativ benutzt man den Befehl <strong><code>apt purge $(vrms -s)</code></strong> oder unser Script <strong><code>remove-nonfree</code></strong> nach der Installation.</p>
 <h3 id="installationshinweise-und-bekannte-probleme">Installationshinweise und bekannte Probleme</h3>
 <ul>
@@ -153,23 +138,23 @@ Server</p>
 <li>Mit einigen Intel GPUs bei einigen Geräten kann das System kurz nach dem Boot einfrieren. Um dieses Verhalten zu umgehen, ist es nötig, im Bootmenü an die Kernelzeile den Parameter <strong><code>intel_iommu=igfx_off</code></strong> anzuhängen.</li>
 </ul>
 <h3 id="credits-für-siduction-2021.1.0">Credits für siduction 2021.1.0</h3>
-<h4 id="das-core-team">Das Core Team</h4>
+<p><strong>Das Core Team</strong></p>
 <p>Alf Gaida (agaida)<br />
 Axel Beu (ab) 2021 †<br />
 Torsten Wohlfarth (towo)<br />
 Hendrik Lehmbruch (hendrikL)<br />
 Ferdinand Thommes (devil)</p>
-<h4 id="code-ideen-und-unterstützung">Code Ideen und Unterstützung</h4>
+<p><strong>Code Ideen und Unterstützung</strong></p>
 <p>der_bud<br />
 Markus Meyer (coruja)<br />
 Axel Konrad (akli) für seine Arbeit bei der Erneuerung des Handbuches</p>
-<h4 id="danke">Danke</h4>
+<h3 id="danke">Danke</h3>
 <p>Wir möchten allen, die zu siduction beigetragen haben und weiter beitragen, danken. Es ist eure Leistung und euer Verdienst. Natürlich gilt unser Dank ebenfalls der großartigen Debian Gemeinschaft, der Basis von siduction.</p>
 <p>Und nun viel Spaß!</p>
 <p>Im Namen des siduction Team:</p>
 <p><strong>Ferdinand Thommes</strong></p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-04
+Zuletzt bearbeitet: 2021-07-23
 </div>
 </body>
 </html>

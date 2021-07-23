@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SAMBA</title>
+<style>
+body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+p               {line-height: 1.3;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #800; padding: 0.15em;}
+li pre code     {display: block; color: #000; padding: 0.15em;}
+table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SAMBA</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#samba">SAMBA</a>
+<ul>
+<li><a href="#client-konfiguration">Client-Konfiguration</a></li>
+<li><a href="#siduction-als-samba-server">siduction als Samba-Server</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="samba">SAMBA</h2>
+<h3 id="client-konfiguration">Client-Konfiguration</h3>
+<p><strong>um mit siduction über das Netzwerk auf Windows-Freigaben zugreifen zu können</strong></p>
+<ul>
+<li><p>Alle Befehle werden in einem Terminal oder einer Konsole als <strong>root</strong> ausgeführt.</p></li>
+<li><p>Die URL wird in Dolphin als <strong>normaler User aufgerufen</strong> .<br />
+server = Servername oder IP der Windows-Maschine<br />
+share = Name der Freigabe</p>
+<p>Im KDE-Dateimanager Dolphin wird die URL folgendermaßen eingeben: <code>smb://server</code> oder mit dem gesamten Pfad: <code>smb://server/share</code></p></li>
+</ul>
+<p>In einer Konsole können die Freigaben auf einem Server damit gesehen werden:</p>
+<pre><code>smbclient -L server</code></pre>
+<p>Um eine Freigabe in einem Verzeichnis sehen zu können (mit Zugriff für ALLE User), muss ein Einhängeort (Mountpoint) existieren. Wenn nicht, muss ein Verzeichnis als Einhängepunkt erstellt werden (der Name ist beliebig):</p>
+<pre><code>mkdir -p /media/server_share</code></pre>
+<p>Eine Freigabe wird mit diesem Befehl eingehängt:</p>
+<pre><code>mount -t cifs -o username=Administrator,uid=$UID,gid=$GID //server/share /mnt/server_share</code></pre>
+<p>sollte es hier zu einer Fehlermeldung kommen, dann kann das an der verwendeten SMB Protokoll-Version liegen. In Debian wird SMB 1.0 aus Sicherheitsgründen nicht mehr benutzt. Leider gibt es auch heute noch Systeme, welche SMB nur per Version 1.0 bereit stellen. Um auf solch eine Freigabe zugreifen zu können, wird als Mountoption dann noch <strong><code>vers=1.0</code></strong> benötigt. Der komplette Befehl lautet dann</p>
+<pre><code>mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/share /mnt/server_share</code></pre>
+<p>Eine Verbindung wird mit diesem Befehl beendet:</p>
+<pre><code>umount /media/server_share</code></pre>
+<p>Um einen Samba-Share automatisch einzubinden, kann die Datei <code>/etc/fstab</code> nach folgendem Muster ergänzt werden:</p>
+<pre><code>//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
+user=username,password=**********,uid=$UID,gid=$GID   0 0</code></pre>
+<p>Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben. Als bessere Variante erzeigt man <strong><code>~.smbcredentials</code></strong> mit folgendem Inhalt an:</p>
+<pre><code>username=&lt;benutzer&gt;
+password=&lt;passwort&gt;</code></pre>
+<p>Der resultierende Eintrag für /etc/fstab ist dann</p>
+<pre><code>//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
+credentials=&lt;/pfad/zu/.smbcredentials&gt;,uid=$UID,gig=$GID 0 0</code></pre>
+<p>$UID und $GID ist die enstprechende uid und gid des users, dem das Share gegeben werden soll. Man kann aber auch uid=username gid=users schreiben.</p>
+<h3 id="siduction-als-samba-server">siduction als Samba-Server</h3>
+<p>Natürlich kann siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo’s bereit, wie man einen Samba-Server aufsetzt.</p>
+<p>Unsere Empfehlungen zu diesem Thema:</p>
+<p>https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian<br />
+https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html<br />
+https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debian-10-buster-ein/</p>
+<p>Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.</p>
+<div id="rev">
+Zuletzt bearbeitet: 2021-07-23
+</div>
+</body>
+</html>

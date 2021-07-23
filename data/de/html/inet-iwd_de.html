@@ -41,21 +41,17 @@ img             {border: 0.1em solid #CCC;}
 <p>Weiterführende Informationen bietet das <a href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> bzw. das <a href="https://wiki.debian.org/NetworkManager/iwd">debian wiki</a>.</p>
 <p>Wer möchte, kann iwd als Ersatz für wpa_supplicant nutzen, entweder eigenständig oder in Verbindung mit dem NetworkManager.</p>
 <h3 id="iwd-installieren">IWD installieren</h3>
-<p>Einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:</p>
-<pre class="note"><code>Anmerkung:
- Unter debian ist es leider nicht möglich den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
- Möchte man dieses so gibt es zwei Möglichkeiten (eigentlich nur eine):
-
-    1. NetworkManager aus den Sourcen installieren
-    2. den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird, so man apt nutzt.
-
- Wobei die zweite Möglichkeit die einfachere ist.
-    
- Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen
-    
- Weiterhin machen wir darauf Aufmerksam, dass siduction systemd nutzt.
- Wir werden also nicht darauf eingehen wie iwd ohne systemd konfiguriert wird!</code></pre>
-<p>Vorrausgesetzt der NetworkManager ist installiert,</p>
+<warning>
+Anmerkung: <br />Unter debian ist es leider nicht möglich den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
+</warning>
+<p>Möchte man dieses so gibt es zwei Möglichkeiten, wobei die zweite Möglichkeit die sinnvollere und einfachere ist.</p>
+<ol type="1">
+<li>NetworkManager aus den Sourcen installieren</li>
+<li>Den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird, so man apt nutzt.</li>
+</ol>
+<p>Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen</p>
+<p>Weiterhin machen wir darauf Aufmerksam, dass siduction systemd nutzt. Wir werden also nicht darauf eingehen, wie iwd ohne systemd konfiguriert wird!</p>
+<p>Vorgehensweise bei installiertem NetworkManager</p>
 <ul>
 <li>als erstes wird <strong>iwd</strong> installiert,</li>
 <li>dann wird der <strong>wpa_supplicant.service</strong> gestopt und maskiert,</li>
@@ -65,47 +61,47 @@ img             {border: 0.1em solid #CCC;}
 <li>aktivieren und starten den <strong>iwd.service</strong>,</li>
 <li>und starten den <strong>NetworkManager.service</strong>.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">apt</span> update</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">apt</span> install iwd</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop wpa_supplicant.service</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> mask wpa_supplicant.service</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop NetworkManager.service</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">~</span># <span class="fu">touch</span> /etc/NetworkManager/conf.d/nm.conf</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="ex">~</span># <span class="bu">echo</span> -e <span class="st">&#39;[device]\nWiFi.backend=iwd&#39;</span> <span class="op">&gt;</span> /etc/NetworkManager/conf.d/nm.conf</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="ex">~</span># <span class="fu">touch</span> /etc/iwd/main.conf</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="ex">~</span># <span class="bu">echo</span> -e <span class="st">&#39;[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd&#39;</span> <span class="op">&gt;</span> /etc/iwd/main.conf</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> enable -now iwd.service</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> start NetworkManager.service</span></code></pre></div>
+<p>Jetzt einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">apt</span> update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">apt</span> install iwd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop wpa_supplicant.service</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> mask wpa_supplicant.service</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop NetworkManager.service</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="ex">~</span># <span class="fu">touch</span> /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ex">~</span># <span class="bu">echo</span> -e <span class="st">&#39;[device]\nWiFi.backend=iwd&#39;</span> <span class="op">&gt;</span> /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="ex">~</span># <span class="fu">touch</span> /etc/iwd/main.conf</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="ex">~</span># <span class="bu">echo</span> -e <span class="st">&#39;[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd&#39;</span> <span class="op">&gt;</span> /etc/iwd/main.conf</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> enable -now iwd.service</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> start NetworkManager.service</span></code></pre></div>
 <p>Schauen ob es geklappt hat</p>
 <ul>
 <li>/etc/NetworkManager/conf.d/nm.conf</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="fu">cat</span> /etc/NetworkManager/conf.d/nm.conf</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>[<span class="ex">device</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">WiFi.backend</span>=iwd</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="fu">cat</span> /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>[<span class="ex">device</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">WiFi.backend</span>=iwd</span></code></pre></div>
 <ul>
 <li>/etc/iwd/main.conf</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="fu">cat</span> /etc/iwd/main.conf</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>[<span class="ex">General</span>]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="va">EnableNetworkConfiguration=</span>true</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>[<span class="ex">Network</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="va">NameResolvingService=</span>systemd</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="fu">cat</span> /etc/iwd/main.conf</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>[<span class="ex">General</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="va">EnableNetworkConfiguration=</span>true</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>[<span class="ex">Network</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="va">NameResolvingService=</span>systemd</span></code></pre></div>
 <p>Jetzt ist man in der Lage im Terminal mit dem Befehl <a href="#wifi-verbindung-mit-iwctl"><strong>iwctl</strong></a> eine interaktive Shell zu starten. Die Eingabe von “help” gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man <strong>nmtui</strong> oder <a href="#wifi-verbindung-mit-nmcli"><strong>nmcli</strong></a> im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.</p>
-<pre class="note"><code>Hinweis:
- Es ist möglich, dass nicht freie Firmware von einem USB-Stick installiert werden muss, bzw via LAN!</code></pre>
-<p><strong>Weitere Informationen:</strong><br />
-<a href="nf-firm_de.html#nicht-freie-quellen-für-apt-freischalten">Hardware mit nicht freier Firmware</a>.</p>
+<warning>
+Hinweis: <br />Es ist möglich, dass nicht freie Firmware von einem USB-Stick oder via LAN installiert werden muss!
+</warning>
 <h3 id="wifi-verbindung-mit-iwd">WiFi Verbindung mit IWD</h3>
 <p>Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben <em>(Vorrausgesetzt man nutzt den NetworkManager.service)</em>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="ex">nmtui</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="ex">nmtui</span></span></code></pre></div>
 <p>Dies sollte selbsterklärend sein!</p>
 <h3 id="wifi-verbindung-mit-nmcli">WiFi Verbindung mit nmcli</h3>
 <p><strong>Eine WiFi Verbindung mit <em>nmcli</em> aufbauen</strong></p>
 <p>Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des NetworkManagers in der Kommandozeile einzurichten.</p>
-<p>Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu <em>nmcli</em> finden sie auf folgender Seite, <a href="inet-nm-cli_de.html#nmcli">Network Manager im Terminal</a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="ex">nmcli</span> dev WiFi con <span class="st">&quot;ssid&quot;</span> password password name <span class="st">&quot;name&quot;</span></span></code></pre></div>
+<p>Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu <em>nmcli</em> finden sie auf folgender Seite, <a href="inet-nm-cli_de.html#network-manager-kommandline-tool">Network Manager im Terminal</a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="ex">nmcli</span> dev WiFi con <span class="st">&quot;ssid&quot;</span> password password name <span class="st">&quot;name&quot;</span></span></code></pre></div>
 <p>(<em>ssid</em> bezeichnet den Namen des Netzwerkes)</p>
 <p>Zum Beispiel:</p>
 <pre><code>nmcli dev WiFi con &quot;HomeOffice&quot; password W1rkl1chS3hrG3h31m name &quot;HomeOffice&quot;</code></pre>
@@ -117,30 +113,30 @@ img             {border: 0.1em solid #CCC;}
 <img src="./images/iwd/iwctl-help.png" alt="" /><figcaption>iwctl help</figcaption>
 </figure>
 <p>Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# device list</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>                     <span class="ex">Devices</span>                                *</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">-------------------------------------------------------------</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  <span class="ex">Name</span>    Address             Powered   Adapter   Mode</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="ex">-------------------------------------------------------------</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>  <span class="ex">wlan0</span>   00:01:02:03:04:05   on        phy0      station</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# device list</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>                     <span class="ex">Devices</span>                                *</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">-------------------------------------------------------------</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>  <span class="ex">Name</span>    Address             Powered   Adapter   Mode</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">-------------------------------------------------------------</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>  <span class="ex">wlan0</span>   00:01:02:03:04:05   on        phy0      station</span></code></pre></div>
 <p>In diesem Falle ist es <em>wlan0</em> und es läuft (<em>Powered on</em>) im <em>station</em> mode.</p>
 <p>Nun scannen wir nach einem aktiven Netzwerk</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station wlan0 scan</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station wlan0 get-networks</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station wlan0 scan</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station wlan0 get-networks</span></code></pre></div>
 <p>Jetzt können wir uns zu unserem Netzwerk verbinden.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station wlan0 connect SSID</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station wlan0 connect SSID</span></code></pre></div>
 <p>(<em>SSID</em> bezeichnet den Namen des Netzwerkes)</p>
 <p>Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit <em>“station list”</em> oder <em>“station wlan0 get-networks”</em> Nachprüfen.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station list</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>               <span class="ex">Devices</span> in Station Mode</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="ex">---------------------------------------------</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>  <span class="ex">Name</span>         State          Scanning</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="ex">---------------------------------------------</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>  <span class="ex">wlan0</span>        connected</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>[<span class="ex">iwd</span>]# station list</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>               <span class="ex">Devices</span> in Station Mode</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">---------------------------------------------</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>  <span class="ex">Name</span>         State          Scanning</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ex">---------------------------------------------</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>  <span class="ex">wlan0</span>        connected</span></code></pre></div>
 <p>Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Informationen hat!</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">iwctl</span> --passphrase passphrase station device connect SSID</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">iwctl</span> --passphrase passphrase station device connect SSID</span></code></pre></div>
 <p>Zum Beispiel:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="ex">iwctl</span> --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">~</span>$ <span class="ex">iwctl</span> --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice</span></code></pre></div>
 <h3 id="grafische-konfigurationsprogramme">Grafische Konfigurationsprogramme</h3>
 <ul>
 <li>NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!</li>
@@ -156,16 +152,16 @@ img             {border: 0.1em solid #CCC;}
 <li>Demaskieren und starten des <strong>wpa_supplicant.service</strong>.</li>
 <li>Den <strong>NetworkManager.service</strong> wieder starten.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop iwd.service</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> mask iwd.service</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop NetworkManager.service</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="ex">~</span># <span class="fu">mv</span> /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> unmask wpa_supplicant.service</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> enable --now wpa_supplicant.service</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> start NetworkManager.service</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop iwd.service</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> mask iwd.service</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> stop NetworkManager.service</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="ex">~</span># <span class="fu">mv</span> /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> unmask wpa_supplicant.service</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> enable --now wpa_supplicant.service</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">systemctl</span> start NetworkManager.service</span></code></pre></div>
 <p>Jetzt wird <em>wpa_supplicant</em> für die Verbindung mit der WiFi-Hardware benutzt.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-10
+Zuletzt bearbeitet: 2021-07-23
 </div>
 </body>
 </html>
