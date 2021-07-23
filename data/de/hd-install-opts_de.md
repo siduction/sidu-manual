@@ -1,25 +1,13 @@
 % fromiso
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Änderungen 2021-04
-+ für Pandoc vorbereitet
-
-ENDE INFOBEREICH FÜR DIE AUTOREN
-
-# Installation
-
 ## fromiso
 
 ### Booten "fromiso" - Überblick
 
- **Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.**
+Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte mit dem Dateisystem ext4. **Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.**
  
-Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte (ext4). Das ist viel schneller als von einer CD (Festplatten-Installationen "fromiso" dauern nur einen Bruchteil der Zeit).
-
-Dies ist natürlich viel schneller als von einem CD/DVD-Laufwerk, und das Laufwerk steht gleichzeitig zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.
+Der Start von einer "fromiso" Festplatten-Installationen dauert nur einen Bruchteil der Zeit, die ein Start von einer CD benötigt. 
+Außerdem steht gleichzeitig das CD/DVD-Laufwerk zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.
 
 **Voraussetzungen**
 
@@ -44,9 +32,9 @@ Im Anschluss öffnet man einen Editor der Wahl (kwrite, mcedit, vim ...):
 mcedit /etc/default/grub2-fll-fromiso
 ~~~
 
-In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`**  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der *`Anführungszeichen`* mit den eigenen Parametern.
+In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`**  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anführungszeichen *`"`* mit den eigenen Parametern. 
 
-Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen (die zur Demonstration `hervorgehobenen`  Zeilen wurden geändert):
+Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen (die zur Demonstration `hervorgehobenen` Zeilen wurden geändert):
 
 ~~~sh
 # Defaults for grub2-fll-fromiso update-grub helper
@@ -58,9 +46,9 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 #
 
 # specify where to look for the ISO
-# default: /srv/ISO <span class="highlight-1">
+# default: /srv/ISO
 ## Achtung: Dies ist der Pfad zum Verzeichnis, in dem das oder die ISO(s) liegen,  
-## der Pfad soll das eigentliche siduction.iso nicht inkludieren.###</span>
+## der Pfad soll das eigentliche siduction.iso nicht inkludieren.
 'FLL_GRUB2_ISO_LOCATION="/media/disk1part4"'
 
 # array for defining ISO prefices --> siduction-*.iso
@@ -69,11 +57,11 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 
 # set default language
 # default: en_US
-'FLL_GRUB2_LANG="en_AU"'
+'FLL_GRUB2_LANG="de_DE"'
 
 # override the default timezone.
 # default: UTC
-'FLL_GRUB2_TZ="Australia/Melbourne"' 
+'FLL_GRUB2_TZ="Europe/Berlin"' 
 
 # kernel framebuffer resolution, see
 # http://manual.siduction.org/de/cheatcodes-vga-de.htm#vga
@@ -100,4 +88,4 @@ Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des L
 System dann sehr schnell reagiert und man kann das Medium dann auch entfernen. Das ist nützlich, wenn der Start von einem USB-Stick erfolgte,  
 und man diesen USB Port anderweitig benutzen will.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-22</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
