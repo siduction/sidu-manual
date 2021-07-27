@@ -7,11 +7,9 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 Über dieses [Kontaktformular](https://forum.siduction.org/index.php?action=contact) erreichst du das siduction-Team.
 
 
-### Credit für siduction 2021.1.0
+### Credit für siduction 2021.2.0
 
 #### Core Team
-
-+ Alf Gaida (agaida)
 
 + Axel Beu (ab) 2021 †
 
@@ -20,6 +18,10 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 + Hendrik Lehmbruch (hendrikL)
 
 + Torsten Wohlfarth (towo)
+
++ Vinzenz Vietzke (vinzv)
+
++ Alf Gaida (agaida)
 
 #### Art Team
 
@@ -35,7 +37,7 @@ We **need** contributors for siduction release art!
 
 + A.Konrad (akli) (for his work on getting the manual back in shape)
 
-+ Vinzenz Vietzke (vinzv)
++ Stefan Tell (cryptosteve)
 
 #### Credit für das original manual Team
 
@@ -79,4 +81,4 @@ We **need** contributors for siduction release art!
 
 **Wir möchten allen, die zu siduction beigetragen haben und weiter beitragen genauso danken, wie den ursprünglichen Erstellern und Übersetzern des bluewater-manual**
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-04</div>
+<div id="rev">Zuletzt bearbeitet: 2021-07-27</div>
