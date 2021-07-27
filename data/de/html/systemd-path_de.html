@@ -88,7 +88,7 @@ legt bei Verwendung für das zuvor erstellte Verzeichnis den Zugriffsmodus in ok
 <p>Auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite <a href="./lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a> basierend, wollen wir das Zusammenspiel der <em>.path-Unit</em> mit anderen <em>systemd-Unit</em> verdeutlichen.</p>
 <p>Die Abbildung <em>path-Unit-Funktion</em> stellt die Abhängigkeiten der systemd-Units unseres Beispiels dar.</p>
 <figure>
-<img src="./images/systemd/path_01.svg" alt="" /><figcaption>path-Unit Funktion</figcaption>
+<img src="./images/systemd/path_01.png" alt="" /><figcaption>path-Unit Funktion</figcaption>
 </figure>
 <p>Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der <em>.path-Unit</em>. Die <em>server1.path</em>-Unit überwacht die Datei “<em>/var/www/changed</em>” und aktiviert bei Änderungen die zugehörige <em>server1.service</em>-Unit. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis “<em>/var/www/html/</em>” aus und stellt die Datei “<em>/var/www/changed</em>” zurück.<br />
 Die außerhalb der Umrandung liegende “<em>server1-watch.service</em>”-Unit übernimmt die rekursive Überwachung von <em>DocumentRoot</em> des Apache-Webservers.</p>
