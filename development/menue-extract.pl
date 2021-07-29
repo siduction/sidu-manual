@@ -79,58 +79,12 @@ while (@DATEIEN) {
             $EBENE1 ++;
             $EBENE2 = 0;
             &LINK_LINE;
-            $LINK1 = "\t\t\t<li>$LINK1</li>\n";
-            push @MENU_FILE, "\t<li class=\"versteckt\">\n\t\t<input type=\"checkbox\" id=\"M$EBENE1\"/>\n\t\t<label for=\"M$EBENE1\">$TEXT</label>\n\t\t<ul>\n$LINK1";
+            push @MENU_FILE, "\t<li class=\"versteckt\">\n\t\t<input type=\"checkbox\" id=\"M$EBENE1\"/>\n\t\t<label for=\"M$EBENE1\">$LINK1</label>\n\t\t<ul>\n";
             next;
-         }   
-         
-        if (/^# / && $#LAGER > 0) {
-            $_ = shift @LAGER;
-            chomp($_);
-            
-            if (/^### /) {
-                &LINK_LINE;
-                $LINK = "\t\t\t<li>$LINK</li>\n";
-                while (@LAGER) {
-                    $_ = shift @LAGER;
-                    if (/^### /) {
-                    chomp($_);
-                        &LINK_LINE;
-                        $LINK = "\t\t\t<li>$LINK</li>\n";
-                        push @MENU_FILE, "$LINK";
-                    } else {
-                        unshift @LAGER, $_;
-                        push @MENU_FILE, "\t\t</ul>\n\t</li>\n";
-                        next START;
-                    }
-                }
-
-            } elsif (/^## /) {            # Hier Überschrift Klasse ##
-                $EBENE2 ++;
-                &LINK_LINE;
-                $LINK2 = "\t\t\t\t\t<li>$LINK2</li>\n";
-                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK2";
-                while (@LAGER) {
-                    $_ = shift @LAGER;
-                    if (/^### /) {
-                        chomp($_);
-                        &LINK_LINE;
-                        $LINK = "\t\t\t\t\t<li>$LINK</li>\n";
-                        push @MENU_FILE, "$LINK";
-                    } else {
-                        push @MENU_FILE, "\t\t\t\t</ul>\n\t\t\t</li>\n";
-                        unshift @LAGER, $_;
-                        $EBENE2 = 0;
-                        next START;
-                    }
-                }
-                push @MENU_FILE, "\t\t\t\t</ul>\n\t\t\t</li>\n";
-            }
         } else {
             $EBENE2 ++;
             &LINK_LINE;
-                $LINK2 = "\t\t\t\t\t<li>$LINK2</li>\n";
-                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$TEXT</label>\n\t\t\t\t<ul>\n$LINK2";
+                push @MENU_FILE, "\t\t\t<li class=\"versteckt\">\n\t\t\t\t<input type=\"checkbox\" id=\"M$EBENE1" . "_" . "$EBENE2\"/>\n\t\t\t\t<label for=\"M$EBENE1" . "_" . "$EBENE2\">$LINK2</label>\n\t\t\t\t<ul>\n";
             while (@LAGER) {
                 $_ = shift @LAGER;
                 if (/^### /) {
