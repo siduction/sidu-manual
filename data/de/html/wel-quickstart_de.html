@@ -49,15 +49,14 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:
 </warning>
 <ul>
-<li><p><a href="term-konsole_de.html#terminal---kommandozeile">Terminal/Konsole</a> - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.</p></li>
-<li><p><a href="part-gparted_de.html#partitionieren-mit-gparted">Partitionieren der Festplatte</a> - Beschreibt, wie eine Festplatte partitioniert werden kann.</p></li>
-<li><p><a href="cd-dl-burning_de.html#iso-download-und-brennen">siduction ISO herunterladen und DVD brennen</a> - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.</p></li>
-<li><p><a href="hd-install_de.html#installation-auf-hdd">Installation auf einer Festplatte</a> - Beschreibt, wie siduction auf einer Festplatte installiert wird.</p></li>
-<li><p><a href="">Installation auf USB-Geräte</a> - Beschreibt, wie siduction auf USB-stick/SD/Flash-Card installiert wird.</p></li>
-<li><p><a href="hd-ins-opts-oos_de.html#installation-auf-usb-stick---speicherkarte">Installation auf USB-Stick/SD von einem anderen System</a> - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.</p></li>
-<li><p><a href="gpu_de.html#grafiktreiber">Nicht freie Treiber, Firmware und Quellen</a> - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.</p></li>
+<li><p><a href="term-konsole_de.html#">Terminal/Konsole</a> - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.</p></li>
+<li><p><a href="part-gparted_de.html#">Partitionieren der Festplatte</a> - Beschreibt, wie eine Festplatte partitioniert werden kann.</p></li>
+<li><p><a href="cd-dl-burning_de.html#">siduction ISO herunterladen und DVD brennen</a> - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.</p></li>
+<li><p><a href="hd-install_de.html#">Installation auf einer Festplatte</a> - Beschreibt, wie siduction auf einer Festplatte installiert wird.</p></li>
+<li><p><a href="hd-ins-opts-oos_de.html#">Installation auf USB-Stick/SD von einem anderen System</a> - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.</p></li>
+<li><p><a href="gpu_de.html#">Nicht freie Treiber, Firmware und Quellen</a> - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.</p></li>
 <li><p><a href="network_de.html#">Internetverbindung</a> - Beschreibt, wie man sich mit dem Internet verbinden kann.</p></li>
-<li><p><a href="sys-admin-apt_de.html#apt-paketverwaltung">Paketmanager und Systemaktualisierung</a> - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.</p></li>
+<li><p><a href="sys-admin-apt_de.html#">Paketmanager und Systemaktualisierung</a> - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.</p></li>
 </ul>
 <h3 id="zur-stabilität-von-debian-sid">Zur Stabilität von Debian Sid</h3>
 <p>‘Sid’ ist der Name des Unstable-Repositories von Debian. Debian Sid wird regelmäßig mit neuen Softwarepaketen beschickt, wodurch diese Debian-Distribution sehr zeitnah die neuesten Versionen der jeweiligen Programme enthält. Dies bedeutet aber auch, dass zwischen einer Veröffentlichung im Upstream (von den Softwareentwicklern) und der Verteilung in Debian Sid weniger Zeit ist, um die Pakete zu testen.</p>
@@ -66,12 +65,12 @@ Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei
 <h3 id="die-verwaltung-von-softwarepaketen">Die Verwaltung von Softwarepaketen</h3>
 <p>siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet apt und dpkg für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in <code>/etc/sources.list.d/*</code></p>
 <p>Debian Sid enthält mehr als 20.000 Programmpakete, womit die Chancen, ein für eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie man Programmpakete sucht, ist hier beschrieben:<br />
-<a href="sys-admin-apt_de.html#programmpakete-suchen">Programmsuche mit apt-cache bzw. apt</a><br />
+<a href="sys-admin-apt_de.html#">Programmsuche mit apt-cache bzw. apt</a><br />
 oder mit<br />
-<a href="sys-admin-apt_de.html#graphische-paketsuche">GUI-Paketsuche mit packagesearch</a> .</p>
+<a href="sys-admin-apt_de.html#">GUI-Paketsuche mit packagesearch</a> .</p>
 <p>Ein Programmpaket wird mit diesem Befehl installiert:</p>
 <pre><code>apt install &lt;Paketname&gt;</code></pre>
-<p>Siehe auch: <a href="sys-admin-apt_de.html#pakete-installieren">Neue Pakete installieren</a> .</p>
+<p>Siehe auch: <a href="sys-admin-apt_de.html#">Neue Pakete installieren</a> .</p>
 <p>Die Repositorien von Debian Sid werden in der Regel viermal am Tag mit aktualisierten bzw. neuen Softwarepaketen beschickt. Zur schnellen Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der Befehl</p>
 <pre><code>apt update</code></pre>
 <p>ist vor jeder Neuinstallation eines Softwarepakets notwendig, um die lokale Datenbank mit dem Softwareangebot der Repositorien zu synchronisieren.</p>
@@ -90,7 +89,7 @@ apt full-upgrade</code></pre>
 <p>Anschließend startet man mit folgendem Befehl wieder die graphische Oberfläche:</p>
 <pre><code>init 5</code></pre>
 <p><strong>apt full-upgrade</strong> ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:<br />
-<a href="sys-admin-apt_de.html#aktualisierung-des-systems">Aktualisierung eines installierten Systems - full-upgrade</a>.</p>
+<a href="sys-admin-apt_de.html#">Aktualisierung eines installierten Systems - full-upgrade</a>.</p>
 <h3 id="konfiguration-von-netzwerken">Konfiguration von Netzwerken</h3>
 <p>Der in allen graphischen Oberflächen von siduction integriert <strong>Networkmanager</strong> bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript <strong>nmcli</strong> Zugang zur Funktionalität der Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends <strong>wireless-tools</strong> bzw. <strong>wpasupplicant</strong> zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.</p>
 <p>Der Startbefehl in der Konsole ist <strong>nmcli</strong> oder <strong>nmtui</strong> . Falls das Skript nicht vorhanden ist, installiert man es mit:</p>
@@ -99,7 +98,7 @@ apt full-upgrade</code></pre>
 <p>Intels <a href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (<strong>IWD</strong>) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite <a href="inet-iwd_de.html#">IWD statt wpa_supplicant</a> über die Vorgehensweise.</p>
 <h3 id="runlevels---ziel-unit">Runlevels - Ziel-Unit</h3>
 <p>Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).<br />
-Die Konfiguration der Runlevel ist im Kapitel <a href="systemd-target_de.html#systemd-target---ziel-unit">siduction-Runlevels - Ziel-Unit</a> beschrieben.</p>
+Die Konfiguration der Runlevel ist im Kapitel <a href="systemd-target_de.html#">siduction-Runlevels - Ziel-Unit</a> beschrieben.</p>
 <h3 id="weitere-desktopumgebungen">Weitere Desktopumgebungen</h3>
 <p>Plasma, Gnome, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.</p>
 <h3 id="hilfe-im-irc-und-im-forum">Hilfe im IRC und im Forum</h3>
