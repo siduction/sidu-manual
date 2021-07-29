@@ -47,7 +47,7 @@ if ($SCHREIBEN =~ /\d{2}00/) {
         # Anker-Teil aus den Link der "XX00-"Dateien entfernen,
         #  damit auch der Titel der Zielseite angezeigt wird.
     foreach (@QUELLE) {
-        s/(.*?\.md).*?\)/$1\)/g;
+        s/\(\d{4}-(.*?\.)md\#.*?\)/\($1html\#\)/g;
     }
 }   
 
@@ -87,10 +87,10 @@ while (@QUELLE) {
         $_ = "<warning>$LAGER";
         }
     }
-#    if 
+
     # Handbuch interne Link auf .html ändern und Zifferncode entfernen.
-    s/(.*?\.)md/$1html/g;
-    s/\d{4}-(.*?\.html)/$1/g;
+    s/\d{4}-(.*?\.)md\#/$1html\#/g;
+    s/(\(.*?\.)md\#/$1html\#/g;
     $_ = "$_\n";
     push @NEU,$_;
 }
