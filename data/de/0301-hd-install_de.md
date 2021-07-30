@@ -4,8 +4,8 @@
 
 ### Datensicherung
 
-**WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
-Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
+> **WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
+> Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
 
 ### Installationsvorbereitungen
 
