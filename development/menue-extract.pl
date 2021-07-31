@@ -106,7 +106,12 @@ while (@DATEIEN) {
 push @MENU_FILE, "\t\t</ul>\n\t</li>\n</ul>\n</body>\n</html>\n";
 
 sub LINK_LINE {
-                # Zeilen zerlegen und neu zusammensetzen.
+
+        # Formatfehler (Leerzeichen am Zeilenende) beseitigen.
+        print "$_\n";
+        $_ =~ s!^(#{1,4}.*)\s+$!$1!;
+        
+        # Zeilen zerlegen und neu zusammensetzen.
         $CLASS = $_;
         $CLASS =~ s/^(#{1,3}) .*/$1/;
 
