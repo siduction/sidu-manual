@@ -212,7 +212,7 @@ Wie zuvor gesehen, lässt sich MariaDB vollständig über die Komandozeile verwa
 
 Wir verwenden das für weniger erfahrene Benutzer besser geeignete Progrann *phpMyAdmin* und geben in die Adresszeile des Browsers  
 **http://localhost/phpmyadmin/**  
-ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](./lamp-apache_de.md#lamp-webserver)bereits durchlaufen haben, lautet der Aufruf  
+ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](0521-lamp-apache_de.md#apache-einrichten)bereits durchlaufen haben, lautet der Aufruf  
 **https://server1.org/phpmyadmin/**
 
 Um, wie oben angeführt, dem Datenbank-Admin *root* die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin *chef* mit seinem Passwort.

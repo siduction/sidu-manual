@@ -19,6 +19,7 @@ Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das D
 
 Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit:
 (dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)
+
 ~~~
 # ls /etc/apache2/mods-enabled/* | grep php
 /etc/apache2/mods-enabled/php7.x.conf

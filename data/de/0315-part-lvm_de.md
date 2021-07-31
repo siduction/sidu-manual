@@ -26,8 +26,8 @@ Mit drei Grundbegriffen sollte man vertraut sein:
 > Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.
 
 Als Partitionierungsprogramm werden cfdisk oder gdisk benötigt, da zur Zeit GParted bzw. der KDE-Partitionsmanager (partitionmanager) das Anlegen von *Logical Volumes* nicht unterstützen. Siehe auch die Handbuchseiten:  
-[Partitionieren mit cfdisk (msdos-MBR)](part-cfdisk_de.md#partitionieren-mit-fdisk)  
-[Partitionieren mit gdisk (GPT-UEFI)](part-disk_de.md#partitionieren-mit-gdisk)
+[Partitionieren mit cfdisk (msdos-MBR)](0314-part-cfdisk_de.md#partitionieren-mit-fdisk)  
+[Partitionieren mit gdisk (GPT-UEFI)](0313-part-gdisk_de.md#partitionieren-mit-gdisk)
 
 Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 

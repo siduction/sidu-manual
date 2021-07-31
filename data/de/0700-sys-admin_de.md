@@ -10,7 +10,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [APT Paketverwaltung](0705-sys-admin-apt_de.md#apt-paketverwaltung), Paketquellen, Pakete verwalten, Aktualisierung des Systems, Programmpakete suchen und warum ausschließlich apt verwendet werden soll. 
 
-+ [Lokaler APT-Mirror](0706-sys-admin-apt-locarmirr_de.md#lokaler-apt-mirror); Apt-Cacher, der Proxy-Server für Debian-Pakete. Server installieren und die Client Konfiguration.
++ [Lokaler APT-Mirror](0706-sys-admin-apt-localmirr_de.md#lokaler-apt-mirror); Apt-Cacher, der Proxy-Server für Debian-Pakete. Server installieren und die Client Konfiguration.
 
 + [Neue Kernel installieren](0707-sys-admin-kern-upg_de.md#kernel-upgrade), Kernel-Aktualisierung ohne Systemaktualisierung, 3rd Party Module und alte Kernel entfernen.
 

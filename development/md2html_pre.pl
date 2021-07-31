@@ -44,10 +44,11 @@ if ($SCHREIBEN =~ /\d{2}00/) {
             $ZEILEN{"$NR"} = $_;
         }
     }
+        # Zifferncode entfernen.
         # Anker-Teil aus den Link der "XX00-"Dateien entfernen,
-        #  damit auch der Titel der Zielseite angezeigt wird.
+        #  damit in der Zielseite auch der Titel angezeigt wird.
     foreach (@QUELLE) {
-        s/\(\d{4}-(.*?\.)md\#.*?\)/\($1html\#\)/g;
+        s/\(\d{4}-(.*?\.)md\#.*?\)/\($1html\)/g;
     }
 }   
 
@@ -55,6 +56,8 @@ while (@QUELLE) {
     $_ = shift @QUELLE;
     chomp($_);
     
+        # Umformatierung der Warnungen
+        #
         # Eine Zeile mit ">" in "<warning> ... </warning>" Tag ändern.
     if (/^> */) {
             # ">" enfernen, schließenden Tag anhängen und in $LAGER geben.

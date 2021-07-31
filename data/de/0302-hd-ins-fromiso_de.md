@@ -1,8 +1,8 @@
 % fromiso
 
-## fromiso
+## Aus ISO-Datei booten
 
-### Booten "fromiso" - Überblick
+### Überblick
 
 Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte mit dem Dateisystem ext4. **Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.**
  

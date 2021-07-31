@@ -54,11 +54,11 @@ Um vom proprietären Treiber von Nvidia auf nouveau zu wechseln, siehe den [Eint
 
 Mehr Informationen zu [Intel](http://www.x.org/wiki/IntelGraphicsDriver)    [ATI/AMD](http://www.x.org/wiki/radeon)   [nouveau](http://nouveau.freedesktop.org/wiki/FeatureMatrix)  [X.Org](http://xorg.freedesktop.org/).
 
-### 2D Videotreiber
+### Videotreiber 2D
 
 So ziemlich jede Grafikkarte, welche einen [KMS](https://wiki.debian.org/KernelModesetting) Treiber kernelseitig benutzt, ist für den 2D Betrieb unter allen Oberflächen geeignet. In aller Regel (bis auf wenige Ausnahmen exotischer oder alter Hardware) ist auch 3D Beschleunigung vorhanden.
 
-### 3D Treiber
+### Videotreiber 3D
 
 3D Beschleunigung steht unter Linux für Intel-, AMD- und nVidia-Grafikkarten zur Verfügung. Wie gut die freien Treiber 3D implementiert haben, hängt ein wenig von der Grafikkarte selbst ab. Generell ist anzumerken, das fast alle Grafikkarten nicht-freie Firmware benötigen, um einen problemlosen Betrieb zu ermöglichen. Diese Firmware gibt es bei Debian nur im non-free Repository, das diese Firmware nict DFSG konform ist. Ist die korrekte Firmware installiert, ist 3D Support mit Intel oder AMD Grafikkarten ohne weiteres Zutun verfügbar. Bei nVidia Grafik sieht die Geschichte etwas anders aus. Ältere Karten, welche seitens nVidia als legacy Karten eingestuft sind, funktionieren relativ gut, auch wenn immer mit Problemen zu rechnen ist, da auch der verwendete Desktop eine Rolle spielt. Der freie nouveau-Treiber wird ohne Unterstützung von nVidia per [reverse engineering](https://de.wikipedia.org/wiki/Reverse_Engineering) entwickelt.
 

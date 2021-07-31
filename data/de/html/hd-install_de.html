@@ -42,14 +42,15 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="installation-auf-hdd">Installation auf HDD</h2>
 <h3 id="datensicherung">Datensicherung</h3>
-<p><strong>WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!</strong><br />
-Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.</p>
+<warning>
+<strong>WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!</strong> <br />Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.
+</warning>
 <h3 id="installationsvorbereitungen">Installationsvorbereitungen</h3>
 <p>Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der <code>F2</code> oder <code>Entf</code>-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste <code>F12</code>, <code>F11</code> <code>F7</code> oder <code>F8</code> (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.</p>
 <p>siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite <a href="cheatcodes_de.html#bootoptionen-cheatcodes">Cheatcodes</a> erläutert die möglichen Optionen.<br />
 Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu “From CD/DVD/ISO: …” oder “From Stick/HDD: …” navigiert und die Taste <code>e</code> betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste <code>F10</code> wird der Bootvorgang fortgesetzt.</p>
 <p><strong>Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.</strong></p>
-<p>Soll siduction nicht von, sondern <strong>auf ein USB-Medium</strong> installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a href="hd-install-opts_de.html#fromiso">Installation auf ein USB-Medium</a>.</p>
+<p>Soll siduction nicht von, sondern <strong>auf ein USB-Medium</strong> installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a href="hd-ins-fromiso_de.html#fromiso">Installation auf ein USB-Medium</a>.</p>
 <p><strong>HDD, RAM und Swap</strong></p>
 <p>Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite <a href="cd-content_de.html#minimale-systemanforderungen">Inhalt der Live-ISO</a> beschrieben.<br />
 Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.</p>

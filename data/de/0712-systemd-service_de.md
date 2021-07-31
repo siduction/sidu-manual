@@ -110,8 +110,8 @@ WatchdogSec=      BusName=
 **Beispiele**  
 Einige selbst erstellte Service-Units finden sich auf unseren Handbuchseiten
 
-[service-Unit für systemd Timer](./0716-systemd-timer_de.md#service-unit-anlegen)  
-[service-Unit für systemd Path](./0715-systemd-path_de.md#service-unit-anlegen)  
+[service-Unit für systemd Timer](0716-systemd-timer_de.md#timer-unit-anlegen)  
+[service-Unit für systemd Path](0715-systemd-path_de.md#path-unit-anlegen)  
 und mit der bevorzugten Suchmaschine im Internet.  
 [LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)
 

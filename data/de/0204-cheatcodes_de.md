@@ -23,7 +23,7 @@ Diese Bootoptionen gelten nur für die Live-DVD.
 | ---- | ---- | --------- |
 |  blacklist  | Name des Moduls | temporäre Deaktivierung von Modulen, bevor udev aktiv wird | 
 |  desktop  | kde, gnome, fluxbox | Desktopumgebung auswählen | 
-|  fromiso  |  | [bitte lies "Booten 'fromiso'"](hd-install-opts_de.md#fromiso)  | 
+|  fromiso  |  | [bitte lies "Booten 'fromiso'"](0302-hd-ins-fromiso_de.md#fromiso)  | 
 |  hostname  | myhostname | ändert den Netzwerknamen (hostname) des Live-CD-Systems | 
 |  lang  |  be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr, fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru, zh | setzt die Spracheinstellung, die Grundeinstellungen der Lokalisation (locales), das Tastaturlayout (in der Konsole wie in X), die Zeitzone und den Spiegelserver von Debian.  Mit der Langform **lang=ll_cc** oder **lang=ll-cc** bedeutet **ll** die Sprachauswahl und **cc** Tastaturlayout, Spiegelserver und Zeitzonenwahl (z.B. "lang=fr-be" ). Die Grundeinstellung für Englisch ist en_US mit UTC als Zeitzone und für Deutsch, de mit Europe/Berlin als die Zeitzone. Beispiel für eine selbstgewählte Einstellung: "lang=pt_PT tz=Pacific/Auckland"  | 
 |  md5sum  |  | testet die Prüfsumme der CD/DVD (zur Kontrolle, ob CD/DVD in Ordnung sind) | 
@@ -36,7 +36,7 @@ Diese Bootoptionen gelten nur für die Live-DVD.
 |  nomodeset  | radeon.modeset=0 | ermöglicht zusammen mit **xmodule=vesa** ein sauberes Booten nach X bei Radeonkarten im Live-Mode | 
 |  nonetwork  |  | verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten | 
 |  noswap  |  | Keine Aktivierung der Swap-Partition | 
-|  persist  |  | [bitte lies "fromiso und persist"](hd-install-opts_de.md#fromiso)  | 
+|  persist  |  | [bitte lies "fromiso und persist"](0302-hd-ins-fromiso_de.md#fromiso)  | 
 |  smouse  |  | sucht mittels hwinfo nach seriellen Mauseingabegeräten | 
 |  tz  | tz=Europe/Dublin | setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird **utc=yes** angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy & paste: **file:///usr/share/zoneinfo/** in den Browser eingegeben wird . | 
 |  toram  |  | kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie | 

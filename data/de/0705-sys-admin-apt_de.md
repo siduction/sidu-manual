@@ -24,7 +24,7 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 | [apt show](#paketsuche-im-terminal) | apt-cache show  | Anzeige der Details eines Paketes. |
 | [apt list](#paketsuche-im-terminal) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
 
-### Liste der Quellen (sources.list)
+### sources.list - Liste der Quellen
 
 Das "APT"-System benötigt eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei sources.list. Moderne Systeme benutzen mittlerweile  modularisierte Sourcen um die Übersicht zu verbessern.
 
@@ -297,7 +297,8 @@ teclasat/unstable upgradeable from 0.7m02-1 to 0.7n01-1
 libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3.........
 ~~~
 
-Das gleiche erreicht man mit: 
+Das gleiche erreicht man mit:
+
 ~~~
 apt list --upgradable
 ~~~

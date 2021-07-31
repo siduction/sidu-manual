@@ -8,10 +8,10 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
 
 + Zuerst immer ein Daten-Backup anlegen!  
 
-+ Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](part-uuid-de.htm#uuid---benennung-von-blockgeräten) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
++ Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](0311-part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
 
 + Größenänderungen bei **NTFS-Partitionen** erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.
-[Bitte lese hier weiter.](#ntfs-partitionsgrößen-mit-gparted-ändern)
+[Bitte lese hier weiter.](0312-part-gparted_de.md#ntfs-partitionsgrößen-mit-gparted-ändern)
 
 + Eine Partition benötigt ein Dateisystem. Linux kann auf und mit verschiedenen Dateisystemen arbeiten.  
   Für normalen Gebrauch empfehlen wir das Dateisystem ext4.  
@@ -112,7 +112,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 > Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
 
 
-Siehe dazu die Handbuchseite [Anpassung der fstab](part-uuid_de.md#die-fstab).  
+Siehe dazu die Handbuchseite [Anpassung der fstab](0311-part-uuid_de.md#die-fstab).  
 In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUID's.
 
 ~~~

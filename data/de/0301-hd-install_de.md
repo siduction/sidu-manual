@@ -16,7 +16,7 @@ Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeil
 
 **Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.**
 
-Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](hd-install-opts_de.md#fromiso).
+Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](0302-hd-ins-fromiso_de.md#fromiso).
 
 **HDD, RAM und Swap**
 

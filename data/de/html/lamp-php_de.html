@@ -58,7 +58,10 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li>In <strong>/var/lib/php/</strong> der zur Laufzeit aktuelle Zustand der Module und Sessions.</li>
 </ul>
 <h3 id="php-unterstützung-für-apache2">PHP-Unterstützung für Apache2</h3>
-<p>Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit: (dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4) ~~~ # ls /etc/apache2/mods-enabled/* | grep php /etc/apache2/mods-enabled/php7.x.conf /etc/apache2/mods-enabled/php7.x.load ~~~</p>
+<p>Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit: (dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)</p>
+<pre><code># ls /etc/apache2/mods-enabled/* | grep php
+/etc/apache2/mods-enabled/php7.x.conf
+/etc/apache2/mods-enabled/php7.x.load</code></pre>
 <p>und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung “<em>.php</em>” zu verarbeiten, muss in der Apache Konfigurationsdatei <em>dir.conf</em> die Direktive <em>DirectoryIndex</em> den Wert <em>index.php</em> enthalten. Auch das prüfen wir:</p>
 <pre><code># cat /etc/apache2/mods-available/dir.conf
 &lt;IfModule mod_dir.c&gt;
