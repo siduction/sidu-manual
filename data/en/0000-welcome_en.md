@@ -59,21 +59,6 @@ See also [DFSG](https://de.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
 
 For those who want to get started quickly, here is the [Quick Start Guide](./wel-quickstart_en.md#siduction-short-guide)
 
-The siduction operating system manual is a reference for getting to know the system as well as for refreshing your knowledge of the system. It not only provides basic knowledge, but also covers complex topics and supports the work as an administrator of siduction systems.% Siduction Manual
-
-# Welcome
-
-**The siduction™ GNU/Linux operating system**.
-
-The name **siduction** is a wordplay of two terms: The word **sid**, meaning the code name of Debian Unstable, and **seduction**, meaning to seduce.
-
-siduction is an operating system based on the [Linux kernel](https://kernel.org) and the [GNU project](https://gnu.org). In addition there are application programs from [Debian](https://debian.org). siduction is committed to the core values of the [Debian Social Contract](https://www.debian.org/social_contract.de.html) and the following "*Debian Free Software Guidelines*".  
-See also [DFSG](https://de.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
-
-### General
-
-For those who want to get started quickly, here is the [Quick Start Guide](./wel-quickstart_en.md#siduction-short-guide)
-
 The siduction operating system manual is a reference for getting to know the system as well as for refreshing your knowledge of the system. It not only provides basic knowledge, but also covers complex topics and supports the work as an administrator of siduction systems.
 
 It is divided into similar topics: Everything concerning partitioning, for example, is in the "Installation/Partitioning" chapter, and topics concerning WLAN are in the "Network" chapter.
