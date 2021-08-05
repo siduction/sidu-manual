@@ -68,11 +68,6 @@ rsync://ftp.halifax.rwth-aachen.de/siduction/
 ftp://ftp.halifax.rwth-aachen.de/siduction/
 http://ftp.halifax.rwth-aachen.de/siduction/
 
-+ **Easy Lee, Amsterdam, Netherlands**  
-https://mirror.easylee.nl/siduction/
-http://mirror.easylee.nl/siduction/
-rsync://mirror.easylee.nl/siduction/
-
 + **Studenten Net Twente, Netherlands**  
 http://ftp.snt.utwente.nl/pub/linux/siduction/
 https://ftp.snt.utwente.nl/pub/linux/siduction/
