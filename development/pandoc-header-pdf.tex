@@ -59,10 +59,19 @@
     \renewcommand{\footrulewidth}{0.4pt}
     
 % Hurenkinder und Schusterjungen verhindern
+% \usepackage[nodisplayskipstretch]{setspace}
+%     \clubpenalty10000
+%     \widowpenalty10000
+%     \displaywidowpenalty=10000
+    
+% Paragraphs
+\usepackage{indentfirst}
+    \frenchspacing
 \usepackage[nodisplayskipstretch]{setspace}
-    \clubpenalty10000
-    \widowpenalty10000
-    \displaywidowpenalty=10000
+    \onehalfspacing
+    \sloppy
+    \clubpenalty=10000
+    \widowpenalty=10000
 
 % code-block style
 \usepackage{xcolor}
