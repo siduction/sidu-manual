@@ -368,7 +368,9 @@ Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit
 
 Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.
 
-Zu beachten ist der folgende Ablauf:
+
+  
+  Zu beachten ist der folgende Ablauf:
 
 1. Aus der Desktopumgebung abmelden
   (diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht)
