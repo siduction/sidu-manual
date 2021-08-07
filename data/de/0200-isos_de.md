@@ -1,6 +1,6 @@
-% ISOs
+% ISO-Abbilder
 
-# ISOs
+# ISO-Abbilder
 
 Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 
