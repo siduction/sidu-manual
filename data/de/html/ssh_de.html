@@ -33,7 +33,6 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#ssh-absichern">SSH absichern</a></li>
 <li><a href="#ssh-für-x-window-programme">SSH für X-Window Programme</a></li>
 <li><a href="#kopieren-scp-via-ssh">Kopieren scp via ssh</a></li>
-<li><a href="#entfernter-zugriff-von-einem-windows-pc">Entfernter Zugriff von einem Windows-PC</a></li>
 <li><a href="#ssh-mit-dolphin">SSH mit Dolphin</a></li>
 <li><a href="#sshfs---auf-einem-entfernten-computer-mounten">SSHFS - auf einem entfernten Computer mounten</a></li>
 </ul></li>
@@ -99,20 +98,6 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <pre><code>scp -r &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/filename.txt**`** .** `** </code></pre>
 <p>Weitere Informationen:</p>
 <pre><code>man scp</code></pre>
-<h3 id="entfernter-zugriff-von-einem-windows-pc">Entfernter Zugriff von einem Windows-PC</h3>
-<p>unter Nutzung von SSH und X-Forwarding:</p>
-<ul>
-<li>Herunterladen und Brennen der <a href="http://xlivecd.indiana.edu/">Cygwin XLiveCD</a><br />
-</li>
-<li>Die CD ins Laufwerk einlegen und auf den automatischen Start (autorun) warten<br />
-</li>
-<li>Weiter (continue) klicken, bis sich ein Shell-Fenster öffnet.<br />
-</li>
-<li>Folgenden Befehl eingeben:</li>
-</ul>
-<pre><code>ssh -X username@xxx.xxx.xxx.xxx</code></pre>
-<p><code>Anmerkung: xxx.xxx.xxx.xxx ist die IP-Adresse des entfernten Linux-PCs oder seine URL (z.B. eines dyndns.org Accounts), und der Username ist natürlich der eines auf dem entfernten Rechner existierenden Benutzerkontos.</code> Nach erfolgreichem Login kann man zum Beispiel ‘kmail’ starten und seine Mails abrufen.</p>
-<p>Wichtig: hosts.allow muss einen Eintrag beinhalten, der auch Rechnern aus anderen Netzwerken den Zugriff erlaubt. Wenn man einen Router oder eine NAT-Firewall verwendet, muss Port 22 zum Linuxrechner weitergeleitet sein (portforwarding).</p>
 <h3 id="ssh-mit-dolphin">SSH mit Dolphin</h3>
 <p>Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das <code>sftp-</code> Protokoll benutzen, welches in ssh vorhanden ist.</p>
 <p>So wird es gemacht:<br />

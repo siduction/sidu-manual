@@ -31,7 +31,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#apt-paketverwaltung">APT Paketverwaltung</a>
 <ul>
 <li><a href="#apt-und-apt-get">apt und apt-get</a></li>
-<li><a href="#liste-der-quellen-sources.list">Liste der Quellen (sources.list)</a></li>
+<li><a href="#sources.list---liste-der-quellen">sources.list - Liste der Quellen</a></li>
 <li><a href="#apt-update">apt update</a></li>
 <li><a href="#pakete-installieren">Pakete installieren</a></li>
 <li><a href="#pakete-entfernen">Pakete entfernen</a></li>
@@ -129,7 +129,7 @@ Eine vollständige Beschreibung des APT-Systems findet man in <a href="https://w
 </tr>
 </tbody>
 </table>
-<h3 id="liste-der-quellen-sources.list">Liste der Quellen (sources.list)</h3>
+<h3 id="sources.list---liste-der-quellen">sources.list - Liste der Quellen</h3>
 <p>Das “APT”-System benötigt eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei sources.list. Moderne Systeme benutzen mittlerweile modularisierte Sourcen um die Übersicht zu verbessern.</p>
 <p>siduction stellt die Quellen in diesem Ordner bereit:</p>
 <pre><code>/etc/apt/sources.list.d/</code></pre>
@@ -287,7 +287,7 @@ apt install kmahjongg / apt full-upgrade</code></pre>
 <p>Ein einfaches “apt upgrade” von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein <strong>apt upgrade</strong> von der Situation nicht betroffene Pakete aktualisieren.</p>
 <p>Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?<br />
 Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals täglich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden.</p>
-<p>Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.</p>
+<p>Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht gewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.</p>
 <p><strong>Aktualisierung nicht mit Live-Medium</strong></p>
 <p>Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum “<em>apt</em>” verwendet werden sollte.</p>
 <h3 id="aktualisierbare-pakete">Aktualisierbare Pakete</h3>
@@ -344,7 +344,7 @@ Möchtest Du fortfahren [J/n]?J </code></pre>
 <p>Nach dem Download der Pakete mittels “<em>full-upgrade -d</em>” können diese jederzeit entsprechend dem Vorgehen im folgendem Absatz installiert werden.</p>
 <h3 id="full-upgrade-ausführen">full-upgrade ausführen</h3>
 <warning>
-<strong>Warnhinweis:</strong> <br />Eine Systemaktualisierung, die <strong>nicht</strong> im ‘multi-user.target’ (ehemals Runlevel 3) durchgeführt wird, kann zu Probleme führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
+<strong>Warnhinweis:</strong> <br />Eine Systemaktualisierung, die <strong>nicht</strong> im ‘multi-user.target’ (ehemals Runlevel 3) durchgeführt wird, kann zu Problemen führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 </warning>
 <p>Besuche vor einer Systemaktualisierung die <a href="https://forum.siduction.org/">siduction-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.</p>
 <p>Zu beachten ist der folgende Ablauf:</p>

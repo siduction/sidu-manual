@@ -33,7 +33,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#open-source-xorg-treiber">Open Source Xorg-Treiber</a></li>
 <li><a href="#propritäre-treiber">Propritäre Treiber</a></li>
 <li><a href="#videotreiber-2d">Videotreiber 2D</a></li>
-<li><a href="#treiber-3d">Treiber 3D</a></li>
+<li><a href="#videotreiber-3d">Videotreiber 3D</a></li>
 <li><a href="#nvidia-closed-source-treiber">nVidia closed Source Treiber</a></li>
 </ul></li>
 </ul>
@@ -80,8 +80,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Mehr Informationen zu <a href="http://www.x.org/wiki/IntelGraphicsDriver">Intel</a> <a href="http://www.x.org/wiki/radeon">ATI/AMD</a> <a href="http://nouveau.freedesktop.org/wiki/FeatureMatrix">nouveau</a> <a href="http://xorg.freedesktop.org/">X.Org</a>.</p>
 <h3 id="videotreiber-2d">Videotreiber 2D</h3>
 <p>So ziemlich jede Grafikkarte, welche einen <a href="https://wiki.debian.org/KernelModesetting">KMS</a> Treiber kernelseitig benutzt, ist für den 2D Betrieb unter allen Oberflächen geeignet. In aller Regel (bis auf wenige Ausnahmen exotischer oder alter Hardware) ist auch 3D Beschleunigung vorhanden.</p>
-<h3 id="treiber-3d">Treiber 3D</h3>
-<p>3D Beschleunigung steht unter Linux für Intel-, AMD- und nVidia-Grafikkarten zur Verfügung. Wie gut die freien Treiber 3D implementiert haben, hängt ein wenig von der Grafikkarte selbst ab. Generell ist anzumerken, das fast alle Grafikkarten nicht-freie Firmware benötigen, um einen problemlosen Betrieb zu ermöglichen. Diese Firmware gibt es bei Debian nur im non-free Repository, das diese Firmware nict DFSG konform ist. Ist die korrekte Firmware installiert, ist 3D Support mit Intel oder AMD Grafikkarten ohne weiteres Zutun verfügbar. Bei nVidia Grafik sieht die Geschichte etwas anders aus. Ältere Karten, welche seitens nVidia als legacy Karten eingestuft sind, funktionieren relativ gut, auch wenn immer mit Problemen zu rechnen ist, da auch der verwendete Desktop eine Rolle spielt. Der freie nouveau-Treiber wird ohne Unterstützung von nVidia per <a href="https://de.wikipedia.org/wiki/Reverse_Engineering">reverse engineering</a> entwickelt.</p>
+<h3 id="videotreiber-3d">Videotreiber 3D</h3>
+<p>3D Beschleunigung steht unter Linux für Intel-, AMD- und nVidia-Grafikkarten zur Verfügung. Wie gut die freien Treiber 3D implementiert haben, hängt ein wenig von der Grafikkarte selbst ab. Generell ist anzumerken, dass fast alle Grafikkarten nicht-freie Firmware benötigen, um einen problemlosen Betrieb zu ermöglichen. Diese Firmware gibt es bei Debian nur im non-free Repository, da sie nicht DFSG konform ist. Ist die korrekte Firmware installiert, ist 3D Support mit Intel oder AMD Grafikkarten ohne weiteres Zutun verfügbar. Bei nVidia Grafik sieht die Geschichte etwas anders aus. Ältere Karten, welche seitens nVidia als legacy Karten eingestuft sind, funktionieren relativ gut, auch wenn immer mit Problemen zu rechnen ist, da auch der verwendete Desktop eine Rolle spielt. Der freie nouveau-Treiber wird ohne Unterstützung von nVidia per <a href="https://de.wikipedia.org/wiki/Reverse_Engineering">reverse engineering</a> entwickelt.</p>
 <p>Da für den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und Nvidia ab Fermi) die nicht-freie Firmware benötigt wird, sollte in /etc/apt/sources.list/debian.list ein Eintrag analog</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">deb</span> http://deb.debian.org/debian/ unstable main contrib non-free </span></code></pre></div>
 <p>gesetzt sein. Um sich nachfolgende Probleme mit WLAN, Netzwerk, Bluetooth oder Ähnliches zu ersparen, ist ein</p>
