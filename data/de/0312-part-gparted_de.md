@@ -113,7 +113,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 
 Siehe dazu die Handbuchseite [Anpassung der fstab](0311-part-uuid_de.md#die-fstab).  
-In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUID's.
+In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUIDs.
 
 ~~~
 root@pc1:/# cat /etc/fstab
