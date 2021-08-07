@@ -127,6 +127,9 @@ sub LINK_LINE {
         
         $ANKER = $TEXT;
         $ANKER =~ s!(.*)!\L$1!;
+        $ANKER =~ s!Ä!ä!g;
+        $ANKER =~ s!Ö!ö!g;
+        $ANKER =~ s!Ü!ü!g;
         $ANKER =~ s!( )!-!g;
         
         $LINK = "<a target= \"main\" href=\"$FILE\#$ANKER\">$TEXT</a>";
