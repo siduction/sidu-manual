@@ -1,6 +1,6 @@
 % Systemadministration - systemd
 
-## Systemd der System- und Dienste-Manager
+## Systemd, der System- und Dienste-Manager
 
 *Anmerkung:*  
 *Die folgende, allgemeine Einführung zu systemd wurde überwiegend der ins [deutsche übersetzten Manpage](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html) entnommen. Der Dank geht an Helge Kreutzmann.*
