@@ -364,7 +364,7 @@ Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit
 ### full-upgrade ausführen
 
 > **Warnhinweis:**  
-> Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Probleme führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
+> Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Problemen führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 
 Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.
 
