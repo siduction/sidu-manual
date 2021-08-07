@@ -67,6 +67,9 @@ while (@DATEIEN) {
         
         $LINK = "\[\]\($FILE\#$H_TEXT\)";
         $LINK =~ s!(.*)!\L$1!;
+        $LINK =~ s!Ä!ä!g;
+        $LINK =~ s!Ö!ö!g;
+        $LINK =~ s!Ü!ü!g;
         $LINK =~ s!( )!-!g;
         $_ = "$FILE   $H_CLASS $H_TEXT   Link: $LINK\n";
         push @HLFILE,$_;
