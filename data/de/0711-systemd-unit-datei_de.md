@@ -6,7 +6,7 @@ Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbu
 In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
 
 Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedenen  Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
-Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typ enthalten. Die generischen Sektionen "[Unit]" am Beginn und "[Install]" am Ende der Datei sind optional, wobei die Sektion "[Unit]" dringend empfohlen wird. 
+Alle Unit-Dateien müssen eine Sektion entsprechend des Unit-Typ enthalten. Die generischen Sektionen "[Unit]" am Beginn und "[Install]" am Ende der Datei sind optional, wobei die Sektion "[Unit]" dringend empfohlen wird. 
 
 ### Ladepfad der Unit-Dateien
 
@@ -67,7 +67,7 @@ Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */d
 
 Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ-spezifische Sektion enthalten.
 
-#### Sektion Unit
+#### Sektion Units
 
 Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
 
