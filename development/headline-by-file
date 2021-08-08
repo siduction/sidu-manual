@@ -242,7 +242,7 @@
 0711-systemd-unit-datei_de.md   ### Ladepfad der Unit-Dateien   Link: [](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien)
 0711-systemd-unit-datei_de.md   ### Aktivierung der Unit-Datei   Link: [](0711-systemd-unit-datei_de.md#aktivierung-der-unit-datei)
 0711-systemd-unit-datei_de.md   ### Sektionen der Unit-Datei   Link: [](0711-systemd-unit-datei_de.md#sektionen-der-unit-datei)
-0711-systemd-unit-datei_de.md   #### Sektion Units   Link: [](0711-systemd-unit-datei_de.md#sektion-units)
+0711-systemd-unit-datei_de.md   #### Sektion Unit   Link: [](0711-systemd-unit-datei_de.md#sektion-unit)
 0711-systemd-unit-datei_de.md   #### Typ-spezifische Sektion   Link: [](0711-systemd-unit-datei_de.md#typ-spezifische-sektion)
 0711-systemd-unit-datei_de.md   #### Sektion Install   Link: [](0711-systemd-unit-datei_de.md#sektion-install)
 0711-systemd-unit-datei_de.md   ### Beispiel cupsd   Link: [](0711-systemd-unit-datei_de.md#beispiel-cupsd)

@@ -56,7 +56,7 @@ geometry=portrait
 
 mkdir ../sicherung/ || exit 1
 
-cp -a ./* ../sicherung/ 2>/dev/null
+cp -pP ./* ../sicherung/ 2>/dev/null
 
 LISTE=$(ls [[:digit:]]*)
 
@@ -72,5 +72,5 @@ echo PDF in Arbeit.
 
 pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath --highlight-style tango -V language=$language -V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor -V geometry:margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" -V geometry=$geometry -V alignment=$alignment -V columns=$columns -V fontsize=$fontsize -V nohyphenation=$nohyphenation $LISTE -o ./pdf/siduction-manual_de.pdf
 
-cp -a ../sicherung/* ./ && rm -r ../sicherung
+cp -pP ../sicherung/* ./ && rm -r ../sicherung
 
