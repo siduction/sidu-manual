@@ -34,7 +34,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#aktivierung-der-unit-datei">Aktivierung der Unit-Datei</a></li>
 <li><a href="#sektionen-der-unit-datei">Sektionen der Unit-Datei</a>
 <ul>
-<li><a href="#sektion-units">Sektion Units</a></li>
+<li><a href="#sektion-unit">Sektion Unit</a></li>
 <li><a href="#typ-spezifische-sektion">Typ-spezifische Sektion</a></li>
 <li><a href="#sektion-install">Sektion Install</a></li>
 </ul></li>
@@ -91,7 +91,7 @@ Der Befehl</p>
 Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf <em>/dev/null</em> ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand “masked” und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.</p>
 <h3 id="sektionen-der-unit-datei">Sektionen der Unit-Datei</h3>
 <p>Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung “<em>.timer</em>” und muss “[Timer]” als Typ-spezifische Sektion enthalten.</p>
-<h4 id="sektion-units">Sektion Units</h4>
+<h4 id="sektion-unit">Sektion Unit</h4>
 <p>Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.</p>
 <ol type="1">
 <li><p>Allgemeine Optionen</p>

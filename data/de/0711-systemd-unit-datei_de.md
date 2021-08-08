@@ -67,7 +67,7 @@ Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */d
 
 Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ-spezifische Sektion enthalten.
 
-#### Sektion Units
+#### Sektion Unit
 
 Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
 
