@@ -1,91 +1,91 @@
-% siduction ISO download und brennen
+% siduction ISO download and burn
 
-## ISO download und brennen
+## ISO download and burn
 
-### siduction ISO herunterladen
+### siduction ISO download
 
-**Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.**  
+**Please use the closest mirror. Mirror servers listed below the link with details for the entry in /etc/apt/sources.list.d/siduction.list will be updated in a timely manner.  
 
-**Europa**  
+**Europe**  
 
-+ **Office Vienna, Wien, Österreich**  
++ **Office Vienna, Vienna, Austria**  
 https://siduction.office-vienna.at/
 
-+ **Freie Universität Berlin/spline (Student Project LInux NEtwork), Deutschland**  
++ **Freie Universität Berlin/spline (Student Project LInux NEtwork), Germany**  
 http://ftp.spline.de/pub/siduction/  
 https://ftp.spline.de/pub/siduction/  
 ftp://ftp.spline.de/pub/siduction/
 
-+ **Universität Stuttgart, Deutschland**  
++ **University of Stuttgart, Germany**  
 http://ftp.uni-stuttgart.de/siduction/  
 https://ftp.uni-stuttgart.de/siduction/  
 ftp://ftp.uni-stuttgart.de/siduction/
 
-+ **Academic Computer Club, Universität Umeå, Schweden**  
++ **Academic Computer Club, Umeå University, Sweden**  
 http://ftp.acc.umu.se/mirror/siduction.org/  
 https://ftp.acc.umu.se/mirror/siduction.org/  
 rsync://ftp.acc.umu.se/mirror/siduction.org/
 
-+ **Dotsrc.org, Universität Aalborg, Dänemark**  
++ **Dotsrc.org, Aalborg University, Denmark**  
 http://mirrors.dotsrc.org/siduction/  
 https://mirrors.dotsrc.org/siduction/  
 ftp://mirrors.dotsrc.org/siduction/  
 rsync://mirrors.dotsrc.org/siduction/
 
-+ **Yandex, Moskau, Russland**  
++ **Yandex, Moscow, Russia**  
 https://mirror.yandex.ru/mirrors/siduction/  
 http://mirror.yandex.ru/mirrors/siduction/  
 ftp://mirror.yandex.ru/mirrors/siduction/  
 rsync://mirror.yandex.ru/mirrors/siduction/
 
-+ **GARR Consortium, Italien**  
++ **GARR Consortium, Italy**  
 http://siduction.mirror.garr.it/  
 https://siduction.mirror.garr.it/
 
-+ **Quantum Mirror, Ungarn**  
++ **Quantum Mirror, Hungary**  
 http://quantum-mirror.hu/mirrors/pub/siduction/  
 https://quantum-mirror.hu/mirrors/pub/siduction/  
 rsync://quantum-mirror.hu/siduction/
 
-+ **Belnet, Brüssel, Belgien**  
++ **Belnet, Brussels, Belgium**  
 http://ftp.belnet.be/mirror/siduction/  
 https://ftp.belnet.be/mirror/siduction/  
 ftp://ftp.belnet.be/mirror/siduction/  
 rsync://ftp.belnet.be/siduction/
 
-+ **Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Deutschland**  
++ **Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Germany**  
 http://ftp.gwdg.de/pub/linux/siduction/  
 https://ftp.gwdg.de/pub/linux/siduction/  
 ftp://ftp.gwdg.de/pub/linux/siduction/  
 rsync://ftp.gwdg.de/pub/linux/siduction/
 
-+ **RWTH Aachen, Deutschland**  
++ **RWTH Aachen, Germany**  
 https://ftp.halifax.rwth-aachen.de/siduction/  
 rsync://ftp.halifax.rwth-aachen.de/siduction/  
 ftp://ftp.halifax.rwth-aachen.de/siduction/  
 http://ftp.halifax.rwth-aachen.de/siduction/
 
-+ **Studenten Net Twente, Niederlande**  
++ **Studenten Net Twente, Netherlands**  
 http://ftp.snt.utwente.nl/pub/linux/siduction/  
 https://ftp.snt.utwente.nl/pub/linux/siduction/  
 ftp://ftp.snt.utwente.nl/pub/linux/siduction/  
 rsync://ftp.snt.utwente.nl/siduction/
 
-**Asien**
+**Asia**
 
-+ **KoDDOS, Amarutu Technology, Hongkong**  
++ **KoDDOS, Amarutu Technology, Hong Kong**  
 https://mirror-hk.koddos.net/siduction/  
 http://mirror-hk.koddos.net/siduction/  
 rsync://mirror-hk.koddos.net/siduction/
 
-**Südamerika**
+**South America**
 
 + **Corporación Ecuatoriana para el Desarrollo de la Investigación y la Academia, Cuenca**  
 https://mirror.cedia.org.ec/siduction/  
 http://mirror.cedia.org.ec/siduction/  
 rsync://mirror.cedia.org.ec/siduction/
 
-**Nordamerika**
+**North America**
 
 + **Department of Mathematics, Princeton University, United States**  
 http://mirror.math.princeton.edu/pub/siduction/  
@@ -99,9 +99,9 @@ rsync://rsync.gtlib.gatech.edu/siduction/
 + **Liquorix.net, United States**  
 https://liquorix.net/siduction/
 
-### Dateien der siduction-Spiegelserver
+### siduction mirror files
 
-Jeder Spiegelserver umfasst folgende Dateien:
+Each mirror includes the following files:
 
 siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.arch.manifest  
 siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso  
@@ -112,86 +112,86 @@ SHA256SUM.gpg
 SOURCES  
 
 
-Die **.manifest**-Datei listet alle Pakete der jeweiligen ISO.
+The **.manifest** file lists all packages of the respective ISO.
 
-**.iso** ist die für den Download angebotene Abbilddatei.
+**.iso** is the image file provided for download.
 
-Die Dateien **.md5** und **.sha256** dienen der Überprüfung der Integrität der ISO.
+The **.md5** and **.sha256** files are used to verify the integrity of the ISO.
 
-Die **.gpg**-Dateien sind die Signaturdateien, mit denen Checksummen-Dateien (.md5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.
+The **.gpg** files are the signature files used to check checksum files (.md5 .sha256) for changes. The latter are used to check the integrity of the ISO.
 
-Download-Links und Spiegelserver findet man auf [siduction.org](https://forum.siduction.org/index.php?page=7)
+Download links and mirrors can be found at [siduction.org](https://forum.siduction.org/index.php?page=7).
 
-Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.
+The tar archive with the sources is interesting for those who want to redistribute siduction. Here the sources must be distributed to comply with the license. More information can be found in the tar archive.
 
-Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6667 #siduction-de erreichbar. 
+If someone can provide a FTP server with appropriate traffic, we are always available in the [siduction forums](https://siduction.org) or in IRC irc.oftc.net:6667 #siduction-de. 
 
-### md5sum und Integritätsprüfung
+### md5sum and integrity checking
 
-Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen Datei benutzt. Dabei wird die momentane md5sum der Datei mit einer bekannten früheren Summe verglichen. So kann festgestellt werden, ob die Datei verändert oder beschädigt wurde, was bei heruntergeladenen Dateien aus dem Netz immer ratsam ist und viel Zeit für die Fehlersuche erspart.
+An md5sum is the checksum of a file. This checksum is used to check the integrity of the associated file. It compares the current md5sum of the file with a known previous sum. This way it can be determined if the file has been modified or damaged, which is always advisable for files downloaded from the net and saves a lot of time for debugging.
 
-Die Datei ist unbeschädigt heruntergeladen worden, wenn die md5sum der heruntergeladenen Datei mit der Summe in der MD5-Datei übereinstimmt. Unter Linux erhält man die md5sum einer Datei mit:
+The file has been downloaded undamaged if the md5sum of the downloaded file matches the sum in the MD5 file. On Linux, you can get the md5sum of a file with:
 
-    $ md5sum zu_prüfende_datei
+    $ md5sum to_check_file
 
-Das dauert ein wenig und die Summe wird dann in der Konsole ausgegeben und kann dann mit der Summe wie sie in der entsprechenden *.md5 Datei hinterlegt ist manuell verglichen werden. Die md5 Datei kann dazu in einem Texteditor geöffnet werden. Mit dem md5summer (486 KB) kann die md5sum auch in Windows geprüft werden.
+This takes some time and the sum is then printed in the console and can be compared manually with the sum as it is stored in the corresponding *.md5 file. The md5 file can be opened in a text editor for this purpose. With the md5summer (486 KB) the md5sum can also be checked in Windows.
 
-Einfacher ist die Überprüfung unter Linux mit folgendem Befehl, ausgeführt in dem Verzeichnis, in welchen sich sowohl die ISO-Datei als auch die ISO.MD5-Datei befinden:
+Easier is the check under Linux with the following command, executed in the directory, in which both the ISO file and the ISO.MD5 file are:
 
-    $ md5sum -c zu_prüfende_datei.md5
+    $ md5sum -c to_check_file.md5
 
-Je nachdem ob die Prüfsummen übereinstimmen, erhält man vom Programm eine Meldung:
+Depending on whether the checksums match, you will get a message from the program:
 
-    md5-Summe: zu_überprüfende_datei: ok
+    md5-sum: to_be_checked_file: ok
 
-oder
+or
 
-    siduction-Name.iso: Fehlschlag md5sum: Warnung: 1 von 1 berechneten Prüfsumme stimmen nicht überein.
+    siduction-name.iso: failure md5sum: warning: 1 of 1 calculated checksum do not match.
 
-Die ISO-Abbilddateien von siduction werden immer mit der entsprechenden md5sum zum Download angeboten und sollten stets vor dem Brennen geprüft werden.
+The ISO image files of siduction are always offered for download with the corresponding md5sum and should always be checked before burning.
 
-Diese Dateien werden vom Spiegelserver heruntergeladen:
+These files are downloaded from the mirror
 
 siductionname.iso
 siductionname.iso.md5
 
-Die Überprüfung mittels SHA256SUM ist ein ähnliches Verfahren. Näheres unter
+Verification using SHA256SUM is a similar procedure. For more details see
 
     $ man sha256sum
 
-### Live-DVD mit Windows brennen
+### Burning a live DVD with Windows
 
-> **WICHTIGE INFORMATION:**  
-> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
+> **IMPORTANT INFORMATION:**  
+> siduction, as a Linux LIVE DVD/CD, is very heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (disk-at-once) and not faster than eight times (8x). However, we recommend, if the hardware supports booting from USB, to put the image on a USB stick or SD memory card. For this purpose we recommend the tool Edger or the command line tool dd. Instructions are provided in the manual under Installation Options.
 
 
-Selbstverständlich kann die DVD auch in Windows gebrannt werden. Die heruntergeladene Datei muss als ISO-Abbilddatei gebrannt werden. Falls Winrar (oder ein anderes Archivierungsprogramm) mit einer ISO-Datei verknüpft ist, könnte dieses Programm die ISO-Datei als eine Archivdatei ansehen. Aus der ISO-Datei muss eine DVD gebrannt werden.
+Of course, the DVD can also be burned in Windows. The downloaded file must be burned as an ISO image file. If Winrar (or any other archiving program) is linked to an ISO file, this program could see the ISO file as an archive file. A DVD must be burned from the ISO file.
 
-Es gibt verschiedene gute Optionen, ISO-Dateien in Windows zu brennen.  
+There are several good options to burn ISO files in Windows.  
 
-**Open-Source-Software für Windows**
+**Open Source Software for Windows**
 
-+ cdrtfe: kompatibel mit Windows 9x/ME/2000/XP, Vista, 7 und 8. (getestet mit Win95, Win98SE, Win2000, WinXP). Nur für Win9x/ME: funktionierende ASPI-Layer (z. B. Adaptec ASPI 4.60)
-+ LinuxLive USB Creator, ein Open-Source-Projekt, bietet eine GUI-Applikation für MS Windows™, welche es ermöglicht, eine siduction-i386.iso (32 bit) auf einen USB-Stick zu installieren.  
++ cdrtfe: compatible with Windows 9x/ME/2000/XP, Vista, 7 and 8. (tested with Win95, Win98SE, Win2000, WinXP). Only for Win9x/ME: working ASPI layer (e.g. Adaptec ASPI 4.60)
++ LinuxLive USB Creator, an open source project, provides a GUI application for MS Windows™ which allows to install a siduction-i386.iso (32 bit) on a USB stick.  
 
-**Closed-Source- und proprietäre Software für Windows**
+**Closed source and proprietary software for Windows**.
 
 + CD/DVD Burner XP pro
-+ Burncdcc von [terabyteunlimited](https://www.terabyteunlimited.com/downloads-free-software.htm) kann nur ISO-Abbilddateien brennen.
++ Burncdcc from [terabyteunlimited](https://www.terabyteunlimited.com/downloads-free-software.htm) can only burn ISO image files.
 
-### Die DVD mit Linux brennen
+### Burn the DVD with Linux
 
-> **WICHTIGE INFORMATION:**  
-> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Bitte verwendet hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x). Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Dazu empfiehlt sich das Tool Edger oder das Kommandozeilenwerkzeug dd. Anleitung dazu bietet das Handbuch unter Installationsoptionen.
+> **IMPORTANT INFORMATION:**  
+> siduction, as Linux LIVE DVD/CD, is very compressed. For this reason, special attention must be paid to the burning method of the ISO image. Please use high quality media, burning in DAO mode (disk-at-once) and not faster than eight times (8x). However, we recommend, if the hardware supports booting from USB, to put the image on a USB stick or SD memory card. For this purpose we recommend the tool Edger or the command line tool dd. Instructions for this can be found in the manual under installation options.
 
 
-Wer bereits Linux auf dem Rechner hat, kann die DVD mit jedem installierten Brennprogramm erstellen. Bei siduction ist K3b das Standard-Brennprogramm. Dort muss man den Menüpunkt "Extras" -> "ISO-Abbild brennen..." anklicken, das zu brennende ISO-File (z.B. siduction-18.3.0-patience-kde-amd64-201805132121.iso) auswählen und den Brennmodus DAO (Disk At Once) einstellen.
+If you already have Linux on your computer, you can create the DVD with any installed burning program. For siduction, K3b is the default burning program. There you have to click the menu item "Extras" -> "Burn ISO image...", select the ISO file to burn (e.g. siduction-18.3.0-patience-kde-amd64-201805132121.iso) and set the burning mode DAO (Disk At Once).
 
-K3b berechnet zuerst die MD5-Summe des ISO-Files (dauert einen Moment). Stimmt die angezeigte Prüfsumme mit der angegebenen Zeichenfolge der sich im selben Ordner befindlichen MD5-Datei (z.B. siduction-Name.iso.md5) überein, war der Download erfolgreich und die Datei kann mit einem Klick auf "Start" gebrannt werden.
+K3b first calculates the MD5 sum of the ISO file (takes a moment). If the displayed checksum matches the given string of the MD5 file located in the same folder (e.g. siduction-Name.iso.md5), the download was successful and the file can be burned by clicking on "Start".
 
-Klickt man auf die berechnete Prüfsumme, erscheint daneben ein Symbol. Klickt man wiederum darauf und fügt in das Feld die Prüfsumme aus der MD5-Datei ein, so werden die beiden Prüfsummen verglichen.
+If you click on the calculated checksum, an icon appears next to it. If you click on it again and insert the checksum from the MD5 file into the field, the two checksums are compared.
 
-Die Ursache von Problemen beim Brennen findet sich zumeist in den Frontend-Applikationen. Zum unmittelbaren Brennen von der Konsole kann man das Skript burniso verwenden.
-Siehe auch Installation auf USB-Stick/SSD von einem anderen System (Linux. MS Windows, Mac OS X).
+The cause of problems with burning is mostly found in the frontend applications. For direct burning from the console you can use the script burniso.
+See also Installing to USB stick/SSD from another system (Linux. MS Windows, Mac OS X).
 
-<div id="rev">Zuletzt bearbeitet: 2021-06-18</div>
+<div id="rev">Last edited: 2021-13-08</div>

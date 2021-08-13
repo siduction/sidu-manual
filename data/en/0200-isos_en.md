@@ -1,17 +1,17 @@
-% ISO's
+% ISO images
 
-# ISO s
+# ISO images
 
-Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
+This section contains information and notes about the
 
-+ [Inhalt der Live-ISO](0201-cd-content_de.md#inhalt-der-live-iso), den verfügbaren Varianten, den Systemanforderungen, zu Anwendungen und Hilfsprogrammen und zum Haftungsausschluss.
++ [Content of the live ISO](0201-cd-content_en.md#content-of-the-live-iso), available variants, system requirements, applications and utilities, and disclaimer.
 
-+ [Verwendung der Live-DVD](0202-live-mode_de.md#live-dvd-verwenden), den eingerichteten Usern und deren Passwörtern, der Arbeit mit root-Rechten und der Software-Installation während der Live-Sitzung.
++ [Using the live DVD](0202-live-mode_en.md#use-live-dvd), the users set up and their passwords, working with root privileges and software installation during the live session.
 
-+ [Den Bootoptionen (Cheatcodes)](0204-cheatcodes_de.md#bootoptionen-cheatcodes) in tabellarischer Form sowohl für die Live-ISO als auch für installierte Systeme.
++ [The boot options (cheat codes)](0204-cheatcodes_en.md#bootoptions-cheatcodes) in tabular form for both the live ISO and installed systems.
 
-+ [Download und Brennen der ISO's](0206-cd-dl-burning_de.md#iso-download-und-brennen), den Spiegelservern und den darauf befindlichen Dateien, der Integritätsprüfung des Download und dem Brennen unter Linux und Windows.
++ [Downloading and burning the ISOs](0206-cd-dl-burning_en.md#iso-download-and-burn), the mirror servers and the files on them, the integrity check of the download and burning on Linux and Windows.
 
-+ [Brennen der ISO's ohne GUI](0207-cd-no-gui-burn_de.md#dvd-ohne-gui-brennen) mit einer ganzen Reihe direkt verwendbarer Terminal-Befehle auch zur Ermittlung der verfügbaren Geräte.
++ [Burning the ISOs without GUI](0207-cd-no-gui-burn_en.md#dvd-without-gui-burning) with a whole set of directly usable terminal commands also for determining the available devices.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-21</div>
+<div id="rev">Last edited: 2021-13-08</div>

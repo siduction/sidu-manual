@@ -1,203 +1,202 @@
-% Die siduction Hilfe
+% The siduction help
 
-## siduction Hilfe
+## siduction help
 
-Schnelle Hilfe kann einem viele Tränen ersparen und bietet die Möglichkeit, das weiter zu machen, was wirklich wichtig ist im Leben. Dieses Thema ist nach Bereichen gegliedert, wo die Distribution siduction Hilfe anbietet:
+Quick help can save you a lot of tears and gives you the opportunity to continue doing what is really important in life. This topic is organized by areas where the distribution siduction offers help:
 
-### Das siduction-Forum
+### The siduction forum
 
-Das siduction-Forum bietet die Möglichkeit Fragen zu stellen und Antworten auf diese zu erhalten. Bevor ein neuer Beitrag erstellt wird, sollte die Forensuche benutzt werden, da die Wahrscheinlichkeit groß ist, dass diese oder eine ähnliche Frage schon einmal gestellt wurde. [Das Forum](https://forum.siduction.org/index.php?name=PNphpBB2)  ist auf Deutsch und Englisch verfügbar.
+The siduction forum offers the possibility to ask questions and get answers to them. Before making a new post, use the forum search, as there is a good chance that this or a similar question has been asked before. [The forum](https://forum.siduction.org/index.php?name=PNphpBB2) is available in English and German.
 
-### Das siduction-Wiki
+### The siduction wiki
 
-Das siduction-Wiki ist von allen siduction-Nutzern frei nutz- und veränderbar. Wir hoffen so, dass die siduction-Dokumentation im Laufe der Zeit mit dem Projekt wachsen wird.
+The siduction wiki is freely usable and modifiable by all siduction users. In this way, we hope that the siduction documentation will grow with the project over time.
 
-Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki beabsichtigt, Nutzern jeden Kenntnisstandes zu helfen. Die wenigen Minuten, die dem Wiki und Projekt "geopfert" werden, können anderen Nutzern (und vielleicht einem selbst) Stunden des Suchens nach Problemlösungen ersparen. [Link zum siduction-Wiki](https://wiki.siduction.de/index.php?title=Hauptseite) .
+We hope for contributions from Linux users of all experience levels, as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps oneself) hours of searching for solutions to problems. [Link to siduction wiki](https://wiki.siduction.de/index.php?title=Hauptseite) .
 
-### IRC - interaktiver Livesupport 
+### IRC - interactive live support. 
 
-**Der IRC soll nie als "root" betreten werden, sondern nur als normaler Nutzer.**  
-Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe gegeben werden kann.
+**The IRC should never be entered as "root", but only as a normal user.  
+If you are unclear, please announce this immediately in the IRC channel so that help can be given.
 
-**Verhaltensregeln im IRC**
+**Rules of conduct in IRC**
 
-* Ein freundlicher Umgangston ist obligatorisch, denn wir leisten den Support alle ehrenamtlich.
-* Hilfreich ist es, eine nach bestem Wissen genaue Anfrage zu stellen und nach Möglichkeit zuvor im siduction-Wiki nach Lösungen zu suchen.
-* Bitte niemals gleichzeitig im IRC und Forum eine Anfrage stellen. Bestenfalls reiben wir uns verwundert die Augen.
+* A friendly tone is obligatory, because we all do the support on a voluntary basis.
+* It is helpful to make a request that is accurate to the best of your knowledge, and to search for solutions in the siduction wiki beforehand if possible.
+* Please never post a request in IRC and Forum at the same time. At best, we rub our eyes in wonder.
 
-**siduction erreichen**
+**reach siduction
 
-+ Klicke einfach auf das **"IRC Chat #siduction"-Symbol**  auf dem Desktop oder verwende den kmenu-Eintrag von koversation.  
-Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingeben:
++ Just click on the **"IRC Chat #siduction" icon** on the desktop or use the kmenu entry of koversation.  
+If you prefer another chat client, you need to enter these server details:
 
   ~~~
   irc.oftc.net
   port 6667
   ~~~
 
-+ [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
-
++ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : enter a free nickname and enter the channel #siduction-de.
 
 ### siduction-paste
 
-siduction-paste ermöglicht das Einfügen von Dateien aus dem Terminal oder TTY. Dies ist ideal, wenn man sich mit Problemen in Runlevel 3 (ohne Grafikserver) befindet. siduction-paste nutzt http://paste.siduction.org als Link, und die Ausgabe ist 24 Stunden lang verfügbar.
+siduction-paste allows you to paste files from the terminal or TTY. This is ideal if you are in runlevel 3 (without a graphics server) with problems. siduction-paste uses http://paste.siduction.org as a link, and the output is available for 24 hours.
 
-Man kann sowohl als user wie auch als root siduction-paste verwenden. Einige Befehle oder Systemabfragen  jedoch benötigen den root-Zugang.
+You can use siduction-paste both as user and as root. However, some commands or system queries require root access.
 
 ~~~
 $ siduction-paste command|file
-oder
+or
 $ command | siduction-paste
 ~~~
 
-**Beispiel für siduction-paste \<file\>;**
+**example for siduction-paste \<file\>;**
 
 ~~~
 $ siduction-paste /etc/fstab
 Your paste can be seen here: http://paste.siduction.org/xyz.html
 ~~~
 
-Der Link <http://paste.siduction.org/xyz.html>  muss danach im IRC-Channel #siduction-de eingegeben werden.
+The link <http://paste.siduction.org/xyz.html> must be entered in the IRC channel #siduction-de afterwards.
 
-**Beispiel für command | siduction-paste**
+**Example for command | siduction-paste**
 
 ~~~
 $ fdisk -l | siduction-paste
 Your paste can be seen here:http://siduction.paste.org/yzx.html
 ~~~
 
-Man kann per siduction-paste auch screenshots machen und gleichzeitig hochladen
+You can also use siduction-paste to take screenshots and upload them at the same time
 
 ~~~
 $ siduction-paste -s
 ~~~
 
-Jetzt bleiben einige Sekunden Zeit, um zum abzulichtenden Objekt zu navigieren. Bitte denkt daran, dass diese Funktion die Installation von  *scrot*  voraussetzt.  
-Auch hier muss danach der Link <http://siduction.paste.org/yzx.html> im IRC-Channel #siduction-de eingegeben werden.
+Now you have a few seconds to navigate to the object you want to capture. Please remember that this function requires *scrot* to be installed.  
+Again, the link <http://siduction.paste.org/yzx.html> must be entered in the IRC channel #siduction-de afterwards.
 
-### Nützliche Helfer im Textmodus
+### Useful helpers in text mode
 
-Normalerweise verwendet man den Textmodus Runlevel 3 (init 3 bzw. journalctl isolate multi-user.target), wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
+Normally one uses the text mode runlevel 3 (init 3 or journalctl isolate multi-user.target) if one wants to perform a dist-upgrade, or forced if the system has a serious error.
 
-**gpm**
+**gpm
 
- ist ein hilfreiches Programm im Textmodus. Dieses ermöglicht, die Maus zum Kopieren und Einfügen im Terminal zu benutzen.
+ is a useful program in text mode. It allows you to use the mouse to copy and paste in the terminal.
 
-*gpm* ist in siduction vorkonfiguriert. Falls dem nicht so ist:
+*gpm* is preconfigured in siduction. In case it is not:
 
 ~~~
 $ gpm -t imps2 -m /dev/input/mice
 ~~~
 
-Danach sollte man prüfen ob der Service aktiv ist:
+After that you should check if the service is active:
 
 ~~~
 $ systemctl status gpm.service
 ~~~
 
-Bei Erfolg findet sich in der Ausgabe auch eine Zeile ähnlich der folgenden.
+If successful, you will also find a line similar to the following in the output.
 
 ~~~
   Active: active (running) since Thu 2020-04-09 12:17:14 CEST; 5min ago
 ~~~
 
-Nun sollte man seine Maus im Textmodus (tty) nutzen können.
+Now you should be able to use your mouse in text mode (tty).
 
-**Dateimanager und Textbearbeitung**
+**File manager and text editing**
 
-Midnight Commander ist ein einfach zu bedienender Dateimanager im Text-Modus (tty) und Texteditor. Er wird mit siduction ausgeliefert.
+Midnight Commander is an easy to use text mode (tty) file manager and text editor. It comes with siduction.
 
-Abgesehen von den normalen Tastatureingaben kann aufgrund von gpm auch die Maus benutzt werden.
+Apart from normal keyboard input, the mouse can also be used due to gpm.
 
-**mc** zeigt das Dateisystem und mit **mcedit** kann eine vorhandene Datei bearbeitet bzw. eine neue Datei erstellt werden.
+**mc** shows the file system and with **mcedit** an existing file can be edited or a new file can be created.
 
-So öffnet man eine vorhandene Datei (zuerst wird eine Sicherungskopie angelegt):
+This is how to open an existing file (first a backup copy is created):
 
 ~~~
 $ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(date +%F)
 
-  anschließend
+  then
 
 $ mcedit /etc/apt/sources.list.d/debian.list
 ~~~
 
-Nun kann die Datei bearbeitet und gespeichert werden. Die Änderungen werden sofort wirksam.
+Now the file can be edited and saved. The changes will take effect immediately.
 
-Weitere Informationen auf der Manpage:
+See the man page for more information:
 
 ~~~
 $ man mc
 ~~~
 
-### siduction IRC-Support im Textmodus
+### siduction IRC support in text mode
 
-**Verhaltensregel im IRC**
+**Rule of conduct in IRC**
 
- **Der IRC soll nie als "root" betreten werden, sondern nur als normaler Nutzer.**  
- Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe gegeben werden kann.
+ **The IRC should never be entered as "root", but only as a normal user.**  
+ If you are unclear, please announce this immediately in the IRC channel, so that help can be given.
 
-**IRC im Textmodus**
+**IRC in text mode**
 
-Das Programm *irssi* stellt einen IRC-Client im Textmodus oder der Konsole bereit und ist in siduction aktiviert.  
-Mit der Tastenkombination `CTRL`+`ALT`+`F2` oder `F3` usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
+The program *irssi* provides an IRC client in text mode or console and is activated in siduction.  
+With the key combination `CTRL`+`ALT`+`F2` or `F3` etc. you can switch from one terminal/TTY to another and log in with your user account:
 
 ~~~
-$ siductionbox login: <username> <password> (nicht als root)
+$ siductionbox login: <username> <password> (not as root)
 ~~~
 
-danach gibt man
+after that you enter
 
 ~~~
 $ siduction-irc
 ~~~
 
-ein, um *irssi* zu starten.
+to start *irssi*.
 
-Anleitung, falls ein anderer Client (im Beispiel weechat) gewünscht ist:  
-Zuerst stellt man sicher, dass WeeChat installiert ist, indem man im Menü den Eintrag von weechat sucht. Falls dieser nicht vorhanden sein sollte:
+Instructions if you want to use a different client (weechat in the example):  
+First make sure that WeeChat is installed by looking for the entry of weechat in the menu. If this is not available:
 
 ~~~
 # apt update
 # apt install weechat-curses
 
-  und anschließend das Programm starten
+  and then start the program
 
 $ weechat-curses
 ~~~
 
-Jetzt kann man sich mit irc.oftc.net auf Port 6667 verbinden. Nach erfolgter Verbindung wird das Pseudonym (der "Nickname") geändert:
+Now you can connect to irc.oftc.net on port 6667. After successful connection the pseudonym (the "nickname") will be changed:
 
-**/nick 'Dein_neuer_nick'**
+**/nick 'Your_new_nick'**.
 
-Den siduction-Channel betritt man mit folgender Eingabe:
+You can enter the siduction channel with the following input:
 
 **/join #siduction-de**
 
-Falls man wünscht, den Server zu wechseln, gibt man einen Befehl mit folgender Syntax ein:
+If you want to change the server, enter a command with the following syntax:
 
 **/server server.name**
 
-In der unteren Menüzeile sieht man Zahlen, falls die Channel aktiv sind, und um sich mit einem Channel zu verbinden, verwendet man ALT-1, ALT-2, ALT-3, ALT-4 usw.
+In the bottom menu you can see numbers if the channels are active, and to connect to a channel you can use ALT-1, ALT-2, ALT-3, ALT-4 and so on.
 
-Einen Channel verlässt man mit
+To exit a channel use
 
 **/exit**
 
-Falls gleichzeitig ein dist-upgrade durchgeführt wird, kann man folgendermaßen das Terminal wechseln, um den Fortschritt des Upgrades zu verfolgen:
+If a dist-upgrade is performed at the same time, you can switch to the terminal to monitor the progress of the upgrade as follows:
 
-Tastenkombination `CTRL`+`ALT`+`F1`  
-und zum IRC kommt man zurück mit der  
-Tastenkombination `CTRL`+`ALT`+`F2`
+key combination `CTRL`+`ALT`+`F1`  
+and to return to the IRC you can use the  
+key combination `CTRL`+`ALT`+`F2`
 
-Die folgenden Link bieten weitere Informationen.  
-[Dokumentationsseite von irssi (Englisch)](https://irssi.org/documentation)  
-[Dokumentationsseite von WeeChat (Deutsch)](https://www.weechat.org/) 
+The following links provide more information.  
+[Documentation page of irssi (English)](https://irssi.org/documentation)  
+[Documentation page of WeeChat (German)](https://www.weechat.org/) 
 
-### Surfen im Internet im Textmodus
+### Surfing the Internet in text mode
 
-Der Kommandozeilenbrowser w3m ermöglicht das Surfen im Internet in einem Terminal bzw. einer Konsole oder im Textmodus
+The command line browser w3m allows to surf the internet in a terminal or console or in text mode
 
-Falls w3m oder elinks nicht installiert sind, geht man so vor:
+If w3m or elinks are not installed, proceed as follows:
 
 ~~~
 # apt update
@@ -205,74 +204,74 @@ Falls w3m oder elinks nicht installiert sind, geht man so vor:
 # apt install elinks
 ~~~
 
-Nun kann man den Kommandozeilenbrowser w3m benutzen. Dazu ist es sinnvoll in ein anderes Terminal zu wechseln und sich mit seinem Useraccount anzumelden:
+Now you can use the command line browser w3m. For this it is useful to switch to another terminal and log in with your user account:
 
-Tastenkombination `CTRL`+`ALT`+`F2`
+key combination `CTRL`+`ALT`+`F2`
 
 ~~~
-$ siductionbox login: <username> <password> (nicht root!)
+$ siductionbox login: <username> <password> (not root!)
 ~~~
 
-Der Programmaufruf lautet "w3m URL" oder "w3m ?".  
-Beispiel: https://siduction.org ruft man so auf (https:// wird weggelassen):
+The program call is "w3m URL" or "w3m ?".  
+Example: https://siduction.org is called like this (https:// is omitted):
 
 ~~~
 $ w3m siduction.org
 ~~~
 
-Eine neue URL wird mit Hilfe der Tastenkombination Shift+U aufgerufen:
+A new URL is called using the key combination Shift+U:
 
 `SHIFT`+`U`
 
-Danach sieht man eine Zeile wie "Goto URL: https://siduction.org". Mit der Rücktaste löscht man die zuletzt gewählte URL und gibt die gewünschte ein.  
-Beendet wird w3m mit:
+After that you will see a line like "Goto URL: https://siduction.org". With the backspace key one deletes the last selected URL and enters the desired one.  
+Exit w3m with:
 
 `SHIFT`+`Q`
 
-Mehr Informationen gibt es auf der [Dokumentationsseite von w3m (Englisch)](http://w3m.sourceforge.net/) 
+More information can be found on the [documentation page of w3m (English)](http://w3m.sourceforge.net/). 
 
-Es ist ratsam, sich vor einem Notfall mit **elinks/w3m, irssi/weechat, midnight commander** vertraut zu machen. Drucke diese Datei aus, um im Notfall die Informationen griffbereit zu haben.
+It is advisable to familiarize yourself with **elinks/w3m, irssi/weechat, midnight commander** before an emergency. Print this file to have the information handy in case of an emergency.
 
 ### inxi
 
-Inxi ist ein System-Informations-Skript, welches unabhängig von einzelnen IRC-Clients funktioniert. Dieses Skript gibt verschiedene Informationen über die benutzte Hard- und Software aus, sodass andere Nutzer in #siduction bei der Fehlerdiagnose besser helfen können. Oder in einer Konsole ausgeführt, kann man selbst Informationen über das eigene System erhalten.
+Inxi is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Or run in a console, you can get information about your own system yourself.
 
-Um inxi in Konversation zu nutzen, gibt man in die Chatbox dies ein:
+To use inxi in conversation, type this in the chat box:
 
 **/cmd inxi -v2**
 
-Um inxi in weechat zu nutzen, gibt man in die Chatbox dies ein:
+To use inxi in weechat, enter this in the chat box:
 
 **/shell -o inxi -v2**
 
-Vorausgesetzt, dass man die Erweiterung "shell" installiert hat.
+Assuming you have the shell extension installed.
 
-Siehe dazu: [https://www.weechat.org/scripts/](https://www.weechat.org/scripts/) 
+See: [https://www.weechat.org/scripts/](https://www.weechat.org/scripts/) 
 
-Um inxi in anderen Klienten zu nutzen, gibt man in die Chatbox dies ein:
+To use inxi in other clients, type this in the chat box:
 
 **/exec -o inxi -v2**  
-oder  
+or  
 **/inxi -v2**
 
-In einer Konsole wird folgender Befehl eingegeben:
+In a console, type the following command:
 
 ~~~
 $ inxi -v2
 ~~~
 
-Hilfe zu inxi
+Help for inxi
 
 ~~~
 $ inxi --help
 ~~~
 
-### Nützliche Links
+### Useful links
 
-[Debian Referenzkarte - zum Ausdruck auf ein Einzelblatt](https://www.debian.org/doc/user-manuals#refcard)  
-[HOWTOs von der Debian-Seite](https://www.debian.org/doc/#howtos)  (ist automatisch auf Deutsch, wenn Browser lokalisiert ist)  
-[Debian-Referenz: Grundlagen und Systemadministration](http://qref.sourceforge.net/index.de.php) Dokumente verfügbar als HTML, Text, PDF und PS  
-[Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
-[LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
+[Debian reference card - to print on a single sheet](https://www.debian.org/doc/user-manuals#refcard)  
+[HOWTOs from the Debian site](https://www.debian.org/doc/#howtos) (is automatically in German if browser is localized)  
+[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.de.php) documents available as HTML, text, PDF and PS  
+[Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE, the KDE Help Center provides information about CUPS.  
+[LibreOffice](https://de.libreoffice.org/) There are many offerings in the "Help" menu.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
+<div id="rev">Last edited: 2021-13-08</div>

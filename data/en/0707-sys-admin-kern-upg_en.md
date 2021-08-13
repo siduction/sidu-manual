@@ -32,7 +32,7 @@ Die Kernel von siduction befinden sich im siduction-Repository als .deb und werd
 ### Module
 
 Der Kernel bringt in der Regel alle benötigten Kernel-Module mit. Für 3rd Party Module wird in siduction dkms empfohlen.
-Hierzu ist es notwendig, das Paket **build-essential** zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicher zu stellen,
+Hierzu ist es notwendig, das Paket **build-essential** zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicherzustellen,
 dass contrib und non-free in den Sourcen aktiviert ist.
 
 ### Entfernen alter Kernel

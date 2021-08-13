@@ -2,129 +2,129 @@
 
 # Quickstart
 
-## siduction Kurzanleitung
+## siduction Quick Start Guide
 
-siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.
+siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction may provide packages that temporarily replace buggy Debian packages. The siduction apt repository contains siduction specific packages like the siduction kernel, scripts, packages we would like to push to Debian, utilities and documentation.
 
-### Essenzielle Kapitel
+### Essential chapters
 
-> Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:
+> Some chapters of the manual are essential reading for users who are new to Linux or new to siduction. In addition to this brief introduction, these are:
 
-+ [Terminal/Konsole](0701-term-konsole_de.md#terminal---kommandozeile)  - Beschreibt, wie ein Terminal und der su-Befehl zu nutzen sind.
++ [Terminal/Console](0701-term-console_en.md#terminal---command-line) - Describes how to use a terminal and the su command.
 
-+ [Partitionieren der Festplatte](0312-part-gparted_de.md#partitionieren-mit-gparted)  - Beschreibt, wie eine Festplatte partitioniert werden kann. 
++ [Partitioning the hard disk](0312-part-gparted_en.md#partitioning-with-gparted) - Describes how to partition a hard disk. 
 
-+ [siduction ISO herunterladen und DVD brennen](0206-cd-dl-burning_de.md#iso-download-und-brennen)  - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.
++ [Downloading siduction ISO and burning DVD](0206-cd-dl-burning_en.md#iso-download-and-burn) - Describes how to download, check, and burn a siduction ISO to DVD.
 
-+ [Installation auf einer Festplatte](0301-hd-install_de.md#installation-auf-hdd)  - Beschreibt, wie siduction auf einer Festplatte installiert wird.
++ [Installation on a hard disk](0301-hd-install_en.md#installation-on-hdd) - Describes how to install siduction on a hard disk.
 
-+ [Installation auf USB-Stick/SD von einem anderen System](0303-hd-ins-opts-oos_de.md#installation-auf-usb-stick---speicherkarte)  - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.
++ [Installation on USB stick/SD from another system](0303-hd-ins-opts-oos_en.md#installation-onusb-stick---memory-card) - Describes how to write siduction from another system to a USB stick or SD/flash card.
 
-+ [Nicht freie Treiber, Firmware und Quellen](0600-gpu_de.md#grafiktreiber)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
++ [Non-free drivers, firmware and sources](0600-gpu_en.md#graphics-driver) - Describes how software sources can be adapted and non-free firmwares can be installed.
 
-+ [Internetverbindung](0500-network_de.md#netzwerk)  - Beschreibt, wie man sich mit dem Internet verbinden kann.
++ [Internet connection](0500-network_en.md#network) - Describes how to connect to the Internet.
 
-+ [Paketmanager und Systemaktualisierung](0705-sys-admin-apt_de.md#apt-paketverwaltung)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
++ [Package Manager and System Update](0705-sys-admin-apt_en.md#apt-package-manager) - Describes how to install new software and update the system.
 
-### Zur Stabilität von Debian Sid
+### About the stability of Debian Sid
 
-'Sid' ist der Name des Unstable-Repositories von Debian. Debian Sid wird regelmäßig mit neuen Softwarepaketen beschickt, wodurch diese Debian-Distribution sehr zeitnah die neuesten Versionen der jeweiligen Programme enthält. Dies bedeutet aber auch, dass zwischen einer Veröffentlichung im Upstream (von den Softwareentwicklern) und der Verteilung in Debian Sid weniger Zeit ist, um die Pakete zu testen.
+'Sid' is the name of Debian's unstable repository. Debian Sid is regularly updated with new software packages, which means that this Debian distribution contains the latest versions of the respective programs in a very timely manner. However, this also means that there is less time between a release in the upstream (by the software developers) and the distribution in Debian Sid to test the packages.
 
-### Der siduction-Kernel
+### The siduction kernel
 
-Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Problembehebung, erweiterte und aktualisierte Funktionen, Leistungsoptimierung, höhere Stabilität. Basis ist immer der aktuelle Kernel von [http://www.kernel.org/](https://www.kernel.org/) . 
+The Linux kernel of siduction is optimized to achieve the following goals: problem solving, enhanced and updated features, performance optimization, higher stability. The basis is always the latest kernel from [http://www.kernel.org/](https://www.kernel.org/) . 
 
-### Die Verwaltung von Softwarepaketen
+### The management of software packages
 
-siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet apt und dpkg für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in `/etc/sources.list.d/*` 
+siduction follows Debian rules regarding package structure and uses apt and dpkg for software package management. The Debian and siduction repositories are located in `/etc/sources.list.d/*`. 
 
-Debian Sid enthält mehr als 20.000 Programmpakete, womit die Chancen, ein für eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie man Programmpakete sucht, ist hier beschrieben:  
-[Programmsuche mit apt-cache bzw. apt](0705-sys-admin-apt_de.md#programmpakete-suchen)  
-oder mit  
-[GUI-Paketsuche mit packagesearch](0705-sys-admin-apt_de.md#graphische-paketsuche) .
+Debian siduction contains more than 20,000 program packages, so the chances of finding a program suitable for a task are very good. How to search for program packages is described here:  
+[Program search with apt-cache or apt](0705-sys-admin-apt_en.md#program-packages-search)  
+or with  
+[GUI package search with packagesearch](0705-sys-admin-apt_en.md#graphical-package-search) .
 
-Ein Programmpaket wird mit diesem Befehl installiert:
+A program package is installed with this command:
 
 ~~~
-apt install <Paketname>
+apt install <package name>
 ~~~
 
-Siehe auch: [Neue Pakete installieren](0705-sys-admin-apt_de.md#pakete-installieren) .
+See also: [Install new packages](0705-sys-admin-apt_en.md#packages-install) .
 
-Die Repositorien von Debian Sid werden in der Regel viermal am Tag mit aktualisierten bzw. neuen Softwarepaketen beschickt. Zur schnellen Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der Befehl
+The Debian Sid repositories are usually populated with updated or new software packages four times a day. A local database is used to quickly manage the packages. The command
 
 ~~~
 apt update
 ~~~
 
-ist vor jeder Neuinstallation eines Softwarepakets notwendig, um die lokale Datenbank mit dem Softwareangebot der Repositorien zu synchronisieren.
+is necessary before each new installation of a software package to synchronize the local database with the repositories software supply.
 
-**Die Nutzung anderer auf Debian basierender Repositorien, Quellen und RPMs**  
-Installationen aus Quellcode sind nicht unterstützt. Empfohlen ist eine Kompilierung als User (nicht als root) und die Platzierung der Anwendung im Home-Verzeichnis, ohne dass sie ins System installiert wird. Die Verwendung von  *checkinstall*  zum Erzeugen von DEB-Paketen sollte auf die rein private Nutzung beschränkt bleiben. Konvertierungsprogramme für RPM-Pakete wie  *alien*  sind nicht empfohlen.
+**The use of other Debian based repositories, sources and RPMs**.  
+Installations from source code are not supported. Recommended is compiling as user (not root) and placing the application in the home directory without installing it into the system. The use of *checkinstall* to generate DEB packages should be limited to purely private use. Conversion programs for RPM packages like *alien* are not recommended.
 
-Andere bekannte (und weniger bekannte) Distributionen, die auf Debian basieren, erstellen neue, von Debian verschieden strukturierte Pakete und verwenden oft andere Verzeichnisse, in denen bei der Installation Programme, Skripte und Dateien abgelegt werden, als Debian. Dies kann zu instabilen Systemen führen. Manche Pakete lassen sich wegen nicht auflösbarer Abhängigkeiten, unterschiedlicher Benennungskonventionen oder unterschiedlicher Versionierung überhaupt nicht installieren. Eine unterschiedliche Version von glibc zum Beispiel kann dazu führen, dass kein Programm lauffähig ist.
+Other well-known (and lesser-known) distributions based on Debian create new packages structured differently from Debian and often use different directories in which to place programs, scripts, and files during installation than Debian does. This can lead to unstable systems. Some packages cannot be installed at all because of unresolvable dependencies, different naming conventions or different versioning. For example, a different version of glibc may result in no program being executable.
 
-Aus diesem Grund sollen die Repositorien von Debian benutzt werden, um die benötigten Softwarepakete zu installieren. Andere Softwarequellen können nur schwer oder gar nicht von siduction unterstützt werden. Darunter fallen auch Pakete und PPAs von Ubuntu.
+For this reason, Debian's repositories should be used to install the required software packages. Other software sources may be difficult or impossible to support by siduction. This includes packages and PPAs from Ubuntu.
 
-### Aktualisierung des Systems - upgrade
+### Updating the system - upgrade
 
-Ein upgrade ist nur bei beendetem Grafikserver X durchzuführen. Um den Grafikserver zu beenden, gibt man als **root** den Befehl
+An upgrade can only be performed when graphics server X is stopped. To stop the graphics server, enter as **root** the command
 
 ~~~
 init 3
 ~~~
 
-in eine Konsole ein. Danach sind Systemaktualisierungen sicher durchführbar. Zuerst die lokale Paketdatenbank auffrischen mit
+into a console. After that, system updates can be performed safely. First refresh the local package database with
 
 ~~~
 apt update
 ~~~ 
 
-dann mit einer der beiden Varianten das System aktualisieren.
+then update the system with one of the two variants
 
 ~~~
 apt upgrade
 apt full-upgrade
 ~~~
 
-Anschließend startet man mit folgendem Befehl wieder die graphische Oberfläche:
+Afterwards you start the graphical user interface again with the following command:
 
 ~~~
 init 5
 ~~~
 
-**apt full-upgrade** ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
-[Aktualisierung eines installierten Systems - full-upgrade](0705-sys-admin-apt_de.md#aktualisierung-des-systems).
+**apt full-upgrade** is the recommended procedure to upgrade a siduction installation to the latest version. It is described in more detail here:  
+[Updating an installed system - full-upgrade](0705-sys-admin-apt_en.md#updating-the-system).
 
-### Konfiguration von Netzwerken
+### Configuration of networks
 
-Der in allen graphischen Oberflächen von siduction integriert **Networkmanager** bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript **nmcli** Zugang zur Funktionalität der Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends **wireless-tools** bzw. **wpasupplicant** zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
+The **Networkmanager** integrated in all graphical interfaces of siduction offers a quick configuration of network cards (Ethernet and wireless). It is mostly self-explanatory. In the terminal the script **nmcli** provides access to the netwokmanagers functionality. Wireless networks are scanned by the script, you can choose WEP and WPA encryption methods and use the **wireless-tools** or **wpasupplicant** backends to configure wireless networks. Ethernet configuration is automatic when using a DHCP server on the router (dynamic assignment of an IP address), but manual setup (from netmasks to nameservers) is also possible with this script.
 
-Der Startbefehl in der Konsole ist **nmcli**  oder **nmtui** . Falls das Skript nicht vorhanden ist, installiert man es mit:
+The start command in the console is **nmcli** or **nmtui** . If the script is not available, install it with:
 
 ~~~
 apt install network-manager
 ~~~
 
-Mehr Informationen unter [Netzwerk - nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool)
+More information at [network - nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool)
 
-Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite [IWD statt wpa_supplicant](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) über die Vorgehensweise.
+Intel's [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) is preparing to retire the WPA supplicant. Only one tenth as big and much faster, iwd is the successor. If you want to switch to iwd already, please refer to our manual page [IWD instead of wpa_supplicant](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant) for the procedure.
 
-### Runlevels - Ziel-Unit
+### Runlevels - target unit
 
-Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).  
-Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](0714-systemd-target_de.md#systemd-target---ziel-unit) beschrieben.
+By default, siduction boots into the graphical user interface (except NoX).  
+The configuration of the runlevels is described in the chapter [siduction runlevels - target unit](0714-systemd-target_en.md#systemd-target---target-unit).
 
-### Weitere Desktopumgebungen
+### Other desktop environments
 
-Plasma, Gnome, Xfce, LXQt, Cinnamon und Xorg werden von siduction ausgeliefert.
+Plasma, Gnome, Xfce, LXQt, Cinnamon and Xorg are shipped from siduction.
 
-### Hilfe im IRC und im Forum
+### Help in IRC and in the forum
 
-Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
+Help is always available in IRC or in the forum of siduction.
 
-+ Mehr dazu im Kapitel [Wo es Hilfe gibt](help_de.md#siduction-hilfe) .
++ Read more in the chapter [Where to get help](help_en.md#siduction-help) .
 
-+ [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
++ [With this link you can call the IRC immediately in your browser](https://webchat.oftc.net/) : enter a freely chosen nickname and enter the channel #siduction-en.
 
-<div id="rev">Zuletzt bearbeitet: 2020-11-29</div>
+<div id="rev">Last edited: 2021-13-08</div>

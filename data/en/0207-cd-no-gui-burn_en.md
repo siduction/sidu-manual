@@ -1,37 +1,37 @@
-% DVD ohne GUI brennen
+% Burn DVD without GUI
 
-## DVD ohne GUI brennen
+## Burn DVD without GUI
 
-> **WICHTIGE INFORMATION:**  
-> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+> **IMPORTANT INFORMATION:**  
+> siduction, as a Linux LIVE DVD/CD, is very heavily compressed. For this reason, special attention must be paid to the burning method of the ISO image. We recommend high quality CD media (or DVD+R), burning in DAO mode (disk-at-once) and not faster than eight times (8x).
 
 
 ### burniso
 
-Man benötigt zum Brennen einer CD/DVD nicht notwendigerweise eine grafische Benutzeroberfläche (GUI).
+You don't necessarily need a graphical user interface (GUI) to burn a CD/DVD.
 
-Probleme, die beim Brennen auftreten, haben ihre Ursache normalerweise in den Frontends wie K3b, nicht so häufig in den Backends wie growisofs, wodim oder cdrdao.
+Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim or cdrdao.
 
-siduction stellt ein Skript namens "burniso" zur Verfügung, um die siduction-ISO zu brennen.
+siduction provides a script called "burniso" to burn the siduction ISO.
 
-burniso brennt unter Nutzung von wodim ISO-Abbilddateien im Disk-At-Once-Modus mit einer fest eingestellten Brenngeschwindigkeit von 8x.
+burniso burns ISO image files using wodim in disk-at-once mode with a fixed burning speed of 8x.
 
 ~~~sh
 # apt-get install siduction-scripts
 ~~~
 
-Als $Nutzer:
+As $user:
 
-~~~sh
-$ cd /Pfad/zur/ISO
+~~sh
+$ cd /path/to/ISO
 $ burniso
 ~~~
 
-Alle ISO-Abbilddateien im aktuellen Verzeichnis werden zur Auswahl angeboten, und der Brennvorgang startet sofort nach der Auswahl einer ISO-Datei. Daher soll man darauf achten, dass vor Start des Skripts bereits das Medium, auf das gebrannt wird, eingelegt ist.  
+All ISO image files in the current directory will be offered for selection, and the burning process will start immediately after an ISO file is selected. Therefore, you should make sure that the media to be burned to is already inserted before starting the script.  
 
-### Verfügbare Geräte
+### Available devices
 
-Für ATAPI Geräte:
+For ATAPI devices:
 
 wodim:
 
@@ -39,129 +39,129 @@ wodim:
 $ wodim --devices
 wodim: Overview of accessible drives (2 found) :
 ---------------------------------------------------------
-0  dev='/dev/scd0'      rwrw-- : 'AOPEN' 'CD-RW CRW2440'
-1  dev='/dev/scd1'      rwrw-- : '_NEC' 'DVD_RW ND-3540A'
+0 dev='/dev/scd0' rwrw-- : 'AOPEN' 'CD-RW CRW2440'
+1 dev='/dev/scd1' rwrw-- : '_NEC' 'DVD_RW ND-3540A'
 ---------------------------------------------------------
 ~~~
 
-Weitere Alternativen sind:
+Other alternatives are:
 
 ~~~sh
 $ wodim dev=/dev/scd0 driveropts=help -checkdrive
 ~~~
 
-und
+and
 
 ~~~sh
 $ wodim -prcap
 ~~~
 
-cdrdao Geräte-Check:
+cdrdao device check:
 
 ~~~sh
 $ cdrdao scanbus
-Cdrdao version 1.2.1 - (C)  Andreas Mueller
+Cdrdao version 1.2.1 - (C) Andreas Mueller
 ATA:1,0,0 AOPEN , CD-RW CRW2440 , 2.02
 ATA:1,1,0 _NEC , DVD_RW ND-3540A , 1.01
 ~~~
 
-### Nützliche Beispiele
+### Useful examples
 
-**Informationen über leere CDs/DVDs:**
+**Information about blank CDs/DVDs:**
 
-~~~sh
+~~sh
 $ wodim dev=/dev/scd0 -atip
 ~~~
 
-oder
+or
 
 ~~~sh
 $ cdrdao disk-info --device ATA:1,0,0
 ~~~
 
-**Einen wiederbeschreibbaren Rohling löschen:**
+**Erase a rewritable blank disk:**
 
 ~~~sh
 $ wodim -blank=fast -v dev=/dev/scd0
 ~~~
 
-oder
+or
 
 ~~~sh
 $ cdrdao blank --device ATA:1,0,0 --blank-mode minimal
 ~~~
 
-**Eine CD kopieren:**
+**Copy a CD:**
 
 ~~~sh
 $ cdrdao copy --fast-toc --device ATA:1,0,0 --buffers 256 -v2
 ~~~
 
-**Eine CD "on the fly" kopieren:**
+**Copy a CD "on the fly":**
 
 ~~~sh
 $ cdrdao copy --fast-toc --source-device ATA:1,1,0 --device ATA:1,0,0 --on-the-fly --buffers 256 --eject -v2
 ~~~
 
-**Eine Audio-CD mit wav-Dateien mit 12facher Geschwindigkeit brennen:**
+**Burn an audio CD with wav files at 12x speed:**
 
 ~~~sh
 $ wodim -v -eject -pad -dao speed=12 dev=/dev/scd0 defpregap=0 -audio *.wav
 ~~~
 
-**Eine CD mittels eines bin/cue-Abbilds brennen:**
+**Burn a CD using a bin/cue image:**
 
 ~~~sh
 $ cdrdao write --speed 24 --device ATA:1,0,0 --eject filenam.cue
 ~~~
 
-
-**CD von einem ISO-Abbild brennen:**
+**Burn CD from an ISO image:**
 
 ~~~sh
 $ wodim dev=/dev/scd0 driveropts=burnfree,noforcespeed fs=14M speed=8 -dao -eject -overburn -v siduction.iso
 ~~~
 
-Falls man eine Fehlermeldung zu driveropts erhält, liegt dies daran, dass burnfree auf einigen Brennern nicht möglich ist. Dies wird so gelöst:
+If you get an error message about driveropts, it is because burnfree is not possible on some burners. This is solved like this:
 
 ~~~sh
 $ wodim dev=/dev/scd0 driveropts=noforcespeed fs=14M speed=8 -dao -eject -overburn -v siduction.iso
 ~~~
 
-oder so:
+or like this:
 
 ~~~sh
 $ wodim dev=/dev/scd0 fs=14M speed=8 -dao -eject -overburn -v siduction.iso
 ~~~
 
-**Eine ISO-Abbildatei aus einem Ordner und allen Unterordnern erstellen:**
+**Create an ISO image file from a folder and all subfolders:**
 
 ~~~sh
 $ genisoimage -o siduction.iso -r -J -l directory
 ~~~
 
-**Man kann growisofs verwenden, um eine DVD zu brennen, im Beispiel eine ISO-Datei:**
+**You can use growisofs to burn a DVD, in the example an ISO file:**
 
 ~~~sh
 $ growisofs -dvd-compat -Z /dev/dvd=siduction.iso
 ~~~
 
-**Mehrere Dateien auf DVD brennen:**
+**Burn multiple files to DVD:**
 
 ~~~sh
-$ growisofs -Z /dev/dvd -R -J datei1 datei2 datei3 ...
+$ growisofs -Z /dev/dvd -R -J file1 file2 file3 ...
 ~~~
 
-**Wenn auf der DVD noch Platz ist, kann man Dateien hinzufügen:**
+**If there is still space on the DVD, you can add files:**
 
-~~~sh
-$ growisofs -M /dev/dvd -R -J noch_eine_datei und_noch_eine_datei
+~~sh
+$ growisofs -M /dev/dvd -R -J still_one_file and_still_one_file
 ~~~
 
-**Um eine Sitzung zu schließen:**
+**To close a session:**
 
 ~~~sh
 $ growisofs -M /dev/dvd=/dev/zero $
 ~~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
+<div id="rev">Last edited: 2021-13-08</div>
+

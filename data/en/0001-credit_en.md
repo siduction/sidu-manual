@@ -1,17 +1,17 @@
-% Das siduction-Team
+% The siduction team
 
-## Das siduction-Team
+## The siduction team
 
-Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer und Autoren, die sich für die Entwicklung, den Erhalt und die Unterstützung von **siduction** einsetzen und einsetzten.
+Alphabetically sorted by family name or pseudonym list of maintainers and authors, who are committed to the development, maintenance and support of **siduction**.
 
-Über dieses [Kontaktformular](https://forum.siduction.org/index.php?action=contact) erreichst du das siduction-Team.
+You can reach the siduction team via this [contact form](https://forum.siduction.org/index.php?action=contact).
 
 
-### Credit für siduction 2021.2.0
+### Credit for siduction 2021.2.0
 
 #### Core Team
 
-+ Axel Beu (ab) 2021 †
++ Axel Beu (from) 2021 †
 
 + Ferdinand Thommes (devil) 
 
@@ -29,7 +29,7 @@ Alphabetisch nach Familiennamen bzw. Pseudonym sortierte Liste der Maintainer un
 
 We **need** contributors for siduction release art!
 
-#### Code Ideen Unterstützung Handbuch
+#### code ideas support manual
 
 + der_bud
 
@@ -39,7 +39,7 @@ We **need** contributors for siduction release art!
 
 + Stefan Tell (cryptosteve)
 
-#### Credit für das original manual Team
+#### Credit for the original manual team
 
 + Trevor Walkley (bluewater)
 
@@ -79,6 +79,6 @@ We **need** contributors for siduction release art!
 
 + zenren
 
-**Wir möchten allen, die zu siduction beigetragen haben und weiter beitragen genauso danken, wie den ursprünglichen Erstellern und Übersetzern des bluewater-manual**
+**We would like to thank everyone who has contributed and continues to contribute to siduction as well as the original creators and translators of the bluewater-manual**.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-27</div>
+<div id="rev">Last edited: 2021-13-08</div>

@@ -1,92 +1,92 @@
-% Live-DVD verwenden
+% Use Live DVD
 
-## Live-DVD verwenden
+## Use Live DVD
 
-### Eingerichtete User auf dem Live-Medium
+### Users set up on the live medium
 
-Auf dem Live-Medium sind die User '**siducer**' und '**root**' (der Systemadministrator) eingerichtet.
+The users '**siducer**' and '**root**' (the system administrator) are set up on the live medium.
 
-Für den User '**siducer**' ist das Passwort '**live**' gesetzt.  
-Für den User '**root**' (Systemadministrator) ist kein Passwort gesetzt.
+For the user '**siducer**', the password '**live**' is set.  
+No password is set for the user '**root**' (system administrator).
 
-Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren bitte den User '**siducer**' mit dem Passwort '**live**' eingeben.
+The live session will be locked after some time without any input. To unlock, please enter the user '**siducer**' with the password '**live**'.
 
-### Mit root-Rechten auf der Live-DVD
+### With root privileges on the live DVD
 
-Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.
+We describe below several ways to run a program with root privileges.
 
-> **Achtung:**  
-> Wann immer man mit root-Rechten arbeitet, sollte man genau wissen, was man macht. Für das Surfen im Internet und ähnliche Aktionen sind keine root-Rechte nötig.
+> **Caution  
+> Whenever you work with root privileges, you should know exactly what you are doing. For web browsing and similar actions, root privileges are not necessary.
 
 1.
-  Am einfachsten man öffnet ein Terminal und verschafft sich mit der Eingabe "**su**" root-Rechte.  
-  Um jetzt ein Programm, das mit graphischer Oberfläche arbeitet zu starten, einfach den Programmnamen eingeben. 
+  The easiest way is to open a terminal and get root rights by typing "**su**".  
+  To start a program that works with a graphical user interface, just enter the program name. 
 
   ~~~
-  root@siduction:~# geparted &
+  root@siduction:~# parsed &
   ~~~
 
-  Jetzt wird Gparted mit root-Rechten ausgeführt. Das "&" am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.
+  Now Gparted is executed with root privileges. The "&" at the end of the command puts the process into the background and the terminal remains usable.
 
 2.
-  Ein Befehlseingabefenster öffnen:  
-  Die Tastenkombination `Alt` + `F2` benutzen um eine Programmstartzeile zu erhalten und darin den Befehl
+  Open a command prompt window:  
+  Use the key combination `Alt` + `F2` to get a program startup line and enter in it the command
 
   ~~~
-  sudo <Anwendung>  
+  sudo <application>  
   ~~~
 
-  eingeben.  
-  Es öffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt wird. Nun einfach die `Enter`-Taste betätigen, es sei denn, es wurde wie weiter unten beschrieben ein temporäres root-Passwort gesetzt, das einzugeben ist.
+  in it.  
+  A terminal window will open asking for the root password. Now simply press the `Enter` key, unless a temporary root password has been set as described below, which must be entered.
 
 3.
-  In ein Terminal ohne root-Rechte den Befehl
+  In a terminal without root privileges enter the command
 
   ~~~
-  sudo <Anwendung> &
+  sudo <application> &
   ~~~
 
-  eingeben.  
+  enter.  
 
-  Bitte beachten:  
-  *sudo* ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir empfehlen, den echten root-Account direkt zu nutzen.  
-Siehe [warum sudo nicht konfiguriert ist](term-konsole_de.md#arbeit-als-root)
+  Please note:  
+  *sudo* is not preconfigured on hard disk installations. We recommend using the real root account directly.  
+See [why sudo is not configured](term-console_en.md#work-as-root)
 
-### Ein neues Passwort setzen
+### Set a new password
 
-Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F1` auf die erste virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
+In case you are locked out on a siduction-*.iso, switch to the first virtual console by pressing `Alt` + `Ctrl` + `F1` and enter the command **su** followed by **passwd siducer**.
 
 ~~~
 siducer@siduction:~$ passwd
-Geben Sie ein neues Passwort ein:
-Geben Sie das neue Passwort erneut ein:
-passwd: Passwort erfolgreich geändert
+Enter a new password:
+Re-enter the new password:
+passwd: Password successfully changed
 siducer@siduction:~$
 ~~~
 
-Dieses neue Passwort für **siducer** kann den Rest der Live-Sitzung verwendet werden.  
-Mit der Tastenkombination `Alt` + `F7` gelangt man wieder zur graphischen Oberfläche und meldet sich mit dem neuen Passwort an.
+This new password for **siducer** can be used for the rest of the live session.  
+With the key combination `Alt` + `F7` you get back to the graphical user interface and log in with the new password.
 
-Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort vergeben, allerdings muss man vorher per su root werden. 
-Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als 'root' möglich.
+The same procedure can be used to set a password for root in any terminal, but you have to become root via su first. 
+Afterwards a login on a virtual console as 'root' is possible.
 
-### Software-Installation bei Live-Sitzung
+### Software installation during live session
 
-Die Befehlsfolge für die Installation von Software während einer Live-Sitzung gleicht der bei einer Festplatteninstallation.
-Voraussetzung ist ein root-Terminal, 
+The command sequence for installing software during a live session is similar to that for a hard disk installation.
+The prerequisite is a root terminal, 
 
 ~~~
 apt update
-apt install <das-gewünschtes-paket>
+apt install <the-package-you-want>
 ~~~
 
-oder ein vorangestelltes sudo vor die Befehle.
+or a preceding sudo before the commands.
 
 ~~~
 sudo apt update
-sudo apt install <das-gewünschtes-paket>
+sudo apt install <the-package-you-want>
 ~~~
 
-Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten.
+However, if you shut down the live DVD, no changes will be kept.
 
-<div id="rev">Zuletzt bearbeitet: 2021-06-30</div>
+<div id="rev">Last edited: 2021-13-08</div>

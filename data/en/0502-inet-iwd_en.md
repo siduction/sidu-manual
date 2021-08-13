@@ -11,7 +11,7 @@ Wer möchte, kann iwd als Ersatz für wpa_supplicant nutzen, entweder eigenstän
 ### IWD installieren
 
 > Anmerkung:  
-> Unter debian ist es leider nicht möglich den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
+> Unter Debian ist es leider nicht möglich, den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
  
 Möchte man dieses so gibt es zwei Möglichkeiten, wobei die zweite Möglichkeit die sinnvollere und einfachere ist.
 
@@ -20,7 +20,7 @@ Möchte man dieses so gibt es zwei Möglichkeiten, wobei die zweite Möglichkeit
 
 Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen
     
-Weiterhin machen wir darauf Aufmerksam, dass siduction systemd nutzt. Wir werden also nicht darauf eingehen, wie iwd ohne systemd konfiguriert wird!
+Weiterhin machen wir darauf aufmerksam, dass siduction systemd nutzt. Wir werden also nicht darauf eingehen, wie iwd ohne systemd konfiguriert wird!
 
 Vorgehensweise bei installiertem NetworkManager
 

@@ -162,23 +162,6 @@ Weitere Informationen:
 man scp
 ~~~
 
-### Entfernter Zugriff von einem Windows-PC
-
-unter Nutzung von SSH und X-Forwarding:
-
-* Herunterladen und Brennen der [Cygwin XLiveCD](http://xlivecd.indiana.edu/)  
-* Die CD ins Laufwerk einlegen und auf den automatischen Start (autorun) warten  
-* Weiter (continue) klicken, bis sich ein Shell-Fenster öffnet.  
-* Folgenden Befehl eingeben:
-
-~~~
-ssh -X username@xxx.xxx.xxx.xxx
-~~~
-
-`Anmerkung: xxx.xxx.xxx.xxx ist die IP-Adresse des entfernten Linux-PCs oder seine URL (z.B. eines dyndns.org Accounts), und der Username ist natürlich der eines auf dem entfernten Rechner existierenden Benutzerkontos.`  Nach erfolgreichem Login kann man zum Beispiel 'kmail' starten und seine Mails abrufen.
-
-Wichtig: hosts.allow muss einen Eintrag beinhalten, der auch Rechnern aus anderen Netzwerken den Zugriff erlaubt. Wenn man einen Router oder eine NAT-Firewall verwendet, muss Port 22 zum Linuxrechner weitergeleitet sein (portforwarding).
-
 ### SSH mit Dolphin
 
 Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das `sftp-` Protokoll benutzen, welches in ssh vorhanden ist.

@@ -279,7 +279,7 @@ Ein einfaches "apt upgrade" von Debian Sid ist normalerweise nicht empfohlen. Es
 Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?  
 Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals täglich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden. 
 
-Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht zugewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.
+Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht gewartet werden sollte. Besonders beachtet sollten Programmpakete werden, welche nicht aus den siduction- oder Debian-Repositorien stammen oder selbst kompiliert wurden, da diese nach einer Systemaktualisierung mittels full-upgrade wegen Inkompatibilitäten ihre Funktionsfähigkeit verlieren können.
 
 **Aktualisierung nicht mit Live-Medium**
 
@@ -364,11 +364,13 @@ Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit
 ### full-upgrade ausführen
 
 > **Warnhinweis:**  
-> Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Probleme führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
+> Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Problemen führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 
 Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.
 
-Zu beachten ist der folgende Ablauf:
+
+  
+  Zu beachten ist der folgende Ablauf:
 
 1. Aus der Desktopumgebung abmelden
   (diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht)

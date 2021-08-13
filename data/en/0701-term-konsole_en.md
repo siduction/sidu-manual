@@ -106,6 +106,8 @@ Als Alternative zu *sudo* kann auch *doas* (apt install doas) genommen und einge
 * https://man.openbsd.org/doas
 * https://github.com/slicer69/doas
 
+
+
 ### Farbiges Terminal
 
 Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root #** eine Aufgabe durchführt, die man als **user $** machen wollte.  

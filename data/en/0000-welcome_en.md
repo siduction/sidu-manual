@@ -18,7 +18,7 @@ The siduction operating system manual is a reference for getting to know the sys
 It is divided into similar topics: Everything concerning partitioning, for example, is in the "Installation/Partitioning" chapter, and topics concerning WLAN are in the "Network" chapter.
 
 Printing manual pages:  
-Linux commands can be more than 120 characters long. For an optimized display on the screen, there is no automatic line break. Our manual in PDF format, which is available on all ISO's and after installation in the system, uses line breaking for the long commands. It is also available [online here](https://manual.siduction.org/manual.pdf).  
+Linux commands can be more than 120 characters long. For an optimized display on the screen, there is no automatic line break. Our manual in PDF format, which is available on all ISOs and after installation in the system, uses line breaking for the long commands. It is also available [online here](https://manual.siduction.org/manual.pdf).  
 To print manual pages, please use the PDF and print only the pages you need.
 
 To get help for a specific pre-installed or self-installed application program (also called a package), it is best to consult the FAQs, online manuals or forums on the home page or help menu of the application.

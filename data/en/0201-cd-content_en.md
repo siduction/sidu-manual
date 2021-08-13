@@ -1,104 +1,104 @@
-% Inhalt der Live-ISO
+% Content of the live ISO
 
-## Inhalt der Live-ISO
+## Contents of the Live-ISO
 
-### Hinweis zur Software auf dem Live-ISO
+### Note about the software on the Live-ISO
 
-siduction stellt auf der Live-ISO DFSG-freie Software zur Verfügung als auch nicht freie Firmware. Zur Deinstallation proprietärer Software benutzt man den Befehl **`apt purge $(vrms -s)`** oder unser Script **`remove-nonfree`** nach der Installation.
+siduction provides DFSG-free software on the Live-ISO as well as non-free firmware. To uninstall proprietary software use the command **`apt purge $(vrms -s)`** or our script **`remove-nonfree`** after installation.
 
-Das ISO basiert ausschließlich auf zum Veröffentlichungszeitpunkt jeweils aktuellem Debian Sid, bereichert und stabilisiert durch eigene Pakete und Skripte aus den siduction-Repositories. Als Kernel wird der jeweils aktuelle Vanilla Mainline Kernel verwendet und mit Patches versehen. ACPI und DMA sind aktiviert.
+The ISO is based exclusively on the latest Debian Sid at the time of release, enriched and stabilized with custom packages and scripts from the siduction repositories. The kernel is the latest vanilla mainline kernel and is patched. ACPI and DMA are enabled.
 
-Eine komplette Manifest-Datei mit der Auflistung aller installierten Programme für jede einzelne Veröffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver.
+A complete manifest file listing all installed programs for each release variant of siduction can be found on each download mirror.
 
-### Varianten der ISO
+### Variants of the ISO
 
-siduction bietet sieben aktuelle Images mit verschiedenen Desktop-Umgebungen (zwei auch ohne) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. Üblicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.  
-Die Varianten sind:
+siduction offers seven current images with different desktop environments (two also without) in 64-bit as live ISO to get started with Debian Sid. Typically, an installation takes between 1 and 10 minutes, depending on the hardware.  
+The variants are:
 
-1. **KDE 64 Bit** , live-ISO mit etwa 2,8 GByte:
-    - Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repräsentativen Auswahl der KDE Applications.  
-    - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+1. **KDE 64 bit** , live-ISO with about 2.8 GByte:
+    - Qt based Plasma Desktop and KDE frameworks. With a representative selection of KDE Applications.  
+    - Installation of additional applications is possible without problems via apt.
 
-2. **Cinnamon mit 64 Bit** , live-ISO mit etwa 2.3 GByte:
-     - GTK-basierter Desktop mit einer repräsentativen Auswahl an nützlicher Software.  
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+2. **Cinnamon with 64 bit** , live ISO with about 2.3 GByte:
+     - GTK-based desktop with a representative selection of useful software.  
+     - Installing additional applications is possible without problems via apt.
 
-3.  **XFCE 64 Bit** , live-ISO mit etwa 2,3 GByte:
-    - umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv tätig sein zu können.  
-    - Der Ressourcenaufwand ist geringer als mit KDE.  
-    - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+3. **XFCE 64 Bit** , live-ISO with about 2.3 GByte:
+    - Includes a GTK based desktop environment with all features (no minimal version!) and all applications to be productive right away.  
+    - The resource requirements are lower than with KDE.  
+    - The installation of additional applications is possible without problems via apt.
 
-4.  **LXQt mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
-     - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.  
-     - Der Fußabdruck ist etwas schmaler als bei XFCE
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+4. **LXQt with 64 bit** , live ISO with about 2.2 GByte:
+     - Includes a desktop environment with a selection of Qt applications.  
+     - The footprint is somewhat narrower than XFCE.
+     - Installation of additional applications is possible without problems via apt.
 
-5.  **LXde mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
-     - umfasst eine Desktopumgebung mit einer Auswahl an GTK-Applikationen.  
-     - Der Fußabdruck ist schmaler als bei XFCE
-     - geeignet für ältere Hardware
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+5. **LXde with 64 bit** , live ISO with about 2.2 GByte:
+     - Includes a desktop environment with a selection of GTK applications.  
+     - The footprint is narrower than with XFCE
+     - suitable for older hardware
+     - Installation of additional applications is possible without problems via apt.
 
-6.  **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
-      - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.  
-      - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen
+6. **Xorg with 64 bit** , live ISO with about 1.8 GByte:
+      - An ISO image with an Xorg stack and the spartan window manager Fluxbox.  
+      - For users who want to build their system according to their own ideas
 
-7.  **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
-      - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
+7. **NoX with 64 bit** , live ISO with about 800 MByte: 
+      - As the name implies, no pre-installed Xorg stack.
 
-**32 Bit ISO's** bieten wir standardmäßig nicht mehr an.  
-Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen können wir ein solches ISO leider nicht.
+**32 bit ISO's** we no longer offer by default.  
+If a 32bit IOS is desired, we will gladly create one on request in IRC. Unfortunately we cannot test such an ISO.
 
-### Minimale Systemanforderungen
+### Minimum system requirements
 
-für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
+for: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg and NoX
 
-#### Prozessoranforderungen: 64Bit CPU
+#### Processor requirements: 64Bit CPU
 
     AMD64  
     Intel Core2  
     Intel Atom 330  
-    jede x86-64/ EM64T fähige CPU oder neuer  
-    neuere 64 bit fähige AMD Sempron and Intel Pentium 4 CPUs  
-    (achten Sie auf das "lm"-Flag in /proc/cpuinfo oder nutzt inxi -v3).
+    any x86-64/ EM64T capable CPU or newer  
+    newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs  
+    (look for the "lm" flag in /proc/cpuinfo or use inxi -v3).
 
-#### Speicheranforderungen
+#### Memory requirements
 
-    KDE-Plasma: ≥ 4 GByte RAM
+    KDE plasma: ≥ 4 GByte RAM
     Mate:       ≥ 4 GByte RAM
-    Cinnamon:   ≥ 4 GByte RAM
-    XFCE:       ≥ 4 GByte RAM
-    LXQT:       ≥ 512 MByte RAM
-    Lxde        ≥ 512 MByte RAM
-    Xorg:       ≥ 512 MByte RAM
-    NoX:        ≥ 256 MByte RAM
+    Cinnamon: ≥ 4 GByte RAM
+    XFCE: ≥ 4 GByte RAM
+    LXQT: ≥ 512 MByte RAM
+    Lxde ≥ 512 MByte RAM
+    Xorg: ≥ 512 MByte RAM
+    NoX: ≥ 256 MByte RAM
 
-    ≥ 5 GByte Festplattenspeicher für NOX
-    ≥10 GByte Festplattenspeicher für alle Anderen
+    ≥ 5 GByte hard disk space for NOX
+    ≥10 GBytes of disk space for all others.
 
-#### Sonstiges
+#### Other
 
-    VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung.
-    optisches Laufwerk oder USB Medien.
+    VGA graphics card with at least 640x480 pixel resolution.
+    Optical drive or USB media.
 
-### Anwendungen und Hilfsprogramme
+### Applications and utilities
 
-Als Internetbrowser werden (je nach Variante) [Firefox](https://mozilla.org), oder [Chromium](https://chromium.woolyss.com/download/de/#linux) mitgeliefert.
+As an Internet browser, [Firefox](https://mozilla.org), or [Chromium](https://chromium.woolyss.com/download/de/#linux) are included (depending on the variant).
 
-Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin,Thunar und PCManFM zur Verfügung.
+Libreoffice is pre-installed as office software. Dolphin, Thunar and PCManFM are available as file managers.
 
-Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung.
+Connman or Network Manager is available for network and Internet configuration.
 
-Xorg und nox werden mit [IWD](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) als ausgeliefert, dieser kann via [nmtui/nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool) oder [iwctl](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) konfiguriert werden. 
+Xorg and nox are delivered with [IWD](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant) as, this can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-kommandline-tool) or [iwctl](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant). 
 
-Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md#partitionieren-mit-fdisk), [gdisk und cgdisk](./part-gdisk_de.md#partitionieren-mit-gdisk) und [GParted](./part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
+For partitioning disks, [cfdisk](./part-cfdisk_en.md#partition-with-fdisk), [gdisk and cgdisk](./part-gdisk_en.md#partition-with-gdisk) and [GParted](./part-gparted_en.md#partition-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
 
-Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
+System analysis tools such as [Memtest86+](http://www.memtest.org/) (a tool for comprehensive memory analysis) are also included.
 
-Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzele Veroffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver.
+Each ISO variant contains an extensive selection of applications for the command line. A complete manifest file with the installed programs for each release variant of siduction can be found on each download mirror.
 
-### Haftungsausschluss_Disclaimer
+### Disclaimer_Disclaimer
 
-siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siduction-Projekt, seine Entwickler und Team-Mitglieder können unter keinen Umständen wegen Beschädigung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Schäden des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder verwenden noch verteilen.
+siduction is experimental software. Use at your own risk. The siduction project, its developers and team members cannot be held liable under any circumstances for damage to hardware or software, lost data or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.
 
-<div id="rev">Zuletzt bearbeitet: 2021-04-12</div>
+<div id="rev">Last edited: 2021-13-08</div>
