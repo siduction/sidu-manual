@@ -1,23 +1,23 @@
-% siduction Systemadministration
+% siduction system administration
 
-## Systemadministration allgemein
+## System administration in general
 
-### Bootoptionen Cheatcodes
+### Boot options cheat codes
 
-Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` fortgesetzt.
+At the beginning of the boot process, the kernel command line can be edited by pressing the `e` key as soon as the Grub menu appears. In edit mode, use the arrow keys to navigate to the kernel line and insert the desired cheatcode(s) at the end. The space character serves as separator. The boot process is continued with the key combination `Ctrl`+`X`.
 
-Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bootoptionen.
+The following links lead to the manual page with the tables for the boot options.
 
-1. [siduction spezifische Parameter (nur Live-CD)](cheatcodes_de.md#siduction-spezifische-parameter)
-2. [Bootoptionen für den Grafikserver X](cheatcodes_de.md#bootoptionen-für-den-grafikserver-x)
-3. [Allgemeine Parameter des Linux-Kernels](cheatcodes_de.md#allgemeine-parameter-des-linux-kernels)
-4. [Werte für den allgemeinen Parameter **vga**](cheatcodes_de.md#vga-codes)
+1 [siduction specific parameters (Live-CD only)](cheatcodes_en.md#siduction-specific-parameters)
+2. [bootoptions-for-graphics-server-X](cheatcodes_en.md#bootoptions-for-graphics-server-x)
+3 [general-parameters-of-the-linux-kernel](cheatcodes_en.md#general-parameters-of-the-linux-kernel)
+4. [Values for the general parameter **vga**](cheatcodes_en.md#vga-codes)
 
-[Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
+[Detailed reference list for kernel bootcodes from kernel.org (English, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
-### systemd - Dienste verwalten
+### systemd - managing services
 
-systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am häufigsten zu tun haben sind:
+systemd knows a total of 11 unit types. The units we deal with most often in everyday life are:
 
 + systemd.service  
 + systemd.target  
@@ -26,28 +26,28 @@ systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am hä
 + systemd.mount  
 + systemd.path  
 
-Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager). Die vollständige Dokumentation ist in den man-Pages **systemd.unit**, **systemd.special** und jeweils **systemd."Unit-Typ"** zu finden.
+We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page [systemadministration.systemd](systemd-start_en.md#systemd--the--system--and--services--manager). The complete documentation can be found in the man pages **systemd.unit**, **systemd.special** and **systemd. "Unit-type "** respectively.
 
-Mit dem Befehl, je nach den Units und den notwendigen Rechten als *user* oder *root* aufgerufen,
-
-~~~
-systemctl [OPTIONEN...] Befehl [UNIT...]
-~~~
-
-wird das Systemd-System gesteuert. *systemctl* kennt die Autovervollständigung mittels `TAB` und die Anzeige aller Variationen mittels `TAB` `TAB`. Bitte die man-Page **systemctl** lesen.
-
-Eine nach Typen sortierte Liste mit allen aktiven Units bzw. Unit-Dateien, geben die folgenden Befehle aus:
+With the command, depending on the units and the necessary rights as *user* or *root* called,
 
 ~~~
-$ systemctl list-units          # für Units
-$ systemctl list-unit-files     # für Unit-Dateien
+systemctl [OPTIONS...] command [UNIT...]
 ~~~
 
-mit der Option *-a* werden auch alle inaktiven Units bzw. Unit-Dateien ausgegeben.
+the systemd system is controlled. *systemctl* knows the autocompletion by `TAB` and the display of all variations by `TAB` `TAB`. Please read the man page **systemctl**.
+
+A list sorted by types with all active units or unit files, output the following commands:
+
+~~~
+$ systemctl list-units # for units
+$ systemctl list-unit-files # for unit files
+~~~
+
+with the option *-a* all inactive units or unit files are also output.
 
 ### systemd.service 
 
-Zum Starten oder Stoppen einer .service-Unit die Befehle:
+To start or stop a .service unit use the commands:
 
 ~~~
 $ systemctl start <UNIT>.service
@@ -55,101 +55,101 @@ $ systemctl stop <UNIT>.service
 $ systemctl restart <UNIT>.service
 ~~~
 
-verwenden. *"Restart"* ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion Root-Rechte nötig sind, wird das Root-Passwort abgefragt.  
-Zum Beenden eines Dienstes dient auch der Befehl:
+use. *"Restart "* is useful, for example, to notify the service of a changed configuration. If root privileges are required for the action, the root password is requested.  
+The command can also be used to terminate a service:
 
 ~~~
 $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 ~~~
 
-Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen **-s, --signal=** und **--kill-who=** bereit.
-+ **-s** sendet eines der Signale **SIGTERM, SIGINT, SIGSTOP**. Vorgabe ist **SIGTERM**.
-+ **--kill-who=** erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist **all**.  
-Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](#beenden-eines-prozesses) erläutert wird.
+With *"kill "*, in contrast to *"stop "*, the options **-s, --signal=** and **--kill-who=** are available.
++ **-s** sends one of the signals **SIGTERM, SIGINT, SIGSTOP**. Default is **SIGTERM**.
++ **--kill-who=** allows selection of the processes within the hirarchy to which a signal should be sent. The options are **main, control, all**. This sends the signal to the main process, the child processes, or both. Default is **all**.  
+This behavior is similar to the old and still usable command *pkill*, which is explained below in the section [Terminating a process](#terminating-a-process).
 
 
-### systemd - UNIT eingliedern
+### systemd - UNIT inclusion
 
-Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als Root:
-
-~~~
-# systemctl enable <UNIT-Datei>
-~~~
-
-Dies erzeugt eine Gruppe von Symlinks entsprechend den Anforderungen in der Konfiguration der Unit. Im Anschluss wird automatisch die Systemverwalterkonfiguration neu geladen.
-
-Der Befehl
+To have a (self-made) unit loaded automatically when the computer is booted, as root:
 
 ~~~
-# systemctl disable <UNIT-Datei>
+# systemctl enable <UNIT file>
 ~~~
 
-entfernt die Symlinks wieder.
+This creates a group of symlinks according to the requirements in the unit's configuration. Following this, the system manager configuration is automatically reloaded.
 
-**Beispiel**  
-Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden möchte, entfernt der Befehl (als Root):
+The command
+
+~~~
+# systemctl disable <UNIT file>
+~~~
+
+removes the symlinks again.
+
+**Example**  
+If a PC or laptop without Bluetooth hardware is in use, or you don't want to use Bluetooth, the command removes (as root):
 
 ~~~
 # systemctl disable bluetooth.service
 ~~~
 
-die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und der Service ist nicht mehr verfügbar und wird auch nicht automatisch gestartet.
+will remove the symlinks from all requirements and dependencies within systemd and the service will no longer be available and will not be started automatically.
 
 
-### systemd-target ehemals Runlevel
+### systemd-target formerly runlevel.
 
-Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.  
-Die alten sysvinit-Befehle werden weiterhin unterstützt. (hierzu ein Zitat aus *man systemd*: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")  
-Ausführlichere Informationen zum systemd enthält die Handbuchseite [Systemadministration.systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager).  
-Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.
+Since the 2013.2 "December" release, siduction already uses systemd as the default init system.  
+The old sysvinit commands are still supported. (for this a quote from *man systemd*: "... is provided for compatibility reasons and because it is easier to type.")  
+More detailed information about systemd can be found on the manual page [systemadministration.systemd](systemd-start_en.md#systemd--the--system--and--services--manager).  
+The various runlevels that are booted or switched to are described by systemd as **target** units. They have the extension **.target**.
 
-| Ziel-Unit | Beschreibung | 
+| target unit | description | 
 | ---- | ---- |
-| emergency.target | Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden. | 
-| rescue.target | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
-| multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#aktualisierung-des-systems) . |
-| graphical.target | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
-| default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer noX). |
+| emergency.target | Starts into an emergency shell on the main console. It is the minimum version of a system boot to obtain an interactive shell. This unit can be used to guide the boot process step by step. | 
+| rescue.target | Starts the base system (including system mounts) and an emergency shell. Compared to multi-user.target, this target could be considered as single-user.target. |
+| multi-user.target | Multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not boot into X. [A system update (dist-upgrade) is performed on this unit](sys-admin-apt_en.md#update-the-system) . |
+| graphical.target | The unit for multi-user mode with network capability and a running X Window System. |
+| default.target | The default unit that systemd starts at system startup. In siduction this is a symlink to graphical.target (except noX). |
 
-Ein Blick in die Dokumentation **man SYSTEMD.SPECIAL(7)** ist obligatorisch um die Zusammenhänge der verschiedenen *.target* - *Unit* zu verstehen.
+A look into the documentation **man SYSTEMD.SPECIAL(7)** is mandatory to understand the relationships of the different *.target* - *unit*.
 
-Um in den Runlevel zur Systemaktualisierung zu wechseln, ist im Terminal folgender Befehl als root zu verwenden:
+To switch to the system update runlevel, use the following command as root in the terminal:
 
 ~~~
 # systemctl isolate multi-user.target
 ~~~
 
-Wichtig ist hierbei der Befehl **isolate**, der dafür sorgt, dass alle Dienste und Services, welche die gewählte Unit **nicht** anfordert, beendet werden.
+Important here is the **isolate** command, which ensures that all services and services that the selected unit **does not** request are terminated.
 
-Um das System herunter zu fahren bzw. neu zu starten, sollte der Befehl 
+To shut down or restart the system, the command 
 
 ~~~
 # systemctl poweroff
-   bzw.
+   or
 # systemctl reboot
 ~~~
 
-verwendet werden. *poweroff* bzw. *reboot* (jeweils ohne *.target*) ist ein Befehl, der mehrere Unit in der richtigen Reihenfolge hereinholt, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
+can be used. *poweroff* or *reboot* (each without *.target*) is a command that brings in several units in the correct order to terminate the system in an orderly fashion and to reboot if necessary.
 
-### Beenden eines Prozesses
+### Terminating a process
 
-**pgrep und pkill**
+**pgrep and pkill**
 
-Unabhängig von systemd ist **pgrep** und **pkill** ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder Root-Rechten in einer Konsole oder TTY ausgeführt:
+Independent of systemd, **pgrep** and **pkill** is a very useful duo to terminate unwelcome processes. Run with user or root privileges in a console or TTY:
 
 ~~~
 $ pgreg <tab> <tab>
 ~~~
 
-listet alle Prozesse mit ihrem Namen, aber ohne die Prozess-ID (PID) auf. Wir benutzen im Anschluss Firefox als Beispiel.  
-Die Option **-l** gibt die PID und den vollständigen Namen aus:
+lists all processes with their name, but without the process ID (PID). We use Firefox as an example in the following.  
+The **-l** option prints the PID and the full name:
 
 ~~~
 $ pgrep -l firefox
 4279 firefox-esr
 ~~~
 
-Um, sofern vorhanden, Unterprozesse anzuzeigen benutzen wir zusätzlich die Option **-P** und nur die PID:
+To display subprocesses, if any, we also use the **-P** option and only the PID:
 
 ~~~
 $ pgrep -l -P 4279
@@ -158,244 +158,244 @@ $ pgrep -l -P 4279
 231999 Web Content
 ~~~
 
-anschließend
+then
 
 ~~~
 $ pkill firefox-esr
 ~~~
 
-beendet Firefox mit dem Standardsignal *SIGTERM*.  
-Mit der Option **--signal**, gefolgt von der Signalnummer oder dem Signalnamen, sendet pkill das gewünschte Signal an den Prozess. Eine übersichtliche Liste der Signale erhält man mit *kill -L*.
+terminates Firefox with the default signal *SIGTERM*.  
+With the option **--signal**, followed by the signal number or the signal name, pkill sends the desired signal to the process. A clear list of signals can be obtained with *kill -L*.
 
 **htop**
 
-Im Terminal eingegeben, ist htop eine gute Alternative, da sehr viele nützliche Informationen zu den Prozessen und zur Systemauslastung präsentiert werden. Dazu zählen eine Baumdarstellung, Filter- und Suchfunktion, Kill-Signal und einiges mehr. Die Bedienung ist selbsterklärend.
+Entered in the terminal, htop is a good alternative, because a lot of useful information about the processes and the system load is presented. This includes a tree view, filter and search function, kill signal and some more. The operation is self-explanatory.
 
-**Notausgang**
+**Emergency exit**
 
-Als letzten Rettungsanker bevor der Netzstecker gezogen wird, kann man den Befehl *killall -9* im Terminal absetzen.
+As a last resort before pulling the power plug, you can use the command *killall -9* in the terminal.
 
-### Vergessenes Rootpasswort
+### Forgotten root password
 
-Ein vergessenes Rootpasswort kann nicht wiederhergestellt werden, aber ein neues kann gesetzt werden.
+A forgotten root password cannot be recovered, but a new one can be set.
 
-Dazu muss zuerst die Live-CD gebootet werden.
+To do this, the live CD must first be booted.
 
-Als Root muss die Rootpartition eingebunden werden (z. B. als /dev/sdb2)
+The root partition must be mounted as root (e.g. as /dev/sdb2)
 
 ~~~
 mount /dev/sdb2 /media/sdb2
 ~~~
 
-Nun folgen ein chroot in die Rootpartition (chroot=changed root ... "veränderter Root") und die Eingabe eines neuen Passwortes:
+Now follow a chroot into the root partition (chroot=changed root ... "changed root") and the input of a new password:
 
 ~~~
 chroot /media/sdb2 passwd
 ~~~
 
-### Setzen neuer Passwörter
+### Setting new passwords
 
-Um ein User-Passwort zu ändern, als **$ user** :
+To change a user password, as **$ user** :
 
 ~~~
 $ passwd
 ~~~
 
-Um das Root-Passwort zu ändern, als **# root** :
+To change the root password, as **# root** :
 
 ~~~
 # passwd
 ~~~
 
-Um ein User-Passwort als Administrator zu ändern, als **# root** :
+To change a user password as administrator, as **# root** :
 
 ~~~
 # passwd <user>
 ~~~
 
-### Schriftarten in siduction
+### Fonts in siduction
 
-Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig vorab die richtigen Einstellungen und Konfigurationen der Hardware zu prüfen.
+To improve the display of fonts, if necessary, it is important to check the correct settings and configurations of the hardware beforehand.
 
-**Einstellungen prüfen **
+**Check settings
 
-- **Korrekte Grafiktreiber**  
-    Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite [Grafiktreiber](gpu_de.md#grafiktreiber) des Handbuchs.
+- **Correct graphics drivers**  
+    Some newer graphics cards from ATI and Nvidia do not harmonize very well with the free Xorg drivers. The only reasonable solution in these cases is to install proprietary, non open source drivers. For legal reasons, siduction cannot pre-install these. Instructions for installing these drivers can be found on the [Graphics Drivers](gpu_en.md#grafiktreiber) page of the manual.
 
-- **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
-    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.
+- **Correct screen resolutions and refresh rates**.  
+    First, it's a good idea to look at the manufacturer's technical documentation, either in print or online. Each monitor has its own perfect combination of settings. These DCC values are usually passed correctly to the operating system. Only sometimes it is necessary to intervene manually to overwrite the basic settings.
 
-    Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
+    To check which settings the X server is currently using, we use xrandr in the terminal:
 
    ~~~
     $ xrandr  
     Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
     HDMI-1 disconnected (normal left inverted right x axis y axis)  
     HDMI-2 connected 1680x1050+0+0 (normal left inverted right x axis y axis) 474mm x 296mm  
-      1680x1050     59.95*+  
-      1280x1024     75.02    60.02  
-      1440x900      59.90  
-      1024x768      75.03    60.00  
-      800x600       75.00    60.32  
-      640x480       75.00    59.94  
-      720x400       70.08  
+      1680x1050 59.95*+  
+      1280x1024 75.02 60.02  
+      1440x900 59.90  
+      1024x768 75.03 60.00  
+      800x600 75.00 60.32  
+      640x480 75.00 59.94  
+      720x400 70.08  
     DP-1 disconnected (normal left inverted right x axis y axis)  
    ~~~
 
-    Der mit **\*** markierte Wert kennzeichnet die verwendete Einstellung,  
-    1680 x 1050 Pixel bei einer physikalischen Größe von 474 x 296 mm.
-    Zusätzlich berechnen wir die tatsächliche Auflösung in Px/inch (dpi) um einen Anhaltspunkt für die Einstellungen der Schriften zu erhalten. Mit den oben ausgegebenen Werten erhalten wir 90 dpi.  
+    The value marked with **\*** indicates the setting used,  
+    1680 x 1050 pixels with a physical size of 474 x 296 mm.
+    In addition, we calculate the actual resolution in px/inch (dpi) to get an indication of the settings for the fonts. With the values given above we get 90 dpi.  
     1680 Px `x` 25,4 mm/inch `:` 474 mm `=` 90 Px/inch (dpi)
 
-- **Überprüfung**  
-    Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.  
+- **Check**  
+    We use a folding rule or tape measure to determine the actual size of the monitor. The result should differ by less than three millimeters from the values output by xrandr.  
 
-**Basiskonfuguration der Schriftarten**
+**Basic font configuration**
 
-siduction nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. In der graphischen Oberfläche kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gewünschte Schriftbild zu erhalten. 
+siduction uses free fonts that have proven to be balanced in Debian. In the graphical user interface TTF or outline fonts are used. If own fonts are chosen, new configuration adjustments may have to be made to get the desired font appearance. 
 
-Die systemweite Grundkonfiguration erfolgt im Terminal als root mittels:
+The system-wide basic configuration is done in the terminal as root using:
 
 ~~~
 # dpkg-reconfigure fontconfig-config
 ~~~
 
-Bei den aufgerufenen Dialogen haben sich diese Einstellungen bewährt:
+For the dialogs called, these settings have proven to be useful:
 
-1. Bitte wählen Sie zur Bildschirmdarstellung die bevorzugte Methode zum Schriftabgleich (font tuning) aus.  
+1. for screen display, please select the preferred method for font tuning.  
    "autohinter"  
 
-2. Bitte wählen Sie, inwieweit Font-Hinting standardmäßig angewendet wird.  
-   "mittel"  
+2. please select to what extent font hinting is applied by default.  
+   "medium"  
 
-3. Die Einbeziehung der Subpixel-Ebene verbessert die Textdarstellung auf Flachbildschirmen (LCD)  
-   "automatisch"  
+3. the inclusion of the subpixel layer improves the text display on flat panel displays (LCD).  
+   "automatic"  
 
-4. Standardmäßig nutzen Anwendungen, die fontconfig unterstützen, nur Outline-Schriften.  
-    Standardmäßig Bitmap-Schriften verwenden?  
-   "nein"
+4. by default, applications that support fontconfig use only outline fonts.  
+    Use bitmap fonts by default?  
+   "no"
 
-Anschließend ist 
+Subsequently 
 
 ~~~
 # dpkg-reconfigure fontconfig
 ~~~
 
-notwendig um die Konfiguration neu zu schreiben.
+necessary to rewrite the configuration.
 
-Manchmal bedeutet der Neuaufbau des Font-Caches eine Lösung (der erste Befehl gilt der Datensicherung mit einem Datumsanhang, der zweite Befehl ist ohne Zeilenumbruch, d. h. in einer Zeile einzugeben):
+Sometimes rebuilding the font cache means a solution (the first command is for saving data with a date appendix, the second command is to be entered without a line break, i.e. on one line):
 
 ~~~
 # mv /etc/fonts/ /etc/fonts_$(date +%F)/
 # apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
 ~~~
 
-### Userkonfiguration
+### User configuration
 
-**Darstellungsart, Größe, 4K-Display**
+**Display type, size, 4K display**.
 
-Beachtet werden muss, dass jede Schriftart ein ideales Größenspektrum besitzt, sodass identische Größeneinstellungen nicht bei jeder Schriftart zu einem gleich guten Ergebnis führen muss.  
-Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie werden auf dem Desktop sofort wirksam, Anwendungen müssen zum Teil neu gestartet werden.  
-Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.
+It should be noted that each font has an ideal size range, so identical size settings do not necessarily lead to the same good result for each font.  
+The settings can be made conveniently in the graphical interface. They take effect on the desktop immediately, applications have to be restarted to some extent.  
+The list shows where in the menu the settings can be found.
 
 + KDE Plasma  
-  *Systemeinstellungen* > *Schriftarten* > *Schriftarten*  
-  *Systemeinstellungen* > *Anzeige-Einrichtung* > *Anzeige-Einrichtung* > *Globale Skalierung*
+  *System Preferences* > *Fonts* > *Fonts*  
+  *System Preferences* > *Display Setup* > *Display Setup* > *Global Scaling*
 
 + Gnome (Tweak Tool)  
-  *Anwendungen* > *Optimierungen* > *Schriften*
+  *Applications* > *Optimizations* > *Fonts*
 
 + XFCE  
-  *Einstellungen* > *Erscheinungsbild* > Reiter: *Schriften*
+  *Preferences* > *Appearance* > Tab: *Fonts*
 
-**Begriffserklärung**  
-*Kantenglättung / Antialising* :  
-Das ist die Helligkeitsabstufung der Nachbarpixel an den Kanten um bei Rundungen den Treppeneffekt zu vermindern. Es bewirkt aber eine gewisse Unschärfe der Schriftzeichen.
+**Explanation of terms**  
+*Edge smoothing / Antialising* :  
+This is the brightness gradation of the neighboring pixels at the edges to reduce the staircase effect on curves. However, it causes some blurring of the characters.
 
-*Subpixel-Rendering / Farbreihenfolge / RGB* :  
-Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich die Farbkomponenten eines Pixels angesteuert werden.
+*Subpixel rendering / color order / RGB* :  
+This is an extension of antialising for LCD screens by additionally controlling the color components of a pixel.
 
 *Hinting* :  
-Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei **4K**-Bildschirmen ist Hinting meist nicht notwendig.
+Is the adaptation (change) of the characters to the pixel grid of the screen. This reduces the need for antialiasing, but the font shape no longer conforms exactly to the specifications, unless the font developers have already incorporated hinting variations. For **4K** screens, hinting is usually not necessary.
 
-*DPI-Wert / Skalierungsfaktor* :  
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
+*DPI value / scaling factor* :  
+The setting option of a different DPI value or size for the fonts only. Here the display on a **4K** screen can be improved quickly. The following table illustrates the relationship between screen diagonal and DPI value for **4k** screens.
 
-**4k Auflösung**: 3840 x 2160 (16:9)
+**4k resolution**: 3840 x 2160 (16:9)
 
-| Diagonale | X-Achse |	Y-Achse | DPI |
+| diagonal | X-axis | Y-axis | DPI |
 | :----: | :----: | :----: | :----: |
-| 24 Zoll | 531 mm | 299 mm	| 184 |
-| 27 Zoll | 598 mm | 336 mm	| 163 |
-| 28 Zoll | 620 mm | 349 mm	| 157 |
-| 32 Zoll | 708 mm | 398 mm	| 138 |
-| 37 Zoll | 819 mm | 461 mm	| 119 |
-| 42 Zoll | 930 mm | 523 mm	| 105 |
+| 24 inch | 531 mm | 299 mm | 184 |
+| 27 inch | 598 mm | 336 mm | 163 |
+| 28 inch | 620 mm | 349 mm | 157 |
+| 32 inch | 708 mm | 398 mm | 138 |
+| 37 inch | 819 mm | 461 mm | 119 |
+| 42 inch | 930 mm | 523 mm | 105 |
 
-Demnach ist bei **4k-Bildschirmen** mit 24 Zoll Diagonale ein Skalierungsfaktor von 2,0 und mit 37 Zoll Diagonale ein Skalierungsfaktor von 1,2 erforderlich um etwa gleiche Darstellungen entsprechend SXGA oder WSXGA Bildschirmen mit 90 DPI zu erhalten.
+Accordingly, a scaling factor of 2.0 is required for **4k screens** with a diagonal of 24 inches and a scaling factor of 1.2 is required for screens with a diagonal of 37 inches in order to obtain approximately equal displays corresponding to SXGA or WSXGA screens with 90 DPI.
 
-### CUPS - das Drucksystem
+### CUPS - the printing system
 
-KDE hat einen großen Abschnitt zu CUPS in der KDE-Hilfe. Trotzdem folgt nun eine Anleitung, was man bei Problemen mit CUPS nach einem full-upgrade tun kann. Eine der bekannten Lösungen ist:
+KDE has a large section on CUPS in the KDE help. Nevertheless, here is a guide on what to do if you have problems with CUPS after a full-upgrade. One of the known solutions is:
 
 ~~~
 # modprobe lp
 # echo lp >> /etc/modules
 # apt purge cups
 # apt install cups
-        ODER
+        OR
 # apt install cups printer-driver-gutenprint hplip
 ~~~
 
-CUPS wird nun neu gestartet:
+CUPS will now be restarted:
 
 ~~~
 # systemctl restart cups.service
 ~~~
 
-Im Anschluss daran wird ein Web-Browser geöffnet und in die Adresszeile eingegeben: 
+Afterwards open a web browser and type in the address line 
 
 http://localhost:631
 
-Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in **root** zu ändern und das **Root-Passwort** einzugeben.
+A small problem occurs when CUPS opens the corresponding dialog box for legitimation. Occasionally, the user's own user name is already entered there and the password is expected. However, entering the user password does not work. Nothing works. The solution is to change the user name to **root** and enter the **root password**.
 
-[Die OpenPrinting-Datenbank](https://wiki.linuxfoundation.org/openprinting/database/databaseintro)  beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die *hplib* auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket **printer-driver-splix**. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per        [IPP-Everywhere](https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/).
+[The OpenPrinting database](https://wiki.linuxfoundation.org/openprinting/database/databaseintro) contains extensive information about various printers and their drivers. Drivers, specifications and configuration tools are available. Samsung used to supply its own Linux drivers for its printers. After the sale of the printer division to HP, the download page was no longer available and HP unfortunately did not include the Samsung drivers in *hplib*. Currently, the package **printer-driver-splix** works best for Samsung printers and Samsung multifunction devices. CUPS is currently in transition and is moving towards printing without drivers via [IPP-Everywhere](https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/).
 
 ### Sound in siduction
 
-*In älteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.*
+*In older siduction installations, sound is disabled by default.
 
-Die meisten Tonprobleme lassen sich lösen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer öffnet und das Häkchen von "stumm" oder "mute" entfernt bzw. den entsprechenden Schieber betätigt. Ist das Lautsprecher-Symbol nicht vorhanden, genügt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl
+Most sound problems can be solved by clicking on the sound icon in the control bar, opening the mixer and unchecking "mute" or "mute" or using the appropriate slider. If the speaker icon is not present, a right click on the control bar is sufficient, then the selection
 
-in KDE:   *Kontrollleiste Optionen* > *Miniprogramme hinzufügen...*  
-in XFCE:  *Leiste* > *Neue Elemente hinzufügen...*
+in KDE: *Control Panel Options* > *Add Mini Programs...*  
+in XFCE: *Bar* > *Add new items...*
 
-und das gewünschte Modul auswählen.
+and select the desired module.
 
 **KDE Plasma**
 
-Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet das Einstellungsfenster für die Soundausgabe. Die Benutzerführung ist selbsterklärend.
+A right click on the speaker icon in the control bar opens the sound output settings window. The user interface is self-explanatory.
 
 **GNOME**
 
-Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet ein Drop-down-Menü, dass einen Schieber für die Lautstärke enthält.  
-Weitere Einstellungen sind wie folgt möglich:
+Right-clicking on the speaker icon in the control bar opens a drop-down menu that contains a slider for the volume.  
+Further settings are possible as follows:
 
-Rechtsklick auf die Arbeitsfläche > *Einstellungen* > *Audio*
+Right-click on the desktop > *Settings* > *Audio*.
 
-**XFCE Pulse-Audio**
+**XFCE Pulse Audio**
 
-Die Einstellungen erfolgen über das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerführung selbsterklärend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl
+The settings are made via the speaker icon (pulse audio module) in the control bar. Again, the user guidance is self-explanatory. If the icon is missing, you can quickly get started with a terminal and the command
 
 ~~~
 $ pavucontrol
 ~~~
 
-behelfen und nimmt im neu geöffneten Fenster die Einstellungen vor.
+and make the settings in the newly opened window.
 
-**Alsamixer**
+**Asamixer**
 
-Wer alsamixer bevorzugt, findet diesen im Paket alsa-utils:
+If you prefer alsamixer, you can find it in the alsa-utils package:
 
 ~~~
 # apt update
@@ -403,10 +403,10 @@ Wer alsamixer bevorzugt, findet diesen im Paket alsa-utils:
 # exit
 ~~~
 
-Die gewünschten Sound-Einstellungen werden als **$user** von einem Terminal vorgenommen:
+The desired sound settings are made as **$user** from a terminal:
 
 ~~~
 $ alsamixer
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-06-30</div>
+<div id="rev">Last edited: 2021-14-08</div>

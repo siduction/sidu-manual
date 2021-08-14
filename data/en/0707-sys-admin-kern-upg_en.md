@@ -1,48 +1,48 @@
-% Neue Kernel installieren
+% Install new kernel
 
 ## Kernel Upgrade
 
-Siduction stellt folgende Kernel bereit:
+Siduction provides the following kernels:
 
-+ **linux-image-siduction-amd64  +  linux-headers-siduction-amd64**  - Linux Kernel für 64-bit PCs mit AMD64 oder Intel 64 CPU.
-+ 32 bit Kernel stellen wir nicht mehr zur Verfügung, hier kann der Debian Kernel, oder alternativ der Liquorix-Kernel (https://liquorix.net/) verwendet werden.
++ **linux-image-siduction-amd64 + linux-headers-siduction-amd64** - Linux kernel for 64-bit PCs with AMD64 or Intel 64 CPU.
++ 32 bit kernel we do not provide anymore, here you can use the Debian kernel, or alternatively the Liquorix kernel (https://liquorix.net/).
 
-Die Kernel von siduction befinden sich im siduction-Repository als .deb und werden bei einer Systemaktualisierung automatisch berücksichtigt, sofern die Metapakete für Image und Headers installiert sind.
+The kernels from siduction are in the siduction repository as .deb and are automatically included in a system update, provided that the metapackages for image and headers are installed.
 
 
-### Kernel-Aktualisierung ohne Systemaktualisierung
+### Kernel Update without System Update
 
-1. Aktualisierung der Paketdatenbank:
+1. updating the package database:
 
   ~~~
   apt update
   ~~~
 
-2. Installation des aktuellen Kernels:
+2. installation of the current kernel:
 
   ~~~
   apt install linux-image-siduction-amd64 linux-headers-siduction-amd64
   ~~~
 
-3. Neustart des Computers, um den neuen Kernel zu laden.
+3. reboot the computer to load the new kernel.
 
-  Falls sich mit dem neuen Kernel Probleme zeigen, kann man nach einem Neustart einen älteren Kernel wählen.
+  If you encounter problems with the new kernel, you can choose an older kernel after rebooting.
 
 
-### Module
+### Modules
 
-Der Kernel bringt in der Regel alle benötigten Kernel-Module mit. Für 3rd Party Module wird in siduction dkms empfohlen.
-Hierzu ist es notwendig, das Paket **build-essential** zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicherzustellen,
-dass contrib und non-free in den Sourcen aktiviert ist.
+The kernel usually comes with all the required kernel modules. For 3rd party modules, dkms is recommended in siduction.
+For this it is necessary to install the package **build-essential**. Since 3rd party modules are often non-free modules, it is necessary to make sure
+that contrib and non-free are enabled in the sources.
 
-### Entfernen alter Kernel
+### Removing old kernels
 
-Nach erfolgreicher Installation eines neuen Kernels können alte Kernel entfernt werden. Es ist jedoch empfohlen, alte Kernel einige Tage zu behalten. Falls mit dem neuen Kernel Probleme auftauchen, kann in einen der alten Kernel gebootet werden, welche im Grub-Startbildschirm gelistet sind.
+After successfully installing a new kernel, old kernels can be removed. However, it is recommended to keep old kernels for a few days. If problems occur with the new kernel, you can boot into one of the old kernels listed in the grub startup screen.
 
-Zur Entfernung alter Kernel ist das Skript "kernel-remover"  installiert:
+To remove old kernels the script "kernel-remover" is installed:
 
 ~~~
 kernel-remover
 ~~~
 
-<div id="rev">Seite zuletzt aktualisert 2021-05-10</div>
+<div id="rev">page last updated 2021-14-08</div>

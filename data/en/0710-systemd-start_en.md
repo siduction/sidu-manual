@@ -1,138 +1,138 @@
-% Systemadministration - systemd
+% System Administration - systemd
 
-## Systemd, der System- und Dienste-Manager
+## Systemd, the system and services manager
 
-*Anmerkung:*  
-*Die folgende, allgemeine Einführung zu systemd wurde überwiegend der ins [deutsche übersetzten Manpage](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html) entnommen. Der Dank geht an Helge Kreutzmann.*
+*Note:*  
+*The following general introduction to systemd was mainly taken from the manpage [translated into German](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html). Thanks go to Helge Kreutzmann.
 
-**systemd** ist ein System- und Diensteverwalter, der beim Systemstart als erster Prozess (als PID 1) ausgeführt wird und somit als **Init-System** agiert, das System hochfährt und auf Anwendungsebene **Dienste verwaltet.**  
-Entwickelt wird es federführend von den Red Hat Entwicklern Lennart Poettering und Kay Sievers.
+**systemd** is a system and service manager that runs as the first process (as PID 1) at system startup and thus acts as an **init system**, booting the system and managing **services at the application level.  
+It is lead developed by Red Hat developers Lennart Poettering and Kay Sievers.
 
-In Debian wurde die Einführung des systemd als Standard-Init-System lange, kontrovers und emotional diskutiert bis im Februar 2014 der Technische Ausschuss für systemd stimmte.  
+In Debian, the introduction of systemd as the default init system was discussed long, controversially and emotionally until the Technical Committee voted in favor of systemd in February 2014.  
 
-Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.
+Since the release of 2013.2 "December" siduction already uses systemd as the default init system.
 
-### Konzeption des systemd
+### Concept of systemd
 
-Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens "*Units*" in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
-Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.md#systemjournal).  
-Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
+Systemd provides a dependency system between different units called "*Units*" in 11 different types (see below). Units encapsulate various objects relevant to system startup and operation.  
+Units can be "*active*" or "*inactive*", as well as in the process of "*activation*" or "*deactivation*", i.e. between the two former states. A special state "*failed*" is also available, which is very similar to "*inactive*". If this state is reached, the cause is logged for later inspection. See the manual page [systemd-journal](./systemd-journald_en.md#systemjournal).  
+With systemd, many processes can be controlled in parallel because the unit files declare possible dependencies and systemd adds required dependencies automatically.
 
-Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
-Die Unit-Dateien sind in verschiedene Sektionen unterteilte, reine Textdateien im INI-Format. Dadurch ist ihr Inhalt ohne Kenntnis einer Scriptsprache leicht verständlich und editierbar. Alle Unit-Dateien müssen eine Sektion entsprechend des Unit Typs haben und können die generischen Sektionen "[Unit]" und "[Install]" enthalten.  
-Die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md#systemd-unit-datei) erläutert den grundlegenden Aufbau der Unit-Dateien, sowie viele Optionen der generischen Sektionen "[Unit]" und "[Install]".
+The units managed by systemd are configured using unit files.  
+The unit files are pure text files in INI format, divided into different sections. This makes their contents easy to understand and edit without knowledge of a scripting language. All unit files must have a section corresponding to the unit type and may contain the generic sections "[Unit]" and "[Install]".  
+The manual page [Systemd Unit file](./systemd-unit-file_en.md#systemd-unit-file) explains the basic structure of the unit files, as well as many options of the generic sections "[Unit]" and "[Install]".
 
-### Unit Typen
+### Unit types
 
-Bevor wir uns den Unit-Typen zuwenden, ist es ratsam die Handbuchseite [Systemd Unit-Datei](./systemd-unit-datei_de.md#systemd-unit-datei) zu lesen, um die Wirkungsweise der generischen Sektionen und ihrer Optionen zu verstehen.  
-Die folgenden Unit-Typen sind verfügbar, und sofern verlinkt, führt der Link zu einer ausführlicheren Beschreibung in unserem Handbuch:
+Before we turn to the unit types, it is advisable to read the manual page [systemd unit file](./systemd-unit-file_en.md#systemd-unit-file) to understand the operation of the generic sections and their options.  
+The following unit types are available, and if linked, the link will take you to a more detailed description in our manual:
 
-1. **Dienste-Units** [(systemd.service)](./systemd-service_de.md#systemd-service), die Daemons und die Prozesse, aus denen sie bestehen, starten und steuern. 
+1. **service units** [(systemd.service)](./systemd-service_en.md#systemd-service), which start and control daemons and the processes that make them up. 
 
-2. **Socket-Units** (systemd.socket), die lokale IPC- oder Netzwerk-Sockets im System kapseln, nützlich für Socket-basierte Aktivierung.
+2. **Socket-Units** (systemd.socket), which encapsulate local IPC or network sockets in the system, useful for socket-based activation.
 
-3. **Target-Units** [(systemd.target)](./systemd-target_de.md#systemd-target---ziel-unit) sind für die Gruppierung von Units nützlich. Sie stellen während des Systemstarts auch als Runlevel bekannte Synchronisationspunkte zur Verfügung.
+3. **target units** [(systemd.target)](./systemd-target_en.md#systemd-target---target-unit) are useful for grouping units. They also provide synchronization points known as runlevels during system startup.
 
-4. **Geräte-Units** (systemd.device) legen Kernel-Geräte (alle Block- und Netzwerkgeräte) in systemd offen und können zur Implementierung Geräte-basierter Aktivierung verwandt werden.
+4. **device units** (systemd.device) expose kernel devices (all block and network devices) in systemd and can be used to implement device-based activation.
 
-5. **Mount-Units** [(systemd.mount)](./systemd-mount_de.md#systemd-mount) steuern Einhängepunkte im Dateisystem.
+5. **mount units** [(systemd.mount)](./systemd-mount_en.md#systemd-mount) control mount points in the file system.
 
-6. **Automount-Units** [(systemd.automount)](./systemd-mount_de.md#systemd-mount) stellen Fähigkeiten zum Selbsteinhängen bereit, für bedarfsgesteuertes Einhängen von Dateisystemen sowie parallelisiertem Systemstart.
+6. **automount units** [(systemd.automount)](./systemd-mount_en.md#systemd-mount) provide self-mount capabilities for on-demand file system mounts and parallelized boot.
 
-7. **Zeitgeber-Units** [(systemd.timer)](./systemd-timer_de.md#systemd-timer) sind für das Auslösen der Aktivierung von anderen Units basierend auf Zeitgebern nützlich.
+7. timer units** [(systemd.timer)](./systemd-timer_en.md#systemd-timer) are useful for triggering the activation of other units based on timers.
 
-8. **Auslagerungs-Units** (systemd.swap) sind ähnlich zu Einhänge-Units und kapseln Speicherauslagerungs-Partitionen oder -Dateien des Betriebssystems.
+8. **swap units** (systemd.swap) are similar to mount units and encapsulate memory swap partitions or files of the operating system.
 
-9. **Pfad-Units** [(systemd.path)](./systemd-path_de.md#systemd-path) können zur Aktivierung andere Dienste, wenn sich Dateisystemobjekte ändern oder verändert werden, verwandt werden.
+9. path units** [(systemd.path)](./systemd-path_en.md#systemd-path) can be used to enable other services when file system objects change or are modified.
 
-10. **Slice-Units** (systemd.slice) können zur Gruppierung von Units, die Systemprozesse (wie Dienste- und Bereichs-Units) in einem hierarchischen Baum aus Ressourcenverwaltungsgründen verwalten, verwandt werden.
+10. slice-units** (systemd.slice) can be used to group units that manage system processes (such as service and scope units) in a hierarchical tree for resource management reasons.
 
-11. **Scope-Units** (systemd.scope) sind ähnlich zu Dienste-Units, verwalten aber fremde Prozesse, statt sie auch zu starten.
+11. **Scope units** (systemd.scope) are similar to service units, but manage foreign processes instead of starting them as well.
 
-### Systemd im Dateisystem
+### Systemd in the file system
 
-Die Unit-Dateien, die durch den Paketverwalter der Distribution installiert wurden, befinden sich im Verzeichnis **/lib/systemd/system/**. Selbst erstellte Unit-Dateien legen wir im Verzeichnis **/usr/local/lib/systemd/system/** ab. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)  
-Die Steuerung des Status (enabled, disabled) einer Unit erfolgt über Symlink im Verzeichnis **/etc/systemd/system/**.  
-Das Verzeichnis **/run/systemd/system/** beinhaltet zur Laufzeit erstellte Unit-Dateien.
+The unit files installed by the distribution's package manager are located in the **/lib/systemd/system/** directory. Self-created unit files are placed in the directory **/usr/local/lib/systemd/system/**. (If necessary, create the directory beforehand with the command **`mkdir -p /usr/local/lib/systemd/system/`**).  
+The control of the status (enabled, disabled) of a unit is done via symlink in the directory **/etc/systemd/system/**.  
+The directory **/run/systemd/system/** contains unit files created at runtime.
 
-### Weitere Funktionen von systemd
+### Further functions of systemd
 
-Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html)  als Ersatz für das nicht mehr weiter gepflegte  *ConsoleKit* . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen eines Containers (ähnlich einer Chroot) mittels [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html)  und viele weitere. Ein Blick in die Linkliste auf   [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/)  ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Hauptentwickler Lennart Poettering zu systemd.
+Systemd provides other functions as well. One of them is [logind](https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html) as a replacement for the no longer maintained *ConsoleKit* . With this, systemd controls sessions and power management. Last but not least systemd offers a lot of other possibilities like spinning up a container (similar to a chroot) using [systemd-nspawn](http://0pointer.de/public/systemd-man/systemd-nspawn.html) and many more. A look at the link list on [Freedesktop](https://www.freedesktop.org/wiki/Software/systemd/) allows further discoveries, including the extensive documentation on systemd by lead developer Lennart Poettering.
 
-### Handhabung von Diensten
+### Handling services
 
-Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl "*systemctl*".
+One of the jobs of systemd is to start, stop or otherwise control services. The command "*systemctl*" is used for this purpose.
 
-+ systemctl --all - listet alle Units, aktive und inaktive.
-+ systemctl -t [NAME] - listet nur Units des bezeichneten Typ.
-+ systemctl list-units - listet alle aktiven Units.
-+ systemctl start [NAME...] - startet eine oder mehrere Units.
-+ systemctl stop [NAME...] - stoppt eine oder mehrere Units.
-+ systemctl restart [NAME] - stoppt eine Unit und startet sie sofort wieder. Wird z.B. verwendet um die geänderte Konfiguration eines Dienstes neu einzulesen.
-+ systemctl status [Name] - zeigt den derzeitigen Status einer Unit.
-+ systemctl is-enabled [Name] - zeigt nur den Wert "enabled" oder "disabled" des Status einer Unit.
++ systemctl --all - lists all units, active and inactive.
++ systemctl -t [NAME] - lists only units of the specified type.
++ systemctl list-units - lists all active units.
++ systemctl start [NAME...] - starts one or more units.
++ systemctl stop [NAME...] - stops one or more units.
++ systemctl restart [NAME] - stops a unit and restarts it immediately. Used e.g. to re-read the changed configuration of a service.
++ systemctl status [NAME] - shows the current status of a unit.
++ systemctl is-enabled [name] - shows only the value "enabled" or "disabled" of the status of a unit.
 
-Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Units beachtet und ggf. Standardabhängikeiten hinzugefügt, damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.
+The following two commands integrate or remove the unit based on the configuration of its unit file. Dependencies to other units are taken into account and default dependencies are added if necessary so that systemd can execute the services and processes without errors.
 
-+ systemctl enable [NAME] - gliedert eine Unit in systemd ein.
-+ systemctl disable [NAME] - entfernt eine Unit aus systemd.
++ systemctl enable [NAME] - adds a unit to systemd.
++ systemctl disable [NAME] - removes a unit from systemd.
 
-Oft ist es nötig, "systemctl start" und "systemctl enable" für eine Unit durchzuführen, um sie sowohl sofort als auch nach einem Reboot verfügbar zu machen. Beide Optionen vereint der Befehl:
+It is often necessary to perform "systemctl start" and "systemctl enable" on a unit to make it available both immediately and after a reboot. Both options are combined by the command:
 
-+ systemctl enable --now [NAME]
++ systemctl enable --now [NAME].
 
-Nachfolgend zwei Befehle deren Funktion unsere Handbuchseite [Systemd-Target](./systemd-target_de.md#systemd-target---ziel-unit) beschreibt.
+The following are two commands whose function our manual page [systemd-target](./systemd-target_en.md#systemd-target---target-unit) describes.
 
-+ systemctl reboot – Führt einen Reboot aus
-+ systemctl poweroff - Fährt das System herunter und schaltet den Strom, sofern technisch möglich, aus.
++ systemctl reboot - Performs a reboot
++ systemctl poweroff - Shuts down the system and turns off the power if technically possible.
 
-**Beispiel**  
-Anhand von Bluetooth demonstrieren wir die Funktionalität des systemd.  
-Zuerst die Statusabfrage im Kurzformat.
+**Example**  
+Using Bluetooth we demonstrate the functionality of systemd.  
+First the status query in short format.
 
 ~~~
 # systemctl is-enabled bluetooth.service
 enabled
 ~~~
 
-Nun Suchen wir nach den Unit-Dateien, dabei kombinieren wir *"systemctl*" mit "*grep*":
+Now we search for the unit files, combining *"systemctl*" with "*grep*":
 
 ~~~
 # systemctl list-unit-files | grep blue
-bluetooth.service          enabled         enabled
-dbus-org.bluez.service     alias           -
-bluetooth.target           static          - 
+bluetooth.service enabled enabled
+dbus-org.bluez.service alias -
+bluetooth.target static - 
 ~~~
 
-Anschließend deaktivieren wir die Unit "*bluetooth.service*".
+Then we disable the unit "*bluetooth.service*".
 
 ~~~
 # systemctl disable bluetooth.service
   Synchronizing state of bluetooth.service with SysV service script with /lib/systemd/systemd-sysv-install.
   Executing: /lib/systemd/systemd-sysv-install disable bluetooth
   Removed /etc/systemd/system/dbus-org.bluez.service.
-  Removed /etc/systemd/system/bluetooth.target.wants/bluetooth.service.
+  Removed /etc/system/system/bluetooth.target.wants/bluetooth.service.
 ~~~
 
-In der Ausgabe ist gut zu erkennen, dass die Link (nicht die Unit-Datei selbst) entfernt wurden. Damit startet der "*bluetooth.service*" beim Booten des PC/Laptop nicht mehr automatisch. Zur Kontrolle fragen wir den Status nach einem Reboot ab.
+In the output you can clearly see that the links (not the unit file itself) have been removed. This means that the "*bluetooth.service*" will no longer start automatically when booting the PC/laptop. For control we ask the status after a reboot.
 
 ~~~
 # systemctl is-enabled bluetooth.service  
 disabled
 ~~~
 
-Um eine Unit nur zeitweise zu deaktivieren, verwenden wir den Befehl
+To disable a unit only temporarily, we use the command
 
 ~~~
 # systemctl stop <unit>
 ~~~
 
-Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "start"-Befehl aktivieren wir die Unit wieder.
+This will keep the configuration in systemd. We reactivate the unit with the corresponding "start" command.
 
-### Quellen systemd
+### Sources systemd
 
-[Deutsche Manpage 'systemd'](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html)  
-[Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
-[Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
+[German manpage 'systemd'](https://manpages.debian.org/testing/manpages-de/systemd.1.de.html)  
+[German manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
+[German manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
+<div id="rev">Page last updated 2021-14-08</div

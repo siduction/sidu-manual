@@ -1,19 +1,19 @@
-﻿% Systemd - service
+% systemd - service
 
 ## systemd-service
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./0711-systemd-unit-datei_de.md#systemd-unit-datei)  
-In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.service**. Die Unit-Datei mit der Namensendung ".service" ist der am häufigsten anzutreffende Unit-Typ in systemd.
+The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [Systemd Unit file](./0711-systemd-unit-file_en.md#systemd-unit-file).  
+In this manual page we explain the function of the unit **systemd.service**. The unit file with the ".service" name extension is the most commonly encountered unit type in systemd.
 
-Die Service-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen über den Dienst und den Prozess, den er überwacht, konfiguriert.
+The service unit file must contain a [service] section that configures information about the service and the process it is monitoring.
 
-### service-Unit anlegen
+### create service unit
 
-Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis */usr/local/lib/systemd/system/* ab. (Ggf. ist das Verzeichnis mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das hat den Vorteil, dass sie Vorrang gegenüber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie Änderungsdateien, die mit **`systemctl edit <UNIT_DATEI>`** erzeugt wurden, im seinerseits vorrangigen Verzeichnis */etc/systemd/system/* abgelegt werden. Siehe: [Hirarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien).
+We prefer to place self-created unit files in the */usr/local/lib/systemd/system/* directory. (If necessary, create the directory with the command **`mkdir -p /usr/local/lib/systemd/system/`**). This has the advantage of giving them priority over system units installed by the distribution's package manager, while placing control links and change files created with **`systemctl edit <UNIT_DATEI>`** in the directory */etc/systemd/system/*, which itself has priority. See: [Hirarchy of load paths](0711-systemd-unit-file_en.md#load-path-of-unit-files).
 
-### Sektion Service
+### Service section
 
-Für diese Sektion sind über dreißig Optionen verfügbar, von denen wir hier besonders häufig verwendete beschreiben.
+There are over thirty options available for this section, of which we describe particularly frequently used ones here.
 
 ---               ----
 Type=             PIDFile=
@@ -35,89 +35,89 @@ WatchdogSec=      BusName=
 ---               ----
 
 + **Type=**  
-    Definiert den Prozess-Starttyp und ist damit eine der wichtigsten Optionen.  
-    Die möglichen Werte sind: simple, exec, forking, oneshot, dbus, notify oder idle.  
-    Der Standard *simple* wird verwendet, falls *ExecStart=* festgelegt ist, aber weder *Type=* noch *BusName=* gesetzt sind.
+    Defines the process startup type and is therefore one of the most important options.  
+    The possible values are: simple, exec, forking, oneshot, dbus, notify or idle.  
+    The default *simple* is used if *ExecStart=* is set, but neither *Type=* nor *BusName=* are set.
     
     + **simple**  
-       Eine Unit vom Typ *simple* betrachtet systemd als erfolgreich gestartet, sobald der mit *ExecStart=* festgelegte Hauptprozess mittels *fork* gestartet wurde. Anschließend beginnt systemd sofort mit dem Starten von nachfolgenden Units, unabhängig davon, ob der Hauptprozess erfolgreich aufgerufen werden kann.
+       A unit of type *simple* considers systemd as successfully started as soon as the main process specified with *ExecStart=* has been started by *fork*. Then systemd immediately starts subsequent units, regardless of whether the main process can be called successfully.
     
     + **exec**  
-       Ähnelt *simple*, jedoch wartet systemd mit dem Starten von nachfolgenden Units bis der Hauptprozess erfolgreich beendet wurde. Das ist auch der Zeitpunkt, an dem die Unit den Zustand "active" erreicht.
+       Similar to *simple*, but systemd waits to start subsequent units until the main process has finished successfully. This is also the time when the unit reaches the "active" state.
     
     + **forking**  
-       Hier betrachtet systemd den Dienst als gestartet, sobald der mit *ExecStart=* festgelegte Prozess sich in den Hintergrund verzweigt und das übergeordnete System sich beendet. Dieser Typ findet oft bei klassischen Daemons Anwendung. Hier sollte auch die Option *PIDFile=* angeben werden, damit das System den Hauptprozess weiter verfolgen kann.
+       Here systemd considers the service as started as soon as the process specified with *ExecStart=* branches to the background and the parent system terminates. This type is often used with classic daemons. The option *PIDFile=* should also be specified here so that the system can continue to follow the main process.
     
-    + **oneshot**  
-       Ähnelt *exec*. Die Option *Type=oneshot* kommt oft bei Skripten oder Befehlen zum Einsatz, die einen einzelnen Job erledigen und sich dann beenden. Allerdings erreicht der Dienst niemals den Zustand "active", sondern geht sofort, nachdem sich der Hauptprozess beendet hat, vom Zustand "activating" zu "deactivating" oder "dead" über. Deshalb ist es häufig sinnvoll diese Option mit "RemainAfterExit=yes" zu verwenden, um den Zustand "active" zu erreichen.
+    + **oneshot**.  
+       Similar to *exec*. The *Type=oneshot* option is often used with scripts or commands that do a single job and then exit. However, the service never reaches the "active" state, but goes from the "activating" to "deactivating" or "dead" state immediately after the main process terminates. Therefore it is often useful to use this option with "RemainAfterExit=yes" to reach the "active" state.
     
     + **dbus**  
-       Verhält sich ähnlich zu *simple*, systemd startet nachfolgende Units, nachdem der D-Bus-Busname erlangt wurde. Units mit dieser Option, erhalten implizit eine Abhängigkeit auf die Unit "dbus.socket".
+       behaves similarly to *simple*, systemd starts subsequent units after the D-Bus bus name has been obtained. Units with this option, implicitly get a dependency on the unit "dbus.socket".
     
-    + **notify**  
-       Der Type=notify entspricht weitestgehend dem Type *simple*, mit dem Unterschied, dass der Daemon ein Signal an systemd sendet, wenn er bereitsteht.
+    + **notify**.  
+       The type=notify is very similar to the type *simple*, with the difference that the daemon sends a signal to systemd when it is ready.
     
     + **idle**  
-       Das Verhalten von *idle* ist sehr ähnlich zu *simple*; allerdings verzögert systemd die tatsächliche Ausführung des Dienstes, bis alle aktiven Aufträge erledigt sind. Dieser Typ ist nicht als allgemeines Werkzeug zum Sortieren von Units nützlich, denn er unterliegt einer Zeitüberschreitung von 5 s, nach der der Dienst auf jeden Fall ausgeführt wird.
+       The behavior of *idle* is very similar to *simple*; however, systemd delays the actual execution of the service until all active jobs are completed. This type is not useful as a general tool for sorting units, because it is subject to a 5 s timeout, after which the service is executed in any case.
 
 + **RemainAfterExit=**  
-    Erwartet einen logischen Wert (Standard: *no*), der festlegt, ob der Dienst, selbst wenn sich alle seine Prozesse beendet haben, als aktiv betrachtet werden sollte. Siehe *Type=oneshot*.
+    Expects a logical value (default: *no*) that determines whether the service, even if all its processes have terminated, should be considered active. See *Type=oneshot*.
 
-+ **GuessMainPID=**  
-    Erwartet einen logischen Wert (Standard: *yes*). Systemd verwendet diese Option ausschließlich, wenn *Type=forking* gesetzt und *PIDFile=* nicht gesetzt ist, und versucht dann die Haupt-PID eines Dienstes zu raten, falls es sie nicht zuverlässig bestimmen kann. Für andere Typen oder mit gesetzter Option *PIDFile=* ist die Haupt-PID immer bekannt.
++ **GuessMainPID=**.  
+    Expects a logical value (default: *yes*). Systemd uses this option only if *Type=forking* is set and *PIDFile=* is not set, and then tries to guess the main PID of a service if it cannot determine it reliably. For other types or with *PIDFile=* set, the main PID is always known.
 
 + **PIDFile=**  
-    Akzeptiert einen Pfad zur PID-Datei des Dienstes. Für Dienste vom *Type=forking* wird die Verwendung dieser Option empfohlen. 
+    Accepts a path to the service's PID file. For services of *Type=forking* the use of this option is recommended. 
 
 + **BusName=**  
-    Hier ist der D-Bus-Busname, unter dem dieser Dienst erreichbar ist, anzugeben. Die Option ist für Dienste vom *Type=dbus* verpflichtend.
+    The D-Bus bus name under which this service can be reached must be specified here. The option is mandatory for services of *Type=dbus*.
 
 + **ExecStart=**  
-    Enthält Befehle mit ihren Argumenten, die ausgeführt werden, wenn diese Unit gestartet wird. Es muss genau ein Befehl angegeben werden, außer die Option *Type=oneshot* ist gesetzt, dann kann *ExecStart=* mehrfach verwendet werden. Der Wert von *ExecStart=* muss den in der deutsche Manpage [systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html) detailliert beschriebenen Regeln entsprechen.
+    Contains commands with their arguments that are executed when this unit is started. Exactly one command must be specified, unless the *Type=oneshot* option is set, in which case *ExecStart=* can be used multiple times. The value of *ExecStart=* must conform to the rules described in detail in the German man page [systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html).
 
 + **ExecStop=**  
-    Kann mehrfach verwendet werden und enthält Befehle, die dem Stoppen eines mittels *ExecStart=* gestarteten Dienstes, dienen. Die Syntax ist identisch zu *ExecStart=*.
+    Can be used multiple times and contains commands to stop a service started by *ExecStart=*. The syntax is identical to *ExecStart=*.
 
 + **ExecStartPre=, ExecStartPost=, ExecStopPost=**  
-    Zusätzliche Befehle, die vor bzw. nach dem Befehl in *ExecStart=* oder *ExecStop* gestartet werden. Auch hier ist die Syntax identisch zu *ExecStart=*. Es sind mehrere Befehlszeilen erlaubt und die Befehle werden seriell einer nach dem anderen ausgeführt. Falls einer dieser Befehle (dem nicht "-" vorangestellt ist) fehlschlägt, wird die Unit sofort als fehlgeschlagen betrachtet.
+    Additional commands that are started before or after the command in *ExecStart=* or *ExecStop*. Again, the syntax is identical to *ExecStart=*. Multiple command lines are allowed and the commands are executed serially one after the other. If one of these commands (not preceded by "-") fails, the unit is immediately considered to have failed.
 
 + **RestartSec=**  
-    Bestimmt die vor dem Neustart eines Dienstes zu schlafende Zeit. Eine einheitenfreie Ganzzahl definiert Sekunden, eine Angabe von "3min 4s" ist auch möglich.  
-    Die Art der Zeitwertdefinition gilt für alle zeitgesteuerten Optionen.
+    Specifies the time to sleep before restarting a service. A unit-free integer defines seconds, a specification of "3min 4s" is also possible.  
+    The type of time value definition applies to all timed options.
 
 + **TimeoutStartSec=, TimeoutStopSec=, TimeoutSec=**  
-    Bestimmt die Zeit, die auf das Starten bzw. Stoppen gewartet werden soll. *TimeoutSec=* vereint die beiden zuvor genannten Optionen.  
-    *TimeoutStopSec=* konfiguriert zusätzlich die Zeit, die, soweit vorhanden, für jeden *ExecStop=*-Befehl gewartet werden soll.
+    Defines the time to wait for starting or stopping. *TimeoutSec=* combines the two previously mentioned options.  
+    *TimeoutStopSec=* additionally configures the time to wait for each *ExecStop=* command, if any.
 
 + **Restart=**  
-    Konfiguriert, ob der Dienst neu gestartet werden soll, wenn der Diensteprozess sich beendet, getötet oder eine Zeitüberschreitung erreicht wird. Wenn der Tod des Prozesses das Ergebnis einer Systemd-Aktion ist, wird der Dienst nicht neu gestartet.  
-    Die erlaubten Werte sind: no, always, on-success, on-failure, on-abnormal, on-abort oder on-watchdog.  
-    Folgende Tabelle zeigt den Effekt der *Restart=* Einstellung auf die Exit-Gründe.
+    Configures whether the service should be restarted when the service process terminates, kills itself, or times out. If the death of the process is the result of a Systemd action, the service will not be restarted.  
+    The allowed values are: no, always, on-success, on-failure, on-abnormal, on-abort, or on-watchdog.  
+    The following table shows the effect of the *restart=* setting on the exit reasons.
 
     ------------------- -------- --------- --------- ---------- ------- ----------
-                                  on        on        on         on      on
-    ► Restart= ►         always   success   failure   abnormal   abort   watchdog
-    ▼ Exit-Grund ▼
-    Sauberer Exit          X        X
-    Unsauberer Exit        X                  X
-    Unsauberes Signal      X                  X         X          X
-    Zeitüberschreitung     X                  X         X
-    Watchdog               X                  X         X                  X
+                                  on on on on
+    ► Restart= ► always success failure abnormal abort watchdog
+    ▼ Exit reason ▼
+    Clean exit X X
+    Unclean exit X X
+    Unclean signal X X X
+    Timeout X X X
+    Watchdog X X X
     ------------------- -------- --------- --------- ---------- ------- ----------
 
-    Die bei Bedarf gesetzten Optionen *RestartPreventExitStatus=* und *RestartForceExitStatus=* ändern dieses Verhalten.
+    The options *RestartPreventExitStatus=* and *RestartForceExitStatus=* set if required will change this behavior.
 
-**Beispiele**  
-Einige selbst erstellte Service-Units finden sich auf unseren Handbuchseiten
+**Examples**  
+Some self created service units can be found on our manual pages
 
-[service-Unit für systemd Timer](0716-systemd-timer_de.md#timer-unit-anlegen)  
-[service-Unit für systemd Path](0715-systemd-path_de.md#path-unit-anlegen)  
-und mit der bevorzugten Suchmaschine im Internet.  
-[LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)
+[service-unit for systemd timer](0716-systemd-timer_en.md#create-timer-unit)  
+[service-unit for systemd Path](0715-systemd-path_en.md#create-path-unit)  
+and with the preferred search engine on the Internet.  
+[LinuxCommunity, Create systemd units yourself](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)
 
-### Quellen systemd-service
+### Sources systemd-service
 
-[Deutsche Manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
-[LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
+[German manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
+[LinuxCommunity, Create systemd units yourself](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
+<div id="rev">Page last updated 2021-14-08</div>

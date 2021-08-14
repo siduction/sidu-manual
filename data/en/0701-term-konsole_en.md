@@ -1,297 +1,297 @@
-% Terminal - Kommandozeile
+% Terminal - command line
 
-## Terminal - Kommandozeile
+## Terminal - command line
 
-Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem ermöglicht, durch direkt ausgeführte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch häufig die "Shell"  oder "Kommandozeile"  genannt, ist ein äußerst mächtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.
+A terminal, also called a console, is a program that allows one to interact directly with the GNU/Linux operating system through directly executed commands. The terminal, also often called the "shell" or "command line", is an extremely powerful tool and well worth the effort to learn the basics of its use.
 
-In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des Menüs anklickt oder in Menü > System > Terminal aufruft, oder, noch einfacher, in die Suchleiste des Menü  *kons* oder *term* eintippt. 
+In siduction, you can invoke the terminal/console by clicking on the PC monitor icon to the right of the menu, or by going to Menu > System > Terminal, or, even easier, by typing *kons* or *term* into the menu search bar. 
 
-Nach dem Aufrufen des Terminals sieht man die Eingabeaufforderung "prompt":
+After calling the terminal you will see the prompt "prompt":
 
-~~~ sh
+~~~
 username@hostname:~$
 ~~~
 
-**username** in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde **~**  zeigt, man befindet sich in seinem Heimverzeichnis **/home/username** , und das Dollarzeichen (der Promt) **$**  bedeutet, dass man im Terminal mit eingeschränkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausführen soll.
+**username** in the above example corresponds to the username of the logged in user. The tilde **~** shows you are in your home directory **/home/username** , and the dollar sign (the prompt) **$** means you are logged into the terminal with limited user privileges. At the end, the cursor is blinking. All this is the command line. This is where you enter commands that you want the terminal to execute.
 
-Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man **su**  eingibt und `Enter` drückt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten [Arbeit als root](#arbeit-als-root))
+Many commands can only be executed with root rights, i.e. administrator rights. Root rights can be obtained by typing **su** and pressing `Enter`. After that you have to enter the root password. The password is not displayed on the screen during the input. (See below [work-as-root](#work-as-root)).
 
-Ist die Eingabe korrekt, zeigt die Kommandozeile nun:
+If the input is correct, the command line now shows:
 
-~~~ sh
+~~~
 root@hostname:/home/username#
 ~~~
 
-Zu beachten ist, dass das Dollarzeichen **\$** durch eine Raute **#**  ersetzt wurde. In einem Terminal bedeutet die Raute **#**  immer, dass man mit Root-Rechten angemeldet ist.  
-Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor dem Prompt ($ oder #) ausgelassen. Ein Befehl wie:
+Note that the dollar sign **\$** has been replaced by a hash **#**. In a terminal, the hash **#** always means that you are logged in with root privileges.  
+When command line commands are specified in the manual, the information before the prompt ($ or #) is omitted. A command like:
 
 ~~~
-# chmod g+w <Datei>
+# chmod g+w <file>
 ~~~
 
-bedeutet also: man öffnet ein Terminal, meldet sich als root an (su) und führt dann den Befehl an einem Rootprompt **#** aus. Die Raute **#** wird nicht mit eingegeben.
+means: you open a terminal, log in as root (su) and execute the command at a root prompt **#**. The hash **#** is not included.
 
-Ein weiterer Hinweis:  
-Für User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Ausführen eines Befehls keine Meldung erscheint, sondern nur wieder der leere Prompt. Diese Funktion ist gewollt und bedeutet, dass der Befehl fehlerfrei ausgeführt wurde. (Im obigen Beispiel erhielten die Gruppenmitglieder Schreibrechte an der \<Datei\>.)
+Another note:  
+For users who are new to the terminal, it is often confusing if no message appears after executing a command, but only the empty prompt again. This is intentional and means that the command was executed without errors. (In the example above, the group members were given write permissions to the \<file\>).
 
-### Arbeit als root
+### Work as root
 
-> **Achtung:**  
-> Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, *was* man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.
+> **Caution.  
+> While logged into the terminal with root privileges, you are allowed to do anything, e.g. delete files, without which the operating system will stop working, and so on. When working with root privileges, one must be aware of *what* one is doing, because it is easily possible to cause irreparable damage to the operating system.
 
-Berücksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgeführt werden. Der einfache copy-Befehl *cp \<Quelle\> \<Ziel\>* in einem User-Verzeichnis führt zu Dateien mit dem Eigentümer *ROOT* im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.
+It must be taken into account that all actions, if provided for in the program, are also executed with root privileges. The simple copy command *cp \<source\> \<destination\>* in a user directory leads to files with the owner *ROOT* in the destination directory. This is probably not wanted and also not useful.
 
-Deshalb: **Arbeiten als Root nur dort wo es wirklich notwendig ist!**
+Therefore: **Work as root only where it is really necessary!**.
 
-**Über su**
+**About su**
 
-Eine Anzahl von Befehlen muss mit Root-Rechten gestartet werden. Diese Rechte erhält man durch Eingabe von **su**. Nach der Eingabe des richtigen Passwortes erscheint der Root-Prompt.
+A number of commands must be started with root privileges. These rights can be obtained by entering **su**. After entering the correct password the root prompt appears.
 
 ~~~
 $ su
-Passwort: 
+Password: 
 #
 ~~~
 
-Jetzt ist es möglich im Terminal alle Befehle auszuführen und alle Programme zu starten, die root-Rechte erfordern. Beenden kann man diesen Status mit der Eingabe von
+Now it is possible to execute all commands in the terminal and start all programs that require root privileges. You can exit this state by typing
 
 ~~~
 # exit
 $
 ~~~
 
-und es erscheint wieder der Promt für den User.
+and the prompt for the user appears again.
 
-**Über su-to-root**
+**About su-to-root**
 
-Im Gegensatz zum allgemeinen Befehl **su** erlaubt **su-to-root** das Ausführen von Programmen mit graphischer Oberfläche mit Root-Rechten. **su-to-root** transferiert unter Benutzung von 'su' die X-Eigenschaften an den Zielnutzer. Die Eingabe lautet:
-
-~~~
-su-to-root -X -c <Programm>
-~~~
-
-Wenn Fehlermeldungen mit Bezug zu **dbus** auftreten, ist die Eingabe zu erweitern:
+In contrast to the general command **su**, **su-to-root** allows the execution of programs with graphical user interface with root privileges. **su-to-root** transfers X properties to the target user using 'su'. The input is:
 
 ~~~
-su-to-root -X -c 'dbus-launch <Programm>'
+su-to-root -X -c <program>
 ~~~
 
-Es öffnet sich ein weiteres Terminal, in das das root-Passwort einzugeben ist. Bei Erfolg startet das gewünschte Programm mit root-Rechten.  
-Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind: die Bearbeitung einer Konfigurationsdatei mit einem Texteditor, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar.
+If error messages related to **dbus** occur, expand the input:
 
-**Verwendung in den Desktopumgebungen:**
+~~~
+su-to-root -X -c 'dbus-launch <program>'
+~~~
 
-+ Plasma (KDE und LXQt)  
-  Der Befehl ist in Plasma nicht notwendig und wird nicht unterstützt, denn für Programme, die root-Rechte benötigen erfolgt eine Passwortabfrage und beim Editor erfolgt die Abfrage wenn man die geänderte Datei speichern möchte. Deshalb nur **su** im Terminal verwenden, wenn nötig.
-+ Gnome und Cinnamon  
-  Das Verhalten ist dem in Plasma ähnlich, mit der Ausnahme, dass der Befehl (su-to-root) unterstützt wird, aber nicht notwendig ist.
-+ XFCE und Xorg  
-  Hier entfaltet der Befehl seine volle Macht, und man ist in der Lage das gewünschte graphische Programm mit root-Rechten zu starten. Mann ist jedoch auch in der Pflicht zu beachten, wann und mit welchem Programm root-Rechte wirklich erforderlich sind.
+Another terminal opens, into which the root password is to be entered. If successful, the desired program will launch with root privileges.  
+Examples of using graphical applications via *su-to-root* are: editing a configuration file with a text editor, using the partition manager gparted or using file managers like dolphin or thunar.
+
+**Use in desktop environments:**
+
++ Plasma (KDE and LXQt)  
+  The command is not necessary in Plasma and is not supported, because for programs that need root privileges a password prompt occurs and for the editor the prompt occurs when you want to save the changed file. Therefore only use **su** in the terminal, if necessary.
++ Gnome and Cinnamon  
+  The behavior is similar to Plasma, except that the command (su-to-root) is supported, but not necessary.
++ XFCE and Xorg  
+  Here the command unfolds its full power, and one is able to start the desired graphical program with root privileges. One is however also in the obligation to consider, when and with which program root rights are really necessary.
   
-> Unter keinen Umständen sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, Büroprogramme u.a.
+> Under no circumstances should productive programs that are normally started with user rights be booted as root with this option: Internet browsers, e-mail programs, office programs, etc.
 
-**sudo ist nicht konfiguriert**
+**sudo is not configured**
 
-**sudo** steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.  
-Nach einer Installation ist **sudo** nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
+**sudo** is only available in live mode, because no root password is set in live mode.  
+After an installation **sudo** is not enabled. The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.
 
-Ein anderes Problem mit **sudo** ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von **su** oder **su-to-root** wird empfohlen!
+Another problem with **sudo** is that a root application running with the user configuration can change permissions and thus make them unusable for the user. The use of **su** or **su-to-root** is recommended!
 
-Sollte man trotz aller Warnungen *sudo* nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!
+If you want to use *sudo* despite all warnings, you have to add the corresponding $user to the sudo group!
 
-Dies kann mit dem Befehl "adduser BENUTZER GRUPPE" als root ausgeführt werden.
+This can be done with the command "adduser USER GROUP" as root.
 
-Als Alternative zu *sudo* kann auch *doas* (apt install doas) genommen und eingerichtet werden.
+As an alternative to *sudo* you can also take *doas* (apt install doas) and set it up.
 
 * https://man.openbsd.org/doas
 * https://github.com/slicer69/doas
 
 
 
-### Farbiges Terminal
+### Colored terminal
 
-Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root #** eine Aufgabe durchführt, die man als **user $** machen wollte.  
-Deshalb ist in siduction in der Grundeinstellung der Prompt des **user $** grün, blau und weiß, und bei dem von **root #** wird das Wort "root" in roter Farbe dargestellt.  
+Colored prompts on the terminal can save you from unpleasant or catastrophic errors if you are **root #** performing a task you meant to do as **user $**.  
+That's why in siduction, by default, the **user $**'s prompt is green, blue, and white, and **root #**'s has the word "root" displayed in red.  
 
-![Farbiger Prompt](./images/terminal/prompt-colour-01.png)
+![Colored prompt](./images/terminal/prompt-colour-01.png)
 
-Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunten Prompts. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
+The focus when working with the terminal should be on the input and output of the commands and not on colored prompts. In siduction we nevertheless decided to use the colors to give users a warning when they are system administrators with root privileges.  
 
-**Farbe des Prompt ändern**
+**Change prompt color**
 
-Bevor die Konfigurationsdatei geändert wird, erstellen wir im Terminal erst eine Sicherungskopie mit einem Datumsstempel.
+Before changing the configuration file, we first create a backup copy in the terminal with a date stamp.
 
 ~~~
 $ cp ~/.bashrc ~/.bashrc_$(date +%F)
 ~~~
 
-Dann öffnen wir mit einem Texteditor unserer Wahl (z. B.: kate, gedit, mcedit, vim...) die Datei **~/.bashrc** und suchen nach folgender Zeile, die sich etwa in der Mitte der Datei befindet:
+Then we open the file **~/.bashrc** with a text editor of our choice (e.g.: kate, gedit, mcedit, vim...) and look for the following line, which is located approximately in the middle of the file:
 
 ~~~
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 ~~~
 
-Dem Schrift- und Farbcode folgen unmittelbar die Promtteile, die diese Darstellung erhalten sollen. In der folgenden Abbildung wird der Bezug zwischen den Promtteilen und ihren Kürzeln gezeigt.
+The font and color code are immediately followed by the promt parts that are to receive this representation. The following figure shows the relation between the prompt parts and their abbreviations.
 
 ![Prompt Code](./images/terminal/prompt-colour-02.png)
 
-Die anschließende Tabelle erklärt die Werte der Syntax "\[\033[**01;32**m\]", wobei der fett gedruckte Teil die Schriftattribute und die Farbe bestimmt.
+The following table explains the values of the syntax "\[\033[**01;32**m\]", where the bold part determines the font attributes and the color.
 
-| Schriftcode | Schriftattribut | Farbcode | Farbe |
+| font code | font attribute | color code | color |
 | --- | ---| --- | --- |
-| 00m | Standard für Schrift und Farbe |
-| 00;XX | Standardschrift | XX;m | Standardfarbe |
-| 01;XX | fett | XX;30 | schwarz |
-| 02;XX | dunkel | XX;31 | rot |
-| 03;XX | kursiv | XX;32 | grün |
-| 04;XX | unterstrichen | XX;33 | gelb |
-| 05;XX / 06;XX | blinkend | XX;34 | blau |
-| 07;XX | block, invertiert | XX;35 | magenta |
-| 08;XX | Hintergrundfarbe (unsichtbar) | XX;36 | cyan |
-| 09;XX | durchgestrichen | XX;37 | weiß |
+| 00m | Default for font and color |
+| 00;XX | default font | XX;m | default color |
+| 01;XX | bold | XX;30 | black |
+| 02;XX | dark | XX;31 | red |
+| 03;XX | italic | XX;32 | green |
+| 04;XX | underlined | XX;33 | yellow |
+| 05;XX / 06;XX | flashing | XX;34 | blue |
+| 07;XX | block, inverted | XX;35 | magenta |
+| 08;XX | background color (invisible) | XX;36 | cyan |
+| 09;XX | strikethrough | XX;37 | white |
 
-Die oben zitierte "PS1"-Zeile wird demnach wie folgt angezeigt:
+The "PS1" line quoted above is therefore displayed as follows:
 
-| Schriftcode | Promtteile und ihre Darstellung |
+| font code | prompt parts and their display |
 | --- | --- |
-| [01;32m\]\\u@\\h | user, @ und host erhalten die Attribute "fett" und "grün" |
-| [00m\]: | Doppelpunkt erhält die Standardattribute des Teminals |
-| [01;34m\]\\w | das Arbeitsverzeichnis erhält die Attribute "fett" und "blau" |
-| [00m\]\\$ | der Prompt erhält die Standardattribute des Teminals |
+| [01;32m\]\\u@\\h | user, @ and host get the attributes "bold" and "green" |
+| [00m\]: | colon gets the default attributes of the terminal |
+| [01;34m\]\w | the working directory gets the attributes "bold" and "blue" |
+| [00m\]\$ | the prompt gets the default attributes of the terminal |
 
-Soll aus dem Prompt die Farbe entfernt werden, stellen wir der PS1-Zeile eine Raute **#** und ein **Leerzeichen** voran. Damit ist die Zeile auskommentiert. Nun genügt es die Zeile
+If the color is to be removed from the prompt, we prefix the PS1 line with a hash **#** and a **space**. This comments out the line. Now it is sufficient to add the line
 
 ~~~
 PS1='${debian_chroot:+($debian_chroot)}\[\033[00m\]\u@\h:\w\$ '
 ~~~
 
-unmittelbar als nächste Zeile einzufügen.
+immediately as the next line.
 
-Soll in dem Prompt die Farbe geändert werden, ist für jeden Teil des Prompt die Farbkodierung anzupassen.
+If the color is to be changed in the prompt, the color coding must be adjusted for each part of the prompt.
 
 
 ~~~
  PS1='${debian_chroot:+($debian_chroot)}\[\033[03;32m\]\u@\h\[\033[01;34m\]:\w\[\033[00m\]\$ '
 ~~~
 
-Dieses Codebeispiel erzeugt einen Promt, in dem **Username @ Hostname** grün und kursiv; der **:** und das **Arbeitsverzeichnis** blau und fett; das **$**-Zeichen und die Befehlseingabe die Kontrastfarbe zum Hintergrund des Terminals erhalten.
+This code example creates a prompt in which **username @ hostname** is green and italicized; the **:** and the **working directory** are blue and bold; the **$** character and the command prompt are given the contrasting color to the background of the terminal.
 
-Die neuen Farben und Formate erscheinen nach öffnen eines neuen Terminals.
+The new colors and formats appear after opening a new terminal.
 
-**Farbeinstellungen des Terminals**
+**Color settings of the terminal**
 
-Im Menü des Terminals gibt es unter *Bearbeiten* - *Einstellungen...* - Reiter *Farben* eine Unmenge an Einstellungsmöglichkeiten. Wir empfehlen eine eher schlichte Einstellung.
+In the menu of the terminal, under *Edit* - *Settings...* - tab *Colors*, there are a myriad of setting options. We recommend a rather plain setting.
 
-### Wenn das Terminal hängt
+### When the terminal hangs
 
-Manchmal kann ein Terminal nicht mehr so reagieren wie gewünscht. Das liegt meist daran, dass sich ein Programm fehlerfaft beendet und das Teminal in einem abnormalen Zustand zurückgelassen hat. Dann muss
+Sometimes a terminal can no longer respond as desired. This is usually because a program has terminated with an error and left the terminal in an abnormal state. Then
 
 ~~~
 reset
 ~~~
 
-eingegeben und die Eingabetaste `Enter` gedrückt werden.
+must be entered and the enter key 'Enter' must be pressed.
 
-Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von `Strg` + `l` behoben werden, dadurch wird das Terminal-Fenster neu aufbaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, eine eine ncurses-Schnittstelle benutzen, zum Beispiel *cgdisk*.
+If the output of a terminal appears distorted, this can usually be fixed by pressing `Ctrl` + `l`, this will rebuild the terminal window. Such distortions usually occur when working with programs that use an ncurses interface, for example *cgdisk*.
 
-Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Drücken von `Strg` + `s` verursacht sein. In diesem Fall kann `Strg` + `q`  versucht werden, um die Konsole wieder frei zu geben.
+A terminal may appear frozen, but this is usually not the case; input continues to be processed even if it does not appear to be so. This can be caused by accidentally pressing `Ctrl` + `s`. In this case `Ctrl` + `q` can be tried to free the console again.
 
-### Hilfe im Terminal
+### Help in the terminal
 
-Die meisten Befehle/Programme haben eine Kommandozeilenhilfe und auch Anleitungen. Die Anleitungen werden "man page" oder "manual page" genannt. Die Syntax zum Aufrufen der "man page" ist:
+Most commands/programs have command line help and also instructions. The instructions are called "man page" or "manual page". The syntax to call the "man page" is:
 
 ~~~
-$ man <Befehl>
+$ man <command>
 ~~~
 
-oder
+or
 
 ~~~
 $ man -k <keyword>
 ~~~
 
-Dies ruft die "man page" eines Befehls auf. Die Navigation in den "man pages" erfolgt durch die Pfeiltasten, beendet werden sie mit "q" für quit. Beispiel:
+This calls the "man page" of a command. Navigation in the "man pages" is done by the arrow keys, they are terminated with "q" for quit. Example:
 
 ~~~
 $ man apt-get
 ~~~
 
-Um eine manpage zu verlassen, tippt man `q` 
+To exit a man page, type `q`. 
 
-Ein anderes nützliches Werkzeug ist der "apropos"-Befehl. "Apropos" ermöglicht es, die man pages nach einem Befehl zu durchsuchen, wenn man z. B. die Syntax vergessen hat. Beispiel:
+Another useful tool is the "apropos" command. "Apropos" allows you to search the man pages for a command if, for example, you forget the syntax. Example:
 
 ~~~
 $ apropos apt-
 ~~~
 
-Dies listet alle Befehle für den Paketmanager apt auf. "apropos" ist ein mächtiges Werkzeug, für eingehendere Informationen über "apropos" siehe
+This lists all commands for the package manager apt. "apropos" is a powerful tool, for more in-depth information about "apropos" see.
 
 ~~~
 $ man apropos
 ~~~
 
-### Linux Konsolenbefehle
+### Linux console commands
 
-Eine sehr gute Einführung in die Konsole BASH findet sich auf [linuxcommand.org](http://linuxcommand.org/)(englisch).
+A very good introduction to the BASH console can be found at [linuxcommand.org](http://linuxcommand.org/)(english).
 
-Natürlich kann auch die favorisierte Suchmaschine verwendet werden, um mehr zu finden.
+Of course you can also use your favorite search engine to find more.
 
-### Skripte benutzen
+### Using scripts
 
-Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu bündeln. Die Eingabe des Dateinamen des Skripts führt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr nützlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.
+A console script is a convenient way to bundle several commands into one file. Entering the filename of the script executes the commands that are in the script. siduction comes with some very useful scripts that provide simplifications to system administration.
 
-Ein Skript wird in der Konsole folgendermaßen gestartet, wenn man sich im gleichen Verzeichnis befindet:
+A script is started in the console as follows, if you are in the same directory:
 
 ~~~
-./name_des_skripts
+./name_of_script
 ~~~
 
-Einige Skripte benötigen root-Zugang, abhängig vom Aufgabenbereich des Skripts.
+Some scripts require root access, depending on the scope of the script.
 
-**Installation und Ausführung**
+**Installation and execution**
 
-Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, zum Beispiel nach **/usr/local/bin**. Zum Kopieren und Einfügen in der Konsole kann auch die Maus benutzt werden, nachdem man mit **su** Root-Rechte erlangt hat.
+Use wget to load a script onto the machine, and it is best to place it in the recommended directory, for example to **/usr/local/bin**. To copy and paste in the console, the mouse can also be used after gaining root privileges with **su**.
 
-**Beispiel mit wget und root-Rechten**
+**Example with wget and root privileges**
 
 ~~~
 $ su
-Passwort:
+password:
 # cd /usr/local/bin
-# wget -c ftp://<entfernter_server>/script-name.sh
+# wget -c ftp://<removed_server>/script-name.sh
 ~~~
 
-Danach muss die Datei ausführbar gemacht werden:
+After that, the file must be made executable:
 
 ~~~
 # chmod +x script-name.sh
 ~~~
 
-Da das Verzeichnis */usr/local/bin* im Suchpfad von root enthalten ist, reicht für root der einfache Befehl
+Since the directory */usr/local/bin* is included in the search path of root, the simple command for root is sufficient
 
 ~~~
 # script-name.sh
 ~~~
 
-aus, um das Script zu starten.
+is sufficient to start the script.
 
-Die Datei kann auch mit einem Browser auf den Computer geladen und an den geeigneten Ort verschoben werden, aber sie muss auch dann ausführbar gemacht werden.
+The file can also be loaded onto the computer with a browser and moved to the appropriate location, but it must be made executable even then.
 
-**Beispiel mit wget als Nutzer**
+**Example with wget as user**
 
-So speichert man als Nutzer eine Datei im \$HOME (der Promt ist '$'):
+This is how to save a file in \$HOME (the prompt is '$') as a user:
 
 ~~~
-$ wget -c ftp://<entfernter_server>/user-script-name.sh
+$ wget -c ftp://<removed_server>/user-script-name.sh
 $ chmod +x user-script-name.sh
 ~~~
 
-Das Skript wird so gestartet:
+The script is started like this:
 
 ~~~
 $ ./user-script-name.sh
 ~~~
 
-Das funktioniert als *user* natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
+Of course, this will only work as *user* if the script does not contain any commands that require root privileges.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
+<div id="rev">Last edited: 2021-14-08</div>

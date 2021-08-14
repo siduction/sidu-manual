@@ -1,16 +1,16 @@
-% Systemd - Unit-Datei
+% systemd - unit file
 
-## systemd unit-Datei
+## systemd unit file
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager)  
-In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
+The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./systemd-start_en.md#systemd--the--system--and--services--manager).  
+In this manual page we explain the structure of the **Unit files** and the generic sections "[Unit]" and "[Install]".
 
-Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedenen  Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
-Alle Unit-Dateien müssen eine Sektion entsprechend des Unit-Typ enthalten. Die generischen Sektionen "[Unit]" am Beginn und "[Install]" am Ende der Datei sind optional, wobei die Sektion "[Unit]" dringend empfohlen wird. 
+The unit file is a plain text file in INI format. It contains configuration statements of the type "*key=value*" in various sections. Empty lines and those starting with "#" or ";" are ignored.
+All unit files must contain a section corresponding to the unit type. The generic sections "[Unit]" at the beginning and "[Install]" at the end of the file are optional, but the "[Unit]" section is strongly recommended. 
 
-### Ladepfad der Unit-Dateien
+### Loading path of the unit files
 
-Die Ausgabe zeigt die Reihenfolge der Verzeichnisse, aus denen die Unit-Dateien geladen werden.
+The output shows the order of the directories from which the unit files are loaded.
 
 ~~~
 # systemd-analyze unit-paths
@@ -29,217 +29,217 @@ Die Ausgabe zeigt die Reihenfolge der Verzeichnisse, aus denen die Unit-Dateien 
 /run/systemd/generator.late
 ~~~
 
-Unit-Dateien, die in früher aufgeführten Verzeichnissen gefunden werden, setzen Dateien mit dem gleichen Namen in Verzeichnissen, die weiter unten in der Liste aufgeführt sind, außer Kraft. So hat eine Datei in "/etc/systemd/system" Vorrang vor der gleichnamigen in "/lib/systemd/system".
+Unit files found in directories listed earlier override files with the same name in directories further down the list. For example, a file in "/etc/systemd/system" overrides one with the same name in "/lib/systemd/system".
 
-Nur ein Teil der zuvor aufgeführten Verzeichnisse existiert per default in siduction. Die Verzeichnisse 
+Only some of the previously listed directories exist in siduction by default. The directories 
 
 + **/lib/systemd/system/**  
-  beinhalten System-Units, die durch den Paketverwalter der Distribution installiert wurden und ggf. vom Administrator erstellte Unit-Dateien.  
+  contain system units installed by the distribution's package manager and any unit files created by the administrator.  
 + **/etc/systemd/system/**  
-  beinhalten Symlinks auf Unit-Dateien in */lib/systemd/system/* für aktivierte Units und ggf. vom Administrator erstellte Unit-Dateien.  
+  contain symlinks to unit files in */lib/systemd/system/* for enabled units and administrator-created unit files, if any.  
 + **/usr/local/lib/systemd/system/**  
-  dieses Verzeichnis muss erstellt werden und ist für vom Administrator erstellte Unit-Dateien vorgesehen.  
+  this directory must be created and is for administrator-created unit files.  
 + **/run/systemd/**  
-  beinhalten Laufzeit-Units und dynamische Konfiguration für flüchtige Units. Für den Administrator hat dieses Verzeichnis ausschließlich informellen Wert.
+  contain runtime units and dynamic configuration for volatile units. For the administrator, this directory has informal value only.
 
-Wir empfehlen eigene Unit-Dateien in */usr/local/lib/systemd/system/* abzulegen.
+We recommend storing your own unit files in */usr/local/lib/systemd/system/*.
 
-### Aktivierung der Unit-Datei
+### Activating the unit file
 
-Um systemd die Konfiguration einer Unit zugänglich zu machen, muss die Unit-Datei aktiviert werden. Dies geschieht mit dem Aufruf:
+To make the configuration of a unit accessible to systemd, the unit file must be activated. This is done with the call:
 
 ~~~
 # systemctl daemon-reload
 # systemctl enable --now <UNIT_DATEI>
 ~~~
 
-Der erste Befehl lädt die komplette Daemon-Konfiguration neu, der zweite startet die Unit <UNIT_DATEI> sofort (Option "--now") und gliedert sie in systemd ein, sodass sie bei jedem Neustart des PC ausgeführt wird.  
-Der Befehl
+The first command reloads the complete daemon configuration, the second starts the <UNIT_DATEI> unit immediately (option "--now") and incorporates it into systemd so that it is executed every time the PC is rebooted.  
+The command
 
 ~~~
 # systemctl disable <UNIT_DATEI>
 ~~~
 
-bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`** gestartet und mit **`systemctl stop <UNIT_DATEI>`** gestopt werden.  
-Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */dev/null* ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand "masked" und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.
+causes it to stop running every time the PC is rebooted. However, it can still be started manually with the command **`systemctl start <UNIT_DATEI>`** and stopped with **`systemctl stop <UNIT_DATEI>`**.  
+If a unit file is empty (i.e. has size 0) or is a symlink on */dev/null*, its configuration will not be loaded and it will appear with a load state of "masked" and cannot be activated. This is an effective way to completely disable a unit and also make it impossible to start it manually.
 
-### Sektionen der Unit-Datei
+### Sections of the unit file
 
-Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ-spezifische Sektion enthalten.
+The unit file usually consists of the [Unit] section, the type-specific section and the [Install] section. The type-specific section is included as a suffix in the file name. For example, a unit file that configures a timer always has the extension "*.timer*" and must contain "[Timer]" as the type-specific section.
 
-#### Sektion Unit
+#### Section Unit
 
-Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
+This section contains general information about the unit, defines dependencies to other units, evaluates conditions and takes care of the enumeration in the boot process.
 
-1. Allgemeine Optionen
+1. general options
 
     a. "*Description=*"  
-       Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint ("Starting *description*...") und dort als Suchmuster verwandt werden kann.
+       Identifies the unit by a human readable name, which is used by systemd as a description for the unit and thus appears in the systemjournal ("Starting *description*...") and can be used there as a search pattern.
 
     b. "*Documentation=*"  
-       Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z. B.: "Documentation=man:cupsd(8)" oder "Documentation=http://www.cups.org/doc/man-cupsd.html".
+       A reference to a file or web page that references documentation for this Unit or its configuration. E.G.: "Documentation=man:cupsd(8)" or "Documentation=http://www.cups.org/doc/man-cupsd.html".
 
-2. Bindungsabhängigkeiten zu anderen Units
+2. binding dependencies to other units
 
     a. "*Wants=*"  
-       Hier aufgeführte Units werden mit der konfigurierten Unit gestartet.
+       Units listed here are started with the configured unit.
 
     b. "*Requires=*"  
-       Ähnlich zu *Wants=*, erklärt aber eine stärkerere Bindung an die aufgeführten Units.  
-       Wenn diese Unit aktiviert wird, werden die aufgeführten Units ebenfalls aktiviert.  
-       Schlägt die Aktivierung einer der anderen Units fehl **und** die Ordnungsabhängigkeit *After=* ist auf die fehlgeschlagene Unit gesetzt, dann wird diese Unit nicht gestartet.  
-       Falls eine der anderen Units inaktiv wird, bleibt diese Unit aktiv, nur wenn eine der anderen Units gestoppt wird, wird diese Unit auch gestoppt.
+       Similar to *Wants=*, but declares a stronger binding to the listed Units.  
+       When this Unit is activated, the listed Units are also activated.  
+       If activation of one of the other Units fails **and** the order dependency *After=* is set on the failed Unit, then that Unit will not be started.  
+       If one of the other Units becomes inactive, this Unit will remain active, only if one of the other Units is stopped, this Unit will also be stopped.
 
     c. "*Requisite=*"  
-       Ähnlich zu *Requires=*. Der Start dieser Unit wird sofort fehlschlagen, wenn die hier aufgeführten Units noch nicht gestartet wurden. *Requisite=* sollte mit der Ordnungsabhängigkeit *After=* kombiniert werden, um sicherzustellen, dass diese Unit nicht vor der anderen Unit gestartet wird.
+       Similar to *Requires=*. The start of this unit will fail immediately if the units listed here have not been started yet. *Requisite=* should be combined with the order dependency *After=* to ensure that this unit is not started before the other unit.
 
     d. "*BindsTo=*"  
-       *BindsTo=* ist der stärkste Abhängigkeitstyp: Es bewirkt zusätzlich zu den Eigenschaften von *Requires=*, dass die gebundene Unit im aktiven Status sein muss, damit diese Unit auch aktiv sein kann.  
-       Beim Stoppen oder inaktivem Zustand der gebundenen Unit wird diese Unit immer gestoppt.  
-       Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht in einem aktiven Zustand ist, sollte *BindsTo=* am besten mit der Ordnungsabhängigkeit *After=* kombiniert werden.
+       *BindsTo=* is the strongest dependency type: it causes, in addition to the properties of *Requires=*, that the bound unit must be in active state for this unit to be active.  
+       When stopping or inactive state of the bound unit, this unit will always be stopped.  
+       To prevent the start of this unit from failing when the bound unit is not, or not yet in an active state, *BindsTo=* is best combined with the order dependency *After=*.
 
     e. "*PartOf=*"  
-       Ähnlich zu *Requires=*, aber begrenzt auf das Stoppen und Neustarten von Units.  
-       Wenn Systemd die hier aufgeführten Units stoppt oder neustartet, wird die Aktion zu dieser Unit weitergeleitet.  
-       Das ist eine Einwege-Abhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.
+       Similar to *Requires=*, but limited to stopping and restarting units.  
+       When Systemd stops or restarts the units listed here, the action is forwarded to that unit.  
+       This is a one-way dependency. Changes to this Unit do not affect the Units listed.
 
     f. "*Conflicts=*"  
-       Deklariert negative Anforderungs-Abhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.  
-       *Conflicts=* bewirkt, dass die aufgeführte Unit gestoppt wird, wenn diese Unit startet und umgekehrt.  
-       Da *Conflicts=* keine Ordnungs-Abhängigkeit beinhaltet, muss eine Abhängigkeit *After=* oder *Before=* erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.
+       Declares negative request dependencies. It is possible to specify a space-separated list.  
+       *Conflicts=* causes the listed unit to stop when this unit starts and vice versa.  
+       Since *Conflicts=* does not include an order dependency, an *After=* or *Before=* dependency must be declared to ensure that the conflicting unit is stopped before the other unit is started.
 
-3. Ordnungsabhängigkeiten zu anderen Units
+3. order dependencies to other units
 
     a. "*Before=*"  
-       Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. *Before=* stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierten Unit abgeschlossen ist.  
-       Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.
+       This setting configures order dependencies between units. *Before=* ensures that the listed unit will only start after the configured unit has finished starting.  
+       Specifying a space-separated list is possible.
 
     b. "*After=*"  
-       Diese Einstellung stellt das Gegenteil von *Before=* sicher. Die aufgeführte Unit muss vollständig gestartet sein, bevor die konfigurierte Unit gestartet wird.
+       This setting ensures the opposite of *Before=*. The listed unit must be completely started before the configured unit is started.
 
     c. "*OnFailure=*"  
-       Units, die aktiviert werden, wenn diese Unit den Zustand »failed« einnimmt.
+       Units that will be activated when this unit takes the "failed" state.
 
-4. Bedingungen  
-   Unit-Dateien können auch eine Reihe von Bedingungen enthalten.  
-   Bevor die Unit gestartet wird, wird Systemd nachweisen, dass die festgelegten Bedingungen wahr sind. Falls nicht, wird das Starten der Unit (fast ohne Ausgabe) übersprungen.  
-   Fehlschlagende Bedingungen führen nicht dazu, dass die Unit in den Zustand »failed« überführt wird.  
-   Falls mehrere Bedingungen festgelegt sind, wird die Unit ausgeführt, falls alle von ihnen zutreffen.  
-   In diesem Abschnitt führen wir nur Bedingungen auf, die uns für selbst erstellte Units hilfreich erscheinen, denn viele Bedingungen dienen dazu, um Units zu überspringen, die auf dem lokalen System nicht zutreffen.  
-   Der Befehl **`systemd-analyze verify <UNIT_DATEI>`** kann zum Testen von Bedingungen verwandt werden.
+4. conditions  
+   Unit files can also contain a set of conditions.  
+   Before starting the unit, Systemd will prove that the specified conditions are true. If not, starting the unit (almost without output) will be skipped.  
+   Failing conditions will not cause the unit to enter the "failed" state.  
+   If multiple conditions are specified, the unit will be executed if all of them are true.  
+   In this section, we list only conditions that we think are useful for user-created units, because many conditions are used to skip units that do not apply on the local system.  
+   The command **`systemd-analyze verify <UNIT_DATEI>`** can be used to test conditions.
 
-   a. "*ConditionVirtualization=*"  
-      Prüft, ob das System in einer virtualisierten Umgebung ausgeführt wird und testet optional, ob es eine bestimmte Implementierung ist.
+   a. "*ConditionVirtualization=*".  
+      Checks if the system is running in a virtualized environment and optionally tests if it is a specific implementation.
 
    b. "*ConditionACPower=*"  
-      Prüft, ob das System zum Zeitpunkt der Aktivierung der Unit am Netz hängt oder ausschließlich über Akku läuft.
+      Checks if the system is on the mains or running solely on battery power at the time the unit is activated.
 
    c. "*ConditionPathExists=*"  
-      Prüft auf die Existenz einer Datei. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks for the existence of a file. With an exclamation mark ("!") in front of the path, the test is negated.
 
    d. "*ConditionPathExistsGlob=*"  
-      Wie zuvor, nur dass ein Suchmuster angegeben wird. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      As before, except that a search pattern is specified. With an exclamation mark ("!") in front of the path, the test is negated.
 
    e. "*ConditionPathIsDirectory=*"  
-      Prüft auf die Existenz eines Verzeichnisses. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Tests for the existence of a directory. With an exclamation mark ("!") in front of the path, the test is negated.
 
    f. "*ConditionPathIsSymbolicLink=*"  
-      Überprüft ob ein bestimmter Pfad existiert und ein symbolischer Link ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks if a given path exists and is a symbolic link. With an exclamation mark ("!") in front of the path, the test is negated.
 
    g. "*ConditionPathIsMountPoint=*"  
-      Überprüft ob ein bestimmter Pfad existiert und ein Einhängepunkt ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks if a given path exists and is a mount point. With an exclamation mark ("!") in front of the path, the test is negated.
 
    h. "*ConditionPathIsReadWrite=*"  
-      Überprüft ob das zugrundeliegende Dateisystem les- und schreibbar ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks if the underlying file system is readable and writable. With an exclamation mark ("!") in front of the path, the test is negated.
 
    i. "*ConditionDirectoryNotEmpty=*"  
-      Überprüft ob ein bestimmter Pfad existiert und ein nicht leeres Verzeichnis ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks if a given path exists and is a non-empty directory. With an exclamation mark ("!") in front of the path the test is negated.
 
    j. "*ConditionFileNotEmpty=*"  
-      Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale Datei mit einer von Null verschiedenen Größe bezieht. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks if a given path exists and refers to a normal file with a non-zero size. With an exclamation mark ("!") in front of the path, the test is negated.
 
    k. "*ConditionFileIsExecutable=*"  
-      Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale, als ausführbar gekennzeichnete Datei bezieht. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+      Checks if a given path exists and refers to a normal file marked as executable. With an exclamation mark ("!") in front of the path, the test is negated.
 
-Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in der [Deutschen Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html) nachlesen.
+For full documentation on all options of the "[Unit]" section, please refer to the [German manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html).
 
-#### Typ-spezifische Sektion
+#### Type-specific section
 
-Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
+This section contains the special options of the eleven possible types. Detailed descriptions can be found in the linked manual pages, or alternatively in the respective German manpage.
 
-+ [[Service]](./systemd-service_de.md#systemd-service) konfiguriert einen Dienst
++ [[Service]](./systemd-service_en.md#systemd-service) configures a service
 
-+ [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) konfiguriert ein Socket
++ [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) configures a socket
 
-+ [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) konfiguriert ein Gerät
++ [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) configures a device
 
-+ [[Mount]](./systemd-mount_de.md#systemd-mount) konfiguriert einen Einhängepunkt
++ [[Mount]](./systemd-mount_en.md#systemd-mount) configures a mount point
 
-+ [[Automount]](./systemd-mount_de.md#systemd-mount) konfiguriert einen Selbsteinhängepunkt
++ [[Automount]](./systemd-mount_en.md#systemd-mount) configures a self-mount point
 
-+ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
++ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) configures a swap file or partition
 
-+ [[Target]](./systemd-target_de.md#systemd-target---ziel-unit) konfiguriert ein Startziel
++ [[Target]](./systemd-target_en.md#systemd-target---target-unit) configures a start target
 
-+ [[Path]](./systemd-path_de.md#systemd-path) konfiguriert einen überwachten Dateipfad
++ [[Path]](./systemd-path_en.md#systemd-path) configures a monitored file path
 
-+ [[Timer]](./systemd-timer_de.md#systemd-timer) konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
++ [[Timer]](./systemd-timer_en.md#systemd-timer) configures a timer controlled and monitored by systemd
 
-+ [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungs-Slice
++ [[slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) configures a resource management slice
 
-+ [[Scope]](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html) konfiguriert eine Gruppe von extern erstellten Prozessen.
++ [[Scope]](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html) configures a group of externally created processes.
 
-#### Sektion Install
+#### Install section
 
-Unit-Dateien können diese Sektion enthalten.  
-Die Optionen der *[Install]*-Sektion werden von den Befehlen **`systemctl enable <UNIT_DATEI>`** und **`systemctl disable <UNIT_DATEI>`** während der Installation einer Unit verwandt.  
-Unit-Dateien ohne *[Install]*-Sektion lassen sich manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`**, oder von einer anderen Unit-Datei starten.
+Unit files may contain this section.  
+The options in the *[Install]* section are related by the **`systemctl enable <UNIT_DATEI>`** and **`systemctl disable <UNIT_DATEI>`** commands during installation of a unit.  
+Unit files without *[Install]* section can be started manually with the command **`systemctl start <UNIT_DATEI>`**, or from another unit file.
 
-Beschreibung der Optionen:
+Description of options:
 
 + "*Alias=*"  
-  Eine Liste von zusätzlichen Namen, unter der diese Unit installiert werden soll. Die hier aufgeführten Namen müssen die gleiche Endung wie die Unit-Datei haben.
+  A list of additional names under which this unit should be installed. The names listed here must have the same extension as the unit file.
 
 + "*WantedBy=*"  
-  Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.  
-  Im .wants/-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ *Wants=* von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.  
-  Verhält sich wie die Option *Wants=* in der Sektion *[Unit]*.
+  This option can be used multiple times or contain a space-separated list.  
+  A symbolic link is created in the .wants/ directory of each of the listed units during installation. This adds a dependency of type *Wants=* from the listed unit to the current unit. The main result is that the current unit is started when the listed unit is started.  
+  Behaves like the *Wants=* option in the *[Unit]* section.
 
-  Beispiel:  
+  Example:  
   WantedBy=graphical.target
 
-  Das teilt systemd mit, die Unit beim Starten von graphical.target (früher "init 5") hereinzuziehen. 
+  This tells systemd to pull in the unit when starting graphical.target (formerly "init 5"). 
 
 + "*RequiredBy=*"  
-  Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.  
-  Im .requires/-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ *Requires=* von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.  
-  Verhält sich wie die Option *Requires=* in der Sektion *[Unit]*.
+  This option can be used multiple times or contain a space-separated list.  
+  A symbolic link is created in the .requires/ directory of each of the listed units during installation. This adds a dependency of type *Requires=* from the listed unit to the current unit. The main result is that the current unit is started when the listed unit is started.  
+  Behaves like the *Requires=* option in the *[Unit]* section.
 
 + "*Also=*"  
-  Zusätzliche Units, die installiert/deinstalliert werden sollen, wenn diese Unit installiert/deinstalliert wird.
+  Additional units to install/uninstall when this unit is installed/uninstalled.
 
 + "*DefaultInstance=*"  
-  Diese Option zeigt nur bei Vorlagen-Unit-Dateien Wirkung.  
-  Deklariert, welche Instanz der Unit freigegeben werden soll. Die angegebene Zeichenkette muss zur Identifizierung einer Instanz geeignet sein.
+  This option has effect only for template unit files.  
+  Declares which instance of the unit should be released. The specified string must be suitable for identifying an instance.
 
-Hinweis:
-Um die Konfiguration einer Unit-Datei zu prüfen, eignet sich der Befehl **`systemd-analyze verify <UNIT_DATEI>`**.
+Hint:
+To verify the configuration of a unit file, the **`systemd-analyze verify <UNIT_DATEI>`** command is suitable.
 
-### Beispiel cupsd
+### Example cupsd
 
-Der *cupsd*, Auftragsplaner (Scheduler) für das Common UNIX Printing System, wird von systemd mit seinen drei Unit Dateien "*cups.socket*", "*cups.service*" und "*cups.path*" gesteuert und eignet sich gut, um die Abhängigkeiten zu verdeutlichen.  
-Hier die drei Dateien.
+The *cupsd*, job scheduler for the Common UNIX Printing System, is controlled by systemd with its three unit files "*cups.socket*", "*cups.service*" and "*cups.path*" and is well suited to illustrate the dependencies.  
+Here are the three files.
 
 ~~~
-Datei /lib/systemd/system/cups.service:
+File /lib/system/system/cups.service:
 
 [Unit]
 Description=CUPS Scheduler
 Documentation=man:cupsd(8)
 After=network.target sssd.service ypbind.service nslcd.service
 Requires=cups.socket
-    After=cups.socket (nicht in der Datei, da implizit vorhanden.)
-    After=cups.path   (nicht in der Datei, da implizit vorhanden.)
+    After=cups.socket (not in the file, because it is implicitly present.)
+    After=cups.path (not in the file, because implicitly present.)
 
 [Service]
 ExecStart=/usr/sbin/cupsd -l
@@ -247,17 +247,17 @@ Type=notify
 Restart=on-failure
 
 [Install]
-Also=cups.socket cups.path
+So=cups.socket cups.path
 WantedBy=printer.target
 ~~~
 
 ~~~
-Datei /lib/systemd/system/cups.path:
+File /lib/system/system/cups.path:
 
 [Unit]
 Description=CUPS Scheduler
 PartOf=cups.service
-    Before=cups.service (nicht in der Datei, da implizit vorhanden.)
+    Before=cups.service (not in the file, as it is implicit).
 
 [Path]
 PathExists=/var/cache/cups/org.cups.cupsd
@@ -267,12 +267,12 @@ WantedBy=multi-user.target
 ~~~
 
 ~~~
-Datei /lib/systemd/system/cups.socket:
+File /lib/system/system/cups.socket:
 
 [Unit]
 Description=CUPS Scheduler
 PartOf=cups.service
-    Before=cups.service (nicht in der Datei, da implizit vorhanden.)
+    Before=cups.service (not in the file, as it is implicit).
 
 [Socket]
 ListenStream=/run/cups/cups.sock
@@ -281,11 +281,11 @@ ListenStream=/run/cups/cups.sock
 WantedBy=sockets.target
 ~~~
 
-**Die Sektion [Unit]**  
-enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien *cups.path* und *cups.socket* enthalten zusätzlich die  Bindungsabhängigkeit *PartOf=cups.service*, was bedeutet, dass diese zwei Units abhängig von *cups.service* gestoppt oder neu gestartet werden.  
-Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen Service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungs-Abhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
+**The section [Unit]**  
+contains the same description for all three files. The files *cups.path* and *cups.socket* additionally contain the binding dependency *PartOf=cups.service*, which means that these two units are stopped or restarted depending on *cups.service*.  
+The socket unit as well as the path unit include the order dependency "Before=" to their service unit with the same name. Therefore it is not necessary to include the order dependencies "After=cups.socket" and "After=cups.path" in the *cups.service* unit. (See below the output of "systemd-analyze dump" with the notation "destination-implicit"). The effect of both dependencies together is that regardless of which unit starts first, all three units will always start, and the *cups.service* unit will only start after the *cups.path* unit and the *cups.socket* unit have successfully started.
 
-Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd-analyze dump`**, der eine sehr, sehr lange Liste ( > 32000 Zeilen) des systemd Serverstatus ausgibt. 
+We get the complete configuration of the units with the command **`systemd-analyze dump`**, which prints a very, very long list ( > 32000 lines) of the systemd server state. 
 
 ~~~
 # systemd-analyze dump
@@ -308,14 +308,14 @@ Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd
 [...]
 ~~~
 
-**Die Sektion [Install]**  
-der *cups.service*-Unit enthält mit der Option "Also=cups.socket cups.path" die Anweisung, diese beiden Units auch zu installieren und alle drei Units haben unterschiedliche "WantedBy=" Optionen:
+**The [Install]** section  
+of the *cups.service* unit contains with the option "So=cups.socket cups.path" the instruction to install these two units as well and all three units have different "WantedBy=" options:
 
-+ cups.socket:  WantedBy=sockets.target  
-+ cups.path:    WantedBy=multi-user.target  
++ cups.socket: WantedBy=sockets.target  
++ cups.path: WantedBy=multi-user.target  
 + cups.service: WantedBy=printer.target
 
-Um zu verstehen, warum unterschiedliche Werte für die Option "WantedBy=" Verwendung finden, benötigen wir zusätzliche Informationen, die wir mit den Befehlen *systemd-analyze dot* und *systemd-analyze plot* erhalten.
+To understand why different values are used for the "WantedBy=" option, we need additional information, which we can obtain with the *systemd-analyze dot* and *systemd-analyze plot* commands.
 
 ~~~
 $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
@@ -324,54 +324,54 @@ $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
 $ systemd-analyze plot > bootup.svg
 ~~~
 
-Der erste liefert uns ein Flussdiagramm mit den Abhängigkeiten der verschiedenen *Targets* zueinander und der zweite eine graphisch aufbereitete Auflistung des Bootprozesses mit den Zeitpunkten wann ein Prozess gestartet wurde, welche Zeit er beanspruchte und seinen Aktivitätszustand.
+The first one gives us a flowchart with the dependencies of the different *targets* to each other and the second one a graphical listing of the boot process with when a process was started, how much time it took and its activity state.
 
-Der *targets.svg* und der *bootup.svg* entnehmen wir, dass
+From the *targets.svg* and the *bootup.svg* we can see that
 
-1.  **sysinit.target**  
-    aktiviert wird und
+1. **sysinit.target** is activated  
+    is activated and
 
-2.  **basic.target**  
-    erst startet, wenn *sysinit.target* erreicht wurde.
+2. **basic.target**  
+    will not start until *sysinit.target** has been reached.
 
-    1.  **sockets.target**  
-        von *basic.target* angefordert wird,
+    1. **sockets.target**  
+        is requested by *basic.target*,
 
-        1.   **cups.socket**  
-              und alle weiteren *.socket*-Units von *sockets.target* hereingeholt werden.
+        1. **cups.socket**  
+              and all other *.socket* units are fetched from *sockets.target*.
 
-    2.  **paths.target**  
-        von *basic.target* angefordert wird,
+    2. **paths.target**  
+        is requested by *basic.target*,
 
-        1.   **cups.path**  
-              und alle weiteren *.path*-Units von *paths.target* hereingeholt werden.
+        1. **cups.path**  
+              and all other *.path* units are brought in by *paths.target*.
 
-3.  **network.target**  
-    erst startet, wenn *basic.target* erreicht wurde.
+3. **network.target**  
+    will not start until *basic.target* has been reached.
 
-4.  **cups.service**  
-    erst startet, wenn *network.target* erreicht wurde.
+4. **cups.service**  
+    will not start until *network.target* has been reached.
 
-5.  **multi-user.target**  
-    erst startet, wenn *network.target* erreicht wurde.
+5. **multi-user.target**  
+    will not start until *network.target* has been reached.
 
-6.  **multi-user.target**  
-    erst dann erreicht wird, wenn *cups.service* erfolgreich gestartet wurde.  
-    (Genau genommen liegt es daran, dass der *cups-browsed.service*, der vom  
-    *cups.service* abhängt, erfolgreich gestartet sein muss.)
+6. **multi-user.target**  
+    is not reached until *cups.service* has been started successfully.  
+    (Strictly speaking, this is because the *cups-browsed.service*, which depends on the  
+    *cups.service*, must have been started successfully).
 
-6.  **printer.target**  
-    wird erst aktiv, wenn Systemd dynamisch Geräte-Units für die Drucker generiert.  
-    Dazu müssen die Drucker angeschlossen und eingeschaltet sein.
+6. **printer.target**  
+    becomes active only when Systemd dynamically generates device units for the printers.  
+    For this to happen, the printers must be connected and turned on.
 
-Weiter oben stellten wir fest, dass der Start einer *cups.xxx*-Unit ausreicht, um alle drei Units hereinzuholen. Betrachten wir noch einmal die "WantedBy="-Optionen in der [Install]-Sektion, so haben wir die *cups.socket*-Unit, die über das *sockets.target* bereits während des *basic.target* hereingeholt wird, die *cups.path*-Unit, die während des *multi-user.target* hereingeholt wird und den *cups.service*, der vom *printer.target* hereingeholt wird.  
-Während des gesamten Bootprozesses werden die drei *cups.xxx*-Units wiederholt bei systemd zur Aktivierung angefordert. Das härtet den *cupsd* gegen unvorhergesehene Fehler, spielt für systemd aber keine Rolle, denn es ist unerheblich wie oft ein Service angefordert wird, wenn er sich in der Warteschlange befindet.  
-Zusätzlich fordert immer dann das *printer.target* den *cups.service* an, wenn ein Drucker neu von systemd erkannt wird.
+Further above we noted that starting a *cups.xxx* unit is sufficient to bring in all three units. If we look again at the "WantedBy=" options in the [Install] section, we have the *cups.socket* unit being brought in via the *sockets.target* already during the *basic.target*, the *cups.path* unit being brought in during the *multi-user.target* and the *cups.service* being brought in by the *printer.target*.  
+Throughout the boot process, the three *cups.xxx* units are repeatedly requested from systemd for activation. This hardens the *cupsd* against unforeseen errors, but does not matter to systemd because it does not matter how many times a service is requested if it is in the queue.  
+Additionally, the *printer.target* requests the *cups.service* whenever a printer is newly detected by systemd.
 
-### Werkzeuge
+### Tools
 
-Systemd beinhaltet einige nützliche Werkzeuge für die Analyse, Prüfung und Bearbeitung der Unit-Dateien.  
-Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html)  und [systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html) zu Rate ziehen.
+Systemd includes some useful tools for analyzing, checking and editing unit files.  
+Please also refer to the [systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html) and [systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html) man pages.
 
 
 + edit
@@ -382,15 +382,15 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   # systemctl edit --full --force <UNIT_DATEI>
   ~~~
 
-  *systemctl edit* öffnet die ausgewählte Unit-Datei im konfigurierten Editor.
+  *systemctl edit* opens the selected unit file in the configured editor.
 
-  **systemctl edit <UNIT_DATEI>** erstellt unterhalb */etc/systemd/system/* ein neues Verzeichnis mit dem Namen "\<UNIT_DATEI\>.d" und darin die Datei "override.conf", die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) inklusive */etc/systemd/system/* abwärts eingetragen sind.
+  **systemctl edit <UNIT_DATEI>** creates a new directory under */etc/systemd/system/* named "\<UNIT_DATEI\>.d" and in it the file "override.conf" which contains only the changes from the original unit file. This applies to all unit files in the directories entered in the [Hirarchy of load paths](#load-path-of-unit-files) including */etc/systemd/system/* downwards.
 
-  **systemctl edit - -full <UNIT_DATEI>** erstellt eine neue, namensgleiche Datei im Verzeichnis */etc/systemd/system/*. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) unterhalb */etc/systemd/system/* eingetragen sind. Dateien, die sich bereits im Verzeichnis */etc/systemd/system/* befinden, werden überschrieben.
+  **systemctl edit - -full <UNIT_DATEI>** creates a new file with the same name in the */etc/systemd/system/* directory. This applies to all unit files in the directories entered in the [Hirarchy of load paths](#load-path-of-unit-files) below */etc/systemd/system/*. Files already in the */etc/systemd/system/* directory will be overwritten.
 
-  **systemctl edit - -full - -force <UNIT_DATEI>** erstellt eine neue Datei im Verzeichnis */etc/systemd/system/*. Ohne die Option *- -full* würde nur eine Datei "override.conf" im neuen Verzeichnis */etc/systemd/system/\<UNIT_DATEI\>.d* generiert, der die zugehörige Unit-Datei fehlt.
+  **systemctl edit - -full - -force <UNIT_FILE>** creates a new file in the directory */etc/systemd/system/*. Without the *- -full* option, only an "override.conf" file would be generated in the new directory */etc/systemd/system/\<UNIT_DATEI\>.d*, which lacks the associated unit file.
 
-  Wird der Editor beendet, so führt systemd automatisch den Befehl **`systemctl daemon-reload`** aus.
+  If the editor is terminated, systemd automatically executes the command **`systemctl daemon-reload`**.
 
 + revert
 
@@ -398,8 +398,8 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   # systemctl revert <UNIT_DATEI>
   ~~~
 
-  macht die mit *systemctl edit* und *systemctl edit - -full* vorgenommenen Änderungen an Unit-Dateien rückgängig. Dies gilt nicht für geänderte Unit-Dateien die sich bereits im Verzeichnis */etc/systemd/system/* befanden.  
-  Zusätzlich bewirkt der Befehl die Rücknahme der mit *systemctl mask* vorgenommenen Änderungen.
+  reverts the changes made to unit files with *systemctl edit* and *systemctl edit - -full*. This does not apply to changed unit files that were already in the */etc/systemd/system/* directory.  
+  In addition, the command causes the undo of changes made with *systemctl mask*.
 
 + daemon-reload
 
@@ -407,7 +407,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   # systemctl daemon-reload
   ~~~
 
-  Lädt die Systemverwalterkonfiguration neu. Dies führt alle Generatoren neu aus, lädt alle Unit-Dateien neu und erstellt den gesamten Abhängigkeitsbaum neu.
+  Reloads the system administrator configuration. This re-runs all generators, reloads all unit files, and rebuilds the entire dependency tree.
 
 + cat
 
@@ -415,7 +415,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemctl cat <UNIT_DATEI>
   ~~~
 
-  Gibt entsprechend des Konsolebefehls *cat* den Inhalt der Unit-Datei und aller zugehörigen Änderungen aus.
+  Prints the contents of the unit file and all associated changes according to the console command *cat*.
 
 + analyze verify
 
@@ -423,7 +423,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemd-analyze verify <UNIT_DATEI>
   ~~~
 
-  überprüft die Konfigurationseinstellungen einer Unit-Datei und gibt Hinweise aus. Dies ist ein sehr hilfreicher Befehl um die Konfiguration selbst erstellter oder geänderter Unit-Dateien zu prüfen.
+  checks the configuration settings of a unit file and prints hints. This is a very useful command to check the configuration of self created or changed unit files.
 
 + systemd-delta
 
@@ -431,17 +431,17 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemd-delta
   ~~~
 
-  präsentiert in der Ausgabe Unit-Dateien und die vorgenommenen Änderungen an ihnen. Das Schlüsselwort am Anfang der Zeile definiert die Art der Änderung bzw. Konfiguration.  
-  Hier ein Beispiel:
+  presents in the output unit files and the changes made to them. The keyword at the beginning of the line defines the type of change or configuration.  
+  Here is an example:
 
   ~~~
   $ systemd-delta --no-pager
-  [MASKED]     /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
+  [MASKED] /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
   [OVERRIDDEN] /etc/tmpfiles.d/screen-cleanup.conf → /usr/lib/tmpfiles.d/screen-cleanup.conf
-  [MASKED]     /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
+  [MASKED] /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
   [EQUIVALENT] /etc/systemd/system/tmp.mount → /lib/systemd/system/tmp.mount
-  [EXTENDED]   /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
-  [EXTENDED]   /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
+  [EXTENDED] /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
+  [EXTENDED] /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
 
   6 overridden configuration files found.
   ~~~
@@ -452,7 +452,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemd-analyze dump > systemd_dump.txt
   ~~~
 
-  erstellt die Textdatei *systemd_dump.txt* mit der vollständigen Konfiguration alle Units des systemd. Die sehr lange Textdatei gibt Aufschluss über alle Konfigurationseinstellungen aller systemd-Units und lässt sich mit einem Texteditor und unter Verwendung von RegEx-Pattern gut durchsuchen.
+  creates the text file *systemd_dump.txt* with the complete configuration of all systemd units. The very long text file gives information about all configuration settings of all systemd units and can be easily searched with a text editor and using regex patterns.
 
 + analyze plot
 
@@ -460,36 +460,34 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemd-analyze plot > bootup.svg
   ~~~
 
-  erstellt die Datei *bootup.svg* mit der zeitlichen Abfolge des Bootprozesses. Es ist eine graphisch aufbereitete Auflistung des Bootprozesses mit den Start- und Endzeitpunkten aller Units, welche Zeit sie beanspruchten und ihren Aktivitätszuständen.
+  creates the file *bootup.svg* with the chronological sequence of the boot process. It is a graphical listing of the boot process with the start and end times of all units, what time they took, and their activity states.
 
 + analyze dot
 
   ~~~
   $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
     '*.target' | dot -Tsvg > targets.svg
-    Color legend: black     = Requires
+    Color legend: black = Requires
                   dark blue = Requisite
                   dark grey = Wants
-                  red       = Conflicts
-                  green     = After
+                  red = Conflicts
+                  green = After
   ~~~
 
-  erstellt das Flussdiagramm *targets.svg*, dass die Abhängigkeiten der im Bootprozess verwendeten Targets darstellt. Die Beziehungen der *.target*-Units werden zur besseren Übersicht farblich dargestellt.
+  creates the *targets.svg* flowchart that shows the dependencies of the targets used in the boot process. The relationships of the *.target* units are shown in color for a better overview.
 
-Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgelieferten Werkzeuge dar. Bitte entnehme den man-Pages die vollständige Dokumentation.
+The tools mentioned here represent only a part of the tools shipped with systemd. Please refer to the man pages for full documentation.
 
-### Quellen systemd-unit-Datei
+### Sources systemd-unit file
 
-[Deutsche Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
-[Deutsche Manpage, systemd.syntax](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)  
-[Deutsche Manpage, systemd.device](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html)  
-[Deutsche Manpage, systemd.scope](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html)  
-[Deutsche Manpage, systemd.slice](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html)  
-[Deutsche Manpage, systemd.socket](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html)  
-[Deutsche Manpage, systemd.swap](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html)  
-[Deutsche Manpage, systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html)  
-[Deutsche Manpage, systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html)
+[German man page, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
+[German man page, systemd.syntax](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)  
+[German manpage, systemd.device](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html)  
+[German manpage, systemd.scope](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html)  
+[German manpage, systemd.slice](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html)  
+[German manpage, systemd.socket](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html)  
+[German manpage, systemd.swap](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html)  
+[German manpage, systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html)  
+[German manpage, systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html)
 
-Dank an Helge Kreuzmann für die deutschen Übersetzungen.
-
-<div id="rev">Seite zuletzt aktualisert 2021-05-05</div>
+<div id="rev">Page last updated 2021-14-08</div>
