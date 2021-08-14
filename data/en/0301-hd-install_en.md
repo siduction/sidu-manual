@@ -1,159 +1,158 @@
-% Installation auf HDD
+% Installation on HDD
 
-## Installation auf HDD
+## Installation on HDD
 
-### Datensicherung
+### Data backup
 
-> **WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!**  
-> Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.  
+**IMPORTANT: ALWAYS CREATE A DATA BACKUP!  
+> If the installation target is already home to an operating system, or data should be preserved, please always create a backup before installing siduction.  
 
-### Installationsvorbereitungen
+### Installation preparations
 
-Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der `F2` oder `Entf`-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste `F12`, `F11` `F7` oder `F8` (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
+First, change the boot order to the medium to be booted (DVD, flashcard or USB stick). On most computers, pressing the 'F2' or 'Del' key during the boot process takes you to the UEFI or BIOS setup. Alternatively, pressing `F12`, `F11` `F7` or `F8` (depending on the hardware manufacturer's specifications) during the boot process will then select the live media as the boot drive.
 
-siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](cheatcodes_de.md#bootoptionen-cheatcodes) erläutert die möglichen Optionen.  
-Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu "From CD/DVD/ISO: ..." oder "From Stick/HDD: ..." navigiert und die Taste `e` betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste `F10` wird der Bootvorgang fortgesetzt.
+siduction usually starts without problems now. If this is not the case, boot options (cheat codes) which can be passed to the boot manager are helpful. The manual page [Cheatcodes](cheatcodes_en.md#bootoptions-cheatcodes) explains the possible options.  
+At the start screen of the live medium, whichever is applicable, navigate with the arrow keys to "From CD/DVD/ISO: ..." or "From Stick/HDD: ..." and press the key 'e'. This takes you to the edit kernel command line to add the cheatcodes. With the key `F10` the boot process is continued.
 
-**Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.**
+**Before the installation please remove all USB sticks, cameras etc.**.
 
-Soll siduction nicht von, sondern **auf ein USB-Medium** installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite [Installation auf ein USB-Medium](0302-hd-ins-fromiso_de.md#fromiso).
+If siduction is not to be installed from, but **to a USB medium**, a different procedure is necessary. See the manual page [Installation to a USB medium](0302-hd-ins-fromiso_en.md#fromiso).
 
-**HDD, RAM und Swap**
+**HDD, RAM and Swap**
 
-Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#minimale-systemanforderungen) beschrieben.  
-Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. 
-Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
+The minimum requirements for installing the siduction variants are described on the manual page [Live ISO content](cd-content_en.md#minimum-system-requirements).  
+With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. 
+A swap partition should be created on PCs with a maximum of 1 GB RAM. More than 2 GB swap is not normally required and is only really useful for suspend-to-disk and server systems.
 
-### Partitionierung
+### Partitioning
 
-Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
+The partitioning of the drives depends on many factors:
 
-+ Auswahl der siduction-Variante
-+ Größe der vorhandenen Laufwerke und des Arbeitsspeichers
-+ Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
-+ Gemeinsame Nutzung von Daten für die installierten Systeme
++ Selection of the siduction variant
++ Size of the available drives and RAM
++ Single-boot or dual-boot with an already installed system (Windows, Linux, MAC)
++ Sharing of data for the installed systems
 
-Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md#partitionierung-von-installationsmedien).  
-Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählem auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt werden und gegebenen falls auf das **home**-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
+Examples and sizes for different installation situations are described on the manual page [partitioning](part-size-examp_en.md#partitioning-of-installation-media).  
+We recommend leaving the **/home** directory on the root partition. The **/home** directory should be the place where individual configurations are stored, and only those. For all other private data, including .ssh, .gnupg and the mail archives, a separate data partition should be created and linked to the **home** directory if necessary. The advantages for data stability, data backup and also in case of data recovery are almost immeasurable.  
 
-Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
-[Gparted](part-gparted_de.md#partitionieren-mit-gparted), ein Programm für die graphische Oberfläche für GTK-Desktops  
-KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
-[gdisk](part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
-[cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
+The partitioning can be done during the installation, or already in advance during the live session with the following programs:  
+[Gparted](part-gparted_en.md#partition-with-gparted), a graphical user interface program for GTK desktops  
+KDE Partition Manager, another graphical user interface program for Qt desktops  
+[gdisk](part-gdisk_en.md#partition-with-gdisk), recommended for UEFI hardware for GTP partition tables  
+[cfdisk](part-cfdisk_en.md#partition-with-fdisk), only for older hardware with traditional BIOS and MBR partition tables
 
-### Dateisysteme
+### File systems
 
-Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
+We recommend the **ext4** file system, which is used as the default file system on siduction. This applies to all partitions if only Linux operating systems are used.
 
-Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mit dem **NTFS** Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen; für Windows ist es das Standarddateisystem.
+For a dual-boot installation with *Windows*, a separate data partition with the **NTFS** file system makes sense. Linux can read and write to it; for Windows it is the default file system.
 
-Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugreifen.
+For a dual-boot installation with *MAC*, it also makes sense to have a separate data partition, but with the **HFS** or **HFS+** file system. Linux and MAC can have read and write access to it.
 
-### Duplizierung auf einen anderen Computer
+### Duplication to another computer
 
-Mit folgendem Konsolenbefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
+The following console command is used to create a list of installed software packages so that it can be used to install an identical software selection on another computer or in the event of a new installation:
 
 ~~~sh
 ~# dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/username/installed.txt
 ~~~
 
-Am besten wird diese Textdatei auf einen USB-Stick oder einen Datenträger nach Wahl kopiert.  
-Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz verwendet, um die benötigten Programmpakete zu installieren. Die gesamte Paketliste kann per
+The best way is to copy this text file to a USB stick or a disk of your choice.  
+On the target installation, the text file is copied to $HOME and used as a reference to install the required program packages. The complete package list can be called via
 
-~~~sh
+~~sh
 ~# apt install $(/home/username/installed.txt)
 ~~~
 
-installiert werden.
+can be installed.
 
-### Das Installationsprogramm Calamares
+### The Calamares installer
 
-Während der Installation sollte, wenn möglich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen für die Lokalisation und Zeit zu ermitteln.
+During the installation, if possible, the computer should be connected to the Internet, because Calamares uses the GeoIP service to determine default settings for localization and time.
 
-1. Das Installationsprogramm startet man bequem über das Icon ![calamares icon](./images/install-hd/calamares-de_00.png) am Desktop oder im Menü: *System* > *System installieren*.
+1. the installation program can be started comfortably via the icon ![calamares icon](./images/install-hd/calamares-en_00.png) on the desktop or in the menu: *System* > *Install system*.
 
-2. Nach einem Doppelklick auf das Icon startet Calamares und wir sehen das "Willkommen" - Fenster.
+2. after a double click on the icon Calamares starts and we see the "welcome" window.
 
-   ![calamares welcome](./images/install-hd/calamares-de_01.png "Willkommen")
+   ![calamares welcome](./images/install-hd/calamares-en_01.png "Welcome")
 
-   Sofern eine Internetverbindung besteht, sollte hier bereits die richtige Sprache eingestellt sein.
+   If there is an internet connection, the correct language should already be set here.
 
-3. Im nächsten Fenster "Standort" besteht die Möglichkeit Änderungen zur *Region*, der *Zeitzone* und *Systemsprache*, sowie dem *Format* für das Datum und die Zahlen vorzunehmen.
+3. in the next window "location" there is the possibility to make changes to the *region*, the *timezone* and *system language*, as well as the *format* for the date and the numbers.
 
-   ![calamares location](./images/install-hd/calamares-de_02.png "Standort") 
+   ![calamares location](./images/install-hd/calamares-en_02.png "Location") 
 
-4. Es folgen die Einstellungen zur Tastatur.
+4. next are the settings for the keyboard.
 
-   ![calamares keyboard](./images/install-hd/calamares-de_03.png "Tastatur")
+   ![calamares keyboard](./images/install-hd/calamares-en_03.png "Keyboard")
 
-   Im oberen Teil wird die Tastatur graphisch dargestellt und die Änderungen werden sofort sichtbar. Ganz unten befindet sich eine Eingabezeile um das Tastaturlayout zu testen.
+   In the upper part the keyboard is displayed graphically and the changes are visible immediately. At the bottom there is an input line to test the keyboard layout.
 
-5. Im nächsten Schritt erreichen wir die bereits oben erwähnte Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n) siduction verwendet.
+5. in the next step we reach the already above mentioned partitioning which determines which parts of the harddisk(s) siduction uses.
 
-   ![calamares partitions](./images/install-hd/calamares-de_04.png "Partitionen")
+   ![calamares partitions](./images/install-hd/calamares-en_04.png "Partitions")
 
-   In unserem Beispiel verwenden wir die *Manuelle Partitionierung* weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel auswählen. Nach einem Klick auf *Weiter* erscheint das nächste Fenster, in dem wir die einzelnen Partitionen auswählen und bearbeiten können.
+   In our example we use *Manual partitioning* because the partitions have already been created in advance and we only need to select the correct installation target. After clicking *Next* the next window appears where we can select and edit the individual partitions.
 
-   ![calamares work on partitions](./images/install-hd/calamares-de_05.png "Partitionen bearbeiten")
+   ![calamares work on partitions](./images/install-hd/calamares-en_05.png "Edit partitions")
 
-   Wir benutzen die Partitionen  
-   sda7 für / (root)  
-   sda6 für /daten gemeinsam mit dem bereits auf sda3 und sda4 vonhanden Linux
+   We use the partitions  
+   sda7 for / (root)  
+   sda6 for /data together with the Linux already present on sda3 and sda4.
 
-   Nach Auswählen der betreffenden Partition und Betätigen des Schalters *Ändern* öffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und für sda7 auch die Formatierung mit dem Dateisystem **ext4** vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abglegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen möchten.  
-   Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie während der Installation automatisch erkannt und integriert wird.  
-   Das Ergebnis unserer Bemühungen sehen wir im nächsten Bild.
+   After selecting the partition in question and pressing the *Change* button, a window opens in which we enter the above mountpiont and also format sda7 with the **ext4** file system. The partition sda6 is not formatted, because we want to use the data already stored there together with the already existing Linux.  
+   We do not need to edit the swap partition (sda5), since it will be automatically detected and integrated during the installation.  
+   We can see the result of our efforts in the next image.
 
-   ![calamares partitions finish](./images/install-hd/calamares-de_06.png "Partitionen Ergebnis")
+   ![calamares partitions finish](./images/install-hd/calamares-en_06.png "Partitions result")
 
+6. next we set username, login name, computer name, user password and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with [adduser](#adduser).
 
-6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#benutzer-hinzufügen) hinzugefügt werden.
+   ![calamares users](./images/install-hd/calamares-en_07.png "users")
 
-   ![calamares users](./images/install-hd/calamares-de_07.png "Benutzer")
+   Before using the two options  
+   "Log in automatically without password prompt" and  
+   "Use the same password for the administrator account".  
+   are explicitly warned here. They represent a security risk in themselves (see also [sudo](term-console_en.md#work-as-root)). If both options are enabled, entering passwords is just a farce!
 
-   Vor der Verwendung der beiden Optionen  
-   "Automatisches Einloggen ohne Passwortabfrage" und  
-   "Nutze das gleiche Passwort auch für das Administratorenkonto"  
-   wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherheitsrisiko dar (siehe auch [sudo](term-konsole_de.md#arbeit-als-root)). Sind beide Optionen aktiviert ist die Eingabe von Passwörtern nur noch eine Farce!
+After pressing the *Next* button, a summary of all previously made entries appears. Now there is still the possibility to make changes via *Back*. If we are satisfied with the result, a click on *Install* opens the small warning window in which we have to confirm the installation.
 
-7. Nach Betätigen der Taste *Weiter* erscheint eine Zusammenfassung aller zuvor getätigten Eingaben. Jetzt besteht noch die Möglichkeit über *Zurück* Änderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, öffnet ein Klick auf *Installieren* das kleine Warnfenster in dem wir die Installation bestätigen müssen.
+   ![calamares summary](./images/install-hd/calamares-en_08.png "Summary") 
 
-   ![calamares summary](./images/install-hd/calamares-de_08.png "Zusammenfassung") 
+8. now the installation starts. This takes some time depending on the hardware. The progress will be displayed accordingly. Even if it takes a little longer, please do not abort the installation, but give the process time.
 
-8. Nun startet die Installation. Dies dauert je nach Hardware einige Zeit. Der Fortschritt wird entsprechend angezeigt. Auch wenn es etwas länger dauert, bitte die Installation nicht abbrechen, sondern dem Prozess Zeit geben.
+   ![calamares install](./images/install-hd/calamares-en_09.png "Install")
 
-   ![calamares install](./images/install-hd/calamares-de_09.png "Installieren")
+9. at the end we get the possibility to reboot into the newly installed system. 
 
-9. Am Ende erhalten wir die Möglichkeit zu einem Reboot in das neu installierte System. 
+   ![calamares reboot](./images/install-hd/calamares-en_10.png "Exit")
 
-   ![calamares reboot](./images/install-hd/calamares-de_10.png "Beenden")
+   Remove the CD from the drive before rebooting!
 
-   Vor dem Reboot die CD aus dem Laufwerk nehmen!
+### Add user
 
-### Benutzer hinzufügen
-
-Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als root aus:
+To add new users with automatic takeover of group permissions, run the following command as root:
 
 ~~~sh
-~# adduser <nutzername>
+~# adduser <username>
 ~~~
 
-Das Drücken der Eingabetaste Enter führt zu weiteren Optionen, die Feinstellungen ermöglichen. Es folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.
+Pressing Enter leads to further options that allow fine-tuning. This is followed by a prompt to type the password twice.
 
-siduction spezifische Desktopsymbole (für das Handbuch und den IRC) müssen selbst hinzugefügt werden. 
+siduction specific desktop icons (for the manual and IRC) must be added yourself. 
 
-So entfernt man einen Benutzer
+To remove a user
 
-~~~sh
-~# deluser <nutzername>
+~~sh
+~# deluser <username>
 ~~~
 
-Mehr Informationen:
+More information:
 
-~~~sh
+~~sh
 man adduser
 man deluser
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
+<div id="rev">Last edited: 2021-14-08</div>

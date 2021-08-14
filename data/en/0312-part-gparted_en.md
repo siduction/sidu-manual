@@ -1,119 +1,119 @@
-% Partitionieren mit Gparted
+% Partitioning with Gparted
 
-## Partitionieren mit GParted
+## Partitioning with GParted
 
-Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Daher ist es eine gute Idee, folgende Anleitung einmal gelesen zu haben, um mit dem Konzept eines Partitionsmanagers vertraut zu werden.
+Creating or editing partitions is not an everyday task. Therefore it is a good idea to read the following guide once to get familiar with the concept of a partition manager.
 
-### Wichtige Hinweise
+### Important notes
 
-+ Zuerst immer ein Daten-Backup anlegen!  
++ Always create a data backup first!  
 
-+ Bezüglich der Benennung von Speichergeräten das Kapitel zu [UUID, Partitionsbezeichnung und fstab](0311-part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen, da siduction in der Grundeinstellung Benennung nach UUID verwendet.
++ Regarding the naming of storage devices consult the chapter about [UUID, partition naming and fstab](0311-part-uuid_en.md#uuid---naming-of-block-devices), because siduction uses naming by UUID by default.
 
-+ Größenänderungen bei **NTFS-Partitionen** erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.
-[Bitte lese hier weiter.](0312-part-gparted_de.md#ntfs-partitionsgrößen-mit-gparted-ändern)
++ Resizing **NTFS partitions** requires an immediate reboot after execution, no further changes to partitions may be made before that. This inevitably led to errors.
+[Please read on here.](0312-part-gparted_en.md#ntfs-partition-sizes-with-gparted-change)
 
-+ Eine Partition benötigt ein Dateisystem. Linux kann auf und mit verschiedenen Dateisystemen arbeiten.  
-  Für normalen Gebrauch empfehlen wir das Dateisystem ext4.  
-  NTFS sollte man verwenden, wenn die Partition auch von einer Windows-Installation benutzt werden soll. Siduction kann mit dem automatisch installierten *ntfs-3g* lesend und schreibend auf die Daten zugreifen.  
++ A partition needs a file system. Linux can work on and with different file systems.  
+  For normal use, we recommend the ext4 file system.  
+  NTFS should be used if the partition is also to be used by a Windows installation. Siduction can access read and write data with the automatically installed *ntfs-3g*.  
 
-+ Die gesamte GParted-Dokumentation findet sich in vielen Sprachen auf der [GParted-Homepage](https://gparted.org/documentation.php).
++ The complete GParted documentation can be found in many languages on the [GParted homepage](https://gparted.org/documentation.php).
 
-### GParted verwenden
+### Using GParted
 
-Der Programmstarter  für GParted befindet sich in
+The program launcher for GParted can be found in
 
 + **KDE, LXQt, XFCE**  
-im Anwendungsmenü - System - GParted
+in the application menu - System - GParted
 
 + **Gnome**  
-in Anwendungen - Gparted
+in Applications - Gparted
 
-Nach dem Klick auf den Starter öffnet sich ein Dialog zur Abgefrage des Root-Passwortes.
+After clicking on the launcher, a dialog will open asking for the root password.
 
-Wenn GParted startet, öffnet sich das Programmfenster und die vorhandenen Laufwerke werden ausgelesen.
+When GParted starts, the program window opens and the available drives are read out.
 
-![GParted Startfenster](./images/gparted/gparted00-de.png)
+![GParted start window](./images/gparted/gparted00-en.png)
 
-Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einlesen der Laufwerke, zur Auswahl eines Laufwerkes oder zum Beenden des Programms.
+The first menu item 'GParted' opens a drop-down list, to read the drives again, to select a drive or to quit the program.
 
-![GParted Geräteübersicht](./images/gparted/gparted01-de.png)
+![GParted device overview](./images/gparted/gparted01-en.png)
 
-+ **Bearbeiten**
++ **Edit**
 
-    Bearbeiten ist der 2. Menüpunkt von links. Er zeigt drei ausgegraute Optionen, die sehr wichtig sind und weiter unten erläutert werden.  
-    + letzte Operationen rückgängig machen ("Undo last operations"),  
-    + alle Operationen löschen ("clear all operations") und  
-    + alle Operationen ausführen ("apply all operations").
+    Edit is the 2nd menu item from the left. It shows three grayed out options that are very important and explained below.  
+    + undo last operations ("Undo last operations"),  
+    + clear all operations ("clear all operations") and  
+    + execute all operations ("apply all operations").
 
-+ **Ansicht**
++ **View
 
-    Der nächste Menüpunkt bietet die Anzeigeoptionen *"Laufwerksinformationen"* und *"Anstehende Operationen"*.
+    The next menu item offers the display options *"Drive Information "* and *"Pending Operations "*.
 
-  + Laufwerksinformationen ("Device Information")  
-    Im linken Rahmen stehen Details der Laufwerke wie Modell, Größe usw., die wichtig sind, wenn mehrere Datenträger im System vorhanden sind. Damit kann man kontrollieren, ob der richtige Datenträger zur Formatierung gewählt wurde.
+  + Drive Information ("Device Information")  
+    The left frame contains details of the drives such as model, size, etc., which are important if there are multiple disks in the system. It can be used to check whether the correct disk has been selected for formatting.
 
-  + Anstehende Operationen ("Pending Operations")  
-    In einem unten sich öffnenden Rahmen werden die austehenden Operationen angezeigt. Diese Information ist sehr nützlich, um einen Überblick darüber zu haben, welche Operationen durchgeführt werden sollen. Der Rahmen öffnet sich auch automatisch, sobald für ein Laufwerk eine Operationen angefordert wird.
+  + Pending Operations  
+    The pending operations are displayed in a frame that opens at the bottom. This information is very useful to have an overview of which operations are to be performed. The frame also opens automatically when an operation is requested for a drive.
 
-  Die beiden Bereiche sind grün markiert.
+  The two areas are marked in green.
 
-    ![GParted Festplatteninformation](./images/gparted/gparted02-de.png)
+    ![GParted disk information](./images/gparted/gparted02-en.png)
 
-+ **Laufwerk**
++ **Drive
 
-  Hinter dem Menüpunkt *"Partitionstabelle erstellen"* verbergen sich eigentlich zwei Optionen
+  Behind the menu item *"Create partition table "* are actually two options
 
-  1. Eine neue (leere) Partitionstabelle des **gleichen** Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
+  1. create a new (empty) partition table of the **same** type, and thus remove all old partitions and data in the fastest way.
 
-  2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
-    Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird den MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
+  2. make a **change** of the partition table type. It makes sense to change from **msdos-MBR** to **gpt-UEFI** or vice versa. Also here all data will be lost.  
+    In 2009, the UEFI with GPT was introduced, has since then gradually spread, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost.     More information about UEFI and GPT can be found on the manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk).
 
-  ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
+  ![GParted partition table](./images/gparted/gparted03-en.png)
 
-  Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.
+  The selection *"Try data recovery "* offers the chance to get the data despite a defective partition table.
 
-  ![GParted Datenrettung](./images/gparted/gparted04-de.png)
+  ![GParted data recovery](./images/gparted/gparted04-en.png)
 
 + **Partition**
 
-  Der Menüpunkt "Partition" ist von größter Wichtigkeit. Für die unten ausgewählte Partition zeigt das Menü alle zur Verfügung stehenden Operationen abhängig davon an, ob die Partition eingehangen oder nicht eingehangen ist.  Beachten sollte man, dass einige der Unterpunkte auch kritische bzw. gefährliche Aktionen durchführen können.
+  The menu item "Partition" is of utmost importance. For the partition selected below, the menu shows all available operations depending on whether the partition is mounted or unmounted.  Note that some of the sub-items can also perform critical or dangerous actions.
 
-  ![GParted Datenrettung](./images/gparted/gparted07-de.png)
+  ![GParted Data Recovery](./images/gparted/gparted07-en.png)
 
-+ **Eine neue Partition erstellen**
++ **Create a new partition**
 
-  In der Toolbar erlaubt der Knopf Neu das Erstellen einer neuen Partition, wenn zuvor ein unzugeordneter Bereich gewählt wurde. Ein neues Fenster erlaubt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
+  In the toolbar, the New button allows to create a new partition if an unordered area was previously selected. A new window allows to specify the size for a primary, extended or logical partition and to specify the file system.
 
-  ![GParted Neue Partition](./images/gparted/gparted05-de.png)
+  ![GParted New Partition](./images/gparted/gparted05-en.png)
 
-+ **Größe ändern/verschieben**
++ **Resize/Move**.
 
-  Die Partition kann mit der Maus verkleinert, vergrößert und verschoben werden. Alternativ trägt man die neuen Werte in die dafür vorgesehenen Felder ein.
+  The partition can be resized, enlarged and moved with the mouse. Alternatively one enters the new values into the provided fields.
 
-  ![GParted Größenänderung](./images/gparted/gparted08-de.png)
+  ![GParted resize](./images/gparted/gparted08-en.png)
 
-+ **Falls ein Fehler gemacht wurde**
++ **If a mistake was made**
 
-  Im Menü "Bearbeiten" besteht die Möglichkeit *"Letzte Operation rückgängig machen"* oder *"Alle Operationen löschen"*. Der Bereich ist grün markiert.
+  In the "Edit" menu there is the possibility *"Undo last operation "* or *"Delete all operations "*. The area is marked in green.
 
-  ![GParted rückgängig machen](./images/gparted/gparted06-de.png)
+  ![Undo GParted](./images/gparted/gparted06-en.png)
 
-+ **Anwenden**
++ **Apply
 
-  Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü "Bearbeiten" den Punkt *"Alle Operationen anwenden"*. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
+  No changes have been made to the drives yet. When you are sure that all the intended changes are correct, select *"Apply all operations "* from the "Edit" menu. The following dialog will appear, which should be confirmed.
 
-  ![GParted Ausführen und speichern](./images/gparted/gparted09-de.png)
+  ![GParted Execute and save](./images/gparted/gparted09-en.png)
 
-  Die Dauer der Operation hängt von der Größe der gewählten Partition ab.
+  The duration of the operation depends on the size of the selected partition.
 
-### fstab anpassen
+### Adjust fstab
 
-> Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
+> After the changes have been written to the drives, the /etc/fstab file must be checked and adjusted if necessary.
 
 
-Siehe dazu die Handbuchseite [Anpassung der fstab](0311-part-uuid_de.md#die-fstab).  
-In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUIDs.
+See the manual page [Adjusting fstab](0311-part-uuid_en.md#the-fstab).  
+In a root terminal we enter the commands **cat /etc/fstab** and **blkid** and compare the UUIDs.
 
 ~~~
 root@pc1:/# cat /etc/fstab
@@ -123,14 +123,14 @@ root@pc1:/# cat /etc/fstab
 # be used with UUID= as a more robust way to name devices that works even if
 # disks are added and removed. See fstab(5).
 #
-# <file system>					 <mount point>  <type>  <options>	<dump><pass>
-UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256	swap           swap    defaults,noatime 0 2
-UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb	/              ext4    defaults,noatime 0 1
-UUID=35336532-0cc8-4613-9b1a-f31b12ea58c3	/home          ext4    defaults,noatime 0 2
-tmpfs					                	/tmp           tmpfs   defaults,noatime,mode=1777 0 0
-UUID=f5ed412d-7b7b-41c1-80ce-53337c82405b	/mnt/Foto      ext4    defaults,noatime 0 0
-UUID=4c4b9246-2904-40d1-addc-724fc90a2b6a	/mnt/Backup    ext4    noauto,users,noatime 0 0
-UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5	/mnt/TEST_res  ext4    noauto,users,rw,noatime 0 0
+# <file system> <mount point> <type> <options> <dump><pass>
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
+UUID=35336532-0cc8-4613-9b1a-f31b12ea58c3 /home ext4 defaults,noatime 0 2
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+UUID=f5ed412d-7b7b-41c1-80ce-53337c82405b /mnt/photo ext4 defaults,noatime 0 0
+UUID=4c4b9246-2904-40d1-addc-724fc90a2b6a /mnt/Backup ext4 noauto,users,noatime 0 0
+UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /mnt/TEST_res ext4 noauto,users,rw,noatime 0 0
 ~~~
 
 ~~~
@@ -144,17 +144,17 @@ root@pc1:/# blkid
 /dev/sdb6: UUID="2ef32215-d545-4e12-bc00-d0099a218970" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-06"
 ~~~
 
-Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch */mnt/TEST_res* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
+We can see that the partition contained in the *fstab* as the last entry and mounted after */mnt/TEST_res* is no longer contained in the *blkid* list. For this we have two new partitions. In this example the PC would perform a reboot but would not be able to mount */mnt/TEST_res* and the two new partitions automatically. The boot process would be delayed considerably.
 
-> Wenn die UUID's für die Partitionen von **/** (root), **/home** und **swap** nicht mit den Einträgen in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
+> If the UUID's for the partitions of **/** (root), **/home** and **swap** do not match the entries in **/etc/fstab**, it is mandatory to adjust the entries, otherwise the system will not boot after a reboot.
 
-### NTFS-Partitionsgrößen mit GParted ändern
+### Changing NTFS partition sizes with GParted
 
-**Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.**
+**Resizing NTFS partitions requires an immediate reboot after execution, no further changes to partitions may be made before then. This inevitably led to errors.
 
-* Nach dem Neustart von Windows und dem Windows-Logo erscheint ein Fenster von **checkdisk**, das besagt, dass C:\\ auf Fehler überprüft wird.
-* Diesen AUTOCHECK bitte zu Ende laufen lassen: Windows muss das Filesystem nach einer Größenänderung überprüfen.
-* Nach der Überprüfung wird der Rechner automatisch das zweite Mal neu gestartet. Dies gewährleistet, dass das System problemlos laufen kann.
-* Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
+* After restarting Windows and the Windows logo, a window of **checkdisk** appears, which says that C:\\ is checked for errors.
+* Please let this AUTOCHECK run to the end: Windows must check the file system after a resize.
+* After the check, the computer is automatically rebooted the second time. This ensures that the system can run without problems.
+* After the restart, Windows will work properly. However, you have to let the system finish booting and wait for the login window!
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-21</div>
+<div id="rev">Last edited: 2021-14-08</div>

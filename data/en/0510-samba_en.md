@@ -2,87 +2,87 @@
 
 ## SAMBA
 
-### Client-Konfiguration
+### Client configuration
 
-**um mit siduction über das Netzwerk auf Windows-Freigaben zugreifen zu können**
+**to access Windows shares over the network with siduction**.
 
-+ Alle Befehle werden in einem Terminal oder einer Konsole als  **root**  ausgeführt.
++ All commands are executed in a terminal or console as **root**.
 
-+ Die URL wird in Dolphin als  **normaler User aufgerufen** .  
-    server = Servername oder IP der Windows-Maschine  
-    share = Name der Freigabe
++ The URL is called in Dolphin as **normal user** .  
+    server = server name or IP of the Windows machine  
+    share = name of the share
     
-    Im KDE-Dateimanager Dolphin wird die URL folgendermaßen eingeben: `smb://server`  oder mit dem gesamten Pfad: `smb://server/share` 
+    In the KDE file manager Dolphin the URL is entered as follows: `smb://server` or with the full path: `smb://server/share`. 
 
-In einer Konsole können die Freigaben auf einem Server damit gesehen werden:
+In a console, the shares on a server can be seen with this:
 
 ~~~
 smbclient -L server
 ~~~
 
-Um eine Freigabe in einem Verzeichnis sehen zu können (mit Zugriff für ALLE User), muss ein Einhängeort (Mountpoint) existieren. 
-Wenn nicht, muss ein Verzeichnis als Einhängepunkt erstellt werden (der Name ist beliebig):
+To see a share in a directory (with access for ALL users), a mount point must exist. 
+If not, a directory must be created as a mount point (the name is arbitrary):
 
 ~~~
 mkdir -p /media/server_share
 ~~~
 
-Eine Freigabe wird mit diesem Befehl eingehängt:
+A share is mounted with this command:
 
 ~~~
-mount -t cifs -o username=Administrator,uid=$UID,gid=$GID //server/share /mnt/server_share
+mount -t cifs -o username=administrator,uid=$UID,gid=$GID //server/share /mnt/server_share
 ~~~
 
-sollte es hier zu einer Fehlermeldung kommen, dann kann das an der verwendeten SMB Protokoll-Version liegen.
-In Debian wird SMB 1.0 aus Sicherheitsgründen nicht mehr benutzt. Leider gibt es auch heute noch Systeme, welche 
-SMB nur per Version 1.0 bereit stellen. Um auf solch eine Freigabe zugreifen zu können, wird als Mountoption
-dann noch **`vers=1.0`** benötigt. Der komplette Befehl lautet dann
+If you get an error message here, it may be due to the SMB protocol version you are using.
+In Debian SMB 1.0 is no longer used for security reasons. Unfortunately there are still systems which use 
+provide SMB only by version 1.0. To be able to access such a share, as mount option
+is needed as mount option **`vers=1.0`**. The complete command is then
 
 ~~~
 mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/share /mnt/server_share
 ~~~
 
-Eine Verbindung wird mit diesem Befehl beendet:
+A connection is terminated with this command:
 
 ~~~
 umount /media/server_share
 ~~~
 
-Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab`  nach folgendem Muster ergänzt werden:
+To mount a Samba share automatically, the following pattern can be added to the `/etc/fstab` file:
 
 ~~~
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-user=username,password=**********,uid=$UID,gid=$GID   0 0
+user=username,password=**********,uid=$UID,gid=$GID 0 0
 ~~~
-Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben.
-Als bessere Variante erzeigt man **`~.smbcredentials`** mit folgendem Inhalt an:
+However, it is not recommended to write the password in plain text to fstab.
+A better variant is to display **`.smbcredentials`** with the following content:
 
 ~~~
-username=<benutzer>
-password=<passwort>
+username=<user>
+password=<password>
 ~~~
 
-Der resultierende Eintrag für /etc/fstab ist dann
+The resulting entry for /etc/fstab is then
 
 ~~~
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-credentials=</pfad/zu/.smbcredentials>,uid=$UID,gig=$GID 0 0
+credentials=</path/to/.smbcredentials>,uid=$UID,gig=$GID 0 0
 ~~~
-$UID und $GID ist die enstprechende uid und gid des users, dem das Share gegeben werden soll.
-Man kann aber auch uid=username gid=users schreiben.
+$UID and $GID are the corresponding uid and gid of the user to whom the share should be given.
+But you can also write uid=username gid=users.
 
-### siduction als Samba-Server
+### siduction as samba server
 
-Natürlich kann siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu 
-beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo's bereit, wie man einen
-Samba-Server aufsetzt.
+Of course, siduction can also provide an SMB server. To describe the setup as a Samba server here in the manual would be 
+would go beyond the scope of this manual. The internet has many HowTo's on how to set up a
+Samba server.
 
-Unsere Empfehlungen zu diesem Thema:
+Our recommendations on this topic:
 
 https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian  
 https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html  
 https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debian-10-buster-ein/  
 
-Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.
+There are many more sites on this topic on the net.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Last edited: 2021-14-08</div>

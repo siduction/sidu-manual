@@ -1,104 +1,104 @@
 % Network Manager
 
-## Network Manager Kommandline Tool
+## Network Manager Command Line Tool
 
-**Allgemeine Hinweise**
+**General hints**
 
-Der Networkmanager ist mittlerweile in allen graphischen Oberflächen von siduction integriert und größtenteils selbsterklärend. Er ersetzt die im Terminal benutzten Netzwerkkommandos  *ifup, ifdown*  bzw.  *ifconfig*. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Steht keine graphische Oberfläche zur Verfügung, oder wird die Komandozeile bevorzugt, existiert mit **nmcli** ein leistungsfähiger Kommandozeilenclient für den täglichen Gebrauch des Networkmanagers.
+The network manager is now integrated in all graphical user interfaces of siduction and is mostly self-explanatory. It replaces the network commands *ifup, ifdown* and *ifconfig* used in the terminal. The prejudice that the network manager is not suitable for the command line or even runs unstable belongs to the realm of fairy tales. If no graphical user interface is available, or the command line is preferred, there is with **nmcli** a powerful command line client for the daily use of the network manager.
 
-In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen aus. Eine WLAN-Verbindung (Name: Einhorn_2, Interface wtx7ckd90b81bbd, (früher; wlan)) und einer kabelgebundenen Verbindung (Name: Kabelgebundene Verbindung 1, Interface evp0s3f76 (früher: eth0)). Bitte die Verbindungsnamen an eure Gegebenheiten anpassen.
+In the following examples we assume two configured connections. A WLAN connection (name: Unicorn_2, interface wtx7ckd90b81bbd, (former; wlan)) and a wired connection (name: Wired connection 1, interface evp0s3f76 (former: eth0)). Please adapt the connection names to your circumstances.
 
-**Installation des Network Managers**
+**Installation of the Network Manager**
 
-Falls der Networkmanager auf dem System nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.
+If the network manager is not installed on your system, you can install it. In the following command are all packages you need to configure all possible connection types (mobile broadband, WLAN and LAN connections), as well as the graphical KDE plasma widget for the NM. Please enter everything in one line.
 
 ~~~sh
 apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
  plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn
 ~~~
 
-### Network Manager verwenden
+### Use Network Manager
 
-Die Eingaben können sowohl in einem virtuellen Terminal (Tastenkombination `Str` + `Umschalt` + `F2`) als auch in der graphischen Oberfläche in einer Konsole getätigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgründen abgeändert.
+The entries can be made both in a virtual terminal (key combination `Ctr` + `Shift` + `F2`) and in the graphical interface in a console. In the examples shown, the information has been changed for privacy reasons.
 
-**Konfigurierte Verbindungen anzeigen**
+**Show configured connections**
 
-Mit dem Kommando  **`nmcli c`**  können die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.
+The command **`nmcli c`** can be used to display the configured connections that have been created on the system.
 
 ![nmcli c](./images/nmcli/nmcli-c.png)
 
-Im obigen Beispiel sind vier Verbindungen vorhanden WLAN, 2x LAN und eine Mobile Breitbandverbindung.
+In the above example there are four connections WLAN, 2x LAN and a Mobile Broadband connection.
 
-**Informationen zu WIFI Netzen anzeigen**
+**Show information about WIFI networks**.
 
-Welche WLAN-Netze sind überhaupt am Standort verfügbar, das kann man sich in kompakter Form mit  **`nmcli dev wifi list`**  anzeigen lassen.
+Which WLAN networks are available at the location at all can be displayed in a compact form with **`nmcli dev wifi list`**.
 
 ![nmcli dev wifi list](./images/nmcli/nmcli-list.png)
 
 
-**Konfigurierte Geräte anzeigen**
+**Display configured devices**
 
-Will man wissen welche Geräte (Interfaces) überhaupt dem Networkmanager bekannt sind ist  **`nmcli d`**  hilfreich.
+If you want to know which devices (interfaces) are known to the network manager at all, **`nmcli d`** is helpful.
 
 ![nmcli d](./images/nmcli/nmcli-d.png)
 
-Sehr detaillierte Informationen (Eigenschaften) gibt es mit  **`nmcli dev show`**  zu den eigenen verfügbaren Verbindungen. Hier nur der Auszug für das WLAN.
+Very detailed information (properties) is available with **`nmcli dev show`** for the own available connections. Here only the excerpt for the WLAN.
 
 ![nmcli dev show](./images/nmcli/nmcli-dev-show.png)
 
-Die Zugangsdaten zum WLAN kann man sich mit **`nmcli dev wifi show`** anzeigen lassen.
+The access data to the WLAN can be displayed with **`nmcli dev wifi show`**.
 
-![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show-de.png)
+![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show-en.png)
 
-Der zusätzlich generierte QR-Code vereinfacht den Login für Smartphone und Tablet.
+The additional generated QR code simplifies the login for smartphone and tablet.
 
-**Verbindungen wechseln**
+**Switch connections**
 
-Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein  *nmcli con down id <Name>*  zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.
+To change a connection type, e.g. from LAN to WLAN connection, one has to disconnect the existing active connection and activate the new one. Here you definitely have to specify the interface, because a *nmcli con down id <name>* will work, but the connection, if it is a system connection, will be re-established immediately.
 
-Um die automatische Verbindung zu verhindern hilft der Befehl **`nmcli dev disconnect <Schnittstellenname>`**.  
-Zuerst beenden wir die LAN-Verbindung und fragen danach den Status ab.
+To prevent the automatic connection the command **`nmcli dev disconnect <interface name>`** helps.  
+First we terminate the LAN connection and then query the status.
 
 ~~~
 # nmcli dev disconnect evp0s3f76
-Gerät »evp0s3f76« wurde erfolgreich getrennt.
+Device "evp0s3f76" has been disconnected successfully.
 # nmcli dev status
-DEVICE           TYPE      STATE            CONNECTION 
-evp0s3f76        ethernet  nicht verbunden  --
-wtx7ckd90b81bbd  wifi      nicht verbunden  --
-evp3u3           ethernet  nicht verfügbar  --
-ttyACM0          gsm       nicht verbunden  --
+DEVICE TYPE STATE CONNECTION 
+evp0s3f76 ethernet not connected --
+wtx7ckd90b81bbd wifi not connected --
+evp3u3 ethernet not available --
+ttyACM0 gsm not connected --
 ~~~
 
-Jetzt die WLAN Verbindung aktivieren mit **`nmcli con up id <Verbindungsname>`**:
+Now enable the wifi connection with **`nmcli con up id <connection name>`**:
 
 ~~~
-# nmcli con up id Einhorn_2
-Verbindung wurde erfolgreich aktiviert 
+# nmcli con up id unicorn_2
+Connection was successfully activated 
 # nmcli dev status
-DEVICE           TYPE      STATE            CONNECTION 
-wtx7ckd90b81bbd  wifi      verbunden        Einhorn_2
-evp0s3f76        ethernet  nicht verbunden  --
-evp3u3           ethernet  nicht verfügbar  --
-ttyACM0          gsm       nicht verbunden  --
+DEVICE TYPE STATE CONNECTION 
+wtx7ckd90b81bbd wifi connected unicorn_2
+evp0s3f76 ethernet not connected --
+evp3u3 ethernet not available --
+ttyACM0 gsm not connected --
 ~~~
 
-Man kann das Ganze noch in eine Kommandozeile packen, dann wird der Wechsel sofort durchgeführt.
+You can still put the whole thing in a command line, then the change will be done immediately.
 
-Von LAN zu WLAN:
-
-~~~
-nmcli dev disconnect evp0s3f76 && sleep 2 && nmcli con up id Einhorn_2
-~~~
-
-Umgekehrt von WLAN zu LAN:
-
+From LAN to WLAN:
 
 ~~~
-nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebundene Verbindung 1'
+nmcli dev disconnect evp0s3f76 && sleep 2 && nmcli con up id unicorn_2
 ~~~
 
-### Weiterführende Informationen
+Reversed from WLAN to LAN:
+
+
+~~~
+nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Wired connection 1'.
+~~~
+
+### Further information
 
 +       
   ~~~
@@ -108,4 +108,4 @@ nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebunde
 + [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
 
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-22</div>
+<div id="rev">Last edited: 2021-14-08</div>

@@ -1,38 +1,38 @@
-% Netzwerk - IWD
+% Network - IWD
 
-## IWD statt wpa_supplicant
+## IWD instead of wpa_supplicant
 
-Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. 
+Intel's [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) sends the WPA Supplicant into well-deserved retirement. Only one tenth the size and much faster, iwd is the successor. 
 
-Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinux.org/index.php/Iwd) bzw. das [debian wiki](https://wiki.debian.org/NetworkManager/iwd). 
+Further information can be found on the [Arch Linux wiki](https://wiki.archlinux.org/index.php/Iwd) or the [debian wiki](https://wiki.debian.org/NetworkManager/iwd). 
 
-Wer möchte, kann iwd als Ersatz für wpa_supplicant nutzen, entweder eigenständig oder in Verbindung mit dem NetworkManager. 
+If you want, you can use iwd as a replacement for wpa_supplicant, either standalone or in conjunction with NetworkManager. 
 
-### IWD installieren
+### Install IWD
 
-> Anmerkung:  
-> Unter Debian ist es leider nicht möglich, den NetworkManager (standalone) ohne wpa_supplicant zu installieren.
+> Note:  
+> Under Debian it is unfortunately not possible to install the NetworkManager (standalone) without wpa_supplicant.
  
-Möchte man dieses so gibt es zwei Möglichkeiten, wobei die zweite Möglichkeit die sinnvollere und einfachere ist.
+If you want to do this, there are two options, the second option is the more sensible and easier.
 
-1. NetworkManager aus den Sourcen installieren
-2. Den wpa_supplicant.service nicht starten bzw. maskieren, da dieser ja mit installiert wird, so man apt nutzt.
+1. install NetworkManager from the sources
+2. do not start or mask the wpa_supplicant.service, because it will be installed if you use apt.
 
-Möchte man iwd nutzen ohne NetworkManager zu installieren, so muss man sich darüber keine Gedanken machen
+If you want to use iwd without installing NetworkManager, you don't have to worry about this.
     
-Weiterhin machen wir darauf aufmerksam, dass siduction systemd nutzt. Wir werden also nicht darauf eingehen, wie iwd ohne systemd konfiguriert wird!
+Furthermore we point out that siduction uses systemd. So we will not go into how to configure iwd without systemd!
 
-Vorgehensweise bei installiertem NetworkManager
+Procedure with NetworkManager installed
 
-+ als erstes wird **iwd** installiert, 
-+ dann wird der **wpa_supplicant.service** gestopt und maskiert,
-+ dann der **NetworkManager.service** angehalten,
-+ nun die Datei `/etc/NetworkManager/conf.d/nm.conf` angelegt und **iwd** dort eingetragen, 
-+ dann legen wir die Datei `/etc/iwd/main.conf` an und befüllen diese mit entsprechendem Inhalt, 
-+ aktivieren und starten den **iwd.service**, 
-+ und starten den **NetworkManager.service**.
++ first **iwd** is installed, 
++ then the **wpa_supplicant.service** is stopped and masked,
++ then the **NetworkManager.service** is stopped,
++ now we create the file `/etc/NetworkManager/conf.d/nm.conf` and enter **iwd** there, 
++ then we create the file `/etc/iwd/main.conf` and fill it with appropriate content, 
++ activate and start the **iwd.service**, 
++ and start the **NetworkManager.service**.
 
-Jetzt einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
+Now just run the following commands as root in the terminal to use iwd:
 
 ~~~sh
 ~# apt update
@@ -48,7 +48,7 @@ Jetzt einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu n
 ~# systemctl start NetworkManager.service
 ~~~
 
-Schauen ob es geklappt hat
+See if it worked
 
 + /etc/NetworkManager/conf.d/nm.conf
 
@@ -69,118 +69,118 @@ EnableNetworkConfiguration=true
 NameResolvingService=systemd
 ~~~
 
-Jetzt ist man in der Lage im Terminal mit dem Befehl [**iwctl**](#wifi-verbindung-mit-iwctl) eine interaktive Shell zu starten. Die Eingabe von "help" gibt alle Optionen aus um WiFi Hardware anzuzeigen, zu konfigurieren und sich mit einem Netzwerk zu verbinden. Auch kann man **nmtui** oder [**nmcli**](#wifi-verbindung-mit-nmcli) im Terminal bzw. den NetworkManager in der graphischen Oberfläche benutzen.
+Now you are able to start an interactive shell in the terminal with the command [**iwctl**](#wifi-connection-with-iwctl). Typing "help" will output all options to view, configure WiFi hardware and connect to a network. Also, you can use **nmtui** or [**nmcli**](#wifi-connection-with-nmcli) in the terminal or NetworkManager in the graphical interface, respectively.
 
-> Hinweis:  
-> Es ist möglich, dass nicht freie Firmware von einem USB-Stick oder via LAN installiert werden muss!
+> Note:  
+> It is possible that non-free firmware must be installed from a USB stick or via LAN!
 
-### WiFi Verbindung mit IWD
+### WiFi connection with IWD
 
-Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
+The fastest and easiest way to use iwd is to open a console and enter this command *(Provided you use the NetworkManager.service)*:
 
 ~~~sh
 ~$ nmtui
 ~~~
 
-Dies sollte selbsterklärend sein!
+This should be self-explanatory!
 
-### WiFi Verbindung mit nmcli
+### WiFi connection with nmcli
 
-**Eine WiFi Verbindung mit *nmcli* aufbauen**
+**Setting up a WiFi connection with *nmcli**.
 
-Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des NetworkManagers in der Kommandozeile einzurichten.
+I describe here only briefly the fastest way to set up a network with the help of the NetworkManager in the command line.
 
-Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu *nmcli* finden sie auf folgender Seite, [Network Manager im Terminal](0501-inet-nm-cli_de.md#network-manager-kommandline-tool)
+To establish a connection, provided you have all the information, this one-liner is enough. All other information about *nmcli* can be found on the following page, [Network Manager in Terminal](0501-inet-nm-cli_en.md#network-manager-command-line-tool)
 
 ~~~sh
-~$ nmcli dev WiFi con "ssid" password password name "name"
+~$ nmcli dev WiFi con "ssid" password name "name"
 ~~~
 
-(*ssid* bezeichnet den Namen des Netzwerkes)
+(*ssid* denotes the name of the network).
 
-Zum Beispiel:
+For example:
 
 ~~~
 nmcli dev WiFi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
 ~~~
 
-### WiFi Verbindung mit iwctl
+### WiFi connection with iwctl
 
-**Eine WiFi Verbindung mit *iwctl* einrichten, ohne den NetworkManager**
+**Set up a WiFi connection with *iwctl*, without the NetworkManager**.
 
-Als erstes sollte die Hilfe zu *iwctl* aufgerufen werden, um zu sehen was alles möglich ist.
+The first thing to do is to call the help for *iwctl* to see what all is possible.
 
-Dafür geben wir im Terminal den Befehl *`iwctl`* ein, dann am Eingabe-Prompt *help*.
+For this we enter the command *`iwctl`* in the terminal, then at the input prompt *help*.
 
  ![iwctl help](./images/iwd/iwctl-help.png)
 
-Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
+To find out which WiFi interface we are using we enter the following command.
 
 ~~~sh
 [iwd]# device list
-                     Devices                                *
+                     Devices *
 -------------------------------------------------------------
-  Name    Address             Powered   Adapter   Mode
+  Name Address Powered Adapter Mode
 -------------------------------------------------------------
-  wlan0   00:01:02:03:04:05   on        phy0      station
+  wlan0 00:01:02:03:04:05 on phy0 station
 ~~~
 
-In diesem Falle ist es *wlan0* und es läuft (*Powered on*) im *station* mode.
+In this case it is *wlan0* and it is running (*powered on*) in *station* mode.
 
-Nun scannen wir nach einem aktiven Netzwerk
+Now we scan for an active network
 
-~~~sh
+~~sh
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ~~~
 
-Jetzt können wir uns zu unserem Netzwerk verbinden.
+Now we can connect to our network.
 
-~~~sh
+~~sh
 [iwd]# station wlan0 connect SSID
 ~~~
 
-(*SSID* bezeichnet den Namen des Netzwerkes)
+(*SSID* means the name of the network)
 
-Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *"station list"* oder *"station wlan0 get-networks"* Nachprüfen.
+We are asked for the password and we should be connected to our network, we can check this with *"station list "* or *"station wlan0 get-networks "*.
 
 ~~~sh
 [iwd]# station list
                Devices in Station Mode
 ---------------------------------------------
-  Name         State          Scanning
+  Name State Scanning
 ---------------------------------------------
-  wlan0        connected
+  wlan0 connected
 ~~~
 
-Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Informationen hat!
+The whole thing can be abbreviated with the following command, so you have all the necessary information!
 
-~~~sh
+~~sh
 iwctl --passphrase passphrase station device connect SSID
 ~~~
 
-Zum Beispiel:
+For example:
 
 ~~~sh
 ~$ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 
 ~~~
 
-### Grafische Konfigurationsprogramme
+### Graphical configuration programs
 
-+ NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
-+ conman ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
-+ iwgtk, ist nicht in debian-quellen, es muss aus dem Sourcecode gebaut werden und ist auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
++ NetworkManager, there are various graphical interfaces for the NetworkManager e.g. for plasma-desktop/kde plasma-nm or for gnome network-manager-gnome and others. Their use should be self-explanatory!
++ conman is a network manager developed by Intel, small and resource saving, more about it in the [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
++ iwgtk, is not in debian-sources, it has to be built from source and can be found on [github](https://github.com/J-Lentz/iwgtk).
 
-### Zurück zum wpa_supplicant
+### Back to wpa_supplicant
 
-*(Vorausgstezt NetworkManager und wpa_supplicant sind installiert)*
+*(Vorausgstezt NetworkManager and wpa_supplicant are installed)*.
 
-+ Den **iwd.service** stoppen und maskieren.
-+ Den **NetworkManager.service** stoppen.
-+ Die Datei **/etc/NetworkManger/conf.d/nm.conf** umbenennen.
-+ Demaskieren und starten des **wpa_supplicant.service**.
-+ Den **NetworkManager.service** wieder starten.
++ Stop the **iwd.service** and mask it.
++ Stop the **NetworkManager.service**.
++ Rename the **/etc/NetworkManger/conf.d/nm.conf** file.
++ Unmask and start the **wpa_supplicant.service**.
++ Restart the **NetworkManager.service**.
 
 ~~~sh
 ~# systemctl stop iwd.service
@@ -192,6 +192,6 @@ Zum Beispiel:
 ~# systemctl start NetworkManager.service
 ~~~
 
-Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
+Now *wpa_supplicant* is used to connect to the WiFi hardware.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Last edited: 2021-14-08</div>

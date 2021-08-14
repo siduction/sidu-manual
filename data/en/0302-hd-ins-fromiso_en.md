@@ -1,24 +1,24 @@
 % fromiso
 
-## Aus ISO-Datei booten
+## Boot from ISO file
 
-### Überblick
+### Overview
 
-Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte mit dem Dateisystem ext4. **Für normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, ext4, welches von den Maintainern gut betreut ist.**
+This cheat code boots from an ISO file on the hard drive with the ext4 file system. **For normal use, we recommend siduction's default file system, ext4, which is well maintained by maintainers.
  
-Der Start von einer "fromiso" Festplatten-Installationen dauert nur einen Bruchteil der Zeit, die ein Start von einer CD benötigt. 
-Außerdem steht gleichzeitig das CD/DVD-Laufwerk zur Verfügung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.
+Booting from a "fromiso" hard disk installation takes only a fraction of the time it takes to boot from a CD. 
+In addition, the CD/DVD drive is available at the same time. Alternatively you can use VBox, KVM or QEMU.
 
-**Voraussetzungen**
+**Prerequisites**
 
-* eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)  
-* eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie ext4  
+* a working Grub installation (on floppy, a hard disk installation or the live CD)  
+* a siduction image file, e.g. siduction.iso (name shortened) and a Linux filesystem like ext4  
 
-### fromiso mit Grub2
+### fromiso with grub2
 
-siduction liefert eine grub2-Datei mit der Bezeichnung 60_fll-fromiso, um einen fromiso-Eintrag im grub2-Menü zu generieren. Die Konfigurationsdatei für fromiso ist im Paket `grub2-fll-fromiso` , mit dem Pfad `/etc/default/grub2-fll-fromiso` .
+siduction provides a grub2 file named 60_fll-fromiso to generate a fromiso entry in the grub2 menu. The configuration file for fromiso is in the package `grub2-fll-fromiso` , with the path `/etc/default/grub2-fll-fromiso` .
 
- Als erstes öffnet man einen Terminal und wird root mit:
+ First, open a terminal and become root with:
 
 ~~~sh
 su
@@ -26,18 +26,18 @@ apt-get update
 apt-get install grub2-fll-fromiso
 ~~~
 
-Im Anschluss öffnet man einen Editor der Wahl (kwrite, mcedit, vim ...):
+Then open an editor of your choice (kwrite, mcedit, vim ...):
 
 ~~~sh
 mcedit /etc/default/grub2-fll-fromiso
 ~~~
 
-In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen (**#**)  entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anführungszeichen (**"**) mit den eigenen Parametern. 
+In the lines that should be active, remove the comment sign (**#**) and replace the default statements inside the double quotes (**"**) with your own parameters. 
 
-Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen:
+Example: compare this modified grub2-fll-fromiso with the default settings:
 
 ~~~sh
-# Defaults for grub2-fll-fromiso update-grub helper
+# defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2's update-grub
 # installed at /etc/default/grub2-fll-fromiso by the maintainer scripts
 
@@ -47,8 +47,8 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 
 # specify where to look for the ISO
 # default: /srv/ISO
-## Achtung: Dies ist der Pfad zum Verzeichnis, in dem das oder die ISO(s) liegen,  
-## der Pfad soll das eigentliche siduction.iso nicht inkludieren.
+## Attention: This is the path to the directory where the ISO(s) are located,  
+## the path should not include the actual siduction.iso.
 FLL_GRUB2_ISO_LOCATION="/media/disk1part4"
 
 # array for defining ISO prefices --> siduction-*.iso
@@ -73,19 +73,19 @@ FLL_GRUB2_TZ="Europe/Berlin"
 FLL_GRUB2_CHEATCODE="noeject nointro" 
 ~~~
 
-Speichere die Änderungen, schließe den Editor und führe als root folgenden Befehl in einem Terminal aus:
+Save the changes, close the editor and execute the following command as root in a terminal:
 
-~~~sh
+~~sh
 update-grub
 ~~~
 
-Die Grub2-Konfigurationsdatei grub.cfg wird damit aktualisiert und erkennt die im angegebenen Verzeichnis platzierten ISOs. Diese stehen beim nächsten Neustart zur Wahl.
+This will update the Grub2 configuration file grub.cfg to recognize the ISOs placed in the specified directory. These will be available for selection at the next reboot.
 
 ### toram
 
-Eine weitere Nützliche Option beim Booten von einem Live Medium ist `toram`. Selbige ist empfehlenswert, wenn der rechner über ausreichend  
-Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den Ram kopiert. Das hat den Vorteil, dass das   
-System dann sehr schnell reagiert und man kann das Medium dann auch entfernen. Das ist nützlich, wenn der Start von einem USB-Stick erfolgte,  
-und man diesen USB Port anderweitig benutzen will.
+Another useful option when booting from live media is `toram`. This is recommended if the computer has enough memory (4Gi).  
+memory (4GiB or more). This copies the complete content of the live medium into the ram. This has the advantage that the   
+system reacts then very fast and one can remove the medium then also. This is useful if the start was done from a USB stick,  
+and one wants to use this USB port otherwise.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Last edited: 2021-14-08</div>

@@ -1,31 +1,31 @@
-% Partitionieren mit cfdisk
+% Partitioning with cfdisk
 
-## Partitionieren mit fdisk
+## Partitioning with fdisk
 
-**fdisk** und **cfdisk** erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einführung von GPT-Partitionstabellen auf Basis des UEFI. 
+**fdisk** and **cfdisk** creates MBR partition tables based on the BIOS. In 2000 the introduction of GPT partition tables based on UEFI began. 
 
-Der neuere Standard **G**lobally Unique Identifier **P**artition **T**able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in [Wikipedia GUID-Partitionstabelle](https://de.wikipedia.org/wiki/GUID_Partition_Table)
+The newer **G**lobally Unique Identifier **P**artition **T**able (GPT) standard, which is part of the UEFI standard, has replaced MBR on current hardware and allows disks/partitions larger than 2 TBytes and a theoretically unlimited number of primary partitions. More information about this can be found in [Wikipedia GUID partition table](https://de.wikipedia.org/wiki/GUID_Partition_Table).
 
-Wir empfehlen die Partitionierung mit *fdisk* und *cfdisk* ausschließlich für ältere Hardware.  
-Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk) zu Rate ziehen.
+We recommend partitioning with *fdisk* and *cfdisk* only for older hardware.  
+For creating GPT partition tables please refer to the manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk).
 
-### Benennung von Speichergeräten
+### Naming storage devices
 
-**Bitte BEACHTEN:**  
-siduction verwendet in der fstab UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen.
+**Please NOTE:**  
+siduction uses UUID in fstab for naming storage devices. Please refer to the chapter [naming by UUID](part-uuid_en.md#uuid---naming-of-block-devices).
 
-**Festplatten**
+**Disks**
 
-Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl vom Live-ISO als auch bei einem installierten siduction.
+Information about the devices can be easily obtained from an information window (pop-up) by hovering the mouse over the icon of a device on the desktop. This works both from the live ISO and with a siduction installed.
 
-Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Geräte enthält. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit **su** zu root und geben **fdisk -l** ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe ähnlich der unten gezeigten.
+We recommend creating a table (manual or generated) that contains the details of all devices. This can be very helpful if problems arise. In a terminal we become root with **su** and type **fdisk -l**. For example, with two disks, we get output similar to that shown below.
 
 ~~~
 user1@pc1:/$ su
-Passwort:
+password:
 root@pc1:/# fdisk -l
 
-Disk /dev/sda: 149,5 GiB, 160041885696 bytes, 312581808 sectors
+Disk /dev/sda: 149.5 GiB, 160041885696 bytes, 312581808 sectors
 Disk model: FUJITSU MHY2160B
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -33,14 +33,14 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x6513a8ff
 
-Device     Boot     Start       End   Sectors  Size Id Type
-/dev/sda1            2048  41945087  41943040   20G 83 Linux
-/dev/sda2        41945088  83888127  41943040   20G 83 Linux
-/dev/sda3        83888128  88291327   4403200  2,1G 82 Linux swap / Solaris
-/dev/sda4        88291328 312581807 224290480  107G  5 Extended
-/dev/sda5        88293376 249774079 161480704   77G 83 Linux
-/dev/sda6       249776128 281233407  31457280   15G 83 Linux
-/dev/sda7       281235456 312581807  31346352   15G 83 Linux
+Device Boot Start End Sectors Size Id Type
+/dev/sda1 2048 41945087 41943040 20G 83 Linux
+/dev/sda2 41945088 83888127 41943040 20G 83 Linux
+/dev/sda3 83888128 88291327 4403200 2,1G 82 Linux swap / Solaris
+/dev/sda4 88291328 312581807 224290480 107G 5 Extended
+/dev/sda5 88293376 249774079 161480704 77G 83 Linux
+/dev/sda6 249776128 281233407 31457280 15G 83 Linux
+/dev/sda7 281235456 312581807 31346352 15G 83 Linux
 
 
 Disk /dev/sdb: 119,25 GiB, 128035676160 bytes, 250069680 sectors
@@ -51,210 +51,210 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x000403b7
 
-Device     Boot     Start       End   Sectors  Size Id Type
-/dev/sdb1            2048  17831935  17829888  8,5G 82 Linux swap / Solaris
-/dev/sdb2        17831936 122687487 104855552   50G 83 Linux
-/dev/sdb3       122687488 250068991 127381504 60,8G 83 Linux
+Device Boot Start End Sectors Size Id Type
+/dev/sdb1 2048 17831935 17829888 8.5G 82 Linux swap / Solaris
+/dev/sdb2 17831936 122687487 104855552 50G 83 Linux
+/dev/sdb3 122687488 250068991 127381504 60,8G 83 Linux
 ~~~
 
-Mit dem Befehl
+With the command
 
 ~~~
-# fdisk -l > /home/<MEIN USER NAME>/Dokumente/fdisk-l_Ausgabe
+# fdisk -l > /home/<MY USER NAME>/documents/fdisk-l_output
 ~~~
 
-erhalten wir eine Text-Datei mit dem gleichen Inhalt.
+we get a text file with the same content.
 
-**Partitionen**
+**Partitions**
 
-Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.
+The partitions on an MBR hard disk are defined by a number between 1 and 15. A maximum of 14 mountable partitions is possible.
 
-Es gibt folgende Partitionstypen:  
-primäre, erweiterte und logische.
+There are the following partition types:  
+primary, extended and logical.
 
-Die logischen Partitionen befinden sich innerhalb der erweiterten Partition. Es sind maximal vier primäre bzw. drei primäre und eine erweiterte Partition anlegbar. Die erweiterte Partition wiederum kann bis zu elf logische Partitionen enthalten.  
-Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 (zum Beispiel sda1 bis sda4). Logische Partitionen sind immer gebündelt und Teil einer erweiterten Partition. Mit libata können maximal elf logische Partitionen definiert werden, und ihre Bezeichnungen beginnen mit Nummer 5 und enden höchstens mit Nummer 15.
+The logical partitions are located within the extended partition. A maximum of four primary or three primary and one extended partition can be created. The extended partition, in turn, can contain up to eleven logical partitions.  
+Primary or extended partitions are given a designation between 1 and 4 (for example sda1 to sda4). Logical partitions are always bundled and part of an extended partition. A maximum of eleven logical partitions can be defined with libata, and their names start with number 5 and end with number 15 at most.
 
-**Beispiele**
+**Examples**
 
 ~~~
-4 Partitionen (alles primäre):
+4 partitions (all primary):
 
 |sda1|sda2|sda3|sda4|
 
 
-6 Partitionen (3 primäre, 1 erweiterte und 3 logische):
+6 partitions (3 primary, 1 extended and 3 logical):
 
 |sda1|sda2|sda3|-
-                 |         enthält nur 
-               |sda4| ->   Verweise auf
-                 |         logische Partitionen
+                 | contains only 
+               |sda4| -> references to
+                 | logical partitions
                  |
                |sda5|sda6|sda7|
 ~~~
 
-**/dev/sda5**  kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Gerät). Sie befindet sich auf der ersten Festplatte des Computers (abhängig von der BIOS-Konfiguration).
+**/dev/sda5** can only be a logical partition (in this case the first logical one on this device). It is located on the first hard disk of the computer (depending on the BIOS configuration).
 
-**/dev/sdb3**  kann nur eine primäre oder erweiterte Partition sein. Der Buchstabe "b" indiziert, dass diese Partition sich auf einem anderen Gerät befindet als die Partition des ersten Beispiels, welche den Buchstaben "a" enthält.
+**/dev/sdb3** can only be a primary or extended partition. The letter "b" indicates that this partition is on a different device than the partition of the first example, which contains the letter "a".
 
-### Cfdisk verwenden
+### Use Cfdisk
 
-> **Daten zuvor sichern!**  
-> Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
+**Backup data beforehand!**  
+> There is a risk of data loss when using any partitioning software. Always back up data you want to keep to another disk first.
 
-**cfdisk** wird in einer Konsole als root gestartet (nach "su" ist die Eingabe des root-Passworts gefordert):
+**cfdisk** is started in a console as root (after "su" the root password is required):
 
 ~~~
 user1@pc1:/$ su
-Passwort:
+password:
 root@pc1:/#
 cfdisk /dev/sda
 ~~~
 
-**cfdisk** nur auf einer Festplatte anwenden, deren sämtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der geänderten Partitionstabelle verloren.
+**cfdisk** should only be used on a hard disk with all partitions unmounted. All data will be lost when the changed partition table is written.
 
-#### Die Bedienoberfläche
+#### The user interface
 
-Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten `auf` und `ab`, um Befehle auszuwählen, die Pfeiltasten `rechts` und `links`. Mit der `Enter` Taste wird der Befehl ausgeführt.
+In the first screen cfdisk shows the current partition table with the names and some information about each partition. At the bottom of the window there are some command buttons. To switch between partitions use the arrow keys `up` and `down`, to select commands use the arrow keys `right` and `left`. The `enter` key is used to execute the command.
 
 ![cfdisk - Start](./images/cfdisk/cfdisk_01.png)
 
-Wir haben auf der Beispielfestplatte drei Partitionen.
+We have three partitions on the example disk.
 
-| Device | Part. Größe | Part. Typ | Mountpoint |
+| Device | Part. Size | Part. Type | Mountpoint |
 | --- | ---: | :---: | ---: |
-| /dev/sda1 | 8,5G | 82 Swap | - |
-| /dev/sda2 | 50,0G | 83 Linux | / |
-| /dev/sda3 | 60,8G | 83 Linux | /Daten |
+| /dev/sda1 | 8.5G | 82 Swap | - |
+| /dev/sda2 | 50.0G | 83 Linux | / |
+| /dev/sda3 | 60.8G | 83 Linux | /data |
 
-Aus der Daten-Partition möchten wir die Verzeichnisse 'Bilder' und 'Musik' in eigene Partitionen auslagern und dafür mehr Platz schaffen. Gleichzeitig sollen diese auch für ein auf einer weiteren Festplatte residierendes Windows zugänglich sein. Die Root-Partition ist mit 50 GB überdimensioniert und wird verkleinert.
+From the data partition we want to move the directories 'Pictures' and 'Music' to their own partitions and create more space for them. At the same time they should be accessible for a Windows residing on another harddisk. The root partition is oversized with 50 GB and will be reduced.
 
-#### Löschen einer Partition
+#### Delete a partition
 
-Um Platz zu schaffen, löschen wir die Daten-Partition und verkleinern anschließend die Root-Partition.
+To create space, we delete the data partition and then shrink the root partition.
 
-Um die Partition /dev/sda3 zu löschen, wird sie mit den auf-ab-Tasten markiert und der Befehl **Delete** mit den Pfeiltasten links-rechts gewählt und durch **`Enter`** bestätigt.
+To delete the partition /dev/sda3, it is marked with the up-down keys and the command **Delete** is selected with the left-right arrow keys and confirmed by **`Enter`**.
 
 ![Delete a partition](./images/cfdisk/cfdisk_02.png) 
 
-#### Größe einer Partition ändern
+#### Resize a partition
 
-Die Partition /dev/sda2 wird markiert und der Befehl **Resize** ausgewählt und bestätigt.
+The partition /dev/sda2 is marked and the command **Resize** is selected and confirmed.
 
 ![Resize a partition](./images/cfdisk/cfdisk_03.png)
 
-Anschließend erfolgt die Eingabe der neuen Größe von '20G'
+Then the new size of '20G' is entered
 
 ![New Size of a partition](./images/cfdisk/cfdisk_04.png)
 
-#### Erstellen einer neuen Partition
+#### Creating a new partition
 
-Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf **New**, die zu bestätigen ist.
+The now free space of the hard disk is marked. The command selection automatically jumps to **New**, which has to be confirmed.
 
 ![Create a new partition](./images/cfdisk/cfdisk_05.png)
 
-Anschließend ist die neue Größe von '15G' für die Daten-Partition einzugeben.
+Then enter the new size of '15G' for the data partition.
 
 ![Create a new partition - Size](./images/cfdisk/cfdisk_06.png)
 
-Jetzt muss zwischen einer **primären** oder einer **erweiterten** (extended) Partition entschieden werden. Wir entscheiden uns für eine primäre Partition.
+Now we have to decide between a **primary** or an **extended** partition. We decide for a primary partition.
 
-![Create a new partition - prim](./images/cfdisk/cfdisk_07.png)
+![Create a new partition - primary](./images/cfdisk/cfdisk_07.png)
 
-Danach wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl ist **extended** zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt) in der die zwei zusätzlichen Partitionen anzulegen sind.
+After that we mark the free disk space again, confirm it and confirm the preset total size as well. In the following selection **extended** has to be chosen. This creates the extended partition (here called 'container') in which the two additional partitions are to be created.
 
 ![extended partition](./images/cfdisk/cfdisk_08.png)
 
-Zum Schluss sind die Partitionen für 'Musik' und 'Bilder' entsprechend dem oben gezeigten Vorgehen in der gewünschten Größe anzulegen. Da nur noch logische Partitionen möglich sind, entfällt die Auswahl zwischen primärer und erweiterter Partition.
+Finally the partitions for 'Music' and 'Images' are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.
 
 ![partition finished](./images/cfdisk/cfdisk_09.png)
 
-So sieht das Ergebnis aus.
+This is how the result looks like.
 
-#### Partitionstyp
+#### Partition type
 
-Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition und wählt den Befehl **Type** aus.
+To change the type of a partition, select the desired partition and choose the command **Type**.
 
 ![partition type](./images/cfdisk/cfdisk_10.png)
 
-Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gewählt wird. In unserem Beispiel wählen wir für die Partitionen /dev/sda5 und /dev/sda6 "**7 HPFS/NTFS/exFAT**" aus. So kann das oben erwähnte Windows auf die Partition zugreifen.
+A selection list appears in which the partition type is selected with the arrow keys up and down. In our example we select for the partitions /dev/sda5 and /dev/sda6 "**7 HPFS/NTFS/exFAT**". This way the above mentioned Windows can access the partition.
 
 ![partition type](./images/cfdisk/cfdisk_11.png)
 
-#### Eine Partition bootfähig machen
+#### Make a partition bootable
 
-Für Linux besteht kein Grund, eine Partition bootfähig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl **Bootable** gewählt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootfähig gemacht werden).
+For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the **Bootable** command (note: when installing to an external hard drive, a partition must be made bootable).
 
-#### Partitionstabelle schreiben
+Write #### partition table
 
-Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **Write** gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.
+When everything is partitioned, the result can be saved with the command **Write**. The partition table is now written to the disk.
 
 ![partition select type](./images/cfdisk/cfdisk_12.png)
 
-**Da damit alle Daten auf der entsprechenden Festplatte/Partition gelöscht werden** , sollte man sich seiner Sache wirklich sicher sein, bevor man **yes** eintippt und noch einmal mit der Entertaste bestätigt.
+**Since this will delete all data on the corresponding disk/partition**, you should be really sure before typing **yes** and confirming again with the Enter key.
 
-#### Cfdisk beenden
+#### Quit Cfdisk
 
-Mit dem Befehl **Quit** verlassen wir das Programm. Nach Beendigung von **cfdisk** und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.
+With the command **Quit** we leave the program. After finishing **cfdisk** and before the installation you should reboot in any case to read in the partition table again.
 
-### Formatieren von Partitionen
+### Formatting partitions
 
-Es gibt für Linux verschiedene Filesysteme, die man benutzen kann. Da wären **Ext2**, **Ext4**, **ReiserFs** und für erfahrenere Anwender **XFS**, **JFS** und **ZFS**.  
-Ext2 kann von Interesse sein, wenn man von Windows aus zugreifen möchte, da es Windows-Treiber für dieses Dateisystem gibt. [Ext2-Dateisystem für MS Windows (Treiber und englischsprachige Doku)](http://www.fs-driver.org/).
+There are several file systems for Linux that can be used. There are **Ext2**, **Ext4**, **ReiserFs** and for more experienced users **XFS**, **JFS** and **ZFS**.  
+Ext2 may be of interest when accessing from Windows, as there are Windows drivers for this file system. [Ext2 file system for MS Windows (drivers and English documentation)](http://www.fs-driver.org/).
 
-Für normalen Gebrauch empfehlen wir das Dateisystem ext4. Ext4 ist das Standard-Dateisystem von siduction. 
+For normal use we recommend the ext4 file system. Ext4 is the default file system of siduction. 
 
-Nach Beendigung von cfdisk wird die Root-Konsole weiter verwendet. Eine Formatierung erfordert Root-Rechte.  
-Der Befehl lautet **mkfs.ext4 /dev/sdaX**. Für "X" trägt man die Nummer der ausgewählten Partition ein.
+After cfdisk has finished, the root console will continue to be used. Formatting requires root privileges.  
+The command is **mkfs.ext4 /dev/sdaX**. For "X" one enters the number of the selected partition.
 
 ~~~
 mkfs.ext4 /dev/sda2
 mke2fs 1.45.6 (20-Mar-2020)
-/dev/sdb2 contains a ext4 file system
+/dev/sdb2 contains an ext4 file system
 	last mounted on Tue May 26 14:26:34 2020
 Proceed anyway? (y,N)
 ~~~
 
-Die Abfrage wird mit "**y**" beantwortet, wenn man darin sicher ist, dass die richtige Partition formatiert werden soll. Bitte mehrfach überprüfen!
+The query is answered with "**y**" if you are sure that the correct partition should be formatted. Please check several times!
 
-Nach Abschluss der Formatierung muss die Meldung erfolgen, dass ext4 erfolgreich geschrieben wurde. Ist das nicht der Fall, ist bei der Partitionierung etwas schiefgelaufen oder **sdaX** ist keine Linux-Partition. Wir überprüfen mit:
+After the formatting is finished you should get a message that ext4 was written successfully. If this is not the case, something went wrong during partitioning or **sdaX** is not a Linux partition. We check with:
 
 ~~~
 fdisk -l /dev/sda
 ~~~
 
-Wenn etwas falsch ist, muss gegebenenfalls noch einmal partitioniert werden.
+If something is wrong, you may have to partition again.
 
-War die Formatierung erfolgreich, so wird dieser Ablauf für die anderen Partitionen wiederholt, wobei der Befehl entsprechend des Partitions-Typ und des gewünschten Dateisystem anzupassen ist. (z. B.: 'mkfs.ext2' oder 'mkfs.vfat' oder 'mkfs.ntfs' usw.)
-Bitte die Manpage **man mkfs** lesen.
+If the formatting was successful, this procedure is repeated for the other partitions, adapting the command according to the partition type and the desired file system. (e.g.: 'mkfs.ext2' or 'mkfs.vfat' or 'mkfs.ntfs' etc.)
+Please read the man page **man mkfs**.
 
-Zuletzt wird die Swap-Partition formatiert, in diesem Fall sda1:
+Finally format the swap partition, in this case sda1:
 
 ~~~
 mkswap /dev/sda1
 ~~~
 
-Im Anschluss wird die Swap-Partition aktiviert:
+Next, the swap partition is activated:
 
 ~~~
 swapon /dev/sda1
 ~~~
 
-Danach kann in der Konsole überprüft werden, ob die Swap-Partition erkannt wird:
+After that you can check in the console if the swap partition is recognized:
 
 ~~~
 swapon -s
 ~~~
 
-Bei eingebundener Swap-Partition sollte die Ausgabe auf den vorherigen Befehl etwa so aussehen:
+With the swap partition mounted, the output to the previous command should look something like this:
 
 ~~~
-Filename        Type        Size      Used   Priority
-/dev/sda1       partition   8914940   0      -2
+Filename Type Size Used Priority
+/dev/sda1 partition 8914940 0 -2
 ~~~
 
-Wird die Swap-Partition korrekt erkannt, starten wir den Computer neu.
+If the swap partition is recognized correctly, we restart the computer.
 
-Jetzt kann die Installation beginnen.
+Now the installation can begin.
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-08</div>
+<div id="rev">Last edited: 2021-14-08</div>

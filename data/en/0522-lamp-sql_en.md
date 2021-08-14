@@ -1,27 +1,27 @@
 % LAMP - MariaDB 
 
-## MariaDB einrichten
+## Set up MariaDB
 
-### MariaDB im Dateisystem
+### MariaDB in the file system
 
-Debian hat die Dateien von MariaDB entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
+Debian has fully integrated the files of MariaDB into the file system according to their function.
 
-+ In **/usr/bin/** das ausführbare Programm *mariadb*  
-    + und der Link *mysql*, der auf */usr/bin/mariadb* verweist.  
-+ In **/usr/lib/mysql/plugin/** die installierten Plugin für MariaDB.  
-+ In **/usr/share/mysql/** Gemeinsam genutzte Programmteile und Lokalisierungen.  
-+ In **/etc/mysql/** die Konfigurationsverzeichnisse und -dateien.  
-+ In **/var/lib/mysql/** die Datenbanken und Log-Dateien.  
-+ In **/run/mysqld/** zur Laufzeit notwendige Systemdateien.
++ In **/usr/bin/** the executable program *mariadb*  
+    + and the link *mysql*, which points to */usr/bin/mariadb*.  
++ In **/usr/lib/mysql/plugin/** the installed plugin for MariaDB.  
++ In **/usr/share/mysql/** shared program parts and localizations.  
++ In **/etc/mysql/** the configuration directories and files.  
++ In **/var/lib/mysql/** the databases and log files.  
++ In **/run/mysqld/** system files necessary at runtime.
 
-Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb */etc/mysql/*, sofern man genau weiß wie vorzugehen ist. Anderen Falls benutzt man das [MariaDB-CLI](#mariadb-cli) oder ein Frontend wie [phpMyAdmin](#phpmyadmin).
+Inside the directories mentioned before the files should not be edited manually. The only exception is the configuration of MariaDB under */etc/mysql/*, if you know exactly how to proceed. Otherwise use the [MariaDB-CLI](#mariadb-cli) or a frontend like [phpMyAdmin](#phpmyadmin).
 
-### Erstkonfiguration
+### Initial configuration
 
-Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md#lamp-webserver) beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
+After installation, as described in [LAMP test server for developers](./lamp-start_en.md#lamp-webserver), MariaDB is *'open like a barn door to anyone'*, because by default, the two users *root* and *anonymous*, are created without password and a test database is created.
 
-Deshalb rufen wir das Programm **mysql_secure_installation** im Root-Terminal auf.  
-Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: "«- - [ ]".
+Therefore we call the program **mysql_secure_installation** in the root terminal.  
+Here we make quite a few settings to secure the database. The necessary entries are marked like this: ""- - [ ]".
 
 ~~~
 # mysql_secure_installation  
@@ -31,24 +31,24 @@ password for the root user. If you've just installed MariaDB, and
 you haven't set the root password yet, the password will be blank,
 so you should just press enter here.
 
-Enter current password for root (enter for none): «--[Enter]  
+Enter current password for root (enter for none): "--[Enter].  
 OK, successfully used password, moving on...
 
 Setting the root password or using the unix_socket ensures that nobody can  
-log into the MariaDB root user without the proper authorisation.
+log into the MariaDB root user without the proper authorization.
 
 You already have your root account protected, so you can safely answer 'n'.
 
-Switch to unix_socket authentication [Y/n]:   «--[n]  
+Switch to unix_socket authentication [Y/n]: "--[n]  
  ... skipping.
 
 You already have your root account protected, so you can safely answer 'n'.
 
-Change the root password? [Y/n]:   «--[y]  
-New password:                      «--[mein_mariadb_root_passwort]  
-Re-enter new password:             «--[mein_mariadb_root_passwort]  
+Change the root password? [Y/n]: "--[y].  
+New password: "--[my_mariadb_root_password].  
+Re-enter new password: "--[my_mariadb_root_password]  
 Password updated successfully!  
-Reloading privilege tables..  
+Reloading privilege tables.  
 ... Success!
 
 By default, a MariaDB installation has an anonymous user, allowing anyone
@@ -57,20 +57,20 @@ them. This is intended only for testing, and to make the installation
 go a bit smoother. You should remove them before moving into a
 production environment.
 
-Remove anonymous users? [Y/n]:   «--[y]  
+Remove anonymous users? [Y/n]: "--[y]  
 ... Success!
 
 Normally, root should only be allowed to connect from 'localhost'. This
 ensures that someone cannot guess at the root password from the network.
 
-Disallow root login remotely? [Y/n]   «--[y]  
+Disallow root login remotely? [Y/n] "--[y]  
 ... Success!
 
 By default, MariaDB comes with a database named 'test' that anyone can
 access. This is also intended only for testing, and should be removed
 before moving into a production environment.
 
-Remove test database and access to it? [Y/n]   «--[y]  
+Remove test database and access to it? [Y/n] "--[y]  
 - Dropping test database...  
 ... Success!  
 - Removing privileges on test database...  
@@ -79,7 +79,7 @@ Remove test database and access to it? [Y/n]   «--[y]
 Reloading the privilege tables will ensure that all changes made so far
 will take effect immediately.
 
-Reload privilege tables now? [Y/n]   «--[y]
+Reload privilege tables now? [Y/n] "--[y]
 ... Success!
 
 Cleaning up...
@@ -90,11 +90,11 @@ installation should now be secure.
 Thanks for using MariaDB!
 ~~~
 
-Im Ergebnis hat der Benutzer *root* ein (hoffentlich sicheres) Passwort erhalten und er kann sich nicht mehr remote einloggen. Der Benutzer *anonymous* und die Datenbank *Test* wurden entfernt.
+As a result, the user *root* has received a (hopefully secure) password and can no longer log in remotely. The user *anonymous* and the database *test* have been removed.
 
 ### MariaDB CLI
 
-Das Commandline Interface erreichen wir im Terminal durch die Eingabe von "*mariadb -u \<user\> -p*". Nach der Eingabe des Passwortes sehen wir die Begrüßung und den neuen Promt `MariaDB [(none)]>`.
+We reach the commandline interface in the terminal by typing "*mariadb -u \<user\> -p*". After entering the password we see the greeting and the new prompt `MariaDB [(none)]>`.
 
 ~~~
 # mariadb -u root -p
@@ -104,36 +104,36 @@ Welcome to the MariaDB monitor.  [...]
 MariaDB [(none)]>
 ~~~
 
-Aus Sicherheitsgründen loggen wir uns nur zu Beginn als **Benutzer root** ein, um die Projektdatenbank, einen  Benutzer für die alltäglichen Arbeiten an dieser und einen Benutzer als Ersatz für *root* anzulegen.  
-Später im Abschnitt [phpMyAdmin](#phpmyadmin) entziehen wir dem Benutzer *root* die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
+For security reasons we only log in as **user root** at the beginning to create the project database, a user for everyday work on it and a user to replace *root*.  
+Later in the [phpMyAdmin](#phpmyadmin) section, we revoke the all-encompassing privileges from the *root* user so that a potential attacker will be unsuccessful at this point.
 
-#### Eine Datenbank anlegen
+#### Create a database
 
-Wir sind noch im Terminal angemeldet und erstellen für unser Projekt eine neue Datenbank:
+We are still logged into the terminal and create a new database for our project:
 
 ~~~
 MariaDB [(none)]> CREATE DATABASE sidu;
 Query OK, 1 row affected (0.002 sec)
 ~~~
 
-Das ist schon alles. Falls wir diese Datenbank löschen wollen lautet der Befehl "DROP DATABASE sidu;"
+That's all. If we want to delete this database the command is "DROP DATABASE sidu;".
 
-#### Einen Benutzer anlegen
+#### Create a user
 
-Zuerst erstellen wir unseren Projekt-Benutzer mit dem Namen *tomtom* und weisen ihm ausschließlich alle Rechte an der Projekt-Datenbank *sidu* zu:
+First we create our project user with the name *tomtom* and assign him exclusively all rights to the project database *sidu*:
 
 ~~~
-MariaDB [(none)]> CREATE USER tomtom@localhost IDENTIFIED BY '<hier ein Passwort für tomtom eingeben>';
+MariaDB [(none)]> CREATE USER tomtom@localhost IDENTIFIED BY '<enter a password for tomtom here>';
 Query OK, 0 rows affected (0.002 sec)
 
 MariaDB [(none)]> GRANT ALL ON sidu.* TO tomtom@localhost;
 Query OK, 0 rows affected (0.001 sec)
 ~~~
 
-Nun die gleiche Prozedur für den Benutzer *chef*, der die Aufgabe von *root* übernehmen soll.
+Now the same procedure for the user *chef*, who should take over the task of *root*.
 
 ~~~
-MariaDB [(none)]> CREATE USER chef@localhost IDENTIFIED BY '<hier ein Passwort für chef eingeben>';
+MariaDB [(none)]> CREATE USER chef@localhost IDENTIFIED BY '<enter a password for chef here>';
 Query OK, 0 rows affected (0.002 sec)
 
 MariaDB [(none)]> GRANT ALL ON *.* TO chef@localhost WITH GRANT OPTION;
@@ -142,13 +142,13 @@ Query OK, 0 rows affected (0.001 sec)
 MariaDB [(none)]> FLUSH PRIVILEGES;
 ~~~
 
-Die neuen Benutzer unterscheiden sich in ihren Rechten.
+The new users differ in their rights.
 
-*tomtom* hat alle Rechte **nur** für die Datenbank *sidu* (sidu.\*).  
-*chef* hat alle Rechte an allen Datenbanken (\*.\*) und Benutzern (WITH GRANT OPTION).
+*tomtom* has all rights **only** for the database *sidu* (sidu.\*).  
+*chef* has all rights to all databases (\*.\*) and users (WITH GRANT OPTION).
 
-Der Benutzer *chef* kann somit die Funktion des Benutzers *root* übernehmen und den Benutzer *tomtom* verwenden wir für Arbeiten an unserer Projektdatenbank.  
-Den Logout erledigt: **`\q`**.
+So the user *chef* can take over the function of the user *root* and the user *tomtom* we use for work on our project database.  
+The logout is done by: **`\q`**.
 
 ~~~
 MariaDB [(none)]> \q
@@ -156,146 +156,146 @@ Bey
 #
 ~~~
 
-#### Abfragen
+#### Queries
 
-Wir schauen uns das Ergebnis in Terminal an, diesmal als Benutzer "*chef*".  
-Zuerst die Benutzer und dann die vorhandenen Datenbanken.
+We look at the result in Terminal, this time as user "*chef*".  
+First the users and then the existing databases.
 
 ~~~
 MariaDB [(none)]> SELECT User,Host FROM mysql.user;
 +-------------+-----------+
-| User        | Host      |
+| User | Host |
 +-------------+-----------+
-| chef        | localhost |
+| boss | localhost |
 | mariadb.sys | localhost |
-| mysql       | localhost |
-| phpmyadmin  | localhost |
-| root        | localhost |
-| tomtom      | localhost |
+| mysql | localhost |
+| phpmyadmin | localhost |
+| root | localhost |
+| tomtom | localhost |
 +-------------+-----------+
 6 rows in set (0.002 sec)
 
 MariaDB [(none)]> SHOW DATABASES;
 +--------------------+
-| Database           |
+| database |
 +--------------------+
 | information_schema |
-| mysql              |
+| mysql |
 | performance_schema |
-| phpmyadmin         |
-| sidu               |
+| phpmyadmin |
+| sidu |
 +--------------------+
 5 rows in set (0.001 sec)
 ~~~
 
-Wenn wir uns von MariaDB abmelden und als Benutzer "*tomtom*" wieder anmelden, sehen die beiden Abfragen wie folgt aus:
+If we log out of MariaDB and log back in as user "*tomtom*", the two queries look like this:
 
 ~~~
 MariaDB [(none)]> SELECT User,Host FROM mysql.user;
-ERROR 1142 (42000): SELECT command denied to user 'tomtom'@'localhost' for table 'user'
+ERROR 1142 (42000): SELECT command denied to user 'tomtom'@'localhost' for table 'user'.
 
 MariaDB [(none)]> SHOW DATABASES;
 +--------------------+
-| Database           |
+| Database
 +--------------------+
 | information_schema |
-| sidu               |
+| sidu |
 +--------------------+
 2 rows in set (0.001 sec)
 ~~~
 
-Es ist gut zu erkennen, dass der Benutzer "*tomtom*" keinen Zugriff auf systemrelevante Daten erhält.
+It is easy to see that the user "*tomtom*" does not get access to system relevant data.
 
 ### phpMyAdmin
 
-Wie zuvor gesehen, lässt sich MariaDB vollständig über die Komandozeile verwalten. Wer die Syntax beherrscht, und dafür ist profundes Fachwissen erforderlich, kommt auf diesem Weg schnell zum gewünschten Ergebnis.
+As seen before, MariaDB can be administered completely via the command line. If you know the syntax, which requires profound knowledge, you will quickly get the desired result this way.
 
-Wir verwenden das für weniger erfahrene Benutzer besser geeignete Progrann *phpMyAdmin* und geben in die Adresszeile des Browsers  
+We use the progrann *phpMyAdmin*, which is more suitable for less experienced users, and enter in the address line of the browser  
 **http://localhost/phpmyadmin/**  
-ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](0521-lamp-apache_de.md#apache-einrichten)bereits durchlaufen haben, lautet der Aufruf  
+in the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten)the call is  
 **https://server1.org/phpmyadmin/**
 
-Um, wie oben angeführt, dem Datenbank-Admin *root* die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin *chef* mit seinem Passwort.
+To remove the rights of the database admin *root*, as mentioned above, we use our new database admin *chef* with his password in the login window right away.
 
-![Loginfenster](./images/phpmyadmin/login.png)
+![Login window](./images/phpmyadmin/login.png)
 
-Im Startfenster sehen wir in der linken Spalte alle Datenbanken. Im Hauptteil wählen wir den Reiter **`Benutzerkonten`**.
+In the start window we see all databases in the left column. In the main part we select the tab **`User accounts`**.
 
-![Startfenster](./images/phpmyadmin/startfenster.png)
+![Start window](./images/phpmyadmin/startwindow.png)
 
-Die Benutzerkontenübersicht stellt alle Benutzer und in Kurzform deren Rechte dar. Wir wählen hier für den Benutzer *root* den Schalter **`Rechte ändern`**.
+The user accounts overview shows all users and in short form their rights. We select here for the user *root* the switch **`Change rights`**.
 
-![Benutzerkonten](./images/phpmyadmin/benutzerkonten.png)
+![User accounts](./images/phpmyadmin/useraccounts.png)
 
-Nun sehen wir für den Benutzer *root* die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich "*Administration*" das Recht "*Super*" (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den **`OK`**-Button anklicken (im Screenshot nicht sichtbar). 
+Now we see the detailed permissions for the user *root*. Here we first remove all rights from him (1a), then grant in the area "*Administration*" the right "*Super*" (1b) and execute the action by clicking the **`OK`** button at the very bottom right of this page (not visible in the screenshot). 
 
-![Rechte eines Benutzers verwalten (1a, 1b)](./images/phpmyadmin/root-rechte.png)
+![Manage rights of a user (1a, 1b)](./images/phpmyadmin/root-rights.png)
 
-Anschließend gehen wir über den **`Datenbank`**-Schalter (2) zur nächsten Seite.
+Afterwards we go to the next page via the **`Database`** button (2).
 
-![Rechte eines Benutzers verwalten (2) ](./images/phpmyadmin/root-rechte-2.png)
+![Manage rights of a user (2) ](./images/phpmyadmin/root-rights-2.png)
 
-Nach Auswahl der Datenbank "*mysql*" und **`OK`** öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank "*mysql*" für den Benutzer "*root*".
+After selecting the database "*mysql*" and **`OK`** this time a window opens with the detailed rights to the database "*mysql*" for the user "*root*".
 
-![Rechte eines Benutzers verwalten (DB mysql) ](./images/phpmyadmin/root-rechte-3.png)
+![Manage rights of a user (DB mysql) ](./images/phpmyadmin/root-rights-3.png)
 
-Ausgewählt wird ausschließlich die Methode "*SELECT*". Ein Klick auf **`OK`** führt den sql-Befehl aus.
+Only the method "*SELECT*" is selected. A click on **`OK`** executes the sql command.
 
-Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
+So we are at destination and leave *phpMyAdmin* via the door icon placed in the left column.
 
-![phpMyAdmin beenden](./images/phpmyadmin/abmelden.png)
+![exit phpMyAdmin](./images/phpmyadmin/logout.png)
 
-phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken, ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter **`Exportieren`** im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
+phpMyAdmin offers extensive possibilities for the administration of databases, their tables and their contents. Note the **`Export`** tab in the main window, behind which you will find the option to backup data.
 
 ### Integration in Systemd
 
-Die Steuerung von MariaDB wurde in Debian, und damit auch in siduction, in den Systemd integriert. MariaDB startet automatisch beim Booten des Servers. Die Steuerungsaufrufe lauten:
+The control of MariaDB has been integrated into Systemd in Debian, and thus also in siduction. MariaDB starts automatically when the server is booted. The control calls are:
 
 ~~~
 # systemctl [start | stop | restart] mariadb.service
 ~~~
 
-Start- und Fehlermeldungen des Servers fließen in das Systemd Journal ein.  
-Genaue Informationen enthält die externe Webseite [MariaDB Systemd](https://mariadb.com/kb/en/systemd/).
+Startup and error messages of the server flow into the Systemd journal.  
+Detailed information is available on the external web page [MariaDB Systemd](https://mariadb.com/kb/en/systemd/).
 
-Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf Systemd beziehen.
+When searching the Internet for MariaDB's control panel, make sure that the search results refer to Systemd.
 
 ### MariaDB Log
 
-Das Systemd Journal enthält Meldungen über den Startprozess des *mariadb.service*. Es ist die erste Anlaufstelle wenn Fehler auftreten.  
-In der Konsole zeigt der Befehl "*journalctl*" die Meldungen zu MariaDB mit:
+The Systemd Journal contains messages about the startup process of the *mariadb.service*. It is the first place to go when errors occur.  
+In the console, the command "*journalctl*" displays the messages about MariaDB with:
 
 ~~~
 journalctl -n 25 -u mariadb.service
 ~~~
 
-z.B. die letzten 25 Zeilen.
+e.g. the last 25 lines.
 
-Oder fortlaufend mit:
+Or continuously with:
 
 ~~~
 journalctl -f -u mariadb.service
 ~~~
 
-Darüber hinaus schaltet man das Loggen der sql-Aktionen im MariDB-CLI so ein:
+In addition, one switches on the logging of sql actions in the MariDB CLI like this:
 
 ~~~
 MariaDB [(none)]> SET GLOBAL general_log=1;
 ~~~
 
-Das erstellt eine Log-Datei nach dem Muster *\<Host\>.log* im Verzeichnis */var/lib/mysql/*.  
-**Achtung**: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Atkionen zu beobachten.
+This creates a log file with the pattern *\<host\>.log* in the directory */var/lib/mysql/*.  
+**Caution**: This is an absolute performance killer and only meant to monitor atkions in the short term.
 
-### Quellen MariaDB
+### Sources MariaDB
 
-[MariaDB Dokumentation](https://mariadb.com/kb/en/documentation/) (englisch)  
-[MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (englisch)  
-und die Manpage
+[MariaDB Documentation](https://mariadb.com/kb/en/documentation/) (English)  
+[MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (english)  
+and the manpage
 
 ~~~
 man mariadb
 ~~~
 
-[phpMyAdmin Dokumentation](https://docs.phpmyadmin.net/de/latest/) (deutsch)
+[phpMyAdmin documentation](https://docs.phpmyadmin.net/de/latest/) (German)
 
-<div id="rev">Zuletzt bearbeitet: 2020-07-20</div>
+<div id="rev">Last edited: 2020-14-08</div>

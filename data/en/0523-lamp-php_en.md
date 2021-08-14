@@ -1,24 +1,24 @@
 % LAMP - PHP
 
-## PHP einrichten
+## Set up PHP
 
-PHP ist in siduction nach der Installation mit der standardmäßigen Konfiguration sofort einsatzfähig.  
+PHP is ready to use in siduction after installation with the default configuration.  
 
-### PHP im Dateisystem
+### PHP in the file system
 
-Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
+Debian has fully integrated the files of PHP into the file system according to their function.
 
-+ In **/usr/bin/** das ausführbare Programm *php7.x*  
-    + und der Link *php*, der über */etc/alternatives/php* auf */usr/bin/php7.x* verweist.  
-+ In **/usr/lib/php/** die installierten Module.  
-+ In **/usr/share/php/** und **/usr/share/php\<Modul\>** gemeinsam genutzte Programmteile und Module.  
-+ In **/etc/php/** die Konfigurationsverzeichnisse und -dateien.  
-+ In **/var/lib/php/** der zur Laufzeit aktuelle Zustand der Module und Sessions.
++ In **/usr/bin/** the executable program *php7.x*  
+    + and the link *php*, which points to */usr/bin/php7.x* via */etc/alternatives/php*.  
++ In **/usr/lib/php/** the installed modules.  
++ In **/usr/share/php/** and **/usr/share/php\<module\>** shared program parts and modules.  
++ In **/etc/php/** the configuration directories and files.  
++ In **/var/lib/php/** the current state of modules and sessions at runtime.
 
-### PHP-Unterstützung für Apache2
+### PHP support for Apache2
 
-Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit:
-(dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)
+By default, the Apache web server loads support for PHP. We check this with:
+(in the following, replace the x with the minor attribute of the currently used PHP version, i.e. something like 7.4)
 
 ~~~
 # ls /etc/apache2/mods-enabled/* | grep php
@@ -26,7 +26,7 @@ Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir übe
 /etc/apache2/mods-enabled/php7.x.load
 ~~~
 
-und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung "*.php*" zu verarbeiten, muss in der Apache Konfigurationsdatei *dir.conf* die Direktive *DirectoryIndex* den Wert *index.php* enthalten. Auch das prüfen wir:
+and recognize that Apache has loaded the PHP module for version 7.x. To cause the PHP interpreter to process files with the extension "*.php*", the *DirectoryIndex* directive in the Apache configuration file *dir.conf* must contain the value *index.php*. We check this as well:
 
 ~~~
 # cat /etc/apache2/mods-available/dir.conf
@@ -35,41 +35,41 @@ und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit 
 </IfModule>
 ~~~
 
-Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert *index.php* enthalten ist.
+Nothing stands in the way of using PHP, because we see that the value *index.php* is included.
 
-### PHP Konfiguration
+### PHP configuration
 
-Das Verzeichnis */etc/php/7.x/* enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.  
-Die Ausgabe zeigt den Zustand nach der Erstinstallation.
-
-~~~
-# ls -l /etc/php/7.x/
-insgesamt 20
-drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
-drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
-drwxr-xr-x 2 root root 4096 18. Dez 16:54 mods-available
-~~~
-
-Mit den weiter unten installierten Modulen *php7.x-cgi* und *php7.x-fpm* sind zwei neue Verzeichnise hinzugekommen.
+The directory */etc/php/7.x/* contains the configuration sorted by the available interfaces.  
+The output shows the state after the initial installation.
 
 ~~~
 # ls -l /etc/php/7.x/
-insgesamt 20
-drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
-drwxr-xr-x 3 root root 4096  1. Feb 21:23 cgi
-drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
-drwxr-xr-x 4 root root 4096  1. Feb 21:23 fpm
-drwxr-xr-x 2 root root 4096  1. Feb 13:22 mods-available
+total 20
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 apache2
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 cli
+drwxr-xr-x 2 root root 4096 18 Dec 16:54 mods-available
 ~~~
 
-Jedes der Verzeichnisse *apache2*, *cgi*, *cli* und *fpm* enthält einen Ordner *conf.d* und eine Datei *php.ini*.  
-Die jeweilige *php.ini* beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner *conf.d* enthält die Links zu den aktivierten Modulen.
+With the modules *php7.x-cgi* and *php7.x-fpm* installed below, two new directories have been added.
 
-### PHP Module
+~~~
+# ls -l /etc/php/7.x/
+total 20
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 apache2
+drwxr-xr-x 3 root root 4096 1 Feb 21:23 cgi
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 cli
+drwxr-xr-x 4 root root 4096 1 Feb 21:23 fpm
+drwxr-xr-x 2 root root 4096 1 Feb 13:22 mods-available
+~~~
 
-**Abfragen**
+Each of the *apache2*, *cgi*, *cli* and *fpm* directories contains a *conf.d* folder and a *php.ini* file.  
+The respective *php.ini* contains the configuration for the corresponding interface and can be changed or supplemented if necessary. The *conf.d* folder contains the links to the activated modules.
 
-Für PHP steht eine Vielzahl von Modulen zu Verfügung. Welche bereits installiert wurden, erfährt man mit
+### PHP modules
+
+### Queries
+
+A large number of modules are available for PHP. You can find out which ones are already installed with
 
 ~~~
 # dpkg-query -f='${Status}\ ${Package}\n' -W php7.4* | grep '^install'
@@ -89,7 +89,7 @@ install ok installed php7.4-xml
 install ok installed php7.4-zip
 ~~~
 
-Um verfügbare, aber nicht installierte Module anzuzeigen, schreiben wir die Suche am Ende etwas um:
+To show available but not installed modules, we rewrite the search at the end a bit:
 
 ~~~
 # dpkg-query -f='${Status}\ ${Package}\n' -W php7.4* | grep 'not-install'
@@ -118,26 +118,26 @@ unknown ok not-installed php7.4-tokenizer
 unknown ok not-installed php7.4-xsl
 ~~~
 
-Jetzt kennen wir die genauen Bezeichnungen der Module.
+Now we know the exact names of the modules.
 
 **Info**
 
-Ausführlichere Beschreibungen zu den Modulen liefert der Befehl
+More detailed descriptions of the modules are provided by the command
 
 ~~~
-# apt show <Modulname>
+# apt show <module name>
 ~~~
 
 **Installation**
 
-Um Module zu installieren verwenden wir z.B.:
+To install modules we use e.g.:
 
 ~~~
 # apt install php7.x-cgi php7.x-fpm
 ~~~
 
-Die beiden Module unterstützen CGI-Scripte und Fast/CGI Requests.  
-Anschließend starten wir den Apache neu:
+Both modules support CGI scripts and Fast/CGI requests.  
+Then we restart Apache:
 
 ~~~
 # systemctl restart apache2.service
@@ -145,33 +145,33 @@ Anschließend starten wir den Apache neu:
 
 **Handling**
 
-Der Zustand der PHP-Module ist während der Laufzeit veränderbar. Das ermöglicht auch die Steuerung von Modulen in Scripten um sie vor der Verwendung zu laden und nachher wieder zu entladen.
+The state of PHP modules can be changed during runtime. This also allows controlling modules in scripts to load them before use and unload them afterwards.
 
-+ **phpenmod** – aktiviert Module in PHP  
-+ **phpdismod** – deaktiviert Module in PHP  
-+ **phpquery** – Zeigt den Status der PHP Module
++ **phpenmod** - activates modules in PHP  
++ **phpdismod** - disables modules in PHP  
++ **phpquery** - shows the status of PHP modules
 
-Nicht benötigte Module (im Beispiel imagick) deaktiviert in der Konsole der Befehl
+Unnecessary modules (imagick in the example) are deactivated in the console by the command
 
 ~~~
 # phpdismod imagick
 ~~~
 
-Um das Modul *imagick* für alle Iterfaces zu laden, dient der Befehl
+To load the module *imagick* for all iterfaces use the command
 
 ~~~
 # phpenmod imagick
 ~~~
 
-Verwenden wir die Option "*-s apache2*"
+Let's use the option "*-s apache2*"
 
 ~~~
 # phpenmod -s apache2 imagick
 ~~~
 
-wird das Modul nur für Apache2 geladen.
+the module will be loaded for Apache2 only.
 
-Die Statusabfrage mit *phpquery* erfordert immer die Angabe der Modulversion und des Interface. Hier einige Beispiele:
+The status query with *phpquery* always requires the module version and interface to be specified. Here are some examples:
 
 ~~~
 # phpquery -v 7.4 -s apache2 -m zip
@@ -187,30 +187,30 @@ zip (Enabled for fpm by maintainer script)
 imagick (Enabled for apache2 by local administrator)
 ~~~
 
-Bei dem Modul *imagick* zeigt uns der String "*Enabled for apache2 by local administrator*", dass es nicht wie das *zip*-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen *phpdismod* und *phpenmod* für diese Modul.
+For the *imagick* module, the string "*Enabled for apache2 by local administrator*" tells us that it was not loaded automatically at startup like the *zip* module, but that the administrator enabled it manually. The reason is the previously used *phpdismod* and *phpenmod* commands for this module.
 
 ### Apache Log
 
-Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter */var/log/apache2/*. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.  
-Alternativ lassen wir uns die Log-Funktionen anzeigen.
+The Apache server stores the error messages of PHP in its log files under */var/log/apache2/*. At the same time, if PHP functions fail, a message appears in the called web page.  
+Alternatively we can display the log functions.
 
 ~~~
 # php --info | grep log
 [...]
-error_log 			=> no value
-log_errors 			=> On
-log_errors_max_len 	=> 1024
-mail.log 			=> no value
-opcache.error_log 	=> no value
+error_log => no value
+log_errors => On
+log_errors_max_len => 1024
+mail.log => no value
+opcache.error_log => no value
 [...]
 ~~~
 
-In den Dateien */etc/php/7.x/\<Interface\>/php.ini* haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
+In the files */etc/php/7.x/\<Interface\>/php.ini* we have the possibility to replace the unset values with our own, actually existing log files.
 
-### Quellen PHP
+### Sources PHP
 
-[PHP - deutsches Handbuch](https://www.php.net/manual/de/)  
-[PHP - aktuelle Meldungen](https://www.php.net/)  
-[tecadmin - Modulhandling](https://tecadmin.net/enable-disable-php-modules-ubuntu/) (englisch)
+[PHP - german manual](https://www.php.net/manual/de/)  
+[PHP - current messages](https://www.php.net/)  
+[tecadmin - module handling](https://tecadmin.net/enable-disable-php-modules-ubuntu/) (english)
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-20</div>
+<div id="rev">Last edited: 2021-14-08</div>

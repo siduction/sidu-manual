@@ -2,47 +2,47 @@
 
 ## SSH
 
-**Definition von SSH aus [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
+**Definition of SSH from [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
-Secure Shell oder SSH bezeichnet sowohl ein Netzwerkprotokoll als auch entsprechende Programme, mit deren Hilfe man auf eine sichere Art und Weise eine verschlüsselte Netzwerkverbindung mit einem entfernten Gerät herstellen kann. Häufig wird diese Methode verwendet, um sich eine entfernte Kommandozeile quasi auf den lokalen Rechner zu holen, das heißt, auf der lokalen Konsole werden die Ausgaben der entfernten Konsole ausgegeben und die lokalen Tastatureingaben werden an den entfernten Rechner gesendet. Hierdurch wird der Effekt erreicht, als säße man vor der entfernten Konsole, was beispielsweise sehr gut zur Fernwartung eines in einem entfernten Rechenzentrum stehenden Root-Servers genutzt werden kann. Die neuere Protokoll-Version SSH-2 bietet weitere Funktionen wie Datenübertragung per SFTP.
+Secure Shell or SSH refers to both a network protocol and corresponding programs that can be used to establish an encrypted network connection with a remote device in a secure manner. Often this method is used to bring a remote command line to the local computer, i.e. the local console displays the output of the remote console and the local keyboard input is sent to the remote computer. This gives the effect of sitting in front of the remote console, which can be used very well for remote maintenance of a root server located in a remote data center, for example. The newer protocol version SSH-2 offers further functions like data transfer via SFTP.
 
-Die IANA hat dem Protokoll den TCP-Port 22 zugeordnet, jedoch lassen sich in den Konfigurationsdateien des Daemons auch beliebige andere Ports auswählen, um z.B. Angriffe zu erschweren, da der SSH-Port dem Angreifer nicht bekannt ist.
+IANA has assigned TCP port 22 to the protocol, but any other ports can be selected in the daemon's configuration files to make attacks more difficult, for example, since the SSH port is not known to the attacker.
 
-### SSH absichern 
+### Securing SSH 
 
-Es ist nicht sicher, Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen Angreifer nicht die Möglichkeit haben, über zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuführen. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl möglicher Versuche einzuschränken.
+It is not secure to allow root logins via SSH. It is important not to make root logins the default, because Debian should be secure, not insecure. Similarly, attackers should not be able to perform a wordlist-based password attack (brute force attack) on the SSH login over ten minutes. Therefore, it makes sense to limit the login time window as well as the number of possible attempts.
 
-Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu bearbeiten:
+To make SSH more secure, use a text editor to edit the following file:
 
 ~~~
 /etc/ssh/sshd_config
 ~~~
 
-**Folgende Einstellungen können zur Erhöhung der Sicherheit angepasst werden:**
+**The following settings can be adjusted to increase security:**.
 
-`Port <gewünschter Port>:`  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
+`Port <desired port>:` This entry must point to the port that is enabled on the router for forwarding. If it is not known what is to be done, the use of SSH for remote control should be reconsidered. Debian sets port 22 as default. However, it is advisable to use a port outside the default scan range, so we use port 5874, for example:
 
 ~~~
 Port 5874
 ~~~
 
-`ListenAddress <IP des Rechners oder der Netzwerkschnittstelle>:`  Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern kein lokaler DNS-Server verwendet wird. Aber wenn etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS-Servers aufgesetzt werden soll und diese Anweisungen benötigt werden, kann sich leicht ein gravierender Fehler einschleichen. Wir verwenden eine statische IP für das Beispiel:
+`ListenAddress <IP of the computer or network interface>:` Since the port is forwarded by the router, the computer must use a static IP address unless a local DNS server is used. But if something as complicated as SSH is to be set up using a local DNS server and these instructions are needed, a serious error can easily creep in. We'll use a static IP for the example:
 
 ~~~
 ListenAddress 192.168.2.134
 ~~~
 
-Protokoll 2 ist bereits Grundeinstellung bei Debian, aber man sollte sicher sein und daher nochmals überprüfen.
+Protocol 2 is already default in Debian, but you should be sure and therefore check again.
 
-`LoginGraceTime <Zeitrahmen des Anmeldevorgangs>:`  Die erlaubte Zeitspanne beträgt als Standard absurde 600 Sekunden. Da man für gewöhnlich keine zehn Minuten benötigt, um Benutzernamen und Passwort einzugeben, stellen wir eine etwas vernünftigere Zeitspanne ein:
+`LoginGraceTime <timeframe of login>:` The allowed time is an absurd 600 seconds by default. Since it usually doesn't take ten minutes to enter a username and password, let's set a slightly more reasonable amount of time:
 
 ~~~
 LoginGraceTime 45
 ~~~
 
-Nun hat man 45 Sekunden Zeit zum Anmelden, und Hacker haben keine zehn Minuten bei jedem Versuch, das Passwort zu knacken.
+Now you have 45 seconds to log in, and hackers don't have ten minutes each time they try to crack the password.
 
-`PermitRootLogin <yes>:`  Warum Debian hier Erlaubnis zur Anmeldung als Root erteilt, ist nicht nachvollziehbar. Wir korrigieren zu 'no':
+`PermitRootLogin <yes>:` Why Debian gives permission to log in as root here is incomprehensible. We correct to `no':
 
 ~~~
 PermitRootLogin no
@@ -52,192 +52,192 @@ PermitRootLogin no
 StrictModes yes
 ~~~
 
-`MaxAuthTries <Anzahl der erlaubten Anmeldungsversuche>:`  Mehr als 3 oder 4 Versuche sollten nicht ermöglicht werden:
+`MaxAuthTries <number of allowed login attempts>:` More than 3 or 4 attempts should not be allowed:
 
 ~~~
 MaxAuthTries 2
 ~~~
 
-Folgende Einstellungen müssen hinzugefügt werden, so sie nicht vorhanden sind:
+The following settings must be added if they are not present:
 
-AllowUsers: Benutzernamen, welchen der Zugriff via SSH erlaubt ist, getrennt durch Leerzeichen  
+AllowUsers: usernames which are allowed to access via SSH, separated by spaces.  
 
-`AllowUsers <xxx>:`  Nur eingetragene Benutzer können den Zugang verwenden, und dies nur mit Benutzerrechten. Mit `adduser`  sollte man einen User hinzufügen, der speziell zur Nutzung von SSH verwendet wird:
+`AllowUsers <xxx>:` Only registered users can use the access, and only with user rights. With `adduser` you should add a user that is specifically used to use SSH:
 
 ~~~
-AllowUsers werauchimmer
+AllowUsers whoever
 ~~~
 
-`PermitEmptyPasswords <xxx>:`  dem Benutzer soll ein schönes langes Passwort gegeben werden, das man in einer Million Jahren nicht erraten kann. Dieser Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit `su`  Root werden:
+`PermitEmptyPasswords <xxx>:` the user should be given a nice long password that can't be guessed in a million years. This user should be the only one with SSH access. Once logged in, he can become root with `su`:
 
 ~~~
 PermitEmptyPasswords no
 ~~~
 
-`PasswordAuthentication <xxx>:`  natürlich muss hier 'yes' gesetzt werden. Es sei denn, man verwendet einen KeyLogin.
+`PasswordAuthentication <xxx>:` of course 'yes' must be set here. Unless you use a KeyLogin.
 
 ~~~
-PasswordAuthentication yes [wenn man keine keys verwendet]
+PasswordAuthentication yes [if you don't use keys]
 ~~~
 
-Schlussendlich:
+Finally:
 
 ~~~
 /etc/init.d/ssh restart
 ~~~
 
-Nun hat man eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn man einen Benutzer hinzugefügt hat, der speziell zur Verwendung mit SSH dient.
+Now you have a somewhat secure SSH configuration. Not completely secure, just better, especially if you have added a user specifically for use with SSH.
 
-### SSH für X-Window Programme
+### SSH for X Window Programs
 
-ssh -X ermöglicht die Verbindung zu einem entfernten Computer und die Anzeige von dessen Grafikserver X auf dem eigenen lokalen Computer. Den Befehl gibt man als Benutzer (nicht als Root) ein (und man beachte, dass X ein Großbuchstabe ist):
+ssh -X allows you to connect to a remote computer and display its graphics server X on your own local computer. You enter the command as user (not root) (and note that X is a capital letter):
 
 ~~~
 $ ssh -X username@xxx.xxx.xxx.xxx (or IP)
 ~~~
 
-Man gibt das Passwort für den Benutzernamen des entfernten Computers ein und startet eine graphische Anwendung in der Shell. Beispiele:
+One enters the password for the username of the remote computer and starts a graphical application in the shell. Examples:
 
 ~~~
-$ iceweasel ODER oocalc ODER oowriter ODER kspread
+$ iceweasel OR oocalc OR oowriter OR kspread
 ~~~
 
-Bei sehr langsamen Verbindungen kann es von Vorteil sein, die Komprimierungsoption zu nutzen, um die Übertragungsrate zu erhöhen. Bei schnellen Verbindungen kann es jedoch zum entgegengesetzten Effekt kommen:
+On very slow connections, it may be advantageous to use the compression option to increase the transfer rate. However, for fast connections, the opposite effect may occur:
 
 ~~~
 $ ssh -C -X username@xxx.xxx.xxx.xxx (or IP)
 ~~~
 
-Weitere Informationen:
+More information:
 
 ~~~
 $man ssh
 ~~~
 
-`Anmerkung:`  Falls ssh eine Verbindung verweigert und man eine Fehlermeldung erhält, sucht man in $HOME nach dem versteckten Verzeichnis `.ssh` , löscht die Datei `known_hosts`  und versucht einen neuen Verbindungsaufbau. Dieses Problem tritt hauptsächlich auf, wenn man die IP-Adresse dynamisch zugewiesen hat (DCHP).
+`Note:` If ssh refuses a connection and you get an error message, search in $HOME for the hidden directory `.ssh` , delete the file `known_hosts` and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
 
-### Kopieren scp via ssh
+### Copy scp via ssh
 
-**scp** ist ein Befehlszeilenprogramm (Terminal/CLI), um Dateien zwischen Netzwerkcomputern zu kopieren. Es verwendet ssh zur Authentifizierung und zum sicheren Datentransfer, daher verlangt scp zur Anmeldung ein Passwort bzw. eine Passphrase.
+**scp** is a command line utility (Terminal/CLI) to copy files between network computers. It uses ssh for authentication and secure file transfer, so scp requires a password or passphrase to log in.
 
-So man ssh-Rechte an einem Netzwerk-PC oder Netzwerk-Server besitzt, ermöglicht scp das Kopieren von Partitionen, Verzeichnissen oder Dateien zu oder von einem Netzwerkcomputer (bzw. zu einem Bereich auf selbigem), für den man Zugangsrechte besitzt. Dies kann zum Beispiel ein PC oder Server im lokalen Netzwerk sein oder aber auch ein Computer in einem fremden Netzwerk oder ein lokales USB-Laufwerk. Der Kopiervorgang kann zwischen entfernten Computern/Speichergeräten stattfinden.
+If you have ssh rights on a network PC or network server, scp allows you to copy partitions, directories, or files to or from a network computer (or an area on it) that you have access rights to. This can be, for example, a PC or server on the local network, or a computer on a remote network, or a local USB drive. The copy operation can take place between remote computers/storage devices.
 
-Es können rekursiv auch ganze Partitionen bzw. Verzeichnisse mit dem Befehl `scp -r`  kopiert werden. Zu beachten ist, dass scp -r auch symbolischen Links im Verzeichnisbaum folgt.
+It is also possible to recursively copy entire partitions or directories with the command `scp -r`. Note that scp -r also follows symbolic links in the directory tree.
 
-**Beispiele:**
+**Examples
 
-`Beispiel 1:`  Kopieren einer Partition:
+`Example 1:` Copying a partition:
 
 ~~~
 scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
 ~~~
 
-`Beispiel 2:`  Kopieren eines Verzeichnisses auf einer Partition, in diesem Fall eines Verzeichnisses mit der Bezeichnung "photos" im $HOME:
+`Example 2:` Copying a directory on a partition, in this case a directory named "photos" in $HOME:
 
 ~~~
 scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
 ~~~
 
-`Beispiel 3:`  Kopieren einer Datei in einem Verzeichnis einer Partition, in diesem Fall eine Datei im $HOME:
+`Example 3:` Copy a file in a directory of a partition, in this case a file in $HOME:
 
 ~~~
 scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
 ~~~
 
-`Beispiel 4:`  Kopieren einer Datei auf einer Partition:
+`Example 4:` Copying a file on a partition:
 
 ~~~
 scp <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
 ~~~
 
-`Beispiel 5:`  Falls man sich im Laufwerk bzw. Verzeichnis befindet, in das ein Verzeichnis bzw. eine Datei kopiert werden soll, verwendet man einen '**` **.** `** ' (Punkt):
+`Example 5:` If you are in the drive or directory to which a directory or file is to be copied, use a '**` **.** `** ' (dot):
 
 ~~~
 scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt**`** .** `** 
 ~~~
 
-Weitere Informationen:
+Additional information:
 
 ~~~
 man scp
 ~~~
 
-### SSH mit Dolphin
+### SSH with Dolphin
 
-Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das `sftp-` Protokoll benutzen, welches in ssh vorhanden ist.
+Both Dolphin and Krusader are capable of accessing data from a remote computer using the `sftp` protocol present in ssh.
 
-So wird es gemacht:  
-1) Man öffnet ein neues Dolphin-Fenster  
-2) Die Syntax in der Adress-Leiste ist: `sftp://username@ssh-server.com` 
+This is how it is done:  
+1) Open a new Dolphin window.  
+2) The syntax in the address bar is: `sftp://username@ssh-server.com`. 
 
-Beispiel 1: ein Dialog-Fenster öffnet sich und fragt nach dem SSH-Passwort. Man gibt das Passwort ein und klickt auf OK:
+Example 1: a dialog window opens and asks for the SSH password. One enters the password and clicks OK:
 
 ~~~
 sftp://siduction1@remote_hostname_or_ip
 ~~~
 
-Beispiel 2: es wird nicht nach einem Passwort gefragt, man wird direkt verbunden.
+Example 2: you are not asked for a password, you are connected directly.
 
 ~~~
 sftp://username:password@remote_hostname_or_ip
 ~~~
 
-Für eine LAN-Umgebung
+For a LAN environment
 
 ~~~
 sftp://username@10.x.x.x
-oder
+or
 sftp://username@198.x.x.x
-(Anmerkung: Bitte richtige IP eingeben!
-Ein Dialog-Fenster fragt nach Eingabe des ssh-Passworts: dieses eingeben und auf OK klicken)
+(Note: Please enter the correct IP!
+A dialog window asks for the ssh password: enter it and click OK)
 ~~~
 
-Eine SSH-Verbindung im Dolphin ist nun hergestellt. In diesem Dolphin-Fenster kann man mit den Dateien auf dem SSH-Server arbeiten, als wären es lokale Dateien.
+A SSH connection in Dolphin is now established. In this Dolphin window you can work with the files on the SSH server as if they were local files.
 
- `ANMERKUNG: wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:`
+ `NOTE: if a port other than 22 (default) is used, it must be specified when using sftp:`
 
 ~~~
 sftp://user@ip:port
 ~~~
 
-'user@ip:port' - dies ist die Standardsyntax für viele Protokolle/Programme wie sftp und smb.
+'user@ip:port' - this is the default syntax for many protocols/programs like sftp and smb.
 
-### SSHFS - auf einem entfernten Computer mounten
+### SSHFS - mount on a remote computer
 
-SSHFS ist eine einfache, schnelle und sichere Methode unter Verwendung von FUSE, um ein entferntes Dateisystem einzubinden. Auf Serverseite benötigt man ausschließlich einen laufenden ssh-daemon.
+SSHFS is a simple, fast and secure method using FUSE to mount a remote filesystem. On the server side, all you need is a running ssh daemon.
 
-Auf Seite des Clients muss vermutlich sshfs erst installiert werden:
+On the client side, you probably need to install sshfs first:
 
 
 ~~~
 apt update && apt install sshfs
 ~~~
 
-*`fuse3`* `und`  *`groups`*  `sind bereits auf dem ISO und müssen nicht extra installiert werden.` 
+*`fuse3`* `and` *`groups`* `are already on the ISO and do not need to be installed separately.` 
 
-Das Einbinden eines entfernten Dateisystems ist sehr einfach:
-
-~~~
-sshfs -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt
-~~~
-
-Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden.`Bitte beachten: der Doppelpunkt` "**`:`**" `ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!` 
-
-Nach erfolgter Einbindung verhält sich das entfernte Verzeichnis wie jedes andere lokale Dateisystem. Man kann wie auf einem lokalen Dateisystem nach Dateien suchen, diese lesen und ändern sowie Skripte ausführen.
-
-Die Einbindung des entfernten Hosts wird mit folgendem Befehl gelöst:
+Mounting a remote filesystem is very easy:
 
 ~~~
-fusermount -u lokaler_mountpunkt
+sshfs -o idmap=user username@remote_hostname:directory local_mountpoint
 ~~~
 
-Bei regelmäßiger Nutzung von sshfs empfiehlt sich ein Eintrag in /etc/fstab:
+If no specific directory is specified, the remote user's home directory will be mounted.`Please note: the colon` "**`:`**" `is mandatory even if no directory is specified!` 
+
+Once mounted, the remote directory behaves like any other local file system. You can browse, read and modify files and execute scripts just like on a local file system.
+
+The mounting of the remote host is solved with the following command:
+
+~~~
+fusermount -u local_mountpoint
+~~~
+
+If you use sshfs regularly, it is recommended to make an entry in /etc/fstab:
 
 ~~~
 sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
-Als nächstes muss das Kommentarzeichen vor `user_allow_other`  in `/etc/fuse.conf`  weggenommen werden:
+Next, remove the comment character before `user_allow_other` in `/etc/fuse.conf`:
 
 ~~~
 # Allow non-root users to specify the 'allow_other' or 'allow_root'
@@ -246,41 +246,41 @@ Als nächstes muss das Kommentarzeichen vor `user_allow_other`  in `/etc/fuse.co
 user_allow_other
 ~~~
 
-Dies ermöglicht jedem Nutzer der Gruppe fuse, das Dateisystem einzubinden bzw. zu lösen:
+This allows any user in the fuse group to mount or unmount the filesystem:
 
 ~~~
-mount /pfad/zum/mount/punkt # Einbindung
-umount /pfad/zum/mount/punkt # Lösen
+mount /path/to/mount/point # mount
+umount /path/to/mount/point # unmount
 ~~~
 
-Mit diesem Befehl prüft man, ob man Mitglied der Gruppe fuse ist:
+Use this command to check if you are a member of the fuse group:
 
 ~~~
 cat /etc/group | grep fuse
 ~~~
 
-Die Antwort sollte in etwa so aussehen:
+The answer should look something like this:
 
 ~~~
-fuse:x:117: <nutzername>
+fuse:x:117: <username>
 ~~~
 
-Falls der Nutzername (username) nicht gelistet ist, verwendet man als root den Befehl adduser:
+If the username is not listed, use the adduser command as root:
 
 ~~~
-adduser <nutzername> fuse
+adduser <username> fuse
 ~~~
 
-`Zur Beachtung: Der Benutzer wird erst nach einem neuerlichen Einloggen Mitglied der Gruppe "fuse" sein.` Jetzt sollte der gewünschte Nutzername gelistet und folgender Befehl ausführbar sein:
+`Note: The user will not be a member of the group "fuse" until he logs in again.` Now the desired username should be listed and the following command should be executable:
 
 ~~~
-mount lokaler_mountpunkt
+mount local_mountpoint
 ~~~
 
-und
+and
 
 ~~~
-umount lokaler_mountpunkt
+umount local_mountpoint
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Last edited: 2021-14-08</div>

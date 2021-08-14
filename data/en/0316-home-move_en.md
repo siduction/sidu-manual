@@ -1,38 +1,38 @@
-% home verschieben
+% home move
 
-## Das Verzeichnis home verschieben
+## Move the home directory
 
-> Wichtige Information  
-> Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
+> Important information  
+> An existing **/home** should not be used or shared with another distribution, as there may/will be conflicts with the configuration files.
 
-Deshalb raten wir generell davon ab eine /home-Partition anzulegen.  
-Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter **/Daten** eingehängt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
-Sofern Daten gemeinsam für parallele Installationen bereit stehen sollen, ist diese Vorgehensweise besonders ratsam.
+Therefore, we generally advise against creating a /home partition.  
+The directory **/home** should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created, and this should be mounted under **/data**, for example. The advantages for data stability, data backup and also in case of data recovery are almost immeasurable.  
+If data is to be shared for parallel installations, this procedure is particularly advisable.
 
-**Vorbereitungen**
+**Preparations
 
-An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.  
-Die Ausgangslage:
+Using a realistic example, we show the necessary steps.  
+The initial situation:
 
-* Die alte, mittlerweile zu kleine, Festplatte hat drei Partitionen ("/boot/efi", "/", "swap").
-* Es existiert bisher noch keine separate Daten-Partition.
-* Eine zusätzliche eingebaute Festplatte hat vier Partitionen mit ext4-Dateisystem.  
-  Davon benutzen wir die Partitionen "sdb4" für die neue Daten-Partition, die wir unter "/Daten" einhängen.
+* The old, meanwhile too small, hard disk has three partitions ("/boot/efi", "/", "swap").
+* There is no separate data partition yet.
+* An additional built-in hard disk has four partitions with ext4 file system.  
+  From this we use the partitions "sdb4" for the new data partition, which we mount under "/data".
 
-Unsere bisherige **/etc/fstab** hat den Inhalt:
+Our previous **/etc/fstab** has the content:
 
 ~~~
 $ cat /etc/fstab
 ...
-# <file system>				            <mount point>  <type>  <options>    <dump><pass>
-UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
-UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
-UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
-tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0
+# <file system> <mount point> <type> <options> <dump><pass>
+UUID=B248-1CCA /boot/efi vfat umask=0077 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
 ~~~
 
-Von der zusätzlichen Festplatte benötigen wir die UUID-Informationen. Siehe auch die Handbuchseite [Anpassung der fstab](#fstab-anpassen).  
-Der Befehl *blkid* gibt uns Auskunft.
+From the additional hard disk we need the UUID information. See also the manual page [customize fstab](#fstab-customize).  
+The command *blkid* gives us information.
 
 ~~~
 $ /sbin/blkid
@@ -40,161 +40,161 @@ $ /sbin/blkid
 /dev/sdb4: UUID="e2164479-3f71-4216-a4d4-af3321750322" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="000403b7-04"
 ~~~
 
-**Sicherung des alten /home**
+**Backup of the old /home**.
 
-Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern wir als *Root* alles unterhalb von "/home" in einem tar-Archiv. 
+Before making any changes to the existing file system, we backup as *root* everything below "/home" in a tar archive. 
 
 ~~~
 # cd /home
 # tar cvzpf somewhere/home.tar.gz ./
 ~~~
 
-**Mountpoint der Daten-Partition**
+**Mountpoint of the data partition**
 
-Wir erstellen das Verzeichnis "*Daten*" underhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
+We create the directory "*Data*" underneath "**/**" and mount the partition "sdb4" there. As owner and group we set our own names. A little later we copy the private data, but not the configurations, from the existing /home into it.
 
-Mountpoint erstellen und Partition einhängen (als root):
+Create mountpoint and mount partition (as root):
 
 ~~~
-# mkdir /Daten
-# chown <user>:<group> /Daten
-# mount -t ext4 /dev/sdb4 /Daten
+# mkdir /data
+# chown <user>:<group> /data
+# mount -t ext4 /dev/sdb4 /data
 ~~~
 
-### Private Daten verschieben
+### Move private data
 
-**Analyse von /home**
+**Analysis of /home**
 
-Wir schauen uns erst einmal unser Home-Verzeichnis genau an.  
-(Die Ausgabe wurde zur besseren Übersicht sortiert.)
+Let's first take a close look at our home directory.  
+(The output has been sorted for clarity).
 
 ~~~
 ~$ ls -la
-insgesamt 169
-drwxr-xr-x 19 <user> <group> 4096  4. Okt 2020  .
-drwxr-xr-x 62 <user> <group> 4096  4. Okt 22:17 ..
--rw-------  1 <user> <group>  330 15. Okt 2020  .bash_history
--rw-r--r--  1 <user> <group>  220  4. Okt 2020  .bash_logout
--rw-r--r--  1 <user> <group> 3528  4. Okt 2020  .bashrc
-drwx------ 19 <user> <group> 4096 15. Okt 2020  .cache
-drwxr-xr-x 22 <user> <group> 4096 15. Okt 2020  .config
--rw-r--r--  1 <user> <group>   24  4. Okt 2020  .dmrc
-drwx------  3 <user> <group> 4096 15. Okt 2020  .gconf
--rw-r--r--  1 <user> <group>  152  4. Okt 2020  .gitignore
-drwx------  3 <user> <group> 4096 15. Okt 2020  .gnupg
--rw-------  1 <user> <group> 3112 15. Okt 2020  .ICEauthority
--rw-r--r--  1 <user> <group>  140  4. Okt 2020  .inputrc
-drwx------  3 <user> <group> 4096  4. Okt 2020  .local
-drwx------  5 <user> <group> 4096 15. Okt 2020  .mozilla
--rw-r--r--  1 <user> <group>  807  4. Okt 2020  .profile
-drwx------  2 <user> <group> 4096  4. Okt 2020  .ssh
-drwx------  5 <user> <group> 4096 15. Okt 2020  .thunderbird
--rw-------  1 <user> <group>   48 15. Okt 2020  .Xauthority
--rw-------  1 <user> <group> 1084 15. Okt 2020  .xsession-errors
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Bilder
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Desktop
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Dokumente
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Downloads
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Musik
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Öffentlich
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Videos
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
+total 169
+drwxr-xr-x 19 <user> <group> 4096 4 Oct 2020 .
+drwxr-xr-x 62 <user> <group> 4096 4 Oct 22:17 ...
+-rw------- 1 <user> <group> 330 15 Oct 2020 .bash_history
+-rw-r--r-- 1 <user> <group> 220 4 Oct 2020 .bash_logout
+-rw-r--r-- 1 <user> <group> 3528 4 Oct 2020 .bashrc
+drwx------ 19 <user> <group> 4096 15 Oct 2020 .cache
+drwxr-xr-x 22 <user> <group> 4096 15 Oct 2020 .config
+-rw-r--r-- 1 <user> <group> 24 Oct 4, 2020 .dmrc
+drwx------ 3 <user> <group> 4096 15 Oct 2020 .gconf
+-rw-r--r-- 1 <user> <group> 152 4 Oct 2020 .gitignore
+drwx------ 3 <user> <group> 4096 15 Oct 2020 .gnupg
+-rw------- 1 <user> <group> 3112 15 Oct 2020 .ICEauthority
+-rw-r--r-- 1 <user> <group> 140 4 Oct 2020 .inputrc
+drwx------ 3 <user> <group> 4096 4 Oct 2020 .local
+drwx------ 5 <user> <group> 4096 Oct 15, 2020 .mozilla
+-rw-r--r-- 1 <user> <group> 807 4 Oct 2020 .profile
+drwx------ 2 <user> <group> 4096 4 Oct 2020 .ssh
+drwx------ 5 <user> <group> 4096 Oct 15, 2020 .thunderbird
+-rw------- 1 <user> <group> 48 15 Oct 2020 .Xauthority
+-rw------- 1 <user> <group> 1084 15 Oct 2020 .xsession-errors
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 images
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Desktop
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Documents
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Downloads
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Music
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Public
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Videos
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Templates
 ~~~
 
-Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit nur geringfügigen Änderungen.  
-In den, per default erstellten, Verzeichnissen "*Bilder*" bis "*Vorlagen*" am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zusätzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir später in die neue Daten-Partition.  
-Mit einem Punkt (.) beginnende, "versteckte" Dateien und Verzeichnisse enthalten die Konfiguration und programmspezifische Daten, die wir, von drei Ausnahmen abgesehen, nicht verschieben. Die Ausnahmen sind:  
-Der Zwischenspeicher "*.cache*",  
-der Internetbrowser "*.mozilla*" und  
-das Mailprogramm "*.thunderbird*".  
-Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch viele private Daten. Deshalb wandern sie zusätzlich auf die neue Daten-Partition.
+The output shows the home directory shortly after installation with only minor changes.  
+In the, by default created, directories "*Images*" to "*Templates*" at the end of the list, we put our private documents. These and possibly additional, self-created directories with private data, we move later into the new data partition.  
+"Hidden" files and directories beginning with a dot (.) contain configuration and program-specific data that we do not move, with three exceptions. The exceptions are:  
+The cache "*.cache*",  
+the internet browser "*.mozilla*" and  
+the mail program "*.thunderbird*".  
+All three reach a considerable volume over time and they also contain a lot of private data. Therefore they move additionally to the new data partition.
 
-**Kopieren der privaten Daten**
+**Copy the private data**
 
-Zum Kopieren benutzen wir den Befehl "*cp*" mit der Archiv-Option "*-a*", so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
-
-~~~
-~$ cp -a * /Daten/
-~$ cp -a .cache /Daten/
-~$ cp -a .mozilla /Daten/
-~$ cp -a .thunderbird /Daten/
-~~~
-
-Der erste Befehl kopiert alle Dateien und Verzeichnisse, außer die versteckten.  
-Die folgende Ausgabe zeigt das Ergebnis.
+For copying we use the command "*cp*" with the archive option "*-a*", this way the rights, owners and the timestamp are kept and it is copied recursively.
 
 ~~~
-~$ ls -la /Daten/
-insgesamt 45
-drwxr-xr-x 13 <user> <group> 4096  4. Mai 2020  .
-drwxr-xr-x 20 root     root  4096  4. Okt 2020  ..
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Bilder
-drwx------ 19 <user> <group> 4096 15. Okt 2020  .cache
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Desktop
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Dokumente
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Downloads
-drwx------  5 <user> <group> 4096 15. Okt 2020  .mozilla
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Musik
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Öffentlich
-drwx------  5 <user> <group> 4096 15. Okt 2020  .thunderbird
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Videos
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
+~$ cp -a * /data/
+~$ cp -a .cache /data/
+~$ cp -a .mozilla /data/
+~$ cp -a .thunderbird /data/
 ~~~
 
-Die Prüfung der Kopieraktion auf Fehler erfolgt mit dem Befehl **`dirdiff /home/<user>/ /Daten/`**. Es dürfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.
-
-Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der neuen Partition.
-
-**Löschen in /home**
-
-Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Musik*") um dort Dateien abzulegen. Um den Zugriff der Anwendungen auf die Verzeichnisse zu ermöglichen müssen diese zurück verlinkt werden, somit auf entsprechende Verzeichnisse der /daten Partition verweisen.
-
-> Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etwas falsches gelöscht wird.
+The first command copies all files and directories except the hidden ones.  
+The following output shows the result.
 
 ~~~
-~$ rm -r Bilder/ && ln -s /Daten/Bilder/ ./Bilder
-~$ rm -r Desktop/ && ln -s /Daten/Desktop/ ./Desktop
-~$ rm -r Dokumente/ && ln -s /Daten/Dokumente/ ./Dokumente
-~$ rm -r Downloads/ && ln -s /Daten/Downloads/ ./Downloads
-~$ rm -r Musik/ && ln -s /Daten/Musik/ ./Musik
-~$ rm -r Öffentlich/ && ln -s /Daten/Öffentlich/ ./Öffentlich
-~$ rm -r Videos/ && ln -s /Daten/Videos/ ./Videos
-~$ rm -r Vorlagen/ && ln -s /Daten/Vorlagen/ ./Vorlagen
-~$ rm -r .cache/ && ln -s /Daten/.cache/ ./.cache
-~$ rm -r .mozilla/ && ln -s /Daten/.mozilla/ ./.mozilla
-~$ rm -r .thunderbird/ && ln -s /Daten/.thunderbird/ ./.thunderbird
+~$ ls -la /data/
+total 45
+drwxr-xr-x 13 <user> <group> 4096 May 4, 2020 .
+drwxr-xr-x 20 root root 4096 Oct 4, 2020 ...
+drwxr-xr-x 2 <user> <group> 4096 Oct 4, 2020 images.
+drwx------ 19 <user> <group> 4096 15 Oct 2020 .cache
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Desktop
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Documents
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Downloads
+drwx------ 5 <user> <group> 4096 15 Oct 2020 .mozilla
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 music
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Public
+drwx------ 5 <user> <group> 4096 15 Oct 2020 .thunderbird
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Videos
+drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 templates
 ~~~
 
-Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz von weniger als 10 MB.
+Checking the copy action for errors is done with the command **`dirdiff /home/<user>/ /data/`**. Only the files and directories that we did not copy should be listed.
 
-### fstab anpassen
+Now all private data from the old *home* are additionally on the new partition.
 
-Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](0311-part-uuid_de.md#anpassung-der-fstab).  
-Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der *fstab* mit Datumsanhang:
+**Delete in /home**.
+
+For this action, all program windows should be closed, except for the terminal we use.  
+Depending on the desktop environment, various applications use the directories created by default during installation (e.g. "*music*") to store files there. In order to enable the access of the applications to the directories, these must be linked back, thus refer to appropriate directories of the /data partition.
+
+> Please check the commands carefully before executing them, so that you don't accidentally delete something wrong.
+
+~~~
+~$ rm -r images/ && ln -s /data/images/ ./images
+~$ rm -r Desktop/ && ln -s /Data/Desktop/ ./Desktop
+~$ rm -r Documents/ && ln -s /Data/Documents/ ./Documents
+~$ rm -r Downloads/ && ln -s /Data/Downloads/ ./Downloads
+~$ rm -r Music/ && ln -s /Data/Music/ ./Music
+~$ rm -r Public/ && ln -s /Data/Public/ ./Public
+~$ rm -r Videos/ && ln -s /Data/Videos/ ./Videos
+~$ rm -r Templates/ && ln -s /Data/Templates/ ./Templates
+~$ rm -r .cache/ && ln -s /data/.cache/ ./.cache
+~$ rm -r .mozilla/ && ln -s /data/.mozilla/ ./.mozilla
+~$ rm -r .thunderbird/ && ln -s /data/.thunderbird/ ./.thunderbird
+~~~
+
+The data remaining in the /home directory will only occupy less than 10 MB of space.
+
+### Adjust fstab
+
+In order for the new data partition to be mounted and available to the user at system startup, the *fstab* file must be modified. Additional information about the *fstab* can be found in our manual [Adaptation of the fstab](0311-part-uuid_en.md#anpassung-der-fstab).  
+We need the UUID information of the data partition already read out above. Before that we create a backup copy of the *fstab* with date attachment:
 
 ~~~
 # cp /etc/fstab /etc/fstab_$(date +%F) 
 # mcedit /etc/fstab
 ~~~
 
-Entsprechend unseres Beispiels fügen wir die folgende Zeile in die fstab ein.
+According to our example, we add the following line to fstab.
 
-**`UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten  ext4  defaults,noatime 0 2`**
+**`UUID=e2164479-3f71-4216-a4d4-af3321750322 /data ext4 defaults,noatime 0 2`**
 
-Die fstab sollte nun so aussehen:
+The fstab should now look like this:
 
 ~~~
-# <file system>				            <mount point>  <type>  <options>    <dump><pass>
-UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
-UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
-UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten      ext4    defaults,noatime 0 2
-UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
-tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0
+# <file system> <mount point> <type> <options> <dump><pass>
+UUID=B248-1CCA /boot/efi vfat umask=0077 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
+UUID=e2164479-3f71-4216-a4d4-af3321750322 /data ext4 defaults,noatime 0 2
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
 ~~~
 
-Man speichert die Datei mit F2 und beendet den Editor mit F10.
+Save the file with F2 and quit the editor with F10.
 
-Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.
+However, if anything goes wrong, we still have our data in the saved tar archive.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
+<div id="rev">Last edited: 2021-14-08</div>
