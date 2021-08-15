@@ -27,7 +27,7 @@ my ($FILE, $H_CLASS, $H_TEXT, $LINK);
 my (@QUELLE, @DATEIEN, @HLTEXT, @HLFILE);
 
 
-######## Read in files of the folder and process them individually.
+######### Read in files of the folder and process them individually.
 
 @DATEIEN = glob "*";
 
@@ -41,24 +41,24 @@ while (@DATEIEN) {
     @QUELLE=<DATEI>;
     close(DATEI);
 
-######## Start searching headings.
+
+######### Start searching headings.
 
     while (@QUELLE) {
         $_ = shift @QUELLE;
         chomp($_);
     
-        if (/^~{3,}/) {
-                # Remove code blocks.
+        if (/^ *~{3,}/) {           # Remove code blocks.
             $_ = shift @QUELLE;
-            until (/^~{3,}/) {
+            until (/^ *~{3,}/) {
                 $_ = shift @QUELLE;
             }
             $_ = shift @QUELLE;
         }
-                # Discard everything except headings.
-        next unless /^#{1,4}/;
-        
-                # Disassemble and reassemble lines.
+          
+        next unless /^#{1,4}/;      # Discard everything except headings.
+    
+                                    # Disassemble and reassemble lines.
         $H_CLASS = $_;
         $H_CLASS =~ s/^(#{1,4}) .*/$1/;
 
@@ -67,11 +67,8 @@ while (@DATEIEN) {
         
         $LINK = "\[\]\($FILE\#$H_TEXT\)";
         $LINK =~ s!(.*)!\L$1!;
-        $LINK =~ s!Ä!ä!g;
-        $LINK =~ s!Ö!ö!g;
-        $LINK =~ s!Ü!ü!g;
         $LINK =~ s!( )!-!g;
-        $_ = "$FILE   $H_CLASS $H_TEXT   Link: $LINK\n";
+        $_ = "$FILE   $H_CLASS $H_TEXT   link: $LINK\n";
         push @HLFILE,$_;
         
         $_ = sprintf "%s~%4s~%s~%s\n", $H_TEXT, $H_CLASS, $FILE, $LINK;
@@ -83,15 +80,15 @@ while (@DATEIEN) {
 ######## Write to output files.
 # (Comment out on the console for testing purposes)
 
-open (DATEI, ">", "../../development/en-headline-by-file") || die "Cannot write.\n";
+open (DATEI, ">", "../../development/en-headline-by-file") || die "cannot write.\n";
 print DATEI @HLFILE;
 #    print @HLFILE;
 close(DATEI);
 
 
-open (DATEI, ">", "../../development/en-headline-by-text") || die "Cannot write.\n";
+open (DATEI, ">", "../../development/en-headline-by-text") || die "cannot write.\n";
 foreach (@HLTEXT) {
-    s!(.*?)~(.*?)~(.*?)~(.*?)!$2 $1   $3   Link: $4!;
+    s!(.*?)~(.*?)~(.*?)~(.*?)!$2 $1   $3   link: $4!;
     print DATEI "$_";
 #    print "$_";
 }

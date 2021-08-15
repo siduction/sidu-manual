@@ -128,9 +128,6 @@ sub LINK_LINE {
         
         $ANKER = $TEXT;
         $ANKER =~ s!(.*)!\L$1!;
-        $ANKER =~ s!Ä!ä!g;
-        $ANKER =~ s!Ö!ö!g;
-        $ANKER =~ s!Ü!ü!g;
         $ANKER =~ s!( )!-!g;
         
         $LINK = "<a target= \"main\" href=\"$FILE\#$ANKER\">$TEXT</a>";
@@ -140,7 +137,7 @@ sub LINK_LINE {
 ######## Write to output files.
 # (For testing purposes on the console)
 
-open (DATEI, ">", "./html/tree-menue.html") || die "Cannot write.\n";
+open (DATEI, ">", "./html/tree-menue.html") || die "cannot write.\n";
     print DATEI @MENU_FILE;
 close(DATEI);
 
