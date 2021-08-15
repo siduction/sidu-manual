@@ -56,7 +56,7 @@ See if it worked
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
 WiFi.backend=iwd
-~~~~
+~~~
 
 + /etc/iwd/main.conf
 
@@ -129,14 +129,14 @@ In this case it is *wlan0* and it is running (*powered on*) in *station* mode.
 
 Now we scan for an active network
 
-~~sh
+~~~sh
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ~~~
 
 Now we can connect to our network.
 
-~~sh
+~~~sh
 [iwd]# station wlan0 connect SSID
 ~~~
 
@@ -155,7 +155,7 @@ We are asked for the password and we should be connected to our network, we can 
 
 The whole thing can be abbreviated with the following command, so you have all the necessary information!
 
-~~sh
+~~~sh
 iwctl --passphrase passphrase station device connect SSID
 ~~~
 

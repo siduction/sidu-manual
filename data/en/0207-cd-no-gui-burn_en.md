@@ -22,7 +22,7 @@ burniso burns ISO image files using wodim in disk-at-once mode with a fixed burn
 
 As $user:
 
-~~sh
+~~~sh
 $ cd /path/to/ISO
 $ burniso
 ~~~

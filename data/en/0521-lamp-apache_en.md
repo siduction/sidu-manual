@@ -98,7 +98,7 @@ a2enconf NAME_Of_FILE.conf
 
 Activates the configuration. Deactivation is done accordingly with:
 
-~~sh
+~~~sh
 a2disconf NAME_OR_FILE.conf 
 ~~~
 
@@ -134,7 +134,7 @@ Now we come back to our *LAMP test server for developers* and adjust the configu
 
    and insert the following content, save the file and exit the editor.
 
-   ~~apache
+   ~~~apache
    <VirtualHost *:80>
 	   ServerName server1.org
 	   ServerAlias www.server1.org
@@ -147,7 +147,7 @@ Now we come back to our *LAMP test server for developers* and adjust the configu
 
    Then we change the configuration to the new "*VirtualHost*" and announce the changes to the Apache web server.
 
-   ~~sh
+   ~~~sh
    # a2ensite server1.conf 
      Enabling site server1.
    [...]
@@ -171,7 +171,7 @@ If a content management system (software for collaborative editing of website co
 
 1. create group and assign it to the user.
 
-   ~~sh
+   ~~~sh
    groupadd developer
    adduser USERNAME developer
    chgrp developer /var/www/html
@@ -186,7 +186,7 @@ If a content management system (software for collaborative editing of website co
 2. set SGID bit for "*DocumentRoot*",  
    so that all added directories and files inherit the group "*developer*".
 
-   ~~sh
+   ~~~sh
    chmod g+s /var/www/html
    ~~~
 
@@ -194,7 +194,7 @@ If a content management system (software for collaborative editing of website co
    so that unauthorized people don't get access and the Apache web server runs properly.  
    Let's look at the current permissions:
 
-   ~~sh
+   ~~~sh
    # ls -la /var/www/html
    total 24
    drwxr-sr-x 2 root developer 4096 Jan 9 19:32 .           (DocumentRoot with SGID bit)
@@ -205,7 +205,7 @@ If a content management system (software for collaborative editing of website co
 
    For "*DocumentRoot*" we change the owner to "*www-data*", give write permission to the group and revoke read permission from everyone else as well. All recursive.
 
-   ~~sh
+   ~~~sh
    chown -R www-data /var/www/html
    chmod -R g+w /var/www/html
    chmod -R o-r /var/www/html
@@ -213,7 +213,7 @@ If a content management system (software for collaborative editing of website co
 
    We check the result again.
 
-   ~~sh
+   ~~~sh
    # ls -la /var/www/html
    total 24
    dr-xrws--x 2 www-data developer 4096 Jan 9 19:32 .
@@ -233,7 +233,7 @@ If a content management system (software for collaborative editing of website co
 
 For static websites, a content management system is often not necessary and only means another security risk and increased maintenance effort. In addition to the settings made before, the write permission to "*DocumentRoot*" can be revoked from the Apache web server to strengthen security, because in case an attacker finds a hole in Apache, this will not give him write permission to "*DocumentRoot*".
 
-~~sh
+~~~sh
 chmod -R u-w /var/www/html
 ~~~
 
@@ -243,7 +243,7 @@ Important safeguards are already included in the file "*/etc/apache2/apache2.con
 
 The following three directives prevent access to the root file system and then release the two directories used by the Apache web server, "*/usr/share*" and "*/var/www*".
 
-~~apacheconf 
+~~~apacheconf 
 <Directory />
 	Options FollowSymLinks
 	AllowOverride None
@@ -266,7 +266,7 @@ The "*FollowSymLinks*" and "*Indexes*" options pose a security risk and should b
 
 The following directive disables the display of the files "*.htaccess*" and "*.htpasswd*".
 
-~~apacheconf
+~~~apacheconf
 <FilesMatch "^\.ht">
 	Require all denied
 </FilesMatch>
@@ -281,7 +281,7 @@ The following directive disables the display of the files "*.htaccess*" and "*.h
 
   It is recommended to remove "*FollowSymLinks*" and place the project data all below "*DocumentRoot*". For the option "*Indexes*" the entry has to be changed to
 
-  ~~apacheconf
+  ~~~apacheconf
   Options -Indexes
   ~~~
 
@@ -298,7 +298,7 @@ The following directive disables the display of the files "*.htaccess*" and "*.h
 
   we can use the "*\<Directory\>*" block to block all IP addresses except those listed in it.
 
-  ~~apacheconf
+  ~~~apacheconf
   <Directory "/var/www/html">
 	  Order deny,allow
 	  Deny from all
@@ -381,7 +381,7 @@ The ssl module is activated in Apache by default. It is enough to edit the file 
 
 The extended "*server1.conf*" then has the following content:
 
-~~apacheconf
+~~~apacheconf
 <VirtualHost *:80>
     ServerName server1.org
     ServerAlias www.server1.org
@@ -420,7 +420,7 @@ The extended "*server1.conf*" then has the following content:
 
 In case our finished project is later located at a hoster without access to "*ServerRoot*" (this is the rule), we can add a rewrite statement to the "*.htaccess*" file in "*DocumentRoot*" or create the file with the rewrite statement.
 
-~~apacheconf
+~~~apacheconf
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} !=on

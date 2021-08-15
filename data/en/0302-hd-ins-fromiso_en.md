@@ -75,7 +75,7 @@ FLL_GRUB2_CHEATCODE="noeject nointro"
 
 Save the changes, close the editor and execute the following command as root in a terminal:
 
-~~sh
+~~~sh
 update-grub
 ~~~
 

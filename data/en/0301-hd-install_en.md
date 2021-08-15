@@ -61,7 +61,7 @@ The following console command is used to create a list of installed software pac
 The best way is to copy this text file to a USB stick or a disk of your choice.  
 On the target installation, the text file is copied to $HOME and used as a reference to install the required program packages. The complete package list can be called via
 
-~~sh
+~~~sh
 ~# apt install $(/home/username/installed.txt)
 ~~~
 
@@ -144,13 +144,13 @@ siduction specific desktop icons (for the manual and IRC) must be added yourself
 
 To remove a user
 
-~~sh
+~~~sh
 ~# deluser <username>
 ~~~
 
 More information:
 
-~~sh
+~~~sh
 man adduser
 man deluser
 ~~~
