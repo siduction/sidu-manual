@@ -42,15 +42,15 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
 + **Edit**
 
     Edit is the 2nd menu item from the left. It shows three grayed out options that are very important and explained below.  
-    + undo last operations ("Undo last operations"),  
-    + clear all operations ("clear all operations") and  
-    + execute all operations ("apply all operations").
+    + Undo Last Operations,  
+    + Clear All Operations and  
+    + Apply All Operations.
 
-+ **View
++ **View**
 
-    The next menu item offers the display options *"Drive Information "* and *"Pending Operations "*.
+    The next menu item offers the display options *"Device Information "* and *"Pending Operations "*.
 
-  + Drive Information ("Device Information")  
+  + Device Information  
     The left frame contains details of the drives such as model, size, etc., which are important if there are multiple disks in the system. It can be used to check whether the correct disk has been selected for formatting.
 
   + Pending Operations  
@@ -60,18 +60,18 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
 
     ![GParted disk information](./images/gparted/gparted02-en.png)
 
-+ **Drive
++ **Device**
 
-  Behind the menu item *"Create partition table "* are actually two options
+  Behind the menu item *"Create Partition Table... "* are actually two options
 
-  1. create a new (empty) partition table of the **same** type, and thus remove all old partitions and data in the fastest way.
+  1. Create a new (empty) partition table of the **same** type, and thus remove all old partitions and data in the fastest way.
 
-  2. make a **change** of the partition table type. It makes sense to change from **msdos-MBR** to **gpt-UEFI** or vice versa. Also here all data will be lost.  
+  2. Make a **change** of the partition table type. It makes sense to change from **msdos-MBR** to **gpt-UEFI** or vice versa. Also here all data will be lost.  
     In 2009, the UEFI with GPT was introduced, has since then gradually spread, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost.     More information about UEFI and GPT can be found on the manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk).
 
   ![GParted partition table](./images/gparted/gparted03-en.png)
 
-  The selection *"Try data recovery "* offers the chance to get the data despite a defective partition table.
+  The selection *"Attempt Data Rescue... "* offers the chance to get the data despite a defective partition table.
 
   ![GParted data recovery](./images/gparted/gparted04-en.png)
 
@@ -87,7 +87,7 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
 
   ![GParted New Partition](./images/gparted/gparted05-en.png)
 
-+ **Resize/Move**.
++ **Resize/Move**
 
   The partition can be resized, enlarged and moved with the mouse. Alternatively one enters the new values into the provided fields.
 
@@ -95,13 +95,13 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
 
 + **If a mistake was made**
 
-  In the "Edit" menu there is the possibility *"Undo last operation "* or *"Delete all operations "*. The area is marked in green.
+  In the "Edit" menu there is the possibility *"Undo Last Operation "* or *"Delete All Operations "*. The area is marked in green.
 
   ![Undo GParted](./images/gparted/gparted06-en.png)
 
-+ **Apply
++ **Apply**
 
-  No changes have been made to the drives yet. When you are sure that all the intended changes are correct, select *"Apply all operations "* from the "Edit" menu. The following dialog will appear, which should be confirmed.
+  No changes have been made to the drives yet. When you are sure that all the intended changes are correct, select *"Apply All Operations "* from the "Edit" menu. The following dialog will appear, which should be confirmed.
 
   ![GParted Execute and save](./images/gparted/gparted09-en.png)
 
