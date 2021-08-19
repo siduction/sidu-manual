@@ -62,7 +62,7 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
 
 + **Device**
 
-  Behind the menu item *"Create Partition Table... "* are actually two options
+  Behind the menu item *"Create Partition Table... "*, there are actually two options:
 
   1. Create a new (empty) partition table of the **same** type, and thus remove all old partitions and data in the fastest way.
 
