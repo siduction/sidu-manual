@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Partitioning with gdisk
@@ -29,8 +29,8 @@ For this purpose, and if older hardware is used, we better use *fdisk*, which cr
 
 **Important notes**
 
-+ The terms UEFI and EFI are interchangeable and refer to the same concept - **U**nified **E**xtensible **F**irmware **I**nterface (English for Unified Extensible Firmware Interface).  
-  See [Wikipedia UEFI](https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface).  
++ The terms UEFI and EFI are interchangeable and refer to the same concept - **U**nified **E**xtensible **F**irmware **I**nterface.  
+  See [Wikipedia UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface).  
   The GTP is a part of the UEFI standard.
 
 + Use GPT disks
@@ -54,11 +54,11 @@ Besides the command line program gdisk, graphical applications like *gparted* an
 
 + man gdisk
 
-+ [GPT fdisk Tutorial by Roderick W. Smith (English)](http://www.rodsbooks.com/gdisk/)
++ [GPT fdisk Tutorial by Roderick W. Smith](http://www.rodsbooks.com/gdisk/)
 
-+ [Wikipedia UEFI operating system support](https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Betriebssysteme)
++ [Wikipedia UEFI operating system support](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Operating_systems)
 
-+ [Wikipedia GUID partition table (German)](https://de.wikipedia.org/wiki/GUID_Partition_Table)
++ [Wikipedia GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
 
 ### Partitioning a hard disk
 
@@ -127,7 +127,7 @@ With *Verify* the partitioning is checked and possible errors are shown.
 ![Partition Verify](./images/cgdisk/cgdisk_07.png)
 
 Here everything is ok.  
-If errors are reported, we mark the partition and use the command *Info*, and decide if the partition has to be deleted and recreated and if thereby e.g. the size has to be changed. If a repair is not possible with these means, the [Advanced commands from gdisk](0313-part-gdisk_en.md#advanced-commands-from-gdisk) are available to experienced users.
+If errors are reported, we mark the partition and use the command *Info*, and decide if the partition has to be deleted and recreated and if thereby e.g. the size has to be changed. If a repair is not possible with these means, the [Advanced commands from gdisk](0313-part-gdisk_en.md#advanced-commands-of-gdisk) are available to experienced users.
 
 #### Delete partition
 
@@ -216,7 +216,7 @@ If swap was detected correctly:
 swapoff /dev/sdb4
 ~~~
 
-**Next, it is essential to reboot the system so that the new partitioning and file system scheme is read by the kernel. 
+**Next, it is essential to reboot the system so that the new partitioning and file system scheme is read by the kernel.**
 
 ### Booting with GPT-UEFI or GPT-BIOS
 
@@ -308,4 +308,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *recovery & transformation* and *experts* should only be used if you are very familiar with GPT. As a "non-expert" you should only use these menus if a disk is damaged. Before any drastic action the option **b** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021-22-08</div>

@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Partitioning with Gparted
@@ -26,7 +26,7 @@ Creating or editing partitions is not an everyday task. Therefore it is a good i
 + Regarding the naming of storage devices consult the chapter about [UUID, partition naming and fstab](0311-part-uuid_en.md#uuid---naming-of-block-devices), because siduction uses naming by UUID by default.
 
 + Resizing **NTFS partitions** requires an immediate reboot after execution, no further changes to partitions may be made before that. This inevitably led to errors.
-[Please read on here.](0312-part-gparted_en.md#ntfs-partition-sizes-with-gparted-change)
+[Please read on here.](0312-part-gparted_en.md#changing-ntfs-partition-sizes-with-gparted)
 
 + A partition needs a file system. Linux can work on and with different file systems.  
   For normal use, we recommend the ext4 file system.  
@@ -82,7 +82,7 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
   1. Create a new (empty) partition table of the **same** type, and thus remove all old partitions and data in the fastest way.
 
   2. Make a **change** of the partition table type. It makes sense to change from **msdos-MBR** to **gpt-UEFI** or vice versa. Also here all data will be lost.  
-    In 2009, the UEFI with GPT was introduced, has since then gradually spread, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost.     More information about UEFI and GPT can be found on the manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk).
+    In 2009, the UEFI with GPT was introduced, has since then gradually spread, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost.     More information about UEFI and GPT can be found on the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
 
   ![GParted partition table](./images/gparted/gparted03-en.png)
 
@@ -98,7 +98,7 @@ The first menu item 'GParted' opens a drop-down list, to read the drives again, 
 
 + **Create a new partition**
 
-  In the toolbar, the New button allows to create a new partition if an unordered area was previously selected. A new window allows to specify the size for a primary, extended or logical partition and to specify the file system.
+  In the toolbar, the New button allows to create a new partition if an unordered area was previously selected. A new window allows to specify the size and the file system type for a primary, extended or logical partition.
 
   ![GParted New Partition](./images/gparted/gparted05-en.png)
 
@@ -165,11 +165,11 @@ We can see that the partition contained in the *fstab* as the last entry and mou
 
 ### Changing NTFS partition sizes with GParted
 
-**Resizing NTFS partitions requires an immediate reboot after execution, no further changes to partitions may be made before then. This inevitably led to errors.
+**Resizing NTFS partitions requires an immediate reboot after execution, no further changes to partitions may be made before then. This inevitably led to errors.**
 
 * After restarting Windows and the Windows logo, a window of **checkdisk** appears, which says that C:\\ is checked for errors.
 * Please let this AUTOCHECK run to the end: Windows must check the file system after a resize.
 * After the check, the computer is automatically rebooted the second time. This ensures that the system can run without problems.
 * After the restart, Windows will work properly. However, you have to let the system finish booting and wait for the login window!
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021-22-08</div>

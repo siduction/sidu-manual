@@ -4,13 +4,13 @@ This area is to be removed when the status RC3 is reached. The first line of the
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Local APT mirror
@@ -68,7 +68,7 @@ The cache, where all downloaded packages will be stored in the future, is locate
 and the configuration files in  
 */etc/apt-cacher/* .
 
-**server configuration**.
+**server configuration**
 
 We change to the directory */etc/apt-cacher/* and edit the file "*apt-cacher.conf*".
 
@@ -77,8 +77,8 @@ We change to the directory */etc/apt-cacher/* and edit the file "*apt-cacher.con
 /etc/apt-cacher# mcedit apt-cacher.conf
 ~~~
 
-Now, at about line 160, we look for the directive "*allowed_hosts*". The conn character (**#**) at the beginning of the line is removed to allow clients to contact the APT proxy server.  
-For security reasons, we replace the wildcard character (**\***). which allows everyone to access, with the IP addresses of the clients.
+Now, at about line 160, we look for the directive "*allowed_hosts*". The comment sign (**#**) at the beginning of the line is removed to allow clients to contact the APT proxy server.  
+For security reasons, we replace the wildcard character (**\***) which allows everyone to access, with the IP addresses of the clients.
 
 ~~~
 #allowed_hosts = *
@@ -153,4 +153,4 @@ A subsequent
 should run without error messages.  
 The first call of **`# apt full-upgrade`** on a client loads all new packages into the cache of the APT proxy server. Thus, this process takes the same amount of time as before. The further accesses of the clients make use of the cache and run then substantially faster, without needing bandwidth again
 
-<div id="rev">Page last updated 2021-14-08</div>
+<div id="rev">Page last updated 2021-22-08</div>

@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Install new kernel
@@ -60,4 +60,4 @@ To remove old kernels the script "kernel-remover" is installed:
 kernel-remover
 ~~~
 
-<div id="rev">page last updated 2021-14-08</div>
+<div id="rev">page last updated 2021-22-08</div>

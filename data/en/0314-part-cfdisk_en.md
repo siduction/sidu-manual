@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Partitioning with cfdisk
@@ -19,15 +19,15 @@ END   INFO AREA FOR THE AUTHORS
 
 **fdisk** and **cfdisk** creates MBR partition tables based on the BIOS. In 2000 the introduction of GPT partition tables based on UEFI began. 
 
-The newer **G**lobally Unique Identifier **P**artition **T**able (GPT) standard, which is part of the UEFI standard, has replaced MBR on current hardware and allows disks/partitions larger than 2 TBytes and a theoretically unlimited number of primary partitions. More information about this can be found in [Wikipedia GUID partition table](https://de.wikipedia.org/wiki/GUID_Partition_Table).
+The newer **G**lobally Unique Identifier **P**artition **T**able (GPT) standard, which is part of the UEFI standard, has replaced MBR on current hardware and allows disks/partitions larger than 2 TBytes and a theoretically unlimited number of primary partitions. More information about this can be found in [Wikipedia GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table).
 
 We recommend partitioning with *fdisk* and *cfdisk* only for older hardware.  
-For creating GPT partition tables please refer to the manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk).
+For creating GPT partition tables please refer to the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
 
 ### Naming storage devices
 
 **Please NOTE:**  
-siduction uses UUID in fstab for naming storage devices. Please refer to the chapter [naming by UUID](part-uuid_en.md#uuid---naming-of-block-devices).
+siduction uses UUID in fstab for naming storage devices. Please refer to the chapter [naming by UUID](0311-part-uuid_en.md#uuid---naming-of-block-devices).
 
 **Disks**
 
@@ -101,9 +101,9 @@ Primary or extended partitions are given a designation between 1 and 4 (for exam
 6 partitions (3 primary, 1 extended and 3 logical):
 
 |sda1|sda2|sda3|-
-                 | contains only 
+                 |       contains only 
                |sda4| -> references to
-                 | logical partitions
+                 |       logical partitions
                  |
                |sda5|sda6|sda7|
 ~~~
@@ -200,7 +200,7 @@ A selection list appears in which the partition type is selected with the arrow 
 
 For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the **Bootable** command (note: when installing to an external hard drive, a partition must be made bootable).
 
-Write #### partition table
+#### Write partition table
 
 When everything is partitioned, the result can be saved with the command **Write**. The partition table is now written to the disk.
 
@@ -215,7 +215,7 @@ With the command **Quit** we leave the program. After finishing **cfdisk** and b
 ### Formatting partitions
 
 There are several file systems for Linux that can be used. There are **Ext2**, **Ext4**, **ReiserFs** and for more experienced users **XFS**, **JFS** and **ZFS**.  
-Ext2 may be of interest when accessing from Windows, as there are Windows drivers for this file system. [Ext2 file system for MS Windows (drivers and English documentation)](http://www.fs-driver.org/).
+Ext2 may be of interest when accessing from Windows, as there are Windows drivers for this file system. [Ext2 file system for MS Windows (drivers and documentation)](http://www.fs-driver.org/).
 
 For normal use we recommend the ext4 file system. Ext4 is the default file system of siduction. 
 
@@ -272,4 +272,4 @@ If the swap partition is recognized correctly, we restart the computer.
 
 Now the installation can begin.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021-22-08</div>
