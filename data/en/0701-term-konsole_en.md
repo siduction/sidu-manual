@@ -1,3 +1,18 @@
+BEGINNING   INFO AREA FOR THE AUTHORS
+This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
+**Status: RC1**
+
+Necessary work:
+
++ check intern links  
++ check extern links  
++ check layout  
++ check spelling  
+
+Work done
+
+
+END   INFO AREA FOR THE AUTHORS  
 % Terminal - command line
 
 ## Terminal - command line

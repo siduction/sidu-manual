@@ -1,3 +1,33 @@
+BEGINNING   INFO AREA FOR THE AUTHORS
+This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
+**Status: RC1**
+
+Necessary work:
+
++ check intern links  
++ check extern links  
++ check layout  
++ check spelling  
+
+Work done
+
+
+END   INFO AREA FOR THE AUTHORS  
+BEGINNING   INFO AREA FOR THE AUTHORS  
+This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
+**Status: RC1**
+
+Necessary work:
+
++ check intern links  
++ check extern links  
++ check layout  
++ check spelling  
+
+Work done
+
+
+END   INFO AREA FOR THE AUTHORS  
 % A small APT cookbook
 
 ## APT package management
@@ -11,18 +41,18 @@ A complete description of the APT system can be found in [Debian's APT-HOWTO](ht
 
 | apt | apt-get | short info |
 | --- | --- | --- |
-| [apt update](#update-the-system) | apt-get update | Refresh the package database. |
+| [apt update](0705-sys-admin-apt_en.md#apt-update) | apt-get update | Refresh the package database. |
 | apt upgrade | apt-get upgrade | Update the system to the latest available package versions. |
-| apt full-upgrade](#full-upgrade-execute) | apt-get dist-upgrade | Upgrades the system to the latest available package versions even if it means removing already installed packages. |
+| [apt full-upgrade](0705-sys-admin-apt_en.md#updating-the-system) | apt-get dist-upgrade | Upgrades the system to the latest available package versions even if it means removing already installed packages. |
 | apt full-upgrade -d | apt-get dist-upgrade -d | Upgrades the system as before, but only downloads and does not install anything.  |
-| [apt install](#packages-install) | apt-get install | Install one or more packages. |
-| [apt remove](#remove-packages) | apt-get remove | Remove one or more packages. |
-| [apt purge](#remove-packages) | apt-get purge | Remove one or more packages including configuration files. |
-| - [apt-mark hold](#hold-or-downgrade-a-package) | Prevents apt from installing another version of the package.  |
-| - | [apt-mark unhold](#hold-or-downgrade-a-package) | Cancels the 'apt-mark hold' command. |
-| [apt search](#package-search-in-terminal) | apt-get search | Searches for packages according to the pattern entered. (regex possible) |
-| [apt show](#package-search-in-terminal) | apt-cache show | Display the details of a package. |
-| [apt list](#package-search-in-terminal) | apt-cache policy | Show the installed, or installable version of a package. |
+| [apt install](0705-sys-admin-apt_en.md#install-packages) | apt-get install | Install one or more packages. |
+| [apt remove](0705-sys-admin-apt_en.md#remove-packages) | apt-get remove | Remove one or more packages. |
+| [apt purge](0705-sys-admin-apt_en.md#remove-packages) | apt-get purge | Remove one or more packages including configuration files. |
+| - [apt-mark hold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Prevents apt from installing another version of the package.  |
+| - | [apt-mark unhold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Cancels the 'apt-mark hold' command. |
+| [apt search](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-get search | Searches for packages according to the pattern entered. (regex possible) |
+| [apt show](0705-sys-admin-apt_en.md#package-search-in-the-terminal) | apt-cache show | Display the details of a package. |
+| [apt list](0705-sys-admin-apt_en.md#package-search-in-the-terminal) | apt-cache policy | Show the installed, or installable version of a package. |
 
 ### sources.list - List of sources
 
@@ -216,7 +246,7 @@ The packages listed here were removed without purgen.
 
 Sometimes it may be necessary to revert to an earlier version of a package because the latest version has a serious bug.
 
-**Hold
+**Hold**
 
 ~~~
 apt-mark hold <package>
@@ -272,7 +302,7 @@ apt install kmahjongg / apt full-upgrade
 
 ### Updating the system
 
-An upgrade of the whole system is performed with this command: **apt full-upgrade**. Before such an action, the current upgrade warnings on the main siduction page should be followed to check whether packages of one's own system are affected. If an installed package should be kept, i.e. put on hold, please refer to the [downgrade or "hold"](#hold-or-downgrade-a-package) section of a package.
+An upgrade of the whole system is performed with this command: **apt full-upgrade**. Before such an action, the current upgrade warnings on the main siduction page should be followed to check whether packages of one's own system are affected. If an installed package should be kept, i.e. put on hold, please refer to the [downgrade or "hold"](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) section of a package.
 
 A simple "apt upgrade" of Debian Sid is usually not recommended. However, it can be helpful if there is a situation with many packages held or to be removed. Here an **apt upgrade** can update packages not affected by the situation.
 
@@ -281,7 +311,7 @@ A system update should be performed regularly, every one to two weeks has proven
 
 Experience shows that longer than two, maximum three months should not be waited. Special attention should be paid to program packages which do not come from the siduction or Debian repositories or which have been compiled by yourself, as they may lose their functionality after a system update via full-upgrade due to incompatibilities.
 
-**Update not with live media**.
+**Update not with live media**
 
 The possibility of updating a siduction installation using a live medium does not exist. Below we describe in detail the upgrade process and why "*apt*" should be used.
 
@@ -328,7 +358,7 @@ Set up debtags (1.6.6) ...
 Install new version of the configuration file /etc/debtags/sources.list ...
 ~~~
 
-**(Download only)
+**Download (only)**
 
 A little known but great option is the -d option:
 
@@ -494,4 +524,4 @@ In addition, a lot of information about Debian packages is provided, including w
 
 A complete description of the APT system can be found in [Debian's APT-HOWTO](https://wiki.debian.org/DebianPackageManagement).
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021-22-08</div>
