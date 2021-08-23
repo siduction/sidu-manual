@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Installation on HDD
@@ -19,23 +19,23 @@ END   INFO AREA FOR THE AUTHORS
 
 ### Data backup
 
-**IMPORTANT: ALWAYS CREATE A DATA BACKUP!  
+> **IMPORTANT: ALWAYS CREATE A DATA BACKUP!**  
 > If the installation target is already home to an operating system, or data should be preserved, please always create a backup before installing siduction.  
 
 ### Installation preparations
 
 First, change the boot order to the medium to be booted (DVD, flashcard or USB stick). On most computers, pressing the 'F2' or 'Del' key during the boot process takes you to the UEFI or BIOS setup. Alternatively, pressing `F12`, `F11` `F7` or `F8` (depending on the hardware manufacturer's specifications) during the boot process will then select the live media as the boot drive.
 
-siduction usually starts without problems now. If this is not the case, boot options (cheat codes) which can be passed to the boot manager are helpful. The manual page [Cheatcodes](cheatcodes_en.md#bootoptions-cheatcodes) explains the possible options.  
+siduction usually starts without problems now. If this is not the case, boot options (cheat codes) which can be passed to the boot manager are helpful. The manual page [Cheatcodes](0204-cheatcodes_en.md#boot-options-cheatcodes) explains the possible options.  
 At the start screen of the live medium, whichever is applicable, navigate with the arrow keys to "From CD/DVD/ISO: ..." or "From Stick/HDD: ..." and press the key 'e'. This takes you to the edit kernel command line to add the cheatcodes. With the key `F10` the boot process is continued.
 
 **Before the installation please remove all USB sticks, cameras etc.**.
 
-If siduction is not to be installed from, but **to a USB medium**, a different procedure is necessary. See the manual page [Installation to a USB medium](0302-hd-ins-fromiso_en.md#fromiso).
+If siduction is not to be installed from, but **to a USB medium**, a different procedure is necessary. See the manual page [Installation to a USB medium](0303-hd-ins-opts-oos_en.md#installation-on-usb-stick---memory-card).
 
 **HDD, RAM and Swap**
 
-The minimum requirements for installing the siduction variants are described on the manual page [Live ISO content](cd-content_en.md#minimum-system-requirements).  
+The minimum requirements for installing the siduction variants are described on the manual page [Live ISO content](0201-cd-content_en.md#minimum-system-requirements).  
 With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. 
 A swap partition should be created on PCs with a maximum of 1 GB RAM. More than 2 GB swap is not normally required and is only really useful for suspend-to-disk and server systems.
 
@@ -48,14 +48,14 @@ The partitioning of the drives depends on many factors:
 + Single-boot or dual-boot with an already installed system (Windows, Linux, MAC)
 + Sharing of data for the installed systems
 
-Examples and sizes for different installation situations are described on the manual page [partitioning](part-size-examp_en.md#partitioning-of-installation-media).  
+Examples and sizes for different installation situations are described on the manual page [partitioning](0310-part-size-examp_en.md#partitioning-of-installation-media).  
 We recommend leaving the **/home** directory on the root partition. The **/home** directory should be the place where individual configurations are stored, and only those. For all other private data, including .ssh, .gnupg and the mail archives, a separate data partition should be created and linked to the **home** directory if necessary. The advantages for data stability, data backup and also in case of data recovery are almost immeasurable.  
 
 The partitioning can be done during the installation, or already in advance during the live session with the following programs:  
-[Gparted](part-gparted_en.md#partition-with-gparted), a graphical user interface program for GTK desktops  
+[Gparted](0312-part-gparted_en.md#partition-with-gparted), a graphical user interface program for GTK desktops  
 KDE Partition Manager, another graphical user interface program for Qt desktops  
-[gdisk](part-gdisk_en.md#partition-with-gdisk), recommended for UEFI hardware for GTP partition tables  
-[cfdisk](part-cfdisk_en.md#partition-with-fdisk), only for older hardware with traditional BIOS and MBR partition tables
+[gdisk](0313-part-gdisk_en.md#partition-with-gdisk), recommended for UEFI hardware for GTP partition tables  
+[cfdisk](0314-part-cfdisk_en.md#partition-with-fdisk), only for older hardware with traditional BIOS and MBR partition tables
 
 ### File systems
 
@@ -131,7 +131,7 @@ During the installation, if possible, the computer should be connected to the In
    "Use the same password for the administrator account".  
    are explicitly warned here. They represent a security risk in themselves (see also [sudo](term-console_en.md#work-as-root)). If both options are enabled, entering passwords is just a farce!
 
-After pressing the *Next* button, a summary of all previously made entries appears. Now there is still the possibility to make changes via *Back*. If we are satisfied with the result, a click on *Install* opens the small warning window in which we have to confirm the installation.
+7. After pressing the *Next* button, a summary of all previously made entries appears. Now there is still the possibility to make changes via *Back*. If we are satisfied with the result, a click on *Install* opens the small warning window in which we have to confirm the installation.
 
    ![calamares summary](./images/install-hd/calamares-en_08.png "Summary") 
 
@@ -170,4 +170,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

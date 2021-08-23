@@ -1,23 +1,23 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Systemd - path
 
 ## systemd-path
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [Systemd Unit file](./0411-systemd-unit-file_en.md#systemd-unit-file).  
+The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd Unit file](./0711-systemd-unit-datei_en.md#systemd-unit-file).  
 In this manual page, we explain the function of the **systemd.path** unit, which systemd uses to monitor paths and trigger path-based actions.
 
 The "*.path-Unit*" makes it possible to trigger an action when files and directories (paths) are changed.  
@@ -67,9 +67,9 @@ The special options are:
 + DirectoryMode=  
     sets the access mode in octal notation when used for the previously created directory. Default 0755.
 
-**An example**.  
+**An example**  
 
-Based on the Apache web server configuration according to our manual page [LAMP - Apache, Users and Rights](./0521-lamp-apache_en.md#users-and-rights), let's illustrate the interaction of *.path-Unit* with other *systemd-Unit*.
+Based on the Apache web server configuration according to our manual page [LAMP - Apache, users and rights](./0521-lamp-apache_en.md#users-and-rights), let's illustrate the interaction of *.path-Unit* with other *systemd-Unit*.
 
 The figure *path-Unit-Function* represents the dependencies of the systemd units of our example.
 
@@ -95,7 +95,7 @@ PathModified=/var/www/changed
 WantedBy=multi-user.target
 ~~~
 
-**Explanations  
+**Explanations**  
 Section [Unit]:  
 The "*BindsTo=*" option represents the strongest available binding of two systemd units to each other. If one of them enters an error state during startup or operation, the other will also be terminated immediately.  
 Together with the "*After=*" option, it is achieved that the *server1.path* unit starts only after the *server1-watch.service* unit reports its successful start back to systemd.
@@ -122,7 +122,7 @@ ExecStart=/usr/bin/chmod -R g+w /var/www/html/
 ExecStart=/usr/bin/chmod -R o-r /var/www/html/
 ~~~
 
-**Explanations**.  
+**Explanations**  
 Section [Service]:  
 "*ExecStart=*" commands are executed only after all "*ExecStartPre=*" commands have completed successfully.
 First the file */var/www/changed* is reset to 0-bite and then the rest is executed.
@@ -148,11 +148,11 @@ WantedBy=multi-user.target
 Remark:  
 Interestingly, systemd internally uses the inotify API for *.path-Unit* to monitor filesystems, but does not implement its recursive function.
 
-**Explanations  
-The [Unit] section:  
+**Explanations**  
+Section [Unit]:  
 "*Before=*" and "*Wants=*" are the corresponding correlations to "*BindsTo=*" and "*After=*" from *server1.service-Unit*.
 
-Service] section:  
+Section [Service]:  
 *inotifywait* logs to the */var/www/changed* file located outside of *DocumentRoot* of the Apache web server.
 
 ### Include path unit
@@ -214,27 +214,26 @@ A new status query generates some additional log lines, from which we can see th
 
 ~~~
 # systemctl status server1.service
-● server1.service - Berechtigungen im Ordner server1 ändern
-     Geladen: geladen (/usr/local/lib/systemd/system/server1.service; statisch)
-     Aktiv: inaktiv (tot) seit Mon 2021-02-22 17:55:36 CET; vor 1min 43s
+● server1.service - Change permissions in server1 folder
+     Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)
+     Active: inactive (dead) since Mon 2021-02-22 17:55:36 CET; 1min 43s ago
 TriggeredBy: ● server1.path
     Process: 2822 ExecStartPre=truncate -s 0 /var/www/changed (code=exited, status=0/SUCCESS)
-    Prozess: 2823 ExecStart=chown -R www-data /var/www/html1/ (code=exited, status=0/SUCCESS)
-    Prozess: 2824 ExecStart=chmod -R g+w /var/www/html1/ (code=exited, status=0/SUCCESS)
-    Prozess: 2825 ExecStart=chmod -R o-r /var/www/html1/ (code=exited, status=0/SUCCESS)
-   Haupt-PID: 2825 (code=exited, status=0/SUCCESS)
+    Process: 2823 ExecStart=chown -R www-data /var/www/html1/ (code=exited, status=0/SUCCESS)
+    Process: 2824 ExecStart=chmod -R g+w /var/www/html1/ (code=exited, status=0/SUCCESS)
+    Process: 2825 ExecStart=chmod -R o-r /var/www/html1/ (code=exited, status=0/SUCCESS)
+   Main PID: 2825 (code=exited, status=0/SUCCESS)
         CPU: 19ms
 
-Feb 22 17:55:36 lap1 systemd[1]: Starten Berechtigungen im Ordner server1 ändern...
-Feb 22 17:55:36 lap1 systemd[1]: server1.service: Erfolglos.
-Feb 22 17:55:36 lap1 systemd[1]: Fertig Berechtigungen im Ordner server1 ändern.
+Feb 22 17:55:36 lap1 systemd[1]: Starting Change permissions in server1 folder...
+Feb 22 17:55:36 lap1 systemd[1]: server1.service: Succeeded.
+Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.
 ~~~
 
-### Quellen systemd-path
+### Sources systemd-path
 
-[Deutsche Manpage 'systemd.path'](https://manpages.debian.org/testing/manpages-de/systemd.path.5.de.html)
+~~~
+man systemd.path
+~~~
 
-Ein anders gelagertes Beispiel:  
-[PRO-LINUX.DE, Systemd Path Units...](https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html)
-
-<div id="rev">Seite zuletzt aktualisiert 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

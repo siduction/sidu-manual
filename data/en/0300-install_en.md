@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Installation from live media
@@ -40,4 +40,4 @@ This section contains information and notes to the
 + Move private data from [directory /home](0316-home-move_en.md#move-directory-home), for example to make one data partition available for multiple operating systems in parallel installations.
 
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Terminal - command line
@@ -29,7 +29,7 @@ username@hostname:~$
 
 **username** in the above example corresponds to the username of the logged in user. The tilde **~** shows you are in your home directory **/home/username** , and the dollar sign (the prompt) **$** means you are logged into the terminal with limited user privileges. At the end, the cursor is blinking. All this is the command line. This is where you enter commands that you want the terminal to execute.
 
-Many commands can only be executed with root rights, i.e. administrator rights. Root rights can be obtained by typing **su** and pressing `Enter`. After that you have to enter the root password. The password is not displayed on the screen during the input. (See below [work-as-root](#work-as-root)).
+Many commands can only be executed with root rights, i.e. administrator rights. Root rights can be obtained by typing **su** and pressing `Enter`. After that you have to enter the root password. The password is not displayed on the screen during the input. (See below [work-as-root](0701-term-konsole_en.md#work-as-root)).
 
 If the input is correct, the command line now shows:
 
@@ -51,7 +51,7 @@ For users who are new to the terminal, it is often confusing if no message appea
 
 ### Work as root
 
-> **Caution.  
+> **Caution**  
 > While logged into the terminal with root privileges, you are allowed to do anything, e.g. delete files, without which the operating system will stop working, and so on. When working with root privileges, one must be aware of *what* one is doing, because it is easily possible to cause irreparable damage to the operating system.
 
 It must be taken into account that all actions, if provided for in the program, are also executed with root privileges. The simple copy command *cp \<source\> \<destination\>* in a user directory leads to files with the owner *ROOT* in the destination directory. This is probably not wanted and also not useful.
@@ -118,8 +118,8 @@ This can be done with the command "adduser USER GROUP" as root.
 
 As an alternative to *sudo* you can also take *doas* (apt install doas) and set it up.
 
-* https://man.openbsd.org/doas
-* https://github.com/slicer69/doas
+* [OpenBSD manual doas](https://man.openbsd.org/doas)
+* [doas on GitHub](https://github.com/slicer69/doas)
 
 
 
@@ -247,8 +247,7 @@ $ man apropos
 
 ### Linux console commands
 
-A very good introduction to the BASH console can be found at [linuxcommand.org](http://linuxcommand.org/)(english).
-
+A very good introduction to the BASH console can be found at [linuxcommand.org](http://linuxcommand.org/).  
 Of course you can also use your favorite search engine to find more.
 
 ### Using scripts
@@ -309,4 +308,4 @@ $ ./user-script-name.sh
 
 Of course, this will only work as *user* if the script does not contain any commands that require root privileges.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

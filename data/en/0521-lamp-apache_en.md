@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % LAMP - Apache 
@@ -91,7 +91,7 @@ The Apache welcome page with "*It works!*" should appear.
 The configuration files and directories are located in the "*ServerRoot*" */etc/apache2/*" directory.  
 The central configuration file is "*apache2.conf*". It is usually not edited, because many configurations are in separate files. Activation and deactivation is done via sym links. This has the advantage that a number of different configurations are available and only the required ones are included.
 
-The configuration files are text files, which are created or edited with an editor and root rights. The name of the file may be arbitrary, but the file extension must be "*.conf*". The valid directives that may be used in the configuration files are described in detail in the [Apache documentation](https://httpd.apache.org/docs/current/de/).
+The configuration files are text files, which are created or edited with an editor and root rights. The name of the file may be arbitrary, but the file extension must be "*.conf*". The valid directives that may be used in the configuration files are described in detail in the [Apache documentation](https://httpd.apache.org/docs/current/en/).
 
 The files are located in the directories 
 
@@ -212,7 +212,7 @@ If a content management system (software for collaborative editing of website co
    ~~~sh
    # ls -la /var/www/html
    total 24
-   drwxr-sr-x 2 root developer 4096 Jan 9 19:32 .           (DocumentRoot with SGID bit)
+   drwxr-sr-x 2 root developer 4096 Jan 9 19:32 .        (DocumentRoot with SGID bit)
    drwxr-xr-x 3 root root 4096 Jan 9, 19:04 ...          (The parent directory /var/www)
    -rw-r--r-- 1 root developer 10701 9 Jan 19:04 index.html
    -rw-r--r-- 1 root developer 20 Jan 9, 19:32 info.php
@@ -237,14 +237,14 @@ If a content management system (software for collaborative editing of website co
    -rw-rw---- 1 www-data developer 20 9 Jan 19:32 info.php
    ~~~
 
-   Now only members of the group "*developer*" have write permission in "*DocumentRoot*". write permission, Apache web server can read and write the files, all others are denied access.
+   Now only members of the group "*developer*" have write permission in "*DocumentRoot*", Apache web server can read and write the files, all others are denied access.
 
 4. disadvantages of these settings
 
    When creating new directories and files below "*DocumentRoot*" the owner is the respective "*user*" and not "*www-data*". This prevents the Apache web server from reading the files.  
    Remedy is a "*Systemd Path Unit*", which monitors changes below "*DocumentRoot*" and adjusts the owner and file permissions. (See the example in the [Systemd-Path](./0715-systemd-path_en.md#systemd-path) manual page).
 
-**Without CMS
+**Without CMS**
 
 For static websites, a content management system is often not necessary and only means another security risk and increased maintenance effort. In addition to the settings made before, the write permission to "*DocumentRoot*" can be revoked from the Apache web server to strengthen security, because in case an attacker finds a hole in Apache, this will not give him write permission to "*DocumentRoot*".
 
@@ -322,21 +322,21 @@ The following directive disables the display of the files "*.htaccess*" and "*.h
   </directory>
   ~~~
 
-+ **"merging "** the configuration
++ **"merging"** the configuration
 
   The directives of the configuration are spread over a number of files within "*ServerRoot*" and the "*.htaccess*" files in "*DocumentRoot*". It is therefore particularly important to know where to place the directive to achieve the desired effect.  
   We strongly recommend the web page  
-  [apache.org - How the sections are merged](https://httpd.apache.org/docs/current/de/sections.html#merging)  
+  [apache.org - How the sections are merged](https://httpd.apache.org/docs/current/en/sections.html#merging)  
   intensively.
 
 + The **owner** of "*DocumentRoot*"
 
-  is "*root.root*" after installation and should be changed. See the chapter [users and rights](#user-and-rights).
+  is "*root.root*" after installation and should be changed. See the chapter [users and permissions](0521-lamp-apache_en.md#users-and-permissions).
 
 ### Use HTTPS
 
 Without HTTPS no website project can be launched today.  
-How to get a certificate is described in detail and easy to understand on the website [HTTP-Guide](https://www.https-guide.de/).
+How to obtain a certificate is described, for example, in detail and in an easy-to-understand manner on the [wpbeginner](https://www.wpbeginner.com/beginners-guide/how-to-get-a-free-ssl-certificate-for-your-wordpress-website/) website.
 
 First we create the necessary folders inside "*DocumentRoot*":
 
@@ -374,7 +374,7 @@ The ls command to control:
 ### Security Tips
 
 + The Apache documentation contains a recommended page with various security tips.  
-  [apache.org - Security Tips](https://httpd.apache.org/docs/current/de/misc/security_tips.html) (English)
+  [apache.org - Security Tips](https://httpd.apache.org/docs/current/en/misc/security_tips.html)
 
 + In addition, there are numerous tips on the Internet for the secure operation of the Apache web server.
 
@@ -445,9 +445,9 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 ### Sources Apache
 
-[apache.org - Documentation](https://httpd.apache.org/docs/current/de/) (partly German)  
-[apache.org - configuration files](https://httpd.apache.org/docs/current/de/configuring.html)  
+[apache.org - Documentation](https://httpd.apache.org/docs/current/en/)  
+[apache.org - configuration files](https://httpd.apache.org/docs/current/en/configuring.html)  
 [apache.org - SSL Howto](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)  
-[HTTPS Guide - Create and integrate server certificates](https://www.https-guide.de/)
+[Let's Encrypt - A nonprofit Certificate Authority](https://letsencrypt.org/)
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % LAMP - MariaDB 
@@ -29,14 +29,14 @@ Debian has fully integrated the files of MariaDB into the file system according 
 + In **/var/lib/mysql/** the databases and log files.  
 + In **/run/mysqld/** system files necessary at runtime.
 
-Inside the directories mentioned before the files should not be edited manually. The only exception is the configuration of MariaDB under */etc/mysql/*, if you know exactly how to proceed. Otherwise use the [MariaDB-CLI](#mariadb-cli) or a frontend like [phpMyAdmin](#phpmyadmin).
+Inside the directories mentioned before the files should not be edited manually. The only exception is the configuration of MariaDB under */etc/mysql/*, if you know exactly how to proceed. Otherwise use the [MariaDB-CLI](0522-lamp-sql_en.md#mariadb-cli) or a frontend like [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin).
 
 ### Initial configuration
 
-After installation, as described in [LAMP test server for developers](./lamp-start_en.md#lamp-webserver), MariaDB is *'open like a barn door to anyone'*, because by default, the two users *root* and *anonymous*, are created without password and a test database is created.
+After installation, as described in [LAMP test server for developers](0520-lamp-start_en.md#lamp-webserver), MariaDB is *'open like a barn door to anyone'*, because by default, the two users *root* and *anonymous*, are created without password and a test database is created.
 
 Therefore we call the program **mysql_secure_installation** in the root terminal.  
-Here we make quite a few settings to secure the database. The necessary entries are marked like this: ""- - [ ]".
+Here we make quite a few settings to secure the database. The necessary entries are marked like this: "\<- - [ ]".
 
 ~~~
 # mysql_secure_installation  
@@ -46,7 +46,7 @@ password for the root user. If you've just installed MariaDB, and
 you haven't set the root password yet, the password will be blank,
 so you should just press enter here.
 
-Enter current password for root (enter for none): "--[Enter].  
+Enter current password for root (enter for none): <--[Enter].  
 OK, successfully used password, moving on...
 
 Setting the root password or using the unix_socket ensures that nobody can  
@@ -54,14 +54,14 @@ log into the MariaDB root user without the proper authorization.
 
 You already have your root account protected, so you can safely answer 'n'.
 
-Switch to unix_socket authentication [Y/n]: "--[n]  
+Switch to unix_socket authentication [Y/n]:  <--[n]  
  ... skipping.
 
 You already have your root account protected, so you can safely answer 'n'.
 
-Change the root password? [Y/n]: "--[y].  
-New password: "--[my_mariadb_root_password].  
-Re-enter new password: "--[my_mariadb_root_password]  
+Change the root password? [Y/n]:             <--[y].  
+New password:                                <--[my_mariadb_root_password]  
+Re-enter new password:                       <--[my_mariadb_root_password]  
 Password updated successfully!  
 Reloading privilege tables.  
 ... Success!
@@ -72,20 +72,20 @@ them. This is intended only for testing, and to make the installation
 go a bit smoother. You should remove them before moving into a
 production environment.
 
-Remove anonymous users? [Y/n]: "--[y]  
+Remove anonymous users? [Y/n]:               <--[y]  
 ... Success!
 
 Normally, root should only be allowed to connect from 'localhost'. This
 ensures that someone cannot guess at the root password from the network.
 
-Disallow root login remotely? [Y/n] "--[y]  
+Disallow root login remotely? [Y/n]          <--[y]  
 ... Success!
 
 By default, MariaDB comes with a database named 'test' that anyone can
 access. This is also intended only for testing, and should be removed
 before moving into a production environment.
 
-Remove test database and access to it? [Y/n] "--[y]  
+Remove test database and access to it? [Y/n] <--[y]  
 - Dropping test database...  
 ... Success!  
 - Removing privileges on test database...  
@@ -94,7 +94,7 @@ Remove test database and access to it? [Y/n] "--[y]
 Reloading the privilege tables will ensure that all changes made so far
 will take effect immediately.
 
-Reload privilege tables now? [Y/n] "--[y]
+Reload privilege tables now? [Y/n]           <--[y]
 ... Success!
 
 Cleaning up...
@@ -120,7 +120,7 @@ MariaDB [(none)]>
 ~~~
 
 For security reasons we only log in as **user root** at the beginning to create the project database, a user for everyday work on it and a user to replace *root*.  
-Later in the [phpMyAdmin](#phpmyadmin) section, we revoke the all-encompassing privileges from the *root* user so that a potential attacker will be unsuccessful at this point.
+Later in the [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin) section, we revoke the all-encompassing privileges from the *root* user so that a potential attacker will be unsuccessful at this point.
 
 #### Create a database
 
@@ -181,7 +181,7 @@ MariaDB [(none)]> SELECT User,Host FROM mysql.user;
 +-------------+-----------+
 | User | Host |
 +-------------+-----------+
-| boss | localhost |
+| chef | localhost |
 | mariadb.sys | localhost |
 | mysql | localhost |
 | phpmyadmin | localhost |
@@ -227,38 +227,38 @@ As seen before, MariaDB can be administered completely via the command line. If 
 
 We use the progrann *phpMyAdmin*, which is more suitable for less experienced users, and enter in the address line of the browser  
 **http://localhost/phpmyadmin/**  
-in the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten)the call is  
+in the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten) the call is  
 **https://server1.org/phpmyadmin/**
 
 To remove the rights of the database admin *root*, as mentioned above, we use our new database admin *chef* with his password in the login window right away.
 
-![Login window](./images/phpmyadmin/login.png)
+![Login window](./images/phpmyadmin/ui01.png)
 
 In the start window we see all databases in the left column. In the main part we select the tab **`User accounts`**.
 
-![Start window](./images/phpmyadmin/startwindow.png)
+![Start window](./images/phpmyadmin/ui02.png)
 
-The user accounts overview shows all users and in short form their rights. We select here for the user *root* the switch **`Change rights`**.
+The user accounts overview shows all users and in short form their rights. We select here for the user *root* the switch **`Edit privileges`**.
 
-![User accounts](./images/phpmyadmin/useraccounts.png)
+![User accounts](./images/phpmyadmin/ui03.png)
 
 Now we see the detailed permissions for the user *root*. Here we first remove all rights from him (1a), then grant in the area "*Administration*" the right "*Super*" (1b) and execute the action by clicking the **`OK`** button at the very bottom right of this page (not visible in the screenshot). 
 
-![Manage rights of a user (1a, 1b)](./images/phpmyadmin/root-rights.png)
+![Manage rights of a user (1a, 1b)](./images/phpmyadmin/ui04.png)
 
 Afterwards we go to the next page via the **`Database`** button (2).
 
-![Manage rights of a user (2) ](./images/phpmyadmin/root-rights-2.png)
+![Manage rights of a user (2) ](./images/phpmyadmin/ui05.png)
 
 After selecting the database "*mysql*" and **`OK`** this time a window opens with the detailed rights to the database "*mysql*" for the user "*root*".
 
-![Manage rights of a user (DB mysql) ](./images/phpmyadmin/root-rights-3.png)
+![Manage rights of a user (DB mysql) ](./images/phpmyadmin/ui06.png)
 
 Only the method "*SELECT*" is selected. A click on **`OK`** executes the sql command.
 
 So we are at destination and leave *phpMyAdmin* via the door icon placed in the left column.
 
-![exit phpMyAdmin](./images/phpmyadmin/logout.png)
+![exit phpMyAdmin](./images/phpmyadmin/ui07.png)
 
 phpMyAdmin offers extensive possibilities for the administration of databases, their tables and their contents. Note the **`Export`** tab in the main window, behind which you will find the option to backup data.
 
@@ -303,14 +303,15 @@ This creates a log file with the pattern *\<host\>.log* in the directory */var/l
 
 ### Sources MariaDB
 
-[MariaDB Documentation](https://mariadb.com/kb/en/documentation/) (English)  
-[MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (english)  
+[MariaDB Documentation](https://mariadb.com/kb/en/documentation/)  
+[MariaDB Systemd](https://mariadb.com/kb/en/systemd/)
+
 and the manpage
 
 ~~~
 man mariadb
 ~~~
 
-[phpMyAdmin documentation](https://docs.phpmyadmin.net/de/latest/) (German)
+[phpMyAdmin documentation](https://docs.phpmyadmin.net/en/latest/)
 
-<div id="rev">Last edited: 2020-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

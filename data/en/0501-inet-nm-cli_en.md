@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Network Manager
@@ -21,7 +21,7 @@ END   INFO AREA FOR THE AUTHORS
 
 The network manager is now integrated in all graphical user interfaces of siduction and is mostly self-explanatory. It replaces the network commands *ifup, ifdown* and *ifconfig* used in the terminal. The prejudice that the network manager is not suitable for the command line or even runs unstable belongs to the realm of fairy tales. If no graphical user interface is available, or the command line is preferred, there is with **nmcli** a powerful command line client for the daily use of the network manager.
 
-In the following examples we assume two configured connections. A WLAN connection (name: Unicorn_2, interface wtx7ckd90b81bbd, (former; wlan)) and a wired connection (name: Wired connection 1, interface evp0s3f76 (former: eth0)). Please adapt the connection names to your circumstances.
+In the following examples we assume two configured connections. A WLAN connection (name: Unicorn\_2, interface wtx7ckd90b81bbd, (former; wlan)) and a wired connection (name: WiredConnection\_1, interface evp0s3f76 (former: eth0)). Please adapt the connection names to your circumstances.
 
 **Installation of the Network Manager**
 
@@ -63,7 +63,7 @@ Very detailed information (properties) is available with **`nmcli dev show`** fo
 
 The access data to the WLAN can be displayed with **`nmcli dev wifi show`**.
 
-![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show-en.png)
+![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show.png)
 
 The additional generated QR code simplifies the login for smartphone and tablet.
 
@@ -88,11 +88,11 @@ ttyACM0 gsm not connected --
 Now enable the wifi connection with **`nmcli con up id <connection name>`**:
 
 ~~~
-# nmcli con up id unicorn_2
+# nmcli con up id Unicorn_2
 Connection was successfully activated 
 # nmcli dev status
 DEVICE TYPE STATE CONNECTION 
-wtx7ckd90b81bbd wifi connected unicorn_2
+wtx7ckd90b81bbd wifi connected Unicorn_2
 evp0s3f76 ethernet not connected --
 evp3u3 ethernet not available --
 ttyACM0 gsm not connected --
@@ -103,14 +103,14 @@ You can still put the whole thing in a command line, then the change will be don
 From LAN to WLAN:
 
 ~~~
-nmcli dev disconnect evp0s3f76 && sleep 2 && nmcli con up id unicorn_2
+nmcli dev disconnect evp0s3f76 && sleep 2 && nmcli con up id Unicorn_2
 ~~~
 
 Reversed from WLAN to LAN:
 
 
 ~~~
-nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Wired connection 1'.
+nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'WiredConnection_1'.
 ~~~
 
 ### Further information
@@ -120,7 +120,7 @@ nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Wired connec
   man nmcli
   ~~~
 
-+ [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
++ [Ubuntu community NetworkManager](https://help.ubuntu.com/community/NetworkManager)
 
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>

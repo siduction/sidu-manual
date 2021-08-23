@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Network - IWD
@@ -30,11 +30,10 @@ If you want, you can use iwd as a replacement for wpa_supplicant, either standal
  
 If you want to do this, there are two options, the second option is the more sensible and easier.
 
-1. install NetworkManager from the sources
-2. do not start or mask the wpa_supplicant.service, because it will be installed if you use apt.
+1. Install NetworkManager from the sources
+2. Do not start or mask the wpa_supplicant.service, because it will be installed if you use apt.
 
-If you want to use iwd without installing NetworkManager, you don't have to worry about this.
-    
+If you want to use iwd without installing NetworkManager, you don't have to worry about this.  
 Furthermore we point out that siduction uses systemd. So we will not go into how to configure iwd without systemd!
 
 Procedure with NetworkManager installed
@@ -84,7 +83,7 @@ EnableNetworkConfiguration=true
 NameResolvingService=systemd
 ~~~
 
-Now you are able to start an interactive shell in the terminal with the command [**iwctl**](#wifi-connection-with-iwctl). Typing "help" will output all options to view, configure WiFi hardware and connect to a network. Also, you can use **nmtui** or [**nmcli**](#wifi-connection-with-nmcli) in the terminal or NetworkManager in the graphical interface, respectively.
+Now you are able to start an interactive shell in the terminal with the command [**iwctl**](0502-inet-iwd_en.md#wifi-connection-with-iwctl). Typing "help" will output all options to view, configure WiFi hardware and connect to a network. Also, you can use **nmtui** or [**nmcli**](0502-inet-iwd_en.md#wifi-connection-with-nmcli) in the terminal or NetworkManager in the graphical interface, respectively.
 
 > Note:  
 > It is possible that non-free firmware must be installed from a USB stick or via LAN!
@@ -101,10 +100,9 @@ This should be self-explanatory!
 
 ### WiFi connection with nmcli
 
-**Setting up a WiFi connection with *nmcli**.
+**Setting up a WiFi connection with *nmcli***.
 
-I describe here only briefly the fastest way to set up a network with the help of the NetworkManager in the command line.
-
+I describe here only briefly the fastest way to set up a network with the help of the NetworkManager in the command line.  
 To establish a connection, provided you have all the information, this one-liner is enough. All other information about *nmcli* can be found on the following page, [Network Manager in Terminal](0501-inet-nm-cli_en.md#network-manager-command-line-tool)
 
 ~~~sh
@@ -183,13 +181,13 @@ For example:
 
 ### Graphical configuration programs
 
-+ NetworkManager, there are various graphical interfaces for the NetworkManager e.g. for plasma-desktop/kde plasma-nm or for gnome network-manager-gnome and others. Their use should be self-explanatory!
-+ conman is a network manager developed by Intel, small and resource saving, more about it in the [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
++ NetworkManager, there are various graphical interfaces for the NetworkManager e.g. for plasma-desktop/kde plasma-nm or for gnome network-manager-gnome and others. Their use should be self-explanatory!  
++ conman is a network manager developed by Intel, small and resource saving, more about it in the [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)  
 + iwgtk, is not in debian-sources, it has to be built from source and can be found on [github](https://github.com/J-Lentz/iwgtk).
 
 ### Back to wpa_supplicant
 
-*(Vorausgstezt NetworkManager and wpa_supplicant are installed)*.
+*(Provided NetworkManager and wpa_supplicant are installed)*.
 
 + Stop the **iwd.service** and mask it.
 + Stop the **NetworkManager.service**.
@@ -209,4 +207,4 @@ For example:
 
 Now *wpa_supplicant* is used to connect to the WiFi hardware.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/23/08</div>
