@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Content of the live ISO
@@ -104,9 +104,9 @@ Libreoffice is pre-installed as office software. Dolphin, Thunar and PCManFM are
 
 Connman or Network Manager is available for network and Internet configuration.
 
-Xorg and nox are delivered with [IWD](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant) as, this can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-kommandline-tool) or [iwctl](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant). 
+Xorg and nox are delivered with [IWD](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) as, this can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool) or [iwctl](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant). 
 
-For partitioning disks, [cfdisk](./part-cfdisk_en.md#partition-with-fdisk), [gdisk and cgdisk](./part-gdisk_en.md#partition-with-gdisk) and [GParted](./part-gparted_en.md#partition-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
+For partitioning disks, [cfdisk](./0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](./0313-part-gdisk_en.md#partitioning-with-gdisk) and [GParted](./0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
 
 System analysis tools such as [Memtest86+](http://www.memtest.org/) (a tool for comprehensive memory analysis) are also included.
 
@@ -116,4 +116,4 @@ Each ISO variant contains an extensive selection of applications for the command
 
 siduction is experimental software. Use at your own risk. The siduction project, its developers and team members cannot be held liable under any circumstances for damage to hardware or software, lost data or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.
 
-<div id="rev">Last edited: 2021-13-08</div>
+<div id="rev">Last edited: 2021/24/08</div>

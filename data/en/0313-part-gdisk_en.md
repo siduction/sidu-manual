@@ -308,4 +308,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *recovery & transformation* and *experts* should only be used if you are very familiar with GPT. As a "non-expert" you should only use these menus if a disk is damaged. Before any drastic action the option **b** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2021-22-08</div>
+<div id="rev">Last edited: 2021/22/08</div>

@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % ISO images
@@ -27,6 +27,6 @@ This section contains information and notes about the
 
 + [Downloading and burning the ISOs](0206-cd-dl-burning_en.md#iso-download-and-burn), the mirror servers and the files on them, the integrity check of the download and burning on Linux and Windows.
 
-+ [Burning the ISOs without GUI](0207-cd-no-gui-burn_en.md#dvd-without-gui-burning) with a whole set of directly usable terminal commands also for determining the available devices.
++ [Burning the ISOs without GUI](0207-cd-no-gui-burn_en.md#burn-dvd-without-gui) with a whole set of directly usable terminal commands also for determining the available devices.
 
-<div id="rev">Last edited: 2021-13-08</div>
+<div id="rev">Last edited: 2021/24/08</div>

@@ -4,13 +4,13 @@ This area is to be removed when the status RC3 is reached. The first line of the
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % The siduction help
@@ -27,7 +27,7 @@ The siduction forum offers the possibility to ask questions and get answers to t
 
 The siduction wiki is freely usable and modifiable by all siduction users. In this way, we hope that the siduction documentation will grow with the project over time.
 
-We hope for contributions from Linux users of all experience levels, as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps oneself) hours of searching for solutions to problems. [Link to siduction wiki](https://wiki.siduction.de/index.php?title=Hauptseite) .
+We hope for contributions from Linux users of all experience levels, as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps oneself) hours of searching for solutions to problems. [Link to siduction wiki](https://wiki.siduction.org) .
 
 ### IRC - interactive live support. 
 
@@ -50,11 +50,11 @@ If you prefer another chat client, you need to enter these server details:
   port 6667
   ~~~
 
-+ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : enter a free nickname and enter the channel #siduction-de.
++ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en) : enter a free nickname and enter the channel #siduction-en.
 
 ### siduction-paste
 
-siduction-paste allows you to paste files from the terminal or TTY. This is ideal if you are in runlevel 3 (without a graphics server) with problems. siduction-paste uses http://paste.siduction.org as a link, and the output is available for 24 hours.
+siduction-paste allows you to paste files from the terminal or TTY. This is ideal if you are in runlevel 3 (without a graphics server) with problems. siduction-paste uses `http://paste.siduction.org` as a link, and the output is available for 24 hours.
 
 You can use siduction-paste both as user and as root. However, some commands or system queries require root access.
 
@@ -71,7 +71,7 @@ $ siduction-paste /etc/fstab
 Your paste can be seen here: http://paste.siduction.org/xyz.html
 ~~~
 
-The link <http://paste.siduction.org/xyz.html> must be entered in the IRC channel #siduction-de afterwards.
+The link `http://paste.siduction.org/xyz.html` must be entered in the IRC channel #siduction-en afterwards.
 
 **Example for command | siduction-paste**
 
@@ -87,13 +87,13 @@ $ siduction-paste -s
 ~~~
 
 Now you have a few seconds to navigate to the object you want to capture. Please remember that this function requires *scrot* to be installed.  
-Again, the link <http://siduction.paste.org/yzx.html> must be entered in the IRC channel #siduction-de afterwards.
+Again, the link `http://siduction.paste.org/yzx.html` must be entered in the IRC channel #siduction-en afterwards.
 
 ### Useful helpers in text mode
 
 Normally one uses the text mode runlevel 3 (init 3 or journalctl isolate multi-user.target) if one wants to perform a dist-upgrade, or forced if the system has a serious error.
 
-**gpm
+**gpm**
 
  is a useful program in text mode. It allows you to use the mouse to copy and paste in the terminal.
 
@@ -119,12 +119,9 @@ Now you should be able to use your mouse in text mode (tty).
 
 **File manager and text editing**
 
-Midnight Commander is an easy to use text mode (tty) file manager and text editor. It comes with siduction.
-
-Apart from normal keyboard input, the mouse can also be used due to gpm.
-
-**mc** shows the file system and with **mcedit** an existing file can be edited or a new file can be created.
-
+Midnight Commander is an easy to use text mode (tty) file manager and text editor. It comes with siduction.  
+Apart from normal keyboard input, the mouse can also be used due to gpm.  
+**mc** shows the file system and with **mcedit** an existing file can be edited or a new file can be created.  
 This is how to open an existing file (first a backup copy is created):
 
 ~~~
@@ -185,7 +182,7 @@ Now you can connect to irc.oftc.net on port 6667. After successful connection th
 
 You can enter the siduction channel with the following input:
 
-**/join #siduction-de**
+**/join #siduction-en**
 
 If you want to change the server, enter a command with the following syntax:
 
@@ -204,13 +201,12 @@ and to return to the IRC you can use the
 key combination `CTRL`+`ALT`+`F2`
 
 The following links provide more information.  
-[Documentation page of irssi (English)](https://irssi.org/documentation)  
-[Documentation page of WeeChat (German)](https://www.weechat.org/) 
+[Documentation page of irssi](https://irssi.org/documentation)  
+[Documentation page of WeeChat](https://www.weechat.org/) 
 
 ### Surfing the Internet in text mode
 
-The command line browser w3m allows to surf the internet in a terminal or console or in text mode
-
+The command line browser w3m allows to surf the internet in a terminal or console or in text mode.  
 If w3m or elinks are not installed, proceed as follows:
 
 ~~~
@@ -228,7 +224,7 @@ $ siductionbox login: <username> <password> (not root!)
 ~~~
 
 The program call is "w3m URL" or "w3m ?".  
-Example: https://siduction.org is called like this (https:// is omitted):
+Example: `https://siduction.org` is called like this (https:// is omitted):
 
 ~~~
 $ w3m siduction.org
@@ -238,12 +234,12 @@ A new URL is called using the key combination Shift+U:
 
 `SHIFT`+`U`
 
-After that you will see a line like "Goto URL: https://siduction.org". With the backspace key one deletes the last selected URL and enters the desired one.  
+After that you will see a line like `Goto URL: https://siduction.org`. With the backspace key one deletes the last selected URL and enters the desired one.  
 Exit w3m with:
 
 `SHIFT`+`Q`
 
-More information can be found on the [documentation page of w3m (English)](http://w3m.sourceforge.net/). 
+More information can be found on the [documentation page of w3m](http://w3m.sourceforge.net/). 
 
 It is advisable to familiarize yourself with **elinks/w3m, irssi/weechat, midnight commander** before an emergency. Print this file to have the information handy in case of an emergency.
 
@@ -283,10 +279,10 @@ $ inxi --help
 
 ### Useful links
 
-[Debian reference card - to print on a single sheet](https://www.debian.org/doc/user-manuals#refcard)  
-[HOWTOs from the Debian site](https://www.debian.org/doc/#howtos) (is automatically in German if browser is localized)  
-[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.de.php) documents available as HTML, text, PDF and PS  
-[Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE, the KDE Help Center provides information about CUPS.  
-[LibreOffice](https://de.libreoffice.org/) There are many offerings in the "Help" menu.
+[Debian reference card - to print on a single sheet](https://www.debian.org/doc/manuals/refcard/refcard.en.pdf)  
+[HOWTOs from the Debian site](https://www.debian.org/doc/#howtos) (is automatically in your language if browser is localized)  
+[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.en.php) documents available as HTML, text, PDF and PS  
+[Common Unix Printing System CUPS](https://www.cups.org/) . In KDE, the KDE Help Center provides information about CUPS.  
+[LibreOffice](https://libreoffice.org/) There are many offerings in the "Help" menu.
 
-<div id="rev">Last edited: 2021-13-08</div>
+<div id="rev">Last edited: 2021/24/08</div>

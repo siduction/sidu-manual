@@ -172,4 +172,4 @@ We can see that the partition contained in the *fstab* as the last entry and mou
 * After the check, the computer is automatically rebooted the second time. This ensures that the system can run without problems.
 * After the restart, Windows will work properly. However, you have to let the system finish booting and wait for the login window!
 
-<div id="rev">Last edited: 2021-22-08</div>
+<div id="rev">Last edited: 2021/22/08</div>

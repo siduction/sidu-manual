@@ -1,6 +1,6 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
@@ -153,4 +153,4 @@ A subsequent
 should run without error messages.  
 The first call of **`# apt full-upgrade`** on a client loads all new packages into the cache of the APT proxy server. Thus, this process takes the same amount of time as before. The further accesses of the clients make use of the cache and run then substantially faster, without needing bandwidth again
 
-<div id="rev">Page last updated 2021-22-08</div>
+<div id="rev">Page last updated 2021/22/08</div>

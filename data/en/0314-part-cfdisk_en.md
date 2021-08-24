@@ -272,4 +272,4 @@ If the swap partition is recognized correctly, we restart the computer.
 
 Now the installation can begin.
 
-<div id="rev">Last edited: 2021-22-08</div>
+<div id="rev">Last edited: 2021/22/08</div>

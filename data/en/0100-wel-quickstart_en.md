@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Quickstart
@@ -25,7 +25,7 @@ siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction
 
 > Some chapters of the manual are essential reading for users who are new to Linux or new to siduction. In addition to this brief introduction, these are:
 
-+ [Terminal/Console](0701-term-console_en.md#terminal---command-line) - Describes how to use a terminal and the su command.
++ [Terminal/Console](0701-term-konsole_en.md#terminal---command-line) - Describes how to use a terminal and the su command.
 
 + [Partitioning the hard disk](0312-part-gparted_en.md#partitioning-with-gparted) - Describes how to partition a hard disk. 
 
@@ -39,7 +39,7 @@ siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction
 
 + [Internet connection](0500-network_en.md#network) - Describes how to connect to the Internet.
 
-+ [Package Manager and System Update](0705-sys-admin-apt_en.md#apt-package-manager) - Describes how to install new software and update the system.
++ [Package Manager and System Update](0705-sys-admin-apt_en.md#apt-package-management) - Describes how to install new software and update the system.
 
 ### About the stability of Debian Sid
 
@@ -54,7 +54,7 @@ The Linux kernel of siduction is optimized to achieve the following goals: probl
 siduction follows Debian rules regarding package structure and uses apt and dpkg for software package management. The Debian and siduction repositories are located in `/etc/sources.list.d/*`. 
 
 Debian siduction contains more than 20,000 program packages, so the chances of finding a program suitable for a task are very good. How to search for program packages is described here:  
-[Program search with apt-cache or apt](0705-sys-admin-apt_en.md#program-packages-search)  
+[Program search with apt-cache or aptitude](0705-sys-admin-apt_en.md#searching-for-program-packages)  
 or with  
 [GUI package search with packagesearch](0705-sys-admin-apt_en.md#graphical-package-search) .
 
@@ -64,7 +64,7 @@ A program package is installed with this command:
 apt install <package name>
 ~~~
 
-See also: [Install new packages](0705-sys-admin-apt_en.md#packages-install) .
+See also: [Install new packages](0705-sys-admin-apt_en.md#install-packages) .
 
 The Debian Sid repositories are usually populated with updated or new software packages four times a day. A local database is used to quickly manage the packages. The command
 
@@ -138,8 +138,8 @@ Plasma, Gnome, Xfce, LXQt, Cinnamon and Xorg are shipped from siduction.
 
 Help is always available in IRC or in the forum of siduction.
 
-+ Read more in the chapter [Where to get help](help_en.md#siduction-help) .
++ Read more in the chapter [Where to get help](0003-help_en.md#siduction-help) .
 
 + [With this link you can call the IRC immediately in your browser](https://webchat.oftc.net/) : enter a freely chosen nickname and enter the channel #siduction-en.
 
-<div id="rev">Last edited: 2021-13-08</div>
+<div id="rev">Last edited: 2021/24/08</div>

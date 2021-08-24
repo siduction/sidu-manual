@@ -509,4 +509,4 @@ In addition, a lot of information about Debian packages is provided, including w
 
 A complete description of the APT system can be found in [Debian's APT-HOWTO](https://wiki.debian.org/DebianPackageManagement).
 
-<div id="rev">Last edited: 2021-22-08</div>
+<div id="rev">Last edited: 2021/22/08</div>

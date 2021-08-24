@@ -60,4 +60,4 @@ To remove old kernels the script "kernel-remover" is installed:
 kernel-remover
 ~~~
 
-<div id="rev">page last updated 2021-22-08</div>
+<div id="rev">page last updated 2021/22-08</div>/
