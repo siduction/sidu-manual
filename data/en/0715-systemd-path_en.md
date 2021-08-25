@@ -17,7 +17,7 @@ END   INFO AREA FOR THE AUTHORS
 
 ## systemd-path
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd Unit file](./0711-systemd-unit-datei_en.md#systemd-unit-file).  
+The basic and introductory information about Systemd is contained in the manual page [systemd-start](./0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd unit file](./0711-systemd-unit-datei_en.md#systemd-unit-file).  
 In this manual page, we explain the function of the **systemd.path** unit, which systemd uses to monitor paths and trigger path-based actions.
 
 The "*.path-Unit*" makes it possible to trigger an action when files and directories (paths) are changed.  

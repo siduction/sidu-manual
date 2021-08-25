@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % System journal
@@ -42,15 +42,15 @@ The **systemd-cat** command provides two ways to pass data from a process to the
 
 1. **`systemd-cat <program> <option(s)>`**.  
   Used with a program call or command, *systemd-cat* redirects all standard input, standard output, and standard error output from a process to the journal.  
-2. **Used in a pipe,** ** *systemd-cat* serves  
+2. **Used in a pipe,**  
   *systemd-cat* serves as a filtering tool to send the previously created output to the journal.
 
-If no parameter is passed, *systemd-cat* will send whatever it reads from standard input to the journal. The man-page [systemd-cat.1.en](https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html) provides more information.
+If no parameter is passed, *systemd-cat* will send whatever it reads from standard input to the journal. The man-page `man systemd-cat` provides more information.
 
 ### journald over the network
 
 The *systemd-journal* modules *upload*, *remote* and *gatewayd* allow system log data to be sent and received between different computers over the network. With their help remote computers can be monitored continuously. In this installation it makes sense to set up namespaces on the remote computer for the log data of the remote computers.  
-For more information please read the man-pages [journal upload](https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html), [journal remote](https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html) and [journal gatewayd](https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html).
+For more information please read the man-pages [journal upload](https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-upload.8.en.html), [journal remote](https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-remote.service.8.en.html) and [journal gatewayd](https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-gatewayd.8.en.html).
 
 ### journald.conf
 
@@ -82,7 +82,7 @@ The main configuration file is read before any other from the configuration dire
 When called without parameters, the entire contents from all accessible sources of the journal are displayed, starting with the oldest entry. The journal files used for output can be modified with the --user, --system, --directory, and --file options.  
 The output is directed page by page by *less*. Long lines can be viewed using the "*arrow-left-*" and "*arrow-right-*" keys. The "*--no-pager*" option disables page-by-page viewing, shortening the lines to the width of the terminal.
 
-**journalctl** offers, in addition to the options described below, a whole range of other options for filtering and formatting the output. Please also read the man page [journalctl, journal query](https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html).
+**journalctl** offers, in addition to the options described below, a whole range of other options for filtering and formatting the output. Please also read the man page `man journalctl`.
 
 **Rights**
 
@@ -291,18 +291,20 @@ Apr 07 23:03:09 pc1 org.gtk.Private.AfcVolumeMonitor[2006]: ### debug: Name owne
 Apr 07 23:03:09 pc1 org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owner ':1.4320' vanished
 ~~~
 
-Many of the above options can be combined to display only the journal entries you are looking for. The man-page of [journalctl](https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html) describes all options in detail.
+Many of the above options can be combined to display only the journal entries you are looking for. The man-page of `man journalctl` describes all options in detail.
 
 ### sources journald
 
-[systemd-journald](https://manpages.debian.org/testing/manpages-de/systemd-journald.8.de.html)  
-[journald configuration](https://manpages.debian.org/testing/manpages-de/journald.conf.5.de.html)  
-[journalctl, journal query](https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html)  
-[journal gatewayd](https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html)  
-[journal remote](https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html)  
-[journal upload](https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html)  
-[systemd-cat.1.de](https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html)
+~~~
+man systemd-journald
+man journald.conf
+man journalctl
+man systemd-cat
+~~~
 
-Thanks to Helge Kreuzmann for the German translations.
+and online for packages not installed by default  
+[journal gatewayd](https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-gatewayd.8.en.html)  
+[journal remote](https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-remote.service.8.en.html)  
+[journal upload](https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-upload.8.en.html)
 
-<div id="rev">Page last updated 2021-14-08</div>
+<div id="rev">Page last updated 2021/25/08</div>

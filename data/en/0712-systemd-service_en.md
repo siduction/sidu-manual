@@ -1,36 +1,36 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % systemd - service
 
 ## systemd-service
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [Systemd Unit file](./0711-systemd-unit-file_en.md#systemd-unit-file).  
+The basic and introductory information about Systemd is contained in the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
 In this manual page we explain the function of the unit **systemd.service**. The unit file with the ".service" name extension is the most commonly encountered unit type in systemd.
 
 The service unit file must contain a [service] section that configures information about the service and the process it is monitoring.
 
 ### create service unit
 
-We prefer to place self-created unit files in the */usr/local/lib/systemd/system/* directory. (If necessary, create the directory with the command **`mkdir -p /usr/local/lib/systemd/system/`**). This has the advantage of giving them priority over system units installed by the distribution's package manager, while placing control links and change files created with **`systemctl edit <UNIT_DATEI>`** in the directory */etc/systemd/system/*, which itself has priority. See: [Hirarchy of load paths](0711-systemd-unit-file_en.md#load-path-of-unit-files).
+We prefer to place self-created unit files in the */usr/local/lib/systemd/system/* directory. (If necessary, create the directory with the command **`mkdir -p /usr/local/lib/systemd/system/`**). This has the advantage of giving them priority over system units installed by the distribution's package manager, while placing control links and change files created with **`systemctl edit <UNIT_DATEI>`** in the directory */etc/systemd/system/*, which itself has priority. See: [Hirarchy of load paths](0711-systemd-unit-datei_en.md#loading-path-of-the-unit-files).
 
 ### Service section
 
 There are over thirty options available for this section, of which we describe particularly frequently used ones here.
 
----               ----
+~~~
 Type=             PIDFile=
 RemainAfterExit=  GuessMainPID=
 ExecStart=        Restart=
@@ -47,7 +47,7 @@ TimeoutSec=       USBFunctionStrings=
 RuntimeMaxSec=    Sockets=
 WatchdogSec=      BusName=
                   OOMPolicy=
----               ----
+~~~
 
 + **Type=**  
     Defines the process startup type and is therefore one of the most important options.  
@@ -88,7 +88,7 @@ WatchdogSec=      BusName=
     The D-Bus bus name under which this service can be reached must be specified here. The option is mandatory for services of *Type=dbus*.
 
 + **ExecStart=**  
-    Contains commands with their arguments that are executed when this unit is started. Exactly one command must be specified, unless the *Type=oneshot* option is set, in which case *ExecStart=* can be used multiple times. The value of *ExecStart=* must conform to the rules described in detail in the German man page [systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html).
+    Contains commands with their arguments that are executed when this unit is started. Exactly one command must be specified, unless the *Type=oneshot* option is set, in which case *ExecStart=* can be used multiple times. The value of *ExecStart=* must conform to the rules described in detail in the man page `man systemd.service` .
 
 + **ExecStop=**  
     Can be used multiple times and contains commands to stop a service started by *ExecStart=*. The syntax is identical to *ExecStart=*.
@@ -109,16 +109,16 @@ WatchdogSec=      BusName=
     The allowed values are: no, always, on-success, on-failure, on-abnormal, on-abort, or on-watchdog.  
     The following table shows the effect of the *restart=* setting on the exit reasons.
 
-    ------------------- -------- --------- --------- ---------- ------- ----------
-                                  on on on on
-    ► Restart= ► always success failure abnormal abort watchdog
-    ▼ Exit reason ▼
-    Clean exit X X
-    Unclean exit X X
-    Unclean signal X X X
-    Timeout X X X
-    Watchdog X X X
-    ------------------- -------- --------- --------- ---------- ------- ----------
+    ~~~
+                                  on        on        on         on      on
+    ► restart= ►         always   success   failure   abnormal   abort   watchdog
+    ▼ exit reason ▼
+    clean exit             X        X
+    unclean exit           X                  X
+    unclean signal         X                  X         X          X
+    timeout                X                  X         X
+    watchdog               X                  X         X                  X
+    ~~~
 
     The options *RestartPreventExitStatus=* and *RestartForceExitStatus=* set if required will change this behavior.
 
@@ -128,11 +128,13 @@ Some self created service units can be found on our manual pages
 [service-unit for systemd timer](0716-systemd-timer_en.md#create-timer-unit)  
 [service-unit for systemd Path](0715-systemd-path_en.md#create-path-unit)  
 and with the preferred search engine on the Internet.  
-[LinuxCommunity, Create systemd units yourself](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)
 
 ### Sources systemd-service
 
-[German manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
+~~~
+man systemd.service
+~~~
+
 [LinuxCommunity, Create systemd units yourself](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
 
-<div id="rev">Page last updated 2021-14-08</div>
+<div id="rev">Page last updated 2021/25/08</div>

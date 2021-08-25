@@ -240,7 +240,7 @@
 0707-sys-admin-kern-upg_en.md   ### Kernel Update without System Update   link: [](0707-sys-admin-kern-upg_en.md#kernel-update-without-system-update)
 0707-sys-admin-kern-upg_en.md   ### Modules   link: [](0707-sys-admin-kern-upg_en.md#modules)
 0707-sys-admin-kern-upg_en.md   ### Removing old kernels   link: [](0707-sys-admin-kern-upg_en.md#removing-old-kernels)
-0710-systemd-start_en.md   ## Systemd, the system and services manager   link: [](0710-systemd-start_en.md#systemd,-the-system-and-services-manager)
+0710-systemd-start_en.md   ## Systemd - the system and services manager   link: [](0710-systemd-start_en.md#systemd---the-system-and-services-manager)
 0710-systemd-start_en.md   ### Concept of systemd   link: [](0710-systemd-start_en.md#concept-of-systemd)
 0710-systemd-start_en.md   ### Unit types   link: [](0710-systemd-start_en.md#unit-types)
 0710-systemd-start_en.md   ### Systemd in the file system   link: [](0710-systemd-start_en.md#systemd-in-the-file-system)

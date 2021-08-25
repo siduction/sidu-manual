@@ -1,23 +1,23 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % systemd-target
 
 ## systemd-target - target unit
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](0710-systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [Systemd Unit file](0711-systemd-unit-datei_en.md#systemd-unit-datei).  
+The basic and introductory information about Systemd is contained in the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
 Now we explain the function of the **systemd.target** unit, which are similar to the commonly known runlevels, in a bit more detail.
 
 The different runlevels that are booted or switched to are described by systemd as **target unit**. They have the extension **.target**.
@@ -28,7 +28,7 @@ The old sysvinit commands are still supported. (For this a quote from *man syste
 | --- | -------- |
 | **emergency.target** | Launches into an emergency shell on the main console. It is the most minimal version of a system boot to get an interactive shell. This unit can be used to guide the boot process step by step** . 
 | **rescue.target** | Starts the base system (including system mounts) and an emergency shell. Compared to multi-user.target, this target could be considered as single-user.target. |
-| **multi-user.target** | Multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not boot into X. [This unit is used in special cases (when X itself or the desktop environment are upgraded) to perform a system upgrade (dist-upgrade)](0705-sys-admin-apt_en.md#full-upgrade-execute) . |
+| **multi-user.target** | Multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not boot into X. [This unit is used in special cases (when X itself or the desktop environment are upgraded) to perform a system upgrade (dist-upgrade)](0705-sys-admin-apt_en.md#run-full-upgrade) . |
 | **graphical.target** | The unit for multi-user mode with network capability and a running X Window System. |
 | **default.target** | The default unit that starts Systemd at system startup. In siduction this is a symlink to graphical.target (except for the noX variant). |
 
@@ -74,6 +74,8 @@ There are three special features to be considered for the target units:
 
 ### Sources systemd-target
 
-[systemd.target man page, en](https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html)
+~~~
+man systemd.target
+~~~
 
-<div id="rev">page last updated 2021-14-08</div>
+<div id="rev">page last updated 2021/25/08</div>

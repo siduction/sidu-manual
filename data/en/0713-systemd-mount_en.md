@@ -1,23 +1,23 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % systemd-mount
 
 ## systemd-mount
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered in our manual page [Systemd Unit file](./systemd-unit-datei_en.md#systemd-unit-file).  
+The basic and introductory information about Systemd is contained in the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered in our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
 In this manual page we explain the function of the systemd units **mount** and **automount**. They are used by systemd to manage mount points for drives and their partitions, which can be accessible both locally and over the network.
 
 The **mount** unit is a configuration file that provides systemd with information about a mount point.  
@@ -221,12 +221,12 @@ Using your favorite search engine, you can find many examples for using the *mou
 
 ### Sources systemd-mount
 
-[German man page, systemd.mount](https://manpages.debian.org/testing/manpages-de/systemd-mount.1.de.html)  
-[German man page, mount](https://manpages.debian.org/testing/manpages-de/mount.8.de.html)  
-[Manjaro Forum, systemd.mount](https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191)  
-[Manjaro Forum, Use systemd to mount ANY device](https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185)  
-[Linuxnews, nfs via systemd](https://linuxnews.de/2019/12/nfs-freigaben-per-systemd-einbinden/)  
-[Debianforum, Mount network drives](https://wiki.debianforum.de/Netzlaufwerke_einbinden)  
-[Ubuntuusers, mount units](https://wiki.ubuntuusers.de/systemd/Mount_Units/)
+~~~
+man systemd.mount
+man mount
+~~~
 
-<div id="rev">Page last updated 2021-14-08</div>
+[Manjaro Forum, systemd.mount](https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191)  
+[Manjaro Forum, Use systemd to mount ANY device](https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185)
+
+<div id="rev">Page last updated 2021/25/08</div>

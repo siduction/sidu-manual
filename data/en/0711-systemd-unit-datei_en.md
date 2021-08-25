@@ -1,24 +1,24 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % systemd - unit file
 
 ## systemd unit file
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./systemd-start_en.md#systemd--the--system--and--services--manager).  
-In this manual page we explain the structure of the **Unit files** and the generic sections "[Unit]" and "[Install]".
+The basic and introductory information about systemd is contained in the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager) .  
+In this manual page we explain the structure of the **unit files** and the generic sections "[Unit]" and "[Install]".
 
 The unit file is a plain text file in INI format. It contains configuration statements of the type "*key=value*" in various sections. Empty lines and those starting with "#" or ";" are ignored.
 All unit files must contain a section corresponding to the unit type. The generic sections "[Unit]" at the beginning and "[Install]" at the end of the file are optional, but the "[Unit]" section is strongly recommended. 
@@ -176,33 +176,33 @@ This section contains general information about the unit, defines dependencies t
    k. "*ConditionFileIsExecutable=*"  
       Checks if a given path exists and refers to a normal file marked as executable. With an exclamation mark ("!") in front of the path, the test is negated.
 
-For full documentation on all options of the "[Unit]" section, please refer to the [German manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html).
+For full documentation on all options of the "[Unit]" section, please refer to the manpage 'man systemd.unit` .
 
 #### Type-specific section
 
-This section contains the special options of the eleven possible types. Detailed descriptions can be found in the linked manual pages, or alternatively in the respective German manpage.
+This section contains the special options of the eleven possible types. Detailed descriptions can be found in the linked manual pages, or in the respective manpage.
 
-+ [[Service]](./systemd-service_en.md#systemd-service) configures a service
++ [[Service]](0712-systemd-service_en.md#systemd-service) configures a service
 
-+ [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) configures a socket
++ [Socket] configures a socket `man systemd.socket`
 
-+ [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) configures a device
++ [Device] configures a device `man systemd.device`
 
-+ [[Mount]](./systemd-mount_en.md#systemd-mount) configures a mount point
++ [[Mount]](0713-systemd-mount_en.md#systemd-mount) configures a mount point
 
-+ [[Automount]](./systemd-mount_en.md#systemd-mount) configures a self-mount point
++ [[Automount]](0713-systemd-mount_en.md#systemd-mount) configures a self-mount point
 
-+ [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) configures a swap file or partition
++ [Swap] configures a swap file or partition `man systemd.swap`
 
-+ [[Target]](./systemd-target_en.md#systemd-target---target-unit) configures a start target
++ [[Target]](0714-systemd-target_en.md#systemd-target---target-unit) configures a start target
 
-+ [[Path]](./systemd-path_en.md#systemd-path) configures a monitored file path
++ [[Path]](0715-systemd-path_en.md#systemd-path) configures a monitored file path
 
-+ [[Timer]](./systemd-timer_en.md#systemd-timer) configures a timer controlled and monitored by systemd
++ [[Timer]](0716-systemd-timer_en.md#systemd-timer) configures a timer controlled and monitored by systemd
 
-+ [[slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) configures a resource management slice
++ [slice] configures a resource management slice `man systemd.slice`
 
-+ [[Scope]](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html) configures a group of externally created processes.
++ [Scope] configures a group of externally created processes `man systemd.scope`
 
 #### Install section
 
@@ -323,7 +323,7 @@ We get the complete configuration of the units with the command **`systemd-analy
 [...]
 ~~~
 
-**The [Install]** section  
+**The [Install] section**  
 of the *cups.service* unit contains with the option "So=cups.socket cups.path" the instruction to install these two units as well and all three units have different "WantedBy=" options:
 
 + cups.socket: WantedBy=sockets.target  
@@ -343,7 +343,7 @@ The first one gives us a flowchart with the dependencies of the different *targe
 
 From the *targets.svg* and the *bootup.svg* we can see that
 
-1. **sysinit.target** is activated  
+1. **sysinit.target**  
     is activated and
 
 2. **basic.target**  
@@ -359,7 +359,7 @@ From the *targets.svg* and the *bootup.svg* we can see that
         is requested by *basic.target*,
 
         1. **cups.path**  
-              and all other *.path* units are brought in by *paths.target*.
+              and all other *.path* units are fetched from *paths.target*.
 
 3. **network.target**  
     will not start until *basic.target* has been reached.
@@ -376,7 +376,7 @@ From the *targets.svg* and the *bootup.svg* we can see that
     *cups.service*, must have been started successfully).
 
 6. **printer.target**  
-    becomes active only when Systemd dynamically generates device units for the printers.  
+    becomes active only when systemd dynamically generates device units for the printers.  
     For this to happen, the printers must be connected and turned on.
 
 Further above we noted that starting a *cups.xxx* unit is sufficient to bring in all three units. If we look again at the "WantedBy=" options in the [Install] section, we have the *cups.socket* unit being brought in via the *sockets.target* already during the *basic.target*, the *cups.path* unit being brought in during the *multi-user.target* and the *cups.service* being brought in by the *printer.target*.  
@@ -386,7 +386,7 @@ Additionally, the *printer.target* requests the *cups.service* whenever a printe
 ### Tools
 
 Systemd includes some useful tools for analyzing, checking and editing unit files.  
-Please also refer to the [systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html) and [systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html) man pages.
+Please also refer to the man pages `man systemd-analyze` and `man systemctl`.
 
 
 + edit
@@ -495,14 +495,18 @@ The tools mentioned here represent only a part of the tools shipped with systemd
 
 ### Sources systemd-unit file
 
-[German man page, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
-[German man page, systemd.syntax](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)  
-[German manpage, systemd.device](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html)  
-[German manpage, systemd.scope](https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html)  
-[German manpage, systemd.slice](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html)  
-[German manpage, systemd.socket](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html)  
-[German manpage, systemd.swap](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html)  
-[German manpage, systemd-analyze](https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html)  
-[German manpage, systemctl](https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html)
+The manpages
 
-<div id="rev">Page last updated 2021-14-08</div>
+~~~
+man systemd.unit
+man systemd.syntax
+man systemd.device
+man systemd.scope
+man systemd.slice
+man systemd.socket
+man systemd.swap
+man systemd-analyze
+man systemctl
+~~~
+
+<div id="rev">Page last updated 2021/25/08</div>

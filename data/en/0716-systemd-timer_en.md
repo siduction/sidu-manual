@@ -1,23 +1,23 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Systemd - timer
 
 ## systemd-timer
 
-The basic and introductory information about Systemd is contained in the manual page [Systemd-Start](./systemd-start_en.md#systemd-der-system--und-dienste-manager) The sections *[Unit]* and *[Install]* concerning all unit files are dealt with in our manual page [Systemd Unit file](./systemd-unit-datei_en.md#systemd-unit-datei).  
+The basic and introductory information about Systemd is contained in the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager) The sections *[Unit]* and *[Install]* concerning all unit files are dealt with in our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
 In this manual page we explain the function of the unit **systemd.timer**, which can be used to trigger time-controlled actions.
 
 The "*.timer*"-Unit is mostly used to do regularly occurring actions. For this a "*.service*" unit of the same name is necessary, in which the actions are defined. As soon as the system timer matches the time defined in the "*.timer*" unit, the "*.timer*" unit activates the "*.service*" unit of the same name.  
@@ -26,7 +26,7 @@ It is also possible for a "*.timer*" unit to trigger the desired actions only on
 
 ### Required files
 
-The **systemd-timer** unit needs two files with the same base name in the directory */usr/local/lib/systemd/system/* for its function. (If necessary, create the directory beforehand with the command **`mkdir -p /usr/local/lib/systemd/system/`**). These are the
+The **systemd-timer** unit needs two files with the same base name in the directory */usr/local/lib/systemd/system/* for its function. (If necessary, create the directory beforehand with the command `mkdir -p /usr/local/lib/systemd/system/`). These are the
 
 + timer unit file (xxxxx.timer), which contains the timing and trigger for the service unit  
     and the  
@@ -75,7 +75,8 @@ There are two timer types available:
 
 1. realtime timers,  
     which defines a realtime (i.e. wall clock) timer with the `OnCalendar=` option.  
-    (the example "*OnCalendar=\*-\*-\* 19:00:00*" means "daily at 19:00"),  
+    (the example "*OnCalendar=\*-\*-\* 19:00:00*" means "daily at 19:00"),
+    
     and  
 2. monotonic timers,  
     which defines a timer relative to the option with the options `OnActiveSec=, OnBootSec=, OnStartupSec=, OnUnitActiveSec=, OnUnitInactiveSec=`.  
@@ -118,15 +119,18 @@ Not the *.timer-Unit*, but the *.service-Unit* to be triggered by it is called.
 + Systemd Timer Units can be triggered by events like booting or hardware changes.
 + They can be easily enabled or disabled with systemctl.
 
-**Caveats**.
+**Caveats**
 
 + Configuring a cron job is a simple process.
 + Cron can send emails using the MAILTO variables. 
 
 ### Sources systemd-timer
 
-[German man page 'systemd.timer'](https://manpages.debian.org/testing/manpages-de/systemd.timer.5.de.html)  
+~~~
+man systemd.timer
+~~~
+
 [Archlinux Wiki, Timers](https://wiki.archlinux.org/index.php/Systemd/Timers)  
 [PRO-LINUX.DE, Systemd Timer Units...](https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html)
 
-<div id="rev">Page last updated 2021-14-08</div>
+<div id="rev">Page last updated 2021/25/08</div>
