@@ -62,8 +62,8 @@ Wir wechseln in das Verzeichnis */etc/apt-cacher/* und bearbeiten die Datei "*ap
 /etc/apt-cacher# mcedit apt-cacher.conf
 ~~~
 
-Jetzt suchen wir etwa bei Zeile 160 die Direktive "*allowed_hosts*". Das Konnentarzeichen (**#**) am Anfang der Zeile wird entfernt, damit die Clients den APT-Proxy-Server kontaktieren dürfen.  
-Aus Sicherheitsgründen ersetzen wir das Platzhalterzeichen (**\***). das allen den Zugriff erlaubt, durch die IP-Adressen der Clients.
+Jetzt suchen wir etwa bei Zeile 160 die Direktive "*allowed_hosts*". Das Kommentarzeichen (**#**) am Anfang der Zeile wird entfernt, damit die Clients den APT-Proxy-Server kontaktieren dürfen.  
+Aus Sicherheitsgründen ersetzen wir das Platzhalterzeichen (**\***), das allen den Zugriff erlaubt, durch die IP-Adressen der Clients.
 
 ~~~
 #allowed_hosts = *

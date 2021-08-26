@@ -20,65 +20,68 @@ Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu 
 
 **Folgende Einstellungen können zur Erhöhung der Sicherheit angepasst werden:**
 
-`Port <gewünschter Port>:`  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
++ Port `<gewünschter Port>:`  
+  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
 
-~~~
-Port 5874
-~~~
+  ~~~
+  Port 5874
+  ~~~
 
-`ListenAddress <IP des Rechners oder der Netzwerkschnittstelle>:`  Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern kein lokaler DNS-Server verwendet wird. Aber wenn etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS-Servers aufgesetzt werden soll und diese Anweisungen benötigt werden, kann sich leicht ein gravierender Fehler einschleichen. Wir verwenden eine statische IP für das Beispiel:
++ `ListenAddress <IP des Rechners oder der Netzwerkschnittstelle>:`  
+  Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern kein lokaler DNS-Server verwendet wird. Aber wenn etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS-Servers aufgesetzt werden soll und diese Anweisungen benötigt werden, kann sich leicht ein gravierender Fehler einschleichen. Wir verwenden eine statische IP für das Beispiel:
 
-~~~
-ListenAddress 192.168.2.134
-~~~
+  ~~~
+  ListenAddress 192.168.2.134
+  ~~~
 
-Protokoll 2 ist bereits Grundeinstellung bei Debian, aber man sollte sicher sein und daher nochmals überprüfen.
+  Protokoll 2 ist bereits Grundeinstellung bei Debian, aber man sollte sicher sein und daher nochmals überprüfen.
 
-`LoginGraceTime <Zeitrahmen des Anmeldevorgangs>:`  Die erlaubte Zeitspanne beträgt als Standard absurde 600 Sekunden. Da man für gewöhnlich keine zehn Minuten benötigt, um Benutzernamen und Passwort einzugeben, stellen wir eine etwas vernünftigere Zeitspanne ein:
++ `LoginGraceTime <Zeitrahmen des Anmeldevorgangs>:`  
+  Die erlaubte Zeitspanne beträgt als Standard absurde 600 Sekunden. Da man für gewöhnlich keine zehn Minuten benötigt, um Benutzernamen und Passwort einzugeben, stellen wir eine etwas vernünftigere Zeitspanne ein:
 
-~~~
-LoginGraceTime 45
-~~~
+  ~~~
+  LoginGraceTime 45
+  ~~~
 
-Nun hat man 45 Sekunden Zeit zum Anmelden, und Hacker haben keine zehn Minuten bei jedem Versuch, das Passwort zu knacken.
+  Nun hat man 45 Sekunden Zeit zum Anmelden, und Hacker haben keine zehn Minuten bei jedem Versuch, das Passwort zu knacken.
 
-`PermitRootLogin <yes>:`  Warum Debian hier Erlaubnis zur Anmeldung als Root erteilt, ist nicht nachvollziehbar. Wir korrigieren zu 'no':
++ `PermitRootLogin <yes>:`  
+  Warum Debian hier Erlaubnis zur Anmeldung als Root erteilt, ist nicht nachvollziehbar. Wir korrigieren zu 'no':
 
-~~~
-PermitRootLogin no
-~~~
+  ~~~
+  PermitRootLogin no
+  StrictModes yes
+  ~~~
 
-~~~
-StrictModes yes
-~~~
++ `MaxAuthTries <Anzahl der erlaubten Anmeldungsversuche>:`  
+  Mehr als 3 oder 4 Versuche sollten nicht ermöglicht werden:
 
-`MaxAuthTries <Anzahl der erlaubten Anmeldungsversuche>:`  Mehr als 3 oder 4 Versuche sollten nicht ermöglicht werden:
+  ~~~
+  MaxAuthTries 3
+  ~~~
 
-~~~
-MaxAuthTries 2
-~~~
+**Folgende Einstellungen müssen hinzugefügt werden, so sie nicht vorhanden sind:**
 
-Folgende Einstellungen müssen hinzugefügt werden, so sie nicht vorhanden sind:
++ `AllowUsers <xxx>:`  
+  Benutzernamen, welchen der Zugriff via SSH erlaubt ist, getrennt durch Leerzeichen. Nur eingetragene Benutzer können den Zugang verwenden, und dies nur mit Benutzerrechten. Mit `adduser`  sollte man einen User hinzufügen, der speziell zur Nutzung von SSH verwendet wird:
 
-AllowUsers: Benutzernamen, welchen der Zugriff via SSH erlaubt ist, getrennt durch Leerzeichen  
+  ~~~
+  AllowUsers werauchimmer1 werauchimmer2
+  ~~~
 
-`AllowUsers <xxx>:`  Nur eingetragene Benutzer können den Zugang verwenden, und dies nur mit Benutzerrechten. Mit `adduser`  sollte man einen User hinzufügen, der speziell zur Nutzung von SSH verwendet wird:
++ `PermitEmptyPasswords <xxx>:`  
+  dem Benutzer soll ein schönes langes Passwort gegeben werden, das man in einer Million Jahren nicht erraten kann. Dieser Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit `su`  Root werden:
 
-~~~
-AllowUsers werauchimmer
-~~~
+  ~~~
+  PermitEmptyPasswords no
+  ~~~
 
-`PermitEmptyPasswords <xxx>:`  dem Benutzer soll ein schönes langes Passwort gegeben werden, das man in einer Million Jahren nicht erraten kann. Dieser Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit `su`  Root werden:
++ `PasswordAuthentication <xxx>:`  
+  natürlich muss hier 'yes' gesetzt werden. Es sei denn, man verwendet einen KeyLogin.
 
-~~~
-PermitEmptyPasswords no
-~~~
-
-`PasswordAuthentication <xxx>:`  natürlich muss hier 'yes' gesetzt werden. Es sei denn, man verwendet einen KeyLogin.
-
-~~~
-PasswordAuthentication yes [wenn man keine keys verwendet]
-~~~
+  ~~~
+  PasswordAuthentication yes [wenn man keine keys verwendet]
+  ~~~
 
 Schlussendlich:
 
@@ -114,7 +117,7 @@ Weitere Informationen:
 $man ssh
 ~~~
 
-`Anmerkung:`  Falls ssh eine Verbindung verweigert und man eine Fehlermeldung erhält, sucht man in $HOME nach dem versteckten Verzeichnis `.ssh` , löscht die Datei `known_hosts`  und versucht einen neuen Verbindungsaufbau. Dieses Problem tritt hauptsächlich auf, wenn man die IP-Adresse dynamisch zugewiesen hat (DCHP).
+**Anmerkung:** Falls ssh eine Verbindung verweigert und man eine Fehlermeldung erhält, sucht man in $HOME nach dem versteckten Verzeichnis `.ssh` , löscht die Datei `known_hosts`  und versucht einen neuen Verbindungsaufbau. Dieses Problem tritt hauptsächlich auf, wenn man die IP-Adresse dynamisch zugewiesen hat (DCHP).
 
 ### Kopieren scp via ssh
 
@@ -126,35 +129,35 @@ Es können rekursiv auch ganze Partitionen bzw. Verzeichnisse mit dem Befehl `sc
 
 **Beispiele:**
 
-`Beispiel 1:`  Kopieren einer Partition:
+1. Kopieren einer Partition:
 
-~~~
-scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
-~~~
+   ~~~
+   scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
+   ~~~
 
-`Beispiel 2:`  Kopieren eines Verzeichnisses auf einer Partition, in diesem Fall eines Verzeichnisses mit der Bezeichnung "photos" im $HOME:
+2. Kopieren eines Verzeichnisses auf einer Partition, in diesem Fall eines Verzeichnisses mit der Bezeichnung "photos" im $HOME:
 
-~~~
-scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
-~~~
+   ~~~
+   scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
+   ~~~
 
-`Beispiel 3:`  Kopieren einer Datei in einem Verzeichnis einer Partition, in diesem Fall eine Datei im $HOME:
+3. Kopieren einer Datei in einem Verzeichnis einer Partition, in diesem Fall eine Datei im $HOME:
 
-~~~
-scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
-~~~
+   ~~~
+   scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
+   ~~~
 
-`Beispiel 4:`  Kopieren einer Datei auf einer Partition:
+4. Kopieren einer Datei auf einer Partition:
 
-~~~
-scp <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
-~~~
+   ~~~
+   scp <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
+   ~~~
 
-`Beispiel 5:`  Falls man sich im Laufwerk bzw. Verzeichnis befindet, in das ein Verzeichnis bzw. eine Datei kopiert werden soll, verwendet man einen '**` **.** `** ' (Punkt):
+5. Falls man sich im Laufwerk bzw. Verzeichnis befindet, in das ein Verzeichnis bzw. eine Datei kopiert werden soll, verwendet man nur einen **.** (Punkt):
 
-~~~
-scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt**`** .** `** 
-~~~
+   ~~~
+   scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt . 
+   ~~~
 
 Weitere Informationen:
 
@@ -164,11 +167,11 @@ man scp
 
 ### SSH mit Dolphin
 
-Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das `sftp-` Protokoll benutzen, welches in ssh vorhanden ist.
+Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das *sftp* Protokoll benutzen, welches in ssh vorhanden ist.
 
 So wird es gemacht:  
 1) Man öffnet ein neues Dolphin-Fenster  
-2) Die Syntax in der Adress-Leiste ist: `sftp://username@ssh-server.com` 
+2) Die Syntax in der Adress-Leiste ist: "sftp://username@ssh-server.com".
 
 Beispiel 1: ein Dialog-Fenster öffnet sich und fragt nach dem SSH-Passwort. Man gibt das Passwort ein und klickt auf OK:
 
@@ -188,13 +191,12 @@ Für eine LAN-Umgebung
 sftp://username@10.x.x.x
 oder
 sftp://username@198.x.x.x
-(Anmerkung: Bitte richtige IP eingeben!
-Ein Dialog-Fenster fragt nach Eingabe des ssh-Passworts: dieses eingeben und auf OK klicken)
 ~~~
 
+Bitte richtige IP eingeben! Anschließend folgt ein Dialog-Fenster zur Eingabe des ssh-Passworts: Dieses eingeben und auf OK klicken.  
 Eine SSH-Verbindung im Dolphin ist nun hergestellt. In diesem Dolphin-Fenster kann man mit den Dateien auf dem SSH-Server arbeiten, als wären es lokale Dateien.
 
- `ANMERKUNG: wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:`
+**ANMERKUNG: wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:**
 
 ~~~
 sftp://user@ip:port
@@ -213,7 +215,7 @@ Auf Seite des Clients muss vermutlich sshfs erst installiert werden:
 apt update && apt install sshfs
 ~~~
 
-*`fuse3`* `und`  *`groups`*  `sind bereits auf dem ISO und müssen nicht extra installiert werden.` 
+*fuse3* und  *groups*  sind bereits auf dem ISO und müssen nicht extra installiert werden. 
 
 Das Einbinden eines entfernten Dateisystems ist sehr einfach:
 
@@ -221,7 +223,7 @@ Das Einbinden eines entfernten Dateisystems ist sehr einfach:
 sshfs -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt
 ~~~
 
-Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden.`Bitte beachten: der Doppelpunkt` "**`:`**" `ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!` 
+Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden.Bitte beachten: der Doppelpunkt "**`:`**" ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!
 
 Nach erfolgter Einbindung verhält sich das entfernte Verzeichnis wie jedes andere lokale Dateisystem. Man kann wie auf einem lokalen Dateisystem nach Dateien suchen, diese lesen und ändern sowie Skripte ausführen.
 
@@ -237,7 +239,7 @@ Bei regelmäßiger Nutzung von sshfs empfiehlt sich ein Eintrag in /etc/fstab:
 sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
-Als nächstes muss das Kommentarzeichen vor `user_allow_other`  in `/etc/fuse.conf`  weggenommen werden:
+Als nächstes muss das Kommentarzeichen vor "user_allow_other"  in der Datei `/etc/fuse.conf`  entfernt werden:
 
 ~~~
 # Allow non-root users to specify the 'allow_other' or 'allow_root'
@@ -271,16 +273,15 @@ Falls der Nutzername (username) nicht gelistet ist, verwendet man als root den B
 adduser <nutzername> fuse
 ~~~
 
-`Zur Beachtung: Der Benutzer wird erst nach einem neuerlichen Einloggen Mitglied der Gruppe "fuse" sein.` Jetzt sollte der gewünschte Nutzername gelistet und folgender Befehl ausführbar sein:
+**Zur Beachtung:** Der Benutzer wird erst nach einem neuerlichen Einloggen Mitglied der Gruppe "fuse" sein.  
+Jetzt sollte der gewünschte Nutzername gelistet und folgender Befehl ausführbar sein:
 
 ~~~
 mount lokaler_mountpunkt
-~~~
 
-und
+    und
 
-~~~
 umount lokaler_mountpunkt
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Zuletzt bearbeitet: 2021-08-26</div>
