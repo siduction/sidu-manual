@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Secure Shell
@@ -27,73 +27,72 @@ IANA has assigned TCP port 22 to the protocol, but any other ports can be select
 
 It is not secure to allow root logins via SSH. It is important not to make root logins the default, because Debian should be secure, not insecure. Similarly, attackers should not be able to perform a wordlist-based password attack (brute force attack) on the SSH login over ten minutes. Therefore, it makes sense to limit the login time window as well as the number of possible attempts.
 
-To make SSH more secure, use a text editor to edit the following file:
+To make SSH more secure, use a text editor of your choice to edit the file **/etc/ssh/sshd_config**
 
-~~~
-/etc/ssh/sshd_config
-~~~
+**The following settings can be adjusted to increase security:**
 
-**The following settings can be adjusted to increase security:**.
++ `Port <desired port>:`  
+  This entry must point to the port that is enabled on the router for forwarding. If it is not known what is to be done, the use of SSH for remote control should be reconsidered. Debian sets port 22 as default. However, it is advisable to use a port outside the default scan range, so we use port 5874, for example:
 
-`Port <desired port>:` This entry must point to the port that is enabled on the router for forwarding. If it is not known what is to be done, the use of SSH for remote control should be reconsidered. Debian sets port 22 as default. However, it is advisable to use a port outside the default scan range, so we use port 5874, for example:
+  ~~~
+  Port 5874
+  ~~~
 
-~~~
-Port 5874
-~~~
++ `ListenAddress <IP of the computer or network interface>:`  
+  Since the port is forwarded by the router, the computer must use a static IP address unless a local DNS server is used. But if something as complicated as SSH is to be set up using a local DNS server and these instructions are needed, a serious error can easily creep in. We'll use a static IP for the example:
 
-`ListenAddress <IP of the computer or network interface>:` Since the port is forwarded by the router, the computer must use a static IP address unless a local DNS server is used. But if something as complicated as SSH is to be set up using a local DNS server and these instructions are needed, a serious error can easily creep in. We'll use a static IP for the example:
+  ~~~
+  ListenAddress 192.168.2.134
+  ~~~
 
-~~~
-ListenAddress 192.168.2.134
-~~~
+  Protocol 2 is already default in Debian, but you should be sure and therefore check again.
 
-Protocol 2 is already default in Debian, but you should be sure and therefore check again.
++ `LoginGraceTime <timeframe of login>:`  
+  The allowed time is an absurd 600 seconds by default. Since it usually doesn't take ten minutes to enter a username and password, let's set a slightly more reasonable amount of time:
 
-`LoginGraceTime <timeframe of login>:` The allowed time is an absurd 600 seconds by default. Since it usually doesn't take ten minutes to enter a username and password, let's set a slightly more reasonable amount of time:
+  ~~~
+  LoginGraceTime 45
+  ~~~
 
-~~~
-LoginGraceTime 45
-~~~
+  Now you have 45 seconds to log in, and hackers don't have ten minutes each time they try to crack the password.
 
-Now you have 45 seconds to log in, and hackers don't have ten minutes each time they try to crack the password.
++ `PermitRootLogin <yes>:`  
+  Why Debian gives permission to log in as root here is incomprehensible. We correct to `no':
 
-`PermitRootLogin <yes>:` Why Debian gives permission to log in as root here is incomprehensible. We correct to `no':
+  ~~~
+  PermitRootLogin no
+  StrictModes yes
+  ~~~
 
-~~~
-PermitRootLogin no
-~~~
++ `MaxAuthTries <number of allowed login attempts>:`  
+   More than 3 or 4 attempts should not be allowed:
 
-~~~
-StrictModes yes
-~~~
+  ~~~
+  MaxAuthTries 3
+  ~~~
 
-`MaxAuthTries <number of allowed login attempts>:` More than 3 or 4 attempts should not be allowed:
+**The following settings must be added if they are not present:**
 
-~~~
-MaxAuthTries 2
-~~~
++ `AllowUsers <xxx>:`  
+  Usernames which are allowed to access via SSH, separated by spaces. Only registered users can use the access, and only with user rights. With `adduser` you should add a user that is specifically used to use SSH:
 
-The following settings must be added if they are not present:
+  ~~~
+  AllowUsers whoever1 whoever2
+  ~~~
 
-AllowUsers: usernames which are allowed to access via SSH, separated by spaces.  
++ `PermitEmptyPasswords <xxx>:`  
+  the user should be given a nice long password that can't be guessed in a million years. This user should be the only one with SSH access. Once logged in, he can become root with `su`:
 
-`AllowUsers <xxx>:` Only registered users can use the access, and only with user rights. With `adduser` you should add a user that is specifically used to use SSH:
+  ~~~
+  PermitEmptyPasswords no
+  ~~~
 
-~~~
-AllowUsers whoever
-~~~
++ `PasswordAuthentication <xxx>:`  
+  of course 'yes' must be set here. Unless you use a KeyLogin.
 
-`PermitEmptyPasswords <xxx>:` the user should be given a nice long password that can't be guessed in a million years. This user should be the only one with SSH access. Once logged in, he can become root with `su`:
-
-~~~
-PermitEmptyPasswords no
-~~~
-
-`PasswordAuthentication <xxx>:` of course 'yes' must be set here. Unless you use a KeyLogin.
-
-~~~
-PasswordAuthentication yes [if you don't use keys]
-~~~
+  ~~~
+  PasswordAuthentication yes [if you don't use keys]
+  ~~~
 
 Finally:
 
@@ -129,7 +128,7 @@ More information:
 $man ssh
 ~~~
 
-`Note:` If ssh refuses a connection and you get an error message, search in $HOME for the hidden directory `.ssh` , delete the file `known_hosts` and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
+**Note:** If ssh refuses a connection and you get an error message, search in $HOME for the hidden directory `.ssh` , delete the file `known_hosts` and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
 
 ### Copy scp via ssh
 
@@ -139,37 +138,37 @@ If you have ssh rights on a network PC or network server, scp allows you to copy
 
 It is also possible to recursively copy entire partitions or directories with the command `scp -r`. Note that scp -r also follows symbolic links in the directory tree.
 
-**Examples
+**Examples**
 
-`Example 1:` Copying a partition:
+1. Copying a partition:
 
-~~~
-scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
-~~~
+   ~~~
+   scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
+   ~~~
 
-`Example 2:` Copying a directory on a partition, in this case a directory named "photos" in $HOME:
+2. Copying a directory on a partition, in this case a directory named "photos" in $HOME:
 
-~~~
-scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
-~~~
+   ~~~
+   scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
+   ~~~
 
-`Example 3:` Copy a file in a directory of a partition, in this case a file in $HOME:
+3. Copy a file in a directory of a partition, in this case a file in $HOME:
 
-~~~
-scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
-~~~
+   ~~~
+   scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
+   ~~~
 
-`Example 4:` Copying a file on a partition:
+4. Copying a file on a partition:
 
-~~~
-scp <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
-~~~
+   ~~~
+   scp <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx
+   ~~~
 
-`Example 5:` If you are in the drive or directory to which a directory or file is to be copied, use a '**` **.** `** ' (dot):
+5. If you are in the drive or directory to which a directory or file is to be copied, use only a **.**  (dot):
 
-~~~
-scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt**`** .** `** 
-~~~
+   ~~~
+   scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt .
+   ~~~
 
 Additional information:
 
@@ -179,11 +178,11 @@ man scp
 
 ### SSH with Dolphin
 
-Both Dolphin and Krusader are capable of accessing data from a remote computer using the `sftp` protocol present in ssh.
+Both Dolphin and Krusader are capable of accessing data from a remote computer using the *sftp* protocol present in ssh.
 
 This is how it is done:  
 1) Open a new Dolphin window.  
-2) The syntax in the address bar is: `sftp://username@ssh-server.com`. 
+2) The syntax in the address bar is: "sftp://username@ssh-server.com".
 
 Example 1: a dialog window opens and asks for the SSH password. One enters the password and clicks OK:
 
@@ -203,13 +202,12 @@ For a LAN environment
 sftp://username@10.x.x.x
 or
 sftp://username@198.x.x.x
-(Note: Please enter the correct IP!
-A dialog window asks for the ssh password: enter it and click OK)
 ~~~
 
+Please enter the correct IP! Afterwards a dialog window for the input of the ssh password follows.  
 A SSH connection in Dolphin is now established. In this Dolphin window you can work with the files on the SSH server as if they were local files.
 
- `NOTE: if a port other than 22 (default) is used, it must be specified when using sftp:`
+**NOTE: if a port other than 22 (default) is used, it must be specified when using sftp:**
 
 ~~~
 sftp://user@ip:port
@@ -228,7 +226,7 @@ On the client side, you probably need to install sshfs first:
 apt update && apt install sshfs
 ~~~
 
-*`fuse3`* `and` *`groups`* `are already on the ISO and do not need to be installed separately.` 
+*fuse3* and *groups* are already on the ISO and do not need to be installed separately. 
 
 Mounting a remote filesystem is very easy:
 
@@ -236,7 +234,7 @@ Mounting a remote filesystem is very easy:
 sshfs -o idmap=user username@remote_hostname:directory local_mountpoint
 ~~~
 
-If no specific directory is specified, the remote user's home directory will be mounted.`Please note: the colon` "**`:`**" `is mandatory even if no directory is specified!` 
+If no specific directory is specified, the remote user's home directory will be mounted. Please note: the colon "**`:`**" is mandatory even if no directory is specified! 
 
 Once mounted, the remote directory behaves like any other local file system. You can browse, read and modify files and execute scripts just like on a local file system.
 
@@ -252,7 +250,7 @@ If you use sshfs regularly, it is recommended to make an entry in /etc/fstab:
 sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
-Next, remove the comment character before `user_allow_other` in `/etc/fuse.conf`:
+Next, remove the comment character before "user_allow_other" in the file `/etc/fuse.conf`:
 
 ~~~
 # Allow non-root users to specify the 'allow_other' or 'allow_root'
@@ -286,16 +284,15 @@ If the username is not listed, use the adduser command as root:
 adduser <username> fuse
 ~~~
 
-`Note: The user will not be a member of the group "fuse" until he logs in again.` Now the desired username should be listed and the following command should be executable:
+**Note:** The user will not be a member of the group "fuse" until he logs in again.  
+Now the desired username should be listed and the following command should be executable:
 
 ~~~
 mount local_mountpoint
-~~~
 
-and
+    and
 
-~~~
 umount local_mountpoint
 ~~~
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

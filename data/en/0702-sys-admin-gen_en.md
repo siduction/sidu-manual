@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % siduction system administration
@@ -23,12 +23,12 @@ At the beginning of the boot process, the kernel command line can be edited by p
 
 The following links lead to the manual page with the tables for the boot options.
 
-1 [siduction specific parameters (Live-CD only)](cheatcodes_en.md#siduction-specific-parameters)
-2. [bootoptions-for-graphics-server-X](cheatcodes_en.md#bootoptions-for-graphics-server-x)
-3 [general-parameters-of-the-linux-kernel](cheatcodes_en.md#general-parameters-of-the-linux-kernel)
-4. [Values for the general parameter **vga**](cheatcodes_en.md#vga-codes)
+1. [siduction specific parameters (Live-CD only)](0204-cheatcodes_en.md#siduction-specific-parameters)
+2. [bootoptions-for-graphics-server-X](0204-cheatcodes_en.md#boot-options-for-the-graphics-server-x)
+3. [general-parameters-of-the-linux-kernel](0204-cheatcodes_en.md#general-parameters-of-the-linux-kernel)
+4. [Values for the general parameter **vga**](0204-cheatcodes_en.md#vga-codes)
 
-[Detailed reference list for kernel bootcodes from kernel.org (English, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
+[Detailed reference list for kernel bootcodes from kernel.org](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
 ### systemd - managing services
 
@@ -41,7 +41,7 @@ systemd knows a total of 11 unit types. The units we deal with most often in eve
 + systemd.mount  
 + systemd.path  
 
-We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page [systemadministration.systemd](systemd-start_en.md#systemd--the--system--and--services--manager). The complete documentation can be found in the man pages **systemd.unit**, **systemd.special** and **systemd. "Unit-type "** respectively.
+We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page [systemadministration.systemd](0710-systemd-start_en.md#systemd---the-system-and-services-manager). The complete documentation can be found in the man pages **systemd.unit**, **systemd.special** and **systemd. "Unit-type"** respectively.
 
 With the command, depending on the units and the necessary rights as *user* or *root* called,
 
@@ -80,7 +80,7 @@ $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 With *"kill "*, in contrast to *"stop "*, the options **-s, --signal=** and **--kill-who=** are available.
 + **-s** sends one of the signals **SIGTERM, SIGINT, SIGSTOP**. Default is **SIGTERM**.
 + **--kill-who=** allows selection of the processes within the hirarchy to which a signal should be sent. The options are **main, control, all**. This sends the signal to the main process, the child processes, or both. Default is **all**.  
-This behavior is similar to the old and still usable command *pkill*, which is explained below in the section [Terminating a process](#terminating-a-process).
+This behavior is similar to the old and still usable command *pkill*, which is explained below in the section [Terminating a process](0702-sys-admin-gen_en.md#terminating-a-process).
 
 
 ### systemd - UNIT inclusion
@@ -115,14 +115,14 @@ will remove the symlinks from all requirements and dependencies within systemd a
 
 Since the 2013.2 "December" release, siduction already uses systemd as the default init system.  
 The old sysvinit commands are still supported. (for this a quote from *man systemd*: "... is provided for compatibility reasons and because it is easier to type.")  
-More detailed information about systemd can be found on the manual page [systemadministration.systemd](systemd-start_en.md#systemd--the--system--and--services--manager).  
+More detailed information about systemd can be found on the manual page [systemadministration.systemd](0710-systemd-start_en.md#systemd---the-system-and-services-manager).  
 The various runlevels that are booted or switched to are described by systemd as **target** units. They have the extension **.target**.
 
 | target unit | description | 
 | ---- | ---- |
 | emergency.target | Starts into an emergency shell on the main console. It is the minimum version of a system boot to obtain an interactive shell. This unit can be used to guide the boot process step by step. | 
 | rescue.target | Starts the base system (including system mounts) and an emergency shell. Compared to multi-user.target, this target could be considered as single-user.target. |
-| multi-user.target | Multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not boot into X. [A system update (dist-upgrade) is performed on this unit](sys-admin-apt_en.md#update-the-system) . |
+| multi-user.target | Multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not boot into X. [A system update (dist-upgrade) is performed on this unit](0705-sys-admin-apt_en.md#updating-the-system) . |
 | graphical.target | The unit for multi-user mode with network capability and a running X Window System. |
 | default.target | The default unit that systemd starts at system startup. In siduction this is a symlink to graphical.target (except noX). |
 
@@ -232,10 +232,10 @@ To change a user password as administrator, as **# root** :
 
 To improve the display of fonts, if necessary, it is important to check the correct settings and configurations of the hardware beforehand.
 
-**Check settings
+**Check settings**
 
 - **Correct graphics drivers**  
-    Some newer graphics cards from ATI and Nvidia do not harmonize very well with the free Xorg drivers. The only reasonable solution in these cases is to install proprietary, non open source drivers. For legal reasons, siduction cannot pre-install these. Instructions for installing these drivers can be found on the [Graphics Drivers](gpu_en.md#grafiktreiber) page of the manual.
+    Some newer graphics cards from ATI and Nvidia do not harmonize very well with the free Xorg drivers. The only reasonable solution in these cases is to install proprietary, non open source drivers. For legal reasons, siduction cannot pre-install these. Instructions for installing these drivers can be found on the [Graphics Drivers](0600-gpu_en.md#graphics-drivers) page of the manual.
 
 - **Correct screen resolutions and refresh rates**.  
     First, it's a good idea to look at the manufacturer's technical documentation, either in print or online. Each monitor has its own perfect combination of settings. These DCC values are usually passed correctly to the operating system. Only sometimes it is necessary to intervene manually to overwrite the basic settings.
@@ -374,11 +374,11 @@ http://localhost:631
 
 A small problem occurs when CUPS opens the corresponding dialog box for legitimation. Occasionally, the user's own user name is already entered there and the password is expected. However, entering the user password does not work. Nothing works. The solution is to change the user name to **root** and enter the **root password**.
 
-[The OpenPrinting database](https://wiki.linuxfoundation.org/openprinting/database/databaseintro) contains extensive information about various printers and their drivers. Drivers, specifications and configuration tools are available. Samsung used to supply its own Linux drivers for its printers. After the sale of the printer division to HP, the download page was no longer available and HP unfortunately did not include the Samsung drivers in *hplib*. Currently, the package **printer-driver-splix** works best for Samsung printers and Samsung multifunction devices. CUPS is currently in transition and is moving towards printing without drivers via [IPP-Everywhere](https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/).
+[The OpenPrinting database](https://wiki.linuxfoundation.org/openprinting/database/databaseintro) contains extensive information about various printers and their drivers. Drivers, specifications and configuration tools are available. Samsung used to supply its own Linux drivers for its printers. After the sale of the printer division to HP, the download page was no longer available and HP unfortunately did not include the Samsung drivers in *hplib*. Currently, the package **printer-driver-splix** works best for Samsung printers and Samsung multifunction devices. CUPS is currently in transition and is moving towards printing without drivers via [PWG - IPP Everywhere](https://www.pwg.org/ipp/everywhere.html), see also [debian - an introduction to IPP-Everywhere](https://wiki.debian.org/CUPSIPPEverywhere/).
 
 ### Sound in siduction
 
-*In older siduction installations, sound is disabled by default.
+*In older siduction installations, sound is disabled by default.*
 
 Most sound problems can be solved by clicking on the sound icon in the control bar, opening the mixer and unchecking "mute" or "mute" or using the appropriate slider. If the speaker icon is not present, a right click on the control bar is sufficient, then the selection
 
@@ -424,4 +424,4 @@ The desired sound settings are made as **$user** from a terminal:
 $ alsamixer
 ~~~
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

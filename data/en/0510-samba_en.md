@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % SAMBA
@@ -94,10 +94,11 @@ Samba server.
 
 Our recommendations on this topic:
 
-https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian  
-https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html  
-https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debian-10-buster-ein/  
+[debian - a minimal Samba setup](https://wiki.debian.org/Samba/ServerSimple)  
+[Raspberry Pi - samba server](https://pimylifeup.com/raspberry-pi-samba/)  
+[ubuntu - install and configure samba](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview)  
+[redhat - using samba as a server](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/assembly_using-samba-as-a-server_deploying-different-types-of-servers)
 
 There are many more sites on this topic on the net.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

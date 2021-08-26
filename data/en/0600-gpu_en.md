@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Graphics driver nVidea, Intel, ATA/AMD
@@ -65,9 +65,11 @@ Note: xorg.conf is usually no longer needed for open source drivers Exceptions a
 
 Proprietary drivers are actually only available for nVidia graphics cards. AMD also has a proprietary driver called amdgpu-pro, but this only officially supports Ubuntu in certain versions and is not packaged in Debian. Also, this driver is designed for professional cards rather than desktop cards.
 
-To switch from Nvidia's proprietary driver to nouveau, see the [entry in the siduction Wiki.](http://wiki.siduction.de/index.php?title=Wie_entferne_ich_propriet%C3%A4re_nVidia-Treiber%3F)
-
-More information on [Intel](http://www.x.org/wiki/IntelGraphicsDriver) [ATI/AMD](http://www.x.org/wiki/radeon) [nouveau](http://nouveau.freedesktop.org/wiki/FeatureMatrix) [X.Org](http://xorg.freedesktop.org/).
+Here you can get more information about the drivers of  
+[Intel](http://www.x.org/wiki/IntelGraphicsDriver)  
+[ATI/AMD](http://www.x.org/wiki/radeon)  
+[nouveau](http://nouveau.freedesktop.org/wiki/FeatureMatrix)  
+[X.Org](http://xorg.freedesktop.org/).
 
 ### Video driver 2D
 
@@ -75,7 +77,7 @@ Pretty much any video card that uses a [KMS](https://wiki.debian.org/KernelModes
 
 ### Video driver 3D
 
-3D acceleration is available under Linux for Intel, AMD and nVidia graphics cards. How well the free drivers have 3D implemented depends somewhat on the graphics card itself. In general, it should be noted that almost all graphics cards require non-free firmware to run smoothly. This firmware is only available in the non-free repository in Debian because it is not DFSG compliant. If the correct firmware is installed, 3D support is available with Intel or AMD graphics cards without any further action. With nVidia graphics the story is a bit different. Older cards, which are classified as legacy cards by nVidia, work relatively well, although problems are always to be expected, since the desktop used also plays a role. The free nouveau driver is developed without support from nVidia via [reverse engineering](https://de.wikipedia.org/wiki/Reverse_Engineering).
+3D acceleration is available under Linux for Intel, AMD and nVidia graphics cards. How well the free drivers have 3D implemented depends somewhat on the graphics card itself. In general, it should be noted that almost all graphics cards require non-free firmware to run smoothly. This firmware is only available in the non-free repository in Debian because it is not DFSG compliant. If the correct firmware is installed, 3D support is available with Intel or AMD graphics cards without any further action. With nVidia graphics the story is a bit different. Older cards, which are classified as legacy cards by nVidia, work relatively well, although problems are always to be expected, since the desktop used also plays a role. The free nouveau driver is developed without support from nVidia via [reverse engineering](https://en.wikipedia.org/wiki/Reverse_Engineering).
 
 Since the non-free firmware is usually required for correct operation (AMD, Intel from Skylake and Nvidia from Fermi), an entry similar to
 
@@ -85,7 +87,7 @@ deb http://deb.debian.org/debian/ unstable main contrib non-free
 
 should be set. To save subsequent problems with WLAN, network, Bluetooth or similar, a 
 
-~~sh
+~~~sh
 apt update && apt install firmware-linux-nonfree
 ~~~
 
@@ -125,19 +127,19 @@ apt update && apt install nvidia-legacy-340xx-driver
 
 **GeForce GF1xx Chipset, Fermi Cards**
 
-~~sh
+~~~sh
 apt update && apt install nvidia-legacy-390xx-driver
 ~~~
 
 **Kepler, Maxwell, Pascal and newer (GKxxx, GMxxx, GPxxx, TU1xx)**
 
-~~sh
+~~~sh
 apt update && apt install nvidia-driver
 ~~~
 
 If this runs without errors another
 
-~~sh
+~~~sh
 mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection' > /etc/X11/xorg.conf.d/20-nvidia.conf
 ~~~
 
@@ -147,4 +149,4 @@ Since the legacy drivers 304.xx and 340.xx are no longer supported by NVidia, it
 
 Problematic are notebooks with hybrid graphics Intel/nVidia, so-called Optimus hardware. In the past, [Bumblebee](https://wiki.debian.org/Bumblebee) was referred to, but this solution is anything but optimal. nVidia itself recommends configuring these setups with [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/). Our recommendation is to avoid such hardware if possible. We cannot provide setup tips for Optimus hardware here.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>
