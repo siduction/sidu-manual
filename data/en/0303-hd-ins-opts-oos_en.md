@@ -1,27 +1,27 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Installation on USB stick / memory card
 
 ## Installation on USB stick - memory card
 
-**Below we describe methods of installing a siduction-ISO on a USB stick, an SSD card, a SHDC device (Secure Digital High Capacity card) each using a different Linux distribution, MS Windows&#8482; or Mac OS X&#8482;.
+**Below we describe methods of installing a siduction-ISO on a USB stick, an SSD card, a SHDC device (Secure Digital High Capacity card) each using a different Linux distribution, MS Windows&#8482; or Mac OS X&#8482;.**
 
 This writes the siduction ISO to the device. Even if the persist option is not possible, you can have "siduction on a stick".
 
-If persist is needed, install-usb-gui on an existing siduction system is the recommended method, as it does not impose any restrictions. See also: [USB/SSD fromiso installation - siduction-on-a-stick](0302-hd-ins-fromiso_en.md#fromiso) .
+If persist is needed, install-usb-gui on an existing siduction system is the recommended method, as it does not impose any restrictions. See also: [USB/SSD fromiso installation - siduction-on-a-stick](0302-hd-ins-fromiso_en.md#boot-from-iso-file) .
 
 **Prerequisites**
 
@@ -44,7 +44,7 @@ cat /home/username/siduction-18.3.0-patience-kde.iso > /dev/sdX
 
 or
 
-~~sh
+~~~sh
 dd if=/path/to/siduction-*.iso of=/dev/sdX
 ~~~
 
@@ -70,7 +70,7 @@ cat /home/username/siduction-18.3.0-patience-kde.iso > /dev/sdc
 
 or
 
-~~sh
+~~~sh
 dd if=/home/username/siduction-18.3.0-patience-kde.iso of=/dev/sdc
 ~~~
 
@@ -98,4 +98,4 @@ Assuming the saved ISO "siduction-18.3.0-patience-kde-amd64-201805132121.iso" ha
 dd if=/Users/username/Downloads/siduction-18.3.0-patience-kde.iso of=/dev/disk1
 ~~~
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % UUID - naming of block devices
@@ -145,7 +145,7 @@ A mount point that is specified in fstab must be associated with an existing dir
 
 Now, if the partitioning table was changed after the installation and fstab was adjusted (for example, two new partitions were created), no mount point exists yet. It must be created manually.
 
-**Example  
+**Example**  
 First we go to **Root** and determine the existing mount points:
 
 ~~~
@@ -181,4 +181,4 @@ man mount
 
 Of course you don't have to follow the naming scheme *'diskXpartX'*. Mount points (mountpoints) and their associated identifiers in fstab can be usefully named with, for example, *'data'* or *'music'*.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

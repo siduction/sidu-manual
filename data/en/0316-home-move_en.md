@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % home move
@@ -24,7 +24,7 @@ Therefore, we generally advise against creating a /home partition.
 The directory **/home** should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created, and this should be mounted under **/data**, for example. The advantages for data stability, data backup and also in case of data recovery are almost immeasurable.  
 If data is to be shared for parallel installations, this procedure is particularly advisable.
 
-**Preparations
+**Preparations**
 
 Using a realistic example, we show the necessary steps.  
 The initial situation:
@@ -37,16 +37,14 @@ The initial situation:
 Our previous **/etc/fstab** has the content:
 
 ~~~
-$ cat /etc/fstab
-...
-# <file system> <mount point> <type> <options> <dump><pass>
-UUID=B248-1CCA /boot/efi vfat umask=0077 0 2
-UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
-UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
-tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+# <file system>                       <mount point> <type> <options> <dump><pass>
+UUID=B248-1CCA                            /boot/efi vfat   umask=0077 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb /         ext4   defaults,noatime 0 1
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap      swap   defaults,noatime 0 2
+tmpfs                                     /tmp      tmpfs  defaults,noatime,mode=1777 0 0
 ~~~
 
-From the additional hard disk we need the UUID information. See also the manual page [customize fstab](#fstab-customize).  
+From the additional hard disk we need the UUID information. See also the manual page [customize fstab](0311-part-uuid_en.md#adjusting-the-fstab).  
 The command *blkid* gives us information.
 
 ~~~
@@ -55,7 +53,7 @@ $ /sbin/blkid
 /dev/sdb4: UUID="e2164479-3f71-4216-a4d4-af3321750322" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="000403b7-04"
 ~~~
 
-**Backup of the old /home**.
+**Backup of the old /home**
 
 Before making any changes to the existing file system, we backup as *root* everything below "/home" in a tar archive. 
 
@@ -185,7 +183,7 @@ The data remaining in the /home directory will only occupy less than 10 MB of sp
 
 ### Adjust fstab
 
-In order for the new data partition to be mounted and available to the user at system startup, the *fstab* file must be modified. Additional information about the *fstab* can be found in our manual [Adaptation of the fstab](0311-part-uuid_en.md#anpassung-der-fstab).  
+In order for the new data partition to be mounted and available to the user at system startup, the *fstab* file must be modified. Additional information about the *fstab* can be found in our manual [adaptation of the fstab](0311-part-uuid_en.md#adjusting-the-fstab).  
 We need the UUID information of the data partition already read out above. Before that we create a backup copy of the *fstab* with date attachment:
 
 ~~~
@@ -200,16 +198,16 @@ According to our example, we add the following line to fstab.
 The fstab should now look like this:
 
 ~~~
-# <file system> <mount point> <type> <options> <dump><pass>
-UUID=B248-1CCA /boot/efi vfat umask=0077 0 2
-UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
-UUID=e2164479-3f71-4216-a4d4-af3321750322 /data ext4 defaults,noatime 0 2
-UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
-tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+# <file system>                       <mount point> <type> <options> <dump><pass>
+UUID=B248-1CCA                            /boot/efi vfat   umask=0077 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb /         ext4   defaults,noatime 0 1
+UUID=e2164479-3f71-4216-a4d4-af3321750322 /data     ext4   defaults,noatime 0 2
+UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap      swap   defaults,noatime 0 2
+tmpfs                                     /tmp      tmpfs  defaults,noatime,mode=1777 0 0
 ~~~
 
-Save the file with F2 and quit the editor with F10.
+Save the file with `F2` and quit the editor with `F10`.
 
 However, if anything goes wrong, we still have our data in the saved tar archive.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

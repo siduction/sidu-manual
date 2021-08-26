@@ -1,23 +1,23 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % "Logical Volume" partitioning
 
 ## LVM partitioning - Logical Volume Manager
 
-**The following is a basic introduction. It is up to the esteemed reader to delve deeper into the matter. Further sources of information can be found at the end of this text - the list does not claim to be complete.
+**The following is a basic introduction.** It is up to the esteemed reader to delve deeper into the matter. Further sources of information can be found at the end of this text - the list does not claim to be complete.
 
 Working with *Logical Volumes* is much easier than most users think. The best feature of LVM is that changes take effect without having to reboot the system. *Logical Volumes* can span multiple disks and are scalable. This distinguishes them from other methods of disk partitioning.
 
@@ -37,12 +37,12 @@ You should be familiar with three basic terms:
 
 ### Six steps to logical volumes
 
-> **Caution  
+> **Caution**  
 > We assume non-partitioned hard disks in our example. Note: If old partitions are deleted, all data will be irretrievably lost.
 
 As partitioning program cfdisk or gdisk are needed, because currently GParted or the KDE partition manager do not support the creation of *Logical Volumes*. See also the manual pages:  
 [Partitioning with cfdisk (msdos-MBR)](0314-part-cfdisk_en.md#partitioning-with-fdisk)  
-[Partition with gdisk (GPT-UEFI)](0313-part-gdisk_en.md#partition-with-gdisk)
+[Partitioning with gdisk (GPT-UEFI)](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
 All of the following commands and actions require root privileges.
 
@@ -161,7 +161,7 @@ Extend the logical volume:
 lvextend -L+200g /dev/vulcan/spock
 ~~~
 
-To the *lvextend* command, specify the size**change** value as an option, not the total size desired.
+To the *lvextend* command, specify the size **change** value as an option, not the total size desired.
 
 Then resize the file system:  
 The first command forcibly performs a check, even if the file system appears to be clean,  
@@ -196,8 +196,8 @@ resize2fs /dev/vulcan/spock
 mount /media/spock
 ~~~
 
-Again, the *lvreduce* command must be given the resize** value as an option.  
-The resize2sf* command resizes the file system exactly to the size of the logical volume.
+Again, the *lvreduce* command must be given the size **change** value as an option.  
+The *resize2sf* command resizes the file system exactly to the size of the logical volume.
 
 ### Manage LVM with a GUI program
 
@@ -205,14 +205,10 @@ The resize2sf* command resizes the file system exactly to the size of the logica
 
 ### More info
 
-+ [Logical Volume Manager - Wikipedia](https://de.wikipedia.org/wiki/Logical_Volume_Manager) (German)
++ [Logical Volume Manager - Wikipedia](https://wikipedia.org/wiki/Logical_Volume_Manager)  
++ [Working with logical volumes #1](https://thelinuxexperiment.com/working-with-logical-volumes-part-1/)  
++ [Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  
++ [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  
++ [Resizing Linux partitions - part 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)
 
-+ [Working with logical volumes #1](https://thelinuxexperiment.com/working-with-logical-volumes-part-1/) (English)
-
-+ [Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/) (English)
-
-+ [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/) (English)
-
-+ [Resizing Linux partitions - part 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/) (English)
-
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

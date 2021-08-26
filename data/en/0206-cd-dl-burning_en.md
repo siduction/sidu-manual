@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % siduction ISO download and burn
@@ -19,7 +19,7 @@ END   INFO AREA FOR THE AUTHORS
 
 ### siduction ISO download
 
-**Please use the closest mirror. Mirror servers listed below the link with details for the entry in /etc/apt/sources.list.d/siduction.list will be updated in a timely manner.  
+**Please use the closest mirror. Mirror servers listed below the link with details for the entry in /etc/apt/sources.list.d/siduction.list will be updated in a timely manner.**  
 
 **Europe**  
 
@@ -139,7 +139,7 @@ Download links and mirrors can be found at [siduction.org](https://forum.siducti
 
 The tar archive with the sources is interesting for those who want to redistribute siduction. Here the sources must be distributed to comply with the license. More information can be found in the tar archive.
 
-If someone can provide a FTP server with appropriate traffic, we are always available in the [siduction forums](https://siduction.org) or in IRC irc.oftc.net:6667 #siduction-de. 
+If someone can provide a FTP server with appropriate traffic, we are always available in the [siduction forums](https://siduction.org) or in IRC [irc.oftc.net #siduction-en](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en). 
 
 ### md5sum and integrity checking
 
@@ -209,4 +209,4 @@ If you click on the calculated checksum, an icon appears next to it. If you clic
 The cause of problems with burning is mostly found in the frontend applications. For direct burning from the console you can use the script burniso.
 See also Installing to USB stick/SSD from another system (Linux. MS Windows, Mac OS X).
 
-<div id="rev">Last edited: 2021-13-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

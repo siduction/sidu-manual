@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Partitioning of installation media
@@ -48,7 +48,7 @@ The minimum requirements for the sensible use of a siduction installation are:
 
 If a dual boot with MS Windows&#8482; is created, MS Windows must always be installed as the first system on the hard disk.
 
-The type "*GPT*" should be selected as partition table. So one can use the advantages opposite "*MBR*". Only with old hardware "*MBR*" is still meaningful. The explanations for this can be found on our manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk).
+The type "*GPT*" should be selected as partition table. So one can use the advantages opposite "*MBR*". Only with old hardware "*MBR*" is still meaningful. The explanations for this can be found on our manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
 
 The examples refer to partition tables of the type "*GPT*", for whose function the first two, very small partitions are necessary.
 
@@ -78,7 +78,7 @@ The examples refer to partition tables of the type "*GPT*", for whose function t
 | 5 | 30 GB | ext4 | / (Linux root) |
 | 6 | 2 GB | Linux swap | Linux swap  |
 
-**80 GB hard disk
+**80 GB hard disk**
 
 | partition | size | formatting | usage |
 | :----: | ----: | :----: | :----: |
@@ -102,7 +102,7 @@ The examples refer to partition tables of the type "*GPT*", for whose function t
 | 5 | 216 GB | ext4 | Data_2 |
 | 6 | 4 GB | Linux Swap | Linux Swap |
 
-**160 GB hard disk
+**160 GB hard disk**
 
 | partition | size | formatting | usage |
 | :----: | ----: | :----: | :----: |
@@ -112,7 +112,7 @@ The examples refer to partition tables of the type "*GPT*", for whose function t
 | 3 | 130 GB | ext4 | data |
 | 4 | 4 GB | Linux Swap | Linux Swap |
 
-**60 GB hard disk
+**60 GB hard disk**
 
 | partition | size | formatting | usage |
 | :----: | ----: | :----: | :----: |
@@ -125,19 +125,19 @@ The examples refer to partition tables of the type "*GPT*", for whose function t
 ### Partitioning programs
 
 + **GParted** An easy to use partitioning program with a graphical interface.  
-  *Gparted* is available on all siduction installations and installation media equipped with a graphical user interface. *Gparted* supports a number of different types of partition tables. The manual page [Partitioning the hard disk with GParted](part-gparted_en.md#partitioning-with-gparted) provides more information about the program.
+  *Gparted* is available on all siduction installations and installation media equipped with a graphical user interface. *Gparted* supports a number of different types of partition tables. The manual page [Partitioning the hard disk with GParted](0312-part-gparted_en.md#partitioning-with-gparted) provides more information about the program.
 
 + **KDE Partition Manager** A Qt based, easy to use partitioning program with a graphical user interface.  
   The *KDE Partition Manager* is the standard partitioning program for the KDE Destktop, easy to use and as comprehensive as *Gparted*.
 
 + **gdisk / cgdisk** A console program for partition tables of the type *GPT - UEFI*.  
-  *gdisk* is the classic text mode program. *cgdisk* has a more user friendly ncurses interface. The manual page [Partitioning with gdisk](part-gdisk_en.md#partitioning-with-gdisk) provides more information about the program.
+  *gdisk* is the classic text mode program. *cgdisk* has a more user friendly ncurses interface. The manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk) provides more information about the program.
 
 + **fdisk / cfdisk** A console program for partition tables of the type *msdos - MBR*.  
   Note: *fdisk* should only be used for old hardware that does not support *GPT - UEFI*.  
-  *fdisk* is the classic text mode program. *cfdisk* has a more user-friendly ncurses interface. The manual page [Partitioning with Cfdisk](part-cfdisk_en.md#partitioning-with-fdisk) provides more information about the program.
+  *fdisk* is the classic text mode program. *cfdisk* has a more user-friendly ncurses interface. The manual page [Partitioning with Cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) provides more information about the program.
 
-> **Caution  
+> **Caution**  
 > When using any partitioning software there is a risk of data loss. Always back up data that is still needed to another disk first.
 
 **Mounted partitions** (also swap) must be detached before editing.  
@@ -159,8 +159,8 @@ The mount of a swap partition is solved with this command:
 
 For more partitioning options see:
 
-+ Logical Volume Manager [LVM partitioning](part-lvm_en.md#lvm-partitioning---logical-volume-manager)
++ Logical Volume Manager [LVM partitioning](0315-part-lvm_en.md#lvm-partitioning---logical-volume-manager)
 
-+ Partitioning with GPT to support UEFI [Partitioning with gdisk (GPT fdisk)](part-gdisk_en.md#partitioning-with-gdisk)
++ Partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

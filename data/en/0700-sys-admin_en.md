@@ -1,37 +1,22 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
-
-Necessary work:
-
-+ check intern links  
-+ check extern links  
-+ check layout  
-+ check spelling  
-
-Work done
-
-
-END   INFO AREA FOR THE AUTHORS  
 % System administration
 
 # System Administration
 
-This section contains information and hints about the
+This section contains informations and notes to the
 
-+ [Terminal - command line](0701-term-console_en.md#systemadministration), basic introduction, working as root, colored terminal, help in terminal and using scripts.
++ [Terminal - command line](0701-term-konsole_en.md#terminal---command-line), basic introduction, working as root, colored terminal, help in terminal and using scripts.
 
-+ [System administration-general](0702-sys-admin-gen_en.md#system-administration-general) Short and sweet, a stiff through system administration; boot options, manage systemd - services, terminate processes, manage passwords, fonts in siduction, the printing system CUPS and sound in siduction.
++ [System administration-general](0702-sys-admin-gen_en.md#system-administration-in-general) Short and sweet, a stiff through system administration; boot options, manage systemd - services, terminate processes, manage passwords, fonts in siduction, the printing system CUPS and sound in siduction.
 
-+ [APT package management](0705-sys-admin-apt_en.md#apt-paketverwaltung), package sources, manage packages, update the system, search program packages and why to use apt exclusively. 
++ [APT package management](0705-sys-admin-apt_en.md#apt-package-management), package sources, manage packages, update the system, search program packages and why to use apt exclusively. 
 
 + [Local APT mirror](0706-sys-admin-apt-localmirr_en.md#local-apt-mirror); Apt-Cacher, the proxy server for Debian packages. Install server and client configuration.
 
-+ [Install new kernels](0707-sys-admin-kernel-upg_en.md#kernel-upgrade), kernel upgrade without system upgrade, remove 3rd party modules and old kernels.
++ [Install new kernels](0707-sys-admin-kern-upg_en.md#kernel-upgrade), kernel upgrade without system upgrade, remove 3rd party modules and old kernels.
 
-+ [Systemd the system and services manager](0710-systemd-start_en.md#systemd-the-system--and--services-manager), concept of systemd, unit types, systemd in the file system and handling services.
++ [Systemd the system and services manager](0710-systemd-start_en.md#systemd---the-system-and-services-manager), concept of systemd, unit types, systemd in the file system and handling services.
 
-+ [The systemd unit file](0711-systemd-unit-file_en.md#systemd-unit-file), directories and hirarchies of the unit files, the incorporation in systemd, the structure of the unit file with description of numerous options, the function of the unit files on the example of CUPS and the tools that systemd provides,
++ [The systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file), directories and hirarchies of the unit files, the incorporation in systemd, the structure of the unit file with description of numerous options, the function of the unit files on the example of CUPS and the tools that systemd provides,
 
 + [systemd-service Unit](0712-systemd-service_en.md#systemd-service), creating a service unit and the description of all essential options.
 
@@ -43,6 +28,6 @@ This section contains information and hints about the
 
 + [systemd-timer Unit](0716-systemd-timer_en.md#systemd-timer), the needed files, the options of the timer unit, create and include timer unit, timer unit as cron replacement.
 
-+ [systemd-journal](0717-systemd-journald_en.md#systemd-journal), the journald locally and over the network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
++ [systemd-journal](0717-systemd-journald_en.md#system-journal), the journald locally and over the network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
 
 <div id="rev">Last edited: 2021-14-08</div>

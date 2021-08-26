@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % fromiso
@@ -19,10 +19,9 @@ END   INFO AREA FOR THE AUTHORS
 
 ### Overview
 
-This cheat code boots from an ISO file on the hard drive with the ext4 file system. **For normal use, we recommend siduction's default file system, ext4, which is well maintained by maintainers.
+This cheat code boots from an ISO file on the hard drive with the ext4 file system. **For normal use, we recommend siduction's default file system, ext4**, which is well maintained by maintainers.
  
-Booting from a "fromiso" hard disk installation takes only a fraction of the time it takes to boot from a CD. 
-In addition, the CD/DVD drive is available at the same time. Alternatively you can use VBox, KVM or QEMU.
+Booting from a "fromiso" hard disk installation takes only a fraction of the time it takes to boot from a CD. In addition, the CD/DVD drive is available at the same time. Alternatively you can use VBox, KVM or QEMU.
 
 **Prerequisites**
 
@@ -103,4 +102,4 @@ memory (4GiB or more). This copies the complete content of the live medium into 
 system reacts then very fast and one can remove the medium then also. This is useful if the start was done from a USB stick,  
 and one wants to use this USB port otherwise.
 
-<div id="rev">Last edited: 2021-14-08</div>
+<div id="rev">Last edited: 2021/26/08</div>

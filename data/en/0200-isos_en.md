@@ -1,23 +1,8 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links (there was'nt any)  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % ISO images
 
 # ISO images
 
-This section contains information and notes about the
+This section contains informations and notes to the
 
 + [Content of the live ISO](0201-cd-content_en.md#content-of-the-live-iso), available variants, system requirements, applications and utilities, and disclaimer.
 

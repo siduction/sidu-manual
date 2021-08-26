@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links (there was'nt any)  
++ check extern links (there was'nt any)  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Burn DVD without GUI
@@ -23,12 +23,9 @@ END   INFO AREA FOR THE AUTHORS
 
 ### burniso
 
-You don't necessarily need a graphical user interface (GUI) to burn a CD/DVD.
-
-Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim or cdrdao.
-
-siduction provides a script called "burniso" to burn the siduction ISO.
-
+You don't necessarily need a graphical user interface (GUI) to burn a CD/DVD.  
+Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim or cdrdao.  
+siduction provides a script called "burniso" to burn the siduction ISO.  
 burniso burns ISO image files using wodim in disk-at-once mode with a fixed burning speed of 8x.
 
 ~~~sh
@@ -84,7 +81,7 @@ ATA:1,1,0 _NEC , DVD_RW ND-3540A , 1.01
 
 **Information about blank CDs/DVDs:**
 
-~~sh
+~~~sh
 $ wodim dev=/dev/scd0 -atip
 ~~~
 
@@ -168,7 +165,7 @@ $ growisofs -Z /dev/dvd -R -J file1 file2 file3 ...
 
 **If there is still space on the DVD, you can add files:**
 
-~~sh
+~~~sh
 $ growisofs -M /dev/dvd -R -J still_one_file and_still_one_file
 ~~~
 
@@ -178,5 +175,5 @@ $ growisofs -M /dev/dvd -R -J still_one_file and_still_one_file
 $ growisofs -M /dev/dvd=/dev/zero $
 ~~~~
 
-<div id="rev">Last edited: 2021-13-08</div>
+<div id="rev">Last edited: 2021/26/08</div>
 

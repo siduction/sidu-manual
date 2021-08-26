@@ -31,7 +31,7 @@ We hope for contributions from Linux users of all experience levels, as this wik
 
 ### IRC - interactive live support. 
 
-**The IRC should never be entered as "root", but only as a normal user.  
+**The IRC should never be entered as "root", but only as a normal user.**  
 If you are unclear, please announce this immediately in the IRC channel so that help can be given.
 
 **Rules of conduct in IRC**
@@ -40,7 +40,7 @@ If you are unclear, please announce this immediately in the IRC channel so that 
 * It is helpful to make a request that is accurate to the best of your knowledge, and to search for solutions in the siduction wiki beforehand if possible.
 * Please never post a request in IRC and Forum at the same time. At best, we rub our eyes in wonder.
 
-**reach siduction
+**reach siduction**
 
 + Just click on the **"IRC Chat #siduction" icon** on the desktop or use the kmenu entry of koversation.  
 If you prefer another chat client, you need to enter these server details:
@@ -285,4 +285,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) . In KDE, the KDE Help Center provides information about CUPS.  
 [LibreOffice](https://libreoffice.org/) There are many offerings in the "Help" menu.
 
-<div id="rev">Last edited: 2021/24/08</div>
+<div id="rev">Last edited: 2021/26/08</div>
