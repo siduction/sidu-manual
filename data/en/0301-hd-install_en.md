@@ -148,7 +148,7 @@ During the installation, if possible, the computer should be connected to the In
 ### Encrypt system
 
 From *siduction 2021.2 Farewell* there is the possibility within the installation program Calamares to install the complete system into an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* is located unencrypted on the "*BIOS-boot*" partition. Grub asks for the password for the encrypted installation at every boot process before the boot menu appears.  
-The partitioning described in 5 above is now slightly different. When selecting one of the first three options, the function "*Encrypt system*2 appears in addition, where we also enter the password at the same time.
+The partitioning described in 5 above is now slightly different. When selecting one of the first three options, the function "*Encrypt system*" appears in addition, where we also enter the password at the same time.
 
 ![calamares encrypt system](./images/install-hd/calamares-en_11.png "Encrypt system")
 
