@@ -34,12 +34,12 @@ Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
 + Gemeinsame Nutzung von Daten für die installierten Systeme
 
 Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](part-size-examp_de.md#partitionierung-von-installationsmedien).  
-Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählem auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt werden und gegebenen falls auf das **home**-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
+Wir empfehlen, das **/home**-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das **home**-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
 [Gparted](part-gparted_de.md#partitionieren-mit-gparted), ein Programm für die graphische Oberfläche für GTK-Desktops  
 KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
-[gdisk](part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GTP Partitionstabellen  
+[gdisk](part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GPT Partitionstabellen  
 [cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen
 
 ### Dateisysteme
@@ -52,7 +52,7 @@ Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartit
 
 ### Duplizierung auf einen anderen Computer
 
-Mit folgendem Konsolenbefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
+Mit folgendem Konsolebefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
 
 ~~~sh
 ~# dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/username/installed.txt
@@ -99,9 +99,9 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
    Wir benutzen die Partitionen  
    sda7 für / (root)  
-   sda6 für /daten gemeinsam mit dem bereits auf sda3 und sda4 vonhanden Linux
+   sda6 für /daten gemeinsam mit dem bereits auf sda3 und sda4 vorhandenem Linux
 
-   Nach Auswählen der betreffenden Partition und Betätigen des Schalters *Ändern* öffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und für sda7 auch die Formatierung mit dem Dateisystem **ext4** vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abglegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen möchten.  
+   Nach Auswählen der betreffenden Partition und Betätigen des Schalters *Ändern* öffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und für sda7 auch die Formatierung mit dem Dateisystem **ext4** vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen möchten.  
    Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie während der Installation automatisch erkannt und integriert wird.  
    Das Ergebnis unserer Bemühungen sehen wir im nächsten Bild.
 
@@ -130,6 +130,24 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    ![calamares reboot](./images/install-hd/calamares-de_10.png "Beenden")
 
    Vor dem Reboot die CD aus dem Laufwerk nehmen!
+
+### System verschlüsseln
+
+Ab *siduction 2021.2 Farewell* besteht innerhalb des Installationsprogramms Calamares die Möglichkeit, das vollständige System in eine verschlüsselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers *Grub* befindet sich unverschlüsselt auf der "*BIOS-boot*"-Partition. Grub fragt bei jedem Bootvorgang das Passwort für die verschlüsselte Installation ab, bevor das Bootmenü erscheint.  
+Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringfügig anders. Bei der Auswahl einer der drei ersten Optionen, erscheint zusätzlich die Funktion "*Verschlüssele System*", in der wir auch gleich das Passwort eingeben.
+
+![calamares encrypt system](./images/install-hd/calamares-de_11.png "System verschlüsseln")
+
+Benutzen wir "*Manuelle Partitionierung*", so benötigen wir einen leeren, unbenutzten Bereich auf der Festplatte. Ist dieser nicht vorhanden, löschen wir zuerst eine oder mehrere nicht mehr benötigte Partitionen. Dann erstellen wir die neue Partition.
+
+![calamares, manual partitioning encrypt 1](./images/install-hd/calamares-de_12.png "Manuelle Partition verschlüsseln 1")
+
+Im nächsten Schritt ist jetzt die Funktion "*Verschlüsseln*" auswählbar.
+
+![calamares, manual partitioning encrypt 2](./images/install-hd/calamares-de_13.png "Manuelle Partition verschlüsseln 2")
+
+Wir geben unser Passwort ein und wählen anschließend als Einhängepunkt das Wurzelverzeichnis "**/**" aus.  
+Nach Beendigung der Partitionierung setzen wir die Installation mit dem Menüpunkt "*Benutzer*", wie oben unter 6 beschrieben, fort.
 
 ### Benutzer hinzufügen
 

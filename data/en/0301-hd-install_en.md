@@ -145,6 +145,24 @@ During the installation, if possible, the computer should be connected to the In
 
    Remove the CD from the drive before rebooting!
 
+### Encrypt system
+
+From *siduction 2021.2 Farewell* there is the possibility within the installation program Calamares to install the complete system into an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* is located unencrypted on the "*BIOS-boot*" partition. Grub asks for the password for the encrypted installation at every boot process before the boot menu appears.  
+The partitioning described in 5 above is now slightly different. When selecting one of the first three options, the function "*Encrypt system*2 appears in addition, where we also enter the password at the same time.
+
+![calamares encrypt system](./images/install-hd/calamares-en_11.png "Encrypt system")
+
+If we use "*manual partitioning*", we need an empty, unused area on the hard disk. If this is not available, we first delete one or more partitions that are no longer needed. Then we create the new partition.
+
+![calamares, manual partitioning encrypt 1](./images/install-hd/calamares-en_12.png "Manual partition encrypt 1")
+
+In the next step the function "*Encrypt*" is now selectable.
+
+![calamares, manual partitioning encrypt 2](./images/install-hd/calamares-en_13.png "Manual partition encrypt 2")
+
+We enter our password and then select the root directory "**/**" as mount point.  
+After finishing the partitioning we continue the installation with the menu item *"User"* as described above under 6.
+
 ### Add user
 
 To add new users with automatic takeover of group permissions, run the following command as root:
