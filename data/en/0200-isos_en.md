@@ -4,7 +4,7 @@
 
 This section contains information and notes on
 
-+ the [Content of the live ISO](0201-cd-content_en.md#content-of-the-live-iso), available variants, system requirements, applications, utilities, and the disclaimer.
++ [The Content of the live ISO](0201-cd-content_en.md#content-of-the-live-iso), available variants, system requirements, applications, utilities, and the disclaimer.
 
 + [Using the live DVD](0202-live-mode_en.md#use-live-dvd), the available users and their passwords, working with root privileges, and software installation during the live session.
 
