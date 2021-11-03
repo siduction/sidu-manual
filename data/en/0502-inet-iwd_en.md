@@ -106,7 +106,7 @@ I describe here only briefly the fastest way to set up a network with the help o
 To establish a connection, provided you have all the information, this one-liner is enough. All other information about *nmcli* can be found on the following page, [Network Manager in Terminal](0501-inet-nm-cli_en.md#network-manager-command-line-tool)
 
 ~~~sh
-~$ nmcli dev WiFi con "ssid" password name "name"
+~$ nmcli dev wifi con "ssid" password name "name"
 ~~~
 
 (*ssid* denotes the name of the network).
@@ -114,7 +114,7 @@ To establish a connection, provided you have all the information, this one-liner
 For example:
 
 ~~~
-nmcli dev WiFi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
+nmcli dev wifi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
 ~~~
 
 ### WiFi connection with iwctl
