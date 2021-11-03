@@ -93,7 +93,7 @@ Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des Netw
 Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht jener Einzeiler. Alle anderen Informationen zu *nmcli* finden sie auf folgender Seite, [Network Manager im Terminal](0501-inet-nm-cli_de.md#network-manager-kommandline-tool)
 
 ~~~sh
-~$ nmcli dev WiFi con "ssid" password password name "name"
+~$ nmcli dev wifi con "ssid" password password name "name"
 ~~~
 
 (*ssid* bezeichnet den Namen des Netzwerkes)
@@ -101,7 +101,7 @@ Um eine Verbindung aufzubauen, vorausgesetzt man hat alle Informationen, reicht 
 Zum Beispiel:
 
 ~~~
-nmcli dev WiFi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
+nmcli dev wifi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
 ~~~
 
 ### WiFi Verbindung mit iwctl
