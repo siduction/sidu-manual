@@ -19,7 +19,7 @@ END   INFO AREA FOR THE AUTHORS
 
 ### siduction ISO download
 
-**Please use the closest mirror. Mirror servers listed below the link with details for the entry in /etc/apt/sources.list.d/siduction.list will be updated in a timely manner.**  
+**Please use the closest mirror. Mirror servers listed below, with details for the entry in /etc/apt/sources.list.d/siduction.list, will be updated in a timely manner.**  
 
 **Europe**  
 
