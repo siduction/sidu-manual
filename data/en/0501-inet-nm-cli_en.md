@@ -29,7 +29,7 @@ If the network manager is not installed on your system, you can install it. In t
 
 ~~~sh
 apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
- plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn
+ plasma-nm network-manager-vpnc network-manager-openvpn
 ~~~
 
 ### Use Network Manager
