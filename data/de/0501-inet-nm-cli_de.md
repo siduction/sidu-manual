@@ -14,7 +14,7 @@ Falls der Networkmanager auf dem System nicht installiert ist, kann man dies nac
 
 ~~~sh
 apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
- plasma-widget-networkmanagement network-manager-vpnc network-manager-openvpn
+ plasma-nm network-manager-vpnc network-manager-openvpn
 ~~~
 
 ### Network Manager verwenden
