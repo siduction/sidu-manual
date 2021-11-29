@@ -21,14 +21,14 @@ Drucken von Handbuchseiten:
 Linuxbefehle können mehr als 120 Zeichen lang sein. Für eine optimierte Darstellung am Bildschirm findet kein automatischer Zeilenumbruch statt. Unser Handbuch im PDF-Format, dass auf allen ISOs und nach der Installation im System verfügbar ist, verwendet für die langen Befehle den Zeilenumbruch. Es steht auch [hier online](https://manual.siduction.org/manual.pdf) zur Verfügung.  
 Zum Drucken von Handbuchseiten verwende bitte das PDF und drucke nur die benötigten Seiten.
 
-Um Hilfe für ein spezifisches vorinstalliertes oder selbst installiertes Anwendungsprogramm (auch Paket genannt) zu erhalten, informiert man sich am besten in den FAQs, Online-Handbüchern oder Foren auf der Hompage bzw. im Hilfe-Menü der Anwendung.
+Um Hilfe für ein spezifisches vorinstalliertes oder selbst installiertes Anwendungsprogramm (auch Paket genannt) zu erhalten, informiert man sich am besten in den FAQ, Online-Handbüchern oder Foren auf der Homepage bzw. im Hilfe-Menü der Anwendung.
 
 Fast alle Anwendungsprogramme bieten Hilfestellung mittels einer zugehörigen "*Manual-Page*" (kurz Manpage). Sie wird im Terminal durch den Befehl **`man <Paketname>`** aufgerufen. Auch kann nachgesehen werden, ob sich eine Dokumentation in */usr/share/doc/\<paketname\>* befindet.
 
 ### Copyright Rechts- und Lizenzhinweise
 
 Alle Rechte © 2006-2021 des siduction-manual sind lizenziert unter der [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt). Eine informelle Übersetzung dieser Lizenz ins Deutsche befindet sich [hier](https://www.selflinux.org/selflinux/html/gfdl_de.html).  
-Dies gestattet das Dokument nach den Bestimmungen der GNU Free Document License Version 1.3 oder neuer (wie veröffentlicht bei der Free Software Foundation) zu kopieren, verbreiten und/oder zu ändern; ohne unveränderliche Sektionen und ohne Umschlagstexte (Vorderseitentexte, Rückseitentexte).
+Dies gestattet das Dokument nach den Bestimmungen der GNU Free Document License Version 1.3 oder neuer (wie veröffentlicht bei der Free Software Foundation) zu kopieren, verbreiten und/oder zu ändern; ohne unveränderliche Sektionen und ohne Umschlagtexte (Vorderseitentexte, Rückseitentexte).
 
 Die Rechte von geschützten Marken bzw. Urheberrechte liegen bei den jeweiligen Inhabern, unabhängig davon, ob dies vermerkt ist oder nicht.
 
@@ -40,4 +40,4 @@ Dies ist experimentelle Software. Benutzung geschieht auf eigenes Risiko. Das si
 
 Solltest Du mit diesen Bedingungen nicht einverstanden sein, so ist es Dir nicht gestattet, diese Software weiter zu benutzen oder zu verteilen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-19</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>

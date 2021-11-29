@@ -13,7 +13,7 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 | --- | --- | --- |
 | [apt update](#aktualisierung-des-systems) | apt-get update | Auffrischen der Paketdatenbank. |
 | apt upgrade | apt-get upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen. |
-| [apt full-upgrade](#full-upgrade-ausführen) | apt-get dist-upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn daduch bereits installierte Pakete entfernt werden müssen. |
+| [apt full-upgrade](#full-upgrade-ausführen) | apt-get dist-upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn dadurch bereits installierte Pakete entfernt werden müssen. |
 | apt full-upgrade -d | apt-get dist-upgrade -d | Aktualisierung das System wie zuvor, jedoch wird nur der Download durchgeführt und nichts installiert.  |
 | [apt install](#pakete-installieren) | apt-get install | Installieren eines oder mehrerer Pakete. |
 | [apt remove](#pakete-entfernen) | apt-get remove | Entfernen eines oder mehrerer Pakete. |
@@ -138,7 +138,7 @@ Im unteren Beispiel wird das Paket "funtools" installiert.
 
 ~~~
 root@siduction# apt install funtools
-aketlisten werden gelesen... Fertig
+Paketlisten werden gelesen... Fertig
 Abhängigkeitsbaum wird aufgebaut.
 Statusinformationen werden eingelesen.... Fertig
 Die folgenden zusätzlichen Pakete werden installiert:
@@ -394,7 +394,7 @@ Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpacka
 
 Paketmanager wie adept, synaptic und kpackage können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Das sind keine Fehler in diesen Programmen oder Fehler der Entwickler.
 
-Die genannten Programme sind exzellent für eine Installation von *Debian stable* und sie eignen sich sehr gut dazu Programmepakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll *apt* verwendet werden.
+Die genannten Programme sind exzellent für eine Installation von *Debian stable* und sie eignen sich sehr gut dazu Programmpakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll *apt* verwendet werden.
 
 Paketmanager wie adept, synaptic und kpackage sind - technisch gesprochen - nicht-deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.
 
@@ -465,13 +465,13 @@ Auflistung... Fertig
 gman/unstable,now 0.9.3-5.3 amd64  [installiert]
 ~~~
 
-Der Befehl **aptitude** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo  von Debian Unstable oft "zu schlau".
+Der Befehl **aptitude** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die Nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft "zu schlau".
 
 ![aptitude](./images/apt/aptitude.png)
 
 #### Graphische Paketsuche
 
-Das Programm **packagesearch** eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird "packagesearch" nicht automatisch instaliert; deshalb:
+Das Programm **packagesearch** eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird "packagesearch" nicht automatisch installiert; deshalb:
 
 ~~~
 apt update
@@ -494,4 +494,4 @@ Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch 
 
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-15</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

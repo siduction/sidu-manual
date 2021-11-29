@@ -61,7 +61,7 @@ Systemd bietet noch weitere Funktionen. Eine davon ist [logind](https://www.free
 
 ### Handhabung von Diensten
 
-Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl "*systemctl*".
+Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonst wie zu steuern. Dazu dient der Befehl "*systemctl*".
 
 + systemctl --all - listet alle Units, aktive und inaktive.
 + systemctl -t [NAME] - listet nur Units des bezeichneten Typ.
@@ -72,7 +72,7 @@ Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie z
 + systemctl status [Name] - zeigt den derzeitigen Status einer Unit.
 + systemctl is-enabled [Name] - zeigt nur den Wert "enabled" oder "disabled" des Status einer Unit.
 
-Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Units beachtet und ggf. Standardabhängikeiten hinzugefügt, damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.
+Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Units beachtet und ggf. Standardabhängigkeiten hinzugefügt, damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.
 
 + systemctl enable [NAME] - gliedert eine Unit in systemd ein.
 + systemctl disable [NAME] - entfernt eine Unit aus systemd.
@@ -135,4 +135,4 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 [Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
 [Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

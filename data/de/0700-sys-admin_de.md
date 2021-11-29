@@ -6,7 +6,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Terminal - Kommandozeile](0701-term-konsole_de.md#systemadministration), grundlegende Einführung, Arbeit als root, farbiges Terminal, Hilfe im Terminal und Skripte benutzen.
 
-+ [Systemadministration allgemein](0702-sys-admin-gen_de.md#systemadministration-allgemein) Kurz und knapp, ein Steifzug durch die Systemadministration; Bootoptionen, systemd - Dienste verwalten, Prozesse beenden, Passwörter verwalten, Schriftarten in siduction, das Drucksystem CUPS und Sound in siduction.
++ [Systemadministration allgemein](0702-sys-admin-gen_de.md#systemadministration-allgemein) Kurz und knapp, ein Streifzug durch die Systemadministration; Bootoptionen, systemd - Dienste verwalten, Prozesse beenden, Passwörter verwalten, Schriftarten in siduction, das Drucksystem CUPS und Sound in siduction.
 
 + [APT Paketverwaltung](0705-sys-admin-apt_de.md#apt-paketverwaltung), Paketquellen, Pakete verwalten, Aktualisierung des Systems, Programmpakete suchen und warum ausschließlich apt verwendet werden soll. 
 
@@ -16,7 +16,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Systemd der System- und Dienste-Manager](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager), Konzeption des systemd, Unit Typen, Systemd im Dateisystem und die Handhabung von Diensten.
 
-+ [Die systemd unit-Datei](0711-systemd-unit-datei_de.md#systemd-unit-datei), Verzeichnisse und Hirarchien der Unit-Dateien, die Eingliederung in systemd, der Aufbau der Unit-Datei mit Beschreibung zahlreicher Optionen, die Funktion der Unit-Dateien am Beispiel von CUPS und die Werkzeuge, die systemd bereitstellt,
++ [Die systemd unit-Datei](0711-systemd-unit-datei_de.md#systemd-unit-datei), Verzeichnisse und Hierarchien der Unit-Dateien, die Eingliederung in systemd, der Aufbau der Unit-Datei mit Beschreibung zahlreicher Optionen, die Funktion der Unit-Dateien am Beispiel von CUPS und die Werkzeuge, die systemd bereitstellt,
 
 + [systemd-service Unit](0712-systemd-service_de.md#systemd-service), eine service-Unit anlegen und die Beschreibung aller wesentlichen Optionen.
 
@@ -30,4 +30,4 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Systemjournal](0717-systemd-journald_de.md#systemjournal), der journald lokal und über das Netzwerk, journald konfigurieren, Abfrage des systemd-Journals mit journalctl, die Ausgaben filtern und steuern, Beispiele um journalctl zu beherrschen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-22</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

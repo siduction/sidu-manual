@@ -46,20 +46,20 @@ Die Varianten sind:
 7.  **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
       - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
 
-**32 Bit ISO's** bieten wir standardmäßig nicht mehr an.  
-Wenn ein 32Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen können wir ein solches ISO leider nicht.
+**32 Bit ISOs** bieten wir standardmäßig nicht mehr an.  
+Wenn ein 32 Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen können wir ein solches ISO leider nicht.
 
 ### Minimale Systemanforderungen
 
 für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 
-#### Prozessoranforderungen: 64Bit CPU
+#### Prozessoranforderungen: 64 Bit CPU
 
     AMD64  
     Intel Core2  
     Intel Atom 330  
     jede x86-64/ EM64T fähige CPU oder neuer  
-    neuere 64 bit fähige AMD Sempron and Intel Pentium 4 CPUs  
+    neuere 64 Bit fähige AMD Sempron und Intel Pentium 4 CPUs  
     (achten Sie auf das "lm"-Flag in /proc/cpuinfo oder nutzt inxi -v3).
 
 #### Speicheranforderungen
@@ -95,10 +95,10 @@ Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md#partitio
 
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
-Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzele Veroffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver.
+Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Befehlszeile. Eine komplette Manifest-Datei mit den installierten Programmen für jede einzelne Veröffentlichungsvariante von siduction findet man auf jedem Download-Spiegelserver.
 
 ### Haftungsausschluss_Disclaimer
 
 siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siduction-Projekt, seine Entwickler und Team-Mitglieder können unter keinen Umständen wegen Beschädigung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Schäden des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder verwenden noch verteilen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-04-12</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>

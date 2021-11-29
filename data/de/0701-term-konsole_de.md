@@ -14,7 +14,7 @@ username@hostname:~$
 
 **username** in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde **~**  zeigt, man befindet sich in seinem Heimverzeichnis **/home/username** , und das Dollarzeichen (der Promt) **$**  bedeutet, dass man im Terminal mit eingeschränkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausführen soll.
 
-Viele Befehle kann man nur mit Root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man **su**  eingibt und `Enter` drückt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten [Arbeit als root](#arbeit-als-root))
+Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausführen. Root-Rechte erhält man, indem man **su**  eingibt und `Enter` drückt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird während der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten [Arbeit als root](#arbeit-als-root))
 
 Ist die Eingabe korrekt, zeigt die Kommandozeile nun:
 
@@ -22,7 +22,7 @@ Ist die Eingabe korrekt, zeigt die Kommandozeile nun:
 root@hostname:/home/username#
 ~~~
 
-Zu beachten ist, dass das Dollarzeichen **\$** durch eine Raute **#**  ersetzt wurde. In einem Terminal bedeutet die Raute **#**  immer, dass man mit Root-Rechten angemeldet ist.  
+Zu beachten ist, dass das Dollarzeichen **\$** durch eine Raute **#**  ersetzt wurde. In einem Terminal bedeutet die Raute **#**  immer, dass man mit root-Rechten angemeldet ist.  
 Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor dem Prompt ($ oder #) ausgelassen. Ein Befehl wie:
 
 ~~~
@@ -37,7 +37,7 @@ Für User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Au
 ### Arbeit als root
 
 > **Achtung:**  
-> Während man mit Root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit Root-Rechten arbeitet, muss man sich darüber im Klaren sein, *was* man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.
+> Während man mit root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien löschen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit root-Rechten arbeitet, muss man sich darüber im Klaren sein, *was* man gerade macht, denn es ist leicht möglich, dem Betriebssystem irreparable Schäden zuzufügen.
 
 Berücksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgeführt werden. Der einfache copy-Befehl *cp \<Quelle\> \<Ziel\>* in einem User-Verzeichnis führt zu Dateien mit dem Eigentümer *ROOT* im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.
 
@@ -45,7 +45,7 @@ Deshalb: **Arbeiten als Root nur dort wo es wirklich notwendig ist!**
 
 **Über su**
 
-Eine Anzahl von Befehlen muss mit Root-Rechten gestartet werden. Diese Rechte erhält man durch Eingabe von **su**. Nach der Eingabe des richtigen Passwortes erscheint der Root-Prompt.
+Eine Anzahl von Befehlen muss mit root-Rechten gestartet werden. Diese Rechte erhält man durch Eingabe von **su**. Nach der Eingabe des richtigen Passwortes erscheint der Root-Prompt.
 
 ~~~
 $ su
@@ -110,12 +110,12 @@ Als Alternative zu *sudo* kann auch *doas* (apt install doas) genommen und einge
 
 ### Farbiges Terminal
 
-Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root #** eine Aufgabe durchführt, die man als **user $** machen wollte.  
+Farbige Prompt am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root #** eine Aufgabe durchführt, die man als **user $** machen wollte.  
 Deshalb ist in siduction in der Grundeinstellung der Prompt des **user $** grün, blau und weiß, und bei dem von **root #** wird das Wort "root" in roter Farbe dargestellt.  
 
 ![Farbiger Prompt](./images/terminal/prompt-colour-01.png)
 
-Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunten Prompts. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
+Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompt. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
 
 **Farbe des Prompt ändern**
 
@@ -184,7 +184,7 @@ Im Menü des Terminals gibt es unter *Bearbeiten* - *Einstellungen...* - Reiter 
 
 ### Wenn das Terminal hängt
 
-Manchmal kann ein Terminal nicht mehr so reagieren wie gewünscht. Das liegt meist daran, dass sich ein Programm fehlerfaft beendet und das Teminal in einem abnormalen Zustand zurückgelassen hat. Dann muss
+Manchmal kann ein Terminal nicht mehr so reagieren wie gewünscht. Das liegt meist daran, dass sich ein Programm fehlerhaft beendet und das Teminal in einem abnormalen Zustand zurückgelassen hat. Dann muss
 
 ~~~
 reset
@@ -224,7 +224,7 @@ Ein anderes nützliches Werkzeug ist der "apropos"-Befehl. "Apropos" ermöglicht
 $ apropos apt-
 ~~~
 
-Dies listet alle Befehle für den Paketmanager apt auf. "apropos" ist ein mächtiges Werkzeug, für eingehendere Informationen über "apropos" siehe
+Dies listet alle Befehle für den Paketmanager apt auf. "apropos" ist ein mächtiges Werkzeug, für umfangreichere Informationen über "apropos" siehe
 
 ~~~
 $ man apropos
@@ -250,7 +250,7 @@ Einige Skripte benötigen root-Zugang, abhängig vom Aufgabenbereich des Skripts
 
 **Installation und Ausführung**
 
-Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, zum Beispiel nach **/usr/local/bin**. Zum Kopieren und Einfügen in der Konsole kann auch die Maus benutzt werden, nachdem man mit **su** Root-Rechte erlangt hat.
+Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, zum Beispiel nach **/usr/local/bin**. Zum Kopieren und Einfügen in der Konsole kann auch die Maus benutzt werden, nachdem man mit **su** root-Rechte erlangt hat.
 
 **Beispiel mit wget und root-Rechten**
 
@@ -294,4 +294,4 @@ $ ./user-script-name.sh
 
 Das funktioniert als *user* natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

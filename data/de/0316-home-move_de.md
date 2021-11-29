@@ -42,7 +42,7 @@ $ /sbin/blkid
 
 **Sicherung des alten /home**
 
-Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern wir als *Root* alles unterhalb von "/home" in einem tar-Archiv. 
+Bevor irgendeine Änderung am bestehenden Dateisystem vorgenommen wird, sichern wir als *Root* alles unterhalb von "/home" in einem tar-Archiv. 
 
 ~~~
 # cd /home
@@ -51,7 +51,7 @@ Bevor irgendeine Änderung am bestehenden Dateisysten vorgenommen wird, sichern 
 
 **Mountpoint der Daten-Partition**
 
-Wir erstellen das Verzeichnis "*Daten*" underhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
+Wir erstellen das Verzeichnis "*Daten*" unterhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
 
 Mountpoint erstellen und Partition einhängen (als root):
 
@@ -148,7 +148,7 @@ Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der n
 **Löschen in /home**
 
 Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Musik*") um dort Dateien abzulegen. Um den Zugriff der Anwendungen auf die Verzeichnisse zu ermöglichen müssen diese zurück verlinkt werden, somit auf entsprechende Verzeichnisse der /daten Partition verweisen.
+Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Downloads*" oder "*Musik*"). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen /daten Partition zu ermöglichen, müssen wir unter /home/<user>/ die zu löschenden Verzeichnisse durch Link ersetzen.
 
 > Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etwas falsches gelöscht wird.
 
@@ -197,4 +197,4 @@ Man speichert die Datei mit F2 und beendet den Editor mit F10.
 
 Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-10</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>

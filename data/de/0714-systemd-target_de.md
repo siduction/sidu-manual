@@ -36,7 +36,7 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
     Die alten Runlevel 2 und 4 verweisen auf multi-user.target
 
 2. Die Verwendung im **Terminal** während einer laufenden Sitzung.
-    Vorrausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`** + **`ALT`** + **`F2`** zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die **Terminal-Befehle** auf, wobei der Ausdruck *isolate* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
+    Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`** + **`ALT`** + **`F2`** zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die **Terminal-Befehle** auf, wobei der Ausdruck *isolate* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
 
     | Ziel-Unit | Terminal-Befehl | init-Befehl alt |
     | --------- | --------------- | :----: |
@@ -61,4 +61,4 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 
 [Manpage systemd.target, de](https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-30</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

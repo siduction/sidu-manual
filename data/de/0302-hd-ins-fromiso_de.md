@@ -83,9 +83,6 @@ Die Grub2-Konfigurationsdatei grub.cfg wird damit aktualisiert und erkennt die i
 
 ### toram
 
-Eine weitere Nützliche Option beim Booten von einem Live Medium ist `toram`. Selbige ist empfehlenswert, wenn der rechner über ausreichend  
-Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den Ram kopiert. Das hat den Vorteil, dass das   
-System dann sehr schnell reagiert und man kann das Medium dann auch entfernen. Das ist nützlich, wenn der Start von einem USB-Stick erfolgte,  
-und man diesen USB Port anderweitig benutzen will.
+Eine weitere Nützliche Option beim Booten von einem Live Medium ist `toram`. Selbige ist empfehlenswert, wenn der Rechner über ausreichend Arbeitsspeicher verfügt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den RAM kopiert. Das hat den Vorteil, dass das System schneller reagiert. Außerdem kann man das Medium nach dem Start entfernen, um den USB Port oder das Laufwerk anderweitig zu nutzen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>

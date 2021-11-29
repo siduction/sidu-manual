@@ -45,4 +45,4 @@ Zur Entfernung alter Kernel ist das Skript "kernel-remover"  installiert:
 kernel-remover
 ~~~
 
-<div id="rev">Seite zuletzt aktualisert 2021-05-10</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

@@ -21,7 +21,7 @@ Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu 
 **Folgende Einstellungen können zur Erhöhung der Sicherheit angepasst werden:**
 
 + Port `<gewünschter Port>:`  
-  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
+  Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port außerhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
 
   ~~~
   Port 5874
@@ -284,4 +284,4 @@ mount lokaler_mountpunkt
 umount lokaler_mountpunkt
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-08-26</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

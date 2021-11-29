@@ -4,7 +4,7 @@
 
 ### Bootoptionen Cheatcodes
 
-Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` fortgesetzt.
+Zu Beginn des Bootvorgangs lässt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste `e` drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination `Strg`+`X` fortgesetzt.
 
 Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bootoptionen.
 
@@ -55,7 +55,7 @@ $ systemctl stop <UNIT>.service
 $ systemctl restart <UNIT>.service
 ~~~
 
-verwenden. *"Restart"* ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion Root-Rechte nötig sind, wird das Root-Passwort abgefragt.  
+verwenden. *"Restart"* ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion root-Rechte nötig sind, wird das root-Passwort abgefragt.  
 Zum Beenden eines Dienstes dient auch der Befehl:
 
 ~~~
@@ -135,7 +135,7 @@ verwendet werden. *poweroff* bzw. *reboot* (jeweils ohne *.target*) ist ein Befe
 
 **pgrep und pkill**
 
-Unabhängig von systemd ist **pgrep** und **pkill** ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder Root-Rechten in einer Konsole oder TTY ausgeführt:
+Unabhängig von systemd ist **pgrep** und **pkill** ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder root-Rechten in einer Konsole oder TTY ausgeführt:
 
 ~~~
 $ pgreg <tab> <tab>
@@ -223,7 +223,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
     Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite [Grafiktreiber](gpu_de.md#grafiktreiber) des Handbuchs.
 
 - **Korrekte Bildschirmauflösungen und Bildwiederholungsraten**  
-    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.
+    Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.
 
     Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
 
@@ -250,7 +250,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
 - **Überprüfung**  
     Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.  
 
-**Basiskonfuguration der Schriftarten**
+**Basiskonfiguration der Schriftarten**
 
 siduction nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. In der graphischen Oberfläche kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gewünschte Schriftbild zu erhalten. 
 
@@ -296,7 +296,7 @@ Manchmal bedeutet der Neuaufbau des Font-Caches eine Lösung (der erste Befehl g
 
 Beachtet werden muss, dass jede Schriftart ein ideales Größenspektrum besitzt, sodass identische Größeneinstellungen nicht bei jeder Schriftart zu einem gleich guten Ergebnis führen muss.  
 Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie werden auf dem Desktop sofort wirksam, Anwendungen müssen zum Teil neu gestartet werden.  
-Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.
+Die Liste zeigt, wo im Menü die Einstellungen zu finden sind.
 
 + KDE Plasma  
   *Systemeinstellungen* > *Schriftarten* > *Schriftarten*  
@@ -319,7 +319,7 @@ Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich
 Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei **4K**-Bildschirmen ist Hinting meist nicht notwendig.
 
 *DPI-Wert / Skalierungsfaktor* :  
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
+Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier lässt sich die Darstellung auf einem **4K**-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei **4k**-Bildschirmen.
 
 **4k Auflösung**: 3840 x 2160 (16:9)
 
@@ -357,9 +357,9 @@ Im Anschluss daran wird ein Web-Browser geöffnet und in die Adresszeile eingege
 
 http://localhost:631
 
-Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in **root** zu ändern und das **Root-Passwort** einzugeben.
+Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in **root** zu ändern und das **root-Passwort** einzugeben.
 
-[Die OpenPrinting-Datenbank](https://wiki.linuxfoundation.org/openprinting/database/databaseintro)  beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die *hplib* auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket **printer-driver-splix**. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per        [IPP-Everywhere](https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/).
+[Die OpenPrinting-Datenbank](https://wiki.linuxfoundation.org/openprinting/database/databaseintro)  beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die *hplib* auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket **printer-driver-splix**. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per [IPP-Everywhere](https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/).
 
 ### Sound in siduction
 
@@ -409,4 +409,4 @@ Die gewünschten Sound-Einstellungen werden als **$user** von einem Terminal vor
 $ alsamixer
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-06-30</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

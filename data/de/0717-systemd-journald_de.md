@@ -34,12 +34,12 @@ Falls kein Parameter übergeben wurde, wird *systemd-cat* alles, was es von der 
 
 ### journald über das Netzwerk
 
-Die *systemd-journal*-Module *upload*, *remote* und *gatewayd* ermöglichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.  
+Die *systemd-journal*-Module *upload*, *remote* und *gatewayd* ermöglichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstellation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.  
 Für weitere Informationen bitte die man-pages [journal upload](https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html), [journal remote](https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html) und [journal gatewayd](https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html) lesen.
 
 ### journald.conf
 
-Die folgenden Dateien konfigurieren verschiedene Parameter des Systemd-Journal-Dienstes.
+Die folgenden Dateien konfigurieren verschiedene Parameter des systemd-Journal-Dienstes.
 
 + /etc/systemd/journald.conf  
 + /etc/systemd/journald.conf.d/*.conf  
@@ -91,7 +91,7 @@ Das Journal enthält vertrauenswürdige Felder, d.h. Felder, die implizit vom Jo
 
   + **-u** (- -unit=)  
     Diese Option benötigt die Angabe einer UNIT oder eines MUSTERs.  
-    Gibt die Journaleinträge für die angegebene Systemd-Unit UNIT oder für alle Units, die auf das MUSTER passen, aus.
+    Gibt die Journaleinträge für die angegebene systemd-Unit UNIT oder für alle Units, die auf das MUSTER passen, aus.
 
   + **-p** (- -priority=)  
     Filtert die Ausgabe nach Nachrichtenprioritäten oder Prioritätsbereichen. Benötigt die Angabe einer einzelnen Protokollstufe, oder einen Bereich von Protokollstufen in der Form VON..BIS.  
@@ -290,4 +290,4 @@ Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisert 2021-07-15</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

@@ -25,7 +25,7 @@ Weiterhin machen wir darauf aufmerksam, dass siduction systemd nutzt. Wir werden
 Vorgehensweise bei installiertem NetworkManager
 
 + als erstes wird **iwd** installiert, 
-+ dann wird der **wpa_supplicant.service** gestopt und maskiert,
++ dann wird der **wpa_supplicant.service** gestoppt und maskiert,
 + dann der **NetworkManager.service** angehalten,
 + nun die Datei `/etc/NetworkManager/conf.d/nm.conf` angelegt und **iwd** dort eingetragen, 
 + dann legen wir die Datei `/etc/iwd/main.conf` an und befüllen diese mit entsprechendem Inhalt, 
@@ -76,7 +76,7 @@ Jetzt ist man in der Lage im Terminal mit dem Befehl [**iwctl**](#wifi-verbindun
 
 ### WiFi Verbindung mit IWD
 
-Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorrausgesetzt man nutzt den NetworkManager.service)*:
+Der schnellste und einfachste Weg iwd zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben *(Vorausgesetzt man nutzt den NetworkManager.service)*:
 
 ~~~sh
 ~$ nmtui
@@ -168,13 +168,13 @@ Zum Beispiel:
 
 ### Grafische Konfigurationsprogramme
 
-+ NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen zB. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
++ NetworkManager, für den NetworkManager gibt es verschiedene grafische Oberflächen z.B. für den plasma-desktop/kde plasma-nm oder für gnome network-manager-gnome und andere. Ihr Benutzung sollte selbsterklärend sein!
 + conman ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
 + iwgtk, ist nicht in debian-quellen, es muss aus dem Sourcecode gebaut werden und ist auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
 
 ### Zurück zum wpa_supplicant
 
-*(Vorausgstezt NetworkManager und wpa_supplicant sind installiert)*
+*(Vorausgesetzt NetworkManager und wpa_supplicant sind installiert)*
 
 + Den **iwd.service** stoppen und maskieren.
 + Den **NetworkManager.service** stoppen.
@@ -194,4 +194,4 @@ Zum Beispiel:
 
 Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

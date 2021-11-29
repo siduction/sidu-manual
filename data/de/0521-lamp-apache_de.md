@@ -116,7 +116,7 @@ Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und 
 
 1. Datei "*/etc/apache2/apache2.conf*"
 
-   Es ist eine der wenigen Ausnahmen die *apache2.conf* zu editieren. Wir fügen zu Beginn des Abschnits *Global configuration* die folgende Zeile ein:
+   Es ist eine der wenigen Ausnahmen die *apache2.conf* zu editieren. Wir fügen zu Beginn des Abschnitts *Global configuration* die folgende Zeile ein:
 
    ~~~sh
    ServerName 192.168.3.1
@@ -191,7 +191,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    ~~~
 
 3. Eigentümer und Dateirechte anpassen,  
-   damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läft.  
+   damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läuft.  
    Wir schauen uns die derzeitigen Rechte an:
 
    ~~~sh
@@ -316,7 +316,7 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 
 + Der **Eigentümer** von "*DocumentRoot*"
 
-  ist nach der Installion "*root.root*" und sollte unbedingt geändert werden. Siehe hierzu das Kapitel [Benutzer und Rechte](#benutzer-und-rechte).
+  ist nach der Installation "*root.root*" und sollte unbedingt geändert werden. Siehe hierzu das Kapitel [Benutzer und Rechte](#benutzer-und-rechte).
 
 ### HTTPS verwenden
 
@@ -334,7 +334,7 @@ In diesen legen wir die Certifikatsdatei *server1.org.crt* und den privaten Schl
 
 Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.
 
-~~~bash
+~~~sh
 /etc/apache2/# chown -R root.root ssl
 /etc/apache2/# chmod -R o-rwx ssl
 /etc/apache2/# chmod -R g-rwx ssl

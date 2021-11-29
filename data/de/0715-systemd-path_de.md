@@ -6,7 +6,7 @@ Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbu
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.path**, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.
 
 Die "*.path-Unit*" ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.  
-Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die "*.path-Unit*" ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.  
+Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die "*.path-Unit*" ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Dateien angegeben werden.  
 Die Pfad-spezifischen Optionen werden in dem Abschnitt *[Path]* konfiguriert.
 
 ### Benötigte Dateien
@@ -131,11 +131,11 @@ WantedBy=multi-user.target
 ~~~
 
 Anmerkung:  
-Interressant ist, dass systemd intern das inotify-API für *.path-Unit* verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.
+Interessant ist, dass systemd intern das inotify-API für *.path-Unit* verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.
 
 **Erklärungen**  
 Die Sektion [Unit]:  
-"*Before=*" und "*Wants=*" sind die entsprechenden Korrellationen zu "*BindsTo=*" und "*After=*" aus der *server1.service-Unit*.
+"*Before=*" und "*Wants=*" sind die entsprechenden Korrelationen zu "*BindsTo=*" und "*After=*" aus der *server1.service-Unit*.
 
 Sektion [Service]:  
 *inotifywait* protokolliert in die Datei */var/www/changed*, die außerhalb von *DocumentRoot* des Apache-Webservers liegt.
@@ -222,4 +222,4 @@ Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.
 Ein anders gelagertes Beispiel:  
 [PRO-LINUX.DE, Systemd Path Units...](https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-30</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

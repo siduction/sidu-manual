@@ -9,7 +9,7 @@ Die Service-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen 
 
 ### service-Unit anlegen
 
-Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis */usr/local/lib/systemd/system/* ab. (Ggf. ist das Verzeichnis mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das hat den Vorteil, dass sie Vorrang gegenüber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie Änderungsdateien, die mit **`systemctl edit <UNIT_DATEI>`** erzeugt wurden, im seinerseits vorrangigen Verzeichnis */etc/systemd/system/* abgelegt werden. Siehe: [Hirarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien).
+Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis */usr/local/lib/systemd/system/* ab. (Ggf. ist das Verzeichnis mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das hat den Vorteil, dass sie Vorrang gegenüber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie Änderungsdateien, die mit **`systemctl edit <UNIT_DATEI>`** erzeugt wurden, im seinerseits vorrangigen Verzeichnis */etc/systemd/system/* abgelegt werden. Siehe: [Hierarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien).
 
 ### Sektion Service
 
@@ -120,4 +120,4 @@ und mit der bevorzugten Suchmaschine im Internet.
 [Deutsche Manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
 [LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

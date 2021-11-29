@@ -202,7 +202,7 @@ Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
 ~~~
 
 **Weitere Beispiele**  
-Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *mount*- und *automount*-Unit. Das Kapitel "Quellen" enhält einige Webseiten mit eine ganze Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
+Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *mount*- und *automount*-Unit. Das Kapitel "Quellen" enthält einige Webseiten mit einer ganzen Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
 
 ### Quellen systemd-mount
 
@@ -214,4 +214,4 @@ Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beisp
 [Debianforum, Netzlaufwerke einbinden](https://wiki.debianforum.de/Netzlaufwerke_einbinden)  
 [Ubuntuusers, Mount-Units](https://wiki.ubuntuusers.de/systemd/Mount_Units/)
 
-<div id="rev">Seite zuletzt aktualisert 2021-06-26</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

@@ -4,7 +4,7 @@
 
 **Ein lokaler Testserver für Entwickler**
 
-Das Akronym **LAMP** bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Websiten zu betreiben:
+Das Akronym **LAMP** bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Webseiten zu betreiben:
 
 + **L**inux: Betriebssystem  
 + **A**pache: Web-Server  
@@ -24,7 +24,7 @@ Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und
 > Zur Beachtung:  
 > Der Desktop-PC, mit dem täglich gearbeitet wird, soll nicht als Server dienen. Als Server soll ein eigener PC verwendet werden, der ansonsten keine weiteren Aufgaben erfüllt.
 
-Im Server-PC sollte mindestens 500MB RAM Arbeitsspeicher zur Verfügung stehen. Weniger RAM wird Probleme bereiten, da ein Server mit MariaDb/MySQL viel RAM benötigt, um ansprechend zu laufen.
+Im Server-PC sollte mindestens 500MB RAM Arbeitsspeicher zur Verfügung stehen. Weniger RAM wird Probleme bereiten, da ein Server mit MariaDB/MySQL viel RAM benötigt, um ansprechend zu laufen.
 
 Die zu installierenden Pakete sind:
 
@@ -88,7 +88,7 @@ Später, für die Konfiguration notwendig:
 
 ### Apache installieren
 
-Die Installation des Webservers Apache erfordert nur die beiden folgenden Befehle. Der install-Befehl holt sich noch die zusätzlichen Pakete *apache2-data* und *apache2-utils* herein. Anschließend fragen wir den Status von Apache ab und testen gleich die Start- und Stop-Anweisungen.
+Die Installation des Webservers Apache erfordert nur die beiden folgenden Befehle. Der install-Befehl holt sich noch die zusätzlichen Pakete *apache2-data* und *apache2-utils* herein. Anschließend fragen wir den Status von Apache ab und testen gleich die Start- und Stopanweisungen.
 
 ~~~
 # apt update
@@ -125,7 +125,7 @@ Wie zu erkennen ist, wurde Apache sofort aktiviert.
 [...]
 ~~~
 
-Der Apache Webserver ist geladen und lässt sich problemlos händeln. Jetzt prüfen wir seine Funktion mit:
+Der Apache Webserver ist geladen und lässt sich problemlos handhaben. Jetzt prüfen wir seine Funktion mit:
 
 ~~~
 w3m http://localhost/index.html
@@ -140,9 +140,9 @@ Als **DocumentRoot** wird das Verzeichnis **/var/www/html/** bezeichnet. Es enth
 Für weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite  
 [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) lesen.
 
-### MariaDb installieren
+### MariaDB installieren
 
-Die Installation von MariaDb gestaltet sich ähnlich einfach in dem die Metapakete "mariadb-server" und "mariadb-client" angefordert werden.
+Die Installation von MariaDB gestaltet sich ähnlich einfach in dem die Metapakete "mariadb-server" und "mariadb-client" angefordert werden.
 
 ~~~
 # apt install mariadb-server mariadb-client
@@ -155,7 +155,7 @@ Die folgenden NEUEN Pakete werden installiert:
 Möchten Sie fortfahren? [J/n] j
 ~~~
 
-Weitere Informationen zu MariaDb und der Konfiguration liefert unser Handbuch in [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten)
+Weitere Informationen zu MariaDB und der Konfiguration liefert unser Handbuch in [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten)
 
 ### PHP installieren
 
@@ -223,7 +223,7 @@ Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Modu
 
 ### phpMyAdmin installieren
 
-Um die Datenbank MariaDb zu administrieren benötigen wir *phpmyadmin*:
+Um die Datenbank MariaDB zu administrieren benötigen wir *phpmyadmin*:
 
 ~~~
 # apt install phpmyadmin
@@ -254,13 +254,13 @@ In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer
 
 ### Weitere Software
 
-Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) und [LAMP-MariaDb](./lamp-sql_de.md#mariadb-einrichten)für die Konfiguration des Servers und MariaDb berücksichtigen.
+Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) und [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten)für die Konfiguration des Servers und MariaDB berücksichtigen.
 
 ### Statusaugaben Log-Dateien
 
 **Apache**
 
-Der Konfigurationsstatus des Apache Webservers wird mit "*apache2ctl -S*" augegeben.  
+Der Konfigurationsstatus des Apache Webservers wird mit "*apache2ctl -S*" ausgegeben.  
 Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar nach der Installation.
 
 ~~~
@@ -284,7 +284,7 @@ Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar n
   Group: name="www-data" id=33
 ~~~
 
-Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.  
+Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) enthält eine Reihe von Hinweisen zur Anpassung der Konfiguration.  
 Das Verzeichnis */var/log/apache2/* enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.
 
 **MariaDB**
@@ -449,14 +449,14 @@ Die folgenden Pakete werden ENTFERNT:
 ~~~
 
 *Apache2* wird entfernt und die Pakete *apache2-data* und *apache2-utils* blieben noch erhalten.  
-Jetzt bitte **nicht apt autoremove  verwenden**, denn dann bleiben die Konfigurationsdateien, in denen möglicherweise der Fehler liegt, zurück.  
+Jetzt bitte **nicht apt autoremove verwenden**, denn dann bleiben die Konfigurationsdateien, in denen möglicherweise der Fehler liegt, zurück.  
 Wir verwenden den Befehl "*apt purge*".
 
 ~~~
 # apt purge apache2-data apache2-utils
 ~~~
 
-Bei Bedarf verfahren wir mit den anderen Programmteile ebenso. Anschließend starten wir einen neuen Versuch.
+Bei Bedarf verfahren wir mit den anderen Programmteilen ebenso. Anschließend starten wir einen neuen Versuch.
 
 ### Sicherheit
 
@@ -472,4 +472,4 @@ bezüglich der Konfiguration beachten.
 
 Danach kann der Server, ausschließlich für System- und Software- Aktualisierungen, temporär über eine zweite Netzwerkschnittstelle mit dem Internet verbunden werden.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

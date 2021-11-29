@@ -284,7 +284,7 @@ MariaDB [(none)]> SET GLOBAL general_log=1;
 ~~~
 
 Das erstellt eine Log-Datei nach dem Muster *\<Host\>.log* im Verzeichnis */var/lib/mysql/*.  
-**Achtung**: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Atkionen zu beobachten.
+**Achtung**: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Aktionen zu beobachten.
 
 ### Quellen MariaDB
 
@@ -298,4 +298,4 @@ man mariadb
 
 [phpMyAdmin Dokumentation](https://docs.phpmyadmin.net/de/latest/) (deutsch)
 
-<div id="rev">Zuletzt bearbeitet: 2020-07-20</div>
+<div id="rev">Zuletzt bearbeitet: 2020-11-29</div>

@@ -16,7 +16,7 @@ Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir 
 
 + Die Begriffe UEFI und EFI sind austauschbar und bezeichnen das gleiche Konzept - **U**nified **E**xtensible **F**irmware **I**nterface (englisch für Vereinheitlichte erweiterbare Firmware-Schnittstelle).  
   Siehe [Wikipedia UEFI](https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface).  
-  Die GTP ist ein Teil des UEFI Standards.
+  Die GPT ist ein Teil des UEFI Standards.
 
 + GPT-Datenträger verwenden
 
@@ -293,4 +293,4 @@ Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID
 
 Trotz alledem: die Optionen der Menüs *recovery & transformation*  und *experts*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **b**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-07</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>

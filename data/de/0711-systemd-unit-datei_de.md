@@ -60,7 +60,7 @@ Der Befehl
 # systemctl disable <UNIT_DATEI>
 ~~~
 
-bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`** gestartet und mit **`systemctl stop <UNIT_DATEI>`** gestopt werden.  
+bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`** gestartet und mit **`systemctl stop <UNIT_DATEI>`** gestoppt werden.  
 Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */dev/null* ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand "masked" und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.
 
 ### Sektionen der Unit-Datei
@@ -69,7 +69,7 @@ Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifisch
 
 #### Sektion Unit
 
-Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
+Diese Sektion enthält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.
 
 1. Allgemeine Optionen
 
@@ -85,7 +85,7 @@ Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhäng
        Hier aufgeführte Units werden mit der konfigurierten Unit gestartet.
 
     b. "*Requires=*"  
-       Ähnlich zu *Wants=*, erklärt aber eine stärkerere Bindung an die aufgeführten Units.  
+       Ähnlich zu *Wants=*, erklärt aber eine stärkere Bindung an die aufgeführten Units.  
        Wenn diese Unit aktiviert wird, werden die aufgeführten Units ebenfalls aktiviert.  
        Schlägt die Aktivierung einer der anderen Units fehl **und** die Ordnungsabhängigkeit *After=* ist auf die fehlgeschlagene Unit gesetzt, dann wird diese Unit nicht gestartet.  
        Falls eine der anderen Units inaktiv wird, bleibt diese Unit aktiv, nur wenn eine der anderen Units gestoppt wird, wird diese Unit auch gestoppt.
@@ -100,7 +100,7 @@ Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhäng
 
     e. "*PartOf=*"  
        Ähnlich zu *Requires=*, aber begrenzt auf das Stoppen und Neustarten von Units.  
-       Wenn Systemd die hier aufgeführten Units stoppt oder neustartet, wird die Aktion zu dieser Unit weitergeleitet.  
+       Wenn Systemd die hier aufgeführten Units stoppt oder neu startet, wird die Aktion zu dieser Unit weitergeleitet.  
        Das ist eine Einwege-Abhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.
 
     f. "*Conflicts=*"  
@@ -283,7 +283,7 @@ WantedBy=sockets.target
 
 **Die Sektion [Unit]**  
 enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien *cups.path* und *cups.socket* enthalten zusätzlich die  Bindungsabhängigkeit *PartOf=cups.service*, was bedeutet, dass diese zwei Units abhängig von *cups.service* gestoppt oder neu gestartet werden.  
-Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen Service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungs-Abhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
+Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungs-Abhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
 
 Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd-analyze dump`**, der eine sehr, sehr lange Liste ( > 32000 Zeilen) des systemd Serverstatus ausgibt. 
 
@@ -384,9 +384,9 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
 
   *systemctl edit* öffnet die ausgewählte Unit-Datei im konfigurierten Editor.
 
-  **systemctl edit <UNIT_DATEI>** erstellt unterhalb */etc/systemd/system/* ein neues Verzeichnis mit dem Namen "\<UNIT_DATEI\>.d" und darin die Datei "override.conf", die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) inklusive */etc/systemd/system/* abwärts eingetragen sind.
+  **systemctl edit <UNIT_DATEI>** erstellt unterhalb */etc/systemd/system/* ein neues Verzeichnis mit dem Namen "\<UNIT_DATEI\>.d" und darin die Datei "override.conf", die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hierarchie der Ladepfade](#ladepfad-der-unit-dateien) inklusive */etc/systemd/system/* abwärts eingetragen sind.
 
-  **systemctl edit - -full <UNIT_DATEI>** erstellt eine neue, namensgleiche Datei im Verzeichnis */etc/systemd/system/*. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hirarchie der Ladepfade](#ladepfad-der-unit-dateien) unterhalb */etc/systemd/system/* eingetragen sind. Dateien, die sich bereits im Verzeichnis */etc/systemd/system/* befinden, werden überschrieben.
+  **systemctl edit - -full <UNIT_DATEI>** erstellt eine neue, namensgleiche Datei im Verzeichnis */etc/systemd/system/*. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hierarchie der Ladepfade](#ladepfad-der-unit-dateien) unterhalb */etc/systemd/system/* eingetragen sind. Dateien, die sich bereits im Verzeichnis */etc/systemd/system/* befinden, werden überschrieben.
 
   **systemctl edit - -full - -force <UNIT_DATEI>** erstellt eine neue Datei im Verzeichnis */etc/systemd/system/*. Ohne die Option *- -full* würde nur eine Datei "override.conf" im neuen Verzeichnis */etc/systemd/system/\<UNIT_DATEI\>.d* generiert, der die zugehörige Unit-Datei fehlt.
 
@@ -492,4 +492,4 @@ Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgeliefe
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisert 2021-05-05</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

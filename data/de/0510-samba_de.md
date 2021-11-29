@@ -55,7 +55,7 @@ Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab`  nach 
 user=username,password=**********,uid=$UID,gid=$GID   0 0
 ~~~
 Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben.
-Als bessere Variante erzeigt man **`~.smbcredentials`** mit folgendem Inhalt an:
+Als bessere Variante erzeugt man **`~.smbcredentials`** mit folgendem Inhalt an:
 
 ~~~
 username=<benutzer>
@@ -68,16 +68,14 @@ Der resultierende Eintrag für /etc/fstab ist dann
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
 credentials=</pfad/zu/.smbcredentials>,uid=$UID,gig=$GID 0 0
 ~~~
-$UID und $GID ist die enstprechende uid und gid des users, dem das Share gegeben werden soll.
+$UID und $GID ist die entsprechende uid und gid des users, dem das Share gegeben werden soll.
 Man kann aber auch uid=username gid=users schreiben.
 
 ### siduction als Samba-Server
 
-Natürlich kann siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu 
-beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo's bereit, wie man einen
-Samba-Server aufsetzt.
+Natürlich kann man in siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo zu diesem Thema bereit.
 
-Unsere Empfehlungen zu diesem Thema:
+Unsere Empfehlungen:
 
 https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian  
 https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html  
@@ -85,4 +83,4 @@ https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debia
 
 Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-23</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

@@ -1,4 +1,4 @@
-% Partitionieren mit Gparted
+% Partitionieren mit GParted
 
 ## Partitionieren mit GParted
 
@@ -29,7 +29,7 @@ im Anwendungsmenü - System - GParted
 + **Gnome**  
 in Anwendungen - Gparted
 
-Nach dem Klick auf den Starter öffnet sich ein Dialog zur Abgefrage des Root-Passwortes.
+Nach dem Klick auf den Starter öffnet sich ein Dialog zur Abfrage des Root-Passwortes.
 
 Wenn GParted startet, öffnet sich das Programmfenster und die vorhandenen Laufwerke werden ausgelesen.
 
@@ -54,7 +54,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
     Im linken Rahmen stehen Details der Laufwerke wie Modell, Größe usw., die wichtig sind, wenn mehrere Datenträger im System vorhanden sind. Damit kann man kontrollieren, ob der richtige Datenträger zur Formatierung gewählt wurde.
 
   + Anstehende Operationen ("Pending Operations")  
-    In einem unten sich öffnenden Rahmen werden die austehenden Operationen angezeigt. Diese Information ist sehr nützlich, um einen Überblick darüber zu haben, welche Operationen durchgeführt werden sollen. Der Rahmen öffnet sich auch automatisch, sobald für ein Laufwerk eine Operationen angefordert wird.
+    In einem unten sich öffnenden Rahmen werden die ausstehenden Operationen angezeigt. Diese Information ist sehr nützlich, um einen Überblick darüber zu haben, welche Operationen durchgeführt werden sollen. Der Rahmen öffnet sich auch automatisch, sobald für ein Laufwerk eine Operationen angefordert wird.
 
   Die beiden Bereiche sind grün markiert.
 
@@ -71,7 +71,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
   ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
 
-  Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.
+  Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitionstabelle doch noch an die Daten zu gelangen.
 
   ![GParted Datenrettung](./images/gparted/gparted04-de.png)
 
@@ -83,7 +83,7 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Eine neue Partition erstellen**
 
-  In der Toolbar erlaubt der Knopf Neu das Erstellen einer neuen Partition, wenn zuvor ein unzugeordneter Bereich gewählt wurde. Ein neues Fenster erlaubt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
+  In der Toolbar erlaubt der Knopf "Neu" das Erstellen einer neuen Partition, wenn zuvor ein nicht zugeordneter Bereich gewählt wurde. Im nächsten Fenster erfolgt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
 
   ![GParted Neue Partition](./images/gparted/gparted05-de.png)
 
@@ -146,7 +146,7 @@ root@pc1:/# blkid
 
 Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch */mnt/TEST_res* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
 
-> Wenn die UUID's für die Partitionen von **/** (root), **/home** und **swap** nicht mit den Einträgen in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
+> Wenn die UUID für die Partitionen von **/** (root), **/home** und **swap** nicht mit dem jeweiligen Eintrag in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
 
 ### NTFS-Partitionsgrößen mit GParted ändern
 
@@ -157,4 +157,4 @@ Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, na
 * Nach der Überprüfung wird der Rechner automatisch das zweite Mal neu gestartet. Dies gewährleistet, dass das System problemlos laufen kann.
 * Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
 
-<div id="rev">Zuletzt bearbeitet: 2021-07-21</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>

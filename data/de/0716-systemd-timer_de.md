@@ -13,11 +13,11 @@ Auch ist es möglich, dass eine "*.timer*"-Unit die gewünschten Aktionen nur ei
 
 Die **systemd-timer**-Unit benötigt zwei Dateien mit dem gleichen Basename im Verzeichnis */usr/local/lib/systemd/system/* für ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
 
-+ Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Auslöser für die Service-Unit enthält  
++ Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Auslöser für die service-Unit enthält  
     und die  
-+ Service-Unit-Datei (xxxxx.service), welche die zu startende Aktion enthält.
++ service-Unit Datei (xxxxx.service), welche die zu startende Aktion enthält.
 
-Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in */usr/local/bin/*, das von der Service-Unit ausgeführt wird.
+Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in */usr/local/bin/*, das von der service-Unit ausgeführt wird.
 
 Wir erstellen in dem Beispiel ein regelmäßiges Backup mit *rsync*.
 
@@ -96,8 +96,8 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 
 **Nutzen**
 
-+ Jobs können Abhängigkeiten haben (von anderen Systemd-Diensten abhängen).
-+ Timer Units werden im Systemd-Journal geloggt.
++ Jobs können Abhängigkeiten haben (von anderen systemd-Diensten abhängen).
++ Timer Units werden im systemd-Journal geloggt.
 + Man kann einen Job sehr einfach unabhängig von seinem Timer aufrufen.
 + Man kann Timer Units einen Nice-Wert geben oder cgroups für die Ressourcenverwaltung nutzen.
 + Systemd Timer Units können von Ereignissen wie dem Booten oder Hardware-Änderungen ausgelöst werden.
@@ -114,4 +114,4 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 [Archlinux Wiki, Timers](https://wiki.archlinux.org/index.php/Systemd/Timers)  
 [PRO-LINUX.DE, Systemd Timer Units...](https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html)
 
-<div id="rev">Seite zuletzt aktualisert 2021-05-05</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>

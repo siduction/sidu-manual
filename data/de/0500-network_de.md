@@ -16,8 +16,8 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [LAMP - Apache](0521-lamp-apache_de.md#apache-einrichten), seine Verzeichnisse im Dateisystem, die Konfiguration, das Benutzer- und Rechte-Management, den sicheren Betrieb als lokalen Server und die Verwendung von HTTPS.
 
-+ [LAMP - MariaDB](0522-lamp-sql_de.md#mariadb-einrichten), ihre Verzeichnisse im Dateisystem, die Erstkonfiguration, das Kommandline Interface "mariadb", phpMyAdmin und die Integration in Systemd.
++ [LAMP - MariaDB](0522-lamp-sql_de.md#mariadb-einrichten), ihre Verzeichnisse im Dateisystem, die Erstkonfiguration, das Kommandline Interface "mariadb", phpMyAdmin und die Integration in systemd.
 
 + [LAMP - PHP](0523-lamp-php_de.md#php-einrichten), die Verzeichnisse im Dateisystem, die PHP-Unterstützung für Apache2, die Konfiguration, die Installation und das Handling von Modulen und wo die Logdateien zu finden sind.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-22</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
