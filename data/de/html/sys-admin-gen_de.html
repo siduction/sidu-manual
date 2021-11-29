@@ -47,7 +47,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="systemadministration-allgemein">Systemadministration allgemein</h2>
 <h3 id="bootoptionen-cheatcodes">Bootoptionen Cheatcodes</h3>
-<p>Zu Beginn des Bootvorgangs läßt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste <code>e</code> drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <code>Strg</code>+<code>X</code> fortgesetzt.</p>
+<p>Zu Beginn des Bootvorgangs lässt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste <code>e</code> drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <code>Strg</code>+<code>X</code> fortgesetzt.</p>
 <p>Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bootoptionen.</p>
 <ol type="1">
 <li><a href="cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter (nur Live-CD)</a></li>
@@ -84,7 +84,7 @@ $ systemctl list-unit-files     # für Unit-Dateien</code></pre>
 <pre><code>$ systemctl start &lt;UNIT&gt;.service
 $ systemctl stop &lt;UNIT&gt;.service
 $ systemctl restart &lt;UNIT&gt;.service</code></pre>
-<p>verwenden. <em>“Restart”</em> ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion Root-Rechte nötig sind, wird das Root-Passwort abgefragt.<br />
+<p>verwenden. <em>“Restart”</em> ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion root-Rechte nötig sind, wird das root-Passwort abgefragt.<br />
 Zum Beenden eines Dienstes dient auch der Befehl:</p>
 <pre><code>$ systemctl kill -s SIGSTOP --kill-who=control &lt;UNIT&gt;.service</code></pre>
 <p>Mit <em>“kill”</em> stehen im Gegensatz zu <em>“stop”</em> die Optionen <strong>-s, –signal=</strong> und <strong>–kill-who=</strong> bereit. + <strong>-s</strong> sendet eines der Signale <strong>SIGTERM, SIGINT, SIGSTOP</strong>. Vorgabe ist <strong>SIGTERM</strong>. + <strong>–kill-who=</strong> erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind <strong>main, control, all</strong>. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist <strong>all</strong>.<br />
@@ -150,7 +150,7 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 <p>verwendet werden. <em>poweroff</em> bzw. <em>reboot</em> (jeweils ohne <em>.target</em>) ist ein Befehl, der mehrere Unit in der richtigen Reihenfolge hereinholt, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.</p>
 <h3 id="beenden-eines-prozesses">Beenden eines Prozesses</h3>
 <p><strong>pgrep und pkill</strong></p>
-<p>Unabhängig von systemd ist <strong>pgrep</strong> und <strong>pkill</strong> ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder Root-Rechten in einer Konsole oder TTY ausgeführt:</p>
+<p>Unabhängig von systemd ist <strong>pgrep</strong> und <strong>pkill</strong> ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder root-Rechten in einer Konsole oder TTY ausgeführt:</p>
 <pre><code>$ pgreg &lt;tab&gt; &lt;tab&gt;</code></pre>
 <p>listet alle Prozesse mit ihrem Namen, aber ohne die Prozess-ID (PID) auf. Wir benutzen im Anschluss Firefox als Beispiel.<br />
 Die Option <strong>-l</strong> gibt die PID und den vollständigen Namen aus:</p>
@@ -190,7 +190,7 @@ Mit der Option <strong>–signal</strong>, gefolgt von der Signalnummer oder dem
 <li><p><strong>Korrekte Grafiktreiber</strong><br />
 Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite <a href="gpu_de.html#grafiktreiber">Grafiktreiber</a> des Handbuchs.</p></li>
 <li><p><strong>Korrekte Bildschirmauflösungen und Bildwiederholungsraten</strong><br />
-Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in den aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.</p>
+Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.</p>
 <p>Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:</p>
 <pre><code> $ xrandr  
  Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
@@ -210,7 +210,7 @@ Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, ent
 <li><p><strong>Überprüfung</strong><br />
 Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.</p></li>
 </ul>
-<p><strong>Basiskonfuguration der Schriftarten</strong></p>
+<p><strong>Basiskonfiguration der Schriftarten</strong></p>
 <p>siduction nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. In der graphischen Oberfläche kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gewünschte Schriftbild zu erhalten.</p>
 <p>Die systemweite Grundkonfiguration erfolgt im Terminal als root mittels:</p>
 <pre><code># dpkg-reconfigure fontconfig-config</code></pre>
@@ -236,7 +236,7 @@ Standardmäßig Bitmap-Schriften verwenden?<br />
 <p><strong>Darstellungsart, Größe, 4K-Display</strong></p>
 <p>Beachtet werden muss, dass jede Schriftart ein ideales Größenspektrum besitzt, sodass identische Größeneinstellungen nicht bei jeder Schriftart zu einem gleich guten Ergebnis führen muss.<br />
 Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie werden auf dem Desktop sofort wirksam, Anwendungen müssen zum Teil neu gestartet werden.<br />
-Die Liste zeigt, wo im Menue die Einstellungen zu finden sind.</p>
+Die Liste zeigt, wo im Menü die Einstellungen zu finden sind.</p>
 <ul>
 <li><p>KDE Plasma<br />
 <em>Systemeinstellungen</em> &gt; <em>Schriftarten</em> &gt; <em>Schriftarten</em><br />
@@ -254,7 +254,7 @@ Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich
 <p><em>Hinting</em> :<br />
 Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei <strong>4K</strong>-Bildschirmen ist Hinting meist nicht notwendig.</p>
 <p><em>DPI-Wert / Skalierungsfaktor</em> :<br />
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier läßt sich die Darstellung auf einem <strong>4K</strong>-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei <strong>4k</strong>-Bildschirmen.</p>
+Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier lässt sich die Darstellung auf einem <strong>4K</strong>-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei <strong>4k</strong>-Bildschirmen.</p>
 <p><strong>4k Auflösung</strong>: 3840 x 2160 (16:9)</p>
 <table>
 <thead>
@@ -317,7 +317,7 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 <pre><code># systemctl restart cups.service</code></pre>
 <p>Im Anschluss daran wird ein Web-Browser geöffnet und in die Adresszeile eingegeben:</p>
 <p>http://localhost:631</p>
-<p>Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in <strong>root</strong> zu ändern und das <strong>Root-Passwort</strong> einzugeben.</p>
+<p>Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in <strong>root</strong> zu ändern und das <strong>root-Passwort</strong> einzugeben.</p>
 <p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>hplib</em> auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket <strong>printer-driver-splix</strong>. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per <a href="https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/">IPP-Everywhere</a>.</p>
 <h3 id="sound-in-siduction">Sound in siduction</h3>
 <p><em>In älteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.</em></p>
@@ -343,7 +343,7 @@ Weitere Einstellungen sind wie folgt möglich:</p>
 <p>Die gewünschten Sound-Einstellungen werden als <strong>$user</strong> von einem Terminal vorgenommen:</p>
 <pre><code>$ alsamixer</code></pre>
 <div id="rev">
-Zuletzt bearbeitet: 2021-06-30
+Zuletzt bearbeitet: 2021-11-29
 </div>
 </body>
 </html>

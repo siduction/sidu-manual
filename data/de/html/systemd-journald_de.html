@@ -66,10 +66,10 @@ dient <em>systemd-cat</em> als Filterwerkzeug, um die zuvor erstellte Ausgabe an
 </ol>
 <p>Falls kein Parameter übergeben wurde, wird <em>systemd-cat</em> alles, was es von der Standardeingabe liest, an das Journal schicken. Die man-page <a href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a> bietet weitere Informationen.</p>
 <h3 id="journald-über-das-netzwerk">journald über das Netzwerk</h3>
-<p>Die <em>systemd-journal</em>-Module <em>upload</em>, <em>remote</em> und <em>gatewayd</em> ermöglichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstallation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.<br />
+<p>Die <em>systemd-journal</em>-Module <em>upload</em>, <em>remote</em> und <em>gatewayd</em> ermöglichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern über das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend überwachen. In dieser Konstellation ist es sinnvoll auf dem Remoterechner Namensräume für die Protokolldaten der entfernten Rechner einzurichten.<br />
 Für weitere Informationen bitte die man-pages <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html">journal upload</a>, <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html">journal remote</a> und <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html">journal gatewayd</a> lesen.</p>
 <h3 id="journald.conf">journald.conf</h3>
-<p>Die folgenden Dateien konfigurieren verschiedene Parameter des Systemd-Journal-Dienstes.</p>
+<p>Die folgenden Dateien konfigurieren verschiedene Parameter des systemd-Journal-Dienstes.</p>
 <ul>
 <li>/etc/systemd/journald.conf<br />
 </li>
@@ -110,7 +110,7 @@ Zeigt Nachrichten von einem bestimmten Systemstart. Ohne Argument werden die Pro
 Zeigt nur Kernelnachrichten. Dies beinhaltet die Option “-b”, sodass nur Kernelmeldungen seit dem aktuellen Systemstart ausgegeben werden.</p></li>
 <li><p><strong>-u</strong> (- -unit=)<br />
 Diese Option benötigt die Angabe einer UNIT oder eines MUSTERs.<br />
-Gibt die Journaleinträge für die angegebene Systemd-Unit UNIT oder für alle Units, die auf das MUSTER passen, aus.</p></li>
+Gibt die Journaleinträge für die angegebene systemd-Unit UNIT oder für alle Units, die auf das MUSTER passen, aus.</p></li>
 <li><p><strong>-p</strong> (- -priority=)<br />
 Filtert die Ausgabe nach Nachrichtenprioritäten oder Prioritätsbereichen. Benötigt die Angabe einer einzelnen Protokollstufe, oder einen Bereich von Protokollstufen in der Form VON..BIS.<br />
 Die Protokollstufen sind die normalen Syslog-Protokollstufen:<br />
@@ -309,7 +309,7 @@ Apr 07 23:03:09 pc1 org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owne
 <a href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a></p>
 <p>Dank an Helge Kreuzmann für die deutschen Übersetzungen.</p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-07-15
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>

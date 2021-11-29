@@ -41,7 +41,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit <strong>systemd.service</strong>. Die Unit-Datei mit der Namensendung “.service” ist der am häufigsten anzutreffende Unit-Typ in systemd.</p>
 <p>Die Service-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen über den Dienst und den Prozess, den er überwacht, konfiguriert.</p>
 <h3 id="service-unit-anlegen">service-Unit anlegen</h3>
-<p>Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis <em>/usr/local/lib/systemd/system/</em> ab. (Ggf. ist das Verzeichnis mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das hat den Vorteil, dass sie Vorrang gegenüber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie Änderungsdateien, die mit <strong><code>systemctl edit &lt;UNIT_DATEI&gt;</code></strong> erzeugt wurden, im seinerseits vorrangigen Verzeichnis <em>/etc/systemd/system/</em> abgelegt werden. Siehe: <a href="systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Hirarchie der Ladepfade</a>.</p>
+<p>Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis <em>/usr/local/lib/systemd/system/</em> ab. (Ggf. ist das Verzeichnis mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das hat den Vorteil, dass sie Vorrang gegenüber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie Änderungsdateien, die mit <strong><code>systemctl edit &lt;UNIT_DATEI&gt;</code></strong> erzeugt wurden, im seinerseits vorrangigen Verzeichnis <em>/etc/systemd/system/</em> abgelegt werden. Siehe: <a href="systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a>.</p>
 <h3 id="sektion-service">Sektion Service</h3>
 <p>Für diese Sektion sind über dreißig Optionen verfügbar, von denen wir hier besonders häufig verwendete beschreiben.</p>
 <table>
@@ -245,7 +245,7 @@ und mit der bevorzugten Suchmaschine im Internet.<br />
 <p><a href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">Deutsche Manpage, systemd.service</a><br />
 <a href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Systemd-Units selbst erstellen</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-06-26
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>

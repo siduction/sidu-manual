@@ -47,12 +47,12 @@ Auch ist es möglich, dass eine “<em>.timer</em>”-Unit die gewünschten Akti
 <h3 id="benötigte-dateien">Benötigte Dateien</h3>
 <p>Die <strong>systemd-timer</strong>-Unit benötigt zwei Dateien mit dem gleichen Basename im Verzeichnis <em>/usr/local/lib/systemd/system/</em> für ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
 <ul>
-<li>Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Auslöser für die Service-Unit enthält<br />
+<li>Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Auslöser für die service-Unit enthält<br />
 und die<br />
 </li>
-<li>Service-Unit-Datei (xxxxx.service), welche die zu startende Aktion enthält.</li>
+<li>service-Unit Datei (xxxxx.service), welche die zu startende Aktion enthält.</li>
 </ul>
-<p>Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in <em>/usr/local/bin/</em>, das von der Service-Unit ausgeführt wird.</p>
+<p>Für umfangreichere Aktionen erstellt man als dritte Datei ein Skript in <em>/usr/local/bin/</em>, das von der service-Unit ausgeführt wird.</p>
 <p>Wir erstellen in dem Beispiel ein regelmäßiges Backup mit <em>rsync</em>.</p>
 <h3 id="service-unit-für-timer">service-Unit für timer</h3>
 <p>Die <em>.service-Unit</em>, die das Backup ausführt, wird von der <em>.timer-Unit</em> aktiviert und kontrolliert und benötigt daher keine <em>[Install]</em> Sektion. Somit reicht die Beschreibung der Unit in der Sektion <em>[Unit]</em>. Ihrer Sektion <em>[Service]</em> enthält den auszuführenden Befehl nach der Option <em>ExecStart=</em>.</p>
@@ -104,8 +104,8 @@ Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
 <p>“<em>cron</em>” und “<em>anacron</em>” sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer können eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.</p>
 <p><strong>Nutzen</strong></p>
 <ul>
-<li>Jobs können Abhängigkeiten haben (von anderen Systemd-Diensten abhängen).</li>
-<li>Timer Units werden im Systemd-Journal geloggt.</li>
+<li>Jobs können Abhängigkeiten haben (von anderen systemd-Diensten abhängen).</li>
+<li>Timer Units werden im systemd-Journal geloggt.</li>
 <li>Man kann einen Job sehr einfach unabhängig von seinem Timer aufrufen.</li>
 <li>Man kann Timer Units einen Nice-Wert geben oder cgroups für die Ressourcenverwaltung nutzen.</li>
 <li>Systemd Timer Units können von Ereignissen wie dem Booten oder Hardware-Änderungen ausgelöst werden.</li>
@@ -121,7 +121,7 @@ Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
 <a href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
 <a href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-05-05
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>

@@ -76,7 +76,7 @@ Das Verzeichnis <strong>/run/systemd/system/</strong> beinhaltet zur Laufzeit er
 <h3 id="weitere-funktionen-von-systemd">Weitere Funktionen von systemd</h3>
 <p>Systemd bietet noch weitere Funktionen. Eine davon ist <a href="https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> als Ersatz für das nicht mehr weiter gepflegte <em>ConsoleKit</em> . Damit steuert systemd Sitzungen und Energiemanagement. Nicht zuletzt bietet systemd eine Menge an weiteren Möglichkeiten wie beispielsweise das Aufspannen eines Containers (ähnlich einer Chroot) mittels <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> und viele weitere. Ein Blick in die Linkliste auf <a href="https://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> ermöglicht weitere Entdeckungen, unter anderem auch die ausführliche Dokumentation von Hauptentwickler Lennart Poettering zu systemd.</p>
 <h3 id="handhabung-von-diensten">Handhabung von Diensten</h3>
-<p>Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonstwie zu steuern. Dazu dient der Befehl “<em>systemctl</em>”.</p>
+<p>Einer der Jobs von systemd ist es Dienste zu starten, zu stoppen oder sonst wie zu steuern. Dazu dient der Befehl “<em>systemctl</em>”.</p>
 <ul>
 <li>systemctl –all - listet alle Units, aktive und inaktive.</li>
 <li>systemctl -t [NAME] - listet nur Units des bezeichneten Typ.</li>
@@ -87,7 +87,7 @@ Das Verzeichnis <strong>/run/systemd/system/</strong> beinhaltet zur Laufzeit er
 <li>systemctl status [Name] - zeigt den derzeitigen Status einer Unit.</li>
 <li>systemctl is-enabled [Name] - zeigt nur den Wert “enabled” oder “disabled” des Status einer Unit.</li>
 </ul>
-<p>Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Units beachtet und ggf. Standardabhängikeiten hinzugefügt, damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.</p>
+<p>Die beiden folgenden Befehle integrieren bzw. entfernen die Unit anhand der Konfiguration ihrer Unit-Datei. Dabei werden Abhängigkeiten zu anderen Units beachtet und ggf. Standardabhängigkeiten hinzugefügt, damit systemd die Dienste und Prozesse fehlerfrei ausführen kann.</p>
 <ul>
 <li>systemctl enable [NAME] - gliedert eine Unit in systemd ein.</li>
 <li>systemctl disable [NAME] - entfernt eine Unit aus systemd.</li>
@@ -128,7 +128,7 @@ disabled</code></pre>
 <a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutsche Manpage ‘systemd.unit’</a><br />
 <a href="https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html">Deutsche Manpage ‘systemd.syntax’</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-06-26
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>

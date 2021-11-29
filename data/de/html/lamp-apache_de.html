@@ -117,7 +117,7 @@ Die zentrale Konfigurationsdatei ist “<em>apache2.conf</em>”. Sie wird in de
 <p>Nun kommen wir wieder auf unseren <em>LAMP-Testserver für Entwickler</em> zurück und passen die Konfiguration an die Serverdaten an.</p>
 <ol type="1">
 <li><p>Datei “<em>/etc/apache2/apache2.conf</em>”</p>
-<p>Es ist eine der wenigen Ausnahmen die <em>apache2.conf</em> zu editieren. Wir fügen zu Beginn des Abschnits <em>Global configuration</em> die folgende Zeile ein:</p>
+<p>Es ist eine der wenigen Ausnahmen die <em>apache2.conf</em> zu editieren. Wir fügen zu Beginn des Abschnitts <em>Global configuration</em> die folgende Zeile ein:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">ServerName</span> 192.168.3.1</span></code></pre></div>
 <p>Hiermit teilen wir dem Apache-Webserver die IP-Adresse mit, unter der das Entwicklungsprojekt erreichbar sein soll und unterdrücken Umleitungen zur IP 127.0.1.1 mit Fehlermeldungen.</p></li>
 <li><p>Neue “<em>sites</em>”-Datei</p>
@@ -160,7 +160,7 @@ Wir nennen die neue Gruppe “<em>developer</em>”.</p>
 damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe “<em>developer</em>” erben.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">chmod</span> g+s /var/www/html</span></code></pre></div></li>
 <li><p>Eigentümer und Dateirechte anpassen,<br />
-damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läft.<br />
+damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läuft.<br />
 Wir schauen uns die derzeitigen Rechte an:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="co"># ls -la /var/www/html</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">insgesamt</span> 24</span>
@@ -237,7 +237,7 @@ Wir empfehlen dringend die Webseite<br />
 <a href="https://httpd.apache.org/docs/current/de/sections.html#merging">apache.org - How the sections are merged</a><br />
 intensiv zu Rate zu ziehen.</p></li>
 <li><p>Der <strong>Eigentümer</strong> von “<em>DocumentRoot</em>”</p>
-<p>ist nach der Installion “<em>root.root</em>” und sollte unbedingt geändert werden. Siehe hierzu das Kapitel <a href="#benutzer-und-rechte">Benutzer und Rechte</a>.</p></li>
+<p>ist nach der Installation “<em>root.root</em>” und sollte unbedingt geändert werden. Siehe hierzu das Kapitel <a href="#benutzer-und-rechte">Benutzer und Rechte</a>.</p></li>
 </ul>
 <h3 id="https-verwenden">HTTPS verwenden</h3>
 <p>Ohne HTTPS geht heute kein Webseitenprojekt an den Start.<br />
@@ -247,7 +247,7 @@ Wie man ein Zertifikat erlangt beschreibt die Webseite <a href="https://www.http
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">mkdir</span> ssl ssl/certs ssl/privat</span></code></pre></div>
 <p>In diesen legen wir die Certifikatsdatei <em>server1.org.crt</em> und den privaten Schlüssel <em>server1.org.key</em> ab.</p>
 <p>Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chown</span> -R root.root ssl</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chown</span> -R root.root ssl</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> -R o-rwx ssl</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> -R g-rwx ssl</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a><span class="ex">/etc/apache2</span>/# <span class="fu">chmod</span> u-w ssl/certs/server1.org.crt</span>

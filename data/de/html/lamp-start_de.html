@@ -31,7 +31,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#lamp-webserver">LAMP-Webserver</a>
 <ul>
 <li><a href="#apache-installieren">Apache installieren</a></li>
-<li><a href="#mariadb-installieren">MariaDb installieren</a></li>
+<li><a href="#mariadb-installieren">MariaDB installieren</a></li>
 <li><a href="#php-installieren">PHP installieren</a></li>
 <li><a href="#phpmyadmin-installieren">phpMyAdmin installieren</a></li>
 <li><a href="#weitere-software">Weitere Software</a></li>
@@ -46,7 +46,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="lamp-webserver">LAMP-Webserver</h2>
 <p><strong>Ein lokaler Testserver für Entwickler</strong></p>
-<p>Das Akronym <strong>LAMP</strong> bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Websiten zu betreiben:</p>
+<p>Das Akronym <strong>LAMP</strong> bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Webseiten zu betreiben:</p>
 <ul>
 <li><strong>L</strong>inux: Betriebssystem<br />
 </li>
@@ -70,7 +70,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <warning>
 Zur Beachtung: <br />Der Desktop-PC, mit dem täglich gearbeitet wird, soll nicht als Server dienen. Als Server soll ein eigener PC verwendet werden, der ansonsten keine weiteren Aufgaben erfüllt.
 </warning>
-<p>Im Server-PC sollte mindestens 500MB RAM Arbeitsspeicher zur Verfügung stehen. Weniger RAM wird Probleme bereiten, da ein Server mit MariaDb/MySQL viel RAM benötigt, um ansprechend zu laufen.</p>
+<p>Im Server-PC sollte mindestens 500MB RAM Arbeitsspeicher zur Verfügung stehen. Weniger RAM wird Probleme bereiten, da ein Server mit MariaDB/MySQL viel RAM benötigt, um ansprechend zu laufen.</p>
 <p>Die zu installierenden Pakete sind:</p>
 <pre><code>apache2  
 mariadb-server  
@@ -118,7 +118,7 @@ Siehe unten <a href="#troubleshooting">Troubleshooting</a></p>
 </ul></li>
 </ul>
 <h3 id="apache-installieren">Apache installieren</h3>
-<p>Die Installation des Webservers Apache erfordert nur die beiden folgenden Befehle. Der install-Befehl holt sich noch die zusätzlichen Pakete <em>apache2-data</em> und <em>apache2-utils</em> herein. Anschließend fragen wir den Status von Apache ab und testen gleich die Start- und Stop-Anweisungen.</p>
+<p>Die Installation des Webservers Apache erfordert nur die beiden folgenden Befehle. Der install-Befehl holt sich noch die zusätzlichen Pakete <em>apache2-data</em> und <em>apache2-utils</em> herein. Anschließend fragen wir den Status von Apache ab und testen gleich die Start- und Stopanweisungen.</p>
 <pre><code># apt update
 # apt install apache2
 [...]
@@ -147,7 +147,7 @@ Möchten Sie fortfahren? [J/n] j
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2020-12-06 14:30:59 CET; 3s ago
 [...]</code></pre>
-<p>Der Apache Webserver ist geladen und lässt sich problemlos händeln. Jetzt prüfen wir seine Funktion mit:</p>
+<p>Der Apache Webserver ist geladen und lässt sich problemlos handhaben. Jetzt prüfen wir seine Funktion mit:</p>
 <pre><code>w3m http://localhost/index.html</code></pre>
 <p>Die Apache-Begrüßungsseite mit <strong>It works!</strong> erscheint.<br />
 Wir beenden w3m mit <code>q</code> und bestätigen mit <code>y</code>.</p>
@@ -155,8 +155,8 @@ Wir beenden w3m mit <code>q</code> und bestätigen mit <code>y</code>.</p>
 Als <strong>DocumentRoot</strong> wird das Verzeichnis <strong>/var/www/html/</strong> bezeichnet. Es enthält die Dateien der Webseite.</p>
 <p>Für weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite<br />
 <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> lesen.</p>
-<h3 id="mariadb-installieren">MariaDb installieren</h3>
-<p>Die Installation von MariaDb gestaltet sich ähnlich einfach in dem die Metapakete “mariadb-server” und “mariadb-client” angefordert werden.</p>
+<h3 id="mariadb-installieren">MariaDB installieren</h3>
+<p>Die Installation von MariaDB gestaltet sich ähnlich einfach in dem die Metapakete “mariadb-server” und “mariadb-client” angefordert werden.</p>
 <pre><code># apt install mariadb-server mariadb-client
 [...]
 Die folgenden NEUEN Pakete werden installiert:  
@@ -165,7 +165,7 @@ Die folgenden NEUEN Pakete werden installiert:
   mariadb-server-core-10.5 mysql-common socat
 [...]
 Möchten Sie fortfahren? [J/n] j</code></pre>
-<p>Weitere Informationen zu MariaDb und der Konfiguration liefert unser Handbuch in <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a></p>
+<p>Weitere Informationen zu MariaDB und der Konfiguration liefert unser Handbuch in <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a></p>
 <h3 id="php-installieren">PHP installieren</h3>
 <p>Zur Installation der Scriptsprache PHP genügt der Befehl:</p>
 <pre><code># apt install php
@@ -202,7 +202,7 @@ server API   Apache 2.0 Handler
 <p>Wenn wir jetzt wieder die Seite “http://localhost/info.php” aufrufen, finden wir im Bereich der Module (sie sind alphabetisch sortiert) die Einträge zu <em>mysqli</em> und <em>mysqlnd</em>.</p>
 <p>Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enthält die Handbuchseite <a href="./lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
 <h3 id="phpmyadmin-installieren">phpMyAdmin installieren</h3>
-<p>Um die Datenbank MariaDb zu administrieren benötigen wir <em>phpmyadmin</em>:</p>
+<p>Um die Datenbank MariaDB zu administrieren benötigen wir <em>phpmyadmin</em>:</p>
 <pre><code># apt install phpmyadmin
 [...]
 Die folgenden NEUEN Pakete werden installiert:
@@ -227,10 +227,10 @@ Im ersten, zu Beginn, wählen wir “<em>apache2</em>” und bestätigen mit “
 </figure>
 <p>In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer <em>phpmyadmin</em> (siehe das Kapitel <em>Vorbereitungen</em>).</p>
 <h3 id="weitere-software">Weitere Software</h3>
-<p>Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> und <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDb</a>für die Konfiguration des Servers und MariaDb berücksichtigen.</p>
+<p>Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> und <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a>für die Konfiguration des Servers und MariaDB berücksichtigen.</p>
 <h3 id="statusaugaben-log-dateien">Statusaugaben Log-Dateien</h3>
 <p><strong>Apache</strong></p>
-<p>Der Konfigurationsstatus des Apache Webservers wird mit “<em>apache2ctl -S</em>” augegeben.<br />
+<p>Der Konfigurationsstatus des Apache Webservers wird mit “<em>apache2ctl -S</em>” ausgegeben.<br />
 Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar nach der Installation.</p>
 <pre><code># apache2ctl -S
   AH00558: apache2: Could not reliably determine the server&#39;s
@@ -250,7 +250,7 @@ Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar n
   Define: DUMP_RUN_CFG
   User: name=&quot;www-data&quot; id=33
   Group: name=&quot;www-data&quot; id=33</code></pre>
-<p>Die Handbuchseite <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> enthält eine Reihe von Hinweisen zur Anpassug der Konfiguration.<br />
+<p>Die Handbuchseite <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> enthält eine Reihe von Hinweisen zur Anpassung der Konfiguration.<br />
 Das Verzeichnis <em>/var/log/apache2/</em> enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.</p>
 <p><strong>MariaDB</strong></p>
 <p>In der Konsole zeigt der Befehl</p>
@@ -346,7 +346,7 @@ Die folgenden Pakete werden ENTFERNT:
 Jetzt bitte <strong>nicht apt autoremove verwenden</strong>, denn dann bleiben die Konfigurationsdateien, in denen möglicherweise der Fehler liegt, zurück.<br />
 Wir verwenden den Befehl “<em>apt purge</em>”.</p>
 <pre><code># apt purge apache2-data apache2-utils</code></pre>
-<p>Bei Bedarf verfahren wir mit den anderen Programmteile ebenso. Anschließend starten wir einen neuen Versuch.</p>
+<p>Bei Bedarf verfahren wir mit den anderen Programmteilen ebenso. Anschließend starten wir einen neuen Versuch.</p>
 <h3 id="sicherheit">Sicherheit</h3>
 <p>Die bis hierher erklärte Installation führt zu einem Webserver der <strong>“offen wie ein Scheunentor für Jedermann ist”</strong>. Deshalb sollte er ausschließlich autark an einem Arbeitsplatz verwendet und nicht mit dem privaten Netzwerk und auf keinen Fall mit dem Internet verbunden werden.</p>
 <p>Für die Absicherung des Servers bitte die Handbuchseiten</p>
@@ -354,7 +354,7 @@ Wir verwenden den Befehl “<em>apt purge</em>”.</p>
 <p>bezüglich der Konfiguration beachten.</p>
 <p>Danach kann der Server, ausschließlich für System- und Software- Aktualisierungen, temporär über eine zweite Netzwerkschnittstelle mit dem Internet verbunden werden.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-05
+Zuletzt bearbeitet: 2021-11-29
 </div>
 </body>
 </html>

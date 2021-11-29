@@ -58,22 +58,22 @@ share = Name der Freigabe</p>
 <p>Um einen Samba-Share automatisch einzubinden, kann die Datei <code>/etc/fstab</code> nach folgendem Muster ergänzt werden:</p>
 <pre><code>//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
 user=username,password=**********,uid=$UID,gid=$GID   0 0</code></pre>
-<p>Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben. Als bessere Variante erzeigt man <strong><code>~.smbcredentials</code></strong> mit folgendem Inhalt an:</p>
+<p>Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben. Als bessere Variante erzeugt man <strong><code>~.smbcredentials</code></strong> mit folgendem Inhalt an:</p>
 <pre><code>username=&lt;benutzer&gt;
 password=&lt;passwort&gt;</code></pre>
 <p>Der resultierende Eintrag für /etc/fstab ist dann</p>
 <pre><code>//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
 credentials=&lt;/pfad/zu/.smbcredentials&gt;,uid=$UID,gig=$GID 0 0</code></pre>
-<p>$UID und $GID ist die enstprechende uid und gid des users, dem das Share gegeben werden soll. Man kann aber auch uid=username gid=users schreiben.</p>
+<p>$UID und $GID ist die entsprechende uid und gid des users, dem das Share gegeben werden soll. Man kann aber auch uid=username gid=users schreiben.</p>
 <h3 id="siduction-als-samba-server">siduction als Samba-Server</h3>
-<p>Natürlich kann siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo’s bereit, wie man einen Samba-Server aufsetzt.</p>
-<p>Unsere Empfehlungen zu diesem Thema:</p>
+<p>Natürlich kann man in siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu beschreiben würde den Rahmen allerdings sprengen. Das Internet hält viele HowTo zu diesem Thema bereit.</p>
+<p>Unsere Empfehlungen:</p>
 <p>https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian<br />
 https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html<br />
 https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debian-10-buster-ein/</p>
 <p>Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-07-23
+Zuletzt bearbeitet: 2021-11-29
 </div>
 </body>
 </html>

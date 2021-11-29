@@ -80,7 +80,7 @@ Eine vollständige Beschreibung des APT-Systems findet man in <a href="https://w
 <tr class="odd">
 <td><a href="#full-upgrade-ausführen">apt full-upgrade</a></td>
 <td>apt-get dist-upgrade</td>
-<td>Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn daduch bereits installierte Pakete entfernt werden müssen.</td>
+<td>Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn dadurch bereits installierte Pakete entfernt werden müssen.</td>
 </tr>
 <tr class="even">
 <td>apt full-upgrade -d</td>
@@ -200,7 +200,7 @@ apt install &lt;Paketname&gt;
 init 5 &amp;&amp; exit</code></pre>
 <p>Im unteren Beispiel wird das Paket “funtools” installiert.</p>
 <pre><code>root@siduction# apt install funtools
-aketlisten werden gelesen... Fertig
+Paketlisten werden gelesen... Fertig
 Abhängigkeitsbaum wird aufgebaut.
 Statusinformationen werden eingelesen.... Fertig
 Die folgenden zusätzlichen Pakete werden installiert:
@@ -362,7 +362,7 @@ init 5 &amp;&amp; exit</code></pre>
 <p>Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpackage absehen!</p>
 <h3 id="warum-ausschließlich-apt-verwenden">Warum ausschließlich apt verwenden</h3>
 <p>Paketmanager wie adept, synaptic und kpackage können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Das sind keine Fehler in diesen Programmen oder Fehler der Entwickler.</p>
-<p>Die genannten Programme sind exzellent für eine Installation von <em>Debian stable</em> und sie eignen sich sehr gut dazu Programmepakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll <em>apt</em> verwendet werden.</p>
+<p>Die genannten Programme sind exzellent für eine Installation von <em>Debian stable</em> und sie eignen sich sehr gut dazu Programmpakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll <em>apt</em> verwendet werden.</p>
 <p>Paketmanager wie adept, synaptic und kpackage sind - technisch gesprochen - nicht-deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.</p>
 <p>Weiterhin ist zu beachten, dass ALLE GUI-Paketmanager in X ausgeführt werden müssen. Systemaktualisierungen in X (selbst ein ohnehin nicht empfohlenes ‘apt upgrade’) werden früher oder später dazu führen, dass man sein System irreversibel beschädigt.</p>
 <p>Im Gegensatz dazu führt apt ausschließlich das durch, was angefragt ist. Bei unvollständigen Abhängigkeiten in Sid, sprich: wenn das System bricht (dies kann in Sid bei Strukturänderungen vorkommen), können die Ursachen genau festgestellt und dadurch repariert oder umgangen werden. Das eigene System “bricht” nicht. Falls also eine Systemaktualisierung dem Gefühl nach das halbe System löschen möchte, überlässt apt dem Administrator die Entscheidung, was zu tun ist, und handelt nicht eigenmächtig.</p>
@@ -411,12 +411,12 @@ Description: small man(1) front-end for X
 <pre><code>user1@pc1:~$ apt list gman
 Auflistung... Fertig
 gman/unstable,now 0.9.3-5.3 amd64  [installiert]</code></pre>
-<p>Der Befehl <strong>aptitude</strong> (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft “zu schlau”.</p>
+<p>Der Befehl <strong>aptitude</strong> (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die Nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft “zu schlau”.</p>
 <figure>
 <img src="./images/apt/aptitude.png" alt="" /><figcaption>aptitude</figcaption>
 </figure>
 <h4 id="graphische-paketsuche">Graphische Paketsuche</h4>
-<p>Das Programm <strong>packagesearch</strong> eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird “packagesearch” nicht automatisch instaliert; deshalb:</p>
+<p>Das Programm <strong>packagesearch</strong> eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird “packagesearch” nicht automatisch installiert; deshalb:</p>
 <pre><code>apt update
 apt install packagesearch</code></pre>
 <p>Nach dem ersten Start von packagesearch muss in <em>Packagesearch</em> &gt; <em>Preferences</em> “apt” gewählt werden und gelegentlich erscheint ein Infofenster, das das Fehlen von deborphan bemängelt. Die Informationen von deborphan bitte mit größter Vorsicht verwenden.</p>
@@ -432,7 +432,7 @@ apt install packagesearch</code></pre>
 <p>Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch welche Dateien in einem Paket geschnürt sind. Weitere ausführliche Informationen zur Verwendung von packagesearch findet man unter <em>Help</em> &gt; <em>Contents</em>. Derzeit ist die Benutzerführung von packagesearch ausschließlich Englisch.</p>
 <p>Eine vollständige Beschreibung des APT-Systems findet man in <a href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-03-15
+Zuletzt bearbeitet: 2021-11-29
 </div>
 </body>
 </html>

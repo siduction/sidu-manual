@@ -87,12 +87,12 @@ beinhalten Laufzeit-Units und dynamische Konfiguration für flüchtige Units. F�
 <p>Der erste Befehl lädt die komplette Daemon-Konfiguration neu, der zweite startet die Unit <UNIT_DATEI> sofort (Option “–now”) und gliedert sie in systemd ein, sodass sie bei jedem Neustart des PC ausgeführt wird.<br />
 Der Befehl</p>
 <pre><code># systemctl disable &lt;UNIT_DATEI&gt;</code></pre>
-<p>bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl <strong><code>systemctl start &lt;UNIT_DATEI&gt;</code></strong> gestartet und mit <strong><code>systemctl stop &lt;UNIT_DATEI&gt;</code></strong> gestopt werden.<br />
+<p>bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl <strong><code>systemctl start &lt;UNIT_DATEI&gt;</code></strong> gestartet und mit <strong><code>systemctl stop &lt;UNIT_DATEI&gt;</code></strong> gestoppt werden.<br />
 Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf <em>/dev/null</em> ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand “masked” und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.</p>
 <h3 id="sektionen-der-unit-datei">Sektionen der Unit-Datei</h3>
 <p>Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung “<em>.timer</em>” und muss “[Timer]” als Typ-spezifische Sektion enthalten.</p>
 <h4 id="sektion-unit">Sektion Unit</h4>
-<p>Diese Sektion enhält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.</p>
+<p>Diese Sektion enthält allgemeine Informationen über die Unit, definiert Abhängigkeiten zu anderen Units, wertet Bedingungen aus und sorgt für die Einreihung in den Bootprozess.</p>
 <ol type="1">
 <li><p>Allgemeine Optionen</p>
 <ol type="a">
@@ -106,7 +106,7 @@ Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder
 <li><p>“<em>Wants=</em>”<br />
 Hier aufgeführte Units werden mit der konfigurierten Unit gestartet.</p></li>
 <li><p>“<em>Requires=</em>”<br />
-Ähnlich zu <em>Wants=</em>, erklärt aber eine stärkerere Bindung an die aufgeführten Units.<br />
+Ähnlich zu <em>Wants=</em>, erklärt aber eine stärkere Bindung an die aufgeführten Units.<br />
 Wenn diese Unit aktiviert wird, werden die aufgeführten Units ebenfalls aktiviert.<br />
 Schlägt die Aktivierung einer der anderen Units fehl <strong>und</strong> die Ordnungsabhängigkeit <em>After=</em> ist auf die fehlgeschlagene Unit gesetzt, dann wird diese Unit nicht gestartet.<br />
 Falls eine der anderen Units inaktiv wird, bleibt diese Unit aktiv, nur wenn eine der anderen Units gestoppt wird, wird diese Unit auch gestoppt.</p></li>
@@ -118,7 +118,7 @@ Beim Stoppen oder inaktivem Zustand der gebundenen Unit wird diese Unit immer ge
 Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht in einem aktiven Zustand ist, sollte <em>BindsTo=</em> am besten mit der Ordnungsabhängigkeit <em>After=</em> kombiniert werden.</p></li>
 <li><p>“<em>PartOf=</em>”<br />
 Ähnlich zu <em>Requires=</em>, aber begrenzt auf das Stoppen und Neustarten von Units.<br />
-Wenn Systemd die hier aufgeführten Units stoppt oder neustartet, wird die Aktion zu dieser Unit weitergeleitet.<br />
+Wenn Systemd die hier aufgeführten Units stoppt oder neu startet, wird die Aktion zu dieser Unit weitergeleitet.<br />
 Das ist eine Einwege-Abhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.</p></li>
 <li><p>“<em>Conflicts=</em>”<br />
 Deklariert negative Anforderungs-Abhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.<br />
@@ -256,7 +256,7 @@ ListenStream=/run/cups/cups.sock
 WantedBy=sockets.target</code></pre>
 <p><strong>Die Sektion [Unit]</strong><br />
 enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien <em>cups.path</em> und <em>cups.socket</em> enthalten zusätzlich die Bindungsabhängigkeit <em>PartOf=cups.service</em>, was bedeutet, dass diese zwei Units abhängig von <em>cups.service</em> gestoppt oder neu gestartet werden.<br />
-Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit “Before=” zu ihrer namensgleichen Service-Unit ein. Deshalb ist es nicht notwendig in der <em>cups.service</em>-Unit die Ordnungs-Abhängigkeiten “After=cups.socket” und “After=cups.path” einzutragen. (Siehe unten die Ausgabe von “systemd-analyze dump” mit dem Vermerk “destination-implicit”.) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die <em>cups.service</em>-Unit erst, nachdem der Start der <em>cups.path</em>-Unit und der <em>cups.socket</em>-Unit erfolgreich abgeschlossen wurde.</p>
+Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit “Before=” zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der <em>cups.service</em>-Unit die Ordnungs-Abhängigkeiten “After=cups.socket” und “After=cups.path” einzutragen. (Siehe unten die Ausgabe von “systemd-analyze dump” mit dem Vermerk “destination-implicit”.) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die <em>cups.service</em>-Unit erst, nachdem der Start der <em>cups.path</em>-Unit und der <em>cups.socket</em>-Unit erfolgreich abgeschlossen wurde.</p>
 <p>Die vollständige Konfiguration der Units erhalten wir mit dem Befehl <strong><code>systemd-analyze dump</code></strong>, der eine sehr, sehr lange Liste ( &gt; 32000 Zeilen) des systemd Serverstatus ausgibt.</p>
 <pre><code># systemd-analyze dump
 [...]
@@ -337,8 +337,8 @@ Bitte auch die Manpages <a href="https://manpages.debian.org/testing/manpages-de
 # systemctl edit --full &lt;UNIT_DATEI&gt;
 # systemctl edit --full --force &lt;UNIT_DATEI&gt;</code></pre>
 <p><em>systemctl edit</em> öffnet die ausgewählte Unit-Datei im konfigurierten Editor.</p>
-<p><strong>systemctl edit <UNIT_DATEI></strong> erstellt unterhalb <em>/etc/systemd/system/</em> ein neues Verzeichnis mit dem Namen “&lt;UNIT_DATEI&gt;.d” und darin die Datei “override.conf”, die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der <a href="#ladepfad-der-unit-dateien">Hirarchie der Ladepfade</a> inklusive <em>/etc/systemd/system/</em> abwärts eingetragen sind.</p>
-<p><strong>systemctl edit - -full <UNIT_DATEI></strong> erstellt eine neue, namensgleiche Datei im Verzeichnis <em>/etc/systemd/system/</em>. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der <a href="#ladepfad-der-unit-dateien">Hirarchie der Ladepfade</a> unterhalb <em>/etc/systemd/system/</em> eingetragen sind. Dateien, die sich bereits im Verzeichnis <em>/etc/systemd/system/</em> befinden, werden überschrieben.</p>
+<p><strong>systemctl edit <UNIT_DATEI></strong> erstellt unterhalb <em>/etc/systemd/system/</em> ein neues Verzeichnis mit dem Namen “&lt;UNIT_DATEI&gt;.d” und darin die Datei “override.conf”, die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der <a href="#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a> inklusive <em>/etc/systemd/system/</em> abwärts eingetragen sind.</p>
+<p><strong>systemctl edit - -full <UNIT_DATEI></strong> erstellt eine neue, namensgleiche Datei im Verzeichnis <em>/etc/systemd/system/</em>. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der <a href="#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a> unterhalb <em>/etc/systemd/system/</em> eingetragen sind. Dateien, die sich bereits im Verzeichnis <em>/etc/systemd/system/</em> befinden, werden überschrieben.</p>
 <p><strong>systemctl edit - -full - -force <UNIT_DATEI></strong> erstellt eine neue Datei im Verzeichnis <em>/etc/systemd/system/</em>. Ohne die Option <em>- -full</em> würde nur eine Datei “override.conf” im neuen Verzeichnis <em>/etc/systemd/system/&lt;UNIT_DATEI&gt;.d</em> generiert, der die zugehörige Unit-Datei fehlt.</p>
 <p>Wird der Editor beendet, so führt systemd automatisch den Befehl <strong><code>systemctl daemon-reload</code></strong> aus.</p></li>
 <li><p>revert</p>
@@ -396,7 +396,7 @@ Hier ein Beispiel:</p>
 <a href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">Deutsche Manpage, systemctl</a></p>
 <p>Dank an Helge Kreuzmann für die deutschen Übersetzungen.</p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-05-05
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>

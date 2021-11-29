@@ -123,7 +123,7 @@ UUID=e2164479-3f71-4216-a4d4-af3321750322   /mnt/TEST_root ext4    noauto,noatim
 LABEL=TEST_HOME                             /mnt/TEST_home ext4    noauto,users,noatime 0 0
 UUID=B248-1CCA                              /mnt/TEST_boot vfat    noauto,users,rw,noatime 0 0
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5   /mnt/TEST_res  ext4    noauto,users,rw,noatime 0 0</code></pre>
-<p>Partitionen, die in der fstab aufgeführt sind, kann man mit ihrem &lt;file system&gt;-Bezeichner oder mit dem &lt;mount point&gt; eingehängen.</p>
+<p>Partitionen, die in der fstab aufgeführt sind, kann man mit ihrem &lt;file system&gt;-Bezeichner oder mit dem &lt;mount point&gt; einhängen.</p>
 <pre><code>$ mount UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5
     oder
 $ mount /mnt/TEST_res
@@ -169,7 +169,7 @@ mount /media/disk2part7</code></pre>
 <pre><code>man mount</code></pre>
 <p>Natürlich muss man sich nicht an das Namensschema <em>‘diskXpartX’</em> halten. Einhängepunkte (mountpoints) und die dazugehörigen Bezeichner in der fstab können sinnvoll mit z.B. <em>‘data’</em> oder <em>‘music’</em> benannt werden.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-07-21
+Zuletzt bearbeitet: 2021-11-28
 </div>
 </body>
 </html>

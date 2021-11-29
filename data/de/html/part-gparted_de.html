@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Partitionieren mit Gparted</title>
+  <title>Partitionieren mit GParted</title>
 <style>
 body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
 p               {line-height: 1.3;}
@@ -24,7 +24,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Partitionieren mit Gparted</h1>
+<h1 class="title">Partitionieren mit GParted</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -57,7 +57,7 @@ im Anwendungsmenü - System - GParted</p></li>
 <li><p><strong>Gnome</strong><br />
 in Anwendungen - Gparted</p></li>
 </ul>
-<p>Nach dem Klick auf den Starter öffnet sich ein Dialog zur Abgefrage des Root-Passwortes.</p>
+<p>Nach dem Klick auf den Starter öffnet sich ein Dialog zur Abfrage des Root-Passwortes.</p>
 <p>Wenn GParted startet, öffnet sich das Programmfenster und die vorhandenen Laufwerke werden ausgelesen.</p>
 <figure>
 <img src="./images/gparted/gparted00-de.png" alt="" /><figcaption>GParted Startfenster</figcaption>
@@ -82,7 +82,7 @@ in Anwendungen - Gparted</p></li>
 <li><p>Laufwerksinformationen (“Device Information”)<br />
 Im linken Rahmen stehen Details der Laufwerke wie Modell, Größe usw., die wichtig sind, wenn mehrere Datenträger im System vorhanden sind. Damit kann man kontrollieren, ob der richtige Datenträger zur Formatierung gewählt wurde.</p></li>
 <li><p>Anstehende Operationen (“Pending Operations”)<br />
-In einem unten sich öffnenden Rahmen werden die austehenden Operationen angezeigt. Diese Information ist sehr nützlich, um einen Überblick darüber zu haben, welche Operationen durchgeführt werden sollen. Der Rahmen öffnet sich auch automatisch, sobald für ein Laufwerk eine Operationen angefordert wird.</p></li>
+In einem unten sich öffnenden Rahmen werden die ausstehenden Operationen angezeigt. Diese Information ist sehr nützlich, um einen Überblick darüber zu haben, welche Operationen durchgeführt werden sollen. Der Rahmen öffnet sich auch automatisch, sobald für ein Laufwerk eine Operationen angefordert wird.</p></li>
 </ul>
 <p>Die beiden Bereiche sind grün markiert.</p>
 <figure>
@@ -98,7 +98,7 @@ Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach 
 <figure>
 <img src="./images/gparted/gparted03-de.png" alt="" /><figcaption>GParted Partitionstabelle</figcaption>
 </figure>
-<p>Die Auswahl <em>“Datenrettung versuchen”</em> bietet bei Erfolg die Chance trotz einer defekten Partitiontabelle doch noch an die Daten zu gelangen.</p>
+<p>Die Auswahl <em>“Datenrettung versuchen”</em> bietet bei Erfolg die Chance trotz einer defekten Partitionstabelle doch noch an die Daten zu gelangen.</p>
 <figure>
 <img src="./images/gparted/gparted04-de.png" alt="" /><figcaption>GParted Datenrettung</figcaption>
 </figure></li>
@@ -108,7 +108,7 @@ Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach 
 <img src="./images/gparted/gparted07-de.png" alt="" /><figcaption>GParted Datenrettung</figcaption>
 </figure></li>
 <li><p><strong>Eine neue Partition erstellen</strong></p>
-<p>In der Toolbar erlaubt der Knopf Neu das Erstellen einer neuen Partition, wenn zuvor ein unzugeordneter Bereich gewählt wurde. Ein neues Fenster erlaubt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.</p>
+<p>In der Toolbar erlaubt der Knopf “Neu” das Erstellen einer neuen Partition, wenn zuvor ein nicht zugeordneter Bereich gewählt wurde. Im nächsten Fenster erfolgt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.</p>
 <figure>
 <img src="./images/gparted/gparted05-de.png" alt="" /><figcaption>GParted Neue Partition</figcaption>
 </figure></li>
@@ -160,7 +160,7 @@ UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5   /mnt/TEST_res  ext4    noauto,users,
 /dev/sdb6: UUID=&quot;2ef32215-d545-4e12-bc00-d0099a218970&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;2853e345-06&quot;</code></pre>
 <p>Wir können erkennen, dass die in der <em>fstab</em> als letzter Eintrag enthaltene, nach <em>/mnt/TEST_res</em> eingehängte Partition in der <em>blkid</em>-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch <em>/mnt/TEST_res</em> und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.</p>
 <warning>
-Wenn die UUID’s für die Partitionen von <strong>/</strong> (root), <strong>/home</strong> und <strong>swap</strong> nicht mit den Einträgen in der <strong>/etc/fstab</strong> übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
+Wenn die UUID für die Partitionen von <strong>/</strong> (root), <strong>/home</strong> und <strong>swap</strong> nicht mit dem jeweiligen Eintrag in der <strong>/etc/fstab</strong> übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
 </warning>
 <h3 id="ntfs-partitionsgrößen-mit-gparted-ändern">NTFS-Partitionsgrößen mit GParted ändern</h3>
 <p><strong>Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.</strong></p>
@@ -171,7 +171,7 @@ Wenn die UUID’s für die Partitionen von <strong>/</strong> (root), <strong>/h
 <li>Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!</li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2021-07-21
+Zuletzt bearbeitet: 2021-11-28
 </div>
 </body>
 </html>

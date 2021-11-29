@@ -47,7 +47,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit <strong>systemd.path</strong>, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.</p>
 <p>Die “<em>.path-Unit</em>” ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.<br />
-Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die “<em>.path-Unit</em>” ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Datein angegeben werden.<br />
+Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die “<em>.path-Unit</em>” ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Dateien angegeben werden.<br />
 Die Pfad-spezifischen Optionen werden in dem Abschnitt <em>[Path]</em> konfiguriert.</p>
 <h3 id="benötigte-dateien">Benötigte Dateien</h3>
 <p>Die <strong>systemd-path</strong>-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung im Verzeichnis <em>/usr/local/lib/systemd/system/</em>. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
@@ -143,10 +143,10 @@ ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/
 [Install]
 WantedBy=multi-user.target</code></pre>
 <p>Anmerkung:<br />
-Interressant ist, dass systemd intern das inotify-API für <em>.path-Unit</em> verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.</p>
+Interessant ist, dass systemd intern das inotify-API für <em>.path-Unit</em> verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.</p>
 <p><strong>Erklärungen</strong><br />
 Die Sektion [Unit]:<br />
-“<em>Before=</em>” und “<em>Wants=</em>” sind die entsprechenden Korrellationen zu “<em>BindsTo=</em>” und “<em>After=</em>” aus der <em>server1.service-Unit</em>.</p>
+“<em>Before=</em>” und “<em>Wants=</em>” sind die entsprechenden Korrelationen zu “<em>BindsTo=</em>” und “<em>After=</em>” aus der <em>server1.service-Unit</em>.</p>
 <p>Sektion [Service]:<br />
 <em>inotifywait</em> protokolliert in die Datei <em>/var/www/changed</em>, die außerhalb von <em>DocumentRoot</em> des Apache-Webservers liegt.</p>
 <h3 id="path-unit-eingliedern">path-Unit eingliedern</h3>
@@ -210,7 +210,7 @@ Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.<
 <p>Ein anders gelagertes Beispiel:<br />
 <a href="https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html">PRO-LINUX.DE, Systemd Path Units…</a></p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-06-30
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>

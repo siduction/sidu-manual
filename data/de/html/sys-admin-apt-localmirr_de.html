@@ -49,7 +49,7 @@ Die zur Installation von einem Computer bei dem Cache angeforderten Pakete müss
 </ul>
 <p><strong>Apt-Cacher Setup</strong></p>
 <p>Das Setup für <em>Apt-Cacher</em> erfolgt in zwei Schritten.<br />
-Als Erstes wird <em>Apt-Cacher</em> auf dem als APT-Proxy-Server ausgewählten PC installiert und anschließend konfiguriert man alle Client-PC’s so, dass sie den APT-Proxy-Server benutzen.</p>
+Als Erstes wird <em>Apt-Cacher</em> auf dem als APT-Proxy-Server ausgewählten PC installiert und anschließend konfiguriert man alle Client-PCs so, dass sie den APT-Proxy-Server benutzen.</p>
 <h3 id="server-installieren">Server installieren</h3>
 <p>Nach einem “<em>apt update</em>” werden die notwendigen Pakete mit folgendem Befehl installiert:</p>
 <pre><code># apt install apt-cacher
@@ -77,8 +77,8 @@ und die Konfigurationsdateien in<br />
 <p>Wir wechseln in das Verzeichnis <em>/etc/apt-cacher/</em> und bearbeiten die Datei “<em>apt-cacher.conf</em>”.</p>
 <pre><code># cd /etc/apt-cacher
 /etc/apt-cacher# mcedit apt-cacher.conf</code></pre>
-<p>Jetzt suchen wir etwa bei Zeile 160 die Direktive “<em>allowed_hosts</em>”. Das Konnentarzeichen (<strong>#</strong>) am Anfang der Zeile wird entfernt, damit die Clients den APT-Proxy-Server kontaktieren dürfen.<br />
-Aus Sicherheitsgründen ersetzen wir das Platzhalterzeichen (<strong>*</strong>). das allen den Zugriff erlaubt, durch die IP-Adressen der Clients.</p>
+<p>Jetzt suchen wir etwa bei Zeile 160 die Direktive “<em>allowed_hosts</em>”. Das Kommentarzeichen (<strong>#</strong>) am Anfang der Zeile wird entfernt, damit die Clients den APT-Proxy-Server kontaktieren dürfen.<br />
+Aus Sicherheitsgründen ersetzen wir das Platzhalterzeichen (<strong>*</strong>), das allen den Zugriff erlaubt, durch die IP-Adressen der Clients.</p>
 <pre><code>#allowed_hosts = *</code></pre>
 <p>beispielsweise ändern in</p>
 <pre><code>allowed_hosts = &#39;192.168.3.10-20&#39;</code></pre>
@@ -97,7 +97,7 @@ Wir überprüfen ob er aktiv ist und auf Port 3142 lauscht.</p>
 <pre><code># ss -tl | grep 3142
 LISTEN 0      4096         0.0.0.0:3142        0.0.0.0:</code></pre>
 <p>Bei dieser Ausgabe ist alles in Ordnung.</p>
-<p><strong>Import vorhandener .deb’s</strong></p>
+<p><strong>Import vorhandener .deb Pakete</strong></p>
 <p><strong>Apt-Cacher</strong> verfügt jetzt über ein Importscript, das auf dem PC bereits vorhandene Debian Archive importiert. Es erspart den nochmaligen Download der Pakete. Dem Aufruf geben wir das vorhandene Archivverzeichnis mit:</p>
 <pre><code># /usr/share/apt-cacher/apt-cacher-import.pl  /var/cache/apt/archives/</code></pre>
 <p>Mit “<em>-h</em>” aufgerufen erhalten wir Benutzungshinweise und eine Auflistung aller Optionen.</p>
@@ -112,7 +112,7 @@ Die Verwendung von “https” ist zwar möglich, aber zum Einen mit einigem Kon
 <p>sollte ohne Fehlermeldungen durchlaufen.<br />
 Der erste Aufruf von <strong><code># apt full-upgrade</code></strong> auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu benötigen</p>
 <div id="rev">
-Seite zuletzt aktualisert 2021-07-22
+Seite zuletzt aktualisiert 2021-11-29
 </div>
 </body>
 </html>
