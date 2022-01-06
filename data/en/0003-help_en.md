@@ -27,7 +27,7 @@ The siduction forum offers the possibility to ask questions and get answers to t
 
 The siduction wiki is freely usable and modifiable by all siduction users. In this way, we hope that the siduction documentation will grow with the project over time.
 
-We hope for contributions from Linux users of all experience levels, as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps oneself) hours of searching for solutions to problems. [Link to siduction wiki](https://wiki.siduction.org) .
+We hope for contributions from Linux users of all experience levels, as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps oneself) hours of searching for solutions to problems. [Link to siduction wiki](https://forum.siduction.org/index.php?board=66.0)
 
 ### IRC - interactive live support. 
 
@@ -51,43 +51,6 @@ If you prefer another chat client, you need to enter these server details:
   ~~~
 
 + [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en) : enter a free nickname and enter the channel #siduction-en.
-
-### siduction-paste
-
-siduction-paste allows you to paste files from the terminal or TTY. This is ideal if you are in runlevel 3 (without a graphics server) with problems. siduction-paste uses `http://paste.siduction.org` as a link, and the output is available for 24 hours.
-
-You can use siduction-paste both as user and as root. However, some commands or system queries require root access.
-
-~~~
-$ siduction-paste command|file
-or
-$ command | siduction-paste
-~~~
-
-**example for siduction-paste \<file\>;**
-
-~~~
-$ siduction-paste /etc/fstab
-Your paste can be seen here: http://paste.siduction.org/xyz.html
-~~~
-
-The link `http://paste.siduction.org/xyz.html` must be entered in the IRC channel #siduction-en afterwards.
-
-**Example for command | siduction-paste**
-
-~~~
-$ fdisk -l | siduction-paste
-Your paste can be seen here:http://siduction.paste.org/yzx.html
-~~~
-
-You can also use siduction-paste to take screenshots and upload them at the same time
-
-~~~
-$ siduction-paste -s
-~~~
-
-Now you have a few seconds to navigate to the object you want to capture. Please remember that this function requires *scrot* to be installed.  
-Again, the link `http://siduction.paste.org/yzx.html` must be entered in the IRC channel #siduction-en afterwards.
 
 ### Useful helpers in text mode
 
