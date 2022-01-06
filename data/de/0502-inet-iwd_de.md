@@ -175,7 +175,7 @@ EnableNetworkConfiguration=true
 NameResolvingService=systemd
 ~~~
 
-Jetzt ist man in der Lage, sich im Terminal mit den oben beschriebenen Befehlen [**nmtui**, **nmcli** oder **iwctl**](0502-inet-iwd_de.md#konfiguration-im-terminal) WiFi Hardware anzuzeigen zu lassen, sie zu konfigurieren und sich mit einem Netzwerk zu verbinden.  
+Jetzt ist man in der Lage, sich im Terminal mit den oben beschriebenen Befehlen [**nmtui**, **nmcli** oder **iwctl**](0502-inet-iwd_de.md#konfiguration-im-terminal) WiFi Hardware anzeigen zu lassen, sie zu konfigurieren und sich mit einem Netzwerk zu verbinden.  
 Oder man benutzt den NetworkManager in der graphischen Oberfläche. Siehe: [Grafische Konfigurationsprogramme](0502-inet-iwd_de.md#grafische-konfigurationsprogramme)
 
 ### Zurück zum wpa_supplicant
