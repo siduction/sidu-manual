@@ -161,7 +161,7 @@ Schauen ob es geklappt hat
 ~~~txt
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
-WiFi.backend=iwd
+wiFi.backend=iwd
 ~~~~
 
 + /etc/iwd/main.conf
