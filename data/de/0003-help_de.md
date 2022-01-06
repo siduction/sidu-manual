@@ -12,7 +12,7 @@ Das siduction-Forum bietet die Möglichkeit Fragen zu stellen und Antworten auf 
 
 Das siduction-Wiki ist von allen siduction-Nutzern frei nutz- und veränderbar. Wir hoffen so, dass die siduction-Dokumentation im Laufe der Zeit mit dem Projekt wachsen wird.
 
-Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki beabsichtigt, Nutzern jeden Kenntnisstandes zu helfen. Die wenigen Minuten, die dem Wiki und Projekt "geopfert" werden, können anderen Nutzern (und vielleicht einem selbst) Stunden des Suchens nach Problemlösungen ersparen. [Link zum siduction-Wiki](https://wiki.siduction.de/index.php?title=Hauptseite) .
+Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki beabsichtigt, Nutzern jeden Kenntnisstandes zu helfen. Die wenigen Minuten, die dem Wiki und Projekt "geopfert" werden, können anderen Nutzern (und vielleicht einem selbst) Stunden des Suchens nach Problemlösungen ersparen. [Link zum siduction-Wiki](https://forum.siduction.org/index.php?board=66.0) .
 
 ### IRC - interaktiver Livesupport 
 
@@ -36,44 +36,6 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
   ~~~
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
-
-
-### siduction-paste
-
-siduction-paste ermöglicht das Einfügen von Dateien aus dem Terminal oder TTY. Dies ist ideal, wenn man sich mit Problemen in Runlevel 3 (ohne Grafikserver) befindet. siduction-paste nutzt http://paste.siduction.org als Link, und die Ausgabe ist 24 Stunden lang verfügbar.
-
-Man kann sowohl als user wie auch als root siduction-paste verwenden. Einige Befehle oder Systemabfragen  jedoch benötigen den root-Zugang.
-
-~~~
-$ siduction-paste command|file
-oder
-$ command | siduction-paste
-~~~
-
-**Beispiel für siduction-paste \<file\>;**
-
-~~~
-$ siduction-paste /etc/fstab
-Your paste can be seen here: http://paste.siduction.org/xyz.html
-~~~
-
-Der Link <http://paste.siduction.org/xyz.html>  muss danach im IRC-Channel #siduction-de eingegeben werden.
-
-**Beispiel für command | siduction-paste**
-
-~~~
-$ fdisk -l | siduction-paste
-Your paste can be seen here:http://siduction.paste.org/yzx.html
-~~~
-
-Man kann per siduction-paste auch screenshots machen und gleichzeitig hochladen
-
-~~~
-$ siduction-paste -s
-~~~
-
-Jetzt bleiben einige Sekunden Zeit, um zum abzulichtenden Objekt zu navigieren. Bitte denkt daran, dass diese Funktion die Installation von  *scrot*  voraussetzt.  
-Auch hier muss danach der Link <http://siduction.paste.org/yzx.html> im IRC-Channel #siduction-de eingegeben werden.
 
 ### Nützliche Helfer im Textmodus
 
@@ -275,4 +237,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
+<div id="rev">Zuletzt bearbeitet: 2022-01-06</div>
