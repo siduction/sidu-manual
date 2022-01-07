@@ -55,7 +55,7 @@ Now just run the following commands as root in the terminal to use iwd:
 ~# systemctl mask wpa_supplicant.service
 ~# systemctl stop NetworkManager.service
 ~# touch /etc/NetworkManager/conf.d/nm.conf
-~# echo -e '[device]\nWiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
+~# echo -e '[device]\nwiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
 ~# touch /etc/iwd/main.conf
 ~# echo -e '[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd' > /etc/iwd/main.conf
 ~# systemctl enable -now iwd.service
@@ -69,7 +69,7 @@ See if it worked
 ~~~sh
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
-WiFi.backend=iwd
+wiFi.backend=iwd
 ~~~
 
 + /etc/iwd/main.conf
