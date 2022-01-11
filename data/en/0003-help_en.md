@@ -1,48 +1,34 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links (there was'nt any)  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % The siduction help
 
 ## siduction help
 
-Quick help can save you a lot of tears and gives you the opportunity to continue doing what is really important in life. This topic is organized by areas where the distribution siduction offers help:
+Quick help can save you a lot of tears and gives you the opportunity to work on the important things in life. This section is organized by areas where the siduction distribution offers help.
 
 ### The siduction forum
 
-The siduction forum offers the possibility to ask questions and get answers to them. Before making a new post, use the forum search, as there is a good chance that this or a similar question has been asked before. [The forum](https://forum.siduction.org/index.php?name=PNphpBB2) is available in English and German.
+The siduction forum offers the possibility to ask questions and get answers to them. Before creating a new post, use the forum search, as there is a good chance that this or a similar question
+has been asked before. [The forum](https://forum.siduction.org/index.php?name=PNphpBB2) is available in English and German.
 
 ### The siduction wiki
 
-The siduction wiki is freely usable and modifiable by all siduction users. In this way, we hope that the siduction documentation will grow with the project over time.
+The siduction wiki is freely usable and modifiable by all siduction users. We hope that this way the siduction documentation will grow with the project over time.
 
-We hope for contributions from Linux users of all experience levels, as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps oneself) hours of searching for solutions to problems. [Link to siduction wiki](https://forum.siduction.org/index.php?board=66.0)
+We hope for contributions from Linux users of all experience levels as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps yourself) hours of dealing with problems. [Link to siduction wiki](https://forum.siduction.org/index.php?board=66.0)
 
 ### IRC - interactive live support. 
 
-**The IRC should never be entered as "root", but only as a normal user.**  
-If you are unclear, please announce this immediately in the IRC channel so that help can be given.
+**The IRC should never be entered as "root" but only as a normal user.**  
+If you are unsure, please announce this immediately in the IRC channel so that help can be given.
 
 **Rules of conduct in IRC**
 
-* A friendly tone is obligatory, because we all do the support on a voluntary basis.
-* It is helpful to make a request that is accurate to the best of your knowledge, and to search for solutions in the siduction wiki beforehand if possible.
-* Please never post a request in IRC and Forum at the same time. At best, we rub our eyes in wonder.
+* A friendly tone is obligatory because we all do the support on a voluntary basis.
+* It is helpful to make a request that is accurate to the best of your knowledge and to search for solutions in the siduction wiki beforehand if possible.
+* Please never post a request in IRC and Forum at the same time. At best, we rub our eyes in amazement.
 
-**reach siduction**
+**Reach siduction**
 
-+ Just click on the **"IRC Chat #siduction" icon** on the desktop or use the kmenu entry of koversation.  
++ Just click on the **"IRC Chat #siduction" icon** on the desktop or use the kmenu entry of konversation.  
 If you prefer another chat client, you need to enter these server details:
 
   ~~~
@@ -50,15 +36,15 @@ If you prefer another chat client, you need to enter these server details:
   port 6667
   ~~~
 
-+ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en) : enter a free nickname and enter the channel #siduction-en.
++ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en) : enter a free nickname and join the channel #siduction-en.
 
 ### Useful helpers in text mode
 
-Normally one uses the text mode runlevel 3 (init 3 or journalctl isolate multi-user.target) if one wants to perform a dist-upgrade, or forced if the system has a serious error.
+Normally, one uses text mode runlevel 3 (init 3 or journalctl isolate multi-user.target) if they want to perform a dist-upgrade or if they are forced to beceause of a serious system error.
 
 **gpm**
 
- is a useful program in text mode. It allows you to use the mouse to copy and paste in the terminal.
+ is a useful program in text mode. It allows you to use the mouse for copying and pasting in the terminal.
 
 *gpm* is preconfigured in siduction. In case it is not:
 
@@ -66,13 +52,13 @@ Normally one uses the text mode runlevel 3 (init 3 or journalctl isolate multi-u
 $ gpm -t imps2 -m /dev/input/mice
 ~~~
 
-After that you should check if the service is active:
+After that, you should check if the service is active:
 
 ~~~
 $ systemctl status gpm.service
 ~~~
 
-If successful, you will also find a line similar to the following in the output.
+If successful, you will also find a line similar to the following in the output:
 
 ~~~
   Active: active (running) since Thu 2020-04-09 12:17:14 CEST; 5min ago
@@ -82,10 +68,10 @@ Now you should be able to use your mouse in text mode (tty).
 
 **File manager and text editing**
 
-Midnight Commander is an easy to use text mode (tty) file manager and text editor. It comes with siduction.  
+Midnight Commander is an easy to use text mode (tty) file manager and text editor preinstalled in siduction.  
 Apart from normal keyboard input, the mouse can also be used due to gpm.  
-**mc** shows the file system and with **mcedit** an existing file can be edited or a new file can be created.  
-This is how to open an existing file (first a backup copy is created):
+**mc** shows the file system, and with **mcedit** you can edit an existing file or create a new one.  
+This is how to open an existing file (a backup copy is created first):
 
 ~~~
 $ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(date +%F)
@@ -105,21 +91,21 @@ $ man mc
 
 ### siduction IRC support in text mode
 
-**Rule of conduct in IRC**
+**Rules of conduct in IRC**
 
- **The IRC should never be entered as "root", but only as a normal user.**  
- If you are unclear, please announce this immediately in the IRC channel, so that help can be given.
+ **The IRC should never be entered as "root" but only as a normal user.**  
+ If you are unsure, please announce this immediately in the IRC channel so that help can be given.
 
 **IRC in text mode**
 
 The program *irssi* provides an IRC client in text mode or console and is activated in siduction.  
-With the key combination `CTRL`+`ALT`+`F2` or `F3` etc. you can switch from one terminal/TTY to another and log in with your user account:
+With the key combination `CTRL`+`ALT`+`F2` or `F3` etc., you can switch from one terminal/TTY to another and log in with your user account:
 
 ~~~
 $ siductionbox login: <username> <password> (not as root)
 ~~~
 
-after that you enter
+After that you enter
 
 ~~~
 $ siduction-irc
@@ -127,8 +113,8 @@ $ siduction-irc
 
 to start *irssi*.
 
-Instructions if you want to use a different client (weechat in the example):  
-First make sure that WeeChat is installed by looking for the entry of weechat in the menu. If this is not available:
+Instructions for using a different client (weechat in the example):  
+First, make sure that WeeChat is installed by looking for the weechat entry in the menu. If this is not available:
 
 ~~~
 # apt update
@@ -139,7 +125,7 @@ First make sure that WeeChat is installed by looking for the entry of weechat in
 $ weechat-curses
 ~~~
 
-Now you can connect to irc.oftc.net on port 6667. After successful connection the pseudonym (the "nickname") will be changed:
+Now you can connect to irc.oftc.net on port 6667. After successful connection, the pseudonym (the "nickname") will be changed:
 
 **/nick 'Your_new_nick'**.
 
@@ -151,16 +137,16 @@ If you want to change the server, enter a command with the following syntax:
 
 **/server server.name**
 
-In the bottom menu you can see numbers if the channels are active, and to connect to a channel you can use ALT-1, ALT-2, ALT-3, ALT-4 and so on.
+In the bottom menu, you can see numbers if the channels are active. In order to connect to a channel, you can use `ALT`+`1`, `ALT`+`2`, `ALT`+`3`, `ALT`+`4` and so on.
 
 To exit a channel use
 
 **/exit**
 
-If a dist-upgrade is performed at the same time, you can switch to the terminal to monitor the progress of the upgrade as follows:
+If a dist-upgrade is performed at the same time, you can switch to the terminal to monitor the upgrade progress as follows:
 
 key combination `CTRL`+`ALT`+`F1`  
-and to return to the IRC you can use the  
+and to return to the IRC, you can use the  
 key combination `CTRL`+`ALT`+`F2`
 
 The following links provide more information.  
@@ -169,8 +155,8 @@ The following links provide more information.
 
 ### Surfing the Internet in text mode
 
-The command line browser w3m allows to surf the internet in a terminal or console or in text mode.  
-If w3m or elinks are not installed, proceed as follows:
+The command line browser **w3m** allows you to surf the internet in a terminal, console or in text mode.  
+If neither w3m nor elinks are installed, proceed as follows:
 
 ~~~
 # apt update
@@ -178,7 +164,7 @@ If w3m or elinks are not installed, proceed as follows:
 # apt install elinks
 ~~~
 
-Now you can use the command line browser w3m. For this it is useful to switch to another terminal and log in with your user account:
+Now you can use the command line browser w3m. For this purpose, it is useful to switch to another terminal and log in with your user account:
 
 key combination `CTRL`+`ALT`+`F2`
 
@@ -193,48 +179,46 @@ Example: `https://siduction.org` is called like this (https:// is omitted):
 $ w3m siduction.org
 ~~~
 
-A new URL is called using the key combination Shift+U:
+A new URL is called using the key combination `Shift`+`U`.
 
-`SHIFT`+`U`
-
-After that you will see a line like `Goto URL: https://siduction.org`. With the backspace key one deletes the last selected URL and enters the desired one.  
+After that, you will see a line like `Goto URL: https://siduction.org`. With the backspace key you delete the last selected URL and enter the desired one.  
 Exit w3m with:
 
 `SHIFT`+`Q`
 
 More information can be found on the [documentation page of w3m](http://w3m.sourceforge.net/). 
 
-It is advisable to familiarize yourself with **elinks/w3m, irssi/weechat, midnight commander** before an emergency. Print this file to have the information handy in case of an emergency.
+It is advisable to familiarize yourself with **elinks/w3m, irssi/weechat, midnight commander**. Print this file to have the information handy in case of an emergency.
 
 ### inxi
 
-Inxi is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Or run in a console, you can get information about your own system yourself.
+Inxi is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Alternatively, run it in a console to get information about your own system yourself.
 
-To use inxi in conversation, type this in the chat box:
+To use inxi in Konversation, type this into the chat box:
 
 **/cmd inxi -v2**
 
-To use inxi in weechat, enter this in the chat box:
+To use inxi in weechat, enter this into the chat box:
 
 **/shell -o inxi -v2**
 
-Assuming you have the shell extension installed.
+This requires the shell extension to be installed.
 
 See: [https://www.weechat.org/scripts/](https://www.weechat.org/scripts/) 
 
-To use inxi in other clients, type this in the chat box:
+To use inxi in other clients, type this into the chat box:
 
 **/exec -o inxi -v2**  
 or  
 **/inxi -v2**
 
-In a console, type the following command:
+Type the following command into a console:
 
 ~~~
 $ inxi -v2
 ~~~
 
-Help for inxi
+Help for inxi:
 
 ~~~
 $ inxi --help
@@ -243,9 +227,9 @@ $ inxi --help
 ### Useful links
 
 [Debian reference card - to print on a single sheet](https://www.debian.org/doc/manuals/refcard/refcard.en.pdf)  
-[HOWTOs from the Debian site](https://www.debian.org/doc/#howtos) (is automatically in your language if browser is localized)  
-[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.en.php) documents available as HTML, text, PDF and PS  
-[Common Unix Printing System CUPS](https://www.cups.org/) . In KDE, the KDE Help Center provides information about CUPS.  
-[LibreOffice](https://libreoffice.org/) There are many offerings in the "Help" menu.
+[HOWTOs from the Debian site](https://www.debian.org/doc/#howtos) (automatically in your language if browser is localized)  
+[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.en.php) (documents available as HTML, text, PDF and PS)  
+[Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
+[LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
 <div id="rev">Last edited: 2021/26/08</div>

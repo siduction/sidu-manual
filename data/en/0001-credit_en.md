@@ -1,23 +1,10 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links (there was'nt any)  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % The siduction team
 
 ## The siduction team
 
-Alphabetically sorted by family name or pseudonym list of maintainers and authors, who are committed to the development, maintenance and support of **siduction**.
+<!--Alphabetically sorted by family name or pseudonym list of maintainers and authors, who are committed to the development, maintenance and support of **siduction**. -->
+
+List of maintainers and authors committed to development, maintenance and support of **siduction**, sorted alphabetically by surname or pseudonym.
 
 You can reach the siduction team via this [contact form](https://forum.siduction.org/index.php?action=contact).
 
@@ -50,7 +37,7 @@ We **need** contributors for siduction release art!
 
 + Markus Meyer (coruja)
 
-+ A.Konrad (akli) (for his work on getting the manual back in shape)
++ A.Konrad (akli) (for his work on getting the manual back into shape)
 
 + Stefan Tell (cryptosteve)
 
