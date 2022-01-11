@@ -1,72 +1,57 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % Content of the live ISO
 
 ## Contents of the Live-ISO
 
 ### Note about the software on the Live-ISO
 
-siduction provides DFSG-free software on the Live-ISO as well as non-free firmware. To uninstall proprietary software use the command **`apt purge $(vrms -s)`** or our script **`remove-nonfree`** after installation.
+siduction provides DFSG-free software on the Live-ISO as well as non-free firmware. To uninstall proprietary software, use the command **`apt purge $(vrms -s)`** or our script **`remove-nonfree`** after installation.
 
-The ISO is based exclusively on the latest Debian Sid at the time of release, enriched and stabilized with custom packages and scripts from the siduction repositories. The kernel is the latest vanilla mainline kernel and is patched. ACPI and DMA are enabled.
+The ISO is based exclusively on the latest Debian Sid at the time of release, enriched and stabilized with custom packages and scripts from the siduction repositories. The used kernel is a patched version of the latest vanilla mainline kernel. ACPI and DMA are enabled.
 
-A complete manifest file listing all installed programs for each release variant of siduction can be found on each download mirror.
+A complete manifest file with a list of all installed programs for each release variant of siduction can be found on each download mirror.
 
 ### Variants of the ISO
 
-siduction offers seven current images with different desktop environments (two also without) in 64-bit as live ISO to get started with Debian Sid. Typically, an installation takes between 1 and 10 minutes, depending on the hardware.  
-The variants are:
+siduction offers seven current images in 64-bit as live ISO to get started with Debian Sid. Five of the images come with a preinstalled desktop environment. Typically, an installation takes between 1 and 10 minutes, depending on the hardware.  
+The alternatives are:
 
-1. **KDE 64 bit** , live-ISO with about 2.8 GByte:
-    - Qt based Plasma Desktop and KDE frameworks. With a representative selection of KDE Applications.  
-    - Installation of additional applications is possible without problems via apt.
+1. **KDE Plasma 64-bit** , live-ISO with about 2.8 GByte:
+    - Qt based Plasma Desktop and KDE frameworks; with a representative selection of KDE Applications  
+    - installation of additional applications easily possible via apt  
 
-2. **Cinnamon with 64 bit** , live ISO with about 2.3 GByte:
-     - GTK-based desktop with a representative selection of useful software.  
-     - Installing additional applications is possible without problems via apt.
+2. **Cinnamon 64-bit** , live ISO with about 2.3 GByte:
+     - GTK-based desktop with a representative selection of useful software  
+     - installation of additional applications easily possible via apt  
 
-3. **XFCE 64 Bit** , live-ISO with about 2.3 GByte:
-    - Includes a GTK based desktop environment with all features (no minimal version!) and all applications to be productive right away.  
-    - The resource requirements are lower than with KDE.  
-    - The installation of additional applications is possible without problems via apt.
+3. **Xfce 64-bit** , live-ISO with about 2.3 GByte:
+    - includes a GTK based desktop environment with all features (no minimal version!) and all productivity applications right away  
+    - resource requirements lower than for KDE  
+    - installation of additional applications easily possible via apt  
 
-4. **LXQt with 64 bit** , live ISO with about 2.2 GByte:
-     - Includes a desktop environment with a selection of Qt applications.  
-     - The footprint is somewhat narrower than XFCE.
-     - Installation of additional applications is possible without problems via apt.
+4. **LXQt 64-bit** , live ISO with about 2.2 GByte:
+     - includes desktop environment with a selection of Qt applications  
+     - footprint somewhat smaller than with Xfce  
+     - installation of additional applications easily possible via apt  
 
-5. **LXde with 64 bit** , live ISO with about 2.2 GByte:
-     - Includes a desktop environment with a selection of GTK applications.  
-     - The footprint is narrower than with XFCE
-     - suitable for older hardware
-     - Installation of additional applications is possible without problems via apt.
+5. **LXDE 64-bit** , live ISO with about 2.2 GByte:
+     - includes desktop environment with a selection of GTK applications  
+     - footprint smaller than with Xfce  
+     - suitable for older hardware  
+     - installation of additional applications easily possible via apt  
 
-6. **Xorg with 64 bit** , live ISO with about 1.8 GByte:
-      - An ISO image with an Xorg stack and the spartan window manager Fluxbox.  
-      - For users who want to build their system according to their own ideas
+6. **Xorg 64-bit** , live ISO with about 1.8 GByte:
+      - ISO image with an Xorg stack and the spartan window manager Fluxbox  
+      - for users who want to build their system according to their own ideas  
 
-7. **NoX with 64 bit** , live ISO with about 800 MByte: 
-      - As the name implies, no pre-installed Xorg stack.
+7. **NoX 64-bit** , live ISO with about 800 MByte: 
+      - as the name implies, no pre-installed Xorg stack  
 
-**32 bit ISO's** we no longer offer by default.  
-If a 32bit IOS is desired, we will gladly create one on request in IRC. Unfortunately we cannot test such an ISO.
+**32-bit ISO's** are no longer offered by default.  
+If a 32bit ISO is desired, we will gladly create one on request in IRC. Unfortunately, we cannot test such an ISO.
 
 ### Minimum system requirements
 
-for: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg and NoX
+for: KDE-Plasma, Mate, Xfce, LXQt, LXDE, Cinnamon, Xorg, and NoX
 
 #### Processor requirements: 64Bit CPU
 
@@ -74,41 +59,41 @@ for: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg and NoX
     Intel Core2  
     Intel Atom 330  
     any x86-64/ EM64T capable CPU or newer  
-    newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs  
-    (look for the "lm" flag in /proc/cpuinfo or use inxi -v3).
+    newer 64-bit capable AMD Sempron or Intel Pentium 4 CPUs  
+    (look for the "lm" flag in /proc/cpuinfo or use inxi -v3)
 
 #### Memory requirements
 
-    KDE plasma: ≥ 4 GByte RAM
+    KDE Plasma: ≥ 4 GByte RAM
     Mate:       ≥ 4 GByte RAM
     Cinnamon: ≥ 4 GByte RAM
-    XFCE: ≥ 4 GByte RAM
-    LXQT: ≥ 512 MByte RAM
-    Lxde ≥ 512 MByte RAM
+    Xfce: ≥ 4 GByte RAM
+    LXQt: ≥ 512 MByte RAM
+    LXDE ≥ 512 MByte RAM
     Xorg: ≥ 512 MByte RAM
     NoX: ≥ 256 MByte RAM
 
-    ≥ 5 GByte hard disk space for NOX
-    ≥10 GBytes of disk space for all others.
+    ≥ 5 GByte hard disk space for NoX
+    ≥10 GByte of disk space for all the others
 
 #### Other
 
-    VGA graphics card with at least 640x480 pixel resolution.
-    Optical drive or USB media.
+    VGA graphics card with at least 640x480 pixel resolution  
+    optical drive or USB media
 
 ### Applications and utilities
 
-As an Internet browser, [Firefox](https://mozilla.org), or [Chromium](https://chromium.woolyss.com/download/de/#linux) are included (depending on the variant).
+As web browser, [Firefox](https://mozilla.org) or [Chromium](https://chromium.woolyss.com/download/de/#linux) is included (depending on the variant).
 
-Libreoffice is pre-installed as office software. Dolphin, Thunar and PCManFM are available as file managers.
+LibreOffice is pre-installed as office software. Dolphin, Thunar and PCManFM are available as file managers.
 
-Connman or Network Manager is available for network and Internet configuration.
+Connman or Network Manager is available for network and internet configuration.
 
-Xorg and nox are delivered with [IWD](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) as, this can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool) or [iwctl](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant). 
+Xorg and NoX are delivered with [IWD](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) as wireless daemon. It can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool) or [iwctl](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant). 
 
-For partitioning disks, [cfdisk](./0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](./0313-part-gdisk_en.md#partitioning-with-gdisk) and [GParted](./0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
+For disk partitioning, [cfdisk](./0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](./0313-part-gdisk_en.md#partitioning-with-gdisk) and [GParted](./0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
 
-System analysis tools such as [Memtest86+](http://www.memtest.org/) (a tool for comprehensive memory analysis) are also included.
+System analysis tools such as [Memtest86+](http://www.memtest.org/) (a tool for comprehensive memory analysis) are included, too.
 
 Each ISO variant contains an extensive selection of applications for the command line. A complete manifest file with the installed programs for each release variant of siduction can be found on each download mirror.
 
