@@ -83,4 +83,4 @@ We **need** contributors for siduction release art!
 
 **We would like to thank everyone who has contributed and continues to contribute to siduction as well as the original creators and translators of the bluewater-manual**.
 
-<div id="rev">Last edited: 2021/24/08</div>
+<div id="rev">Last edited: 2022/01/12</div>

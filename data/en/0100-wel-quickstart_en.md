@@ -127,4 +127,4 @@ Help is always available in IRC or in the siduction forum.
 
 + [With this link you can call the IRC immediately in your browser](https://webchat.oftc.net/) : enter a freely chosen nickname and join the channel #siduction-en.
 
-<div id="rev">Last edited: 2021/24/08</div>
+<div id="rev">Last edited: 2022/01/12</div>

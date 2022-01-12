@@ -1,45 +1,30 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links (there was'nt any)  
-+ check extern links (there was'nt any)  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % Burn DVD without GUI
 
 ## Burn DVD without GUI
 
 > **IMPORTANT INFORMATION:**  
-> siduction, as a Linux LIVE DVD/CD, is very heavily compressed. For this reason, special attention must be paid to the burning method of the ISO image. We recommend high quality CD media (or DVD+R), burning in DAO mode (disk-at-once) and not faster than eight times (8x).
+> siduction, as a Linux LIVE DVD/CD, is heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (Disk-At-Once) and not faster than eight times (8x).
 
 
 ### burniso
 
 You don't necessarily need a graphical user interface (GUI) to burn a CD/DVD.  
 Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim or cdrdao.  
-siduction provides a script called "burniso" to burn the siduction ISO.  
-burniso burns ISO image files using wodim in disk-at-once mode with a fixed burning speed of 8x.
+siduction provides a script called "burniso".  
+It burns ISO image files, using wodim in Disk-At-Once mode with a fixed burning speed of 8x. The script can be obtained by entering this command with **root** privileges:
 
 ~~~sh
 # apt-get install siduction-scripts
 ~~~
 
-As $user:
+The burniso script can be used by first entering the directory of the respective ISO and entering the script name (now as $user):
 
 ~~~sh
 $ cd /path/to/ISO
 $ burniso
 ~~~
 
-All ISO image files in the current directory will be offered for selection, and the burning process will start immediately after an ISO file is selected. Therefore, you should make sure that the media to be burned to is already inserted before starting the script.  
+All ISO image files in the current directory will be offered for selection, and the burning process will start immediately after an ISO file has been selected. Therefore, you should make sure that the media to be burned to is already inserted before starting the script.  
 
 ### Available devices
 
@@ -133,7 +118,7 @@ $ cdrdao write --speed 24 --device ATA:1,0,0 --eject filenam.cue
 $ wodim dev=/dev/scd0 driveropts=burnfree,noforcespeed fs=14M speed=8 -dao -eject -overburn -v siduction.iso
 ~~~
 
-If you get an error message about driveropts, it is because burnfree is not possible on some burners. This is solved like this:
+If you get an error message about driveropts, it is because burnfree is cannot be used on some burners. This can be solved like this:
 
 ~~~sh
 $ wodim dev=/dev/scd0 driveropts=noforcespeed fs=14M speed=8 -dao -eject -overburn -v siduction.iso
@@ -151,7 +136,7 @@ $ wodim dev=/dev/scd0 fs=14M speed=8 -dao -eject -overburn -v siduction.iso
 $ genisoimage -o siduction.iso -r -J -l directory
 ~~~
 
-**You can use growisofs to burn a DVD, in the example an ISO file:**
+**You can use growisofs to burn a DVD (an ISO file in the example):**
 
 ~~~sh
 $ growisofs -dvd-compat -Z /dev/dvd=siduction.iso
@@ -172,8 +157,8 @@ $ growisofs -M /dev/dvd -R -J still_one_file and_still_one_file
 **To close a session:**
 
 ~~~sh
-$ growisofs -M /dev/dvd=/dev/zero $
+$ growisofs -M /dev/dvd=/dev/zero
 ~~~~
 
-<div id="rev">Last edited: 2021/26/08</div>
+<div id="rev">Last edited: 2022/12/01</div>
 

@@ -118,4 +118,4 @@ Problems with netbooks or other screen resolutions can be solved by entering **v
 | 64k | 785 | 788 | 791 | 794 | 798 | 
 | 16M | 786 | 789 | 792 | 795 | 
 
-<div id="rev">Last edited: 2021/26/08</div>
+<div id="rev">Last edited: 2022/01/12</div>

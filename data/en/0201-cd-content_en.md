@@ -101,4 +101,4 @@ Each ISO variant contains an extensive selection of applications for the command
 
 siduction is experimental software. Use at your own risk. The siduction project, its developers and team members cannot be held liable under any circumstances for damage to hardware or software, lost data or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.
 
-<div id="rev">Last edited: 2021/24/08</div>
+<div id="rev">Last edited: 2022/01/12</div>
