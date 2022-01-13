@@ -130,7 +130,8 @@ Möchte man iwd ohne NetworkManager nutzen, so muss man sich darüber keine Geda
 
 mitsamt seiner Konfiguration von der Platte putzen.
     
-**Vorgehensweise bei installiertem NetworkManager**
+**Vorgehensweise bei installiertem NetworkManager**  
+**und iwd < 1.21-2**
 
 + als erstes wird **iwd** installiert, 
 + dann der **NetworkManager.service** angehalten,
@@ -154,7 +155,26 @@ Jetzt einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu n
 ~# systemctl start NetworkManager.service
 ~~~
 
-Schauen ob es geklappt hat
+**Vorgehensweise bei installiertem NetworkManager**  
+**und iwd >= 1.21-2**
+
+Ab Version 1.21-2 bringt iwd eine eigene Konfigurationsdatei `/etc/iwd/main.conf` mit. Die Vorgehensweise gleicht der eben genannten mit der Ausnahme, dass wir die Konfigurationsdatei nicht mehr anlegen, sondern in ihr das Kommentarzeichen vor "EnableNetworkConfiguration=true" entfernen.
+
+Bitte die folgenden Befehle als root im Terminal ausführen:
+
+~~~txt
+~# apt update
+~# apt install iwd
+~# systemctl stop NetworkManager.service
+~# systemctl disable --now wpa_supplicant.service
+~# echo -e '[device]\nwifi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
+~# sed -i 's/#EnableNetworkConfiguration=true/EnableNetworkConfiguration=true/' /etc/idw/main.conf
+~# systemctl enable --now iwd.service
+~# systemctl start NetworkManager.service
+~~~
+
+**Schauen ob es geklappt hat**  
+Wir lassen uns die beiden Konfigurationsdateien anzeigen.
 
 + /etc/NetworkManager/conf.d/nm.conf
 

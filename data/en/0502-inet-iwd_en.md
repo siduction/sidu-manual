@@ -143,9 +143,8 @@ If you want to use iwd without NetworkManager, you don't have to worry about tha
 ~# apt purge network-manager wpasupplicant
 ~~~
 
-
-
-**Procedure with NetworkManager installed**
+**Procedure with NetworkManager installed**  
+**and iwd < 1.21-2**
 
 + first **iwd** is installed, 
 + then the **NetworkManager.service** is stopped,
@@ -169,7 +168,26 @@ Now just run the following commands as root in the terminal to use iwd:
 ~# systemctl start NetworkManager.service
 ~~~
 
-See if it worked
+**Procedure with NetworkManager installed**  
+**and iwd >= 1.21-2**
+
+From version 1.21-2 iwd brings its own configuration file `/etc/iwd/main.conf`. The procedure is similar to the one just mentioned with the exception that we do not create the configuration file anymore, but remove the comment sign in front of "EnableNetworkConfiguration=true" in it.
+
+Please execute the following commands as root in the terminal:
+
+~~~txt
+~# apt update
+~# apt install iwd
+~# systemctl stop NetworkManager.service
+~# systemctl disable --now wpa_supplicant.service
+~# echo -e '[device]\nwiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
+~# sed -i 's/#EnableNetworkConfiguration=true/EnableNetworkConfiguration=true/' /etc/idw/main.conf
+~# systemctl enable -now iwd.service
+~# systemctl start NetworkManager.service
+~~~
+
+**See if it worked**  
+We display the two configuration files.
 
 + /etc/NetworkManager/conf.d/nm.conf
 
