@@ -219,4 +219,4 @@ Oder man benutzt den NetworkManager in der graphischen Oberfläche. Siehe: [Graf
 
 Jetzt wird *wpa_supplicant* für die Verbindung mit der WiFi-Hardware benutzt.
 
-<div id="rev">Zuletzt bearbeitet: 2022-01-05</div>
+<div id="rev">Zuletzt bearbeitet: 2022-01-13</div>
