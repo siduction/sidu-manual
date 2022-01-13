@@ -84,4 +84,4 @@ sudo apt install <the-package-you-want>
 
 However, if you shut down the live DVD, no changes will be kept.
 
-<div id="rev">Last edited: 2022/01/12</div>
+<div id="rev">Last edited: 2022/01/13</div>

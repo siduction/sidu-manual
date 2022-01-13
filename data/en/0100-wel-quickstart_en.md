@@ -14,7 +14,7 @@ siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction
 
 + [Partitioning the hard disk](0312-part-gparted_en.md#partitioning-with-gparted) - describes how to partition a hard disk. 
 
-+ [Downloading siduction ISO and burning DVD](0206-cd-dl-burning_en.md#iso-download-and-burn) - describes how to download, check, and burn a siduction ISO to DVD.
++ [Downloading siduction ISO and burning DVD](0206-cd-dl-burning_en.md#downloading-and-burning-the-iso) - describes how to download, check, and burn a siduction ISO to DVD.
 
 + [Installation on a hard disk](0301-hd-install_en.md#installation-on-hdd) - describes how to install siduction onto a hard disk.
 
@@ -127,4 +127,4 @@ Help is always available in IRC or in the siduction forum.
 
 + [With this link you can call the IRC immediately in your browser](https://webchat.oftc.net/) : enter a freely chosen nickname and join the channel #siduction-en.
 
-<div id="rev">Last edited: 2022/01/12</div>
+<div id="rev">Last edited: 2022/01/13</div>
