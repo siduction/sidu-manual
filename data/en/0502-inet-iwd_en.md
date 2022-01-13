@@ -232,4 +232,4 @@ Or you can use the NetworkManager in the graphical user interface. See: [graphic
 
 Now *wpa_supplicant* is used to connect to the WiFi hardware.
 
-<div id="rev">Last edited: 2022/07/01</div>
+<div id="rev">Last edited: 2022/13/01</div>
