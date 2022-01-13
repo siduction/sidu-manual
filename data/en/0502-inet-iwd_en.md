@@ -168,24 +168,6 @@ Now just run the following commands as root in the terminal to use iwd:
 ~# systemctl start NetworkManager.service
 ~~~
 
-**Procedure with NetworkManager installed**  
-**and iwd >= 1.21-2**
-
-From version 1.21-2 iwd brings its own configuration file `/etc/iwd/main.conf`. The procedure is similar to the one just mentioned with the exception that we do not create the configuration file anymore, but remove the comment sign in front of "EnableNetworkConfiguration=true" in it.
-
-Please execute the following commands as root in the terminal:
-
-~~~txt
-~# apt update
-~# apt install iwd
-~# systemctl stop NetworkManager.service
-~# systemctl disable --now wpa_supplicant.service
-~# echo -e '[device]\nwiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
-~# sed -i 's/#EnableNetworkConfiguration=true/EnableNetworkConfiguration=true/' /etc/idw/main.conf
-~# systemctl enable -now iwd.service
-~# systemctl start NetworkManager.service
-~~~
-
 **See if it worked**  
 We display the two configuration files.
 
@@ -206,6 +188,53 @@ EnableNetworkConfiguration=true
 
 [Network]
 NameResolvingService=systemd
+~~~
+
+**Procedure with NetworkManager installed**  
+**and iwd >= 1.21-2**
+
+From version 1.21-2 iwd brings its own configuration file `/etc/iwd/main.conf`. The procedure is similar to the one just mentioned with the exception that we do not create the configuration file anymore, but remove the comment sign in front of "EnableNetworkConfiguration=true" in it.
+
+Please execute the following commands as root in the terminal:
+
+~~~txt
+~# apt update
+~# apt install iwd
+~# systemctl stop NetworkManager.service
+~# systemctl disable --now wpa_supplicant.service
+~# echo -e '[device]\nwiFi.backend=iwd' > /etc/NetworkManager/conf.d/nm.conf
+~# sed -i 's/#EnableNetworkConfiguration=true/EnableNetworkConfiguration=true/' /etc/iwd/main.conf
+~# systemctl enable -now iwd.service
+~# systemctl start NetworkManager.service
+~~~
+
+**See if it worked**  
+We display the two configuration files.
+
++ /etc/NetworkManager/conf.d/nm.conf
+
+~~~txt
+~$ cat /etc/NetworkManager/conf.d/nm.conf
+[device]
+wiFi.backend=iwd
+~~~
+
++ /etc/iwd/main.conf
+
+~~~txt
+~$ cat /etc/iwd/main.conf
+
+[...]
+[General]
+# iwd is capable of performing network configuration on its own, including
+# DHCPv4 based address configuration.  By default this behavior is
+# disabled, and an external service such as NetworkManager, systemd-network
+# or dhcpclient is required.  Uncomment the following line if you want iwd
+# to manage network interface configuration.
+#
+EnableNetworkConfiguration=true
+#
+[...]
 ~~~
 
 Now one is able to display WiFi hardware in the terminal with the above described commands [**nmtui**, **nmcli** or **iwctl**](0502-inet-iwd_en.md#configuration-in-terminal), configure it and connect to a network.  
@@ -232,4 +261,4 @@ Or you can use the NetworkManager in the graphical user interface. See: [graphic
 
 Now *wpa_supplicant* is used to connect to the WiFi hardware.
 
-<div id="rev">Last edited: 2022/07/01</div>
+<div id="rev">Last edited: 2022/13/01</div>
