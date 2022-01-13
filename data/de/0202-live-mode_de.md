@@ -54,7 +54,7 @@ Siehe [warum sudo nicht konfiguriert ist](term-konsole_de.md#arbeit-als-root)
 
 ### Ein neues Passwort setzen
 
-Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F2` auf die zweite virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
+Noch einmal zur Erinnerung: Der Standardbenutzer in der Livesession ist **siducer** mit dem Passwort **live**. Will man das Passwort ändern, so öffnet man ein Terminal und gibt die folgenden Befehle ein:
 
 ~~~
 siducer@siduction:~$ passwd
@@ -65,7 +65,6 @@ siducer@siduction:~$
 ~~~
 
 Dieses neue Passwort für **siducer** kann den Rest der Live-Sitzung verwendet werden.  
-Mit der Tastenkombination `Alt` + `F7` gelangt man wieder zur graphischen Oberfläche und meldet sich mit dem neuen Passwort an.
 
 Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort vergeben, allerdings muss man vorher per su root werden. 
 Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als 'root' möglich.
