@@ -49,7 +49,7 @@ See [why sudo is not configured](0701-term-konsole_en.md#work-as-root).
 
 ### How to set a new password
 
-In case you are locked out on a siduction-*.iso, switch to the second virtual console by pressing `Alt`+`Ctrl`+`F2` and enter the command **su** followed by **passwd siducer**. Otherwise, open a terminal and enter the command **passwd**.
+Remember: The livesession's standard user is **siducer** with the password **live**. If you want to change the password, open a terminal and enter the following commands:
 
 ~~~
 siducer@siduction:~$ passwd
@@ -60,7 +60,6 @@ siducer@siduction:~$
 ~~~
 
 This new password for **siducer** can be used for the rest of the live session.  
-With the key combination `Alt`+`F7` you get back to the graphical user interface and log in with the new password.
 
 The same procedure can be used to set a password for root in any terminal, but you have to become root via **su** first. 
 Afterwards, a login on a virtual console as 'root' is possible.
