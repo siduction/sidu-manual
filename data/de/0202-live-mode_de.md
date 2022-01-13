@@ -54,7 +54,7 @@ Siehe [warum sudo nicht konfiguriert ist](term-konsole_de.md#arbeit-als-root)
 
 ### Ein neues Passwort setzen
 
-Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F1` auf die erste virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
+Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination `Alt` + `Strg` + `F2` auf die zweite virtuelle Konsole und gibt den Befehl **su** und anschließend **passwd siducer** ein.
 
 ~~~
 siducer@siduction:~$ passwd
@@ -89,4 +89,4 @@ sudo apt install <das-gewünschtes-paket>
 
 Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten.
 
-<div id="rev">Zuletzt bearbeitet: 2021-06-30</div>
+<div id="rev">Zuletzt bearbeitet: 2022-01-13</div>

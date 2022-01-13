@@ -101,7 +101,7 @@ $ man mc
 **IRC im Textmodus**
 
 Das Programm *irssi* stellt einen IRC-Client im Textmodus oder der Konsole bereit und ist in siduction aktiviert.  
-Mit der Tastenkombination `CTRL`+`ALT`+`F2` oder `F3` usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
+Mit der Tastenkombination `ALT`+`F2` oder `F3` usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
 
 ~~~
 $ siductionbox login: <username> <password> (nicht als root)
@@ -147,9 +147,9 @@ Einen Channel verlässt man mit
 
 Falls gleichzeitig ein dist-upgrade durchgeführt wird, kann man folgendermaßen das Terminal wechseln, um den Fortschritt des Upgrades zu verfolgen:
 
-Tastenkombination `CTRL`+`ALT`+`F1`  
+Tastenkombination `ALT`+`F3`  
 und zum IRC kommt man zurück mit der  
-Tastenkombination `CTRL`+`ALT`+`F2`
+Tastenkombination `ALT`+`F2`
 
 Die folgenden Link bieten weitere Informationen.  
 [Dokumentationsseite von irssi (Englisch)](https://irssi.org/documentation)  
@@ -169,7 +169,7 @@ Falls w3m oder elinks nicht installiert sind, geht man so vor:
 
 Nun kann man den Kommandozeilenbrowser w3m benutzen. Dazu ist es sinnvoll in ein anderes Terminal zu wechseln und sich mit seinem Useraccount anzumelden:
 
-Tastenkombination `CTRL`+`ALT`+`F2`
+Tastenkombination `ALT`+`F2`
 
 ~~~
 $ siductionbox login: <username> <password> (nicht root!)
@@ -237,4 +237,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2022-01-06</div>
+<div id="rev">Zuletzt bearbeitet: 2022-01-13</div>
