@@ -99,7 +99,7 @@ $ man mc
 **IRC in text mode**
 
 The program *irssi* provides an IRC client in text mode or console and is activated in siduction.  
-With the key combination `CTRL`+`ALT`+`F2` or `F3` etc., you can switch from one terminal/TTY to another and log in with your user account:
+With the key combination `ALT`+`F2` or `F3` etc., you can switch from one terminal/TTY to another and log in with your user account:
 
 ~~~
 $ siductionbox login: <username> <password> (not as root)
@@ -145,9 +145,9 @@ To exit a channel use
 
 If a dist-upgrade is performed at the same time, you can switch to the terminal to monitor the upgrade progress as follows:
 
-key combination `CTRL`+`ALT`+`F1`  
+key combination `ALT`+`F3`  
 and to return to the IRC, you can use the  
-key combination `CTRL`+`ALT`+`F2`
+key combination `ALT`+`F2`
 
 The following links provide more information.  
 [Documentation page of irssi](https://irssi.org/documentation)  
@@ -166,7 +166,7 @@ If neither w3m nor elinks are installed, proceed as follows:
 
 Now you can use the command line browser w3m. For this purpose, it is useful to switch to another terminal and log in with your user account:
 
-key combination `CTRL`+`ALT`+`F2`
+key combination `ALT`+`F2`
 
 ~~~
 $ siductionbox login: <username> <password> (not root!)
@@ -232,4 +232,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2022/01/12</div>
+<div id="rev">Last edited: 2022/01/13</div>
