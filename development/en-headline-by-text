@@ -150,7 +150,7 @@
 #### Partition type   0314-part-cfdisk_en.md   link: [](0314-part-cfdisk_en.md#partition-type)
  ### Partitioning a hard disk   0313-part-gdisk_en.md   link: [](0313-part-gdisk_en.md#partitioning-a-hard-disk)
   ## Partitioning of installation media   0310-part-size-examp_en.md   link: [](0310-part-size-examp_en.md#partitioning-of-installation-media)
- ### Partitioning programs   0310-part-size-examp_en.md   link: [](0310-part-size-examp_en.md#partitioning-programs)
+ ### Partition editors   0310-part-size-examp_en.md   link: [](0310-part-size-examp_en.md#partition-editors)
   ## Partitioning with fdisk   0314-part-cfdisk_en.md   link: [](0314-part-cfdisk_en.md#partitioning-with-fdisk)
   ## Partitioning with gdisk   0313-part-gdisk_en.md   link: [](0313-part-gdisk_en.md#partitioning-with-gdisk)
   ## Partitioning with GParted   0312-part-gparted_en.md   link: [](0312-part-gparted_en.md#partitioning-with-gparted)
