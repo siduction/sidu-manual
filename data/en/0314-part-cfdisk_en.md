@@ -1,39 +1,24 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % Partitioning with cfdisk
 
 ## Partitioning with fdisk
 
-**fdisk** and **cfdisk** creates MBR partition tables based on the BIOS. In 2000 the introduction of GPT partition tables based on UEFI began. 
+**fdisk** and **cfdisk** create MBR partition tables based on the BIOS. The introduction of GPT partition tables based on UEFI began in 2000.
 
 The newer **G**lobally Unique Identifier **P**artition **T**able (GPT) standard, which is part of the UEFI standard, has replaced MBR on current hardware and allows disks/partitions larger than 2 TBytes and a theoretically unlimited number of primary partitions. More information about this can be found in [Wikipedia GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table).
 
-We recommend partitioning with *fdisk* and *cfdisk* only for older hardware.  
-For creating GPT partition tables please refer to the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
+We recommend to use *fdisk* and *cfdisk* only for partitioning on older hardware.  
+For creating GPT partition tables, please refer to the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
 
 ### Naming storage devices
 
 **Please NOTE:**  
-siduction uses UUID in fstab for naming storage devices. Please refer to the chapter [naming by UUID](0311-part-uuid_en.md#uuid---naming-of-block-devices).
+siduction uses UUID in fstab for storage device naming. Please refer to the chapter [naming by UUID](0311-part-uuid_en.md#uuid---naming-of-block-devices).
 
 **Disks**
 
-Information about the devices can be easily obtained from an information window (pop-up) by hovering the mouse over the icon of a device on the desktop. This works both from the live ISO and with a siduction installed.
+Information about the devices can be easily obtained from an information window (pop-up) by hovering the mouse over the icon of a device on the desktop. This works both from the live ISO and with siduction installed.
 
-We recommend creating a table (manual or generated) that contains the details of all devices. This can be very helpful if problems arise. In a terminal we become root with **su** and type **fdisk -l**. For example, with two disks, we get output similar to that shown below.
+We recommend creating a table (manual or generated) that contains the details of all devices. This can be very helpful if problems arise. In a terminal, we become root with **su** and type **fdisk -l**. For example, with two disks, we get output similar to that shown below.
 
 ~~~
 user1@pc1:/$ su
@@ -72,7 +57,7 @@ Device Boot Start End Sectors Size Id Type
 /dev/sdb3 122687488 250068991 127381504 60,8G 83 Linux
 ~~~
 
-With the command
+By entering the command
 
 ~~~
 # fdisk -l > /home/<MY USER NAME>/documents/fdisk-l_output
@@ -84,11 +69,11 @@ we get a text file with the same content.
 
 The partitions on an MBR hard disk are defined by a number between 1 and 15. A maximum of 14 mountable partitions is possible.
 
-There are the following partition types:  
-primary, extended and logical.
+The following partition types exist:  
+primary, extended, and logical.
 
 The logical partitions are located within the extended partition. A maximum of four primary or three primary and one extended partition can be created. The extended partition, in turn, can contain up to eleven logical partitions.  
-Primary or extended partitions are given a designation between 1 and 4 (for example sda1 to sda4). Logical partitions are always bundled and part of an extended partition. A maximum of eleven logical partitions can be defined with libata, and their names start with number 5 and end with number 15 at most.
+Primary or extended partitions are given a designator between 1 and 4 (for example sda1 to sda4). Logical partitions are always bundled and part of an extended partition. A maximum of eleven logical partitions can be defined with *libata*, and their names start with number 5 and end with number 15 at most.
 
 **Examples**
 
@@ -98,7 +83,7 @@ Primary or extended partitions are given a designation between 1 and 4 (for exam
 |sda1|sda2|sda3|sda4|
 
 
-6 partitions (3 primary, 1 extended and 3 logical):
+6 partitions (3 primary, 1 extended, and 3 logical):
 
 |sda1|sda2|sda3|-
                  |       contains only 
@@ -112,12 +97,12 @@ Primary or extended partitions are given a designation between 1 and 4 (for exam
 
 **/dev/sdb3** can only be a primary or extended partition. The letter "b" indicates that this partition is on a different device than the partition of the first example, which contains the letter "a".
 
-### Use Cfdisk
+### Use cfdisk
 
 **Backup data beforehand!**  
-> There is a risk of data loss when using any partitioning software. Always back up data you want to keep to another disk first.
+> There is a risk of data loss when using any partition editor. Always back up data you want to keep on another disk first.
 
-**cfdisk** is started in a console as root (after "su" the root password is required):
+**cfdisk** is started in a console as **root** (after "su" the root password is required):
 
 ~~~
 user1@pc1:/$ su
@@ -130,7 +115,7 @@ cfdisk /dev/sda
 
 #### The user interface
 
-In the first screen cfdisk shows the current partition table with the names and some information about each partition. At the bottom of the window there are some command buttons. To switch between partitions use the arrow keys `up` and `down`, to select commands use the arrow keys `right` and `left`. The `enter` key is used to execute the command.
+On the first screen, cfdisk shows the current partition table with the names and some information about each partition. At the bottom of the window, there are some command buttons. To switch between partitions, use the arrow keys `up` and `down`. To select commands, use the arrow keys `right` and `left`. The `enter` key is used to execute the command.
 
 ![cfdisk - Start](./images/cfdisk/cfdisk_01.png)
 
@@ -142,29 +127,29 @@ We have three partitions on the example disk.
 | /dev/sda2 | 50.0G | 83 Linux | / |
 | /dev/sda3 | 60.8G | 83 Linux | /data |
 
-From the data partition we want to move the directories 'Pictures' and 'Music' to their own partitions and create more space for them. At the same time they should be accessible for a Windows residing on another harddisk. The root partition is oversized with 50 GB and will be reduced.
+From the data partition, we want to move the directories 'Pictures' and 'Music' to their own partitions and create more space for them. At the same time, they should be accessible for a Windows system residing on another harddisk. The root partition is oversized with 50 GB and will be reduced.
 
 #### Delete a partition
 
 To create space, we delete the data partition and then shrink the root partition.
 
-To delete the partition /dev/sda3, it is marked with the up-down keys and the command **Delete** is selected with the left-right arrow keys and confirmed by **`Enter`**.
+To delete the partition **/dev/sda3**, highlight it with the up-down keys and select the command **Delete** with the left-right arrow keys. Finally, confirm the action by hitting **`Enter`**.
 
 ![Delete a partition](./images/cfdisk/cfdisk_02.png) 
 
 #### Resize a partition
 
-The partition /dev/sda2 is marked and the command **Resize** is selected and confirmed.
+Highlight the partition **/dev/sda2**, select the command **Resize**, and confirm.
 
 ![Resize a partition](./images/cfdisk/cfdisk_03.png)
 
-Then the new size of '20G' is entered
+Then the new size of '20G' is to be entered.
 
 ![New Size of a partition](./images/cfdisk/cfdisk_04.png)
 
 #### Creating a new partition
 
-The now free space of the hard disk is marked. The command selection automatically jumps to **New**, which has to be confirmed.
+The hard disk's freed space is highlighted. The command selection automatically jumps to **New**, which has to be confirmed.
 
 ![Create a new partition](./images/cfdisk/cfdisk_05.png)
 
@@ -172,15 +157,15 @@ Then enter the new size of '15G' for the data partition.
 
 ![Create a new partition - Size](./images/cfdisk/cfdisk_06.png)
 
-Now we have to decide between a **primary** or an **extended** partition. We decide for a primary partition.
+Now we have to choose between a **primary** or an **extended** partition. We select a primary partition.
 
 ![Create a new partition - primary](./images/cfdisk/cfdisk_07.png)
 
-After that we mark the free disk space again, confirm it and confirm the preset total size as well. In the following selection **extended** has to be chosen. This creates the extended partition (here called 'container') in which the two additional partitions are to be created.
+After that, we mark the free disk space again, confirm it, and confirm the preset total size as well. In the following selection, **extended** has to be chosen. This creates the extended partition (here called 'container') in which the two additional partitions are to be created.
 
 ![extended partition](./images/cfdisk/cfdisk_08.png)
 
-Finally the partitions for 'Music' and 'Images' are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.
+Finally, the partitions for 'Music' and 'Images' are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.
 
 ![partition finished](./images/cfdisk/cfdisk_09.png)
 
@@ -192,35 +177,35 @@ To change the type of a partition, select the desired partition and choose the c
 
 ![partition type](./images/cfdisk/cfdisk_10.png)
 
-A selection list appears in which the partition type is selected with the arrow keys up and down. In our example we select for the partitions /dev/sda5 and /dev/sda6 "**7 HPFS/NTFS/exFAT**". This way the above mentioned Windows can access the partition.
+A selection list appears in which the partition type can be selected with the arrow keys `up` and `down`. In our example, we select "**7 HPFS/NTFS/exFAT**" for the partitions **/dev/sda5** and **/dev/sda6**. This way, the above mentioned Windows system can access the partition.
 
 ![partition type](./images/cfdisk/cfdisk_11.png)
 
 #### Make a partition bootable
 
-For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the **Bootable** command (note: when installing to an external hard drive, a partition must be made bootable).
+For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the **Bootable** command (**Note:** when installing to an external hard drive, a partition must be made bootable).
 
 #### Write partition table
 
-When everything is partitioned, the result can be saved with the command **Write**. The partition table is now written to the disk.
+When everything has been partitioned, the result can be saved with the command **Write**. The partition table is now written to the disk.
 
 ![partition select type](./images/cfdisk/cfdisk_12.png)
 
-**Since this will delete all data on the corresponding disk/partition**, you should be really sure before typing **yes** and confirming again with the Enter key.
+**Since this will delete all data on the corresponding disk/partition**, you should be really sure before typing **yes** and confirming again with the `Enter` key.
 
-#### Quit Cfdisk
+#### Quit cfdisk
 
-With the command **Quit** we leave the program. After finishing **cfdisk** and before the installation you should reboot in any case to read in the partition table again.
+By entering the command **Quit**, we can quit the program. After leaving **cfdisk** and before the installation, you should reboot in any case to read in the partition table again.
 
 ### Formatting partitions
 
-There are several file systems for Linux that can be used. There are **Ext2**, **Ext4**, **ReiserFs** and for more experienced users **XFS**, **JFS** and **ZFS**.  
+There are several file systems for Linux that can be used. There are **Ext2**, **Ext4**, **ReiserFs**, and for more experienced users **XFS**, **JFS**, and **ZFS**.  
 Ext2 may be of interest when accessing from Windows, as there are Windows drivers for this file system. [Ext2 file system for MS Windows (drivers and documentation)](http://www.fs-driver.org/).
 
-For normal use we recommend the ext4 file system. Ext4 is the default file system of siduction. 
+For normal use, we recommend the ext4 file system. Ext4 is siduction's default file system. 
 
-After cfdisk has finished, the root console will continue to be used. Formatting requires root privileges.  
-The command is **mkfs.ext4 /dev/sdaX**. For "X" one enters the number of the selected partition.
+After cfdisk has finished, the root console is still needed as formatting requires root privileges.  
+The command is **mkfs.ext4 /dev/sdaX**. For "X", enter the number of the selected partition.
 
 ~~~
 mkfs.ext4 /dev/sda2
@@ -230,9 +215,9 @@ mke2fs 1.45.6 (20-Mar-2020)
 Proceed anyway? (y,N)
 ~~~
 
-The query is answered with "**y**" if you are sure that the correct partition should be formatted. Please check several times!
+The query is to be  answered with "**y**" if you are sure that the correct partition should be formatted. Please check several times!
 
-After the formatting is finished you should get a message that ext4 was written successfully. If this is not the case, something went wrong during partitioning or **sdaX** is not a Linux partition. We check with:
+After the formatting is finished, you should get a message that ext4 was written successfully. If this is not the case, something went wrong during partitioning or **sdaX** is not a Linux partition. We check with:
 
 ~~~
 fdisk -l /dev/sda
@@ -240,10 +225,10 @@ fdisk -l /dev/sda
 
 If something is wrong, you may have to partition again.
 
-If the formatting was successful, this procedure is repeated for the other partitions, adapting the command according to the partition type and the desired file system. (e.g.: 'mkfs.ext2' or 'mkfs.vfat' or 'mkfs.ntfs' etc.)
+If the formatting was successful, this procedure can be repeated for the other partitions, adapting the command according to the partition type and the desired file system (e.g.: 'mkfs.ext2' or 'mkfs.vfat' or 'mkfs.ntfs' etc.).
 Please read the man page **man mkfs**.
 
-Finally format the swap partition, in this case sda1:
+Finally, format the swap partition, in this case sda1:
 
 ~~~
 mkswap /dev/sda1
@@ -255,21 +240,21 @@ Next, the swap partition is activated:
 swapon /dev/sda1
 ~~~
 
-After that you can check in the console if the swap partition is recognized:
+After that, you can check in the console if the swap partition is recognized:
 
 ~~~
 swapon -s
 ~~~
 
-With the swap partition mounted, the output to the previous command should look something like this:
+With the swap partition mounted, the output of the previous command should look something like this:
 
 ~~~
 Filename Type Size Used Priority
 /dev/sda1 partition 8914940 0 -2
 ~~~
 
-If the swap partition is recognized correctly, we restart the computer.
+If the swap partition is recognized correctly, restart the computer.
 
 Now the installation can begin.
 
-<div id="rev">Last edited: 2021/22/08</div>
+<div id="rev">Last edited: 2022/01/19</div>
