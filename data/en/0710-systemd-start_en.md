@@ -110,7 +110,7 @@ First the status query in short format.
 enabled
 ~~~
 
-Now we search for the unit files, combining *"systemctl*" with "*grep*":
+Now we search for the unit files, combining "*systemctl*" with "*grep*":
 
 ~~~
 # systemctl list-unit-files | grep blue

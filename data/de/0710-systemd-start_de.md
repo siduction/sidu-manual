@@ -95,7 +95,7 @@ Zuerst die Statusabfrage im Kurzformat.
 enabled
 ~~~
 
-Nun Suchen wir nach den Unit-Dateien, dabei kombinieren wir *"systemctl*" mit "*grep*":
+Nun Suchen wir nach den Unit-Dateien, dabei kombinieren wir "*systemctl*" mit "*grep*":
 
 ~~~
 # systemctl list-unit-files | grep blue
