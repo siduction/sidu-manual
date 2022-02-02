@@ -1,25 +1,10 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links (there was'nt any)  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % SAMBA
 
 ## SAMBA
 
 ### Client configuration
 
-**to access Windows shares over the network with siduction**.
+**How to access a Windows network share using siduction**
 
 + All commands are executed in a terminal or console as **root**.
 
@@ -27,9 +12,9 @@ END   INFO AREA FOR THE AUTHORS
     server = server name or IP of the Windows machine  
     share = name of the share
     
-    In the KDE file manager Dolphin the URL is entered as follows: `smb://server` or with the full path: `smb://server/share`. 
+    In the KDE file manager Dolphin, the URL is entered as follows: `smb://server` or with the full path: `smb://server/share`. 
 
-In a console, the shares on a server can be seen with this:
+In a console, the shares on a server can be displayed with:
 
 ~~~
 smbclient -L server
@@ -49,9 +34,8 @@ mount -t cifs -o username=administrator,uid=$UID,gid=$GID //server/share /mnt/se
 ~~~
 
 If you get an error message here, it may be due to the SMB protocol version you are using.
-In Debian SMB 1.0 is no longer used for security reasons. Unfortunately there are still systems which use 
-provide SMB only by version 1.0. To be able to access such a share, as mount option
-is needed as mount option **`vers=1.0`**. The complete command is then
+In Debian, SMB 1.0 is no longer used for security reasons. Unfortunately, there are still systems which 
+provide only SMB 1.0. To get access to such a share, the mount option **`vers=1.0`** is needed. The complete command is:
 
 ~~~
 mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/share /mnt/server_share
@@ -63,42 +47,41 @@ A connection is terminated with this command:
 umount /media/server_share
 ~~~
 
-To mount a Samba share automatically, the following pattern can be added to the `/etc/fstab` file:
+To mount a Samba share automatically, the *`/etc/fstab`* file can be amended according to this pattern:
 
 ~~~
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
 user=username,password=**********,uid=$UID,gid=$GID 0 0
 ~~~
 However, it is not recommended to write the password in plain text to fstab.
-A better variant is to display **`.smbcredentials`** with the following content:
+A better alternative is to display **`.smbcredentials`** with the following content:
 
 ~~~
 username=<user>
 password=<password>
 ~~~
 
-The resulting entry for /etc/fstab is then
+The resulting entry for *`/etc/fstab`* is:
 
 ~~~
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
 credentials=</path/to/.smbcredentials>,uid=$UID,gig=$GID 0 0
 ~~~
-$UID and $GID are the corresponding uid and gid of the user to whom the share should be given.
-But you can also write uid=username gid=users.
+$UID and $GID are the corresponding uid and gid of the user whom the share should be given to.
+But you can also write **`uid=username gid=users`**.
 
 ### siduction as samba server
 
-Of course, siduction can also provide an SMB server. To describe the setup as a Samba server here in the manual would be 
-would go beyond the scope of this manual. The internet has many HowTo's on how to set up a
-Samba server.
+Of course, siduction can also provide an SMB server. Describing the setup as a Samba server here in the manual 
+would go beyond its scope. The internet provides many HowTo's on this topic.
 
-Our recommendations on this topic:
+Our recommendations:
 
 [debian - a minimal Samba setup](https://wiki.debian.org/Samba/ServerSimple)  
 [Raspberry Pi - samba server](https://pimylifeup.com/raspberry-pi-samba/)  
 [ubuntu - install and configure samba](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview)  
 [redhat - using samba as a server](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/assembly_using-samba-as-a-server_deploying-different-types-of-servers)
 
-There are many more sites on this topic on the net.
+There are many more sites on this topic on the web.
 
-<div id="rev">Last edited: 2021/26/08</div>
+<div id="rev">Last edited: 2022/01/30</div>
