@@ -137,7 +137,7 @@ If we know the name of the package, the command **apt install <package name>** i
 Therefore we recommend the following procedure:
 
 1. log out of the desktop environment
-2. go into text mode with Ctrl+Alt+F2
+2. switch to the text console with Ctrl+Alt+F2
 3. log in as root
 
 and then install the desired program package:
@@ -387,10 +387,9 @@ Before updating the system, visit the [siduction home page](https://forum.siduct
   
   The following procedure should be followed:
 
-1. log out of the desktop environment
-  (this procedure is nowadays only recommended when updating X or the desktop environment itself, but does not hurt in other cases)
-  
-2. enter text mode with **`Ctrl`** + **`Alt`** + **`F2`**
+1. log out of the desktop environment  
+   (this procedure is nowadays only recommended when updating X or the desktop environment itself, but does not hurt in other cases)  
+2. switch to the text console with Ctrl+Alt+F2
 3. log in as root
 
 and then execute the following commands:

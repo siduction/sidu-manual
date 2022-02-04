@@ -121,11 +121,11 @@ Ist uns der Name des Pakets bekannt, reicht der Befehl **apt install <Paketname>
 
 Deshalb empfehlen wir folgenden Ablauf:
 
-1. Aus der Desktopumgebung abmelden
-2. In den Textmodus gehen mit Ctrl+Alt+F2
-3. Einloggen als root
+1. Aus der Desktopumgebung abmelden.
+2. Mit Ctrl+Alt+F2 auf die Textkonsole wechseln.
+3. Einloggen als root.
 
-um anschließend das gewünschte Programmpaket zu installieren:
+Anschließend das gewünschte Programmpaket installieren:
 
 ~~~
 init 3
@@ -372,13 +372,12 @@ Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.si
   
   Zu beachten ist der folgende Ablauf:
 
-1. Aus der Desktopumgebung abmelden
-  (diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht)
-  
-2. In den Textmodus gehen mit **`Ctrl`** + **`Alt`** + **`F2`**
-3. Einloggen als root
+1. Aus der Desktopumgebung abmelden.  
+   (Diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht.)
+2. Mit Ctrl+Alt+F2 auf die Textkonsole wechseln.
+3. Einloggen als root.
 
-und dann folgende Befehle ausführen:
+Anschließend folgende Befehle ausführen:
 
 ~~~
 init 3
