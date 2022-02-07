@@ -1,14 +1,17 @@
 #!/usr/bin/perl -w
 #
+# Name: 21-helpfile-html-manual-pre.pl within siduction manual /development folder.
+#
 # Autor: Axel Konrad (akli)
-# Copyright Axel Konrad 2021, wtfpl 2.0
+# Copyright Axel Konrad 2022, wtfpl 2.0
 # see http://www.wtfpl.net/txt/copying/
 #
-# Verwendung für das siduktion Handbuch.
-# Vorbereitung für die Erzeugung einzelner .html-Dokumente aus
-# den .md-Dateien des Ordners "sidu-manual/data/de/"
+# Usage for siduktion manual.
+# Preparation of .md files to use them with 20-generate-html-manual.sh
+#  and 00-generate_manual.pl
 #
-# Die Pfade bei Bedarf an die individuellen Gegebenheiten angepassen.
+#  Do not call this script direcly!
+#
 #
 use strict;
 use File::Basename;
@@ -44,17 +47,26 @@ if ($SCHREIBEN =~ /\d{2}00/) {
             $ZEILEN{"$NR"} = $_;
         }
     }
-        # Zifferncode entfernen.
-        # Anker-Teil aus den Link der "XX00-"Dateien entfernen,
-        #  damit in der Zielseite auch der Titel angezeigt wird.
-    foreach (@QUELLE) {
-        s/\(\d{4}-(.*?\.)md\#.*?\)/\($1html\)/g;
-    }
+#        # Zifferncode entfernen.
+#        # Anker-Teil aus den Link der "XX00-"Dateien entfernen,
+#        #  damit in der Zielseite auch der Titel angezeigt wird.
+#    foreach (@QUELLE) {
+#        s/\(\d{4}-(.*?\.)md\#.*?\)/\($1html\)/g;
+#    }
 }   
 
 while (@QUELLE) {                                
     $_ = shift @QUELLE;
     chomp($_);
+    
+        # Umlaute zu HTML Notation
+    $_ =~ s!ä!&auml;!g;
+    $_ =~ s!Ä!&Auml;!g;
+    $_ =~ s!ö!&ouml;!g;
+    $_ =~ s!Ö!&Ouml;!g;
+    $_ =~ s!ü!&uuml;!g;
+    $_ =~ s!Ü!&Uuml;!g;
+    $_ =~ s!ß!&szlig;!g;
     
         # Umformatierung der Warnungen
         #
@@ -92,8 +104,13 @@ while (@QUELLE) {
     }
 
     # Handbuch interne Link auf .html ändern und Zifferncode entfernen.
-    s/\d{4}-(.*?\.)md\#/$1html\#/g;
-    s/(\(.*?\.)md\#/$1html\#/g;
+    s!\d{4}-(.*?\.)md\#!https://manual.siduction.org/$1html\#!g;
+    
+    # Nur notwendig, weil fehlerhafte Link vorhanden sind.
+    if (/\(.*?\.md\#/) {
+    s!\]\(\.?/?(.*?\.)md\#!\]\(https://manual.siduction.org/$1html\#!g;
+    }
+    
     $_ = "$_\n";
     push @NEU,$_;
 }
