@@ -49,5 +49,16 @@ done
 
 cd ../development/
 
+for i in ../data/de/html/*;
+do 
+    sed -i 's/ä/\&auml;/g' "$i";
+    sed -i 's/Ä/\&Auml;/g' "$i";
+    sed -i 's/ö/\&ouml;/g' "$i";
+    sed -i 's/Ö/\&Ouml;/g' "$i";
+    sed -i 's/ü/\&uuml;/g' "$i";
+    sed -i 's/Ü/\&Uuml;/g' "$i";
+    sed -i 's/ß/\&szlig;/g' "$i";
+done
+
 rm -r ../arbeit/ 2>/dev/null
 

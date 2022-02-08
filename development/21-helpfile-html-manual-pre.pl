@@ -59,14 +59,14 @@ while (@QUELLE) {
     $_ = shift @QUELLE;
     chomp($_);
     
-        # Umlaute zu HTML Notation
-    $_ =~ s!ä!&auml;!g;
-    $_ =~ s!Ä!&Auml;!g;
-    $_ =~ s!ö!&ouml;!g;
-    $_ =~ s!Ö!&Ouml;!g;
-    $_ =~ s!ü!&uuml;!g;
-    $_ =~ s!Ü!&Uuml;!g;
-    $_ =~ s!ß!&szlig;!g;
+        # Umlaute zu HTML Notation      # Pandoc übersetzt im Nachgang
+#    $_ =~ s!ä!&auml;!g;                # die HTML Notation wieder in
+#    $_ =~ s!Ä!&Auml;!g;                # die deutschen Umlaute.
+#    $_ =~ s!ö!&ouml;!g;                # Deshalb wird die Umkodierung
+#    $_ =~ s!Ö!&Ouml;!g;                # im Script
+#    $_ =~ s!ü!&uuml;!g;                # 20-generate-html-manual.sh
+#    $_ =~ s!Ü!&Uuml;!g;                # nach der Erzeugung der HTML-
+#    $_ =~ s!ß!&szlig;!g;               # Dateien durchgeführt.
     
         # Umformatierung der Warnungen
         #

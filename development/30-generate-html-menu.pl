@@ -80,7 +80,7 @@ while (@DATEIEN) {
     chomp($_);
     next unless (/\d{4}-.*/);
     $FILE = $_;
-    $FILE =~ s!\d{4}-(.*)\.md!$1\.html!;
+    $FILE =~ s!^.*\d{4}-(.*)\.md!$1\.html!;
         
     open(DATEI, "$_") || die "$_ nicht gefunden\n";
     @QUELLE=<DATEI>;
@@ -93,8 +93,8 @@ while (@DATEIEN) {
     while (@QUELLE) {
         $_ = shift @QUELLE;
     
-        if (/^~{3,}/) {
-                # Remove code
+                 # Remove code
+       if (/^~{3,}/) {
             $_ = shift @QUELLE;
             until (/^~{3,}/) {
                 $_ = shift @QUELLE;
@@ -149,7 +149,7 @@ while (@DATEIEN) {
     }
 }
 
-push @MENU_FILE, "\t\t</ul>\n\t</li>\n</ul>\n</body>\n</html>\n";
+push @MENU_FILE, "\t\t</ul>\n\t</li>\n</ul>\n<ul>\n\t<li style=\"line-height: 25px\"><a href=\"https://manual.siduction.org/manual.pdf\" target=\"_blank\" style=\"text-decoration: none;\"><img src=\"tree-menue-frames_data/pdf-icon.svg\" style=\"vertical-align: bottom;margin-right: 5px;\" height=\"25\">PDF herunterladen</a>\n\t</li>\n</ul>\n</body>\n</html>\n";
 
 sub LINK_LINE {
 
@@ -162,16 +162,19 @@ sub LINK_LINE {
 
         $TEXT = $_;
         $TEXT =~ s/^#{1,3} +(.*)/$1/;
+        $TEXT =~ s!Ä!&Auml;!g;
+        $TEXT =~ s!Ö!&Ouml;!g;
+        $TEXT =~ s!Ü!&Üuml;!g;
+        $TEXT =~ s!ä!&auml;!g;
+        $TEXT =~ s!ö!&ouml;!g;
+        $TEXT =~ s!ü!&uuml;!g;
+        $TEXT =~ s!ß!&szlig;!g;
         
         $ANKER = $TEXT;
         $ANKER =~ s!(.*)!\L$1!;
-        $ANKER =~ s!Ä!ä!g;
-        $ANKER =~ s!Ö!ö!g;
-        $ANKER =~ s!Ü!ü!g;
         $ANKER =~ s!( )!-!g;
-        
-        $LINK = "<a target= \"main\" href=\"$FILE\#$ANKER\">$TEXT</a>";
-        $LINK1 = "<a target= \"main\" href=\"$FILE\">$TEXT</a>";
+        $LINK = "<a target=\"main\" href=\"https://manual.siduction.org/$FILE\#$ANKER\">$TEXT</a>";
+        $LINK1 = "<a target=\"main\" href=\"https://manual.siduction.org/$FILE\">$TEXT</a>";
 }
 
 

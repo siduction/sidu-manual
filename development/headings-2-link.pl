@@ -101,9 +101,10 @@ foreach (@ARGV) {
         
             $LINK = "\[\]\($FILE\#$H_TEXT\)";
             $LINK =~ s!(.*)!\L$1!;
-            $LINK =~ s!Ä!ä!g;
-            $LINK =~ s!Ö!ö!g;
-            $LINK =~ s!Ü!ü!g;
+            $LINK =~ s!Ä|ä!&auml;!g;
+            $LINK =~ s!Ö|ö!&ouml;!g;
+            $LINK =~ s!Ü|ü!&uuml;!g;
+            $LINK =~ s!ß!&szlig;!g;
             $LINK =~ s!( )!-!g;
             $_ = "$FILE   $H_CLASS $H_TEXT   Link: $LINK\n";
             push @HLFILE,$_;
@@ -116,13 +117,13 @@ foreach (@ARGV) {
 
 # Write into outputfile.
 
-    open (DATEI, ">", "./heading-link-$langcode-by-file") || die "Kann nicht schreiben.\n";
+    open (DATEI, ">", "./headinglinks-$langcode-by-file") || die "Kann nicht schreiben.\n";
     print DATEI @HLFILE;
     #    print @HLFILE;
     close(DATEI);
 
 
-    open (DATEI, ">", "./heading-link-$langcode-by-text") || die "Kann nicht schreiben.\n";
+    open (DATEI, ">", "./headinglinks-$langcode-by-text") || die "Kann nicht schreiben.\n";
     foreach (@HLTEXT) {
         s!(.*?)~(.*?)~(.*?)~(.*?)!$2 $1   $3   Link: $4!;
         print DATEI "$_";
