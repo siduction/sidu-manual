@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Partitionierung von Installationsmedien</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Partitionierung von Installationsmedien</title>
 <style>
-body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
 p               {line-height: 1.3;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
 p code, li code {display: inline; color: #800; padding: 0.15em;}
@@ -16,7 +17,7 @@ hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
 img             {border: 0.1em solid #CCC;}
-a               {color: #334477; text-decoration: underline;}
+a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
 #rev            {float:right; font-size: 0.8em; color: #888;}
@@ -31,22 +32,22 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#partitionierung-von-installationsmedien">Partitionierung von Installationsmedien</a>
 <ul>
 <li><a href="#mindestanforderungen">Mindestanforderungen</a></li>
-<li><a href="#beispiele-mit-verschiedenen-plattengrößen">Beispiele mit verschiedenen Plattengrößen</a></li>
+<li><a href="#beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit verschiedenen Plattengr&ouml;&szlig;en</a></li>
 <li><a href="#partitionierungsprogramme">Partitionierungsprogramme</a></li>
-<li><a href="#weiterführende-infos">Weiterführende Infos</a></li>
+<li><a href="#weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="partitionierung-von-installationsmedien">Partitionierung von Installationsmedien</h2>
-<p>Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates /home, falls gewünscht.</p>
+<p>Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen (root/home und swap), da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation k&ouml;nnen weitere Datenpartitionen angelegt werden, oder etwa ein separates /home, falls gew&uuml;nscht.</p>
 <p>Wir raten aber eher davon ab eine /home-Partition anzulegen.<br />
-Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
-<p>Eine swap-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM. Dies gilt hauptsächlich für Notebooks, die per <em>hibernate</em> in den Ruhezustand versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.</p>
-<p>Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit <strong>ntfs</strong> formatiert werden. Siduction kann mit dem automatisch installierten <em>ntfs-3g</em> lesend und schreibend auf die Daten zugreifen.</p>
-<p>Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiele sollten einen ersten Einblick in die Möglichkeiten bieten.</p>
-<p>Die Anschaffung einer externen USB-Festplatte zur regelmäßigen Datensicherung ist ebenso eine Überlegung wert.</p>
+Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
+<p>Eine swap-Partition entspricht in der Funktionalit&auml;t etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so gro&szlig; sein wie das verwendete RAM. Dies gilt haupts&auml;chlich f&uuml;r Notebooks, die per <em>hibernate</em> in den Ruhezustand versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Ger&auml;te mit ausreichend RAM brauchen heute keine Swap-Partition mehr.</p>
+<p>F&uuml;r den Datenaustausch mit einer Windows-Installation sollte die daf&uuml;r vorgesehene Partition mit <strong>ntfs</strong> formatiert werden. Siduction kann mit dem automatisch installierten <em>ntfs-3g</em> lesend und schreibend auf die Daten zugreifen.</p>
+<p>Es gibt sehr viele gute M&ouml;glichkeiten seine Platten aufzuteilen. Diese Beispiele sollten einen ersten Einblick in die M&ouml;glichkeiten bieten.</p>
+<p>Die Anschaffung einer externen USB-Festplatte zur regelm&auml;&szlig;igen Datensicherung ist ebenso eine &Uuml;berlegung wert.</p>
 <h3 id="mindestanforderungen">Mindestanforderungen</h3>
-<p>Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installation betragen:</p>
+<p>Die Mindestanforderungen f&uuml;r den sinnvollen Gebrauch einer siduction Installation betragen:</p>
 <table>
 <thead>
 <tr class="header">
@@ -85,10 +86,10 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 </tr>
 </tbody>
 </table>
-<h3 id="beispiele-mit-verschiedenen-plattengrößen">Beispiele mit verschiedenen Plattengrößen</h3>
+<h3 id="beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit verschiedenen Plattengr&ouml;&szlig;en</h3>
 <p>Falls ein Dual-Boot mit MS Windows™ angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden.</p>
-<p>Als Partitionstabelle sollte der Typ “<em>GPT</em>” gewählt werden. So kann man die Vorteile gegenüber “<em>MBR</em>” nutzen. Nur bei alter Hardware ist “<em>MBR</em>” noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite <a href="part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a>.</p>
-<p>Die Beispiele beziehen sich auf Partitionstabellen vom Typ “<em>GPT</em>”, für deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.</p>
+<p>Als Partitionstabelle sollte der Typ “<em>GPT</em>” gew&auml;hlt werden. So kann man die Vorteile gegen&uuml;ber “<em>MBR</em>” nutzen. Nur bei alter Hardware ist “<em>MBR</em>” noch sinnvoll. Die Erkl&auml;rungen hierzu enth&auml;lt unsere Handbuchseite <a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a>.</p>
+<p>Die Beispiele beziehen sich auf Partitionstabellen vom Typ “<em>GPT</em>”, f&uuml;r deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.</p>
 <p><strong>Dual-Boot mit MS Windows und Linux</strong></p>
 <p><strong>1 TB Festplatte:</strong></p>
 <table>
@@ -123,13 +124,13 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <td style="text-align: center;">4</td>
 <td style="text-align: right;">300 GB</td>
 <td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten für MS Windows</td>
+<td style="text-align: center;">Daten f&uuml;r MS Windows</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
 <td style="text-align: right;">200 GB</td>
 <td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten für MS Windows und Linux</td>
+<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">6</td>
@@ -141,7 +142,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <td style="text-align: center;">7</td>
 <td style="text-align: right;">416 GB</td>
 <td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten für Linux</td>
+<td style="text-align: center;">Daten f&uuml;r Linux</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">8</td>
@@ -156,7 +157,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Größe</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
 <th style="text-align: center;">Formatierung</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
@@ -184,7 +185,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <td style="text-align: center;">4</td>
 <td style="text-align: right;">48 GB</td>
 <td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten für MS Windows und Linux</td>
+<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
@@ -205,7 +206,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Größe</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
 <th style="text-align: center;">Formatierung</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
@@ -233,7 +234,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <td style="text-align: center;">4</td>
 <td style="text-align: right;">10 GB</td>
 <td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten für MS Windows und Linux</td>
+<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
@@ -255,7 +256,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Größe</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
 <th style="text-align: center;">Formatierung</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
@@ -304,7 +305,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Größe</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
 <th style="text-align: center;">Formatierung</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
@@ -347,7 +348,7 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Größe</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
 <th style="text-align: center;">Formatierung</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
@@ -387,30 +388,30 @@ Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individue
 </table>
 <h3 id="partitionierungsprogramme">Partitionierungsprogramme</h3>
 <ul>
-<li><p><strong>GParted</strong> Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.<br />
-<em>Gparted</em> ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. <em>Gparted</em> unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite <a href="part-gparted_de.html#partitionieren-mit-gparted">Partitionieren der Festplatte mit GParted</a> liefert weitere Informationen zum Programm.</p></li>
-<li><p><strong>KDE Partition Manager</strong> Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.<br />
-Der <em>KDE Partition Manager</em> ist das Standard-Partitionierungsprogramm für den KDE Destktop, einfach zu bedienen und genauso umfangreich wie <em>Gparted</em>.</p></li>
-<li><p><strong>gdisk / cgdisk</strong> Ein Konsolenprogramm für Partitionstabellen vom Typ <em>GPT - UEFI</em>.<br />
-<em>gdisk</em> ist das klassische Textmodus-Programm. <em>cgdisk</em> hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite <a href="part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> liefert weitere Informationen zum Programm.</p></li>
-<li><p><strong>fdisk / cfdisk</strong> Ein Konsolenprogramm für Partitionstabellen vom Typ <em>msdos - MBR</em>.<br />
-Hinweis: <em>fdisk</em> sollte nur noch für alte Hardware, die <em>GPT - UEFI</em> nicht unterstützt verwendet werden.<br />
-<em>fdisk</em> ist das klassische Textmodus-Programm. <em>cfdisk</em> hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite <a href="part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a> liefert weitere Informationen zum Programm.</p></li>
+<li><p><strong>GParted</strong> Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfl&auml;che.<br />
+<em>Gparted</em> ist auf allen mit einer graphischen Oberfl&auml;che ausgestatteten siduction Installationen und Installationsmedien verf&uuml;gbar. <em>Gparted</em> unterst&uuml;tzt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite <a href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">Partitionieren der Festplatte mit GParted</a> liefert weitere Informationen zum Programm.</p></li>
+<li><p><strong>KDE Partition Manager</strong> Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfl&auml;che.<br />
+Der <em>KDE Partition Manager</em> ist das Standard-Partitionierungsprogramm f&uuml;r den KDE Destktop, einfach zu bedienen und genauso umfangreich wie <em>Gparted</em>.</p></li>
+<li><p><strong>gdisk / cgdisk</strong> Ein Konsolenprogramm f&uuml;r Partitionstabellen vom Typ <em>GPT - UEFI</em>.<br />
+<em>gdisk</em> ist das klassische Textmodus-Programm. <em>cgdisk</em> hat eine benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> liefert weitere Informationen zum Programm.</p></li>
+<li><p><strong>fdisk / cfdisk</strong> Ein Konsolenprogramm f&uuml;r Partitionstabellen vom Typ <em>msdos - MBR</em>.<br />
+Hinweis: <em>fdisk</em> sollte nur noch f&uuml;r alte Hardware, die <em>GPT - UEFI</em> nicht unterst&uuml;tzt verwendet werden.<br />
+<em>fdisk</em> ist das klassische Textmodus-Programm. <em>cfdisk</em> hat eine benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a> liefert weitere Informationen zum Programm.</p></li>
 </ul>
 <warning>
-<strong>Achtung</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht werden, immer zuvor auf einem anderen Datenträger sichern.
+<strong>Achtung</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht werden, immer zuvor auf einem anderen Datentr&auml;ger sichern.
 </warning>
-<p><strong>Eingebundene Partitionen</strong> (auch swap) müssen vor Bearbeitung gelöst werden.<br />
+<p><strong>Eingebundene Partitionen</strong> (auch swap) m&uuml;ssen vor Bearbeitung gel&ouml;st werden.<br />
 Im Terminal (als root) mit dem Befehl:</p>
 <pre><code># umount /dev/sda1</code></pre>
-<p>Die Einbindung einer Swap-Partition wird mit diesem Befehl gelöst:</p>
+<p>Die Einbindung einer Swap-Partition wird mit diesem Befehl gel&ouml;st:</p>
 <pre><code># swapoff -a</code></pre>
-<h3 id="weiterführende-infos">Weiterführende Infos</h3>
+<h3 id="weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</h3>
 <p><a href="https://gparted.org/index.php">Hier die umfassende englischsprachige Dokumentation von GParted</a></p>
-<p>Für weitere Partitionierungsoptionen siehe:</p>
+<p>F&uuml;r weitere Partitionierungsoptionen siehe:</p>
 <ul>
-<li><p>Logical Volume Manager <a href="part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung</a></p></li>
-<li><p>Partitionierung mit GPT zur Unterstützung von UEFI <a href="part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT fdisk)</a></p></li>
+<li><p>Logical Volume Manager <a href="https://manual.siduction.org/part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung</a></p></li>
+<li><p>Partitionierung mit GPT zur Unterst&uuml;tzung von UEFI <a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT fdisk)</a></p></li>
 </ul>
 <div id="rev">
 Zuletzt bearbeitet: 2021-07-21

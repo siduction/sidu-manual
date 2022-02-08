@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Live-DVD verwenden</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Live-DVD verwenden</title>
 <style>
-body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
 p               {line-height: 1.3;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
 p code, li code {display: inline; color: #800; padding: 0.15em;}
@@ -16,7 +17,7 @@ hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
 img             {border: 0.1em solid #CCC;}
-a               {color: #334477; text-decoration: underline;}
+a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
 #rev            {float:right; font-size: 0.8em; color: #888;}
@@ -40,51 +41,50 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="live-dvd-verwenden">Live-DVD verwenden</h2>
 <h3 id="eingerichtete-user-auf-dem-live-medium">Eingerichtete User auf dem Live-Medium</h3>
 <p>Auf dem Live-Medium sind die User ‘<strong>siducer</strong>’ und ‘<strong>root</strong>’ (der Systemadministrator) eingerichtet.</p>
-<p>Für den User ‘<strong>siducer</strong>’ ist das Passwort ‘<strong>live</strong>’ gesetzt.<br />
-Für den User ‘<strong>root</strong>’ (Systemadministrator) ist kein Passwort gesetzt.</p>
+<p>F&uuml;r den User ‘<strong>siducer</strong>’ ist das Passwort ‘<strong>live</strong>’ gesetzt.<br />
+F&uuml;r den User ‘<strong>root</strong>’ (Systemadministrator) ist kein Passwort gesetzt.</p>
 <p>Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren bitte den User ‘<strong>siducer</strong>’ mit dem Passwort ‘<strong>live</strong>’ eingeben.</p>
 <h3 id="mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der Live-DVD</h3>
-<p>Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.</p>
+<p>Wir beschreiben nachfolgend mehrere M&ouml;glichkeiten, ein Programm mit root-Rechten auszuf&uuml;hren.</p>
 <warning>
-<strong>Achtung:</strong> <br />Wann immer man mit root-Rechten arbeitet, sollte man genau wissen, was man macht. Für das Surfen im Internet und ähnliche Aktionen sind keine root-Rechte nötig.
+<strong>Achtung:</strong> <br />Wann immer man mit root-Rechten arbeitet, sollte man genau wissen, was man macht. F&uuml;r das Surfen im Internet und &auml;hnliche Aktionen sind keine root-Rechte n&ouml;tig.
 </warning>
 <ol type="1">
-<li><p>Am einfachsten man öffnet ein Terminal und verschafft sich mit der Eingabe “<strong>su</strong>” root-Rechte.<br />
-Um jetzt ein Programm, das mit graphischer Oberfläche arbeitet zu starten, einfach den Programmnamen eingeben.</p>
+<li><p>Am einfachsten man &ouml;ffnet ein Terminal und verschafft sich mit der Eingabe “<strong>su</strong>” root-Rechte.<br />
+Um jetzt ein Programm, das mit graphischer Oberfl&auml;che arbeitet zu starten, einfach den Programmnamen eingeben.</p>
 <pre><code>root@siduction:~# geparted &amp;</code></pre>
-<p>Jetzt wird Gparted mit root-Rechten ausgeführt. Das “&amp;” am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.</p></li>
-<li><p>Ein Befehlseingabefenster öffnen:<br />
+<p>Jetzt wird Gparted mit root-Rechten ausgef&uuml;hrt. Das “&amp;” am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.</p></li>
+<li><p>Ein Befehlseingabefenster &ouml;ffnen:<br />
 Die Tastenkombination <code>Alt</code> + <code>F2</code> benutzen um eine Programmstartzeile zu erhalten und darin den Befehl</p>
 <pre><code>sudo &lt;Anwendung&gt;  </code></pre>
 <p>eingeben.<br />
-Es öffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt wird. Nun einfach die <code>Enter</code>-Taste betätigen, es sei denn, es wurde wie weiter unten beschrieben ein temporäres root-Passwort gesetzt, das einzugeben ist.</p></li>
+Es &ouml;ffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt wird. Nun einfach die <code>Enter</code>-Taste bet&auml;tigen, es sei denn, es wurde wie weiter unten beschrieben ein tempor&auml;res root-Passwort gesetzt, das einzugeben ist.</p></li>
 <li><p>In ein Terminal ohne root-Rechte den Befehl</p>
 <pre><code>sudo &lt;Anwendung&gt; &amp;</code></pre>
 <p>eingeben.</p>
 <p>Bitte beachten:<br />
 <em>sudo</em> ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir empfehlen, den echten root-Account direkt zu nutzen.<br />
-Siehe <a href="term-konsole_de.html#arbeit-als-root">warum sudo nicht konfiguriert ist</a></p></li>
+Siehe <a href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">warum sudo nicht konfiguriert ist</a></p></li>
 </ol>
 <h3 id="ein-neues-passwort-setzen">Ein neues Passwort setzen</h3>
-<p>Für den Fall, dass man auf einer siduction-*.iso ausgesperrt ist, wechselt man mit der Tastenkombination <code>Alt</code> + <code>Strg</code> + <code>F1</code> auf die erste virtuelle Konsole und gibt den Befehl <strong>su</strong> und anschließend <strong>passwd siducer</strong> ein.</p>
+<p>Noch einmal zur Erinnerung: Der Standardbenutzer in der Livesession ist <strong>siducer</strong> mit dem Passwort <strong>live</strong>. Will man das Passwort &auml;ndern, so &ouml;ffnet man ein Terminal und gibt die folgenden Befehle ein:</p>
 <pre><code>siducer@siduction:~$ passwd
 Geben Sie ein neues Passwort ein:
 Geben Sie das neue Passwort erneut ein:
-passwd: Passwort erfolgreich geändert
+passwd: Passwort erfolgreich ge&auml;ndert
 siducer@siduction:~$</code></pre>
-<p>Dieses neue Passwort für <strong>siducer</strong> kann den Rest der Live-Sitzung verwendet werden.<br />
-Mit der Tastenkombination <code>Alt</code> + <code>F7</code> gelangt man wieder zur graphischen Oberfläche und meldet sich mit dem neuen Passwort an.</p>
-<p>Mit der gleichen Prozedur kann man in jedem Terminal auch für root ein Passwort vergeben, allerdings muss man vorher per su root werden. Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als ‘root’ möglich.</p>
+<p>Dieses neue Passwort f&uuml;r <strong>siducer</strong> kann den Rest der Live-Sitzung verwendet werden.</p>
+<p>Mit der gleichen Prozedur kann man in jedem Terminal auch f&uuml;r root ein Passwort vergeben, allerdings muss man vorher per su root werden. Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als ‘root’ m&ouml;glich.</p>
 <h3 id="software-installation-bei-live-sitzung">Software-Installation bei Live-Sitzung</h3>
-<p>Die Befehlsfolge für die Installation von Software während einer Live-Sitzung gleicht der bei einer Festplatteninstallation. Voraussetzung ist ein root-Terminal,</p>
+<p>Die Befehlsfolge f&uuml;r die Installation von Software w&auml;hrend einer Live-Sitzung gleicht der bei einer Festplatteninstallation. Voraussetzung ist ein root-Terminal,</p>
 <pre><code>apt update
-apt install &lt;das-gewünschtes-paket&gt;</code></pre>
+apt install &lt;das-gew&uuml;nschtes-paket&gt;</code></pre>
 <p>oder ein vorangestelltes sudo vor die Befehle.</p>
 <pre><code>sudo apt update
-sudo apt install &lt;das-gewünschtes-paket&gt;</code></pre>
-<p>Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten.</p>
+sudo apt install &lt;das-gew&uuml;nschtes-paket&gt;</code></pre>
+<p>Allerdings gilt: Wenn Du die Live-DVD herunterf&auml;hrst, werden keine &Auml;nderungen behalten.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-06-30
+Zuletzt bearbeitet: 2022-01-13
 </div>
 </body>
 </html>

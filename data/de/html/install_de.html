@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Installation vom Live-Medium</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Installation vom Live-Medium</title>
 <style>
-body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
 p               {line-height: 1.3;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
 p code, li code {display: inline; color: #800; padding: 0.15em;}
@@ -16,7 +17,7 @@ hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
 img             {border: 0.1em solid #CCC;}
-a               {color: #334477; text-decoration: underline;}
+a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
 #rev            {float:right; font-size: 0.8em; color: #888;}
@@ -28,16 +29,16 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <p>Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur</p>
 <ul>
-<li><p><a href="hd-install_de.html">Installation vom Live-Medium auf HDD</a>, den notwendigen Vorbereitungen, der Partitionierung und eine Anleitung für das Installationsprogramm Calamares.</p></li>
-<li><p><a href="hd-ins-opts-oos_de.html">Installation auf USB-Stick - Speicherkarte</a> bei Verwendung von Linux-, Windows- und Mac-Betriebssystemen.</p></li>
-<li><p><a href="hd-ins-fromiso_de.html">Ohne Installation aus ISO-Datei starten</a></p></li>
-<li><p><a href="part-size-examp_de.html">Partitionierung von Installationsmedien</a>, mit Beispielen verschiedener Plattengrößen und Single- oder Dual-Boot.</p></li>
-<li><p><a href="part-uuid_de.html">Benennung von Blockgeräten (UUID)</a>, den verschiedenen Arten der Benennung, der Verwendung von Labeln, der Anpassung der <em>fstab</em> und der Erstellung neuer Einhängepunkte.</p></li>
-<li><p><a href="part-gparted_de.html">Partitionieren mit dem Programm GParted</a> in der graphischen Oberfläche.</p></li>
-<li><p><a href="part-gdisk_de.html">Partitionieren mit gdisk</a> nach dem UEFI-GPT Standard im Terminal.</p></li>
-<li><p><a href="part-cfdisk_de.html">Partitionieren mit fdisk</a> auf Basis des herkömmlichen BIOS mit MBR-Partitionstabellen. (Sollte nur noch bei alter Hardware benutzt werden.)</p></li>
-<li><p><a href="part-lvm_de.html">LVM-Partitionierung (Logical Volume Manager)</a> - in sechs Schritten zum Ziel, und die Verwaltung von <em>Logical Volumen</em>.</p></li>
-<li><p>Private Daten aus dem <a href="home-move_de.html">Verzeichnis /home verschieben</a>, um z. B. bei parallelen Installationen eine Daten-Partition für mehrere Betriebssysteme verfügbar zu machen.</p></li>
+<li><p><a href="https://manual.siduction.org/hd-install_de.html#installation-auf-hdd">Installation vom Live-Medium auf HDD</a>, den notwendigen Vorbereitungen, der Partitionierung und eine Anleitung f&uuml;r das Installationsprogramm Calamares.</p></li>
+<li><p><a href="https://manual.siduction.org/hd-ins-opts-oos_de.html#installation-auf-usb-stick---speicherkarte">Installation auf USB-Stick - Speicherkarte</a> bei Verwendung von Linux-, Windows- und Mac-Betriebssystemen.</p></li>
+<li><p><a href="https://manual.siduction.org/hd-ins-fromiso_de.html#fromiso">Ohne Installation aus ISO-Datei starten</a></p></li>
+<li><p><a href="https://manual.siduction.org/part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung von Installationsmedien</a>, mit Beispielen verschiedener Plattengr&ouml;&szlig;en und Single- oder Dual-Boot.</p></li>
+<li><p><a href="https://manual.siduction.org/part-uuid_de.html#uuid---benennung-von-blockger&auml;ten">Benennung von Blockger&auml;ten (UUID)</a>, den verschiedenen Arten der Benennung, der Verwendung von Labeln, der Anpassung der <em>fstab</em> und der Erstellung neuer Einh&auml;ngepunkte.</p></li>
+<li><p><a href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">Partitionieren mit dem Programm GParted</a> in der graphischen Oberfl&auml;che.</p></li>
+<li><p><a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> nach dem UEFI-GPT Standard im Terminal.</p></li>
+<li><p><a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit fdisk</a> auf Basis des herk&ouml;mmlichen BIOS mit MBR-Partitionstabellen. (Sollte nur noch bei alter Hardware benutzt werden.)</p></li>
+<li><p><a href="https://manual.siduction.org/part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung (Logical Volume Manager)</a> - in sechs Schritten zum Ziel, und die Verwaltung von <em>Logical Volumen</em>.</p></li>
+<li><p>Private Daten aus dem <a href="https://manual.siduction.org/home-move_de.html#das-verzeichnis-home-verschieben">Verzeichnis /home verschieben</a>, um z. B. bei parallelen Installationen eine Daten-Partition f&uuml;r mehrere Betriebssysteme verf&uuml;gbar zu machen.</p></li>
 </ul>
 <div id="rev">
 Zuletzt bearbeitet: 2021-05-21

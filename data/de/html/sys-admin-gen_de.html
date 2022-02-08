@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>siduction Systemadministration</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>siduction Systemadministration</title>
 <style>
-body            {margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
 p               {line-height: 1.3;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
 p code, li code {display: inline; color: #800; padding: 0.15em;}
@@ -16,7 +17,7 @@ hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
 img             {border: 0.1em solid #CCC;}
-a               {color: #334477; text-decoration: underline;}
+a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
 #rev            {float:right; font-size: 0.8em; color: #888;}
@@ -37,7 +38,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#systemd-target-ehemals-runlevel">systemd-target ehemals Runlevel</a></li>
 <li><a href="#beenden-eines-prozesses">Beenden eines Prozesses</a></li>
 <li><a href="#vergessenes-rootpasswort">Vergessenes Rootpasswort</a></li>
-<li><a href="#setzen-neuer-passwörter">Setzen neuer Passwörter</a></li>
+<li><a href="#setzen-neuer-passw&ouml;rter">Setzen neuer Passw&ouml;rter</a></li>
 <li><a href="#schriftarten-in-siduction">Schriftarten in siduction</a></li>
 <li><a href="#userkonfiguration">Userkonfiguration</a></li>
 <li><a href="#cups---das-drucksystem">CUPS - das Drucksystem</a></li>
@@ -47,17 +48,17 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="systemadministration-allgemein">Systemadministration allgemein</h2>
 <h3 id="bootoptionen-cheatcodes">Bootoptionen Cheatcodes</h3>
-<p>Zu Beginn des Bootvorgangs lässt sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste <code>e</code> drückt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und fügt am Ende den oder die gewünschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <code>Strg</code>+<code>X</code> fortgesetzt.</p>
-<p>Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bootoptionen.</p>
+<p>Zu Beginn des Bootvorgangs l&auml;sst sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste <code>e</code> dr&uuml;ckt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und f&uuml;gt am Ende den oder die gew&uuml;nschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <code>Strg</code>+<code>X</code> fortgesetzt.</p>
+<p>Die nachstehenden Link f&uuml;hren zu der Handbuchseite mit den Tabellen f&uuml;r die Bootoptionen.</p>
 <ol type="1">
-<li><a href="cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter (nur Live-CD)</a></li>
-<li><a href="cheatcodes_de.html#bootoptionen-für-den-grafikserver-x">Bootoptionen für den Grafikserver X</a></li>
-<li><a href="cheatcodes_de.html#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
-<li><a href="cheatcodes_de.html#vga-codes">Werte für den allgemeinen Parameter <strong>vga</strong></a></li>
+<li><a href="https://manual.siduction.org/cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter (nur Live-CD)</a></li>
+<li><a href="https://manual.siduction.org/cheatcodes_de.html#bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den Grafikserver X</a></li>
+<li><a href="https://manual.siduction.org/cheatcodes_de.html#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
+<li><a href="https://manual.siduction.org/cheatcodes_de.html#vga-codes">Werte f&uuml;r den allgemeinen Parameter <strong>vga</strong></a></li>
 </ol>
-<p><a href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)</a></p>
+<p><a href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausf&uuml;hrliche Referenzliste f&uuml;r Kernel-Bootcodes von kernel.org (Englisch, PDF)</a></p>
 <h3 id="systemd---dienste-verwalten">systemd - Dienste verwalten</h3>
-<p>systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am häufigsten zu tun haben sind:</p>
+<p>systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am h&auml;ufigsten zu tun haben sind:</p>
 <ul>
 <li>systemd.service<br />
 </li>
@@ -71,24 +72,24 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </li>
 <li>systemd.path</li>
 </ul>
-<p>Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite <a href="systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.Systemd</a>. Die vollständige Dokumentation ist in den man-Pages <strong>systemd.unit</strong>, <strong>systemd.special</strong> und jeweils <strong>systemd.“Unit-Typ”</strong> zu finden.</p>
+<p>Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalit&auml;t. Etwas ausf&uuml;hrlichere Erl&auml;uterungen zu den Units beinhaltet unsere Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.Systemd</a>. Die vollst&auml;ndige Dokumentation ist in den man-Pages <strong>systemd.unit</strong>, <strong>systemd.special</strong> und jeweils <strong>systemd.“Unit-Typ”</strong> zu finden.</p>
 <p>Mit dem Befehl, je nach den Units und den notwendigen Rechten als <em>user</em> oder <em>root</em> aufgerufen,</p>
 <pre><code>systemctl [OPTIONEN...] Befehl [UNIT...]</code></pre>
-<p>wird das Systemd-System gesteuert. <em>systemctl</em> kennt die Autovervollständigung mittels <code>TAB</code> und die Anzeige aller Variationen mittels <code>TAB</code> <code>TAB</code>. Bitte die man-Page <strong>systemctl</strong> lesen.</p>
+<p>wird das Systemd-System gesteuert. <em>systemctl</em> kennt die Autovervollst&auml;ndigung mittels <code>TAB</code> und die Anzeige aller Variationen mittels <code>TAB</code> <code>TAB</code>. Bitte die man-Page <strong>systemctl</strong> lesen.</p>
 <p>Eine nach Typen sortierte Liste mit allen aktiven Units bzw. Unit-Dateien, geben die folgenden Befehle aus:</p>
-<pre><code>$ systemctl list-units          # für Units
-$ systemctl list-unit-files     # für Unit-Dateien</code></pre>
+<pre><code>$ systemctl list-units          # f&uuml;r Units
+$ systemctl list-unit-files     # f&uuml;r Unit-Dateien</code></pre>
 <p>mit der Option <em>-a</em> werden auch alle inaktiven Units bzw. Unit-Dateien ausgegeben.</p>
 <h3 id="systemd.service">systemd.service</h3>
 <p>Zum Starten oder Stoppen einer .service-Unit die Befehle:</p>
 <pre><code>$ systemctl start &lt;UNIT&gt;.service
 $ systemctl stop &lt;UNIT&gt;.service
 $ systemctl restart &lt;UNIT&gt;.service</code></pre>
-<p>verwenden. <em>“Restart”</em> ist z. B. nützlich, um dem Service eine geänderte Konfiguration bekannt zu geben. Sofern für die Aktion root-Rechte nötig sind, wird das root-Passwort abgefragt.<br />
+<p>verwenden. <em>“Restart”</em> ist z. B. n&uuml;tzlich, um dem Service eine ge&auml;nderte Konfiguration bekannt zu geben. Sofern f&uuml;r die Aktion root-Rechte n&ouml;tig sind, wird das root-Passwort abgefragt.<br />
 Zum Beenden eines Dienstes dient auch der Befehl:</p>
 <pre><code>$ systemctl kill -s SIGSTOP --kill-who=control &lt;UNIT&gt;.service</code></pre>
 <p>Mit <em>“kill”</em> stehen im Gegensatz zu <em>“stop”</em> die Optionen <strong>-s, –signal=</strong> und <strong>–kill-who=</strong> bereit. + <strong>-s</strong> sendet eines der Signale <strong>SIGTERM, SIGINT, SIGSTOP</strong>. Vorgabe ist <strong>SIGTERM</strong>. + <strong>–kill-who=</strong> erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind <strong>main, control, all</strong>. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist <strong>all</strong>.<br />
-Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl <em>pkill</em>, der weiter unten im Abschnitt <a href="#beenden-eines-prozesses">Beenden eines Prozesses</a> erläutert wird.</p>
+Dieses Verhalten &auml;hnelt dem altbekannten und weiterhin verwendbaren Befehl <em>pkill</em>, der weiter unten im Abschnitt <a href="#beenden-eines-prozesses">Beenden eines Prozesses</a> erl&auml;utert wird.</p>
 <h3 id="systemd---unit-eingliedern">systemd - UNIT eingliedern</h3>
 <p>Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als Root:</p>
 <pre><code># systemctl enable &lt;UNIT-Datei&gt;</code></pre>
@@ -97,13 +98,13 @@ Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl <em>
 <pre><code># systemctl disable &lt;UNIT-Datei&gt;</code></pre>
 <p>entfernt die Symlinks wieder.</p>
 <p><strong>Beispiel</strong><br />
-Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden möchte, entfernt der Befehl (als Root):</p>
+Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bluetooth verwenden m&ouml;chte, entfernt der Befehl (als Root):</p>
 <pre><code># systemctl disable bluetooth.service</code></pre>
-<p>die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und der Service ist nicht mehr verfügbar und wird auch nicht automatisch gestartet.</p>
+<p>die Symlinks aus allen Anforderungen und Abh&auml;ngigkeiten innerhalb systemd und der Service ist nicht mehr verf&uuml;gbar und wird auch nicht automatisch gestartet.</p>
 <h3 id="systemd-target-ehemals-runlevel">systemd-target ehemals Runlevel</h3>
-<p>Seit der Veröffentlichung von 2013.2 “December” benutzt siduction bereits systemd als Standard-Init-System.<br />
-Die alten sysvinit-Befehle werden weiterhin unterstützt. (hierzu ein Zitat aus <em>man systemd</em>: “… wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.”)<br />
-Ausführlichere Informationen zum systemd enthält die Handbuchseite <a href="systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.systemd</a>.<br />
+<p>Seit der Ver&ouml;ffentlichung von 2013.2 “December” benutzt siduction bereits systemd als Standard-Init-System.<br />
+Die alten sysvinit-Befehle werden weiterhin unterst&uuml;tzt. (hierzu ein Zitat aus <em>man systemd</em>: “… wird aus Kompatibilit&auml;tsgr&uuml;nden und da es leichter zu tippen ist, bereitgestellt.”)<br />
+Ausf&uuml;hrlichere Informationen zum systemd enth&auml;lt die Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.systemd</a>.<br />
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als <strong>Ziel-Unit</strong>. Sie besitzen die Erweiterung <strong>.target</strong>.</p>
 <table>
 <colgroup>
@@ -119,54 +120,54 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 <tbody>
 <tr class="odd">
 <td>emergency.target</td>
-<td>Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden.</td>
+<td>Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt f&uuml;r Schritt begleitet werden.</td>
 </tr>
 <tr class="even">
 <td>rescue.target</td>
-<td>Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden.</td>
+<td>Startet das Basissystem (einschlie&szlig;lich Systemeinh&auml;ngungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target k&ouml;nnte dieses Ziel als single-user.target betrachtet werden.</td>
 </tr>
 <tr class="odd">
 <td>multi-user.target</td>
-<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. <a href="sys-admin-apt_de.html#aktualisierung-des-systems">Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt</a> .</td>
+<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten m&ouml;chte. <a href="https://manual.siduction.org/sys-admin-apt_de.html#aktualisierung-des-systems">Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgef&uuml;hrt</a> .</td>
 </tr>
 <tr class="even">
 <td>graphical.target</td>
-<td>Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System.</td>
+<td>Die Unit f&uuml;r den Mehrbenutzermodus mit Netzwerkf&auml;higkeit und einem laufenden X-Window-System.</td>
 </tr>
 <tr class="odd">
 <td>default.target</td>
-<td>Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer noX).</td>
+<td>Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (au&szlig;er noX).</td>
 </tr>
 </tbody>
 </table>
-<p>Ein Blick in die Dokumentation <strong>man SYSTEMD.SPECIAL(7)</strong> ist obligatorisch um die Zusammenhänge der verschiedenen <em>.target</em> - <em>Unit</em> zu verstehen.</p>
+<p>Ein Blick in die Dokumentation <strong>man SYSTEMD.SPECIAL(7)</strong> ist obligatorisch um die Zusammenh&auml;nge der verschiedenen <em>.target</em> - <em>Unit</em> zu verstehen.</p>
 <p>Um in den Runlevel zur Systemaktualisierung zu wechseln, ist im Terminal folgender Befehl als root zu verwenden:</p>
 <pre><code># systemctl isolate multi-user.target</code></pre>
-<p>Wichtig ist hierbei der Befehl <strong>isolate</strong>, der dafür sorgt, dass alle Dienste und Services, welche die gewählte Unit <strong>nicht</strong> anfordert, beendet werden.</p>
+<p>Wichtig ist hierbei der Befehl <strong>isolate</strong>, der daf&uuml;r sorgt, dass alle Dienste und Services, welche die gew&auml;hlte Unit <strong>nicht</strong> anfordert, beendet werden.</p>
 <p>Um das System herunter zu fahren bzw. neu zu starten, sollte der Befehl</p>
 <pre><code># systemctl poweroff
    bzw.
 # systemctl reboot</code></pre>
-<p>verwendet werden. <em>poweroff</em> bzw. <em>reboot</em> (jeweils ohne <em>.target</em>) ist ein Befehl, der mehrere Unit in der richtigen Reihenfolge hereinholt, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.</p>
+<p>verwendet werden. <em>poweroff</em> bzw. <em>reboot</em> (jeweils ohne <em>.target</em>) ist ein Befehl, der mehrere Unit in der richtigen Reihenfolge hereinholt, um das System geordnet zu beenden und ggf. einen Neustart auszuf&uuml;hren.</p>
 <h3 id="beenden-eines-prozesses">Beenden eines Prozesses</h3>
 <p><strong>pgrep und pkill</strong></p>
-<p>Unabhängig von systemd ist <strong>pgrep</strong> und <strong>pkill</strong> ein sehr nützliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder root-Rechten in einer Konsole oder TTY ausgeführt:</p>
+<p>Unabh&auml;ngig von systemd ist <strong>pgrep</strong> und <strong>pkill</strong> ein sehr n&uuml;tzliches Duo um unliebsame Prozesse zu beenden. Mit Benutzer- oder root-Rechten in einer Konsole oder TTY ausgef&uuml;hrt:</p>
 <pre><code>$ pgreg &lt;tab&gt; &lt;tab&gt;</code></pre>
 <p>listet alle Prozesse mit ihrem Namen, aber ohne die Prozess-ID (PID) auf. Wir benutzen im Anschluss Firefox als Beispiel.<br />
-Die Option <strong>-l</strong> gibt die PID und den vollständigen Namen aus:</p>
+Die Option <strong>-l</strong> gibt die PID und den vollst&auml;ndigen Namen aus:</p>
 <pre><code>$ pgrep -l firefox
 4279 firefox-esr</code></pre>
-<p>Um, sofern vorhanden, Unterprozesse anzuzeigen benutzen wir zusätzlich die Option <strong>-P</strong> und nur die PID:</p>
+<p>Um, sofern vorhanden, Unterprozesse anzuzeigen benutzen wir zus&auml;tzlich die Option <strong>-P</strong> und nur die PID:</p>
 <pre><code>$ pgrep -l -P 4279
 4387 WebExtensions
 4455 file:// Content
 231999 Web Content</code></pre>
-<p>anschließend</p>
+<p>anschlie&szlig;end</p>
 <pre><code>$ pkill firefox-esr</code></pre>
 <p>beendet Firefox mit dem Standardsignal <em>SIGTERM</em>.<br />
-Mit der Option <strong>–signal</strong>, gefolgt von der Signalnummer oder dem Signalnamen, sendet pkill das gewünschte Signal an den Prozess. Eine übersichtliche Liste der Signale erhält man mit <em>kill -L</em>.</p>
+Mit der Option <strong>–signal</strong>, gefolgt von der Signalnummer oder dem Signalnamen, sendet pkill das gew&uuml;nschte Signal an den Prozess. Eine &uuml;bersichtliche Liste der Signale erh&auml;lt man mit <em>kill -L</em>.</p>
 <p><strong>htop</strong></p>
-<p>Im Terminal eingegeben, ist htop eine gute Alternative, da sehr viele nützliche Informationen zu den Prozessen und zur Systemauslastung präsentiert werden. Dazu zählen eine Baumdarstellung, Filter- und Suchfunktion, Kill-Signal und einiges mehr. Die Bedienung ist selbsterklärend.</p>
+<p>Im Terminal eingegeben, ist htop eine gute Alternative, da sehr viele n&uuml;tzliche Informationen zu den Prozessen und zur Systemauslastung pr&auml;sentiert werden. Dazu z&auml;hlen eine Baumdarstellung, Filter- und Suchfunktion, Kill-Signal und einiges mehr. Die Bedienung ist selbsterkl&auml;rend.</p>
 <p><strong>Notausgang</strong></p>
 <p>Als letzten Rettungsanker bevor der Netzstecker gezogen wird, kann man den Befehl <em>killall -9</em> im Terminal absetzen.</p>
 <h3 id="vergessenes-rootpasswort">Vergessenes Rootpasswort</h3>
@@ -174,24 +175,24 @@ Mit der Option <strong>–signal</strong>, gefolgt von der Signalnummer oder dem
 <p>Dazu muss zuerst die Live-CD gebootet werden.</p>
 <p>Als Root muss die Rootpartition eingebunden werden (z. B. als /dev/sdb2)</p>
 <pre><code>mount /dev/sdb2 /media/sdb2</code></pre>
-<p>Nun folgen ein chroot in die Rootpartition (chroot=changed root … “veränderter Root”) und die Eingabe eines neuen Passwortes:</p>
+<p>Nun folgen ein chroot in die Rootpartition (chroot=changed root … “ver&auml;nderter Root”) und die Eingabe eines neuen Passwortes:</p>
 <pre><code>chroot /media/sdb2 passwd</code></pre>
-<h3 id="setzen-neuer-passwörter">Setzen neuer Passwörter</h3>
-<p>Um ein User-Passwort zu ändern, als <strong>$ user</strong> :</p>
+<h3 id="setzen-neuer-passw&ouml;rter">Setzen neuer Passw&ouml;rter</h3>
+<p>Um ein User-Passwort zu &auml;ndern, als <strong>$ user</strong> :</p>
 <pre><code>$ passwd</code></pre>
-<p>Um das Root-Passwort zu ändern, als <strong># root</strong> :</p>
+<p>Um das Root-Passwort zu &auml;ndern, als <strong># root</strong> :</p>
 <pre><code># passwd</code></pre>
-<p>Um ein User-Passwort als Administrator zu ändern, als <strong># root</strong> :</p>
+<p>Um ein User-Passwort als Administrator zu &auml;ndern, als <strong># root</strong> :</p>
 <pre><code># passwd &lt;user&gt;</code></pre>
 <h3 id="schriftarten-in-siduction">Schriftarten in siduction</h3>
-<p>Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig vorab die richtigen Einstellungen und Konfigurationen der Hardware zu prüfen.</p>
-<p><strong>Einstellungen prüfen </strong></p>
+<p>Um, sofern n&ouml;tig, die Darstellung der Schriften zu verbessern, ist es wichtig vorab die richtigen Einstellungen und Konfigurationen der Hardware zu pr&uuml;fen.</p>
+<p><strong>Einstellungen pr&uuml;fen </strong></p>
 <ul>
 <li><p><strong>Korrekte Grafiktreiber</strong><br />
-Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite <a href="gpu_de.html#grafiktreiber">Grafiktreiber</a> des Handbuchs.</p></li>
-<li><p><strong>Korrekte Bildschirmauflösungen und Bildwiederholungsraten</strong><br />
-Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.</p>
-<p>Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:</p>
+Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vern&uuml;nftige L&ouml;sung ist in diesen F&auml;llen die Installation von propriet&auml;ren, nicht quelloffenen Treibern. Aus rechtlichen Gr&uuml;nden kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite <a href="https://manual.siduction.org/gpu_de.html#grafiktreiber">Grafiktreiber</a> des Handbuchs.</p></li>
+<li><p><strong>Korrekte Bildschirmaufl&ouml;sungen und Bildwiederholungsraten</strong><br />
+Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in aller Regel richtig an das Betriebssystem &uuml;bergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu &uuml;berschreiben.</p>
+<p>Um zu pr&uuml;fen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:</p>
 <pre><code> $ xrandr  
  Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
  HDMI-1 disconnected (normal left inverted right x axis y axis)  
@@ -205,38 +206,38 @@ Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, ent
    720x400       70.08  
  DP-1 disconnected (normal left inverted right x axis y axis)  </code></pre>
 <p>Der mit <strong>*</strong> markierte Wert kennzeichnet die verwendete Einstellung,<br />
-1680 x 1050 Pixel bei einer physikalischen Größe von 474 x 296 mm. Zusätzlich berechnen wir die tatsächliche Auflösung in Px/inch (dpi) um einen Anhaltspunkt für die Einstellungen der Schriften zu erhalten. Mit den oben ausgegebenen Werten erhalten wir 90 dpi.<br />
+1680 x 1050 Pixel bei einer physikalischen Gr&ouml;&szlig;e von 474 x 296 mm. Zus&auml;tzlich berechnen wir die tats&auml;chliche Aufl&ouml;sung in Px/inch (dpi) um einen Anhaltspunkt f&uuml;r die Einstellungen der Schriften zu erhalten. Mit den oben ausgegebenen Werten erhalten wir 90 dpi.<br />
 1680 Px <code>x</code> 25,4 mm/inch <code>:</code> 474 mm <code>=</code> 90 Px/inch (dpi)</p></li>
-<li><p><strong>Überprüfung</strong><br />
-Mit einem Zollstock oder Maßband ermitteln wir die tatsächliche Größe des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.</p></li>
+<li><p><strong>&Uuml;berpr&uuml;fung</strong><br />
+Mit einem Zollstock oder Ma&szlig;band ermitteln wir die tats&auml;chliche Gr&ouml;&szlig;e des Monitors. Das Ergebnis sollte um weniger als drei Millimeter von den durch xrandr ausgegebenen Werten abweichen.</p></li>
 </ul>
 <p><strong>Basiskonfiguration der Schriftarten</strong></p>
-<p>siduction nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. In der graphischen Oberfläche kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gewünschte Schriftbild zu erhalten.</p>
+<p>siduction nutzt freie Fonts, die sich in Debian als ausgewogen bew&auml;hrt haben. In der graphischen Oberfl&auml;che kommen TTF- bzw. Outline-Schriften zur Anwendung. Wenn eigene Schriftarten gew&auml;hlt werden, m&uuml;ssen eventuell neue Konfigurationsanpassungen vorgenommen werden, um das gew&uuml;nschte Schriftbild zu erhalten.</p>
 <p>Die systemweite Grundkonfiguration erfolgt im Terminal als root mittels:</p>
 <pre><code># dpkg-reconfigure fontconfig-config</code></pre>
-<p>Bei den aufgerufenen Dialogen haben sich diese Einstellungen bewährt:</p>
+<p>Bei den aufgerufenen Dialogen haben sich diese Einstellungen bew&auml;hrt:</p>
 <ol type="1">
-<li><p>Bitte wählen Sie zur Bildschirmdarstellung die bevorzugte Methode zum Schriftabgleich (font tuning) aus.<br />
+<li><p>Bitte w&auml;hlen Sie zur Bildschirmdarstellung die bevorzugte Methode zum Schriftabgleich (font tuning) aus.<br />
 “autohinter”</p></li>
-<li><p>Bitte wählen Sie, inwieweit Font-Hinting standardmäßig angewendet wird.<br />
+<li><p>Bitte w&auml;hlen Sie, inwieweit Font-Hinting standardm&auml;&szlig;ig angewendet wird.<br />
 “mittel”</p></li>
 <li><p>Die Einbeziehung der Subpixel-Ebene verbessert die Textdarstellung auf Flachbildschirmen (LCD)<br />
 “automatisch”</p></li>
-<li><p>Standardmäßig nutzen Anwendungen, die fontconfig unterstützen, nur Outline-Schriften.<br />
-Standardmäßig Bitmap-Schriften verwenden?<br />
+<li><p>Standardm&auml;&szlig;ig nutzen Anwendungen, die fontconfig unterst&uuml;tzen, nur Outline-Schriften.<br />
+Standardm&auml;&szlig;ig Bitmap-Schriften verwenden?<br />
 “nein”</p></li>
 </ol>
-<p>Anschließend ist</p>
+<p>Anschlie&szlig;end ist</p>
 <pre><code># dpkg-reconfigure fontconfig</code></pre>
 <p>notwendig um die Konfiguration neu zu schreiben.</p>
-<p>Manchmal bedeutet der Neuaufbau des Font-Caches eine Lösung (der erste Befehl gilt der Datensicherung mit einem Datumsanhang, der zweite Befehl ist ohne Zeilenumbruch, d. h. in einer Zeile einzugeben):</p>
+<p>Manchmal bedeutet der Neuaufbau des Font-Caches eine L&ouml;sung (der erste Befehl gilt der Datensicherung mit einem Datumsanhang, der zweite Befehl ist ohne Zeilenumbruch, d. h. in einer Zeile einzugeben):</p>
 <pre><code># mv /etc/fonts/ /etc/fonts_$(date +%F)/
 # apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config</code></pre>
 <h3 id="userkonfiguration">Userkonfiguration</h3>
-<p><strong>Darstellungsart, Größe, 4K-Display</strong></p>
-<p>Beachtet werden muss, dass jede Schriftart ein ideales Größenspektrum besitzt, sodass identische Größeneinstellungen nicht bei jeder Schriftart zu einem gleich guten Ergebnis führen muss.<br />
-Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie werden auf dem Desktop sofort wirksam, Anwendungen müssen zum Teil neu gestartet werden.<br />
-Die Liste zeigt, wo im Menü die Einstellungen zu finden sind.</p>
+<p><strong>Darstellungsart, Gr&ouml;&szlig;e, 4K-Display</strong></p>
+<p>Beachtet werden muss, dass jede Schriftart ein ideales Gr&ouml;&szlig;enspektrum besitzt, sodass identische Gr&ouml;&szlig;eneinstellungen nicht bei jeder Schriftart zu einem gleich guten Ergebnis f&uuml;hren muss.<br />
+Die Einstellungen kann man bequem in der graphischen Oberfl&auml;che vornehmen. Sie werden auf dem Desktop sofort wirksam, Anwendungen m&uuml;ssen zum Teil neu gestartet werden.<br />
+Die Liste zeigt, wo im Men&uuml; die Einstellungen zu finden sind.</p>
 <ul>
 <li><p>KDE Plasma<br />
 <em>Systemeinstellungen</em> &gt; <em>Schriftarten</em> &gt; <em>Schriftarten</em><br />
@@ -246,16 +247,16 @@ Die Liste zeigt, wo im Menü die Einstellungen zu finden sind.</p>
 <li><p>XFCE<br />
 <em>Einstellungen</em> &gt; <em>Erscheinungsbild</em> &gt; Reiter: <em>Schriften</em></p></li>
 </ul>
-<p><strong>Begriffserklärung</strong><br />
-<em>Kantenglättung / Antialising</em> :<br />
-Das ist die Helligkeitsabstufung der Nachbarpixel an den Kanten um bei Rundungen den Treppeneffekt zu vermindern. Es bewirkt aber eine gewisse Unschärfe der Schriftzeichen.</p>
+<p><strong>Begriffserkl&auml;rung</strong><br />
+<em>Kantengl&auml;ttung / Antialising</em> :<br />
+Das ist die Helligkeitsabstufung der Nachbarpixel an den Kanten um bei Rundungen den Treppeneffekt zu vermindern. Es bewirkt aber eine gewisse Unsch&auml;rfe der Schriftzeichen.</p>
 <p><em>Subpixel-Rendering / Farbreihenfolge / RGB</em> :<br />
-Das ist eine Erweiterung des Antialising für LCD-Bildschirme, indem zusätzlich die Farbkomponenten eines Pixels angesteuert werden.</p>
+Das ist eine Erweiterung des Antialising f&uuml;r LCD-Bildschirme, indem zus&auml;tzlich die Farbkomponenten eines Pixels angesteuert werden.</p>
 <p><em>Hinting</em> :<br />
-Ist die Anpassung (Veränderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei <strong>4K</strong>-Bildschirmen ist Hinting meist nicht notwendig.</p>
+Ist die Anpassung (Ver&auml;nderung) der Schriftzeichen an das Pixelrasters des Bildschirms. Dadurch verringert sich der Bedarf an Antialising, aber die Schriftform entspricht nicht mehr genau den Vorgaben, es sei denn, die Entwickler der Schrift haben bereits Hintingvarianten integriert. Bei <strong>4K</strong>-Bildschirmen ist Hinting meist nicht notwendig.</p>
 <p><em>DPI-Wert / Skalierungsfaktor</em> :<br />
-Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur für die Schriften. Hier lässt sich die Darstellung auf einem <strong>4K</strong>-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei <strong>4k</strong>-Bildschirmen.</p>
-<p><strong>4k Auflösung</strong>: 3840 x 2160 (16:9)</p>
+Die Einstellm&ouml;glichkeit eines anderen DPI-Wertes bzw. einer anderen Gr&ouml;&szlig;e nur f&uuml;r die Schriften. Hier l&auml;sst sich die Darstellung auf einem <strong>4K</strong>-Bildschirm schnell verbessern. Die folgende Tabelle verdeutlicht den Zusammenhang zwischen der Bildschirmdiagonalen und dem DPI-Wert bei <strong>4k</strong>-Bildschirmen.</p>
+<p><strong>4k Aufl&ouml;sung</strong>: 3840 x 2160 (16:9)</p>
 <table>
 <thead>
 <tr class="header">
@@ -306,7 +307,7 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 </table>
 <p>Demnach ist bei <strong>4k-Bildschirmen</strong> mit 24 Zoll Diagonale ein Skalierungsfaktor von 2,0 und mit 37 Zoll Diagonale ein Skalierungsfaktor von 1,2 erforderlich um etwa gleiche Darstellungen entsprechend SXGA oder WSXGA Bildschirmen mit 90 DPI zu erhalten.</p>
 <h3 id="cups---das-drucksystem">CUPS - das Drucksystem</h3>
-<p>KDE hat einen großen Abschnitt zu CUPS in der KDE-Hilfe. Trotzdem folgt nun eine Anleitung, was man bei Problemen mit CUPS nach einem full-upgrade tun kann. Eine der bekannten Lösungen ist:</p>
+<p>KDE hat einen gro&szlig;en Abschnitt zu CUPS in der KDE-Hilfe. Trotzdem folgt nun eine Anleitung, was man bei Problemen mit CUPS nach einem full-upgrade tun kann. Eine der bekannten L&ouml;sungen ist:</p>
 <pre><code># modprobe lp
 # echo lp &gt;&gt; /etc/modules
 # apt purge cups
@@ -315,32 +316,32 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 # apt install cups printer-driver-gutenprint hplip</code></pre>
 <p>CUPS wird nun neu gestartet:</p>
 <pre><code># systemctl restart cups.service</code></pre>
-<p>Im Anschluss daran wird ein Web-Browser geöffnet und in die Adresszeile eingegeben:</p>
+<p>Im Anschluss daran wird ein Web-Browser ge&ouml;ffnet und in die Adresszeile eingegeben:</p>
 <p>http://localhost:631</p>
-<p>Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box öffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielführend. Es geht nichts. Die Lösung ist, den Benutzernamen in <strong>root</strong> zu ändern und das <strong>root-Passwort</strong> einzugeben.</p>
-<p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen über verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verfügung. Die Firma Samsung lieferte früher eigene Linux-Treiber für ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>hplib</em> auf. Derzeit funktioniert für Samsung-Drucker und Samsung-Multifunktionsgeräte am ehesten das Paket <strong>printer-driver-splix</strong>. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per <a href="https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/">IPP-Everywhere</a>.</p>
+<p>Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box &ouml;ffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielf&uuml;hrend. Es geht nichts. Die L&ouml;sung ist, den Benutzernamen in <strong>root</strong> zu &auml;ndern und das <strong>root-Passwort</strong> einzugeben.</p>
+<p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen &uuml;ber verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verf&uuml;gung. Die Firma Samsung lieferte fr&uuml;her eigene Linux-Treiber f&uuml;r ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>hplib</em> auf. Derzeit funktioniert f&uuml;r Samsung-Drucker und Samsung-Multifunktionsger&auml;te am ehesten das Paket <strong>printer-driver-splix</strong>. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per <a href="https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/">IPP-Everywhere</a>.</p>
 <h3 id="sound-in-siduction">Sound in siduction</h3>
-<p><em>In älteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.</em></p>
-<p>Die meisten Tonprobleme lassen sich lösen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer öffnet und das Häkchen von “stumm” oder “mute” entfernt bzw. den entsprechenden Schieber betätigt. Ist das Lautsprecher-Symbol nicht vorhanden, genügt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl</p>
-<p>in KDE: <em>Kontrollleiste Optionen</em> &gt; <em>Miniprogramme hinzufügen…</em><br />
-in XFCE: <em>Leiste</em> &gt; <em>Neue Elemente hinzufügen…</em></p>
-<p>und das gewünschte Modul auswählen.</p>
+<p><em>In &auml;lteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.</em></p>
+<p>Die meisten Tonprobleme lassen sich l&ouml;sen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer &ouml;ffnet und das H&auml;kchen von “stumm” oder “mute” entfernt bzw. den entsprechenden Schieber bet&auml;tigt. Ist das Lautsprecher-Symbol nicht vorhanden, gen&uuml;gt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl</p>
+<p>in KDE: <em>Kontrollleiste Optionen</em> &gt; <em>Miniprogramme hinzuf&uuml;gen…</em><br />
+in XFCE: <em>Leiste</em> &gt; <em>Neue Elemente hinzuf&uuml;gen…</em></p>
+<p>und das gew&uuml;nschte Modul ausw&auml;hlen.</p>
 <p><strong>KDE Plasma</strong></p>
-<p>Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet das Einstellungsfenster für die Soundausgabe. Die Benutzerführung ist selbsterklärend.</p>
+<p>Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste &ouml;ffnet das Einstellungsfenster f&uuml;r die Soundausgabe. Die Benutzerf&uuml;hrung ist selbsterkl&auml;rend.</p>
 <p><strong>GNOME</strong></p>
-<p>Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste öffnet ein Drop-down-Menü, dass einen Schieber für die Lautstärke enthält.<br />
-Weitere Einstellungen sind wie folgt möglich:</p>
-<p>Rechtsklick auf die Arbeitsfläche &gt; <em>Einstellungen</em> &gt; <em>Audio</em></p>
+<p>Ein Rechtsklick auf das Lautsprechersymbol in der Kontrollleiste &ouml;ffnet ein Drop-down-Men&uuml;, dass einen Schieber f&uuml;r die Lautst&auml;rke enth&auml;lt.<br />
+Weitere Einstellungen sind wie folgt m&ouml;glich:</p>
+<p>Rechtsklick auf die Arbeitsfl&auml;che &gt; <em>Einstellungen</em> &gt; <em>Audio</em></p>
 <p><strong>XFCE Pulse-Audio</strong></p>
-<p>Die Einstellungen erfolgen über das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerführung selbsterklärend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl</p>
+<p>Die Einstellungen erfolgen &uuml;ber das Lautsprechersymbol (Puls-Audio-Modul) in der Kontrollleiste. Auch hier ist die Benutzerf&uuml;hrung selbsterkl&auml;rend. Fehlt das Symbol, kann man sich auf die Schnelle mit einem Terminal und dem Befehl</p>
 <pre><code>$ pavucontrol</code></pre>
-<p>behelfen und nimmt im neu geöffneten Fenster die Einstellungen vor.</p>
+<p>behelfen und nimmt im neu ge&ouml;ffneten Fenster die Einstellungen vor.</p>
 <p><strong>Alsamixer</strong></p>
 <p>Wer alsamixer bevorzugt, findet diesen im Paket alsa-utils:</p>
 <pre><code># apt update
 # apt install alsa-utils
 # exit</code></pre>
-<p>Die gewünschten Sound-Einstellungen werden als <strong>$user</strong> von einem Terminal vorgenommen:</p>
+<p>Die gew&uuml;nschten Sound-Einstellungen werden als <strong>$user</strong> von einem Terminal vorgenommen:</p>
 <pre><code>$ alsamixer</code></pre>
 <div id="rev">
 Zuletzt bearbeitet: 2021-11-29
