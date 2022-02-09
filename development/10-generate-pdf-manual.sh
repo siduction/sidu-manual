@@ -35,7 +35,7 @@ then
     language=en-US
     titel="siduction manual"
     team="siduction team"
-    datum=$(date +%m/%d/%Y)
+    datum=$(LC_ALL=en_US.utf8 date '+%B %d, %Y')
 #elif [ "$1" = "it" ]           # New translations dummy
 #then
 #    paper=a4paper
