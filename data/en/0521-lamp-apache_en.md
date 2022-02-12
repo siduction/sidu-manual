@@ -226,7 +226,7 @@ If a content management system (software for collaborative editing of website co
 4. Disadvantages of these settings
 
    When creating new directories and files below "*DocumentRoot*", the owner is the respective "*user*" and not "*www-data*". This prevents the Apache web server from reading the files.  
-   The solution is a "*Systemd Path Unit*", which monitors changes below "*DocumentRoot*" and adjusts the owner and file permissions. (See the example in the [Systemd-Path](./0715-systemd-path_en.md#systemd-path) manual page).
+   The solution is a "*Systemd Path Unit*", which monitors changes below "*DocumentRoot*" and adjusts the owner and file permissions. (See the example in the [Systemd-Path](0715-systemd-path_en.md#systemd-path) manual page).
 
 **Without CMS**
 

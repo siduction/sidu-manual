@@ -2,7 +2,7 @@
 
 ## systemd-path
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](./0411-systemd-unit-datei_de.md#systemd-unit-datei).  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](0411-systemd-unit-datei_de.md#systemd-unit-datei).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.path**, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.
 
 Die "*.path-Unit*" ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.  
@@ -54,7 +54,7 @@ Die speziellen Optionen sind:
 
 **Ein Beispiel**  
 
-Auf der Konfiguration des Apache-Webservers entsprechend unserer Handbuchseite [LAMP - Apache, Benutzer und Rechte](./0521-lamp-apache_de.md#benutzer-und-rechte) basierend, wollen wir das Zusammenspiel der *.path-Unit* mit anderen *systemd-Unit* verdeutlichen.
+Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Handbuchseite [LAMP - Apache, Benutzer und Rechte](0521-lamp-apache_de.md#benutzer-und-rechte), wollen wir das Zusammenspiel der *.path-Unit* mit anderen *systemd-Unit* verdeutlichen.
 
 Die Abbildung *path-Unit-Funktion* stellt die Abhängigkeiten der systemd-Units unseres Beispiels dar.
 

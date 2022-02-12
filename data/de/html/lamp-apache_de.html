@@ -183,7 +183,7 @@ Wir schauen uns die derzeitigen Rechte an:</p>
 <p>Jetzt haben in “<em>DocumentRoot</em>” nur Mitglieder der Gruppe “<em>developer</em>” Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.</p></li>
 <li><p>Nachteile dieser Einstellungen</p>
 <p>Beim Anlegen neuer Verzeichnisse und Dateien unterhalb “<em>DocumentRoot</em>” ist der Eigent&uuml;mer der jeweilige “<em>User</em>” und nicht “<em>www-data</em>”. Dadurch kann der Apache-Webserver die Dateien nicht lesen.<br />
-Abhilfe schafft eine “<em>Systemd Path Unit</em>”, die &Auml;nderungen unterhalb “<em>DocumentRoot</em>” &uuml;berwacht und die Eigent&uuml;mer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite <a href="./https://manual.siduction.org/systemd-path_de.html#systemd-path">Systemd-Path</a>.)</p></li>
+Abhilfe schafft eine “<em>Systemd Path Unit</em>”, die &Auml;nderungen unterhalb “<em>DocumentRoot</em>” &uuml;berwacht und die Eigent&uuml;mer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite <a href="https://manual.siduction.org/systemd-path_de.html#systemd-path">Systemd-Path</a>.)</p></li>
 </ol>
 <p><strong>Ohne CMS</strong></p>
 <p>Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erh&ouml;hten Wartungsaufwand. Zus&auml;tzlich zu den zuvor get&auml;tigten Einstellungen kann dem Apache-Webserver das Schreibrecht an “<em>DocumentRoot</em>” entzogen werden, um die Sicherheit zu st&auml;rken, denn f&uuml;r den Fall, dass ein Angreifer eine L&uuml;cke in Apache findet, erh&auml;lt er dadurch keine Schreibrechte in “<em>DocumentRoot</em>”.</p>
