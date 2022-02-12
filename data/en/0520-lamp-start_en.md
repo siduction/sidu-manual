@@ -1,45 +1,30 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links (there was'nt any)  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % LAMP test server for developers (local)
 
 ## LAMP web server
 
-**A local test server for developers**.
+**A local test server for developers**
 
-The acronym **LAMP** refers to a set of free software shared to run dynamic web sites:
+The acronym **LAMP** refers to a set of free software used to run dynamic web sites:
 
 + **L**inux: operating system  
 + **A**pache: web server  
-+ **M**ariaDb: database server (as of Debian 9 'Stretch', previously mySQL).  
-+ **P**HP, Perl and/or Python: scripting languages  
++ **M**ariaDb: database server (as of Debian 9 'Stretch', previously mySQL)  
++ **P**HP, Perl, and/or Python: scripting languages  
 
-Uses as a server:
+Use cases as a server:
 
-1. **a local test server for webdesigners without internet connection (see this chapter)**  
-2. a private (data) server with internet connection  
+1. **a local test server for webdesigners without Internet connection (see this chapter)**  
+2. a private (data) server with Internet connection  
 3. a private web server with full Internet connection  
 4. a commercial web server
 
-Our goal is to set up a LAMP test server for developers that is directly connected to the workstation PC via LAN. Furthermore, for security reasons, there should be no connection to a local network or even to the Internet for the server.
+Our goal is to set up a LAMP test server for developers that is directly connected to the workstation PC via LAN. Furthermore, for security reasons, the server should not be connected to a local network or even to the Internet.
 The only exception is that the server will be temporarily connected to the Internet via a second network interface exclusively for system and software updates.
 
 > Please note:  
-> The desktop PC used for daily work should not be used as a server. A separate PC should be used as the server, which otherwise does not perform any other tasks.
+> The desktop PC used for daily work should not be used as a server. Instead, a separate PC should be used, which does not perform any other tasks.
 
-At least 500MB RAM should be available in the server PC. Less RAM will cause problems, because a server with MariaDb/MySQL needs a lot of RAM to run responsively.
+At least 500MB RAM should be available in the server PC. Less RAM will cause problems because a server with MariaDb/MySQL needs a lot of RAM to run appropiately.
 
 The packages to install are:
 
@@ -52,7 +37,7 @@ php7.4-mysql
 phpmyadmin  
 ~~~
 
-As usual with siduction, we do the installations in the "multi-user.target" (init 3) in the terminal.
+As usual with siduction, we run the installations in the "multi-user.target" (init 3) in the terminal.
 
 **Preparations**
 
@@ -65,8 +50,8 @@ If the command line browser *w3m* has not been installed yet, we will do it now:
 
 This allows us to test *Apache* and *PHP* immediately in the terminal and return to the graphical user interface only after all necessary installations have been completed.
 
-Now we still clean up apt.  
-The command *apt autoremove* should result in the following output. If not, we confirm the removal of unneeded packages with `j`.
+Now we need to clean up apt.  
+The command **`apt autoremove`** should result in the following output. If not, we confirm the removal of unneeded packages with `j`.
 
 ~~~
 #apt autremove
@@ -76,34 +61,34 @@ Status information is read.... Done
 0 updated, 0 reinstalled, 0 to remove, and 0 not updated.
 ~~~
 
-This action makes it quite easier for us to repair in case of a faulty installation.  
-See below [Troubleshooting](0520-lamp-start_en.md#troubleshooting)
+In case of a corrupted installation, this will simplify the repair.  
+See below [Troubleshooting](0520-lamp-start_en.md#troubleshooting).
 
 It is useful to note down some data already before the installation.
 
 Necessary during the installation:
 
-+ A **password** for the database user **root** in *phpMyAdmin*.
++ a **password** for the database user **root** in *phpMyAdmin*
 
-Later, for the configuration necessary:
+Later, necessary for the configuration:
 
 + **Apache**  
-    + *Server Name
-    + *server alias
+    + *Server Name*
+    + *server alias*
     + *IP address* of the server
     + *Name* of the PC
     + *IP address* of the PC
 
 + **MariaDB:**  
-    + The *name of the database* to be used for the development project.
-    + The *name* (login name) of a new databank user for the development project.
-    + The *password* for the new databank user.
-    + The *name* (login name) of a new database administrator.
-    + The *password* for the database administrator.
+    + the *name of the database* to be used for the development project
+    + the *name* (login name) of a new databank user for the development project
+    + the *password* for the new databank user
+    + the *name* (login name) of a new database administrator
+    + the *password* for the database administrator
 
 ### Install Apache
 
-The installation of the Apache web server requires only the following two commands. The install command gets the additional packages *apache2-data* and *apache2-utils*. Then we query the status of Apache and test the start and stop statements right away.
+In order to install the Apache web server, you only need the following two commands. The install command gets the additional packages *apache2-data* and *apache2-utils*. Then we query the status of *Apache* and test the start and stop instructions right away.
 
 ~~~
 # apt update
@@ -122,7 +107,7 @@ Do you want to continue? [Y/n] y
 [...]
 ~~~
 
-As you can see, Apache was activated immediately.
+As you can see, *Apache* was activated immediately.
 
 ~~~
 # systemctl stop apache2.service
@@ -140,24 +125,24 @@ As you can see, Apache was activated immediately.
 [...]
 ~~~
 
-The Apache web server is loaded and can be handled without any problems. Now we check its function with:
+The *Apache* web server is loaded and can be handled without any problems. Now we check its function with:
 
 ~~~
 w3m http://localhost/index.html
 ~~~
 
 The Apache welcome page with **It works!** appears.  
-We exit w3m with `q` and confirm with `y`.
+We exit *w3m* with `q` and confirm with `y`.
 
-The **ServerRoot** is the directory **/etc/apache2/**. It contains the configuration.  
-The **DocumentRoot** is the directory **/var/www/html/**. It contains the files of the website.
+The directory **/etc/apache2/** is called **ServerRoot**. It contains the configuration.  
+The directory **/var/www/html/** is called **DocumentRoot**. It contains the website's files.
 
 For more information and security hints, please refer to the manual page  
 [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup).
 
 ### Install MariaDb
 
-The installation of MariaDb is similarly simple by requesting the metapackages "mariadb-server" and "mariadb-client".
+The installation of *MariaDb* is similarly simple. Just install the metapackages *mariadb-server* and *mariadb-client*.
 
 ~~~
 # apt install mariadb-server mariadb-client
@@ -174,7 +159,7 @@ For more information on MariaDb and configuration, see our manual in [LAMP-Maria
 
 ### Install PHP
 
-To install the PHP scripting language, simply issue the command:
+To install the PHP scripting language, simply enter the command:
 
 ~~~
 # apt install php
@@ -186,14 +171,14 @@ The following NEW packages will be installed:
 Would you like to continue? [Y/n] y
 ~~~
 
-As before, the metapackage brings in a whole bunch of dependencies in addition.  
-To check if php is running correctly after installation, the file *info.php* in */var/www/html* is created with the phpinfo() function in the way it is given here:
+As before, the metapackage additionally brings in a whole bunch of dependencies.  
+To check if *php* is running correctly after installation, create the file *info.php* in */var/www/html* using the phpinfo() function this way:
 
 ~~~
 mcedit /var/www/html/info.php  
 ~~~
 
-Insert the following text
+Insert the following text:
 
 ~~~
 <?php
@@ -201,9 +186,9 @@ phpinfo();
 ?>
 ~~~
 
-save with `F2`, `F10` terminates mcedit.
+Save with `F2` and terminate *mcedit* with `F10`.
 
-After that the terminal browser w3m will be linked to it:
+After that the terminal browser *w3m* will be linked to it:
 
 ~~~
 w3m http://localhost/info.php  
@@ -224,9 +209,9 @@ server API   Apache 2.0 Handler
 
 If we get an output that starts as shown above and contains all php configurations and basic settings, PHP is working and uses as *server API* the *Apache 2.0 Handler*.  
 
-We exit w3m with `q` and confirm with `y`.
+We exit *w3m* with `q` and confirm with `y`.
 
-Now we need support for MariaDB/mysql in PHP. We need the PHP module *php7.4-mysql*.
+Now we need the module *php7.4-mysql*, so MariaDB/mysql will be supported in PHP.
 
 ~~~
 # apt install php7.4-mysql
@@ -238,7 +223,7 @@ For more information on configuring PHP and managing its modules, see the manual
 
 ### Install phpMyAdmin
 
-To administer the MariaDb database we need *phpmyadmin*:
+To administer the MariaDb database, we need *phpmyadmin*:
 
 ~~~
 # apt install phpmyadmin
@@ -261,7 +246,7 @@ In the first one, at the beginning, we select "*apache2*" and confirm with "*ok*
 
 ![PHPMyAdmin web server selection](./images/lamp-start/phpmyadmin01-en.png)
 
-in the second one, at the end of the installation, we select "*yes*".
+In the second one, at the end of the installation, we select "*yes*".
 
 ![PHPMyAdmin database](./images/lamp-start/phpmyadmin02-en.png)
 
@@ -269,13 +254,13 @@ In the following dialogs we need the password for the database user *phpmyadmin*
 
 ### Other software
 
-If you are interested in developing websites, you can install a CMS for example, WordPress, Drupal or Joomla, but you should consider our manual pages [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup) and [LAMP-MariaDb](./0522-lamp-sql_en.md#mariadb-setup)for the configuration of the server and MariaDb before.
+If you are interested in developing websites, you can install a CMS for example, *WordPress*, *Drupal*, or *Joomla*, but you should consider our manual pages [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup) and [LAMP-MariaDb](./0522-lamp-sql_en.md#mariadb-setup) for the configuration of the server and MariaDb beforehand.
 
 ### Status data log files
 
 **Apache**
 
-The configuration status of the Apache web server is output with "*apache2ctl -S*".  
+The configuration status of the Apache web server can be output with "*apache2ctl -S*".  
 The output shows the status without any changes to the configuration immediately after installation.
 
 ~~~
@@ -300,24 +285,24 @@ The output shows the status without any changes to the configuration immediately
 ~~~
 
 The manual page [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup) contains a number of hints for customizing the configuration.  
-The directory */var/log/apache2/* contains the log files. A look into them is helpful to identify error causes.
+The directory **/var/log/apache2/** contains the log files. A look into them is helpful to identify error causes.
 
 **MariaDB**
 
-In the console the command
+In the console, the command
 
 ~~~
 # systemctl status mariadb.service
 ~~~
 
 shows the current status of MariaDB and the last ten log entries.  
-The last twenty lines of the systemd journal are shown by the command
+The last twenty lines of the systemd journal are shown by
 
 ~~~
 # journctl -n 20 -u mariadb.service
 ~~~
 
-and
+The command
 
 ~~~
 # journctl -f -u mariadb.service
@@ -328,7 +313,7 @@ For more information, see the manual page [LAMP-MariaDB](./0522-lamp-sql_en.md#s
 
 **PHP**
 
-The Apache server stores the error messages of PHP in its log files under */var/log/apache2/*. Erroneous PHP functions generate a message in the called web page.  
+The Apache server stores the error messages of PHP in its log files under **/var/log/apache2/**. Erroneous PHP functions generate a message on the called web page.  
 This behavior can be configured in the *php.ini* files of the respective interface.  
 See the [LAMP-PHP](./0523-lamp-php_en.md#php-setup) manual page.
 
@@ -336,7 +321,7 @@ See the [LAMP-PHP](./0523-lamp-php_en.md#php-setup) manual page.
 
 The examples listed here show some troubleshooting possibilities.
 
-**File right in "DocumentRoot "**
+**File right in "DocumentRoot"**
 
 If calling the files *index.html* and *info.php* fails immediately after installation, please be sure to check the ownership and group membership of the web page directory first and change them if necessary:
 
@@ -348,13 +333,13 @@ drwxr-xr-x 3 root root 4096 14 Dec 18:30 ...
 -rw-r--r-- 1 root root 20 14 Dec 19:32 info.php
 ~~~
 
-In this case the Apache test page is displayed, the PHP status page is not. Then a spirited
+In this case the Apache test page is displayed, the PHP status page is not. Then, the spirited use of
 
 ~~~
 # chown -R www-data:www-data /var/www/html
 ~~~
 
-Now you should be able to call both pages.
+will help. Now you should be able to call both pages.
 
 **HTML page load error**
 
@@ -391,7 +376,7 @@ In general, a reload or restart of Apache is necessary after each configuration 
 
 **Check Apache log files**
 
-A look into the log files under "*/var/log/apache2/*" helps to detect errors in the configuration of the network or the Apache server.
+A look into the log files under **/var/log/apache2/** helps to detect errors in the configuration of the network or the Apache server.
 
 **PHP, info.php only white page**
 
@@ -402,8 +387,7 @@ Please check:
 
 + Check the file permissions as explained at the beginning of the Troubleshooting chapter and change them if necessary.
 
-+ Additional PHP modules have been installed or the configuration has been changed and the web server has not been restarted.  
-  Then helps:
++ If additional PHP modules have been installed or the configuration has been changed and the web server has not been restarted, this might help:
 
   ~~~
   # systemctl restart apache2.service
@@ -411,7 +395,7 @@ Please check:
 
 **phpMyAdmin - Error**
 
-The call to *http://localhost/phpmyadmin* fails with the message "*phpMyAdmin - Error*" and the following information is displayed.
+The call of *http://localhost/phpmyadmin* fails with the message "*phpMyAdmin - Error*" and the following information is displayed.
 
 ~~~
 Error during session start; please check your PHP and/or webserver log file and  
@@ -422,7 +406,7 @@ session_start(): open(SESSION_FILE, O_RDWR) failed: Permission denied (13)
 session_start(): Failed to read session data: files (path: /var/lib/php/sessions)
 ~~~
 
-Check the permissions for the */var/lib/php/sessions* folder:
+Check the permissions for the **/var/lib/php/sessions/** folder:
 
 ~~~
 # ls -l /var/lib/php/
@@ -441,12 +425,12 @@ Note the sticky bit (**t**) and the owner **root.root**. If there are any discre
 # chown root:root /var/lib/php/sessions
 ~~~
 
-Now the login to phpmyadmin is possible.
+Now the login to *phpmyadmin* is possible.
 
 #### If nothing helps
 
 Installing the LAMP stack takes less than fifteen minutes. However, troubleshooting can take hours.  
-Therefore, if the previously mentioned measures do not lead to a solution, it makes sense to remove the LAMP stack or parts of it and reinstall it. If, as mentioned in the chapter *Preparations*, apt has been cleaned up, the command "*apt purge*" helps to remove the previously installed packages with their configuration files without disturbing any other packages.
+Therefore, if the previously mentioned measures do not lead to a solution, it makes sense to remove the LAMP stack or parts of it and reinstall it. If, as mentioned in the chapter *Preparations*, *apt* has been cleaned up, the command **`apt purge`** helps to remove the previously installed packages with their configuration files without disturbing any other packages.
 
 Here is an example with Apache:
 
@@ -464,8 +448,8 @@ The following packages are REMOVED:
 ~~~
 
 *Apache2* is removed and the packages *apache2-data* and *apache2-utils* still remained.  
-Now please **don't use apt autoremove**, because then the configuration files, where the error may be, will be left behind.  
-We use the command "*apt purge*".
+Now please **don't use apt autoremove** because then the configuration files, where the error may be, will be left behind.  
+We use the command **`apt purge`**.
 
 ~~~
 # apt purge apache2-data apache2-utils
@@ -475,9 +459,9 @@ If necessary, we do the same with the other parts of the program. Then we start 
 
 ### Security
 
-The installation explained so far leads to a web server that is **"open like a barn door for everyone "**. Therefore it should only be used standalone at a workstation and not connected to the private network and in no case to the Internet.
+The installation explained so far leads to a web server that is **"open like a barn door for everyone "**. Therefore, it should only be used standalone at a workstation and not connected to the private network and in no case to the Internet.
 
-For securing the server please read the manual pages  
+For securing the server, please read the manual pages  
 [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup), 
 [LAMP-MariaDB](./0522-lamp-sql_en.md#mariadb-setup), 
 [LAMP-PHP](./0523-lamp-php_en.md#php-setup)  
@@ -485,4 +469,4 @@ regarding the configuration.
 
 After that, exclusively for system and software updates, the server can be temporarily connected to the Internet via a second network interface.
 
-<div id="rev">Last edited: 2021/23/08</div>
+<div id="rev">Last edited: 2022/02/07</div>
