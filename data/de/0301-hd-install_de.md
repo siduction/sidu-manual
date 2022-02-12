@@ -157,7 +157,7 @@ Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzuf
 ~# adduser <nutzername>
 ~~~
 
-Das Drücken der Eingabetaste Enter führt zu weiteren Optionen, die Feinstellungen ermöglichen. Es folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.
+Nach drücken der Eingabetaste, werden weitere Optionen angezeigt, die zusätzliche Einstellungen ermöglichen. Zuletzt folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.
 
 siduction spezifische Desktopsymbole (für das Handbuch und den IRC) müssen selbst hinzugefügt werden. 
 
@@ -174,4 +174,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
+<div id="rev">Zuletzt bearbeitet: 2022-02-09</div>

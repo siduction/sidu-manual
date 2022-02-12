@@ -155,7 +155,7 @@ To add new users with automatic takeover of group permissions, run the following
 ~# adduser <username>
 ~~~
 
-Pressing Enter leads to further options that allow fine-tuning. This is followed by a prompt to type the password twice.
+Pressing the Enter key will bring up more options that allow additional settings. Finally, there is a prompt to type the password twice.
 
 siduction specific desktop icons (for the manual and IRC) must be added yourself. 
 
@@ -172,4 +172,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2022/01/14</div>
+<div id="rev">Last edited: 2022/02/09</div>
