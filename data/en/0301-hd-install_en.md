@@ -155,7 +155,7 @@ To add new users with automatic takeover of group permissions, run the following
 ~# adduser <username>
 ~~~
 
-Pressing the Enter key will bring up more options that allow additional settings. Finally, there is a prompt to type the password twice.
+Pressing the Enter key will bring up more options that allow additional settings. Finally, a prompt appears, asking to enter the password twice.
 
 siduction specific desktop icons (for the manual and IRC) must be added yourself. 
 
