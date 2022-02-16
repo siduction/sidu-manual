@@ -1,42 +1,27 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % LAMP - MariaDB 
 
 ## Set up MariaDB
 
 ### MariaDB in the file system
 
-Debian has fully integrated the files of MariaDB into the file system according to their function.
+Debian has fully integrated the files of MariaDB into the file system according to their function:
 
-+ In **/usr/bin/** the executable program *mariadb*  
-    + and the link *mysql*, which points to */usr/bin/mariadb*.  
-+ In **/usr/lib/mysql/plugin/** the installed plugin for MariaDB.  
-+ In **/usr/share/mysql/** shared program parts and localizations.  
-+ In **/etc/mysql/** the configuration directories and files.  
-+ In **/var/lib/mysql/** the databases and log files.  
-+ In **/run/mysqld/** system files necessary at runtime.
++ the executable program *mariadb* and the link *mysql* into **/usr/bin/**  
+    + (the latter points to **/usr/bin/mariadb**.)  
++ the installed plugin for MariaDB into **/usr/lib/mysql/plugin/**  
++ shared program parts and localizations into **/usr/share/mysql/**  
++ the configuration directories and files into **/etc/mysql/**  
++ the databases and log files into **/var/lib/mysql/**  
++ system files necessary at runtime into **/run/mysqld/**
 
-Inside the directories mentioned before the files should not be edited manually. The only exception is the configuration of MariaDB under */etc/mysql/*, if you know exactly how to proceed. Otherwise use the [MariaDB-CLI](0522-lamp-sql_en.md#mariadb-cli) or a frontend like [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin).
+The files inside the directories mentioned before should not be edited manually. The only exception is the configuration of MariaDB under **/etc/mysql/**, if you know exactly how to proceed. Otherwise use the [MariaDB-CLI](0522-lamp-sql_en.md#mariadb-cli) or a frontend like [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin).
 
 ### Initial configuration
 
-After installation, as described in [LAMP test server for developers](0520-lamp-start_en.md#lamp-webserver), MariaDB is *'open like a barn door to anyone'*, because by default, the two users *root* and *anonymous*, are created without password and a test database is created.
+After installation, as described in [LAMP test server for developers](0520-lamp-start_en.md#lamp-webserver), MariaDB is *'open like a barn door to anyone'*, because, by default, the two users **root** and **anonymous** are created (without password) as well as a test database.
 
 Therefore we call the program **mysql_secure_installation** in the root terminal.  
-Here we make quite a few settings to secure the database. The necessary entries are marked like this: "\<- - [ ]".
+Here we make quite a few settings to secure the database. The necessary entries are highlighted like this: "\<- - [ ]".
 
 ~~~
 # mysql_secure_installation  
@@ -105,11 +90,11 @@ installation should now be secure.
 Thanks for using MariaDB!
 ~~~
 
-As a result, the user *root* has received a (hopefully secure) password and can no longer log in remotely. The user *anonymous* and the database *test* have been removed.
+As a result, the user **root** has received a (hopefully secure) password and can no longer log in remotely. The user **anonymous** and the database *test* have been removed.
 
 ### MariaDB CLI
 
-We reach the commandline interface in the terminal by typing "*mariadb -u \<user\> -p*". After entering the password we see the greeting and the new prompt `MariaDB [(none)]>`.
+We reach the commandline interface in the terminal by typing "*mariadb -u \<user\> -p*". After entering the password, we see the greeting and the new prompt `MariaDB [(none)]>`.
 
 ~~~
 # mariadb -u root -p
@@ -119,8 +104,8 @@ Welcome to the MariaDB monitor.  [...]
 MariaDB [(none)]>
 ~~~
 
-For security reasons we only log in as **user root** at the beginning to create the project database, a user for everyday work on it and a user to replace *root*.  
-Later in the [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin) section, we revoke the all-encompassing privileges from the *root* user so that a potential attacker will be unsuccessful at this point.
+For security reasons we only log in as **root** at the beginning to create the project database, a user for everyday work on it, and a user to replace **root**.  
+Later in the [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin) section, we revoke the **root** user's all-encompassing privileges so that a potential attacker will be unsuccessful at this point.
 
 #### Create a database
 
@@ -131,11 +116,11 @@ MariaDB [(none)]> CREATE DATABASE sidu;
 Query OK, 1 row affected (0.002 sec)
 ~~~
 
-That's all. If we want to delete this database the command is "DROP DATABASE sidu;".
+That's all. If we want to delete this database, the required command is **`DROP DATABASE sidu;`**.
 
 #### Create a user
 
-First we create our project user with the name *tomtom* and assign him exclusively all rights to the project database *sidu*:
+First we create our project user with the name **tomtom** and assign him exclusively all rights to the project database *sidu*:
 
 ~~~
 MariaDB [(none)]> CREATE USER tomtom@localhost IDENTIFIED BY '<enter a password for tomtom here>';
@@ -145,7 +130,7 @@ MariaDB [(none)]> GRANT ALL ON sidu.* TO tomtom@localhost;
 Query OK, 0 rows affected (0.001 sec)
 ~~~
 
-Now the same procedure for the user *chef*, who should take over the task of *root*.
+Now repeat the same procedure for the user **chef**, who should take over the task of **root**.
 
 ~~~
 MariaDB [(none)]> CREATE USER chef@localhost IDENTIFIED BY '<enter a password for chef here>';
@@ -159,10 +144,10 @@ MariaDB [(none)]> FLUSH PRIVILEGES;
 
 The new users differ in their rights.
 
-*tomtom* has all rights **only** for the database *sidu* (sidu.\*).  
-*chef* has all rights to all databases (\*.\*) and users (WITH GRANT OPTION).
+**tomtom** has all rights **only** for the database *sidu* (sidu.\*).  
+**chef** has all rights to all databases (\*.\*) and users (WITH GRANT OPTION).
 
-So the user *chef* can take over the function of the user *root* and the user *tomtom* we use for work on our project database.  
+So the user **chef** can take over the function of the user **root**, and **tomtom** is the user for work on our project database.  
 The logout is done by: **`\q`**.
 
 ~~~
@@ -173,8 +158,8 @@ Bey
 
 #### Queries
 
-We look at the result in Terminal, this time as user "*chef*".  
-First the users and then the existing databases.
+We look at the result in a terminal, this time as user **chef**.  
+First the users and then the existing databases:
 
 ~~~
 MariaDB [(none)]> SELECT User,Host FROM mysql.user;
@@ -203,7 +188,7 @@ MariaDB [(none)]> SHOW DATABASES;
 5 rows in set (0.001 sec)
 ~~~
 
-If we log out of MariaDB and log back in as user "*tomtom*", the two queries look like this:
+If we log out of MariaDB and log back in as user **tomtom**, the two queries look like this:
 
 ~~~
 MariaDB [(none)]> SELECT User,Host FROM mysql.user;
@@ -219,30 +204,30 @@ MariaDB [(none)]> SHOW DATABASES;
 2 rows in set (0.001 sec)
 ~~~
 
-It is easy to see that the user "*tomtom*" does not get access to system relevant data.
+It is easy to see that the user **tomtom** does not get access to system relevant data.
 
 ### phpMyAdmin
 
 As seen before, MariaDB can be administered completely via the command line. If you know the syntax, which requires profound knowledge, you will quickly get the desired result this way.
 
-We use the progrann *phpMyAdmin*, which is more suitable for less experienced users, and enter in the address line of the browser  
+We use the progrann *phpMyAdmin*, which is more suitable for less experienced users, and enter:  
 **http://localhost/phpmyadmin/**  
-in the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten) the call is  
+into the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten), the call is:  
 **https://server1.org/phpmyadmin/**
 
-To remove the rights of the database admin *root*, as mentioned above, we use our new database admin *chef* with his password in the login window right away.
+To remove the rights of the database admin **root**, as mentioned above, we use our new database admin **chef** with his password in the login window right away.
 
 ![Login window](./images/phpmyadmin/ui01.png)
 
-In the start window we see all databases in the left column. In the main part we select the tab **`User accounts`**.
+In the start window we see all databases in the left column. Then we select the tab **`User accounts`** in the center area.
 
 ![Start window](./images/phpmyadmin/ui02.png)
 
-The user accounts overview shows all users and in short form their rights. We select here for the user *root* the switch **`Edit privileges`**.
+The user accounts overview shows all users and their rights in short form. Here we select the switch **`Edit privileges`** for the **root** user.
 
 ![User accounts](./images/phpmyadmin/ui03.png)
 
-Now we see the detailed permissions for the user *root*. Here we first remove all rights from him (1a), then grant in the area "*Administration*" the right "*Super*" (1b) and execute the action by clicking the **`OK`** button at the very bottom right of this page (not visible in the screenshot). 
+Now we see the detailed permissions for the **root** user. Here we first remove all his rights (1a), then, in the area "*Administration*", grant the right "*Super*" (1b), and execute the action by clicking the **`OK`** button at the very bottom right of this page (not visible in the screenshot). 
 
 ![Manage rights of a user (1a, 1b)](./images/phpmyadmin/ui04.png)
 
@@ -250,17 +235,17 @@ Afterwards we go to the next page via the **`Database`** button (2).
 
 ![Manage rights of a user (2) ](./images/phpmyadmin/ui05.png)
 
-After selecting the database "*mysql*" and **`OK`** this time a window opens with the detailed rights to the database "*mysql*" for the user "*root*".
+After selecting the database "*mysql*" and **`OK`**, a window opens with the detailed rights to the database "*mysql*" for the user **root**.
 
 ![Manage rights of a user (DB mysql) ](./images/phpmyadmin/ui06.png)
 
 Only the method "*SELECT*" is selected. A click on **`OK`** executes the sql command.
 
-So we are at destination and leave *phpMyAdmin* via the door icon placed in the left column.
+So we are done and leave *phpMyAdmin* via the door icon placed in the left column.
 
 ![exit phpMyAdmin](./images/phpmyadmin/ui07.png)
 
-phpMyAdmin offers extensive possibilities for the administration of databases, their tables and their contents. Note the **`Export`** tab in the main window, behind which you will find the option to backup data.
+*phpMyAdmin* offers extensive possibilities for the administration of databases, their tables, and their contents. Note the **`Export`** tab in the main window, behind which you will find the option to backup data.
 
 ### Integration in Systemd
 
@@ -270,21 +255,21 @@ The control of MariaDB has been integrated into Systemd in Debian, and thus also
 # systemctl [start | stop | restart] mariadb.service
 ~~~
 
-Startup and error messages of the server flow into the Systemd journal.  
+Startup and error messages of the server are logged in the Systemd journal.  
 Detailed information is available on the external web page [MariaDB Systemd](https://mariadb.com/kb/en/systemd/).
 
 When searching the Internet for MariaDB's control panel, make sure that the search results refer to Systemd.
 
 ### MariaDB Log
 
-The Systemd Journal contains messages about the startup process of the *mariadb.service*. It is the first place to go when errors occur.  
+The Systemd Journal contains messages about the startup process of the *mariadb.service*. It is the first place to go to when errors occur.  
 In the console, the command "*journalctl*" displays the messages about MariaDB with:
 
 ~~~
 journalctl -n 25 -u mariadb.service
 ~~~
 
-e.g. the last 25 lines.
+(here the last 25 lines)
 
 Or continuously with:
 
@@ -292,14 +277,14 @@ Or continuously with:
 journalctl -f -u mariadb.service
 ~~~
 
-In addition, one switches on the logging of sql actions in the MariDB CLI like this:
+In addition, you can switch on the logging of sql actions in the MariDB CLI like this:
 
 ~~~
 MariaDB [(none)]> SET GLOBAL general_log=1;
 ~~~
 
-This creates a log file with the pattern *\<host\>.log* in the directory */var/lib/mysql/*.  
-**Caution**: This is an absolute performance killer and only meant to monitor atkions in the short term.
+This creates a log file with the pattern *\<host\>.log* in the directory **/var/lib/mysql/**.  
+**Caution**: This is an absolute performance killer and only meant to monitor actions in the short term.
 
 ### Sources MariaDB
 
@@ -314,4 +299,4 @@ man mariadb
 
 [phpMyAdmin documentation](https://docs.phpmyadmin.net/en/latest/)
 
-<div id="rev">Last edited: 2021/23/08</div>
+<div id="rev">Last edited: 2022/02/15</div>

@@ -1,18 +1,3 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links (there was'nt any)  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % LAMP - PHP
 
 ## Set up PHP
@@ -21,19 +6,19 @@ PHP is ready to use in siduction after installation with the default configurati
 
 ### PHP in the file system
 
-Debian has fully integrated the files of PHP into the file system according to their function.
+Debian has fully integrated the files of PHP into the file system according to their function:
 
-+ In **/usr/bin/** the executable program *php7.x*  
-    + and the link *php*, which points to */usr/bin/php7.x* via */etc/alternatives/php*.  
-+ In **/usr/lib/php/** the installed modules.  
-+ In **/usr/share/php/** and **/usr/share/php\<module\>** shared program parts and modules.  
-+ In **/etc/php/** the configuration directories and files.  
-+ In **/var/lib/php/** the current state of modules and sessions at runtime.
++ the executable program *php7.x* and the link *php* into **/usr/bin/**   
+    + (the latter points to */usr/bin/php7.x* via */etc/alternatives/php*.)  
++ the installed modules into **/usr/lib/php/**  
++ shared program parts and modules into **/usr/share/php/** and **/usr/share/php\<module\>**  
++ the configuration directories and files into **/etc/php/**  
++ the current state of modules and sessions at runtime into **/var/lib/php/**
 
 ### PHP support for Apache2
 
-By default, the Apache web server loads support for PHP. We check this with:
-(in the following, replace the x with the minor attribute of the currently used PHP version, i.e. something like 7.4)
+By default, the Apache web server loads support for PHP. We check this with the following command
+(replace the x with the minor attribute of the currently used PHP version, i.e. something like 7.4):
 
 ~~~
 # ls /etc/apache2/mods-enabled/* | grep php
@@ -41,7 +26,7 @@ By default, the Apache web server loads support for PHP. We check this with:
 /etc/apache2/mods-enabled/php7.x.load
 ~~~
 
-and recognize that Apache has loaded the PHP module for version 7.x. To cause the PHP interpreter to process files with the extension "*.php*", the *DirectoryIndex* directive in the Apache configuration file *dir.conf* must contain the value *index.php*. We check this as well:
+We see that Apache has loaded the PHP module for version 7.x. To cause the PHP interpreter to process files with the extension "*.php*", the *DirectoryIndex* directive in the Apache configuration file *dir.conf* must contain the value *index.php*. We check this as well:
 
 ~~~
 # cat /etc/apache2/mods-available/dir.conf
@@ -50,11 +35,11 @@ and recognize that Apache has loaded the PHP module for version 7.x. To cause th
 </IfModule>
 ~~~
 
-Nothing stands in the way of using PHP, because we see that the value *index.php* is included.
+Nothing stands in the way of using PHP, because the value *index.php* is included.
 
 ### PHP configuration
 
-The directory */etc/php/7.x/* contains the configuration sorted by the available interfaces.  
+The directory **/etc/php/7.x/** contains the configuration sorted by the available interfaces.  
 The output shows the state after the initial installation.
 
 ~~~
@@ -77,7 +62,7 @@ drwxr-xr-x 4 root root 4096 1 Feb 21:23 fpm
 drwxr-xr-x 2 root root 4096 1 Feb 13:22 mods-available
 ~~~
 
-Each of the *apache2*, *cgi*, *cli* and *fpm* directories contains a *conf.d* folder and a *php.ini* file.  
+Each of the *apache2*, *cgi*, *cli*, and *fpm* directories contains a *conf.d* folder and a *php.ini* file.  
 The respective *php.ini* contains the configuration for the corresponding interface and can be changed or supplemented if necessary. The *conf.d* folder contains the links to the activated modules.
 
 ### PHP modules
@@ -104,7 +89,7 @@ install ok installed php7.4-xml
 install ok installed php7.4-zip
 ~~~
 
-To show available but not installed modules, we rewrite the search at the end a bit:
+To show available but not installed modules, we change the end of the command a bit:
 
 ~~~
 # dpkg-query -f='${Status}\ ${Package}\n' -W php7.4* | grep 'not-install'
@@ -166,19 +151,19 @@ The state of PHP modules can be changed during runtime. This also allows control
 + **phpdismod** - disables modules in PHP  
 + **phpquery** - shows the status of PHP modules
 
-Unnecessary modules (imagick in the example) are deactivated in the console by the command
+Unnecessary modules (*imagick* in the example) are deactivated in the console by the command
 
 ~~~
 # phpdismod imagick
 ~~~
 
-To load the module *imagick* for all iterfaces use the command
+To load the module *imagick* for all iterfaces, use the command
 
 ~~~
 # phpenmod imagick
 ~~~
 
-Let's use the option "*-s apache2*"
+If we use the option "*-s apache2*", e.g.:
 
 ~~~
 # phpenmod -s apache2 imagick
@@ -202,12 +187,12 @@ zip (Enabled for fpm by maintainer script)
 imagick (Enabled for apache2 by local administrator)
 ~~~
 
-For the *imagick* module, the string "*Enabled for apache2 by local administrator*" tells us that it was not loaded automatically at startup like the *zip* module, but that the administrator enabled it manually. The reason is the previously used *phpdismod* and *phpenmod* commands for this module.
+For the *imagick* module, the string "*Enabled for apache2 by local administrator*" tells us that it was not loaded automatically at startup like the *zip* module, but that the administrator has enabled it manually. The reason is the previously used *phpdismod* and *phpenmod* commands for this module.
 
 ### Apache Log
 
-The Apache server stores the error messages of PHP in its log files under */var/log/apache2/*. At the same time, if PHP functions fail, a message appears in the called web page.  
-Alternatively we can display the log functions.
+The Apache server stores the error messages of PHP in its log files under **/var/log/apache2/**. At the same time, if PHP functions fail, a message appears on the called web page.  
+Alternatively, we can display the log functions.
 
 ~~~
 # php --info | grep log
@@ -220,7 +205,7 @@ opcache.error_log => no value
 [...]
 ~~~
 
-In the files */etc/php/7.x/\<Interface\>/php.ini* we have the possibility to replace the unset values with our own, actually existing log files.
+In the files **`/etc/php/7.x/\<Interface\>/php.ini`**, we have the possibility to replace the unset values with our own, actually existing log files.
 
 ### Sources PHP
 
@@ -228,4 +213,4 @@ In the files */etc/php/7.x/\<Interface\>/php.ini* we have the possibility to rep
 [PHP - current messages](https://www.php.net/)  
 [tecadmin - module handling](https://tecadmin.net/enable-disable-php-modules-ubuntu/)
 
-<div id="rev">Last edited: 2021/26/08</div>
+<div id="rev">Last edited: 2022/02/16</div>

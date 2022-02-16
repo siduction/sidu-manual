@@ -1,31 +1,16 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links (there was'nt any)  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % Graphics driver nVidea, Intel, ATA/AMD
 
-# hardware
+# Hardware
 
 ## Graphics drivers
 
-**for nVidea, Intel, ATI/AMD**
+**for nVidia, Intel, ATI/AMD**
 
-We only cover the most common graphics cards here in the manual. Exotic or relatively old graphics hardware, as well as server graphics will not be covered here.  
+We only cover the most common graphics cards here in the manual. Exotic or relatively old graphics hardware, as well as server graphics are not discussed.  
 
 ### Open source Xorg driver
 
-Which graphics hardware is installed is relatively easy to find out
+It is relatively easy to find out which graphics hardware is installed:
 
 ~~~sh
 inxi -G
@@ -41,7 +26,7 @@ This information is also very important if you have problems with the graphics a
     - i915 (Intel graphics)
     - nouveau (nVidia graphics)
 
-+ direct rendering manager  
++ Direct Rendering Manager  
     - libdrm-foo 
 
 + DDX driver 
@@ -57,9 +42,9 @@ This information is also very important if you have problems with the graphics a
     - libgl1-mesa-drivers
   _This part of Xorg is the free OpenGL interface for Xorg._
 
-Open source Xorg drivers for nVidia (modesetting/nouveau), ATI/AMD (modesetting/radeon/amdgpu), Intel (modesetting/intel) and others are pre-installed with siduction.
+Open source Xorg drivers for nVidia (modesetting/nouveau), ATI/AMD (modesetting/radeon/amdgpu), Intel (modesetting/intel), and others are pre-installed with siduction.
 
-Note: xorg.conf is usually no longer needed for open source drivers Exceptions are e.g. multi-screen operation.
+Note: xorg.conf is usually no longer needed for open source drivers. Exceptions are e.g. multi-screen operation.
 
 ### Proprietary drivers
 
@@ -73,19 +58,19 @@ Here you can get more information about the drivers of
 
 ### Video driver 2D
 
-Pretty much any video card that uses a [KMS](https://wiki.debian.org/KernelModesetting) driver kernel-side is suitable for 2D operation under all surfaces. In general (with a few exceptions of exotic or old hardware) 3D acceleration is also available.
+Pretty much any video card that uses a [KMS](https://wiki.debian.org/KernelModesetting) driver kernel-side is suitable for 2D operation under all surfaces. In general (with a few exceptions of exotic or old hardware), 3D acceleration is also available.
 
 ### Video driver 3D
 
-3D acceleration is available under Linux for Intel, AMD and nVidia graphics cards. How well the free drivers have 3D implemented depends somewhat on the graphics card itself. In general, it should be noted that almost all graphics cards require non-free firmware to run smoothly. This firmware is only available in the non-free repository in Debian because it is not DFSG compliant. If the correct firmware is installed, 3D support is available with Intel or AMD graphics cards without any further action. With nVidia graphics the story is a bit different. Older cards, which are classified as legacy cards by nVidia, work relatively well, although problems are always to be expected, since the desktop used also plays a role. The free nouveau driver is developed without support from nVidia via [reverse engineering](https://en.wikipedia.org/wiki/Reverse_Engineering).
+3D acceleration is available under Linux for Intel, AMD, and nVidia graphics cards. How well the free drivers have 3D implemented depends somewhat on the graphics card itself. In general, it should be noted that almost all graphics cards require non-free firmware to run smoothly. This firmware is only available in the non-free repository in Debian because it is not DFSG compliant. If the correct firmware is installed, 3D support is available with Intel or AMD graphics cards without any further action. With nVidia graphics the story is a bit different. Older cards, which are classified as legacy cards by nVidia, work relatively well, although problems are always to be expected since the desktop used also plays a role. The free nouveau driver is developed without support from nVidia via [reverse engineering](https://en.wikipedia.org/wiki/Reverse_Engineering).
 
-Since the non-free firmware is usually required for correct operation (AMD, Intel from Skylake and Nvidia from Fermi), an entry similar to
+Since the non-free firmware is usually required for correct operation (AMD, Intel from Skylake on, and Nvidia from Fermi on), an entry similar to
 
 ~~~sh
 deb http://deb.debian.org/debian/ unstable main contrib non-free 
 ~~~
 
-should be set. To save subsequent problems with WLAN, network, Bluetooth or similar, a 
+should be set. To prevent subsequent problems with WiFi, network, Bluetooth, or similar, a 
 
 ~~~sh
 apt update && apt install firmware-linux-nonfree
@@ -95,7 +80,7 @@ makes sense. This will install more firmwares than you might need, but that shou
 
 ### nVidia closed source driver
 
-**selection, installation with dkms support and integration in xorg**.
+**Selection, installation with dkms support and integration in Xorg**.
 
 nVidia divides its graphics card drivers into 7 generations:
 
@@ -117,7 +102,7 @@ Debian provides the following versions of the binary drivers:
     - nvidia-legacy-390xx-driver (for 6.)
     - nvidia-driver (for 7.)
 
-Since these are proprietary drivers, contrib and non-free must be activated in the sources (as well as for the firmware for free drivers). You have to make sure in advance that the kernel headers are installed to match the running kernel. This is the case once linux-image-siduction-amd64 and linux-headers-siduction-amd64 are installed. In addition, the packages gcc, make and dkms are necessary. With dkms additionally installed (nVidia) kernel modules are automatically updated during a kernel update. After you have found out which nVidia card or which nVidia chip you have, you can install the driver as follows:  
+Since these are proprietary drivers, contrib and non-free must be activated in the sources (like for the firmware for free drivers). You have to make sure in advance that the kernel headers are installed to match the running kernel. This is the case once linux-image-siduction-amd64 and linux-headers-siduction-amd64 are installed. In addition, the packages *gcc*, *make* and *dkms* are necessary. With *dkms* additionally installed (nVidia) kernel modules are automatically updated during a kernel update. After you have found out which nVidia card or which nVidia chip you have, you can install the driver as follows:  
 
 **GeForce 8000 and 9000 series**
 
@@ -131,22 +116,22 @@ apt update && apt install nvidia-legacy-340xx-driver
 apt update && apt install nvidia-legacy-390xx-driver
 ~~~
 
-**Kepler, Maxwell, Pascal and newer (GKxxx, GMxxx, GPxxx, TU1xx)**
+**Kepler, Maxwell, Pascal, and newer (GKxxx, GMxxx, GPxxx, TU1xx)**
 
 ~~~sh
 apt update && apt install nvidia-driver
 ~~~
 
-If this runs without errors another
+If this runs without errors, enter
 
 ~~~sh
 mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection' > /etc/X11/xorg.conf.d/20-nvidia.conf
 ~~~
 
-to tell Xorg to use this installed driver. After a reboot the system should hopefully boot up to the desktop. If problems occur, i.e. the desktop does not start, you should consult /var/log/Xorg.0.log.
+to tell Xorg to use this installed driver. After a reboot the system should hopefully boot up to the desktop. If problems occur, i.e. the desktop does not start, you should consult **`/var/log/Xorg.0.log`**.
 
-Since the legacy drivers 304.xx and 340.xx are no longer supported by NVidia, it is likely that they will not work with a new kernel or new Xorg.
+Since the legacy drivers 304.xx and 340.xx are no longer supported by nVidia, it is likely that they will not work with a new kernel or new Xorg.
 
-Problematic are notebooks with hybrid graphics Intel/nVidia, so-called Optimus hardware. In the past, [Bumblebee](https://wiki.debian.org/Bumblebee) was referred to, but this solution is anything but optimal. nVidia itself recommends configuring these setups with [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/). Our recommendation is to avoid such hardware if possible. We cannot provide setup tips for Optimus hardware here.
+Notebooks with hybrid graphics Intel/nVidia, so-called Optimus hardware, are problematic. In the past, [Bumblebee](https://wiki.debian.org/Bumblebee) was recommended, but this solution is anything but optimal. nVidia itself recommends configuring these setups with [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/). Our recommendation is to avoid such hardware if possible. We cannot provide setup tips for Optimus hardware here.
 
-<div id="rev">Last edited: 2021/26/08</div>
+<div id="rev">Last edited: 2022/02/16</div>
