@@ -101,12 +101,7 @@ Sollte man trotz aller Warnungen *sudo* nutzen wollen, so muss man den entsprech
 
 Dies kann mit dem Befehl "adduser BENUTZER GRUPPE" als root ausgeführt werden.
 
-Als Alternative zu *sudo* kann auch *doas* (apt install doas) genommen und eingerichtet werden.
-
-* https://man.openbsd.org/doas
-* https://github.com/slicer69/doas
-
-
+Als schlanke Alternative zu *sudo* bietet sich *doas* an. Die Handbuchseite [Doas - Alternative zu Sudo](0703-doas_de.md#doas---alternative-zu-sudo) erläutert die Vorteile von Doas und die Doas Konfiguration.
 
 ### Farbiges Terminal
 
