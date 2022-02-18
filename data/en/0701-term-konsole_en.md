@@ -1,35 +1,20 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % Terminal - command line
 
 ## Terminal - command line
 
-A terminal, also called a console, is a program that allows one to interact directly with the GNU/Linux operating system through directly executed commands. The terminal, also often called the "shell" or "command line", is an extremely powerful tool and well worth the effort to learn the basics of its use.
+A terminal, also called a console, is a program that allows you to interact directly with the GNU/Linux operating system through directly executed commands. The terminal, also often called the "shell" or "command line", is an extremely powerful tool and it is well worth the effort to learn the basics of its use.
 
 In siduction, you can invoke the terminal/console by clicking on the PC monitor icon to the right of the menu, or by going to Menu > System > Terminal, or, even easier, by typing *kons* or *term* into the menu search bar. 
 
-After calling the terminal you will see the prompt "prompt":
+After calling the terminal, you will see the prompt:
 
 ~~~
 username@hostname:~$
 ~~~
 
-**username** in the above example corresponds to the username of the logged in user. The tilde **~** shows you are in your home directory **/home/username** , and the dollar sign (the prompt) **$** means you are logged into the terminal with limited user privileges. At the end, the cursor is blinking. All this is the command line. This is where you enter commands that you want the terminal to execute.
+**username** in the above example corresponds to the username of the logged in user. The tilde **~** shows that you are in your home directory **/home/username** , and the dollar sign (the prompt) **$** means you are logged into the terminal with limited user privileges. At the end, the cursor is blinking. All this is the command line. This is where you enter commands that you want the terminal to execute.
 
-Many commands can only be executed with root rights, i.e. administrator rights. Root rights can be obtained by typing **su** and pressing `Enter`. After that you have to enter the root password. The password is not displayed on the screen during the input. (See below [work-as-root](0701-term-konsole_en.md#work-as-root)).
+Many commands can only be executed with **root** rights, i.e. administrator rights. **root** rights can be obtained by typing **`su`** and pressing `Enter`. After that you have to enter the root password. The password is not displayed on the screen during the input. (See below [work-as-root](0701-term-konsole_en.md#work-as-root))
 
 If the input is correct, the command line now shows:
 
@@ -37,30 +22,30 @@ If the input is correct, the command line now shows:
 root@hostname:/home/username#
 ~~~
 
-Note that the dollar sign **\$** has been replaced by a hash **#**. In a terminal, the hash **#** always means that you are logged in with root privileges.  
+Note that the dollar sign **\$** has been replaced by a hash **#**. In a terminal, the hash **#** always means that you are logged in with **root** privileges.  
 When command line commands are specified in the manual, the information before the prompt ($ or #) is omitted. A command like:
 
 ~~~
 # chmod g+w <file>
 ~~~
 
-means: you open a terminal, log in as root (su) and execute the command at a root prompt **#**. The hash **#** is not included.
+means: you open a terminal, log in as **root** (su) and execute the command in a root prompt **#**. The hash **#** is not included.
 
 Another note:  
-For users who are new to the terminal, it is often confusing if no message appears after executing a command, but only the empty prompt again. This is intentional and means that the command was executed without errors. (In the example above, the group members were given write permissions to the \<file\>).
+For users who are new to the terminal, it is often confusing if no message appears after executing a command, but only the empty prompt again. This is intentional and means that the command was executed without errors. (In the example above, the group members were given write permissions to the \<file\>.)
 
 ### Work as root
 
 > **Caution**  
-> While logged into the terminal with root privileges, you are allowed to do anything, e.g. delete files, without which the operating system will stop working, and so on. When working with root privileges, one must be aware of *what* one is doing, because it is easily possible to cause irreparable damage to the operating system.
+> While logged into the terminal with root privileges, you are allowed to do anything, e.g. delete files, without which the operating system will stop working, and so on. When working with root privileges, you must be aware of *what* you are doing because it is easily possible to cause irreparable damage to the operating system.
 
-It must be taken into account that all actions, if provided for in the program, are also executed with root privileges. The simple copy command *cp \<source\> \<destination\>* in a user directory leads to files with the owner *ROOT* in the destination directory. This is probably not wanted and also not useful.
+It must be taken into account that all actions, if provided for in the program, are also executed with **root** privileges. The simple copy command **`cp \<source\> \<destination\>`** in a user directory leads to files with the owner *ROOT* in the destination directory. This is probably not intended and also not useful.
 
 Therefore: **Work as root only where it is really necessary!**.
 
 **About su**
 
-A number of commands must be started with root privileges. These rights can be obtained by entering **su**. After entering the correct password the root prompt appears.
+A number of commands must be started with **root** privileges. These rights can be obtained by entering **`su`**. After entering the correct password the root prompt appears.
 
 ~~~
 $ su
@@ -79,7 +64,7 @@ and the prompt for the user appears again.
 
 **About su-to-root**
 
-In contrast to the general command **su**, **su-to-root** allows the execution of programs with graphical user interface with root privileges. **su-to-root** transfers X properties to the target user using 'su'. The input is:
+In contrast to the general command *su*, *su-to-root* allows the execution of programs with graphical user interface with **root** privileges. *su-to-root* transfers X properties to the target user using *su*. The command is:
 
 ~~~
 su-to-root -X -c <program>
@@ -91,32 +76,32 @@ If error messages related to **dbus** occur, expand the input:
 su-to-root -X -c 'dbus-launch <program>'
 ~~~
 
-Another terminal opens, into which the root password is to be entered. If successful, the desired program will launch with root privileges.  
-Examples of using graphical applications via *su-to-root* are: editing a configuration file with a text editor, using the partition manager gparted or using file managers like dolphin or thunar.
+Another terminal opens, into which the root password is to be entered. If successful, the desired program will launch with **root** privileges.  
+Examples of using graphical applications via *su-to-root* are: editing a configuration file with a text editor, using the partition manager *gparted*, or using file managers like *dolphin* or *thunar*.
 
 **Use in desktop environments:**
 
 + Plasma (KDE and LXQt)  
-  The command is not necessary in Plasma and is not supported, because for programs that need root privileges a password prompt occurs and for the editor the prompt occurs when you want to save the changed file. Therefore only use **su** in the terminal, if necessary.
+  The command is not necessary in Plasma and is not supported. For programs that need **root** privileges, a password prompt occurs and for the editor the prompt occurs when you want to save the changed file. Therefore only use *su* in the terminal, if necessary.
 + Gnome and Cinnamon  
-  The behavior is similar to Plasma, except that the command (su-to-root) is supported, but not necessary.
-+ XFCE and Xorg  
-  Here the command unfolds its full power, and one is able to start the desired graphical program with root privileges. One is however also in the obligation to consider, when and with which program root rights are really necessary.
+  The behavior is similar to Plasma, except that the command (*su-to-root*) is supported, but not necessary.
++ Xfce and Xorg  
+  Here the command unfolds its full power, and you are able to start the desired graphical program with **root** privileges. One is however also in the obligation to consider, when and with which program root rights are really necessary.
   
 > Under no circumstances should productive programs that are normally started with user rights be booted as root with this option: Internet browsers, e-mail programs, office programs, etc.
 
 **sudo is not configured**
 
-**sudo** is only available in live mode, because no root password is set in live mode.  
-After an installation **sudo** is not enabled. The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.
+*sudo* is only available in live mode, because no root password is set there.  
+After an installation *sudo* is not enabled. The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.
 
-Another problem with **sudo** is that a root application running with the user configuration can change permissions and thus make them unusable for the user. The use of **su** or **su-to-root** is recommended!
+Another problem with *sudo* is that a root application running with the user configuration can change permissions and thus make them unusable for the user. The use of *su* or *su-to-root* is recommended!
 
 If you want to use *sudo* despite all warnings, you have to add the corresponding $user to the sudo group!
 
-This can be done with the command "adduser USER GROUP" as root.
+This can be done with the command "adduser USER GROUP" as **root**.
 
-As an alternative to *sudo* you can also take *doas* (apt install doas) and set it up.
+As an alternative to *sudo* you can also use *doas* (**`apt install doas`**) and set it up.
 
 * [OpenBSD manual doas](https://man.openbsd.org/doas)
 * [doas on GitHub](https://github.com/slicer69/doas)
@@ -125,12 +110,12 @@ As an alternative to *sudo* you can also take *doas* (apt install doas) and set 
 
 ### Colored terminal
 
-Colored prompts on the terminal can save you from unpleasant or catastrophic errors if you are **root #** performing a task you meant to do as **user $**.  
+Colored prompts on the terminal can save you from unpleasant or catastrophic errors if you are **root #** and perform a task you meant to do as **user $**.  
 That's why in siduction, by default, the **user $**'s prompt is green, blue, and white, and **root #**'s has the word "root" displayed in red.  
 
 ![Colored prompt](./images/terminal/prompt-colour-01.png)
 
-The focus when working with the terminal should be on the input and output of the commands and not on colored prompts. In siduction we nevertheless decided to use the colors to give users a warning when they are system administrators with root privileges.  
+The focus when working with the terminal should be on the input and output of the commands and not on colored prompts. In siduction we nevertheless decided to use the colors to give users a warning when they are system administrators with **root** privileges.  
 
 **Change prompt color**
 
@@ -140,7 +125,7 @@ Before changing the configuration file, we first create a backup copy in the ter
 $ cp ~/.bashrc ~/.bashrc_$(date +%F)
 ~~~
 
-Then we open the file **~/.bashrc** with a text editor of our choice (e.g.: kate, gedit, mcedit, vim...) and look for the following line, which is located approximately in the middle of the file:
+Then we open the file *`~/.bashrc`* with a text editor of our choice (e.g.: *kate*, *gedit*, *mcedit*, *vim* ...) and look for the following line, which is located approximately in the middle of the file:
 
 ~~~
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -195,7 +180,7 @@ The new colors and formats appear after opening a new terminal.
 
 **Color settings of the terminal**
 
-In the menu of the terminal, under *Edit* - *Settings...* - tab *Colors*, there are a myriad of setting options. We recommend a rather plain setting.
+In the terminal menu, under *Edit* - *Settings...* - tab *Colors*, there are a ton of setting options. We recommend a rather plain setting.
 
 ### When the terminal hangs
 
@@ -205,15 +190,15 @@ Sometimes a terminal can no longer respond as desired. This is usually because a
 reset
 ~~~
 
-must be entered and the enter key 'Enter' must be pressed.
+must be entered and the `Enter` key must be pressed.
 
-If the output of a terminal appears distorted, this can usually be fixed by pressing `Ctrl` + `l`, this will rebuild the terminal window. Such distortions usually occur when working with programs that use an ncurses interface, for example *cgdisk*.
+If the output of a terminal appears distorted, this can usually be fixed by pressing `Ctrl`+`l`, this will rebuild the terminal window. Such distortions usually occur when working with programs that use an ncurses interface, for example *cgdisk*.
 
-A terminal may appear frozen, but this is usually not the case; input continues to be processed even if it does not appear to be so. This can be caused by accidentally pressing `Ctrl` + `s`. In this case `Ctrl` + `q` can be tried to free the console again.
+A terminal may appear frozen, but this is usually not the case; input continues to be processed even if it does not appear to be so. This can be caused by accidentally pressing `Ctrl`+`s`. In this case, `Ctrl`+`q` can be tried to free the console again.
 
 ### Help in the terminal
 
-Most commands/programs have command line help and also instructions. The instructions are called "man page" or "manual page". The syntax to call the "man page" is:
+Most commands/programs have command line help and also instructions. The  are called "man page" or "manual page". The syntax to call the "man page" is:
 
 ~~~
 $ man <command>
@@ -225,7 +210,7 @@ or
 $ man -k <keyword>
 ~~~
 
-This calls the "man page" of a command. Navigation in the "man pages" is done by the arrow keys, they are terminated with "q" for quit. Example:
+This calls the "man page" of a command. Navigation in the "man pages" is done by the arrow keys and they can be terminated with `q` for quit. Example:
 
 ~~~
 $ man apt-get
@@ -233,13 +218,13 @@ $ man apt-get
 
 To exit a man page, type `q`. 
 
-Another useful tool is the "apropos" command. "Apropos" allows you to search the man pages for a command if, for example, you forget the syntax. Example:
+Another useful tool is the *apropos* command. *apropos* allows you to search the man pages for a command if, for example, you forget the syntax. Example:
 
 ~~~
 $ apropos apt-
 ~~~
 
-This lists all commands for the package manager apt. "apropos" is a powerful tool, for more in-depth information about "apropos" see.
+This lists all commands for the package manager *apt*. *apropos* is a powerful tool, for more in-depth information about *apropos* enter
 
 ~~~
 $ man apropos
@@ -260,11 +245,11 @@ A script is started in the console as follows, if you are in the same directory:
 ./name_of_script
 ~~~
 
-Some scripts require root access, depending on the scope of the script.
+Some scripts require **root** access, depending on the scope of the script.
 
 **Installation and execution**
 
-Use wget to load a script onto the machine, and it is best to place it in the recommended directory, for example to **/usr/local/bin**. To copy and paste in the console, the mouse can also be used after gaining root privileges with **su**.
+Use *wget* to load a script onto the machine. It is best to place it in the recommended directory, for example in **/usr/local/bin**. To copy and paste in the console, the mouse can also be used after gaining root privileges with *su*.
 
 **Example with wget and root privileges**
 
@@ -272,7 +257,7 @@ Use wget to load a script onto the machine, and it is best to place it in the re
 $ su
 password:
 # cd /usr/local/bin
-# wget -c ftp://<removed_server>/script-name.sh
+# wget -c ftp://<remote_server>/script-name.sh
 ~~~
 
 After that, the file must be made executable:
@@ -281,22 +266,20 @@ After that, the file must be made executable:
 # chmod +x script-name.sh
 ~~~
 
-Since the directory */usr/local/bin* is included in the search path of root, the simple command for root is sufficient
+Since the directory **/usr/local/bin** is included in the search path of **root**, this simple command is sufficient to start the script:
 
 ~~~
 # script-name.sh
 ~~~
 
-is sufficient to start the script.
-
 The file can also be loaded onto the computer with a browser and moved to the appropriate location, but it must be made executable even then.
 
 **Example with wget as user**
 
-This is how to save a file in \$HOME (the prompt is '$') as a user:
+This is how to save a file in **\$HOME** (the prompt is '$') as a user:
 
 ~~~
-$ wget -c ftp://<removed_server>/user-script-name.sh
+$ wget -c ftp://<remote_server>/user-script-name.sh
 $ chmod +x user-script-name.sh
 ~~~
 
@@ -306,6 +289,6 @@ The script is started like this:
 $ ./user-script-name.sh
 ~~~
 
-Of course, this will only work as *user* if the script does not contain any commands that require root privileges.
+Of course, this will only work as **user** if the script does not contain any commands that require **root** privileges.
 
-<div id="rev">Last edited: 2021/23/08</div>
+<div id="rev">Last edited: 2022/02/17</div>

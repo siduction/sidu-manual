@@ -232,7 +232,7 @@
   ## systemd-path   0715-systemd-path_en.md   Link: [](0715-systemd-path_en.md#systemd-path)
   ## systemd-service   0712-systemd-service_en.md   Link: [](0712-systemd-service_en.md#systemd-service)
   ## systemd-target - target unit   0714-systemd-target_en.md   Link: [](0714-systemd-target_en.md#systemd-target---target-unit)
- ### systemd-target formerly runlevel.   0702-sys-admin-gen_en.md   Link: [](0702-sys-admin-gen_en.md#systemd-target-formerly-runlevel.)
+ ### systemd-target - formerly runlevel   0702-sys-admin-gen_en.md   Link: [](0702-sys-admin-gen_en.md#systemd-target---formerly-runlevel.)
   ## systemd-timer   0716-systemd-timer_en.md   Link: [](0716-systemd-timer_en.md#systemd-timer)
  ### systemd.service    0702-sys-admin-gen_en.md   Link: [](0702-sys-admin-gen_en.md#systemd.service-)
   ## Terminal - command line   0701-term-konsole_en.md   Link: [](0701-term-konsole_en.md#terminal---command-line)

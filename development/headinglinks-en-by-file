@@ -202,7 +202,7 @@
 0702-sys-admin-gen_en.md   ### systemd - managing services   Link: [](0702-sys-admin-gen_en.md#systemd---managing-services)
 0702-sys-admin-gen_en.md   ### systemd.service    Link: [](0702-sys-admin-gen_en.md#systemd.service-)
 0702-sys-admin-gen_en.md   ### systemd - UNIT inclusion   Link: [](0702-sys-admin-gen_en.md#systemd---unit-inclusion)
-0702-sys-admin-gen_en.md   ### systemd-target formerly runlevel.   Link: [](0702-sys-admin-gen_en.md#systemd-target-formerly-runlevel.)
+0702-sys-admin-gen_en.md   ### systemd-target - formerly runlevel   Link: [](0702-sys-admin-gen_en.md#systemd-target---formerly-runlevel.)
 0702-sys-admin-gen_en.md   ### Terminating a process   Link: [](0702-sys-admin-gen_en.md#terminating-a-process)
 0702-sys-admin-gen_en.md   ### Forgotten root password   Link: [](0702-sys-admin-gen_en.md#forgotten-root-password)
 0702-sys-admin-gen_en.md   ### Setting new passwords   Link: [](0702-sys-admin-gen_en.md#setting-new-passwords)
