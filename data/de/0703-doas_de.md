@@ -4,12 +4,13 @@ ANFANG   INFOBEREICH FÜR DIE AUTOREN
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
 **Status: RC1**
 
-Erstellt 2022-02
+Erstellt 2022-02  
++ Link geprüft
++ Layout geprüft
 
-todo
-
-+ Rechtschreibung prüfen
-+ Link prüfen
+Ausstehend:  
++ Inhalt durch fachlich geeignete Person prüfen
++ Rechtschreibung und Satzzeichen prüfen
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
