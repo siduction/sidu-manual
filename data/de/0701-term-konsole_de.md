@@ -92,16 +92,13 @@ Beispiele für die Verwendung graphischer Anwendungen mittels *su-to-root* sind:
 
 **sudo ist nicht konfiguriert**
 
-**sudo** steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.  
-Nach einer Installation ist **sudo** nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.
+Sudo steht nur im Live-Modus zur Verfügung, da im Live-Modus kein Root-Passwort gesetzt ist.  
+**Nach einer Installation ist sudo nicht aktiviert**. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreifen, erlangt er noch keine Super-User-Rechte und kann keine schädlichen Veränderungen am System durchführen.  
+Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von **su** oder **su-to-root** wird empfohlen!  
+Sollte man trotz aller Warnungen sudo nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!  
+Dies kann mit dem Befehl `adduser BENUTZER GRUPPE` als root ausgeführt werden.
 
-Ein anderes Problem mit **sudo** ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration läuft, Berechtigungen ändern und somit für den Nutzer unbrauchbar machen kann. Die Verwendung von **su** oder **su-to-root** wird empfohlen!
-
-Sollte man trotz aller Warnungen *sudo* nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!
-
-Dies kann mit dem Befehl "adduser BENUTZER GRUPPE" als root ausgeführt werden.
-
-Als schlanke Alternative zu *sudo* bietet sich *doas* an. Die Handbuchseite [Doas - Alternative zu Sudo](0703-doas_de.md#doas---alternative-zu-sudo) erläutert die Vorteile von Doas und die Doas Konfiguration.
+Als schlanke Alternative zu **sudo** bietet sich **doas** an. Die Handbuchseite [Doas - Alternative zu Sudo](0703-doas_de.md#doas---alternative-zu-sudo) erläutert die Vorteile von Doas und die Doas Konfiguration.
 
 ### Farbiges Terminal
 
@@ -289,4 +286,4 @@ $ ./user-script-name.sh
 
 Das funktioniert als *user* natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2022-02-21</div>
