@@ -104,4 +104,4 @@ man doas.conf
 [DE: LinuxNews, Linux Rechtemanagement, sudo durch doas ersetzen](https://linuxnews.de/2020/10/linux-rechtemanagement-sudo-durch-doas-ersetzen/)  
 [DE: LinuxUser 08.2021, Kleiner Bruder](https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/)
 
-<div id="rev">Page last updated 2021/26/02</div>
+<div id="rev">Page last updated 2022/26/02</div>
