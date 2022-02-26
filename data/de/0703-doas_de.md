@@ -2,7 +2,7 @@
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Erstellt 2022-02  
 + Link geprüft
@@ -11,6 +11,9 @@ Erstellt 2022-02
 Ausstehend:  
 + Inhalt durch fachlich geeignete Person prüfen
 + Rechtschreibung und Satzzeichen prüfen
+
+Prüfung: Inhalt korrekt
+Rechtschreibung korrekt
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
