@@ -1,22 +1,5 @@
 % Doas
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
-
-Erstellt 2022-02  
-+ Link geprüft
-+ Layout geprüft
-
-Ausstehend:  
-+ Inhalt durch fachlich geeignete Person prüfen
-+ Rechtschreibung und Satzzeichen prüfen
-
-Prüfung: Inhalt korrekt
-Rechtschreibung korrekt
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Doas - Alternative zu Sudo
 
 Wir, das siduction Team, haben uns für einen echten Root-Account entschieden und Sudo nicht konfiguriert. Für Benutzer die Sudo gewohnt sind und nicht auf seine Funktionalität verzichten möchten, bietet sich die schlanke Alternative Doas an. Doas ist, im Vergleich zu Sudo mit nur etwa 1/100 an Codezeilen, auf Desktop-Systeme zugeschnitten. Mit *siduction 2021.3 wintersky* wird Doas in Version 6.8.1-3 automatisch installiert, ist jedoch noch nicht vollständig konfiguriert.
@@ -107,4 +90,4 @@ man doas.conf
 [LinuxNews, Linux Rechtemanagement, sudo durch doas ersetzen](https://linuxnews.de/2020/10/linux-rechtemanagement-sudo-durch-doas-ersetzen/)  
 [LinuxUser 08.2021, Kleiner Bruder](https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/)
 
-<div id="rev">Zuletzt bearbeitet: 2022-02-18</div>
+<div id="rev">Zuletzt bearbeitet: 2022-02-26</div>
