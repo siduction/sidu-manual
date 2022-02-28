@@ -92,21 +92,13 @@ Examples of using graphical applications via *su-to-root* are: editing a configu
 
 **sudo is not configured**
 
-*sudo* is only available in live mode, because no root password is set there.  
-After an installation *sudo* is not enabled. The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.
+sudo is only available in live mode, because no root password is set there.  
+**After an installation sudo is not enabled.** The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.  
+Another problem with sudo is that a root application running with the user configuration can change permissions and thus make them unusable for the user. The use of **su** or **su-to-root** is recommended!  
+If you want to use sudo despite all warnings, you have to add the corresponding $user to the sudo group!  
+This can be done with the command `adduser USER GROUP` as root.
 
-Another problem with *sudo* is that a root application running with the user configuration can change permissions and thus make them unusable for the user. The use of *su* or *su-to-root* is recommended!
-
-If you want to use *sudo* despite all warnings, you have to add the corresponding $user to the sudo group!
-
-This can be done with the command "adduser USER GROUP" as **root**.
-
-As an alternative to *sudo* you can also use *doas* (**`apt install doas`**) and set it up.
-
-* [OpenBSD manual doas](https://man.openbsd.org/doas)
-* [doas on GitHub](https://github.com/slicer69/doas)
-
-
+A slim alternative to sudo is doas. The manual page [Doas - Alternative to Sudo](0703-doas_en.md#doas---alternative-to-sudo) explains the advantages of doas and the doas configuration.
 
 ### Colored terminal
 
