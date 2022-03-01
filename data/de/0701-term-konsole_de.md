@@ -98,7 +98,7 @@ Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerko
 Sollte man trotz aller Warnungen sudo nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzufügen!  
 Dies kann mit dem Befehl `adduser BENUTZER GRUPPE` als root ausgeführt werden.
 
-Als schlanke Alternative zu **sudo** bietet sich **doas** an. Die Handbuchseite [Doas - Alternative zu Sudo](0703-doas_de.md#doas---alternative-zu-sudo) erläutert die Vorteile von Doas und die Doas Konfiguration.
+Als schlanke Alternative zu **sudo** empfehlen wir **doas**. Die Handbuchseite [Doas - Alternative zu Sudo](0703-sys-admin-doas_de.md#doas---alternative-zu-sudo) erläutert die Vorteile von Doas und die Doas Konfiguration.
 
 ### Farbiges Terminal
 
@@ -286,4 +286,4 @@ $ ./user-script-name.sh
 
 Das funktioniert als *user* natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-02-21</div>
+<div id="rev">Zuletzt bearbeitet: 2022-03-01</div>
