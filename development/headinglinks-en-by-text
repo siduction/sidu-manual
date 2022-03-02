@@ -177,7 +177,7 @@
 #### Resize a partition   0314-part-cfdisk_en.md   Link: [](0314-part-cfdisk_en.md#resize-a-partition)
  ### Resizing a volume   0315-part-lvm_en.md   Link: [](0315-part-lvm_en.md#resizing-a-volume)
  ### root privileges on the live DVD   0202-live-mode_en.md   Link: [](0202-live-mode_en.md#root-privileges-on-the-live-dvd)
- ### run full-upgrade   0705-sys-admin-apt_en.md   Link: [](0705-sys-admin-apt_en.md#run-full-upgrade)
+ ### Run full-upgrade   0705-sys-admin-apt_en.md   Link: [](0705-sys-admin-apt_en.md#run-full-upgrade)
  ### Runlevels - target unit   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#runlevels---target-unit)
   ## SAMBA   0510-samba_en.md   Link: [](0510-samba_en.md#samba)
  ### Searching for program packages   0705-sys-admin-apt_en.md   Link: [](0705-sys-admin-apt_en.md#searching-for-program-packages)
