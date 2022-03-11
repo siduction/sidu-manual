@@ -6,8 +6,6 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 
 + [Installation vom Live-Medium auf HDD](0301-hd-install_de.md#installation-auf-hdd), den notwendigen Vorbereitungen, der Partitionierung und eine Anleitung für das Installationsprogramm Calamares.
 
-+ [Installation auf USB-Stick - Speicherkarte](0303-hd-ins-opts-oos_de.md#installation-auf-usb-stick---speicherkarte) bei Verwendung von Linux-, Windows- und Mac-Betriebssystemen.
-
 + [Ohne Installation aus ISO-Datei starten](0302-hd-ins-fromiso_de.md#fromiso)
 
 + [Partitionierung von Installationsmedien](0310-part-size-examp_de.md#partitionierung-von-installationsmedien), mit Beispielen verschiedener Plattengrößen und Single- oder Dual-Boot.
@@ -25,4 +23,4 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 + Private Daten aus dem [Verzeichnis /home verschieben](0316-home-move_de.md#das-verzeichnis-home-verschieben), um z. B. bei parallelen Installationen eine Daten-Partition für mehrere Betriebssysteme verfügbar zu machen.
 
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-21</div>
+<div id="rev">Zuletzt bearbeitet: 2022-03-11</div>
