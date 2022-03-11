@@ -14,11 +14,11 @@ siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kan
 
 + [Partitionieren der Festplatte](0312-part-gparted_de.md#partitionieren-mit-gparted)  - Beschreibt, wie eine Festplatte partitioniert werden kann. 
 
-+ [siduction ISO herunterladen und DVD brennen](0206-cd-dl-burning_de.md#iso-download-und-brennen)  - Beschreibt den Download, die Prüfung und das Brennen einer siduction ISO auf DVD.
++ [siduction ISO herunterladen](0206-iso-dl_de.md#iso-download)  - Beschreibt den Download und die Prüfung einer siduction ISO-Datei.
+
++ [ISO auf USB-Stick - Speicherkarte](0207-iso-to-usb-sd_de.md#iso-auf-usb-stick---speicherkarte)  - Beschreibt wie ein siduction Life-Medium erstellt wird.
 
 + [Installation auf einer Festplatte](0301-hd-install_de.md#installation-auf-hdd)  - Beschreibt, wie siduction auf einer Festplatte installiert wird.
-
-+ [Installation auf USB-Stick/SD von einem anderen System](0303-hd-ins-opts-oos_de.md#installation-auf-usb-stick---speicherkarte)  - Beschreibt, wie siduction von einem anderen System auf einen USB-Stick bzw. SD/Flash-Card geschrieben werden kann.
 
 + [Nicht freie Treiber, Firmware und Quellen](0600-gpu_de.md#grafiktreiber)  - Beschreibt, wie Softwarequellen adaptiert und nicht freie Firmwares installiert werden können.
 
