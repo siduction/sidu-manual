@@ -16,7 +16,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 + [Download und Integritätsprüfung der ISOs](0206-iso-dl_de.md#iso-download)  
   mit Angaben zu den Spiegelservern und den darauf befindlichen Dateien und der Integritätsprüfung des Download.
 
-+ [Schreiben der ISOs auf USB-Stick, SD- oder SHDC-Karte](0207-iso-to-usb-sd_de.md#iso-auf-usb-stick---speicherkarte)  
++ [Schreiben der ISOs auf USB-Stick, SD- oder SDHC-Karte](0207-iso-to-usb-sd_de.md#iso-auf-usb-stick---speicherkarte)  
   Methoden eine siduction ISO-Abbilddatei als Live-Medium auf einen USB-Stick, eine SD-Karte oder eine SDHC-Karte zu schreiben.
 
 + [Brennen der ISOs auf DVD mit GUI](0208-iso-to-dvd_de.md#iso-brennen)  
