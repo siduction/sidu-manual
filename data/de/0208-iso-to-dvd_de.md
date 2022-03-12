@@ -1,6 +1,6 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Arbeiten 2022-03
 + Neu, aus "0206-iso-dl" ausgelagert

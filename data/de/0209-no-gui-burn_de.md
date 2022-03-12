@@ -1,6 +1,6 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC1**
+**Status: RC2**
 
 Arbeiten 2022-03
 + Umbenannt von 0207-cd-no-gui-burn
@@ -50,7 +50,7 @@ Nach Eingabe der Ziffer für die gewünschte ISO-Abbilddatei prüft burniso die 
 
 Burniso perfektioniert und vereinfacht für den Anwender eine einzige Funktion, nämlich das Brennen von ISO-Abbildern. Darüber hinaus bieten die Kommandozeilenprogramme alle Möglichkeiten um Medien mit Daten verschiedenster Art auf CD, DVD und BD zu erstellen. Im folgenden Kapitel zeigen wir einige Beispiele die häufig Anwendung finden.
 
-## Brennen mit cdrdao wodim growisofs
+### Brennen mit cdrdao wodim growisofs
 
 Die Kommandozeilenprogramme bilden die Basis für die beliebten GUI-Programme wie *K3b*, *Brasero* oder *Xfburn*. Wer die vollständige Bandbreite an Optionen der Programme *cdrdao*, *wodim*, *growisofs* usw. bevorzugt, nutzt die Kommandozeile. Wir präsentieren hier nur einen minimalen Ausschnitt der Möglichkeiten. Das Studium der Manpages sollte selbstverständlich sein und ist mit den Beispielen etwas einfacher. Darüber hinaus finden sich im Internet mit der Suchmaschine der Wahl Tips für das eigene Projekt.
 
