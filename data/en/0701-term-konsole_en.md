@@ -227,6 +227,11 @@ $ man apropos
 A very good introduction to the BASH console can be found at [linuxcommand.org](http://linuxcommand.org/).  
 Of course you can also use your favorite search engine to find more.
 
+**Burning CD, DVD and BD**.
+
+The command line programs are the basis for popular GUI programs like *K3b*, *Brasero* or *Xfburn*.  
+Those who prefer the full range of options of the command line programs *cdrdao*, *wodim*, *growisofs* etc. use the terminal. Our manual page [Burn DVD without GUI](0209-no-gui-burn_en.md#burn-dvd-without-gui) contains many examples and tips to detect available hardware, compile data and then burn it to CD, DVD and BD.
+
 ### Using scripts
 
 A console script is a convenient way to bundle several commands into one file. Entering the filename of the script executes the commands that are in the script. siduction comes with some very useful scripts that provide simplifications to system administration.
