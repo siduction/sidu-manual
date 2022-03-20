@@ -1,16 +1,16 @@
 BEGINNING   INFO AREA FOR THE AUTHORS
 This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC1**
+**Status: RC2**
 
 Necessary work:
 
-+ check intern links  
-+ check extern links  
-+ check layout  
 + check spelling  
 
 Work done
 
++ check intern links  
++ check extern links  
++ check layout  
 
 END   INFO AREA FOR THE AUTHORS  
 % Siduction Manual
@@ -26,7 +26,7 @@ See also [DFSG](https://ee.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
 
 ### General
 
-For those who want to get started quickly, here is the [Quick Start Guide](./wel-quickstart_en.md#siduction-short-guide)
+For those who want to get started quickly, here is the [Quick Start Guide](./0100-wel-quickstart_en.md#quickstart)
 
 The siduction operating system manual is a reference for getting to know the system as well as for refreshing your knowledge of the system. It not only provides basic knowledge, but also covers complex topics and supports the work as an administrator of siduction systems.
 
@@ -38,11 +38,11 @@ To print manual pages, please use the PDF and print only the pages you need.
 
 To get help for a specific pre-installed or self-installed application program (also called a package), it is best to consult the FAQs, online manuals or forums on the home page or help menu of the application.
 
-Almost all application programs offer assistance by means of an associated "*Manual-Page*" (short manpage). It is called in the terminal by the command **`man <package name>`**. You can also check if there is documentation in */usr/share/doc/\<packagename\>*.
+Almost all application programs offer assistance by means of an associated "*Manual-Page*" (short manpage). It is called in the terminal by the command **`man <package_name>`**. You can also check if there is documentation in */usr/share/doc/\<packagename\>*.
 
 ### Copyright Legal and License Notices
 
-All rights © 2006-2021 of the siduction-manual are licensed under the [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt).  
+All rights © 2006-2022 of the siduction-manual are licensed under the [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt).  
 This permits copying, distribution and/or modification of the document under the terms of the GNU Free Document License version 1.3 or later (as published by the Free Software Foundation); without Invariant Sections and without Cover Texts (Front-Cover Texts, Back-Cover Texts).
 
 The rights of protected trademarks or copyrights belong to the respective owners, regardless of whether this is noted or not.
@@ -55,5 +55,5 @@ This is experimental software. Use at your own risk. The siduction project, its 
 
 If you do not agree with these terms, you are not allowed to further use or distribute this software.
 
-<div id="rev">Last edited: 2021-08-05</div>
+<div id="rev">Last edited: 2022/03/20</div>
 
