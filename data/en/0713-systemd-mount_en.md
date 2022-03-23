@@ -1,24 +1,9 @@
-BEGINNING   INFO AREA FOR THE AUTHORS
-This area is to be removed when the status RC3 is reached. The first line of the file must contain the title (% my-title) !!!  
-**Status: RC2**
-
-Necessary work:
-
-+ check spelling  
-
-Work done
-
-+ check intern links  
-+ check extern links  
-+ check layout  
-
-END   INFO AREA FOR THE AUTHORS  
 % systemd-mount
 
 ## systemd-mount
 
-The basic and introductory information about Systemd is contained in the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager) The sections *[Unit]* and *[Install]* concerning all unit files are covered in our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
-In this manual page we explain the function of the systemd units **mount** and **automount**. They are used by systemd to manage mount points for drives and their partitions, which can be accessible both locally and over the network.
+The basic and introductory information about Systemd can be found on the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager). The sections *[Unit]* and *[Install]* concerning all unit files are covered on our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
+On this manual page we explain the function of the systemd units **mount** and **automount**. They are used by systemd to manage mount points for drives and their partitions, which can be accessible both locally and over the network.
 
 The **mount** unit is a configuration file that provides systemd with information about a mount point.  
 The **automount** unit monitors the file system and activates the *.mount unit* of the same name if the file system designated therein is available.
@@ -28,25 +13,25 @@ For network file systems, the *mount* unit has the advantage of being able to de
 
 Removable devices, such as USB sticks, and network file systems that are not permanently accessible must always be attached to a *.automount* unit. In this case, the *mount* unit must not be activated and should not contain an [Install] section.
 
-*mount* and *automount* units must be named after the mount point they control. For example, the mount point "/home/musteruser" must be configured in a unit file "home-musteruser.mount", or "home-musteruser.automount".
+*mount* and *automount* units must be named after the mount point they control. For example, the mount point "/home/musteruser" must be configured in a unit file *home-musteruser.mount*, or *home-musteruser.automount*.
 
-The devices declared in "*/etc/fstab*" and their mount points are translated into native *mount* units by systemd in the early boot phase using the "*systemd-fstab-generator*".
+The devices declared in *`/etc/fstab`* and their mount points are translated into native *mount* units by systemd in the early boot phase using the "*systemd-fstab-generator*".
 
 ### Contents of the mount unit
 
 The *mount* unit has the following options in the mandatory [mount] section:
 
-+ **What=** (mandatory).  
- 	Contains the absolute path of the mounted device, e.g., disk partitions such as /dev/sda8 or a network share such as NFSv4 or Samba.
++ **What=** (mandatory)  
+ 	contains the absolute path of the mounted device, e.g., disk partitions such as "/dev/sda8" or a network share such as NFSv4 or Samba.
 
 + **Where=** (mandatory)  
- 	Here you specify the mount point, i.e. the folder where the partition, network drive or device should be mounted. If it does not exist, it will be created during the mount process.
+ 	Here you specify the mount point, i.e. the folder where the partition, network drive, or device should be mounted. If it does not exist, it will be created during the mount process.
 
 + **Type=** (optional)  
     Here the type of the file system is specified, according to the mount parameter -t.
 
 + **Options=** (optional)  
- 	Contains all used options in a comma separated list, according to the mount parameter -o.
+ 	contains all used options in a comma separated list, according to the mount parameter -o.
 
 + **LazyUmount=** (default: off)  
  	If set to true, the filesystem will be unmounted as soon as it is no longer needed. 
@@ -55,13 +40,13 @@ The *mount* unit has the following options in the mandatory [mount] section:
     If true, a relaxed evaluation of the options specified in *Options=* is performed and unknown mount options are tolerated. This is equivalent to the mount parameter -s.
 
 + **ReadWriteOnly=** (default: off)  
-    If false, the file system or device that should be mounted read-write, but the mount fails, is attempted to be mounted read-only. If true, the process immediately ends with an error if the read-write mount fails. This is equivalent to the -w mount parameter. 
+    If false, the file system or device that should be mounted read-write, but could not be mounted successfully, is attempted to be mounted read-only. If true, the process immediately ends with an error if the read-write mount fails. This is equivalent to the -w mount parameter. 
 
 + **ForceUnmount=** (default: off).  
     If true, unmounting is forced if, for example, an NFS file system is unreachable. This corresponds to the mount parameter -f. 
 
 + **DirectoryMode=** (default: 0755)  
-    The, if necessary, automatically created directories of mount points, get the declared file system access mode. Accepts an access mode in octal notation.
+    The, if necessary, automatically created directories of mount points get the declared file system access mode. Accepts an access mode in octal notation.
 
 + **TimeoutSec=** (default value from the *DefaultTimeoutStartSec=* option in systemd-system.conf).  
     Configures the time to wait for the mount command to finish. If a command does not finish within the configured time, the mount is considered to have failed and is shut down again. Accepts a unit-free value in seconds or a duration value such as "5min 20s". Passing "0" will disable the timeout logic.
@@ -71,18 +56,18 @@ The *mount* unit has the following options in the mandatory [mount] section:
 The *automount* unit has the following options in the mandatory [Automount] section:
 
 + **Where=** (mandatory)  
- 	This specifies the mount point, i.e. the folder where the partition, network drive or device is to be mounted. If it does not exist, it will be created during the mount process.
+ 	This specifies the mount point, i.e. the folder where the partition, network drive, or device is to be mounted. If it does not exist, it will be created during the mount process.
 
 + **DirectoryMode=** (default: 0755)  
     The, if necessary, automatically created directories of mount points get the declared file system access mode. Accepts an access mode in octal notation.
 
 + **TimeoutIdleSec=** (default: 0)  
-    Specifies the time of inactivity after which systemd attempts to unmount the file system. Accepts a unitless value in seconds or a duration value such as "5min 20s". The value "0" disables the option.
+    specifies the time of inactivity after which systemd attempts to unmount the file system. Accepts a unitless value in seconds or a duration value such as "5min 20s". The value "0" disables the option.
 
 ### Examples
 
 Systemd reads the mount point from the name of the *mount* and *automount* units. Therefore, they must be named after the mount point they control.  
-Care must be taken not to use hyphens "-" in the filenames, because they declare a new subdirectory in the directory tree. Some examples:
+Make sure not to use hyphens "-" in the filenames, because they declare a new subdirectory in the directory tree. Some examples:
 
 + invalid: /data/home-backup
 + allowed: /data/home_backup
@@ -97,7 +82,7 @@ $ systemd-escape -p --suffix=mount "/data/home-backup"
 
 **Disk partition**  
 A partition should be accessible under "/disks/TEST" after every system start.  
-We create with a text editor the file "disks-TEST.mount" in the directory "/usr/local/lib/systemd/system/". (If necessary, create the directory beforehand with the command **`mkdir -p /usr/local/lib/systemd/system/`**).
+We create with a text editor the file "disks-TEST.mount" in the directory **/usr/local/lib/systemd/system/**. (If necessary, create the directory beforehand with the command **`mkdir -p /usr/local/lib/systemd/system/`**.)
 
 ~~~
 [Unit]
@@ -123,8 +108,8 @@ Then we activate and start the new *.mount* unit.
 ~~~
 
 **NFS**  
-The "document-root" directory of an Apache web server in the home network is to be mounted into the home directory of the workstation computer using NFS.  
-We create the file "home-\<user\>-www_data.mount" in the directory "/usr/local/lib/systemd/system/" using a text editor.  
+The **document-root** directory of an Apache web server in the home network is to be mounted into the home directory of the workstation computer using NFS.  
+We create the file *`home-\<user\>-www_data.mount`* in the **/usr/local/lib/systemd/system/** directory using a text editor.  
 Please replace "\<user\>" with your own name.
 
 ~~~
@@ -141,7 +126,7 @@ Options=nfsvers=4,rw,users,soft
 ForceUnmount=true
 ~~~
 
-This file does not contain an [Install] section and will not be activated. The control is taken over by the now following file "home-\<user\>-www_data.automount" in the same directory.
+This file does not contain an [Install] section and will not be activated. The control is taken over by the now following file *`home-\<user\>-www_data.automount`* in the same directory.
 
 ~~~
 [Unit]
@@ -166,7 +151,7 @@ Afterwards:
 # systemctl enable --now home-<user>-www_data.automount
 ~~~
 
-Now the "document-root" directory of the Apache web server will be mounted as soon as we change to the "/home/\<user\>/www_data" directory.  
+Now the **document-root** directory of the Apache web server will be mounted as soon as we switch to the **/home/\<user\>/www_data** directory.  
 The status prompt confirms the action.
 
 ~~~
@@ -192,7 +177,7 @@ TriggeredBy: ● home-<user>-www_data.automount
 [...]
 ~~~
 
-The journal excerpt vividly logs the operation of "TimeoutIdleSec=60" to unmount the file system and mount it again by starting the file manager Thunar and a call to "/home/\<user\>/www_data" in the terminal.
+The journal excerpt vividly logs the operation of "TimeoutIdleSec=60" to unmount the file system and mount it again by starting the file manager Thunar and a call to **/home/\<user\>/www_data** in the terminal.
 
 ~~~
 # journalctl -f -u home-<user>-www_data.*
@@ -217,7 +202,7 @@ Mar 10 18:01:51 pc1 systemd[1]: Unmounted mount server1/var/www/ using NFS.
 ~~~
 
 **More examples**  
-Using your favorite search engine, you can find many examples for using the *mount* and *automount* units on the Internet. The chapter "Sources" contains some websites with a lot of further examples. Urgently recommended are also the man pages.
+Using your favorite search engine, you can find many examples on how to use *mount* and *automount* units on the Internet. The chapter "Sources" contains some websites lots of further examples. We urgently recommended to also read the man pages.
 
 ### Sources systemd-mount
 
@@ -229,4 +214,4 @@ man mount
 [Manjaro Forum, systemd.mount](https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191)  
 [Manjaro Forum, Use systemd to mount ANY device](https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185)
 
-<div id="rev">Page last updated 2021/25/08</div>
+<div id="rev">Last edited 2022/03/23</div>

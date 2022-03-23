@@ -47,7 +47,7 @@
 #### Create additional service unit   0715-systemd-path_en.md   Link: [](0715-systemd-path_en.md#create-additional-service-unit)
 #### Create partition   0313-part-gdisk_en.md   Link: [](0313-part-gdisk_en.md#create-partition)
  ### create path unit   0715-systemd-path_en.md   Link: [](0715-systemd-path_en.md#create-path-unit)
- ### create service unit   0712-systemd-service_en.md   Link: [](0712-systemd-service_en.md#create-service-unit)
+ ### Create service unit   0712-systemd-service_en.md   Link: [](0712-systemd-service_en.md#create-service-unit)
  ### create timer unit   0716-systemd-timer_en.md   Link: [](0716-systemd-timer_en.md#create-timer-unit)
 #### Creating a new partition   0314-part-cfdisk_en.md   Link: [](0314-part-cfdisk_en.md#creating-a-new-partition)
  ### Creation of new mount points   0311-part-uuid_en.md   Link: [](0311-part-uuid_en.md#creation-of-new-mount-points)
