@@ -2,34 +2,34 @@
 
 # System Administration
 
-This section contains informations and notes to the
+This section contains informations and notes on
 
-+ [Terminal - command line](0701-term-konsole_en.md#terminal---command-line), basic introduction, working as root, colored terminal, help in terminal and using scripts.
++ [Terminal - command line](0701-term-konsole_en.md#terminal---command-line), a basic introduction, working as root, configuring colors in a terminal, getting help in a terminal, and using scripts.
 
-+ [Doas - Alternative to Sudo](0703-sys-admin-doas_en.md#doas---alternative-to-sudo), our recommendation for all those who miss sudo.
++ [Doas - Alternative to Sudo](0703-sys-admin-doas_en.md#doas---alternative-to-sudo), our recommendation for all those who miss *sudo*.
 
-+ [System administration-general](0702-sys-admin-gen_en.md#system-administration-in-general) Short and sweet, a stiff through system administration; boot options, manage systemd - services, terminate processes, manage passwords, fonts in siduction, the printing system CUPS and sound in siduction.
++ [System administration in general](0702-sys-admin-gen_en.md#system-administration-in-general). Short and sweet, we provide a stiff through system administration, boot options, managing systemd services, terminating processes, managing passwords, fonts in siduction, the printing system CUPS, and sound in siduction.
 
-+ [APT package management](0705-sys-admin-apt_en.md#apt-package-management), package sources, manage packages, update the system, search program packages and why to use apt exclusively. 
++ [APT package management](0705-sys-admin-apt_en.md#apt-package-management), package sources, managing packages, updating the system, searching program packages, and why to use apt exclusively. 
 
-+ [Local APT mirror](0706-sys-admin-apt-localmirr_en.md#local-apt-mirror); Apt-Cacher, the proxy server for Debian packages. Install server and client configuration.
++ [Local APT mirror](0706-sys-admin-apt-localmirr_en.md#local-apt-mirror), apt-cacher, the proxy server for Debian packages, and how to install server as well as client configuration.
 
-+ [Install new kernels](0707-sys-admin-kern-upg_en.md#kernel-upgrade), kernel upgrade without system upgrade, remove 3rd party modules and old kernels.
++ [Installing new kernels](0707-sys-admin-kern-upg_en.md#kernel-upgrade), upgrading the kernel  without a system upgrade, and removing 3rd party modules as well as old kernels.
 
-+ [Systemd the system and services manager](0710-systemd-start_en.md#systemd---the-system-and-services-manager), concept of systemd, unit types, systemd in the file system and handling services.
++ [systemd - the system and services manager](0710-systemd-start_en.md#systemd---the-system-and-services-manager), the concept of systemd, unit types, systemd in the file system, and handling services.
 
-    + [The systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file), directories and hirarchies of the unit files, the incorporation in systemd, the structure of the unit file with description of numerous options, the function of the unit files on the example of CUPS and the tools that systemd provides,
+    + [The systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file), directories and hirarchies of unit files, the incorporation in systemd, the structure of unit files with a description of numerous options, the function of unit files on the example of CUPS, and the tools that systemd provides.
 
-    + [systemd-service Unit](0712-systemd-service_en.md#systemd-service), creating a service unit and the description of all essential options.
+    + [systemd-service unit](0712-systemd-service_en.md#systemd-service), creating a service unit, and the description of all essential options.
 
-    + [systemd-mount Unit](0713-systemd-mount_en.md#systemd-mount), contents of the mount unit, contents of the automount unit, naming conventions, areas of use and some examples.
+    + [systemd-mount unit](0713-systemd-mount_en.md#systemd-mount), contents of the mount unit, contents of the automount unit, naming conventions, areas of use, and some examples.
 
-    + [systemd-target - target-unit](0714-systemd-target_en.md#systemd-target---target-unit), from runlevel to systemd-target, special features to consider. 
+    + [systemd-target - target unit](0714-systemd-target_en.md#systemd-target---target-unit), from runlevel to systemd-target, special features to consider. 
 
-    + [systemd-path Unit](0715-systemd-path_en.md#systemd-path), the required files, the options of path-unit, create and include path-unit and the example "Monitoring DocumentRoot of Apache web server".
+    + [systemd-path unit](0715-systemd-path_en.md#systemd-path), the required files, the options of path-unit, creating and including path-unit, and the example "Monitoring DocumentRoot of Apache web server".
 
-    + [systemd-timer Unit](0716-systemd-timer_en.md#systemd-timer), the needed files, the options of the timer unit, create and include timer unit, timer unit as cron replacement.
+    + [systemd-timer unit](0716-systemd-timer_en.md#systemd-timer), the required files, the options of the timer unit, creating as well as including timer units, and timer units as cron replacement.
 
-+ [systemd-journal](0717-systemd-journald_en.md#system-journal), the journald locally and over the network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
++ [systemd-journal](0717-systemd-journald_en.md#system-journal), using journald locally and over a network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
 
-<div id="rev">Last edited: 2022/01/03</div>
+<div id="rev">Last edited: 2022/03/23</div>
