@@ -50,7 +50,7 @@ Custom source list files can be added with the naming *`/etc/apt/sources.list.d/
 This is the default mirror, chosen at first boot.
 # One might consider to choose the geographically nearest or the fastest mirror.
 deb http://packages.siduction.org/extra unstable main contrib non-free
-#d eb-src http://packages.siduction.org/extra unstable main contrib non-free
+#deb-src http://packages.siduction.org/extra unstable main contrib non-free
 ~~~
 
 Under *`/etc/apt/sources.list.d/fixes.list`* it might look like this:
@@ -65,7 +65,7 @@ And *`/etc/apt/sources.list.d/debian.list`* contains the actual Debian repo:
 ~~~
 # debian loadbalancer
 deb http://deb.debian.org/debian/ unstable main contrib non-free
-# deb-src http://deb.debian.org/debian/ unstable main contrib non-free
+#deb-src http://deb.debian.org/debian/ unstable main contrib non-free
 ~~~
 
 More entries for optional siduction repositories can be found at [siduction repositories](https://packages.siduction.org/).
