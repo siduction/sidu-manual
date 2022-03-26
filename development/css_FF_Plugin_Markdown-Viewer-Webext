@@ -15,7 +15,7 @@ code {
 }
 p code, li code {
     display: inline;
-    color: #800;
+    font-size: 0.8em;
     padding: 0.15em;
 }
 li pre code {
@@ -27,15 +27,6 @@ hr {
     background-color: #ccc;
     border: 0;
     margin: 2em 0 2em 0;
-}
-warning {
-    display: block;
-    background-color: #ffdddd;
-    line-height: 1.3em;
-    font-size: 1em;
-    padding: 0.4em;
-    border: 0.2em solid #ccc;
-    border-radius: 0.5em;
 }
 #rev {
     float:right;
