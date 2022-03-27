@@ -4,13 +4,13 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Arbeiten 2022-03
 + GUI brennen zu 0208-iso-to-dvd ausgelagert
-+ "md5sum und Integritätsprüfung" aktualisiert
++ "Integritätsprüfung" aktualisiert
 + Rechtschreibprüfung
 + Formatierungen geprüft und bereinigt
-+ Downloadlink geprüft
++ Downloadlink geprüft, http: entfernt, wenn automatisch auf https: umgeleitet wird.
 
 Noch zu erledigen
-+ Inhalt durch weitere fachkundige Person prüfen (besonders "md5sum und Integritätsprüfung")
++ Inhalt durch weitere fachkundige Person prüfen (besonders "Integritätsprüfung")
 + Nochmalige Rechtschreibprüfung
 + Links prüfen/aktualisieren nach Abschluss aller anderen Arbeiten an 0206, 0207, 0208 und 0209
 
@@ -19,67 +19,66 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## ISO download
 
-**Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.**  
+Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.  
 
-**Europa**  
+**Europa**
 
-+ **Office Vienna, Wien, Österreich**  
++ Office Vienna, Wien, Österreich  
 https://siduction.office-vienna.at/
 
-+ **Freie Universität Berlin/spline (Student Project LInux NEtwork), Deutschland**  
++ Freie Universität Berlin/spline (Student Project LInux NEtwork), Deutschland  
 http://ftp.spline.de/pub/siduction/  
 https://ftp.spline.de/pub/siduction/  
 ftp://ftp.spline.de/pub/siduction/
 
-+ **Universität Stuttgart, Deutschland**  
++ Universität Stuttgart, Deutschland  
 https://ftp.uni-stuttgart.de/siduction/  
 ftp://ftp.uni-stuttgart.de/siduction/
 
-+ **Academic Computer Club, Universität Umeå, Schweden**  
++ Academic Computer Club, Universität Umeå, Schweden  
 http://ftp.acc.umu.se/mirror/siduction.org/  
 https://ftp.acc.umu.se/mirror/siduction.org/  
 rsync://ftp.acc.umu.se/mirror/siduction.org/
 
-+ **Dotsrc.org, Universität Aalborg, Dänemark**  
++ Dotsrc.org, Universität Aalborg, Dänemark  
 http://mirrors.dotsrc.org/siduction/  
 https://mirrors.dotsrc.org/siduction/  
 ftp://mirrors.dotsrc.org/siduction/  
 rsync://mirrors.dotsrc.org/siduction/
 
-+ **Yandex, Moskau, Russland**  
-https://mirror.yandex.ru/mirrors/siduction/  
++ Yandex, Moskau, Russland  
 http://mirror.yandex.ru/mirrors/siduction/  
+https://mirror.yandex.ru/mirrors/siduction/  
 ftp://mirror.yandex.ru/mirrors/siduction/  
 rsync://mirror.yandex.ru/mirrors/siduction/
 
-+ **GARR Consortium, Italien**  
++ GARR Consortium, Italien  
 http://siduction.mirror.garr.it/  
 https://siduction.mirror.garr.it/
 
-+ **Quantum Mirror, Ungarn**  
++ Quantum Mirror, Ungarn  
 http://quantum-mirror.hu/mirrors/pub/siduction/  
 https://quantum-mirror.hu/mirrors/pub/siduction/  
 rsync://quantum-mirror.hu/siduction/
 
-+ **Belnet, Brüssel, Belgien**  
++ Belnet, Brüssel, Belgien  
 http://ftp.belnet.be/mirror/siduction/  
 https://ftp.belnet.be/mirror/siduction/  
 ftp://ftp.belnet.be/mirror/siduction/  
 rsync://ftp.belnet.be/siduction/
 
-+ **Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Deutschland**  
-http://ftp.gwdg.de/pub/linux/siduction/  
++ Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Deutschland  
 https://ftp.gwdg.de/pub/linux/siduction/  
 ftp://ftp.gwdg.de/pub/linux/siduction/  
 rsync://ftp.gwdg.de/pub/linux/siduction/
 
-+ **RWTH Aachen, Deutschland**  
-http://ftp.halifax.rwth-aachen.de/siduction/
++ RWTH Aachen, Deutschland  
+http://ftp.halifax.rwth-aachen.de/siduction/  
 https://ftp.halifax.rwth-aachen.de/siduction/  
 ftp://ftp.halifax.rwth-aachen.de/siduction/  
-rsync://ftp.halifax.rwth-aachen.de/siduction/  
+rsync://ftp.halifax.rwth-aachen.de/siduction/
 
-+ **Studenten Net Twente, Niederlande**  
++ Studenten Net Twente, Niederlande  
 http://ftp.snt.utwente.nl/pub/linux/siduction/  
 https://ftp.snt.utwente.nl/pub/linux/siduction/  
 ftp://ftp.snt.utwente.nl/pub/linux/siduction/  
@@ -87,30 +86,30 @@ rsync://ftp.snt.utwente.nl/siduction/
 
 **Asien**
 
-+ **KoDDOS, Amarutu Technology, Hongkong**  
++ KoDDOS, Amarutu Technology, Hongkong  
 http://mirror-hk.koddos.net/siduction/  
 https://mirror-hk.koddos.net/siduction/  
 rsync://mirror-hk.koddos.net/siduction/
 
 **Südamerika**
 
-+ **Corporación Ecuatoriana para el Desarrollo de la Investigación y la Academia, Cuenca**  
++ Corporación Ecuatoriana para el Desarrollo de la Investigación y la Academia, Cuenca  
 http://mirror.cedia.org.ec/siduction/  
 https://mirror.cedia.org.ec/siduction/  
 rsync://mirror.cedia.org.ec/siduction/
 
 **Nordamerika**
 
-+ **Department of Mathematics, Princeton University, United States**  
++ Department of Mathematics, Princeton University, United States  
 http://mirror.math.princeton.edu/pub/siduction/  
 https://mirror.math.princeton.edu/pub/siduction/
 
-+ **Georgia Tech Software Library (GTlib), Atlanta, United States**  
++ Georgia Tech Software Library (GTlib), Atlanta, United States  
 http://www.gtlib.gatech.edu/pub/siduction/  
 ftp://ftp.gtlib.gatech.edu/pub/siduction/  
 rsync://rsync.gtlib.gatech.edu/siduction/
 
-+ **Liquorix.net, United States**  
++ Liquorix.net, United States  
 https://liquorix.net/siduction/
 
 ### Dateien der siduction-Spiegelserver
@@ -126,19 +125,22 @@ SHA256SUM.gpg
 SOURCES  
 
 
-Die **.manifest**-Datei listet alle Pakete der jeweiligen ISO.  
-**.iso** ist die für den Download angebotene Abbilddatei.  
-Die Dateien **.md5** und **.sha256** dienen der Überprüfung der Integrität der ISO.  
-Die **.gpg**-Dateien sind die Signaturdateien, mit denen Checksummendateien (.md5 .sha256) auf Änderungen überprüft werden. Letztere werden zur Integritätsüberprüfung der ISO verwendet.
+`xxx.manifest` Die Datei listet alle Pakete der jeweiligen ISO.  
+`xxx.iso` ist die für den Download angebotene Abbilddatei.  
+`xxx.md5` und `xxx.sha256` enthalten die Checksummen der Abbilddatei und dienen der Überprüfung der Integrität der ISO.  
+`xxx.gpg`-Dateien sind die Signaturdateien, mit denen Checksummendateien (.md5 .sha256) auf Änderungen überprüft werden.  
+`xxx.sources` enthält die Downloadlinks zu den Quellcodedateien der verwendeten Pakete.
 
-Download-Links und Spiegelserver findet man auf [siduction.org](https://forum.siduction.org/index.php?page=7)
+Download-Links und Spiegelserver findet man auch auf [siduction.org](https://forum.siduction.org/index.php?page=7)
 
 Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.
 
 Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6667 #siduction-de erreichbar. 
 
-### md5sum und Integritätsprüfung
+### Integritätsprüfung
 
+**md5sum**
+ 
 Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen ISO-Abbilddatei benutzt. Die siduction ISO-Abbilddateien und ihre entsprechenden md5sum Dateien werden immer im gleichen Verzeichnis zum Download angeboten. So zum Beispiel:
 
 ~~~txt
@@ -148,7 +150,7 @@ siduction-21.3.0-wintersky-kde-amd64-202112231751.iso.md5
 
 Bei der Integritätsprüfung wird für die heruntergeladene ISO-Abbilddatei eine md5sum erstellt und diese mit einer früher von uns erstellten Summe in der Datei mit den Präfix `.md5` verglichen. Weichen die Prüfsummen voneinander ab, so wurde die ISO-Abbilddatei verändert oder beschädigt. Dieser Test schützt vor der Verwendung manipulierter ISO-Abbilddateien und erspart gegebenen Falls viel Zeit für die Fehlersuche einer nicht funktionsfähigen DVD.
 
-Unter Linux wechselt man im Terminal in das Verzeichnis, in dem sich sowohl die ISO-Abbilddatei als auch die .md5-Datei befinden. Anschließend erhält man die md5sum der ISO-Abbilddatei mit `md5sum siduction-*.iso` und den Inhalt der .md5 Datei mit `cat siduction-*.iso.md5`. Verbindet man beide Befehle miteinander, erfolgt die Ausgabe zum einfachen Vergleich direkt untereinander.
+Unter Linux wechselt man im Terminal in das Verzeichnis, in dem sich sowohl die ISO-Abbilddatei als auch die .md5-Datei befinden. Anschließend erhält man die md5sum der ISO-Abbilddatei mit **`md5sum siduction-*.iso`** und den Inhalt der .md5 Datei mit **`cat siduction-*.iso.md5`**. Verbindet man beide Befehle miteinander, erfolgt die Ausgabe zum einfachen Vergleich direkt untereinander.
 
 ~~~txt
 $ md5sum siduction-*.iso && cat siduction-*.iso.md5
@@ -156,7 +158,7 @@ $ md5sum siduction-*.iso && cat siduction-*.iso.md5
 358369ebc617613e3c58afc1af716827 *siduction-21.3.0-wintersky-kde-amd64-202112231751.iso
 ~~~
 
-Noch einfacher gestaltet sich die Überprüfung unter Linux mit dem Befehl `md5sum -c`. Achtung, dem Aufruf muss die .md5-Datei mitgegeben werden.
+Noch einfacher gestaltet sich die Überprüfung unter Linux mit dem Befehl **`md5sum -c`**. Achtung, dem Aufruf muss die .md5-Datei mitgegeben werden.
 
 ~~~txt
     (Befehl und Ausgabe bei Erfolg)
@@ -185,4 +187,4 @@ CertUtil -hashfile C:\TEMP\<mein_ISO_Abbild.img> SHA256
 
 Für ältere Windows Versionen ist das unter der General Public License veröffentlichte Programm *md5summer* (486 KB) erhältlich.
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-05</div>
+<div id="rev">Zuletzt bearbeitet: 2022-03-27</div>

@@ -19,7 +19,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ## ISO brennen
 
 Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie stets mit Hilfe der von siduction immer angebotenen md5sum und sha256sum prüfen. Das erspart unter Umständen viel Zeit für die Fehlersuche bei einer veränderten oder beschädigten Datei.  
-Eine ausführliche Anleitung steht im Handbuchkapitel [md5sum und Integritätsprüfung](0206-iso-dl_de.md#md5sum-und-integritätsprüfung).
+Eine ausführliche Anleitung steht im Handbuchkapitel [ISO Download, Integritätsprüfung](0206-iso-dl_de.md#integritätsprüfung).
 
 > **WICHTIGE INFORMATION:**  
 > siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbildes geachtet werden. Bitte verwende hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).

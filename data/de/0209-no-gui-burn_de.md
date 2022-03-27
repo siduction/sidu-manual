@@ -26,7 +26,7 @@ Man benötigt zum Brennen einer CD/DVD nicht notwendigerweise eine grafische Ben
 Probleme, die beim Brennen auftreten, haben ihre Ursache normalerweise in den Frontends wie K3b, nicht so häufig in den Backends wie growisofs, wodim oder cdrdao.
 
 Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie stets mit Hilfe der von siduction immer angebotenen md5sum und sha256sum prüfen. Das erspart unter Umständen viel Zeit für die Fehlersuche bei einer veränderten oder beschädigten Datei.  
-Eine ausführliche Anleitung steht im Handbuchkapitel [md5sum und Integritätsprüfung](0206-iso-dl_de.md#md5sum-und-integritätsprüfung).
+Eine ausführliche Anleitung steht im Handbuchkapitel [ISO Download, Integritätsprüfung](0206-iso-dl_de.md#integritätsprüfung).
 
 ### burniso
 
