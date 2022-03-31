@@ -24,11 +24,11 @@ If you are unsure, please announce this immediately in the IRC channel so that h
 
 * A friendly tone is obligatory because we all do the support on a voluntary basis.
 * It is helpful to make a request that is accurate to the best of your knowledge and to search for solutions in the siduction wiki beforehand if possible.
-* Please never post a request in IRC and Forum at the same time. At best, we rub our eyes in amazement.
+* Please never post a request in IRC and the forum at the same time. At best, we rub our eyes in amazement.
 
 **Reach siduction**
 
-+ Just click on the **"IRC Chat #siduction" icon** on the desktop or use the kmenu entry of konversation.  
++ Just click on the **"IRC Chat #siduction" icon** on the desktop or use the *kmenu* entry of `konversation`.  
 If you prefer another chat client, you need to enter these server details:
 
   ~~~
@@ -36,17 +36,17 @@ If you prefer another chat client, you need to enter these server details:
   port 6667
   ~~~
 
-+ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en) : enter a free nickname and join the channel #siduction-en.
++ [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en): Enter a free nickname and join the channel #siduction-en.
 
 ### Useful helpers in text mode
 
-Normally, one uses text mode runlevel 3 (init 3 or journalctl isolate multi-user.target) if they want to perform a dist-upgrade or if they are forced to beceause of a serious system error.
+Normally, you should use text mode runlevel 3 (**`init 3`** or **`journalctl isolate multi-user.target`**) if you want to perform a dist-upgrade or if you are forced to beceause of a serious system error.
 
 **gpm**
 
  is a useful program in text mode. It allows you to use the mouse for copying and pasting in the terminal.
 
-*gpm* is preconfigured in siduction. In case it is not:
+gpm is preconfigured in siduction. In case it is not:
 
 ~~~
 $ gpm -t imps2 -m /dev/input/mice
@@ -70,13 +70,13 @@ Now you should be able to use your mouse in text mode (tty).
 
 Midnight Commander is an easy to use text mode (tty) file manager and text editor preinstalled in siduction.  
 Apart from normal keyboard input, the mouse can also be used due to gpm.  
-**mc** shows the file system, and with **mcedit** you can edit an existing file or create a new one.  
+`mc` shows the file system, and with `mcedit` you can edit an existing file or create a new one.  
 This is how to open an existing file (a backup copy is created first):
 
 ~~~
 $ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(date +%F)
 
-  then
+then
 
 $ mcedit /etc/apt/sources.list.d/debian.list
 ~~~
@@ -98,8 +98,8 @@ $ man mc
 
 **IRC in text mode**
 
-The program *irssi* provides an IRC client in text mode or console and is activated in siduction.  
-With the key combination `ALT`+`F2` or `F3` etc., you can switch from one terminal/TTY to another and log in with your user account:
+The program **irssi** provides an IRC client in text mode or console and is activated in siduction.  
+With the key combination **`ALT`**+**`F2`** or **`F3`** etc., you can switch from one terminal/TTY to another and log in with your user account:
 
 ~~~
 $ siductionbox login: <username> <password> (not as root)
@@ -111,10 +111,10 @@ After that you enter
 $ siduction-irc
 ~~~
 
-to start *irssi*.
+to start irssi.
 
 Instructions for using a different client (weechat in the example):  
-First, make sure that WeeChat is installed by looking for the weechat entry in the menu. If this is not available:
+First, make sure that weechat is installed by looking for the weechat entry in the menu. If this is not available:
 
 ~~~
 # apt update
@@ -137,7 +137,7 @@ If you want to change the server, enter a command with the following syntax:
 
 **/server server.name**
 
-In the bottom menu, you can see numbers if the channels are active. In order to connect to a channel, you can use `ALT`+`1`, `ALT`+`2`, `ALT`+`3`, `ALT`+`4` and so on.
+In the bottom menu, you can see numbers if the channels are active. In order to connect to a channel, you can use **`ALT`**+**`1`**, **`ALT`**+**`2`**, **`ALT`**+**`3`**, **`ALT`**+**`4`**, and so on.
 
 To exit a channel use
 
@@ -145,17 +145,17 @@ To exit a channel use
 
 If a dist-upgrade is performed at the same time, you can switch to the terminal to monitor the upgrade progress as follows:
 
-key combination `ALT`+`F3`  
-and to return to the IRC, you can use the  
-key combination `ALT`+`F2`
+key combination **`ALT`**+**`F3`**  
+To return to the IRC, you can use the  
+key combination **`ALT`**+**`F2`**.
 
-The following links provide more information.  
+The following links provide more information:  
 [Documentation page of irssi](https://irssi.org/documentation)  
 [Documentation page of WeeChat](https://www.weechat.org/) 
 
 ### Surfing the Internet in text mode
 
-The command line browser **w3m** allows you to surf the internet in a terminal, console or in text mode.  
+The command line browser **w3m** allows you to surf the internet in a terminal, console, or in text mode.  
 If neither w3m nor elinks are installed, proceed as follows:
 
 ~~~
@@ -164,27 +164,27 @@ If neither w3m nor elinks are installed, proceed as follows:
 # apt install elinks
 ~~~
 
-Now you can use the command line browser w3m. For this purpose, it is useful to switch to another terminal and log in with your user account:
+Now you can use the command line browser `w3m`. For this purpose, it is useful to switch to another terminal and log in with your user account:
 
-key combination `ALT`+`F2`
+key combination **`ALT`**+**`F2`**
 
 ~~~
 $ siductionbox login: <username> <password> (not root!)
 ~~~
 
-The program call is "w3m URL" or "w3m ?".  
-Example: `https://siduction.org` is called like this (https:// is omitted):
+The program call is **`w3m URL`** or **`w3m ?`**.  
+Example: https://siduction.org is called like this (https:// is omitted):
 
 ~~~
 $ w3m siduction.org
 ~~~
 
-A new URL is called using the key combination `Shift`+`U`.
+A new URL is called using the key combination **`Shift`**+**`U`**.
 
 After that, you will see a line like `Goto URL: https://siduction.org`. With the backspace key you delete the last selected URL and enter the desired one.  
 Exit w3m with:
 
-`SHIFT`+`Q`
+**`SHIFT`**+**`Q`**
 
 More information can be found on the [documentation page of w3m](http://w3m.sourceforge.net/). 
 
@@ -192,13 +192,13 @@ It is advisable to familiarize yourself with **elinks/w3m, irssi/weechat, midnig
 
 ### inxi
 
-Inxi is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Alternatively, run it in a console to get information about your own system yourself.
+**inxi** is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Alternatively, run it in a console to get information about your own system yourself.
 
-To use inxi in Konversation, type this into the chat box:
+To use inxi in `konversation`, type this into the chat box:
 
 **/cmd inxi -v2**
 
-To use inxi in weechat, enter this into the chat box:
+To use inxi in `weechat`, enter this into the chat box:
 
 **/shell -o inxi -v2**
 
@@ -228,8 +228,8 @@ $ inxi --help
 
 [Debian reference card - to print on a single sheet](https://www.debian.org/doc/manuals/refcard/refcard.en.pdf)  
 [HOWTOs from the Debian site](https://www.debian.org/doc/#howtos) (automatically in your language if browser is localized)  
-[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.en.php) (documents available as HTML, text, PDF and PS)  
+[Debian Reference: Basics and System Administration](http://qref.sourceforge.net/index.en.php) (documents available as HTML, text, PDF, and PS)  
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2022/01/13</div>
+<div id="rev">Last edited: 2022/03/29</div>

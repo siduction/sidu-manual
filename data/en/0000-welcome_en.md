@@ -23,7 +23,7 @@ To print manual pages, please use the PDF and print only the pages you need.
 
 To get help for a specific pre-installed or self-installed application program (also called a package), it is best to consult the FAQs, online manuals or forums on the home page, or the application's help menu.
 
-Almost all application programs offer assistance by means of an associated "*Manual-Page*" (short manpage). It can be called in the terminal using the command **`man <package_name>`**. You can also check for documentation in the */usr/share/doc/\<packagename\>* directory.
+Almost all application programs offer assistance by means of an associated "*Manual-Page*" (short manpage). It can be called in the terminal using the command **`man <package_name>`**. You can also check for documentation in the `/usr/share/doc/<packagename>` directory.
 
 ### Copyright Legal and License Notices
 
@@ -40,5 +40,5 @@ This is experimental software. Use at your own risk. The siduction project, its 
 
 If you do not agree with these terms, you are not allowed to further use or distribute this software.
 
-<div id="rev">Last edited: 2022/03/26</div>
+<div id="rev">Last edited: 2022/03/29</div>
 

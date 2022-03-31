@@ -4,7 +4,7 @@
 
 <!--Alphabetically sorted by family name or pseudonym list of maintainers and authors, who are committed to the development, maintenance and support of **siduction**. -->
 
-List of maintainers and authors committed to development, maintenance and support of **siduction**, sorted alphabetically by surname or pseudonym.
+List of maintainers and authors committed to development, maintenance, and support of **siduction**, sorted alphabetically by surname or pseudonym.
 
 You can reach the siduction team via this [contact form](https://forum.siduction.org/index.php?action=contact).
 
