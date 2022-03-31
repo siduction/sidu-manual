@@ -14,8 +14,8 @@ Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits syste
 
 ### Konzeption des systemd
 
-Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens "*Units*" in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
-Units können "*aktiv*" oder "*inaktiv*", sowie im Prozess der "*Aktivierung*" oder "*Deaktivierung*", d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand "*fehlgeschlagen*" ist auch verfügbar, der sehr ähnlich zu "*inaktiv*" ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.md#systemjournal).  
+Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens *"Units"* in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
+Units können *"aktiv"* oder *"inaktiv"*, sowie im Prozess der *"Aktivierung"* oder *"Deaktivierung"*, d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand *"fehlgeschlagen"* ist auch verfügbar, der sehr ähnlich zu *"inaktiv"* ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](./systemd-journald_de.md#systemjournal).  
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
 
 Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
@@ -95,7 +95,7 @@ Zuerst die Statusabfrage im Kurzformat.
 enabled
 ~~~
 
-Nun Suchen wir nach den Unit-Dateien, dabei kombinieren wir "*systemctl*" mit "*grep*":
+Nun Suchen wir nach den Unit-Dateien, dabei kombinieren wir *"systemctl"* mit "*grep*":
 
 ~~~
 # systemctl list-unit-files | grep blue

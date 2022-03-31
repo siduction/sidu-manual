@@ -54,11 +54,11 @@ Wir legen von der Datei */etc/hosts* auf dem Server und auf dem PC eine Sicherun
   echo "192.168.3.1 server1.org   www.server1.org" >> /etc/hosts
   ~~~
 
-Als nächstes geben wir im *NetworkManager* die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von "*Automatisch (DHCP)*" auf "*Manuell*" geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.
+Als nächstes geben wir im *NetworkManager* die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von "*Automatisch (DHCP)*" auf *"Manuell"* geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.
 
 ![Server - Dateneingabe im NetworkManager](./images/lamp-apache/server_lan.png)
 
-Zusätzlich sollte im Reiter "*Allgemein*" die Option "*Automatisch mit Priorität verbinden*" aktiviert sein.  
+Zusätzlich sollte im Reiter *"Allgemein"* die Option "*Automatisch mit Priorität verbinden*" aktiviert sein.  
 Sinngemäß nehmen wir am PC die entsprechenden Einstellungen für die verwendete LAN-Schnittstelle vor.
 
 Am PC testen wir die Verbindung in der Konsole mit
@@ -73,7 +73,7 @@ Die Apache-Begrüßungsseite mit "*It works!*" sollte erscheinen.
 
 ### Apache Konfiguration
 
-Die Konfigurationsdateien und -verzeichnisse befindet sich im "*ServerRoot*" Verzeichnis "*/etc/apache2/*".  
+Die Konfigurationsdateien und -verzeichnisse befindet sich im *"ServerRoot"* Verzeichnis "*/etc/apache2/*".  
 Die zentrale Konfigurationsdatei ist "*apache2.conf*". Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt über Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die benötigten eingebunden werden.
 
 Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss "*.conf*" lauten. Die gültigen Direktiven, die in den Konfigurationsdateien verwendet werden dürfen, beschreibt die [Apache Dokumentation](https://httpd.apache.org/docs/current/de/) ausführlich.
@@ -90,7 +90,7 @@ Ihre Aktivierungs-Links finden wir in
 "*/etc/apache2/mods-enable*" und  
 "*/etc/apache2/sites-enable*".
 
-Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle "*a2enconf*" und "*a2disconf*". Das erstellt oder entfernt die Aktivierungs-Links.
+Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle *"a2enconf"* und "*a2disconf*". Das erstellt oder entfernt die Aktivierungs-Links.
 
 ~~~sh
 a2enconf NAME_DER_DATEI.conf 
@@ -102,7 +102,7 @@ Aktiviert die Konfiguration. Die Deaktivierung erfolgt entsprechend mit:
 a2disconf NAME_DER_DATEI.conf 
 ~~~
 
-In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen "*a2enmod*", "*a2ensite*" und "*a2dismod*", "*a2dissite*".
+In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen *"a2enmod"*, *"a2ensite"* und *"a2dismod"*, "*a2dissite*".
 
 Der Apache Webserver liest mit dem Befehl
 
@@ -145,7 +145,7 @@ Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und 
    </VirtualHost>
    ~~~
 
-   Anschließend stellen wir die Konfiguration auf den neuen "*VirtualHost*" um und geben die Änderungen dem Apache Webserver bekannt.
+   Anschließend stellen wir die Konfiguration auf den neuen *"VirtualHost"* um und geben die Änderungen dem Apache Webserver bekannt.
 
    ~~~sh
    # a2ensite server1.conf 
@@ -161,13 +161,13 @@ Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und 
 
 ### Benutzer und Rechte
 
-Der Apache Webserver läuft mit der USER.GROUP "*www-data.www-data*" und "*DocumentRoot*" gehört unmittelbar nach der Installation "*root.root*".  
-Um Benutzern Schreibrechte für die in "*DocumentRoot*" enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe "*www-data*" zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
+Der Apache Webserver läuft mit der USER.GROUP "*www-data.www-data*" und *"DocumentRoot"* gehört unmittelbar nach der Installation "*root.root*".  
+Um Benutzern Schreibrechte für die in *"DocumentRoot"* enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe "*www-data*" zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
 Wir nennen die neue Gruppe "*developer*".
 
 **Mit CMS**
 
-Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung von Webseiten-Inhalten) hinzugefügt, bereiten wir "*DocumentRoot*" entsprechend vor:
+Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung von Webseiten-Inhalten) hinzugefügt, bereiten wir *"DocumentRoot"* entsprechend vor:
 
 1. Gruppe anlegen und dem Benutzer zuweisen.
 
@@ -183,8 +183,8 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    $ newgrp developer
    ~~~
 
-2. SGID-Bit für "*DocumentRoot*" setzen,  
-   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe "*developer*" erben.
+2. SGID-Bit für *"DocumentRoot"* setzen,  
+   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe *"developer"* erben.
 
    ~~~sh
    chmod g+s /var/www/html
@@ -203,7 +203,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    -rw-r--r-- 1 root developer    20  9. Jan 19:32 info.php
    ~~~
 
-   Wir ändern für "*DocumentRoot*" den Eigentümer zu "*www-data*", geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
+   Wir ändern für *"DocumentRoot"* den Eigentümer zu "*www-data*", geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
 
    ~~~sh
    chown -R www-data /var/www/html
@@ -222,16 +222,16 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    -rw-rw---- 1 www-data developer    20  9. Jan 19:32 info.php
    ~~~
 
-   Jetzt haben in "*DocumentRoot*" nur Mitglieder der Gruppe "*developer*" Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
+   Jetzt haben in *"DocumentRoot"* nur Mitglieder der Gruppe *"developer"* Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
 
 4. Nachteile dieser Einstellungen
 
-   Beim Anlegen neuer Verzeichnisse und Dateien unterhalb "*DocumentRoot*" ist der Eigentümer der jeweilige "*User*" und nicht "*www-data*". Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
-   Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb "*DocumentRoot*" überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](0715-systemd-path_de.md#systemd-path).)
+   Beim Anlegen neuer Verzeichnisse und Dateien unterhalb *"DocumentRoot"* ist der Eigentümer der jeweilige *"User"* und nicht "*www-data*". Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
+   Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb *"DocumentRoot"* überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](0715-systemd-path_de.md#systemd-path).)
 
 **Ohne CMS**
 
-Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an "*DocumentRoot*" entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in "*DocumentRoot*".
+Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an *"DocumentRoot"* entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in "*DocumentRoot*".
 
 ~~~sh
 chmod -R u-w /var/www/html
@@ -262,7 +262,7 @@ Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und
 </Directory>
 ~~~
 
-Die Optionen "*FollowSymLinks*" und "*Indexes*" bergen ein Sicherheitsrisiko und sollten geändert werden, sofern sie nicht unbedingt notwendig sind. Siehe weiter unten.
+Die Optionen *"FollowSymLinks"* und *"Indexes"* bergen ein Sicherheitsrisiko und sollten geändert werden, sofern sie nicht unbedingt notwendig sind. Siehe weiter unten.
 
 Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.htpasswd*".
 
@@ -276,10 +276,10 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 
 + In der Datei **/etc/apache2/apache2.conf**
 
-  **FollowSymLinks** kann dazu führen, dass Inhalte außerhalb "*DocumentRoot*" gelistet werden.  
+  **FollowSymLinks** kann dazu führen, dass Inhalte außerhalb *"DocumentRoot"* gelistet werden.  
   **Indexes** listet den Inhalt eines Verzeichnisses, sofern keine "*index.html*" oder "*index.php*" usw. vorhanden ist.
 
-  Es ist empfehlenswert "*FollowSymLinks*" zu entfernen und die Projektdaten alle unterhalb "*DocumentRoot*" abzulegen. Für die Option "*Indexes*" ist der Eintrag zu ändern in
+  Es ist empfehlenswert *"FollowSymLinks"* zu entfernen und die Projektdaten alle unterhalb *"DocumentRoot"* abzulegen. Für die Option *"Indexes"* ist der Eintrag zu ändern in
 
   ~~~apacheconf
   Options -Indexes
@@ -309,7 +309,7 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 
 + **"merging"** der Konfiguration
 
-  Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb "*ServerRoot*" und auf die "*.htaccess*"-Dateien in "*DocumentRoot*". Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gewünschte Wirkung zu erzielen.  
+  Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb *"ServerRoot"* und auf die "*.htaccess*"-Dateien in "*DocumentRoot*". Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gewünschte Wirkung zu erzielen.  
   Wir empfehlen dringend die Webseite  
   [apache.org - How the sections are merged](https://httpd.apache.org/docs/current/de/sections.html#merging)  
   intensiv zu Rate zu ziehen.
@@ -323,7 +323,7 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 Ohne HTTPS geht heute kein Webseitenprojekt an den Start.  
 Wie man ein Zertifikat erlangt beschreibt die Webseite [HTTP-Guide](https://www.https-guide.de/) ausführlich und leicht verständlich.
 
-Wir legen zuerst die nötigen Ordner innerhalb "*DocumentRoot*" an:
+Wir legen zuerst die nötigen Ordner innerhalb *"DocumentRoot"* an:
 
 ~~~sh
 cd /etc/apache2/
@@ -371,7 +371,7 @@ Der ls-Befehl zur Kontrolle:
 
 Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei "*/etc/apache2/sites-available/server1.conf*" zu bearbeiten.
 
-+ Eine neue VirtualHost-Directive wird zu Beginn eingefügt. Diese leitet eingehende Client-Anfragen von Port 80 mittels "*Redirect*" auf Port 443 (ssl) weiter.
++ Eine neue VirtualHost-Directive wird zu Beginn eingefügt. Diese leitet eingehende Client-Anfragen von Port 80 mittels *"Redirect"* auf Port 443 (ssl) weiter.
 
 + Die bisherige VirtualHost-Directive wird auf Port 443 umgeschrieben.
 
@@ -418,7 +418,7 @@ Die erweiterte "*server1.conf*" weist dann folgenden Inhalt auf:
 </VirtualHost>
 ~~~
 
-Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf "*ServerRoot*" liegt (das ist die Regel), können wir in "*DocumentRoot*" die Datei "*.htaccess*" um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.
+Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf *"ServerRoot"* liegt (das ist die Regel), können wir in *"DocumentRoot"* die Datei "*.htaccess*" um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.
 
 ~~~apacheconf
 <IfModule mod_rewrite.c>

@@ -92,7 +92,7 @@ Es wird nicht die *.timer-Unit*, sondern die von ihr auszulösende *.service-Uni
 
 ### timer-Unit als cron Ersatz
 
-"*cron*" und "*anacron*" sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer können eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.
+*"cron"* und *"anacron"* sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer können eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.
 
 **Nutzen**
 

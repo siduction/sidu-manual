@@ -19,7 +19,7 @@ apt install network-manager modemmanager mobile-broadband-provider-info network-
 
 ### Network Manager verwenden
 
-Die Eingaben können sowohl in einem virtuellen Terminal (Tastenkombination `Str` + `Umschalt` + `F2`) als auch in der graphischen Oberfläche in einer Konsole getätigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgründen abgeändert.
+Die Eingaben können sowohl in einem virtuellen Terminal (Tastenkombination **`Str`**+**`Umschalt`**+**`F2`**) als auch in der graphischen Oberfläche in einer Konsole getätigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgründen abgeändert.
 
 **Konfigurierte Verbindungen anzeigen**
 

@@ -46,7 +46,7 @@ Während der Installation von *apt-cacher* erfolgt automatisch die grundlegende 
 
 ![Konfiguration von apt-cacher](./images/apt-localmirror/apt-cacher-config.png)
 
-Der empfohlene Deamonmodus "*deamon*" wird beibehalten und bestätigt.
+Der empfohlene Deamonmodus *"deamon"* wird beibehalten und bestätigt.
 
 Der Cache, in dem in Zukunft alle heruntergeladenen Pakete abgelegt werden, befindet sich in  
 */var/cache/apt-cacher/*  
@@ -120,7 +120,7 @@ Mit "*-h*" aufgerufen erhalten wir Benutzungshinweise und eine Auflistung aller 
 
 Die Clients, die auf den APT-Proxy-Server zugreifen, bedürfen nur geringfügiger Konfigurationen.
 
-Zuerst legen wir die Datei "*30proxy*" im Verzeichnis "*/etc/apt/apt.conf.d/*" an, die *apt* anweist den Server zu benutzen. Wir verwenden hier die oben genannte IP des Servers. Bitte die IP an die eigenen Gegebenheiten anpassen.
+Zuerst legen wir die Datei *"30proxy"* im Verzeichnis "*/etc/apt/apt.conf.d/*" an, die *apt* anweist den Server zu benutzen. Wir verwenden hier die oben genannte IP des Servers. Bitte die IP an die eigenen Gegebenheiten anpassen.
 
 ~~~
 # echo "Acquire::http { Proxy "http://192.168.3.5:3142"; };" > /etc/apt/apt.conf.d/30proxy

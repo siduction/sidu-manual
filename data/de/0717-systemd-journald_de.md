@@ -18,12 +18,12 @@ Es erstellt und verwaltet strukturierte, indizierte Journale, basierend auf den 
 *journald* erlaubt Journal-"Namensräume" (namespaces). Sie sind zum Einen ein Mechanismus zur logischen Isolation eines Protokoll-Datenstroms vom Rest des Systems, zum Anderen auch ein Mechanismus zur Steigerung der Leistung. Journal-Namensräume existieren gleichzeitig und nebeneinander. Jeder hat seinen eigenen, unabhängigen Protokolldatenstrom. Nach der Installation von siduction besteht nur der Vorgabe-Namensraum des Systems.
 
 Der *journald* speichert die Protokolldaten standardmäßig dauerhaft unter  
-*/var/log/journal/MASCHINENKENNUNG*.
+`/var/log/journal/MASCHINENKENNUNG`.
 
 Protokolldaten für andere Namensräume befinden sich in  
-*/var/log/journal/MASCHINENKENNUNG.NAMENSRAUM*.
+`/var/log/journal/MASCHINENKENNUNG.NAMENSRAUM`.
 
-Der Befehl **systemd-cat** bietet zwei Möglichkeiten um unabhängig von systemd-Units Daten eines Prozesses an das Journal weiterzugeben.  
+Der Befehl **`systemd-cat`** bietet zwei Möglichkeiten um unabhängig von systemd-Units Daten eines Prozesses an das Journal weiterzugeben.  
 
 1. **`systemd-cat <Programm> <Option(en)>`**  
   Mit einem Programmaufruf oder Befehl verwendet, leitet *systemd-cat* alle Standardeingaben, Standardausgaben und Standardfehlerausgaben eines Prozesses zum Journal um.  
@@ -47,104 +47,105 @@ Die folgenden Dateien konfigurieren verschiedene Parameter des systemd-Journal-D
 + /run/systemd/journald.conf.d/*.conf (optional)  
 + /usr/lib/systemd/journald.conf.d/*.conf (optional)
 
-Der Vorgabe-Namensraum, den der systemd-journald.service (und seine zugehörigen Socket-Units) verwaltet, wird in */etc/systemd/journald.conf* und zugeordneten Ergänzungen konfiguriert.  
+Der Vorgabe-Namensraum, den der systemd-journald.service (und seine zugehörigen Socket-Units) verwaltet, wird in `/etc/systemd/journald.conf` und zugeordneten Ergänzungen konfiguriert.  
 Die Konfigurationsdatei enthält die Vorgaben als auskommentierten Hinweis für den Administrator. Um lokal Einstellungen zu ändern, genügt es diese Datei zu bearbeiten. 
 
-Instanzen, die andere Namensräume verwalten, werden nur benötigt, wenn von den Vorgaben **abgewichen werden muss**. Deren Konfigurationsdatei ist nach dem Muster "*etc/systemd/journald@NAMENSRAUM.conf*" zu erstellen.  
-Einem bestimmten Journal-Namensraum können Dienste-Units mittels der Unit-Dateieinstellung "*LogNamespace=*" zugeordnet werden.
+Instanzen, die andere Namensräume verwalten, werden nur benötigt, wenn von den Vorgaben abgewichen werden muss. Deren Konfigurationsdatei ist nach dem Muster `etc/systemd/journald@NAMENSRAUM.conf` zu erstellen.  
+Einem bestimmten Journal-Namensraum können Dienste-Units mittels der Unit-Dateieinstellung `LogNamespace=` zugeordnet werden.
 
 Standardmäßig sammelt nur der Vorgabe-Namensraum Kernel- und Auditprotokollnachrichten.
 
 **Rangfolge**
 
-Wenn Pakete die Konfiguration anpassen müssen, können sie Konfigurationsschnipsel in */usr/lib/systemd/\*.conf.d/* oder */usr/local/lib/systemd/\*.conf.d/* installieren.
+Wenn Pakete die Konfiguration anpassen müssen, können sie Konfigurationsschnipsel in `/usr/lib/systemd/*.conf.d/` oder `/usr/local/lib/systemd/*.conf.d/` installieren.
 
-Die Hauptkonfigurationsdatei wird vor jeder anderen aus den Konfigurationsverzeichnissen gelesen und hat die niedrigste Priorität. Einträge in einer Datei in jedem der Konfigurationsverzeichnisse setzen Einträge in der Hauptkonfigurationsdatei außer Kraft. Dateien in den Unterverzeichnissen *\*.conf.d/* werden nach ihrem Dateinamen sortiert, unabhängig davon, in welchem Unterverzeichnis sie sich befinden. Sofern eigene Konfigurationsdateien nötig sind, wird empfohlen, allen Dateinamen in diesen Unterverzeichnissen eine zweistellige Zahl und einen Bindestrich voranzustellen, um die Sortierung der Dateien zu vereinfachen. 
+Die Hauptkonfigurationsdatei wird vor jeder anderen aus den Konfigurationsverzeichnissen gelesen und hat die niedrigste Priorität. Einträge in einer Datei in jedem der Konfigurationsverzeichnisse setzen Einträge in der Hauptkonfigurationsdatei außer Kraft. Dateien in den Unterverzeichnissen `*.conf.d/` werden nach ihrem Dateinamen sortiert, unabhängig davon, in welchem Unterverzeichnis sie sich befinden. Sofern eigene Konfigurationsdateien nötig sind, wird empfohlen, allen Dateinamen in diesen Unterverzeichnissen eine zweistellige Zahl und einen Bindestrich voranzustellen, um die Sortierung der Dateien zu vereinfachen. 
 
 ### journalctl
 
-**journalctl** dient der Abfrage des von systemd-journald erstellten Journals.  
-Beim Aufruf ohne Parameter wird der gesamte Inhalt aus allen zugreifbaren Quellen des Journals angezeigt, beginnend mit dem ältesten Eintrag. Die für die Ausgabe herangezogenen Journal-Dateien können mit den Optionen --user, --system, --directory und --file verändert werden.  
-Die Ausgabe wird seitenweise durch *less* geleitet. Lange Zeilen kann man mittels der "*Pfeil-links-*" und "*Pfeil-rechts-*"Tasten betrachten. Die Option "*--no-pager*" deaktiviert die seitenweise Anzeige, wobei die Zeilen auf die Breite des Terminals verkürzt werden.
+*journalctl* dient der Abfrage des von systemd-journald erstellten Journals.  
+Beim Aufruf ohne Parameter wird der gesamte Inhalt aus allen zugreifbaren Quellen des Journals angezeigt, beginnend mit dem ältesten Eintrag.  
+Die Ausgabe wird seitenweise durch *less* geleitet. Lange Zeilen kann man mittels der **`Pfeil-links`** und **`Pfeil-rechts`** Tasten betrachten. Die Option `--no-pager` deaktiviert die seitenweise Anzeige, wobei die Zeilen auf die Breite des Terminals verkürzt werden.
 
-**journalctl** bietet zu den nachfolgend beschriebenen Optionen eine ganze Reihe weiterer Möglichkeiten der Filterung und Aufbereitung der Ausgaben. Bitte auch die man-Page [journalctl, Journalabfrage](https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html) lesen.
+*journalctl* bietet zu den nachfolgend beschriebenen Optionen eine ganze Reihe weiterer Möglichkeiten der Filterung und Aufbereitung der Ausgaben. Bitte auch die man-Page [journalctl, Journalabfrage](https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html) lesen.
 
 **Rechte**
 
-Dem Benutzer Root und allen Benutzern die Mitglied der Gruppen "*systemd-journal*", "*adm*" und "*wheel*" sind, wird Zugriff auf das System-Journal und die Journale der anderen Benutzer gewährt. Siduction fügt alle konfigurierten USER der Gruppe "*systemd-journal*" zu.
+Dem Benutzer **root** und allen Benutzern die Mitglied der Gruppen **systemd-journal**, **adm** und **wheel** sind, wird Zugriff auf das System-Journal und die Journale der anderen Benutzer gewährt. Siduction fügt alle konfigurierten USER der Gruppe **systemd-journal** zu.
 
 Das Journal enthält vertrauenswürdige Felder, d.h. Felder, die implizit vom Journal hinzugefügt werden und durch Client-Code nicht geändert werden können. Sie beginnen mit einem Unterstrich. (z.B.: _PID=, _UID=, _GID=, _COMM=, _EXE=, _CMDLINE= )
 
 **Ausgabe filtern**
 
-+ **Optionen**: - -user, - -system, - -directory=, - -file=, - -namespace=  
-  Die Optionen begrenzen die **Quelle** der Ausgabe auf den genannten Bereich, das Verzeichnis oder die Datei.
++ *Optionen*: `--user`, `--system`, `--directory=`, `--file=`, `--namespace=`  
+  Die Optionen begrenzen die Quelle der Ausgabe auf den genannten Bereich, das Verzeichnis oder die Datei.
 
-+ **Optionen**: -b, -k, -u, -p, -g, -S, -U  
++ *Optionen*: `-b`, `-k`, `-u`, `-p`, `-g`, `-S`, `-U`  
   Die Ausgaben dieser Optionen verwenden alle zu Verfügung stehenden Journal-Dateien, es sei denn, eine der zuvor genannten Optionen wird zusätzlich verwendet.
 
-  + **-b** (- -boot=)  
+  + `-b` `--boot=`  
     Zeigt Nachrichten von einem bestimmten Systemstart. Ohne Argument werden die Protokolle für den aktuellen Systemstart angezeigt. Das Argument "-1" gibt die Meldungen des Systemstarts vor dem Aktuellen aus. Das Argument "5" präsentiert die Meldungen des fünften Systemstarts seit Beginn der Aufzeichnungen.
 
-  + **-k** (- -dmesg)  
-    Zeigt nur Kernelnachrichten. Dies beinhaltet die Option "-b", sodass nur Kernelmeldungen seit dem aktuellen Systemstart ausgegeben werden.
+  + `-k` `--dmesg`  
+    Zeigt nur Kernelnachrichten. Dies beinhaltet die Option `-b`, sodass nur Kernelmeldungen seit dem aktuellen Systemstart ausgegeben werden.
 
-  + **-u** (- -unit=)  
+  + `-u` `--unit=`  
     Diese Option benötigt die Angabe einer UNIT oder eines MUSTERs.  
     Gibt die Journaleinträge für die angegebene systemd-Unit UNIT oder für alle Units, die auf das MUSTER passen, aus.
 
-  + **-p** (- -priority=)  
+  + `-p` `--priority=`  
     Filtert die Ausgabe nach Nachrichtenprioritäten oder Prioritätsbereichen. Benötigt die Angabe einer einzelnen Protokollstufe, oder einen Bereich von Protokollstufen in der Form VON..BIS.  
     Die Protokollstufen sind die normalen Syslog-Protokollstufen:  
     "emerg" (0), "alert" (1), "crit" (2), "err" (3), "warning" (4), "notice" (5), "info" (6), "debug" (7)  
     Als Argument können sowohl die Namen als auch die Ziffern der Protokollstufen verwendet werden. Falls eine einzelne Protokollstufe angegeben ist, werden alle Nachrichten mit dieser oder einer niedrigeren Protokollstufe angezeigt.
 
-  + **-g** (- - grep=)  
+  + `-g` `--grep=`  
     Benötigt die Angabe eines PERL-kompatiblen regulären Ausdrucks, um die Ausgabe zu filtern. Der reguläre Ausdruck wird in den Journaleinträgen auf das Feld "MESSAGE=" angewendet.
 
-  + **-S** (- -since=) und **-U** (- -until=)  
+  + `-S` `--since=` und `-U` `--until=`  
     Die Anzeige beginnt mit neueren Einträgen ab dem angegebenen Datum oder älteren Einträgen bis zum angegebenen Datum. Das Datumsformat sollte "2012-10-30 18:17:16" sein, es können aber auch Teile davon weggelassen werden. Alternativ sind die Zeichenketten "yesterday", "today", "tomorrow" möglich. Das Argument "now" bezieht sich auf die aktuelle Zeit. Die Angabe relativer Zeiten ermöglichen ein vorangestelltes "-" oder "+", die sich auf Zeiten vor bzw. nach der angegebenen Zeit beziehen.
 
 **Ausgabe steuern**
 
-+ Optionen: -f, -n, -r, -o, -x, - -no-pager
++ Optionen: `-f`, `-n`, `-r`, `-o`, `-x`, `--no-pager`
 
-  + **-f** (- -follow)  
-    Nur die neusten Journal-Einträge anzeigen und kontinuierlich neue Einträge ausgeben. Dies beinhaltet die Option "-n". Die Ausgabe ist vergleichbar mit dem altbekannten Befehl "*tail -f /var/log/messages*".
+  + `-f` `--follow`  
+    Nur die neusten Journal-Einträge anzeigen und kontinuierlich neue Einträge ausgeben. Dies beinhaltet die Option `-n`. Die Ausgabe ist vergleichbar mit dem altbekannten Befehl `tail -f /var/log/messages`.
 
-  + **-n** (- -lines=)  
+  + `-n` `--lines=`  
     Zeigt die neusten Journal-Einträge und begrenzt die Anzahl der zu zeigenden Ereignisse. Das Argument ist eine positive Ganzzahl. Der Vorgabewert ist 10, falls kein Argument angegeben wird.
 
-  + **-r** (- -reverse)  
+  + `-r` `--reverse`  
     Die Ausgabe beginnt mit dem neusten Eintrag.
 
-  + **-o** (- -output=)  
+  + `-o` `--output=`  
     Steuert die Formatierung der angezeigten Journal-Einträge. Dieser Option sind eine ganze Reihe weiterer Optionen untergeordnet, von denen wir hier nur die Option "short-full" betrachten.
 
-    **-o short-full**  
+    `-o short-full`  
     Die Ausgabe ist größtenteils identisch zu der Formatierung klassischer Syslog-Dateien. Sie zeigt eine Zeile pro Journal-Eintrag an, aber der Zeitstempel wird im Format, das die Optionen --since= und --until= akzeptieren, ausgegeben. Deshalb eignet sich diese Ausgabe sehr gut um nachfolgend eine zeitbezogene Filterung der Journaleinträge zu erstellen.
 
-  + **-x** (- -catalog)  
+  + `-x` - -catalog  
     Ergänzt Protokollzeilen mit erklärenden Hilfetexten, soweit diese verfügbar sind.
 
-  + **- -no-pager**  
+  + `--no-pager`  
     Die Option deaktiviert die seitenweise Anzeige, wobei die Zeilen auf die Breite des Terminals verkürzt werden. Sie zu benutzen ist nur sinnvoll, wenn für die Ausgabe nur eine geringe Anzahl an Zeilen erwartet wird.
 
 **journalctl steuern**
 
-Die folgenden Optionen behandeln die Verwaltung der von *journald* geschriebenen Daten.
++ Optionen: `--disk-usage`, `--vacuum-size=`, `--vacuum-time=`, `--vacuum-files`, `--rotate`, `--verify`  
+  Die Optionen behandeln die Verwaltung der von *journald* geschriebenen Daten.
 
-+ **- -disk-usage**  
-  Zeigt den aktuellen Plattenplatzverbrauch aller Journal-Dateien an.
+  + `--disk-usage`  
+    Zeigt den aktuellen Plattenplatzverbrauch aller Journal-Dateien an.
 
-+ **- -vacuum-size=, - -vacuum-time=, - -vacuum-files=**  
-  Entfernt die ältesten archivierten Journal-Dateien, bis der Plattenplatz, den sie verwenden, unter die angegebene Größe fällt oder alle archivierten Journal-Dateien, die keine Daten älter als die angegebene Zeitspanne enthalten oder so dass nicht mehr als die angegebene Anzahl an separaten Journal-Dateien verbleiben. Die Ausführung von "*--vacuum-\**" bezieht nicht die aktiven Journal-Dateien ein.
+  + `--vacuum-size=`, `--vacuum-time=`, `--vacuum-files`  
+    Entfernt die ältesten archivierten Journal-Dateien, bis der Plattenplatz, den sie verwenden, unter die angegebene Größe fällt oder alle archivierten Journal-Dateien, die keine Daten älter als die angegebene Zeitspanne enthalten oder so dass nicht mehr als die angegebene Anzahl an separaten Journal-Dateien verbleiben. Die Ausführung von `--vacuum-xxx` bezieht nicht die aktiven Journal-Dateien ein.
 
-+ **- -rotate**  
-  Bittet den Journal-Daemon, die Journal-Dateien zu rotieren. Journal-Dateien-Rotation hat den Effekt, dass alle derzeit aktiven Journal-Dateien als archiviert markiert und umbenannt werden, so dass in der Zukunft niemals mehr in sie geschrieben wird. Dann werden stattdessen neue (leere) Journal-Dateien erstellt. Diese Aktion kann mit "--vacuum-\*" in einem einzigen Befehl kombiniert werden, um die "--vacuum-\*" mitgegebenen Argumente tatsächlich zu erreichen.    
+  + `--rotate`  
+    Bittet den Journal-Daemon, die Journal-Dateien zu rotieren. Journal-Dateien-Rotation hat den Effekt, dass alle derzeit aktiven Journal-Dateien als archiviert markiert und umbenannt werden, so dass in der Zukunft niemals mehr in sie geschrieben wird. Dann werden stattdessen neue (leere) Journal-Dateien erstellt. Diese Aktion kann mit `--vacuum-xxx` in einem einzigen Befehl kombiniert werden, um die `--vacuum-xxx` mitgegebenen Argumente tatsächlich zu erreichen.    
 
-+ **- -verify**  
-  Prüft die Journal-Dateien auf interne Konsistenz.
+  + `--verify`  
+    Prüft die Journal-Dateien auf interne Konsistenz.
 
 ### journalctl beherrschen
 
@@ -162,7 +163,7 @@ Wie oben unter Rechte beschrieben, kannst Du das Journal als einfacher User benu
 | journalctl /usr/bin/dbus-daemon | alle Logs des D-Bus-Daemon |
 | journalctl -f | Liveansicht des Journal (früher: tail -f /var/log/messages) |
 
-Die Option "*--list-boots*" gibt die entsprechende Liste aus.
+Die Option "`--list-boots*" gibt die entsprechende Liste aus.
 
 ~~~
 # journalctl --list-boots --no-pager
@@ -179,7 +180,7 @@ Die Option "*--list-boots*" gibt die entsprechende Liste aus.
 
 Anschließend kannst du dir mit dem Befehl **`journalctl -b -47`** die Meldungen des Bootvorgangs vom 3.3.2021 anzeigen lassen.
 
-Eine weitere Neuerung beim Protokollieren ist die Tab-Vervollständigung für journalctl. Wenn Du *journalctl* schreibst, und zwei mal die TAB-Taste drückst, erscheint eine Liste möglicher Vervollständigungen:
+Eine weitere Neuerung beim Protokollieren ist die Tab-Vervollständigung für journalctl. Wenn Du *journalctl* schreibst, und zwei mal die **`TAB`** Taste drückst, erscheint eine Liste möglicher Vervollständigungen:
 
 ~~~
 $ journalctl
@@ -222,7 +223,7 @@ DISK_KEEP_FREE_PRETTY=        PRIORITY=
 
 Die meisten davon sind selbsterklärend. Beispielsweise COMM, was für *command* steht, bedient eine Menge an Optionen:
 
- "*journalctl \_COMM=*"  listet nach einem weiterer Druck auf TAB die möglichen Applikationen:
+ **`journalctl _COMM=`**  listet nach einem weiterer Druck auf TAB die möglichen Applikationen:
 
 ~~~
 $ journalctl _COMM=
@@ -243,7 +244,7 @@ cpufrequtils    irqbalance      nfs-common     samba-ad-dc    systemd-logind  wi
 cron            kbd             mbd            saned          systemd-modules	
 ~~~
 
-Mit "*journalctl \_COMM=su*" kannst du nun sehen, welcher User sich wann mit "su" root-Rechte verschafft hat.
+Mit **`journalctl _COMM=su`** kannst du nun sehen, welcher User sich wann mit "su" root-Rechte verschafft hat.
 
 ~~~
 # journalctl _COMM=su

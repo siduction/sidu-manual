@@ -188,7 +188,7 @@ MariaDB [(none)]> SHOW DATABASES;
 5 rows in set (0.001 sec)
 ~~~
 
-Wenn wir uns von MariaDB abmelden und als Benutzer "*tomtom*" wieder anmelden, sehen die beiden Abfragen wie folgt aus:
+Wenn wir uns von MariaDB abmelden und als Benutzer *"tomtom"* wieder anmelden, sehen die beiden Abfragen wie folgt aus:
 
 ~~~
 MariaDB [(none)]> SELECT User,Host FROM mysql.user;
@@ -204,7 +204,7 @@ MariaDB [(none)]> SHOW DATABASES;
 2 rows in set (0.001 sec)
 ~~~
 
-Es ist gut zu erkennen, dass der Benutzer "*tomtom*" keinen Zugriff auf systemrelevante Daten erhält.
+Es ist gut zu erkennen, dass der Benutzer *"tomtom"* keinen Zugriff auf systemrelevante Daten erhält.
 
 ### phpMyAdmin
 
@@ -227,7 +227,7 @@ Die Benutzerkontenübersicht stellt alle Benutzer und in Kurzform deren Rechte d
 
 ![Benutzerkonten](./images/phpmyadmin/benutzerkonten.png)
 
-Nun sehen wir für den Benutzer *root* die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich "*Administration*" das Recht "*Super*" (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den **`OK`**-Button anklicken (im Screenshot nicht sichtbar). 
+Nun sehen wir für den Benutzer *root* die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich *"Administration"* das Recht *"Super"* (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den **`OK`**-Button anklicken (im Screenshot nicht sichtbar). 
 
 ![Rechte eines Benutzers verwalten (1a, 1b)](./images/phpmyadmin/root-rechte.png)
 
@@ -235,7 +235,7 @@ Anschließend gehen wir über den **`Datenbank`**-Schalter (2) zur nächsten Sei
 
 ![Rechte eines Benutzers verwalten (2) ](./images/phpmyadmin/root-rechte-2.png)
 
-Nach Auswahl der Datenbank "*mysql*" und **`OK`** öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank "*mysql*" für den Benutzer "*root*".
+Nach Auswahl der Datenbank *"mysql"* und **`OK`** öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank *"mysql"* für den Benutzer "*root*".
 
 ![Rechte eines Benutzers verwalten (DB mysql) ](./images/phpmyadmin/root-rechte-3.png)
 
@@ -263,7 +263,7 @@ Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geach
 ### MariaDB Log
 
 Das Systemd Journal enthält Meldungen über den Startprozess des *mariadb.service*. Es ist die erste Anlaufstelle wenn Fehler auftreten.  
-In der Konsole zeigt der Befehl "*journalctl*" die Meldungen zu MariaDB mit:
+In der Konsole zeigt der Befehl *"journalctl"* die Meldungen zu MariaDB mit:
 
 ~~~
 journalctl -n 25 -u mariadb.service

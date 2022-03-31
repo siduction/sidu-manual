@@ -142,12 +142,12 @@ Benutzen wir "*Manuelle Partitionierung*", so benötigen wir einen leeren, unben
 
 ![calamares, manual partitioning encrypt 1](./images/install-hd/calamares-de_12.png "Manuelle Partition verschlüsseln 1")
 
-Im nächsten Schritt ist jetzt die Funktion "*Verschlüsseln*" auswählbar.
+Im nächsten Schritt ist jetzt die Funktion *"Verschlüsseln"* auswählbar.
 
 ![calamares, manual partitioning encrypt 2](./images/install-hd/calamares-de_13.png "Manuelle Partition verschlüsseln 2")
 
 Wir geben unser Passwort ein und wählen anschließend als Einhängepunkt das Wurzelverzeichnis "**/**" aus.  
-Nach Beendigung der Partitionierung setzen wir die Installation mit dem Menüpunkt "*Benutzer*", wie oben unter 6 beschrieben, fort.
+Nach Beendigung der Partitionierung setzen wir die Installation mit dem Menüpunkt *"Benutzer"*, wie oben unter 6 beschrieben, fort.
 
 ### Benutzer hinzufügen
 

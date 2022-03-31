@@ -109,7 +109,7 @@ Anschließend aktivieren und starten wir die neue *.mount*-Unit.
 
 **NFS**  
 Das "document-root"-Verzeichnis eines Apache Webservers im heimischen Netzwerk soll in das Home-Verzeichnis des Arbeitsplatz-Rechners mittels NFS eingehängt werden.  
-Wir erstellen mit einem Texteditor die Datei "home-\<user\>-www_data.mount" im Verzeichnis "/usr/local/lib/systemd/system/".  
+Wir erstellen mit einem Texteditor die Datei `home-<user>-www_data.mount` im Verzeichnis `/usr/local/lib/systemd/system/`.  
 "\<user\>" bitte mit dem eigenen Namen ersetzen.
 
 ~~~

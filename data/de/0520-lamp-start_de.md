@@ -242,11 +242,11 @@ Möchten Sie fortfahren? [J/n]  j
 ~~~
 
 Während der Installation erscheinen die zwei Dialoge.  
-Im ersten, zu Beginn, wählen wir "*apache2*" und bestätigen mit "*ok*"
+Im ersten, zu Beginn, wählen wir *"apache2"* und bestätigen mit "*ok*"
 
 ![PHPMyAdmin Webserverauswahl](./images/lamp-start/phpmyadmin01-de.png)
 
-im zweiten, am Ende der Installation, wählen wir "*ja*" aus.
+im zweiten, am Ende der Installation, wählen wir *"ja"* aus.
 
 ![PHPMyAdmin Datenbank](./images/lamp-start/phpmyadmin02-de.png)
 

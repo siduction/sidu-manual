@@ -51,7 +51,7 @@ Bevor irgendeine Änderung am bestehenden Dateisystem vorgenommen wird, sichern 
 
 **Mountpoint der Daten-Partition**
 
-Wir erstellen das Verzeichnis "*Daten*" unterhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
+Wir erstellen das Verzeichnis *"Daten"* unterhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
 
 Mountpoint erstellen und Partition einhängen (als root):
 
@@ -102,7 +102,7 @@ drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
 ~~~
 
 Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit nur geringfügigen Änderungen.  
-In den, per default erstellten, Verzeichnissen "*Bilder*" bis "*Vorlagen*" am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zusätzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir später in die neue Daten-Partition.  
+In den, per default erstellten, Verzeichnissen *"Bilder"* bis *"Vorlagen"* am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zusätzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir später in die neue Daten-Partition.  
 Mit einem Punkt (.) beginnende, "versteckte" Dateien und Verzeichnisse enthalten die Konfiguration und programmspezifische Daten, die wir, von drei Ausnahmen abgesehen, nicht verschieben. Die Ausnahmen sind:  
 Der Zwischenspeicher "*.cache*",  
 der Internetbrowser "*.mozilla*" und  
@@ -111,7 +111,7 @@ Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch 
 
 **Kopieren der privaten Daten**
 
-Zum Kopieren benutzen wir den Befehl "*cp*" mit der Archiv-Option "*-a*", so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
+Zum Kopieren benutzen wir den Befehl *"cp"* mit der Archiv-Option "*-a*", so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
 
 ~~~
 ~$ cp -a * /Daten/
@@ -148,7 +148,7 @@ Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der n
 **Löschen in /home**
 
 Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. "*Downloads*" oder "*Musik*"). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen /daten Partition zu ermöglichen, müssen wir unter /home/<user>/ die zu löschenden Verzeichnisse durch Link ersetzen.
+Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. *"Downloads"* oder "*Musik*"). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen /daten Partition zu ermöglichen, müssen wir unter /home/<user>/ die zu löschenden Verzeichnisse durch Link ersetzen.
 
 > Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etwas falsches gelöscht wird.
 

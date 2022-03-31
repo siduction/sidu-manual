@@ -283,7 +283,7 @@ Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht gewarte
 
 **Aktualisierung nicht mit Live-Medium**
 
-Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum "*apt*" verwendet werden sollte.
+Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum *"apt"* verwendet werden sollte.
 
 ### Aktualisierbare Pakete
 
@@ -411,7 +411,7 @@ Das APT-System bietet eine Reihe nützlicher Suchbefehle, mit denen die APT-Date
 
 Mit dem einfachen Befehl **apt search <Suchmuster>** erhält man die Liste aller Pakete, die das Suchmuster enthalten. Die Suche mit *search* erlaubt die Verwendung von regex-Begriffen.
 
-Wird z. B. nach "*gman*" gesucht, erhält man dieses Ergebnis:
+Wird z. B. nach *"gman"* gesucht, erhält man dieses Ergebnis:
 
 ~~~
 user1@pc1:~$ apt search ^gman

@@ -5,7 +5,7 @@
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](0711-systemd-unit-datei_de.md#systemd-unit-datei).  
 Jetzt erklären wir die Funktion der Unit **systemd.target**, die den allgemein bekannten Runleveln ähneln, etwas ausführlicher.
 
-Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.
+Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als *Ziel-Unit*. Sie besitzen die Erweiterung *.target*.
 
 Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus *man systemd*: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")
 
@@ -23,7 +23,7 @@ Ein Blick in die Dokumentation "*man SYSTEMD.SPECIAL(7)*" ist obligatorisch um d
 
 Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 
-1. Die Verwendung auf der **Kernel-Befehszeile** beim Bootvorgang.  
+1. Die Verwendung auf der Kernel-Befehszeile beim Bootvorgang.  
     Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste `e` drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: "systemd.unit=xxxxxxx.target" an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen numerischen Entsprechungen auf.
 
     | Ziel-Unit | Kernel-Befehl | Kernel-Befehl alt |
@@ -35,8 +35,8 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 
     Die alten Runlevel 2 und 4 verweisen auf multi-user.target
 
-2. Die Verwendung im **Terminal** während einer laufenden Sitzung.
-    Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`** + **`ALT`** + **`F2`** zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die **Terminal-Befehle** auf, wobei der Ausdruck *isolate* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
+2. Die Verwendung im Terminal während einer laufenden Sitzung.
+    Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`**+**`ALT`**+**`F2`** zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die Terminal-Befehle auf, wobei der Ausdruck *isolate* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
 
     | Ziel-Unit | Terminal-Befehl | init-Befehl alt |
     | --------- | --------------- | :----: |
@@ -46,7 +46,7 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
     | graphical.target | systemctl isolate graphical.target | init 5 |
 
 
-3. Ziel-Units, die **nicht direkt aufgerufen** werden sollen.  
+3. Ziel-Units, die nicht direkt aufgerufen werden sollen.  
     Eine ganze Reihe von Ziel-Units sind dazu da während des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abhängigkeiten zu gruppieren. Die folgende Liste zeigt drei häufig verwendete Kommandos die **nicht** mit der Syntax "isolate xxxxxxx.target" aufgerufen werden sollen.
 
     | Ziel | Terminal-Befehl | init-Befehl alt |
