@@ -108,7 +108,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    ![calamares partitions finish](./images/install-hd/calamares-de_06.png "Partitionen Ergebnis")
 
 
-6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](#benutzer-hinzufügen) hinzugefügt werden.
+6. Als nächstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passwörter sollen aus Sicherheitsgründen nicht zu einfach gewählt werden. Weitere Benutzer können nach der Installation in einem Terminal mit [adduser](0301-hd-install_de.md#benutzer-hinzufügen) hinzugefügt werden.
 
    ![calamares users](./images/install-hd/calamares-de_07.png "Benutzer")
 

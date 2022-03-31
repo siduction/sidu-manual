@@ -65,7 +65,7 @@ $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen **-s, --signal=** und **--kill-who=** bereit.
 + **-s** sendet eines der Signale **SIGTERM, SIGINT, SIGSTOP**. Vorgabe ist **SIGTERM**.
 + **--kill-who=** erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind **main, control, all**. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist **all**.  
-Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](#beenden-eines-prozesses) erläutert wird.
+Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl *pkill*, der weiter unten im Abschnitt [Beenden eines Prozesses](0702-sys-admin-gen_de.md#beenden-eines-prozesses) erläutert wird.
 
 
 ### systemd - UNIT eingliedern

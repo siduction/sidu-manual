@@ -14,7 +14,7 @@ Debian hat die Dateien von MariaDB entsprechend ihrer Funktion vollständig in d
 + In **/var/lib/mysql/** die Datenbanken und Log-Dateien.  
 + In **/run/mysqld/** zur Laufzeit notwendige Systemdateien.
 
-Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb */etc/mysql/*, sofern man genau weiß wie vorzugehen ist. Anderen Falls benutzt man das [MariaDB-CLI](#mariadb-cli) oder ein Frontend wie [phpMyAdmin](#phpmyadmin).
+Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb */etc/mysql/*, sofern man genau weiß wie vorzugehen ist. Anderen Falls benutzt man das [MariaDB-CLI](0522-lamp-sql_de.md#mariadb-cli) oder ein Frontend wie [phpMyAdmin](#phpmyadmin).
 
 ### Erstkonfiguration
 
@@ -105,7 +105,7 @@ MariaDB [(none)]>
 ~~~
 
 Aus Sicherheitsgründen loggen wir uns nur zu Beginn als **Benutzer root** ein, um die Projektdatenbank, einen  Benutzer für die alltäglichen Arbeiten an dieser und einen Benutzer als Ersatz für *root* anzulegen.  
-Später im Abschnitt [phpMyAdmin](#phpmyadmin) entziehen wir dem Benutzer *root* die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
+Später im Abschnitt [phpMyAdmin](0522-lamp-sql_de.md#phpmyadmin) entziehen wir dem Benutzer *root* die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
 
 #### Eine Datenbank anlegen
 
