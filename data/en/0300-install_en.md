@@ -10,7 +10,7 @@ This section contains informations and notes on
 
 + [Partitioning of installation media](0310-part-size-examp_en.md#partitioning-of-installation-media), with examples of different disk sizes and single or dual boot.
 
-+ [Naming of block devices (UUID)](0311-part-uuid_en.md#uuid---naming-of-block-devices), the different types of naming, the use of labels, the adjustment of the *fstab*, and the creation of new mount points.
++ [Naming of block devices (UUID)](0311-part-uuid_en.md#uuid---naming-of-block-devices), the different types of naming, the use of labels, the adjustment of the `fstab`, and the creation of new mount points.
 
 + [Partitioning with GParted](0312-part-gparted_en.md#partitioning-with-gparted) on the graphical user interface.
 
@@ -23,4 +23,4 @@ This section contains informations and notes on
 + moving private data from [/home directory](0316-home-move_en.md#move-the-home-directory), for example to make one data partition available for multiple operating systems on parallel installations.
 
 
-<div id="rev">Last edited: 2022/03/23</div>
+<div id="rev">Last edited: 2022/04/01</div>

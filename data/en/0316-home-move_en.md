@@ -3,10 +3,10 @@
 ## Move the home directory
 
 > Important information  
-> An existing **/home** should not be used or shared with another distribution as there may/will be conflicts with the configuration files.
+> An existing `/home` should not be used or shared with another distribution as there may/will be conflicts with the configuration files.
 
 Therefore, we generally advise against creating a **/home** partition.  
-The directory **/home** should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created, and this should be mounted under **/data**, for example. The advantages for data stability, data backup and also in case of data recovery are almost immeasurable.  
+The directory `/home` should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created, and this should be mounted under `/data`, for example. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.  
 If data is to be shared for parallel installations, this procedure is particularly advisable.
 
 **Preparations**
@@ -16,10 +16,10 @@ The initial situation:
 
 * The old, meanwhile too small hard disk has three partitions (**/boot/efi**, **/**, **swap**).
 * There is no separate data partition yet.
-* An additional built-in hard disk has four partitions with the ext4 file system.  
-  We will use this partition's **sdb4** as the new data partition, which we mount to **/data**.
+* An additional built-in hard disk has four partitions with the **ext4** file system.  
+  We will use this partition's **sdb4** as the new data partition, which we mount to `/data`.
 
-Our previous **/etc/fstab** has the content:
+Our previous `/etc/fstab` has the content:
 
 ~~~
 # <file system>                       <mount point> <type> <options> <dump><pass>
@@ -30,7 +30,7 @@ tmpfs                                     /tmp      tmpfs  defaults,noatime,mode
 ~~~
 
 We need the UUID information of the additional hard disk. See also the manual page [customize fstab](0311-part-uuid_en.md#adjusting-the-fstab).  
-The command *blkid* returns the following information:
+The command **`blkid`** returns the following information:
 
 ~~~
 $ /sbin/blkid
@@ -40,7 +40,7 @@ $ /sbin/blkid
 
 **Backup of the old /home**
 
-Before making any changes to the existing file system, we use **root** privileges to backup everything inside **/home** into a tar archive. 
+Before making any changes to the existing file system, we use **root** privileges to backup everything inside `/home` into a tar archive. 
 
 ~~~
 # cd /home
@@ -49,7 +49,7 @@ Before making any changes to the existing file system, we use **root** privilege
 
 **Mountpoint of the data partition**
 
-We create the directory "*Data*" in **/** and mount the partition **sdb4** there. As owner and group we set our own names. Some time later, we will copy the private data, but not the configurations, from the existing **/home** into it.
+We create the directory `Data` in `/` and mount the partition **sdb4** there. As owner and group we set our own names. Some time later, we will copy the private data, but not the configurations, from the existing `/home` into it.
 
 Create mountpoint and mount partition (as **root**):
 
@@ -100,16 +100,16 @@ drwxr-xr-x 2 <user> <group> 4096 4 Oct 2020 Videos
 ~~~
 
 The output shows the home directory shortly after installation with only minor changes.  
-We put our private documents into the, by default created, directories "*Desktop*" to "*Videos*" at the end of the list. These and possibly additional, self-created directories with private data, will be moved into the new data partition later.  
+We put our private documents into the, by default created, directories `Desktop` to `Videos` at the end of the list. These and possibly additional, self-created directories with private data, will be moved into the new data partition later.  
 "Hidden" files and directories beginning with a dot (.) contain configuration and program-specific data that we do not move, with three exceptions. These exceptions are:  
-the cache "*.cache*",  
-the internet browser "*.mozilla*", and  
-the mail program "*.thunderbird*".  
+the cache `.cache`,  
+the internet browser `.mozilla`, and  
+the mail program `.thunderbird`.  
 All three reach a considerable volume over time, and they also contain a lot of private data. Therefore, we move them to the new data partition, too.
 
-**Copy the private data**
+**Copying the private data**
 
-For copying, we use the command *cp* with the archive option *-a*. Thus the rights, owners, and the timestamp are kept, and it is copied recursively.
+For copying, we use the command `cp` with the archive option `-a`. Thus the rights, owners, and the timestamp are kept, and it is copied recursively.
 
 ~~~
 ~$ cp -a * /data/
@@ -147,12 +147,12 @@ To check the copy action for errors, you can use the command
 
 Only the files and directories that we did not copy should be listed.
 
-Now all private data from the old **/home** are additionally on the new partition.
+Now all private data from the old `/home` are additionally on the new partition.
 
 **Delete in /home**.
 
 For this action, all program windows should be closed, except for the terminal we use.  
-Depending on the desktop environment, various applications use the directories created by default during installation (e.g. "*Music*") to store files there. In order to enable the access of the applications to the directories, these must be linked back, thus refer to the corresponding directories of the **/data** partition.
+Depending on the desktop environment, various applications use the directories created by default during installation (e.g. `Music`) to store files there. In order to enable the access of the applications to the directories, these must be linked back, thus refer to the corresponding directories of the **/data** partition.
 
 > Please check the commands carefully before executing them so you don't accidentally delete something wrong.
 
@@ -170,12 +170,12 @@ Depending on the desktop environment, various applications use the directories c
 ~$ rm -r .thunderbird/ && ln -s /data/.thunderbird/ ./.thunderbird
 ~~~
 
-The data remaining in the **/home** directory will only occupy less than 10 MB of space.
+The data remaining in the `/home` directory will only occupy less than 10 MB of space.
 
 ### Adjust fstab
 
-In order for the new data partition to be mounted and available to the user at system startup, the *fstab* file must be modified. Additional information about the *fstab* can be found in our manual [adaptation of the fstab](0311-part-uuid_en.md#adjusting-the-fstab).  
-We need the data partition's already read out UUID information. Before modifying the file, we create a backup copy of the *fstab* with date attachment:
+In order for the new data partition to be mounted and available to the user at system startup, the `fstab` file must be modified. Additional information about the `fstab` can be found in our manual [adaptation of the fstab](0311-part-uuid_en.md#adjusting-the-fstab).  
+We need the data partition's already read out UUID information. Before modifying the file, we create a backup copy of the `fstab` with date attachment:
 
 ~~~
 # cp /etc/fstab /etc/fstab_$(date +%F) 
@@ -184,9 +184,9 @@ We need the data partition's already read out UUID information. Before modifying
 
 According to our example, we add the following line to fstab.
 
-**`UUID=e2164479-3f71-4216-a4d4-af3321750322 /data ext4 defaults,noatime 0 2`**
+*"UUID=e2164479-3f71-4216-a4d4-af3321750322 /data ext4 defaults,noatime 0 2"*
 
-The fstab should now look like this:
+The `fstab` should now look like this:
 
 ~~~
 # <file system>                       <mount point> <type> <options> <dump><pass>
@@ -197,8 +197,8 @@ UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap      swap   defaults,noatime 0 2
 tmpfs                                     /tmp      tmpfs  defaults,noatime,mode=1777 0 0
 ~~~
 
-Save the file with `F2` and quit the editor with `F10`.
+Save the file with **`F2`** and quit the editor with **`F10`**.
 
 If, nonetheless, anything goes wrong, we still have our data in the saved tar archive.
 
-<div id="rev">Last edited: 2022/01/21</div>
+<div id="rev">Last edited: 2022/04/01</div>

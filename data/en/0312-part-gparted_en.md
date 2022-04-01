@@ -14,8 +14,8 @@ Creating or editing partitions is not an everyday task. Therefore, it is a good 
 [Please read on here.](0312-part-gparted_en.md#changing-ntfs-partition-sizes-with-gparted)
 
 + A partition needs a file system. Linux can work on and with different file systems.  
-  For normal use, we recommend the ext4 file system.  
-  NTFS should be used if the partition is also to be used by a Windows installation. Siduction can read and write data to such partitions through the automatically installed *ntfs-3g*.  
+  For normal use, we recommend the **ext4** file system.  
+  **NTFS** should be used if the partition is also to be used by a Windows installation. siduction can read and write data to such partitions through the automatically installed `ntfs-3g`.  
 
 + The complete GParted documentation can be found in many languages on the [GParted homepage](https://gparted.org/documentation.php).
 
@@ -24,10 +24,10 @@ Creating or editing partitions is not an everyday task. Therefore, it is a good 
 The program launcher for GParted can be found in
 
 + **KDE, LXQt, Xfce**  
-in the application menu - System - GParted
+in the application menu - *"System"* - *"GParted"*
 
 + **Gnome**  
-in Applications - Gparted
+in *"Applications"* - *"Gparted"*
 
 After clicking on the launcher, a dialog will open and ask for the root password.
 
@@ -35,16 +35,16 @@ When GParted starts, the program window opens and the available drives are read.
 
 ![GParted start window](./images/gparted/gparted00-en.png)
 
-The first menu item `GParted` opens a drop-down list which allows you to read the drives again, to select a drive or to quit the program.
+The first menu item *"GParted"* opens a drop-down list which allows you to read the drives again, to select a drive or to quit the program.
 
 ![GParted device overview](./images/gparted/gparted01-en.png)
 
 + **Edit**
 
-    Edit is the 2nd menu item from the left. It shows three grayed out options that are very important and explained below:  
-    + undo last operations,  
-    + clear all operations, and  
-    + apply all operations
+    *"Edit"* is the 2nd menu item from the left. It shows three grayed out options that are very important and explained below:  
+    + *"Undo last operations"*,  
+    + *"Clear all operations"*, and  
+    + *"Apply all operations"*.
 
 + **View**
 
@@ -77,31 +77,31 @@ The first menu item `GParted` opens a drop-down list which allows you to read th
 
 + **Partition**
 
-  The menu item "Partition" is of utmost importance. For the partition selected below, the menu shows all available operations depending on whether the partition is mounted or unmounted. Note that some of the sub-items can also perform critical or dangerous actions.
+  The menu item *"Partition"* is of utmost importance. For the partition selected below, the menu shows all available operations depending on whether the partition is mounted or unmounted. Note that some of the sub-items can also perform critical or dangerous actions.
 
   ![GParted Data Recovery](./images/gparted/gparted07-en.png)
 
 + **Create a new partition**
 
-  In the toolbar, the New button allows you to create a new partition if an unallocated area was previously selected. The appearing window lets you specify the size and the file system type for a primary, extended or logical partition.
+  In the toolbar, the *"New"* button allows you to create a new partition if an unallocated area was previously selected. The appearing window lets you specify the size and the file system type for a primary, extended, or logical partition.
 
   ![GParted New Partition](./images/gparted/gparted05-en.png)
 
 + **Resize/Move**
 
-  The partition can be resized, enlarged and moved with the mouse. Alternatively, enter the new values into the provided fields.
+  The partition can be resized, enlarged, and moved with the mouse. Alternatively, enter the new values into the provided fields.
 
   ![GParted resize](./images/gparted/gparted08-en.png)
 
 + **If a mistake has been made**
 
-  In the "Edit" menu, you can find the options *"Undo Last Operation "* and *"Delete All Operations "*. The area is highlighted in green.
+  In the *"Edit"* menu, you can find the options *"Undo Last Operation "* and *"Delete All Operations "*. The area is highlighted in green.
 
   ![Undo GParted](./images/gparted/gparted06-en.png)
 
 + **Apply**
 
-  No changes have been made to the drives yet. If you are sure that all the intended changes are correct, select *"Apply All Operations "* in the "Edit" menu. The following dialog will appear, which should be confirmed.
+  No changes have been made to the drives yet. If you are sure that all the intended changes are correct, select *"Apply All Operations"* in the *"Edit"* menu. The following dialog will appear, which should be confirmed.
 
   ![GParted Execute and save](./images/gparted/gparted09-en.png)
 
@@ -113,7 +113,7 @@ The first menu item `GParted` opens a drop-down list which allows you to read th
 
 
 See the manual page [Adjusting fstab](0311-part-uuid_en.md#the-fstab).  
-In a **root** terminal, enter the commands **cat /etc/fstab** and **blkid** and compare the UUIDs.
+In a **root** terminal, enter the commands **`cat /etc/fstab`** as well as **`blkid`** and compare the UUIDs.
 
 ~~~
 root@pc1:/# cat /etc/fstab
@@ -144,17 +144,17 @@ root@pc1:/# blkid
 /dev/sdb6: UUID="2ef32215-d545-4e12-bc00-d0099a218970" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-06"
 ~~~
 
-We can see that the last entry in the *fstab* (mounted to */mnt/TEST_res*) is no longer contained in the *blkid* list. Instead, we have two new partitions. In this example, the PC would perform a reboot but would not be able to mount */mnt/TEST_res* and the two new partitions automatically. The boot process would be delayed considerably.
+We can see that the last entry in the `fstab` (mounted to `/mnt/TEST_res`) is no longer contained in the `blkid` list. Instead, we have two new partitions. In this example, the PC would perform a reboot but would not be able to mount `/mnt/TEST_res` and the two new partitions automatically. The boot process would be delayed considerably.
 
-> If the UUID's for the partitions of **/** (root), **/home** and **swap** do not match the entries in **/etc/fstab**, it is mandatory to adjust the entries. Otherwise, the system will not start after a reboot.
+> If the UUID's for the partitions of **/** (root), **/home**, and **swap** do not match the entries in `/etc/fstab`, it is mandatory to adjust the entries. Otherwise, the system will not start after a reboot.
 
 ### Changing NTFS partition sizes with GParted
 
 **Resizing NTFS partitions requires an immediate reboot after execution. No further changes to partitions may be made before then. This will inevitably lead to errors.**
 
 * Once Windows has started and the Windows logo has disappeared, a **checkdisk** window appears which says that **C:\\** is being checked for errors.
-* Please let this AUTOCHECK run finish its job: Windows must check the file system after a resize.
+* Please let this AUTOCHECK finish its job: Windows must check the file system after a resize.
 * After the check, the computer is automatically rebooted the second time. This ensures that the system can run without problems.
 * After the restart, Windows will work properly. However, you have to let the system finish booting and wait for the login window!
 
-<div id="rev">Last edited: 2022/01/17</div>
+<div id="rev">Last edited: 2022/03/31</div>

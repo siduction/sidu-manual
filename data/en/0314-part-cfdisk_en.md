@@ -12,13 +12,13 @@ For creating GPT partition tables, please refer to the manual page [Partitioning
 ### Naming storage devices
 
 **Please NOTE:**  
-siduction uses UUID in fstab for storage device naming. Please refer to the chapter [naming by UUID](0311-part-uuid_en.md#uuid---naming-of-block-devices).
+siduction uses UUID in `fstab` for storage device naming. Please refer to the chapter [Naming by UUID](0311-part-uuid_en.md#uuid---naming-of-block-devices).
 
 **Disks**
 
 Information about the devices can be easily obtained from an information window (pop-up) by hovering the mouse over the icon of a device on the desktop. This works both from the live ISO and with siduction installed.
 
-We recommend creating a table (manual or generated) that contains the details of all devices. This can be very helpful if problems arise. In a terminal, we become root with **su** and type **fdisk -l**. For example, with two disks, we get output similar to that shown below.
+We recommend creating a table (manual or generated) that contains the details of all devices. This can be very helpful if problems arise. In a terminal, we become **root** with **`su`** and type **`fdisk -l`**. For example, with two disks, we get output similar to that shown below.
 
 ~~~
 user1@pc1:/$ su
@@ -102,7 +102,7 @@ Primary or extended partitions are given a designator between 1 and 4 (for examp
 **Backup data beforehand!**  
 > There is a risk of data loss when using any partition editor. Always back up data you want to keep on another disk first.
 
-**cfdisk** is started in a console as **root** (after "su" the root password is required):
+**cfdisk** is started in a console as **root** (after **`su`** the root password is required):
 
 ~~~
 user1@pc1:/$ su
@@ -115,7 +115,7 @@ cfdisk /dev/sda
 
 #### The user interface
 
-On the first screen, cfdisk shows the current partition table with the names and some information about each partition. At the bottom of the window, there are some command buttons. To switch between partitions, use the arrow keys `up` and `down`. To select commands, use the arrow keys `right` and `left`. The `enter` key is used to execute the command.
+On the first screen, `cfdisk` shows the current partition table with the names and some information about each partition. At the bottom of the window, there are some command buttons. To switch between partitions, use the arrow keys **`up`** and **`down`**. To select commands, use the arrow keys **`right`** and **`left`**. The **`Enter`** key is used to execute the command.
 
 ![cfdisk - Start](./images/cfdisk/cfdisk_01.png)
 
@@ -127,33 +127,33 @@ We have three partitions on the example disk.
 | /dev/sda2 | 50.0G | 83 Linux | / |
 | /dev/sda3 | 60.8G | 83 Linux | /data |
 
-From the data partition, we want to move the directories 'Pictures' and 'Music' to their own partitions and create more space for them. At the same time, they should be accessible for a Windows system residing on another harddisk. The root partition is oversized with 50 GB and will be reduced.
+From the data partition, we want to move the directories `Pictures` and `Music` to their own partitions and create more space for them. At the same time, they should be accessible for a Windows system residing on another harddisk. The root partition is oversized with 50 GB and will be reduced.
 
 #### Delete a partition
 
 To create space, we delete the data partition and then shrink the root partition.
 
-To delete the partition **/dev/sda3**, highlight it with the up-down keys and select the command **Delete** with the left-right arrow keys. Finally, confirm the action by hitting **`Enter`**.
+To delete the partition **/dev/sda3**, highlight it with the up-down keys and select the command *"Delete"* with the left-right arrow keys. Finally, confirm the action by hitting **`Enter`**.
 
 ![Delete a partition](./images/cfdisk/cfdisk_02.png) 
 
 #### Resize a partition
 
-Highlight the partition **/dev/sda2**, select the command **Resize**, and confirm.
+Highlight the partition **/dev/sda2**, select the command *"Resize"*, and confirm.
 
 ![Resize a partition](./images/cfdisk/cfdisk_03.png)
 
-Then the new size of '20G' is to be entered.
+Then the new size of *"20G"* is to be entered.
 
 ![New Size of a partition](./images/cfdisk/cfdisk_04.png)
 
 #### Creating a new partition
 
-The hard disk's freed space is highlighted. The command selection automatically jumps to **New**, which has to be confirmed.
+The hard disk's freed space is highlighted. The command selection automatically jumps to *"New"*, which has to be confirmed.
 
 ![Create a new partition](./images/cfdisk/cfdisk_05.png)
 
-Then enter the new size of '15G' for the data partition.
+Then enter the new size of *"15G"* for the data partition.
 
 ![Create a new partition - Size](./images/cfdisk/cfdisk_06.png)
 
@@ -161,11 +161,11 @@ Now we have to choose between a **primary** or an **extended** partition. We sel
 
 ![Create a new partition - primary](./images/cfdisk/cfdisk_07.png)
 
-After that, we mark the free disk space again, confirm it, and confirm the preset total size as well. In the following selection, **extended** has to be chosen. This creates the extended partition (here called 'container') in which the two additional partitions are to be created.
+After that, we mark the free disk space again, confirm it, and confirm the preset total size as well. In the following selection, **extended** has to be chosen. This creates the extended partition (here called *"container"*) in which the two additional partitions are to be created.
 
 ![extended partition](./images/cfdisk/cfdisk_08.png)
 
-Finally, the partitions for 'Music' and 'Images' are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.
+Finally, the partitions for `Music` and `Images` are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.
 
 ![partition finished](./images/cfdisk/cfdisk_09.png)
 
@@ -173,39 +173,39 @@ This is how the result looks like.
 
 #### Partition type
 
-To change the type of a partition, select the desired partition and choose the command **Type**.
+To change the type of a partition, select the desired partition and choose the command *"Type"*.
 
 ![partition type](./images/cfdisk/cfdisk_10.png)
 
-A selection list appears in which the partition type can be selected with the arrow keys `up` and `down`. In our example, we select "**7 HPFS/NTFS/exFAT**" for the partitions **/dev/sda5** and **/dev/sda6**. This way, the above mentioned Windows system can access the partition.
+A selection list appears in which the partition type can be selected with the arrow keys **`up`** and **`down`**. In our example, we select "*7 HPFS/NTFS/exFAT*" for the partitions **/dev/sda5** and **/dev/sda6**. This way, the above mentioned Windows system can access the partition.
 
 ![partition type](./images/cfdisk/cfdisk_11.png)
 
 #### Make a partition bootable
 
-For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the **Bootable** command (**Note:** when installing to an external hard drive, a partition must be made bootable).
+For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the *"Bootable"* command. (**Note:** when installing to an external hard drive, a partition must be made bootable.)
 
 #### Write partition table
 
-When everything has been partitioned, the result can be saved with the command **Write**. The partition table is now written to the disk.
+When everything has been partitioned, the result can be saved with the command *"Write"*. The partition table is now written to the disk.
 
 ![partition select type](./images/cfdisk/cfdisk_12.png)
 
-**Since this will delete all data on the corresponding disk/partition**, you should be really sure before typing **yes** and confirming again with the `Enter` key.
+**Since this will delete all data on the corresponding disk/partition**, you should be really sure before typing **yes** and confirming again with the **`Enter`** key.
 
 #### Quit cfdisk
 
-By entering the command **Quit**, we can quit the program. After leaving **cfdisk** and before the installation, you should reboot in any case to read in the partition table again.
+By entering the command *"Quit"*, we can quit the program. After leaving `cfdisk` and before the installation, you should reboot in any case to read in the partition table again.
 
 ### Formatting partitions
 
 There are several file systems for Linux that can be used. There are **Ext2**, **Ext4**, **ReiserFs**, and for more experienced users **XFS**, **JFS**, and **ZFS**.  
-Ext2 may be of interest when accessing from Windows, as there are Windows drivers for this file system. [Ext2 file system for MS Windows (drivers and documentation)](http://www.fs-driver.org/).
+**Ext2** may be of interest when accessing from Windows, as there are Windows drivers for this file system. [Ext2 file system for MS Windows (drivers and documentation)](http://www.fs-driver.org/).
 
-For normal use, we recommend the ext4 file system. Ext4 is siduction's default file system. 
+For normal use, we recommend the **ext4** file system. It is siduction's default file system. 
 
-After cfdisk has finished, the root console is still needed as formatting requires root privileges.  
-The command is **mkfs.ext4 /dev/sdaX**. For "X", enter the number of the selected partition.
+After `cfdisk` has finished, the **root** console is still needed as formatting requires root privileges.  
+The command is **`mkfs.ext4 /dev/sdaX`**. For *"X"*, enter the number of the selected partition.
 
 ~~~
 mkfs.ext4 /dev/sda2
@@ -215,7 +215,7 @@ mke2fs 1.45.6 (20-Mar-2020)
 Proceed anyway? (y,N)
 ~~~
 
-The query is to be  answered with "**y**" if you are sure that the correct partition should be formatted. Please check several times!
+The query is to be answered with **`y`** if you are sure that the correct partition should be formatted. Please check several times!
 
 After the formatting is finished, you should get a message that ext4 was written successfully. If this is not the case, something went wrong during partitioning or **sdaX** is not a Linux partition. We check with:
 
@@ -225,7 +225,7 @@ fdisk -l /dev/sda
 
 If something is wrong, you may have to partition again.
 
-If the formatting was successful, this procedure can be repeated for the other partitions, adapting the command according to the partition type and the desired file system (e.g.: 'mkfs.ext2' or 'mkfs.vfat' or 'mkfs.ntfs' etc.).
+If the formatting was successful, this procedure can be repeated for the other partitions, adapting the command according to the partition type and the desired file system (e.g.: **`mkfs.ext2`** or **`mkfs.vfat`** or **`mkfs.ntfs`**, etc.).
 Please read the man page **man mkfs**.
 
 Finally, format the swap partition, in this case sda1:
@@ -257,4 +257,4 @@ If the swap partition is recognized correctly, restart the computer.
 
 Now the installation can begin.
 
-<div id="rev">Last edited: 2022/01/19</div>
+<div id="rev">Last edited: 2022/04/01</div>

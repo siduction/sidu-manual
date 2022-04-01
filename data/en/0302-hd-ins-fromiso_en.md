@@ -4,18 +4,18 @@
 
 ### Overview
 
-This cheat code boots from an ISO file located on the hard drive with an ext4 file system. **For normal use, we recommend siduction's default file system, ext4**, which is well maintained.
+This cheat code boots from an ISO file located on the hard drive with an **ext4** file system. **For normal use, we recommend siduction's default file system, ext4**, which is well maintained.
  
-Booting from a "fromiso" hard disk installation takes only a fraction of the time it takes to boot from a CD. In addition, the CD/DVD drive is available at the same time. Alternatively you can use VBox, KVM or QEMU.
+Booting from a "fromiso" hard disk installation takes only a fraction of the time it takes to boot from a CD. In addition, the CD/DVD drive is available at the same time. Alternatively you can use VBox, KVM, or QEMU.
 
 **Prerequisites**
 
-* a working Grub installation (on floppy, a hard disk installation or the live CD)  
-* a siduction image file, e.g. siduction.iso (name shortened) and a Linux filesystem like ext4  
+* a working Grub installation (on floppy, a hard disk installation, or the live CD)  
+* a siduction image file, e.g. `siduction.iso` (name shortened) and a Linux filesystem like **ext4**  
 
 ### fromiso with grub2
 
-siduction provides a grub2 file named 60_fll-fromiso to generate a fromiso entry in the grub2 menu. The configuration file for fromiso can be found in the package `grub2-fll-fromiso`, with the path `/etc/default/grub2-fll-fromiso`.
+siduction provides a grub2 file named `60_fll-fromiso` to generate a fromiso entry in the grub2 menu. The configuration file for fromiso can be found in the package `grub2-fll-fromiso`, with the path `/etc/default/grub2-fll-fromiso`.
 
  First, open a terminal, become **root** and install `grub2-fll-fromiso`:
 
@@ -25,7 +25,7 @@ apt-get update
 apt-get install grub2-fll-fromiso
 ~~~
 
-Then, open the configuration file in an editor of your choice (kwrite, mcedit, vim ...):
+Then, open the configuration file in an editor of your choice (`kwrite`, `mcedit`, `vim`, ...):
 
 ~~~sh
 mcedit /etc/default/grub2-fll-fromiso
@@ -78,11 +78,11 @@ Save the changes, close the editor and execute the following command as **root**
 update-grub
 ~~~
 
-This will update the Grub2 configuration file `grub.cfg` to recognize the ISOs placed in the specified directory. These will be available for selection at the next reboot.
+This will update the grub2 configuration file `grub.cfg` to recognize the ISOs placed in the specified directory. These will be available for selection at the next reboot.
 
 ### toram
 
 Another useful alternative when booting from live media is `toram`. This is recommended if the computer has enough 
-RAM available (4 GiB or more). `toram` copies the complete content of the live medium into the RAM. The advantage is that the system reacts very fast and you can remove the medium after boot. This is useful if the start was done from a USB stick and you want to use this USB port otherwise.
+RAM available (4 GByte or more). `toram` copies the complete content of the live medium into the RAM. The advantage is that the system reacts very fast and you can remove the medium after boot. This is useful if the start was done from a USB stick and you want to use this USB port otherwise.
 
-<div id="rev">Last edited: 2022/01/14</div>
+<div id="rev">Last edited: 2022/03/31</div>

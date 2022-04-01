@@ -44,7 +44,7 @@ All of the following commands and actions require **root** privileges.
    W -> writes changes to the drive
    ~~~
 
-   The command "W" writes the partitioning table. If a mistake was made up to this point, the existing partitioning layout can be restored. For this purpose, enter the command "q" for *cfdisk* to exit without writing, and everything remains as it has been before.
+   The command **`W`** writes the partitioning table. If a mistake was made up to this point, the existing partitioning layout can be restored. For this purpose, enter the command **`q`** for `cfdisk` to exit without writing, and everything remains as it has been before.
 
    If the volume group is to span more than one physical volume (disk), the above operation must be performed on each physical volume.
 
@@ -55,7 +55,7 @@ All of the following commands and actions require **root** privileges.
    ~~~
 
    The command creates the physical volume on the first partition of the first hard disk.  
-   This process is repeated on each partition as needed.
+   This process is to be repeated on each partition as needed.
 
 3. Creating a volume group
 
@@ -71,17 +71,17 @@ All of the following commands and actions require **root** privileges.
    vgscan
    ~~~
 
-   *vgdisplay* displays the size with:
+   `vgdisplay` displays the size with:
 
    ~~~
    vgdisplay vulcan
    ~~~
 
-4. Creation of a logical volume
+4. Creating a logical volume
 
    At this point you have to decide how big the *logical volume* should be at the beginning. One advantage of LVM is the ability to adjust the size without rebooting.
 
-   In our example, we want a 300GB volume named *spock* inside the volume group named vulcan:
+   In our example, we want a 300GB volume named *spock* inside the volume group named *vulcan*:
 
    ~~~
    lvcreate -n spock --size 300g vulcan
@@ -104,8 +104,8 @@ All of the following commands and actions require **root** privileges.
    ~~~
 
    
-   Using **/dev/vulcan/spock** is preferable to using UUID numbers with an LVM because it makes it easier to clone the file system (no UUID collisions). An LVM allows to create file systems with identical UUID numbers (classic example: snapshots).
-   To mount the volume during the boot process, *fstab* must be customized with a text editor:  
+   Using `/dev/vulcan/spock` is preferable to using UUID numbers with an LVM because it makes it easier to clone the file system (no UUID collisions). An LVM allows to create file systems with identical UUID numbers (classic example: snapshots).
+   To mount the volume during the boot process, `fstab` must be customized with a text editor:  
 
    ~~~
    mcedit /etc/fstab
@@ -125,13 +125,13 @@ All of the following commands and actions require **root** privileges.
    chmod 775 /media/spock
    ~~~
 
-We can now repeat steps 4 to 6 for the new logical volume "kirk" to be created.
+We can now repeat steps 4 to 6 for the new logical volume *kirk* to be created.
 
 A simple LVM should now be usable.
 
 ### Resizing a volume
 
-We recommend using a live ISO to resize partitions. Although increasing the partition size of the running system can be done without error, decreasing the size of a partition cannot. Anomalies can lead to data loss, especially if the **/** (root) or **/home** directories are affected.
+We recommend using a live ISO to resize partitions. Although increasing the partition size of the running system can be done without error, decreasing the size of a partition cannot. Anomalies can lead to data loss, especially if the `/` (root) or `/home` directories are affected.
 
 **Example of an enlargement**
 
@@ -147,7 +147,7 @@ Extend the logical volume:
 lvextend -L+200g /dev/vulcan/spock
 ~~~
 
-The *lvextend* command needs to be given the size **difference** as an option, not the total size desired.
+The `lvextend` command needs to be given the size **difference** as an option, not the total size desired.
 
 Then resize the file system:  
 The first command forcibly performs a check, even if the file system appears to be clean.  
@@ -182,8 +182,8 @@ resize2fs /dev/vulcan/spock
 mount /media/spock
 ~~~
 
-Again, the *lvreduce* command must be given the size **difference** as an option.  
-The *resize2sf* command resizes the file system exactly to the logical volume's size.
+Again, the `lvreduce` command must be given the size **difference** as an option.  
+The `resize2sf` command resizes the file system exactly to the logical volume's size.
 
 ### Manage LVM with a GUI program
 
@@ -197,4 +197,4 @@ The *resize2sf* command resizes the file system exactly to the logical volume's 
 + [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  
 + [Resizing Linux partitions - part 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)
 
-<div id="rev">Last edited: 2022/01/20</div>
+<div id="rev">Last edited: 2022/04/01</div>
