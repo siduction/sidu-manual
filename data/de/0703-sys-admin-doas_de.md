@@ -30,7 +30,7 @@ der Option *keepenv* (Umgebungsvariablen beibehalten - ermöglicht das Starten v
 der Option *nopass|persist* (keine Passwortabfrage|die einmalige Passwort Eingabe bleibt einen begrenzten Zeitraum gültig) und  
 dem Benutzer *tux*, auf den die Aktion anzuwenden ist.
 
-Steht der Benutzername für sich allein, so darf *tux* Befehle als beliebiger, auf dem System vorhandener Benutzer ausführen. Die Vorgabe ist *root*. Soll die Ausführung der Aktion nur mit den Rechten eines anderen Benutzers als *root* erlaubt sein, ist der Name innerhalb der Regel anzugeben (z.B. *tux as anne*). Statt des Benutzers kann durch das Voranstellen eines **`:`** eine Gruppe (z.B. *:vboxusers*) Berechtigungen erlangen.
+Steht der Benutzername für sich allein, so darf *tux* Befehle als beliebiger, auf dem System vorhandener Benutzer ausführen. Die Vorgabe ist *root*. Soll die Ausführung der Aktion nur mit den Rechten eines anderen Benutzers als **root** erlaubt sein, ist der Name innerhalb der Regel anzugeben (z.B. *tux as anne*). Statt des Benutzers kann durch das Voranstellen eines **`:`** eine Gruppe (z.B. *:vboxusers*) Berechtigungen erlangen.
 
 ### Doas und mehrere Benutzer
 

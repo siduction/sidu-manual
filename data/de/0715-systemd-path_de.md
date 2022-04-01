@@ -5,67 +5,67 @@
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](0411-systemd-unit-datei_de.md#systemd-unit-datei).  
 In der vorliegenden Handbuchseite erklären wir die Funktion der Unit **systemd.path**, mit der systemd Pfade überwacht und Pfad-basierte Aktionen auslöst.
 
-Die "*.path-Unit*" ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.  
-Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die "*.path-Unit*" ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Dateien angegeben werden.  
-Die Pfad-spezifischen Optionen werden in dem Abschnitt *[Path]* konfiguriert.
+Die path-Unit ermöglicht es, bei Änderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszulösen.  
+Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript über eine Service-Unit ausführen. Die path-Unit ist nicht in der Lage Verzeichnisse rekursiv zu überwachen. Es können aber mehrere Verzeichnisse und Dateien angegeben werden.  
+Die Pfad-spezifischen Optionen werden in dem Abschnitt [Path] konfiguriert.
 
 ### Benötigte Dateien
 
-Die **systemd-path**-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung im Verzeichnis */usr/local/lib/systemd/system/*. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
+Die **systemd-path**-Unit benötigt für ihre Funktion mindestens zwei Dateien mit vorzugsweise dem gleichen Namen, aber unterschiedlicher Namenserweiterung im Verzeichnis `/usr/local/lib/systemd/system/`. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.) Das sind die
 
 + Path-Unit-Datei (\<name\>.path), welche die Überwachung und den Auslöser für die Service-Unit enthält  
     und  
 + Service-Unit-Datei (\<name\>.service), welche die zu startende Aktion enthält.  
-    Für umfangreichere Aktionen erstellt man zusätzlich ein Skript in */usr/local/bin/*, das von der Service-Unit ausgeführt wird.
+    Für umfangreichere Aktionen erstellt man zusätzlich ein Skript in `/usr/local/bin/`, das von der Service-Unit ausgeführt wird.
 
 ### path-Unit Optionen
 
-Die *.path-Unit* muss zwingend die Sektion *[Path]* enthalten, in der festgelegt wird wie und was zu überwachen ist.
+Die path-Unit muss zwingend die Sektion [Path] enthalten, in der festgelegt wird wie und was zu überwachen ist.
 
 Die speziellen Optionen sind:
 
-+ PathExists=  
++ `PathExists=`  
     prüft, ob der betreffende Pfad existiert. Wenn es zutrifft, wird die zugehörige Unit aktiviert.
 
-+ PathExistsGlob=  
++ `PathExistsGlob=`  
     Wie oben, unterstützt Datei-Glob-Ausdrücke (siehe dazu auch die Ausgabe von man glob.
 
-+ PathChanged=  
++ `PathChanged=`  
     beobachtet eine Datei oder einen Pfad und aktiviert die zugehörige Unit, wenn Änderungen auftreten.  
     Aktionsauslösende Änderungen sind:
     + Erstellen und Löschen von Dateien.  
     + Atribute, Rechte, Eigentümer.  
     + Schließen der zu beobachtenden Datei nach Schreibzugriff und Schließen irgendeiner Datei nach Schreibzugriff bei Beobachtung des Pfades.
 
-+ PathModified=  
++ `PathModified=`  
     wie zuvor, aber zusätzlich wird die zugehörige Unit bei einfachen Schreibzugriffen aktiviert, auch wenn die Datei nicht geschlossen wird.
 
-+ DirectoryNotEmpty=  
++ `DirectoryNotEmpty=`  
     aktiviert die zugehörige Unit wenn das Verzeichnis nicht leer ist.
 
-+ Unit=  
-    die zu aktivierende, zugehörige Unit. Zu beachten ist auch, dass die *.path-Unit* standardmäßig die "*.service-Unit*" mit dem gleichen Name aktiviert. Nur bei Abweichungen hiervon ist die Option *Unit=* innerhalb der Sektion *[Path]* notwendig.
++ `Unit=`  
+    die zu aktivierende, zugehörige Unit. Zu beachten ist auch, dass die path-Unit standardmäßig die service-Unit mit dem gleichen Name aktiviert. Nur bei Abweichungen hiervon ist die Option `Unit=` innerhalb der Sektion [Path] notwendig.
 
-+ MakeDirectory=  
++ `MakeDirectory=`  
     das zu beobachtenden Verzeichnis wird vor der Beobachtung erstellt.
 
-+ DirectoryMode=  
++ `DirectoryMode=`  
     legt bei Verwendung für das zuvor erstellte Verzeichnis den Zugriffsmodus in oktaler Notation fest. Standardmäßig 0755.
 
 **Ein Beispiel**  
 
-Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Handbuchseite [LAMP - Apache, Benutzer und Rechte](0521-lamp-apache_de.md#benutzer-und-rechte), wollen wir das Zusammenspiel der *.path-Unit* mit anderen *systemd-Unit* verdeutlichen.
+Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Handbuchseite [LAMP - Apache, Benutzer und Rechte](0521-lamp-apache_de.md#benutzer-und-rechte), wollen wir das Zusammenspiel der path-Unit mit anderen systemd-Unit verdeutlichen.
 
 Die Abbildung *path-Unit-Funktion* stellt die Abhängigkeiten der systemd-Units unseres Beispiels dar.
 
 ![path-Unit Funktion](./images/systemd/path_01.png)
 
-Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der *.path-Unit*. Die *server1.path*-Unit überwacht die Datei "*/var/www/changed*" und aktiviert bei Änderungen die zugehörige *server1.service*-Unit. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis "*/var/www/html/*" aus und stellt die Datei "*/var/www/changed*" zurück.  
-Die außerhalb der Umrandung liegende "*server1-watch.service*"-Unit übernimmt die rekursive Überwachung von *DocumentRoot* des Apache-Webservers.
+Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der path-Unit. Die server1.path-Unit überwacht die Datei `/var/www/changed` und aktiviert bei Änderungen die zugehörige server1.service-Unit. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis `/var/www/html/` aus und stellt die Datei `/var/www/changed` zurück.  
+Die außerhalb der Umrandung liegende server1-watch.service-Unit übernimmt die rekursive Überwachung von *DocumentRoot* des Apache-Webservers.
 
 ### path-Unit anlegen
 
-Wir legen die Datei *server1.path* im Verzeichnis */usr/local/lib/systemd/system/*, die die Datei */var/www/changed* auf Änderungen überwacht, mit folgendem Inhalt an:
+Wir legen die Datei `server1.path` im Verzeichnis `/usr/local/lib/systemd/system/`, die die Datei `/var/www/changed` auf Änderungen überwacht, mit folgendem Inhalt an:
 
 ~~~
 [Unit]
@@ -82,18 +82,18 @@ WantedBy=multi-user.target
 
 **Erklärungen**  
 Sektion [Unit]:  
-Die Option "*BindsTo=*" stellt die stärkste verfügbare Bindung zweier systemd-Einheiten aneinander dar. Falls eine von ihnen während des Starts oder des Betriebs in einen Fehlerzustand übergeht, wird die andere auch unmittelbar beendet.  
-Zusammen mit der Option "*After=*" wird erreicht, dass die *server1.path*-Unit erst startet, nachdem die *server1-watch.service*-Unit ihren erfolgreichen Start an systemd zurückmeldet.
+Die Option *"BindsTo="* stellt die stärkste verfügbare Bindung zweier systemd-Einheiten aneinander dar. Falls eine von ihnen während des Starts oder des Betriebs in einen Fehlerzustand übergeht, wird die andere auch unmittelbar beendet.  
+Zusammen mit der Option *"After="* wird erreicht, dass die server1.path-Unit erst startet, nachdem die server1-watch.service-Unit ihren erfolgreichen Start an systemd zurückmeldet.
 
 Sektion [Path]:  
-"*PathModifid=*" ist die richtige Wahl. Die Option reagiert auf Änderungen in der Datei */var/www/changed*, selbst wenn die Datei nicht geschlossen wird.  
-Die Option "*PathModifid=*" (oder andere, siehe oben) kann mehrfach angegeben werden.
+*"PathModifid="* ist die richtige Wahl. Die Option reagiert auf Änderungen in der Datei `/var/www/changed`, selbst wenn die Datei nicht geschlossen wird.  
+Die Option *"PathModifid="* (oder andere, siehe oben) kann mehrfach angegeben werden.
 
 ### service-Unit für path
 
-Die *server1.service*-Unit wird von der *server1.path*-Unit aktiviert und kontrolliert und benötigt daher keine *[Install]* Sektion. Somit reichen die Beschreibung der Unit in der Sektion *[Unit]*, und in der Sektion *[Service]* die auszuführenden Befehle, aus.
+Die server1.service-Unit wird von der server1.path-Unit aktiviert und kontrolliert und benötigt daher keine [Install] Sektion. Somit reichen die Beschreibung der Unit in der Sektion [Unit], und in der Sektion [Service] die auszuführenden Befehle, aus.
 
-Wir legen die Datei *server1.service* im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
+Wir legen die Datei `server1.service` im Verzeichnis `/usr/local/lib/systemd/system/` mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -109,12 +109,12 @@ ExecStart=/usr/bin/chmod -R o-r /var/www/html/
 
 **Erklärungen**  
 Sektion [Service]:  
-"*ExecStart=*"-Befehle werden nur ausgeführt, nachdem sich alle "*ExecStartPre=*"-Befehle erfolgreich beendet haben.
-Zuerst wird die Datei */var/www/changed* auf 0-Bite zurückgesetzt und danach der Rest ausgeführt.
+*"ExecStart="*-Befehle werden nur ausgeführt, nachdem sich alle *"ExecStartPre="*-Befehle erfolgreich beendet haben.
+Zuerst wird die Datei `/var/www/changed` auf 0-Bite zurückgesetzt und danach der Rest ausgeführt.
 
 #### Zusätzliche service-Unit anlegen
 
-Da die *.path-Unit* Verzeichnisse nicht rekursiv überwachen kann, benötigen wir für unser Beispiel eine zusätzliche *.service-Unit*. Wir legen die Datei *server1-watch.service* im Verzeichnis */usr/local/lib/systemd/system/* mit folgendem Inhalt an.
+Da die .path-Unit Verzeichnisse nicht rekursiv überwachen kann, benötigen wir für unser Beispiel eine zusätzliche service-Unit. Wir legen die Datei `server1-watch.service` im Verzeichnis `/usr/local/lib/systemd/system/` mit folgendem Inhalt an.
 
 ~~~
 [Unit]
@@ -131,18 +131,18 @@ WantedBy=multi-user.target
 ~~~
 
 Anmerkung:  
-Interessant ist, dass systemd intern das inotify-API für *.path-Unit* verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.
+Interessant ist, dass systemd intern das inotify-API für path-Unit verwendet, um Dateisysteme zu überwachen, jedoch deren Rekursiv-Funktion nicht implementiert.
 
 **Erklärungen**  
 Die Sektion [Unit]:  
-"*Before=*" und "*Wants=*" sind die entsprechenden Korrelationen zu "*BindsTo=*" und "*After=*" aus der *server1.service-Unit*.
+*"Before="* und *"Wants="* sind die entsprechenden Korrelationen zu *"BindsTo="* und *"After="* aus der server1.service-Unit.
 
 Sektion [Service]:  
-*inotifywait* protokolliert in die Datei */var/www/changed*, die außerhalb von *DocumentRoot* des Apache-Webservers liegt.
+*"inotifywait"* protokolliert in die Datei `/var/www/changed`, die außerhalb von `DocumentRoot` des Apache-Webservers liegt.
 
 ### path-Unit eingliedern
 
-Auf Grund der Abhängigkeit gliedern wir zuerst die *server1.path-Unit* und dann die *server1-watch.service-Unit* in systemd ein. Die *server1.service-Unit* benötigt und beinhaltet keine [Install]-Sektion. Bei dem Versuch sie einzugliedern erhielten wir eine Fehlermeldung.
+Auf Grund der Abhängigkeit gliedern wir zuerst die server1.path-Unit und dann die server1-watch.service-Unit in systemd ein. Die server1.service-Unit benötigt und beinhaltet keine [Install]-Sektion. Bei dem Versuch sie einzugliedern erhielten wir eine Fehlermeldung.
 
 ~~~
 # systemctl enable server1.path
@@ -185,7 +185,7 @@ Feb 21 19:25:20 lap1 systemd[1]: Started Monitoring "changed" file!.
 TriggeredBy: ● server1.path
 ~~~
 
-Der Status "Active: inactive (dead)" der letzten Ausgabe ist der normale Zustand für die Unit *server1.service*, denn diese Unit ist nur dann aktiv, wenn sie von *server1.path* angestoßen wurde ihre Befehlskette auszuführen. Danach geht sie wieder in den inaktiven Zustand über.
+Der Status *"Active: inactive (dead)"* der letzten Ausgabe ist der normale Zustand für die Unit server1.service, denn diese Unit ist nur dann aktiv, wenn sie von server1.path angestoßen wurde ihre Befehlskette auszuführen. Danach geht sie wieder in den inaktiven Zustand über.
 
 ### service-Unit manuell ausführen
 

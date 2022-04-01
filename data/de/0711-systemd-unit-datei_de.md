@@ -3,10 +3,10 @@
 ## systemd unit-Datei
 
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager)  
-In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen "[Unit]" und "[Install]".
+In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen *[Unit]* und *[Install]*.
 
-Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "*Schlüssel=Wert*" in verschiedenen  Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
-Alle Unit-Dateien müssen eine Sektion entsprechend des Unit-Typ enthalten. Die generischen Sektionen "[Unit]" am Beginn und "[Install]" am Ende der Datei sind optional, wobei die Sektion "[Unit]" dringend empfohlen wird. 
+Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "Schlüssel=Wert" in verschiedenen  Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
+Alle Unit-Dateien müssen eine Sektion entsprechend des Unit-Typ enthalten. Die generischen Sektionen [Unit] am Beginn und [Install] am Ende der Datei sind optional, wobei die Sektion [Unit] dringend empfohlen wird. 
 
 ### Ladepfad der Unit-Dateien
 
@@ -29,20 +29,20 @@ Die Ausgabe zeigt die Reihenfolge der Verzeichnisse, aus denen die Unit-Dateien 
 /run/systemd/generator.late
 ~~~
 
-Unit-Dateien, die in früher aufgeführten Verzeichnissen gefunden werden, setzen Dateien mit dem gleichen Namen in Verzeichnissen, die weiter unten in der Liste aufgeführt sind, außer Kraft. So hat eine Datei in "/etc/systemd/system" Vorrang vor der gleichnamigen in "/lib/systemd/system".
+Unit-Dateien, die in früher aufgeführten Verzeichnissen gefunden werden, setzen Dateien mit dem gleichen Namen in Verzeichnissen, die weiter unten in der Liste aufgeführt sind, außer Kraft. So hat eine Datei in `/etc/systemd/system` Vorrang vor der gleichnamigen in `/lib/systemd/system`.
 
 Nur ein Teil der zuvor aufgeführten Verzeichnisse existiert per default in siduction. Die Verzeichnisse 
 
-+ **/lib/systemd/system/**  
++ `/lib/systemd/system/`  
   beinhalten System-Units, die durch den Paketverwalter der Distribution installiert wurden und ggf. vom Administrator erstellte Unit-Dateien.  
-+ **/etc/systemd/system/**  
-  beinhalten Symlinks auf Unit-Dateien in */lib/systemd/system/* für aktivierte Units und ggf. vom Administrator erstellte Unit-Dateien.  
-+ **/usr/local/lib/systemd/system/**  
++ `/etc/systemd/system/`  
+  beinhalten Symlinks auf Unit-Dateien in `/lib/systemd/system/` für aktivierte Units und ggf. vom Administrator erstellte Unit-Dateien.  
++ `/usr/local/lib/systemd/system/`  
   dieses Verzeichnis muss erstellt werden und ist für vom Administrator erstellte Unit-Dateien vorgesehen.  
-+ **/run/systemd/**  
++ `/run/systemd/`  
   beinhalten Laufzeit-Units und dynamische Konfiguration für flüchtige Units. Für den Administrator hat dieses Verzeichnis ausschließlich informellen Wert.
 
-Wir empfehlen eigene Unit-Dateien in */usr/local/lib/systemd/system/* abzulegen.
+Wir empfehlen eigene Unit-Dateien in `/usr/local/lib/systemd/system/` abzulegen.
 
 ### Aktivierung der Unit-Datei
 
@@ -53,7 +53,7 @@ Um systemd die Konfiguration einer Unit zugänglich zu machen, muss die Unit-Dat
 # systemctl enable --now <UNIT_DATEI>
 ~~~
 
-Der erste Befehl lädt die komplette Daemon-Konfiguration neu, der zweite startet die Unit <UNIT_DATEI> sofort (Option "--now") und gliedert sie in systemd ein, sodass sie bei jedem Neustart des PC ausgeführt wird.  
+Der erste Befehl lädt die komplette Daemon-Konfiguration neu, der zweite startet die Unit <UNIT_DATEI> sofort (Option `--now` ) und gliedert sie in systemd ein, sodass sie bei jedem Neustart des PC ausgeführt wird.  
 Der Befehl
 
 ~~~
@@ -61,11 +61,11 @@ Der Befehl
 ~~~
 
 bewirkt, dass sie nicht mehr bei jedem Neustart des PC ausgeführt wird. Sie kann aber weiterhin manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`** gestartet und mit **`systemctl stop <UNIT_DATEI>`** gestoppt werden.  
-Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf */dev/null* ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand "masked" und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.
+Falls eine Unit-Datei leer ist (d.h. die Größe 0 hat) oder ein Symlink auf `/dev/null` ist, wird ihre Konfiguration nicht geladen und sie erscheint mit einem Ladezustand "masked" und kann nicht aktiviert werden. Dies ist eine wirksame Methode um eine Unit komplett zu deaktivieren und es auch unmöglich zu machen, sie manuell zu starten.
 
 ### Sektionen der Unit-Datei
 
-Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung "*.timer*" und muss "[Timer]" als Typ-spezifische Sektion enthalten.
+Die Unit-Datei besteht in der Regel aus der Sektionen [Unit], der Typ-spezifischen Sektion und der Sektion [Install]. Die Typ-spezifische Sektion fließt als Suffix in den Dateinamen ein. So besitzt zum Beispiel eine Unit-Datei, die einen Zeitgeber konfiguriert, immer die Endung ".timer" und muss [Timer] als Typ-spezifische Sektion enthalten.
 
 #### Sektion Unit
 
@@ -73,52 +73,52 @@ Diese Sektion enthält allgemeine Informationen über die Unit, definiert Abhän
 
 1. Allgemeine Optionen
 
-    a. "*Description=*"  
+   a. `Description=`  
        Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint ("Starting *description*...") und dort als Suchmuster verwandt werden kann.
 
-    b. "*Documentation=*"  
+   b. `Documentation=`  
        Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z. B.: "Documentation=man:cupsd(8)" oder "Documentation=http://www.cups.org/doc/man-cupsd.html".
 
 2. Bindungsabhängigkeiten zu anderen Units
 
-    a. "*Wants=*"  
+   a. `Wants=`  
        Hier aufgeführte Units werden mit der konfigurierten Unit gestartet.
 
-    b. "*Requires=*"  
-       Ähnlich zu *Wants=*, erklärt aber eine stärkere Bindung an die aufgeführten Units.  
+   b. `Requires=`  
+       Ähnlich zu Wants=, erklärt aber eine stärkere Bindung an die aufgeführten Units.  
        Wenn diese Unit aktiviert wird, werden die aufgeführten Units ebenfalls aktiviert.  
-       Schlägt die Aktivierung einer der anderen Units fehl **und** die Ordnungsabhängigkeit *After=* ist auf die fehlgeschlagene Unit gesetzt, dann wird diese Unit nicht gestartet.  
+       Schlägt die Aktivierung einer der anderen Units fehl **und** die Ordnungsabhängigkeit `After=` ist auf die fehlgeschlagene Unit gesetzt, dann wird diese Unit nicht gestartet.  
        Falls eine der anderen Units inaktiv wird, bleibt diese Unit aktiv, nur wenn eine der anderen Units gestoppt wird, wird diese Unit auch gestoppt.
 
-    c. "*Requisite=*"  
-       Ähnlich zu *Requires=*. Der Start dieser Unit wird sofort fehlschlagen, wenn die hier aufgeführten Units noch nicht gestartet wurden. *Requisite=* sollte mit der Ordnungsabhängigkeit *After=* kombiniert werden, um sicherzustellen, dass diese Unit nicht vor der anderen Unit gestartet wird.
+   c. `Requisite=`  
+       Ähnlich zu Requires=. Der Start dieser Unit wird sofort fehlschlagen, wenn die hier aufgeführten Units noch nicht gestartet wurden. Requisite= sollte mit der Ordnungsabhängigkeit `After=` kombiniert werden, um sicherzustellen, dass diese Unit nicht vor der anderen Unit gestartet wird.
 
-    d. "*BindsTo=*"  
-       *BindsTo=* ist der stärkste Abhängigkeitstyp: Es bewirkt zusätzlich zu den Eigenschaften von *Requires=*, dass die gebundene Unit im aktiven Status sein muss, damit diese Unit auch aktiv sein kann.  
+   d. `BindsTo=`  
+       BindsTo= ist der stärkste Abhängigkeitstyp: Es bewirkt zusätzlich zu den Eigenschaften von Requires=, dass die gebundene Unit im aktiven Status sein muss, damit diese Unit auch aktiv sein kann.  
        Beim Stoppen oder inaktivem Zustand der gebundenen Unit wird diese Unit immer gestoppt.  
-       Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht in einem aktiven Zustand ist, sollte *BindsTo=* am besten mit der Ordnungsabhängigkeit *After=* kombiniert werden.
+       Um zu verhindern, dass der Start dieser Unit fehlschlägt, wenn die gebundene Unit nicht, oder noch nicht in einem aktiven Zustand ist, sollte BindsTo= am besten mit der Ordnungsabhängigkeit `After=` kombiniert werden.
 
-    e. "*PartOf=*"  
-       Ähnlich zu *Requires=*, aber begrenzt auf das Stoppen und Neustarten von Units.  
+   e. `PartOf=`  
+       Ähnlich zu Requires=, aber begrenzt auf das Stoppen und Neustarten von Units.  
        Wenn Systemd die hier aufgeführten Units stoppt oder neu startet, wird die Aktion zu dieser Unit weitergeleitet.  
        Das ist eine Einwege-Abhängigkeit. Änderungen an dieser Unit betreffen nicht die aufgeführten Units.
 
-    f. "*Conflicts=*"  
+   f. `Conflicts=`  
        Deklariert negative Anforderungs-Abhängigkeiten. Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.  
-       *Conflicts=* bewirkt, dass die aufgeführte Unit gestoppt wird, wenn diese Unit startet und umgekehrt.  
-       Da *Conflicts=* keine Ordnungs-Abhängigkeit beinhaltet, muss eine Abhängigkeit *After=* oder *Before=* erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.
+       Conflicts= bewirkt, dass die aufgeführte Unit gestoppt wird, wenn diese Unit startet und umgekehrt.  
+       Da Conflicts= keine Ordnungs-Abhängigkeit beinhaltet, muss eine Abhängigkeit `After=` oder `Before=` erklärt werden, um sicherzustellen, dass die in Konflikt stehende Unit gestoppt wird, bevor die andere Unit gestartet wird.
 
 3. Ordnungsabhängigkeiten zu anderen Units
 
-    a. "*Before=*"  
-       Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. *Before=* stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierten Unit abgeschlossen ist.  
+   a. `Before=`  
+       Diese Einstellung konfiguriert Ordnungsabhängigkeiten zwischen Units. Before= stellt sicher, dass die aufgeführte Unit erst mit dem Starten beginnt, nachdem der Start der konfigurierten Unit abgeschlossen ist.  
        Die Angabe einer durch Leerzeichen getrennten Liste ist möglich.
 
-    b. "*After=*"  
-       Diese Einstellung stellt das Gegenteil von *Before=* sicher. Die aufgeführte Unit muss vollständig gestartet sein, bevor die konfigurierte Unit gestartet wird.
+   b. `After=`  
+       Diese Einstellung stellt das Gegenteil von Before= sicher. Die aufgeführte Unit muss vollständig gestartet sein, bevor die konfigurierte Unit gestartet wird.
 
-    c. "*OnFailure=*"  
-       Units, die aktiviert werden, wenn diese Unit den Zustand »failed« einnimmt.
+   c. `OnFailure=`  
+       Units, die aktiviert werden, wenn diese Unit den Zustand "failed" einnimmt.
 
 4. Bedingungen  
    Unit-Dateien können auch eine Reihe von Bedingungen enthalten.  
@@ -128,40 +128,40 @@ Diese Sektion enthält allgemeine Informationen über die Unit, definiert Abhän
    In diesem Abschnitt führen wir nur Bedingungen auf, die uns für selbst erstellte Units hilfreich erscheinen, denn viele Bedingungen dienen dazu, um Units zu überspringen, die auf dem lokalen System nicht zutreffen.  
    Der Befehl **`systemd-analyze verify <UNIT_DATEI>`** kann zum Testen von Bedingungen verwandt werden.
 
-   a. "*ConditionVirtualization=*"  
-      Prüft, ob das System in einer virtualisierten Umgebung ausgeführt wird und testet optional, ob es eine bestimmte Implementierung ist.
+   a. `ConditionVirtualization=`  
+       Prüft, ob das System in einer virtualisierten Umgebung ausgeführt wird und testet optional, ob es eine bestimmte Implementierung ist.
 
-   b. "*ConditionACPower=*"  
-      Prüft, ob das System zum Zeitpunkt der Aktivierung der Unit am Netz hängt oder ausschließlich über Akku läuft.
+   b. `ConditionACPower=`  
+       Prüft, ob das System zum Zeitpunkt der Aktivierung der Unit am Netz hängt oder ausschließlich über Akku läuft.
 
-   c. "*ConditionPathExists=*"  
-      Prüft auf die Existenz einer Datei. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   c. `ConditionPathExists=`  
+       Prüft auf die Existenz einer Datei. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   d. "*ConditionPathExistsGlob=*"  
-      Wie zuvor, nur dass ein Suchmuster angegeben wird. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   d. `ConditionPathExistsGlob=`  
+       Wie zuvor, nur dass ein Suchmuster angegeben wird. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   e. "*ConditionPathIsDirectory=*"  
-      Prüft auf die Existenz eines Verzeichnisses. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   e. `ConditionPathIsDirectory=`  
+       Prüft auf die Existenz eines Verzeichnisses. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   f. "*ConditionPathIsSymbolicLink=*"  
-      Überprüft ob ein bestimmter Pfad existiert und ein symbolischer Link ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   f. `ConditionPathIsSymbolicLink=`  
+       Überprüft ob ein bestimmter Pfad existiert und ein symbolischer Link ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   g. "*ConditionPathIsMountPoint=*"  
-      Überprüft ob ein bestimmter Pfad existiert und ein Einhängepunkt ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   g. `ConditionPathIsMountPoint=`  
+       Überprüft ob ein bestimmter Pfad existiert und ein Einhängepunkt ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   h. "*ConditionPathIsReadWrite=*"  
-      Überprüft ob das zugrundeliegende Dateisystem les- und schreibbar ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   h. `ConditionPathIsReadWrite=`  
+       Überprüft ob das zugrundeliegende Dateisystem les- und schreibbar ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   i. "*ConditionDirectoryNotEmpty=*"  
-      Überprüft ob ein bestimmter Pfad existiert und ein nicht leeres Verzeichnis ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   i. `ConditionDirectoryNotEmpty=`  
+       Überprüft ob ein bestimmter Pfad existiert und ein nicht leeres Verzeichnis ist. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   j. "*ConditionFileNotEmpty=*"  
-      Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale Datei mit einer von Null verschiedenen Größe bezieht. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   j. `ConditionFileNotEmpty=`  
+       Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale Datei mit einer von Null verschiedenen Größe bezieht. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-   k. "*ConditionFileIsExecutable=*"  
-      Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale, als ausführbar gekennzeichnete Datei bezieht. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
+   k. `ConditionFileIsExecutable=`  
+       Überprüft ob ein bestimmter Pfad existiert und sich auf eine normale, als ausführbar gekennzeichnete Datei bezieht. Mit einem Ausrufezeichen ("!") vor dem Pfad wird der Test negiert.
 
-Die vollständige Dokumentation zu allen Optionen der Sektion "[Unit]" bitte in der [Deutschen Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html) nachlesen.
+Die vollständige Dokumentation zu allen Optionen der Sektion [Unit] bitte in der [Deutschen Manpage, systemd.unit](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html) nachlesen.
 
 #### Typ-spezifische Sektion
 
@@ -192,33 +192,33 @@ Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausfüh
 #### Sektion Install
 
 Unit-Dateien können diese Sektion enthalten.  
-Die Optionen der *[Install]*-Sektion werden von den Befehlen **`systemctl enable <UNIT_DATEI>`** und **`systemctl disable <UNIT_DATEI>`** während der Installation einer Unit verwandt.  
-Unit-Dateien ohne *[Install]*-Sektion lassen sich manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`**, oder von einer anderen Unit-Datei starten.
+Die Optionen der [Install]-Sektion werden von den Befehlen **`systemctl enable <UNIT_DATEI>`** und **`systemctl disable <UNIT_DATEI>`** während der Installation einer Unit verwandt.  
+Unit-Dateien ohne [Install]-Sektion lassen sich manuell mit dem Befehl **`systemctl start <UNIT_DATEI>`**, oder von einer anderen Unit-Datei starten.
 
 Beschreibung der Optionen:
 
-+ "*Alias=*"  
++ `Alias=`  
   Eine Liste von zusätzlichen Namen, unter der diese Unit installiert werden soll. Die hier aufgeführten Namen müssen die gleiche Endung wie die Unit-Datei haben.
 
-+ "*WantedBy=*"  
++ `WantedBy=`  
   Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.  
-  Im .wants/-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ *Wants=* von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.  
-  Verhält sich wie die Option *Wants=* in der Sektion *[Unit]*.
+  Im `.wants/`-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ `Wants=` von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.  
+  Verhält sich wie die Option Wants= in der Sektion [Unit].
 
   Beispiel:  
   WantedBy=graphical.target
 
   Das teilt systemd mit, die Unit beim Starten von graphical.target (früher "init 5") hereinzuziehen. 
 
-+ "*RequiredBy=*"  
++ `RequiredBy=`  
   Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.  
-  Im .requires/-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ *Requires=* von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.  
-  Verhält sich wie die Option *Requires=* in der Sektion *[Unit]*.
+  Im `.requires/`-Verzeichnis jeder der aufgeführten Units wird bei der Installation ein symbolischer Link erstellt. Dadurch wird eine Abhängigkeit vom Typ `Requires=` von der aufgeführten Unit zu der aktuellen Unit hinzugefügt. Das Hauptergebnis besteht darin, dass die aktuelle Unit gestartet wird, wenn die aufgeführte Unit gestartet wird.  
+  Verhält sich wie die Option Requires= in der Sektion [Unit].
 
-+ "*Also=*"  
++ `Also=`  
   Zusätzliche Units, die installiert/deinstalliert werden sollen, wenn diese Unit installiert/deinstalliert wird.
 
-+ "*DefaultInstance=*"  
++ `DefaultInstance=`  
   Diese Option zeigt nur bei Vorlagen-Unit-Dateien Wirkung.  
   Deklariert, welche Instanz der Unit freigegeben werden soll. Die angegebene Zeichenkette muss zur Identifizierung einer Instanz geeignet sein.
 
@@ -227,7 +227,7 @@ Um die Konfiguration einer Unit-Datei zu prüfen, eignet sich der Befehl **`syst
 
 ### Beispiel cupsd
 
-Der *cupsd*, Auftragsplaner (Scheduler) für das Common UNIX Printing System, wird von systemd mit seinen drei Unit Dateien "*cups.socket*", "*cups.service*" und "*cups.path*" gesteuert und eignet sich gut, um die Abhängigkeiten zu verdeutlichen.  
+Der *"cupsd"*, Auftragsplaner (Scheduler) für das Common UNIX Printing System, wird von systemd mit seinen drei Unit Dateien `cups.socket`, `cups.service` und `cups.path` gesteuert und eignet sich gut, um die Abhängigkeiten zu verdeutlichen.  
 Hier die drei Dateien.
 
 ~~~
@@ -282,8 +282,8 @@ WantedBy=sockets.target
 ~~~
 
 **Die Sektion [Unit]**  
-enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien *cups.path* und *cups.socket* enthalten zusätzlich die  Bindungsabhängigkeit *PartOf=cups.service*, was bedeutet, dass diese zwei Units abhängig von *cups.service* gestoppt oder neu gestartet werden.  
-Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit "Before=" zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der *cups.service*-Unit die Ordnungs-Abhängigkeiten "After=cups.socket" und "After=cups.path" einzutragen. (Siehe unten die Ausgabe von "systemd-analyze dump" mit dem Vermerk "destination-implicit".) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die *cups.service*-Unit erst, nachdem der Start der *cups.path*-Unit und der *cups.socket*-Unit erfolgreich abgeschlossen wurde.
+enthält für alle drei Dateien die gleiche Beschreibung. Die Dateien `cups.path` und `cups.socket` enthalten zusätzlich die  Bindungsabhängigkeit `PartOf=cups.service`, was bedeutet, dass diese zwei Units abhängig von cups.service gestoppt oder neu gestartet werden.  
+Die socket-Unit ebenso wie die path-Unit schließen die Ordnungsabhängigkeit `Before=` zu ihrer namensgleichen service-Unit ein. Deshalb ist es nicht notwendig in der cups.service-Unit die Ordnungs-Abhängigkeiten After=cups.socket und After=cups.path einzutragen. (Siehe unten die Ausgabe von *"systemd-analyze dump"* mit dem Vermerk *"destination-implicit"*.) Beide Abhängigkeiten gemeinsam bewirken, dass unabhängig davon, welche Unit zuerst startet, immer alle drei Units starten und die cups.service-Unit erst, nachdem der Start der cups.path-Unit und der cups.socket-Unit erfolgreich abgeschlossen wurde.
 
 Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd-analyze dump`**, der eine sehr, sehr lange Liste ( > 32000 Zeilen) des systemd Serverstatus ausgibt. 
 
@@ -309,13 +309,13 @@ Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd
 ~~~
 
 **Die Sektion [Install]**  
-der *cups.service*-Unit enthält mit der Option "Also=cups.socket cups.path" die Anweisung, diese beiden Units auch zu installieren und alle drei Units haben unterschiedliche "WantedBy=" Optionen:
+der cups.service-Unit enthält mit der Option `Also=cups.socket cups.path` die Anweisung, diese beiden Units auch zu installieren und alle drei Units haben unterschiedliche `WantedBy=` Optionen:
 
 + cups.socket:  WantedBy=sockets.target  
 + cups.path:    WantedBy=multi-user.target  
 + cups.service: WantedBy=printer.target
 
-Um zu verstehen, warum unterschiedliche Werte für die Option "WantedBy=" Verwendung finden, benötigen wir zusätzliche Informationen, die wir mit den Befehlen *systemd-analyze dot* und *systemd-analyze plot* erhalten.
+Um zu verstehen, warum unterschiedliche Werte für die Option *"WantedBy="* Verwendung finden, benötigen wir zusätzliche Informationen, die wir mit den Befehlen **`systemd-analyze dot`** und **`systemd-analyze plot`** erhalten.
 
 ~~~
 $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
@@ -324,49 +324,49 @@ $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
 $ systemd-analyze plot > bootup.svg
 ~~~
 
-Der erste liefert uns ein Flussdiagramm mit den Abhängigkeiten der verschiedenen *Targets* zueinander und der zweite eine graphisch aufbereitete Auflistung des Bootprozesses mit den Zeitpunkten wann ein Prozess gestartet wurde, welche Zeit er beanspruchte und seinen Aktivitätszustand.
+Der erste liefert uns ein Flussdiagramm mit den Abhängigkeiten der verschiedenen Targets zueinander und der zweite eine graphisch aufbereitete Auflistung des Bootprozesses mit den Zeitpunkten wann ein Prozess gestartet wurde, welche Zeit er beanspruchte und seinen Aktivitätszustand.
 
-Der *targets.svg* und der *bootup.svg* entnehmen wir, dass
+Der `targets.svg` und der `bootup.svg` entnehmen wir, dass
 
-1.  **sysinit.target**  
+1.  *sysinit.target*  
     aktiviert wird und
 
-2.  **basic.target**  
-    erst startet, wenn *sysinit.target* erreicht wurde.
+2.  *basic.target*  
+    erst startet, wenn sysinit.target erreicht wurde.
 
-    1.  **sockets.target**  
-        von *basic.target* angefordert wird,
+    1.  *sockets.target*  
+        von basic.target angefordert wird,
 
-        1.   **cups.socket**  
-              und alle weiteren *.socket*-Units von *sockets.target* hereingeholt werden.
+        1.   *cups.socket*  
+              und alle weiteren .socket-Units von sockets.target hereingeholt werden.
 
-    2.  **paths.target**  
-        von *basic.target* angefordert wird,
+    2.  *paths.target*  
+        von basic.target angefordert wird,
 
-        1.   **cups.path**  
-              und alle weiteren *.path*-Units von *paths.target* hereingeholt werden.
+        1.   *cups.path*  
+              und alle weiteren .path-Units von paths.target hereingeholt werden.
 
-3.  **network.target**  
-    erst startet, wenn *basic.target* erreicht wurde.
+3.  *network.target*  
+    erst startet, wenn basic.target erreicht wurde.
 
-4.  **cups.service**  
-    erst startet, wenn *network.target* erreicht wurde.
+4.  *cups.service*  
+    erst startet, wenn network.target erreicht wurde.
 
-5.  **multi-user.target**  
-    erst startet, wenn *network.target* erreicht wurde.
+5.  *multi-user.target*  
+    erst startet, wenn network.target erreicht wurde.
 
-6.  **multi-user.target**  
-    erst dann erreicht wird, wenn *cups.service* erfolgreich gestartet wurde.  
-    (Genau genommen liegt es daran, dass der *cups-browsed.service*, der vom  
-    *cups.service* abhängt, erfolgreich gestartet sein muss.)
+6.  *multi-user.target*  
+    erst dann erreicht wird, wenn cups.service erfolgreich gestartet wurde.  
+    (Genau genommen liegt es daran, dass der cups-browsed.service, der vom  
+    cups.service abhängt, erfolgreich gestartet sein muss.)
 
-6.  **printer.target**  
-    wird erst aktiv, wenn Systemd dynamisch Geräte-Units für die Drucker generiert.  
+6.  *printer.target*  
+    wird erst aktiv, wenn systemd dynamisch Geräte-Units für die Drucker generiert.  
     Dazu müssen die Drucker angeschlossen und eingeschaltet sein.
 
-Weiter oben stellten wir fest, dass der Start einer *cups.xxx*-Unit ausreicht, um alle drei Units hereinzuholen. Betrachten wir noch einmal die "WantedBy="-Optionen in der [Install]-Sektion, so haben wir die *cups.socket*-Unit, die über das *sockets.target* bereits während des *basic.target* hereingeholt wird, die *cups.path*-Unit, die während des *multi-user.target* hereingeholt wird und den *cups.service*, der vom *printer.target* hereingeholt wird.  
-Während des gesamten Bootprozesses werden die drei *cups.xxx*-Units wiederholt bei systemd zur Aktivierung angefordert. Das härtet den *cupsd* gegen unvorhergesehene Fehler, spielt für systemd aber keine Rolle, denn es ist unerheblich wie oft ein Service angefordert wird, wenn er sich in der Warteschlange befindet.  
-Zusätzlich fordert immer dann das *printer.target* den *cups.service* an, wenn ein Drucker neu von systemd erkannt wird.
+Weiter oben stellten wir fest, dass der Start einer cups.xxx-Unit ausreicht, um alle drei Units hereinzuholen. Betrachten wir noch einmal die "*WantedBy="*-Optionen in der [Install]-Sektion, so haben wir die cups.socket-Unit, die über das sockets.target bereits während des basic.target hereingeholt wird, die cups.path-Unit, die während des multi-user.target hereingeholt wird und den cups.service, der vom printer.target hereingeholt wird.  
+Während des gesamten Bootprozesses werden die drei cups.xxx-Units wiederholt bei systemd zur Aktivierung angefordert. Das härtet den cupsd gegen unvorhergesehene Fehler, spielt für systemd aber keine Rolle, denn es ist unerheblich wie oft ein Service angefordert wird, wenn er sich in der Warteschlange befindet.  
+Zusätzlich fordert immer dann das printer.target den cups.service an, wenn ein Drucker neu von systemd erkannt wird.
 
 ### Werkzeuge
 
@@ -382,13 +382,16 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   # systemctl edit --full --force <UNIT_DATEI>
   ~~~
 
-  *systemctl edit* öffnet die ausgewählte Unit-Datei im konfigurierten Editor.
+  *"systemctl edit"* öffnet die ausgewählte Unit-Datei im konfigurierten Editor.
 
-  **systemctl edit <UNIT_DATEI>** erstellt unterhalb */etc/systemd/system/* ein neues Verzeichnis mit dem Namen "\<UNIT_DATEI\>.d" und darin die Datei "override.conf", die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hierarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien) inklusive */etc/systemd/system/* abwärts eingetragen sind.
+  + **`systemctl edit <UNIT_DATEI>`**  
+    erstellt unterhalb `/etc/systemd/system/` ein neues Verzeichnis mit dem Namen `<UNIT_DATEI>.d` und darin die Datei `override.conf`, die ausschließlich die Änderungen gegenüber der ursprünglichen Unit-Datei enthält. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hierarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien) inklusive `/etc/systemd/system/` abwärts eingetragen sind.
 
-  **systemctl edit - -full <UNIT_DATEI>** erstellt eine neue, namensgleiche Datei im Verzeichnis */etc/systemd/system/*. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hierarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien) unterhalb */etc/systemd/system/* eingetragen sind. Dateien, die sich bereits im Verzeichnis */etc/systemd/system/* befinden, werden überschrieben.
+  + **`systemctl edit --full <UNIT_DATEI>`**  
+    erstellt eine neue, namensgleiche Datei im Verzeichnis `/etc/systemd/system/`. Dies gilt für alle Unit-Dateien in den Verzeichnissen, die in der [Hierarchie der Ladepfade](0711-systemd-unit-datei_de.md#ladepfad-der-unit-dateien) unterhalb `/etc/systemd/system/` eingetragen sind. Dateien, die sich bereits im Verzeichnis `/etc/systemd/system/` befinden, werden überschrieben.
 
-  **systemctl edit - -full - -force <UNIT_DATEI>** erstellt eine neue Datei im Verzeichnis */etc/systemd/system/*. Ohne die Option *- -full* würde nur eine Datei "override.conf" im neuen Verzeichnis */etc/systemd/system/\<UNIT_DATEI\>.d* generiert, der die zugehörige Unit-Datei fehlt.
+  + **`systemctl edit --full --force <UNIT_DATEI>`**  
+    erstellt eine neue Datei im Verzeichnis `/etc/systemd/system/`. Ohne die Option `--full` würde nur eine Datei `override.conf` im neuen Verzeichnis `/etc/systemd/system/<UNIT_DATEI>.d` generiert, der die zugehörige Unit-Datei fehlt.
 
   Wird der Editor beendet, so führt systemd automatisch den Befehl **`systemctl daemon-reload`** aus.
 
@@ -398,8 +401,8 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   # systemctl revert <UNIT_DATEI>
   ~~~
 
-  macht die mit *systemctl edit* und *systemctl edit - -full* vorgenommenen Änderungen an Unit-Dateien rückgängig. Dies gilt nicht für geänderte Unit-Dateien die sich bereits im Verzeichnis */etc/systemd/system/* befanden.  
-  Zusätzlich bewirkt der Befehl die Rücknahme der mit *systemctl mask* vorgenommenen Änderungen.
+  macht die mit `systemctl edit` und `systemctl edit --full` vorgenommenen Änderungen an Unit-Dateien rückgängig. Dies gilt nicht für geänderte Unit-Dateien die sich bereits im Verzeichnis `/etc/systemd/system/` befanden.  
+  Zusätzlich bewirkt der Befehl die Rücknahme der mit `systemctl mask` vorgenommenen Änderungen.
 
 + daemon-reload
 
@@ -415,7 +418,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemctl cat <UNIT_DATEI>
   ~~~
 
-  Gibt entsprechend des Konsolebefehls *cat* den Inhalt der Unit-Datei und aller zugehörigen Änderungen aus.
+  Gibt entsprechend des Konsolebefehls `cat` den Inhalt der Unit-Datei und aller zugehörigen Änderungen aus.
 
 + analyze verify
 
@@ -452,7 +455,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemd-analyze dump > systemd_dump.txt
   ~~~
 
-  erstellt die Textdatei *systemd_dump.txt* mit der vollständigen Konfiguration alle Units des systemd. Die sehr lange Textdatei gibt Aufschluss über alle Konfigurationseinstellungen aller systemd-Units und lässt sich mit einem Texteditor und unter Verwendung von RegEx-Pattern gut durchsuchen.
+  erstellt die Textdatei *"systemd_dump.txt"* mit der vollständigen Konfiguration alle Units des systemd. Die sehr lange Textdatei gibt Aufschluss über alle Konfigurationseinstellungen aller systemd-Units und lässt sich mit einem Texteditor und unter Verwendung von RegEx-Pattern gut durchsuchen.
 
 + analyze plot
 
@@ -460,7 +463,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   $ systemd-analyze plot > bootup.svg
   ~~~
 
-  erstellt die Datei *bootup.svg* mit der zeitlichen Abfolge des Bootprozesses. Es ist eine graphisch aufbereitete Auflistung des Bootprozesses mit den Start- und Endzeitpunkten aller Units, welche Zeit sie beanspruchten und ihren Aktivitätszuständen.
+  erstellt die Datei *"bootup.svg"* mit der zeitlichen Abfolge des Bootprozesses. Es ist eine graphisch aufbereitete Auflistung des Bootprozesses mit den Start- und Endzeitpunkten aller Units, welche Zeit sie beanspruchten und ihren Aktivitätszuständen.
 
 + analyze dot
 
@@ -474,7 +477,7 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
                   green     = After
   ~~~
 
-  erstellt das Flussdiagramm *targets.svg*, dass die Abhängigkeiten der im Bootprozess verwendeten Targets darstellt. Die Beziehungen der *.target*-Units werden zur besseren Übersicht farblich dargestellt.
+  erstellt das Flussdiagramm *"targets.svg"*, dass die Abhängigkeiten der im Bootprozess verwendeten Targets darstellt. Die Beziehungen der target-Units werden zur besseren Übersicht farblich dargestellt.
 
 Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgelieferten Werkzeuge dar. Bitte entnehme den man-Pages die vollständige Dokumentation.
 

@@ -28,7 +28,7 @@ systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am hä
 
 Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager). Die vollständige Dokumentation ist in den man-Pages **systemd.unit**, **systemd.special** und jeweils **systemd."Unit-Typ"** zu finden.
 
-Mit dem Befehl, je nach den Units und den notwendigen Rechten als *user* oder *root* aufgerufen,
+Mit dem Befehl, je nach den Units und den notwendigen Rechten als **user** oder **root** aufgerufen,
 
 ~~~
 systemctl [OPTIONEN...] Befehl [UNIT...]

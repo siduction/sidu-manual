@@ -5,9 +5,9 @@
 Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager) Die alle Unit-Dateien betreffenden Sektionen *[Unit]* und *[Install]* behandelt unsere Handbuchseite [Systemd Unit-Datei](0711-systemd-unit-datei_de.md#systemd-unit-datei).  
 Jetzt erklären wir die Funktion der Unit **systemd.target**, die den allgemein bekannten Runleveln ähneln, etwas ausführlicher.
 
-Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als *Ziel-Unit*. Sie besitzen die Erweiterung *.target*.
+Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als Ziel-Unit. Sie besitzen die Erweiterung ".target".
 
-Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus *man systemd*: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")
+Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus `man systemd`: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")
 
 | Ziel-Unit | Beschreibung | 
 | --- | -------- |
@@ -17,14 +17,14 @@ Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus 
 | **graphical.target** | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
 | **default.target** | Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer bei der Variante noX). |
 
-Ein Blick in die Dokumentation "*man SYSTEMD.SPECIAL(7)*" ist obligatorisch um die Zusammenhänge der verschiedenen *.target-Unit* zu verstehen.
+Ein Blick in die Dokumentation `man SYSTEMD.SPECIAL(7)` ist obligatorisch um die Zusammenhänge der verschiedenen target-Unit zu verstehen.
 
 ### Besonderheiten
 
 Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 
 1. Die Verwendung auf der Kernel-Befehszeile beim Bootvorgang.  
-    Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste `e` drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: "systemd.unit=xxxxxxx.target" an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen numerischen Entsprechungen auf.
+    Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste **`e`** drücken. Anschließend hängt man an die Kernel-Befehszeile das gewünschte Ziel mit der folgenden Syntax: "systemd.unit=xxxxxxx.target" an. Die Tabelle listet die Kernel-Befehle und ihre noch gültigen numerischen Entsprechungen auf.
 
     | Ziel-Unit | Kernel-Befehl | Kernel-Befehl alt |
     | --------- | ------------- | :---: |
@@ -36,7 +36,7 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
     Die alten Runlevel 2 und 4 verweisen auf multi-user.target
 
 2. Die Verwendung im Terminal während einer laufenden Sitzung.
-    Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`**+**`ALT`**+**`F2`** zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die Terminal-Befehle auf, wobei der Ausdruck *isolate* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
+    Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`**+**`ALT`**+**`F2`** zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die Terminal-Befehle auf, wobei der Ausdruck *"isolate"* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
 
     | Ziel-Unit | Terminal-Befehl | init-Befehl alt |
     | --------- | --------------- | :----: |
@@ -55,7 +55,7 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
     | poweroff | systemctl poweroff | init 0 |
     | reboot | systemctl reboot | init 6 |
 
-    *halt*, *poweroff* und *reboot* holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
+    *"halt"*, *"poweroff"* und *"reboot"* holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
 
 ### Quellen systemd-target
 

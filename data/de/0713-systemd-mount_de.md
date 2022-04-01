@@ -6,74 +6,74 @@ Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbu
 In der vorliegenden Handbuchseite erklären wir die Funktion der systemd-Units **mount** und **automount**. Mit ihnen verwaltet systemd Einhängepunkte für Laufwerke und deren Partitionen, die sowohl lokal als auch über das Netzwerk erreichbar sein können.
 
 Die **mount**-Unit ist eine Konfigurationsdatei, die für systemd Informationen über einen Einhängepunkt bereitstellt.  
-Die **automount**-Unit überwacht das Dateisystem und aktiviert die gleichnamige *.mount-Unit*, wenn das darin bezeichnete Dateisystem verfügbar ist.
+Die **automount**-Unit überwacht das Dateisystem und aktiviert die gleichnamige mount-Unit, wenn das darin bezeichnete Dateisystem verfügbar ist.
 
-Für unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die *mount*-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuhängen.  
-Bei Netzwerk-Dateisystemen bietet die *mount*-Unit den Vorteil, Abhängigkeiten deklarieren zu können, damit die Unit erst aktiv wird, wenn das Netzwerk bereit steht. Auch hier benutzen wir nur die *mount*-Unit und aktivieren und starten sie, um das Netzwerk-Dateisystemen bei jedem Boot einzuhängen. Die *mount*-Unit unterstützt alle Arten von Netzwerk-Dateisystemen (NFS, SMB, FTP, WEBDAV, SFTP, SSH).
+Für unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die mount-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuhängen.  
+Bei Netzwerk-Dateisystemen bietet die mount-Unit den Vorteil, Abhängigkeiten deklarieren zu können, damit die Unit erst aktiv wird, wenn das Netzwerk bereit steht. Auch hier benutzen wir nur die mount-Unit und aktivieren und starten sie, um das Netzwerk-Dateisystemen bei jedem Boot einzuhängen. Die mount-Unit unterstützt alle Arten von Netzwerk-Dateisystemen (NFS, SMB, FTP, WEBDAV, SFTP, SSH).
 
-Entfernbare Geräte, wie USB-Sticks, und Netzwerk-Dateisysteme, die nicht permanent erreichbar sind, müssen immer an eine *.automount*-Unit gekoppelt werden. In diesem Fall darf die *mount*-Unit nicht aktiviert werden und sollte auch keine [Install]-Sektion enthalten.
+Entfernbare Geräte, wie USB-Sticks, und Netzwerk-Dateisysteme, die nicht permanent erreichbar sind, müssen immer an eine automount-Unit gekoppelt werden. In diesem Fall darf die mount-Unit nicht aktiviert werden und sollte auch keine [Install]-Sektion enthalten.
 
-*mount*- und *automount*-Units müssen nach dem Einhängepunkt, den sie steuern, benannt sein. Beispiel: Der Einhängepunkt "/home/musteruser" muss in einer Unit-Datei "home-musteruser.mount", bzw. "home-musteruser.automount", konfiguriert werden.
+mount- und automount-Units müssen nach dem Einhängepunkt, den sie steuern, benannt sein. Beispiel: Der Einhängepunkt "/home/musteruser" muss in einer Unit-Datei "home-musteruser.mount", bzw. "home-musteruser.automount", konfiguriert werden.
 
-Die in der "*/etc/fstab*" deklarierten Geräte und ihre Einhängepunkte übersetzt systemd in der frühen Bootphase mit Hilfe des "*systemd-fstab-generators*" in native *mount*-Units.
+Die in der `/etc/fstab` deklarierten Geräte und ihre Einhängepunkte übersetzt systemd in der frühen Bootphase mit Hilfe des systemd-fstab-generators in native mount-Units.
 
 ### Inhalt der mount-Unit
 
-Die *mount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Mount]-Sektion:
+Die mount-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Mount]-Sektion:
 
-+ **What=** (Pflicht)  
- 	Enthält den absoluten Pfad des eingehängten Geräts, also z.B. Festplatten-Partitionen wie /dev/sda8 oder eine Netzwerkfreigabe wie NFSv4 oder Samba.
++ `What=` (Pflicht)  
+ 	Enthält den absoluten Pfad des eingehängten Geräts, also z.B. Festplatten-Partitionen wie `/dev/sda8` oder eine Netzwerkfreigabe wie NFSv4 oder Samba.
 
-+ **Where=** (Pflicht)  
++ `Where=` (Pflicht)  
  	Hier wird der Einhängepunkt (mount point) festgelegt, d.h. der Ordner, in den die Partition, das Netzlaufwerk oder Gerät eingehängt werden soll. Falls dieser nicht existiert, wird er beim Einhängen erzeugt.
 
-+ **Type=** (optional)  
++ `Type=` (optional)  
     Hier wird der Typ des Dateisystems angegeben, gemäß dem mount-Parameter -t.
 
-+ **Options=** (optional)  
++ `Options=` (optional)  
  	Enthält alle verwendeten Optionen in einer Komma getrennten Liste, gemäß dem mount-Parameter -o.
 
-+ **LazyUmount=** (Standard: off)  
++ `LazyUmount=` (Standard: off)  
  	Wenn der Wert auf true gesetzt wird, wird das Dateisystem wieder ausgehängt, sobald es nicht mehr benötigt wird. 
 
-+ **SloppyOptions=** (Standard: off)  
-    Falls true, erfolgt eine entspannte Auswertung der in *Options=* festgelegten Optionen und unbekannte Einhängeoptionen werden toleriert. Dies entspricht dem mount-Parameter -s.
++ `SloppyOptions=` (Standard: off)  
+    Falls true, erfolgt eine entspannte Auswertung der in `Options=` festgelegten Optionen und unbekannte Einhängeoptionen werden toleriert. Dies entspricht dem mount-Parameter -s.
 
-+ **ReadWriteOnly=** (Standard: off)  
++ `ReadWriteOnly=` (Standard: off)  
     Falls false, wird bei dem Dateisystem oder Gerät, das read-write eingehängt werden soll, das Einhängen aber scheitert, versucht es read-only einzuhängen. Falls true, endet der Prozess sofort mit einem Fehler, wenn die Einhängung read-write scheitert. Dies entspricht dem mount-Parameter -w. 
 
-+ **ForceUnmount=** (Standard: off)  
++ `ForceUnmount=` (Standard: off)  
     Falls true, wird das Aushängen erzwungen wenn z. B. ein NFS-Dateisystem nicht erreichbar ist. Dies entspricht dem mount-Parameter -f. 
 
-+ **DirectoryMode=** (Standard: 0755)  
++ `DirectoryMode=` (Standard: 0755)  
     Die, falls notwendig, automatisch erzeugten Verzeichnisse von Einhängepunkten, erhalten den deklarierten Dateisystemzugriffsmodus. Akzeptiert einen Zugriffsmodus in oktaler Notation.
 
-+ **TimeoutSec=** (Vorgabewert aus der Option *DefaultTimeoutStartSec=* in systemd-system.conf)  
-    Konfiguriert die Zeit, die auf das Beenden des Einhängebefehls gewartet wird. Falls ein Befehl sich nicht innerhalb der konfigurierten Zeit beendet, wird die Einhängung als fehlgeschlagen betrachtet und wieder heruntergefahren. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie »5min 20s«. Durch Übergabe von »0« wird die Zeitüberschreitungslogik deaktiviert.
++ `TimeoutSec=` (Vorgabewert aus der Option `DefaultTimeoutStartSec=` in systemd-system.conf)  
+    Konfiguriert die Zeit, die auf das Beenden des Einhängebefehls gewartet wird. Falls ein Befehl sich nicht innerhalb der konfigurierten Zeit beendet, wird die Einhängung als fehlgeschlagen betrachtet und wieder heruntergefahren. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie "5min 20s". Durch Übergabe von "0" wird die Zeitüberschreitungslogik deaktiviert.
 
 ### Inhalt der automount-Unit
 
-Die *automount*-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:
+Die automount-Unit verfügt über die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:
 
-+ **Where=** (Pflicht)  
++ `Where=` (Pflicht)  
  	Hier wird der Einhängepunkt (mount point) festgelegt, d.h. der Ordner, in den die Partition, das Netzlaufwerk oder Gerät eingehängt werden soll. Falls dieser nicht existiert, wird er beim Einhängen erzeugt.
 
-+ **DirectoryMode=** (Standard: 0755)  
++ `DirectoryMode=` (Standard: 0755)  
     Die, falls notwendig, automatisch erzeugten Verzeichnisse von Einhängepunkten erhalten den deklarierten Dateisystemzugriffsmodus. Akzeptiert einen Zugriffsmodus in oktaler Notation.
 
-+ **TimeoutIdleSec=** (Standard: 0)  
-    Bestimmt die Zeit der Inaktivität, nach der systemd versucht das Dateisystem auszuhängen. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie »5min 20s«. Der Wert "0" deaktiviert die Option.
++ `TimeoutIdleSec=` (Standard: 0)  
+    Bestimmt die Zeit der Inaktivität, nach der systemd versucht das Dateisystem auszuhängen. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie "5min 20s". Der Wert "0" deaktiviert die Option.
 
 ### Beispiele
 
-Systemd liest den Einhängepunkt aus dem Namen der *mount*- und *automount*-Units. Deshalb müssen sie nach dem Einhängepunkt, den sie steuern, benannt sein.  
+Systemd liest den Einhängepunkt aus dem Namen der mount- und automount-Units. Deshalb müssen sie nach dem Einhängepunkt, den sie steuern, benannt sein.  
 Dabei ist zu beachten, keine Bindestriche "-" in den Dateinamen zu verwenden, denn sie deklarieren ein neues Unterverzeichnis im Verzeichnisbaum. Einige Beispiele:
 
 + unzulässig: /data/home-backup
 + zulässig: /data/home_backup
 + zulässig: /data/home\\x2dbackup
 
-Um einen fehlerfreien Dateinamen für die *mount*- und *automount*-Unit zu erhalten, verwenden wir im Terminal den Befehl "systemd-escape".
+Um einen fehlerfreien Dateinamen für die mount- und automount-Unit zu erhalten, verwenden wir im Terminal den Befehl `systemd-escape`.
 
 ~~~
 $ systemd-escape -p --suffix=mount "/data/home-backup"
@@ -81,8 +81,8 @@ $ systemd-escape -p --suffix=mount "/data/home-backup"
 ~~~
 
 **Festplatten-Partition**  
-Eine Partition soll nach jedem Systemstart unter "/disks/TEST" erreichbar sein.  
-Wir erstellen mit einem Texteditor die Datei "disks-TEST.mount" im Verzeichnis "/usr/local/lib/systemd/system/". (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)
+Eine Partition soll nach jedem Systemstart unter `/disks/TEST` erreichbar sein.  
+Wir erstellen mit einem Texteditor die Datei `disks-TEST.mount` im Verzeichnis `/usr/local/lib/systemd/system/`. (Ggf. ist das Verzeichnis zuvor mit dem Befehl **`mkdir -p /usr/local/lib/systemd/system/`** anzulegen.)
 
 ~~~
 [Unit]
@@ -101,7 +101,7 @@ Options=defaults,noatime
 WantedBy=multi-user.target
 ~~~
 
-Anschließend aktivieren und starten wir die neue *.mount*-Unit.
+Anschließend aktivieren und starten wir die neue mount-Unit.
 
 ~~~
 # systemctl enable --now disks-TEST.mount
@@ -151,7 +151,7 @@ Anschließend:
 # systemctl enable --now home-<user>-www_data.automount
 ~~~
 
-Jetzt wird das "document-root"-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis "/home/\<user\>/www_data" wechseln.  
+Jetzt wird das "document-root"-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis `/home/\<user\>/www_data` wechseln.  
 Die Statusabfrage bestätigt die Aktion.
 
 ~~~
@@ -177,7 +177,7 @@ TriggeredBy: ● home-<user>-www_data.automount
 [...]
 ~~~
 
-Der Journalauszug protokolliert anschaulich die Funktion von "TimeoutIdleSec=60" zum Aushängen des Dateisystems und das wieder Einhängen durch den Start des Dateimanagers Thunar sowie einen Aufruf von "/home/\<user\>/www_data" im Terminal.
+Der Journalauszug protokolliert anschaulich die Funktion von *"TimeoutIdleSec=60"* zum Aushängen des Dateisystems und das wieder Einhängen durch den Start des Dateimanagers Thunar sowie einen Aufruf von `/home/\<user\>/www_data` im Terminal.
 
 ~~~
 # journalctl -f -u home-<user>-www_data.*
@@ -202,7 +202,7 @@ Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
 ~~~
 
 **Weitere Beispiele**  
-Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der *mount*- und *automount*-Unit. Das Kapitel "Quellen" enthält einige Webseiten mit einer ganzen Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
+Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele für die Anwendung der mount- und automount-Unit. Das Kapitel "Quellen" enthält einige Webseiten mit einer ganzen Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.
 
 ### Quellen systemd-mount
 
