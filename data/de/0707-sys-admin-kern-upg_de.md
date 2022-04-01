@@ -14,32 +14,32 @@ Die Kernel von siduction befinden sich im siduction-Repository als .deb und werd
 
 1. Aktualisierung der Paketdatenbank:
 
-  ~~~
-  apt update
-  ~~~
+   ~~~
+   apt update
+   ~~~
 
 2. Installation des aktuellen Kernels:
 
-  ~~~
-  apt install linux-image-siduction-amd64 linux-headers-siduction-amd64
-  ~~~
+   ~~~
+   apt install linux-image-siduction-amd64 linux-headers-siduction-amd64
+   ~~~
 
 3. Neustart des Computers, um den neuen Kernel zu laden.
 
-  Falls sich mit dem neuen Kernel Probleme zeigen, kann man nach einem Neustart einen älteren Kernel wählen.
+   Falls sich mit dem neuen Kernel Probleme zeigen, kann man nach einem Neustart einen älteren Kernel wählen.
 
 
 ### Module
 
 Der Kernel bringt in der Regel alle benötigten Kernel-Module mit. Für 3rd Party Module wird in siduction dkms empfohlen.
-Hierzu ist es notwendig, das Paket **build-essential** zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicherzustellen,
+Hierzu ist es notwendig, das Paket `build-essential` zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicherzustellen,
 dass contrib und non-free in den Sourcen aktiviert ist.
 
 ### Entfernen alter Kernel
 
 Nach erfolgreicher Installation eines neuen Kernels können alte Kernel entfernt werden. Es ist jedoch empfohlen, alte Kernel einige Tage zu behalten. Falls mit dem neuen Kernel Probleme auftauchen, kann in einen der alten Kernel gebootet werden, welche im Grub-Startbildschirm gelistet sind.
 
-Zur Entfernung alter Kernel ist das Skript "kernel-remover"  installiert:
+Zur Entfernung alter Kernel ist das Skript `kernel-remover`  installiert:
 
 ~~~
 kernel-remover
