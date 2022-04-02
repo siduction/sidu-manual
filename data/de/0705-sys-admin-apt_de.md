@@ -7,7 +7,7 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 
 ### apt und apt-get
 
-**apt** ist als Endanwenderschnittstelle gedacht und aktiviert verglichen mit spezialisierteren Werkzeugen wie **apt-get** und **apt-cache** standardmäßig einige für den interaktiven Gebrauch besser geeignete Optionen. Mit **apt** stehen nicht alle Optionen von **apt-get** und **apt-cache** zur Verfügung. Bitte die man-Pages von **apt**, **apt-get** und **apt-cache** lesen. Die folgende Tabelle zeigt die jeweiligen Befehle und ihre grundlegende Bedeutung.
+**apt** ist als Endanwenderschnittstelle gedacht und aktiviert verglichen mit spezialisierteren Werkzeugen wie apt-get und apt-cache standardmäßig einige für den interaktiven Gebrauch besser geeignete Optionen. Mit apt stehen nicht alle Optionen von apt-get und apt-cache zur Verfügung. Bitte die man-Pages von apt, apt-get und apt-cache lesen. Die folgende Tabelle zeigt die jeweiligen Befehle und ihre grundlegende Bedeutung.
 
 | apt | apt-get | Kurzinfo |
 | --- | --- | --- |
@@ -26,25 +26,21 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 
 ### sources.list - Liste der Quellen
 
-Das "APT"-System benötigt eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei sources.list. Moderne Systeme benutzen mittlerweile  modularisierte Sourcen um die Übersicht zu verbessern.
+Das APT-System benötigt eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei sources.list. Moderne Systeme benutzen mittlerweile modularisierte Sourcen um die Übersicht zu verbessern.
 
 siduction stellt die Quellen in diesem Ordner bereit:
 
-~~~
-/etc/apt/sources.list.d/
-~~~
+`/etc/apt/sources.list.d/`
 
 Innerhalb dieses Verzeichnisses befinden sich standardmäßig folgende Dateien: 
 
-~~~
-debian.list
-extra.list
-fixes.list
-~~~
+`debian.list`  
+`extra.list`  
+`fixes.list`  
 
 Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann ("mirror switching"), und auch das Ergänzen oder Austauschen von Quellen-Listen ist so einfacher zu gestalten.
 
-Eigene Quellen-Listen-Dateien können mit der Benennung /etc/apt/sources.list.d/*.list hinzugefügt werden. Auf einem siduction  könnte /etc/apt/sources.list.d/extra.list zum Beispiel so aussehen:
+Eigene Quellen-Listen-Dateien können mit der Benennung `/etc/apt/sources.list.d/xxxx.list` hinzugefügt werden. Auf einem siduction könnte `/etc/apt/sources.list.d/extra.list` zum Beispiel so aussehen:
 
 ~~~
 This is the default mirror, choosen at first boot.
@@ -53,14 +49,14 @@ deb     http://packages.siduction.org/extra unstable main contrib non-free
 #deb-src http://packages.siduction.org/extra unstable main contrib non-free
 ~~~
 
-unter /etc/apt/sources.list.d/fixes.list könnte es so aussehen:
+unter `/etc/apt/sources.list.d/fixes.list` könnte es so aussehen:
 
 ~~~
 deb      https://packages.siduction.org/fixes unstable main contrib non-free
 #deb-src https://packages.siduction.org/fixes unstable main contrib non-free
 ~~~
 
-und /etc/apt/sources.list.d/debian.list enthält dann das eigentliche Debian Repo:
+und `/etc/apt/sources.list.d/debian.list` enthält dann das eigentliche Debian Repo:
 
 ~~~
 # debian loadbalancer
@@ -94,7 +90,7 @@ In diesem Beispiel wird der US-amerikanische Debian-Spiegelserver beginnend mit 
 
 ### apt update
 
-Um aktualisierte Informationen über die Pakete zu erhalten, wird eine Datenbank mit den benötigten Einträgen vorgehalten. Das Programm apt benutzt sie bei der Installation eines Pakets, um alle Abhängigkeiten aufzulösen und somit zu garantieren, dass die ausgewählten Pakete funktionieren. Die Erstellung bzw. Aktualisierung dieser Datenbank wird mit dem Befehl **apt update** durchgeführt.
+Um aktualisierte Informationen über die Pakete zu erhalten, wird eine Datenbank mit den benötigten Einträgen vorgehalten. Das Programm apt benutzt sie bei der Installation eines Pakets, um alle Abhängigkeiten aufzulösen und somit zu garantieren, dass die ausgewählten Pakete funktionieren. Die Erstellung bzw. Aktualisierung dieser Datenbank wird mit dem Befehl **`apt update`** durchgeführt.
 
 ~~~
 root@siduction# apt update
@@ -113,17 +109,17 @@ Aktualisierung für 48 Pakete verfügbar. Führen Sie »apt list --upgradable« 
 
 ### Pakete installieren
 
-Ist uns der Name des Pakets bekannt, reicht der Befehl **apt install <Paketname>**.  
+Ist uns der Name des Pakets bekannt, reicht der Befehl **`apt install <Paketname>`**.  
 (Weiter unten wird gezeigt, wie man ein Paket finden kann.)
 
 > **Warnhinweis:**  
-> Pakete, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) installiert werden, können große, nicht unterstützbare Probleme mit sich bringen!
+> Pakete, die nicht im multi-user.target (ehemals Runlevel 3) installiert werden, können große, nicht unterstützbare Probleme mit sich bringen!
 
 Deshalb empfehlen wir folgenden Ablauf:
 
 1. Aus der Desktopumgebung abmelden.
-2. Mit Ctrl+Alt+F2 auf die Textkonsole wechseln.
-3. Einloggen als root.
+2. Mit **`Ctrl`**+**`Alt`**+**`F2`** auf die Textkonsole wechseln.
+3. Einloggen als **root**.
 
 Anschließend das gewünschte Programmpaket installieren:
 
@@ -172,7 +168,7 @@ Trigger für libc-bin (2.28-8) werden verarbeitet ...
 
 ### Pakete entfernen
 
-Der Befehl **apt remove <Paketname>** entfernt ein Paket. Abhängigkeiten werden dabei nicht entfernt:
+Der Befehl **`apt remove <Paketname>`** entfernt ein Paket. Abhängigkeiten werden dabei nicht entfernt:
 
 ~~~
 root@siduction# apt remove gaim
@@ -192,13 +188,9 @@ Entfernen von funtools (1.4.7-4) ...
 Trigger für man-db (2.8.5-2) werden verarbeitet ...
 ~~~
 
-Im letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie können bei einer späteren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf benötigt:
+Im letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie können bei einer späteren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, setzen wir den Befehl **`apt purge funtools`** ab.
 
-~~~
-apt purge funtools
-~~~
-
-So werden auch die Konfigurationsdateien mit entfernt. Will man sehen, ob Konfigurationsdateien von bereits entfernten Programmen noch auf dem System verblieben sind, kommt man mit **dpkg** ganz einfach zu einem Ergebnis:
+So werden auch die Konfigurationsdateien mit entfernt. Will man sehen, ob Konfigurationsdateien von bereits entfernten Programmen noch auf dem System verblieben sind, kommt man mit `dpkg` ganz einfach zu einem Ergebnis:
 
 ~~~
 dpkg -l | grep ^rc
@@ -218,11 +210,13 @@ Manchmal kann es notwendig sein, auf eine frühere Version eines Pakets zurückz
 
 **Hold (Halten)**
 
+apt bietet mit `apt-mark` die Möglichkeit verschiedene Einstellungen für ein Paket vorzunehmen. Die Option `hold` schützt das Paket vor Änderungen durch apt.
+
 ~~~
 apt-mark hold <paket>
 ~~~
 
-So beendet man den Hold eines Pakets
+So beendet man den Hold eines Pakets:
 
 ~~~
 apt-mark unhold <paket>
@@ -242,8 +236,7 @@ Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das 
 
 Obwohl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:
 
-Die Quellen von Unstable werden in /etc/apt/sources.list.d/debian.list mit einem Rautezeichen "#" versehen  
-Die Quellen für Testing werden /etc/apt/sources.list.d/debian.list zugefügt und die weiteren Befehle ausgeführt:  
+Die Quellen von Unstable werden in `/etc/apt/sources.list.d/debian.list` mit einem Rautezeichen "#" versehen und die Quellen für Testing hinzugefügt. Danach führen wir die folgenden Befehle aus:
 
 ~~~
 apt update
@@ -256,25 +249,27 @@ Das nun installierte Paket wird vor Aktualisierungen geschützt, auf Hold gesetz
 apt-mark hold kmahjongg
 ~~~
 
-anschließend werden die Quellen für Testing mit einem Rautezeichen "#" in /etc/apt/sources.list.d/debian.list versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
+Anschließend machen wir die Änderungen in `/etc/apt/sources.list.d/debian.list` wieder rückgängig. Also die Quellen für Testing mit einem Rautezeichen "#" versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
 
 ~~~
 apt update
 ~~~
 
-Wenn ein neues, fehlerfreies Paket in sid eintrifft, kann man die neueste Version wieder installieren, wenn man den "hold"-Status beendet:
+Wenn ein neues, fehlerfreies Paket in sid eintrifft, kann man die neueste Version wieder installieren, nachden man den "hold"-Status beendet hat:
 
 ~~~
 apt-mark unhold kmahjongg
 apt update
-apt install kmahjongg / apt full-upgrade
+apt install kmahjongg
+    oder
+apt full-upgrade
 ~~~
 
 ### Aktualisierung des Systems
 
-Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **apt full-upgrade**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. "Hold"](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets) eines Pakets.
+Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgeführt: **`apt full-upgrade`**. Vor einer solchen Maßnahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu prüfen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt [Downgrade bzw. Hold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets) eines Pakets.
 
-Ein einfaches "apt upgrade" von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt. Hier kann ein **apt upgrade** von der Situation nicht betroffene Pakete aktualisieren.
+Ein einfaches **`apt upgrade`** von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt, um von der Situation nicht betroffene Pakete zu aktualisieren.
 
 Wie regelmäßig soll eine Systemaktualisierung durchgeführt werden?  
 Eine Systemaktualisierung soll regelmäßig durchgeführt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals täglich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden. 
@@ -283,7 +278,7 @@ Die Erfahrungen zeigen, dass länger als zwei, maximal drei Monate nicht gewarte
 
 **Aktualisierung nicht mit Live-Medium**
 
-Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum *"apt"* verwendet werden sollte.
+Die Möglichkeit der Aktualisierung einer siduction-Installation mittels eines Live-Mediums existiert nicht. Weiter unten beschreiben wir ausführlich den Aktualisierungsvorgang und warum apt verwendet werden sollte.
 
 ### Aktualisierbare Pakete
 
@@ -336,7 +331,7 @@ Eine wenig bekannte, aber großartige Möglichkeit ist die Option -d:
 apt update && apt full-upgrade -d
 ~~~
 
-**-d** ermöglicht, die Pakete eines full-upgrades lokal zu speichern, ohne dass sie installiert werden. Dies kann in einer Konsole durchgeführt werden, während man in X ist. Der full-upgrade selbst kann zu einem späteren Zeitpunkt in init 3 erfolgen. Dadurch erhält man auch die Möglichkeit, nach eventuellen Warnungen zu recherchieren und danach zu entscheiden, ob man die Aktualisierung durchführen möchte oder nicht:
+`-d` ermöglicht, die Pakete eines full-upgrades lokal zu speichern, ohne dass sie installiert werden. Dies kann in einer Konsole durchgeführt werden, während man in X ist. Der full-upgrade selbst kann zu einem späteren Zeitpunkt in init 3 erfolgen. Dadurch erhält man auch die Möglichkeit, nach eventuellen Warnungen zu recherchieren und danach zu entscheiden, ob man die Aktualisierung durchführen möchte oder nicht:
 
 ~~~
 root@siduction#apt full-upgrade -d
@@ -359,23 +354,21 @@ Möchtest Du fortfahren [J/n]?J
 
 **`J`** lädt die zu aktualisierenden bzw. neu zu installierenden Pakete, ohne das installierte System zu verändern.
 
-Nach dem Download der Pakete mittels "*full-upgrade -d*" können diese jederzeit entsprechend dem Vorgehen im folgendem Absatz installiert werden.
+Nach dem Download der Pakete mittels `full-upgrade -d` können diese jederzeit entsprechend dem Vorgehen im folgendem Absatz installiert werden.
 
 ### full-upgrade ausführen
 
 > **Warnhinweis:**  
-> Eine Systemaktualisierung, die **nicht** im 'multi-user.target' (ehemals Runlevel 3) durchgeführt wird, kann zu Problemen führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
+> Eine Systemaktualisierung, die nicht im multi-user.target (ehemals Runlevel 3) durchgeführt wird, kann zu Problemen führen, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 
 Besuche vor einer Systemaktualisierung die [siduction-Homepage](https://forum.siduction.org/), um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals täglich neue Programmpakete in seine Repositorien aufnimmt.
-
-
   
-  Zu beachten ist der folgende Ablauf:
+Zu beachten ist der folgende Ablauf:
 
 1. Aus der Desktopumgebung abmelden.  
    (Diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht.)
-2. Mit Ctrl+Alt+F2 auf die Textkonsole wechseln.
-3. Einloggen als root.
+2. Mit **`Ctrl`**+**`Alt`**+**`F2`** auf die Textkonsole wechseln.
+3. Einloggen als **root**.
 
 Anschließend folgende Befehle ausführen:
 
@@ -387,17 +380,18 @@ apt clean
 init 5 && exit
 ~~~
 
-Bitte von Systemaktualisierungen mit Anwendungen wie synaptic, adept oder kpackage absehen!
+Wurde ein neuer Kernel installiert, ist an Stelle von *"init 5"* der Befehl **`systemctl reboot`** oder **`init 6`** notwendig, um in den neuen Kernel zu booten.
 
 ### Warum ausschließlich apt verwenden
 
-Paketmanager wie adept, synaptic und kpackage können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Das sind keine Fehler in diesen Programmen oder Fehler der Entwickler.
+Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll *apt* verwendet werden.  
+Bitte von Systemaktualisierungen mit Anwendungen wie `synaptic`, `adept` oder `kpackage` absehen!
 
-Die genannten Programme sind exzellent für eine Installation von *Debian stable* und sie eignen sich sehr gut dazu Programmpakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll *apt* verwendet werden.
+Die genannten Programme sind exzellent für eine Installation von *Debian stable* und sie eignen sich sehr gut dazu Programmpakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Sie können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Es handelt sich dabei nicht um Fehler in diesen Programmen oder Fehler der Entwickler.
 
-Paketmanager wie adept, synaptic und kpackage sind - technisch gesprochen - nicht-deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.
+Paketmanager wie adept, synaptic und kpackage sind - technisch gesprochen - nicht deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.
 
-Weiterhin ist zu beachten, dass ALLE GUI-Paketmanager in X ausgeführt werden müssen. Systemaktualisierungen in X (selbst ein ohnehin nicht empfohlenes 'apt upgrade') werden früher oder später dazu führen, dass man sein System irreversibel beschädigt.
+Weiterhin ist zu beachten, dass alle GUI-Paketmanager in X ausgeführt werden müssen. Systemaktualisierungen in X (selbst ein ohnehin nicht empfohlenes 'apt upgrade') werden früher oder später dazu führen, dass man sein System irreversibel beschädigt.
 
 Im Gegensatz dazu führt apt ausschließlich das durch, was angefragt ist. Bei unvollständigen Abhängigkeiten in Sid, sprich: wenn das System bricht (dies kann in Sid bei Strukturänderungen vorkommen), können die Ursachen genau festgestellt und dadurch repariert oder umgangen werden. Das eigene System "bricht" nicht. Falls also eine Systemaktualisierung dem Gefühl nach das halbe System löschen möchte, überlässt apt dem Administrator die Entscheidung, was zu tun ist, und handelt nicht eigenmächtig.
 
@@ -409,7 +403,7 @@ Das APT-System bietet eine Reihe nützlicher Suchbefehle, mit denen die APT-Date
 
 #### Paketsuche im Terminal
 
-Mit dem einfachen Befehl **apt search <Suchmuster>** erhält man die Liste aller Pakete, die das Suchmuster enthalten. Die Suche mit *search* erlaubt die Verwendung von regex-Begriffen.
+Mit dem einfachen Befehl **`apt search <Suchmuster>`** erhält man die Liste aller Pakete, die das Suchmuster enthalten. Die Suche mit *search* erlaubt die Verwendung von regex-Begriffen.
 
 Wird z. B. nach *"gman"* gesucht, erhält man dieses Ergebnis:
 
@@ -464,13 +458,13 @@ Auflistung... Fertig
 gman/unstable,now 0.9.3-5.3 amd64  [installiert]
 ~~~
 
-Der Befehl **aptitude** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die Nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft "zu schlau".
+Der Befehl **`aptitude`** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die Nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft "zu schlau".
 
 ![aptitude](./images/apt/aptitude.png)
 
 #### Graphische Paketsuche
 
-Das Programm **packagesearch** eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird "packagesearch" nicht automatisch installiert; deshalb:
+Das Programm **`packagesearch`** eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird packagesearch nicht automatisch installiert; deshalb:
 
 ~~~
 apt update
