@@ -6,22 +6,22 @@
 
 Debian hat die Dateien von MariaDB entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
-+ In **/usr/bin/** das ausführbare Programm *mariadb*  
-    + und der Link *mysql*, der auf */usr/bin/mariadb* verweist.  
-+ In **/usr/lib/mysql/plugin/** die installierten Plugin für MariaDB.  
-+ In **/usr/share/mysql/** Gemeinsam genutzte Programmteile und Lokalisierungen.  
-+ In **/etc/mysql/** die Konfigurationsverzeichnisse und -dateien.  
-+ In **/var/lib/mysql/** die Datenbanken und Log-Dateien.  
-+ In **/run/mysqld/** zur Laufzeit notwendige Systemdateien.
++ In `/usr/bin/` das ausführbare Programm *"mariadb"*  
+    + und der Link `mysql`, der auf `/usr/bin/mariadb` verweist.  
++ In `/usr/lib/mysql/plugin/` die installierten Plugin für MariaDB.  
++ In `/usr/share/mysql/` Gemeinsam genutzte Programmteile und Lokalisierungen.  
++ In `/etc/mysql/` die Konfigurationsverzeichnisse und -dateien.  
++ In `/var/lib/mysql/` die Datenbanken und Log-Dateien.  
++ In `/run/mysqld/` zur Laufzeit notwendige Systemdateien.
 
-Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb */etc/mysql/*, sofern man genau weiß wie vorzugehen ist. Anderen Falls benutzt man das [MariaDB-CLI](0522-lamp-sql_de.md#mariadb-cli) oder ein Frontend wie [phpMyAdmin](#phpmyadmin).
+Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb `/etc/mysql/`, sofern man genau weiß wie vorzugehen ist. Anderen Falls benutzt man das [MariaDB-CLI](0522-lamp-sql_de.md#mariadb-cli) oder ein Frontend wie [phpMyAdmin](0522-lamp-sql_de.md#phpmyadmin).
 
 ### Erstkonfiguration
 
-Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md#lamp-webserver) beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer *root* und *anonymous*, ohne Passwort erstellt und eine Testdatenbank angelegt.
+Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md#lamp-webserver) beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer **root** und **anonymous**, ohne Passwort erstellt und eine Testdatenbank angelegt.
 
-Deshalb rufen wir das Programm **mysql_secure_installation** im Root-Terminal auf.  
-Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: "«- - [ ]".
+Deshalb rufen wir das Programm **`mysql_secure_installation`** im Root-Terminal auf.  
+Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: `«--[ ]`.
 
 ~~~
 # mysql_secure_installation  
@@ -90,11 +90,11 @@ installation should now be secure.
 Thanks for using MariaDB!
 ~~~
 
-Im Ergebnis hat der Benutzer *root* ein (hoffentlich sicheres) Passwort erhalten und er kann sich nicht mehr remote einloggen. Der Benutzer *anonymous* und die Datenbank *Test* wurden entfernt.
+Im Ergebnis hat der Benutzer **root** ein (hoffentlich sicheres) Passwort erhalten und er kann sich nicht mehr remote einloggen. Der Benutzer **anonymous** und die Datenbank *"Test"* wurden entfernt.
 
 ### MariaDB CLI
 
-Das Commandline Interface erreichen wir im Terminal durch die Eingabe von "*mariadb -u \<user\> -p*". Nach der Eingabe des Passwortes sehen wir die Begrüßung und den neuen Promt `MariaDB [(none)]>`.
+Das Commandline Interface erreichen wir im Terminal durch die Eingabe von **`mariadb -u \<user\> -p`**. Nach der Eingabe des Passwortes sehen wir die Begrüßung und den neuen Promt `MariaDB [(none)]>`.
 
 ~~~
 # mariadb -u root -p
@@ -104,8 +104,8 @@ Welcome to the MariaDB monitor.  [...]
 MariaDB [(none)]>
 ~~~
 
-Aus Sicherheitsgründen loggen wir uns nur zu Beginn als **Benutzer root** ein, um die Projektdatenbank, einen  Benutzer für die alltäglichen Arbeiten an dieser und einen Benutzer als Ersatz für *root* anzulegen.  
-Später im Abschnitt [phpMyAdmin](0522-lamp-sql_de.md#phpmyadmin) entziehen wir dem Benutzer *root* die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
+Aus Sicherheitsgründen loggen wir uns nur zu Beginn als Benutzer **root** ein, um die Projektdatenbank, einen  Benutzer für die alltäglichen Arbeiten an dieser und einen Benutzer als Ersatz für root anzulegen.  
+Später im Abschnitt [phpMyAdmin](0522-lamp-sql_de.md#phpmyadmin) entziehen wir dem Benutzer root die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
 
 #### Eine Datenbank anlegen
 
@@ -116,11 +116,11 @@ MariaDB [(none)]> CREATE DATABASE sidu;
 Query OK, 1 row affected (0.002 sec)
 ~~~
 
-Das ist schon alles. Falls wir diese Datenbank löschen wollen lautet der Befehl "DROP DATABASE sidu;"
+Das ist schon alles. Falls wir diese Datenbank löschen wollen lautet der Befehl `DROP DATABASE sidu;`
 
 #### Einen Benutzer anlegen
 
-Zuerst erstellen wir unseren Projekt-Benutzer mit dem Namen *tomtom* und weisen ihm ausschließlich alle Rechte an der Projekt-Datenbank *sidu* zu:
+Zuerst erstellen wir unseren Projekt-Benutzer mit dem Namen **tomtom** und weisen ihm ausschließlich alle Rechte an der Projekt-Datenbank *"sidu"* zu:
 
 ~~~
 MariaDB [(none)]> CREATE USER tomtom@localhost IDENTIFIED BY '<hier ein Passwort für tomtom eingeben>';
@@ -130,7 +130,7 @@ MariaDB [(none)]> GRANT ALL ON sidu.* TO tomtom@localhost;
 Query OK, 0 rows affected (0.001 sec)
 ~~~
 
-Nun die gleiche Prozedur für den Benutzer *chef*, der die Aufgabe von *root* übernehmen soll.
+Nun die gleiche Prozedur für den Benutzer **chef**, der die Aufgabe von root übernehmen soll.
 
 ~~~
 MariaDB [(none)]> CREATE USER chef@localhost IDENTIFIED BY '<hier ein Passwort für chef eingeben>';
@@ -144,11 +144,11 @@ MariaDB [(none)]> FLUSH PRIVILEGES;
 
 Die neuen Benutzer unterscheiden sich in ihren Rechten.
 
-*tomtom* hat alle Rechte **nur** für die Datenbank *sidu* (sidu.\*).  
-*chef* hat alle Rechte an allen Datenbanken (\*.\*) und Benutzern (WITH GRANT OPTION).
+*"tomtom"* hat alle Rechte nur für die Datenbank *"sidu"* (sidu.\*).  
+*"chef"* hat alle Rechte an allen Datenbanken (\*.\*) und Benutzern (WITH GRANT OPTION).
 
-Der Benutzer *chef* kann somit die Funktion des Benutzers *root* übernehmen und den Benutzer *tomtom* verwenden wir für Arbeiten an unserer Projektdatenbank.  
-Den Logout erledigt: **`\q`**.
+Der Benutzer **chef** kann somit die Funktion des Benutzers **root** übernehmen und den Benutzer **tomtom** verwenden wir für Arbeiten an unserer Projektdatenbank.  
+Den Logout erledigt: `\q`.
 
 ~~~
 MariaDB [(none)]> \q
@@ -158,7 +158,7 @@ Bey
 
 #### Abfragen
 
-Wir schauen uns das Ergebnis in Terminal an, diesmal als Benutzer "*chef*".  
+Wir schauen uns das Ergebnis in Terminal an, diesmal als Benutzer *"chef"*.  
 Zuerst die Benutzer und dann die vorhandenen Datenbanken.
 
 ~~~
@@ -210,12 +210,12 @@ Es ist gut zu erkennen, dass der Benutzer *"tomtom"* keinen Zugriff auf systemre
 
 Wie zuvor gesehen, lässt sich MariaDB vollständig über die Komandozeile verwalten. Wer die Syntax beherrscht, und dafür ist profundes Fachwissen erforderlich, kommt auf diesem Weg schnell zum gewünschten Ergebnis.
 
-Wir verwenden das für weniger erfahrene Benutzer besser geeignete Progrann *phpMyAdmin* und geben in die Adresszeile des Browsers  
-**http://localhost/phpmyadmin/**  
-ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](0521-lamp-apache_de.md#apache-einrichten)bereits durchlaufen haben, lautet der Aufruf  
-**https://server1.org/phpmyadmin/**
+Wir verwenden das für weniger erfahrene Benutzer besser geeignete Progrann `phpMyAdmin` und geben in die Adresszeile des Browsers  
+http://localhost/phpmyadmin/  
+ein. Sollten wir die Konfiguration entsprechend der Handbuchseite [LAMP - Apache](0521-lamp-apache_de.md#apache-einrichten) bereits durchlaufen haben, lautet der Aufruf  
+https://server1.org/phpmyadmin/
 
-Um, wie oben angeführt, dem Datenbank-Admin *root* die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin *chef* mit seinem Passwort.
+Um, wie oben angeführt, dem Datenbank-Admin **root** die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin **chef** mit seinem Passwort.
 
 ![Loginfenster](./images/phpmyadmin/login.png)
 
@@ -223,29 +223,29 @@ Im Startfenster sehen wir in der linken Spalte alle Datenbanken. Im Hauptteil w�
 
 ![Startfenster](./images/phpmyadmin/startfenster.png)
 
-Die Benutzerkontenübersicht stellt alle Benutzer und in Kurzform deren Rechte dar. Wir wählen hier für den Benutzer *root* den Schalter **`Rechte ändern`**.
+Die Benutzerkontenübersicht stellt alle Benutzer und in Kurzform deren Rechte dar. Wir wählen hier für den Benutzer **root** den Schalter **`Rechte ändern`**.
 
 ![Benutzerkonten](./images/phpmyadmin/benutzerkonten.png)
 
-Nun sehen wir für den Benutzer *root* die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich *"Administration"* das Recht *"Super"* (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den **`OK`**-Button anklicken (im Screenshot nicht sichtbar). 
+Nun sehen wir für den Benutzer **root** die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich `Administration` das Recht *"Super"* (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den `OK`-Button anklicken (im Screenshot nicht sichtbar). 
 
 ![Rechte eines Benutzers verwalten (1a, 1b)](./images/phpmyadmin/root-rechte.png)
 
-Anschließend gehen wir über den **`Datenbank`**-Schalter (2) zur nächsten Seite.
+Anschließend gehen wir über den `Datenbank`-Schalter (2) zur nächsten Seite.
 
 ![Rechte eines Benutzers verwalten (2) ](./images/phpmyadmin/root-rechte-2.png)
 
-Nach Auswahl der Datenbank *"mysql"* und **`OK`** öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank *"mysql"* für den Benutzer "*root*".
+Nach Auswahl der Datenbank *"mysql"* und `OK` öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank *"mysql"* für den Benutzer **root**.
 
 ![Rechte eines Benutzers verwalten (DB mysql) ](./images/phpmyadmin/root-rechte-3.png)
 
-Ausgewählt wird ausschließlich die Methode "*SELECT*". Ein Klick auf **`OK`** führt den sql-Befehl aus.
+Ausgewählt wird ausschließlich die Methode *"SELECT"*. Ein Klick auf `OK` führt den sql-Befehl aus.
 
 Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
 
 ![phpMyAdmin beenden](./images/phpmyadmin/abmelden.png)
 
-phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken, ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter **`Exportieren`** im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
+phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken, ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter `Exportieren` im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
 
 ### Integration in Systemd
 
@@ -262,8 +262,8 @@ Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geach
 
 ### MariaDB Log
 
-Das Systemd Journal enthält Meldungen über den Startprozess des *mariadb.service*. Es ist die erste Anlaufstelle wenn Fehler auftreten.  
-In der Konsole zeigt der Befehl *"journalctl"* die Meldungen zu MariaDB mit:
+Das systemd Journal enthält Meldungen über den Startprozess der Unit `mariadb.service`. Es ist die erste Anlaufstelle wenn Fehler auftreten.  
+In der Konsole zeigt der Befehl `journalctl` die Meldungen zu MariaDB mit:
 
 ~~~
 journalctl -n 25 -u mariadb.service
@@ -283,7 +283,7 @@ Darüber hinaus schaltet man das Loggen der sql-Aktionen im MariDB-CLI so ein:
 MariaDB [(none)]> SET GLOBAL general_log=1;
 ~~~
 
-Das erstellt eine Log-Datei nach dem Muster *\<Host\>.log* im Verzeichnis */var/lib/mysql/*.  
+Das erstellt eine Log-Datei nach dem Muster `<Host>.log` im Verzeichnis `/var/lib/mysql/`.  
 **Achtung**: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Aktionen zu beobachten.
 
 ### Quellen MariaDB
@@ -292,9 +292,7 @@ Das erstellt eine Log-Datei nach dem Muster *\<Host\>.log* im Verzeichnis */var/
 [MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (englisch)  
 und die Manpage
 
-~~~
-man mariadb
-~~~
+Die mariadb man page `man mariadb`
 
 [phpMyAdmin Dokumentation](https://docs.phpmyadmin.net/de/latest/) (deutsch)
 

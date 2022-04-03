@@ -8,17 +8,17 @@ PHP ist in siduction nach der Installation mit der standardmäßigen Konfigurati
 
 Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
-+ In **/usr/bin/** das ausführbare Programm *php7.x*  
-    + und der Link *php*, der über */etc/alternatives/php* auf */usr/bin/php7.x* verweist.  
-+ In **/usr/lib/php/** die installierten Module.  
-+ In **/usr/share/php/** und **/usr/share/php\<Modul\>** gemeinsam genutzte Programmteile und Module.  
-+ In **/etc/php/** die Konfigurationsverzeichnisse und -dateien.  
-+ In **/var/lib/php/** der zur Laufzeit aktuelle Zustand der Module und Sessions.
++ In `/usr/bin/` das ausführbare Programm `php7.x`  
+    + und der Link `php`, der über `/etc/alternatives/php` auf `/usr/bin/php7.x` verweist.  
++ In `/usr/lib/php/` die installierten Module.  
++ In `/usr/share/php/` und `/usr/share/php\<Modul\>` gemeinsam genutzte Programmteile und Module.  
++ In `/etc/php/` die Konfigurationsverzeichnisse und -dateien.  
++ In `/var/lib/php/` der zur Laufzeit aktuelle Zustand der Module und Sessions.
 
 ### PHP-Unterstützung für Apache2
 
-Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit:
-(dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)
+Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir überprüfen das mit:  
+(dabei ist im Folgenden das x mit der Ziffer entsprechend dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)
 
 ~~~
 # ls /etc/apache2/mods-enabled/* | grep php
@@ -26,7 +26,8 @@ Standardmäßig lädt der Apache Webserver die Unterstützung für PHP. Wir übe
 /etc/apache2/mods-enabled/php7.x.load
 ~~~
 
-und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung "*.php*" zu verarbeiten, muss in der Apache Konfigurationsdatei *dir.conf* die Direktive *DirectoryIndex* den Wert *index.php* enthalten. Auch das prüfen wir:
+und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat.  
+Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung *".php"* zu verarbeiten, muss in der Apache Konfigurationsdatei `dir.conf` die Direktive `DirectoryIndex` den Wert `index.php` enthalten. Auch das prüfen wir:
 
 ~~~
 # cat /etc/apache2/mods-available/dir.conf
@@ -35,11 +36,11 @@ und erkennen, dass Apache das PHP-Modul für die Version 7.x geladen hat. Damit 
 </IfModule>
 ~~~
 
-Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert *index.php* enthalten ist.
+Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert *"index.php"* enthalten ist.
 
 ### PHP Konfiguration
 
-Das Verzeichnis */etc/php/7.x/* enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.  
+Das Verzeichnis `/etc/php/7.x/` enthält die Konfiguration geordnet nach den zur Verfügung stehenden Interfaces.  
 Die Ausgabe zeigt den Zustand nach der Erstinstallation.
 
 ~~~
@@ -50,7 +51,7 @@ drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
 drwxr-xr-x 2 root root 4096 18. Dez 16:54 mods-available
 ~~~
 
-Mit den weiter unten installierten Modulen *php7.x-cgi* und *php7.x-fpm* sind zwei neue Verzeichnise hinzugekommen.
+Mit den weiter unten installierten Modulen *"php7.x-cgi"* und *"php7.x-fpm"* sind zwei neue Verzeichnise hinzugekommen.
 
 ~~~
 # ls -l /etc/php/7.x/
@@ -62,14 +63,14 @@ drwxr-xr-x 4 root root 4096  1. Feb 21:23 fpm
 drwxr-xr-x 2 root root 4096  1. Feb 13:22 mods-available
 ~~~
 
-Jedes der Verzeichnisse *apache2*, *cgi*, *cli* und *fpm* enthält einen Ordner *conf.d* und eine Datei *php.ini*.  
-Die jeweilige *php.ini* beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner *conf.d* enthält die Links zu den aktivierten Modulen.
+Jedes der Verzeichnisse *"apache2"*, *"cgi"*, *"cli"* und *"fpm"* enthält einen Ordner `conf.d` und eine Datei `php.ini`.  
+Die jeweilige *"php.ini"* beinhaltet die Konfiguration für das entsprechende Interface und kann bei Bedarf geändert oder ergänzt werden. Der Ordner *"conf.d"* enthält die Links zu den aktivierten Modulen.
 
 ### PHP Module
 
 **Abfragen**
 
-Für PHP steht eine Vielzahl von Modulen zu Verfügung. Welche bereits installiert wurden, erfährt man mit
+Für PHP steht eine Vielzahl von Modulen zu Verfügung. Welche bereits installiert wurden, erfährt man mit:
 
 ~~~
 # dpkg-query -f='${Status}\ ${Package}\n' -W php7.4* | grep '^install'
@@ -147,9 +148,9 @@ Anschließend starten wir den Apache neu:
 
 Der Zustand der PHP-Module ist während der Laufzeit veränderbar. Das ermöglicht auch die Steuerung von Modulen in Scripten um sie vor der Verwendung zu laden und nachher wieder zu entladen.
 
-+ **phpenmod** – aktiviert Module in PHP  
-+ **phpdismod** – deaktiviert Module in PHP  
-+ **phpquery** – Zeigt den Status der PHP Module
++ `phpenmod` – aktiviert Module in PHP  
++ `phpdismod` – deaktiviert Module in PHP  
++ `phpquery` – Zeigt den Status der PHP Module
 
 Nicht benötigte Module (im Beispiel imagick) deaktiviert in der Konsole der Befehl
 
@@ -157,13 +158,13 @@ Nicht benötigte Module (im Beispiel imagick) deaktiviert in der Konsole der Bef
 # phpdismod imagick
 ~~~
 
-Um das Modul *imagick* für alle Iterfaces zu laden, dient der Befehl
+Um das Modul imagick für alle Iterfaces zu laden, dient der Befehl
 
 ~~~
 # phpenmod imagick
 ~~~
 
-Verwenden wir die Option "*-s apache2*"
+Verwenden wir die Option `-s apache2`
 
 ~~~
 # phpenmod -s apache2 imagick
@@ -171,7 +172,7 @@ Verwenden wir die Option "*-s apache2*"
 
 wird das Modul nur für Apache2 geladen.
 
-Die Statusabfrage mit *phpquery* erfordert immer die Angabe der Modulversion und des Interface. Hier einige Beispiele:
+Die Statusabfrage mit `phpquery` erfordert immer die Angabe der Modulversion und des Interface. Hier einige Beispiele:
 
 ~~~
 # phpquery -v 7.4 -s apache2 -m zip
@@ -187,11 +188,11 @@ zip (Enabled for fpm by maintainer script)
 imagick (Enabled for apache2 by local administrator)
 ~~~
 
-Bei dem Modul *imagick* zeigt uns der String "*Enabled for apache2 by local administrator*", dass es nicht wie das *zip*-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen *phpdismod* und *phpenmod* für diese Modul.
+Bei dem Modul imagick zeigt uns der String *"Enabled for apache2 by local administrator"*, dass es nicht wie das zip-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen `phpdismod` und `phpenmod` für dieses Modul.
 
 ### Apache Log
 
-Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter */var/log/apache2/*. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.  
+Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter `/var/log/apache2/`. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.  
 Alternativ lassen wir uns die Log-Funktionen anzeigen.
 
 ~~~
@@ -205,7 +206,7 @@ opcache.error_log 	=> no value
 [...]
 ~~~
 
-In den Dateien */etc/php/7.x/\<Interface\>/php.ini* haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
+In den Dateien `/etc/php/7.x/<Interface>/php.ini` haben wir die Möglichkeit die nicht gesetzten Werte durch eigene, tatsächlich vorhandenen Logdateien zu ersetzen.
 
 ### Quellen PHP
 

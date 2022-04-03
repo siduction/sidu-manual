@@ -4,25 +4,25 @@
 
 Diese Handbuchseite basiert auf Apache 2.4.46.
 
-Unserem Beispiel aus der Installationsanleitung entsprechend, wollen wir einen *LAMP-Testserver für Entwickler* aufsetzen, der über LAN direkt mit dem Arbeitsplatz-PC verbunden ist. Darüber hinaus soll es aus Gründen der Sicherheit für den Server keine Verbindung zu einem lokalen Netzwerk oder gar zum Internet geben.  
+Unserem Beispiel aus der Installationsanleitung entsprechend, wollen wir einen *"LAMP-Testserver für Entwickler"* aufsetzen, der über LAN direkt mit dem Arbeitsplatz-PC verbunden ist. Darüber hinaus soll es aus Gründen der Sicherheit für den Server keine Verbindung zu einem lokalen Netzwerk oder gar zum Internet geben.  
 Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und Software- Aktualisierungen über eine zweite Netzwerkschnittstelle mit dem Internet verbunden.
 
 ### Apache im Dateisystem
 
 Debian hat die Dateien des Apache entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
-+ In **/usr/sbin/** das ausführbare Programm *apache2*.  
-+ In **/usr/lib/apache2/modules/** die installierten Module für Apache.  
-+ In **/usr/share/apache2/** Dateien, die auch für andere Programme verfügbar sind.  
-+ In **/etc/apache2/** die Konfigurationsverzeichnisse und -dateien.  
-+ In **/var/www/html/** die vom Benutzer angelegte Webseite.
-+ In **/run/apache2/, /run/lock/apache2/** zur Laufzeit notwendige Systemdateien.
-+ In **/var/log/apache2/** verschiedene Log-Dateien.
++ In `/usr/sbin/` das ausführbare Programm `apache2`.  
++ In `/usr/lib/apache2/modules/` die installierten Module für Apache.  
++ In `/usr/share/apache2/` Dateien, die auch für andere Programme verfügbar sind.  
++ In `/etc/apache2/` die Konfigurationsverzeichnisse und -dateien.  
++ In `/var/www/html/` die vom Benutzer angelegte Webseite.
++ In `/run/apache2/` und `/run/lock/apache2/` zur Laufzeit notwendige Systemdateien.
++ In `/var/log/apache2/` verschiedene Log-Dateien.
 
-Wichtig ist die Unterscheidung zwischen den verwendeten Variablen *ServerRoot* und *DocumentRoot*.
+Wichtig ist die Unterscheidung zwischen den verwendeten Variablen **ServerRoot** und **DocumentRoot**.
 
-**ServerRoot** ist das Konfigurationsverzeichnis, also "*/etc/apache2/*".  
-**DocumentRoot** beinhaltet die Webseitendaten, also "*/var/www/html/*".
+*"ServerRoot"* ist das Konfigurationsverzeichnis, also `/etc/apache2/`.  
+*"DocumentRoot"* beinhaltet die Webseitendaten, also `/var/www/html/`.
 
 ### Verbindung zum Server
 
@@ -37,9 +37,9 @@ Alias: www.server1.org
 IP: 192.168.3.10/24  
 Name: pc1
 
-Wir legen von der Datei */etc/hosts* auf dem Server und auf dem PC eine Sicherungskopie an und fügen beiden die notwendigen Zeilen hinzu.
+Wir legen von der Datei `/etc/hosts` auf dem Server und auf dem PC eine Sicherungskopie an und fügen beiden die notwendigen Zeilen hinzu.
 
-+ Server */etc/hosts*:
++ Server *"/etc/hosts"*:
 
   ~~~sh
   cp /etc/hosts /etc/hosts_$(date +%f)
@@ -47,18 +47,18 @@ Wir legen von der Datei */etc/hosts* auf dem Server und auf dem PC eine Sicherun
   echo "192.168.3.10 pc1" >> /etc/hosts
   ~~~
 
-+ PC */etc/hosts*:
++ PC *"/etc/hosts"*:
 
   ~~~sh
   cp /etc/hosts /etc/hosts_$(date +%f)
   echo "192.168.3.1 server1.org   www.server1.org" >> /etc/hosts
   ~~~
 
-Als nächstes geben wir im *NetworkManager* die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von "*Automatisch (DHCP)*" auf *"Manuell"* geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.
+Als nächstes geben wir im `NetworkManager` die Daten für den Server in die rot umrandeten Feldern ein. Die Methode wird von *"Automatisch (DHCP)"* auf *"Manuell"* geändert und in die Adressfelder tragen wir die zu Beginn genannten Werte ein.
 
 ![Server - Dateneingabe im NetworkManager](./images/lamp-apache/server_lan.png)
 
-Zusätzlich sollte im Reiter *"Allgemein"* die Option "*Automatisch mit Priorität verbinden*" aktiviert sein.  
+Zusätzlich sollte im Reiter *"Allgemein"* die Option *"Automatisch mit Priorität verbinden"* aktiviert sein.  
 Sinngemäß nehmen wir am PC die entsprechenden Einstellungen für die verwendete LAN-Schnittstelle vor.
 
 Am PC testen wir die Verbindung in der Konsole mit
@@ -67,30 +67,30 @@ Am PC testen wir die Verbindung in der Konsole mit
 $ ping -c3 www.server1.org
 ~~~
 
-und bei Erfolg prüfen wir gleich die Funktion von Apache, indem wir in die Adresszeile des Webbrowsers "*http://www.server1.org/index.html*" eingeben.
+und bei Erfolg prüfen wir gleich die Funktion von Apache, indem wir in die Adresszeile des Webbrowsers http://www.server1.org/index.html eingeben.
 
-Die Apache-Begrüßungsseite mit "*It works!*" sollte erscheinen.
+Die Apache-Begrüßungsseite mit *"It works!"* sollte erscheinen.
 
 ### Apache Konfiguration
 
-Die Konfigurationsdateien und -verzeichnisse befindet sich im *"ServerRoot"* Verzeichnis "*/etc/apache2/*".  
-Die zentrale Konfigurationsdatei ist "*apache2.conf*". Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt über Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die benötigten eingebunden werden.
+Die Konfigurationsdateien und -verzeichnisse befindet sich im *"ServerRoot"* Verzeichnis `/etc/apache2/`.  
+Die zentrale Konfigurationsdatei ist `apache2.conf`. Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt über Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die benötigten eingebunden werden.
 
-Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss "*.conf*" lauten. Die gültigen Direktiven, die in den Konfigurationsdateien verwendet werden dürfen, beschreibt die [Apache Dokumentation](https://httpd.apache.org/docs/current/de/) ausführlich.
+Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss *".conf"* lauten. Die gültigen Direktiven, die in den Konfigurationsdateien verwendet werden dürfen, beschreibt die [Apache Dokumentation](https://httpd.apache.org/docs/current/de/) ausführlich.
 
 Die Dateien liegen in den Verzeichnissen 
 
-"*/etc/apache2/conf-available*",  
-"*/etc/apache2/mods-available*" und  
-"*/etc/apache2/sites-available*".
+ `/etc/apache2/conf-available`,  
+ `/etc/apache2/mods-available` und  
+ `/etc/apache2/sites-available`.
 
 Ihre Aktivierungs-Links finden wir in
 
-"*/etc/apache2/conf-enable*",  
-"*/etc/apache2/mods-enable*" und  
-"*/etc/apache2/sites-enable*".
+ `/etc/apache2/conf-enable`,  
+ `/etc/apache2/mods-enable` und  
+ `/etc/apache2/sites-enable`.
 
-Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle *"a2enconf"* und "*a2disconf*". Das erstellt oder entfernt die Aktivierungs-Links.
+Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle `a2enconf` und `a2disconf`. Das erstellt oder entfernt die Aktivierungs-Links.
 
 ~~~sh
 a2enconf NAME_DER_DATEI.conf 
@@ -102,7 +102,7 @@ Aktiviert die Konfiguration. Die Deaktivierung erfolgt entsprechend mit:
 a2disconf NAME_DER_DATEI.conf 
 ~~~
 
-In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen *"a2enmod"*, *"a2ensite"* und *"a2dismod"*, "*a2dissite*".
+In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen `a2enmod`, `a2ensite` und `a2dismod`, `a2dissite`.
 
 Der Apache Webserver liest mit dem Befehl
 
@@ -112,11 +112,11 @@ systemctl reload apache2.service
 
 die geänderte Konfiguration ein.
 
-Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und passen die Konfiguration an die Serverdaten an.
+Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück und passen die Konfiguration an die Serverdaten an.
 
-1. Datei "*/etc/apache2/apache2.conf*"
+1. Datei  `/etc/apache2/apache2.conf`
 
-   Es ist eine der wenigen Ausnahmen die *apache2.conf* zu editieren. Wir fügen zu Beginn des Abschnitts *Global configuration* die folgende Zeile ein:
+   Es ist eine der wenigen Ausnahmen die `apache2.conf` zu editieren. Wir fügen zu Beginn des Abschnitts *"Global configuration"* die folgende Zeile ein:
 
    ~~~sh
    ServerName 192.168.3.1
@@ -124,9 +124,9 @@ Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und 
 
    Hiermit teilen wir dem Apache-Webserver die IP-Adresse mit, unter der das Entwicklungsprojekt erreichbar sein soll und unterdrücken Umleitungen zur IP 127.0.1.1 mit Fehlermeldungen.
 
-2. Neue "*sites*"-Datei
+2. Neue  `sites`-Datei
 
-   Mit dem Texteditor unserer Wahl erstellen wir die Datei "*/etc/apache2/sites-available/server1.conf*" z. B.
+   Mit dem Texteditor unserer Wahl erstellen wir die Datei  `/etc/apache2/sites-available/server1.conf` z. B.
 
    ~~~sh
    mcedit /etc/apache2/sites-available/server1.conf
@@ -161,9 +161,9 @@ Nun kommen wir wieder auf unseren *LAMP-Testserver für Entwickler* zurück und 
 
 ### Benutzer und Rechte
 
-Der Apache Webserver läuft mit der USER.GROUP "*www-data.www-data*" und *"DocumentRoot"* gehört unmittelbar nach der Installation "*root.root*".  
-Um Benutzern Schreibrechte für die in *"DocumentRoot"* enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe "*www-data*" zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
-Wir nennen die neue Gruppe "*developer*".
+Der Apache Webserver läuft mit \<user\> und \<group\> **www-data.www-data** und *"DocumentRoot"* gehört unmittelbar nach der Installation **root.root**.  
+Um Benutzern Schreibrechte für die in *"DocumentRoot"* enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe *"www-data"* zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
+Wir nennen die neue Gruppe  `developer`.
 
 **Mit CMS**
 
@@ -173,7 +173,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 
    ~~~sh
    groupadd developer
-   adduser BENUTZERNAME developer
+   adduser <user> developer
    chgrp developer /var/www/html
    ~~~
 
@@ -184,7 +184,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    ~~~
 
 2. SGID-Bit für *"DocumentRoot"* setzen,  
-   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe *"developer"* erben.
+   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe `developer` erben.
 
    ~~~sh
    chmod g+s /var/www/html
@@ -203,7 +203,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    -rw-r--r-- 1 root developer    20  9. Jan 19:32 info.php
    ~~~
 
-   Wir ändern für *"DocumentRoot"* den Eigentümer zu "*www-data*", geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
+   Wir ändern für *"DocumentRoot"* den Eigentümer zu *"www-data"*, geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
 
    ~~~sh
    chown -R www-data /var/www/html
@@ -222,16 +222,16 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    -rw-rw---- 1 www-data developer    20  9. Jan 19:32 info.php
    ~~~
 
-   Jetzt haben in *"DocumentRoot"* nur Mitglieder der Gruppe *"developer"* Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
+   Jetzt haben in *"DocumentRoot"* nur Mitglieder der Gruppe `developer` Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
 
 4. Nachteile dieser Einstellungen
 
-   Beim Anlegen neuer Verzeichnisse und Dateien unterhalb *"DocumentRoot"* ist der Eigentümer der jeweilige *"User"* und nicht "*www-data*". Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
-   Abhilfe schafft eine "*Systemd Path Unit*", die Änderungen unterhalb *"DocumentRoot"* überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](0715-systemd-path_de.md#systemd-path).)
+   Beim Anlegen neuer Verzeichnisse und Dateien unterhalb *"DocumentRoot"* ist der Eigentümer der jeweilige `User` und nicht `www-data`. Dadurch kann der Apache-Webserver die Dateien nicht lesen.  
+   Abhilfe schafft eine  `Systemd Path Unit`, die Änderungen unterhalb *"DocumentRoot"* überwacht und die Eigentümer- und Dateirechte anpasst. (Siehe das Beispiel in der Handbuchseite [Systemd-Path](0715-systemd-path_de.md#systemd-path).)
 
 **Ohne CMS**
 
-Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an *"DocumentRoot"* entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in "*DocumentRoot*".
+Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an *"DocumentRoot"* entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in *"DocumentRoot"*.
 
 ~~~sh
 chmod -R u-w /var/www/html
@@ -239,9 +239,9 @@ chmod -R u-w /var/www/html
 
 ### Sicherheit - Apache Standard
 
-Wichtige Absicherungen enthält die Datei "*/etc/apache2/apache2.conf*" bereits standardmäßig.
+Wichtige Absicherungen enthält die Datei  `/etc/apache2/apache2.conf` bereits standardmäßig.
 
-Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und geben dann die beiden vom Apache-Webserver verwendeten Verzeichnisse "*/usr/share*" und "*/var/www*" frei.
+Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und geben dann die beiden vom Apache-Webserver verwendeten Verzeichnisse  `/usr/share` und  `/var/www` frei.
 
 ~~~apacheconf 
 <Directory />
@@ -264,7 +264,7 @@ Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und
 
 Die Optionen *"FollowSymLinks"* und *"Indexes"* bergen ein Sicherheitsrisiko und sollten geändert werden, sofern sie nicht unbedingt notwendig sind. Siehe weiter unten.
 
-Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.htpasswd*".
+Die folgende Direktive unterbindet die Anzeige der Dateien  `.htaccess` und  `.htpasswd`.
 
 ~~~apacheconf
 <FilesMatch "^\.ht">
@@ -274,10 +274,10 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 
 ### Sicherheit - weitere Konfigurationen
 
-+ In der Datei **/etc/apache2/apache2.conf**
++ In der Datei `/etc/apache2/apache2.conf`
 
-  **FollowSymLinks** kann dazu führen, dass Inhalte außerhalb *"DocumentRoot"* gelistet werden.  
-  **Indexes** listet den Inhalt eines Verzeichnisses, sofern keine "*index.html*" oder "*index.php*" usw. vorhanden ist.
+  *"FollowSymLinks"* kann dazu führen, dass Inhalte außerhalb *"DocumentRoot"* gelistet werden.  
+  *"Indexes"* listet den Inhalt eines Verzeichnisses, sofern keine `index.html` oder `index.php` usw. vorhanden ist.
 
   Es ist empfehlenswert *"FollowSymLinks"* zu entfernen und die Projektdaten alle unterhalb *"DocumentRoot"* abzulegen. Für die Option *"Indexes"* ist der Eintrag zu ändern in
 
@@ -285,8 +285,8 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
   Options -Indexes
   ~~~
 
-  wenn die Anzeige des Verzeichnisinhaltes **nicht** erwünscht ist.  
-  Alternativ erstellt man in dem Verzeichnis eine leere "*index*"-Datei, die an Stelle des Verzeichnisinhaltes an den Client ausgeliefert wird. Zum Beispiel für das "*upload*"-Verzeichnis:
+  wenn die Anzeige des Verzeichnisinhaltes nicht erwünscht ist.  
+  Alternativ erstellt man in dem Verzeichnis eine leere index-Datei, die an Stelle des Verzeichnisinhaltes an den Client ausgeliefert wird. Zum Beispiel für das upload-Verzeichnis:
 
   ~~~sh
   $ echo "<!DOCTYPE html>" > /var/www/html/upload/index.html
@@ -294,9 +294,9 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
   $ echo "<?php" > /var/www/html/upload/index.php
   ~~~
 
-+ In der Host-Konfiguration **/etc/apache2/sites-available/server1.conf**
++ In der Host-Konfiguration `/etc/apache2/sites-available/server1.conf`
 
-  können wir mit dem "*\<Directory\>*"-Block alle IP-Adressen sperren, außer die darin gelisteten.
+  können wir mit dem `<Directory>`-Block alle IP-Adressen sperren, außer die darin gelisteten.
 
   ~~~apacheconf
   <Directory "/var/www/html">
@@ -309,14 +309,14 @@ Die folgende Direktive unterbindet die Anzeige der Dateien "*.htaccess*" und "*.
 
 + **"merging"** der Konfiguration
 
-  Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb *"ServerRoot"* und auf die "*.htaccess*"-Dateien in "*DocumentRoot*". Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gewünschte Wirkung zu erzielen.  
+  Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb *"ServerRoot"* und auf die *".htaccess"*-Dateien in *"DocumentRoot"*. Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gewünschte Wirkung zu erzielen.  
   Wir empfehlen dringend die Webseite  
   [apache.org - How the sections are merged](https://httpd.apache.org/docs/current/de/sections.html#merging)  
   intensiv zu Rate zu ziehen.
 
-+ Der **Eigentümer** von "*DocumentRoot*"
++ Der **Eigentümer** von *"DocumentRoot"*
 
-  ist nach der Installation "*root.root*" und sollte unbedingt geändert werden. Siehe hierzu das Kapitel [Benutzer und Rechte](#benutzer-und-rechte).
+  ist nach der Installation **root.root** und sollte unbedingt geändert werden. Siehe hierzu das Kapitel [Benutzer und Rechte](0521-lamp-apache_de.md#benutzer-und-rechte).
 
 ### HTTPS verwenden
 
@@ -330,7 +330,7 @@ cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/privat
 ~~~
 
-In diesen legen wir die Certifikatsdatei *server1.org.crt* und den privaten Schlüssel *server1.org.key* ab.
+In diesen legen wir die Certifikatsdatei `server1.org.crt` und den privaten Schlüssel `server1.org.key` ab.
 
 Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.
 
@@ -363,13 +363,13 @@ Der ls-Befehl zur Kontrolle:
 
 + Darüber hinaus finden sich im Internet zahlreiche Hinweise zum sicheren Betrieb des Apache Webservers.
 
-+ Die regelmäßige Kontrolle der Logdateien in "*/var/log/apache2/*" hilft um Fehler oder Sicherheitslücken zu erkennen.
++ Die regelmäßige Kontrolle der Logdateien in `/var/log/apache2/` hilft um Fehler oder Sicherheitslücken zu erkennen.
 
 + Sollte der Server, anders als in dieser Handbuchseite vorgesehen, mit dem lokalen Netzwerk oder mit dem Internet verbunden werden, ist eine Firewall unerlässlich.
 
 ### Integration in Apache2
 
-Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei "*/etc/apache2/sites-available/server1.conf*" zu bearbeiten.
+Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei `/etc/apache2/sites-available/server1.conf` zu bearbeiten.
 
 + Eine neue VirtualHost-Directive wird zu Beginn eingefügt. Diese leitet eingehende Client-Anfragen von Port 80 mittels *"Redirect"* auf Port 443 (ssl) weiter.
 
@@ -379,7 +379,7 @@ Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei "*/etc/ap
 
 + Für den Fall, dass unser Webprojekt dynamisch generierte Webseiten enthalten soll, werden die beiden letzten FileMatch- und Directory-Direktiven mit der "*SSLOptions*"-Anweisung eingefügt.
 
-Die erweiterte "*server1.conf*" weist dann folgenden Inhalt auf:
+Die erweiterte `server1.conf` weist dann folgenden Inhalt auf:
 
 ~~~apacheconf
 <VirtualHost *:80>
@@ -418,7 +418,7 @@ Die erweiterte "*server1.conf*" weist dann folgenden Inhalt auf:
 </VirtualHost>
 ~~~
 
-Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf *"ServerRoot"* liegt (das ist die Regel), können wir in *"DocumentRoot"* die Datei "*.htaccess*" um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.
+Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf *"ServerRoot"* liegt (das ist die Regel), können wir in *"DocumentRoot"* die Datei `.htaccess` um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.
 
 ~~~apacheconf
 <IfModule mod_rewrite.c>

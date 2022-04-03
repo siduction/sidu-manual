@@ -37,7 +37,7 @@ php7.4-mysql
 phpmyadmin  
 ~~~
 
-Wie bei siduction üblich, erledigen wir die Installationen im "multi-user.target" (init 3) im Terminal.
+Wie bei siduction üblich, erledigen wir die Installationen im `multi-user.target (init 3)` im Terminal.
 
 **Vorbereitungen**
 
@@ -48,10 +48,10 @@ Falls der Kommandozeilenbrowser *w3m* noch nicht installiert wurde, holen wir da
 # apt install w3m
 ~~~
 
-Das ermöglicht es uns *Apache* und *PHP* sofort im Terminal zu testen und erst nach Abschluss aller notwendigen  Installationen wieder in die graphische Oberfläche zurückzukehren.
+Das ermöglicht es uns Apache und PHP sofort im Terminal zu testen und erst nach Abschluss aller notwendigen  Installationen wieder in die graphische Oberfläche zurückzukehren.
 
 Nun räumen wir noch apt auf.  
-Der Befehl *apt autoremove* sollte zu der folgenden Ausgabe führen. Wenn nicht, bestätigen wir das Entfernen nicht mehr benötigter Pakete mit `j`.
+Der Befehl `apt autoremove` sollte zu der folgenden Ausgabe führen. Wenn nicht, bestätigen wir das Entfernen nicht mehr benötigter Pakete mit `j`.
 
 ~~~
 #apt autremove
@@ -62,25 +62,25 @@ Statusinformationen werden eingelesen.... Fertig
 ~~~
 
 Diese Maßnahme erleichtert uns im Fall einer fehlerhaften Installation die Reparatur ganz wesentlich.  
-Siehe unten [Troubleshooting](#troubleshooting)
+Siehe unten [Troubleshooting](0520-lamp-start_de.md#troubleshooting)
 
 Es ist sinnvoll sich bereits vor der Installation einige Daten zu notieren.
 
 Während der Installation notwendig:
 
-+ Ein **Passwort** für den Datenbankbenutzer **root** in *phpMyAdmin*.
++ Ein **Passwort** für den Datenbankbenutzer **root** in phpMyAdmin.
 
 Später, für die Konfiguration notwendig:
 
 + **Apache**  
-    + *Server Name*
-    + *Server Alias*
-    + *IP-Adresse* des Servers
-    + *Name* des PC
-    + *IP-Adresse* des PC
+    + Server Name
+    + Server Alias
+    + IP-Adresse des Servers
+    + Name des PC
+    + IP-Adresse des PC
 
 + **MariaDB:**  
-    + Den *Namen der Datenbank* die für das Entwicklungsprojekt verwendet werden soll.
+    + Den *Namen* der Datenbank die für das Entwicklungsprojekt verwendet werden soll.
     + Den *Namen* (Login-Name) eines neuen Datendank-Benutzers für das Entwicklungsprojekt.
     + Das *Passwort* für den neuen Datendank-Benutzer.
     + Den *Namen* (Login-Name) eines neuen Datenbank Administrators.
@@ -131,11 +131,11 @@ Der Apache Webserver ist geladen und lässt sich problemlos handhaben. Jetzt pr�
 w3m http://localhost/index.html
 ~~~
 
-Die Apache-Begrüßungsseite mit **It works!** erscheint.  
+Die Apache-Begrüßungsseite mit *"It works!"* erscheint.  
 Wir beenden w3m mit `q` und bestätigen mit `y`.
 
-Als **ServerRoot** wird das Verzeichnis **/etc/apache2/** bezeichnet. Es enthält die Konfiguration.  
-Als **DocumentRoot** wird das Verzeichnis **/var/www/html/** bezeichnet. Es enthält die Dateien der Webseite.
+Als **ServerRoot** wird das Verzeichnis `/etc/apache2/` bezeichnet. Es enthält die Konfiguration.  
+Als **DocumentRoot** wird das Verzeichnis `/var/www/html/` bezeichnet. Es enthält die Dateien der Webseite.
 
 Für weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite  
 [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) lesen.
@@ -172,7 +172,7 @@ Möchten Sie fortfahren? [J/n] j
 ~~~
 
 Wie schon zuvor, holt das Metapaket eine ganze Reihe von Abhängigkeiten zusätzlich herein.  
-Um nach der Installation zu prüfen, ob php korrekt läuft, wird die Datei *info.php* in */var/www/html* mit der Funktion phpinfo() auf die Art erstellt, wie es hier angegeben ist:
+Um nach der Installation zu prüfen, ob php korrekt läuft, wird die Datei `info.php` in `/var/www/html` mit der Funktion phpinfo() auf die Art erstellt, wie es hier angegeben ist:
 
 ~~~
 mcedit /var/www/html/info.php  
@@ -207,7 +207,7 @@ server API   Apache 2.0 Handler
 ...
 ~~~
 
-Erhalten wir eine Ausgabe, die wie oben gezeigt beginnt und alle php-Konfigurationen und Grundeinstellungen enthält, so funktioniert PHP und benutzt als *server API* den *Apache 2.0 Handler*.  
+Erhalten wir eine Ausgabe, die wie oben gezeigt beginnt und alle php-Konfigurationen und Grundeinstellungen enthält, so funktioniert PHP und benutzt als *"server API"* den *"Apache 2.0 Handler"*.  
 
 Wir beenden w3m mit `q` und bestätigen mit `y`.
 
@@ -217,7 +217,7 @@ Jetzt fehlt noch die Unterstützung für MariaDB/mysql in PHP. Wir benötigen da
 # apt install php7.4-mysql
 ~~~
 
-Wenn wir jetzt wieder die Seite "http://localhost/info.php" aufrufen, finden wir im Bereich der Module (sie sind alphabetisch sortiert) die Einträge zu *mysqli* und *mysqlnd*.
+Wenn wir jetzt wieder die Seite http://localhost/info.php aufrufen, finden wir im Bereich der Module (sie sind alphabetisch sortiert) die Einträge zu *"mysqli"* und *"mysqlnd"*.
 
 Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enthält die Handbuchseite [LAMP-PHP](./lamp-php_de.md#php-einrichten)
 
@@ -242,7 +242,7 @@ Möchten Sie fortfahren? [J/n]  j
 ~~~
 
 Während der Installation erscheinen die zwei Dialoge.  
-Im ersten, zu Beginn, wählen wir *"apache2"* und bestätigen mit "*ok*"
+Im ersten, zu Beginn, wählen wir *"apache2"* und bestätigen mit `ok`
 
 ![PHPMyAdmin Webserverauswahl](./images/lamp-start/phpmyadmin01-de.png)
 
@@ -254,13 +254,13 @@ In den folgenden Dialogen benötigen wir das Passwort für den Datenbankbenutzer
 
 ### Weitere Software
 
-Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) und [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten)für die Konfiguration des Servers und MariaDB berücksichtigen.
+Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) und [LAMP-MariaDB](./lamp-sql_de.md#mariadb-einrichten) für die Konfiguration des Servers und MariaDB berücksichtigen.
 
 ### Statusaugaben Log-Dateien
 
 **Apache**
 
-Der Konfigurationsstatus des Apache Webservers wird mit "*apache2ctl -S*" ausgegeben.  
+Der Konfigurationsstatus des Apache Webservers wird mit `apache2ctl -S` ausgegeben.  
 Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar nach der Installation.
 
 ~~~
@@ -285,7 +285,7 @@ Die Ausgabe zeigt den Status ohne Änderungen an der Konfiguration unmittelbar n
 ~~~
 
 Die Handbuchseite [LAMP-Apache](./lamp-apache_de.md#apache-einrichten) enthält eine Reihe von Hinweisen zur Anpassung der Konfiguration.  
-Das Verzeichnis */var/log/apache2/* enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.
+Das Verzeichnis `/var/log/apache2/` enthält die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.
 
 **MariaDB**
 
@@ -313,8 +313,8 @@ Weitere Informationen liefert die Handbuchseite [LAMP-MariaDB](./lamp-sql_de.md#
 
 **PHP**
 
-Die Fehlermeldungen von PHP speichert der Apache Server in seinen Log-Dateien unter */var/log/apache2/*. Fehlerhafte PHP-Funktionen erzeugen eine Meldung in der aufgerufenen Webseite.  
-Dieses Verhalten lässt sich in den *php.ini*-Dateien des jeweiligen Interface konfigurieren.  
+Die Fehlermeldungen von PHP speichert der Apache Server in seinen Log-Dateien unter `/var/log/apache2/`. Fehlerhafte PHP-Funktionen erzeugen eine Meldung in der aufgerufenen Webseite.  
+Dieses Verhalten lässt sich in den php.ini-Dateien des jeweiligen Interface konfigurieren.  
 Siehe die Handbuchseite [LAMP-PHP](./lamp-php_de.md#php-einrichten)
 
 ### Troubleshooting
@@ -323,7 +323,7 @@ Die hier aufgeführten Beispiele zeigen exemplarisch einige Möglichkeiten der F
 
 **Dateirecht in "DocumentRoot"**
 
-Sollte unmittelbar nach der Installation der Aufruf der Dateien *index.html* und *info.php* fehlschlagen, bitte unbedingt zuerst die Eigentümer- und Gruppenzugehörigkeit des Webseitenverzeichnisses überprüfen und ggf. ändern:
+Sollte unmittelbar nach der Installation der Aufruf der Dateien `index.html` und `info.php` fehlschlagen, bitte unbedingt zuerst die Eigentümer- und Gruppenzugehörigkeit des Webseitenverzeichnisses überprüfen und ggf. ändern:
 
 ~~~
 # ls -la /var/www/html
@@ -343,7 +343,7 @@ Nun sollten sich beide Seiten aufrufen lassen.
 
 **HTML-Seiten-Ladefehler**
 
-Die Webseite **http://localhost/index.html** wird nicht angezeigt und der Browser meldet einen Seiten-Ladefehler.
+Die Webseite http://localhost/index.html wird nicht angezeigt und der Browser meldet einen Seiten-Ladefehler.
 
 Wir fragen den Status des Apache Webservers ab:
 
@@ -360,7 +360,7 @@ Dez 14 18:29:23 lap1 apachectl[4423]: AH00526: Syntax error on line 63 of /etc/a
 [...]
 ~~~
 
-Wir sehen, dass die Datei *security.conf* in Zeile 63 einen Fehler aufweist.  
+Wir sehen, dass die Datei *"security.conf"* in Zeile 63 einen Fehler aufweist.  
 Wir bearbeiten die Datei und versuchen es noch einmal.
 
 ~~~
@@ -376,14 +376,14 @@ Generell ist nach jeder Änderung der Konfiguration ein Reload oder Restart des 
 
 **Apache Log-Dateien prüfen**
 
-Ein Blick in die Logdateien unter “*/var/log/apache2/*” hilft um Fehler in der Konfiguration des Netzwerks oder des Apache Servers zu erkennen.
+Ein Blick in die Logdateien unter `/var/log/apache2/` hilft um Fehler in der Konfiguration des Netzwerks oder des Apache Servers zu erkennen.
 
 **PHP, info.php nur weiße Seite**
 
 Das bedeutet, dass PHP aktiv ist, aber die Seite nicht anzeigen kann.  
 Bitte überprüfen:
 
-+ Der Inhalt der Datei *info.php* muss exakt dem im Kapitel PHP gegebenem Beispiel entsprechen.
++ Der Inhalt der Datei `info.php` muss exakt dem im Kapitel PHP gegebenem Beispiel entsprechen.
 
 + Die Dateirechte, wie zu Beginn des Kapitels Troubleshooting erläutert, prüfen und ggf. ändern.
 
@@ -396,7 +396,7 @@ Bitte überprüfen:
 
 **phpMyAdmin - Error**
 
-Der Aufruf von *http://localhost/phpmyadmin* schlägt mit der Meldung "*phpMyAdmin - Error*" fehl und die folgenden Informationen werden angezeigt.
+Der Aufruf von http://localhost/phpmyadmin schlägt mit der Meldung *"phpMyAdmin - Error"* fehl und die folgenden Informationen werden angezeigt.
 
 ~~~
 Error during session start; please check your PHP and/or webserver log file and  
@@ -407,7 +407,7 @@ session_start(): open(SESSION_FILE, O_RDWR) failed: Permission denied (13)
 session_start(): Failed to read session data: files (path: /var/lib/php/sessions)
 ~~~
 
-Die Berechtigungen für den Ordner */var/lib/php/sessions* prüfen:
+Die Berechtigungen für den Ordner `/var/lib/php/sessions` prüfen:
 
 ~~~
 # ls -l /var/lib/php/
@@ -431,7 +431,7 @@ Nun ist der Login zu phpmyadmin möglich.
 #### Wenn nichts hilft
 
 Die Installation des LAMP-Stack ist in weniger als fünfzehn Minuten erledigt. Eine Fehlersuche kann jedoch Stunden in Anspruch nehmen.  
-Deshalb ist es, sofern die zuvor genannten Maßnahmen zu keiner Lösung führen, sinnvoll den LAMP-Stack oder Teile davon zu entfernen und neu zu installieren. Wenn, wie im Kapitel *Vorbereitungen* erwähnt, apt aufgeräumt wurde, hilft der Befehl "*apt purge*" um die zuvor installierten Pakete mit ihren Konfigurationsdateien zu entfernen ohne das irgendwelche anderen Pakete stören.
+Deshalb ist es, sofern die zuvor genannten Maßnahmen zu keiner Lösung führen, sinnvoll den LAMP-Stack oder Teile davon zu entfernen und neu zu installieren. Wenn, wie im Kapitel Vorbereitungen erwähnt, apt aufgeräumt wurde, hilft der Befehl `apt purge` um die zuvor installierten Pakete mit ihren Konfigurationsdateien zu entfernen ohne das irgendwelche anderen Pakete stören.
 
 Hier ein Beispiel mit Apache:
 
@@ -448,9 +448,9 @@ Die folgenden Pakete werden ENTFERNT:
 0 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.
 ~~~
 
-*Apache2* wird entfernt und die Pakete *apache2-data* und *apache2-utils* blieben noch erhalten.  
-Jetzt bitte **nicht apt autoremove verwenden**, denn dann bleiben die Konfigurationsdateien, in denen möglicherweise der Fehler liegt, zurück.  
-Wir verwenden den Befehl "*apt purge*".
+*"Apache2"* wird entfernt und die Pakete *"apache2-data"* und *"apache2-utils"* blieben noch erhalten.  
+Jetzt bitte **nicht** *"apt autoremove"* verwenden, denn dann bleiben die Konfigurationsdateien, in denen möglicherweise der Fehler liegt, zurück.  
+Wir verwenden den Befehl `apt purge`.
 
 ~~~
 # apt purge apache2-data apache2-utils

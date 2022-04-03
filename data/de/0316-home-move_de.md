@@ -6,7 +6,7 @@
 > Ein existierendes **/home** soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
 
 Deshalb raten wir generell davon ab eine /home-Partition anzulegen.  
-Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter **/Daten** eingehängt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
+Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter `/Daten` eingehängt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 Sofern Daten gemeinsam für parallele Installationen bereit stehen sollen, ist diese Vorgehensweise besonders ratsam.
 
 **Vorbereitungen**
@@ -14,25 +14,25 @@ Sofern Daten gemeinsam für parallele Installationen bereit stehen sollen, ist d
 An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.  
 Die Ausgangslage:
 
-* Die alte, mittlerweile zu kleine, Festplatte hat drei Partitionen ("/boot/efi", "/", "swap").
+* Die alte, mittlerweile zu kleine, Festplatte hat die drei Partitionen `/boot/efi`, `/`, `swap`.
 * Es existiert bisher noch keine separate Daten-Partition.
 * Eine zusätzliche eingebaute Festplatte hat vier Partitionen mit ext4-Dateisystem.  
-  Davon benutzen wir die Partitionen "sdb4" für die neue Daten-Partition, die wir unter "/Daten" einhängen.
+  Davon benutzen wir die Partitionen `sdb4` für die neue Daten-Partition, die wir unter `/Daten` einhängen.
 
-Unsere bisherige **/etc/fstab** hat den Inhalt:
+Unsere bisherige `/etc/fstab` hat den Inhalt:
 
 ~~~
 $ cat /etc/fstab
 ...
-# <file system>				            <mount point>  <type>  <options>    <dump><pass>
+# <file system>                         <mount point>  <type>  <options>    <dump><pass>
 UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
 tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0
 ~~~
 
-Von der zusätzlichen Festplatte benötigen wir die UUID-Informationen. Siehe auch die Handbuchseite [Anpassung der fstab](#fstab-anpassen).  
-Der Befehl *blkid* gibt uns Auskunft.
+Von der zusätzlichen Festplatte benötigen wir die UUID-Informationen. Siehe auch die Handbuchseite [Anpassung der fstab](0316-home-move_de.md#fstab-anpassen).  
+Der Befehl `blkid` gibt uns Auskunft.
 
 ~~~
 $ /sbin/blkid
@@ -42,7 +42,7 @@ $ /sbin/blkid
 
 **Sicherung des alten /home**
 
-Bevor irgendeine Änderung am bestehenden Dateisystem vorgenommen wird, sichern wir als *Root* alles unterhalb von "/home" in einem tar-Archiv. 
+Bevor irgendeine Änderung am bestehenden Dateisystem vorgenommen wird, sichern wir als **root** alles unterhalb von `/home` in einem tar-Archiv. 
 
 ~~~
 # cd /home
@@ -51,7 +51,7 @@ Bevor irgendeine Änderung am bestehenden Dateisystem vorgenommen wird, sichern 
 
 **Mountpoint der Daten-Partition**
 
-Wir erstellen das Verzeichnis *"Daten"* unterhalb "**/**" und binden die Partition "sdb4" dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.
+Wir erstellen das Verzeichnis `/Daten` unterhalb `/` und binden die Partition `sdb4` dort ein. Als Eigentümer und Gruppe legen wir die eigenen Namen fest. Etwas später kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden `/home` dort hinein.
 
 Mountpoint erstellen und Partition einhängen (als root):
 
@@ -104,14 +104,14 @@ drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
 Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit nur geringfügigen Änderungen.  
 In den, per default erstellten, Verzeichnissen *"Bilder"* bis *"Vorlagen"* am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zusätzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir später in die neue Daten-Partition.  
 Mit einem Punkt (.) beginnende, "versteckte" Dateien und Verzeichnisse enthalten die Konfiguration und programmspezifische Daten, die wir, von drei Ausnahmen abgesehen, nicht verschieben. Die Ausnahmen sind:  
-Der Zwischenspeicher "*.cache*",  
-der Internetbrowser "*.mozilla*" und  
-das Mailprogramm "*.thunderbird*".  
+Der Zwischenspeicher *".cache"*,  
+der Internetbrowser *".mozilla"* und  
+das Mailprogramm *".thunderbird"*.  
 Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch viele private Daten. Deshalb wandern sie zusätzlich auf die neue Daten-Partition.
 
 **Kopieren der privaten Daten**
 
-Zum Kopieren benutzen wir den Befehl *"cp"* mit der Archiv-Option "*-a*", so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
+Zum Kopieren benutzen wir den Befehl `cp` mit der Archiv-Option `-a`, so bleiben die Rechte, Eigentümer und der Zeitstempel erhalten und es wird rekursiv kopiert.
 
 ~~~
 ~$ cp -a * /Daten/
@@ -143,12 +143,12 @@ drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
 
 Die Prüfung der Kopieraktion auf Fehler erfolgt mit dem Befehl **`dirdiff /home/<user>/ /Daten/`**. Es dürfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.
 
-Nun befinden sich alle privaten Daten aus dem alten *home* zusätzlich auf der neuen Partition.
+Nun befinden sich alle privaten Daten aus dem alten *"/home"* zusätzlich auf der neuen Partition.
 
 **Löschen in /home**
 
 Für diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.  
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. *"Downloads"* oder "*Musik*"). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen /daten Partition zu ermöglichen, müssen wir unter /home/<user>/ die zu löschenden Verzeichnisse durch Link ersetzen.
+Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. *"Downloads"* oder "*Musik*"). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen *"/daten"* Partition zu ermöglichen, müssen wir unter `/home/<user>/` die zu löschenden Verzeichnisse durch Link ersetzen.
 
 > Die Befehle vor dem Ausführen bitte genau prüfen, damit nicht aus Versehen etwas falsches gelöscht wird.
 
@@ -170,8 +170,8 @@ Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz
 
 ### fstab anpassen
 
-Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei *fstab* geändert werden. Zusätzliche Informationen zur *fstab* bietet unser Handbuch [Anpassung der fstab](0311-part-uuid_de.md#anpassung-der-fstab).  
-Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der *fstab* mit Datumsanhang:
+Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verfügung steht, muss die Datei `/etc/fstab` geändert werden. Zusätzliche Informationen zur fstab bietet unser Handbuch [Anpassung der fstab](0311-part-uuid_de.md#anpassung-der-fstab).  
+Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der fstab mit Datumsanhang:
 
 ~~~
 # cp /etc/fstab /etc/fstab_$(date +%F) 
@@ -185,7 +185,7 @@ Entsprechend unseres Beispiels fügen wir die folgende Zeile in die fstab ein.
 Die fstab sollte nun so aussehen:
 
 ~~~
-# <file system>				            <mount point>  <type>  <options>    <dump><pass>
+# <file system>                         <mount point>  <type>  <options>    <dump><pass>
 UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten      ext4    defaults,noatime 0 2
