@@ -12,15 +12,11 @@ Die IANA hat dem Protokoll den TCP-Port 22 zugeordnet, jedoch lassen sich in den
 
 Es ist nicht sicher, Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen Angreifer nicht die Möglichkeit haben, über zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuführen. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl möglicher Versuche einzuschränken.
 
-Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu bearbeiten:
-
-~~~
-/etc/ssh/sshd_config
-~~~
+Um SSH sicherer zu machen, verwendet man einen Texteditor, und bearbeitet die Datei `/etc/ssh/sshd_config`.
 
 **Folgende Einstellungen können zur Erhöhung der Sicherheit angepasst werden:**
 
-+ Port `<gewünschter Port>:`  
++ `Port <gewünschter Port>:`  
   Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal überdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port außerhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:
 
   ~~~
@@ -86,7 +82,7 @@ Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu 
 Schlussendlich:
 
 ~~~
-/etc/init.d/ssh restart
+systemctl restart ssh
 ~~~
 
 Nun hat man eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn man einen Benutzer hinzugefügt hat, der speziell zur Verwendung mit SSH dient.
@@ -159,7 +155,7 @@ Es können rekursiv auch ganze Partitionen bzw. Verzeichnisse mit dem Befehl `sc
    scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt . 
    ~~~
 
-Weitere Informationen:
+Weitere Informationen bietet die man page:
 
 ~~~
 man scp
@@ -167,7 +163,7 @@ man scp
 
 ### SSH mit Dolphin
 
-Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das *sftp* Protokoll benutzen, welches in ssh vorhanden ist.
+Sowohl Dolphin als auch Krusader sind fähig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das *"sftp"* Protokoll benutzen, welches in ssh vorhanden ist.
 
 So wird es gemacht:  
 1) Man öffnet ein neues Dolphin-Fenster  
@@ -196,20 +192,19 @@ sftp://username@198.x.x.x
 Bitte richtige IP eingeben! Anschließend folgt ein Dialog-Fenster zur Eingabe des ssh-Passworts: Dieses eingeben und auf OK klicken.  
 Eine SSH-Verbindung im Dolphin ist nun hergestellt. In diesem Dolphin-Fenster kann man mit den Dateien auf dem SSH-Server arbeiten, als wären es lokale Dateien.
 
-**ANMERKUNG: wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:**
+**ANMERKUNG:** wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:
 
 ~~~
 sftp://user@ip:port
 ~~~
 
-'user@ip:port' - dies ist die Standardsyntax für viele Protokolle/Programme wie sftp und smb.
+*"user@ip:port"* - dies ist die Standardsyntax für viele Protokolle/Programme wie sftp und smb.
 
 ### SSHFS - auf einem entfernten Computer mounten
 
 SSHFS ist eine einfache, schnelle und sichere Methode unter Verwendung von FUSE, um ein entferntes Dateisystem einzubinden. Auf Serverseite benötigt man ausschließlich einen laufenden ssh-daemon.
 
 Auf Seite des Clients muss vermutlich sshfs erst installiert werden:
-
 
 ~~~
 apt update && apt install sshfs
@@ -223,7 +218,7 @@ Das Einbinden eines entfernten Dateisystems ist sehr einfach:
 sshfs -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt
 ~~~
 
-Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden.Bitte beachten: der Doppelpunkt "**`:`**" ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!
+Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden. Bitte beachten: der Doppelpunkt "**`:`**" ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!
 
 Nach erfolgter Einbindung verhält sich das entfernte Verzeichnis wie jedes andere lokale Dateisystem. Man kann wie auf einem lokalen Dateisystem nach Dateien suchen, diese lesen und ändern sowie Skripte ausführen.
 
@@ -239,7 +234,7 @@ Bei regelmäßiger Nutzung von sshfs empfiehlt sich ein Eintrag in /etc/fstab:
 sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
-Als nächstes muss das Kommentarzeichen vor "user_allow_other"  in der Datei `/etc/fuse.conf`  entfernt werden:
+Als nächstes muss das Kommentarzeichen vor *"user_allow_other"*  in der Datei `/etc/fuse.conf`  entfernt werden:
 
 ~~~
 # Allow non-root users to specify the 'allow_other' or 'allow_root'
@@ -278,9 +273,7 @@ Jetzt sollte der gewünschte Nutzername gelistet und folgender Befehl ausführba
 
 ~~~
 mount lokaler_mountpunkt
-
     und
-
 umount lokaler_mountpunkt
 ~~~
 

@@ -4,7 +4,7 @@
 
 **Allgemeine Hinweise**
 
-Der Networkmanager ist mittlerweile in allen graphischen Oberflächen von siduction integriert und größtenteils selbsterklärend. Er ersetzt die im Terminal benutzten Netzwerkkommandos  *ifup, ifdown*  bzw.  *ifconfig*. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Steht keine graphische Oberfläche zur Verfügung, oder wird die Komandozeile bevorzugt, existiert mit **nmcli** ein leistungsfähiger Kommandozeilenclient für den täglichen Gebrauch des Networkmanagers.
+Der Networkmanager ist mittlerweile in allen graphischen Oberflächen von siduction integriert und größtenteils selbsterklärend. Er ersetzt die im Terminal benutzten Netzwerkkommandos  `ifup`, `ifdown` bzw. `ifconfig`. Das Vorurteil das sich der Networkmanager nicht für die Kommandozeile eignet oder gar instabil läuft gehört ins Reich der Märchenwelt. Steht keine graphische Oberfläche zur Verfügung, oder wird die Komandozeile bevorzugt, existiert mit `nmcli` ein leistungsfähiger Kommandozeilenclient für den täglichen Gebrauch des Networkmanagers.
 
 In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen aus. Eine WLAN-Verbindung (Name: Einhorn_2, Interface wtx7ckd90b81bbd, (früher; wlan)) und einer kabelgebundenen Verbindung (Name: Kabelgebundene Verbindung 1, Interface evp0s3f76 (früher: eth0)). Bitte die Verbindungsnamen an eure Gegebenheiten anpassen.
 
@@ -13,6 +13,7 @@ In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen a
 Falls der Networkmanager auf dem System nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.
 
 ~~~sh
+apt update
 apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
  plasma-nm network-manager-vpnc network-manager-openvpn
 ~~~
@@ -54,7 +55,7 @@ Der zusätzlich generierte QR-Code vereinfacht den Login für Smartphone und Tab
 
 **Verbindungen wechseln**
 
-Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein  *nmcli con down id <Name>*  zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.
+Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein  `nmcli con down id <Name>`  zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.
 
 Um die automatische Verbindung zu verhindern hilft der Befehl **`nmcli dev disconnect <Schnittstellenname>`**.  
 Zuerst beenden wir die LAN-Verbindung und fragen danach den Status ab.
@@ -100,10 +101,7 @@ nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebunde
 
 ### Weiterführende Informationen
 
-+       
-  ~~~
-  man nmcli
-  ~~~
++ Die man page **`man nmcli`**
 
 + [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
 
