@@ -8,7 +8,7 @@ Das Arbeiten mit *Logical Volumes* ist viel einfacher als die meisten User glaub
 
 Mit drei Grundbegriffen sollte man vertraut sein:
 
-+ **Physisches Volumen (Physical Volume):**  Diese sind die physischen, real vorhandenen, Festplatten oder Partitionen wie zum Beispiel /dev/sda oder /dev/sdb1 und werden zum Einbinden/Aushängen verwendet. Mit LVM können mehrere physische Volumen in Volumengruppen zusammengefasst werden.
++ **Physisches Volumen (Physical Volume):**  Diese sind die physischen, real vorhandenen, Festplatten oder Partitionen wie zum Beispiel `/dev/sda` oder `/dev/sdb1` und werden zum Einbinden/Aushängen verwendet. Mit LVM können mehrere physische Volumen in Volumengruppen zusammengefasst werden.
 
 + **Volumengruppe (Volume Group):**  Eine Volumengruppe besteht aus *Physischen Volumen* und ist der Speicherort von *Logischen Volumen*. Eine Volumengruppe kann als "virtuelles Laufwerk" gesehen werden, das aus *Physischen Volumen* zusammengesetzt ist. Zum Verständnis einige Beispiele:
 
@@ -44,7 +44,7 @@ Alle folgenden Befehle und Aktionen erfordern root-Rechte.
    W    -> schreibt Veränderungen auf das Laufwerk.
    ~~~
 
-   Der Befehl "W" schreibt die Partitionierungstabelle. Falls bis zu diesem Punkt ein Fehler gemacht wurde, kann das vorhandene Partitionierungs-Layout wieder hergestellt werden. Zu diesen Zweck gibt man den Befehl "q" ein, *cfdisk* beendet sich ohne Schreibvorgang, und alles bleibt wie es zuvor war.
+   Der Befehl `W` schreibt die Partitionierungstabelle. Falls bis zu diesem Punkt ein Fehler gemacht wurde, kann das vorhandene Partitionierungs-Layout wieder hergestellt werden. Zu diesen Zweck gibt man den Befehl `q` ein, cfdisk beendet sich ohne Schreibvorgang, und alles bleibt wie es zuvor war.
 
    Falls die Volumengruppe mehr als ein Physische Volumen (Laufwerk) umspannen soll, muss obiger Vorgang auf jedem physischen Volumen durchgeführt werden.
 
@@ -59,7 +59,7 @@ Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 
 3. Erstellen einer Volumengruppe
 
-   Nun fügen wir die physischen Volumen einer Volumengruppe mit dem Namen *vulcan* hinzu (in unserem Beispiel drei Laufwerke):
+   Nun fügen wir die physischen Volumen einer Volumengruppe mit dem Namen **vulcan** hinzu (in unserem Beispiel drei Laufwerke):
 
    ~~~
    vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1
@@ -81,7 +81,7 @@ Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 
    An dieser Stelle muss entschieden werden, wie groß das logische Volumen zu Beginn sein soll. Ein Vorteil von LVM ist die Möglichkeit, die Größe ohne Reboot anpassen zu können.
 
-   In unserem Beispiel wünschen wir uns ein 300GB großes Volumen mit dem Namen *spock* innerhalb der Volumengruppe Namens vulcan:
+   In unserem Beispiel wünschen wir uns ein 300GB großes Volumen mit dem Namen **spock** innerhalb der Volumengruppe Namens **vulcan**:
 
    ~~~
    lvcreate -n spock --size 300g vulcan
@@ -103,8 +103,8 @@ Alle folgenden Befehle und Aktionen erfordern root-Rechte.
    mkdir /media/spock/
    ~~~
 
-   Um das Volumen während des Bootvorgangs einzubinden, muss fstab mit einem Texteditor angepasst werden.  
-   Die Verwendung von **/dev/vulcan/spock**  ist bei einem LVM der Verwendung von UUID-Nummern vorzuziehen, da es damit einfacher ist das Dateisystem zu klonen (keine UUID-Kollisionen). Besonders mit einem LVM können Dateisysteme mit gleicher UUID-Nummer erstellt werden (Musterbeispiel: Snapshots).
+   Um das Volumen während des Bootvorgangs einzubinden, muss die Datei `/etc/fstab` mit einem Texteditor angepasst werden.  
+   Die Verwendung von *"/dev/vulcan/spock"*  ist bei einem LVM der Verwendung von UUID-Nummern vorzuziehen, da es damit einfacher ist das Dateisystem zu klonen (keine UUID-Kollisionen). Besonders mit einem LVM können Dateisysteme mit gleicher UUID-Nummer erstellt werden (Musterbeispiel: Snapshots).
 
    ~~~
    mcedit /etc/fstab
@@ -124,7 +124,7 @@ Alle folgenden Befehle und Aktionen erfordern root-Rechte.
    chmod 775 /media/spock
    ~~~
 
-Die Schritte 4 bis 6 können wir nun für das neu zu erstellende logische Volumen "kirk" wiederholen.
+Die Schritte 4 bis 6 können wir nun für das neu zu erstellende logische Volumen **kirk** wiederholen.
 
 Ein einfacher LVM sollte nun erstellt sein.
 
@@ -146,7 +146,7 @@ Erweitern des logischen Volumens:
 lvextend -L+200g /dev/vulcan/spock
 ~~~
 
-Dem Befehl *lvextend* ist als Option der Wert für die Größen**änderung** anzugeben und nicht die gewünscht Gesamtgröße.
+Dem Befehl *"lvextend"* ist als Option der Wert für die Größen**änderung** anzugeben und nicht die gewünscht Gesamtgröße.
 
 Anschließend die Größe des Dateisystems ändern:  
 Der erste Befehl führt zwangsweise eine Check durch, auch wenn das Dateisystem sauber zu sein scheint,  
@@ -181,12 +181,12 @@ resize2fs /dev/vulcan/spock
 mount /media/spock
 ~~~
 
-Auch hier ist dem Befehl *lvreduce* als Option der Wert für die Größen**änderung** anzugeben.  
-Der erneute *resize2sf*-Befehl passt das Dateisystem exakt an die Größe des logischen Volumens an.
+Auch hier ist dem Befehl *"lvreduce"* als Option der Wert für die Größen**änderung** anzugeben.  
+Der erneute *"resize2sf"*-Befehl passt das Dateisystem exakt an die Größe des logischen Volumens an.
 
 ### LVM mit einem GUI-Programm verwalten
 
-*Gparted* bietet die Möglichkeit zur Verwaltung von bereits angelegten *Logical Volumes*. Das Programm wird als root ausgeführt.
+Gparted bietet die Möglichkeit zur Verwaltung von bereits angelegten Logical Volumes. Das Programm wird als root ausgeführt.
 
 ### Weitere Infos
 

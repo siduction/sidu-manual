@@ -4,13 +4,13 @@
 
 **Warum gdisk (GPT fdisk) verwenden?**
 
-*gdisk* leitet sich von **G**lobally Unique Identifier **P**artition **T**able (GPT) ab und ist eine Anwendung, um Datenträger von jeder Größe zu partitionieren. *gdisk* wird unbedingt benötigt für **Datenträger, die größer als 2TB** sind.  
-*gdisk* sorgt dafür, dass Partitionen für SSDs eingerichtet sind (bzw. für Speicher, die keine 512 Byte großen Sektoren besitzen).
+**gdisk** leitet sich von **G**lobally Unique Identifier **P**artition **T**able (GPT) ab und ist eine Anwendung, um Datenträger von jeder Größe zu partitionieren. gdisk wird unbedingt benötigt für Datenträger, die größer als 2TB sind.  
+gdisk sorgt dafür, dass Partitionen für SSDs eingerichtet sind (bzw. für Speicher, die keine 512 Byte großen Sektoren besitzen).
 
-Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung *gdisk* standardmäßig für 128 Partitionen eingestellt ist.
+Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inhärenten primären, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterstützen und ist nur durch den für Partitionseinträge reservierten Speicherplatz des GPT-Datenträgers eingeschränkt. Zu beachten ist, dass die Anwendung gdisk standardmäßig für 128 Partitionen eingestellt ist.
 
 Falls GPT auf kleinen USB/SSD-Datenträgern eingesetzt wird (zum Beispiel auf einem USB-Stick mit 8GB), könnte sich dies kontraproduktiv auswirken, wenn Daten zwischen verschiedenen Computern oder Betriebssystemen ausgetauscht werden sollen.  
-Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser *fdisk*, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite [Partitionieren mit Cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk).
+Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir besser `fdisk`, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite [Partitionieren mit Cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk).
 
 **Wichtige Anmerkungen**
 
@@ -28,12 +28,12 @@ Für diesen Zweck, und sofern ältere Hardware zum Einsatz kommt, verwenden wir 
 
 + Booten von GPT-Datenträgern
 
-    + Dual- und Triple-Boot von GPT-Datenträgern mit Linux, BSD und Apple ist mit dem **EFI**-Modus mit 64 bit unterstützt.
+    + Dual- und Triple-Boot von GPT-Datenträgern mit Linux, BSD und Apple ist mit dem EFI-Modus mit 64 bit unterstützt.
 
     + Dual-Boot von GPT-Datenträgern mit Linux und MS Windows ist ab Windows Vista SP1 möglich. Voraussetzung ist dabei für Windows die 64 bit Version.
 
 + Graphische Partitionierungsprogramme für GPT  
-Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *gparted* und *partitionmanager* GPT-Datenträger. Trotzdem empfehlen wir gdisk, um unerwünschten Anomalien vorzubeugen. *Gparted - gparted* sowie *KDE Partition Manager - partitionmanager* (und andere) sind dennoch großartige Hilfsmittel besonders um die Partitionierung zu visualisieren.
+Neben dem Befehlszeilenprogramm `gdisk` unterstützen graphische Anwendungen wie `gparted` und `partitionmanager` GPT-Datenträger. Trotzdem empfehlen wir gdisk, um unerwünschten Anomalien vorzubeugen. Gparted sowie KDEs Partition Manager (und andere) sind dennoch großartige Hilfsmittel besonders um die Partitionierung zu visualisieren.
 
 **Grundlegende Lektüre:**
 
@@ -50,10 +50,10 @@ Neben dem Befehlszeilenprogramm gdisk unterstützen graphische Anwendungen wie *
 > **Daten zuvor sichern!**  
 > Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen, immer zuvor auf einem anderen Datenträger sichern.
 
-In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine *EFI-System*-Partition und für die zweite Stufe des GRUB-Bootloader eine *BIOS-boot*-Partition.  
-Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm *cgdisk*, das GPT mit UEFI unterstützt.
+In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine *"EFI-System"*-Partition und für die zweite Stufe des GRUB-Bootloader eine *"BIOS-boot"*-Partition.  
+Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm `cgdisk`, das GPT mit UEFI unterstützt.
 
-*cgdisk* ist die Curses-basierte Programmvariante von *gdisk*. Sie bietet eine benutzerfreundliche Bedienoberfläche innerhalb des Terminals.  
+cgdisk ist die Curses-basierte Programmvariante von gdisk. Sie bietet eine benutzerfreundliche Bedienoberfläche innerhalb des Terminals.  
 Die Navigation erfolgt mittels der Pfeiltasten.
 
 + Für die Partitionen **`auf`** und **`ab`**
@@ -62,14 +62,14 @@ Die Navigation erfolgt mittels der Pfeiltasten.
 
 ### cgdisk verwenden
 
-Der Startbefehl in einem root-Terminal lautet: **cgdisk /dev/sdX**.
+Der Startbefehl in einem root-Terminal lautet: **`cgdisk /dev/sdX`**.
 
-*cgdisk* startet mit einer Warnmeldung, wenn keine GPT gefunden wird.
+cgdisk startet mit einer Warnmeldung, wenn keine GPT gefunden wird.
 
 ![Warnmeldung](./images/cgdisk/cgdisk_00.png)
 
-Wir benötigen für die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, eine gemeinsame DATEN- sowie eine SWAP-Partition für den Auslagerungsspeicher. Zusätzlich die bereits oben erwähnte *EFI-System*-Partition (maximal 100MB) und die *BIOS-boot*-Partition (1MB).  
-Wir empfehlen, das **/home**-Verzeichnis auf der ROOT-Partition zu belassen. Das Verzeichnis **/home** sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
+Wir benötigen für die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, eine gemeinsame DATEN- sowie eine SWAP-Partition für den Auslagerungsspeicher. Zusätzlich die bereits oben erwähnte *"EFI-System"*-Partition (maximal 100MB) und die *"BIOS-boot"*-Partition (1MB).  
+Wir empfehlen, das `/home`-Verzeichnis auf der ROOT-Partition zu belassen. Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
 
 Das Startbild
 
@@ -77,7 +77,7 @@ Das Startbild
 
 #### Partition erstellen
 
-Wir wählen *New* und bestätigen mit *Enter*. Mit einem zweiten *Enter* übernehmen wir den voreingestellten ersten Sektor für die neue Partition. Dann geben wir die gewünschte Größe von "100M" für die *EFI-System*-Partition ein und bestätigen die Eingabe.
+Wir wählen **`New`** und bestätigen mit **`Enter`**. Mit einem zweiten **`Enter`** übernehmen wir den voreingestellten ersten Sektor für die neue Partition. Dann geben wir die gewünschte Größe von `100M` für die *"EFI-System"*-Partition ein und bestätigen die Eingabe.
 
 ![Neue Partition](./images/cgdisk/cgdisk_02.png)
 
@@ -85,14 +85,14 @@ Nun wird von uns die Eingabe des Type-Code für die Partition erwartet.
 
 ![Type-Code](./images/cgdisk/cgdisk_03.png)
 
-Nach Eingabe von "L" erscheint eine lange Liste mit den Codes und ihrer Verwendung. Die integrierte Suchfunktion vereinfacht die Auswahl. Für uns sind folgende Codes notwendig:  
+Nach Eingabe von **`L`** erscheint eine lange Liste mit den Codes und ihrer Verwendung. Die integrierte Suchfunktion vereinfacht die Auswahl. Für uns sind folgende Codes notwendig:  
 ef00 für EFI-System  
 ef02 für BIOS-boot  
 8200 für Swap  
 8304 für Linux Root  
 8300 für Linux Daten
 
-Wir tragen also "ef00" ein und bestätigen. Anschließend dürfen wir optional noch einen Namen (Label) vergeben, was im Beispiel getan wurde, und die Eingabe wieder bestätigen. Mit den Partitionen für BIOS-boot, Linux-root und Swap wird nach gleichem Muster verfahren. Das nächst Bild zeigt das Ergebnis unserer Bemühungen. Wie wir sehen ist noch reichlich Platz für ein zweites System und vor allem für eine gemeinsam genutzte Daten-Partition vorhanden.
+Wir tragen also `ef00` ein und bestätigen. Anschließend dürfen wir optional noch einen Namen (Label) vergeben, was im Beispiel getan wurde, und die Eingabe wieder bestätigen. Mit den Partitionen für BIOS-boot, Linux-root und Swap wird nach gleichem Muster verfahren. Das nächst Bild zeigt das Ergebnis unserer Bemühungen. Wie wir sehen ist noch reichlich Platz für ein zweites System und vor allem für eine gemeinsam genutzte Daten-Partition vorhanden.
 
 ![Erster Teil](./images/cgdisk/cgdisk_04.png)
 
@@ -101,9 +101,9 @@ Nachdem die zwei Partitionen erstellt wurden, sehen wir die Aufteilung der gesam
 ![Gemeinsame Verwendung](./images/cgdisk/cgdisk_05.png)
 
 Die Partitionen, die die beiden Systeme später im Betrieb verwenden, sind farblich gekennzeichnet.  
-An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durch die Ausrichtung der Partition an die Blockgrenzen der Festplatte und können auch zwischen den Partitionen auftauchen. Mit *Align* kann der Wert für die Anzahl der Sektoren geändert werden. Für SSD und M2-Disk sind es in der Regel 2048 Sektoren und für alte Festplatten 512 Sektoren. *gdisk* liest die Metadaten der Festplatten aus und stellt den Wert für die Sektoren danach ein. Deshalb ist in der Regel keine Änderung notwendig.
+An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durch die Ausrichtung der Partition an die Blockgrenzen der Festplatte und können auch zwischen den Partitionen auftauchen. Mit **`Align`** kann der Wert für die Anzahl der Sektoren geändert werden. Für SSD und M2-Disk sind es in der Regel 2048 Sektoren und für alte Festplatten 512 Sektoren. gdisk liest die Metadaten der Festplatten aus und stellt den Wert für die Sektoren danach ein. Deshalb ist in der Regel keine Änderung notwendig.
 
-Zusätzliche, detailierte Informationen zu den Partitionen lassen sich einsehen, wenn der Befehl *Info* benutzt wird.
+Zusätzliche, detailierte Informationen zu den Partitionen lassen sich einsehen, wenn der Befehl **`Info`** benutzt wird.
 
 ![Partition Details](./images/cgdisk/cgdisk_06.png)
 
@@ -112,11 +112,11 @@ Mit *Verify* wird die Partitionierung überprüft und eventuelle Fehler werden a
 ![Partition Verify](./images/cgdisk/cgdisk_07.png)
 
 Hier ist alles in Ordnung.  
-Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl *Info*, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](0313-part-gdisk_de.md#erweiterte-befehle-von-gdisk) zur Verfügung.
+Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl **`Info`**, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](0313-part-gdisk_de.md#erweiterte-befehle-von-gdisk) zur Verfügung.
 
 #### Partition löschen
 
-Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl *Delete*.
+Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl **`Delete`**.
 
 ![Partition löschen](./images/cgdisk/cgdisk_08.png)
 
@@ -124,17 +124,17 @@ Bei Notwendigkeit verfahren wir mit anderen Partitionen genauso und können dann
 
 #### GPT schreiben
 
-Entspricht die Partitionierung der Festplatte unseren Vorstellungen prüfen wir noch einmal mit dem Befehl *Verify* ob alles in Ordnung ist. Werden keine Fehler angezeigt, wählen wir *Write* und
+Entspricht die Partitionierung der Festplatte unseren Vorstellungen prüfen wir noch einmal mit dem Befehl **`Verify`** ob alles in Ordnung ist. Werden keine Fehler angezeigt, wählen wir **`Write`** und
 
 ![Write](./images/cgdisk/cgdisk_09.png)
 
-dürfen die Sicherheitsabfrage mit "yes" beantworten.
+dürfen die Sicherheitsabfrage mit **`yes`** beantworten.
 
 ![Sicherheitsabfrage](./images/cgdisk/cgdisk_10.png)
 
-Der Warnhinweis sollte ernst genommen werden, denn nach Betätigung der *Enter*-Taste verschwinden alle Daten, die zuvor auf der Festplatte waren im Nirwana.
+Der Warnhinweis sollte ernst genommen werden, denn nach Betätigung der **`Enter`**-Taste verschwinden alle Daten, die zuvor auf der Festplatte waren im Nirwana.
 
-Da *cgdisk* nur Partitionen, aber keine Dateisysteme erstellt, muss jede der neuen Partitionen formatiert werden. Mit *Quit*  wird *cgdisk* beendet.
+Da cgdisk nur Partitionen, aber keine Dateisysteme erstellt, muss jede der neuen Partitionen formatiert werden. Mit **`Quit`**  wird cgdisk beendet.
 
 ### Formatieren der Partitionen
 
@@ -158,18 +158,18 @@ Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 
 Mit diesen Informationen formatieren wir unsere zuvor erstellten Partitionen.
 
-Bitte unbedingt die **man mke2fs**, **man mkfs.fat** und **man mkswap** lesen.
+Bitte unbedingt die man pages **`man mke2fs`**, **`man mkfs.fat`** und **`man mkswap`** lesen.
 
-Die EFI-Systempartition erhält ein FAT32 Dateisystem.
+Die EFI-Systempartition erhält ein **FAT32** Dateisystem.
 
 ~~~
 mkfs.vfat /dev/sdb1
 ~~~
 
 **Die BIOS_Boot-Partition darf nicht formatiert werden!**  
-Sofern der Bootmanager *GRUB* bei der Installation die *EFI-System*- und die *BIOS\_Boot*-Partition findet, benutzt er sie, gleichgültig, welches Installationsziel wir angegeben haben.
+Sofern der Bootmanager `GRUB` bei der Installation die *"EFI-System"*- und die *"BIOS\_Boot"*-Partition findet, benutzt er sie, gleichgültig, welches Installationsziel wir angegeben haben.
 
-Die Linuxpartitionen 'sdb3', 'sdb5' und 'sdb6' formatieren wir mit *ext4*.
+Die Linuxpartitionen `sdb3`, `sdb5` und `sdb6` formatieren wir mit **ext4**.
 
 ~~~
 mkfs.ext4 /dev/sdb3
@@ -221,8 +221,8 @@ Diese Möglichkeiten sind:
 
 #### Booten mit UEFI
 
-Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte **EFI System**-Partition (Typ "EF00" ) als erste Partition, und eine unformatierte **BIOS boot**-Partition (Typ "EF02" ) als zweite erstellt werden. Die erste Partition enthält den/die Bootloader.  
-Während der Installation von siduction wird jegliche Auswahlmöglichkeit der install-gui, wohin der Bootloader installiert werden soll, ignoriert, sofern die vorgenannten Partitionen existieren. Der Bootloader von siduction wird in der *EFI-System*-Partition unter "/efi/siduction"  gespeichert. Die EFI-Systempartition wird auch als "/boot/efi"  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *EFI-System*-Partition muss im Installer nicht extra angegeben werden.
+Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte *"EFI System"*-Partition (Typ "EF00" ) als erste Partition, und eine unformatierte *"BIOS boot"*-Partition (Typ "EF02" ) als zweite erstellt werden. Die erste Partition enthält den/die Bootloader.  
+Während der Installation von siduction wird jegliche Auswahlmöglichkeit der install-gui, wohin der Bootloader installiert werden soll, ignoriert, sofern die vorgenannten Partitionen existieren. Der Bootloader von siduction wird in der *"EFI-System"*-Partition unter `/efi/siduction`  gespeichert. Die EFI-Systempartition wird auch als `/boot/efi`  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *"EFI-System"*-Partition muss im Installer nicht extra angegeben werden.
 
 #### Booten mit BIOS
 
@@ -231,15 +231,15 @@ Die Partition sollte die Größe von 200MB haben. (Der Grund dieser Größe anst
 
 ### Erweiterte Befehle von gdisk
 
-*gdisk* besitzt erweiterte Optionen und Sicherheitsmechanismen die in *cgdisk* nicht zur Verfügung stehen.
+gdisk besitzt erweiterte Optionen und Sicherheitsmechanismen die in cgdisk nicht zur Verfügung stehen.
 
-Falls Probleme entdeckt wurden (z. B. überlappende Partitionen oder nicht entsprechende Haupt- und Sicherungspartitionstabellen), besteht die Möglichkeit, diese mit verschiedenen Optionen im Menü **recovery & transformation** zu beheben. Wir starten *gdisk* mit
+Falls Probleme entdeckt wurden (z. B. überlappende Partitionen oder nicht entsprechende Haupt- und Sicherungspartitionstabellen), besteht die Möglichkeit, diese mit verschiedenen Optionen im Menü `recovery & transformation` zu beheben. Wir starten gdisk mit
 
 ~~~
 gdisk  /dev/sdb
 ~~~
 
-An der Eingabeaufforderung **Command (? for help):** geben wir den Befehl **r** ein, um in das Untermenü von *recovery & transformation* zu gelangen und anschließend das **?**.
+An der Eingabeaufforderung **`Command (? for help):`** geben wir den Befehl **`r`** ein, um in das Untermenü von *"recovery & transformation"* zu gelangen und anschließend das **`?`**.
 
 ~~~
 recovery/transformation command (? for help): ?
@@ -263,7 +263,7 @@ x extra functionality (experts only)
 ? print this menu
 ~~~
 
-Ein drittes Menü, *experts* , erreicht man mit **x**  entweder vom *main menu*  oder dem *recovery & transformation menu*.
+Ein drittes Menü, **`experts`** , erreicht man mit **`x`**  entweder vom *"main menu"*  oder dem *"recovery & transformation menu"*.
 
 ~~~
 recovery/transformation command (? for help): x
@@ -289,8 +289,8 @@ z zap (destroy) GPT data structures and exit
 ? print this menu
 ~~~
 
-Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID oder der GUIDs des Datenträgers (**c**  bzw. **g** ). Die Option **z**  zerstört augenblicklich die GPT-Datenstrukturen. Dies kann sinnvoll sein, wenn der GPT-Datenträger mit einem anderen Partitionierungsschema verwendet werden soll. Falls diese Strukturen nicht ausgelöscht werden, können einige Partitionierungsprogramme wegen des Vorhandenseins von zwei Partitionierungssystemen Probleme haben.
+Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID oder der GUIDs des Datenträgers (**`c`** bzw. **`g`** ). Die Option **`z`** zerstört augenblicklich die GPT-Datenstrukturen. Dies kann sinnvoll sein, wenn der GPT-Datenträger mit einem anderen Partitionierungsschema verwendet werden soll. Falls diese Strukturen nicht ausgelöscht werden, können einige Partitionierungsprogramme wegen des Vorhandenseins von zwei Partitionierungssystemen Probleme haben.
 
-Trotz alledem: die Optionen der Menüs *recovery & transformation*  und *experts*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **b**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
+Trotz alledem: die Optionen der Menüs *"recovery & transformation"*  und *"experts"*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **`b`**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
 
 <div id="rev">Zuletzt bearbeitet: 2021-11-28</div>
