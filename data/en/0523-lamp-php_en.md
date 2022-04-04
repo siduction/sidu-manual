@@ -8,17 +8,17 @@ PHP is ready to use in siduction after installation with the default configurati
 
 Debian has fully integrated the files of PHP into the file system according to their function:
 
-+ the executable program *php7.x* and the link *php* into **/usr/bin/**   
-    + (the latter points to */usr/bin/php7.x* via */etc/alternatives/php*.)  
-+ the installed modules into **/usr/lib/php/**  
-+ shared program parts and modules into **/usr/share/php/** and **/usr/share/php\<module\>**  
-+ the configuration directories and files into **/etc/php/**  
-+ the current state of modules and sessions at runtime into **/var/lib/php/**
++ the executable program `php7.x` and the link `php` into `/usr/bin/`   
+    + (The latter points to `/usr/bin/php7.x` via `/etc/alternatives/php`.)  
++ the installed modules into `/usr/lib/php/`  
++ shared program parts and modules into `/usr/share/php/` and `/usr/share/php<module>`  
++ the configuration directories and files into `/etc/php/`  
++ the current state of modules and sessions at runtime into `/var/lib/php/`
 
 ### PHP support for Apache2
 
 By default, the Apache web server loads support for PHP. We check this with the following command
-(replace the x with the minor attribute of the currently used PHP version, i.e. something like 7.4):
+(replace the *"x"* with the minor attribute of the currently used PHP version, i.e. something like 7.4):
 
 ~~~
 # ls /etc/apache2/mods-enabled/* | grep php
@@ -26,7 +26,7 @@ By default, the Apache web server loads support for PHP. We check this with the 
 /etc/apache2/mods-enabled/php7.x.load
 ~~~
 
-We see that Apache has loaded the PHP module for version 7.x. To cause the PHP interpreter to process files with the extension "*.php*", the *DirectoryIndex* directive in the Apache configuration file *dir.conf* must contain the value *index.php*. We check this as well:
+We see that Apache has loaded the PHP module for version 7.x. To cause the PHP interpreter to process files with the extension "*.php*", the `DirectoryIndex` directive in the Apache configuration file `dir.conf` must contain the value `index.php`. We check this as well:
 
 ~~~
 # cat /etc/apache2/mods-available/dir.conf
@@ -35,11 +35,11 @@ We see that Apache has loaded the PHP module for version 7.x. To cause the PHP i
 </IfModule>
 ~~~
 
-Nothing stands in the way of using PHP, because the value *index.php* is included.
+Nothing stands in the way of using PHP, because the value *"index.php"* is included.
 
 ### PHP configuration
 
-The directory **/etc/php/7.x/** contains the configuration sorted by the available interfaces.  
+The directory `/etc/php/7.x/` contains the configuration sorted by the available interfaces.  
 The output shows the state after the initial installation.
 
 ~~~
@@ -50,7 +50,7 @@ drwxr-xr-x 3 root root 4096 18 Dec 16:54 cli
 drwxr-xr-x 2 root root 4096 18 Dec 16:54 mods-available
 ~~~
 
-With the modules *php7.x-cgi* and *php7.x-fpm* installed below, two new directories have been added.
+With the modules *"php7.x-cgi"* and *"php7.x-fpm"* installed below, two new directories have been added.
 
 ~~~
 # ls -l /etc/php/7.x/
@@ -62,8 +62,8 @@ drwxr-xr-x 4 root root 4096 1 Feb 21:23 fpm
 drwxr-xr-x 2 root root 4096 1 Feb 13:22 mods-available
 ~~~
 
-Each of the *apache2*, *cgi*, *cli*, and *fpm* directories contains a *conf.d* folder and a *php.ini* file.  
-The respective *php.ini* contains the configuration for the corresponding interface and can be changed or supplemented if necessary. The *conf.d* folder contains the links to the activated modules.
+Each of the `apache2`, `cgi`, `cli`, and `fpm` directories contains a `conf.d` folder and a `php.ini` file.  
+The respective *"php.ini"* contains the configuration for the corresponding interface and can be changed or supplemented if necessary. The *"conf.d"* folder contains the links to the activated modules.
 
 ### PHP modules
 
@@ -125,7 +125,7 @@ Now we know the exact names of the modules.
 More detailed descriptions of the modules are provided by the command
 
 ~~~
-# apt show <module name>
+# apt show <module_name>
 ~~~
 
 **Installation**
@@ -147,23 +147,23 @@ Then we restart Apache:
 
 The state of PHP modules can be changed during runtime. This also allows controlling modules in scripts to load them before use and unload them afterwards.
 
-+ **phpenmod** - activates modules in PHP  
-+ **phpdismod** - disables modules in PHP  
-+ **phpquery** - shows the status of PHP modules
++ `phpenmod` - activates modules in PHP  
++ `phpdismod` - disables modules in PHP  
++ `phpquery` - shows the status of PHP modules
 
-Unnecessary modules (*imagick* in the example) are deactivated in the console by the command
+Unnecessary modules (imagick in the example) are deactivated in the console by the command
 
 ~~~
 # phpdismod imagick
 ~~~
 
-To load the module *imagick* for all iterfaces, use the command
+To load the imagick module for all interfaces, use the command
 
 ~~~
 # phpenmod imagick
 ~~~
 
-If we use the option "*-s apache2*", e.g.:
+If we use the option `-s apache2`, e.g.:
 
 ~~~
 # phpenmod -s apache2 imagick
@@ -171,7 +171,7 @@ If we use the option "*-s apache2*", e.g.:
 
 the module will be loaded for Apache2 only.
 
-The status query with *phpquery* always requires the module version and interface to be specified. Here are some examples:
+The status query with `phpquery` always requires the module version and interface to be specified. Here are some examples:
 
 ~~~
 # phpquery -v 7.4 -s apache2 -m zip
@@ -187,11 +187,11 @@ zip (Enabled for fpm by maintainer script)
 imagick (Enabled for apache2 by local administrator)
 ~~~
 
-For the *imagick* module, the string "*Enabled for apache2 by local administrator*" tells us that it was not loaded automatically at startup like the *zip* module, but that the administrator has enabled it manually. The reason is the previously used *phpdismod* and *phpenmod* commands for this module.
+For the imagick module, the string *"Enabled for apache2 by local administrator"* tells us that it was not loaded automatically at startup like the zip module, but that the administrator has enabled it manually. The reason is the previously used `phpdismod` and `phpenmod` commands for this module.
 
 ### Apache Log
 
-The Apache server stores the error messages of PHP in its log files under **/var/log/apache2/**. At the same time, if PHP functions fail, a message appears on the called web page.  
+The Apache server stores the error messages of PHP in its log files under `/var/log/apache2/`. At the same time, if PHP functions fail, a message appears on the called web page.  
 Alternatively, we can display the log functions.
 
 ~~~
@@ -205,7 +205,7 @@ opcache.error_log => no value
 [...]
 ~~~
 
-In the files **`/etc/php/7.x/\<Interface\>/php.ini`**, we have the possibility to replace the unset values with our own, actually existing log files.
+In the files `/etc/php/7.x/<Interface>/php.ini`, we have the possibility to replace the unset values with our own, actually existing log files.
 
 ### Sources PHP
 
@@ -213,4 +213,4 @@ In the files **`/etc/php/7.x/\<Interface\>/php.ini`**, we have the possibility t
 [PHP - current messages](https://www.php.net/)  
 [tecadmin - module handling](https://tecadmin.net/enable-disable-php-modules-ubuntu/)
 
-<div id="rev">Last edited: 2022/02/16</div>
+<div id="rev">Last edited: 2022/04/04</div>

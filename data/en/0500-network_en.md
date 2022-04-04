@@ -16,7 +16,7 @@ This section contains informations and notes on
 
 + [LAMP - Apache](0521-lamp-apache_en.md#set-up-apache), its directories in the file system, configuration, user and rights management, secure operation as a local server, and the use of HTTPS.
 
-+ [LAMP - MariaDB](0522-lamp-sql_en.md#set-up-mariadb), its directories in the file system, initial configuration, the command line interface "mariadb", phpMyAdmin, and integration with systemd.
++ [LAMP - MariaDB](0522-lamp-sql_en.md#set-up-mariadb), its directories in the file system, initial configuration, the command line interface `mariadb`, phpMyAdmin, and integration with systemd.
 
 + [LAMP - PHP](0523-lamp-php_en.md#set-up-php), the directories in the file system, PHP support for Apache2, configuration, installation as well as handling of modules, and where to find the log files.
 
