@@ -82,7 +82,7 @@ To make SSH more secure, use a text editor of your choice to edit the file `/etc
 Finally:
 
 ~~~
-/etc/init.d/ssh restart
+systemctl restart ssh
 ~~~
 
 Now you have a somewhat secure SSH configuration. Not completely secure, just better, especially if you have added a user specifically for using SSH.
