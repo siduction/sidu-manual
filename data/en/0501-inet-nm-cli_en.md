@@ -4,13 +4,13 @@
 
 **General hints**
 
-The network manager is now integrated in all graphical user interfaces of siduction and is mostly self-explanatory. It replaces the network commands *ifup*, *ifdown* and *ifconfig* used in the terminal. The prejudice that the network manager is not suitable for the command line or even runs unstable belongs to the realm of fairy tales. If no graphical user interface is available, or the command line is preferred, **nmcli** is a powerful command line alternative for the daily use of the network manager.
+The network manager is now integrated in all graphical user interfaces of siduction and is mostly self-explanatory. It replaces the network commands `ifup`, `ifdown`, and `ifconfig` used in the terminal. The prejudice that the network manager is not suitable for the command line or even runs unstable belongs to the realm of fairy tales. If no graphical user interface is available, or the command line is preferred, **nmcli** is a powerful command line alternative for the daily use of the network manager.
 
-In the following examples we assume two configured connections. A Wi-Fi connection (name: Unicorn\_2, interface wtx7ckd90b81bbd, (formerly: wlan)) and a wired connection (name: WiredConnection\_1, interface evp0s3f76 (former: eth0)). Please adapt the connection names to your circumstances.
+In the following examples we assume two configured connections: a Wi-Fi connection (name: *"Unicorn\_2"*, interface *"wtx7ckd90b81bbd"*, (formerly: wlan)) and a wired connection (name: *"WiredConnection\_1"*, interface *"evp0s3f76"* (former: eth0)). Please adapt the connection names to your circumstances.
 
 **Installation of the Network Manager**
 
-If the network manager is not available on your system, you can install it. The following command will install all packages you need to configure every possible connection type (mobile broadband, Wi-Fi and LAN connections), as well as the graphical KDE plasma widget for the NM. Please enter everything in one line and remember that you need **root** privileges.
+If the network manager is not available on your system, you can install it. The following command will install all packages you need to configure every possible connection type (mobile broadband, Wi-Fi, and LAN connections), as well as the graphical KDE plasma widget for the NM. Please enter everything in one line and remember that you need **root** privileges.
 
 ~~~sh
 # apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
@@ -19,7 +19,7 @@ If the network manager is not available on your system, you can install it. The 
 
 ### Use Network Manager
 
-The entries can be made both in a virtual terminal (key combination `Ctr`+`Shift`+`F2`) and in the console of a graphical user interface. In the examples shown, the information has been changed for privacy reasons.
+The entries can be made both in a virtual terminal (key combination **`Ctr`**+**`Shift`**+**`F2`**) and in the console of a graphical user interface. In the examples shown, the information has been changed for privacy reasons.
 
 **Show configured connections**
 
@@ -27,7 +27,7 @@ The command **`nmcli c`** can be used to display the configured connections that
 
 ![nmcli c](./images/nmcli/nmcli-c.png)
 
-In the above example, there are four connections: WLAN, 2x LAN and a mobile broadband connection.
+In the above example, there are four connections: WLAN, 2x LAN, and a mobile broadband connection.
 
 **Show information about Wi-Fi networks**.
 
@@ -42,7 +42,7 @@ If you want to know which devices (interfaces) are known to the network manager,
 
 ![nmcli d](./images/nmcli/nmcli-d.png)
 
-Very detailed information (properties) about the own available connections can be displayed through **`nmcli dev show`**. Here only the excerpt for the Wi-Fi.
+Very detailed information (properties) about the own available connections can be displayed through **`nmcli dev show`**. Here only the excerpt for the Wi-Fi:
 
 ![nmcli dev show](./images/nmcli/nmcli-dev-show.png)
 
@@ -50,13 +50,13 @@ The Wi-Fi access data can be displayed with **`nmcli dev wifi show`**.
 
 ![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show.png)
 
-The additionally generated QR code simplifies the login for smartphone and tablet.
+The additionally generated QR code simplifies the login for smartphones and tablets.
 
 **Switch connections**
 
-To change a connection type, e.g. from LAN to Wi-Fi connection, you have to disconnect the existing active connection and activate the new one. Here, you definitely have to specify the interface because a *nmcli con down id <name>* will work, but the connection, if it is a system connection, will be re-established immediately.
+To change a connection type, e.g. from LAN to Wi-Fi connection, you have to disconnect the existing active connection and activate the new one. Here, you definitely have to specify the interface because a **`nmcli con down id <name>`** will work, but the connection, if it is a system connection, will be re-established immediately.
 
-To prevent the automatic connection, the command **`nmcli dev disconnect <interface name>`** is useful.  
+To prevent the automatic connection, the command **`nmcli dev disconnect <interface_name>`** is useful.  
 First we terminate the LAN connection and then query the status:
 
 ~~~
@@ -70,7 +70,7 @@ evp3u3 ethernet not available --
 ttyACM0 gsm not connected --
 ~~~
 
-Now enable the Wi-Fi connection with **`nmcli con up id <connection name>`**:
+Now enable the Wi-Fi connection with **`nmcli con up id <connection_name>`**:
 
 ~~~
 # nmcli con up id Unicorn_2
@@ -83,7 +83,7 @@ evp3u3 ethernet not available --
 ttyACM0 gsm not connected --
 ~~~
 
-You can also put everything in one line, then the change will be done immediately.
+You can also put everything in one line, then the change will take effect immediately.
 
 From LAN to Wi-Fi:
 
@@ -108,4 +108,4 @@ nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'WiredConnect
 + [Ubuntu community NetworkManager](https://help.ubuntu.com/community/NetworkManager)
 
 
-<div id="rev">Last edited: 2022/01/22</div>
+<div id="rev">Last edited: 2022/04/03</div>

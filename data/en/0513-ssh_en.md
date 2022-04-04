@@ -12,7 +12,7 @@ IANA has assigned TCP port 22 to the protocol, but any other ports can be select
 
 It is not secure to allow root logins via SSH. It is important not to make root logins the default because Debian should be secure, not insecure. Similarly, attackers should not be able to perform a wordlist-based password attack (brute force attack) on the SSH login over ten minutes. Therefore, it makes sense to limit the login time window as well as the number of possible attempts.
 
-To make SSH more secure, use a text editor of your choice to edit the file *`/etc/ssh/sshd_config`*.
+To make SSH more secure, use a text editor of your choice to edit the file `/etc/ssh/sshd_config`.
 
 **The following settings can be adjusted to increase security:**
 
@@ -66,7 +66,7 @@ To make SSH more secure, use a text editor of your choice to edit the file *`/et
   ~~~
 
 + `PermitEmptyPasswords <xxx>:`  
-  The user should be given a nice and long password that can't be guessed in a million years. They should be the only one with SSH access. Once logged in, they can become **root** with `su`:
+  The user should be given a nice and long password that can't be guessed in a million years. They should be the only one with SSH access. Once logged in, they can become **root** with **`su`**:
 
   ~~~
   PermitEmptyPasswords no
@@ -82,7 +82,7 @@ To make SSH more secure, use a text editor of your choice to edit the file *`/et
 Finally:
 
 ~~~
-/etc/init.d/ssh restart
+systemctl restart ssh
 ~~~
 
 Now you have a somewhat secure SSH configuration. Not completely secure, just better, especially if you have added a user specifically for using SSH.
@@ -110,10 +110,10 @@ $ ssh -C -X username@xxx.xxx.xxx.xxx (or IP)
 More information:
 
 ~~~
-$man ssh
+$ man ssh
 ~~~
 
-**Note:** If ssh refuses a connection and you get an error message, search in "*$HOME*" for the hidden directory "*.ssh*" , delete the file *known_hosts* and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
+**Note:** If ssh refuses a connection and you get an error message, search in `$HOME` for the hidden directory `.ssh`, delete the file `known_hosts` and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
 
 ### Copy scp via ssh
 
@@ -131,13 +131,13 @@ It is also possible to recursively copy entire partitions or directories with **
    scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/
    ~~~
 
-2. Copying a directory on a partition, in this case a directory named "*photos*" in "*$HOME*":
+2. Copying a directory on a partition, in this case a directory named `photos` in `$HOME`:
 
    ~~~
    scp -r <user>@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx
    ~~~
 
-3. Copy a file in a partition's directory, in this case a file in "*$HOME*":
+3. Copying a file in a partition's directory, in this case a file in `$HOME`:
 
    ~~~
    scp <user>@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx
@@ -189,7 +189,7 @@ or
 sftp://username@198.x.x.x
 ~~~
 
-Please enter the correct IP! Afterwards, a dialog window for the ssh password's input follows.  
+Please enter the correct IP! Afterwards, a dialog window occurs, asking for the ssh password.  
 A SSH connection in Dolphin is now established. In this Dolphin window, you can work with the files on the SSH server as if they were local files.
 
 **NOTE: If a port other than 22 (default) is used, it must be specified when using sftp:**
@@ -198,7 +198,7 @@ A SSH connection in Dolphin is now established. In this Dolphin window, you can 
 sftp://user@ip:port
 ~~~
 
-'user@ip:port' - this is the default syntax for many protocols/programs like sftp and smb.
+*"user@ip:port"* - this is the default syntax for many protocols/programs like sftp and smb.
 
 ### SSHFS - mount on a remote computer
 
@@ -211,7 +211,7 @@ On the client side, you probably need to install sshfs first:
 apt update && apt install sshfs
 ~~~
 
-*fuse3* and *groups* are already on the ISO and do not need to be installed separately. 
+`fuse3` and `groups` are already on the ISO and do not need to be installed separately. 
 
 Mounting a remote filesystem is very easy:
 
@@ -219,9 +219,9 @@ Mounting a remote filesystem is very easy:
 sshfs -o idmap=user username@remote_hostname:directory local_mountpoint
 ~~~
 
-If no specific directory is specified, the remote user's home directory will be mounted. Please note: the colon "**`:`**" is mandatory even if no directory is specified! 
+If no specific directory is specified, the remote user's home directory will be mounted. Please note: the colon *":"* is mandatory even if no directory is specified! 
 
-Once mounted, the remote directory behaves like any other local file system. You can browse, read, and modify files and execute scripts just like on a local file system.
+Once mounted, the remote directory behaves like any other local file system. You can browse, read and modify files, and execute scripts just like on a local file system.
 
 Mounting the remote host is accomplished with the following command:
 
@@ -229,13 +229,13 @@ Mounting the remote host is accomplished with the following command:
 fusermount -u local_mountpoint
 ~~~
 
-If you use sshfs regularly, it is recommended to make an entry in *`/etc/fstab`*:
+If you use sshfs regularly, it is recommended to make an entry in `/etc/fstab`:
 
 ~~~
 sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
-Next, remove the comment character before "user_allow_other" in the file *`/etc/fuse.conf`*:
+Next, remove the comment character before *"user_allow_other"* in the file `/etc/fuse.conf`:
 
 ~~~
 # Allow non-root users to specify the 'allow_other' or 'allow_root'
@@ -263,7 +263,7 @@ The answer should look something like this:
 fuse:x:117: <username>
 ~~~
 
-If the username is not listed, use the *adduser* command as **root**:
+If the username is not listed, use the `adduser` command as **root**:
 
 ~~~
 adduser <username> fuse
@@ -280,4 +280,4 @@ mount local_mountpoint
 umount local_mountpoint
 ~~~
 
-<div id="rev">Last edited: 2022/02/02</div>
+<div id="rev">Last edited: 2022/04/03</div>

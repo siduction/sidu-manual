@@ -11,18 +11,18 @@ The only exception is that the server will be connected to the Internet temporar
 
 Debian has fully integrated the Apache files into the file system according to their function:
 
-+ the executable program *apache2* into **/usr/sbin/**  
-+ the installed modules for Apache into **/usr/lib/apache2/modules/**  
-+ files that are also available to other programs into **/usr/share/apache2/**  
-+ the configuration directories and files into **/etc/apache2/**  
-+ the web page created by the user into **/var/www/html/**  
-+ system files required at runtime into **/run/apache2/, /run/lock/apache2/**  
-+ various log files into **/var/log/apache2/**  
++ the executable program *apache2* into `/usr/sbin/`  
++ the installed modules for Apache into `/usr/lib/apache2/modules/`  
++ files that are also available to other programs into `/usr/share/apache2/`  
++ the configuration directories and files into `/etc/apache2/`  
++ the web page created by the user into `/var/www/html/`  
++ system files required at runtime into `/run/apache2/`, `/run/lock/apache2/`  
++ various log files into `/var/log/apache2/`  
 
-It is important to distinguish between the variables "*ServerRoot*" and "*DocumentRoot*".
+It is important to distinguish between the variables `ServerRoot` and `DocumentRoot`.
 
-**ServerRoot** is the configuration directory, i.e. "*/etc/apache2/*".  
-**DocumentRoot** contains the web page data, so "*/var/www/html/*".
+**ServerRoot** is the configuration directory, i.e. `/etc/apache2/`.  
+**DocumentRoot** contains the web page data, so `/var/www/html/`.
 
 ### Connection to the server
 
@@ -54,11 +54,11 @@ We make a backup copy of the `*/etc/hosts*` file on the server and on the PC and
   echo "192.168.3.1 server1.org www.server1.org" >> /etc/hosts
   ~~~
 
-Next, in *NetworkManager*, we enter the data for the server in the fields outlined in red. The method is changed from "*Automatic (DHCP)*" to "*Manual*" and in the address fields we enter the values mentioned at the beginning.
+Next, in *NetworkManager*, we enter the data for the server in the fields outlined in red. The method is changed from *"Automatic (DHCP)"* to *"Manual"* and in the address fields we enter the values mentioned at the beginning.
 
 ![Server - Data entry in NetworkManager](./images/lamp-apache/server_lan.png)
 
-Additionally, in the tab "*General*", the option "*Automatically connect with priority*" should be activated.  
+Additionally, in the tab *"General"*, the option *"Automatically connect with priority"* should be activated.  
 Accordingly, we set the appropriate settings on the PC for the used LAN interface.
 
 On the PC, we test the connection in the console with
@@ -67,30 +67,30 @@ On the PC, we test the connection in the console with
 $ ping -c3 www.server1.org
 ~~~
 
-and, if successful, we immediately check the function of Apache by entering "*http://www.server1.org/index.html*" in the address line of the web browser.
+and, if successful, we immediately check the function of Apache by entering http://www.server1.org/index.html in the address line of the web browser.
 
-The Apache welcome page with "*It works!*" should appear.
+The Apache welcome page with *"It works!"* should appear.
 
 ### Apache configuration
 
-The configuration files and directories are located in the "*ServerRoot*" directory "*/etc/apache2/*".  
-The central configuration file is "*apache2.conf*". It is usually not edited because many configurations are in separate files. Activation and deactivation is done via sym links. This has the advantage that a number of different configurations are available and only the required ones are included.
+The configuration files and directories are located in the `ServerRoot` directory `/etc/apache2/`.  
+The central configuration file is `apache2.conf`. It is usually not edited because many configurations are in separate files. Activation and deactivation is done via sym links. This has the advantage that a number of different configurations are available and only the required ones are included.
 
-The configuration files are text files, which are created or edited with an editor and **root** permissions. The name of the file may be arbitrary, but the file extension must be "*.conf*". The valid directives that may be used in the configuration files are described in detail in the [Apache documentation](https://httpd.apache.org/docs/current/en/).
+The configuration files are text files, which are created or edited with an editor and **root** permissions. The name of the file may be arbitrary, but the file extension must be *".conf"*. The valid directives that may be used in the configuration files are described in detail in the [Apache documentation](https://httpd.apache.org/docs/current/en/).
 
 The files are located in the directories 
 
-"*/etc/apache2/conf-available*",  
-"*/etc/apache2/mods-available*", and  
-"*/etc/apache2/sites-available*".
+`/etc/apache2/conf-available`,  
+`/etc/apache2/mods-available`, and  
+`/etc/apache2/sites-available`.
 
 Your activation links can be found in
 
-"*/etc/apache2/conf-enable*",  
-"*/etc/apache2/mods-enable*", and  
-"*/etc/apache2/sites-enable*".
+`/etc/apache2/conf-enable`,  
+`/etc/apache2/mods-enable`, and  
+`/etc/apache2/sites-enable`.
 
-To enable or disable a "*.conf*" file, we use *a2enconf* and *a2disconf*. This creates or removes the activation links. The command
+To enable or disable a *".conf"* file, we use `a2enconf` and `a2disconf`. This creates or removes the activation links. The command
 
 ~~~sh
 a2enconf NAME_OF_FILE.conf 
@@ -102,7 +102,7 @@ activates the configuration. Deactivation is done accordingly with:
 a2disconf NAME_OF_FILE.conf 
 ~~~
 
-We proceed in the same way for modules and virtual hosts with the commands *a2enmod*, *a2ensite* and *a2dismod*, *a2dissite*.
+We proceed in the same way for modules and virtual hosts with the commands `a2enmod`, `a2ensite` and `a2dismod`, `a2dissite`.
 
 The Apache web server reads the changed configuration with the command
 
@@ -113,77 +113,77 @@ systemctl reload apache2.service
 
 Now we return to our *LAMP test server for developers* and adjust the configuration to the server data.
 
-1. `*/etc/apache2/apache2.conf*` file
+1. `/etc/apache2/apache2.conf` file
 
-   It is one of the few exceptions for editing the *apache2.conf*. We add the following line at the beginning of the *Global configuration* section:
+   It is one of the few exceptions for editing the `apache2.conf`. We add the following line at the beginning of the *"Global configuration"* section:
 
-   ~~~sh
-   ServerName 192.168.3.1
-   ~~~
+	~~~sh
+	ServerName 192.168.3.1
+	~~~
 
    This tells the Apache web server the IP address where the development project should be reachable and suppresses redirections to IP 127.0.1.1 with error messages.
 
-2. New `*sites*` file
+2. New `sites` file
 
-   With the text editor of our choice, we create the file `*/etc/apache2/sites-available/server1.conf*`, e.g.
+   With the text editor of our choice, we create the file `/etc/apache2/sites-available/server1.conf`, e.g.
 
-   ~~~sh
-   mcedit /etc/apache2/sites-available/server1.conf
-   ~~~
+	~~~sh
+	mcedit /etc/apache2/sites-available/server1.conf
+	~~~
 
-   Then we insert the following content, save the file, and exit the editor.
+	Then we insert the following content, save the file, and exit the editor.
 
-   ~~~apache
-   <VirtualHost *:80>
+	~~~apache
+	<VirtualHost *:80>
 	   ServerName server1.org
 	   ServerAlias www.server1.org
 	   ServerAdmin webmaster@localhost
 	   DocumentRoot /var/www/html
 	   ErrorLog ${APACHE_LOG_DIR}/error_server1.log
 	   CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
-   </VirtualHost>
-   ~~~
+	</VirtualHost>
+	~~~
 
-   Then we change the configuration to the new *VirtualHost* and announce the changes to the Apache web server:
+	Then we change the configuration to the new *VirtualHost* and announce the changes to the Apache web server:
 
-   ~~~sh
-   # a2ensite server1.conf 
-     Enabling site server1.
-   [...]
+~~~sh
+# a2ensite server1.conf 
+   Enabling site server1.
+[...]
 
-   # a2dissite 000-default.conf 
-     Site 000-default disabled.
-   [...]
+# a2dissite 000-default.conf 
+   Site 000-default disabled.
+[...]
 
-   systemctl reload apache2.service
-   ~~~
+systemctl reload apache2.service
+~~~
 
 ### Users and permissions
 
-The Apache web server runs with the USER.GROUP "*www-data.www-data*" and *DocumentRoot* belongs to "*root.root*" immediately after installation.  
-To give users write permissions to the files contained in "*DocumentRoot*", a new group should be created specifically for this purpose. It does not make sense to use the existing group "*www-data*" because Apache runs with the rights of this group.  
-We name the new group "*developer*".
+The Apache web server runs with the USER.GROUP *www-data.www-data*" and `DocumentRoot` belongs to *"root.root"* immediately after installation.  
+To give users write permissions to the files contained in `DocumentRoot`, a new group should be created specifically for this purpose. It does not make sense to use the existing group *www-data* because Apache runs with the rights of this group.  
+We name the new group *"developer"*.
 
 **With CMS**
 
-If a content management system (software for collaborative editing of website content) is added, we prepare "*DocumentRoot*" accordingly:
+If a content management system (software for collaborative editing of website content) is added, we prepare `DocumentRoot` accordingly:
 
 1. Create the group and assign it to the user.
 
-   ~~~sh
-   groupadd developer
-   adduser USERNAME developer
-   chgrp developer /var/www/html
-   ~~~
+	~~~sh
+	groupadd developer
+	adduser USERNAME developer
+	chgrp developer /var/www/html
+	~~~
 
-   To activate the new permissions you have to log out and log in again, or use the *newgrp* command as user.
+To activate the new permissions you have to log out and log in again, or use the `newgrp` command as user.
 
    ~~~sh
    $ newgrp developer
    ~~~
 
-2. Set SGID bit for "*DocumentRoot*"  
-   so that all added directories and files inherit the group "*developer*".
+2. Set SGID bit for `DocumentRoot`  
+   so that all added directories and files inherit the group *"developer"*.
 
    ~~~sh
    chmod g+s /var/www/html
@@ -202,7 +202,7 @@ If a content management system (software for collaborative editing of website co
    -rw-r--r-- 1 root developer 20 Jan 9, 19:32 info.php
    ~~~
 
-   For "*DocumentRoot*" we change the owner to "*www-data*", give write permission to the group, and revoke read permission from everyone else as well (all recursively).
+   For `DocumentRoot` we change the owner to *"www-data"*, give write permission to the group, and revoke read permission from everyone else as well (all recursively).
 
    ~~~sh
    chown -R www-data /var/www/html
@@ -221,16 +221,16 @@ If a content management system (software for collaborative editing of website co
    -rw-rw---- 1 www-data developer 20 9 Jan 19:32 info.php
    ~~~
 
-   Now only members of the group "*developer*" have write permission in "*DocumentRoot*". Apache web server can read and write the files, all others are denied access.
+   Now only members of the group *developer* have write permission in `DocumentRoot`. Apache web server can read and write the files, all others are denied access.
 
 4. Disadvantages of these settings
 
-   When creating new directories and files below "*DocumentRoot*", the owner is the respective "*user*" and not "*www-data*". This prevents the Apache web server from reading the files.  
-   The solution is a "*Systemd Path Unit*", which monitors changes below "*DocumentRoot*" and adjusts the owner and file permissions. (See the example in the [Systemd-Path](0715-systemd-path_en.md#systemd-path) manual page).
+   When creating new directories and files below `DocumentRoot`, the owner is the respective **user** and not *www-data*. This prevents the Apache web server from reading the files.  
+   The solution is a *Systemd Path Unit*, which monitors changes below `DocumentRoot` and adjusts the owner and file permissions. (See the example in the [Systemd-Path](0715-systemd-path_en.md#systemd-path) manual page.)
 
 **Without CMS**
 
-For static websites, a content management system is often not necessary and only constitutes another security risk and increased maintenance effort. In addition to the settings made before, the write permission to "*DocumentRoot*" can be revoked from the Apache web server to strengthen security because in case an attacker finds a hole in Apache, this will not give him write permission to "*DocumentRoot*".
+For static websites, a content management system is often not necessary and only constitutes another security risk and increased maintenance effort. In addition to the settings made before, the write permission to `DocumentRoot` can be revoked from the Apache web server to strengthen security because in case an attacker finds a hole in Apache, this will not give him write permission to `DocumentRoot`.
 
 ~~~sh
 chmod -R u-w /var/www/html
@@ -238,9 +238,9 @@ chmod -R u-w /var/www/html
 
 ### Security - Apache Standard
 
-Important safeguards are already included in the file `*/etc/apache2/apache2.conf*` by default.
+Important safeguards are already included in the file `/etc/apache2/apache2.conf` by default.
 
-The following three directives prevent access to the root file system and then release the two directories used by the Apache web server, "*/usr/share*" and "*/var/www*".
+The following three directives prevent access to the root file system and then release the two directories used by the Apache web server, "/usr/share" and "/var/www".
 
 ~~~apacheconf 
 <Directory />
@@ -261,9 +261,9 @@ The following three directives prevent access to the root file system and then r
 </directory>
 ~~~
 
-The options "*FollowSymLinks*" and "*Indexes*" constitute a security risk and should be changed unless absolutely necessary. See below.
+The options *"FollowSymLinks"* and *"Indexes"* constitute a security risk and should be changed unless absolutely necessary. See below.
 
-The following directive disables the display of the files `*.htaccess*` and `*.htpasswd*`.
+The following directive disables the display of the files `.htaccess` and `.htpasswd`.
 
 ~~~apacheconf
 <FilesMatch "^\.ht">
@@ -275,17 +275,17 @@ The following directive disables the display of the files `*.htaccess*` and `*.h
 
 + In the file **/etc/apache2/apache2.conf**:
 
-  **FollowSymLinks** may cause content outside "*DocumentRoot*" to be listed.  
-  **Indexes** lists the contents of a directory if there is no *index.html* or *index.php* etc..
+  **FollowSymLinks** may cause content outside `DocumentRoot` to be listed.  
+  **Indexes** lists the contents of a directory if there is no `index.html` or `index.php`, etc..
 
-  It is recommended to remove "*FollowSymLinks*" and place all the project data below "*DocumentRoot*". For the "*Indexes*" option, the entry has to be changed to
+  It is recommended to remove *"FollowSymLinks"* and place all the project data below *"DocumentRoot"*. For the *"Indexes"* option, the entry has to be changed to
 
   ~~~apacheconf
   Options -Indexes
   ~~~
 
   if the display of the directory contents is **not** desired.  
-  Alternatively, create an empty *index* file in the directory that is delivered to the client in place of the directory contents. For example, for the "*upload*" directory:
+  Alternatively, create an empty *index* file in the directory that is delivered to the client in place of the directory contents. For example, for the `upload` directory:
 
   ~~~sh
   $ echo "<!DOCTYPE html>" > /var/www/html/upload/index.html
@@ -306,30 +306,30 @@ The following directive disables the display of the files `*.htaccess*` and `*.h
   </directory>
   ~~~
 
-+ **"merging"** the configuration
++ **Merging** the configuration:
 
-  The directives of the configuration are spread over a number of files within "*ServerRoot*" and the *.htaccess* files in "*DocumentRoot*". It is therefore particularly important to know where to place the directive to achieve the desired effect.  
+  The directives of the configuration are spread over a number of files within `ServerRoot` and the `.htaccess` files in `DocumentRoot`. It is therefore particularly important to know where to place the directive to achieve the desired effect.  
   We strongly recommend to consult the web page  
   [apache.org - How the sections are merged](https://httpd.apache.org/docs/current/en/sections.html#merging)  
   intensively.
 
-+ The **owner** of "*DocumentRoot*"
++ The **owner** of `DocumentRoot`
 
-  is "*root.root*" after installation and should be changed. See the chapter [users and permissions](0521-lamp-apache_en.md#users-and-permissions).
+  is *"root.root"* after installation and should be changed. See the chapter [users and permissions](0521-lamp-apache_en.md#users-and-permissions).
 
 ### Use HTTPS
 
 Without HTTPS no website project can be launched today.  
 How to obtain a certificate is described, for example, in detail and in an easy-to-understand manner on the website [wpbeginner](https://www.wpbeginner.com/beginners-guide/how-to-get-a-free-ssl-certificate-for-your-wordpress-website/).
 
-First we create the necessary folders inside "*DocumentRoot*":
+First we create the necessary folders inside `DocumentRoot`:
 
 ~~~sh
 cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/private
 ~~~
 
-In these we put the certificate file *server1.org.crt* and the private key *server1.org.key*.
+In these we put the certificate file `server1.org.crt` and the private key `server1.org.key`.
 
 Then we secure the directories against unauthorized access.
 
@@ -341,7 +341,7 @@ Then we secure the directories against unauthorized access.
 /etc/apache2/# chmod u-w ssl/private/server1.org.key
 ~~~
 
-Finally, we use the *ls* command to check:
+Finally, we use the `ls` command to check:
 
 ~~~sh
 /etc/apache2/# ls -la ssl
@@ -362,23 +362,23 @@ Finally, we use the *ls* command to check:
 
 + In addition, there are numerous tips on the Internet for the secure operation of the Apache web server.
 
-+ Regular checking of the log files in "*/var/log/apache2/*" helps to detect errors or security holes.
++ Regular checking of the log files in `/var/log/apache2/` helps to detect errors or security holes.
 
 + If the server is connected to the local network or to the Internet in a different way than intended in this manual page, a firewall is essential.
 
 ### Integration in Apache2
 
-The ssl module is activated in Apache by default. It is enough to edit the file */etc/apache2/sites-available/server1.conf*.
+The ssl module is activated in Apache by default. It is enough to edit the file `/etc/apache2/sites-available/server1.conf`.
 
-+ A new VirtualHost directive is inserted at the beginning. This redirects incoming client requests from port 80 to port 443 (ssl) using "*Redirect*".
++ Insert a new VirtualHost directive at the beginning. This redirects incoming client requests from port 80 to port 443 (ssl) using *"Redirect"*.
 
-+ The previous VirtualHost directive is rewritten to port 443.
++ Rewrite the previous VirtualHost directive to port 443.
 
-+ After the standard host directives we add the SSL directives.
++ Add the SSL directives after the standard host directives.
 
-+ In case our web project should contain dynamically generated web pages, the last two "*FileMatch*" and "*Directory*" directives are inserted with the "*SSLOptions*" directive.
++ In case our web project should contain dynamically generated web pages, the last two *"FileMatch"* and *"Directory"* directives need to be inserted with the *"SSLOptions"* directive.
 
-The extended "*server1.conf*" then has the following content:
+The extended `server1.conf` then has the following content:
 
 ~~~apacheconf
 <VirtualHost *:80>
@@ -417,7 +417,7 @@ The extended "*server1.conf*" then has the following content:
 </VirtualHost>
 ~~~
 
-In case our finished project is to be located at a hoster without access to "*ServerRoot*" (this is the rule), we can add a rewrite statement to the *.htaccess* file in "*DocumentRoot*" or create the file with the rewrite statement.
+In case our finished project is to be located at a hoster without access to `ServerRoot` (this is the rule), we can add a rewrite statement to the `.htaccess` file in `DocumentRoot` or create the file with the rewrite statement.
 
 ~~~apacheconf
 <IfModule mod_rewrite.c>
@@ -434,4 +434,4 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 [apache.org - SSL Howto](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)  
 [Let's Encrypt - A nonprofit Certificate Authority](https://letsencrypt.org/)
 
-<div id="rev">Last edited: 2022/02/12</div>
+<div id="rev">Last edited: 2022/04/03</div>
