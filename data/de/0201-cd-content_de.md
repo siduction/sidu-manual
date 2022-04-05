@@ -12,38 +12,28 @@ Eine komplette Manifest-Datei mit der Auflistung aller installierten Programme f
 
 ### Varianten der ISO
 
-siduction bietet sieben aktuelle Images mit verschiedenen Desktop-Umgebungen (zwei auch ohne) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. Üblicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.  
+siduction bietet fünf aktuelle Images und verschiedenen Desktop-Umgebungen (ein Image ohne) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. Üblicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.  
 Die Varianten sind:
 
 1. **KDE 64 Bit** , live-ISO mit etwa 2,8 GByte:
     - Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repräsentativen Auswahl der KDE Applications.  
     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-2. **Cinnamon mit 64 Bit** , live-ISO mit etwa 2.3 GByte:
-     - GTK-basierter Desktop mit einer repräsentativen Auswahl an nützlicher Software.  
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
-
-3.  **XFCE 64 Bit** , live-ISO mit etwa 2,3 GByte:
+2. **XFCE 64 Bit** , live-ISO mit etwa 2,3 GByte:
     - umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv tätig sein zu können.  
     - Der Ressourcenaufwand ist geringer als mit KDE.  
     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-4.  **LXQt mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
+3. **LXQt mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
      - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.  
      - Der Fußabdruck ist etwas schmaler als bei XFCE
      - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
-5.  **LXde mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
-     - umfasst eine Desktopumgebung mit einer Auswahl an GTK-Applikationen.  
-     - Der Fußabdruck ist schmaler als bei XFCE
-     - geeignet für ältere Hardware
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
-
-6.  **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
+4. **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
       - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.  
       - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen
 
-7.  **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
+5. **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
       - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
 
 **32 Bit ISOs** bieten wir standardmäßig nicht mehr an.  
@@ -51,7 +41,7 @@ Wenn ein 32 Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne er
 
 ### Minimale Systemanforderungen
 
-für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
+für: KDE-Plasma, XFCE, LXQt, Xorg und NoX
 
 #### Prozessoranforderungen: 64 Bit CPU
 
@@ -65,11 +55,8 @@ für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 #### Speicheranforderungen
 
     KDE-Plasma: ≥ 4 GByte RAM
-    Mate:       ≥ 4 GByte RAM
-    Cinnamon:   ≥ 4 GByte RAM
     XFCE:       ≥ 4 GByte RAM
-    LXQT:       ≥ 512 MByte RAM
-    Lxde        ≥ 512 MByte RAM
+    LXQT:       ≥ 2 GByte RAM
     Xorg:       ≥ 512 MByte RAM
     NoX:        ≥ 256 MByte RAM
 
@@ -85,9 +72,9 @@ für: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX
 
 Als Internetbrowser werden (je nach Variante) [Firefox](https://mozilla.org), oder [Chromium](https://chromium.woolyss.com/download/de/#linux) mitgeliefert.
 
-Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin,Thunar und PCManFM zur Verfügung.
+Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin, Thunar und PCManFM zur Verfügung.
 
-Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verfügung.
+Zur Netzwerk- und Internetkonfiguration steht Connman, Network-Manager oder IWD zur Verfügung.
 
 Xorg und nox werden mit [IWD](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) als ausgeliefert, dieser kann via [nmtui/nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool) oder [iwctl](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) konfiguriert werden. 
 
