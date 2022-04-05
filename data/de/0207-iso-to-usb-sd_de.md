@@ -19,7 +19,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ## ISO auf USB-Stick - Speicherkarte
 
 Nachfolgend beschrieben wir Methoden eine siduction ISO-Abbilddatei als Live-Medium auf einen USB-Stick, eine SD-Karte oder eine SHDC-Karte zu schreiben.  
-Falls persist benötigt wird, empfohlen wir die Handbuchseite [Aus ISO-Datei booten](0302-hd-ins-fromiso_de.md#fromiso).
+Falls *"persist"* benötigt wird, empfohlen wir die Handbuchseite [Aus ISO-Datei booten](0302-hd-ins-fromiso_de.md#fromiso).
 
 **Voraussetzungen**
 
@@ -28,7 +28,7 @@ Falls persist benötigt wird, empfohlen wir die Handbuchseite [Aus ISO-Datei boo
 + Sichere zuvor alle deine Daten auf den Geräten die du für die Herstellung des siduction Live-Medium verwenden möchtest. Auch das aktuell benutzte Betriebssystem und deine privaten Daten. Ein kleiner Tippfehler oder ein vorschneller Klick können alle deine Daten zerstören!
 
 > Wichtige Information  
-> Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben, wodurch alle Daten verloren gehen. Achte auf äußerste Sorgfalt bei der Auswahl des Zielmediums und seiner  Laufwerksbezeichnung.
+> Die folgenden Methoden werden vorhandene Partitionstabellen auf dem Zielmedium überschreiben, wodurch alle Daten verloren gehen. Achte auf äußerste Sorgfalt bei der Auswahl des Zielmediums und seiner Laufwerksbezeichnung.
 
 ### GUI Anwendung
 
@@ -39,9 +39,9 @@ Das kleine Tool [USBImager](https://bztsrc.gitlab.io/usbimager/) ist für alle o
 Die Handhabung ist Dank der schnörkellosen Oberfläche denkbar einfach.
 
 Image-Datei auf das Gerät schreiben:
-1. Wähle ein Image aus, indem du auf "..." in der ersten Zeile klickst.
+1. Wähle ein Image aus, indem du auf `...` in der ersten Zeile klickst.
 2. Wählen ein Gerät aus, indem du in die 3. Zeile klickst.
-3. Klicke auf die erste Schaltfläche (Schreiben) in der 2. Zeile.
+3. Klicke auf die Schaltfläche `Schreiben` in der 2. Zeile.
 
 Ausführliche Informationen bietet das [Readme](https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md) der Projektseite.
 
@@ -49,9 +49,9 @@ Ausführliche Informationen bietet das [Readme](https://gitlab.com/bztsrc/usbima
 
 Wir empfehlen die Verwendung der Kommandozeile. Die Installation zusätzlicher Programme erübrigt sich, da bereits alle benötigten Werkzeuge vorhanden sind. Eine einzige, leicht verständliche Befehlszeile reicht aus um die siduction ISO-Abbilddatei auf das Speichermedium zu übertragen.
 
-Bevor wir die siduction ISO-Abbilddatei auf das Speichermedium schreiben, müssen wir dessen Laufwerksbezeichnung ermitteln. Am einfachsten benutzen wir journald. Der Befehl `journalctl -f` in einem Terminal ausgeführt, zeigt fortlaufend die Meldungen des systemd. Nun stecken wir das Speichermedium an und beobachten die Meldungen im Terminal. Zeilen der folgenden Art enthalten die gesuchten Informationen.
+Bevor wir die siduction ISO-Abbilddatei auf das Speichermedium schreiben, müssen wir dessen Laufwerksbezeichnung ermitteln. Am einfachsten benutzen wir journald. Der Befehl **`journalctl -f`** in einem Terminal ausgeführt, zeigt fortlaufend die Meldungen des systemd. Nun stecken wir das Speichermedium an und beobachten die Meldungen im Terminal. Zeilen der folgenden Art enthalten die gesuchten Informationen.
 
-~~~txt
+~~~
 kernel: usb 2-3.3: new high-speed USB device number 7 using xhci_hcd
 [...]
 kernel: scsi 1:0:0:0: Direct-Access     Intenso  Alu Line         8.07 PQ: 0 ANSI: 4
@@ -61,10 +61,10 @@ kernel: sd 1:0:0:0: [sdb] 7866368 512-byte logical blocks: (4.03 GB/3.75 GiB)
 kernel: sd 1:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
 ~~~
 
-Es handelt sich um einen Intenso USB-Stick mit 4 GB Speicherkapazität und einer Sektorengröße von 512 Bytes. Die Laufwerksbezeichnung lautet **sdb**. Daraus folgt, dass `/dev/sdb` der zu verwendende Pfad für das Zielmedium ist.  
-Angenommen die siduction ISO-Abbilddatei wurde im **/home** Verzeichnis des Benutzers **tux** gespeichert, können wir mit den Kommandos **dd** oder **cat** das Zielmedium beschreiben. Die Kommandos erfordern Root-Rechte. Daher je nach System entweder **sudo** bzw. **[doas](0703-sys-admin-doas_de.md#doas---alternative-zu-sudo)** voranstellen oder ein Root-Terminal verwenden.
+Es handelt sich um einen Intenso USB-Stick mit 4 GB Speicherkapazität und einer Sektorengröße von 512 Bytes. Die Laufwerksbezeichnung lautet `sdb`. Daraus folgt, dass `/dev/sdb` der zu verwendende Pfad für das Zielmedium ist.  
+Angenommen die siduction ISO-Abbilddatei wurde im `/home` Verzeichnis des Benutzers **tux** gespeichert, können wir mit den Kommandos `dd` oder `cat` das Zielmedium beschreiben. Die Kommandos erfordern Root-Rechte. Daher je nach System entweder **`sudo`** bzw. **`doas`** voranstellen oder ein Terminal verwenden und mit **`su`** zu **root** werden.
 
-~~~txt
+~~~
 dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
     (oder)
 cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso > /dev/sdb
@@ -89,37 +89,37 @@ Wir benutzen als root den Befehl `cgdisk /dev/sdb` um eine neue GUID-Partitionst
    Typ Hex-Code: 8300 (Linux)  
    Name: data
 
-Wir schreiben die Partitionstabelle auf das Medium und beenden cfdisk, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
+Wir schreiben die Partitionstabelle auf das Medium und beenden `cfdisk`, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
 
-~~~txt
+~~~
 mkfs.ext4 -L LifeData /dev/sdb2
 ~~~
 
 Mit dem so vorbereiteten Speichermedium schreiben wir die ISO-Abbilddatei in die **1. Partition**. 
 
-~~~txt
+~~~
 dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb1
 ~~~
 
-Bitte unbedingt auf "/dev/**sdb1**" achten. Wenn nur "sdb" benutzt wird überschreibt der dd-Befehl gnadenlos unsere neu erstellte Partitionstabelle.
+Bitte unbedingt auf `/dev/sdb1` achten. Wenn nur `/dev/sdb` benutzt wird überschreibt der dd-Befehl gnadenlos unsere neu erstellte Partitionstabelle.
 
 ### Mac OS X Kommandozeile
 
-Der Kopiervorgang ähnelt stark dem Vorgehen bei einem Linux Betriebssystem. Schließe dein USB-Gerät an, Mac OS X sollte es automatisch einbinden. Im Terminal (unter Applications \> Utilities), wird dieser Befehl ausgeführt:
+Der Kopiervorgang ähnelt stark dem Vorgehen bei einem Linux Betriebssystem. Schließe dein USB-Gerät an, Mac OS X sollte es automatisch einbinden. Im Terminal (unter `Applications` \> `Utilities`), wird dieser Befehl ausgeführt:
 
-~~~txt
+~~~
 diskutil list
 ~~~
 
-Stelle die Bezeichnung des USB-Gerätes fest und hänge die Partitionen aus (unmount). In unserem Beispiel ist die Bezeichnung /dev/disk1:
+Stelle die Bezeichnung des USB-Gerätes fest und hänge die Partitionen aus (unmount). In unserem Beispiel ist die Bezeichnung `/dev/disk1`:
 
-~~~txt
+~~~
 diskutil unmountDisk /dev/disk1
 ~~~
 
-Angenommen die siduction ISO-Abbilddatei wurde im **/home** Verzeichnis des Benutzers **steve** gespeichert, und das USB-Gerät hat die Bezeichnung **disk1**, so führt man folgenden Befehl aus:
+Angenommen die siduction ISO-Abbilddatei wurde im `/home` Verzeichnis des Benutzers **steve** gespeichert, und das USB-Gerät hat die Bezeichnung `disk1`, so führt man folgenden Befehl aus:
 
-~~~txt
+~~~
 dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1
 ~~~
 

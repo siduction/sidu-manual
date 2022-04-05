@@ -29,23 +29,23 @@ Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, d
 ### DVD mit Linux brennen
 
 Wer bereits Linux auf dem Rechner hat, kann die DVD mit jedem installierten Brennprogramm erstellen. Je nach Desktopumgebung sind das die Programme  
-+ **K3b** für KDE  
-+ **Brasero** für Gnome  
-+ **Xfburn** für XFCE, LXQt und Gnome
++ **`K3b`** für KDE  
++ **`Brasero`** für Gnome  
++ **`Xfburn`** für XFCE, LXQt und Gnome
 
 Die Brennprogramme sind in ihrer Bedienung weitgehend selbsterklärend.  
-Bei K3b wählt man *Weitere Aktionen...* -\> *Abbild schreiben...* aus.  
-In Xfburn und Brasero sollte man "Abbild brennen" anklicken.  
-Anschließend ist das zu brennende ISO-File (z.B. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) auszuwählen und der Brennmodus *DAO* (Disk At Once) oder *Automatisch* einzustellen und der Brennvorgang zu starten.
+Bei K3b wählt man `Weitere Aktionen...` -\> `Abbild schreiben...` aus.  
+In Xfburn und Brasero sollte man `Abbild brennen` anklicken.  
+Anschließend ist das zu brennende ISO-File (z.B. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) auszuwählen und der Brennmodus `DAO` (Disk At Once) oder `Automatisch` einzustellen und der Brennvorgang zu starten.
 
-Gelegentliche Probleme beim Brennen der Live-DVD haben ihre Ursache zumeist in den graphischen Frontend-Applikationen. Dies kann man umgehen, indem auf der Konsole das sehr einfach anzuwendende Skript *burniso* benutzt wird. Die Handbuchseite [DVD ohne GUI brennen](0209-no-gui-burn_de.md#dvd-ohne-gui-brennen) erklärt die Verwendung von *burniso* kurz und exakt, sowie weitere Befehle um verfügbare Hardware zu erkennen, Daten zusammenzustellen und CD/DVDs zu brennen.
+Gelegentliche Probleme beim Brennen der Live-DVD haben ihre Ursache zumeist in den graphischen Frontend-Applikationen. Dies kann man umgehen, indem auf der Konsole das sehr einfach anzuwendende Skript `burniso` benutzt wird. Die Handbuchseite [DVD ohne GUI brennen](0209-no-gui-burn_de.md#dvd-ohne-gui-brennen) erklärt die Verwendung von burniso kurz und exakt, sowie weitere Befehle um verfügbare Hardware zu erkennen, Daten zusammenzustellen und CD/DVDs zu brennen.
 
 ### DVD mit Windows brennen
 
 Selbstverständlich kann man die DVD auch in Windows brennen. Die heruntergeladene Datei muss als ISO-Abbild auf eine DVD gebrannt werden und nicht aus dem Windows Explorer heraus als Datei.  
 Es gibt verschiedene gute Programme, die die mit Windows Vista eingeführte, integrierte Brennfunktion für CD und DVD erweitern um ISO-Dateien zu brennen. Hier nur zwei Beispiele.
 
-+ Die Open-Source-Software [cdrtfe](https://cdrtfe.sourceforge.io/cdrtfe/index_de.html) ist in der aktuellen Version kompatibel mit Windows Vista, 7, 8, 10 und 11. Mit dem Programm lassen sich ISO-Abbilder brennen, Daten-Disks (CD, DVD, BD) sowie Audio und Video CD/DVDs erstellen. Man kann es in Windows installieren oder das zip-Archiv herunterladen und nach dem Entpacken cdrtfe ohne weitere Installation starten.  
-+ Die Closed-Source-Software CDBurnerXP ist ein kostenloses Programm, dass neben dem Brennen von ISO-Abbildern auch Daten und Audio CD/DVDs erstellen kann und wieder beschreibbare Medien bei Bedarf löscht. Erhältlich unter [CDBurnerXP](https://cdburnerxp.de.uptodown.com/windows).
++ Die Open-Source-Software [cdrtfe](https://cdrtfe.sourceforge.io/cdrtfe/index_de.html) ist in der aktuellen Version kompatibel mit Windows Vista, 7, 8, 10 und 11. Mit dem Programm lassen sich ISO-Abbilder brennen, Daten-Disks (CD, DVD, BD) sowie Audio und Video CD/DVDs erstellen. Man kann es in Windows installieren oder das zip-Archiv herunterladen und nach dem Entpacken `cdrtfe` ohne weitere Installation starten.  
++ Die Closed-Source-Software `CDBurnerXP` ist ein kostenloses Programm, dass neben dem Brennen von ISO-Abbildern auch Daten und Audio CD/DVDs erstellen kann und wieder beschreibbare Medien bei Bedarf löscht. Erhältlich unter [CDBurnerXP](https://cdburnerxp.de.uptodown.com/windows).
 
 <div id="rev">Zuletzt bearbeitet: 2022-03-06</div>

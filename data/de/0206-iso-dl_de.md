@@ -19,7 +19,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## ISO download
 
-Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in /etc/apt/sources.list.d/siduction.list gelistet sind, werden zeitnah aktualisiert.  
+Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in `/etc/apt/sources.list.d/siduction.list` gelistet sind, werden zeitnah aktualisiert.  
 
 **Europa**
 
@@ -143,16 +143,16 @@ Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen k
  
 Eine md5sum ist die Prüfsumme einer Datei. Diese Prüfsumme wird zur Integritätsprüfung der zugehörigen ISO-Abbilddatei benutzt. Die siduction ISO-Abbilddateien und ihre entsprechenden md5sum Dateien werden immer im gleichen Verzeichnis zum Download angeboten. So zum Beispiel:
 
-~~~txt
+~~~
 siduction-21.3.0-wintersky-kde-amd64-202112231751.iso
 siduction-21.3.0-wintersky-kde-amd64-202112231751.iso.md5
 ~~~
 
-Bei der Integritätsprüfung wird für die heruntergeladene ISO-Abbilddatei eine md5sum erstellt und diese mit einer früher von uns erstellten Summe in der Datei mit den Präfix `.md5` verglichen. Weichen die Prüfsummen voneinander ab, so wurde die ISO-Abbilddatei verändert oder beschädigt. Dieser Test schützt vor der Verwendung manipulierter ISO-Abbilddateien und erspart gegebenen Falls viel Zeit für die Fehlersuche einer nicht funktionsfähigen DVD.
+Bei der Integritätsprüfung wird für die heruntergeladene ISO-Abbilddatei eine md5sum erstellt und diese mit einer früher von uns erstellten Summe in der Datei mit der Erweiterung `.md5` verglichen. Weichen die Prüfsummen voneinander ab, so wurde die ISO-Abbilddatei verändert oder beschädigt. Dieser Test schützt vor der Verwendung manipulierter ISO-Abbilddateien und erspart gegebenen Falls viel Zeit für die Fehlersuche einer nicht funktionsfähigen DVD.
 
-Unter Linux wechselt man im Terminal in das Verzeichnis, in dem sich sowohl die ISO-Abbilddatei als auch die .md5-Datei befinden. Anschließend erhält man die md5sum der ISO-Abbilddatei mit **`md5sum siduction-*.iso`** und den Inhalt der .md5 Datei mit **`cat siduction-*.iso.md5`**. Verbindet man beide Befehle miteinander, erfolgt die Ausgabe zum einfachen Vergleich direkt untereinander.
+Unter Linux wechselt man im Terminal in das Verzeichnis, in dem sich sowohl die ISO-Abbilddatei als auch die `.md5`-Datei befinden. Anschließend erhält man die md5sum der ISO-Abbilddatei mit **`md5sum siduction-*.iso`** und den Inhalt der `.md5`-Datei mit **`cat siduction-*.iso.md5`**. Verbindet man beide Befehle miteinander, erfolgt die Ausgabe zum einfachen Vergleich direkt untereinander.
 
-~~~txt
+~~~
 $ md5sum siduction-*.iso && cat siduction-*.iso.md5
 358369ebc617613e3c58afc1af716827  siduction-21.3.0-wintersky-kde-amd64-202112231751.iso
 358369ebc617613e3c58afc1af716827 *siduction-21.3.0-wintersky-kde-amd64-202112231751.iso
@@ -160,7 +160,7 @@ $ md5sum siduction-*.iso && cat siduction-*.iso.md5
 
 Noch einfacher gestaltet sich die Überprüfung unter Linux mit dem Befehl **`md5sum -c`**. Achtung, dem Aufruf muss die .md5-Datei mitgegeben werden.
 
-~~~txt
+~~~
     (Befehl und Ausgabe bei Erfolg)
 $ md5sum -c siduction-21.3.0-wintersky-kde-amd64-202112231751.iso.md5
 siduction-21.3.0-wintersky-kde-amd64-202112231751.iso: OK
@@ -177,14 +177,14 @@ Die Überprüfung mittels sha256sum ist in der Handhabung identisch mit md5sum. 
 
 **Windows**
 
-Bei einem Download der siduction ISO-Abbilddatei in Windows besteht ab Windows 7 innerhalb der Powershell die Möglichkeit mit dem vorinstallierten Hilfsprogramm *CertUtil* Prüfsummen zu erstellen. Der Aufruf lautet dort:
+Bei einem Download der siduction ISO-Abbilddatei in Windows besteht ab Windows 7 innerhalb der Powershell die Möglichkeit mit dem vorinstallierten Hilfsprogramm `CertUtil` Prüfsummen zu erstellen. Der Aufruf lautet dort:
 
-~~~txt
+~~~
 CertUtil -hashfile C:\TEMP\<mein_ISO_Abbild.img> MD5
     oder
 CertUtil -hashfile C:\TEMP\<mein_ISO_Abbild.img> SHA256
 ~~~
 
-Für ältere Windows Versionen ist das unter der General Public License veröffentlichte Programm *md5summer* (486 KB) erhältlich.
+Für ältere Windows Versionen ist das unter der General Public License veröffentlichte Programm `md5summer` (486 KB) erhältlich.
 
 <div id="rev">Zuletzt bearbeitet: 2022-03-27</div>
