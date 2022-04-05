@@ -6,7 +6,7 @@
 
 Der Name **siduction** ist ein Wortspiel aus zwei Begriffen: Dem Wort **sid**, also dem Codenamen von Debian Unstable und **seduction**, im Sinne von verführen.
 
-siduction ist ein Betriebssystem, das auf dem [Linux-Kernel](https://kernel.org) und dem [GNU-Projekt](https://gnu.org) basiert. Dazu kommen Anwendungsprogramme von [Debian](https://debian.org). siduction ist den Grundwerten des [Debian Gesellschaftsvertrags](https://www.debian.org/social_contract.de.html) und den daran anschließenden "*Debian Free Software Guidelines*" verpflichtet.  
+siduction ist ein Betriebssystem, das auf dem [Linux-Kernel](https://kernel.org) und dem [GNU-Projekt](https://gnu.org) basiert. Dazu kommen Anwendungsprogramme von [Debian](https://debian.org). siduction ist den Grundwerten des [Debian Gesellschaftsvertrags](https://www.debian.org/social_contract.de.html) und den daran anschließenden *"Debian Free Software Guidelines"* verpflichtet.  
 Siehe auch [DFSG](https://de.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
 
 ### Allgemeines
@@ -23,7 +23,7 @@ Zum Drucken von Handbuchseiten verwende bitte das PDF und drucke nur die benöti
 
 Um Hilfe für ein spezifisches vorinstalliertes oder selbst installiertes Anwendungsprogramm (auch Paket genannt) zu erhalten, informiert man sich am besten in den FAQ, Online-Handbüchern oder Foren auf der Homepage bzw. im Hilfe-Menü der Anwendung.
 
-Fast alle Anwendungsprogramme bieten Hilfestellung mittels einer zugehörigen "*Manual-Page*" (kurz Manpage). Sie wird im Terminal durch den Befehl **`man <Paketname>`** aufgerufen. Auch kann nachgesehen werden, ob sich eine Dokumentation in */usr/share/doc/\<paketname\>* befindet.
+Fast alle Anwendungsprogramme bieten Hilfestellung mittels einer zugehörigen *"Manual-Page"* (kurz Manpage). Sie wird im Terminal durch den Befehl **`man <Paketname>`** aufgerufen. Auch kann nachgesehen werden, ob sich eine Dokumentation in `/usr/share/doc/<paketname>` befindet.
 
 ### Copyright Rechts- und Lizenzhinweise
 

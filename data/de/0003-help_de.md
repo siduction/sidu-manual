@@ -39,13 +39,13 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
 
 ### Nützliche Helfer im Textmodus
 
-Normalerweise verwendet man den Textmodus Runlevel 3 (init 3 bzw. journalctl isolate multi-user.target), wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
+Normalerweise verwendet man den Textmodus Runlevel 3 ( `init 3` bzw. `journalctl isolate multi-user.target` ), wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
 
 **gpm**
 
- ist ein hilfreiches Programm im Textmodus. Dieses ermöglicht, die Maus zum Kopieren und Einfügen im Terminal zu benutzen.
+ist ein hilfreiches Programm im Textmodus. Dieses ermöglicht, die Maus zum Kopieren und Einfügen im Terminal zu benutzen.
 
-*gpm* ist in siduction vorkonfiguriert. Falls dem nicht so ist:
+gpm ist in siduction vorkonfiguriert. Falls dem nicht so ist:
 
 ~~~
 $ gpm -t imps2 -m /dev/input/mice
@@ -67,11 +67,9 @@ Nun sollte man seine Maus im Textmodus (tty) nutzen können.
 
 **Dateimanager und Textbearbeitung**
 
-Midnight Commander ist ein einfach zu bedienender Dateimanager im Text-Modus (tty) und Texteditor. Er wird mit siduction ausgeliefert.
-
-Abgesehen von den normalen Tastatureingaben kann aufgrund von gpm auch die Maus benutzt werden.
-
-**mc** zeigt das Dateisystem und mit **mcedit** kann eine vorhandene Datei bearbeitet bzw. eine neue Datei erstellt werden.
+Der *"Midnight Commander"* ist ein einfach zu bedienender Dateimanager im Text-Modus (tty) und Texteditor. Er wird mit siduction ausgeliefert.  
+Abgesehen von den normalen Tastatureingaben kann aufgrund von gpm auch die Maus benutzt werden.  
+Mit dem Befehl `mc` wird der Midnight Commander aufgerufen und mit `mcedit` kann eine vorhandene Datei bearbeitet bzw. eine neue Datei erstellt werden.
 
 So öffnet man eine vorhandene Datei (zuerst wird eine Sicherungskopie angelegt):
 
@@ -83,8 +81,7 @@ $ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(d
 $ mcedit /etc/apt/sources.list.d/debian.list
 ~~~
 
-Nun kann die Datei bearbeitet und gespeichert werden. Die Änderungen werden sofort wirksam.
-
+Nun kann die Datei bearbeitet und gespeichert werden. Die Änderungen werden sofort wirksam.  
 Weitere Informationen auf der Manpage:
 
 ~~~
@@ -100,8 +97,8 @@ $ man mc
 
 **IRC im Textmodus**
 
-Das Programm *irssi* stellt einen IRC-Client im Textmodus oder der Konsole bereit und ist in siduction aktiviert.  
-Mit der Tastenkombination `ALT`+`F2` oder `F3` usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
+Das Programm `irssi` stellt einen IRC-Client im Textmodus oder der Konsole bereit und ist in siduction aktiviert.  
+Mit der Tastenkombination **`ALT`**+**`F2`** oder **`F3`** usw. kann man von einem Terminal/TTY in ein anderes wechseln und sich dort mit seinem Useraccount anmelden:
 
 ~~~
 $ siductionbox login: <username> <password> (nicht als root)
@@ -113,7 +110,7 @@ danach gibt man
 $ siduction-irc
 ~~~
 
-ein, um *irssi* zu starten.
+ein, um irssi zu starten.
 
 Anleitung, falls ein anderer Client (im Beispiel weechat) gewünscht ist:  
 Zuerst stellt man sicher, dass WeeChat installiert ist, indem man im Menü den Eintrag von weechat sucht. Falls dieser nicht vorhanden sein sollte:
@@ -129,27 +126,27 @@ $ weechat-curses
 
 Jetzt kann man sich mit irc.oftc.net auf Port 6667 verbinden. Nach erfolgter Verbindung wird das Pseudonym (der "Nickname") geändert:
 
-**/nick 'Dein_neuer_nick'**
+`/nick 'Dein_neuer_nick'`
 
 Den siduction-Channel betritt man mit folgender Eingabe:
 
-**/join #siduction-de**
+`/join #siduction-de`
 
 Falls man wünscht, den Server zu wechseln, gibt man einen Befehl mit folgender Syntax ein:
 
-**/server server.name**
+`/server server.name`
 
 In der unteren Menüzeile sieht man Zahlen, falls die Channel aktiv sind, und um sich mit einem Channel zu verbinden, verwendet man ALT-1, ALT-2, ALT-3, ALT-4 usw.
 
 Einen Channel verlässt man mit
 
-**/exit**
+`/exit`
 
 Falls gleichzeitig ein dist-upgrade durchgeführt wird, kann man folgendermaßen das Terminal wechseln, um den Fortschritt des Upgrades zu verfolgen:
 
-Tastenkombination `ALT`+`F3`  
+Tastenkombination **`ALT`**+**`F3`**  
 und zum IRC kommt man zurück mit der  
-Tastenkombination `ALT`+`F2`
+Tastenkombination **`ALT`**+**`F2`**
 
 Die folgenden Link bieten weitere Informationen.  
 [Dokumentationsseite von irssi (Englisch)](https://irssi.org/documentation)  
@@ -157,7 +154,7 @@ Die folgenden Link bieten weitere Informationen.
 
 ### Surfen im Internet im Textmodus
 
-Der Kommandozeilenbrowser w3m ermöglicht das Surfen im Internet in einem Terminal bzw. einer Konsole oder im Textmodus
+Der Kommandozeilenbrowser `w3m` ermöglicht das Surfen im Internet in einem Terminal bzw. einer Konsole oder im Textmodus
 
 Falls w3m oder elinks nicht installiert sind, geht man so vor:
 
@@ -169,13 +166,13 @@ Falls w3m oder elinks nicht installiert sind, geht man so vor:
 
 Nun kann man den Kommandozeilenbrowser w3m benutzen. Dazu ist es sinnvoll in ein anderes Terminal zu wechseln und sich mit seinem Useraccount anzumelden:
 
-Tastenkombination `ALT`+`F2`
+Tastenkombination **`ALT`**+**`F2`**
 
 ~~~
 $ siductionbox login: <username> <password> (nicht root!)
 ~~~
 
-Der Programmaufruf lautet "w3m URL" oder "w3m ?".  
+Der Programmaufruf lautet `w3m URL` oder `w3m ?`.  
 Beispiel: https://siduction.org ruft man so auf (https:// wird weggelassen):
 
 ~~~
@@ -184,16 +181,16 @@ $ w3m siduction.org
 
 Eine neue URL wird mit Hilfe der Tastenkombination Shift+U aufgerufen:
 
-`SHIFT`+`U`
+**`SHIFT`**+**`U`**
 
-Danach sieht man eine Zeile wie "Goto URL: https://siduction.org". Mit der Rücktaste löscht man die zuletzt gewählte URL und gibt die gewünschte ein.  
+Danach sieht man eine Zeile wie `Goto URL: https://siduction.org`. Mit der Rücktaste löscht man die zuletzt gewählte URL und gibt die gewünschte ein.  
 Beendet wird w3m mit:
 
-`SHIFT`+`Q`
+**`SHIFT`**+**`Q`**
 
 Mehr Informationen gibt es auf der [Dokumentationsseite von w3m (Englisch)](http://w3m.sourceforge.net/) 
 
-Es ist ratsam, sich vor einem Notfall mit **elinks/w3m, irssi/weechat, midnight commander** vertraut zu machen. Drucke diese Datei aus, um im Notfall die Informationen griffbereit zu haben.
+Es ist ratsam, sich vor einem Notfall mit *"elinks/w3m"*, *"irssi/weechat"*, *"midnight commander"* vertraut zu machen. Drucke diese Datei aus, um im Notfall die Informationen griffbereit zu haben.
 
 ### inxi
 
@@ -201,21 +198,19 @@ Inxi ist ein System-Informations-Skript, welches unabhängig von einzelnen IRC-C
 
 Um inxi in Konversation zu nutzen, gibt man in die Chatbox dies ein:
 
-**/cmd inxi -v2**
+`/cmd inxi -v2`
 
 Um inxi in weechat zu nutzen, gibt man in die Chatbox dies ein:
 
-**/shell -o inxi -v2**
+`/shell -o inxi -v2`
 
-Vorausgesetzt, dass man die Erweiterung "shell" installiert hat.
-
-Siehe dazu: [https://www.weechat.org/scripts/](https://www.weechat.org/scripts/) 
-
+Vorausgesetzt, dass man die Erweiterung "shell" installiert hat.  
+Siehe dazu: [https://www.weechat.org/scripts/](https://www.weechat.org/scripts/)  
 Um inxi in anderen Klienten zu nutzen, gibt man in die Chatbox dies ein:
 
-**/exec -o inxi -v2**  
+`/exec -o inxi -v2`  
 oder  
-**/inxi -v2**
+`/inxi -v2`
 
 In einer Konsole wird folgender Befehl eingegeben:
 
