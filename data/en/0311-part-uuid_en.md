@@ -43,17 +43,28 @@ lrwxrwx 1 root root 10 Oct 16 10:27 swap -> ../../sda5
 lrwxrwx 1 root root 10 Oct 16 10:27 windows -> ../../sdb1
 ~~~
 
-The label can be created or changed with the following commands:
+The label can be created or changed with one the following commands, according to the respective file system:
 
-| File system | Command |
-| :--- | :--- |
-| swap | swaplabel -L <LABEL> /dev/sdXx |
-| ext2/ext3/ext4 | e2label /dev/sdXx <LABEL> or tune2fs -L <LABEL> /dev/sdXx |
-| jfs | jfs_tune -L <LABEL> /dev/sdXx |
-| xfs | xfs_admin -L <LABEL> /dev/sdXx |
-| reiserFS | reiserfstune -l <LABEL> /dev/sdXx |
-| fat | fatlabel /dev/sdXx <LABEL> |
-| ntfs | ntfslabel /dev/sdXx <LABEL> |
++ **swap**  
+  `swaplabel -L <label> /dev/sdXx`
+  
++ **ext2/ext3/ext4**  
+  `e2label /dev/sdXx <label>` or `tune2fs -L <label> /dev/sdXx`
+  
++ **jfs**  
+  `jfs_tune -L <label> /dev/sdXx`
+  
++ **xfs**  
+  `xfs_admin -L <label> /dev/sdXx`
+  
++ **reiserFS**  
+  `reiserfstune -l <label> /dev/sdXx`
+  
++ **fat**  
+  `fatlabel /dev/sdXx <label>`
+  
++ **ntfs**  
+  `ntfslabel /dev/sdXx <label>`
 
 An **NTFS** and **FAT** partition's label should consist only of uppercase letters, digits, and special characters that Windows™ allows for file names.
 
@@ -166,4 +177,4 @@ man mount
 
 Of course, you don't have to follow the naming scheme *"diskXpartX"*. Mount points and their associated identifiers in `fstab` can be assigned meaningful names, for example, *"data"* or *"music"*.
 
-<div id="rev">Last edited: 2022/03/31</div>
+<div id="rev">Last edited: 2022/04/05</div>
