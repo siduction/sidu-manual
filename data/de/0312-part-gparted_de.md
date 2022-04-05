@@ -14,8 +14,8 @@ Partitionen zu erstellen oder zu bearbeiten ist keine alltägliche Aufgabe. Dahe
 [Bitte lese hier weiter.](0312-part-gparted_de.md#ntfs-partitionsgrößen-mit-gparted-ändern)
 
 + Eine Partition benötigt ein Dateisystem. Linux kann auf und mit verschiedenen Dateisystemen arbeiten.  
-  Für normalen Gebrauch empfehlen wir das Dateisystem ext4.  
-  NTFS sollte man verwenden, wenn die Partition auch von einer Windows-Installation benutzt werden soll. Siduction kann mit dem automatisch installierten *ntfs-3g* lesend und schreibend auf die Daten zugreifen.  
+  Für normalen Gebrauch empfehlen wir das Dateisystem **ext4**.  
+  NTFS sollte man verwenden, wenn die Partition auch von einer Windows-Installation benutzt werden soll. Siduction kann mit dem automatisch installierten `ntfs-3g` lesend und schreibend auf die Daten zugreifen.  
 
 + Die gesamte GParted-Dokumentation findet sich in vielen Sprachen auf der [GParted-Homepage](https://gparted.org/documentation.php).
 
@@ -41,14 +41,14 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Bearbeiten**
 
-    Bearbeiten ist der 2. Menüpunkt von links. Er zeigt drei ausgegraute Optionen, die sehr wichtig sind und weiter unten erläutert werden.  
+    `Bearbeiten` ist der 2. Menüpunkt von links. Er zeigt drei ausgegraute Optionen, die sehr wichtig sind und weiter unten erläutert werden.  
     + letzte Operationen rückgängig machen ("Undo last operations"),  
     + alle Operationen löschen ("clear all operations") und  
     + alle Operationen ausführen ("apply all operations").
 
 + **Ansicht**
 
-    Der nächste Menüpunkt bietet die Anzeigeoptionen *"Laufwerksinformationen"* und *"Anstehende Operationen"*.
+    Der nächste Menüpunkt `Ansicht` bietet die Anzeigeoptionen `Laufwerksinformationen` und `Anstehende Operationen`.
 
   + Laufwerksinformationen ("Device Information")  
     Im linken Rahmen stehen Details der Laufwerke wie Modell, Größe usw., die wichtig sind, wenn mehrere Datenträger im System vorhanden sind. Damit kann man kontrollieren, ob der richtige Datenträger zur Formatierung gewählt wurde.
@@ -62,12 +62,12 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Laufwerk**
 
-  Hinter dem Menüpunkt *"Partitionstabelle erstellen"* verbergen sich eigentlich zwei Optionen
+  Hinter dem Menüpunkt `Partitionstabelle erstellen` verbergen sich eigentlich zwei Optionen
 
-  1. Eine neue (leere) Partitionstabelle des **gleichen** Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
+  1. Eine neue (leere) Partitionstabelle des gleichen Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
 
-  2. Einen **Wechsel** des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
-    Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird den MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren.     Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
+  2. Einen Wechsel des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von msdos-MBR zu gpt-UEFI oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
+    Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird den MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren. Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
 
   ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
 
@@ -77,13 +77,13 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Partition**
 
-  Der Menüpunkt "Partition" ist von größter Wichtigkeit. Für die unten ausgewählte Partition zeigt das Menü alle zur Verfügung stehenden Operationen abhängig davon an, ob die Partition eingehangen oder nicht eingehangen ist.  Beachten sollte man, dass einige der Unterpunkte auch kritische bzw. gefährliche Aktionen durchführen können.
+  Der Menüpunkt `Partition` ist von größter Wichtigkeit. Für die unten ausgewählte Partition zeigt das Menü alle zur Verfügung stehenden Operationen abhängig davon an, ob die Partition eingehangen oder nicht eingehangen ist.  Beachten sollte man, dass einige der Unterpunkte auch kritische bzw. gefährliche Aktionen durchführen können.
 
   ![GParted Datenrettung](./images/gparted/gparted07-de.png)
 
 + **Eine neue Partition erstellen**
 
-  In der Toolbar erlaubt der Knopf "Neu" das Erstellen einer neuen Partition, wenn zuvor ein nicht zugeordneter Bereich gewählt wurde. Im nächsten Fenster erfolgt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
+  In der Toolbar erlaubt der Knopf **`Neu`** das Erstellen einer neuen Partition, wenn zuvor ein nicht zugeordneter Bereich gewählt wurde. Im nächsten Fenster erfolgt die Festlegung der Größe für eine primäre, erweiterte oder logische Partition und die Festlegung des Dateisystems.
 
   ![GParted Neue Partition](./images/gparted/gparted05-de.png)
 
@@ -95,13 +95,13 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Falls ein Fehler gemacht wurde**
 
-  Im Menü "Bearbeiten" besteht die Möglichkeit *"Letzte Operation rückgängig machen"* oder *"Alle Operationen löschen"*. Der Bereich ist grün markiert.
+  Im Menü `Bearbeiten` besteht die Möglichkeit `Letzte Operation rückgängig machen` oder `Alle Operationen löschen`. Der Bereich ist grün markiert.
 
   ![GParted rückgängig machen](./images/gparted/gparted06-de.png)
 
 + **Anwenden**
 
-  Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü "Bearbeiten" den Punkt *"Alle Operationen anwenden"*. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
+  Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü `Bearbeiten` den Punkt `Alle Operationen ausführen`. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
 
   ![GParted Ausführen und speichern](./images/gparted/gparted09-de.png)
 
@@ -109,11 +109,11 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 ### fstab anpassen
 
-> Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei /etc/fstab überprüft und ggf. angepasst werden.
+> Nachdem die Änderungen auf die Laufwerke geschrieben wurden, muss die Datei `/etc/fstab` überprüft und ggf. angepasst werden.
 
 
 Siehe dazu die Handbuchseite [Anpassung der fstab](0311-part-uuid_de.md#die-fstab).  
-In einem root-Terminal geben wir die Befehle **cat /etc/fstab** und **blkid** ein und vergleichen die UUIDs.
+In einem root-Terminal geben wir die Befehle **`cat /etc/fstab`** und **`blkid`** ein und vergleichen die UUIDs.
 
 ~~~
 root@pc1:/# cat /etc/fstab
@@ -144,15 +144,15 @@ root@pc1:/# blkid
 /dev/sdb6: UUID="2ef32215-d545-4e12-bc00-d0099a218970" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="2853e345-06"
 ~~~
 
-Wir können erkennen, dass die in der *fstab* als letzter Eintrag enthaltene, nach */mnt/TEST_res* eingehängte Partition in der *blkid*-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch */mnt/TEST_res* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
+Wir können erkennen, dass die in der fstab als letzter Eintrag enthaltene, nach *"/mnt/TEST_res"* eingehängte Partition in der blkid-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch *"/mnt/TEST_res"* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
 
-> Wenn die UUID für die Partitionen von **/** (root), **/home** und **swap** nicht mit dem jeweiligen Eintrag in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
+> Wenn die UUID für die Partitionen von `/` (root), `/home` und `swap` nicht mit dem jeweiligen Eintrag in der `/etc/fstab` übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
 
 ### NTFS-Partitionsgrößen mit GParted ändern
 
 **Größenänderungen bei NTFS-Partitionen erfordern nach der Ausführung einen sofortigen Reboot, vorher dürfen keine weiteren Änderungen an Partitionen durchgeführt werden. Dies führte unweigerlich zu Fehlern.**
 
-* Nach dem Neustart von Windows und dem Windows-Logo erscheint ein Fenster von **checkdisk**, das besagt, dass C:\\ auf Fehler überprüft wird.
+* Nach dem Neustart von Windows und dem Windows-Logo erscheint ein Fenster von **`checkdisk`**, das besagt, dass **`C:\`** auf Fehler überprüft wird.
 * Diesen AUTOCHECK bitte zu Ende laufen lassen: Windows muss das Filesystem nach einer Größenänderung überprüfen.
 * Nach der Überprüfung wird der Rechner automatisch das zweite Mal neu gestartet. Dies gewährleistet, dass das System problemlos laufen kann.
 * Nach dem Neustart wird Windows ordnungsgemäß funktionieren. Man muss jedoch das System fertig starten lassen und auf das Anmeldefenster warten!
