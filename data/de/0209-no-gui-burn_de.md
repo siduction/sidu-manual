@@ -1,6 +1,6 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Arbeiten 2022-03
 + Umbenannt von 0207-cd-no-gui-burn
