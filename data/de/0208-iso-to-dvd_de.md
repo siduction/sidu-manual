@@ -1,6 +1,6 @@
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
+**Status: RC3**
 
 Arbeiten 2022-03
 + Neu, aus "0206-iso-dl" ausgelagert
@@ -48,4 +48,4 @@ Es gibt verschiedene gute Programme, die die mit Windows Vista eingeführte, int
 + Die Open-Source-Software [cdrtfe](https://cdrtfe.sourceforge.io/cdrtfe/index_de.html) ist in der aktuellen Version kompatibel mit Windows Vista, 7, 8, 10 und 11. Mit dem Programm lassen sich ISO-Abbilder brennen, Daten-Disks (CD, DVD, BD) sowie Audio und Video CD/DVDs erstellen. Man kann es in Windows installieren oder das zip-Archiv herunterladen und nach dem Entpacken `cdrtfe` ohne weitere Installation starten.  
 + Die Closed-Source-Software `CDBurnerXP` ist ein kostenloses Programm, dass neben dem Brennen von ISO-Abbildern auch Daten und Audio CD/DVDs erstellen kann und wieder beschreibbare Medien bei Bedarf löscht. Erhältlich unter [CDBurnerXP](https://cdburnerxp.de.uptodown.com/windows).
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-06</div>
+<div id="rev">Zuletzt bearbeitet: 2022-04-06</div>
