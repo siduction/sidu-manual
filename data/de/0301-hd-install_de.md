@@ -167,6 +167,6 @@ So entfernt man einen Benutzer
 ~# deluser <nutzername>
 ~~~
 
-Mehr Informationen bieten die man pages **`man adduser`** und **`man deluser`** .
+Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
 <div id="rev">Zuletzt bearbeitet: 2022-02-09</div>

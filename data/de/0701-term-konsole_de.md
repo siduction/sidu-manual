@@ -190,7 +190,7 @@ Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall i
 
 ### Hilfe im Terminal
 
-Die meisten Befehle/Programme haben eine Kommandozeilenhilfe und auch Anleitungen. Die Anleitungen werden *"man page"* oder *"manual page"* genannt. Die Syntax zum Aufrufen der man page ist:
+Die meisten Befehle/Programme haben eine Kommandozeilenhilfe und auch Anleitungen. Die Anleitungen werden im englischen *"man page"* oder *"manual page"*, im deutschen *"Manpage"* genannt. Die Syntax zum Aufrufen der man page ist:
 
 ~~~
 $ man <Befehl>
@@ -202,15 +202,15 @@ oder
 $ man -k <keyword>
 ~~~
 
-Dies ruft die man page eines Befehls auf. Die Navigation in den man pages erfolgt durch die Pfeiltasten, beendet werden sie mit `q` für quit. Beispiel:
+Dies ruft die Manpage eines Befehls auf. Die Navigation in den Manpages erfolgt durch die Pfeiltasten, beendet werden sie mit `q` für quit. Beispiel:
 
 ~~~
 $ man apt-get
 ~~~
 
-Um eine manpage zu verlassen, tippt man `q` 
+Um eine Manpage zu verlassen, tippt man `q` 
 
-Ein anderes nützliches Werkzeug ist der `apropos` Befehl. Apropos ermöglicht es, die man pages nach einem Befehl zu durchsuchen, wenn man z. B. die Syntax vergessen hat. Beispiel:
+Ein anderes nützliches Werkzeug ist der `apropos` Befehl. Apropos ermöglicht es, die Manpages nach einem Befehl zu durchsuchen, wenn man z. B. die Syntax vergessen hat. Beispiel:
 
 ~~~
 $ apropos apt-

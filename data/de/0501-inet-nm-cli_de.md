@@ -101,7 +101,7 @@ nmcli dev disconnect wtx7ckd90b81bbd && sleep 2 && nmcli con up id 'Kabelgebunde
 
 ### Weiterführende Informationen
 
-+ Die man page **`man nmcli`**
++ Die Manpage **`man nmcli`**
 
 + [Ubuntuusers Wiki](https://wiki.ubuntuusers.de/NetworkManager?redirect=no)
 

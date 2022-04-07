@@ -155,7 +155,7 @@ Es können rekursiv auch ganze Partitionen bzw. Verzeichnisse mit dem Befehl `sc
    scp -r <user>@xxx.xxx.x.xxx:/media/disk1part6/filename.txt . 
    ~~~
 
-Weitere Informationen bietet die man page:
+Weitere Informationen bietet die Manpage:
 
 ~~~
 man scp

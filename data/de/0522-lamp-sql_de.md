@@ -292,7 +292,7 @@ Das erstellt eine Log-Datei nach dem Muster `<Host>.log` im Verzeichnis `/var/li
 [MariaDB Systemd](https://mariadb.com/kb/en/systemd/) (englisch)  
 und die Manpage
 
-Die mariadb man page `man mariadb`
+Die mariadb Manpage `man mariadb`
 
 [phpMyAdmin Dokumentation](https://docs.phpmyadmin.net/de/latest/) (deutsch)
 

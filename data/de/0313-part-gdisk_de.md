@@ -158,7 +158,7 @@ Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 
 Mit diesen Informationen formatieren wir unsere zuvor erstellten Partitionen.
 
-Bitte unbedingt die man pages **`man mke2fs`**, **`man mkfs.fat`** und **`man mkswap`** lesen.
+Bitte unbedingt die Manpages **`man mke2fs`**, **`man mkfs.fat`** und **`man mkswap`** lesen.
 
 Die EFI-Systempartition erhält ein **FAT32** Dateisystem.
 
