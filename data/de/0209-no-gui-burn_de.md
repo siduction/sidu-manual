@@ -1,20 +1,3 @@
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Arbeiten 2022-03
-+ Umbenannt von 0207-cd-no-gui-burn
-+ Inhalt teilweise neu geordnet
-+ Link prüfen/aktualisieren
-+ Rechtschreibprüfung
-+ Formatierungen bereinigt
-
-Noch zu erledigen
-+ Inhalt durch weitere fachkundige Person prüfen
-+ Nochmalige Rechtschreibprüfung
-+ Link nach Abschluss aller anderen Arbeiten an 0206, 0207, 0208 und 0209 prüfen.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN  
 % Medien ohne GUI brennen
 
 ## Life-DVD ohne GUI brennen
@@ -175,7 +158,7 @@ $ growisofs -M /dev/dvd -R -J noch_eine_datei und_noch_eine_datei
 Mit diesem Befehl wird der verbliebene freie Platz auf der DVD mit Nullen gefüllt und das Medium geschlossen.
 
 ~~~
-$ growisofs -M /dev/dvd=/dev/zero $
+$ growisofs -M /dev/dvd=/dev/zero
 ~~~~
 
 <div id="rev">Zuletzt bearbeitet: 2022-03-08</div>

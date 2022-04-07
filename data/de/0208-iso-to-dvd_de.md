@@ -1,19 +1,3 @@
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Arbeiten 2022-03
-+ Neu, aus "0206-iso-dl" ausgelagert
-+ Link prüfen/aktualisieren
-+ Rechtschreibprüfung
-+ Formatierungen bereinigt
-
-Noch zu erledigen
-+ Inhalt durch weitere fachkundige Person prüfen
-+ Nochmalige Rechtschreibprüfung
-+ Link nach Abschluss aller anderen Arbeiten an 0206, 0207, 0208 und 0209 prüfen.
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN  
 % siduction ISO brennen
 
 ## ISO brennen

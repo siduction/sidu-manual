@@ -1,20 +1,3 @@
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-Arbeiten 2022-03
-+ GUI brennen zu 0208-iso-to-dvd ausgelagert
-+ "Integritätsprüfung" aktualisiert
-+ Rechtschreibprüfung
-+ Formatierungen geprüft und bereinigt
-+ Downloadlink geprüft, http: entfernt, wenn automatisch auf https: umgeleitet wird.
-
-Noch zu erledigen
-+ Inhalt durch weitere fachkundige Person prüfen (besonders "Integritätsprüfung")
-+ Nochmalige Rechtschreibprüfung
-+ Links prüfen/aktualisieren nach Abschluss aller anderen Arbeiten an 0206, 0207, 0208 und 0209
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN  
 % siduction ISO download
 
 ## ISO download
