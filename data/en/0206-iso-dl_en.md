@@ -1,6 +1,6 @@
-% Download and burn siduction ISO
+% Download and integrity check of ISOs
 
-## Downloading and burning the ISO
+## Downloading the ISO
 
 ### siduction ISO download
 
