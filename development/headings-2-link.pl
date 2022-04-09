@@ -118,12 +118,14 @@ foreach (@ARGV) {
 # Write into outputfile.
 
     open (DATEI, ">", "./headinglinks-$langcode-by-file") || die "Kann nicht schreiben.\n";
+    print DATEI `date +%F`;
     print DATEI @HLFILE;
     #    print @HLFILE;
     close(DATEI);
 
 
     open (DATEI, ">", "./headinglinks-$langcode-by-text") || die "Kann nicht schreiben.\n";
+    print DATEI `date +%F`;
     foreach (@HLTEXT) {
         s!(.*?)~(.*?)~(.*?)~(.*?)!$2 $1   $3   Link: $4!;
         print DATEI "$_";
