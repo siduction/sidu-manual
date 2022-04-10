@@ -58,15 +58,15 @@ permit bob as anne cmd /home/anne/bin/script1 args -n
 permit bob as anne cmd /home/anne/bin/script2 args
 
 # lisa may execute system upgrade
-deny lisa cmd init
-permit persist lisa as root cmd init args 3
-permit persist lisa as root cmd init args 6
-permit persist lisa as root cmd apt args update
-permit persist lisa as root cmd apt args full-upgrade
+permit persist lisa cmd init
+deny lisa cmd init args 1
+deny lisa cmd init args 5
+permit persist lisa cmd apt args update
+permit persist lisa cmd apt args full-upgrade
 ~~~
 
 **Explanations**  
-**bob** may execute the scripts *script1* and *script2* inside Anne's **/home** directory (the former exclusively with the argument *-n*, the latter must not be given any argument). Specifying *args* in the rule line for the *script2* without a following argument forces the file to be called without an argument and thus without potentially malicious code. **bob** must supply the username when calling scripts, using the *-u* option.
+**bob** may execute the scripts *script1* and *script2* inside Anne's **/home/anne/bin** directory (the former exclusively with the argument *-n*, the latter must not be given any argument). Specifying *args* in the rule line for the *script2* without a following argument forces the file to be called without an argument and thus without potentially malicious code. **bob** must supply the username when calling scripts, using the *-u* option.
 
 ~~~txt
 bob@sidu:~$ doas -u anne /home/anne/bin/script1 -n
@@ -77,7 +77,7 @@ bob@sidu:~$
 
 The script was executed without comment after Bob entered his user password.
 
-To allow **Lisa** to perform the system upgrade, she should switch to *multi-user.target* (init 3) and perform a *systemctl reboot* (init 6) after completion. The rule line `deny lisa cmd init` without specifying *args* causes all other calls of init, except those in the two rules below, are not allowed. Therefore, she cannot go directly from the *multi-user.target* to the *graphical.target* (init 5). Here we see the structure of a hierarchy.
+To allow **Lisa** to perform the system upgrade, she should switch to *multi-user.target* (init 3) and perform a *systemctl reboot* (init 6) after completion. The rule line `permit persist lisa as root cmd init` without specifying *args* causes all other calls of init are allowd, except those that are prohibited by the following rules below. Therefore, she cannot go directly from the *multi-user.target* to the *graphical.target* (init 5). Here we see the structure of a hierarchy.
 
 **Notes**  
 If you keep typing *sudo*, the line `alias sudo="doas"` in your *.bashrc* will help.  
