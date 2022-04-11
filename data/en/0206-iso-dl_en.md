@@ -1,10 +1,10 @@
-% Download and integrity check of ISOs
+% Download and burn siduction ISO
 
-## Downloading the ISO
+## Downloading and burning the ISO
 
 ### siduction ISO download
 
-Please use the closest mirror. Mirror servers listed below, with details for the entry in /etc/apt/sources.list.d/siduction.list, are updated in a timely manner.  
+Please use the closest mirror. Mirror servers listed below, with details for the entry in `/etc/apt/sources.list.d/siduction.list`, are updated in a timely manner.  
 
 **Europe**  
 
@@ -17,6 +17,7 @@ https://ftp.spline.de/pub/siduction/
 ftp://ftp.spline.de/pub/siduction/
 
 + University of Stuttgart, Germany  
+http://ftp.uni-stuttgart.de/siduction/  
 https://ftp.uni-stuttgart.de/siduction/  
 ftp://ftp.uni-stuttgart.de/siduction/
 
@@ -53,15 +54,16 @@ ftp://ftp.belnet.be/mirror/siduction/
 rsync://ftp.belnet.be/siduction/
 
 + Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Germany  
+http://ftp.gwdg.de/pub/linux/siduction/  
 https://ftp.gwdg.de/pub/linux/siduction/  
 ftp://ftp.gwdg.de/pub/linux/siduction/  
 rsync://ftp.gwdg.de/pub/linux/siduction/
 
 + RWTH Aachen, Germany  
-http://ftp.halifax.rwth-aachen.de/siduction/
 https://ftp.halifax.rwth-aachen.de/siduction/  
-ftp://ftp.halifax.rwth-aachen.de/siduction/  
 rsync://ftp.halifax.rwth-aachen.de/siduction/  
+ftp://ftp.halifax.rwth-aachen.de/siduction/  
+http://ftp.halifax.rwth-aachen.de/siduction/
 
 + Studenten Net Twente, Netherlands  
 http://ftp.snt.utwente.nl/pub/linux/siduction/  
@@ -109,11 +111,14 @@ SHA256SUM
 SHA256SUM.gpg  
 SOURCES  
 
-`xxx.manifest` The file lists all packages of the respective ISO.  
-`xxx.iso` is the image file provided for download.  
-`xxx.md5` and `xxx.sha256` contain the checksums of the image file and are used to verify the integrity of the ISO.  
-`xxx.gpg` files are the signature files used to check checksum files (.md5 .sha256) for changes.  
-`xxx.sources` contains the download links to the source code files of the packages used.
+
+The `xxx.manifest` file lists all packages of the respective ISO.
+
+`xxx.iso` is the image file provided for download.
+
+The `xxx.md5` and `xxx.sha256` files are used to verify the integrity of the ISO.
+
+The `xxx.gpg` files are the signature files used to validate checksum files (.md5, .sha256) for changes. 
 
 Download links and mirrors can be found at [siduction.org](https://forum.siduction.org/index.php?page=7).
 
@@ -123,18 +128,18 @@ If someone can provide an FTP server with appropriate traffic, we are always ava
 
 ### Integrity check
 
-**md5sum**
+#### md5sum
 
-An md5sum is the checksum of a file. This checksum is used to check the integrity of the associated ISO image file. The siduction ISO image files and their corresponding md5sum files are always offered for download in the same directory. For example:
+An md5sum is the checksum of a file and is used to check the integrity of the associated file. The siduction ISO file and its respective m5sum files can be downloaded from the same directory. For example:
 
 ~~~
 siduction-21.3.0-wintersky-kde-amd64-202112231751.iso
 siduction-21.3.0-wintersky-kde-amd64-202112231751.iso.md5
 ~~~
 
-The integrity check creates an md5sum for the downloaded ISO image file and compares it to a sum we created earlier in the file with the `.md5` extension. If the checksums differ, the ISO image file has been modified or corrupted. This test protects against the use of manipulated ISO image files and it may save a lot of time troubleshooting a DVD that is not working.
+During the integrity check, a md5sum is created for the downloaded ISO file and then compared to a sum in the file with the `.md5` extension that we have created in advance. If the check sums deviate, the has been changed or damaged. This test protects you from using a manipulated ISO file and saves you a lot of time for debugging in case of a non functioning DVD.
 
-Under Linux one changes in the terminal into the directory, in which both the ISO image file and the `.md5` file are. Then you get the md5sum of the ISO image file with **`md5sum siduction-*.iso`** and the content of the `.md5` file with **`cat siduction-*.iso.md5`**. If you connect the two commands together, the output is directly one below the other for easy comparison.
+On Linux, use the terminal and navigate to the directory containing both the ISO file and the `.md5` file. Then you can get the ISO file's checksum by entering **`md5sum siduction-*.iso`** and the the `.md5` file's content with **`cat siduction-*.iso.md5`**. If you combine the two commands, the output is given one upon the other and is thus easy to compare.
 
 ~~~
 $ md5sum siduction-*.iso && cat siduction-*.iso.md5
@@ -142,33 +147,33 @@ $ md5sum siduction-*.iso && cat siduction-*.iso.md5
 358369ebc617613e3c58afc1af716827 *siduction-21.3.0-wintersky-kde-amd64-202112231751.iso
 ~~~
 
-The check is even easier under Linux with the command **`md5sum -c`**. Attention, the call must be accompanied by the .md5 file.
+The check is made even easier on Linux with the **`md5sum -c`**. Note that you need to specify the .md5 file in this command.
 
 ~~~
-    (Command and output on success)
+    (command and output in case of success)
 $ md5sum -c siduction-21.3.0-wintersky-kde-amd64-202112231751.iso.md5
 siduction-21.3.0-wintersky-kde-amd64-202112231751.iso: OK
 
-    (Command and output in case of an error)
+    (command and output in case of error)
 $ md5sum -c siduction-21.3.0-wintersky-kde-amd64-202112231751.iso.md5
-siduction-21.3.0-wintersky-kde-amd64-202112231751.iso: ERROR
-md5sum: WARNUNG: 1 calculated checksum did NOT fit
+siduction-21.3.0-wintersky-kde-amd64-202112231751.iso: FEHLSCHLAG
+md5sum: WARNUNG: 1 berechnete Prüfsumme passte NICHT
 ~~~
 
-**sha256sum**
+#### sha256sum
 
-The check using sha256sum is identical to md5sum in terms of handling. The main difference is the security due to a 256 bit checksum (md5sum 128 bit).
+A check using the sha256sum works exactly like the one with md5sum. The major difference is the increased security due to a 256 Bit check sum (md5sum: 128 Bit).
 
-**Windows**
+#### Windows
 
-With a download of the siduction ISO image file in Windows there is from Windows 7 within the Powershell the possibility with the preinstalled auxiliary program `CertUtil` to create checksums. The call is there:
+If you have downloaded the siduction ISO file on Windows 7 or later, the Powershell provides the preinstalled `CertUtil` helper program to create check sums. You can call it like this:
 
 ~~~
-CertUtil -hashfile C:\TEMP\<my_ISO_image.img> MD5
+CertUtil -hashfile C:\TEMP\<my_ISO_file.img> MD5
     or
-CertUtil -hashfile C:\TEMP\<my_ISO_image.img> SHA256
+CertUtil -hashfile C:\TEMP\<my_ISO_file.img> SHA256
 ~~~
 
-For older Windows versions the program `md5summer` (486 KB) released under the General Public License is available.
+On older Windows versions you can use the `md5summer` program (486 kB) published under the General Public License.
 
-<div id="rev">Last edited: 2022/04/07</div>
+<div id="rev">Last edited: 2022/04/11</div>

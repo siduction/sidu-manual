@@ -3,20 +3,20 @@
 ## Burn Live-DVD without GUI
 
 > **IMPORTANT INFORMATION:**  
-> siduction, as a Linux LIVE DVD/CD, is heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (Disk-At-Once) and not faster than eight times (8x).
+> siduction, as a Linux LIVE DVD/CD, is heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (Disk-At-Once), and not faster than eight times (8x).
 
 You don't necessarily need a graphical user interface (GUI) to burn a CD/DVD.  
-Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim or cdrdao.
+Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim, or cdrdao.
 
-Before burning the ISO image file to a DVD, you should always check it using the md5sum or sha256sum always offered by siduction. This may save a lot of time troubleshooting a changed or corrupted file.  
+Before burning the ISO image file to a DVD, you should always check it using the md5sum or sha256sum offered by siduction. This may save a lot of time troubleshooting a changed or corrupted file.  
 Detailed instructions can be found in the manual chapter [ISO Download, Integrity Check](0206-iso-dl_en.md#integrity-check).
 
 ### burniso
 
-siduction provides a script called "burniso".  
+siduction provides a script called `burniso`.  
 It burns ISO image files, using wodim in Disk-At-Once mode with a fixed burning speed of 8x. First burniso tests if the necessary hardware is available and then lists all recognized ISO image files. 
 
-As **user** you change to the directory with the ISO image files and call `burniso`:T
+As **user**, change to the directory with the ISO image files and call `burniso`:
 
 ~~~
 $ cd /path/to/ISO
@@ -31,11 +31,11 @@ Choose an ISO to burn:
 
 After entering the number for the desired ISO image file, `burniso` checks the integrity if there is an associated `.md5` file in the same directory. If successful, the burning process starts immediately afterwards. Therefore you should make sure that the medium to be burned to is already inserted before starting the script.
 
-Burniso perfects and simplifies one single function for the user, namely burning ISO images. In addition, the command line programs offer all the possibilities to create media with data of various types on CD, DVD and BD. In the following chapter we show some examples that are often used.
+Burniso perfects and simplifies one single function for the user, namely burning ISO images. In addition, the command line programs offer all the possibilities to create media with data of various types on CD, DVD, and BD. In the following chapter we show some examples that are often used.
 
 ### Burning with cdrdao wodim growisofs
 
-The command line programs are the basis for the popular GUI programs like `K3b`, `Brasero` or `Xfburn`. Those who prefer the full range of options of the programs `cdrdao`, `wodim`, `growisofs` etc. use the command line. We present here only a minimal part of the possibilities. Studying the manpages should be self-evident and is a bit easier with the examples. In addition, tips for your own project can be found on the Internet with the search engine of choice.
+The command line programs are the basis for the popular GUI programs like `K3b`, `Brasero`, or `Xfburn`. Those who prefer the full range of options offered by the programs `cdrdao`, `wodim`, `growisofs`, etc. use the command line. We present only a minimal part of the possibilities here. Studying the manpages should be self-evident and is a bit easier with the examples. In addition, tips for your own project can be found on the Internet with the search engine of choice.
 
 ### Available devices
 
@@ -74,13 +74,13 @@ wodim: Overview of accessible drives (2 found) :
 ---------------------------------------------------------
 ~~~
 
-To use the correct recorder, we need the exact name for of the device file (*"/dev/sr0"* or *"/devscd1"*) first of all.
+To use the correct recorder, we first of all need the exact name for of the device file (*"/dev/sr0"* or *"/devscd1"*).
 
 ### Examples for CD DVD BD
 
 In the examples, we do not provide extensive explanations of the options used. Please consult the man pages for detailed information.
 
-**Burning a CD/DVD from an ISO image:**
+**Burning a CD/DVD from an ISO image**
 
 Wodim recognizes by the filename extension `*.iso` and the option `-dao` that an image is to be burned.
 
@@ -88,7 +88,7 @@ Wodim recognizes by the filename extension `*.iso` and the option `-dao` that an
 $ wodim dev=/dev/scd0 driveropts=burnfree,noforcespeed fs=14M speed=8 -dao -eject -v <image.iso>
 ~~~
 
-If you get an error message about *"driveropts "*, this is because burnfree is not possible on some burners. This is solved by removing the driveropts from the command.
+If you get an error message concerning *"driveropts "*, this is because burnfree is not possible on some burners. This is solved by removing the driveropts from the command.
 
 ~~~
 $ wodim dev=/dev/sr0 fs=14M speed=8 -dao -eject -v <image.iso>
@@ -106,10 +106,10 @@ $ growisofs -dvd-compat -Z /dev/dvd=<my-image.iso>
 Burn a CD using a bin/cue image:
 
 ~~~
-$ cdrdao write --speed 24 --device ATA:1,0,0 --eject filenam.cue
+$ cdrdao write --speed 24 --device ATA:1,0,0 --eject filename.cue
 ~~~
 
-**Erase a rewritable blank disk:**
+**Erase a rewritable blank disk**
 
 In order to add new data to rewritable media, it must first be erased. The commands for deleting the tables of contents are:
 
@@ -119,18 +119,18 @@ $ wodim -blank=fast -v dev=/dev/scd0
 $ cdrdao blank --device ATA:1,0,0 --blank-mode minimal
 ~~~
 
-If one wants to overburn the entire data, we use `-blank=all` for wodim and `-blank-mode full` for cdrdao.
+If you want to overburn the entire data, use `-blank=all` for wodim and `-blank-mode full` for cdrdao.
 
 
-**Copy CD/DVD:**
+**Copy CD/DVD**
 
-Copy if there is only one drive. After reading, the source media is ejected and you have to insert the blank blank media into the same drive to continue.
+It is possible to copy even if there is only one drive. After reading, the source media is ejected and you have to insert the blank blank media into the same drive to continue.
 
 ~~~
 $ cdrdao copy --fast-toc --device ATA:1,0,0 --buffers 256 -v2
 ~~~
 
-You can copy a CD "on the fly" if two drives are available.
+You can copy a CD on the fly if two drives are available.
 
 ~~~
 $ cdrdao copy --fast-toc --source-device ATA:1,1,0 --device ATA:1,0,0 --on-the-fly --buffers 256 --eject -v2
@@ -162,5 +162,5 @@ This command fills the remaining free space on the DVD with zeros and closes the
 $ growisofs -M /dev/dvd=/dev/zero
 ~~~~
 
-<div id="rev">Last edited: 2022/04/07</div>
+<div id="rev">Last edited: 2022/04/11</div>
 
