@@ -70,7 +70,7 @@ Either the `xandr` or `xmodule` boot option should also be used when applying bo
 | boot option | value | description | 
 | --- | ---- | ---------- |
 | apm | off | disables Advanced Power Managment | 
-| 1, 3, 5 | (e.g.) 3 | boot targets or runlevels which can be entered manually in the Grub boot line. See also the manual page [Runlevel - target unit](0702-sys-admin-gen_en.md#systemd-target-formerly-runlevel). | 
+| 1, 3, 5 | (e.g.) 3 | boot targets or runlevels which can be entered manually in the Grub boot line. See also the manual page [Runlevel - target unit](0702-sys-admin-gen_en.md#systemd-target---formerly-runlevel). | 
 | irqpoll | | uses IRQ polling | 
 | mem | (e.g.) 128M, 1G | uses the specified memory size | 
 | noagp | | no AGP support (Accelerated Graphics Port) | 
