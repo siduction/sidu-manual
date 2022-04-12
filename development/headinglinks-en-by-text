@@ -13,7 +13,7 @@
 # 'Link: ' and put the text to be displayed between
 # the square brackets.
 #
-Generated on 2022-04-11
+Generated on 2022-04-12
 
 
  ### About the stability of Debian Sid   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#about-the-stability-of-debian-sid)
@@ -81,7 +81,7 @@ Generated on 2022-04-11
  ### Disclaimer   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#disclaimer)
   ## Doas - Alternative to Sudo   0703-sys-admin-doas_en.md   Link: [](0703-sys-admin-doas_en.md#doas---alternative-to-sudo)
  ### Doas and multiple users   0703-sys-admin-doas_en.md   Link: [](0703-sys-admin-doas_en.md#doas-and-multiple-users)
-  ## Downloading and burning the ISO   0206-iso-dl_en.md   Link: [](0206-iso-dl_en.md#downloading-and-burning-the-iso)
+  ## Downloading the ISO   0206-iso-dl_en.md   Link: [](0206-iso-dl_en.md#downloading-the-iso)
  ### Duplication to another computer   0301-hd-install_en.md   Link: [](0301-hd-install_en.md#duplication-to-another-computer)
  ### Encrypt system   0301-hd-install_en.md   Link: [](0301-hd-install_en.md#encrypt-system)
  ### Essential chapters   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#essential-chapters)
@@ -157,7 +157,6 @@ Generated on 2022-04-11
  ### MariaDB in the file system   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#mariadb-in-the-file-system)
  ### MariaDB Log   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#mariadb-log)
  ### Mastering journalctl   0717-systemd-journald_en.md   Link: [](0717-systemd-journald_en.md#mastering-journalctl)
-#### md5sum   0206-iso-dl_en.md   Link: [](0206-iso-dl_en.md#md5sum)
 #### Memory requirements   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#memory-requirements)
  ### Minimum requirements   0310-part-size-examp_en.md   Link: [](0310-part-size-examp_en.md#minimum-requirements)
  ### Minimum system requirements   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#minimum-system-requirements)
@@ -222,11 +221,9 @@ Generated on 2022-04-11
   ## Set up MariaDB   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#set-up-mariadb)
   ## Set up PHP   0523-lamp-php_en.md   Link: [](0523-lamp-php_en.md#set-up-php)
  ### Setting new passwords   0702-sys-admin-gen_en.md   Link: [](0702-sys-admin-gen_en.md#setting-new-passwords)
-#### sha256sum   0206-iso-dl_en.md   Link: [](0206-iso-dl_en.md#sha256sum)
  ### siduction as samba server   0510-samba_en.md   Link: [](0510-samba_en.md#siduction-as-samba-server)
   ## siduction help   0003-help_en.md   Link: [](0003-help_en.md#siduction-help)
  ### siduction IRC support in text mode   0003-help_en.md   Link: [](0003-help_en.md#siduction-irc-support-in-text-mode)
- ### siduction ISO download   0206-iso-dl_en.md   Link: [](0206-iso-dl_en.md#siduction-iso-download)
   ## siduction Quick Start Guide   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#siduction-quick-start-guide)
  ### siduction specific parameters   0204-cheatcodes_en.md   Link: [](0204-cheatcodes_en.md#siduction-specific-parameters)
  ### Six steps to logical volumes   0315-part-lvm_en.md   Link: [](0315-part-lvm_en.md#six-steps-to-logical-volumes)
@@ -306,7 +303,6 @@ Generated on 2022-04-11
    # Welcome   0000-welcome_en.md   Link: [](0000-welcome_en.md#welcome)
  ### When the terminal hangs   0701-term-konsole_en.md   Link: [](0701-term-konsole_en.md#when-the-terminal-hangs)
  ### Why use apt exclusively   0705-sys-admin-apt_en.md   Link: [](0705-sys-admin-apt_en.md#why-use-apt-exclusively)
-#### Windows   0206-iso-dl_en.md   Link: [](0206-iso-dl_en.md#windows)
  ### With Linux operating systems   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#with-linux-operating-systems)
  ### With Mac OS X   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#with-mac-os-x)
  ### With MS Windows   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#with-ms-windows)

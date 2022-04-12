@@ -1,8 +1,6 @@
-% Download and burn siduction ISO
+% siduction ISO download
 
-## Downloading and burning the ISO
-
-### siduction ISO download
+## Downloading the ISO
 
 Please use the closest mirror. Mirror servers listed below, with details for the entry in `/etc/apt/sources.list.d/siduction.list`, are updated in a timely manner.  
 
@@ -128,7 +126,7 @@ If someone can provide an FTP server with appropriate traffic, we are always ava
 
 ### Integrity check
 
-#### md5sum
+**md5sum**
 
 An md5sum is the checksum of a file and is used to check the integrity of the associated file. The siduction ISO file and its respective m5sum files can be downloaded from the same directory. For example:
 
@@ -160,11 +158,11 @@ siduction-21.3.0-wintersky-kde-amd64-202112231751.iso: FEHLSCHLAG
 md5sum: WARNUNG: 1 berechnete Prüfsumme passte NICHT
 ~~~
 
-#### sha256sum
+**sha256sum**
 
 A check using the sha256sum works exactly like the one with md5sum. The major difference is the increased security due to a 256 Bit check sum (md5sum: 128 Bit).
 
-#### Windows
+**Windows**
 
 If you have downloaded the siduction ISO file on Windows 7 or later, the Powershell provides the preinstalled `CertUtil` helper program to create check sums. You can call it like this:
 
@@ -176,4 +174,4 @@ CertUtil -hashfile C:\TEMP\<my_ISO_file.img> SHA256
 
 On older Windows versions you can use the `md5summer` program (486 kB) published under the General Public License.
 
-<div id="rev">Last edited: 2022/04/11</div>
+<div id="rev">Last edited: 2022/04/12</div>
