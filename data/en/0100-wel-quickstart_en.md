@@ -14,7 +14,7 @@ siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction
 
 + [Partitioning the hard disk](0312-part-gparted_en.md#partitioning-with-gparted) - describes how to partition a hard disk. 
 
-+ [Downloading siduction ISO](0206-iso-dl_en.md#iso-downloading) - describes how to download and check a siduction ISO file.
++ [Downloading siduction ISO](0206-iso-dl_en.md#downloading-the-iso) - describes how to download and check a siduction ISO file.
 
 + [ISO to USB stick - memory card](0207-iso-to-usb-sd_en.md#iso-to-usb-stick---memory-card) - Describes how to create a siduction life media.
 
