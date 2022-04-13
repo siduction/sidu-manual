@@ -18,7 +18,7 @@
 #  Enter the program name and, separated by space, the two-letter shortcode
 #  for the language in which the manual should be created. The language shortcode
 #  must correspond to the names of the subfolder in /data.
-#  Example: ./10-generate-pdfmanual.sh.sh en
+#  Example: ./10-generate-pdfmanual.sh en
 
 # General test and
 # country specific page options
