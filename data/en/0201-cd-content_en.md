@@ -53,7 +53,7 @@ If a 32bit ISO is desired, we will gladly create one on request in IRC. Unfortun
 
 for: KDE-Plasma, Mate, Xfce, LXQt, LXDE, Cinnamon, Xorg, and NoX
 
-#### Processor requirements: 64Bit CPU
+**Processor requirements: 64Bit CPU**
 
     AMD64  
     Intel Core2  
@@ -62,7 +62,7 @@ for: KDE-Plasma, Mate, Xfce, LXQt, LXDE, Cinnamon, Xorg, and NoX
     newer 64-bit capable AMD Sempron or Intel Pentium 4 CPUs  
     (look for the "lm" flag in /proc/cpuinfo or use inxi -v3)
 
-#### Memory requirements
+**Memory requirements**
 
     KDE Plasma: ≥ 4 GByte RAM
     Mate:       ≥ 4 GByte RAM
@@ -76,7 +76,7 @@ for: KDE-Plasma, Mate, Xfce, LXQt, LXDE, Cinnamon, Xorg, and NoX
     ≥ 5 GByte hard disk space for NoX
     ≥10 GByte of disk space for all the others
 
-#### Other
+**Other**
 
     VGA graphics card with at least 640x480 pixel resolution  
     optical drive or USB media

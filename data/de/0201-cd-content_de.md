@@ -43,7 +43,7 @@ Wenn ein 32 Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne er
 
 für: KDE-Plasma, XFCE, LXQt, Xorg und NoX
 
-#### Prozessoranforderungen: 64 Bit CPU
+**Prozessoranforderungen: 64 Bit CPU**
 
     AMD64  
     Intel Core2  
@@ -52,7 +52,7 @@ für: KDE-Plasma, XFCE, LXQt, Xorg und NoX
     neuere 64 Bit fähige AMD Sempron und Intel Pentium 4 CPUs  
     (achten Sie auf das "lm"-Flag in /proc/cpuinfo oder nutzt inxi -v3).
 
-#### Speicheranforderungen
+**Speicheranforderungen**
 
     KDE-Plasma: ≥ 4 GByte RAM
     XFCE:       ≥ 4 GByte RAM
@@ -63,7 +63,7 @@ für: KDE-Plasma, XFCE, LXQt, Xorg und NoX
     ≥ 5 GByte Festplattenspeicher für NOX
     ≥10 GByte Festplattenspeicher für alle Anderen
 
-#### Sonstiges
+**Sonstiges**
 
     VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung.
     optisches Laufwerk oder USB Medien.
