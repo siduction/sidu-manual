@@ -2,7 +2,7 @@
 
 # Quickstart
 
-## siduction Quick Start Guide
+**siduction Quick Start Guide**
 
 siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction may provide packages that temporarily replace buggy Debian packages. The siduction apt repository contains siduction specific packages like the siduction kernel, scripts, packages we would like to push to Debian, utilities, and documentation.
 
