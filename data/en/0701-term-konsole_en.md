@@ -148,7 +148,7 @@ The "PS1" line quoted above is therefore displayed as follows:
 | --- | --- |
 | [01;32m\]\\u@\\h | user, @ and host get the attributes "bold" and "green" |
 | [00m\]: | colon gets the default attributes of the terminal |
-| [01;34m\]\w | the working directory gets the attributes "bold" and "blue" |
+| [01;34m\]\\w | the working directory gets the attributes "bold" and "blue" |
 | [00m\]\$ | the prompt gets the default attributes of the terminal |
 
 If the color is to be removed from the prompt, we prefix the PS1 line with a hash **#** and a **space**. This comments out the line. Now it is sufficient to add the line

@@ -71,7 +71,7 @@ Make sure not to use hyphens "-" in the filenames, because they declare a new su
 
 + invalid: /data/home-backup
 + allowed: /data/home_backup
-+ allowed: /data/home\x2dbackup
++ allowed: /data/home\\x2dbackup
 
 To get an error-free file name for the mount and automount units, we use the `systemd-escape` command in the terminal.
 
