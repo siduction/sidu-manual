@@ -183,41 +183,58 @@ Another new feature in logging is the tab completion for journalctl. If you type
 
 ~~~
 $ journalctl
-_AUDIT_FIELD_APPARMOR= ERRNO= SEAT_ID=
-_AUDIT_FIELD_CAPABILITY= _EXE= _SELINUX_CONTEXT=
-_AUDIT_FIELD_CAPNAME= EXECUTABLE= SESSION_ID=
-_AUDIT_FIELD_DENIED_MASK= EXIT_CODE= SHUTDOWN=
-_AUDIT_FIELD_INFO= EXIT_STATUS= SLEEP=
-_AUDIT_FIELD_NAME= _FSUID= _SOURCE_MONOTONIC_TIMESTAMP=
-_AUDIT_FIELD_OPERATION= _GID= _SOURCE_REALTIME_TIMESTAMP=
-_AUDIT_FIELD_OUID= GLIB_DOMAIN= _STREAM_ID=
-_AUDIT_FIELD_PEER= GLIB_OLD_LOG_API= SYSLOG_FACILITY=
-_AUDIT_FIELD_PROFILE= _HOSTNAME= SYSLOG_IDENTIFIER=
-_AUDIT_FIELD_REQUESTED_MASK= INVOCATION_ID= SYSLOG_PID=
-_AUDIT_FIELD_SIGNAL= JOB_ID= SYSLOG_RAW=
-_AUDIT_ID= JOB_RESULT= SYSLOG_TIMESTAMP=
-_AUDIT_LOGINUID= JOB_TYPE= _SYSTEMD_CGROUP=
-_AUDIT_SESSION= JOURNAL_NAME= _SYSTEMD_INVOCATION_ID=
-_AUDIT_TYPE= JOURNAL_PATH= _SYSTEMD_OWNER_UID=
-_AUDIT_TYPE_NAME= _KERNEL_DEVICE= _SYSTEMD_SESSION=
-AVAILABLE= _KERNEL_SUBSYSTEM= _SYSTEMD_SLICE=
-AVAILABLE_PRETTY= KERNEL_USEC= _SYSTEMD_UNIT=
-_BOOT_ID= LEADER= _SYSTEMD_USER_SLICE=
-_CAP_EFFECTIVE= LIMIT= _SYSTEMD_USER_UNIT=
-_CMDLINE= LIMIT_PRETTY= THREAD_ID=
-CODE_FILE= _LINE_BREAK= TIMESTAMP_BOOTTIME=
-CODE_FUNC= _MACHINE_ID= TIMESTAMP_MONOTONIC=
-CODE_LINE= MAX_USE= _TRANSPORT=
-_COMM= MAX_USE_PRETTY= _UDEV_DEVNODE=
-COMMAND= MESSAGE= _UDEV_SYSNAME=
-CONFIG_FILE= MESSAGE_ID= _UID=
-CONFIG_LINE= NM_CONNECTION= UNIT=
-CURRENT_USE= NM_DEVICE= UNIT_RESULT=
-CURRENT_USE_PRETTY= NM_LOG_DOMAINS= USER_ID=
-DISK_AVAILABLE= NM_LOG_LEVEL= USER_INVOCATION_ID=
-DISK_AVAILABLE_PRETTY= N_RESTARTS= USERSPACE_USEC=
-DISK_KEEP_FREE= _PID= USER_UNIT=
-DISK_KEEP_FREE_PRETTY= PRIORITY=
+_AUDIT_FIELD_APPARMOR=        _KERNEL_SUBSYSTEM=
+_AUDIT_FIELD_CAPABILITY=      KERNEL_USEC=
+_AUDIT_FIELD_CAPNAME=         LEADER=
+_AUDIT_FIELD_DENIED_MASK=     LIMIT=
+_AUDIT_FIELD_INFO=            LIMIT_PRETTY=
+_AUDIT_FIELD_NAME=            _LINE_BREAK=
+_AUDIT_FIELD_OPERATION=       _MACHINE_ID=
+_AUDIT_FIELD_OUID=            MAX_USE=
+_AUDIT_FIELD_PEER=            MAX_USE_PRETTY=
+_AUDIT_FIELD_PROFILE=         MESSAGE=
+_AUDIT_FIELD_REQUESTED_MASK=  MESSAGE_ID=
+_AUDIT_FIELD_SIGNAL=          NM_CONNECTION=
+_AUDIT_ID=                    NM_DEVICE=
+_AUDIT_LOGINUID=              NM_LOG_DOMAINS=
+_AUDIT_SESSION=               NM_LOG_LEVEL=
+_AUDIT_TYPE=                  N_RESTARTS=
+_AUDIT_TYPE_NAME=             _PID=
+AVAILABLE=                    PRIORITY=
+AVAILABLE_PRETTY=             SEAT_ID=
+_BOOT_ID=                     _SELINUX_CONTEXT=
+_CAP_EFFECTIVE=               SESSION_ID=
+_CMDLINE=                     SHUTDOWN=
+CODE_FILE=                    SLEEP=
+CODE_FUNC=                    _SOURCE_MONOTONIC_TIMESTAMP=
+CODE_LINE=                    _SOURCE_REALTIME_TIMESTAMP=
+_COMM=                        _STREAM_ID=
+COMMAND=                      SYSLOG_FACILITY=
+CONFIG_FILE=                  SYSLOG_IDENTIFIER=
+CONFIG_LINE=                  SYSLOG_PID=
+CURRENT_USE=                  SYSLOG_RAW=
+CURRENT_USE_PRETTY=           SYSLOG_TIMESTAMP=
+DISK_AVAILABLE=               _SYSTEMD_CGROUP=
+DISK_AVAILABLE_PRETTY=        _SYSTEMD_INVOCATION_ID=
+DISK_KEEP_FREE=               _SYSTEMD_OWNER_UID=
+DISK_KEEP_FREE_PRETTY=        _SYSTEMD_SESSION=
+ERRNO=                        _SYSTEMD_SLICE=
+_EXE=                         _SYSTEMD_UNIT=
+EXECUTABLE=                   _SYSTEMD_USER_SLICE=
+EXIT_CODE=                    _SYSTEMD_USER_UNIT=
+EXIT_STATUS=                  THREAD_ID=
+_FSUID=                       TIMESTAMP_BOOTTIME=
+_GID=                         TIMESTAMP_MONOTONIC=
+GLIB_DOMAIN=                  _TRANSPORT=
+GLIB_OLD_LOG_API=             _UDEV_DEVNODE=
+_HOSTNAME=                    _UDEV_SYSNAME=
+INVOCATION_ID=                _UID=
+JOB_ID=                       UNIT=
+JOB_RESULT=                   UNIT_RESULT=
+JOB_TYPE=                     USER_ID=
+JOURNAL_NAME=                 USER_INVOCATION_ID=
+JOURNAL_PATH=                 USERSPACE_USEC=
+_KERNEL_DEVICE=               USER_UNIT=
 ~~~
 
 Most of these are self-explanatory. For example COMM, which stands for *command*, provides a lot of options:
@@ -226,21 +243,29 @@ Most of these are self-explanatory. For example COMM, which stands for *command*
 
 ~~~
 $ journalctl _COMM=
-acpid cups kdm ntp sensors systemd-shutdown
-acpi-fakekey dbus-daemon keyboard-setup ntpd sh systemd-udevd
-acpi-support ddclient loadcpufreq ntpdate smartmontools teamviewerd
-alsactl docvert-convert logger ofono smbd udev-configure-
-anacron glances login ofonod ssh udisksd
-apache2 gpasswd lvm pkexec sshd udisks-daemon
-backlighthelper gpm lvm2 polkitd su umount
-bash groupadd mbmon pulseaudio sudo uptimed
-bluetoothd hddtemp mdadm pywwetha sysstat useradd
-chfn hdparm mdadm-raid pywwetha.py systemd usermod
-chrome hp mtp-probe resolvconf systemd-fsck vboxdrv
-console-kit-dae hpfax mysql rpcbind systemd-hostnam VBoxExtPackHelp
-console-setup ifup networking rpc.statd systemd-journal vdr
-cpufrequtils irqbalance nfs-common samba-ad-dc systemd-logind winbind
-cron kbd mbd saned systemd-modules	
+acpid           hddtemp        ntpdate       systemd
+acpi-fakekey    hdparm         ntpd          systemd-fsck
+acpi-support    hp             ofono         systemd-hostnam
+alsactl         hpfax          ofonod        systemd-journal
+anacron         ifup           pkexec        systemd-logind
+apache2         irqbalance     polkitd       systemd-modules
+backlighthelper kbd            pulseaudio    systemd-shutdow
+bash            kdm            pywwetha      systemd-udevd
+bluetoothd      keyboard-setup pywwetha.py   teamviewerd
+chfn            loadcpufreq    resolvconf    udev-configure-
+chrome          logger         rpcbind       udisksd
+console-kit-dae login          rpc.statd     udisks-daemon
+console-setup   lvm            samba-ad-dc   umount
+cpufrequtils    lvm2           saned         uptimed
+cron            mbd            sensors       useradd
+cups            mbmon          sh            usermod
+dbus-daemon     mdadm          smartmontools vboxdrv
+ddclient        mdadm-raid     smbd          VBoxExtPackHelp
+docvert-convert mtp-probe      ssh           vdr
+glances         mysql          sshd          winbind
+gpasswd         networking     su
+gpm             nfs-common     sudo
+groupadd        ntp            sysstat
 ~~~
 
 With **`journalctl _COMM=su`** you can now see which user got root privileges with *su* and when.
