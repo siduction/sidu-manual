@@ -6,7 +6,7 @@
 
 siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt-Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.
 
-## Essenzielle Kapitel
+### Essenzielle Kapitel
 
 > Einige Kapitel des Handbuchs stellen für Nutzer, die neu bei Linux bzw. neu bei siduction sind, essenzielle Lektüre dar. Neben dieser Kurzeinführung sind das:
 
@@ -26,15 +26,15 @@ siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kan
 
 + [Paketmanager und Systemaktualisierung](0705-sys-admin-apt_de.md#apt-paketverwaltung)  - Beschreibt, wie neue Software installiert und das System aktualisiert werden kann.
 
-## Zur Stabilität von Debian Sid
+### Zur Stabilität von Debian Sid
 
 *"Sid"* ist der Name des Unstable-Repositories von Debian. Debian Sid wird regelmäßig mit neuen Softwarepaketen beschickt, wodurch diese Debian-Distribution sehr zeitnah die neuesten Versionen der jeweiligen Programme enthält. Dies bedeutet aber auch, dass zwischen einer Veröffentlichung im Upstream (von den Softwareentwicklern) und der Verteilung in Debian Sid weniger Zeit ist, um die Pakete zu testen.
 
-## Der siduction-Kernel
+### Der siduction-Kernel
 
 Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Problembehebung, erweiterte und aktualisierte Funktionen, Leistungsoptimierung, höhere Stabilität. Basis ist immer der aktuelle Kernel von [http://www.kernel.org/](https://www.kernel.org/) . 
 
-## Die Verwaltung von Softwarepaketen
+### Die Verwaltung von Softwarepaketen
 
 siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet `apt` und `dpkg` für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in `/etc/sources.list.d/*` 
 
@@ -66,7 +66,7 @@ Andere bekannte (und weniger bekannte) Distributionen, die auf Debian basieren, 
 
 Aus diesem Grund sollen die Repositorien von Debian benutzt werden, um die benötigten Softwarepakete zu installieren. Andere Softwarequellen können nur schwer oder gar nicht von siduction unterstützt werden. Darunter fallen auch Pakete und PPAs von Ubuntu.
 
-## Aktualisierung des Systems - upgrade
+### Aktualisierung des Systems - upgrade
 
 Ein upgrade ist nur bei beendetem Grafikserver X durchzuführen. Um den Grafikserver zu beenden, gibt man als **root** den Befehl
 
@@ -96,7 +96,7 @@ init 5
 *"apt full-upgrade"* ist das empfohlene Verfahren, um eine siduction-Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
 [Aktualisierung eines installierten Systems - full-upgrade](0705-sys-admin-apt_de.md#aktualisierung-des-systems).
 
-## Konfiguration von Netzwerken
+### Konfiguration von Netzwerken
 
 Der in allen graphischen Oberflächen von siduction integriert `Networkmanager` bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript `nmcli` Zugang zur Funktionalität des Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends `wireless-tools` bzw. `wpasupplicant` zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
 
@@ -110,16 +110,16 @@ Mehr Informationen unter [Netzwerk - nmcli](0501-inet-nm-cli_de.md#network-manag
 
 Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite [IWD statt wpa_supplicant](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) über die Vorgehensweise.
 
-## Runlevels - Ziel-Unit
+### Runlevels - Ziel-Unit
 
 Standardmäßig bootet siduction in die graphische Oberfläche (außer NoX).  
 Die Konfiguration der Runlevel ist im Kapitel [siduction-Runlevels - Ziel-Unit](0714-systemd-target_de.md#systemd-target---ziel-unit) beschrieben.
 
-## Weitere Desktopumgebungen
+### Weitere Desktopumgebungen
 
 Plasma, Xfce, LXQt und Xorg werden von siduction ausgeliefert.
 
-## Hilfe im IRC und im Forum
+### Hilfe im IRC und im Forum
 
 Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
