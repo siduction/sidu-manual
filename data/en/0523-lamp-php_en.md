@@ -67,7 +67,7 @@ The respective *"php.ini"* contains the configuration for the corresponding inte
 
 ### PHP modules
 
-### Queries
+**Queries**
 
 A large number of modules are available for PHP. You can find out which ones are already installed with
 
