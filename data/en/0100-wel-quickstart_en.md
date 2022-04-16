@@ -6,7 +6,7 @@
 
 siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction may provide packages that temporarily replace buggy Debian packages. The siduction apt repository contains siduction specific packages like the siduction kernel, scripts, packages we would like to push to Debian, utilities, and documentation.
 
-### Essential chapters
+## Essential chapters
 
 > Some chapters of the manual are essential reading for users who are new to Linux or new to siduction. In addition to this brief introduction, these are:
 
@@ -26,15 +26,15 @@ siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction
 
 + [Package Manager and System Update](0705-sys-admin-apt_en.md#apt-package-management) - describes how to install new software and update the system.
 
-### About the stability of Debian Sid
+## About the stability of Debian Sid
 
 'Sid' is the name of Debian's unstable repository. Debian Sid is regularly updated with new software packages, which means that this Debian distribution contains the latest versions of the respective programs in a very timely manner. However, this also means that there is less time between a release in the upstream (by the software developers) and the distribution in Debian Sid to test the packages.
 
-### The siduction kernel
+## The siduction kernel
 
 The Linux kernel of siduction is optimized to achieve the following goals: problem solving, enhanced and updated features, performance optimization, higher stability. The basis is always the latest kernel from [http://www.kernel.org/](https://www.kernel.org/). 
 
-### The management of software packages
+## The management of software packages
 
 siduction follows Debian rules regarding package structure and uses `apt` as well as `dpkg` for software package management. The Debian and siduction repositories are located in `/etc/sources.list.d/*`. 
 
@@ -66,7 +66,7 @@ Other well-known (and lesser-known) Debian based distributions create new packag
 
 For this reason, Debian's repositories should be used to install the required software packages. Other software sources may be difficult or impossible to support by siduction. This includes packages and PPAs from Ubuntu.
 
-### Updating the system - upgrade
+## Updating the system - upgrade
 
 An upgrade can only be performed when X graphics server is stopped. To stop the graphics server, the following command can be entered into a console as **root**:
 
@@ -96,7 +96,7 @@ init 5
 **apt full-upgrade** is the recommended procedure to upgrade a siduction installation to the latest version. It is described in more detail here:  
 [Updating an installed system - full-upgrade](0705-sys-admin-apt_en.md#updating-the-system).
 
-### Network configuration
+## Network configuration
 
 The **Networkmanager** integrated in all graphical interfaces of siduction offers a quick configuration of network cards (Ethernet and wireless). It is mostly self-explanatory. In the terminal, the script **nmcli** provides access to the netwokmanagers functionality. Wireless networks are scanned by the script. You can choose WEP as well as WPA encryption methods and use the **wireless-tools** or **wpasupplicant** backends to configure wireless networks. Ethernet configuration is done automatically when using a DHCP server on the router (dynamic assignment of an IP address), but manual setup (from netmasks to nameservers) is also possible with this script.
 
@@ -110,16 +110,16 @@ More information at [network - nmcli](0501-inet-nm-cli_en.md#network-manager-com
 
 Intel's [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) is preparing to retire the WPA supplicant. Only one tenth as big and much faster, iwd will be the successor. If you want to switch to iwd already, please refer to our manual page [IWD instead of wpa_supplicant](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant) for the procedure.
 
-### Runlevels - target unit
+## Runlevels - target unit
 
 By default, siduction boots into the graphical user interface (except NoX).  
 Configuration of runlevels is described in the chapter [siduction runlevels - target unit](0714-systemd-target_en.md#systemd-target---target-unit).
 
-### Other desktop environments
+## Other desktop environments
 
 Plasma, Gnome, Xfce, LXQt, Cinnamon, and Xorg are shipped by siduction.
 
-### Help in IRC and in the forum
+## Help in IRC and in the forum
 
 Help is always available in IRC or in the siduction forum.
 
@@ -127,4 +127,4 @@ Help is always available in IRC or in the siduction forum.
 
 + [With this link you can call the IRC immediately in your browser](https://webchat.oftc.net/): enter a freely chosen nickname and join the channel #siduction-en.
 
-<div id="rev">Last edited: 2022/03/29</div>
+<div id="rev">Last edited: 2022/04/16</div>
