@@ -46,9 +46,9 @@ Open Source Xorg-Treiber für nVidia (modesetting/nouveau), ATI/AMD (modesetting
 
 Anmerkung: xorg.conf wird für Open-Source-Treiber in der Regel nicht mehr benötigt Ausnahmen sind z.B. Mehrschirmbetrieb.
 
-### Propritäre Treiber
+### Proprietäre Treiber
 
-Propritäre Treiber gibt es faktisch nur noch für nVidia Grafikkarten. AMD hat zwar auch einen propritären Treiber namens amdgpu-pro, dieser unterstützt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Außerdem ist dieser Treiber eher für professionelle Karten denn für Desktop Karten konzipiert.
+Proprietäre Treiber gibt es faktisch nur noch für nVidia Grafikkarten. AMD hat zwar auch einen proprietären Treiber namens amdgpu-pro, dieser unterstützt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Außerdem ist dieser Treiber eher für professionelle Karten denn für Desktop Karten konzipiert.
 
 Um vom proprietären Treiber von Nvidia auf nouveau zu wechseln, siehe den [Eintrag im siduction Wiki.](http://wiki.siduction.de/index.php?title=Wie_entferne_ich_propriet%C3%A4re_nVidia-Treiber%3F)
 
@@ -104,7 +104,7 @@ Debian stellt folgende Versionen der binären Treiber zur Verfügung:
     - nvidia-legacy-390xx-driver (für 6.)
     - nvidia-driver (für 7.)
 
-Da es sich hier aber um propritäre Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch für die Firmware für freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Außerdem sind die Pakete gcc, make und dkms notwendig. Mit dkms werden zusätzlich installierte (nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:  
+Da es sich hier aber um proprietäre Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch für die Firmware für freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Außerdem sind die Pakete gcc, make und dkms notwendig. Mit dkms werden zusätzlich installierte (nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:  
 
 **GeForce 8000 and 9000 series**
 
