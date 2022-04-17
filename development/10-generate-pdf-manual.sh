@@ -105,7 +105,27 @@ for i in $LISTE ; do sed -i -e 's/([-_./[:alnum:]]*de.md#/(#/g' "$i"; done
 
 if [ ! -d ../data/$langcode/pdf ]; then mkdir ../data/$langcode/pdf; fi
 
-pandoc -N --toc --toc-depth=4 -p --pdf-engine=xelatex --listings -H $header --resource-path=$searchpath --highlight-style tango -V lang=$language -V papersize=$paper -V hmargin=$hmargin -V vmargin=$vmargin -V linkcolor=$linkcolor -V geometry:margin="$margin" -V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" -V geometry=$geometry -V alignment=$alignment -V columns=$columns -V fontsize=$fontsize -V nohyphenation=$nohyphenation $LISTE -o ../data/$langcode/pdf/siduction-manual_$langcode.pdf
+pandoc \
+     -N --toc --toc-depth=4 \
+     -p --pdf-engine=xelatex \
+     -H $header \
+     --listings \
+     --resource-path=$searchpath \
+     -V lang=$language \
+     -V papersize=$paper \
+     -V hmargin=$hmargin \
+     -V vmargin=$vmargin \
+     -V linkcolor=$linkcolor \
+     -V geometry:margin="$margin" \
+     -V mainfont="$mainfont" \
+     -V sansfont="$sansfont" \
+     -V monofont="$monofont" \
+     -V geometry=$geometry \
+     -V alignment=$alignment \
+     -V columns=$columns \
+     -V fontsize=$fontsize \
+     -V nohyphenation=$nohyphenation $LISTE \
+     -o ../data/$langcode/pdf/siduction-manual_$langcode.pdf
 
 rm -r ../arbeit
 
