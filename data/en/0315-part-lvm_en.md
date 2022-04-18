@@ -1,4 +1,4 @@
-% "Logical Volume" partitioning
+% Logical Volume partitioning
 
 ## LVM partitioning - Logical Volume Manager
 

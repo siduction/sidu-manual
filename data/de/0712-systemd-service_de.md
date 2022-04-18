@@ -1,4 +1,4 @@
-﻿% Systemd - service
+% Systemd - service
 
 ## systemd-service
 

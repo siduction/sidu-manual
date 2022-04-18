@@ -94,7 +94,7 @@ searchpath=./:../data/$langcode/:../data/$langcode/images/:../sys-images/
 
 mkdir ../arbeit/ || exit 1
 
-cp -pP ../data/$langcode/* ../arbeit/ 2>/dev/null
+cp -pP ../data/$langcode/0* ../arbeit/ 2>/dev/null
 
 LISTE=$(ls ../arbeit/[[:digit:]]*)
 
