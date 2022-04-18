@@ -85,6 +85,7 @@ searchpath=./:../data/$langcode/:../data/$langcode/images/:../sys-images/
 #  - Ordner /arbeit anlegen und Dateien kopieren.
 #  - Aus dem Ordner /arbeit die Dateiliste erstellen
 #  - pandoc (LaTex) Mettatag aus allen Dateien entfernen.
+#  - pandoc (LaTex) "\pagebreak" am Ende jeder Datei einfügen.
 #  - pandoc (LaTex) Mettatag nur in der ersten Datei einfügen.
 #  - Dateinamen auf Link anderer Handbuchseiten entfernen.
 #  - Ordner für das PDF erstellen.
@@ -97,7 +98,9 @@ cp -pP ../data/$langcode/* ../arbeit/ 2>/dev/null
 
 LISTE=$(ls ../arbeit/[[:digit:]]*)
 
-for i in $LISTE ; do sed -i -E '/^% \w/d' "$i"; done 
+for i in $LISTE ; do sed -i -E '/^% \w/d' "$i"; done
+
+for i in $LISTE ; do sed -i -e '$ a \\\clearpage' "$i"; done
 
 sed -i -e "1 i% $titel" -e "1 i% $team" -e "1 i% $datum" ../arbeit/0000-*
 

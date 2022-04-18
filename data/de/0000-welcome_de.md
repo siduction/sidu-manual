@@ -2,7 +2,7 @@
 
 # Willkommen
 
-**Das siduction™ GNU/Linux-Betriebssystem**
+## Das siduction™ GNU/Linux-Betriebssystem
 
 Der Name **siduction** ist ein Wortspiel aus zwei Begriffen: Dem Wort **sid**, also dem Codenamen von Debian Unstable und **seduction**, im Sinne von verführen.
 
