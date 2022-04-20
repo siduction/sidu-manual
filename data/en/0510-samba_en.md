@@ -24,7 +24,7 @@ To see a share in a directory (with access for ALL users), a mount point must ex
 If not, a directory must be created as a mount point (the name is arbitrary):
 
 ~~~
-mkdir -p /media/server_share
+mkdir -p /mnt/server_share
 ~~~
 
 A share is mounted with this command:
@@ -44,7 +44,7 @@ mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/shar
 A connection is terminated with this command:
 
 ~~~
-umount /media/server_share
+umount /mnt/server_share
 ~~~
 
 To mount a Samba share automatically, the `/etc/fstab` file can be amended according to this pattern:
@@ -66,10 +66,10 @@ The resulting entry for `/etc/fstab` is:
 
 ~~~
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-credentials=</path/to/.smbcredentials>,uid=$UID,gig=$GID 0 0
+credentials=</path/to/.smbcredentials>,uid=$UID,gid=$GID 0 0
 ~~~
 
-*"$UID"* and *"$GID"* are the corresponding uid and gid of the user whom the share should be given to.
+The variables *"UID "* and *"GID "* correspond to those of the user to whom the share should be given.
 But you can also write *"uid=username gid=users"*.
 
 ### siduction as samba server
@@ -86,4 +86,4 @@ Our recommendations:
 
 There are many more sites on this topic on the web.
 
-<div id="rev">Last edited: 2022/04/03</div>
+<div id="rev">Last edited: 2022/04/20</div>

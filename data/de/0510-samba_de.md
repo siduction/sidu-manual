@@ -23,7 +23,7 @@ smbclient -L server
 Um eine Freigabe in einem Verzeichnis sehen zu können (mit Zugriff für ALLE User), muss ein Einhängeort (Mountpoint) existieren. Ist das nicht der Fall, muss ein Verzeichnis als Einhängepunkt erstellt werden (der Name ist beliebig):
 
 ~~~
-mkdir -p /media/server_share
+mkdir -p /mnt/server_share
 ~~~
 
 Eine Freigabe wird mit diesem Befehl eingehängt:
@@ -44,7 +44,7 @@ mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/shar
 Eine Verbindung wird mit diesem Befehl beendet:
 
 ~~~
-umount /media/server_share
+umount /mnt/server_share
 ~~~
 
 Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab` nach folgendem Muster ergänzt werden:
@@ -65,10 +65,10 @@ Der resultierende Eintrag für /etc/fstab ist dann
 
 ~~~
 //server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-credentials=</pfad/zu/.smbcredentials>,uid=$UID,gig=$GID 0 0
+credentials=</pfad/zu/.smbcredentials>,uid=$UID,gid=$GID 0 0
 ~~~
 
-*"$UID"* und *"$GID"* ist die entsprechende uid und gid des users, dem das Share gegeben werden soll.
+Die Variablen *"UID"* und *"GID"* entsprechen denen des users, dem das Share gegeben werden soll.
 Man kann aber auch `uid=<username>` und `gid=<groupname>` schreiben.
 
 ### siduction als Samba-Server
@@ -77,10 +77,9 @@ Natürlich kann man in siduction auch einen SMB-Server stellen. Die Einrichtung 
 
 Unsere Empfehlungen:
 
-https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian  
-https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html  
-https://goto-linux.com/de/2019/9/1/so-richten-sie-einen-samba-server-unter-debian-10-buster-ein/  
+[Thomas Krenn, Einfache Samba Freigabe unter Debian](https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian)  
+[Debian, Windows Freigaben mit Samba](https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html)  
 
 Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2022-04-20</div>
