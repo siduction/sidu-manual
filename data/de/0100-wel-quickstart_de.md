@@ -98,7 +98,7 @@ init 5
 
 ### Konfiguration von Netzwerken
 
-Der in allen graphischen Oberflächen von siduction integriert `Networkmanager` bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript `nmcli` Zugang zur Funktionalität des Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends `wireless-tools` bzw. `wpasupplicant` zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
+Der in allen graphischen Oberflächen von siduction integrierte `Networkmanager` bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript `nmcli` Zugang zur Funktionalität des Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends `wireless-tools` bzw. `wpasupplicant` zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
 
 Der Startbefehl in der Konsole ist **`nmcli`**  oder **`nmtui`** . Falls das Skript nicht vorhanden ist, installiert man es mit:
 

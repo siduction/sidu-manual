@@ -41,7 +41,7 @@ Für User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Au
 
 Berücksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgeführt werden. Der einfache copy-Befehl **`cp <Quelle> <Ziel>`** in einem User-Verzeichnis führt zu Dateien mit dem Eigentümer **root** im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.
 
-Deshalb: **Arbeiten als Root nur dort wo es wirklich notwendig ist!**
+Deshalb: **Arbeiten als Root nur dort, wo es wirklich notwendig ist!**
 
 **Über su**
 
@@ -102,14 +102,14 @@ Als schlanke Alternative zu *"sudo"* empfehlen wir `doas`. Die Handbuchseite [Do
 
 ### Farbiges Terminal
 
-Farbige Prompt am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root** eine Aufgabe durchführt, die man als **user** machen wollte.  
+Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root** eine Aufgabe durchführt, die man als **user** machen wollte.  
 Deshalb ist in siduction in der Grundeinstellung der Prompt des user grün, blau und weiß, und bei dem von root wird das Wort "root" in roter Farbe dargestellt.  
 
 ![Farbiger Prompt](./images/terminal/prompt-colour-01.png)
 
-Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompt. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
+Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompts. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
 
-**Farbe des Prompt ändern**
+**Farbe des Prompts ändern**
 
 Bevor die Konfigurationsdatei geändert wird, erstellen wir im Terminal erst eine Sicherungskopie mit einem Datumsstempel.
 
@@ -159,7 +159,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[00m\]\u@\h:\w\$ '
 
 unmittelbar als nächste Zeile einzufügen.
 
-Soll in dem Prompt die Farbe geändert werden, ist für jeden Teil des Prompt die Farbkodierung anzupassen.
+Soll in dem Prompt die Farbe geändert werden, ist für jeden Teil des Prompts die Farbkodierung anzupassen.
 
 
 ~~~
@@ -184,7 +184,7 @@ reset
 
 eingegeben und die Eingabetaste **`Enter`** gedrückt werden.
 
-Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von **`Strg`**+**`l`** behoben werden, dadurch wird das Terminal-Fenster neu aufbaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, eine eine ncurses-Schnittstelle benutzen, zum Beispiel *"cgdisk"*.
+Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von **`Strg`**+**`l`** behoben werden, dadurch wird das Terminal-Fenster neu aufgebaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, die eine ncurses-Schnittstelle benutzen, zum Beispiel *"cgdisk"*.
 
 Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Drücken von **`Strg`**+**`s`** verursacht sein. In diesem Fall kann **`Strg`**+**`q`**  versucht werden, um die Konsole wieder frei zu geben.
 
@@ -233,7 +233,7 @@ Wer die vollständige Bandbreite an Optionen der Kommandozeilenprogramme `cdrdao
 
 ### Skripte benutzen
 
-Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu bündeln. Die Eingabe des Dateinamen des Skripts führt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr nützlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.
+Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu bündeln. Die Eingabe des Dateinamens des Skripts führt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr nützlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.
 
 Ein Skript wird in der Konsole folgendermaßen gestartet, wenn man sich im gleichen Verzeichnis befindet:
 
