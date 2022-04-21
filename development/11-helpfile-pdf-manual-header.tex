@@ -31,9 +31,12 @@
     \predate{\begin{center}\large}
     \postdate{\par\end{center}}
 
+
 % start sections and subsections on a new page
 \AddToHook{cmd/section/before}{\clearpage}
 %\AddToHook{cmd/subsection/before}{\clearpage}
+%  subsection get "\clearpage" only when a new file starts.
+%  See file 10-generate-pdf-manual.sh from line 84.
 
 % header and footer
 \usepackage{fancyhdr}
@@ -54,6 +57,7 @@
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0.4pt}
     
+    
 % Paragraphs (Hurenkind und Schusterjungen verhindern)
 \usepackage{indentfirst}
     \frenchspacing
@@ -64,36 +68,44 @@
     \widowpenalty10000
     \displaywidowpenalty=10000
 
+
 % code-block style
 \usepackage{xcolor}
 \usepackage{MnSymbol}% benoetigt fuer 'prebreak='
+
 \lstset{
-    basicstyle=\ttfamily\footnotesize, 
-    % fontsize definitions: scriptsize,small,tiny,normalsize
+    %basicstyle=\color{orange!55!black}\ttfamily\small,  % orange
+    basicstyle=\color{green!50!black}\ttfamily\small,  % green
+    % basicstyle definitions:
+    %  font size: \tiny,\scriptsize,\footnotesize,\small,\normalsize,\large,\Large,\LARGE,\huge
+    %  font family: serif(roman)=\rmfamily, sans serif=\sffamily, typewriter(monospace)=\ttfamily
+    %  font styles: medium=\mdseries,bold=\bfseries,upright=\upshape,italic=\itshape,slanted=\slshape,small caps=\scshape
+    %
     % codeline numbering
     %numbers=left,
     %numberstyle=\scriptsize,
     %stepnumber=1,
     %numbersep=8pt,
+    %
     % code highlight
-    %language=bash,
-    %basicstyle=\color[RGB]{40,1,196},
-    %keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
-    %keywordstyle=\color[RGB]{42,161,152},
-    %stringstyle=\color[rgb]{0.31,0.60,0.02},
-    %stringstyle=\color[RGB]{28,139,210},
-    %numberstyle=\color[RGB]{108,113,196},
-    %identifierstyle=\color[RGB]{0,0,74},
-    %commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
-    %commentstyle=\color[RGB]{0,85,0},
-    %rulecolor=\color{red},
+    language=bash,
+    keywordstyle=\small,
+    stringstyle=\small,
+    numberstyle=\small,
+    identifierstyle=\small,
+    commentstyle=\small,
+    %
+    % frame styles
+    %rulecolor=\color{gray!50!white},
     frame=single,
     framerule=0pt,
     framexleftmargin=3pt,
     framexrightmargin=5pt,
     framextopmargin=2pt,
     framexbottommargin=2pt,
-    backgroundcolor=\color[RGB]{230,230,230},
+    backgroundcolor=\color{gray!10!white},
+    %
+    % break and whitespace handling
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
@@ -109,6 +121,8 @@
     %xrightmargin=35pt,
 }
 
+
+% Warning block
 \usepackage{tcolorbox}
-    \newtcolorbox{myquote}{colback=red!5!white, colframe=red!75!black}
+    \newtcolorbox{myquote}{colback=yellow!25!white, colframe=red!75!black}
     \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
