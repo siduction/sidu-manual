@@ -51,6 +51,14 @@ fi
 
 langcode=$1
 
+if [ "$2" = "--tex-debug" ]
+then
+    echo "Creating LaTeX file instead of pdf."
+    output_format=tex
+else
+    output_format=pdf
+fi
+
 #hmargin=2cm
 #vmargin=3.0cm
 #margin=20mm
@@ -128,7 +136,7 @@ pandoc \
      -V columns=$columns \
      -V fontsize=$fontsize \
      -V nohyphenation=$nohyphenation $LISTE \
-     -o ../data/$langcode/pdf/siduction-manual_$langcode.pdf
+     -o ../data/$langcode/pdf/siduction-manual_$langcode.$output_format
 
 rm -r ../arbeit
 
