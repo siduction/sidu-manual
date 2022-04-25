@@ -76,8 +76,9 @@ Mit dem folgenden Befehl gliedern wir die timer-Unit in systemd ein.
 
 ~~~txt
 # systemctl enable backup.timer
-Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
-  → /usr/local/lib/systemd/system/backup.timer.
+Created symlink
+ /etc/systemd/system/timers.target.wants/backup.timer →
+   /usr/local/lib/systemd/system/backup.timer.
 ~~~
 
 Der analoge Befehl für die service-Unit ist nicht notwendig und würde auch zu einem Fehler führen, da in ihr keine [Install] Sektion enthalten ist.

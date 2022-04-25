@@ -2,17 +2,17 @@
 
 ## Set up PHP
 
-PHP is ready to use in siduction after installation with the default configuration.  
+PHP is ready to use in siduction after installation with the default configuration.
 
 ### PHP in the file system
 
 Debian has fully integrated the files of PHP into the file system according to their function:
 
-+ the executable program `php7.x` and the link `php` into `/usr/bin/`   
-    + (The latter points to `/usr/bin/php7.x` via `/etc/alternatives/php`.)  
-+ the installed modules into `/usr/lib/php/`  
-+ shared program parts and modules into `/usr/share/php/` and `/usr/share/php<module>`  
-+ the configuration directories and files into `/etc/php/`  
++ the executable program `php7.x` and the link `php` into `/usr/bin/`
+    + (The latter points to `/usr/bin/php7.x` via `/etc/alternatives/php`.)
++ the installed modules into `/usr/lib/php/`
++ shared program parts and modules into `/usr/share/php/` and `/usr/share/php<module>`
++ the configuration directories and files into `/etc/php/`
 + the current state of modules and sessions at runtime into `/var/lib/php/`
 
 ### PHP support for Apache2
@@ -147,8 +147,8 @@ Then we restart Apache:
 
 The state of PHP modules can be changed during runtime. This also allows controlling modules in scripts to load them before use and unload them afterwards.
 
-+ `phpenmod` - activates modules in PHP  
-+ `phpdismod` - disables modules in PHP  
++ `phpenmod` - activates modules in PHP
++ `phpdismod` - disables modules in PHP
 + `phpquery` - shows the status of PHP modules
 
 Unnecessary modules (imagick in the example) are deactivated in the console by the command
@@ -197,11 +197,11 @@ Alternatively, we can display the log functions.
 ~~~
 # php --info | grep log
 [...]
-error_log => no value
-log_errors => On
+error_log          => no value
+log_errors         => On
 log_errors_max_len => 1024
-mail.log => no value
-opcache.error_log => no value
+mail.log           => no value
+opcache.error_log  => no value
 [...]
 ~~~
 

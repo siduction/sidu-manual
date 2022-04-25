@@ -155,10 +155,10 @@ Jetzt wird das "document-root"-Verzeichnis des Apache Webservers eingehangen, so
 Die Statusabfrage bestätigt die Aktion.
 
 ~~~
-# systemctl status home-<user>-www_data.mount --no-pager
-● home-<user>-www_data.mount - Mount server1/var/www/ using NFS
+# systemctl status home-<user>-www_data.mount
+home-<user>-www_data.mount Mount server1/var/www/ using NFS
      Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.mount; disabled; vendor preset: enabled)
-     Active: active (mounted) since Wed 2021-03-10 16:27:58 CET; 8min ago
+     Active: active (mounted) since Wed 2021-03-10 [...]
 TriggeredBy: ● home-<user>-www_data.automount
       Where: /home/<user>/www_data
        What: 192.168.3.1:/
@@ -168,12 +168,13 @@ TriggeredBy: ● home-<user>-www_data.automount
      CGroup: /system.slice/home-<user>-www_data.mount
 [...]
 
-# systemctl status home-<user>-www_data.automount --no-pager
-● home-<user>-www_data.automount - Automount server1/var/www/ usuing NFS
-     Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.automount; enabled; vendor preset: enabled)
-     Active: active (running) since Wed 2021-03-10 16:27:58 CET; 8min ago
-   Triggers: ● home-<user>-www_data.mount
-      Where: /home/<user>/www_data
+
+# systemctl status home-<user>-www_data.automount
+home-<user>-www_data.automount Automount server1/var/www/ usuing NFS
+  Loaded: loaded (/usr/local/lib/systemd/system/home-<user>-www_data.automount; enabled; vendor preset: enabled)
+  Active: active (running) since Wed 2021-03-10 [...]
+Triggers: ● home-<user>-www_data.mount
+   Where: /home/<user>/www_data
 [...]
 ~~~
 
@@ -181,24 +182,26 @@ Der Journalauszug protokolliert anschaulich die Funktion von *"TimeoutIdleSec=60
 
 ~~~
 # journalctl -f -u home-<user>-www_data.*
-[...]
-Mär 10 17:56:14 pc1 systemd[1]: Mounted Mount server1/var/www/ using NFS.
-Mär 10 17:57:34 pc1 systemd[1]: Unmounting Mount server1/var/www/ using NFS...
-Mär 10 17:57:35 pc1 systemd[1]: home-<user>-www_data.mount: Succeeded.
-Mär 10 17:57:35 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
-Mär 10 17:58:14 pc1 systemd[1]: home-<user>-www_data.automount: Got automount request for /home/<user>/www_data, triggered by 2500 (Thunar)
-Mär 10 17:58:14 pc1 systemd[1]: Mounting Mount server1/var/www/ using NFS...
-Mär 10 17:58:14 pc1 systemd[1]: Mounted Mount server1/var/www/ using NFS.
-Mär 10 18:00:15 pc1 systemd[1]: Unmounting Mount server1/var/www/ using NFS...
-Mär 10 18:00:15 pc1 systemd[1]: home-<user>-www_data.mount: Succeeded.
-Mär 10 18:00:15 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
-Mär 10 18:00:30 pc1 systemd[1]: home-<user>-www_data.automount: Got automount request for /home/<user>/www_data, triggered by 6582 (bash)
-Mär 10 18:00:30 pc1 systemd[1]: Mounting Mount server1/var/www/ using NFS...
-Mär 10 18:00:30 pc1 systemd[1]: Mounted Mount server1/var/www/ using NFS.
-Mär 10 18:01:51 pc1 systemd[1]: Unmounting Mount server1/var/www/ using NFS...
-Mär 10 18:01:51 pc1 systemd[1]: home-<user>-www_data.mount: Succeeded.
-Mär 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
-[...]
+[...]systemd[1]: Mounted Mount server1/var/www/ using NFS
+[...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
+[...]systemd[1]: home-<user>-www_data.mount: Succeeded.
+[...]systemd[1]: Unmounted Mount server1/var/www/ using NFS
+[...]systemd[1]: home-<user>-www_data.automount: Got
+                 automount request for /home/<user>/www_data
+                 triggered by 2500 (Thunar)
+[...]systemd[1]: Mounting Mount server1/var/www/ using NFS
+[...]systemd[1]: Mounted Mount server1/var/www/ using NFS
+[...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
+[...]systemd[1]: home-<user>-www_data.mount: Succeeded.
+[...]systemd[1]: Unmounted Mount server1/var/www/ using NFS
+[...]systemd[1]: home-<user>-www_data.automount: Got
+                 automount request for /home/<user>/www_data
+                 triggered by 6582 (bash)
+[...]systemd[1]: Mounting Mount server1/var/www/ using NFS
+[...]systemd[1]: Mounted Mount server1/var/www/ using NFS
+[...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
+[...]systemd[1]: home-<user>-www_data.mount: Succeeded.
+[...]systemd[1]: Unmounted Mount server1/var/www/ using NFS
 ~~~
 
 **Weitere Beispiele**  

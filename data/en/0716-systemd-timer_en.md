@@ -77,8 +77,9 @@ We include the timer unit into systemd with the following command:
 
 ~~~
 # systemctl enable backup.timer
-Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
-  → /usr/local/lib/systemd/system/backup.timer.
+Created symlink
+ /etc/systemd/system/timers.target.wants/backup.timer →
+   /usr/local/lib/systemd/system/backup.timer.
 ~~~
 
 The analogous command for the service unit is not necessary and would also lead to an error, since there is no [Install] section in it.

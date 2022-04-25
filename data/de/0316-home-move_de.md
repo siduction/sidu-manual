@@ -24,7 +24,6 @@ Unsere bisherige `/etc/fstab` hat den Inhalt:
 ~~~
 $ cat /etc/fstab
 ...
-# <file system>                         <mount point>  <type>  <options>    <dump><pass>
 UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
@@ -71,34 +70,34 @@ Wir schauen uns erst einmal unser Home-Verzeichnis genau an.
 ~~~
 ~$ ls -la
 insgesamt 169
-drwxr-xr-x 19 <user> <group> 4096  4. Okt 2020  .
-drwxr-xr-x 62 <user> <group> 4096  4. Okt 22:17 ..
--rw-------  1 <user> <group>  330 15. Okt 2020  .bash_history
--rw-r--r--  1 <user> <group>  220  4. Okt 2020  .bash_logout
--rw-r--r--  1 <user> <group> 3528  4. Okt 2020  .bashrc
-drwx------ 19 <user> <group> 4096 15. Okt 2020  .cache
-drwxr-xr-x 22 <user> <group> 4096 15. Okt 2020  .config
--rw-r--r--  1 <user> <group>   24  4. Okt 2020  .dmrc
-drwx------  3 <user> <group> 4096 15. Okt 2020  .gconf
--rw-r--r--  1 <user> <group>  152  4. Okt 2020  .gitignore
-drwx------  3 <user> <group> 4096 15. Okt 2020  .gnupg
--rw-------  1 <user> <group> 3112 15. Okt 2020  .ICEauthority
--rw-r--r--  1 <user> <group>  140  4. Okt 2020  .inputrc
-drwx------  3 <user> <group> 4096  4. Okt 2020  .local
-drwx------  5 <user> <group> 4096 15. Okt 2020  .mozilla
--rw-r--r--  1 <user> <group>  807  4. Okt 2020  .profile
-drwx------  2 <user> <group> 4096  4. Okt 2020  .ssh
-drwx------  5 <user> <group> 4096 15. Okt 2020  .thunderbird
--rw-------  1 <user> <group>   48 15. Okt 2020  .Xauthority
--rw-------  1 <user> <group> 1084 15. Okt 2020  .xsession-errors
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Bilder
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Desktop
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Dokumente
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Downloads
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Musik
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Öffentlich
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Videos
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
+drwxr-xr-x 19 <user><group> 4096  4 Okt 2020 .
+drwxr-xr-x 62 <user><group> 4096  4 Okt 2020 ..
+-rw-------  1 <user><group>  330 15 Okt 2020 .bash_history
+-rw-r--r--  1 <user><group>  220  4 Okt 2020 .bash_logout
+-rw-r--r--  1 <user><group> 3528  4 Okt 2020 .bashrc
+drwx------ 19 <user><group> 4096 15 Okt 2020 .cache
+drwxr-xr-x 22 <user><group> 4096 15 Okt 2020 .config
+-rw-r--r--  1 <user><group>   24  4 Okt 2020 .dmrc
+drwx------  3 <user><group> 4096 15 Okt 2020 .gconf
+-rw-r--r--  1 <user><group>  152  4 Okt 2020 .gitignore
+drwx------  3 <user><group> 4096 15 Okt 2020 .gnupg
+-rw-------  1 <user><group> 3112 15 Okt 2020 .ICEauthority
+-rw-r--r--  1 <user><group>  140  4 Okt 2020 .inputrc
+drwx------  3 <user><group> 4096  4 Okt 2020 .local
+drwx------  5 <user><group> 4096 15 Okt 2020 .mozilla
+-rw-r--r--  1 <user><group>  807  4 Okt 2020 .profile
+drwx------  2 <user><group> 4096  4 Okt 2020 .ssh
+drwx------  5 <user><group> 4096 15 Okt 2020 .thunderbird
+-rw-------  1 <user><group>   48 15 Okt 2020 .Xauthority
+-rw-------  1 <user><group> 1084 15 Okt 2020 .xsession-error
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Bilder
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Desktop
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Dokumente
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Downloads
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Musik
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Öffentlich
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Videos
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Vorlagen
 ~~~
 
 Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit nur geringfügigen Änderungen.  
@@ -126,22 +125,23 @@ Die folgende Ausgabe zeigt das Ergebnis.
 ~~~
 ~$ ls -la /Daten/
 insgesamt 45
-drwxr-xr-x 13 <user> <group> 4096  4. Mai 2020  .
-drwxr-xr-x 20 root     root  4096  4. Okt 2020  ..
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Bilder
-drwx------ 19 <user> <group> 4096 15. Okt 2020  .cache
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Desktop
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Dokumente
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Downloads
-drwx------  5 <user> <group> 4096 15. Okt 2020  .mozilla
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Musik
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Öffentlich
-drwx------  5 <user> <group> 4096 15. Okt 2020  .thunderbird
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Videos
-drwxr-xr-x  2 <user> <group> 4096  4. Okt 2020  Vorlagen
+drwxr-xr-x 13 <user><group> 4096  4 Mai 2020 .
+drwxr-xr-x 20 root    root  4096  4 Okt 2020 ..
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Bilder
+drwx------ 19 <user><group> 4096 15 Okt 2020 .cache
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Desktop
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Dokumente
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Downloads
+drwx------  5 <user><group> 4096 15 Okt 2020 .mozilla
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Musik
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Öffentlich
+drwx------  5 <user><group> 4096 15 Okt 2020 .thunderbird
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Videos
+drwxr-xr-x  2 <user><group> 4096  4 Okt 2020 Vorlagen
 ~~~
 
-Die Prüfung der Kopieraktion auf Fehler erfolgt mit dem Befehl **`dirdiff /home/<user>/ /Daten/`**. Es dürfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.
+Die Prüfung der Kopieraktion auf Fehler erfolgt mit dem Befehl  
+**`dirdiff /home/<user>/ /Daten/`**. Es dürfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.
 
 Nun befinden sich alle privaten Daten aus dem alten *"/home"* zusätzlich auf der neuen Partition.
 
@@ -180,12 +180,11 @@ Wir benötigen die oben bereits ausgelesene UUID-Information der Daten-Partition
 
 Entsprechend unseres Beispiels fügen wir die folgende Zeile in die fstab ein.
 
-**`UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten  ext4  defaults,noatime 0 2`**
+**`UUID=e2164479-3f71-4216-a4d4-af3321750322 /Daten ext4 defaults,noatime 0 2`**
 
 Die fstab sollte nun so aussehen:
 
 ~~~
-# <file system>                         <mount point>  <type>  <options>    <dump><pass>
 UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten      ext4    defaults,noatime 0 2

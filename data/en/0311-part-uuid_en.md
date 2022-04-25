@@ -49,7 +49,8 @@ The label can be created or changed with one the following commands, according t
   `swaplabel -L <label> /dev/sdXx`
   
 + **ext2/ext3/ext4**  
-  `e2label /dev/sdXx <label>` or `tune2fs -L <label> /dev/sdXx`
+  `e2label /dev/sdXx <label>` or  
+  `tune2fs -L <label> /dev/sdXx`
   
 + **jfs**  
   `jfs_tune -L <label> /dev/sdXx`
@@ -78,7 +79,6 @@ The syntax in fstab for the *file system* is **LABEL=\<label\>**.
 The file `/etc/fstab` is read during system startup to mount the desired partitions. Here is an example of an fstab:
 
 ~~~
-# <file system> <mount point> <type> <options> <dump> <pass>
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
 UUID=35336532-0cc8-4613-9b1a-f31b12ea58c3 /home ext4 defaults,noatime 0 2
@@ -129,7 +129,6 @@ In this example,
 The next step is to add the UUID partitions to `/etc/fstab`. To achieve this, use a text editor (like `mcedit`, `kate`, `kwrite`, or `gedit`) with **root** privileges. In this example, the entry would look like this:
 
 ~~~
-# <file system> <mount point> <type> <options> <dump><pass>    
 UUID=2ef32215-d545-4e12-bc00-d0099a218970 /media/disk1part5 ext4 auto,users,exec 0 2
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /media/disk2part7 ext4 auto,users,exec 0 2
 ~~~

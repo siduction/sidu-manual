@@ -35,13 +35,15 @@ Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 
    ~~~
    cfdisk /dev/sda
-   n    -> erstellt eine neue Partition auf dem Laufwerk
-   p    -> diese Partition wird eine primäre Partition
-   1    -> die Partition erhält die Nummer 1 als Identifikation
-   ### size allocation  ### setzt den ersten und letzten Zylinder auf Default-Werte. Drücke ENTER, um das gesamte Laufwerk zu umspannen
-   t    -> wählt den zu erstellenden Partitionstyp
-   8e   -> der Hex-Code für eine Linux-LVM
-   W    -> schreibt Veränderungen auf das Laufwerk.
+   n  -> erstellt eine neue Partition auf dem Laufwerk
+   p  -> diese Partition wird eine primäre Partition
+   1  -> die Partition erhält die Nummer 1
+         "size allocation" setzt den ersten und letzten
+         Zylinder auf Default-Werte. Drücke ENTER, um
+         das gesamte Laufwerk zu umspannen
+   t  -> wählt den zu erstellenden Partitionstyp
+   8e -> der Hex-Code für eine Linux-LVM
+   W  -> schreibt Veränderungen auf das Laufwerk.
    ~~~
 
    Der Befehl `W` schreibt die Partitionierungstabelle. Falls bis zu diesem Punkt ein Fehler gemacht wurde, kann das vorhandene Partitionierungs-Layout wieder hergestellt werden. Zu diesen Zweck gibt man den Befehl `q` ein, cfdisk beendet sich ohne Schreibvorgang, und alles bleibt wie es zuvor war.
@@ -190,14 +192,10 @@ Gparted bietet die Möglichkeit zur Verwaltung von bereits angelegten Logical Vo
 
 ### Weitere Infos
 
-+  [Logical Volume Manager - Wikipedia](https://de.wikipedia.org/wiki/Logical_Volume_Manager)  (Deutsch)
-
-+  [Working with logical volumes #1](https://thelinuxexperiment.com/working-with-logical-volumes-part-1/)  (Englisch)
-
-+  [Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  (Englisch)
-
-+  [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  (Englisch)
-
-+ [Größenänderung von Linuxpartitionen - Teil 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)  (Englisch)
+[Logical Volume Manager - Wikipedia](https://de.wikipedia.org/wiki/Logical_Volume_Manager)  (Deutsch)  
+[Working with logical volumes #1](https://thelinuxexperiment.com/working-with-logical-volumes-part-1/)  (Englisch)  
+[Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  (Englisch)  
+[Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  (Englisch)  
+[Größenänderung von Linuxpartitionen - Teil 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)  (Englisch)
 
 <div id="rev">Zuletzt bearbeitet: 2021-05-04</div>

@@ -11,8 +11,8 @@ Außerdem steht gleichzeitig das CD/DVD-Laufwerk zur Verfügung. Alternativ kann
 
 **Voraussetzungen**
 
-* eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)  
-* eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie **ext4**  
+* eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)
+* eine siduction-Imagedatei, z. B. siduction.iso (Name gekürzt) und ein Linux-Dateisystem wie **ext4**
 
 ### fromiso mit Grub2
 
@@ -39,7 +39,8 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 ~~~sh
 # Defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2's update-grub
-# installed at /etc/default/grub2-fll-fromiso by the maintainer scripts
+# installed at /etc/default/grub2-fll-fromiso
+#   by the maintainer scripts
 
 #
 # This is a POSIX shell fragment
@@ -47,8 +48,9 @@ Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellung
 
 # specify where to look for the ISO
 # default: /srv/ISO
-## Achtung: Dies ist der Pfad zum Verzeichnis, in dem das oder die ISO(s) liegen,  
-## der Pfad soll das eigentliche siduction.iso nicht inkludieren.
+## Achtung: Dies ist der Pfad zum Verzeichnis, in dem das
+## oder die ISO(s) liegen, der Pfad soll das eigentliche
+## siduction.iso nicht inkludieren.
 FLL_GRUB2_ISO_LOCATION="/media/disk1part4"
 
 # array for defining ISO prefices --> siduction-*.iso

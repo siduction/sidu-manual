@@ -59,11 +59,11 @@ To find out which Wi-Fi interface we are using, we enter the following command:
 
 ~~~txt
 [iwd]# device list
-                     Devices                                *
--------------------------------------------------------------
-  Name    Address             Powered   Adapter   Mode
--------------------------------------------------------------
-  wlan0   00:01:02:03:04:05   on        phy0      station
+              Devices                             *
+---------------------------------------------------
+Name   Address            Powered  Adapter  Mode
+---------------------------------------------------
+wlan0  00:01:02:03:04:05  on       phy0     station
 ~~~
 
 In this case, it is *"wlan0"* and it is running (*"powered on"*) in *"station"* mode.
@@ -87,11 +87,11 @@ We are asked for the password and we should then be connected to our network. We
 
 ~~~txt
 [iwd]# station list
-            Devices in Station Mode
----------------------------------------------
-  Name         State          Scanning
----------------------------------------------
-  wlan0        connected
+    Devices in Station Mode
+------------------------------
+Name      State       Scanning
+------------------------------
+wlan0     connected
 ~~~
 
 The whole process can be abbreviated by the following command if you have all the necessary information!
@@ -211,11 +211,12 @@ wiFi.backend=iwd
 
 [...]
 [General]
-# iwd is capable of performing network configuration on its own, including
-# DHCPv4 based address configuration.  By default this behavior is
-# disabled, and an external service such as NetworkManager, systemd-network
-# or dhcpclient is required.  Uncomment the following line if you want iwd
-# to manage network interface configuration.
+# iwd is capable of performing network configuration on its
+# own, including DHCPv4 based address configuration.
+# By default this behavior is disabled, and an external
+# service such as NetworkManager, systemd-network or
+# dhcpclient is required.  Uncomment the following line if
+# you want iwd to manage network interface configuration.
 #
 EnableNetworkConfiguration=true
 #

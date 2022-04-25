@@ -2,7 +2,8 @@
 
 ## ISO download
 
-Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in `/etc/apt/sources.list.d/siduction.list` gelistet sind, werden zeitnah aktualisiert.  
+Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in  
+`/etc/apt/sources.list.d/siduction.list` gelistet sind, werden zeitnah aktualisiert.  
 
 **Europa**
 

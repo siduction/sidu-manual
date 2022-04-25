@@ -41,10 +41,10 @@ Für weitere Informationen bitte die man-pages [journal upload](https://manpages
 
 Die folgenden Dateien konfigurieren verschiedene Parameter des systemd-Journal-Dienstes.
 
-+ /etc/systemd/journald.conf  
-+ /etc/systemd/journald.conf.d/*.conf  
-+ /etc/systemd/journald@NAMENSRAUM.conf (optional)  
-+ /run/systemd/journald.conf.d/*.conf (optional)  
++ /etc/systemd/journald.conf
++ /etc/systemd/journald.conf.d/*.conf
++ /etc/systemd/journald@NAMENSRAUM.conf (optional)
++ /run/systemd/journald.conf.d/*.conf (optional)
 + /usr/lib/systemd/journald.conf.d/*.conf (optional)
 
 Der Vorgabe-Namensraum, den der systemd-journald.service (und seine zugehörigen Socket-Units) verwaltet, wird in `/etc/systemd/journald.conf` und zugeordneten Ergänzungen konfiguriert.  
@@ -168,13 +168,13 @@ Die Option "`--list-boots*" gibt die entsprechende Liste aus.
 ~~~
 # journalctl --list-boots --no-pager
 [...]
- -50 8fc07f387... Sun 2021-02-28 11:07:05 CET—Sun 2021-02-28 23:01:56 CET
- -49 aa49cb3af... Mon 2021-03-01 17:49:58 CET—Mon 2021-03-01 20:19:59 CET
- -48 3a6e55a4a... Tue 2021-03-02 12:18:46 CET—Tue 2021-03-02 20:47:24 CET
- -47 a46150a19... Wed 2021-03-03 11:06:29 CET—Wed 2021-03-03 20:33:09 CET
- -46 d42ed8b05... Thu 2021-03-04 10:59:56 CET—Thu 2021-03-04 19:53:26 CET
- -45 566f65991... Thu 2021-03-04 19:53:52 CET—Thu 2021-03-04 19:55:38 CET
- -44 8e2da4a61... Fri 2021-03-05 10:15:18 CET—Fri 2021-03-05 10:20:11 CET
+ -50 8fc07f387... Sun 2021-02-28 11:07:05 CET-Sun [...] CET
+ -49 aa49cb3af... Mon 2021-03-01 17:49:58 CET-Mon [...] CET
+ -48 3a6e55a4a... Tue 2021-03-02 12:18:46 CET-Tue [...] CET
+ -47 a46150a19... Wed 2021-03-03 11:06:29 CET-Wed [...] CET
+ -46 d42ed8b05... Thu 2021-03-04 10:59:56 CET-Thu [...] CET
+ -45 566f65991... Thu 2021-03-04 19:53:52 CET-Thu [...] CET
+ -44 8e2da4a61... Fri 2021-03-05 10:15:18 CET-Fri [...] CET
 [...]
 ~~~
 
@@ -273,17 +273,19 @@ Mit **`journalctl _COMM=su`** kannst du nun sehen, welcher User sich wann mit "s
 
 ~~~
 # journalctl _COMM=su
--- Boot 1b5d2b3fcd9043d88d8abce665b75ed4 --
-Mär 10 13:45:53 pc1 su[75259]: (to root) siduser on pts/3
-Mär 10 13:45:53 pc1 su[75259]: pam_unix(su:session): session opened for user root(uid=0) by (uid=1000)
-Mär 10 16:27:22 pc1 su[105197]: (to root) siduser on pts/1
-Mär 10 16:27:22 pc1 su[105197]: pam_unix(su:session): session opened for user root(uid=0) by (uid=1000)
-Mär 10 17:54:33 pc1 su[105197]: pam_unix(su:session): session closed for user root
-Mär 10 17:54:42 pc1 su[75259]: pam_unix(su:session): session closed for user root
--- Boot 37b19f6321814620be1ed4deb3be467f --
-Mär 10 17:56:35 pc1 su[3381]: (to root) siduser on pts/1
-Mär 10 17:56:35 pc1 su[3381]: pam_unix(su:session): session opened for user root(uid=0) by (uid=1000)
-Mär 10 19:07:17 pc1 su[3381]: pam_unix(su:session): session closed for user root
+-- boot 1b5d2b3fcd9043d88d8abce665b75ed4 --
+Mar 10 16:27:22 pc1 su[105197]: (to root) siduser on pts/1
+Mar 10 16:27:22 pc1 su[105197]: pam_unix(su:session):
+     session opened for user root(uid=0) by (uid=1000)
+Mar 10 17:54:33 pc1 su[105197]: pam_unix(su:session):
+     session closed for user root
+     
+-- boot 37b19f6321814620be1ed4deb3be467f --
+Mar 10 17:56:35 pc1 su[3381]: (to root) siduser on pts/1
+Mar 10 17:56:35 pc1 su[3381]: pam_unix(su:session):
+     session opened for user root(uid=0) by (uid=1000)
+Mar 10 19:07:17 pc1 su[3381]: pam_unix(su:session):
+     session closed for user root
 ~~~
 
 Ein anderes Beispiel:  

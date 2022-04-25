@@ -77,7 +77,9 @@ Diese Sektion enthält allgemeine Informationen über die Unit, definiert Abhän
        Identifiziert die Unit durch einen menschenlesbaren Namen, der von systemd als Bezeichnung für die Unit verwandt wird und somit im systemjournal erscheint ("Starting *description*...") und dort als Suchmuster verwandt werden kann.
 
    b. `Documentation=`  
-       Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z. B.: "Documentation=man:cupsd(8)" oder "Documentation=http://www.cups.org/doc/man-cupsd.html".
+       Ein Verweis auf eine Datei oder Webseite, die Dokumentation für diese Unit oder ihre Konfiguration referenzieren. Z.B.:  
+       "Documentation=man:cupsd(8)" oder  
+       "Documentation=http://www.cups.org/doc/man-cupsd.html".
 
 2. Bindungsabhängigkeiten zu anderen Units
 
@@ -238,8 +240,10 @@ Description=CUPS Scheduler
 Documentation=man:cupsd(8)
 After=network.target sssd.service ypbind.service nslcd.service
 Requires=cups.socket
-    After=cups.socket (nicht in der Datei, da implizit vorhanden.)
-    After=cups.path   (nicht in der Datei, da implizit vorhanden.)
+    After=cups.socket
+     (nicht in der Datei, da implizit vorhanden.)
+    After=cups.path
+     (nicht in der Datei, da implizit vorhanden.)
 
 [Service]
 ExecStart=/usr/sbin/cupsd -l
@@ -257,7 +261,8 @@ Datei /lib/systemd/system/cups.path:
 [Unit]
 Description=CUPS Scheduler
 PartOf=cups.service
-    Before=cups.service (nicht in der Datei, da implizit vorhanden.)
+    Before=cups.service
+     (nicht in der Datei, da implizit vorhanden.)
 
 [Path]
 PathExists=/var/cache/cups/org.cups.cupsd
@@ -272,7 +277,8 @@ Datei /lib/systemd/system/cups.socket:
 [Unit]
 Description=CUPS Scheduler
 PartOf=cups.service
-    Before=cups.service (nicht in der Datei, da implizit vorhanden.)
+    Before=cups.service
+     (nicht in der Datei, da implizit vorhanden.)
 
 [Socket]
 ListenStream=/run/cups/cups.sock
@@ -311,15 +317,16 @@ Die vollständige Konfiguration der Units erhalten wir mit dem Befehl **`systemd
 **Die Sektion [Install]**  
 der cups.service-Unit enthält mit der Option `Also=cups.socket cups.path` die Anweisung, diese beiden Units auch zu installieren und alle drei Units haben unterschiedliche `WantedBy=` Optionen:
 
-+ cups.socket:  WantedBy=sockets.target  
-+ cups.path:    WantedBy=multi-user.target  
++ cups.socket:  WantedBy=sockets.target
++ cups.path:    WantedBy=multi-user.target
 + cups.service: WantedBy=printer.target
 
 Um zu verstehen, warum unterschiedliche Werte für die Option *"WantedBy="* Verwendung finden, benötigen wir zusätzliche Informationen, die wir mit den Befehlen **`systemd-analyze dot`** und **`systemd-analyze plot`** erhalten.
 
 ~~~
-$ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
-    '*.target' | dot -Tsvg > targets.svg
+   (in einer Zeile eingeben)
+$ systemd-analyze dot --to-pattern='*.target'
+ --from-pattern='*.target' | dot -Tsvg > targets.svg
 
 $ systemd-analyze plot > bootup.svg
 ~~~
@@ -328,41 +335,38 @@ Der erste liefert uns ein Flussdiagramm mit den Abhängigkeiten der verschiedene
 
 Der `targets.svg` und der `bootup.svg` entnehmen wir, dass
 
-1.  *sysinit.target*  
-    aktiviert wird und
+1. *sysinit.target*  
+   aktiviert wird und
 
-2.  *basic.target*  
-    erst startet, wenn sysinit.target erreicht wurde.
+2. *basic.target*  
+   erst startet, wenn sysinit.target erreicht wurde.
 
-    1.  *sockets.target*  
-        von basic.target angefordert wird,
+   2.1. *sockets.target*  
+         von basic.target angefordert wird,
 
-        1.   *cups.socket*  
-              und alle weiteren .socket-Units von sockets.target hereingeholt werden.
+   2.1.1. *cups.socket*  
+           und alle weiteren .socket-Units von sockets.target hereingeholt werden.
 
-    2.  *paths.target*  
-        von basic.target angefordert wird,
+   2.2. *paths.target*  
+         von basic.target angefordert wird,
 
-        1.   *cups.path*  
-              und alle weiteren .path-Units von paths.target hereingeholt werden.
+   2.2.1. *cups.path*  
+           und alle weiteren .path-Units von paths.target hereingeholt werden.
 
-3.  *network.target*  
-    erst startet, wenn basic.target erreicht wurde.
+3. *network.target*  
+   erst startet, wenn basic.target erreicht wurde.
 
-4.  *cups.service*  
-    erst startet, wenn network.target erreicht wurde.
+4. *cups.service*  
+   erst startet, wenn network.target erreicht wurde.
 
-5.  *multi-user.target*  
-    erst startet, wenn network.target erreicht wurde.
+5. *multi-user.target*  
+   erst startet, wenn network.target erreicht wurde.
 
-6.  *multi-user.target*  
-    erst dann erreicht wird, wenn cups.service erfolgreich gestartet wurde.  
-    (Genau genommen liegt es daran, dass der cups-browsed.service, der vom  
-    cups.service abhängt, erfolgreich gestartet sein muss.)
+6. *multi-user.target*  
+   erst dann erreicht wird, wenn cups.service erfolgreich gestartet wurde. (Genau genommen liegt es daran, dass der cups-browsed.service, der vom cups.service abhängt, erfolgreich gestartet sein muss.)
 
-6.  *printer.target*  
-    wird erst aktiv, wenn systemd dynamisch Geräte-Units für die Drucker generiert.  
-    Dazu müssen die Drucker angeschlossen und eingeschaltet sein.
+7. *printer.target*  
+   wird erst aktiv, wenn systemd dynamisch Geräte-Units für die Drucker generiert.Dazu müssen die Drucker angeschlossen und eingeschaltet sein.
 
 Weiter oben stellten wir fest, dass der Start einer cups.xxx-Unit ausreicht, um alle drei Units hereinzuholen. Betrachten wir noch einmal die "*WantedBy="*-Optionen in der [Install]-Sektion, so haben wir die cups.socket-Unit, die über das sockets.target bereits während des basic.target hereingeholt wird, die cups.path-Unit, die während des multi-user.target hereingeholt wird und den cups.service, der vom printer.target hereingeholt wird.  
 Während des gesamten Bootprozesses werden die drei cups.xxx-Units wiederholt bei systemd zur Aktivierung angefordert. Das härtet den cupsd gegen unvorhergesehene Fehler, spielt für systemd aber keine Rolle, denn es ist unerheblich wie oft ein Service angefordert wird, wenn er sich in der Warteschlange befindet.  
@@ -440,10 +444,15 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   ~~~
   $ systemd-delta --no-pager
   [MASKED]     /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
+  
   [OVERRIDDEN] /etc/tmpfiles.d/screen-cleanup.conf → /usr/lib/tmpfiles.d/screen-cleanup.conf
+  
   [MASKED]     /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
+  
   [EQUIVALENT] /etc/systemd/system/tmp.mount → /lib/systemd/system/tmp.mount
+  
   [EXTENDED]   /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
+  
   [EXTENDED]   /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
 
   6 overridden configuration files found.
@@ -465,11 +474,12 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
 
   erstellt die Datei *"bootup.svg"* mit der zeitlichen Abfolge des Bootprozesses. Es ist eine graphisch aufbereitete Auflistung des Bootprozesses mit den Start- und Endzeitpunkten aller Units, welche Zeit sie beanspruchten und ihren Aktivitätszuständen.
 
-+ analyze dot
++ analyze dot (Den Befehl auf einer Zeile eingeben.)
 
   ~~~
-  $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
-    '*.target' | dot -Tsvg > targets.svg
+  $ systemd-analyze dot --to-pattern='*.target'
+   --from-pattern='*.target' | dot -Tsvg > targets.svg
+   
     Color legend: black     = Requires
                   dark blue = Requisite
                   dark grey = Wants

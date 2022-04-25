@@ -156,31 +156,35 @@ Now the monitoring is also immediately active, as the status outputs of all thre
 
 ~~~
 # systemctl status server1-watch.service
-● server1-watch.service - Watching server1 folder.
-     Loaded: loaded (/usr/local/lib/system/system/server1-watch.service; enabled; vendor preset: enabled)
-     Active: active (running) since Sun 2021-02-21 19:25:20 CET; 1min 49s ago
-    Process: 23788 ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/ (code=exited, status=0/SUCCESS)
-   Main PID: 23790 (inotifywait)
-      Tasks: 1 (limit: 2322)
-     Memory: 216.0K
-        CPU: 5ms
-     CGroup: /system.slice/server1-watch.service
-             └─23790 inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/
+server1-watch.service - Watching server1 folder.
+  Loaded: loaded (/usr/local/lib/systemd/system/server1-watch.service; enabled; vendor preset: enabled)
+  Active: active (running) since Sun 2021-02-21 [...]
+ Process: 23788 ExecStart=inotifywait -dqr -e move,create
+          -o /var/www/changed /var/www/html/ (code=exited
+          status=0/SUCCESS)
+Main PID: 23790 (inotifywait)
+   Tasks: 1 (limit: 2322)
+  Memory: 216.0K
+     CPU: 5ms
+  CGroup: /system.slice/server1-watch.service
+             └─23790 inotifywait -dqr -e move,create
+                -o /var/www/changed /var/www/html/
 
-Feb 21 19:25:20 lap1 systemd[1]: Starting Watching server1 folder....
-Feb 21 19:25:20 lap1 systemd[1]: Starting Watching server1 folder..
+[...]systemd[1]: Starting Watching server1 folder....
+[...]systemd[1]: Started Watching server1 folder..
 
 # systemctl status server1.path
-● server1.path - Monitoring "changed" file!
-     Loaded: loaded (/usr/local/lib/system/system/server1.path; enabled; vendor preset: enabled)
-     Active: active (waiting) since Sun 2021-02-21 19:25:20 CET; 3min 27s ago
-   Triggers: ● server1.service
+server1.path - Monitoring "changed" file!
+  Loaded: loaded (/usr/local/lib/systemd/system/server1.path
+          enabled; vendor preset: enabled)
+  Active: active (waiting) since Sun 2021-02-21 [...]
+Triggers: ● server1.service
 
-Feb 21 19:25:20 lap1 systemd[1]: Started monitoring "changed" file!.
+Feb 21 19:25:20 lap1 systemd[1]: Started Monitoring "changed" file!.
 
 # systemctl status server1.service
-● server1.service - Change permissions in server1 folder.
-     Loaded: loaded (/usr/local/lib/system/system/server1.service; static)
+server1.service - Change permissions in server1 folder
+     Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)
      Active: inactive (dead)
 TriggeredBy: ● server1.path
 ~~~
@@ -199,20 +203,24 @@ A new status query generates some additional log lines, from which we can see th
 
 ~~~
 # systemctl status server1.service
-● server1.service - Change permissions in server1 folder
+server1.service - Change permissions in server1 folder
      Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)
-     Active: inactive (dead) since Mon 2021-02-22 17:55:36 CET; 1min 43s ago
+     Active: inactive (dead) since Mon 2021-02-22 [...]
 TriggeredBy: ● server1.path
-    Process: 2822 ExecStartPre=truncate -s 0 /var/www/changed (code=exited, status=0/SUCCESS)
-    Process: 2823 ExecStart=chown -R www-data /var/www/html1/ (code=exited, status=0/SUCCESS)
-    Process: 2824 ExecStart=chmod -R g+w /var/www/html1/ (code=exited, status=0/SUCCESS)
-    Process: 2825 ExecStart=chmod -R o-r /var/www/html1/ (code=exited, status=0/SUCCESS)
-   Main PID: 2825 (code=exited, status=0/SUCCESS)
-        CPU: 19ms
+  Process: 2822 ExecStartPre=truncate -s 0 /var/www/changed
+           (code=exited, status=0/SUCCESS)
+  Process: 2823 ExecStart=chown -R www-data /var/www/html1/
+           (code=exited, status=0/SUCCESS)
+  Process: 2824 ExecStart=chmod -R g+w /var/www/html1/
+           (code=exited, status=0/SUCCESS)
+  Process: 2825 ExecStart=chmod -R o-r /var/www/html1/
+           (code=exited, status=0/SUCCESS)
+ Main PID: 2825 (code=exited, status=0/SUCCESS)
+      CPU: 19ms
 
-Feb 22 17:55:36 lap1 systemd[1]: Starting Change permissions in server1 folder...
-Feb 22 17:55:36 lap1 systemd[1]: server1.service: Succeeded.
-Feb 22 17:55:36 lap1 systemd[1]: Finished Change permissions in server1 folder.
+[...]systemd[1]: Starting Change permissions in server1
+[...]systemd[1]: server1.service: Succeeded.
+[...]systemd[1]: Finished Change permissions in server1
 ~~~
 
 ### Sources systemd-path

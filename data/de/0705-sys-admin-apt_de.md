@@ -36,16 +36,22 @@ Innerhalb dieses Verzeichnisses befinden sich standardmäßig folgende Dateien:
 
 `debian.list`  
 `extra.list`  
-`fixes.list`  
+`fixes.list`
 
 Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann ("mirror switching"), und auch das Ergänzen oder Austauschen von Quellen-Listen ist so einfacher zu gestalten.
 
-Eigene Quellen-Listen-Dateien können mit der Benennung `/etc/apt/sources.list.d/xxxx.list` hinzugefügt werden. Auf einem siduction könnte `/etc/apt/sources.list.d/extra.list` zum Beispiel so aussehen:
+Eigene Quellen-Listen-Dateien können mit der Benennung  
+`/etc/apt/sources.list.d/xxxx.list` hinzugefügt werden.  
+Auf einem siduction könnte  
+`/etc/apt/sources.list.d/extra.list` zum Beispiel so aussehen:
 
 ~~~
 This is the default mirror, choosen at first boot.
-# One might consider to choose the geographical nearest or the fastest mirror.
+# One might consider to choose the geographical nearest
+ or the fastest mirror.
+ 
 deb     http://packages.siduction.org/extra unstable main contrib non-free
+
 #deb-src http://packages.siduction.org/extra unstable main contrib non-free
 ~~~
 
@@ -53,6 +59,7 @@ unter `/etc/apt/sources.list.d/fixes.list` könnte es so aussehen:
 
 ~~~
 deb      https://packages.siduction.org/fixes unstable main contrib non-free
+
 #deb-src https://packages.siduction.org/fixes unstable main contrib non-free
 ~~~
 
@@ -61,6 +68,7 @@ und `/etc/apt/sources.list.d/debian.list` enthält dann das eigentliche Debian R
 ~~~
 # debian loadbalancer
 deb     http://deb.debian.org/debian/ unstable main contrib non-free
+
 #deb-src http://deb.debian.org/debian/ unstable main contrib non-free
 ~~~
 
@@ -72,14 +80,17 @@ Fügt man zum Beispiel ein oder mehrere Debian Repositories hinzu, so würde die
 #Debian
 # Unstable
 deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
+
 #deb-src http://ftp.us.debian.org/debian/ unstable main contrib non-free
 
 # Testing
 #deb http://ftp.us.debian.org/debian/ testing main contrib non-free
+
 #deb-src http://ftp.us.debian.org/debian/ testing main contrib non-free
 
 # Experimental
 #deb http://ftp.us.debian.org/debian/ experimental main contrib non-free
+
 #deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free
 ~~~
 
@@ -236,7 +247,9 @@ Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das 
 
 Obwohl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:
 
-Die Quellen von Unstable werden in `/etc/apt/sources.list.d/debian.list` mit einem Rautezeichen "#" versehen und die Quellen für Testing hinzugefügt. Danach führen wir die folgenden Befehle aus:
+Die Quellen von Unstable werden in  
+`/etc/apt/sources.list.d/debian.list`  
+mit einem Rautezeichen "#" versehen und die Quellen für Testing hinzugefügt. Danach führen wir die folgenden Befehle aus:
 
 ~~~
 apt update
@@ -249,7 +262,9 @@ Das nun installierte Paket wird vor Aktualisierungen geschützt, auf Hold gesetz
 apt-mark hold kmahjongg
 ~~~
 
-Anschließend machen wir die Änderungen in `/etc/apt/sources.list.d/debian.list` wieder rückgängig. Also die Quellen für Testing mit einem Rautezeichen "#" versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
+Anschließend machen wir die Änderungen in  
+`/etc/apt/sources.list.d/debian.list`  
+wieder rückgängig. Also die Quellen für Testing mit einem Rautezeichen "#" versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
 
 ~~~
 apt update
@@ -289,7 +304,8 @@ root@siduction# apt-show-versions -u
 libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
 passwd/unstable upgradeable from 1:4.0.12-5 to 1:4.0.12-6
 teclasat/unstable upgradeable from 0.7m02-1 to 0.7n01-1
-libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3.........
+libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3
+[...]
 ~~~
 
 Das gleiche erreicht man mit:
@@ -403,7 +419,9 @@ Das APT-System bietet eine Reihe nützlicher Suchbefehle, mit denen die APT-Date
 
 #### Paketsuche im Terminal
 
-Mit dem einfachen Befehl **`apt search <Suchmuster>`** erhält man die Liste aller Pakete, die das Suchmuster enthalten. Die Suche mit *search* erlaubt die Verwendung von regex-Begriffen.
+Mit dem einfachen Befehl  
+**`apt search <Suchmuster>`**  
+erhält man die Liste aller Pakete, die das Suchmuster enthalten. Die Suche mit *search* erlaubt die Verwendung von regex-Begriffen.
 
 Wird z. B. nach *"gman"* gesucht, erhält man dieses Ergebnis:
 
@@ -431,23 +449,27 @@ Section: doc
 Maintainer: Josip Rodin <joy-packages@debian.org>
 Installed-Size: 106 kB
 Provides: man-browser
-Depends: libc6 (>= 2.14), libgcc1 (>= 1:3.0), libglib2.0-0 (>= 2.12.0),
- libgtk2.0-0 (>= 2.8.0), libstdc++6 (>= 5), man-db, xterm | x-terminal-emulator
-Suggests: gv, man2html, httpd, sensible-browser, evince
-Tag: implemented-in::c, interface::graphical, interface::web, interface::x11,
- role::program, uitoolkit::gtk, use::browsing, use::viewing, web::cgi,
- works-with-format::html, works-with-format::man, works-with::text,
- x11::application
+Depends: libc6 (>= 2.14), libgcc1 (>= 1:3.0), libglib2.0-0
+ (>= 2.12.0), libgtk2.0-0 (>= 2.8.0), libstdc++6 (>= 5),
+ man-db, xterm | x-terminal-emulator Suggests: gv,
+ man2html, httpd, sensible-browser, evince
+Tag: implemented-in::c, interface::graphical,
+ interface::web, interface::x11, role::program,
+ uitoolkit::gtk, use::browsing, use::viewing, web::cgi,
+ works-with-format::html, works-with-format::man,
+ works-with::text, x11::application
 Download-Size: 34,3 kB
 APT-Manual-Installed: yes
-APT-Sources: http://ftp.de.debian.org/debian unstable/main amd64 Packages
+APT-Sources: http://ftp.de.debian.org/debian unstable/main
+ amd64 Packages
 Description: small man(1) front-end for X
- Gman is a simple front-end for the manual page system. The most basic job
- of gman is to build a database for all the man pages and display them
- (or part of them) on the screen. When user decides to read a man page,
- gman will launch an external viewer to display the manual page. More than
- one external viewer windows can be launched at the same time.
- ...
+ Gman is a simple front-end for the manual page system. The
+ most basic job of gman is to build a database for all the
+ man pages and display them (or part of them) on the screen.
+ When user decides to read a man page, gman will launch an
+ external viewer to display the manual page. More than one
+ external viewer windows can be launched at the same time.
+[...]
 ~~~
 
 Alle installierbaren Versionen des Pakets (abhängig von der sources.list) können folgendermaßen aufgelistet werden:

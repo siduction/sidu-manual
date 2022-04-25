@@ -11,13 +11,13 @@ The only exception is that the server will be connected to the Internet temporar
 
 Debian has fully integrated the Apache files into the file system according to their function:
 
-+ the executable program *apache2* into `/usr/sbin/`  
-+ the installed modules for Apache into `/usr/lib/apache2/modules/`  
-+ files that are also available to other programs into `/usr/share/apache2/`  
-+ the configuration directories and files into `/etc/apache2/`  
-+ the web page created by the user into `/var/www/html/`  
-+ system files required at runtime into `/run/apache2/`, `/run/lock/apache2/`  
-+ various log files into `/var/log/apache2/`  
++ the executable program *apache2* into `/usr/sbin/`
++ the installed modules for Apache into `/usr/lib/apache2/modules/`
++ files that are also available to other programs into `/usr/share/apache2/`
++ the configuration directories and files into `/etc/apache2/`
++ the web page created by the user into `/var/www/html/`
++ system files required at runtime into `/run/apache2/`, `/run/lock/apache2/`
++ various log files into `/var/log/apache2/`
 
 It is important to distinguish between the variables `ServerRoot` and `DocumentRoot`.
 
@@ -125,7 +125,8 @@ Now we return to our *LAMP test server for developers* and adjust the configurat
 
 2. New `sites` file
 
-   With the text editor of our choice, we create the file `/etc/apache2/sites-available/server1.conf`, e.g.
+   With the text editor of our choice, we create the file  
+   `/etc/apache2/sites-available/server1.conf`, e.g.
 
 	~~~sh
 	mcedit /etc/apache2/sites-available/server1.conf
@@ -135,12 +136,12 @@ Now we return to our *LAMP test server for developers* and adjust the configurat
 
 	~~~apache
 	<VirtualHost *:80>
-	   ServerName server1.org
-	   ServerAlias www.server1.org
-	   ServerAdmin webmaster@localhost
-	   DocumentRoot /var/www/html
-	   ErrorLog ${APACHE_LOG_DIR}/error_server1.log
-	   CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
+	ServerName server1.org
+	ServerAlias www.server1.org
+	ServerAdmin webmaster@localhost
+	DocumentRoot /var/www/html
+	ErrorLog ${APACHE_LOG_DIR}/error_server1.log
+	CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
 	</VirtualHost>
 	~~~
 
@@ -162,7 +163,7 @@ systemctl reload apache2.service
 
 The Apache web server runs with the USER.GROUP *www-data.www-data*" and `DocumentRoot` belongs to *"root.root"* immediately after installation.  
 To give users write permissions to the files contained in `DocumentRoot`, a new group should be created specifically for this purpose. It does not make sense to use the existing group *www-data* because Apache runs with the rights of this group.  
-We name the new group *"developer"*.
+We name the new group `work`.
 
 **With CMS**
 
@@ -171,19 +172,19 @@ If a content management system (software for collaborative editing of website co
 1. Create the group and assign it to the user.
 
 	~~~sh
-	groupadd developer
-	adduser USERNAME developer
-	chgrp developer /var/www/html
+	groupadd work
+	adduser USERNAME work
+	chgrp work /var/www/html
 	~~~
 
 To activate the new permissions you have to log out and log in again, or use the `newgrp` command as user.
 
    ~~~sh
-   $ newgrp developer
+   $ newgrp work
    ~~~
 
 2. Set SGID bit for `DocumentRoot`  
-   so that all added directories and files inherit the group *"developer"*.
+   so that all added directories and files inherit the group `work`.
 
    ~~~sh
    chmod g+s /var/www/html
@@ -196,10 +197,12 @@ To activate the new permissions you have to log out and log in again, or use the
    ~~~sh
    # ls -la /var/www/html
    total 24
-   drwxr-sr-x 2 root developer 4096 Jan 9 19:32 .        (DocumentRoot with SGID bit)
-   drwxr-xr-x 3 root root 4096 Jan 9, 19:04 ...          (The parent directory /var/www)
-   -rw-r--r-- 1 root developer 10701 9 Jan 19:04 index.html
-   -rw-r--r-- 1 root developer 20 Jan 9, 19:32 info.php
+   drwxr-sr-x 2 root work 4096 Jan 9 19:32 .
+                (DocumentRoot with SGID bit)
+   drwxr-xr-x 3 root root 4096 Jan 9, 19:04 ...
+                (The parent directory /var/www)
+   -rw-r--r-- 1 root work 10701 9 Jan 19:04 index.html
+   -rw-r--r-- 1 root work 20 Jan 9, 19:32 info.php
    ~~~
 
    For `DocumentRoot` we change the owner to *"www-data"*, give write permission to the group, and revoke read permission from everyone else as well (all recursively).
@@ -215,13 +218,13 @@ To activate the new permissions you have to log out and log in again, or use the
    ~~~sh
    # ls -la /var/www/html
    total 24
-   dr-xrws--x 2 www-data developer 4096 Jan 9 19:32 .
+   dr-xrws--x 2 www-data work 4096 Jan 9 19:32 .
    drwxr-xr-x 3 root root 4096 Jan 9 19:04 ...
-   -rw-rw---- 1 www-data developer 10701 9 Jan 19:04 index.html
-   -rw-rw---- 1 www-data developer 20 9 Jan 19:32 info.php
+   -rw-rw---- 1 www-data work 10701 9 Jan 19:04 index.html
+   -rw-rw---- 1 www-data work 20 9 Jan 19:32 info.php
    ~~~
 
-   Now only members of the group *developer* have write permission in `DocumentRoot`. Apache web server can read and write the files, all others are denied access.
+   Now only members of the group *work* have write permission in `DocumentRoot`. Apache web server can read and write the files, all others are denied access.
 
 4. Disadvantages of these settings
 
@@ -293,9 +296,10 @@ The following directive disables the display of the files `.htaccess` and `.htpa
   $ echo "<?php" > /var/www/html/upload/index.php
   ~~~
 
-+ In the host configuration **/etc/apache2/sites-available/server1.conf**:
++ In the host configuration  
+  `/etc/apache2/sites-available/server1.conf`
 
-  We can use the "*\<Directory\>*" block to block all IP addresses except those listed in it.
+  we can use the `<Directory>` block to block all IP addresses except those listed in it.
 
   ~~~apacheconf
   <Directory "/var/www/html">

@@ -76,7 +76,7 @@ To make SSH more secure, use a text editor of your choice to edit the file `/etc
   Obviously, 'yes' must be set here (unless you use a KeyLogin).
 
   ~~~
-  PasswordAuthentication yes [if you don't use keys]
+  PasswordAuthentication yes
   ~~~
 
 Finally:
@@ -229,17 +229,19 @@ Mounting the remote host is accomplished with the following command:
 fusermount -u local_mountpoint
 ~~~
 
-If you use sshfs regularly, it is recommended to make an entry in `/etc/fstab`:
+If you use sshfs regularly, it is recommended to make an entry in `/etc/fstab` (all in one line):
 
 ~~~
-sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
+sshfs#remote_hostname://remote_directory /local_mount_point
+ fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,
+ fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
 Next, remove the comment character before *"user_allow_other"* in the file `/etc/fuse.conf`:
 
 ~~~
-# Allow non-root users to specify the 'allow_other' or 'allow_root'
-# mount options.
+# Allow non-root users to specify the 'allow_other'
+# or 'allow_root' mount options.
 #
 user_allow_other
 ~~~

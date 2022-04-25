@@ -43,7 +43,7 @@ If the available hardware for burning is not exactly known, the programs wodim a
 
 ~~~
 $ wodim -checkdrive
-Device was not specified. Trying to find an appropriate drive...
+Device was not specified. Trying to find an [...] drive...
 Detected CD-R drive: /dev/sr0
 [...]
 Vendor_info    : 'HL-DT-ST'
@@ -153,7 +153,7 @@ $ growisofs -Z /dev/dvd -R -J file1 file2 file3 ...
 If there is still space on the DVD, you can add files using the `-M` option.
 
 ~~~
-$ growisofs -M /dev/dvd -R -J still_one_file and_still_one_file
+$ growisofs -M /dev/dvd -R -J file8 file9
 ~~~
 
 This command fills the remaining free space on the DVD with zeros and closes the media.

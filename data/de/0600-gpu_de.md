@@ -124,13 +124,17 @@ apt update && apt install nvidia-legacy-390xx-driver
 apt update && apt install nvidia-driver
 ~~~
 
-Wenn das fehlerfrei durchgelaufen ist noch ein
+Wenn das fehlerfrei durchgelaufen ist, noch ein
 
 ~~~sh
-mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection' > /etc/X11/xorg.conf.d/20-nvidia.conf
+mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"
+\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection'
+ > /etc/X11/xorg.conf.d/20-nvidia.conf
+ 
+(alles in einer Zeile)
 ~~~
 
-ausführen, um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.
+ausführen um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.
 
 Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr supportet werden, ist damit zu rechnen, dass selbige mit einem neuen Kernel oder neuem Xorg nicht mehr funktionieren.
 

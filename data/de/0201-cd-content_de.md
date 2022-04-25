@@ -16,25 +16,25 @@ siduction bietet fünf aktuelle Images und verschiedenen Desktop-Umgebungen (ein
 Die Varianten sind:
 
 1. **KDE 64 Bit** , live-ISO mit etwa 2,8 GByte:
-    - Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repräsentativen Auswahl der KDE Applications.  
-    - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+   - Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repräsentativen Auswahl der KDE Applications.
+   - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
 2. **XFCE 64 Bit** , live-ISO mit etwa 2,3 GByte:
-    - umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv tätig sein zu können.  
-    - Der Ressourcenaufwand ist geringer als mit KDE.  
-    - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+   - umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv tätig sein zu können.
+   - Der Ressourcenaufwand ist geringer als mit KDE.
+   - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
 3. **LXQt mit 64 Bit** ,  live-ISO mit etwa 2,2 GByte:
-     - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.  
-     - Der Fußabdruck ist etwas schmaler als bei XFCE
-     - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
+   - umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.
+   - Der Fußabdruck ist etwas schmaler als bei XFCE
+   - Die Installation zusätzlicher Anwendungen ist ohne Probleme via apt möglich.
 
 4. **Xorg mit 64 Bit** ,  live ISO mit etwa 1,8 GByte:
-      - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.  
-      - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen
+   - Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.
+   - Für Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen.
 
 5. **NoX mit 64 Bit** ,  live-ISO mit etwa 800 MByte: 
-      - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
+   - Wie der Name andeutet: kein vorinstallierter Xorg-Stack
 
 **32 Bit ISOs** bieten wir standardmäßig nicht mehr an.  
 Wenn ein 32 Bit IOS gewünscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen können wir ein solches ISO leider nicht.
@@ -45,28 +45,30 @@ für: KDE-Plasma, XFCE, LXQt, Xorg und NoX
 
 **Prozessoranforderungen: 64 Bit CPU**
 
-    AMD64  
-    Intel Core2  
-    Intel Atom 330  
-    jede x86-64/ EM64T fähige CPU oder neuer  
-    neuere 64 Bit fähige AMD Sempron und Intel Pentium 4 CPUs  
-    (achten Sie auf das "lm"-Flag in /proc/cpuinfo oder nutzt inxi -v3).
+AMD64  
+Intel Core2  
+Intel Atom 330  
+jede x86-64/ EM64T fähige CPU oder neuer  
+neuere 64 Bit fähige AMD und Intel CPUs  
+(achte auf das "lm"-Flag in /proc/cpuinfo oder nutze inxi -v3).
 
 **Speicheranforderungen**
 
-    KDE-Plasma: ≥ 4 GByte RAM
-    XFCE:       ≥ 4 GByte RAM
-    LXQT:       ≥ 2 GByte RAM
-    Xorg:       ≥ 512 MByte RAM
-    NoX:        ≥ 256 MByte RAM
+~~~
+KDE Plasma mindestens   4 GByte RAM
+Xfce       mindestens   4 GByte RAM
+LXQt       mindestens 512 MByte RAM
+Xorg       mindestens 512 MByte RAM
+NoX        mindestens 256 MByte RAM
+~~~
 
-    ≥ 5 GByte Festplattenspeicher für NOX
-    ≥10 GByte Festplattenspeicher für alle Anderen
+Mindestens 5 GByte Festplattenspeicher für NOX.  
+Mindestens 10 GByte Festplattenspeicher für alle anderen Varianten.
+
 
 **Sonstiges**
 
-    VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung.
-    optisches Laufwerk oder USB Medien.
+VGA Grafikkarte mit mindestens 640x480 Pixel Auflösung und ein optisches Laufwerk oder USB Medien.
 
 ### Anwendungen und Hilfsprogramme
 

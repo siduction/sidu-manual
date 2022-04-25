@@ -31,10 +31,12 @@ Nach einem `apt update` werden die notwendigen Pakete mit folgendem Befehl insta
 # apt install apt-cacher
 [...]
 Die folgenden NEUEN Pakete werden installiert:
-  apt-cacher ed libberkeleydb-perl libcompress-raw-bzip2-perl
-  libcompress-raw-lzma-perl libcompress-raw-zlib-perl   libfilesys-df-perl
-  libio-compress-lzma-perl libio-compress-perl libio-interactive-perl
-  libio-interface-perl libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
+  apt-cacher ed libberkeleydb-perl
+  libcompress-raw-bzip2-perl libcompress-raw-lzma-perl
+  libcompress-raw-zlib-perl libfilesys-df-perl
+  libio-compress-lzma-perl libio-compress-perl
+  libio-interactive-perl libio-interface-perl
+  libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
   libsys-syscall-perl libwww-curl-perl
 0 aktualisiert, 16 neu installiert, 0 zu entfernen und 0 nicht aktualisiert.
 Es müssen 992 kB an Archiven heruntergeladen werden.

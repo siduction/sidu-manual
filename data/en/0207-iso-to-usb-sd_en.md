@@ -36,13 +36,13 @@ We recommend using the command line. There is no need to install additional prog
 Before we write the siduction ISO image file to the storage medium, we need to determine its drive label. The easiest way is to use journald. The command **`journalctl -f`** executed in a terminal shows continuously the messages of systemd. Now we plug in the storage medium and watch the messages in the terminal. Lines of the following type contain the information we are looking for.
 
 ~~~
-kernel: usb 2-3.3: new high-speed USB device number 7 using xhci_hcd
+kernel: usb 2-3.3: new high-speed USB device number 7 ...
 [...]
-kernel: scsi 1:0:0:0: Direct-Access Intenso Alu Line 8.07 PQ: 0 ANSI: 4
+kernel: scsi 1:0:0:0: Direct-Access Intenso Alu Line ...
 kernel: sd 1:0:0:0: Attached scsi generic sg1 type 0
 kernel: sd 1:0:0:0: [sdb] 7866368 512-byte logical blocks: (4.03 GB/3.75 GiB)
 [...]
-kernel: sd 1:0:0:0: [sdb] Write cache: disabled, read cache: enabled, does not support DPO or FUA
+kernel: sd 1:0:0:0: [sdb] Write cache: disabled, read ...
 ~~~
 
 This is an Intenso USB flash drive with 4 GB storage capacity and a sector size of 512 bytes. The drive name is `sdb`. It follows that `/dev/sdb` is the path to use for the target medium.  

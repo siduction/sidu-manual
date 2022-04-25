@@ -41,14 +41,14 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Bearbeiten**
 
-    `Bearbeiten` ist der 2. Menüpunkt von links. Er zeigt drei ausgegraute Optionen, die sehr wichtig sind und weiter unten erläutert werden.  
-    + letzte Operationen rückgängig machen ("Undo last operations"),  
-    + alle Operationen löschen ("clear all operations") und  
+    Bearbeiten ist der 2. Menüpunkt von links. Er zeigt drei ausgegraute Optionen, die sehr wichtig sind und weiter unten erläutert werden.  
+    + letzte Operationen rückgängig machen ("Undo last operations"),
+    + alle Operationen löschen ("clear all operations") und
     + alle Operationen ausführen ("apply all operations").
 
 + **Ansicht**
 
-    Der nächste Menüpunkt `Ansicht` bietet die Anzeigeoptionen `Laufwerksinformationen` und `Anstehende Operationen`.
+    Dieser Menüpunkt bietet die Anzeigeoptionen `Laufwerksinformationen` und `Anstehende Operationen`.
 
   + Laufwerksinformationen ("Device Information")  
     Im linken Rahmen stehen Details der Laufwerke wie Modell, Größe usw., die wichtig sind, wenn mehrere Datenträger im System vorhanden sind. Damit kann man kontrollieren, ob der richtige Datenträger zur Formatierung gewählt wurde.
@@ -66,12 +66,12 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
   1. Eine neue (leere) Partitionstabelle des gleichen Typ erstellen, und damit auf dem schnellsten Weg alle alten Partitionen und Daten zu entfernen.
 
-  2. Einen Wechsel des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von msdos-MBR zu gpt-UEFI oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
+  2. Einen Wechsel des Typ der Partitionstabelle vorzunehmen. Sinnvoller Weise von **msdos-MBR** zu **gpt-UEFI** oder umgekehrt. Auch hierbei gehen alle Daten verloren.  
     Im Jahr 2009 wurde das UEFI mit GPT eingeführt, hat sich seitdem nach und nach verbreitet, und wird den MBR ersetzen. Zwar unterstützen moderne UEFI-Mainboard MBR, die Vorteile von GPT gehen dabei jedoch verloren. Weitere Informationen zu UEFI und GPT liefert die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
 
   ![GParted Partitionstabelle](./images/gparted/gparted03-de.png)
 
-  Die Auswahl *"Datenrettung versuchen"* bietet bei Erfolg die Chance trotz einer defekten Partitionstabelle doch noch an die Daten zu gelangen.
+  Die Auswahl `Datenrettung versuchen` bietet bei Erfolg die Chance trotz einer defekten Partitionstabelle doch noch an die Daten zu gelangen.
 
   ![GParted Datenrettung](./images/gparted/gparted04-de.png)
 
@@ -95,13 +95,16 @@ Der erste Menüpunkt `GParted` öffnet eine Drop-Down-Liste, zum erneuten Einles
 
 + **Falls ein Fehler gemacht wurde**
 
-  Im Menü `Bearbeiten` besteht die Möglichkeit `Letzte Operation rückgängig machen` oder `Alle Operationen löschen`. Der Bereich ist grün markiert.
+  Im Menü `Bearbeiten` besteht die Möglichkeit  
+  `Letzte Operation rückgängig machen` oder  
+  `Alle Operationen löschen`. Der Bereich ist grün markiert.
 
   ![GParted rückgängig machen](./images/gparted/gparted06-de.png)
 
 + **Anwenden**
 
-  Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü `Bearbeiten` den Punkt `Alle Operationen ausführen`. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
+  Bis jetzt wurden noch keine Änderungen auf den Laufwerken vorgenommen. Wenn man sicher ist, dass alle vorgesehenen Änderungen richtig sind, wählt man im Menü `Bearbeiten` den Punkt  
+  `Alle Operationen ausführen`. Darauf erscheint der folgende Dialog, der zu bestätigen ist.
 
   ![GParted Ausführen und speichern](./images/gparted/gparted09-de.png)
 

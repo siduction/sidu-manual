@@ -238,8 +238,10 @@ Description=CUPS Scheduler
 Documentation=man:cupsd(8)
 After=network.target sssd.service ypbind.service nslcd.service
 Requires=cups.socket
-    After=cups.socket (not in the file, because implicitly present)
-    After=cups.path (not in the file, because implicitly present)
+    After=cups.socket
+     (not in the file, because implicitly present)
+    After=cups.path
+     (not in the file, because implicitly present)
 
 [Service]
 ExecStart=/usr/sbin/cupsd -l
@@ -257,7 +259,8 @@ File /lib/system/system/cups.path:
 [Unit]
 Description=CUPS Scheduler
 PartOf=cups.service
-    Before=cups.service (not in the file, because implicitly present)
+    Before=cups.service
+     (not in the file, because implicitly present)
 
 [Path]
 PathExists=/var/cache/cups/org.cups.cupsd
@@ -272,7 +275,8 @@ File /lib/system/system/cups.socket:
 [Unit]
 Description=CUPS Scheduler
 PartOf=cups.service
-    Before=cups.service (not in the file, because implicitly present).
+    Before=cups.service
+     (not in the file, because implicitly present).
 
 [Socket]
 ListenStream=/run/cups/cups.sock
@@ -311,15 +315,16 @@ We get the units' complete configuration with the command **`systemd-analyze dum
 **The [Install] section**  
 of the cups.service unit contains the option `Also=cups.socket cups.path`, i.e. the instruction to install these two units as well and all three units have different `WantedBy=` options:
 
-+ cups.socket: WantedBy=sockets.target  
-+ cups.path: WantedBy=multi-user.target  
++ cups.socket: WantedBy=sockets.target
++ cups.path: WantedBy=multi-user.target
 + cups.service: WantedBy=printer.target
 
 To understand why different values are used for the *"WantedBy="* option, we need additional information, which we can obtain with the **`systemd-analyze dot`** and **`systemd-analyze plot`** commands.
 
 ~~~
-$ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
-    '*.target' | dot -Tsvg > targets.svg
+   (enter in a single line)
+$ systemd-analyze dot --to-pattern='*.target'
+ --from-pattern='*.target' | dot -Tsvg > targets.svg
 
 $ systemd-analyze plot > bootup.svg
 ~~~
@@ -334,17 +339,17 @@ From the `targets.svg` and the `bootup.svg` we can see that
 2. *basic.target*  
     will not start until sysinit.target has been reached.
 
-    1. *sockets.target*  
+   2.1. *sockets.target*  
         is requested by basic.target,
 
-        1. *cups.socket*  
-              and all other .socket units are fetched from sockets.target.
+     2.1.1. *cups.socket*  
+            and all other .socket units are fetched from sockets.target.
 
-    2. *paths.target*  
+   2.2 *paths.target*  
         is requested by basic.target,
 
-        1. *cups.path*  
-              and all other .path units are fetched from paths.target.
+     2.2.1. *cups.path*  
+            and all other .path units are fetched from paths.target.
 
 3. *network.target*  
     will not start until basic.target has been reached.
@@ -356,13 +361,10 @@ From the `targets.svg` and the `bootup.svg` we can see that
     will not start until network.target has been reached.
 
 6. *multi-user.target*  
-    is not reached until cups.service has been started successfully.  
-    (Strictly speaking, this is because the cups-browsed.service, which depends on the  
-    cups.service, must have been started successfully.)
+    is not reached until cups.service has been started successfully. (Strictly speaking, this is because the cups-browsed.service, which depends on the cups.service, must have been started successfully.)
 
-6. *printer.target*  
-    becomes active only when systemd dynamically generates device units for the printers.  
-    For this to happen, the printers must be connected and turned on.
+7. *printer.target*  
+    becomes active only when systemd dynamically generates device units for the printers. For this to happen, the printers must be connected and turned on.
 
 Further above we noted that starting a cups.xxx unit is sufficient to bring in all three units. If we look again at the *"WantedBy="* options in the [Install] section, we have the cups.socket unit being brought in via the sockets.target already during the basic.target, the cups.path unit being brought in during the multi-user.target, and the cups.service being brought in by the printer.target.  
 Throughout the boot process, the three cups.xxx units are repeatedly requested from systemd for activation. This hardens the cupsd against unforeseen errors, but does not matter to systemd because it does not matter how many times a service is requested if it is in the queue.  
@@ -437,10 +439,15 @@ Please also refer to the man pages `man systemd-analyze` and `man systemctl`.
   ~~~
   $ systemd-delta --no-pager
   [MASKED] /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
+  
   [OVERRIDDEN] /etc/tmpfiles.d/screen-cleanup.conf → /usr/lib/tmpfiles.d/screen-cleanup.conf
+  
   [MASKED] /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
+  
   [EQUIVALENT] /etc/systemd/system/tmp.mount → /lib/systemd/system/tmp.mount
+  
   [EXTENDED] /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
+  
   [EXTENDED] /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
 
   6 overridden configuration files found.
@@ -462,16 +469,17 @@ Please also refer to the man pages `man systemd-analyze` and `man systemctl`.
 
   creates the file *"bootup.svg"* with the chronological sequence of the boot process. It is a graphical listing of the boot process with the start and end times of all units, what time they took, and their activity states.
 
-+ analyze dot
++ analyze dot (Enter the command on one line).
 
   ~~~
-  $ systemd-analyze dot --to-pattern='*.target' --from-pattern=\
-    '*.target' | dot -Tsvg > targets.svg
-    Color legend: black = Requires
+  $ systemd-analyze dot --to-pattern='*.target'
+    --from-pattern='*.target' | dot -Tsvg > targets.svg
+    
+    Color legend: black     = Requires
                   dark blue = Requisite
                   dark grey = Wants
-                  red = Conflicts
-                  green = After
+                  red       = Conflicts
+                  green     = After
   ~~~
 
   creates the *"targets.svg"* flowchart that shows the dependencies of the targets used in the boot process. The relationships of the .target units are shown in color for a better overview.

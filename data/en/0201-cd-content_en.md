@@ -16,35 +16,25 @@ siduction offers seven current images in 64-bit as live ISO to get started with 
 The alternatives are:
 
 1. **KDE Plasma 64-bit**, live-ISO with about 2.8 GByte:
-    - Qt based Plasma Desktop and KDE frameworks; with a representative selection of KDE Applications  
-    - installation of additional applications easily possible via apt  
+   - Qt based Plasma Desktop and KDE frameworks; with a representative selection of KDE Applications
+   - installation of additional applications easily possible via apt
 
-2. **Cinnamon 64-bit**, live ISO with about 2.3 GByte:
-     - GTK-based desktop with a representative selection of useful software  
-     - installation of additional applications easily possible via apt  
+2. **Xfce 64-bit**, live-ISO with about 2.3 GByte:
+   - includes a GTK based desktop environment with all features (no minimal version!) and all productivity applications right away
+   - resource requirements lower than for KDE
+   - installation of additional applications easily possible via apt
 
-3. **Xfce 64-bit**, live-ISO with about 2.3 GByte:
-    - includes a GTK based desktop environment with all features (no minimal version!) and all productivity applications right away  
-    - resource requirements lower than for KDE  
-    - installation of additional applications easily possible via apt  
+3. **LXQt 64-bit**, live ISO with about 2.2 GByte:
+   - includes desktop environment with a selection of Qt applications
+   - footprint somewhat smaller than with Xfce
+   - installation of additional applications easily possible via apt
 
-4. **LXQt 64-bit**, live ISO with about 2.2 GByte:
-     - includes desktop environment with a selection of Qt applications  
-     - footprint somewhat smaller than with Xfce  
-     - installation of additional applications easily possible via apt  
+4. **Xorg 64-bit**, live ISO with about 1.8 GByte:
+   - ISO image with an Xorg stack and the spartan window manager Fluxbox
+   - for users who want to build their system according to their own ideas
 
-5. **LXDE 64-bit**, live ISO with about 2.2 GByte:
-     - includes desktop environment with a selection of GTK applications  
-     - footprint smaller than with Xfce  
-     - suitable for older hardware  
-     - installation of additional applications easily possible via apt  
-
-6. **Xorg 64-bit**, live ISO with about 1.8 GByte:
-      - ISO image with an Xorg stack and the spartan window manager Fluxbox  
-      - for users who want to build their system according to their own ideas  
-
-7. **NoX 64-bit**, live ISO with about 800 MByte: 
-      - as the name implies, no pre-installed Xorg stack  
+5. **NoX 64-bit**, live ISO with about 800 MByte: 
+   - as the name implies, no pre-installed Xorg stack
 
 **32-bit ISOs** are no longer offered by default.  
 If a 32bit ISO is desired, we will gladly create one on request in IRC. Unfortunately, we cannot test such an ISO.
@@ -55,31 +45,29 @@ for: KDE-Plasma, Mate, Xfce, LXQt, LXDE, Cinnamon, Xorg, and NoX
 
 **Processor requirements: 64Bit CPU**
 
-    AMD64  
-    Intel Core2  
-    Intel Atom 330  
-    any x86-64/ EM64T capable CPU or newer  
-    newer 64-bit capable AMD Sempron or Intel Pentium 4 CPUs  
-    (look for the "lm" flag in /proc/cpuinfo or use inxi -v3)
+AMD64  
+Intel Core2  
+Intel Atom 330  
+any x86-64/ EM64T capable CPU or newer  
+newer 64-bit capable AMD or Intel CPUs  
+(look for the "lm" flag in /proc/cpuinfo or use inxi -v3)
 
 **Memory requirements**
 
-    KDE Plasma: ≥ 4 GByte RAM
-    Mate:       ≥ 4 GByte RAM
-    Cinnamon: ≥ 4 GByte RAM
-    Xfce: ≥ 4 GByte RAM
-    LXQt: ≥ 512 MByte RAM
-    LXDE ≥ 512 MByte RAM
-    Xorg: ≥ 512 MByte RAM
-    NoX: ≥ 256 MByte RAM
+~~~
+KDE Plasma at least   4 GByte RAM
+Xfce       at least   4 GByte RAM
+LXQt       at least 512 MByte RAM
+Xorg       at least 512 MByte RAM
+NoX        at least 256 MByte RAM
+~~~
 
-    ≥ 5 GByte hard disk space for NoX
-    ≥10 GByte of disk space for all the others
+At least  5 GByte hard disk space for NoX  
+At least 10 GByte of disk space for all the others
 
 **Other**
 
-    VGA graphics card with at least 640x480 pixel resolution  
-    optical drive or USB media
+VGA graphics card with at least 640x480 pixel resolution and optical drive or USB media.
 
 ### Applications and utilities
 

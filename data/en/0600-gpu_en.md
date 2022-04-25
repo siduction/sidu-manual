@@ -125,7 +125,11 @@ apt update && apt install nvidia-driver
 If this runs without errors, enter
 
 ~~~sh
-mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection' > /etc/X11/xorg.conf.d/20-nvidia.conf
+mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"
+\n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection'
+ > /etc/X11/xorg.conf.d/20-nvidia.conf
+
+(all in one line)
 ~~~
 
 to tell Xorg to use this installed driver. After a reboot the system should hopefully boot up to the desktop. If problems occur, i.e. the desktop does not start, you should consult **`/var/log/Xorg.0.log`**.

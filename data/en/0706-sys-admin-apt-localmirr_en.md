@@ -31,10 +31,12 @@ After an **`apt update`** the necessary packages are installed with the followin
 # apt install apt-cacher
 [...]
 The following NEW packages will be installed:
-  apt-cacher ed libberkeleydb-perl libcompress-raw-bzip2-perl
-  libcompress-raw-lzma-perl libcompress-raw-zlib-perl libfilesys-df-perl
-  libio-compress-zma-perl libio-compress-perl libio-interactive-perl
-  libio-interface-perl libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
+  apt-cacher ed libberkeleydb-perl
+  libcompress-raw-bzip2-perl libcompress-raw-lzma-perl
+  libcompress-raw-zlib-perl libfilesys-df-perl
+  libio-compress-lzma-perl libio-compress-perl
+  libio-interactive-perl libio-interface-perl
+  libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
   libsys-syscall-perl libww-curl-perl
 0 updated, 16 reinstalled, 0 to remove and 0 not updated.
 992 kB of archives need to be downloaded.

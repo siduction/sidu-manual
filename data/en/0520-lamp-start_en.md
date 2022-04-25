@@ -6,16 +6,16 @@
 
 The acronym **LAMP** refers to a set of free software used to run dynamic web sites:
 
-+ **L**inux: operating system  
-+ **A**pache: web server  
-+ **M**ariaDb: database server (as of Debian 9 'Stretch', previously mySQL)  
-+ **P**HP, Perl, and/or Python: scripting languages  
++ **L**inux: operating system
++ **A**pache: web server
++ **M**ariaDb: database server (as of Debian 9 'Stretch', previously mySQL)
++ **P**HP, Perl, and/or Python: scripting languages
 
 Use cases as a server:
 
-1. **a local test server for webdesigners without Internet connection (see this chapter)**  
-2. a private (data) server with Internet connection  
-3. a private web server with full Internet connection  
+1. **a local test server for webdesigners without Internet connection (see this chapter)**
+2. a private (data) server with Internet connection
+3. a private web server with full Internet connection
 4. a commercial web server
 
 Our goal is to set up a LAMP test server for developers that is directly connected to the workstation PC via LAN. Furthermore, for security reasons, the server should not be connected to a local network or even to the Internet.
@@ -29,12 +29,12 @@ At least 500MB RAM should be available in the server PC. Less RAM will cause pro
 The packages to install are:
 
 ~~~
-apache2  
-mariadb-server  
-mariadb-client  
-php  
-php7.4-mysql  
-phpmyadmin  
+apache2
+mariadb-server
+mariadb-client
+php
+php7.4-mysql
+phpmyadmin
 ~~~
 
 As usual with siduction, we run the installations in the "multi-user.target" (init 3) in the terminal.
@@ -101,9 +101,10 @@ Do you want to continue? [Y/n] y
 [...]
 
 # systemctl status apache2.service
-● apache2.service - The Apache HTTP Server
-     Loaded: loaded (/lib/system/system/apache2.service; enabled; vendor preset: enabled)
-     Active: active (running) since Sun 2020-12-06 14:24:44 CET; 4min 8s ago
+apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/system/system/apache2.service;
+             enabled; vendor preset: enabled)
+     Active: active (running) since Sun 2020-12-06 [...]
 [...]
 ~~~
 
@@ -112,16 +113,18 @@ As you can see, Apache has been activated immediately.
 ~~~
 # systemctl stop apache2.service
 # systemctl status apache2.service
-● apache2.service - The Apache HTTP Server
-     Loaded: loaded (/lib/system/system/apache2.service; enabled; vendor preset: enabled)
-     Active: inactive (dead) since Sun 2020-12-06 14:30:27 CET; 6s ago
+apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/system/system/apache2.service;
+             enabled; vendor preset: enabled)
+     Active: inactive (dead) since Sun 2020-12-06 [...]
 [...]
 
 # systemctl start apache2.service
 # systemctl status apache2.service
-● apache2.service - The Apache HTTP Server
-     Loaded: loaded (/lib/system/system/apache2.service; enabled; vendor preset: enabled)
-     Active: active (running) since Sun 2020-12-06 14:30:59 CET; 3s ago
+apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/system/system/apache2.service;
+             enabled; vendor preset: enabled)
+     Active: active (running) since Sun 2020-12-06 [...]
 [...]
 ~~~
 
@@ -147,10 +150,12 @@ The installation of MariaDb is similarly simple. Just install the metapackages *
 ~~~
 # apt install mariadb-server mariadb-client
 [...]
-The following NEW packages will be installed:  
-  galera-4 libcgi-fast-perl libcgi-pm-perl libdbd-mariadb-perl libfcgi-perl libhtml-template-perl libmariadb3  
-  mariadb-client mariadb-client-10.5 mariadb-client-core-10.5 mariadb-common mariadb-server mariadb-server-10.5  
-  mariadb-server-core-10.5 mysql-common socat
+The following NEW packages will be installed:
+galera-4 libcgi-fast-perl libcgi-pm-perl libdbd-mariadb-perl
+libfcgi-perl libhtml-template-perl libmariadb3
+mariadb-client mariadb-client-10.5 mariadb-client-core-10.5
+mariadb-common mariadb-server mariadb-server-10.5
+mariadb-server-core-10.5 mysql-common socat
 [...]
 Do you want to continue? [Y/n] y
 ~~~
@@ -165,8 +170,9 @@ To install the PHP scripting language, simply enter the command:
 # apt install php
 [...]
 The following NEW packages will be installed:
-  apache2-bin libapache2-mod-php7.4 libaprutil1-dbd-sqlite3 libaprutil1-ldap php
-  php-common php7.4 php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline
+apache2-bin libapache2-mod-php7.4 libaprutil1-dbd-sqlite3
+libaprutil1-ldap php php-common php7.4 php7.4-cli
+php7.4-common php7.4-json php7.4-opcache php7.4-readline
 [...]
 Would you like to continue? [Y/n] y
 ~~~
@@ -201,7 +207,7 @@ PHP logo
 
 PHP version 7.4.11
 
-System       Linux <hostname> 5.9.13-towo.1-siduction-amd64 ...
+System       Linux <hostname> 5.9.13-towo.1-siduction-amd64
 Build Date   Oct 6 2020 10:34:39
 server API   Apache 2.0 Handler
 ...
@@ -229,15 +235,22 @@ To administer the MariaDb database, we need *phpmyadmin*:
 # apt install phpmyadmin
 [...]
 The following NEW packages will be installed:
-  dbconfig-common dbconfig-mysql icc-profiles-free libjs-openlayers libjs-sphinxdoc libjs-underscore libonig5 libzip4
-  php-bacon-qr-code php-bz2 php-dasprid-enum php-gd php-google-recaptcha php-mbstring php-mysql
-  php-phpmyadmin-motranslator php-phpmyadmin-shapefile php-phpmyadmin-sql-parser php-phpseclib php-psr-cache
-  php-psr-container php-psr-log php-symfony-cache php-symfony-cache-contracts php-symfony-expression-language
-  php-symfony-service-contracts php-symfony-var-exporter php-tcpdf php-twig php-twig-extensions php-xml php-zip
-  php7.4-bz2 php7.4-gd php7.4-mbstring php7.4-xml php7.4-zip phpmyadmin
+dbconfig-common dbconfig-mysql icc-profiles-free
+libjs-openlayers libjs-sphinxdoc libjs-underscore
+libonig5 libzip4 php-bacon-qr-code php-bz2
+php-dasprid-enum php-gd php-google-recaptcha
+php-mbstring php-mysql php-phpmyadmin-motranslator
+php-phpmyadmin-shapefile php-phpmyadmin-sql-parser
+php-phpseclib php-psr-cache php-psr-container
+php-psr-log php-symfony-cache php-symfony-cache-contracts
+php-symfony-expression-language php-symfony-var-exporter
+php-symfony-service-contracts php-tcpdf php-twig
+php-twig-extensions php-xml php-zip php7.4-bz2 php7.4-gd
+php7.4-mbstring php7.4-xml php7.4-zip phpmyadmin
 0 updated, 38 reinstalled, 0 to remove and 60 not updated.
-There are still 15.7 MB of archives to be downloaded out of 15.8 MB.
-After this operation, 70.9 MB of additional disk space will be used.
+There are still 15.7 MB of archives to be downloaded out
+of 15.8 MB. After this operation, 70.9 MB of additional
+disk space will be used.
 Do you want to continue? [Y/n] y
 ~~~
 
@@ -265,23 +278,23 @@ The output shows the status without any changes to the configuration immediately
 
 ~~~
 # apache2ctl -S
-  AH00558: apache2: Could not reliably determine the server's
-  fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive
-  directive globally to suppress this message
-  VirtualHost configuration:
-  [::1]:80 127.0.0.1 (/etc/apache2/sites-enabled/000-default.conf:1)
-  127.0.0.1:80 127.0.0.1 (/etc/apache2/sites-enabled/000-default.conf:1)
-  ServerRoot: "/etc/apache2"
-  Main DocumentRoot: "/var/www/html"
-  Main ErrorLog: "/var/log/apache2/error.log"
-  Mutex default: dir="/var/run/apache2/" mechanism=default 
-  Mutex mpm-accept: using_defaults
-  Mutex watchdog-callback: using_defaults
-  PidFile: "/var/run/apache2/apache2.pid"
-  Define: DUMP_VHOSTS
-  Define: DUMP_RUN_CFG
-  User: name="www-data" id=33
-  Group: name="www-data" id=33
+AH00558: apache2: Could not reliably determine the server's
+fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive
+directive globally to suppress this message
+VirtualHost configuration:
+[::1]:80     127.0.0.1 (/etc/apache2/sites-enabled/000-default.conf:1)
+127.0.0.1:80 127.0.0.1 (/etc/apache2/sites-enabled/000-default.conf:1)
+ServerRoot: "/etc/apache2"
+Main DocumentRoot: "/var/www/html"
+Main ErrorLog: "/var/log/apache2/error.log"
+Mutex default: dir="/var/run/apache2/" mechanism=default 
+Mutex mpm-accept: using_defaults
+Mutex watchdog-callback: using_defaults
+PidFile: "/var/run/apache2/apache2.pid"
+Define: DUMP_VHOSTS
+Define: DUMP_RUN_CFG
+User: name="www-data" id=33
+Group: name="www-data" id=33
 ~~~
 
 The manual page [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup) contains a number of hints for customizing the configuration.  
@@ -349,11 +362,14 @@ We query the status of the Apache web server:
 
 ~~~
 # systemctl status apache2.service
-● apache2.service - The Apache HTTP Server
-     Loaded: loaded (/lib/system/system/apache2.service; enabled; vendor preset: enabled)
-     Active: failed (Result: exit-code) since Mon 2020-12-14 18:29:23 CET; 13min ago
+apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/system/system/apache2.service
+             enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since
+             Mon 2020-12-14 18:29:23 CET; 13min ago
        Docs: https://httpd.apache.org/docs/2.4/
-    Process: 4420 ExecStart=/usr/sbin/apachectl start (code=exited, status=1/FAILURE)
+    Process: 4420 ExecStart=/usr/sbin/apachectl start
+             (code=exited, status=1/FAILURE)
 
 Dec 14 18:29:23 lap1 systemd[1]: Starting The Apache HTTP Server...
 Dec 14 18:29:23 lap1 apachectl[4423]: AH00526: Syntax error on line 63 of /etc/apache2/conf-enabled/security.conf:
@@ -366,9 +382,11 @@ We edit the file and try again.
 ~~~
 # systemctl start apache2.service
 # systemctl status apache2.service
-● apache2.service - The Apache HTTP Server
-     Loaded: loaded (/lib/system/system/apache2.service; enabled; vendor preset: enabled)
-     Active: active (running) since Mon 2020-12-14 18:34:59 CET; 3s ago
+apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/system/system/apache2.service
+             enabled; vendor preset: enabled)
+     Active: active (running) since
+             Mon 2020-12-14 18:34:59 CET; 3s ago
 [...]
 ~~~
 
@@ -398,9 +416,10 @@ Please check:
 The call of http://localhost/phpmyadmin fails with the message "*phpMyAdmin - Error*" and the following information is displayed.
 
 ~~~
-Error during session start; please check your PHP and/or webserver log file and  
-configure your PHP installation properly. Also ensure that cookies are enabled  
-in your browser.
+Error during session start; please check your PHP and/or
+webserver log file and configure your PHP installation
+properly. Also ensure that cookies are enabled in your
+browser.
 
 session_start(): open(SESSION_FILE, O_RDWR) failed: Permission denied (13)
 session_start(): Failed to read session data: files (path: /var/lib/php/sessions)
@@ -439,7 +458,8 @@ Here is an example with Apache:
 Package lists are read... Done
 Dependency tree is built.
 Status information is read.... Done
-The following packages were installed automatically and are no longer needed:
+The following packages were installed automatically and are
+no longer needed:
 apache2-data apache2-utils
 Use "apt autoremove" to remove them.
 The following packages are REMOVED:

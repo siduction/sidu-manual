@@ -19,12 +19,12 @@ The following links lead to the manual page with the tables for the boot options
 
 systemd knows a total of 11 unit types. The units we deal with most often in everyday life are:
 
-+ systemd.service  
-+ systemd.target  
-+ systemd.device  
-+ systemd.timer  
-+ systemd.mount  
-+ systemd.path  
++ systemd.service
++ systemd.target
++ systemd.device
++ systemd.timer
++ systemd.mount
++ systemd.path
 
 We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page [System administration - systemd](0710-systemd-start_en.md#systemd---the-system-and-services-manager). The complete documentation can be found in the man pages `man systemd.unit`, `man systemd.special`, and `man systemd.<unit_type>` respectively.
 
@@ -63,8 +63,10 @@ $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 ~~~
 
 With "*kill*", in contrast to "*stop*", the options `-s`, `--signal=`, and `--kill-who=` are available.
+
 + *"-s"* sends one of the signals `SIGTERM`, `SIGINT`, or `SIGSTOP`. Default is *"SIGTERM"*.
-+ *"--kill-who="* allows selection of the processes within the hierarchy to which a signal should be sent. The options are `main`, `control`, or `all`. This sends the signal to the main process, the child processes, or both. Default is *"all"*.  
++ *"--kill-who="* allows selection of the processes within the hierarchy to which a signal should be sent. The options are `main`, `control`, or `all`. This sends the signal to the main process, the child processes, or both. Default is *"all"*.
+
 This behavior is similar to the old and still usable command pkill, which is explained below in the section [Terminating a process](0702-sys-admin-gen_en.md#terminating-a-process).
 
 
@@ -228,18 +230,23 @@ To improve the display of fonts, if necessary, it is important to check the corr
     To check which settings the X server is currently using, we use xrandr in the terminal:
 
    ~~~
-    $ xrandr  
-    Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
-    HDMI-1 disconnected (normal left inverted right x axis y axis)  
-    HDMI-2 connected 1680x1050+0+0 (normal left inverted right x axis y axis) 474mm x 296mm  
-      1680x1050 59.95*+  
-      1280x1024 75.02 60.02  
-      1440x900 59.90  
-      1024x768 75.03 60.00  
-      800x600 75.00 60.32  
-      640x480 75.00 59.94  
-      720x400 70.08  
-    DP-1 disconnected (normal left inverted right x axis y axis)  
+    $ xrandr
+    Screen 0: minimum 320 x 200, current 1680 x 1050,
+    maximum 16384 x 16384
+    HDMI-1 disconnected
+      (normal left inverted right x axis y axis)
+    HDMI-2 connected 1680x1050+0+0 (normal left
+      inverted right x axis y axis)  474mm x 296mm
+      
+      1680x1050     59.95*+
+      1280x1024     75.02    60.02
+      1440x900      59.90
+      1024x768      75.03    60.00
+      800x600       75.00    60.32
+      640x480       75.00    59.94
+      720x400       70.08
+    DP-1 disconnected
+      (normal left inverted right x axis y axis)
    ~~~
 
     The value marked with "\*" indicates the setting used,  
@@ -263,17 +270,13 @@ The system-wide basic configuration is done in the terminal as **root**, using:
 For the dialogs called, these settings have proven to be useful:
 
 1. For screen display, please select the preferred method for font tuning.  
-   "autohinter"  
-
+   **`autohinter´**
 2. Please select to what extent font hinting is applied by default.  
-   "medium"  
-
+   **`medium`**
 3. The inclusion of the subpixel layer improves the text display on flat panel displays (LCD).  
-   "automatic"  
-
-4. By default, applications that support fontconfig use only outline fonts.  
-    Use bitmap fonts by default?  
-   "no"
+   **`automatic`**
+4. By default, applications that support fontconfig use only outline fonts. Use bitmap fonts by default?  
+   **`no`**
 
 Subsequently 
 
@@ -287,7 +290,10 @@ Sometimes rebuilding the font cache is a solution (the first command is for savi
 
 ~~~
 # mv /etc/fonts/ /etc/fonts_$(date +%F)/
-# apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
+
+# apt-get install --reinstall --yes -o DPkg::Options::=
+--force-confmiss -o DPkg::Options::=--force-confnew
+ fontconfig fontconfig-config
 ~~~
 
 ### User configuration
@@ -298,9 +304,9 @@ It should be noted that each font has an ideal size range, so identical size set
 The settings can be made conveniently in the graphical interface. They take effect on the desktop immediately, applications have to be restarted to some extent.  
 The list shows where in the menu the settings can be found.
 
-+ KDE Plasma  
-  *"System Preferences"* > *"Fonts"* > *"Fonts"*  
-  *"System Preferences"* > *"Display Setup"* > *"Display Setup"* > *"Global Scaling"*
++ KDE Plasma
+  + *"System Preferences"* > *"Fonts"* > *"Fonts"*
+  + *"System Preferences"* > *"Display Setup"* > *"Display Setup"* > *"Global Scaling"*
 
 + Gnome (Tweak Tool)  
   *"Applications"* > *"Optimizations"* > *"Fonts"*

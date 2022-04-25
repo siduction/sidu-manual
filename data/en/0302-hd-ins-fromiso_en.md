@@ -10,8 +10,8 @@ Booting from a "fromiso" hard disk installation takes only a fraction of the tim
 
 **Prerequisites**
 
-* a working Grub installation (on floppy, a hard disk installation, or the live CD)  
-* a siduction image file, e.g. `siduction.iso` (name shortened) and a Linux filesystem like **ext4**  
+* a working Grub installation (on floppy, a hard disk installation, or the live CD)
+* a siduction image file, e.g. `siduction.iso` (name shortened) and a Linux filesystem like **ext4**
 
 ### fromiso with grub2
 
@@ -38,7 +38,8 @@ Example: compare this modified `grub2-fll-fromiso` with the default settings:
 ~~~sh
 # defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2's update-grub
-# installed at /etc/default/grub2-fll-fromiso by the maintainer scripts
+# installed at /etc/default/grub2-fll-fromiso
+# by the maintainer scripts
 
 #
 # This is a POSIX shell fragment
@@ -46,8 +47,9 @@ Example: compare this modified `grub2-fll-fromiso` with the default settings:
 
 # specify where to look for the ISO
 # default: /srv/ISO
-## Attention: This is the path to the directory where the ISO(s) are located,  
-## the path should not include the actual siduction.iso.
+## Attention: This is the path to the directory where the
+## ISO(s) are located, the path should not include the
+## actual siduction.iso.
 FLL_GRUB2_ISO_LOCATION="/media/disk1part4"
 
 # array for defining ISO prefices --> siduction-*.iso

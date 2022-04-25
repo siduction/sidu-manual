@@ -2,7 +2,8 @@
 
 ## Downloading the ISO
 
-Please use the closest mirror. Mirror servers listed below, with details for the entry in `/etc/apt/sources.list.d/siduction.list`, are updated in a timely manner.  
+Please use the closest mirror. Mirror servers listed below, with details for the entry in  
+`/etc/apt/sources.list.d/siduction.list`, are updated in a timely manner.
 
 **Europe**  
 
@@ -15,7 +16,6 @@ https://ftp.spline.de/pub/siduction/
 ftp://ftp.spline.de/pub/siduction/
 
 + University of Stuttgart, Germany  
-http://ftp.uni-stuttgart.de/siduction/  
 https://ftp.uni-stuttgart.de/siduction/  
 ftp://ftp.uni-stuttgart.de/siduction/
 
@@ -52,7 +52,6 @@ ftp://ftp.belnet.be/mirror/siduction/
 rsync://ftp.belnet.be/siduction/
 
 + Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen, Germany  
-http://ftp.gwdg.de/pub/linux/siduction/  
 https://ftp.gwdg.de/pub/linux/siduction/  
 ftp://ftp.gwdg.de/pub/linux/siduction/  
 rsync://ftp.gwdg.de/pub/linux/siduction/
@@ -110,13 +109,11 @@ SHA256SUM.gpg
 SOURCES  
 
 
-The `xxx.manifest` file lists all packages of the respective ISO.
-
-`xxx.iso` is the image file provided for download.
-
-The `xxx.md5` and `xxx.sha256` files are used to verify the integrity of the ISO.
-
-The `xxx.gpg` files are the signature files used to validate checksum files (.md5, .sha256) for changes. 
+The `xxx.manifest` file lists all packages of the respective ISO.  
+`xxx.iso` is the image file provided for download.  
+The `xxx.md5` and `xxx.sha256` files are used to verify the integrity of the ISO.  
+The `xxx.gpg` files are the signature files used to validate checksum files (.md5, .sha256) for changes.  
+`xxx.sources` contains the download links to the source code files of the packages used.
 
 Download links and mirrors can be found at [siduction.org](https://forum.siduction.org/index.php?page=7).
 

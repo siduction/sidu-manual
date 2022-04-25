@@ -11,10 +11,10 @@ Einzige Ausnahme: Der Server wird temporär und ausschließlich für System- und
 
 Debian hat die Dateien des Apache entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
-+ In `/usr/sbin/` das ausführbare Programm `apache2`.  
-+ In `/usr/lib/apache2/modules/` die installierten Module für Apache.  
-+ In `/usr/share/apache2/` Dateien, die auch für andere Programme verfügbar sind.  
-+ In `/etc/apache2/` die Konfigurationsverzeichnisse und -dateien.  
++ In `/usr/sbin/` das ausführbare Programm `apache2`.
++ In `/usr/lib/apache2/modules/` die installierten Module für Apache.
++ In `/usr/share/apache2/` Dateien, die auch für andere Programme verfügbar sind.
++ In `/etc/apache2/` die Konfigurationsverzeichnisse und -dateien.
 + In `/var/www/html/` die vom Benutzer angelegte Webseite.
 + In `/run/apache2/` und `/run/lock/apache2/` zur Laufzeit notwendige Systemdateien.
 + In `/var/log/apache2/` verschiedene Log-Dateien.
@@ -126,7 +126,8 @@ Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück un
 
 2. Neue  `sites`-Datei
 
-   Mit dem Texteditor unserer Wahl erstellen wir die Datei  `/etc/apache2/sites-available/server1.conf` z. B.
+   Mit dem Texteditor unserer Wahl erstellen wir die Datei  
+   `/etc/apache2/sites-available/server1.conf` z. B.
 
    ~~~sh
    mcedit /etc/apache2/sites-available/server1.conf
@@ -136,12 +137,12 @@ Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück un
 
    ~~~apache
    <VirtualHost *:80>
-	   ServerName server1.org
-	   ServerAlias www.server1.org
-	   ServerAdmin webmaster@localhost
-	   DocumentRoot /var/www/html
-	   ErrorLog ${APACHE_LOG_DIR}/error_server1.log
-	   CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
+   ServerName server1.org
+   ServerAlias www.server1.org
+   ServerAdmin webmaster@localhost
+   DocumentRoot /var/www/html
+   ErrorLog ${APACHE_LOG_DIR}/error_server1.log
+   CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
    </VirtualHost>
    ~~~
 
@@ -163,7 +164,7 @@ Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück un
 
 Der Apache Webserver läuft mit \<user\> und \<group\> **www-data.www-data** und *"DocumentRoot"* gehört unmittelbar nach der Installation **root.root**.  
 Um Benutzern Schreibrechte für die in *"DocumentRoot"* enthaltenen Dateien zu gegeben, sollte dafür eine neue Gruppe angelegt werden. Es ist nicht sinnvoll die bestehende Gruppe *"www-data"* zu nutzten, da mit den Rechten dieser Gruppe Apache läuft.  
-Wir nennen die neue Gruppe  `developer`.
+Wir nennen die neue Gruppe  `work`.
 
 **Mit CMS**
 
@@ -172,19 +173,19 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 1. Gruppe anlegen und dem Benutzer zuweisen.
 
    ~~~sh
-   groupadd developer
-   adduser <user> developer
-   chgrp developer /var/www/html
+   groupadd work
+   adduser <user> work
+   chgrp work /var/www/html
    ~~~
 
    Um die neuen Rechte zu aktivieren, muss man sich einmal ab- und neu anmelden oder als Benutzer den Befehl newgrp verwenden.
 
    ~~~sh
-   $ newgrp developer
+   $ newgrp work
    ~~~
 
 2. SGID-Bit für *"DocumentRoot"* setzen,  
-   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe `developer` erben.
+   damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe `work` erben.
 
    ~~~sh
    chmod g+s /var/www/html
@@ -197,10 +198,12 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    ~~~sh
    # ls -la /var/www/html
    insgesamt 24
-   drwxr-sr-x 2 root developer  4096  9. Jan 19:32 .           (DocumentRoot mit SGID-Bit)
-   drwxr-xr-x 3 root root       4096  9. Jan 19:04 ..          (Das übergeordnete Verzeichnis /var/www)
-   -rw-r--r-- 1 root developer 10701  9. Jan 19:04 index.html
-   -rw-r--r-- 1 root developer    20  9. Jan 19:32 info.php
+   drwxr-sr-x 2 root work  4096 9.Jan 19:32 .
+                (DocumentRoot mit SGID-Bit)
+   drwxr-xr-x 3 root root  4096 9.Jan 19:04 ..
+                (Das übergeordnete Verzeichnis /var/www)
+   -rw-r--r-- 1 root work 10701 9.Jan 19:04 index.html
+   -rw-r--r-- 1 root work    20 9.Jan 19:32 info.php
    ~~~
 
    Wir ändern für *"DocumentRoot"* den Eigentümer zu *"www-data"*, geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
@@ -216,13 +219,13 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    ~~~sh
    # ls -la /var/www/html
    insgesamt 24
-   dr-xrws--x 2 www-data developer  4096  9. Jan 19:32 .
-   drwxr-xr-x 3 root     root       4096  9. Jan 19:04 ..
-   -rw-rw---- 1 www-data developer 10701  9. Jan 19:04 index.html
-   -rw-rw---- 1 www-data developer    20  9. Jan 19:32 info.php
+   dr-xrws--x 2 www-data work  4096 9.Jan 19:32 .
+   drwxr-xr-x 3 root     root  4096 9.Jan 19:04 ..
+   -rw-rw---- 1 www-data work 10701 9.Jan 19:04 index.html
+   -rw-rw---- 1 www-data work    20 9.Jan 19:32 info.php
    ~~~
 
-   Jetzt haben in *"DocumentRoot"* nur Mitglieder der Gruppe `developer` Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
+   Jetzt haben in *"DocumentRoot"* nur Mitglieder der Gruppe `work` Schreibrecht, der Apache Webserver kann die Dateien lesen und schreiben, allen anderen wird der Zugriff verweigert.
 
 4. Nachteile dieser Einstellungen
 
@@ -294,7 +297,8 @@ Die folgende Direktive unterbindet die Anzeige der Dateien  `.htaccess` und  `.h
   $ echo "<?php" > /var/www/html/upload/index.php
   ~~~
 
-+ In der Host-Konfiguration `/etc/apache2/sites-available/server1.conf`
++ In der Host-Konfiguration  
+  `/etc/apache2/sites-available/server1.conf`
 
   können wir mit dem `<Directory>`-Block alle IP-Adressen sperren, außer die darin gelisteten.
 
@@ -369,7 +373,8 @@ Der ls-Befehl zur Kontrolle:
 
 ### Integration in Apache2
 
-Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei `/etc/apache2/sites-available/server1.conf` zu bearbeiten.
+Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei  
+`/etc/apache2/sites-available/server1.conf` zu bearbeiten.
 
 + Eine neue VirtualHost-Directive wird zu Beginn eingefügt. Diese leitet eingehende Client-Anfragen von Port 80 mittels *"Redirect"* auf Port 443 (ssl) weiter.
 
@@ -383,38 +388,38 @@ Die erweiterte `server1.conf` weist dann folgenden Inhalt auf:
 
 ~~~apacheconf
 <VirtualHost *:80>
-    ServerName server1.org
-    ServerAlias www.server1.org
-    Redirect / https://server1.org/
+ ServerName server1.org
+ ServerAlias www.server1.org
+ Redirect / https://server1.org/
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerName server1.org
-    ServerAlias www.server1.org
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/html
-    ErrorLog ${APACHE_LOG_DIR}/error_server1.log
-    CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
+ ServerName server1.org
+ ServerAlias www.server1.org
+ ServerAdmin webmaster@localhost
+ DocumentRoot /var/www/html
+ ErrorLog ${APACHE_LOG_DIR}/error_server1.log
+ CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
 
-    SSLEngine on
-    SSLProtocol all -SSLv2 -SSLv3
-    SSLCertificateFile	    /etc/apache2/ssl/certs/server1.org.crt
-    SSLCertificateKeyFile	/etc/apache2/ssl/private/server1.org.key
+ SSLEngine on
+ SSLProtocol all -SSLv2 -SSLv3
+ SSLCertificateFile    /etc/apache2/ssl/certs/server1.org.crt
+ SSLCertificateKeyFile /etc/apache2/ssl/private/server1.org.key
 
-    <Directory "/var/www/html">
-    	Order deny,allow
-    	Deny from all
-    	Allow from 192.168.3.10
-    	Allow from 192.168.3.1
-    </Directory>
+   <Directory "/var/www/html">
+   	Order deny,allow
+   	Deny from all
+   	Allow from 192.168.3.10
+   	Allow from 192.168.3.1
+   </Directory>
 
-    <FilesMatch "\.(cgi|shtml|phtml|php)$">
-    	SSLOptions +StdEnvVars
-    </FilesMatch>
+   <FilesMatch "\.(cgi|shtml|phtml|php)$">
+   	SSLOptions +StdEnvVars
+   </FilesMatch>
 
-    <Directory /usr/lib/cgi-bin>
-    	SSLOptions +StdEnvVars
-    </Directory>
+   <Directory /usr/lib/cgi-bin>
+   	SSLOptions +StdEnvVars
+   </Directory>
 </VirtualHost>
 ~~~
 

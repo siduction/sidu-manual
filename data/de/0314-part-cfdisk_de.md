@@ -33,14 +33,14 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x6513a8ff
 
-Device     Boot     Start       End   Sectors  Size Id Type
-/dev/sda1            2048  41945087  41943040   20G 83 Linux
-/dev/sda2        41945088  83888127  41943040   20G 83 Linux
-/dev/sda3        83888128  88291327   4403200  2,1G 82 Linux swap / Solaris
-/dev/sda4        88291328 312581807 224290480  107G  5 Extended
-/dev/sda5        88293376 249774079 161480704   77G 83 Linux
-/dev/sda6       249776128 281233407  31457280   15G 83 Linux
-/dev/sda7       281235456 312581807  31346352   15G 83 Linux
+Device   Boot   Start       End   Sectors Size Id Type
+/dev/sda1        2048  41945087  41943040  20G 83 Linux
+/dev/sda2    41945088  83888127  41943040  20G 83 Linux
+/dev/sda3    83888128  88291327   4403200 2,1G 82 Linux swap
+/dev/sda4    88291328 312581807 224290480 107G  5 Extended
+/dev/sda5    88293376 249774079 161480704  77G 83 Linux
+/dev/sda6   249776128 281233407  31457280  15G 83 Linux
+/dev/sda7   281235456 312581807  31346352  15G 83 Linux
 
 
 Disk /dev/sdb: 119,25 GiB, 128035676160 bytes, 250069680 sectors
@@ -51,13 +51,14 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x000403b7
 
-Device     Boot     Start       End   Sectors  Size Id Type
-/dev/sdb1            2048  17831935  17829888  8,5G 82 Linux swap / Solaris
-/dev/sdb2        17831936 122687487 104855552   50G 83 Linux
-/dev/sdb3       122687488 250068991 127381504 60,8G 83 Linux
+Device   Boot  Start       End   Sectors  Size Id Type
+/dev/sdb1       2048  17831935  17829888  8,5G 82 Linux swap
+/dev/sdb2   17831936 122687487 104855552   50G 83 Linux
+/dev/sdb3  122687488 250068991 127381504 60,8G 83 Linux
 ~~~
 
-Mit dem Befehl **`fdisk -l > /home/<MEIN USER NAME>/Dokumente/fdisk-l_Ausgabe`** erhalten wir eine Text-Datei mit dem gleichen Inhalt.
+Mit dem Befehl  
+**`fdisk -l > /home/<MEIN USER NAME>/Dokumente/fdisk-l_Ausgabe`** erhalten wir eine Text-Datei mit dem gleichen Inhalt.
 
 **Partitionen**
 

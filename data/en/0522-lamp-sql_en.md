@@ -6,12 +6,12 @@
 
 Debian has fully integrated the files of MariaDB into the file system according to their function:
 
-+ the executable program *mariadb* and the link *mysql* into `/usr/bin/`  
-    + (The latter points to `/usr/bin/mariadb`.)  
-+ the installed plugin for MariaDB into `/usr/lib/mysql/plugin/`  
-+ shared program parts and localizations into `/usr/share/mysql/`  
-+ the configuration directories and files into `/etc/mysql/`  
-+ the databases and log files into `/var/lib/mysql/`  
++ the executable program *mariadb* and the link *mysql* into `/usr/bin/`
+    + (The latter points to `/usr/bin/mariadb`.)
++ the installed plugin for MariaDB into `/usr/lib/mysql/plugin/`
++ shared program parts and localizations into `/usr/share/mysql/`
++ the configuration directories and files into `/etc/mysql/`
++ the databases and log files into `/var/lib/mysql/`
 + system files necessary at runtime into `/run/mysqld/`
 
 The files inside the directories mentioned before should not be edited manually. The only exception is the configuration of MariaDB under `/etc/mysql/`, if you know exactly how to proceed. Otherwise use the [MariaDB-CLI](0522-lamp-sql_en.md#mariadb-cli) or a frontend like [phpMyAdmin](0522-lamp-sql_en.md#phpmyadmin).
@@ -26,66 +26,73 @@ Here we make quite a few settings to secure the database. The necessary entries 
 ~~~
 # mysql_secure_installation  
 
-In order to log into MariaDB to secure it, we'll need the current
-password for the root user. If you've just installed MariaDB, and
-you haven't set the root password yet, the password will be blank,
-so you should just press enter here.
+In order to log into MariaDB to secure it, we'll need the
+current password for the root user. If you've just
+installed MariaDB, and you haven't set the root password
+yet, the password will be blank, so you should just press
+enter here.
 
-Enter current password for root (enter for none): <--[Enter].  
+Enter current password for root:        «--[Enter]  
 OK, successfully used password, moving on...
 
-Setting the root password or using the unix_socket ensures that nobody can  
-log into the MariaDB root user without the proper authorization.
+Setting the root password or using the unix_socket ensures  
+that nobody can log into the MariaDB root user without  
+the proper authorisation.
 
-You already have your root account protected, so you can safely answer 'n'.
+You already have your root account protected,  
+so you can safely answer 'n'.
 
-Switch to unix_socket authentication [Y/n]:  <--[n]  
+Switch to unix_socket authentication [Y/n]:   «--[n]  
  ... skipping.
 
-You already have your root account protected, so you can safely answer 'n'.
+You already have your root account protected,  
+so you can safely answer 'n'.
 
-Change the root password? [Y/n]:             <--[y].  
-New password:                                <--[my_mariadb_root_password]  
-Re-enter new password:                       <--[my_mariadb_root_password]  
+Change the root password? [Y/n]:   «--[y]  
+New password:             «--[mein_mariadb_root_passwort]  
+Re-enter new password:    «--[mein_mariadb_root_passwort]  
 Password updated successfully!  
-Reloading privilege tables.  
+Reloading privilege tables..  
 ... Success!
 
-By default, a MariaDB installation has an anonymous user, allowing anyone
-to log into MariaDB without having to have a user account created for
-them. This is intended only for testing, and to make the installation
-go a bit smoother. You should remove them before moving into a
+By default, a MariaDB installation has an anonymous user,  
+allowing anyone to log into MariaDB without having to  
+have a user account created for them. This is intended  
+only for testing, and to make the installation go a bit  
+smoother. You should remove them before moving into a
 production environment.
 
-Remove anonymous users? [Y/n]:               <--[y]  
+Remove anonymous users? [Y/n]:   «--[y]  
 ... Success!
 
-Normally, root should only be allowed to connect from 'localhost'. This
-ensures that someone cannot guess at the root password from the network.
+Normally, root should only be allowed to connect from  
+'localhost'. This ensures that someone cannot guess at  
+the root password from the network.
 
-Disallow root login remotely? [Y/n]          <--[y]  
+Disallow root login remotely? [Y/n]   «--[y]  
 ... Success!
 
-By default, MariaDB comes with a database named 'test' that anyone can
-access. This is also intended only for testing, and should be removed
-before moving into a production environment.
+By default, MariaDB comes with a database named 'test'  
+that anyone can access. This is also intended only for  
+testing, and should be removed before moving into a  
+production environment.
 
-Remove test database and access to it? [Y/n] <--[y]  
+Remove test database and access to it? [Y/n]   «--[y]  
 - Dropping test database...  
 ... Success!  
 - Removing privileges on test database...  
 ... Success!
 
-Reloading the privilege tables will ensure that all changes made so far
-will take effect immediately.
+Reloading the privilege tables will ensure that all  
+changes made so far will take effect immediately.
 
-Reload privilege tables now? [Y/n]           <--[y]
+Reload privilege tables now? [Y/n]   «--[y]
 ... Success!
 
 Cleaning up...
 
-All done! If you've completed all of the above steps, your MariaDB  
-installation should now be secure.
+All done! If you've completed all of the above steps,  
+your MariaDB installation should now be secure.
 
 Thanks for using MariaDB!
 ~~~
@@ -164,26 +171,26 @@ First the users and then the existing databases:
 ~~~
 MariaDB [(none)]> SELECT User,Host FROM mysql.user;
 +-------------+-----------+
-| User | Host |
+| User        | Host      |
 +-------------+-----------+
-| chef | localhost |
+| chef        | localhost |
 | mariadb.sys | localhost |
-| mysql | localhost |
-| phpmyadmin | localhost |
-| root | localhost |
-| tomtom | localhost |
+| mysql       | localhost |
+| phpmyadmin  | localhost |
+| root        | localhost |
+| tomtom      | localhost |
 +-------------+-----------+
 6 rows in set (0.002 sec)
 
 MariaDB [(none)]> SHOW DATABASES;
 +--------------------+
-| database |
+| database           |
 +--------------------+
 | information_schema |
-| mysql |
+| mysql              |
 | performance_schema |
-| phpmyadmin |
-| sidu |
+| phpmyadmin         |
+| sidu               |
 +--------------------+
 5 rows in set (0.001 sec)
 ~~~
@@ -196,10 +203,10 @@ ERROR 1142 (42000): SELECT command denied to user 'tomtom'@'localhost' for table
 
 MariaDB [(none)]> SHOW DATABASES;
 +--------------------+
-| Database
+| Database           |
 +--------------------+
 | information_schema |
-| sidu |
+| sidu               |
 +--------------------+
 2 rows in set (0.001 sec)
 ~~~
@@ -210,7 +217,7 @@ It is easy to see that the user **tomtom** does not get access to system relevan
 
 As seen before, MariaDB can be administered completely via the command line. If you know the syntax, which requires profound knowledge, you will quickly get the desired result this way.
 
-We use the progrann `phpMyAdmin`, which is more suitable for less experienced users, and enter:  
+We use the programm `phpMyAdmin`, which is more suitable for less experienced users, and enter:  
 http://localhost/phpmyadmin/  
 into the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten), the call is:  
 https://server1.org/phpmyadmin/
@@ -283,7 +290,8 @@ In addition, you can switch on the logging of sql actions in the MariDB CLI like
 MariaDB [(none)]> SET GLOBAL general_log=1;
 ~~~
 
-This creates a log file with the pattern `<host>.log` in the directory `/var/lib/mysql/`.  
+This creates a log file with the pattern `<host>.log` in the directory  
+`/var/lib/mysql/`.  
 **Caution**: This is an absolute performance killer and only meant to monitor actions in the short term.
 
 ### Sources MariaDB

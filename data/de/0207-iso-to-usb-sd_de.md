@@ -36,13 +36,13 @@ Wir empfehlen die Verwendung der Kommandozeile. Die Installation zusätzlicher P
 Bevor wir die siduction ISO-Abbilddatei auf das Speichermedium schreiben, müssen wir dessen Laufwerksbezeichnung ermitteln. Am einfachsten benutzen wir journald. Der Befehl **`journalctl -f`** in einem Terminal ausgeführt, zeigt fortlaufend die Meldungen des systemd. Nun stecken wir das Speichermedium an und beobachten die Meldungen im Terminal. Zeilen der folgenden Art enthalten die gesuchten Informationen.
 
 ~~~
-kernel: usb 2-3.3: new high-speed USB device number 7 using xhci_hcd
+kernel: usb 2-3.3: new high-speed USB device number 7 ...
 [...]
-kernel: scsi 1:0:0:0: Direct-Access     Intenso  Alu Line         8.07 PQ: 0 ANSI: 4
+kernel: scsi 1:0:0:0: Direct-Access   Intenso  Alu Line ...
 kernel: sd 1:0:0:0: Attached scsi generic sg1 type 0
 kernel: sd 1:0:0:0: [sdb] 7866368 512-byte logical blocks: (4.03 GB/3.75 GiB)
 [...]
-kernel: sd 1:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+kernel: sd 1:0:0:0: [sdb] Write cache: disabled, read ...
 ~~~
 
 Es handelt sich um einen Intenso USB-Stick mit 4 GB Speicherkapazität und einer Sektorengröße von 512 Bytes. Die Laufwerksbezeichnung lautet `sdb`. Daraus folgt, dass `/dev/sdb` der zu verwendende Pfad für das Zielmedium ist.  

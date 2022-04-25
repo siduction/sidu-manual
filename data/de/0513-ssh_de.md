@@ -76,7 +76,7 @@ Um SSH sicherer zu machen, verwendet man einen Texteditor, und bearbeitet die Da
   natürlich muss hier 'yes' gesetzt werden. Es sei denn, man verwendet einen KeyLogin.
 
   ~~~
-  PasswordAuthentication yes [wenn man keine keys verwendet]
+  PasswordAuthentication yes
   ~~~
 
 Schlussendlich:
@@ -215,7 +215,7 @@ apt update && apt install sshfs
 Das Einbinden eines entfernten Dateisystems ist sehr einfach:
 
 ~~~
-sshfs -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt
+sshfs  -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt
 ~~~
 
 Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden. Bitte beachten: der Doppelpunkt "**`:`**" ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!
@@ -228,17 +228,19 @@ Die Einbindung des entfernten Hosts wird mit folgendem Befehl gelöst:
 fusermount -u lokaler_mountpunkt
 ~~~
 
-Bei regelmäßiger Nutzung von sshfs empfiehlt sich ein Eintrag in /etc/fstab:
+Bei regelmäßiger Nutzung von sshfs empfiehlt sich ein Eintrag in der Datei `/etc/fstab` (alles in einer Zeile):
 
 ~~~
-sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
+sshfs#remote_hostname://remote_directory /local_mount_
+ point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,
+ noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 
 ~~~
 
 Als nächstes muss das Kommentarzeichen vor *"user_allow_other"*  in der Datei `/etc/fuse.conf`  entfernt werden:
 
 ~~~
-# Allow non-root users to specify the 'allow_other' or 'allow_root'
-# mount options.
+# Allow non-root users to specify the 'allow_other'
+# or 'allow_root' mount options.
 #
 user_allow_other
 ~~~

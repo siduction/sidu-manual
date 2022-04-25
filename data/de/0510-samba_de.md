@@ -47,29 +47,30 @@ Eine Verbindung wird mit diesem Befehl beendet:
 umount /mnt/server_share
 ~~~
 
-Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab` nach folgendem Muster ergänzt werden:
+Um einen Samba-Share automatisch einzubinden, kann die Datei `/etc/fstab` nach folgendem Muster ergänzt werden (alles in einer Zeile):
 
 ~~~
-//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-user=username,password=**********,uid=$UID,gid=$GID   0 0
+//server/share /mnt/server_share cifs noauto,x-systemd.
+automount,x-systemd.idle-timeout=300,user=username,
+password=**********,uid=$UID,gid=$GID   0 0
 ~~~
-Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben.
-Als bessere Variante erzeugt man `~.smbcredentials` mit folgendem Inhalt an:
+
+Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben. Als bessere Variante erzeugt man `~.smbcredentials` mit folgendem Inhalt an:
 
 ~~~
 username=<benutzer>
 password=<passwort>
 ~~~
 
-Der resultierende Eintrag für /etc/fstab ist dann
+Der resultierende Eintrag für /etc/fstab ist dann (alles in einer Zeile):
 
 ~~~
-//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-credentials=</pfad/zu/.smbcredentials>,uid=$UID,gid=$GID 0 0
+//server/share /mnt/server_share cifs noauto,x-systemd.
+automount,x-systemd.idle-timeout=300,credentials=</pfad/
+zu/.smbcredentials>,uid=$UID,gid=$GID 0 0
 ~~~
 
-Die Variablen *"UID"* und *"GID"* entsprechen denen des users, dem das Share gegeben werden soll.
-Man kann aber auch `uid=<username>` und `gid=<groupname>` schreiben.
+Die Variablen *"UID"* und *"GID"* entsprechen denen des users, dem das Share gegeben werden soll. Man kann aber auch `uid=<username>` und `gid=<groupname>` schreiben.
 
 ### siduction als Samba-Server
 

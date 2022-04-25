@@ -43,7 +43,7 @@ Ist die vorhandene Hardware zum Brennen nicht genau bekannt, analysieren die Pro
 
 ~~~
 $ wodim -checkdrive
-Device was not specified. Trying to find an appropriate drive...
+Device was not specified. Trying to find an [...] drive...
 Detected CD-R drive: /dev/sr0
 [...]
 Vendor_info    : 'HL-DT-ST'
@@ -152,7 +152,7 @@ $ growisofs -Z /dev/dvd -R -J datei1 datei2 datei3 ...
 Wenn auf der DVD noch Platz ist, kann man mit Hilfe der Option `-M` Dateien hinzufügen.
 
 ~~~
-$ growisofs -M /dev/dvd -R -J noch_eine_datei und_noch_eine_datei
+$ growisofs -M /dev/dvd -R -J datei8 datei9
 ~~~
 
 Mit diesem Befehl wird der verbliebene freie Platz auf der DVD mit Nullen gefüllt und das Medium geschlossen.

@@ -19,12 +19,12 @@ Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bo
 
 systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am häufigsten zu tun haben sind:
 
-+ systemd.service  
-+ systemd.target  
-+ systemd.device  
-+ systemd.timer  
-+ systemd.mount  
-+ systemd.path  
++ systemd.service
++ systemd.target
++ systemd.device
++ systemd.timer
++ systemd.mount
++ systemd.path
 
 Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager). Die vollständige Dokumentation ist in den man-Pages `man systemd.unit`, `man systemd.special` und jeweils `man systemd.<Unit-Typ>` zu finden.
 
@@ -63,8 +63,10 @@ $ systemctl kill -s SIGSTOP --kill-who=control <UNIT>.service
 ~~~
 
 Mit *"kill"* stehen im Gegensatz zu *"stop"* die Optionen `-s, --signal=` und `--kill-who=` bereit.
-+ *"-s"* sendet eines der Signale `SIGTERM`, `SIGINT`oder `SIGSTOP`. Vorgabe ist *"SIGTERM"*.
-+ *"--kill-who="* erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind `main`, `control` oder `all`. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist *"all"*.  
+
++ *"-s"* sendet eines der Signale `SIGTERM`, `SIGINT` oder `SIGSTOP`. Vorgabe ist *"SIGTERM"*.
++ *"--kill-who="* erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind `main`, `control` oder `all`. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist *"all"*.
+
 Dieses Verhalten ähnelt dem altbekannten und weiterhin verwendbaren Befehl pkill, der weiter unten im Abschnitt [Beenden eines Prozesses](0702-sys-admin-gen_de.md#beenden-eines-prozesses) erläutert wird.
 
 
@@ -228,18 +230,23 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
     Um zu prüfen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:
 
    ~~~
-    $ xrandr  
-    Screen 0: minimum 320 x 200, current 1680 x 1050, maximum 16384 x 16384  
-    HDMI-1 disconnected (normal left inverted right x axis y axis)  
-    HDMI-2 connected 1680x1050+0+0 (normal left inverted right x axis y axis) 474mm x 296mm  
-      1680x1050     59.95*+  
-      1280x1024     75.02    60.02  
-      1440x900      59.90  
-      1024x768      75.03    60.00  
-      800x600       75.00    60.32  
-      640x480       75.00    59.94  
-      720x400       70.08  
-    DP-1 disconnected (normal left inverted right x axis y axis)  
+    $ xrandr
+    Screen 0: minimum 320 x 200, current 1680 x 1050,
+    maximum 16384 x 16384
+    HDMI-1 disconnected
+      (normal left inverted right x axis y axis)
+    HDMI-2 connected 1680x1050+0+0 (normal left
+      inverted right x axis y axis)  474mm x 296mm
+      
+      1680x1050     59.95*+
+      1280x1024     75.02    60.02
+      1440x900      59.90
+      1024x768      75.03    60.00
+      800x600       75.00    60.32
+      640x480       75.00    59.94
+      720x400       70.08
+    DP-1 disconnected
+      (normal left inverted right x axis y axis)
    ~~~
 
     Der mit **\*** markierte Wert kennzeichnet die verwendete Einstellung,  
@@ -263,17 +270,13 @@ Die systemweite Grundkonfiguration erfolgt im Terminal als **root** mittels:
 Bei den aufgerufenen Dialogen haben sich diese Einstellungen bewährt:
 
 1. Bitte wählen Sie zur Bildschirmdarstellung die bevorzugte Methode zum Schriftabgleich (font tuning) aus.  
-   "autohinter"  
-
+   **`autohinter`**
 2. Bitte wählen Sie, inwieweit Font-Hinting standardmäßig angewendet wird.  
-   "mittel"  
-
+   **`mittel`**
 3. Die Einbeziehung der Subpixel-Ebene verbessert die Textdarstellung auf Flachbildschirmen (LCD)  
-   "automatisch"  
-
-4. Standardmäßig nutzen Anwendungen, die fontconfig unterstützen, nur Outline-Schriften.  
-    Standardmäßig Bitmap-Schriften verwenden?  
-   "nein"
+   **`automatisch`**
+4. Standardmäßig nutzen Anwendungen, die fontconfig unterstützen, nur Outline-Schriften. Standardmäßig Bitmap-Schriften verwenden?  
+   **`nein`**
 
 Anschließend ist 
 
@@ -287,7 +290,10 @@ Manchmal bedeutet der Neuaufbau des Font-Caches eine Lösung (der erste Befehl g
 
 ~~~
 # mv /etc/fonts/ /etc/fonts_$(date +%F)/
-# apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
+
+# apt-get install --reinstall --yes -o DPkg::Options::=
+--force-confmiss -o DPkg::Options::=--force-confnew
+ fontconfig fontconfig-config
 ~~~
 
 ### Userkonfiguration
@@ -299,8 +305,8 @@ Die Einstellungen kann man bequem in der graphischen Oberfläche vornehmen. Sie 
 Die Liste zeigt, wo im Menü die Einstellungen zu finden sind.
 
 + KDE Plasma  
-  *Systemeinstellungen* > *Schriftarten* > *Schriftarten*  
-  *Systemeinstellungen* > *Anzeige-Einrichtung* > *Anzeige-Einrichtung* > *Globale Skalierung*
+  + *Systemeinstellungen* > *Schriftarten* > *Schriftarten*
+  + *Systemeinstellungen* > *Anzeige-Einrichtung* > *Anzeige-Einrichtung* > *Globale Skalierung*
 
 + Gnome (Tweak Tool)  
   *Anwendungen* > *Optimierungen* > *Schriften*
@@ -324,13 +330,13 @@ Die Einstellmöglichkeit eines anderen DPI-Wertes bzw. einer anderen Größe nur
 4k Auflösung: 3840 x 2160 (16:9)
 
 | Diagonale | X-Achse |	Y-Achse | DPI |
-| :----: | :----: | :----: | :----: |
-| 24 Zoll | 531 mm | 299 mm	| 184 |
-| 27 Zoll | 598 mm | 336 mm	| 163 |
-| 28 Zoll | 620 mm | 349 mm	| 157 |
-| 32 Zoll | 708 mm | 398 mm	| 138 |
-| 37 Zoll | 819 mm | 461 mm	| 119 |
-| 42 Zoll | 930 mm | 523 mm	| 105 |
+| :-------: | :------: | :------: | :---: |
+| 24 Zoll | 531 mm | 299 mm | 184 |
+| 27 Zoll | 598 mm | 336 mm | 163 |
+| 28 Zoll | 620 mm | 349 mm | 157 |
+| 32 Zoll | 708 mm | 398 mm | 138 |
+| 37 Zoll | 819 mm | 461 mm | 119 |
+| 42 Zoll | 930 mm | 523 mm | 105 |
 
 Demnach ist bei 4k-Bildschirmen mit 24 Zoll Diagonale ein Skalierungsfaktor von 2,0 und mit 37 Zoll Diagonale ein Skalierungsfaktor von 1,2 erforderlich um etwa gleiche Darstellungen entsprechend SXGA oder WSXGA Bildschirmen mit 90 DPI zu erhalten.
 

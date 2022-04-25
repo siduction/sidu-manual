@@ -35,13 +35,15 @@ All of the following commands and actions require **root** privileges.
 
    ~~~
    cfdisk /dev/sda
-   n -> creates a new partition on the drive
-   p -> this partition becomes a primary partition
-   1 -> the partition gets the number 1 as identification
-   ### size allocation ### sets the first and last cylinder to default values. Press ENTER to span the whole drive
-   t -> selects the partition type to create
+   n  -> creates a new partition on the drive
+   p  -> this partition becomes a primary partition
+   1  -> the partition gets the number 1
+         as identification "size allocation" sets the
+         first and last cylinder to default values.
+         Press ENTER to span the whole drive
+   t  -> selects the partition type to create
    8e -> the hex code for a Linux LVM
-   W -> writes changes to the drive
+   W  -> writes changes to the drive
    ~~~
 
    The command **`W`** writes the partitioning table. If a mistake was made up to this point, the existing partitioning layout can be restored. For this purpose, enter the command **`q`** for `cfdisk` to exit without writing, and everything remains as it has been before.
@@ -191,10 +193,10 @@ The `resize2sf` command resizes the file system exactly to the logical volume's 
 
 ### More info
 
-+ [Logical Volume Manager - Wikipedia](https://wikipedia.org/wiki/Logical_Volume_Manager)  
-+ [Working with logical volumes #1](https://thelinuxexperiment.com/working-with-logical-volumes-part-1/)  
-+ [Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  
-+ [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  
-+ [Resizing Linux partitions - part 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)
+[Logical Volume Manager - Wikipedia](https://wikipedia.org/wiki/Logical_Volume_Manager)  
+[Working with logical volumes #1](https://thelinuxexperiment.com/working-with-logical-volumes-part-1/)  
+[Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  
+[Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  
+[Resizing Linux partitions - part 2 (IBM)](https://developer.ibm.com/tutorials/l-resizing-partitions-2/)
 
 <div id="rev">Last edited: 2022/04/01</div>

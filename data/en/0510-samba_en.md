@@ -47,30 +47,30 @@ A connection is terminated with this command:
 umount /mnt/server_share
 ~~~
 
-To mount a Samba share automatically, the `/etc/fstab` file can be amended according to this pattern:
+To mount a Samba share automatically, the `/etc/fstab` file can be amended according to this pattern (all in one line):
 
 ~~~
-//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-user=username,password=**********,uid=$UID,gid=$GID 0 0
+//server/share /mnt/server_share cifs noauto,x-systemd.
+automount,x-systemd.idle-timeout=300,user=username,
+password=**********,uid=$UID,gid=$GID 0 0
 ~~~
 
-However, it is not recommended to write the password in plain text to fstab.
-A better alternative is to create `.smbcredentials` with the following content:
+However, it is not recommended to write the password in plain text to fstab. A better alternative is to create `.smbcredentials` with the following content:
 
 ~~~
 username=<user>
 password=<password>
 ~~~
 
-The resulting entry for `/etc/fstab` is:
+The resulting entry for `/etc/fstab` is (all in one line):
 
 ~~~
-//server/share /mnt/server_share cifs noauto,x-systemd.automount,x-systemd.idle-timeout=300,\
-credentials=</path/to/.smbcredentials>,uid=$UID,gid=$GID 0 0
+//server/share /mnt/server_share cifs noauto,x-systemd.
+automount,x-systemd.idle-timeout=300,credentials=</path/
+to/.smbcredentials>,uid=$UID,gid=$GID 0 0
 ~~~
 
-The variables *"UID "* and *"GID "* correspond to those of the user to whom the share should be given.
-But you can also write *"uid=username gid=users"*.
+The variables *"UID "* and *"GID "* correspond to those of the user to whom the share should be given. But you can also write `uid=<username>` and `gid=<groupname>`.
 
 ### siduction as samba server
 

@@ -108,10 +108,11 @@ Then we disable the unit *"bluetooth.service"*.
 
 ~~~
 # systemctl disable bluetooth.service
-  Synchronizing state of bluetooth.service with SysV service script with /lib/systemd/systemd-sysv-install.
-  Executing: /lib/systemd/systemd-sysv-install disable bluetooth
-  Removed /etc/systemd/system/dbus-org.bluez.service.
-  Removed /etc/system/system/bluetooth.target.wants/bluetooth.service.
+Synchronizing state of bluetooth.service with SysV service
+ script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install disable bluetooth
+Removed /etc/systemd/system/dbus-org.bluez.service.
+Removed /etc/system/system/bluetooth.target.wants/bluetooth.service.
 ~~~
 
 In the output you can clearly see that the links (not the unit file itself) have been removed. This means that the *"bluetooth.service"* will no longer start automatically when booting the PC/laptop. We check the status after a reboot.

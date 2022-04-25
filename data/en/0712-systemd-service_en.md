@@ -94,18 +94,20 @@ WatchdogSec=      BusName=
     The allowed values are: no, always, on-success, on-failure, on-abnormal, on-abort, or on-watchdog.  
     The following table shows the effect of the Restart= setting on the exit reasons.
 
-    ~~~
+    ------------------- -------- --------- --------- ---------- ------- ----------
                                   on        on        on         on      on
     ► Restart= ►         always   success   failure   abnormal   abort   watchdog
-    ▼ exit reason ▼
-    clean exit             X        X
-    unclean exit           X                  X
-    unclean signal         X                  X         X          X
-    timeout                X                  X         X
-    watchdog               X                  X         X                  X
-    ~~~
+    ▼ Exit-Grund ▼
+    Sauberer Exit          X        X
+    Unsauberer Exit        X                  X
+    Unsauberes Signal      X                  X         X          X
+    Zeitüberschreitung     X                  X         X
+    Watchdog               X                  X         X                  X
+    ------------------- -------- --------- --------- ---------- ------- ----------
 
-    The options `RestartPreventExitStatus=` and `RestartForceExitStatus=` change this behavior.
+    The options  
+    `RestartPreventExitStatus=` and `RestartForceExitStatus=`  
+    change this behavior.
 
 **Examples**  
 Some self created service units can be found on our manual pages

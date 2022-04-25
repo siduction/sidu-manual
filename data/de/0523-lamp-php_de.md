@@ -2,17 +2,18 @@
 
 ## PHP einrichten
 
-PHP ist in siduction nach der Installation mit der standardmäßigen Konfiguration sofort einsatzfähig.  
+PHP ist in siduction nach der Installation mit der standardmäßigen Konfiguration sofort einsatzfähig.
 
 ### PHP im Dateisystem
 
 Debian hat die Dateien von PHP entsprechend ihrer Funktion vollständig in das Dateisystem integriert.
 
-+ In `/usr/bin/` das ausführbare Programm `php7.x`  
-    + und der Link `php`, der über `/etc/alternatives/php` auf `/usr/bin/php7.x` verweist.  
-+ In `/usr/lib/php/` die installierten Module.  
-+ In `/usr/share/php/` und `/usr/share/php\<Modul\>` gemeinsam genutzte Programmteile und Module.  
-+ In `/etc/php/` die Konfigurationsverzeichnisse und -dateien.  
++ In `/usr/bin/` das ausführbare Programm `php7.x`
+    + und der Link `php`, der über `/etc/alternatives/php`  
+      auf `/usr/bin/php7.x` verweist.
++ In `/usr/lib/php/` die installierten Module.
++ In `/usr/share/php/` und `/usr/share/php\<Modul\>` gemeinsam genutzte Programmteile und Module.
++ In `/etc/php/` die Konfigurationsverzeichnisse und -dateien.
 + In `/var/lib/php/` der zur Laufzeit aktuelle Zustand der Module und Sessions.
 
 ### PHP-Unterstützung für Apache2
@@ -148,8 +149,8 @@ Anschließend starten wir den Apache neu:
 
 Der Zustand der PHP-Module ist während der Laufzeit veränderbar. Das ermöglicht auch die Steuerung von Modulen in Scripten um sie vor der Verwendung zu laden und nachher wieder zu entladen.
 
-+ `phpenmod` – aktiviert Module in PHP  
-+ `phpdismod` – deaktiviert Module in PHP  
++ `phpenmod` – aktiviert Module in PHP
++ `phpdismod` – deaktiviert Module in PHP
 + `phpquery` – Zeigt den Status der PHP Module
 
 Nicht benötigte Module (im Beispiel imagick) deaktiviert in der Konsole der Befehl
@@ -198,11 +199,11 @@ Alternativ lassen wir uns die Log-Funktionen anzeigen.
 ~~~
 # php --info | grep log
 [...]
-error_log 			=> no value
-log_errors 			=> On
-log_errors_max_len 	=> 1024
-mail.log 			=> no value
-opcache.error_log 	=> no value
+error_log           => no value
+log_errors          => On
+log_errors_max_len  => 1024
+mail.log            => no value
+opcache.error_log   => no value
 [...]
 ~~~
 

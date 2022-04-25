@@ -38,11 +38,8 @@ Neben dem Befehlszeilenprogramm `gdisk` unterstützen graphische Anwendungen wie
 **Grundlegende Lektüre:**
 
 + man gdisk
-
 + [GPT fdisk Tutorial by Roderick W. Smith (Englisch)](http://www.rodsbooks.com/gdisk/)
-
 + [Wikipedia UEFI-Unterstützung der Betriebssysteme](https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Betriebssysteme)
-
 + [Wikipedia GUID-Partitionstabelle (Deutsch)](https://de.wikipedia.org/wiki/GUID_Partition_Table)
 
 ### Partitionierung einer Festplatte
@@ -148,17 +145,17 @@ Der Befehl generiert die folgende Ausgabe:
 
 ~~~
 Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
-/dev/sdb1       2048    206847    204800  100M EFI System
-/dev/sdb2     206848    208895      2048    1M BIOS boot
-/dev/sdb3     208896  52637695  52428800   25G Linux root (x86-64)
-/dev/sdb4   52637696  61026303   8388608    4G Linux swap
-/dev/sdb5   61026304 260255743 199229440   95G Linux filesystem
-/dev/sdb6  260255744 312581808  52326064   25G Linux root (x86-64)
+/dev/sdb1      2048    206847    204800 100M EFI System
+/dev/sdb2    206848    208895      2048   1M BIOS boot
+/dev/sdb3    208896  52637695  52428800  25G Linux root
+/dev/sdb4  52637696  61026303   8388608   4G Linux swap
+/dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
+/dev/sdb6 260255744 312581808  52326064  25G Linux root
 ~~~
 
 Mit diesen Informationen formatieren wir unsere zuvor erstellten Partitionen.
 
-Bitte unbedingt die Manpages **`man mke2fs`**, **`man mkfs.fat`** und **`man mkswap`** lesen.
+Bitte die Manpages **`man mke2fs`**, **`man mkfs.fat`** und **`man mkswap`** lesen.
 
 Die EFI-Systempartition erhält ein **FAT32** Dateisystem.
 
@@ -191,8 +188,8 @@ dem System bekannt und kontrollieren, ob der Swap-Speicher verfügbar ist:
 
 ~~~
 swapon -s
-Filename			Type		Size	Used	Priority
-/dev/sdb4          	partition	4194304	0	    -2
+Filename   Type       Size     Used  Priority
+/dev/sdb4  partition  4194304  0     -2
 ~~~
 
 Falls Swap korrekt erkannt wurde:
@@ -210,13 +207,11 @@ Falls ein bootbarer Datenträger mit GPT erstellt werden soll, gibt es zwei Mög
 Diese Möglichkeiten sind:
 
 + Der Computer (das Mainboard) besitzt ein UEFI
-
 + UEFI soll zum Booten des GPT-Datenträgers verwendet werden.
 
 **oder** 
 
 + Der Computer (das Mainboard) hat **kein** UEFI sondern ein BIOS. (Alle Mainboard vor 2009 haben kein UEFI)
-
 + Das BIOS soll zum Booten des GPT-Datenträgers verwendet werden.
 
 #### Booten mit UEFI

@@ -38,11 +38,8 @@ Besides the command line program `gdisk`, graphical applications like `gparted` 
 **Essential reading matter:**
 
 + man gdisk
-
 + [GPT fdisk Tutorial by Roderick W. Smith](http://www.rodsbooks.com/gdisk/)
-
 + [Wikipedia UEFI operating system support](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Operating_systems)
-
 + [Wikipedia GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
 
 ### Partitioning a hard disk
@@ -148,12 +145,12 @@ The command generates the following output:
 
 ~~~
 Disk /dev/sdb: 149.5 GiB, 160041885696 bytes, 312581808 sectors
-/dev/sdb1 2048 206847 204800 100M EFI system
-/dev/sdb2 206848 208895 2048 1M BIOS boot
-/dev/sdb3 208896 52637695 52428800 25G Linux root (x86-64)
-/dev/sdb4 52637696 61026303 8388608 4G Linux swap
-/dev/sdb5 61026304 260255743 199229440 95G Linux filesystem
-/dev/sdb6 260255744 312581808 52326064 25G Linux root (x86-64)
+/dev/sdb1      2048    206847    204800 100M EFI System
+/dev/sdb2    206848    208895      2048   1M BIOS boot
+/dev/sdb3    208896  52637695  52428800  25G Linux root
+/dev/sdb4  52637696  61026303   8388608   4G Linux swap
+/dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
+/dev/sdb6 260255744 312581808  52326064  25G Linux root
 ~~~
 
 With this information, we format our previously created partitions.
@@ -191,8 +188,8 @@ Check if the swap space is available:
 
 ~~~
 swapon -s
-Filename Type Size Used Priority
-/dev/sdb4 partition 4194304 0 -2
+Filename   Type       Size     Used  Priority
+/dev/sdb4  partition  4194304  0     -2
 ~~~
 
 If swap was detected correctly:
@@ -210,13 +207,11 @@ If a bootable volume is to be created with GPT, there are two ways to create the
 These possibilities are:
 
 + The computer (the mainboard) has a UEFI.
-
 + UEFI shall be used to boot the GPT medium.
 
 **or** 
 
 + The computer (mainboard) has **no** UEFI but a BIOS. (All mainboards before 2009 do not have UEFI.)
-
 + The BIOS shall be used to boot the GPT medium.
 
 #### Booting with UEFI

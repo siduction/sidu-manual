@@ -2,7 +2,8 @@
 
 ## Partitionierung von Installationsmedien
 
-Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen `/root` (inkl. `/home` ) und `swap`, da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates `/home`, falls gewünscht.
+Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen  
+`/root` (inkl. `/home` ) und `swap`, da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates `/home`, falls gewünscht.
 
 Wir raten aber eher davon ab eine `/home`-Partition anzulegen.  
 Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
