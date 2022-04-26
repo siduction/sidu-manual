@@ -21,8 +21,24 @@
 #  must correspond to the names of the subfolder in /data.
 #  Example: ./10-generate-pdfmanual.sh en
 
-# General test and
-# country specific page options
+### default output_format
+output_format=pdf
+
+### General test
+if [ $# -gt 1 ]
+then
+    if [ $# -eq 2 ] && [ $2 = --tex-debug ]
+    then
+        echo "Creating LaTeX file instead of pdf."
+        output_format=tex
+    else
+        echo "More than two options or the second option is not '--tex-debug'"
+        exit 1
+        # The error message immediately gives a hint to the correct option.
+    fi
+fi
+
+### country specific page options
 if [ "$1" = "de" ]
 then
     paper=a4
@@ -50,14 +66,6 @@ else
 fi
 
 langcode=$1
-
-if [ "$2" = "--tex-debug" ]
-then
-    echo "Creating LaTeX file instead of pdf."
-    output_format=tex
-else
-    output_format=pdf
-fi
 
 #hmargin=2cm
 #vmargin=3.0cm
