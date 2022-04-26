@@ -20,12 +20,19 @@
 #
 
 # General test
-# 
+#
+if [ $# -ne 1 ]
+then
+    echo "Error: We need exactly one argument."
+    exit 1
+fi
+
+ 
 if [ "$1" = "de" ] || [ "$1" = "en" ]   # add new test if an additional language is available
 then
     langcode=$1
 else
-    echo "Language shortcode is missing or not supported."
+    echo "Language shortcode is not supported."
     exit 1
 fi
 

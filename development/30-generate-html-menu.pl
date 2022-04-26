@@ -46,9 +46,13 @@ my (@DATEIEN, @QUELLE, @LAGER, @MENU_FILE);
 if (scalar @ARGV != 1) {
     die "Error: We need exactly one argument\n";
 } else {
-    $langcode = "$ARGV[0]";
+    if ($ARGV[0] eq "de" || $ARGV[0] eq "en") {
+        $langcode = "$ARGV[0]";
+    } else {
+        die "Error: Langcode not supported\n";
+    }
 }
-
+print "$langcode\n";
 
 # Create HTML header
 
