@@ -148,7 +148,7 @@ root@pc1:/# blkid
 
 We can see that the last entry in the `fstab` (mounted to `/mnt/TEST_res`) is no longer contained in the `blkid` list. Instead, we have two new partitions. In this example, the PC would perform a reboot but would not be able to mount `/mnt/TEST_res` and the two new partitions automatically. The boot process would be delayed considerably.
 
-> If the UUID's for the partitions of **/** (root), **/home**, and **swap** do not match the entries in `/etc/fstab`, it is mandatory to adjust the entries. Otherwise, the system will not start after a reboot.
+> If the UUID's for the partitions of **/** (root), **/home**, and **swap** do not match the entries in **/etc/fstab**, it is mandatory to adjust the entries. Otherwise, the system will not start after a reboot.
 
 ### Changing NTFS partition sizes with GParted
 

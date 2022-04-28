@@ -34,7 +34,7 @@ mcedit /etc/default/grub2-fll-fromiso
 
 In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`** am Anfang der Zeile entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anführungszeichen mit den eigenen Parametern. 
 
-Beispiel: vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen:
+Vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen:
 
 ~~~sh
 # Defaults for grub2-fll-fromiso update-grub helper

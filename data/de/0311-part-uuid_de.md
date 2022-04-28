@@ -49,7 +49,7 @@ Die Bezeichnung eines Labels kann je nach Dateisystem mit folgenden Befehlen erz
   `swaplabel -L <label> /dev/sdXx`
   
 + **ext2/ext3/ext4**  
-  `e2label /dev/sdXx <label>` oder
+  `e2label /dev/sdXx <label>` oder  
   `tune2fs -L <label> /dev/sdXx`
   
 + **jfs**  

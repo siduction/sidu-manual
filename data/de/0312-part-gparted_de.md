@@ -149,7 +149,7 @@ root@pc1:/# blkid
 
 Wir können erkennen, dass die in der fstab als letzter Eintrag enthaltene, nach *"/mnt/TEST_res"* eingehängte Partition in der blkid-Liste nicht mehr enthalten ist. Dafür haben wir zwei neue Partitionen. Bei diesem Beispiel würde der PC einen Reboot zwar durchführen, jedoch *"/mnt/TEST_res"* und die zwei neuen Partitionen nicht automatisch einhängen können. Der Bootvorgang würde sich erheblich verzögern.
 
-> Wenn die UUID für die Partitionen von `/` (root), `/home` und `swap` nicht mit dem jeweiligen Eintrag in der `/etc/fstab` übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
+> Wenn die UUID für die Partitionen von **/** (root), **/home** und **swap** nicht mit dem jeweiligen Eintrag in der **/etc/fstab** übereinstimmen, müssen die Einträge zwingend angepasst werden, sonst fährt das System nach einem Reboot nicht mehr hoch.
 
 ### NTFS-Partitionsgrößen mit GParted ändern
 

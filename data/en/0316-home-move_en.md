@@ -3,7 +3,7 @@
 ## Move the home directory
 
 > Important information  
-> An existing `/home` should not be used or shared with another distribution as there may/will be conflicts with the configuration files.
+> An existing **/home** should not be used or shared with another distribution as there may/will be conflicts with the configuration files.
 
 Therefore, we generally advise against creating a **/home** partition.  
 The directory `/home` should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created, and this should be mounted under `/data`, for example. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.  
