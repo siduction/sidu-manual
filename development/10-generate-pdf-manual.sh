@@ -13,7 +13,7 @@
 # COPYING: https://www.gnu.org/licenses/gpl-3.0.html
 #
 # Usage:
-#  Normaly it is called by 000-generate-manual.pl
+#  Normaly it is called by 00-generate-manual.pl
 #  If you want to use this file directly, then change as user
 #  in a terminal into the folder /development.
 #  Enter the program name and, separated by space, the two-letter shortcode
@@ -45,34 +45,40 @@ then
 fi
 
 ### country specific page options
-if [ "$1" = "de" ]
-then
-    paper=a4
-    language=de-DE
+case $1 in
+de)
+    paper=a4paper       ## LaTex options, see: 
+    textheight=227mm    ## https://de.overleaf.com/learn/latex/Page_size_and_margins
+    language=de-DE      ##
     titel="Siduction Handbuch"
     team="siduction Team"
     datum=$(date +%d.%m.%Y)
-elif [ "$1" = "en" ]
-then
-    paper=letter
+    ;;
+en)
+    paper=letterpaper
+    textheight=211mm
     language=en-US
     titel="siduction manual"
     team="siduction team"
     datum=$(LC_ALL=en_US.utf8 date '+%B %d, %Y')
-#elif [ "$1" = "it" ]           # New translations dummy
-#then
+    ;;
+
+#it)                    # New translations dummy
 #    paper=a4paper
+#    textheight=227mm
 #    language=it-IT
 #    titel="Manuale di siduction"
 #    team="siduction team"
 #    datum=$(date +%F)
-else
+#    ;;
+*)
     echo "Language shortcode is missing or not supported."
     exit 1
-fi
-
+    ;;
+esac
 langcode=$1
 
+voffset=6mm
 #hmargin=2cm
 #vmargin=3.0cm
 #margin=20mm
@@ -99,7 +105,7 @@ geometry=portrait
 #alignment=flushright
 #alignment=center
 
-# directories, based on the fact we use it in folder contain .md-files.
+# directories, based on the fact we use it in folder /development.
 header=./11-helpfile-pdf-manual-header.tex
 searchpath=./:../data/$langcode/:../data/$langcode/images/:../sys-images/
 
@@ -138,10 +144,9 @@ pandoc \
      --resource-path=$searchpath \
      -V lang=$language \
      -V papersize=$paper \
-     -V hmargin=$hmargin \
-     -V vmargin=$vmargin \
+     -V geometry:textheight=$textheight \
+     -V geometry:voffset=$voffset \
      -V linkcolor=$linkcolor \
-     -V geometry:margin="$margin" \
      -V mainfont="$mainfont" \
      -V sansfont="$sansfont" \
      -V monofont="$monofont" \
