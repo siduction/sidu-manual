@@ -47,26 +47,26 @@ fi
 ### country specific page options
 case $1 in
 de)
-    paper=a4paper       ## LaTex options, see: 
-    textheight=227mm    ## https://de.overleaf.com/learn/latex/Page_size_and_margins
-    language=de-DE      ##
+    language=de-DE      ## LaTex options, see: 
+    paper=a4paper       ## https://de.overleaf.com/learn/latex/Page_size_and_margins
+    textheight=227mm    ##
     titel="Siduction Handbuch"
     team="siduction Team"
     datum=$(date +%d.%m.%Y)
     ;;
 en)
+    language=en-US
     paper=letterpaper
     textheight=211mm
-    language=en-US
     titel="siduction manual"
     team="siduction team"
     datum=$(LC_ALL=en_US.utf8 date '+%B %d, %Y')
     ;;
 
 #it)                    # New translations dummy
+#    language=it-IT
 #    paper=a4paper
 #    textheight=227mm
-#    language=it-IT
 #    titel="Manuale di siduction"
 #    team="siduction team"
 #    datum=$(date +%F)
@@ -78,84 +78,50 @@ en)
 esac
 langcode=$1
 
-voffset=6mm
-#hmargin=2cm
-#vmargin=3.0cm
-#margin=20mm
-#fontsize=10pt
-#fontsize=11pt
-fontsize=12pt
-#mainfont=Cambria
-#sansfont=Corbel
-#monofont=Consolas
-mainfont="Liberation Sans"
-sansfont="Liberation Sans"
-monofont="Liberation Mono"
-#language=swedish
-nohyphenation=false
-linkcolor=blue
 
-columns=onecolumn
-#columns=twocolumn
+### Processing the files to create the PDF:
+#  - Create folder ../work and copy files.
+#  - Create the file list from the folder ../work.
+#  - pandoc (LaTex) Remove metatag from all files.
+#  - pandoc (LaTex) Insert "\pagebreak" at the end of each file.
+#  - pandoc (LaTex) Insert metatag only in the first file.
+#  - Remove file names in the link to other manual pages.
+#  - Create folder for the PDF.
 
-geometry=portrait
-#geometry=landscape
+mkdir ../work/ || exit 1
 
-#alignment=flushleft
-#alignment=flushright
-#alignment=center
+cp -pP ../data/$langcode/0* ../work/ 2>/dev/null
 
-# directories, based on the fact we use it in folder /development.
-header=./11-helpfile-pdf-manual-header.tex
-searchpath=./:../data/$langcode/:../data/$langcode/images/:../sys-images/
-
-# Verarbeiten der Dateien zur Erzeugung des PDF:
-#  - Ordner /arbeit anlegen und Dateien kopieren.
-#  - Aus dem Ordner /arbeit die Dateiliste erstellen
-#  - pandoc (LaTex) Mettatag aus allen Dateien entfernen.
-#  - pandoc (LaTex) "\pagebreak" am Ende jeder Datei einfügen.
-#  - pandoc (LaTex) Mettatag nur in der ersten Datei einfügen.
-#  - Dateinamen auf Link anderer Handbuchseiten entfernen.
-#  - Ordner für das PDF erstellen.
-#  - pandoc ausführen
-#  - Den Ordner /arbeit löschen.
-
-mkdir ../arbeit/ || exit 1
-
-cp -pP ../data/$langcode/0* ../arbeit/ 2>/dev/null
-
-LISTE=$(ls ../arbeit/[[:digit:]]*)
+LISTE=$(ls ../work/[[:digit:]]*)
 
 for i in $LISTE ; do sed -i -E '/^% \w/d' "$i"; done
 
 for i in $LISTE ; do sed -i -e '$ a \\\clearpage' "$i"; done
 
-sed -i -e "1 i% $titel" -e "1 i% $team" -e "1 i% $datum" ../arbeit/0000-*
+sed -i -e "1 i% $titel" -e "1 i% $team" -e "1 i% $datum" ../work/0000-*
 
 for i in $LISTE ; do sed -i -e 's/([-_./[:alnum:]]*de.md#/(#/g' "$i"; done
 
 if [ ! -d ../data/$langcode/pdf ]; then mkdir ../data/$langcode/pdf; fi
 
+
+### Launch the pandoc command
+# Path to header and source-directories, based on the fact we use it in folder /development.
+
 pandoc \
      -N --toc --toc-depth=4 \
      -p --pdf-engine=xelatex \
-     -H $header \
+     -H ./11-header-pdf-manual.tex \
      --listings \
-     --resource-path=$searchpath \
+     --resource-path=./:../data/$langcode/:../data/$langcode/images/:../sys-images/ \
      -V lang=$language \
      -V papersize=$paper \
      -V geometry:textheight=$textheight \
-     -V geometry:voffset=$voffset \
-     -V linkcolor=$linkcolor \
-     -V mainfont="$mainfont" \
-     -V sansfont="$sansfont" \
-     -V monofont="$monofont" \
-     -V geometry=$geometry \
-     -V alignment=$alignment \
-     -V columns=$columns \
-     -V fontsize=$fontsize \
-     -V nohyphenation=$nohyphenation $LISTE \
+     -V fontsize=12pt \
+     -V linkcolor=blue \
+     -V nohyphenation=false $LISTE \
      -o ../data/$langcode/pdf/siduction-manual_$langcode.$output_format
 
-rm -r ../arbeit
 
+### Remove the folder ../work
+rm -r ../work

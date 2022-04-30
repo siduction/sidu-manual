@@ -13,6 +13,20 @@
 % \usepackage[english,spanish,swedish,portuges,ngerman]{babel}
 % https://www.namsu.de/Extra/papt search latex babelakete/Babel_V2017.html
 
+
+%%% paper settings for all languages
+  \geometry{portrait}
+  \geometry{voffset=6mm}
+
+
+%%% fonts
+\usepackage{fontspec}
+  \setmainfont{Liberation Sans}
+  \setsansfont{Liberation Sans}
+  \setmonofont{Liberation Mono}
+
+
+%%% title
 \usepackage{titling}
    
     % adding a logo to the title
@@ -29,13 +43,14 @@
     \postdate{\par\end{center}}
 
 
-% start sections and subsections on a new page
+%%% start sections and subsections on a new page
 \AddToHook{cmd/section/before}{\clearpage}
 %\AddToHook{cmd/subsection/before}{\clearpage}
 %  subsection get "\clearpage" only when a new file starts.
-%  See file 10-generate-pdf-manual.sh from line 84.
+%  See file 10-generate-pdf-manual.sh from line 76.
 
-% header and footer
+
+%%% header and footer
 \usepackage{fancyhdr}
     % extra side for the table of contents
     \fancypagestyle{toc}
@@ -55,7 +70,7 @@
     \renewcommand{\footrulewidth}{0.4pt}
     
     
-% Paragraphs (Hurenkind und Schusterjungen verhindern)
+%%% paragraphs (Hurenkind und Schusterjungen verhindern)
 \usepackage{indentfirst}
     \frenchspacing
 \usepackage[nodisplayskipstretch]{setspace}
@@ -79,6 +94,7 @@
 
 \usepackage{xcolor}
 \usepackage{MnSymbol}% benoetigt fuer 'prebreak='
+
 \lstset{
     %basicstyle=\color{orange!55!black}\ttfamily\small,  % orange
     basicstyle=\color{green!50!black}\ttfamily\small,  % green
@@ -130,10 +146,10 @@
 
 %%% Warning block
 %
-% Font color for background was designed taking into account
+% color for background and frame was designed taking into account
 % the requirements for people with color vision impairment.
 %
-% DON'T CHANGE IT.
+% DON'T CHANGE THEM.
 %
 \usepackage{tcolorbox}
     \newtcolorbox{myquote}{colback=yellow!25!white, colframe=red!75!black}
