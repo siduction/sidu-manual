@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# Name: 21-helpfile-html-manual-pre.pl within siduction manual /development folder.
+# Name: 21-preparation-html-manual.pl within siduction manual /development folder.
 #
 # Autor: Axel Konrad (akli)
 # Copyright Axel Konrad 2022, wtfpl 2.0
@@ -59,14 +59,6 @@ while (@QUELLE) {
     $_ = shift @QUELLE;
     chomp($_);
     
-        # Umlaute zu HTML Notation      # Pandoc übersetzt im Nachgang
-#    $_ =~ s!ä!&auml;!g;                # die HTML Notation wieder in
-#    $_ =~ s!Ä!&Auml;!g;                # die deutschen Umlaute.
-#    $_ =~ s!ö!&ouml;!g;                # Deshalb wird die Umkodierung
-#    $_ =~ s!Ö!&Ouml;!g;                # im Script
-#    $_ =~ s!ü!&uuml;!g;                # 20-generate-html-manual.sh
-#    $_ =~ s!Ü!&Uuml;!g;                # nach der Erzeugung der HTML-
-#    $_ =~ s!ß!&szlig;!g;               # Dateien durchgeführt.
     
         # Umformatierung der Warnungen
         #

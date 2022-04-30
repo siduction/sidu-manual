@@ -9,7 +9,7 @@
 # Generation of individual .html documents from the .md files
 #
 # Usage:
-#  Normaly it is called by 000-generate-manual.pl
+#  Normaly it is called by 00-generate-manual.pl
 #  If you want to use this file directly, then change as user
 #  in a terminal into the folder /development.
 #  Enter the program name and, separated by space, the two-letter shortcode
@@ -19,8 +19,7 @@
 #
 #
 
-# General test
-#
+### General tests
 if [ $# -ne 1 ]
 then
     echo "Error: We need exactly one argument."
@@ -37,35 +36,45 @@ else
 fi
 
 
-
+### Create necessary folders.
 if [ ! -d ../data/$langcode/html/ ]
 then
    mkdir ../data/$langcode/html/
 fi
 
-mkdir ../arbeit/ || exit 1
+if [ ! -d ../work/ ]
+then
+   mkdir ../work/ || exit 1
+fi
 
-cp ../data/$langcode/0* ../arbeit/ 2>/dev/null
 
-cd ../arbeit/ 
+### Copy files to ../work
+cp ../data/$langcode/0* ../work/ 2>/dev/null
 
-for i in *;
+
+### Create the html-files
+for i in ../work/*;
 do
-    ../development/21-helpfile-html-manual-pre.pl "$i" && pandoc -s --template=../development/22-helpfile-html-manual-template.html --toc --toc-depth=4 "$i" -o ../data/$langcode/html/$(basename $i .md | sed 's#[[:digit:]]\{4\}-\(.*\)#\1.html#');
+    ./21-preparation-html-manual.pl "$i" && pandoc -s --template=./22-template-html-manual.html --toc --toc-depth=4 "$i" -o ../data/$langcode/html/$(basename $i .md | sed 's#[[:digit:]]\{4\}-\(.*\)#\1.html#');
 done
 
-cd ../development/
 
-for i in ../data/de/html/*;
-do 
-    sed -i 's/ä/\&auml;/g' "$i";
-    sed -i 's/Ä/\&Auml;/g' "$i";
-    sed -i 's/ö/\&ouml;/g' "$i";
-    sed -i 's/Ö/\&Ouml;/g' "$i";
-    sed -i 's/ü/\&uuml;/g' "$i";
-    sed -i 's/Ü/\&Uuml;/g' "$i";
-    sed -i 's/ß/\&szlig;/g' "$i";
-done
+### Recoding the German special characters
+if [ "$langcode" = "de" ]
+then
+    for i in ../data/de/html/*.html;
+    do 
+        sed -i 's/ä/\&auml;/g' "$i";
+        sed -i 's/Ä/\&Auml;/g' "$i";
+        sed -i 's/ö/\&ouml;/g' "$i";
+        sed -i 's/Ö/\&Ouml;/g' "$i";
+        sed -i 's/ü/\&uuml;/g' "$i";
+        sed -i 's/Ü/\&Uuml;/g' "$i";
+        sed -i 's/ß/\&szlig;/g' "$i";
+    done
+fi
 
-rm -r ../arbeit/ 2>/dev/null
+
+### Remove the folder ../work
+rm -r ../work/ 2>/dev/null
 
