@@ -27,7 +27,7 @@
 # Aufruf:
 #  Normalerweise wird sie von 00-generate-manual.pl aufgerufen.
 #  Wenn Sie diese Datei direkt verwenden wollen, dann wechseln Sie als Benutzer
-#  in ein Terminal in den Ordner /development. Geben Sie den Programmnamen
+#  in einem Terminal in den Ordner /development. Geben Sie den Programmnamen
 #  und, durch ein Leerzeichen getrennt, das zweistellige Kürzel für die Sprache ein,
 #  in der die Menue-Datei erstellt werden soll. Das Sprachkürzel muss mit den Namen
 #  der Unterordner in /data übereinstimmen.
@@ -52,12 +52,12 @@ if (scalar @ARGV != 1) {
         die "Error: Langcode not supported\n";
     }
 }
-print "$langcode\n";
 
-# Create HTML header
 
-open HEADER, "./31-helpfile-html-menu-header.html"
-    or die "Kann HTML-Header nicht öffnen.";
+# Create html header
+
+open HEADER, "./31-header-html-menu.html"
+    or die "Can't open html header.";
 
 while (<HEADER>) {
     push @MENU_FILE, "$_";
@@ -68,10 +68,10 @@ if ($langcode eq "de") {
     push @MENU_FILE, "	<li><h3>Siduction Handbuch</h3>";
 } elsif ($langcode eq "en") {
     push @MENU_FILE, "	<li><h3>siduction manual</h3>";
-} elsif ($langcode eq "it") {                    # New translations dummy
-    push @MENU_FILE, "	<li><h3>Manuale di siduction</h3>";
+#} elsif ($langcode eq "it") {                    # New translations dummy
+#    push @MENU_FILE, "	<li><h3>Manuale di siduction</h3>";
 } else {
-    die "The given language shortcode \"$langcode\" is not supported.\n";
+    die "The given language shortcode is not supported.\n";
 }
 
 
@@ -86,7 +86,7 @@ while (@DATEIEN) {
     $FILE = $_;
     $FILE =~ s!^.*\d{4}-(.*)\.md!$1\.html!;
         
-    open(DATEI, "$_") || die "$_ nicht gefunden\n";
+    open(DATEI, "$_") || die "$_ not found\n";
     @QUELLE=<DATEI>;
     close(DATEI);
     $NR ++;
