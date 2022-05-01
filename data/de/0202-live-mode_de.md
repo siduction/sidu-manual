@@ -22,7 +22,7 @@ Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechte
    Um jetzt ein Programm, das mit graphischer Oberfläche arbeitet zu starten, einfach den Programmnamen eingeben. 
 
    ~~~
-   root@siduction:~# geparted &
+   root@siduction:~# gparted &
    ~~~
 
    Jetzt wird Gparted mit root-Rechten ausgeführt. Das *"&"* am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.
