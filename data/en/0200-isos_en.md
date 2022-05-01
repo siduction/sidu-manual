@@ -4,7 +4,7 @@
 
 This section contains information and notes on
 
-+ [The Content of the live ISO](0201-cd-content_en.md#content-of-the-live-iso),  
++ [The Content of the live ISO](0201-cd-content_en.md#contents-of-the-live-iso),  
   available variants, system requirements, applications, utilities, and the disclaimer.
 
 + [Using the live DVD](0202-live-mode_en.md#how-to-use-the-live-dvd),  

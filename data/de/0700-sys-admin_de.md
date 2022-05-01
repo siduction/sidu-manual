@@ -4,7 +4,7 @@
 
 Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
-+ [Terminal - Kommandozeile](0701-term-konsole_de.md#systemadministration), grundlegende Einführung, Arbeit als root, farbiges Terminal, Hilfe im Terminal und Skripte benutzen.
++ [Terminal - Kommandozeile](0701-term-konsole_de.md#terminal---kommandozeile), grundlegende Einführung, Arbeit als root, farbiges Terminal, Hilfe im Terminal und Skripte benutzen.
 
 + [Doas - Alternative zu Sudo](0703-sys-admin-doas_de.md#doas---alternative-zu-sudo), unsere Empfehlung für all jene, die sudo vermissen.
 

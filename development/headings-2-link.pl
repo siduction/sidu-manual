@@ -115,10 +115,6 @@ if ($LANGCODE eq "de") {
         
             $LINK = "\[\]\($FILE\#$H_TEXT\)";
             $LINK =~ s!(.*)!\L$1!;
-            $LINK =~ s!Ä|ä!&auml;!g;
-            $LINK =~ s!Ö|ö!&ouml;!g;
-            $LINK =~ s!Ü|ü!&uuml;!g;
-            $LINK =~ s!ß!&szlig;!g;
             $LINK =~ s!( )!-!g;
             $_ = "$FILE   $H_CLASS $H_TEXT   Link: $LINK\n";
             push @HLFILE,$_;

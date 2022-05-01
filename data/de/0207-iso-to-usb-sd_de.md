@@ -3,7 +3,7 @@
 ## ISO auf USB-Stick - Speicherkarte
 
 Nachfolgend beschrieben wir Methoden eine siduction ISO-Abbilddatei als Live-Medium auf einen USB-Stick, eine SD-Karte oder eine SHDC-Karte zu schreiben.  
-Falls *"persist"* benötigt wird, empfohlen wir die Handbuchseite [Aus ISO-Datei booten](0302-hd-ins-fromiso_de.md#fromiso).
+Falls *"persist"* benötigt wird, empfohlen wir die Handbuchseite [Aus ISO-Datei booten](0302-hd-ins-fromiso_de.md#aus-iso-datei-booten).
 
 **Voraussetzungen**
 

@@ -100,7 +100,7 @@ for i in $LISTE ; do sed -i -e '$ a \\\clearpage' "$i"; done
 
 sed -i -e "1 i% $titel" -e "1 i% $team" -e "1 i% $datum" ../work/0000-*
 
-for i in $LISTE ; do sed -i -e 's/([-_./[:alnum:]]*de.md#/(#/g' "$i"; done
+for i in $LISTE ; do sed -i -e "s/([-_./[:alnum:]]*$langcode.md#/(#/g" "$i"; done
 
 if [ ! -d ../data/$langcode/pdf ]; then mkdir ../data/$langcode/pdf; fi
 

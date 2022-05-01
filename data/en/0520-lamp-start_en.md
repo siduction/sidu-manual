@@ -141,7 +141,7 @@ The directory **/etc/apache2/** is called **ServerRoot**. It contains the config
 The directory **/var/www/html/** is called **DocumentRoot**. It contains the website's files.
 
 For more information and security hints, please refer to the manual page  
-[LAMP-Apache](./0521-lamp-apache_en.md#apache-setup).
+[LAMP-Apache](0521-lamp-apache_en.md#set-up-apache).
 
 ### Install MariaDb
 
@@ -160,7 +160,7 @@ mariadb-server-core-10.5 mysql-common socat
 Do you want to continue? [Y/n] y
 ~~~
 
-For more information on MariaDb and configuration, see our manual in [LAMP-MariaDB](./0522-lamp-sql_en.md#mariadb-setup)
+For more information on MariaDb and configuration, see our manual in [LAMP-MariaDB](0522-lamp-sql_en.md#set-up-mariadb)
 
 ### Install PHP
 
@@ -225,7 +225,7 @@ Now we need the module *php7.4-mysql*, so MariaDB/mysql will be supported in PHP
 
 If we now go back to the "http://localhost/info.php" page, we will find the entries for *mysqli* and *mysqlnd* in the modules section (they are sorted alphabetically).
 
-For more information on configuring PHP and managing its modules, see the manual page [LAMP-PHP](./0523-lamp-php_en.md#php-setup)
+For more information on configuring PHP and managing its modules, see the manual page [LAMP-PHP](0523-lamp-php_en.md#set-up-php)
 
 ### Install phpMyAdmin
 
@@ -267,7 +267,7 @@ In the following dialogs we need the password for the database user **phpmyadmin
 
 ### Other software
 
-If you are interested in developing websites, you can install a CMS for example, *WordPress*, *Drupal*, or *Joomla*, but you should consider our manual pages [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup) and [LAMP-MariaDb](./0522-lamp-sql_en.md#mariadb-setup) for the configuration of the server and MariaDb beforehand.
+If you are interested in developing websites, you can install a CMS for example, *WordPress*, *Drupal*, or *Joomla*, but you should consider our manual pages [LAMP-Apache](0521-lamp-apache_en.md#set-up-apache) and [LAMP-MariaDb](./0522-lamp-sql_en.md#mariadb-setup) for the configuration of the server and MariaDb beforehand.
 
 ### Status data log files
 
@@ -297,7 +297,7 @@ User: name="www-data" id=33
 Group: name="www-data" id=33
 ~~~
 
-The manual page [LAMP-Apache](./0521-lamp-apache_en.md#apache-setup) contains a number of hints for customizing the configuration.  
+The manual page [LAMP-Apache](0521-lamp-apache_en.md#set-up-apache) contains a number of hints for customizing the configuration.  
 The directory `/var/log/apache2/` contains the log files. A look into them is helpful to identify error causes.
 
 **MariaDB**
@@ -322,13 +322,13 @@ The command
 ~~~
 
 keeps the connection to the journal open and continuously shows the new entries.  
-For more information, see the manual page [LAMP-MariaDB](./0522-lamp-sql_en.md#setup-mariadb).
+For more information, see the manual page [LAMP-MariaDB](0522-lamp-sql_en.md#set-up-mariadb).
 
 **PHP**
 
 The Apache server stores the error messages of PHP in its log files under `/var/log/apache2/`. Erroneous PHP functions generate a message on the called web page.  
 This behavior can be configured in the `php.ini` files of the respective interface.  
-See the [LAMP-PHP](./0523-lamp-php_en.md#php-setup) manual page.
+See the [LAMP-PHP](0523-lamp-php_en.md#set-up-php) manual page.
 
 ### Troubleshooting
 
@@ -482,9 +482,9 @@ If necessary, we do the same with the other parts of the program. Then we start 
 The installation explained so far leads to a web server that is **"open like a barn door for everyone "**. Therefore, it should only be used standalone at a workstation and not connected to the private network and in no case to the Internet.
 
 For securing the server, please read the manual pages  
-[LAMP-Apache](./0521-lamp-apache_en.md#apache-setup), 
-[LAMP-MariaDB](./0522-lamp-sql_en.md#mariadb-setup), 
-[LAMP-PHP](./0523-lamp-php_en.md#php-setup)  
+[LAMP-Apache](0521-lamp-apache_en.md#set-up-apache), 
+[LAMP-MariaDB](0522-lamp-sql_en.md#set-up-mariadb), 
+[LAMP-PHP](0523-lamp-php_en.md#set-up-php)  
 regarding the configuration.
 
 After that, exclusively for system and software updates, the server can be temporarily connected to the Internet via a second network interface.

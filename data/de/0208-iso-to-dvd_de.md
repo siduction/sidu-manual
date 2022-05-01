@@ -22,7 +22,7 @@ Bei K3b wählt man `Weitere Aktionen...` -\> `Abbild schreiben...` aus.
 In Xfburn und Brasero sollte man `Abbild brennen` anklicken.  
 Anschließend ist das zu brennende ISO-File (z.B. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) auszuwählen und der Brennmodus `DAO` (Disk At Once) oder `Automatisch` einzustellen und der Brennvorgang zu starten.
 
-Gelegentliche Probleme beim Brennen der Live-DVD haben ihre Ursache zumeist in den graphischen Frontend-Applikationen. Dies kann man umgehen, indem auf der Konsole das sehr einfach anzuwendende Skript `burniso` benutzt wird. Die Handbuchseite [DVD ohne GUI brennen](0209-no-gui-burn_de.md#dvd-ohne-gui-brennen) erklärt die Verwendung von burniso kurz und exakt, sowie weitere Befehle um verfügbare Hardware zu erkennen, Daten zusammenzustellen und CD/DVDs zu brennen.
+Gelegentliche Probleme beim Brennen der Live-DVD haben ihre Ursache zumeist in den graphischen Frontend-Applikationen. Dies kann man umgehen, indem auf der Konsole das sehr einfach anzuwendende Skript `burniso` benutzt wird. Die Handbuchseite [DVD ohne GUI brennen](0209-no-gui-burn_de.md#life-dvd-ohne-gui-brennen) erklärt die Verwendung von burniso kurz und exakt, sowie weitere Befehle um verfügbare Hardware zu erkennen, Daten zusammenzustellen und CD/DVDs zu brennen.
 
 ### DVD mit Windows brennen
 

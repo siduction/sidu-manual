@@ -13,7 +13,7 @@
 # 'Link: ' and put the text to be displayed between
 # the square brackets.
 #
-Generated on 2022-04-12
+Generated on 2022-05-01
 
 
  ### About the stability of Debian Sid   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#about-the-stability-of-debian-sid)
@@ -126,7 +126,6 @@ Generated on 2022-04-12
 #### Install section   0711-systemd-unit-datei_en.md   Link: [](0711-systemd-unit-datei_en.md#install-section)
  ### Install server   0706-sys-admin-apt-localmirr_en.md   Link: [](0706-sys-admin-apt-localmirr_en.md#install-server)
   ## Installation on HDD   0301-hd-install_en.md   Link: [](0301-hd-install_en.md#installation-on-hdd)
-  ## Installation on USB stick - memory card   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#installation-on-usb-stick---memory-card)
  ### Installation preparations   0301-hd-install_en.md   Link: [](0301-hd-install_en.md#installation-preparations)
    # Installation   0300-install_en.md   Link: [](0300-install_en.md#installation)
  ### Integration in Apache2   0521-lamp-apache_en.md   Link: [](0521-lamp-apache_en.md#integration-in-apache2)
@@ -157,7 +156,6 @@ Generated on 2022-04-12
  ### MariaDB in the file system   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#mariadb-in-the-file-system)
  ### MariaDB Log   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#mariadb-log)
  ### Mastering journalctl   0717-systemd-journald_en.md   Link: [](0717-systemd-journald_en.md#mastering-journalctl)
-#### Memory requirements   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#memory-requirements)
  ### Minimum requirements   0310-part-size-examp_en.md   Link: [](0310-part-size-examp_en.md#minimum-requirements)
  ### Minimum system requirements   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#minimum-system-requirements)
  ### Modules   0707-sys-admin-kern-upg_en.md   Link: [](0707-sys-admin-kern-upg_en.md#modules)
@@ -173,7 +171,6 @@ Generated on 2022-04-12
  ### Open source Xorg driver   0600-gpu_en.md   Link: [](0600-gpu_en.md#open-source-xorg-driver)
  ### Other desktop environments   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#other-desktop-environments)
  ### Other software   0520-lamp-start_en.md   Link: [](0520-lamp-start_en.md#other-software)
-#### Other   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#other)
  ### Overview   0302-hd-ins-fromiso_en.md   Link: [](0302-hd-ins-fromiso_en.md#overview)
 #### Package search in the terminal   0705-sys-admin-apt_en.md   Link: [](0705-sys-admin-apt_en.md#package-search-in-the-terminal)
  ### Partition editors   0310-part-size-examp_en.md   Link: [](0310-part-size-examp_en.md#partition-editors)
@@ -190,9 +187,7 @@ Generated on 2022-04-12
  ### PHP modules   0523-lamp-php_en.md   Link: [](0523-lamp-php_en.md#php-modules)
  ### PHP support for Apache2   0523-lamp-php_en.md   Link: [](0523-lamp-php_en.md#php-support-for-apache2)
  ### phpMyAdmin   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#phpmyadmin)
-#### Processor requirements: 64Bit CPU   0201-cd-content_en.md   Link: [](0201-cd-content_en.md#processor-requirements:-64bit-cpu)
  ### Proprietary drivers   0600-gpu_en.md   Link: [](0600-gpu_en.md#proprietary-drivers)
- ### Queries   0523-lamp-php_en.md   Link: [](0523-lamp-php_en.md#queries)
 #### Queries   0522-lamp-sql_en.md   Link: [](0522-lamp-sql_en.md#queries)
    # Quickstart   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#quickstart)
 #### Quit cfdisk   0314-part-cfdisk_en.md   Link: [](0314-part-cfdisk_en.md#quit-cfdisk)
@@ -272,6 +267,7 @@ Generated on 2022-04-12
  ### The siduction kernel   0100-wel-quickstart_en.md   Link: [](0100-wel-quickstart_en.md#the-siduction-kernel)
   ## The siduction team   0001-credit_en.md   Link: [](0001-credit_en.md#the-siduction-team)
  ### The siduction wiki   0003-help_en.md   Link: [](0003-help_en.md#the-siduction-wiki)
+  ## The siduction™ GNU/Linux operating system   0000-welcome_en.md   Link: [](0000-welcome_en.md#the-siduction™-gnu/linux-operating-system)
 #### The user interface   0314-part-cfdisk_en.md   Link: [](0314-part-cfdisk_en.md#the-user-interface)
  ### Timer unit as cron replacement   0716-systemd-timer_en.md   Link: [](0716-systemd-timer_en.md#timer-unit-as-cron-replacement)
  ### Tools   0711-systemd-unit-datei_en.md   Link: [](0711-systemd-unit-datei_en.md#tools)
@@ -303,9 +299,6 @@ Generated on 2022-04-12
    # Welcome   0000-welcome_en.md   Link: [](0000-welcome_en.md#welcome)
  ### When the terminal hangs   0701-term-konsole_en.md   Link: [](0701-term-konsole_en.md#when-the-terminal-hangs)
  ### Why use apt exclusively   0705-sys-admin-apt_en.md   Link: [](0705-sys-admin-apt_en.md#why-use-apt-exclusively)
- ### With Linux operating systems   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#with-linux-operating-systems)
- ### With Mac OS X   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#with-mac-os-x)
- ### With MS Windows   0303-hd-ins-opts-oos_en.md   Link: [](0303-hd-ins-opts-oos_en.md#with-ms-windows)
  ### Work as root   0701-term-konsole_en.md   Link: [](0701-term-konsole_en.md#work-as-root)
 #### Write GPT   0313-part-gdisk_en.md   Link: [](0313-part-gdisk_en.md#write-gpt)
 #### Write partition table   0314-part-cfdisk_en.md   Link: [](0314-part-cfdisk_en.md#write-partition-table)

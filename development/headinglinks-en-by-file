@@ -13,10 +13,11 @@
 # 'Link: ' and put the text to be displayed between
 # the square brackets.
 #
-Generated on 2022-04-12
+Generated on 2022-05-01
 
 
 0000-welcome_en.md   # Welcome   Link: [](0000-welcome_en.md#welcome)
+0000-welcome_en.md   ## The siduction™ GNU/Linux operating system   Link: [](0000-welcome_en.md#the-siduction™-gnu/linux-operating-system)
 0000-welcome_en.md   ### General   Link: [](0000-welcome_en.md#general)
 0000-welcome_en.md   ### Copyright Legal and License Notices   Link: [](0000-welcome_en.md#copyright-legal-and-license-notices)
 0000-welcome_en.md   ### Disclaimer   Link: [](0000-welcome_en.md#disclaimer)
@@ -51,9 +52,6 @@ Generated on 2022-04-12
 0201-cd-content_en.md   ### Note about the software on the Live-ISO   Link: [](0201-cd-content_en.md#note-about-the-software-on-the-live-iso)
 0201-cd-content_en.md   ### Variants of the ISO   Link: [](0201-cd-content_en.md#variants-of-the-iso)
 0201-cd-content_en.md   ### Minimum system requirements   Link: [](0201-cd-content_en.md#minimum-system-requirements)
-0201-cd-content_en.md   #### Processor requirements: 64Bit CPU   Link: [](0201-cd-content_en.md#processor-requirements:-64bit-cpu)
-0201-cd-content_en.md   #### Memory requirements   Link: [](0201-cd-content_en.md#memory-requirements)
-0201-cd-content_en.md   #### Other   Link: [](0201-cd-content_en.md#other)
 0201-cd-content_en.md   ### Applications and utilities   Link: [](0201-cd-content_en.md#applications-and-utilities)
 0201-cd-content_en.md   ### Disclaimer   Link: [](0201-cd-content_en.md#disclaimer)
 0202-live-mode_en.md   ## How to use the live DVD   Link: [](0202-live-mode_en.md#how-to-use-the-live-dvd)
@@ -96,10 +94,6 @@ Generated on 2022-04-12
 0302-hd-ins-fromiso_en.md   ### Overview   Link: [](0302-hd-ins-fromiso_en.md#overview)
 0302-hd-ins-fromiso_en.md   ### fromiso with grub2   Link: [](0302-hd-ins-fromiso_en.md#fromiso-with-grub2)
 0302-hd-ins-fromiso_en.md   ### toram   Link: [](0302-hd-ins-fromiso_en.md#toram)
-0303-hd-ins-opts-oos_en.md   ## Installation on USB stick - memory card   Link: [](0303-hd-ins-opts-oos_en.md#installation-on-usb-stick---memory-card)
-0303-hd-ins-opts-oos_en.md   ### With Linux operating systems   Link: [](0303-hd-ins-opts-oos_en.md#with-linux-operating-systems)
-0303-hd-ins-opts-oos_en.md   ### With MS Windows   Link: [](0303-hd-ins-opts-oos_en.md#with-ms-windows)
-0303-hd-ins-opts-oos_en.md   ### With Mac OS X   Link: [](0303-hd-ins-opts-oos_en.md#with-mac-os-x)
 0310-part-size-examp_en.md   ## Partitioning of installation media   Link: [](0310-part-size-examp_en.md#partitioning-of-installation-media)
 0310-part-size-examp_en.md   ### Minimum requirements   Link: [](0310-part-size-examp_en.md#minimum-requirements)
 0310-part-size-examp_en.md   ### Examples with different disk sizes   Link: [](0310-part-size-examp_en.md#examples-with-different-disk-sizes)
@@ -203,7 +197,6 @@ Generated on 2022-04-12
 0523-lamp-php_en.md   ### PHP support for Apache2   Link: [](0523-lamp-php_en.md#php-support-for-apache2)
 0523-lamp-php_en.md   ### PHP configuration   Link: [](0523-lamp-php_en.md#php-configuration)
 0523-lamp-php_en.md   ### PHP modules   Link: [](0523-lamp-php_en.md#php-modules)
-0523-lamp-php_en.md   ### Queries   Link: [](0523-lamp-php_en.md#queries)
 0523-lamp-php_en.md   ### Apache Log   Link: [](0523-lamp-php_en.md#apache-log)
 0523-lamp-php_en.md   ### Sources PHP   Link: [](0523-lamp-php_en.md#sources-php)
 0600-gpu_en.md   # Hardware   Link: [](0600-gpu_en.md#hardware)

@@ -2,7 +2,7 @@
 
 ## systemd-path
 
-The basic and introductory information about systemd can be found on the manual page [systemd-start](0710-systemd-start_en.md#systemd-der-system--und-dienste-manager). The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
+The basic and introductory information about systemd can be found on the manual page [systemd-start](0710-systemd-start_en.md#systemd---the-system-and-services-manager). The sections *[Unit]* and *[Install]* concerning all unit files are covered by our manual page [systemd unit file](0711-systemd-unit-datei_en.md#systemd-unit-file).  
 On this manual page, we explain the function of the **systemd.path** unit, which systemd uses to monitor paths and trigger path-based actions.
 
 The path unit makes it possible to trigger an action when files and directories (paths) are changed.  
@@ -54,7 +54,7 @@ The special options are:
 
 **An example**  
 
-Based on the Apache web server configuration according to our manual page [LAMP - Apache, users and rights](./0521-lamp-apache_en.md#users-and-rights), let's illustrate the interaction of path unit with another systemd unit.
+Based on the Apache web server configuration according to our manual page [LAMP - Apache, users and rights](0521-lamp-apache_en.md#users-and-permissions), let's illustrate the interaction of path unit with another systemd unit.
 
 The figure *Path unit function* represents the dependencies of the systemd units of our example.
 

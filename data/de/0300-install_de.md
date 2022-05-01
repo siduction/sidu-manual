@@ -6,7 +6,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 
 + [Installation vom Live-Medium auf HDD](0301-hd-install_de.md#installation-auf-hdd), den notwendigen Vorbereitungen, der Partitionierung und eine Anleitung für das Installationsprogramm Calamares.
 
-+ [Ohne Installation aus ISO-Datei starten](0302-hd-ins-fromiso_de.md#fromiso)
++ [Ohne Installation aus ISO-Datei starten](0302-hd-ins-fromiso_de.md#aus-iso-datei-booten)
 
 + [Partitionierung von Installationsmedien](0310-part-size-examp_de.md#partitionierung-von-installationsmedien), mit Beispielen verschiedener Plattengrößen und Single- oder Dual-Boot.
 

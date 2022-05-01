@@ -229,7 +229,7 @@ Natürlich kann auch die favorisierte Suchmaschine verwendet werden, um mehr zu 
 
 **Brennen von CD, DVD und BD**  
 Die Kommandozeilenprogramme bilden die Basis für beliebte GUI-Programme wie `K3b`, `Brasero` oder `Xfburn`.
-Wer die vollständige Bandbreite an Optionen der Kommandozeilenprogramme `cdrdao`, `wodim`, `growisofs` usw. bevorzugt, nutzt das Terminal. Unsere Handbuchseite [DVD ohne GUI brennen](0209-no-gui-burn_de.md#dvd-ohne-gui-brennen) enthält viele Beispiele und Tips um verfügbare Hardware zu erkennen, Daten zusammenzustellen und diese anschließend auf CD, DVD und BD zu brennen.
+Wer die vollständige Bandbreite an Optionen der Kommandozeilenprogramme `cdrdao`, `wodim`, `growisofs` usw. bevorzugt, nutzt das Terminal. Unsere Handbuchseite [DVD ohne GUI brennen](0209-no-gui-burn_de.md#life-dvd-ohne-gui-brennen) enthält viele Beispiele und Tips um verfügbare Hardware zu erkennen, Daten zusammenzustellen und diese anschließend auf CD, DVD und BD zu brennen.
 
 ### Skripte benutzen
 

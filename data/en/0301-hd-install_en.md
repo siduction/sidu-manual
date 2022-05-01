@@ -11,12 +11,12 @@
 
 First, change the boot order so that the medium to be booted (DVD, flashcard, or USB stick) is at the top of the list. On most computers, pressing the **`F2`** or **`Del`** key during the boot process takes you to the UEFI or BIOS setup. Alternatively, pressing **`F12`**, **`F11`**, **`F7`**, or **`F8`** (depending on the hardware manufacturer's specifications) during the boot process will take you directly to the boot menu where you can select the live media as the boot drive.
 
-siduction usually starts without problems now. If this is not the case, boot options (cheat codes), which can be passed to the boot manager, are helpful. The manual page [Cheatcodes](0204-cheatcodes_en.md#boot-options-and-cheatcodes) explains the possible options.  
+siduction usually starts without problems now. If this is not the case, boot options (cheat codes), which can be passed to the boot manager, are helpful. The manual page [Cheatcodes](0204-cheatcodes_en.md#boot-options-and-cheat-codes) explains the possible options.  
 At the start screen, use the arrow keys to navigate to *"From CD/DVD/ISO: ..."* or *"From Stick/HDD: ..."* (according to the used live medium) and press **`e`**. This takes you to the kernel command line where you can add the cheatcodes. Pressing **`F10`** will continue the boot process.
 
 **Before the installation, please remove all USB sticks, cameras, etc.**
 
-If siduction is not to be installed from, but **to a USB medium**, a different procedure is necessary. See the manual page [Installation to a USB medium](0303-hd-ins-opts-oos_en.md#installation-on-usb-stick---memory-card).
+If siduction is not to be installed from, but **to a USB medium**, a different procedure is necessary. See the manual page [Installation to a USB medium](0207-iso-to-usb-sd_en.md#iso-to-usb-stick---memory-card).
 
 **HDD, RAM, and Swap**
 
@@ -37,10 +37,10 @@ Examples and sizes for different installation situations are described on the ma
 We recommend leaving the `/home` directory on the root partition. The `/home` directory should be the place where individual configurations are stored, and only those. For all other private data, including `.ssh`, `.gnupg`, and the mail archives, a separate data partition should be created and linked to the `/home` directory if necessary. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.  
 
 The partitioning can be done during installation or already in advance during the live session with the following programs:  
-[Gparted](0312-part-gparted_en.md#partition-with-gparted), a graphical user interface program for GTK desktops  
+[Gparted](0312-part-gparted_en.md#partitioning-with-gparted), a graphical user interface program for GTK desktops  
 KDE Partition Manager, another graphical user interface program for Qt desktops  
-[gdisk](0313-part-gdisk_en.md#partition-with-gdisk), recommended for UEFI hardware with GTP partition tables  
-[cfdisk](0314-part-cfdisk_en.md#partition-with-fdisk), only for older hardware with traditional BIOS and MBR partition tables
+[gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk), recommended for UEFI hardware with GTP partition tables  
+[cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), only for older hardware with traditional BIOS and MBR partition tables
 
 ### File systems
 

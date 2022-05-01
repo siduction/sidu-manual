@@ -18,7 +18,7 @@ The files inside the directories mentioned before should not be edited manually.
 
 ### Initial configuration
 
-After installation, as described in [LAMP test server for developers](0520-lamp-start_en.md#lamp-webserver), MariaDB is *'open like a barn door to anyone'*, because, by default, the two users **root** and **anonymous** are created (without password) as well as a test database.
+After installation, as described in [LAMP test server for developers](0520-lamp-start_en.md#lamp-web-server), MariaDB is *'open like a barn door to anyone'*, because, by default, the two users **root** and **anonymous** are created (without password) as well as a test database.
 
 Therefore we call the program **`mysql_secure_installation`** in the root terminal.  
 Here we make quite a few settings to secure the database. The necessary entries are highlighted like this: `\<- - [ ]`.
@@ -219,7 +219,7 @@ As seen before, MariaDB can be administered completely via the command line. If 
 
 We use the programm `phpMyAdmin`, which is more suitable for less experienced users, and enter:  
 http://localhost/phpmyadmin/  
-into the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-einrichten), the call is:  
+into the browser address bar. If we have already gone through the configuration according to the manual page [LAMP - Apache](0521-lamp-apache_en.md#apache-configuration), the call is:  
 https://server1.org/phpmyadmin/
 
 To remove the rights of the database admin **root**, as mentioned above, we use our new database admin **chef** with his password in the login window right away.

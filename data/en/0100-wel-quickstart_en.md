@@ -20,7 +20,7 @@ siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction
 
 + [Installation on a hard disk](0301-hd-install_en.md#installation-on-hdd) - describes how to install siduction onto a hard disk.
 
-+ [Non-free drivers, firmware, and sources](0600-gpu_en.md#graphics-driver) - describes how software sources can be adapted and non-free firmwares can be installed.
++ [Non-free drivers, firmware, and sources](0600-gpu_en.md#graphics-drivers) - describes how software sources can be adapted and non-free firmwares can be installed.
 
 + [Internet connection](0500-network_en.md#network) - describes how to connect to the Internet.
 
@@ -108,7 +108,7 @@ apt install network-manager
 
 More information at [network - nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool)
 
-Intel's [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) is preparing to retire the WPA supplicant. Only one tenth as big and much faster, iwd will be the successor. If you want to switch to iwd already, please refer to our manual page [IWD instead of wpa_supplicant](0502-inet-iwd_en.md#iwd-statt-wpa_supplicant) for the procedure.
+Intel's [iNet wireless daemon](https://iwd.wiki.kernel.org/) (**IWD**) is preparing to retire the WPA supplicant. Only one tenth as big and much faster, iwd will be the successor. If you want to switch to iwd already, please refer to our manual page [IWD instead of wpa_supplicant](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) for the procedure.
 
 ### Runlevels - target unit
 

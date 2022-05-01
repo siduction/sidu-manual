@@ -230,7 +230,7 @@ Of course you can also use your favorite search engine to find more.
 **Burning CD, DVD, and BD**.
 
 The command line programs are the basis for popular GUI programs like K3b, Brasero, or Xfburn.  
-Those who prefer the full range of options provided by the command line programs `cdrdao`, `wodim`, `growisofs`, etc. use the terminal. Our manual page [Burn DVD without GUI](0209-no-gui-burn_en.md#burn-dvd-without-gui) contains many examples and tips to detect available hardware, compile data, and then burn it to CD, DVD, and BD.
+Those who prefer the full range of options provided by the command line programs `cdrdao`, `wodim`, `growisofs`, etc. use the terminal. Our manual page [Burn DVD without GUI](0209-no-gui-burn_en.md#burning-with-cdrdao-wodim-growisofs) contains many examples and tips to detect available hardware, compile data, and then burn it to CD, DVD, and BD.
 
 ### Using scripts
 
