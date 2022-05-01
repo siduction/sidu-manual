@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Use Live DVD</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Use Live DVD</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#how-to-use-the-live-dvd">How to use the live DVD</a>
+<ul>
+<li><a href="#users-set-up-on-the-live-medium">Users set up on the live medium</a></li>
+<li><a href="#root-privileges-on-the-live-dvd">root privileges on the live DVD</a></li>
+<li><a href="#how-to-set-a-new-password">How to set a new password</a></li>
+<li><a href="#software-installation-during-live-session">Software installation during live session</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="how-to-use-the-live-dvd">How to use the live DVD</h2>
+<h3 id="users-set-up-on-the-live-medium">Users set up on the live medium</h3>
+<p>The users <strong>siducer</strong> and <strong>root</strong> (the system administrator) are set up on the live medium.</p>
+<p>The password for the user <strong>siducer</strong> is <strong>live</strong>.<br />
+No password is set for <strong>root</strong> (system administrator).</p>
+<p>The live session will be locked after some time without any input. To unlock, please enter the username <strong>siducer</strong> and the password <strong>live</strong>.</p>
+<h3 id="root-privileges-on-the-live-dvd">root privileges on the live DVD</h3>
+<p>Several ways of how to run a program with root priviliges are described below.</p>
+<warning>
+<strong>Caution</strong> <br />Whenever you work with root privileges, you should know exactly what you are doing. For web browsing and similar actions, root privileges are not necessary.
+</warning>
+<ol type="1">
+<li><p>The easiest way is to open a terminal and get root privileges by typing <strong><code>su</code></strong>.<br />
+To start a program that works with a graphical user interface, just enter the program name.</p>
+<pre><code>root@siduction:~# gparted &amp;</code></pre>
+<p>Now Gparted will be executed with root privileges. The <em>“&amp;”</em> at the end of the command puts the process into the background so that the terminal remains usable.</p></li>
+<li><p>Open a command prompt window:<br />
+Use the key combination <strong><code>Alt</code></strong>+<strong><code>F2</code></strong> to get a program launcher and enter the following command:</p>
+<pre><code>sudo &lt;application&gt;  </code></pre>
+<p>A terminal window will open, asking you for the root password. Now simply press the <strong><code>Enter</code></strong> key, unless a temporary root password has been set as described below. In the latter case, the corresponding password must be entered.</p></li>
+<li><p>Enter the following command into a terminal without root privileges:</p>
+<pre><code>sudo &lt;application&gt; &amp;</code></pre>
+<p>Please note:<br />
+<code>sudo</code> is not preconfigured on hard disk installations. We recommend to directly use the real <strong>root</strong> account.<br />
+See <a href="https://manual.siduction.org/term-konsole_en.html#work-as-root">why sudo is not configured</a>.</p></li>
+</ol>
+<h3 id="how-to-set-a-new-password">How to set a new password</h3>
+<p>Remember: The livesession’s standard user is <strong>siducer</strong> with the password <strong>live</strong>. If you want to change the password, open a terminal and enter the following commands:</p>
+<pre><code>siducer@siduction:~$ passwd
+Enter a new password:
+Re-enter the new password:
+passwd: Password successfully changed
+siducer@siduction:~$</code></pre>
+<p>This new password for <strong>siducer</strong> can be used for the rest of the live session.</p>
+<p>The same procedure can be used to set a password for <strong>root</strong> in any terminal, but you have to become root via <strong><code>su</code></strong> first. Afterwards, a login on a virtual console as <strong>root</strong> is possible.</p>
+<h3 id="software-installation-during-live-session">Software installation during live session</h3>
+<p>The command sequence for installing software during a live session is similar to that on a hard disk installation. The prerequisite is a root terminal:</p>
+<pre><code>apt update
+apt install &lt;the-package-you-want&gt;</code></pre>
+<p>Otherwise, type <code>sudo</code> before the commands.</p>
+<pre><code>sudo apt update
+sudo apt install &lt;the-package-you-want&gt;</code></pre>
+<p>However, if you shut down the live DVD, no changes will be kept.</p>
+<div id="rev">
+Last edited: 2022/03/30
+</div>
+</body>
+</html>

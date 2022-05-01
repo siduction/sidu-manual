@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>ISO to USB stick / memory card</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">ISO to USB stick / memory card</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#iso-to-usb-stick---memory-card">ISO to USB stick - memory card</a>
+<ul>
+<li><a href="#gui-application">GUI application</a></li>
+<li><a href="#linux-command-line">Linux command line</a>
+<ul>
+<li><a href="#additional-data-partition">Additional data partition</a></li>
+</ul></li>
+<li><a href="#mac-os-x-command-line">Mac OS X command line</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="iso-to-usb-stick---memory-card">ISO to USB stick - memory card</h2>
+<p>Below we describe methods to write a siduction ISO image file as live media to a USB stick, SD card, or SHDC card.<br />
+If <em>“persist”</em> is needed, we recommend the manual page <a href="https://manual.siduction.org/hd-ins-fromiso_en.html#boot-from-iso-file">Boot from ISO file</a>.</p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>The PC’s BIOS must allow booting from a USB stick or SD card. Normally this is the case if the BIOS offers this boot option.</li>
+<li>A USB stick or SD card with a recommended capacity of at least 4 GB.</li>
+<li>Back up all your data on the devices you want to use for making the siduction live media in advance as well as the currently used operating system and your private data. A small typo or a hasty click can destroy all your data!</li>
+</ul>
+<warning>
+Important information <br />The following methods will overwrite existing partition tables on the target media, causing all data to be lost. Take extreme care when selecting the target media and its drive label.
+</warning>
+<h3 id="gui-application">GUI application</h3>
+<p><strong>For Linux™, RasPi™, MS Windows™, or Mac OS X™</strong></p>
+<p>The small tool <a href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> is available for all the above operating systems and is used to backup data and create the live medium. The program is open source and licensed under the MIT license. Download the necessary file for your operating system and install the program according to the instructions on the download page.</p>
+<p>The handling is very simple thanks to the no-frills interface.</p>
+<p>Write the image file to the device: 1. Select an image by clicking on <code>...</code> in the first line. 2. Select a device by clicking on the 3rd line. 3. Click on the <code>Write</code> button in the 2nd line.</p>
+<p>Detailed information can be found in the <a href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> of the project page.</p>
+<h3 id="linux-command-line">Linux command line</h3>
+<p>We recommend using the command line. There is no need to install additional programs, since all the tools you need are already available. A single, easy-to-understand command line is sufficient to transfer the siduction ISO image file to the storage medium.</p>
+<p>Before we write the siduction ISO image file to the storage medium, we need to determine its drive label. The easiest way is to use journald. The command <strong><code>journalctl -f</code></strong> executed in a terminal shows continuously the messages of systemd. Now we plug in the storage medium and watch the messages in the terminal. Lines of the following type contain the information we are looking for.</p>
+<pre><code>kernel: usb 2-3.3: new high-speed USB device number 7 ...
+[...]
+kernel: scsi 1:0:0:0: Direct-Access Intenso Alu Line ...
+kernel: sd 1:0:0:0: Attached scsi generic sg1 type 0
+kernel: sd 1:0:0:0: [sdb] 7866368 512-byte logical blocks: (4.03 GB/3.75 GiB)
+[...]
+kernel: sd 1:0:0:0: [sdb] Write cache: disabled, read ...</code></pre>
+<p>This is an Intenso USB flash drive with 4 GB storage capacity and a sector size of 512 bytes. The drive name is <code>sdb</code>. It follows that <code>/dev/sdb</code> is the path to use for the target medium.<br />
+Assuming the siduction ISO image file is stored in the <code>/home</code> directory of user <strong>tux</strong>, we can use the <code>dd</code> or <code>cat</code> commands to write to the target medium. The commands require root privileges. Therefore, depending on the system, either prepend <strong><code>sudo</code></strong> or <strong><code>doas</code></strong>, or use a terminal and become <strong>root</strong> with <strong><code>su</code></strong>.</p>
+<pre><code>dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
+    (or)
+cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso &gt; /dev/sdb</code></pre>
+<p>The copying process may take 15 minutes or longer for an ISO image file of about 3 GB. Please wait relaxed until the prompt returns.</p>
+<h4 id="additional-data-partition">Additional data partition</h4>
+<p>Usually the storage medium is much larger than the ISO image file. The methods shown so far all use the entire storage medium, although the ISO image file only occupies 2.9 GiB. This cannot be changed afterwards. It is a good idea to take advantage of the command line and set up two partitions in advance. The first partition will later contain the live system and the second one the otherwise unused space. This allows us to take data on the media to the live session and store it there during the live session.</p>
+<p>We use as root the command <code>cgdisk /dev/sdb</code> to create a new GUID partition table (see the manual page <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>) and use the following data:</p>
+<p>1st partition:<br />
+Start sector: 64 (default)<br />
+Size: 3G (3 GB, slightly larger than the ISO image file)<br />
+Type hex code: 0700 (Microsoft basic data)<br />
+Name: siduction<br />
+2nd partition:<br />
+Start sector: xxxxxxxx (default, 1st sector after the previous partition).<br />
+Size: xxxxxx (default, the maximum possible size)<br />
+type hex code: 8300 (Linux)<br />
+Name: data</p>
+<p>We write the partition table to the medium and exit <code>cfdisk</code>, but still stay in the root console, because the second partition still needs a file system and a meaningful label to make it easier to find in the file manager during the life session after mounting. The commands are:</p>
+<pre><code>mkfs.ext4 -L LifeData /dev/sdb2</code></pre>
+<p>With the storage medium prepared in this way, we write the ISO image file to the <strong>1st partition</strong>.</p>
+<pre><code>dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb1</code></pre>
+<p>Please pay attention to <code>/dev/sdb1</code>. If only <code>/dev/sdb</code> is used, the dd command will mercilessly overwrite our newly created partition table.</p>
+<h3 id="mac-os-x-command-line">Mac OS X command line</h3>
+<p>The copy process is very similar to the procedure for a Linux operating system. Connect your USB device, Mac OS X should mount it automatically. In the Terminal (under <code>Applications</code> &gt; <code>Utilities</code>), run this command:</p>
+<pre><code>diskutil list</code></pre>
+<p>Determine the name of the USB device and unmount the partitions. In our example the name is <code>/dev/disk1</code>:</p>
+<pre><code>diskutil unmountDisk /dev/disk1</code></pre>
+<p>Assuming the siduction ISO image file is stored in the <code>/home</code> directory of user <strong>steve</strong>, and the USB device is named <code>disk1</code>, execute the following command:</p>
+<pre><code>dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1</code></pre>
+<div id="rev">
+Last edited: 2022/04/11
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Local APT mirror</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Local APT mirror</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#local-apt-mirror">Local APT mirror</a>
+<ul>
+<li><a href="#install-server">Install server</a></li>
+<li><a href="#client-configuration">Client configuration</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="local-apt-mirror">Local APT mirror</h2>
+<p><strong>Apt-Cacher</strong>, a proxy server for Debian packages</p>
+<p>Apt-Cacher is a proxy server that allows multiple local computers access to a Debian package cache.<br />
+The packages requested for installation from a computer at the cache only need to be loaded once from Debian mirror servers, no matter how many devices need these packages. This saves network bandwidth, increases speed for users, and reduces load on the mirrors.</p>
+<p>For users who own multiple PCs and want to conserve bandwidth and download volume while increasing the speed of system updates, apt-cacher is the ideal solution to achieve all these goals.</p>
+<p>Apt-Cacher is not a universal proxy server. Whoever tries this anyway will experience some unpleasant surprises in the network.</p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>a PC on which the local APT proxy server will be set up</li>
+<li>6 GB free disk space for the cache on the server</li>
+<li>LAN connection to the other devices</li>
+</ul>
+<p><strong>Apt-Cacher Setup</strong></p>
+<p>The setup for apt-cacher is done in two steps.<br />
+First you install apt-cacher on the PC selected as APT proxy server, and then you configure all client PCs to use the APT proxy server.</p>
+<h3 id="install-server">Install server</h3>
+<p>After an <strong><code>apt update</code></strong> the necessary packages are installed with the following command:</p>
+<pre><code># apt install apt-cacher
+[...]
+The following NEW packages will be installed:
+  apt-cacher ed libberkeleydb-perl
+  libcompress-raw-bzip2-perl libcompress-raw-lzma-perl
+  libcompress-raw-zlib-perl libfilesys-df-perl
+  libio-compress-lzma-perl libio-compress-perl
+  libio-interactive-perl libio-interface-perl
+  libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
+  libsys-syscall-perl libww-curl-perl
+0 updated, 16 reinstalled, 0 to remove and 0 not updated.
+992 kB of archives need to be downloaded.
+After this operation, 3,205 kB of additional disk space will be used.
+Do you want to continue? [Y]</code></pre>
+<p>During the installation of apt-cacher the basic configuration is done automatically.</p>
+<figure>
+<img src="./images/apt-localmirror/apt-cacher-config.png" alt="" /><figcaption>Configuration of apt-cacher</figcaption>
+</figure>
+<p>Keep and confirm the recommended daemon mode <em>“daemon”</em>.</p>
+<p>The cache, where all downloaded packages will be stored in the future, is located in<br />
+<code>/var/cache/apt-cacher/</code><br />
+and the configuration files in<br />
+<code>/etc/apt-cacher/</code>.</p>
+<p><strong>Server configuration</strong></p>
+<p>We change to the directory <code>/etc/apt-cacher/</code> and edit the file <code>apt-cacher.conf</code>.</p>
+<pre><code># cd /etc/apt-cacher
+/etc/apt-cacher# mcedit apt-cacher.conf</code></pre>
+<p>Now, somewhere around line 160, we look for the directive <em>“allowed_hosts”</em>. Remove the comment sign (<em>“#”</em>) at the beginning of the line to allow clients to contact the APT proxy server.<br />
+For security reasons, we replace the wildcard character (<em>“*”</em>), which allows everyone to access, with the IP addresses of the clients.</p>
+<pre><code>#allowed_hosts = *</code></pre>
+<p>For example, change it to</p>
+<pre><code>allowed_hosts = &#39;192.168.3.10-20&#39;</code></pre>
+<p>Of course, the IP addresses must be adapted to your own circumstances. Explanations of the syntax are in the file immediately before the directive.<br />
+If there is a DHCP server operating in your own network, it is necessary to assign a fixed IP to the APT proxy server, e.g. <em>“192.168.3.5”</em>.</p>
+<p>In the following, we need to specifiy the <em>“user”</em> and the <em>“group”</em> which the daemon runs with and the port on which the daemon listens (all of them in the <code>apt-cacher.conf</code> file):</p>
+<pre><code>group = www-data
+user = www-data
+daemon_port = 3142</code></pre>
+<p>These are the default values, which we do not change. After saving the file we exit mcedit.</p>
+<p>If a cache directory other than <code>/var/cache/apt-cacher/</code> is to be used, the owner and file permissions must be checked and adjusted (<code>chmod 644</code> for the files).</p>
+<p>To make sure that the APT proxy server starts automatically every time the server is booted, we issue the following command:</p>
+<pre><code># systemctl enable apt-cacher.service</code></pre>
+<p>The APT proxy server is now also restarted and thus the changed configuration is read in.<br />
+We check if it is active and listening on port 3142.</p>
+<pre><code># ss -tl | grep 3142
+LISTEN 0 4096 0.0.0:3142 0.0.0.0:</code></pre>
+<p>Everything is fine with this output.</p>
+<p><strong>Import of existing .deb’s</strong></p>
+<p>Apt-Cacher now has an import script that imports Debian archives already present on the PC. It saves downloading the packages again. We give the existing archive directory to the call:</p>
+<pre><code># /usr/share/apt-cacher/apt-cacher-import.pl /var/cache/apt/archives/</code></pre>
+<p>Called with <code>-h</code>, we get usage instructions and a listing of all options.</p>
+<h3 id="client-configuration">Client configuration</h3>
+<p>The clients accessing the APT proxy server require only minor configuration.</p>
+<p>First we create the file <code>30proxy</code> in the directory <code>/etc/apt/apt.conf.d/</code> which instructs apt to use the server. Here we use the above mentioned IP of the server. Please adapt the IP to your own circumstances.</p>
+<pre><code># echo &quot;Acquire::http { proxy &quot;http://192.168.3.5:3142&quot;; };&quot; &gt; /etc/apt/apt.conf.d/30proxy</code></pre>
+<p>Next, we change the addresses of the download mirrors in the directory <code>/etc/apt/sources.list.d/</code> from “https” to “http” within the files <code>debian.list</code>, <code>extra.list</code>, and <code>fixes.list</code>.<br />
+Using “https” is possible: On the one hand it requires some configuration effort, and on the other hand it is not necessary at the moment because all download mirrors still accept “http”.</p>
+<p>A subsequent</p>
+<pre><code># apt update</code></pre>
+<p>should run without error messages.<br />
+The first call of <strong><code># apt full-upgrade</code></strong> on a client loads all new packages into the cache of the APT proxy server. Thus, this process takes the same amount of time as before. The further accesses of the clients make use of the cache and then run substantially faster, without requiring bandwidth again.</p>
+<div id="rev">
+Last edited: 2022/04/05
+</div>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Partitioning of installation media</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Partitioning of installation media</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#partitioning-of-installation-media">Partitioning of installation media</a>
+<ul>
+<li><a href="#minimum-requirements">Minimum requirements</a></li>
+<li><a href="#examples-with-different-disk-sizes">Examples with different disk sizes</a></li>
+<li><a href="#partition-editors">Partition editors</a></li>
+<li><a href="#further-information">Further information</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="partitioning-of-installation-media">Partitioning of installation media</h2>
+<p>For Linux beginners, we recommend to create only two partitions (root/home and swap) because this makes a first installation much easier. After the installation, additional data partitions or, if desired, a separate /home can be created.</p>
+<p>However, we do not recommend to create a /home partition.<br />
+The directory <code>/home</code> should be the place where individual configurations are stored, and only them. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are immeasurable.</p>
+<p>A swap partition has a similar function as the Windows swap file, but the former is far more effective. As a rule of thumb, the swap partition should be twice as large as the RAM used. This applies mainly to notebooks that are to be hibernated via <code>hibernate</code> or desktop computers with very little RAM (1 GByte or less). Devices with sufficient RAM no longer need a swap partition.</p>
+<p>For data exchange with a Windows installation, the designated partition should be formatted with <strong>NTFS</strong>. siduction can read from and write to such a partition with the automatically installed <code>ntfs-3g</code>.</p>
+<p>There are many good ways to partition your disks. These examples should give a first insight into the possibilities.</p>
+<p>Purchasing an external USB hard drive for regular data backup is also worth considering.</p>
+<h3 id="minimum-requirements">Minimum requirements</h3>
+<p>The minimum requirements for the reasonable use of a siduction installation are:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">installed system</th>
+<th style="text-align: center;">hard disk space</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">siduction NoX</td>
+<td style="text-align: center;">5GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">siduction Xorg</td>
+<td style="text-align: center;">10GB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">siduction LXQt</td>
+<td style="text-align: center;">15GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">siduction LXDE</td>
+<td style="text-align: center;">15GB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">siduction Xfce</td>
+<td style="text-align: center;">15GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">siduction Cinnamon</td>
+<td style="text-align: center;">15GB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">siduction KDE Plasma</td>
+<td style="text-align: center;">15GB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-with-different-disk-sizes">Examples with different disk sizes</h3>
+<p>If a dual boot with MS Windows™ is created, MS Windows must always be installed as the first system onto the hard disk.</p>
+<p><em>“GPT”</em> should be selected as partition table type. Thus, you can use the advantages over <em>“MBR”</em>. Only with old hardware, <em>“MBR”</em> is still useful. The explanations for this can be found on our manual page <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p>
+<p>The examples refer to partition tables of the type <em>“GPT”</em>. It needs the first two, very small partitions in order to function.</p>
+<p><strong>Dual-boot with MS Windows and Linux</strong></p>
+<p><strong>1 TB hard disk:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">50 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">MS Windows system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">300 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">data for MS Windows</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">200 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">data for MS Windows and Linux</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux root)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: right;">416 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">data for Linux</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>120 GB hard disk:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">40 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">MS Windows System</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">48 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">data for MS Windows and Linux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux root)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">2 GB</td>
+<td style="text-align: center;">Linux swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>80 GB hard disk</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">40 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">MS Windows system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">10 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">data for MS Windows and Linux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">28 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux root)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">2 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Linux alone</strong></p>
+<p><strong>500 GB hard disk:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">250 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Data_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">216 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Data_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>160 GB hard disk</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">26 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">130 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>60 GB hard disk</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">25 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">33 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">2 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<h3 id="partition-editors">Partition editors</h3>
+<ul>
+<li><p><strong>GParted</strong>: an easy to use partition editor with a graphical interface<br />
+<em>Gparted</em> is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page <a href="https://manual.siduction.org/part-gparted_en.html#partitioning-with-gparted">Partitioning the hard disk with GParted</a> provides more information about the program.</p></li>
+<li><p><strong>KDE Partition Manager</strong>: a Qt based, easy to use partition editor with a graphical user interface<br />
+The <em>KDE Partition Manager</em> is the standard partition editor for the KDE Destktop and as comprehensive as <em>Gparted</em>.</p></li>
+<li><p><strong>gdisk / cgdisk</strong>: a console program for partition tables of the type <em>GPT - UEFI</em><br />
+<em>gdisk</em> is the classic text mode program, while <em>cgdisk</em> has a more user friendly ncurses interface. The manual page <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a> provides more information about the program.</p></li>
+<li><p><strong>fdisk / cfdisk</strong>: a console program for partition tables of the type <em>msdos - MBR</em><br />
+Note: <em>fdisk</em> should only be used for old hardware that does not support <em>GPT - UEFI</em>.<br />
+<em>fdisk</em> is the classic text mode program, while <em>cfdisk</em> has a more user-friendly ncurses interface. The manual page <a href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with cfdisk</a> provides more information about the program.</p></li>
+</ul>
+<warning>
+<strong>Caution</strong> <br />When using any partitioning software, there is a risk of data loss. Always back up important data to another disk in advance.
+</warning>
+<p><strong>Mounted partitions</strong> (also swap) must be detached before editing.<br />
+You can do this by entering to following command as <strong>root</strong>:</p>
+<pre><code># umount /dev/sda1</code></pre>
+<p>To mount a swap partition, use this command:</p>
+<pre><code># swapoff -a</code></pre>
+<h3 id="further-information">Further information</h3>
+<p><a href="https://gparted.org/index.php">Here the comprehensive english documentation of GParted</a></p>
+<p>For more partitioning options see:</p>
+<ul>
+<li><p>Logical Volume Manager <a href="https://manual.siduction.org/part-lvm_en.html#lvm-partitioning---logical-volume-manager">LVM partitioning</a></p></li>
+<li><p>partitioning with GPT to support UEFI <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a></p></li>
+</ul>
+<div id="rev">
+Last edited: 2022/03/31
+</div>
+</body>
+</html>

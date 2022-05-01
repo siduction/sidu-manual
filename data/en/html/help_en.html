@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The siduction help</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The siduction help</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#siduction-help">siduction help</a>
+<ul>
+<li><a href="#the-siduction-forum">The siduction forum</a></li>
+<li><a href="#the-siduction-wiki">The siduction wiki</a></li>
+<li><a href="#irc---interactive-live-support.">IRC - interactive live support.</a></li>
+<li><a href="#useful-helpers-in-text-mode">Useful helpers in text mode</a></li>
+<li><a href="#siduction-irc-support-in-text-mode">siduction IRC support in text mode</a></li>
+<li><a href="#surfing-the-internet-in-text-mode">Surfing the Internet in text mode</a></li>
+<li><a href="#inxi">inxi</a></li>
+<li><a href="#useful-links">Useful links</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="siduction-help">siduction help</h2>
+<p>Quick help can save you a lot of tears and gives you the opportunity to work on the important things in life. This section is organized by areas where the siduction distribution offers help.</p>
+<h3 id="the-siduction-forum">The siduction forum</h3>
+<p>The siduction forum offers the possibility to ask questions and get answers to them. Before creating a new post, use the forum search, as there is a good chance that this or a similar question has been asked before. <a href="https://forum.siduction.org/index.php?name=PNphpBB2">The forum</a> is available in English and German.</p>
+<h3 id="the-siduction-wiki">The siduction wiki</h3>
+<p>The siduction wiki is freely usable and modifiable by all siduction users. We hope that this way the siduction documentation will grow with the project over time.</p>
+<p>We hope for contributions from Linux users of all experience levels as this wiki intends to help users of all skill levels. The few minutes “sacrificed” to the wiki and project can save other users (and perhaps yourself) hours of dealing with problems. <a href="https://forum.siduction.org/index.php?board=66.0">Link to siduction wiki</a></p>
+<h3 id="irc---interactive-live-support.">IRC - interactive live support.</h3>
+<p><strong>The IRC should never be entered as “root” but only as a normal user.</strong><br />
+If you are unsure, please announce this immediately in the IRC channel so that help can be given.</p>
+<p><strong>Rules of conduct in IRC</strong></p>
+<ul>
+<li>A friendly tone is obligatory because we all do the support on a voluntary basis.</li>
+<li>It is helpful to make a request that is accurate to the best of your knowledge and to search for solutions in the siduction wiki beforehand if possible.</li>
+<li>Please never post a request in IRC and the forum at the same time. At best, we rub our eyes in amazement.</li>
+</ul>
+<p><strong>Reach siduction</strong></p>
+<ul>
+<li><p>Just click on the <strong>“IRC Chat #siduction” icon</strong> on the desktop or use the <em>kmenu</em> entry of <code>konversation</code>.<br />
+If you prefer another chat client, you need to enter these server details:</p>
+<pre><code>irc.oftc.net
+port 6667</code></pre></li>
+<li><p><a href="https://webchat.oftc.net/?nick=siducer007&amp;channels=siduction-en">With this link you can start the IRC immediately in your browser</a>: Enter a free nickname and join the channel #siduction-en.</p></li>
+</ul>
+<h3 id="useful-helpers-in-text-mode">Useful helpers in text mode</h3>
+<p>Normally, you should use text mode runlevel 3 (<strong><code>init 3</code></strong> or <strong><code>journalctl isolate multi-user.target</code></strong>) if you want to perform a dist-upgrade or if you are forced to beceause of a serious system error.</p>
+<p><strong>gpm</strong></p>
+<p>is a useful program in text mode. It allows you to use the mouse for copying and pasting in the terminal.</p>
+<p>gpm is preconfigured in siduction. In case it is not:</p>
+<pre><code>$ gpm -t imps2 -m /dev/input/mice</code></pre>
+<p>After that, you should check if the service is active:</p>
+<pre><code>$ systemctl status gpm.service</code></pre>
+<p>If successful, you will also find a line similar to the following in the output:</p>
+<pre><code>  Active: active (running) since Thu 2020-04-09 12:17:14 CEST; 5min ago</code></pre>
+<p>Now you should be able to use your mouse in text mode (tty).</p>
+<p><strong>File manager and text editing</strong></p>
+<p>Midnight Commander is an easy to use text mode (tty) file manager and text editor preinstalled in siduction.<br />
+Apart from normal keyboard input, the mouse can also be used due to gpm.<br />
+<code>mc</code> shows the file system, and with <code>mcedit</code> you can edit an existing file or create a new one.<br />
+This is how to open an existing file (a backup copy is created first):</p>
+<pre><code>$ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(date +%F)
+
+then
+
+$ mcedit /etc/apt/sources.list.d/debian.list</code></pre>
+<p>Now the file can be edited and saved. The changes will take effect immediately.</p>
+<p>See the man page for more information:</p>
+<pre><code>$ man mc</code></pre>
+<h3 id="siduction-irc-support-in-text-mode">siduction IRC support in text mode</h3>
+<p><strong>Rules of conduct in IRC</strong></p>
+<p><strong>The IRC should never be entered as “root” but only as a normal user.</strong><br />
+If you are unsure, please announce this immediately in the IRC channel so that help can be given.</p>
+<p><strong>IRC in text mode</strong></p>
+<p>The program <strong>irssi</strong> provides an IRC client in text mode or console and is activated in siduction.<br />
+With the key combination <strong><code>ALT</code></strong>+<strong><code>F2</code></strong> or <strong><code>F3</code></strong> etc., you can switch from one terminal/TTY to another and log in with your user account:</p>
+<pre><code>$ siductionbox login: &lt;username&gt; &lt;password&gt; (not as root)</code></pre>
+<p>After that you enter</p>
+<pre><code>$ siduction-irc</code></pre>
+<p>to start irssi.</p>
+<p>Instructions for using a different client (weechat in the example):<br />
+First, make sure that weechat is installed by looking for the weechat entry in the menu. If this is not available:</p>
+<pre><code># apt update
+# apt install weechat-curses
+
+  and then start the program
+
+$ weechat-curses</code></pre>
+<p>Now you can connect to irc.oftc.net on port 6667. After successful connection, the pseudonym (the “nickname”) will be changed:</p>
+<p><strong>/nick ‘Your_new_nick’</strong>.</p>
+<p>You can enter the siduction channel with the following input:</p>
+<p><strong>/join #siduction-en</strong></p>
+<p>If you want to change the server, enter a command with the following syntax:</p>
+<p><strong>/server server.name</strong></p>
+<p>In the bottom menu, you can see numbers if the channels are active. In order to connect to a channel, you can use <strong><code>ALT</code></strong>+<strong><code>1</code></strong>, <strong><code>ALT</code></strong>+<strong><code>2</code></strong>, <strong><code>ALT</code></strong>+<strong><code>3</code></strong>, <strong><code>ALT</code></strong>+<strong><code>4</code></strong>, and so on.</p>
+<p>To exit a channel use</p>
+<p><strong>/exit</strong></p>
+<p>If a dist-upgrade is performed at the same time, you can switch to the terminal to monitor the upgrade progress as follows:</p>
+<p>key combination <strong><code>ALT</code></strong>+<strong><code>F3</code></strong><br />
+To return to the IRC, you can use the<br />
+key combination <strong><code>ALT</code></strong>+<strong><code>F2</code></strong>.</p>
+<p>The following links provide more information:<br />
+<a href="https://irssi.org/documentation">Documentation page of irssi</a><br />
+<a href="https://www.weechat.org/">Documentation page of WeeChat</a></p>
+<h3 id="surfing-the-internet-in-text-mode">Surfing the Internet in text mode</h3>
+<p>The command line browser <strong>w3m</strong> allows you to surf the internet in a terminal, console, or in text mode.<br />
+If neither w3m nor elinks are installed, proceed as follows:</p>
+<pre><code># apt update
+# apt install w3m
+# apt install elinks</code></pre>
+<p>Now you can use the command line browser <code>w3m</code>. For this purpose, it is useful to switch to another terminal and log in with your user account:</p>
+<p>key combination <strong><code>ALT</code></strong>+<strong><code>F2</code></strong></p>
+<pre><code>$ siductionbox login: &lt;username&gt; &lt;password&gt; (not root!)</code></pre>
+<p>The program call is <strong><code>w3m URL</code></strong> or <strong><code>w3m ?</code></strong>.<br />
+Example: https://siduction.org is called like this (https:// is omitted):</p>
+<pre><code>$ w3m siduction.org</code></pre>
+<p>A new URL is called using the key combination <strong><code>Shift</code></strong>+<strong><code>U</code></strong>.</p>
+<p>After that, you will see a line like <code>Goto URL: https://siduction.org</code>. With the backspace key you delete the last selected URL and enter the desired one.<br />
+Exit w3m with:</p>
+<p><strong><code>SHIFT</code></strong>+<strong><code>Q</code></strong></p>
+<p>More information can be found on the <a href="http://w3m.sourceforge.net/">documentation page of w3m</a>.</p>
+<p>It is advisable to familiarize yourself with <strong>elinks/w3m, irssi/weechat, midnight commander</strong>. Print this file to have the information handy in case of an emergency.</p>
+<h3 id="inxi">inxi</h3>
+<p><strong>inxi</strong> is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Alternatively, run it in a console to get information about your own system yourself.</p>
+<p>To use inxi in <code>konversation</code>, type this into the chat box:</p>
+<p><strong>/cmd inxi -v2</strong></p>
+<p>To use inxi in <code>weechat</code>, enter this into the chat box:</p>
+<p><strong>/shell -o inxi -v2</strong></p>
+<p>This requires the shell extension to be installed.</p>
+<p>See: <a href="https://www.weechat.org/scripts/">https://www.weechat.org/scripts/</a></p>
+<p>To use inxi in other clients, type this into the chat box:</p>
+<p><strong>/exec -o inxi -v2</strong><br />
+or<br />
+<strong>/inxi -v2</strong></p>
+<p>Type the following command into a console:</p>
+<pre><code>$ inxi -v2</code></pre>
+<p>Help for inxi:</p>
+<pre><code>$ inxi --help</code></pre>
+<h3 id="useful-links">Useful links</h3>
+<p><a href="https://www.debian.org/doc/manuals/refcard/refcard.en.pdf">Debian reference card - to print on a single sheet</a><br />
+<a href="https://www.debian.org/doc/#howtos">HOWTOs from the Debian site</a> (automatically in your language if browser is localized)<br />
+<a href="http://qref.sourceforge.net/index.en.php">Debian Reference: Basics and System Administration</a> (documents available as HTML, text, PDF, and PS)<br />
+<a href="https://www.cups.org/">Common Unix Printing System CUPS</a> (In KDE, the KDE Help Center provides information about CUPS.)<br />
+<a href="https://libreoffice.org/">LibreOffice</a> (There is a wide choice in the “Help” menu.)</p>
+<div id="rev">
+Last edited: 2022/03/29
+</div>
+</body>
+</html>

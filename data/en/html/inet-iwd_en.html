@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Network - IWD</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Network - IWD</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#iwd">IWD</a>
+<ul>
+<li><a href="#graphical-configuration-programs">Graphical configuration programs</a></li>
+<li><a href="#configuration-in-terminal">Configuration in terminal</a></li>
+</ul></li>
+<li><a href="#iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</a>
+<ul>
+<li><a href="#install-iwd">Install IWD</a></li>
+<li><a href="#back-to-wpa_supplicant">Back to wpa_supplicant</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="iwd">IWD</h2>
+<p>Intel’s <a href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (iwd) sends wpa-supplicant into well-deserved retirement. Only a tenth the size and much faster, iwd is the successor. It works alone or together with NetworkManager, systemd-networkd, and conman.<br />
+Two things iwd still can’t do are to connect via WPA/WPA2 Enterprise and to properly handle hidden networks. For such working environments, you should stay with wpa-supplicant or, if you use siduction from 2021.3.0, <a href="https://manual.siduction.org/inet-iwd_en.html#back-to-wpa_supplicant">switch back to wpa-supplicant</a>.</p>
+<p>Further information can be found on the <a href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> or the <a href="https://wiki.debian.org/NetworkManager/iwd">debian wiki</a>.</p>
+<p><strong>Since siduction 2021.3.0</strong>, iwd is used as the standard for establishing connections to WLAN. Our implementation runs with NetworkManager.</p>
+<p><strong>Since siduction 2021.1.0</strong>, iwd has already been delivered in the flavours Xorg and NoX. If you want, you can install iwd on the other flavours. See below: <a href="https://manual.siduction.org/inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</a>.</p>
+<p><strong>Before siduction 2021.1.0</strong>: Even with a slightly older snapshot, iwd can be installed (tested with siduction 2018.3.0 and linux-image-5.15.12-1-siduction-amd64). Please also follow the instructions at <a href="https://manual.siduction.org/inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</a>.</p>
+<h3 id="graphical-configuration-programs">Graphical configuration programs</h3>
+<ul>
+<li><strong>NetworkManager</strong>: For the NetworkManager, there are different graphical interfaces, e.g. <code>plasma-nm</code> for plasma-desktop/kde or <code>network-manager-gnome</code> for gnome and others. Their usage should be self-explanatory!</li>
+<li><strong>conman</strong> is a small and resource saving network manager developed by Intel. Read more about it on the <a href="https://wiki.archlinux.org/index.php/ConnMan">Arch-Wiki</a></li>
+<li><strong>iwgtk</strong> is not available in debian sources. It has to be built from source code and can be found on <a href="https://github.com/J-Lentz/iwgtk">github</a>.</li>
+</ul>
+<h3 id="configuration-in-terminal">Configuration in terminal</h3>
+<p><strong>iwd and NetworkManager</strong></p>
+<ol type="1">
+<li><p>The fastest and easiest way to use iwd with NetworkManager is to open a terminal and type this command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>~$ nmtui</span></code></pre></div>
+<p>This will start the NetworkManager’s text based graphical interface in the terminal. The program should be self-explanatory!</p></li>
+<li><p>Use the NetworkManager’s command line tool <code>nmcli</code>. Detailed information about this can be found on our manual page <a href="https://manual.siduction.org/inet-nm-cli_en.html#network-manager-command-line-tool">NetworkManager in the terminal</a>.</p>
+<p>The following is a brief description of the fastest way to set up a network with the help of NetworkManager on the command line. Provided you have all the information, this one-liner is enough:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>~$ nmcli dev wifi con &quot;&lt;ssid&gt;&quot; password &lt;password&gt; name &quot;&lt;name&gt;&quot;</span></code></pre></div>
+<p>(<em>“ssid”</em> denotes the name of the network.)</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>nmcli dev wifi con &quot;HomeOffice&quot; password R3allY+v3ry+s3creT name &quot;HomeOffice&quot;</span></code></pre></div></li>
+</ol>
+<p><strong>iwd standalone (without NetworkManager)</strong></p>
+<p>Intel’s iwd comes with its own command line tool called <em>iwctl</em>. Please only use iwctl if NetworkManager and wpa_supplicant are not installed or both are masked in systemd.</p>
+<p>First we should call the help of iwctl to see what is possible. For this, we enter the command <strong><code>iwctl</code></strong> into the terminal and then <strong><code>help</code></strong> into the input prompt.</p>
+<figure>
+<img src="./images/iwd/iwctl-help.png" alt="" /><figcaption>iwctl help</figcaption>
+</figure>
+<p>To find out which Wi-Fi interface we are using, we enter the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>[iwd]# device list</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>              Devices                             *</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>---------------------------------------------------</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>Name   Address            Powered  Adapter  Mode</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>---------------------------------------------------</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>wlan0  00:01:02:03:04:05  on       phy0     station</span></code></pre></div>
+<p>In this case, it is <em>“wlan0”</em> and it is running (<em>“powered on”</em>) in <em>“station”</em> mode.</p>
+<p>Now we scan for an active network:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>[iwd]# station wlan0 scan</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>[iwd]# station wlan0 get-networks</span></code></pre></div>
+<p>After that, we can connect to our network:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>[iwd]# station wlan0 connect &lt;ssid&gt;</span></code></pre></div>
+<p>(<em>“ssid”</em> means the name of the network.)</p>
+<p>We are asked for the password and we should then be connected to our network. We can check this with <strong><code>station list</code></strong> or <strong><code>station wlan0 get-networks</code></strong>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>[iwd]# station list</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    Devices in Station Mode</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>------------------------------</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>Name      State       Scanning</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>------------------------------</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>wlan0     connected</span></code></pre></div>
+<p>The whole process can be abbreviated by the following command if you have all the necessary information!</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>iwctl --passphrase &lt;passphrase&gt; station &lt;device&gt; connect &lt;ssid&gt;</span></code></pre></div>
+<p>For example:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>~$ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice</span></code></pre></div>
+<h2 id="iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</h2>
+<p>For those who want to use iwd as a replacement for wpa_supplicant with a slightly older snapshot than siduction 2021.3.0, please follow the instructions below.</p>
+<h3 id="install-iwd">Install IWD</h3>
+<warning>
+Note: <br />It is possible that non-free firmware must be installed from a USB stick or via LAN! Under Debian, it is unfortunately not possible to install the NetworkManager (standalone) without wpa_supplicant.
+</warning>
+<p>If you want to do this, there are two options. The second one is more sensible and easier.</p>
+<ol type="1">
+<li>Install NetworkManager from the sources.</li>
+<li>Do not start or mask the wpa_supplicant.service. Since siduction uses systemd, we will not go into how iwd is configured without systemd!</li>
+</ol>
+<p>If you want to use iwd without NetworkManager, you don’t have to worry about that, but you have to remove NetworkManager and wpa_supplicant from the disk together with their configuration:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>~# apt purge network-manager wpasupplicant</span></code></pre></div>
+<p><strong>Procedure with NetworkManager installed</strong><br />
+<strong>and iwd &lt; 1.21-2</strong></p>
+<ul>
+<li>First install <strong>iwd</strong>,</li>
+<li>then stop the <strong>NetworkManager.service</strong>,</li>
+<li>then stop and mask the <strong>wpa_supplicant.service</strong>.</li>
+<li>Now create the file <code>/etc/NetworkManager/conf.d/nm.conf</code> and enter <strong>iwd</strong> there,</li>
+<li>then create the file <code>/etc/iwd/main.conf</code> and fill it with appropriate content,</li>
+<li>activate and start the <strong>iwd.service</strong>,</li>
+<li>and start the <strong>NetworkManager.service</strong>.</li>
+</ul>
+<p>Now just run the following commands as <strong>root</strong> in the terminal to use iwd:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>~# apt update</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>~# apt install iwd</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>~# systemctl stop NetworkManager.service</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>~# systemctl disable --now wpa_supplicant.service</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>~# echo -e &#39;[device]\nwiFi.backend=iwd&#39; &gt; /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>~# touch /etc/iwd/main.conf</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>~# echo -e &#39;[General]\nEnableNetworkConfiguration=true \n\n[Network]\nNameResolvingService=systemd&#39; &gt; /etc/iwd/main.conf</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>~# systemctl enable -now iwd.service</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>~# systemctl start NetworkManager.service</span></code></pre></div>
+<p><strong>See if it worked</strong><br />
+We display the two configuration files.</p>
+<ul>
+<li><code>/etc/NetworkManager/conf.d/nm.conf</code></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>~$ cat /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>[device]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>wiFi.backend=iwd</span></code></pre></div>
+<ul>
+<li><code>/etc/iwd/main.conf</code></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>~$ cat /etc/iwd/main.conf</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>[General]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>EnableNetworkConfiguration=true</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>[Network]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>NameResolvingService=systemd</span></code></pre></div>
+<p><strong>Procedure with NetworkManager installed</strong><br />
+<strong>and iwd &gt;= 1.21-2</strong></p>
+<p>From version 1.21-2 on, iwd brings its own configuration file <code>/etc/iwd/main.conf</code>. The procedure is similar to the one just mentioned with the exception that we do not create the configuration file anymore, but remove the comment sign in front of <em>“EnableNetworkConfiguration=true”</em> in it.</p>
+<p>Please execute the following commands as <strong>root</strong> in the terminal:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>~# apt update</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>~# apt install iwd</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>~# systemctl stop NetworkManager.service</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>~# systemctl disable --now wpa_supplicant.service</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>~# echo -e &#39;[device]\nwiFi.backend=iwd&#39; &gt; /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>~# sed -i &#39;s/#EnableNetworkConfiguration=true/EnableNetworkConfiguration=true/&#39; /etc/iwd/main.conf</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>~# systemctl enable -now iwd.service</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>~# systemctl start NetworkManager.service</span></code></pre></div>
+<p><strong>See if it worked</strong><br />
+We display the two configuration files.</p>
+<ul>
+<li><code>/etc/NetworkManager/conf.d/nm.conf</code></li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>~$ cat /etc/NetworkManager/conf.d/nm.conf</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>[device]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>wiFi.backend=iwd</span></code></pre></div>
+<ul>
+<li><code>/etc/iwd/main.conf</code></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>~$ cat /etc/iwd/main.conf</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>[...]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>[General]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a># iwd is capable of performing network configuration on its</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a># own, including DHCPv4 based address configuration.</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a># By default this behavior is disabled, and an external</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a># service such as NetworkManager, systemd-network or</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a># dhcpclient is required.  Uncomment the following line if</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a># you want iwd to manage network interface configuration.</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a>#</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true"></a>EnableNetworkConfiguration=true</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true"></a>#</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true"></a>[...]</span></code></pre></div>
+<p>With the commands described above, you are now able to display Wi-Fi hardware in the terminal <a href="https://manual.siduction.org/inet-iwd_en.html#configuration-in-terminal"><strong>nmtui</strong>, <strong>nmcli</strong>, or <strong>iwctl</strong></a>, configure it, and connect to a network.<br />
+Or you can use the NetworkManager in the graphical user interface. See: <a href="https://manual.siduction.org/inet-iwd_en.html#graphical-configuration-programs">graphical-configuration-programs</a></p>
+<h3 id="back-to-wpa_supplicant">Back to wpa_supplicant</h3>
+<p><em>(Provided NetworkManager and wpa_supplicant are installed.)</em></p>
+<ul>
+<li>Stop the <strong>NetworkManager.service</strong>.</li>
+<li>Stop the <strong>iwd.service</strong> and mask it.</li>
+<li>Rename the <strong>/etc/NetworkManger/conf.d/nm.conf</strong> file.</li>
+<li>Unmask and start the <strong>wpa_supplicant.service</strong>.</li>
+<li>Restart the <strong>NetworkManager.service</strong>.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>~# systemctl stop NetworkManager.service</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>~# systemctl disable --now iwd.service</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>~# mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>~# systemctl unmask wpa_supplicant.service</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>~# systemctl enable --now wpa_supplicant.service</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>~# systemctl start NetworkManager.service</span></code></pre></div>
+<p>Now wpa_supplicant is used to connect to the Wi-Fi hardware.</p>
+<div id="rev">
+Last edited: 2022/04/03
+</div>
+</body>
+</html>

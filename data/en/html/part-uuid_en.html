@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>UUID - naming of block devices</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">UUID - naming of block devices</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#uuid---naming-of-block-devices">UUID - naming of block devices</a>
+<ul>
+<li><a href="#types-of-block-device-naming">Types of block device naming</a></li>
+<li><a href="#use-label">Use label</a></li>
+</ul></li>
+<li><a href="#the-fstab">The fstab</a>
+<ul>
+<li><a href="#adjusting-the-fstab">Adjusting the fstab</a></li>
+<li><a href="#creation-of-new-mount-points">Creation of new mount points</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="uuid---naming-of-block-devices">UUID - naming of block devices</h2>
+<p><strong>UUID (Universally Unique Identifier) and partition label</strong></p>
+<p>The permanent naming of block devices was made possible with the introduction of udev. The advantage is independence from the used controllers as well as from the type and number of connected devices. The <code>fstab</code> file created during the installation of siduction contains corresponding entries for all block devices connected at that time.</p>
+<h3 id="types-of-block-device-naming">Types of block device naming</h3>
+<p>Currently, Linux uses five types of identifiers for block devices. All identifiers can be found below the <code>/dev/disk/</code> directory and are created automatically by the system. For <em>labels</em> this only applies if they have been assigned to the block devices beforehand.</p>
+<ol type="1">
+<li><p><strong>UUID</strong><br />
+This is a unique identifier on file system level and stored in the file system’s metadata. To read it, the file system type must be known and readable. It is unique because a new UUID is already created when a partition is formatted.<br />
+A UUID is a 128-bit number. Anyone can create and use a UUID. The probability that a UUID is duplicated is not zero, but it is so small that the case can be neglected. All Linux file systems including swap support UUID. Although <strong>FAT</strong> and <strong>NTFS</strong> file systems do not support UUID, they are listed in <code>/dev/disk/by-uuid</code>.</p></li>
+<li><p><strong>PARTUUID</strong>.<br />
+This is an identifier on partition table level that has been introduced with GPT. The PARTUUID is preserved when the partition is reformatted and is therefore not unique. For example, mounting through an <code>fstab</code> entry based on PARTUUID will fail if the partition was given a different filesystem without modifying <code>fstab</code>.</p></li>
+<li><p><strong>Device ID (ID)</strong><br />
+The ID is created from the device’s metadata (manufacturer, connection type, construction type, storage volume, etc.) and does neither take into account the partitioning nor the file systems on the partitions. It is unsuitable as a permanent identifier in <code>fstab</code>.</p></li>
+<li><p><strong>PATH</strong><br />
+This is composed of the controller name, the device type, and the partition number. As with ID, it is unsuitable as a permanent identifier in <code>fstab</code>.</p></li>
+<li><p><strong>LABEL</strong><br />
+Labels are easily recognizable identifiers assigned by the user. They are not unique, so care must be taken to avoid overlapping names.</p></li>
+</ol>
+<p><strong>By default, siduction uses UUID in /etc/fstab for the reasons named above.</strong></p>
+<h3 id="use-label">Use label</h3>
+<p>The label of a block device has the advantage for us humans to be easily understandable and recognizable. Practically every type of file system can have a label. Partitions with a label can be found in the directory <code>/dev/disk/by-label</code>:</p>
+<pre><code>$ ls -l /dev/disk/by-label
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data -&gt; ../../sdb2
+lrwxrwx 1 root root 10 Oct 16 10:27 home -&gt; ../../sda6
+lrwxrwx 1 root root 10 Oct 16 10:27 root -&gt; ../../sda1
+lrwxrwx 1 root root 10 Oct 16 10:27 swap -&gt; ../../sda5
+lrwxrwx 1 root root 10 Oct 16 10:27 windows -&gt; ../../sdb1</code></pre>
+<p>The label can be created or changed with one the following commands, according to the respective file system:</p>
+<ul>
+<li><p><strong>swap</strong><br />
+<code>swaplabel -L &lt;label&gt; /dev/sdXx</code></p></li>
+<li><p><strong>ext2/ext3/ext4</strong><br />
+<code>e2label /dev/sdXx &lt;label&gt;</code> or<br />
+<code>tune2fs -L &lt;label&gt; /dev/sdXx</code></p></li>
+<li><p><strong>jfs</strong><br />
+<code>jfs_tune -L &lt;label&gt; /dev/sdXx</code></p></li>
+<li><p><strong>xfs</strong><br />
+<code>xfs_admin -L &lt;label&gt; /dev/sdXx</code></p></li>
+<li><p><strong>reiserFS</strong><br />
+<code>reiserfstune -l &lt;label&gt; /dev/sdXx</code></p></li>
+<li><p><strong>fat</strong><br />
+<code>fatlabel /dev/sdXx &lt;label&gt;</code></p></li>
+<li><p><strong>ntfs</strong><br />
+<code>ntfslabel /dev/sdXx &lt;label&gt;</code></p></li>
+</ul>
+<p>An <strong>NTFS</strong> and <strong>FAT</strong> partition’s label should consist only of uppercase letters, digits, and special characters that Windows™ allows for file names.</p>
+<p>The syntax in fstab for the <em>file system</em> is <strong>LABEL=&lt;label&gt;</strong>.</p>
+<warning>
+It is essential to note: <br />The labels must have a singular name in order to work when mounted. This also applies to external devices (hard disks, sticks, etc.) that are mounted via USB or Firewire.
+</warning>
+<h2 id="the-fstab">The fstab</h2>
+<p>The file <code>/etc/fstab</code> is read during system startup to mount the desired partitions. Here is an example of an fstab:</p>
+<pre><code>UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap swap defaults,noatime 0 2
+UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb / ext4 defaults,noatime 0 1
+UUID=35336532-0cc8-4613-9b1a-f31b12ea58c3 /home ext4 defaults,noatime 0 2
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+UUID=e2164479-3f71-4216-a4d4-af3321750322 /mnt/TEST_root ext4 noauto,noatime 0 0
+LABEL=TEST_HOME /mnt/TEST_home ext4 noauto,users,noatime 0 0
+UUID=B248-1CCA /mnt/TEST_boot vfat noauto,users,rw,noatime 0 0
+UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /mnt/TEST_res ext4 noauto,users,rw,noatime 0 0</code></pre>
+<p>Partitions listed in <code>fstab</code> can be mounted with their &lt;file system&gt; identifier or with the &lt;mount point&gt;.</p>
+<pre><code>$ mount UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5
+    or
+$ mount /mnt/TEST_res
+    or
+$ mount LABEL=TEST_HOME</code></pre>
+<h3 id="adjusting-the-fstab">Adjusting the fstab</h3>
+<p>If you want the ability to use newly created partitions (let’s take sda5 and sdb7 as examples) that do not appear in <code>fstab</code> or cannot be mounted with the previously mentioned commands, type the following command into the console as <strong>user</strong>:</p>
+<pre><code>$ ls -l /dev/disk/by-uuid</code></pre>
+<p>It will print something similar to this:</p>
+<pre><code>lrwxrwx 1 root root 10 May 29 17:51 1c257cff-1c96-4c4f-811f-46a87bcf6abb -&gt; ../../sda2
+lrwxrwxrwx 1 root root 10 May 29 17:51 2e3a21ef-b98b-4d53-af62-cbf9666c1256 -&gt; ../../sda1
+lrwxrwxrwx 1 root root 10 May 29 17:51 2ef32215-d545-4e12-bc00-d0099a218970 -&gt; ../../sda5
+lrwxrwxrwx 1 root root 10 May 29 17:51 35336532-0cc8-4613-9b1a-f31b12ea58c3 -&gt; ../../sda4
+lrwxrwxrwx 1 root root 10 May 29 17:51 4c4b9246-2904-40d1-addc-724fc90a2b6a -&gt; ../../sdb3
+lrwxrwxrwx 1 root root 10 May 29 17:51 a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 -&gt; ../../sdb7
+lrwxrwxrwx 1 root root 10 May 29 17:51 B248-1CCA -&gt; ../../sdb1
+lrwxrwxrwx 1 root root 10 May 29 17:51 d5b01bbc-700c-43ce-a382-1ba95a59de78 -&gt; ../../sdb6
+lrwxrwxrwx 1 root root 10 May 29 17:51 e2164479-3f71-4216-a4d4-af3321750322 -&gt; ../../sdb5
+lrwxrwx 1 root root 10 May 29 17:51 f5ed412d-7b7b-41c1-80ce-53337c82405b -&gt; ../../sdb2</code></pre>
+<p>In this example,<br />
+<em>“2ef32215-d545-4e12-bc00-d0099a218970”</em> is the missing entry for sda5 and<br />
+<em>“a7aeabe9-f09d-43b5-bb12-878b4c3d98c5”</em> is the missing entry for sdb7.</p>
+<p>The next step is to add the UUID partitions to <code>/etc/fstab</code>. To achieve this, use a text editor (like <code>mcedit</code>, <code>kate</code>, <code>kwrite</code>, or <code>gedit</code>) with <strong>root</strong> privileges. In this example, the entry would look like this:</p>
+<pre><code>UUID=2ef32215-d545-4e12-bc00-d0099a218970 /media/disk1part5 ext4 auto,users,exec 0 2
+UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /media/disk2part7 ext4 auto,users,exec 0 2</code></pre>
+<h3 id="creation-of-new-mount-points">Creation of new mount points</h3>
+<p><strong>Note:</strong> A mount point that is specified in fstab must be associated with an existing directory. During the live session, siduction creates these directories in <code>/media</code> with the naming scheme <strong>diskXpartX</strong>.</p>
+<p>Now, if the partition table was changed after the installation and <code>fstab</code> was adjusted (for example, two new partitions were created), no mount point exists yet. It must be created manually.</p>
+<p><strong>Example</strong><br />
+First, become <strong>root</strong> and determine the existing mount points:</p>
+<pre><code>cd /media
+ls</code></pre>
+<p>The output shows for example:</p>
+<pre><code>disk1part1 disk1part3 disk2part1</code></pre>
+<p>The mount points of the new partitions are now created in the <code>/media</code> directory:</p>
+<pre><code>mkdir disk1part5
+mkdir disk2part7</code></pre>
+<p>Thus, the new partitions can be used or tested immediately:</p>
+<pre><code>mount /media/disk1part5
+mount /media/disk2part7</code></pre>
+<p>After a reboot, the new file systems are mounted automatically if <em>auto</em> or <em>defaults</em> is entered in the <code>fstab</code> under <em>“&lt;options&gt;”</em>. See also:</p>
+<pre><code>man mount</code></pre>
+<p>Of course, you don’t have to follow the naming scheme <em>“diskXpartX”</em>. Mount points and their associated identifiers in <code>fstab</code> can be assigned meaningful names, for example, <em>“data”</em> or <em>“music”</em>.</p>
+<div id="rev">
+Last edited: 2022/04/05
+</div>
+</body>
+</html>

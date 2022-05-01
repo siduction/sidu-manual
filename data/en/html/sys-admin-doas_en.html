@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Doas</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Doas</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#doas---alternative-to-sudo">Doas - Alternative to Sudo</a>
+<ul>
+<li><a href="#configure-doas">Configure Doas</a></li>
+<li><a href="#doas-and-multiple-users">Doas and multiple users</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="doas---alternative-to-sudo">Doas - Alternative to Sudo</h2>
+<p>We, the siduction team, have decided to use a real root account and have not configured Sudo. For users who are used to Sudo and don’t want to do without its functionality, the slim alternative Doas is a good choice. Doas is tailored to desktop systems, having only about 1/100 of code lines in comparison to Sudo. With <em>siduction 2021.3 wintersky</em>, Doas is automatically installed in version 6.8.1-3, but is not yet fully configured.</p>
+<h3 id="configure-doas">Configure Doas</h3>
+<p>The only thing missing to be able to use Doas is the configuration file <em><code>/etc/doas.conf</code></em>. It contains line-by-line rules that assign actions to a user. A <code>#</code> introduces comments. Doas reads the lines one after the other, executing the action of the last applicable rule. To understand the rules in the configuration file, there are a few things to keep in mind.<br />
+- Only actions for which at least one rule applies are executed. - By the fact that Doas evaluates the rules line by line one after the other, hierarchies can be built up. - For rules that contain commands with arguments, the arguments must be specified exactly and completely. - Rules with commands that require variable arguments are not possible. - Doas checks the syntax of the configuration file before executing the requested action. In case of incorrect rules, Doas outputs <code>doas: syntax error at line 4</code> and then exits. The write access to the configuration file is then only possible with the <strong>root</strong> account.</p>
+<p>The configuration is particularly simple if only one user account exists on the siduction system. A single line is sufficient to execute commands with root privileges using the prefix “doas”.<br />
+Log in to a terminal as <strong>root</strong> and execute the following command, replacing “tux” with the name of your user account.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>tux@sidu:~$ su</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>Password:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>root@sidu:/home/tux# echo &quot;permit keepenv nopass tux&quot; &gt; /etc/doas.conf</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>root@sidu:/home/tux# exit</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>tux@sidu:~$</span></code></pre></div>
+<p>The configuration line consists of:<br />
+The action <em>permit|deny</em> with<br />
+the option <em>keepenv</em> (this allows to start graphical programs like <em>gparted</em>),<br />
+the option <em>nopass|persist</em> (no password request|the one-time password entry remains valid for a limited time), and<br />
+the user <em>tux</em> to which the action is to be applied.</p>
+<p>If the username stands alone, <strong>tux</strong> may execute commands as any user present on the system. The default is <strong>root</strong>. If the execution of the action is to be allowed only with the rights of a user other than <strong>root</strong>, the name must be specified within the rule (e.g. <em>tux as anne</em>). Instead of the user, a group (e.g. <em>:vboxusers</em>) can gain permissions by prepending a <strong><code>:</code></strong>.</p>
+<h3 id="doas-and-multiple-users">Doas and multiple users</h3>
+<p><strong>Example</strong><br />
+On the workstation PC, in addition to <strong>tux</strong>, three other users named <strong>anne</strong>, <strong>bob</strong>, and <strong>lisa</strong> are allowed to log in.<br />
+Anne only wants to allow Bob to run two of her scripts from her <strong>/home</strong> directory. Anne has restrictively set the permissions on her scripts to 700.<br />
+Lisa is especially trustworthy, so she should be in charge of system upgrades.</p>
+<p>Now, as user <strong>tux</strong>, we use Doas in a terminal to edit the configuration file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>tux@sidu:~$ doas mcedit /etc/doas.conf</span></code></pre></div>
+<p>We convert the previously mentioned permissions into rules and add some comments to the file.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a># doas config file /etc/doas.conf</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a># tux gets root privileges</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>permit keepenv nopass tux</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a># bob may execute anne&#39;s script</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>permit bob as anne cmd /home/anne/bin/script1 args -n</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>permit bob as anne cmd /home/anne/bin/script2 args</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a># lisa may execute system upgrade</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>permit persist lisa cmd init</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>deny lisa cmd init args 1</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>deny lisa cmd init args 5</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>permit persist lisa cmd apt args update</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a>permit persist lisa cmd apt args full-upgrade</span></code></pre></div>
+<p><strong>Explanations</strong><br />
+<strong>bob</strong> may execute the scripts <em>script1</em> and <em>script2</em> inside Anne’s <strong>/home/anne/bin</strong> directory (the former exclusively with the argument <em>-n</em>, the latter must not be given any argument). Specifying <em>args</em> in the rule line for the <em>script2</em> without a following argument forces the file to be called without an argument and thus without potentially malicious code. <strong>bob</strong> must supply the username when calling scripts, using the <em>-u</em> option.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>bob@sidu:~$ doas -u anne /home/anne/bin/script1 -n</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>doas (bob@sidu) password:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>bob@sidu:~$</span></code></pre></div>
+<p>The script was executed without comment after Bob entered his user password.</p>
+<p>To allow <strong>Lisa</strong> to perform the system upgrade, she should switch to <em>multi-user.target</em> (init 3) and perform a <em>systemctl reboot</em> (init 6) after completion. The rule line <code>permit persist lisa as root cmd init</code> without specifying <em>args</em> causes all other calls of init are allowd, except those that are prohibited by the following rules below. Therefore, she cannot go directly from the <em>multi-user.target</em> to the <em>graphical.target</em> (init 5). Here we see the structure of a hierarchy.</p>
+<p><strong>Notes</strong><br />
+If you keep typing <em>sudo</em>, the line <code>alias sudo="doas"</code> in your <em>.bashrc</em> will help.<br />
+Doas plays its decisive advantage where only one user is granted root rights by <em>doas</em>. The above example with Lisa shows how extensive the configuration for a restricted rights assignment can become. Furthermore, a rule for a program call with variable arguments (e.g. <em>apt install &lt;package name&gt;</em>) is not possible.</p>
+<p><strong>Sources</strong><br />
+man doas<br />
+man doas.conf<br />
+<a href="https://github.com/slicer69/doas">github, doas</a><br />
+<a href="https://linuxnews.de/2020/10/linux-rechtemanagement-sudo-durch-doas-ersetzen/">DE: LinuxNews, Linux Rechtemanagement, sudo durch doas ersetzen</a><br />
+<a href="https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/">DE: LinuxUser 08.2021, Kleiner Bruder</a></p>
+<div id="rev">
+Page last updated 2022/03/06
+</div>
+</body>
+</html>

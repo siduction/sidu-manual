@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>System journal</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">System journal</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#system-journal">System journal</a>
+<ul>
+<li><a href="#journald">journald</a></li>
+<li><a href="#journald-over-the-network">journald over the network</a></li>
+<li><a href="#journald.conf">journald.conf</a></li>
+<li><a href="#journalctl">journalctl</a></li>
+<li><a href="#mastering-journalctl">Mastering journalctl</a></li>
+<li><a href="#sources-journald">Sources journald</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="system-journal">System journal</h2>
+<p>The system journal consists of the <em>systemd-journald</em>, or <strong>journald</strong> for short, which collects and stores log messages, and the <strong>journalctl</strong>, which is used to manage, query, and output the collected log messages.</p>
+<h3 id="journald">journald</h3>
+<p><em>journald</em> is a system service that collects and stores log messages using the <em>systemd-journald.service</em> unit (and its associated socket units).<br />
+It creates and maintains structured, indexed journals based on log messages from:</p>
+<ul>
+<li>kernel log messages</li>
+<li>simple system log messages</li>
+<li>structured system log messages via the native journal API</li>
+<li>standard output and standard error output from service units</li>
+<li>audit records coming from the kernel audit subsystem</li>
+</ul>
+<p>journald allows journal “namespaces”. They are both a mechanism for logically isolating a log stream from the rest of the system, and a mechanism for improving performance. Journal namespaces exist concurrently and side-by-side. Each has its own independent log data stream. After siduction has been installed, only the system’s default namespace exists.</p>
+<p>By default, journald stores the log data permanently in<br />
+<code>/var/log/journal/MACHINE_ID</code>.</p>
+<p>Log data for other namespaces can be found in<br />
+<code>/var/log/journal/MACHINE_ID.NAMESPACE</code>.</p>
+<p>The <strong><code>systemd-cat</code></strong> command provides two ways to pass data from a process to the journal independently of systemd units.</p>
+<ol type="1">
+<li><strong><code>systemd-cat &lt;program&gt; &lt;option(s)&gt;</code></strong><br />
+Used with a program call or command, systemd-cat redirects all standard input, standard output, and standard error output from a process to the journal.<br />
+</li>
+<li><strong>Used in a pipe,</strong><br />
+systemd-cat serves as a filtering tool to send the previously created output to the journal.</li>
+</ol>
+<p>If no parameter is passed, systemd-cat will send whatever it reads from standard input to the journal. The man-page <code>man systemd-cat</code> provides more information.</p>
+<h3 id="journald-over-the-network">journald over the network</h3>
+<p>The systemd-journal modules <em>upload</em>, <em>remote</em>, and <em>gatewayd</em> allow system log data to be sent and received between different computers over the network. With their help remote computers can be monitored continuously. In this installation it makes sense to set up namespaces on the remote computer for the log data of the other computers.<br />
+For more information please read the man-pages <a href="https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-upload.8.en.html">journal upload</a>, <a href="https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-remote.service.8.en.html">journal remote</a>, and <a href="https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-gatewayd.8.en.html">journal gatewayd</a>.</p>
+<h3 id="journald.conf">journald.conf</h3>
+<p>The following files configure various parameters of the systemd journal service.</p>
+<ul>
+<li>/etc/systemd/journald.conf</li>
+<li>/etc/systemd/journald.conf.d/*.conf</li>
+<li>/etc/systemd/journald@NAMESPACE.conf (optional)</li>
+<li>/run/systemd/journald.conf.d/*.conf (optional)</li>
+<li>/usr/lib/systemd/journald.conf.d/*.conf (optional)</li>
+</ul>
+<p>The default namespace managed by the systemd-journald.service (and its associated socket units) is configured in <code>/etc/systemd/journald.conf</code> and associated additions.<br />
+The configuration file contains the defaults as a commented out note to the administrator. To change settings locally, simply edit this file.</p>
+<p>Instances that manage other namespaces are only needed if there is a need to deviate from the defaults. Their configuration file is to be created according to the pattern <code>etc/systemd/journald@NAMESPACE.conf</code>.<br />
+Service units can be assigned to a particular journal namespace using the unit file setting <code>LogNamespace=</code>.</p>
+<p>By default, only the default namespace collects kernel and audit log messages.</p>
+<p><strong>Rank order</strong></p>
+<p>If packages need to customize configuration, they can install configuration snippets in <code>/usr/lib/systemd/*.conf.d/</code> or <code>/usr/local/lib/systemd/*.conf.d/</code>.</p>
+<p>The main configuration file is read before any other from the configuration directories and has the lowest priority. Entries in a file in any of the configuration directories override entries in the main configuration file. Files in the <code>*.conf.d/</code> subdirectories are sorted by their file name, regardless of which subdirectory they are located in. If separate configuration files are necessary, it is recommended that all file names in these subdirectories be preceded by a two-digit number and a hyphen to simplify file sorting.</p>
+<h3 id="journalctl">journalctl</h3>
+<p><em>journalctl</em> is used to query the journal created by systemd-journald.<br />
+When called without parameters, the entire contents from all accessible sources of the journal are displayed, starting with the oldest entry.<br />
+The output is directed page by page by <em>less</em>. Long lines can be viewed using the <strong><code>arrow-left</code></strong> and <strong><code>arrow-right</code></strong> keys. The <code>--no-pager</code> option disables page-by-page viewing, shortening the lines to the width of the terminal.</p>
+<p>journalctl offers, in addition to the options described below, a whole range of other options for filtering and formatting the output. Please also read the man page <code>man journalctl</code>.</p>
+<p><strong>Rights</strong></p>
+<p>The user <strong>root</strong> and all users who are members of the groups <strong>systemd-journal</strong>, <strong>adm</strong>, and <strong>wheel</strong> are granted access to the system journal and the other users’ journals. siduction adds all configured users to the <strong>systemd-journal</strong> group.</p>
+<p>The journal contains trusted fields, i.e. fields that are implicitly added by the journal and cannot be changed by client code. They start with an underscore (e.g.: _PID=, _UID=, _GID=, _COMM=, _EXE=, _CMDLINE=).</p>
+<p><strong>Filter output</strong>.</p>
+<ul>
+<li><p>options: <code>--user</code>, <code>--system</code>, <code>--directory=</code>, <code>--file=</code>, <code>--namespace=</code><br />
+These options limit the source of the output to the named scope, directory, or file.</p></li>
+<li><p>options: <code>-b</code>, <code>-k</code>, <code>-u</code>, <code>-p</code>, <code>-g</code>, <code>-S</code>, <code>-U</code><br />
+The outputs of these options use all available journal files, unless one of the previously mentioned options is used in addition.</p>
+<ul>
+<li><p><code>-b</code> (<code>--boot=</code>)<br />
+shows messages from a particular system boot. Without any argument, the logs for the current system startup are displayed. The argument “-1” prints the messages of the system startup before the current one. The argument “5” presents the messages of the fifth system start since the beginning of the records.</p></li>
+<li><p><code>-k</code> (<code>--dmesg</code>)<br />
+displays only kernel messages. This includes the <code>-b</code> option so that only kernel messages since the current system start are printed.</p></li>
+<li><p><code>-u</code> (<code>--unit=</code>)<br />
+This option requires the specification of a UNIT or a PATTERN.<br />
+Prints the journal entries for the specified systemd unit UNIT or for all units that match the PATTERN.</p></li>
+<li><p><code>-p</code> (<code>--priority=</code>)<br />
+filters the output by message priorities or priority ranges. Requires specification of a single protocol level or a range of protocol levels in the form FROM…TO.<br />
+The log levels are the normal syslog log levels:<br />
+“emerg” (0), “alert” (1), “crit” (2), “err” (3), “warning” (4), “notice” (5), “info” (6), “debug” (7).<br />
+Both the names and the digits of the protocol levels can be used as arguments. If a single protocol level is specified, all messages with this or a lower protocol level will be displayed.</p></li>
+<li><p><code>-g</code> (<code>--grep=</code>)<br />
+Requires the specification of a PERL-compatible regular expression to filter the output. The regular expression is applied to the “MESSAGE=” field in the journal entries.</p></li>
+<li><p><code>-S</code> (<code>--since=</code>) and <code>-U</code> (<code>--until=</code>)<br />
+The display will start with newer entries from the specified date or older entries up to the specified date. The date format should be “2012-10-30 18:17:16”, but parts of it can be omitted. Alternatively, the strings “yesterday”, “today”, “tomorrow” are possible. The argument “now” refers to the current time. The specification of relative times allow a preceding “-” or “+”, which refer to times before or after the specified time.</p></li>
+</ul></li>
+</ul>
+<p><strong>Control output</strong></p>
+<ul>
+<li><p>options: <code>-f</code>, <code>-n</code>, <code>-r</code>, <code>-o</code>, <code>-x</code>, <code>--no-pager</code></p>
+<ul>
+<li><p><code>-f</code> (<code>--follow</code>)<br />
+displays only the newest journal entries and continuously outputs new entries. This includes the <code>-n</code> option. The output is similar to the old known command <strong><code>tail -f /var/log/messages</code></strong>.</p></li>
+<li><p><code>-n</code> (<code>--lines=</code>)<br />
+shows the latest journal entries and limits the number of events to show. The argument is a positive integer. The default value is 10 if no argument is given.</p></li>
+<li><p><code>-r</code> (<code>--reverse</code>)<br />
+The output starts with the newest entry.</p></li>
+<li><p><code>-o</code> (<code>--output=</code>)<br />
+controls the formatting of the displayed journal entries. A number of other options are subordinate to this option, of which we will only consider the “short-full” option here.</p>
+<p><code>-o short-full</code><br />
+The output is mostly identical to the formatting of classic syslog files. It displays one line per journal entry, but the timestamp is output in the format that the –since= and –until= options accept. Therefore, this output is very suitable to create a time-based filtering of journal entries in the following.</p></li>
+<li><p><code>-x</code> (<code>--catalog</code>)<br />
+adds explanatory help text to journal lines where available.</p></li>
+<li><p><code>--no-pager</code><br />
+This option disables page-by-page display, shortening the lines to the width of the terminal. Using it is only useful if merely a small number of lines is expected for the output.</p></li>
+</ul></li>
+</ul>
+<p><strong>Control journalctl</strong></p>
+<p>The following options handle the management of data written by journald.</p>
+<ul>
+<li><p><code>--disk-usage</code><br />
+displays the current disk space usage of all journal files.</p></li>
+<li><p><code>--vacuum-size=</code>, <code>--vacuum-time=</code>, <code>--vacuum-files=</code><br />
+removes the oldest archived journal files until the disk space they use falls below the specified size, or all archived journal files that do not contain data older than the specified time period, or so that no more than the specified number of separate journal files remain. Executing <code>--vacuum-xxx</code> does not include the active journal files.</p></li>
+<li><p><code>--rotate</code><br />
+asks the journal daemon to rotate the journal files. Journal files rotation has the effect of marking all currently active journal files as archived and renaming them so that in the future they will never be written to again. Then new (empty) journal files will be created instead. This action can be combined with <code>--vacuum-xxx</code> in a single command to actually achieve the arguments given to <code>--vacuum-xxx</code>.</p></li>
+<li><p><code>--verify</code><br />
+checks the journal files for internal consistency.</p></li>
+</ul>
+<h3 id="mastering-journalctl">Mastering journalctl</h3>
+<p>As described above under permissions, you can use the journal as a simple user. Here are some examples:</p>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>command</th>
+<th>display</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>journalctl</td>
+<td>the full journal of all users, oldest entries first</td>
+</tr>
+<tr class="even">
+<td>journalctl -r</td>
+<td>as before, newest entries first</td>
+</tr>
+<tr class="odd">
+<td>journalctl -b</td>
+<td>the log of the last boot</td>
+</tr>
+<tr class="even">
+<td>journalctl -b -1 -k</td>
+<td>all kernel messages from the next to last boot (-1)</td>
+</tr>
+<tr class="odd">
+<td>journalctl -b -p err</td>
+<td>limited to the last boot and the priority ERROR</td>
+</tr>
+<tr class="even">
+<td>journalctl –since=yesterday</td>
+<td>the journal since yesterday</td>
+</tr>
+<tr class="odd">
+<td>journalctl /dev/sda</td>
+<td>the journal of the device file /dev/sda</td>
+</tr>
+<tr class="even">
+<td>journalctl /usr/bin/dbus-daemon</td>
+<td>all logs of the D-Bus daemon</td>
+</tr>
+<tr class="odd">
+<td>journalctl -f</td>
+<td>live view of the journal (formerly: tail -f /var/log/messages)</td>
+</tr>
+</tbody>
+</table>
+<p>The option <code>--list-boots</code> prints the corresponding list.</p>
+<pre><code># journalctl --list-boots --no-pager
+[...]
+ -50 8fc07f387... Sun 2021-02-28 11:07:05 CET-Sun [...] CET
+ -49 aa49cb3af... Mon 2021-03-01 17:49:58 CET-Mon [...] CET
+ -48 3a6e55a4a... Tue 2021-03-02 12:18:46 CET-Tue [...] CET
+ -47 a46150a19... Wed 2021-03-03 11:06:29 CET-Wed [...] CET
+ -46 d42ed8b05... Thu 2021-03-04 10:59:56 CET-Thu [...] CET
+ -45 566f65991... Thu 2021-03-04 19:53:52 CET-Thu [...] CET
+ -44 8e2da4a61... Fri 2021-03-05 10:15:18 CET-Fri [...] CET
+[...]</code></pre>
+<p>Afterwards you can use the command <strong><code>journalctl -b -47</code></strong> to display the messages of the boot process of 3.3.2021.</p>
+<p>Another new feature in logging is the tab completion for journalctl. If you type <em>journalctl</em> and press the <strong><code>TAB</code></strong> key twice, a list of possible completions appears:</p>
+<pre><code>$ journalctl
+_AUDIT_FIELD_APPARMOR=        _KERNEL_SUBSYSTEM=
+_AUDIT_FIELD_CAPABILITY=      KERNEL_USEC=
+_AUDIT_FIELD_CAPNAME=         LEADER=
+_AUDIT_FIELD_DENIED_MASK=     LIMIT=
+_AUDIT_FIELD_INFO=            LIMIT_PRETTY=
+_AUDIT_FIELD_NAME=            _LINE_BREAK=
+_AUDIT_FIELD_OPERATION=       _MACHINE_ID=
+_AUDIT_FIELD_OUID=            MAX_USE=
+_AUDIT_FIELD_PEER=            MAX_USE_PRETTY=
+_AUDIT_FIELD_PROFILE=         MESSAGE=
+_AUDIT_FIELD_REQUESTED_MASK=  MESSAGE_ID=
+_AUDIT_FIELD_SIGNAL=          NM_CONNECTION=
+_AUDIT_ID=                    NM_DEVICE=
+_AUDIT_LOGINUID=              NM_LOG_DOMAINS=
+_AUDIT_SESSION=               NM_LOG_LEVEL=
+_AUDIT_TYPE=                  N_RESTARTS=
+_AUDIT_TYPE_NAME=             _PID=
+AVAILABLE=                    PRIORITY=
+AVAILABLE_PRETTY=             SEAT_ID=
+_BOOT_ID=                     _SELINUX_CONTEXT=
+_CAP_EFFECTIVE=               SESSION_ID=
+_CMDLINE=                     SHUTDOWN=
+CODE_FILE=                    SLEEP=
+CODE_FUNC=                    _SOURCE_MONOTONIC_TIMESTAMP=
+CODE_LINE=                    _SOURCE_REALTIME_TIMESTAMP=
+_COMM=                        _STREAM_ID=
+COMMAND=                      SYSLOG_FACILITY=
+CONFIG_FILE=                  SYSLOG_IDENTIFIER=
+CONFIG_LINE=                  SYSLOG_PID=
+CURRENT_USE=                  SYSLOG_RAW=
+CURRENT_USE_PRETTY=           SYSLOG_TIMESTAMP=
+DISK_AVAILABLE=               _SYSTEMD_CGROUP=
+DISK_AVAILABLE_PRETTY=        _SYSTEMD_INVOCATION_ID=
+DISK_KEEP_FREE=               _SYSTEMD_OWNER_UID=
+DISK_KEEP_FREE_PRETTY=        _SYSTEMD_SESSION=
+ERRNO=                        _SYSTEMD_SLICE=
+_EXE=                         _SYSTEMD_UNIT=
+EXECUTABLE=                   _SYSTEMD_USER_SLICE=
+EXIT_CODE=                    _SYSTEMD_USER_UNIT=
+EXIT_STATUS=                  THREAD_ID=
+_FSUID=                       TIMESTAMP_BOOTTIME=
+_GID=                         TIMESTAMP_MONOTONIC=
+GLIB_DOMAIN=                  _TRANSPORT=
+GLIB_OLD_LOG_API=             _UDEV_DEVNODE=
+_HOSTNAME=                    _UDEV_SYSNAME=
+INVOCATION_ID=                _UID=
+JOB_ID=                       UNIT=
+JOB_RESULT=                   UNIT_RESULT=
+JOB_TYPE=                     USER_ID=
+JOURNAL_NAME=                 USER_INVOCATION_ID=
+JOURNAL_PATH=                 USERSPACE_USEC=
+_KERNEL_DEVICE=               USER_UNIT=</code></pre>
+<p>Most of these are self-explanatory. For example COMM, which stands for <em>command</em>, provides a lot of options:</p>
+<p><strong><code>journalctl _COMM=</code></strong> lists the possible applications after another hit of <strong><code>TAB</code></strong>:</p>
+<pre><code>$ journalctl _COMM=
+acpid           hddtemp        ntpdate       systemd
+acpi-fakekey    hdparm         ntpd          systemd-fsck
+acpi-support    hp             ofono         systemd-hostnam
+alsactl         hpfax          ofonod        systemd-journal
+anacron         ifup           pkexec        systemd-logind
+apache2         irqbalance     polkitd       systemd-modules
+backlighthelper kbd            pulseaudio    systemd-shutdow
+bash            kdm            pywwetha      systemd-udevd
+bluetoothd      keyboard-setup pywwetha.py   teamviewerd
+chfn            loadcpufreq    resolvconf    udev-configure-
+chrome          logger         rpcbind       udisksd
+console-kit-dae login          rpc.statd     udisks-daemon
+console-setup   lvm            samba-ad-dc   umount
+cpufrequtils    lvm2           saned         uptimed
+cron            mbd            sensors       useradd
+cups            mbmon          sh            usermod
+dbus-daemon     mdadm          smartmontools vboxdrv
+ddclient        mdadm-raid     smbd          VBoxExtPackHelp
+docvert-convert mtp-probe      ssh           vdr
+glances         mysql          sshd          winbind
+gpasswd         networking     su
+gpm             nfs-common     sudo
+groupadd        ntp            sysstat</code></pre>
+<p>With <strong><code>journalctl _COMM=su</code></strong> you can now see which user got root privileges with <em>su</em> and when.</p>
+<pre><code># journalctl _COMM=su
+-- boot 1b5d2b3fcd9043d88d8abce665b75ed4 --
+Mar 10 16:27:22 pc1 su[105197]: (to root) siduser on pts/1
+Mar 10 16:27:22 pc1 su[105197]: pam_unix(su:session):
+     session opened for user root(uid=0) by (uid=1000)
+Mar 10 17:54:33 pc1 su[105197]: pam_unix(su:session):
+     session closed for user root
+     
+-- boot 37b19f6321814620be1ed4deb3be467f --
+Mar 10 17:56:35 pc1 su[3381]: (to root) siduser on pts/1
+Mar 10 17:56:35 pc1 su[3381]: pam_unix(su:session):
+     session opened for user root(uid=0) by (uid=1000)
+Mar 10 19:07:17 pc1 su[3381]: pam_unix(su:session):
+     session closed for user root</code></pre>
+<p>Another example:<br />
+You can additionally narrow the output by time.</p>
+<pre><code># journalctl _COMM=dbus-daemon --since=2020-04-06 --until=&quot;2020-04-07 23:40:00&quot;
+[...]
+Apr 07 22:59:04 pc1 org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: in handle_supported
+Apr 07 22:59:04 pc1 org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: in handle_list
+Apr 07 22:59:04 pc1 org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: in handle_supported
+Apr 07 22:59:04 pc1 org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: in handle_list
+Apr 07 23:03:09 pc1 org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished
+Apr 07 23:03:09 pc1 org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished
+Apr 07 23:03:09 pc1 org.gtk.Private.AfcVolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished
+Apr 07 23:03:09 pc1 org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished</code></pre>
+<p>Many of the above options can be combined to display only the journal entries you are looking for. The man-page <code>man journalctl</code> describes all options in detail.</p>
+<h3 id="sources-journald">Sources journald</h3>
+<pre><code>man systemd-journald
+man journald.conf
+man journalctl
+man systemd-cat</code></pre>
+<p>and online for packages not installed by default<br />
+<a href="https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-gatewayd.8.en.html">journal gatewayd</a><br />
+<a href="https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-remote.service.8.en.html">journal remote</a><br />
+<a href="https://manpages.debian.org/testing/systemd-journal-remote/systemd-journal-upload.8.en.html">journal upload</a></p>
+<div id="rev">
+Last edited: 2022/04/10
+</div>
+</body>
+</html>

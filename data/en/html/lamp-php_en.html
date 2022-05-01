@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>LAMP - PHP</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">LAMP - PHP</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#set-up-php">Set up PHP</a>
+<ul>
+<li><a href="#php-in-the-file-system">PHP in the file system</a></li>
+<li><a href="#php-support-for-apache2">PHP support for Apache2</a></li>
+<li><a href="#php-configuration">PHP configuration</a></li>
+<li><a href="#php-modules">PHP modules</a></li>
+<li><a href="#apache-log">Apache Log</a></li>
+<li><a href="#sources-php">Sources PHP</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="set-up-php">Set up PHP</h2>
+<p>PHP is ready to use in siduction after installation with the default configuration.</p>
+<h3 id="php-in-the-file-system">PHP in the file system</h3>
+<p>Debian has fully integrated the files of PHP into the file system according to their function:</p>
+<ul>
+<li>the executable program <code>php7.x</code> and the link <code>php</code> into <code>/usr/bin/</code>
+<ul>
+<li>(The latter points to <code>/usr/bin/php7.x</code> via <code>/etc/alternatives/php</code>.)</li>
+</ul></li>
+<li>the installed modules into <code>/usr/lib/php/</code></li>
+<li>shared program parts and modules into <code>/usr/share/php/</code> and <code>/usr/share/php&lt;module&gt;</code></li>
+<li>the configuration directories and files into <code>/etc/php/</code></li>
+<li>the current state of modules and sessions at runtime into <code>/var/lib/php/</code></li>
+</ul>
+<h3 id="php-support-for-apache2">PHP support for Apache2</h3>
+<p>By default, the Apache web server loads support for PHP. We check this with the following command (replace the <em>“x”</em> with the minor attribute of the currently used PHP version, i.e. something like 7.4):</p>
+<pre><code># ls /etc/apache2/mods-enabled/* | grep php
+/etc/apache2/mods-enabled/php7.x.conf
+/etc/apache2/mods-enabled/php7.x.load</code></pre>
+<p>We see that Apache has loaded the PHP module for version 7.x. To cause the PHP interpreter to process files with the extension “<em>.php</em>”, the <code>DirectoryIndex</code> directive in the Apache configuration file <code>dir.conf</code> must contain the value <code>index.php</code>. We check this as well:</p>
+<pre><code># cat /etc/apache2/mods-available/dir.conf
+&lt;IfModule mod_dir.c&gt;
+    DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+&lt;/IfModule&gt;</code></pre>
+<p>Nothing stands in the way of using PHP, because the value <em>“index.php”</em> is included.</p>
+<h3 id="php-configuration">PHP configuration</h3>
+<p>The directory <code>/etc/php/7.x/</code> contains the configuration sorted by the available interfaces.<br />
+The output shows the state after the initial installation.</p>
+<pre><code># ls -l /etc/php/7.x/
+total 20
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 apache2
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 cli
+drwxr-xr-x 2 root root 4096 18 Dec 16:54 mods-available</code></pre>
+<p>With the modules <em>“php7.x-cgi”</em> and <em>“php7.x-fpm”</em> installed below, two new directories have been added.</p>
+<pre><code># ls -l /etc/php/7.x/
+total 20
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 apache2
+drwxr-xr-x 3 root root 4096 1 Feb 21:23 cgi
+drwxr-xr-x 3 root root 4096 18 Dec 16:54 cli
+drwxr-xr-x 4 root root 4096 1 Feb 21:23 fpm
+drwxr-xr-x 2 root root 4096 1 Feb 13:22 mods-available</code></pre>
+<p>Each of the <code>apache2</code>, <code>cgi</code>, <code>cli</code>, and <code>fpm</code> directories contains a <code>conf.d</code> folder and a <code>php.ini</code> file.<br />
+The respective <em>“php.ini”</em> contains the configuration for the corresponding interface and can be changed or supplemented if necessary. The <em>“conf.d”</em> folder contains the links to the activated modules.</p>
+<h3 id="php-modules">PHP modules</h3>
+<p><strong>Queries</strong></p>
+<p>A large number of modules are available for PHP. You can find out which ones are already installed with</p>
+<pre><code># dpkg-query -f=&#39;${Status}\ ${Package}\n&#39; -W php7.4* | grep &#39;^install&#39;
+install ok installed php7.4
+install ok installed php7.4-bz2
+install ok installed php7.4-cli
+install ok installed php7.4-common
+install ok installed php7.4-curl
+install ok installed php7.4-gd
+install ok installed php7.4-imagick
+install ok installed php7.4-json
+install ok installed php7.4-mbstring
+install ok installed php7.4-mysql
+install ok installed php7.4-opcache
+install ok installed php7.4-readline
+install ok installed php7.4-xml
+install ok installed php7.4-zip</code></pre>
+<p>To show available but not installed modules, we change the end of the command a bit:</p>
+<pre><code># dpkg-query -f=&#39;${Status}\ ${Package}\n&#39; -W php7.4* | grep &#39;not-install&#39;
+unknown ok not-installed php7.4-calendar
+unknown ok not-installed php7.4-cgi
+unknown ok not-installed php7.4-ctype
+unknown ok not-installed php7.4-dom
+unknown ok not-installed php7.4-exif
+unknown ok not-installed php7.4-ffi
+unknown ok not-installed php7.4-fileinfo
+unknown ok not-installed php7.4-fpm
+unknown ok not-installed php7.4-ftp
+unknown ok not-installed php7.4-gettext
+unknown ok not-installed php7.4-iconv
+unknown ok not-installed php7.4-pdo
+unknown ok not-installed php7.4-pdo-mysql
+unknown ok not-installed php7.4-phar
+unknown ok not-installed php7.4-posix
+unknown ok not-installed php7.4-shmop
+unknown ok not-installed php7.4-simplexml
+unknown ok not-installed php7.4-sockets
+unknown ok not-installed php7.4-sysvmsg
+unknown ok not-installed php7.4-sysvsem
+unknown ok not-installed php7.4-sysvshm
+unknown ok not-installed php7.4-tokenizer
+unknown ok not-installed php7.4-xsl</code></pre>
+<p>Now we know the exact names of the modules.</p>
+<p><strong>Info</strong></p>
+<p>More detailed descriptions of the modules are provided by the command</p>
+<pre><code># apt show &lt;module_name&gt;</code></pre>
+<p><strong>Installation</strong></p>
+<p>To install modules we use e.g.:</p>
+<pre><code># apt install php7.x-cgi php7.x-fpm</code></pre>
+<p>Both modules support CGI scripts and Fast/CGI requests.<br />
+Then we restart Apache:</p>
+<pre><code># systemctl restart apache2.service</code></pre>
+<p><strong>Handling</strong></p>
+<p>The state of PHP modules can be changed during runtime. This also allows controlling modules in scripts to load them before use and unload them afterwards.</p>
+<ul>
+<li><code>phpenmod</code> - activates modules in PHP</li>
+<li><code>phpdismod</code> - disables modules in PHP</li>
+<li><code>phpquery</code> - shows the status of PHP modules</li>
+</ul>
+<p>Unnecessary modules (imagick in the example) are deactivated in the console by the command</p>
+<pre><code># phpdismod imagick</code></pre>
+<p>To load the imagick module for all interfaces, use the command</p>
+<pre><code># phpenmod imagick</code></pre>
+<p>If we use the option <code>-s apache2</code>, e.g.:</p>
+<pre><code># phpenmod -s apache2 imagick</code></pre>
+<p>the module will be loaded for Apache2 only.</p>
+<p>The status query with <code>phpquery</code> always requires the module version and interface to be specified. Here are some examples:</p>
+<pre><code># phpquery -v 7.4 -s apache2 -m zip
+zip (Enabled for apache2 by maintainer script)
+
+# phpquery -v 7.4 -s cli -m zip
+zip (Enabled for cli by maintainer script)
+
+# phpquery -v 7.4 -s fpm -m zip
+zip (Enabled for fpm by maintainer script)
+
+# phpquery -v 7.4 -s apache2 -m imagick
+imagick (Enabled for apache2 by local administrator)</code></pre>
+<p>For the imagick module, the string <em>“Enabled for apache2 by local administrator”</em> tells us that it was not loaded automatically at startup like the zip module, but that the administrator has enabled it manually. The reason is the previously used <code>phpdismod</code> and <code>phpenmod</code> commands for this module.</p>
+<h3 id="apache-log">Apache Log</h3>
+<p>The Apache server stores the error messages of PHP in its log files under <code>/var/log/apache2/</code>. At the same time, if PHP functions fail, a message appears on the called web page.<br />
+Alternatively, we can display the log functions.</p>
+<pre><code># php --info | grep log
+[...]
+error_log          =&gt; no value
+log_errors         =&gt; On
+log_errors_max_len =&gt; 1024
+mail.log           =&gt; no value
+opcache.error_log  =&gt; no value
+[...]</code></pre>
+<p>In the files <code>/etc/php/7.x/&lt;Interface&gt;/php.ini</code>, we have the possibility to replace the unset values with our own, actually existing log files.</p>
+<h3 id="sources-php">Sources PHP</h3>
+<p><a href="https://www.php.net/manual/en/">PHP - manual</a><br />
+<a href="https://www.php.net/">PHP - current messages</a><br />
+<a href="https://tecadmin.net/enable-disable-php-modules-ubuntu/">tecadmin - module handling</a></p>
+<div id="rev">
+Last edited: 2022/04/04
+</div>
+</body>
+</html>

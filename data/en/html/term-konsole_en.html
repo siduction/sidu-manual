@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Terminal - command line</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Terminal - command line</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#terminal---command-line">Terminal - command line</a>
+<ul>
+<li><a href="#work-as-root">Work as root</a></li>
+<li><a href="#colored-terminal">Colored terminal</a></li>
+<li><a href="#when-the-terminal-hangs">When the terminal hangs</a></li>
+<li><a href="#help-in-the-terminal">Help in the terminal</a></li>
+<li><a href="#linux-console-commands">Linux console commands</a></li>
+<li><a href="#using-scripts">Using scripts</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="terminal---command-line">Terminal - command line</h2>
+<p>A terminal, also called a console, is a program that allows you to interact directly with the GNU/Linux operating system through directly executed commands. The terminal, also often called the <em>“shell”</em> or <em>“command line”</em>, is an extremely powerful tool and it is well worth the effort to learn the basics of its use.</p>
+<p>In siduction, you can invoke the terminal/console by clicking on the PC monitor icon to the right of the menu, or by going to <em>“Menu”</em> &gt; <em>“System”</em> &gt; <em>“Terminal”</em>, or, even easier, by typing <em>“kons”</em> or <em>“term”</em> into the menu search bar.</p>
+<p>After calling the terminal, you will see the prompt:</p>
+<pre><code>username@hostname:~$</code></pre>
+<p><strong>username</strong> in the above example corresponds to the username of the logged in user. The tilde <code>~</code> shows that you are in your home directory <code>/home/username</code>, and the dollar sign (the prompt) <code>$</code> means you are logged into the terminal with limited user privileges. At the end, the cursor is blinking. All this is the command line. This is where you enter commands that you want the terminal to execute.</p>
+<p>Many commands can only be executed with <strong>root</strong> rights, i.e. administrator rights. root rights can be obtained by typing <strong><code>su</code></strong> and pressing <strong><code>Enter</code></strong>. After that you have to enter the root password. The password is not displayed on the screen during the input. (See below <a href="https://manual.siduction.org/term-konsole_en.html#work-as-root">work-as-root</a>.)</p>
+<p>If the input is correct, the command line now shows:</p>
+<pre><code>root@hostname:/home/username#</code></pre>
+<p>Note that the dollar sign <code>$</code> has been replaced by a hash <code>#</code>. In a terminal, the hash <code>#</code> always means that you are logged in with <strong>root</strong> privileges.<br />
+When command line commands are specified in the manual, the information before the prompt ($ or #) is omitted. A command like:</p>
+<pre><code># chmod g+w &lt;file&gt;</code></pre>
+<p>means: you open a terminal, log in as <strong>root</strong> (<strong><code>su</code></strong>) and execute the command in a root prompt <code>#</code>. The hash is not included.</p>
+<p>Another note:<br />
+For users who are new to the terminal, it is often confusing if no message appears after executing a command, but only the empty prompt again. This is intentional and means that the command was executed without errors. (In the example above, the group members were given write permissions to the &lt;file&gt;.)</p>
+<h3 id="work-as-root">Work as root</h3>
+<warning>
+<strong>Caution</strong> <br />While logged into the terminal with root privileges, you are allowed to do anything, e.g. delete files, without which the operating system will stop working, and so on. When working with root privileges, you must be aware of <em>what</em> you are doing because it is easily possible to cause irreparable damage to the operating system.
+</warning>
+<p>It must be taken into account that all actions, if provided for in the program, are also executed with <strong>root</strong> privileges. The simple copy command <strong><code>cp &lt;source&gt; &lt;destination&gt;</code></strong> in a user directory leads to files with the owner <strong>root</strong> in the destination directory. This is probably not intended and also not useful.</p>
+<p>Therefore: <strong>Work as root only where it is really necessary!</strong>.</p>
+<p><strong>About su</strong></p>
+<p>A number of commands must be started with <strong>root</strong> privileges. These rights can be obtained by entering <strong><code>su</code></strong>. After entering the correct password the root prompt appears.</p>
+<pre><code>$ su
+Password: 
+#</code></pre>
+<p>Now it is possible to execute all commands in the terminal and start all programs that require root privileges. You can exit this state by typing</p>
+<pre><code># exit
+$</code></pre>
+<p>and the prompt for the user appears again.</p>
+<p><strong>About su-to-root</strong></p>
+<p>In contrast to the general command su, <code>su-to-root</code> allows the execution of programs with graphical user interface with <strong>root</strong> privileges. <code>su-to-root</code> transfers X properties to the target user using <em>su</em>. The command is:</p>
+<pre><code>su-to-root -X -c &lt;program&gt;</code></pre>
+<p>If error messages related to <strong>dbus</strong> occur, expand the input:</p>
+<pre><code>su-to-root -X -c &#39;dbus-launch &lt;program&gt;&#39;</code></pre>
+<p>Another terminal opens, into which the root password is to be entered. If successful, the desired program will launch with <strong>root</strong> privileges.<br />
+Examples of using graphical applications via su-to-root are: editing a configuration file with a text editor, using the partition manager <em>gparted</em>, or using file managers like <em>dolphin</em> or <em>thunar</em>.</p>
+<p><strong>Use in desktop environments:</strong></p>
+<ul>
+<li>Plasma (KDE and LXQt)<br />
+The command is not necessary in Plasma and is not supported. For programs that need <strong>root</strong> privileges, a password prompt occurs and for the editor the prompt occurs when you want to save the changed file. Therefore only use <code>su</code> in the terminal, if necessary.</li>
+<li>Gnome and Cinnamon<br />
+The behavior is similar to Plasma, except that the command (su-to-root) is supported, but not necessary.</li>
+<li>Xfce and Xorg<br />
+Here the command unfolds its full power, and you are able to start the desired graphical program with <strong>root</strong> privileges. However, you are also in the obligation to consider, when and with which program root rights are really necessary.</li>
+</ul>
+<warning>
+Under no circumstances should productive programs that are normally started with user rights be booted as root with this option: Internet browsers, e-mail programs, office programs, etc.
+</warning>
+<p><strong>sudo is not configured</strong></p>
+<p>sudo is only available in live mode, because no root password is set there.<br />
+<strong>After an installation sudo is not enabled.</strong> The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.<br />
+Another problem with sudo is that a root application running with the user configuration can change permissions and thus make them unusable for the user. The use of <strong>su</strong> or <strong>su-to-root</strong> is recommended!<br />
+If you want to use sudo despite all warnings, you have to add the corresponding $user to the sudo group!<br />
+This can be done with the command <strong><code>adduser &lt;USER&gt; &lt;GROUP&gt;</code></strong> as root.</p>
+<p>As a slim alternative to sudo we recommend <code>doas</code>. The manual page <a href="https://manual.siduction.org/sys-admin-doas_en.html#doas---alternative-to-sudo">Doas - Alternative to Sudo</a> explains the advantages of doas and the doas configuration.</p>
+<h3 id="colored-terminal">Colored terminal</h3>
+<p>Colored prompts on the terminal can save you from unpleasant or catastrophic errors if you are <strong>root #</strong> and perform a task you meant to do as <strong>user $</strong>.<br />
+That’s why in siduction, by default, the <strong>user $</strong>’s prompt is green, blue, and white, and <strong>root #</strong>’s prompt has the word “root” displayed in red.</p>
+<figure>
+<img src="./images/terminal/prompt-colour-01.png" alt="" /><figcaption>Colored prompt</figcaption>
+</figure>
+<p>The focus when working with the terminal should be on the input and output of the commands and not on colored prompts. In siduction we nevertheless decided to use the colors to give users a warning when they are system administrators with <strong>root</strong> privileges.</p>
+<p><strong>Change prompt color</strong></p>
+<p>Before changing the configuration file, we first create a backup copy in the terminal with a date stamp.</p>
+<pre><code>$ cp ~/.bashrc ~/.bashrc_$(date +%F)</code></pre>
+<p>Then we open the file <code>~/.bashrc</code> with a text editor of our choice (e.g.: kate, gedit, mcedit, vim, …) and look for the following line, which is located approximately in the middle of the file:</p>
+<pre><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code></pre>
+<p>The font and color code are immediately followed by the promt parts that are to receive this representation. The following figure shows the relation between the prompt parts and their abbreviations.</p>
+<figure>
+<img src="./images/terminal/prompt-colour-02.png" alt="" /><figcaption>Prompt Code</figcaption>
+</figure>
+<p>The following table explains the values of the syntax “[\033[<strong>01;32</strong>m]”, where the bold part determines the font attributes and the color.</p>
+<table>
+<thead>
+<tr class="header">
+<th>font code</th>
+<th>font attribute</th>
+<th>color code</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>00m</td>
+<td>Default for font and color</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>00;XX</td>
+<td>default font</td>
+<td>XX;m</td>
+<td>default color</td>
+</tr>
+<tr class="odd">
+<td>01;XX</td>
+<td>bold</td>
+<td>XX;30</td>
+<td>black</td>
+</tr>
+<tr class="even">
+<td>02;XX</td>
+<td>dark</td>
+<td>XX;31</td>
+<td>red</td>
+</tr>
+<tr class="odd">
+<td>03;XX</td>
+<td>italic</td>
+<td>XX;32</td>
+<td>green</td>
+</tr>
+<tr class="even">
+<td>04;XX</td>
+<td>underlined</td>
+<td>XX;33</td>
+<td>yellow</td>
+</tr>
+<tr class="odd">
+<td>05;XX / 06;XX</td>
+<td>flashing</td>
+<td>XX;34</td>
+<td>blue</td>
+</tr>
+<tr class="even">
+<td>07;XX</td>
+<td>block, inverted</td>
+<td>XX;35</td>
+<td>magenta</td>
+</tr>
+<tr class="odd">
+<td>08;XX</td>
+<td>background color (invisible)</td>
+<td>XX;36</td>
+<td>cyan</td>
+</tr>
+<tr class="even">
+<td>09;XX</td>
+<td>strikethrough</td>
+<td>XX;37</td>
+<td>white</td>
+</tr>
+</tbody>
+</table>
+<p>The “PS1” line quoted above is therefore displayed as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th>font code</th>
+<th>prompt parts and their display</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[01;32m]\u@\h</td>
+<td>user, @ and host get the attributes “bold” and “green”</td>
+</tr>
+<tr class="even">
+<td>[00m]:</td>
+<td>colon gets the default attributes of the terminal</td>
+</tr>
+<tr class="odd">
+<td>[01;34m]\w</td>
+<td>the working directory gets the attributes “bold” and “blue”</td>
+</tr>
+<tr class="even">
+<td>[00m]$</td>
+<td>the prompt gets the default attributes of the terminal</td>
+</tr>
+</tbody>
+</table>
+<p>If the color is to be removed from the prompt, we prefix the PS1 line with a hash <strong>#</strong> and a <strong>space</strong>. This comments out the line. Now it is sufficient to add the line</p>
+<pre><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[00m\]\u@\h:\w\$ &#39;</code></pre>
+<p>immediately as the next line.</p>
+<p>If the color is to be changed in the prompt, the color coding must be adjusted for each part of the prompt.</p>
+<pre><code> PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[03;32m\]\u@\h\[\033[01;34m\]:\w\[\033[00m\]\$ &#39;</code></pre>
+<p>This code example creates a prompt in which <strong>username @ hostname</strong> is green and italicized; the <strong>:</strong> and the <strong>working directory</strong> are blue and bold; the <strong>$</strong> character and the command prompt are given the contrasting color to the background of the terminal.</p>
+<p>The new colors and formats appear after opening a new terminal.</p>
+<p><strong>Color settings of the terminal</strong></p>
+<p>In the terminal menu, under <em>“Edit”</em> - <em>“Settings…”</em> - tab <em>“Colors”</em>, there are a ton of setting options. We recommend a rather plain setting.</p>
+<h3 id="when-the-terminal-hangs">When the terminal hangs</h3>
+<p>Sometimes a terminal can no longer respond as desired. This is usually because a program has terminated with an error and left the terminal in an abnormal state. Then</p>
+<pre><code>reset</code></pre>
+<p>must be entered and the <strong><code>Enter</code></strong> key must be pressed.</p>
+<p>If the output of a terminal appears distorted, this can usually be fixed by pressing <strong><code>Ctrl</code></strong>+<strong><code>l</code></strong>, this will rebuild the terminal window. Such distortions usually occur when working with programs that use an ncurses interface, for example <em>cgdisk</em>.</p>
+<p>A terminal may appear frozen, but this is usually not the case; input continues to be processed even if it does not appear to be so. This can be caused by accidentally pressing <strong><code>Ctrl</code></strong>+<strong><code>s</code></strong>. In this case, <strong><code>Ctrl</code></strong>+<strong><code>q</code></strong> can be tried to free the console again.</p>
+<h3 id="help-in-the-terminal">Help in the terminal</h3>
+<p>Most commands/programs have command line help and also instructions. The are called <em>“man page”</em> or <em>“manual page”</em>. The syntax to call the man page is:</p>
+<pre><code>$ man &lt;command&gt;</code></pre>
+<p>or</p>
+<pre><code>$ man -k &lt;keyword&gt;</code></pre>
+<p>This calls the man page of a command. Navigation in the man pages is done by the arrow keys and they can be terminated with <strong><code>q</code></strong> for quit. Example:</p>
+<pre><code>$ man apt-get</code></pre>
+<p>To exit a man page, type <strong><code>q</code></strong>.</p>
+<p>Another useful tool is the <code>apropos</code> command. apropos allows you to search the man pages for a command if, for example, you forget the syntax. Example:</p>
+<pre><code>$ apropos apt-</code></pre>
+<p>This lists all commands for the package manager apt. apropos is a powerful tool, for more in-depth information about apropos enter</p>
+<pre><code>$ man apropos</code></pre>
+<h3 id="linux-console-commands">Linux console commands</h3>
+<p>A very good introduction to the BASH console can be found at <a href="http://linuxcommand.org/">linuxcommand.org</a>.<br />
+Of course you can also use your favorite search engine to find more.</p>
+<p><strong>Burning CD, DVD, and BD</strong>.</p>
+<p>The command line programs are the basis for popular GUI programs like K3b, Brasero, or Xfburn.<br />
+Those who prefer the full range of options provided by the command line programs <code>cdrdao</code>, <code>wodim</code>, <code>growisofs</code>, etc. use the terminal. Our manual page <a href="https://manual.siduction.org/no-gui-burn_en.html#burning-with-cdrdao-wodim-growisofs">Burn DVD without GUI</a> contains many examples and tips to detect available hardware, compile data, and then burn it to CD, DVD, and BD.</p>
+<h3 id="using-scripts">Using scripts</h3>
+<p>A console script is a convenient way to bundle several commands into one file. Entering the filename of the script executes the commands that are in the script. siduction comes with some very useful scripts that provide simplifications to system administration.</p>
+<p>A script is started in the console as follows, if you are in the same directory:</p>
+<pre><code>./name_of_script</code></pre>
+<p>Some scripts require <strong>root</strong> access, depending on the scope of the script.</p>
+<p><strong>Installation and execution</strong></p>
+<p>Use <code>wget</code> to load a script onto the machine. It is best to place it in the recommended directory, for example in <code>/usr/local/bin</code>. To copy and paste in the console, the mouse can also be used after gaining root privileges with <code>su</code>.</p>
+<p><strong>Example with wget and root privileges</strong></p>
+<pre><code>$ su
+password:
+# cd /usr/local/bin
+# wget -c ftp://&lt;remote_server&gt;/script-name.sh</code></pre>
+<p>After that, the file must be made executable:</p>
+<pre><code># chmod +x script-name.sh</code></pre>
+<p>Since the directory <code>/usr/local/bin</code> is included in the search path of <strong>root</strong>, this simple command is sufficient to start the script:</p>
+<pre><code># script-name.sh</code></pre>
+<p>The file can also be loaded onto the computer with a browser and moved to the appropriate location, but it must be made executable even then.</p>
+<p><strong>Example with wget as user</strong></p>
+<p>This is how to save a file in <code>$HOME</code> (the prompt is ‘$’) as a user:</p>
+<pre><code>$ wget -c ftp://&lt;remote_server&gt;/user-script-name.sh
+$ chmod +x user-script-name.sh</code></pre>
+<p>The script is started like this:</p>
+<pre><code>$ ./user-script-name.sh</code></pre>
+<p>Of course, this will only work as <strong>user</strong> if the script does not contain any commands that require <strong>root</strong> privileges.</p>
+<div id="rev">
+Last edited: 2022/04/04
+</div>
+</body>
+</html>

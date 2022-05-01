@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>siduction ISO burn</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">siduction ISO burn</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#burn-iso">Burn ISO</a>
+<ul>
+<li><a href="#burn-dvd-with-linux">Burn DVD with Linux</a></li>
+<li><a href="#burn-dvd-with-windows">Burn DVD with Windows</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="burn-iso">Burn ISO</h2>
+<p>Before burning the ISO image file to a DVD, you should always check it using the md5sum or sha256sum provided by siduction. This may save a lot of time troubleshooting a changed or corrupted file.<br />
+Detailed instructions can be found in the manual chapter <a href="https://manual.siduction.org/iso-dl_en.html#integrity-check">ISO Download, Integrity Check</a>.</p>
+<warning>
+<strong>IMPORTANT INFORMATION:</strong> <br />siduction, as a Linux LIVE DVD/CD, is very heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (disk-at-once), and not faster than eight times (8x).
+</warning>
+<p>We recommend, however, if the hardware supports booting from USB, to put the image on a USB stick or SD memory card. Instructions for this can be found on the manual page <a href="https://manual.siduction.org/iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">ISO to USB stick / memory card</a>.</p>
+<h3 id="burn-dvd-with-linux">Burn DVD with Linux</h3>
+<p>If you already have Linux on your computer, you can create the DVD with any installed burning program. Depending on the desktop environment, these are the programs<br />
++ <strong><code>K3b</code></strong> for KDE<br />
++ <strong><code>Brasero</code></strong> for Gnome<br />
++ <strong><code>Xfburn</code></strong> for XFCE, LXQt, and Gnome</p>
+<p>The burning programs are largely self-explanatory in their operation.<br />
+In K3b you select <code>More actions...</code> -&gt; <code>Write image...</code>.<br />
+In Xfburn and Brasero you should click <code>Burn image</code>.<br />
+Then select the ISO file to be burned (e.g. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) and set the burning mode <code>DAO</code> (Disk At Once) or <code>Automatic</code> and start the burning process.</p>
+<p>Occasional problems when burning the live DVD are mostly caused by the graphical frontend applications. This can be worked around by using the very easy to use script <code>burniso</code> on the console. The manual page <a href="https://manual.siduction.org/no-gui-burn_en.html#burn-live-dvd-without-gui">Burn DVD without GUI</a> explains the use of burniso briefly and exactly, as well as other commands to detect available hardware, compile data, and burn CD/DVDs.</p>
+<h3 id="burn-dvd-with-windows">Burn DVD with Windows</h3>
+<p>Of course, you can also burn the DVD on Windows. The downloaded file must be burned to a DVD as an ISO image and not from Windows Explorer as a file.<br />
+There are several good programs that extend the built-in CD and DVD burning feature introduced with Windows Vista to burn ISO files. Here are just two examples.</p>
+<ul>
+<li>The current version of the open source software <a href="https://cdrtfe.sourceforge.io/cdrtfe/index_de.html">cdrtfe</a> is compatible with Windows Vista, 7, 8, 10, and 11. The program can be used to burn ISO images, create data discs (CD, DVD, BD), and audio as well as video CD/DVDs. You can install it on Windows or download the zip archive and run <code>cdrtfe</code> after unpacking it without any further installation.<br />
+</li>
+<li>The closed-source software <code>CDBurnerXP</code> is a free program that can create data and audio CD/DVDs in addition to burning ISO images, and erases rewritable media if necessary. Available from <a href="https://cdburnerxp.de.uptodown.com/windows">CDBurnerXP</a>.</li>
+</ul>
+<div id="rev">
+Last edited: 2022/04/11
+</div>
+</body>
+</html>

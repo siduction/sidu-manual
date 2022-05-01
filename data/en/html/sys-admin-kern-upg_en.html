@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Install new kernel</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Install new kernel</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#kernel-upgrade">Kernel Upgrade</a>
+<ul>
+<li><a href="#kernel-update-without-system-update">Kernel Update without System Update</a></li>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#removing-old-kernels">Removing old kernels</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="kernel-upgrade">Kernel Upgrade</h2>
+<p>siduction provides the following kernels:</p>
+<ul>
+<li><strong>linux-image-siduction-amd64 + linux-headers-siduction-amd64</strong> - Linux kernel for 64-bit PCs with AMD64 or Intel 64 CPU</li>
+<li>32 bit kernel are not provided anymore. Here you can use the Debian kernel or, alternatively, the Liquorix kernel (https://liquorix.net/).</li>
+</ul>
+<p>The siduction kernels are located in the siduction repository as .deb and are automatically included in a system update, provided that the metapackages for image and headers are installed.</p>
+<h3 id="kernel-update-without-system-update">Kernel Update without System Update</h3>
+<ol type="1">
+<li>updating the package database:</li>
+</ol>
+<pre><code>apt update</code></pre>
+<ol start="2" type="1">
+<li>installation of the current kernel:</li>
+</ol>
+<pre><code>apt install linux-image-siduction-amd64 linux-headers-siduction-amd64</code></pre>
+<ol start="3" type="1">
+<li>reboot of the computer to load the new kernel</li>
+</ol>
+<p>If you encounter problems with the new kernel, you can choose an older kernel after rebooting.</p>
+<h3 id="modules">Modules</h3>
+<p>The kernel usually comes with all the required kernel modules. For 3rd party modules, dkms is recommended in siduction. For this it is necessary to install the package <code>build-essential</code>. Since 3rd party modules are often non-free modules, it is necessary to make sure that contrib and non-free are enabled in the sources.</p>
+<h3 id="removing-old-kernels">Removing old kernels</h3>
+<p>After successfully installing a new kernel, old kernels can be removed. However, it is recommended to keep old kernels for a few days. If problems occur with the new kernel, you can boot into one of the old kernels listed in the grub startup screen.</p>
+<p>To remove old kernels the script <code>kernel-remover</code> is installed:</p>
+<pre><code>kernel-remover</code></pre>
+<div id="rev">
+Last edited: 2022/04/05
+</div>
+</body>
+</html>

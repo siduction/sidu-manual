@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Installation on HDD</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Installation on HDD</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#installation-on-hdd">Installation on HDD</a>
+<ul>
+<li><a href="#data-backup">Data backup</a></li>
+<li><a href="#installation-preparations">Installation preparations</a></li>
+<li><a href="#partitioning">Partitioning</a></li>
+<li><a href="#file-systems">File systems</a></li>
+<li><a href="#duplication-to-another-computer">Duplication to another computer</a></li>
+<li><a href="#the-calamares-installer">The Calamares installer</a></li>
+<li><a href="#encrypt-system">Encrypt system</a></li>
+<li><a href="#add-user">Add user</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="installation-on-hdd">Installation on HDD</h2>
+<h3 id="data-backup">Data backup</h3>
+<warning>
+<strong>IMPORTANT: ALWAYS CREATE A DATA BACKUP!</strong> <br />If the installation target is already home to an operating system or data is to be preserved, please always create a backup before installing siduction.
+</warning>
+<h3 id="installation-preparations">Installation preparations</h3>
+<p>First, change the boot order so that the medium to be booted (DVD, flashcard, or USB stick) is at the top of the list. On most computers, pressing the <strong><code>F2</code></strong> or <strong><code>Del</code></strong> key during the boot process takes you to the UEFI or BIOS setup. Alternatively, pressing <strong><code>F12</code></strong>, <strong><code>F11</code></strong>, <strong><code>F7</code></strong>, or <strong><code>F8</code></strong> (depending on the hardware manufacturer’s specifications) during the boot process will take you directly to the boot menu where you can select the live media as the boot drive.</p>
+<p>siduction usually starts without problems now. If this is not the case, boot options (cheat codes), which can be passed to the boot manager, are helpful. The manual page <a href="https://manual.siduction.org/cheatcodes_en.html#boot-options-and-cheat-codes">Cheatcodes</a> explains the possible options.<br />
+At the start screen, use the arrow keys to navigate to <em>“From CD/DVD/ISO: …”</em> or <em>“From Stick/HDD: …”</em> (according to the used live medium) and press <strong><code>e</code></strong>. This takes you to the kernel command line where you can add the cheatcodes. Pressing <strong><code>F10</code></strong> will continue the boot process.</p>
+<p><strong>Before the installation, please remove all USB sticks, cameras, etc.</strong></p>
+<p>If siduction is not to be installed from, but <strong>to a USB medium</strong>, a different procedure is necessary. See the manual page <a href="https://manual.siduction.org/iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">Installation to a USB medium</a>.</p>
+<p><strong>HDD, RAM, and Swap</strong></p>
+<p>The minimum requirements for installing the siduction variants are described on the manual page <a href="https://manual.siduction.org/cd-content_en.html#minimum-system-requirements">Live ISO content</a>.<br />
+With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. A swap partition should be created on PCs with 1 GByte RAM or less. More than 2 GByte swap is rarely required and only useful for suspend to disk and server systems.</p>
+<h3 id="partitioning">Partitioning</h3>
+<p>The partitioning of the drives depends on many factors:</p>
+<ul>
+<li>the chosen siduction variant</li>
+<li>size of the available drives and RAM</li>
+<li>single-boot or dual-boot with an already installed system (Windows, Linux, MAC)</li>
+<li>sharing of data for the installed systems</li>
+</ul>
+<p>Examples and sizes for different installation situations are described on the manual page <a href="https://manual.siduction.org/part-size-examp_en.html#partitioning-of-installation-media">Partitioning</a>.<br />
+We recommend leaving the <code>/home</code> directory on the root partition. The <code>/home</code> directory should be the place where individual configurations are stored, and only those. For all other private data, including <code>.ssh</code>, <code>.gnupg</code>, and the mail archives, a separate data partition should be created and linked to the <code>/home</code> directory if necessary. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.</p>
+<p>The partitioning can be done during installation or already in advance during the live session with the following programs:<br />
+<a href="https://manual.siduction.org/part-gparted_en.html#partitioning-with-gparted">Gparted</a>, a graphical user interface program for GTK desktops<br />
+KDE Partition Manager, another graphical user interface program for Qt desktops<br />
+<a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">gdisk</a>, recommended for UEFI hardware with GTP partition tables<br />
+<a href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">cfdisk</a>, only for older hardware with traditional BIOS and MBR partition tables</p>
+<h3 id="file-systems">File systems</h3>
+<p>We recommend the <strong>ext4</strong> file system, which is used as the default file system on siduction. This applies to all partitions if only Linux operating systems are used.</p>
+<p>For a dual-boot installation with <em>Windows</em>, a separate data partition with the <strong>NTFS</strong> file system makes sense. Linux can read and write to it; on Windows it is the default file system.</p>
+<p>For a dual-boot installation with <em>MAC</em>, it also makes sense to have a separate data partition, but with the <strong>HFS</strong> or <strong>HFS+</strong> file system. Linux and MAC can have read and write access to it.</p>
+<h3 id="duplication-to-another-computer">Duplication to another computer</h3>
+<p>The following console command creates a list of installed software packages. This list can be used to install an identical software selection on another computer or in the event of a new installation:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">dpkg</span> -l<span class="kw">|</span><span class="fu">awk</span> <span class="st">&#39;/^ii/{ print $2 }&#39;</span><span class="kw">|</span><span class="fu">grep</span> -v -e ^lib -e -dev -e <span class="va">$(</span><span class="fu">uname</span> -r<span class="va">)</span> <span class="op">&gt;</span>/home/username/installed.txt</span></code></pre></div>
+<p>We recommend to copy this text file to a USB drive or a disk of your choice.<br />
+The text file can then be copied to the target systems <code>$HOME</code> directory and be used as a reference to install the required program packages. You can install the complete package list via</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">apt</span> install <span class="va">$(</span><span class="ex">/home/username/installed.txt</span><span class="va">)</span></span></code></pre></div>
+<h3 id="the-calamares-installer">The Calamares installer</h3>
+<p>During the installation, the computer should preferably be connected to the Internet because Calamares uses the GeoIP service to determine default settings for localization and time.</p>
+<ol type="1">
+<li><p>The installation program can be started comfortably via the <img src="./images/install-hd/calamares-en_00.png" alt="calamares icon" /> icon on the desktop or in the menu: <em>“System”</em> &gt; <em>“Install system”</em>.</p></li>
+<li><p>After a double click on the icon, Calamares starts and we see the “<em>Welcome</em>” window.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_01.png" title="Welcome" alt="" /><figcaption>calamares welcome</figcaption>
+</figure>
+<p>If an internet connection is provided, the correct language should already be set here.</p></li>
+<li><p>In the next window (“<em>Location</em>”), you have the possibility to make changes to <em>region</em>, <em>timezone</em>, and <em>system language</em>, as well as the date and number <em>format</em>.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_02.png" title="Location" alt="" /><figcaption>calamares location</figcaption>
+</figure></li>
+<li><p>Next, you can set up the keyboard.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_03.png" title="Keyboard" alt="" /><figcaption>calamares keyboard</figcaption>
+</figure>
+<p>In the upper section, the keyboard is displayed graphically and the changes are visible immediately. At the bottom, there is an input line to test the keyboard layout.</p></li>
+<li><p>Then we reach the already mentioned partitioning, which determines the parts of the harddisk(s) siduction uses.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_04.png" title="Partitions" alt="" /><figcaption>calamares partitions</figcaption>
+</figure>
+<p>In our example, we use <em>“Manual partitioning”</em> because the partitions have already been created in advance and we only need to select the correct installation target. After clicking <em>“Next”</em>, the following window appears where we can select and edit the individual partitions.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_05.png" title="Edit partitions" alt="" /><figcaption>calamares work on partitions</figcaption>
+</figure>
+<p>We use the partitions:<br />
+sda7 for <code>/</code> (root)<br />
+sda6 for <code>/data</code> together with the Linux system already present on sda3 and sda4</p>
+<p>After selecting the partition in question and pressing the <em>“Change”</em> button, a window opens where we enter the above mountpoint and also format sda7 with the <strong>ext4</strong> file system. The partition sda6 is not formatted because we want to use the data already stored there together with the existing Linux system.<br />
+We do not need to edit the swap partition (sda5) since it will be automatically detected and integrated during the installation.<br />
+We can see the result of our efforts in the next image.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_06.png" title="Partitions result" alt="" /><figcaption>calamares partitions finish</figcaption>
+</figure></li>
+<li><p>Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with <a href="#adduser">adduser</a>.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_07.png" title="users" alt="" /><figcaption>calamares users</figcaption>
+</figure>
+<p>We explicitly recommend not to use the options<br />
+“<em>Log in automatically without password prompt</em>” and<br />
+“<em>Use the same password for the administrator account</em>”.<br />
+They both represent a security risk on their own (see also <a href="https://manual.siduction.org/term-console_en.html#work-as-root">sudo</a>). If both options are enabled, entering passwords is just a farce!</p></li>
+<li><p>After pressing the <em>“Next”</em> button, a summary of all previously made entries appears. Now you still have the possibility to make changes via <em>“Back”</em>. If you are satisfied with the result, a click on <em>“Install”</em> opens the small warning window in which you have to confirm the installation.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_08.png" title="Summary" alt="" /><figcaption>calamares summary</figcaption>
+</figure></li>
+<li><p>Now the installation starts. This takes some time depending on the hardware. The progress will be displayed respectively. Even if it takes a little longer, please do not abort the installation, but give the process time.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_09.png" title="Install" alt="" /><figcaption>calamares install</figcaption>
+</figure></li>
+<li><p>At the end, we get the possibility to reboot into the newly installed system.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_10.png" title="Exit" alt="" /><figcaption>calamares reboot</figcaption>
+</figure>
+<p>Remove the CD from the drive before rebooting!</p></li>
+</ol>
+<h3 id="encrypt-system">Encrypt system</h3>
+<p>Since <em>siduction 2021.2 Farewell</em>, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager <em>Grub</em> is located (without encryption) on the <em>“BIOS-boot”</em> partition. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.<br />
+The partitioning described in step 5 above is now slightly different. When selecting one of the first three options, the function <em>“Encrypt system”</em> appears in addition, where we also enter the password at the same time.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_11.png" title="Encrypt system" alt="" /><figcaption>calamares encrypt system</figcaption>
+</figure>
+<p>If we use <em>“Manual partitioning”</em>, we need an empty, unused area on the hard disk. In case this is not available, we first delete one or more partitions that are no longer needed. Then we create the new partition.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_12.png" title="Manual partition encrypt 1" alt="" /><figcaption>calamares, manual partitioning encrypt 1</figcaption>
+</figure>
+<p>In the next step, the function <em>“Encrypt”</em> is selectable now.</p>
+<figure>
+<img src="./images/install-hd/calamares-en_13.png" title="Manual partition encrypt 2" alt="" /><figcaption>calamares, manual partitioning encrypt 2</figcaption>
+</figure>
+<p>We enter our password and then select the root directory <code>/</code> as mount point.<br />
+After finishing the partitioning, we continue the installation with the menu item <em>“User”</em> as described above in step 6.</p>
+<h3 id="add-user">Add user</h3>
+<p>To add new users with automatic takeover of group permissions, run the following command as <strong>root</strong>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">adduser</span> <span class="op">&lt;</span>username<span class="op">&gt;</span></span></code></pre></div>
+<p>Pressing the <strong><code>Enter</code></strong> key will bring up more options that allow additional settings. Finally, a prompt appears, asking to enter the password twice.</p>
+<p>siduction specific desktop icons (for the manual and IRC) must be added yourself.</p>
+<p>To remove a user, enter:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">deluser</span> <span class="op">&lt;</span>username<span class="op">&gt;</span></span></code></pre></div>
+<p>More information:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">man</span> adduser</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">man</span> deluser</span></code></pre></div>
+<div id="rev">
+Last edited: 2022/03/30
+</div>
+</body>
+</html>

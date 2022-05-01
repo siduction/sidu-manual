@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Logical Volume partitioning</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
+p               {line-height: 1.4;}
+code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+img             {border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Logical Volume partitioning</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#lvm-partitioning---logical-volume-manager">LVM partitioning - Logical Volume Manager</a>
+<ul>
+<li><a href="#six-steps-to-logical-volumes">Six steps to logical volumes</a></li>
+<li><a href="#resizing-a-volume">Resizing a volume</a></li>
+<li><a href="#manage-lvm-with-a-gui-program">Manage LVM with a GUI program</a></li>
+<li><a href="#more-info">More info</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="lvm-partitioning---logical-volume-manager">LVM partitioning - Logical Volume Manager</h2>
+<p><strong>The following is a basic introduction.</strong> It is up to the esteemed reader to delve deeper into the subject. Further sources of information can be found at the end of this text - the list does not claim to be complete.</p>
+<p>Working with <em>Logical Volumes</em> is much easier than most users think. The best feature of LVM is that changes take effect without having to reboot the system. <em>Logical Volumes</em> can span multiple disks and are scalable. This distinguishes them from other methods of disk partitioning.</p>
+<p>You should be familiar with three basic terms:</p>
+<ul>
+<li><p><strong>Physical Volume (Physical Volume):</strong> This includes the physical, real-world disks or partitions such as <strong>/dev/sda</strong> or <strong>/dev/sdb1</strong> which are used for mounting/mounting. LVM can be used to combine multiple physical volumes into volume groups.</p></li>
+<li><p><strong>Volume Group:</strong> A volume group consists of <em>physical volumes</em> and is the location of <em>logical volumes</em>. A Volume Group can be seen as a “virtual disk” composed of <em>physical volumes</em>. Here are some examples for better understanding:</p>
+<ul>
+<li><p>Multiple storage devices (e.g. hard disks, SSDs, M2 disks, external USB drives, etc.) can be combined into a volume group (a virtual drive).</p></li>
+<li><p>Multiple partitions of a storage device can be combined into one volume group (a virtual drive).</p></li>
+<li><p>The two aforementioned options can be combined. For example, you could combine two complete SSDs with two partitions of a third SSD into a volume group.</p></li>
+</ul></li>
+<li><p>Logical volumes are created within a <em>volume group</em> and mounted to the system. You can also consider them “virtual” partitions. They are dynamically modifiable, can be resized, recreated, removed, and used. A logical volume can span multiple physical volumes within the volume group.</p></li>
+</ul>
+<h3 id="six-steps-to-logical-volumes">Six steps to logical volumes</h3>
+<warning>
+<strong>Caution</strong> <br />We assume non-partitioned hard disks in our example. Note: If old partitions are deleted, all data will be irretrievably lost.
+</warning>
+<p>As partition editor, either cfdisk or gdisk must be used because currently neither GParted nor the KDE partition manager support the creation of <em>logical volumes</em>. See also the manual pages:<br />
+<a href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with cfdisk (msdos-MBR)</a><br />
+<a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk (GPT-UEFI)</a></p>
+<p>All of the following commands and actions require <strong>root</strong> privileges.</p>
+<ol type="1">
+<li><p>Creating of a partition table</p>
+<pre><code>cfdisk /dev/sda
+n  -&gt; creates a new partition on the drive
+p  -&gt; this partition becomes a primary partition
+1  -&gt; the partition gets the number 1
+      as identification &quot;size allocation&quot; sets the
+      first and last cylinder to default values.
+      Press ENTER to span the whole drive
+t  -&gt; selects the partition type to create
+8e -&gt; the hex code for a Linux LVM
+W  -&gt; writes changes to the drive</code></pre>
+<p>The command <strong><code>W</code></strong> writes the partitioning table. If a mistake was made up to this point, the existing partitioning layout can be restored. For this purpose, enter the command <strong><code>q</code></strong> for <code>cfdisk</code> to exit without writing, and everything remains as it has been before.</p>
+<p>If the volume group is to span more than one physical volume (disk), the above operation must be performed on each physical volume.</p></li>
+<li><p>Creating a physical volume</p>
+<pre><code>pvcreate /dev/sda1</code></pre>
+<p>The command creates the physical volume on the first partition of the first hard disk.<br />
+This process is to be repeated on each partition as needed.</p></li>
+<li><p>Creating a volume group</p>
+<p>Now we add the physical volumes to a volume group named <em>vulcan</em> (three drives in our example):</p>
+<pre><code>vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1</code></pre>
+<p>If this step has been performed correctly, the result can be seen in the output of the following command:</p>
+<pre><code>vgscan</code></pre>
+<p><code>vgdisplay</code> displays the size with:</p>
+<pre><code>vgdisplay vulcan</code></pre></li>
+<li><p>Creating a logical volume</p>
+<p>At this point you have to decide how big the <em>logical volume</em> should be at the beginning. One advantage of LVM is the ability to adjust the size without rebooting.</p>
+<p>In our example, we want a 300GB volume named <em>spock</em> inside the volume group named <em>vulcan</em>:</p>
+<pre><code>lvcreate -n spock --size 300g vulcan</code></pre></li>
+<li><p>Formatting the logical volume</p>
+<p>Please be patient, this process may take some time:</p>
+<pre><code>mkfs.ext4 /dev/vulcan/spock</code></pre></li>
+<li><p>Mounting the logical volume</p>
+<p>Create the mount point with</p>
+<pre><code>mkdir /media/spock/</code></pre>
+<p>Using <code>/dev/vulcan/spock</code> is preferable to using UUID numbers with an LVM because it makes it easier to clone the file system (no UUID collisions). An LVM allows to create file systems with identical UUID numbers (classic example: snapshots). To mount the volume during the boot process, <code>fstab</code> must be customized with a text editor:</p>
+<pre><code>mcedit /etc/fstab</code></pre></li>
+</ol>
+<p>Then insert the following line according to our example:</p>
+<pre><code>/dev/vulcan/spock /media/spock/ ext4 auto,users,rw,exec,dev,relatime 0 2</code></pre>
+<p>Optional:<br />
+The owner of the volume can be changed so that other users have read/write access to the logical volume:</p>
+<pre><code>chown root:users /media/spock
+chmod 775 /media/spock</code></pre>
+<p>We can now repeat steps 4 to 6 for the new logical volume <em>kirk</em> to be created.</p>
+<p>A simple LVM should now be usable.</p>
+<h3 id="resizing-a-volume">Resizing a volume</h3>
+<p>We recommend using a live ISO to resize partitions. Although increasing the partition size of the running system can be done without error, decreasing the size of a partition cannot. Anomalies can lead to data loss, especially if the <code>/</code> (root) or <code>/home</code> directories are affected.</p>
+<p><strong>Example of an enlargement</strong></p>
+<p>A partition is to be enlarged from 300GB to 500GB:</p>
+<pre><code>umount /media/spock/</code></pre>
+<p>Extend the logical volume:</p>
+<pre><code>lvextend -L+200g /dev/vulcan/spock</code></pre>
+<p>The <code>lvextend</code> command needs to be given the size <strong>difference</strong> as an option, not the total size desired.</p>
+<p>Then resize the file system:<br />
+The first command forcibly performs a check, even if the file system appears to be clean.<br />
+The last command remounts the <em>logical volume</em>.</p>
+<pre><code>e2fsck -f /dev/vulcan/spock
+resize2fs /dev/vulcan/spock
+mount /media/spock</code></pre>
+<p><strong>Example of a resize</strong></p>
+<p>A partition is resized from 500GB to 280GB:</p>
+<pre><code>umount /media/spock/</code></pre>
+<p>Reduce the size of the file system:</p>
+<pre><code>e2fsck -f /dev/vulcan/spock
+resize2fs /dev/vulcan/spock 280g</code></pre>
+<p>After that, the logical volume is changed.</p>
+<pre><code>lvreduce -L-220g /dev/vulcan/spock
+resize2fs /dev/vulcan/spock
+mount /media/spock</code></pre>
+<p>Again, the <code>lvreduce</code> command must be given the size <strong>difference</strong> as an option.<br />
+The <code>resize2sf</code> command resizes the file system exactly to the logical volume’s size.</p>
+<h3 id="manage-lvm-with-a-gui-program">Manage LVM with a GUI program</h3>
+<p><em>Gparted</em> offers the possibility to manage already created <em>logical volumes</em>. The program needs to be executed as <strong>root</strong>.</p>
+<h3 id="more-info">More info</h3>
+<p><a href="https://wikipedia.org/wiki/Logical_Volume_Manager">Logical Volume Manager - Wikipedia</a><br />
+<a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-1/">Working with logical volumes #1</a><br />
+<a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-2/">Working with logical volumes #2</a><br />
+<a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-3/">Working with logical volumes #3</a><br />
+<a href="https://developer.ibm.com/tutorials/l-resizing-partitions-2/">Resizing Linux partitions - part 2 (IBM)</a></p>
+<div id="rev">
+Last edited: 2022/04/01
+</div>
+</body>
+</html>
