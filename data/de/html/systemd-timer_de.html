@@ -8,11 +8,11 @@
 <title>Systemd - timer</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -42,67 +42,68 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="systemd-timer">systemd-timer</h2>
 <p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit <strong>systemd.timer</strong>, mit der zeitgesteuert Aktionen ausgel&ouml;st werden k&ouml;nnen.</p>
-<p>Die “<em>.timer</em>”-Unit wird meist eingesetzt, um regelm&auml;&szlig;ig anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige “<em>.service</em>”-Unit notwendig, in der die Aktionen definiert sind. Sobald der Systemzeitgeber mit der in der “<em>.timer</em>”-Unit definierten Zeit &uuml;bereinstimmt, aktiviert die “<em>.timer</em>”-Unit die gleichnamige “<em>.service</em>”-Unit.<br />
+<p>Die <em>timer</em>-Unit wird meist eingesetzt, um regelm&auml;&szlig;ig anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige <em>service</em>-Unit notwendig, in der die Aktionen definiert sind. Sobald der Systemzeitgeber mit der in der <em>timer</em>-Unit definierten Zeit &uuml;bereinstimmt, aktiviert sie die gleichnamige <em>service</em>-Unit.<br />
 Bei entsprechender Konfiguration k&ouml;nnen verpasste L&auml;ufe, w&auml;hrend die Maschine ausgeschaltet war, nachgeholt werden.<br />
-Auch ist es m&ouml;glich, dass eine “<em>.timer</em>”-Unit die gew&uuml;nschten Aktionen nur ein einziges Mal zu einem vorher definierten Termin ausl&ouml;st.</p>
+Auch ist es m&ouml;glich, dass eine <em>timer</em>-Unit die gew&uuml;nschten Aktionen nur ein einziges Mal zu einem vorher definierten Termin ausl&ouml;st.</p>
 <h3 id="ben&ouml;tigte-dateien">Ben&ouml;tigte Dateien</h3>
-<p>Die <strong>systemd-timer</strong>-Unit ben&ouml;tigt zwei Dateien mit dem gleichen Basename im Verzeichnis <em>/usr/local/lib/systemd/system/</em> f&uuml;r ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
+<p>Die <strong>systemd-timer</strong>-Unit ben&ouml;tigt zwei Dateien mit dem gleichen Basename im Verzeichnis <code>/usr/local/lib/systemd/system/</code> f&uuml;r ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
 <ul>
 <li>Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Ausl&ouml;ser f&uuml;r die service-Unit enth&auml;lt<br />
 und die<br />
 </li>
 <li>service-Unit Datei (xxxxx.service), welche die zu startende Aktion enth&auml;lt.</li>
 </ul>
-<p>F&uuml;r umfangreichere Aktionen erstellt man als dritte Datei ein Skript in <em>/usr/local/bin/</em>, das von der service-Unit ausgef&uuml;hrt wird.</p>
-<p>Wir erstellen in dem Beispiel ein regelm&auml;&szlig;iges Backup mit <em>rsync</em>.</p>
+<p>F&uuml;r umfangreichere Aktionen erstellt man als dritte Datei ein Skript in <code>/usr/local/bin/</code>, das von der service-Unit ausgef&uuml;hrt wird.</p>
+<p>Wir erstellen in dem Beispiel ein regelm&auml;&szlig;iges Backup mit <code>rsync</code>.</p>
 <h3 id="service-unit-f&uuml;r-timer">service-Unit f&uuml;r timer</h3>
-<p>Die <em>.service-Unit</em>, die das Backup ausf&uuml;hrt, wird von der <em>.timer-Unit</em> aktiviert und kontrolliert und ben&ouml;tigt daher keine <em>[Install]</em> Sektion. Somit reicht die Beschreibung der Unit in der Sektion <em>[Unit]</em>. Ihrer Sektion <em>[Service]</em> enth&auml;lt den auszuf&uuml;hrenden Befehl nach der Option <em>ExecStart=</em>.</p>
-<p>Wir legen die Datei <strong>backup.service</strong> im Verzeichnis <em>/usr/local/lib/systemd/system/</em> mit folgendem Inhalt an.</p>
-<pre><code>[Unit]
-Description=&quot;Command to backup my home directory&quot;
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/backup/home/</code></pre>
+<p>Die service-Unit, die das Backup ausf&uuml;hrt, wird von der timer-Unit aktiviert und kontrolliert und ben&ouml;tigt daher keine [Install] Sektion. Somit reicht die Beschreibung der Unit in der Sektion [Unit]. Ihre Sektion [Service] enth&auml;lt den auszuf&uuml;hrenden Befehl nach der Option <code>ExecStart=</code>.</p>
+<p>Wir legen die Datei <code>backup.service</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>[Unit]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>Description=&quot;Command to backup my home directory&quot;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>[Service]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>Type=oneshot</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/backup/home/</span></code></pre></div>
 <p>Den String &lt;user&gt; bitte durch den eigenen User ersetzen.</p>
 <h3 id="timer-unit-anlegen">timer-Unit anlegen</h3>
-<p>Wir legen die Datei <strong>backup.timer</strong> im Verzeichnis <em>/usr/local/lib/systemd/system/</em> mit folgendem Inhalt an.</p>
-<pre><code>[Unit]
-Description=&quot;Backup my home directory&quot;
-
-[Timer]
-OnCalendar=*-*-* 19:00:00
-Persistent=true
-
-[Install]
-WantedBy=timers.target</code></pre>
+<p>Wir legen die Datei <code>backup.timer</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>[Unit]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>Description=&quot;Backup my home directory&quot;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>[Timer]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>OnCalendar=*-*-* 19:00:00</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>Persistent=true</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>[Install]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>WantedBy=timers.target</span></code></pre></div>
 <p><strong>Erkl&auml;rungen</strong><br />
-Die <em>.timer-Unit</em> muss zwingend die Sektion <em>[Timer]</em> enthalten, in der festgelegt wird wann und wie die zugeh&ouml;rige <em>.service-Unit</em> ausgel&ouml;st wird.<br />
+Die timer-Unit muss zwingend die Sektion [Timer] enthalten, in der festgelegt wird wann und wie die zugeh&ouml;rige service-Unit ausgel&ouml;st wird.<br />
 Es stehen zwei Timer-Typen zur Verf&uuml;gung:</p>
 <ol type="1">
 <li>Realtime timers,<br />
 die mit der Option <code>OnCalendar=</code> einen Echtzeit- (d.h. Wanduhr-)Zeitgeber definiert<br />
-(das Beispiel “<em>OnCalendar=*-*-* 19:00:00</em>” bedeutet “t&auml;glich um 19:00 Uhr”),<br />
+(das Beispiel <em>“OnCalendar=*-*-* 19:00:00”</em> bedeutet “t&auml;glich um 19:00 Uhr”),<br />
 und<br />
 </li>
 <li>Monotonic timers,<br />
-die mit den Optionen <code>OnActiveSec=, OnBootSec=, OnStartupSec=, OnUnitActiveSec=, OnUnitInactiveSec=</code> einen zu der Option relativen Zeitgeber definiert.<br />
-“<em>OnBootSec=90</em>” bedeutet “90 Sekunden nach dem Booten” und<br />
-“<em>OnUnitActiveSec=1d</em>” bedeutet “Einen Tag nachdem der Zeitgeber letztmalig aktiviert wurde”.<br />
-Beide Optionen zusammen l&ouml;sen die zugeh&ouml;rige <em>.service-Unit</em> 90 Sekunden nach den Booten und dann genau im 24 Stunden-Takt aus, solange die Maschine nicht heruntergefahren wird.</li>
+die mit den Optionen <code>OnActiveSec=</code>, <code>OnBootSec=</code>, <code>OnStartupSec=</code>, <code>OnUnitActiveSec=</code>, <code>OnUnitInactiveSec=</code> einen zu der Option relativen Zeitgeber definiert.<br />
+<em>“OnBootSec=90”</em> bedeutet “90 Sekunden nach dem Booten” und<br />
+<em>“OnUnitActiveSec=1d”</em> bedeutet “Einen Tag nachdem der Zeitgeber letztmalig aktiviert wurde”.<br />
+Beide Optionen zusammen l&ouml;sen die zugeh&ouml;rige service-Unit 90 Sekunden nach den Booten und dann genau im 24 Stunden-Takt aus, solange die Maschine nicht heruntergefahren wird.</li>
 </ol>
-<p>Die im Beispiel enthaltene Option “<em>Persistent=</em>” speichert den Zeitpunkt, zu dem die <em>.service-Unit</em> das letzte Mal ausgel&ouml;st wurde, als leere Datei im Verzeichnis <em>/var/lib/systemd/timers/</em>. Dies ist n&uuml;tzlich, um verpasste L&auml;ufe, als die Maschine ausgeschaltet war, nachzuholen.</p>
+<p>Die im Beispiel enthaltene Option <code>Persistent=</code> speichert den Zeitpunkt, zu dem die service-Unit das letzte Mal ausgel&ouml;st wurde, als leere Datei im Verzeichnis <code>/var/lib/systemd/timers/</code>. Dies ist n&uuml;tzlich, um verpasste L&auml;ufe, als die Maschine ausgeschaltet war, nachzuholen.</p>
 <p><strong>timer-Unit eingliedern</strong></p>
-<p>Mit dem folgenden Befehl gliedern wir die <em>.timer-Unit</em> in systemd ein.</p>
-<pre><code># systemctl enable backup.timer
-Created symlink /etc/systemd/system/timers.target.wants/backup.timer \
-  → /usr/local/lib/systemd/system/backup.timer.</code></pre>
-<p>Der analoge Befehl f&uuml;r die <em>.service-Unit</em> ist nicht notwendig und w&uuml;rde auch zu einem Fehler f&uuml;hren, da in ihr keine <em>[Install]</em> Sektion enthalten ist.</p>
+<p>Mit dem folgenden Befehl gliedern wir die timer-Unit in systemd ein.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a># systemctl enable backup.timer</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>Created symlink</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a> /etc/systemd/system/timers.target.wants/backup.timer →</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>   /usr/local/lib/systemd/system/backup.timer.</span></code></pre></div>
+<p>Der analoge Befehl f&uuml;r die service-Unit ist nicht notwendig und w&uuml;rde auch zu einem Fehler f&uuml;hren, da in ihr keine [Install] Sektion enthalten ist.</p>
 <p><strong>timer-Unit manuell ausl&ouml;sen</strong></p>
-<p>Es wird nicht die <em>.timer-Unit</em>, sondern die von ihr auszul&ouml;sende <em>.service-Unit</em> aufgerufen.</p>
-<pre><code># systemctl start backup.service</code></pre>
+<p>Es wird nicht die timer-Unit, sondern die von ihr auszul&ouml;sende service-Unit aufgerufen.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a># systemctl start backup.service</span></code></pre></div>
 <h3 id="timer-unit-als-cron-ersatz">timer-Unit als cron Ersatz</h3>
-<p>“<em>cron</em>” und “<em>anacron</em>” sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer k&ouml;nnen eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.</p>
+<p>“cron” und “anacron” sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer k&ouml;nnen eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.</p>
 <p><strong>Nutzen</strong></p>
 <ul>
 <li>Jobs k&ouml;nnen Abh&auml;ngigkeiten haben (von anderen systemd-Diensten abh&auml;ngen).</li>

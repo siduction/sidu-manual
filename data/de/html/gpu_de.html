@@ -8,11 +8,11 @@
 <title>Grafiktreiber nVidea, Intel, ATA/AMD</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -32,7 +32,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#grafiktreiber">Grafiktreiber</a>
 <ul>
 <li><a href="#open-source-xorg-treiber">Open Source Xorg-Treiber</a></li>
-<li><a href="#proprit&auml;re-treiber">Proprit&auml;re Treiber</a></li>
+<li><a href="#propriet&auml;re-treiber">Propriet&auml;re Treiber</a></li>
 <li><a href="#videotreiber-2d">Videotreiber 2D</a></li>
 <li><a href="#videotreiber-3d">Videotreiber 3D</a></li>
 <li><a href="#nvidia-closed-source-treiber">nVidia closed Source Treiber</a></li>
@@ -75,8 +75,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 <p>Open Source Xorg-Treiber f&uuml;r nVidia (modesetting/nouveau), ATI/AMD (modesetting/radeon/amdgpu), Intel (modesetting/intel) und weitere sind mit siduction vorinstalliert.</p>
 <p>Anmerkung: xorg.conf wird f&uuml;r Open-Source-Treiber in der Regel nicht mehr ben&ouml;tigt Ausnahmen sind z.B. Mehrschirmbetrieb.</p>
-<h3 id="proprit&auml;re-treiber">Proprit&auml;re Treiber</h3>
-<p>Proprit&auml;re Treiber gibt es faktisch nur noch f&uuml;r nVidia Grafikkarten. AMD hat zwar auch einen proprit&auml;ren Treiber namens amdgpu-pro, dieser unterst&uuml;tzt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Au&szlig;erdem ist dieser Treiber eher f&uuml;r professionelle Karten denn f&uuml;r Desktop Karten konzipiert.</p>
+<h3 id="propriet&auml;re-treiber">Propriet&auml;re Treiber</h3>
+<p>Propriet&auml;re Treiber gibt es faktisch nur noch f&uuml;r nVidia Grafikkarten. AMD hat zwar auch einen propriet&auml;ren Treiber namens amdgpu-pro, dieser unterst&uuml;tzt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Au&szlig;erdem ist dieser Treiber eher f&uuml;r professionelle Karten denn f&uuml;r Desktop Karten konzipiert.</p>
 <p>Um vom propriet&auml;ren Treiber von Nvidia auf nouveau zu wechseln, siehe den <a href="http://wiki.siduction.de/index.php?title=Wie_entferne_ich_propriet%C3%A4re_nVidia-Treiber%3F">Eintrag im siduction Wiki.</a></p>
 <p>Hier erh&auml;ltst du mehr Informationen zu den Treibern von<br />
 <a href="http://www.x.org/wiki/IntelGraphicsDriver">Intel</a><br />
@@ -111,16 +111,20 @@ Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx (Turing TU1xx); Geforce 30xx (Amp
 - nvidia-legacy-340xx-driver (f&uuml;r 5.)
 - nvidia-legacy-390xx-driver (f&uuml;r 6.)
 - nvidia-driver (f&uuml;r 7.)</code></pre>
-<p>Da es sich hier aber um proprit&auml;re Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch f&uuml;r die Firmware f&uuml;r freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Au&szlig;erdem sind die Pakete gcc, make und dkms notwendig. Mit dkms werden zus&auml;tzlich installierte (nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:</p>
+<p>Da es sich hier aber um propriet&auml;re Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch f&uuml;r die Firmware f&uuml;r freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Au&szlig;erdem sind die Pakete gcc, make und dkms notwendig. Mit dkms werden zus&auml;tzlich installierte (nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:</p>
 <p><strong>GeForce 8000 and 9000 series</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install nvidia-legacy-340xx-driver  </span></code></pre></div>
 <p><strong>GeForce GF1xx Chipsatz, Fermi Cards</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install nvidia-legacy-390xx-driver</span></code></pre></div>
 <p><strong>Kepler, Maxwell, Pascal und neuer (GKxxx, GMxxx, GPxxx, TU1xx)</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install nvidia-driver</span></code></pre></div>
-<p>Wenn das fehlerfrei durchgelaufen ist noch ein</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">mkdir</span> -p /etc/X11/xorg.conf.d<span class="kw">;</span> <span class="bu">echo</span> -e <span class="st">&#39;Section &quot;Device&quot;\n\tIdentifier &quot;My GPU&quot;\n\tDriver &quot;nvidia&quot;\nEndSection&#39;</span> <span class="op">&gt;</span> /etc/X11/xorg.conf.d/20-nvidia.conf</span></code></pre></div>
-<p>ausf&uuml;hren, um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.</p>
+<p>Wenn das fehlerfrei durchgelaufen ist, noch ein</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">mkdir</span> -p /etc/X11/xorg.conf.d<span class="kw">;</span> <span class="bu">echo</span> -e <span class="st">&#39;Section &quot;Device&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="st">\n\tIdentifier &quot;My GPU&quot;\n\tDriver &quot;nvidia&quot;\nEndSection&#39;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a> <span class="op">&gt;</span> <span class="ex">/etc/X11/xorg.conf.d/20-nvidia.conf</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="kw">(</span><span class="ex">alles</span> in einer Zeile<span class="kw">)</span></span></code></pre></div>
+<p>ausf&uuml;hren um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.</p>
 <p>Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr supportet werden, ist damit zu rechnen, dass selbige mit einem neuen Kernel oder neuem Xorg nicht mehr funktionieren.</p>
 <p>Problematisch sind Notebooks mit Hybridgrafik Intel/nVidia, sogenannte Optimus Hardware. Hier wurde fr&uuml;her auf <a href="https://wiki.debian.org/Bumblebee">Bumblebee</a> verwiesen, diese L&ouml;sung ist aber alles Andere, als optimal. nVidia selbst empfielt hingegen diese Setups per <a href="https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/">PRIME</a> zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es geht, zu vermeiden. Tipps zur Einrichtung f&uuml;r Optimus Hardware k&ouml;nnen wir hier nicht geben.</p>
 <div id="rev">

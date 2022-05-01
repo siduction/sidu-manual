@@ -8,11 +8,11 @@
 <title>Systemd - mount</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -42,60 +42,60 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der systemd-Units <strong>mount</strong> und <strong>automount</strong>. Mit ihnen verwaltet systemd Einh&auml;ngepunkte f&uuml;r Laufwerke und deren Partitionen, die sowohl lokal als auch &uuml;ber das Netzwerk erreichbar sein k&ouml;nnen.</p>
 <p>Die <strong>mount</strong>-Unit ist eine Konfigurationsdatei, die f&uuml;r systemd Informationen &uuml;ber einen Einh&auml;ngepunkt bereitstellt.<br />
-Die <strong>automount</strong>-Unit &uuml;berwacht das Dateisystem und aktiviert die gleichnamige <em>.mount-Unit</em>, wenn das darin bezeichnete Dateisystem verf&uuml;gbar ist.</p>
-<p>F&uuml;r unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die <em>mount</em>-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuh&auml;ngen.<br />
-Bei Netzwerk-Dateisystemen bietet die <em>mount</em>-Unit den Vorteil, Abh&auml;ngigkeiten deklarieren zu k&ouml;nnen, damit die Unit erst aktiv wird, wenn das Netzwerk bereit steht. Auch hier benutzen wir nur die <em>mount</em>-Unit und aktivieren und starten sie, um das Netzwerk-Dateisystemen bei jedem Boot einzuh&auml;ngen. Die <em>mount</em>-Unit unterst&uuml;tzt alle Arten von Netzwerk-Dateisystemen (NFS, SMB, FTP, WEBDAV, SFTP, SSH).</p>
-<p>Entfernbare Ger&auml;te, wie USB-Sticks, und Netzwerk-Dateisysteme, die nicht permanent erreichbar sind, m&uuml;ssen immer an eine <em>.automount</em>-Unit gekoppelt werden. In diesem Fall darf die <em>mount</em>-Unit nicht aktiviert werden und sollte auch keine [Install]-Sektion enthalten.</p>
-<p><em>mount</em>- und <em>automount</em>-Units m&uuml;ssen nach dem Einh&auml;ngepunkt, den sie steuern, benannt sein. Beispiel: Der Einh&auml;ngepunkt “/home/musteruser” muss in einer Unit-Datei “home-musteruser.mount”, bzw. “home-musteruser.automount”, konfiguriert werden.</p>
-<p>Die in der “<em>/etc/fstab</em>” deklarierten Ger&auml;te und ihre Einh&auml;ngepunkte &uuml;bersetzt systemd in der fr&uuml;hen Bootphase mit Hilfe des “<em>systemd-fstab-generators</em>” in native <em>mount</em>-Units.</p>
+Die <strong>automount</strong>-Unit &uuml;berwacht das Dateisystem und aktiviert die gleichnamige mount-Unit, wenn das darin bezeichnete Dateisystem verf&uuml;gbar ist.</p>
+<p>F&uuml;r unmittelbar im PC verbaute Laufwerke und deren Partitionen verwenden wir nur die mount-Unit. Sie wird aktiviert (enabled) und gestartet um die Laufwerke bei jedem Boot einzuh&auml;ngen.<br />
+Bei Netzwerk-Dateisystemen bietet die mount-Unit den Vorteil, Abh&auml;ngigkeiten deklarieren zu k&ouml;nnen, damit die Unit erst aktiv wird, wenn das Netzwerk bereit steht. Auch hier benutzen wir nur die mount-Unit und aktivieren und starten sie, um das Netzwerk-Dateisystemen bei jedem Boot einzuh&auml;ngen. Die mount-Unit unterst&uuml;tzt alle Arten von Netzwerk-Dateisystemen (NFS, SMB, FTP, WEBDAV, SFTP, SSH).</p>
+<p>Entfernbare Ger&auml;te, wie USB-Sticks, und Netzwerk-Dateisysteme, die nicht permanent erreichbar sind, m&uuml;ssen immer an eine automount-Unit gekoppelt werden. In diesem Fall darf die mount-Unit nicht aktiviert werden und sollte auch keine [Install]-Sektion enthalten.</p>
+<p>mount- und automount-Units m&uuml;ssen nach dem Einh&auml;ngepunkt, den sie steuern, benannt sein. Beispiel: Der Einh&auml;ngepunkt “/home/musteruser” muss in einer Unit-Datei “home-musteruser.mount”, bzw. “home-musteruser.automount”, konfiguriert werden.</p>
+<p>Die in der <code>/etc/fstab</code> deklarierten Ger&auml;te und ihre Einh&auml;ngepunkte &uuml;bersetzt systemd in der fr&uuml;hen Bootphase mit Hilfe des systemd-fstab-generators in native mount-Units.</p>
 <h3 id="inhalt-der-mount-unit">Inhalt der mount-Unit</h3>
-<p>Die <em>mount</em>-Unit verf&uuml;gt &uuml;ber die folgenden Optionen in der zwingend erforderlichen [Mount]-Sektion:</p>
+<p>Die mount-Unit verf&uuml;gt &uuml;ber die folgenden Optionen in der zwingend erforderlichen [Mount]-Sektion:</p>
 <ul>
-<li><p><strong>What=</strong> (Pflicht)<br />
-Enth&auml;lt den absoluten Pfad des eingeh&auml;ngten Ger&auml;ts, also z.B. Festplatten-Partitionen wie /dev/sda8 oder eine Netzwerkfreigabe wie NFSv4 oder Samba.</p></li>
-<li><p><strong>Where=</strong> (Pflicht)<br />
+<li><p><code>What=</code> (Pflicht)<br />
+Enth&auml;lt den absoluten Pfad des eingeh&auml;ngten Ger&auml;ts, also z.B. Festplatten-Partitionen wie <code>/dev/sda8</code> oder eine Netzwerkfreigabe wie NFSv4 oder Samba.</p></li>
+<li><p><code>Where=</code> (Pflicht)<br />
 Hier wird der Einh&auml;ngepunkt (mount point) festgelegt, d.h. der Ordner, in den die Partition, das Netzlaufwerk oder Ger&auml;t eingeh&auml;ngt werden soll. Falls dieser nicht existiert, wird er beim Einh&auml;ngen erzeugt.</p></li>
-<li><p><strong>Type=</strong> (optional)<br />
+<li><p><code>Type=</code> (optional)<br />
 Hier wird der Typ des Dateisystems angegeben, gem&auml;&szlig; dem mount-Parameter -t.</p></li>
-<li><p><strong>Options=</strong> (optional)<br />
+<li><p><code>Options=</code> (optional)<br />
 Enth&auml;lt alle verwendeten Optionen in einer Komma getrennten Liste, gem&auml;&szlig; dem mount-Parameter -o.</p></li>
-<li><p><strong>LazyUmount=</strong> (Standard: off)<br />
+<li><p><code>LazyUmount=</code> (Standard: off)<br />
 Wenn der Wert auf true gesetzt wird, wird das Dateisystem wieder ausgeh&auml;ngt, sobald es nicht mehr ben&ouml;tigt wird.</p></li>
-<li><p><strong>SloppyOptions=</strong> (Standard: off)<br />
-Falls true, erfolgt eine entspannte Auswertung der in <em>Options=</em> festgelegten Optionen und unbekannte Einh&auml;ngeoptionen werden toleriert. Dies entspricht dem mount-Parameter -s.</p></li>
-<li><p><strong>ReadWriteOnly=</strong> (Standard: off)<br />
+<li><p><code>SloppyOptions=</code> (Standard: off)<br />
+Falls true, erfolgt eine entspannte Auswertung der in <code>Options=</code> festgelegten Optionen und unbekannte Einh&auml;ngeoptionen werden toleriert. Dies entspricht dem mount-Parameter -s.</p></li>
+<li><p><code>ReadWriteOnly=</code> (Standard: off)<br />
 Falls false, wird bei dem Dateisystem oder Ger&auml;t, das read-write eingeh&auml;ngt werden soll, das Einh&auml;ngen aber scheitert, versucht es read-only einzuh&auml;ngen. Falls true, endet der Prozess sofort mit einem Fehler, wenn die Einh&auml;ngung read-write scheitert. Dies entspricht dem mount-Parameter -w.</p></li>
-<li><p><strong>ForceUnmount=</strong> (Standard: off)<br />
+<li><p><code>ForceUnmount=</code> (Standard: off)<br />
 Falls true, wird das Aush&auml;ngen erzwungen wenn z. B. ein NFS-Dateisystem nicht erreichbar ist. Dies entspricht dem mount-Parameter -f. </p></li>
-<li><p><strong>DirectoryMode=</strong> (Standard: 0755)<br />
+<li><p><code>DirectoryMode=</code> (Standard: 0755)<br />
 Die, falls notwendig, automatisch erzeugten Verzeichnisse von Einh&auml;ngepunkten, erhalten den deklarierten Dateisystemzugriffsmodus. Akzeptiert einen Zugriffsmodus in oktaler Notation.</p></li>
-<li><p><strong>TimeoutSec=</strong> (Vorgabewert aus der Option <em>DefaultTimeoutStartSec=</em> in systemd-system.conf)<br />
-Konfiguriert die Zeit, die auf das Beenden des Einh&auml;ngebefehls gewartet wird. Falls ein Befehl sich nicht innerhalb der konfigurierten Zeit beendet, wird die Einh&auml;ngung als fehlgeschlagen betrachtet und wieder heruntergefahren. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie »5min 20s«. Durch &Uuml;bergabe von »0« wird die Zeit&uuml;berschreitungslogik deaktiviert.</p></li>
+<li><p><code>TimeoutSec=</code> (Vorgabewert aus der Option <code>DefaultTimeoutStartSec=</code> in systemd-system.conf)<br />
+Konfiguriert die Zeit, die auf das Beenden des Einh&auml;ngebefehls gewartet wird. Falls ein Befehl sich nicht innerhalb der konfigurierten Zeit beendet, wird die Einh&auml;ngung als fehlgeschlagen betrachtet und wieder heruntergefahren. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie “5min 20s”. Durch &Uuml;bergabe von “0” wird die Zeit&uuml;berschreitungslogik deaktiviert.</p></li>
 </ul>
 <h3 id="inhalt-der-automount-unit">Inhalt der automount-Unit</h3>
-<p>Die <em>automount</em>-Unit verf&uuml;gt &uuml;ber die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:</p>
+<p>Die automount-Unit verf&uuml;gt &uuml;ber die folgenden Optionen in der zwingend erforderlichen [Automount]-Sektion:</p>
 <ul>
-<li><p><strong>Where=</strong> (Pflicht)<br />
+<li><p><code>Where=</code> (Pflicht)<br />
 Hier wird der Einh&auml;ngepunkt (mount point) festgelegt, d.h. der Ordner, in den die Partition, das Netzlaufwerk oder Ger&auml;t eingeh&auml;ngt werden soll. Falls dieser nicht existiert, wird er beim Einh&auml;ngen erzeugt.</p></li>
-<li><p><strong>DirectoryMode=</strong> (Standard: 0755)<br />
+<li><p><code>DirectoryMode=</code> (Standard: 0755)<br />
 Die, falls notwendig, automatisch erzeugten Verzeichnisse von Einh&auml;ngepunkten erhalten den deklarierten Dateisystemzugriffsmodus. Akzeptiert einen Zugriffsmodus in oktaler Notation.</p></li>
-<li><p><strong>TimeoutIdleSec=</strong> (Standard: 0)<br />
-Bestimmt die Zeit der Inaktivit&auml;t, nach der systemd versucht das Dateisystem auszuh&auml;ngen. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie »5min 20s«. Der Wert “0” deaktiviert die Option.</p></li>
+<li><p><code>TimeoutIdleSec=</code> (Standard: 0)<br />
+Bestimmt die Zeit der Inaktivit&auml;t, nach der systemd versucht das Dateisystem auszuh&auml;ngen. Akzeptiert einen einheitenfreien Wert in Sekunden oder einen Zeitdauerwert wie “5min 20s”. Der Wert “0” deaktiviert die Option.</p></li>
 </ul>
 <h3 id="beispiele">Beispiele</h3>
-<p>Systemd liest den Einh&auml;ngepunkt aus dem Namen der <em>mount</em>- und <em>automount</em>-Units. Deshalb m&uuml;ssen sie nach dem Einh&auml;ngepunkt, den sie steuern, benannt sein.<br />
+<p>Systemd liest den Einh&auml;ngepunkt aus dem Namen der mount- und automount-Units. Deshalb m&uuml;ssen sie nach dem Einh&auml;ngepunkt, den sie steuern, benannt sein.<br />
 Dabei ist zu beachten, keine Bindestriche “-” in den Dateinamen zu verwenden, denn sie deklarieren ein neues Unterverzeichnis im Verzeichnisbaum. Einige Beispiele:</p>
 <ul>
 <li>unzul&auml;ssig: /data/home-backup</li>
 <li>zul&auml;ssig: /data/home_backup</li>
 <li>zul&auml;ssig: /data/home\x2dbackup</li>
 </ul>
-<p>Um einen fehlerfreien Dateinamen f&uuml;r die <em>mount</em>- und <em>automount</em>-Unit zu erhalten, verwenden wir im Terminal den Befehl “systemd-escape”.</p>
+<p>Um einen fehlerfreien Dateinamen f&uuml;r die mount- und automount-Unit zu erhalten, verwenden wir im Terminal den Befehl <code>systemd-escape</code>.</p>
 <pre><code>$ systemd-escape -p --suffix=mount &quot;/data/home-backup&quot;
   data/home\x2dbackup.mount</code></pre>
 <p><strong>Festplatten-Partition</strong><br />
-Eine Partition soll nach jedem Systemstart unter “/disks/TEST” erreichbar sein.<br />
-Wir erstellen mit einem Texteditor die Datei “disks-TEST.mount” im Verzeichnis “/usr/local/lib/systemd/system/”. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.)</p>
+Eine Partition soll nach jedem Systemstart unter <code>/disks/TEST</code> erreichbar sein.<br />
+Wir erstellen mit einem Texteditor die Datei <code>disks-TEST.mount</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code>. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.)</p>
 <pre><code>[Unit]
 Description=Mount /dev/sdb7 at /disks/TEST
 After=blockdev@dev-disk-by\x2duuid-a7af4b19\x2df29d\x2d43bc\x2d3b12\x2d87924fc3d8c7.target
@@ -110,11 +110,11 @@ Options=defaults,noatime
 
 [Install]
 WantedBy=multi-user.target</code></pre>
-<p>Anschlie&szlig;end aktivieren und starten wir die neue <em>.mount</em>-Unit.</p>
+<p>Anschlie&szlig;end aktivieren und starten wir die neue mount-Unit.</p>
 <pre><code># systemctl enable --now disks-TEST.mount</code></pre>
 <p><strong>NFS</strong><br />
 Das “document-root”-Verzeichnis eines Apache Webservers im heimischen Netzwerk soll in das Home-Verzeichnis des Arbeitsplatz-Rechners mittels NFS eingeh&auml;ngt werden.<br />
-Wir erstellen mit einem Texteditor die Datei “home-&lt;user&gt;-www_data.mount” im Verzeichnis “/usr/local/lib/systemd/system/”.<br />
+Wir erstellen mit einem Texteditor die Datei <code>home-&lt;user&gt;-www_data.mount</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code>.<br />
 “&lt;user&gt;” bitte mit dem eigenen Namen ersetzen.</p>
 <pre><code>[Unit]
 Description=Mount server1/var/www/ using NFS
@@ -144,12 +144,12 @@ WantedBy=remote-fs.target
 WantedBy=multi-user.target</code></pre>
 <p>Anschlie&szlig;end:</p>
 <pre><code># systemctl enable --now home-&lt;user&gt;-www_data.automount</code></pre>
-<p>Jetzt wird das “document-root”-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis “/home/&lt;user&gt;/www_data” wechseln.<br />
+<p>Jetzt wird das “document-root”-Verzeichnis des Apache Webservers eingehangen, sobald wir in das Verzeichnis <code>/home/\&lt;user\&gt;/www_data</code> wechseln.<br />
 Die Statusabfrage best&auml;tigt die Aktion.</p>
-<pre><code># systemctl status home-&lt;user&gt;-www_data.mount --no-pager
-● home-&lt;user&gt;-www_data.mount - Mount server1/var/www/ using NFS
+<pre><code># systemctl status home-&lt;user&gt;-www_data.mount
+home-&lt;user&gt;-www_data.mount Mount server1/var/www/ using NFS
      Loaded: loaded (/usr/local/lib/systemd/system/home-&lt;user&gt;-www_data.mount; disabled; vendor preset: enabled)
-     Active: active (mounted) since Wed 2021-03-10 16:27:58 CET; 8min ago
+     Active: active (mounted) since Wed 2021-03-10 [...]
 TriggeredBy: ● home-&lt;user&gt;-www_data.automount
       Where: /home/&lt;user&gt;/www_data
        What: 192.168.3.1:/
@@ -159,35 +159,38 @@ TriggeredBy: ● home-&lt;user&gt;-www_data.automount
      CGroup: /system.slice/home-&lt;user&gt;-www_data.mount
 [...]
 
-# systemctl status home-&lt;user&gt;-www_data.automount --no-pager
-● home-&lt;user&gt;-www_data.automount - Automount server1/var/www/ usuing NFS
-     Loaded: loaded (/usr/local/lib/systemd/system/home-&lt;user&gt;-www_data.automount; enabled; vendor preset: enabled)
-     Active: active (running) since Wed 2021-03-10 16:27:58 CET; 8min ago
-   Triggers: ● home-&lt;user&gt;-www_data.mount
-      Where: /home/&lt;user&gt;/www_data
+
+# systemctl status home-&lt;user&gt;-www_data.automount
+home-&lt;user&gt;-www_data.automount Automount server1/var/www/ usuing NFS
+  Loaded: loaded (/usr/local/lib/systemd/system/home-&lt;user&gt;-www_data.automount; enabled; vendor preset: enabled)
+  Active: active (running) since Wed 2021-03-10 [...]
+Triggers: ● home-&lt;user&gt;-www_data.mount
+   Where: /home/&lt;user&gt;/www_data
 [...]</code></pre>
-<p>Der Journalauszug protokolliert anschaulich die Funktion von “TimeoutIdleSec=60” zum Aush&auml;ngen des Dateisystems und das wieder Einh&auml;ngen durch den Start des Dateimanagers Thunar sowie einen Aufruf von “/home/&lt;user&gt;/www_data” im Terminal.</p>
+<p>Der Journalauszug protokolliert anschaulich die Funktion von <em>“TimeoutIdleSec=60”</em> zum Aush&auml;ngen des Dateisystems und das wieder Einh&auml;ngen durch den Start des Dateimanagers Thunar sowie einen Aufruf von <code>/home/\&lt;user\&gt;/www_data</code> im Terminal.</p>
 <pre><code># journalctl -f -u home-&lt;user&gt;-www_data.*
-[...]
-M&auml;r 10 17:56:14 pc1 systemd[1]: Mounted Mount server1/var/www/ using NFS.
-M&auml;r 10 17:57:34 pc1 systemd[1]: Unmounting Mount server1/var/www/ using NFS...
-M&auml;r 10 17:57:35 pc1 systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
-M&auml;r 10 17:57:35 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
-M&auml;r 10 17:58:14 pc1 systemd[1]: home-&lt;user&gt;-www_data.automount: Got automount request for /home/&lt;user&gt;/www_data, triggered by 2500 (Thunar)
-M&auml;r 10 17:58:14 pc1 systemd[1]: Mounting Mount server1/var/www/ using NFS...
-M&auml;r 10 17:58:14 pc1 systemd[1]: Mounted Mount server1/var/www/ using NFS.
-M&auml;r 10 18:00:15 pc1 systemd[1]: Unmounting Mount server1/var/www/ using NFS...
-M&auml;r 10 18:00:15 pc1 systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
-M&auml;r 10 18:00:15 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
-M&auml;r 10 18:00:30 pc1 systemd[1]: home-&lt;user&gt;-www_data.automount: Got automount request for /home/&lt;user&gt;/www_data, triggered by 6582 (bash)
-M&auml;r 10 18:00:30 pc1 systemd[1]: Mounting Mount server1/var/www/ using NFS...
-M&auml;r 10 18:00:30 pc1 systemd[1]: Mounted Mount server1/var/www/ using NFS.
-M&auml;r 10 18:01:51 pc1 systemd[1]: Unmounting Mount server1/var/www/ using NFS...
-M&auml;r 10 18:01:51 pc1 systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
-M&auml;r 10 18:01:51 pc1 systemd[1]: Unmounted Mount server1/var/www/ using NFS.
-[...]</code></pre>
+[...]systemd[1]: Mounted Mount server1/var/www/ using NFS
+[...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
+[...]systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
+[...]systemd[1]: Unmounted Mount server1/var/www/ using NFS
+[...]systemd[1]: home-&lt;user&gt;-www_data.automount: Got
+                 automount request for /home/&lt;user&gt;/www_data
+                 triggered by 2500 (Thunar)
+[...]systemd[1]: Mounting Mount server1/var/www/ using NFS
+[...]systemd[1]: Mounted Mount server1/var/www/ using NFS
+[...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
+[...]systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
+[...]systemd[1]: Unmounted Mount server1/var/www/ using NFS
+[...]systemd[1]: home-&lt;user&gt;-www_data.automount: Got
+                 automount request for /home/&lt;user&gt;/www_data
+                 triggered by 6582 (bash)
+[...]systemd[1]: Mounting Mount server1/var/www/ using NFS
+[...]systemd[1]: Mounted Mount server1/var/www/ using NFS
+[...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
+[...]systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
+[...]systemd[1]: Unmounted Mount server1/var/www/ using NFS</code></pre>
 <p><strong>Weitere Beispiele</strong><br />
-Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele f&uuml;r die Anwendung der <em>mount</em>- und <em>automount</em>-Unit. Das Kapitel “Quellen” enth&auml;lt einige Webseiten mit einer ganzen Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.</p>
+Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele f&uuml;r die Anwendung der mount- und automount-Unit. Das Kapitel “Quellen” enth&auml;lt einige Webseiten mit einer ganzen Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.</p>
 <h3 id="quellen-systemd-mount">Quellen systemd-mount</h3>
 <p><a href="https://manpages.debian.org/testing/manpages-de/systemd-mount.1.de.html">Deutsche Manpage, systemd.mount</a><br />
 <a href="https://manpages.debian.org/testing/manpages-de/mount.8.de.html">Deutsche Manpage, mount</a><br />

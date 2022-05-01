@@ -8,11 +8,11 @@
 <title>LAMP - PHP</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -45,39 +45,38 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h3 id="php-im-dateisystem">PHP im Dateisystem</h3>
 <p>Debian hat die Dateien von PHP entsprechend ihrer Funktion vollst&auml;ndig in das Dateisystem integriert.</p>
 <ul>
-<li>In <strong>/usr/bin/</strong> das ausf&uuml;hrbare Programm <em>php7.x</em>
+<li>In <code>/usr/bin/</code> das ausf&uuml;hrbare Programm <code>php7.x</code>
 <ul>
-<li>und der Link <em>php</em>, der &uuml;ber <em>/etc/alternatives/php</em> auf <em>/usr/bin/php7.x</em> verweist.<br />
-</li>
+<li>und der Link <code>php</code>, der &uuml;ber <code>/etc/alternatives/php</code><br />
+auf <code>/usr/bin/php7.x</code> verweist.</li>
 </ul></li>
-<li>In <strong>/usr/lib/php/</strong> die installierten Module.<br />
-</li>
-<li>In <strong>/usr/share/php/</strong> und <strong>/usr/share/php&lt;Modul&gt;</strong> gemeinsam genutzte Programmteile und Module.<br />
-</li>
-<li>In <strong>/etc/php/</strong> die Konfigurationsverzeichnisse und -dateien.<br />
-</li>
-<li>In <strong>/var/lib/php/</strong> der zur Laufzeit aktuelle Zustand der Module und Sessions.</li>
+<li>In <code>/usr/lib/php/</code> die installierten Module.</li>
+<li>In <code>/usr/share/php/</code> und <code>/usr/share/php\&lt;Modul\&gt;</code> gemeinsam genutzte Programmteile und Module.</li>
+<li>In <code>/etc/php/</code> die Konfigurationsverzeichnisse und -dateien.</li>
+<li>In <code>/var/lib/php/</code> der zur Laufzeit aktuelle Zustand der Module und Sessions.</li>
 </ul>
 <h3 id="php-unterst&uuml;tzung-f&uuml;r-apache2">PHP-Unterst&uuml;tzung f&uuml;r Apache2</h3>
-<p>Standardm&auml;&szlig;ig l&auml;dt der Apache Webserver die Unterst&uuml;tzung f&uuml;r PHP. Wir &uuml;berpr&uuml;fen das mit: (dabei ist im Folgenden das x mit der dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)</p>
+<p>Standardm&auml;&szlig;ig l&auml;dt der Apache Webserver die Unterst&uuml;tzung f&uuml;r PHP. Wir &uuml;berpr&uuml;fen das mit:<br />
+(dabei ist im Folgenden das x mit der Ziffer entsprechend dem Minor-Attribut der aktuell verwendeten PHP-Version zu ersetzen, also etwa 7.4)</p>
 <pre><code># ls /etc/apache2/mods-enabled/* | grep php
 /etc/apache2/mods-enabled/php7.x.conf
 /etc/apache2/mods-enabled/php7.x.load</code></pre>
-<p>und erkennen, dass Apache das PHP-Modul f&uuml;r die Version 7.x geladen hat. Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung “<em>.php</em>” zu verarbeiten, muss in der Apache Konfigurationsdatei <em>dir.conf</em> die Direktive <em>DirectoryIndex</em> den Wert <em>index.php</em> enthalten. Auch das pr&uuml;fen wir:</p>
+<p>und erkennen, dass Apache das PHP-Modul f&uuml;r die Version 7.x geladen hat.<br />
+Damit der PHP-Interpreter veranlasst wird, Dateien mit der Endung <em>“.php”</em> zu verarbeiten, muss in der Apache Konfigurationsdatei <code>dir.conf</code> die Direktive <code>DirectoryIndex</code> den Wert <code>index.php</code> enthalten. Auch das pr&uuml;fen wir:</p>
 <pre><code># cat /etc/apache2/mods-available/dir.conf
 &lt;IfModule mod_dir.c&gt;
     DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
 &lt;/IfModule&gt;</code></pre>
-<p>Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert <em>index.php</em> enthalten ist.</p>
+<p>Der Verwendung von PHP steht nichts im Wege, denn wir sehen das der Wert <em>“index.php”</em> enthalten ist.</p>
 <h3 id="php-konfiguration">PHP Konfiguration</h3>
-<p>Das Verzeichnis <em>/etc/php/7.x/</em> enth&auml;lt die Konfiguration geordnet nach den zur Verf&uuml;gung stehenden Interfaces.<br />
+<p>Das Verzeichnis <code>/etc/php/7.x/</code> enth&auml;lt die Konfiguration geordnet nach den zur Verf&uuml;gung stehenden Interfaces.<br />
 Die Ausgabe zeigt den Zustand nach der Erstinstallation.</p>
 <pre><code># ls -l /etc/php/7.x/
 insgesamt 20
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
 drwxr-xr-x 2 root root 4096 18. Dez 16:54 mods-available</code></pre>
-<p>Mit den weiter unten installierten Modulen <em>php7.x-cgi</em> und <em>php7.x-fpm</em> sind zwei neue Verzeichnise hinzugekommen.</p>
+<p>Mit den weiter unten installierten Modulen <em>“php7.x-cgi”</em> und <em>“php7.x-fpm”</em> sind zwei neue Verzeichnise hinzugekommen.</p>
 <pre><code># ls -l /etc/php/7.x/
 insgesamt 20
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 apache2
@@ -85,11 +84,11 @@ drwxr-xr-x 3 root root 4096  1. Feb 21:23 cgi
 drwxr-xr-x 3 root root 4096 18. Dez 16:54 cli
 drwxr-xr-x 4 root root 4096  1. Feb 21:23 fpm
 drwxr-xr-x 2 root root 4096  1. Feb 13:22 mods-available</code></pre>
-<p>Jedes der Verzeichnisse <em>apache2</em>, <em>cgi</em>, <em>cli</em> und <em>fpm</em> enth&auml;lt einen Ordner <em>conf.d</em> und eine Datei <em>php.ini</em>.<br />
-Die jeweilige <em>php.ini</em> beinhaltet die Konfiguration f&uuml;r das entsprechende Interface und kann bei Bedarf ge&auml;ndert oder erg&auml;nzt werden. Der Ordner <em>conf.d</em> enth&auml;lt die Links zu den aktivierten Modulen.</p>
+<p>Jedes der Verzeichnisse <em>“apache2”</em>, <em>“cgi”</em>, <em>“cli”</em> und <em>“fpm”</em> enth&auml;lt einen Ordner <code>conf.d</code> und eine Datei <code>php.ini</code>.<br />
+Die jeweilige <em>“php.ini”</em> beinhaltet die Konfiguration f&uuml;r das entsprechende Interface und kann bei Bedarf ge&auml;ndert oder erg&auml;nzt werden. Der Ordner <em>“conf.d”</em> enth&auml;lt die Links zu den aktivierten Modulen.</p>
 <h3 id="php-module">PHP Module</h3>
 <p><strong>Abfragen</strong></p>
-<p>F&uuml;r PHP steht eine Vielzahl von Modulen zu Verf&uuml;gung. Welche bereits installiert wurden, erf&auml;hrt man mit</p>
+<p>F&uuml;r PHP steht eine Vielzahl von Modulen zu Verf&uuml;gung. Welche bereits installiert wurden, erf&auml;hrt man mit:</p>
 <pre><code># dpkg-query -f=&#39;${Status}\ ${Package}\n&#39; -W php7.4* | grep &#39;^install&#39;
 install ok installed php7.4
 install ok installed php7.4-bz2
@@ -143,20 +142,18 @@ Anschlie&szlig;end starten wir den Apache neu:</p>
 <p><strong>Handling</strong></p>
 <p>Der Zustand der PHP-Module ist w&auml;hrend der Laufzeit ver&auml;nderbar. Das erm&ouml;glicht auch die Steuerung von Modulen in Scripten um sie vor der Verwendung zu laden und nachher wieder zu entladen.</p>
 <ul>
-<li><strong>phpenmod</strong> – aktiviert Module in PHP<br />
-</li>
-<li><strong>phpdismod</strong> – deaktiviert Module in PHP<br />
-</li>
-<li><strong>phpquery</strong> – Zeigt den Status der PHP Module</li>
+<li><code>phpenmod</code> – aktiviert Module in PHP</li>
+<li><code>phpdismod</code> – deaktiviert Module in PHP</li>
+<li><code>phpquery</code> – Zeigt den Status der PHP Module</li>
 </ul>
 <p>Nicht ben&ouml;tigte Module (im Beispiel imagick) deaktiviert in der Konsole der Befehl</p>
 <pre><code># phpdismod imagick</code></pre>
-<p>Um das Modul <em>imagick</em> f&uuml;r alle Iterfaces zu laden, dient der Befehl</p>
+<p>Um das Modul imagick f&uuml;r alle Iterfaces zu laden, dient der Befehl</p>
 <pre><code># phpenmod imagick</code></pre>
-<p>Verwenden wir die Option “<em>-s apache2</em>”</p>
+<p>Verwenden wir die Option <code>-s apache2</code></p>
 <pre><code># phpenmod -s apache2 imagick</code></pre>
 <p>wird das Modul nur f&uuml;r Apache2 geladen.</p>
-<p>Die Statusabfrage mit <em>phpquery</em> erfordert immer die Angabe der Modulversion und des Interface. Hier einige Beispiele:</p>
+<p>Die Statusabfrage mit <code>phpquery</code> erfordert immer die Angabe der Modulversion und des Interface. Hier einige Beispiele:</p>
 <pre><code># phpquery -v 7.4 -s apache2 -m zip
 zip (Enabled for apache2 by maintainer script)
 
@@ -168,9 +165,9 @@ zip (Enabled for fpm by maintainer script)
 
 # phpquery -v 7.4 -s apache2 -m imagick
 imagick (Enabled for apache2 by local administrator)</code></pre>
-<p>Bei dem Modul <em>imagick</em> zeigt uns der String “<em>Enabled for apache2 by local administrator</em>”, dass es nicht wie das <em>zip</em>-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen <em>phpdismod</em> und <em>phpenmod</em> f&uuml;r diese Modul.</p>
+<p>Bei dem Modul imagick zeigt uns der String <em>“Enabled for apache2 by local administrator”</em>, dass es nicht wie das zip-Modul automatisch beim Start geladen wurde, sondern dass der Administrator es manuell aktiviert hat. Die Ursache liegt in den zuvor benutzten Befehlen <code>phpdismod</code> und <code>phpenmod</code> f&uuml;r dieses Modul.</p>
 <h3 id="apache-log">Apache Log</h3>
-<p>Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter <em>/var/log/apache2/</em>. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.<br />
+<p>Der Apache Server speichert die Fehlermeldungen von PHP in seinen Log-Dateien unter <code>/var/log/apache2/</code>. Gleichzeitig erscheint bei fehlerhaften PHP-Funktionen eine Meldung in der aufgerufenen Webseite.<br />
 Alternativ lassen wir uns die Log-Funktionen anzeigen.</p>
 <pre><code># php --info | grep log
 [...]
@@ -180,7 +177,7 @@ log_errors_max_len  =&gt; 1024
 mail.log            =&gt; no value
 opcache.error_log   =&gt; no value
 [...]</code></pre>
-<p>In den Dateien <em>/etc/php/7.x/&lt;Interface&gt;/php.ini</em> haben wir die M&ouml;glichkeit die nicht gesetzten Werte durch eigene, tats&auml;chlich vorhandenen Logdateien zu ersetzen.</p>
+<p>In den Dateien <code>/etc/php/7.x/&lt;Interface&gt;/php.ini</code> haben wir die M&ouml;glichkeit die nicht gesetzten Werte durch eigene, tats&auml;chlich vorhandenen Logdateien zu ersetzen.</p>
 <h3 id="quellen-php">Quellen PHP</h3>
 <p><a href="https://www.php.net/manual/de/">PHP - deutsches Handbuch</a><br />
 <a href="https://www.php.net/">PHP - aktuelle Meldungen</a><br />

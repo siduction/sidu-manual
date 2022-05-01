@@ -8,11 +8,11 @@
 <title>home verschieben</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -41,36 +41,35 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 Wichtige Information <br />Ein existierendes <strong>/home</strong> soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
 </warning>
 <p>Deshalb raten wir generell davon ab eine /home-Partition anzulegen.<br />
-Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter <strong>/Daten</strong> eingeh&auml;ngt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.<br />
+Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter <code>/Daten</code> eingeh&auml;ngt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.<br />
 Sofern Daten gemeinsam f&uuml;r parallele Installationen bereit stehen sollen, ist diese Vorgehensweise besonders ratsam.</p>
 <p><strong>Vorbereitungen</strong></p>
 <p>An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.<br />
 Die Ausgangslage:</p>
 <ul>
-<li>Die alte, mittlerweile zu kleine, Festplatte hat drei Partitionen (“/boot/efi”, “/”, “swap”).</li>
+<li>Die alte, mittlerweile zu kleine, Festplatte hat die drei Partitionen <code>/boot/efi</code>, <code>/</code>, <code>swap</code>.</li>
 <li>Es existiert bisher noch keine separate Daten-Partition.</li>
 <li>Eine zus&auml;tzliche eingebaute Festplatte hat vier Partitionen mit ext4-Dateisystem.<br />
-Davon benutzen wir die Partitionen “sdb4” f&uuml;r die neue Daten-Partition, die wir unter “/Daten” einh&auml;ngen.</li>
+Davon benutzen wir die Partitionen <code>sdb4</code> f&uuml;r die neue Daten-Partition, die wir unter <code>/Daten</code> einh&auml;ngen.</li>
 </ul>
-<p>Unsere bisherige <strong>/etc/fstab</strong> hat den Inhalt:</p>
+<p>Unsere bisherige <code>/etc/fstab</code> hat den Inhalt:</p>
 <pre><code>$ cat /etc/fstab
 ...
-# &lt;file system&gt;                         &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;    &lt;dump&gt;&lt;pass&gt;
 UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
 tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0</code></pre>
-<p>Von der zus&auml;tzlichen Festplatte ben&ouml;tigen wir die UUID-Informationen. Siehe auch die Handbuchseite <a href="#fstab-anpassen">Anpassung der fstab</a>.<br />
-Der Befehl <em>blkid</em> gibt uns Auskunft.</p>
+<p>Von der zus&auml;tzlichen Festplatte ben&ouml;tigen wir die UUID-Informationen. Siehe auch die Handbuchseite <a href="https://manual.siduction.org/home-move_de.html#fstab-anpassen">Anpassung der fstab</a>.<br />
+Der Befehl <code>blkid</code> gibt uns Auskunft.</p>
 <pre><code>$ /sbin/blkid
 ...
 /dev/sdb4: UUID=&quot;e2164479-3f71-4216-a4d4-af3321750322&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;000403b7-04&quot;</code></pre>
 <p><strong>Sicherung des alten /home</strong></p>
-<p>Bevor irgendeine &Auml;nderung am bestehenden Dateisystem vorgenommen wird, sichern wir als <em>Root</em> alles unterhalb von “/home” in einem tar-Archiv.</p>
+<p>Bevor irgendeine &Auml;nderung am bestehenden Dateisystem vorgenommen wird, sichern wir als <strong>root</strong> alles unterhalb von <code>/home</code> in einem tar-Archiv.</p>
 <pre><code># cd /home
 # tar cvzpf somewhere/home.tar.gz ./</code></pre>
 <p><strong>Mountpoint der Daten-Partition</strong></p>
-<p>Wir erstellen das Verzeichnis “<em>Daten</em>” unterhalb “<strong>/</strong>” und binden die Partition “sdb4” dort ein. Als Eigent&uuml;mer und Gruppe legen wir die eigenen Namen fest. Etwas sp&auml;ter kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden /home dort hinein.</p>
+<p>Wir erstellen das Verzeichnis <code>/Daten</code> unterhalb <code>/</code> und binden die Partition <code>sdb4</code> dort ein. Als Eigent&uuml;mer und Gruppe legen wir die eigenen Namen fest. Etwas sp&auml;ter kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden <code>/home</code> dort hinein.</p>
 <p>Mountpoint erstellen und Partition einh&auml;ngen (als root):</p>
 <pre><code># mkdir /Daten
 # chown &lt;user&gt;:&lt;group&gt; /Daten
@@ -81,43 +80,43 @@ Der Befehl <em>blkid</em> gibt uns Auskunft.</p>
 (Die Ausgabe wurde zur besseren &Uuml;bersicht sortiert.)</p>
 <pre><code>~$ ls -la
 insgesamt 169
-drwxr-xr-x 19 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  .
-drwxr-xr-x 62 &lt;user&gt; &lt;group&gt; 4096  4. Okt 22:17 ..
--rw-------  1 &lt;user&gt; &lt;group&gt;  330 15. Okt 2020  .bash_history
--rw-r--r--  1 &lt;user&gt; &lt;group&gt;  220  4. Okt 2020  .bash_logout
--rw-r--r--  1 &lt;user&gt; &lt;group&gt; 3528  4. Okt 2020  .bashrc
-drwx------ 19 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .cache
-drwxr-xr-x 22 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .config
--rw-r--r--  1 &lt;user&gt; &lt;group&gt;   24  4. Okt 2020  .dmrc
-drwx------  3 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .gconf
--rw-r--r--  1 &lt;user&gt; &lt;group&gt;  152  4. Okt 2020  .gitignore
-drwx------  3 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .gnupg
--rw-------  1 &lt;user&gt; &lt;group&gt; 3112 15. Okt 2020  .ICEauthority
--rw-r--r--  1 &lt;user&gt; &lt;group&gt;  140  4. Okt 2020  .inputrc
-drwx------  3 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  .local
-drwx------  5 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .mozilla
--rw-r--r--  1 &lt;user&gt; &lt;group&gt;  807  4. Okt 2020  .profile
-drwx------  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  .ssh
-drwx------  5 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .thunderbird
--rw-------  1 &lt;user&gt; &lt;group&gt;   48 15. Okt 2020  .Xauthority
--rw-------  1 &lt;user&gt; &lt;group&gt; 1084 15. Okt 2020  .xsession-errors
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Bilder
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Desktop
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Dokumente
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Downloads
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Musik
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  &Ouml;ffentlich
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Videos
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Vorlagen</code></pre>
+drwxr-xr-x 19 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 .
+drwxr-xr-x 62 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 ..
+-rw-------  1 &lt;user&gt;&lt;group&gt;  330 15 Okt 2020 .bash_history
+-rw-r--r--  1 &lt;user&gt;&lt;group&gt;  220  4 Okt 2020 .bash_logout
+-rw-r--r--  1 &lt;user&gt;&lt;group&gt; 3528  4 Okt 2020 .bashrc
+drwx------ 19 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .cache
+drwxr-xr-x 22 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .config
+-rw-r--r--  1 &lt;user&gt;&lt;group&gt;   24  4 Okt 2020 .dmrc
+drwx------  3 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .gconf
+-rw-r--r--  1 &lt;user&gt;&lt;group&gt;  152  4 Okt 2020 .gitignore
+drwx------  3 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .gnupg
+-rw-------  1 &lt;user&gt;&lt;group&gt; 3112 15 Okt 2020 .ICEauthority
+-rw-r--r--  1 &lt;user&gt;&lt;group&gt;  140  4 Okt 2020 .inputrc
+drwx------  3 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 .local
+drwx------  5 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .mozilla
+-rw-r--r--  1 &lt;user&gt;&lt;group&gt;  807  4 Okt 2020 .profile
+drwx------  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 .ssh
+drwx------  5 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .thunderbird
+-rw-------  1 &lt;user&gt;&lt;group&gt;   48 15 Okt 2020 .Xauthority
+-rw-------  1 &lt;user&gt;&lt;group&gt; 1084 15 Okt 2020 .xsession-error
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Bilder
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Desktop
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Dokumente
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Downloads
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Musik
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 &Ouml;ffentlich
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Videos
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Vorlagen</code></pre>
 <p>Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit nur geringf&uuml;gigen &Auml;nderungen.<br />
-In den, per default erstellten, Verzeichnissen “<em>Bilder</em>” bis “<em>Vorlagen</em>” am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zus&auml;tzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir sp&auml;ter in die neue Daten-Partition.<br />
+In den, per default erstellten, Verzeichnissen <em>“Bilder”</em> bis <em>“Vorlagen”</em> am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zus&auml;tzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir sp&auml;ter in die neue Daten-Partition.<br />
 Mit einem Punkt (.) beginnende, “versteckte” Dateien und Verzeichnisse enthalten die Konfiguration und programmspezifische Daten, die wir, von drei Ausnahmen abgesehen, nicht verschieben. Die Ausnahmen sind:<br />
-Der Zwischenspeicher “<em>.cache</em>”,<br />
-der Internetbrowser “<em>.mozilla</em>” und<br />
-das Mailprogramm “<em>.thunderbird</em>”.<br />
+Der Zwischenspeicher <em>“.cache”</em>,<br />
+der Internetbrowser <em>“.mozilla”</em> und<br />
+das Mailprogramm <em>“.thunderbird”</em>.<br />
 Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch viele private Daten. Deshalb wandern sie zus&auml;tzlich auf die neue Daten-Partition.</p>
 <p><strong>Kopieren der privaten Daten</strong></p>
-<p>Zum Kopieren benutzen wir den Befehl “<em>cp</em>” mit der Archiv-Option “<em>-a</em>”, so bleiben die Rechte, Eigent&uuml;mer und der Zeitstempel erhalten und es wird rekursiv kopiert.</p>
+<p>Zum Kopieren benutzen wir den Befehl <code>cp</code> mit der Archiv-Option <code>-a</code>, so bleiben die Rechte, Eigent&uuml;mer und der Zeitstempel erhalten und es wird rekursiv kopiert.</p>
 <pre><code>~$ cp -a * /Daten/
 ~$ cp -a .cache /Daten/
 ~$ cp -a .mozilla /Daten/
@@ -126,24 +125,25 @@ Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch 
 Die folgende Ausgabe zeigt das Ergebnis.</p>
 <pre><code>~$ ls -la /Daten/
 insgesamt 45
-drwxr-xr-x 13 &lt;user&gt; &lt;group&gt; 4096  4. Mai 2020  .
-drwxr-xr-x 20 root     root  4096  4. Okt 2020  ..
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Bilder
-drwx------ 19 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .cache
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Desktop
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Dokumente
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Downloads
-drwx------  5 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .mozilla
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Musik
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  &Ouml;ffentlich
-drwx------  5 &lt;user&gt; &lt;group&gt; 4096 15. Okt 2020  .thunderbird
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Videos
-drwxr-xr-x  2 &lt;user&gt; &lt;group&gt; 4096  4. Okt 2020  Vorlagen</code></pre>
-<p>Die Pr&uuml;fung der Kopieraktion auf Fehler erfolgt mit dem Befehl <strong><code>dirdiff /home/&lt;user&gt;/ /Daten/</code></strong>. Es d&uuml;rfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.</p>
-<p>Nun befinden sich alle privaten Daten aus dem alten <em>home</em> zus&auml;tzlich auf der neuen Partition.</p>
+drwxr-xr-x 13 &lt;user&gt;&lt;group&gt; 4096  4 Mai 2020 .
+drwxr-xr-x 20 root    root  4096  4 Okt 2020 ..
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Bilder
+drwx------ 19 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .cache
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Desktop
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Dokumente
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Downloads
+drwx------  5 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .mozilla
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Musik
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 &Ouml;ffentlich
+drwx------  5 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .thunderbird
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Videos
+drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Vorlagen</code></pre>
+<p>Die Pr&uuml;fung der Kopieraktion auf Fehler erfolgt mit dem Befehl<br />
+<strong><code>dirdiff /home/&lt;user&gt;/ /Daten/</code></strong>. Es d&uuml;rfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.</p>
+<p>Nun befinden sich alle privaten Daten aus dem alten <em>“/home”</em> zus&auml;tzlich auf der neuen Partition.</p>
 <p><strong>L&ouml;schen in /home</strong></p>
 <p>F&uuml;r diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.<br />
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. “<em>Downloads</em>” oder “<em>Musik</em>”). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen /daten Partition zu erm&ouml;glichen, m&uuml;ssen wir unter /home/<user>/ die zu l&ouml;schenden Verzeichnisse durch Link ersetzen.</p>
+Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. <em>“Downloads”</em> oder “<em>Musik</em>”). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen <em>“/daten”</em> Partition zu erm&ouml;glichen, m&uuml;ssen wir unter <code>/home/&lt;user&gt;/</code> die zu l&ouml;schenden Verzeichnisse durch Link ersetzen.</p>
 <warning>
 Die Befehle vor dem Ausf&uuml;hren bitte genau pr&uuml;fen, damit nicht aus Versehen etwas falsches gel&ouml;scht wird.
 </warning>
@@ -160,15 +160,14 @@ Die Befehle vor dem Ausf&uuml;hren bitte genau pr&uuml;fen, damit nicht aus Vers
 ~$ rm -r .thunderbird/ &amp;&amp; ln -s /Daten/.thunderbird/ ./.thunderbird</code></pre>
 <p>Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz von weniger als 10 MB.</p>
 <h3 id="fstab-anpassen">fstab anpassen</h3>
-<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verf&uuml;gung steht, muss die Datei <em>fstab</em> ge&auml;ndert werden. Zus&auml;tzliche Informationen zur <em>fstab</em> bietet unser Handbuch <a href="https://manual.siduction.org/part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
-Wir ben&ouml;tigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der <em>fstab</em> mit Datumsanhang:</p>
+<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verf&uuml;gung steht, muss die Datei <code>/etc/fstab</code> ge&auml;ndert werden. Zus&auml;tzliche Informationen zur fstab bietet unser Handbuch <a href="https://manual.siduction.org/part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
+Wir ben&ouml;tigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der fstab mit Datumsanhang:</p>
 <pre><code># cp /etc/fstab /etc/fstab_$(date +%F) 
 # mcedit /etc/fstab</code></pre>
 <p>Entsprechend unseres Beispiels f&uuml;gen wir die folgende Zeile in die fstab ein.</p>
-<p><strong><code>UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten  ext4  defaults,noatime 0 2</code></strong></p>
+<p><strong><code>UUID=e2164479-3f71-4216-a4d4-af3321750322 /Daten ext4 defaults,noatime 0 2</code></strong></p>
 <p>Die fstab sollte nun so aussehen:</p>
-<pre><code># &lt;file system&gt;                         &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;    &lt;dump&gt;&lt;pass&gt;
-UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
+<pre><code>UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten      ext4    defaults,noatime 0 2
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2

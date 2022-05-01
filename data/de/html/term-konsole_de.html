@@ -8,11 +8,11 @@
 <title>Terminal - Kommandozeile</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -41,28 +41,28 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="terminal---kommandozeile">Terminal - Kommandozeile</h2>
-<p>Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem erm&ouml;glicht, durch direkt ausgef&uuml;hrte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch h&auml;ufig die “Shell” oder “Kommandozeile” genannt, ist ein &auml;u&szlig;erst m&auml;chtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.</p>
-<p>In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des Men&uuml;s anklickt oder in Men&uuml; &gt; System &gt; Terminal aufruft, oder, noch einfacher, in die Suchleiste des Men&uuml; <em>kons</em> oder <em>term</em> eintippt.</p>
+<p>Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem erm&ouml;glicht, durch direkt ausgef&uuml;hrte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch h&auml;ufig die <em>“Shell”</em> oder <em>“Kommandozeile”</em> genannt, ist ein &auml;u&szlig;erst m&auml;chtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.</p>
+<p>In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des Men&uuml;s anklickt oder im <em>Men&uuml;</em> &gt; <em>System</em> &gt; <em>Terminal</em> aufruft, oder, noch einfacher, in die Suchleiste des Men&uuml; <em>“kons”</em> oder <em>“term”</em> eintippt.</p>
 <p>Nach dem Aufrufen des Terminals sieht man die Eingabeaufforderung “prompt”:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">username@hostname</span>:~$</span></code></pre></div>
-<p><strong>username</strong> in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde <strong>~</strong> zeigt, man befindet sich in seinem Heimverzeichnis <strong>/home/username</strong> , und das Dollarzeichen (der Promt) <strong>$</strong> bedeutet, dass man im Terminal mit eingeschr&auml;nkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausf&uuml;hren soll.</p>
-<p>Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausf&uuml;hren. Root-Rechte erh&auml;lt man, indem man <strong>su</strong> eingibt und <code>Enter</code> dr&uuml;ckt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird w&auml;hrend der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten <a href="#arbeit-als-root">Arbeit als root</a>)</p>
+<p><em>“username”</em> in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde <code>~</code> zeigt, man befindet sich in seinem Heimverzeichnis <code>/home/username</code> , und das Dollarzeichen (der Promt) <code>$</code> bedeutet, dass man im Terminal mit eingeschr&auml;nkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausf&uuml;hren soll.</p>
+<p>Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausf&uuml;hren. Root-Rechte erh&auml;lt man, indem man <code>su</code> eingibt und <code>Enter</code> dr&uuml;ckt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird w&auml;hrend der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten <a href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">Arbeit als root</a>)</p>
 <p>Ist die Eingabe korrekt, zeigt die Kommandozeile nun:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">root@hostname</span>:/home/username#</span></code></pre></div>
-<p>Zu beachten ist, dass das Dollarzeichen <strong>$</strong> durch eine Raute <strong>#</strong> ersetzt wurde. In einem Terminal bedeutet die Raute <strong>#</strong> immer, dass man mit root-Rechten angemeldet ist.<br />
+<p>Zu beachten ist, dass das Dollarzeichen <code>$</code> durch eine Raute <code>#</code> ersetzt wurde. In einem Terminal bedeutet die Raute immer, dass man mit <strong>root</strong>-Rechten angemeldet ist.<br />
 Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor dem Prompt ($ oder #) ausgelassen. Ein Befehl wie:</p>
 <pre><code># chmod g+w &lt;Datei&gt;</code></pre>
-<p>bedeutet also: man &ouml;ffnet ein Terminal, meldet sich als root an (su) und f&uuml;hrt dann den Befehl an einem Rootprompt <strong>#</strong> aus. Die Raute <strong>#</strong> wird nicht mit eingegeben.</p>
+<p>bedeutet also: man &ouml;ffnet ein Terminal, meldet sich als <strong>root</strong> an ( <code>su</code> ) und f&uuml;hrt dann den Befehl an einem Rootprompt <code>#</code> aus. Die Raute wird nicht mit eingegeben.</p>
 <p>Ein weiterer Hinweis:<br />
 F&uuml;r User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Ausf&uuml;hren eines Befehls keine Meldung erscheint, sondern nur wieder der leere Prompt. Diese Funktion ist gewollt und bedeutet, dass der Befehl fehlerfrei ausgef&uuml;hrt wurde. (Im obigen Beispiel erhielten die Gruppenmitglieder Schreibrechte an der &lt;Datei&gt;.)</p>
 <h3 id="arbeit-als-root">Arbeit als root</h3>
 <warning>
 <strong>Achtung:</strong> <br />W&auml;hrend man mit root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien l&ouml;schen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit root-Rechten arbeitet, muss man sich dar&uuml;ber im Klaren sein, <em>was</em> man gerade macht, denn es ist leicht m&ouml;glich, dem Betriebssystem irreparable Sch&auml;den zuzuf&uuml;gen.
 </warning>
-<p>Ber&uuml;cksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgef&uuml;hrt werden. Der einfache copy-Befehl <em>cp &lt;Quelle&gt; &lt;Ziel&gt;</em> in einem User-Verzeichnis f&uuml;hrt zu Dateien mit dem Eigent&uuml;mer <em>ROOT</em> im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.</p>
-<p>Deshalb: <strong>Arbeiten als Root nur dort wo es wirklich notwendig ist!</strong></p>
+<p>Ber&uuml;cksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgef&uuml;hrt werden. Der einfache copy-Befehl <strong><code>cp &lt;Quelle&gt; &lt;Ziel&gt;</code></strong> in einem User-Verzeichnis f&uuml;hrt zu Dateien mit dem Eigent&uuml;mer <strong>root</strong> im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.</p>
+<p>Deshalb: <strong>Arbeiten als Root nur dort, wo es wirklich notwendig ist!</strong></p>
 <p><strong>&Uuml;ber su</strong></p>
-<p>Eine Anzahl von Befehlen muss mit root-Rechten gestartet werden. Diese Rechte erh&auml;lt man durch Eingabe von <strong>su</strong>. Nach der Eingabe des richtigen Passwortes erscheint der Root-Prompt.</p>
+<p>Eine Anzahl von Befehlen muss mit root-Rechten gestartet werden. Diese Rechte erh&auml;lt man durch Eingabe von <strong><code>su</code></strong>. Nach der Eingabe des richtigen Passwortes erscheint der Root-Prompt.</p>
 <pre><code>$ su
 Passwort: 
 #</code></pre>
@@ -71,16 +71,16 @@ Passwort:
 $</code></pre>
 <p>und es erscheint wieder der Promt f&uuml;r den User.</p>
 <p><strong>&Uuml;ber su-to-root</strong></p>
-<p>Im Gegensatz zum allgemeinen Befehl <strong>su</strong> erlaubt <strong>su-to-root</strong> das Ausf&uuml;hren von Programmen mit graphischer Oberfl&auml;che mit Root-Rechten. <strong>su-to-root</strong> transferiert unter Benutzung von ‘su’ die X-Eigenschaften an den Zielnutzer. Die Eingabe lautet:</p>
+<p>Im Gegensatz zum allgemeinen Befehl <em>“su”</em> erlaubt <em>“su-to-root”</em> das Ausf&uuml;hren von Programmen mit graphischer Oberfl&auml;che mit root-Rechten. <em>“su-to-root”</em> transferiert unter Benutzung von <em>“su”</em> die X-Eigenschaften an den Zielnutzer. Die Eingabe lautet:</p>
 <pre><code>su-to-root -X -c &lt;Programm&gt;</code></pre>
-<p>Wenn Fehlermeldungen mit Bezug zu <strong>dbus</strong> auftreten, ist die Eingabe zu erweitern:</p>
+<p>Wenn Fehlermeldungen mit Bezug zu <em>“dbus”</em> auftreten, ist die Eingabe zu erweitern:</p>
 <pre><code>su-to-root -X -c &#39;dbus-launch &lt;Programm&gt;&#39;</code></pre>
 <p>Es &ouml;ffnet sich ein weiteres Terminal, in das das root-Passwort einzugeben ist. Bei Erfolg startet das gew&uuml;nschte Programm mit root-Rechten.<br />
-Beispiele f&uuml;r die Verwendung graphischer Anwendungen mittels <em>su-to-root</em> sind: die Bearbeitung einer Konfigurationsdatei mit einem Texteditor, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar.</p>
+Beispiele f&uuml;r die Verwendung graphischer Anwendungen mittels <em>“su-to-root”</em> sind: Die Bearbeitung einer Konfigurationsdatei mit einem Texteditor, der Einsatz des Partitionierungsmanagers gparted oder die Verwendung von Dateimanagern wie dolphin oder thunar.</p>
 <p><strong>Verwendung in den Desktopumgebungen:</strong></p>
 <ul>
 <li>Plasma (KDE und LXQt)<br />
-Der Befehl ist in Plasma nicht notwendig und wird nicht unterst&uuml;tzt, denn f&uuml;r Programme, die root-Rechte ben&ouml;tigen erfolgt eine Passwortabfrage und beim Editor erfolgt die Abfrage wenn man die ge&auml;nderte Datei speichern m&ouml;chte. Deshalb nur <strong>su</strong> im Terminal verwenden, wenn n&ouml;tig.</li>
+Der Befehl ist in Plasma nicht notwendig und wird nicht unterst&uuml;tzt, denn f&uuml;r Programme, die root-Rechte ben&ouml;tigen erfolgt eine Passwortabfrage und beim Editor erfolgt die Abfrage wenn man die ge&auml;nderte Datei speichern m&ouml;chte. Deshalb nur <code>su</code> im Terminal verwenden, wenn n&ouml;tig.</li>
 <li>Gnome und Cinnamon<br />
 Das Verhalten ist dem in Plasma &auml;hnlich, mit der Ausnahme, dass der Befehl (su-to-root) unterst&uuml;tzt wird, aber nicht notwendig ist.</li>
 <li>XFCE und Xorg<br />
@@ -90,27 +90,23 @@ Hier entfaltet der Befehl seine volle Macht, und man ist in der Lage das gew&uum
 Unter keinen Umst&auml;nden sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, B&uuml;roprogramme u.a.
 </warning>
 <p><strong>sudo ist nicht konfiguriert</strong></p>
-<p><strong>sudo</strong> steht nur im Live-Modus zur Verf&uuml;gung, da im Live-Modus kein Root-Passwort gesetzt ist.<br />
-Nach einer Installation ist <strong>sudo</strong> nicht aktiviert. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreift, erlangt er noch keine Super-User-Rechte und kann keine sch&auml;dlichen Ver&auml;nderungen am System durchf&uuml;hren.</p>
-<p>Ein anderes Problem mit <strong>sudo</strong> ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration l&auml;uft, Berechtigungen &auml;ndern und somit f&uuml;r den Nutzer unbrauchbar machen kann. Die Verwendung von <strong>su</strong> oder <strong>su-to-root</strong> wird empfohlen!</p>
-<p>Sollte man trotz aller Warnungen <em>sudo</em> nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzuf&uuml;gen!</p>
-<p>Dies kann mit dem Befehl “adduser BENUTZER GRUPPE” als root ausgef&uuml;hrt werden.</p>
-<p>Als Alternative zu <em>sudo</em> kann auch <em>doas</em> (apt install doas) genommen und eingerichtet werden.</p>
-<ul>
-<li>https://man.openbsd.org/doas</li>
-<li>https://github.com/slicer69/doas</li>
-</ul>
+<p>Sudo steht nur im Live-Modus zur Verf&uuml;gung, da im Live-Modus kein Root-Passwort gesetzt ist.<br />
+<strong>Nach einer Installation ist sudo nicht aktiviert</strong>. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreifen, erlangt er noch keine Super-User-Rechte und kann keine sch&auml;dlichen Ver&auml;nderungen am System durchf&uuml;hren.<br />
+Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration l&auml;uft, Berechtigungen &auml;ndern und somit f&uuml;r den Nutzer unbrauchbar machen kann. Die Verwendung von <code>su</code> oder <code>su-to-root</code> wird empfohlen!<br />
+Sollte man trotz aller Warnungen sudo nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzuf&uuml;gen!<br />
+Dies kann mit dem Befehl <strong><code>adduser BENUTZER GRUPPE</code></strong> als <strong>root</strong> ausgef&uuml;hrt werden.</p>
+<p>Als schlanke Alternative zu <em>“sudo”</em> empfehlen wir <code>doas</code>. Die Handbuchseite <a href="https://manual.siduction.org/sys-admin-doas_de.html#doas---alternative-zu-sudo">Doas - Alternative zu Sudo</a> erl&auml;utert die Vorteile von Doas und die Doas Konfiguration.</p>
 <h3 id="farbiges-terminal">Farbiges Terminal</h3>
-<p>Farbige Prompt am Terminal k&ouml;nnen einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als <strong>root #</strong> eine Aufgabe durchf&uuml;hrt, die man als <strong>user $</strong> machen wollte.<br />
-Deshalb ist in siduction in der Grundeinstellung der Prompt des <strong>user $</strong> gr&uuml;n, blau und wei&szlig;, und bei dem von <strong>root #</strong> wird das Wort “root” in roter Farbe dargestellt.</p>
+<p>Farbige Prompts am Terminal k&ouml;nnen einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als <strong>root</strong> eine Aufgabe durchf&uuml;hrt, die man als <strong>user</strong> machen wollte.<br />
+Deshalb ist in siduction in der Grundeinstellung der Prompt des user gr&uuml;n, blau und wei&szlig;, und bei dem von root wird das Wort “root” in roter Farbe dargestellt.</p>
 <figure>
 <img src="./images/terminal/prompt-colour-01.png" alt="" /><figcaption>Farbiger Prompt</figcaption>
 </figure>
-<p>Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompt. In siduction haben wir uns trotzdem f&uuml;r die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.</p>
-<p><strong>Farbe des Prompt &auml;ndern</strong></p>
+<p>Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompts. In siduction haben wir uns trotzdem f&uuml;r die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.</p>
+<p><strong>Farbe des Prompts &auml;ndern</strong></p>
 <p>Bevor die Konfigurationsdatei ge&auml;ndert wird, erstellen wir im Terminal erst eine Sicherungskopie mit einem Datumsstempel.</p>
 <pre><code>$ cp ~/.bashrc ~/.bashrc_$(date +%F)</code></pre>
-<p>Dann &ouml;ffnen wir mit einem Texteditor unserer Wahl (z. B.: kate, gedit, mcedit, vim…) die Datei <strong>~/.bashrc</strong> und suchen nach folgender Zeile, die sich etwa in der Mitte der Datei befindet:</p>
+<p>Dann &ouml;ffnen wir mit einem Texteditor unserer Wahl (z. B.: kate, gedit, mcedit, vim…) die Datei <code>~/.bashrc</code> und suchen nach folgender Zeile, die sich etwa in der Mitte der Datei befindet:</p>
 <pre><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code></pre>
 <p>Dem Schrift- und Farbcode folgen unmittelbar die Promtteile, die diese Darstellung erhalten sollen. In der folgenden Abbildung wird der Bezug zwischen den Promtteilen und ihren K&uuml;rzeln gezeigt.</p>
 <figure>
@@ -216,10 +212,10 @@ Deshalb ist in siduction in der Grundeinstellung der Prompt des <strong>user $</
 </tr>
 </tbody>
 </table>
-<p>Soll aus dem Prompt die Farbe entfernt werden, stellen wir der PS1-Zeile eine Raute <strong>#</strong> und ein <strong>Leerzeichen</strong> voran. Damit ist die Zeile auskommentiert. Nun gen&uuml;gt es die Zeile</p>
+<p>Soll aus dem Prompt die Farbe entfernt werden, stellen wir der PS1-Zeile eine Raute <code>#</code> und ein <code>Leerzeichen</code> voran. Damit ist die Zeile auskommentiert. Nun gen&uuml;gt es die Zeile</p>
 <pre><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[00m\]\u@\h:\w\$ &#39;</code></pre>
 <p>unmittelbar als n&auml;chste Zeile einzuf&uuml;gen.</p>
-<p>Soll in dem Prompt die Farbe ge&auml;ndert werden, ist f&uuml;r jeden Teil des Prompt die Farbkodierung anzupassen.</p>
+<p>Soll in dem Prompt die Farbe ge&auml;ndert werden, ist f&uuml;r jeden Teil des Prompts die Farbkodierung anzupassen.</p>
 <pre><code> PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[03;32m\]\u@\h\[\033[01;34m\]:\w\[\033[00m\]\$ &#39;</code></pre>
 <p>Dieses Codebeispiel erzeugt einen Promt, in dem <strong>Username @ Hostname</strong> gr&uuml;n und kursiv; der <strong>:</strong> und das <strong>Arbeitsverzeichnis</strong> blau und fett; das <strong>$</strong>-Zeichen und die Befehlseingabe die Kontrastfarbe zum Hintergrund des Terminals erhalten.</p>
 <p>Die neuen Farben und Formate erscheinen nach &ouml;ffnen eines neuen Terminals.</p>
@@ -228,31 +224,33 @@ Deshalb ist in siduction in der Grundeinstellung der Prompt des <strong>user $</
 <h3 id="wenn-das-terminal-h&auml;ngt">Wenn das Terminal h&auml;ngt</h3>
 <p>Manchmal kann ein Terminal nicht mehr so reagieren wie gew&uuml;nscht. Das liegt meist daran, dass sich ein Programm fehlerhaft beendet und das Teminal in einem abnormalen Zustand zur&uuml;ckgelassen hat. Dann muss</p>
 <pre><code>reset</code></pre>
-<p>eingegeben und die Eingabetaste <code>Enter</code> gedr&uuml;ckt werden.</p>
-<p>Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Dr&uuml;cken von <code>Strg</code> + <code>l</code> behoben werden, dadurch wird das Terminal-Fenster neu aufbaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, eine eine ncurses-Schnittstelle benutzen, zum Beispiel <em>cgdisk</em>.</p>
-<p>Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Dr&uuml;cken von <code>Strg</code> + <code>s</code> verursacht sein. In diesem Fall kann <code>Strg</code> + <code>q</code> versucht werden, um die Konsole wieder frei zu geben.</p>
+<p>eingegeben und die Eingabetaste <strong><code>Enter</code></strong> gedr&uuml;ckt werden.</p>
+<p>Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Dr&uuml;cken von <strong><code>Strg</code></strong>+<strong><code>l</code></strong> behoben werden, dadurch wird das Terminal-Fenster neu aufgebaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, die eine ncurses-Schnittstelle benutzen, zum Beispiel <em>“cgdisk”</em>.</p>
+<p>Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Dr&uuml;cken von <strong><code>Strg</code></strong>+<strong><code>s</code></strong> verursacht sein. In diesem Fall kann <strong><code>Strg</code></strong>+<strong><code>q</code></strong> versucht werden, um die Konsole wieder frei zu geben.</p>
 <h3 id="hilfe-im-terminal">Hilfe im Terminal</h3>
-<p>Die meisten Befehle/Programme haben eine Kommandozeilenhilfe und auch Anleitungen. Die Anleitungen werden “man page” oder “manual page” genannt. Die Syntax zum Aufrufen der “man page” ist:</p>
+<p>Die meisten Befehle/Programme haben eine Kommandozeilenhilfe und auch Anleitungen. Die Anleitungen werden im englischen <em>“man page”</em> oder <em>“manual page”</em>, im deutschen <em>“Manpage”</em> genannt. Die Syntax zum Aufrufen der man page ist:</p>
 <pre><code>$ man &lt;Befehl&gt;</code></pre>
 <p>oder</p>
 <pre><code>$ man -k &lt;keyword&gt;</code></pre>
-<p>Dies ruft die “man page” eines Befehls auf. Die Navigation in den “man pages” erfolgt durch die Pfeiltasten, beendet werden sie mit “q” f&uuml;r quit. Beispiel:</p>
+<p>Dies ruft die Manpage eines Befehls auf. Die Navigation in den Manpages erfolgt durch die Pfeiltasten, beendet werden sie mit <code>q</code> f&uuml;r quit. Beispiel:</p>
 <pre><code>$ man apt-get</code></pre>
-<p>Um eine manpage zu verlassen, tippt man <code>q</code></p>
-<p>Ein anderes n&uuml;tzliches Werkzeug ist der “apropos”-Befehl. “Apropos” erm&ouml;glicht es, die man pages nach einem Befehl zu durchsuchen, wenn man z. B. die Syntax vergessen hat. Beispiel:</p>
+<p>Um eine Manpage zu verlassen, tippt man <code>q</code></p>
+<p>Ein anderes n&uuml;tzliches Werkzeug ist der <code>apropos</code> Befehl. Apropos erm&ouml;glicht es, die Manpages nach einem Befehl zu durchsuchen, wenn man z. B. die Syntax vergessen hat. Beispiel:</p>
 <pre><code>$ apropos apt-</code></pre>
-<p>Dies listet alle Befehle f&uuml;r den Paketmanager apt auf. “apropos” ist ein m&auml;chtiges Werkzeug, f&uuml;r umfangreichere Informationen &uuml;ber “apropos” siehe</p>
+<p>Dies listet alle Befehle f&uuml;r den Paketmanager apt auf. Apropos ist ein m&auml;chtiges Werkzeug, f&uuml;r umfangreichere Informationen &uuml;ber apropos siehe</p>
 <pre><code>$ man apropos</code></pre>
 <h3 id="linux-konsolenbefehle">Linux Konsolenbefehle</h3>
-<p>Eine sehr gute Einf&uuml;hrung in die Konsole BASH findet sich auf <a href="http://linuxcommand.org/">linuxcommand.org</a>(englisch).</p>
-<p>Nat&uuml;rlich kann auch die favorisierte Suchmaschine verwendet werden, um mehr zu finden.</p>
+<p>Eine sehr gute Einf&uuml;hrung in die Konsole BASH findet sich auf <a href="http://linuxcommand.org/">linuxcommand.org</a>(englisch).<br />
+Nat&uuml;rlich kann auch die favorisierte Suchmaschine verwendet werden, um mehr zu finden.</p>
+<p><strong>Brennen von CD, DVD und BD</strong><br />
+Die Kommandozeilenprogramme bilden die Basis f&uuml;r beliebte GUI-Programme wie <code>K3b</code>, <code>Brasero</code> oder <code>Xfburn</code>. Wer die vollst&auml;ndige Bandbreite an Optionen der Kommandozeilenprogramme <code>cdrdao</code>, <code>wodim</code>, <code>growisofs</code> usw. bevorzugt, nutzt das Terminal. Unsere Handbuchseite <a href="https://manual.siduction.org/no-gui-burn_de.html#dvd-ohne-gui-brennen">DVD ohne GUI brennen</a> enth&auml;lt viele Beispiele und Tips um verf&uuml;gbare Hardware zu erkennen, Daten zusammenzustellen und diese anschlie&szlig;end auf CD, DVD und BD zu brennen.</p>
 <h3 id="skripte-benutzen">Skripte benutzen</h3>
-<p>Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu b&uuml;ndeln. Die Eingabe des Dateinamen des Skripts f&uuml;hrt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr n&uuml;tzlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.</p>
+<p>Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu b&uuml;ndeln. Die Eingabe des Dateinamens des Skripts f&uuml;hrt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr n&uuml;tzlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.</p>
 <p>Ein Skript wird in der Konsole folgenderma&szlig;en gestartet, wenn man sich im gleichen Verzeichnis befindet:</p>
 <pre><code>./name_des_skripts</code></pre>
 <p>Einige Skripte ben&ouml;tigen root-Zugang, abh&auml;ngig vom Aufgabenbereich des Skripts.</p>
 <p><strong>Installation und Ausf&uuml;hrung</strong></p>
-<p>Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, zum Beispiel nach <strong>/usr/local/bin</strong>. Zum Kopieren und Einf&uuml;gen in der Konsole kann auch die Maus benutzt werden, nachdem man mit <strong>su</strong> root-Rechte erlangt hat.</p>
+<p>Mit wget kann ein Skript auf den Rechner geladen werden, und man platziert es am besten in das empfohlene Verzeichnis, zum Beispiel nach <code>/usr/local/bin</code>. Zum Kopieren und Einf&uuml;gen in der Konsole kann auch die Maus benutzt werden, nachdem man mit <strong><code>su</code></strong> root-Rechte erlangt hat.</p>
 <p><strong>Beispiel mit wget und root-Rechten</strong></p>
 <pre><code>$ su
 Passwort:
@@ -260,19 +258,19 @@ Passwort:
 # wget -c ftp://&lt;entfernter_server&gt;/script-name.sh</code></pre>
 <p>Danach muss die Datei ausf&uuml;hrbar gemacht werden:</p>
 <pre><code># chmod +x script-name.sh</code></pre>
-<p>Da das Verzeichnis <em>/usr/local/bin</em> im Suchpfad von root enthalten ist, reicht f&uuml;r root der einfache Befehl</p>
+<p>Da das Verzeichnis <code>/usr/local/bin</code> im Suchpfad von root enthalten ist, reicht f&uuml;r root der einfache Befehl</p>
 <pre><code># script-name.sh</code></pre>
 <p>aus, um das Script zu starten.</p>
 <p>Die Datei kann auch mit einem Browser auf den Computer geladen und an den geeigneten Ort verschoben werden, aber sie muss auch dann ausf&uuml;hrbar gemacht werden.</p>
 <p><strong>Beispiel mit wget als Nutzer</strong></p>
-<p>So speichert man als Nutzer eine Datei im $HOME (der Promt ist ‘$’):</p>
+<p>So speichert man als Nutzer eine Datei im Verzeichnis <code>/home/&lt;user&gt;</code> (der Promt ist ‘$’):</p>
 <pre><code>$ wget -c ftp://&lt;entfernter_server&gt;/user-script-name.sh
 $ chmod +x user-script-name.sh</code></pre>
 <p>Das Skript wird so gestartet:</p>
 <pre><code>$ ./user-script-name.sh</code></pre>
-<p>Das funktioniert als <em>user</em> nat&uuml;rlich nur, wenn das Script keine Befehle enth&auml;lt, die root-Rechte ben&ouml;tigen.</p>
+<p>Das funktioniert als user nat&uuml;rlich nur, wenn das Script keine Befehle enth&auml;lt, die root-Rechte ben&ouml;tigen.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-11-29
+Zuletzt bearbeitet: 2022-03-01
 </div>
 </body>
 </html>

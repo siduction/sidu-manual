@@ -8,11 +8,11 @@
 <title>Partitionieren mit cfdisk</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -50,14 +50,14 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="partitionieren-mit-fdisk">Partitionieren mit fdisk</h2>
 <p><strong>fdisk</strong> und <strong>cfdisk</strong> erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einf&uuml;hrung von GPT-Partitionstabellen auf Basis des UEFI.</p>
 <p>Der neuere Standard <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen gr&ouml;&szlig;er als 2 TByte und eine theoretisch unbegrenzte Anzahl prim&auml;rer Partitionen. Weitere Informationen dazu gibt es in <a href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle</a></p>
-<p>Wir empfehlen die Partitionierung mit <em>fdisk</em> und <em>cfdisk</em> ausschlie&szlig;lich f&uuml;r &auml;ltere Hardware.<br />
+<p>Wir empfehlen die Partitionierung mit fdisk und cfdisk ausschlie&szlig;lich f&uuml;r &auml;ltere Hardware.<br />
 Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite <a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> zu Rate ziehen.</p>
 <h3 id="benennung-von-speicherger&auml;ten">Benennung von Speicherger&auml;ten</h3>
 <p><strong>Bitte BEACHTEN:</strong><br />
-siduction verwendet in der fstab UUID f&uuml;r die Benennung von Speicherger&auml;ten. Bitte das Kapitel <a href="https://manual.siduction.org/part-uuid_de.html#uuid---benennung-von-blockger&auml;ten">Benennung nach UUID</a> zu Rate ziehen.</p>
+siduction verwendet in der <code>fstab</code> UUID f&uuml;r die Benennung von Speicherger&auml;ten. Bitte das Kapitel <a href="https://manual.siduction.org/part-uuid_de.html#uuid---benennung-von-blockger&auml;ten">Benennung nach UUID</a> zu Rate ziehen.</p>
 <p><strong>Festplatten</strong></p>
 <p>Informationen &uuml;ber die Ger&auml;te erh&auml;lt man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Ger&auml;ts auf dem Desktop geht. Dies funktioniert sowohl vom Live-ISO als auch bei einem installierten siduction.</p>
-<p>Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Ger&auml;te enth&auml;lt. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit <strong>su</strong> zu root und geben <strong>fdisk -l</strong> ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe &auml;hnlich der unten gezeigten.</p>
+<p>Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Ger&auml;te enth&auml;lt. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit <strong><code>su</code></strong> zu <strong>root</strong> und geben <strong><code>fdisk -l</code></strong> ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe &auml;hnlich der unten gezeigten.</p>
 <pre><code>user1@pc1:/$ su
 Passwort:
 root@pc1:/# fdisk -l
@@ -70,14 +70,14 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x6513a8ff
 
-Device     Boot     Start       End   Sectors  Size Id Type
-/dev/sda1            2048  41945087  41943040   20G 83 Linux
-/dev/sda2        41945088  83888127  41943040   20G 83 Linux
-/dev/sda3        83888128  88291327   4403200  2,1G 82 Linux swap / Solaris
-/dev/sda4        88291328 312581807 224290480  107G  5 Extended
-/dev/sda5        88293376 249774079 161480704   77G 83 Linux
-/dev/sda6       249776128 281233407  31457280   15G 83 Linux
-/dev/sda7       281235456 312581807  31346352   15G 83 Linux
+Device   Boot   Start       End   Sectors Size Id Type
+/dev/sda1        2048  41945087  41943040  20G 83 Linux
+/dev/sda2    41945088  83888127  41943040  20G 83 Linux
+/dev/sda3    83888128  88291327   4403200 2,1G 82 Linux swap
+/dev/sda4    88291328 312581807 224290480 107G  5 Extended
+/dev/sda5    88293376 249774079 161480704  77G 83 Linux
+/dev/sda6   249776128 281233407  31457280  15G 83 Linux
+/dev/sda7   281235456 312581807  31346352  15G 83 Linux
 
 
 Disk /dev/sdb: 119,25 GiB, 128035676160 bytes, 250069680 sectors
@@ -88,13 +88,12 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x000403b7
 
-Device     Boot     Start       End   Sectors  Size Id Type
-/dev/sdb1            2048  17831935  17829888  8,5G 82 Linux swap / Solaris
-/dev/sdb2        17831936 122687487 104855552   50G 83 Linux
-/dev/sdb3       122687488 250068991 127381504 60,8G 83 Linux</code></pre>
-<p>Mit dem Befehl</p>
-<pre><code># fdisk -l &gt; /home/&lt;MEIN USER NAME&gt;/Dokumente/fdisk-l_Ausgabe</code></pre>
-<p>erhalten wir eine Text-Datei mit dem gleichen Inhalt.</p>
+Device   Boot  Start       End   Sectors  Size Id Type
+/dev/sdb1       2048  17831935  17829888  8,5G 82 Linux swap
+/dev/sdb2   17831936 122687487 104855552   50G 83 Linux
+/dev/sdb3  122687488 250068991 127381504 60,8G 83 Linux</code></pre>
+<p>Mit dem Befehl<br />
+<strong><code>fdisk -l &gt; /home/&lt;MEIN USER NAME&gt;/Dokumente/fdisk-l_Ausgabe</code></strong> erhalten wir eine Text-Datei mit dem gleichen Inhalt.</p>
 <p><strong>Partitionen</strong></p>
 <p>Die Partitionen auf einer MBR-Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen m&ouml;glich.</p>
 <p>Es gibt folgende Partitionstypen:<br />
@@ -115,20 +114,20 @@ Prim&auml;re oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 un
                  |         logische Partitionen
                  |
                |sda5|sda6|sda7|</code></pre>
-<p><strong>/dev/sda5</strong> kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Ger&auml;t). Sie befindet sich auf der ersten Festplatte des Computers (abh&auml;ngig von der BIOS-Konfiguration).</p>
-<p><strong>/dev/sdb3</strong> kann nur eine prim&auml;re oder erweiterte Partition sein. Der Buchstabe “b” indiziert, dass diese Partition sich auf einem anderen Ger&auml;t befindet als die Partition des ersten Beispiels, welche den Buchstaben “a” enth&auml;lt.</p>
+<p><em>“/dev/sda5”</em> kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Ger&auml;t). Sie befindet sich auf der ersten Festplatte des Computers (abh&auml;ngig von der BIOS-Konfiguration).</p>
+<p><em>“/dev/sdb3”</em> kann nur eine prim&auml;re oder erweiterte Partition sein. Der Buchstabe “b” indiziert, dass diese Partition sich auf einem anderen Ger&auml;t befindet als die Partition des ersten Beispiels, welche den Buchstaben “a” enth&auml;lt.</p>
 <h3 id="cfdisk-verwenden">Cfdisk verwenden</h3>
 <warning>
 <strong>Daten zuvor sichern!</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datentr&auml;ger sichern.
 </warning>
-<p><strong>cfdisk</strong> wird in einer Konsole als root gestartet (nach “su” ist die Eingabe des root-Passworts gefordert):</p>
+<p>cfdisk wird in einer Konsole als <strong>root</strong> gestartet (nach <strong><code>su</code></strong> ist die Eingabe des root-Passworts gefordert):</p>
 <pre><code>user1@pc1:/$ su
 Passwort:
 root@pc1:/#
 cfdisk /dev/sda</code></pre>
-<p><strong>cfdisk</strong> nur auf einer Festplatte anwenden, deren s&auml;mtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der ge&auml;nderten Partitionstabelle verloren.</p>
+<p>cfdisk nur auf einer Festplatte anwenden, deren s&auml;mtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der ge&auml;nderten Partitionstabelle verloren.</p>
 <h4 id="die-bedienoberfl&auml;che">Die Bedienoberfl&auml;che</h4>
-<p>Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten <code>auf</code> und <code>ab</code>, um Befehle auszuw&auml;hlen, die Pfeiltasten <code>rechts</code> und <code>links</code>. Mit der <code>Enter</code> Taste wird der Befehl ausgef&uuml;hrt.</p>
+<p>Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten <strong><code>auf</code></strong> und <strong><code>ab</code></strong>, um Befehle auszuw&auml;hlen, die Pfeiltasten <strong><code>rechts</code></strong> und <strong><code>links</code></strong>. Mit der <strong><code>Enter</code></strong> Taste wird der Befehl ausgef&uuml;hrt.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_01.png" alt="" /><figcaption>cfdisk - Start</figcaption>
 </figure>
@@ -163,80 +162,80 @@ cfdisk /dev/sda</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Aus der Daten-Partition m&ouml;chten wir die Verzeichnisse ‘Bilder’ und ‘Musik’ in eigene Partitionen auslagern und daf&uuml;r mehr Platz schaffen. Gleichzeitig sollen diese auch f&uuml;r ein auf einer weiteren Festplatte residierendes Windows zug&auml;nglich sein. Die Root-Partition ist mit 50 GB &uuml;berdimensioniert und wird verkleinert.</p>
+<p>Aus der Daten-Partition m&ouml;chten wir die Verzeichnisse <code>/Bilder</code> und <code>/Musik</code> in eigene Partitionen auslagern und daf&uuml;r mehr Platz schaffen. Gleichzeitig sollen diese auch f&uuml;r ein auf einer weiteren Festplatte residierendes Windows zug&auml;nglich sein. Die Root-Partition ist mit 50 GB &uuml;berdimensioniert und wird verkleinert.</p>
 <h4 id="l&ouml;schen-einer-partition">L&ouml;schen einer Partition</h4>
 <p>Um Platz zu schaffen, l&ouml;schen wir die Daten-Partition und verkleinern anschlie&szlig;end die Root-Partition.</p>
-<p>Um die Partition /dev/sda3 zu l&ouml;schen, wird sie mit den auf-ab-Tasten markiert und der Befehl <strong>Delete</strong> mit den Pfeiltasten links-rechts gew&auml;hlt und durch <strong><code>Enter</code></strong> best&auml;tigt.</p>
+<p>Um die Partition <code>/dev/sda3</code> zu l&ouml;schen, wird sie mit den auf-ab-Tasten markiert und der Befehl <strong><code>Delete</code></strong> mit den Pfeiltasten links-rechts gew&auml;hlt und durch <strong><code>Enter</code></strong> best&auml;tigt.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_02.png" alt="" /><figcaption>Delete a partition</figcaption>
 </figure>
 <h4 id="gr&ouml;&szlig;e-einer-partition-&auml;ndern">Gr&ouml;&szlig;e einer Partition &auml;ndern</h4>
-<p>Die Partition /dev/sda2 wird markiert und der Befehl <strong>Resize</strong> ausgew&auml;hlt und best&auml;tigt.</p>
+<p>Die Partition <code>/dev/sda2</code> wird markiert und der Befehl <strong><code>Resize</code></strong> ausgew&auml;hlt und best&auml;tigt.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_03.png" alt="" /><figcaption>Resize a partition</figcaption>
 </figure>
-<p>Anschlie&szlig;end erfolgt die Eingabe der neuen Gr&ouml;&szlig;e von ‘20G’</p>
+<p>Anschlie&szlig;end erfolgt die Eingabe der neuen Gr&ouml;&szlig;e von <code>20G</code></p>
 <figure>
 <img src="./images/cfdisk/cfdisk_04.png" alt="" /><figcaption>New Size of a partition</figcaption>
 </figure>
 <h4 id="erstellen-einer-neuen-partition">Erstellen einer neuen Partition</h4>
-<p>Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf <strong>New</strong>, die zu best&auml;tigen ist.</p>
+<p>Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf <strong><code>New</code></strong>, die zu best&auml;tigen ist.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_05.png" alt="" /><figcaption>Create a new partition</figcaption>
 </figure>
-<p>Anschlie&szlig;end ist die neue Gr&ouml;&szlig;e von ‘15G’ f&uuml;r die Daten-Partition einzugeben.</p>
+<p>Anschlie&szlig;end ist die neue Gr&ouml;&szlig;e von <code>15G</code> f&uuml;r die Daten-Partition einzugeben.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_06.png" alt="" /><figcaption>Create a new partition - Size</figcaption>
 </figure>
-<p>Jetzt muss zwischen einer <strong>prim&auml;ren</strong> oder einer <strong>erweiterten</strong> (extended) Partition entschieden werden. Wir entscheiden uns f&uuml;r eine prim&auml;re Partition.</p>
+<p>Jetzt muss zwischen einer <em>“prim&auml;ren”</em> oder einer <em>“erweiterten”</em> (extended) Partition entschieden werden. Wir entscheiden uns f&uuml;r eine prim&auml;re Partition.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_07.png" alt="" /><figcaption>Create a new partition - prim</figcaption>
 </figure>
-<p>Danach wird wieder der freie Plattenplatz markiert, best&auml;tigt und die voreingestellte gesamte Gr&ouml;&szlig;e ebenso best&auml;tigt. In der folgenden Auswahl ist <strong>extended</strong> zu w&auml;hlen. Dies erstellt die Erweiterte Partition (hier ‘Container’ genannt) in der die zwei zus&auml;tzlichen Partitionen anzulegen sind.</p>
+<p>Danach wird wieder der freie Plattenplatz markiert, best&auml;tigt und die voreingestellte gesamte Gr&ouml;&szlig;e ebenso best&auml;tigt. In der folgenden Auswahl ist <code>extended</code> zu w&auml;hlen. Dies erstellt die Erweiterte Partition (hier ‘Container’ genannt) in der die zwei zus&auml;tzlichen Partitionen anzulegen sind.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_08.png" alt="" /><figcaption>extended partition</figcaption>
 </figure>
-<p>Zum Schluss sind die Partitionen f&uuml;r ‘Musik’ und ‘Bilder’ entsprechend dem oben gezeigten Vorgehen in der gew&uuml;nschten Gr&ouml;&szlig;e anzulegen. Da nur noch logische Partitionen m&ouml;glich sind, entf&auml;llt die Auswahl zwischen prim&auml;rer und erweiterter Partition.</p>
+<p>Zum Schluss sind die Partitionen f&uuml;r Musik und Bilder entsprechend dem oben gezeigten Vorgehen in der gew&uuml;nschten Gr&ouml;&szlig;e anzulegen. Da nur noch logische Partitionen m&ouml;glich sind, entf&auml;llt die Auswahl zwischen prim&auml;rer und erweiterter Partition.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_09.png" alt="" /><figcaption>partition finished</figcaption>
 </figure>
 <p>So sieht das Ergebnis aus.</p>
 <h4 id="partitionstyp">Partitionstyp</h4>
-<p>Um den Typ einer Partition zu &auml;ndern, markiert man die gew&uuml;nschte Partition und w&auml;hlt den Befehl <strong>Type</strong> aus.</p>
+<p>Um den Typ einer Partition zu &auml;ndern, markiert man die gew&uuml;nschte Partition und w&auml;hlt den Befehl <strong><code>Type</code></strong> aus.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_10.png" alt="" /><figcaption>partition type</figcaption>
 </figure>
-<p>Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gew&auml;hlt wird. In unserem Beispiel w&auml;hlen wir f&uuml;r die Partitionen /dev/sda5 und /dev/sda6 “<strong>7 HPFS/NTFS/exFAT</strong>” aus. So kann das oben erw&auml;hnte Windows auf die Partition zugreifen.</p>
+<p>Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gew&auml;hlt wird. In unserem Beispiel w&auml;hlen wir f&uuml;r die Partitionen <code>/dev/sda5</code> und <code>/dev/sda6</code> den Typ <em>“7 HPFS/NTFS/exFAT”</em> aus. So kann das oben erw&auml;hnte Windows auf die Partition zugreifen.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_11.png" alt="" /><figcaption>partition type</figcaption>
 </figure>
 <h4 id="eine-partition-bootf&auml;hig-machen">Eine Partition bootf&auml;hig machen</h4>
-<p>F&uuml;r Linux besteht kein Grund, eine Partition bootf&auml;hig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl <strong>Bootable</strong> gew&auml;hlt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootf&auml;hig gemacht werden).</p>
+<p>F&uuml;r Linux besteht kein Grund, eine Partition bootf&auml;hig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl <strong><code>Bootable</code></strong> gew&auml;hlt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootf&auml;hig gemacht werden).</p>
 <h4 id="partitionstabelle-schreiben">Partitionstabelle schreiben</h4>
-<p>Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl <strong>Write</strong> gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.</p>
+<p>Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl <strong><code>Write</code></strong> gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.</p>
 <figure>
 <img src="./images/cfdisk/cfdisk_12.png" alt="" /><figcaption>partition select type</figcaption>
 </figure>
-<p><strong>Da damit alle Daten auf der entsprechenden Festplatte/Partition gel&ouml;scht werden</strong> , sollte man sich seiner Sache wirklich sicher sein, bevor man <strong>yes</strong> eintippt und noch einmal mit der Entertaste best&auml;tigt.</p>
+<p><strong>Da damit alle Daten auf der entsprechenden Festplatte/Partition gel&ouml;scht werden</strong> , sollte man sich seiner Sache wirklich sicher sein, bevor man <strong><code>yes</code></strong> eintippt und noch einmal mit <strong><code>Enter</code></strong> best&auml;tigt.</p>
 <h4 id="cfdisk-beenden">Cfdisk beenden</h4>
-<p>Mit dem Befehl <strong>Quit</strong> verlassen wir das Programm. Nach Beendigung von <strong>cfdisk</strong> und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.</p>
+<p>Mit dem Befehl <strong><code>Quit</code></strong> verlassen wir das Programm. Nach Beendigung von cfdisk und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.</p>
 <h3 id="formatieren-von-partitionen">Formatieren von Partitionen</h3>
 <p>Es gibt f&uuml;r Linux verschiedene Filesysteme, die man benutzen kann. Da w&auml;ren <strong>Ext2</strong>, <strong>Ext4</strong>, <strong>ReiserFs</strong> und f&uuml;r erfahrenere Anwender <strong>XFS</strong>, <strong>JFS</strong> und <strong>ZFS</strong>.<br />
 Ext2 kann von Interesse sein, wenn man von Windows aus zugreifen m&ouml;chte, da es Windows-Treiber f&uuml;r dieses Dateisystem gibt. <a href="http://www.fs-driver.org/">Ext2-Dateisystem f&uuml;r MS Windows (Treiber und englischsprachige Doku)</a>.</p>
-<p>F&uuml;r normalen Gebrauch empfehlen wir das Dateisystem ext4. Ext4 ist das Standard-Dateisystem von siduction.</p>
+<p>F&uuml;r normalen Gebrauch empfehlen wir das Dateisystem <strong>ext4</strong>. Es ist das Standard-Dateisystem von siduction.</p>
 <p>Nach Beendigung von cfdisk wird die Root-Konsole weiter verwendet. Eine Formatierung erfordert Root-Rechte.<br />
-Der Befehl lautet <strong>mkfs.ext4 /dev/sdaX</strong>. F&uuml;r “X” tr&auml;gt man die Nummer der ausgew&auml;hlten Partition ein.</p>
+Der Befehl lautet <strong><code>mkfs.ext4 /dev/sdaX</code></strong>. F&uuml;r “X” tr&auml;gt man die Nummer der ausgew&auml;hlten Partition ein.</p>
 <pre><code>mkfs.ext4 /dev/sda2
 mke2fs 1.45.6 (20-Mar-2020)
 /dev/sdb2 contains a ext4 file system
     last mounted on Tue May 26 14:26:34 2020
 Proceed anyway? (y,N)</code></pre>
-<p>Die Abfrage wird mit “<strong>y</strong>” beantwortet, wenn man darin sicher ist, dass die richtige Partition formatiert werden soll. Bitte mehrfach &uuml;berpr&uuml;fen!</p>
-<p>Nach Abschluss der Formatierung muss die Meldung erfolgen, dass ext4 erfolgreich geschrieben wurde. Ist das nicht der Fall, ist bei der Partitionierung etwas schiefgelaufen oder <strong>sdaX</strong> ist keine Linux-Partition. Wir &uuml;berpr&uuml;fen mit:</p>
+<p>Die Abfrage wird mit <strong><code>y</code></strong> beantwortet, wenn man darin sicher ist, dass die richtige Partition formatiert werden soll. Bitte mehrfach &uuml;berpr&uuml;fen!</p>
+<p>Nach Abschluss der Formatierung muss die Meldung erfolgen, dass <strong>ext4</strong> erfolgreich geschrieben wurde. Ist das nicht der Fall, ist bei der Partitionierung etwas schiefgelaufen oder <em>“sdaX”</em> ist keine Linux-Partition. Wir &uuml;berpr&uuml;fen mit:</p>
 <pre><code>fdisk -l /dev/sda</code></pre>
 <p>Wenn etwas falsch ist, muss gegebenenfalls noch einmal partitioniert werden.</p>
-<p>War die Formatierung erfolgreich, so wird dieser Ablauf f&uuml;r die anderen Partitionen wiederholt, wobei der Befehl entsprechend des Partitions-Typ und des gew&uuml;nschten Dateisystem anzupassen ist. (z. B.: ‘mkfs.ext2’ oder ‘mkfs.vfat’ oder ‘mkfs.ntfs’ usw.) Bitte die Manpage <strong>man mkfs</strong> lesen.</p>
-<p>Zuletzt wird die Swap-Partition formatiert, in diesem Fall sda1:</p>
+<p>War die Formatierung erfolgreich, so wird dieser Ablauf f&uuml;r die anderen Partitionen wiederholt, wobei der Befehl entsprechend des Partitions-Typ und des gew&uuml;nschten Dateisystem anzupassen ist. (z. B.: <code>mkfs.ext2</code> oder <code>mkfs.vfat</code> oder <code>mkfs.ntfs</code> usw.) Bitte die Manpage <strong><code>man mkfs</code></strong> lesen.</p>
+<p>Zuletzt wird die Swap-Partition formatiert, in diesem Fall <strong>sda1</strong>:</p>
 <pre><code>mkswap /dev/sda1</code></pre>
 <p>Im Anschluss wird die Swap-Partition aktiviert:</p>
 <pre><code>swapon /dev/sda1</code></pre>

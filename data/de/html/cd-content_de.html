@@ -8,11 +8,11 @@
 <title>Inhalt der Live-ISO</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -33,12 +33,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#hinweis-zur-software-auf-dem-live-iso">Hinweis zur Software auf dem Live-ISO</a></li>
 <li><a href="#varianten-der-iso">Varianten der ISO</a></li>
-<li><a href="#minimale-systemanforderungen">Minimale Systemanforderungen</a>
-<ul>
-<li><a href="#prozessoranforderungen-64-bit-cpu">Prozessoranforderungen: 64 Bit CPU</a></li>
-<li><a href="#speicheranforderungen">Speicheranforderungen</a></li>
-<li><a href="#sonstiges">Sonstiges</a></li>
-</ul></li>
+<li><a href="#minimale-systemanforderungen">Minimale Systemanforderungen</a></li>
 <li><a href="#anwendungen-und-hilfsprogramme">Anwendungen und Hilfsprogramme</a></li>
 <li><a href="#haftungsausschluss_disclaimer">Haftungsausschluss_Disclaimer</a></li>
 </ul></li>
@@ -50,49 +45,30 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Das ISO basiert ausschlie&szlig;lich auf zum Ver&ouml;ffentlichungszeitpunkt jeweils aktuellem Debian Sid, bereichert und stabilisiert durch eigene Pakete und Skripte aus den siduction-Repositories. Als Kernel wird der jeweils aktuelle Vanilla Mainline Kernel verwendet und mit Patches versehen. ACPI und DMA sind aktiviert.</p>
 <p>Eine komplette Manifest-Datei mit der Auflistung aller installierten Programme f&uuml;r jede einzelne Ver&ouml;ffentlichungs-Variante von siduction findet man auf jedem Download-Spiegelserver.</p>
 <h3 id="varianten-der-iso">Varianten der ISO</h3>
-<p>siduction bietet sieben aktuelle Images mit verschiedenen Desktop-Umgebungen (zwei auch ohne) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. &Uuml;blicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.<br />
+<p>siduction bietet f&uuml;nf aktuelle Images und verschiedenen Desktop-Umgebungen (ein Image ohne) in 64-Bit als Live-ISO zum Einstieg in Debian Sid. &Uuml;blicherweise dauert eine Installation zwischen 1 und 10 Minuten, je nach Hardware.<br />
 Die Varianten sind:</p>
 <ol type="1">
 <li><strong>KDE 64 Bit</strong> , live-ISO mit etwa 2,8 GByte:
 <ul>
-<li>Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repr&auml;sentativen Auswahl der KDE Applications.<br />
-</li>
-<li>Die Installation zus&auml;tzlicher Anwendungen ist ohne Probleme via apt m&ouml;glich.</li>
-</ul></li>
-<li><strong>Cinnamon mit 64 Bit</strong> , live-ISO mit etwa 2.3 GByte:
-<ul>
-<li>GTK-basierter Desktop mit einer repr&auml;sentativen Auswahl an n&uuml;tzlicher Software.<br />
-</li>
+<li>Qt basierter Plasma Desktop und KDE-Frameworks. Mit einer repr&auml;sentativen Auswahl der KDE Applications.</li>
 <li>Die Installation zus&auml;tzlicher Anwendungen ist ohne Probleme via apt m&ouml;glich.</li>
 </ul></li>
 <li><strong>XFCE 64 Bit</strong> , live-ISO mit etwa 2,3 GByte:
 <ul>
-<li>umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv t&auml;tig sein zu k&ouml;nnen.<br />
-</li>
-<li>Der Ressourcenaufwand ist geringer als mit KDE.<br />
-</li>
+<li>umfasst eine GTK basierte Desktop-Umgebung mit allen Features (keine Minimalversion!) und alle Anwendungen um sofort produktiv t&auml;tig sein zu k&ouml;nnen.</li>
+<li>Der Ressourcenaufwand ist geringer als mit KDE.</li>
 <li>Die Installation zus&auml;tzlicher Anwendungen ist ohne Probleme via apt m&ouml;glich.</li>
 </ul></li>
 <li><strong>LXQt mit 64 Bit</strong> , live-ISO mit etwa 2,2 GByte:
 <ul>
-<li>umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.<br />
-</li>
+<li>umfasst eine Desktopumgebung mit einer Auswahl an Qt-Applikationen.</li>
 <li>Der Fu&szlig;abdruck ist etwas schmaler als bei XFCE</li>
-<li>Die Installation zus&auml;tzlicher Anwendungen ist ohne Probleme via apt m&ouml;glich.</li>
-</ul></li>
-<li><strong>LXde mit 64 Bit</strong> , live-ISO mit etwa 2,2 GByte:
-<ul>
-<li>umfasst eine Desktopumgebung mit einer Auswahl an GTK-Applikationen.<br />
-</li>
-<li>Der Fu&szlig;abdruck ist schmaler als bei XFCE</li>
-<li>geeignet f&uuml;r &auml;ltere Hardware</li>
 <li>Die Installation zus&auml;tzlicher Anwendungen ist ohne Probleme via apt m&ouml;glich.</li>
 </ul></li>
 <li><strong>Xorg mit 64 Bit</strong> , live ISO mit etwa 1,8 GByte:
 <ul>
-<li>Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.<br />
-</li>
-<li>F&uuml;r Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen</li>
+<li>Ein ISO-Image mit einem Xorg-Stack und dem spartanischen Fenstermanager Fluxbox.</li>
+<li>F&uuml;r Anwender, die sich ihr System nach eigenen Vorstellungen aufbauen wollen.</li>
 </ul></li>
 <li><strong>NoX mit 64 Bit</strong> , live-ISO mit etwa 800 MByte:
 <ul>
@@ -102,33 +78,28 @@ Die Varianten sind:</p>
 <p><strong>32 Bit ISOs</strong> bieten wir standardm&auml;&szlig;ig nicht mehr an.<br />
 Wenn ein 32 Bit IOS gew&uuml;nscht ist, wird ein solches auf Anfrage im IRC gerne erstellt. Testen k&ouml;nnen wir ein solches ISO leider nicht.</p>
 <h3 id="minimale-systemanforderungen">Minimale Systemanforderungen</h3>
-<p>f&uuml;r: KDE-Plasma, Mate, XFCE, LXQt, Lxde, Cinnamon, Xorg und NoX</p>
-<h4 id="prozessoranforderungen-64-bit-cpu">Prozessoranforderungen: 64 Bit CPU</h4>
-<pre><code>AMD64  
-Intel Core2  
-Intel Atom 330  
-jede x86-64/ EM64T f&auml;hige CPU oder neuer  
-neuere 64 Bit f&auml;hige AMD Sempron und Intel Pentium 4 CPUs  
-(achten Sie auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt inxi -v3).</code></pre>
-<h4 id="speicheranforderungen">Speicheranforderungen</h4>
-<pre><code>KDE-Plasma: ≥ 4 GByte RAM
-Mate:       ≥ 4 GByte RAM
-Cinnamon:   ≥ 4 GByte RAM
-XFCE:       ≥ 4 GByte RAM
-LXQT:       ≥ 512 MByte RAM
-Lxde        ≥ 512 MByte RAM
-Xorg:       ≥ 512 MByte RAM
-NoX:        ≥ 256 MByte RAM
-
-≥ 5 GByte Festplattenspeicher f&uuml;r NOX
-≥10 GByte Festplattenspeicher f&uuml;r alle Anderen</code></pre>
-<h4 id="sonstiges">Sonstiges</h4>
-<pre><code>VGA Grafikkarte mit mindestens 640x480 Pixel Aufl&ouml;sung.
-optisches Laufwerk oder USB Medien.</code></pre>
+<p>f&uuml;r: KDE-Plasma, XFCE, LXQt, Xorg und NoX</p>
+<p><strong>Prozessoranforderungen: 64 Bit CPU</strong></p>
+<p>AMD64<br />
+Intel Core2<br />
+Intel Atom 330<br />
+jede x86-64/ EM64T f&auml;hige CPU oder neuer<br />
+neuere 64 Bit f&auml;hige AMD und Intel CPUs<br />
+(achte auf das “lm”-Flag in /proc/cpuinfo oder nutze inxi -v3).</p>
+<p><strong>Speicheranforderungen</strong></p>
+<pre><code>KDE Plasma mindestens   4 GByte RAM
+Xfce       mindestens   4 GByte RAM
+LXQt       mindestens 512 MByte RAM
+Xorg       mindestens 512 MByte RAM
+NoX        mindestens 256 MByte RAM</code></pre>
+<p>Mindestens 5 GByte Festplattenspeicher f&uuml;r NOX.<br />
+Mindestens 10 GByte Festplattenspeicher f&uuml;r alle anderen Varianten.</p>
+<p><strong>Sonstiges</strong></p>
+<p>VGA Grafikkarte mit mindestens 640x480 Pixel Aufl&ouml;sung und ein optisches Laufwerk oder USB Medien.</p>
 <h3 id="anwendungen-und-hilfsprogramme">Anwendungen und Hilfsprogramme</h3>
 <p>Als Internetbrowser werden (je nach Variante) <a href="https://mozilla.org">Firefox</a>, oder <a href="https://chromium.woolyss.com/download/de/#linux">Chromium</a> mitgeliefert.</p>
-<p>Als B&uuml;rosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin,Thunar und PCManFM zur Verf&uuml;gung.</p>
-<p>Zur Netzwerk- und Internetkonfiguration steht Connman oder Network-Manager zur Verf&uuml;gung.</p>
+<p>Als B&uuml;rosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter anderem Dolphin, Thunar und PCManFM zur Verf&uuml;gung.</p>
+<p>Zur Netzwerk- und Internetkonfiguration steht Connman, Network-Manager oder IWD zur Verf&uuml;gung.</p>
 <p>Xorg und nox werden mit <a href="https://manual.siduction.org/inet-iwd_de.html#iwd-statt-wpa_supplicant">IWD</a> als ausgeliefert, dieser kann via <a href="https://manual.siduction.org/inet-nm-cli_de.html#network-manager-kommandline-tool">nmtui/nmcli</a> oder <a href="https://manual.siduction.org/inet-iwd_de.html#iwd-statt-wpa_supplicant">iwctl</a> konfiguriert werden.</p>
 <p>Zur Partitionierung von Festplatten werden <a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, <a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">gdisk und cgdisk</a> und <a href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">GParted</a> mitgeliefert. Gparted bietet auch die M&ouml;glichkeit, die Gr&ouml;&szlig;e von NTFS-Partitionen zu &auml;ndern.</p>
 <p>Tools zur Systemanalyse wie <a href="http://www.memtest.org/">Memtest86+</a> (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.</p>

@@ -8,11 +8,11 @@
 <title>Secure Shell</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -45,11 +45,10 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Die IANA hat dem Protokoll den TCP-Port 22 zugeordnet, jedoch lassen sich in den Konfigurationsdateien des Daemons auch beliebige andere Ports ausw&auml;hlen, um z.B. Angriffe zu erschweren, da der SSH-Port dem Angreifer nicht bekannt ist.</p>
 <h3 id="ssh-absichern">SSH absichern</h3>
 <p>Es ist nicht sicher, Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen Angreifer nicht die M&ouml;glichkeit haben, &uuml;ber zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuf&uuml;hren. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl m&ouml;glicher Versuche einzuschr&auml;nken.</p>
-<p>Um SSH sicherer zu machen, verwendet man einen Texteditor, um folgende Datei zu bearbeiten:</p>
-<pre><code>/etc/ssh/sshd_config</code></pre>
+<p>Um SSH sicherer zu machen, verwendet man einen Texteditor, und bearbeitet die Datei <code>/etc/ssh/sshd_config</code>.</p>
 <p><strong>Folgende Einstellungen k&ouml;nnen zur Erh&ouml;hung der Sicherheit angepasst werden:</strong></p>
 <ul>
-<li><p>Port <code>&lt;gew&uuml;nschter Port&gt;:</code><br />
+<li><p><code>Port &lt;gew&uuml;nschter Port&gt;:</code><br />
 Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal &uuml;berdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port au&szlig;erhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:</p>
 <pre><code>Port 5874</code></pre></li>
 <li><p><code>ListenAddress &lt;IP des Rechners oder der Netzwerkschnittstelle&gt;:</code><br />
@@ -78,10 +77,10 @@ dem Benutzer soll ein sch&ouml;nes langes Passwort gegeben werden, das man in ei
 <pre><code>PermitEmptyPasswords no</code></pre></li>
 <li><p><code>PasswordAuthentication &lt;xxx&gt;:</code><br />
 nat&uuml;rlich muss hier ‘yes’ gesetzt werden. Es sei denn, man verwendet einen KeyLogin.</p>
-<pre><code>PasswordAuthentication yes [wenn man keine keys verwendet]</code></pre></li>
+<pre><code>PasswordAuthentication yes</code></pre></li>
 </ul>
 <p>Schlussendlich:</p>
-<pre><code>/etc/init.d/ssh restart</code></pre>
+<pre><code>systemctl restart ssh</code></pre>
 <p>Nun hat man eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn man einen Benutzer hinzugef&uuml;gt hat, der speziell zur Verwendung mit SSH dient.</p>
 <h3 id="ssh-f&uuml;r-x-window-programme">SSH f&uuml;r X-Window Programme</h3>
 <p>ssh -X erm&ouml;glicht die Verbindung zu einem entfernten Computer und die Anzeige von dessen Grafikserver X auf dem eigenen lokalen Computer. Den Befehl gibt man als Benutzer (nicht als Root) ein (und man beachte, dass X ein Gro&szlig;buchstabe ist):</p>
@@ -110,10 +109,10 @@ nat&uuml;rlich muss hier ‘yes’ gesetzt werden. Es sei denn, man verwendet ei
 <li><p>Falls man sich im Laufwerk bzw. Verzeichnis befindet, in das ein Verzeichnis bzw. eine Datei kopiert werden soll, verwendet man nur einen <strong>.</strong> (Punkt):</p>
 <pre><code>scp -r &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/filename.txt . </code></pre></li>
 </ol>
-<p>Weitere Informationen:</p>
+<p>Weitere Informationen bietet die Manpage:</p>
 <pre><code>man scp</code></pre>
 <h3 id="ssh-mit-dolphin">SSH mit Dolphin</h3>
-<p>Sowohl Dolphin als auch Krusader sind f&auml;hig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das <em>sftp</em> Protokoll benutzen, welches in ssh vorhanden ist.</p>
+<p>Sowohl Dolphin als auch Krusader sind f&auml;hig, auf Daten eines entfernten Rechners zuzugreifen, indem sie das <em>“sftp”</em> Protokoll benutzen, welches in ssh vorhanden ist.</p>
 <p>So wird es gemacht:<br />
 1) Man &ouml;ffnet ein neues Dolphin-Fenster<br />
 2) Die Syntax in der Adress-Leiste ist: “sftp://username@ssh-server.com”.</p>
@@ -127,25 +126,27 @@ oder
 sftp://username@198.x.x.x</code></pre>
 <p>Bitte richtige IP eingeben! Anschlie&szlig;end folgt ein Dialog-Fenster zur Eingabe des ssh-Passworts: Dieses eingeben und auf OK klicken.<br />
 Eine SSH-Verbindung im Dolphin ist nun hergestellt. In diesem Dolphin-Fenster kann man mit den Dateien auf dem SSH-Server arbeiten, als w&auml;ren es lokale Dateien.</p>
-<p><strong>ANMERKUNG: wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:</strong></p>
+<p><strong>ANMERKUNG:</strong> wenn ein anderer Port als 22 (Grundeinstellung) benutzt wird, muss dieser bei Verwendung von sftp angegeben werden:</p>
 <pre><code>sftp://user@ip:port</code></pre>
-<p>‘user@ip:port’ - dies ist die Standardsyntax f&uuml;r viele Protokolle/Programme wie sftp und smb.</p>
+<p><em>“user@ip:port”</em> - dies ist die Standardsyntax f&uuml;r viele Protokolle/Programme wie sftp und smb.</p>
 <h3 id="sshfs---auf-einem-entfernten-computer-mounten">SSHFS - auf einem entfernten Computer mounten</h3>
 <p>SSHFS ist eine einfache, schnelle und sichere Methode unter Verwendung von FUSE, um ein entferntes Dateisystem einzubinden. Auf Serverseite ben&ouml;tigt man ausschlie&szlig;lich einen laufenden ssh-daemon.</p>
 <p>Auf Seite des Clients muss vermutlich sshfs erst installiert werden:</p>
 <pre><code>apt update &amp;&amp; apt install sshfs</code></pre>
 <p><em>fuse3</em> und <em>groups</em> sind bereits auf dem ISO und m&uuml;ssen nicht extra installiert werden.</p>
 <p>Das Einbinden eines entfernten Dateisystems ist sehr einfach:</p>
-<pre><code>sshfs -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt</code></pre>
-<p>Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden.Bitte beachten: der Doppelpunkt “<strong><code>:</code></strong>” ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!</p>
+<pre><code>sshfs  -o idmap=user username@entfernter_hostname:verzeichnis lokaler_mountpunkt</code></pre>
+<p>Wenn kein bestimmtes Verzeichnis angegeben wird, wird das Home-Verzeichnis des entfernten Nutzers eingebunden. Bitte beachten: der Doppelpunkt “<strong><code>:</code></strong>” ist unbedingt erforderlich, auch wenn kein Verzeichnis angegeben wird!</p>
 <p>Nach erfolgter Einbindung verh&auml;lt sich das entfernte Verzeichnis wie jedes andere lokale Dateisystem. Man kann wie auf einem lokalen Dateisystem nach Dateien suchen, diese lesen und &auml;ndern sowie Skripte ausf&uuml;hren.</p>
 <p>Die Einbindung des entfernten Hosts wird mit folgendem Befehl gel&ouml;st:</p>
 <pre><code>fusermount -u lokaler_mountpunkt</code></pre>
-<p>Bei regelm&auml;&szlig;iger Nutzung von sshfs empfiehlt sich ein Eintrag in /etc/fstab:</p>
-<pre><code>sshfs#remote_hostname://remote_directory /local_mount_point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 </code></pre>
-<p>Als n&auml;chstes muss das Kommentarzeichen vor “user_allow_other” in der Datei <code>/etc/fuse.conf</code> entfernt werden:</p>
-<pre><code># Allow non-root users to specify the &#39;allow_other&#39; or &#39;allow_root&#39;
-# mount options.
+<p>Bei regelm&auml;&szlig;iger Nutzung von sshfs empfiehlt sich ein Eintrag in der Datei <code>/etc/fstab</code> (alles in einer Zeile):</p>
+<pre><code>sshfs#remote_hostname://remote_directory /local_mount_
+ point fuse -o idmap=user ,allow_other,uid=1000,gid=1000,
+ noauto,fsname=sshfs#remote_hostname://remote_directory 0 0 </code></pre>
+<p>Als n&auml;chstes muss das Kommentarzeichen vor <em>“user_allow_other”</em> in der Datei <code>/etc/fuse.conf</code> entfernt werden:</p>
+<pre><code># Allow non-root users to specify the &#39;allow_other&#39;
+# or &#39;allow_root&#39; mount options.
 #
 user_allow_other</code></pre>
 <p>Dies erm&ouml;glicht jedem Nutzer der Gruppe fuse, das Dateisystem einzubinden bzw. zu l&ouml;sen:</p>
@@ -160,9 +161,7 @@ umount /pfad/zum/mount/punkt # L&ouml;sen</code></pre>
 <p><strong>Zur Beachtung:</strong> Der Benutzer wird erst nach einem neuerlichen Einloggen Mitglied der Gruppe “fuse” sein.<br />
 Jetzt sollte der gew&uuml;nschte Nutzername gelistet und folgender Befehl ausf&uuml;hrbar sein:</p>
 <pre><code>mount lokaler_mountpunkt
-
     und
-
 umount lokaler_mountpunkt</code></pre>
 <div id="rev">
 Zuletzt bearbeitet: 2021-11-29

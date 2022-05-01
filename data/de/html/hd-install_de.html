@@ -8,11 +8,11 @@
 <title>Installation auf HDD</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -48,11 +48,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <strong>WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!</strong> <br />Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.
 </warning>
 <h3 id="installationsvorbereitungen">Installationsvorbereitungen</h3>
-<p>Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Dr&uuml;cken der <code>F2</code> oder <code>Entf</code>-Taste w&auml;hrend des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann w&auml;hrend des Bootvorgangs die Taste <code>F12</code>, <code>F11</code> <code>F7</code> oder <code>F8</code> (je nach Angaben der Hardwarehersteller) gedr&uuml;ckt werden um dann das Live-Medium als Startlaufwerk auszuw&auml;hlen.</p>
+<p>Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Dr&uuml;cken der <strong><code>F2</code></strong> oder <strong><code>Entf</code></strong>-Taste w&auml;hrend des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann w&auml;hrend des Bootvorgangs die Taste <strong><code>F12</code></strong>, <strong><code>F11</code></strong> <strong><code>F7</code></strong> oder <strong><code>F8</code></strong> (je nach Angaben der Hardwarehersteller) gedr&uuml;ckt werden um dann das Live-Medium als Startlaufwerk auszuw&auml;hlen.</p>
 <p>siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &uuml;bergeben werden k&ouml;nnen. Die Handbuchseite <a href="https://manual.siduction.org/cheatcodes_de.html#bootoptionen-cheatcodes">Cheatcodes</a> erl&auml;utert die m&ouml;glichen Optionen.<br />
-Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu “From CD/DVD/ISO: …” oder “From Stick/HDD: …” navigiert und die Taste <code>e</code> bet&auml;tigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzuf&uuml;gen. Mit der Taste <code>F10</code> wird der Bootvorgang fortgesetzt.</p>
+Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu “From CD/DVD/ISO: …” oder “From Stick/HDD: …” navigiert und die Taste <strong><code>e</code></strong> bet&auml;tigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzuf&uuml;gen. Mit der Taste <strong><code>F10</code></strong> wird der Bootvorgang fortgesetzt.</p>
 <p><strong>Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.</strong></p>
-<p>Soll siduction nicht von, sondern <strong>auf ein USB-Medium</strong> installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a href="https://manual.siduction.org/hd-ins-fromiso_de.html#fromiso">Installation auf ein USB-Medium</a>.</p>
+<p>Soll siduction nicht von, sondern <strong>auf</strong> ein USB-Medium installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a href="https://manual.siduction.org/iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">Installation auf ein USB-Medium</a>.</p>
 <p><strong>HDD, RAM und Swap</strong></p>
 <p>Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite <a href="https://manual.siduction.org/cd-content_de.html#minimale-systemanforderungen">Inhalt der Live-ISO</a> beschrieben.<br />
 Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht ben&ouml;tigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.</p>
@@ -65,12 +65,12 @@ Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf 
 <li>Gemeinsame Nutzung von Daten f&uuml;r die installierten Systeme</li>
 </ul>
 <p>Beispiele und Gr&ouml;&szlig;en f&uuml;r unterschiedliche Installationssituationen beschreibt die Handbuchseite <a href="https://manual.siduction.org/part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung</a>.<br />
-Wir empfehlen, das <strong>/home</strong>-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis <strong>/home</strong> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten, dazu z&auml;hlen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das <strong>home</strong>-Verzeichnis verlinkt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
+Wir empfehlen, das <code>/home</code>-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten, dazu z&auml;hlen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das <code>/home</code>-Verzeichnis verlinkt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
 <p>Die Partitionierung kann w&auml;hrend der Installation vorgenommen werden, oder bereits im Vorfeld w&auml;hrend der Live-Sitzung mit den folgenden Programmen:<br />
 <a href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">Gparted</a>, ein Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r GTK-Desktops<br />
 KDE Partition Manager, ein weiteres Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r Qt-Desktops<br />
 <a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">gdisk</a>, empfohlen bei UEFI Hardware f&uuml;r GPT Partitionstabellen<br />
-<a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR Partitionstabellen</p>
+<a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR Partitionstabellen.</p>
 <h3 id="dateisysteme">Dateisysteme</h3>
 <p>Wir empfehlen das Dateisystem <strong>ext4</strong>, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt f&uuml;r alle Partitionen, wenn ausschlie&szlig;lich Linux Betriebssysteme verwendet werden.</p>
 <p>Bei einer Dual-Boot Installation mit <em>Windows</em> ist eine eigene Datenpartition mit dem <strong>NTFS</strong> Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen; f&uuml;r Windows ist es das Standarddateisystem.</p>
@@ -85,13 +85,13 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 <h3 id="das-installationsprogramm-calamares">Das Installationsprogramm Calamares</h3>
 <p>W&auml;hrend der Installation sollte, wenn m&ouml;glich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen f&uuml;r die Lokalisation und Zeit zu ermitteln.</p>
 <ol type="1">
-<li><p>Das Installationsprogramm startet man bequem &uuml;ber das Icon <img src="./images/install-hd/calamares-de_00.png" alt="calamares icon" /> am Desktop oder im Men&uuml;: <em>System</em> &gt; <em>System installieren</em>.</p></li>
+<li><p>Das Installationsprogramm startet man bequem &uuml;ber das Icon <img src="./images/install-hd/calamares-de_00.png" alt="calamares icon" /> am Desktop oder im Men&uuml;: <em>“System”</em> &gt; <em>“System installieren”</em>.</p></li>
 <li><p>Nach einem Doppelklick auf das Icon startet Calamares und wir sehen das “Willkommen” - Fenster.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_01.png" title="Willkommen" alt="" /><figcaption>calamares welcome</figcaption>
 </figure>
 <p>Sofern eine Internetverbindung besteht, sollte hier bereits die richtige Sprache eingestellt sein.</p></li>
-<li><p>Im n&auml;chsten Fenster “Standort” besteht die M&ouml;glichkeit &Auml;nderungen zur <em>Region</em>, der <em>Zeitzone</em> und <em>Systemsprache</em>, sowie dem <em>Format</em> f&uuml;r das Datum und die Zahlen vorzunehmen.</p>
+<li><p>Im n&auml;chsten Fenster “Standort” besteht die M&ouml;glichkeit &Auml;nderungen zur <em>“Region”</em>, der <em>“Zeitzone”</em> und <em>“Systemsprache”</em>, sowie dem <em>“Format”</em> f&uuml;r das Datum und die Zahlen vorzunehmen.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_02.png" title="Standort" alt="" /><figcaption>calamares location</figcaption>
 </figure></li>
@@ -104,28 +104,28 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 <figure>
 <img src="./images/install-hd/calamares-de_04.png" title="Partitionen" alt="" /><figcaption>calamares partitions</figcaption>
 </figure>
-<p>In unserem Beispiel verwenden wir die <em>Manuelle Partitionierung</em> weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel ausw&auml;hlen. Nach einem Klick auf <em>Weiter</em> erscheint das n&auml;chste Fenster, in dem wir die einzelnen Partitionen ausw&auml;hlen und bearbeiten k&ouml;nnen.</p>
+<p>In unserem Beispiel verwenden wir die <em>“Manuelle Partitionierung”</em> weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel ausw&auml;hlen. Nach einem Klick auf <code>Weiter</code> erscheint das n&auml;chste Fenster, in dem wir die einzelnen Partitionen ausw&auml;hlen und bearbeiten k&ouml;nnen.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_05.png" title="Partitionen bearbeiten" alt="" /><figcaption>calamares work on partitions</figcaption>
 </figure>
 <p>Wir benutzen die Partitionen<br />
-sda7 f&uuml;r / (root)<br />
-sda6 f&uuml;r /daten gemeinsam mit dem bereits auf sda3 und sda4 vorhandenem Linux</p>
-<p>Nach Ausw&auml;hlen der betreffenden Partition und Bet&auml;tigen des Schalters <em>&Auml;ndern</em> &ouml;ffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und f&uuml;r sda7 auch die Formatierung mit dem Dateisystem <strong>ext4</strong> vornehmen. Die Partition sda6 wird nicht formatiert, da wir die dort schon abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen m&ouml;chten.<br />
-Die Swap-Partition (sda5) brauchen wir nicht bearbeiten, da sie w&auml;hrend der Installation automatisch erkannt und integriert wird.<br />
+<code>sda7</code> f&uuml;r <code>/</code> (root)<br />
+<code>sda6</code> f&uuml;r <code>/daten</code> gemeinsam mit dem bereits auf <code>sda3</code> und <code>sda4</code> vorhandenem Linux</p>
+<p>Nach Ausw&auml;hlen der betreffenden Partition und Bet&auml;tigen des Schalters <code>&Auml;ndern</code> &ouml;ffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und f&uuml;r <code>sda7</code> auch die Formatierung mit dem Dateisystem <strong>ext4</strong> vornehmen. Die Partition <code>sda6</code> wird nicht formatiert, da wir die dort schon abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen m&ouml;chten.<br />
+Die Swap-Partition <code>sda5</code> brauchen wir nicht bearbeiten, da sie w&auml;hrend der Installation automatisch erkannt und integriert wird.<br />
 Das Ergebnis unserer Bem&uuml;hungen sehen wir im n&auml;chsten Bild.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares partitions finish</figcaption>
 </figure></li>
-<li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal mit <a href="#benutzer-hinzuf&uuml;gen">adduser</a> hinzugef&uuml;gt werden.</p>
+<li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal mit <a href="https://manual.siduction.org/hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a> hinzugef&uuml;gt werden.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares users</figcaption>
 </figure>
 <p>Vor der Verwendung der beiden Optionen<br />
-“Automatisches Einloggen ohne Passwortabfrage” und<br />
-“Nutze das gleiche Passwort auch f&uuml;r das Administratorenkonto”<br />
+<em>“Automatisches Einloggen ohne Passwortabfrage”</em> und<br />
+<em>“Nutze das gleiche Passwort auch f&uuml;r das Administratorenkonto”</em><br />
 wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein Sicherheitsrisiko dar (siehe auch <a href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">sudo</a>). Sind beide Optionen aktiviert ist die Eingabe von Passw&ouml;rtern nur noch eine Farce!</p></li>
-<li><p>Nach Bet&auml;tigen der Taste <em>Weiter</em> erscheint eine Zusammenfassung aller zuvor get&auml;tigten Eingaben. Jetzt besteht noch die M&ouml;glichkeit &uuml;ber <em>Zur&uuml;ck</em> &Auml;nderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf <em>Installieren</em> das kleine Warnfenster in dem wir die Installation best&auml;tigen m&uuml;ssen.</p>
+<li><p>Nach Bet&auml;tigen der Taste <code>Weiter</code> erscheint eine Zusammenfassung aller zuvor get&auml;tigten Eingaben. Jetzt besteht noch die M&ouml;glichkeit &uuml;ber <code>Zur&uuml;ck</code> &Auml;nderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf <code>Installieren</code> das kleine Warnfenster in dem wir die Installation best&auml;tigen m&uuml;ssen.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares summary</figcaption>
 </figure></li>
@@ -140,7 +140,7 @@ wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein 
 <p>Vor dem Reboot die CD aus dem Laufwerk nehmen!</p></li>
 </ol>
 <h3 id="system-verschl&uuml;sseln">System verschl&uuml;sseln</h3>
-<p>Ab <em>siduction 2021.2 Farewell</em> besteht innerhalb des Installationsprogramms Calamares die M&ouml;glichkeit, das vollst&auml;ndige System in eine verschl&uuml;sselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers <em>Grub</em> befindet sich unverschl&uuml;sselt auf der “<em>BIOS-boot</em>”-Partition. Grub fragt bei jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte Installation ab, bevor das Bootmen&uuml; erscheint.<br />
+<p>Ab <em>siduction 2021.2 Farewell</em> besteht innerhalb des Installationsprogramms Calamares die M&ouml;glichkeit, das vollst&auml;ndige System in eine verschl&uuml;sselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers Grub befindet sich unverschl&uuml;sselt auf der “<em>BIOS-boot</em>”-Partition. Grub fragt bei jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte Installation ab, bevor das Bootmen&uuml; erscheint.<br />
 Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringf&uuml;gig anders. Bei der Auswahl einer der drei ersten Optionen, erscheint zus&auml;tzlich die Funktion “<em>Verschl&uuml;ssele System</em>”, in der wir auch gleich das Passwort eingeben.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_11.png" title="System verschl&uuml;sseln" alt="" /><figcaption>calamares encrypt system</figcaption>
@@ -149,24 +149,22 @@ Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringf&uuml;gi
 <figure>
 <img src="./images/install-hd/calamares-de_12.png" title="Manuelle Partition verschl&uuml;sseln 1" alt="" /><figcaption>calamares, manual partitioning encrypt 1</figcaption>
 </figure>
-<p>Im n&auml;chsten Schritt ist jetzt die Funktion “<em>Verschl&uuml;sseln</em>” ausw&auml;hlbar.</p>
+<p>Im n&auml;chsten Schritt ist jetzt die Funktion <em>“Verschl&uuml;sseln”</em> ausw&auml;hlbar.</p>
 <figure>
 <img src="./images/install-hd/calamares-de_13.png" title="Manuelle Partition verschl&uuml;sseln 2" alt="" /><figcaption>calamares, manual partitioning encrypt 2</figcaption>
 </figure>
-<p>Wir geben unser Passwort ein und w&auml;hlen anschlie&szlig;end als Einh&auml;ngepunkt das Wurzelverzeichnis “<strong>/</strong>” aus.<br />
-Nach Beendigung der Partitionierung setzen wir die Installation mit dem Men&uuml;punkt “<em>Benutzer</em>”, wie oben unter 6 beschrieben, fort.</p>
+<p>Wir geben unser Passwort ein und w&auml;hlen anschlie&szlig;end als Einh&auml;ngepunkt das Wurzelverzeichnis <strong><code>/</code></strong> aus.<br />
+Nach Beendigung der Partitionierung setzen wir die Installation mit dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 6 beschrieben, fort.</p>
 <h3 id="benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</h3>
-<p>Um neue Benutzer mit automatischer &Uuml;bernahme der Gruppenberechtigungen hinzuzuf&uuml;gen, f&uuml;hrt man folgenden Befehl als root aus:</p>
+<p>Um neue Benutzer mit automatischer &Uuml;bernahme der Gruppenberechtigungen hinzuzuf&uuml;gen, f&uuml;hrt man folgenden Befehl als <strong>root</strong> aus:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">adduser</span> <span class="op">&lt;</span>nutzername<span class="op">&gt;</span></span></code></pre></div>
-<p>Das Dr&uuml;cken der Eingabetaste Enter f&uuml;hrt zu weiteren Optionen, die Feinstellungen erm&ouml;glichen. Es folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.</p>
+<p>Nach dr&uuml;cken der Eingabetaste werden weitere Optionen angezeigt, die zus&auml;tzliche Einstellungen erm&ouml;glichen. Zuletzt folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.</p>
 <p>siduction spezifische Desktopsymbole (f&uuml;r das Handbuch und den IRC) m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
 <p>So entfernt man einen Benutzer</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">~</span># <span class="ex">deluser</span> <span class="op">&lt;</span>nutzername<span class="op">&gt;</span></span></code></pre></div>
-<p>Mehr Informationen:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">man</span> adduser</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">man</span> deluser</span></code></pre></div>
+<p>Mehr Informationen bieten die Manpages <strong><code>man adduser</code></strong> und <strong><code>man deluser</code></strong> .</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-03
+Zuletzt bearbeitet: 2022-02-09
 </div>
 </body>
 </html>

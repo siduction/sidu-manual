@@ -8,11 +8,11 @@
 <title>Lokaler APT-Mirror</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -37,11 +37,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="lokaler-apt-mirror">Lokaler APT-Mirror</h2>
-<p><strong>Apt-Cacher, ein Proxy-Server f&uuml;r Debian-Pakete</strong></p>
-<p><strong>Apt-Cacher</strong> ist ein Proxy-Server, der mehreren lokalen Computern den Zugang zu einem Debian-Pakete-Cache erm&ouml;glicht.<br />
+<p><strong>Apt-Cacher</strong>, ein Proxy-Server f&uuml;r Debian-Pakete</p>
+<p>Apt-Cacher ist ein Proxy-Server, der mehreren lokalen Computern den Zugang zu einem Debian-Pakete-Cache erm&ouml;glicht.<br />
 Die zur Installation von einem Computer bei dem Cache angeforderten Pakete m&uuml;ssen nur einmal von Debian Spiegelservern geladen werden, gleichg&uuml;ltig wie viele Ger&auml;te diese Pakete ben&ouml;tigen. Dies spart Netzwerkbandbreite, erh&ouml;ht die Geschwindigkeit f&uuml;r die Benutzer und reduziert die Last an den Spiegelservern.</p>
-<p>Nutzern, die mehrere PC ihr Eigen nennen und sparsam mit Bandbreite und Downloadvolumen umgehen und gleichzeitig die Geschwindigkeit bei Systemaktualisierungen erh&ouml;hen wollen, bietet <strong>apt-cacher</strong> die ideale L&ouml;sung um all diese Ziele zu erreichen.</p>
-<p><strong>Apt-Cacher</strong> ist kein universeller Proxy-Server. Wer dies trotzdem versucht, wird einige unliebsame &Uuml;berraschungen im Netzwerk erleben.</p>
+<p>Nutzern, die mehrere PC ihr Eigen nennen und sparsam mit Bandbreite und Downloadvolumen umgehen und gleichzeitig die Geschwindigkeit bei Systemaktualisierungen erh&ouml;hen wollen, bietet apt-cacher die ideale L&ouml;sung um all diese Ziele zu erreichen.</p>
+<p>Apt-Cacher ist kein universeller Proxy-Server. Wer dies trotzdem versucht, wird einige unliebsame &Uuml;berraschungen im Netzwerk erleben.</p>
 <p><strong>Voraussetzungen</strong></p>
 <ul>
 <li>Ein PC, auf dem der lokale APT-Proxy-Server eingerichtet wird.</li>
@@ -49,69 +49,71 @@ Die zur Installation von einem Computer bei dem Cache angeforderten Pakete m&uum
 <li>LAN-Verbindung zu den anderen Ger&auml;ten.</li>
 </ul>
 <p><strong>Apt-Cacher Setup</strong></p>
-<p>Das Setup f&uuml;r <em>Apt-Cacher</em> erfolgt in zwei Schritten.<br />
-Als Erstes wird <em>Apt-Cacher</em> auf dem als APT-Proxy-Server ausgew&auml;hlten PC installiert und anschlie&szlig;end konfiguriert man alle Client-PCs so, dass sie den APT-Proxy-Server benutzen.</p>
+<p>Das Setup f&uuml;r Apt-Cacher erfolgt in zwei Schritten.<br />
+Als Erstes wird Apt-Cacher auf dem als APT-Proxy-Server ausgew&auml;hlten PC installiert und anschlie&szlig;end konfiguriert man alle Client-PCs so, dass sie den APT-Proxy-Server benutzen.</p>
 <h3 id="server-installieren">Server installieren</h3>
-<p>Nach einem “<em>apt update</em>” werden die notwendigen Pakete mit folgendem Befehl installiert:</p>
+<p>Nach einem <code>apt update</code> werden die notwendigen Pakete mit folgendem Befehl installiert:</p>
 <pre><code># apt install apt-cacher
 [...]
 Die folgenden NEUEN Pakete werden installiert:
-  apt-cacher ed libberkeleydb-perl libcompress-raw-bzip2-perl
-  libcompress-raw-lzma-perl libcompress-raw-zlib-perl   libfilesys-df-perl
-  libio-compress-lzma-perl libio-compress-perl libio-interactive-perl
-  libio-interface-perl libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
+  apt-cacher ed libberkeleydb-perl
+  libcompress-raw-bzip2-perl libcompress-raw-lzma-perl
+  libcompress-raw-zlib-perl libfilesys-df-perl
+  libio-compress-lzma-perl libio-compress-perl
+  libio-interactive-perl libio-interface-perl
+  libipc-shareable-perl libnetaddr-ip-perl libsocket6-perl
   libsys-syscall-perl libwww-curl-perl
 0 aktualisiert, 16 neu installiert, 0 zu entfernen und 0 nicht aktualisiert.
 Es m&uuml;ssen 992 kB an Archiven heruntergeladen werden.
 Nach dieser Operation werden 3.205 kB Plattenplatz zus&auml;tzlich benutzt.
 M&ouml;chten Sie fortfahren? [J]</code></pre>
-<p>W&auml;hrend der Installation von <em>apt-cacher</em> erfolgt automatisch die grundlegende Konfiguration.</p>
+<p>W&auml;hrend der Installation von apt-cacher erfolgt automatisch die grundlegende Konfiguration.</p>
 <figure>
 <img src="./images/apt-localmirror/apt-cacher-config.png" alt="" /><figcaption>Konfiguration von apt-cacher</figcaption>
 </figure>
-<p>Der empfohlene Deamonmodus “<em>deamon</em>” wird beibehalten und best&auml;tigt.</p>
+<p>Der empfohlene Deamonmodus <em>“deamon”</em> wird beibehalten und best&auml;tigt.</p>
 <p>Der Cache, in dem in Zukunft alle heruntergeladenen Pakete abgelegt werden, befindet sich in<br />
-<em>/var/cache/apt-cacher/</em><br />
+<code>/var/cache/apt-cacher/</code><br />
 und die Konfigurationsdateien in<br />
-<em>/etc/apt-cacher/</em> .</p>
+<code>/etc/apt-cacher/</code> .</p>
 <p><strong>Server Konfiguration</strong></p>
-<p>Wir wechseln in das Verzeichnis <em>/etc/apt-cacher/</em> und bearbeiten die Datei “<em>apt-cacher.conf</em>”.</p>
+<p>Wir wechseln in das Verzeichnis <code>/etc/apt-cacher/</code> und bearbeiten die Datei <code>apt-cacher.conf</code>.</p>
 <pre><code># cd /etc/apt-cacher
 /etc/apt-cacher# mcedit apt-cacher.conf</code></pre>
-<p>Jetzt suchen wir etwa bei Zeile 160 die Direktive “<em>allowed_hosts</em>”. Das Kommentarzeichen (<strong>#</strong>) am Anfang der Zeile wird entfernt, damit die Clients den APT-Proxy-Server kontaktieren d&uuml;rfen.<br />
-Aus Sicherheitsgr&uuml;nden ersetzen wir das Platzhalterzeichen (<strong>*</strong>), das allen den Zugriff erlaubt, durch die IP-Adressen der Clients.</p>
+<p>Jetzt suchen wir etwa bei Zeile 160 die Direktive <code>allowed_hosts</code>. Das Kommentarzeichen “#” am Anfang der Zeile wird entfernt, damit die Clients den APT-Proxy-Server kontaktieren d&uuml;rfen.<br />
+Aus Sicherheitsgr&uuml;nden ersetzen wir das Platzhalterzeichen “*”, das allen den Zugriff erlaubt, durch die IP-Adressen der Clients.</p>
 <pre><code>#allowed_hosts = *</code></pre>
 <p>beispielsweise &auml;ndern in</p>
 <pre><code>allowed_hosts = &#39;192.168.3.10-20&#39;</code></pre>
 <p>Die IP-Adressen sind nat&uuml;rlich an die eigenen Gegebenheiten anzupassen. Erl&auml;uterungen zur Syntax befinden sich in der Datei unmittelbar vor der Direktive.<br />
-Wird im eigenen Netzwerk ein DHCP-Server betrieben, so ist es notwendig dem APT-Proxy-Server eine feste IP zuzuordnen, z.B. “<em>192.168.3.5</em>” .</p>
-<p>Wichtig f&uuml;r uns sind aus der Datei “<em>apt-cacher.conf</em>” der <em>User</em> und die <em>Gruppe</em> mit der der Daemon l&auml;uft und der Port auf den der Daemon lauscht:</p>
+Wird im eigenen Netzwerk ein DHCP-Server betrieben, so ist es notwendig dem APT-Proxy-Server eine feste IP zuzuordnen, z.B. “192.168.3.5” .</p>
+<p>Wichtig f&uuml;r uns sind aus der Datei <code>apt-cacher.conf</code> der <em>“user”</em> und die <em>“group”</em> mit der der Daemon l&auml;uft und der <em>“port”</em> auf den der Daemon lauscht:</p>
 <pre><code>group = www-data
 user = www-data
 daemon_port = 3142</code></pre>
-<p>Das sind die voreingestellten Werte, die wir nicht ver&auml;ndern. Nach dem Speichern der Datei beenden wir <em>mcedit</em>.</p>
-<p>Soll ein anderes Cache-Verzeichnis als <em>/var/cache/apt-cacher/</em> Verwendung finden, m&uuml;ssen die Eigent&uuml;mer- und Dateirechte gepr&uuml;ft und angepasst werden (chmod 644 f&uuml;r die Dateien).</p>
+<p>Das sind die voreingestellten Werte, die wir nicht ver&auml;ndern. Nach dem Speichern der Datei beenden wir mcedit.</p>
+<p>Soll ein anderes Cache-Verzeichnis als <code>/var/cache/apt-cacher/</code> Verwendung finden, m&uuml;ssen die Eigent&uuml;mer- und Dateirechte gepr&uuml;ft und angepasst werden (chmod 644 f&uuml;r die Dateien).</p>
 <p>Um sicher zu gehen, dass der APT-Proxy-Server bei jedem Boot des Servers automatisch startet, setzen wir folgenden Befehl ab:</p>
-<pre><code># systemctl enable apt-cacher.service</code></pre>
+<pre><code># systemctl enable --now apt-cacher.service</code></pre>
 <p>Der APT-Proxy-Server wird jetzt auch neu gestartet und damit die ge&auml;nderte Konfiguration eingelesen.<br />
 Wir &uuml;berpr&uuml;fen ob er aktiv ist und auf Port 3142 lauscht.</p>
 <pre><code># ss -tl | grep 3142
 LISTEN 0      4096         0.0.0.0:3142        0.0.0.0:</code></pre>
 <p>Bei dieser Ausgabe ist alles in Ordnung.</p>
 <p><strong>Import vorhandener .deb Pakete</strong></p>
-<p><strong>Apt-Cacher</strong> verf&uuml;gt jetzt &uuml;ber ein Importscript, das auf dem PC bereits vorhandene Debian Archive importiert. Es erspart den nochmaligen Download der Pakete. Dem Aufruf geben wir das vorhandene Archivverzeichnis mit:</p>
+<p>Apt-Cacher verf&uuml;gt jetzt &uuml;ber ein Importscript, das auf dem PC bereits vorhandene Debian Archive importiert. Es erspart den nochmaligen Download der Pakete. Dem Aufruf geben wir das vorhandene Archivverzeichnis mit:</p>
 <pre><code># /usr/share/apt-cacher/apt-cacher-import.pl  /var/cache/apt/archives/</code></pre>
-<p>Mit “<em>-h</em>” aufgerufen erhalten wir Benutzungshinweise und eine Auflistung aller Optionen.</p>
+<p>Mit <code>-h</code> aufgerufen erhalten wir Benutzungshinweise und eine Auflistung aller Optionen.</p>
 <h3 id="client-konfiguration">Client Konfiguration</h3>
 <p>Die Clients, die auf den APT-Proxy-Server zugreifen, bed&uuml;rfen nur geringf&uuml;giger Konfigurationen.</p>
-<p>Zuerst legen wir die Datei “<em>30proxy</em>” im Verzeichnis “<em>/etc/apt/apt.conf.d/</em>” an, die <em>apt</em> anweist den Server zu benutzen. Wir verwenden hier die oben genannte IP des Servers. Bitte die IP an die eigenen Gegebenheiten anpassen.</p>
+<p>Zuerst legen wir die Datei <code>30proxy</code> im Verzeichnis <code>/etc/apt/apt.conf.d/</code> an, die <em>apt</em> anweist den Server zu benutzen. Wir verwenden hier die oben genannte IP des Servers. Bitte die IP an die eigenen Gegebenheiten anpassen.</p>
 <pre><code># echo &quot;Acquire::http { Proxy &quot;http://192.168.3.5:3142&quot;; };&quot; &gt; /etc/apt/apt.conf.d/30proxy</code></pre>
-<p>Als n&auml;chstes &auml;ndern wir die Adressen der Downloadmirror im Verzeichnis “<em>/etc/apt/sources.list.d/</em>” von “https” auf “http” innerhalb der Dateien “<em>debian.list</em>”, “<em>extra.list</em>” und “<em>fixes.list</em>”.<br />
+<p>Als n&auml;chstes &auml;ndern wir die Adressen der Downloadmirror im Verzeichnis <code>/etc/apt/sources.list.d/</code> von “https” auf “http” innerhalb der Dateien <code>debian.list</code>, <code>extra.list</code> und <code>fixes.list</code>.<br />
 Die Verwendung von “https” ist zwar m&ouml;glich, aber zum Einen mit einigem Konfigurationsaufwand verbunden und zum Anderen zur Zeit nicht notwendig, da alle Downloadmirror “http” noch akzeptieren.</p>
 <p>Ein anschlie&szlig;endes</p>
 <pre><code># apt update</code></pre>
 <p>sollte ohne Fehlermeldungen durchlaufen.<br />
-Der erste Aufruf von <strong><code># apt full-upgrade</code></strong> auf einem Client l&auml;dt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor &uuml;blich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu ben&ouml;tigen</p>
+Der erste Aufruf von <strong><code>apt full-upgrade</code></strong> auf einem Client l&auml;dt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor &uuml;blich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu ben&ouml;tigen</p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

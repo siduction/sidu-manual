@@ -8,11 +8,11 @@
 <title>Systemd - service</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -42,122 +42,70 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit <strong>systemd.service</strong>. Die Unit-Datei mit der Namensendung “.service” ist der am h&auml;ufigsten anzutreffende Unit-Typ in systemd.</p>
 <p>Die Service-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen &uuml;ber den Dienst und den Prozess, den er &uuml;berwacht, konfiguriert.</p>
 <h3 id="service-unit-anlegen">service-Unit anlegen</h3>
-<p>Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis <em>/usr/local/lib/systemd/system/</em> ab. (Ggf. ist das Verzeichnis mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das hat den Vorteil, dass sie Vorrang gegen&uuml;ber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie &Auml;nderungsdateien, die mit <strong><code>systemctl edit &lt;UNIT_DATEI&gt;</code></strong> erzeugt wurden, im seinerseits vorrangigen Verzeichnis <em>/etc/systemd/system/</em> abgelegt werden. Siehe: <a href="https://manual.siduction.org/systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a>.</p>
+<p>Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis <code>/usr/local/lib/systemd/system/</code> ab. (Ggf. ist das Verzeichnis mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das hat den Vorteil, dass sie Vorrang gegen&uuml;ber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie &Auml;nderungsdateien, die mit <strong><code>systemctl edit &lt;UNIT_DATEI&gt;</code></strong> erzeugt wurden, im seinerseits vorrangigen Verzeichnis <code>/etc/systemd/system/</code> abgelegt werden. Siehe: <a href="https://manual.siduction.org/systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a>.</p>
 <h3 id="sektion-service">Sektion Service</h3>
 <p>F&uuml;r diese Sektion sind &uuml;ber drei&szlig;ig Optionen verf&uuml;gbar, von denen wir hier besonders h&auml;ufig verwendete beschreiben.</p>
-<table>
-<tbody>
-<tr class="odd">
-<td>Type=</td>
-<td>PIDFile=</td>
-</tr>
-<tr class="even">
-<td>RemainAfterExit=</td>
-<td>GuessMainPID=</td>
-</tr>
-<tr class="odd">
-<td>ExecStart=</td>
-<td>Restart=</td>
-</tr>
-<tr class="even">
-<td>ExecStartPre=</td>
-<td>RestartSec=</td>
-</tr>
-<tr class="odd">
-<td>ExecStartPost=</td>
-<td>SuccessExitStatus=</td>
-</tr>
-<tr class="even">
-<td>ExecCondition=</td>
-<td>RestartPreventExitStatus=</td>
-</tr>
-<tr class="odd">
-<td>ExecReload=</td>
-<td>RestartForceExitStatus=</td>
-</tr>
-<tr class="even">
-<td>ExecStop=</td>
-<td>NonBlocking=</td>
-</tr>
-<tr class="odd">
-<td>ExecStopPost=</td>
-<td>NotifyAccess=</td>
-</tr>
-<tr class="even">
-<td>TimeoutStopSec=</td>
-<td>RootDirectoryStartOnly=</td>
-</tr>
-<tr class="odd">
-<td>TimeoutStartSec=</td>
-<td>FileDescriptorStoreMax=</td>
-</tr>
-<tr class="even">
-<td>TimeoutAbortSec=</td>
-<td>USBFunctionDescriptors=</td>
-</tr>
-<tr class="odd">
-<td>TimeoutSec=</td>
-<td>USBFunctionStrings=</td>
-</tr>
-<tr class="even">
-<td>RuntimeMaxSec=</td>
-<td>Sockets=</td>
-</tr>
-<tr class="odd">
-<td>WatchdogSec=</td>
-<td>BusName=</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>OOMPolicy=</td>
-</tr>
-</tbody>
-</table>
+<pre><code>Type=             PIDFile=
+RemainAfterExit=  GuessMainPID=
+ExecStart=        Restart=
+ExecStartPre=     RestartSec=
+ExecStartPost=    SuccessExitStatus=
+ExecCondition=    RestartPreventExitStatus=
+ExecReload=       RestartForceExitStatus=
+ExecStop=         NonBlocking=
+ExecStopPost=     NotifyAccess=
+TimeoutStopSec=   RootDirectoryStartOnly=
+TimeoutStartSec=  FileDescriptorStoreMax=
+TimeoutAbortSec=  USBFunctionDescriptors=
+TimeoutSec=       USBFunctionStrings=
+RuntimeMaxSec=    Sockets=
+WatchdogSec=      BusName=
+                  OOMPolicy=</code></pre>
 <ul>
-<li><p><strong>Type=</strong><br />
+<li><p><code>Type=</code><br />
 Definiert den Prozess-Starttyp und ist damit eine der wichtigsten Optionen.<br />
 Die m&ouml;glichen Werte sind: simple, exec, forking, oneshot, dbus, notify oder idle.<br />
-Der Standard <em>simple</em> wird verwendet, falls <em>ExecStart=</em> festgelegt ist, aber weder <em>Type=</em> noch <em>BusName=</em> gesetzt sind.</p>
+Der Standard simple wird verwendet, falls <code>ExecStart=</code> festgelegt ist, aber weder <code>Type=</code> noch <code>BusName=</code> gesetzt sind.</p>
 <ul>
-<li><p><strong>simple</strong><br />
-Eine Unit vom Typ <em>simple</em> betrachtet systemd als erfolgreich gestartet, sobald der mit <em>ExecStart=</em> festgelegte Hauptprozess mittels <em>fork</em> gestartet wurde. Anschlie&szlig;end beginnt systemd sofort mit dem Starten von nachfolgenden Units, unabh&auml;ngig davon, ob der Hauptprozess erfolgreich aufgerufen werden kann.</p></li>
-<li><p><strong>exec</strong><br />
-&Auml;hnelt <em>simple</em>, jedoch wartet systemd mit dem Starten von nachfolgenden Units bis der Hauptprozess erfolgreich beendet wurde. Das ist auch der Zeitpunkt, an dem die Unit den Zustand “active” erreicht.</p></li>
-<li><p><strong>forking</strong><br />
-Hier betrachtet systemd den Dienst als gestartet, sobald der mit <em>ExecStart=</em> festgelegte Prozess sich in den Hintergrund verzweigt und das &uuml;bergeordnete System sich beendet. Dieser Typ findet oft bei klassischen Daemons Anwendung. Hier sollte auch die Option <em>PIDFile=</em> angeben werden, damit das System den Hauptprozess weiter verfolgen kann.</p></li>
-<li><p><strong>oneshot</strong><br />
-&Auml;hnelt <em>exec</em>. Die Option <em>Type=oneshot</em> kommt oft bei Skripten oder Befehlen zum Einsatz, die einen einzelnen Job erledigen und sich dann beenden. Allerdings erreicht der Dienst niemals den Zustand “active”, sondern geht sofort, nachdem sich der Hauptprozess beendet hat, vom Zustand “activating” zu “deactivating” oder “dead” &uuml;ber. Deshalb ist es h&auml;ufig sinnvoll diese Option mit “RemainAfterExit=yes” zu verwenden, um den Zustand “active” zu erreichen.</p></li>
-<li><p><strong>dbus</strong><br />
-Verh&auml;lt sich &auml;hnlich zu <em>simple</em>, systemd startet nachfolgende Units, nachdem der D-Bus-Busname erlangt wurde. Units mit dieser Option, erhalten implizit eine Abh&auml;ngigkeit auf die Unit “dbus.socket”.</p></li>
-<li><p><strong>notify</strong><br />
-Der Type=notify entspricht weitestgehend dem Type <em>simple</em>, mit dem Unterschied, dass der Daemon ein Signal an systemd sendet, wenn er bereitsteht.</p></li>
-<li><p><strong>idle</strong><br />
-Das Verhalten von <em>idle</em> ist sehr &auml;hnlich zu <em>simple</em>; allerdings verz&ouml;gert systemd die tats&auml;chliche Ausf&uuml;hrung des Dienstes, bis alle aktiven Auftr&auml;ge erledigt sind. Dieser Typ ist nicht als allgemeines Werkzeug zum Sortieren von Units n&uuml;tzlich, denn er unterliegt einer Zeit&uuml;berschreitung von 5 s, nach der der Dienst auf jeden Fall ausgef&uuml;hrt wird.</p></li>
+<li><p><code>simple</code><br />
+Eine Unit vom Typ simple betrachtet systemd als erfolgreich gestartet, sobald der mit <code>ExecStart=</code> festgelegte Hauptprozess mittels <em>fork</em> gestartet wurde. Anschlie&szlig;end beginnt systemd sofort mit dem Starten von nachfolgenden Units, unabh&auml;ngig davon, ob der Hauptprozess erfolgreich aufgerufen werden kann.</p></li>
+<li><p><code>exec</code><br />
+&Auml;hnelt simple, jedoch wartet systemd mit dem Starten von nachfolgenden Units bis der Hauptprozess erfolgreich beendet wurde. Das ist auch der Zeitpunkt, an dem die Unit den Zustand “active” erreicht.</p></li>
+<li><p><code>forking</code><br />
+Hier betrachtet systemd den Dienst als gestartet, sobald der mit <code>ExecStart=</code> festgelegte Prozess sich in den Hintergrund verzweigt und das &uuml;bergeordnete System sich beendet. Dieser Typ findet oft bei klassischen Daemons Anwendung. Hier sollte auch die Option <code>PIDFile=</code> angeben werden, damit das System den Hauptprozess weiter verfolgen kann.</p></li>
+<li><p><code>oneshot</code><br />
+&Auml;hnelt exec. Die Option Type=oneshot kommt oft bei Skripten oder Befehlen zum Einsatz, die einen einzelnen Job erledigen und sich dann beenden. Allerdings erreicht der Dienst niemals den Zustand “active”, sondern geht sofort, nachdem sich der Hauptprozess beendet hat, vom Zustand “activating” zu “deactivating” oder “dead” &uuml;ber. Deshalb ist es h&auml;ufig sinnvoll diese Option mit <code>RemainAfterExit=yes</code> zu verwenden, um den Zustand “active” zu erreichen.</p></li>
+<li><p><code>dbus</code><br />
+Verh&auml;lt sich &auml;hnlich zu simple, systemd startet nachfolgende Units, nachdem der D-Bus-Busname erlangt wurde. Units mit dieser Option, erhalten implizit eine Abh&auml;ngigkeit auf die Unit dbus.socket.</p></li>
+<li><p><code>notify</code><br />
+Der Type=notify entspricht weitestgehend dem Type simple, mit dem Unterschied, dass der Daemon ein Signal an systemd sendet, wenn er bereitsteht.</p></li>
+<li><p><code>idle</code><br />
+Das Verhalten von idle ist sehr &auml;hnlich zu simple; allerdings verz&ouml;gert systemd die tats&auml;chliche Ausf&uuml;hrung des Dienstes, bis alle aktiven Auftr&auml;ge erledigt sind. Dieser Typ ist nicht als allgemeines Werkzeug zum Sortieren von Units n&uuml;tzlich, denn er unterliegt einer Zeit&uuml;berschreitung von 5 s, nach der der Dienst auf jeden Fall ausgef&uuml;hrt wird.</p></li>
 </ul></li>
-<li><p><strong>RemainAfterExit=</strong><br />
-Erwartet einen logischen Wert (Standard: <em>no</em>), der festlegt, ob der Dienst, selbst wenn sich alle seine Prozesse beendet haben, als aktiv betrachtet werden sollte. Siehe <em>Type=oneshot</em>.</p></li>
-<li><p><strong>GuessMainPID=</strong><br />
-Erwartet einen logischen Wert (Standard: <em>yes</em>). Systemd verwendet diese Option ausschlie&szlig;lich, wenn <em>Type=forking</em> gesetzt und <em>PIDFile=</em> nicht gesetzt ist, und versucht dann die Haupt-PID eines Dienstes zu raten, falls es sie nicht zuverl&auml;ssig bestimmen kann. F&uuml;r andere Typen oder mit gesetzter Option <em>PIDFile=</em> ist die Haupt-PID immer bekannt.</p></li>
-<li><p><strong>PIDFile=</strong><br />
-Akzeptiert einen Pfad zur PID-Datei des Dienstes. F&uuml;r Dienste vom <em>Type=forking</em> wird die Verwendung dieser Option empfohlen.</p></li>
-<li><p><strong>BusName=</strong><br />
-Hier ist der D-Bus-Busname, unter dem dieser Dienst erreichbar ist, anzugeben. Die Option ist f&uuml;r Dienste vom <em>Type=dbus</em> verpflichtend.</p></li>
-<li><p><strong>ExecStart=</strong><br />
-Enth&auml;lt Befehle mit ihren Argumenten, die ausgef&uuml;hrt werden, wenn diese Unit gestartet wird. Es muss genau ein Befehl angegeben werden, au&szlig;er die Option <em>Type=oneshot</em> ist gesetzt, dann kann <em>ExecStart=</em> mehrfach verwendet werden. Der Wert von <em>ExecStart=</em> muss den in der deutsche Manpage <a href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">systemd.service</a> detailliert beschriebenen Regeln entsprechen.</p></li>
-<li><p><strong>ExecStop=</strong><br />
-Kann mehrfach verwendet werden und enth&auml;lt Befehle, die dem Stoppen eines mittels <em>ExecStart=</em> gestarteten Dienstes, dienen. Die Syntax ist identisch zu <em>ExecStart=</em>.</p></li>
-<li><p><strong>ExecStartPre=, ExecStartPost=, ExecStopPost=</strong><br />
-Zus&auml;tzliche Befehle, die vor bzw. nach dem Befehl in <em>ExecStart=</em> oder <em>ExecStop</em> gestartet werden. Auch hier ist die Syntax identisch zu <em>ExecStart=</em>. Es sind mehrere Befehlszeilen erlaubt und die Befehle werden seriell einer nach dem anderen ausgef&uuml;hrt. Falls einer dieser Befehle (dem nicht “-” vorangestellt ist) fehlschl&auml;gt, wird die Unit sofort als fehlgeschlagen betrachtet.</p></li>
-<li><p><strong>RestartSec=</strong><br />
+<li><p><code>RemainAfterExit=</code><br />
+Erwartet einen logischen Wert (Standard: no), der festlegt, ob der Dienst, selbst wenn sich alle seine Prozesse beendet haben, als aktiv betrachtet werden sollte. Siehe Type=oneshot.</p></li>
+<li><p><code>GuessMainPID=</code><br />
+Erwartet einen logischen Wert (Standard: yes). Systemd verwendet diese Option ausschlie&szlig;lich, wenn <code>Type=forking</code> gesetzt und <code>PIDFile=</code> nicht gesetzt ist, und versucht dann die Haupt-PID eines Dienstes zu raten, falls es sie nicht zuverl&auml;ssig bestimmen kann. F&uuml;r andere Typen oder mit gesetzter Option <code>PIDFile=</code> ist die Haupt-PID immer bekannt.</p></li>
+<li><p><code>PIDFile=</code><br />
+Akzeptiert einen Pfad zur PID-Datei des Dienstes. F&uuml;r Dienste vom <code>Type=forking</code> wird die Verwendung dieser Option empfohlen.</p></li>
+<li><p><code>BusName=</code><br />
+Hier ist der D-Bus-Busname, unter dem dieser Dienst erreichbar ist, anzugeben. Die Option ist f&uuml;r Dienste vom <code>Type=dbus</code> verpflichtend.</p></li>
+<li><p><code>ExecStart=</code><br />
+Enth&auml;lt Befehle mit ihren Argumenten, die ausgef&uuml;hrt werden, wenn diese Unit gestartet wird. Es muss genau ein Befehl angegeben werden, au&szlig;er die Option <code>Type=oneshot</code> ist gesetzt, dann kann ExecStart= mehrfach verwendet werden. Der Wert von ExecStart= muss den in der deutsche Manpage <a href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">systemd.service</a> detailliert beschriebenen Regeln entsprechen.</p></li>
+<li><p><code>ExecStop=</code><br />
+Kann mehrfach verwendet werden und enth&auml;lt Befehle, die dem Stoppen eines mittels ExecStart= gestarteten Dienstes, dienen. Die Syntax ist identisch zu ExecStart=.</p></li>
+<li><p><code>ExecStartPre=</code>, <code>ExecStartPost=</code>, <code>ExecStopPost=</code><br />
+Zus&auml;tzliche Befehle, die vor bzw. nach dem Befehl in <code>ExecStart=</code> oder <code>ExecStop=</code> gestartet werden. Auch hier ist die Syntax identisch zu ExecStart=. Es sind mehrere Befehlszeilen erlaubt und die Befehle werden seriell einer nach dem anderen ausgef&uuml;hrt. Falls einer dieser Befehle (dem nicht “-” vorangestellt ist) fehlschl&auml;gt, wird die Unit sofort als fehlgeschlagen betrachtet.</p></li>
+<li><p><code>RestartSec=</code><br />
 Bestimmt die vor dem Neustart eines Dienstes zu schlafende Zeit. Eine einheitenfreie Ganzzahl definiert Sekunden, eine Angabe von “3min 4s” ist auch m&ouml;glich.<br />
 Die Art der Zeitwertdefinition gilt f&uuml;r alle zeitgesteuerten Optionen.</p></li>
-<li><p><strong>TimeoutStartSec=, TimeoutStopSec=, TimeoutSec=</strong><br />
-Bestimmt die Zeit, die auf das Starten bzw. Stoppen gewartet werden soll. <em>TimeoutSec=</em> vereint die beiden zuvor genannten Optionen.<br />
-<em>TimeoutStopSec=</em> konfiguriert zus&auml;tzlich die Zeit, die, soweit vorhanden, f&uuml;r jeden <em>ExecStop=</em>-Befehl gewartet werden soll.</p></li>
-<li><p><strong>Restart=</strong><br />
+<li><p><code>TimeoutStartSec=</code>, <code>TimeoutStopSec=</code>, <code>TimeoutSec=</code><br />
+Bestimmt die Zeit, die auf das Starten bzw. Stoppen gewartet werden soll. TimeoutSec= vereint die beiden zuvor genannten Optionen.<br />
+TimeoutStopSec= konfiguriert zus&auml;tzlich die Zeit, die, soweit vorhanden, f&uuml;r jeden <code>ExecStop=</code>-Befehl gewartet werden soll.</p></li>
+<li><p><code>Restart=</code><br />
 Konfiguriert, ob der Dienst neu gestartet werden soll, wenn der Diensteprozess sich beendet, get&ouml;tet oder eine Zeit&uuml;berschreitung erreicht wird. Wenn der Tod des Prozesses das Ergebnis einer Systemd-Aktion ist, wird der Dienst nicht neu gestartet.<br />
 Die erlaubten Werte sind: no, always, on-success, on-failure, on-abnormal, on-abort oder on-watchdog.<br />
-Folgende Tabelle zeigt den Effekt der <em>Restart=</em> Einstellung auf die Exit-Gr&uuml;nde.</p>
+Folgende Tabelle zeigt den Effekt der Restart= Einstellung auf die Exit-Gr&uuml;nde.</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -234,7 +182,7 @@ Folgende Tabelle zeigt den Effekt der <em>Restart=</em> Einstellung auf die Exit
 </tr>
 </tbody>
 </table>
-<p>Die bei Bedarf gesetzten Optionen <em>RestartPreventExitStatus=</em> und <em>RestartForceExitStatus=</em> &auml;ndern dieses Verhalten.</p></li>
+<p>Die bei Bedarf gesetzten Optionen <code>RestartPreventExitStatus=</code> und <code>RestartForceExitStatus=</code> &auml;ndern dieses Verhalten.</p></li>
 </ul>
 <p><strong>Beispiele</strong><br />
 Einige selbst erstellte Service-Units finden sich auf unseren Handbuchseiten</p>

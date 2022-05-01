@@ -8,11 +8,11 @@
 <title>Network Manager</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.3;}
+p               {line-height: 1.4;}
 code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #800; padding: 0.15em;}
-li pre code     {display: block; color: #000; padding: 0.15em;}
-table, th, td   {background-color: #EEC; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
+pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
 warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
@@ -38,14 +38,15 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="network-manager-kommandline-tool">Network Manager Kommandline Tool</h2>
 <p><strong>Allgemeine Hinweise</strong></p>
-<p>Der Networkmanager ist mittlerweile in allen graphischen Oberfl&auml;chen von siduction integriert und gr&ouml;&szlig;tenteils selbsterkl&auml;rend. Er ersetzt die im Terminal benutzten Netzwerkkommandos <em>ifup, ifdown</em> bzw. <em>ifconfig</em>. Das Vorurteil das sich der Networkmanager nicht f&uuml;r die Kommandozeile eignet oder gar instabil l&auml;uft geh&ouml;rt ins Reich der M&auml;rchenwelt. Steht keine graphische Oberfl&auml;che zur Verf&uuml;gung, oder wird die Komandozeile bevorzugt, existiert mit <strong>nmcli</strong> ein leistungsf&auml;higer Kommandozeilenclient f&uuml;r den t&auml;glichen Gebrauch des Networkmanagers.</p>
+<p>Der Networkmanager ist mittlerweile in allen graphischen Oberfl&auml;chen von siduction integriert und gr&ouml;&szlig;tenteils selbsterkl&auml;rend. Er ersetzt die im Terminal benutzten Netzwerkkommandos <code>ifup</code>, <code>ifdown</code> bzw. <code>ifconfig</code>. Das Vorurteil das sich der Networkmanager nicht f&uuml;r die Kommandozeile eignet oder gar instabil l&auml;uft geh&ouml;rt ins Reich der M&auml;rchenwelt. Steht keine graphische Oberfl&auml;che zur Verf&uuml;gung, oder wird die Komandozeile bevorzugt, existiert mit <code>nmcli</code> ein leistungsf&auml;higer Kommandozeilenclient f&uuml;r den t&auml;glichen Gebrauch des Networkmanagers.</p>
 <p>In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen aus. Eine WLAN-Verbindung (Name: Einhorn_2, Interface wtx7ckd90b81bbd, (fr&uuml;her; wlan)) und einer kabelgebundenen Verbindung (Name: Kabelgebundene Verbindung 1, Interface evp0s3f76 (fr&uuml;her: eth0)). Bitte die Verbindungsnamen an eure Gegebenheiten anpassen.</p>
 <p><strong>Installation des Network Managers</strong></p>
 <p>Falls der Networkmanager auf dem System nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle m&ouml;glichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget f&uuml;r den NM. Bitte alles in eine Zeile eingeben.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">apt</span> install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a> <span class="ex">plasma-nm</span> network-manager-vpnc network-manager-openvpn</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">apt</span> update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">apt</span> install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a> <span class="ex">plasma-nm</span> network-manager-vpnc network-manager-openvpn</span></code></pre></div>
 <h3 id="network-manager-verwenden">Network Manager verwenden</h3>
-<p>Die Eingaben k&ouml;nnen sowohl in einem virtuellen Terminal (Tastenkombination <code>Str</code> + <code>Umschalt</code> + <code>F2</code>) als auch in der graphischen Oberfl&auml;che in einer Konsole get&auml;tigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgr&uuml;nden abge&auml;ndert.</p>
+<p>Die Eingaben k&ouml;nnen sowohl in einem virtuellen Terminal (Tastenkombination <strong><code>Str</code></strong>+<strong><code>Umschalt</code></strong>+<strong><code>F2</code></strong>) als auch in der graphischen Oberfl&auml;che in einer Konsole get&auml;tigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgr&uuml;nden abge&auml;ndert.</p>
 <p><strong>Konfigurierte Verbindungen anzeigen</strong></p>
 <p>Mit dem Kommando <strong><code>nmcli c</code></strong> k&ouml;nnen die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.</p>
 <figure>
@@ -72,7 +73,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </figure>
 <p>Der zus&auml;tzlich generierte QR-Code vereinfacht den Login f&uuml;r Smartphone und Tablet.</p>
 <p><strong>Verbindungen wechseln</strong></p>
-<p>Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein <em>nmcli con down id <Name></em> zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.</p>
+<p>Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein <code>nmcli con down id &lt;Name&gt;</code> zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.</p>
 <p>Um die automatische Verbindung zu verhindern hilft der Befehl <strong><code>nmcli dev disconnect &lt;Schnittstellenname&gt;</code></strong>.<br />
 Zuerst beenden wir die LAN-Verbindung und fragen danach den Status ab.</p>
 <pre><code># nmcli dev disconnect evp0s3f76
@@ -99,8 +100,8 @@ ttyACM0          gsm       nicht verbunden  --</code></pre>
 <pre><code>nmcli dev disconnect wtx7ckd90b81bbd &amp;&amp; sleep 2 &amp;&amp; nmcli con up id &#39;Kabelgebundene Verbindung 1&#39;</code></pre>
 <h3 id="weiterf&uuml;hrende-informationen">Weiterf&uuml;hrende Informationen</h3>
 <ul>
-<li><pre><code>man nmcli</code></pre></li>
-<li><a href="https://wiki.ubuntuusers.de/NetworkManager?redirect=no">Ubuntuusers Wiki</a></li>
+<li><p>Die Manpage <strong><code>man nmcli</code></strong></p></li>
+<li><p><a href="https://wiki.ubuntuusers.de/NetworkManager?redirect=no">Ubuntuusers Wiki</a></p></li>
 </ul>
 <div id="rev">
 Zuletzt bearbeitet: 2021-05-22
