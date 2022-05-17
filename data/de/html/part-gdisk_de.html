@@ -98,24 +98,16 @@ Die Navigation erfolgt mittels der Pfeiltasten.</p>
 <h3 id="cgdisk-verwenden">cgdisk verwenden</h3>
 <p>Der Startbefehl in einem root-Terminal lautet: <strong><code>cgdisk /dev/sdX</code></strong>.</p>
 <p>cgdisk startet mit einer Warnmeldung, wenn keine GPT gefunden wird.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_00.png" alt="" /><figcaption>Warnmeldung</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_00.png" /></p>
 <p>Wir ben&ouml;tigen f&uuml;r die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, eine gemeinsame DATEN- sowie eine SWAP-Partition f&uuml;r den Auslagerungsspeicher. Zus&auml;tzlich die bereits oben erw&auml;hnte <em>“EFI-System”</em>-Partition (maximal 100MB) und die <em>“BIOS-boot”</em>-Partition (1MB).<br />
 Wir empfehlen, das <code>/home</code>-Verzeichnis auf der ROOT-Partition zu belassen. Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
 <p>Das Startbild</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_01.png" alt="" /><figcaption>Startbild</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_01.png" /></p>
 <h4 id="partition-erstellen">Partition erstellen</h4>
 <p>Wir w&auml;hlen <strong><code>New</code></strong> und best&auml;tigen mit <strong><code>Enter</code></strong>. Mit einem zweiten <strong><code>Enter</code></strong> &uuml;bernehmen wir den voreingestellten ersten Sektor f&uuml;r die neue Partition. Dann geben wir die gew&uuml;nschte Gr&ouml;&szlig;e von <code>100M</code> f&uuml;r die <em>“EFI-System”</em>-Partition ein und best&auml;tigen die Eingabe.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_02.png" alt="" /><figcaption>Neue Partition</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_02.png" /></p>
 <p>Nun wird von uns die Eingabe des Type-Code f&uuml;r die Partition erwartet.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_03.png" alt="" /><figcaption>Type-Code</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_03.png" /></p>
 <p>Nach Eingabe von <strong><code>L</code></strong> erscheint eine lange Liste mit den Codes und ihrer Verwendung. Die integrierte Suchfunktion vereinfacht die Auswahl. F&uuml;r uns sind folgende Codes notwendig:<br />
 ef00 f&uuml;r EFI-System<br />
 ef02 f&uuml;r BIOS-boot<br />
@@ -123,40 +115,26 @@ ef02 f&uuml;r BIOS-boot<br />
 8304 f&uuml;r Linux Root<br />
 8300 f&uuml;r Linux Daten</p>
 <p>Wir tragen also <code>ef00</code> ein und best&auml;tigen. Anschlie&szlig;end d&uuml;rfen wir optional noch einen Namen (Label) vergeben, was im Beispiel getan wurde, und die Eingabe wieder best&auml;tigen. Mit den Partitionen f&uuml;r BIOS-boot, Linux-root und Swap wird nach gleichem Muster verfahren. Das n&auml;chst Bild zeigt das Ergebnis unserer Bem&uuml;hungen. Wie wir sehen ist noch reichlich Platz f&uuml;r ein zweites System und vor allem f&uuml;r eine gemeinsam genutzte Daten-Partition vorhanden.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_04.png" alt="" /><figcaption>Erster Teil</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_04.png" /></p>
 <p>Nachdem die zwei Partitionen erstellt wurden, sehen wir die Aufteilung der gesamten Festplatte im n&auml;chste Bild.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_05.png" alt="" /><figcaption>Gemeinsame Verwendung</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_05.png" /></p>
 <p>Die Partitionen, die die beiden Systeme sp&auml;ter im Betrieb verwenden, sind farblich gekennzeichnet.<br />
 An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durch die Ausrichtung der Partition an die Blockgrenzen der Festplatte und k&ouml;nnen auch zwischen den Partitionen auftauchen. Mit <strong><code>Align</code></strong> kann der Wert f&uuml;r die Anzahl der Sektoren ge&auml;ndert werden. F&uuml;r SSD und M2-Disk sind es in der Regel 2048 Sektoren und f&uuml;r alte Festplatten 512 Sektoren. gdisk liest die Metadaten der Festplatten aus und stellt den Wert f&uuml;r die Sektoren danach ein. Deshalb ist in der Regel keine &Auml;nderung notwendig.</p>
 <p>Zus&auml;tzliche, detailierte Informationen zu den Partitionen lassen sich einsehen, wenn der Befehl <strong><code>Info</code></strong> benutzt wird.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_06.png" alt="" /><figcaption>Partition Details</figcaption>
-</figure>
-<p>Mit <em>Verify</em> wird die Partitionierung &uuml;berpr&uuml;ft und eventuelle Fehler werden angezeigt.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_07.png" alt="" /><figcaption>Partition Verify</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_06.png" /></p>
+<p>Mit <strong><code>Verify</code></strong> wird die Partitionierung &uuml;berpr&uuml;ft und eventuelle Fehler werden angezeigt.</p>
+<p><img src="./images/cgdisk/cgdisk_07.png" /></p>
 <p>Hier ist alles in Ordnung.<br />
 Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl <strong><code>Info</code></strong>, und entscheiden ob die Partition gel&ouml;scht und neu angelegt werden muss und ob dabei z. B. die Gr&ouml;&szlig;e zu &auml;ndern ist. Wenn mit diesen Mitteln eine Reparatur nicht m&ouml;glich ist, stehen routinierten Usern die <a href="https://manual.siduction.org/part-gdisk_de.html#erweiterte-befehle-von-gdisk">Erweiterten Befehle von gdisk</a> zur Verf&uuml;gung.</p>
 <h4 id="partition-l&ouml;schen">Partition l&ouml;schen</h4>
 <p>Um eine Partition zu l&ouml;schen, markieren wir diese und benutzen den Befehl <strong><code>Delete</code></strong>.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_08.png" alt="" /><figcaption>Partition l&ouml;schen</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_08.png" /></p>
 <p>Bei Notwendigkeit verfahren wir mit anderen Partitionen genauso und k&ouml;nnen dann mit ge&auml;nderten Werten die Partitionen wieder erstellen.</p>
 <h4 id="gpt-schreiben">GPT schreiben</h4>
 <p>Entspricht die Partitionierung der Festplatte unseren Vorstellungen pr&uuml;fen wir noch einmal mit dem Befehl <strong><code>Verify</code></strong> ob alles in Ordnung ist. Werden keine Fehler angezeigt, w&auml;hlen wir <strong><code>Write</code></strong> und</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_09.png" alt="" /><figcaption>Write</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_09.png" /></p>
 <p>d&uuml;rfen die Sicherheitsabfrage mit <strong><code>yes</code></strong> beantworten.</p>
-<figure>
-<img src="./images/cgdisk/cgdisk_10.png" alt="" /><figcaption>Sicherheitsabfrage</figcaption>
-</figure>
+<p><img src="./images/cgdisk/cgdisk_10.png" /></p>
 <p>Der Warnhinweis sollte ernst genommen werden, denn nach Bet&auml;tigung der <strong><code>Enter</code></strong>-Taste verschwinden alle Daten, die zuvor auf der Festplatte waren im Nirwana.</p>
 <p>Da cgdisk nur Partitionen, aber keine Dateisysteme erstellt, muss jede der neuen Partitionen formatiert werden. Mit <strong><code>Quit</code></strong> wird cgdisk beendet.</p>
 <h3 id="formatieren-der-partitionen">Formatieren der Partitionen</h3>

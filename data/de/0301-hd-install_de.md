@@ -127,7 +127,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
 9. Am Ende erhalten wir die Möglichkeit zu einem Reboot in das neu installierte System. 
 
-   ![calamares reboot](./images/install-hd/calamares-de_10.png "Beenden")
+   ![](./images/install-hd/calamares-de_10.png "Beenden")
 
    Vor dem Reboot die CD aus dem Laufwerk nehmen!
 
@@ -142,11 +142,11 @@ Benutzen wir "*Manuelle Partitionierung*", so benötigen wir einen leeren, unben
 
 ![calamares, manual partitioning encrypt 1](./images/install-hd/calamares-de_12.png "Manuelle Partition verschlüsseln 1")
 
-Im nächsten Schritt ist jetzt die Funktion *"Verschlüsseln"* auswählbar.
+Im nächsten Schritt ist jetzt die Funktion *"Verschlüsseln"* auswählbar.  
+Wir geben unser Passwort ein und wählen anschließend als Einhängepunkt das Wurzelverzeichnis **`/`** aus.
 
-![calamares, manual partitioning encrypt 2](./images/install-hd/calamares-de_13.png "Manuelle Partition verschlüsseln 2")
+![](./images/install-hd/calamares-de_13.png "Manuelle Partition verschlüsseln 2")
 
-Wir geben unser Passwort ein und wählen anschließend als Einhängepunkt das Wurzelverzeichnis **`/`** aus.  
 Nach Beendigung der Partitionierung setzen wir die Installation mit dem Menüpunkt *"Benutzer"*, wie oben unter 6 beschrieben, fort.
 
 ### Benutzer hinzufügen
