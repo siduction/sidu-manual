@@ -224,33 +224,33 @@ https://server1.org/phpmyadmin/
 
 To remove the rights of the database admin **root**, as mentioned above, we use our new database admin **chef** with his password in the login window right away.
 
-![Login window](./images/phpmyadmin/ui01.png)
+![](./images/phpmyadmin/ui01.png)
 
 In the start window we see all databases in the left column. Then we select the tab *"User accounts"* in the center area.
 
-![Start window](./images/phpmyadmin/ui02.png)
+![](./images/phpmyadmin/ui02.png)
 
 The user accounts overview shows all users and their rights in short form. Here we select the switch *"Edit privileges"* for the **root** user.
 
-![User accounts](./images/phpmyadmin/ui03.png)
+![](./images/phpmyadmin/ui03.png)
 
 Now we see the detailed permissions for the **root** user. Here we first remove all his rights (1a), then, in the area *"Administration"*, grant the right *"Super"* (1b), and execute the action by clicking the *"OK"* button at the very bottom right of this page (not visible in the screenshot). 
 
-![Manage rights of a user (1a, 1b)](./images/phpmyadmin/ui04.png)
+![](./images/phpmyadmin/ui04.png)
 
 Afterwards we go to the next page via the *"Database"* button (2).
 
-![Manage rights of a user (2) ](./images/phpmyadmin/ui05.png)
+![](./images/phpmyadmin/ui05.png)
 
 After selecting the database *"mysql"* and *"OK"*, a window opens with the detailed rights to the database *"mysql"* for the user **root**.
 
-![Manage rights of a user (DB mysql) ](./images/phpmyadmin/ui06.png)
+![](./images/phpmyadmin/ui06.png)
 
 Only choose the method *"SELECT"*. A click on *"OK"* executes the sql command.
 
 So we are done and leave *phpMyAdmin* via the door icon placed in the left column.
 
-![exit phpMyAdmin](./images/phpmyadmin/ui07.png)
+![](./images/phpmyadmin/ui07.png)
 
 phpMyAdmin offers extensive possibilities for the administration of databases, their tables, and their contents. Note the *"Export"* tab in the main window, behind which you will find the option to backup data.
 

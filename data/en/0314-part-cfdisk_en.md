@@ -112,7 +112,7 @@ cfdisk /dev/sda
 
 On the first screen, `cfdisk` shows the current partition table with the names and some information about each partition. At the bottom of the window, there are some command buttons. To switch between partitions, use the arrow keys **`up`** and **`down`**. To select commands, use the arrow keys **`right`** and **`left`**. The **`Enter`** key is used to execute the command.
 
-![cfdisk - Start](./images/cfdisk/cfdisk_01.png)
+![](./images/cfdisk/cfdisk_01.png)
 
 We have three partitions on the example disk.
 
@@ -130,39 +130,39 @@ To create space, we delete the data partition and then shrink the root partition
 
 To delete the partition **/dev/sda3**, highlight it with the up-down keys and select the command *"Delete"* with the left-right arrow keys. Finally, confirm the action by hitting **`Enter`**.
 
-![Delete a partition](./images/cfdisk/cfdisk_02.png) 
+![](./images/cfdisk/cfdisk_02.png) 
 
 #### Resize a partition
 
 Highlight the partition **/dev/sda2**, select the command *"Resize"*, and confirm.
 
-![Resize a partition](./images/cfdisk/cfdisk_03.png)
+![](./images/cfdisk/cfdisk_03.png)
 
 Then the new size of *"20G"* is to be entered.
 
-![New Size of a partition](./images/cfdisk/cfdisk_04.png)
+![](./images/cfdisk/cfdisk_04.png)
 
 #### Creating a new partition
 
 The hard disk's freed space is highlighted. The command selection automatically jumps to *"New"*, which has to be confirmed.
 
-![Create a new partition](./images/cfdisk/cfdisk_05.png)
+![](./images/cfdisk/cfdisk_05.png)
 
 Then enter the new size of *"15G"* for the data partition.
 
-![Create a new partition - Size](./images/cfdisk/cfdisk_06.png)
+![](./images/cfdisk/cfdisk_06.png)
 
 Now we have to choose between a **primary** or an **extended** partition. We select a primary partition.
 
-![Create a new partition - primary](./images/cfdisk/cfdisk_07.png)
+![](./images/cfdisk/cfdisk_07.png)
 
 After that, we mark the free disk space again, confirm it, and confirm the preset total size as well. In the following selection, **extended** has to be chosen. This creates the extended partition (here called *"container"*) in which the two additional partitions are to be created.
 
-![extended partition](./images/cfdisk/cfdisk_08.png)
+![](./images/cfdisk/cfdisk_08.png)
 
 Finally, the partitions for `Music` and `Images` are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.
 
-![partition finished](./images/cfdisk/cfdisk_09.png)
+![](./images/cfdisk/cfdisk_09.png)
 
 This is how the result looks like.
 
@@ -170,11 +170,11 @@ This is how the result looks like.
 
 To change the type of a partition, select the desired partition and choose the command *"Type"*.
 
-![partition type](./images/cfdisk/cfdisk_10.png)
+![](./images/cfdisk/cfdisk_10.png)
 
 A selection list appears in which the partition type can be selected with the arrow keys **`up`** and **`down`**. In our example, we select "*7 HPFS/NTFS/exFAT*" for the partitions **/dev/sda5** and **/dev/sda6**. This way, the above mentioned Windows system can access the partition.
 
-![partition type](./images/cfdisk/cfdisk_11.png)
+![](./images/cfdisk/cfdisk_11.png)
 
 #### Make a partition bootable
 
@@ -184,7 +184,7 @@ For Linux there is no need to make a partition bootable, but some other operatin
 
 When everything has been partitioned, the result can be saved with the command *"Write"*. The partition table is now written to the disk.
 
-![partition select type](./images/cfdisk/cfdisk_12.png)
+![](./images/cfdisk/cfdisk_12.png)
 
 **Since this will delete all data on the corresponding disk/partition**, you should be really sure before typing **yes** and confirming again with the **`Enter`** key.
 

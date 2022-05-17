@@ -248,9 +248,9 @@ Nach Auswahl der Datenbank *"mysql"* und `OK` öffnet sich diesmal ein Fenster m
 
 Ausgewählt wird ausschließlich die Methode *"SELECT"*. Ein Klick auf `OK` führt den sql-Befehl aus.
 
-Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
+![](./images/phpmyadmin/abmelden.png)
 
-![phpMyAdmin beenden](./images/phpmyadmin/abmelden.png)
+Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
 
 phpMyAdmin bietet umfangreiche Möglichkeiten zur Verwaltung der Datenbanken, ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter `Exportieren` im Hauptfenster, hinter dem sich die Möglichkeit zur Datensicherung findet.
 
