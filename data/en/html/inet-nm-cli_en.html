@@ -48,28 +48,18 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>The entries can be made both in a virtual terminal (key combination <strong><code>Ctr</code></strong>+<strong><code>Shift</code></strong>+<strong><code>F2</code></strong>) and in the console of a graphical user interface. In the examples shown, the information has been changed for privacy reasons.</p>
 <p><strong>Show configured connections</strong></p>
 <p>The command <strong><code>nmcli c</code></strong> can be used to display the configured connections that have been created on the system.</p>
-<figure>
-<img src="./images/nmcli/nmcli-c.png" alt="" /><figcaption>nmcli c</figcaption>
-</figure>
+<p><img src="./images/nmcli/nmcli-c.png" /></p>
 <p>In the above example, there are four connections: WLAN, 2x LAN, and a mobile broadband connection.</p>
 <p><strong>Show information about Wi-Fi networks</strong>.</p>
 <p>To display all available Wi-Fi networks in a compact form, use the command <strong><code>nmcli dev wifi list</code></strong>.</p>
-<figure>
-<img src="./images/nmcli/nmcli-list.png" alt="" /><figcaption>nmcli dev wifi list</figcaption>
-</figure>
+<p><img src="./images/nmcli/nmcli-list.png" /></p>
 <p><strong>Display configured devices</strong></p>
 <p>If you want to know which devices (interfaces) are known to the network manager, enter <strong><code>nmcli d</code></strong>.</p>
-<figure>
-<img src="./images/nmcli/nmcli-d.png" alt="" /><figcaption>nmcli d</figcaption>
-</figure>
+<p><img src="./images/nmcli/nmcli-d.png" /></p>
 <p>Very detailed information (properties) about the own available connections can be displayed through <strong><code>nmcli dev show</code></strong>. Here only the excerpt for the Wi-Fi:</p>
-<figure>
-<img src="./images/nmcli/nmcli-dev-show.png" alt="" /><figcaption>nmcli dev show</figcaption>
-</figure>
+<p><img src="./images/nmcli/nmcli-dev-show.png" /></p>
 <p>The Wi-Fi access data can be displayed with <strong><code>nmcli dev wifi show</code></strong>.</p>
-<figure>
-<img src="./images/nmcli/nmcli-dev-wifi-show.png" alt="" /><figcaption>nmcli dev wifi show</figcaption>
-</figure>
+<p><img src="./images/nmcli/nmcli-dev-wifi-show.png" /></p>
 <p>The additionally generated QR code simplifies the login for smartphones and tablets.</p>
 <p><strong>Switch connections</strong></p>
 <p>To change a connection type, e.g. from LAN to Wi-Fi connection, you have to disconnect the existing active connection and activate the new one. Here, you definitely have to specify the interface because a <strong><code>nmcli con down id &lt;name&gt;</code></strong> will work, but the connection, if it is a system connection, will be re-established immediately.</p>

@@ -130,9 +130,7 @@ cfdisk /dev/sda</code></pre>
 <p><strong>cfdisk</strong> should only be used on a hard disk with all partitions unmounted. All data will be lost when the changed partition table is written.</p>
 <h4 id="the-user-interface">The user interface</h4>
 <p>On the first screen, <code>cfdisk</code> shows the current partition table with the names and some information about each partition. At the bottom of the window, there are some command buttons. To switch between partitions, use the arrow keys <strong><code>up</code></strong> and <strong><code>down</code></strong>. To select commands, use the arrow keys <strong><code>right</code></strong> and <strong><code>left</code></strong>. The <strong><code>Enter</code></strong> key is used to execute the command.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_01.png" alt="" /><figcaption>cfdisk - Start</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_01.png" /></p>
 <p>We have three partitions on the example disk.</p>
 <table>
 <thead>
@@ -168,56 +166,34 @@ cfdisk /dev/sda</code></pre>
 <h4 id="delete-a-partition">Delete a partition</h4>
 <p>To create space, we delete the data partition and then shrink the root partition.</p>
 <p>To delete the partition <strong>/dev/sda3</strong>, highlight it with the up-down keys and select the command <em>“Delete”</em> with the left-right arrow keys. Finally, confirm the action by hitting <strong><code>Enter</code></strong>.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_02.png" alt="" /><figcaption>Delete a partition</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_02.png" /></p>
 <h4 id="resize-a-partition">Resize a partition</h4>
 <p>Highlight the partition <strong>/dev/sda2</strong>, select the command <em>“Resize”</em>, and confirm.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_03.png" alt="" /><figcaption>Resize a partition</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_03.png" /></p>
 <p>Then the new size of <em>“20G”</em> is to be entered.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_04.png" alt="" /><figcaption>New Size of a partition</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_04.png" /></p>
 <h4 id="creating-a-new-partition">Creating a new partition</h4>
 <p>The hard disk’s freed space is highlighted. The command selection automatically jumps to <em>“New”</em>, which has to be confirmed.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_05.png" alt="" /><figcaption>Create a new partition</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_05.png" /></p>
 <p>Then enter the new size of <em>“15G”</em> for the data partition.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_06.png" alt="" /><figcaption>Create a new partition - Size</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_06.png" /></p>
 <p>Now we have to choose between a <strong>primary</strong> or an <strong>extended</strong> partition. We select a primary partition.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_07.png" alt="" /><figcaption>Create a new partition - primary</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_07.png" /></p>
 <p>After that, we mark the free disk space again, confirm it, and confirm the preset total size as well. In the following selection, <strong>extended</strong> has to be chosen. This creates the extended partition (here called <em>“container”</em>) in which the two additional partitions are to be created.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_08.png" alt="" /><figcaption>extended partition</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_08.png" /></p>
 <p>Finally, the partitions for <code>Music</code> and <code>Images</code> are to be created in the desired size according to the procedure shown above. Since only logical partitions are possible, the selection between primary and extended partition is omitted.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_09.png" alt="" /><figcaption>partition finished</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_09.png" /></p>
 <p>This is how the result looks like.</p>
 <h4 id="partition-type">Partition type</h4>
 <p>To change the type of a partition, select the desired partition and choose the command <em>“Type”</em>.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_10.png" alt="" /><figcaption>partition type</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_10.png" /></p>
 <p>A selection list appears in which the partition type can be selected with the arrow keys <strong><code>up</code></strong> and <strong><code>down</code></strong>. In our example, we select “<em>7 HPFS/NTFS/exFAT</em>” for the partitions <strong>/dev/sda5</strong> and <strong>/dev/sda6</strong>. This way, the above mentioned Windows system can access the partition.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_11.png" alt="" /><figcaption>partition type</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_11.png" /></p>
 <h4 id="make-a-partition-bootable">Make a partition bootable</h4>
 <p>For Linux there is no need to make a partition bootable, but some other operating systems need it. This is done by highlighting the appropriate partition and selecting the <em>“Bootable”</em> command. (<strong>Note:</strong> when installing to an external hard drive, a partition must be made bootable.)</p>
 <h4 id="write-partition-table">Write partition table</h4>
 <p>When everything has been partitioned, the result can be saved with the command <em>“Write”</em>. The partition table is now written to the disk.</p>
-<figure>
-<img src="./images/cfdisk/cfdisk_12.png" alt="" /><figcaption>partition select type</figcaption>
-</figure>
+<p><img src="./images/cfdisk/cfdisk_12.png" /></p>
 <p><strong>Since this will delete all data on the corresponding disk/partition</strong>, you should be really sure before typing <strong>yes</strong> and confirming again with the <strong><code>Enter</code></strong> key.</p>
 <h4 id="quit-cfdisk">Quit cfdisk</h4>
 <p>By entering the command <em>“Quit”</em>, we can quit the program. After leaving <code>cfdisk</code> and before the installation, you should reboot in any case to read in the partition table again.</p>
