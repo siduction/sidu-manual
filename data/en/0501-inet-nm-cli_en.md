@@ -25,7 +25,7 @@ The entries can be made both in a virtual terminal (key combination **`Ctr`**+**
 
 The command **`nmcli c`** can be used to display the configured connections that have been created on the system.
 
-![](./images/nmcli/nmcli-c.png)
+![nmcli c](./images/nmcli/nmcli-c.png)
 
 In the above example, there are four connections: WLAN, 2x LAN, and a mobile broadband connection.
 
@@ -33,22 +33,22 @@ In the above example, there are four connections: WLAN, 2x LAN, and a mobile bro
 
 To display all available Wi-Fi networks in a compact form, use the command **`nmcli dev wifi list`**.
 
-![](./images/nmcli/nmcli-list.png)
+![nmcli dev wifi list](./images/nmcli/nmcli-list.png)
 
 
 **Display configured devices**
 
 If you want to know which devices (interfaces) are known to the network manager, enter **`nmcli d`**.
 
-![](./images/nmcli/nmcli-d.png)
+![nmcli d](./images/nmcli/nmcli-d.png)
 
 Very detailed information (properties) about the own available connections can be displayed through **`nmcli dev show`**. Here only the excerpt for the Wi-Fi:
 
-![](./images/nmcli/nmcli-dev-show.png)
+![nmcli dev show](./images/nmcli/nmcli-dev-show.png)
 
 The Wi-Fi access data can be displayed with **`nmcli dev wifi show`**.
 
-![](./images/nmcli/nmcli-dev-wifi-show.png)
+![nmcli dev wifi show](./images/nmcli/nmcli-dev-wifi-show.png)
 
 The additionally generated QR code simplifies the login for smartphones and tablets.
 

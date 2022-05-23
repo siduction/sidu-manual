@@ -63,24 +63,24 @@ The boot command in a root terminal is: **`cgdisk /dev/sdX`**.
 
 `cgdisk` starts with a warning message if no GPT is found.
 
-![](./images/cgdisk/cgdisk_00.png)
+![warning message]](./images/cgdisk/cgdisk_00.png)
 
 We need a total of six partitions for the two operating systems: two ROOT partitions, one shared DATA partition, and one SWAP partition for swap space. In addition, the *EFI system* partition already mentioned above (maximum 100MB) and the *BIOS-boot* partition (1MB) are required.  
 We recommend leaving the `/home` directory on the ROOT partition. The `/home` directory should be the place where the individual configurations are stored, and only these. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.
 
 The start screen:
 
-![](./images/cgdisk/cgdisk_01.png)
+![Start screen](./images/cgdisk/cgdisk_01.png)
 
-#### Create partition
+**Create partition**
 
 We select *"New"* and confirm with **`Enter`**. Hitting **`Enter`** a second time, we accept the default first sector for the new partition. Then we enter the desired size of `100M` for the *EFI-System* partition and confirm.
 
-![](./images/cgdisk/cgdisk_02.png)
+![New partition](./images/cgdisk/cgdisk_02.png)
 
 Now we are expected to enter the type code for the partition.
 
-![](./images/cgdisk/cgdisk_03.png)
+![Type-Code](./images/cgdisk/cgdisk_03.png)
 
 After entering **`L`**, a long list of codes and their usage appears. The integrated search function simplifies the selection. For us, the following codes are necessary:  
 *"ef00"* for EFI system  
@@ -91,43 +91,43 @@ After entering **`L`**, a long list of codes and their usage appears. The integr
 
 So we enter `ef00` and confirm. Afterwards, we may optionally assign a name (label), which has been done in the example, and confirm the entry again. We proceed after the same pattern for the partitions BIOS-boot, Linux-root, and Swap. The next picture shows the result of our efforts. As we can see, there is still plenty of space for a second system and especially for a shared data partition.
 
-![](./images/cgdisk/cgdisk_04.png)
+![First part](./images/cgdisk/cgdisk_04.png)
 
 After the two partitions have been created, we can see the partitioning of the entire disk in the next image. 
 
-![](./images/cgdisk/cgdisk_05.png)
+![Sharing](./images/cgdisk/cgdisk_05.png)
 
 The partitions that the two systems will use later during operation are color-coded.  
 At the beginning and the end, there are still small, free areas. They are created by aligning the partition to the block boundaries of the disk and can also appear between the partitions. With *"Align"* the value for the number of sectors can be changed. It is usually 2048 sectors for SSD and M2 disks and 512 sectors for old disks. `gdisk` reads the metadata of the hard disks and sets the value for the sectors afterwards. Therefore usually no change is necessary.
 
 Additional, detailed information about the partitions can be seen by entering the command *"Info"*.
 
-![](./images/cgdisk/cgdisk_06.png)
+![Partition Details](./images/cgdisk/cgdisk_06.png)
 
 With *"Verify"* the partitioning is checked and possible errors are shown.
 
-![](./images/cgdisk/cgdisk_07.png)
+![Partition Verify](./images/cgdisk/cgdisk_07.png)
 
 Here, everything is ok.  
 If errors are reported, we mark the partition and use the command *"Info"*. Then we decide if the partition has to be deleted and recreated and if e.g. the size has to be changed as well. If a repair is not possible by these means, the [Advanced commands of gdisk](0313-part-gdisk_en.md#advanced-commands-of-gdisk) are available for experienced users.
 
-#### Delete partition
+**Delete partition**
 
 To delete a partition, we select it and use the command *"Delete"*.
 
-![](./images/cgdisk/cgdisk_08.png)
+![Delete partition](./images/cgdisk/cgdisk_08.png)
 
 If necessary, we do the same with other partitions and then we can create the partitions again with changed values.
 
-#### Write GPT
+**Write GPT**
 
 If the partitioning of the hard disk corresponds to our ideas, we check once more whether everyting is in order with the command *"Verify"*. If no errors are displayed, we choose *Write* and
 
-![](./images/cgdisk/cgdisk_09.png)
+![Write](./images/cgdisk/cgdisk_09.png)
 
 may answer the security query with "yes".
 
-![](./images/cgdisk/cgdisk_10.png)
+![Security prompt](./images/cgdisk/cgdisk_10.png)
 
 The warning should be taken seriously because after pressing the **`Enter`** key, all data that was previously on the disk disappears into nirvana.
 
@@ -214,12 +214,12 @@ These possibilities are:
 + The computer (mainboard) has **no** UEFI but a BIOS. (All mainboards before 2009 do not have UEFI.)
 + The BIOS shall be used to boot the GPT medium.
 
-#### Booting with UEFI
+**Booting with UEFI**
 
 If UEFI is to be used for booting, a **FAT** formatted **EFI System** partition (type "*ef00*" ) must be created as the first partition, and an unformatted **BIOS boot** partition (type *"ef02"* ) must be created as the second one. The first partition contains the boot loader(s).  
 During the installation of siduction, any choices made by install-gui as to where to install the boot loader are ignored if the aforementioned partitions exist. The siduction boot loader is stored in the *EFI system* partition at `/efi/siduction`. The EFI system partition is also mounted as `/boot/efi` as long as the option `mount other partitions` is selected. The mount of the *EFI system* partition does not need to be specified in the installer.
 
-#### Booting with BIOS
+**Booting with BIOS**
 
 If the system does not have UEFI, the first thing to do is to create a **BIOS boot** partition. This replaces the sector of an MBR-partitioned disk that is between the partitioning table and the first partition. Grub is written directly onto it.  
 The partition should have the size of 200MB. (The reason for this size instead of the conventional 32MB is to have a sufficiently large partition available in case of a switch to UEFI.)

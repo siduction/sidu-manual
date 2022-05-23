@@ -34,10 +34,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#required-files">Required files</a></li>
 <li><a href="#path-unit-options">Path unit options</a></li>
 <li><a href="#create-path-unit">Create path unit</a></li>
-<li><a href="#service-unit-for-path">Service unit for path</a>
-<ul>
-<li><a href="#create-additional-service-unit">Create additional service unit</a></li>
-</ul></li>
+<li><a href="#service-unit-for-path">Service unit for path</a></li>
 <li><a href="#include-path-unit">Include path unit</a></li>
 <li><a href="#execute-service-unit-manually">Execute service unit manually</a></li>
 <li><a href="#sources-systemd-path">Sources systemd-path</a></li>
@@ -130,7 +127,7 @@ ExecStart=/usr/bin/chmod -R o-r /var/www/html/</code></pre>
 <p><strong>Explanations</strong><br />
 [Service] section:<br />
 <em>“ExecStart=”</em> commands are executed only after all <em>“ExecStartPre=”</em> commands have completed successfully. First the file <code>/var/www/changed</code> is reset to 0 byte and then the rest is executed.</p>
-<h4 id="create-additional-service-unit">Create additional service unit</h4>
+<p><strong>Create additional service unit</strong></p>
 <p>Since the path unit cannot recursively monitor directories, we need an additional service unit for our example. We create the file <code>server1-watch.service</code> in the directory <code>/usr/local/lib/system/system/</code> with the following content.</p>
 <pre><code>[Unit]
 Description=Watching server1 folder

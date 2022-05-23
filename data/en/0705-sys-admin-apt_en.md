@@ -418,7 +418,7 @@ This is the reason why Debian builds use apt and not other package managers.
 
 The APT system provides a number of useful search commands that search the APT database and output information about packages. In addition, there are some programs that display the search graphically.
 
-#### Package search in the terminal
+**Package search in the terminal**
 
 With the simple command  
 **`apt search <search_pattern>`**  
@@ -485,7 +485,7 @@ The command **`aptitude`** (in the terminal) opens the program of the same name 
 
 ![aptitude](./images/apt/aptitude.png)
 
-#### Graphical package search
+**Graphical package search**
 
 The program **`packagesearch`** is very useful to search for suitable programs. Mostly packagesearch is not installed automatically; therefore:
 

@@ -41,11 +41,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#updateable-packages">Updateable packages</a></li>
 <li><a href="#run-full-upgrade">Run full-upgrade</a></li>
 <li><a href="#why-use-apt-exclusively">Why use apt exclusively</a></li>
-<li><a href="#searching-for-program-packages">Searching for program packages</a>
-<ul>
-<li><a href="#package-search-in-the-terminal">Package search in the terminal</a></li>
-<li><a href="#graphical-package-search">Graphical package search</a></li>
-</ul></li>
+<li><a href="#searching-for-program-packages">Searching for program packages</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -388,7 +384,7 @@ init 5 &amp;&amp; exit</code></pre>
 <p>This is the reason why Debian builds use apt and not other package managers.</p>
 <h3 id="searching-for-program-packages">Searching for program packages</h3>
 <p>The APT system provides a number of useful search commands that search the APT database and output information about packages. In addition, there are some programs that display the search graphically.</p>
-<h4 id="package-search-in-the-terminal">Package search in the terminal</h4>
+<p><strong>Package search in the terminal</strong></p>
 <p>With the simple command<br />
 <strong><code>apt search &lt;search_pattern&gt;</code></strong><br />
 you get a list of all packages containing the search pattern. Searching with <code>search</code> allows the use of regex terms.</p>
@@ -440,7 +436,7 @@ gman/unstable,now 0.9.3-5.3 amd64 [installed]</code></pre>
 <figure>
 <img src="./images/apt/aptitude.png" alt="" /><figcaption>aptitude</figcaption>
 </figure>
-<h4 id="graphical-package-search">Graphical package search</h4>
+<p><strong>Graphical package search</strong></p>
 <p>The program <strong><code>packagesearch</code></strong> is very useful to search for suitable programs. Mostly packagesearch is not installed automatically; therefore:</p>
 <pre><code>apt update
 apt install packagesearch</code></pre>

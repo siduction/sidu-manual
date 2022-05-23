@@ -112,7 +112,7 @@ ExecStart=/usr/bin/chmod -R o-r /var/www/html/
 *"ExecStart="* commands are executed only after all *"ExecStartPre="* commands have completed successfully.
 First the file `/var/www/changed` is reset to 0 byte and then the rest is executed.
 
-#### Create additional service unit
+**Create additional service unit**
 
 Since the path unit cannot recursively monitor directories, we need an additional service unit for our example. We create the file `server1-watch.service` in the directory `/usr/local/lib/system/system/` with the following content.
 
