@@ -63,24 +63,24 @@ Der Startbefehl in einem root-Terminal lautet: **`cgdisk /dev/sdX`**.
 
 cgdisk startet mit einer Warnmeldung, wenn keine GPT gefunden wird.
 
-![](./images/cgdisk/cgdisk_00.png)
+![Warnmeldung](./images/cgdisk/cgdisk_00.png)
 
 Wir benötigen für die beiden Betriebssysteme insgesamt sechs Partitionen: Zwei ROOT-, eine gemeinsame DATEN- sowie eine SWAP-Partition für den Auslagerungsspeicher. Zusätzlich die bereits oben erwähnte *"EFI-System"*-Partition (maximal 100MB) und die *"BIOS-boot"*-Partition (1MB).  
 Wir empfehlen, das `/home`-Verzeichnis auf der ROOT-Partition zu belassen. Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
 
 Das Startbild
 
-![](./images/cgdisk/cgdisk_01.png)
+![Startbild](./images/cgdisk/cgdisk_01.png)
 
-#### Partition erstellen
+**Partition erstellen**
 
 Wir wählen **`New`** und bestätigen mit **`Enter`**. Mit einem zweiten **`Enter`** übernehmen wir den voreingestellten ersten Sektor für die neue Partition. Dann geben wir die gewünschte Größe von `100M` für die *"EFI-System"*-Partition ein und bestätigen die Eingabe.
 
-![](./images/cgdisk/cgdisk_02.png)
+![Neue Partition](./images/cgdisk/cgdisk_02.png)
 
 Nun wird von uns die Eingabe des Type-Code für die Partition erwartet.
 
-![](./images/cgdisk/cgdisk_03.png)
+![Type-Code](./images/cgdisk/cgdisk_03.png)
 
 Nach Eingabe von **`L`** erscheint eine lange Liste mit den Codes und ihrer Verwendung. Die integrierte Suchfunktion vereinfacht die Auswahl. Für uns sind folgende Codes notwendig:  
 ef00 für EFI-System  
@@ -91,43 +91,43 @@ ef02 für BIOS-boot
 
 Wir tragen also `ef00` ein und bestätigen. Anschließend dürfen wir optional noch einen Namen (Label) vergeben, was im Beispiel getan wurde, und die Eingabe wieder bestätigen. Mit den Partitionen für BIOS-boot, Linux-root und Swap wird nach gleichem Muster verfahren. Das nächst Bild zeigt das Ergebnis unserer Bemühungen. Wie wir sehen ist noch reichlich Platz für ein zweites System und vor allem für eine gemeinsam genutzte Daten-Partition vorhanden.
 
-![](./images/cgdisk/cgdisk_04.png)
+![Erster Teil](./images/cgdisk/cgdisk_04.png)
 
 Nachdem die zwei Partitionen erstellt wurden, sehen wir die Aufteilung der gesamten Festplatte im nächste Bild. 
 
-![](./images/cgdisk/cgdisk_05.png)
+![Gemeinsame Verwendung](./images/cgdisk/cgdisk_05.png)
 
 Die Partitionen, die die beiden Systeme später im Betrieb verwenden, sind farblich gekennzeichnet.  
 An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durch die Ausrichtung der Partition an die Blockgrenzen der Festplatte und können auch zwischen den Partitionen auftauchen. Mit **`Align`** kann der Wert für die Anzahl der Sektoren geändert werden. Für SSD und M2-Disk sind es in der Regel 2048 Sektoren und für alte Festplatten 512 Sektoren. gdisk liest die Metadaten der Festplatten aus und stellt den Wert für die Sektoren danach ein. Deshalb ist in der Regel keine Änderung notwendig.
 
 Zusätzliche, detailierte Informationen zu den Partitionen lassen sich einsehen, wenn der Befehl **`Info`** benutzt wird.
 
-![](./images/cgdisk/cgdisk_06.png)
+![Partition Details](./images/cgdisk/cgdisk_06.png)
 
 Mit **`Verify`** wird die Partitionierung überprüft und eventuelle Fehler werden angezeigt.
 
-![](./images/cgdisk/cgdisk_07.png)
+![Partition Verify](./images/cgdisk/cgdisk_07.png)
 
 Hier ist alles in Ordnung.  
 Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl **`Info`**, und entscheiden ob die Partition gelöscht und neu angelegt werden muss und ob dabei z. B. die Größe zu ändern ist. Wenn mit diesen Mitteln eine Reparatur nicht möglich ist, stehen routinierten Usern die [Erweiterten Befehle von gdisk](0313-part-gdisk_de.md#erweiterte-befehle-von-gdisk) zur Verfügung.
 
-#### Partition löschen
+**Partition löschen**
 
 Um eine Partition zu löschen, markieren wir diese und benutzen den Befehl **`Delete`**.
 
-![](./images/cgdisk/cgdisk_08.png)
+![Partition löschen](./images/cgdisk/cgdisk_08.png)
 
 Bei Notwendigkeit verfahren wir mit anderen Partitionen genauso und können dann mit geänderten Werten die Partitionen wieder erstellen.
 
-#### GPT schreiben
+**GPT schreiben**
 
 Entspricht die Partitionierung der Festplatte unseren Vorstellungen prüfen wir noch einmal mit dem Befehl **`Verify`** ob alles in Ordnung ist. Werden keine Fehler angezeigt, wählen wir **`Write`** und
 
-![](./images/cgdisk/cgdisk_09.png)
+![Write](./images/cgdisk/cgdisk_09.png)
 
 dürfen die Sicherheitsabfrage mit **`yes`** beantworten.
 
-![](./images/cgdisk/cgdisk_10.png)
+![Sicherheitsabfrage](./images/cgdisk/cgdisk_10.png)
 
 Der Warnhinweis sollte ernst genommen werden, denn nach Betätigung der **`Enter`**-Taste verschwinden alle Daten, die zuvor auf der Festplatte waren im Nirwana.
 
@@ -214,12 +214,12 @@ Diese Möglichkeiten sind:
 + Der Computer (das Mainboard) hat **kein** UEFI sondern ein BIOS. (Alle Mainboard vor 2009 haben kein UEFI)
 + Das BIOS soll zum Booten des GPT-Datenträgers verwendet werden.
 
-#### Booten mit UEFI
+**Booten mit UEFI**
 
 Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte *"EFI System"*-Partition (Typ "EF00" ) als erste Partition, und eine unformatierte *"BIOS boot"*-Partition (Typ "EF02" ) als zweite erstellt werden. Die erste Partition enthält den/die Bootloader.  
 Während der Installation von siduction wird jegliche Auswahlmöglichkeit der install-gui, wohin der Bootloader installiert werden soll, ignoriert, sofern die vorgenannten Partitionen existieren. Der Bootloader von siduction wird in der *"EFI-System"*-Partition unter `/efi/siduction`  gespeichert. Die EFI-Systempartition wird auch als `/boot/efi`  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *"EFI-System"*-Partition muss im Installer nicht extra angegeben werden.
 
-#### Booten mit BIOS
+**Booten mit BIOS**
 
 Falls das System kein UEFI besitzt, muss als erste eine **BIOS-Boot**-Partition erstellt werden. Diese ersetzt den Sektor eines MBR-partitionierten Datenträgers, der sich zwischen der Partitionierungstabelle und der ersten Partition befindet, und in diesen wird Grub direkt geschrieben.  
 Die Partition sollte die Größe von 200MB haben. (Der Grund dieser Größe anstelle der konventionellen 32MB liegt darin, um für den Fall eines Wechsels zu UEFI eine ausreichend große Partition zur Verfügung zu haben.)

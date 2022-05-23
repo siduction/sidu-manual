@@ -99,7 +99,9 @@ Dies kann mit dem Befehl <strong><code>adduser BENUTZER GRUPPE</code></strong> a
 <h3 id="farbiges-terminal">Farbiges Terminal</h3>
 <p>Farbige Prompts am Terminal k&ouml;nnen einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als <strong>root</strong> eine Aufgabe durchf&uuml;hrt, die man als <strong>user</strong> machen wollte.<br />
 Deshalb ist in siduction in der Grundeinstellung der Prompt des user gr&uuml;n, blau und wei&szlig;, und bei dem von root wird das Wort “root” in roter Farbe dargestellt.</p>
-<p><img src="./images/terminal/prompt-colour-01.png" /></p>
+<figure>
+<img src="./images/terminal/prompt-colour-01.png" alt="" /><figcaption>Farbiger Prompt</figcaption>
+</figure>
 <p>Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompts. In siduction haben wir uns trotzdem f&uuml;r die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.</p>
 <p><strong>Farbe des Prompts &auml;ndern</strong></p>
 <p>Bevor die Konfigurationsdatei ge&auml;ndert wird, erstellen wir im Terminal erst eine Sicherungskopie mit einem Datumsstempel.</p>
@@ -107,7 +109,9 @@ Deshalb ist in siduction in der Grundeinstellung der Prompt des user gr&uuml;n, 
 <p>Dann &ouml;ffnen wir mit einem Texteditor unserer Wahl (z. B.: kate, gedit, mcedit, vim…) die Datei <code>~/.bashrc</code> und suchen nach folgender Zeile, die sich etwa in der Mitte der Datei befindet:</p>
 <pre><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code></pre>
 <p>Dem Schrift- und Farbcode folgen unmittelbar die Promtteile, die diese Darstellung erhalten sollen. In der folgenden Abbildung wird der Bezug zwischen den Promtteilen und ihren K&uuml;rzeln gezeigt.</p>
-<p><img src="./images/terminal/prompt-colour-02.png" /></p>
+<figure>
+<img src="./images/terminal/prompt-colour-02.png" alt="" /><figcaption>Prompt Code</figcaption>
+</figure>
 <p>Die anschlie&szlig;ende Tabelle erkl&auml;rt die Werte der Syntax “[\033[<strong>01;32</strong>m]”, wobei der fett gedruckte Teil die Schriftattribute und die Farbe bestimmt.</p>
 <table>
 <thead>

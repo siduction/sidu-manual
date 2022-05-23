@@ -105,7 +105,7 @@ Als schlanke Alternative zu *"sudo"* empfehlen wir `doas`. Die Handbuchseite [Do
 Farbige Prompts am Terminal können einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als **root** eine Aufgabe durchführt, die man als **user** machen wollte.  
 Deshalb ist in siduction in der Grundeinstellung der Prompt des user grün, blau und weiß, und bei dem von root wird das Wort "root" in roter Farbe dargestellt.  
 
-![](./images/terminal/prompt-colour-01.png)
+![Farbiger Prompt](./images/terminal/prompt-colour-01.png)
 
 Der Fokus beim Arbeiten mit dem Terminal sollte auf den Eingaben und Ausgaben der Befehle liegen und nicht auf bunte Prompts. In siduction haben wir uns trotzdem für die Farben entschieden, um den Usern einen Warnhinweis zu geben, wenn sie als Systemadministrator mit root-Rechten unterwegs sind.  
 
@@ -125,7 +125,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 
 Dem Schrift- und Farbcode folgen unmittelbar die Promtteile, die diese Darstellung erhalten sollen. In der folgenden Abbildung wird der Bezug zwischen den Promtteilen und ihren Kürzeln gezeigt.
 
-![](./images/terminal/prompt-colour-02.png)
+![Prompt Code](./images/terminal/prompt-colour-02.png)
 
 Die anschließende Tabelle erklärt die Werte der Syntax "\[\033[**01;32**m\]", wobei der fett gedruckte Teil die Schriftattribute und die Farbe bestimmt.
 

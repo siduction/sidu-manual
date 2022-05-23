@@ -34,10 +34,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#ben&ouml;tigte-dateien">Ben&ouml;tigte Dateien</a></li>
 <li><a href="#path-unit-optionen">path-Unit Optionen</a></li>
 <li><a href="#path-unit-anlegen">path-Unit anlegen</a></li>
-<li><a href="#service-unit-f&uuml;r-path">service-Unit f&uuml;r path</a>
-<ul>
-<li><a href="#zus&auml;tzliche-service-unit-anlegen">Zus&auml;tzliche service-Unit anlegen</a></li>
-</ul></li>
+<li><a href="#service-unit-f&uuml;r-path">service-Unit f&uuml;r path</a></li>
 <li><a href="#path-unit-eingliedern">path-Unit eingliedern</a></li>
 <li><a href="#service-unit-manuell-ausf&uuml;hren">service-Unit manuell ausf&uuml;hren</a></li>
 <li><a href="#quellen-systemd-path">Quellen systemd-path</a></li>
@@ -130,7 +127,7 @@ ExecStart=/usr/bin/chmod -R o-r /var/www/html/</code></pre>
 <p><strong>Erkl&auml;rungen</strong><br />
 Sektion [Service]:<br />
 <em>“ExecStart=”</em>-Befehle werden nur ausgef&uuml;hrt, nachdem sich alle <em>“ExecStartPre=”</em>-Befehle erfolgreich beendet haben. Zuerst wird die Datei <code>/var/www/changed</code> auf 0-Bite zur&uuml;ckgesetzt und danach der Rest ausgef&uuml;hrt.</p>
-<h4 id="zus&auml;tzliche-service-unit-anlegen">Zus&auml;tzliche service-Unit anlegen</h4>
+<p><strong>Zus&auml;tzliche service-Unit anlegen</strong></p>
 <p>Da die .path-Unit Verzeichnisse nicht rekursiv &uuml;berwachen kann, ben&ouml;tigen wir f&uuml;r unser Beispiel eine zus&auml;tzliche service-Unit. Wir legen die Datei <code>server1-watch.service</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
 <pre><code>[Unit]
 Description=Watching server1 folder.

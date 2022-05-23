@@ -49,18 +49,28 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Die Eingaben k&ouml;nnen sowohl in einem virtuellen Terminal (Tastenkombination <strong><code>Str</code></strong>+<strong><code>Umschalt</code></strong>+<strong><code>F2</code></strong>) als auch in der graphischen Oberfl&auml;che in einer Konsole get&auml;tigt werden. In den abgebildeten Beispielen wurden die Angaben aus Datenschutzgr&uuml;nden abge&auml;ndert.</p>
 <p><strong>Konfigurierte Verbindungen anzeigen</strong></p>
 <p>Mit dem Kommando <strong><code>nmcli c</code></strong> k&ouml;nnen die konfigurierten Verbindungen, die man am System angelegt hat, angezeigt werden.</p>
-<p><img src="./images/nmcli/nmcli-c.png" /></p>
+<figure>
+<img src="./images/nmcli/nmcli-c.png" alt="" /><figcaption>nmcli c</figcaption>
+</figure>
 <p>Im obigen Beispiel sind vier Verbindungen vorhanden WLAN, 2x LAN und eine Mobile Breitbandverbindung.</p>
 <p><strong>Informationen zu WIFI Netzen anzeigen</strong></p>
 <p>Welche WLAN-Netze sind &uuml;berhaupt am Standort verf&uuml;gbar, das kann man sich in kompakter Form mit <strong><code>nmcli dev wifi list</code></strong> anzeigen lassen.</p>
-<p><img src="./images/nmcli/nmcli-list.png" /></p>
+<figure>
+<img src="./images/nmcli/nmcli-list.png" alt="" /><figcaption>nmcli dev wifi list</figcaption>
+</figure>
 <p><strong>Konfigurierte Ger&auml;te anzeigen</strong></p>
 <p>Will man wissen welche Ger&auml;te (Interfaces) &uuml;berhaupt dem Networkmanager bekannt sind ist <strong><code>nmcli d</code></strong> hilfreich.</p>
-<p><img src="./images/nmcli/nmcli-d.png" /></p>
+<figure>
+<img src="./images/nmcli/nmcli-d.png" alt="" /><figcaption>nmcli d</figcaption>
+</figure>
 <p>Sehr detaillierte Informationen (Eigenschaften) gibt es mit <strong><code>nmcli dev show</code></strong> zu den eigenen verf&uuml;gbaren Verbindungen. Hier nur der Auszug f&uuml;r das WLAN.</p>
-<p><img src="./images/nmcli/nmcli-dev-show.png" /></p>
+<figure>
+<img src="./images/nmcli/nmcli-dev-show.png" alt="" /><figcaption>nmcli dev show</figcaption>
+</figure>
 <p>Die Zugangsdaten zum WLAN kann man sich mit <strong><code>nmcli dev wifi show</code></strong> anzeigen lassen.</p>
-<p><img src="./images/nmcli/nmcli-dev-wifi-show-de.png" /></p>
+<figure>
+<img src="./images/nmcli/nmcli-dev-wifi-show-de.png" alt="" /><figcaption>nmcli dev wifi show</figcaption>
+</figure>
 <p>Der zus&auml;tzlich generierte QR-Code vereinfacht den Login f&uuml;r Smartphone und Tablet.</p>
 <p><strong>Verbindungen wechseln</strong></p>
 <p>Um eine Verbindungsart zu wechseln, z.B. von LAN auf eine WLAN Verbindung, muss man die bestehende aktive Verbindung abbauen und die neue aktivieren. Hier muss man definitiv das Interface angeben, da ein <code>nmcli con down id &lt;Name&gt;</code> zwar funktioniert, die Verbindung, wenn es eine Systemverbindung ist, aber sofort wieder aufgebaut wird.</p>

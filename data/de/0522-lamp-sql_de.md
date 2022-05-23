@@ -114,7 +114,7 @@ MariaDB [(none)]>
 Aus Sicherheitsgründen loggen wir uns nur zu Beginn als Benutzer **root** ein, um die Projektdatenbank, einen  Benutzer für die alltäglichen Arbeiten an dieser und einen Benutzer als Ersatz für root anzulegen.  
 Später im Abschnitt [phpMyAdmin](0522-lamp-sql_de.md#phpmyadmin) entziehen wir dem Benutzer root die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.
 
-#### Eine Datenbank anlegen
+**Eine Datenbank anlegen**
 
 Wir sind noch im Terminal angemeldet und erstellen für unser Projekt eine neue Datenbank:
 
@@ -125,7 +125,7 @@ Query OK, 1 row affected (0.002 sec)
 
 Das ist schon alles. Falls wir diese Datenbank löschen wollen lautet der Befehl `DROP DATABASE sidu;`
 
-#### Einen Benutzer anlegen
+**Einen Benutzer anlegen**
 
 Zuerst erstellen wir unseren Projekt-Benutzer mit dem Namen **tomtom** und weisen ihm ausschließlich alle Rechte an der Projekt-Datenbank *"sidu"* zu:
 
@@ -163,7 +163,7 @@ Bey
 #
 ~~~
 
-#### Abfragen
+**Abfragen**
 
 Wir schauen uns das Ergebnis in Terminal an, diesmal als Benutzer *"chef"*.  
 Zuerst die Benutzer und dann die vorhandenen Datenbanken.
@@ -248,7 +248,7 @@ Nach Auswahl der Datenbank *"mysql"* und `OK` öffnet sich diesmal ein Fenster m
 
 Ausgewählt wird ausschließlich die Methode *"SELECT"*. Ein Klick auf `OK` führt den sql-Befehl aus.
 
-![](./images/phpmyadmin/abmelden.png)
+![Abmelden von phpMyAdmin](./images/phpmyadmin/abmelden.png)
 
 Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
 

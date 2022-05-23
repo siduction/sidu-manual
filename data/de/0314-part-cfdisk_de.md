@@ -108,87 +108,83 @@ cfdisk /dev/sda
 
 cfdisk nur auf einer Festplatte anwenden, deren sämtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der geänderten Partitionstabelle verloren.
 
-#### Die Bedienoberfläche
+**Die Bedienoberfläche**
 
 Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten **`auf`** und **`ab`**, um Befehle auszuwählen, die Pfeiltasten **`rechts`** und **`links`**. Mit der **`Enter`** Taste wird der Befehl ausgeführt.
 
-![](./images/cfdisk/cfdisk_01.png)
+![cfdisk - Start](./images/cfdisk/cfdisk_01.png)
 
 Wir haben auf der Beispielfestplatte drei Partitionen.
 
 | Device | Part. Größe | Part. Typ | Mountpoint |
-| --- | ---: | :---: | ---: |
+| :---: | :---: | :---: | :---: |
 | /dev/sda1 | 8,5G | 82 Swap | - |
 | /dev/sda2 | 50,0G | 83 Linux | / |
 | /dev/sda3 | 60,8G | 83 Linux | /Daten |
 
 Aus der Daten-Partition möchten wir die Verzeichnisse `/Bilder` und `/Musik` in eigene Partitionen auslagern und dafür mehr Platz schaffen. Gleichzeitig sollen diese auch für ein auf einer weiteren Festplatte residierendes Windows zugänglich sein. Die Root-Partition ist mit 50 GB überdimensioniert und wird verkleinert.
 
-#### Löschen einer Partition
+**Löschen einer Partition**
 
 Um Platz zu schaffen, löschen wir die Daten-Partition und verkleinern anschließend die Root-Partition.
 
 Um die Partition `/dev/sda3` zu löschen, wird sie mit den auf-ab-Tasten markiert und der Befehl **`Delete`** mit den Pfeiltasten links-rechts gewählt und durch **`Enter`** bestätigt.
 
-![](./images/cfdisk/cfdisk_02.png) 
+![Löschen einer Partition](./images/cfdisk/cfdisk_02.png) 
 
-#### Größe einer Partition ändern
+**Größe einer Partition ändern**
 
 Die Partition `/dev/sda2` wird markiert und der Befehl **`Resize`** ausgewählt und bestätigt.
 
-![](./images/cfdisk/cfdisk_03.png)
+![Größenänderung einer Partition](./images/cfdisk/cfdisk_03.png)
 
 Anschließend erfolgt die Eingabe der neuen Größe von `20G`
 
-![](./images/cfdisk/cfdisk_04.png)
+![Neue Größe der Partition](./images/cfdisk/cfdisk_04.png)
 
-#### Erstellen einer neuen Partition
+**Erstellen einer neuen Partition**
 
 Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf **`New`**, die zu bestätigen ist.
 
-![](./images/cfdisk/cfdisk_05.png)
+![Neue Partition anlegen](./images/cfdisk/cfdisk_05.png)
 
 Anschließend ist die neue Größe von `15G` für die Daten-Partition einzugeben.
 
-![](./images/cfdisk/cfdisk_06.png)
+![Größe der neuen Partition](./images/cfdisk/cfdisk_06.png)
 
 Jetzt muss zwischen einer *"primären"* oder einer *"erweiterten"* (extended) Partition entschieden werden. Wir entscheiden uns für eine primäre Partition.
 
-![](./images/cfdisk/cfdisk_07.png)
+![Art der neuen Partition](./images/cfdisk/cfdisk_07.png)
 
-Danach wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl ist `extended` zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt) in der die zwei zusätzlichen Partitionen anzulegen sind.
+Nach bestätigen der Auswahl erscheint die neue Partition in der Liste.
 
-![](./images/cfdisk/cfdisk_08.png)
+Anschließend wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl zur Art der Partition ist jetzt `extended` zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt), in der die zwei zusätzlichen Partitionen für Musik und Bilder anzulegen sind.  
+Der Ablauf für das Erstellen der beiden Partitionen entspricht dem oben gezeigten Vorgehen. Als einziger Unterschied entfällt die Auswahl zwischen primärer und erweiterter Partition, da nur noch logische Partitionen möglich sind.
 
-Zum Schluss sind die Partitionen für Musik und Bilder entsprechend dem oben gezeigten Vorgehen in der gewünschten Größe anzulegen. Da nur noch logische Partitionen möglich sind, entfällt die Auswahl zwischen primärer und erweiterter Partition.
-
-![](./images/cfdisk/cfdisk_09.png)
+![Fertige Partitionstabelle](./images/cfdisk/cfdisk_09.png)
 
 So sieht das Ergebnis aus.
 
-#### Partitionstyp
+**Partitionstyp**
 
-Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition und wählt den Befehl **`Type`** aus.
-
-![](./images/cfdisk/cfdisk_10.png)
-
+Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition und wählt den Befehl **`Type`** aus.  
 Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gewählt wird. In unserem Beispiel wählen wir für die Partitionen `/dev/sda5` und `/dev/sda6` den Typ *"7 HPFS/NTFS/exFAT"* aus. So kann das oben erwähnte Windows auf die Partition zugreifen.
 
-![](./images/cfdisk/cfdisk_11.png)
+![Partitionstyp auswählen](./images/cfdisk/cfdisk_11.png)
 
-#### Eine Partition bootfähig machen
+**Eine Partition bootfähig machen**
 
 Für Linux besteht kein Grund, eine Partition bootfähig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl **`Bootable`** gewählt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootfähig gemacht werden).
 
-#### Partitionstabelle schreiben
+**Partitionstabelle schreiben**
 
 Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **`Write`** gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.
 
-![](./images/cfdisk/cfdisk_12.png)
+![Partitionstabelle schreiben](./images/cfdisk/cfdisk_12.png)
 
-**Da damit alle Daten auf der entsprechenden Festplatte/Partition gelöscht werden** , sollte man sich seiner Sache wirklich sicher sein, bevor man **`yes`** eintippt und noch einmal mit **`Enter`** bestätigt.
+**Da damit alle Daten auf der entsprechenden Festplatte/Partition gelöscht werden**, sollte man sich seiner Sache wirklich sicher sein, bevor man **`yes`** eintippt und noch einmal mit **`Enter`** bestätigt.
 
-#### Cfdisk beenden
+**Cfdisk beenden**
 
 Mit dem Befehl **`Quit`** verlassen wir das Programm. Nach Beendigung von cfdisk und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.
 
@@ -252,4 +248,4 @@ Wird die Swap-Partition korrekt erkannt, starten wir den Computer neu.
 
 Jetzt kann die Installation beginnen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-03-08</div>
+<div id="rev">Zuletzt bearbeitet: 2022-05-19</div>

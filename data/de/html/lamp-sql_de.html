@@ -33,12 +33,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#mariadb-im-dateisystem">MariaDB im Dateisystem</a></li>
 <li><a href="#erstkonfiguration">Erstkonfiguration</a></li>
-<li><a href="#mariadb-cli">MariaDB CLI</a>
-<ul>
-<li><a href="#eine-datenbank-anlegen">Eine Datenbank anlegen</a></li>
-<li><a href="#einen-benutzer-anlegen">Einen Benutzer anlegen</a></li>
-<li><a href="#abfragen">Abfragen</a></li>
-</ul></li>
+<li><a href="#mariadb-cli">MariaDB CLI</a></li>
 <li><a href="#phpmyadmin">phpMyAdmin</a></li>
 <li><a href="#integration-in-systemd">Integration in Systemd</a></li>
 <li><a href="#mariadb-log">MariaDB Log</a></li>
@@ -146,12 +141,12 @@ Welcome to the MariaDB monitor.  [...]
 MariaDB [(none)]&gt;</code></pre>
 <p>Aus Sicherheitsgr&uuml;nden loggen wir uns nur zu Beginn als Benutzer <strong>root</strong> ein, um die Projektdatenbank, einen Benutzer f&uuml;r die allt&auml;glichen Arbeiten an dieser und einen Benutzer als Ersatz f&uuml;r root anzulegen.<br />
 Sp&auml;ter im Abschnitt <a href="https://manual.siduction.org/lamp-sql_de.html#phpmyadmin">phpMyAdmin</a> entziehen wir dem Benutzer root die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.</p>
-<h4 id="eine-datenbank-anlegen">Eine Datenbank anlegen</h4>
+<p><strong>Eine Datenbank anlegen</strong></p>
 <p>Wir sind noch im Terminal angemeldet und erstellen f&uuml;r unser Projekt eine neue Datenbank:</p>
 <pre><code>MariaDB [(none)]&gt; CREATE DATABASE sidu;
 Query OK, 1 row affected (0.002 sec)</code></pre>
 <p>Das ist schon alles. Falls wir diese Datenbank l&ouml;schen wollen lautet der Befehl <code>DROP DATABASE sidu;</code></p>
-<h4 id="einen-benutzer-anlegen">Einen Benutzer anlegen</h4>
+<p><strong>Einen Benutzer anlegen</strong></p>
 <p>Zuerst erstellen wir unseren Projekt-Benutzer mit dem Namen <strong>tomtom</strong> und weisen ihm ausschlie&szlig;lich alle Rechte an der Projekt-Datenbank <em>“sidu”</em> zu:</p>
 <pre><code>MariaDB [(none)]&gt; CREATE USER tomtom@localhost IDENTIFIED BY &#39;&lt;hier ein Passwort f&uuml;r tomtom eingeben&gt;&#39;;
 Query OK, 0 rows affected (0.002 sec)
@@ -174,7 +169,7 @@ Den Logout erledigt: <code>\q</code>.</p>
 <pre><code>MariaDB [(none)]&gt; \q
 Bey
 #</code></pre>
-<h4 id="abfragen">Abfragen</h4>
+<p><strong>Abfragen</strong></p>
 <p>Wir schauen uns das Ergebnis in Terminal an, diesmal als Benutzer <em>“chef”</em>.<br />
 Zuerst die Benutzer und dann die vorhandenen Datenbanken.</p>
 <pre><code>MariaDB [(none)]&gt; SELECT User,Host FROM mysql.user;
@@ -245,7 +240,9 @@ https://server1.org/phpmyadmin/</p>
 <img src="./images/phpmyadmin/root-rechte-3.png" alt="" /><figcaption>Rechte eines Benutzers verwalten (DB mysql)</figcaption>
 </figure>
 <p>Ausgew&auml;hlt wird ausschlie&szlig;lich die Methode <em>“SELECT”</em>. Ein Klick auf <code>OK</code> f&uuml;hrt den sql-Befehl aus.</p>
-<p><img src="./images/phpmyadmin/abmelden.png" /></p>
+<figure>
+<img src="./images/phpmyadmin/abmelden.png" alt="" /><figcaption>Abmelden von phpMyAdmin</figcaption>
+</figure>
 <p>Somit sind wir an Ziel und verlassen <em>phpMyAdmin</em> &uuml;ber das in der linken Spalte platzierte T&uuml;r-Icon.</p>
 <p>phpMyAdmin bietet umfangreiche M&ouml;glichkeiten zur Verwaltung der Datenbanken, ihrer Tabellen und deren Inhalte. Beachtet werden sollte der Reiter <code>Exportieren</code> im Hauptfenster, hinter dem sich die M&ouml;glichkeit zur Datensicherung findet.</p>
 <h3 id="integration-in-systemd">Integration in Systemd</h3>

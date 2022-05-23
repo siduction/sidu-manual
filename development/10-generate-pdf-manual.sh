@@ -83,24 +83,34 @@ langcode=$1
 #  - Create folder ../work and copy files.
 #  - Create the file list from the folder ../work.
 #  - pandoc (LaTex) Remove metatag from all files.
-#  - pandoc (LaTex) Insert "\pagebreak" at the end of each file.
-#  - pandoc (LaTex) Insert metatag only in the first file.
 #  - Remove file names in the link to other manual pages.
+#  - Fix images in text (prevent floating by pandoc).
+#  - pandoc (LaTex) Insert "\clearpage" at the end of each file.
+#  - pandoc (LaTex) Insert metatag only in the first file.
 #  - Create folder for the PDF.
 
-mkdir ../work/ || exit 1
+if [ -d ../work/ ]; then
+    rm -r ../work/* 2>/dev/null;
+    sleep 2
+else
+    mkdir ../work/;
+fi
 
 cp -pP ../data/$langcode/0* ../work/ 2>/dev/null
 
 LISTE=$(ls ../work/[[:digit:]]*)
 
-for i in $LISTE ; do sed -i -E '/^% \w/d' "$i"; done
-
-for i in $LISTE ; do sed -i -e '$ a \\\clearpage' "$i"; done
+for i in $LISTE ; do
+    sed -i -E '/^% \w/d' "$i";
+    sed -i -e "s/([-_./[:alnum:]]*$langcode.md#/(#/g" "$i";
+#    # pictures whith caption
+#    sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\caption{\2}\n\1\\end{figure}~' "$i";
+    # pictures whithout caption
+    sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\end{figure}~' "$i";
+    sed -i -e '$ a \\\clearpage' "$i";
+done
 
 sed -i -e "1 i% $titel" -e "1 i% $team" -e "1 i% $datum" ../work/0000-*
-
-for i in $LISTE ; do sed -i -e "s/([-_./[:alnum:]]*$langcode.md#/(#/g" "$i"; done
 
 if [ ! -d ../data/$langcode/pdf ]; then mkdir ../data/$langcode/pdf; fi
 

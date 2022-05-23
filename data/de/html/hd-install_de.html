@@ -88,25 +88,25 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 <li><p>Das Installationsprogramm startet man bequem &uuml;ber das Icon <img src="./images/install-hd/calamares-de_00.png" alt="calamares icon" /> am Desktop oder im Men&uuml;: <em>“System”</em> &gt; <em>“System installieren”</em>.</p></li>
 <li><p>Nach einem Doppelklick auf das Icon startet Calamares und wir sehen das “Willkommen” - Fenster.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_01.png" title="Willkommen" alt="" /><figcaption>calamares welcome</figcaption>
+<img src="./images/install-hd/calamares-de_01.png" title="Willkommen" alt="" /><figcaption>calamares Willkommen</figcaption>
 </figure>
 <p>Sofern eine Internetverbindung besteht, sollte hier bereits die richtige Sprache eingestellt sein.</p></li>
 <li><p>Im n&auml;chsten Fenster “Standort” besteht die M&ouml;glichkeit &Auml;nderungen zur <em>“Region”</em>, der <em>“Zeitzone”</em> und <em>“Systemsprache”</em>, sowie dem <em>“Format”</em> f&uuml;r das Datum und die Zahlen vorzunehmen.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_02.png" title="Standort" alt="" /><figcaption>calamares location</figcaption>
+<img src="./images/install-hd/calamares-de_02.png" title="Standort" alt="" /><figcaption>calamares Standort</figcaption>
 </figure></li>
 <li><p>Es folgen die Einstellungen zur Tastatur.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_03.png" title="Tastatur" alt="" /><figcaption>calamares keyboard</figcaption>
+<img src="./images/install-hd/calamares-de_03.png" title="Tastatur" alt="" /><figcaption>calamares Tastatur</figcaption>
 </figure>
 <p>Im oberen Teil wird die Tastatur graphisch dargestellt und die &Auml;nderungen werden sofort sichtbar. Ganz unten befindet sich eine Eingabezeile um das Tastaturlayout zu testen.</p></li>
 <li><p>Im n&auml;chsten Schritt erreichen wir die bereits oben erw&auml;hnte Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n) siduction verwendet.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_04.png" title="Partitionen" alt="" /><figcaption>calamares partitions</figcaption>
+<img src="./images/install-hd/calamares-de_04.png" title="Partitionen" alt="" /><figcaption>calamares Partitionen</figcaption>
 </figure>
 <p>In unserem Beispiel verwenden wir die <em>“Manuelle Partitionierung”</em> weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel ausw&auml;hlen. Nach einem Klick auf <code>Weiter</code> erscheint das n&auml;chste Fenster, in dem wir die einzelnen Partitionen ausw&auml;hlen und bearbeiten k&ouml;nnen.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_05.png" title="Partitionen bearbeiten" alt="" /><figcaption>calamares work on partitions</figcaption>
+<img src="./images/install-hd/calamares-de_05.png" title="Partitionen bearbeiten" alt="" /><figcaption>calamares Partitionen bearbeiten</figcaption>
 </figure>
 <p>Wir benutzen die Partitionen<br />
 <code>sda7</code> f&uuml;r <code>/</code> (root)<br />
@@ -115,11 +115,11 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 Die Swap-Partition <code>sda5</code> brauchen wir nicht bearbeiten, da sie w&auml;hrend der Installation automatisch erkannt und integriert wird.<br />
 Das Ergebnis unserer Bem&uuml;hungen sehen wir im n&auml;chsten Bild.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares partitions finish</figcaption>
+<img src="./images/install-hd/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares Partitionen Ergebnis</figcaption>
 </figure></li>
 <li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal mit <a href="https://manual.siduction.org/hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a> hinzugef&uuml;gt werden.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares users</figcaption>
+<img src="./images/install-hd/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares Benutzer</figcaption>
 </figure>
 <p>Vor der Verwendung der beiden Optionen<br />
 <em>“Automatisches Einloggen ohne Passwortabfrage”</em> und<br />
@@ -127,29 +127,33 @@ Das Ergebnis unserer Bem&uuml;hungen sehen wir im n&auml;chsten Bild.</p>
 wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein Sicherheitsrisiko dar (siehe auch <a href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">sudo</a>). Sind beide Optionen aktiviert ist die Eingabe von Passw&ouml;rtern nur noch eine Farce!</p></li>
 <li><p>Nach Bet&auml;tigen der Taste <code>Weiter</code> erscheint eine Zusammenfassung aller zuvor get&auml;tigten Eingaben. Jetzt besteht noch die M&ouml;glichkeit &uuml;ber <code>Zur&uuml;ck</code> &Auml;nderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf <code>Installieren</code> das kleine Warnfenster in dem wir die Installation best&auml;tigen m&uuml;ssen.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares summary</figcaption>
+<img src="./images/install-hd/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares Zusammenfassung</figcaption>
 </figure></li>
 <li><p>Nun startet die Installation. Dies dauert je nach Hardware einige Zeit. Der Fortschritt wird entsprechend angezeigt. Auch wenn es etwas l&auml;nger dauert, bitte die Installation nicht abbrechen, sondern dem Prozess Zeit geben.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_09.png" title="Installieren" alt="" /><figcaption>calamares install</figcaption>
+<img src="./images/install-hd/calamares-de_09.png" title="Installieren" alt="" /><figcaption>calamares Installieren</figcaption>
 </figure></li>
 <li><p>Am Ende erhalten wir die M&ouml;glichkeit zu einem Reboot in das neu installierte System.</p>
-<p><img src="./images/install-hd/calamares-de_10.png" title="Beenden" /></p>
+<figure>
+<img src="./images/install-hd/calamares-de_10.png" title="Beenden" alt="" /><figcaption>calamares Beenden</figcaption>
+</figure>
 <p>Vor dem Reboot die CD aus dem Laufwerk nehmen!</p></li>
 </ol>
 <h3 id="system-verschl&uuml;sseln">System verschl&uuml;sseln</h3>
 <p>Ab <em>siduction 2021.2 Farewell</em> besteht innerhalb des Installationsprogramms Calamares die M&ouml;glichkeit, das vollst&auml;ndige System in eine verschl&uuml;sselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers Grub befindet sich unverschl&uuml;sselt auf der “<em>BIOS-boot</em>”-Partition. Grub fragt bei jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte Installation ab, bevor das Bootmen&uuml; erscheint.<br />
 Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringf&uuml;gig anders. Bei der Auswahl einer der drei ersten Optionen, erscheint zus&auml;tzlich die Funktion “<em>Verschl&uuml;ssele System</em>”, in der wir auch gleich das Passwort eingeben.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_11.png" title="System verschl&uuml;sseln" alt="" /><figcaption>calamares encrypt system</figcaption>
+<img src="./images/install-hd/calamares-de_11.png" title="System verschl&uuml;sseln" alt="" /><figcaption>calamares System verschl&uuml;sseln</figcaption>
 </figure>
 <p>Benutzen wir “<em>Manuelle Partitionierung</em>”, so ben&ouml;tigen wir einen leeren, unbenutzten Bereich auf der Festplatte. Ist dieser nicht vorhanden, l&ouml;schen wir zuerst eine oder mehrere nicht mehr ben&ouml;tigte Partitionen. Dann erstellen wir die neue Partition.</p>
 <figure>
-<img src="./images/install-hd/calamares-de_12.png" title="Manuelle Partition verschl&uuml;sseln 1" alt="" /><figcaption>calamares, manual partitioning encrypt 1</figcaption>
+<img src="./images/install-hd/calamares-de_12.png" title="Manuelle Partition verschl&uuml;sseln 1" alt="" /><figcaption>calamares Manuelle Partition verschl&uuml;sseln 1</figcaption>
 </figure>
 <p>Im n&auml;chsten Schritt ist jetzt die Funktion <em>“Verschl&uuml;sseln”</em> ausw&auml;hlbar.<br />
 Wir geben unser Passwort ein und w&auml;hlen anschlie&szlig;end als Einh&auml;ngepunkt das Wurzelverzeichnis <strong><code>/</code></strong> aus.</p>
-<p><img src="./images/install-hd/calamares-de_13.png" title="Manuelle Partition verschl&uuml;sseln 2" /></p>
+<figure>
+<img src="./images/install-hd/calamares-de_13.png" title="Manuelle Partition verschl&uuml;sseln 2" alt="" /><figcaption>calamares Manuelle Partition verschl&uuml;sseln 2</figcaption>
+</figure>
 <p>Nach Beendigung der Partitionierung setzen wir die Installation mit dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 6 beschrieben, fort.</p>
 <h3 id="benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</h3>
 <p>Um neue Benutzer mit automatischer &Uuml;bernahme der Gruppenberechtigungen hinzuzuf&uuml;gen, f&uuml;hrt man folgenden Befehl als <strong>root</strong> aus:</p>

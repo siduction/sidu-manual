@@ -417,7 +417,7 @@ Dies ist der Grund, warum Debian-Builds apt nutzen und nicht andere Paketmanager
 
 Das APT-System bietet eine Reihe nützlicher Suchbefehle, mit denen die APT-Datenbank durchsucht und Informationen über die Pakete ausgegeben werden. Zusätzlich existieren einige Programme, die die Suche graphisch aufbereiten.
 
-#### Paketsuche im Terminal
+**Paketsuche im Terminal**
 
 Mit dem einfachen Befehl  
 **`apt search <Suchmuster>`**  
@@ -484,7 +484,7 @@ Der Befehl **`aptitude`** (im Terminal) öffnet das gleichnamige Programm in ein
 
 ![aptitude](./images/apt/aptitude.png)
 
-#### Graphische Paketsuche
+**Graphische Paketsuche**
 
 Das Programm **`packagesearch`** eignet sich hervorragend um nach geeigneten Programmen zu suchen. Meist wird packagesearch nicht automatisch installiert; deshalb:
 

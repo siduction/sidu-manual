@@ -70,7 +70,9 @@ Zwei Dinge, die iwd noch nicht kann, sind die Verbindung per WPA/WPA2 Enterprise
 <p><strong>iwd standalone (ohne NetworkManager)</strong></p>
 <p>Intels iwd bringt ein eigenes Kommandline-tool Namens <code>iwctl</code> mit. Bitte iwctl nur benutzen, wenn der NetworkManager und wpa_supplicant deinstalliert oder beide im systemd maskiert wurden.</p>
 <p>Als erstes sollte die Hilfe zu iwctl aufgerufen werden, um zu sehen was alles m&ouml;glich ist. Daf&uuml;r geben wir im Terminal den Befehl <code>iwctl</code> ein, dann am Eingabe-Prompt <code>help</code>.</p>
-<p><img src="./images/iwd/iwctl-help.png" /></p>
+<figure>
+<img src="./images/iwd/iwctl-help.png" alt="" /><figcaption>iwctl Hilfe</figcaption>
+</figure>
 <p>Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>[iwd]# device list</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>              Devices                             *</span>
