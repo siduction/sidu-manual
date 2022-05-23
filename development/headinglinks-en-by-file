@@ -13,7 +13,7 @@
 # 'Link: ' and put the text to be displayed between
 # the square brackets.
 #
-Generated on 2022-05-01
+Generated on 2022-05-23
 
 
 0000-welcome_en.md   # Welcome   Link: [](0000-welcome_en.md#welcome)
@@ -113,25 +113,12 @@ Generated on 2022-05-01
 0313-part-gdisk_en.md   ## Partitioning with gdisk   Link: [](0313-part-gdisk_en.md#partitioning-with-gdisk)
 0313-part-gdisk_en.md   ### Partitioning a hard disk   Link: [](0313-part-gdisk_en.md#partitioning-a-hard-disk)
 0313-part-gdisk_en.md   ### Use cgdisk   Link: [](0313-part-gdisk_en.md#use-cgdisk)
-0313-part-gdisk_en.md   #### Create partition   Link: [](0313-part-gdisk_en.md#create-partition)
-0313-part-gdisk_en.md   #### Delete partition   Link: [](0313-part-gdisk_en.md#delete-partition)
-0313-part-gdisk_en.md   #### Write GPT   Link: [](0313-part-gdisk_en.md#write-gpt)
 0313-part-gdisk_en.md   ### Formatting the partitions   Link: [](0313-part-gdisk_en.md#formatting-the-partitions)
 0313-part-gdisk_en.md   ### Booting with GPT-UEFI or GPT-BIOS   Link: [](0313-part-gdisk_en.md#booting-with-gpt-uefi-or-gpt-bios)
-0313-part-gdisk_en.md   #### Booting with UEFI   Link: [](0313-part-gdisk_en.md#booting-with-uefi)
-0313-part-gdisk_en.md   #### Booting with BIOS   Link: [](0313-part-gdisk_en.md#booting-with-bios)
 0313-part-gdisk_en.md   ### Advanced commands of gdisk   Link: [](0313-part-gdisk_en.md#advanced-commands-of-gdisk)
 0314-part-cfdisk_en.md   ## Partitioning with fdisk   Link: [](0314-part-cfdisk_en.md#partitioning-with-fdisk)
 0314-part-cfdisk_en.md   ### Naming storage devices   Link: [](0314-part-cfdisk_en.md#naming-storage-devices)
 0314-part-cfdisk_en.md   ### Use cfdisk   Link: [](0314-part-cfdisk_en.md#use-cfdisk)
-0314-part-cfdisk_en.md   #### The user interface   Link: [](0314-part-cfdisk_en.md#the-user-interface)
-0314-part-cfdisk_en.md   #### Delete a partition   Link: [](0314-part-cfdisk_en.md#delete-a-partition)
-0314-part-cfdisk_en.md   #### Resize a partition   Link: [](0314-part-cfdisk_en.md#resize-a-partition)
-0314-part-cfdisk_en.md   #### Creating a new partition   Link: [](0314-part-cfdisk_en.md#creating-a-new-partition)
-0314-part-cfdisk_en.md   #### Partition type   Link: [](0314-part-cfdisk_en.md#partition-type)
-0314-part-cfdisk_en.md   #### Make a partition bootable   Link: [](0314-part-cfdisk_en.md#make-a-partition-bootable)
-0314-part-cfdisk_en.md   #### Write partition table   Link: [](0314-part-cfdisk_en.md#write-partition-table)
-0314-part-cfdisk_en.md   #### Quit cfdisk   Link: [](0314-part-cfdisk_en.md#quit-cfdisk)
 0314-part-cfdisk_en.md   ### Formatting partitions   Link: [](0314-part-cfdisk_en.md#formatting-partitions)
 0315-part-lvm_en.md   ## LVM partitioning - Logical Volume Manager   Link: [](0315-part-lvm_en.md#lvm-partitioning---logical-volume-manager)
 0315-part-lvm_en.md   ### Six steps to logical volumes   Link: [](0315-part-lvm_en.md#six-steps-to-logical-volumes)
@@ -185,9 +172,6 @@ Generated on 2022-05-01
 0522-lamp-sql_en.md   ### MariaDB in the file system   Link: [](0522-lamp-sql_en.md#mariadb-in-the-file-system)
 0522-lamp-sql_en.md   ### Initial configuration   Link: [](0522-lamp-sql_en.md#initial-configuration)
 0522-lamp-sql_en.md   ### MariaDB CLI   Link: [](0522-lamp-sql_en.md#mariadb-cli)
-0522-lamp-sql_en.md   #### Create a database   Link: [](0522-lamp-sql_en.md#create-a-database)
-0522-lamp-sql_en.md   #### Create a user   Link: [](0522-lamp-sql_en.md#create-a-user)
-0522-lamp-sql_en.md   #### Queries   Link: [](0522-lamp-sql_en.md#queries)
 0522-lamp-sql_en.md   ### phpMyAdmin   Link: [](0522-lamp-sql_en.md#phpmyadmin)
 0522-lamp-sql_en.md   ### Integration in Systemd   Link: [](0522-lamp-sql_en.md#integration-in-systemd)
 0522-lamp-sql_en.md   ### MariaDB Log   Link: [](0522-lamp-sql_en.md#mariadb-log)
@@ -242,8 +226,6 @@ Generated on 2022-05-01
 0705-sys-admin-apt_en.md   ### Run full-upgrade   Link: [](0705-sys-admin-apt_en.md#run-full-upgrade)
 0705-sys-admin-apt_en.md   ### Why use apt exclusively   Link: [](0705-sys-admin-apt_en.md#why-use-apt-exclusively)
 0705-sys-admin-apt_en.md   ### Searching for program packages   Link: [](0705-sys-admin-apt_en.md#searching-for-program-packages)
-0705-sys-admin-apt_en.md   #### Package search in the terminal   Link: [](0705-sys-admin-apt_en.md#package-search-in-the-terminal)
-0705-sys-admin-apt_en.md   #### Graphical package search   Link: [](0705-sys-admin-apt_en.md#graphical-package-search)
 0706-sys-admin-apt-localmirr_en.md   ## Local APT mirror   Link: [](0706-sys-admin-apt-localmirr_en.md#local-apt-mirror)
 0706-sys-admin-apt-localmirr_en.md   ### Install server   Link: [](0706-sys-admin-apt-localmirr_en.md#install-server)
 0706-sys-admin-apt-localmirr_en.md   ### Client configuration   Link: [](0706-sys-admin-apt-localmirr_en.md#client-configuration)
@@ -285,7 +267,6 @@ Generated on 2022-05-01
 0715-systemd-path_en.md   ### Path unit options   Link: [](0715-systemd-path_en.md#path-unit-options)
 0715-systemd-path_en.md   ### Create path unit   Link: [](0715-systemd-path_en.md#create-path-unit)
 0715-systemd-path_en.md   ### Service unit for path   Link: [](0715-systemd-path_en.md#service-unit-for-path)
-0715-systemd-path_en.md   #### Create additional service unit   Link: [](0715-systemd-path_en.md#create-additional-service-unit)
 0715-systemd-path_en.md   ### Include path unit   Link: [](0715-systemd-path_en.md#include-path-unit)
 0715-systemd-path_en.md   ### Execute service unit manually   Link: [](0715-systemd-path_en.md#execute-service-unit-manually)
 0715-systemd-path_en.md   ### Sources systemd-path   Link: [](0715-systemd-path_en.md#sources-systemd-path)

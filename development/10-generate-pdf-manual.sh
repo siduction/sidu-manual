@@ -100,15 +100,27 @@ cp -pP ../data/$langcode/0* ../work/ 2>/dev/null
 
 LISTE=$(ls ../work/[[:digit:]]*)
 
-for i in $LISTE ; do
-    sed -i -E '/^% \w/d' "$i";
-    sed -i -e "s/([-_./[:alnum:]]*$langcode.md#/(#/g" "$i";
-#    # pictures whith caption
-#    sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\caption{\2}\n\1\\end{figure}~' "$i";
-    # pictures whithout caption
-    sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\end{figure}~' "$i";
-    sed -i -e '$ a \\\clearpage' "$i";
-done
+if [ $langcode = de ]; then
+    for i in $LISTE ; do
+        sed -i -E '/^% \w/d' "$i";
+        sed -i -e "s/([-_./[:alnum:]]*de.md#/(#/g" "$i";
+#        # pictures whith caption
+#        sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\caption{\2}\n\1\\end{figure}~' "$i";
+        # pictures whithout caption
+        sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\end{figure}~' "$i";
+        sed -i -e '$ a \\\clearpage' "$i";
+   done
+else
+    for i in $LISTE ; do
+        sed -i -E '/^% \w/d' "$i";
+        sed -i -e "s/([-_./[:alnum:]]*en.md#/(#/g" "$i";
+#        # pictures whith caption
+#        sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/en\3}\n\1\\caption{\2}\n\1\\end{figure}~' "$i";
+        # pictures whithout caption
+        sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/en\3}\n\1\\end{figure}~' "$i";
+        sed -i -e '$ a \\\clearpage' "$i";
+   done
+fi
 
 sed -i -e "1 i% $titel" -e "1 i% $team" -e "1 i% $datum" ../work/0000-*
 
