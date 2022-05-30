@@ -257,11 +257,11 @@ Do you want to continue? [Y/n] y
 During the installation, two dialogs will appear.  
 In the first one, at the beginning, we select *"apache2"* and confirm with *"ok"*.
 
-![PHPMyAdmin web server selection](./images/lamp-start/phpmyadmin01-en.png)
+![PHPMyAdmin web server selection](./images-en/lamp-start/phpmyadmin01-en.png)
 
 In the second one, at the end of the installation, we select *"yes"*.
 
-![PHPMyAdmin database](./images/lamp-start/phpmyadmin02-en.png)
+![PHPMyAdmin database](./images-en/lamp-start/phpmyadmin02-en.png)
 
 In the following dialogs we need the password for the database user **phpmyadmin** (see the chapter *Preparations*).
 

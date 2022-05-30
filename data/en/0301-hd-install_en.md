@@ -70,31 +70,31 @@ The text file can then be copied to the target systems `$HOME` directory and be 
 
 During the installation, the computer should preferably be connected to the Internet because Calamares uses the GeoIP service to determine default settings for localization and time.
 
-1. The installation program can be started comfortably via the ![calamares icon](./images/install-hd/calamares-en_00.png) icon on the desktop or in the menu: *"System"* > *"Install system"*.
+1. The installation program can be started comfortably via the ![calamares icon](./images-en/install-hd/calamares-en_00.png) icon on the desktop or in the menu: *"System"* > *"Install system"*.
 
 2. After a double click on the icon, Calamares starts and we see the "*Welcome*" window.
 
-   ![calamares welcome](./images/install-hd/calamares-en_01.png "Welcome")
+   ![calamares welcome](./images-en/install-hd/calamares-en_01.png "Welcome")
 
    If an internet connection is provided, the correct language should already be set here.
 
 3. In the next window ("*Location*"), you have the possibility to make changes to *region*, *timezone*, and *system language*, as well as the date and number *format*.
 
-   ![calamares location](./images/install-hd/calamares-en_02.png "Location") 
+   ![calamares location](./images-en/install-hd/calamares-en_02.png "Location") 
 
 4. Next, you can set up the keyboard.
 
-   ![calamares keyboard](./images/install-hd/calamares-en_03.png "Keyboard")
+   ![calamares keyboard](./images-en/install-hd/calamares-en_03.png "Keyboard")
 
    In the upper section, the keyboard is displayed graphically and the changes are visible immediately. At the bottom, there is an input line to test the keyboard layout.
 
 5. Then we reach the already mentioned partitioning, which determines the parts of the harddisk(s) siduction uses.
 
-   ![calamares partitions](./images/install-hd/calamares-en_04.png "Partitions")
+   ![calamares partitions](./images-en/install-hd/calamares-en_04.png "Partitions")
 
    In our example, we use *"Manual partitioning"* because the partitions have already been created in advance and we only need to select the correct installation target. After clicking *"Next"*, the following window appears where we can select and edit the individual partitions.
 
-   ![calamares work on partitions](./images/install-hd/calamares-en_05.png "Edit partitions")
+   ![calamares work on partitions](./images-en/install-hd/calamares-en_05.png "Edit partitions")
 
    We use the partitions:  
    sda7 for `/` (root)  
@@ -104,11 +104,11 @@ During the installation, the computer should preferably be connected to the Inte
    We do not need to edit the swap partition (sda5) since it will be automatically detected and integrated during the installation.  
    We can see the result of our efforts in the next image.
 
-   ![calamares partitions finish](./images/install-hd/calamares-en_06.png "Partitions result")
+   ![calamares partitions finish](./images-en/install-hd/calamares-en_06.png "Partitions result")
 
 6. Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with [adduser](#adduser).
 
-   ![calamares users](./images/install-hd/calamares-en_07.png "users")
+   ![calamares users](./images-en/install-hd/calamares-en_07.png "users")
 
    We explicitly recommend not to use the options  
    "*Log in automatically without password prompt*" and  
@@ -117,15 +117,15 @@ During the installation, the computer should preferably be connected to the Inte
 
 7. After pressing the *"Next"* button, a summary of all previously made entries appears. Now you still have the possibility to make changes via *"Back"*. If you are satisfied with the result, a click on *"Install"* opens the small warning window in which you have to confirm the installation.
 
-   ![calamares summary](./images/install-hd/calamares-en_08.png "Summary") 
+   ![calamares summary](./images-en/install-hd/calamares-en_08.png "Summary") 
 
 8. Now the installation starts. This takes some time depending on the hardware. The progress will be displayed respectively. Even if it takes a little longer, please do not abort the installation, but give the process time.
 
-   ![calamares install](./images/install-hd/calamares-en_09.png "Install")
+   ![calamares install](./images-en/install-hd/calamares-en_09.png "Install")
 
 9. At the end, we get the possibility to reboot into the newly installed system. 
 
-   ![calamares reboot](./images/install-hd/calamares-en_10.png "Exit")
+   ![calamares reboot](./images-en/install-hd/calamares-en_10.png "Exit")
 
    Remove the CD from the drive before rebooting!
 
@@ -134,15 +134,15 @@ During the installation, the computer should preferably be connected to the Inte
 Since *siduction 2021.2 Farewell*, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* is located (without encryption) on the *"BIOS-boot"* partition. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.  
 The partitioning described in step 5 above is now slightly different. When selecting one of the first three options, the function *"Encrypt system"* appears in addition, where we also enter the password at the same time.
 
-![calamares encrypt system](./images/install-hd/calamares-en_11.png "Encrypt system")
+![calamares encrypt system](./images-en/install-hd/calamares-en_11.png "Encrypt system")
 
 If we use *"Manual partitioning"*, we need an empty, unused area on the hard disk. In case this is not available, we first delete one or more partitions that are no longer needed. Then we create the new partition.
 
-![calamares, manual partitioning encrypt 1](./images/install-hd/calamares-en_12.png "Manual partition encrypt 1")
+![calamares, manual partitioning encrypt 1](./images-en/install-hd/calamares-en_12.png "Manual partition encrypt 1")
 
 In the next step, the function *"Encrypt"* is selectable now.
 
-![calamares, manual partitioning encrypt 2](./images/install-hd/calamares-en_13.png "Manual partition encrypt 2")
+![calamares, manual partitioning encrypt 2](./images-en/install-hd/calamares-en_13.png "Manual partition encrypt 2")
 
 We enter our password and then select the root directory `/` as mount point.  
 After finishing the partitioning, we continue the installation with the menu item *"User"* as described above in step 6.

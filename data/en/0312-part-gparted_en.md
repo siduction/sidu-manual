@@ -33,11 +33,11 @@ After clicking on the launcher, a dialog will open and ask for the root password
 
 When GParted starts, the program window opens and the available drives are read.
 
-![GParted start window](./images/gparted/gparted00-en.png)
+![GParted start window](./images-en/gparted/gparted00-en.png)
 
 The first menu item *"GParted"* opens a drop-down list which allows you to read the drives again, to select a drive or to quit the program.
 
-![GParted device overview](./images/gparted/gparted01-en.png)
+![GParted device overview](./images-en/gparted/gparted01-en.png)
 
 + **Edit**
 
@@ -58,7 +58,7 @@ The first menu item *"GParted"* opens a drop-down list which allows you to read 
 
   The two areas are highlighted in green.
 
-    ![GParted disk information](./images/gparted/gparted02-en.png)
+    ![GParted disk information](./images-en/gparted/gparted02-en.png)
 
 + **Device**
 
@@ -69,29 +69,29 @@ The first menu item *"GParted"* opens a drop-down list which allows you to read 
   2. Change the partition table type. It makes sense to change from **msdos-MBR** to **gpt-UEFI** or vice versa. Here, too, all data will be lost.  
     In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost. More information about UEFI and GPT can be found on the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
 
-  ![GParted partition table](./images/gparted/gparted03-en.png)
+  ![GParted partition table](./images-en/gparted/gparted03-en.png)
 
   The option `Attempt Data Rescue...` offers the chance to get the data despite a defective partition table.
 
-  ![GParted data recovery](./images/gparted/gparted04-en.png)
+  ![GParted data recovery](./images-en/gparted/gparted04-en.png)
 
 + **Partition**
 
   The menu item `Partition` is of utmost importance. For the partition selected below, the menu shows all available operations depending on whether the partition is mounted or unmounted. Note that some of the sub-items can also perform critical or dangerous actions.
 
-  ![GParted Data Recovery](./images/gparted/gparted07-en.png)
+  ![GParted Data Recovery](./images-en/gparted/gparted07-en.png)
 
 + **Create a new partition**
 
   In the toolbar, the **`New`** button allows you to create a new partition if an unallocated area was previously selected. The appearing window lets you specify the size and the file system type for a primary, extended, or logical partition.
 
-  ![GParted New Partition](./images/gparted/gparted05-en.png)
+  ![GParted New Partition](./images-en/gparted/gparted05-en.png)
 
 + **Resize/Move**
 
   The partition can be resized, enlarged, and moved with the mouse. Alternatively, enter the new values into the provided fields.
 
-  ![GParted resize](./images/gparted/gparted08-en.png)
+  ![GParted resize](./images-en/gparted/gparted08-en.png)
 
 + **If a mistake has been made**
 
@@ -99,13 +99,13 @@ The first menu item *"GParted"* opens a drop-down list which allows you to read 
   `Undo Last Operation` and  
   `Delete All Operations`. The area is highlighted in green.
 
-  ![Undo GParted](./images/gparted/gparted06-en.png)
+  ![Undo GParted](./images-en/gparted/gparted06-en.png)
 
 + **Apply**
 
   No changes have been made to the drives yet. If you are sure that all the intended changes are correct, select `Apply All Operations` in the `Edit` menu. The following dialog will appear, which should be confirmed.
 
-  ![GParted Execute and save](./images/gparted/gparted09-en.png)
+  ![GParted Execute and save](./images-en/gparted/gparted09-en.png)
 
   The duration of the operation depends on the size of the selected partition.
 

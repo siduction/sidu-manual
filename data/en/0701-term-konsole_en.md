@@ -105,7 +105,7 @@ As a slim alternative to sudo we recommend `doas`. The manual page [Doas - Alter
 Colored prompts on the terminal can save you from unpleasant or catastrophic errors if you are **root #** and perform a task you meant to do as **user $**.  
 That's why in siduction, by default, the **user $**'s prompt is green, blue, and white, and **root #**'s prompt has the word "root" displayed in red.  
 
-![Colored prompt](./images/terminal/prompt-colour-01.png)
+![Colored prompt](./images-en/terminal/prompt-colour-01.png)
 
 The focus when working with the terminal should be on the input and output of the commands and not on colored prompts. In siduction we nevertheless decided to use the colors to give users a warning when they are system administrators with **root** privileges.  
 
@@ -125,7 +125,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 
 The font and color code are immediately followed by the promt parts that are to receive this representation. The following figure shows the relation between the prompt parts and their abbreviations.
 
-![Prompt Code](./images/terminal/prompt-colour-02.png)
+![Prompt Code](./images-en/terminal/prompt-colour-02.png)
 
 The following table explains the values of the syntax "\[\033[**01;32**m\]", where the bold part determines the font attributes and the color.
 

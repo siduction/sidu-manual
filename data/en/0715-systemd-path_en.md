@@ -58,7 +58,7 @@ Based on the Apache web server configuration according to our manual page [LAMP 
 
 The figure *Path unit function* represents the dependencies of the systemd units of our example.
 
-![Path unit function](./images/systemd/path_01.png)
+![Path unit function](./images-en/systemd/path_01.png)
 
 The double-bordered part in the graphic illustrates the path unit's core function. The server1.path unit monitors the file `/var/www/changed` and activates the corresponding server1.service unit in case of changes. This in turn then performs the desired actions in the directory `/var/www/html/` and restores the file `/var/www/changed`.  
 The server1-watch.service unit outside the outline takes over the recursive monitoring of the Apache web server's `DocumentRoot`.

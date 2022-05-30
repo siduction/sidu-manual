@@ -127,7 +127,7 @@ The following output shows the result:
 total 45
 drwxr-xr-x 13 <user><group> 4096  4 May 2020 .
 drwxr-xr-x 20 root  root    4096  4 Oct 2020 ..
-drwxr-xr-x 2  <user><group> 4096  4 Oct 2020 images
+drwxr-xr-x 2  <user><group> 4096  4 Oct 2020 images-en
 drwx------ 19 <user><group> 4096 15 Oct 2020 .cache
 drwxr-xr-x 2  <user><group> 4096  4 Oct 2020 Desktop
 drwxr-xr-x 2  <user><group> 4096  4 Oct 2020 Documents

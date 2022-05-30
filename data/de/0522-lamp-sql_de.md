@@ -224,31 +224,31 @@ https://server1.org/phpmyadmin/
 
 Um, wie oben angeführt, dem Datenbank-Admin **root** die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin **chef** mit seinem Passwort.
 
-![Loginfenster](./images/phpmyadmin/login.png)
+![Loginfenster](./images-de/phpmyadmin/login.png)
 
 Im Startfenster sehen wir in der linken Spalte alle Datenbanken. Im Hauptteil wählen wir den Reiter **`Benutzerkonten`**.
 
-![Startfenster](./images/phpmyadmin/startfenster.png)
+![Startfenster](./images-de/phpmyadmin/startfenster.png)
 
 Die Benutzerkontenübersicht stellt alle Benutzer und in Kurzform deren Rechte dar. Wir wählen hier für den Benutzer **root** den Schalter **`Rechte ändern`**.
 
-![Benutzerkonten](./images/phpmyadmin/benutzerkonten.png)
+![Benutzerkonten](./images-de/phpmyadmin/benutzerkonten.png)
 
 Nun sehen wir für den Benutzer **root** die detaillierten Rechte. Hier entziehen wir ihm erst einmal alle Rechte (1a), erteilen dann im Bereich `Administration` das Recht *"Super"* (1b) und führen die Aktion aus, indem wir ganz unten rechts auf dieser Seite den `OK`-Button anklicken (im Screenshot nicht sichtbar). 
 
-![Rechte eines Benutzers verwalten (1a, 1b)](./images/phpmyadmin/root-rechte.png)
+![Rechte eines Benutzers verwalten (1a, 1b)](./images-de/phpmyadmin/root-rechte.png)
 
 Anschließend gehen wir über den `Datenbank`-Schalter (2) zur nächsten Seite.
 
-![Rechte eines Benutzers verwalten (2) ](./images/phpmyadmin/root-rechte-2.png)
+![Rechte eines Benutzers verwalten (2) ](./images-de/phpmyadmin/root-rechte-2.png)
 
 Nach Auswahl der Datenbank *"mysql"* und `OK` öffnet sich diesmal ein Fenster mit den detaillierten Rechten an der Datenbank *"mysql"* für den Benutzer **root**.
 
-![Rechte eines Benutzers verwalten (DB mysql) ](./images/phpmyadmin/root-rechte-3.png)
+![Rechte eines Benutzers verwalten (DB mysql) ](./images-de/phpmyadmin/root-rechte-3.png)
 
 Ausgewählt wird ausschließlich die Methode *"SELECT"*. Ein Klick auf `OK` führt den sql-Befehl aus.
 
-![Abmelden von phpMyAdmin](./images/phpmyadmin/abmelden.png)
+![Abmelden von phpMyAdmin](./images-de/phpmyadmin/abmelden.png)
 
 Somit sind wir an Ziel und verlassen *phpMyAdmin* über das in der linken Spalte platzierte Tür-Icon.
 

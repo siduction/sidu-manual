@@ -53,7 +53,7 @@ Intels iwd bringt ein eigenes Kommandline-tool Namens `iwctl` mit. Bitte iwctl n
 
 Als erstes sollte die Hilfe zu iwctl aufgerufen werden, um zu sehen was alles möglich ist. Dafür geben wir im Terminal den Befehl `iwctl` ein, dann am Eingabe-Prompt `help`.
 
-![iwctl Hilfe](./images/iwd/iwctl-help.png)
+![iwctl Hilfe](./images-de/iwd/iwctl-help.png)
 
 Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 

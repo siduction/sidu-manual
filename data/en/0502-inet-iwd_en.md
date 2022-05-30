@@ -53,7 +53,7 @@ Intel's iwd comes with its own command line tool called *iwctl*. Please only use
 
 First we should call the help of iwctl to see what is possible. For this, we enter the command **`iwctl`** into the terminal and then **`help`** into the input prompt.
 
-![iwctl help](./images/iwd/iwctl-help.png)
+![iwctl help](./images-en/iwd/iwctl-help.png)
 
 To find out which Wi-Fi interface we are using, we enter the following command:
 

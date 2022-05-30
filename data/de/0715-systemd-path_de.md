@@ -58,7 +58,7 @@ Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Hand
 
 Die Abbildung *path-Unit-Funktion* stellt die Abhängigkeiten der systemd-Units unseres Beispiels dar.
 
-![path-Unit Funktion](./images/systemd/path_01.png)
+![path-Unit Funktion](./images-de/systemd/path_01.png)
 
 Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der path-Unit. Die server1.path-Unit überwacht die Datei `/var/www/changed` und aktiviert bei Änderungen die zugehörige server1.service-Unit. Diese wiederum führt dann die gewünschten Aktionen im Verzeichnis `/var/www/html/` aus und stellt die Datei `/var/www/changed` zurück.  
 Die außerhalb der Umrandung liegende server1-watch.service-Unit übernimmt die rekursive Überwachung von *DocumentRoot* des Apache-Webservers.

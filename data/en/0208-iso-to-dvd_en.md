@@ -29,7 +29,7 @@ Occasional problems when burning the live DVD are mostly caused by the graphical
 Of course, you can also burn the DVD on Windows. The downloaded file must be burned to a DVD as an ISO image and not from Windows Explorer as a file.  
 There are several good programs that extend the built-in CD and DVD burning feature introduced with Windows Vista to burn ISO files. Here are just two examples.
 
-+ The current version of the open source software [cdrtfe](https://cdrtfe.sourceforge.io/cdrtfe/index_de.html) is compatible with Windows Vista, 7, 8, 10, and 11. The program can be used to burn ISO images, create data discs (CD, DVD, BD), and audio as well as video CD/DVDs. You can install it on Windows or download the zip archive and run `cdrtfe` after unpacking it without any further installation.  
-+ The closed-source software `CDBurnerXP` is a free program that can create data and audio CD/DVDs in addition to burning ISO images, and erases rewritable media if necessary. Available from [CDBurnerXP](https://cdburnerxp.de.uptodown.com/windows).
++ The current version of the open source software [cdrtfe](https://cdrtfe.sourceforge.io/cdrtfe/index_de.html) is compatible with Windows Vista, 7, 8, 10, and 11. The program can be used to burn ISO images-en, create data discs (CD, DVD, BD), and audio as well as video CD/DVDs. You can install it on Windows or download the zip archive and run `cdrtfe` after unpacking it without any further installation.  
++ The closed-source software `CDBurnerXP` is a free program that can create data and audio CD/DVDs in addition to burning ISO images-en, and erases rewritable media if necessary. Available from [CDBurnerXP](https://cdburnerxp.de.uptodown.com/windows).
 
 <div id="rev">Last edited: 2022/04/11</div>

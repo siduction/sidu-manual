@@ -12,7 +12,7 @@ A complete manifest file with a list of all installed programs for each release 
 
 ### Variants of the ISO
 
-siduction offers seven current images in 64-bit as live ISO to get started with Debian Sid. Five of the images come with a preinstalled desktop environment. Typically, an installation takes between 1 and 10 minutes, depending on the hardware.  
+siduction offers seven current images-en in 64-bit as live ISO to get started with Debian Sid. Five of the images come with a preinstalled desktop environment. Typically, an installation takes between 1 and 10 minutes, depending on the hardware.  
 The alternatives are:
 
 1. **KDE Plasma 64-bit**, live-ISO with about 2.8 GByte:

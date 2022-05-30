@@ -46,7 +46,7 @@ Do you want to continue? [Y]
 
 During the installation of apt-cacher the basic configuration is done automatically.
 
-![Configuration of apt-cacher](./images/apt-localmirror/apt-cacher-config.png)
+![Configuration of apt-cacher](./images-en/apt-localmirror/apt-cacher-config.png)
 
 Keep and confirm the recommended daemon mode *"daemon"*.
 

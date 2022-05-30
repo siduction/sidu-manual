@@ -482,7 +482,7 @@ gman/unstable,now 0.9.3-5.3 amd64  [installiert]
 
 Der Befehl **`aptitude`** (im Terminal) öffnet das gleichnamige Programm in einer ncurses-Umgebung. Es wird mit der Tastatur oder Maus bedient und bietet diverse Funktionen, die über die obere Menüleiste erreichbar sind. Die Nutzung von APT oder Aptitude ist Geschmackssache, allerdings ist Aptitude für das Tempo von Debian Unstable oft "zu schlau".
 
-![aptitude](./images/apt/aptitude.png)
+![aptitude](./images-de/apt/aptitude.png)
 
 **Graphische Paketsuche**
 

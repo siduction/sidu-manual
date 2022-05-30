@@ -56,7 +56,7 @@ We make a backup copy of the `*/etc/hosts*` file on the server and on the PC and
 
 Next, in *NetworkManager*, we enter the data for the server in the fields outlined in red. The method is changed from *"Automatic (DHCP)"* to *"Manual"* and in the address fields we enter the values mentioned at the beginning.
 
-![Server - Data entry in NetworkManager](./images/lamp-apache/server_lan.png)
+![Server - Data entry in NetworkManager](./images-en/lamp-apache/server_lan.png)
 
 Additionally, in the tab *"General"*, the option *"Automatically connect with priority"* should be activated.  
 Accordingly, we set the appropriate settings on the PC for the used LAN interface.

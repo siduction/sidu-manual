@@ -31,7 +31,7 @@ Choose an ISO to burn:
 
 After entering the number for the desired ISO image file, `burniso` checks the integrity if there is an associated `.md5` file in the same directory. If successful, the burning process starts immediately afterwards. Therefore you should make sure that the medium to be burned to is already inserted before starting the script.
 
-Burniso perfects and simplifies one single function for the user, namely burning ISO images. In addition, the command line programs offer all the possibilities to create media with data of various types on CD, DVD, and BD. In the following chapter we show some examples that are often used.
+Burniso perfects and simplifies one single function for the user, namely burning ISO images-en. In addition, the command line programs offer all the possibilities to create media with data of various types on CD, DVD, and BD. In the following chapter we show some examples that are often used.
 
 ### Burning with cdrdao wodim growisofs
 
