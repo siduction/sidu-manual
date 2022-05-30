@@ -89,7 +89,7 @@ legt bei Verwendung f&uuml;r das zuvor erstellte Verzeichnis den Zugriffsmodus i
 <p>Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Handbuchseite <a href="https://manual.siduction.org/lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a>, wollen wir das Zusammenspiel der path-Unit mit anderen systemd-Unit verdeutlichen.</p>
 <p>Die Abbildung <em>path-Unit-Funktion</em> stellt die Abh&auml;ngigkeiten der systemd-Units unseres Beispiels dar.</p>
 <figure>
-<img src="./images/systemd/path_01.png" alt="" /><figcaption>path-Unit Funktion</figcaption>
+<img src="./images-de/systemd/path_01.png" alt="" /><figcaption>path-Unit Funktion</figcaption>
 </figure>
 <p>Der doppelt umrandete Teil in der Graphik verdeutlicht die Kernfunktion der path-Unit. Die server1.path-Unit &uuml;berwacht die Datei <code>/var/www/changed</code> und aktiviert bei &Auml;nderungen die zugeh&ouml;rige server1.service-Unit. Diese wiederum f&uuml;hrt dann die gew&uuml;nschten Aktionen im Verzeichnis <code>/var/www/html/</code> aus und stellt die Datei <code>/var/www/changed</code> zur&uuml;ck.<br />
 Die au&szlig;erhalb der Umrandung liegende server1-watch.service-Unit &uuml;bernimmt die rekursive &Uuml;berwachung von <em>DocumentRoot</em> des Apache-Webservers.</p>

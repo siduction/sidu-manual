@@ -119,7 +119,7 @@ cfdisk /dev/sda</code></pre>
 <p><strong>Die Bedienoberfl&auml;che</strong></p>
 <p>Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten <strong><code>auf</code></strong> und <strong><code>ab</code></strong>, um Befehle auszuw&auml;hlen, die Pfeiltasten <strong><code>rechts</code></strong> und <strong><code>links</code></strong>. Mit der <strong><code>Enter</code></strong> Taste wird der Befehl ausgef&uuml;hrt.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_01.png" alt="" /><figcaption>cfdisk - Start</figcaption>
+<img src="./images-de/cfdisk/cfdisk_01.png" alt="" /><figcaption>cfdisk - Start</figcaption>
 </figure>
 <p>Wir haben auf der Beispielfestplatte drei Partitionen.</p>
 <table>
@@ -157,49 +157,49 @@ cfdisk /dev/sda</code></pre>
 <p>Um Platz zu schaffen, l&ouml;schen wir die Daten-Partition und verkleinern anschlie&szlig;end die Root-Partition.</p>
 <p>Um die Partition <code>/dev/sda3</code> zu l&ouml;schen, wird sie mit den auf-ab-Tasten markiert und der Befehl <strong><code>Delete</code></strong> mit den Pfeiltasten links-rechts gew&auml;hlt und durch <strong><code>Enter</code></strong> best&auml;tigt.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_02.png" alt="" /><figcaption>L&ouml;schen einer Partition</figcaption>
+<img src="./images-de/cfdisk/cfdisk_02.png" alt="" /><figcaption>L&ouml;schen einer Partition</figcaption>
 </figure>
 <p><strong>Gr&ouml;&szlig;e einer Partition &auml;ndern</strong></p>
 <p>Die Partition <code>/dev/sda2</code> wird markiert und der Befehl <strong><code>Resize</code></strong> ausgew&auml;hlt und best&auml;tigt.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_03.png" alt="" /><figcaption>Gr&ouml;&szlig;en&auml;nderung einer Partition</figcaption>
+<img src="./images-de/cfdisk/cfdisk_03.png" alt="" /><figcaption>Gr&ouml;&szlig;en&auml;nderung einer Partition</figcaption>
 </figure>
 <p>Anschlie&szlig;end erfolgt die Eingabe der neuen Gr&ouml;&szlig;e von <code>20G</code></p>
 <figure>
-<img src="./images/cfdisk/cfdisk_04.png" alt="" /><figcaption>Neue Gr&ouml;&szlig;e der Partition</figcaption>
+<img src="./images-de/cfdisk/cfdisk_04.png" alt="" /><figcaption>Neue Gr&ouml;&szlig;e der Partition</figcaption>
 </figure>
 <p><strong>Erstellen einer neuen Partition</strong></p>
 <p>Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf <strong><code>New</code></strong>, die zu best&auml;tigen ist.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_05.png" alt="" /><figcaption>Neue Partition anlegen</figcaption>
+<img src="./images-de/cfdisk/cfdisk_05.png" alt="" /><figcaption>Neue Partition anlegen</figcaption>
 </figure>
 <p>Anschlie&szlig;end ist die neue Gr&ouml;&szlig;e von <code>15G</code> f&uuml;r die Daten-Partition einzugeben.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_06.png" alt="" /><figcaption>Gr&ouml;&szlig;e der neuen Partition</figcaption>
+<img src="./images-de/cfdisk/cfdisk_06.png" alt="" /><figcaption>Gr&ouml;&szlig;e der neuen Partition</figcaption>
 </figure>
 <p>Jetzt muss zwischen einer <em>“prim&auml;ren”</em> oder einer <em>“erweiterten”</em> (extended) Partition entschieden werden. Wir entscheiden uns f&uuml;r eine prim&auml;re Partition.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_07.png" alt="" /><figcaption>Art der neuen Partition</figcaption>
+<img src="./images-de/cfdisk/cfdisk_07.png" alt="" /><figcaption>Art der neuen Partition</figcaption>
 </figure>
 <p>Nach best&auml;tigen der Auswahl erscheint die neue Partition in der Liste.</p>
 <p>Anschlie&szlig;end wird wieder der freie Plattenplatz markiert, best&auml;tigt und die voreingestellte gesamte Gr&ouml;&szlig;e ebenso best&auml;tigt. In der folgenden Auswahl zur Art der Partition ist jetzt <code>extended</code> zu w&auml;hlen. Dies erstellt die Erweiterte Partition (hier ‘Container’ genannt), in der die zwei zus&auml;tzlichen Partitionen f&uuml;r Musik und Bilder anzulegen sind.<br />
 Der Ablauf f&uuml;r das Erstellen der beiden Partitionen entspricht dem oben gezeigten Vorgehen. Als einziger Unterschied entf&auml;llt die Auswahl zwischen prim&auml;rer und erweiterter Partition, da nur noch logische Partitionen m&ouml;glich sind.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_09.png" alt="" /><figcaption>Fertige Partitionstabelle</figcaption>
+<img src="./images-de/cfdisk/cfdisk_09.png" alt="" /><figcaption>Fertige Partitionstabelle</figcaption>
 </figure>
 <p>So sieht das Ergebnis aus.</p>
 <p><strong>Partitionstyp</strong></p>
 <p>Um den Typ einer Partition zu &auml;ndern, markiert man die gew&uuml;nschte Partition und w&auml;hlt den Befehl <strong><code>Type</code></strong> aus.<br />
 Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gew&auml;hlt wird. In unserem Beispiel w&auml;hlen wir f&uuml;r die Partitionen <code>/dev/sda5</code> und <code>/dev/sda6</code> den Typ <em>“7 HPFS/NTFS/exFAT”</em> aus. So kann das oben erw&auml;hnte Windows auf die Partition zugreifen.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_11.png" alt="" /><figcaption>Partitionstyp ausw&auml;hlen</figcaption>
+<img src="./images-de/cfdisk/cfdisk_11.png" alt="" /><figcaption>Partitionstyp ausw&auml;hlen</figcaption>
 </figure>
 <p><strong>Eine Partition bootf&auml;hig machen</strong></p>
 <p>F&uuml;r Linux besteht kein Grund, eine Partition bootf&auml;hig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl <strong><code>Bootable</code></strong> gew&auml;hlt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootf&auml;hig gemacht werden).</p>
 <p><strong>Partitionstabelle schreiben</strong></p>
 <p>Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl <strong><code>Write</code></strong> gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.</p>
 <figure>
-<img src="./images/cfdisk/cfdisk_12.png" alt="" /><figcaption>Partitionstabelle schreiben</figcaption>
+<img src="./images-de/cfdisk/cfdisk_12.png" alt="" /><figcaption>Partitionstabelle schreiben</figcaption>
 </figure>
 <p><strong>Da damit alle Daten auf der entsprechenden Festplatte/Partition gel&ouml;scht werden</strong>, sollte man sich seiner Sache wirklich sicher sein, bevor man <strong><code>yes</code></strong> eintippt und noch einmal mit <strong><code>Enter</code></strong> best&auml;tigt.</p>
 <p><strong>Cfdisk beenden</strong></p>

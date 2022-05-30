@@ -89,21 +89,21 @@ Navigation is done using the arrow keys:</p>
 <h3 id="use-cgdisk">Use cgdisk</h3>
 <p>The boot command in a root terminal is: <strong><code>cgdisk /dev/sdX</code></strong>.</p>
 <p><code>cgdisk</code> starts with a warning message if no GPT is found.</p>
-<p>[warning message]](./images/cgdisk/cgdisk_00.png)</p>
+<p>[warning message]](./images-en/cgdisk/cgdisk_00.png)</p>
 <p>We need a total of six partitions for the two operating systems: two ROOT partitions, one shared DATA partition, and one SWAP partition for swap space. In addition, the <em>EFI system</em> partition already mentioned above (maximum 100MB) and the <em>BIOS-boot</em> partition (1MB) are required.<br />
 We recommend leaving the <code>/home</code> directory on the ROOT partition. The <code>/home</code> directory should be the place where the individual configurations are stored, and only these. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.</p>
 <p>The start screen:</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_01.png" alt="" /><figcaption>Start screen</figcaption>
+<img src="./images-en/cgdisk/cgdisk_01.png" alt="" /><figcaption>Start screen</figcaption>
 </figure>
 <p><strong>Create partition</strong></p>
 <p>We select <em>“New”</em> and confirm with <strong><code>Enter</code></strong>. Hitting <strong><code>Enter</code></strong> a second time, we accept the default first sector for the new partition. Then we enter the desired size of <code>100M</code> for the <em>EFI-System</em> partition and confirm.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_02.png" alt="" /><figcaption>New partition</figcaption>
+<img src="./images-en/cgdisk/cgdisk_02.png" alt="" /><figcaption>New partition</figcaption>
 </figure>
 <p>Now we are expected to enter the type code for the partition.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_03.png" alt="" /><figcaption>Type-Code</figcaption>
+<img src="./images-en/cgdisk/cgdisk_03.png" alt="" /><figcaption>Type-Code</figcaption>
 </figure>
 <p>After entering <strong><code>L</code></strong>, a long list of codes and their usage appears. The integrated search function simplifies the selection. For us, the following codes are necessary:<br />
 <em>“ef00”</em> for EFI system<br />
@@ -113,38 +113,38 @@ We recommend leaving the <code>/home</code> directory on the ROOT partition. The
 <em>“8300”</em> for Linux data</p>
 <p>So we enter <code>ef00</code> and confirm. Afterwards, we may optionally assign a name (label), which has been done in the example, and confirm the entry again. We proceed after the same pattern for the partitions BIOS-boot, Linux-root, and Swap. The next picture shows the result of our efforts. As we can see, there is still plenty of space for a second system and especially for a shared data partition.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_04.png" alt="" /><figcaption>First part</figcaption>
+<img src="./images-en/cgdisk/cgdisk_04.png" alt="" /><figcaption>First part</figcaption>
 </figure>
 <p>After the two partitions have been created, we can see the partitioning of the entire disk in the next image.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_05.png" alt="" /><figcaption>Sharing</figcaption>
+<img src="./images-en/cgdisk/cgdisk_05.png" alt="" /><figcaption>Sharing</figcaption>
 </figure>
 <p>The partitions that the two systems will use later during operation are color-coded.<br />
 At the beginning and the end, there are still small, free areas. They are created by aligning the partition to the block boundaries of the disk and can also appear between the partitions. With <em>“Align”</em> the value for the number of sectors can be changed. It is usually 2048 sectors for SSD and M2 disks and 512 sectors for old disks. <code>gdisk</code> reads the metadata of the hard disks and sets the value for the sectors afterwards. Therefore usually no change is necessary.</p>
 <p>Additional, detailed information about the partitions can be seen by entering the command <em>“Info”</em>.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_06.png" alt="" /><figcaption>Partition Details</figcaption>
+<img src="./images-en/cgdisk/cgdisk_06.png" alt="" /><figcaption>Partition Details</figcaption>
 </figure>
 <p>With <em>“Verify”</em> the partitioning is checked and possible errors are shown.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_07.png" alt="" /><figcaption>Partition Verify</figcaption>
+<img src="./images-en/cgdisk/cgdisk_07.png" alt="" /><figcaption>Partition Verify</figcaption>
 </figure>
 <p>Here, everything is ok.<br />
 If errors are reported, we mark the partition and use the command <em>“Info”</em>. Then we decide if the partition has to be deleted and recreated and if e.g. the size has to be changed as well. If a repair is not possible by these means, the <a href="https://manual.siduction.org/part-gdisk_en.html#advanced-commands-of-gdisk">Advanced commands of gdisk</a> are available for experienced users.</p>
 <p><strong>Delete partition</strong></p>
 <p>To delete a partition, we select it and use the command <em>“Delete”</em>.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_08.png" alt="" /><figcaption>Delete partition</figcaption>
+<img src="./images-en/cgdisk/cgdisk_08.png" alt="" /><figcaption>Delete partition</figcaption>
 </figure>
 <p>If necessary, we do the same with other partitions and then we can create the partitions again with changed values.</p>
 <p><strong>Write GPT</strong></p>
 <p>If the partitioning of the hard disk corresponds to our ideas, we check once more whether everyting is in order with the command <em>“Verify”</em>. If no errors are displayed, we choose <em>Write</em> and</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_09.png" alt="" /><figcaption>Write</figcaption>
+<img src="./images-en/cgdisk/cgdisk_09.png" alt="" /><figcaption>Write</figcaption>
 </figure>
 <p>may answer the security query with “yes”.</p>
 <figure>
-<img src="./images/cgdisk/cgdisk_10.png" alt="" /><figcaption>Security prompt</figcaption>
+<img src="./images-en/cgdisk/cgdisk_10.png" alt="" /><figcaption>Security prompt</figcaption>
 </figure>
 <p>The warning should be taken seriously because after pressing the <strong><code>Enter</code></strong> key, all data that was previously on the disk disappears into nirvana.</p>
 <p>Since <code>cgdisk</code> only creates partitions but no file systems, each of the new partitions must be formatted. With The <em>“Quit”</em> command terminates <code>cgdisk</code>.</p>

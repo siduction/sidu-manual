@@ -84,28 +84,28 @@ The text file can then be copied to the target systems <code>$HOME</code> direct
 <h3 id="the-calamares-installer">The Calamares installer</h3>
 <p>During the installation, the computer should preferably be connected to the Internet because Calamares uses the GeoIP service to determine default settings for localization and time.</p>
 <ol type="1">
-<li><p>The installation program can be started comfortably via the <img src="./images/install-hd/calamares-en_00.png" alt="calamares icon" /> icon on the desktop or in the menu: <em>“System”</em> &gt; <em>“Install system”</em>.</p></li>
+<li><p>The installation program can be started comfortably via the <img src="./images-en/install-hd/calamares-en_00.png" alt="calamares icon" /> icon on the desktop or in the menu: <em>“System”</em> &gt; <em>“Install system”</em>.</p></li>
 <li><p>After a double click on the icon, Calamares starts and we see the “<em>Welcome</em>” window.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_01.png" title="Welcome" alt="" /><figcaption>calamares welcome</figcaption>
+<img src="./images-en/install-hd/calamares-en_01.png" title="Welcome" alt="" /><figcaption>calamares welcome</figcaption>
 </figure>
 <p>If an internet connection is provided, the correct language should already be set here.</p></li>
 <li><p>In the next window (“<em>Location</em>”), you have the possibility to make changes to <em>region</em>, <em>timezone</em>, and <em>system language</em>, as well as the date and number <em>format</em>.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_02.png" title="Location" alt="" /><figcaption>calamares location</figcaption>
+<img src="./images-en/install-hd/calamares-en_02.png" title="Location" alt="" /><figcaption>calamares location</figcaption>
 </figure></li>
 <li><p>Next, you can set up the keyboard.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_03.png" title="Keyboard" alt="" /><figcaption>calamares keyboard</figcaption>
+<img src="./images-en/install-hd/calamares-en_03.png" title="Keyboard" alt="" /><figcaption>calamares keyboard</figcaption>
 </figure>
 <p>In the upper section, the keyboard is displayed graphically and the changes are visible immediately. At the bottom, there is an input line to test the keyboard layout.</p></li>
 <li><p>Then we reach the already mentioned partitioning, which determines the parts of the harddisk(s) siduction uses.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_04.png" title="Partitions" alt="" /><figcaption>calamares partitions</figcaption>
+<img src="./images-en/install-hd/calamares-en_04.png" title="Partitions" alt="" /><figcaption>calamares partitions</figcaption>
 </figure>
 <p>In our example, we use <em>“Manual partitioning”</em> because the partitions have already been created in advance and we only need to select the correct installation target. After clicking <em>“Next”</em>, the following window appears where we can select and edit the individual partitions.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_05.png" title="Edit partitions" alt="" /><figcaption>calamares work on partitions</figcaption>
+<img src="./images-en/install-hd/calamares-en_05.png" title="Edit partitions" alt="" /><figcaption>calamares work on partitions</figcaption>
 </figure>
 <p>We use the partitions:<br />
 sda7 for <code>/</code> (root)<br />
@@ -114,11 +114,11 @@ sda6 for <code>/data</code> together with the Linux system already present on sd
 We do not need to edit the swap partition (sda5) since it will be automatically detected and integrated during the installation.<br />
 We can see the result of our efforts in the next image.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_06.png" title="Partitions result" alt="" /><figcaption>calamares partitions finish</figcaption>
+<img src="./images-en/install-hd/calamares-en_06.png" title="Partitions result" alt="" /><figcaption>calamares partitions finish</figcaption>
 </figure></li>
 <li><p>Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with <a href="#adduser">adduser</a>.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_07.png" title="users" alt="" /><figcaption>calamares users</figcaption>
+<img src="./images-en/install-hd/calamares-en_07.png" title="users" alt="" /><figcaption>calamares users</figcaption>
 </figure>
 <p>We explicitly recommend not to use the options<br />
 “<em>Log in automatically without password prompt</em>” and<br />
@@ -126,15 +126,15 @@ We can see the result of our efforts in the next image.</p>
 They both represent a security risk on their own (see also <a href="https://manual.siduction.org/term-console_en.html#work-as-root">sudo</a>). If both options are enabled, entering passwords is just a farce!</p></li>
 <li><p>After pressing the <em>“Next”</em> button, a summary of all previously made entries appears. Now you still have the possibility to make changes via <em>“Back”</em>. If you are satisfied with the result, a click on <em>“Install”</em> opens the small warning window in which you have to confirm the installation.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_08.png" title="Summary" alt="" /><figcaption>calamares summary</figcaption>
+<img src="./images-en/install-hd/calamares-en_08.png" title="Summary" alt="" /><figcaption>calamares summary</figcaption>
 </figure></li>
 <li><p>Now the installation starts. This takes some time depending on the hardware. The progress will be displayed respectively. Even if it takes a little longer, please do not abort the installation, but give the process time.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_09.png" title="Install" alt="" /><figcaption>calamares install</figcaption>
+<img src="./images-en/install-hd/calamares-en_09.png" title="Install" alt="" /><figcaption>calamares install</figcaption>
 </figure></li>
 <li><p>At the end, we get the possibility to reboot into the newly installed system.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_10.png" title="Exit" alt="" /><figcaption>calamares reboot</figcaption>
+<img src="./images-en/install-hd/calamares-en_10.png" title="Exit" alt="" /><figcaption>calamares reboot</figcaption>
 </figure>
 <p>Remove the CD from the drive before rebooting!</p></li>
 </ol>
@@ -142,15 +142,15 @@ They both represent a security risk on their own (see also <a href="https://manu
 <p>Since <em>siduction 2021.2 Farewell</em>, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager <em>Grub</em> is located (without encryption) on the <em>“BIOS-boot”</em> partition. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.<br />
 The partitioning described in step 5 above is now slightly different. When selecting one of the first three options, the function <em>“Encrypt system”</em> appears in addition, where we also enter the password at the same time.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_11.png" title="Encrypt system" alt="" /><figcaption>calamares encrypt system</figcaption>
+<img src="./images-en/install-hd/calamares-en_11.png" title="Encrypt system" alt="" /><figcaption>calamares encrypt system</figcaption>
 </figure>
 <p>If we use <em>“Manual partitioning”</em>, we need an empty, unused area on the hard disk. In case this is not available, we first delete one or more partitions that are no longer needed. Then we create the new partition.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_12.png" title="Manual partition encrypt 1" alt="" /><figcaption>calamares, manual partitioning encrypt 1</figcaption>
+<img src="./images-en/install-hd/calamares-en_12.png" title="Manual partition encrypt 1" alt="" /><figcaption>calamares, manual partitioning encrypt 1</figcaption>
 </figure>
 <p>In the next step, the function <em>“Encrypt”</em> is selectable now.</p>
 <figure>
-<img src="./images/install-hd/calamares-en_13.png" title="Manual partition encrypt 2" alt="" /><figcaption>calamares, manual partitioning encrypt 2</figcaption>
+<img src="./images-en/install-hd/calamares-en_13.png" title="Manual partition encrypt 2" alt="" /><figcaption>calamares, manual partitioning encrypt 2</figcaption>
 </figure>
 <p>We enter our password and then select the root directory <code>/</code> as mount point.<br />
 After finishing the partitioning, we continue the installation with the menu item <em>“User”</em> as described above in step 6.</p>

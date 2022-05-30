@@ -89,7 +89,7 @@ sets the access mode in octal notation when used for the previously created dire
 <p>Based on the Apache web server configuration according to our manual page <a href="https://manual.siduction.org/lamp-apache_en.html#users-and-permissions">LAMP - Apache, users and rights</a>, let’s illustrate the interaction of path unit with another systemd unit.</p>
 <p>The figure <em>Path unit function</em> represents the dependencies of the systemd units of our example.</p>
 <figure>
-<img src="./images/systemd/path_01.png" alt="" /><figcaption>Path unit function</figcaption>
+<img src="./images-en/systemd/path_01.png" alt="" /><figcaption>Path unit function</figcaption>
 </figure>
 <p>The double-bordered part in the graphic illustrates the path unit’s core function. The server1.path unit monitors the file <code>/var/www/changed</code> and activates the corresponding server1.service unit in case of changes. This in turn then performs the desired actions in the directory <code>/var/www/html/</code> and restores the file <code>/var/www/changed</code>.<br />
 The server1-watch.service unit outside the outline takes over the recursive monitoring of the Apache web server’s <code>DocumentRoot</code>.</p>
