@@ -8,7 +8,7 @@ In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monito
 
 Nach dem Aufrufen des Terminals sieht man die Eingabeaufforderung "prompt":
 
-~~~sh
+~~~
 username@hostname:~$
 ~~~
 
@@ -18,7 +18,7 @@ Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausführ
 
 Ist die Eingabe korrekt, zeigt die Kommandozeile nun:
 
-~~~ sh
+~~~
 root@hostname:/home/username#
 ~~~
 

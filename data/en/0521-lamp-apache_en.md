@@ -41,7 +41,7 @@ We make a backup copy of the `*/etc/hosts*` file on the server and on the PC and
 
 + server `*/etc/hosts*`:
 
-  ~~~sh
+  ~~~
   cp /etc/hosts /etc/hosts_$(date +%f)
   echo "192.168.3.1 server1.org www.server1.org" >> /etc/hosts
   echo "192.168.3.10 pc1" >> /etc/hosts
@@ -49,7 +49,7 @@ We make a backup copy of the `*/etc/hosts*` file on the server and on the PC and
 
 + PC `*/etc/hosts*`:
 
-  ~~~sh
+  ~~~
   cp /etc/hosts /etc/hosts_$(date +%f)
   echo "192.168.3.1 server1.org www.server1.org" >> /etc/hosts
   ~~~
@@ -63,7 +63,7 @@ Accordingly, we set the appropriate settings on the PC for the used LAN interfac
 
 On the PC, we test the connection in the console with
 
-~~~sh
+~~~
 $ ping -c3 www.server1.org
 ~~~
 
@@ -92,13 +92,13 @@ Your activation links can be found in
 
 To enable or disable a *".conf"* file, we use `a2enconf` and `a2disconf`. This creates or removes the activation links. The command
 
-~~~sh
+~~~
 a2enconf NAME_OF_FILE.conf 
 ~~~
 
 activates the configuration. Deactivation is done accordingly with:
 
-~~~sh
+~~~
 a2disconf NAME_OF_FILE.conf 
 ~~~
 
@@ -106,7 +106,7 @@ We proceed in the same way for modules and virtual hosts with the commands `a2en
 
 The Apache web server reads the changed configuration with the command
 
-~~~sh
+~~~
 systemctl reload apache2.service
 ~~~
 
@@ -117,7 +117,7 @@ Now we return to our *LAMP test server for developers* and adjust the configurat
 
    It is one of the few exceptions for editing the `apache2.conf`. We add the following line at the beginning of the *"Global configuration"* section:
 
-	~~~sh
+	~~~
 	ServerName 192.168.3.1
 	~~~
 
@@ -128,13 +128,13 @@ Now we return to our *LAMP test server for developers* and adjust the configurat
    With the text editor of our choice, we create the file  
    `/etc/apache2/sites-available/server1.conf`, e.g.
 
-	~~~sh
+	~~~
 	mcedit /etc/apache2/sites-available/server1.conf
 	~~~
 
 	Then we insert the following content, save the file, and exit the editor.
 
-	~~~apache
+	~~~
 	<VirtualHost *:80>
 	ServerName server1.org
 	ServerAlias www.server1.org
@@ -147,7 +147,7 @@ Now we return to our *LAMP test server for developers* and adjust the configurat
 
 	Then we change the configuration to the new *VirtualHost* and announce the changes to the Apache web server:
 
-~~~sh
+~~~
 # a2ensite server1.conf 
    Enabling site server1.
 [...]
@@ -171,7 +171,7 @@ If a content management system (software for collaborative editing of website co
 
 1. Create the group and assign it to the user.
 
-	~~~sh
+	~~~
 	groupadd work
 	adduser USERNAME work
 	chgrp work /var/www/html
@@ -179,14 +179,14 @@ If a content management system (software for collaborative editing of website co
 
 To activate the new permissions you have to log out and log in again, or use the `newgrp` command as user.
 
-   ~~~sh
+   ~~~
    $ newgrp work
    ~~~
 
 2. Set SGID bit for `DocumentRoot`  
    so that all added directories and files inherit the group `work`.
 
-   ~~~sh
+   ~~~
    chmod g+s /var/www/html
    ~~~
 
@@ -194,7 +194,7 @@ To activate the new permissions you have to log out and log in again, or use the
    so that unauthorized people don't get access and the Apache web server runs properly.  
    Let's look at the current permissions:
 
-   ~~~sh
+   ~~~
    # ls -la /var/www/html
    total 24
    drwxr-sr-x 2 root work 4096 Jan 9 19:32 .
@@ -207,7 +207,7 @@ To activate the new permissions you have to log out and log in again, or use the
 
    For `DocumentRoot` we change the owner to *"www-data"*, give write permission to the group, and revoke read permission from everyone else as well (all recursively).
 
-   ~~~sh
+   ~~~
    chown -R www-data /var/www/html
    chmod -R g+w /var/www/html
    chmod -R o-r /var/www/html
@@ -215,7 +215,7 @@ To activate the new permissions you have to log out and log in again, or use the
 
    We check the result again.
 
-   ~~~sh
+   ~~~
    # ls -la /var/www/html
    total 24
    dr-xrws--x 2 www-data work 4096 Jan 9 19:32 .
@@ -235,7 +235,7 @@ To activate the new permissions you have to log out and log in again, or use the
 
 For static websites, a content management system is often not necessary and only constitutes another security risk and increased maintenance effort. In addition to the settings made before, the write permission to `DocumentRoot` can be revoked from the Apache web server to strengthen security because in case an attacker finds a hole in Apache, this will not give him write permission to `DocumentRoot`.
 
-~~~sh
+~~~
 chmod -R u-w /var/www/html
 ~~~
 
@@ -245,7 +245,7 @@ Important safeguards are already included in the file `/etc/apache2/apache2.conf
 
 The following three directives prevent access to the root file system and then release the two directories used by the Apache web server, "/usr/share" and "/var/www".
 
-~~~apacheconf 
+~~~
 <Directory />
 	Options FollowSymLinks
 	AllowOverride None
@@ -268,7 +268,7 @@ The options *"FollowSymLinks"* and *"Indexes"* constitute a security risk and sh
 
 The following directive disables the display of the files `.htaccess` and `.htpasswd`.
 
-~~~apacheconf
+~~~
 <FilesMatch "^\.ht">
 	Require all denied
 </FilesMatch>
@@ -283,14 +283,14 @@ The following directive disables the display of the files `.htaccess` and `.htpa
 
   It is recommended to remove *"FollowSymLinks"* and place all the project data below *"DocumentRoot"*. For the *"Indexes"* option, the entry has to be changed to
 
-  ~~~apacheconf
+  ~~~
   Options -Indexes
   ~~~
 
   if the display of the directory contents is **not** desired.  
   Alternatively, create an empty *index* file in the directory that is delivered to the client in place of the directory contents. For example, for the `upload` directory:
 
-  ~~~sh
+  ~~~
   $ echo "<!DOCTYPE html>" > /var/www/html/upload/index.html
        or
   $ echo "<?php" > /var/www/html/upload/index.php
@@ -301,7 +301,7 @@ The following directive disables the display of the files `.htaccess` and `.htpa
 
   we can use the `<Directory>` block to block all IP addresses except those listed in it.
 
-  ~~~apacheconf
+  ~~~
   <Directory "/var/www/html">
 	  Order deny,allow
 	  Deny from all
@@ -328,7 +328,7 @@ How to obtain a certificate is described, for example, in detail and in an easy-
 
 First we create the necessary folders inside `DocumentRoot`:
 
-~~~sh
+~~~
 cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/private
 ~~~
@@ -337,7 +337,7 @@ In these we put the certificate file `server1.org.crt` and the private key `serv
 
 Then we secure the directories against unauthorized access.
 
-~~~bash
+~~~
 /etc/apache2/# chown -R root.root ssl
 /etc/apache2/# chmod -R o-rwx ssl
 /etc/apache2/# chmod -R g-rwx ssl
@@ -347,7 +347,7 @@ Then we secure the directories against unauthorized access.
 
 Finally, we use the `ls` command to check:
 
-~~~sh
+~~~
 /etc/apache2/# ls -la ssl
    total 20
    drwx------ 5 root root 4096 Jan 25 18:17 .
@@ -384,7 +384,7 @@ The ssl module is activated in Apache by default. It is enough to edit the file 
 
 The extended `server1.conf` then has the following content:
 
-~~~apacheconf
+~~~
 <VirtualHost *:80>
     ServerName server1.org
     ServerAlias www.server1.org
@@ -423,7 +423,7 @@ The extended `server1.conf` then has the following content:
 
 In case our finished project is to be located at a hoster without access to `ServerRoot` (this is the rule), we can add a rewrite statement to the `.htaccess` file in `DocumentRoot` or create the file with the rewrite statement.
 
-~~~apacheconf
+~~~
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} !=on

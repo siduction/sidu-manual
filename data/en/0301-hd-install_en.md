@@ -54,14 +54,14 @@ For a dual-boot installation with *MAC*, it also makes sense to have a separate 
 
 The following console command creates a list of installed software packages. This list can be used to install an identical software selection on another computer or in the event of a new installation:
 
-~~~sh
+~~~
 ~# dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/username/installed.txt
 ~~~
 
 We recommend to copy this text file to a USB drive or a disk of your choice.  
 The text file can then be copied to the target systems `$HOME` directory and be used as a reference to install the required program packages. You can install the complete package list via
 
-~~~sh
+~~~
 ~# apt install $(/home/username/installed.txt)
 ~~~
 
@@ -151,7 +151,7 @@ After finishing the partitioning, we continue the installation with the menu ite
 
 To add new users with automatic takeover of group permissions, run the following command as **root**:
 
-~~~sh
+~~~
 ~# adduser <username>
 ~~~
 
@@ -161,13 +161,13 @@ siduction specific desktop icons (for the manual and IRC) must be added yourself
 
 To remove a user, enter:
 
-~~~sh
+~~~
 ~# deluser <username>
 ~~~
 
 More information:
 
-~~~sh
+~~~
 man adduser
 man deluser
 ~~~

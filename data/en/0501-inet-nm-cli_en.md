@@ -12,7 +12,7 @@ In the following examples we assume two configured connections: a Wi-Fi connecti
 
 If the network manager is not available on your system, you can install it. The following command will install all packages you need to configure every possible connection type (mobile broadband, Wi-Fi, and LAN connections), as well as the graphical KDE plasma widget for the NM. Please enter everything in one line and remember that you need **root** privileges.
 
-~~~sh
+~~~
 # apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
  plasma-nm network-manager-vpnc network-manager-openvpn
 ~~~

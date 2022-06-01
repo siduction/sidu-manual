@@ -19,7 +19,7 @@ siduction provides a grub2 file named `60_fll-fromiso` to generate a fromiso ent
 
  First, open a terminal, become **root** and install `grub2-fll-fromiso`:
 
-~~~sh
+~~~
 su
 apt-get update
 apt-get install grub2-fll-fromiso
@@ -27,7 +27,7 @@ apt-get install grub2-fll-fromiso
 
 Then, open the configuration file in an editor of your choice (`kwrite`, `mcedit`, `vim`, ...):
 
-~~~sh
+~~~
 mcedit /etc/default/grub2-fll-fromiso
 ~~~
 
@@ -35,7 +35,7 @@ In the lines that should be active, remove the comment sign (**#**) and replace 
 
 Example: compare this modified `grub2-fll-fromiso` with the default settings:
 
-~~~sh
+~~~
 # defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2's update-grub
 # installed at /etc/default/grub2-fll-fromiso
@@ -76,7 +76,7 @@ FLL_GRUB2_CHEATCODE="noeject nointro"
 
 Save the changes, close the editor and execute the following command as **root** in a terminal:
 
-~~~sh
+~~~
 update-grub
 ~~~
 

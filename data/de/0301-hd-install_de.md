@@ -54,14 +54,14 @@ Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartit
 
 Mit folgendem Konsolebefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allfälligen Neuinstallation installieren zu können:
 
-~~~sh
+~~~
 ~# dpkg -l|awk '/^ii/{ print $2 }'|grep -v -e ^lib -e -dev -e $(uname -r) >/home/username/installed.txt
 ~~~
 
 Am besten wird diese Textdatei auf einen USB-Stick oder einen Datenträger nach Wahl kopiert.  
 Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz verwendet, um die benötigten Programmpakete zu installieren. Die gesamte Paketliste kann per
 
-~~~sh
+~~~
 ~# apt install $(/home/username/installed.txt)
 ~~~
 
@@ -153,7 +153,7 @@ Nach Beendigung der Partitionierung setzen wir die Installation mit dem Menüpun
 
 Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als **root** aus:
 
-~~~sh
+~~~
 ~# adduser <nutzername>
 ~~~
 
@@ -163,7 +163,7 @@ siduction spezifische Desktopsymbole (für das Handbuch und den IRC) müssen sel
 
 So entfernt man einen Benutzer
 
-~~~sh
+~~~
 ~# deluser <nutzername>
 ~~~
 

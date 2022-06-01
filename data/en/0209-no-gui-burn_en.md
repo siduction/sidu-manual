@@ -160,7 +160,7 @@ This command fills the remaining free space on the DVD with zeros and closes the
 
 ~~~
 $ growisofs -M /dev/dvd=/dev/zero
-~~~~
+~~~
 
 <div id="rev">Last edited: 2022/04/11</div>
 

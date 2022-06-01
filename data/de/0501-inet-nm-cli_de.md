@@ -12,10 +12,9 @@ In den nachfolgenden Beispielen gehen wir von zwei konfigurierten Verbindungen a
 
 Falls der Networkmanager auf dem System nicht installiert ist, kann man dies nachholen. Im nachfolgenden Kommando sind alle Pakete die man braucht um alle möglichen Verbindungsarten zu konfigurieren (mobiles Breitband, WLAN und LAN Verbindungen), sowie das grafische KDE-Plasma-Widget für den NM. Bitte alles in eine Zeile eingeben.
 
-~~~sh
+~~~
 apt update
-apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
- plasma-nm network-manager-vpnc network-manager-openvpn
+apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp plasma-nm network-manager-vpnc network-manager-openvpn
 ~~~
 
 ### Network Manager verwenden

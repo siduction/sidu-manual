@@ -41,7 +41,7 @@ Wir legen von der Datei `/etc/hosts` auf dem Server und auf dem PC eine Sicherun
 
 + Server *"/etc/hosts"*:
 
-  ~~~sh
+  ~~~
   cp /etc/hosts /etc/hosts_$(date +%f)
   echo "192.168.3.1 server1.org   www.server1.org" >> /etc/hosts
   echo "192.168.3.10 pc1" >> /etc/hosts
@@ -49,7 +49,7 @@ Wir legen von der Datei `/etc/hosts` auf dem Server und auf dem PC eine Sicherun
 
 + PC *"/etc/hosts"*:
 
-  ~~~sh
+  ~~~
   cp /etc/hosts /etc/hosts_$(date +%f)
   echo "192.168.3.1 server1.org   www.server1.org" >> /etc/hosts
   ~~~
@@ -63,7 +63,7 @@ Sinngemäß nehmen wir am PC die entsprechenden Einstellungen für die verwendet
 
 Am PC testen wir die Verbindung in der Konsole mit
 
-~~~sh
+~~~
 $ ping -c3 www.server1.org
 ~~~
 
@@ -92,13 +92,13 @@ Ihre Aktivierungs-Links finden wir in
 
 Um eine .conf-Datei zu aktivieren bzw. deaktivieren benutzen wir die Befehle `a2enconf` und `a2disconf`. Das erstellt oder entfernt die Aktivierungs-Links.
 
-~~~sh
+~~~
 a2enconf NAME_DER_DATEI.conf 
 ~~~
 
 Aktiviert die Konfiguration. Die Deaktivierung erfolgt entsprechend mit:
 
-~~~sh
+~~~
 a2disconf NAME_DER_DATEI.conf 
 ~~~
 
@@ -106,7 +106,7 @@ In gleicher Weise verfahren wir bei Modulen und Virtual-Hosts mit den Befehlen `
 
 Der Apache Webserver liest mit dem Befehl
 
-~~~sh
+~~~
 systemctl reload apache2.service
 ~~~
 
@@ -118,7 +118,7 @@ Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück un
 
    Es ist eine der wenigen Ausnahmen die `apache2.conf` zu editieren. Wir fügen zu Beginn des Abschnitts *"Global configuration"* die folgende Zeile ein:
 
-   ~~~sh
+   ~~~
    ServerName 192.168.3.1
    ~~~
 
@@ -129,13 +129,13 @@ Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück un
    Mit dem Texteditor unserer Wahl erstellen wir die Datei  
    `/etc/apache2/sites-available/server1.conf` z. B.
 
-   ~~~sh
+   ~~~
    mcedit /etc/apache2/sites-available/server1.conf
    ~~~
 
    und fügen den folgenden Inhalt ein, speichern die Datei und beenden den Editor.
 
-   ~~~apache
+   ~~~
    <VirtualHost *:80>
    ServerName server1.org
    ServerAlias www.server1.org
@@ -148,7 +148,7 @@ Nun kommen wir wieder auf unseren *"LAMP-Testserver für Entwickler"* zurück un
 
    Anschließend stellen wir die Konfiguration auf den neuen *"VirtualHost"* um und geben die Änderungen dem Apache Webserver bekannt.
 
-   ~~~sh
+   ~~~
    # a2ensite server1.conf 
      Enabling site server1.
    [...]
@@ -172,7 +172,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 
 1. Gruppe anlegen und dem Benutzer zuweisen.
 
-   ~~~sh
+   ~~~
    groupadd work
    adduser <user> work
    chgrp work /var/www/html
@@ -180,14 +180,14 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 
    Um die neuen Rechte zu aktivieren, muss man sich einmal ab- und neu anmelden oder als Benutzer den Befehl newgrp verwenden.
 
-   ~~~sh
+   ~~~
    $ newgrp work
    ~~~
 
 2. SGID-Bit für *"DocumentRoot"* setzen,  
    damit alle hinzukommenden Verzeichnisse und Dateien die Gruppe `work` erben.
 
-   ~~~sh
+   ~~~
    chmod g+s /var/www/html
    ~~~
 
@@ -195,7 +195,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
    damit Unbefugte keinen Zugriff erhalten und der Apache Webserver einwandfrei läuft.  
    Wir schauen uns die derzeitigen Rechte an:
 
-   ~~~sh
+   ~~~
    # ls -la /var/www/html
    insgesamt 24
    drwxr-sr-x 2 root work  4096 9.Jan 19:32 .
@@ -208,7 +208,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 
    Wir ändern für *"DocumentRoot"* den Eigentümer zu *"www-data"*, geben der Gruppe Schreibrecht und entziehen allen anderen auch das Leserecht. Alles rekursiv.
 
-   ~~~sh
+   ~~~
    chown -R www-data /var/www/html
    chmod -R g+w /var/www/html
    chmod -R o-r /var/www/html
@@ -216,7 +216,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 
    Das Ergebnis überprüfen wir noch einmal.
 
-   ~~~sh
+   ~~~
    # ls -la /var/www/html
    insgesamt 24
    dr-xrws--x 2 www-data work  4096 9.Jan 19:32 .
@@ -236,7 +236,7 @@ Wird ein Content-Management-System (Software zur gemeinschaftlichen Bearbeitung 
 
 Bei statischen Webseiten ist ein Content-Management-System vielfach nicht notwendig und bedeutet nur ein weiteres Sicherheitsrisiko und erhöhten Wartungsaufwand. Zusätzlich zu den zuvor getätigten Einstellungen kann dem Apache-Webserver das Schreibrecht an *"DocumentRoot"* entzogen werden, um die Sicherheit zu stärken, denn für den Fall, dass ein Angreifer eine Lücke in Apache findet, erhält er dadurch keine Schreibrechte in *"DocumentRoot"*.
 
-~~~sh
+~~~
 chmod -R u-w /var/www/html
 ~~~
 
@@ -246,7 +246,7 @@ Wichtige Absicherungen enthält die Datei  `/etc/apache2/apache2.conf` bereits s
 
 Die nachfolgenden drei Direktiven verhindern den Zugang zum root-Dateisystem und geben dann die beiden vom Apache-Webserver verwendeten Verzeichnisse  `/usr/share` und  `/var/www` frei.
 
-~~~apacheconf 
+~~~
 <Directory />
 	Options FollowSymLinks
 	AllowOverride None
@@ -269,7 +269,7 @@ Die Optionen *"FollowSymLinks"* und *"Indexes"* bergen ein Sicherheitsrisiko und
 
 Die folgende Direktive unterbindet die Anzeige der Dateien  `.htaccess` und  `.htpasswd`.
 
-~~~apacheconf
+~~~
 <FilesMatch "^\.ht">
 	Require all denied
 </FilesMatch>
@@ -284,14 +284,14 @@ Die folgende Direktive unterbindet die Anzeige der Dateien  `.htaccess` und  `.h
 
   Es ist empfehlenswert *"FollowSymLinks"* zu entfernen und die Projektdaten alle unterhalb *"DocumentRoot"* abzulegen. Für die Option *"Indexes"* ist der Eintrag zu ändern in
 
-  ~~~apacheconf
+  ~~~
   Options -Indexes
   ~~~
 
   wenn die Anzeige des Verzeichnisinhaltes nicht erwünscht ist.  
   Alternativ erstellt man in dem Verzeichnis eine leere index-Datei, die an Stelle des Verzeichnisinhaltes an den Client ausgeliefert wird. Zum Beispiel für das upload-Verzeichnis:
 
-  ~~~sh
+  ~~~
   $ echo "<!DOCTYPE html>" > /var/www/html/upload/index.html
        oder
   $ echo "<?php" > /var/www/html/upload/index.php
@@ -302,7 +302,7 @@ Die folgende Direktive unterbindet die Anzeige der Dateien  `.htaccess` und  `.h
 
   können wir mit dem `<Directory>`-Block alle IP-Adressen sperren, außer die darin gelisteten.
 
-  ~~~apacheconf
+  ~~~
   <Directory "/var/www/html">
 	  Order deny,allow
 	  Deny from all
@@ -329,7 +329,7 @@ Wie man ein Zertifikat erlangt beschreibt die Webseite [HTTP-Guide](https://www.
 
 Wir legen zuerst die nötigen Ordner innerhalb *"DocumentRoot"* an:
 
-~~~sh
+~~~
 cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/privat
 ~~~
@@ -338,7 +338,7 @@ In diesen legen wir die Certifikatsdatei `server1.org.crt` und den privaten Schl
 
 Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.
 
-~~~sh
+~~~
 /etc/apache2/# chown -R root.root ssl
 /etc/apache2/# chmod -R o-rwx ssl
 /etc/apache2/# chmod -R g-rwx ssl
@@ -348,7 +348,7 @@ Dann sichern wir die Verzeichnisse gegen unbefugten Zugriff.
 
 Der ls-Befehl zur Kontrolle:
 
-~~~sh
+~~~
 /etc/apache2/# ls -la ssl
    insgesamt 20
    drwx------ 5 root root 4096 25. Jan 18:17 .
@@ -386,7 +386,7 @@ Das ssl-Modul ist in Apache per default aktviert. Es genügt die Datei
 
 Die erweiterte `server1.conf` weist dann folgenden Inhalt auf:
 
-~~~apacheconf
+~~~
 <VirtualHost *:80>
  ServerName server1.org
  ServerAlias www.server1.org
@@ -425,7 +425,7 @@ Die erweiterte `server1.conf` weist dann folgenden Inhalt auf:
 
 Für den Fall, dass unser fertiges Projekt später bei einem Hoster ohne Zugriff auf *"ServerRoot"* liegt (das ist die Regel), können wir in *"DocumentRoot"* die Datei `.htaccess` um eine Rewrite-Anweisung ergänzen bzw. die Datei mit der Rewrite-Anweisung anlegen.
 
-~~~apacheconf
+~~~
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} !=on

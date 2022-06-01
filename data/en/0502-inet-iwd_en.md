@@ -25,7 +25,7 @@ Further information can be found on the [Arch Linux wiki](https://wiki.archlinux
 
 1. The fastest and easiest way to use iwd with NetworkManager is to open a terminal and type this command:
 
-   ~~~txt
+   ~~~
    ~$ nmtui
    ~~~
 
@@ -35,7 +35,7 @@ Further information can be found on the [Arch Linux wiki](https://wiki.archlinux
 
    The following is a brief description of the fastest way to set up a network with the help of NetworkManager on the command line. Provided you have all the information, this one-liner is enough:
 
-   ~~~txt
+   ~~~
    ~$ nmcli dev wifi con "<ssid>" password <password> name "<name>"
    ~~~
 
@@ -43,7 +43,7 @@ Further information can be found on the [Arch Linux wiki](https://wiki.archlinux
 
    For example:
 
-   ~~~txt
+   ~~~
    nmcli dev wifi con "HomeOffice" password R3allY+v3ry+s3creT name "HomeOffice"
    ~~~
 
@@ -57,7 +57,7 @@ First we should call the help of iwctl to see what is possible. For this, we ent
 
 To find out which Wi-Fi interface we are using, we enter the following command:
 
-~~~txt
+~~~
 [iwd]# device list
               Devices                             *
 ---------------------------------------------------
@@ -70,14 +70,14 @@ In this case, it is *"wlan0"* and it is running (*"powered on"*) in *"station"* 
 
 Now we scan for an active network:
 
-~~~txt
+~~~
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ~~~
 
 After that, we can connect to our network:
 
-~~~txt
+~~~
 [iwd]# station wlan0 connect <ssid>
 ~~~
 
@@ -85,7 +85,7 @@ After that, we can connect to our network:
 
 We are asked for the password and we should then be connected to our network. We can check this with **`station list`** or **`station wlan0 get-networks `**.
 
-~~~txt
+~~~
 [iwd]# station list
     Devices in Station Mode
 ------------------------------
@@ -96,13 +96,13 @@ wlan0     connected
 
 The whole process can be abbreviated by the following command if you have all the necessary information!
 
-~~~txt
+~~~
 iwctl --passphrase <passphrase> station <device> connect <ssid>
 ~~~
 
 For example:
 
-~~~txt
+~~~
 ~$ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 ~~~
 
@@ -124,7 +124,7 @@ If you want to do this, there are two options. The second one is more sensible a
 
 If you want to use iwd without NetworkManager, you don't have to worry about that, but you have to remove NetworkManager and wpa_supplicant from the disk together with their configuration: 
 
-~~~txt
+~~~
 ~# apt purge network-manager wpasupplicant
 ~~~
 
@@ -141,7 +141,7 @@ If you want to use iwd without NetworkManager, you don't have to worry about tha
 
 Now just run the following commands as **root** in the terminal to use iwd:
 
-~~~txt
+~~~
 ~# apt update
 ~# apt install iwd
 ~# systemctl stop NetworkManager.service
@@ -158,7 +158,7 @@ We display the two configuration files.
 
 + `/etc/NetworkManager/conf.d/nm.conf`
 
-~~~txt
+~~~
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
 wiFi.backend=iwd
@@ -166,7 +166,7 @@ wiFi.backend=iwd
 
 + `/etc/iwd/main.conf`
 
-~~~txt
+~~~
 ~$ cat /etc/iwd/main.conf
 [General]
 EnableNetworkConfiguration=true
@@ -182,7 +182,7 @@ From version 1.21-2 on, iwd brings its own configuration file `/etc/iwd/main.con
 
 Please execute the following commands as **root** in the terminal:
 
-~~~txt
+~~~
 ~# apt update
 ~# apt install iwd
 ~# systemctl stop NetworkManager.service
@@ -198,7 +198,7 @@ We display the two configuration files.
 
 + `/etc/NetworkManager/conf.d/nm.conf`
 
-~~~txt
+~~~
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
 wiFi.backend=iwd
@@ -206,7 +206,7 @@ wiFi.backend=iwd
 
 + `/etc/iwd/main.conf`
 
-~~~txt
+~~~
 ~$ cat /etc/iwd/main.conf
 
 [...]
@@ -236,7 +236,7 @@ Or you can use the NetworkManager in the graphical user interface. See: [graphic
 + Unmask and start the **wpa_supplicant.service**.
 + Restart the **NetworkManager.service**.
 
-~~~txt
+~~~
 ~# systemctl stop NetworkManager.service
 ~# systemctl disable --now iwd.service
 ~# mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~

@@ -20,7 +20,7 @@ siduction liefert eine grub2-Datei mit der Bezeichnung `60_fll-fromiso`, um eine
 
  Als erstes öffnet man ein Terminal und wird **root**. Dann istalliert man die Konfigurationsdatei:
 
-~~~sh
+~~~
 su
 apt update
 apt install grub2-fll-fromiso
@@ -28,7 +28,7 @@ apt install grub2-fll-fromiso
 
 Im Anschluss öffnet man einen Editor der Wahl (kwrite, mcedit, vim ...):
 
-~~~sh
+~~~
 mcedit /etc/default/grub2-fll-fromiso
 ~~~
 
@@ -36,7 +36,7 @@ In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen **`#`** am Anfan
 
 Vergleiche diese geänderte grub2-fll-fromiso mit den Grundeinstellungen:
 
-~~~sh
+~~~
 # Defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2's update-grub
 # installed at /etc/default/grub2-fll-fromiso
@@ -77,7 +77,7 @@ FLL_GRUB2_CHEATCODE="noeject nointro"
 
 Speichere die Änderungen, schließe den Editor und führe als **root** folgenden Befehl in einem Terminal aus:
 
-~~~sh
+~~~
 update-grub
 ~~~
 

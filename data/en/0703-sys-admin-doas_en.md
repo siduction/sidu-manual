@@ -16,7 +16,7 @@ The only thing missing to be able to use Doas is the configuration file *`/etc/d
 The configuration is particularly simple if only one user account exists on the siduction system. A single line is sufficient to execute commands with root privileges using the prefix "doas ".  
 Log in to a terminal as **root** and execute the following command, replacing "tux" with the name of your user account. 
 
-~~~txt
+~~~
 tux@sidu:~$ su
 Password:
 root@sidu:/home/tux# echo "permit keepenv nopass tux" > /etc/doas.conf
@@ -41,13 +41,13 @@ Lisa is especially trustworthy, so she should be in charge of system upgrades.
 
 Now, as user **tux**, we use Doas in a terminal to edit the configuration file.
 
-~~~txt
+~~~
 tux@sidu:~$ doas mcedit /etc/doas.conf
 ~~~
 
 We convert the previously mentioned permissions into rules and add some comments to the file.
 
-~~~txt
+~~~
 # doas config file /etc/doas.conf
 
 # tux gets root privileges
@@ -68,7 +68,7 @@ permit persist lisa cmd apt args full-upgrade
 **Explanations**  
 **bob** may execute the scripts *script1* and *script2* inside Anne's **/home/anne/bin** directory (the former exclusively with the argument *-n*, the latter must not be given any argument). Specifying *args* in the rule line for the *script2* without a following argument forces the file to be called without an argument and thus without potentially malicious code. **bob** must supply the username when calling scripts, using the *-u* option.
 
-~~~txt
+~~~
 bob@sidu:~$ doas -u anne /home/anne/bin/script1 -n
 doas (bob@sidu) password:
 

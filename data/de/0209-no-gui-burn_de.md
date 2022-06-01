@@ -90,7 +90,7 @@ $ wodim dev=/dev/sr0 driveropts=burnfree,noforcespeed fs=14M speed=8 -dao -eject
 
 Falls man eine Fehlermeldung zu *"driveropts"* erhält, liegt dies daran, dass burnfree auf einigen Brennern nicht möglich ist. Dies wird gelöst, indem die driveropts aus dem Befehl entfernt werden.
 
-~~~txt
+~~~
 $ wodim dev=/dev/sr0 fs=14M speed=8 -dao -eject -v <ISO-Abbild.iso>
 ~~~
 
@@ -159,6 +159,6 @@ Mit diesem Befehl wird der verbliebene freie Platz auf der DVD mit Nullen gefül
 
 ~~~
 $ growisofs -M /dev/dvd=/dev/zero
-~~~~
+~~~
 
 <div id="rev">Zuletzt bearbeitet: 2022-03-08</div>

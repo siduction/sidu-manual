@@ -16,7 +16,7 @@ Um Doas benutzen zu können fehlt einzig die Konfigurationsdatei `/etc/doas.conf
 Besonders einfach ist die Konfiguration, wenn auf dem siduction System nur ein User-Account existiert. Eine einzige Zeile reicht um mittels vorangestelltem "doas " Befehle mit root-Rechten auszuführen.  
 Melde dich in einem Terminal als **root** an und führe folgenden Befehl aus, wobei "tux" durch den Namen deines Benutzer-Account zu ersetzen ist. 
 
-~~~txt
+~~~
 tux@sidu:~$ su
 Passwort:
 root@sidu:/home/tux# echo "permit keepenv nopass tux" > /etc/doas.conf
@@ -41,13 +41,13 @@ Lisa ist besonders vertrauenswürdig, weshalb sie für die Systemupgrades zustä
 
 Wir nutzen als **tux** sogleich Doas in einem Terminal um die Konfigurationsdatei zu bearbeiten.
 
-~~~txt
+~~~
 tux@sidu:~$ doas mcedit /etc/doas.conf
 ~~~
 
 Die zuvor genannten Berechtigungen setzen wir in Regeln um und ergänzen die Datei um einige Kommentare.
 
-~~~txt
+~~~
 # doas config file /etc/doas.conf
 
 # tux erhält root-Rechte

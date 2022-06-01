@@ -78,7 +78,7 @@ in eine Konsole ein. Danach sind Systemaktualisierungen sicher durchführbar. Zu
 
 ~~~
 apt update
-~~~ 
+~~~
 
 dann mit einer der beiden Varianten das System aktualisieren.
 

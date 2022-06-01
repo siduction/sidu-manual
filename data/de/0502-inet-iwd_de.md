@@ -25,7 +25,7 @@ Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinu
 
 1. Der schnellste und einfachste Weg iwd mit dem NetworkManager zu nutzen ist eine Konsole zu öffnen und diesen Befehl einzugeben:
 
-   ~~~txt
+   ~~~
    ~$ nmtui
    ~~~
 
@@ -35,7 +35,7 @@ Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinu
 
    Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des NetworkManagers in der Kommandozeile einzurichten. Vorausgesetzt man hat alle Informationen, reicht jener Einzeiler:
 
-   ~~~txt
+   ~~~
    ~$ nmcli dev wifi con "<ssid>" password password name "<name>"
    ~~~
 
@@ -43,7 +43,7 @@ Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinu
 
    Zum Beispiel:
 
-   ~~~txt
+   ~~~
    nmcli dev wifi con "HomeOffice" password W1rkl1chS3hrG3h31m name "HomeOffice"
    ~~~
 
@@ -57,7 +57,7 @@ Als erstes sollte die Hilfe zu iwctl aufgerufen werden, um zu sehen was alles m�
 
 Um heraus zu finden welche WiFi Schnittstelle wir nutzen geben wir folgenden Befehl ein.
 
-~~~txt
+~~~
 [iwd]# device list
               Devices                             *
 ---------------------------------------------------
@@ -70,14 +70,14 @@ In diesem Falle ist es *"wlan0"* und es läuft (*"Powered on"*) im *"station"* m
 
 Nun scannen wir nach einem aktiven Netzwerk
 
-~~~txt
+~~~
 [iwd]# station wlan0 scan
 [iwd]# station wlan0 get-networks
 ~~~
 
 Jetzt können wir uns zu unserem Netzwerk verbinden.
 
-~~~txt
+~~~
 [iwd]# station wlan0 connect SSID
 ~~~
 
@@ -85,7 +85,7 @@ Jetzt können wir uns zu unserem Netzwerk verbinden.
 
 Es wird noch das Passwort abgefragt und wir sollten mit unserem Netzwerk verbunden sein, dies können wir mit *"station list"* oder *"station wlan0 get-networks"* Nachprüfen.
 
-~~~txt
+~~~
 [iwd]# station list
      Devices in Station Mode
 -------------------------------
@@ -96,13 +96,13 @@ wlan0      connected
 
 Das ganze kann mit folgendem Befehl abgekürzt werden, so man alle nötigen Informationen hat!
 
-~~~txt
+~~~
 iwctl --passphrase <passphrase> station device connect SSID
 ~~~
 
 Zum Beispiel:
 
-~~~txt
+~~~
 ~$ iwctl --passphrase W1rkl1chS3hrG3h31m station wlan0 connect HomeOffice
 ~~~
 
@@ -124,7 +124,7 @@ Um den wpa_supplicant los zu werden, gibt es zwei Möglichkeiten, wobei die zwei
 
 Möchte man iwd ohne NetworkManager nutzen, so muss man sich darüber keine Gedanken machen, sondern den NetworkManager und wpa_supplicant mit 
 
-~~~txt
+~~~
 ~# apt purge network-manager wpasupplicant
 ~~~
 
@@ -143,7 +143,7 @@ mitsamt seiner Konfiguration von der Platte putzen.
 
 Jetzt einfach die folgenden Befehle als root im Terminal ausführen, um iwd zu nutzen:
 
-~~~txt
+~~~
 ~# apt update
 ~# apt install iwd
 ~# systemctl stop NetworkManager.service
@@ -160,15 +160,15 @@ Wir lassen uns die beiden Konfigurationsdateien anzeigen.
 
 + /etc/NetworkManager/conf.d/nm.conf
 
-~~~txt
+~~~
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
 wiFi.backend=iwd
-~~~~
+~~~
 
 + /etc/iwd/main.conf
 
-~~~txt
+~~~
 ~$ cat /etc/iwd/main.conf
 [General]
 EnableNetworkConfiguration=true
@@ -184,7 +184,7 @@ Ab Version 1.21-2 bringt iwd eine eigene Konfigurationsdatei `/etc/iwd/main.conf
 
 Bitte die folgenden Befehle als root im Terminal ausführen:
 
-~~~txt
+~~~
 ~# apt update
 ~# apt install iwd
 ~# systemctl stop NetworkManager.service
@@ -200,15 +200,15 @@ Wir lassen uns die beiden Konfigurationsdateien anzeigen.
 
 + /etc/NetworkManager/conf.d/nm.conf
 
-~~~txt
+~~~
 ~$ cat /etc/NetworkManager/conf.d/nm.conf
 [device]
 wiFi.backend=iwd
-~~~~
+~~~
 
 + /etc/iwd/main.conf
 
-~~~txt
+~~~
 ~$ cat /etc/iwd/main.conf
 
 [...]
@@ -238,7 +238,7 @@ Vorausgesetzt der NetworkManager und wpa_supplicant sind installiert, benötigen
 4. *"wpa_supplicant.service"* demaskieren und starten.
 5. *"NetworkManager.service"* wieder starten.
 
-~~~txt
+~~~
 ~# systemctl stop NetworkManager.service
 ~# systemctl disable --now iwd.service
 ~# mv /etc/NetworkManager/conf.d/nm.conf /etc/NetworkManager/conf.d/nm.conf~

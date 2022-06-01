@@ -78,7 +78,7 @@ After that, system updates can be performed safely. First, refresh the local pac
 
 ~~~
 apt update
-~~~ 
+~~~
 
 Then update the system with one of the two alternatives
 

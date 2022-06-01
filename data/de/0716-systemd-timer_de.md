@@ -27,7 +27,7 @@ Die service-Unit, die das Backup ausführt, wird von der timer-Unit aktiviert un
 
 Wir legen die Datei `backup.service` im Verzeichnis `/usr/local/lib/systemd/system/` mit folgendem Inhalt an.
 
-~~~txt
+~~~
 [Unit]
 Description="Command to backup my home directory"
 
@@ -42,7 +42,7 @@ Den String \<user\> bitte durch den eigenen User ersetzen.
 
 Wir legen die Datei `backup.timer` im Verzeichnis `/usr/local/lib/systemd/system/` mit folgendem Inhalt an.
 
-~~~txt
+~~~
 [Unit]
 Description="Backup my home directory"
 
@@ -74,7 +74,7 @@ Die im Beispiel enthaltene Option `Persistent=` speichert den Zeitpunkt, zu dem 
 
 Mit dem folgenden Befehl gliedern wir die timer-Unit in systemd ein.
 
-~~~txt
+~~~
 # systemctl enable backup.timer
 Created symlink
  /etc/systemd/system/timers.target.wants/backup.timer →
@@ -87,7 +87,7 @@ Der analoge Befehl für die service-Unit ist nicht notwendig und würde auch zu 
 
 Es wird nicht die timer-Unit, sondern die von ihr auszulösende service-Unit aufgerufen.
 
-~~~txt
+~~~
 # systemctl start backup.service
 ~~~
 

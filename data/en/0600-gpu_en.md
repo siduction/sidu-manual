@@ -12,7 +12,7 @@ We only cover the most common graphics cards here in the manual. Exotic or relat
 
 It is relatively easy to find out which graphics hardware is installed:
 
-~~~sh
+~~~
 inxi -G
 lspci | egrep -i "vga|3d|display"
 ~~~
@@ -66,13 +66,13 @@ Pretty much any video card that uses a [KMS](https://wiki.debian.org/KernelModes
 
 Since the non-free firmware is usually required for correct operation (AMD, Intel from Skylake on, and Nvidia from Fermi on), an entry similar to
 
-~~~sh
+~~~
 deb http://deb.debian.org/debian/ unstable main contrib non-free 
 ~~~
 
 should be set. To prevent subsequent problems with WiFi, network, Bluetooth, or similar, a 
 
-~~~sh
+~~~
 apt update && apt install firmware-linux-nonfree
 ~~~
 
@@ -106,25 +106,25 @@ Since these are proprietary drivers, contrib and non-free must be activated in t
 
 **GeForce 8000 and 9000 series**
 
-~~~sh
+~~~
 apt update && apt install nvidia-legacy-340xx-driver  
 ~~~
 
 **GeForce GF1xx Chipset, Fermi Cards**
 
-~~~sh
+~~~
 apt update && apt install nvidia-legacy-390xx-driver
 ~~~
 
 **Kepler, Maxwell, Pascal, and newer (GKxxx, GMxxx, GPxxx, TU1xx)**
 
-~~~sh
+~~~
 apt update && apt install nvidia-driver
 ~~~
 
 If this runs without errors, enter
 
-~~~sh
+~~~
 mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"
 \n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection'
  > /etc/X11/xorg.conf.d/20-nvidia.conf

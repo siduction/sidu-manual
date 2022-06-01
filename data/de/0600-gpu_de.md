@@ -12,7 +12,7 @@ Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotisch
 
 Welche Grafikhardware verbaut ist erfährt man relativ einfach
 
-~~~sh
+~~~
 inxi -G
 lspci | egrep -i "vga|3d|display"
 ~~~
@@ -68,13 +68,13 @@ So ziemlich jede Grafikkarte, welche einen [KMS](https://wiki.debian.org/KernelM
 
 Da für den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und Nvidia ab Fermi) die nicht-freie Firmware benötigt wird, sollte in /etc/apt/sources.list/debian.list ein Eintrag analog
 
-~~~sh
+~~~
 deb http://deb.debian.org/debian/ unstable main contrib non-free 
 ~~~
 
 gesetzt sein. Um sich nachfolgende Probleme mit WLAN, Netzwerk, Bluetooth oder Ähnliches zu ersparen, ist ein 
 
-~~~sh
+~~~
 apt update && apt install firmware-linux-nonfree
 ~~~
 
@@ -108,25 +108,25 @@ Da es sich hier aber um proprietäre Treiber handelt, muss in den Sources contri
 
 **GeForce 8000 and 9000 series**
 
-~~~sh
+~~~
 apt update && apt install nvidia-legacy-340xx-driver  
 ~~~
 
 **GeForce GF1xx Chipsatz, Fermi Cards**
 
-~~~sh
+~~~
 apt update && apt install nvidia-legacy-390xx-driver
 ~~~
 
 **Kepler, Maxwell, Pascal und neuer (GKxxx, GMxxx, GPxxx, TU1xx)**
 
-~~~sh
+~~~
 apt update && apt install nvidia-driver
 ~~~
 
 Wenn das fehlerfrei durchgelaufen ist, noch ein
 
-~~~sh
+~~~
 mkdir -p /etc/X11/xorg.conf.d; echo -e 'Section "Device"
 \n\tIdentifier "My GPU"\n\tDriver "nvidia"\nEndSection'
  > /etc/X11/xorg.conf.d/20-nvidia.conf
