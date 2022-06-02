@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Terminal - Kommandozeile</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -44,11 +48,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Ein Terminal, auch Konsole genannt, ist ein Programm, das es einem erm&ouml;glicht, durch direkt ausgef&uuml;hrte Befehle unmittelbar mit dem GNU/Linux Betriebssystem zu interagieren. Das Terminal, auch h&auml;ufig die <em>“Shell”</em> oder <em>“Kommandozeile”</em> genannt, ist ein &auml;u&szlig;erst m&auml;chtiges Werkzeug und den Aufwand wert, die Grundlagen seiner Handhabung zu erlernen.</p>
 <p>In siduction kann man das Terminal/die Konsole aufrufen, indem man das PC-Monitorsymbol rechts des Men&uuml;s anklickt oder im <em>Men&uuml;</em> &gt; <em>System</em> &gt; <em>Terminal</em> aufruft, oder, noch einfacher, in die Suchleiste des Men&uuml; <em>“kons”</em> oder <em>“term”</em> eintippt.</p>
 <p>Nach dem Aufrufen des Terminals sieht man die Eingabeaufforderung “prompt”:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">username@hostname</span>:~$</span></code></pre></div>
+<pre><code>username@hostname:~$</code></pre>
 <p><em>“username”</em> in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde <code>~</code> zeigt, man befindet sich in seinem Heimverzeichnis <code>/home/username</code> , und das Dollarzeichen (der Promt) <code>$</code> bedeutet, dass man im Terminal mit eingeschr&auml;nkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausf&uuml;hren soll.</p>
 <p>Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausf&uuml;hren. Root-Rechte erh&auml;lt man, indem man <code>su</code> eingibt und <code>Enter</code> dr&uuml;ckt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird w&auml;hrend der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten <a href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">Arbeit als root</a>)</p>
 <p>Ist die Eingabe korrekt, zeigt die Kommandozeile nun:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">root@hostname</span>:/home/username#</span></code></pre></div>
+<pre><code>root@hostname:/home/username#</code></pre>
 <p>Zu beachten ist, dass das Dollarzeichen <code>$</code> durch eine Raute <code>#</code> ersetzt wurde. In einem Terminal bedeutet die Raute immer, dass man mit <strong>root</strong>-Rechten angemeldet ist.<br />
 Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor dem Prompt ($ oder #) ausgelassen. Ein Befehl wie:</p>
 <pre><code># chmod g+w &lt;Datei&gt;</code></pre>
@@ -56,9 +60,9 @@ Wenn im Handbuch Kommandozeilenbefehle angegeben werden, werden die Angaben vor 
 <p>Ein weiterer Hinweis:<br />
 F&uuml;r User, die neu am Terminal arbeiten, ist es oft verwirrend, wenn nach dem Ausf&uuml;hren eines Befehls keine Meldung erscheint, sondern nur wieder der leere Prompt. Diese Funktion ist gewollt und bedeutet, dass der Befehl fehlerfrei ausgef&uuml;hrt wurde. (Im obigen Beispiel erhielten die Gruppenmitglieder Schreibrechte an der &lt;Datei&gt;.)</p>
 <h3 id="arbeit-als-root">Arbeit als root</h3>
-<warning>
+<p class="warning">
 <strong>Achtung:</strong> <br />W&auml;hrend man mit root-Rechten im Terminal eingeloggt ist, darf man alles, z. B. Dateien l&ouml;schen, ohne die das Betriebssystem nicht mehr funktioniert, uvm. Wenn man mit root-Rechten arbeitet, muss man sich dar&uuml;ber im Klaren sein, <em>was</em> man gerade macht, denn es ist leicht m&ouml;glich, dem Betriebssystem irreparable Sch&auml;den zuzuf&uuml;gen.
-</warning>
+</p>
 <p>Ber&uuml;cksichtigen muss man, dass alle Aktionen, soweit im Programm vorgesehen, auch mit root-Rechten ausgef&uuml;hrt werden. Der einfache copy-Befehl <strong><code>cp &lt;Quelle&gt; &lt;Ziel&gt;</code></strong> in einem User-Verzeichnis f&uuml;hrt zu Dateien mit dem Eigent&uuml;mer <strong>root</strong> im Zielverzeichnis. Das ist vermutlich nicht gewollt und auch nicht sinnvoll.</p>
 <p>Deshalb: <strong>Arbeiten als Root nur dort, wo es wirklich notwendig ist!</strong></p>
 <p><strong>&Uuml;ber su</strong></p>
@@ -86,9 +90,9 @@ Das Verhalten ist dem in Plasma &auml;hnlich, mit der Ausnahme, dass der Befehl 
 <li>XFCE und Xorg<br />
 Hier entfaltet der Befehl seine volle Macht, und man ist in der Lage das gew&uuml;nschte graphische Programm mit root-Rechten zu starten. Mann ist jedoch auch in der Pflicht zu beachten, wann und mit welchem Programm root-Rechte wirklich erforderlich sind.</li>
 </ul>
-<warning>
+<p class="warning">
 Unter keinen Umst&auml;nden sollten Produktivprogramme, die normalerweise mit Benutzerrechten gestartet werden, mit dieser Option als root hochgefahren werden: Internet-Browser, E-Mail-Programme, B&uuml;roprogramme u.a.
-</warning>
+</p>
 <p><strong>sudo ist nicht konfiguriert</strong></p>
 <p>Sudo steht nur im Live-Modus zur Verf&uuml;gung, da im Live-Modus kein Root-Passwort gesetzt ist.<br />
 <strong>Nach einer Installation ist sudo nicht aktiviert</strong>. Der Grund ist: Sollte ein Angreifer das Nutzer-Passwort abgreifen, erlangt er noch keine Super-User-Rechte und kann keine sch&auml;dlichen Ver&auml;nderungen am System durchf&uuml;hren.<br />

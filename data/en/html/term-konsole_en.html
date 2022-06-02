@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Terminal - command line</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -56,9 +60,9 @@ When command line commands are specified in the manual, the information before t
 <p>Another note:<br />
 For users who are new to the terminal, it is often confusing if no message appears after executing a command, but only the empty prompt again. This is intentional and means that the command was executed without errors. (In the example above, the group members were given write permissions to the &lt;file&gt;.)</p>
 <h3 id="work-as-root">Work as root</h3>
-<warning>
+<p class="warning">
 <strong>Caution</strong> <br />While logged into the terminal with root privileges, you are allowed to do anything, e.g. delete files, without which the operating system will stop working, and so on. When working with root privileges, you must be aware of <em>what</em> you are doing because it is easily possible to cause irreparable damage to the operating system.
-</warning>
+</p>
 <p>It must be taken into account that all actions, if provided for in the program, are also executed with <strong>root</strong> privileges. The simple copy command <strong><code>cp &lt;source&gt; &lt;destination&gt;</code></strong> in a user directory leads to files with the owner <strong>root</strong> in the destination directory. This is probably not intended and also not useful.</p>
 <p>Therefore: <strong>Work as root only where it is really necessary!</strong>.</p>
 <p><strong>About su</strong></p>
@@ -86,9 +90,9 @@ The behavior is similar to Plasma, except that the command (su-to-root) is suppo
 <li>Xfce and Xorg<br />
 Here the command unfolds its full power, and you are able to start the desired graphical program with <strong>root</strong> privileges. However, you are also in the obligation to consider, when and with which program root rights are really necessary.</li>
 </ul>
-<warning>
+<p class="warning">
 Under no circumstances should productive programs that are normally started with user rights be booted as root with this option: Internet browsers, e-mail programs, office programs, etc.
-</warning>
+</p>
 <p><strong>sudo is not configured</strong></p>
 <p>sudo is only available in live mode, because no root password is set there.<br />
 <strong>After an installation sudo is not enabled.</strong> The reason is: If an attacker grabs the user password, he does not yet gain super-user privileges and cannot make any harmful changes to the system.<br />

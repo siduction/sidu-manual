@@ -62,27 +62,27 @@ while (@QUELLE) {
     
         # Umformatierung der Warnungen
         #
-        # Eine Zeile mit ">" in "<warning> ... </warning>" Tag ändern.
+        # Eine Zeile mit ">" in "<p class="warning"> ... </p>" Tag ändern.
     if (/^> */) {
             # ">" enfernen, schließenden Tag anhängen und in $LAGER geben.
-        s#^> *(.*)$#$1</warning>#;
+        s#^> *(.*)$#$1</p>#;
         $LAGER = $_;
             # Vorherige Zeile wieder holen.
         $_ = pop @NEU;
         chomp($_);
        
-        if (/^<warning>.*<\/warning>$/) {
+        if (/^<p class=\"warning\">.*<\/p>$/) {
                 # Wenn Zeile mit vollständigen Tag, schließ-Tag entfernen
                 #  und zurück nach @NEU geben.
-            s#^(.*)</warning>#$1#;
+            s#^(.*)<\/p>#$1#;
             push @NEU,$_;
                 # HTML-Zeilenumbruch vor die neue Zeile setzen und weiter verarbeiten.
             $_ = "<br \/>$LAGER";
             
-        } elsif (/<\/warning>$/) {
+        } elsif (/<\/p>$/) {
                 # Wenn Zeile bereits eine zweite Zeile war, dann Schließ-Tag
                 #  entfernen, neue Zeile anhängen und weiter verarbeiten.
-            s#<\/warning>##;
+            s#<\/p>##;
             $_ = "$_ $LAGER";
              
         } else {
@@ -91,7 +91,7 @@ while (@QUELLE) {
         $_ = "$_\n";
         push @NEU,$_;
                 # Neue Zeile mit Start-Tag vervollständigen und weiter verarbeiten.
-        $_ = "<warning>$LAGER";
+        $_ = "<p class=\"warning\">$LAGER";
         }
     }
 

@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Systemd - timer</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -58,24 +62,24 @@ und die<br />
 <h3 id="service-unit-f&uuml;r-timer">service-Unit f&uuml;r timer</h3>
 <p>Die service-Unit, die das Backup ausf&uuml;hrt, wird von der timer-Unit aktiviert und kontrolliert und ben&ouml;tigt daher keine [Install] Sektion. Somit reicht die Beschreibung der Unit in der Sektion [Unit]. Ihre Sektion [Service] enth&auml;lt den auszuf&uuml;hrenden Befehl nach der Option <code>ExecStart=</code>.</p>
 <p>Wir legen die Datei <code>backup.service</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>[Unit]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>Description=&quot;Command to backup my home directory&quot;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>[Service]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>Type=oneshot</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/backup/home/</span></code></pre></div>
+<pre><code>[Unit]
+Description=&quot;Command to backup my home directory&quot;
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/backup/home/</code></pre>
 <p>Den String &lt;user&gt; bitte durch den eigenen User ersetzen.</p>
 <h3 id="timer-unit-anlegen">timer-Unit anlegen</h3>
 <p>Wir legen die Datei <code>backup.timer</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>[Unit]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>Description=&quot;Backup my home directory&quot;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>[Timer]</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>OnCalendar=*-*-* 19:00:00</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>Persistent=true</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>[Install]</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>WantedBy=timers.target</span></code></pre></div>
+<pre><code>[Unit]
+Description=&quot;Backup my home directory&quot;
+
+[Timer]
+OnCalendar=*-*-* 19:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target</code></pre>
 <p><strong>Erkl&auml;rungen</strong><br />
 Die timer-Unit muss zwingend die Sektion [Timer] enthalten, in der festgelegt wird wann und wie die zugeh&ouml;rige service-Unit ausgel&ouml;st wird.<br />
 Es stehen zwei Timer-Typen zur Verf&uuml;gung:</p>
@@ -94,14 +98,14 @@ Beide Optionen zusammen l&ouml;sen die zugeh&ouml;rige service-Unit 90 Sekunden 
 <p>Die im Beispiel enthaltene Option <code>Persistent=</code> speichert den Zeitpunkt, zu dem die service-Unit das letzte Mal ausgel&ouml;st wurde, als leere Datei im Verzeichnis <code>/var/lib/systemd/timers/</code>. Dies ist n&uuml;tzlich, um verpasste L&auml;ufe, als die Maschine ausgeschaltet war, nachzuholen.</p>
 <p><strong>timer-Unit eingliedern</strong></p>
 <p>Mit dem folgenden Befehl gliedern wir die timer-Unit in systemd ein.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a># systemctl enable backup.timer</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>Created symlink</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a> /etc/systemd/system/timers.target.wants/backup.timer →</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>   /usr/local/lib/systemd/system/backup.timer.</span></code></pre></div>
+<pre><code># systemctl enable backup.timer
+Created symlink
+ /etc/systemd/system/timers.target.wants/backup.timer →
+   /usr/local/lib/systemd/system/backup.timer.</code></pre>
 <p>Der analoge Befehl f&uuml;r die service-Unit ist nicht notwendig und w&uuml;rde auch zu einem Fehler f&uuml;hren, da in ihr keine [Install] Sektion enthalten ist.</p>
 <p><strong>timer-Unit manuell ausl&ouml;sen</strong></p>
 <p>Es wird nicht die timer-Unit, sondern die von ihr auszul&ouml;sende service-Unit aufgerufen.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a># systemctl start backup.service</span></code></pre></div>
+<pre><code># systemctl start backup.service</code></pre>
 <h3 id="timer-unit-als-cron-ersatz">timer-Unit als cron Ersatz</h3>
 <p>“cron” und “anacron” sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer k&ouml;nnen eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.</p>
 <p><strong>Nutzen</strong></p>

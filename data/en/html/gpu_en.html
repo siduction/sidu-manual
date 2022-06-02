@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Graphics driver nVidea, Intel, ATA/AMD</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -44,8 +48,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>We only cover the most common graphics cards here in the manual. Exotic or relatively old graphics hardware, as well as server graphics are not discussed.</p>
 <h3 id="open-source-xorg-driver">Open source Xorg driver</h3>
 <p>It is relatively easy to find out which graphics hardware is installed:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">inxi</span> -G</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">lspci</span> <span class="kw">|</span> <span class="fu">egrep</span> -i <span class="st">&quot;vga|3d|display&quot;</span></span></code></pre></div>
+<pre><code>inxi -G
+lspci | egrep -i &quot;vga|3d|display&quot;</code></pre>
 <p>This information is also very important if you have problems with the graphics and are looking for help in the forum or IRC.</p>
 <p><strong>The graphics system under Linux consists of 4 basic parts:</strong></p>
 <ul>
@@ -87,9 +91,9 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h3 id="video-driver-3d">Video driver 3D</h3>
 <p>3D acceleration is available under Linux for Intel, AMD, and nVidia graphics cards. How well the free drivers have 3D implemented depends somewhat on the graphics card itself. In general, it should be noted that almost all graphics cards require non-free firmware to run smoothly. This firmware is only available in the non-free repository in Debian because it is not DFSG compliant. If the correct firmware is installed, 3D support is available with Intel or AMD graphics cards without any further action. With nVidia graphics the story is a bit different. Older cards, which are classified as legacy cards by nVidia, work relatively well, although problems are always to be expected since the desktop used also plays a role. The free nouveau driver is developed without support from nVidia via <a href="https://en.wikipedia.org/wiki/Reverse_Engineering">reverse engineering</a>.</p>
 <p>Since the non-free firmware is usually required for correct operation (AMD, Intel from Skylake on, and Nvidia from Fermi on), an entry similar to</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">deb</span> http://deb.debian.org/debian/ unstable main contrib non-free </span></code></pre></div>
+<pre><code>deb http://deb.debian.org/debian/ unstable main contrib non-free </code></pre>
 <p>should be set. To prevent subsequent problems with WiFi, network, Bluetooth, or similar, a</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install firmware-linux-nonfree</span></code></pre></div>
+<pre><code>apt update &amp;&amp; apt install firmware-linux-nonfree</code></pre>
 <p>makes sense. This will install more firmwares than you might need, but that should not be a disadvantage.</p>
 <h3 id="nvidia-closed-source-driver">nVidia closed source driver</h3>
 <p><strong>Selection, installation with dkms support and integration in Xorg</strong>.</p>
@@ -112,17 +116,17 @@ Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx (Turing TU1xx); Geforce 30xx (Amp
 - nvidia-driver (for 7.)</code></pre>
 <p>Since these are proprietary drivers, contrib and non-free must be activated in the sources (like for the firmware for free drivers). You have to make sure in advance that the kernel headers are installed to match the running kernel. This is the case once linux-image-siduction-amd64 and linux-headers-siduction-amd64 are installed. In addition, the packages <em>gcc</em>, <em>make</em> and <em>dkms</em> are necessary. With <em>dkms</em> additionally installed (nVidia) kernel modules are automatically updated during a kernel update. After you have found out which nVidia card or which nVidia chip you have, you can install the driver as follows:</p>
 <p><strong>GeForce 8000 and 9000 series</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install nvidia-legacy-340xx-driver  </span></code></pre></div>
+<pre><code>apt update &amp;&amp; apt install nvidia-legacy-340xx-driver  </code></pre>
 <p><strong>GeForce GF1xx Chipset, Fermi Cards</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install nvidia-legacy-390xx-driver</span></code></pre></div>
+<pre><code>apt update &amp;&amp; apt install nvidia-legacy-390xx-driver</code></pre>
 <p><strong>Kepler, Maxwell, Pascal, and newer (GKxxx, GMxxx, GPxxx, TU1xx)</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install nvidia-driver</span></code></pre></div>
+<pre><code>apt update &amp;&amp; apt install nvidia-driver</code></pre>
 <p>If this runs without errors, enter</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">mkdir</span> -p /etc/X11/xorg.conf.d<span class="kw">;</span> <span class="bu">echo</span> -e <span class="st">&#39;Section &quot;Device&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="st">\n\tIdentifier &quot;My GPU&quot;\n\tDriver &quot;nvidia&quot;\nEndSection&#39;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a> <span class="op">&gt;</span> <span class="ex">/etc/X11/xorg.conf.d/20-nvidia.conf</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="kw">(</span><span class="ex">all</span> in one line<span class="kw">)</span></span></code></pre></div>
+<pre><code>mkdir -p /etc/X11/xorg.conf.d; echo -e &#39;Section &quot;Device&quot;
+\n\tIdentifier &quot;My GPU&quot;\n\tDriver &quot;nvidia&quot;\nEndSection&#39;
+ &gt; /etc/X11/xorg.conf.d/20-nvidia.conf
+
+(all in one line)</code></pre>
 <p>to tell Xorg to use this installed driver. After a reboot the system should hopefully boot up to the desktop. If problems occur, i.e. the desktop does not start, you should consult <strong><code>/var/log/Xorg.0.log</code></strong>.</p>
 <p>Since the legacy drivers 304.xx and 340.xx are no longer supported by nVidia, it is likely that they will not work with a new kernel or new Xorg.</p>
 <p>Notebooks with hybrid graphics Intel/nVidia, so-called Optimus hardware, are problematic. In the past, <a href="https://wiki.debian.org/Bumblebee">Bumblebee</a> was recommended, but this solution is anything but optimal. nVidia itself recommends configuring these setups with <a href="https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/">PRIME</a>. Our recommendation is to avoid such hardware if possible. We cannot provide setup tips for Optimus hardware here.</p>

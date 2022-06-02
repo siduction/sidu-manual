@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>ISO to USB stick / memory card</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -49,9 +53,9 @@ If <em>“persist”</em> is needed, we recommend the manual page <a href="https
 <li>A USB stick or SD card with a recommended capacity of at least 4 GB.</li>
 <li>Back up all your data on the devices you want to use for making the siduction live media in advance as well as the currently used operating system and your private data. A small typo or a hasty click can destroy all your data!</li>
 </ul>
-<warning>
+<p class="warning">
 Important information <br />The following methods will overwrite existing partition tables on the target media, causing all data to be lost. Take extreme care when selecting the target media and its drive label.
-</warning>
+</p>
 <h3 id="gui-application">GUI application</h3>
 <p><strong>For Linux™, RasPi™, MS Windows™, or Mac OS X™</strong></p>
 <p>The small tool <a href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> is available for all the above operating systems and is used to backup data and create the live medium. The program is open source and licensed under the MIT license. Download the necessary file for your operating system and install the program according to the instructions on the download page.</p>

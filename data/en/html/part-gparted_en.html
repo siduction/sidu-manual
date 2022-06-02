@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Partitioning with Gparted</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -131,9 +135,9 @@ In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, 
 <p>The duration of the operation depends on the size of the selected partition.</p></li>
 </ul>
 <h3 id="adjust-fstab">Adjust fstab</h3>
-<warning>
+<p class="warning">
 After the changes have been written to the drives, the /etc/fstab file must be checked and adjusted if necessary.
-</warning>
+</p>
 <p>See the manual page <a href="https://manual.siduction.org/part-uuid_en.html#the-fstab">Adjusting fstab</a>.<br />
 In a <strong>root</strong> terminal, enter the commands <strong><code>cat /etc/fstab</code></strong> as well as <strong><code>blkid</code></strong> and compare the UUIDs.</p>
 <pre><code>root@pc1:/# cat /etc/fstab
@@ -160,9 +164,9 @@ UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /mnt/TEST_res ext4 noauto,users,rw,noa
 /dev/sdb5: UUID=&quot;e2164479-3f71-4216-a4d4-af3321750322&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;2853e345-05&quot;
 /dev/sdb6: UUID=&quot;2ef32215-d545-4e12-bc00-d0099a218970&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;2853e345-06&quot;</code></pre>
 <p>We can see that the last entry in the <code>fstab</code> (mounted to <code>/mnt/TEST_res</code>) is no longer contained in the <code>blkid</code> list. Instead, we have two new partitions. In this example, the PC would perform a reboot but would not be able to mount <code>/mnt/TEST_res</code> and the two new partitions automatically. The boot process would be delayed considerably.</p>
-<warning>
+<p class="warning">
 If the UUID’s for the partitions of <strong>/</strong> (root), <strong>/home</strong>, and <strong>swap</strong> do not match the entries in <strong>/etc/fstab</strong>, it is mandatory to adjust the entries. Otherwise, the system will not start after a reboot.
-</warning>
+</p>
 <h3 id="changing-ntfs-partition-sizes-with-gparted">Changing NTFS partition sizes with GParted</h3>
 <p><strong>Resizing NTFS partitions requires an immediate reboot after execution. No further changes to partitions may be made before then. This will inevitably lead to errors.</strong></p>
 <ul>

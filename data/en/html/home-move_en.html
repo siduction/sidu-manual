@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>home move</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -37,9 +41,9 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="move-the-home-directory">Move the home directory</h2>
-<warning>
+<p class="warning">
 Important information <br />An existing <strong>/home</strong> should not be used or shared with another distribution as there may/will be conflicts with the configuration files.
-</warning>
+</p>
 <p>Therefore, we generally advise against creating a <strong>/home</strong> partition.<br />
 The directory <code>/home</code> should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created, and this should be mounted under <code>/data</code>, for example. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.<br />
 If data is to be shared for parallel installations, this procedure is particularly advisable.</p>
@@ -127,7 +131,7 @@ The following output shows the result:</p>
 total 45
 drwxr-xr-x 13 &lt;user&gt;&lt;group&gt; 4096  4 May 2020 .
 drwxr-xr-x 20 root  root    4096  4 Oct 2020 ..
-drwxr-xr-x 2  &lt;user&gt;&lt;group&gt; 4096  4 Oct 2020 images
+drwxr-xr-x 2  &lt;user&gt;&lt;group&gt; 4096  4 Oct 2020 images-en
 drwx------ 19 &lt;user&gt;&lt;group&gt; 4096 15 Oct 2020 .cache
 drwxr-xr-x 2  &lt;user&gt;&lt;group&gt; 4096  4 Oct 2020 Desktop
 drwxr-xr-x 2  &lt;user&gt;&lt;group&gt; 4096  4 Oct 2020 Documents
@@ -144,9 +148,9 @@ drwxr-xr-x 2  &lt;user&gt;&lt;group&gt; 4096  4 Oct 2020 templates</code></pre>
 <p><strong>Delete in /home</strong>.</p>
 <p>For this action, all program windows should be closed, except for the terminal we use.<br />
 Depending on the desktop environment, various applications use the directories created by default during installation (e.g. <code>Music</code>) to store files there. In order to enable the access of the applications to the directories, these must be linked back, thus refer to the corresponding directories of the <strong>/data</strong> partition.</p>
-<warning>
+<p class="warning">
 Please check the commands carefully before executing them so you don’t accidentally delete something wrong.
-</warning>
+</p>
 <pre><code>~$ rm -r Desktop/ &amp;&amp; ln -s /Data/Desktop/ ./Desktop
 ~$ rm -r Documents/ &amp;&amp; ln -s /Data/Documents/ ./Documents
 ~$ rm -r Downloads/ &amp;&amp; ln -s /Data/Downloads/ ./Downloads

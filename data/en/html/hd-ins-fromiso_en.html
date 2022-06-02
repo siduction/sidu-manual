@@ -7,16 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>fromiso</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: left; max-width: 1000px; padding: 4%; border: #CCC thin solid; color: black;}
-p               {line-height: 1.4;}
-code            {display: block; background-color: #EEE; padding: 0.5em; border: #CCC thin solid; border-radius: 3px;}
-p code, li code {display: inline; color: #000; padding: 0.15em; font-size: 1.2em;}
-pre code        {display: block; color: #000; padding: 0.15em; font-size: 1.2em;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
 table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
 hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
 figcaption      {font-size: 0.8em; color: #888;}
-warning         {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
-img             {border: 0.1em solid #CCC;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
 a               {color: black; text-decoration: underline;}
 a:visited       {color: #FF6600;}
 a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
@@ -49,51 +53,51 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h3 id="fromiso-with-grub2">fromiso with grub2</h3>
 <p>siduction provides a grub2 file named <code>60_fll-fromiso</code> to generate a fromiso entry in the grub2 menu. The configuration file for fromiso can be found in the package <code>grub2-fll-fromiso</code>, with the path <code>/etc/default/grub2-fll-fromiso</code>.</p>
 <p>First, open a terminal, become <strong>root</strong> and install <code>grub2-fll-fromiso</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">su</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">apt-get</span> install grub2-fll-fromiso</span></code></pre></div>
+<pre><code>su
+apt-get update
+apt-get install grub2-fll-fromiso</code></pre>
 <p>Then, open the configuration file in an editor of your choice (<code>kwrite</code>, <code>mcedit</code>, <code>vim</code>, …):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">mcedit</span> /etc/default/grub2-fll-fromiso</span></code></pre></div>
+<pre><code>mcedit /etc/default/grub2-fll-fromiso</code></pre>
 <p>In the lines that should be active, remove the comment sign (<strong>#</strong>) and replace the default statements inside the double quotes (<strong>"</strong>) with your own parameters.</p>
 <p>Example: compare this modified <code>grub2-fll-fromiso</code> with the default settings:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># defaults for grub2-fll-fromiso update-grub helper</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co"># sourced by grub2&#39;s update-grub</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co"># installed at /etc/default/grub2-fll-fromiso</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co"># by the maintainer scripts</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co"># This is a POSIX shell fragment</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co"># specify where to look for the ISO</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co"># default: /srv/ISO</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">## Attention: This is the path to the directory where the</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="co">## ISO(s) are located, the path should not include the</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a><span class="co">## actual siduction.iso.</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="va">FLL_GRUB2_ISO_LOCATION=</span><span class="st">&quot;/media/disk1part4&quot;</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a><span class="co"># array for defining ISO prefices --&gt; siduction-*.iso</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a><span class="co"># default: &quot;siduction- fullstory-&quot;</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a><span class="va">FLL_GRUB2_ISO_PREFIX=</span><span class="st">&quot;siduction-&quot;</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a><span class="co"># set default language</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a><span class="co"># default: en_US</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a><span class="va">FLL_GRUB2_LANG=</span><span class="st">&quot;de_DE&quot;</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a><span class="co"># override the default timezone.</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a><span class="co"># default: UTC</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a><span class="va">FLL_GRUB2_TZ=</span><span class="st">&quot;Europe/Berlin&quot;</span> </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a><span class="co"># kernel framebuffer resolution, see</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a><span class="co"># http://manual.siduction.org/de/cheatcodes-vga-de.htm#vga</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a><span class="co"># default: 791</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a><span class="co">#FLL_GRUB2_VGA=&quot;791&quot;</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true"></a><span class="co"># additional cheatcodes</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true"></a><span class="co"># default: noeject</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true"></a><span class="va">FLL_GRUB2_CHEATCODE=</span><span class="st">&quot;noeject nointro&quot;</span> </span></code></pre></div>
+<pre><code># defaults for grub2-fll-fromiso update-grub helper
+# sourced by grub2&#39;s update-grub
+# installed at /etc/default/grub2-fll-fromiso
+# by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# specify where to look for the ISO
+# default: /srv/ISO
+## Attention: This is the path to the directory where the
+## ISO(s) are located, the path should not include the
+## actual siduction.iso.
+FLL_GRUB2_ISO_LOCATION=&quot;/media/disk1part4&quot;
+
+# array for defining ISO prefices --&gt; siduction-*.iso
+# default: &quot;siduction- fullstory-&quot;
+FLL_GRUB2_ISO_PREFIX=&quot;siduction-&quot;
+
+# set default language
+# default: en_US
+FLL_GRUB2_LANG=&quot;de_DE&quot;
+
+# override the default timezone.
+# default: UTC
+FLL_GRUB2_TZ=&quot;Europe/Berlin&quot; 
+
+# kernel framebuffer resolution, see
+# http://manual.siduction.org/de/cheatcodes-vga-de.htm#vga
+# default: 791
+#FLL_GRUB2_VGA=&quot;791&quot;
+
+# additional cheatcodes
+# default: noeject
+FLL_GRUB2_CHEATCODE=&quot;noeject nointro&quot; </code></pre>
 <p>Save the changes, close the editor and execute the following command as <strong>root</strong> in a terminal:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">update-grub</span></span></code></pre></div>
+<pre><code>update-grub</code></pre>
 <p>This will update the grub2 configuration file <code>grub.cfg</code> to recognize the ISOs placed in the specified directory. These will be available for selection at the next reboot.</p>
 <h3 id="toram">toram</h3>
 <p>Another useful alternative when booting from live media is <code>toram</code>. This is recommended if the computer has enough RAM available (4 GByte or more). <code>toram</code> copies the complete content of the live medium into the RAM. The advantage is that the system reacts very fast and you can remove the medium after boot. This is useful if the start was done from a USB stick and you want to use this USB port otherwise.</p>
