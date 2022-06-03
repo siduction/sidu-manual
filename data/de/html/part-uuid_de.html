@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -93,9 +93,9 @@ lrwxrwxrwx 1 root root 10 Oct 16 10:27 windows -&gt; ../../sdb1</code></pre>
 </ul>
 <p>Der Name des Labels einer NTFS- und FAT-Partition sollte nur aus Gro&szlig;buchstaben, Ziffern und den f&uuml;r Dateinamen erlaubten Sonderzeichen von Windows™ bestehen.</p>
 <p>Die Syntax in der <code>fstab</code> f&uuml;r das <code>&lt;file system&gt;</code> ist <code>LABEL=&lt;label&gt;</code>.</p>
-<warning>
+<p class="warning">
 Unbedingt zu beachten ist: <br />Die Labels m&uuml;ssen eine singul&auml;re Bezeichnung haben, um bei der Einbindung funktionieren zu k&ouml;nnen. Das gilt auch f&uuml;r externe Ger&auml;te (Festplatten, Sticks etc.), die via USB oder Firewire eingebunden werden.
-</warning>
+</p>
 <h2 id="die-fstab">Die fstab</h2>
 <p>Die Datei <code>/etc/fstab</code> wird w&auml;hrend des Systemstarts ausgelesen um die gew&uuml;nschten Partitionen einzuh&auml;ngen. Hier ein Beispiel einer fstab.</p>
 <pre><code>UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256   swap           swap    defaults,noatime 0 2

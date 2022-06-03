@@ -59,11 +59,13 @@ do
 done
 
 
-### Recoding the German special characters
-if [ "$langcode" = "de" ]
-then
-    for i in ../data/de/html/*.html;
-    do 
+### Set language in html header
+for i in ../data/$langcode/html/*.html;
+do
+    if [ "$langcode" = "de" ]
+    then
+        sed -i "2 s/\"\"/\"$langcode\"/g" "$i";
+        ### and recode german special characters
         sed -i 's/ä/\&auml;/g' "$i";
         sed -i 's/Ä/\&Auml;/g' "$i";
         sed -i 's/ö/\&ouml;/g' "$i";
@@ -71,8 +73,10 @@ then
         sed -i 's/ü/\&uuml;/g' "$i";
         sed -i 's/Ü/\&Uuml;/g' "$i";
         sed -i 's/ß/\&szlig;/g' "$i";
-    done
-fi
+    else
+        sed -i "2 s/\"\"/\"$langcode\"/g" "$i";
+    fi
+done
 
 
 ### Remove the folder ../work

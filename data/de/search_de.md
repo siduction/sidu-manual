@@ -31,12 +31,15 @@ Die Resultate sind nach Relevanz sortiert (höchste Relevanz zuerst). Relevanzkr
 Für die Online-Suche im deutschen Handbuch gibt man in die Suchleiste des Browsers folgenden Suchbefehl ein (`xxxx`  ist Platzhalter für den Suchbegriff):
 
 ~~~
-xxxxx site:manual.siduction.org/de
+xxxxx site:manual.siduction.org/
 ~~~
 
-<div class="divider" id="search-off"></div>
 
 ## Offline-Suche
+
+> Hinweis zur Bearbeitung der Datei:  
+> Offlinesuche mit Recoll funktioniert gut wenn ein eigenes Verzeichnis benutzt wird.  
+> Installationsoptionen für das siduction Handbuch prüfen.
 
 In Zusammenarbeit mit dem Entwickler von Recoll hat Trevor Walkley (bluewater) eine spezielle Konfiguration als Teil des Standard-Pakets entwickelt worden. Diese basiert auf dem Xapian-Backend, um ein umfangreiches wie auch benutzerfreundliches Frontend mit einer auf QT aufgesetzten grafischen Benutzerführung bieten zu können.  *Ein ganz besonderer Dank geht an Recoll* .
 

@@ -1,4 +1,4 @@
-% Grub
+% GRUB
 
 ANFANG   INFOBEREICH FÜR DIE AUTOREN  
 Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
@@ -6,7 +6,7 @@ Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!
 
 Änderungen 2021-05
 + Überarbeitet
-+ grub legacy entfernt
++ GRUB legacy entfernt
 
 Rückstufung 2021-07
 + Viele Formatfehler
@@ -14,45 +14,52 @@ Rückstufung 2021-07
 + kaputte Links
 + Überlange Überschriften
 + Überschriften mit verbotenen Zeichen
-+ HTML-Tag <span class="highlight-2">
++ HTML-Tag "span class="highlight-2"
 
 ENDE   INFOBEREICH FÜR DIE AUTOREN
 
-## GRUB 2
+## Bootmanager GRUB 2
 
-#### Zusammenfassung der wesentlichen Unterschiede zwischen GRUB 1 (jetzt grub-legacy) und GRUB2:
+**Zusammenfassung der wesentlichen Unterschiede zwischen GRUB 1 (jetzt GRUB-legacy) und GRUB 2:**
 
-+ Die Datei menu.lst existiert nicht mehr.
++ Die Syntax der Konfiguration von GRUB 1 und GRUB 2 ist nicht kompatibel. 
 
-+ Die Datei *grub.cfg*  steuert nun den Grub-Bildschirm.
++ Die Datei menu.lst existiert in GRUB 2 nicht mehr.
 
-+ grub.cfg wird automatisch von Skripten in */etc/grub.d*  erstellt.
++ GRUB 2 erstellt aus den Konfigurations-Skripten in */etc/grub.d* und Einstellungen in */etc/default/grub* die Datei */boot/grub/grub.cfg*.
 
-+ Die Bezeichnung der Partitionen ändert sich ebenfalls. Die Nummerierung der Partitionen beginnt mit 1, nicht mit 0 (Laufwerksnummerierungen beginnen weiterhin mit 0):      
-    ~~~
-    Linux grub1 grub2
-    /dev/sda1 (hd0,0) (hd0,1)
-    /dev/sda2 (hd0,1) (hd0,2)
-    /dev/sda3 (hd0,2) (hd0,3)
-    
-    /dev/sdb1 (hd1,0) (hd1,1)
-    /dev/sdb2 (hd1,1) (hd1,2)
-    /dev/sdb3 (hd1,2) (hd1,3)
-    ~~~
++ Die Datei */boot/grub/grub.cfg*  steuert auch den GRUB-Bildschirm.
 
-+ Die Stanzas in grub.cfg folgen einer anderen Syntax als in menu.lst und können nicht direkt von der menu.lst von Grub 1 nach grub.cfg von Grub2 kopiert werden. 
++ Die Bezeichnung der Partitionen ändert sich ebenfalls. Die Nummerierung der Partitionen beginnt mit 1, nicht mit 0 (Laufwerksnummerierungen beginnen weiterhin mit 0):
 
-### Konfigurationsdatei von Grub2
+  | Partition | GRUB 1 | GRUB 2 |
+  | --- | -- | -- |
+  | /dev/sda1 | (hd0,0) | (hd0,1) |
+  | /dev/sda2 | (hd0,1) | (hd0,2) |
+  | /dev/sda3 | (hd0,2) | (hd0,3) |
+  | /dev/sdb1 | (hd1,0) | (hd1,1) |
+  | /dev/sdb2 | (hd1,1) | (hd1,2) |
+  | /dev/sdb3 | (hd1,2) | (hd1,3) |
 
-Die Datei */etc/default/grub*  enthält die variablen Einstellungen für Grub2, zum Beispiel Timeout, Basiseinstellungen des Menüs, Kernel-Parameter, graphische Oberfläche von Grub u.a.
+### Konfiguration von GRUB 2
 
-###  Die Skripte von Grub2
+Die Datei **/boot/grub/grub.cfg** wird bei der Systeminstallation und bei Kernelaktualisierungen automatisch erstellt.  
+Man kann die Datei auch manuell mit root-Rechten in einem Terminal erzeugen. Der Befehl lautet:
 
-*/etc/grub.d* steuert die Zieldatei *grub.cfg* , die sich in */boot/grub/*  befindet.
+~~~
+grub-mkconfig -o /boot/grub/grub.cfg
+~~~
 
-> **Die Datei grub.cfg sollte nie manuell geändert werden!**   
+Ohne Option erfolgt die Ausgabe in das Terminal, sodass wir die Datei prüfen können.  
+Die kurze Variante des obigen Befehls lautet:
 
-Die Änderungen würden beim nächsten update von grub überschrieben, da die Datei mit Werten aus /etc/default/grub durch Scripte in /etc/grub.d erzeugt wird. Daher müssen alle Änderungen in den Skriptdateien im Ordner */etc/grub.d*  durchgeführt werden. os-prober sollte 90% der Fälle korrekt lösen:
+~~~
+update-grub
+~~~
+
+Die Datei **/etc/default/grub** enthält variable Einstellungen für GRUB 2, zum Beispiel Timeout, Basiseinstellungen des Menüs, Kernel-Parameter, graphische Oberfläche u.a. Die Skripte in **/etc/grub.d** testen die Systemumgebung und erstellen die Zieldatei *grub.cfg*. An diesen beiden Stellen sind bei Bedarf die Änderungen in der Konfiguration vorzunehmen.  
+Das Debianpaket von GRUB 2 ist so gestaltet, dass eine manuelle Änderung selten erforderlich ist.  
+Der os-prober sollte 90% der Fälle korrekt lösen:
 
 ~~~
 00_header:
@@ -63,35 +70,31 @@ Die Änderungen würden beim nächsten update von grub überschrieben, da die Da
 30_os-prober: Sucht in allen Partitionen nach Betriebssystemen (Linux und andere) und integriert sie in das Boot-Menü
 40_custom: Eine Vorlage, um benutzerdefinierte Menü-Einträge für weitere Betriebssysteme anzulegen
 60_fll-fromiso: Eine Vorlage, um benutzerdefinierte Menü-Einträge für fromiso auf eine/n USB-Stick/SSD-Karte anzulegen
-<span class="highlight-2">60_fll-fromiso darf nicht manuell geändert werden. Für Anpassungen steht /etc/default/grub2-fll-fromiso zur Verfügung
-Weitere Informationen unter [fromiso' mit Grub 2](hd-install-opts-de.htm#grub2-fromiso) </span>
 ~~~
 
-Nachdem Änderungen durchgeführt wurden, muss grub.cfg diese kennen. Nach einer Aktualisierung des siduction-Kernels, werden die Aktualisierung von Grub automatisch durchgeführt. Änderungen, die manuell durchgeführt wurden, erfordern diesen Befehl:
+60_fll-fromiso darf nicht manuell geändert werden. Für Anpassungen steht /etc/default/GRUB 2-fll-fromiso zur Verfügung
+Weitere Informationen unter [fromiso' mit GRUB 2](0302-hd-ins-fromiso_de.md#fromiso-mit-grub2).
 
-~~~
-update-grub
-~~~
+> Niemals die Datei grub.cfg manuell ändern!
 
-Das Debianpaket von Grub2 ist so gestaltet, dass eine manuelle Änderung selten erforderlich ist.
+Beim nächsten Update überschreibt GRUB die Datei mit Werten aus den zuvor genannten Quellen. Daher sind alle Änderungen in den Skriptdateien im Ordner */etc/grub.d* und in der Datei */etc/default/grub* durchzuführen. Nach Änderungen der Konfiguration ist die Datei *grub.cfg*, wie oben beschrieben, manuell zu erzeugen.
 
-### Eingabe von Grub2-Bootoptionen mit Hilfe des Bearbeitungsmodus
+### Eingabe von GRUB 2 Bootoptionen
 
-Falls temporäre Änderungen bei den Boot-Optionen eines in Grub 2 gelisteten Kernels nötig sind, kann man die Kerneloptionen bearbeiten, indem die Taste **`e`**  gedrückt wird. Mit den Pfeiltasten geht man zu dem Kernel, der bearbeitet werden soll. Noch im Bearbeitungsmodus wird mit `Ctrl+x`  der Computer mit den neuen Optionen neu gestartet.
+Falls temporäre Änderungen bei den Boot-Optionen eines in GRUB 2 gelisteten Kernels nötig sind, kann man die Kerneloptionen bearbeiten, indem die Taste **`e`**  gedrückt wird. Mit den Pfeiltasten geht man zu dem Kernel, der bearbeitet werden soll. Noch im Bearbeitungsmodus wird mit `Ctrl+x`  der Computer mit den neuen Optionen gestartet.
 
-Ein Beispiel: um direkt in den Runlevel 3 zu starten, wird eine *3* an das Ende der Zeile *linux /boot/vmlinuz* gesetzt.
+Ein Beispiel:  
+Um direkt in den Runlevel 3 (Multiuser ohne graphische Oberfläche) zu starten, wird eine *3* an das Ende der Zeile *linux /boot/vmlinuz...* gesetzt.
 
-Änderungen, die im Bearbeitungsmodus durchgeführt werden, sind nicht dauerhaft. Für dauerhafte Änderungen müssen die jeweiligen Konfigurationsdateien angepasst werden. Siehe: [Konfigurationsdateien und Skripte von Grub 2](sys-admin-grub2-de.htm#grub2-files) .
+### Dualboot und Multiboot mit GRUB 2
 
-### Dualboot und Multiboot mit Grub2
-
-Grub2 besitzt eine modulare Konfiguration und erlaubt daher einen einfachen Befehl, um neu installierte Betriebssysteme zu finden, die automatisch in die Datei menu.cfg integriert werden. Der einfache Befehl lautet:
+GRUB 2 besitzt eine modulare Konfiguration und erlaubt daher einen einfachen Befehl, um neu installierte Betriebssysteme zu finden und automatisch in die Datei *grub.cfg* zu integrieren. Der einfache Befehl lautet:
 
 ~~~
 update-grub
 ~~~
 
-Sollte ein benutzerdefinierter Eintrag in menu.cfg erwünscht sein oder falls 30_os-prober nicht die benötigten Chainload-Einträge durchführt, können Ergänzungen mit Hilfe eines Texteditors in der Datei */etc/grub.d/40_custom* durchgeführt werden.
+Sollte ein benutzerdefinierter Eintrag in *grub.cfg* erwünscht sein, oder falls 30\_os-prober nicht die benötigten Chainload-Einträge durchführt, können Ergänzungen mit Hilfe eines Texteditors in der Datei */etc/grub.d/40_custom* durchgeführt werden.
 
 Beispiele für eine Adaptierung der Datei 40_custom:
 
@@ -109,15 +112,15 @@ chainloader +1
 }
 ~~~
 
-Nach Abspeicherung der Änderungen müssen diese Grub übergeben werden:
+Nach Abspeicherung der Änderungen müssen diese GRUB übergeben werden:
 
 ~~~
 update-grub
 ~~~
 
-Sollte die Fehlermeldung auftreten, dass Grub auf einem Laufwerk nicht erkannt wird, muss die devicemap neu erstellt werden.
+Sollte die Fehlermeldung auftreten, dass GRUB auf einem Laufwerk nicht erkannt wird, muss die devicemap neu erstellt werden.
 
-Stelle bei der Installation eines weiteren Betriebssystems sicher, dass Grub nicht in den MBR, sondern in die Partition des neuen Betriebssystems geschrieben wird:
+Stelle bei der Installation eines weiteren Betriebssystems sicher, dass GRUB nicht in den MBR, sondern in die Partition des neuen Betriebssystems geschrieben wird:
 
 ~~~
 grub-mkdevicemap --no-floppy
@@ -126,9 +129,9 @@ update-grub
 
 Warnhinweise können ignoriert werden.
 
-Bei einem Fehler überschreibt die Aktualisierung vermutlich den MBR. Wie dies repariert wird, findest Du in [Grub2 - MBR überschrieben](sys-admin-grub2-de.htm#mbr-over-grub2) .
+Bei einem Fehler überschreibt die Aktualisierung vermutlich den MBR. Wie dies repariert wird, findest Du in [Wiederherstellung des MBR](sys-admin-grub2_de.md#Wiederherstellung-des-MBR) .
 
-### Nur grub2 neu von der Fesplatte in den MBR schreiben
+### GRUB 2 neu in den MBR schreiben
 
 ~~~
 /usr/sbin/grub-install --recheck --no-floppy /dev/sda
@@ -136,57 +139,57 @@ Bei einem Fehler überschreibt die Aktualisierung vermutlich den MBR. Wie dies r
 
 Es kann sein, dass dieser Befehl mehrfach ausgeführt werden muss, bis er "überzeugt" ist, dass dies wirklich durchgeführt werden soll.
 
-### MBR von Windows überschrieben - MBR korrumpiert - Wiederherstellung von Grub2
+### MBR fehlerhaft
 
-~~~
-ANMERKUNG:  
-Zur Wiederherstellung von Grub2 benötigt man ein siduction.iso.
-~~~
-[Alternativ kann ein chroot mit jeder live.iso verwendet werden](sys-admin-grub2-de.htm#chroot) .
+So kann GRUB 2 bei einem von Windows überschriebenen oder korrumpierten MBR wiederherstellt werden.
 
-Um grub2 neu zu schreiben oder wiederherzustellen, muss in eine *siduction.iso* gestartet werden:
+**ANMERKUNG:**  
+Zur Wiederherstellung von GRUB 2 benötigt man ein siduction.iso.
 
-1. Um die Partitionen ([h,s]d[a..]X) zu identifizieren und bestätigen, muss man root (#) werden:      
-    ~~~
-    $ su
-    ~~~
+[Alternativ kann ein chroot mit jeder live.iso verwendet werden](sys-admin-grub2_de.htm#chroot) .
 
-2. Als root wird Folgendes eingegeben:      
-    ~~~
-    fdisk -l
-    cat /etc/fstab
-    ~~~
+Um GRUB 2 neu zu schreiben oder wiederherzustellen, muss in eine *siduction.iso* gestartet werden:
 
-  Auf diese Weise erhält man die korrekten Benennungen. 
+1. Um die Partitionen ([h,s]d[a..]X) zu identifizieren und bestätigen, muss man root (#) werden:
+
+   ~~~
+   $ su
+   ~~~
+
+2. Als root wird Folgendes eingegeben:  
+   ~~~
+   fdisk -l
+   cat /etc/fstab
+   ~~~
+
+   Auf diese Weise erhält man die korrekten Benennungen. 
 
 3. Wenn die korrekte Partitionsbezeichnung gefunden ist, wird ein Einhängepunkt erstellt:  
    
    ~~~
-    mkdir -p /media/[hdxx,sdxx,diskx]
-    ~~~
+   mkdir -p /media/[sdx,diskx]
+   ~~~
 
 4. Danach wird die Partition eingebunden:  
 
-    ~~~
-    mount /dev/xdxx /media/xdxx
-    ~~~
+   ~~~
+   mount /dev/xdxx /media/sdx
+   ~~~
 
-5. Jetzt kann Grub in den MBR der ersten Festplatte geschrieben werden:  
+5. Jetzt kann GRUB in den MBR der ersten Festplatte geschrieben werden:  
 
-    ~~~
-    /usr/sbin/grub-install --recheck --no-floppy --root-directory=/media/xdxx /dev/sda
-    ~~~
+   ~~~
+   /usr/sbin/GRUB-install --recheck --no-floppy --root-directory=/media/sdx /dev/sda
+   ~~~
 
 ### Wiederherstellung des MBR
 
-Um Grub wiederherzustellen, falls er im MBR überschrieben oder korrumpiert wurde, muss eine `chroot` -Umgebung aufgesetzt werden. 
+Um GRUB wiederherzustellen, falls er im MBR überschrieben oder korrumpiert wurde, muss eine `chroot` -Umgebung aufgesetzt werden. 
 
-~~~
-Anmerkung:  
-Es kann jede live.iso verwendet werden, da die Chroot-Umgebung die Festplatteninstallation anspricht, sodass Grub  wiederhergestellt werden kann!
-~~~
+**Anmerkung:**  
+Es kann jede live.iso verwendet werden, da die Chroot-Umgebung die Festplatteninstallation anspricht, sodass GRUB  wiederhergestellt werden kann!
 
-Man bootet in eine Deinem System entsprechende siduction.iso (32 oder 64 bit CD, DVD, USB-Stick oder SSD-Karte) und öffnet eine Konsole. Man tippt *suxterm*  und drückt die Eingabetaste, um root-Rechte zu erhalten.
+Man bootet in eine Deinem System entsprechende siduction.iso (32 oder 64 bit CD, DVD, USB-Stick oder SSD-Karte) und öffnet eine Konsole. Man tippt *su* und drückt die Eingabetaste, um root-Rechte zu erhalten.
 
 Mit *fdisk -l oder blkid* stellt man sicher, welche Partition die Boot-Partition ist, und erhält die korrekten Bezeichnungen (falls eine graphische Oberfläche gewünscht ist, verwendet man *Gparted*):
 
@@ -229,21 +232,21 @@ Die chroot-Umgebung ist nun aufgesetzt und es kann auf diese Weise darauf zugegr
 chroot /mnt/siduction-chroot /bin/bash
 ~~~
 
-Es kann nun auf den lokalen Cache von apt zugegriffen werden bzw. in Dateien, die geändert werden müssen, geschrieben werden. Das Verhalten entspricht demjenigen, als ob Du im zu reparierenden System selbst arbeiten würdest. In folgendem Beispiel wird Grub neu in den MBR geschrieben.
+Es kann nun auf den lokalen Cache von apt zugegriffen werden bzw. in Dateien, die geändert werden müssen, geschrieben werden. Das Verhalten entspricht demjenigen, als ob Du im zu reparierenden System selbst arbeiten würdest. In folgendem Beispiel wird GRUB neu in den MBR geschrieben.
 
-**Wiederherstellung von Grub**
+**Wiederherstellung von GRUB**
 
 ~~~
 apt-get install --reinstall grub-pc
 ~~~
 
-Um sicherzustellen, dass Grub auf dem richtigen Gerät bzw. der richtigen Partition installiert wurde, wird dieser Konfigurationsbefehl ausgeführt:
+Um sicherzustellen, dass GRUB auf dem richtigen Gerät bzw. der richtigen Partition installiert wurde, wird dieser Konfigurationsbefehl ausgeführt:
 
 ~~~
 dpkg-reconfigure grub-pc
 ~~~
 
-**Wiederherstellung von Grub 2 EFI** 
+**Wiederherstellung von GRUB 2 EFI** 
 
 ~~~
 apt-get install reinstall grub-efi-amd64
@@ -259,4 +262,4 @@ Ctrl+d
 
 Starte Deinen PC neu.
 
-<div id="rev">Page last revised 2021-07-22</div>
+<div id="rev">Seite zuletzt aktualisiert 2021-07-25</div>
