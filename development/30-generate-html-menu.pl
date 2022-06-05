@@ -168,7 +168,7 @@ sub LINK_LINE {
         $TEXT =~ s/^#{1,3} +(.*)/$1/;
         $TEXT =~ s!Ä!&Auml;!g;
         $TEXT =~ s!Ö!&Ouml;!g;
-        $TEXT =~ s!Ü!&Üuml;!g;
+        $TEXT =~ s!Ü!&Uuml;!g;
         $TEXT =~ s!ä!&auml;!g;
         $TEXT =~ s!ö!&ouml;!g;
         $TEXT =~ s!ü!&uuml;!g;
