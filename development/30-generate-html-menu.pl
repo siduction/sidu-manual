@@ -186,7 +186,7 @@ sub LINK_LINE {
 
 system "if [ ! -d ../data/$langcode/html ]; then mkdir ../data/$langcode/html; fi";
 
-open (DATEI, ">", "../data/$langcode/html/tree-menue.html") || die "Kann nicht schreiben.\n";
+open (DATEI, ">", "../data/$langcode/html/tree-menue_$langcode.html") || die "Kann nicht schreiben.\n";
     print DATEI @MENU_FILE;
 close(DATEI);
 
