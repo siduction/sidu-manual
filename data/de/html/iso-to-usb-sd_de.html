@@ -46,7 +46,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="iso-auf-usb-stick---speicherkarte">ISO auf USB-Stick - Speicherkarte</h2>
 <p>Nachfolgend beschrieben wir Methoden eine siduction ISO-Abbilddatei als Live-Medium auf einen USB-Stick, eine SD-Karte oder eine SHDC-Karte zu schreiben.<br />
-Falls <em>“persist”</em> ben&ouml;tigt wird, empfohlen wir die Handbuchseite <a target="_blank" href="https://manual.siduction.org/hd-ins-fromiso_de.html#aus-iso-datei-booten">Aus ISO-Datei booten</a>.</p>
+Falls <em>“persist”</em> ben&ouml;tigt wird, empfohlen wir die Handbuchseite <a href="./hd-ins-fromiso_de.html#aus-iso-datei-booten">Aus ISO-Datei booten</a>.</p>
 <p><strong>Voraussetzungen</strong></p>
 <ul>
 <li>Das BIOS des PC muss das Booten mittels eines USB-Sticks bzw. einer SD-Karte erlauben. Normalerweise ist dies der Fall, wenn im BIOS des PC diese Bootoption angeboten wird.</li>
@@ -58,10 +58,10 @@ Wichtige Information <br />Die folgenden Methoden werden vorhandene Partitionsta
 </p>
 <h3 id="gui-anwendung">GUI Anwendung</h3>
 <p><strong>F&uuml;r Linux™, RasPi™, MS Windows™ oder Mac OS X™</strong></p>
-<p>Das kleine Tool <a target="_blank" href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> ist f&uuml;r alle oben genannten Betriebssysteme verf&uuml;gbar und dient der Datensicherung und dem Erstellen des Live-Mediums. Das Programm ist Open Source und lizenziert unter der MIT-Lizenz. Lade die f&uuml;r dein verwendetes Betriebssystem notwendige Datei herunter und installiere das Programm entsprechend den Angaben auf der Downloadseite.</p>
+<p>Das kleine Tool <a href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> ist f&uuml;r alle oben genannten Betriebssysteme verf&uuml;gbar und dient der Datensicherung und dem Erstellen des Live-Mediums. Das Programm ist Open Source und lizenziert unter der MIT-Lizenz. Lade die f&uuml;r dein verwendetes Betriebssystem notwendige Datei herunter und installiere das Programm entsprechend den Angaben auf der Downloadseite.</p>
 <p>Die Handhabung ist Dank der schn&ouml;rkellosen Oberfl&auml;che denkbar einfach.</p>
 <p>Image-Datei auf das Ger&auml;t schreiben: 1. W&auml;hle ein Image aus, indem du auf <code>...</code> in der ersten Zeile klickst. 2. W&auml;hlen ein Ger&auml;t aus, indem du in die 3. Zeile klickst. 3. Klicke auf die Schaltfl&auml;che <code>Schreiben</code> in der 2. Zeile.</p>
-<p>Ausf&uuml;hrliche Informationen bietet das <a target="_blank" href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> der Projektseite.</p>
+<p>Ausf&uuml;hrliche Informationen bietet das <a href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> der Projektseite.</p>
 <h3 id="linux-kommandozeile">Linux Kommandozeile</h3>
 <p>Wir empfehlen die Verwendung der Kommandozeile. Die Installation zus&auml;tzlicher Programme er&uuml;brigt sich, da bereits alle ben&ouml;tigten Werkzeuge vorhanden sind. Eine einzige, leicht verst&auml;ndliche Befehlszeile reicht aus um die siduction ISO-Abbilddatei auf das Speichermedium zu &uuml;bertragen.</p>
 <p>Bevor wir die siduction ISO-Abbilddatei auf das Speichermedium schreiben, m&uuml;ssen wir dessen Laufwerksbezeichnung ermitteln. Am einfachsten benutzen wir journald. Der Befehl <strong><code>journalctl -f</code></strong> in einem Terminal ausgef&uuml;hrt, zeigt fortlaufend die Meldungen des systemd. Nun stecken wir das Speichermedium an und beobachten die Meldungen im Terminal. Zeilen der folgenden Art enthalten die gesuchten Informationen.</p>
@@ -80,7 +80,7 @@ cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso &gt; /dev/sd
 <p>Der Kopiervorgang kann bei einer etwa 3 GB gro&szlig;en ISO-Abbilddatei durchaus 15 Minuten oder l&auml;nger ben&ouml;tigen. Bitte entspannt abwarten bis die Eingabeaufforderung zur&uuml;ckkehrt.</p>
 <h4 id="zus&auml;tzliche-datenpartition">Zus&auml;tzliche Datenpartition</h4>
 <p>Meist ist das Speichermedium deutlich gr&ouml;&szlig;er als die ISO-Abbilddatei. Die bisher gezeigten Methoden verwenden alle das gesamte Speichermedium, obwohl die ISO-Abbilddatei nur 2,9 GiB belegt. Das l&auml;sst sich im Nachhinein nicht &auml;ndern. Es bietet sich an, die Vorteile der Kommandozeile zu nutzen und vorausschauend zwei Partitionen einzurichten. Die erste Partition beinhaltet sp&auml;ter das Live-System und die zweite den sonst ungenutzten Speicherplatz. Dadurch haben wir die M&ouml;glichkeit Daten auf dem Medium zur Life-Sitzung mitzunehmen und w&auml;hrend der Life-Sitzung dort abzulegen.</p>
-<p>Wir benutzen als root den Befehl <code>cgdisk /dev/sdb</code> um eine neue GUID-Partitionstabelle zu erstellen (siehe die Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a>) und verwenden folgenden Daten:</p>
+<p>Wir benutzen als root den Befehl <code>cgdisk /dev/sdb</code> um eine neue GUID-Partitionstabelle zu erstellen (siehe die Handbuchseite <a href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a>) und verwenden folgenden Daten:</p>
 <ol type="1">
 <li>Partition:<br />
 Startsektor: 64 (Voreinstellung)<br />

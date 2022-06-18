@@ -53,24 +53,24 @@ It is lead developed by Red Hat developers Lennart Poettering and Kay Sievers.</
 <p>siduction has been using systemd as default init system since release 2013.2 “December”.</p>
 <h3 id="concept-of-systemd">Concept of systemd</h3>
 <p>Systemd provides a dependency system between different <em>“units”</em> of 11 different types (see below). Units encapsulate various objects relevant to system startup and operation.<br />
-Units can be <em>“active”</em> or <em>“inactive”</em>, as well as in the process of <em>“activation”</em> or <em>“deactivation”</em>, i.e. between the two former states. A special state <em>“failed”</em>, which is very similar to <em>“inactive”</em>, is also available. When this state is reached, the cause is logged for later inspection. See the manual page <a target="_blank" href="https://manual.siduction.org/systemd-journald_en.html#system-journal">systemd-journal</a>.<br />
+Units can be <em>“active”</em> or <em>“inactive”</em>, as well as in the process of <em>“activation”</em> or <em>“deactivation”</em>, i.e. between the two former states. A special state <em>“failed”</em>, which is very similar to <em>“inactive”</em>, is also available. When this state is reached, the cause is logged for later inspection. See the manual page <a href="./systemd-journald_en.html#system-journal">systemd-journal</a>.<br />
 With systemd, many processes can be controlled in parallel because the unit files declare possible dependencies and systemd adds required dependencies automatically.</p>
 <p>The units managed by systemd are configured using unit files.<br />
 The unit files are pure text files in INI format, divided into different sections. This makes their contents easy to understand and edit without knowledge of a scripting language. All unit files must have a section corresponding to the unit type and may contain the generic sections [Unit] and [Install].<br />
-The manual page <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a> explains the basic structure of the unit files, as well as many options of the generic sections [Unit] and [Install].</p>
+The manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a> explains the basic structure of the unit files, as well as many options of the generic sections [Unit] and [Install].</p>
 <h3 id="unit-types">Unit types</h3>
-<p>Before we turn to the unit types, it is advisable to read the manual page <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a> to understand the operation of the generic sections and their options.<br />
+<p>Before we turn to the unit types, it is advisable to read the manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a> to understand the operation of the generic sections and their options.<br />
 The following unit types are available, and if a link is available, it will take you to a more detailed description in our manual:</p>
 <ol type="1">
-<li><p><strong>Service units</strong> <a target="_blank" href="https://manual.siduction.org/systemd-service_en.html#systemd-service">(systemd.service)</a> start and control daemons as well as the processes that make them up.</p></li>
+<li><p><strong>Service units</strong> <a href="./systemd-service_en.html#systemd-service">(systemd.service)</a> start and control daemons as well as the processes that make them up.</p></li>
 <li><p><strong>Socket units</strong> (systemd.socket) encapsulate local IPC or network sockets in the system (useful for socket-based activation).</p></li>
-<li><p><strong>Target units</strong> <a target="_blank" href="https://manual.siduction.org/systemd-target_en.html#systemd-target---target-unit">(systemd.target)</a> are useful for grouping units. They also provide synchronization points known as runlevels during system startup.</p></li>
+<li><p><strong>Target units</strong> <a href="./systemd-target_en.html#systemd-target---target-unit">(systemd.target)</a> are useful for grouping units. They also provide synchronization points known as runlevels during system startup.</p></li>
 <li><p><strong>Device units</strong> (systemd.device) expose kernel devices (all block and network devices) in systemd and can be used to implement device-based activation.</p></li>
-<li><p><strong>Mount units</strong> <a target="_blank" href="https://manual.siduction.org/systemd-mount_en.html#systemd-mount">(systemd.mount)</a> control mount points in the file system.</p></li>
-<li><p><strong>Automount units</strong> <a target="_blank" href="https://manual.siduction.org/systemd-mount_en.html#systemd-mount">(systemd.automount)</a> provide self-mount capabilities for on-demand file system mounts and parallelized boot.</p></li>
-<li><p><strong>Timer units</strong> <a target="_blank" href="https://manual.siduction.org/systemd-timer_en.html#systemd-timer">(systemd.timer)</a> are useful for triggering the activation of other units based on timers.</p></li>
+<li><p><strong>Mount units</strong> <a href="./systemd-mount_en.html#systemd-mount">(systemd.mount)</a> control mount points in the file system.</p></li>
+<li><p><strong>Automount units</strong> <a href="./systemd-mount_en.html#systemd-mount">(systemd.automount)</a> provide self-mount capabilities for on-demand file system mounts and parallelized boot.</p></li>
+<li><p><strong>Timer units</strong> <a href="./systemd-timer_en.html#systemd-timer">(systemd.timer)</a> are useful for triggering the activation of other units based on timers.</p></li>
 <li><p><strong>Swap units</strong> (systemd.swap) are similar to mount units and encapsulate memory swap partitions or files of the operating system.</p></li>
-<li><p><strong>Path units</strong> <a target="_blank" href="https://manual.siduction.org/systemd-path_en.html#systemd-path">(systemd.path)</a> can be used to enable other services when file system objects change or are modified.</p></li>
+<li><p><strong>Path units</strong> <a href="./systemd-path_en.html#systemd-path">(systemd.path)</a> can be used to enable other services when file system objects change or are modified.</p></li>
 <li><p><strong>Slice units</strong> (systemd.slice) can be used to group units that manage system processes (such as service and scope units) in a hierarchical tree for resource management reasons.</p></li>
 <li><p><strong>Scope units</strong> (systemd.scope) are similar to service units, but manage foreign processes instead of starting them as well.</p></li>
 </ol>
@@ -79,7 +79,7 @@ The following unit types are available, and if a link is available, it will take
 You can control the status (enabled, disabled) of a unit via symlink in the directory <code>/etc/systemd/system/</code>.<br />
 The directory <code>/run/systemd/system/</code> contains unit files created at runtime.</p>
 <h3 id="further-functions-of-systemd">Further functions of systemd</h3>
-<p>Systemd provides other functions as well. One of them is <a target="_blank" href="https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> as a replacement for the no longer maintained <em>ConsoleKit</em>. With this, systemd controls sessions and power management. Last but not least systemd offers a lot of other possibilities like spinning up a container (similar to a chroot) using <a target="_blank" href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> and many more. A look at the link list on <a target="_blank" href="https://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> allows further discoveries, including the extensive documentation on systemd by lead developer Lennart Poettering.</p>
+<p>Systemd provides other functions as well. One of them is <a href="https://www.freedesktop.org/software/systemd/man/systemd-logind.service.html">logind</a> as a replacement for the no longer maintained <em>ConsoleKit</em>. With this, systemd controls sessions and power management. Last but not least systemd offers a lot of other possibilities like spinning up a container (similar to a chroot) using <a href="http://0pointer.de/public/systemd-man/systemd-nspawn.html">systemd-nspawn</a> and many more. A look at the link list on <a href="https://www.freedesktop.org/wiki/Software/systemd/">Freedesktop</a> allows further discoveries, including the extensive documentation on systemd by lead developer Lennart Poettering.</p>
 <h3 id="handling-services">Handling services</h3>
 <p>One of the jobs of systemd is to start, stop, or otherwise control services. For this purpose the command <code>systemctl</code> can be used.</p>
 <ul>
@@ -101,7 +101,7 @@ The directory <code>/run/systemd/system/</code> contains unit files created at r
 <ul>
 <li>systemctl enable –now [NAME]</li>
 </ul>
-<p>The following are two commands whose function is described on our manual page <a target="_blank" href="https://manual.siduction.org/systemd-target_en.html#systemd-target---target-unit">systemd-target</a>.</p>
+<p>The following are two commands whose function is described on our manual page <a href="./systemd-target_en.html#systemd-target---target-unit">systemd-target</a>.</p>
 <ul>
 <li>systemctl reboot - performs a reboot.</li>
 <li>systemctl poweroff - shuts down the system and turns off the power if technically possible.</li>

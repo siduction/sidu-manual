@@ -91,7 +91,7 @@ Abh&auml;ngigkeitsbaum wird aufgebaut.
 Statusinformationen werden eingelesen.... Fertig
 0 aktualisiert, 0 neu installiert, 0 zu entfernen und 0 nicht aktualisiert.</code></pre>
 <p>Diese Ma&szlig;nahme erleichtert uns im Fall einer fehlerhaften Installation die Reparatur ganz wesentlich.<br />
-Siehe unten <a target="_blank" href="https://manual.siduction.org/lamp-start_de.html#troubleshooting">Troubleshooting</a></p>
+Siehe unten <a href="./lamp-start_de.html#troubleshooting">Troubleshooting</a></p>
 <p>Es ist sinnvoll sich bereits vor der Installation einige Daten zu notieren.</p>
 <p>W&auml;hrend der Installation notwendig:</p>
 <ul>
@@ -159,7 +159,7 @@ Wir beenden w3m mit <code>q</code> und best&auml;tigen mit <code>y</code>.</p>
 <p>Als <strong>ServerRoot</strong> wird das Verzeichnis <code>/etc/apache2/</code> bezeichnet. Es enth&auml;lt die Konfiguration.<br />
 Als <strong>DocumentRoot</strong> wird das Verzeichnis <code>/var/www/html/</code> bezeichnet. Es enth&auml;lt die Dateien der Webseite.</p>
 <p>F&uuml;r weitere Informationen und Hinweise zur Absicherung bitte die Handbuchseite<br />
-<a target="_blank" href="https://manual.siduction.org/lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> lesen.</p>
+<a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> lesen.</p>
 <h3 id="mariadb-installieren">MariaDB installieren</h3>
 <p>Die Installation von MariaDB gestaltet sich &auml;hnlich einfach in dem die Metapakete “mariadb-server” und “mariadb-client” angefordert werden.</p>
 <pre><code># apt install mariadb-server mariadb-client
@@ -172,7 +172,7 @@ mariadb-common mariadb-server mariadb-server-10.5
 mariadb-server-core-10.5 mysql-common socat
 [...]
 M&ouml;chten Sie fortfahren? [J/n] j</code></pre>
-<p>Weitere Informationen zu MariaDB und der Konfiguration liefert unser Handbuch in <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a></p>
+<p>Weitere Informationen zu MariaDB und der Konfiguration liefert unser Handbuch in <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a></p>
 <h3 id="php-installieren">PHP installieren</h3>
 <p>Zur Installation der Scriptsprache PHP gen&uuml;gt der Befehl:</p>
 <pre><code># apt install php
@@ -208,7 +208,7 @@ server API Apache 2.0 Handler
 <p>Jetzt fehlt noch die Unterst&uuml;tzung f&uuml;r MariaDB/mysql in PHP. Wir ben&ouml;tigen das PHP-Modul <em>php7.4-mysql</em>.</p>
 <pre><code># apt install php7.4-mysql</code></pre>
 <p>Wenn wir jetzt wieder die Seite http://localhost/info.php aufrufen, finden wir im Bereich der Module (sie sind alphabetisch sortiert) die Eintr&auml;ge zu <em>“mysqli”</em> und <em>“mysqlnd”</em>.</p>
-<p>Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
+<p>Weitere Informationen zu der Konfiguration von PHP und der Verwaltung ihrer Module enth&auml;lt die Handbuchseite <a href="./lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
 <h3 id="phpmyadmin-installieren">phpMyAdmin installieren</h3>
 <p>Um die Datenbank MariaDB zu administrieren ben&ouml;tigen wir <em>phpmyadmin</em>:</p>
 <pre><code># apt install phpmyadmin
@@ -242,7 +242,7 @@ Im ersten, zu Beginn, w&auml;hlen wir <em>“apache2”</em> und best&auml;tigen
 </figure>
 <p>In den folgenden Dialogen ben&ouml;tigen wir das Passwort f&uuml;r den Datenbankbenutzer <em>phpmyadmin</em> (siehe das Kapitel <em>Vorbereitungen</em>).</p>
 <h3 id="weitere-software">Weitere Software</h3>
-<p>Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten <a target="_blank" href="https://manual.siduction.org/lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> und <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a> f&uuml;r die Konfiguration des Servers und MariaDB ber&uuml;cksichtigen.</p>
+<p>Wer sich mit der Entwicklung von Webseiten befasst, kann ein CMS zum Beispiel, WordPress, Drupal oder Joomla installieren, sollte zuvor jedoch unsere Handbuchseiten <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> und <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a> f&uuml;r die Konfiguration des Servers und MariaDB ber&uuml;cksichtigen.</p>
 <h3 id="statusaugaben-log-dateien">Statusaugaben Log-Dateien</h3>
 <p><strong>Apache</strong></p>
 <p>Der Konfigurationsstatus des Apache Webservers wird mit <code>apache2ctl -S</code> ausgegeben.<br />
@@ -265,7 +265,7 @@ Define: DUMP_VHOSTS
 Define: DUMP_RUN_CFG
 User: name=&quot;www-data&quot; id=33
 Group: name=&quot;www-data&quot; id=33</code></pre>
-<p>Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> enth&auml;lt eine Reihe von Hinweisen zur Anpassung der Konfiguration.<br />
+<p>Die Handbuchseite <a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> enth&auml;lt eine Reihe von Hinweisen zur Anpassung der Konfiguration.<br />
 Das Verzeichnis <code>/var/log/apache2/</code> enth&auml;lt die Log-Dateien. Ein Blick in diese ist behilflich um Fehlerursachen zu erkennen.</p>
 <p><strong>MariaDB</strong></p>
 <p>In der Konsole zeigt der Befehl</p>
@@ -276,11 +276,11 @@ Die letzten zwanzig Zeilen des Systemd-Journals zeigt der Befehl</p>
 <p>und</p>
 <pre><code># journctl -f -u mariadb.service</code></pre>
 <p>h&auml;lt die Verbindung zum Journal offen und zeigt laufend die neuen Eintr&auml;ge.<br />
-Weitere Informationen liefert die Handbuchseite <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a></p>
+Weitere Informationen liefert die Handbuchseite <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a></p>
 <p><strong>PHP</strong></p>
 <p>Die Fehlermeldungen von PHP speichert der Apache Server in seinen Log-Dateien unter <code>/var/log/apache2/</code>. Fehlerhafte PHP-Funktionen erzeugen eine Meldung in der aufgerufenen Webseite.<br />
 Dieses Verhalten l&auml;sst sich in den php.ini-Dateien des jeweiligen Interface konfigurieren.<br />
-Siehe die Handbuchseite <a target="_blank" href="https://manual.siduction.org/lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
+Siehe die Handbuchseite <a href="./lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <p>Die hier aufgef&uuml;hrten Beispiele zeigen exemplarisch einige M&ouml;glichkeiten der Fehlersuche.</p>
 <p><strong>Dateirecht in “DocumentRoot”</strong></p>
@@ -372,7 +372,7 @@ Wir verwenden den Befehl <code>apt purge</code>.</p>
 <h3 id="sicherheit">Sicherheit</h3>
 <p>Die bis hierher erkl&auml;rte Installation f&uuml;hrt zu einem Webserver der <strong>“offen wie ein Scheunentor f&uuml;r Jedermann ist”</strong>. Deshalb sollte er ausschlie&szlig;lich autark an einem Arbeitsplatz verwendet und nicht mit dem privaten Netzwerk und auf keinen Fall mit dem Internet verbunden werden.</p>
 <p>F&uuml;r die Absicherung des Servers bitte die Handbuchseiten</p>
-<p><a target="_blank" href="https://manual.siduction.org/lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a> <a target="_blank" href="https://manual.siduction.org/lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
+<p><a href="./lamp-apache_de.html#apache-einrichten">LAMP-Apache</a> <a href="./lamp-sql_de.html#mariadb-einrichten">LAMP-MariaDB</a> <a href="./lamp-php_de.html#php-einrichten">LAMP-PHP</a></p>
 <p>bez&uuml;glich der Konfiguration beachten.</p>
 <p>Danach kann der Server, ausschlie&szlig;lich f&uuml;r System- und Software- Aktualisierungen, tempor&auml;r &uuml;ber eine zweite Netzwerkschnittstelle mit dem Internet verbunden werden.</p>
 <div id="rev">

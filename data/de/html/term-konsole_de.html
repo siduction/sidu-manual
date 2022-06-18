@@ -50,7 +50,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Nach dem Aufrufen des Terminals sieht man die Eingabeaufforderung “prompt”:</p>
 <pre><code>username@hostname:~$</code></pre>
 <p><em>“username”</em> in obigem Beispiel entspricht dem Nutzernamen des angemeldeten Benutzers. Die Tilde <code>~</code> zeigt, man befindet sich in seinem Heimverzeichnis <code>/home/username</code> , und das Dollarzeichen (der Promt) <code>$</code> bedeutet, dass man im Terminal mit eingeschr&auml;nkten Benutzerrechten angemeldet ist. Am Ende blinkt der Cursor. Dies alles ist die Kommandozeile. Hier werden Befehle eingegeben, die das Terminal ausf&uuml;hren soll.</p>
-<p>Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausf&uuml;hren. Root-Rechte erh&auml;lt man, indem man <code>su</code> eingibt und <code>Enter</code> dr&uuml;ckt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird w&auml;hrend der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten <a target="_blank" href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">Arbeit als root</a>)</p>
+<p>Viele Befehle kann man nur mit root-Rechten, also Administratorrechten, ausf&uuml;hren. Root-Rechte erh&auml;lt man, indem man <code>su</code> eingibt und <code>Enter</code> dr&uuml;ckt. Hiernach muss man das Rootpasswort eingeben. Das Passwort wird w&auml;hrend der Eingabe auf dem Bildschirm nicht angezeigt. (Siehe unten <a href="./term-konsole_de.html#arbeit-als-root">Arbeit als root</a>)</p>
 <p>Ist die Eingabe korrekt, zeigt die Kommandozeile nun:</p>
 <pre><code>root@hostname:/home/username#</code></pre>
 <p>Zu beachten ist, dass das Dollarzeichen <code>$</code> durch eine Raute <code>#</code> ersetzt wurde. In einem Terminal bedeutet die Raute immer, dass man mit <strong>root</strong>-Rechten angemeldet ist.<br />
@@ -99,7 +99,7 @@ Unter keinen Umst&auml;nden sollten Produktivprogramme, die normalerweise mit Be
 Ein anderes Problem mit sudo ist, dass eine Root-Anwendung, die mit der Nutzerkonfiguration l&auml;uft, Berechtigungen &auml;ndern und somit f&uuml;r den Nutzer unbrauchbar machen kann. Die Verwendung von <code>su</code> oder <code>su-to-root</code> wird empfohlen!<br />
 Sollte man trotz aller Warnungen sudo nutzen wollen, so muss man den entsprechenden $user der Gruppe sudo hinzuf&uuml;gen!<br />
 Dies kann mit dem Befehl <strong><code>adduser BENUTZER GRUPPE</code></strong> als <strong>root</strong> ausgef&uuml;hrt werden.</p>
-<p>Als schlanke Alternative zu <em>“sudo”</em> empfehlen wir <code>doas</code>. Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/sys-admin-doas_de.html#doas---alternative-zu-sudo">Doas - Alternative zu Sudo</a> erl&auml;utert die Vorteile von Doas und die Doas Konfiguration.</p>
+<p>Als schlanke Alternative zu <em>“sudo”</em> empfehlen wir <code>doas</code>. Die Handbuchseite <a href="./sys-admin-doas_de.html#doas---alternative-zu-sudo">Doas - Alternative zu Sudo</a> erl&auml;utert die Vorteile von Doas und die Doas Konfiguration.</p>
 <h3 id="farbiges-terminal">Farbiges Terminal</h3>
 <p>Farbige Prompts am Terminal k&ouml;nnen einen vor unangenehmen oder katastrophalen Fehlern bewahren, falls man als <strong>root</strong> eine Aufgabe durchf&uuml;hrt, die man als <strong>user</strong> machen wollte.<br />
 Deshalb ist in siduction in der Grundeinstellung der Prompt des user gr&uuml;n, blau und wei&szlig;, und bei dem von root wird das Wort “root” in roter Farbe dargestellt.</p>
@@ -244,10 +244,10 @@ Deshalb ist in siduction in der Grundeinstellung der Prompt des user gr&uuml;n, 
 <p>Dies listet alle Befehle f&uuml;r den Paketmanager apt auf. Apropos ist ein m&auml;chtiges Werkzeug, f&uuml;r umfangreichere Informationen &uuml;ber apropos siehe</p>
 <pre><code>$ man apropos</code></pre>
 <h3 id="linux-konsolenbefehle">Linux Konsolenbefehle</h3>
-<p>Eine sehr gute Einf&uuml;hrung in die Konsole BASH findet sich auf <a target="_blank" href="http://linuxcommand.org/">linuxcommand.org</a>(englisch).<br />
+<p>Eine sehr gute Einf&uuml;hrung in die Konsole BASH findet sich auf <a href="http://linuxcommand.org/">linuxcommand.org</a>(englisch).<br />
 Nat&uuml;rlich kann auch die favorisierte Suchmaschine verwendet werden, um mehr zu finden.</p>
 <p><strong>Brennen von CD, DVD und BD</strong><br />
-Die Kommandozeilenprogramme bilden die Basis f&uuml;r beliebte GUI-Programme wie <code>K3b</code>, <code>Brasero</code> oder <code>Xfburn</code>. Wer die vollst&auml;ndige Bandbreite an Optionen der Kommandozeilenprogramme <code>cdrdao</code>, <code>wodim</code>, <code>growisofs</code> usw. bevorzugt, nutzt das Terminal. Unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/no-gui-burn_de.html#life-dvd-ohne-gui-brennen">DVD ohne GUI brennen</a> enth&auml;lt viele Beispiele und Tips um verf&uuml;gbare Hardware zu erkennen, Daten zusammenzustellen und diese anschlie&szlig;end auf CD, DVD und BD zu brennen.</p>
+Die Kommandozeilenprogramme bilden die Basis f&uuml;r beliebte GUI-Programme wie <code>K3b</code>, <code>Brasero</code> oder <code>Xfburn</code>. Wer die vollst&auml;ndige Bandbreite an Optionen der Kommandozeilenprogramme <code>cdrdao</code>, <code>wodim</code>, <code>growisofs</code> usw. bevorzugt, nutzt das Terminal. Unsere Handbuchseite <a href="./no-gui-burn_de.html#life-dvd-ohne-gui-brennen">DVD ohne GUI brennen</a> enth&auml;lt viele Beispiele und Tips um verf&uuml;gbare Hardware zu erkennen, Daten zusammenzustellen und diese anschlie&szlig;end auf CD, DVD und BD zu brennen.</p>
 <h3 id="skripte-benutzen">Skripte benutzen</h3>
 <p>Ein Konsolen-Skript ist ein bequemer Weg, um mehrere Befehle in einer Datei zu b&uuml;ndeln. Die Eingabe des Dateinamens des Skripts f&uuml;hrt die Befehle, die im Skript stehen, aus. siduction wird mit einigen sehr n&uuml;tzlichen Skripten ausgeliefert, welche Vereinfachungen der Systemadministration bieten.</p>
 <p>Ein Skript wird in der Konsole folgenderma&szlig;en gestartet, wenn man sich im gleichen Verzeichnis befindet:</p>

@@ -50,7 +50,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-unit-file">systemd unit file</h2>
-<p>The basic and introductory information about systemd can be found on the manual page <a target="_blank" href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.<br />
+<p>The basic and introductory information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.<br />
 On the following manual page we explain the structure of the <strong>unit files</strong> and the generic sections <em>[Unit]</em> and <em>[Install]</em>.</p>
 <p>The unit file is a plain text file in INI format. It contains configuration statements of the type <em>key=value</em> in various sections. Empty lines and those starting with “#” or “;” are ignored. All unit files must contain a section corresponding to the unit type. The generic sections [Unit] at the beginning and [Install] at the end of the file are optional, but the [Unit] section is strongly recommended.</p>
 <h3 id="loading-path-of-the-unit-files">Loading path of the unit files</h3>
@@ -176,15 +176,15 @@ checks if a given path exists and refers to a normal file marked as executable. 
 <h4 id="type-specific-section">Type-specific section</h4>
 <p>This section contains the special options of the eleven possible types. Detailed descriptions can be found in the linked manual pages, or on the respective manpage.</p>
 <ul>
-<li><p><a target="_blank" href="https://manual.siduction.org/systemd-service_en.html#systemd-service">[Service]</a> configures a service.</p></li>
+<li><p><a href="./systemd-service_en.html#systemd-service">[Service]</a> configures a service.</p></li>
 <li><p>[Socket] configures a socket (<code>man systemd.socket</code>).</p></li>
 <li><p>[Device] configures a device (<code>man systemd.device</code>).</p></li>
-<li><p><a target="_blank" href="https://manual.siduction.org/systemd-mount_en.html#systemd-mount">[Mount]</a> configures a mount point.</p></li>
-<li><p><a target="_blank" href="https://manual.siduction.org/systemd-mount_en.html#systemd-mount">[Automount]</a> configures a self-mount point.</p></li>
+<li><p><a href="./systemd-mount_en.html#systemd-mount">[Mount]</a> configures a mount point.</p></li>
+<li><p><a href="./systemd-mount_en.html#systemd-mount">[Automount]</a> configures a self-mount point.</p></li>
 <li><p>[Swap] configures a swap file or partition (<code>man systemd.swap</code>).</p></li>
-<li><p><a target="_blank" href="https://manual.siduction.org/systemd-target_en.html#systemd-target---target-unit">[Target]</a> configures a start target.</p></li>
-<li><p><a target="_blank" href="https://manual.siduction.org/systemd-path_en.html#systemd-path">[Path]</a> configures a monitored file path.</p></li>
-<li><p><a target="_blank" href="https://manual.siduction.org/systemd-timer_en.html#systemd-timer">[Timer]</a> configures a timer controlled and monitored by systemd.</p></li>
+<li><p><a href="./systemd-target_en.html#systemd-target---target-unit">[Target]</a> configures a start target.</p></li>
+<li><p><a href="./systemd-path_en.html#systemd-path">[Path]</a> configures a monitored file path.</p></li>
+<li><p><a href="./systemd-timer_en.html#systemd-timer">[Timer]</a> configures a timer controlled and monitored by systemd.</p></li>
 <li><p>[slice] configures a resource management slice (<code>man systemd.slice</code>).</p></li>
 <li><p>[Scope] configures a group of externally created processes (<code>man systemd.scope</code>).</p></li>
 </ul>

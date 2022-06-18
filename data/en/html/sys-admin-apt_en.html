@@ -51,7 +51,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="apt-package-management">APT package management</h2>
 <p>APT is an acronym for <strong>A</strong>dvanced <strong>P</strong>ackaging <strong>T</strong>ool and provides a collection of programs and scripts that assist the system and administrator in installing and managing Debian packages.<br />
-A complete description of the APT system can be found in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debian’s APT-HOWTO</a>.</p>
+A complete description of the APT system can be found in <a href="https://wiki.debian.org/DebianPackageManagement">Debian’s APT-HOWTO</a>.</p>
 <h3 id="apt-and-apt-get">apt and apt-get</h3>
 <p><strong>apt</strong> is intended as an end-user interface and, compared to more specialized tools such as apt-get and apt-cache, enables some options more suitable for interactive use by default. With apt not all options of apt-get and apt-cache are available. Please read the man pages of apt, apt-get, and apt-cache. The following table shows the respective commands and their basic meaning.</p>
 <table>
@@ -69,7 +69,7 @@ A complete description of the APT system can be found in <a target="_blank" href
 </thead>
 <tbody>
 <tr class="odd">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#apt-update">apt update</a></td>
+<td><a href="./sys-admin-apt_en.html#apt-update">apt update</a></td>
 <td>apt-get update</td>
 <td>Refresh the package database.</td>
 </tr>
@@ -79,7 +79,7 @@ A complete description of the APT system can be found in <a target="_blank" href
 <td>Update the system to the latest available package versions.</td>
 </tr>
 <tr class="odd">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#updating-the-system">apt full-upgrade</a></td>
+<td><a href="./sys-admin-apt_en.html#updating-the-system">apt full-upgrade</a></td>
 <td>apt-get dist-upgrade</td>
 <td>Upgrade the system to the latest available package versions even if it means removing already installed packages.</td>
 </tr>
@@ -89,42 +89,42 @@ A complete description of the APT system can be found in <a target="_blank" href
 <td>Upgrade the system as before, but only downloads without installing anything.</td>
 </tr>
 <tr class="odd">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#install-packages">apt install</a></td>
+<td><a href="./sys-admin-apt_en.html#install-packages">apt install</a></td>
 <td>apt-get install</td>
 <td>Install one or more packages.</td>
 </tr>
 <tr class="even">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#remove-packages">apt remove</a></td>
+<td><a href="./sys-admin-apt_en.html#remove-packages">apt remove</a></td>
 <td>apt-get remove</td>
 <td>Remove one or more packages.</td>
 </tr>
 <tr class="odd">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#remove-packages">apt purge</a></td>
+<td><a href="./sys-admin-apt_en.html#remove-packages">apt purge</a></td>
 <td>apt-get purge</td>
 <td>Remove one or more packages including configuration files.</td>
 </tr>
 <tr class="even">
-<td>- <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark hold</a></td>
+<td>- <a href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark hold</a></td>
 <td>Prevent apt from installing another version of the package.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>-</td>
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark unhold</a></td>
+<td><a href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark unhold</a></td>
 <td>Cancel the ‘apt-mark hold’ command.</td>
 </tr>
 <tr class="even">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#searching-for-program-packages">apt search</a></td>
+<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt search</a></td>
 <td>apt-get search</td>
 <td>Search for packages according to the pattern entered (regex possible).</td>
 </tr>
 <tr class="odd">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#package-search-in-the-terminal">apt show</a></td>
+<td><a href="./sys-admin-apt_en.html#package-search-in-the-terminal">apt show</a></td>
 <td>apt-cache show</td>
 <td>Display the details of a package.</td>
 </tr>
 <tr class="even">
-<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#package-search-in-the-terminal">apt list</a></td>
+<td><a href="./sys-admin-apt_en.html#package-search-in-the-terminal">apt list</a></td>
 <td>apt-cache policy</td>
 <td>Show the installed or installable version of a package.</td>
 </tr>
@@ -159,7 +159,7 @@ deb http://packages.siduction.org/extra unstable main contrib non-free
 deb http://deb.debian.org/debian/ unstable main contrib non-free
 
 #deb-src http://deb.debian.org/debian/ unstable main contrib non-free</code></pre>
-<p>More entries for optional siduction repositories can be found at <a target="_blank" href="https://packages.siduction.org/">siduction repositories</a>.</p>
+<p>More entries for optional siduction repositories can be found at <a href="https://packages.siduction.org/">siduction repositories</a>.</p>
 <p>For example, adding one or more Debian repositories would look like this:</p>
 <pre><code>#Debian
 #Unstable
@@ -178,7 +178,7 @@ deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
 #deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free</code></pre>
 <p><em>NOTE:</em><br />
 This example uses the US Debian mirror starting with ftp.us. This setting can be changed as <strong>root</strong> by adjusting the country code (for example: ftp.at, ftp.de). Most countries have local Debian mirrors available. This provides a higher connection speed for the user and also saves bandwidth.</p>
-<p><a target="_blank" href="https://www.debian.org/mirrors/">List of currently available Debian servers and their mirrors</a></p>
+<p><a href="https://www.debian.org/mirrors/">List of currently available Debian servers and their mirrors</a></p>
 <h3 id="apt-update">apt update</h3>
 <p>To get updated information about the packages, a database is kept with the needed entries. The apt program uses it when installing a package to resolve all dependencies and thus to guarantee that the selected packages will work. The creation or update of this database is done with the command <strong><code>apt update</code></strong>.</p>
 <pre><code>root@siduction# apt update
@@ -299,7 +299,7 @@ while the hashes in front of the sources for unstable are removed again. After s
 apt update
 apt install kmahjongg / apt full-upgrade</code></pre>
 <h3 id="updating-the-system">Updating the system</h3>
-<p>An upgrade of the whole system is performed with this command: <strong><code>apt full-upgrade</code></strong>. Before such an action, the current upgrade warnings on the main siduction page should be followed to check whether packages of one’s own system are affected. If an installed package should be kept, i.e. put on hold, please refer to the section <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#hold-or-downgrade-a-package">downgrade or “hold”</a> of a package.</p>
+<p>An upgrade of the whole system is performed with this command: <strong><code>apt full-upgrade</code></strong>. Before such an action, the current upgrade warnings on the main siduction page should be followed to check whether packages of one’s own system are affected. If an installed package should be kept, i.e. put on hold, please refer to the section <a href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">downgrade or “hold”</a> of a package.</p>
 <p>A simple <strong><code>apt upgrade</code></strong> of Debian Sid is usually not recommended. However, it can be helpful if there is a situation with many packages held or to be removed. Here an <strong><code>apt upgrade</code></strong> can update packages not affected by the situation.</p>
 <p>How regularly should a system upgrade be performed?<br />
 A system update should be performed regularly, every one to two weeks has proven to be a good guideline. Even monthly system updates should not cause any significant problems. Theoretically, the system can be updated several times a day after mirror synchronization every 6 hours.</p>
@@ -363,7 +363,7 @@ Do you want to continue [Y/n]?Y </code></pre>
 <p class="warning">
 <strong>Warning:</strong> <br />A system update that is not performed in the multi-user.target (formerly runlevel 3) can lead to problems when it comes to updates of the installed desktop environment or the X server!
 </p>
-<p>Before updating the system, visit the <a target="_blank" href="https://forum.siduction.org/">siduction home page</a> to find out about any upgrade warnings. These warnings are necessary because of the structure of Debian sid/unstable which adds new program packages to its repositories several times a day.</p>
+<p>Before updating the system, visit the <a href="https://forum.siduction.org/">siduction home page</a> to find out about any upgrade warnings. These warnings are necessary because of the structure of Debian sid/unstable which adds new program packages to its repositories several times a day.</p>
 <p>The following procedure should be followed:</p>
 <ol type="1">
 <li>Log out of the desktop environment.<br />
@@ -455,7 +455,7 @@ apt install packagesearch</code></pre>
 <li>orphaned packages</li>
 </ul>
 <p>In addition, a lot of information about Debian packages is provided, including which files are bundled in a package. More detailed information about using packagesearch can be found at <em>“Help”</em> &gt; <em>“Contents”</em>. Currently the user interface of packagesearch is English only.</p>
-<p>A complete description of the APT system can be found in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debian’s APT-HOWTO</a>.</p>
+<p>A complete description of the APT system can be found in <a href="https://wiki.debian.org/DebianPackageManagement">Debian’s APT-HOWTO</a>.</p>
 <div id="rev">
 Last edited: 2022/04/07
 </div>

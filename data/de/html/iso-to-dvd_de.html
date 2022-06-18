@@ -42,11 +42,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="iso-brennen">ISO brennen</h2>
 <p>Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie stets mit Hilfe der von siduction immer angebotenen md5sum und sha256sum pr&uuml;fen. Das erspart unter Umst&auml;nden viel Zeit f&uuml;r die Fehlersuche bei einer ver&auml;nderten oder besch&auml;digten Datei.<br />
-Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a target="_blank" href="https://manual.siduction.org/iso-dl_de.html#integrit&auml;tspr&uuml;fung">ISO Download, Integrit&auml;tspr&uuml;fung</a>.</p>
+Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a href="./iso-dl_de.html#integrit&auml;tspr&uuml;fung">ISO Download, Integrit&auml;tspr&uuml;fung</a>.</p>
 <p class="warning">
 <strong>WICHTIGE INFORMATION:</strong> <br />siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbildes geachtet werden. Bitte verwende hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
 </p>
-<p>Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterst&uuml;tzt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Eine Anleitung dazu bietet die Handbuchseite <a target="_blank" href="https://manual.siduction.org/iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">ISO auf USB-Stick / Speicherkarte</a>.</p>
+<p>Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterst&uuml;tzt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Eine Anleitung dazu bietet die Handbuchseite <a href="./iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">ISO auf USB-Stick / Speicherkarte</a>.</p>
 <h3 id="dvd-mit-linux-brennen">DVD mit Linux brennen</h3>
 <p>Wer bereits Linux auf dem Rechner hat, kann die DVD mit jedem installierten Brennprogramm erstellen. Je nach Desktopumgebung sind das die Programme<br />
 + <strong><code>K3b</code></strong> f&uuml;r KDE<br />
@@ -56,14 +56,14 @@ Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a target="_blank" hre
 Bei K3b w&auml;hlt man <code>Weitere Aktionen...</code> -&gt; <code>Abbild schreiben...</code> aus.<br />
 In Xfburn und Brasero sollte man <code>Abbild brennen</code> anklicken.<br />
 Anschlie&szlig;end ist das zu brennende ISO-File (z.B. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) auszuw&auml;hlen und der Brennmodus <code>DAO</code> (Disk At Once) oder <code>Automatisch</code> einzustellen und der Brennvorgang zu starten.</p>
-<p>Gelegentliche Probleme beim Brennen der Live-DVD haben ihre Ursache zumeist in den graphischen Frontend-Applikationen. Dies kann man umgehen, indem auf der Konsole das sehr einfach anzuwendende Skript <code>burniso</code> benutzt wird. Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/no-gui-burn_de.html#life-dvd-ohne-gui-brennen">DVD ohne GUI brennen</a> erkl&auml;rt die Verwendung von burniso kurz und exakt, sowie weitere Befehle um verf&uuml;gbare Hardware zu erkennen, Daten zusammenzustellen und CD/DVDs zu brennen.</p>
+<p>Gelegentliche Probleme beim Brennen der Live-DVD haben ihre Ursache zumeist in den graphischen Frontend-Applikationen. Dies kann man umgehen, indem auf der Konsole das sehr einfach anzuwendende Skript <code>burniso</code> benutzt wird. Die Handbuchseite <a href="./no-gui-burn_de.html#life-dvd-ohne-gui-brennen">DVD ohne GUI brennen</a> erkl&auml;rt die Verwendung von burniso kurz und exakt, sowie weitere Befehle um verf&uuml;gbare Hardware zu erkennen, Daten zusammenzustellen und CD/DVDs zu brennen.</p>
 <h3 id="dvd-mit-windows-brennen">DVD mit Windows brennen</h3>
 <p>Selbstverst&auml;ndlich kann man die DVD auch in Windows brennen. Die heruntergeladene Datei muss als ISO-Abbild auf eine DVD gebrannt werden und nicht aus dem Windows Explorer heraus als Datei.<br />
 Es gibt verschiedene gute Programme, die die mit Windows Vista eingef&uuml;hrte, integrierte Brennfunktion f&uuml;r CD und DVD erweitern um ISO-Dateien zu brennen. Hier nur zwei Beispiele.</p>
 <ul>
-<li>Die Open-Source-Software <a target="_blank" href="https://cdrtfe.sourceforge.io/cdrtfe/index_de.html">cdrtfe</a> ist in der aktuellen Version kompatibel mit Windows Vista, 7, 8, 10 und 11. Mit dem Programm lassen sich ISO-Abbilder brennen, Daten-Disks (CD, DVD, BD) sowie Audio und Video CD/DVDs erstellen. Man kann es in Windows installieren oder das zip-Archiv herunterladen und nach dem Entpacken <code>cdrtfe</code> ohne weitere Installation starten.<br />
+<li>Die Open-Source-Software <a href="https://cdrtfe.sourceforge.io/cdrtfe/index_de.html">cdrtfe</a> ist in der aktuellen Version kompatibel mit Windows Vista, 7, 8, 10 und 11. Mit dem Programm lassen sich ISO-Abbilder brennen, Daten-Disks (CD, DVD, BD) sowie Audio und Video CD/DVDs erstellen. Man kann es in Windows installieren oder das zip-Archiv herunterladen und nach dem Entpacken <code>cdrtfe</code> ohne weitere Installation starten.<br />
 </li>
-<li>Die Closed-Source-Software <code>CDBurnerXP</code> ist ein kostenloses Programm, dass neben dem Brennen von ISO-Abbildern auch Daten und Audio CD/DVDs erstellen kann und wieder beschreibbare Medien bei Bedarf l&ouml;scht. Erh&auml;ltlich unter <a target="_blank" href="https://cdburnerxp.de.uptodown.com/windows">CDBurnerXP</a>.</li>
+<li>Die Closed-Source-Software <code>CDBurnerXP</code> ist ein kostenloses Programm, dass neben dem Brennen von ISO-Abbildern auch Daten und Audio CD/DVDs erstellen kann und wieder beschreibbare Medien bei Bedarf l&ouml;scht. Erh&auml;ltlich unter <a href="https://cdburnerxp.de.uptodown.com/windows">CDBurnerXP</a>.</li>
 </ul>
 <div id="rev">
 Zuletzt bearbeitet: 2022-04-06

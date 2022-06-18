@@ -92,7 +92,7 @@ The directory <code>/home</code> should be the place where individual configurat
 </table>
 <h3 id="examples-with-different-disk-sizes">Examples with different disk sizes</h3>
 <p>If a dual boot with MS Windows™ is created, MS Windows must always be installed as the first system onto the hard disk.</p>
-<p><em>“GPT”</em> should be selected as partition table type. Thus, you can use the advantages over <em>“MBR”</em>. Only with old hardware, <em>“MBR”</em> is still useful. The explanations for this can be found on our manual page <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p>
+<p><em>“GPT”</em> should be selected as partition table type. Thus, you can use the advantages over <em>“MBR”</em>. Only with old hardware, <em>“MBR”</em> is still useful. The explanations for this can be found on our manual page <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p>
 <p>The examples refer to partition tables of the type <em>“GPT”</em>. It needs the first two, very small partitions in order to function.</p>
 <p><strong>Dual-boot with MS Windows and Linux</strong></p>
 <p><strong>1 TB hard disk:</strong></p>
@@ -393,14 +393,14 @@ The directory <code>/home</code> should be the place where individual configurat
 <h3 id="partition-editors">Partition editors</h3>
 <ul>
 <li><p><strong>GParted</strong>: an easy to use partition editor with a graphical interface<br />
-<em>Gparted</em> is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page <a target="_blank" href="https://manual.siduction.org/part-gparted_en.html#partitioning-with-gparted">Partitioning the hard disk with GParted</a> provides more information about the program.</p></li>
+<em>Gparted</em> is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page <a href="./part-gparted_en.html#partitioning-with-gparted">Partitioning the hard disk with GParted</a> provides more information about the program.</p></li>
 <li><p><strong>KDE Partition Manager</strong>: a Qt based, easy to use partition editor with a graphical user interface<br />
 The <em>KDE Partition Manager</em> is the standard partition editor for the KDE Destktop and as comprehensive as <em>Gparted</em>.</p></li>
 <li><p><strong>gdisk / cgdisk</strong>: a console program for partition tables of the type <em>GPT - UEFI</em><br />
-<em>gdisk</em> is the classic text mode program, while <em>cgdisk</em> has a more user friendly ncurses interface. The manual page <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a> provides more information about the program.</p></li>
+<em>gdisk</em> is the classic text mode program, while <em>cgdisk</em> has a more user friendly ncurses interface. The manual page <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a> provides more information about the program.</p></li>
 <li><p><strong>fdisk / cfdisk</strong>: a console program for partition tables of the type <em>msdos - MBR</em><br />
 Note: <em>fdisk</em> should only be used for old hardware that does not support <em>GPT - UEFI</em>.<br />
-<em>fdisk</em> is the classic text mode program, while <em>cfdisk</em> has a more user-friendly ncurses interface. The manual page <a target="_blank" href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with cfdisk</a> provides more information about the program.</p></li>
+<em>fdisk</em> is the classic text mode program, while <em>cfdisk</em> has a more user-friendly ncurses interface. The manual page <a href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with cfdisk</a> provides more information about the program.</p></li>
 </ul>
 <p class="warning">
 <strong>Caution</strong> <br />When using any partitioning software, there is a risk of data loss. Always back up important data to another disk in advance.
@@ -411,11 +411,11 @@ You can do this by entering to following command as <strong>root</strong>:</p>
 <p>To mount a swap partition, use this command:</p>
 <pre><code># swapoff -a</code></pre>
 <h3 id="further-information">Further information</h3>
-<p><a target="_blank" href="https://gparted.org/index.php">Here the comprehensive english documentation of GParted</a></p>
+<p><a href="https://gparted.org/index.php">Here the comprehensive english documentation of GParted</a></p>
 <p>For more partitioning options see:</p>
 <ul>
-<li><p>Logical Volume Manager <a target="_blank" href="https://manual.siduction.org/part-lvm_en.html#lvm-partitioning---logical-volume-manager">LVM partitioning</a></p></li>
-<li><p>partitioning with GPT to support UEFI <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a></p></li>
+<li><p>Logical Volume Manager <a href="./part-lvm_en.html#lvm-partitioning---logical-volume-manager">LVM partitioning</a></p></li>
+<li><p>partitioning with GPT to support UEFI <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a></p></li>
 </ul>
 <div id="rev">
 Last edited: 2022/03/31

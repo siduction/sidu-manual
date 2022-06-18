@@ -55,12 +55,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Zu Beginn des Bootvorgangs l&auml;sst sich die Kernel-Befehlszeile editieren, indem man, sobald das Grub-Menue erscheint, die Taste <strong><code>e</code></strong> dr&uuml;ckt. Im Editiermodus navigiert man mit den Pfeiltasten zur Kernelzeile und f&uuml;gt am Ende den oder die gew&uuml;nschten Cheatcode ein. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <strong><code>Strg</code></strong>+<strong><code>X</code></strong> fortgesetzt.</p>
 <p>Die nachstehenden Link f&uuml;hren zu der Handbuchseite mit den Tabellen f&uuml;r die Bootoptionen.</p>
 <ol type="1">
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter (nur Live-CD)</a></li>
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_de.html#bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den Grafikserver X</a></li>
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_de.html#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_de.html#vga-codes">Werte f&uuml;r den allgemeinen Parameter <strong>vga</strong></a></li>
+<li><a href="./cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter (nur Live-CD)</a></li>
+<li><a href="./cheatcodes_de.html#bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den Grafikserver X</a></li>
+<li><a href="./cheatcodes_de.html#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
+<li><a href="./cheatcodes_de.html#vga-codes">Werte f&uuml;r den allgemeinen Parameter <strong>vga</strong></a></li>
 </ol>
-<p><a target="_blank" href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausf&uuml;hrliche Referenzliste f&uuml;r Kernel-Bootcodes von kernel.org (Englisch, PDF)</a></p>
+<p><a href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausf&uuml;hrliche Referenzliste f&uuml;r Kernel-Bootcodes von kernel.org (Englisch, PDF)</a></p>
 <h3 id="systemd---dienste-verwalten">systemd - Dienste verwalten</h3>
 <p>systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am h&auml;ufigsten zu tun haben sind:</p>
 <ul>
@@ -71,7 +71,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li>systemd.mount</li>
 <li>systemd.path</li>
 </ul>
-<p>Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalit&auml;t. Etwas ausf&uuml;hrlichere Erl&auml;uterungen zu den Units beinhaltet unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.Systemd</a>. Die vollst&auml;ndige Dokumentation ist in den man-Pages <code>man systemd.unit</code>, <code>man systemd.special</code> und jeweils <code>man systemd.&lt;Unit-Typ&gt;</code> zu finden.</p>
+<p>Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalit&auml;t. Etwas ausf&uuml;hrlichere Erl&auml;uterungen zu den Units beinhaltet unsere Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.Systemd</a>. Die vollst&auml;ndige Dokumentation ist in den man-Pages <code>man systemd.unit</code>, <code>man systemd.special</code> und jeweils <code>man systemd.&lt;Unit-Typ&gt;</code> zu finden.</p>
 <p>Mit dem Befehl</p>
 <pre><code>systemctl [OPTIONEN...] Befehl [UNIT...]</code></pre>
 <p>je nach den Units und den notwendigen Rechten als <strong>user</strong> oder <strong>root</strong> aufgerufen, wird das systemd-System gesteuert. <em>“systemctl”</em> kennt die Autovervollst&auml;ndigung mittels <code>TAB</code> und die Anzeige aller Variationen mittels <code>TAB</code> <code>TAB</code>. Bitte die man-Page <code>man systemctl</code> lesen.</p>
@@ -92,7 +92,7 @@ Zum Beenden eines Dienstes dient auch der Befehl:</p>
 <li><em>“-s”</em> sendet eines der Signale <code>SIGTERM</code>, <code>SIGINT</code> oder <code>SIGSTOP</code>. Vorgabe ist <em>“SIGTERM”</em>.</li>
 <li><em>“–kill-who=”</em> erlaubt die Auswahl der Prozesse innerhalb der Hirarchie, an die ein Signal gesendet werden soll. Die Optionen sind <code>main</code>, <code>control</code> oder <code>all</code>. Damit wird dem Hauptprozess, den Kind-Prozesse oder beiden das Signal gesendet. Vorgabe ist <em>“all”</em>.</li>
 </ul>
-<p>Dieses Verhalten &auml;hnelt dem altbekannten und weiterhin verwendbaren Befehl pkill, der weiter unten im Abschnitt <a target="_blank" href="https://manual.siduction.org/sys-admin-gen_de.html#beenden-eines-prozesses">Beenden eines Prozesses</a> erl&auml;utert wird.</p>
+<p>Dieses Verhalten &auml;hnelt dem altbekannten und weiterhin verwendbaren Befehl pkill, der weiter unten im Abschnitt <a href="./sys-admin-gen_de.html#beenden-eines-prozesses">Beenden eines Prozesses</a> erl&auml;utert wird.</p>
 <h3 id="systemd---unit-eingliedern">systemd - UNIT eingliedern</h3>
 <p>Damit eine (selbst erstellte) Unit beim Hochfahren des Rechners automatisch geladen wird, als <strong>root</strong>:</p>
 <pre><code># systemctl enable &lt;UNIT-Datei&gt;</code></pre>
@@ -107,7 +107,7 @@ Wenn ein PC oder Laptop ohne Bluetooth Hardware im Einsatz ist, oder man kein Bl
 <h3 id="systemd-target-ehemals-runlevel">systemd-target ehemals Runlevel</h3>
 <p>Seit der Ver&ouml;ffentlichung von 2013.2 “December” benutzt siduction bereits systemd als Standard-Init-System.<br />
 Die alten sysvinit-Befehle werden weiterhin unterst&uuml;tzt. (hierzu ein Zitat aus <code>man systemd</code>: “… wird aus Kompatibilit&auml;tsgr&uuml;nden und da es leichter zu tippen ist, bereitgestellt.”)<br />
-Ausf&uuml;hrlichere Informationen zum systemd enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.systemd</a>.<br />
+Ausf&uuml;hrlichere Informationen zum systemd enth&auml;lt die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemadministration.systemd</a>.<br />
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als <strong>Ziel-Unit</strong>. Sie besitzen die Erweiterung <strong>.target</strong>.</p>
 <table>
 <colgroup>
@@ -131,7 +131,7 @@ Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt sys
 </tr>
 <tr class="odd">
 <td>multi-user.target</td>
-<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten m&ouml;chte. <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#aktualisierung-des-systems">Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgef&uuml;hrt</a> .</td>
+<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten m&ouml;chte. <a href="./sys-admin-apt_de.html#aktualisierung-des-systems">Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgef&uuml;hrt</a> .</td>
 </tr>
 <tr class="even">
 <td>graphical.target</td>
@@ -192,7 +192,7 @@ Mit der Option <code>--signal</code>, gefolgt von der Signalnummer oder dem Sign
 <p><strong>Einstellungen pr&uuml;fen</strong></p>
 <ul>
 <li><p>Korrekte Grafiktreiber<br />
-Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vern&uuml;nftige L&ouml;sung ist in diesen F&auml;llen die Installation von propriet&auml;ren, nicht quelloffenen Treibern. Aus rechtlichen Gr&uuml;nden kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite <a target="_blank" href="https://manual.siduction.org/gpu_de.html#grafiktreiber">Grafiktreiber</a> des Handbuchs.</p></li>
+Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vern&uuml;nftige L&ouml;sung ist in diesen F&auml;llen die Installation von propriet&auml;ren, nicht quelloffenen Treibern. Aus rechtlichen Gr&uuml;nden kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite <a href="./gpu_de.html#grafiktreiber">Grafiktreiber</a> des Handbuchs.</p></li>
 <li><p>Korrekte Bildschirmaufl&ouml;sungen und Bildwiederholungsraten<br />
 Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in aller Regel richtig an das Betriebssystem &uuml;bergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu &uuml;berschreiben.</p>
 <p>Um zu pr&uuml;fen welche Einstellungen der X-Server zur Zeit verwendet, benutzen wir xrandr im Terminal:</p>
@@ -331,7 +331,7 @@ Die Einstellm&ouml;glichkeit eines anderen DPI-Wertes bzw. einer anderen Gr&ouml
 <p>Im Anschluss daran wird ein Web-Browser ge&ouml;ffnet und in die Adresszeile eingegeben:</p>
 <p>http://localhost:631</p>
 <p>Ein kleines Problem tritt auf, wenn CUPS zur Legitimation die entsprechende Dialog-Box &ouml;ffnet. Dort ist gelegentlich der eigene Benutzername bereits eingetragen und das Passwort wird erwartet. Die Eingabe des Benutzerpassworts ist jedoch nicht zielf&uuml;hrend. Es geht nichts. Die L&ouml;sung ist, den Benutzernamen in <strong>root</strong> zu &auml;ndern und das root-Passwort einzugeben.</p>
-<p><a target="_blank" href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen &uuml;ber verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verf&uuml;gung. Die Firma Samsung lieferte fr&uuml;her eigene Linux-Treiber f&uuml;r ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>“hplib”</em> auf. Derzeit funktioniert f&uuml;r Samsung-Drucker und Samsung-Multifunktionsger&auml;te am ehesten das Paket <code>printer-driver-splix</code>. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per <a target="_blank" href="https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/">IPP-Everywhere</a>.</p>
+<p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">Die OpenPrinting-Datenbank</a> beinhaltet umfangreiche Informationen &uuml;ber verschiedenste Drucker und deren Treiber. Es stehen Treiber, Spezifikationen und Konfigurations-Tools zur Verf&uuml;gung. Die Firma Samsung lieferte fr&uuml;her eigene Linux-Treiber f&uuml;r ihre Drucker. Nach dem Verkauf der Druckersparte an HP war die Downloadseite nicht mehr erreichbar und HP nahm die Samsung-Treiber leider nicht in die <em>“hplib”</em> auf. Derzeit funktioniert f&uuml;r Samsung-Drucker und Samsung-Multifunktionsger&auml;te am ehesten das Paket <code>printer-driver-splix</code>. CUPS ist gerade im Umbruch und geht in Richtung Drucken ohne Treiber per <a href="https://linuxnews.de/2020/11/pappl-erstellt-cups-printer-applications/">IPP-Everywhere</a>.</p>
 <h3 id="sound-in-siduction">Sound in siduction</h3>
 <p><em>In &auml;lteren siduction Installationen ist der Ton in der Grundeinstellung deaktiviert.</em></p>
 <p>Die meisten Tonprobleme lassen sich l&ouml;sen, indem man auf das Sound-Ikon in der Kontrollleiste klickt, den Mischer &ouml;ffnet und das H&auml;kchen von “stumm” oder “mute” entfernt bzw. den entsprechenden Schieber bet&auml;tigt. Ist das Lautsprecher-Symbol nicht vorhanden, gen&uuml;gt ein Rechtsklick auf die Kontrollleiste, dann die Auswahl</p>

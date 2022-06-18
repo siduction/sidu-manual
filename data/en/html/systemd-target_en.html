@@ -41,7 +41,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-target---target-unit">systemd-target - target unit</h2>
-<p>The basic and introductory information about Systemd can be found on the manual page <a target="_blank" href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
+<p>The basic and introductory information about Systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
 Now the function of the <strong>systemd.target</strong> unit will be explained in more detail, which is similar to the commonly known runlevels.</p>
 <p>The different runlevels that are booted or switched to are described by systemd as target units. They have the extension “.target”.</p>
 <p>The old sysvinit commands are still supported. (For this a quote from <code>man systemd</code>: “… is provided for compatibility reasons and because it is easier to type.”)</p>
@@ -67,7 +67,7 @@ Now the function of the <strong>systemd.target</strong> unit will be explained i
 </tr>
 <tr class="odd">
 <td><strong>multi-user.target</strong></td>
-<td>starts a multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not to boot into it. <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#run-full-upgrade">This unit is used in special cases (when X itself or the desktop environment are upgraded) to perform a system upgrade (dist-upgrade)</a>.</td>
+<td>starts a multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not to boot into it. <a href="./sys-admin-apt_en.html#run-full-upgrade">This unit is used in special cases (when X itself or the desktop environment are upgraded) to perform a system upgrade (dist-upgrade)</a>.</td>
 </tr>
 <tr class="even">
 <td><strong>graphical.target</strong></td>

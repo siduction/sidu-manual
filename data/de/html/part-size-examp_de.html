@@ -93,7 +93,7 @@ Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen
 </table>
 <h3 id="beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit verschiedenen Plattengr&ouml;&szlig;en</h3>
 <p>Falls ein Dual-Boot mit MS Windows™ angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden.</p>
-<p>Als Partitionstabelle sollte der Typ <em>“GPT”</em> gew&auml;hlt werden. So kann man die Vorteile gegen&uuml;ber <em>“MBR”</em> nutzen. Nur bei alter Hardware ist <em>“MBR”</em> noch sinnvoll. Die Erkl&auml;rungen hierzu enth&auml;lt unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a>.</p>
+<p>Als Partitionstabelle sollte der Typ <em>“GPT”</em> gew&auml;hlt werden. So kann man die Vorteile gegen&uuml;ber <em>“MBR”</em> nutzen. Nur bei alter Hardware ist <em>“MBR”</em> noch sinnvoll. Die Erkl&auml;rungen hierzu enth&auml;lt unsere Handbuchseite <a href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a>.</p>
 <p>Die Beispiele beziehen sich auf Partitionstabellen vom Typ <em>“GPT”</em>, f&uuml;r deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.</p>
 <p><strong>Dual-Boot mit MS Windows und Linux</strong></p>
 <p><strong>1 TB Festplatte:</strong></p>
@@ -394,14 +394,14 @@ Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen
 <h3 id="partitionierungsprogramme">Partitionierungsprogramme</h3>
 <ul>
 <li><p><strong>GParted</strong> Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfl&auml;che.<br />
-Gparted ist auf allen mit einer graphischen Oberfl&auml;che ausgestatteten siduction Installationen und Installationsmedien verf&uuml;gbar. Gparted unterst&uuml;tzt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">Partitionieren der Festplatte mit GParted</a> liefert weitere Informationen zum Programm.</p></li>
+Gparted ist auf allen mit einer graphischen Oberfl&auml;che ausgestatteten siduction Installationen und Installationsmedien verf&uuml;gbar. Gparted unterst&uuml;tzt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite <a href="./part-gparted_de.html#partitionieren-mit-gparted">Partitionieren der Festplatte mit GParted</a> liefert weitere Informationen zum Programm.</p></li>
 <li><p><strong>KDE Partition Manager</strong> Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfl&auml;che.<br />
 Der KDE Partition Manager ist das Standard-Partitionierungsprogramm f&uuml;r den KDE Destktop, einfach zu bedienen und genauso umfangreich wie Gparted.</p></li>
 <li><p><strong>gdisk / cgdisk</strong> Ein Konsolenprogramm f&uuml;r Partitionstabellen vom Typ <em>“GPT-UEFI”</em>.<br />
-gdisk ist das klassische Textmodus-Programm. cgdisk hat eine benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> liefert weitere Informationen zum Programm.</p></li>
+gdisk ist das klassische Textmodus-Programm. cgdisk hat eine benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> liefert weitere Informationen zum Programm.</p></li>
 <li><p><strong>fdisk / cfdisk</strong> Ein Konsolenprogramm f&uuml;r Partitionstabellen vom Typ <em>“msdos-MBR”</em>.<br />
 Hinweis: fdisk sollte nur noch f&uuml;r alte Hardware, die <em>“GPT-UEFI”</em> nicht unterst&uuml;tzt verwendet werden.<br />
-fdisk ist das klassische Textmodus-Programm. cfdisk hat eine benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a> liefert weitere Informationen zum Programm.</p></li>
+fdisk ist das klassische Textmodus-Programm. cfdisk hat eine benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a href="./part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a> liefert weitere Informationen zum Programm.</p></li>
 </ul>
 <p class="warning">
 <strong>Achtung</strong> <br />Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht werden, immer zuvor auf einem anderen Datentr&auml;ger sichern.
@@ -412,11 +412,11 @@ Im Terminal als <strong>root</strong> mit dem Befehl:</p>
 <p>Die Einbindung einer Swap-Partition wird mit diesem Befehl gel&ouml;st:</p>
 <pre><code># swapoff -a</code></pre>
 <h3 id="weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</h3>
-<p><a target="_blank" href="https://gparted.org/index.php">Hier die umfassende englischsprachige Dokumentation von GParted</a></p>
+<p><a href="https://gparted.org/index.php">Hier die umfassende englischsprachige Dokumentation von GParted</a></p>
 <p>F&uuml;r weitere Partitionierungsoptionen siehe:</p>
 <ul>
-<li><p>Logical Volume Manager <a target="_blank" href="https://manual.siduction.org/part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung</a></p></li>
-<li><p>Partitionierung mit GPT zur Unterst&uuml;tzung von UEFI <a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT fdisk)</a></p></li>
+<li><p>Logical Volume Manager <a href="./part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung</a></p></li>
+<li><p>Partitionierung mit GPT zur Unterst&uuml;tzung von UEFI <a href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT fdisk)</a></p></li>
 </ul>
 <div id="rev">
 Zuletzt bearbeitet: 2021-07-21

@@ -98,7 +98,7 @@ Accordingly, we set the appropriate settings on the PC for the used LAN interfac
 <h3 id="apache-configuration">Apache configuration</h3>
 <p>The configuration files and directories are located in the <code>ServerRoot</code> directory <code>/etc/apache2/</code>.<br />
 The central configuration file is <code>apache2.conf</code>. It is usually not edited because many configurations are in separate files. Activation and deactivation is done via sym links. This has the advantage that a number of different configurations are available and only the required ones are included.</p>
-<p>The configuration files are text files, which are created or edited with an editor and <strong>root</strong> permissions. The name of the file may be arbitrary, but the file extension must be <em>“.conf”</em>. The valid directives that may be used in the configuration files are described in detail in the <a target="_blank" href="https://httpd.apache.org/docs/current/en/">Apache documentation</a>.</p>
+<p>The configuration files are text files, which are created or edited with an editor and <strong>root</strong> permissions. The name of the file may be arbitrary, but the file extension must be <em>“.conf”</em>. The valid directives that may be used in the configuration files are described in detail in the <a href="https://httpd.apache.org/docs/current/en/">Apache documentation</a>.</p>
 <p>The files are located in the directories</p>
 <p><code>/etc/apache2/conf-available</code>,<br />
 <code>/etc/apache2/mods-available</code>, and<br />
@@ -187,7 +187,7 @@ drwxr-xr-x 3 root root 4096 Jan 9 19:04 ...
 <p>Now only members of the group <em>work</em> have write permission in <code>DocumentRoot</code>. Apache web server can read and write the files, all others are denied access.</p></li>
 <li><p>Disadvantages of these settings</p>
 <p>When creating new directories and files below <code>DocumentRoot</code>, the owner is the respective <strong>user</strong> and not <em>www-data</em>. This prevents the Apache web server from reading the files.<br />
-The solution is a <em>Systemd Path Unit</em>, which monitors changes below <code>DocumentRoot</code> and adjusts the owner and file permissions. (See the example in the <a target="_blank" href="https://manual.siduction.org/systemd-path_en.html#systemd-path">Systemd-Path</a> manual page.)</p></li>
+The solution is a <em>Systemd Path Unit</em>, which monitors changes below <code>DocumentRoot</code> and adjusts the owner and file permissions. (See the example in the <a href="./systemd-path_en.html#systemd-path">Systemd-Path</a> manual page.)</p></li>
 </ol>
 <p><strong>Without CMS</strong></p>
 <p>For static websites, a content management system is often not necessary and only constitutes another security risk and increased maintenance effort. In addition to the settings made before, the write permission to <code>DocumentRoot</code> can be revoked from the Apache web server to strengthen security because in case an attacker finds a hole in Apache, this will not give him write permission to <code>DocumentRoot</code>.</p>
@@ -240,14 +240,14 @@ $ echo &quot;&lt;?php&quot; &gt; /var/www/html/upload/index.php</code></pre></li
 <li><p><strong>Merging</strong> the configuration:</p>
 <p>The directives of the configuration are spread over a number of files within <code>ServerRoot</code> and the <code>.htaccess</code> files in <code>DocumentRoot</code>. It is therefore particularly important to know where to place the directive to achieve the desired effect.<br />
 We strongly recommend to consult the web page<br />
-<a target="_blank" href="https://httpd.apache.org/docs/current/en/sections.html#merging">apache.org - How the sections are merged</a><br />
+<a href="https://httpd.apache.org/docs/current/en/sections.html#merging">apache.org - How the sections are merged</a><br />
 intensively.</p></li>
 <li><p>The <strong>owner</strong> of <code>DocumentRoot</code></p>
-<p>is <em>“root.root”</em> after installation and should be changed. See the chapter <a target="_blank" href="https://manual.siduction.org/lamp-apache_en.html#users-and-permissions">users and permissions</a>.</p></li>
+<p>is <em>“root.root”</em> after installation and should be changed. See the chapter <a href="./lamp-apache_en.html#users-and-permissions">users and permissions</a>.</p></li>
 </ul>
 <h3 id="use-https">Use HTTPS</h3>
 <p>Without HTTPS no website project can be launched today.<br />
-How to obtain a certificate is described, for example, in detail and in an easy-to-understand manner on the website <a target="_blank" href="https://www.wpbeginner.com/beginners-guide/how-to-get-a-free-ssl-certificate-for-your-wordpress-website/">wpbeginner</a>.</p>
+How to obtain a certificate is described, for example, in detail and in an easy-to-understand manner on the website <a href="https://www.wpbeginner.com/beginners-guide/how-to-get-a-free-ssl-certificate-for-your-wordpress-website/">wpbeginner</a>.</p>
 <p>First we create the necessary folders inside <code>DocumentRoot</code>:</p>
 <pre><code>cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/private</code></pre>
@@ -271,7 +271,7 @@ How to obtain a certificate is described, for example, in detail and in an easy-
 <h3 id="security-tips">Security Tips</h3>
 <ul>
 <li><p>The Apache documentation contains a recommended page with various security tips.<br />
-<a target="_blank" href="https://httpd.apache.org/docs/current/en/misc/security_tips.html">apache.org - Security Tips</a></p></li>
+<a href="https://httpd.apache.org/docs/current/en/misc/security_tips.html">apache.org - Security Tips</a></p></li>
 <li><p>In addition, there are numerous tips on the Internet for the secure operation of the Apache web server.</p></li>
 <li><p>Regular checking of the log files in <code>/var/log/apache2/</code> helps to detect errors or security holes.</p></li>
 <li><p>If the server is connected to the local network or to the Internet in a different way than intended in this manual page, a firewall is essential.</p></li>
@@ -326,10 +326,10 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 &lt;/IfModule&gt;</code></pre>
 <h3 id="sources-apache">Sources Apache</h3>
-<p><a target="_blank" href="https://httpd.apache.org/docs/current/en/">apache.org - Documentation</a><br />
-<a target="_blank" href="https://httpd.apache.org/docs/current/en/configuring.html">apache.org - Configuration files</a><br />
-<a target="_blank" href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org - SSL Howto</a><br />
-<a target="_blank" href="https://letsencrypt.org/">Let’s Encrypt - A nonprofit Certificate Authority</a></p>
+<p><a href="https://httpd.apache.org/docs/current/en/">apache.org - Documentation</a><br />
+<a href="https://httpd.apache.org/docs/current/en/configuring.html">apache.org - Configuration files</a><br />
+<a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org - SSL Howto</a><br />
+<a href="https://letsencrypt.org/">Let’s Encrypt - A nonprofit Certificate Authority</a></p>
 <div id="rev">
 Last edited: 2022/04/03
 </div>

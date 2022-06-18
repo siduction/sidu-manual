@@ -49,11 +49,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 It ensures that partitions are set up for SSDs (or for storage that does not have 512 Byte sectors).</p>
 <p>A key advantage of GPT is that you no longer have to rely on the MBR’s inherent primary, extended, or logical partitions. GPT can support an almost unlimited number of partitions and is limited only by the amount of space reserved for partition entries on the GPT volume. It should be noted that the gdisk application defaults to 128 partitions.</p>
 <p>If GPT is used on small USB/SSD drives (for example on a USB drive with 8GB), this could have a counterproductive effect in case data is to be exchanged between different computers or operating systems.<br />
-For this purpose, and if older hardware is used, you should use <em>fdisk</em>, which creates partition tables based on the MBR. See the manual page <a target="_blank" href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with Cfdisk</a>.</p>
+For this purpose, and if older hardware is used, you should use <em>fdisk</em>, which creates partition tables based on the MBR. See the manual page <a href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with Cfdisk</a>.</p>
 <p><strong>Important notes</strong></p>
 <ul>
 <li><p>The terms UEFI and EFI are interchangeable and refer to the same concept - <strong>U</strong>nified <strong>E</strong>xtensible <strong>F</strong>irmware <strong>I</strong>nterface.<br />
-See <a target="_blank" href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia UEFI</a>.<br />
+See <a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia UEFI</a>.<br />
 GPT is a part of the UEFI standard.</p></li>
 <li><p>Using GPT disks</p>
 <ul>
@@ -73,9 +73,9 @@ Besides the command line program <code>gdisk</code>, graphical applications like
 <p><strong>Essential reading matter:</strong></p>
 <ul>
 <li>man gdisk</li>
-<li><a target="_blank" href="http://www.rodsbooks.com/gdisk/">GPT fdisk Tutorial by Roderick W. Smith</a></li>
-<li><a target="_blank" href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Operating_systems">Wikipedia UEFI operating system support</a></li>
-<li><a target="_blank" href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID partition table</a></li>
+<li><a href="http://www.rodsbooks.com/gdisk/">GPT fdisk Tutorial by Roderick W. Smith</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Operating_systems">Wikipedia UEFI operating system support</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID partition table</a></li>
 </ul>
 <h3 id="partitioning-a-hard-disk">Partitioning a hard disk</h3>
 <p class="warning">
@@ -134,7 +134,7 @@ At the beginning and the end, there are still small, free areas. They are create
 <img src="./images-en/cgdisk/cgdisk_07.png" alt="" /><figcaption>Partition Verify</figcaption>
 </figure>
 <p>Here, everything is ok.<br />
-If errors are reported, we mark the partition and use the command <em>“Info”</em>. Then we decide if the partition has to be deleted and recreated and if e.g. the size has to be changed as well. If a repair is not possible by these means, the <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#advanced-commands-of-gdisk">Advanced commands of gdisk</a> are available for experienced users.</p>
+If errors are reported, we mark the partition and use the command <em>“Info”</em>. Then we decide if the partition has to be deleted and recreated and if e.g. the size has to be changed as well. If a repair is not possible by these means, the <a href="./part-gdisk_en.html#advanced-commands-of-gdisk">Advanced commands of gdisk</a> are available for experienced users.</p>
 <p><strong>Delete partition</strong></p>
 <p>To delete a partition, we select it and use the command <em>“Delete”</em>.</p>
 <figure>

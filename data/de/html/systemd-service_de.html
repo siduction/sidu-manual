@@ -42,11 +42,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-service">systemd-service</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit <strong>systemd.service</strong>. Die Unit-Datei mit der Namensendung “.service” ist der am h&auml;ufigsten anzutreffende Unit-Typ in systemd.</p>
 <p>Die Service-Unit-Datei muss eine Sektion [Service] enthalten, die Informationen &uuml;ber den Dienst und den Prozess, den er &uuml;berwacht, konfiguriert.</p>
 <h3 id="service-unit-anlegen">service-Unit anlegen</h3>
-<p>Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis <code>/usr/local/lib/systemd/system/</code> ab. (Ggf. ist das Verzeichnis mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das hat den Vorteil, dass sie Vorrang gegen&uuml;ber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie &Auml;nderungsdateien, die mit <strong><code>systemctl edit &lt;UNIT_DATEI&gt;</code></strong> erzeugt wurden, im seinerseits vorrangigen Verzeichnis <code>/etc/systemd/system/</code> abgelegt werden. Siehe: <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a>.</p>
+<p>Selbst erstellte Unit-Dateien legen wir vorzugsweise im Verzeichnis <code>/usr/local/lib/systemd/system/</code> ab. (Ggf. ist das Verzeichnis mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das hat den Vorteil, dass sie Vorrang gegen&uuml;ber den System-Units, die durch den Paketverwalter der Distribution installiert wurden, erhalten und gleichzeitig Steuerungslinks sowie &Auml;nderungsdateien, die mit <strong><code>systemctl edit &lt;UNIT_DATEI&gt;</code></strong> erzeugt wurden, im seinerseits vorrangigen Verzeichnis <code>/etc/systemd/system/</code> abgelegt werden. Siehe: <a href="./systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Hierarchie der Ladepfade</a>.</p>
 <h3 id="sektion-service">Sektion Service</h3>
 <p>F&uuml;r diese Sektion sind &uuml;ber drei&szlig;ig Optionen verf&uuml;gbar, von denen wir hier besonders h&auml;ufig verwendete beschreiben.</p>
 <pre><code>Type=             PIDFile=
@@ -95,7 +95,7 @@ Akzeptiert einen Pfad zur PID-Datei des Dienstes. F&uuml;r Dienste vom <code>Typ
 <li><p><code>BusName=</code><br />
 Hier ist der D-Bus-Busname, unter dem dieser Dienst erreichbar ist, anzugeben. Die Option ist f&uuml;r Dienste vom <code>Type=dbus</code> verpflichtend.</p></li>
 <li><p><code>ExecStart=</code><br />
-Enth&auml;lt Befehle mit ihren Argumenten, die ausgef&uuml;hrt werden, wenn diese Unit gestartet wird. Es muss genau ein Befehl angegeben werden, au&szlig;er die Option <code>Type=oneshot</code> ist gesetzt, dann kann ExecStart= mehrfach verwendet werden. Der Wert von ExecStart= muss den in der deutsche Manpage <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">systemd.service</a> detailliert beschriebenen Regeln entsprechen.</p></li>
+Enth&auml;lt Befehle mit ihren Argumenten, die ausgef&uuml;hrt werden, wenn diese Unit gestartet wird. Es muss genau ein Befehl angegeben werden, au&szlig;er die Option <code>Type=oneshot</code> ist gesetzt, dann kann ExecStart= mehrfach verwendet werden. Der Wert von ExecStart= muss den in der deutsche Manpage <a href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">systemd.service</a> detailliert beschriebenen Regeln entsprechen.</p></li>
 <li><p><code>ExecStop=</code><br />
 Kann mehrfach verwendet werden und enth&auml;lt Befehle, die dem Stoppen eines mittels ExecStart= gestarteten Dienstes, dienen. Die Syntax ist identisch zu ExecStart=.</p></li>
 <li><p><code>ExecStartPre=</code>, <code>ExecStartPost=</code>, <code>ExecStopPost=</code><br />
@@ -190,13 +190,13 @@ Folgende Tabelle zeigt den Effekt der Restart= Einstellung auf die Exit-Gr&uuml;
 </ul>
 <p><strong>Beispiele</strong><br />
 Einige selbst erstellte Service-Units finden sich auf unseren Handbuchseiten</p>
-<p><a target="_blank" href="https://manual.siduction.org/systemd-timer_de.html#timer-unit-anlegen">service-Unit f&uuml;r systemd Timer</a><br />
-<a target="_blank" href="https://manual.siduction.org/systemd-path_de.html#path-unit-anlegen">service-Unit f&uuml;r systemd Path</a><br />
+<p><a href="./systemd-timer_de.html#timer-unit-anlegen">service-Unit f&uuml;r systemd Timer</a><br />
+<a href="./systemd-path_de.html#path-unit-anlegen">service-Unit f&uuml;r systemd Path</a><br />
 und mit der bevorzugten Suchmaschine im Internet.<br />
-<a target="_blank" href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Systemd-Units selbst erstellen</a></p>
+<a href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Systemd-Units selbst erstellen</a></p>
 <h3 id="quellen-systemd-service">Quellen systemd-service</h3>
-<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">Deutsche Manpage, systemd.service</a><br />
-<a target="_blank" href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Systemd-Units selbst erstellen</a></p>
+<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html">Deutsche Manpage, systemd.service</a><br />
+<a href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Systemd-Units selbst erstellen</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

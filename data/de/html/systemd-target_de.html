@@ -41,7 +41,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-target---ziel-unit">systemd-target - Ziel-Unit</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
 Jetzt erkl&auml;ren wir die Funktion der Unit <strong>systemd.target</strong>, die den allgemein bekannten Runleveln &auml;hneln, etwas ausf&uuml;hrlicher.</p>
 <p>Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als Ziel-Unit. Sie besitzen die Erweiterung “.target”.</p>
 <p>Die alten sysvinit-Befehle werden weiterhin unterst&uuml;tzt. (Hierzu ein Zitat aus <code>man systemd</code>: “… wird aus Kompatibilit&auml;tsgr&uuml;nden und da es leichter zu tippen ist, bereitgestellt.”)</p>
@@ -67,7 +67,7 @@ Jetzt erkl&auml;ren wir die Funktion der Unit <strong>systemd.target</strong>, d
 </tr>
 <tr class="odd">
 <td><strong>multi-user.target</strong></td>
-<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten m&ouml;chte. <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">Auf dieser Unit wird in besonderen F&auml;llen (wenn X selbst oder die Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung (dist-upgrade) durchgef&uuml;hrt</a> .</td>
+<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten m&ouml;chte. <a href="./sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">Auf dieser Unit wird in besonderen F&auml;llen (wenn X selbst oder die Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung (dist-upgrade) durchgef&uuml;hrt</a> .</td>
 </tr>
 <tr class="even">
 <td><strong>graphical.target</strong></td>
@@ -180,7 +180,7 @@ Eine ganze Reihe von Ziel-Units sind dazu da w&auml;hrend des Bootvorgangs oder 
 <p><em>“halt”</em>, <em>“poweroff”</em> und <em>“reboot”</em> holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuf&uuml;hren.</p></li>
 </ol>
 <h3 id="quellen-systemd-target">Quellen systemd-target</h3>
-<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html">Manpage systemd.target, de</a></p>
+<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html">Manpage systemd.target, de</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

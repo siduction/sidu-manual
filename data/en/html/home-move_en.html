@@ -63,7 +63,7 @@ UUID=B248-1CCA                            /boot/efi vfat   umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb /         ext4   defaults,noatime 0 1
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256 swap      swap   defaults,noatime 0 2
 tmpfs                                     /tmp      tmpfs  defaults,noatime,mode=1777 0 0</code></pre>
-<p>We need the UUID information of the additional hard disk. See also the manual page <a target="_blank" href="https://manual.siduction.org/part-uuid_en.html#adjusting-the-fstab">customize fstab</a>.<br />
+<p>We need the UUID information of the additional hard disk. See also the manual page <a href="./part-uuid_en.html#adjusting-the-fstab">customize fstab</a>.<br />
 The command <strong><code>blkid</code></strong> returns the following information:</p>
 <pre><code>$ /sbin/blkid
 ...
@@ -164,7 +164,7 @@ Please check the commands carefully before executing them so you don’t acciden
 ~$ rm -r .thunderbird/ &amp;&amp; ln -s /data/.thunderbird/ ./.thunderbird</code></pre>
 <p>The data remaining in the <code>/home</code> directory will only occupy less than 10 MB of space.</p>
 <h3 id="adjust-fstab">Adjust fstab</h3>
-<p>In order for the new data partition to be mounted and available to the user at system startup, the <code>fstab</code> file must be modified. Additional information about the <code>fstab</code> can be found in our manual <a target="_blank" href="https://manual.siduction.org/part-uuid_en.html#adjusting-the-fstab">adaptation of the fstab</a>.<br />
+<p>In order for the new data partition to be mounted and available to the user at system startup, the <code>fstab</code> file must be modified. Additional information about the <code>fstab</code> can be found in our manual <a href="./part-uuid_en.html#adjusting-the-fstab">adaptation of the fstab</a>.<br />
 We need the data partition’s already read out UUID information. Before modifying the file, we create a backup copy of the <code>fstab</code> with date attachment:</p>
 <pre><code># cp /etc/fstab /etc/fstab_$(date +%F) 
 # mcedit /etc/fstab</code></pre>

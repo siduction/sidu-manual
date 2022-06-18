@@ -55,12 +55,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>At the beginning of the boot process, the kernel command line can be edited by pressing the <strong><code>e</code></strong> key as soon as the Grub menu appears. In edit mode, use the arrow keys to navigate to the kernel line and insert the desired cheatcode(s) at the end. The space character serves as separator. To conitnue the boot process, enter <strong><code>Ctrl</code></strong>+<strong><code>X</code></strong>.</p>
 <p>The following links lead to the manual page with the tables for the boot options.</p>
 <ol type="1">
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_en.html#siduction-specific-parameters">siduction specific parameters (Live-CD only)</a></li>
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_en.html#boot-options-for-the-graphics-server-x">Bootoptions for graphics server X</a></li>
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_en.html#general-parameters-of-the-linux-kernel">General parameters of the linux kernel</a></li>
-<li><a target="_blank" href="https://manual.siduction.org/cheatcodes_en.html#vga-codes">Values for the general parameter <strong>vga</strong></a></li>
+<li><a href="./cheatcodes_en.html#siduction-specific-parameters">siduction specific parameters (Live-CD only)</a></li>
+<li><a href="./cheatcodes_en.html#boot-options-for-the-graphics-server-x">Bootoptions for graphics server X</a></li>
+<li><a href="./cheatcodes_en.html#general-parameters-of-the-linux-kernel">General parameters of the linux kernel</a></li>
+<li><a href="./cheatcodes_en.html#vga-codes">Values for the general parameter <strong>vga</strong></a></li>
 </ol>
-<p><a target="_blank" href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Detailed reference list for kernel bootcodes from kernel.org</a></p>
+<p><a href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Detailed reference list for kernel bootcodes from kernel.org</a></p>
 <h3 id="systemd---managing-services">systemd - managing services</h3>
 <p>systemd knows a total of 11 unit types. The units we deal with most often in everyday life are:</p>
 <ul>
@@ -71,7 +71,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li>systemd.mount</li>
 <li>systemd.path</li>
 </ul>
-<p>We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page <a target="_blank" href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">System administration - systemd</a>. The complete documentation can be found in the man pages <code>man systemd.unit</code>, <code>man systemd.special</code>, and <code>man systemd.&lt;unit_type&gt;</code> respectively.</p>
+<p>We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">System administration - systemd</a>. The complete documentation can be found in the man pages <code>man systemd.unit</code>, <code>man systemd.special</code>, and <code>man systemd.&lt;unit_type&gt;</code> respectively.</p>
 <p>The systemd system can be controlled with follwing command, which requires <strong>user</strong> or <strong>root</strong> rights depending on the units:</p>
 <pre><code>systemctl [OPTIONS...] command [UNIT...]</code></pre>
 <p><code>systemctl</code> knows autocompletion by <strong><code>TAB</code></strong> and the display of all variations by <strong><code>TAB</code></strong> <strong><code>TAB</code></strong>. Please read the man page <code>man systemctl</code>.</p>
@@ -92,7 +92,7 @@ The command can also be used to terminate a service:</p>
 <li><em>“-s”</em> sends one of the signals <code>SIGTERM</code>, <code>SIGINT</code>, or <code>SIGSTOP</code>. Default is <em>“SIGTERM”</em>.</li>
 <li><em>“–kill-who=”</em> allows selection of the processes within the hierarchy to which a signal should be sent. The options are <code>main</code>, <code>control</code>, or <code>all</code>. This sends the signal to the main process, the child processes, or both. Default is <em>“all”</em>.</li>
 </ul>
-<p>This behavior is similar to the old and still usable command pkill, which is explained below in the section <a target="_blank" href="https://manual.siduction.org/sys-admin-gen_en.html#terminating-a-process">Terminating a process</a>.</p>
+<p>This behavior is similar to the old and still usable command pkill, which is explained below in the section <a href="./sys-admin-gen_en.html#terminating-a-process">Terminating a process</a>.</p>
 <h3 id="systemd---unit-inclusion">systemd - UNIT inclusion</h3>
 <p>To have a (self-made) unit loaded automatically when the computer is booted, enter as <strong>root</strong>:</p>
 <pre><code># systemctl enable &lt;UNIT_file&gt;</code></pre>
@@ -107,7 +107,7 @@ If a PC or laptop without Bluetooth hardware is in use, or you don’t want to u
 <h3 id="systemd-target---formerly-runlevel">systemd-target - formerly runlevel</h3>
 <p>Already since the 2013.2 “December” release, siduction has been using systemd as the default init system.<br />
 The old sysvinit commands are still supported. (for this a quote from <code>man systemd</code>: “… is provided for compatibility reasons and because it is easier to type.”)<br />
-More detailed information about systemd can be found on the manual page <a target="_blank" href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">System administration - systemd</a>.<br />
+More detailed information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">System administration - systemd</a>.<br />
 The various runlevels that are booted or switched to are described by systemd as <strong>target</strong> units. They have the extension <strong>.target</strong>.</p>
 <table>
 <colgroup>
@@ -131,7 +131,7 @@ The various runlevels that are booted or switched to are described by systemd as
 </tr>
 <tr class="odd">
 <td>multi-user.target</td>
-<td>starts a multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or to not boot into X. <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_en.html#updating-the-system">A system update (dist-upgrade) is performed on this unit</a> .</td>
+<td>starts a multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or to not boot into X. <a href="./sys-admin-apt_en.html#updating-the-system">A system update (dist-upgrade) is performed on this unit</a> .</td>
 </tr>
 <tr class="even">
 <td>graphical.target</td>
@@ -192,7 +192,7 @@ With the option <strong>–signal</strong>, followed by the signal number or the
 <p><strong>Check settings</strong></p>
 <ul>
 <li><p><strong>Correct graphics drivers</strong><br />
-Some newer ATI and Nvidia graphics cards do not harmonize very well with the free Xorg drivers. The only reasonable solution in these cases is to install proprietary, non open source drivers. For legal reasons, siduction cannot pre-install these. Instructions for installing these drivers can be found on the <a target="_blank" href="https://manual.siduction.org/gpu_en.html#graphics-drivers">Graphics Drivers</a> page of the manual.</p></li>
+Some newer ATI and Nvidia graphics cards do not harmonize very well with the free Xorg drivers. The only reasonable solution in these cases is to install proprietary, non open source drivers. For legal reasons, siduction cannot pre-install these. Instructions for installing these drivers can be found on the <a href="./gpu_en.html#graphics-drivers">Graphics Drivers</a> page of the manual.</p></li>
 <li><p><strong>Correct screen resolutions and refresh rates</strong>.<br />
 First, it’s a good idea to look at the manufacturer’s technical documentation, either in print or online. Each monitor has its own perfect combination of settings. These DCC values are usually passed correctly to the operating system. Only sometimes it is necessary to intervene manually to overwrite the basic settings.</p>
 <p>To check which settings the X server is currently using, we use xrandr in the terminal:</p>
@@ -331,7 +331,7 @@ This setting allows a different DPI value or size for the fonts only. Here the d
 <p>Afterwards open a web browser and type this into the address line:</p>
 <p>http://localhost:631</p>
 <p>A small problem occurs when CUPS opens the corresponding dialog box for legitimation. Occasionally, the user’s own user name is already entered there and the password is expected. However, entering the user password does not work. Nothing works. The solution is to change the user name to <strong>root</strong> and enter the root password.</p>
-<p><a target="_blank" href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">The OpenPrinting database</a> contains extensive information about various printers and their drivers. Drivers, specifications, and configuration tools are available. Samsung used to supply its own Linux drivers for its printers. After the printer division had been sold to HP, the download page has no longer been available, and HP unfortunately did not include the Samsung drivers in <em>“hplib”</em>. Currently, the package printer-driver-splix works best for Samsung printers and Samsung multifunction devices. CUPS is currently in transition and is moving towards printing without drivers via <a target="_blank" href="https://www.pwg.org/ipp/everywhere.html">PWG - IPP Everywhere</a>, see also <a target="_blank" href="https://wiki.debian.org/CUPSIPPEverywhere/">debian - an introduction to IPP-Everywhere</a>.</p>
+<p><a href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">The OpenPrinting database</a> contains extensive information about various printers and their drivers. Drivers, specifications, and configuration tools are available. Samsung used to supply its own Linux drivers for its printers. After the printer division had been sold to HP, the download page has no longer been available, and HP unfortunately did not include the Samsung drivers in <em>“hplib”</em>. Currently, the package printer-driver-splix works best for Samsung printers and Samsung multifunction devices. CUPS is currently in transition and is moving towards printing without drivers via <a href="https://www.pwg.org/ipp/everywhere.html">PWG - IPP Everywhere</a>, see also <a href="https://wiki.debian.org/CUPSIPPEverywhere/">debian - an introduction to IPP-Everywhere</a>.</p>
 <h3 id="sound-in-siduction">Sound in siduction</h3>
 <p><em>In older siduction installations, sound is disabled by default.</em></p>
 <p>Most sound problems can be solved by clicking on the sound icon in the control bar, opening the mixer, and unchecking “mute”, or using the appropriate slider. If the speaker icon is not present, a right click on the control bar is sufficient, then select</p>

@@ -96,12 +96,17 @@ while (@QUELLE) {
     }
 
     # Handbuch interne Link auf .html ändern und Zifferncode entfernen.
-    s!\d{4}-(.*?\.)md\#!https://manual.siduction.org/$1html\#!g;
+    s!\d{4}-(.*?\.)md\#!\./$1html\#!g;
     
     # Nur notwendig, weil fehlerhafte Link vorhanden sind.
     if (/\(.*?\.md\#/) {
-    s!\]\(\.?/?(.*?\.)md\#!\]\(https://manual.siduction.org/$1html\#!g;
+    s!\]\(\.?/?(.*?\.)md\#!\]\(\./$1html\#!g;
     }
+    
+    # Externe Link mit 'target="_blank" ' erweitern um Fehlermeldungen des Browsers
+    # zu vermeiden. Die externe Seite wird in einem neuen Browsertab oder -fenster 
+    # geöffnet.
+    s!a( href="http)!a target="_blank"$1!g;
     
     $_ = "$_\n";
     push @NEU,$_;
