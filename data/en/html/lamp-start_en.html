@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>LAMP test server for developers (local)</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -91,7 +91,7 @@ Dependency tree is built.
 Status information is read.... Done
 0 updated, 0 reinstalled, 0 to remove, and 0 not updated.</code></pre>
 <p>In case of a corrupted installation, this will simplify the repair.<br />
-See below <a href="https://manual.siduction.org/lamp-start_en.html#troubleshooting">Troubleshooting</a>.</p>
+See below <a target="_blank" href="https://manual.siduction.org/lamp-start_en.html#troubleshooting">Troubleshooting</a>.</p>
 <p>It is useful to note down some data already before the installation.</p>
 <p>Necessary during the installation:</p>
 <ul>
@@ -156,7 +156,7 @@ We exit w3m with <strong><code>q</code></strong> and confirm with <strong><code>
 <p>The directory <strong>/etc/apache2/</strong> is called <strong>ServerRoot</strong>. It contains the configuration.<br />
 The directory <strong>/var/www/html/</strong> is called <strong>DocumentRoot</strong>. It contains the website’s files.</p>
 <p>For more information and security hints, please refer to the manual page<br />
-<a href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a>.</p>
+<a target="_blank" href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a>.</p>
 <h3 id="install-mariadb">Install MariaDb</h3>
 <p>The installation of MariaDb is similarly simple. Just install the metapackages <em>mariadb-server</em> and <em>mariadb-client</em>.</p>
 <pre><code># apt install mariadb-server mariadb-client
@@ -169,7 +169,7 @@ mariadb-common mariadb-server mariadb-server-10.5
 mariadb-server-core-10.5 mysql-common socat
 [...]
 Do you want to continue? [Y/n] y</code></pre>
-<p>For more information on MariaDb and configuration, see our manual in <a href="https://manual.siduction.org/lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a></p>
+<p>For more information on MariaDb and configuration, see our manual in <a target="_blank" href="https://manual.siduction.org/lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a></p>
 <h3 id="install-php">Install PHP</h3>
 <p>To install the PHP scripting language, simply enter the command:</p>
 <pre><code># apt install php
@@ -205,7 +205,7 @@ server API   Apache 2.0 Handler
 <p>Now we need the module <em>php7.4-mysql</em>, so MariaDB/mysql will be supported in PHP.</p>
 <pre><code># apt install php7.4-mysql</code></pre>
 <p>If we now go back to the “http://localhost/info.php” page, we will find the entries for <em>mysqli</em> and <em>mysqlnd</em> in the modules section (they are sorted alphabetically).</p>
-<p>For more information on configuring PHP and managing its modules, see the manual page <a href="https://manual.siduction.org/lamp-php_en.html#set-up-php">LAMP-PHP</a></p>
+<p>For more information on configuring PHP and managing its modules, see the manual page <a target="_blank" href="https://manual.siduction.org/lamp-php_en.html#set-up-php">LAMP-PHP</a></p>
 <h3 id="install-phpmyadmin">Install phpMyAdmin</h3>
 <p>To administer the MariaDb database, we need <em>phpmyadmin</em>:</p>
 <pre><code># apt install phpmyadmin
@@ -239,7 +239,7 @@ In the first one, at the beginning, we select <em>“apache2”</em> and confirm
 </figure>
 <p>In the following dialogs we need the password for the database user <strong>phpmyadmin</strong> (see the chapter <em>Preparations</em>).</p>
 <h3 id="other-software">Other software</h3>
-<p>If you are interested in developing websites, you can install a CMS for example, <em>WordPress</em>, <em>Drupal</em>, or <em>Joomla</em>, but you should consider our manual pages <a href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a> and <a href="./https://manual.siduction.org/lamp-sql_en.html#mariadb-setup">LAMP-MariaDb</a> for the configuration of the server and MariaDb beforehand.</p>
+<p>If you are interested in developing websites, you can install a CMS for example, <em>WordPress</em>, <em>Drupal</em>, or <em>Joomla</em>, but you should consider our manual pages <a target="_blank" href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a> and <a href="./https://manual.siduction.org/lamp-sql_en.html#mariadb-setup">LAMP-MariaDb</a> for the configuration of the server and MariaDb beforehand.</p>
 <h3 id="status-data-log-files">Status data log files</h3>
 <p><strong>Apache</strong></p>
 <p>The configuration status of the Apache web server can be output with <strong><code>apache2ctl -S</code></strong>.<br />
@@ -262,7 +262,7 @@ Define: DUMP_VHOSTS
 Define: DUMP_RUN_CFG
 User: name=&quot;www-data&quot; id=33
 Group: name=&quot;www-data&quot; id=33</code></pre>
-<p>The manual page <a href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a> contains a number of hints for customizing the configuration.<br />
+<p>The manual page <a target="_blank" href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a> contains a number of hints for customizing the configuration.<br />
 The directory <code>/var/log/apache2/</code> contains the log files. A look into them is helpful to identify error causes.</p>
 <p><strong>MariaDB</strong></p>
 <p>In the console, the command</p>
@@ -273,11 +273,11 @@ The last twenty lines of the systemd journal are shown by</p>
 <p>The command</p>
 <pre><code># journctl -f -u mariadb.service</code></pre>
 <p>keeps the connection to the journal open and continuously shows the new entries.<br />
-For more information, see the manual page <a href="https://manual.siduction.org/lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>.</p>
+For more information, see the manual page <a target="_blank" href="https://manual.siduction.org/lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>.</p>
 <p><strong>PHP</strong></p>
 <p>The Apache server stores the error messages of PHP in its log files under <code>/var/log/apache2/</code>. Erroneous PHP functions generate a message on the called web page.<br />
 This behavior can be configured in the <code>php.ini</code> files of the respective interface.<br />
-See the <a href="https://manual.siduction.org/lamp-php_en.html#set-up-php">LAMP-PHP</a> manual page.</p>
+See the <a target="_blank" href="https://manual.siduction.org/lamp-php_en.html#set-up-php">LAMP-PHP</a> manual page.</p>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <p>The examples listed here show some troubleshooting possibilities.</p>
 <p><strong>File right in “DocumentRoot”</strong></p>
@@ -368,7 +368,7 @@ We use the command <strong><code>apt purge</code></strong>.</p>
 <h3 id="security">Security</h3>
 <p>The installation explained so far leads to a web server that is <strong>“open like a barn door for everyone”</strong>. Therefore, it should only be used standalone at a workstation and not connected to the private network and in no case to the Internet.</p>
 <p>For securing the server, please read the manual pages<br />
-<a href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a>, <a href="https://manual.siduction.org/lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>, <a href="https://manual.siduction.org/lamp-php_en.html#set-up-php">LAMP-PHP</a><br />
+<a target="_blank" href="https://manual.siduction.org/lamp-apache_en.html#set-up-apache">LAMP-Apache</a>, <a target="_blank" href="https://manual.siduction.org/lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>, <a target="_blank" href="https://manual.siduction.org/lamp-php_en.html#set-up-php">LAMP-PHP</a><br />
 regarding the configuration.</p>
 <p>After that, exclusively for system and software updates, the server can be temporarily connected to the Internet via a second network interface.</p>
 <div id="rev">

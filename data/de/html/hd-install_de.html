@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Installation auf HDD</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -53,12 +53,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </p>
 <h3 id="installationsvorbereitungen">Installationsvorbereitungen</h3>
 <p>Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Dr&uuml;cken der <strong><code>F2</code></strong> oder <strong><code>Entf</code></strong>-Taste w&auml;hrend des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann w&auml;hrend des Bootvorgangs die Taste <strong><code>F12</code></strong>, <strong><code>F11</code></strong> <strong><code>F7</code></strong> oder <strong><code>F8</code></strong> (je nach Angaben der Hardwarehersteller) gedr&uuml;ckt werden um dann das Live-Medium als Startlaufwerk auszuw&auml;hlen.</p>
-<p>siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &uuml;bergeben werden k&ouml;nnen. Die Handbuchseite <a href="https://manual.siduction.org/cheatcodes_de.html#bootoptionen-cheatcodes">Cheatcodes</a> erl&auml;utert die m&ouml;glichen Optionen.<br />
+<p>siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &uuml;bergeben werden k&ouml;nnen. Die Handbuchseite <a target="_blank" href="https://manual.siduction.org/cheatcodes_de.html#bootoptionen-cheatcodes">Cheatcodes</a> erl&auml;utert die m&ouml;glichen Optionen.<br />
 Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu “From CD/DVD/ISO: …” oder “From Stick/HDD: …” navigiert und die Taste <strong><code>e</code></strong> bet&auml;tigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzuf&uuml;gen. Mit der Taste <strong><code>F10</code></strong> wird der Bootvorgang fortgesetzt.</p>
 <p><strong>Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.</strong></p>
-<p>Soll siduction nicht von, sondern <strong>auf</strong> ein USB-Medium installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a href="https://manual.siduction.org/iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">Installation auf ein USB-Medium</a>.</p>
+<p>Soll siduction nicht von, sondern <strong>auf</strong> ein USB-Medium installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a target="_blank" href="https://manual.siduction.org/iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">Installation auf ein USB-Medium</a>.</p>
 <p><strong>HDD, RAM und Swap</strong></p>
-<p>Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite <a href="https://manual.siduction.org/cd-content_de.html#minimale-systemanforderungen">Inhalt der Live-ISO</a> beschrieben.<br />
+<p>Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite <a target="_blank" href="https://manual.siduction.org/cd-content_de.html#minimale-systemanforderungen">Inhalt der Live-ISO</a> beschrieben.<br />
 Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht ben&ouml;tigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.</p>
 <h3 id="partitionierung">Partitionierung</h3>
 <p>Die Partitionierung der Laufwerke ist von vielen Faktoren abh&auml;ngig:</p>
@@ -68,13 +68,13 @@ Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf 
 <li>Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)</li>
 <li>Gemeinsame Nutzung von Daten f&uuml;r die installierten Systeme</li>
 </ul>
-<p>Beispiele und Gr&ouml;&szlig;en f&uuml;r unterschiedliche Installationssituationen beschreibt die Handbuchseite <a href="https://manual.siduction.org/part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung</a>.<br />
+<p>Beispiele und Gr&ouml;&szlig;en f&uuml;r unterschiedliche Installationssituationen beschreibt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung</a>.<br />
 Wir empfehlen, das <code>/home</code>-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten, dazu z&auml;hlen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das <code>/home</code>-Verzeichnis verlinkt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
 <p>Die Partitionierung kann w&auml;hrend der Installation vorgenommen werden, oder bereits im Vorfeld w&auml;hrend der Live-Sitzung mit den folgenden Programmen:<br />
-<a href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">Gparted</a>, ein Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r GTK-Desktops<br />
+<a target="_blank" href="https://manual.siduction.org/part-gparted_de.html#partitionieren-mit-gparted">Gparted</a>, ein Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r GTK-Desktops<br />
 KDE Partition Manager, ein weiteres Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r Qt-Desktops<br />
-<a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">gdisk</a>, empfohlen bei UEFI Hardware f&uuml;r GPT Partitionstabellen<br />
-<a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR Partitionstabellen.</p>
+<a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">gdisk</a>, empfohlen bei UEFI Hardware f&uuml;r GPT Partitionstabellen<br />
+<a target="_blank" href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR Partitionstabellen.</p>
 <h3 id="dateisysteme">Dateisysteme</h3>
 <p>Wir empfehlen das Dateisystem <strong>ext4</strong>, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt f&uuml;r alle Partitionen, wenn ausschlie&szlig;lich Linux Betriebssysteme verwendet werden.</p>
 <p>Bei einer Dual-Boot Installation mit <em>Windows</em> ist eine eigene Datenpartition mit dem <strong>NTFS</strong> Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen; f&uuml;r Windows ist es das Standarddateisystem.</p>
@@ -121,14 +121,14 @@ Das Ergebnis unserer Bem&uuml;hungen sehen wir im n&auml;chsten Bild.</p>
 <figure>
 <img src="./images-de/install-hd/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares Partitionen Ergebnis</figcaption>
 </figure></li>
-<li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal mit <a href="https://manual.siduction.org/hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a> hinzugef&uuml;gt werden.</p>
+<li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal mit <a target="_blank" href="https://manual.siduction.org/hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a> hinzugef&uuml;gt werden.</p>
 <figure>
 <img src="./images-de/install-hd/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares Benutzer</figcaption>
 </figure>
 <p>Vor der Verwendung der beiden Optionen<br />
 <em>“Automatisches Einloggen ohne Passwortabfrage”</em> und<br />
 <em>“Nutze das gleiche Passwort auch f&uuml;r das Administratorenkonto”</em><br />
-wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein Sicherheitsrisiko dar (siehe auch <a href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">sudo</a>). Sind beide Optionen aktiviert ist die Eingabe von Passw&ouml;rtern nur noch eine Farce!</p></li>
+wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein Sicherheitsrisiko dar (siehe auch <a target="_blank" href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">sudo</a>). Sind beide Optionen aktiviert ist die Eingabe von Passw&ouml;rtern nur noch eine Farce!</p></li>
 <li><p>Nach Bet&auml;tigen der Taste <code>Weiter</code> erscheint eine Zusammenfassung aller zuvor get&auml;tigten Eingaben. Jetzt besteht noch die M&ouml;glichkeit &uuml;ber <code>Zur&uuml;ck</code> &Auml;nderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf <code>Installieren</code> das kleine Warnfenster in dem wir die Installation best&auml;tigen m&uuml;ssen.</p>
 <figure>
 <img src="./images-de/install-hd/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares Zusammenfassung</figcaption>

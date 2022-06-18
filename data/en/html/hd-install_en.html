@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Installation on HDD</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -53,12 +53,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </p>
 <h3 id="installation-preparations">Installation preparations</h3>
 <p>First, change the boot order so that the medium to be booted (DVD, flashcard, or USB stick) is at the top of the list. On most computers, pressing the <strong><code>F2</code></strong> or <strong><code>Del</code></strong> key during the boot process takes you to the UEFI or BIOS setup. Alternatively, pressing <strong><code>F12</code></strong>, <strong><code>F11</code></strong>, <strong><code>F7</code></strong>, or <strong><code>F8</code></strong> (depending on the hardware manufacturer’s specifications) during the boot process will take you directly to the boot menu where you can select the live media as the boot drive.</p>
-<p>siduction usually starts without problems now. If this is not the case, boot options (cheat codes), which can be passed to the boot manager, are helpful. The manual page <a href="https://manual.siduction.org/cheatcodes_en.html#boot-options-and-cheat-codes">Cheatcodes</a> explains the possible options.<br />
+<p>siduction usually starts without problems now. If this is not the case, boot options (cheat codes), which can be passed to the boot manager, are helpful. The manual page <a target="_blank" href="https://manual.siduction.org/cheatcodes_en.html#boot-options-and-cheat-codes">Cheatcodes</a> explains the possible options.<br />
 At the start screen, use the arrow keys to navigate to <em>“From CD/DVD/ISO: …”</em> or <em>“From Stick/HDD: …”</em> (according to the used live medium) and press <strong><code>e</code></strong>. This takes you to the kernel command line where you can add the cheatcodes. Pressing <strong><code>F10</code></strong> will continue the boot process.</p>
 <p><strong>Before the installation, please remove all USB sticks, cameras, etc.</strong></p>
-<p>If siduction is not to be installed from, but <strong>to a USB medium</strong>, a different procedure is necessary. See the manual page <a href="https://manual.siduction.org/iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">Installation to a USB medium</a>.</p>
+<p>If siduction is not to be installed from, but <strong>to a USB medium</strong>, a different procedure is necessary. See the manual page <a target="_blank" href="https://manual.siduction.org/iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">Installation to a USB medium</a>.</p>
 <p><strong>HDD, RAM, and Swap</strong></p>
-<p>The minimum requirements for installing the siduction variants are described on the manual page <a href="https://manual.siduction.org/cd-content_en.html#minimum-system-requirements">Live ISO content</a>.<br />
+<p>The minimum requirements for installing the siduction variants are described on the manual page <a target="_blank" href="https://manual.siduction.org/cd-content_en.html#minimum-system-requirements">Live ISO content</a>.<br />
 With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. A swap partition should be created on PCs with 1 GByte RAM or less. More than 2 GByte swap is rarely required and only useful for suspend to disk and server systems.</p>
 <h3 id="partitioning">Partitioning</h3>
 <p>The partitioning of the drives depends on many factors:</p>
@@ -68,13 +68,13 @@ With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. A sw
 <li>single-boot or dual-boot with an already installed system (Windows, Linux, MAC)</li>
 <li>sharing of data for the installed systems</li>
 </ul>
-<p>Examples and sizes for different installation situations are described on the manual page <a href="https://manual.siduction.org/part-size-examp_en.html#partitioning-of-installation-media">Partitioning</a>.<br />
+<p>Examples and sizes for different installation situations are described on the manual page <a target="_blank" href="https://manual.siduction.org/part-size-examp_en.html#partitioning-of-installation-media">Partitioning</a>.<br />
 We recommend leaving the <code>/home</code> directory on the root partition. The <code>/home</code> directory should be the place where individual configurations are stored, and only those. For all other private data, including <code>.ssh</code>, <code>.gnupg</code>, and the mail archives, a separate data partition should be created and linked to the <code>/home</code> directory if necessary. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.</p>
 <p>The partitioning can be done during installation or already in advance during the live session with the following programs:<br />
-<a href="https://manual.siduction.org/part-gparted_en.html#partitioning-with-gparted">Gparted</a>, a graphical user interface program for GTK desktops<br />
+<a target="_blank" href="https://manual.siduction.org/part-gparted_en.html#partitioning-with-gparted">Gparted</a>, a graphical user interface program for GTK desktops<br />
 KDE Partition Manager, another graphical user interface program for Qt desktops<br />
-<a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">gdisk</a>, recommended for UEFI hardware with GTP partition tables<br />
-<a href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">cfdisk</a>, only for older hardware with traditional BIOS and MBR partition tables</p>
+<a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">gdisk</a>, recommended for UEFI hardware with GTP partition tables<br />
+<a target="_blank" href="https://manual.siduction.org/part-cfdisk_en.html#partitioning-with-fdisk">cfdisk</a>, only for older hardware with traditional BIOS and MBR partition tables</p>
 <h3 id="file-systems">File systems</h3>
 <p>We recommend the <strong>ext4</strong> file system, which is used as the default file system on siduction. This applies to all partitions if only Linux operating systems are used.</p>
 <p>For a dual-boot installation with <em>Windows</em>, a separate data partition with the <strong>NTFS</strong> file system makes sense. Linux can read and write to it; on Windows it is the default file system.</p>
@@ -127,7 +127,7 @@ We can see the result of our efforts in the next image.</p>
 <p>We explicitly recommend not to use the options<br />
 “<em>Log in automatically without password prompt</em>” and<br />
 “<em>Use the same password for the administrator account</em>”.<br />
-They both represent a security risk on their own (see also <a href="https://manual.siduction.org/term-console_en.html#work-as-root">sudo</a>). If both options are enabled, entering passwords is just a farce!</p></li>
+They both represent a security risk on their own (see also <a target="_blank" href="https://manual.siduction.org/term-console_en.html#work-as-root">sudo</a>). If both options are enabled, entering passwords is just a farce!</p></li>
 <li><p>After pressing the <em>“Next”</em> button, a summary of all previously made entries appears. Now you still have the possibility to make changes via <em>“Back”</em>. If you are satisfied with the result, a click on <em>“Install”</em> opens the small warning window in which you have to confirm the installation.</p>
 <figure>
 <img src="./images-en/install-hd/calamares-en_08.png" title="Summary" alt="" /><figcaption>calamares summary</figcaption>

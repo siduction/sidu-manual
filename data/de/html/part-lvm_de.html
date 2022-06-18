@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Partitionierung von “Logical Volume”</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -61,8 +61,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <strong>Achtung</strong> <br />Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gel&ouml;scht werden, gehen alle Daten unwiederbringlich verloren.
 </p>
 <p>Als Partitionierungsprogramm werden cfdisk oder gdisk ben&ouml;tigt, da zur Zeit GParted bzw. der KDE-Partitionsmanager (partitionmanager) das Anlegen von <em>Logical Volumes</em> nicht unterst&uuml;tzen. Siehe auch die Handbuchseiten:<br />
-<a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit cfdisk (msdos-MBR)</a><br />
-<a href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT-UEFI)</a></p>
+<a target="_blank" href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit cfdisk (msdos-MBR)</a><br />
+<a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk (GPT-UEFI)</a></p>
 <p>Alle folgenden Befehle und Aktionen erfordern root-Rechte.</p>
 <ol type="1">
 <li><p>Erstellung einer Partitionstabelle</p>
@@ -140,11 +140,11 @@ Der erneute <em>“resize2sf”</em>-Befehl passt das Dateisystem exakt an die G
 <h3 id="lvm-mit-einem-gui-programm-verwalten">LVM mit einem GUI-Programm verwalten</h3>
 <p>Gparted bietet die M&ouml;glichkeit zur Verwaltung von bereits angelegten Logical Volumes. Das Programm wird als root ausgef&uuml;hrt.</p>
 <h3 id="weitere-infos">Weitere Infos</h3>
-<p><a href="https://de.wikipedia.org/wiki/Logical_Volume_Manager">Logical Volume Manager - Wikipedia</a> (Deutsch)<br />
-<a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-1/">Working with logical volumes #1</a> (Englisch)<br />
-<a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-2/">Working with logical volumes #2</a> (Englisch)<br />
-<a href="https://thelinuxexperiment.com/working-with-logical-volumes-part-3/">Working with logical volumes #3</a> (Englisch)<br />
-<a href="https://developer.ibm.com/tutorials/l-resizing-partitions-2/">Gr&ouml;&szlig;en&auml;nderung von Linuxpartitionen - Teil 2 (IBM)</a> (Englisch)</p>
+<p><a target="_blank" href="https://de.wikipedia.org/wiki/Logical_Volume_Manager">Logical Volume Manager - Wikipedia</a> (Deutsch)<br />
+<a target="_blank" href="https://thelinuxexperiment.com/working-with-logical-volumes-part-1/">Working with logical volumes #1</a> (Englisch)<br />
+<a target="_blank" href="https://thelinuxexperiment.com/working-with-logical-volumes-part-2/">Working with logical volumes #2</a> (Englisch)<br />
+<a target="_blank" href="https://thelinuxexperiment.com/working-with-logical-volumes-part-3/">Working with logical volumes #3</a> (Englisch)<br />
+<a target="_blank" href="https://developer.ibm.com/tutorials/l-resizing-partitions-2/">Gr&ouml;&szlig;en&auml;nderung von Linuxpartitionen - Teil 2 (IBM)</a> (Englisch)</p>
 <div id="rev">
 Zuletzt bearbeitet: 2021-05-04
 </div>

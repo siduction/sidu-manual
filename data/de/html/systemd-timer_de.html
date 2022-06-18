@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Systemd - timer</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -44,7 +44,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-timer">systemd-timer</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit <strong>systemd.timer</strong>, mit der zeitgesteuert Aktionen ausgel&ouml;st werden k&ouml;nnen.</p>
 <p>Die <em>timer</em>-Unit wird meist eingesetzt, um regelm&auml;&szlig;ig anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige <em>service</em>-Unit notwendig, in der die Aktionen definiert sind. Sobald der Systemzeitgeber mit der in der <em>timer</em>-Unit definierten Zeit &uuml;bereinstimmt, aktiviert sie die gleichnamige <em>service</em>-Unit.<br />
 Bei entsprechender Konfiguration k&ouml;nnen verpasste L&auml;ufe, w&auml;hrend die Maschine ausgeschaltet war, nachgeholt werden.<br />
@@ -123,9 +123,9 @@ Created symlink
 <li>Cron kann E-Mails mit Hilfe der MAILTO-Variablen senden.</li>
 </ul>
 <h3 id="quellen-systemd-timer">Quellen systemd-timer</h3>
-<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.timer.5.de.html">Deutsche Manpage ‘systemd.timer’</a><br />
-<a href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
-<a href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
+<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.timer.5.de.html">Deutsche Manpage ‘systemd.timer’</a><br />
+<a target="_blank" href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
+<a target="_blank" href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

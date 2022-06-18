@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Burn DVD without GUI</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -49,7 +49,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>You don’t necessarily need a graphical user interface (GUI) to burn a CD/DVD.<br />
 Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim, or cdrdao.</p>
 <p>Before burning the ISO image file to a DVD, you should always check it using the md5sum or sha256sum offered by siduction. This may save a lot of time troubleshooting a changed or corrupted file.<br />
-Detailed instructions can be found in the manual chapter <a href="https://manual.siduction.org/iso-dl_en.html#integrity-check">ISO Download, Integrity Check</a>.</p>
+Detailed instructions can be found in the manual chapter <a target="_blank" href="https://manual.siduction.org/iso-dl_en.html#integrity-check">ISO Download, Integrity Check</a>.</p>
 <h3 id="burniso">burniso</h3>
 <p>siduction provides a script called <code>burniso</code>.<br />
 It burns ISO image files, using wodim in Disk-At-Once mode with a fixed burning speed of 8x. First burniso tests if the necessary hardware is available and then lists all recognized ISO image files.</p>

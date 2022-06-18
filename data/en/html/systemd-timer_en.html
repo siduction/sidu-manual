@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Systemd - timer</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -44,7 +44,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-timer">systemd-timer</h2>
-<p>The basic and introductory information about systemd can be found on the manual page <a href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are dealt with on our manual page <a href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
+<p>The basic and introductory information about systemd can be found on the manual page <a target="_blank" href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are dealt with on our manual page <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
 On this manual page we explain the function of the unit <strong>systemd.timer</strong>, which can be used to trigger time-controlled actions.</p>
 <p>The timer unit is mostly used to do regularly occurring actions. For this a service unit of the same name is necessary, in which the actions are defined. As soon as the system timer matches the time defined in the timer unit, the latter activates the service unit of the same name.<br />
 If configured accordingly, missed runs while the machine was off can be made up.<br />
@@ -124,8 +124,8 @@ Created symlink
 </ul>
 <h3 id="sources-systemd-timer">Sources systemd-timer</h3>
 <pre><code>man systemd.timer</code></pre>
-<p><a href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
-<a href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
+<p><a target="_blank" href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
+<a target="_blank" href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
 <div id="rev">
 Last edited: 2022/04/10
 </div>

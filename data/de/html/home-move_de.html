@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>home verschieben</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -63,7 +63,7 @@ UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
 tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0</code></pre>
-<p>Von der zus&auml;tzlichen Festplatte ben&ouml;tigen wir die UUID-Informationen. Siehe auch die Handbuchseite <a href="https://manual.siduction.org/home-move_de.html#fstab-anpassen">Anpassung der fstab</a>.<br />
+<p>Von der zus&auml;tzlichen Festplatte ben&ouml;tigen wir die UUID-Informationen. Siehe auch die Handbuchseite <a target="_blank" href="https://manual.siduction.org/home-move_de.html#fstab-anpassen">Anpassung der fstab</a>.<br />
 Der Befehl <code>blkid</code> gibt uns Auskunft.</p>
 <pre><code>$ /sbin/blkid
 ...
@@ -164,7 +164,7 @@ Die Befehle vor dem Ausf&uuml;hren bitte genau pr&uuml;fen, damit nicht aus Vers
 ~$ rm -r .thunderbird/ &amp;&amp; ln -s /Daten/.thunderbird/ ./.thunderbird</code></pre>
 <p>Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz von weniger als 10 MB.</p>
 <h3 id="fstab-anpassen">fstab anpassen</h3>
-<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verf&uuml;gung steht, muss die Datei <code>/etc/fstab</code> ge&auml;ndert werden. Zus&auml;tzliche Informationen zur fstab bietet unser Handbuch <a href="https://manual.siduction.org/part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
+<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verf&uuml;gung steht, muss die Datei <code>/etc/fstab</code> ge&auml;ndert werden. Zus&auml;tzliche Informationen zur fstab bietet unser Handbuch <a target="_blank" href="https://manual.siduction.org/part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
 Wir ben&ouml;tigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der fstab mit Datumsanhang:</p>
 <pre><code># cp /etc/fstab /etc/fstab_$(date +%F) 
 # mcedit /etc/fstab</code></pre>

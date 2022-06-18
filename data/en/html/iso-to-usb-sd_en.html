@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>ISO to USB stick / memory card</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -46,7 +46,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="iso-to-usb-stick---memory-card">ISO to USB stick - memory card</h2>
 <p>Below we describe methods to write a siduction ISO image file as live media to a USB stick, SD card, or SHDC card.<br />
-If <em>“persist”</em> is needed, we recommend the manual page <a href="https://manual.siduction.org/hd-ins-fromiso_en.html#boot-from-iso-file">Boot from ISO file</a>.</p>
+If <em>“persist”</em> is needed, we recommend the manual page <a target="_blank" href="https://manual.siduction.org/hd-ins-fromiso_en.html#boot-from-iso-file">Boot from ISO file</a>.</p>
 <p><strong>Prerequisites</strong></p>
 <ul>
 <li>The PC’s BIOS must allow booting from a USB stick or SD card. Normally this is the case if the BIOS offers this boot option.</li>
@@ -58,10 +58,10 @@ Important information <br />The following methods will overwrite existing partit
 </p>
 <h3 id="gui-application">GUI application</h3>
 <p><strong>For Linux™, RasPi™, MS Windows™, or Mac OS X™</strong></p>
-<p>The small tool <a href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> is available for all the above operating systems and is used to backup data and create the live medium. The program is open source and licensed under the MIT license. Download the necessary file for your operating system and install the program according to the instructions on the download page.</p>
+<p>The small tool <a target="_blank" href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> is available for all the above operating systems and is used to backup data and create the live medium. The program is open source and licensed under the MIT license. Download the necessary file for your operating system and install the program according to the instructions on the download page.</p>
 <p>The handling is very simple thanks to the no-frills interface.</p>
 <p>Write the image file to the device: 1. Select an image by clicking on <code>...</code> in the first line. 2. Select a device by clicking on the 3rd line. 3. Click on the <code>Write</code> button in the 2nd line.</p>
-<p>Detailed information can be found in the <a href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> of the project page.</p>
+<p>Detailed information can be found in the <a target="_blank" href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> of the project page.</p>
 <h3 id="linux-command-line">Linux command line</h3>
 <p>We recommend using the command line. There is no need to install additional programs, since all the tools you need are already available. A single, easy-to-understand command line is sufficient to transfer the siduction ISO image file to the storage medium.</p>
 <p>Before we write the siduction ISO image file to the storage medium, we need to determine its drive label. The easiest way is to use journald. The command <strong><code>journalctl -f</code></strong> executed in a terminal shows continuously the messages of systemd. Now we plug in the storage medium and watch the messages in the terminal. Lines of the following type contain the information we are looking for.</p>
@@ -80,7 +80,7 @@ cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso &gt; /dev/sd
 <p>The copying process may take 15 minutes or longer for an ISO image file of about 3 GB. Please wait relaxed until the prompt returns.</p>
 <h4 id="additional-data-partition">Additional data partition</h4>
 <p>Usually the storage medium is much larger than the ISO image file. The methods shown so far all use the entire storage medium, although the ISO image file only occupies 2.9 GiB. This cannot be changed afterwards. It is a good idea to take advantage of the command line and set up two partitions in advance. The first partition will later contain the live system and the second one the otherwise unused space. This allows us to take data on the media to the live session and store it there during the live session.</p>
-<p>We use as root the command <code>cgdisk /dev/sdb</code> to create a new GUID partition table (see the manual page <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>) and use the following data:</p>
+<p>We use as root the command <code>cgdisk /dev/sdb</code> to create a new GUID partition table (see the manual page <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>) and use the following data:</p>
 <p>1st partition:<br />
 Start sector: 64 (default)<br />
 Size: 3G (3 GB, slightly larger than the ISO image file)<br />

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>LAMP - MariaDB</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -59,9 +59,9 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li>In <code>/var/lib/mysql/</code> die Datenbanken und Log-Dateien.</li>
 <li>In <code>/run/mysqld/</code> zur Laufzeit notwendige Systemdateien.</li>
 </ul>
-<p>Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb <code>/etc/mysql/</code>, sofern man genau wei&szlig; wie vorzugehen ist. Anderen Falls benutzt man das <a href="https://manual.siduction.org/lamp-sql_de.html#mariadb-cli">MariaDB-CLI</a> oder ein Frontend wie <a href="https://manual.siduction.org/lamp-sql_de.html#phpmyadmin">phpMyAdmin</a>.</p>
+<p>Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht manuell bearbeitet werden. Einzige Ausnahme ist die Konfiguration von MariaDB unterhalb <code>/etc/mysql/</code>, sofern man genau wei&szlig; wie vorzugehen ist. Anderen Falls benutzt man das <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-cli">MariaDB-CLI</a> oder ein Frontend wie <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#phpmyadmin">phpMyAdmin</a>.</p>
 <h3 id="erstkonfiguration">Erstkonfiguration</h3>
-<p>Nach der Installation, wie sie in <a href="https://manual.siduction.org/lamp-start_de.html#lamp-webserver">LAMP-Testserver f&uuml;r Entwickler</a> beschrieben wurde, ist MariaDB <em>‘offen wie ein Scheunentor f&uuml;r jedermann’</em>, denn in der Grundeinstellung werden die beiden Benutzer <strong>root</strong> und <strong>anonymous</strong>, ohne Passwort erstellt und eine Testdatenbank angelegt.</p>
+<p>Nach der Installation, wie sie in <a target="_blank" href="https://manual.siduction.org/lamp-start_de.html#lamp-webserver">LAMP-Testserver f&uuml;r Entwickler</a> beschrieben wurde, ist MariaDB <em>‘offen wie ein Scheunentor f&uuml;r jedermann’</em>, denn in der Grundeinstellung werden die beiden Benutzer <strong>root</strong> und <strong>anonymous</strong>, ohne Passwort erstellt und eine Testdatenbank angelegt.</p>
 <p>Deshalb rufen wir das Programm <strong><code>mysql_secure_installation</code></strong> im Root-Terminal auf.<br />
 Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: <code>«--[ ]</code>.</p>
 <pre><code># mysql_secure_installation  
@@ -144,7 +144,7 @@ Welcome to the MariaDB monitor.  [...]
 
 MariaDB [(none)]&gt;</code></pre>
 <p>Aus Sicherheitsgr&uuml;nden loggen wir uns nur zu Beginn als Benutzer <strong>root</strong> ein, um die Projektdatenbank, einen Benutzer f&uuml;r die allt&auml;glichen Arbeiten an dieser und einen Benutzer als Ersatz f&uuml;r root anzulegen.<br />
-Sp&auml;ter im Abschnitt <a href="https://manual.siduction.org/lamp-sql_de.html#phpmyadmin">phpMyAdmin</a> entziehen wir dem Benutzer root die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.</p>
+Sp&auml;ter im Abschnitt <a target="_blank" href="https://manual.siduction.org/lamp-sql_de.html#phpmyadmin">phpMyAdmin</a> entziehen wir dem Benutzer root die allumfassenden Rechte, damit ein potentieller Angreifer an dieser Stelle erfolglos bleibt.</p>
 <p><strong>Eine Datenbank anlegen</strong></p>
 <p>Wir sind noch im Terminal angemeldet und erstellen f&uuml;r unser Projekt eine neue Datenbank:</p>
 <pre><code>MariaDB [(none)]&gt; CREATE DATABASE sidu;
@@ -217,7 +217,7 @@ MariaDB [(none)]&gt; SHOW DATABASES;
 <p>Wie zuvor gesehen, l&auml;sst sich MariaDB vollst&auml;ndig &uuml;ber die Komandozeile verwalten. Wer die Syntax beherrscht, und daf&uuml;r ist profundes Fachwissen erforderlich, kommt auf diesem Weg schnell zum gew&uuml;nschten Ergebnis.</p>
 <p>Wir verwenden das f&uuml;r weniger erfahrene Benutzer besser geeignete Programm <code>phpMyAdmin</code> und geben in die Adresszeile des Browsers<br />
 http://localhost/phpmyadmin/<br />
-ein. Sollten wir die Konfiguration entsprechend der Handbuchseite <a href="https://manual.siduction.org/lamp-apache_de.html#apache-einrichten">LAMP - Apache</a> bereits durchlaufen haben, lautet der Aufruf<br />
+ein. Sollten wir die Konfiguration entsprechend der Handbuchseite <a target="_blank" href="https://manual.siduction.org/lamp-apache_de.html#apache-einrichten">LAMP - Apache</a> bereits durchlaufen haben, lautet der Aufruf<br />
 https://server1.org/phpmyadmin/</p>
 <p>Um, wie oben angef&uuml;hrt, dem Datenbank-Admin <strong>root</strong> die Rechte zu entziehen, benutzen wir im Anmeldefenster gleich unseren neuen Datenbank-Admin <strong>chef</strong> mit seinem Passwort.</p>
 <figure>
@@ -253,7 +253,7 @@ https://server1.org/phpmyadmin/</p>
 <p>Die Steuerung von MariaDB wurde in Debian, und damit auch in siduction, in den Systemd integriert. MariaDB startet automatisch beim Booten des Servers. Die Steuerungsaufrufe lauten:</p>
 <pre><code># systemctl [start | stop | restart] mariadb.service</code></pre>
 <p>Start- und Fehlermeldungen des Servers flie&szlig;en in das Systemd Journal ein.<br />
-Genaue Informationen enth&auml;lt die externe Webseite <a href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a>.</p>
+Genaue Informationen enth&auml;lt die externe Webseite <a target="_blank" href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a>.</p>
 <p>Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf Systemd beziehen.</p>
 <h3 id="mariadb-log">MariaDB Log</h3>
 <p>Das systemd Journal enth&auml;lt Meldungen &uuml;ber den Startprozess der Unit <code>mariadb.service</code>. Es ist die erste Anlaufstelle wenn Fehler auftreten.<br />
@@ -268,11 +268,11 @@ In der Konsole zeigt der Befehl <code>journalctl</code> die Meldungen zu MariaDB
 <code>/var/lib/mysql/</code>.<br />
 <strong>Achtung</strong>: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Aktionen zu beobachten.</p>
 <h3 id="quellen-mariadb">Quellen MariaDB</h3>
-<p><a href="https://mariadb.com/kb/en/documentation/">MariaDB Dokumentation</a> (englisch)<br />
-<a href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a> (englisch)<br />
+<p><a target="_blank" href="https://mariadb.com/kb/en/documentation/">MariaDB Dokumentation</a> (englisch)<br />
+<a target="_blank" href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a> (englisch)<br />
 und die Manpage</p>
 <p>Die mariadb Manpage <code>man mariadb</code></p>
-<p><a href="https://docs.phpmyadmin.net/de/latest/">phpMyAdmin Dokumentation</a> (deutsch)</p>
+<p><a target="_blank" href="https://docs.phpmyadmin.net/de/latest/">phpMyAdmin Dokumentation</a> (deutsch)</p>
 <div id="rev">
 Zuletzt bearbeitet: 2020-11-29
 </div>

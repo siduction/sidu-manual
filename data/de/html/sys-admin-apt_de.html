@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Ein kleines APT-Kochbuch</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -51,7 +51,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="apt-paketverwaltung">APT Paketverwaltung</h2>
 <p>APT ist eine Abk&uuml;rzung f&uuml;r <strong>A</strong>dvanced <strong>P</strong>ackaging <strong>T</strong>ool und stellt eine Sammlung von Programmen und Skripten bereit, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterst&uuml;tzt.<br />
-Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
+Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
 <h3 id="apt-und-apt-get">apt und apt-get</h3>
 <p><strong>apt</strong> ist als Endanwenderschnittstelle gedacht und aktiviert verglichen mit spezialisierteren Werkzeugen wie apt-get und apt-cache standardm&auml;&szlig;ig einige f&uuml;r den interaktiven Gebrauch besser geeignete Optionen. Mit apt stehen nicht alle Optionen von apt-get und apt-cache zur Verf&uuml;gung. Bitte die man-Pages von apt, apt-get und apt-cache lesen. Die folgende Tabelle zeigt die jeweiligen Befehle und ihre grundlegende Bedeutung.</p>
 <table>
@@ -69,7 +69,7 @@ Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#aktualisierung-des-systems">apt update</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#aktualisierung-des-systems">apt update</a></td>
 <td>apt-get update</td>
 <td>Auffrischen der Paketdatenbank.</td>
 </tr>
@@ -79,7 +79,7 @@ Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https
 <td>Aktualisiert das System auf die neuesten, zur Verf&uuml;gung stehenden Paketversionen.</td>
 </tr>
 <tr class="odd">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">apt full-upgrade</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">apt full-upgrade</a></td>
 <td>apt-get dist-upgrade</td>
 <td>Aktualisiert das System auf die neuesten, zur Verf&uuml;gung stehenden Paketversionen auch wenn dadurch bereits installierte Pakete entfernt werden m&uuml;ssen.</td>
 </tr>
@@ -89,42 +89,42 @@ Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https
 <td>Aktualisierung das System wie zuvor, jedoch wird nur der Download durchgef&uuml;hrt und nichts installiert.</td>
 </tr>
 <tr class="odd">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-installieren">apt install</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-installieren">apt install</a></td>
 <td>apt-get install</td>
 <td>Installieren eines oder mehrerer Pakete.</td>
 </tr>
 <tr class="even">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-entfernen">apt remove</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-entfernen">apt remove</a></td>
 <td>apt-get remove</td>
 <td>Entfernen eines oder mehrerer Pakete.</td>
 </tr>
 <tr class="odd">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-entfernen">apt purge</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-entfernen">apt purge</a></td>
 <td>apt-get purge</td>
 <td>Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien.</td>
 </tr>
 <tr class="even">
 <td>-</td>
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">apt-mark hold</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">apt-mark hold</a></td>
 <td>Verhindert, dass apt eine andere Version das Paketes installiert.</td>
 </tr>
 <tr class="odd">
 <td>-</td>
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">apt-mark unhold</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">apt-mark unhold</a></td>
 <td>Hebt den Befehl ‘apt-mark hold’ auf.</td>
 </tr>
 <tr class="even">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#paketsuche-im-terminal">apt search</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#paketsuche-im-terminal">apt search</a></td>
 <td>apt-get search</td>
 <td>Sucht entsprechend des eingegebenen Musters nach Paketen. (regex m&ouml;glich)</td>
 </tr>
 <tr class="odd">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#paketsuche-im-terminal">apt show</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#paketsuche-im-terminal">apt show</a></td>
 <td>apt-cache show</td>
 <td>Anzeige der Details eines Paketes.</td>
 </tr>
 <tr class="even">
-<td><a href="https://manual.siduction.org/sys-admin-apt_de.html#paketsuche-im-terminal">apt list</a></td>
+<td><a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#paketsuche-im-terminal">apt list</a></td>
 <td>apt-cache policy</td>
 <td>Zeigt die installierte, oder installierbare Version eines Paketes.</td>
 </tr>
@@ -159,7 +159,7 @@ deb     http://packages.siduction.org/extra unstable main contrib non-free
 deb     http://deb.debian.org/debian/ unstable main contrib non-free
 
 #deb-src http://deb.debian.org/debian/ unstable main contrib non-free</code></pre>
-<p>Weitere Eintr&auml;ge f&uuml;r optionale siduction Repositories finden sich auf <a href="https://packages.siduction.org/">siduction Repositories</a>.</p>
+<p>Weitere Eintr&auml;ge f&uuml;r optionale siduction Repositories finden sich auf <a target="_blank" href="https://packages.siduction.org/">siduction Repositories</a>.</p>
 <p>F&uuml;gt man zum Beispiel ein oder mehrere Debian Repositories hinzu, so w&uuml;rde dies folgender ma&szlig;en aussehen:</p>
 <pre><code>#Debian
 # Unstable
@@ -178,7 +178,7 @@ deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
 #deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free</code></pre>
 <p><em>ZUR BEACHTUNG:</em><br />
 In diesem Beispiel wird der US-amerikanische Debian-Spiegelserver beginnend mit ftp.us verwendet. Diese Einstellung kann als root ge&auml;ndert werden, indem der Landes-Code angepasst wird (zum Beispiel: ftp.at, ftp.de). Die meisten L&auml;nder haben lokale Debian-Spiegelserver zur Verf&uuml;gung. Dies bietet f&uuml;r den Anwender eine h&ouml;here Anbindungsgeschwindigkeit und spart auch Bandbreite.</p>
-<p><a href="https://www.debian.org/mirrors/">Liste der aktuell verf&uuml;gbaren Debian-Server und deren Spiegelserver.</a></p>
+<p><a target="_blank" href="https://www.debian.org/mirrors/">Liste der aktuell verf&uuml;gbaren Debian-Server und deren Spiegelserver.</a></p>
 <h3 id="apt-update">apt update</h3>
 <p>Um aktualisierte Informationen &uuml;ber die Pakete zu erhalten, wird eine Datenbank mit den ben&ouml;tigten Eintr&auml;gen vorgehalten. Das Programm apt benutzt sie bei der Installation eines Pakets, um alle Abh&auml;ngigkeiten aufzul&ouml;sen und somit zu garantieren, dass die ausgew&auml;hlten Pakete funktionieren. Die Erstellung bzw. Aktualisierung dieser Datenbank wird mit dem Befehl <strong><code>apt update</code></strong> durchgef&uuml;hrt.</p>
 <pre><code>root@siduction# apt update
@@ -300,7 +300,7 @@ apt install kmahjongg
     oder
 apt full-upgrade</code></pre>
 <h3 id="aktualisierung-des-systems">Aktualisierung des Systems</h3>
-<p>Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgef&uuml;hrt: <strong><code>apt full-upgrade</code></strong>. Vor einer solchen Ma&szlig;nahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu pr&uuml;fen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt <a href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">Downgrade bzw. Hold</a> eines Pakets.</p>
+<p>Eine Aktualisierung des ganzen Systems wird mit diesem Befehl durchgef&uuml;hrt: <strong><code>apt full-upgrade</code></strong>. Vor einer solchen Ma&szlig;nahme sollten die aktuellen Upgradewarnungen auf der Hauptseite von siduction beachtet werden, um zu pr&uuml;fen, ob Pakete des eigenen Systems betroffen sind. Wenn ein installiertes Paket behalten, also auf hold gesetzt werden sollte, verweisen wir auf den Abschnitt <a target="_blank" href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">Downgrade bzw. Hold</a> eines Pakets.</p>
 <p>Ein einfaches <strong><code>apt upgrade</code></strong> von Debian Sid ist normalerweise nicht empfohlen. Es kann aber hilfreich sein, wenn eine Situation mit vielen gehaltenen oder zu entfernenden Paketen vorliegt, um von der Situation nicht betroffene Pakete zu aktualisieren.</p>
 <p>Wie regelm&auml;&szlig;ig soll eine Systemaktualisierung durchgef&uuml;hrt werden?<br />
 Eine Systemaktualisierung soll regelm&auml;&szlig;ig durchgef&uuml;hrt werden, alle ein bis zwei Wochen haben sich als guter Richtwert erwiesen. Auch bei monatlichen Systemaktualisierungen sollte es zu keinen nennenswerten Problemen kommen. Theoretisch kann das System mehrmals t&auml;glich nach der Synchronisation der Spiegelserver alle 6 Stunden aktualisiert werden.</p>
@@ -364,7 +364,7 @@ M&ouml;chtest Du fortfahren [J/n]?J </code></pre>
 <p class="warning">
 <strong>Warnhinweis:</strong> <br />Eine Systemaktualisierung, die nicht im multi-user.target (ehemals Runlevel 3) durchgef&uuml;hrt wird, kann zu Problemen f&uuml;hren, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 </p>
-<p>Besuche vor einer Systemaktualisierung die <a href="https://forum.siduction.org/">siduction-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals t&auml;glich neue Programmpakete in seine Repositorien aufnimmt.</p>
+<p>Besuche vor einer Systemaktualisierung die <a target="_blank" href="https://forum.siduction.org/">siduction-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals t&auml;glich neue Programmpakete in seine Repositorien aufnimmt.</p>
 <p>Zu beachten ist der folgende Ablauf:</p>
 <ol type="1">
 <li>Aus der Desktopumgebung abmelden.<br />
@@ -456,7 +456,7 @@ apt install packagesearch</code></pre>
 <li>orphaned packages (verwaiste Pakete)</li>
 </ul>
 <p>Zus&auml;tzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch welche Dateien in einem Paket geschn&uuml;rt sind. Weitere ausf&uuml;hrliche Informationen zur Verwendung von packagesearch findet man unter <em>Help</em> &gt; <em>Contents</em>. Derzeit ist die Benutzerf&uuml;hrung von packagesearch ausschlie&szlig;lich Englisch.</p>
-<p>Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
+<p>Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
 <div id="rev">
 Zuletzt bearbeitet: 2021-11-29
 </div>

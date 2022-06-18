@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Partitionieren mit gdisk</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -49,11 +49,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 gdisk sorgt daf&uuml;r, dass Partitionen f&uuml;r SSDs eingerichtet sind (bzw. f&uuml;r Speicher, die keine 512 Byte gro&szlig;en Sektoren besitzen).</p>
 <p>Ein entscheidender Vorteil von GPT ist, dass man nicht mehr auf die dem MBR inh&auml;renten prim&auml;ren, erweiterten oder logischen Partitionen angewiesen ist. GPT kann eine beinahe unbegrenzte Anzahl von Partitionen unterst&uuml;tzen und ist nur durch den f&uuml;r Partitionseintr&auml;ge reservierten Speicherplatz des GPT-Datentr&auml;gers eingeschr&auml;nkt. Zu beachten ist, dass die Anwendung gdisk standardm&auml;&szlig;ig f&uuml;r 128 Partitionen eingestellt ist.</p>
 <p>Falls GPT auf kleinen USB/SSD-Datentr&auml;gern eingesetzt wird (zum Beispiel auf einem USB-Stick mit 8GB), k&ouml;nnte sich dies kontraproduktiv auswirken, wenn Daten zwischen verschiedenen Computern oder Betriebssystemen ausgetauscht werden sollen.<br />
-F&uuml;r diesen Zweck, und sofern &auml;ltere Hardware zum Einsatz kommt, verwenden wir besser <code>fdisk</code>, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite <a href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a>.</p>
+F&uuml;r diesen Zweck, und sofern &auml;ltere Hardware zum Einsatz kommt, verwenden wir besser <code>fdisk</code>, das Partitionstabellen auf Basis des MBR erstellt. Siehe die Handbuchseite <a target="_blank" href="https://manual.siduction.org/part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit Cfdisk</a>.</p>
 <p><strong>Wichtige Anmerkungen</strong></p>
 <ul>
 <li><p>Die Begriffe UEFI und EFI sind austauschbar und bezeichnen das gleiche Konzept - <strong>U</strong>nified <strong>E</strong>xtensible <strong>F</strong>irmware <strong>I</strong>nterface (englisch f&uuml;r Vereinheitlichte erweiterbare Firmware-Schnittstelle).<br />
-Siehe <a href="https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia UEFI</a>.<br />
+Siehe <a target="_blank" href="https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia UEFI</a>.<br />
 Die GPT ist ein Teil des UEFI Standards.</p></li>
 <li><p>GPT-Datentr&auml;ger verwenden</p>
 <ul>
@@ -73,9 +73,9 @@ Neben dem Befehlszeilenprogramm <code>gdisk</code> unterst&uuml;tzen graphische 
 <p><strong>Grundlegende Lekt&uuml;re:</strong></p>
 <ul>
 <li>man gdisk</li>
-<li><a href="http://www.rodsbooks.com/gdisk/">GPT fdisk Tutorial by Roderick W. Smith (Englisch)</a></li>
-<li><a href="https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Betriebssysteme">Wikipedia UEFI-Unterst&uuml;tzung der Betriebssysteme</a></li>
-<li><a href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle (Deutsch)</a></li>
+<li><a target="_blank" href="http://www.rodsbooks.com/gdisk/">GPT fdisk Tutorial by Roderick W. Smith (Englisch)</a></li>
+<li><a target="_blank" href="https://de.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Betriebssysteme">Wikipedia UEFI-Unterst&uuml;tzung der Betriebssysteme</a></li>
+<li><a target="_blank" href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle (Deutsch)</a></li>
 </ul>
 <h3 id="partitionierung-einer-festplatte">Partitionierung einer Festplatte</h3>
 <p class="warning">
@@ -136,7 +136,7 @@ An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durc
 <img src="./images-de/cgdisk/cgdisk_07.png" alt="" /><figcaption>Partition Verify</figcaption>
 </figure>
 <p>Hier ist alles in Ordnung.<br />
-Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl <strong><code>Info</code></strong>, und entscheiden ob die Partition gel&ouml;scht und neu angelegt werden muss und ob dabei z. B. die Gr&ouml;&szlig;e zu &auml;ndern ist. Wenn mit diesen Mitteln eine Reparatur nicht m&ouml;glich ist, stehen routinierten Usern die <a href="https://manual.siduction.org/part-gdisk_de.html#erweiterte-befehle-von-gdisk">Erweiterten Befehle von gdisk</a> zur Verf&uuml;gung.</p>
+Sollten Fehler gemeldet werden, markieren wir die Partition und benutzen den Befehl <strong><code>Info</code></strong>, und entscheiden ob die Partition gel&ouml;scht und neu angelegt werden muss und ob dabei z. B. die Gr&ouml;&szlig;e zu &auml;ndern ist. Wenn mit diesen Mitteln eine Reparatur nicht m&ouml;glich ist, stehen routinierten Usern die <a target="_blank" href="https://manual.siduction.org/part-gdisk_de.html#erweiterte-befehle-von-gdisk">Erweiterten Befehle von gdisk</a> zur Verf&uuml;gung.</p>
 <p><strong>Partition l&ouml;schen</strong></p>
 <p>Um eine Partition zu l&ouml;schen, markieren wir diese und benutzen den Befehl <strong><code>Delete</code></strong>.</p>
 <figure>

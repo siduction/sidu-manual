@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Medien ohne GUI brennen</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -49,7 +49,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <p>Man ben&ouml;tigt zum Brennen einer CD/DVD nicht notwendigerweise eine grafische Benutzeroberfl&auml;che (GUI).<br />
 Probleme, die beim Brennen auftreten, haben ihre Ursache normalerweise in den Frontends wie K3b, nicht so h&auml;ufig in den Backends wie growisofs, wodim oder cdrdao.</p>
 <p>Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie stets mit Hilfe der von siduction immer angebotenen md5sum und sha256sum pr&uuml;fen. Das erspart unter Umst&auml;nden viel Zeit f&uuml;r die Fehlersuche bei einer ver&auml;nderten oder besch&auml;digten Datei.<br />
-Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a href="https://manual.siduction.org/iso-dl_de.html#integrit&auml;tspr&uuml;fung">ISO Download, Integrit&auml;tspr&uuml;fung</a>.</p>
+Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a target="_blank" href="https://manual.siduction.org/iso-dl_de.html#integrit&auml;tspr&uuml;fung">ISO Download, Integrit&auml;tspr&uuml;fung</a>.</p>
 <h3 id="burniso">burniso</h3>
 <p>Siduction stellt ein Skript namens <code>burniso</code> zur Verf&uuml;gung.<br />
 Burniso brennt unter Nutzung von wodim die ISO-Abbilddatei im Disk-At-Once-Modus mit einer fest eingestellten Brenngeschwindigkeit von 8x. Zuvor testet burniso ob die notwendige Hardware verf&uuml;gbar ist und listet dann alle erkannten ISO-Abbilddateien auf.</p>

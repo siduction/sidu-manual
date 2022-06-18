@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Systemd - mount</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -43,7 +43,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-mount">systemd-mount</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der systemd-Units <strong>mount</strong> und <strong>automount</strong>. Mit ihnen verwaltet systemd Einh&auml;ngepunkte f&uuml;r Laufwerke und deren Partitionen, die sowohl lokal als auch &uuml;ber das Netzwerk erreichbar sein k&ouml;nnen.</p>
 <p>Die <strong>mount</strong>-Unit ist eine Konfigurationsdatei, die f&uuml;r systemd Informationen &uuml;ber einen Einh&auml;ngepunkt bereitstellt.<br />
 Die <strong>automount</strong>-Unit &uuml;berwacht das Dateisystem und aktiviert die gleichnamige mount-Unit, wenn das darin bezeichnete Dateisystem verf&uuml;gbar ist.</p>
@@ -196,13 +196,13 @@ Triggers: ● home-&lt;user&gt;-www_data.mount
 <p><strong>Weitere Beispiele</strong><br />
 Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beispiele f&uuml;r die Anwendung der mount- und automount-Unit. Das Kapitel “Quellen” enth&auml;lt einige Webseiten mit einer ganzen Reihe weiterer Beispiele. Dringend empfohlen sind auch die man-Pages.</p>
 <h3 id="quellen-systemd-mount">Quellen systemd-mount</h3>
-<p><a href="https://manpages.debian.org/testing/manpages-de/systemd-mount.1.de.html">Deutsche Manpage, systemd.mount</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/mount.8.de.html">Deutsche Manpage, mount</a><br />
-<a href="https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191">Manjaro Forum, systemd.mount</a><br />
-<a href="https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185">Manjaro Forum, Use systemd to mount ANY device</a><br />
-<a href="https://linuxnews.de/2019/12/nfs-freigaben-per-systemd-einbinden/">Linuxnews, nfs per systemd</a><br />
-<a href="https://wiki.debianforum.de/Netzlaufwerke_einbinden">Debianforum, Netzlaufwerke einbinden</a><br />
-<a href="https://wiki.ubuntuusers.de/systemd/Mount_Units/">Ubuntuusers, Mount-Units</a></p>
+<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-mount.1.de.html">Deutsche Manpage, systemd.mount</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/mount.8.de.html">Deutsche Manpage, mount</a><br />
+<a target="_blank" href="https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191">Manjaro Forum, systemd.mount</a><br />
+<a target="_blank" href="https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185">Manjaro Forum, Use systemd to mount ANY device</a><br />
+<a target="_blank" href="https://linuxnews.de/2019/12/nfs-freigaben-per-systemd-einbinden/">Linuxnews, nfs per systemd</a><br />
+<a target="_blank" href="https://wiki.debianforum.de/Netzlaufwerke_einbinden">Debianforum, Netzlaufwerke einbinden</a><br />
+<a target="_blank" href="https://wiki.ubuntuusers.de/systemd/Mount_Units/">Ubuntuusers, Mount-Units</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>systemd - service</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -42,11 +42,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-service">systemd-service</h2>
-<p>The basic and introductory information about systemd is contained on the manual page <a href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
+<p>The basic and introductory information about systemd is contained on the manual page <a target="_blank" href="https://manual.siduction.org/systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
 On this manual page we explain the function of the unit <strong>systemd.service</strong>. The unit file with the “.service” name extension is the most commonly encountered unit type in systemd.</p>
 <p>The service unit file must contain a [Service] section that configures information about the service and the process it is monitoring.</p>
 <h3 id="create-service-unit">Create service unit</h3>
-<p>We prefer to place self-created unit files in the <code>/usr/local/lib/systemd/system/</code> directory. (If necessary, create the directory with the command <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.) This has the advantage of giving them priority over system units installed by the distribution’s package manager, while placing control links and change files created with <strong><code>systemctl edit &lt;UNIT_FILE&gt;</code></strong> in the directory <code>/etc/systemd/system/</code>, which itself has a higher priority. See: <a href="https://manual.siduction.org/systemd-unit-datei_en.html#loading-path-of-the-unit-files">Hirarchy of load paths</a>.</p>
+<p>We prefer to place self-created unit files in the <code>/usr/local/lib/systemd/system/</code> directory. (If necessary, create the directory with the command <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.) This has the advantage of giving them priority over system units installed by the distribution’s package manager, while placing control links and change files created with <strong><code>systemctl edit &lt;UNIT_FILE&gt;</code></strong> in the directory <code>/etc/systemd/system/</code>, which itself has a higher priority. See: <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_en.html#loading-path-of-the-unit-files">Hirarchy of load paths</a>.</p>
 <h3 id="service-section">Service section</h3>
 <p>There are over thirty options available for this section, of which we describe particularly frequently used ones here.</p>
 <pre><code>Type=             PIDFile=
@@ -192,12 +192,12 @@ change this behavior.</p></li>
 </ul>
 <p><strong>Examples</strong><br />
 Some self created service units can be found on our manual pages</p>
-<p><a href="https://manual.siduction.org/systemd-timer_en.html#create-timer-unit">service-unit for systemd timer</a>,<br />
-<a href="https://manual.siduction.org/systemd-path_en.html#create-path-unit">service-unit for systemd Path</a>,<br />
+<p><a target="_blank" href="https://manual.siduction.org/systemd-timer_en.html#create-timer-unit">service-unit for systemd timer</a>,<br />
+<a target="_blank" href="https://manual.siduction.org/systemd-path_en.html#create-path-unit">service-unit for systemd Path</a>,<br />
 and with the preferred search engine on the Internet.</p>
 <h3 id="sources-systemd-service">Sources systemd-service</h3>
 <pre><code>man systemd.service</code></pre>
-<p><a href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Create systemd units yourself</a></p>
+<p><a target="_blank" href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Create systemd units yourself</a></p>
 <div id="rev">
 Last edited: 2022/04/08
 </div>

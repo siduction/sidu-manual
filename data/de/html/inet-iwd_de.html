@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Netzwerk - IWD</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -46,17 +46,17 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="iwd">IWD</h2>
-<p>Intels <a href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (iwd) schickt den wpa-supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so gro&szlig; und viel schneller, ist iwd der Nachfolger. iwd funktioniert alleine oder zusammen mit NetworkManager, systemd-networkd und Connman.<br />
-Zwei Dinge, die iwd noch nicht kann, sind die Verbindung per WPA/WPA2 Enterprise und der korrekte Umgang mit versteckten Netzwerken. Bei solchen Arbeitsumgebungen sollte man bei wpa-supplicant bleiben oder ab siduction 2021.3.0 wieder zum <a href="https://manual.siduction.org/inet-iwd_de.html#zur&uuml;ck-zum-wpa_supplicant">wpa-supplicant wechseln</a>.</p>
-<p>Weiterf&uuml;hrende Informationen bietet das <a href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> bzw. das <a href="https://wiki.debian.org/NetworkManager/iwd">debian wiki</a>.</p>
+<p>Intels <a target="_blank" href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (iwd) schickt den wpa-supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so gro&szlig; und viel schneller, ist iwd der Nachfolger. iwd funktioniert alleine oder zusammen mit NetworkManager, systemd-networkd und Connman.<br />
+Zwei Dinge, die iwd noch nicht kann, sind die Verbindung per WPA/WPA2 Enterprise und der korrekte Umgang mit versteckten Netzwerken. Bei solchen Arbeitsumgebungen sollte man bei wpa-supplicant bleiben oder ab siduction 2021.3.0 wieder zum <a target="_blank" href="https://manual.siduction.org/inet-iwd_de.html#zur&uuml;ck-zum-wpa_supplicant">wpa-supplicant wechseln</a>.</p>
+<p>Weiterf&uuml;hrende Informationen bietet das <a target="_blank" href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> bzw. das <a target="_blank" href="https://wiki.debian.org/NetworkManager/iwd">debian wiki</a>.</p>
 <p><strong>Seit siduction 2021.3.0</strong> kommt iwd als Standard f&uuml;r den Verbindungsaufbau im WLAN zum Einsatz. Unsere Implementation l&auml;uft mit NetworkManager.</p>
-<p><strong>Seit siduction 2021.1.0</strong> wurde iwd bereits in den Flavours Xorg und noX ausgeliefert. Wer m&ouml;chte, kann iwd in den anderen Flavours installieren. Siehe weiter unten: <a href="https://manual.siduction.org/inet-iwd_de.html#iwd-statt-wpa_supplicant">IWD statt wpa_supplicant</a>.</p>
-<p><strong>Vor siduction 2021.1.0</strong>: Auch bei einem etwas &auml;lteren Snapshot kann iwd installiert werden (getestet mit siduction 2018.3.0 und linux-image-5.15.12-1-siduction-amd64). Bitte ebenfalls der Anleitung unter <a href="https://manual.siduction.org/inet-iwd_de.html#iwd-statt-wpa_supplicant">IWD statt wpa_supplicant</a> folgen.</p>
+<p><strong>Seit siduction 2021.1.0</strong> wurde iwd bereits in den Flavours Xorg und noX ausgeliefert. Wer m&ouml;chte, kann iwd in den anderen Flavours installieren. Siehe weiter unten: <a target="_blank" href="https://manual.siduction.org/inet-iwd_de.html#iwd-statt-wpa_supplicant">IWD statt wpa_supplicant</a>.</p>
+<p><strong>Vor siduction 2021.1.0</strong>: Auch bei einem etwas &auml;lteren Snapshot kann iwd installiert werden (getestet mit siduction 2018.3.0 und linux-image-5.15.12-1-siduction-amd64). Bitte ebenfalls der Anleitung unter <a target="_blank" href="https://manual.siduction.org/inet-iwd_de.html#iwd-statt-wpa_supplicant">IWD statt wpa_supplicant</a> folgen.</p>
 <h3 id="grafische-konfigurationsprogramme">Grafische Konfigurationsprogramme</h3>
 <ul>
 <li><strong>NetworkManager</strong> F&uuml;r den NetworkManager gibt es verschiedene grafische Oberfl&auml;chen z.B. f&uuml;r den plasma-desktop/kde <code>plasma-nm</code> oder f&uuml;r gnome <code>network-manager-gnome</code> und andere. Ihr Benutzung sollte selbsterkl&auml;rend sein!</li>
-<li><strong>conman</strong> ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im <a href="https://wiki.archlinux.org/index.php/ConnMan">Arch-Wiki</a></li>
-<li><strong>iwgtk</strong> ist nicht in debian-Quellen, es muss aus dem Sourcecode gebaut werden und ist auf <a href="https://github.com/J-Lentz/iwgtk">github</a> zu finden.</li>
+<li><strong>conman</strong> ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im <a target="_blank" href="https://wiki.archlinux.org/index.php/ConnMan">Arch-Wiki</a></li>
+<li><strong>iwgtk</strong> ist nicht in debian-Quellen, es muss aus dem Sourcecode gebaut werden und ist auf <a target="_blank" href="https://github.com/J-Lentz/iwgtk">github</a> zu finden.</li>
 </ul>
 <h3 id="konfiguration-im-terminal">Konfiguration im Terminal</h3>
 <p><strong>iwd und NetworkManager</strong></p>
@@ -64,7 +64,7 @@ Zwei Dinge, die iwd noch nicht kann, sind die Verbindung per WPA/WPA2 Enterprise
 <li><p>Der schnellste und einfachste Weg iwd mit dem NetworkManager zu nutzen ist eine Konsole zu &ouml;ffnen und diesen Befehl einzugeben:</p>
 <pre><code>~$ nmtui</code></pre>
 <p>Es startet im Terminal eine textbasierte, graphische Oberfl&auml;che des NetworkManagers. Die Bedienung sollte selbsterkl&auml;rend sein!</p></li>
-<li><p>Das Kommandline-tool <code>nmcli</code> des NetworkManagers benutzen. Ausf&uuml;hrliche Informationen hierzu finden sie auf unserer Handbuchseite <a href="https://manual.siduction.org/inet-nm-cli_de.html#network-manager-kommandline-tool">Network Manager im Terminal</a></p>
+<li><p>Das Kommandline-tool <code>nmcli</code> des NetworkManagers benutzen. Ausf&uuml;hrliche Informationen hierzu finden sie auf unserer Handbuchseite <a target="_blank" href="https://manual.siduction.org/inet-nm-cli_de.html#network-manager-kommandline-tool">Network Manager im Terminal</a></p>
 <p>Ich beschreibe hier nur kurz den schnellsten Weg ein Netzwerk mit Hilfe des NetworkManagers in der Kommandozeile einzurichten. Vorausgesetzt man hat alle Informationen, reicht jener Einzeiler:</p>
 <pre><code>~$ nmcli dev wifi con &quot;&lt;ssid&gt;&quot; password password name &quot;&lt;name&gt;&quot;</code></pre>
 <p><em>“ssid”</em> bezeichnet den Namen des Netzwerkes</p>
@@ -192,8 +192,8 @@ wiFi.backend=iwd</code></pre>
 EnableNetworkConfiguration=true
 #
 [...]</code></pre>
-<p>Jetzt ist man in der Lage, sich im Terminal mit den oben beschriebenen Befehlen <a href="https://manual.siduction.org/inet-iwd_de.html#konfiguration-im-terminal"><strong>nmtui</strong>, <strong>nmcli</strong> oder <strong>iwctl</strong></a> WiFi Hardware anzeigen zu lassen, sie zu konfigurieren und sich mit einem Netzwerk zu verbinden.<br />
-Oder man benutzt den NetworkManager in der graphischen Oberfl&auml;che. Siehe: <a href="https://manual.siduction.org/inet-iwd_de.html#grafische-konfigurationsprogramme">Grafische Konfigurationsprogramme</a></p>
+<p>Jetzt ist man in der Lage, sich im Terminal mit den oben beschriebenen Befehlen <a target="_blank" href="https://manual.siduction.org/inet-iwd_de.html#konfiguration-im-terminal"><strong>nmtui</strong>, <strong>nmcli</strong> oder <strong>iwctl</strong></a> WiFi Hardware anzeigen zu lassen, sie zu konfigurieren und sich mit einem Netzwerk zu verbinden.<br />
+Oder man benutzt den NetworkManager in der graphischen Oberfl&auml;che. Siehe: <a target="_blank" href="https://manual.siduction.org/inet-iwd_de.html#grafische-konfigurationsprogramme">Grafische Konfigurationsprogramme</a></p>
 <h3 id="zur&uuml;ck-zum-wpa_supplicant">Zur&uuml;ck zum wpa_supplicant</h3>
 <p>Vorausgesetzt der NetworkManager und wpa_supplicant sind installiert, ben&ouml;tigen wir folgende Arbeitsschritte:</p>
 <ol type="1">

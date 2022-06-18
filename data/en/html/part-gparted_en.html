@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Partitioning with Gparted</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -47,12 +47,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h3 id="important-notes">Important notes</h3>
 <ul>
 <li><p>Always create a data backup first!</p></li>
-<li><p>Regarding the naming of storage devices, consult the chapter about <a href="https://manual.siduction.org/part-uuid_en.html#uuid---naming-of-block-devices">UUID, partition naming and fstab</a> because siduction uses naming by UUID by default.</p></li>
-<li><p>Resizing <strong>NTFS partitions</strong> requires an immediate reboot after execution. No further changes to partitions may be made before that since this inevitably will lead to errors. <a href="https://manual.siduction.org/part-gparted_en.html#changing-ntfs-partition-sizes-with-gparted">Please read on here.</a></p></li>
+<li><p>Regarding the naming of storage devices, consult the chapter about <a target="_blank" href="https://manual.siduction.org/part-uuid_en.html#uuid---naming-of-block-devices">UUID, partition naming and fstab</a> because siduction uses naming by UUID by default.</p></li>
+<li><p>Resizing <strong>NTFS partitions</strong> requires an immediate reboot after execution. No further changes to partitions may be made before that since this inevitably will lead to errors. <a target="_blank" href="https://manual.siduction.org/part-gparted_en.html#changing-ntfs-partition-sizes-with-gparted">Please read on here.</a></p></li>
 <li><p>A partition needs a file system. Linux can work on and with different file systems.<br />
 For normal use, we recommend the <strong>ext4</strong> file system.<br />
 <strong>NTFS</strong> should be used if the partition is also to be used by a Windows installation. siduction can read and write data to such partitions through the automatically installed <code>ntfs-3g</code>.</p></li>
-<li><p>The complete GParted documentation can be found in many languages on the <a href="https://gparted.org/documentation.php">GParted homepage</a>.</p></li>
+<li><p>The complete GParted documentation can be found in many languages on the <a target="_blank" href="https://gparted.org/documentation.php">GParted homepage</a>.</p></li>
 </ul>
 <h3 id="using-gparted">Using GParted</h3>
 <p>The program launcher for GParted can be found in</p>
@@ -96,7 +96,7 @@ The pending operations are displayed in a frame that opens at the bottom. This i
 <ol type="1">
 <li><p>Create a new (empty) partition table of the same type, and thus remove all old partitions and data in the fastest way.</p></li>
 <li><p>Change the partition table type. It makes sense to change from <strong>msdos-MBR</strong> to <strong>gpt-UEFI</strong> or vice versa. Here, too, all data will be lost.<br />
-In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost. More information about UEFI and GPT can be found on the manual page <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p></li>
+In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost. More information about UEFI and GPT can be found on the manual page <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p></li>
 </ol>
 <figure>
 <img src="./images-en/gparted/gparted03-en.png" alt="" /><figcaption>GParted partition table</figcaption>
@@ -138,7 +138,7 @@ In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, 
 <p class="warning">
 After the changes have been written to the drives, the /etc/fstab file must be checked and adjusted if necessary.
 </p>
-<p>See the manual page <a href="https://manual.siduction.org/part-uuid_en.html#the-fstab">Adjusting fstab</a>.<br />
+<p>See the manual page <a target="_blank" href="https://manual.siduction.org/part-uuid_en.html#the-fstab">Adjusting fstab</a>.<br />
 In a <strong>root</strong> terminal, enter the commands <strong><code>cat /etc/fstab</code></strong> as well as <strong><code>blkid</code></strong> and compare the UUIDs.</p>
 <pre><code>root@pc1:/# cat /etc/fstab
 # /etc/fstab: static file system information.

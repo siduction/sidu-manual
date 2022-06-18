@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Systemd - path</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -46,7 +46,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-path">systemd-path</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a target="_blank" href="https://manual.siduction.org/systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
 In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit <strong>systemd.path</strong>, mit der systemd Pfade &uuml;berwacht und Pfad-basierte Aktionen ausl&ouml;st.</p>
 <p>Die path-Unit erm&ouml;glicht es, bei &Auml;nderungen an Dateien und Verzeichnissen (Pfaden) eine Aktion auszul&ouml;sen.<br />
 Sobald ein Ereignis eintritt, kann Systemd einen Befehl oder ein Skript &uuml;ber eine Service-Unit ausf&uuml;hren. Die path-Unit ist nicht in der Lage Verzeichnisse rekursiv zu &uuml;berwachen. Es k&ouml;nnen aber mehrere Verzeichnisse und Dateien angegeben werden.<br />
@@ -90,7 +90,7 @@ das zu beobachtenden Verzeichnis wird vor der Beobachtung erstellt.</p></li>
 legt bei Verwendung f&uuml;r das zuvor erstellte Verzeichnis den Zugriffsmodus in oktaler Notation fest. Standardm&auml;&szlig;ig 0755.</p></li>
 </ul>
 <p><strong>Ein Beispiel</strong></p>
-<p>Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Handbuchseite <a href="https://manual.siduction.org/lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a>, wollen wir das Zusammenspiel der path-Unit mit anderen systemd-Unit verdeutlichen.</p>
+<p>Basierend auf der Konfiguration des Apache-Webservers, entsprechend unserer Handbuchseite <a target="_blank" href="https://manual.siduction.org/lamp-apache_de.html#benutzer-und-rechte">LAMP - Apache, Benutzer und Rechte</a>, wollen wir das Zusammenspiel der path-Unit mit anderen systemd-Unit verdeutlichen.</p>
 <p>Die Abbildung <em>path-Unit-Funktion</em> stellt die Abh&auml;ngigkeiten der systemd-Units unseres Beispiels dar.</p>
 <figure>
 <img src="./images-de/systemd/path_01.png" alt="" /><figcaption>path-Unit Funktion</figcaption>
@@ -216,9 +216,9 @@ TriggeredBy: ● server1.path
 [...]systemd[1]: server1.service: Succeeded.
 [...]systemd[1]: Finished Change permissions in server1</code></pre>
 <h3 id="quellen-systemd-path">Quellen systemd-path</h3>
-<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.path.5.de.html">Deutsche Manpage ‘systemd.path’</a></p>
+<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.path.5.de.html">Deutsche Manpage ‘systemd.path’</a></p>
 <p>Ein anders gelagertes Beispiel:<br />
-<a href="https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html">PRO-LINUX.DE, Systemd Path Units…</a></p>
+<a target="_blank" href="https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html">PRO-LINUX.DE, Systemd Path Units…</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

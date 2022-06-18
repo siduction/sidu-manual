@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>The siduction help</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -49,10 +49,10 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="siduction-help">siduction help</h2>
 <p>Quick help can save you a lot of tears and gives you the opportunity to work on the important things in life. This section is organized by areas where the siduction distribution offers help.</p>
 <h3 id="the-siduction-forum">The siduction forum</h3>
-<p>The siduction forum offers the possibility to ask questions and get answers to them. Before creating a new post, use the forum search, as there is a good chance that this or a similar question has been asked before. <a href="https://forum.siduction.org/index.php?name=PNphpBB2">The forum</a> is available in English and German.</p>
+<p>The siduction forum offers the possibility to ask questions and get answers to them. Before creating a new post, use the forum search, as there is a good chance that this or a similar question has been asked before. <a target="_blank" href="https://forum.siduction.org/index.php?name=PNphpBB2">The forum</a> is available in English and German.</p>
 <h3 id="the-siduction-wiki">The siduction wiki</h3>
 <p>The siduction wiki is freely usable and modifiable by all siduction users. We hope that this way the siduction documentation will grow with the project over time.</p>
-<p>We hope for contributions from Linux users of all experience levels as this wiki intends to help users of all skill levels. The few minutes “sacrificed” to the wiki and project can save other users (and perhaps yourself) hours of dealing with problems. <a href="https://forum.siduction.org/index.php?board=66.0">Link to siduction wiki</a></p>
+<p>We hope for contributions from Linux users of all experience levels as this wiki intends to help users of all skill levels. The few minutes “sacrificed” to the wiki and project can save other users (and perhaps yourself) hours of dealing with problems. <a target="_blank" href="https://forum.siduction.org/index.php?board=66.0">Link to siduction wiki</a></p>
 <h3 id="irc---interactive-live-support.">IRC - interactive live support.</h3>
 <p><strong>The IRC should never be entered as “root” but only as a normal user.</strong><br />
 If you are unsure, please announce this immediately in the IRC channel so that help can be given.</p>
@@ -68,7 +68,7 @@ If you are unsure, please announce this immediately in the IRC channel so that h
 If you prefer another chat client, you need to enter these server details:</p>
 <pre><code>irc.oftc.net
 port 6667</code></pre></li>
-<li><p><a href="https://webchat.oftc.net/?nick=siducer007&amp;channels=siduction-en">With this link you can start the IRC immediately in your browser</a>: Enter a free nickname and join the channel #siduction-en.</p></li>
+<li><p><a target="_blank" href="https://webchat.oftc.net/?nick=siducer007&amp;channels=siduction-en">With this link you can start the IRC immediately in your browser</a>: Enter a free nickname and join the channel #siduction-en.</p></li>
 </ul>
 <h3 id="useful-helpers-in-text-mode">Useful helpers in text mode</h3>
 <p>Normally, you should use text mode runlevel 3 (<strong><code>init 3</code></strong> or <strong><code>journalctl isolate multi-user.target</code></strong>) if you want to perform a dist-upgrade or if you are forced to beceause of a serious system error.</p>
@@ -127,8 +127,8 @@ $ weechat-curses</code></pre>
 To return to the IRC, you can use the<br />
 key combination <strong><code>ALT</code></strong>+<strong><code>F2</code></strong>.</p>
 <p>The following links provide more information:<br />
-<a href="https://irssi.org/documentation">Documentation page of irssi</a><br />
-<a href="https://www.weechat.org/">Documentation page of WeeChat</a></p>
+<a target="_blank" href="https://irssi.org/documentation">Documentation page of irssi</a><br />
+<a target="_blank" href="https://www.weechat.org/">Documentation page of WeeChat</a></p>
 <h3 id="surfing-the-internet-in-text-mode">Surfing the Internet in text mode</h3>
 <p>The command line browser <strong>w3m</strong> allows you to surf the internet in a terminal, console, or in text mode.<br />
 If neither w3m nor elinks are installed, proceed as follows:</p>
@@ -145,7 +145,7 @@ Example: https://siduction.org is called like this (https:// is omitted):</p>
 <p>After that, you will see a line like <code>Goto URL: https://siduction.org</code>. With the backspace key you delete the last selected URL and enter the desired one.<br />
 Exit w3m with:</p>
 <p><strong><code>SHIFT</code></strong>+<strong><code>Q</code></strong></p>
-<p>More information can be found on the <a href="http://w3m.sourceforge.net/">documentation page of w3m</a>.</p>
+<p>More information can be found on the <a target="_blank" href="http://w3m.sourceforge.net/">documentation page of w3m</a>.</p>
 <p>It is advisable to familiarize yourself with <strong>elinks/w3m, irssi/weechat, midnight commander</strong>. Print this file to have the information handy in case of an emergency.</p>
 <h3 id="inxi">inxi</h3>
 <p><strong>inxi</strong> is a system information script that works independently of individual IRC clients. This script outputs various information about the hardware and software being used, so that other users in #siduction can better help with troubleshooting. Alternatively, run it in a console to get information about your own system yourself.</p>
@@ -154,7 +154,7 @@ Exit w3m with:</p>
 <p>To use inxi in <code>weechat</code>, enter this into the chat box:</p>
 <p><strong>/shell -o inxi -v2</strong></p>
 <p>This requires the shell extension to be installed.</p>
-<p>See: <a href="https://www.weechat.org/scripts/">https://www.weechat.org/scripts/</a></p>
+<p>See: <a target="_blank" href="https://www.weechat.org/scripts/">https://www.weechat.org/scripts/</a></p>
 <p>To use inxi in other clients, type this into the chat box:</p>
 <p><strong>/exec -o inxi -v2</strong><br />
 or<br />
@@ -164,11 +164,11 @@ or<br />
 <p>Help for inxi:</p>
 <pre><code>$ inxi --help</code></pre>
 <h3 id="useful-links">Useful links</h3>
-<p><a href="https://www.debian.org/doc/manuals/refcard/refcard.en.pdf">Debian reference card - to print on a single sheet</a><br />
-<a href="https://www.debian.org/doc/#howtos">HOWTOs from the Debian site</a> (automatically in your language if browser is localized)<br />
-<a href="http://qref.sourceforge.net/index.en.php">Debian Reference: Basics and System Administration</a> (documents available as HTML, text, PDF, and PS)<br />
-<a href="https://www.cups.org/">Common Unix Printing System CUPS</a> (In KDE, the KDE Help Center provides information about CUPS.)<br />
-<a href="https://libreoffice.org/">LibreOffice</a> (There is a wide choice in the “Help” menu.)</p>
+<p><a target="_blank" href="https://www.debian.org/doc/manuals/refcard/refcard.en.pdf">Debian reference card - to print on a single sheet</a><br />
+<a target="_blank" href="https://www.debian.org/doc/#howtos">HOWTOs from the Debian site</a> (automatically in your language if browser is localized)<br />
+<a target="_blank" href="http://qref.sourceforge.net/index.en.php">Debian Reference: Basics and System Administration</a> (documents available as HTML, text, PDF, and PS)<br />
+<a target="_blank" href="https://www.cups.org/">Common Unix Printing System CUPS</a> (In KDE, the KDE Help Center provides information about CUPS.)<br />
+<a target="_blank" href="https://libreoffice.org/">LibreOffice</a> (There is a wide choice in the “Help” menu.)</p>
 <div id="rev">
 Last edited: 2022/03/29
 </div>

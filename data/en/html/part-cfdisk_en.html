@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Partitioning with cfdisk</title>
 <style>
-body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; border: #CCC thin solid; color: black;}
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
 p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
 p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
@@ -43,12 +43,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="partitioning-with-fdisk">Partitioning with fdisk</h2>
 <p><strong>fdisk</strong> and <strong>cfdisk</strong> create MBR partition tables based on the BIOS. The introduction of GPT partition tables based on UEFI began in 2000.</p>
-<p>The newer <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT) standard, which is part of the UEFI standard, has replaced MBR on current hardware and allows disks/partitions larger than 2 TBytes and a theoretically unlimited number of primary partitions. More information about this can be found in <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID partition table</a>.</p>
+<p>The newer <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT) standard, which is part of the UEFI standard, has replaced MBR on current hardware and allows disks/partitions larger than 2 TBytes and a theoretically unlimited number of primary partitions. More information about this can be found in <a target="_blank" href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID partition table</a>.</p>
 <p>We recommend to use <em>fdisk</em> and <em>cfdisk</em> only for partitioning on older hardware.<br />
-For creating GPT partition tables, please refer to the manual page <a href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p>
+For creating GPT partition tables, please refer to the manual page <a target="_blank" href="https://manual.siduction.org/part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p>
 <h3 id="naming-storage-devices">Naming storage devices</h3>
 <p><strong>Please NOTE:</strong><br />
-siduction uses UUID in <code>fstab</code> for storage device naming. Please refer to the chapter <a href="https://manual.siduction.org/part-uuid_en.html#uuid---naming-of-block-devices">Naming by UUID</a>.</p>
+siduction uses UUID in <code>fstab</code> for storage device naming. Please refer to the chapter <a target="_blank" href="https://manual.siduction.org/part-uuid_en.html#uuid---naming-of-block-devices">Naming by UUID</a>.</p>
 <p><strong>Disks</strong></p>
 <p>Information about the devices can be easily obtained from an information window (pop-up) by hovering the mouse over the icon of a device on the desktop. This works both from the live ISO and with siduction installed.</p>
 <p>We recommend creating a table (manual or generated) that contains the details of all devices. This can be very helpful if problems arise. In a terminal, we become <strong>root</strong> with <strong><code>su</code></strong> and type <strong><code>fdisk -l</code></strong>. For example, with two disks, we get output similar to that shown below.</p>
@@ -211,7 +211,7 @@ A selection list appears in which the partition type can be selected with the ar
 <p>By entering the command <em>“Quit”</em>, we can quit the program. After leaving <code>cfdisk</code> and before the installation, you should reboot in any case to read in the partition table again.</p>
 <h3 id="formatting-partitions">Formatting partitions</h3>
 <p>There are several file systems for Linux that can be used. There are <strong>Ext2</strong>, <strong>Ext4</strong>, <strong>ReiserFs</strong>, and for more experienced users <strong>XFS</strong>, <strong>JFS</strong>, and <strong>ZFS</strong>.<br />
-<strong>Ext2</strong> may be of interest when accessing from Windows, as there are Windows drivers for this file system. <a href="http://www.fs-driver.org/">Ext2 file system for MS Windows (drivers and documentation)</a>.</p>
+<strong>Ext2</strong> may be of interest when accessing from Windows, as there are Windows drivers for this file system. <a target="_blank" href="http://www.fs-driver.org/">Ext2 file system for MS Windows (drivers and documentation)</a>.</p>
 <p>For normal use, we recommend the <strong>ext4</strong> file system. It is siduction’s default file system.</p>
 <p>After <code>cfdisk</code> has finished, the <strong>root</strong> console is still needed as formatting requires root privileges.<br />
 The command is <strong><code>mkfs.ext4 /dev/sdaX</code></strong>. For <em>“X”</em>, enter the number of the selected partition.</p>
