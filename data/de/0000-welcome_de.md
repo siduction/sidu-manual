@@ -18,7 +18,7 @@ Das Handbuch des siduction Betriebssystems ist eine Referenz zum Kennenlernen de
 Es ist nach gleichartigen Themen unterteilt: Alles was zum Beispiel das Partitionieren betrifft, befindet sich im Kapitel "Installation/Partitionieren", und Themen, die WLAN betreffen befinden sich im Kapitel "Netzwerk".
 
 Drucken von Handbuchseiten:  
-Linuxbefehle können mehr als 120 Zeichen lang sein. Für eine optimierte Darstellung am Bildschirm findet kein automatischer Zeilenumbruch statt. Unser Handbuch im PDF-Format, dass auf allen ISOs und nach der Installation im System verfügbar ist, verwendet für die langen Befehle den Zeilenumbruch. Es steht auch [hier online](https://manual.siduction.org/siduction-manual_de.pdf) zur Verfügung.  
+Linuxbefehle können mehr als 120 Zeichen lang sein. Für eine optimierte Darstellung am Bildschirm findet kein automatischer Zeilenumbruch statt. Unser Handbuch im PDF-Format, dass auf allen ISOs und nach der Installation im System verfügbar ist, verwendet für die langen Befehle den Zeilenumbruch.  
 Zum Drucken von Handbuchseiten verwende bitte das PDF und drucke nur die benötigten Seiten.
 
 Um Hilfe für ein spezifisches vorinstalliertes oder selbst installiertes Anwendungsprogramm (auch Paket genannt) zu erhalten, informiert man sich am besten in den FAQ, Online-Handbüchern oder Foren auf der Homepage bzw. im Hilfe-Menü der Anwendung.
