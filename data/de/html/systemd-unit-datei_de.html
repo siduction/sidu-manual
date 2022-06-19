@@ -174,21 +174,21 @@ Pr&uuml;ft auf die Existenz eines Verzeichnisses. Mit einem Ausrufezeichen (“!
 &Uuml;berpr&uuml;ft ob ein bestimmter Pfad existiert und sich auf eine normale, als ausf&uuml;hrbar gekennzeichnete Datei bezieht. Mit einem Ausrufezeichen (“!”) vor dem Pfad wird der Test negiert.</p></li>
 </ol></li>
 </ol>
-<p>Die vollst&auml;ndige Dokumentation zu allen Optionen der Sektion [Unit] bitte in der <a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutschen Manpage, systemd.unit</a> nachlesen.</p>
+<p>Die vollst&auml;ndige Dokumentation zu allen Optionen der Sektion [Unit] bitte in der <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutschen Manpage, systemd.unit</a> nachlesen.</p>
 <h4 id="typ-spezifische-sektion">Typ-spezifische Sektion</h4>
 <p>Diese Sektion enth&auml;lt die speziellen Optionen der elf m&ouml;glichen Typen. Ausf&uuml;hrliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.</p>
 <ul>
 <li><p><a href="./systemd-service_de.html#systemd-service">[Service]</a> konfiguriert einen Dienst</p></li>
-<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">[Socket]</a> konfiguriert ein Socket</p></li>
-<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">[Device]</a> konfiguriert ein Ger&auml;t</p></li>
+<li><p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">[Socket]</a> konfiguriert ein Socket</p></li>
+<li><p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">[Device]</a> konfiguriert ein Ger&auml;t</p></li>
 <li><p><a href="./systemd-mount_de.html#systemd-mount">[Mount]</a> konfiguriert einen Einh&auml;ngepunkt</p></li>
 <li><p><a href="./systemd-mount_de.html#systemd-mount">[Automount]</a> konfiguriert einen Selbsteinh&auml;ngepunkt</p></li>
-<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">[Swap]</a> konfiguriert eine Auslagerungsdatei oder -partition</p></li>
+<li><p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">[Swap]</a> konfiguriert eine Auslagerungsdatei oder -partition</p></li>
 <li><p><a href="./systemd-target_de.html#systemd-target---ziel-unit">[Target]</a> konfiguriert ein Startziel</p></li>
 <li><p><a href="./systemd-path_de.html#systemd-path">[Path]</a> konfiguriert einen &uuml;berwachten Dateipfad</p></li>
 <li><p><a href="./systemd-timer_de.html#systemd-timer">[Timer]</a> konfiguriert einen von systemd gesteuerten und &uuml;berwachten Zeitgeber</p></li>
-<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">[Slice]</a> konfiguriert eine Ressourcenverwaltungs-Slice</p></li>
-<li><p><a href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">[Scope]</a> konfiguriert eine Gruppe von extern erstellten Prozessen.</p></li>
+<li><p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">[Slice]</a> konfiguriert eine Ressourcenverwaltungs-Slice</p></li>
+<li><p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">[Scope]</a> konfiguriert eine Gruppe von extern erstellten Prozessen.</p></li>
 </ul>
 <h4 id="sektion-install">Sektion Install</h4>
 <p>Unit-Dateien k&ouml;nnen diese Sektion enthalten.<br />
@@ -331,7 +331,7 @@ W&auml;hrend des gesamten Bootprozesses werden die drei cups.xxx-Units wiederhol
 Zus&auml;tzlich fordert immer dann das printer.target den cups.service an, wenn ein Drucker neu von systemd erkannt wird.</p>
 <h3 id="werkzeuge">Werkzeuge</h3>
 <p>Systemd beinhaltet einige n&uuml;tzliche Werkzeuge f&uuml;r die Analyse, Pr&uuml;fung und Bearbeitung der Unit-Dateien.<br />
-Bitte auch die Manpages <a href="https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html">systemd-analyze</a> und <a href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">systemctl</a> zu Rate ziehen.</p>
+Bitte auch die Manpages <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html">systemd-analyze</a> und <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">systemctl</a> zu Rate ziehen.</p>
 <ul>
 <li><p>edit</p>
 <pre><code># systemctl edit &lt;UNIT_DATEI&gt;
@@ -391,15 +391,15 @@ Hier ein Beispiel:</p>
 </ul>
 <p>Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgelieferten Werkzeuge dar. Bitte entnehme den man-Pages die vollst&auml;ndige Dokumentation.</p>
 <h3 id="quellen-systemd-unit-datei">Quellen systemd-unit-Datei</h3>
-<p><a href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutsche Manpage, systemd.unit</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html">Deutsche Manpage, systemd.syntax</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">Deutsche Manpage, systemd.device</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">Deutsche Manpage, systemd.scope</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">Deutsche Manpage, systemd.slice</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">Deutsche Manpage, systemd.socket</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">Deutsche Manpage, systemd.swap</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html">Deutsche Manpage, systemd-analyze</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">Deutsche Manpage, systemctl</a></p>
+<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html">Deutsche Manpage, systemd.unit</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html">Deutsche Manpage, systemd.syntax</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html">Deutsche Manpage, systemd.device</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.scope.5.de.html">Deutsche Manpage, systemd.scope</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html">Deutsche Manpage, systemd.slice</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html">Deutsche Manpage, systemd.socket</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html">Deutsche Manpage, systemd.swap</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-analyze.1.de.html">Deutsche Manpage, systemd-analyze</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemctl.1.de.html">Deutsche Manpage, systemctl</a></p>
 <p>Dank an Helge Kreuzmann f&uuml;r die deutschen &Uuml;bersetzungen.</p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+	<title>siduction manual</title>
+	<meta http-equiv="content-type" content="text/html" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<style>
+		.bodybox {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			font-family: Verdana, sans-serif;
+			background: #fdfcf3;
+			margin: 0 auto;
+		}
+		.bodyitem:nth-of-type(3) {
+			flex: 1;
+		}
+		.letzter {
+			order: 3;
+		}
+
+/* start main box */
+		.mainbox {
+			display: flex;
+			flex-direction: column;
+			max-width: 65em;
+			height: 85vh;
+			overflow: hidden;
+		}
+		.mainitem {
+			max-width: 65em;
+		}
+		.mainitem:nth-of-type(2) {
+			flex: 1;
+		}
+		iframe {
+		  border-style: none;
+		}
+/* end of main box */
+
+/* start head box */
+		.headbox {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			max-width: 80vw;
+			padding-top: 0.6em;
+			overflow: hidden;
+			background: #fdfcf3;
+		}
+		.headitem1 {
+			margin: 0;
+		}
+		.headitem2 {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+		.headitem3 {
+			font-size: 0.8em;
+		}
+		img#imgMenu {
+			width: 10em;
+			
+		}
+		a#headlink {
+			color: black;
+			text-align: left;
+		}
+		a#headlink:hover {
+			color: white;
+			border: none;
+			background: #FF6600;
+			transition: all 0.25s ease-in;
+		}
+/* end of head box */
+
+/* start navi box */
+		.navibox {
+			display: flex;
+			flex-direction: column;
+			max-height:50vh;
+			padding: 0;
+		}
+		.navibox ul { display: none; }
+		.navibox input[type=checkbox] { display: none; }
+		.navibox input:checked ~ ul { display: block; }
+
+		.menu-main-list,
+		.menu-list {
+			padding: 0.5em 0.2em;
+		}
+
+		.item-0 {
+			background: #fdfcf3;
+			overflow: auto;
+		}
+		.item-1 {
+			background-color: #d8d7cf;
+			 /*lightgray;*/
+			padding: 0.7em 1em;
+			line-height: 1.8em;
+			text-align: left;
+			border: 0.12em solid #fdfcf3;
+		}
+		.item-2 {
+			background: #fdfcf3;
+			padding: 0.7em 1em;
+			line-height: 1.8em;
+			border: 0.12em solid #d8d7cf;
+		}
+
+		.label {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			align-items: center;
+		}
+		li.item-1 > .label > label > span.more {
+			margin-right: 1.35em;
+		}
+		li.item-2 > .label > label > span.less {
+			margin-right: 0.35em;
+		}
+
+		span.link {
+			min-width: 40%;
+		}
+		span.more,
+		span.less {
+			font-size: 1.3em;
+			font-weight: bold;
+			margin: 0 0.3em
+		}
+		span.less {
+			display: none;
+		  padding: 0 0.22em;
+		}
+
+		input:checked ~ .label > label >.less {
+			display: inline;
+			margin-right: 1.35em;
+		}
+		input:checked ~ .label > label > .more {
+			display: none;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		a {
+			color: black;
+			text-decoration: underline;
+			padding: 0.2em;
+		}
+		li.item-1 > a:hover,
+		li.item-2 > a:hover,
+		span.link > a:hover {
+			color: #FFF;
+			background-color: #FF6600;
+			transition: all .25s ease-in;
+		}
+		a:visited {
+			color: #FF6600;
+		}
+
+	/* hamburger icon */
+		label#hamburger {
+			position: fixed;
+			top: 0.7em;
+			right: 8%;
+			padding: 0;
+		}
+		p {
+			font-weight: bold;
+			color: black;
+			padding: 1em 0 0 1em;
+			display: none;
+			margin: 0;
+		}
+		section#icon {
+			width: 2.4em;
+			background-color: gray;
+			border: 0.1em solid gray;
+			border-radius: 0.4em;
+			padding: 0.1em;
+			margin: 0.5em auto 0.2em auto;
+		}
+		div#iconline {
+			width: 2em;
+			height: 0.3em;
+			background-color: #fdfcf3;
+			margin: 0.22em;
+		}
+/* end navi box */
+
+/* start footer box */
+		.footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			padding: 0.4em 0.4em 0.6em;
+			overflow: hidden;
+			font-size: 0.9em;
+			background: #d8d7cf;
+		}
+
+/* large viewports */
+		@media all and (orientation: landscape) {
+			.mainbox {
+				flex-direction: row-reverse;
+			}
+			.mainitem {
+				max-height: 100vh;
+				margin-top: 1em;
+			}
+			.mainitem:nth-of-type(2) {
+				flex: auto;
+			}
+			.navibox {
+				display: flex;
+				flex-direction: column;
+				max-height: 100vh;
+				margin: 0 0.5em;
+			}
+		}
+/* end of large viewports */
+	</style>
+</head>
+<body class="bodybox">
+	<div class="bodyitem">
+		<div class="headbox">
+			<div class="headitem1">
+				<a target="_blank" href="https://siduction.org/"><img id="imgMenu" src="tree-menue-frames_data/logo-manual.png" alt="Zur&uuml;ck zu siduction.org"></a>
+			</div>
+			<div class="headitem2">
+				siduction Handbuch
+			</div>
+			<div class="headitem3">
+				<a id="headlink" target="_blank" href="https://manual.siduction.org/siduction-manual_de.pdf" target="_blank"><img src="tree-menue-frames_data/pdf-icon.svg" style="vertical-align: bottom; height: 1.2em; margin-right: 0.3em;">PDF herunterladen</a>
+			</div>
+		</div>
+	</div>
+
+		<!-- start footer -->
+	<div class="bodyitem letzter">
+		<div class="footer">
+			© siduction Community
+			<a id="headlink" target="_blank" href="https://siduction.org/imprint">Imprint</a>
+			<a id="headlink" target="_blank" href="https://siduction.org/datenschutzerklarung/">Privacy</a>
+		</div>
+	</div>
+
+	<div class="bodyitem">
+		<div class="mainbox">
+			<div class="mainitem">
+	<!-- start navi container -->
+				<ul class="navibox">
+					<li class="item-0">
+						<input type="checkbox" id="M0"/>
+						<label id="hamburger" for="M0">
+						<section id="icon">
+							<div id="iconline"></div>
+							<div id="iconline"></div>
+							<div id="iconline"></div>
+						</section>
+						</label>
+						<ul class="menu-main-list">

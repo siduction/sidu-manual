@@ -51,7 +51,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="apt-paketverwaltung">APT Paketverwaltung</h2>
 <p>APT ist eine Abk&uuml;rzung f&uuml;r <strong>A</strong>dvanced <strong>P</strong>ackaging <strong>T</strong>ool und stellt eine Sammlung von Programmen und Skripten bereit, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterst&uuml;tzt.<br />
-Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
+Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
 <h3 id="apt-und-apt-get">apt und apt-get</h3>
 <p><strong>apt</strong> ist als Endanwenderschnittstelle gedacht und aktiviert verglichen mit spezialisierteren Werkzeugen wie apt-get und apt-cache standardm&auml;&szlig;ig einige f&uuml;r den interaktiven Gebrauch besser geeignete Optionen. Mit apt stehen nicht alle Optionen von apt-get und apt-cache zur Verf&uuml;gung. Bitte die man-Pages von apt, apt-get und apt-cache lesen. Die folgende Tabelle zeigt die jeweiligen Befehle und ihre grundlegende Bedeutung.</p>
 <table>
@@ -159,7 +159,7 @@ deb     http://packages.siduction.org/extra unstable main contrib non-free
 deb     http://deb.debian.org/debian/ unstable main contrib non-free
 
 #deb-src http://deb.debian.org/debian/ unstable main contrib non-free</code></pre>
-<p>Weitere Eintr&auml;ge f&uuml;r optionale siduction Repositories finden sich auf <a href="https://packages.siduction.org/">siduction Repositories</a>.</p>
+<p>Weitere Eintr&auml;ge f&uuml;r optionale siduction Repositories finden sich auf <a target="_blank" href="https://packages.siduction.org/">siduction Repositories</a>.</p>
 <p>F&uuml;gt man zum Beispiel ein oder mehrere Debian Repositories hinzu, so w&uuml;rde dies folgender ma&szlig;en aussehen:</p>
 <pre><code>#Debian
 # Unstable
@@ -178,7 +178,7 @@ deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
 #deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free</code></pre>
 <p><em>ZUR BEACHTUNG:</em><br />
 In diesem Beispiel wird der US-amerikanische Debian-Spiegelserver beginnend mit ftp.us verwendet. Diese Einstellung kann als root ge&auml;ndert werden, indem der Landes-Code angepasst wird (zum Beispiel: ftp.at, ftp.de). Die meisten L&auml;nder haben lokale Debian-Spiegelserver zur Verf&uuml;gung. Dies bietet f&uuml;r den Anwender eine h&ouml;here Anbindungsgeschwindigkeit und spart auch Bandbreite.</p>
-<p><a href="https://www.debian.org/mirrors/">Liste der aktuell verf&uuml;gbaren Debian-Server und deren Spiegelserver.</a></p>
+<p><a target="_blank" href="https://www.debian.org/mirrors/">Liste der aktuell verf&uuml;gbaren Debian-Server und deren Spiegelserver.</a></p>
 <h3 id="apt-update">apt update</h3>
 <p>Um aktualisierte Informationen &uuml;ber die Pakete zu erhalten, wird eine Datenbank mit den ben&ouml;tigten Eintr&auml;gen vorgehalten. Das Programm apt benutzt sie bei der Installation eines Pakets, um alle Abh&auml;ngigkeiten aufzul&ouml;sen und somit zu garantieren, dass die ausgew&auml;hlten Pakete funktionieren. Die Erstellung bzw. Aktualisierung dieser Datenbank wird mit dem Befehl <strong><code>apt update</code></strong> durchgef&uuml;hrt.</p>
 <pre><code>root@siduction# apt update
@@ -364,7 +364,7 @@ M&ouml;chtest Du fortfahren [J/n]?J </code></pre>
 <p class="warning">
 <strong>Warnhinweis:</strong> <br />Eine Systemaktualisierung, die nicht im multi-user.target (ehemals Runlevel 3) durchgef&uuml;hrt wird, kann zu Problemen f&uuml;hren, wenn es um Updates der installierten Desktop-Umgebung oder des X-Servers geht!
 </p>
-<p>Besuche vor einer Systemaktualisierung die <a href="https://forum.siduction.org/">siduction-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals t&auml;glich neue Programmpakete in seine Repositorien aufnimmt.</p>
+<p>Besuche vor einer Systemaktualisierung die <a target="_blank" href="https://forum.siduction.org/">siduction-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches mehrmals t&auml;glich neue Programmpakete in seine Repositorien aufnimmt.</p>
 <p>Zu beachten ist der folgende Ablauf:</p>
 <ol type="1">
 <li>Aus der Desktopumgebung abmelden.<br />
@@ -456,7 +456,7 @@ apt install packagesearch</code></pre>
 <li>orphaned packages (verwaiste Pakete)</li>
 </ul>
 <p>Zus&auml;tzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch welche Dateien in einem Paket geschn&uuml;rt sind. Weitere ausf&uuml;hrliche Informationen zur Verwendung von packagesearch findet man unter <em>Help</em> &gt; <em>Contents</em>. Derzeit ist die Benutzerf&uuml;hrung von packagesearch ausschlie&szlig;lich Englisch.</p>
-<p>Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
+<p>Eine vollst&auml;ndige Beschreibung des APT-Systems findet man in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debians APT-HOWTO</a></p>
 <div id="rev">
 Zuletzt bearbeitet: 2021-11-29
 </div>

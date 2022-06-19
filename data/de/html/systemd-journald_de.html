@@ -69,10 +69,10 @@ Mit einem Programmaufruf oder Befehl verwendet, leitet <em>systemd-cat</em> alle
 <li><strong>In einer Pipe verwendet,</strong><br />
 dient <em>systemd-cat</em> als Filterwerkzeug, um die zuvor erstellte Ausgabe an das Journal zu senden.</li>
 </ol>
-<p>Falls kein Parameter &uuml;bergeben wurde, wird <em>systemd-cat</em> alles, was es von der Standardeingabe liest, an das Journal schicken. Die man-page <a href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a> bietet weitere Informationen.</p>
+<p>Falls kein Parameter &uuml;bergeben wurde, wird <em>systemd-cat</em> alles, was es von der Standardeingabe liest, an das Journal schicken. Die man-page <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a> bietet weitere Informationen.</p>
 <h3 id="journald-&uuml;ber-das-netzwerk">journald &uuml;ber das Netzwerk</h3>
 <p>Die <em>systemd-journal</em>-Module <em>upload</em>, <em>remote</em> und <em>gatewayd</em> erm&ouml;glichen das Versenden und Empfangen von System-Protokolldaten zwischen verschiedenen Rechnern &uuml;ber das Netzwerk. Mit ihrer Hilfe lassen sich entfernte Rechner fortlaufend &uuml;berwachen. In dieser Konstellation ist es sinnvoll auf dem Remoterechner Namensr&auml;ume f&uuml;r die Protokolldaten der entfernten Rechner einzurichten.<br />
-F&uuml;r weitere Informationen bitte die man-pages <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html">journal upload</a>, <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html">journal remote</a> und <a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html">journal gatewayd</a> lesen.</p>
+F&uuml;r weitere Informationen bitte die man-pages <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html">journal upload</a>, <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html">journal remote</a> und <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html">journal gatewayd</a> lesen.</p>
 <h3 id="journald.conf">journald.conf</h3>
 <p>Die folgenden Dateien konfigurieren verschiedene Parameter des systemd-Journal-Dienstes.</p>
 <ul>
@@ -94,7 +94,7 @@ Einem bestimmten Journal-Namensraum k&ouml;nnen Dienste-Units mittels der Unit-D
 <p><em>journalctl</em> dient der Abfrage des von systemd-journald erstellten Journals.<br />
 Beim Aufruf ohne Parameter wird der gesamte Inhalt aus allen zugreifbaren Quellen des Journals angezeigt, beginnend mit dem &auml;ltesten Eintrag.<br />
 Die Ausgabe wird seitenweise durch <em>less</em> geleitet. Lange Zeilen kann man mittels der <strong><code>Pfeil-links</code></strong> und <strong><code>Pfeil-rechts</code></strong> Tasten betrachten. Die Option <code>--no-pager</code> deaktiviert die seitenweise Anzeige, wobei die Zeilen auf die Breite des Terminals verk&uuml;rzt werden.</p>
-<p><em>journalctl</em> bietet zu den nachfolgend beschriebenen Optionen eine ganze Reihe weiterer M&ouml;glichkeiten der Filterung und Aufbereitung der Ausgaben. Bitte auch die man-Page <a href="https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html">journalctl, Journalabfrage</a> lesen.</p>
+<p><em>journalctl</em> bietet zu den nachfolgend beschriebenen Optionen eine ganze Reihe weiterer M&ouml;glichkeiten der Filterung und Aufbereitung der Ausgaben. Bitte auch die man-Page <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html">journalctl, Journalabfrage</a> lesen.</p>
 <p><strong>Rechte</strong></p>
 <p>Dem Benutzer <strong>root</strong> und allen Benutzern die Mitglied der Gruppen <strong>systemd-journal</strong>, <strong>adm</strong> und <strong>wheel</strong> sind, wird Zugriff auf das System-Journal und die Journale der anderen Benutzer gew&auml;hrt. Siduction f&uuml;gt alle konfigurierten USER der Gruppe <strong>systemd-journal</strong> zu.</p>
 <p>Das Journal enth&auml;lt vertrauensw&uuml;rdige Felder, d.h. Felder, die implizit vom Journal hinzugef&uuml;gt werden und durch Client-Code nicht ge&auml;ndert werden k&ouml;nnen. Sie beginnen mit einem Unterstrich. (z.B.: _PID=, _UID=, _GID=, _COMM=, _EXE=, _CMDLINE= )</p>
@@ -329,15 +329,15 @@ Apr 07 23:03:09 pc1 org.gtk.Private.GPhoto2VolumeMonitor[2006]: ### debug: Name 
 Apr 07 23:03:09 pc1 org.gtk.Private.GoaVolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished
 Apr 07 23:03:09 pc1 org.gtk.Private.AfcVolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished
 Apr 07 23:03:09 pc1 org.gtk.Private.MTPVolumeMonitor[2006]: ### debug: Name owner &#39;:1.4320&#39; vanished</code></pre>
-<p>Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur die gesuchten Journaleintr&auml;ge angezeigt werden. Die man-page von <a href="https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html">journalctl</a> beschreibt alle Optionen ausf&uuml;hrlich.</p>
+<p>Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur die gesuchten Journaleintr&auml;ge angezeigt werden. Die man-page von <a target="_blank" href="https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html">journalctl</a> beschreibt alle Optionen ausf&uuml;hrlich.</p>
 <h3 id="quellen-journald">Quellen journald</h3>
-<p><a href="https://manpages.debian.org/testing/manpages-de/systemd-journald.8.de.html">systemd-journald</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/journald.conf.5.de.html">journald Konfiguration</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html">journalctl, Journalabfrage</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html">journal gatewayd</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html">journal remote</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html">journal upload</a><br />
-<a href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a></p>
+<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journald.8.de.html">systemd-journald</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/journald.conf.5.de.html">journald Konfiguration</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/journalctl.1.de.html">journalctl, Journalabfrage</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journal-gatewayd.8.de.html">journal gatewayd</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journal-remote.8.de.html">journal remote</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-journal-upload.8.de.html">journal upload</a><br />
+<a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd-cat.1.de.html">systemd-cat.1.de</a></p>
 <p>Dank an Helge Kreuzmann f&uuml;r die deutschen &Uuml;bersetzungen.</p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29

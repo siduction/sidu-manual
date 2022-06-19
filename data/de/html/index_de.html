@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+	<title>siduction manual</title>
+	<meta http-equiv="content-type" content="text/html" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<style>
+		.bodybox {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			font-family: Verdana, sans-serif;
+			background: #fdfcf3;
+			margin: 0 auto;
+		}
+		.bodyitem:nth-of-type(3) {
+			flex: 1;
+		}
+		.letzter {
+			order: 3;
+		}
+
+/* start main box */
+		.mainbox {
+			display: flex;
+			flex-direction: column;
+			max-width: 65em;
+			height: 85vh;
+			overflow: hidden;
+		}
+		.mainitem {
+			max-width: 65em;
+		}
+		.mainitem:nth-of-type(2) {
+			flex: 1;
+		}
+/* end of main box */
+
+/* start head box */
+		.headbox {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			max-width: 80vw;
+			padding-top: 0.6em;
+			overflow: hidden;
+			background: #fdfcf3;
+		}
+		.headitem1 {
+			margin: 0;
+		}
+		.headitem2 {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+		.headitem3 {
+			font-size: 0.8em;
+		}
+		img#imgMenu {
+			width: 10em;
+			
+		}
+		a#headlink {
+			color: black;
+			text-align: left;
+		}
+		a#headlink:hover {
+			color: white;
+			border: none;
+			background: #FF6600;
+			transition: all 0.25s ease-in;
+		}
+/* end of head box */
+
+/* start navi box */
+		.navibox {
+			display: flex;
+			flex-direction: column;
+			max-height:50vh;
+			padding: 0;
+		}
+		.navibox ul { display: none; }
+		.navibox input[type=checkbox] { display: none; }
+		.navibox input:checked ~ ul { display: block; }
+
+		.menu-main-list,
+		.menu-list {
+			padding: 0.5em 0.2em;
+		}
+
+		.item-0 {
+			background: #fdfcf3;
+			overflow: auto;
+		}
+		.item-1 {
+			background-color: #d8d7cf;
+			 /*lightgray;*/
+			padding: 0.7em 1em;
+			line-height: 1.8em;
+			text-align: left;
+			border: 0.12em solid #fdfcf3;
+		}
+		.item-2 {
+			background: #fdfcf3;
+			padding: 0.7em 1em;
+			line-height: 1.8em;
+			border: 0.12em solid #d8d7cf;
+		}
+
+		.label {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			align-items: center;
+		}
+		li.item-1 > .label > label > span.more {
+			margin-right: 1.35em;
+		}
+		li.item-2 > .label > label > span.less {
+			margin-right: 0.35em;
+		}
+
+		span.link {
+			min-width: 40%;
+		}
+		span.more,
+		span.less {
+			font-size: 1.3em;
+			font-weight: bold;
+			margin: 0 0.3em
+		}
+		span.less {
+			display: none;
+		  padding: 0 0.22em;
+		}
+
+		input:checked ~ .label > label >.less {
+			display: inline;
+			margin-right: 1.35em;
+		}
+		input:checked ~ .label > label > .more {
+			display: none;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		a {
+			color: black;
+			text-decoration: underline;
+			padding: 0.2em;
+		}
+		li.item-1 > a:hover,
+		li.item-2 > a:hover,
+		span.link > a:hover {
+			color: #FFF;
+			background-color: #FF6600;
+			transition: all .25s ease-in;
+		}
+		a:visited {
+			color: #FF6600;
+		}
+
+	/* hamburger icon */
+		label#hamburger {
+			position: fixed;
+			top: 0.7em;
+			right: 8%;
+			padding: 0;
+		}
+		p {
+			font-weight: bold;
+			color: black;
+			padding: 1em 0 0 1em;
+			display: none;
+			margin: 0;
+		}
+		section#icon {
+			width: 2.4em;
+			background-color: gray;
+			border: 0.1em solid gray;
+			border-radius: 0.4em;
+			padding: 0.1em;
+			margin: 0.5em auto 0.2em auto;
+		}
+		div#iconline {
+			width: 2em;
+			height: 0.3em;
+			background-color: #fdfcf3;
+			margin: 0.22em;
+		}
+/* end navi box */
+
+/* start footer box */
+		.footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap: wrap;
+			padding: 0.4em 0.4em 0.6em;
+			overflow: hidden;
+			font-size: 0.9em;
+			background: #d8d7cf;
+		}
+
+/* large viewports */
+		@media all and (orientation: landscape) {
+			.mainbox {
+				flex-direction: row-reverse;
+			}
+			.mainitem {
+				max-height: 100vh;
+				margin-top: 1em;
+			}
+			.mainitem:nth-of-type(2) {
+				flex: auto;
+			}
+			.navibox {
+				display: flex;
+				flex-direction: column;
+				max-height: 100vh;
+				margin: 0 0.5em;
+			}
+		}
+/* end of large viewports */
+	</style>
+</head>
+<body class="bodybox">
+	<div class="bodyitem">
+		<div class="headbox">
+			<div class="headitem1">
+				<a target="_blank" href="https://siduction.org/"><img id="imgMenu" src="tree-menue-frames_data/logo-manual.png" alt="Zur&uuml;ck zu siduction.org"></a>
+			</div>
+			<div class="headitem2">
+				siduction Handbuch
+			</div>
+			<div class="headitem3">
+				<a id="headlink" target="_blank" href="https://manual.siduction.org/siduction-manual_de.pdf" target="_blank"><img src="tree-menue-frames_data/pdf-icon.svg" style="vertical-align: bottom; height: 1.2em; margin-right: 0.3em;">PDF herunterladen</a>
+			</div>
+		</div>
+	</div>
+
+		<!-- start footer -->
+	<div class="bodyitem letzter">
+		<div class="footer">
+			© siduction Community
+			<a id="headlink" target="_blank" href="https://siduction.org/imprint">Imprint</a>
+			<a id="headlink" target="_blank" href="https://siduction.org/datenschutzerklarung/">Privacy</a>
+		</div>
+	</div>
+
+	<div class="bodyitem">
+		<div class="mainbox">
+			<div class="mainitem">
+	<!-- start navi container -->
+				<ul class="navibox">
+					<li class="item-0">
+						<input type="checkbox" id="M0"/>
+						<label id="hamburger" for="M0">
+						<section id="icon">
+							<div id="iconline"></div>
+							<div id="iconline"></div>
+							<div id="iconline"></div>
+						</section>
+						</label>
+						<ul class="menu-main-list">
+							<li class="item-1">
+								<input type="checkbox" id="M1"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/welcome_de.html">Willkommen</a></span>
+									<label for="M1">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M1_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/welcome_de.html">Das siduction™ GNU/Linux-Betriebssystem</a></span>
+											<label for="M1_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/welcome_de.html#allgemeines">Allgemeines</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/welcome_de.html#copyright-rechts--und-lizenzhinweise">Copyright Rechts- und Lizenzhinweise</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/welcome_de.html#haftungsausschluss">Haftungsausschluss</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M1_2"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/credit_de.html">Das siduction-Team</a></span>
+											<label for="M1_2">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/credit_de.html#credit-f&uuml;r-siduction-2021.2.0">Credit f&uuml;r siduction 2021.2.0</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M1_3"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/help_de.html">siduction Hilfe</a></span>
+											<label for="M1_3">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#das-siduction-forum">Das siduction-Forum</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#das-siduction-wiki">Das siduction-Wiki</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#irc---interaktiver-livesupport">IRC - interaktiver Livesupport</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#n&uuml;tzliche-helfer-im-textmodus">N&uuml;tzliche Helfer im Textmodus</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#siduction-irc-support-im-textmodus">siduction IRC-Support im Textmodus</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#surfen-im-internet-im-textmodus">Surfen im Internet im Textmodus</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#inxi">inxi</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/help_de.html#n&uuml;tzliche-links">N&uuml;tzliche Links</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="item-1">
+								<input type="checkbox" id="M2"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html">Quickstart</a></span>
+									<label for="M2">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M2_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html">siduction Kurzanleitung</a></span>
+											<label for="M2_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#essenzielle-kapitel">Essenzielle Kapitel</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#zur-stabilit&auml;t-von-debian-sid">Zur Stabilit&auml;t von Debian Sid</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#der-siduction-kernel">Der siduction-Kernel</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#die-verwaltung-von-softwarepaketen">Die Verwaltung von Softwarepaketen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#aktualisierung-des-systems---upgrade">Aktualisierung des Systems - upgrade</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#konfiguration-von-netzwerken">Konfiguration von Netzwerken</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#runlevels---ziel-unit">Runlevels - Ziel-Unit</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#weitere-desktopumgebungen">Weitere Desktopumgebungen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/wel-quickstart_de.html#hilfe-im-irc-und-im-forum">Hilfe im IRC und im Forum</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="item-1">
+								<input type="checkbox" id="M3"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/isos_de.html">ISO-Abbilder</a></span>
+									<label for="M3">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M3_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/cd-content_de.html">Inhalt der Live-ISO</a></span>
+											<label for="M3_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cd-content_de.html#hinweis-zur-software-auf-dem-live-iso">Hinweis zur Software auf dem Live-ISO</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cd-content_de.html#varianten-der-iso">Varianten der ISO</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cd-content_de.html#minimale-systemanforderungen">Minimale Systemanforderungen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cd-content_de.html#anwendungen-und-hilfsprogramme">Anwendungen und Hilfsprogramme</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cd-content_de.html#haftungsausschluss_disclaimer">Haftungsausschluss_Disclaimer</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M3_2"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/live-mode_de.html">Live-DVD verwenden</a></span>
+											<label for="M3_2">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/live-mode_de.html#eingerichtete-user-auf-dem-live-medium">Eingerichtete User auf dem Live-Medium</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/live-mode_de.html#mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der Live-DVD</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/live-mode_de.html#ein-neues-passwort-setzen">Ein neues Passwort setzen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/live-mode_de.html#software-installation-bei-live-sitzung">Software-Installation bei Live-Sitzung</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M3_3"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/cheatcodes_de.html">Bootoptionen Cheatcodes</a></span>
+											<label for="M3_3">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cheatcodes_de.html#siduction-spezifische-parameter">siduction spezifische Parameter</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cheatcodes_de.html#bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den Grafikserver X</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cheatcodes_de.html#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/cheatcodes_de.html#vga-codes">VGA-Codes</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M3_4"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/iso-dl_de.html">ISO download</a></span>
+											<label for="M3_4">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-dl_de.html#dateien-der-siduction-spiegelserver">Dateien der siduction-Spiegelserver</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-dl_de.html#integrit&auml;tspr&uuml;fung">Integrit&auml;tspr&uuml;fung</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M3_5"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/iso-to-usb-sd_de.html">ISO auf USB-Stick - Speicherkarte</a></span>
+											<label for="M3_5">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-to-usb-sd_de.html#gui-anwendung">GUI Anwendung</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-to-usb-sd_de.html#linux-kommandozeile">Linux Kommandozeile</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-to-usb-sd_de.html#mac-os-x-kommandozeile">Mac OS X Kommandozeile</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M3_6"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/iso-to-dvd_de.html">ISO brennen</a></span>
+											<label for="M3_6">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-to-dvd_de.html#dvd-mit-linux-brennen">DVD mit Linux brennen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/iso-to-dvd_de.html#dvd-mit-windows-brennen">DVD mit Windows brennen</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M3_7"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/no-gui-burn_de.html">Life-DVD ohne GUI brennen</a></span>
+											<label for="M3_7">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/no-gui-burn_de.html#burniso">burniso</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/no-gui-burn_de.html#brennen-mit-cdrdao-wodim-growisofs">Brennen mit cdrdao wodim growisofs</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/no-gui-burn_de.html#verf&uuml;gbare-ger&auml;te">Verf&uuml;gbare Ger&auml;te</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/no-gui-burn_de.html#beispiele-f&uuml;r-cd-dvd-bd">Beispiele f&uuml;r CD DVD BD</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="item-1">
+								<input type="checkbox" id="M4"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/install_de.html">Installation</a></span>
+									<label for="M4">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M4_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/hd-install_de.html">Installation auf HDD</a></span>
+											<label for="M4_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#datensicherung">Datensicherung</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#installationsvorbereitungen">Installationsvorbereitungen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#partitionierung">Partitionierung</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#dateisysteme">Dateisysteme</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#duplizierung-auf-einen-anderen-computer">Duplizierung auf einen anderen Computer</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#das-installationsprogramm-calamares">Das Installationsprogramm Calamares</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#system-verschl&uuml;sseln">System verschl&uuml;sseln</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-install_de.html#benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_2"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/hd-ins-fromiso_de.html">Aus ISO-Datei booten</a></span>
+											<label for="M4_2">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-ins-fromiso_de.html#&uuml;berblick">&Uuml;berblick</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-ins-fromiso_de.html#fromiso-mit-grub2">fromiso mit Grub2</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/hd-ins-fromiso_de.html#toram">toram</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_3"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-size-examp_de.html">Partitionierung von Installationsmedien</a></span>
+											<label for="M4_3">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-size-examp_de.html#mindestanforderungen">Mindestanforderungen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-size-examp_de.html#beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit verschiedenen Plattengr&ouml;&szlig;en</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-size-examp_de.html#partitionierungsprogramme">Partitionierungsprogramme</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-size-examp_de.html#weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_4"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-uuid_de.html">UUID - Benennung von Blockger&auml;ten</a></span>
+											<label for="M4_4">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-uuid_de.html#arten-der-benennung-von-blockger&auml;ten">Arten der Benennung von Blockger&auml;ten</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-uuid_de.html#label-verwenden">Label verwenden</a></li>
+												</ul>
+											</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_5"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-uuid_de.html">Die fstab</a></span>
+											<label for="M4_5">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-uuid_de.html#erstellung-neuer-einh&auml;ngepunkte">Erstellung neuer Einh&auml;ngepunkte</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_6"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-gparted_de.html">Partitionieren mit GParted</a></span>
+											<label for="M4_6">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gparted_de.html#wichtige-hinweise">Wichtige Hinweise</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gparted_de.html#gparted-verwenden">GParted verwenden</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gparted_de.html#fstab-anpassen">fstab anpassen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gparted_de.html#ntfs-partitionsgr&ouml;&szlig;en-mit-gparted-&auml;ndern">NTFS-Partitionsgr&ouml;&szlig;en mit GParted &auml;ndern</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_7"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-gdisk_de.html">Partitionieren mit gdisk</a></span>
+											<label for="M4_7">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gdisk_de.html#partitionierung-einer-festplatte">Partitionierung einer Festplatte</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gdisk_de.html#cgdisk-verwenden">cgdisk verwenden</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gdisk_de.html#formatieren-der-partitionen">Formatieren der Partitionen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gdisk_de.html#booten-mit-gpt-uefi-oder-gpt-bios">Booten mit GPT-UEFI oder GPT-BIOS</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-gdisk_de.html#erweiterte-befehle-von-gdisk">Erweiterte Befehle von gdisk</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_8"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-cfdisk_de.html">Partitionieren mit fdisk</a></span>
+											<label for="M4_8">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-cfdisk_de.html#benennung-von-speicherger&auml;ten">Benennung von Speicherger&auml;ten</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-cfdisk_de.html#cfdisk-verwenden">Cfdisk verwenden</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-cfdisk_de.html#formatieren-von-partitionen">Formatieren von Partitionen</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_9"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/part-lvm_de.html">LVM-Partitionierung - Logical Volume Manager</a></span>
+											<label for="M4_9">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-lvm_de.html#sechs-schritte-zu-logical-volumes">Sechs Schritte zu Logical Volumes</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-lvm_de.html#gr&ouml;&szlig;en&auml;nderung-eines-volumens">Gr&ouml;&szlig;en&auml;nderung eines Volumens</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-lvm_de.html#lvm-mit-einem-gui-programm-verwalten">LVM mit einem GUI-Programm verwalten</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/part-lvm_de.html#weitere-infos">Weitere Infos</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M4_10"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/home-move_de.html">Das Verzeichnis home verschieben</a></span>
+											<label for="M4_10">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/home-move_de.html#private-daten-verschieben">Private Daten verschieben</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/home-move_de.html#fstab-anpassen">fstab anpassen</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="item-1">
+								<input type="checkbox" id="M5"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/network_de.html">Netzwerk</a></span>
+									<label for="M5">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M5_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/inet-nm-cli_de.html">Network Manager Kommandline Tool</a></span>
+											<label for="M5_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/inet-nm-cli_de.html#network-manager-verwenden">Network Manager verwenden</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/inet-nm-cli_de.html#weiterf&uuml;hrende-informationen">Weiterf&uuml;hrende Informationen</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_2"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/inet-iwd_de.html">IWD</a></span>
+											<label for="M5_2">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/inet-iwd_de.html#grafische-konfigurationsprogramme">Grafische Konfigurationsprogramme</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/inet-iwd_de.html#konfiguration-im-terminal">Konfiguration im Terminal</a></li>
+												</ul>
+											</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_3"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/inet-iwd_de.html">IWD statt wpa_supplicant</a></span>
+											<label for="M5_3">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/inet-iwd_de.html#iwd-installieren">IWD installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/inet-iwd_de.html#zur&uuml;ck-zum-wpa_supplicant">Zur&uuml;ck zum wpa_supplicant</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_4"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/samba_de.html">SAMBA</a></span>
+											<label for="M5_4">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/samba_de.html#client-konfiguration">Client-Konfiguration</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/samba_de.html#siduction-als-samba-server">siduction als Samba-Server</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_5"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/ssh_de.html">SSH</a></span>
+											<label for="M5_5">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/ssh_de.html#ssh-absichern">SSH absichern</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/ssh_de.html#ssh-f&uuml;r-x-window-programme">SSH f&uuml;r X-Window Programme</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/ssh_de.html#kopieren-scp-via-ssh">Kopieren scp via ssh</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/ssh_de.html#ssh-mit-dolphin">SSH mit Dolphin</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/ssh_de.html#sshfs---auf-einem-entfernten-computer-mounten">SSHFS - auf einem entfernten Computer mounten</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_6"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/lamp-start_de.html">LAMP-Webserver</a></span>
+											<label for="M5_6">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#apache-installieren">Apache installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#mariadb-installieren">MariaDB installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#php-installieren">PHP installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#phpmyadmin-installieren">phpMyAdmin installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#weitere-software">Weitere Software</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#statusaugaben-log-dateien">Statusaugaben Log-Dateien</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#troubleshooting">Troubleshooting</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-start_de.html#sicherheit">Sicherheit</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_7"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html">Apache einrichten</a></span>
+											<label for="M5_7">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#apache-im-dateisystem">Apache im Dateisystem</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#verbindung-zum-server">Verbindung zum Server</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#apache-konfiguration">Apache Konfiguration</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#benutzer-und-rechte">Benutzer und Rechte</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#sicherheit---apache-standard">Sicherheit - Apache Standard</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#sicherheit---weitere-konfigurationen">Sicherheit - weitere Konfigurationen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#https-verwenden">HTTPS verwenden</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#sicherheits-tipps">Sicherheits Tipps</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#integration-in-apache2">Integration in Apache2</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-apache_de.html#quellen-apache">Quellen Apache</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_8"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html">MariaDB einrichten</a></span>
+											<label for="M5_8">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-im-dateisystem">MariaDB im Dateisystem</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#erstkonfiguration">Erstkonfiguration</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-cli">MariaDB CLI</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#phpmyadmin">phpMyAdmin</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#integration-in-systemd">Integration in Systemd</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#mariadb-log">MariaDB Log</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-sql_de.html#quellen-mariadb">Quellen MariaDB</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M5_9"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/lamp-php_de.html">PHP einrichten</a></span>
+											<label for="M5_9">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-php_de.html#php-im-dateisystem">PHP im Dateisystem</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-php_de.html#php-unterst&uuml;tzung-f&uuml;r-apache2">PHP-Unterst&uuml;tzung f&uuml;r Apache2</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-php_de.html#php-konfiguration">PHP Konfiguration</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-php_de.html#php-module">PHP Module</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-php_de.html#apache-log">Apache Log</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/lamp-php_de.html#quellen-php">Quellen PHP</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="item-1">
+								<input type="checkbox" id="M6"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/gpu_de.html">Hardware</a></span>
+									<label for="M6">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M6_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/gpu_de.html">Grafiktreiber</a></span>
+											<label for="M6_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/gpu_de.html#open-source-xorg-treiber">Open Source Xorg-Treiber</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/gpu_de.html#propriet&auml;re-treiber">Propriet&auml;re Treiber</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/gpu_de.html#videotreiber-2d">Videotreiber 2D</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/gpu_de.html#videotreiber-3d">Videotreiber 3D</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/gpu_de.html#nvidia-closed-source-treiber">nVidia closed Source Treiber</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="item-1">
+								<input type="checkbox" id="M7"/>
+								<div class="label">
+									<span class="link"><a target="content" href="https://manual.siduction.org/sys-admin_de.html">Systemadministration</a></span>
+									<label for="M7">
+										<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+									</label>
+								</div>
+								<ul class="menu-list">
+									<li class="item-2">
+										<input type="checkbox" id="M7_1"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/term-konsole_de.html">Terminal - Kommandozeile</a></span>
+											<label for="M7_1">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/term-konsole_de.html#arbeit-als-root">Arbeit als root</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/term-konsole_de.html#farbiges-terminal">Farbiges Terminal</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/term-konsole_de.html#wenn-das-terminal-h&auml;ngt">Wenn das Terminal h&auml;ngt</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/term-konsole_de.html#hilfe-im-terminal">Hilfe im Terminal</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/term-konsole_de.html#linux-konsolenbefehle">Linux Konsolenbefehle</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/term-konsole_de.html#skripte-benutzen">Skripte benutzen</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_2"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html">Systemadministration allgemein</a></span>
+											<label for="M7_2">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#bootoptionen-cheatcodes">Bootoptionen Cheatcodes</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#systemd---dienste-verwalten">systemd - Dienste verwalten</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#systemd.service">systemd.service</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#systemd---unit-eingliedern">systemd - UNIT eingliedern</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#systemd-target-ehemals-runlevel">systemd-target ehemals Runlevel</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#beenden-eines-prozesses">Beenden eines Prozesses</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#vergessenes-rootpasswort">Vergessenes Rootpasswort</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#setzen-neuer-passw&ouml;rter">Setzen neuer Passw&ouml;rter</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#schriftarten-in-siduction">Schriftarten in siduction</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#userkonfiguration">Userkonfiguration</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#cups---das-drucksystem">CUPS - das Drucksystem</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-gen_de.html#sound-in-siduction">Sound in siduction</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_3"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/sys-admin-doas_de.html">Doas - Alternative zu Sudo</a></span>
+											<label for="M7_3">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-doas_de.html#doas-konfigurieren">Doas konfigurieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-doas_de.html#doas-und-mehrere-benutzer">Doas und mehrere Benutzer</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_4"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html">APT Paketverwaltung</a></span>
+											<label for="M7_4">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#apt-und-apt-get">apt und apt-get</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#sources.list---liste-der-quellen">sources.list - Liste der Quellen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#apt-update">apt update</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-installieren">Pakete installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#pakete-entfernen">Pakete entfernen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#hold-oder-downgraden-eines-pakets">Hold oder Downgraden eines Pakets</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#aktualisierung-des-systems">Aktualisierung des Systems</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#aktualisierbare-pakete">Aktualisierbare Pakete</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">full-upgrade ausf&uuml;hren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#warum-ausschlie&szlig;lich-apt-verwenden">Warum ausschlie&szlig;lich apt verwenden</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt_de.html#programmpakete-suchen">Programmpakete suchen</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_5"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/sys-admin-apt-localmirr_de.html">Lokaler APT-Mirror</a></span>
+											<label for="M7_5">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt-localmirr_de.html#server-installieren">Server installieren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-apt-localmirr_de.html#client-konfiguration">Client Konfiguration</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_6"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/sys-admin-kern-upg_de.html">Kernel Upgrade</a></span>
+											<label for="M7_6">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-kern-upg_de.html#kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung ohne Systemaktualisierung</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-kern-upg_de.html#module">Module</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/sys-admin-kern-upg_de.html#entfernen-alter-kernel">Entfernen alter Kernel</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_7"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-start_de.html">Systemd der System- und Dienste-Manager</a></span>
+											<label for="M7_7">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-start_de.html#konzeption-des-systemd">Konzeption des systemd</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-start_de.html#unit-typen">Unit Typen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-start_de.html#systemd-im-dateisystem">Systemd im Dateisystem</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-start_de.html#weitere-funktionen-von-systemd">Weitere Funktionen von systemd</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-start_de.html#handhabung-von-diensten">Handhabung von Diensten</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-start_de.html#quellen-systemd">Quellen systemd</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_8"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html">systemd unit-Datei</a></span>
+											<label for="M7_8">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html#ladepfad-der-unit-dateien">Ladepfad der Unit-Dateien</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html#aktivierung-der-unit-datei">Aktivierung der Unit-Datei</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html#sektionen-der-unit-datei">Sektionen der Unit-Datei</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html#beispiel-cupsd">Beispiel cupsd</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html#werkzeuge">Werkzeuge</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-unit-datei_de.html#quellen-systemd-unit-datei">Quellen systemd-unit-Datei</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_9"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-service_de.html">systemd-service</a></span>
+											<label for="M7_9">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-service_de.html#service-unit-anlegen">service-Unit anlegen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-service_de.html#sektion-service">Sektion Service</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-service_de.html#quellen-systemd-service">Quellen systemd-service</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_10"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-mount_de.html">systemd-mount</a></span>
+											<label for="M7_10">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-mount_de.html#inhalt-der-mount-unit">Inhalt der mount-Unit</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-mount_de.html#inhalt-der-automount-unit">Inhalt der automount-Unit</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-mount_de.html#beispiele">Beispiele</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-mount_de.html#quellen-systemd-mount">Quellen systemd-mount</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_11"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-target_de.html">systemd-target - Ziel-Unit</a></span>
+											<label for="M7_11">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-target_de.html#besonderheiten">Besonderheiten</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-target_de.html#quellen-systemd-target">Quellen systemd-target</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_12"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-path_de.html">systemd-path</a></span>
+											<label for="M7_12">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#ben&ouml;tigte-dateien">Ben&ouml;tigte Dateien</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#path-unit-optionen">path-Unit Optionen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#path-unit-anlegen">path-Unit anlegen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#service-unit-f&uuml;r-path">service-Unit f&uuml;r path</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#path-unit-eingliedern">path-Unit eingliedern</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#service-unit-manuell-ausf&uuml;hren">service-Unit manuell ausf&uuml;hren</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-path_de.html#quellen-systemd-path">Quellen systemd-path</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_13"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-timer_de.html">systemd-timer</a></span>
+											<label for="M7_13">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-timer_de.html#ben&ouml;tigte-dateien">Ben&ouml;tigte Dateien</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-timer_de.html#service-unit-f&uuml;r-timer">service-Unit f&uuml;r timer</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-timer_de.html#timer-unit-anlegen">timer-Unit anlegen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-timer_de.html#timer-unit-als-cron-ersatz">timer-Unit als cron Ersatz</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-timer_de.html#quellen-systemd-timer">Quellen systemd-timer</a></li>
+										</ul>
+									</li>
+									<li class="item-2">
+										<input type="checkbox" id="M7_14"/>
+										<div class="label">
+											<span class="link"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html">Systemjournal</a></span>
+											<label for="M7_14">
+												<span class="more">&nbsp;&nbsp;&nbsp;+</span><span class="less">&nbsp;&nbsp;&nbsp;-</span>
+											</label>
+										</div>
+										<ul class="menu-list">
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html#journald">journald</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html#journald-&uuml;ber-das-netzwerk">journald &uuml;ber das Netzwerk</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html#journald.conf">journald.conf</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html#journalctl">journalctl</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html#journalctl-beherrschen">journalctl beherrschen</a></li>
+											<li class="item-1"><a target="content" href="https://manual.siduction.org/systemd-journald_de.html#quellen-journald">Quellen journald</a></li>
+										</ul>
+									</li>
+      					</ul>
+      				</li>
+  					</ul>
+  				</li>
+  			</ul>
+			</div>
+	<!-- end navi container -->
+	
+	<!-- start content -->
+			<div class="mainitem" id="content">
+				<object name="content" data="https://manual.siduction.org/welcome_de.html" type="text/html" width="100%" height="100%">
+				<!-- <iframe name="content" src="https://manual.siduction.org/welcome_de.html" width="100%" height="100%"> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

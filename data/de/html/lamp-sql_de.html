@@ -253,7 +253,7 @@ https://server1.org/phpmyadmin/</p>
 <p>Die Steuerung von MariaDB wurde in Debian, und damit auch in siduction, in den Systemd integriert. MariaDB startet automatisch beim Booten des Servers. Die Steuerungsaufrufe lauten:</p>
 <pre><code># systemctl [start | stop | restart] mariadb.service</code></pre>
 <p>Start- und Fehlermeldungen des Servers flie&szlig;en in das Systemd Journal ein.<br />
-Genaue Informationen enth&auml;lt die externe Webseite <a href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a>.</p>
+Genaue Informationen enth&auml;lt die externe Webseite <a target="_blank" href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a>.</p>
 <p>Bei Suchanfragen im Internet zur Systemsteuerung von MariaDB sollte darauf geachtet werden, dass sich die Fundstellen auf Systemd beziehen.</p>
 <h3 id="mariadb-log">MariaDB Log</h3>
 <p>Das systemd Journal enth&auml;lt Meldungen &uuml;ber den Startprozess der Unit <code>mariadb.service</code>. Es ist die erste Anlaufstelle wenn Fehler auftreten.<br />
@@ -268,11 +268,11 @@ In der Konsole zeigt der Befehl <code>journalctl</code> die Meldungen zu MariaDB
 <code>/var/lib/mysql/</code>.<br />
 <strong>Achtung</strong>: Dies ist ein absoluter Performence-Killer und nur dazu gedacht um kurzfristig die Aktionen zu beobachten.</p>
 <h3 id="quellen-mariadb">Quellen MariaDB</h3>
-<p><a href="https://mariadb.com/kb/en/documentation/">MariaDB Dokumentation</a> (englisch)<br />
-<a href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a> (englisch)<br />
+<p><a target="_blank" href="https://mariadb.com/kb/en/documentation/">MariaDB Dokumentation</a> (englisch)<br />
+<a target="_blank" href="https://mariadb.com/kb/en/systemd/">MariaDB Systemd</a> (englisch)<br />
 und die Manpage</p>
 <p>Die mariadb Manpage <code>man mariadb</code></p>
-<p><a href="https://docs.phpmyadmin.net/de/latest/">phpMyAdmin Dokumentation</a> (deutsch)</p>
+<p><a target="_blank" href="https://docs.phpmyadmin.net/de/latest/">phpMyAdmin Dokumentation</a> (deutsch)</p>
 <div id="rev">
 Zuletzt bearbeitet: 2020-11-29
 </div>

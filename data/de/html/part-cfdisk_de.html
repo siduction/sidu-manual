@@ -43,7 +43,7 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="partitionieren-mit-fdisk">Partitionieren mit fdisk</h2>
 <p><strong>fdisk</strong> und <strong>cfdisk</strong> erstellt MBR-Partitionstabellen auf Basis des BIOS. Im Jahr 2000 begann die Einf&uuml;hrung von GPT-Partitionstabellen auf Basis des UEFI.</p>
-<p>Der neuere Standard <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen gr&ouml;&szlig;er als 2 TByte und eine theoretisch unbegrenzte Anzahl prim&auml;rer Partitionen. Weitere Informationen dazu gibt es in <a href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle</a></p>
+<p>Der neuere Standard <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen gr&ouml;&szlig;er als 2 TByte und eine theoretisch unbegrenzte Anzahl prim&auml;rer Partitionen. Weitere Informationen dazu gibt es in <a target="_blank" href="https://de.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID-Partitionstabelle</a></p>
 <p>Wir empfehlen die Partitionierung mit fdisk und cfdisk ausschlie&szlig;lich f&uuml;r &auml;ltere Hardware.<br />
 Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite <a href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit gdisk</a> zu Rate ziehen.</p>
 <h3 id="benennung-von-speicherger&auml;ten">Benennung von Speicherger&auml;ten</h3>
@@ -210,7 +210,7 @@ Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partiti
 <p>Mit dem Befehl <strong><code>Quit</code></strong> verlassen wir das Programm. Nach Beendigung von cfdisk und vor der Installation sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen.</p>
 <h3 id="formatieren-von-partitionen">Formatieren von Partitionen</h3>
 <p>Es gibt f&uuml;r Linux verschiedene Filesysteme, die man benutzen kann. Da w&auml;ren <strong>Ext2</strong>, <strong>Ext4</strong>, <strong>ReiserFs</strong> und f&uuml;r erfahrenere Anwender <strong>XFS</strong>, <strong>JFS</strong> und <strong>ZFS</strong>.<br />
-Ext2 kann von Interesse sein, wenn man von Windows aus zugreifen m&ouml;chte, da es Windows-Treiber f&uuml;r dieses Dateisystem gibt. <a href="http://www.fs-driver.org/">Ext2-Dateisystem f&uuml;r MS Windows (Treiber und englischsprachige Doku)</a>.</p>
+Ext2 kann von Interesse sein, wenn man von Windows aus zugreifen m&ouml;chte, da es Windows-Treiber f&uuml;r dieses Dateisystem gibt. <a target="_blank" href="http://www.fs-driver.org/">Ext2-Dateisystem f&uuml;r MS Windows (Treiber und englischsprachige Doku)</a>.</p>
 <p>F&uuml;r normalen Gebrauch empfehlen wir das Dateisystem <strong>ext4</strong>. Es ist das Standard-Dateisystem von siduction.</p>
 <p>Nach Beendigung von cfdisk wird die Root-Konsole weiter verwendet. Eine Formatierung erfordert Root-Rechte.<br />
 Der Befehl lautet <strong><code>mkfs.ext4 /dev/sdaX</code></strong>. F&uuml;r “X” tr&auml;gt man die Nummer der ausgew&auml;hlten Partition ein.</p>

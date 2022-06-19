@@ -59,12 +59,12 @@ do
 done
 
 
-### Set language in html header,
+### Set language in html header, expand external link with 'target="_blank" ', and
 for i in ../data/$langcode/html/*.html;
 do
-    sed -i "2 s/\"\"/\"$langcode\"/g" "$i";
+    sed -i -e "2 s/\"\"/\"$langcode\"/g" "$i" -e 's/<a\( href="http\)/<a target="_blank"\1/g';
     
-### and recode german special characters
+### recode german special characters
     if [ "$langcode" = "de" ]
     then
         sed -i -e 's/ä/\&auml;/g' -e 's/Ä/\&Auml;/g' -e 's/ö/\&ouml;/g' -e 's/Ö/\&Ouml;/g' -e 's/ü/\&uuml;/g' -e 's/Ü/\&Uuml;/g' -e 's/ß/\&szlig;/g' "$i";

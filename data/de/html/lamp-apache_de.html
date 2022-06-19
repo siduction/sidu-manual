@@ -98,7 +98,7 @@ Sinngem&auml;&szlig; nehmen wir am PC die entsprechenden Einstellungen f&uuml;r 
 <h3 id="apache-konfiguration">Apache Konfiguration</h3>
 <p>Die Konfigurationsdateien und -verzeichnisse befindet sich im <em>“ServerRoot”</em> Verzeichnis <code>/etc/apache2/</code>.<br />
 Die zentrale Konfigurationsdatei ist <code>apache2.conf</code>. Sie wird in der Regel nicht bearbeitet, da viele Konfigurationen in separaten Dateien vorliegen. Die Aktivierung und Deaktivierung erfolgt &uuml;ber Sym-Links. Das hat den Vorteil, dass eine Reihe verschiedener Konfigurationen vorhanden sind und nur die ben&ouml;tigten eingebunden werden.</p>
-<p>Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss <em>“.conf”</em> lauten. Die g&uuml;ltigen Direktiven, die in den Konfigurationsdateien verwendet werden d&uuml;rfen, beschreibt die <a href="https://httpd.apache.org/docs/current/de/">Apache Dokumentation</a> ausf&uuml;hrlich.</p>
+<p>Bei den Konfigurationsdateien handelt es sich um Textdateien, welche mit einem Editor und Root-Rechten angelegt bzw. editiert werden. Der Name der Datei darf beliebig sein, aber die Dateiendung muss <em>“.conf”</em> lauten. Die g&uuml;ltigen Direktiven, die in den Konfigurationsdateien verwendet werden d&uuml;rfen, beschreibt die <a target="_blank" href="https://httpd.apache.org/docs/current/de/">Apache Dokumentation</a> ausf&uuml;hrlich.</p>
 <p>Die Dateien liegen in den Verzeichnissen</p>
 <p><code>/etc/apache2/conf-available</code>,<br />
 <code>/etc/apache2/mods-available</code> und<br />
@@ -239,14 +239,14 @@ $ echo &quot;&lt;?php&quot; &gt; /var/www/html/upload/index.php</code></pre></li
 <li><p><strong>“merging”</strong> der Konfiguration</p>
 <p>Die Direktiven der Konfiguration verteilen sich auf eine ganze Reihe von Dateien innerhalb <em>“ServerRoot”</em> und auf die <em>“.htaccess”</em>-Dateien in <em>“DocumentRoot”</em>. Es ist deshalb besonders wichtig zu wissen an welcher Stelle die Direktive zu platzieren ist, um die gew&uuml;nschte Wirkung zu erzielen.<br />
 Wir empfehlen dringend die Webseite<br />
-<a href="https://httpd.apache.org/docs/current/de/sections.html#merging">apache.org - How the sections are merged</a><br />
+<a target="_blank" href="https://httpd.apache.org/docs/current/de/sections.html#merging">apache.org - How the sections are merged</a><br />
 intensiv zu Rate zu ziehen.</p></li>
 <li><p>Der <strong>Eigent&uuml;mer</strong> von <em>“DocumentRoot”</em></p>
 <p>ist nach der Installation <strong>root.root</strong> und sollte unbedingt ge&auml;ndert werden. Siehe hierzu das Kapitel <a href="./lamp-apache_de.html#benutzer-und-rechte">Benutzer und Rechte</a>.</p></li>
 </ul>
 <h3 id="https-verwenden">HTTPS verwenden</h3>
 <p>Ohne HTTPS geht heute kein Webseitenprojekt an den Start.<br />
-Wie man ein Zertifikat erlangt beschreibt die Webseite <a href="https://www.https-guide.de/">HTTP-Guide</a> ausf&uuml;hrlich und leicht verst&auml;ndlich.</p>
+Wie man ein Zertifikat erlangt beschreibt die Webseite <a target="_blank" href="https://www.https-guide.de/">HTTP-Guide</a> ausf&uuml;hrlich und leicht verst&auml;ndlich.</p>
 <p>Wir legen zuerst die n&ouml;tigen Ordner innerhalb <em>“DocumentRoot”</em> an:</p>
 <pre><code>cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/privat</code></pre>
@@ -270,7 +270,7 @@ Wie man ein Zertifikat erlangt beschreibt die Webseite <a href="https://www.http
 <h3 id="sicherheits-tipps">Sicherheits Tipps</h3>
 <ul>
 <li><p>Die Apache Dokumentation enh&auml;lt eine empfehlenswerte Seite mit diversen Tipps zur Absicherung.<br />
-<a href="https://httpd.apache.org/docs/current/de/misc/security_tips.html">apache.org - Security Tipps</a> (englisch)</p></li>
+<a target="_blank" href="https://httpd.apache.org/docs/current/de/misc/security_tips.html">apache.org - Security Tipps</a> (englisch)</p></li>
 <li><p>Dar&uuml;ber hinaus finden sich im Internet zahlreiche Hinweise zum sicheren Betrieb des Apache Webservers.</p></li>
 <li><p>Die regelm&auml;&szlig;ige Kontrolle der Logdateien in <code>/var/log/apache2/</code> hilft um Fehler oder Sicherheitsl&uuml;cken zu erkennen.</p></li>
 <li><p>Sollte der Server, anders als in dieser Handbuchseite vorgesehen, mit dem lokalen Netzwerk oder mit dem Internet verbunden werden, ist eine Firewall unerl&auml;sslich.</p></li>
@@ -326,10 +326,10 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 &lt;/IfModule&gt;</code></pre>
 <h3 id="quellen-apache">Quellen Apache</h3>
-<p><a href="https://httpd.apache.org/docs/current/de/">apache.org - Dokumentation</a> (teilweise deutsch)<br />
-<a href="https://httpd.apache.org/docs/current/de/configuring.html">apache.org - Konfigurationsdateien</a><br />
-<a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org - SSL Howto</a><br />
-<a href="https://www.https-guide.de/">HTTPS Guide - Servercertifikate erstellen und integrieren</a></p>
+<p><a target="_blank" href="https://httpd.apache.org/docs/current/de/">apache.org - Dokumentation</a> (teilweise deutsch)<br />
+<a target="_blank" href="https://httpd.apache.org/docs/current/de/configuring.html">apache.org - Konfigurationsdateien</a><br />
+<a target="_blank" href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org - SSL Howto</a><br />
+<a target="_blank" href="https://www.https-guide.de/">HTTPS Guide - Servercertifikate erstellen und integrieren</a></p>
 <div id="rev">
 Zuletzt bearbeitet: 2021-07-12
 </div>

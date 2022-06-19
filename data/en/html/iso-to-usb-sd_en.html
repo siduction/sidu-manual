@@ -58,10 +58,10 @@ Important information <br />The following methods will overwrite existing partit
 </p>
 <h3 id="gui-application">GUI application</h3>
 <p><strong>For Linux™, RasPi™, MS Windows™, or Mac OS X™</strong></p>
-<p>The small tool <a href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> is available for all the above operating systems and is used to backup data and create the live medium. The program is open source and licensed under the MIT license. Download the necessary file for your operating system and install the program according to the instructions on the download page.</p>
+<p>The small tool <a target="_blank" href="https://bztsrc.gitlab.io/usbimager/">USBImager</a> is available for all the above operating systems and is used to backup data and create the live medium. The program is open source and licensed under the MIT license. Download the necessary file for your operating system and install the program according to the instructions on the download page.</p>
 <p>The handling is very simple thanks to the no-frills interface.</p>
 <p>Write the image file to the device: 1. Select an image by clicking on <code>...</code> in the first line. 2. Select a device by clicking on the 3rd line. 3. Click on the <code>Write</code> button in the 2nd line.</p>
-<p>Detailed information can be found in the <a href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> of the project page.</p>
+<p>Detailed information can be found in the <a target="_blank" href="https://gitlab.com/bztsrc/usbimager/-/blob/master/README.md">Readme</a> of the project page.</p>
 <h3 id="linux-command-line">Linux command line</h3>
 <p>We recommend using the command line. There is no need to install additional programs, since all the tools you need are already available. A single, easy-to-understand command line is sufficient to transfer the siduction ISO image file to the storage medium.</p>
 <p>Before we write the siduction ISO image file to the storage medium, we need to determine its drive label. The easiest way is to use journald. The command <strong><code>journalctl -f</code></strong> executed in a terminal shows continuously the messages of systemd. Now we plug in the storage medium and watch the messages in the terminal. Lines of the following type contain the information we are looking for.</p>

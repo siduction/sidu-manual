@@ -444,17 +444,11 @@ Bitte auch die Manpages [systemd-analyze](https://manpages.debian.org/testing/ma
   ~~~
   $ systemd-delta --no-pager
   [MASKED]     /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
-  
   [OVERRIDDEN] /etc/tmpfiles.d/screen-cleanup.conf → /usr/lib/tmpfiles.d/screen-cleanup.conf
-  
   [MASKED]     /etc/systemd/system/NetworkManager-wait-online.service → /lib/systemd/system/NetworkManager-wait-online.service
-  
   [EQUIVALENT] /etc/systemd/system/tmp.mount → /lib/systemd/system/tmp.mount
-  
   [EXTENDED]   /lib/systemd/system/rc-local.service → /lib/systemd/system/rc-local.service.d/debian.conf
-  
   [EXTENDED]   /lib/systemd/system/systemd-localed.service → /lib/systemd/system/systemd-localed.service.d/locale-gen.conf
-
   6 overridden configuration files found.
   ~~~
 

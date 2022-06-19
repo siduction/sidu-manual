@@ -103,11 +103,6 @@ while (@QUELLE) {
     s!\]\(\.?/?(.*?\.)md\#!\]\(\./$1html\#!g;
     }
     
-    # Externe Link mit 'target="_blank" ' erweitern um Fehlermeldungen des Browsers
-    # zu vermeiden. Die externe Seite wird in einem neuen Browsertab oder -fenster 
-    # geöffnet.
-    s!a( href="http)!a target="_blank"$1!g;
-    
     $_ = "$_\n";
     push @NEU,$_;
 }

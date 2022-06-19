@@ -46,17 +46,17 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="iwd">IWD</h2>
-<p>Intel’s <a href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (iwd) sends wpa-supplicant into well-deserved retirement. Only a tenth the size and much faster, iwd is the successor. It works alone or together with NetworkManager, systemd-networkd, and conman.<br />
+<p>Intel’s <a target="_blank" href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (iwd) sends wpa-supplicant into well-deserved retirement. Only a tenth the size and much faster, iwd is the successor. It works alone or together with NetworkManager, systemd-networkd, and conman.<br />
 Two things iwd still can’t do are to connect via WPA/WPA2 Enterprise and to properly handle hidden networks. For such working environments, you should stay with wpa-supplicant or, if you use siduction from 2021.3.0, <a href="./inet-iwd_en.html#back-to-wpa_supplicant">switch back to wpa-supplicant</a>.</p>
-<p>Further information can be found on the <a href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> or the <a href="https://wiki.debian.org/NetworkManager/iwd">debian wiki</a>.</p>
+<p>Further information can be found on the <a target="_blank" href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> or the <a target="_blank" href="https://wiki.debian.org/NetworkManager/iwd">debian wiki</a>.</p>
 <p><strong>Since siduction 2021.3.0</strong>, iwd is used as the standard for establishing connections to WLAN. Our implementation runs with NetworkManager.</p>
 <p><strong>Since siduction 2021.1.0</strong>, iwd has already been delivered in the flavours Xorg and NoX. If you want, you can install iwd on the other flavours. See below: <a href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</a>.</p>
 <p><strong>Before siduction 2021.1.0</strong>: Even with a slightly older snapshot, iwd can be installed (tested with siduction 2018.3.0 and linux-image-5.15.12-1-siduction-amd64). Please also follow the instructions at <a href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</a>.</p>
 <h3 id="graphical-configuration-programs">Graphical configuration programs</h3>
 <ul>
 <li><strong>NetworkManager</strong>: For the NetworkManager, there are different graphical interfaces, e.g. <code>plasma-nm</code> for plasma-desktop/kde or <code>network-manager-gnome</code> for gnome and others. Their usage should be self-explanatory!</li>
-<li><strong>conman</strong> is a small and resource saving network manager developed by Intel. Read more about it on the <a href="https://wiki.archlinux.org/index.php/ConnMan">Arch-Wiki</a></li>
-<li><strong>iwgtk</strong> is not available in debian sources. It has to be built from source code and can be found on <a href="https://github.com/J-Lentz/iwgtk">github</a>.</li>
+<li><strong>conman</strong> is a small and resource saving network manager developed by Intel. Read more about it on the <a target="_blank" href="https://wiki.archlinux.org/index.php/ConnMan">Arch-Wiki</a></li>
+<li><strong>iwgtk</strong> is not available in debian sources. It has to be built from source code and can be found on <a target="_blank" href="https://github.com/J-Lentz/iwgtk">github</a>.</li>
 </ul>
 <h3 id="configuration-in-terminal">Configuration in terminal</h3>
 <p><strong>iwd and NetworkManager</strong></p>
