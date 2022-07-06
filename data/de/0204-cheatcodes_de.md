@@ -36,7 +36,6 @@ Diese Bootoptionen gelten nur für die Live-DVD.
 |  nomodeset  | radeon.modeset=0 | ermöglicht zusammen mit **xmodule=vesa** ein sauberes Booten nach X bei Radeonkarten im Live-Mode | 
 |  nonetwork  |  | verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten | 
 |  noswap  |  | Keine Aktivierung der Swap-Partition | 
-|  persist  |  | [bitte lies "fromiso und persist"](0302-hd-ins-fromiso_de.md#aus-iso-datei-booten)  | 
 |  smouse  |  | sucht mittels hwinfo nach seriellen Mauseingabegeräten | 
 |  tz  | tz=Europe/Dublin | setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird **utc=yes** angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy & paste: **file:///usr/share/zoneinfo/** in den Browser eingegeben wird . | 
 |  toram  |  | kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie | 

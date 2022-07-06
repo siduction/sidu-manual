@@ -36,7 +36,6 @@ These boot options apply only to the live DVD.
 | nomodeset | radeon.modeset=0 | together with `xmodule=vesa` allows a clean boot to X for Radeon cards in live mode | 
 | nonetwork | | prevents automatic configuration of network interfaces at boot time | 
 | noswap | | no activation of the swap partition | 
-| persist | [Please read "fromiso and persist"](0302-hd-ins-fromiso_en.md#boot-from-iso-file). | 
 | smouse | | searches for serial mouse input devices using hwinfo | 
 | tz | tz=Europe/Dublin | sets the time zone. If the bios or hardware clock is set to UTC, `utc=yes` is specified. A list of all supported time zones can be viewed by copying & pasting `file:///usr/share/zoneinfo/` into the browser. | 
 | toram | copies the DVD/CD into RAM and boots from the RAM copy | 

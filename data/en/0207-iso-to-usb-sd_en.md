@@ -2,8 +2,7 @@
 
 ## ISO to USB stick - memory card
 
-Below we describe methods to write a siduction ISO image file as live media to a USB stick, SD card, or SHDC card.  
-If *"persist "* is needed, we recommend the manual page [Boot from ISO file](0302-hd-ins-fromiso_en.md#boot-from-iso-file).
+Below we describe methods to write a siduction ISO image file as live media to a USB stick, SD card, or SHDC card.
 
 **Prerequisites**
 
