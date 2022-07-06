@@ -21,8 +21,8 @@ A complete description of the APT system can be found in [Debian's APT-HOWTO](ht
 | - [apt-mark hold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Prevent apt from installing another version of the package. |
 | - | [apt-mark unhold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Cancel the 'apt-mark hold' command. |
 | [apt search](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-get search | Search for packages according to the pattern entered (regex possible). |
-| [apt show](0705-sys-admin-apt_en.md#package-search-in-the-terminal) | apt-cache show | Display the details of a package. |
-| [apt list](0705-sys-admin-apt_en.md#package-search-in-the-terminal) | apt-cache policy | Show the installed or installable version of a package. |
+| [apt show](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-cache show | Display the details of a package. |
+| [apt list](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-cache policy | Show the installed or installable version of a package. |
 
 ### sources.list - List of sources
 

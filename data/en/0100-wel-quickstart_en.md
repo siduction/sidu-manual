@@ -39,9 +39,7 @@ The Linux kernel of siduction is optimized to achieve the following goals: probl
 siduction follows Debian rules regarding package structure and uses `apt` as well as `dpkg` for software package management. The Debian and siduction repositories are located in `/etc/sources.list.d/*`. 
 
 Debian siduction contains more than 20,000 program packages, so the chances of finding a program suitable for a task are very good. Information on how to search for program packages can be found here:  
-[Program search with apt-cache or aptitude](0705-sys-admin-apt_en.md#searching-for-program-packages)  
-or  
-[GUI package search with packagesearch](0705-sys-admin-apt_en.md#graphical-package-search).
+[Search program packages](0705-sys-admin-apt_en.md#searching-for-program-packages) .
 
 A program package is installed with this command:
 

@@ -39,9 +39,7 @@ Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu erreichen: Pr
 siduction richtet sich nach den Debian-Regeln bezüglich der Paketestruktur und verwendet `apt` und `dpkg` für das Management der Softwarepakete. Die Repositorien von Debian und siduction befinden sich in `/etc/sources.list.d/*` 
 
 Debian Sid enthält mehr als 20.000 Programmpakete, womit die Chancen, ein für eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie man Programmpakete sucht, ist hier beschrieben:  
-[Programmsuche mit apt-cache bzw. apt](0705-sys-admin-apt_de.md#programmpakete-suchen)  
-oder mit  
-[GUI-Paketsuche mit packagesearch](0705-sys-admin-apt_de.md#graphische-paketsuche) .
+[Programmpakete suchen](0705-sys-admin-apt_de.md#programmpakete-suchen) .
 
 Ein Programmpaket wird mit diesem Befehl installiert:
 

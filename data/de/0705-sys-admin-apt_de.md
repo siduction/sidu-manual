@@ -20,9 +20,9 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 | [apt purge](0705-sys-admin-apt_de.md#pakete-entfernen) | apt-get purge | Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien. |
 | - | [apt-mark hold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets) | Verhindert, dass apt eine andere Version das Paketes installiert.  |
 | - | [apt-mark unhold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets)  | Hebt den Befehl 'apt-mark hold' auf. |
-| [apt search](0705-sys-admin-apt_de.md#paketsuche-im-terminal) | apt-get search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
-| [apt show](0705-sys-admin-apt_de.md#paketsuche-im-terminal) | apt-cache show  | Anzeige der Details eines Paketes. |
-| [apt list](0705-sys-admin-apt_de.md#paketsuche-im-terminal) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
+| [apt search](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-get search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
+| [apt show](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache show  | Anzeige der Details eines Paketes. |
+| [apt list](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
 
 ### sources.list - Liste der Quellen
 
