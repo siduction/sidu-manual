@@ -17,6 +17,8 @@ Das Handbuch des siduction Betriebssystems ist eine Referenz zum Kennenlernen de
 
 Es ist nach gleichartigen Themen unterteilt: Alles was zum Beispiel das Partitionieren betrifft, befindet sich im Kapitel "Installation/Partitionieren", und Themen, die WLAN betreffen befinden sich im Kapitel "Netzwerk".
 
+Mit den ISOs wird das zu dem jeweiligen Zeitpunkt aktuelle Handbuch ausgeliefert. Da fortlaufend Änderungen in das Handbuch einfließen, lohnt sich gelegentlich ein Blick in die [Onlineversion](https://manual.siduction.org/).
+
 Drucken von Handbuchseiten:  
 Linuxbefehle können mehr als 120 Zeichen lang sein. Für eine optimierte Darstellung am Bildschirm findet kein automatischer Zeilenumbruch statt. Unser Handbuch im PDF-Format, dass auf allen ISOs und nach der Installation im System verfügbar ist, verwendet für die langen Befehle den Zeilenumbruch.  
 Zum Drucken von Handbuchseiten verwende bitte das PDF und drucke nur die benötigten Seiten.
