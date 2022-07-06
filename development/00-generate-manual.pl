@@ -59,7 +59,7 @@ foreach $langcode (@ARGV) {
     system "./20-generate-html-manual.sh $langcode || exit 1";
 
 
-    ## Part 3 of 3: Generate HTML menu file
+    ## Part 3 of 3: Generate HTML index file with menu
     #
-    system "./30-generate-html-menu.pl $langcode || exit 1";
+    system "./30-generate-index-html.pl $langcode || exit 1";
 }

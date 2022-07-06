@@ -17,7 +17,7 @@
 #  If you want to use this file directly, then change as user
 #  in a terminal into the folder /development.
 #  Enter the program name and add, separated by space, the two-letter shortcode
-#  for the language in which the menu-file should be created. The language
+#  for the language in which the index-file should be created. The language
 #  shortcode must correspond to the names of the subfolder in /data.
 #  Example: ./30-generate-index-html.pl en
 #
@@ -33,7 +33,7 @@
 #  Wenn Sie diese Datei direkt verwenden wollen, dann wechseln Sie als Benutzer
 #  in einem Terminal in den Ordner /development. Geben Sie den Programmnamen
 #  und, durch ein Leerzeichen getrennt, das zweistellige Kürzel für die Sprache ein,
-#  in der die Menue-Datei erstellt werden soll. Das Sprachkürzel muss mit den Namen
+#  in der die index-Datei erstellt werden soll. Das Sprachkürzel muss mit den Namen
 #  der Unterordner in /data übereinstimmen.
 #  Beispiel: ./30-generate-index-html.pl de
 #
@@ -60,20 +60,17 @@ if (scalar @ARGV != 1) {
 
 # Create html header
 
-if ($langcode eq "de") {
-    open HEADER, "./31-header-index_de.html"
-        or die "Can't open de-header.";
-} elsif ($langcode eq "en") {
-    open HEADER, "./31-header-index_en.html"
-        or die "Can't open en-header.";
-#} elsif ($langcode eq "xx") {                    # New translations dummy
-#    open HEADER, "./31-header-index_xx.html"
-#        or die "Can't open xx-header.";
-} else {
-    die "The given language shortcode is not supported.\n";
-}
+open HEADER, "./31-header-index.html"
+    or die "Can't open header.";
 
 while (<HEADER>) {
+    if ($langcode eq "en") {
+        $_ =~ s/Zur\&uuml\;ck zu/Back to/;
+        $_ =~ s/siduction Handbuch/siduction manual/;
+        $_ =~ s/PDF herunterladen/Download PDF/;
+        $_ =~ s/Impressum/Inprint/;
+        $_ =~ s/Datenschutz/Privacy/;
+    }
     push @MENU_FILE, "$_";
 }
 close HEADER;
@@ -164,13 +161,16 @@ while (@DATEIEN) {
     }
 }
 
-open FOOTER, "./32-footer-index.html"
-    or die "Can't open footer.";
+open LASTPART, "./32-lastpart-index.html"
+    or die "Can't open lastpart-index.html.";
         
-while (<FOOTER>) {
+while (<LASTPART>) {
+    if ($langcode eq "en") {
+        $_ =~ s/welcome_de.html/welcome_en.html/;
+    }
     push @MENU_FILE, "$_";
 }
-close FOOTER;
+close LASTPART;
 
 
 sub LINK_LINE {
