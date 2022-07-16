@@ -65,11 +65,14 @@ open HEADER, "./31-header-index.html"
 
 while (<HEADER>) {
     if ($langcode eq "en") {
+        $_ =~ s/lang="de"/lang="en"/g;
         $_ =~ s/Zur\&uuml\;ck zu/Back to/;
         $_ =~ s/siduction Handbuch/siduction manual/;
+        $_ =~ s/manual_de.pdf/manual_en.pdf/;
         $_ =~ s/PDF herunterladen/Download PDF/;
         $_ =~ s/Impressum/Inprint/;
         $_ =~ s/Datenschutz/Privacy/;
+        $_ =~ s/datenschutzerklarung/data-privacy-statement/;
     }
     push @MENU_FILE, "$_";
 }
