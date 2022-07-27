@@ -50,8 +50,6 @@ Anmerkung: xorg.conf wird für Open-Source-Treiber in der Regel nicht mehr benö
 
 Proprietäre Treiber gibt es faktisch nur noch für nVidia Grafikkarten. AMD hat zwar auch einen proprietären Treiber namens amdgpu-pro, dieser unterstützt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Außerdem ist dieser Treiber eher für professionelle Karten denn für Desktop Karten konzipiert.
 
-Um vom proprietären Treiber von Nvidia auf nouveau zu wechseln, siehe den [Eintrag im siduction Wiki.](http://wiki.siduction.de/index.php?title=Wie_entferne_ich_propriet%C3%A4re_nVidia-Treiber%3F)
-
 Hier erhältst du mehr Informationen zu den Treibern von  
 [Intel](http://www.x.org/wiki/IntelGraphicsDriver)  
 [ATI/AMD](http://www.x.org/wiki/radeon)  
