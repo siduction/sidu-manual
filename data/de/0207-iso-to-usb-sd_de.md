@@ -72,7 +72,7 @@ Wir benutzen als root den Befehl `cgdisk /dev/sdb` um eine neue GUID-Partitionst
    Typ Hex-Code: 8300 (Linux)  
    Name: data
 
-Wir schreiben die Partitionstabelle auf das Medium und beenden `cfdisk`, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
+Wir schreiben die Partitionstabelle auf das Medium und beenden `gdisk`, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
 
 ~~~
 mkfs.ext4 -L LifeData /dev/sdb2
