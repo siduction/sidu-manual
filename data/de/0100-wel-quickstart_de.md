@@ -125,4 +125,4 @@ Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
-<div id="rev">Zuletzt bearbeitet: 2022-16-04</div>
+<div id="rev">Zuletzt bearbeitet: 2022-04-16</div>
