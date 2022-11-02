@@ -14,7 +14,9 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Lokaler APT-Mirror](0706-sys-admin-apt-localmirr_de.md#lokaler-apt-mirror); Apt-Cacher, der Proxy-Server für Debian-Pakete. Server installieren und die Client Konfiguration.
 
-+ [Neue Kernel installieren](0707-sys-admin-kern-upg_de.md#kernel-upgrade), Kernel-Aktualisierung ohne Systemaktualisierung, 3rd Party Module und alte Kernel entfernen.
++ [Nala für das Paketmanagement](0707-sys-admin-nala_de.md), Ein Front-End, dass APT für den Anwender optimiert und beschleunigt.
+
++ [Neue Kernel installieren](0708-sys-admin-kern-upg_de.md#kernel-upgrade), Kernel-Aktualisierung ohne Systemaktualisierung, 3rd Party Module und alte Kernel entfernen.
 
 + [Systemd der System- und Dienste-Manager](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager), Konzeption des systemd, Unit Typen, Systemd im Dateisystem und die Handhabung von Diensten.
 
@@ -32,4 +34,4 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Systemjournal](0717-systemd-journald_de.md#systemjournal), der journald lokal und über das Netzwerk, journald konfigurieren, Abfrage des systemd-Journals mit journalctl, die Ausgaben filtern und steuern, Beispiele um journalctl zu beherrschen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-01</div>
+<div id="rev">Zuletzt bearbeitet: 2022-11-02</div>
