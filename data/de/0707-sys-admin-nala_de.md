@@ -12,13 +12,13 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 **Benutzerfreundlicher und leistungsstärker als APT**
 
-Nala ist ein Kommandozeilen-Frontend für den APT-Paketmanager. Es benutzt dabei die Python-apt-API statt der APT-Bibliotheken zur Verwaltung der Pakete. Das Ziel von Nala ist es, erstens eine übersichtlichere und benutzerfreundlichere Darstellung sowohl des aktuellen Paketbestands, als auch der angeforderten Aktionen und deren Durchführung zu erhalten und zweitens den Download von Paketen zu beschleunigen.
+Nala ist ein Kommandozeilen-Frontend für den APT-Paketmanager. Es benutzt die `python-apt`API statt der APT-Bibliotheken zur Verwaltung der Pakete. Das Ziel von Nala ist eine übersichtlichere und benutzerfreundlichere Darstellung sowohl des aktuellen Paketbestands als auch der angeforderten Aktionen und deren Durchführung und darüber hinaus die Beschleunigung des Download von Paketen.
 
-Nala beinhaltet viele gleichlautende Befehle von APT, bspw. `install`, `remove`, `purge`, `update`, `show` und `search`. Außerdem implementiert es den Befehl `history`, um vergangene Transaktionen zu sehen und dem Benutzer die Möglichkeit zu geben diese rückgängig zu machen und den Befehl `fetch`, der eine Liste der schnellsten Spiegelserver zur Auswahl anzeigt. In der Grundeinstellung beschleunigt Nala den Download dadurch, dass drei Pakete gleichzeitig von einem Server geholt werden.
+Nala verwendet viele gleichlautende Befehle von APT, wie etwa `install`, `remove`, `purge`, `update`, `show` und `search`. Außerdem implementiert es den Befehl `history`, um vergangene Transaktionen zu sehen und dem Benutzer die Möglichkeit zu geben diese rückgängig zu machen und den Befehl `fetch`, der eine Liste der schnellsten Spiegelserver zur Auswahl anzeigt. In der Grundeinstellung beschleunigt Nala den Download dadurch, dass drei Pakete gleichzeitig von einem Server geholt werden. Das Limit von 3 Verbindungen pro Spiegelserver besteht, um die Belastung der Spiegelserver zu minimieren.
 
 ### Nala verwenden
 
-Ab siduction 2022.12.0 wird Nala automatisch installiert und ist sofort verwendbar. Ein Blick in die manpage **`man nala`** sollte obligatorisch sein. Vor der Anwendung empfehlen wir eine Änderung in der Konfigurationsdatei `/etc/nala/nala.conf` vorzunehmen.  
+Ab siduction 2022.12.0 wird Nala automatisch installiert und ist sofort verwendbar. Ein Blick in die manpage **`man nala`** sollte obligatorisch sein. Vor der Anwendung empfehlen wir dringend, eine Änderung in der Konfigurationsdatei `/etc/nala/nala.conf` vorzunehmen.  
 Den Wert für die Konfigurationsoption `auto_remove` ändern wir zu `false`, so wie es das folgende Listing zeigt.
 
 ~~~
@@ -26,11 +26,11 @@ Den Wert für die Konfigurationsoption `auto_remove` ändern wir zu `false`, so 
 auto_remove = false
 ~~~
 
-Der Grund hierfür liegt in der Verwendung von *debian sid* als Basis für siduction. Bei einem Upgrade von sid kann gelegentlich eine Situation entstehen in der wesentliche Teile des Systems entfernt werden sollen. Mit der Option `auto_remove = true` haben wir keine Möglichkeit zu recherchieren, zu prüfen und selbst zu entscheiden ob oder welche Pakete zu entfernen sind.
+Der Grund hierfür liegt in der Verwendung von *debian sid* als Basis für siduction. Bei einem Upgrade von sid kann gelegentlich eine Situation entstehen in der wesentliche Teile des Systems entfernt werden sollen. Mit der Option `auto_remove = true` haben wir keine Möglichkeit zu recherchieren, zu prüfen und selbst zu entscheiden ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb sollte `auto_remove` nicht automatisch verwendet werden, sondern erst nach Sichtkontrolle der zu entfernenden Pakete.
 
 ### Befehle analog zu APT
 
-Viele der von APT her bekannten Befehle sind in Nala identisch. In der Grundeinstellung erwartet Nala vor dem Ausführen einer angeforderten Aktion, die das System ändert, immer eine Bestätigung.
+Viele der von APT bekannten Befehle sind in Nala identisch. In der Grundeinstellung erwartet Nala vor dem Ausführen einer angeforderten Aktion, die das System ändert, immer eine Bestätigung.
 
 + **`nala update`**  
   Aktualisiert die Paketinformationen der konfigurierten Paketquellen.
@@ -45,7 +45,7 @@ Viele der von APT her bekannten Befehle sind in Nala identisch. In der Grundeins
   Entfernt das benannte Paket mit seinen Konfigurationsdateien aus unserem System.
   
 + **`nala upgrade`**  
-  Führt ein Dist Upgrade aus.
+  Führt `update`, gefolgt von `dist-upgrade` aus.
 
 Die benutzerfreundliche Aufbereitung der Ausgabe im Terminal erleichtert die Übersicht, wie das Beispiel zeigt.  
 (Um root-Rechte zu erlangen wurde im Befehl *"doas"* verwendet.)
@@ -164,8 +164,8 @@ Erfolgreich beendet
 ~~~
 
 Im ersten Teil der Ausgabe sehen wir die zu entfernenden Pakete mit der Angabe ihrer Versionen und Größe. Nach der Bestätigung listet der zweite Teil die ausgeführten Aktionen auf.  
-Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo [Nr]` weiter um die Aktion noch einmal auszuführen.
+Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo [Nr]` weiter um die Aktion noch einmal auszuführen. Mit dem Befehl `nala history clear <ID>` lassen sich Einträge aus der History entfernen, `nala history all` entfernt alle Einträge.
 
-In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo [Nr]` und `redo [Nr]` derzeit nur die Aktionen Installieren oder Entfernen.
+In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo [Nr]` und `redo [Nr]` derzeit nur die Aktionen Installieren oder Entfernen. In einer späteren Version, die dann auf der Programmiersprache Rust basiert, sollen sich komplette Dist-Upgrades zurückrollen lassen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-11-05</div>
+<div id="rev">Zuletzt bearbeitet: 2022-11-05 20:45</div>
