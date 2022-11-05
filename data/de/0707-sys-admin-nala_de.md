@@ -151,7 +151,7 @@ user1@pc1:~$ doas nala history undo 68
  Speicherplatz freizugeben  892 KB
 
 Möchtest du fortfahren? [J/n] j
-╭─ Verlauf rückgängig machen 12 ───────────────────────────╮
+╭─ Verlauf rückgängig machen 68 ───────────────────────────╮
 │Entferne:        yapf3 (0.32.0-1)                         │
 │Entferne:        python3-yapf (0.32.0-1)                  │
 │Wird bearbeitet: triggers for runit (2.1.2-50)            │
