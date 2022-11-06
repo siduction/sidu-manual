@@ -131,7 +131,7 @@ user1@pc1:~$ nala history info 68
  Installiert 2 Pakete
 ~~~
 
-Wollen wir nun die Installation von *"yapf3"* mit den Abhängigkeiten, in unserem Fall *"python3-yapf"*, rückgängig machen, benutzen wir dafür den Unterbefehl `undo [Nr]`.   
+Wollen wir nun die Installation von *"yapf3"* mit den Abhängigkeiten, in unserem Fall *"python3-yapf"*, rückgängig machen, benutzen wir dafür den Unterbefehl `undo <ID>`.  
 (Auch hier erlangt **user1** root-Rechte durch die Verwendung von *"doas"*.)
 
 ~~~
@@ -164,8 +164,8 @@ Erfolgreich beendet
 ~~~
 
 Im ersten Teil der Ausgabe sehen wir die zu entfernenden Pakete mit der Angabe ihrer Versionen und Größe. Nach der Bestätigung listet der zweite Teil die ausgeführten Aktionen auf.  
-Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo [Nr]` weiter, um die Aktion noch einmal auszuführen. Mit dem Befehl `nala history clear <ID>` lassen sich Einträge aus der History entfernen, `nala history all` entfernt alle Einträge.
+Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo <ID>` weiter, um die Aktion noch einmal auszuführen. Mit dem Befehl `nala history clear <ID>` lassen sich Einträge aus der History entfernen, `nala history all` entfernt alle Einträge.
 
-In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo [Nr]` und `redo [Nr]` derzeit nur die Aktionen Installieren oder Entfernen. In einer zukünftigen Version, die dann auf der Programmiersprache Rust basieren wird, sollen sich komplette Dist-Upgrades zurückrollen lassen.
+In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo <ID>` und `redo <ID>` derzeit nur die Aktionen Installieren oder Entfernen. In einer zukünftigen Version, die dann auf der Programmiersprache Rust basieren wird, sollen sich komplette Dist-Upgrades zurückrollen lassen.
 
 <div id="rev">Zuletzt bearbeitet: 2022-11-06</div>
