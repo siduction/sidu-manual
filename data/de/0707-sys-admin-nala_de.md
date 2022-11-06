@@ -164,7 +164,7 @@ Erfolgreich beendet
 ~~~
 
 Im ersten Teil der Ausgabe sehen wir die zu entfernenden Pakete mit der Angabe ihrer Versionen und Größe. Nach der Bestätigung listet der zweite Teil die ausgeführten Aktionen auf.  
-Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo <ID>` weiter, um die Aktion noch einmal auszuführen. Mit dem Befehl `nala history clear <ID>` lassen sich Einträge aus der History entfernen, `nala history all` entfernt alle Einträge.
+Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo <ID>` weiter, um die Aktion noch einmal auszuführen. Mit dem Befehl `nala history clear <ID>` lassen sich Einträge aus der History entfernen, `nala history clear --all` entfernt alle Einträge.
 
 In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo <ID>` und `redo <ID>` derzeit nur die Aktionen Installieren oder Entfernen. In einer zukünftigen Version, die dann auf der Programmiersprache Rust basieren wird, sollen sich komplette Dist-Upgrades zurückrollen lassen.
 
