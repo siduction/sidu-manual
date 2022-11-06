@@ -114,7 +114,7 @@ user1@pc1:~$ nala history
  68  install yapf3                2022-11-04 12:56:25 CET        2  user1 (1000)
 ~~~
 
-Details zu einer Aktion aus der History zeigt der gleiche Befehl mit dem angehängten Unterbefehl `info [Nr]`.
+Details zu einer Aktion aus der History zeigt der gleiche Befehl mit dem angehängten Unterbefehl `info <ID>`.
 
 ~~~
 user1@pc1:~$ nala history info 68
