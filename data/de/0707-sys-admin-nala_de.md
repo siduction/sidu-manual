@@ -90,7 +90,7 @@ Erfolgreich beendet
 Im ersten Teil der Ausgabe erhalten wir eine Liste der zu installierenden Pakete mit der Angabe ihrer Versionen und Größe. Nach der Bestätigung listet der zweite Teil die ausgeführten Aktionen auf.
 
 
-### Befehle, die APT nicht enthält
+### Befehle die APT nicht enthält
 
 **Befehl "fetch"**
 
