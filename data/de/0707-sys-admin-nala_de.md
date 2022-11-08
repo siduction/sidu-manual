@@ -1,13 +1,5 @@
 % Nala für das Paketmanagement
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC3**
-
-+ Neu im Handbuch
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Nala Paketverwaltung
 
 **Benutzerfreundlicher und leistungsstärker als APT**
