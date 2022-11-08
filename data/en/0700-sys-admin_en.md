@@ -34,4 +34,4 @@ This section contains informations and notes on
 
 + [systemd-journal](0717-systemd-journald_en.md#system-journal), using journald locally and over a network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
 
-<div id="rev">Last edited: November 07, 2022</div>
+<div id="rev">Last edited: 2022-11-07</div>
