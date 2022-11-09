@@ -13,7 +13,7 @@
 # nach 'Link: ' und fügen Sie den Text, der angezeigt werden soll,
 # zwischen den eckigen Klammern ein.
 #
-Erstellt am 2022-06-05
+Erstellt am 2022-11-08
 
 
  ### Aktivierung der Unit-Datei   0711-systemd-unit-datei_de.md   Link: [](0711-systemd-unit-datei_de.md#aktivierung-der-unit-datei)
@@ -37,6 +37,8 @@ Erstellt am 2022-06-05
  ### Arten der Benennung von Blockgeräten   0311-part-uuid_de.md   Link: [](0311-part-uuid_de.md#arten-der-benennung-von-blockgeräten)
   ## Aus ISO-Datei booten   0302-hd-ins-fromiso_de.md   Link: [](0302-hd-ins-fromiso_de.md#aus-iso-datei-booten)
  ### Beenden eines Prozesses   0702-sys-admin-gen_de.md   Link: [](0702-sys-admin-gen_de.md#beenden-eines-prozesses)
+ ### Befehle analog zu APT   0707-sys-admin-nala_de.md   Link: [](0707-sys-admin-nala_de.md#befehle-analog-zu-apt)
+ ### Befehle die APT nicht enthält   0707-sys-admin-nala_de.md   Link: [](0707-sys-admin-nala_de.md#befehle-die-apt-nicht-enthält)
  ### Beispiel cupsd   0711-systemd-unit-datei_de.md   Link: [](0711-systemd-unit-datei_de.md#beispiel-cupsd)
  ### Beispiele für CD DVD BD   0209-no-gui-burn_de.md   Link: [](0209-no-gui-burn_de.md#beispiele-für-cd-dvd-bd)
  ### Beispiele mit verschiedenen Plattengrößen   0310-part-size-examp_de.md   Link: [](0310-part-size-examp_de.md#beispiele-mit-verschiedenen-plattengrößen)
@@ -83,7 +85,7 @@ Erstellt am 2022-06-05
  ### DVD mit Windows brennen   0208-iso-to-dvd_de.md   Link: [](0208-iso-to-dvd_de.md#dvd-mit-windows-brennen)
  ### Ein neues Passwort setzen   0202-live-mode_de.md   Link: [](0202-live-mode_de.md#ein-neues-passwort-setzen)
  ### Eingerichtete User auf dem Live-Medium   0202-live-mode_de.md   Link: [](0202-live-mode_de.md#eingerichtete-user-auf-dem-live-medium)
- ### Entfernen alter Kernel   0707-sys-admin-kern-upg_de.md   Link: [](0707-sys-admin-kern-upg_de.md#entfernen-alter-kernel)
+ ### Entfernen alter Kernel   0708-sys-admin-kern-upg_de.md   Link: [](0708-sys-admin-kern-upg_de.md#entfernen-alter-kernel)
  ### Erstellung neuer Einhängepunkte   0311-part-uuid_de.md   Link: [](0311-part-uuid_de.md#erstellung-neuer-einhängepunkte)
  ### Erstkonfiguration   0522-lamp-sql_de.md   Link: [](0522-lamp-sql_de.md#erstkonfiguration)
  ### Erweiterte Befehle von gdisk   0313-part-gdisk_de.md   Link: [](0313-part-gdisk_de.md#erweiterte-befehle-von-gdisk)
@@ -132,8 +134,8 @@ Erstellt am 2022-06-05
  ### journald über das Netzwerk   0717-systemd-journald_de.md   Link: [](0717-systemd-journald_de.md#journald-über-das-netzwerk)
  ### journald.conf   0717-systemd-journald_de.md   Link: [](0717-systemd-journald_de.md#journald.conf)
  ### journald   0717-systemd-journald_de.md   Link: [](0717-systemd-journald_de.md#journald)
-  ## Kernel Upgrade   0707-sys-admin-kern-upg_de.md   Link: [](0707-sys-admin-kern-upg_de.md#kernel-upgrade)
- ### Kernel-Aktualisierung ohne Systemaktualisierung   0707-sys-admin-kern-upg_de.md   Link: [](0707-sys-admin-kern-upg_de.md#kernel-aktualisierung-ohne-systemaktualisierung)
+  ## Kernel Upgrade   0708-sys-admin-kern-upg_de.md   Link: [](0708-sys-admin-kern-upg_de.md#kernel-upgrade)
+ ### Kernel-Aktualisierung ohne Systemaktualisierung   0708-sys-admin-kern-upg_de.md   Link: [](0708-sys-admin-kern-upg_de.md#kernel-aktualisierung-ohne-systemaktualisierung)
  ### Konfiguration im Terminal   0502-inet-iwd_de.md   Link: [](0502-inet-iwd_de.md#konfiguration-im-terminal)
  ### Konfiguration von Netzwerken   0100-wel-quickstart_de.md   Link: [](0100-wel-quickstart_de.md#konfiguration-von-netzwerken)
  ### Konzeption des systemd   0710-systemd-start_de.md   Link: [](0710-systemd-start_de.md#konzeption-des-systemd)
@@ -157,7 +159,9 @@ Erstellt am 2022-06-05
  ### Mindestanforderungen   0310-part-size-examp_de.md   Link: [](0310-part-size-examp_de.md#mindestanforderungen)
  ### Minimale Systemanforderungen   0201-cd-content_de.md   Link: [](0201-cd-content_de.md#minimale-systemanforderungen)
  ### Mit root-Rechten auf der Live-DVD   0202-live-mode_de.md   Link: [](0202-live-mode_de.md#mit-root-rechten-auf-der-live-dvd)
- ### Module   0707-sys-admin-kern-upg_de.md   Link: [](0707-sys-admin-kern-upg_de.md#module)
+ ### Module   0708-sys-admin-kern-upg_de.md   Link: [](0708-sys-admin-kern-upg_de.md#module)
+  ## Nala Paketverwaltung   0707-sys-admin-nala_de.md   Link: [](0707-sys-admin-nala_de.md#nala-paketverwaltung)
+ ### Nala verwenden   0707-sys-admin-nala_de.md   Link: [](0707-sys-admin-nala_de.md#nala-verwenden)
   ## Network Manager Kommandline Tool   0501-inet-nm-cli_de.md   Link: [](0501-inet-nm-cli_de.md#network-manager-kommandline-tool)
  ### Network Manager verwenden   0501-inet-nm-cli_de.md   Link: [](0501-inet-nm-cli_de.md#network-manager-verwenden)
    # Netzwerk   0500-network_de.md   Link: [](0500-network_de.md#netzwerk)

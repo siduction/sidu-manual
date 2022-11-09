@@ -13,7 +13,7 @@
 # nach 'Link: ' und fügen Sie den Text, der angezeigt werden soll,
 # zwischen den eckigen Klammern ein.
 #
-Erstellt am 2022-06-05
+Erstellt am 2022-11-08
 
 
 0000-welcome_de.md   # Willkommen   Link: [](0000-welcome_de.md#willkommen)
@@ -229,10 +229,14 @@ Erstellt am 2022-06-05
 0706-sys-admin-apt-localmirr_de.md   ## Lokaler APT-Mirror   Link: [](0706-sys-admin-apt-localmirr_de.md#lokaler-apt-mirror)
 0706-sys-admin-apt-localmirr_de.md   ### Server installieren   Link: [](0706-sys-admin-apt-localmirr_de.md#server-installieren)
 0706-sys-admin-apt-localmirr_de.md   ### Client Konfiguration   Link: [](0706-sys-admin-apt-localmirr_de.md#client-konfiguration)
-0707-sys-admin-kern-upg_de.md   ## Kernel Upgrade   Link: [](0707-sys-admin-kern-upg_de.md#kernel-upgrade)
-0707-sys-admin-kern-upg_de.md   ### Kernel-Aktualisierung ohne Systemaktualisierung   Link: [](0707-sys-admin-kern-upg_de.md#kernel-aktualisierung-ohne-systemaktualisierung)
-0707-sys-admin-kern-upg_de.md   ### Module   Link: [](0707-sys-admin-kern-upg_de.md#module)
-0707-sys-admin-kern-upg_de.md   ### Entfernen alter Kernel   Link: [](0707-sys-admin-kern-upg_de.md#entfernen-alter-kernel)
+0707-sys-admin-nala_de.md   ## Nala Paketverwaltung   Link: [](0707-sys-admin-nala_de.md#nala-paketverwaltung)
+0707-sys-admin-nala_de.md   ### Nala verwenden   Link: [](0707-sys-admin-nala_de.md#nala-verwenden)
+0707-sys-admin-nala_de.md   ### Befehle analog zu APT   Link: [](0707-sys-admin-nala_de.md#befehle-analog-zu-apt)
+0707-sys-admin-nala_de.md   ### Befehle die APT nicht enthält   Link: [](0707-sys-admin-nala_de.md#befehle-die-apt-nicht-enthält)
+0708-sys-admin-kern-upg_de.md   ## Kernel Upgrade   Link: [](0708-sys-admin-kern-upg_de.md#kernel-upgrade)
+0708-sys-admin-kern-upg_de.md   ### Kernel-Aktualisierung ohne Systemaktualisierung   Link: [](0708-sys-admin-kern-upg_de.md#kernel-aktualisierung-ohne-systemaktualisierung)
+0708-sys-admin-kern-upg_de.md   ### Module   Link: [](0708-sys-admin-kern-upg_de.md#module)
+0708-sys-admin-kern-upg_de.md   ### Entfernen alter Kernel   Link: [](0708-sys-admin-kern-upg_de.md#entfernen-alter-kernel)
 0710-systemd-start_de.md   ## Systemd der System- und Dienste-Manager   Link: [](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager)
 0710-systemd-start_de.md   ### Konzeption des systemd   Link: [](0710-systemd-start_de.md#konzeption-des-systemd)
 0710-systemd-start_de.md   ### Unit Typen   Link: [](0710-systemd-start_de.md#unit-typen)
