@@ -42,42 +42,7 @@ Viele der von APT bekannten Befehle sind in Nala identisch. In der Grundeinstell
 Die benutzerfreundliche Aufbereitung der Ausgabe im Terminal erleichtert die Übersicht, wie das Beispiel zeigt.  
 (Um root-Rechte zu erlangen, wurde im Befehl *"doas"* verwendet.)
 
-~~~
-user1@pc1:~$ doas nala install yapf3
-============================================================
- Installieren
-============================================================
-  Paket:              Version:                      Größe:
-  python3-yapf        0.32.0-1                      133 KB
-  yapf3               0.32.0-1                       30 KB
-
-============================================================
- Zusammenfassung
-============================================================
- Installieren 2 Pakete
-
- Speicherplatz erforderlich  892 KB
-
-Möchtest du fortfahren? [J/n] j
-╭─ Pakete installieren ────────────────────────────────────╮
-│Auspacken:       python3-yapf (0.32.0-1)                  │
-│Auspacken:       yapf3 (0.32.0-1)                         │
-│Konfigurieren:   python3-yapf (0.32.0-1)                  │
-│Konfigurieren:   yapf3 (0.32.0-1)                         │
-│Wird bearbeitet: triggers for runit (2.1.2-50)            │
-│Wird bearbeitet: triggers for man-db (2.11.0-1+b1)        │
-│Running kernel seems to be up-to-date.                    │
-│No services need to be restarted.                         │
-│No containers need to be restarted.                       │
-│No user sessions are running outdated binaries.           │
-│No VM guests are running outdated hypervisor (qemu)       │
-│binaries on this host.                                    │
-│╭────────────────────────────────────────────────────────╮│
-││✔ Ausführen von dpkg … ━━━━━━━━━━ 100.0% • 0:00:00 • 5/5││
-│╰────────────────────────────────────────────────────────╯│
-╰──────────────────────────────────────────────────────────╯
-Erfolgreich beendet
-~~~
+![Nala install](./images-de/nala/nala-install-de.png)
 
 Im ersten Teil der Ausgabe erhalten wir eine Liste der zu installierenden Pakete mit der Angabe ihrer Versionen und Größe. Nach der Bestätigung listet der zweite Teil die ausgeführten Aktionen auf.
 
@@ -97,67 +62,20 @@ Bei einem Download werden von jedem der Server bis zu drei Pakete gleichzeitig g
 
 Der Befehl **`nala history`**, ohne Unterbefehl aufgerufen, zeigt eine Zusammenfassung aller mit Nala durchgeführten Aktionen. Jede Zeile entspricht einer Aktion und enthält die ID, das Kommando, den Zeitstempel, die Anzahl der geänderten Pakete und den User, der die Aktion angefordert hat. Aktionen, die mit anderen Programmen erfolgten, werden nicht erfasst.
 
-~~~
-user1@pc1:~$ nala history
- ID  Command                      Date and Time            Altered  Requested-By
-  [...]
- 66  upgrade libsmbclient samba…  2022-10-23 15:49:40 CET        5  root (0)
- 67  upgrade apt apt-transport-…  2022-11-02 11:38:41 CET      308  root (0)
- 68  install yapf3                2022-11-04 12:56:25 CET        2  user1 (1000)
-~~~
+![Nala install](./images-de/nala/nala-history-de.png)
 
 Details zu einer Aktion aus der History zeigt der gleiche Befehl mit dem angehängten Unterbefehl `info <ID>`.
 
-~~~
-user1@pc1:~$ nala history info 68
-============================================================
- Installiert
-============================================================
-  Paket:              Version:                      Größe:
-  python3-yapf        0.32.0-1                      133 KB
-  yapf3               0.32.0-1                       30 KB
-
-============================================================
- Zusammenfassung
-============================================================
- Installiert 2 Pakete
-~~~
+![Nala install](./images-de/nala/nala-history-info-de.png)
 
 Wollen wir nun die Installation von *"yapf3"* mit den Abhängigkeiten, in unserem Fall *"python3-yapf"*, rückgängig machen, benutzen wir dafür den Unterbefehl `undo <ID>`.  
 (Auch hier erlangt **user1** root-Rechte durch die Verwendung von *"doas"*.)
 
-~~~
-user1@pc1:~$ doas nala history undo 68
-============================================================
- Entfernen
-============================================================
-  Paket:              Version:                      Größe:
-  python3-yapf        0.32.0-1                      849 KB
-  yapf3               0.32.0-1                       43 KB
-
-============================================================
- Zusammenfassung
-============================================================
- Entfernen 2 Pakete
- 
- Speicherplatz freizugeben  892 KB
-
-Möchtest du fortfahren? [J/n] j
-╭─ Verlauf rückgängig machen 68 ───────────────────────────╮
-│Entferne:        yapf3 (0.32.0-1)                         │
-│Entferne:        python3-yapf (0.32.0-1)                  │
-│Wird bearbeitet: triggers for runit (2.1.2-50)            │
-│Wird bearbeitet: triggers for man-db (2.11.0-1+b1)        │
-│╭────────────────────────────────────────────────────────╮│
-││✔ Ausführen von dpkg … ━━━━━━━━━━ 100.0% • 0:00:00 • 5/5││
-│╰────────────────────────────────────────────────────────╯│
-╰──────────────────────────────────────────────────────────╯
-Erfolgreich beendet
-~~~
+![Nala install](./images-de/nala/nala-history-undo-de.png)
 
 Im ersten Teil der Ausgabe sehen wir die zu entfernenden Pakete mit der Angabe ihrer Versionen und Größe. Nach der Bestätigung listet der zweite Teil die ausgeführten Aktionen auf.  
 Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verwenden wollen, hilft der Befehl `nala history redo <ID>` weiter, um die Aktion noch einmal auszuführen. Mit dem Befehl `nala history clear <ID>` lassen sich Einträge aus der History entfernen, `nala history clear --all` entfernt alle Einträge.
 
 In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo <ID>` und `redo <ID>` derzeit nur die Aktionen Installieren oder Entfernen. In einer zukünftigen Version, die dann auf der Programmiersprache Rust basieren wird, sollen sich komplette Dist-Upgrades zurückrollen lassen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-11-06</div>
+<div id="rev">Zuletzt bearbeitet: 2022-11-09</div>

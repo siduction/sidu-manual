@@ -44,42 +44,7 @@ Many of the commands known from APT are identical in Nala. By default, Nala alwa
 The user-friendly formatting of the output in the terminal facilitates the overview, as the example shows.  
 (To gain root privileges, *"doas"* was used in the command.)
 
-~~~
-user1@pc1:~$ doas nala install yapf3
-============================================================
- Installing
-============================================================
-  Package:            Version:                       Size:
-  python3-yapf        0.32.0-1                      133 KB
-  yapf3               0.32.0-1                       30 KB
-
-============================================================
- Summary
-============================================================
- Install 2 Packages
-
- Disk space required  892 KB
-
-Do you want to continue? [Y/n] y
-╭─ Installing packages ────────────────────────────────────╮
-│Unpacking:  python3-yapf (0.32.0-1)                       │
-│Unpacking:  yapf3 (0.32.0-1)                              │
-│Setting up: python3-yapf (0.32.0-1)                       │
-│Setting up: yapf3 (0.32.0-1)                              │
-│Processing: triggers for runit (2.1.2-50)                 │
-│Processing: triggers for man-db (2.11.0-1+b1)             │
-│Running kernel seems to be up-to-date.                    │
-│No services need to be restarted.                         │
-│No containers need to be restarted.                       │
-│No user sessions are running outdated binaries.           │
-│No VM guests are running outdated hypervisor (qemu)       │
-│binaries on this host.                                    │
-│╭────────────────────────────────────────────────────────╮│
-││✔ Running von dpkg … ━━━━━━━━━━━━ 100.0% • 0:00:00 • 5/5││
-│╰────────────────────────────────────────────────────────╯│
-╰──────────────────────────────────────────────────────────╯
-Finished Successfully
-~~~
+![Nala install](./images-en/nala/nala-install-en.png)
 
 In the first part of the output we get a list of the packages to be installed with the indication of their versions and size. After confirmation, the second part lists the actions performed.
 
@@ -98,67 +63,20 @@ During download, up to three packages are fetched from the server simultaneously
 
 The **`nala history`** command, called without a subcommand, shows a summary of all actions performed with Nala. Each line corresponds to an action and contains the ID, the command, the timestamp, the number of packages changed, and the user who requested the action. Actions performed by other programs are not recorded.
 
-~~~
-user1@pc1:~$ nala history
- ID  Command                      Date and Time            Altered  Requested-By
-  [...]
- 66  upgrade libsmbclient samba…  2022-10-23 15:49:40 CET        5  root (0)
- 67  upgrade apt apt-transport-…  2022-11-02 11:38:41 CET      308  root (0)
- 68  install yapf3                2022-11-04 12:56:25 CET        2  user1 (1000)
-~~~
+![Nala install](./images-en/nala/nala-history-en.png)
 
 Details about an action from the history are shown by the same command with the attached subcommand `info <ID>`.
 
-~~~
-user1@pc1:~$ nala history info 68
-============================================================
- Installed
-============================================================
-  Package:            Version:                       Size:
-  python3-yapf        0.32.0-1                      133 KB
-  yapf3               0.32.0-1                       30 KB
-
-============================================================
- Summary
-============================================================
- Installed 2 Packages
-~~~
+![Nala install](./images-en/nala/nala-history-info-en.png)
 
 If we now want to undo the installation of *"yapf3"* with its dependencies, in our case *"python3-yapf "*, we use the subcommand `undo <ID>` for this.  
 (Again, **user1** gets root privileges by using *"doas "*.)
 
-~~~
-user1@pc1:~$ doas nala history undo 68
-============================================================
- Removing
-============================================================
-  Package:            Version:                       Size:
-  python3-yapf        0.32.0-1                      849 KB
-  yapf3               0.32.0-1                       43 KB
-
-============================================================
- Summary
-============================================================
- Remove 2 Packages
-
- Disk space to free  892 KB
-
-Do you want to continue? [Y/n] y
-╭─ History Undo 68 ────────────────────────────────────────╮
-│Removing:   yapf3 (0.32.0-1)                              │
-│Removing:   python3-yapf (0.32.0-1)                       │
-│Processing: triggers for runit (2.1.2-50)                 │
-│Processing: triggers for man-db (2.11.0-1+b1)             │
-│╭────────────────────────────────────────────────────────╮│
-││✔ Running dpkg … ━━━━━━━━━━━━━━━━ 100.0% • 0:00:00 • 5/5││
-│╰────────────────────────────────────────────────────────╯│
-╰──────────────────────────────────────────────────────────╯
-Finished Successfully
-~~~
+![Nala install](./images-en/nala/nala-history-undo-en.png)
 
 In the first part of the output, we see the packages to be removed with the indication of their versions and size. After confirmation, the second part lists the actions performed.  
 If we change our mind and want to use the packages again, the `nala history redo <ID>` command will help us to perform the action again. The `nala history clear <ID>` command can be used to remove entries from the history, `nala history clear --all` removes all entries.
 
 In the Nala version 0.11.1 described here, the subcommands `undo <ID>` and `redo <ID>` currently only support the actions Install or Remove. In a future version, which will be based on the Rust programming language, it should be possible to roll back complete dist upgrades.
 
-<div id="rev">Last edited: 2022-11-08</div>
+<div id="rev">Last edited: 2022-11-09</div>
