@@ -36,47 +36,77 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#samba">SAMBA</a>
 <ul>
 <li><a href="#client-konfiguration">Client-Konfiguration</a></li>
-<li><a href="#siduction-als-samba-server">siduction als Samba-Server</a></li>
+<li><a href="#siduction-als-samba-server">siduction als
+Samba-Server</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="samba">SAMBA</h2>
 <h3 id="client-konfiguration">Client-Konfiguration</h3>
-<p><strong>um mit siduction &uuml;ber das Netzwerk auf Windows-Freigaben zugreifen zu k&ouml;nnen</strong></p>
+<p><strong>um mit siduction &uuml;ber das Netzwerk auf Windows-Freigaben
+zugreifen zu k&ouml;nnen</strong></p>
 <ul>
-<li><p>Alle Befehle werden in einem Terminal oder einer Konsole als <strong>root</strong> ausgef&uuml;hrt.</p></li>
-<li><p>Die URL wird in Dolphin als normaler <strong>user</strong> aufgerufen .<br />
+<li><p>Alle Befehle werden in einem Terminal oder einer Konsole als
+<strong>root</strong> ausgef&uuml;hrt.</p></li>
+<li><p>Die URL wird in Dolphin als normaler <strong>user</strong>
+aufgerufen .<br />
 server = Servername oder IP der Windows-Maschine<br />
 share = Name der Freigabe</p>
-<p>Im KDE-Dateimanager Dolphin wird die URL folgenderma&szlig;en eingeben: <code>smb://server</code> oder mit dem gesamten Pfad: <code>smb://server/share</code></p></li>
+<p>Im KDE-Dateimanager Dolphin wird die URL folgenderma&szlig;en eingeben:
+<code>smb://server</code> oder mit dem gesamten Pfad:
+<code>smb://server/share</code></p></li>
 </ul>
-<p>In einer Konsole k&ouml;nnen die Freigaben auf einem Server damit gesehen werden:</p>
+<p>In einer Konsole k&ouml;nnen die Freigaben auf einem Server damit gesehen
+werden:</p>
 <pre><code>smbclient -L server</code></pre>
-<p>Um eine Freigabe in einem Verzeichnis sehen zu k&ouml;nnen (mit Zugriff f&uuml;r ALLE User), muss ein Einh&auml;ngeort (Mountpoint) existieren. Ist das nicht der Fall, muss ein Verzeichnis als Einh&auml;ngepunkt erstellt werden (der Name ist beliebig):</p>
+<p>Um eine Freigabe in einem Verzeichnis sehen zu k&ouml;nnen (mit Zugriff
+f&uuml;r ALLE User), muss ein Einh&auml;ngeort (Mountpoint) existieren. Ist das
+nicht der Fall, muss ein Verzeichnis als Einh&auml;ngepunkt erstellt werden
+(der Name ist beliebig):</p>
 <pre><code>mkdir -p /mnt/server_share</code></pre>
 <p>Eine Freigabe wird mit diesem Befehl eingeh&auml;ngt:</p>
 <pre><code>mount -t cifs -o username=Administrator,uid=$UID,gid=$GID //server/share /mnt/server_share</code></pre>
-<p>sollte es hier zu einer Fehlermeldung kommen, dann kann das an der verwendeten SMB Protokoll-Version liegen. In Debian wird SMB 1.0 aus Sicherheitsgr&uuml;nden nicht mehr benutzt. Leider gibt es auch heute noch Systeme, welche SMB nur per Version 1.0 bereit stellen. Um auf solch eine Freigabe zugreifen zu k&ouml;nnen, wird als Mountoption dann noch <code>vers=1.0</code> ben&ouml;tigt. Der komplette Befehl lautet dann</p>
+<p>sollte es hier zu einer Fehlermeldung kommen, dann kann das an der
+verwendeten SMB Protokoll-Version liegen. In Debian wird SMB 1.0 aus
+Sicherheitsgr&uuml;nden nicht mehr benutzt. Leider gibt es auch heute noch
+Systeme, welche SMB nur per Version 1.0 bereit stellen. Um auf solch
+eine Freigabe zugreifen zu k&ouml;nnen, wird als Mountoption dann noch
+<code>vers=1.0</code> ben&ouml;tigt. Der komplette Befehl lautet dann</p>
 <pre><code>mount -t cifs -o username=Administrator,vers=1.0,uid=$UID,gid=$GID //server/share /mnt/server_share</code></pre>
 <p>Eine Verbindung wird mit diesem Befehl beendet:</p>
 <pre><code>umount /mnt/server_share</code></pre>
-<p>Um einen Samba-Share automatisch einzubinden, kann die Datei <code>/etc/fstab</code> nach folgendem Muster erg&auml;nzt werden (alles in einer Zeile):</p>
+<p>Um einen Samba-Share automatisch einzubinden, kann die Datei
+<code>/etc/fstab</code> nach folgendem Muster erg&auml;nzt werden (alles in
+einer Zeile):</p>
 <pre><code>//server/share /mnt/server_share cifs noauto,x-systemd.
 automount,x-systemd.idle-timeout=300,user=username,
 password=**********,uid=$UID,gid=$GID   0 0</code></pre>
-<p>Es ist aber nicht empfehlenswert, das Passwort im Klartext in die fstab zu schreiben. Als bessere Variante erzeugt man <code>~.smbcredentials</code> mit folgendem Inhalt an:</p>
+<p>Es ist aber nicht empfehlenswert, das Passwort im Klartext in die
+fstab zu schreiben. Als bessere Variante erzeugt man
+<code>~.smbcredentials</code> mit folgendem Inhalt an:</p>
 <pre><code>username=&lt;benutzer&gt;
 password=&lt;passwort&gt;</code></pre>
-<p>Der resultierende Eintrag f&uuml;r /etc/fstab ist dann (alles in einer Zeile):</p>
+<p>Der resultierende Eintrag f&uuml;r /etc/fstab ist dann (alles in einer
+Zeile):</p>
 <pre><code>//server/share /mnt/server_share cifs noauto,x-systemd.
 automount,x-systemd.idle-timeout=300,credentials=&lt;/pfad/
 zu/.smbcredentials&gt;,uid=$UID,gid=$GID 0 0</code></pre>
-<p>Die Variablen <em>“UID”</em> und <em>“GID”</em> entsprechen denen des users, dem das Share gegeben werden soll. Man kann aber auch <code>uid=&lt;username&gt;</code> und <code>gid=&lt;groupname&gt;</code> schreiben.</p>
+<p>Die Variablen <em>“UID”</em> und <em>“GID”</em> entsprechen denen des
+users, dem das Share gegeben werden soll. Man kann aber auch
+<code>uid=&lt;username&gt;</code> und <code>gid=&lt;groupname&gt;</code>
+schreiben.</p>
 <h3 id="siduction-als-samba-server">siduction als Samba-Server</h3>
-<p>Nat&uuml;rlich kann man in siduction auch einen SMB-Server stellen. Die Einrichtung als Samba-Server hier im Handbuch zu beschreiben w&uuml;rde den Rahmen allerdings sprengen. Das Internet h&auml;lt viele HowTo zu diesem Thema bereit.</p>
+<p>Nat&uuml;rlich kann man in siduction auch einen SMB-Server stellen. Die
+Einrichtung als Samba-Server hier im Handbuch zu beschreiben w&uuml;rde den
+Rahmen allerdings sprengen. Das Internet h&auml;lt viele HowTo zu diesem
+Thema bereit.</p>
 <p>Unsere Empfehlungen:</p>
-<p><a target="_blank" href="https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian">Thomas Krenn, Einfache Samba Freigabe unter Debian</a><br />
-<a target="_blank" href="https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html">Debian, Windows Freigaben mit Samba</a></p>
+<p><a
+href="https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian">Thomas
+Krenn, Einfache Samba Freigabe unter Debian</a><br />
+<a
+href="https://debian-handbook.info/browse/de-DE/stable/sect.windows-file-server-with-samba.html">Debian,
+Windows Freigaben mit Samba</a></p>
 <p>Es finden sich noch viele weitere Seiten zu diesem Thema im Netz.</p>
 <div id="rev">
 Zuletzt bearbeitet: 2022-04-20

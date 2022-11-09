@@ -35,23 +35,29 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#grafiktreiber">Grafiktreiber</a>
 <ul>
-<li><a href="#open-source-xorg-treiber">Open Source Xorg-Treiber</a></li>
+<li><a href="#open-source-xorg-treiber">Open Source
+Xorg-Treiber</a></li>
 <li><a href="#propriet&auml;re-treiber">Propriet&auml;re Treiber</a></li>
 <li><a href="#videotreiber-2d">Videotreiber 2D</a></li>
 <li><a href="#videotreiber-3d">Videotreiber 3D</a></li>
-<li><a href="#nvidia-closed-source-treiber">nVidia closed Source Treiber</a></li>
+<li><a href="#nvidia-closed-source-treiber">nVidia closed Source
+Treiber</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="grafiktreiber">Grafiktreiber</h2>
 <p><strong>f&uuml;r nVidea, Intel, ATI/AMD</strong></p>
-<p>Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik findet hier keine Beachtung.</p>
+<p>Wir gehen hier im Handbuch nur auf die verbreitetsten Grafikkarten
+ein. Exotische oder relative alte Grafikhardware, sowie Server-Grafik
+findet hier keine Beachtung.</p>
 <h3 id="open-source-xorg-treiber">Open Source Xorg-Treiber</h3>
 <p>Welche Grafikhardware verbaut ist erf&auml;hrt man relativ einfach</p>
 <pre><code>inxi -G
 lspci | egrep -i &quot;vga|3d|display&quot;</code></pre>
-<p>Diese Information ist auch &uuml;beraus wichtig, sollte man Probleme mit der Grafik haben und Hilfe im Forum oder dem IRC suchen.</p>
-<p><strong>Das Grafiksystem unter Linux besteht aus 4 grundlegenden Teilen:</strong></p>
+<p>Diese Information ist auch &uuml;beraus wichtig, sollte man Probleme mit
+der Grafik haben und Hilfe im Forum oder dem IRC suchen.</p>
+<p><strong>Das Grafiksystem unter Linux besteht aus 4 grundlegenden
+Teilen:</strong></p>
 <ul>
 <li><p>Kernel Treiber</p>
 <ul>
@@ -69,34 +75,70 @@ lspci | egrep -i &quot;vga|3d|display&quot;</code></pre>
 <li>xserver-xorg-video-intel</li>
 <li>xserver-xorg-video-nouveau</li>
 </ul>
-<p><em>Xorg kann auch den modesetting-ddx verwenden, welcher mittlerweile Bestandteil des Xservers selbst ist. Dieser wird automatisch f&uuml;r Intel Grafik benutzt und auch dann, wenn kein spezielles xserver-xorgvideo-foo Paket installiert ist.</em></p></li>
+<p><em>Xorg kann auch den modesetting-ddx verwenden, welcher
+mittlerweile Bestandteil des Xservers selbst ist. Dieser wird
+automatisch f&uuml;r Intel Grafik benutzt und auch dann, wenn kein spezielles
+xserver-xorgvideo-foo Paket installiert ist.</em></p></li>
 <li><p>dri/mesa</p>
 <ul>
 <li>libgl1-mesa-glx</li>
 <li>libgl1-mesa-dri</li>
-<li>libgl1-mesa-drivers <em>Dieser Teil von Xorg ist die freie OpenGL Schnittstelle f&uuml;r Xorg.</em></li>
+<li>libgl1-mesa-drivers <em>Dieser Teil von Xorg ist die freie OpenGL
+Schnittstelle f&uuml;r Xorg.</em></li>
 </ul></li>
 </ul>
-<p>Open Source Xorg-Treiber f&uuml;r nVidia (modesetting/nouveau), ATI/AMD (modesetting/radeon/amdgpu), Intel (modesetting/intel) und weitere sind mit siduction vorinstalliert.</p>
-<p>Anmerkung: xorg.conf wird f&uuml;r Open-Source-Treiber in der Regel nicht mehr ben&ouml;tigt Ausnahmen sind z.B. Mehrschirmbetrieb.</p>
+<p>Open Source Xorg-Treiber f&uuml;r nVidia (modesetting/nouveau), ATI/AMD
+(modesetting/radeon/amdgpu), Intel (modesetting/intel) und weitere sind
+mit siduction vorinstalliert.</p>
+<p>Anmerkung: xorg.conf wird f&uuml;r Open-Source-Treiber in der Regel nicht
+mehr ben&ouml;tigt Ausnahmen sind z.B. Mehrschirmbetrieb.</p>
 <h3 id="propriet&auml;re-treiber">Propriet&auml;re Treiber</h3>
-<p>Propriet&auml;re Treiber gibt es faktisch nur noch f&uuml;r nVidia Grafikkarten. AMD hat zwar auch einen propriet&auml;ren Treiber namens amdgpu-pro, dieser unterst&uuml;tzt aber offiziell nur Ubuntu in bestimmten Versionen und liegt in Debian nicht paketiert vor. Au&szlig;erdem ist dieser Treiber eher f&uuml;r professionelle Karten denn f&uuml;r Desktop Karten konzipiert.</p>
+<p>Propriet&auml;re Treiber gibt es faktisch nur noch f&uuml;r nVidia
+Grafikkarten. AMD hat zwar auch einen propriet&auml;ren Treiber namens
+amdgpu-pro, dieser unterst&uuml;tzt aber offiziell nur Ubuntu in bestimmten
+Versionen und liegt in Debian nicht paketiert vor. Au&szlig;erdem ist dieser
+Treiber eher f&uuml;r professionelle Karten denn f&uuml;r Desktop Karten
+konzipiert.</p>
 <p>Hier erh&auml;ltst du mehr Informationen zu den Treibern von<br />
 <a target="_blank" href="http://www.x.org/wiki/IntelGraphicsDriver">Intel</a><br />
 <a target="_blank" href="http://www.x.org/wiki/radeon">ATI/AMD</a><br />
-<a target="_blank" href="http://nouveau.freedesktop.org/wiki/FeatureMatrix">nouveau</a><br />
+<a
+href="http://nouveau.freedesktop.org/wiki/FeatureMatrix">nouveau</a><br />
 <a target="_blank" href="http://xorg.freedesktop.org/">X.Org</a>.</p>
 <h3 id="videotreiber-2d">Videotreiber 2D</h3>
-<p>So ziemlich jede Grafikkarte, welche einen <a target="_blank" href="https://wiki.debian.org/KernelModesetting">KMS</a> Treiber kernelseitig benutzt, ist f&uuml;r den 2D Betrieb unter allen Oberfl&auml;chen geeignet. In aller Regel (bis auf wenige Ausnahmen exotischer oder alter Hardware) ist auch 3D Beschleunigung vorhanden.</p>
+<p>So ziemlich jede Grafikkarte, welche einen <a
+href="https://wiki.debian.org/KernelModesetting">KMS</a> Treiber
+kernelseitig benutzt, ist f&uuml;r den 2D Betrieb unter allen Oberfl&auml;chen
+geeignet. In aller Regel (bis auf wenige Ausnahmen exotischer oder alter
+Hardware) ist auch 3D Beschleunigung vorhanden.</p>
 <h3 id="videotreiber-3d">Videotreiber 3D</h3>
-<p>3D Beschleunigung steht unter Linux f&uuml;r Intel-, AMD- und nVidia-Grafikkarten zur Verf&uuml;gung. Wie gut die freien Treiber 3D implementiert haben, h&auml;ngt ein wenig von der Grafikkarte selbst ab. Generell ist anzumerken, dass fast alle Grafikkarten nicht-freie Firmware ben&ouml;tigen, um einen problemlosen Betrieb zu erm&ouml;glichen. Diese Firmware gibt es bei Debian nur im non-free Repository, da sie nicht DFSG konform ist. Ist die korrekte Firmware installiert, ist 3D Support mit Intel oder AMD Grafikkarten ohne weiteres Zutun verf&uuml;gbar. Bei nVidia Grafik sieht die Geschichte etwas anders aus. &Auml;ltere Karten, welche seitens nVidia als legacy Karten eingestuft sind, funktionieren relativ gut, auch wenn immer mit Problemen zu rechnen ist, da auch der verwendete Desktop eine Rolle spielt. Der freie nouveau-Treiber wird ohne Unterst&uuml;tzung von nVidia per <a target="_blank" href="https://de.wikipedia.org/wiki/Reverse_Engineering">reverse engineering</a> entwickelt.</p>
-<p>Da f&uuml;r den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und Nvidia ab Fermi) die nicht-freie Firmware ben&ouml;tigt wird, sollte in /etc/apt/sources.list/debian.list ein Eintrag analog</p>
+<p>3D Beschleunigung steht unter Linux f&uuml;r Intel-, AMD- und
+nVidia-Grafikkarten zur Verf&uuml;gung. Wie gut die freien Treiber 3D
+implementiert haben, h&auml;ngt ein wenig von der Grafikkarte selbst ab.
+Generell ist anzumerken, dass fast alle Grafikkarten nicht-freie
+Firmware ben&ouml;tigen, um einen problemlosen Betrieb zu erm&ouml;glichen. Diese
+Firmware gibt es bei Debian nur im non-free Repository, da sie nicht
+DFSG konform ist. Ist die korrekte Firmware installiert, ist 3D Support
+mit Intel oder AMD Grafikkarten ohne weiteres Zutun verf&uuml;gbar. Bei
+nVidia Grafik sieht die Geschichte etwas anders aus. &Auml;ltere Karten,
+welche seitens nVidia als legacy Karten eingestuft sind, funktionieren
+relativ gut, auch wenn immer mit Problemen zu rechnen ist, da auch der
+verwendete Desktop eine Rolle spielt. Der freie nouveau-Treiber wird
+ohne Unterst&uuml;tzung von nVidia per <a
+href="https://de.wikipedia.org/wiki/Reverse_Engineering">reverse
+engineering</a> entwickelt.</p>
+<p>Da f&uuml;r den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und
+Nvidia ab Fermi) die nicht-freie Firmware ben&ouml;tigt wird, sollte in
+/etc/apt/sources.list/debian.list ein Eintrag analog</p>
 <pre><code>deb http://deb.debian.org/debian/ unstable main contrib non-free </code></pre>
-<p>gesetzt sein. Um sich nachfolgende Probleme mit WLAN, Netzwerk, Bluetooth oder &Auml;hnliches zu ersparen, ist ein</p>
+<p>gesetzt sein. Um sich nachfolgende Probleme mit WLAN, Netzwerk,
+Bluetooth oder &Auml;hnliches zu ersparen, ist ein</p>
 <pre><code>apt update &amp;&amp; apt install firmware-linux-nonfree</code></pre>
-<p>sinnvoll. Damit installiert man zwar mehr Firmwares, als man evtl. ben&ouml;tigt, das sollte aber kein Nachteil sein.</p>
+<p>sinnvoll. Damit installiert man zwar mehr Firmwares, als man evtl.
+ben&ouml;tigt, das sollte aber kein Nachteil sein.</p>
 <h3 id="nvidia-closed-source-treiber">nVidia closed Source Treiber</h3>
-<p><strong>Auswahl, Installation mit dkms-Unterst&uuml;tzung und Integration in xorg</strong></p>
+<p><strong>Auswahl, Installation mit dkms-Unterst&uuml;tzung und Integration
+in xorg</strong></p>
 <p>nVidia teilt seine Grafikkarten-Treiber in 7 Generationen auf:</p>
 <ol type="1">
 <li>Riva TNT, TNT2, GeForce, und einige GeForce 2000 GPUs</li>
@@ -105,21 +147,41 @@ lspci | egrep -i &quot;vga|3d|display&quot;</code></pre>
 <li>GeForce 6000 and 7000 series GPUs</li>
 <li>GeForce 8000 and 9000 series GPUs</li>
 <li>GeForce 400 und 500 series GPUs (Fermi GF1xx)</li>
-<li>Geforce 600, 700, 800 (Kepler GK1xx GK2xx, Maxwell GM1xx GM2xx, );<br />
-Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx (Turing TU1xx); Geforce 30xx (Ampere GA1xx)</li>
+<li>Geforce 600, 700, 800 (Kepler GK1xx GK2xx, Maxwell GM1xx GM2xx,
+);<br />
+Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx (Turing TU1xx); Geforce
+30xx (Ampere GA1xx)</li>
 </ol>
-<p>Karten der Generationen 1 - 5 werden seitens nVidia nicht mehr unterst&uuml;tzt, es gibt hierf&uuml;r nur alte Treiber-Versionen, die weder mit aktuellen Kerneln, noch mit aktuellen Versionen des Xorg-Servers funktionieren. F&uuml;r eine komplette und aktuelle Liste unterst&uuml;tzter Grafikchips konsultiere bitte “Supported Products List” auf der <a target="_blank" href="http://www.nvidia.com/object/unix.html">Downloadseite f&uuml;r NVIDIA-Linux Grafiktreiber</a>.</p>
-<p>Debian stellt folgende Versionen der bin&auml;ren Treiber zur Verf&uuml;gung:</p>
+<p>Karten der Generationen 1 - 5 werden seitens nVidia nicht mehr
+unterst&uuml;tzt, es gibt hierf&uuml;r nur alte Treiber-Versionen, die weder mit
+aktuellen Kerneln, noch mit aktuellen Versionen des Xorg-Servers
+funktionieren. F&uuml;r eine komplette und aktuelle Liste unterst&uuml;tzter
+Grafikchips konsultiere bitte “Supported Products List” auf der <a
+href="http://www.nvidia.com/object/unix.html">Downloadseite f&uuml;r
+NVIDIA-Linux Grafiktreiber</a>.</p>
+<p>Debian stellt folgende Versionen der bin&auml;ren Treiber zur
+Verf&uuml;gung:</p>
 <pre><code>- nvidia-legacy-304xx-driver (f&uuml;r 4.)
 - nvidia-legacy-340xx-driver (f&uuml;r 5.)
 - nvidia-legacy-390xx-driver (f&uuml;r 6.)
 - nvidia-driver (f&uuml;r 7.)</code></pre>
-<p>Da es sich hier aber um propriet&auml;re Treiber handelt, muss in den Sources contrib und non-free aktiviert sein (wie auch f&uuml;r die Firmware f&uuml;r freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die kernel-header passend zum laufenden Kernel installiert sind. Das ist der Fall, sobald linux-image-siduction-amd64 und linux-headers-siduction-amd64 installiert sind. Au&szlig;erdem sind die Pakete gcc, make und dkms notwendig. Mit dkms werden zus&auml;tzlich installierte (nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert. Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie folgt installieren:</p>
+<p>Da es sich hier aber um propriet&auml;re Treiber handelt, muss in den
+Sources contrib und non-free aktiviert sein (wie auch f&uuml;r die Firmware
+f&uuml;r freie Treiber). Es ist im Vorfeld sicher zu stellen, dass die
+kernel-header passend zum laufenden Kernel installiert sind. Das ist der
+Fall, sobald linux-image-siduction-amd64 und
+linux-headers-siduction-amd64 installiert sind. Au&szlig;erdem sind die Pakete
+gcc, make und dkms notwendig. Mit dkms werden zus&auml;tzlich installierte
+(nVidia-)Kernelmodule automatisch bei einem Kernelupdate aktualisiert.
+Nachdem man nun mit den genannten Befehlen herausgefunden hat, welche
+nVidia Karte, bzw welchen nVidia Chip man hat, kann man den Treiber wie
+folgt installieren:</p>
 <p><strong>GeForce 8000 and 9000 series</strong></p>
 <pre><code>apt update &amp;&amp; apt install nvidia-legacy-340xx-driver  </code></pre>
 <p><strong>GeForce GF1xx Chipsatz, Fermi Cards</strong></p>
 <pre><code>apt update &amp;&amp; apt install nvidia-legacy-390xx-driver</code></pre>
-<p><strong>Kepler, Maxwell, Pascal und neuer (GKxxx, GMxxx, GPxxx, TU1xx)</strong></p>
+<p><strong>Kepler, Maxwell, Pascal und neuer (GKxxx, GMxxx, GPxxx,
+TU1xx)</strong></p>
 <pre><code>apt update &amp;&amp; apt install nvidia-driver</code></pre>
 <p>Wenn das fehlerfrei durchgelaufen ist, noch ein</p>
 <pre><code>mkdir -p /etc/X11/xorg.conf.d; echo -e &#39;Section &quot;Device&quot;
@@ -127,9 +189,22 @@ Geforce 10xx (Pascal GP1xx), Geforce 16xx/20xx (Turing TU1xx); Geforce 30xx (Amp
  &gt; /etc/X11/xorg.conf.d/20-nvidia.conf
  
 (alles in einer Zeile)</code></pre>
-<p>ausf&uuml;hren um Xorg mitzuteilen, diesen installierten Treiber zu benutzen. Nach einem Reboot sollte das System hoffentlich bis in den Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht starten, so sollte man /var/log/Xorg.0.log konsultieren.</p>
-<p>Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr supportet werden, ist damit zu rechnen, dass selbige mit einem neuen Kernel oder neuem Xorg nicht mehr funktionieren.</p>
-<p>Problematisch sind Notebooks mit Hybridgrafik Intel/nVidia, sogenannte Optimus Hardware. Hier wurde fr&uuml;her auf <a target="_blank" href="https://wiki.debian.org/Bumblebee">Bumblebee</a> verwiesen, diese L&ouml;sung ist aber alles Andere, als optimal. nVidia selbst empfielt hingegen diese Setups per <a target="_blank" href="https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/">PRIME</a> zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es geht, zu vermeiden. Tipps zur Einrichtung f&uuml;r Optimus Hardware k&ouml;nnen wir hier nicht geben.</p>
+<p>ausf&uuml;hren um Xorg mitzuteilen, diesen installierten Treiber zu
+benutzen. Nach einem Reboot sollte das System hoffentlich bis in den
+Desktop starten. Sollten Probleme auftreten, sprich der Desktop nicht
+starten, so sollte man /var/log/Xorg.0.log konsultieren.</p>
+<p>Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr
+supportet werden, ist damit zu rechnen, dass selbige mit einem neuen
+Kernel oder neuem Xorg nicht mehr funktionieren.</p>
+<p>Problematisch sind Notebooks mit Hybridgrafik Intel/nVidia,
+sogenannte Optimus Hardware. Hier wurde fr&uuml;her auf <a
+href="https://wiki.debian.org/Bumblebee">Bumblebee</a> verwiesen, diese
+L&ouml;sung ist aber alles Andere, als optimal. nVidia selbst empfielt
+hingegen diese Setups per <a
+href="https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/">PRIME</a>
+zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es
+geht, zu vermeiden. Tipps zur Einrichtung f&uuml;r Optimus Hardware k&ouml;nnen
+wir hier nicht geben.</p>
 <div id="rev">
 Zuletzt bearbeitet: 2021-05-05
 </div>

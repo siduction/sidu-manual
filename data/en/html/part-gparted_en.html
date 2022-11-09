@@ -38,108 +38,183 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#important-notes">Important notes</a></li>
 <li><a href="#using-gparted">Using GParted</a></li>
 <li><a href="#adjust-fstab">Adjust fstab</a></li>
-<li><a href="#changing-ntfs-partition-sizes-with-gparted">Changing NTFS partition sizes with GParted</a></li>
+<li><a href="#changing-ntfs-partition-sizes-with-gparted">Changing NTFS
+partition sizes with GParted</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="partitioning-with-gparted">Partitioning with GParted</h2>
-<p>Creating or editing partitions is not an everyday task. Therefore, it is a good idea to read the following guide at least once to get familiar with the concept of a partition manager.</p>
+<p>Creating or editing partitions is not an everyday task. Therefore, it
+is a good idea to read the following guide at least once to get familiar
+with the concept of a partition manager.</p>
 <h3 id="important-notes">Important notes</h3>
 <ul>
 <li><p>Always create a data backup first!</p></li>
-<li><p>Regarding the naming of storage devices, consult the chapter about <a href="./part-uuid_en.html#uuid---naming-of-block-devices">UUID, partition naming and fstab</a> because siduction uses naming by UUID by default.</p></li>
-<li><p>Resizing <strong>NTFS partitions</strong> requires an immediate reboot after execution. No further changes to partitions may be made before that since this inevitably will lead to errors. <a href="./part-gparted_en.html#changing-ntfs-partition-sizes-with-gparted">Please read on here.</a></p></li>
-<li><p>A partition needs a file system. Linux can work on and with different file systems.<br />
-For normal use, we recommend the <strong>ext4</strong> file system.<br />
-<strong>NTFS</strong> should be used if the partition is also to be used by a Windows installation. siduction can read and write data to such partitions through the automatically installed <code>ntfs-3g</code>.</p></li>
-<li><p>The complete GParted documentation can be found in many languages on the <a target="_blank" href="https://gparted.org/documentation.php">GParted homepage</a>.</p></li>
+<li><p>Regarding the naming of storage devices, consult the chapter
+about <a href="./part-uuid_en.html#uuid---naming-of-block-devices">UUID,
+partition naming and fstab</a> because siduction uses naming by UUID by
+default.</p></li>
+<li><p>Resizing <strong>NTFS partitions</strong> requires an immediate
+reboot after execution. No further changes to partitions may be made
+before that since this inevitably will lead to errors. <a
+href="./part-gparted_en.html#changing-ntfs-partition-sizes-with-gparted">Please
+read on here.</a></p></li>
+<li><p>A partition needs a file system. Linux can work on and with
+different file systems.<br />
+For normal use, we recommend the <strong>ext4</strong> file
+system.<br />
+<strong>NTFS</strong> should be used if the partition is also to be used
+by a Windows installation. siduction can read and write data to such
+partitions through the automatically installed
+<code>ntfs-3g</code>.</p></li>
+<li><p>The complete GParted documentation can be found in many languages
+on the <a target="_blank" href="https://gparted.org/documentation.php">GParted
+homepage</a>.</p></li>
 </ul>
 <h3 id="using-gparted">Using GParted</h3>
 <p>The program launcher for GParted can be found in</p>
 <ul>
 <li><p><strong>KDE, LXQt, Xfce</strong><br />
-in the application menu - <em>“System”</em> - <em>“GParted”</em></p></li>
+in the application menu - <em>“System”</em> -
+<em>“GParted”</em></p></li>
 <li><p><strong>Gnome</strong><br />
 in <em>“Applications”</em> - <em>“Gparted”</em></p></li>
 </ul>
-<p>After clicking on the launcher, a dialog will open and ask for the root password.</p>
-<p>When GParted starts, the program window opens and the available drives are read.</p>
+<p>After clicking on the launcher, a dialog will open and ask for the
+root password.</p>
+<p>When GParted starts, the program window opens and the available
+drives are read.</p>
 <figure>
-<img src="./images-en/gparted/gparted00-en.png" alt="" /><figcaption>GParted start window</figcaption>
+<img src="./images-en/gparted/gparted00-en.png"
+alt="GParted start window" />
+<figcaption aria-hidden="true">GParted start window</figcaption>
 </figure>
-<p>The first menu item <em>“GParted”</em> opens a drop-down list which allows you to read the drives again, to select a drive or to quit the program.</p>
+<p>The first menu item <em>“GParted”</em> opens a drop-down list which
+allows you to read the drives again, to select a drive or to quit the
+program.</p>
 <figure>
-<img src="./images-en/gparted/gparted01-en.png" alt="" /><figcaption>GParted device overview</figcaption>
+<img src="./images-en/gparted/gparted01-en.png"
+alt="GParted device overview" />
+<figcaption aria-hidden="true">GParted device overview</figcaption>
 </figure>
 <ul>
 <li><p><strong>Edit</strong></p>
-<p>Edit is the 2nd menu item from the left. It shows three grayed out options that are very important and explained below:</p>
+<p>Edit is the 2nd menu item from the left. It shows three grayed out
+options that are very important and explained below:</p>
 <ul>
 <li><em>“Undo last operations”</em>,</li>
 <li><em>“Clear all operations”</em>, and</li>
 <li><em>“Apply all operations”</em>.</li>
 </ul></li>
 <li><p><strong>View</strong></p>
-<p>The next menu item offers the display options <code>Device Information</code> and <code>Pending Operations</code>.</p>
+<p>The next menu item offers the display options
+<code>Device Information</code> and <code>Pending Operations</code>.</p>
 <ul>
 <li><p>Device Information<br />
-The left frame contains details of the drives such as model, size, etc., which are important if there are multiple disks in the system. It can be used to check whether the correct disk has been selected for formatting.</p></li>
+The left frame contains details of the drives such as model, size, etc.,
+which are important if there are multiple disks in the system. It can be
+used to check whether the correct disk has been selected for
+formatting.</p></li>
 <li><p>Pending Operations<br />
-The pending operations are displayed in a frame that opens at the bottom. This information is very useful to have an overview of which operations are to be performed. The frame also opens automatically when an operation is requested for a drive.</p></li>
+The pending operations are displayed in a frame that opens at the
+bottom. This information is very useful to have an overview of which
+operations are to be performed. The frame also opens automatically when
+an operation is requested for a drive.</p></li>
 </ul>
 <p>The two areas are highlighted in green.</p>
 <figure>
-<img src="./images-en/gparted/gparted02-en.png" alt="" /><figcaption>GParted disk information</figcaption>
+<img src="./images-en/gparted/gparted02-en.png"
+alt="GParted disk information" />
+<figcaption aria-hidden="true">GParted disk information</figcaption>
 </figure></li>
 <li><p><strong>Device</strong></p>
-<p>The menu item <code>Create Partition Table...</code> actually contains two options:</p>
+<p>The menu item <code>Create Partition Table...</code> actually
+contains two options:</p>
 <ol type="1">
-<li><p>Create a new (empty) partition table of the same type, and thus remove all old partitions and data in the fastest way.</p></li>
-<li><p>Change the partition table type. It makes sense to change from <strong>msdos-MBR</strong> to <strong>gpt-UEFI</strong> or vice versa. Here, too, all data will be lost.<br />
-In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost. More information about UEFI and GPT can be found on the manual page <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p></li>
+<li><p>Create a new (empty) partition table of the same type, and thus
+remove all old partitions and data in the fastest way.</p></li>
+<li><p>Change the partition table type. It makes sense to change from
+<strong>msdos-MBR</strong> to <strong>gpt-UEFI</strong> or vice versa.
+Here, too, all data will be lost.<br />
+In 2009, UEFI with GPT was introduced, has been gradually spreading ever
+since, and will replace the MBR. While modern UEFI mainboards support
+MBR, the benefits of GPT are lost. More information about UEFI and GPT
+can be found on the manual page <a
+href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
+gdisk</a>.</p></li>
 </ol>
 <figure>
-<img src="./images-en/gparted/gparted03-en.png" alt="" /><figcaption>GParted partition table</figcaption>
+<img src="./images-en/gparted/gparted03-en.png"
+alt="GParted partition table" />
+<figcaption aria-hidden="true">GParted partition table</figcaption>
 </figure>
-<p>The option <code>Attempt Data Rescue...</code> offers the chance to get the data despite a defective partition table.</p>
+<p>The option <code>Attempt Data Rescue...</code> offers the chance to
+get the data despite a defective partition table.</p>
 <figure>
-<img src="./images-en/gparted/gparted04-en.png" alt="" /><figcaption>GParted data recovery</figcaption>
+<img src="./images-en/gparted/gparted04-en.png"
+alt="GParted data recovery" />
+<figcaption aria-hidden="true">GParted data recovery</figcaption>
 </figure></li>
 <li><p><strong>Partition</strong></p>
-<p>The menu item <code>Partition</code> is of utmost importance. For the partition selected below, the menu shows all available operations depending on whether the partition is mounted or unmounted. Note that some of the sub-items can also perform critical or dangerous actions.</p>
+<p>The menu item <code>Partition</code> is of utmost importance. For the
+partition selected below, the menu shows all available operations
+depending on whether the partition is mounted or unmounted. Note that
+some of the sub-items can also perform critical or dangerous
+actions.</p>
 <figure>
-<img src="./images-en/gparted/gparted07-en.png" alt="" /><figcaption>GParted Data Recovery</figcaption>
+<img src="./images-en/gparted/gparted07-en.png"
+alt="GParted Data Recovery" />
+<figcaption aria-hidden="true">GParted Data Recovery</figcaption>
 </figure></li>
 <li><p><strong>Create a new partition</strong></p>
-<p>In the toolbar, the <strong><code>New</code></strong> button allows you to create a new partition if an unallocated area was previously selected. The appearing window lets you specify the size and the file system type for a primary, extended, or logical partition.</p>
+<p>In the toolbar, the <strong><code>New</code></strong> button allows
+you to create a new partition if an unallocated area was previously
+selected. The appearing window lets you specify the size and the file
+system type for a primary, extended, or logical partition.</p>
 <figure>
-<img src="./images-en/gparted/gparted05-en.png" alt="" /><figcaption>GParted New Partition</figcaption>
+<img src="./images-en/gparted/gparted05-en.png"
+alt="GParted New Partition" />
+<figcaption aria-hidden="true">GParted New Partition</figcaption>
 </figure></li>
 <li><p><strong>Resize/Move</strong></p>
-<p>The partition can be resized, enlarged, and moved with the mouse. Alternatively, enter the new values into the provided fields.</p>
+<p>The partition can be resized, enlarged, and moved with the mouse.
+Alternatively, enter the new values into the provided fields.</p>
 <figure>
-<img src="./images-en/gparted/gparted08-en.png" alt="" /><figcaption>GParted resize</figcaption>
+<img src="./images-en/gparted/gparted08-en.png" alt="GParted resize" />
+<figcaption aria-hidden="true">GParted resize</figcaption>
 </figure></li>
 <li><p><strong>If a mistake has been made</strong></p>
 <p>In the <code>Edit</code> menu, you can find the options<br />
 <code>Undo Last Operation</code> and<br />
-<code>Delete All Operations</code>. The area is highlighted in green.</p>
+<code>Delete All Operations</code>. The area is highlighted in
+green.</p>
 <figure>
-<img src="./images-en/gparted/gparted06-en.png" alt="" /><figcaption>Undo GParted</figcaption>
+<img src="./images-en/gparted/gparted06-en.png" alt="Undo GParted" />
+<figcaption aria-hidden="true">Undo GParted</figcaption>
 </figure></li>
 <li><p><strong>Apply</strong></p>
-<p>No changes have been made to the drives yet. If you are sure that all the intended changes are correct, select <code>Apply All Operations</code> in the <code>Edit</code> menu. The following dialog will appear, which should be confirmed.</p>
+<p>No changes have been made to the drives yet. If you are sure that all
+the intended changes are correct, select
+<code>Apply All Operations</code> in the <code>Edit</code> menu. The
+following dialog will appear, which should be confirmed.</p>
 <figure>
-<img src="./images-en/gparted/gparted09-en.png" alt="" /><figcaption>GParted Execute and save</figcaption>
+<img src="./images-en/gparted/gparted09-en.png"
+alt="GParted Execute and save" />
+<figcaption aria-hidden="true">GParted Execute and save</figcaption>
 </figure>
-<p>The duration of the operation depends on the size of the selected partition.</p></li>
+<p>The duration of the operation depends on the size of the selected
+partition.</p></li>
 </ul>
 <h3 id="adjust-fstab">Adjust fstab</h3>
 <p class="warning">
-After the changes have been written to the drives, the /etc/fstab file must be checked and adjusted if necessary.
+After the changes have been written to the drives, the /etc/fstab file
+must be checked and adjusted if necessary.
 </p>
-<p>See the manual page <a href="./part-uuid_en.html#the-fstab">Adjusting fstab</a>.<br />
-In a <strong>root</strong> terminal, enter the commands <strong><code>cat /etc/fstab</code></strong> as well as <strong><code>blkid</code></strong> and compare the UUIDs.</p>
+<p>See the manual page <a href="./part-uuid_en.html#the-fstab">Adjusting
+fstab</a>.<br />
+In a <strong>root</strong> terminal, enter the commands
+<strong><code>cat /etc/fstab</code></strong> as well as
+<strong><code>blkid</code></strong> and compare the UUIDs.</p>
 <pre><code>root@pc1:/# cat /etc/fstab
 # /etc/fstab: static file system information.
 #
@@ -163,17 +238,33 @@ UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /mnt/TEST_res ext4 noauto,users,rw,noa
 /dev/sdb2: UUID=&quot;4c4b9246-2904-40d1-addc-724fc90a2b6a&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;2853e345-02&quot;
 /dev/sdb5: UUID=&quot;e2164479-3f71-4216-a4d4-af3321750322&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;2853e345-05&quot;
 /dev/sdb6: UUID=&quot;2ef32215-d545-4e12-bc00-d0099a218970&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;2853e345-06&quot;</code></pre>
-<p>We can see that the last entry in the <code>fstab</code> (mounted to <code>/mnt/TEST_res</code>) is no longer contained in the <code>blkid</code> list. Instead, we have two new partitions. In this example, the PC would perform a reboot but would not be able to mount <code>/mnt/TEST_res</code> and the two new partitions automatically. The boot process would be delayed considerably.</p>
+<p>We can see that the last entry in the <code>fstab</code> (mounted to
+<code>/mnt/TEST_res</code>) is no longer contained in the
+<code>blkid</code> list. Instead, we have two new partitions. In this
+example, the PC would perform a reboot but would not be able to mount
+<code>/mnt/TEST_res</code> and the two new partitions automatically. The
+boot process would be delayed considerably.</p>
 <p class="warning">
-If the UUID’s for the partitions of <strong>/</strong> (root), <strong>/home</strong>, and <strong>swap</strong> do not match the entries in <strong>/etc/fstab</strong>, it is mandatory to adjust the entries. Otherwise, the system will not start after a reboot.
+If the UUID’s for the partitions of <strong>/</strong> (root),
+<strong>/home</strong>, and <strong>swap</strong> do not match the
+entries in <strong>/etc/fstab</strong>, it is mandatory to adjust the
+entries. Otherwise, the system will not start after a reboot.
 </p>
-<h3 id="changing-ntfs-partition-sizes-with-gparted">Changing NTFS partition sizes with GParted</h3>
-<p><strong>Resizing NTFS partitions requires an immediate reboot after execution. No further changes to partitions may be made before then. This will inevitably lead to errors.</strong></p>
+<h3 id="changing-ntfs-partition-sizes-with-gparted">Changing NTFS
+partition sizes with GParted</h3>
+<p><strong>Resizing NTFS partitions requires an immediate reboot after
+execution. No further changes to partitions may be made before then.
+This will inevitably lead to errors.</strong></p>
 <ul>
-<li>Once Windows has started and the Windows logo has disappeared, a <strong>checkdisk</strong> window appears which says that <strong>C:\</strong> is being checked for errors.</li>
-<li>Please let this AUTOCHECK finish its job: Windows must check the file system after a resize.</li>
-<li>After the check, the computer is automatically rebooted the second time. This ensures that the system can run without problems.</li>
-<li>After the restart, Windows will work properly. However, you have to let the system finish booting and wait for the login window!</li>
+<li>Once Windows has started and the Windows logo has disappeared, a
+<strong>checkdisk</strong> window appears which says that
+<strong>C:\</strong> is being checked for errors.</li>
+<li>Please let this AUTOCHECK finish its job: Windows must check the
+file system after a resize.</li>
+<li>After the check, the computer is automatically rebooted the second
+time. This ensures that the system can run without problems.</li>
+<li>After the restart, Windows will work properly. However, you have to
+let the system finish booting and wait for the login window!</li>
 </ul>
 <div id="rev">
 Last edited: 2022/03/31

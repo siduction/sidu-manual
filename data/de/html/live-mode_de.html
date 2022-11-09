@@ -35,58 +35,96 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#live-dvd-verwenden">Live-DVD verwenden</a>
 <ul>
-<li><a href="#eingerichtete-user-auf-dem-live-medium">Eingerichtete User auf dem Live-Medium</a></li>
-<li><a href="#mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der Live-DVD</a></li>
-<li><a href="#ein-neues-passwort-setzen">Ein neues Passwort setzen</a></li>
-<li><a href="#software-installation-bei-live-sitzung">Software-Installation bei Live-Sitzung</a></li>
+<li><a href="#eingerichtete-user-auf-dem-live-medium">Eingerichtete User
+auf dem Live-Medium</a></li>
+<li><a href="#mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf
+der Live-DVD</a></li>
+<li><a href="#ein-neues-passwort-setzen">Ein neues Passwort
+setzen</a></li>
+<li><a
+href="#software-installation-bei-live-sitzung">Software-Installation bei
+Live-Sitzung</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="live-dvd-verwenden">Live-DVD verwenden</h2>
-<h3 id="eingerichtete-user-auf-dem-live-medium">Eingerichtete User auf dem Live-Medium</h3>
-<p>Auf dem Live-Medium sind die User <strong>siducer</strong> und <strong>root</strong> (der Systemadministrator) eingerichtet.</p>
-<p>F&uuml;r den User <strong>siducer</strong> ist das Passwort <strong>live</strong> gesetzt.<br />
-F&uuml;r den User <strong>root</strong> (Systemadministrator) ist kein Passwort gesetzt.</p>
-<p>Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren bitte den User <strong><code>siducer</code></strong> mit dem Passwort <strong><code>live</code></strong> eingeben.</p>
-<h3 id="mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der Live-DVD</h3>
-<p>Wir beschreiben nachfolgend mehrere M&ouml;glichkeiten, ein Programm mit root-Rechten auszuf&uuml;hren.</p>
+<h3 id="eingerichtete-user-auf-dem-live-medium">Eingerichtete User auf
+dem Live-Medium</h3>
+<p>Auf dem Live-Medium sind die User <strong>siducer</strong> und
+<strong>root</strong> (der Systemadministrator) eingerichtet.</p>
+<p>F&uuml;r den User <strong>siducer</strong> ist das Passwort
+<strong>live</strong> gesetzt.<br />
+F&uuml;r den User <strong>root</strong> (Systemadministrator) ist kein
+Passwort gesetzt.</p>
+<p>Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum
+Entsperren bitte den User <strong><code>siducer</code></strong> mit dem
+Passwort <strong><code>live</code></strong> eingeben.</p>
+<h3 id="mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der
+Live-DVD</h3>
+<p>Wir beschreiben nachfolgend mehrere M&ouml;glichkeiten, ein Programm mit
+root-Rechten auszuf&uuml;hren.</p>
 <p class="warning">
-<strong>Achtung:</strong> <br />Wann immer man mit root-Rechten arbeitet, sollte man genau wissen, was man macht. F&uuml;r das Surfen im Internet und &auml;hnliche Aktionen sind keine root-Rechte n&ouml;tig.
+<strong>Achtung:</strong> <br />Wann immer man mit root-Rechten
+arbeitet, sollte man genau wissen, was man macht. F&uuml;r das Surfen im
+Internet und &auml;hnliche Aktionen sind keine root-Rechte n&ouml;tig.
 </p>
 <ol type="1">
-<li><p>Am einfachsten man &ouml;ffnet ein Terminal und verschafft sich mit der Eingabe <strong><code>su</code></strong> root-Rechte.<br />
-Um jetzt ein Programm, das mit graphischer Oberfl&auml;che arbeitet zu starten, einfach den Programmnamen eingeben.</p>
+<li><p>Am einfachsten man &ouml;ffnet ein Terminal und verschafft sich mit
+der Eingabe <strong><code>su</code></strong> root-Rechte.<br />
+Um jetzt ein Programm, das mit graphischer Oberfl&auml;che arbeitet zu
+starten, einfach den Programmnamen eingeben.</p>
 <pre><code>root@siduction:~# gparted &amp;</code></pre>
-<p>Jetzt wird Gparted mit root-Rechten ausgef&uuml;hrt. Das <em>“&amp;”</em> am Ende des Befehls bringt den Prozess in den Hintergrund und das Terminal bleibt weiter benutzbar.</p></li>
+<p>Jetzt wird Gparted mit root-Rechten ausgef&uuml;hrt. Das <em>“&amp;”</em>
+am Ende des Befehls bringt den Prozess in den Hintergrund und das
+Terminal bleibt weiter benutzbar.</p></li>
 <li><p>Ein Befehlseingabefenster &ouml;ffnen:<br />
-Die Tastenkombination <strong><code>Alt</code></strong>+<strong><code>F2</code></strong> benutzen um eine Programmstartzeile zu erhalten und darin den Befehl</p>
+Die Tastenkombination
+<strong><code>Alt</code></strong>+<strong><code>F2</code></strong>
+benutzen um eine Programmstartzeile zu erhalten und darin den Befehl</p>
 <pre><code>sudo &lt;Anwendung&gt;  </code></pre>
 <p>eingeben.<br />
-Es &ouml;ffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt wird. Nun einfach die <strong><code>Enter</code></strong>-Taste bet&auml;tigen, es sei denn, es wurde wie weiter unten beschrieben ein tempor&auml;res root-Passwort gesetzt, das einzugeben ist.</p></li>
+Es &ouml;ffnet sich ein Terminalfenster, in dem das root-Passwort abgefragt
+wird. Nun einfach die <strong><code>Enter</code></strong>-Taste
+bet&auml;tigen, es sei denn, es wurde wie weiter unten beschrieben ein
+tempor&auml;res root-Passwort gesetzt, das einzugeben ist.</p></li>
 <li><p>In ein Terminal ohne root-Rechte den Befehl</p>
 <pre><code>sudo &lt;Anwendung&gt; &amp;</code></pre>
 <p>eingeben.</p></li>
 </ol>
 <p>Bitte beachten:<br />
-sudo ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir empfehlen, den echten root-Account direkt zu nutzen.<br />
-Siehe <a href="./term-konsole_de.html#arbeit-als-root">Arbeit als root, warum sudo nicht konfiguriert ist</a></p>
+sudo ist auf Festplatteninstallationen nicht vorkonfiguriert. Wir
+empfehlen, den echten root-Account direkt zu nutzen.<br />
+Siehe <a href="./term-konsole_de.html#arbeit-als-root">Arbeit als root,
+warum sudo nicht konfiguriert ist</a></p>
 <h3 id="ein-neues-passwort-setzen">Ein neues Passwort setzen</h3>
-<p>Noch einmal zur Erinnerung: Der Standardbenutzer in der Livesession ist <strong>siducer</strong> mit dem Passwort <strong>live</strong>. Will man das Passwort &auml;ndern, so &ouml;ffnet man ein Terminal und gibt die folgenden Befehle ein:</p>
+<p>Noch einmal zur Erinnerung: Der Standardbenutzer in der Livesession
+ist <strong>siducer</strong> mit dem Passwort <strong>live</strong>.
+Will man das Passwort &auml;ndern, so &ouml;ffnet man ein Terminal und gibt die
+folgenden Befehle ein:</p>
 <pre><code>siducer@siduction:~$ passwd
 Geben Sie ein neues Passwort ein:
 Geben Sie das neue Passwort erneut ein:
 passwd: Passwort erfolgreich ge&auml;ndert
 siducer@siduction:~$</code></pre>
-<p>Dieses neue Passwort f&uuml;r <strong>siducer</strong> kann den Rest der Live-Sitzung verwendet werden.</p>
-<p>Mit der gleichen Prozedur kann man in jedem Terminal auch f&uuml;r <strong>root</strong> ein Passwort vergeben, allerdings muss man vorher per <code>su</code> <strong>root</strong> werden. Im Anschluss ist eine Anmeldung auf einer virtuellen Konsole als <strong>root</strong> m&ouml;glich.</p>
-<h3 id="software-installation-bei-live-sitzung">Software-Installation bei Live-Sitzung</h3>
-<p>Die Befehlsfolge f&uuml;r die Installation von Software w&auml;hrend einer Live-Sitzung gleicht der bei einer Festplatteninstallation. Voraussetzung ist ein root-Terminal,</p>
+<p>Dieses neue Passwort f&uuml;r <strong>siducer</strong> kann den Rest der
+Live-Sitzung verwendet werden.</p>
+<p>Mit der gleichen Prozedur kann man in jedem Terminal auch f&uuml;r
+<strong>root</strong> ein Passwort vergeben, allerdings muss man vorher
+per <code>su</code> <strong>root</strong> werden. Im Anschluss ist eine
+Anmeldung auf einer virtuellen Konsole als <strong>root</strong>
+m&ouml;glich.</p>
+<h3 id="software-installation-bei-live-sitzung">Software-Installation
+bei Live-Sitzung</h3>
+<p>Die Befehlsfolge f&uuml;r die Installation von Software w&auml;hrend einer
+Live-Sitzung gleicht der bei einer Festplatteninstallation.
+Voraussetzung ist ein root-Terminal,</p>
 <pre><code>apt update
 apt install &lt;das-gew&uuml;nschtes-paket&gt;</code></pre>
 <p>oder ein vorangestelltes <code>sudo</code> vor die Befehle.</p>
 <pre><code>sudo apt update
 sudo apt install &lt;das-gew&uuml;nschtes-paket&gt;</code></pre>
-<p>Allerdings gilt: Wenn Du die Live-DVD herunterf&auml;hrst, werden keine &Auml;nderungen behalten.</p>
+<p>Allerdings gilt: Wenn Du die Live-DVD herunterf&auml;hrst, werden keine
+&Auml;nderungen behalten.</p>
 <div id="rev">
 Zuletzt bearbeitet: 2022-01-13
 </div>

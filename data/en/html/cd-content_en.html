@@ -35,44 +35,64 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#contents-of-the-live-iso">Contents of the Live-ISO</a>
 <ul>
-<li><a href="#note-about-the-software-on-the-live-iso">Note about the software on the Live-ISO</a></li>
+<li><a href="#note-about-the-software-on-the-live-iso">Note about the
+software on the Live-ISO</a></li>
 <li><a href="#variants-of-the-iso">Variants of the ISO</a></li>
-<li><a href="#minimum-system-requirements">Minimum system requirements</a></li>
-<li><a href="#applications-and-utilities">Applications and utilities</a></li>
+<li><a href="#minimum-system-requirements">Minimum system
+requirements</a></li>
+<li><a href="#applications-and-utilities">Applications and
+utilities</a></li>
 <li><a href="#disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="contents-of-the-live-iso">Contents of the Live-ISO</h2>
-<h3 id="note-about-the-software-on-the-live-iso">Note about the software on the Live-ISO</h3>
-<p>siduction provides DFSG-free software on the Live-ISO as well as non-free firmware. To uninstall proprietary software, use the command <strong><code>apt purge $(vrms -s)</code></strong> or our script <strong><code>remove-nonfree</code></strong> after installation.</p>
-<p>The ISO is based exclusively on the latest Debian Sid at the time of release, enriched and stabilized with custom packages and scripts from the siduction repositories. The kernel we use is a patched version of the latest vanilla mainline kernel. ACPI and DMA are enabled.</p>
-<p>A complete manifest file with a list of all installed programs for each release variant of siduction can be found on each download mirror.</p>
+<h3 id="note-about-the-software-on-the-live-iso">Note about the software
+on the Live-ISO</h3>
+<p>siduction provides DFSG-free software on the Live-ISO as well as
+non-free firmware. To uninstall proprietary software, use the command
+<strong><code>apt purge $(vrms -s)</code></strong> or our script
+<strong><code>remove-nonfree</code></strong> after installation.</p>
+<p>The ISO is based exclusively on the latest Debian Sid at the time of
+release, enriched and stabilized with custom packages and scripts from
+the siduction repositories. The kernel we use is a patched version of
+the latest vanilla mainline kernel. ACPI and DMA are enabled.</p>
+<p>A complete manifest file with a list of all installed programs for
+each release variant of siduction can be found on each download
+mirror.</p>
 <h3 id="variants-of-the-iso">Variants of the ISO</h3>
-<p>siduction offers seven current images-en in 64-bit as live ISO to get started with Debian Sid. Five of the images come with a preinstalled desktop environment. Typically, an installation takes between 1 and 10 minutes, depending on the hardware.<br />
+<p>siduction offers seven current images-en in 64-bit as live ISO to get
+started with Debian Sid. Five of the images come with a preinstalled
+desktop environment. Typically, an installation takes between 1 and 10
+minutes, depending on the hardware.<br />
 The alternatives are:</p>
 <ol type="1">
 <li><strong>KDE Plasma 64-bit</strong>, live-ISO with about 2.8 GByte:
 <ul>
-<li>Qt based Plasma Desktop and KDE frameworks; with a representative selection of KDE Applications</li>
+<li>Qt based Plasma Desktop and KDE frameworks; with a representative
+selection of KDE Applications</li>
 <li>installation of additional applications easily possible via apt</li>
 </ul></li>
 <li><strong>Xfce 64-bit</strong>, live-ISO with about 2.3 GByte:
 <ul>
-<li>includes a GTK based desktop environment with all features (no minimal version!) and all productivity applications right away</li>
+<li>includes a GTK based desktop environment with all features (no
+minimal version!) and all productivity applications right away</li>
 <li>resource requirements lower than for KDE</li>
 <li>installation of additional applications easily possible via apt</li>
 </ul></li>
 <li><strong>LXQt 64-bit</strong>, live ISO with about 2.2 GByte:
 <ul>
-<li>includes desktop environment with a selection of Qt applications</li>
+<li>includes desktop environment with a selection of Qt
+applications</li>
 <li>footprint somewhat smaller than with Xfce</li>
 <li>installation of additional applications easily possible via apt</li>
 </ul></li>
 <li><strong>Xorg 64-bit</strong>, live ISO with about 1.8 GByte:
 <ul>
-<li>ISO image with an Xorg stack and the spartan window manager Fluxbox</li>
-<li>for users who want to build their system according to their own ideas</li>
+<li>ISO image with an Xorg stack and the spartan window manager
+Fluxbox</li>
+<li>for users who want to build their system according to their own
+ideas</li>
 </ul></li>
 <li><strong>NoX 64-bit</strong>, live ISO with about 800 MByte:
 <ul>
@@ -80,7 +100,8 @@ The alternatives are:</p>
 </ul></li>
 </ol>
 <p><strong>32-bit ISOs</strong> are no longer offered by default.<br />
-If a 32bit ISO is desired, we will gladly create one on request in IRC. Unfortunately, we cannot test such an ISO.</p>
+If a 32bit ISO is desired, we will gladly create one on request in IRC.
+Unfortunately, we cannot test such an ISO.</p>
 <h3 id="minimum-system-requirements">Minimum system requirements</h3>
 <p>for: KDE-Plasma, Mate, Xfce, LXQt, LXDE, Cinnamon, Xorg, and NoX</p>
 <p><strong>Processor requirements: 64Bit CPU</strong></p>
@@ -99,17 +120,43 @@ NoX        at least 256 MByte RAM</code></pre>
 <p>At least 5 GByte hard disk space for NoX<br />
 At least 10 GByte of disk space for all the others</p>
 <p><strong>Other</strong></p>
-<p>VGA graphics card with at least 640x480 pixel resolution and optical drive or USB media.</p>
+<p>VGA graphics card with at least 640x480 pixel resolution and optical
+drive or USB media.</p>
 <h3 id="applications-and-utilities">Applications and utilities</h3>
-<p>As web browser, <a target="_blank" href="https://mozilla.org">Firefox</a> or <a target="_blank" href="https://chromium.woolyss.com/download/de/#linux">Chromium</a> is included (depending on the variant).</p>
-<p>LibreOffice is pre-installed as office software. Dolphin, Thunar, and PCManFM are available as file managers.</p>
-<p>Connman or Network Manager is available for network and internet configuration.</p>
-<p>Xorg and NoX are delivered with <a href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD</a> as wireless daemon. It can be configured via <a href="./inet-nm-cli_en.html#network-manager-command-line-tool">nmtui/nmcli</a> or <a href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">iwctl</a>.</p>
-<p>For disk partitioning, <a href="./part-cfdisk_en.html#partitioning-with-fdisk">cfdisk</a>, <a href="././part-gdisk_en.html#partitioning-with-gdisk">gdisk and cgdisk</a>, and <a href="././part-gparted_en.html#partitioning-with-gparted">GParted</a> are supplied. Gparted also provides the ability to resize NTFS partitions.</p>
-<p>System analysis tools such as <a target="_blank" href="http://www.memtest.org/">Memtest86+</a> (a tool for comprehensive memory analysis) are included, too.</p>
-<p>Each ISO variant contains an extensive selection of applications for the command line. A complete manifest file with the installed programs for each release variant of siduction can be found on each download mirror.</p>
+<p>As web browser, <a target="_blank" href="https://mozilla.org">Firefox</a> or <a
+href="https://chromium.woolyss.com/download/de/#linux">Chromium</a> is
+included (depending on the variant).</p>
+<p>LibreOffice is pre-installed as office software. Dolphin, Thunar, and
+PCManFM are available as file managers.</p>
+<p>Connman or Network Manager is available for network and internet
+configuration.</p>
+<p>Xorg and NoX are delivered with <a
+href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD</a> as
+wireless daemon. It can be configured via <a
+href="./inet-nm-cli_en.html#network-manager-command-line-tool">nmtui/nmcli</a>
+or <a
+href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">iwctl</a>.</p>
+<p>For disk partitioning, <a
+href="./part-cfdisk_en.html#partitioning-with-fdisk">cfdisk</a>, <a
+href="././part-gdisk_en.html#partitioning-with-gdisk">gdisk and
+cgdisk</a>, and <a
+href="././part-gparted_en.html#partitioning-with-gparted">GParted</a>
+are supplied. Gparted also provides the ability to resize NTFS
+partitions.</p>
+<p>System analysis tools such as <a
+href="http://www.memtest.org/">Memtest86+</a> (a tool for comprehensive
+memory analysis) are included, too.</p>
+<p>Each ISO variant contains an extensive selection of applications for
+the command line. A complete manifest file with the installed programs
+for each release variant of siduction can be found on each download
+mirror.</p>
 <h3 id="disclaimer">Disclaimer</h3>
-<p>siduction is experimental software. Use at your own risk. The siduction project, its developers, and team members cannot be held liable under any circumstances for damage to hardware or software, lost data, or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.</p>
+<p>siduction is experimental software. Use at your own risk. The
+siduction project, its developers, and team members cannot be held
+liable under any circumstances for damage to hardware or software, lost
+data, or any other direct or indirect damage to the user by using this
+software. Anyone who does not agree to these terms may not use or
+distribute this software.</p>
 <div id="rev">
 Last edited: 2022/03/30
 </div>

@@ -33,82 +33,184 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#siduction-quick-start-guide">siduction Quick Start Guide</a>
+<li><a href="#siduction-quick-start-guide">siduction Quick Start
+Guide</a>
 <ul>
 <li><a href="#essential-chapters">Essential chapters</a></li>
-<li><a href="#about-the-stability-of-debian-sid">About the stability of Debian Sid</a></li>
+<li><a href="#about-the-stability-of-debian-sid">About the stability of
+Debian Sid</a></li>
 <li><a href="#the-siduction-kernel">The siduction kernel</a></li>
-<li><a href="#the-management-of-software-packages">The management of software packages</a></li>
-<li><a href="#updating-the-system---upgrade">Updating the system - upgrade</a></li>
+<li><a href="#the-management-of-software-packages">The management of
+software packages</a></li>
+<li><a href="#updating-the-system---upgrade">Updating the system -
+upgrade</a></li>
 <li><a href="#network-configuration">Network configuration</a></li>
 <li><a href="#runlevels---target-unit">Runlevels - target unit</a></li>
-<li><a href="#other-desktop-environments">Other desktop environments</a></li>
-<li><a href="#help-in-irc-and-in-the-forum">Help in IRC and in the forum</a></li>
+<li><a href="#other-desktop-environments">Other desktop
+environments</a></li>
+<li><a href="#help-in-irc-and-in-the-forum">Help in IRC and in the
+forum</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="siduction-quick-start-guide">siduction Quick Start Guide</h2>
-<p>siduction strives to be 100% compatible with Debian Sid. Nevertheless, siduction may provide packages that temporarily replace buggy Debian packages. The siduction apt repository contains siduction specific packages like the siduction kernel, scripts, packages we would like to push to Debian, utilities, and documentation.</p>
+<p>siduction strives to be 100% compatible with Debian Sid.
+Nevertheless, siduction may provide packages that temporarily replace
+buggy Debian packages. The siduction apt repository contains siduction
+specific packages like the siduction kernel, scripts, packages we would
+like to push to Debian, utilities, and documentation.</p>
 <h3 id="essential-chapters">Essential chapters</h3>
 <p class="warning">
-Some chapters of the manual are essential reading for users who are new to Linux or new to siduction. In addition to this brief introduction, these are:
+Some chapters of the manual are essential reading for users who are new
+to Linux or new to siduction. In addition to this brief introduction,
+these are:
 </p>
 <ul>
-<li><p><a href="./term-konsole_en.html#terminal---command-line">Terminal/Console</a> - describes how to use a terminal and the <code>su</code> command.</p></li>
-<li><p><a href="./part-gparted_en.html#partitioning-with-gparted">Partitioning the hard disk</a> - describes how to partition a hard disk.</p></li>
-<li><p><a href="./iso-dl_en.html#downloading-the-iso">Downloading siduction ISO</a> - describes how to download and check a siduction ISO file.</p></li>
-<li><p><a href="./iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">ISO to USB stick - memory card</a> - Describes how to create a siduction life media.</p></li>
-<li><p><a href="./hd-install_en.html#installation-on-hdd">Installation on a hard disk</a> - describes how to install siduction onto a hard disk.</p></li>
-<li><p><a href="./gpu_en.html#graphics-drivers">Non-free drivers, firmware, and sources</a> - describes how software sources can be adapted and non-free firmwares can be installed.</p></li>
-<li><p><a href="./network_en.html#network">Internet connection</a> - describes how to connect to the Internet.</p></li>
-<li><p><a href="./sys-admin-apt_en.html#apt-package-management">Package Manager and System Update</a> - describes how to install new software and update the system.</p></li>
+<li><p><a
+href="./term-konsole_en.html#terminal---command-line">Terminal/Console</a>
+- describes how to use a terminal and the <code>su</code>
+command.</p></li>
+<li><p><a
+href="./part-gparted_en.html#partitioning-with-gparted">Partitioning the
+hard disk</a> - describes how to partition a hard disk.</p></li>
+<li><p><a href="./iso-dl_en.html#downloading-the-iso">Downloading
+siduction ISO</a> - describes how to download and check a siduction ISO
+file.</p></li>
+<li><p><a
+href="./iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">ISO to USB
+stick - memory card</a> - Describes how to create a siduction life
+media.</p></li>
+<li><p><a href="./hd-install_en.html#installation-on-hdd">Installation
+on a hard disk</a> - describes how to install siduction onto a hard
+disk.</p></li>
+<li><p><a href="./gpu_en.html#graphics-drivers">Non-free drivers,
+firmware, and sources</a> - describes how software sources can be
+adapted and non-free firmwares can be installed.</p></li>
+<li><p><a href="./network_en.html#network">Internet connection</a> -
+describes how to connect to the Internet.</p></li>
+<li><p><a href="./sys-admin-apt_en.html#apt-package-management">Package
+Manager and System Update</a> - describes how to install new software
+and update the system.</p></li>
 </ul>
-<h3 id="about-the-stability-of-debian-sid">About the stability of Debian Sid</h3>
-<p>‘Sid’ is the name of Debian’s unstable repository. Debian Sid is regularly updated with new software packages, which means that this Debian distribution contains the latest versions of the respective programs in a very timely manner. However, this also means that there is less time between a release in the upstream (by the software developers) and the distribution in Debian Sid to test the packages.</p>
+<h3 id="about-the-stability-of-debian-sid">About the stability of Debian
+Sid</h3>
+<p>‘Sid’ is the name of Debian’s unstable repository. Debian Sid is
+regularly updated with new software packages, which means that this
+Debian distribution contains the latest versions of the respective
+programs in a very timely manner. However, this also means that there is
+less time between a release in the upstream (by the software developers)
+and the distribution in Debian Sid to test the packages.</p>
 <h3 id="the-siduction-kernel">The siduction kernel</h3>
-<p>The Linux kernel of siduction is optimized to achieve the following goals: problem solving, enhanced and updated features, performance optimization, higher stability. The basis is always the latest kernel from <a target="_blank" href="https://www.kernel.org/">http://www.kernel.org/</a>.</p>
-<h3 id="the-management-of-software-packages">The management of software packages</h3>
-<p>siduction follows Debian rules regarding package structure and uses <code>apt</code> as well as <code>dpkg</code> for software package management. The Debian and siduction repositories are located in <code>/etc/sources.list.d/*</code>.</p>
-<p>Debian siduction contains more than 20,000 program packages, so the chances of finding a program suitable for a task are very good. Information on how to search for program packages can be found here:<br />
-<a href="./sys-admin-apt_en.html#searching-for-program-packages">Search program packages</a> .</p>
+<p>The Linux kernel of siduction is optimized to achieve the following
+goals: problem solving, enhanced and updated features, performance
+optimization, higher stability. The basis is always the latest kernel
+from <a target="_blank" href="https://www.kernel.org/">http://www.kernel.org/</a>.</p>
+<h3 id="the-management-of-software-packages">The management of software
+packages</h3>
+<p>siduction follows Debian rules regarding package structure and uses
+<code>apt</code> as well as <code>dpkg</code> for software package
+management. The Debian and siduction repositories are located in
+<code>/etc/sources.list.d/*</code>.</p>
+<p>Debian siduction contains more than 20,000 program packages, so the
+chances of finding a program suitable for a task are very good.
+Information on how to search for program packages can be found
+here:<br />
+<a href="./sys-admin-apt_en.html#searching-for-program-packages">Search
+program packages</a> .</p>
 <p>A program package is installed with this command:</p>
 <pre><code>apt install &lt;package_name&gt;</code></pre>
-<p>See also: <a href="./sys-admin-apt_en.html#install-packages">Install new packages</a>.</p>
-<p>New and updated software packages are pushed to Debian Sid Repositories four times a day. Quick package management is achieved by using a local database. The command</p>
+<p>See also: <a href="./sys-admin-apt_en.html#install-packages">Install
+new packages</a>.</p>
+<p>New and updated software packages are pushed to Debian Sid
+Repositories four times a day. Quick package management is achieved by
+using a local database. The command</p>
 <pre><code>apt update</code></pre>
-<p>is necessary before each installation of a new software package to synchronize the local database with the repositories’ software supply.</p>
-<p><strong>The use of other Debian based repositories, sources, and RPMs</strong>.<br />
-Installations from source code are not supported. It is recommended to compile as user (not root) and to place the application in the home directory without installing it onto the system. The use of <code>checkinstall</code> to generate DEB packages should be limited to purely private use. Conversion programs for RPM packages like <code>alien</code> are not recommended either.</p>
-<p>Other well-known (and lesser-known) Debian based distributions create new packages with a structure different from Debian. They often use other directories for programs, scripts, and files during installation, which can lead to unstable systems. Some packages cannot be installed at all because of unresolvable dependencies, different naming conventions, or different versioning. For example, a different version of glibc may result in the inability to execute any program at all.</p>
-<p>For this reason, Debian’s repositories should be used to install the required software packages. Other software sources may be difficult or impossible to support by siduction. This includes packages and PPAs from Ubuntu.</p>
-<h3 id="updating-the-system---upgrade">Updating the system - upgrade</h3>
-<p>An upgrade can only be performed when X graphics server is stopped. To stop the graphics server, the following command can be entered into a console as <strong>root</strong>:</p>
+<p>is necessary before each installation of a new software package to
+synchronize the local database with the repositories’ software
+supply.</p>
+<p><strong>The use of other Debian based repositories, sources, and
+RPMs</strong>.<br />
+Installations from source code are not supported. It is recommended to
+compile as user (not root) and to place the application in the home
+directory without installing it onto the system. The use of
+<code>checkinstall</code> to generate DEB packages should be limited to
+purely private use. Conversion programs for RPM packages like
+<code>alien</code> are not recommended either.</p>
+<p>Other well-known (and lesser-known) Debian based distributions create
+new packages with a structure different from Debian. They often use
+other directories for programs, scripts, and files during installation,
+which can lead to unstable systems. Some packages cannot be installed at
+all because of unresolvable dependencies, different naming conventions,
+or different versioning. For example, a different version of glibc may
+result in the inability to execute any program at all.</p>
+<p>For this reason, Debian’s repositories should be used to install the
+required software packages. Other software sources may be difficult or
+impossible to support by siduction. This includes packages and PPAs from
+Ubuntu.</p>
+<h3 id="updating-the-system---upgrade">Updating the system -
+upgrade</h3>
+<p>An upgrade can only be performed when X graphics server is stopped.
+To stop the graphics server, the following command can be entered into a
+console as <strong>root</strong>:</p>
 <pre><code>init 3</code></pre>
-<p>After that, system updates can be performed safely. First, refresh the local package database with</p>
+<p>After that, system updates can be performed safely. First, refresh
+the local package database with</p>
 <pre><code>apt update</code></pre>
 <p>Then update the system with one of the two alternatives</p>
 <pre><code>apt upgrade
 apt full-upgrade</code></pre>
-<p>Afterwards, start the graphical user interface with the following command:</p>
+<p>Afterwards, start the graphical user interface with the following
+command:</p>
 <pre><code>init 5</code></pre>
-<p><strong>apt full-upgrade</strong> is the recommended procedure to upgrade a siduction installation to the latest version. It is described in more detail here:<br />
-<a href="./sys-admin-apt_en.html#updating-the-system">Updating an installed system - full-upgrade</a>.</p>
+<p><strong>apt full-upgrade</strong> is the recommended procedure to
+upgrade a siduction installation to the latest version. It is described
+in more detail here:<br />
+<a href="./sys-admin-apt_en.html#updating-the-system">Updating an
+installed system - full-upgrade</a>.</p>
 <h3 id="network-configuration">Network configuration</h3>
-<p>The <strong>Networkmanager</strong> integrated in all graphical interfaces of siduction offers a quick configuration of network cards (Ethernet and wireless). It is mostly self-explanatory. In the terminal, the script <strong>nmcli</strong> provides access to the netwokmanagers functionality. Wireless networks are scanned by the script. You can choose WEP as well as WPA encryption methods and use the <strong>wireless-tools</strong> or <strong>wpasupplicant</strong> backends to configure wireless networks. Ethernet configuration is done automatically when using a DHCP server on the router (dynamic assignment of an IP address), but manual setup (from netmasks to nameservers) is also possible with this script.</p>
-<p>The start command in the console is <strong><code>nmcli</code></strong> or <strong><code>nmtui</code></strong> . If the script is not available, install it with:</p>
+<p>The <strong>Networkmanager</strong> integrated in all graphical
+interfaces of siduction offers a quick configuration of network cards
+(Ethernet and wireless). It is mostly self-explanatory. In the terminal,
+the script <strong>nmcli</strong> provides access to the netwokmanagers
+functionality. Wireless networks are scanned by the script. You can
+choose WEP as well as WPA encryption methods and use the
+<strong>wireless-tools</strong> or <strong>wpasupplicant</strong>
+backends to configure wireless networks. Ethernet configuration is done
+automatically when using a DHCP server on the router (dynamic assignment
+of an IP address), but manual setup (from netmasks to nameservers) is
+also possible with this script.</p>
+<p>The start command in the console is
+<strong><code>nmcli</code></strong> or
+<strong><code>nmtui</code></strong> . If the script is not available,
+install it with:</p>
 <pre><code>apt install network-manager</code></pre>
-<p>More information at <a href="./inet-nm-cli_en.html#network-manager-command-line-tool">network - nmcli</a></p>
-<p>Intel’s <a target="_blank" href="https://iwd.wiki.kernel.org/">iNet wireless daemon</a> (<strong>IWD</strong>) is preparing to retire the WPA supplicant. Only one tenth as big and much faster, iwd will be the successor. If you want to switch to iwd already, please refer to our manual page <a href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of wpa_supplicant</a> for the procedure.</p>
+<p>More information at <a
+href="./inet-nm-cli_en.html#network-manager-command-line-tool">network -
+nmcli</a></p>
+<p>Intel’s <a target="_blank" href="https://iwd.wiki.kernel.org/">iNet wireless
+daemon</a> (<strong>IWD</strong>) is preparing to retire the WPA
+supplicant. Only one tenth as big and much faster, iwd will be the
+successor. If you want to switch to iwd already, please refer to our
+manual page <a
+href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of
+wpa_supplicant</a> for the procedure.</p>
 <h3 id="runlevels---target-unit">Runlevels - target unit</h3>
-<p>By default, siduction boots into the graphical user interface (except NoX).<br />
-Configuration of runlevels is described in the chapter <a href="./systemd-target_en.html#systemd-target---target-unit">siduction runlevels - target unit</a>.</p>
+<p>By default, siduction boots into the graphical user interface (except
+NoX).<br />
+Configuration of runlevels is described in the chapter <a
+href="./systemd-target_en.html#systemd-target---target-unit">siduction
+runlevels - target unit</a>.</p>
 <h3 id="other-desktop-environments">Other desktop environments</h3>
-<p>Plasma, Gnome, Xfce, LXQt, Cinnamon, and Xorg are shipped by siduction.</p>
+<p>Plasma, Gnome, Xfce, LXQt, Cinnamon, and Xorg are shipped by
+siduction.</p>
 <h3 id="help-in-irc-and-in-the-forum">Help in IRC and in the forum</h3>
 <p>Help is always available in IRC or in the siduction forum.</p>
 <ul>
-<li><p>Read more in the chapter <a href="./help_en.html#siduction-help">Where to get help</a>.</p></li>
-<li><p><a target="_blank" href="https://webchat.oftc.net/">With this link you can call the IRC immediately in your browser</a>: enter a freely chosen nickname and join the channel #siduction-en.</p></li>
+<li><p>Read more in the chapter <a
+href="./help_en.html#siduction-help">Where to get help</a>.</p></li>
+<li><p><a target="_blank" href="https://webchat.oftc.net/">With this link you can call
+the IRC immediately in your browser</a>: enter a freely chosen nickname
+and join the channel #siduction-en.</p></li>
 </ul>
 <div id="rev">
 Last edited: 2022/04/16

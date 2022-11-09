@@ -40,65 +40,111 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#create-path-unit">Create path unit</a></li>
 <li><a href="#service-unit-for-path">Service unit for path</a></li>
 <li><a href="#include-path-unit">Include path unit</a></li>
-<li><a href="#execute-service-unit-manually">Execute service unit manually</a></li>
+<li><a href="#execute-service-unit-manually">Execute service unit
+manually</a></li>
 <li><a href="#sources-systemd-path">Sources systemd-path</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="systemd-path">systemd-path</h2>
-<p>The basic and introductory information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
-On this manual page, we explain the function of the <strong>systemd.path</strong> unit, which systemd uses to monitor paths and trigger path-based actions.</p>
-<p>The path unit makes it possible to trigger an action when files and directories (paths) are changed.<br />
-Once an event occurs, systemd can execute a command or script through a service unit. The path unit is not able to monitor directories recursively. However, multiple directories and files can be specified.<br />
+<p>The basic and introductory information about systemd can be found on
+the manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.
+The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit
+files are covered by our manual page <a
+href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit
+file</a>.<br />
+On this manual page, we explain the function of the
+<strong>systemd.path</strong> unit, which systemd uses to monitor paths
+and trigger path-based actions.</p>
+<p>The path unit makes it possible to trigger an action when files and
+directories (paths) are changed.<br />
+Once an event occurs, systemd can execute a command or script through a
+service unit. The path unit is not able to monitor directories
+recursively. However, multiple directories and files can be
+specified.<br />
 The path-specific options are configured in the [Path] section.</p>
 <h3 id="required-files">Required files</h3>
-<p>The <strong>systemd-path</strong> unit requires at least two files with preferably the same name but different extensions in the directory <code>/usr/local/lib/systemd/system/</code> for its function. (If necessary, create the directory beforehand with the command <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.) These are</p>
+<p>The <strong>systemd-path</strong> unit requires at least two files
+with preferably the same name but different extensions in the directory
+<code>/usr/local/lib/systemd/system/</code> for its function. (If
+necessary, create the directory beforehand with the command
+<strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.)
+These are</p>
 <ul>
-<li>the path unit file (&lt;name&gt;.path), which contains the monitoring and the trigger for the service unit<br />
+<li>the path unit file (&lt;name&gt;.path), which contains the
+monitoring and the trigger for the service unit<br />
 and<br />
 </li>
-<li>the service unit file (&lt;name&gt;.service), which contains the action to be started.<br />
-For more extensive actions, you also create a script in <code>/usr/local/bin/</code> that is executed by the service unit.</li>
+<li>the service unit file (&lt;name&gt;.service), which contains the
+action to be started.<br />
+For more extensive actions, you also create a script in
+<code>/usr/local/bin/</code> that is executed by the service unit.</li>
 </ul>
 <h3 id="path-unit-options">Path unit options</h3>
-<p>The path unit must contain the [Path] section, which defines how and what to monitor.</p>
+<p>The path unit must contain the [Path] section, which defines how and
+what to monitor.</p>
 <p>The special options are:</p>
 <ul>
 <li><p><code>PathExists=</code><br />
-checks if the path in question exists. If it does, the corresponding unit will be activated.</p></li>
+checks if the path in question exists. If it does, the corresponding
+unit will be activated.</p></li>
 <li><p><code>PathExistsGlob=</code><br />
-As above; supports file glob expressions (see also <code>man glob</code>).</p></li>
+As above; supports file glob expressions (see also
+<code>man glob</code>).</p></li>
 <li><p><code>PathChanged=</code><br />
-observes a file or path and activates the associated unit when changes occur.<br />
+observes a file or path and activates the associated unit when changes
+occur.<br />
 Action-triggering changes are:</p>
 <ul>
 <li>creation and deletion of files<br />
 </li>
 <li>attributes, permissions, ownership<br />
 </li>
-<li>closing the file being watched after write access and closing any file after write access when the path is watched</li>
+<li>closing the file being watched after write access and closing any
+file after write access when the path is watched</li>
 </ul></li>
 <li><p><code>PathModified=</code><br />
-As before, but in addition the associated unit is activated on simple write accesses, even if the file is not closed.</p></li>
+As before, but in addition the associated unit is activated on simple
+write accesses, even if the file is not closed.</p></li>
 <li><p><code>DirectoryNotEmpty=</code><br />
 activates the corresponding unit if the directory is not empty.</p></li>
 <li><p><code>Unit=</code><br />
-activates the associated unit to be activated. It should also be noted that the path unit activates the service unit with the same name by default. Only in case of deviations from this, the <code>Unit=</code> option within the [Path] section is necessary.</p></li>
+activates the associated unit to be activated. It should also be noted
+that the path unit activates the service unit with the same name by
+default. Only in case of deviations from this, the <code>Unit=</code>
+option within the [Path] section is necessary.</p></li>
 <li><p><code>MakeDirectory=</code><br />
 The directory to be watched will be created before watching.</p></li>
 <li><p><code>DirectoryMode=</code><br />
-sets the access mode in octal notation when used for the previously created directory (default: 0755).</p></li>
+sets the access mode in octal notation when used for the previously
+created directory (default: 0755).</p></li>
 </ul>
 <p><strong>An example</strong></p>
-<p>Based on the Apache web server configuration according to our manual page <a href="./lamp-apache_en.html#users-and-permissions">LAMP - Apache, users and rights</a>, let’s illustrate the interaction of path unit with another systemd unit.</p>
-<p>The figure <em>Path unit function</em> represents the dependencies of the systemd units of our example.</p>
+<p>Based on the Apache web server configuration according to our manual
+page <a href="./lamp-apache_en.html#users-and-permissions">LAMP -
+Apache, users and rights</a>, let’s illustrate the interaction of path
+unit with another systemd unit.</p>
+<p>The figure <em>Path unit function</em> represents the dependencies of
+the systemd units of our example.</p>
 <figure>
-<img src="./images-en/systemd/path_01.png" alt="" /><figcaption>Path unit function</figcaption>
+<img src="./images-en/systemd/path_01.png" alt="Path unit function" />
+<figcaption aria-hidden="true">Path unit function</figcaption>
 </figure>
-<p>The double-bordered part in the graphic illustrates the path unit’s core function. The server1.path unit monitors the file <code>/var/www/changed</code> and activates the corresponding server1.service unit in case of changes. This in turn then performs the desired actions in the directory <code>/var/www/html/</code> and restores the file <code>/var/www/changed</code>.<br />
-The server1-watch.service unit outside the outline takes over the recursive monitoring of the Apache web server’s <code>DocumentRoot</code>.</p>
+<p>The double-bordered part in the graphic illustrates the path unit’s
+core function. The server1.path unit monitors the file
+<code>/var/www/changed</code> and activates the corresponding
+server1.service unit in case of changes. This in turn then performs the
+desired actions in the directory <code>/var/www/html/</code> and
+restores the file <code>/var/www/changed</code>.<br />
+The server1-watch.service unit outside the outline takes over the
+recursive monitoring of the Apache web server’s
+<code>DocumentRoot</code>.</p>
 <h3 id="create-path-unit">Create path unit</h3>
-<p>We create the file <code>server1.path</code> in the directory <code>/usr/local/lib/systemd/system/</code>, which monitors the file <code>/var/www/changed</code> for changes, with the following content:</p>
+<p>We create the file <code>server1.path</code> in the directory
+<code>/usr/local/lib/systemd/system/</code>, which monitors the file
+<code>/var/www/changed</code> for changes, with the following
+content:</p>
 <pre><code>[Unit]
 Description=Monitoring &quot;changed&quot; file!
 BindsTo=server1-watch.service
@@ -111,14 +157,27 @@ PathModified=/var/www/changed
 WantedBy=multi-user.target</code></pre>
 <p><strong>Explanations</strong><br />
 [Unit] section:<br />
-The <em>“BindsTo=”</em> option represents the strongest available binding of two systemd units to each other. If one of them enters an error state during startup or operation, the other one will also be terminated immediately.<br />
-Together with the <em>“After=”</em> option, it is achieved that the server1.path unit starts only after the server1-watch.service unit reports its successful start back to systemd.</p>
+The <em>“BindsTo=”</em> option represents the strongest available
+binding of two systemd units to each other. If one of them enters an
+error state during startup or operation, the other one will also be
+terminated immediately.<br />
+Together with the <em>“After=”</em> option, it is achieved that the
+server1.path unit starts only after the server1-watch.service unit
+reports its successful start back to systemd.</p>
 <p>[Path] section:<br />
-<em>“PathModifid=”</em> is the correct choice. The option reacts to changes in the file <code>/var/www/changed</code>, even if the file is not closed.<br />
-The <em>“PathModifid=”</em> option (or others, see above) can be specified multiple times.</p>
+<em>“PathModifid=”</em> is the correct choice. The option reacts to
+changes in the file <code>/var/www/changed</code>, even if the file is
+not closed.<br />
+The <em>“PathModifid=”</em> option (or others, see above) can be
+specified multiple times.</p>
 <h3 id="service-unit-for-path">Service unit for path</h3>
-<p>The server1.service unit is activated and controlled by the server1.path unit and therefore does not need an [Install] section. Thus, the unit’s description in the [Unit] section and the commands to be executed in the [Service] section are sufficient.</p>
-<p>We create the file <code>server1.service</code> in the directory <code>/usr/local/lib/systemd/system/</code> with the following content.</p>
+<p>The server1.service unit is activated and controlled by the
+server1.path unit and therefore does not need an [Install] section.
+Thus, the unit’s description in the [Unit] section and the commands to
+be executed in the [Service] section are sufficient.</p>
+<p>We create the file <code>server1.service</code> in the directory
+<code>/usr/local/lib/systemd/system/</code> with the following
+content.</p>
 <pre><code>[Unit]
 Description=Change permissions in server1 folder
 
@@ -130,9 +189,16 @@ ExecStart=/usr/bin/chmod -R g+w /var/www/html/
 ExecStart=/usr/bin/chmod -R o-r /var/www/html/</code></pre>
 <p><strong>Explanations</strong><br />
 [Service] section:<br />
-<em>“ExecStart=”</em> commands are executed only after all <em>“ExecStartPre=”</em> commands have completed successfully. First the file <code>/var/www/changed</code> is reset to 0 byte and then the rest is executed.</p>
+<em>“ExecStart=”</em> commands are executed only after all
+<em>“ExecStartPre=”</em> commands have completed successfully. First the
+file <code>/var/www/changed</code> is reset to 0 byte and then the rest
+is executed.</p>
 <p><strong>Create additional service unit</strong></p>
-<p>Since the path unit cannot recursively monitor directories, we need an additional service unit for our example. We create the file <code>server1-watch.service</code> in the directory <code>/usr/local/lib/system/system/</code> with the following content.</p>
+<p>Since the path unit cannot recursively monitor directories, we need
+an additional service unit for our example. We create the file
+<code>server1-watch.service</code> in the directory
+<code>/usr/local/lib/system/system/</code> with the following
+content.</p>
 <pre><code>[Unit]
 Description=Watching server1 folder
 Before=server1.path
@@ -145,20 +211,29 @@ ExecStart=inotifywait -dqr -e move,create -o /var/www/changed /var/www/html/
 [Install]
 WantedBy=multi-user.target</code></pre>
 <p>Remark:<br />
-Interestingly, systemd internally uses the inotify API for path unit to monitor filesystems, but does not implement its recursive function.</p>
+Interestingly, systemd internally uses the inotify API for path unit to
+monitor filesystems, but does not implement its recursive function.</p>
 <p><strong>Explanations</strong><br />
 [Unit] section:<br />
-<em>“Before=”</em> and <em>“Wants=”</em> are the corresponding correlations to <em>“BindsTo=”</em> and <em>“After=”</em> from the server1.service unit.</p>
+<em>“Before=”</em> and <em>“Wants=”</em> are the corresponding
+correlations to <em>“BindsTo=”</em> and <em>“After=”</em> from the
+server1.service unit.</p>
 <p>[Service] section:<br />
-<em>“inotifywait”</em> logs to the <code>/var/www/changed</code> file located outside of the Apache web server’s <code>DocumentRoot</code>.</p>
+<em>“inotifywait”</em> logs to the <code>/var/www/changed</code> file
+located outside of the Apache web server’s
+<code>DocumentRoot</code>.</p>
 <h3 id="include-path-unit">Include path unit</h3>
-<p>Due to the dependency, we first incorporate the server1.path unit and then the server1-watch.service unit into systemd. The server1.service unit does neither need nor contain an [Install] section. When trying to include it, we receive an error message.</p>
+<p>Due to the dependency, we first incorporate the server1.path unit and
+then the server1-watch.service unit into systemd. The server1.service
+unit does neither need nor contain an [Install] section. When trying to
+include it, we receive an error message.</p>
 <pre><code># systemctl enable server1.path
 Created symlink /etc/system/system/multi-user.target.wants/server1.path /usr/local/lib/system/system/server1.path.
 
 # systemctl enable server1-watch.service
 Created symlink /etc/system/system/multi-user.target.wants/server1-watch.service /usr/local/lib/system/system/server1-watch.service.</code></pre>
-<p>Now the monitoring is also immediately active, as the status outputs of all three units show us.</p>
+<p>Now the monitoring is also immediately active, as the status outputs
+of all three units show us.</p>
 <pre><code># systemctl status server1-watch.service
 server1-watch.service - Watching server1 folder.
   Loaded: loaded (/usr/local/lib/systemd/system/server1-watch.service; enabled; vendor preset: enabled)
@@ -191,11 +266,18 @@ server1.service - Change permissions in server1 folder
      Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)
      Active: inactive (dead)
 TriggeredBy: ● server1.path</code></pre>
-<p>The <em>“Active: inactive (dead)”</em> status of the last output is the normal state for the server1.service unit, because this unit is only active if it was triggered by server1.path to execute its command chain. After that, it returns to the inactive state.</p>
-<h3 id="execute-service-unit-manually">Execute service unit manually</h3>
-<p>Should it ever be helpful or necessary to manually change the file permissions in <code>DocumentRoot</code> of the Apache web server, we simply issue this command:</p>
+<p>The <em>“Active: inactive (dead)”</em> status of the last output is
+the normal state for the server1.service unit, because this unit is only
+active if it was triggered by server1.path to execute its command chain.
+After that, it returns to the inactive state.</p>
+<h3 id="execute-service-unit-manually">Execute service unit
+manually</h3>
+<p>Should it ever be helpful or necessary to manually change the file
+permissions in <code>DocumentRoot</code> of the Apache web server, we
+simply issue this command:</p>
 <pre><code># systemctl start server1.service</code></pre>
-<p>A new status query generates some additional log lines, from which we can see the successful completion of the command chain.</p>
+<p>A new status query generates some additional log lines, from which we
+can see the successful completion of the command chain.</p>
 <pre><code># systemctl status server1.service
 server1.service - Change permissions in server1 folder
      Loaded: loaded (/usr/local/lib/systemd/system/server1.service; static)

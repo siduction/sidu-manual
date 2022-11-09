@@ -38,30 +38,61 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#required-files">Required files</a></li>
 <li><a href="#service-unit-for-timer">Service unit for timer</a></li>
 <li><a href="#create-timer-unit">Create timer unit</a></li>
-<li><a href="#timer-unit-as-cron-replacement">Timer unit as cron replacement</a></li>
+<li><a href="#timer-unit-as-cron-replacement">Timer unit as cron
+replacement</a></li>
 <li><a href="#sources-systemd-timer">Sources systemd-timer</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="systemd-timer">systemd-timer</h2>
-<p>The basic and introductory information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are dealt with on our manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
-On this manual page we explain the function of the unit <strong>systemd.timer</strong>, which can be used to trigger time-controlled actions.</p>
-<p>The timer unit is mostly used to do regularly occurring actions. For this a service unit of the same name is necessary, in which the actions are defined. As soon as the system timer matches the time defined in the timer unit, the latter activates the service unit of the same name.<br />
-If configured accordingly, missed runs while the machine was off can be made up.<br />
-It is also possible for a timer unit to trigger the desired actions only once at a previously defined time.</p>
+<p>The basic and introductory information about systemd can be found on
+the manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.
+The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit
+files are dealt with on our manual page <a
+href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit
+file</a>.<br />
+On this manual page we explain the function of the unit
+<strong>systemd.timer</strong>, which can be used to trigger
+time-controlled actions.</p>
+<p>The timer unit is mostly used to do regularly occurring actions. For
+this a service unit of the same name is necessary, in which the actions
+are defined. As soon as the system timer matches the time defined in the
+timer unit, the latter activates the service unit of the same
+name.<br />
+If configured accordingly, missed runs while the machine was off can be
+made up.<br />
+It is also possible for a timer unit to trigger the desired actions only
+once at a previously defined time.</p>
 <h3 id="required-files">Required files</h3>
-<p>The <strong>systemd-timer</strong> unit needs two files with the same base name in the directory <code>/usr/local/lib/systemd/system/</code> for its function. (If necessary, create the directory beforehand with the command <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.) These are</p>
+<p>The <strong>systemd-timer</strong> unit needs two files with the same
+base name in the directory <code>/usr/local/lib/systemd/system/</code>
+for its function. (If necessary, create the directory beforehand with
+the command
+<strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.)
+These are</p>
 <ul>
-<li>the timer unit file (xxxxx.timer), which contains the timing and trigger for the service unit<br />
+<li>the timer unit file (xxxxx.timer), which contains the timing and
+trigger for the service unit<br />
 and<br />
 </li>
-<li>the service unit file (xxxxx.service), which contains the action to be started.</li>
+<li>the service unit file (xxxxx.service), which contains the action to
+be started.</li>
 </ul>
-<p>For more extensive actions, you can create a script in <code>/usr/local/bin/</code> as a third file that is executed by the service unit.</p>
-<p>In the example we create a regular backup with <code>rsync</code>.</p>
+<p>For more extensive actions, you can create a script in
+<code>/usr/local/bin/</code> as a third file that is executed by the
+service unit.</p>
+<p>In the example we create a regular backup with
+<code>rsync</code>.</p>
 <h3 id="service-unit-for-timer">Service unit for timer</h3>
-<p>The service unit that executes the backup is activated and controlled by the timer unit and therefore does not need an [Install] section. Thus the unit’s description in the [Unit] section is sufficient. Your [Service] section contains the command to be executed after the option <code>ExecStart=</code>.</p>
-<p>We create the file <code>backup.service</code> in the directory <code>/usr/local/lib/systemd/system/</code> with the following content:</p>
+<p>The service unit that executes the backup is activated and controlled
+by the timer unit and therefore does not need an [Install] section. Thus
+the unit’s description in the [Unit] section is sufficient. Your
+[Service] section contains the command to be executed after the option
+<code>ExecStart=</code>.</p>
+<p>We create the file <code>backup.service</code> in the directory
+<code>/usr/local/lib/systemd/system/</code> with the following
+content:</p>
 <pre><code>[Unit]
 Description=&quot;Command to backup my home directory&quot;
 
@@ -70,7 +101,9 @@ Type=oneshot
 ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/backup/home/</code></pre>
 <p>Please replace the &lt;user&gt; string with your own user.</p>
 <h3 id="create-timer-unit">Create timer unit</h3>
-<p>We create the file <code>backup.timer</code> in the directory <code>/usr/local/lib/system/system/</code> with the following content:</p>
+<p>We create the file <code>backup.timer</code> in the directory
+<code>/usr/local/lib/system/system/</code> with the following
+content:</p>
 <pre><code>[Unit]
 Description=&quot;Backup my home directory&quot;
 
@@ -81,40 +114,60 @@ Persistent=true
 [Install]
 WantedBy=timers.target</code></pre>
 <p><strong>Explanations</strong><br />
-The timer unit must contain the [Timer] section, which defines when and how the corresponding service unit is triggered.<br />
+The timer unit must contain the [Timer] section, which defines when and
+how the corresponding service unit is triggered.<br />
 There are two available timer types:</p>
 <ol type="1">
 <li><p>Realtime timers,<br />
-which define a realtime (i.e. wall clock) timer with the <code>OnCalendar=</code> option.<br />
-(the example <em>“OnCalendar=*-*-* 19:00:00”</em> means “daily at 19:00”),</p>
+which define a realtime (i.e. wall clock) timer with the
+<code>OnCalendar=</code> option.<br />
+(the example <em>“OnCalendar=*-*-* 19:00:00”</em> means “daily at
+19:00”),</p>
 <p>and<br />
 </p></li>
 <li><p>Monotonic timers,<br />
-which define a timer relative to one of the options <code>OnActiveSec=</code>, <code>OnBootSec=</code>, <code>OnStartupSec=</code>, <code>OnUnitActiveSec=</code>, <code>OnUnitInactiveSec=</code>.<br />
+which define a timer relative to one of the options
+<code>OnActiveSec=</code>, <code>OnBootSec=</code>,
+<code>OnStartupSec=</code>, <code>OnUnitActiveSec=</code>,
+<code>OnUnitInactiveSec=</code>.<br />
 <em>“OnBootSec=90”</em> means “90 seconds after bootup” and<br />
-<em>“OnUnitActiveSec=1d”</em> means “One day after the timer was last activated”.<br />
-Both options together trigger the associated service unit 90 seconds after boot and then exactly every 24 hours as long as the machine is not shut down.</p></li>
+<em>“OnUnitActiveSec=1d”</em> means “One day after the timer was last
+activated”.<br />
+Both options together trigger the associated service unit 90 seconds
+after boot and then exactly every 24 hours as long as the machine is not
+shut down.</p></li>
 </ol>
-<p>The <code>Persistent=</code> option included in the example saves the time when the service unit was last triggered as an empty file in the <code>/var/lib/systemd/timers/</code> directory. This is useful for catching up on missed runs when the machine was off.</p>
+<p>The <code>Persistent=</code> option included in the example saves the
+time when the service unit was last triggered as an empty file in the
+<code>/var/lib/systemd/timers/</code> directory. This is useful for
+catching up on missed runs when the machine was off.</p>
 <p><strong>Include timer unit</strong></p>
-<p>We include the timer unit into systemd with the following command:</p>
+<p>We include the timer unit into systemd with the following
+command:</p>
 <pre><code># systemctl enable backup.timer
 Created symlink
  /etc/systemd/system/timers.target.wants/backup.timer →
    /usr/local/lib/systemd/system/backup.timer.</code></pre>
-<p>The analogous command for the service unit is not necessary and would also lead to an error, since there is no [Install] section in it.</p>
+<p>The analogous command for the service unit is not necessary and would
+also lead to an error, since there is no [Install] section in it.</p>
 <p><strong>Trigger timer unit manually</strong>.</p>
-<p>Not the timer unit, but the service unit to be triggered by it is called.</p>
+<p>Not the timer unit, but the service unit to be triggered by it is
+called.</p>
 <pre><code># systemctl start backup.service</code></pre>
-<h3 id="timer-unit-as-cron-replacement">Timer unit as cron replacement</h3>
-<p>“cron” and “anacron” are the best known and widely used job timers. systemd timers can be an alternative. We briefly look at the benefits of and caveats to systemd timers.</p>
+<h3 id="timer-unit-as-cron-replacement">Timer unit as cron
+replacement</h3>
+<p>“cron” and “anacron” are the best known and widely used job timers.
+systemd timers can be an alternative. We briefly look at the benefits of
+and caveats to systemd timers.</p>
 <p><strong>Benefits</strong></p>
 <ul>
 <li>Jobs can have dependencies (depend on other systemd services).</li>
 <li>Timer units are logged in the systemd journal.</li>
 <li>You can easily call a job independently from its timer.</li>
-<li>You can give timer units a nice value or use cgroups for resource management.</li>
-<li>systemd timer units can be triggered by events like booting or hardware changes.</li>
+<li>You can give timer units a nice value or use cgroups for resource
+management.</li>
+<li>systemd timer units can be triggered by events like booting or
+hardware changes.</li>
 <li>They can be easily enabled or disabled with systemctl.</li>
 </ul>
 <p><strong>Caveats</strong></p>
@@ -124,8 +177,12 @@ Created symlink
 </ul>
 <h3 id="sources-systemd-timer">Sources systemd-timer</h3>
 <pre><code>man systemd.timer</code></pre>
-<p><a target="_blank" href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
-<a target="_blank" href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
+<p><a
+href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux
+Wiki, Timers</a><br />
+<a
+href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE,
+Systemd Timer Units…</a></p>
 <div id="rev">
 Last edited: 2022/04/10
 </div>

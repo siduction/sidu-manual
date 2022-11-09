@@ -36,24 +36,37 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#apt-package-management">APT package management</a>
 <ul>
 <li><a href="#apt-and-apt-get">apt and apt-get</a></li>
-<li><a href="#sources.list---list-of-sources">sources.list - List of sources</a></li>
+<li><a href="#sources.list---list-of-sources">sources.list - List of
+sources</a></li>
 <li><a href="#apt-update">apt update</a></li>
 <li><a href="#install-packages">Install packages</a></li>
 <li><a href="#remove-packages">Remove packages</a></li>
-<li><a href="#hold-or-downgrade-a-package">Hold or downgrade a package</a></li>
+<li><a href="#hold-or-downgrade-a-package">Hold or downgrade a
+package</a></li>
 <li><a href="#updating-the-system">Updating the system</a></li>
 <li><a href="#updateable-packages">Updateable packages</a></li>
 <li><a href="#run-full-upgrade">Run full-upgrade</a></li>
 <li><a href="#why-use-apt-exclusively">Why use apt exclusively</a></li>
-<li><a href="#searching-for-program-packages">Searching for program packages</a></li>
+<li><a href="#searching-for-program-packages">Searching for program
+packages</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="apt-package-management">APT package management</h2>
-<p>APT is an acronym for <strong>A</strong>dvanced <strong>P</strong>ackaging <strong>T</strong>ool and provides a collection of programs and scripts that assist the system and administrator in installing and managing Debian packages.<br />
-A complete description of the APT system can be found in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debian’s APT-HOWTO</a>.</p>
+<p>APT is an acronym for <strong>A</strong>dvanced
+<strong>P</strong>ackaging <strong>T</strong>ool and provides a
+collection of programs and scripts that assist the system and
+administrator in installing and managing Debian packages.<br />
+A complete description of the APT system can be found in <a
+href="https://wiki.debian.org/DebianPackageManagement">Debian’s
+APT-HOWTO</a>.</p>
 <h3 id="apt-and-apt-get">apt and apt-get</h3>
-<p><strong>apt</strong> is intended as an end-user interface and, compared to more specialized tools such as apt-get and apt-cache, enables some options more suitable for interactive use by default. With apt not all options of apt-get and apt-cache are available. Please read the man pages of apt, apt-get, and apt-cache. The following table shows the respective commands and their basic meaning.</p>
+<p><strong>apt</strong> is intended as an end-user interface and,
+compared to more specialized tools such as apt-get and apt-cache,
+enables some options more suitable for interactive use by default. With
+apt not all options of apt-get and apt-cache are available. Please read
+the man pages of apt, apt-get, and apt-cache. The following table shows
+the respective commands and their basic meaning.</p>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -79,22 +92,27 @@ A complete description of the APT system can be found in <a target="_blank" href
 <td>Update the system to the latest available package versions.</td>
 </tr>
 <tr class="odd">
-<td><a href="./sys-admin-apt_en.html#updating-the-system">apt full-upgrade</a></td>
+<td><a href="./sys-admin-apt_en.html#updating-the-system">apt
+full-upgrade</a></td>
 <td>apt-get dist-upgrade</td>
-<td>Upgrade the system to the latest available package versions even if it means removing already installed packages.</td>
+<td>Upgrade the system to the latest available package versions even if
+it means removing already installed packages.</td>
 </tr>
 <tr class="even">
 <td>apt full-upgrade -d</td>
 <td>apt-get dist-upgrade -d</td>
-<td>Upgrade the system as before, but only downloads without installing anything.</td>
+<td>Upgrade the system as before, but only downloads without installing
+anything.</td>
 </tr>
 <tr class="odd">
-<td><a href="./sys-admin-apt_en.html#install-packages">apt install</a></td>
+<td><a href="./sys-admin-apt_en.html#install-packages">apt
+install</a></td>
 <td>apt-get install</td>
 <td>Install one or more packages.</td>
 </tr>
 <tr class="even">
-<td><a href="./sys-admin-apt_en.html#remove-packages">apt remove</a></td>
+<td><a href="./sys-admin-apt_en.html#remove-packages">apt
+remove</a></td>
 <td>apt-get remove</td>
 <td>Remove one or more packages.</td>
 </tr>
@@ -104,45 +122,61 @@ A complete description of the APT system can be found in <a target="_blank" href
 <td>Remove one or more packages including configuration files.</td>
 </tr>
 <tr class="even">
-<td>- <a href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark hold</a></td>
+<td>- <a
+href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark
+hold</a></td>
 <td>Prevent apt from installing another version of the package.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>-</td>
-<td><a href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark unhold</a></td>
+<td><a
+href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">apt-mark
+unhold</a></td>
 <td>Cancel the ‘apt-mark hold’ command.</td>
 </tr>
 <tr class="even">
-<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt search</a></td>
+<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt
+search</a></td>
 <td>apt-get search</td>
-<td>Search for packages according to the pattern entered (regex possible).</td>
+<td>Search for packages according to the pattern entered (regex
+possible).</td>
 </tr>
 <tr class="odd">
-<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt show</a></td>
+<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt
+show</a></td>
 <td>apt-cache show</td>
 <td>Display the details of a package.</td>
 </tr>
 <tr class="even">
-<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt list</a></td>
+<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt
+list</a></td>
 <td>apt-cache policy</td>
 <td>Show the installed or installable version of a package.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="sources.list---list-of-sources">sources.list - List of sources</h3>
-<p>The APT system needs a configuration file which contains information about the location of installable and upgradeable packages. In general, this file is called sources.list. Modern systems use modularized sources now to improve the overview.</p>
+<h3 id="sources.list---list-of-sources">sources.list - List of
+sources</h3>
+<p>The APT system needs a configuration file which contains information
+about the location of installable and upgradeable packages. In general,
+this file is called sources.list. Modern systems use modularized sources
+now to improve the overview.</p>
 <p>siduction provides the sources in this folder:</p>
 <p><code>/etc/apt/sources.list.d/</code></p>
-<p>Inside this directory you can find the following files by default:</p>
+<p>Inside this directory you can find the following files by
+default:</p>
 <p><code>debian.list</code><br />
 <code>extra.list</code><br />
 <code>fixes.list</code></p>
-<p>This has the advantage that it is easier to automatically select from mirror servers (“mirror switching”), and it also makes it easier to add or replace source lists.</p>
+<p>This has the advantage that it is easier to automatically select from
+mirror servers (“mirror switching”), and it also makes it easier to add
+or replace source lists.</p>
 <p>Custom source list files can be added with the naming<br />
 <code>/etc/apt/sources.list.d/xxxx.list</code>.<br />
 For example, on siduction<br />
-<code>/etc/apt/sources.list.d/extra.list</code> might look like this:</p>
+<code>/etc/apt/sources.list.d/extra.list</code> might look like
+this:</p>
 <pre><code>This is the default mirror, chosen at first boot.
 # One might consider to choose the geographically nearest
  or the fastest mirror.
@@ -150,17 +184,21 @@ For example, on siduction<br />
 deb http://packages.siduction.org/extra unstable main contrib non-free
 
 #deb-src http://packages.siduction.org/extra unstable main contrib non-free</code></pre>
-<p>Under <code>/etc/apt/sources.list.d/fixes.list</code> it might look like this:</p>
+<p>Under <code>/etc/apt/sources.list.d/fixes.list</code> it might look
+like this:</p>
 <pre><code>deb https://packages.siduction.org/fixes unstable main contrib non-free
 
 #deb-src https://packages.siduction.org/fixes unstable main contrib non-free</code></pre>
-<p>And <code>/etc/apt/sources.list.d/debian.list</code> contains the actual Debian repo:</p>
+<p>And <code>/etc/apt/sources.list.d/debian.list</code> contains the
+actual Debian repo:</p>
 <pre><code># debian loadbalancer
 deb http://deb.debian.org/debian/ unstable main contrib non-free
 
 #deb-src http://deb.debian.org/debian/ unstable main contrib non-free</code></pre>
-<p>More entries for optional siduction repositories can be found at <a target="_blank" href="https://packages.siduction.org/">siduction repositories</a>.</p>
-<p>For example, adding one or more Debian repositories would look like this:</p>
+<p>More entries for optional siduction repositories can be found at <a
+href="https://packages.siduction.org/">siduction repositories</a>.</p>
+<p>For example, adding one or more Debian repositories would look like
+this:</p>
 <pre><code>#Debian
 #Unstable
 deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
@@ -177,10 +215,19 @@ deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
 
 #deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free</code></pre>
 <p><em>NOTE:</em><br />
-This example uses the US Debian mirror starting with ftp.us. This setting can be changed as <strong>root</strong> by adjusting the country code (for example: ftp.at, ftp.de). Most countries have local Debian mirrors available. This provides a higher connection speed for the user and also saves bandwidth.</p>
-<p><a target="_blank" href="https://www.debian.org/mirrors/">List of currently available Debian servers and their mirrors</a></p>
+This example uses the US Debian mirror starting with ftp.us. This
+setting can be changed as <strong>root</strong> by adjusting the country
+code (for example: ftp.at, ftp.de). Most countries have local Debian
+mirrors available. This provides a higher connection speed for the user
+and also saves bandwidth.</p>
+<p><a target="_blank" href="https://www.debian.org/mirrors/">List of currently available
+Debian servers and their mirrors</a></p>
 <h3 id="apt-update">apt update</h3>
-<p>To get updated information about the packages, a database is kept with the needed entries. The apt program uses it when installing a package to resolve all dependencies and thus to guarantee that the selected packages will work. The creation or update of this database is done with the command <strong><code>apt update</code></strong>.</p>
+<p>To get updated information about the packages, a database is kept
+with the needed entries. The apt program uses it when installing a
+package to resolve all dependencies and thus to guarantee that the
+selected packages will work. The creation or update of this database is
+done with the command <strong><code>apt update</code></strong>.</p>
 <pre><code>root@siduction# apt update
 Fetch:1 http://siduction.org sid Release.gpg [189B]
 Fetch:2 http://siduction.org sid Release.gpg [189B]
@@ -194,15 +241,20 @@ Dependency tree is built.
 Status information is read.... Done
 Upgrade available for 48 packages. Run &quot;apt list --upgradable&quot; to view them.</code></pre>
 <h3 id="install-packages">Install packages</h3>
-<p>If we know the package’s name, the command <strong><code>apt install &lt;package_name&gt;</code></strong> is sufficient.<br />
+<p>If we know the package’s name, the command
+<strong><code>apt install &lt;package_name&gt;</code></strong> is
+sufficient.<br />
 (See below for how to find a package.)</p>
 <p class="warning">
-<strong>Warning:</strong> <br />Packages that are not installed in the multi-user.target (formerly runlevel 3) can bring big, unsupportable problems!
+<strong>Warning:</strong> <br />Packages that are not installed in the
+multi-user.target (formerly runlevel 3) can bring big, unsupportable
+problems!
 </p>
 <p>Therefore we recommend the following procedure:</p>
 <ol type="1">
 <li>Log out of the desktop environment.</li>
-<li>Switch to the text console with <strong><code>Ctrl</code></strong>+<strong><code>Alt</code></strong>+<strong><code>F2</code></strong></li>
+<li>Switch to the text console with
+<strong><code>Ctrl</code></strong>+<strong><code>Alt</code></strong>+<strong><code>F2</code></strong></li>
 <li>Log in as <strong>root</strong>.</li>
 </ol>
 <p>Then install the desired program package:</p>
@@ -243,7 +295,8 @@ funtools (1.4.7-4) is set up ...
 Processing triggers for man-db (2.8.5-2) ...
 Processing triggers for libc-bin (2.28-8) ...</code></pre>
 <h3 id="remove-packages">Remove packages</h3>
-<p>The <strong><code>apt remove &lt;package_name&gt;</code></strong> command removes a package, but its dependencies remain:</p>
+<p>The <strong><code>apt remove &lt;package_name&gt;</code></strong>
+command removes a package, but its dependencies remain:</p>
 <pre><code>root@siduction# apt remove gaim
 Reading package lists... Done
 Building dependency tree.
@@ -259,9 +312,14 @@ Do you want to continue? [Y/n] y
 (Read database ... 279786 files and directories are currently installed).
 Removing funtools (1.4.7-4) ...
 Processing triggers for man-db (2.8.5-2) ...</code></pre>
-<p>In the last case, the configuration files are not removed from the system; they can be reused in a later reinstallation of the program package (in the example: gaim). If the configuration files should also be removed, then the following call is needed:</p>
+<p>In the last case, the configuration files are not removed from the
+system; they can be reused in a later reinstallation of the program
+package (in the example: gaim). If the configuration files should also
+be removed, then the following call is needed:</p>
 <p><strong><code>apt purge funtools</code></strong></p>
-<p>This will also remove the configuration files. In case you want to see if configuration files of already removed programs are still on the system, you can easily get a result with <code>dpkg</code>:</p>
+<p>This will also remove the configuration files. In case you want to
+see if configuration files of already removed programs are still on the
+system, you can easily get a result with <code>dpkg</code>:</p>
 <pre><code>dpkg -l | grep ^rc
 rc colord 1.4.3-3.1 amd64 system service to manage device color profiles -- system daemon
 rc hplip 3.18.10+dfsg0-1 amd64 HP Linux Printing and Imaging System (HPLIP)
@@ -271,43 +329,82 @@ rc sane-utils 1.0.27-3.1 amd64 API library for scanners -- utilities
 rc systemd-coredump 240-1 amd64 tools for storing and retrieving coredumps</code></pre>
 <p>The packages listed here were removed without purging.</p>
 <h3 id="hold-or-downgrade-a-package">Hold or downgrade a package</h3>
-<p>Sometimes it may be necessary to revert to an earlier version of a package because the latest version has a serious bug.</p>
+<p>Sometimes it may be necessary to revert to an earlier version of a
+package because the latest version has a serious bug.</p>
 <p><strong>Hold</strong></p>
-<p>With <code>apt-mark</code>, apt allows you to apply various settings for a package. The <code>hold</code> option protects the package from changes by apt.</p>
+<p>With <code>apt-mark</code>, apt allows you to apply various settings
+for a package. The <code>hold</code> option protects the package from
+changes by apt.</p>
 <pre><code>apt-mark hold &lt;package_name&gt;</code></pre>
 <p>To end the holding of a package:</p>
 <pre><code>apt-mark unhold &lt;package_name&gt;</code></pre>
 <p>This is how to search for packages that are placed on hold:</p>
 <pre><code>apt-mark showhold</code></pre>
-<p>Please keep in mind that hold is only an emergency measure. You will run into problems if you forget to release a hold in a timely manner. This is even more true the more (essential) dependencies the package has. So please use holds only in case of emergency and release them as soon as possible.</p>
+<p>Please keep in mind that hold is only an emergency measure. You will
+run into problems if you forget to release a hold in a timely manner.
+This is even more true the more (essential) dependencies the package
+has. So please use holds only in case of emergency and release them as
+soon as possible.</p>
 <p><strong>Downgrade</strong></p>
-<p>Debian does not support package downgrading. In simple cases, installing older versions can succeed, but it can also fail spectacularly. For more information, see the Emergency downgrading chapter in the Debian Handbook.</p>
-<p>Although downgrading is not supported, it can succeed for simple packages. The steps for a downgrade are now demonstrated on the package kmahjongg:</p>
+<p>Debian does not support package downgrading. In simple cases,
+installing older versions can succeed, but it can also fail
+spectacularly. For more information, see the Emergency downgrading
+chapter in the Debian Handbook.</p>
+<p>Although downgrading is not supported, it can succeed for simple
+packages. The steps for a downgrade are now demonstrated on the package
+kmahjongg:</p>
 <p>The sources of unstable are stored in<br />
 <code>/etc/apt/sources.list.d/debian.list</code><br />
-with a hash sign “#” and add the sources for testing. After that, we execute the following commands:</p>
+with a hash sign “#” and add the sources for testing. After that, we
+execute the following commands:</p>
 <pre><code>apt update
 apt install kmahjongg/testing</code></pre>
-<p>The now installed package is set to hold in order to protect it from upgrades:</p>
+<p>The now installed package is set to hold in order to protect it from
+upgrades:</p>
 <pre><code>apt-mark hold kmahjongg</code></pre>
 <p>Then the sources for testing are marked with a hash “#” in<br />
 <code>/etc/apt/sources.list.d/debian.list</code>,<br />
-while the hashes in front of the sources for unstable are removed again. After saving the changes, enter:</p>
+while the hashes in front of the sources for unstable are removed again.
+After saving the changes, enter:</p>
 <pre><code>apt update</code></pre>
-<p>As soon as a new, bug-free package arrives in sid, you can reinstall the latest version if you exit the hold state:</p>
+<p>As soon as a new, bug-free package arrives in sid, you can reinstall
+the latest version if you exit the hold state:</p>
 <pre><code>apt-mark unhold kmahjongg
 apt update
 apt install kmahjongg / apt full-upgrade</code></pre>
 <h3 id="updating-the-system">Updating the system</h3>
-<p>An upgrade of the whole system is performed with this command: <strong><code>apt full-upgrade</code></strong>. Before such an action, the current upgrade warnings on the main siduction page should be followed to check whether packages of one’s own system are affected. If an installed package should be kept, i.e. put on hold, please refer to the section <a href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">downgrade or “hold”</a> of a package.</p>
-<p>A simple <strong><code>apt upgrade</code></strong> of Debian Sid is usually not recommended. However, it can be helpful if there is a situation with many packages held or to be removed. Here an <strong><code>apt upgrade</code></strong> can update packages not affected by the situation.</p>
+<p>An upgrade of the whole system is performed with this command:
+<strong><code>apt full-upgrade</code></strong>. Before such an action,
+the current upgrade warnings on the main siduction page should be
+followed to check whether packages of one’s own system are affected. If
+an installed package should be kept, i.e. put on hold, please refer to
+the section <a
+href="./sys-admin-apt_en.html#hold-or-downgrade-a-package">downgrade or
+“hold”</a> of a package.</p>
+<p>A simple <strong><code>apt upgrade</code></strong> of Debian Sid is
+usually not recommended. However, it can be helpful if there is a
+situation with many packages held or to be removed. Here an
+<strong><code>apt upgrade</code></strong> can update packages not
+affected by the situation.</p>
 <p>How regularly should a system upgrade be performed?<br />
-A system update should be performed regularly, every one to two weeks has proven to be a good guideline. Even monthly system updates should not cause any significant problems. Theoretically, the system can be updated several times a day after mirror synchronization every 6 hours.</p>
-<p>Experience shows that you should not wait longer than two, maximum three months. Special attention should be paid to program packages which do not come from the siduction or Debian repositories or which have been compiled by yourself, as they may lose their functionality after a system update via full-upgrade due to incompatibilities.</p>
+A system update should be performed regularly, every one to two weeks
+has proven to be a good guideline. Even monthly system updates should
+not cause any significant problems. Theoretically, the system can be
+updated several times a day after mirror synchronization every 6
+hours.</p>
+<p>Experience shows that you should not wait longer than two, maximum
+three months. Special attention should be paid to program packages which
+do not come from the siduction or Debian repositories or which have been
+compiled by yourself, as they may lose their functionality after a
+system update via full-upgrade due to incompatibilities.</p>
 <p><strong>Update not with live media</strong></p>
-<p>There is no possibility to update a siduction installation using a live medium. Below we describe in detail the upgrade process and why apt should be used.</p>
+<p>There is no possibility to update a siduction installation using a
+live medium. Below we describe in detail the upgrade process and why apt
+should be used.</p>
 <h3 id="updateable-packages">Updateable packages</h3>
-<p>After updating the internal database, you can find out for which packages a newer version exists (first you need to install apt-show-versions):</p>
+<p>After updating the internal database, you can find out for which
+packages a newer version exists (first you need to install
+apt-show-versions):</p>
 <pre><code>root@siduction# apt-show-versions -u
 libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
 passwd/unstable upgradeable from 1:4.0.12-5 to 1:4.0.12-6
@@ -316,7 +413,8 @@ libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3
 [...]</code></pre>
 <p>The same can be achieved with:</p>
 <pre><code>apt list --upgradable</code></pre>
-<p>The upgrade of a single package (here e.g. debtags-1.6.6.0) can be done considering the dependencies with:</p>
+<p>The upgrade of a single package (here e.g. debtags-1.6.6.0) can be
+done considering the dependencies with:</p>
 <pre><code>root@siduction# apt install debtags-1.6.6.0
 Reading package lists... Ready
 Building dependency tree... Done
@@ -340,7 +438,11 @@ Installing new version of the configuration file /etc/debtags/sources.list ...</
 <p><strong>Download (only)</strong></p>
 <p>A little known but great option is the <code>-d</code> option:</p>
 <pre><code>apt update &amp;&amp; apt full-upgrade -d</code></pre>
-<p><code>-d</code> allows to save the packages of a full-upgrade locally without installing them. This can be done in a console while in X. The full-upgrade itself can be done later in init 3. This also gives one the opportunity to check for any warnings and then decide whether or not to perform the upgrade:</p>
+<p><code>-d</code> allows to save the packages of a full-upgrade locally
+without installing them. This can be done in a console while in X. The
+full-upgrade itself can be done later in init 3. This also gives one the
+opportunity to check for any warnings and then decide whether or not to
+perform the upgrade:</p>
 <pre><code>root@siduction#apt full-upgrade -d
 Reading package lists... Done
 Building dependency tree
@@ -357,19 +459,30 @@ The following packages will be upgraded:
 Need to get 23.4MB of archives.
 After this operation, 594kB of additional disk space will be used.
 Do you want to continue [Y/n]?Y </code></pre>
-<p><strong><code>Y</code></strong> downloads the packages to be updated or reinstalled without changing the installed system.</p>
-<p>After downloading the packages with <code>full-upgrade -d</code>, they can be installed at any time according to the procedure in the following paragraph.</p>
+<p><strong><code>Y</code></strong> downloads the packages to be updated
+or reinstalled without changing the installed system.</p>
+<p>After downloading the packages with <code>full-upgrade -d</code>,
+they can be installed at any time according to the procedure in the
+following paragraph.</p>
 <h3 id="run-full-upgrade">Run full-upgrade</h3>
 <p class="warning">
-<strong>Warning:</strong> <br />A system update that is not performed in the multi-user.target (formerly runlevel 3) can lead to problems when it comes to updates of the installed desktop environment or the X server!
+<strong>Warning:</strong> <br />A system update that is not performed in
+the multi-user.target (formerly runlevel 3) can lead to problems when it
+comes to updates of the installed desktop environment or the X server!
 </p>
-<p>Before updating the system, visit the <a target="_blank" href="https://forum.siduction.org/">siduction home page</a> to find out about any upgrade warnings. These warnings are necessary because of the structure of Debian sid/unstable which adds new program packages to its repositories several times a day.</p>
+<p>Before updating the system, visit the <a
+href="https://forum.siduction.org/">siduction home page</a> to find out
+about any upgrade warnings. These warnings are necessary because of the
+structure of Debian sid/unstable which adds new program packages to its
+repositories several times a day.</p>
 <p>The following procedure should be followed:</p>
 <ol type="1">
 <li>Log out of the desktop environment.<br />
-(This procedure is nowadays only recommended when updating X or the desktop environment itself, but does not hurt in other cases.)<br />
+(This procedure is nowadays only recommended when updating X or the
+desktop environment itself, but does not hurt in other cases.)<br />
 </li>
-<li>Switch to the text console with <strong><code>Ctrl</code></strong>+<strong><code>Alt</code></strong>+<strong><code>F2</code></strong>.</li>
+<li>Switch to the text console with
+<strong><code>Ctrl</code></strong>+<strong><code>Alt</code></strong>+<strong><code>F2</code></strong>.</li>
 <li>Log in as <strong>root</strong>.</li>
 </ol>
 <p>Then execute the following commands:</p>
@@ -378,21 +491,53 @@ apt update
 apt full-upgrade
 apt clean
 init 5 &amp;&amp; exit</code></pre>
-<p>If a new kernel has been installed, the command <strong><code>systemctl reboot</code></strong> or <strong><code>init 6</code></strong> needs to be run instead of <em>“init 5”</em> in order to boot with the new kernel.</p>
+<p>If a new kernel has been installed, the command
+<strong><code>systemctl reboot</code></strong> or
+<strong><code>init 6</code></strong> needs to be run instead of
+<em>“init 5”</em> in order to boot with the new kernel.</p>
 <h3 id="why-use-apt-exclusively">Why use apt exclusively</h3>
-<p>For installing, deleting, and carrying out a system update, <em>apt</em> should be used. Please refrain from updating the system with applications like <code>synaptic</code>, <code>adept</code>, or <code>kpackage</code>!</p>
-<p>The mentioned programs are excellent <em>Debian stable</em> installation and very good for searching program packages, but they are not adapted to the special tasks of the dynamic distribution Debian Sid. They cannot correctly resolve the extensive changes in Sid (changed dependencies, naming conventions, or scripts). This is not due errors in the programs or mistakes by the developers.</p>
-<p>Package managers like adept, synaptic, and kpackage are - technically speaking - non-deterministic. When using a dynamic distribution like Debian Sid with the addition of third party repositories whose quality cannot be tested by the Debian team, a system update can lead to disaster, as these package managers can make wrong decisions by automatically trying to solve the problem.</p>
-<p>Furthermore, it should be noted that all GUI package managers must be run in X. System updates in X (even an anyway not recommended ‘apt upgrade’) will sooner or later cause you to irreversibly damage your system.</p>
-<p>In contrast, apt does only what is requested. In the case of incomplete dependencies in Sid, i.e. when the system breaks (this can happen in Sid during structural changes), the causes can be precisely determined and thus repaired or bypassed. The own system does not “break”. So if a system update feels like deleting half the system, apt leaves it up to the administrator to decide what to do, and does not act on its own.</p>
-<p>This is the reason why Debian builds use apt and not other package managers.</p>
-<h3 id="searching-for-program-packages">Searching for program packages</h3>
-<p>The APT system provides a number of useful search commands that search the APT database and output information about packages. In addition, there are some programs that display the search graphically.</p>
+<p>For installing, deleting, and carrying out a system update,
+<em>apt</em> should be used. Please refrain from updating the system
+with applications like <code>synaptic</code>, <code>adept</code>, or
+<code>kpackage</code>!</p>
+<p>The mentioned programs are excellent <em>Debian stable</em>
+installation and very good for searching program packages, but they are
+not adapted to the special tasks of the dynamic distribution Debian Sid.
+They cannot correctly resolve the extensive changes in Sid (changed
+dependencies, naming conventions, or scripts). This is not due errors in
+the programs or mistakes by the developers.</p>
+<p>Package managers like adept, synaptic, and kpackage are - technically
+speaking - non-deterministic. When using a dynamic distribution like
+Debian Sid with the addition of third party repositories whose quality
+cannot be tested by the Debian team, a system update can lead to
+disaster, as these package managers can make wrong decisions by
+automatically trying to solve the problem.</p>
+<p>Furthermore, it should be noted that all GUI package managers must be
+run in X. System updates in X (even an anyway not recommended ‘apt
+upgrade’) will sooner or later cause you to irreversibly damage your
+system.</p>
+<p>In contrast, apt does only what is requested. In the case of
+incomplete dependencies in Sid, i.e. when the system breaks (this can
+happen in Sid during structural changes), the causes can be precisely
+determined and thus repaired or bypassed. The own system does not
+“break”. So if a system update feels like deleting half the system, apt
+leaves it up to the administrator to decide what to do, and does not act
+on its own.</p>
+<p>This is the reason why Debian builds use apt and not other package
+managers.</p>
+<h3 id="searching-for-program-packages">Searching for program
+packages</h3>
+<p>The APT system provides a number of useful search commands that
+search the APT database and output information about packages. In
+addition, there are some programs that display the search
+graphically.</p>
 <p><strong>Package search in the terminal</strong></p>
 <p>With the simple command<br />
 <strong><code>apt search &lt;search_pattern&gt;</code></strong><br />
-you get a list of all packages containing the search pattern. Searching with <code>search</code> allows the use of regex terms.</p>
-<p>For example, if you search for <em>“gman”</em>, you get this result:</p>
+you get a list of all packages containing the search pattern. Searching
+with <code>search</code> allows the use of regex terms.</p>
+<p>For example, if you search for <em>“gman”</em>, you get this
+result:</p>
 <pre><code>user1@pc1:~$ apt search ^gman
 Sorting... Done
 Full text search... Done
@@ -401,8 +546,11 @@ gman/unstable,now 0.9.3-5.3 amd64 [installed]
 
 gmanedit/unstable 0.4.2-7 amd64
   GTK+/GNOME editor for manual pages</code></pre>
-<p>Here the “^” means that “gman” must be at the beginning of the line. Without this character, the pattern will also find khan<em>gman</em> and lo<em>gman</em>ager, for example.</p>
-<p>If you want more information about the current versions of a package, use:</p>
+<p>Here the “^” means that “gman” must be at the beginning of the line.
+Without this character, the pattern will also find khan<em>gman</em> and
+lo<em>gman</em>ager, for example.</p>
+<p>If you want more information about the current versions of a package,
+use:</p>
 <pre><code>user1@pc1:~$ apt show gman
 Package: gman
 Version: 0.9.3-5.3
@@ -432,20 +580,35 @@ Description: small man(1) front-end for X
  external viewer to display the manual page. More than one
  external viewer windows can be launched at the same time.
 [...]</code></pre>
-<p>All installable versions of the package (depending on the sources.list) can be listed as follows:</p>
+<p>All installable versions of the package (depending on the
+sources.list) can be listed as follows:</p>
 <pre><code>user1@pc1:~$ apt list gman
 listing... Done
 gman/unstable,now 0.9.3-5.3 amd64 [installed]</code></pre>
-<p>The command <strong><code>aptitude</code></strong> (in the terminal) opens the program of the same name in an ncurses environment. It is operated with the keyboard or mouse and offers various functions which can be reached via the upper menu bar. The use of APT or Aptitude is a matter of taste, but Aptitude is often “too smart” for the speed of Debian Unstable.</p>
+<p>The command <strong><code>aptitude</code></strong> (in the terminal)
+opens the program of the same name in an ncurses environment. It is
+operated with the keyboard or mouse and offers various functions which
+can be reached via the upper menu bar. The use of APT or Aptitude is a
+matter of taste, but Aptitude is often “too smart” for the speed of
+Debian Unstable.</p>
 <figure>
-<img src="./images-en/apt/aptitude.png" alt="" /><figcaption>aptitude</figcaption>
+<img src="./images-en/apt/aptitude.png" alt="aptitude" />
+<figcaption aria-hidden="true">aptitude</figcaption>
 </figure>
 <p><strong>Graphical package search</strong></p>
-<p>The program <strong><code>packagesearch</code></strong> is very useful to search for suitable programs. Mostly packagesearch is not installed automatically; therefore:</p>
+<p>The program <strong><code>packagesearch</code></strong> is very
+useful to search for suitable programs. Mostly packagesearch is not
+installed automatically; therefore:</p>
 <pre><code>apt update
 apt install packagesearch</code></pre>
-<p>After the first start of packagesearch you have to select “apt” in <em>“Packagesearch”</em> &gt; <em>“Preferences”</em> and occasionally an info window appears, which criticizes the absence of deborphan. Please use the information from deborphan with utmost caution.</p>
-<p>Packagesearch is not intended to be used for installing files/packages, but only as a graphical search engine. Upgrading and reinstalling files without first quitting X can cause problems (see above).</p>
+<p>After the first start of packagesearch you have to select “apt” in
+<em>“Packagesearch”</em> &gt; <em>“Preferences”</em> and occasionally an
+info window appears, which criticizes the absence of deborphan. Please
+use the information from deborphan with utmost caution.</p>
+<p>Packagesearch is not intended to be used for installing
+files/packages, but only as a graphical search engine. Upgrading and
+reinstalling files without first quitting X can cause problems (see
+above).</p>
 <p>The following search criteria are available:</p>
 <ul>
 <li>pattern (general search query)</li>
@@ -454,8 +617,14 @@ apt install packagesearch</code></pre>
 <li>installed status</li>
 <li>orphaned packages</li>
 </ul>
-<p>In addition, a lot of information about Debian packages is provided, including which files are bundled in a package. More detailed information about using packagesearch can be found at <em>“Help”</em> &gt; <em>“Contents”</em>. Currently the user interface of packagesearch is English only.</p>
-<p>A complete description of the APT system can be found in <a target="_blank" href="https://wiki.debian.org/DebianPackageManagement">Debian’s APT-HOWTO</a>.</p>
+<p>In addition, a lot of information about Debian packages is provided,
+including which files are bundled in a package. More detailed
+information about using packagesearch can be found at <em>“Help”</em>
+&gt; <em>“Contents”</em>. Currently the user interface of packagesearch
+is English only.</p>
+<p>A complete description of the APT system can be found in <a
+href="https://wiki.debian.org/DebianPackageManagement">Debian’s
+APT-HOWTO</a>.</p>
 <div id="rev">
 Last edited: 2022/04/07
 </div>

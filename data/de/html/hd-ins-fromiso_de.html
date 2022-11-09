@@ -43,23 +43,41 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="aus-iso-datei-booten">Aus ISO-Datei booten</h2>
 <h3 id="&uuml;berblick">&Uuml;berblick</h3>
-<p>Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte mit dem Dateisystem <strong>ext4</strong>. F&uuml;r normalen Gebrauch empfehlen wir das Standarddateisystem von siduction, <strong>ext4</strong>, welches von den Maintainern gut betreut ist.</p>
-<p>Der Start von einer <em>“fromiso”</em> Festplatten-Installationen dauert nur einen Bruchteil der Zeit, die ein Start von einer CD ben&ouml;tigt. Au&szlig;erdem steht gleichzeitig das CD/DVD-Laufwerk zur Verf&uuml;gung. Alternativ kann man auch VBox, KVM oder QEMU verwenden.</p>
+<p>Dieser Cheatcode startet aus einer ISO-Datei auf der Festplatte mit
+dem Dateisystem <strong>ext4</strong>. F&uuml;r normalen Gebrauch empfehlen
+wir das Standarddateisystem von siduction, <strong>ext4</strong>,
+welches von den Maintainern gut betreut ist.</p>
+<p>Der Start von einer <em>“fromiso”</em> Festplatten-Installationen
+dauert nur einen Bruchteil der Zeit, die ein Start von einer CD
+ben&ouml;tigt. Au&szlig;erdem steht gleichzeitig das CD/DVD-Laufwerk zur Verf&uuml;gung.
+Alternativ kann man auch VBox, KVM oder QEMU verwenden.</p>
 <p><strong>Voraussetzungen</strong></p>
 <ul>
-<li>eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)</li>
-<li>eine siduction-Imagedatei, z. B. siduction.iso (Name gek&uuml;rzt) und ein Linux-Dateisystem wie <strong>ext4</strong></li>
+<li>eine funktionierende Grub-Installation (auf Floppy, einer
+Festplatteninstallation oder der Live-CD)</li>
+<li>eine siduction-Imagedatei, z. B. siduction.iso (Name gek&uuml;rzt) und
+ein Linux-Dateisystem wie <strong>ext4</strong></li>
 </ul>
 <h3 id="fromiso-mit-grub2">fromiso mit Grub2</h3>
-<p>siduction liefert eine grub2-Datei mit der Bezeichnung <code>60_fll-fromiso</code>, um einen fromiso-Eintrag im grub2-Men&uuml; zu generieren. Die Konfigurationsdatei f&uuml;r fromiso ist im Paket <code>grub2-fll-fromiso</code> , mit dem Pfad <code>/etc/default/grub2-fll-fromiso</code> .</p>
-<p>Als erstes &ouml;ffnet man ein Terminal und wird <strong>root</strong>. Dann istalliert man die Konfigurationsdatei:</p>
+<p>siduction liefert eine grub2-Datei mit der Bezeichnung
+<code>60_fll-fromiso</code>, um einen fromiso-Eintrag im grub2-Men&uuml; zu
+generieren. Die Konfigurationsdatei f&uuml;r fromiso ist im Paket
+<code>grub2-fll-fromiso</code> , mit dem Pfad
+<code>/etc/default/grub2-fll-fromiso</code> .</p>
+<p>Als erstes &ouml;ffnet man ein Terminal und wird <strong>root</strong>.
+Dann istalliert man die Konfigurationsdatei:</p>
 <pre><code>su
 apt update
 apt install grub2-fll-fromiso</code></pre>
-<p>Im Anschluss &ouml;ffnet man einen Editor der Wahl (kwrite, mcedit, vim …):</p>
+<p>Im Anschluss &ouml;ffnet man einen Editor der Wahl (kwrite, mcedit, vim
+…):</p>
 <pre><code>mcedit /etc/default/grub2-fll-fromiso</code></pre>
-<p>In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen <strong><code>#</code></strong> am Anfang der Zeile entfernt, und man ersetzt die voreingestellten Anweisungen innerhalb der doppelten Anf&uuml;hrungszeichen mit den eigenen Parametern.</p>
-<p>Vergleiche diese ge&auml;nderte grub2-fll-fromiso mit den Grundeinstellungen:</p>
+<p>In den Zeilen, die aktiv sein sollen, wird das Kommentarzeichen
+<strong><code>#</code></strong> am Anfang der Zeile entfernt, und man
+ersetzt die voreingestellten Anweisungen innerhalb der doppelten
+Anf&uuml;hrungszeichen mit den eigenen Parametern.</p>
+<p>Vergleiche diese ge&auml;nderte grub2-fll-fromiso mit den
+Grundeinstellungen:</p>
 <pre><code># Defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2&#39;s update-grub
 # installed at /etc/default/grub2-fll-fromiso
@@ -96,11 +114,20 @@ FLL_GRUB2_TZ=&quot;Europe/Berlin&quot;
 # additional cheatcodes
 # default: noeject
 FLL_GRUB2_CHEATCODE=&quot;noeject nointro&quot; </code></pre>
-<p>Speichere die &Auml;nderungen, schlie&szlig;e den Editor und f&uuml;hre als <strong>root</strong> folgenden Befehl in einem Terminal aus:</p>
+<p>Speichere die &Auml;nderungen, schlie&szlig;e den Editor und f&uuml;hre als
+<strong>root</strong> folgenden Befehl in einem Terminal aus:</p>
 <pre><code>update-grub</code></pre>
-<p>Die Grub2-Konfigurationsdatei <code>grub.cfg</code> wird damit aktualisiert und erkennt die im angegebenen Verzeichnis platzierten ISOs. Diese stehen beim n&auml;chsten Neustart zur Wahl.</p>
+<p>Die Grub2-Konfigurationsdatei <code>grub.cfg</code> wird damit
+aktualisiert und erkennt die im angegebenen Verzeichnis platzierten
+ISOs. Diese stehen beim n&auml;chsten Neustart zur Wahl.</p>
 <h3 id="toram">toram</h3>
-<p>Eine weitere N&uuml;tzliche Option beim Booten von einem Live Medium ist <code>toram</code>. Selbige ist empfehlenswert, wenn der Rechner &uuml;ber ausreichend Arbeitsspeicher verf&uuml;gt (4GiB oder mehr). Damit wird der komplette Inhalt des Live Mediums in den RAM kopiert. Das hat den Vorteil, dass das System schneller reagiert. Au&szlig;erdem kann man das Medium nach dem Start entfernen, um den USB Port oder das Laufwerk anderweitig zu nutzen.</p>
+<p>Eine weitere N&uuml;tzliche Option beim Booten von einem Live Medium ist
+<code>toram</code>. Selbige ist empfehlenswert, wenn der Rechner &uuml;ber
+ausreichend Arbeitsspeicher verf&uuml;gt (4GiB oder mehr). Damit wird der
+komplette Inhalt des Live Mediums in den RAM kopiert. Das hat den
+Vorteil, dass das System schneller reagiert. Au&szlig;erdem kann man das
+Medium nach dem Start entfernen, um den USB Port oder das Laufwerk
+anderweitig zu nutzen.</p>
 <div id="rev">
 Zuletzt bearbeitet: 2022-04-14
 </div>

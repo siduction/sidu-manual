@@ -35,71 +35,138 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#systemd-mount">systemd-mount</a>
 <ul>
-<li><a href="#contents-of-the-mount-unit">Contents of the mount unit</a></li>
-<li><a href="#contents-of-automount-unit">Contents of automount unit</a></li>
+<li><a href="#contents-of-the-mount-unit">Contents of the mount
+unit</a></li>
+<li><a href="#contents-of-automount-unit">Contents of automount
+unit</a></li>
 <li><a href="#examples">Examples</a></li>
 <li><a href="#sources-systemd-mount">Sources systemd-mount</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="systemd-mount">systemd-mount</h2>
-<p>The basic and introductory information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered on our manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
-On this manual page we explain the function of the systemd units <strong>mount</strong> and <strong>automount</strong>. They are used by systemd to manage mount points for drives and their partitions, which can be accessible both locally and over the network.</p>
-<p>The <strong>mount</strong> unit is a configuration file that provides systemd with information about a mount point.<br />
-The <strong>automount</strong> unit monitors the file system and activates the .mount unit of the same name if the file system designated therein is available.</p>
-<p>For drives and their partitions directly installed in the PC we only use the mount unit. It is enabled and started to mount the drives at each boot.<br />
-For network file systems, the mount unit has the advantage of being able to declare dependencies so that the unit only becomes active when the network is ready. Again, we use only the mount unit and activate and start it to mount the network file system at each boot. The mount unit supports all types of network file systems (NFS, SMB, FTP, WEBDAV, SFTP, SSH).</p>
-<p>Removable devices, such as USB sticks and network file systems that are not permanently accessible, must always be attached to a .automount unit. In this case, the mount unit must not be activated and should not contain an [Install] section.</p>
-<p>mount and automount units must be named after the mount point they control. For example, the mount point “/home/exampleuser” must be configured in a unit file “home-musteruser.mount”, or “home-musteruser.automount”.</p>
-<p>The devices declared in <code>/etc/fstab</code> and their mount points are translated into native mount units by systemd in the early boot phase using the systemd-fstab-generator.</p>
+<p>The basic and introductory information about systemd can be found on
+the manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.
+The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit
+files are covered on our manual page <a
+href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit
+file</a>.<br />
+On this manual page we explain the function of the systemd units
+<strong>mount</strong> and <strong>automount</strong>. They are used by
+systemd to manage mount points for drives and their partitions, which
+can be accessible both locally and over the network.</p>
+<p>The <strong>mount</strong> unit is a configuration file that provides
+systemd with information about a mount point.<br />
+The <strong>automount</strong> unit monitors the file system and
+activates the .mount unit of the same name if the file system designated
+therein is available.</p>
+<p>For drives and their partitions directly installed in the PC we only
+use the mount unit. It is enabled and started to mount the drives at
+each boot.<br />
+For network file systems, the mount unit has the advantage of being able
+to declare dependencies so that the unit only becomes active when the
+network is ready. Again, we use only the mount unit and activate and
+start it to mount the network file system at each boot. The mount unit
+supports all types of network file systems (NFS, SMB, FTP, WEBDAV, SFTP,
+SSH).</p>
+<p>Removable devices, such as USB sticks and network file systems that
+are not permanently accessible, must always be attached to a .automount
+unit. In this case, the mount unit must not be activated and should not
+contain an [Install] section.</p>
+<p>mount and automount units must be named after the mount point they
+control. For example, the mount point “/home/exampleuser” must be
+configured in a unit file “home-musteruser.mount”, or
+“home-musteruser.automount”.</p>
+<p>The devices declared in <code>/etc/fstab</code> and their mount
+points are translated into native mount units by systemd in the early
+boot phase using the systemd-fstab-generator.</p>
 <h3 id="contents-of-the-mount-unit">Contents of the mount unit</h3>
-<p>The mount unit has the following options in the mandatory [Mount] section:</p>
+<p>The mount unit has the following options in the mandatory [Mount]
+section:</p>
 <ul>
 <li><p><code>What=</code> (mandatory)<br />
-contains the absolute path of the mounted device, e.g., disk partitions such as <code>/dev/sda8</code> or a network share such as NFSv4 or Samba.</p></li>
+contains the absolute path of the mounted device, e.g., disk partitions
+such as <code>/dev/sda8</code> or a network share such as NFSv4 or
+Samba.</p></li>
 <li><p><code>Where=</code> (mandatory)<br />
-Here you specify the mount point, i.e. the folder where the partition, network drive, or device should be mounted. If it does not exist, it will be created during the mount process.</p></li>
+Here you specify the mount point, i.e. the folder where the partition,
+network drive, or device should be mounted. If it does not exist, it
+will be created during the mount process.</p></li>
 <li><p><code>Type=</code> (optional)<br />
-Here the type of the file system is specified, according to the mount parameter -t.</p></li>
+Here the type of the file system is specified, according to the mount
+parameter -t.</p></li>
 <li><p><code>Options=</code> (optional)<br />
-contains all used options in a comma separated list, according to the mount parameter -o.</p></li>
+contains all used options in a comma separated list, according to the
+mount parameter -o.</p></li>
 <li><p><code>LazyUmount=</code> (default: off)<br />
-If set to true, the filesystem will be unmounted as soon as it is no longer needed.</p></li>
+If set to true, the filesystem will be unmounted as soon as it is no
+longer needed.</p></li>
 <li><p><code>SloppyOptions=</code> (default: off)<br />
-If true, a relaxed evaluation of the options specified in <code>Options=</code> is performed and unknown mount options are tolerated. This is equivalent to the mount parameter -s.</p></li>
+If true, a relaxed evaluation of the options specified in
+<code>Options=</code> is performed and unknown mount options are
+tolerated. This is equivalent to the mount parameter -s.</p></li>
 <li><p><code>ReadWriteOnly=</code> (default: off)<br />
-If false, the file system or device that should be mounted read-write, but could not be mounted successfully, is attempted to be mounted read-only. If true, the process immediately ends with an error if the read-write mount fails. This is equivalent to the -w mount parameter.</p></li>
+If false, the file system or device that should be mounted read-write,
+but could not be mounted successfully, is attempted to be mounted
+read-only. If true, the process immediately ends with an error if the
+read-write mount fails. This is equivalent to the -w mount
+parameter.</p></li>
 <li><p><code>ForceUnmount=</code> (default: off).<br />
-If true, unmounting is forced if, for example, an NFS file system is unreachable. This corresponds to the mount parameter -f. </p></li>
+If true, unmounting is forced if, for example, an NFS file system is
+unreachable. This corresponds to the mount parameter -f. </p></li>
 <li><p><code>DirectoryMode=</code> (default: 0755)<br />
-The, if necessary, automatically created directories of mount points get the declared file system access mode. Accepts an access mode in octal notation.</p></li>
-<li><p><code>TimeoutSec=</code> (default value from the <code>DefaultTimeoutStartSec=</code> option in systemd-system.conf).<br />
-Configures the time to wait for the mount command to finish. If a command does not finish within the configured time, the mount is considered to have failed and is shut down again. Accepts a unit-free value in seconds or a duration value such as “5min 20s”. Passing “0” will disable the timeout logic.</p></li>
+The, if necessary, automatically created directories of mount points get
+the declared file system access mode. Accepts an access mode in octal
+notation.</p></li>
+<li><p><code>TimeoutSec=</code> (default value from the
+<code>DefaultTimeoutStartSec=</code> option in
+systemd-system.conf).<br />
+Configures the time to wait for the mount command to finish. If a
+command does not finish within the configured time, the mount is
+considered to have failed and is shut down again. Accepts a unit-free
+value in seconds or a duration value such as “5min 20s”. Passing “0”
+will disable the timeout logic.</p></li>
 </ul>
 <h3 id="contents-of-automount-unit">Contents of automount unit</h3>
-<p>The automount unit has the following options in the mandatory [Automount] section:</p>
+<p>The automount unit has the following options in the mandatory
+[Automount] section:</p>
 <ul>
 <li><p><code>Where=</code> (mandatory)<br />
-This specifies the mount point, i.e. the folder where the partition, network drive, or device is to be mounted. If it does not exist, it will be created during the mount process.</p></li>
+This specifies the mount point, i.e. the folder where the partition,
+network drive, or device is to be mounted. If it does not exist, it will
+be created during the mount process.</p></li>
 <li><p><code>DirectoryMode=</code> (default: 0755)<br />
-The, if necessary, automatically created directories of mount points get the declared file system access mode. Accepts an access mode in octal notation.</p></li>
+The, if necessary, automatically created directories of mount points get
+the declared file system access mode. Accepts an access mode in octal
+notation.</p></li>
 <li><p><code>TimeoutIdleSec=</code> (default: 0)<br />
-specifies the time of inactivity after which systemd attempts to unmount the file system. Accepts a unitless value in seconds or a duration value such as “5min 20s”. The value “0” disables the option.</p></li>
+specifies the time of inactivity after which systemd attempts to unmount
+the file system. Accepts a unitless value in seconds or a duration value
+such as “5min 20s”. The value “0” disables the option.</p></li>
 </ul>
 <h3 id="examples">Examples</h3>
-<p>Systemd reads the mount point from the name of the mount and automount units. Therefore, they must be named after the mount point they control.<br />
-Make sure not to use hyphens “-” in the filenames, because they declare a new subdirectory in the directory tree. Some examples:</p>
+<p>Systemd reads the mount point from the name of the mount and
+automount units. Therefore, they must be named after the mount point
+they control.<br />
+Make sure not to use hyphens “-” in the filenames, because they declare
+a new subdirectory in the directory tree. Some examples:</p>
 <ul>
 <li>invalid: /data/home-backup</li>
 <li>allowed: /data/home_backup</li>
 <li>allowed: /data/home\x2dbackup</li>
 </ul>
-<p>To get an error-free file name for the mount and automount units, we use the <code>systemd-escape</code> command in the terminal.</p>
+<p>To get an error-free file name for the mount and automount units, we
+use the <code>systemd-escape</code> command in the terminal.</p>
 <pre><code>$ systemd-escape -p --suffix=mount &quot;/data/home-backup&quot;
   data/home\x2dbackup.mount</code></pre>
 <p><strong>Disk partition</strong><br />
-A partition should be accessible under <code>/disks/TEST</code> after every system start.<br />
-We create with a text editor the file “disks-TEST.mount” in the directory <code>/usr/local/lib/systemd/system/</code>. (If necessary, create the directory beforehand with the command <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.)</p>
+A partition should be accessible under <code>/disks/TEST</code> after
+every system start.<br />
+We create with a text editor the file “disks-TEST.mount” in the
+directory <code>/usr/local/lib/systemd/system/</code>. (If necessary,
+create the directory beforehand with the command
+<strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.)</p>
 <pre><code>[Unit]
 Description=Mount /dev/sdb7 at /disks/TEST
 After=blockdev@dev-disk-by\x2duuid-a7af4b19\x2df29d\x2d43bc\x2d3b12\x2d87924fc3d8c7.target
@@ -117,8 +184,12 @@ WantedBy=multi-user.target</code></pre>
 <p>Then we activate and start the new mount unit.</p>
 <pre><code># systemctl enable --now disks-TEST.mount</code></pre>
 <p><strong>NFS</strong><br />
-The “document-root” directory of an Apache web server in the home network is to be mounted into the home directory of the workstation computer using NFS.<br />
-We create the file <code>home-&lt;user&gt;-www_data.mount</code> in the <code>/usr/local/lib/systemd/system/</code> directory using a text editor.<br />
+The “document-root” directory of an Apache web server in the home
+network is to be mounted into the home directory of the workstation
+computer using NFS.<br />
+We create the file <code>home-&lt;user&gt;-www_data.mount</code> in the
+<code>/usr/local/lib/systemd/system/</code> directory using a text
+editor.<br />
 Please replace “&lt;user&gt;” with your own name.</p>
 <pre><code>[Unit]
 Description=Mount server1/var/www/ using NFS
@@ -131,7 +202,10 @@ Where=/home/&lt;user&gt;/www_data
 Type=nfs
 Options=nfsvers=4,rw,users,soft
 ForceUnmount=true</code></pre>
-<p>This file does not contain an [Install] section and will not be activated. The control is taken over by the now following file <code>home-&lt;user&gt;-www_data.automount</code> in the same directory.</p>
+<p>This file does not contain an [Install] section and will not be
+activated. The control is taken over by the now following file
+<code>home-&lt;user&gt;-www_data.automount</code> in the same
+directory.</p>
 <pre><code>[Unit]
 Description=Automount server1/var/www/ using NFS
 ConditionPathExists=/home/&lt;user&gt;/www_data
@@ -148,7 +222,9 @@ WantedBy=remote-fs.target
 WantedBy=multi-user.target</code></pre>
 <p>Afterwards:</p>
 <pre><code># systemctl enable --now home-&lt;user&gt;-www_data.automount</code></pre>
-<p>Now the “document-root” directory of the Apache web server will be mounted as soon as we switch to the <code>/home/&lt;user&gt;/www_data</code> directory.<br />
+<p>Now the “document-root” directory of the Apache web server will be
+mounted as soon as we switch to the
+<code>/home/&lt;user&gt;/www_data</code> directory.<br />
 The status prompt confirms the action.</p>
 <pre><code># systemctl status home-&lt;user&gt;-www_data.mount
 home-&lt;user&gt;-www_data.mount Mount server1/var/www/ using NFS
@@ -171,7 +247,10 @@ home-&lt;user&gt;-www_data.automount Automount server1/var/www/ usuing NFS
 Triggers: ● home-&lt;user&gt;-www_data.mount
    Where: /home/&lt;user&gt;/www_data
 [...]</code></pre>
-<p>The journal excerpt vividly logs the operation of <em>“TimeoutIdleSec=60”</em> to unmount the file system and mount it again by starting the file manager Thunar and a call to <code>/home/&lt;user&gt;/www_data</code> in the terminal.</p>
+<p>The journal excerpt vividly logs the operation of
+<em>“TimeoutIdleSec=60”</em> to unmount the file system and mount it
+again by starting the file manager Thunar and a call to
+<code>/home/&lt;user&gt;/www_data</code> in the terminal.</p>
 <pre><code># journalctl -f -u home-&lt;user&gt;-www_data.*
 [...]systemd[1]: Mounted Mount server1/var/www/ using NFS
 [...]systemd[1]: Unmounting Mount server1/var/www/ using NFS
@@ -194,12 +273,19 @@ Triggers: ● home-&lt;user&gt;-www_data.mount
 [...]systemd[1]: home-&lt;user&gt;-www_data.mount: Succeeded.
 [...]systemd[1]: Unmounted Mount server1/var/www/ using NFS</code></pre>
 <p><strong>More examples</strong><br />
-Using your favorite search engine, you can find many examples on how to use mount and automount units on the Internet. The chapter “Sources” contains some websites with lots of further examples. We urgently recommend to also read the man pages.</p>
+Using your favorite search engine, you can find many examples on how to
+use mount and automount units on the Internet. The chapter “Sources”
+contains some websites with lots of further examples. We urgently
+recommend to also read the man pages.</p>
 <h3 id="sources-systemd-mount">Sources systemd-mount</h3>
 <pre><code>man systemd.mount
 man mount</code></pre>
-<p><a target="_blank" href="https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191">Manjaro Forum, systemd.mount</a><br />
-<a target="_blank" href="https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185">Manjaro Forum, Use systemd to mount ANY device</a></p>
+<p><a
+href="https://forum.manjaro.org/t/root-tip-systemd-mount-unit-samples/1191">Manjaro
+Forum, systemd.mount</a><br />
+<a
+href="https://forum.manjaro.org/t/root-tip-use-systemd-to-mount-any-device/1185">Manjaro
+Forum, Use systemd to mount ANY device</a></p>
 <div id="rev">
 Last edited: 2022/04/09
 </div>

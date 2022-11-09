@@ -38,30 +38,62 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#ben&ouml;tigte-dateien">Ben&ouml;tigte Dateien</a></li>
 <li><a href="#service-unit-f&uuml;r-timer">service-Unit f&uuml;r timer</a></li>
 <li><a href="#timer-unit-anlegen">timer-Unit anlegen</a></li>
-<li><a href="#timer-unit-als-cron-ersatz">timer-Unit als cron Ersatz</a></li>
+<li><a href="#timer-unit-als-cron-ersatz">timer-Unit als cron
+Ersatz</a></li>
 <li><a href="#quellen-systemd-timer">Quellen systemd-timer</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="systemd-timer">systemd-timer</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a><br />
-In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit <strong>systemd.timer</strong>, mit der zeitgesteuert Aktionen ausgel&ouml;st werden k&ouml;nnen.</p>
-<p>Die <em>timer</em>-Unit wird meist eingesetzt, um regelm&auml;&szlig;ig anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige <em>service</em>-Unit notwendig, in der die Aktionen definiert sind. Sobald der Systemzeitgeber mit der in der <em>timer</em>-Unit definierten Zeit &uuml;bereinstimmt, aktiviert sie die gleichnamige <em>service</em>-Unit.<br />
-Bei entsprechender Konfiguration k&ouml;nnen verpasste L&auml;ufe, w&auml;hrend die Maschine ausgeschaltet war, nachgeholt werden.<br />
-Auch ist es m&ouml;glich, dass eine <em>timer</em>-Unit die gew&uuml;nschten Aktionen nur ein einziges Mal zu einem vorher definierten Termin ausl&ouml;st.</p>
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt
+die Handbuchseite <a
+href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a>
+Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und
+<em>[Install]</em> behandelt unsere Handbuchseite <a
+href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd
+Unit-Datei</a><br />
+In der vorliegenden Handbuchseite erkl&auml;ren wir die Funktion der Unit
+<strong>systemd.timer</strong>, mit der zeitgesteuert Aktionen ausgel&ouml;st
+werden k&ouml;nnen.</p>
+<p>Die <em>timer</em>-Unit wird meist eingesetzt, um regelm&auml;&szlig;ig
+anfallende Aktionen zu erledigen. Dazu ist eine gleichnamige
+<em>service</em>-Unit notwendig, in der die Aktionen definiert sind.
+Sobald der Systemzeitgeber mit der in der <em>timer</em>-Unit
+definierten Zeit &uuml;bereinstimmt, aktiviert sie die gleichnamige
+<em>service</em>-Unit.<br />
+Bei entsprechender Konfiguration k&ouml;nnen verpasste L&auml;ufe, w&auml;hrend die
+Maschine ausgeschaltet war, nachgeholt werden.<br />
+Auch ist es m&ouml;glich, dass eine <em>timer</em>-Unit die gew&uuml;nschten
+Aktionen nur ein einziges Mal zu einem vorher definierten Termin
+ausl&ouml;st.</p>
 <h3 id="ben&ouml;tigte-dateien">Ben&ouml;tigte Dateien</h3>
-<p>Die <strong>systemd-timer</strong>-Unit ben&ouml;tigt zwei Dateien mit dem gleichen Basename im Verzeichnis <code>/usr/local/lib/systemd/system/</code> f&uuml;r ihre Funktion. (Ggf. ist das Verzeichnis zuvor mit dem Befehl <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong> anzulegen.) Das sind die</p>
+<p>Die <strong>systemd-timer</strong>-Unit ben&ouml;tigt zwei Dateien mit dem
+gleichen Basename im Verzeichnis
+<code>/usr/local/lib/systemd/system/</code> f&uuml;r ihre Funktion. (Ggf. ist
+das Verzeichnis zuvor mit dem Befehl
+<strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>
+anzulegen.) Das sind die</p>
 <ul>
-<li>Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den Ausl&ouml;ser f&uuml;r die service-Unit enth&auml;lt<br />
+<li>Timer-Unit-Datei (xxxxx.timer), welche die Zeitsteuerung und den
+Ausl&ouml;ser f&uuml;r die service-Unit enth&auml;lt<br />
 und die<br />
 </li>
-<li>service-Unit Datei (xxxxx.service), welche die zu startende Aktion enth&auml;lt.</li>
+<li>service-Unit Datei (xxxxx.service), welche die zu startende Aktion
+enth&auml;lt.</li>
 </ul>
-<p>F&uuml;r umfangreichere Aktionen erstellt man als dritte Datei ein Skript in <code>/usr/local/bin/</code>, das von der service-Unit ausgef&uuml;hrt wird.</p>
-<p>Wir erstellen in dem Beispiel ein regelm&auml;&szlig;iges Backup mit <code>rsync</code>.</p>
+<p>F&uuml;r umfangreichere Aktionen erstellt man als dritte Datei ein Skript
+in <code>/usr/local/bin/</code>, das von der service-Unit ausgef&uuml;hrt
+wird.</p>
+<p>Wir erstellen in dem Beispiel ein regelm&auml;&szlig;iges Backup mit
+<code>rsync</code>.</p>
 <h3 id="service-unit-f&uuml;r-timer">service-Unit f&uuml;r timer</h3>
-<p>Die service-Unit, die das Backup ausf&uuml;hrt, wird von der timer-Unit aktiviert und kontrolliert und ben&ouml;tigt daher keine [Install] Sektion. Somit reicht die Beschreibung der Unit in der Sektion [Unit]. Ihre Sektion [Service] enth&auml;lt den auszuf&uuml;hrenden Befehl nach der Option <code>ExecStart=</code>.</p>
-<p>Wir legen die Datei <code>backup.service</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
+<p>Die service-Unit, die das Backup ausf&uuml;hrt, wird von der timer-Unit
+aktiviert und kontrolliert und ben&ouml;tigt daher keine [Install] Sektion.
+Somit reicht die Beschreibung der Unit in der Sektion [Unit]. Ihre
+Sektion [Service] enth&auml;lt den auszuf&uuml;hrenden Befehl nach der Option
+<code>ExecStart=</code>.</p>
+<p>Wir legen die Datei <code>backup.service</code> im Verzeichnis
+<code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
 <pre><code>[Unit]
 Description=&quot;Command to backup my home directory&quot;
 
@@ -70,7 +102,8 @@ Type=oneshot
 ExecStart=/usr/bin/rsync -a --exclude=.cache/* /home/&lt;user&gt; /mnt/sdb5/backup/home/</code></pre>
 <p>Den String &lt;user&gt; bitte durch den eigenen User ersetzen.</p>
 <h3 id="timer-unit-anlegen">timer-Unit anlegen</h3>
-<p>Wir legen die Datei <code>backup.timer</code> im Verzeichnis <code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
+<p>Wir legen die Datei <code>backup.timer</code> im Verzeichnis
+<code>/usr/local/lib/systemd/system/</code> mit folgendem Inhalt an.</p>
 <pre><code>[Unit]
 Description=&quot;Backup my home directory&quot;
 
@@ -81,41 +114,67 @@ Persistent=true
 [Install]
 WantedBy=timers.target</code></pre>
 <p><strong>Erkl&auml;rungen</strong><br />
-Die timer-Unit muss zwingend die Sektion [Timer] enthalten, in der festgelegt wird wann und wie die zugeh&ouml;rige service-Unit ausgel&ouml;st wird.<br />
+Die timer-Unit muss zwingend die Sektion [Timer] enthalten, in der
+festgelegt wird wann und wie die zugeh&ouml;rige service-Unit ausgel&ouml;st
+wird.<br />
 Es stehen zwei Timer-Typen zur Verf&uuml;gung:</p>
 <ol type="1">
 <li>Realtime timers,<br />
-die mit der Option <code>OnCalendar=</code> einen Echtzeit- (d.h. Wanduhr-)Zeitgeber definiert<br />
-(das Beispiel <em>“OnCalendar=*-*-* 19:00:00”</em> bedeutet “t&auml;glich um 19:00 Uhr”),<br />
+die mit der Option <code>OnCalendar=</code> einen Echtzeit- (d.h.
+Wanduhr-)Zeitgeber definiert<br />
+(das Beispiel <em>“OnCalendar=*-*-* 19:00:00”</em> bedeutet “t&auml;glich um
+19:00 Uhr”),<br />
 und<br />
 </li>
 <li>Monotonic timers,<br />
-die mit den Optionen <code>OnActiveSec=</code>, <code>OnBootSec=</code>, <code>OnStartupSec=</code>, <code>OnUnitActiveSec=</code>, <code>OnUnitInactiveSec=</code> einen zu der Option relativen Zeitgeber definiert.<br />
+die mit den Optionen <code>OnActiveSec=</code>, <code>OnBootSec=</code>,
+<code>OnStartupSec=</code>, <code>OnUnitActiveSec=</code>,
+<code>OnUnitInactiveSec=</code> einen zu der Option relativen Zeitgeber
+definiert.<br />
 <em>“OnBootSec=90”</em> bedeutet “90 Sekunden nach dem Booten” und<br />
-<em>“OnUnitActiveSec=1d”</em> bedeutet “Einen Tag nachdem der Zeitgeber letztmalig aktiviert wurde”.<br />
-Beide Optionen zusammen l&ouml;sen die zugeh&ouml;rige service-Unit 90 Sekunden nach den Booten und dann genau im 24 Stunden-Takt aus, solange die Maschine nicht heruntergefahren wird.</li>
+<em>“OnUnitActiveSec=1d”</em> bedeutet “Einen Tag nachdem der Zeitgeber
+letztmalig aktiviert wurde”.<br />
+Beide Optionen zusammen l&ouml;sen die zugeh&ouml;rige service-Unit 90 Sekunden
+nach den Booten und dann genau im 24 Stunden-Takt aus, solange die
+Maschine nicht heruntergefahren wird.</li>
 </ol>
-<p>Die im Beispiel enthaltene Option <code>Persistent=</code> speichert den Zeitpunkt, zu dem die service-Unit das letzte Mal ausgel&ouml;st wurde, als leere Datei im Verzeichnis <code>/var/lib/systemd/timers/</code>. Dies ist n&uuml;tzlich, um verpasste L&auml;ufe, als die Maschine ausgeschaltet war, nachzuholen.</p>
+<p>Die im Beispiel enthaltene Option <code>Persistent=</code> speichert
+den Zeitpunkt, zu dem die service-Unit das letzte Mal ausgel&ouml;st wurde,
+als leere Datei im Verzeichnis <code>/var/lib/systemd/timers/</code>.
+Dies ist n&uuml;tzlich, um verpasste L&auml;ufe, als die Maschine ausgeschaltet
+war, nachzuholen.</p>
 <p><strong>timer-Unit eingliedern</strong></p>
-<p>Mit dem folgenden Befehl gliedern wir die timer-Unit in systemd ein.</p>
+<p>Mit dem folgenden Befehl gliedern wir die timer-Unit in systemd
+ein.</p>
 <pre><code># systemctl enable backup.timer
 Created symlink
  /etc/systemd/system/timers.target.wants/backup.timer →
    /usr/local/lib/systemd/system/backup.timer.</code></pre>
-<p>Der analoge Befehl f&uuml;r die service-Unit ist nicht notwendig und w&uuml;rde auch zu einem Fehler f&uuml;hren, da in ihr keine [Install] Sektion enthalten ist.</p>
+<p>Der analoge Befehl f&uuml;r die service-Unit ist nicht notwendig und w&uuml;rde
+auch zu einem Fehler f&uuml;hren, da in ihr keine [Install] Sektion enthalten
+ist.</p>
 <p><strong>timer-Unit manuell ausl&ouml;sen</strong></p>
-<p>Es wird nicht die timer-Unit, sondern die von ihr auszul&ouml;sende service-Unit aufgerufen.</p>
+<p>Es wird nicht die timer-Unit, sondern die von ihr auszul&ouml;sende
+service-Unit aufgerufen.</p>
 <pre><code># systemctl start backup.service</code></pre>
 <h3 id="timer-unit-als-cron-ersatz">timer-Unit als cron Ersatz</h3>
-<p>“cron” und “anacron” sind die bekanntesten und weit verbreiteten Job-Zeitplaner. Systemd Timer k&ouml;nnen eine Alternative sein. Wir betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd Timer.</p>
+<p>“cron” und “anacron” sind die bekanntesten und weit verbreiteten
+Job-Zeitplaner. Systemd Timer k&ouml;nnen eine Alternative sein. Wir
+betrachten kurz den Nutzen von, und die Vorbehalte gegen Systemd
+Timer.</p>
 <p><strong>Nutzen</strong></p>
 <ul>
-<li>Jobs k&ouml;nnen Abh&auml;ngigkeiten haben (von anderen systemd-Diensten abh&auml;ngen).</li>
+<li>Jobs k&ouml;nnen Abh&auml;ngigkeiten haben (von anderen systemd-Diensten
+abh&auml;ngen).</li>
 <li>Timer Units werden im systemd-Journal geloggt.</li>
-<li>Man kann einen Job sehr einfach unabh&auml;ngig von seinem Timer aufrufen.</li>
-<li>Man kann Timer Units einen Nice-Wert geben oder cgroups f&uuml;r die Ressourcenverwaltung nutzen.</li>
-<li>Systemd Timer Units k&ouml;nnen von Ereignissen wie dem Booten oder Hardware-&Auml;nderungen ausgel&ouml;st werden.</li>
-<li>Sie k&ouml;nnen auf einfache Weise mit systemctl aktiviert oder deaktiviert werden.</li>
+<li>Man kann einen Job sehr einfach unabh&auml;ngig von seinem Timer
+aufrufen.</li>
+<li>Man kann Timer Units einen Nice-Wert geben oder cgroups f&uuml;r die
+Ressourcenverwaltung nutzen.</li>
+<li>Systemd Timer Units k&ouml;nnen von Ereignissen wie dem Booten oder
+Hardware-&Auml;nderungen ausgel&ouml;st werden.</li>
+<li>Sie k&ouml;nnen auf einfache Weise mit systemctl aktiviert oder
+deaktiviert werden.</li>
 </ul>
 <p><strong>Vorbehalte</strong></p>
 <ul>
@@ -123,9 +182,14 @@ Created symlink
 <li>Cron kann E-Mails mit Hilfe der MAILTO-Variablen senden.</li>
 </ul>
 <h3 id="quellen-systemd-timer">Quellen systemd-timer</h3>
-<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.timer.5.de.html">Deutsche Manpage ‘systemd.timer’</a><br />
-<a target="_blank" href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux Wiki, Timers</a><br />
-<a target="_blank" href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE, Systemd Timer Units…</a></p>
+<p><a
+href="https://manpages.debian.org/testing/manpages-de/systemd.timer.5.de.html">Deutsche
+Manpage ‘systemd.timer’</a><br />
+<a target="_blank" href="https://wiki.archlinux.org/index.php/Systemd/Timers">Archlinux
+Wiki, Timers</a><br />
+<a
+href="https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html">PRO-LINUX.DE,
+Systemd Timer Units…</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

@@ -36,7 +36,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#life-dvd-ohne-gui-brennen">Life-DVD ohne GUI brennen</a>
 <ul>
 <li><a href="#burniso">burniso</a></li>
-<li><a href="#brennen-mit-cdrdao-wodim-growisofs">Brennen mit cdrdao wodim growisofs</a></li>
+<li><a href="#brennen-mit-cdrdao-wodim-growisofs">Brennen mit cdrdao
+wodim growisofs</a></li>
 <li><a href="#verf&uuml;gbare-ger&auml;te">Verf&uuml;gbare Ger&auml;te</a></li>
 <li><a href="#beispiele-f&uuml;r-cd-dvd-bd">Beispiele f&uuml;r CD DVD BD</a></li>
 </ul></li>
@@ -44,16 +45,33 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="life-dvd-ohne-gui-brennen">Life-DVD ohne GUI brennen</h2>
 <p class="warning">
-<strong>WICHTIGE INFORMATION:</strong> <br />siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+<strong>WICHTIGE INFORMATION:</strong> <br />siduction, als
+Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss
+besonders auf die Brennmethode des ISO-Abbilds geachtet werden. Wir
+empfehlen hochwertige CD-Medien (oder DVD+R), das Brennen im DAO-Modus
+(disk-at-once) und nicht schneller als achtfach (8x).
 </p>
-<p>Man ben&ouml;tigt zum Brennen einer CD/DVD nicht notwendigerweise eine grafische Benutzeroberfl&auml;che (GUI).<br />
-Probleme, die beim Brennen auftreten, haben ihre Ursache normalerweise in den Frontends wie K3b, nicht so h&auml;ufig in den Backends wie growisofs, wodim oder cdrdao.</p>
-<p>Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie stets mit Hilfe der von siduction immer angebotenen md5sum und sha256sum pr&uuml;fen. Das erspart unter Umst&auml;nden viel Zeit f&uuml;r die Fehlersuche bei einer ver&auml;nderten oder besch&auml;digten Datei.<br />
-Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a href="./iso-dl_de.html#integrit&auml;tspr&uuml;fung">ISO Download, Integrit&auml;tspr&uuml;fung</a>.</p>
+<p>Man ben&ouml;tigt zum Brennen einer CD/DVD nicht notwendigerweise eine
+grafische Benutzeroberfl&auml;che (GUI).<br />
+Probleme, die beim Brennen auftreten, haben ihre Ursache normalerweise
+in den Frontends wie K3b, nicht so h&auml;ufig in den Backends wie growisofs,
+wodim oder cdrdao.</p>
+<p>Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie
+stets mit Hilfe der von siduction immer angebotenen md5sum und sha256sum
+pr&uuml;fen. Das erspart unter Umst&auml;nden viel Zeit f&uuml;r die Fehlersuche bei
+einer ver&auml;nderten oder besch&auml;digten Datei.<br />
+Eine ausf&uuml;hrliche Anleitung steht im Handbuchkapitel <a
+href="./iso-dl_de.html#integrit&auml;tspr&uuml;fung">ISO Download,
+Integrit&auml;tspr&uuml;fung</a>.</p>
 <h3 id="burniso">burniso</h3>
-<p>Siduction stellt ein Skript namens <code>burniso</code> zur Verf&uuml;gung.<br />
-Burniso brennt unter Nutzung von wodim die ISO-Abbilddatei im Disk-At-Once-Modus mit einer fest eingestellten Brenngeschwindigkeit von 8x. Zuvor testet burniso ob die notwendige Hardware verf&uuml;gbar ist und listet dann alle erkannten ISO-Abbilddateien auf.</p>
-<p>Als <strong>user</strong> wechselt man in das Verzeichnis mit den ISO-Abbilddateien und ruft <code>burniso</code> auf:</p>
+<p>Siduction stellt ein Skript namens <code>burniso</code> zur
+Verf&uuml;gung.<br />
+Burniso brennt unter Nutzung von wodim die ISO-Abbilddatei im
+Disk-At-Once-Modus mit einer fest eingestellten Brenngeschwindigkeit von
+8x. Zuvor testet burniso ob die notwendige Hardware verf&uuml;gbar ist und
+listet dann alle erkannten ISO-Abbilddateien auf.</p>
+<p>Als <strong>user</strong> wechselt man in das Verzeichnis mit den
+ISO-Abbilddateien und ruft <code>burniso</code> auf:</p>
 <pre><code>$ cd /Pfad/zur/ISO
 $ burniso
 Using device /dev/sr0.
@@ -62,12 +80,33 @@ Choose an ISO to burn:
 2) siduction-21.3.0-wintersky-lxqt-amd64-202112231805.iso
 3) siduction-21.3.0-wintersky-xfce-amd64-202112231826.iso
 #? _</code></pre>
-<p>Nach Eingabe der Ziffer f&uuml;r die gew&uuml;nschte ISO-Abbilddatei pr&uuml;ft <code>burniso</code> die Integrit&auml;t sofern im gleichen Verzeichnis eine zugeh&ouml;rige <code>.md5</code> Datei liegt. Bei Erfolg startet der Brennvorgang unmittelbar anschlie&szlig;end. Daher soll man darauf achten, dass vor dem Start des Skripts bereits das Medium, auf das gebrannt wird, eingelegt ist.</p>
-<p>Burniso perfektioniert und vereinfacht f&uuml;r den Anwender eine einzige Funktion, n&auml;mlich das Brennen von ISO-Abbildern. Dar&uuml;ber hinaus bieten die Kommandozeilenprogramme alle M&ouml;glichkeiten um Medien mit Daten verschiedenster Art auf CD, DVD und BD zu erstellen. Im folgenden Kapitel zeigen wir einige Beispiele die h&auml;ufig Anwendung finden.</p>
-<h3 id="brennen-mit-cdrdao-wodim-growisofs">Brennen mit cdrdao wodim growisofs</h3>
-<p>Die Kommandozeilenprogramme bilden die Basis f&uuml;r die beliebten GUI-Programme wie <code>K3b</code>, <code>Brasero</code> oder <code>Xfburn</code>. Wer die vollst&auml;ndige Bandbreite an Optionen der Programme <code>cdrdao</code>, <code>wodim</code>, <code>growisofs</code> usw. bevorzugt, nutzt die Kommandozeile. Wir pr&auml;sentieren hier nur einen minimalen Ausschnitt der M&ouml;glichkeiten. Das Studium der Manpages sollte selbstverst&auml;ndlich sein und ist mit den Beispielen etwas einfacher. Dar&uuml;ber hinaus finden sich im Internet mit der Suchmaschine der Wahl Tips f&uuml;r das eigene Projekt.</p>
+<p>Nach Eingabe der Ziffer f&uuml;r die gew&uuml;nschte ISO-Abbilddatei pr&uuml;ft
+<code>burniso</code> die Integrit&auml;t sofern im gleichen Verzeichnis eine
+zugeh&ouml;rige <code>.md5</code> Datei liegt. Bei Erfolg startet der
+Brennvorgang unmittelbar anschlie&szlig;end. Daher soll man darauf achten,
+dass vor dem Start des Skripts bereits das Medium, auf das gebrannt
+wird, eingelegt ist.</p>
+<p>Burniso perfektioniert und vereinfacht f&uuml;r den Anwender eine einzige
+Funktion, n&auml;mlich das Brennen von ISO-Abbildern. Dar&uuml;ber hinaus bieten
+die Kommandozeilenprogramme alle M&ouml;glichkeiten um Medien mit Daten
+verschiedenster Art auf CD, DVD und BD zu erstellen. Im folgenden
+Kapitel zeigen wir einige Beispiele die h&auml;ufig Anwendung finden.</p>
+<h3 id="brennen-mit-cdrdao-wodim-growisofs">Brennen mit cdrdao wodim
+growisofs</h3>
+<p>Die Kommandozeilenprogramme bilden die Basis f&uuml;r die beliebten
+GUI-Programme wie <code>K3b</code>, <code>Brasero</code> oder
+<code>Xfburn</code>. Wer die vollst&auml;ndige Bandbreite an Optionen der
+Programme <code>cdrdao</code>, <code>wodim</code>,
+<code>growisofs</code> usw. bevorzugt, nutzt die Kommandozeile. Wir
+pr&auml;sentieren hier nur einen minimalen Ausschnitt der M&ouml;glichkeiten. Das
+Studium der Manpages sollte selbstverst&auml;ndlich sein und ist mit den
+Beispielen etwas einfacher. Dar&uuml;ber hinaus finden sich im Internet mit
+der Suchmaschine der Wahl Tips f&uuml;r das eigene Projekt.</p>
 <h3 id="verf&uuml;gbare-ger&auml;te">Verf&uuml;gbare Ger&auml;te</h3>
-<p>Ist die vorhandene Hardware zum Brennen nicht genau bekannt, analysieren die Programme wodim und cdrdao die Ger&auml;tedaten und geben die Informationen aus. Zuerst <code>wodim</code> f&uuml;r einen externen DVD-Brenner an USB:</p>
+<p>Ist die vorhandene Hardware zum Brennen nicht genau bekannt,
+analysieren die Programme wodim und cdrdao die Ger&auml;tedaten und geben die
+Informationen aus. Zuerst <code>wodim</code> f&uuml;r einen externen
+DVD-Brenner an USB:</p>
 <pre><code>$ wodim -checkdrive
 Device was not specified. Trying to find an [...] drive...
 Detected CD-R drive: /dev/sr0
@@ -83,22 +122,32 @@ Supported modes: PACKET SAO</code></pre>
 <pre><code>$ cdrdao scanbus
 Cdrdao version 1.2.4 - (C) Andreas Mueller
 /dev/sr0 : HL-DT-ST, DVDRAM GP50NB40 , RB00</code></pre>
-<p>Ein weiteres Beispiel mit <code>wodim</code> auf einem anderen PC mit zwei IDE/ATAPI Ger&auml;ten:</p>
+<p>Ein weiteres Beispiel mit <code>wodim</code> auf einem anderen PC mit
+zwei IDE/ATAPI Ger&auml;ten:</p>
 <pre><code>$ wodim --devices
 wodim: Overview of accessible drives (2 found) :
 ---------------------------------------------------------
 0  dev=&#39;/dev/scd0&#39;      rwrw-- : &#39;AOPEN&#39; &#39;CD-RW CRW2440&#39;
 1  dev=&#39;/dev/scd1&#39;      rwrw-- : &#39;_NEC&#39; &#39;DVD_RW ND-3540A&#39;
 ---------------------------------------------------------</code></pre>
-<p>Wir ben&ouml;tigen f&uuml;r die Kommandozeilenprogramme vor allen Dingen die genaue Bezeichnung der Ger&auml;tedatei (<em>“/dev/sr0”</em> oder <em>“/devscd1”</em>) um den richtigen Brenner zu benutzen.</p>
+<p>Wir ben&ouml;tigen f&uuml;r die Kommandozeilenprogramme vor allen Dingen die
+genaue Bezeichnung der Ger&auml;tedatei (<em>“/dev/sr0”</em> oder
+<em>“/devscd1”</em>) um den richtigen Brenner zu benutzen.</p>
 <h3 id="beispiele-f&uuml;r-cd-dvd-bd">Beispiele f&uuml;r CD DVD BD</h3>
-<p>Bei den Beispielen verzichten wir auf umfangreiche Erl&auml;uterungen der verwendeten Optionen. Bitte die Manpages f&uuml;r ausf&uuml;hrliche Informationen konsultieren.</p>
+<p>Bei den Beispielen verzichten wir auf umfangreiche Erl&auml;uterungen der
+verwendeten Optionen. Bitte die Manpages f&uuml;r ausf&uuml;hrliche Informationen
+konsultieren.</p>
 <p><strong>CD/DVD von einem ISO-Abbild brennen:</strong></p>
-<p>Wodim erkennt an Hand der Dateinamenerweiterung <code>*.iso</code> und der Option <code>-dao</code>, dass ein Abbild zu brennen ist.</p>
+<p>Wodim erkennt an Hand der Dateinamenerweiterung <code>*.iso</code>
+und der Option <code>-dao</code>, dass ein Abbild zu brennen ist.</p>
 <pre><code>$ wodim dev=/dev/sr0 driveropts=burnfree,noforcespeed fs=14M speed=8 -dao -eject -v &lt;ISO-Abbild.iso&gt;</code></pre>
-<p>Falls man eine Fehlermeldung zu <em>“driveropts”</em> erh&auml;lt, liegt dies daran, dass burnfree auf einigen Brennern nicht m&ouml;glich ist. Dies wird gel&ouml;st, indem die driveropts aus dem Befehl entfernt werden.</p>
+<p>Falls man eine Fehlermeldung zu <em>“driveropts”</em> erh&auml;lt, liegt
+dies daran, dass burnfree auf einigen Brennern nicht m&ouml;glich ist. Dies
+wird gel&ouml;st, indem die driveropts aus dem Befehl entfernt werden.</p>
 <pre><code>$ wodim dev=/dev/sr0 fs=14M speed=8 -dao -eject -v &lt;ISO-Abbild.iso&gt;</code></pre>
-<p>Mit <code>genisoimage</code> und <code>growisofs</code> kann man eine ISO-Abbilddatei aus einem Ordner und allen Unterordnern erstellen und anschlie&szlig;end brennen.</p>
+<p>Mit <code>genisoimage</code> und <code>growisofs</code> kann man eine
+ISO-Abbilddatei aus einem Ordner und allen Unterordnern erstellen und
+anschlie&szlig;end brennen.</p>
 <pre><code>    (ISO erstellen)
 $ genisoimage -o &lt;ISO-Abbild.iso&gt; -r -J -l &lt;directory&gt;
     (ISO brennen)
@@ -106,24 +155,34 @@ $ growisofs -dvd-compat -Z /dev/dvd=&lt;ISO-Abbild.iso&gt;</code></pre>
 <p>Eine CD mittels eines bin/cue-Abbild brennen:</p>
 <pre><code>$ cdrdao write --speed 24 --device /dev/scd0 --eject filenam.cue</code></pre>
 <p><strong>CD-RW/DVD-RW l&ouml;schen</strong></p>
-<p>Um wieder beschreibbare Medien mit neuen Daten zu versehen, m&uuml;ssen sie zuvor gel&ouml;scht werden. Die Befehle f&uuml;r das L&ouml;schen der Inhaltsverzeichnisse lauten:</p>
+<p>Um wieder beschreibbare Medien mit neuen Daten zu versehen, m&uuml;ssen
+sie zuvor gel&ouml;scht werden. Die Befehle f&uuml;r das L&ouml;schen der
+Inhaltsverzeichnisse lauten:</p>
 <pre><code>$ wodim -blank=fast -v dev=/dev/sr0
     (oder)
 $ cdrdao blank --device /dev/sr0 --blank-mode minimal</code></pre>
-<p>Will man die gesamten Daten &uuml;berbrennen, verwenden wir bei wodim <code>-blank=all</code> und bei cdrdao <code>-blank-mode full</code>.</p>
+<p>Will man die gesamten Daten &uuml;berbrennen, verwenden wir bei wodim
+<code>-blank=all</code> und bei cdrdao
+<code>-blank-mode full</code>.</p>
 <p><strong>CD/DVD kopieren</strong></p>
-<p>Kopieren wenn nur ein Laufwerk vorhanden ist. Nach dem Einlesen wird das Quellmedium ausgeworfen und man muss den leeren Rohling in das gleiche Laufwerk einlegen um fortzufahren.</p>
+<p>Kopieren wenn nur ein Laufwerk vorhanden ist. Nach dem Einlesen wird
+das Quellmedium ausgeworfen und man muss den leeren Rohling in das
+gleiche Laufwerk einlegen um fortzufahren.</p>
 <pre><code>$ cdrdao copy --fast-toc --device /dev/scd0 --buffers 256 -v2</code></pre>
-<p>Man kann eine CD “on the fly” kopieren, wenn zwei Laufwerke verf&uuml;gbar sind.</p>
+<p>Man kann eine CD “on the fly” kopieren, wenn zwei Laufwerke verf&uuml;gbar
+sind.</p>
 <pre><code>$ cdrdao copy --fast-toc --source-device /dev/scd0 --device /dev/scd1 --on-the-fly --buffers 256 --eject -v2</code></pre>
 <p><strong>Audio-CD brennen</strong></p>
-<p>Alle wav-Dateien in dem aktuellen Ordner mit 12 facher Geschwindigkeit brennen.</p>
+<p>Alle wav-Dateien in dem aktuellen Ordner mit 12 facher
+Geschwindigkeit brennen.</p>
 <pre><code>$ wodim -v -eject -pad -dao speed=12 dev=/dev/scd0 defpregap=0 -audio *.wav</code></pre>
 <p><strong>Dateien auf DVD brennen</strong></p>
 <pre><code>$ growisofs -Z /dev/dvd -R -J datei1 datei2 datei3 ...</code></pre>
-<p>Wenn auf der DVD noch Platz ist, kann man mit Hilfe der Option <code>-M</code> Dateien hinzuf&uuml;gen.</p>
+<p>Wenn auf der DVD noch Platz ist, kann man mit Hilfe der Option
+<code>-M</code> Dateien hinzuf&uuml;gen.</p>
 <pre><code>$ growisofs -M /dev/dvd -R -J datei8 datei9</code></pre>
-<p>Mit diesem Befehl wird der verbliebene freie Platz auf der DVD mit Nullen gef&uuml;llt und das Medium geschlossen.</p>
+<p>Mit diesem Befehl wird der verbliebene freie Platz auf der DVD mit
+Nullen gef&uuml;llt und das Medium geschlossen.</p>
 <pre><code>$ growisofs -M /dev/dvd=/dev/zero</code></pre>
 <div id="rev">
 Zuletzt bearbeitet: 2022-03-08

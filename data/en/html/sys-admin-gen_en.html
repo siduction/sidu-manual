@@ -33,36 +33,58 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#system-administration-in-general">System administration in general</a>
+<li><a href="#system-administration-in-general">System administration in
+general</a>
 <ul>
-<li><a href="#boot-options-cheat-codes">Boot options cheat codes</a></li>
-<li><a href="#systemd---managing-services">systemd - managing services</a></li>
+<li><a href="#boot-options-cheat-codes">Boot options cheat
+codes</a></li>
+<li><a href="#systemd---managing-services">systemd - managing
+services</a></li>
 <li><a href="#systemd.service">systemd.service</a></li>
-<li><a href="#systemd---unit-inclusion">systemd - UNIT inclusion</a></li>
-<li><a href="#systemd-target---formerly-runlevel">systemd-target - formerly runlevel</a></li>
+<li><a href="#systemd---unit-inclusion">systemd - UNIT
+inclusion</a></li>
+<li><a href="#systemd-target---formerly-runlevel">systemd-target -
+formerly runlevel</a></li>
 <li><a href="#terminating-a-process">Terminating a process</a></li>
 <li><a href="#forgotten-root-password">Forgotten root password</a></li>
 <li><a href="#setting-new-passwords">Setting new passwords</a></li>
 <li><a href="#fonts-in-siduction">Fonts in siduction</a></li>
 <li><a href="#user-configuration">User configuration</a></li>
-<li><a href="#cups---the-printing-system">CUPS - the printing system</a></li>
+<li><a href="#cups---the-printing-system">CUPS - the printing
+system</a></li>
 <li><a href="#sound-in-siduction">Sound in siduction</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="system-administration-in-general">System administration in general</h2>
+<h2 id="system-administration-in-general">System administration in
+general</h2>
 <h3 id="boot-options-cheat-codes">Boot options cheat codes</h3>
-<p>At the beginning of the boot process, the kernel command line can be edited by pressing the <strong><code>e</code></strong> key as soon as the Grub menu appears. In edit mode, use the arrow keys to navigate to the kernel line and insert the desired cheatcode(s) at the end. The space character serves as separator. To conitnue the boot process, enter <strong><code>Ctrl</code></strong>+<strong><code>X</code></strong>.</p>
-<p>The following links lead to the manual page with the tables for the boot options.</p>
+<p>At the beginning of the boot process, the kernel command line can be
+edited by pressing the <strong><code>e</code></strong> key as soon as
+the Grub menu appears. In edit mode, use the arrow keys to navigate to
+the kernel line and insert the desired cheatcode(s) at the end. The
+space character serves as separator. To conitnue the boot process, enter
+<strong><code>Ctrl</code></strong>+<strong><code>X</code></strong>.</p>
+<p>The following links lead to the manual page with the tables for the
+boot options.</p>
 <ol type="1">
-<li><a href="./cheatcodes_en.html#siduction-specific-parameters">siduction specific parameters (Live-CD only)</a></li>
-<li><a href="./cheatcodes_en.html#boot-options-for-the-graphics-server-x">Bootoptions for graphics server X</a></li>
-<li><a href="./cheatcodes_en.html#general-parameters-of-the-linux-kernel">General parameters of the linux kernel</a></li>
-<li><a href="./cheatcodes_en.html#vga-codes">Values for the general parameter <strong>vga</strong></a></li>
+<li><a
+href="./cheatcodes_en.html#siduction-specific-parameters">siduction
+specific parameters (Live-CD only)</a></li>
+<li><a
+href="./cheatcodes_en.html#boot-options-for-the-graphics-server-x">Bootoptions
+for graphics server X</a></li>
+<li><a
+href="./cheatcodes_en.html#general-parameters-of-the-linux-kernel">General
+parameters of the linux kernel</a></li>
+<li><a href="./cheatcodes_en.html#vga-codes">Values for the general
+parameter <strong>vga</strong></a></li>
 </ol>
-<p><a target="_blank" href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Detailed reference list for kernel bootcodes from kernel.org</a></p>
+<p><a target="_blank" href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Detailed
+reference list for kernel bootcodes from kernel.org</a></p>
 <h3 id="systemd---managing-services">systemd - managing services</h3>
-<p>systemd knows a total of 11 unit types. The units we deal with most often in everyday life are:</p>
+<p>systemd knows a total of 11 unit types. The units we deal with most
+often in everyday life are:</p>
 <ul>
 <li>systemd.service</li>
 <li>systemd.target</li>
@@ -71,44 +93,86 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li>systemd.mount</li>
 <li>systemd.path</li>
 </ul>
-<p>We briefly introduce some of the unit types here. Their names already give an indication of their intended functionality. More detailed explanations of the units can be found on our manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">System administration - systemd</a>. The complete documentation can be found in the man pages <code>man systemd.unit</code>, <code>man systemd.special</code>, and <code>man systemd.&lt;unit_type&gt;</code> respectively.</p>
-<p>The systemd system can be controlled with follwing command, which requires <strong>user</strong> or <strong>root</strong> rights depending on the units:</p>
+<p>We briefly introduce some of the unit types here. Their names already
+give an indication of their intended functionality. More detailed
+explanations of the units can be found on our manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">System
+administration - systemd</a>. The complete documentation can be found in
+the man pages <code>man systemd.unit</code>,
+<code>man systemd.special</code>, and
+<code>man systemd.&lt;unit_type&gt;</code> respectively.</p>
+<p>The systemd system can be controlled with follwing command, which
+requires <strong>user</strong> or <strong>root</strong> rights depending
+on the units:</p>
 <pre><code>systemctl [OPTIONS...] command [UNIT...]</code></pre>
-<p><code>systemctl</code> knows autocompletion by <strong><code>TAB</code></strong> and the display of all variations by <strong><code>TAB</code></strong> <strong><code>TAB</code></strong>. Please read the man page <code>man systemctl</code>.</p>
-<p>A list sorted by types with all active units or unit files can be output with the following commands:</p>
+<p><code>systemctl</code> knows autocompletion by
+<strong><code>TAB</code></strong> and the display of all variations by
+<strong><code>TAB</code></strong> <strong><code>TAB</code></strong>.
+Please read the man page <code>man systemctl</code>.</p>
+<p>A list sorted by types with all active units or unit files can be
+output with the following commands:</p>
 <pre><code>$ systemctl list-units # for units
 $ systemctl list-unit-files # for unit files</code></pre>
-<p>With the <code>-a</code> option all inactive units or unit files are also output.</p>
+<p>With the <code>-a</code> option all inactive units or unit files are
+also output.</p>
 <h3 id="systemd.service">systemd.service</h3>
 <p>To start or stop a .service unit, use the commands:</p>
 <pre><code>$ systemctl start &lt;UNIT&gt;.service
 $ systemctl stop &lt;UNIT&gt;.service
 $ systemctl restart &lt;UNIT&gt;.service</code></pre>
-<p>“<em>Restart</em>” is useful, for example, to notify the service of a changed configuration. If <strong>root</strong> privileges are required for the action, the root password is requested.<br />
+<p>“<em>Restart</em>” is useful, for example, to notify the service of a
+changed configuration. If <strong>root</strong> privileges are required
+for the action, the root password is requested.<br />
 The command can also be used to terminate a service:</p>
 <pre><code>$ systemctl kill -s SIGSTOP --kill-who=control &lt;UNIT&gt;.service</code></pre>
-<p>With “<em>kill</em>”, in contrast to “<em>stop</em>”, the options <code>-s</code>, <code>--signal=</code>, and <code>--kill-who=</code> are available.</p>
+<p>With “<em>kill</em>”, in contrast to “<em>stop</em>”, the options
+<code>-s</code>, <code>--signal=</code>, and <code>--kill-who=</code>
+are available.</p>
 <ul>
-<li><em>“-s”</em> sends one of the signals <code>SIGTERM</code>, <code>SIGINT</code>, or <code>SIGSTOP</code>. Default is <em>“SIGTERM”</em>.</li>
-<li><em>“–kill-who=”</em> allows selection of the processes within the hierarchy to which a signal should be sent. The options are <code>main</code>, <code>control</code>, or <code>all</code>. This sends the signal to the main process, the child processes, or both. Default is <em>“all”</em>.</li>
+<li><em>“-s”</em> sends one of the signals <code>SIGTERM</code>,
+<code>SIGINT</code>, or <code>SIGSTOP</code>. Default is
+<em>“SIGTERM”</em>.</li>
+<li><em>“–kill-who=”</em> allows selection of the processes within the
+hierarchy to which a signal should be sent. The options are
+<code>main</code>, <code>control</code>, or <code>all</code>. This sends
+the signal to the main process, the child processes, or both. Default is
+<em>“all”</em>.</li>
 </ul>
-<p>This behavior is similar to the old and still usable command pkill, which is explained below in the section <a href="./sys-admin-gen_en.html#terminating-a-process">Terminating a process</a>.</p>
+<p>This behavior is similar to the old and still usable command pkill,
+which is explained below in the section <a
+href="./sys-admin-gen_en.html#terminating-a-process">Terminating a
+process</a>.</p>
 <h3 id="systemd---unit-inclusion">systemd - UNIT inclusion</h3>
-<p>To have a (self-made) unit loaded automatically when the computer is booted, enter as <strong>root</strong>:</p>
+<p>To have a (self-made) unit loaded automatically when the computer is
+booted, enter as <strong>root</strong>:</p>
 <pre><code># systemctl enable &lt;UNIT_file&gt;</code></pre>
-<p>This creates a group of symlinks according to the requirements in the unit’s configuration. Following this, the system manager configuration is automatically reloaded.</p>
+<p>This creates a group of symlinks according to the requirements in the
+unit’s configuration. Following this, the system manager configuration
+is automatically reloaded.</p>
 <p>The command</p>
 <pre><code># systemctl disable &lt;UNIT_file&gt;</code></pre>
 <p>removes the symlinks again.</p>
 <p><strong>Example</strong><br />
-If a PC or laptop without Bluetooth hardware is in use, or you don’t want to use Bluetooth, the command (as <strong>root</strong>)</p>
+If a PC or laptop without Bluetooth hardware is in use, or you don’t
+want to use Bluetooth, the command (as <strong>root</strong>)</p>
 <pre><code># systemctl disable bluetooth.service</code></pre>
-<p>will remove the symlinks from all requirements and dependencies within systemd and the service will no longer be available and will not be started automatically.</p>
-<h3 id="systemd-target---formerly-runlevel">systemd-target - formerly runlevel</h3>
-<p>Already since the 2013.2 “December” release, siduction has been using systemd as the default init system.<br />
-The old sysvinit commands are still supported. (for this a quote from <code>man systemd</code>: “… is provided for compatibility reasons and because it is easier to type.”)<br />
-More detailed information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">System administration - systemd</a>.<br />
-The various runlevels that are booted or switched to are described by systemd as <strong>target</strong> units. They have the extension <strong>.target</strong>.</p>
+<p>will remove the symlinks from all requirements and dependencies
+within systemd and the service will no longer be available and will not
+be started automatically.</p>
+<h3 id="systemd-target---formerly-runlevel">systemd-target - formerly
+runlevel</h3>
+<p>Already since the 2013.2 “December” release, siduction has been using
+systemd as the default init system.<br />
+The old sysvinit commands are still supported. (for this a quote from
+<code>man systemd</code>: “… is provided for compatibility reasons and
+because it is easier to type.”)<br />
+More detailed information about systemd can be found on the manual page
+<a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">System
+administration - systemd</a>.<br />
+The various runlevels that are booted or switched to are described by
+systemd as <strong>target</strong> units. They have the extension
+<strong>.target</strong>.</p>
 <table>
 <colgroup>
 <col style="width: 50%" />
@@ -123,44 +187,67 @@ The various runlevels that are booted or switched to are described by systemd as
 <tbody>
 <tr class="odd">
 <td>emergency.target</td>
-<td>starts into an emergency shell on the main console. It is the minimum version of a system boot to obtain an interactive shell. This unit can be used to guide the boot process step by step.</td>
+<td>starts into an emergency shell on the main console. It is the
+minimum version of a system boot to obtain an interactive shell. This
+unit can be used to guide the boot process step by step.</td>
 </tr>
 <tr class="even">
 <td>rescue.target</td>
-<td>starts the base system (including system mounts) and an emergency shell. Compared to multi-user.target, this target could be considered as single-user.target.</td>
+<td>starts the base system (including system mounts) and an emergency
+shell. Compared to multi-user.target, this target could be considered as
+single-user.target.</td>
 </tr>
 <tr class="odd">
 <td>multi-user.target</td>
-<td>starts a multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or to not boot into X. <a href="./sys-admin-apt_en.html#updating-the-system">A system update (dist-upgrade) is performed on this unit</a> .</td>
+<td>starts a multi-user system with a working network, without graphics
+server X. This unit is used when you want to stop X or to not boot into
+X. <a href="./sys-admin-apt_en.html#updating-the-system">A system update
+(dist-upgrade) is performed on this unit</a> .</td>
 </tr>
 <tr class="even">
 <td>graphical.target</td>
-<td>starts multi-user mode with network capability and a running X Window System.</td>
+<td>starts multi-user mode with network capability and a running X
+Window System.</td>
 </tr>
 <tr class="odd">
 <td>default.target</td>
-<td>is the default unit that systemd starts at system startup. In siduction this is a symlink to graphical.target (except NoX).</td>
+<td>is the default unit that systemd starts at system startup. In
+siduction this is a symlink to graphical.target (except NoX).</td>
 </tr>
 </tbody>
 </table>
-<p>A look into the documentation <strong><code>man SYSTEMD.SPECIAL(7)</code></strong> is mandatory to understand the relationships of the different <em>“.target - units”</em>.</p>
-<p>To switch to the system update runlevel, use the following command as <strong>root</strong> in the terminal:</p>
+<p>A look into the documentation
+<strong><code>man SYSTEMD.SPECIAL(7)</code></strong> is mandatory to
+understand the relationships of the different <em>“.target -
+units”</em>.</p>
+<p>To switch to the system update runlevel, use the following command as
+<strong>root</strong> in the terminal:</p>
 <pre><code># systemctl isolate multi-user.target</code></pre>
-<p>Important here is the <em>“isolate”</em> command, which ensures the termination of all processes and services that the selected unit does not request.</p>
+<p>Important here is the <em>“isolate”</em> command, which ensures the
+termination of all processes and services that the selected unit does
+not request.</p>
 <p>To shut down or restart the system, the command</p>
 <pre><code># systemctl poweroff
    or
 # systemctl reboot</code></pre>
-<p>can be used. <em>“poweroff”</em> or <em>“reboot”</em> (each without .target) are commands that starts several units in the correct order to terminate the system in an orderly fashion and to reboot if necessary.</p>
+<p>can be used. <em>“poweroff”</em> or <em>“reboot”</em> (each without
+.target) are commands that starts several units in the correct order to
+terminate the system in an orderly fashion and to reboot if
+necessary.</p>
 <h3 id="terminating-a-process">Terminating a process</h3>
 <p><strong>pgrep and pkill</strong></p>
-<p>Independently of systemd, <code>pgrep</code> and <code>pkill</code> are a very useful duo to terminate unwelcome processes. Run with <strong>user</strong> or <strong>root</strong> privileges in a console or TTY:</p>
+<p>Independently of systemd, <code>pgrep</code> and <code>pkill</code>
+are a very useful duo to terminate unwelcome processes. Run with
+<strong>user</strong> or <strong>root</strong> privileges in a console
+or TTY:</p>
 <pre><code>$ pgreg &lt;tab&gt; &lt;tab&gt;</code></pre>
-<p>The command lists all processes with their name, but without the process ID (PID). We use Firefox as an example in the following.<br />
+<p>The command lists all processes with their name, but without the
+process ID (PID). We use Firefox as an example in the following.<br />
 The <code>-l</code> option prints the PID and the full name:</p>
 <pre><code>$ pgrep -l firefox
 4279 firefox-esr</code></pre>
-<p>To display subprocesses, if any, we also use the <code>-P</code> option and only the PID:</p>
+<p>To display subprocesses, if any, we also use the <code>-P</code>
+option and only the PID:</p>
 <pre><code>$ pgrep -l -P 4279
 4387 WebExtensions
 4455 file:// Content
@@ -168,34 +255,59 @@ The <code>-l</code> option prints the PID and the full name:</p>
 <p>then</p>
 <pre><code>$ pkill firefox-esr</code></pre>
 <p>terminates Firefox with the default signal <em>SIGTERM</em>.<br />
-With the option <strong>–signal</strong>, followed by the signal number or the signal name, <em>pkill</em> sends the desired signal to the process. A clear list of signals can be obtained with <em>kill -L</em>.</p>
+With the option <strong>–signal</strong>, followed by the signal number
+or the signal name, <em>pkill</em> sends the desired signal to the
+process. A clear list of signals can be obtained with <em>kill
+-L</em>.</p>
 <p><strong>htop</strong></p>
-<p>Entered in the terminal, htop is a good alternative because a lot of useful information about the processes and the system load is presented. This includes a tree view, filter and search function, kill signal, and some more. The operation is self-explanatory.</p>
+<p>Entered in the terminal, htop is a good alternative because a lot of
+useful information about the processes and the system load is presented.
+This includes a tree view, filter and search function, kill signal, and
+some more. The operation is self-explanatory.</p>
 <p><strong>Emergency exit</strong></p>
-<p>As a last resort before pulling the power plug, you can use the command <strong><code>killall -9</code></strong> in the terminal.</p>
+<p>As a last resort before pulling the power plug, you can use the
+command <strong><code>killall -9</code></strong> in the terminal.</p>
 <h3 id="forgotten-root-password">Forgotten root password</h3>
-<p>A forgotten root password cannot be recovered, but a new one can be set.</p>
+<p>A forgotten root password cannot be recovered, but a new one can be
+set.</p>
 <p>To do this, the live CD must first be booted.</p>
-<p>The root partition must be mounted as <strong>root</strong> (e.g. as /dev/sdb2)</p>
+<p>The root partition must be mounted as <strong>root</strong> (e.g. as
+/dev/sdb2)</p>
 <pre><code>mount /dev/sdb2 /media/sdb2</code></pre>
-<p>Now enter the root partition with chroot (chroot = changed root) and define a new password:</p>
+<p>Now enter the root partition with chroot (chroot = changed root) and
+define a new password:</p>
 <pre><code>chroot /media/sdb2 passwd</code></pre>
 <h3 id="setting-new-passwords">Setting new passwords</h3>
 <p>To change a user password, as <strong>user</strong> :</p>
 <pre><code>$ passwd</code></pre>
 <p>To change the root password, as <strong>root</strong> :</p>
 <pre><code># passwd</code></pre>
-<p>To change a user password as administrator, as <strong>root</strong> :</p>
+<p>To change a user password as administrator, as <strong>root</strong>
+:</p>
 <pre><code># passwd &lt;user&gt;</code></pre>
 <h3 id="fonts-in-siduction">Fonts in siduction</h3>
-<p>To improve the display of fonts, if necessary, it is important to check the correct settings and configurations of the hardware beforehand.</p>
+<p>To improve the display of fonts, if necessary, it is important to
+check the correct settings and configurations of the hardware
+beforehand.</p>
 <p><strong>Check settings</strong></p>
 <ul>
 <li><p><strong>Correct graphics drivers</strong><br />
-Some newer ATI and Nvidia graphics cards do not harmonize very well with the free Xorg drivers. The only reasonable solution in these cases is to install proprietary, non open source drivers. For legal reasons, siduction cannot pre-install these. Instructions for installing these drivers can be found on the <a href="./gpu_en.html#graphics-drivers">Graphics Drivers</a> page of the manual.</p></li>
-<li><p><strong>Correct screen resolutions and refresh rates</strong>.<br />
-First, it’s a good idea to look at the manufacturer’s technical documentation, either in print or online. Each monitor has its own perfect combination of settings. These DCC values are usually passed correctly to the operating system. Only sometimes it is necessary to intervene manually to overwrite the basic settings.</p>
-<p>To check which settings the X server is currently using, we use xrandr in the terminal:</p>
+Some newer ATI and Nvidia graphics cards do not harmonize very well with
+the free Xorg drivers. The only reasonable solution in these cases is to
+install proprietary, non open source drivers. For legal reasons,
+siduction cannot pre-install these. Instructions for installing these
+drivers can be found on the <a
+href="./gpu_en.html#graphics-drivers">Graphics Drivers</a> page of the
+manual.</p></li>
+<li><p><strong>Correct screen resolutions and refresh
+rates</strong>.<br />
+First, it’s a good idea to look at the manufacturer’s technical
+documentation, either in print or online. Each monitor has its own
+perfect combination of settings. These DCC values are usually passed
+correctly to the operating system. Only sometimes it is necessary to
+intervene manually to overwrite the basic settings.</p>
+<p>To check which settings the X server is currently using, we use
+xrandr in the terminal:</p>
 <pre><code> $ xrandr
  Screen 0: minimum 320 x 200, current 1680 x 1050,
  maximum 16384 x 16384
@@ -214,30 +326,46 @@ First, it’s a good idea to look at the manufacturer’s technical documentatio
  DP-1 disconnected
    (normal left inverted right x axis y axis)</code></pre>
 <p>The value marked with “*” indicates the setting used,<br />
-1680 x 1050 pixels with a physical size of 474 x 296 mm. In addition, we calculate the actual resolution in px/inch (dpi) to get an indication of the settings for the fonts. With the values given above we get 90 dpi.<br />
-1680 Px <code>x</code> 25,4 mm/inch <code>/</code> 474 mm <code>=</code> 90 Px/inch (dpi)</p></li>
+1680 x 1050 pixels with a physical size of 474 x 296 mm. In addition, we
+calculate the actual resolution in px/inch (dpi) to get an indication of
+the settings for the fonts. With the values given above we get 90
+dpi.<br />
+1680 Px <code>x</code> 25,4 mm/inch <code>/</code> 474 mm <code>=</code>
+90 Px/inch (dpi)</p></li>
 <li><p><strong>Check</strong><br />
-We use a folding rule or tape measure to determine the actual size of the monitor. The result should differ by less than three millimeters from the values output by xrandr.</p></li>
+We use a folding rule or tape measure to determine the actual size of
+the monitor. The result should differ by less than three millimeters
+from the values output by xrandr.</p></li>
 </ul>
 <p><strong>Basic font configuration</strong></p>
-<p>siduction uses free fonts that have proven to be balanced in Debian. In the graphical user interface TTF or outline fonts are used. If own fonts are chosen, new configuration adjustments may have to be made to get the desired font appearance.</p>
-<p>The system-wide basic configuration is done in the terminal as <strong>root</strong>, using:</p>
+<p>siduction uses free fonts that have proven to be balanced in Debian.
+In the graphical user interface TTF or outline fonts are used. If own
+fonts are chosen, new configuration adjustments may have to be made to
+get the desired font appearance.</p>
+<p>The system-wide basic configuration is done in the terminal as
+<strong>root</strong>, using:</p>
 <pre><code># dpkg-reconfigure fontconfig-config</code></pre>
 <p>For the dialogs called, these settings have proven to be useful:</p>
 <ol type="1">
-<li>For screen display, please select the preferred method for font tuning.<br />
+<li>For screen display, please select the preferred method for font
+tuning.<br />
 <strong>`autohinter´</strong></li>
-<li>Please select to what extent font hinting is applied by default.<br />
+<li>Please select to what extent font hinting is applied by
+default.<br />
 <strong><code>medium</code></strong></li>
-<li>The inclusion of the subpixel layer improves the text display on flat panel displays (LCD).<br />
+<li>The inclusion of the subpixel layer improves the text display on
+flat panel displays (LCD).<br />
 <strong><code>automatic</code></strong></li>
-<li>By default, applications that support fontconfig use only outline fonts. Use bitmap fonts by default?<br />
+<li>By default, applications that support fontconfig use only outline
+fonts. Use bitmap fonts by default?<br />
 <strong><code>no</code></strong></li>
 </ol>
 <p>Subsequently</p>
 <pre><code># dpkg-reconfigure fontconfig</code></pre>
 <p>is necessary to rewrite the configuration.</p>
-<p>Sometimes rebuilding the font cache is a solution (the first command is for saving data with a date appendix, the second command is to be entered without a line break, i.e. on one line):</p>
+<p>Sometimes rebuilding the font cache is a solution (the first command
+is for saving data with a date appendix, the second command is to be
+entered without a line break, i.e. on one line):</p>
 <pre><code># mv /etc/fonts/ /etc/fonts_$(date +%F)/
 
 # apt-get install --reinstall --yes -o DPkg::Options::=
@@ -245,29 +373,47 @@ We use a folding rule or tape measure to determine the actual size of the monito
  fontconfig fontconfig-config</code></pre>
 <h3 id="user-configuration">User configuration</h3>
 <p><strong>Display type, size, 4K display</strong></p>
-<p>It should be noted that each font has an ideal size range, so identical size settings do not necessarily lead to the same good result for each font.<br />
-The settings can be made conveniently in the graphical interface. They take effect on the desktop immediately, applications have to be restarted to some extent.<br />
+<p>It should be noted that each font has an ideal size range, so
+identical size settings do not necessarily lead to the same good result
+for each font.<br />
+The settings can be made conveniently in the graphical interface. They
+take effect on the desktop immediately, applications have to be
+restarted to some extent.<br />
 The list shows where in the menu the settings can be found.</p>
 <ul>
 <li><p>KDE Plasma</p>
 <ul>
-<li><em>“System Preferences”</em> &gt; <em>“Fonts”</em> &gt; <em>“Fonts”</em></li>
-<li><em>“System Preferences”</em> &gt; <em>“Display Setup”</em> &gt; <em>“Display Setup”</em> &gt; <em>“Global Scaling”</em></li>
+<li><em>“System Preferences”</em> &gt; <em>“Fonts”</em> &gt;
+<em>“Fonts”</em></li>
+<li><em>“System Preferences”</em> &gt; <em>“Display Setup”</em> &gt;
+<em>“Display Setup”</em> &gt; <em>“Global Scaling”</em></li>
 </ul></li>
 <li><p>Gnome (Tweak Tool)<br />
-<em>“Applications”</em> &gt; <em>“Optimizations”</em> &gt; <em>“Fonts”</em></p></li>
+<em>“Applications”</em> &gt; <em>“Optimizations”</em> &gt;
+<em>“Fonts”</em></p></li>
 <li><p>Xfce<br />
-<em>“Preferences”</em> &gt; <em>“Appearance”</em> &gt; tab: <em>“Fonts”</em></p></li>
+<em>“Preferences”</em> &gt; <em>“Appearance”</em> &gt; tab:
+<em>“Fonts”</em></p></li>
 </ul>
 <p><strong>Explanation of terms</strong><br />
 <em>“Edge smoothing / Antialising”</em>:<br />
-This is the brightness gradation of the neighboring pixels at the edges to reduce the staircase effect on curves. However, it causes some blurring of the characters.</p>
+This is the brightness gradation of the neighboring pixels at the edges
+to reduce the staircase effect on curves. However, it causes some
+blurring of the characters.</p>
 <p><em>“Subpixel rendering / color order / RGB”</em>:<br />
-This is an extension of antialising for LCD screens by additionally controlling the color components of a pixel.</p>
+This is an extension of antialising for LCD screens by additionally
+controlling the color components of a pixel.</p>
 <p><em>“Hinting”</em>:<br />
-This is the adaptation (change) of the characters to the pixel grid of the screen. It reduces the need for antialiasing, but the font shape no longer conforms exactly to the specifications, unless the font developers have already incorporated hinting variations. For <strong>4K</strong> screens, hinting is usually not necessary.</p>
+This is the adaptation (change) of the characters to the pixel grid of
+the screen. It reduces the need for antialiasing, but the font shape no
+longer conforms exactly to the specifications, unless the font
+developers have already incorporated hinting variations. For
+<strong>4K</strong> screens, hinting is usually not necessary.</p>
 <p><em>“DPI value / scaling factor”</em>:<br />
-This setting allows a different DPI value or size for the fonts only. Here the display on a <strong>4K</strong> screen can be improved quickly. The following table illustrates the relationship between screen diagonal and DPI value for <strong>4K</strong> screens.</p>
+This setting allows a different DPI value or size for the fonts only.
+Here the display on a <strong>4K</strong> screen can be improved
+quickly. The following table illustrates the relationship between screen
+diagonal and DPI value for <strong>4K</strong> screens.</p>
 <p>4K resolution: 3840 x 2160 (16:9)</p>
 <table>
 <thead>
@@ -317,9 +463,14 @@ This setting allows a different DPI value or size for the fonts only. Here the d
 </tr>
 </tbody>
 </table>
-<p>Accordingly, a scaling factor of 2.0 is required for 4k screens with a diagonal of 24 inches, and a scaling factor of 1.2 is required for screens with a diagonal of 37 inches in order to obtain approximately equal displays corresponding to SXGA or WSXGA screens with 90 DPI.</p>
+<p>Accordingly, a scaling factor of 2.0 is required for 4k screens with
+a diagonal of 24 inches, and a scaling factor of 1.2 is required for
+screens with a diagonal of 37 inches in order to obtain approximately
+equal displays corresponding to SXGA or WSXGA screens with 90 DPI.</p>
 <h3 id="cups---the-printing-system">CUPS - the printing system</h3>
-<p>KDE has a large section on CUPS in the KDE help. Nevertheless, here is a guide on what to do if you have problems with CUPS after a full-upgrade. One of the known solutions is:</p>
+<p>KDE has a large section on CUPS in the KDE help. Nevertheless, here
+is a guide on what to do if you have problems with CUPS after a
+full-upgrade. One of the known solutions is:</p>
 <pre><code># modprobe lp
 # echo lp &gt;&gt; /etc/modules
 # apt purge cups
@@ -328,32 +479,63 @@ This setting allows a different DPI value or size for the fonts only. Here the d
 # apt install cups printer-driver-gutenprint hplip</code></pre>
 <p>CUPS will now be restarted:</p>
 <pre><code># systemctl restart cups.service</code></pre>
-<p>Afterwards open a web browser and type this into the address line:</p>
+<p>Afterwards open a web browser and type this into the address
+line:</p>
 <p>http://localhost:631</p>
-<p>A small problem occurs when CUPS opens the corresponding dialog box for legitimation. Occasionally, the user’s own user name is already entered there and the password is expected. However, entering the user password does not work. Nothing works. The solution is to change the user name to <strong>root</strong> and enter the root password.</p>
-<p><a target="_blank" href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">The OpenPrinting database</a> contains extensive information about various printers and their drivers. Drivers, specifications, and configuration tools are available. Samsung used to supply its own Linux drivers for its printers. After the printer division had been sold to HP, the download page has no longer been available, and HP unfortunately did not include the Samsung drivers in <em>“hplib”</em>. Currently, the package printer-driver-splix works best for Samsung printers and Samsung multifunction devices. CUPS is currently in transition and is moving towards printing without drivers via <a target="_blank" href="https://www.pwg.org/ipp/everywhere.html">PWG - IPP Everywhere</a>, see also <a target="_blank" href="https://wiki.debian.org/CUPSIPPEverywhere/">debian - an introduction to IPP-Everywhere</a>.</p>
+<p>A small problem occurs when CUPS opens the corresponding dialog box
+for legitimation. Occasionally, the user’s own user name is already
+entered there and the password is expected. However, entering the user
+password does not work. Nothing works. The solution is to change the
+user name to <strong>root</strong> and enter the root password.</p>
+<p><a
+href="https://wiki.linuxfoundation.org/openprinting/database/databaseintro">The
+OpenPrinting database</a> contains extensive information about various
+printers and their drivers. Drivers, specifications, and configuration
+tools are available. Samsung used to supply its own Linux drivers for
+its printers. After the printer division had been sold to HP, the
+download page has no longer been available, and HP unfortunately did not
+include the Samsung drivers in <em>“hplib”</em>. Currently, the package
+printer-driver-splix works best for Samsung printers and Samsung
+multifunction devices. CUPS is currently in transition and is moving
+towards printing without drivers via <a
+href="https://www.pwg.org/ipp/everywhere.html">PWG - IPP Everywhere</a>,
+see also <a target="_blank" href="https://wiki.debian.org/CUPSIPPEverywhere/">debian -
+an introduction to IPP-Everywhere</a>.</p>
 <h3 id="sound-in-siduction">Sound in siduction</h3>
-<p><em>In older siduction installations, sound is disabled by default.</em></p>
-<p>Most sound problems can be solved by clicking on the sound icon in the control bar, opening the mixer, and unchecking “mute”, or using the appropriate slider. If the speaker icon is not present, a right click on the control bar is sufficient, then select</p>
-<p>in KDE: <em>“Control Panel Options”</em> &gt; <em>“Add Mini Programs…”</em><br />
+<p><em>In older siduction installations, sound is disabled by
+default.</em></p>
+<p>Most sound problems can be solved by clicking on the sound icon in
+the control bar, opening the mixer, and unchecking “mute”, or using the
+appropriate slider. If the speaker icon is not present, a right click on
+the control bar is sufficient, then select</p>
+<p>in KDE: <em>“Control Panel Options”</em> &gt; <em>“Add Mini
+Programs…”</em><br />
 in Xfce: <em>“Bar”</em> &gt; <em>“Add new items…”</em></p>
 <p>and select the desired module.</p>
 <p><strong>KDE Plasma</strong></p>
-<p>A right click on the speaker icon in the control bar opens the sound output settings window. The user interface is self-explanatory.</p>
+<p>A right click on the speaker icon in the control bar opens the sound
+output settings window. The user interface is self-explanatory.</p>
 <p><strong>Gnome</strong></p>
-<p>Right-clicking on the speaker icon in the control bar opens a drop-down menu that contains a slider for the volume.<br />
+<p>Right-clicking on the speaker icon in the control bar opens a
+drop-down menu that contains a slider for the volume.<br />
 Further settings are possible as follows:</p>
-<p>Right-click on the desktop &gt; <em>“Settings”</em> &gt; <em>“Audio”</em></p>
+<p>Right-click on the desktop &gt; <em>“Settings”</em> &gt;
+<em>“Audio”</em></p>
 <p><strong>Xfce Pulse Audio</strong></p>
-<p>The settings are made via the speaker icon (pulse audio module) in the control bar. Again, the user guidance is self-explanatory. If the icon is missing, you can quickly get started with a terminal by entering the command</p>
+<p>The settings are made via the speaker icon (pulse audio module) in
+the control bar. Again, the user guidance is self-explanatory. If the
+icon is missing, you can quickly get started with a terminal by entering
+the command</p>
 <pre><code>$ pavucontrol</code></pre>
 <p>and configuring the settings in the appearing window.</p>
 <p><strong>Alsamixer</strong></p>
-<p>If you prefer alsamixer, you can find it in the alsa-utils package:</p>
+<p>If you prefer alsamixer, you can find it in the alsa-utils
+package:</p>
 <pre><code># apt update
 # apt install alsa-utils
 # exit</code></pre>
-<p>The desired sound settings are made as <strong>user</strong> from a terminal:</p>
+<p>The desired sound settings are made as <strong>user</strong> from a
+terminal:</p>
 <pre><code>$ alsamixer</code></pre>
 <div id="rev">
 Last edited: 2022/04/05

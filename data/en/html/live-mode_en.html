@@ -35,50 +35,84 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#how-to-use-the-live-dvd">How to use the live DVD</a>
 <ul>
-<li><a href="#users-set-up-on-the-live-medium">Users set up on the live medium</a></li>
-<li><a href="#root-privileges-on-the-live-dvd">root privileges on the live DVD</a></li>
-<li><a href="#how-to-set-a-new-password">How to set a new password</a></li>
-<li><a href="#software-installation-during-live-session">Software installation during live session</a></li>
+<li><a href="#users-set-up-on-the-live-medium">Users set up on the live
+medium</a></li>
+<li><a href="#root-privileges-on-the-live-dvd">root privileges on the
+live DVD</a></li>
+<li><a href="#how-to-set-a-new-password">How to set a new
+password</a></li>
+<li><a href="#software-installation-during-live-session">Software
+installation during live session</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="how-to-use-the-live-dvd">How to use the live DVD</h2>
-<h3 id="users-set-up-on-the-live-medium">Users set up on the live medium</h3>
-<p>The users <strong>siducer</strong> and <strong>root</strong> (the system administrator) are set up on the live medium.</p>
-<p>The password for the user <strong>siducer</strong> is <strong>live</strong>.<br />
+<h3 id="users-set-up-on-the-live-medium">Users set up on the live
+medium</h3>
+<p>The users <strong>siducer</strong> and <strong>root</strong> (the
+system administrator) are set up on the live medium.</p>
+<p>The password for the user <strong>siducer</strong> is
+<strong>live</strong>.<br />
 No password is set for <strong>root</strong> (system administrator).</p>
-<p>The live session will be locked after some time without any input. To unlock, please enter the username <strong>siducer</strong> and the password <strong>live</strong>.</p>
-<h3 id="root-privileges-on-the-live-dvd">root privileges on the live DVD</h3>
-<p>Several ways of how to run a program with root priviliges are described below.</p>
+<p>The live session will be locked after some time without any input. To
+unlock, please enter the username <strong>siducer</strong> and the
+password <strong>live</strong>.</p>
+<h3 id="root-privileges-on-the-live-dvd">root privileges on the live
+DVD</h3>
+<p>Several ways of how to run a program with root priviliges are
+described below.</p>
 <p class="warning">
-<strong>Caution</strong> <br />Whenever you work with root privileges, you should know exactly what you are doing. For web browsing and similar actions, root privileges are not necessary.
+<strong>Caution</strong> <br />Whenever you work with root privileges,
+you should know exactly what you are doing. For web browsing and similar
+actions, root privileges are not necessary.
 </p>
 <ol type="1">
-<li><p>The easiest way is to open a terminal and get root privileges by typing <strong><code>su</code></strong>.<br />
-To start a program that works with a graphical user interface, just enter the program name.</p>
+<li><p>The easiest way is to open a terminal and get root privileges by
+typing <strong><code>su</code></strong>.<br />
+To start a program that works with a graphical user interface, just
+enter the program name.</p>
 <pre><code>root@siduction:~# gparted &amp;</code></pre>
-<p>Now Gparted will be executed with root privileges. The <em>“&amp;”</em> at the end of the command puts the process into the background so that the terminal remains usable.</p></li>
+<p>Now Gparted will be executed with root privileges. The
+<em>“&amp;”</em> at the end of the command puts the process into the
+background so that the terminal remains usable.</p></li>
 <li><p>Open a command prompt window:<br />
-Use the key combination <strong><code>Alt</code></strong>+<strong><code>F2</code></strong> to get a program launcher and enter the following command:</p>
+Use the key combination
+<strong><code>Alt</code></strong>+<strong><code>F2</code></strong> to
+get a program launcher and enter the following command:</p>
 <pre><code>sudo &lt;application&gt;  </code></pre>
-<p>A terminal window will open, asking you for the root password. Now simply press the <strong><code>Enter</code></strong> key, unless a temporary root password has been set as described below. In the latter case, the corresponding password must be entered.</p></li>
-<li><p>Enter the following command into a terminal without root privileges:</p>
+<p>A terminal window will open, asking you for the root password. Now
+simply press the <strong><code>Enter</code></strong> key, unless a
+temporary root password has been set as described below. In the latter
+case, the corresponding password must be entered.</p></li>
+<li><p>Enter the following command into a terminal without root
+privileges:</p>
 <pre><code>sudo &lt;application&gt; &amp;</code></pre>
 <p>Please note:<br />
-<code>sudo</code> is not preconfigured on hard disk installations. We recommend to directly use the real <strong>root</strong> account.<br />
-See <a href="./term-konsole_en.html#work-as-root">why sudo is not configured</a>.</p></li>
+<code>sudo</code> is not preconfigured on hard disk installations. We
+recommend to directly use the real <strong>root</strong> account.<br />
+See <a href="./term-konsole_en.html#work-as-root">why sudo is not
+configured</a>.</p></li>
 </ol>
 <h3 id="how-to-set-a-new-password">How to set a new password</h3>
-<p>Remember: The livesession’s standard user is <strong>siducer</strong> with the password <strong>live</strong>. If you want to change the password, open a terminal and enter the following commands:</p>
+<p>Remember: The livesession’s standard user is <strong>siducer</strong>
+with the password <strong>live</strong>. If you want to change the
+password, open a terminal and enter the following commands:</p>
 <pre><code>siducer@siduction:~$ passwd
 Enter a new password:
 Re-enter the new password:
 passwd: Password successfully changed
 siducer@siduction:~$</code></pre>
-<p>This new password for <strong>siducer</strong> can be used for the rest of the live session.</p>
-<p>The same procedure can be used to set a password for <strong>root</strong> in any terminal, but you have to become root via <strong><code>su</code></strong> first. Afterwards, a login on a virtual console as <strong>root</strong> is possible.</p>
-<h3 id="software-installation-during-live-session">Software installation during live session</h3>
-<p>The command sequence for installing software during a live session is similar to that on a hard disk installation. The prerequisite is a root terminal:</p>
+<p>This new password for <strong>siducer</strong> can be used for the
+rest of the live session.</p>
+<p>The same procedure can be used to set a password for
+<strong>root</strong> in any terminal, but you have to become root via
+<strong><code>su</code></strong> first. Afterwards, a login on a virtual
+console as <strong>root</strong> is possible.</p>
+<h3 id="software-installation-during-live-session">Software installation
+during live session</h3>
+<p>The command sequence for installing software during a live session is
+similar to that on a hard disk installation. The prerequisite is a root
+terminal:</p>
 <pre><code>apt update
 apt install &lt;the-package-you-want&gt;</code></pre>
 <p>Otherwise, type <code>sudo</code> before the commands.</p>

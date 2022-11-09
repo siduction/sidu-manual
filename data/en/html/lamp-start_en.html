@@ -51,25 +51,37 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="lamp-web-server">LAMP web server</h2>
 <p><strong>A local test server for developers</strong></p>
-<p>The acronym <strong>LAMP</strong> refers to a set of free software used to run dynamic web sites:</p>
+<p>The acronym <strong>LAMP</strong> refers to a set of free software
+used to run dynamic web sites:</p>
 <ul>
 <li><strong>L</strong>inux: operating system</li>
 <li><strong>A</strong>pache: web server</li>
-<li><strong>M</strong>ariaDb: database server (as of Debian 9 ‘Stretch’, previously mySQL)</li>
+<li><strong>M</strong>ariaDb: database server (as of Debian 9 ‘Stretch’,
+previously mySQL)</li>
 <li><strong>P</strong>HP, Perl, and/or Python: scripting languages</li>
 </ul>
 <p>Use cases as a server:</p>
 <ol type="1">
-<li><strong>a local test server for webdesigners without Internet connection (see this chapter)</strong></li>
+<li><strong>a local test server for webdesigners without Internet
+connection (see this chapter)</strong></li>
 <li>a private (data) server with Internet connection</li>
 <li>a private web server with full Internet connection</li>
 <li>a commercial web server</li>
 </ol>
-<p>Our goal is to set up a LAMP test server for developers that is directly connected to the workstation PC via LAN. Furthermore, for security reasons, the server should not be connected to a local network or even to the Internet. The only exception is that the server will be temporarily connected to the Internet via a second network interface exclusively for system and software updates.</p>
+<p>Our goal is to set up a LAMP test server for developers that is
+directly connected to the workstation PC via LAN. Furthermore, for
+security reasons, the server should not be connected to a local network
+or even to the Internet. The only exception is that the server will be
+temporarily connected to the Internet via a second network interface
+exclusively for system and software updates.</p>
 <p class="warning">
-Please note: <br />The desktop PC used for daily work should not be used as a server. Instead, a separate PC should be used, which does not perform any other tasks.
+Please note: <br />The desktop PC used for daily work should not be used
+as a server. Instead, a separate PC should be used, which does not
+perform any other tasks.
 </p>
-<p>At least 500MB RAM should be available in the server PC. Less RAM will cause problems because a server with MariaDb/MySQL needs a lot of RAM to run appropiately.</p>
+<p>At least 500MB RAM should be available in the server PC. Less RAM
+will cause problems because a server with MariaDb/MySQL needs a lot of
+RAM to run appropiately.</p>
 <p>The packages to install are:</p>
 <pre><code>apache2
 mariadb-server
@@ -77,25 +89,35 @@ mariadb-client
 php
 php7.4-mysql
 phpmyadmin</code></pre>
-<p>As usual with siduction, we run the installations in the “multi-user.target” (init 3) in the terminal.</p>
+<p>As usual with siduction, we run the installations in the
+“multi-user.target” (init 3) in the terminal.</p>
 <p><strong>Preparations</strong></p>
-<p>If the command line browser <em>w3m</em> has not been installed yet, we will do it now:</p>
+<p>If the command line browser <em>w3m</em> has not been installed yet,
+we will do it now:</p>
 <pre><code># apt update
 # apt install w3m</code></pre>
-<p>This allows us to test <em>Apache</em> and <em>PHP</em> immediately in the terminal and return to the graphical user interface only after all necessary installations have been completed.</p>
+<p>This allows us to test <em>Apache</em> and <em>PHP</em> immediately
+in the terminal and return to the graphical user interface only after
+all necessary installations have been completed.</p>
 <p>Now we need to clean up apt.<br />
-The command <strong><code>apt autoremove</code></strong> should result in the following output. If not, we confirm the removal of unneeded packages with <code>j</code>.</p>
+The command <strong><code>apt autoremove</code></strong> should result
+in the following output. If not, we confirm the removal of unneeded
+packages with <code>j</code>.</p>
 <pre><code>#apt autremove
 Package lists are read... Done
 Dependency tree is built.
 Status information is read.... Done
 0 updated, 0 reinstalled, 0 to remove, and 0 not updated.</code></pre>
-<p>In case of a corrupted installation, this will simplify the repair.<br />
-See below <a href="./lamp-start_en.html#troubleshooting">Troubleshooting</a>.</p>
-<p>It is useful to note down some data already before the installation.</p>
+<p>In case of a corrupted installation, this will simplify the
+repair.<br />
+See below <a
+href="./lamp-start_en.html#troubleshooting">Troubleshooting</a>.</p>
+<p>It is useful to note down some data already before the
+installation.</p>
 <p>Necessary during the installation:</p>
 <ul>
-<li>a <strong>password</strong> for the database user <strong>root</strong> in <em>phpMyAdmin</em></li>
+<li>a <strong>password</strong> for the database user
+<strong>root</strong> in <em>phpMyAdmin</em></li>
 </ul>
 <p>Later, necessary for the configuration:</p>
 <ul>
@@ -109,15 +131,21 @@ See below <a href="./lamp-start_en.html#troubleshooting">Troubleshooting</a>.</p
 </ul></li>
 <li><strong>MariaDB:</strong>
 <ul>
-<li>the <em>name of the database</em> to be used for the development project</li>
-<li>the <em>name</em> (login name) of a new databank user for the development project</li>
+<li>the <em>name of the database</em> to be used for the development
+project</li>
+<li>the <em>name</em> (login name) of a new databank user for the
+development project</li>
 <li>the <em>password</em> for the new databank user</li>
 <li>the <em>name</em> (login name) of a new database administrator</li>
 <li>the <em>password</em> for the database administrator</li>
 </ul></li>
 </ul>
 <h3 id="install-apache">Install Apache</h3>
-<p>In order to install the Apache web server, you only need the following two commands. The install command gets the additional packages <em>apache2-data</em> and <em>apache2-utils</em>. Then we query the status of Apache and test the start and stop instructions right away.</p>
+<p>In order to install the Apache web server, you only need the
+following two commands. The install command gets the additional packages
+<em>apache2-data</em> and <em>apache2-utils</em>. Then we query the
+status of Apache and test the start and stop instructions right
+away.</p>
 <pre><code># apt update
 # apt install apache2
 [...]
@@ -149,16 +177,23 @@ apache2.service - The Apache HTTP Server
              enabled; vendor preset: enabled)
      Active: active (running) since Sun 2020-12-06 [...]
 [...]</code></pre>
-<p>The Apache web server is loaded and can be handled without any problems. Now we check its function with:</p>
+<p>The Apache web server is loaded and can be handled without any
+problems. Now we check its function with:</p>
 <pre><code>w3m http://localhost/index.html</code></pre>
-<p>The Apache welcome page with <strong>It works!</strong> appears.<br />
-We exit w3m with <strong><code>q</code></strong> and confirm with <strong><code>y</code></strong>.</p>
-<p>The directory <strong>/etc/apache2/</strong> is called <strong>ServerRoot</strong>. It contains the configuration.<br />
-The directory <strong>/var/www/html/</strong> is called <strong>DocumentRoot</strong>. It contains the website’s files.</p>
-<p>For more information and security hints, please refer to the manual page<br />
+<p>The Apache welcome page with <strong>It works!</strong>
+appears.<br />
+We exit w3m with <strong><code>q</code></strong> and confirm with
+<strong><code>y</code></strong>.</p>
+<p>The directory <strong>/etc/apache2/</strong> is called
+<strong>ServerRoot</strong>. It contains the configuration.<br />
+The directory <strong>/var/www/html/</strong> is called
+<strong>DocumentRoot</strong>. It contains the website’s files.</p>
+<p>For more information and security hints, please refer to the manual
+page<br />
 <a href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a>.</p>
 <h3 id="install-mariadb">Install MariaDb</h3>
-<p>The installation of MariaDb is similarly simple. Just install the metapackages <em>mariadb-server</em> and <em>mariadb-client</em>.</p>
+<p>The installation of MariaDb is similarly simple. Just install the
+metapackages <em>mariadb-server</em> and <em>mariadb-client</em>.</p>
 <pre><code># apt install mariadb-server mariadb-client
 [...]
 The following NEW packages will be installed:
@@ -169,7 +204,8 @@ mariadb-common mariadb-server mariadb-server-10.5
 mariadb-server-core-10.5 mysql-common socat
 [...]
 Do you want to continue? [Y/n] y</code></pre>
-<p>For more information on MariaDb and configuration, see our manual in <a href="./lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a></p>
+<p>For more information on MariaDb and configuration, see our manual in
+<a href="./lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a></p>
 <h3 id="install-php">Install PHP</h3>
 <p>To install the PHP scripting language, simply enter the command:</p>
 <pre><code># apt install php
@@ -180,14 +216,18 @@ libaprutil1-ldap php php-common php7.4 php7.4-cli
 php7.4-common php7.4-json php7.4-opcache php7.4-readline
 [...]
 Would you like to continue? [Y/n] y</code></pre>
-<p>As before, the metapackage additionally brings in a whole bunch of dependencies.<br />
-To check if php is running correctly after installation, create the file <code>info.php</code> in <code>/var/www/html</code> using the phpinfo() function this way:</p>
+<p>As before, the metapackage additionally brings in a whole bunch of
+dependencies.<br />
+To check if php is running correctly after installation, create the file
+<code>info.php</code> in <code>/var/www/html</code> using the phpinfo()
+function this way:</p>
 <pre><code>mcedit /var/www/html/info.php  </code></pre>
 <p>Insert the following text:</p>
 <pre><code>&lt;?php
 phpinfo();
 ?&gt;</code></pre>
-<p>Save with <strong><code>F2</code></strong> and terminate mcedit with <strong><code>F10</code></strong>.</p>
+<p>Save with <strong><code>F2</code></strong> and terminate mcedit with
+<strong><code>F10</code></strong>.</p>
 <p>After that the terminal browser w3m will be linked to it:</p>
 <pre><code>w3m http://localhost/info.php  
 or  
@@ -200,12 +240,19 @@ System       Linux &lt;hostname&gt; 5.9.13-towo.1-siduction-amd64
 Build Date   Oct 6 2020 10:34:39
 server API   Apache 2.0 Handler
 ...</code></pre>
-<p>If we get an output that starts as shown above and contains all php configurations and basic settings, PHP is working and uses the <em>Apache 2.0 Handler</em> as <em>server API</em>.</p>
-<p>We exit w3m with <strong><code>q</code></strong> and confirm with <strong><code>y</code></strong>.</p>
-<p>Now we need the module <em>php7.4-mysql</em>, so MariaDB/mysql will be supported in PHP.</p>
+<p>If we get an output that starts as shown above and contains all php
+configurations and basic settings, PHP is working and uses the
+<em>Apache 2.0 Handler</em> as <em>server API</em>.</p>
+<p>We exit w3m with <strong><code>q</code></strong> and confirm with
+<strong><code>y</code></strong>.</p>
+<p>Now we need the module <em>php7.4-mysql</em>, so MariaDB/mysql will
+be supported in PHP.</p>
 <pre><code># apt install php7.4-mysql</code></pre>
-<p>If we now go back to the “http://localhost/info.php” page, we will find the entries for <em>mysqli</em> and <em>mysqlnd</em> in the modules section (they are sorted alphabetically).</p>
-<p>For more information on configuring PHP and managing its modules, see the manual page <a href="./lamp-php_en.html#set-up-php">LAMP-PHP</a></p>
+<p>If we now go back to the “http://localhost/info.php” page, we will
+find the entries for <em>mysqli</em> and <em>mysqlnd</em> in the modules
+section (they are sorted alphabetically).</p>
+<p>For more information on configuring PHP and managing its modules, see
+the manual page <a href="./lamp-php_en.html#set-up-php">LAMP-PHP</a></p>
 <h3 id="install-phpmyadmin">Install phpMyAdmin</h3>
 <p>To administer the MariaDb database, we need <em>phpmyadmin</em>:</p>
 <pre><code># apt install phpmyadmin
@@ -229,21 +276,36 @@ of 15.8 MB. After this operation, 70.9 MB of additional
 disk space will be used.
 Do you want to continue? [Y/n] y</code></pre>
 <p>During the installation, two dialogs will appear.<br />
-In the first one, at the beginning, we select <em>“apache2”</em> and confirm with <em>“ok”</em>.</p>
+In the first one, at the beginning, we select <em>“apache2”</em> and
+confirm with <em>“ok”</em>.</p>
 <figure>
-<img src="./images-en/lamp-start/phpmyadmin01-en.png" alt="" /><figcaption>PHPMyAdmin web server selection</figcaption>
+<img src="./images-en/lamp-start/phpmyadmin01-en.png"
+alt="PHPMyAdmin web server selection" />
+<figcaption aria-hidden="true">PHPMyAdmin web server
+selection</figcaption>
 </figure>
-<p>In the second one, at the end of the installation, we select <em>“yes”</em>.</p>
+<p>In the second one, at the end of the installation, we select
+<em>“yes”</em>.</p>
 <figure>
-<img src="./images-en/lamp-start/phpmyadmin02-en.png" alt="" /><figcaption>PHPMyAdmin database</figcaption>
+<img src="./images-en/lamp-start/phpmyadmin02-en.png"
+alt="PHPMyAdmin database" />
+<figcaption aria-hidden="true">PHPMyAdmin database</figcaption>
 </figure>
-<p>In the following dialogs we need the password for the database user <strong>phpmyadmin</strong> (see the chapter <em>Preparations</em>).</p>
+<p>In the following dialogs we need the password for the database user
+<strong>phpmyadmin</strong> (see the chapter <em>Preparations</em>).</p>
 <h3 id="other-software">Other software</h3>
-<p>If you are interested in developing websites, you can install a CMS for example, <em>WordPress</em>, <em>Drupal</em>, or <em>Joomla</em>, but you should consider our manual pages <a href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a> and <a href="././lamp-sql_en.html#mariadb-setup">LAMP-MariaDb</a> for the configuration of the server and MariaDb beforehand.</p>
+<p>If you are interested in developing websites, you can install a CMS
+for example, <em>WordPress</em>, <em>Drupal</em>, or <em>Joomla</em>,
+but you should consider our manual pages <a
+href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a> and <a
+href="././lamp-sql_en.html#mariadb-setup">LAMP-MariaDb</a> for the
+configuration of the server and MariaDb beforehand.</p>
 <h3 id="status-data-log-files">Status data log files</h3>
 <p><strong>Apache</strong></p>
-<p>The configuration status of the Apache web server can be output with <strong><code>apache2ctl -S</code></strong>.<br />
-The output shows the status without any changes to the configuration immediately after installation.</p>
+<p>The configuration status of the Apache web server can be output with
+<strong><code>apache2ctl -S</code></strong>.<br />
+The output shows the status without any changes to the configuration
+immediately after installation.</p>
 <pre><code># apache2ctl -S
 AH00558: apache2: Could not reliably determine the server&#39;s
 fully qualified domain name, using 127.0.1.1. Set the &#39;ServerName&#39; directive
@@ -262,36 +324,51 @@ Define: DUMP_VHOSTS
 Define: DUMP_RUN_CFG
 User: name=&quot;www-data&quot; id=33
 Group: name=&quot;www-data&quot; id=33</code></pre>
-<p>The manual page <a href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a> contains a number of hints for customizing the configuration.<br />
-The directory <code>/var/log/apache2/</code> contains the log files. A look into them is helpful to identify error causes.</p>
+<p>The manual page <a
+href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a> contains a
+number of hints for customizing the configuration.<br />
+The directory <code>/var/log/apache2/</code> contains the log files. A
+look into them is helpful to identify error causes.</p>
 <p><strong>MariaDB</strong></p>
 <p>In the console, the command</p>
 <pre><code># systemctl status mariadb.service</code></pre>
-<p>shows the current status of MariaDB and the last ten log entries.<br />
+<p>shows the current status of MariaDB and the last ten log
+entries.<br />
 The last twenty lines of the systemd journal are shown by</p>
 <pre><code># journctl -n 20 -u mariadb.service</code></pre>
 <p>The command</p>
 <pre><code># journctl -f -u mariadb.service</code></pre>
-<p>keeps the connection to the journal open and continuously shows the new entries.<br />
-For more information, see the manual page <a href="./lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>.</p>
+<p>keeps the connection to the journal open and continuously shows the
+new entries.<br />
+For more information, see the manual page <a
+href="./lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>.</p>
 <p><strong>PHP</strong></p>
-<p>The Apache server stores the error messages of PHP in its log files under <code>/var/log/apache2/</code>. Erroneous PHP functions generate a message on the called web page.<br />
-This behavior can be configured in the <code>php.ini</code> files of the respective interface.<br />
-See the <a href="./lamp-php_en.html#set-up-php">LAMP-PHP</a> manual page.</p>
+<p>The Apache server stores the error messages of PHP in its log files
+under <code>/var/log/apache2/</code>. Erroneous PHP functions generate a
+message on the called web page.<br />
+This behavior can be configured in the <code>php.ini</code> files of the
+respective interface.<br />
+See the <a href="./lamp-php_en.html#set-up-php">LAMP-PHP</a> manual
+page.</p>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <p>The examples listed here show some troubleshooting possibilities.</p>
 <p><strong>File right in “DocumentRoot”</strong></p>
-<p>If calling the files <code>index.html</code> and <code>info.php</code> fails immediately after installation, please be sure to check the ownership and group membership of the web page directory first and change them if necessary:</p>
+<p>If calling the files <code>index.html</code> and
+<code>info.php</code> fails immediately after installation, please be
+sure to check the ownership and group membership of the web page
+directory first and change them if necessary:</p>
 <pre><code># ls -la /var/www/html
 drwxr-xr-x 2 www-data www-data 4096 14 Dec 18:56 .
 drwxr-xr-x 3 root root 4096 14 Dec 18:30 ...
 -rw-r--r-- 1 www-data www-data 10701 14 Dec 19:04 index.html
 -rw-r--r-- 1 root root 20 14 Dec 19:32 info.php</code></pre>
-<p>In this case the Apache test page is displayed, the PHP status page is not. Then, the spirited use of</p>
+<p>In this case the Apache test page is displayed, the PHP status page
+is not. Then, the spirited use of</p>
 <pre><code># chown -R www-data:www-data /var/www/html</code></pre>
 <p>will help. Now you should be able to call both pages.</p>
 <p><strong>HTML page load error</strong></p>
-<p>The web page <strong>http://localhost/index.html</strong> is not displayed and the browser reports a page load error.</p>
+<p>The web page <strong>http://localhost/index.html</strong> is not
+displayed and the browser reports a page load error.</p>
 <p>We query the status of the Apache web server:</p>
 <pre><code># systemctl status apache2.service
 apache2.service - The Apache HTTP Server
@@ -306,7 +383,8 @@ apache2.service - The Apache HTTP Server
 Dec 14 18:29:23 lap1 systemd[1]: Starting The Apache HTTP Server...
 Dec 14 18:29:23 lap1 apachectl[4423]: AH00526: Syntax error on line 63 of /etc/apache2/conf-enabled/security.conf:
 [...]</code></pre>
-<p>We see that the file <code>security.conf</code> has an error in line 63.<br />
+<p>We see that the file <code>security.conf</code> has an error in line
+63.<br />
 We edit the file and try again.</p>
 <pre><code># systemctl start apache2.service
 # systemctl status apache2.service
@@ -316,20 +394,29 @@ apache2.service - The Apache HTTP Server
      Active: active (running) since
              Mon 2020-12-14 18:34:59 CET; 3s ago
 [...]</code></pre>
-<p>In general, a reload or restart of Apache is necessary after each configuration change.</p>
+<p>In general, a reload or restart of Apache is necessary after each
+configuration change.</p>
 <p><strong>Check Apache log files</strong></p>
-<p>A look into the log files under <code>/var/log/apache2/</code> helps to detect errors in the configuration of the network or the Apache server.</p>
+<p>A look into the log files under <code>/var/log/apache2/</code> helps
+to detect errors in the configuration of the network or the Apache
+server.</p>
 <p><strong>PHP, info.php only white page</strong></p>
 <p>This means that PHP is active but cannot display the page.<br />
 Please check:</p>
 <ul>
-<li><p>The content of the <code>info.php</code> file must be exactly the same as the example given in the PHP chapter.</p></li>
-<li><p>Check the file permissions as explained at the beginning of the Troubleshooting chapter and change them if necessary.</p></li>
-<li><p>If additional PHP modules have been installed or the configuration has been changed and the web server has not been restarted, this might help:</p>
+<li><p>The content of the <code>info.php</code> file must be exactly the
+same as the example given in the PHP chapter.</p></li>
+<li><p>Check the file permissions as explained at the beginning of the
+Troubleshooting chapter and change them if necessary.</p></li>
+<li><p>If additional PHP modules have been installed or the
+configuration has been changed and the web server has not been
+restarted, this might help:</p>
 <pre><code># systemctl restart apache2.service</code></pre></li>
 </ul>
 <p><strong>phpMyAdmin - Error</strong></p>
-<p>The call of http://localhost/phpmyadmin fails with the message “<em>phpMyAdmin - Error</em>” and the following information is displayed.</p>
+<p>The call of http://localhost/phpmyadmin fails with the message
+“<em>phpMyAdmin - Error</em>” and the following information is
+displayed.</p>
 <pre><code>Error during session start; please check your PHP and/or
 webserver log file and configure your PHP installation
 properly. Also ensure that cookies are enabled in your
@@ -337,17 +424,26 @@ browser.
 
 session_start(): open(SESSION_FILE, O_RDWR) failed: Permission denied (13)
 session_start(): Failed to read session data: files (path: /var/lib/php/sessions)</code></pre>
-<p>Check the permissions for the <code>/var/lib/php/sessions/</code> folder:</p>
+<p>Check the permissions for the <code>/var/lib/php/sessions/</code>
+folder:</p>
 <pre><code># ls -l /var/lib/php/</code></pre>
 <p>The output should contain this line:</p>
 <pre><code>drwx-wx-wt 2 root root 4096 14 Dec 17:32 sessions</code></pre>
-<p>Note the sticky bit (<em>“t”</em>) and the owner <em>“root.root”</em>. If there are any discrepancies, we will fix the error.</p>
+<p>Note the sticky bit (<em>“t”</em>) and the owner
+<em>“root.root”</em>. If there are any discrepancies, we will fix the
+error.</p>
 <pre><code># chmod 1733 /var/lib/php/sessions
 # chown root:root /var/lib/php/sessions</code></pre>
 <p>Now the login to <em>phpmyadmin</em> is possible.</p>
 <h4 id="if-nothing-helps">If nothing helps</h4>
-<p>Installing the LAMP stack takes less than fifteen minutes. However, troubleshooting can take hours.<br />
-Therefore, if the previously mentioned measures do not lead to a solution, it makes sense to remove the LAMP stack or parts of it and reinstall it. If, as mentioned in the chapter <em>Preparations</em>, apt has been cleaned up, the command <strong><code>apt purge</code></strong> helps to remove the previously installed packages with their configuration files without disturbing any other packages.</p>
+<p>Installing the LAMP stack takes less than fifteen minutes. However,
+troubleshooting can take hours.<br />
+Therefore, if the previously mentioned measures do not lead to a
+solution, it makes sense to remove the LAMP stack or parts of it and
+reinstall it. If, as mentioned in the chapter <em>Preparations</em>, apt
+has been cleaned up, the command <strong><code>apt purge</code></strong>
+helps to remove the previously installed packages with their
+configuration files without disturbing any other packages.</p>
 <p>Here is an example with Apache:</p>
 <pre><code># apt purge apache2
 Package lists are read... Done
@@ -360,17 +456,27 @@ Use &quot;apt autoremove&quot; to remove them.
 The following packages are REMOVED:
   apache2*
 0 updated, 0 reinstalled, 1 to remove, and 0 not updated.</code></pre>
-<p>apache2 is removed and the packages <em>apache2-data</em> and <em>apache2-utils</em> have still remained.<br />
-Now please <strong>don’t use apt autoremove</strong> because then the configuration files, where the error may be, will be left behind.<br />
+<p>apache2 is removed and the packages <em>apache2-data</em> and
+<em>apache2-utils</em> have still remained.<br />
+Now please <strong>don’t use apt autoremove</strong> because then the
+configuration files, where the error may be, will be left behind.<br />
 We use the command <strong><code>apt purge</code></strong>.</p>
 <pre><code># apt purge apache2-data apache2-utils</code></pre>
-<p>If necessary, we do the same with the other parts of the program. Then we start a new attempt.</p>
+<p>If necessary, we do the same with the other parts of the program.
+Then we start a new attempt.</p>
 <h3 id="security">Security</h3>
-<p>The installation explained so far leads to a web server that is <strong>“open like a barn door for everyone”</strong>. Therefore, it should only be used standalone at a workstation and not connected to the private network and in no case to the Internet.</p>
+<p>The installation explained so far leads to a web server that is
+<strong>“open like a barn door for everyone”</strong>. Therefore, it
+should only be used standalone at a workstation and not connected to the
+private network and in no case to the Internet.</p>
 <p>For securing the server, please read the manual pages<br />
-<a href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a>, <a href="./lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>, <a href="./lamp-php_en.html#set-up-php">LAMP-PHP</a><br />
+<a href="./lamp-apache_en.html#set-up-apache">LAMP-Apache</a>, <a
+href="./lamp-sql_en.html#set-up-mariadb">LAMP-MariaDB</a>, <a
+href="./lamp-php_en.html#set-up-php">LAMP-PHP</a><br />
 regarding the configuration.</p>
-<p>After that, exclusively for system and software updates, the server can be temporarily connected to the Internet via a second network interface.</p>
+<p>After that, exclusively for system and software updates, the server
+can be temporarily connected to the Internet via a second network
+interface.</p>
 <div id="rev">
 Last edited: 2022/04/03
 </div>

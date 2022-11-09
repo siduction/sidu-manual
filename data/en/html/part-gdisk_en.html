@@ -35,125 +35,232 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#partitioning-with-gdisk">Partitioning with gdisk</a>
 <ul>
-<li><a href="#partitioning-a-hard-disk">Partitioning a hard disk</a></li>
+<li><a href="#partitioning-a-hard-disk">Partitioning a hard
+disk</a></li>
 <li><a href="#use-cgdisk">Use cgdisk</a></li>
-<li><a href="#formatting-the-partitions">Formatting the partitions</a></li>
-<li><a href="#booting-with-gpt-uefi-or-gpt-bios">Booting with GPT-UEFI or GPT-BIOS</a></li>
-<li><a href="#advanced-commands-of-gdisk">Advanced commands of gdisk</a></li>
+<li><a href="#formatting-the-partitions">Formatting the
+partitions</a></li>
+<li><a href="#booting-with-gpt-uefi-or-gpt-bios">Booting with GPT-UEFI
+or GPT-BIOS</a></li>
+<li><a href="#advanced-commands-of-gdisk">Advanced commands of
+gdisk</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="partitioning-with-gdisk">Partitioning with gdisk</h2>
 <p><strong>Why use gdisk (GPT fdisk)?</strong></p>
-<p><strong>gdisk</strong> is derived from <strong>G</strong>lobally Unique Identifier <strong>P</strong>artition <strong>T</strong>able (GPT) and is an application for partitioning disks of any size. gdisk is absolutely required for <strong>disks larger than 2TB</strong>.<br />
-It ensures that partitions are set up for SSDs (or for storage that does not have 512 Byte sectors).</p>
-<p>A key advantage of GPT is that you no longer have to rely on the MBR’s inherent primary, extended, or logical partitions. GPT can support an almost unlimited number of partitions and is limited only by the amount of space reserved for partition entries on the GPT volume. It should be noted that the gdisk application defaults to 128 partitions.</p>
-<p>If GPT is used on small USB/SSD drives (for example on a USB drive with 8GB), this could have a counterproductive effect in case data is to be exchanged between different computers or operating systems.<br />
-For this purpose, and if older hardware is used, you should use <em>fdisk</em>, which creates partition tables based on the MBR. See the manual page <a href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with Cfdisk</a>.</p>
+<p><strong>gdisk</strong> is derived from <strong>G</strong>lobally
+Unique Identifier <strong>P</strong>artition <strong>T</strong>able
+(GPT) and is an application for partitioning disks of any size. gdisk is
+absolutely required for <strong>disks larger than 2TB</strong>.<br />
+It ensures that partitions are set up for SSDs (or for storage that does
+not have 512 Byte sectors).</p>
+<p>A key advantage of GPT is that you no longer have to rely on the
+MBR’s inherent primary, extended, or logical partitions. GPT can support
+an almost unlimited number of partitions and is limited only by the
+amount of space reserved for partition entries on the GPT volume. It
+should be noted that the gdisk application defaults to 128
+partitions.</p>
+<p>If GPT is used on small USB/SSD drives (for example on a USB drive
+with 8GB), this could have a counterproductive effect in case data is to
+be exchanged between different computers or operating systems.<br />
+For this purpose, and if older hardware is used, you should use
+<em>fdisk</em>, which creates partition tables based on the MBR. See the
+manual page <a
+href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with
+Cfdisk</a>.</p>
 <p><strong>Important notes</strong></p>
 <ul>
-<li><p>The terms UEFI and EFI are interchangeable and refer to the same concept - <strong>U</strong>nified <strong>E</strong>xtensible <strong>F</strong>irmware <strong>I</strong>nterface.<br />
-See <a target="_blank" href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia UEFI</a>.<br />
+<li><p>The terms UEFI and EFI are interchangeable and refer to the same
+concept - <strong>U</strong>nified <strong>E</strong>xtensible
+<strong>F</strong>irmware <strong>I</strong>nterface.<br />
+See <a
+href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia
+UEFI</a>.<br />
 GPT is a part of the UEFI standard.</p></li>
 <li><p>Using GPT disks</p>
 <ul>
-<li><p>GPT disks can be used on Linux systems with 32 bit and 64 bit.</p></li>
+<li><p>GPT disks can be used on Linux systems with 32 bit and 64
+bit.</p></li>
 <li><p>Some operating systems do not support GPT disks.<br />
 This includes all MS operating systems before Windows Vista SP1.<br />
 Please consult the documentation of the respective system.</p></li>
 </ul></li>
 <li><p>Booting from GPT media</p>
 <ul>
-<li><p>Dual and triple boot from GPT media with Linux, BSD, and Apple is supported with 64-bit <strong>EFI</strong> mode.</p></li>
-<li><p>Dual boot of GPT volumes with Linux and MS Windows is possible since Windows Vista SP1. Prerequisite for Windows is the 64-bit version.</p></li>
+<li><p>Dual and triple boot from GPT media with Linux, BSD, and Apple is
+supported with 64-bit <strong>EFI</strong> mode.</p></li>
+<li><p>Dual boot of GPT volumes with Linux and MS Windows is possible
+since Windows Vista SP1. Prerequisite for Windows is the 64-bit
+version.</p></li>
 </ul></li>
 <li><p>Graphical partition editors for GPT<br />
-Besides the command line program <code>gdisk</code>, graphical applications like <code>gparted</code> and KDE’s <code>partitionmanager</code> support GPT disks. Nevertheless, we recommend gdisk to prevent unwanted anomalies. <code>gparted</code> as well as <code>partitionmanager</code> (and others) are, however, great tools, especially to visualize partitioning.</p></li>
+Besides the command line program <code>gdisk</code>, graphical
+applications like <code>gparted</code> and KDE’s
+<code>partitionmanager</code> support GPT disks. Nevertheless, we
+recommend gdisk to prevent unwanted anomalies. <code>gparted</code> as
+well as <code>partitionmanager</code> (and others) are, however, great
+tools, especially to visualize partitioning.</p></li>
 </ul>
 <p><strong>Essential reading matter:</strong></p>
 <ul>
 <li>man gdisk</li>
-<li><a target="_blank" href="http://www.rodsbooks.com/gdisk/">GPT fdisk Tutorial by Roderick W. Smith</a></li>
-<li><a target="_blank" href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Operating_systems">Wikipedia UEFI operating system support</a></li>
-<li><a target="_blank" href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID partition table</a></li>
+<li><a target="_blank" href="http://www.rodsbooks.com/gdisk/">GPT fdisk Tutorial by
+Roderick W. Smith</a></li>
+<li><a
+href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Operating_systems">Wikipedia
+UEFI operating system support</a></li>
+<li><a
+href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID
+partition table</a></li>
 </ul>
 <h3 id="partitioning-a-hard-disk">Partitioning a hard disk</h3>
 <p class="warning">
-<strong>Back up data beforehand!</strong> <br />When using any partitioning software, there is a risk of data loss. Data you want to preserve should always be backed up beforehand on another data medium.
+<strong>Back up data beforehand!</strong> <br />When using any
+partitioning software, there is a risk of data loss. Data you want to
+preserve should always be backed up beforehand on another data medium.
 </p>
-<p>In the following example, we will format a 150 GB hard disk so that two Linux systems can be installed as dual boot afterwards. In order to benefit from UEFI’s advantages, we need an <em>EFI system</em> partition in the GPT and a <em>BIOS boot</em> partition for the second stage of the GRUB bootloader.<br />
-We show the necessary steps with the partitioning program <code>cgdisk</code>, which supports GPT with UEFI.</p>
-<p><code>cgdisk</code> is the curses-based program variant of <code>gdisk</code>. It provides a user-friendly interface within the terminal.<br />
+<p>In the following example, we will format a 150 GB hard disk so that
+two Linux systems can be installed as dual boot afterwards. In order to
+benefit from UEFI’s advantages, we need an <em>EFI system</em> partition
+in the GPT and a <em>BIOS boot</em> partition for the second stage of
+the GRUB bootloader.<br />
+We show the necessary steps with the partitioning program
+<code>cgdisk</code>, which supports GPT with UEFI.</p>
+<p><code>cgdisk</code> is the curses-based program variant of
+<code>gdisk</code>. It provides a user-friendly interface within the
+terminal.<br />
 Navigation is done using the arrow keys:</p>
 <ul>
-<li><strong><code>up</code></strong> and <strong><code>down</code></strong> for the partitions</li>
-<li><strong><code>right</code></strong> and <strong><code>left</code></strong> to select an action</li>
-<li><strong><code>Enter</code></strong> to confirm the selection or input</li>
+<li><strong><code>up</code></strong> and
+<strong><code>down</code></strong> for the partitions</li>
+<li><strong><code>right</code></strong> and
+<strong><code>left</code></strong> to select an action</li>
+<li><strong><code>Enter</code></strong> to confirm the selection or
+input</li>
 </ul>
 <h3 id="use-cgdisk">Use cgdisk</h3>
-<p>The boot command in a root terminal is: <strong><code>cgdisk /dev/sdX</code></strong>.</p>
-<p><code>cgdisk</code> starts with a warning message if no GPT is found.</p>
+<p>The boot command in a root terminal is:
+<strong><code>cgdisk /dev/sdX</code></strong>.</p>
+<p><code>cgdisk</code> starts with a warning message if no GPT is
+found.</p>
 <p>[warning message]](./images-en/cgdisk/cgdisk_00.png)</p>
-<p>We need a total of six partitions for the two operating systems: two ROOT partitions, one shared DATA partition, and one SWAP partition for swap space. In addition, the <em>EFI system</em> partition already mentioned above (maximum 100MB) and the <em>BIOS-boot</em> partition (1MB) are required.<br />
-We recommend leaving the <code>/home</code> directory on the ROOT partition. The <code>/home</code> directory should be the place where the individual configurations are stored, and only these. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.</p>
+<p>We need a total of six partitions for the two operating systems: two
+ROOT partitions, one shared DATA partition, and one SWAP partition for
+swap space. In addition, the <em>EFI system</em> partition already
+mentioned above (maximum 100MB) and the <em>BIOS-boot</em> partition
+(1MB) are required.<br />
+We recommend leaving the <code>/home</code> directory on the ROOT
+partition. The <code>/home</code> directory should be the place where
+the individual configurations are stored, and only these. A separate
+data partition should be created for all other private data. The
+advantages for data stability, data backup, and also in case of data
+recovery are almost immeasurable.</p>
 <p>The start screen:</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_01.png" alt="" /><figcaption>Start screen</figcaption>
+<img src="./images-en/cgdisk/cgdisk_01.png" alt="Start screen" />
+<figcaption aria-hidden="true">Start screen</figcaption>
 </figure>
 <p><strong>Create partition</strong></p>
-<p>We select <em>“New”</em> and confirm with <strong><code>Enter</code></strong>. Hitting <strong><code>Enter</code></strong> a second time, we accept the default first sector for the new partition. Then we enter the desired size of <code>100M</code> for the <em>EFI-System</em> partition and confirm.</p>
+<p>We select <em>“New”</em> and confirm with
+<strong><code>Enter</code></strong>. Hitting
+<strong><code>Enter</code></strong> a second time, we accept the default
+first sector for the new partition. Then we enter the desired size of
+<code>100M</code> for the <em>EFI-System</em> partition and confirm.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_02.png" alt="" /><figcaption>New partition</figcaption>
+<img src="./images-en/cgdisk/cgdisk_02.png" alt="New partition" />
+<figcaption aria-hidden="true">New partition</figcaption>
 </figure>
 <p>Now we are expected to enter the type code for the partition.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_03.png" alt="" /><figcaption>Type-Code</figcaption>
+<img src="./images-en/cgdisk/cgdisk_03.png" alt="Type-Code" />
+<figcaption aria-hidden="true">Type-Code</figcaption>
 </figure>
-<p>After entering <strong><code>L</code></strong>, a long list of codes and their usage appears. The integrated search function simplifies the selection. For us, the following codes are necessary:<br />
+<p>After entering <strong><code>L</code></strong>, a long list of codes
+and their usage appears. The integrated search function simplifies the
+selection. For us, the following codes are necessary:<br />
 <em>“ef00”</em> for EFI system<br />
-<em>“ef02<em>" for BIOS-boot<br />
-</em>”8200"</em> for Swap<br />
+<em>“ef02<em>” for BIOS-boot<br />
+</em>”8200”</em> for Swap<br />
 <em>“8304”</em> for Linux root<br />
 <em>“8300”</em> for Linux data</p>
-<p>So we enter <code>ef00</code> and confirm. Afterwards, we may optionally assign a name (label), which has been done in the example, and confirm the entry again. We proceed after the same pattern for the partitions BIOS-boot, Linux-root, and Swap. The next picture shows the result of our efforts. As we can see, there is still plenty of space for a second system and especially for a shared data partition.</p>
+<p>So we enter <code>ef00</code> and confirm. Afterwards, we may
+optionally assign a name (label), which has been done in the example,
+and confirm the entry again. We proceed after the same pattern for the
+partitions BIOS-boot, Linux-root, and Swap. The next picture shows the
+result of our efforts. As we can see, there is still plenty of space for
+a second system and especially for a shared data partition.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_04.png" alt="" /><figcaption>First part</figcaption>
+<img src="./images-en/cgdisk/cgdisk_04.png" alt="First part" />
+<figcaption aria-hidden="true">First part</figcaption>
 </figure>
-<p>After the two partitions have been created, we can see the partitioning of the entire disk in the next image.</p>
+<p>After the two partitions have been created, we can see the
+partitioning of the entire disk in the next image.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_05.png" alt="" /><figcaption>Sharing</figcaption>
+<img src="./images-en/cgdisk/cgdisk_05.png" alt="Sharing" />
+<figcaption aria-hidden="true">Sharing</figcaption>
 </figure>
-<p>The partitions that the two systems will use later during operation are color-coded.<br />
-At the beginning and the end, there are still small, free areas. They are created by aligning the partition to the block boundaries of the disk and can also appear between the partitions. With <em>“Align”</em> the value for the number of sectors can be changed. It is usually 2048 sectors for SSD and M2 disks and 512 sectors for old disks. <code>gdisk</code> reads the metadata of the hard disks and sets the value for the sectors afterwards. Therefore usually no change is necessary.</p>
-<p>Additional, detailed information about the partitions can be seen by entering the command <em>“Info”</em>.</p>
+<p>The partitions that the two systems will use later during operation
+are color-coded.<br />
+At the beginning and the end, there are still small, free areas. They
+are created by aligning the partition to the block boundaries of the
+disk and can also appear between the partitions. With <em>“Align”</em>
+the value for the number of sectors can be changed. It is usually 2048
+sectors for SSD and M2 disks and 512 sectors for old disks.
+<code>gdisk</code> reads the metadata of the hard disks and sets the
+value for the sectors afterwards. Therefore usually no change is
+necessary.</p>
+<p>Additional, detailed information about the partitions can be seen by
+entering the command <em>“Info”</em>.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_06.png" alt="" /><figcaption>Partition Details</figcaption>
+<img src="./images-en/cgdisk/cgdisk_06.png" alt="Partition Details" />
+<figcaption aria-hidden="true">Partition Details</figcaption>
 </figure>
-<p>With <em>“Verify”</em> the partitioning is checked and possible errors are shown.</p>
+<p>With <em>“Verify”</em> the partitioning is checked and possible
+errors are shown.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_07.png" alt="" /><figcaption>Partition Verify</figcaption>
+<img src="./images-en/cgdisk/cgdisk_07.png" alt="Partition Verify" />
+<figcaption aria-hidden="true">Partition Verify</figcaption>
 </figure>
 <p>Here, everything is ok.<br />
-If errors are reported, we mark the partition and use the command <em>“Info”</em>. Then we decide if the partition has to be deleted and recreated and if e.g. the size has to be changed as well. If a repair is not possible by these means, the <a href="./part-gdisk_en.html#advanced-commands-of-gdisk">Advanced commands of gdisk</a> are available for experienced users.</p>
+If errors are reported, we mark the partition and use the command
+<em>“Info”</em>. Then we decide if the partition has to be deleted and
+recreated and if e.g. the size has to be changed as well. If a repair is
+not possible by these means, the <a
+href="./part-gdisk_en.html#advanced-commands-of-gdisk">Advanced commands
+of gdisk</a> are available for experienced users.</p>
 <p><strong>Delete partition</strong></p>
-<p>To delete a partition, we select it and use the command <em>“Delete”</em>.</p>
+<p>To delete a partition, we select it and use the command
+<em>“Delete”</em>.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_08.png" alt="" /><figcaption>Delete partition</figcaption>
+<img src="./images-en/cgdisk/cgdisk_08.png" alt="Delete partition" />
+<figcaption aria-hidden="true">Delete partition</figcaption>
 </figure>
-<p>If necessary, we do the same with other partitions and then we can create the partitions again with changed values.</p>
+<p>If necessary, we do the same with other partitions and then we can
+create the partitions again with changed values.</p>
 <p><strong>Write GPT</strong></p>
-<p>If the partitioning of the hard disk corresponds to our ideas, we check once more whether everyting is in order with the command <em>“Verify”</em>. If no errors are displayed, we choose <em>Write</em> and</p>
+<p>If the partitioning of the hard disk corresponds to our ideas, we
+check once more whether everyting is in order with the command
+<em>“Verify”</em>. If no errors are displayed, we choose <em>Write</em>
+and</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_09.png" alt="" /><figcaption>Write</figcaption>
+<img src="./images-en/cgdisk/cgdisk_09.png" alt="Write" />
+<figcaption aria-hidden="true">Write</figcaption>
 </figure>
 <p>may answer the security query with “yes”.</p>
 <figure>
-<img src="./images-en/cgdisk/cgdisk_10.png" alt="" /><figcaption>Security prompt</figcaption>
+<img src="./images-en/cgdisk/cgdisk_10.png" alt="Security prompt" />
+<figcaption aria-hidden="true">Security prompt</figcaption>
 </figure>
-<p>The warning should be taken seriously because after pressing the <strong><code>Enter</code></strong> key, all data that was previously on the disk disappears into nirvana.</p>
-<p>Since <code>cgdisk</code> only creates partitions but no file systems, each of the new partitions must be formatted. With The <em>“Quit”</em> command terminates <code>cgdisk</code>.</p>
+<p>The warning should be taken seriously because after pressing the
+<strong><code>Enter</code></strong> key, all data that was previously on
+the disk disappears into nirvana.</p>
+<p>Since <code>cgdisk</code> only creates partitions but no file
+systems, each of the new partitions must be formatted. With The
+<em>“Quit”</em> command terminates <code>cgdisk</code>.</p>
 <h3 id="formatting-the-partitions">Formatting the partitions</h3>
-<p>We stay in the <strong>root</strong> terminal and display the paths with the numbers for each partition:</p>
+<p>We stay in the <strong>root</strong> terminal and display the paths
+with the numbers for each partition:</p>
 <pre><code>fdisk -l | grep /dev/sdb</code></pre>
 <p>The command generates the following output:</p>
 <pre><code>Disk /dev/sdb: 149.5 GiB, 160041885696 bytes, 312581808 sectors
@@ -163,13 +270,20 @@ If errors are reported, we mark the partition and use the command <em>“Info”
 /dev/sdb4  52637696  61026303   8388608   4G Linux swap
 /dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
 /dev/sdb6 260255744 312581808  52326064  25G Linux root</code></pre>
-<p>With this information, we format our previously created partitions.</p>
-<p>Please read <strong><code>man mke2fs</code></strong>, <strong><code>man mkfs.fat</code></strong>, and <strong><code>man mkswap</code></strong>.</p>
-<p>The EFI system partition will be given a <strong>FAT32</strong> file system.</p>
+<p>With this information, we format our previously created
+partitions.</p>
+<p>Please read <strong><code>man mke2fs</code></strong>,
+<strong><code>man mkfs.fat</code></strong>, and
+<strong><code>man mkswap</code></strong>.</p>
+<p>The EFI system partition will be given a <strong>FAT32</strong> file
+system.</p>
 <pre><code>mkfs.vfat /dev/sdb1</code></pre>
 <p><strong>The BIOS_Boot partition must not be formatted!</strong><br />
-If the boot manager GRUB finds the <em>EFI-System</em> and the <em>BIOS_Boot</em> partition during the installation, it will use them, no matter which installation target we have specified.</p>
-<p>We format the Linux partitions sdb3, sdb5, and sdb6 with <strong>ext4</strong>.</p>
+If the boot manager GRUB finds the <em>EFI-System</em> and the
+<em>BIOS_Boot</em> partition during the installation, it will use them,
+no matter which installation target we have specified.</p>
+<p>We format the Linux partitions sdb3, sdb5, and sdb6 with
+<strong>ext4</strong>.</p>
 <pre><code>mkfs.ext4 /dev/sdb3</code></pre>
 <p>To set up the swap partition, format it with</p>
 <pre><code>mkswap /dev/sdb4</code></pre>
@@ -181,9 +295,12 @@ Filename   Type       Size     Used  Priority
 /dev/sdb4  partition  4194304  0     -2</code></pre>
 <p>If swap was detected correctly:</p>
 <pre><code>swapoff /dev/sdb4</code></pre>
-<p><strong>Next, it is essential to reboot the system so that the new partitioning and file system scheme is read by the kernel.</strong></p>
-<h3 id="booting-with-gpt-uefi-or-gpt-bios">Booting with GPT-UEFI or GPT-BIOS</h3>
-<p>If a bootable volume is to be created with GPT, there are two ways to create the boot sector of a GPT volume.</p>
+<p><strong>Next, it is essential to reboot the system so that the new
+partitioning and file system scheme is read by the kernel.</strong></p>
+<h3 id="booting-with-gpt-uefi-or-gpt-bios">Booting with GPT-UEFI or
+GPT-BIOS</h3>
+<p>If a bootable volume is to be created with GPT, there are two ways to
+create the boot sector of a GPT volume.</p>
 <p>These possibilities are:</p>
 <ul>
 <li>The computer (the mainboard) has a UEFI.</li>
@@ -191,20 +308,44 @@ Filename   Type       Size     Used  Priority
 </ul>
 <p><strong>or</strong></p>
 <ul>
-<li>The computer (mainboard) has <strong>no</strong> UEFI but a BIOS. (All mainboards before 2009 do not have UEFI.)</li>
+<li>The computer (mainboard) has <strong>no</strong> UEFI but a BIOS.
+(All mainboards before 2009 do not have UEFI.)</li>
 <li>The BIOS shall be used to boot the GPT medium.</li>
 </ul>
 <p><strong>Booting with UEFI</strong></p>
-<p>If UEFI is to be used for booting, a <strong>FAT</strong> formatted <strong>EFI System</strong> partition (type “<em>ef00</em>” ) must be created as the first partition, and an unformatted <strong>BIOS boot</strong> partition (type <em>“ef02”</em> ) must be created as the second one. The first partition contains the boot loader(s).<br />
-During the installation of siduction, any choices made by install-gui as to where to install the boot loader are ignored if the aforementioned partitions exist. The siduction boot loader is stored in the <em>EFI system</em> partition at <code>/efi/siduction</code>. The EFI system partition is also mounted as <code>/boot/efi</code> as long as the option <code>mount other partitions</code> is selected. The mount of the <em>EFI system</em> partition does not need to be specified in the installer.</p>
+<p>If UEFI is to be used for booting, a <strong>FAT</strong> formatted
+<strong>EFI System</strong> partition (type “<em>ef00</em>” ) must be
+created as the first partition, and an unformatted <strong>BIOS
+boot</strong> partition (type <em>“ef02”</em> ) must be created as the
+second one. The first partition contains the boot loader(s).<br />
+During the installation of siduction, any choices made by install-gui as
+to where to install the boot loader are ignored if the aforementioned
+partitions exist. The siduction boot loader is stored in the <em>EFI
+system</em> partition at <code>/efi/siduction</code>. The EFI system
+partition is also mounted as <code>/boot/efi</code> as long as the
+option <code>mount other partitions</code> is selected. The mount of the
+<em>EFI system</em> partition does not need to be specified in the
+installer.</p>
 <p><strong>Booting with BIOS</strong></p>
-<p>If the system does not have UEFI, the first thing to do is to create a <strong>BIOS boot</strong> partition. This replaces the sector of an MBR-partitioned disk that is between the partitioning table and the first partition. Grub is written directly onto it.<br />
-The partition should have the size of 200MB. (The reason for this size instead of the conventional 32MB is to have a sufficiently large partition available in case of a switch to UEFI.)</p>
+<p>If the system does not have UEFI, the first thing to do is to create
+a <strong>BIOS boot</strong> partition. This replaces the sector of an
+MBR-partitioned disk that is between the partitioning table and the
+first partition. Grub is written directly onto it.<br />
+The partition should have the size of 200MB. (The reason for this size
+instead of the conventional 32MB is to have a sufficiently large
+partition available in case of a switch to UEFI.)</p>
 <h3 id="advanced-commands-of-gdisk">Advanced commands of gdisk</h3>
-<p><code>gdisk</code> has advanced options and security mechanisms not available in <code>cgdisk</code>.</p>
-<p>If problems are detected (e.g. overlapping partitions or non-matching main and backup partition tables), it is possible to fix them with various options in the <strong>recovery &amp; transformation</strong> menu. We start <code>gdisk</code> with</p>
+<p><code>gdisk</code> has advanced options and security mechanisms not
+available in <code>cgdisk</code>.</p>
+<p>If problems are detected (e.g. overlapping partitions or non-matching
+main and backup partition tables), it is possible to fix them with
+various options in the <strong>recovery &amp; transformation</strong>
+menu. We start <code>gdisk</code> with</p>
 <pre><code>gdisk /dev/sdb</code></pre>
-<p>At the command prompt <strong>Command (? for help):</strong>, we enter the command <strong>r</strong> to get into the submenu of <em>“recovery &amp; transformation”</em> and then <strong>?</strong>.</p>
+<p>At the command prompt <strong>Command (? for help):</strong>, we
+enter the command <strong>r</strong> to get into the submenu of
+<em>“recovery &amp; transformation”</em> and then
+<strong>?</strong>.</p>
 <pre><code>recovery/transformation command (? for help): ?
 b use backup GPT header (rebuilding main)
 c load backup partition table from disk (rebuilding main)
@@ -224,7 +365,9 @@ v verify disk
 w write table to disk and exit
 x extra functionality (experts only)
 ? print this menu</code></pre>
-<p>A third menu, <em>“experts”</em> , is reached with <strong><code>x</code></strong> from either the <em>“main menu”</em> or the <em>“recovery &amp; transformation menu”</em>.</p>
+<p>A third menu, <em>“experts”</em> , is reached with
+<strong><code>x</code></strong> from either the <em>“main menu”</em> or
+the <em>“recovery &amp; transformation menu”</em>.</p>
 <pre><code>recovery/transformation command (? for help): x
 
 Expert command (? for help): ?
@@ -246,8 +389,21 @@ v verify disk
 w write table to disk and exit
 z zap (destroy) GPT data structures and exit
 ? print this menu</code></pre>
-<p>This menu allows low-level editing such as changing the partition GUID or the disk GUIDs (<strong><code>c</code></strong> or <strong><code>g</code></strong> ). The <strong><code>z</code></strong> option instantly destroys the GPT data structures. This can be useful if the GPT volume is to be used with a different partitioning scheme. If these structures are not erased, some partition editors may have problems because of the presence of two partitioning schemes.</p>
-<p>Despite all this: the options of the menus <em>“recovery &amp; transformation”</em> and <em>“experts”</em> should only be used if you are very familiar with GPT. As a “non-expert”, you should only use these menus if a disk is damaged. Before any drastic action, the option <strong><code>b</code></strong> in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.</p>
+<p>This menu allows low-level editing such as changing the partition
+GUID or the disk GUIDs (<strong><code>c</code></strong> or
+<strong><code>g</code></strong> ). The <strong><code>z</code></strong>
+option instantly destroys the GPT data structures. This can be useful if
+the GPT volume is to be used with a different partitioning scheme. If
+these structures are not erased, some partition editors may have
+problems because of the presence of two partitioning schemes.</p>
+<p>Despite all this: the options of the menus <em>“recovery &amp;
+transformation”</em> and <em>“experts”</em> should only be used if you
+are very familiar with GPT. As a “non-expert”, you should only use these
+menus if a disk is damaged. Before any drastic action, the option
+<strong><code>b</code></strong> in the main menu should be used to
+create a backup copy in a file and save it on a separate medium. This
+will allow the original configuration to be restored if the action does
+not go as desired.</p>
 <div id="rev">
 Last edited: 2022/03/31
 </div>

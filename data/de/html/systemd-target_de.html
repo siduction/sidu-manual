@@ -41,10 +41,22 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-target---ziel-unit">systemd-target - Ziel-Unit</h2>
-<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt die Handbuchseite <a href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a> Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und <em>[Install]</em> behandelt unsere Handbuchseite <a href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd Unit-Datei</a>.<br />
-Jetzt erkl&auml;ren wir die Funktion der Unit <strong>systemd.target</strong>, die den allgemein bekannten Runleveln &auml;hneln, etwas ausf&uuml;hrlicher.</p>
-<p>Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als Ziel-Unit. Sie besitzen die Erweiterung “.target”.</p>
-<p>Die alten sysvinit-Befehle werden weiterhin unterst&uuml;tzt. (Hierzu ein Zitat aus <code>man systemd</code>: “… wird aus Kompatibilit&auml;tsgr&uuml;nden und da es leichter zu tippen ist, bereitgestellt.”)</p>
+<p>Die grundlegenden und einf&uuml;hrenden Informationen zu Systemd enth&auml;lt
+die Handbuchseite <a
+href="./systemd-start_de.html#systemd-der-system--und-dienste-manager">Systemd-Start</a>
+Die alle Unit-Dateien betreffenden Sektionen <em>[Unit]</em> und
+<em>[Install]</em> behandelt unsere Handbuchseite <a
+href="./systemd-unit-datei_de.html#systemd-unit-datei">Systemd
+Unit-Datei</a>.<br />
+Jetzt erkl&auml;ren wir die Funktion der Unit
+<strong>systemd.target</strong>, die den allgemein bekannten Runleveln
+&auml;hneln, etwas ausf&uuml;hrlicher.</p>
+<p>Die verschiedenen Runlevel, in die gebootet oder gewechselt wird,
+beschreibt systemd als Ziel-Unit. Sie besitzen die Erweiterung
+“.target”.</p>
+<p>Die alten sysvinit-Befehle werden weiterhin unterst&uuml;tzt. (Hierzu ein
+Zitat aus <code>man systemd</code>: “… wird aus Kompatibilit&auml;tsgr&uuml;nden
+und da es leichter zu tippen ist, bereitgestellt.”)</p>
 <table>
 <colgroup>
 <col style="width: 27%" />
@@ -59,32 +71,52 @@ Jetzt erkl&auml;ren wir die Funktion der Unit <strong>systemd.target</strong>, d
 <tbody>
 <tr class="odd">
 <td><strong>emergency.target</strong></td>
-<td>Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt f&uuml;r Schritt begleitet werden.</td>
+<td>Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die
+minimalste Version eines Systemstarts, um eine interaktive Shell zu
+erlangen. Mit dieser Unit kann der Bootvorgang Schritt f&uuml;r Schritt
+begleitet werden.</td>
 </tr>
 <tr class="even">
 <td><strong>rescue.target</strong></td>
-<td>Startet das Basissystem (einschlie&szlig;lich Systemeinh&auml;ngungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target k&ouml;nnte dieses Ziel als single-user.target betrachtet werden.</td>
+<td>Startet das Basissystem (einschlie&szlig;lich Systemeinh&auml;ngungen) und eine
+Notfall-Shell. Im Vergleich zu multi-user.target k&ouml;nnte dieses Ziel als
+single-user.target betrachtet werden.</td>
 </tr>
 <tr class="odd">
 <td><strong>multi-user.target</strong></td>
-<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten m&ouml;chte. <a href="./sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">Auf dieser Unit wird in besonderen F&auml;llen (wenn X selbst oder die Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung (dist-upgrade) durchgef&uuml;hrt</a> .</td>
+<td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver
+X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten
+m&ouml;chte. <a href="./sys-admin-apt_de.html#full-upgrade-ausf&uuml;hren">Auf
+dieser Unit wird in besonderen F&auml;llen (wenn X selbst oder die
+Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung
+(dist-upgrade) durchgef&uuml;hrt</a> .</td>
 </tr>
 <tr class="even">
 <td><strong>graphical.target</strong></td>
-<td>Die Unit f&uuml;r den Mehrbenutzermodus mit Netzwerkf&auml;higkeit und einem laufenden X-Window-System.</td>
+<td>Die Unit f&uuml;r den Mehrbenutzermodus mit Netzwerkf&auml;higkeit und einem
+laufenden X-Window-System.</td>
 </tr>
 <tr class="odd">
 <td><strong>default.target</strong></td>
-<td>Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (au&szlig;er bei der Variante noX).</td>
+<td>Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction
+ist dies ein Symlink auf graphical.target (au&szlig;er bei der Variante
+noX).</td>
 </tr>
 </tbody>
 </table>
-<p>Ein Blick in die Dokumentation <code>man SYSTEMD.SPECIAL(7)</code> ist obligatorisch um die Zusammenh&auml;nge der verschiedenen target-Unit zu verstehen.</p>
+<p>Ein Blick in die Dokumentation <code>man SYSTEMD.SPECIAL(7)</code>
+ist obligatorisch um die Zusammenh&auml;nge der verschiedenen target-Unit zu
+verstehen.</p>
 <h3 id="besonderheiten">Besonderheiten</h3>
 <p>Bei den Ziel-Units sind drei Besonderheiten zu beachten:</p>
 <ol type="1">
 <li><p>Die Verwendung auf der Kernel-Befehszeile beim Bootvorgang.<br />
-Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen der Bootauswahl die Taste <strong><code>e</code></strong> dr&uuml;cken. Anschlie&szlig;end h&auml;ngt man an die Kernel-Befehszeile das gew&uuml;nschte Ziel mit der folgenden Syntax: “systemd.unit=xxxxxxx.target” an. Die Tabelle listet die Kernel-Befehle und ihre noch g&uuml;ltigen numerischen Entsprechungen auf.</p>
+Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim
+Erscheinen der Bootauswahl die Taste <strong><code>e</code></strong>
+dr&uuml;cken. Anschlie&szlig;end h&auml;ngt man an die Kernel-Befehszeile das gew&uuml;nschte
+Ziel mit der folgenden Syntax: “systemd.unit=xxxxxxx.target” an. Die
+Tabelle listet die Kernel-Befehle und ihre noch g&uuml;ltigen numerischen
+Entsprechungen auf.</p>
 <table>
 <thead>
 <tr class="header">
@@ -117,7 +149,14 @@ Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen
 </tbody>
 </table>
 <p>Die alten Runlevel 2 und 4 verweisen auf multi-user.target</p></li>
-<li><p>Die Verwendung im Terminal w&auml;hrend einer laufenden Sitzung. Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination <strong><code>CTRL</code></strong>+<strong><code>ALT</code></strong>+<strong><code>F2</code></strong> zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User <strong>root</strong> an. Die folgende Tabelle listet die Terminal-Befehle auf, wobei der Ausdruck <em>“isolate”</em> daf&uuml;r sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.</p>
+<li><p>Die Verwendung im Terminal w&auml;hrend einer laufenden Sitzung.
+Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung,
+kann man mit der Tastenkombination
+<strong><code>CTRL</code></strong>+<strong><code>ALT</code></strong>+<strong><code>F2</code></strong>
+zum virtuellen Terminal tty2 wechseln. Hier meldet man sich als User
+<strong>root</strong> an. Die folgende Tabelle listet die
+Terminal-Befehle auf, wobei der Ausdruck <em>“isolate”</em> daf&uuml;r sorgt,
+dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.</p>
 <table>
 <thead>
 <tr class="header">
@@ -150,7 +189,11 @@ Um im Bootmanager Grub in den Editiermodus zu gelangen, muss man beim Erscheinen
 </tbody>
 </table></li>
 <li><p>Ziel-Units, die nicht direkt aufgerufen werden sollen.<br />
-Eine ganze Reihe von Ziel-Units sind dazu da w&auml;hrend des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abh&auml;ngigkeiten zu gruppieren. Die folgende Liste zeigt drei h&auml;ufig verwendete Kommandos die <strong>nicht</strong> mit der Syntax “isolate xxxxxxx.target” aufgerufen werden sollen.</p>
+Eine ganze Reihe von Ziel-Units sind dazu da w&auml;hrend des Bootvorgangs
+oder des .target-Wechsels Zwischenschritte mit Abh&auml;ngigkeiten zu
+gruppieren. Die folgende Liste zeigt drei h&auml;ufig verwendete Kommandos
+die <strong>nicht</strong> mit der Syntax “isolate xxxxxxx.target”
+aufgerufen werden sollen.</p>
 <table>
 <thead>
 <tr class="header">
@@ -177,10 +220,14 @@ Eine ganze Reihe von Ziel-Units sind dazu da w&auml;hrend des Bootvorgangs oder 
 </tr>
 </tbody>
 </table>
-<p><em>“halt”</em>, <em>“poweroff”</em> und <em>“reboot”</em> holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuf&uuml;hren.</p></li>
+<p><em>“halt”</em>, <em>“poweroff”</em> und <em>“reboot”</em> holen
+mehrere Units in der richtigen Reihenfolge herein, um das System
+geordnet zu beenden und ggf. einen Neustart auszuf&uuml;hren.</p></li>
 </ol>
 <h3 id="quellen-systemd-target">Quellen systemd-target</h3>
-<p><a target="_blank" href="https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html">Manpage systemd.target, de</a></p>
+<p><a
+href="https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html">Manpage
+systemd.target, de</a></p>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29
 </div>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Nala f&uuml;r das Paketmanagement</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Nala f&uuml;r das Paketmanagement</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#nala-paketverwaltung">Nala Paketverwaltung</a>
+<ul>
+<li><a href="#nala-verwenden">Nala verwenden</a></li>
+<li><a href="#befehle-analog-zu-apt">Befehle analog zu APT</a></li>
+<li><a href="#befehle-die-apt-nicht-enth&auml;lt">Befehle die APT nicht
+enth&auml;lt</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="nala-paketverwaltung">Nala Paketverwaltung</h2>
+<p><strong>Benutzerfreundlicher und leistungsst&auml;rker als
+APT</strong></p>
+<p>Nala ist ein Kommandozeilen-Frontend f&uuml;r den APT-Paketmanager. Es
+benutzt die <code>python-apt</code> API statt der APT-Bibliotheken zur
+Verwaltung der Pakete. Das Ziel von Nala ist eine &uuml;bersichtlichere und
+benutzerfreundlichere Darstellung sowohl des aktuellen Paketbestands als
+auch der angeforderten Aktionen und deren Durchf&uuml;hrung. Dar&uuml;ber hinaus
+soll der Download von Paketen beschleunigt werden.</p>
+<p>Nala verwendet viele gleichlautende Befehle von APT, wie etwa
+<code>install</code>, <code>remove</code>, <code>purge</code>,
+<code>update</code>, <code>show</code> und <code>search</code>. Au&szlig;erdem
+implementiert es den Befehl <code>history</code>, um vergangene
+Transaktionen zu sehen und dem Benutzer die M&ouml;glichkeit zu geben diese
+r&uuml;ckg&auml;ngig zu machen, und den Befehl <code>fetch</code>, der eine Liste
+der schnellsten Spiegelserver zur Auswahl anzeigt. In der
+Grundeinstellung beschleunigt Nala den Download dadurch, dass drei
+Pakete gleichzeitig von einem Server geholt werden. Das Limit von drei
+Verbindungen pro Spiegelserver besteht, um die Belastung der
+Spiegelserver zu minimieren.</p>
+<h3 id="nala-verwenden">Nala verwenden</h3>
+<p>Ab siduction 2022.12.0 wird Nala automatisch installiert und ist
+sofort verwendbar. Es kann jederzeit ohne Weiteres zwischen APT und Nala
+gewechselt werden. Ein Blick in die manpage
+<strong><code>man nala</code></strong> sollte obligatorisch sein. Vor
+der Anwendung empfehlen wir dringend, eine &Auml;nderung in der
+Konfigurationsdatei <code>/etc/nala/nala.conf</code> vorzunehmen.<br />
+Den Wert f&uuml;r die Konfigurationsoption <code>auto_remove</code> &auml;ndern
+wir zu <code>false</code>, so wie es das folgende Listing zeigt:</p>
+<pre><code># Set to false to disable auto auto-removing
+auto_remove = false</code></pre>
+<p>Der Grund hierf&uuml;r liegt in der Verwendung von <em>debian sid</em> als
+Basis f&uuml;r siduction. Bei einem Upgrade von sid kann gelegentlich eine
+Situation entstehen, in der wesentliche Teile des Systems entfernt
+werden sollen. Mit der Option <code>auto_remove = true</code> haben wir
+keine M&ouml;glichkeit zu recherchieren, zu pr&uuml;fen und selbst zu entscheiden,
+ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb
+sollten Pakete nicht mit <code>auto_remove</code>, sondern erst nach
+einer Sichtkontrolle entfernt werden.</p>
+<h3 id="befehle-analog-zu-apt">Befehle analog zu APT</h3>
+<p>Viele der von APT bekannten Befehle sind in Nala identisch. In der
+Grundeinstellung erwartet Nala vor dem Ausf&uuml;hren einer angeforderten
+Aktion, die das System &auml;ndert, immer eine Best&auml;tigung.</p>
+<ul>
+<li><p><strong><code>nala update</code></strong><br />
+Aktualisiert die Paketinformationen der konfigurierten
+Paketquellen.</p></li>
+<li><p><strong><code>nala install &lt;Paketname&gt;</code></strong><br />
+Installiert das benannte Paket in unser System.</p></li>
+<li><p><strong><code>nala remove &lt;Paketname&gt;</code></strong><br />
+Entfernt das benannte Paket aus unserem System.</p></li>
+<li><p><strong><code>nala purge &lt;Paketname&gt;</code></strong> oder
+<strong><code>nala remove --purge &lt;Paketname&gt;</code></strong><br />
+Entfernt das benannte Paket mit seinen Konfigurationsdateien aus unserem
+System.</p></li>
+<li><p><strong><code>nala upgrade</code></strong><br />
+F&uuml;hrt <code>update</code>, gefolgt von <code>dist-upgrade</code>
+aus.</p></li>
+</ul>
+<p>Die benutzerfreundliche Aufbereitung der Ausgabe im Terminal
+erleichtert die &Uuml;bersicht, wie das Beispiel zeigt.<br />
+(Um root-Rechte zu erlangen, wurde im Befehl <em>“doas”</em>
+verwendet.)</p>
+<figure>
+<img src="./images-de/nala/nala-install-de.png" alt="Nala install" />
+<figcaption aria-hidden="true">Nala install</figcaption>
+</figure>
+<p>Im ersten Teil der Ausgabe erhalten wir eine Liste der zu
+installierenden Pakete mit der Angabe ihrer Versionen und Gr&ouml;&szlig;e. Nach
+der Best&auml;tigung listet der zweite Teil die ausgef&uuml;hrten Aktionen
+auf.</p>
+<h3 id="befehle-die-apt-nicht-enth&auml;lt">Befehle die APT nicht
+enth&auml;lt</h3>
+<p><strong>Befehl “fetch”</strong></p>
+<p>Der Befehl <strong><code>nala fetch</code></strong>, ohne weitere
+Optionen ausgef&uuml;hrt, ermittelt automatisch die Distribution und das
+Release unserer Installation, sucht nach den schnellsten Spiegelservern,
+listet diese zur interaktiven Auswahl auf und legt nach der Auswahl
+eines oder mehrerer Server die Datei
+<code>/etc/apt/sources.list.d/nala-sources.list</code> an.</p>
+<p>Die Option <code>-c, --country</code> beschr&auml;nkt die Suche mit Hilfe
+des ISO-L&auml;ndercodes. Eine mehrfache Angabe der Option ist erlaubt.<br />
+Die Option <code>--non-free</code> erg&auml;nzt die Datei um contrib- und
+non-free-Komponenten.</p>
+<p>Bei einem Download werden von jedem der Server bis zu drei Pakete
+gleichzeitig geholt.</p>
+<p><strong>Befehl “history”</strong></p>
+<p>Der Befehl <strong><code>nala history</code></strong>, ohne
+Unterbefehl aufgerufen, zeigt eine Zusammenfassung aller mit Nala
+durchgef&uuml;hrten Aktionen. Jede Zeile entspricht einer Aktion und enth&auml;lt
+die ID, das Kommando, den Zeitstempel, die Anzahl der ge&auml;nderten Pakete
+und den User, der die Aktion angefordert hat. Aktionen, die mit anderen
+Programmen erfolgten, werden nicht erfasst.</p>
+<figure>
+<img src="./images-de/nala/nala-history-de.png" alt="Nala install" />
+<figcaption aria-hidden="true">Nala install</figcaption>
+</figure>
+<p>Details zu einer Aktion aus der History zeigt der gleiche Befehl mit
+dem angeh&auml;ngten Unterbefehl <code>info &lt;ID&gt;</code>.</p>
+<figure>
+<img src="./images-de/nala/nala-history-info-de.png"
+alt="Nala install" />
+<figcaption aria-hidden="true">Nala install</figcaption>
+</figure>
+<p>Wollen wir nun die Installation von <em>“yapf3”</em> mit den
+Abh&auml;ngigkeiten, in unserem Fall <em>“python3-yapf”</em>, r&uuml;ckg&auml;ngig
+machen, benutzen wir daf&uuml;r den Unterbefehl
+<code>undo &lt;ID&gt;</code>.<br />
+(Auch hier erlangt <strong>user1</strong> root-Rechte durch die
+Verwendung von <em>“doas”</em>.)</p>
+<figure>
+<img src="./images-de/nala/nala-history-undo-de.png"
+alt="Nala install" />
+<figcaption aria-hidden="true">Nala install</figcaption>
+</figure>
+<p>Im ersten Teil der Ausgabe sehen wir die zu entfernenden Pakete mit
+der Angabe ihrer Versionen und Gr&ouml;&szlig;e. Nach der Best&auml;tigung listet der
+zweite Teil die ausgef&uuml;hrten Aktionen auf.<br />
+Sollten wir es uns noch einmal anders &uuml;berlegen und die Pakete doch
+wieder verwenden wollen, hilft der Befehl
+<code>nala history redo &lt;ID&gt;</code> weiter, um die Aktion noch
+einmal auszuf&uuml;hren. Mit dem Befehl
+<code>nala history clear &lt;ID&gt;</code> lassen sich Eintr&auml;ge aus der
+History entfernen, <code>nala history clear --all</code> entfernt alle
+Eintr&auml;ge.</p>
+<p>In der hier beschriebenen Nala Version 0.11.1 unterst&uuml;tzen die
+Unterbefehle <code>undo &lt;ID&gt;</code> und
+<code>redo &lt;ID&gt;</code> derzeit nur die Aktionen Installieren oder
+Entfernen. In einer zuk&uuml;nftigen Version, die dann auf der
+Programmiersprache Rust basieren wird, sollen sich komplette
+Dist-Upgrades zur&uuml;ckrollen lassen.</p>
+<div id="rev">
+Zuletzt bearbeitet: 2022-11-09
+</div>
+</body>
+</html>

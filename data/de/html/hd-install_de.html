@@ -36,11 +36,14 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#installation-auf-hdd">Installation auf HDD</a>
 <ul>
 <li><a href="#datensicherung">Datensicherung</a></li>
-<li><a href="#installationsvorbereitungen">Installationsvorbereitungen</a></li>
+<li><a
+href="#installationsvorbereitungen">Installationsvorbereitungen</a></li>
 <li><a href="#partitionierung">Partitionierung</a></li>
 <li><a href="#dateisysteme">Dateisysteme</a></li>
-<li><a href="#duplizierung-auf-einen-anderen-computer">Duplizierung auf einen anderen Computer</a></li>
-<li><a href="#das-installationsprogramm-calamares">Das Installationsprogramm Calamares</a></li>
+<li><a href="#duplizierung-auf-einen-anderen-computer">Duplizierung auf
+einen anderen Computer</a></li>
+<li><a href="#das-installationsprogramm-calamares">Das
+Installationsprogramm Calamares</a></li>
 <li><a href="#system-verschl&uuml;sseln">System verschl&uuml;sseln</a></li>
 <li><a href="#benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</a></li>
 </ul></li>
@@ -49,124 +52,294 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="installation-auf-hdd">Installation auf HDD</h2>
 <h3 id="datensicherung">Datensicherung</h3>
 <p class="warning">
-<strong>WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!</strong> <br />Wenn auf dem Installationsziel bereits ein Betriebssystem beheimatet ist, oder Daten erhalten bleiben sollen, bitte vor der Installation von siduction immer eine Sicherung anlegen.
+<strong>WICHTIG: IMMER EINE DATENSICHERUNG ANLEGEN!</strong> <br />Wenn
+auf dem Installationsziel bereits ein Betriebssystem beheimatet ist,
+oder Daten erhalten bleiben sollen, bitte vor der Installation von
+siduction immer eine Sicherung anlegen.
 </p>
 <h3 id="installationsvorbereitungen">Installationsvorbereitungen</h3>
-<p>Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Dr&uuml;cken der <strong><code>F2</code></strong> oder <strong><code>Entf</code></strong>-Taste w&auml;hrend des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann w&auml;hrend des Bootvorgangs die Taste <strong><code>F12</code></strong>, <strong><code>F11</code></strong> <strong><code>F7</code></strong> oder <strong><code>F8</code></strong> (je nach Angaben der Hardwarehersteller) gedr&uuml;ckt werden um dann das Live-Medium als Startlaufwerk auszuw&auml;hlen.</p>
-<p>siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &uuml;bergeben werden k&ouml;nnen. Die Handbuchseite <a href="./cheatcodes_de.html#bootoptionen-cheatcodes">Cheatcodes</a> erl&auml;utert die m&ouml;glichen Optionen.<br />
-Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu “From CD/DVD/ISO: …” oder “From Stick/HDD: …” navigiert und die Taste <strong><code>e</code></strong> bet&auml;tigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzuf&uuml;gen. Mit der Taste <strong><code>F10</code></strong> wird der Bootvorgang fortgesetzt.</p>
-<p><strong>Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.</strong></p>
-<p>Soll siduction nicht von, sondern <strong>auf</strong> ein USB-Medium installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die Handbuchseite <a href="./iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">Installation auf ein USB-Medium</a>.</p>
+<p>Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium
+(DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man
+durch Dr&uuml;cken der <strong><code>F2</code></strong> oder
+<strong><code>Entf</code></strong>-Taste w&auml;hrend des Bootvorgangs in das
+Setup von UEFI oder BIOS. Alternativ kann w&auml;hrend des Bootvorgangs die
+Taste <strong><code>F12</code></strong>,
+<strong><code>F11</code></strong> <strong><code>F7</code></strong> oder
+<strong><code>F8</code></strong> (je nach Angaben der
+Hardwarehersteller) gedr&uuml;ckt werden um dann das Live-Medium als
+Startlaufwerk auszuw&auml;hlen.</p>
+<p>siduction startet jetzt in der Regel problemlos. Sollte das nicht der
+Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager
+&uuml;bergeben werden k&ouml;nnen. Die Handbuchseite <a
+href="./cheatcodes_de.html#bootoptionen-cheatcodes">Cheatcodes</a>
+erl&auml;utert die m&ouml;glichen Optionen.<br />
+Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit
+den Pfeiltasten zu “From CD/DVD/ISO: …” oder “From Stick/HDD: …”
+navigiert und die Taste <strong><code>e</code></strong> bet&auml;tigt. So
+gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes
+hinzuzuf&uuml;gen. Mit der Taste <strong><code>F10</code></strong> wird der
+Bootvorgang fortgesetzt.</p>
+<p><strong>Vor der Installation bitte alle USB-Sticks, Kameras etc.
+entfernen.</strong></p>
+<p>Soll siduction nicht von, sondern <strong>auf</strong> ein USB-Medium
+installiert werden, ist ein anderes Verfahren notwendig. Siehe dazu die
+Handbuchseite <a
+href="./iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">Installation
+auf ein USB-Medium</a>.</p>
 <p><strong>HDD, RAM und Swap</strong></p>
-<p>Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite <a href="./cd-content_de.html#minimale-systemanforderungen">Inhalt der Live-ISO</a> beschrieben.<br />
-Mit 15 GB Festplattenvolumen und 2 GB Arbeitsspeicher ist man zur Zeit noch auf der sicheren Seite. Auf PCs mit maximal 1 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 2 GB Swap wird normal nicht ben&ouml;tigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.</p>
+<p>Die Mindestanforderungen zur Installation der siduction Varianten
+sind auf der Handbuchseite <a
+href="./cd-content_de.html#minimale-systemanforderungen">Inhalt der
+Live-ISO</a> beschrieben.<br />
+Mit 15 GB Festplattenvolumen und 4 GB Arbeitsspeicher ist man zur Zeit
+auf der sicheren Seite. Auf PCs mit maximal 2 GB RAM sollte eine
+Swap-Partition angelegt werden. Mehr als 4 GB Swap wird normal nicht
+ben&ouml;tigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich
+sinnvoll.</p>
 <h3 id="partitionierung">Partitionierung</h3>
-<p>Die Partitionierung der Laufwerke ist von vielen Faktoren abh&auml;ngig:</p>
+<p>Die Partitionierung der Laufwerke ist von vielen Faktoren
+abh&auml;ngig:</p>
 <ul>
 <li>Auswahl der siduction-Variante</li>
 <li>Gr&ouml;&szlig;e der vorhandenen Laufwerke und des Arbeitsspeichers</li>
-<li>Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)</li>
+<li>Single-Boot oder Dual-Boot mit einem bereits installierten System
+(Windows, Linux, MAC)</li>
 <li>Gemeinsame Nutzung von Daten f&uuml;r die installierten Systeme</li>
 </ul>
-<p>Beispiele und Gr&ouml;&szlig;en f&uuml;r unterschiedliche Installationssituationen beschreibt die Handbuchseite <a href="./part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung</a>.<br />
-Wir empfehlen, das <code>/home</code>-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten, dazu z&auml;hlen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das <code>/home</code>-Verzeichnis verlinkt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.</p>
-<p>Die Partitionierung kann w&auml;hrend der Installation vorgenommen werden, oder bereits im Vorfeld w&auml;hrend der Live-Sitzung mit den folgenden Programmen:<br />
-<a href="./part-gparted_de.html#partitionieren-mit-gparted">Gparted</a>, ein Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r GTK-Desktops<br />
-KDE Partition Manager, ein weiteres Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r Qt-Desktops<br />
-<a href="./part-gdisk_de.html#partitionieren-mit-gdisk">gdisk</a>, empfohlen bei UEFI Hardware f&uuml;r GPT Partitionstabellen<br />
-<a href="./part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR Partitionstabellen.</p>
+<p>Beispiele und Gr&ouml;&szlig;en f&uuml;r unterschiedliche Installationssituationen
+beschreibt die Handbuchseite <a
+href="./part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung</a>.<br />
+Wir empfehlen, das <code>/home</code>-Verzeichnis auf der
+Wurzel-Partition zu belassen. Das Verzeichnis <code>/home</code> sollte
+der Ort sein, an dem die individuellen Konfigurationen abgelegt werden,
+und nur diese. F&uuml;r alle weiteren privaten Daten, dazu z&auml;hlen auch .ssh,
+.gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt,
+und falls erforderlich auf das <code>/home</code>-Verzeichnis verlinkt
+werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im
+Falle einer Datenrettung sind nahezu unermesslich.</p>
+<p>Die Partitionierung kann w&auml;hrend der Installation vorgenommen werden,
+oder bereits im Vorfeld w&auml;hrend der Live-Sitzung mit den folgenden
+Programmen:<br />
+<a href="./part-gparted_de.html#partitionieren-mit-gparted">Gparted</a>,
+ein Programm f&uuml;r die graphische Oberfl&auml;che f&uuml;r GTK-Desktops<br />
+KDE Partition Manager, ein weiteres Programm f&uuml;r die graphische
+Oberfl&auml;che f&uuml;r Qt-Desktops<br />
+<a href="./part-gdisk_de.html#partitionieren-mit-gdisk">gdisk</a>,
+empfohlen bei UEFI Hardware f&uuml;r GPT Partitionstabellen<br />
+<a href="./part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur
+f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR
+Partitionstabellen.</p>
 <h3 id="dateisysteme">Dateisysteme</h3>
-<p>Wir empfehlen das Dateisystem <strong>ext4</strong>, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt f&uuml;r alle Partitionen, wenn ausschlie&szlig;lich Linux Betriebssysteme verwendet werden.</p>
-<p>Bei einer Dual-Boot Installation mit <em>Windows</em> ist eine eigene Datenpartition mit dem <strong>NTFS</strong> Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen; f&uuml;r Windows ist es das Standarddateisystem.</p>
-<p>Bei einer Dual-Boot Installation mit <em>MAC</em> ist ebenfalls eine eigene Datenpartition allerdings mit dem <strong>HFS</strong> oder <strong>HFS+</strong> Dateisystem sinnvoll. Linux und MAC k&ouml;nnen lesend und schreibend darauf zugreifen.</p>
-<h3 id="duplizierung-auf-einen-anderen-computer">Duplizierung auf einen anderen Computer</h3>
-<p>Mit folgendem Konsolebefehl wird eine Liste der installierten Softwarepakete erstellt, um mit Hilfe dieser eine identische Softwareauswahl auf einem anderen Computer oder bei einer allf&auml;lligen Neuinstallation installieren zu k&ouml;nnen:</p>
+<p>Wir empfehlen das Dateisystem <strong>ext4</strong>, welches bei
+siduction als Default-Dateisystem verwendet wird. Dies gilt f&uuml;r alle
+Partitionen, wenn ausschlie&szlig;lich Linux Betriebssysteme verwendet
+werden.</p>
+<p>Bei einer Dual-Boot Installation mit <em>Windows</em> ist eine eigene
+Datenpartition mit dem <strong>NTFS</strong> Dateisystem sinnvoll. Linux
+kann lesend und schreibend darauf zugreifen; f&uuml;r Windows ist es das
+Standarddateisystem.</p>
+<p>Bei einer Dual-Boot Installation mit <em>MAC</em> ist ebenfalls eine
+eigene Datenpartition allerdings mit dem <strong>HFS</strong> oder
+<strong>HFS+</strong> Dateisystem sinnvoll. Linux und MAC k&ouml;nnen lesend
+und schreibend darauf zugreifen.</p>
+<h3 id="duplizierung-auf-einen-anderen-computer">Duplizierung auf einen
+anderen Computer</h3>
+<p>Mit folgendem Konsolebefehl wird eine Liste der installierten
+Softwarepakete erstellt, um mit Hilfe dieser eine identische
+Softwareauswahl auf einem anderen Computer oder bei einer allf&auml;lligen
+Neuinstallation installieren zu k&ouml;nnen:</p>
 <pre><code>~# dpkg -l|awk &#39;/^ii/{ print $2 }&#39;|grep -v -e ^lib -e -dev -e $(uname -r) &gt;/home/username/installed.txt</code></pre>
-<p>Am besten wird diese Textdatei auf einen USB-Stick oder einen Datentr&auml;ger nach Wahl kopiert.<br />
-Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz verwendet, um die ben&ouml;tigten Programmpakete zu installieren. Die gesamte Paketliste kann per</p>
+<p>Am besten wird diese Textdatei auf einen USB-Stick oder einen
+Datentr&auml;ger nach Wahl kopiert.<br />
+Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als
+Referenz verwendet, um die ben&ouml;tigten Programmpakete zu installieren.
+Die gesamte Paketliste kann per</p>
 <pre><code>~# apt install $(/home/username/installed.txt)</code></pre>
 <p>installiert werden.</p>
-<h3 id="das-installationsprogramm-calamares">Das Installationsprogramm Calamares</h3>
-<p>W&auml;hrend der Installation sollte, wenn m&ouml;glich, der Computer mit dem Internet verbunden sein, weil Calamares den GeoIP Service verwendet um Voreinstellungen f&uuml;r die Lokalisation und Zeit zu ermitteln.</p>
+<h3 id="das-installationsprogramm-calamares">Das Installationsprogramm
+Calamares</h3>
+<p>W&auml;hrend der Installation sollte, wenn m&ouml;glich, der Computer mit dem
+Internet verbunden sein, weil Calamares den GeoIP Service verwendet um
+Voreinstellungen f&uuml;r die Lokalisation und Zeit zu ermitteln.</p>
 <ol type="1">
-<li><p>Das Installationsprogramm startet man bequem &uuml;ber das Icon <img src="./images-de/install-hd/calamares-de_00.png" alt="calamares icon" /> am Desktop oder im Men&uuml;: <em>“System”</em> &gt; <em>“System installieren”</em>.</p></li>
-<li><p>Nach einem Doppelklick auf das Icon startet Calamares und wir sehen das “Willkommen” - Fenster.</p>
+<li><p>Das Installationsprogramm startet man bequem &uuml;ber das Icon <img
+src="./images-de/install-hd/calamares-de_00.png" alt="calamares icon" />
+am Desktop oder im Men&uuml;: <em>“System”</em> &gt; <em>“System
+installieren”</em>.</p></li>
+<li><p>Nach einem Doppelklick auf das Icon startet Calamares und wir
+sehen das “Willkommen” - Fenster.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_01.png" title="Willkommen" alt="" /><figcaption>calamares Willkommen</figcaption>
+<img src="./images-de/install-hd/calamares-de_01.png" title="Willkommen"
+alt="calamares Willkommen" />
+<figcaption aria-hidden="true">calamares Willkommen</figcaption>
 </figure>
-<p>Sofern eine Internetverbindung besteht, sollte hier bereits die richtige Sprache eingestellt sein.</p></li>
-<li><p>Im n&auml;chsten Fenster “Standort” besteht die M&ouml;glichkeit &Auml;nderungen zur <em>“Region”</em>, der <em>“Zeitzone”</em> und <em>“Systemsprache”</em>, sowie dem <em>“Format”</em> f&uuml;r das Datum und die Zahlen vorzunehmen.</p>
+<p>Sofern eine Internetverbindung besteht, sollte hier bereits die
+richtige Sprache eingestellt sein.</p></li>
+<li><p>Im n&auml;chsten Fenster “Standort” besteht die M&ouml;glichkeit &Auml;nderungen
+zur <em>“Region”</em>, der <em>“Zeitzone”</em> und
+<em>“Systemsprache”</em>, sowie dem <em>“Format”</em> f&uuml;r das Datum und
+die Zahlen vorzunehmen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_02.png" title="Standort" alt="" /><figcaption>calamares Standort</figcaption>
+<img src="./images-de/install-hd/calamares-de_02.png" title="Standort"
+alt="calamares Standort" />
+<figcaption aria-hidden="true">calamares Standort</figcaption>
 </figure></li>
 <li><p>Es folgen die Einstellungen zur Tastatur.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_03.png" title="Tastatur" alt="" /><figcaption>calamares Tastatur</figcaption>
+<img src="./images-de/install-hd/calamares-de_03.png" title="Tastatur"
+alt="calamares Tastatur" />
+<figcaption aria-hidden="true">calamares Tastatur</figcaption>
 </figure>
-<p>Im oberen Teil wird die Tastatur graphisch dargestellt und die &Auml;nderungen werden sofort sichtbar. Ganz unten befindet sich eine Eingabezeile um das Tastaturlayout zu testen.</p></li>
-<li><p>Im n&auml;chsten Schritt erreichen wir die bereits oben erw&auml;hnte Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n) siduction verwendet.</p>
+<p>Im oberen Teil wird die Tastatur graphisch dargestellt und die
+&Auml;nderungen werden sofort sichtbar. Ganz unten befindet sich eine
+Eingabezeile um das Tastaturlayout zu testen.</p></li>
+<li><p>Im n&auml;chsten Schritt erreichen wir die bereits oben erw&auml;hnte
+Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n)
+siduction verwendet.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_04.png" title="Partitionen" alt="" /><figcaption>calamares Partitionen</figcaption>
+<img src="./images-de/install-hd/calamares-de_04.png"
+title="Partitionen" alt="calamares Partitionen" />
+<figcaption aria-hidden="true">calamares Partitionen</figcaption>
 </figure>
-<p>In unserem Beispiel verwenden wir die <em>“Manuelle Partitionierung”</em> weil bereits im Vorfeld die Partitionen angelegt wurden und wir nur noch das richtige Installationsziel ausw&auml;hlen. Nach einem Klick auf <code>Weiter</code> erscheint das n&auml;chste Fenster, in dem wir die einzelnen Partitionen ausw&auml;hlen und bearbeiten k&ouml;nnen.</p>
+<p>In unserem Beispiel verwenden wir die <em>“Manuelle
+Partitionierung”</em> weil bereits im Vorfeld die Partitionen angelegt
+wurden und wir nur noch das richtige Installationsziel ausw&auml;hlen. Nach
+einem Klick auf <code>Weiter</code> erscheint das n&auml;chste Fenster, in
+dem wir die einzelnen Partitionen ausw&auml;hlen und bearbeiten k&ouml;nnen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_05.png" title="Partitionen bearbeiten" alt="" /><figcaption>calamares Partitionen bearbeiten</figcaption>
+<img src="./images-de/install-hd/calamares-de_05.png"
+title="Partitionen bearbeiten" alt="calamares Partitionen bearbeiten" />
+<figcaption aria-hidden="true">calamares Partitionen
+bearbeiten</figcaption>
 </figure>
 <p>Wir benutzen die Partitionen<br />
 <code>sda7</code> f&uuml;r <code>/</code> (root)<br />
-<code>sda6</code> f&uuml;r <code>/daten</code> gemeinsam mit dem bereits auf <code>sda3</code> und <code>sda4</code> vorhandenem Linux</p>
-<p>Nach Ausw&auml;hlen der betreffenden Partition und Bet&auml;tigen des Schalters <code>&Auml;ndern</code> &ouml;ffnet sich ein Fenster, in dem wir den oben bezeichneten Mountpiont eintragen und f&uuml;r <code>sda7</code> auch die Formatierung mit dem Dateisystem <strong>ext4</strong> vornehmen. Die Partition <code>sda6</code> wird nicht formatiert, da wir die dort schon abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen m&ouml;chten.<br />
-Die Swap-Partition <code>sda5</code> brauchen wir nicht bearbeiten, da sie w&auml;hrend der Installation automatisch erkannt und integriert wird.<br />
+<code>sda6</code> f&uuml;r <code>/daten</code> gemeinsam mit dem bereits auf
+<code>sda3</code> und <code>sda4</code> vorhandenem Linux</p>
+<p>Nach Ausw&auml;hlen der betreffenden Partition und Bet&auml;tigen des Schalters
+<code>&Auml;ndern</code> &ouml;ffnet sich ein Fenster, in dem wir den oben
+bezeichneten Mountpiont eintragen und f&uuml;r <code>sda7</code> auch die
+Formatierung mit dem Dateisystem <strong>ext4</strong> vornehmen. Die
+Partition <code>sda6</code> wird nicht formatiert, da wir die dort schon
+abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen
+m&ouml;chten.<br />
+Die Swap-Partition <code>sda5</code> brauchen wir nicht bearbeiten, da
+sie w&auml;hrend der Installation automatisch erkannt und integriert
+wird.<br />
 Das Ergebnis unserer Bem&uuml;hungen sehen wir im n&auml;chsten Bild.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_06.png" title="Partitionen Ergebnis" alt="" /><figcaption>calamares Partitionen Ergebnis</figcaption>
+<img src="./images-de/install-hd/calamares-de_06.png"
+title="Partitionen Ergebnis" alt="calamares Partitionen Ergebnis" />
+<figcaption aria-hidden="true">calamares Partitionen
+Ergebnis</figcaption>
 </figure></li>
-<li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername, Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal mit <a href="./hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a> hinzugef&uuml;gt werden.</p>
+<li><p>Als n&auml;chstes werden Benutzername, Anmeldename, Computername,
+Benutzerpasswort und Root-Passwort festgelegt (bitte gut merken!). Die
+Passw&ouml;rter sollen aus Sicherheitsgr&uuml;nden nicht zu einfach gew&auml;hlt
+werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal
+mit <a href="./hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a>
+hinzugef&uuml;gt werden.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_07.png" title="Benutzer" alt="" /><figcaption>calamares Benutzer</figcaption>
+<img src="./images-de/install-hd/calamares-de_07.png" title="Benutzer"
+alt="calamares Benutzer" />
+<figcaption aria-hidden="true">calamares Benutzer</figcaption>
 </figure>
 <p>Vor der Verwendung der beiden Optionen<br />
 <em>“Automatisches Einloggen ohne Passwortabfrage”</em> und<br />
-<em>“Nutze das gleiche Passwort auch f&uuml;r das Administratorenkonto”</em><br />
-wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein Sicherheitsrisiko dar (siehe auch <a href="./term-konsole_de.html#arbeit-als-root">sudo</a>). Sind beide Optionen aktiviert ist die Eingabe von Passw&ouml;rtern nur noch eine Farce!</p></li>
-<li><p>Nach Bet&auml;tigen der Taste <code>Weiter</code> erscheint eine Zusammenfassung aller zuvor get&auml;tigten Eingaben. Jetzt besteht noch die M&ouml;glichkeit &uuml;ber <code>Zur&uuml;ck</code> &Auml;nderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf <code>Installieren</code> das kleine Warnfenster in dem wir die Installation best&auml;tigen m&uuml;ssen.</p>
+<em>“Nutze das gleiche Passwort auch f&uuml;r das
+Administratorenkonto”</em><br />
+wird hier ausdr&uuml;cklich gewarnt. Sie stellen schon f&uuml;r sich allein ein
+Sicherheitsrisiko dar (siehe auch <a
+href="./term-konsole_de.html#arbeit-als-root">sudo</a>). Sind beide
+Optionen aktiviert ist die Eingabe von Passw&ouml;rtern nur noch eine
+Farce!</p></li>
+<li><p>Nach Bet&auml;tigen der Taste <code>Weiter</code> erscheint eine
+Zusammenfassung aller zuvor get&auml;tigten Eingaben. Jetzt besteht noch die
+M&ouml;glichkeit &uuml;ber <code>Zur&uuml;ck</code> &Auml;nderungen vorzunehmen. Sind wir
+mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf
+<code>Installieren</code> das kleine Warnfenster in dem wir die
+Installation best&auml;tigen m&uuml;ssen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_08.png" title="Zusammenfassung" alt="" /><figcaption>calamares Zusammenfassung</figcaption>
+<img src="./images-de/install-hd/calamares-de_08.png"
+title="Zusammenfassung" alt="calamares Zusammenfassung" />
+<figcaption aria-hidden="true">calamares Zusammenfassung</figcaption>
 </figure></li>
-<li><p>Nun startet die Installation. Dies dauert je nach Hardware einige Zeit. Der Fortschritt wird entsprechend angezeigt. Auch wenn es etwas l&auml;nger dauert, bitte die Installation nicht abbrechen, sondern dem Prozess Zeit geben.</p>
+<li><p>Nun startet die Installation. Dies dauert je nach Hardware einige
+Zeit. Der Fortschritt wird entsprechend angezeigt. Auch wenn es etwas
+l&auml;nger dauert, bitte die Installation nicht abbrechen, sondern dem
+Prozess Zeit geben.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_09.png" title="Installieren" alt="" /><figcaption>calamares Installieren</figcaption>
+<img src="./images-de/install-hd/calamares-de_09.png"
+title="Installieren" alt="calamares Installieren" />
+<figcaption aria-hidden="true">calamares Installieren</figcaption>
 </figure></li>
-<li><p>Am Ende erhalten wir die M&ouml;glichkeit zu einem Reboot in das neu installierte System.</p>
+<li><p>Am Ende erhalten wir die M&ouml;glichkeit zu einem Reboot in das neu
+installierte System.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_10.png" title="Beenden" alt="" /><figcaption>calamares Beenden</figcaption>
+<img src="./images-de/install-hd/calamares-de_10.png" title="Beenden"
+alt="calamares Beenden" />
+<figcaption aria-hidden="true">calamares Beenden</figcaption>
 </figure>
 <p>Vor dem Reboot die CD aus dem Laufwerk nehmen!</p></li>
 </ol>
 <h3 id="system-verschl&uuml;sseln">System verschl&uuml;sseln</h3>
-<p>Ab <em>siduction 2021.2 Farewell</em> besteht innerhalb des Installationsprogramms Calamares die M&ouml;glichkeit, das vollst&auml;ndige System in eine verschl&uuml;sselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers Grub befindet sich unverschl&uuml;sselt auf der “<em>BIOS-boot</em>”-Partition. Grub fragt bei jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte Installation ab, bevor das Bootmen&uuml; erscheint.<br />
-Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringf&uuml;gig anders. Bei der Auswahl einer der drei ersten Optionen, erscheint zus&auml;tzlich die Funktion “<em>Verschl&uuml;ssele System</em>”, in der wir auch gleich das Passwort eingeben.</p>
+<p>Ab <em>siduction 2021.2 Farewell</em> besteht innerhalb des
+Installationsprogramms Calamares die M&ouml;glichkeit, das vollst&auml;ndige
+System in eine verschl&uuml;sselte Partition oder Festplatte zu installieren.
+Lediglich die erste Stufe des Bootmanagers Grub befindet sich
+unverschl&uuml;sselt auf der “<em>BIOS-boot</em>”-Partition. Grub fragt bei
+jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte Installation ab,
+bevor das Bootmen&uuml; erscheint.<br />
+Die oben unter 5 beschriebene Partitionierung gestaltet sich nun
+geringf&uuml;gig anders. Bei der Auswahl einer der drei ersten Optionen,
+erscheint zus&auml;tzlich die Funktion “<em>Verschl&uuml;ssele System</em>”, in
+der wir auch gleich das Passwort eingeben.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_11.png" title="System verschl&uuml;sseln" alt="" /><figcaption>calamares System verschl&uuml;sseln</figcaption>
+<img src="./images-de/install-hd/calamares-de_11.png"
+title="System verschl&uuml;sseln" alt="calamares System verschl&uuml;sseln" />
+<figcaption aria-hidden="true">calamares System
+verschl&uuml;sseln</figcaption>
 </figure>
-<p>Benutzen wir “<em>Manuelle Partitionierung</em>”, so ben&ouml;tigen wir einen leeren, unbenutzten Bereich auf der Festplatte. Ist dieser nicht vorhanden, l&ouml;schen wir zuerst eine oder mehrere nicht mehr ben&ouml;tigte Partitionen. Dann erstellen wir die neue Partition.</p>
+<p>Benutzen wir “<em>Manuelle Partitionierung</em>”, so ben&ouml;tigen wir
+einen leeren, unbenutzten Bereich auf der Festplatte. Ist dieser nicht
+vorhanden, l&ouml;schen wir zuerst eine oder mehrere nicht mehr ben&ouml;tigte
+Partitionen. Dann erstellen wir die neue Partition.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_12.png" title="Manuelle Partition verschl&uuml;sseln 1" alt="" /><figcaption>calamares Manuelle Partition verschl&uuml;sseln 1</figcaption>
+<img src="./images-de/install-hd/calamares-de_12.png"
+title="Manuelle Partition verschl&uuml;sseln 1"
+alt="calamares Manuelle Partition verschl&uuml;sseln 1" />
+<figcaption aria-hidden="true">calamares Manuelle Partition
+verschl&uuml;sseln 1</figcaption>
 </figure>
-<p>Im n&auml;chsten Schritt ist jetzt die Funktion <em>“Verschl&uuml;sseln”</em> ausw&auml;hlbar.<br />
-Wir geben unser Passwort ein und w&auml;hlen anschlie&szlig;end als Einh&auml;ngepunkt das Wurzelverzeichnis <strong><code>/</code></strong> aus.</p>
+<p>Im n&auml;chsten Schritt ist jetzt die Funktion <em>“Verschl&uuml;sseln”</em>
+ausw&auml;hlbar.<br />
+Wir geben unser Passwort ein und w&auml;hlen anschlie&szlig;end als Einh&auml;ngepunkt
+das Wurzelverzeichnis <strong><code>/</code></strong> aus.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_13.png" title="Manuelle Partition verschl&uuml;sseln 2" alt="" /><figcaption>calamares Manuelle Partition verschl&uuml;sseln 2</figcaption>
+<img src="./images-de/install-hd/calamares-de_13.png"
+title="Manuelle Partition verschl&uuml;sseln 2"
+alt="calamares Manuelle Partition verschl&uuml;sseln 2" />
+<figcaption aria-hidden="true">calamares Manuelle Partition
+verschl&uuml;sseln 2</figcaption>
 </figure>
-<p>Nach Beendigung der Partitionierung setzen wir die Installation mit dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 6 beschrieben, fort.</p>
+<p>Nach Beendigung der Partitionierung setzen wir die Installation mit
+dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 6 beschrieben,
+fort.</p>
 <h3 id="benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</h3>
-<p>Um neue Benutzer mit automatischer &Uuml;bernahme der Gruppenberechtigungen hinzuzuf&uuml;gen, f&uuml;hrt man folgenden Befehl als <strong>root</strong> aus:</p>
+<p>Um neue Benutzer mit automatischer &Uuml;bernahme der
+Gruppenberechtigungen hinzuzuf&uuml;gen, f&uuml;hrt man folgenden Befehl als
+<strong>root</strong> aus:</p>
 <pre><code>~# adduser &lt;nutzername&gt;</code></pre>
-<p>Nach dr&uuml;cken der Eingabetaste werden weitere Optionen angezeigt, die zus&auml;tzliche Einstellungen erm&ouml;glichen. Zuletzt folgt eine Aufforderung zum zweimaligen Eingeben des Passworts.</p>
-<p>siduction spezifische Desktopsymbole (f&uuml;r das Handbuch und den IRC) m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
+<p>Nach dr&uuml;cken der Eingabetaste werden weitere Optionen angezeigt, die
+zus&auml;tzliche Einstellungen erm&ouml;glichen. Zuletzt folgt eine Aufforderung
+zum zweimaligen Eingeben des Passworts.</p>
+<p>siduction spezifische Desktopsymbole (f&uuml;r das Handbuch und den IRC)
+m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
 <p>So entfernt man einen Benutzer</p>
 <pre><code>~# deluser &lt;nutzername&gt;</code></pre>
-<p>Mehr Informationen bieten die Manpages <strong><code>man adduser</code></strong> und <strong><code>man deluser</code></strong> .</p>
+<p>Mehr Informationen bieten die Manpages
+<strong><code>man adduser</code></strong> und
+<strong><code>man deluser</code></strong> .</p>
 <div id="rev">
 Zuletzt bearbeitet: 2022-02-09
 </div>

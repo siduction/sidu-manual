@@ -43,23 +43,39 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="boot-from-iso-file">Boot from ISO file</h2>
 <h3 id="overview">Overview</h3>
-<p>This cheat code boots from an ISO file located on the hard drive with an <strong>ext4</strong> file system. <strong>For normal use, we recommend siduction’s default file system, ext4</strong>, which is well maintained.</p>
-<p>Booting from a “fromiso” hard disk installation takes only a fraction of the time it takes to boot from a CD. In addition, the CD/DVD drive is available at the same time. Alternatively you can use VBox, KVM, or QEMU.</p>
+<p>This cheat code boots from an ISO file located on the hard drive with
+an <strong>ext4</strong> file system. <strong>For normal use, we
+recommend siduction’s default file system, ext4</strong>, which is well
+maintained.</p>
+<p>Booting from a “fromiso” hard disk installation takes only a fraction
+of the time it takes to boot from a CD. In addition, the CD/DVD drive is
+available at the same time. Alternatively you can use VBox, KVM, or
+QEMU.</p>
 <p><strong>Prerequisites</strong></p>
 <ul>
-<li>a working Grub installation (on floppy, a hard disk installation, or the live CD)</li>
-<li>a siduction image file, e.g. <code>siduction.iso</code> (name shortened) and a Linux filesystem like <strong>ext4</strong></li>
+<li>a working Grub installation (on floppy, a hard disk installation, or
+the live CD)</li>
+<li>a siduction image file, e.g. <code>siduction.iso</code> (name
+shortened) and a Linux filesystem like <strong>ext4</strong></li>
 </ul>
 <h3 id="fromiso-with-grub2">fromiso with grub2</h3>
-<p>siduction provides a grub2 file named <code>60_fll-fromiso</code> to generate a fromiso entry in the grub2 menu. The configuration file for fromiso can be found in the package <code>grub2-fll-fromiso</code>, with the path <code>/etc/default/grub2-fll-fromiso</code>.</p>
-<p>First, open a terminal, become <strong>root</strong> and install <code>grub2-fll-fromiso</code>:</p>
+<p>siduction provides a grub2 file named <code>60_fll-fromiso</code> to
+generate a fromiso entry in the grub2 menu. The configuration file for
+fromiso can be found in the package <code>grub2-fll-fromiso</code>, with
+the path <code>/etc/default/grub2-fll-fromiso</code>.</p>
+<p>First, open a terminal, become <strong>root</strong> and install
+<code>grub2-fll-fromiso</code>:</p>
 <pre><code>su
 apt-get update
 apt-get install grub2-fll-fromiso</code></pre>
-<p>Then, open the configuration file in an editor of your choice (<code>kwrite</code>, <code>mcedit</code>, <code>vim</code>, …):</p>
+<p>Then, open the configuration file in an editor of your choice
+(<code>kwrite</code>, <code>mcedit</code>, <code>vim</code>, …):</p>
 <pre><code>mcedit /etc/default/grub2-fll-fromiso</code></pre>
-<p>In the lines that should be active, remove the comment sign (<strong>#</strong>) and replace the default statements inside the double quotes (<strong>"</strong>) with your own parameters.</p>
-<p>Example: compare this modified <code>grub2-fll-fromiso</code> with the default settings:</p>
+<p>In the lines that should be active, remove the comment sign
+(<strong>#</strong>) and replace the default statements inside the
+double quotes (<strong>“</strong>) with your own parameters.</p>
+<p>Example: compare this modified <code>grub2-fll-fromiso</code> with
+the default settings:</p>
 <pre><code># defaults for grub2-fll-fromiso update-grub helper
 # sourced by grub2&#39;s update-grub
 # installed at /etc/default/grub2-fll-fromiso
@@ -96,11 +112,20 @@ FLL_GRUB2_TZ=&quot;Europe/Berlin&quot;
 # additional cheatcodes
 # default: noeject
 FLL_GRUB2_CHEATCODE=&quot;noeject nointro&quot; </code></pre>
-<p>Save the changes, close the editor and execute the following command as <strong>root</strong> in a terminal:</p>
+<p>Save the changes, close the editor and execute the following command
+as <strong>root</strong> in a terminal:</p>
 <pre><code>update-grub</code></pre>
-<p>This will update the grub2 configuration file <code>grub.cfg</code> to recognize the ISOs placed in the specified directory. These will be available for selection at the next reboot.</p>
+<p>This will update the grub2 configuration file <code>grub.cfg</code>
+to recognize the ISOs placed in the specified directory. These will be
+available for selection at the next reboot.</p>
 <h3 id="toram">toram</h3>
-<p>Another useful alternative when booting from live media is <code>toram</code>. This is recommended if the computer has enough RAM available (4 GByte or more). <code>toram</code> copies the complete content of the live medium into the RAM. The advantage is that the system reacts very fast and you can remove the medium after boot. This is useful if the start was done from a USB stick and you want to use this USB port otherwise.</p>
+<p>Another useful alternative when booting from live media is
+<code>toram</code>. This is recommended if the computer has enough RAM
+available (4 GByte or more). <code>toram</code> copies the complete
+content of the live medium into the RAM. The advantage is that the
+system reacts very fast and you can remove the medium after boot. This
+is useful if the start was done from a USB stick and you want to use
+this USB port otherwise.</p>
 <div id="rev">
 Last edited: 2022/03/31
 </div>

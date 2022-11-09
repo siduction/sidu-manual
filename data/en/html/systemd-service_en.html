@@ -42,13 +42,35 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-service">systemd-service</h2>
-<p>The basic and introductory information about systemd is contained on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
-On this manual page we explain the function of the unit <strong>systemd.service</strong>. The unit file with the “.service” name extension is the most commonly encountered unit type in systemd.</p>
-<p>The service unit file must contain a [Service] section that configures information about the service and the process it is monitoring.</p>
+<p>The basic and introductory information about systemd is contained on
+the manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.
+The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit
+files are covered by our manual page <a
+href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit
+file</a>.<br />
+On this manual page we explain the function of the unit
+<strong>systemd.service</strong>. The unit file with the “.service” name
+extension is the most commonly encountered unit type in systemd.</p>
+<p>The service unit file must contain a [Service] section that
+configures information about the service and the process it is
+monitoring.</p>
 <h3 id="create-service-unit">Create service unit</h3>
-<p>We prefer to place self-created unit files in the <code>/usr/local/lib/systemd/system/</code> directory. (If necessary, create the directory with the command <strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.) This has the advantage of giving them priority over system units installed by the distribution’s package manager, while placing control links and change files created with <strong><code>systemctl edit &lt;UNIT_FILE&gt;</code></strong> in the directory <code>/etc/systemd/system/</code>, which itself has a higher priority. See: <a href="./systemd-unit-datei_en.html#loading-path-of-the-unit-files">Hirarchy of load paths</a>.</p>
+<p>We prefer to place self-created unit files in the
+<code>/usr/local/lib/systemd/system/</code> directory. (If necessary,
+create the directory with the command
+<strong><code>mkdir -p /usr/local/lib/systemd/system/</code></strong>.)
+This has the advantage of giving them priority over system units
+installed by the distribution’s package manager, while placing control
+links and change files created with
+<strong><code>systemctl edit &lt;UNIT_FILE&gt;</code></strong> in the
+directory <code>/etc/systemd/system/</code>, which itself has a higher
+priority. See: <a
+href="./systemd-unit-datei_en.html#loading-path-of-the-unit-files">Hirarchy
+of load paths</a>.</p>
 <h3 id="service-section">Service section</h3>
-<p>There are over thirty options available for this section, of which we describe particularly frequently used ones here.</p>
+<p>There are over thirty options available for this section, of which we
+describe particularly frequently used ones here.</p>
 <pre><code>Type=             PIDFile=
 RemainAfterExit=  GuessMainPID=
 ExecStart=        Restart=
@@ -67,49 +89,105 @@ WatchdogSec=      BusName=
                   OOMPolicy=</code></pre>
 <ul>
 <li><p><code>Type=</code><br />
-Defines the process startup type and is therefore one of the most important options.<br />
-The possible values are: simple, exec, forking, oneshot, dbus, notify, or idle.<br />
-The default simple is used if <code>ExecStart=</code> is set, but neither <code>Type=</code> nor <code>BusName=</code> are.</p>
+Defines the process startup type and is therefore one of the most
+important options.<br />
+The possible values are: simple, exec, forking, oneshot, dbus, notify,
+or idle.<br />
+The default simple is used if <code>ExecStart=</code> is set, but
+neither <code>Type=</code> nor <code>BusName=</code> are.</p>
 <ul>
 <li><p><code>simple</code><br />
-systemd considers a simple type unit as successfully started as soon as the main process specified with <code>ExecStart=</code> has been started by <em>fork</em>. Then systemd immediately starts subsequent units, regardless of whether the main process can be called successfully.</p></li>
+systemd considers a simple type unit as successfully started as soon as
+the main process specified with <code>ExecStart=</code> has been started
+by <em>fork</em>. Then systemd immediately starts subsequent units,
+regardless of whether the main process can be called
+successfully.</p></li>
 <li><p><code>exec</code><br />
-Similar to simple, but systemd waits to start subsequent units until the main process has finished successfully. This is also the time when the unit reaches the “active” state.</p></li>
+Similar to simple, but systemd waits to start subsequent units until the
+main process has finished successfully. This is also the time when the
+unit reaches the “active” state.</p></li>
 <li><p><code>forking</code><br />
-Here systemd considers the service as started as soon as the process specified with <code>ExecStart=</code> branches to the background and the parent system terminates. This type is often used with classic daemons. The option <code>PIDFile=</code> should also be specified here so that the system can continue to follow the main process.</p></li>
+Here systemd considers the service as started as soon as the process
+specified with <code>ExecStart=</code> branches to the background and
+the parent system terminates. This type is often used with classic
+daemons. The option <code>PIDFile=</code> should also be specified here
+so that the system can continue to follow the main process.</p></li>
 <li><p><code>oneshot</code><br />
-The Type=oneshot option is similar to exec and often used with scripts or commands that do a single job and then exit. However, the service never reaches the “active” state, but goes from the “activating” to “deactivating” or “dead” state immediately after the main process terminates. Therefore it is often useful to use this option with <code>RemainAfterExit=yes</code> to reach the “active” state.</p></li>
+The Type=oneshot option is similar to exec and often used with scripts
+or commands that do a single job and then exit. However, the service
+never reaches the “active” state, but goes from the “activating” to
+“deactivating” or “dead” state immediately after the main process
+terminates. Therefore it is often useful to use this option with
+<code>RemainAfterExit=yes</code> to reach the “active” state.</p></li>
 <li><p><code>dbus</code><br />
-behaves similarly to simple. systemd starts subsequent units after the D-Bus bus name has been obtained. Units with this option implicitly get a dependency on the unit dbus.socket.</p></li>
+behaves similarly to simple. systemd starts subsequent units after the
+D-Bus bus name has been obtained. Units with this option implicitly get
+a dependency on the unit dbus.socket.</p></li>
 <li><p><code>notify</code><br />
-The type=notify is very similar to the type simple, with the difference that the daemon sends a signal to systemd when it is ready.</p></li>
+The type=notify is very similar to the type simple, with the difference
+that the daemon sends a signal to systemd when it is ready.</p></li>
 <li><p><code>idle</code><br />
-The behavior of idle is very similar to simple. However, systemd delays the actual execution of the service until all active jobs are completed. This type is not useful as a general tool for sorting units, because it is subject to a 5 s timeout, after which the service is executed in any case.</p></li>
+The behavior of idle is very similar to simple. However, systemd delays
+the actual execution of the service until all active jobs are completed.
+This type is not useful as a general tool for sorting units, because it
+is subject to a 5 s timeout, after which the service is executed in any
+case.</p></li>
 </ul></li>
 <li><p><code>RemainAfterExit=</code><br />
-expects a logical value (default: no) that determines whether the service, even if all its processes have terminated, should be considered active. See Type=oneshot.</p></li>
+expects a logical value (default: no) that determines whether the
+service, even if all its processes have terminated, should be considered
+active. See Type=oneshot.</p></li>
 <li><p><code>GuessMainPID=</code><br />
-expects a logical value (default: yes). systemd uses this option only if <code>Type=forking</code> is set and <code>PIDFile=</code> is not, and then tries to guess the main PID of a service if it cannot determine it reliably. For other types or with <code>PIDFile=</code> set, the main PID is always known.</p></li>
+expects a logical value (default: yes). systemd uses this option only if
+<code>Type=forking</code> is set and <code>PIDFile=</code> is not, and
+then tries to guess the main PID of a service if it cannot determine it
+reliably. For other types or with <code>PIDFile=</code> set, the main
+PID is always known.</p></li>
 <li><p><code>PIDFile=</code><br />
-accepts a path to the service’s PID file. For services of <code>Type=forking</code> the use of this option is recommended.</p></li>
+accepts a path to the service’s PID file. For services of
+<code>Type=forking</code> the use of this option is
+recommended.</p></li>
 <li><p><code>BusName=</code><br />
-The D-Bus bus name under which this service can be reached must be specified here. The option is mandatory for services of <code>Type=dbus</code>.</p></li>
+The D-Bus bus name under which this service can be reached must be
+specified here. The option is mandatory for services of
+<code>Type=dbus</code>.</p></li>
 <li><p><code>ExecStart=</code><br />
-contains commands with their arguments that are executed when this unit is started. Exactly one command must be specified, unless the <code>Type=oneshot</code> option is set, in which case ExecStart= can be used multiple times. The value of ExecStart= must conform to the rules described in detail in the man page <code>man systemd.service</code>.</p></li>
+contains commands with their arguments that are executed when this unit
+is started. Exactly one command must be specified, unless the
+<code>Type=oneshot</code> option is set, in which case ExecStart= can be
+used multiple times. The value of ExecStart= must conform to the rules
+described in detail in the man page
+<code>man systemd.service</code>.</p></li>
 <li><p><code>ExecStop=</code><br />
-can be used multiple times and contains commands to stop a service started by ExecStart=. The syntax is identical to ExecStart=.</p></li>
-<li><p><code>ExecStartPre=</code>, <code>ExecStartPost=</code>, <code>ExecStopPost=</code><br />
-are additional commands that are started before or after the command in <code>ExecStart=</code> or <code>ExecStop</code>. Again, the syntax is identical to ExecStart=. Multiple command lines are allowed and the commands are executed serially one after the other. If one of these commands (not preceded by “-”) fails, the unit is immediately considered to have failed.</p></li>
+can be used multiple times and contains commands to stop a service
+started by ExecStart=. The syntax is identical to ExecStart=.</p></li>
+<li><p><code>ExecStartPre=</code>, <code>ExecStartPost=</code>,
+<code>ExecStopPost=</code><br />
+are additional commands that are started before or after the command in
+<code>ExecStart=</code> or <code>ExecStop</code>. Again, the syntax is
+identical to ExecStart=. Multiple command lines are allowed and the
+commands are executed serially one after the other. If one of these
+commands (not preceded by “-”) fails, the unit is immediately considered
+to have failed.</p></li>
 <li><p><code>RestartSec=</code><br />
-specifies the sleep time before restarting a service. A unit-free integer defines seconds, a specification of “3min 4s” is also possible.<br />
+specifies the sleep time before restarting a service. A unit-free
+integer defines seconds, a specification of “3min 4s” is also
+possible.<br />
 The type of time value definition applies to all timed options.</p></li>
-<li><p><code>TimeoutStartSec=</code>, <code>TimeoutStopSec=</code>, <code>TimeoutSec=</code><br />
-define the time to wait for starting or stopping. TimeoutSec= combines the two previously mentioned options.<br />
-TimeoutStopSec= additionally configures the time to wait for each <code>ExecStop=</code> command, if any.</p></li>
+<li><p><code>TimeoutStartSec=</code>, <code>TimeoutStopSec=</code>,
+<code>TimeoutSec=</code><br />
+define the time to wait for starting or stopping. TimeoutSec= combines
+the two previously mentioned options.<br />
+TimeoutStopSec= additionally configures the time to wait for each
+<code>ExecStop=</code> command, if any.</p></li>
 <li><p><code>Restart=</code><br />
-configures whether the service should be restarted when the service process terminates, kills itself, or times out. If the process’ death is the result of a systemd action, the service will not be restarted.<br />
-The allowed values are: no, always, on-success, on-failure, on-abnormal, on-abort, or on-watchdog.<br />
-The following table shows the effect of the Restart= setting on the exit reasons.</p>
+configures whether the service should be restarted when the service
+process terminates, kills itself, or times out. If the process’ death is
+the result of a systemd action, the service will not be restarted.<br />
+The allowed values are: no, always, on-success, on-failure, on-abnormal,
+on-abort, or on-watchdog.<br />
+The following table shows the effect of the Restart= setting on the exit
+reasons.</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -187,17 +265,22 @@ The following table shows the effect of the Restart= setting on the exit reasons
 </tbody>
 </table>
 <p>The options<br />
-<code>RestartPreventExitStatus=</code> and <code>RestartForceExitStatus=</code><br />
+<code>RestartPreventExitStatus=</code> and
+<code>RestartForceExitStatus=</code><br />
 change this behavior.</p></li>
 </ul>
 <p><strong>Examples</strong><br />
 Some self created service units can be found on our manual pages</p>
-<p><a href="./systemd-timer_en.html#create-timer-unit">service-unit for systemd timer</a>,<br />
-<a href="./systemd-path_en.html#create-path-unit">service-unit for systemd Path</a>,<br />
+<p><a href="./systemd-timer_en.html#create-timer-unit">service-unit for
+systemd timer</a>,<br />
+<a href="./systemd-path_en.html#create-path-unit">service-unit for
+systemd Path</a>,<br />
 and with the preferred search engine on the Internet.</p>
 <h3 id="sources-systemd-service">Sources systemd-service</h3>
 <pre><code>man systemd.service</code></pre>
-<p><a target="_blank" href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity, Create systemd units yourself</a></p>
+<p><a
+href="https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/">LinuxCommunity,
+Create systemd units yourself</a></p>
 <div id="rev">
 Last edited: 2022/04/08
 </div>

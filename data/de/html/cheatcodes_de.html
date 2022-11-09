@@ -35,9 +35,12 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#bootoptionen-cheatcodes">Bootoptionen Cheatcodes</a>
 <ul>
-<li><a href="#siduction-spezifische-parameter">siduction spezifische Parameter</a></li>
-<li><a href="#bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den Grafikserver X</a></li>
-<li><a href="#allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</a></li>
+<li><a href="#siduction-spezifische-parameter">siduction spezifische
+Parameter</a></li>
+<li><a href="#bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den
+Grafikserver X</a></li>
+<li><a href="#allgemeine-parameter-des-linux-kernels">Allgemeine
+Parameter des Linux-Kernels</a></li>
 <li><a href="#vga-codes">VGA-Codes</a></li>
 </ul></li>
 </ul>
@@ -51,9 +54,25 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li>Allgemeine Parameter des Linux-Kernels</li>
 <li>Werte f&uuml;r den allgemeinen Parameter <strong>vga</strong></li>
 </ol>
-<p>Sofern in dem “Werte”-Feld der Tabellen Werte aufgelistet werden, m&uuml;ssen diese an die betreffende Bootoption mit einem <code>=</code> Zeichen angeh&auml;ngt werden. Wenn zum Beispiel “1280x1024” der gew&uuml;nschte Wert f&uuml;r die Bootoption “screen” w&auml;re, dann wird <code>screen=1280x1024</code> in die Grub-Befehlszeile eingegeben, f&uuml;r die Sprachauswahl (hier “Deutsch”) <code>lang=de</code>. Die Grub-Befehlszeile l&auml;sst sich editieren, indem man, sobald das Grub-Menue erscheint, die Taste <strong><code>e</code></strong> dr&uuml;ckt. Danach befindet man sich im Editiermodus. Jetzt kann man mit den Pfeiltasten zur Kernelzeile navigieren und am Ende den oder die gew&uuml;nschten Cheatcode einf&uuml;gen. Als Trennzeichen dient das Leerzeichen. Der Bootvorgang wird mit der Tastenkombination <strong><code>Strg</code></strong>+<strong><code>X</code></strong> oder <strong><code>F10</code></strong> fortgesetzt.</p>
-<p><a target="_blank" href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausf&uuml;hrliche Referenzliste f&uuml;r Kernel-Bootcodes von kernel.org (Englisch, PDF)</a></p>
-<h3 id="siduction-spezifische-parameter">siduction spezifische Parameter</h3>
+<p>Sofern in dem “Werte”-Feld der Tabellen Werte aufgelistet werden,
+m&uuml;ssen diese an die betreffende Bootoption mit einem <code>=</code>
+Zeichen angeh&auml;ngt werden. Wenn zum Beispiel “1280x1024” der gew&uuml;nschte
+Wert f&uuml;r die Bootoption “screen” w&auml;re, dann wird
+<code>screen=1280x1024</code> in die Grub-Befehlszeile eingegeben, f&uuml;r
+die Sprachauswahl (hier “Deutsch”) <code>lang=de</code>. Die
+Grub-Befehlszeile l&auml;sst sich editieren, indem man, sobald das Grub-Menue
+erscheint, die Taste <strong><code>e</code></strong> dr&uuml;ckt. Danach
+befindet man sich im Editiermodus. Jetzt kann man mit den Pfeiltasten
+zur Kernelzeile navigieren und am Ende den oder die gew&uuml;nschten
+Cheatcode einf&uuml;gen. Als Trennzeichen dient das Leerzeichen. Der
+Bootvorgang wird mit der Tastenkombination
+<strong><code>Strg</code></strong>+<strong><code>X</code></strong> oder
+<strong><code>F10</code></strong> fortgesetzt.</p>
+<p><a target="_blank" href="http://files.kroah.com/lkn/lkn_pdf/ch09.pdf">Ausf&uuml;hrliche
+Referenzliste f&uuml;r Kernel-Bootcodes von kernel.org (Englisch,
+PDF)</a></p>
+<h3 id="siduction-spezifische-parameter">siduction spezifische
+Parameter</h3>
 <p>Diese Bootoptionen gelten nur f&uuml;r die Live-DVD.</p>
 <table>
 <colgroup>
@@ -82,7 +101,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="odd">
 <td>fromiso</td>
 <td></td>
-<td><a href="./hd-ins-fromiso_de.html#aus-iso-datei-booten">bitte lies “Booten ‘fromiso’”</a></td>
+<td><a href="./hd-ins-fromiso_de.html#aus-iso-datei-booten">bitte lies
+“Booten ‘fromiso’”</a></td>
 </tr>
 <tr class="even">
 <td>hostname</td>
@@ -91,18 +111,30 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </tr>
 <tr class="odd">
 <td>lang</td>
-<td>be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr, fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru, zh</td>
-<td>setzt die Spracheinstellung, die Grundeinstellungen der Lokalisation (locales), das Tastaturlayout (in der Konsole wie in X), die Zeitzone und den Spiegelserver von Debian. Mit der Langform <strong>lang=ll_cc</strong> oder <strong>lang=ll-cc</strong> bedeutet <strong>ll</strong> die Sprachauswahl und <strong>cc</strong> Tastaturlayout, Spiegelserver und Zeitzonenwahl (z.B. “lang=fr-be” ). Die Grundeinstellung f&uuml;r Englisch ist en_US mit UTC als Zeitzone und f&uuml;r Deutsch, de mit Europe/Berlin als die Zeitzone. Beispiel f&uuml;r eine selbstgew&auml;hlte Einstellung: “lang=pt_PT tz=Pacific/Auckland”</td>
+<td>be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr,
+fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru,
+zh</td>
+<td>setzt die Spracheinstellung, die Grundeinstellungen der Lokalisation
+(locales), das Tastaturlayout (in der Konsole wie in X), die Zeitzone
+und den Spiegelserver von Debian. Mit der Langform
+<strong>lang=ll_cc</strong> oder <strong>lang=ll-cc</strong> bedeutet
+<strong>ll</strong> die Sprachauswahl und <strong>cc</strong>
+Tastaturlayout, Spiegelserver und Zeitzonenwahl (z.B. “lang=fr-be” ).
+Die Grundeinstellung f&uuml;r Englisch ist en_US mit UTC als Zeitzone und f&uuml;r
+Deutsch, de mit Europe/Berlin als die Zeitzone. Beispiel f&uuml;r eine
+selbstgew&auml;hlte Einstellung: “lang=pt_PT tz=Pacific/Auckland”</td>
 </tr>
 <tr class="even">
 <td>md5sum</td>
 <td></td>
-<td>testet die Pr&uuml;fsumme der CD/DVD (zur Kontrolle, ob CD/DVD in Ordnung sind)</td>
+<td>testet die Pr&uuml;fsumme der CD/DVD (zur Kontrolle, ob CD/DVD in Ordnung
+sind)</td>
 </tr>
 <tr class="odd">
 <td>noaptlang</td>
 <td></td>
-<td>Verhindert die Installation von Lokalisierungspaketen der gew&auml;hlten Sprache</td>
+<td>Verhindert die Installation von Lokalisierungspaketen der gew&auml;hlten
+Sprache</td>
 </tr>
 <tr class="even">
 <td>nocpufreq</td>
@@ -112,7 +144,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="odd">
 <td>nodhcp</td>
 <td></td>
-<td>kein DHCP (DHCP versucht automatisch Ethernetverbindungen aufzubauen)</td>
+<td>kein DHCP (DHCP versucht automatisch Ethernetverbindungen
+aufzubauen)</td>
 </tr>
 <tr class="even">
 <td>noeject</td>
@@ -127,17 +160,20 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="even">
 <td>nointro</td>
 <td></td>
-<td>&uuml;berspringt die Ausgabe der index.html beim Start der Live-DVD/CD</td>
+<td>&uuml;berspringt die Ausgabe der index.html beim Start der
+Live-DVD/CD</td>
 </tr>
 <tr class="odd">
 <td>nomodeset</td>
 <td>radeon.modeset=0</td>
-<td>erm&ouml;glicht zusammen mit <strong>xmodule=vesa</strong> ein sauberes Booten nach X bei Radeonkarten im Live-Mode</td>
+<td>erm&ouml;glicht zusammen mit <strong>xmodule=vesa</strong> ein sauberes
+Booten nach X bei Radeonkarten im Live-Mode</td>
 </tr>
 <tr class="even">
 <td>nonetwork</td>
 <td></td>
-<td>verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten</td>
+<td>verhindert die automatische Konfiguration von Netzwerkschnittstellen
+beim Booten</td>
 </tr>
 <tr class="odd">
 <td>noswap</td>
@@ -152,7 +188,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="odd">
 <td>tz</td>
 <td>tz=Europe/Dublin</td>
-<td>setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird <strong>utc=yes</strong> angegeben. Eine Liste aller unterst&uuml;tzter Zeitzonen kann eingesehen werden, wenn per copy &amp; paste: <strong>file:///usr/share/zoneinfo/</strong> in den Browser eingegeben wird .</td>
+<td>setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC
+eingestellt ist, wird <strong>utc=yes</strong> angegeben. Eine Liste
+aller unterst&uuml;tzter Zeitzonen kann eingesehen werden, wenn per copy
+&amp; paste: <strong>file:///usr/share/zoneinfo/</strong> in den Browser
+eingegeben wird .</td>
 </tr>
 <tr class="even">
 <td>toram</td>
@@ -161,8 +201,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </tr>
 </tbody>
 </table>
-<h3 id="bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den Grafikserver X</h3>
-<p>Es sollte zus&auml;tzlich auch entweder die Bootoption xandr oder xmodule verwendet werden, wenn man Bootoptionen f&uuml;r den Grafikserver X f&uuml;r die Grafikkarten Radeon, Intel oder MGA einsetzt.</p>
+<h3 id="bootoptionen-f&uuml;r-den-grafikserver-x">Bootoptionen f&uuml;r den
+Grafikserver X</h3>
+<p>Es sollte zus&auml;tzlich auch entweder die Bootoption xandr oder xmodule
+verwendet werden, wenn man Bootoptionen f&uuml;r den Grafikserver X f&uuml;r die
+Grafikkarten Radeon, Intel oder MGA einsetzt.</p>
 <table>
 <colgroup>
 <col style="width: 17%" />
@@ -180,7 +223,14 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="odd">
 <td>dpi</td>
 <td>auto <em>oder</em> DPI-Zahl</td>
-<td>setzt die gew&uuml;nschten Pixel pro Zoll f&uuml;r den Monitor. Die DPI f&uuml;r den Monitor erh&auml;lt man, wenn man die Pixelanzahl der Monitorbreite durch den Zollwert der Diagonale dividiert und mit folgenden Werten multipliziert: 1,25 f&uuml;r einen 4:3-Bildschirm, 1,18 f&uuml;r einen 16:10-Bildschirm oder 1,147 f&uuml;r einen 16:9-Bildschirm. F&uuml;r einen 24“-Bildschirm mit der Aufl&ouml;sung 1920x1080 ergibt das mittels 1,147x1920/24 dpi=92 oder f&uuml;r einen 15”-Bildschirm mit der Aufl&ouml;sung 1600x1200 ergibt das mittels 1.25x1600/15 dpi=133.</td>
+<td>setzt die gew&uuml;nschten Pixel pro Zoll f&uuml;r den Monitor. Die DPI f&uuml;r
+den Monitor erh&auml;lt man, wenn man die Pixelanzahl der Monitorbreite durch
+den Zollwert der Diagonale dividiert und mit folgenden Werten
+multipliziert: 1,25 f&uuml;r einen 4:3-Bildschirm, 1,18 f&uuml;r einen
+16:10-Bildschirm oder 1,147 f&uuml;r einen 16:9-Bildschirm. F&uuml;r einen
+24”-Bildschirm mit der Aufl&ouml;sung 1920x1080 ergibt das mittels
+1,147x1920/24 dpi=92 oder f&uuml;r einen 15”-Bildschirm mit der Aufl&ouml;sung
+1600x1200 ergibt das mittels 1.25x1600/15 dpi=133.</td>
 </tr>
 <tr class="even">
 <td>hsync</td>
@@ -190,27 +240,34 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="odd">
 <td>noml</td>
 <td></td>
-<td>verhindert, dass die X.org-Konfiguration eine Liste von Modelines enth&auml;lt, und bewirkt dadurch, dass der korrekte Mode automatisch erkannt wird</td>
+<td>verhindert, dass die X.org-Konfiguration eine Liste von Modelines
+enth&auml;lt, und bewirkt dadurch, dass der korrekte Mode automatisch erkannt
+wird</td>
 </tr>
 <tr class="even">
 <td>noxrandr</td>
 <td></td>
-<td>verhindert die Verwendung der Erweiterungen von RandR 1.2 durch die neuen X.org-Treiber und nutzt die alten Techniken zur Abfrage der Monitoreigenschaften</td>
+<td>verhindert die Verwendung der Erweiterungen von RandR 1.2 durch die
+neuen X.org-Treiber und nutzt die alten Techniken zur Abfrage der
+Monitoreigenschaften</td>
 </tr>
 <tr class="odd">
 <td>screen</td>
 <td>1280x1024</td>
-<td>stellt benutzerdefinierte Aufl&ouml;sung f&uuml;r X ein (1280x1024 oder andere Bildschirmaufl&ouml;sungen)</td>
+<td>stellt benutzerdefinierte Aufl&ouml;sung f&uuml;r X ein (1280x1024 oder andere
+Bildschirmaufl&ouml;sungen)</td>
 </tr>
 <tr class="even">
 <td>vsync</td>
 <td>60</td>
-<td>setzt die vertikale Frequenz des Monitors (in Hertz), der Wert ist ein Beispiel</td>
+<td>setzt die vertikale Frequenz des Monitors (in Hertz), der Wert ist
+ein Beispiel</td>
 </tr>
 <tr class="odd">
 <td>xdepth</td>
 <td>Werte: 8 15 16 24</td>
-<td>setzt die Farbtiefe, die von X.org benutzt wird (nicht alle Treiber unterst&uuml;tzen 1 und 4)</td>
+<td>setzt die Farbtiefe, die von X.org benutzt wird (nicht alle Treiber
+unterst&uuml;tzen 1 und 4)</td>
 </tr>
 <tr class="even">
 <td>keytable</td>
@@ -220,7 +277,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="odd">
 <td>xkbmodel</td>
 <td>(z.B.) pc105</td>
-<td>Tastaturtyp, der von X.org benutzt wird (die Zahl bezeichnet die Anzahl der Tasten)</td>
+<td>Tastaturtyp, der von X.org benutzt wird (die Zahl bezeichnet die
+Anzahl der Tasten)</td>
 </tr>
 <tr class="even">
 <td>xkboptions</td>
@@ -235,7 +293,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="even">
 <td>xmode</td>
 <td>800x600</td>
-<td>setzt die Bildschirmaufl&ouml;sung nach dem gegebenen Wert (1024x768, 1600x1200 etc.)</td>
+<td>setzt die Bildschirmaufl&ouml;sung nach dem gegebenen Wert (1024x768,
+1600x1200 etc.)</td>
 </tr>
 <tr class="odd">
 <td>xmodule or xdriver</td>
@@ -245,26 +304,34 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="even">
 <td>xrandr</td>
 <td></td>
-<td>erzwingt X.org-Konfiguration unter Verwendung der neuen RandR-1.2-Erweiterungen der X.org-Treiber</td>
+<td>erzwingt X.org-Konfiguration unter Verwendung der neuen
+RandR-1.2-Erweiterungen der X.org-Treiber</td>
 </tr>
 <tr class="odd">
 <td>xrate</td>
 <td>XX</td>
-<td>erzwingt eine bevorzugte Wiederholungsfrequenz bei Treibern, die durch RandR 1.2 unterst&uuml;tzt sind. Diese Option muss in Verbindung mit der Bootoption xmode verwendet werden. Eine ausf&uuml;hrliche Dokumentation findet sich <a target="_blank" href="http://wiki.debian.org/XStrikeForce/HowToRandR12">hier</a></td>
+<td>erzwingt eine bevorzugte Wiederholungsfrequenz bei Treibern, die
+durch RandR 1.2 unterst&uuml;tzt sind. Diese Option muss in Verbindung mit
+der Bootoption xmode verwendet werden. Eine ausf&uuml;hrliche Dokumentation
+findet sich <a
+href="http://wiki.debian.org/XStrikeForce/HowToRandR12">hier</a></td>
 </tr>
 <tr class="even">
 <td>xhrefresh</td>
 <td>75</td>
-<td>setzt die horizontale Frequenz des Monitors f&uuml;r X (in Kilohertz), der Wert ist Beispiel</td>
+<td>setzt die horizontale Frequenz des Monitors f&uuml;r X (in Kilohertz),
+der Wert ist Beispiel</td>
 </tr>
 <tr class="odd">
 <td>xvrefresh</td>
 <td>60</td>
-<td>setzt die vertikale Frequenz des Monitors f&uuml;r X (in Hertz), der Wert ist Beispiel</td>
+<td>setzt die vertikale Frequenz des Monitors f&uuml;r X (in Hertz), der Wert
+ist Beispiel</td>
 </tr>
 </tbody>
 </table>
-<h3 id="allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des Linux-Kernels</h3>
+<h3 id="allgemeine-parameter-des-linux-kernels">Allgemeine Parameter des
+Linux-Kernels</h3>
 <table>
 <colgroup>
 <col style="width: 17%" />
@@ -287,7 +354,10 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="even">
 <td>1, 3, 5</td>
 <td>(z.B.) 3</td>
-<td>Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite <a href="./sys-admin-gen_de.html#systemd-target-ehemals-runlevel">Runlevel - Ziel-Unit</a></td>
+<td>Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile
+eingeben kann. Siehe auch die Handbuchseite <a
+href="./sys-admin-gen_de.html#systemd-target-ehemals-runlevel">Runlevel
+- Ziel-Unit</a></td>
 </tr>
 <tr class="odd">
 <td>irqpoll</td>
@@ -327,7 +397,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="even">
 <td>nosmp</td>
 <td></td>
-<td>verwendet keinen Symmetric Multi-Prozessor (mehrere CPUs oder CPUs mit Hyper-Threading)</td>
+<td>verwendet keinen Symmetric Multi-Prozessor (mehrere CPUs oder CPUs
+mit Hyper-Threading)</td>
 </tr>
 <tr class="odd">
 <td>pci</td>
@@ -347,14 +418,19 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <tr class="even">
 <td>video</td>
 <td>(z.B.) DVI-0:800x600</td>
-<td>F&uuml;r Grafikkarten mit aktiviertem KMS. Dies gilt f&uuml;r Intel- und ATI-Grafikkarten (Letztere mit Radeon-Treiber), wobei DVI-X/LVDS-X die Video-Ausgabe ist, die von xrandr gezeigt wird.</td>
+<td>F&uuml;r Grafikkarten mit aktiviertem KMS. Dies gilt f&uuml;r Intel- und
+ATI-Grafikkarten (Letztere mit Radeon-Treiber), wobei DVI-X/LVDS-X die
+Video-Ausgabe ist, die von xrandr gezeigt wird.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="vga-codes">VGA-Codes</h3>
-<p>Die folgenden Tabellen listen die Werte, die mit dem allgemeinen Parameter <code>vga</code> angegeben werden k&ouml;nnen.<br />
-Ein Anwendungsbeispiel ist <code>vga=791</code> (VESA-Code, Aufl&ouml;sung 1024x768 bei 64000 Farben)</p>
-<p>Probleme bei Netbooks oder anderen Bildschirmaufl&ouml;sungen k&ouml;nnen mit der Eingabe von <code>vga=0</code> in die Grubzeile gel&ouml;st werden.</p>
+<p>Die folgenden Tabellen listen die Werte, die mit dem allgemeinen
+Parameter <code>vga</code> angegeben werden k&ouml;nnen.<br />
+Ein Anwendungsbeispiel ist <code>vga=791</code> (VESA-Code, Aufl&ouml;sung
+1024x768 bei 64000 Farben)</p>
+<p>Probleme bei Netbooks oder anderen Bildschirmaufl&ouml;sungen k&ouml;nnen mit
+der Eingabe von <code>vga=0</code> in die Grubzeile gel&ouml;st werden.</p>
 <p><strong>Dezimal</strong></p>
 <table>
 <thead>
@@ -440,7 +516,15 @@ Ein Anwendungsbeispiel ist <code>vga=791</code> (VESA-Code, Aufl&ouml;sung 1024x
 </tbody>
 </table>
 <p><strong>VESA</strong></p>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Farben</th>

@@ -36,48 +36,91 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#ssh">SSH</a>
 <ul>
 <li><a href="#securing-ssh">Securing SSH</a></li>
-<li><a href="#ssh-for-x-window-programs">SSH for X Window Programs</a></li>
+<li><a href="#ssh-for-x-window-programs">SSH for X Window
+Programs</a></li>
 <li><a href="#copy-scp-via-ssh">Copy scp via ssh</a></li>
 <li><a href="#ssh-with-dolphin">SSH with Dolphin</a></li>
-<li><a href="#sshfs---mount-on-a-remote-computer">SSHFS - mount on a remote computer</a></li>
+<li><a href="#sshfs---mount-on-a-remote-computer">SSHFS - mount on a
+remote computer</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="ssh">SSH</h2>
-<p><strong>Definition of SSH from <a target="_blank" href="http://de.wikipedia.org/wiki/Secure_Shell">Wikipedia</a></strong> :</p>
-<p>Secure Shell or SSH refers to both a network protocol and corresponding programs that can be used to establish an encrypted network connection with a remote device in a secure manner. Often this method is used to bring a remote command line to the local computer, i.e. the local console displays the output of the remote console and the local keyboard input is sent to the remote computer. This gives the effect of sitting in front of the remote console, which can conveniently be used for remote maintenance of, for example, a root server located in a remote data center. The newer protocol version SSH-2 offers further functions like data transfer via SFTP.</p>
-<p>IANA has assigned TCP port 22 to the protocol, but any other ports can be selected in the daemon’s configuration files to make attacks more difficult, for example, since the SSH port is not known to the attacker.</p>
+<p><strong>Definition of SSH from <a
+href="http://de.wikipedia.org/wiki/Secure_Shell">Wikipedia</a></strong>
+:</p>
+<p>Secure Shell or SSH refers to both a network protocol and
+corresponding programs that can be used to establish an encrypted
+network connection with a remote device in a secure manner. Often this
+method is used to bring a remote command line to the local computer,
+i.e. the local console displays the output of the remote console and the
+local keyboard input is sent to the remote computer. This gives the
+effect of sitting in front of the remote console, which can conveniently
+be used for remote maintenance of, for example, a root server located in
+a remote data center. The newer protocol version SSH-2 offers further
+functions like data transfer via SFTP.</p>
+<p>IANA has assigned TCP port 22 to the protocol, but any other ports
+can be selected in the daemon’s configuration files to make attacks more
+difficult, for example, since the SSH port is not known to the
+attacker.</p>
 <h3 id="securing-ssh">Securing SSH</h3>
-<p>It is not secure to allow root logins via SSH. It is important not to make root logins the default because Debian should be secure, not insecure. Similarly, attackers should not be able to perform a wordlist-based password attack (brute force attack) on the SSH login over ten minutes. Therefore, it makes sense to limit the login time window as well as the number of possible attempts.</p>
-<p>To make SSH more secure, use a text editor of your choice to edit the file <code>/etc/ssh/sshd_config</code>.</p>
-<p><strong>The following settings can be adjusted to increase security:</strong></p>
+<p>It is not secure to allow root logins via SSH. It is important not to
+make root logins the default because Debian should be secure, not
+insecure. Similarly, attackers should not be able to perform a
+wordlist-based password attack (brute force attack) on the SSH login
+over ten minutes. Therefore, it makes sense to limit the login time
+window as well as the number of possible attempts.</p>
+<p>To make SSH more secure, use a text editor of your choice to edit the
+file <code>/etc/ssh/sshd_config</code>.</p>
+<p><strong>The following settings can be adjusted to increase
+security:</strong></p>
 <ul>
 <li><p><code>Port &lt;desired port&gt;:</code><br />
-This entry must point to the port that is enabled on the router for forwarding. If you don’t know what to do here, you should reconsider using SSH for remote control. Debian sets port 22 as default. However, it is advisable to use a port outside the default scan range, so we use port 5874 as example:</p>
+This entry must point to the port that is enabled on the router for
+forwarding. If you don’t know what to do here, you should reconsider
+using SSH for remote control. Debian sets port 22 as default. However,
+it is advisable to use a port outside the default scan range, so we use
+port 5874 as example:</p>
 <pre><code>Port 5874</code></pre></li>
 <li><p><code>ListenAddress &lt;IP of the computer or network interface&gt;:</code><br />
-Since the port is forwarded by the router, the computer must use a static IP address unless a local DNS server is used. But if something as complicated as SSH is to be set up using a local DNS server and these instructions are needed, a serious error can occur easily. We’ll use a static IP for the example:</p>
+Since the port is forwarded by the router, the computer must use a
+static IP address unless a local DNS server is used. But if something as
+complicated as SSH is to be set up using a local DNS server and these
+instructions are needed, a serious error can occur easily. We’ll use a
+static IP for the example:</p>
 <pre><code>ListenAddress 192.168.2.134</code></pre>
-<p>Protocol 2 is already default in Debian, but you should be sure and therefore check again.</p></li>
+<p>Protocol 2 is already default in Debian, but you should be sure and
+therefore check again.</p></li>
 <li><p><code>LoginGraceTime &lt;timeframe of login&gt;:</code><br />
-By deault, the allowed time is an absurd 600 seconds. Since it usually doesn’t take ten minutes to enter a username and password, let’s set a slightly more reasonable amount of time:</p>
+By deault, the allowed time is an absurd 600 seconds. Since it usually
+doesn’t take ten minutes to enter a username and password, let’s set a
+slightly more reasonable amount of time:</p>
 <pre><code>LoginGraceTime 45</code></pre>
-<p>Now you have 45 seconds to log in, and hackers don’t have ten minutes each time they try to crack the password.</p></li>
+<p>Now you have 45 seconds to log in, and hackers don’t have ten minutes
+each time they try to crack the password.</p></li>
 <li><p><code>PermitRootLogin &lt;yes&gt;:</code><br />
-Why Debian gives permission to log in as <strong>root</strong> here is incomprehensible. We correct to ‘no’:</p>
+Why Debian gives permission to log in as <strong>root</strong> here is
+incomprehensible. We correct to ‘no’:</p>
 <pre><code>PermitRootLogin no
 StrictModes yes</code></pre></li>
 <li><p><code>MaxAuthTries &lt;number of allowed login attempts&gt;:</code><br />
 More than 3 or 4 attempts should not be allowed:</p>
 <pre><code>MaxAuthTries 3</code></pre></li>
 </ul>
-<p><strong>The following settings must be added if they are not present:</strong></p>
+<p><strong>The following settings must be added if they are not
+present:</strong></p>
 <ul>
 <li><p><code>AllowUsers &lt;xxx&gt;:</code><br />
-Usernames which are allowed to access via SSH, separated by spaces. Only registered users can use the access, and only with user rights. With <code>adduser</code> you should add a user that is specifically meant to use SSH:</p>
+Usernames which are allowed to access via SSH, separated by spaces. Only
+registered users can use the access, and only with user rights. With
+<code>adduser</code> you should add a user that is specifically meant to
+use SSH:</p>
 <pre><code>AllowUsers whoever1 whoever2</code></pre></li>
 <li><p><code>PermitEmptyPasswords &lt;xxx&gt;:</code><br />
-The user should be given a nice and long password that can’t be guessed in a million years. They should be the only one with SSH access. Once logged in, they can become <strong>root</strong> with <strong><code>su</code></strong>:</p>
+The user should be given a nice and long password that can’t be guessed
+in a million years. They should be the only one with SSH access. Once
+logged in, they can become <strong>root</strong> with
+<strong><code>su</code></strong>:</p>
 <pre><code>PermitEmptyPasswords no</code></pre></li>
 <li><p><code>PasswordAuthentication &lt;xxx&gt;:</code><br />
 Obviously, ‘yes’ must be set here (unless you use a KeyLogin).</p>
@@ -85,85 +128,135 @@ Obviously, ‘yes’ must be set here (unless you use a KeyLogin).</p>
 </ul>
 <p>Finally:</p>
 <pre><code>systemctl restart ssh</code></pre>
-<p>Now you have a somewhat secure SSH configuration. Not completely secure, just better, especially if you have added a user specifically for using SSH.</p>
+<p>Now you have a somewhat secure SSH configuration. Not completely
+secure, just better, especially if you have added a user specifically
+for using SSH.</p>
 <h3 id="ssh-for-x-window-programs">SSH for X Window Programs</h3>
-<p><strong><code>ssh -X</code></strong> allows you to connect to a remote computer and display its X graphics server on your own local computer. You enter the command as <strong>user</strong> (not <strong>root</strong>) (and note that X is a capital letter):</p>
+<p><strong><code>ssh -X</code></strong> allows you to connect to a
+remote computer and display its X graphics server on your own local
+computer. You enter the command as <strong>user</strong> (not
+<strong>root</strong>) (and note that X is a capital letter):</p>
 <pre><code>$ ssh -X username@xxx.xxx.xxx.xxx (or IP)</code></pre>
-<p>Enter the password for the remote computer’s username and start a graphical application in the shell. Examples:</p>
+<p>Enter the password for the remote computer’s username and start a
+graphical application in the shell. Examples:</p>
 <pre><code>$ iceweasel OR oocalc OR oowriter OR kspread</code></pre>
-<p>On very slow connections, it may be advantageous to use the compression option to increase the transfer rate. However, for fast connections, the opposite effect may occur:</p>
+<p>On very slow connections, it may be advantageous to use the
+compression option to increase the transfer rate. However, for fast
+connections, the opposite effect may occur:</p>
 <pre><code>$ ssh -C -X username@xxx.xxx.xxx.xxx (or IP)</code></pre>
 <p>More information:</p>
 <pre><code>$ man ssh</code></pre>
-<p><strong>Note:</strong> If ssh refuses a connection and you get an error message, search in <code>$HOME</code> for the hidden directory <code>.ssh</code>, delete the file <code>known_hosts</code> and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).</p>
+<p><strong>Note:</strong> If ssh refuses a connection and you get an
+error message, search in <code>$HOME</code> for the hidden directory
+<code>.ssh</code>, delete the file <code>known_hosts</code> and try a
+new connection. This problem occurs mainly when you have assigned the IP
+address dynamically (DCHP).</p>
 <h3 id="copy-scp-via-ssh">Copy scp via ssh</h3>
-<p><strong>scp</strong> is a command line utility (Terminal/CLI) to copy files between network computers. It uses ssh for authentication and secure file transfer, so scp requires a password or passphrase to log in.</p>
-<p>If you have ssh rights on a network PC or network server, scp allows you to copy partitions, directories, or files to or from a network computer (or an area on it) that you have access rights to. This can be, for example, a PC or server on the local network, a computer on a remote network, or a local USB drive. The copy operation can take place between remote computers/storage devices.</p>
-<p>It is also possible to recursively copy entire partitions or directories with <strong><code>scp -r</code></strong>. Note that this command also follows symbolic links in the directory tree.</p>
+<p><strong>scp</strong> is a command line utility (Terminal/CLI) to copy
+files between network computers. It uses ssh for authentication and
+secure file transfer, so scp requires a password or passphrase to log
+in.</p>
+<p>If you have ssh rights on a network PC or network server, scp allows
+you to copy partitions, directories, or files to or from a network
+computer (or an area on it) that you have access rights to. This can be,
+for example, a PC or server on the local network, a computer on a remote
+network, or a local USB drive. The copy operation can take place between
+remote computers/storage devices.</p>
+<p>It is also possible to recursively copy entire partitions or
+directories with <strong><code>scp -r</code></strong>. Note that this
+command also follows symbolic links in the directory tree.</p>
 <p><strong>Examples</strong></p>
 <ol type="1">
 <li><p>Copying a partition:</p>
 <pre><code>scp -r &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/ /media/diskXpartX/</code></pre></li>
-<li><p>Copying a directory on a partition, in this case a directory named <code>photos</code> in <code>$HOME</code>:</p>
+<li><p>Copying a directory on a partition, in this case a directory
+named <code>photos</code> in <code>$HOME</code>:</p>
 <pre><code>scp -r &lt;user&gt;@xxx.xxx.x.xxx:~/photos/ /media/diskXpartX/xx</code></pre></li>
-<li><p>Copying a file in a partition’s directory, in this case a file in <code>$HOME</code>:</p>
+<li><p>Copying a file in a partition’s directory, in this case a file in
+<code>$HOME</code>:</p>
 <pre><code>scp &lt;user&gt;@xxx.xxx.x.xxx:~/filename.txt /media/diskXpartX/xx</code></pre></li>
 <li><p>Copying a file on a partition:</p>
 <pre><code>scp &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/filename.txt /media/diskXpartX/xx</code></pre></li>
-<li><p>If you are in the drive or directory where another directory or file shall be copied to, use only a <strong>.</strong> (dot):</p>
+<li><p>If you are in the drive or directory where another directory or
+file shall be copied to, use only a <strong>.</strong> (dot):</p>
 <pre><code>scp -r &lt;user&gt;@xxx.xxx.x.xxx:/media/disk1part6/filename.txt .</code></pre></li>
 </ol>
 <p>Additional information:</p>
 <pre><code>man scp</code></pre>
 <h3 id="ssh-with-dolphin">SSH with Dolphin</h3>
-<p>Both <em>Dolphin</em> and <em>Krusader</em> are capable of accessing data from a remote computer using the <em>sftp</em> protocol present in ssh.</p>
+<p>Both <em>Dolphin</em> and <em>Krusader</em> are capable of accessing
+data from a remote computer using the <em>sftp</em> protocol present in
+ssh.</p>
 <p>This is how it is done:<br />
 1) Open a new Dolphin window.<br />
-2) The syntax in the address bar is: “sftp://username@ssh-server.com”.</p>
-<p>Example 1: A dialog window opens and asks for the SSH password. Enter the password and click OK:</p>
+2) The syntax in the address bar is:
+“sftp://username@ssh-server.com”.</p>
+<p>Example 1: A dialog window opens and asks for the SSH password. Enter
+the password and click OK:</p>
 <pre><code>sftp://siduction1@remote_hostname_or_ip</code></pre>
-<p>Example 2: You are not asked for a password but connected directly.</p>
+<p>Example 2: You are not asked for a password but connected
+directly.</p>
 <pre><code>sftp://username:password@remote_hostname_or_ip</code></pre>
 <p>For a LAN environment:</p>
 <pre><code>sftp://username@10.x.x.x
 or
 sftp://username@198.x.x.x</code></pre>
-<p>Please enter the correct IP! Afterwards, a dialog window occurs, asking for the ssh password.<br />
-A SSH connection in Dolphin is now established. In this Dolphin window, you can work with the files on the SSH server as if they were local files.</p>
-<p><strong>NOTE: If a port other than 22 (default) is used, it must be specified when using sftp:</strong></p>
+<p>Please enter the correct IP! Afterwards, a dialog window occurs,
+asking for the ssh password.<br />
+A SSH connection in Dolphin is now established. In this Dolphin window,
+you can work with the files on the SSH server as if they were local
+files.</p>
+<p><strong>NOTE: If a port other than 22 (default) is used, it must be
+specified when using sftp:</strong></p>
 <pre><code>sftp://user@ip:port</code></pre>
-<p><em>“user@ip:port”</em> - this is the default syntax for many protocols/programs like sftp and smb.</p>
-<h3 id="sshfs---mount-on-a-remote-computer">SSHFS - mount on a remote computer</h3>
-<p>SSHFS is a simple, fast, and secure method using FUSE to mount a remote filesystem. On the server side, all you need is a running ssh daemon.</p>
+<p><em>“user@ip:port”</em> - this is the default syntax for many
+protocols/programs like sftp and smb.</p>
+<h3 id="sshfs---mount-on-a-remote-computer">SSHFS - mount on a remote
+computer</h3>
+<p>SSHFS is a simple, fast, and secure method using FUSE to mount a
+remote filesystem. On the server side, all you need is a running ssh
+daemon.</p>
 <p>On the client side, you probably need to install sshfs first:</p>
 <pre><code>apt update &amp;&amp; apt install sshfs</code></pre>
-<p><code>fuse3</code> and <code>groups</code> are already on the ISO and do not need to be installed separately.</p>
+<p><code>fuse3</code> and <code>groups</code> are already on the ISO and
+do not need to be installed separately.</p>
 <p>Mounting a remote filesystem is very easy:</p>
 <pre><code>sshfs -o idmap=user username@remote_hostname:directory local_mountpoint</code></pre>
-<p>If no specific directory is specified, the remote user’s home directory will be mounted. Please note: the colon <em>“:”</em> is mandatory even if no directory is specified!</p>
-<p>Once mounted, the remote directory behaves like any other local file system. You can browse, read and modify files, and execute scripts just like on a local file system.</p>
-<p>Mounting the remote host is accomplished with the following command:</p>
+<p>If no specific directory is specified, the remote user’s home
+directory will be mounted. Please note: the colon <em>“:”</em> is
+mandatory even if no directory is specified!</p>
+<p>Once mounted, the remote directory behaves like any other local file
+system. You can browse, read and modify files, and execute scripts just
+like on a local file system.</p>
+<p>Mounting the remote host is accomplished with the following
+command:</p>
 <pre><code>fusermount -u local_mountpoint</code></pre>
-<p>If you use sshfs regularly, it is recommended to make an entry in <code>/etc/fstab</code> (all in one line):</p>
+<p>If you use sshfs regularly, it is recommended to make an entry in
+<code>/etc/fstab</code> (all in one line):</p>
 <pre><code>sshfs#remote_hostname://remote_directory /local_mount_point
  fuse -o idmap=user ,allow_other,uid=1000,gid=1000,noauto,
  fsname=sshfs#remote_hostname://remote_directory 0 0 </code></pre>
-<p>Next, remove the comment character before <em>“user_allow_other”</em> in the file <code>/etc/fuse.conf</code>:</p>
+<p>Next, remove the comment character before <em>“user_allow_other”</em>
+in the file <code>/etc/fuse.conf</code>:</p>
 <pre><code># Allow non-root users to specify the &#39;allow_other&#39;
 # or &#39;allow_root&#39; mount options.
 #
 user_allow_other</code></pre>
-<p>This allows any user in the fuse group to mount or unmount the filesystem:</p>
+<p>This allows any user in the fuse group to mount or unmount the
+filesystem:</p>
 <pre><code>mount /path/to/mount/point # mount
 umount /path/to/mount/point # unmount</code></pre>
 <p>Use this command to check if you are a member of the fuse group:</p>
 <pre><code>cat /etc/group | grep fuse</code></pre>
 <p>The answer should look something like this:</p>
 <pre><code>fuse:x:117: &lt;username&gt;</code></pre>
-<p>If the username is not listed, use the <code>adduser</code> command as <strong>root</strong>:</p>
+<p>If the username is not listed, use the <code>adduser</code> command
+as <strong>root</strong>:</p>
 <pre><code>adduser &lt;username&gt; fuse</code></pre>
-<p><strong>Note:</strong> The user will not be a member of the group “fuse” until he logs in again.<br />
-Now the desired username should be listed and the following command should be executable:</p>
+<p><strong>Note:</strong> The user will not be a member of the group
+“fuse” until he logs in again.<br />
+Now the desired username should be listed and the following command
+should be executable:</p>
 <pre><code>mount local_mountpoint
 
     and

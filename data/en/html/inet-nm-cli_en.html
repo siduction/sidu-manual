@@ -33,51 +33,97 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#network-manager-command-line-tool">Network Manager Command Line Tool</a>
+<li><a href="#network-manager-command-line-tool">Network Manager Command
+Line Tool</a>
 <ul>
 <li><a href="#use-network-manager">Use Network Manager</a></li>
 <li><a href="#further-information">Further information</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="network-manager-command-line-tool">Network Manager Command Line Tool</h2>
+<h2 id="network-manager-command-line-tool">Network Manager Command Line
+Tool</h2>
 <p><strong>General hints</strong></p>
-<p>The network manager is now integrated in all graphical user interfaces of siduction and is mostly self-explanatory. It replaces the network commands <code>ifup</code>, <code>ifdown</code>, and <code>ifconfig</code> used in the terminal. The prejudice that the network manager is not suitable for the command line or even runs unstable belongs to the realm of fairy tales. If no graphical user interface is available, or the command line is preferred, <strong>nmcli</strong> is a powerful command line alternative for the daily use of the network manager.</p>
-<p>In the following examples we assume two configured connections: a Wi-Fi connection (name: <em>“Unicorn_2”</em>, interface <em>“wtx7ckd90b81bbd”</em>, (formerly: wlan)) and a wired connection (name: <em>“WiredConnection_1”</em>, interface <em>“evp0s3f76”</em> (former: eth0)). Please adapt the connection names to your circumstances.</p>
+<p>The network manager is now integrated in all graphical user
+interfaces of siduction and is mostly self-explanatory. It replaces the
+network commands <code>ifup</code>, <code>ifdown</code>, and
+<code>ifconfig</code> used in the terminal. The prejudice that the
+network manager is not suitable for the command line or even runs
+unstable belongs to the realm of fairy tales. If no graphical user
+interface is available, or the command line is preferred,
+<strong>nmcli</strong> is a powerful command line alternative for the
+daily use of the network manager.</p>
+<p>In the following examples we assume two configured connections: a
+Wi-Fi connection (name: <em>“Unicorn_2”</em>, interface
+<em>“wtx7ckd90b81bbd”</em>, (formerly: wlan)) and a wired connection
+(name: <em>“WiredConnection_1”</em>, interface <em>“evp0s3f76”</em>
+(former: eth0)). Please adapt the connection names to your
+circumstances.</p>
 <p><strong>Installation of the Network Manager</strong></p>
-<p>If the network manager is not available on your system, you can install it. The following command will install all packages you need to configure every possible connection type (mobile broadband, Wi-Fi, and LAN connections), as well as the graphical KDE plasma widget for the NM. Please enter everything in one line and remember that you need <strong>root</strong> privileges.</p>
+<p>If the network manager is not available on your system, you can
+install it. The following command will install all packages you need to
+configure every possible connection type (mobile broadband, Wi-Fi, and
+LAN connections), as well as the graphical KDE plasma widget for the NM.
+Please enter everything in one line and remember that you need
+<strong>root</strong> privileges.</p>
 <pre><code># apt install network-manager modemmanager mobile-broadband-provider-info network-manager-pptp
  plasma-nm network-manager-vpnc network-manager-openvpn</code></pre>
 <h3 id="use-network-manager">Use Network Manager</h3>
-<p>The entries can be made both in a virtual terminal (key combination <strong><code>Ctr</code></strong>+<strong><code>Shift</code></strong>+<strong><code>F2</code></strong>) and in the console of a graphical user interface. In the examples shown, the information has been changed for privacy reasons.</p>
+<p>The entries can be made both in a virtual terminal (key combination
+<strong><code>Ctr</code></strong>+<strong><code>Shift</code></strong>+<strong><code>F2</code></strong>)
+and in the console of a graphical user interface. In the examples shown,
+the information has been changed for privacy reasons.</p>
 <p><strong>Show configured connections</strong></p>
-<p>The command <strong><code>nmcli c</code></strong> can be used to display the configured connections that have been created on the system.</p>
+<p>The command <strong><code>nmcli c</code></strong> can be used to
+display the configured connections that have been created on the
+system.</p>
 <figure>
-<img src="./images-en/nmcli/nmcli-c.png" alt="" /><figcaption>nmcli c</figcaption>
+<img src="./images-en/nmcli/nmcli-c.png" alt="nmcli c" />
+<figcaption aria-hidden="true">nmcli c</figcaption>
 </figure>
-<p>In the above example, there are four connections: WLAN, 2x LAN, and a mobile broadband connection.</p>
+<p>In the above example, there are four connections: WLAN, 2x LAN, and a
+mobile broadband connection.</p>
 <p><strong>Show information about Wi-Fi networks</strong>.</p>
-<p>To display all available Wi-Fi networks in a compact form, use the command <strong><code>nmcli dev wifi list</code></strong>.</p>
+<p>To display all available Wi-Fi networks in a compact form, use the
+command <strong><code>nmcli dev wifi list</code></strong>.</p>
 <figure>
-<img src="./images-en/nmcli/nmcli-list.png" alt="" /><figcaption>nmcli dev wifi list</figcaption>
+<img src="./images-en/nmcli/nmcli-list.png" alt="nmcli dev wifi list" />
+<figcaption aria-hidden="true">nmcli dev wifi list</figcaption>
 </figure>
 <p><strong>Display configured devices</strong></p>
-<p>If you want to know which devices (interfaces) are known to the network manager, enter <strong><code>nmcli d</code></strong>.</p>
+<p>If you want to know which devices (interfaces) are known to the
+network manager, enter <strong><code>nmcli d</code></strong>.</p>
 <figure>
-<img src="./images-en/nmcli/nmcli-d.png" alt="" /><figcaption>nmcli d</figcaption>
+<img src="./images-en/nmcli/nmcli-d.png" alt="nmcli d" />
+<figcaption aria-hidden="true">nmcli d</figcaption>
 </figure>
-<p>Very detailed information (properties) about the own available connections can be displayed through <strong><code>nmcli dev show</code></strong>. Here only the excerpt for the Wi-Fi:</p>
+<p>Very detailed information (properties) about the own available
+connections can be displayed through
+<strong><code>nmcli dev show</code></strong>. Here only the excerpt for
+the Wi-Fi:</p>
 <figure>
-<img src="./images-en/nmcli/nmcli-dev-show.png" alt="" /><figcaption>nmcli dev show</figcaption>
+<img src="./images-en/nmcli/nmcli-dev-show.png" alt="nmcli dev show" />
+<figcaption aria-hidden="true">nmcli dev show</figcaption>
 </figure>
-<p>The Wi-Fi access data can be displayed with <strong><code>nmcli dev wifi show</code></strong>.</p>
+<p>The Wi-Fi access data can be displayed with
+<strong><code>nmcli dev wifi show</code></strong>.</p>
 <figure>
-<img src="./images-en/nmcli/nmcli-dev-wifi-show.png" alt="" /><figcaption>nmcli dev wifi show</figcaption>
+<img src="./images-en/nmcli/nmcli-dev-wifi-show.png"
+alt="nmcli dev wifi show" />
+<figcaption aria-hidden="true">nmcli dev wifi show</figcaption>
 </figure>
-<p>The additionally generated QR code simplifies the login for smartphones and tablets.</p>
+<p>The additionally generated QR code simplifies the login for
+smartphones and tablets.</p>
 <p><strong>Switch connections</strong></p>
-<p>To change a connection type, e.g. from LAN to Wi-Fi connection, you have to disconnect the existing active connection and activate the new one. Here, you definitely have to specify the interface because a <strong><code>nmcli con down id &lt;name&gt;</code></strong> will work, but the connection, if it is a system connection, will be re-established immediately.</p>
-<p>To prevent the automatic connection, the command <strong><code>nmcli dev disconnect &lt;interface_name&gt;</code></strong> is useful.<br />
+<p>To change a connection type, e.g. from LAN to Wi-Fi connection, you
+have to disconnect the existing active connection and activate the new
+one. Here, you definitely have to specify the interface because a
+<strong><code>nmcli con down id &lt;name&gt;</code></strong> will work,
+but the connection, if it is a system connection, will be re-established
+immediately.</p>
+<p>To prevent the automatic connection, the command
+<strong><code>nmcli dev disconnect &lt;interface_name&gt;</code></strong>
+is useful.<br />
 First we terminate the LAN connection and then query the status:</p>
 <pre><code># nmcli dev disconnect evp0s3f76
 Device &quot;evp0s3f76&quot; has been disconnected successfully.
@@ -87,7 +133,8 @@ evp0s3f76 ethernet not connected --
 wtx7ckd90b81bbd wifi not connected --
 evp3u3 ethernet not available --
 ttyACM0 gsm not connected --</code></pre>
-<p>Now enable the Wi-Fi connection with <strong><code>nmcli con up id &lt;connection_name&gt;</code></strong>:</p>
+<p>Now enable the Wi-Fi connection with
+<strong><code>nmcli con up id &lt;connection_name&gt;</code></strong>:</p>
 <pre><code># nmcli con up id Unicorn_2
 Connection was successfully activated 
 # nmcli dev status
@@ -96,7 +143,8 @@ wtx7ckd90b81bbd wifi connected Unicorn_2
 evp0s3f76 ethernet not connected --
 evp3u3 ethernet not available --
 ttyACM0 gsm not connected --</code></pre>
-<p>You can also put everything in one line, then the change will take effect immediately.</p>
+<p>You can also put everything in one line, then the change will take
+effect immediately.</p>
 <p>From LAN to Wi-Fi:</p>
 <pre><code>nmcli dev disconnect evp0s3f76 &amp;&amp; sleep 2 &amp;&amp; nmcli con up id Unicorn_2</code></pre>
 <p>Reversed from Wi-Fi to LAN:</p>
@@ -104,7 +152,8 @@ ttyACM0 gsm not connected --</code></pre>
 <h3 id="further-information">Further information</h3>
 <ul>
 <li><pre><code>man nmcli</code></pre></li>
-<li><a target="_blank" href="https://help.ubuntu.com/community/NetworkManager">Ubuntu community NetworkManager</a></li>
+<li><a target="_blank" href="https://help.ubuntu.com/community/NetworkManager">Ubuntu
+community NetworkManager</a></li>
 </ul>
 <div id="rev">
 Last edited: 2022/04/03

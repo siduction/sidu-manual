@@ -41,29 +41,68 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="burn-iso">Burn ISO</h2>
-<p>Before burning the ISO image file to a DVD, you should always check it using the md5sum or sha256sum provided by siduction. This may save a lot of time troubleshooting a changed or corrupted file.<br />
-Detailed instructions can be found in the manual chapter <a href="./iso-dl_en.html#integrity-check">ISO Download, Integrity Check</a>.</p>
+<p>Before burning the ISO image file to a DVD, you should always check
+it using the md5sum or sha256sum provided by siduction. This may save a
+lot of time troubleshooting a changed or corrupted file.<br />
+Detailed instructions can be found in the manual chapter <a
+href="./iso-dl_en.html#integrity-check">ISO Download, Integrity
+Check</a>.</p>
 <p class="warning">
-<strong>IMPORTANT INFORMATION:</strong> <br />siduction, as a Linux LIVE DVD/CD, is very heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (disk-at-once), and not faster than eight times (8x).
+<strong>IMPORTANT INFORMATION:</strong> <br />siduction, as a Linux LIVE
+DVD/CD, is very heavily compressed. For this reason, special attention
+must be paid to the burning method of the image. Please use high quality
+media, burning in DAO mode (disk-at-once), and not faster than eight
+times (8x).
 </p>
-<p>We recommend, however, if the hardware supports booting from USB, to put the image on a USB stick or SD memory card. Instructions for this can be found on the manual page <a href="./iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">ISO to USB stick / memory card</a>.</p>
+<p>We recommend, however, if the hardware supports booting from USB, to
+put the image on a USB stick or SD memory card. Instructions for this
+can be found on the manual page <a
+href="./iso-to-usb-sd_en.html#iso-to-usb-stick---memory-card">ISO to USB
+stick / memory card</a>.</p>
 <h3 id="burn-dvd-with-linux">Burn DVD with Linux</h3>
-<p>If you already have Linux on your computer, you can create the DVD with any installed burning program. Depending on the desktop environment, these are the programs<br />
+<p>If you already have Linux on your computer, you can create the DVD
+with any installed burning program. Depending on the desktop
+environment, these are the programs<br />
 + <strong><code>K3b</code></strong> for KDE<br />
 + <strong><code>Brasero</code></strong> for Gnome<br />
 + <strong><code>Xfburn</code></strong> for XFCE, LXQt, and Gnome</p>
-<p>The burning programs are largely self-explanatory in their operation.<br />
-In K3b you select <code>More actions...</code> -&gt; <code>Write image...</code>.<br />
+<p>The burning programs are largely self-explanatory in their
+operation.<br />
+In K3b you select <code>More actions...</code> -&gt;
+<code>Write image...</code>.<br />
 In Xfburn and Brasero you should click <code>Burn image</code>.<br />
-Then select the ISO file to be burned (e.g. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) and set the burning mode <code>DAO</code> (Disk At Once) or <code>Automatic</code> and start the burning process.</p>
-<p>Occasional problems when burning the live DVD are mostly caused by the graphical frontend applications. This can be worked around by using the very easy to use script <code>burniso</code> on the console. The manual page <a href="./no-gui-burn_en.html#burn-live-dvd-without-gui">Burn DVD without GUI</a> explains the use of burniso briefly and exactly, as well as other commands to detect available hardware, compile data, and burn CD/DVDs.</p>
+Then select the ISO file to be burned
+(e.g. siduction-21.3.0-wintersky-kde-amd64-202112231751.iso) and set the
+burning mode <code>DAO</code> (Disk At Once) or <code>Automatic</code>
+and start the burning process.</p>
+<p>Occasional problems when burning the live DVD are mostly caused by
+the graphical frontend applications. This can be worked around by using
+the very easy to use script <code>burniso</code> on the console. The
+manual page <a
+href="./no-gui-burn_en.html#burn-live-dvd-without-gui">Burn DVD without
+GUI</a> explains the use of burniso briefly and exactly, as well as
+other commands to detect available hardware, compile data, and burn
+CD/DVDs.</p>
 <h3 id="burn-dvd-with-windows">Burn DVD with Windows</h3>
-<p>Of course, you can also burn the DVD on Windows. The downloaded file must be burned to a DVD as an ISO image and not from Windows Explorer as a file.<br />
-There are several good programs that extend the built-in CD and DVD burning feature introduced with Windows Vista to burn ISO files. Here are just two examples.</p>
+<p>Of course, you can also burn the DVD on Windows. The downloaded file
+must be burned to a DVD as an ISO image and not from Windows Explorer as
+a file.<br />
+There are several good programs that extend the built-in CD and DVD
+burning feature introduced with Windows Vista to burn ISO files. Here
+are just two examples.</p>
 <ul>
-<li>The current version of the open source software <a target="_blank" href="https://cdrtfe.sourceforge.io/cdrtfe/index_de.html">cdrtfe</a> is compatible with Windows Vista, 7, 8, 10, and 11. The program can be used to burn ISO images-en, create data discs (CD, DVD, BD), and audio as well as video CD/DVDs. You can install it on Windows or download the zip archive and run <code>cdrtfe</code> after unpacking it without any further installation.<br />
+<li>The current version of the open source software <a
+href="https://cdrtfe.sourceforge.io/cdrtfe/index_de.html">cdrtfe</a> is
+compatible with Windows Vista, 7, 8, 10, and 11. The program can be used
+to burn ISO images-en, create data discs (CD, DVD, BD), and audio as
+well as video CD/DVDs. You can install it on Windows or download the zip
+archive and run <code>cdrtfe</code> after unpacking it without any
+further installation.<br />
 </li>
-<li>The closed-source software <code>CDBurnerXP</code> is a free program that can create data and audio CD/DVDs in addition to burning ISO images-en, and erases rewritable media if necessary. Available from <a target="_blank" href="https://cdburnerxp.de.uptodown.com/windows">CDBurnerXP</a>.</li>
+<li>The closed-source software <code>CDBurnerXP</code> is a free program
+that can create data and audio CD/DVDs in addition to burning ISO
+images-en, and erases rewritable media if necessary. Available from <a
+href="https://cdburnerxp.de.uptodown.com/windows">CDBurnerXP</a>.</li>
 </ul>
 <div id="rev">
 Last edited: 2022/04/11

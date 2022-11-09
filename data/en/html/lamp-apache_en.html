@@ -35,12 +35,16 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#set-up-apache">Set up Apache</a>
 <ul>
-<li><a href="#apache-in-the-file-system">Apache in the file system</a></li>
-<li><a href="#connection-to-the-server">Connection to the server</a></li>
+<li><a href="#apache-in-the-file-system">Apache in the file
+system</a></li>
+<li><a href="#connection-to-the-server">Connection to the
+server</a></li>
 <li><a href="#apache-configuration">Apache configuration</a></li>
 <li><a href="#users-and-permissions">Users and permissions</a></li>
-<li><a href="#security---apache-standard">Security - Apache Standard</a></li>
-<li><a href="#security---other-configurations">Security - other configurations</a></li>
+<li><a href="#security---apache-standard">Security - Apache
+Standard</a></li>
+<li><a href="#security---other-configurations">Security - other
+configurations</a></li>
 <li><a href="#use-https">Use HTTPS</a></li>
 <li><a href="#security-tips">Security Tips</a></li>
 <li><a href="#integration-in-apache2">Integration in Apache2</a></li>
@@ -50,24 +54,43 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </nav>
 <h2 id="set-up-apache">Set up Apache</h2>
 <p>This manual page is based on Apache 2.4.46.</p>
-<p>According to our example from the installation guide, we want to set up a <em>LAMP test server for developers</em> that is directly connected to the workstation PC via LAN. Beyond that, for security reasons, there should be no connection for the server to a local network or even to the Internet.<br />
-The only exception is that the server will be connected to the Internet temporarily and exclusively for system and software updates via a second network interface.</p>
+<p>According to our example from the installation guide, we want to set
+up a <em>LAMP test server for developers</em> that is directly connected
+to the workstation PC via LAN. Beyond that, for security reasons, there
+should be no connection for the server to a local network or even to the
+Internet.<br />
+The only exception is that the server will be connected to the Internet
+temporarily and exclusively for system and software updates via a second
+network interface.</p>
 <h3 id="apache-in-the-file-system">Apache in the file system</h3>
-<p>Debian has fully integrated the Apache files into the file system according to their function:</p>
+<p>Debian has fully integrated the Apache files into the file system
+according to their function:</p>
 <ul>
-<li>the executable program <em>apache2</em> into <code>/usr/sbin/</code></li>
-<li>the installed modules for Apache into <code>/usr/lib/apache2/modules/</code></li>
-<li>files that are also available to other programs into <code>/usr/share/apache2/</code></li>
-<li>the configuration directories and files into <code>/etc/apache2/</code></li>
-<li>the web page created by the user into <code>/var/www/html/</code></li>
-<li>system files required at runtime into <code>/run/apache2/</code>, <code>/run/lock/apache2/</code></li>
+<li>the executable program <em>apache2</em> into
+<code>/usr/sbin/</code></li>
+<li>the installed modules for Apache into
+<code>/usr/lib/apache2/modules/</code></li>
+<li>files that are also available to other programs into
+<code>/usr/share/apache2/</code></li>
+<li>the configuration directories and files into
+<code>/etc/apache2/</code></li>
+<li>the web page created by the user into
+<code>/var/www/html/</code></li>
+<li>system files required at runtime into <code>/run/apache2/</code>,
+<code>/run/lock/apache2/</code></li>
 <li>various log files into <code>/var/log/apache2/</code></li>
 </ul>
-<p>It is important to distinguish between the variables <code>ServerRoot</code> and <code>DocumentRoot</code>.</p>
-<p><strong>ServerRoot</strong> is the configuration directory, i.e. <code>/etc/apache2/</code>.<br />
-<strong>DocumentRoot</strong> contains the web page data, so <code>/var/www/html/</code>.</p>
+<p>It is important to distinguish between the variables
+<code>ServerRoot</code> and <code>DocumentRoot</code>.</p>
+<p><strong>ServerRoot</strong> is the configuration directory,
+i.e. <code>/etc/apache2/</code>.<br />
+<strong>DocumentRoot</strong> contains the web page data, so
+<code>/var/www/html/</code>.</p>
 <h3 id="connection-to-the-server">Connection to the server</h3>
-<p>The connection between the test server and the PC is placed in the IPv4 network segment <strong>192.168.3.xxx</strong>, while the PC’s Internet connection is outside this network segment. The data used are:</p>
+<p>The connection between the test server and the PC is placed in the
+IPv4 network segment <strong>192.168.3.xxx</strong>, while the PC’s
+Internet connection is outside this network segment. The data used
+are:</p>
 <p><strong>server</strong><br />
 IP: 192.168.3.1/24<br />
 name: server1.org<br />
@@ -75,7 +98,8 @@ alias: www.server1.org</p>
 <p><strong>PC</strong><br />
 IP: 192.168.3.10/24<br />
 name: pc1</p>
-<p>We make a backup copy of the <code>*/etc/hosts*</code> file on the server and on the PC and add the necessary lines to both.</p>
+<p>We make a backup copy of the <code>*/etc/hosts*</code> file on the
+server and on the PC and add the necessary lines to both.</p>
 <ul>
 <li><p>server <code>*/etc/hosts*</code>:</p>
 <pre><code>cp /etc/hosts /etc/hosts_$(date +%f)
@@ -85,20 +109,42 @@ echo &quot;192.168.3.10 pc1&quot; &gt;&gt; /etc/hosts</code></pre></li>
 <pre><code>cp /etc/hosts /etc/hosts_$(date +%f)
 echo &quot;192.168.3.1 server1.org www.server1.org&quot; &gt;&gt; /etc/hosts</code></pre></li>
 </ul>
-<p>Next, in <em>NetworkManager</em>, we enter the data for the server in the fields outlined in red. The method is changed from <em>“Automatic (DHCP)”</em> to <em>“Manual”</em> and in the address fields we enter the values mentioned at the beginning.</p>
+<p>Next, in <em>NetworkManager</em>, we enter the data for the server in
+the fields outlined in red. The method is changed from <em>“Automatic
+(DHCP)”</em> to <em>“Manual”</em> and in the address fields we enter the
+values mentioned at the beginning.</p>
 <figure>
-<img src="./images-en/lamp-apache/server_lan.png" alt="" /><figcaption>Server - Data entry in NetworkManager</figcaption>
+<img src="./images-en/lamp-apache/server_lan.png"
+alt="Server - Data entry in NetworkManager" />
+<figcaption aria-hidden="true">Server - Data entry in
+NetworkManager</figcaption>
 </figure>
-<p>Additionally, in the tab <em>“General”</em>, the option <em>“Automatically connect with priority”</em> should be activated.<br />
-Accordingly, we set the appropriate settings on the PC for the used LAN interface.</p>
+<p>Additionally, in the tab <em>“General”</em>, the option
+<em>“Automatically connect with priority”</em> should be
+activated.<br />
+Accordingly, we set the appropriate settings on the PC for the used LAN
+interface.</p>
 <p>On the PC, we test the connection in the console with</p>
 <pre><code>$ ping -c3 www.server1.org</code></pre>
-<p>and, if successful, we immediately check the function of Apache by entering http://www.server1.org/index.html in the address line of the web browser.</p>
+<p>and, if successful, we immediately check the function of Apache by
+entering http://www.server1.org/index.html in the address line of the
+web browser.</p>
 <p>The Apache welcome page with <em>“It works!”</em> should appear.</p>
 <h3 id="apache-configuration">Apache configuration</h3>
-<p>The configuration files and directories are located in the <code>ServerRoot</code> directory <code>/etc/apache2/</code>.<br />
-The central configuration file is <code>apache2.conf</code>. It is usually not edited because many configurations are in separate files. Activation and deactivation is done via sym links. This has the advantage that a number of different configurations are available and only the required ones are included.</p>
-<p>The configuration files are text files, which are created or edited with an editor and <strong>root</strong> permissions. The name of the file may be arbitrary, but the file extension must be <em>“.conf”</em>. The valid directives that may be used in the configuration files are described in detail in the <a target="_blank" href="https://httpd.apache.org/docs/current/en/">Apache documentation</a>.</p>
+<p>The configuration files and directories are located in the
+<code>ServerRoot</code> directory <code>/etc/apache2/</code>.<br />
+The central configuration file is <code>apache2.conf</code>. It is
+usually not edited because many configurations are in separate files.
+Activation and deactivation is done via sym links. This has the
+advantage that a number of different configurations are available and
+only the required ones are included.</p>
+<p>The configuration files are text files, which are created or edited
+with an editor and <strong>root</strong> permissions. The name of the
+file may be arbitrary, but the file extension must be <em>“.conf”</em>.
+The valid directives that may be used in the configuration files are
+described in detail in the <a
+href="https://httpd.apache.org/docs/current/en/">Apache
+documentation</a>.</p>
 <p>The files are located in the directories</p>
 <p><code>/etc/apache2/conf-available</code>,<br />
 <code>/etc/apache2/mods-available</code>, and<br />
@@ -107,24 +153,36 @@ The central configuration file is <code>apache2.conf</code>. It is usually not e
 <p><code>/etc/apache2/conf-enable</code>,<br />
 <code>/etc/apache2/mods-enable</code>, and<br />
 <code>/etc/apache2/sites-enable</code>.</p>
-<p>To enable or disable a <em>“.conf”</em> file, we use <code>a2enconf</code> and <code>a2disconf</code>. This creates or removes the activation links. The command</p>
+<p>To enable or disable a <em>“.conf”</em> file, we use
+<code>a2enconf</code> and <code>a2disconf</code>. This creates or
+removes the activation links. The command</p>
 <pre><code>a2enconf NAME_OF_FILE.conf </code></pre>
-<p>activates the configuration. Deactivation is done accordingly with:</p>
+<p>activates the configuration. Deactivation is done accordingly
+with:</p>
 <pre><code>a2disconf NAME_OF_FILE.conf </code></pre>
-<p>We proceed in the same way for modules and virtual hosts with the commands <code>a2enmod</code>, <code>a2ensite</code> and <code>a2dismod</code>, <code>a2dissite</code>.</p>
-<p>The Apache web server reads the changed configuration with the command</p>
+<p>We proceed in the same way for modules and virtual hosts with the
+commands <code>a2enmod</code>, <code>a2ensite</code> and
+<code>a2dismod</code>, <code>a2dissite</code>.</p>
+<p>The Apache web server reads the changed configuration with the
+command</p>
 <pre><code>systemctl reload apache2.service</code></pre>
-<p>Now we return to our <em>LAMP test server for developers</em> and adjust the configuration to the server data.</p>
+<p>Now we return to our <em>LAMP test server for developers</em> and
+adjust the configuration to the server data.</p>
 <ol type="1">
 <li><p><code>/etc/apache2/apache2.conf</code> file</p>
-<p>It is one of the few exceptions for editing the <code>apache2.conf</code>. We add the following line at the beginning of the <em>“Global configuration”</em> section:</p>
+<p>It is one of the few exceptions for editing the
+<code>apache2.conf</code>. We add the following line at the beginning of
+the <em>“Global configuration”</em> section:</p>
 <pre><code>ServerName 192.168.3.1</code></pre>
-<p>This tells the Apache web server the IP address where the development project should be reachable and suppresses redirections to IP 127.0.1.1 with error messages.</p></li>
+<p>This tells the Apache web server the IP address where the development
+project should be reachable and suppresses redirections to IP 127.0.1.1
+with error messages.</p></li>
 <li><p>New <code>sites</code> file</p>
 <p>With the text editor of our choice, we create the file<br />
 <code>/etc/apache2/sites-available/server1.conf</code>, e.g.</p>
 <pre><code>mcedit /etc/apache2/sites-available/server1.conf</code></pre>
-<p>Then we insert the following content, save the file, and exit the editor.</p>
+<p>Then we insert the following content, save the file, and exit the
+editor.</p>
 <pre><code>&lt;VirtualHost *:80&gt;
 ServerName server1.org
 ServerAlias www.server1.org
@@ -133,7 +191,8 @@ DocumentRoot /var/www/html
 ErrorLog ${APACHE_LOG_DIR}/error_server1.log
 CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
 &lt;/VirtualHost&gt;</code></pre>
-<p>Then we change the configuration to the new <em>VirtualHost</em> and announce the changes to the Apache web server:</p></li>
+<p>Then we change the configuration to the new <em>VirtualHost</em> and
+announce the changes to the Apache web server:</p></li>
 </ol>
 <pre><code># a2ensite server1.conf 
    Enabling site server1.
@@ -145,25 +204,36 @@ CustomLog ${APACHE_LOG_DIR}/access_server1.log combined
 
 systemctl reload apache2.service</code></pre>
 <h3 id="users-and-permissions">Users and permissions</h3>
-<p>The Apache web server runs with the USER.GROUP <em>www-data.www-data</em>" and <code>DocumentRoot</code> belongs to <em>“root.root”</em> immediately after installation.<br />
-To give users write permissions to the files contained in <code>DocumentRoot</code>, a new group should be created specifically for this purpose. It does not make sense to use the existing group <em>www-data</em> because Apache runs with the rights of this group.<br />
+<p>The Apache web server runs with the USER.GROUP
+<em>www-data.www-data</em>” and <code>DocumentRoot</code> belongs to
+<em>“root.root”</em> immediately after installation.<br />
+To give users write permissions to the files contained in
+<code>DocumentRoot</code>, a new group should be created specifically
+for this purpose. It does not make sense to use the existing group
+<em>www-data</em> because Apache runs with the rights of this
+group.<br />
 We name the new group <code>work</code>.</p>
 <p><strong>With CMS</strong></p>
-<p>If a content management system (software for collaborative editing of website content) is added, we prepare <code>DocumentRoot</code> accordingly:</p>
+<p>If a content management system (software for collaborative editing of
+website content) is added, we prepare <code>DocumentRoot</code>
+accordingly:</p>
 <ol type="1">
 <li><p>Create the group and assign it to the user.</p>
 <pre><code>groupadd work
 adduser USERNAME work
 chgrp work /var/www/html</code></pre></li>
 </ol>
-<p>To activate the new permissions you have to log out and log in again, or use the <code>newgrp</code> command as user.</p>
+<p>To activate the new permissions you have to log out and log in again,
+or use the <code>newgrp</code> command as user.</p>
 <pre><code>$ newgrp work</code></pre>
 <ol start="2" type="1">
 <li><p>Set SGID bit for <code>DocumentRoot</code><br />
-so that all added directories and files inherit the group <code>work</code>.</p>
+so that all added directories and files inherit the group
+<code>work</code>.</p>
 <pre><code>chmod g+s /var/www/html</code></pre></li>
 <li><p>Adjust owner and file permissions<br />
-so that unauthorized people don’t get access and the Apache web server runs properly.<br />
+so that unauthorized people don’t get access and the Apache web server
+runs properly.<br />
 Let’s look at the current permissions:</p>
 <pre><code># ls -la /var/www/html
 total 24
@@ -173,7 +243,9 @@ drwxr-xr-x 3 root root 4096 Jan 9, 19:04 ...
              (The parent directory /var/www)
 -rw-r--r-- 1 root work 10701 9 Jan 19:04 index.html
 -rw-r--r-- 1 root work 20 Jan 9, 19:32 info.php</code></pre>
-<p>For <code>DocumentRoot</code> we change the owner to <em>“www-data”</em>, give write permission to the group, and revoke read permission from everyone else as well (all recursively).</p>
+<p>For <code>DocumentRoot</code> we change the owner to
+<em>“www-data”</em>, give write permission to the group, and revoke read
+permission from everyone else as well (all recursively).</p>
 <pre><code>chown -R www-data /var/www/html
 chmod -R g+w /var/www/html
 chmod -R o-r /var/www/html</code></pre>
@@ -184,17 +256,35 @@ dr-xrws--x 2 www-data work 4096 Jan 9 19:32 .
 drwxr-xr-x 3 root root 4096 Jan 9 19:04 ...
 -rw-rw---- 1 www-data work 10701 9 Jan 19:04 index.html
 -rw-rw---- 1 www-data work 20 9 Jan 19:32 info.php</code></pre>
-<p>Now only members of the group <em>work</em> have write permission in <code>DocumentRoot</code>. Apache web server can read and write the files, all others are denied access.</p></li>
+<p>Now only members of the group <em>work</em> have write permission in
+<code>DocumentRoot</code>. Apache web server can read and write the
+files, all others are denied access.</p></li>
 <li><p>Disadvantages of these settings</p>
-<p>When creating new directories and files below <code>DocumentRoot</code>, the owner is the respective <strong>user</strong> and not <em>www-data</em>. This prevents the Apache web server from reading the files.<br />
-The solution is a <em>Systemd Path Unit</em>, which monitors changes below <code>DocumentRoot</code> and adjusts the owner and file permissions. (See the example in the <a href="./systemd-path_en.html#systemd-path">Systemd-Path</a> manual page.)</p></li>
+<p>When creating new directories and files below
+<code>DocumentRoot</code>, the owner is the respective
+<strong>user</strong> and not <em>www-data</em>. This prevents the
+Apache web server from reading the files.<br />
+The solution is a <em>Systemd Path Unit</em>, which monitors changes
+below <code>DocumentRoot</code> and adjusts the owner and file
+permissions. (See the example in the <a
+href="./systemd-path_en.html#systemd-path">Systemd-Path</a> manual
+page.)</p></li>
 </ol>
 <p><strong>Without CMS</strong></p>
-<p>For static websites, a content management system is often not necessary and only constitutes another security risk and increased maintenance effort. In addition to the settings made before, the write permission to <code>DocumentRoot</code> can be revoked from the Apache web server to strengthen security because in case an attacker finds a hole in Apache, this will not give him write permission to <code>DocumentRoot</code>.</p>
+<p>For static websites, a content management system is often not
+necessary and only constitutes another security risk and increased
+maintenance effort. In addition to the settings made before, the write
+permission to <code>DocumentRoot</code> can be revoked from the Apache
+web server to strengthen security because in case an attacker finds a
+hole in Apache, this will not give him write permission to
+<code>DocumentRoot</code>.</p>
 <pre><code>chmod -R u-w /var/www/html</code></pre>
 <h3 id="security---apache-standard">Security - Apache Standard</h3>
-<p>Important safeguards are already included in the file <code>/etc/apache2/apache2.conf</code> by default.</p>
-<p>The following three directives prevent access to the root file system and then release the two directories used by the Apache web server, “/usr/share” and “/var/www”.</p>
+<p>Important safeguards are already included in the file
+<code>/etc/apache2/apache2.conf</code> by default.</p>
+<p>The following three directives prevent access to the root file system
+and then release the two directories used by the Apache web server,
+“/usr/share” and “/var/www”.</p>
 <pre><code>&lt;Directory /&gt;
     Options FollowSymLinks
     AllowOverride None
@@ -211,26 +301,38 @@ The solution is a <em>Systemd Path Unit</em>, which monitors changes below <code
     AllowOverride None
     Require all granted
 &lt;/directory&gt;</code></pre>
-<p>The options <em>“FollowSymLinks”</em> and <em>“Indexes”</em> constitute a security risk and should be changed unless absolutely necessary. See below.</p>
-<p>The following directive disables the display of the files <code>.htaccess</code> and <code>.htpasswd</code>.</p>
+<p>The options <em>“FollowSymLinks”</em> and <em>“Indexes”</em>
+constitute a security risk and should be changed unless absolutely
+necessary. See below.</p>
+<p>The following directive disables the display of the files
+<code>.htaccess</code> and <code>.htpasswd</code>.</p>
 <pre><code>&lt;FilesMatch &quot;^\.ht&quot;&gt;
     Require all denied
 &lt;/FilesMatch&gt;</code></pre>
-<h3 id="security---other-configurations">Security - other configurations</h3>
+<h3 id="security---other-configurations">Security - other
+configurations</h3>
 <ul>
 <li><p>In the file <strong>/etc/apache2/apache2.conf</strong>:</p>
-<p><strong>FollowSymLinks</strong> may cause content outside <code>DocumentRoot</code> to be listed.<br />
-<strong>Indexes</strong> lists the contents of a directory if there is no <code>index.html</code> or <code>index.php</code>, etc..</p>
-<p>It is recommended to remove <em>“FollowSymLinks”</em> and place all the project data below <em>“DocumentRoot”</em>. For the <em>“Indexes”</em> option, the entry has to be changed to</p>
+<p><strong>FollowSymLinks</strong> may cause content outside
+<code>DocumentRoot</code> to be listed.<br />
+<strong>Indexes</strong> lists the contents of a directory if there is
+no <code>index.html</code> or <code>index.php</code>, etc..</p>
+<p>It is recommended to remove <em>“FollowSymLinks”</em> and place all
+the project data below <em>“DocumentRoot”</em>. For the
+<em>“Indexes”</em> option, the entry has to be changed to</p>
 <pre><code>Options -Indexes</code></pre>
-<p>if the display of the directory contents is <strong>not</strong> desired.<br />
-Alternatively, create an empty <em>index</em> file in the directory that is delivered to the client in place of the directory contents. For example, for the <code>upload</code> directory:</p>
+<p>if the display of the directory contents is <strong>not</strong>
+desired.<br />
+Alternatively, create an empty <em>index</em> file in the directory that
+is delivered to the client in place of the directory contents. For
+example, for the <code>upload</code> directory:</p>
 <pre><code>$ echo &quot;&lt;!DOCTYPE html&gt;&quot; &gt; /var/www/html/upload/index.html
      or
 $ echo &quot;&lt;?php&quot; &gt; /var/www/html/upload/index.php</code></pre></li>
 <li><p>In the host configuration<br />
 <code>/etc/apache2/sites-available/server1.conf</code></p>
-<p>we can use the <code>&lt;Directory&gt;</code> block to block all IP addresses except those listed in it.</p>
+<p>we can use the <code>&lt;Directory&gt;</code> block to block all IP
+addresses except those listed in it.</p>
 <pre><code>&lt;Directory &quot;/var/www/html&quot;&gt;
     Order deny,allow
     Deny from all
@@ -238,20 +340,31 @@ $ echo &quot;&lt;?php&quot; &gt; /var/www/html/upload/index.php</code></pre></li
     Allow from 192.168.3.1
 &lt;/directory&gt;</code></pre></li>
 <li><p><strong>Merging</strong> the configuration:</p>
-<p>The directives of the configuration are spread over a number of files within <code>ServerRoot</code> and the <code>.htaccess</code> files in <code>DocumentRoot</code>. It is therefore particularly important to know where to place the directive to achieve the desired effect.<br />
+<p>The directives of the configuration are spread over a number of files
+within <code>ServerRoot</code> and the <code>.htaccess</code> files in
+<code>DocumentRoot</code>. It is therefore particularly important to
+know where to place the directive to achieve the desired effect.<br />
 We strongly recommend to consult the web page<br />
-<a target="_blank" href="https://httpd.apache.org/docs/current/en/sections.html#merging">apache.org - How the sections are merged</a><br />
+<a
+href="https://httpd.apache.org/docs/current/en/sections.html#merging">apache.org
+- How the sections are merged</a><br />
 intensively.</p></li>
 <li><p>The <strong>owner</strong> of <code>DocumentRoot</code></p>
-<p>is <em>“root.root”</em> after installation and should be changed. See the chapter <a href="./lamp-apache_en.html#users-and-permissions">users and permissions</a>.</p></li>
+<p>is <em>“root.root”</em> after installation and should be changed. See
+the chapter <a href="./lamp-apache_en.html#users-and-permissions">users
+and permissions</a>.</p></li>
 </ul>
 <h3 id="use-https">Use HTTPS</h3>
 <p>Without HTTPS no website project can be launched today.<br />
-How to obtain a certificate is described, for example, in detail and in an easy-to-understand manner on the website <a target="_blank" href="https://www.wpbeginner.com/beginners-guide/how-to-get-a-free-ssl-certificate-for-your-wordpress-website/">wpbeginner</a>.</p>
-<p>First we create the necessary folders inside <code>DocumentRoot</code>:</p>
+How to obtain a certificate is described, for example, in detail and in
+an easy-to-understand manner on the website <a
+href="https://www.wpbeginner.com/beginners-guide/how-to-get-a-free-ssl-certificate-for-your-wordpress-website/">wpbeginner</a>.</p>
+<p>First we create the necessary folders inside
+<code>DocumentRoot</code>:</p>
 <pre><code>cd /etc/apache2/
 /etc/apache2/# mkdir ssl ssl/certs ssl/private</code></pre>
-<p>In these we put the certificate file <code>server1.org.crt</code> and the private key <code>server1.org.key</code>.</p>
+<p>In these we put the certificate file <code>server1.org.crt</code> and
+the private key <code>server1.org.key</code>.</p>
 <p>Then we secure the directories against unauthorized access.</p>
 <pre><code>/etc/apache2/# chown -R root.root ssl
 /etc/apache2/# chmod -R o-rwx ssl
@@ -270,21 +383,38 @@ How to obtain a certificate is described, for example, in detail and in an easy-
    -r-------- 1 root root 1216 25 Jan 15:27 server1.org.crt</code></pre>
 <h3 id="security-tips">Security Tips</h3>
 <ul>
-<li><p>The Apache documentation contains a recommended page with various security tips.<br />
-<a target="_blank" href="https://httpd.apache.org/docs/current/en/misc/security_tips.html">apache.org - Security Tips</a></p></li>
-<li><p>In addition, there are numerous tips on the Internet for the secure operation of the Apache web server.</p></li>
-<li><p>Regular checking of the log files in <code>/var/log/apache2/</code> helps to detect errors or security holes.</p></li>
-<li><p>If the server is connected to the local network or to the Internet in a different way than intended in this manual page, a firewall is essential.</p></li>
+<li><p>The Apache documentation contains a recommended page with various
+security tips.<br />
+<a
+href="https://httpd.apache.org/docs/current/en/misc/security_tips.html">apache.org
+- Security Tips</a></p></li>
+<li><p>In addition, there are numerous tips on the Internet for the
+secure operation of the Apache web server.</p></li>
+<li><p>Regular checking of the log files in
+<code>/var/log/apache2/</code> helps to detect errors or security
+holes.</p></li>
+<li><p>If the server is connected to the local network or to the
+Internet in a different way than intended in this manual page, a
+firewall is essential.</p></li>
 </ul>
 <h3 id="integration-in-apache2">Integration in Apache2</h3>
-<p>The ssl module is activated in Apache by default. It is enough to edit the file <code>/etc/apache2/sites-available/server1.conf</code>.</p>
+<p>The ssl module is activated in Apache by default. It is enough to
+edit the file
+<code>/etc/apache2/sites-available/server1.conf</code>.</p>
 <ul>
-<li><p>Insert a new VirtualHost directive at the beginning. This redirects incoming client requests from port 80 to port 443 (ssl) using <em>“Redirect”</em>.</p></li>
+<li><p>Insert a new VirtualHost directive at the beginning. This
+redirects incoming client requests from port 80 to port 443 (ssl) using
+<em>“Redirect”</em>.</p></li>
 <li><p>Rewrite the previous VirtualHost directive to port 443.</p></li>
-<li><p>Add the SSL directives after the standard host directives.</p></li>
-<li><p>In case our web project should contain dynamically generated web pages, the last two <em>“FileMatch”</em> and <em>“Directory”</em> directives need to be inserted with the <em>“SSLOptions”</em> directive.</p></li>
+<li><p>Add the SSL directives after the standard host
+directives.</p></li>
+<li><p>In case our web project should contain dynamically generated web
+pages, the last two <em>“FileMatch”</em> and <em>“Directory”</em>
+directives need to be inserted with the <em>“SSLOptions”</em>
+directive.</p></li>
 </ul>
-<p>The extended <code>server1.conf</code> then has the following content:</p>
+<p>The extended <code>server1.conf</code> then has the following
+content:</p>
 <pre><code>&lt;VirtualHost *:80&gt;
     ServerName server1.org
     ServerAlias www.server1.org
@@ -319,17 +449,27 @@ How to obtain a certificate is described, for example, in detail and in an easy-
         SSLOptions +StdEnvVars
     &lt;/Directory&gt;
 &lt;/VirtualHost&gt;</code></pre>
-<p>In case our finished project is to be located at a hoster without access to <code>ServerRoot</code> (this is the rule), we can add a rewrite statement to the <code>.htaccess</code> file in <code>DocumentRoot</code> or create the file with the rewrite statement.</p>
+<p>In case our finished project is to be located at a hoster without
+access to <code>ServerRoot</code> (this is the rule), we can add a
+rewrite statement to the <code>.htaccess</code> file in
+<code>DocumentRoot</code> or create the file with the rewrite
+statement.</p>
 <pre><code>&lt;IfModule mod_rewrite.c&gt;
 RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 &lt;/IfModule&gt;</code></pre>
 <h3 id="sources-apache">Sources Apache</h3>
-<p><a target="_blank" href="https://httpd.apache.org/docs/current/en/">apache.org - Documentation</a><br />
-<a target="_blank" href="https://httpd.apache.org/docs/current/en/configuring.html">apache.org - Configuration files</a><br />
-<a target="_blank" href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org - SSL Howto</a><br />
-<a target="_blank" href="https://letsencrypt.org/">Let’s Encrypt - A nonprofit Certificate Authority</a></p>
+<p><a target="_blank" href="https://httpd.apache.org/docs/current/en/">apache.org -
+Documentation</a><br />
+<a
+href="https://httpd.apache.org/docs/current/en/configuring.html">apache.org
+- Configuration files</a><br />
+<a
+href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">apache.org -
+SSL Howto</a><br />
+<a target="_blank" href="https://letsencrypt.org/">Let’s Encrypt - A nonprofit
+Certificate Authority</a></p>
 <div id="rev">
 Last edited: 2022/04/03
 </div>

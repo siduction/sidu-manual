@@ -33,25 +33,46 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#partitioning-of-installation-media">Partitioning of installation media</a>
+<li><a href="#partitioning-of-installation-media">Partitioning of
+installation media</a>
 <ul>
 <li><a href="#minimum-requirements">Minimum requirements</a></li>
-<li><a href="#examples-with-different-disk-sizes">Examples with different disk sizes</a></li>
+<li><a href="#examples-with-different-disk-sizes">Examples with
+different disk sizes</a></li>
 <li><a href="#partition-editors">Partition editors</a></li>
 <li><a href="#further-information">Further information</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="partitioning-of-installation-media">Partitioning of installation media</h2>
-<p>For Linux beginners, we recommend to create only two partitions (root/home and swap) because this makes a first installation much easier. After the installation, additional data partitions or, if desired, a separate /home can be created.</p>
+<h2 id="partitioning-of-installation-media">Partitioning of installation
+media</h2>
+<p>For Linux beginners, we recommend to create only two partitions
+(root/home and swap) because this makes a first installation much
+easier. After the installation, additional data partitions or, if
+desired, a separate /home can be created.</p>
 <p>However, we do not recommend to create a /home partition.<br />
-The directory <code>/home</code> should be the place where individual configurations are stored, and only them. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are immeasurable.</p>
-<p>A swap partition has a similar function as the Windows swap file, but the former is far more effective. As a rule of thumb, the swap partition should be twice as large as the RAM used. This applies mainly to notebooks that are to be hibernated via <code>hibernate</code> or desktop computers with very little RAM (1 GByte or less). Devices with sufficient RAM no longer need a swap partition.</p>
-<p>For data exchange with a Windows installation, the designated partition should be formatted with <strong>NTFS</strong>. siduction can read from and write to such a partition with the automatically installed <code>ntfs-3g</code>.</p>
-<p>There are many good ways to partition your disks. These examples should give a first insight into the possibilities.</p>
-<p>Purchasing an external USB hard drive for regular data backup is also worth considering.</p>
+The directory <code>/home</code> should be the place where individual
+configurations are stored, and only them. A separate data partition
+should be created for all other private data. The advantages for data
+stability, data backup, and also in case of data recovery are
+immeasurable.</p>
+<p>A swap partition has a similar function as the Windows swap file, but
+the former is far more effective. As a rule of thumb, the swap partition
+should be twice as large as the RAM used. This applies mainly to
+notebooks that are to be hibernated via <code>hibernate</code> or
+desktop computers with very little RAM (1 GByte or less). Devices with
+sufficient RAM no longer need a swap partition.</p>
+<p>For data exchange with a Windows installation, the designated
+partition should be formatted with <strong>NTFS</strong>. siduction can
+read from and write to such a partition with the automatically installed
+<code>ntfs-3g</code>.</p>
+<p>There are many good ways to partition your disks. These examples
+should give a first insight into the possibilities.</p>
+<p>Purchasing an external USB hard drive for regular data backup is also
+worth considering.</p>
 <h3 id="minimum-requirements">Minimum requirements</h3>
-<p>The minimum requirements for the reasonable use of a siduction installation are:</p>
+<p>The minimum requirements for the reasonable use of a siduction
+installation are:</p>
 <table>
 <thead>
 <tr class="header">
@@ -90,10 +111,18 @@ The directory <code>/home</code> should be the place where individual configurat
 </tr>
 </tbody>
 </table>
-<h3 id="examples-with-different-disk-sizes">Examples with different disk sizes</h3>
-<p>If a dual boot with MS Windows™ is created, MS Windows must always be installed as the first system onto the hard disk.</p>
-<p><em>“GPT”</em> should be selected as partition table type. Thus, you can use the advantages over <em>“MBR”</em>. Only with old hardware, <em>“MBR”</em> is still useful. The explanations for this can be found on our manual page <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a>.</p>
-<p>The examples refer to partition tables of the type <em>“GPT”</em>. It needs the first two, very small partitions in order to function.</p>
+<h3 id="examples-with-different-disk-sizes">Examples with different disk
+sizes</h3>
+<p>If a dual boot with MS Windows™ is created, MS Windows must always be
+installed as the first system onto the hard disk.</p>
+<p><em>“GPT”</em> should be selected as partition table type. Thus, you
+can use the advantages over <em>“MBR”</em>. Only with old hardware,
+<em>“MBR”</em> is still useful. The explanations for this can be found
+on our manual page <a
+href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
+gdisk</a>.</p>
+<p>The examples refer to partition tables of the type <em>“GPT”</em>. It
+needs the first two, very small partitions in order to function.</p>
 <p><strong>Dual-boot with MS Windows and Linux</strong></p>
 <p><strong>1 TB hard disk:</strong></p>
 <table>
@@ -392,30 +421,56 @@ The directory <code>/home</code> should be the place where individual configurat
 </table>
 <h3 id="partition-editors">Partition editors</h3>
 <ul>
-<li><p><strong>GParted</strong>: an easy to use partition editor with a graphical interface<br />
-<em>Gparted</em> is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page <a href="./part-gparted_en.html#partitioning-with-gparted">Partitioning the hard disk with GParted</a> provides more information about the program.</p></li>
-<li><p><strong>KDE Partition Manager</strong>: a Qt based, easy to use partition editor with a graphical user interface<br />
-The <em>KDE Partition Manager</em> is the standard partition editor for the KDE Destktop and as comprehensive as <em>Gparted</em>.</p></li>
-<li><p><strong>gdisk / cgdisk</strong>: a console program for partition tables of the type <em>GPT - UEFI</em><br />
-<em>gdisk</em> is the classic text mode program, while <em>cgdisk</em> has a more user friendly ncurses interface. The manual page <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a> provides more information about the program.</p></li>
-<li><p><strong>fdisk / cfdisk</strong>: a console program for partition tables of the type <em>msdos - MBR</em><br />
-Note: <em>fdisk</em> should only be used for old hardware that does not support <em>GPT - UEFI</em>.<br />
-<em>fdisk</em> is the classic text mode program, while <em>cfdisk</em> has a more user-friendly ncurses interface. The manual page <a href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with cfdisk</a> provides more information about the program.</p></li>
+<li><p><strong>GParted</strong>: an easy to use partition editor with a
+graphical interface<br />
+<em>Gparted</em> is available on all siduction installations and
+installation media equipped with a graphical user interface. It supports
+a number of different partition table types. The manual page <a
+href="./part-gparted_en.html#partitioning-with-gparted">Partitioning the
+hard disk with GParted</a> provides more information about the
+program.</p></li>
+<li><p><strong>KDE Partition Manager</strong>: a Qt based, easy to use
+partition editor with a graphical user interface<br />
+The <em>KDE Partition Manager</em> is the standard partition editor for
+the KDE Destktop and as comprehensive as <em>Gparted</em>.</p></li>
+<li><p><strong>gdisk / cgdisk</strong>: a console program for partition
+tables of the type <em>GPT - UEFI</em><br />
+<em>gdisk</em> is the classic text mode program, while <em>cgdisk</em>
+has a more user friendly ncurses interface. The manual page <a
+href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
+gdisk</a> provides more information about the program.</p></li>
+<li><p><strong>fdisk / cfdisk</strong>: a console program for partition
+tables of the type <em>msdos - MBR</em><br />
+Note: <em>fdisk</em> should only be used for old hardware that does not
+support <em>GPT - UEFI</em>.<br />
+<em>fdisk</em> is the classic text mode program, while <em>cfdisk</em>
+has a more user-friendly ncurses interface. The manual page <a
+href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with
+cfdisk</a> provides more information about the program.</p></li>
 </ul>
 <p class="warning">
-<strong>Caution</strong> <br />When using any partitioning software, there is a risk of data loss. Always back up important data to another disk in advance.
+<strong>Caution</strong> <br />When using any partitioning software,
+there is a risk of data loss. Always back up important data to another
+disk in advance.
 </p>
-<p><strong>Mounted partitions</strong> (also swap) must be detached before editing.<br />
-You can do this by entering to following command as <strong>root</strong>:</p>
+<p><strong>Mounted partitions</strong> (also swap) must be detached
+before editing.<br />
+You can do this by entering to following command as
+<strong>root</strong>:</p>
 <pre><code># umount /dev/sda1</code></pre>
 <p>To mount a swap partition, use this command:</p>
 <pre><code># swapoff -a</code></pre>
 <h3 id="further-information">Further information</h3>
-<p><a target="_blank" href="https://gparted.org/index.php">Here the comprehensive english documentation of GParted</a></p>
+<p><a target="_blank" href="https://gparted.org/index.php">Here the comprehensive
+english documentation of GParted</a></p>
 <p>For more partitioning options see:</p>
 <ul>
-<li><p>Logical Volume Manager <a href="./part-lvm_en.html#lvm-partitioning---logical-volume-manager">LVM partitioning</a></p></li>
-<li><p>partitioning with GPT to support UEFI <a href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with gdisk</a></p></li>
+<li><p>Logical Volume Manager <a
+href="./part-lvm_en.html#lvm-partitioning---logical-volume-manager">LVM
+partitioning</a></p></li>
+<li><p>partitioning with GPT to support UEFI <a
+href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
+gdisk</a></p></li>
 </ul>
 <div id="rev">
 Last edited: 2022/03/31

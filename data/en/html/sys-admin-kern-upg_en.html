@@ -35,7 +35,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#kernel-upgrade">Kernel Upgrade</a>
 <ul>
-<li><a href="#kernel-update-without-system-update">Kernel Update without System Update</a></li>
+<li><a href="#kernel-update-without-system-update">Kernel Update without
+System Update</a></li>
 <li><a href="#modules">Modules</a></li>
 <li><a href="#removing-old-kernels">Removing old kernels</a></li>
 </ul></li>
@@ -44,11 +45,18 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="kernel-upgrade">Kernel Upgrade</h2>
 <p>siduction provides the following kernels:</p>
 <ul>
-<li><strong>linux-image-siduction-amd64 + linux-headers-siduction-amd64</strong> - Linux kernel for 64-bit PCs with AMD64 or Intel 64 CPU</li>
-<li>32 bit kernel are not provided anymore. Here you can use the Debian kernel or, alternatively, the Liquorix kernel (https://liquorix.net/).</li>
+<li><strong>linux-image-siduction-amd64 +
+linux-headers-siduction-amd64</strong> - Linux kernel for 64-bit PCs
+with AMD64 or Intel 64 CPU</li>
+<li>32 bit kernel are not provided anymore. Here you can use the Debian
+kernel or, alternatively, the Liquorix kernel
+(https://liquorix.net/).</li>
 </ul>
-<p>The siduction kernels are located in the siduction repository as .deb and are automatically included in a system update, provided that the metapackages for image and headers are installed.</p>
-<h3 id="kernel-update-without-system-update">Kernel Update without System Update</h3>
+<p>The siduction kernels are located in the siduction repository as .deb
+and are automatically included in a system update, provided that the
+metapackages for image and headers are installed.</p>
+<h3 id="kernel-update-without-system-update">Kernel Update without
+System Update</h3>
 <ol type="1">
 <li>updating the package database:</li>
 </ol>
@@ -60,12 +68,21 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ol start="3" type="1">
 <li>reboot of the computer to load the new kernel</li>
 </ol>
-<p>If you encounter problems with the new kernel, you can choose an older kernel after rebooting.</p>
+<p>If you encounter problems with the new kernel, you can choose an
+older kernel after rebooting.</p>
 <h3 id="modules">Modules</h3>
-<p>The kernel usually comes with all the required kernel modules. For 3rd party modules, dkms is recommended in siduction. For this it is necessary to install the package <code>build-essential</code>. Since 3rd party modules are often non-free modules, it is necessary to make sure that contrib and non-free are enabled in the sources.</p>
+<p>The kernel usually comes with all the required kernel modules. For
+3rd party modules, dkms is recommended in siduction. For this it is
+necessary to install the package <code>build-essential</code>. Since 3rd
+party modules are often non-free modules, it is necessary to make sure
+that contrib and non-free are enabled in the sources.</p>
 <h3 id="removing-old-kernels">Removing old kernels</h3>
-<p>After successfully installing a new kernel, old kernels can be removed. However, it is recommended to keep old kernels for a few days. If problems occur with the new kernel, you can boot into one of the old kernels listed in the grub startup screen.</p>
-<p>To remove old kernels the script <code>kernel-remover</code> is installed:</p>
+<p>After successfully installing a new kernel, old kernels can be
+removed. However, it is recommended to keep old kernels for a few days.
+If problems occur with the new kernel, you can boot into one of the old
+kernels listed in the grub startup screen.</p>
+<p>To remove old kernels the script <code>kernel-remover</code> is
+installed:</p>
 <pre><code>kernel-remover</code></pre>
 <div id="rev">
 Last edited: 2022/04/05

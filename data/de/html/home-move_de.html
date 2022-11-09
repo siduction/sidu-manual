@@ -33,28 +33,45 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#das-verzeichnis-home-verschieben">Das Verzeichnis home verschieben</a>
+<li><a href="#das-verzeichnis-home-verschieben">Das Verzeichnis home
+verschieben</a>
 <ul>
-<li><a href="#private-daten-verschieben">Private Daten verschieben</a></li>
+<li><a href="#private-daten-verschieben">Private Daten
+verschieben</a></li>
 <li><a href="#fstab-anpassen">fstab anpassen</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="das-verzeichnis-home-verschieben">Das Verzeichnis home verschieben</h2>
+<h2 id="das-verzeichnis-home-verschieben">Das Verzeichnis home
+verschieben</h2>
 <p class="warning">
-Wichtige Information <br />Ein existierendes <strong>/home</strong> soll nicht mit einer anderen Distribution verwendet oder geteilt werden, da es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
+Wichtige Information <br />Ein existierendes <strong>/home</strong> soll
+nicht mit einer anderen Distribution verwendet oder geteilt werden, da
+es bei den Konfigurationsdateien zu Konflikten kommen kann/wird.
 </p>
-<p>Deshalb raten wir generell davon ab eine /home-Partition anzulegen.<br />
-Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und diese z. B. unter <code>/Daten</code> eingeh&auml;ngt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.<br />
-Sofern Daten gemeinsam f&uuml;r parallele Installationen bereit stehen sollen, ist diese Vorgehensweise besonders ratsam.</p>
+<p>Deshalb raten wir generell davon ab eine /home-Partition
+anzulegen.<br />
+Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die
+individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle
+weiteren privaten Daten sollte eine eigene Datenpartition angelegt, und
+diese z. B. unter <code>/Daten</code> eingeh&auml;ngt werden. Die Vorteile
+f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im Falle einer
+Datenrettung sind nahezu unermesslich.<br />
+Sofern Daten gemeinsam f&uuml;r parallele Installationen bereit stehen
+sollen, ist diese Vorgehensweise besonders ratsam.</p>
 <p><strong>Vorbereitungen</strong></p>
-<p>An Hand eines realistischen Beispiels zeigen wir die notwendigen Schritte auf.<br />
+<p>An Hand eines realistischen Beispiels zeigen wir die notwendigen
+Schritte auf.<br />
 Die Ausgangslage:</p>
 <ul>
-<li>Die alte, mittlerweile zu kleine, Festplatte hat die drei Partitionen <code>/boot/efi</code>, <code>/</code>, <code>swap</code>.</li>
+<li>Die alte, mittlerweile zu kleine, Festplatte hat die drei
+Partitionen <code>/boot/efi</code>, <code>/</code>,
+<code>swap</code>.</li>
 <li>Es existiert bisher noch keine separate Daten-Partition.</li>
-<li>Eine zus&auml;tzliche eingebaute Festplatte hat vier Partitionen mit ext4-Dateisystem.<br />
-Davon benutzen wir die Partitionen <code>sdb4</code> f&uuml;r die neue Daten-Partition, die wir unter <code>/Daten</code> einh&auml;ngen.</li>
+<li>Eine zus&auml;tzliche eingebaute Festplatte hat vier Partitionen mit
+ext4-Dateisystem.<br />
+Davon benutzen wir die Partitionen <code>sdb4</code> f&uuml;r die neue
+Daten-Partition, die wir unter <code>/Daten</code> einh&auml;ngen.</li>
 </ul>
 <p>Unsere bisherige <code>/etc/fstab</code> hat den Inhalt:</p>
 <pre><code>$ cat /etc/fstab
@@ -63,17 +80,25 @@ UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
 UUID=1c257cff-1c96-4c4f-811f-46a87bcf6abb  /           ext4    defaults,noatime 0 1
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
 tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0</code></pre>
-<p>Von der zus&auml;tzlichen Festplatte ben&ouml;tigen wir die UUID-Informationen. Siehe auch die Handbuchseite <a href="./home-move_de.html#fstab-anpassen">Anpassung der fstab</a>.<br />
+<p>Von der zus&auml;tzlichen Festplatte ben&ouml;tigen wir die UUID-Informationen.
+Siehe auch die Handbuchseite <a
+href="./home-move_de.html#fstab-anpassen">Anpassung der fstab</a>.<br />
 Der Befehl <code>blkid</code> gibt uns Auskunft.</p>
 <pre><code>$ /sbin/blkid
 ...
 /dev/sdb4: UUID=&quot;e2164479-3f71-4216-a4d4-af3321750322&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;000403b7-04&quot;</code></pre>
 <p><strong>Sicherung des alten /home</strong></p>
-<p>Bevor irgendeine &Auml;nderung am bestehenden Dateisystem vorgenommen wird, sichern wir als <strong>root</strong> alles unterhalb von <code>/home</code> in einem tar-Archiv.</p>
+<p>Bevor irgendeine &Auml;nderung am bestehenden Dateisystem vorgenommen
+wird, sichern wir als <strong>root</strong> alles unterhalb von
+<code>/home</code> in einem tar-Archiv.</p>
 <pre><code># cd /home
 # tar cvzpf somewhere/home.tar.gz ./</code></pre>
 <p><strong>Mountpoint der Daten-Partition</strong></p>
-<p>Wir erstellen das Verzeichnis <code>/Daten</code> unterhalb <code>/</code> und binden die Partition <code>sdb4</code> dort ein. Als Eigent&uuml;mer und Gruppe legen wir die eigenen Namen fest. Etwas sp&auml;ter kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem bestehenden <code>/home</code> dort hinein.</p>
+<p>Wir erstellen das Verzeichnis <code>/Daten</code> unterhalb
+<code>/</code> und binden die Partition <code>sdb4</code> dort ein. Als
+Eigent&uuml;mer und Gruppe legen wir die eigenen Namen fest. Etwas sp&auml;ter
+kopieren wir die privaten Daten, nicht aber die Konfigurationen, aus dem
+bestehenden <code>/home</code> dort hinein.</p>
 <p>Mountpoint erstellen und Partition einh&auml;ngen (als root):</p>
 <pre><code># mkdir /Daten
 # chown &lt;user&gt;:&lt;group&gt; /Daten
@@ -112,20 +137,32 @@ drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Musik
 drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 &Ouml;ffentlich
 drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Videos
 drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Vorlagen</code></pre>
-<p>Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit nur geringf&uuml;gigen &Auml;nderungen.<br />
-In den, per default erstellten, Verzeichnissen <em>“Bilder”</em> bis <em>“Vorlagen”</em> am Ende der Liste, legen wir unsere privaten Dokumente ab. Diese und eventuell zus&auml;tzliche, selbst erstellte Verzeichnisse mit privaten Daten, verschieben wir sp&auml;ter in die neue Daten-Partition.<br />
-Mit einem Punkt (.) beginnende, “versteckte” Dateien und Verzeichnisse enthalten die Konfiguration und programmspezifische Daten, die wir, von drei Ausnahmen abgesehen, nicht verschieben. Die Ausnahmen sind:<br />
+<p>Die Ausgabe zeigt das Home-Verzeichnis kurz nach der Installation mit
+nur geringf&uuml;gigen &Auml;nderungen.<br />
+In den, per default erstellten, Verzeichnissen <em>“Bilder”</em> bis
+<em>“Vorlagen”</em> am Ende der Liste, legen wir unsere privaten
+Dokumente ab. Diese und eventuell zus&auml;tzliche, selbst erstellte
+Verzeichnisse mit privaten Daten, verschieben wir sp&auml;ter in die neue
+Daten-Partition.<br />
+Mit einem Punkt (.) beginnende, “versteckte” Dateien und Verzeichnisse
+enthalten die Konfiguration und programmspezifische Daten, die wir, von
+drei Ausnahmen abgesehen, nicht verschieben. Die Ausnahmen sind:<br />
 Der Zwischenspeicher <em>“.cache”</em>,<br />
 der Internetbrowser <em>“.mozilla”</em> und<br />
 das Mailprogramm <em>“.thunderbird”</em>.<br />
-Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie enthalten auch viele private Daten. Deshalb wandern sie zus&auml;tzlich auf die neue Daten-Partition.</p>
+Alle drei erreichen mit der Zeit ein erhebliches Volumen und sie
+enthalten auch viele private Daten. Deshalb wandern sie zus&auml;tzlich auf
+die neue Daten-Partition.</p>
 <p><strong>Kopieren der privaten Daten</strong></p>
-<p>Zum Kopieren benutzen wir den Befehl <code>cp</code> mit der Archiv-Option <code>-a</code>, so bleiben die Rechte, Eigent&uuml;mer und der Zeitstempel erhalten und es wird rekursiv kopiert.</p>
+<p>Zum Kopieren benutzen wir den Befehl <code>cp</code> mit der
+Archiv-Option <code>-a</code>, so bleiben die Rechte, Eigent&uuml;mer und der
+Zeitstempel erhalten und es wird rekursiv kopiert.</p>
 <pre><code>~$ cp -a * /Daten/
 ~$ cp -a .cache /Daten/
 ~$ cp -a .mozilla /Daten/
 ~$ cp -a .thunderbird /Daten/</code></pre>
-<p>Der erste Befehl kopiert alle Dateien und Verzeichnisse, au&szlig;er die versteckten.<br />
+<p>Der erste Befehl kopiert alle Dateien und Verzeichnisse, au&szlig;er die
+versteckten.<br />
 Die folgende Ausgabe zeigt das Ergebnis.</p>
 <pre><code>~$ ls -la /Daten/
 insgesamt 45
@@ -143,13 +180,23 @@ drwx------  5 &lt;user&gt;&lt;group&gt; 4096 15 Okt 2020 .thunderbird
 drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Videos
 drwxr-xr-x  2 &lt;user&gt;&lt;group&gt; 4096  4 Okt 2020 Vorlagen</code></pre>
 <p>Die Pr&uuml;fung der Kopieraktion auf Fehler erfolgt mit dem Befehl<br />
-<strong><code>dirdiff /home/&lt;user&gt;/ /Daten/</code></strong>. Es d&uuml;rfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht kopiert haben.</p>
-<p>Nun befinden sich alle privaten Daten aus dem alten <em>“/home”</em> zus&auml;tzlich auf der neuen Partition.</p>
+<strong><code>dirdiff /home/&lt;user&gt;/ /Daten/</code></strong>. Es
+d&uuml;rfen nur die Dateien und Verzeichnisse gelistet sein, die wir nicht
+kopiert haben.</p>
+<p>Nun befinden sich alle privaten Daten aus dem alten <em>“/home”</em>
+zus&auml;tzlich auf der neuen Partition.</p>
 <p><strong>L&ouml;schen in /home</strong></p>
-<p>F&uuml;r diese Aktion sollten alle Programmfenster, mit Ausnahme des von uns benutzten Terminals, geschlossen werden.<br />
-Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei der Installation angelegten Verzeichnisse (z. B. <em>“Downloads”</em> oder “<em>Musik</em>”). Um den Zugriff dieser Anwendungen auf die Verzeichnisse in der neuen <em>“/daten”</em> Partition zu erm&ouml;glichen, m&uuml;ssen wir unter <code>/home/&lt;user&gt;/</code> die zu l&ouml;schenden Verzeichnisse durch Link ersetzen.</p>
+<p>F&uuml;r diese Aktion sollten alle Programmfenster, mit Ausnahme des von
+uns benutzten Terminals, geschlossen werden.<br />
+Je nach Desktopumgebung benutzen diverse Anwendungen die per default bei
+der Installation angelegten Verzeichnisse (z. B. <em>“Downloads”</em>
+oder “<em>Musik</em>”). Um den Zugriff dieser Anwendungen auf die
+Verzeichnisse in der neuen <em>“/daten”</em> Partition zu erm&ouml;glichen,
+m&uuml;ssen wir unter <code>/home/&lt;user&gt;/</code> die zu l&ouml;schenden
+Verzeichnisse durch Link ersetzen.</p>
 <p class="warning">
-Die Befehle vor dem Ausf&uuml;hren bitte genau pr&uuml;fen, damit nicht aus Versehen etwas falsches gel&ouml;scht wird.
+Die Befehle vor dem Ausf&uuml;hren bitte genau pr&uuml;fen, damit nicht aus
+Versehen etwas falsches gel&ouml;scht wird.
 </p>
 <pre><code>~$ rm -r Bilder/ &amp;&amp; ln -s /Daten/Bilder/ ./Bilder
 ~$ rm -r Desktop/ &amp;&amp; ln -s /Daten/Desktop/ ./Desktop
@@ -162,13 +209,21 @@ Die Befehle vor dem Ausf&uuml;hren bitte genau pr&uuml;fen, damit nicht aus Vers
 ~$ rm -r .cache/ &amp;&amp; ln -s /Daten/.cache/ ./.cache
 ~$ rm -r .mozilla/ &amp;&amp; ln -s /Daten/.mozilla/ ./.mozilla
 ~$ rm -r .thunderbird/ &amp;&amp; ln -s /Daten/.thunderbird/ ./.thunderbird</code></pre>
-<p>Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen Speicherplatz von weniger als 10 MB.</p>
+<p>Die im /home-Verzeichnis verbliebenen Daten belegen nur noch einen
+Speicherplatz von weniger als 10 MB.</p>
 <h3 id="fstab-anpassen">fstab anpassen</h3>
-<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und dem User zur Verf&uuml;gung steht, muss die Datei <code>/etc/fstab</code> ge&auml;ndert werden. Zus&auml;tzliche Informationen zur fstab bietet unser Handbuch <a href="./part-uuid_de.html#anpassung-der-fstab">Anpassung der fstab</a>.<br />
-Wir ben&ouml;tigen die oben bereits ausgelesene UUID-Information der Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der fstab mit Datumsanhang:</p>
+<p>Damit beim Systemstart die neue Daten-Partition eingehangen wird und
+dem User zur Verf&uuml;gung steht, muss die Datei <code>/etc/fstab</code>
+ge&auml;ndert werden. Zus&auml;tzliche Informationen zur fstab bietet unser
+Handbuch <a href="./part-uuid_de.html#anpassung-der-fstab">Anpassung der
+fstab</a>.<br />
+Wir ben&ouml;tigen die oben bereits ausgelesene UUID-Information der
+Daten-Partition. Zuvor erstellen wir eine Sicherungskopie der fstab mit
+Datumsanhang:</p>
 <pre><code># cp /etc/fstab /etc/fstab_$(date +%F) 
 # mcedit /etc/fstab</code></pre>
-<p>Entsprechend unseres Beispiels f&uuml;gen wir die folgende Zeile in die fstab ein.</p>
+<p>Entsprechend unseres Beispiels f&uuml;gen wir die folgende Zeile in die
+fstab ein.</p>
 <p><strong><code>UUID=e2164479-3f71-4216-a4d4-af3321750322 /Daten ext4 defaults,noatime 0 2</code></strong></p>
 <p>Die fstab sollte nun so aussehen:</p>
 <pre><code>UUID=B248-1CCA                             /boot/efi   vfat    umask=0077 0 2
@@ -177,7 +232,8 @@ UUID=e2164479-3f71-4216-a4d4-af3321750322  /Daten      ext4    defaults,noatime 
 UUID=2e3a21ef-b98b-4d53-af62-cbf9666c1256  swap        swap    defaults,noatime 0 2
 tmpfs                                      /tmp        tmpfs   defaults,noatime,mode=1777 0 0</code></pre>
 <p>Man speichert die Datei mit F2 und beendet den Editor mit F10.</p>
-<p>Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten immer noch im gesicherten tar-Archiv.</p>
+<p>Sollte dennoch irgend etwas schief gehen, so haben wir unsere Daten
+immer noch im gesicherten tar-Archiv.</p>
 <div id="rev">
 Zuletzt bearbeitet: 2021-11-28
 </div>

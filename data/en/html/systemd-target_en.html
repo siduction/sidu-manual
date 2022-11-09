@@ -33,7 +33,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#systemd-target---target-unit">systemd-target - target unit</a>
+<li><a href="#systemd-target---target-unit">systemd-target - target
+unit</a>
 <ul>
 <li><a href="#special-features">Special features</a></li>
 <li><a href="#sources-systemd-target">Sources systemd-target</a></li>
@@ -41,10 +42,21 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul>
 </nav>
 <h2 id="systemd-target---target-unit">systemd-target - target unit</h2>
-<p>The basic and introductory information about Systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>. The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit files are covered by our manual page <a href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit file</a>.<br />
-Now the function of the <strong>systemd.target</strong> unit will be explained in more detail, which is similar to the commonly known runlevels.</p>
-<p>The different runlevels that are booted or switched to are described by systemd as target units. They have the extension “.target”.</p>
-<p>The old sysvinit commands are still supported. (For this a quote from <code>man systemd</code>: “… is provided for compatibility reasons and because it is easier to type.”)</p>
+<p>The basic and introductory information about Systemd can be found on
+the manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.
+The sections <em>[Unit]</em> and <em>[Install]</em> concerning all unit
+files are covered by our manual page <a
+href="./systemd-unit-datei_en.html#systemd-unit-file">systemd unit
+file</a>.<br />
+Now the function of the <strong>systemd.target</strong> unit will be
+explained in more detail, which is similar to the commonly known
+runlevels.</p>
+<p>The different runlevels that are booted or switched to are described
+by systemd as target units. They have the extension “.target”.</p>
+<p>The old sysvinit commands are still supported. (For this a quote from
+<code>man systemd</code>: “… is provided for compatibility reasons and
+because it is easier to type.”)</p>
 <table>
 <colgroup>
 <col style="width: 27%" />
@@ -59,32 +71,50 @@ Now the function of the <strong>systemd.target</strong> unit will be explained i
 <tbody>
 <tr class="odd">
 <td><strong>emergency.target</strong></td>
-<td>launches into an emergency shell on the main console. It is the most minimal version of a system boot to get an interactive shell. This unit can be used to guide the boot process step by step.</td>
+<td>launches into an emergency shell on the main console. It is the most
+minimal version of a system boot to get an interactive shell. This unit
+can be used to guide the boot process step by step.</td>
 </tr>
 <tr class="even">
 <td><strong>rescue.target</strong></td>
-<td>starts the base system (including system mounts) and an emergency shell. Compared to multi-user.target, this target could be considered as single-user.target.</td>
+<td>starts the base system (including system mounts) and an emergency
+shell. Compared to multi-user.target, this target could be considered as
+single-user.target.</td>
 </tr>
 <tr class="odd">
 <td><strong>multi-user.target</strong></td>
-<td>starts a multi-user system with a working network, without graphics server X. This unit is used when you want to stop X or not to boot into it. <a href="./sys-admin-apt_en.html#run-full-upgrade">This unit is used in special cases (when X itself or the desktop environment are upgraded) to perform a system upgrade (dist-upgrade)</a>.</td>
+<td>starts a multi-user system with a working network, without graphics
+server X. This unit is used when you want to stop X or not to boot into
+it. <a href="./sys-admin-apt_en.html#run-full-upgrade">This unit is used
+in special cases (when X itself or the desktop environment are upgraded)
+to perform a system upgrade (dist-upgrade)</a>.</td>
 </tr>
 <tr class="even">
 <td><strong>graphical.target</strong></td>
-<td>is the unit for multi-user mode with network capability and a running X window system.</td>
+<td>is the unit for multi-user mode with network capability and a
+running X window system.</td>
 </tr>
 <tr class="odd">
 <td><strong>default.target</strong></td>
-<td>is the default unit that systemd launches at system startup. In siduction this is a symlink to graphical.target (except for the noX variant).</td>
+<td>is the default unit that systemd launches at system startup. In
+siduction this is a symlink to graphical.target (except for the noX
+variant).</td>
 </tr>
 </tbody>
 </table>
-<p>A look at the documentation <code>man SYSTEMD.SPECIAL(7)</code> is mandatory to understand the relationships of the different target units.</p>
+<p>A look at the documentation <code>man SYSTEMD.SPECIAL(7)</code> is
+mandatory to understand the relationships of the different target
+units.</p>
 <h3 id="special-features">Special features</h3>
-<p>There are three special features to be considered for the target units:</p>
+<p>There are three special features to be considered for the target
+units:</p>
 <ol type="1">
 <li><p>The use on the kernel command line during the boot process<br />
-In order to get into the edit mode in the boot manager Grub, you must press the <strong><code>e</code></strong> key when the boot selection appears. Then append the desired target to the kernel command line with the following syntax: “systemd.unit=xxxxx.target”. The table lists the kernel commands and their still valid numeric equivalents.</p>
+In order to get into the edit mode in the boot manager Grub, you must
+press the <strong><code>e</code></strong> key when the boot selection
+appears. Then append the desired target to the kernel command line with
+the following syntax: “systemd.unit=xxxxx.target”. The table lists the
+kernel commands and their still valid numeric equivalents.</p>
 <table>
 <thead>
 <tr class="header">
@@ -118,7 +148,12 @@ In order to get into the edit mode in the boot manager Grub, you must press the 
 </table>
 <p>The old runlevels 2 and 4 refer to multi-user.target</p></li>
 <li><p>The use in the terminal during a running session<br />
-Provided you are in a running graphical session, you can switch to the virtual terminal tty2 with the key combination <strong><code>CTRL</code></strong>+<strong><code>ALT</code></strong>+<strong><code>F2</code></strong>. Here you log in as <strong>root</strong> user. The following table lists the terminal commands, where the expression <em>“isolate”</em> ensures that all services not requested by the target unit are terminated.</p>
+Provided you are in a running graphical session, you can switch to the
+virtual terminal tty2 with the key combination
+<strong><code>CTRL</code></strong>+<strong><code>ALT</code></strong>+<strong><code>F2</code></strong>.
+Here you log in as <strong>root</strong> user. The following table lists
+the terminal commands, where the expression <em>“isolate”</em> ensures
+that all services not requested by the target unit are terminated.</p>
 <table>
 <thead>
 <tr class="header">
@@ -151,7 +186,10 @@ Provided you are in a running graphical session, you can switch to the virtual t
 </tbody>
 </table></li>
 <li><p>Target units that should not be called directly<br />
-A number of target units are used to group intermediate steps with dependencies during the boot process or the .target change. The following list shows three frequently used commands that <strong>should not</strong> be called with the syntax “isolate xxxxx.target”.</p>
+A number of target units are used to group intermediate steps with
+dependencies during the boot process or the .target change. The
+following list shows three frequently used commands that <strong>should
+not</strong> be called with the syntax “isolate xxxxx.target”.</p>
 <table>
 <thead>
 <tr class="header">
@@ -178,7 +216,9 @@ A number of target units are used to group intermediate steps with dependencies 
 </tr>
 </tbody>
 </table>
-<p><em>“halt”</em>, <em>“poweroff”</em>, and <em>“reboot”</em> fetch several units in the correct order to terminate the system in an orderly fashion and to reboot if necessary.</p></li>
+<p><em>“halt”</em>, <em>“poweroff”</em>, and <em>“reboot”</em> fetch
+several units in the correct order to terminate the system in an orderly
+fashion and to reboot if necessary.</p></li>
 </ol>
 <h3 id="sources-systemd-target">Sources systemd-target</h3>
 <pre><code>man systemd.target</code></pre>

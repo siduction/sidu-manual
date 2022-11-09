@@ -35,7 +35,9 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#kernel-upgrade">Kernel Upgrade</a>
 <ul>
-<li><a href="#kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung ohne Systemaktualisierung</a></li>
+<li><a
+href="#kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung
+ohne Systemaktualisierung</a></li>
 <li><a href="#module">Module</a></li>
 <li><a href="#entfernen-alter-kernel">Entfernen alter Kernel</a></li>
 </ul></li>
@@ -44,24 +46,43 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <h2 id="kernel-upgrade">Kernel Upgrade</h2>
 <p>Siduction stellt folgende Kernel bereit:</p>
 <ul>
-<li><strong>linux-image-siduction-amd64 + linux-headers-siduction-amd64</strong> - Linux Kernel f&uuml;r 64-bit PCs mit AMD64 oder Intel 64 CPU.</li>
-<li>32 bit Kernel stellen wir nicht mehr zur Verf&uuml;gung, hier kann der Debian Kernel, oder alternativ der Liquorix-Kernel (https://liquorix.net/) verwendet werden.</li>
+<li><strong>linux-image-siduction-amd64 +
+linux-headers-siduction-amd64</strong> - Linux Kernel f&uuml;r 64-bit PCs mit
+AMD64 oder Intel 64 CPU.</li>
+<li>32 bit Kernel stellen wir nicht mehr zur Verf&uuml;gung, hier kann der
+Debian Kernel, oder alternativ der Liquorix-Kernel
+(https://liquorix.net/) verwendet werden.</li>
 </ul>
-<p>Die Kernel von siduction befinden sich im siduction-Repository als .deb und werden bei einer Systemaktualisierung automatisch ber&uuml;cksichtigt, sofern die Metapakete f&uuml;r Image und Headers installiert sind.</p>
-<h3 id="kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung ohne Systemaktualisierung</h3>
+<p>Die Kernel von siduction befinden sich im siduction-Repository als
+.deb und werden bei einer Systemaktualisierung automatisch
+ber&uuml;cksichtigt, sofern die Metapakete f&uuml;r Image und Headers installiert
+sind.</p>
+<h3
+id="kernel-aktualisierung-ohne-systemaktualisierung">Kernel-Aktualisierung
+ohne Systemaktualisierung</h3>
 <ol type="1">
 <li><p>Aktualisierung der Paketdatenbank:</p>
 <pre><code>apt update</code></pre></li>
 <li><p>Installation des aktuellen Kernels:</p>
 <pre><code>apt install linux-image-siduction-amd64 linux-headers-siduction-amd64</code></pre></li>
 <li><p>Neustart des Computers, um den neuen Kernel zu laden.</p>
-<p>Falls sich mit dem neuen Kernel Probleme zeigen, kann man nach einem Neustart einen &auml;lteren Kernel w&auml;hlen.</p></li>
+<p>Falls sich mit dem neuen Kernel Probleme zeigen, kann man nach einem
+Neustart einen &auml;lteren Kernel w&auml;hlen.</p></li>
 </ol>
 <h3 id="module">Module</h3>
-<p>Der Kernel bringt in der Regel alle ben&ouml;tigten Kernel-Module mit. F&uuml;r 3rd Party Module wird in siduction dkms empfohlen. Hierzu ist es notwendig, das Paket <code>build-essential</code> zu installieren. Da 3rd Party Module oftmals unfreie Module sind, ist sicherzustellen, dass contrib und non-free in den Sourcen aktiviert ist.</p>
+<p>Der Kernel bringt in der Regel alle ben&ouml;tigten Kernel-Module mit. F&uuml;r
+3rd Party Module wird in siduction dkms empfohlen. Hierzu ist es
+notwendig, das Paket <code>build-essential</code> zu installieren. Da
+3rd Party Module oftmals unfreie Module sind, ist sicherzustellen, dass
+contrib und non-free in den Sourcen aktiviert ist.</p>
 <h3 id="entfernen-alter-kernel">Entfernen alter Kernel</h3>
-<p>Nach erfolgreicher Installation eines neuen Kernels k&ouml;nnen alte Kernel entfernt werden. Es ist jedoch empfohlen, alte Kernel einige Tage zu behalten. Falls mit dem neuen Kernel Probleme auftauchen, kann in einen der alten Kernel gebootet werden, welche im Grub-Startbildschirm gelistet sind.</p>
-<p>Zur Entfernung alter Kernel ist das Skript <code>kernel-remover</code> installiert:</p>
+<p>Nach erfolgreicher Installation eines neuen Kernels k&ouml;nnen alte
+Kernel entfernt werden. Es ist jedoch empfohlen, alte Kernel einige Tage
+zu behalten. Falls mit dem neuen Kernel Probleme auftauchen, kann in
+einen der alten Kernel gebootet werden, welche im Grub-Startbildschirm
+gelistet sind.</p>
+<p>Zur Entfernung alter Kernel ist das Skript
+<code>kernel-remover</code> installiert:</p>
 <pre><code>kernel-remover</code></pre>
 <div id="rev">
 Seite zuletzt aktualisiert 2021-11-29

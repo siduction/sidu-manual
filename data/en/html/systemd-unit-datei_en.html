@@ -35,8 +35,10 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <ul>
 <li><a href="#systemd-unit-file">systemd unit file</a>
 <ul>
-<li><a href="#loading-path-of-the-unit-files">Loading path of the unit files</a></li>
-<li><a href="#activating-the-unit-file">Activating the unit file</a></li>
+<li><a href="#loading-path-of-the-unit-files">Loading path of the unit
+files</a></li>
+<li><a href="#activating-the-unit-file">Activating the unit
+file</a></li>
 <li><a href="#sections-of-the-unit-file">Sections of the unit file</a>
 <ul>
 <li><a href="#section-unit">Section Unit</a></li>
@@ -45,16 +47,29 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </ul></li>
 <li><a href="#example-cupsd">Example cupsd</a></li>
 <li><a href="#tools">Tools</a></li>
-<li><a href="#sources-systemd-unit-file">Sources systemd-unit file</a></li>
+<li><a href="#sources-systemd-unit-file">Sources systemd-unit
+file</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="systemd-unit-file">systemd unit file</h2>
-<p>The basic and introductory information about systemd can be found on the manual page <a href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.<br />
-On the following manual page we explain the structure of the <strong>unit files</strong> and the generic sections <em>[Unit]</em> and <em>[Install]</em>.</p>
-<p>The unit file is a plain text file in INI format. It contains configuration statements of the type <em>key=value</em> in various sections. Empty lines and those starting with “#” or “;” are ignored. All unit files must contain a section corresponding to the unit type. The generic sections [Unit] at the beginning and [Install] at the end of the file are optional, but the [Unit] section is strongly recommended.</p>
-<h3 id="loading-path-of-the-unit-files">Loading path of the unit files</h3>
-<p>The output shows the order of the directories from which the unit files are loaded.</p>
+<p>The basic and introductory information about systemd can be found on
+the manual page <a
+href="./systemd-start_en.html#systemd---the-system-and-services-manager">systemd-start</a>.<br />
+On the following manual page we explain the structure of the
+<strong>unit files</strong> and the generic sections <em>[Unit]</em> and
+<em>[Install]</em>.</p>
+<p>The unit file is a plain text file in INI format. It contains
+configuration statements of the type <em>key=value</em> in various
+sections. Empty lines and those starting with “#” or “;” are ignored.
+All unit files must contain a section corresponding to the unit type.
+The generic sections [Unit] at the beginning and [Install] at the end of
+the file are optional, but the [Unit] section is strongly
+recommended.</p>
+<h3 id="loading-path-of-the-unit-files">Loading path of the unit
+files</h3>
+<p>The output shows the order of the directories from which the unit
+files are loaded.</p>
 <pre><code># systemd-analyze unit-paths
 /etc/systemd/system.control
 /run/systemd/system.control
@@ -69,153 +84,276 @@ On the following manual page we explain the structure of the <strong>unit files<
 /lib/systemd/system
 /usr/lib/systemd/system
 /run/systemd/generator.late</code></pre>
-<p>Unit files found in directories listed earlier override files with the same name in directories further down the list. For example, a file in <code>/etc/systemd/system</code> overrides one with the same name in <code>/lib/systemd/system</code>.</p>
-<p>Only some of the previously listed directories exist in siduction by default:</p>
+<p>Unit files found in directories listed earlier override files with
+the same name in directories further down the list. For example, a file
+in <code>/etc/systemd/system</code> overrides one with the same name in
+<code>/lib/systemd/system</code>.</p>
+<p>Only some of the previously listed directories exist in siduction by
+default:</p>
 <ul>
 <li><code>/lib/systemd/system/</code><br />
-contains system units installed by the distribution’s package manager and any unit files created by the administrator.<br />
+contains system units installed by the distribution’s package manager
+and any unit files created by the administrator.<br />
 </li>
 <li><code>/etc/systemd/system/</code><br />
-contains symlinks to unit files in <code>/lib/systemd/system/</code> for enabled units and administrator-created unit files, if any.<br />
+contains symlinks to unit files in <code>/lib/systemd/system/</code> for
+enabled units and administrator-created unit files, if any.<br />
 </li>
 <li><code>/usr/local/lib/systemd/system/</code><br />
-must be created and is meant to contain administrator-created unit files.<br />
+must be created and is meant to contain administrator-created unit
+files.<br />
 </li>
 <li><code>/run/systemd/</code><br />
-contains runtime units and dynamic configuration for volatile units. For the administrator, this directory has informal value only.</li>
+contains runtime units and dynamic configuration for volatile units. For
+the administrator, this directory has informal value only.</li>
 </ul>
-<p>We recommend storing your own unit files in <code>/usr/local/lib/systemd/system/</code>.</p>
+<p>We recommend storing your own unit files in
+<code>/usr/local/lib/systemd/system/</code>.</p>
 <h3 id="activating-the-unit-file">Activating the unit file</h3>
-<p>To make the configuration of a unit accessible to systemd, the unit file must be activated. This is done with the call:</p>
+<p>To make the configuration of a unit accessible to systemd, the unit
+file must be activated. This is done with the call:</p>
 <pre><code># systemctl daemon-reload
 # systemctl enable --now &lt;UNIT_FILE&gt;</code></pre>
-<p>The first command reloads the complete daemon configuration, the second one starts the <UNIT_FILE> unit immediately (option <code>--now</code>) and incorporates it into systemd so that it is executed every time the PC is rebooted.<br />
+<p>The first command reloads the complete daemon configuration, the
+second one starts the <UNIT_FILE> unit immediately (option
+<code>--now</code>) and incorporates it into systemd so that it is
+executed every time the PC is rebooted.<br />
 The command</p>
 <pre><code># systemctl disable &lt;UNIT_FILE&gt;</code></pre>
-<p>causes it to stop running every time the PC is rebooted. However, it can still be started manually with the command <strong><code>systemctl start &lt;UNIT_FILE&gt;</code></strong> and stopped with <strong><code>systemctl stop &lt;UNIT_FILE&gt;</code></strong>.<br />
-If a unit file is empty (i.e. has size 0) or is a symlink on <code>/dev/null</code>, its configuration will not be loaded and it will appear with the load state “masked” and cannot be activated. This is an effective way to completely disable a unit and also make it impossible to start it manually.</p>
+<p>causes it to stop running every time the PC is rebooted. However, it
+can still be started manually with the command
+<strong><code>systemctl start &lt;UNIT_FILE&gt;</code></strong> and
+stopped with
+<strong><code>systemctl stop &lt;UNIT_FILE&gt;</code></strong>.<br />
+If a unit file is empty (i.e. has size 0) or is a symlink on
+<code>/dev/null</code>, its configuration will not be loaded and it will
+appear with the load state “masked” and cannot be activated. This is an
+effective way to completely disable a unit and also make it impossible
+to start it manually.</p>
 <h3 id="sections-of-the-unit-file">Sections of the unit file</h3>
-<p>The unit file usually consists of the [Unit] section, the type-specific section, and the [Install] section. The type-specific section is included as a suffix in the file name. For example, a unit file that configures a timer always has the extension “.timer” and must contain [Timer] as the type-specific section.</p>
+<p>The unit file usually consists of the [Unit] section, the
+type-specific section, and the [Install] section. The type-specific
+section is included as a suffix in the file name. For example, a unit
+file that configures a timer always has the extension “.timer” and must
+contain [Timer] as the type-specific section.</p>
 <h4 id="section-unit">Section Unit</h4>
-<p>This section contains general information about the unit, defines dependencies to other units, evaluates conditions, and takes care of the enumeration in the boot process.</p>
+<p>This section contains general information about the unit, defines
+dependencies to other units, evaluates conditions, and takes care of the
+enumeration in the boot process.</p>
 <ol type="1">
 <li><p>General options</p>
 <ol type="a">
 <li><p><code>Description=</code><br />
-identifies the unit by a human readable name, which is used by systemd as a description for the unit and thus appears in the systemjournal (“Starting <em>description</em>…”) and can be used as a search pattern there.</p></li>
+identifies the unit by a human readable name, which is used by systemd
+as a description for the unit and thus appears in the systemjournal
+(“Starting <em>description</em>…”) and can be used as a search pattern
+there.</p></li>
 <li><p><code>Documentation=</code><br />
-is a reference to a file or web page that references documentation for this unit or its configuration, e.g. “Documentation=man:cupsd(8)” or “Documentation=http://www.cups.org/doc/man-cupsd.html”.</p></li>
+is a reference to a file or web page that references documentation for
+this unit or its configuration, e.g. “Documentation=man:cupsd(8)” or
+“Documentation=http://www.cups.org/doc/man-cupsd.html”.</p></li>
 </ol></li>
 <li><p>Binding dependencies to other units</p>
 <ol type="a">
 <li><p><code>Wants=</code><br />
 Units listed here are started with the configured unit.</p></li>
 <li><p><code>Requires=</code><br />
-Similar to Wants=, but declares a stronger binding to the listed Units.<br />
+Similar to Wants=, but declares a stronger binding to the listed
+Units.<br />
 When this unit is activated, the listed units are also activated.<br />
-If activation of one of the other units fails <strong>and</strong> the order dependency <code>After=</code> is set on the failed unit, then that unit will not be started.<br />
-If one of the other units becomes inactive, this unit will remain active. Only if one of the other units is stopped, this unit will also be stopped.</p></li>
+If activation of one of the other units fails <strong>and</strong> the
+order dependency <code>After=</code> is set on the failed unit, then
+that unit will not be started.<br />
+If one of the other units becomes inactive, this unit will remain
+active. Only if one of the other units is stopped, this unit will also
+be stopped.</p></li>
 <li><p><code>Requisite=</code><br />
-Similar to Requires=. The start of this unit will fail immediately if the units listed here have not been started yet. Requisite= should be combined with the order dependency <code>After=</code> to ensure that this unit is not started before the other unit.</p></li>
+Similar to Requires=. The start of this unit will fail immediately if
+the units listed here have not been started yet. Requisite= should be
+combined with the order dependency <code>After=</code> to ensure that
+this unit is not started before the other unit.</p></li>
 <li><p><code>BindsTo=</code><br />
-BindsTo= is the strongest dependency type: it causes, in addition to the properties of Requires=, that the bound unit must be in active state for this unit to be active.<br />
-When the bound unit is stopped or in an inactive state, this unit will always be stopped.<br />
-To prevent the start of this unit from failing when the bound unit is not (or not yet) in an active state, BindsTo= is best combined with the order dependency <code>After=</code>.</p></li>
+BindsTo= is the strongest dependency type: it causes, in addition to the
+properties of Requires=, that the bound unit must be in active state for
+this unit to be active.<br />
+When the bound unit is stopped or in an inactive state, this unit will
+always be stopped.<br />
+To prevent the start of this unit from failing when the bound unit is
+not (or not yet) in an active state, BindsTo= is best combined with the
+order dependency <code>After=</code>.</p></li>
 <li><p><code>PartOf=</code><br />
-works similar to Requires=, but limited to stopping and restarting units.<br />
-When systemd stops or restarts the units listed here, the action is forwarded to that unit.<br />
-This is a one-way dependency. Changes to this Unit do not affect the units listed.</p></li>
+works similar to Requires=, but limited to stopping and restarting
+units.<br />
+When systemd stops or restarts the units listed here, the action is
+forwarded to that unit.<br />
+This is a one-way dependency. Changes to this Unit do not affect the
+units listed.</p></li>
 <li><p><code>Conflicts=</code><br />
-Declares negative request dependencies. It is possible to specify a space-separated list.<br />
-Conflicts= causes the listed unit to stop when this unit starts and vice versa.<br />
-Since Conflicts= does not include an order dependency, an <em>After=</em> or <code>Before=</code> dependency must be declared to ensure that the conflicting unit is stopped before the other unit is started.</p></li>
+Declares negative request dependencies. It is possible to specify a
+space-separated list.<br />
+Conflicts= causes the listed unit to stop when this unit starts and vice
+versa.<br />
+Since Conflicts= does not include an order dependency, an
+<em>After=</em> or <code>Before=</code> dependency must be declared to
+ensure that the conflicting unit is stopped before the other unit is
+started.</p></li>
 </ol></li>
 <li><p>Order dependencies to other units</p>
 <ol type="a">
 <li><p><code>Before=</code><br />
-This setting configures order dependencies between units. Before= ensures that the listed unit will only start after the configured unit has finished starting.<br />
+This setting configures order dependencies between units. Before=
+ensures that the listed unit will only start after the configured unit
+has finished starting.<br />
 Specifying a space-separated list is possible.</p></li>
 <li><p><code>After=</code><br />
-This setting ensures the opposite of Before=. The listed unit must have been completely started before the configured unit is started.</p></li>
+This setting ensures the opposite of Before=. The listed unit must have
+been completely started before the configured unit is started.</p></li>
 <li><p><code>OnFailure=</code><br />
-specifies units to be activated when this unit takes the “failed” state.</p></li>
+specifies units to be activated when this unit takes the “failed”
+state.</p></li>
 </ol></li>
 <li><p>Conditions<br />
 Unit files can also contain a set of conditions.<br />
-Before starting the unit, systemd will check if the specified conditions are true. If not, the start of the unit (almost without output) will be skipped.<br />
-Failing conditions will not cause the unit to enter the “failed” state.<br />
-In case multiple conditions are specified, the unit will be executed if all of them are true.<br />
-In this section, we list only conditions that we think are useful for user-created units, because many conditions are used to skip units that do not apply on the local system.<br />
-The command <strong><code>systemd-analyze verify &lt;UNIT_FILE&gt;</code></strong> can be used to test conditions.</p>
+Before starting the unit, systemd will check if the specified conditions
+are true. If not, the start of the unit (almost without output) will be
+skipped.<br />
+Failing conditions will not cause the unit to enter the “failed”
+state.<br />
+In case multiple conditions are specified, the unit will be executed if
+all of them are true.<br />
+In this section, we list only conditions that we think are useful for
+user-created units, because many conditions are used to skip units that
+do not apply on the local system.<br />
+The command
+<strong><code>systemd-analyze verify &lt;UNIT_FILE&gt;</code></strong>
+can be used to test conditions.</p>
 <ol type="a">
 <li><p><code>ConditionVirtualization=</code><br />
-checks if the system is running in a virtualized environment and optionally tests if it is a specific implementation.</p></li>
+checks if the system is running in a virtualized environment and
+optionally tests if it is a specific implementation.</p></li>
 <li><p><code>ConditionACPower=</code><br />
-checks if the system is on the mains or running solely on battery power at the time the unit is activated.</p></li>
+checks if the system is on the mains or running solely on battery power
+at the time the unit is activated.</p></li>
 <li><p><code>ConditionPathExists=</code><br />
-checks for the existence of a file. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+checks for the existence of a file. With an exclamation mark (“!”) in
+front of the path, the test is negated.</p></li>
 <li><p><code>ConditionPathExistsGlob=</code><br />
-As before, except that a search pattern is specified. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+As before, except that a search pattern is specified. With an
+exclamation mark (“!”) in front of the path, the test is
+negated.</p></li>
 <li><p><code>ConditionPathIsDirectory=</code><br />
-tests for the existence of a directory. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+tests for the existence of a directory. With an exclamation mark (“!”)
+in front of the path, the test is negated.</p></li>
 <li><p><code>ConditionPathIsSymbolicLink=</code><br />
-checks if a given path exists and is a symbolic link. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+checks if a given path exists and is a symbolic link. With an
+exclamation mark (“!”) in front of the path, the test is
+negated.</p></li>
 <li><p><code>ConditionPathIsMountPoint=</code><br />
-checks if a given path exists and is a mount point. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+checks if a given path exists and is a mount point. With an exclamation
+mark (“!”) in front of the path, the test is negated.</p></li>
 <li><p><code>ConditionPathIsReadWrite=</code><br />
-checks if the underlying file system is readable and writable. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+checks if the underlying file system is readable and writable. With an
+exclamation mark (“!”) in front of the path, the test is
+negated.</p></li>
 <li><p><code>ConditionDirectoryNotEmpty=</code><br />
-checks if a given path exists and is a non-empty directory. With an exclamation mark (“!”) in front of the path the test is negated.</p></li>
+checks if a given path exists and is a non-empty directory. With an
+exclamation mark (“!”) in front of the path the test is
+negated.</p></li>
 <li><p><code>ConditionFileNotEmpty=</code><br />
-checks if a given path exists and refers to a normal file with a non-zero size. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+checks if a given path exists and refers to a normal file with a
+non-zero size. With an exclamation mark (“!”) in front of the path, the
+test is negated.</p></li>
 <li><p><code>ConditionFileIsExecutable=</code><br />
-checks if a given path exists and refers to a normal file marked as executable. With an exclamation mark (“!”) in front of the path, the test is negated.</p></li>
+checks if a given path exists and refers to a normal file marked as
+executable. With an exclamation mark (“!”) in front of the path, the
+test is negated.</p></li>
 </ol></li>
 </ol>
-<p>For full documentation on all options of the “[Unit]” section, please refer to <code>man systemd.unit</code>.</p>
+<p>For full documentation on all options of the “[Unit]” section, please
+refer to <code>man systemd.unit</code>.</p>
 <h4 id="type-specific-section">Type-specific section</h4>
-<p>This section contains the special options of the eleven possible types. Detailed descriptions can be found in the linked manual pages, or on the respective manpage.</p>
+<p>This section contains the special options of the eleven possible
+types. Detailed descriptions can be found in the linked manual pages, or
+on the respective manpage.</p>
 <ul>
-<li><p><a href="./systemd-service_en.html#systemd-service">[Service]</a> configures a service.</p></li>
-<li><p>[Socket] configures a socket (<code>man systemd.socket</code>).</p></li>
-<li><p>[Device] configures a device (<code>man systemd.device</code>).</p></li>
-<li><p><a href="./systemd-mount_en.html#systemd-mount">[Mount]</a> configures a mount point.</p></li>
-<li><p><a href="./systemd-mount_en.html#systemd-mount">[Automount]</a> configures a self-mount point.</p></li>
-<li><p>[Swap] configures a swap file or partition (<code>man systemd.swap</code>).</p></li>
-<li><p><a href="./systemd-target_en.html#systemd-target---target-unit">[Target]</a> configures a start target.</p></li>
-<li><p><a href="./systemd-path_en.html#systemd-path">[Path]</a> configures a monitored file path.</p></li>
-<li><p><a href="./systemd-timer_en.html#systemd-timer">[Timer]</a> configures a timer controlled and monitored by systemd.</p></li>
-<li><p>[slice] configures a resource management slice (<code>man systemd.slice</code>).</p></li>
-<li><p>[Scope] configures a group of externally created processes (<code>man systemd.scope</code>).</p></li>
+<li><p><a href="./systemd-service_en.html#systemd-service">[Service]</a>
+configures a service.</p></li>
+<li><p>[Socket] configures a socket
+(<code>man systemd.socket</code>).</p></li>
+<li><p>[Device] configures a device
+(<code>man systemd.device</code>).</p></li>
+<li><p><a href="./systemd-mount_en.html#systemd-mount">[Mount]</a>
+configures a mount point.</p></li>
+<li><p><a href="./systemd-mount_en.html#systemd-mount">[Automount]</a>
+configures a self-mount point.</p></li>
+<li><p>[Swap] configures a swap file or partition
+(<code>man systemd.swap</code>).</p></li>
+<li><p><a
+href="./systemd-target_en.html#systemd-target---target-unit">[Target]</a>
+configures a start target.</p></li>
+<li><p><a href="./systemd-path_en.html#systemd-path">[Path]</a>
+configures a monitored file path.</p></li>
+<li><p><a href="./systemd-timer_en.html#systemd-timer">[Timer]</a>
+configures a timer controlled and monitored by systemd.</p></li>
+<li><p>[slice] configures a resource management slice
+(<code>man systemd.slice</code>).</p></li>
+<li><p>[Scope] configures a group of externally created processes
+(<code>man systemd.scope</code>).</p></li>
 </ul>
 <h4 id="install-section">Install section</h4>
 <p>Unit files may contain this section.<br />
-The options in the [Install] section are related by the <strong><code>systemctl enable &lt;UNIT_FILE&gt;</code></strong> and <strong><code>systemctl disable &lt;UNIT_FILE&gt;</code></strong> commands during installation of a unit.<br />
-Unit files without [Install] section can be started manually with the command <strong><code>systemctl start &lt;UNIT_FILE&gt;</code></strong> or from another unit file.</p>
+The options in the [Install] section are related by the
+<strong><code>systemctl enable &lt;UNIT_FILE&gt;</code></strong> and
+<strong><code>systemctl disable &lt;UNIT_FILE&gt;</code></strong>
+commands during installation of a unit.<br />
+Unit files without [Install] section can be started manually with the
+command <strong><code>systemctl start &lt;UNIT_FILE&gt;</code></strong>
+or from another unit file.</p>
 <p>Description of options:</p>
 <ul>
 <li><p><code>Alias=</code><br />
-A list of additional names under which this unit should be installed. The names listed here must have the same extension as the unit file.</p></li>
+A list of additional names under which this unit should be installed.
+The names listed here must have the same extension as the unit
+file.</p></li>
 <li><p><code>WantedBy=</code><br />
-This option can be used multiple times or contain a space-separated list.<br />
-A symbolic link is created in the <code>.wants/</code> directory of each of the listed units during installation. This adds a dependency of the type <code>Wants=</code> from the listed unit to the current unit. The main result is that the current unit is started when the listed unit is started.<br />
+This option can be used multiple times or contain a space-separated
+list.<br />
+A symbolic link is created in the <code>.wants/</code> directory of each
+of the listed units during installation. This adds a dependency of the
+type <code>Wants=</code> from the listed unit to the current unit. The
+main result is that the current unit is started when the listed unit is
+started.<br />
 Behaves like the Wants= option in the [Unit] section.</p>
 <p>Example:<br />
 WantedBy=graphical.target</p>
-<p>This tells systemd to launch the unit when starting graphical.target (formerly “init 5”).</p></li>
+<p>This tells systemd to launch the unit when starting graphical.target
+(formerly “init 5”).</p></li>
 <li><p><code>RequiredBy=</code><br />
-This option can be used multiple times or contain a space-separated list.<br />
-A symbolic link is created in the <code>.requires/</code> directory of each of the listed units during installation. This adds a dependency of type <code>Requires=</code> from the listed unit to the current unit. The main result is that the current unit is started when the listed unit is started.<br />
+This option can be used multiple times or contain a space-separated
+list.<br />
+A symbolic link is created in the <code>.requires/</code> directory of
+each of the listed units during installation. This adds a dependency of
+type <code>Requires=</code> from the listed unit to the current unit.
+The main result is that the current unit is started when the listed unit
+is started.<br />
 Behaves like the Requires= option in the [Unit] section.</p></li>
 <li><p><code>Also=</code><br />
-specifies additional units to be installed/uninstalled when this unit is installed/uninstalled.</p></li>
+specifies additional units to be installed/uninstalled when this unit is
+installed/uninstalled.</p></li>
 <li><p><code>DefaultInstance=</code><br />
 This option has effect only for template unit files.<br />
-Declares which instance of the unit should be released. The specified string must be suitable for identifying an instance.</p></li>
+Declares which instance of the unit should be released. The specified
+string must be suitable for identifying an instance.</p></li>
 </ul>
-<p>Hint: To verify the configuration of a unit file, the <strong><code>systemd-analyze verify &lt;UNIT_FILE&gt;</code></strong> command is suitable.</p>
+<p>Hint: To verify the configuration of a unit file, the
+<strong><code>systemd-analyze verify &lt;UNIT_FILE&gt;</code></strong>
+command is suitable.</p>
 <h3 id="example-cupsd">Example cupsd</h3>
-<p><em>cupsd</em>, the job scheduler for the Common UNIX Printing System, is controlled by systemd through its three unit files <code>cups.socket</code>, <code>cups.service</code>, and <code>cups.path</code> and is well suited to illustrate the dependencies.<br />
+<p><em>cupsd</em>, the job scheduler for the Common UNIX Printing
+System, is controlled by systemd through its three unit files
+<code>cups.socket</code>, <code>cups.service</code>, and
+<code>cups.path</code> and is well suited to illustrate the
+dependencies.<br />
 Here are the three files.</p>
 <pre><code>File /lib/system/system/cups.service:
 
@@ -264,9 +402,23 @@ ListenStream=/run/cups/cups.sock
 [Install]
 WantedBy=sockets.target</code></pre>
 <p><strong>The [Unit] section</strong><br />
-contains the same description for all three files. The files <code>cups.path</code> and <code>cups.socket</code> additionally contain the binding dependency <code>PartOf=cups.service</code>, which means that these two units are stopped or restarted depending on cups.service.<br />
-The socket unit as well as the path unit include the order dependency <code>Before=</code> to their service unit with the same name. Therefore it is not necessary to include the order dependencies After=cups.socket and After=cups.path in the cups.service unit (see below the output of <em>“systemd-analyze dump”</em> with the notation <em>“destination-implicit”</em>). The effect of both dependencies together is that regardless of which unit starts first, all three units will always start, and the cups.service unit will only start after the cups.path unit and the cups.socket unit have successfully started.</p>
-<p>We get the units’ complete configuration with the command <strong><code>systemd-analyze dump</code></strong>, which prints a very, very long list ( &gt; 32000 lines) of the systemd server state.</p>
+contains the same description for all three files. The files
+<code>cups.path</code> and <code>cups.socket</code> additionally contain
+the binding dependency <code>PartOf=cups.service</code>, which means
+that these two units are stopped or restarted depending on
+cups.service.<br />
+The socket unit as well as the path unit include the order dependency
+<code>Before=</code> to their service unit with the same name. Therefore
+it is not necessary to include the order dependencies After=cups.socket
+and After=cups.path in the cups.service unit (see below the output of
+<em>“systemd-analyze dump”</em> with the notation
+<em>“destination-implicit”</em>). The effect of both dependencies
+together is that regardless of which unit starts first, all three units
+will always start, and the cups.service unit will only start after the
+cups.path unit and the cups.socket unit have successfully started.</p>
+<p>We get the units’ complete configuration with the command
+<strong><code>systemd-analyze dump</code></strong>, which prints a very,
+very long list ( &gt; 32000 lines) of the systemd server state.</p>
 <pre><code># systemd-analyze dump
 [...]
 -&gt; Unit cups.service:
@@ -286,20 +438,30 @@ The socket unit as well as the path unit include the order dependency <code>Befo
     After: cups.service (origin-default)
 [...]</code></pre>
 <p><strong>The [Install] section</strong><br />
-of the cups.service unit contains the option <code>Also=cups.socket cups.path</code>, i.e. the instruction to install these two units as well and all three units have different <code>WantedBy=</code> options:</p>
+of the cups.service unit contains the option
+<code>Also=cups.socket cups.path</code>, i.e. the instruction to install
+these two units as well and all three units have different
+<code>WantedBy=</code> options:</p>
 <ul>
 <li>cups.socket: WantedBy=sockets.target</li>
 <li>cups.path: WantedBy=multi-user.target</li>
 <li>cups.service: WantedBy=printer.target</li>
 </ul>
-<p>To understand why different values are used for the <em>“WantedBy=”</em> option, we need additional information, which we can obtain with the <strong><code>systemd-analyze dot</code></strong> and <strong><code>systemd-analyze plot</code></strong> commands.</p>
+<p>To understand why different values are used for the
+<em>“WantedBy=”</em> option, we need additional information, which we
+can obtain with the <strong><code>systemd-analyze dot</code></strong>
+and <strong><code>systemd-analyze plot</code></strong> commands.</p>
 <pre><code>   (enter in a single line)
 $ systemd-analyze dot --to-pattern=&#39;*.target&#39;
  --from-pattern=&#39;*.target&#39; | dot -Tsvg &gt; targets.svg
 
 $ systemd-analyze plot &gt; bootup.svg</code></pre>
-<p>The first one gives us a flowchart with the dependencies of the different targets to each other and the second one a graphical listing of the boot process with when a process was started, how much time it took, and its activity state.</p>
-<p>From the <code>targets.svg</code> and the <code>bootup.svg</code> we can see that</p>
+<p>The first one gives us a flowchart with the dependencies of the
+different targets to each other and the second one a graphical listing
+of the boot process with when a process was started, how much time it
+took, and its activity state.</p>
+<p>From the <code>targets.svg</code> and the <code>bootup.svg</code> we
+can see that</p>
 <ol type="1">
 <li><p><em>sysinit.target</em><br />
 is activated and</p></li>
@@ -320,44 +482,93 @@ will not start until network.target has been reached.</p></li>
 <li><p><em>multi-user.target</em><br />
 will not start until network.target has been reached.</p></li>
 <li><p><em>multi-user.target</em><br />
-is not reached until cups.service has been started successfully. (Strictly speaking, this is because the cups-browsed.service, which depends on the cups.service, must have been started successfully.)</p></li>
+is not reached until cups.service has been started successfully.
+(Strictly speaking, this is because the cups-browsed.service, which
+depends on the cups.service, must have been started
+successfully.)</p></li>
 <li><p><em>printer.target</em><br />
-becomes active only when systemd dynamically generates device units for the printers. For this to happen, the printers must be connected and turned on.</p></li>
+becomes active only when systemd dynamically generates device units for
+the printers. For this to happen, the printers must be connected and
+turned on.</p></li>
 </ol>
-<p>Further above we noted that starting a cups.xxx unit is sufficient to bring in all three units. If we look again at the <em>“WantedBy=”</em> options in the [Install] section, we have the cups.socket unit being brought in via the sockets.target already during the basic.target, the cups.path unit being brought in during the multi-user.target, and the cups.service being brought in by the printer.target.<br />
-Throughout the boot process, the three cups.xxx units are repeatedly requested from systemd for activation. This hardens the cupsd against unforeseen errors, but does not matter to systemd because it does not matter how many times a service is requested if it is in the queue.<br />
-Additionally, the printer.target requests the cups.service whenever a printer is newly detected by systemd.</p>
+<p>Further above we noted that starting a cups.xxx unit is sufficient to
+bring in all three units. If we look again at the <em>“WantedBy=”</em>
+options in the [Install] section, we have the cups.socket unit being
+brought in via the sockets.target already during the basic.target, the
+cups.path unit being brought in during the multi-user.target, and the
+cups.service being brought in by the printer.target.<br />
+Throughout the boot process, the three cups.xxx units are repeatedly
+requested from systemd for activation. This hardens the cupsd against
+unforeseen errors, but does not matter to systemd because it does not
+matter how many times a service is requested if it is in the
+queue.<br />
+Additionally, the printer.target requests the cups.service whenever a
+printer is newly detected by systemd.</p>
 <h3 id="tools">Tools</h3>
-<p>Systemd includes some useful tools for analyzing, checking, and editing unit files.<br />
-Please also refer to the man pages <code>man systemd-analyze</code> and <code>man systemctl</code>.</p>
+<p>Systemd includes some useful tools for analyzing, checking, and
+editing unit files.<br />
+Please also refer to the man pages <code>man systemd-analyze</code> and
+<code>man systemctl</code>.</p>
 <ul>
 <li><p>edit</p>
 <pre><code># systemctl edit &lt;UNIT_FILE&gt;
 # systemctl edit --full &lt;UNIT_FILE&gt;
 # systemctl edit --full --force &lt;UNIT_FILE&gt;</code></pre>
-<p><em>“systemctl edit”</em> opens the selected unit file in the configured editor.</p>
+<p><em>“systemctl edit”</em> opens the selected unit file in the
+configured editor.</p>
 <ul>
-<li><p><strong><code>systemctl edit &lt;UNIT_FILE&gt;</code></strong> creates a new directory under <code>/etc/systemd/system/</code> named <code>&lt;UNIT_FILE&gt;.d</code> and in it the file <code>override.conf</code> which contains only the changes from the original unit file. This applies to all unit files in the directories entered in the <a href="#load-path-of-unit-files">Hirarchy of load paths</a> including <code>/etc/systemd/system/</code> downwards.</p></li>
-<li><p><strong><code>systemctl edit - -full &lt;UNIT_FILE&gt;</code></strong> creates a new file with the same name in the <code>/etc/systemd/system/</code> directory. This applies to all unit files in the directories entered in the <a href="#load-path-of-unit-files">Hirarchy of load paths</a> below <code>/etc/systemd/system/</code>. Files already existing in the <code>/etc/systemd/system/</code> directory will be overwritten.</p></li>
-<li><p><strong><code>systemctl edit - -full - -force &lt;UNIT_FILE&gt;</code></strong> creates a new file in the directory <code>/etc/systemd/system/</code>. Without the <code>--full</code> option, only an <code>override.conf</code> file would be generated in the new directory <code>/etc/systemd/system/&lt;UNIT_FILE&gt;.d/</code>, which lacks the associated unit file.</p></li>
+<li><p><strong><code>systemctl edit &lt;UNIT_FILE&gt;</code></strong>
+creates a new directory under <code>/etc/systemd/system/</code> named
+<code>&lt;UNIT_FILE&gt;.d</code> and in it the file
+<code>override.conf</code> which contains only the changes from the
+original unit file. This applies to all unit files in the directories
+entered in the <a href="#load-path-of-unit-files">Hirarchy of load
+paths</a> including <code>/etc/systemd/system/</code>
+downwards.</p></li>
+<li><p><strong><code>systemctl edit - -full &lt;UNIT_FILE&gt;</code></strong>
+creates a new file with the same name in the
+<code>/etc/systemd/system/</code> directory. This applies to all unit
+files in the directories entered in the <a
+href="#load-path-of-unit-files">Hirarchy of load paths</a> below
+<code>/etc/systemd/system/</code>. Files already existing in the
+<code>/etc/systemd/system/</code> directory will be
+overwritten.</p></li>
+<li><p><strong><code>systemctl edit - -full - -force &lt;UNIT_FILE&gt;</code></strong>
+creates a new file in the directory <code>/etc/systemd/system/</code>.
+Without the <code>--full</code> option, only an
+<code>override.conf</code> file would be generated in the new directory
+<code>/etc/systemd/system/&lt;UNIT_FILE&gt;.d/</code>, which lacks the
+associated unit file.</p></li>
 </ul>
-<p>When the editor is terminated, systemd automatically executes the command <strong><code>systemctl daemon-reload</code></strong>.</p></li>
+<p>When the editor is terminated, systemd automatically executes the
+command <strong><code>systemctl daemon-reload</code></strong>.</p></li>
 <li><p>revert</p>
 <pre><code># systemctl revert &lt;UNIT_FILE&gt;</code></pre>
-<p>reverts the changes made to unit files with <code>systemctl edit</code> and <code>systemctl edit --full</code>. This does not apply to changed unit files that were already existing in the <code>/etc/systemd/system/</code> directory.<br />
-In addition, the command undoes the changes made with <code>systemctl mask</code>.</p></li>
+<p>reverts the changes made to unit files with
+<code>systemctl edit</code> and <code>systemctl edit --full</code>. This
+does not apply to changed unit files that were already existing in the
+<code>/etc/systemd/system/</code> directory.<br />
+In addition, the command undoes the changes made with
+<code>systemctl mask</code>.</p></li>
 <li><p>daemon-reload</p>
 <pre><code># systemctl daemon-reload</code></pre>
-<p>reloads the system administrator configuration. This re-runs all generators, reloads all unit files, and rebuilds the entire dependency tree.</p></li>
+<p>reloads the system administrator configuration. This re-runs all
+generators, reloads all unit files, and rebuilds the entire dependency
+tree.</p></li>
 <li><p>cat</p>
 <pre><code>$ systemctl cat &lt;UNIT_FILE&gt;</code></pre>
-<p>prints the contents of the unit file and all associated changes according to the console command <code>cat</code>.</p></li>
+<p>prints the contents of the unit file and all associated changes
+according to the console command <code>cat</code>.</p></li>
 <li><p>analyze verify</p>
 <pre><code>$ systemd-analyze verify &lt;UNIT_FILE&gt;</code></pre>
-<p>checks the configuration settings of a unit file and prints hints. This is a very useful command to check the configuration of self created or changed unit files.</p></li>
+<p>checks the configuration settings of a unit file and prints hints.
+This is a very useful command to check the configuration of self created
+or changed unit files.</p></li>
 <li><p>systemd-delta</p>
 <pre><code>$ systemd-delta</code></pre>
-<p>presents in the output unit files and the changes made to them. The keyword at the beginning of the line defines the type of change or configuration.<br />
+<p>presents in the output unit files and the changes made to them. The
+keyword at the beginning of the line defines the type of change or
+configuration.<br />
 Here is an example:</p>
 <pre><code>$ systemd-delta --no-pager
 [MASKED] /etc/sysctl.d/50-coredump.conf → /usr/lib/sysctl.d/50-coredump.conf
@@ -375,10 +586,17 @@ Here is an example:</p>
 6 overridden configuration files found.</code></pre></li>
 <li><p>analyze dump</p>
 <pre><code>$ systemd-analyze dump &gt; systemd_dump.txt</code></pre>
-<p>creates the text file <em>“systemd_dump.txt”</em> with the complete configuration of all systemd units. The very long text file gives information about all configuration settings of all systemd units and can be easily searched with a text editor and using regex patterns.</p></li>
+<p>creates the text file <em>“systemd_dump.txt”</em> with the complete
+configuration of all systemd units. The very long text file gives
+information about all configuration settings of all systemd units and
+can be easily searched with a text editor and using regex
+patterns.</p></li>
 <li><p>analyze plot</p>
 <pre><code>$ systemd-analyze plot &gt; bootup.svg</code></pre>
-<p>creates the file <em>“bootup.svg”</em> with the chronological sequence of the boot process. It is a graphical listing of the boot process with the start and end times of all units, what time they took, and their activity states.</p></li>
+<p>creates the file <em>“bootup.svg”</em> with the chronological
+sequence of the boot process. It is a graphical listing of the boot
+process with the start and end times of all units, what time they took,
+and their activity states.</p></li>
 <li><p>analyze dot (Enter the command on one line).</p>
 <pre><code>$ systemd-analyze dot --to-pattern=&#39;*.target&#39;
   --from-pattern=&#39;*.target&#39; | dot -Tsvg &gt; targets.svg
@@ -388,9 +606,12 @@ Here is an example:</p>
                 dark grey = Wants
                 red       = Conflicts
                 green     = After</code></pre>
-<p>creates the <em>“targets.svg”</em> flowchart that shows the dependencies of the targets used in the boot process. The relationships of the .target units are shown in color for a better overview.</p></li>
+<p>creates the <em>“targets.svg”</em> flowchart that shows the
+dependencies of the targets used in the boot process. The relationships
+of the .target units are shown in color for a better overview.</p></li>
 </ul>
-<p>The tools mentioned here represent only a part of the tools shipped with systemd. Please refer to the man pages for full documentation.</p>
+<p>The tools mentioned here represent only a part of the tools shipped
+with systemd. Please refer to the man pages for full documentation.</p>
 <h3 id="sources-systemd-unit-file">Sources systemd-unit file</h3>
 <p>We recommend to read the following manpages:</p>
 <pre><code>man systemd.unit
