@@ -14,7 +14,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Lokaler APT-Mirror](0706-sys-admin-apt-localmirr_de.md#lokaler-apt-mirror); Apt-Cacher, der Proxy-Server für Debian-Pakete. Server installieren und die Client Konfiguration.
 
-+ [Nala für das Paketmanagement](0707-sys-admin-nala_de.md), Ein Front-End, dass APT für den Anwender optimiert und beschleunigt.
++ [Nala für das Paketmanagement](0707-sys-admin-nala_de.md#nala-paketverwaltung), Ein Front-End, dass APT für den Anwender optimiert und beschleunigt.
 
 + [Neue Kernel installieren](0708-sys-admin-kern-upg_de.md#kernel-upgrade), Kernel-Aktualisierung ohne Systemaktualisierung, 3rd Party Module und alte Kernel entfernen.
 
