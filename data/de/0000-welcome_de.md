@@ -29,7 +29,7 @@ Fast alle Anwendungsprogramme bieten Hilfestellung mittels einer zugehörigen *"
 
 ### Copyright Rechts- und Lizenzhinweise
 
-Alle Rechte © 2006-2021 des siduction-manual sind lizenziert unter der [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt). Eine informelle Übersetzung dieser Lizenz ins Deutsche befindet sich [hier](https://www.selflinux.org/selflinux/html/gfdl_de.html).  
+Alle Rechte © 2006-2022 des siduction-manual sind lizenziert unter der [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt). Eine informelle Übersetzung dieser Lizenz ins Deutsche befindet sich [hier](https://www.selflinux.org/selflinux/html/gfdl_de.html).  
 Dies gestattet das Dokument nach den Bestimmungen der GNU Free Document License Version 1.3 oder neuer (wie veröffentlicht bei der Free Software Foundation) zu kopieren, verbreiten und/oder zu ändern; ohne unveränderliche Sektionen und ohne Umschlagtexte (Vorderseitentexte, Rückseitentexte).
 
 Die Rechte von geschützten Marken bzw. Urheberrechte liegen bei den jeweiligen Inhabern, unabhängig davon, ob dies vermerkt ist oder nicht.
