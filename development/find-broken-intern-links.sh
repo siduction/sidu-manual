@@ -7,7 +7,7 @@ ORDNER=$(pwd | sed 's#.*/##')
 
 grep -oh -P '\(\d{4}-.*?\)' 0* | sort | uniq > ~/LINK
 
-grep -oh -P '\(\d{4}-.*?\)' ../../development/headinglinks-$ORDNER-by-file |sort | uniq > ~/HEADING
+grep -oh -P '\(\d{4}-.*?\)' ../../development/headinglinks-$ORDNER |sort | uniq > ~/HEADING
 
 diff ~/HEADING ~/LINK | grep '>'
 
