@@ -121,7 +121,7 @@ Plasma, Xfce, LXQt und Xorg werden von siduction ausgeliefert.
 
 Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
-+ Mehr dazu im Kapitel [Wo es Hilfe gibt](help_de.md#siduction-hilfe) .
++ Mehr dazu im Kapitel [Wo es Hilfe gibt](0003-help_de.md#siduction-hilfe) .
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 

@@ -8,10 +8,10 @@ Zu Beginn des Bootvorgangs lässt sich die Kernel-Befehlszeile editieren, indem 
 
 Die nachstehenden Link führen zu der Handbuchseite mit den Tabellen für die Bootoptionen.
 
-1. [siduction spezifische Parameter (nur Live-CD)](cheatcodes_de.md#siduction-spezifische-parameter)
-2. [Bootoptionen für den Grafikserver X](cheatcodes_de.md#bootoptionen-für-den-grafikserver-x)
-3. [Allgemeine Parameter des Linux-Kernels](cheatcodes_de.md#allgemeine-parameter-des-linux-kernels)
-4. [Werte für den allgemeinen Parameter **vga**](cheatcodes_de.md#vga-codes)
+1. [siduction spezifische Parameter (nur Live-CD)](0204-cheatcodes_de.md#siduction-spezifische-parameter)
+2. [Bootoptionen für den Grafikserver X](0204-cheatcodes_de.md#bootoptionen-für-den-grafikserver-x)
+3. [Allgemeine Parameter des Linux-Kernels](0204-cheatcodes_de.md#allgemeine-parameter-des-linux-kernels)
+4. [Werte für den allgemeinen Parameter **vga**](0204-cheatcodes_de.md#vga-codes)
 
 [Ausführliche Referenzliste für Kernel-Bootcodes von kernel.org (Englisch, PDF)](http://files.kroah.com/lkn/lkn_pdf/ch09.pdf) 
 
@@ -26,7 +26,7 @@ systemd kennt insgesamt 11 Unit-Typen. Die Units, mit denen wir im Alltag am hä
 + systemd.mount
 + systemd.path
 
-Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager). Die vollständige Dokumentation ist in den man-Pages `man systemd.unit`, `man systemd.special` und jeweils `man systemd.<Unit-Typ>` zu finden.
+Einige der Unit-Typen stellen wir hier kurz vor. Ihre Namen geben bereits einen Hinweis auf die vorgesehene Funktionalität. Etwas ausführlichere Erläuterungen zu den Units beinhaltet unsere Handbuchseite [Systemadministration.Systemd](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager). Die vollständige Dokumentation ist in den man-Pages `man systemd.unit`, `man systemd.special` und jeweils `man systemd.<Unit-Typ>` zu finden.
 
 Mit dem Befehl
 
@@ -102,14 +102,14 @@ die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und d
 
 Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.  
 Die alten sysvinit-Befehle werden weiterhin unterstützt. (hierzu ein Zitat aus `man systemd`: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")  
-Ausführlichere Informationen zum systemd enthält die Handbuchseite [Systemadministration.systemd](systemd-start_de.md#systemd-der-system--und-dienste-manager).  
+Ausführlichere Informationen zum systemd enthält die Handbuchseite [Systemadministration.systemd](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager).  
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.
 
 | Ziel-Unit | Beschreibung | 
 | ---- | ---- |
 | emergency.target | Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die minimalste Version eines Systemstarts, um eine interaktive Shell zu erlangen. Mit dieser Unit kann der Bootvorgang Schritt für Schritt begleitet werden. | 
 | rescue.target | Startet das Basissystem (einschließlich Systemeinhängungen) und eine Notfall-Shell. Im Vergleich zu multi-user.target könnte dieses Ziel als single-user.target betrachtet werden. |
-| multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](sys-admin-apt_de.md#aktualisierung-des-systems) . |
+| multi-user.target | Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten möchte. [Auf dieser Unit wird eine Systemaktualisierung (dist-upgrade) durchgeführt](0705-sys-admin-apt_de.md#aktualisierung-des-systems) . |
 | graphical.target | Die Unit für den Mehrbenutzermodus mit Netzwerkfähigkeit und einem laufenden X-Window-System. |
 | default.target | Die Vorgabe-Unit, die systemd beim Systemstart startet. In siduction ist dies ein Symlink auf graphical.target (außer noX). |
 
@@ -222,7 +222,7 @@ Um, sofern nötig, die Darstellung der Schriften zu verbessern, ist es wichtig v
 **Einstellungen prüfen**
 
 - Korrekte Grafiktreiber  
-    Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite [Grafiktreiber](gpu_de.md#grafiktreiber) des Handbuchs.
+    Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von proprietären, nicht quelloffenen Treibern. Aus rechtlichen Gründen kann siduction diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber findest Du auf der Seite [Grafiktreiber](0600-gpu_de.md#grafiktreiber) des Handbuchs.
 
 - Korrekte Bildschirmauflösungen und Bildwiederholungsraten  
     Zuerst ist ein Blick in die technischen Unterlagen des Herstellers sinnvoll, entweder print oder online. Jeder Monitor hat seine eigene perfekte Einstellungskombination. Diese DCC-Werte werden in aller Regel richtig an das Betriebssystem übergeben. Nur manchmal muss manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.

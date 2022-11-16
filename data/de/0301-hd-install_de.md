@@ -11,7 +11,7 @@
 
 Zuerst stellt man die Bootreihenfolge auf das zu bootende Medium (DVD, Flashcard oder USB-Stick) um. Bei den meisten Computern kommt man durch Drücken der **`F2`** oder **`Entf`**-Taste während des Bootvorgangs in das Setup von UEFI oder BIOS. Alternativ kann während des Bootvorgangs die Taste **`F12`**, **`F11`** **`F7`** oder **`F8`** (je nach Angaben der Hardwarehersteller) gedrückt werden um dann das Live-Medium als Startlaufwerk auszuwählen.
 
-siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](cheatcodes_de.md#bootoptionen-cheatcodes) erläutert die möglichen Optionen.  
+siduction startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager übergeben werden können. Die Handbuchseite [Cheatcodes](0204-cheatcodes_de.md#bootoptionen-cheatcodes) erläutert die möglichen Optionen.  
 Am Startbildschirm des Live-Mediums wird, je nachdem was zutrifft, mit den Pfeiltasten zu "From CD/DVD/ISO: ..." oder "From Stick/HDD: ..." navigiert und die Taste **`e`** betätigt. So gelangt man zum editieren der Kernelbefehlszeile um die Cheatcodes hinzuzufügen. Mit der Taste **`F10`** wird der Bootvorgang fortgesetzt.
 
 **Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.**
@@ -20,7 +20,7 @@ Soll siduction nicht von, sondern **auf** ein USB-Medium installiert werden, ist
 
 **HDD, RAM und Swap**
 
-Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](cd-content_de.md#minimale-systemanforderungen) beschrieben.  
+Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](0201-cd-content_de.md#minimale-systemanforderungen) beschrieben.  
 Mit 15 GB Festplattenvolumen und 4 GB Arbeitsspeicher ist man zur Zeit auf der sicheren Seite. 
 Auf PCs mit maximal 2 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 4 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
 
@@ -37,10 +37,10 @@ Beispiele und Größen für unterschiedliche Installationssituationen beschreibt
 Wir empfehlen, das `/home`-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das `/home`-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
-[Gparted](part-gparted_de.md#partitionieren-mit-gparted), ein Programm für die graphische Oberfläche für GTK-Desktops  
+[Gparted](0312-part-gparted_de.md#partitionieren-mit-gparted), ein Programm für die graphische Oberfläche für GTK-Desktops  
 KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
-[gdisk](part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GPT Partitionstabellen  
-[cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen.
+[gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GPT Partitionstabellen  
+[cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen.
 
 ### Dateisysteme
 
@@ -115,7 +115,7 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
    Vor der Verwendung der beiden Optionen  
    *"Automatisches Einloggen ohne Passwortabfrage"* und  
    *"Nutze das gleiche Passwort auch für das Administratorenkonto"*  
-   wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherheitsrisiko dar (siehe auch [sudo](term-konsole_de.md#arbeit-als-root)). Sind beide Optionen aktiviert ist die Eingabe von Passwörtern nur noch eine Farce!
+   wird hier ausdrücklich gewarnt. Sie stellen schon für sich allein ein Sicherheitsrisiko dar (siehe auch [sudo](0701-term-konsole_de.md#arbeit-als-root)). Sind beide Optionen aktiviert ist die Eingabe von Passwörtern nur noch eine Farce!
 
 7. Nach Betätigen der Taste `Weiter` erscheint eine Zusammenfassung aller zuvor getätigten Eingaben. Jetzt besteht noch die Möglichkeit über `Zurück` Änderungen vorzunehmen. Sind wir mit dem Ergebnis zufrieden, öffnet ein Klick auf `Installieren` das kleine Warnfenster in dem wir die Installation bestätigen müssen.
 

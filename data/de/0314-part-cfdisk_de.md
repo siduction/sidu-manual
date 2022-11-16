@@ -7,12 +7,12 @@
 Der neuere Standard **G**lobally Unique Identifier **P**artition **T**able (GPT), der Teil des UEFI-Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in [Wikipedia GUID-Partitionstabelle](https://de.wikipedia.org/wiki/GUID_Partition_Table)
 
 Wir empfehlen die Partitionierung mit fdisk und cfdisk ausschließlich für ältere Hardware.  
-Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk) zu Rate ziehen.
+Zum Erstellen von GPT-Partitionstabellen bitte die Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zu Rate ziehen.
 
 ### Benennung von Speichergeräten
 
 **Bitte BEACHTEN:**  
-siduction verwendet in der `fstab` UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen.
+siduction verwendet in der `fstab` UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](0311-part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen.
 
 **Festplatten**
 

@@ -18,7 +18,7 @@ Innerhalb der zuvor genannten Verzeichnisse sollten die Dateien tunlichst nicht 
 
 ### Erstkonfiguration
 
-Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](./lamp-start_de.md#lamp-webserver) beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer **root** und **anonymous**, ohne Passwort erstellt und eine Testdatenbank angelegt.
+Nach der Installation, wie sie in [LAMP-Testserver für Entwickler](0520-lamp-start_de.md#lamp-webserver) beschrieben wurde, ist MariaDB *'offen wie ein Scheunentor für jedermann'*, denn in der Grundeinstellung werden die beiden Benutzer **root** und **anonymous**, ohne Passwort erstellt und eine Testdatenbank angelegt.
 
 Deshalb rufen wir das Programm **`mysql_secure_installation`** im Root-Terminal auf.  
 Hier nehmen wir eine ganze Reihe von Einstellungen zur Absicherung der Datenbank vor. Die notwendigen Eingaben sind so gekennzeichnet: `«--[ ]`.

@@ -34,7 +34,7 @@ Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installati
 
 Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden.
 
-Als Partitionstabelle sollte der Typ *"GPT"* gewählt werden. So kann man die Vorteile gegenüber *"MBR"* nutzen. Nur bei alter Hardware ist *"MBR"* noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk).
+Als Partitionstabelle sollte der Typ *"GPT"* gewählt werden. So kann man die Vorteile gegenüber *"MBR"* nutzen. Nur bei alter Hardware ist *"MBR"* noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk).
 
 Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.
 
@@ -112,17 +112,17 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren F
 ### Partitionierungsprogramme
 
 + **GParted** Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
-  Gparted ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. Gparted unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](part-gparted_de.md#partitionieren-mit-gparted) liefert weitere Informationen zum Programm.
+  Gparted ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction Installationen und Installationsmedien verfügbar. Gparted unterstützt eine Reihe verschiedener Typen von Partitionstabellen. Die Handbuchseite [Partitionieren der Festplatte mit GParted](0312-part-gparted_de.md#partitionieren-mit-gparted) liefert weitere Informationen zum Programm.
 
 + **KDE Partition Manager** Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
   Der KDE Partition Manager ist das Standard-Partitionierungsprogramm für den KDE Destktop, einfach zu bedienen und genauso umfangreich wie Gparted.
 
 + **gdisk / cgdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *"GPT-UEFI"*.  
-  gdisk ist das klassische Textmodus-Programm. cgdisk hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](part-gdisk_de.md#partitionieren-mit-gdisk) liefert weitere Informationen zum Programm.
+  gdisk ist das klassische Textmodus-Programm. cgdisk hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk) liefert weitere Informationen zum Programm.
 
 + **fdisk / cfdisk** Ein Konsolenprogramm für Partitionstabellen vom Typ *"msdos-MBR"*.  
   Hinweis: fdisk sollte nur noch für alte Hardware, die *"GPT-UEFI"* nicht unterstützt verwendet werden.  
-  fdisk ist das klassische Textmodus-Programm. cfdisk hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
+  fdisk ist das klassische Textmodus-Programm. cfdisk hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
 
 > **Achtung**  
 > Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht werden, immer zuvor auf einem anderen Datenträger sichern.
@@ -146,8 +146,8 @@ Die Einbindung einer Swap-Partition wird mit diesem Befehl gelöst:
 
 Für weitere Partitionierungsoptionen siehe:
 
-+ Logical Volume Manager [LVM-Partitionierung](part-lvm_de.md#lvm-partitionierung---logical-volume-manager)
++ Logical Volume Manager [LVM-Partitionierung](0315-part-lvm_de.md#lvm-partitionierung---logical-volume-manager)
 
-+ Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](part-gdisk_de.md#partitionieren-mit-gdisk)
++ Partitionierung mit GPT zur Unterstützung von UEFI [Partitionieren mit gdisk (GPT fdisk)](0313-part-gdisk_de.md#partitionieren-mit-gdisk)
 
 <div id="rev">Zuletzt bearbeitet: 2021-07-21</div>

@@ -2,7 +2,7 @@
 
 ## systemd unit-Datei
 
-Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](./systemd-start_de.md#systemd-der-system--und-dienste-manager)  
+Die grundlegenden und einführenden Informationen zu Systemd enthält die Handbuchseite [Systemd-Start](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager)  
 In der vorliegenden Handbuchseite erklären wir den Aufbau der **Unit-Dateien** und die generischen Sektionen *[Unit]* und *[Install]*.
 
 Die Unit-Datei ist eine reine Textdatei im INI-Format. Sie enthält Konfigurationsanweisungen von der Art "Schlüssel=Wert" in verschiedenen  Sektionen. Leere Zeilen und solche, die mit "#" oder ";" beginnen, werden ignoriert.
@@ -169,23 +169,23 @@ Die vollständige Dokumentation zu allen Optionen der Sektion [Unit] bitte in de
 
 Diese Sektion enthält die speziellen Optionen der elf möglichen Typen. Ausführliche Beschreibungen enthalten die verlinkten Handbuchseiten, oder ersatzweise die jeweilige deutsche Manpage.
 
-+ [[Service]](./systemd-service_de.md#systemd-service) konfiguriert einen Dienst
++ [[Service]](0712-systemd-service_de.md#systemd-service) konfiguriert einen Dienst
 
 + [[Socket]](https://manpages.debian.org/testing/manpages-de/systemd.socket.5.de.html) konfiguriert ein Socket
 
 + [[Device]](https://manpages.debian.org/testing/manpages-de/systemd.device.5.de.html) konfiguriert ein Gerät
 
-+ [[Mount]](./systemd-mount_de.md#systemd-mount) konfiguriert einen Einhängepunkt
++ [[Mount]](0713-systemd-mount_de.md#systemd-mount) konfiguriert einen Einhängepunkt
 
-+ [[Automount]](./systemd-mount_de.md#systemd-mount) konfiguriert einen Selbsteinhängepunkt
++ [[Automount]](0713-systemd-mount_de.md#systemd-mount) konfiguriert einen Selbsteinhängepunkt
 
 + [[Swap]](https://manpages.debian.org/testing/manpages-de/systemd.swap.5.de.html) konfiguriert eine Auslagerungsdatei oder -partition
 
-+ [[Target]](./systemd-target_de.md#systemd-target---ziel-unit) konfiguriert ein Startziel
++ [[Target]](0714-systemd-target_de.md#systemd-target---ziel-unit) konfiguriert ein Startziel
 
-+ [[Path]](./systemd-path_de.md#systemd-path) konfiguriert einen überwachten Dateipfad
++ [[Path]](0715-systemd-path_de.md#systemd-path) konfiguriert einen überwachten Dateipfad
 
-+ [[Timer]](./systemd-timer_de.md#systemd-timer) konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
++ [[Timer]](0716-systemd-timer_de.md#systemd-timer) konfiguriert einen von systemd gesteuerten und überwachten Zeitgeber
 
 + [[Slice]](https://manpages.debian.org/testing/manpages-de/systemd.slice.5.de.html) konfiguriert eine Ressourcenverwaltungs-Slice
 

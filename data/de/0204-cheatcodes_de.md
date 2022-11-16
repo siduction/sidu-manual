@@ -69,7 +69,7 @@ Es sollte zusätzlich auch entweder die Bootoption xandr oder xmodule verwendet 
 | Bootoption | Wert | Beschreibung | 
 | --- | ---- | ---------- |
 |  apm  | off | schaltet Advanced Power Managment aus | 
-|  1, 3, 5  |  (z.B.) 3  |  Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite [Runlevel - Ziel-Unit](sys-admin-gen_de.md#systemd-target-ehemals-runlevel)  | 
+|  1, 3, 5  |  (z.B.) 3  |  Boot-Ziele bzw. Runlevel, die man manuell in der Grub-Bootzeile eingeben kann. Siehe auch die Handbuchseite [Runlevel - Ziel-Unit](0702-sys-admin-gen_de.md#systemd-target-ehemals-runlevel)  | 
 |  irqpoll  |  | benutzt IRQ-Polling | 
 |  mem  | (z.b) 128M, 1G | benutzt die angegebene Speichergröße | 
 |  noagp  |  |  keine AGP-Unterstützung (Accelerated Graphics Port) | 

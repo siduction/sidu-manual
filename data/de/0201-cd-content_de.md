@@ -80,7 +80,7 @@ Zur Netzwerk- und Internetkonfiguration steht Connman, Network-Manager oder IWD 
 
 Xorg und nox werden mit [IWD](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) als ausgeliefert, dieser kann via [nmtui/nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool) oder [iwctl](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) konfiguriert werden. 
 
-Zur Partitionierung von Festplatten werden [cfdisk](./part-cfdisk_de.md#partitionieren-mit-fdisk), [gdisk und cgdisk](./part-gdisk_de.md#partitionieren-mit-gdisk) und [GParted](./part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
+Zur Partitionierung von Festplatten werden [cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk), [gdisk und cgdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk) und [GParted](0312-part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
 
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
