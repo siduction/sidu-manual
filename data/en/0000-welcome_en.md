@@ -2,9 +2,9 @@
 
 # Welcome
 
-## The siduction™ GNU/Linux operating system
+## The siduction GNU-Linux operating system
 
-The name **siduction** is a play on two words: the word **sid**, meaning the code name of Debian Unstable, and **seduction**.
+The name **siduction™** is a play on two words: the word **sid**, meaning the code name of Debian Unstable, and **seduction**.
 
 siduction is an operating system based on the [Linux kernel](https://kernel.org) and the [GNU project](https://gnu.org). In addition there are application programs from [Debian](https://debian.org). siduction is committed to the core values of the [Debian Social Contract](https://www.debian.org/social_contract.en.html) and the following "*Debian Free Software Guidelines*".  
 See also [DFSG](https://ee.wikipedia.org/wiki/Debian_Free_Software_Guidelines)

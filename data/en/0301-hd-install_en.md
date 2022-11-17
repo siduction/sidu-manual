@@ -113,7 +113,7 @@ During the installation, the computer should preferably be connected to the Inte
    We explicitly recommend not to use the options  
    "*Log in automatically without password prompt*" and  
    "*Use the same password for the administrator account*".  
-   They both represent a security risk on their own (see also [sudo](term-console_en.md#work-as-root)). If both options are enabled, entering passwords is just a farce!
+   They both represent a security risk on their own (see also [sudo](0701-term-konsole_en.md#work-as-root)). If both options are enabled, entering passwords is just a farce!
 
 7. After pressing the *"Next"* button, a summary of all previously made entries appears. Now you still have the possibility to make changes via *"Back"*. If you are satisfied with the result, a click on *"Install"* opens the small warning window in which you have to confirm the installation.
 

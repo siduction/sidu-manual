@@ -79,7 +79,7 @@ Connman or Network Manager is available for network and internet configuration.
 
 Xorg and NoX are delivered with [IWD](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) as wireless daemon. It can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool) or [iwctl](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant). 
 
-For disk partitioning, [cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](./0313-part-gdisk_en.md#partitioning-with-gdisk), and [GParted](./0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
+For disk partitioning, [cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](0313-part-gdisk_en.md#partitioning-with-gdisk), and [GParted](0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
 
 System analysis tools such as [Memtest86+](http://www.memtest.org/) (a tool for comprehensive memory analysis) are included, too.
 

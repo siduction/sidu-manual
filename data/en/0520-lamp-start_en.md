@@ -267,7 +267,7 @@ In the following dialogs we need the password for the database user **phpmyadmin
 
 ### Other software
 
-If you are interested in developing websites, you can install a CMS for example, *WordPress*, *Drupal*, or *Joomla*, but you should consider our manual pages [LAMP-Apache](0521-lamp-apache_en.md#set-up-apache) and [LAMP-MariaDb](./0522-lamp-sql_en.md#mariadb-setup) for the configuration of the server and MariaDb beforehand.
+If you are interested in developing websites, you can install a CMS for example, *WordPress*, *Drupal*, or *Joomla*, but you should consider our manual pages [LAMP-Apache](0521-lamp-apache_en.md#set-up-apache) and [LAMP-MariaDb](0522-lamp-sql_en.md#set-up-mariadb) for the configuration of the server and MariaDb beforehand.
 
 ### Status data log files
 
