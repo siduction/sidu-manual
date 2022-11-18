@@ -6,15 +6,18 @@ Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen
 `/root` (inkl. `/home` ) und `swap`, da dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation können weitere Datenpartitionen angelegt werden, oder etwa ein separates `/home`, falls gewünscht.
 
 Wir raten aber eher davon ab eine `/home`-Partition anzulegen.  
-Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.
+Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten sollte eine eigene Datenpartition angelegt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
+Die Anschaffung einer externen USB-Festplatte zur regelmäßigen Datensicherung ist ebenso eine Überlegung wert.
 
-Eine `swap`-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Als Faustregel sollte die Swap-Partition zweimal so groß sein wie das verwendete RAM. Dies gilt hauptsächlich für Notebooks, die per `hibernate` in den Ruhezustand versetzt werden sollen, oder Desktops mit sehr wenig RAM (1 GByte oder weniger). Geräte mit ausreichend RAM brauchen heute keine Swap-Partition mehr.
+Eine `swap`-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Ihre Größe richtet sich stark nach dem installierten System und den Anforderungen des Benutzers. Einige Beispiele:  
+Für Notebooks, die per `hibernate` in den Ruhezustand versetzt werden sollen, empfehlen wir eine swap Partition die wenigstens ein GByte oder 25% größer ist als das RAM.  
+Aktuelle Desktop PCs, die *nicht* in den Ruhezustand versetzt werden sollen und über ausreichend RAM verfügen (je nach Verwendung ab 16 GByte), benötigen keine swap Partition mehr.  
+Für Desktop PCs mit sehr wenig RAM gilt nach wie vor die Faustregel, dass die swap Partition zweimal so groß sein sollte wie das verwendete RAM.
 
-Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit **ntfs** formatiert werden. Siduction kann mit dem automatisch installierten *"ntfs-3g"* lesend und schreibend auf die Daten zugreifen.
+Bei Linux System- und Datenpartitionen kommt als Standard das **ext4** Dateisystem zur Anwendung. Ab siduction 2022.12.0 besteht auch die Möglchkeit **Btrfs** auszuwählen, dass in Zusammenarbeit mit dem Programm *snapper* bei Veränderungen am Dateisystem Snapschots erstellt, die anschließend im Bootmanager Grub auswählbar sind.  
+Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit **ntfs** formatiert werden. Siduction kann lesend und schreibend auf die Daten zugreifen.
 
 Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiele sollten einen ersten Einblick in die Möglichkeiten bieten. 
-
-Die Anschaffung einer externen USB-Festplatte zur regelmäßigen Datensicherung ist ebenso eine Überlegung wert.
 
 ### Mindestanforderungen
 
@@ -38,8 +41,7 @@ Als Partitionstabelle sollte der Typ *"GPT"* gewählt werden. So kann man die Vo
 
 Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren Funktion die ersten beiden, sehr kleinen Partitionen erforderlich sind.
 
-**Dual-Boot mit MS Windows und Linux**
-
+**Desktop PC, Dual-Boot (MS Windows und Linux)**  
 **1 TB Festplatte:**
 
 | Partition | Size | Filesystem | Verwendung |
@@ -47,12 +49,12 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren F
 | 1 | 100 KB | FAT16 | EFI-System |
 | 2 | 1 MB | ohne | BIOS-boot |
 | 3 | 50 GB | NTFS | MS Windows System |
-| 4 | 300 GB | NTFS | Daten für MS Windows |
-| 5 | 200 GB | NTFS | Daten für MS Windows und Linux |
-| 6 | 30 GB | ext4 | / (Linux root) |
-| 7 | 416 GB | ext4 | Daten für Linux |
-| 8 | 4 GB | Linux Swap | Linux Swap |
+| 4 | 500 GB | NTFS | Daten für MS Windows und Linux |
+| 5 | 30 GB | ext4 | / (Linux root) |
+| 6 | 416 GB | ext4 | Daten für Linux |
+| 7 | 4 GB | Linux Swap | Linux Swap |
 
+**Desktop PC, Dual-Boot (MS Windows und Linux)**  
 **120 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
@@ -64,20 +66,7 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren F
 | 5 | 30 GB | ext4 | / (Linux root) |
 | 6 | 2 GB | Linux Swap | Linux Swap |
 
-**80 GB Festplatte:**
-
-| Partition | Größe | Formatierung | Verwendung |
-| :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
-| 3 | 40 GB | NTFS | MS Windows System |
-| 4 | 10 GB | NTFS | Daten für MS Windows und Linux |
-| 5 | 28 GB | ext4 | / (Linux root) |
-| 6 | 2 GB | Linux Swap | Linux Swap |
-
-
-**Linux allein**
-
+**Desktop PC, Linux allein**  
 **500 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
@@ -85,10 +74,20 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren F
 | 1 | 100 KB | FAT16 | EFI-System |
 | 2 | 1 MB | ohne | BIOS-boot |
 | 3 | 30 GB | ext4 | / |
-| 4 | 250 GB | ext4 | Daten_1 |
-| 5 | 216 GB | ext4 | Daten_2 |
-| 6 | 4 GB | Linux Swap | Linux Swap |
+| 4 | 466 GB | ext4 | Daten |
+| 5 | 4 GB | Linux Swap | Linux Swap |
 
+**Desktop PC, Linux allein**  
+**500 GB Festplatte mit Snapshot (ab siduction 2022.12.0):**
+
+| Partition | Größe | Formatierung | Verwendung |
+| :----: | ----: | :----: | :----: |
+| 1 | 100 KB | FAT16 | EFI-System |
+| 2 | 1 MB | ohne | BIOS-boot |
+| 3 | 496 GB | btrfs | / |
+| 4 | 4 GB | Linux Swap | Linux Swap |
+
+**Desktop PC, Linux allein**  
 **160 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
@@ -99,15 +98,29 @@ Die Beispiele beziehen sich auf Partitionstabellen vom Typ *"GPT"*, für deren F
 | 3 | 130 GB | ext4 | Daten |
 | 4 | 4 GB | Linux Swap | Linux Swap |
 
-**60 GB Festplatte:**
+**Laptop mit 32 GB RAM, Dual-Boot mit MS Windows und Linux**  
+**1 TB Festplatte:**
+
+| Partition | Size | Filesystem | Verwendung |
+| :----: | ----: | :----: | :----: |
+| 1 | 100 KB | FAT16 | EFI-System |
+| 2 | 1 MB | ohne | BIOS-boot |
+| 3 | 80 GB | NTFS | MS Windows System |
+| 4 | 500 GB | NTFS | Daten für MS Windows und Linux |
+| 5 | 30 GB | ext4 | / (Linux root) |
+| 6 | 350 GB | ext4 | Daten für Linux |
+| 7 | 40 GB | Linux Swap | Linux Swap |
+
+**Laptop mit 8 GB RAM, Linux allein**  
+**120 GB Festplatte:**
 
 | Partition | Größe | Formatierung | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI-System |
 | 2 | 1 MB | ohne | BIOS-boot |
-| 3 | 25 GB | ext4 | / |
-| 4 | 33 GB | ext4 | Daten |
-| 5 | 2 GB | Linux Swap | Linux Swap |
+| 1 | 25 GB | ext4 | / |
+| 3 | 85 GB | ext4 | Daten |
+| 4 | 10 GB | Linux Swap | Linux Swap |
 
 ### Partitionierungsprogramme
 

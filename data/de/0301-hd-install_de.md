@@ -44,9 +44,9 @@ KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche fü
 
 ### Dateisysteme
 
-Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
+Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden. Neu hinzugekommen ist ab siduction 2022.12.0 **Btrfs**, dass in Zusammenarbeit mit dem Programm *snapper* bei Veränderungen am Dateisystem Snapschots erstellt, die anschließend im Bootmanager Grub auswählbar sind.
 
-Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mit dem **NTFS** Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen; für Windows ist es das Standarddateisystem.
+Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mit dem **NTFS** Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen. Für Windows ist es das Standarddateisystem.
 
 Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugreifen.
 
@@ -65,7 +65,8 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als Referenz 
 ~# apt install $(/home/username/installed.txt)
 ~~~
 
-installiert werden.
+installiert werden.  
+Möchte man eine alte siduction Installation durch eine neue ersetzen, führt die Verwendung der `installed.txt` des alten Systems auf dem neuen mit großer Wahrscheinlichkeit zu schwerwiegenden Problemen. Besser ist es eine `installed-old.txt` von dem alten, und eine `installed-new.txt` von dem neuen System mittels *diff* zu vergleichen. Anschließend installiert man die gewünschten Pakete auf der neuen siduction Installation nach.
 
 ### Das Installationsprogramm Calamares
 
