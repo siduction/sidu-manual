@@ -24,16 +24,9 @@ Die Mindestanforderungen zur Installation der siduction Varianten sind auf der H
 Mit 15 GB Festplattenvolumen und 4 GB Arbeitsspeicher ist man zur Zeit auf der sicheren Seite. 
 Auf PCs mit maximal 2 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 4 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
 
-### Partitionierung
+### Partitionierung und Dateisysteme
 
-Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
-
-+ Auswahl der siduction-Variante
-+ Größe der vorhandenen Laufwerke und des Arbeitsspeichers
-+ Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
-+ Gemeinsame Nutzung von Daten für die installierten Systeme
-
-Beispiele und Größen für unterschiedliche Installationssituationen beschreibt die Handbuchseite [Partitionierung](0310-part-size-examp_de.md#partitionierung-von-installationsmedien).  
+Die Handbuchseite [Partitionierung von Installationsmedien](0310-part-size-examp_de.md#partitionierung-von-installationsmedien) enthält einige Beispiele die verschiedene Größen der Festplatten berücksichtigen und Anregungen zur Aufteilung bei Single- und Dualbootsystemen geben. Im Kapitel [Dateisysteme der Partitionen](0310-part-size-examp_de.md#dateisysteme-der-partitionen) beschreiben wir, welche Dateisysteme auf den Partitionen in der jeweiligen Situation sinnvoll sind.  
 Wir empfehlen, das `/home`-Verzeichnis auf der Wurzel-Partition zu belassen. Das Verzeichnis `/home` sollte der Ort sein, an dem die individuellen Konfigurationen abgelegt werden, und nur diese. Für alle weiteren privaten Daten, dazu zählen auch .ssh, .gnupg und die Mail-Archive, sollte eine eigene Datenpartition angelegt, und falls erforderlich auf das `/home`-Verzeichnis verlinkt werden. Die Vorteile für die Datenstabilität, Datensicherung und auch im Falle einer Datenrettung sind nahezu unermesslich.  
 
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
@@ -41,14 +34,6 @@ Die Partitionierung kann während der Installation vorgenommen werden, oder bere
 KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
 [gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GPT Partitionstabellen  
 [cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen.
-
-### Dateisysteme
-
-Wir empfehlen das Dateisystem **ext4**, welches bei siduction als Default-Dateisystem verwendet wird. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden. Neu hinzugekommen ist ab siduction 2022.12.0 **Btrfs**, dass in Zusammenarbeit mit dem Programm *snapper* bei Veränderungen am Dateisystem Snapschots erstellt, die anschließend im Bootmanager Grub auswählbar sind.
-
-Bei einer Dual-Boot Installation mit *Windows* ist eine eigene Datenpartition mit dem **NTFS** Dateisystem sinnvoll. Linux kann lesend und schreibend darauf zugreifen. Für Windows ist es das Standarddateisystem.
-
-Bei einer Dual-Boot Installation mit *MAC* ist ebenfalls eine eigene Datenpartition allerdings mit dem **HFS** oder **HFS+** Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugreifen.
 
 ### Duplizierung auf einen anderen Computer
 
@@ -170,4 +155,4 @@ So entfernt man einen Benutzer
 
 Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
-<div id="rev">Zuletzt bearbeitet: 2022-02-09</div>
+<div id="rev">Zuletzt bearbeitet: 2022-11-20</div>
