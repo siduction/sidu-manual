@@ -63,7 +63,8 @@ NoX        at least 256 MByte RAM
 ~~~
 
 At least  5 GByte hard disk space for NoX  
-At least 10 GByte of disk space for all the others
+At least 15 GByte of disk space for all the others.  
+At least 50 GBytes of disk space when installing on a partition formatted with Btrfs.
 
 **Other**
 
@@ -89,4 +90,4 @@ Each ISO variant contains an extensive selection of applications for the command
 
 siduction is experimental software. Use at your own risk. The siduction project, its developers, and team members cannot be held liable under any circumstances for damage to hardware or software, lost data, or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.
 
-<div id="rev">Last edited: 2022/03/30</div>
+<div id="rev">Last edited: 2022-12-14</div>

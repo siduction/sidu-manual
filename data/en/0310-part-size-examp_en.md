@@ -29,6 +29,8 @@ The minimum requirements for the reasonable use of a siduction installation are:
 | siduction Cinnamon | 15GB |
 | siduction KDE Plasma | 15GB |
 
+Otherwise, we recommend at least 50 GB of disk space when installing on a partition formatted with Btrfs.
+
 ### Examples with different disk sizes
 
 If a dual boot with MS Windows&#8482; is created, MS Windows must always be installed as the first system onto the hard disk.
@@ -37,8 +39,7 @@ If a dual boot with MS Windows&#8482; is created, MS Windows must always be inst
 
 The examples refer to partition tables of the type *"GPT"*. It needs the first two, very small partitions in order to function.
 
-**Dual-boot with MS Windows and Linux**
-
+**Desktop, dual-boot (MS Windows and Linux)**  
 **1 TB hard disk:**
 
 | Partition | Size | File system | Use |
@@ -46,12 +47,12 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | 1 | 100 KB | FAT16 | EFI system |
 | 2 | 1 MB | without | BIOS-boot |
 | 3 | 50 GB | NTFS | MS Windows system |
-| 4 | 300 GB | NTFS | data for MS Windows |
-| 5 | 200 GB | NTFS | data for MS Windows and Linux |
-| 6 | 30 GB | ext4 | / (Linux root) |
-| 7 | 416 GB | ext4 | data for Linux |
-| 8 | 4 GB | Linux swap | Linux swap |
+| 4 | 500 GB | NTFS | data for MS Windows and Linux |
+| 5 | 30 GB | ext4 | / (Linux root) |
+| 6 | 416 GB | ext4 | data for Linux |
+| 7 | 4 GB | Linux swap | Linux swap |
 
+**Desktop, dual-boot (MS Windows and Linux)**  
 **120 GB hard disk:**
 
 | Partition | Size | File system | Use |
@@ -63,19 +64,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | 5 | 30 GB | ext4 | / (Linux root) |
 | 6 | 2 GB | Linux swap | Linux swap  |
 
-**80 GB hard disk**
-
-| Partition | Size | File system | Use |
-| :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
-| 3 | 40 GB | NTFS | MS Windows system |
-| 4 | 10 GB | NTFS | data for MS Windows and Linux |
-| 5 | 28 GB | ext4 | / (Linux root) |
-| 6 | 2 GB | Linux Swap | Linux swap |
-
-**Linux alone**
-
+**Desktop, Linux only**  
 **500 GB hard disk:**
 
 | Partition | Size | File system | Use |
@@ -83,31 +72,81 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | 1 | 100 KB | FAT16 | EFI system |
 | 2 | 1 MB | without | BIOS-boot |
 | 3 | 30 GB | ext4 | / |
-| 4 | 250 GB | ext4 | Data_1 |
-| 5 | 216 GB | ext4 | Data_2 |
-| 6 | 4 GB | Linux Swap | Linux swap |
+| 4 | 466 GB | ext4 | data |
+| 5 | 4 GB | Linux Swap | Linux swap |
 
+**Desktop, Linux only**  
+**500 GB hard disk with Btrfs snapshot (as of siduction 2022.12.0)**
+
+| Partition | Size | File system | Use |
+| :----: | ----: | :----: | :----: |
+| 1 | 100 KB | FAT16 | EFI system |
+| 2 | 1 MB | without | BIOS-boot |
+| 3 | 496 GB | btrfs | / |
+| 4 | 4 GB | Linux Swap | Linux swap |
+
+**Desktop, Linux only**  
 **160 GB hard disk**
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
 | 2 | 1 MB | without | BIOS-boot |
-| 1 | 26 GB | ext4 | / |
-| 3 | 130 GB | ext4 | data |
-| 4 | 4 GB | Linux Swap | Linux swap |
+| 3 | 26 GB | ext4 | / |
+| 4 | 130 GB | ext4 | data |
+| 5 | 4 GB | Linux Swap | Linux swap |
 
-**60 GB hard disk**
+**Laptop with 32 GB RAM, dual boot (MS Windows and Linux)**  
+**1 TB hard disk:**
+
+| Partition | Size | File system | Use |
+| :----: | ----: | :----: | :----: |
+| 1 | 100 KB | FAT16 | EFI system |
+| 2 | 1 MB | without | BIOS-boot |
+| 3 | 80 GB | NTFS | MS Windows system |
+| 4 | 500 GB | NTFS | data for MS Windows and Linux |
+| 5 | 30 GB | ext4 | / (Linux root) |
+| 6 | 350 GB | ext4 | data for Linux |
+| 7 | 40 GB | Linux swap | Linux swap |
+
+**Laptop with 8 GB RAM, Linux only**  
+**120 GB hard disk**
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
 | 2 | 1 MB | without | BIOS-boot |
 | 3 | 25 GB | ext4 | / |
-| 4 | 33 GB | ext4 | data |
-| 5 | 2 GB | Linux Swap | Linux swap |
+| 4 | 85 GB | ext4 | data |
+| 5 | 10 GB | Linux Swap | Linux swap |
+
+### File systems of the partitions
+
+The type *"GPT "* should be selected as the partition table. In this way the advantages over *"MBR "* can be used. Only with old hardware *"MBR "* is still meaningful. The explanations for this can be found on our manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
+
+**Linux Swap**  
+A `swap` partition corresponds in functionality to the swap file in Windows, but is far more effective than it. Its size depends on the installed system and the user's requirements. Some examples: 
+
++ For notebooks that are to be hibernated, we recommend a swap partition that is at least one GByte or 25% larger than the RAM.  
++ Current desktop PCs that are *not* to be hibernated and have enough RAM (16 GByte or more, depending on usage) do not need a swap partition.  
++ For desktop PCs with very limited RAM, the rule of thumb is still that the swap partition should be twice the size of the RAM used.
+
+**ext4**  
+The *ext4* file system is the default file system on siduction. This applies to all partitions when only Linux operating systems are used.
+
+**Btrfs** (Newly added as of siduction 2022.12.0)  
+*Btrfs* can be used instead of *ext4*. Together with the program *Snapper* it offers the possibility to create snapshots of the file system which are selectable in the boot manager Grub afterwards. You need a sufficiently large hard disk. See also [System administration Btrfs](0704-sys-admin-btrfs_en.md#btrfs).
+
+**NTFS**  
+For data exchange with a Windows installation the designated partition should be formatted with *NTFS*. Siduction can access the data read and write. For Windows it is the standard file system.
+
+**HFS+**  
+For a dual-boot installation with Macintosh, a separate data partition with the **HFS** or **HFS+** file system is useful. Linux and MAC can access it read and write.
 
 ### Partition editors
+
+> **Caution**  
+> When using any partitioning software, there is a risk of data loss. Always back up important data to another disk in advance.
 
 + **GParted**: an easy to use partition editor with a graphical interface  
   *Gparted* is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page [Partitioning the hard disk with GParted](0312-part-gparted_en.md#partitioning-with-gparted) provides more information about the program.
@@ -121,9 +160,6 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 + **fdisk / cfdisk**: a console program for partition tables of the type *msdos - MBR*  
   Note: *fdisk* should only be used for old hardware that does not support *GPT - UEFI*.  
   *fdisk* is the classic text mode program, while *cfdisk* has a more user-friendly ncurses interface. The manual page [Partitioning with cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) provides more information about the program.
-
-> **Caution**  
-> When using any partitioning software, there is a risk of data loss. Always back up important data to another disk in advance.
 
 **Mounted partitions** (also swap) must be detached before editing.  
 You can do this by entering to following command as **root**:
@@ -148,4 +184,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2022/03/31</div>
+<div id="rev">Last edited: 2022-12-14</div>

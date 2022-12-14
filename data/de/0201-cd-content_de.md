@@ -63,7 +63,8 @@ NoX        mindestens 256 MByte RAM
 ~~~
 
 Mindestens 5 GByte Festplattenspeicher für NOX.  
-Mindestens 10 GByte Festplattenspeicher für alle anderen Varianten.
+Mindestens 15 GByte Festplattenspeicher für alle anderen Varianten.  
+Mindestens 50 GByte Festplattenspeicher bei Installation auf einer mit Btrfs formatierten Partition.
 
 
 **Sonstiges**
@@ -90,4 +91,4 @@ Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Bef
 
 siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siduction-Projekt, seine Entwickler und Team-Mitglieder können unter keinen Umständen wegen Beschädigung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Schäden des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder verwenden noch verteilen.
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>
+<div id="rev">Zuletzt bearbeitet: 2022-12-14</div>

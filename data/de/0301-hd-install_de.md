@@ -21,7 +21,7 @@ Soll siduction nicht von, sondern **auf** ein USB-Medium installiert werden, ist
 **HDD, RAM und Swap**
 
 Die Mindestanforderungen zur Installation der siduction Varianten sind auf der Handbuchseite [Inhalt der Live-ISO](0201-cd-content_de.md#minimale-systemanforderungen) beschrieben.  
-Mit 15 GB Festplattenvolumen und 4 GB Arbeitsspeicher ist man zur Zeit auf der sicheren Seite. 
+Mit 15 GB Festplattenspeicher und 4 GB Arbeitsspeicher ist man zur Zeit auf der sicheren Seite. Bei Installation auf einer mit Btrfs formatierten Partition raten wir zu 50 GByte Festplattenspeicher.  
 Auf PCs mit maximal 2 GB RAM sollte eine Swap-Partition angelegt werden. Mehr als 4 GB Swap wird normal nicht benötigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich sinnvoll.
 
 ### Partitionierung und Dateisysteme
@@ -155,4 +155,4 @@ So entfernt man einen Benutzer
 
 Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
-<div id="rev">Zuletzt bearbeitet: 2022-11-20</div>
+<div id="rev">Zuletzt bearbeitet: 2022-12-14</div>

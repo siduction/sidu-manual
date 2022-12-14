@@ -21,7 +21,7 @@ If siduction is not to be installed from, but **to a USB medium**, a different p
 **HDD, RAM, and Swap**
 
 The minimum requirements for installing the siduction variants are described on the manual page [Live ISO content](0201-cd-content_en.md#minimum-system-requirements).  
-With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. 
+With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. When installing on a partition formatted with Btrfs, we advise 50 GBytes of disk space.  
 A swap partition should be created on PCs with 1 GByte RAM or less. More than 2 GByte swap is rarely required and only useful for suspend to disk and server systems.
 
 ### Partitioning
@@ -172,4 +172,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2022/03/30</div>
+<div id="rev">Last edited: 2022-12-14</div>
