@@ -15,7 +15,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem für Linux. 
 
-siduction unterstützt ab 2022.12.0 die Installation in eine mit *Btrfs* formatierte Partition. 
+siduction unterstützt ab 2022.12.0 die Installation in eine mit *Btrfs* formatierte Partition.  
 Das Installationsprogramm legt dabei innerhalb der ausgewählten Partition Subvolumen für das Wurzelverzeichnis `@`, die Benutzerverzeichnisse `@home` und `@root`, die Verzeichnisse `@tmp` und `@var@log` sowie ein Subvolumen `@snapshots` für System Snapshots an.
 
 Btrfs funktioniert gut mit SSDs und herkömmlichen Festplatten. Der eigene eingebaute RAID Mechanismus (unterstützt wird RAID 0, 1 und 10) arbeitet auch bei Festplatten verschiedener Größe zuverlässig. Metadaten und Dateidaten behandelt Btrfs unterschiedlich. Normalerweise werden Metadaten auch bei nur einem Laufwerk doppelt gespeichert. Bei mehreren Laufwerken kann der Administrator innerhalb des gleichen Dateisystems unterschiedliche RAID Level für die Metadaten und Dateidaten festlegen.  
@@ -26,8 +26,8 @@ Zu Btrfs finden sich im Internet zahlreiche Dokumentationen. Wir werden deshalb 
 **Btrfs verwenden**
 
 Für die fortschrittlichen Eigenschaften von Btrfs (Snapshots, Komprimierung, Defragmentierung, Selbstheilung für Daten und Metadaten, integrierte Datenträgerverwaltung ...) z.B. gegenüber ext4, benötigen wir erkennbar größere Laufwerke. Das ist derzeit meist kein Problem, denn selbst preiswerte PCs und Laptop verfügen oft über 500 GB große Laufwerke.  
-Als Mindestgröße des Btrfs Laufwerks, in das die vollständige Insallation erfolgen soll, empfehlen wir 100 GB. Abhängig vom Volumen der privaten Daten auch deutlich mehr. Möchte man Btrfs nur für die root-Partition verwenden, sollte diese eine Größe von mindestens 50 GB aufweisen. Für Benutzer die nicht so viel Speicherplatz zuweisen wollen, ist die übliche Vorgehensweise entweder Btrfs ohne Snapshots oder ext4 zu verwenden.  
-Btrfs versteht auf der Kommandozeile für seine Befehle und Optionen beliebige Abkürzunge sofern diese eindeutig sind. So wird zum Beispiel **`btrfs su li /`** intern zu **`btrfs subvolume list /`**.
+Als Mindestgröße des Btrfs Laufwerks, in das die vollständige Installation erfolgen soll, empfehlen wir 100 GB. Abhängig vom Volumen der privaten Daten auch deutlich mehr. Möchte man Btrfs nur für die root-Partition verwenden, sollte diese eine Größe von mindestens 50 GB aufweisen. Für Benutzer die nicht so viel Speicherplatz zuweisen wollen, ist die übliche Vorgehensweise entweder Btrfs ohne Snapshots oder ext4 zu verwenden.  
+Btrfs versteht auf der Kommandozeile für seine Befehle und Optionen beliebige Abkürzungen, sofern diese eindeutig sind. So wird zum Beispiel **`btrfs su li /`** intern zu **`btrfs subvolume list /`**.
 
 ### Btrfs Subvolumen
 
@@ -40,7 +40,7 @@ Bei der Erstinstallation in eine einzige Partition werden die folgenden Subvolum
 | @root | /root | Der Benutzer **root** |
 | @tmp | /tmp | |
 | @var@log | /var/log | |
-| @snapshots | /.snapshots | Ablageort für die Snapshot von '@' |
+| @snapshots | /.snapshots | Ablageort für die Snapshot von `@` |
 
 Für Btrfs liegen sie gleichwertig auf der höchsten Ebene (*'top level 5'* ). Wir hängen sie alle separat an dem gewünschten Platz im Dateibaum ein. Es wird auch als *"flaches Layout"* bezeichnet bei dem die Dateisystemwurzel an sich nicht eingehängt wird. Sobald die Subvolumen erstellt wurden, ist es nicht mehr nötig, das "Root"-Gerät einzuhängen, wenn nur der Inhalt der Subvolumen von Interesse ist. Im laufenden Betrieb befinden wir uns bereits in dem Subvolumen `@`.
 
@@ -84,7 +84,7 @@ Diese einfache Variante eignet sich nicht für eine dauerhafte Verwendung. Auße
 UUID=<hier>  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0
 ~~~
 
-Mit der Option *"space_cache=v2"* werden die Adressen der freien Blöcke des Laufwerks zwischengespeichert um die Schreibvorgänge zu beschläunigen.  
+Mit der Option *"space_cache=v2"* werden die Adressen der freien Blöcke des Laufwerks zwischengespeichert um die Schreibvorgänge zu beschleunigen.  
 Die Option *"autodefrag"* sorgt für die Defragmentierung der Dateien während der Laufzeit.  
 Datenkomprimierung  erreichen wir mit der Option *"compress=zstd"*.
 
@@ -118,7 +118,7 @@ Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an ei
 ~~~
 
 Der Befehl erinnert von der Syntax her an einen einfachen Kopiervorgang, wobei `01` der Ordner ist, in dem sich die Dateien des Snapshot befinden.  
-Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgschützt. Wir raten dringend die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs_de.md#snapper-rollback).
+Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs_de.md#snapper-rollback).
 
 ## Snapper
 
@@ -182,7 +182,7 @@ TIMELINE_LIMIT_YEARLY  | 10    | 10    | 0     |
 TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  |
 ~~~
 
-Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum Handling der automatischen Snapshots verbergen sich in den zugehörigen systemd Units. Das Kapikel ["Snapper und systemd"](0704-sys-admin-btrfs_de.md#snapper-und-systemd) erklärt die Funktionen und gibt Hinweise zu deren Anpassung.
+Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum Handling der automatischen Snapshots verbergen sich in den zugehörigen systemd Units. Das Kapitel ["Snapper und systemd"](0704-sys-admin-btrfs_de.md#snapper-und-systemd) erklärt die Funktionen und gibt Hinweise zu deren Anpassung.
   
 Bei jeder APT Aktion werden die **Apt Snapshot** *"pre"* und *"post"* erstellt. Der Schlüssel `NUMBER_LIMIT=50` bewirkt, dass die jüngsten fünfundzwanzig Snapshotpaare erhalten bleiben.
 
@@ -203,7 +203,6 @@ Gehaltene Snapshots 1
 | nach 1 Jahr    | 50  | 30 + max 24 |
 | nach 10 Jahren | 50  | 40 + max 24 |
 
-
 *"+ max 24"* beschreibt die Anzahl der erstellten *HOURLY Timeline Snapshot* bis zu dem Zeitpunkt an dem der `snapper-cleanup.timer` aktiv wird. Der allererste *Timeline Snapshot* vagabundiert sage und schreibe mindestens zehn Jahre und einen Tag in unseren Dateisystem. Wer möchte sein produktiv eingesetztes System auf diesen Snapshot zurücksetzen und die ganzen Daten so lange behalten?  
 Man beachte: Snapper und Snapshots sind kein Mittel zur Datensicherung. Sie ermöglichen das zeitnahe Zurücksetzen des Systems bei auftretenden Fehlern oder durch uns angestoßene Aktionen mit ungewollten Auswirkungen.
 
@@ -217,7 +216,7 @@ Dies:
 
 1. Erstellt die Konfigurationsdatei `/etc/snapper/configs/data_pr` basierend auf der Vorlage `/usr/share/snapper/config-templates/user`.  
 2. Erstellt das Subvolumen `/data/.snapshots`, in dem zukünftige Snapshots von `@data` gespeichert werden. Der Pfad eines Snapshots lautet `/data/.snapshots/#/snapshot`, wobei # die Nummer des Snapshots ist.  
-3. Fügt den Namen der Kontiguration `data_pr` zum Schlüssel *"SNAPPER_CONFIGS"* in der Datei`/etc/default/snapper` hinzu.
+3. Fügt den Namen der Konfiguration `data_pr` zum Schlüssel *"SNAPPER_CONFIGS"* in der Datei`/etc/default/snapper` hinzu.
 
 Jetzt ist die Konfiguration aktiv. Wenn, wie in unserem Beispiel, der Schlüssel `TIMELINE_CREATE=yes` gesetzt ist, übernimmt systemd mit den Timern die regelmäßige Erstellung von *"timeline snapshots"*.  
 Wir vergleichen noch einmal die gehaltenen Snapshot.
@@ -235,7 +234,7 @@ Gehaltene Snapshots 2
 | nach 1 Jahr    | 50  | 30 + max 24 | 3 + max 24 |
 | nach 10 Jahren | 50  | 40 + max 24 | 3 + max 24 |
 
-Im Subvolumen `@data` bleiben nach einer Woche konstant ein Wochensnapschot, zwei Tagessnapshot des Vortages und bis zu vierundzwanzig Snapshot des aktuellen Tages erhalten. Wer die maximal vierundzwanzig Tagessnapshot als zu viel erachtet schaut sich bitte das folgende Kapitel *Snapper und systemd* an.
+Im Subvolumen `@data` bleiben nach einer Woche konstant ein Wochensnapschot, zwei Tagessnapshots des Vortages und bis zu vierundzwanzig Snapshots des aktuellen Tages erhalten. Wer die maximal vierundzwanzig Tagessnapshot als zu viel erachtet schaut sich bitte das folgende Kapitel *Snapper und systemd* an.
 
 Wir können einzelne *Schlüssel=Wert* Paare auch auf der Kommandozeile ändern. Im Beispiel verringern wir in der Konfiguration `root` die Anzahl der gehaltenen, nummerierten Snapshot.
 
@@ -244,7 +243,7 @@ Wir können einzelne *Schlüssel=Wert* Paare auch auf der Kommandozeile ändern.
 ~~~
 
 Jetzt bleiben die jüngsten zehn statt fünfundzwanzig Pre- und Post-Snapshot Paare nach APT Aktionen erhalten. Für den Standardgebrauch eines Laptop oder PCs dürfte dieser Wert ausreichen.  
-An dieser Stelle sollte jeder siduction Nutzer abwägen wieviele Snapshot er wie lange halten möchte und die Konfiguration entsprechend anpassen. 
+An dieser Stelle sollte jeder siduction Nutzer abwägen wie viele Snapshot er wie lange halten möchte und die Konfiguration entsprechend anpassen. 
     
 ### Snapper und systemd
 
@@ -270,7 +269,8 @@ Das Snapper zu jeder APT Aktion ein Pre- und Post-Snapshot erstellt, sollte man 
 
 Dagegen bietet die *TIMTLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernen von alten und leeren Snapshots.
 
-Die Handbuchseite [*systemd-timer*](0716-systemd-timer_de.md#systemd-timer) erklärt die Funktionweise der Timer Unit.
+Die Handbuchseite [*systemd-timer*](0716-systemd-timer_de.md#systemd-timer) erklärt die Funktionsweise der Timer Unit.
+
 Jetzt wenden wir uns dem Inhalt der systemd Unit `snapper-timeline.timer` im Verzeichnis `/lib/systemd/system/` zu.
 
 ~~~
@@ -386,7 +386,7 @@ Der Snapshot # 0 mit der Beschreibung *"current"* ist nicht löschbar. Es ist de
 
 ### Snapper Rollback
 
-Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System beschädigt sein, ermöglicht Snapper mit dem *"Rollback"* das System in den Zustand zurückzuversetzen, der vor dem Auftreten der Probleme vorlag. 
+Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System beschädigt sein, ermöglicht Snapper mit dem *"Rollback"* das System in den Zustand zurück zu versetzen, der vor dem Auftreten der Probleme vorlag. 
 
 **Voraussetzungen**  
 Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolume befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
@@ -412,9 +412,9 @@ Wir führen einen Reboot durch und wählen den Grub Standardeintrag um im zurüc
 
 ### Datei Rollback im Root-Dateisystem
 
-Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Shnapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.  
+Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Shnapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.
 
-Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens `@`. (Die Spalten wurden gekürzt). Alle Snapshot mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `*` gekennzeichnete. In ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin befindet sich das aktuelle Root-Dateisystem dar.
+Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens `@`. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `*` gekennzeichnete. In ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin befindet sich das aktuelle Root-Dateisystem.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -563,7 +563,7 @@ Snapshots für Benutzer lesbar machen und *Meld* installieren. (Ausführen als *
 # apt update && apt install meld
 ~~~
 
-Zur Erinnerung: Snapshots in Btrfs sind immer im nur-lese-Modus gespeichert. Einzige Ausnahme ist der `System Rollback` Snapshot.  
+Zur Erinnerung: Snapshots in Btrfs sind immer im nur-lese-Modus gespeichert. Einzige Ausnahme ist der `System Rollback` Snapshot.
 
 Wir benutzen zur Auswahl der Dateiänderungen Snapper in der gleichen Art wie zuvor. Der Befehl **`$ snapper -c data_pr diff 16..0 /data/user1/Test.txt`** enthält den genauen Pfad zur Datei `Test.txt` in dem Snapshot.
 
