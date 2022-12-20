@@ -14,9 +14,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 ## Btrfs
 
 Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem für Linux. 
-
-siduction unterstützt ab 2022.12.0 die Installation in eine mit *Btrfs* formatierte Partition.  
-Das Installationsprogramm legt dabei innerhalb der ausgewählten Partition Subvolumen für das Wurzelverzeichnis `@`, die Benutzerverzeichnisse `@home` und `@root`, die Verzeichnisse `@tmp` und `@var@log` sowie ein Subvolumen `@snapshots` für System Snapshots an.
+siduction unterstützt die Installation in eine mit *Btrfs* formatierte Partition. Mit der Veröffentlichung von 2022.12.0 kommt die Möglichkeit hinzu, mit Snapper Snapshots von Btrfs zu verwalten und über Grub zu booten. Das Installationsprogramm legt dabei innerhalb der ausgewählten Partition Subvolumen für das Wurzelverzeichnis `@`, die Benutzerverzeichnisse `@home` und `@root`, die Verzeichnisse `@tmp` und `@var@log` sowie ein Subvolumen `@snapshots` für System Snapshots an.
 
 Btrfs funktioniert gut mit SSDs und herkömmlichen Festplatten. Der eigene eingebaute RAID Mechanismus (unterstützt wird RAID 0, 1 und 10) arbeitet auch bei Festplatten verschiedener Größe zuverlässig. Metadaten und Dateidaten behandelt Btrfs unterschiedlich. Normalerweise werden Metadaten auch bei nur einem Laufwerk doppelt gespeichert. Bei mehreren Laufwerken kann der Administrator innerhalb des gleichen Dateisystems unterschiedliche RAID Level für die Metadaten und Dateidaten festlegen.  
 Btrfs verwaltet die Daten innerhalb der Laufwerke in Subvolumen, oberflächlich betrachtet ähnlich herkömmlichen Partitionen. Von den Subvolumen kann Btrfs Snapshots anfertigen, die bei Bedarf der Datenrekonstruktion dienen. Ein eingehängtes Btrfs-Dateisystem verhält sich meistens wie jedes andere Linux-Dateisystem. Gelegentlich treten jedoch einige Unterschiede zutage, denn Btrfs erledigt seine Arbeit vorwiegend im Hintergrund. Für Verwirrung sorgt zum Beispiel das Löschen einer großen Datei, ohne dass sich sofort der verfügbare freie Speicherplatz erhöht. Einige Zeit später ist der fehlende Platz dann doch da, oder auch nicht wenn ein vorangegangener Snapshot die Datei referenziert.
@@ -77,7 +75,7 @@ Subvolumen lassen sich auch verschachteln und somit innerhalb bestehender Subvol
 Mit dem Befehl  
 **`mount -t btrfs -o subvol=/@data,defaults /data/`**  
 hängen wir das Subvolumen manuell ein.  
-Diese einfache Variante eignet sich nicht für eine dauerhafte Verwendung. Außerdem unterdrückt sie die vorteilhaften Fähigkeiten des Btrfs. Wir schauen uns einen Eintrag aus der Datei `/etc/fstab` an.
+Diese einfache Variante eignet sich nicht für eine dauerhafte Verwendung. Außerdem unterdrückt sie die vorteilhaften Fähigkeiten von Btrfs. Wir schauen uns einen Eintrag aus der Datei `/etc/fstab` an.
 
 ~~~
 # grep home /etc/fstab
@@ -86,7 +84,7 @@ UUID=<hier>  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodef
 
 Mit der Option *"space_cache=v2"* werden die Adressen der freien Blöcke des Laufwerks zwischengespeichert um die Schreibvorgänge zu beschleunigen.  
 Die Option *"autodefrag"* sorgt für die Defragmentierung der Dateien während der Laufzeit.  
-Datenkomprimierung  erreichen wir mit der Option *"compress=zstd"*.
+Datenkomprimierung erreichen wir mit der Option *"compress=zstd"*.
 
 Unser selbst erstelltes Subvolumen `@data` soll automatisch und dauerhaft mit diesen Optionen verfügbar sein. Deshalb ergänzen wir die `/etc/fstab` um den benötigten Eintrag entweder mit einem Editor oder mittels zweier Befehle.
 
@@ -108,9 +106,9 @@ Man sollte beachten, dass Snapshots von Btrfs Dateisystemen in keinem Fall eine 
 **Snapshot erstellen**
 
 > **Achtung**  
-> Nur anwenden, wenn sie Snapper **nicht** verwenden wollen.
+> Nur anwenden, wenn Sie Snapper **nicht** verwenden wollen.
 
-Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an ein entsprechendes Unterverzeichnis anzulegen. Wir nehmen für das Beispiel unser selbst erstelltes Subvolumen `@data`, legen das Verzeichnis an und gleich anschließend den ersten Snapshot.
+Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an, ein entsprechendes Unterverzeichnis anzulegen. Wir nehmen für das Beispiel unser selbst erstelltes Subvolumen `@data`, legen das Verzeichnis an und gleich anschließend den ersten Snapshot.
 
 ~~~
 # mkdir /data/.snapshots
@@ -118,7 +116,7 @@ Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an ei
 ~~~
 
 Der Befehl erinnert von der Syntax her an einen einfachen Kopiervorgang, wobei `01` der Ordner ist, in dem sich die Dateien des Snapshot befinden.  
-Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs_de.md#snapper-rollback).
+Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend, die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs_de.md#snapper-rollback).
 
 ## Snapper
 
@@ -184,7 +182,7 @@ TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  |
 
 Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum Handling der automatischen Snapshots verbergen sich in den zugehörigen systemd Units. Das Kapitel ["Snapper und systemd"](0704-sys-admin-btrfs_de.md#snapper-und-systemd) erklärt die Funktionen und gibt Hinweise zu deren Anpassung.
   
-Bei jeder APT Aktion werden die **Apt Snapshot** *"pre"* und *"post"* erstellt. Der Schlüssel `NUMBER_LIMIT=50` bewirkt, dass die jüngsten fünfundzwanzig Snapshotpaare erhalten bleiben.
+Bei jeder APT-Aktion werden die **Apt Snapshot** *"pre"* und *"post"* erstellt. Der Schlüssel `NUMBER_LIMIT=50` bewirkt, dass die jüngsten fünfundzwanzig Snapshotpaare erhalten bleiben.
 
 Snapper erzeugt automatisch **Timeline Snapshot** wenn der Schlüssel `TIMELINE_CREATE=yes` in den Konfigurationsdateien eingestellt ist. Die systemd Unit `snapper-timeline.timer` aktiviert die zugehörige Service Unit stündlich. Entsprechend der *default* Konfiguration behält Snapper jeweils mindestens zehn `HOURLY`, `DAILY`, `MONTHLY` und `YEARLY` Snapshots.
 
@@ -247,7 +245,7 @@ An dieser Stelle sollte jeder siduction Nutzer abwägen wie viele Snapshot er wi
     
 ### Snapper und systemd
 
-Snapper installiert drei systemd Unit Paare um in Abhängigkeit von APT Aktionen und Zeit Snapshots zu erstellen oder löschen.
+Snapper installiert drei systemd Unit Paare um in Abhängigkeit von APT Aktionen und Zeit Snapshots zu erstellen oder zu löschen.
 
 + Beim Erstellen von Snapshots mit den Schlüsseln  
   `DISABLE_APT_SNAPSHOT="no"` in der Datei `/etc/default/snapper`  
@@ -265,7 +263,7 @@ Snapper installiert drei systemd Unit Paare um in Abhängigkeit von APT Aktionen
   unter Mitwirkung der Systemd Unit  
   `snapper-cleanup.timer` und `snapper-cleanup.service`.
 
-Das Snapper zu jeder APT Aktion ein Pre- und Post-Snapshot erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus möglich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende Pakete zu erhalten. Ein Rollback mit Snapper ist dann für den Benutzer eine gute Alternative um weiterhin zuverlässig zu arbeiten.
+Das Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus möglich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende Pakete zu erhalten. Ein Rollback mit Snapper ist dann für den Benutzer eine gute Alternative um weiterhin zuverlässig zu arbeiten.
 
 Dagegen bietet die *TIMTLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernen von alten und leeren Snapshots.
 
@@ -321,9 +319,9 @@ WantedBy=timers.target
 
 Mit dem Wissen um den Inhalt des TIMELINE-Timers können wir nun abwägen ob die Konfiguration sinnvoll ist. Für jemanden der seinen PC jeden Tag neu startet dürfte der Schlüssel `OnBootSec=10m` eher ungünstig sein, wenn er feststellt, dass sich am Vortag kurz vor Feierabend ein gravierender Fehler eingeschlichen hat. Sinnvoller ist für diesen Fall vermutlich den Schlüssel auf `OnBootSec=4h` einzustellen. Die Änderung der Datei erfolgt analog dem zuvor gezeigten Beispiel.
 
-### Snapper - manuelle Snapshot
+### Snapper - manuelle Snapshots
 
-Selbstverständlich können wir mit Snapper auch unabhängig von den automatischen Aktionen Snapshots erstellen. Dafür muss der ausführende Benutzer in der Snapper Konfiguration des Subvolumens mit Gruppen- oder Userrechten eingetragen sein.
+Selbstverständlich können wir mit Snapper auch unabhängig von den automatischen Aktionen Snapshots erstellen. Dafür muss der ausführende Benutzer in der Snapper-Konfiguration des Subvolumens mit Gruppen- oder Userrechten eingetragen sein.
 
 Die Syntax des Befehls entspricht dem folgendem Muster, das auch die häufig zur Anwendung kommenden Optionen zeigt.
 
@@ -347,7 +345,7 @@ Snapper legt die Snapshots grundsätzlich im *read-only* Modus an. Man kann die 
 Nun legen wir einen Snapshot an und lassen uns die Snapshots der gleichen Konfiguration anzeigen.
 
 ~~~
-$ snapper -c data_pr create -t single -d "AB finishd" -c number -u user=Pit
+$ snapper -c data_pr create -t single -d "AB finished" -c number -u user=Pit
 $ snapper -c data_pr list
  #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
 --+------+-----+--------+-----+--------+-----------+--------
@@ -386,7 +384,7 @@ Der Snapshot # 0 mit der Beschreibung *"current"* ist nicht löschbar. Es ist de
 
 ### Snapper Rollback
 
-Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System beschädigt sein, ermöglicht Snapper mit dem *"Rollback"* das System in den Zustand zurück zu versetzen, der vor dem Auftreten der Probleme vorlag. 
+Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System beschädigt sein, ermöglicht Snapper mit dem *"Rollback"* das System in einen oder mehrere Zustände zurück zu versetzen, der vor dem Auftreten der Probleme vorlag. 
 
 **Voraussetzungen**  
 Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolume befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
@@ -471,7 +469,7 @@ Wird der Befehl **`snapper undochange 42..45`** ohne die Angabe einer Datei abge
 
 **Mit Snapper allein**
 
-Snapper behandelt den Snapshot # 0 zwar wie einen Snapshot, aber er stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel. Alle anderen Snapshot bilden, wie bereits zuvor erwähnt, den Zustand des Dateisystems zu exakt dessen Zeitpunkt ab. Änderungen zwischen diesen Snapshot agieren demnach nur in der Vergangenheit.  
+Snapper behandelt den Snapshot # 0 zwar wie einen Snapshot, aber er stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel. Alle anderen Snapshot bilden, wie bereits zuvor erwähnt, den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Änderungen zwischen diesen Snapshots agieren demnach nur in der Vergangenheit.  
 Für uns bedeutet das, dass ein *"Datei Rollback"* von User Daten zwischen den Snapshots # 15 und # 17 wertlos ist, da der Vorgang den aktuellen Zustand in unserem Subvolumen nicht betrifft. Wir benötigen also immer den Snapshot # 0 als Ziel für Änderungen.
 
 Wir schauen uns einen derartigen Vorgang anhand der Datei `Test.txt` im Subvolumen `@data` an.
@@ -552,7 +550,7 @@ Vermutlich ist diese Anwendung des Snapper *"Datei Rollback"* eine der am häufi
 **Mit Snapper und Meld**
 
 Die vorangegangene Vorgehensweise stellt immer eine Datei als ganzes auf den Stand zurück, der dem ausgewählten Snapshot entspricht. Einzelne Teile der Änderungen können wir so nicht übernehmen.  
-Das Vergleichsprogramm **Meld** füllt genau diese Lücke. *Meld* ist zusätzlich in der Lage per *Copy & Past* Teile an beliebiger Stelle im aktuellen Dokument einzufügen. Ein Vorteil auch gegenüber **Kompare** des KDE Desktop. In siduction wird *Meld* nicht standardmäßig installiert. Wir holen das nach.
+Das Vergleichsprogramm **Meld** füllt genau diese Lücke. *Meld* ist zusätzlich in der Lage per *Copy & Paste* Teile an beliebiger Stelle im aktuellen Dokument einzufügen. Ein Vorteil auch gegenüber **Kompare** des KDE Desktop. In siduction wird *Meld* nicht standardmäßig installiert. Wir holen das nach.
 
 Die Aktionen von Snapper sind für den nicht **root** Benutzer immer dann möglich, wenn in der Konfigurationsdatei für das Subvolumen der Schlüssel `ALLOW_GROUPS=users` eingestellt ist. Das ist Standard. Jedoch bleibt ihm der Zugriff auf die Dateien des Snapshots innerhalb des Dateisystems verwehrt, weil das Verzeichnis `/.snapshots` nur für **root** les- und ausführbar ist. Um mit *Meld* arbeiten zu können änder wir das.
 
@@ -579,7 +577,7 @@ Wir starten *Meld* und wählen für den Dateivergleich die beiden Dateien mit de
 
 Ein Klick auf den Pfeil überträgt die Zeile in unsere aktuelle Datei. Ein weiterer Klick auf das Kreuz entfernt die anderen Zeilen. Eine Übertragung auf die Datei im Snapshot ist nicht möglich, da das Dateisystem des Snapshot schreibgeschützt ist.
 
-Da uns Snapper den genauen Pfad zu unserer Datei im Snapshot anzeigt haben wir auch die ganz konventionelle Möglichkeit eine Datei aus dem Snapshot in unser aktuelles Arbeitsverzeichnis zu kopieren.
+Da uns Snapper den genauen Pfad zu unserer Datei im Snapshot anzeigt, haben wir auch die ganz konventionelle Möglichkeit eine Datei aus dem Snapshot in unser aktuelles Arbeitsverzeichnis zu kopieren.
 
 ~~~
 $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
@@ -596,4 +594,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2022-12-14</div>
+<div id="rev">Zuletzt bearbeitet: 2022-12-20</div>
