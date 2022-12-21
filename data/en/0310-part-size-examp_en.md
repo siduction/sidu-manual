@@ -2,17 +2,16 @@
 
 ## Partitioning of installation media
 
-For Linux beginners, we recommend to create only two partitions (root/home and swap) because this makes a first installation much easier. After the installation, additional data partitions or, if desired, a separate /home can be created.
+The partitioning of the drives depends on many factors:
 
-However, we do not recommend to create a /home partition.  
-The directory `/home` should be the place where individual configurations are stored, and only them. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are immeasurable.
++ Selection of the siduction variant  
++ Size of the available drives and RAM  
++ Single-boot or dual-boot with an already installed system (Windows, Linux, MAC)  
++ Sharing of data for the installed systems
 
-A swap partition has a similar function as the Windows swap file, but the former is far more effective. As a rule of thumb, the swap partition should be twice as large as the RAM used. This applies mainly to notebooks that are to be hibernated via `hibernate` or desktop computers with very little RAM (1 GByte or less). Devices with sufficient RAM no longer need a swap partition.
-
-For data exchange with a Windows installation, the designated partition should be formatted with **NTFS**. siduction can read from and write to such a partition with the automatically installed `ntfs-3g`.
-
-There are many good ways to partition your disks. These examples should give a first insight into the possibilities. 
-
+For Linux beginners, we recommend that you create only two partitions  
+`/root` (incl. `/home` ) and `swap`, as this makes a first installation much easier. After the installation, additional data partitions can be created, or a separate `/home` if desired.  
+However, we rather advise against creating a `/home` partition. The `/home` directory should be the place where the individual configurations are stored, and only these. For all other private data, a separate data partition should be created. The advantages for data stability, data backup and also in case of data recovery are almost immeasurable.  
 Purchasing an external USB hard drive for regular data backup is also worth considering.
 
 ### Minimum requirements
@@ -76,7 +75,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | 5 | 4 GB | Linux Swap | Linux swap |
 
 **Desktop, Linux only**  
-**500 GB hard disk with Btrfs snapshot (as of siduction 2022.12.0)**
+**500 GB hard disk with Btrfs snapshot:**
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
@@ -134,8 +133,8 @@ A `swap` partition corresponds in functionality to the swap file in Windows, but
 **ext4**  
 The *ext4* file system is the default file system on siduction. This applies to all partitions when only Linux operating systems are used.
 
-**Btrfs** (Newly added as of siduction 2022.12.0)  
-*Btrfs* can be used instead of *ext4*. Together with the program *Snapper* it offers the possibility to create snapshots of the file system which are selectable in the boot manager Grub afterwards. You need a sufficiently large hard disk. See also [System administration Btrfs](0704-sys-admin-btrfs_en.md#btrfs).
+**Btrfs**  
+*Btrfs* can be used instead of *ext4*. Together with the program *Snapper* it offers the possibility to create snapshots of the file system which are selectable in the boot manager Grub afterwards. You need a sufficiently large hard disk. See also [System administration Btrfs](0704-sys-admin-btrfs-snapper_en.md#btrfs).
 
 **NTFS**  
 For data exchange with a Windows installation the designated partition should be formatted with *NTFS*. Siduction can access the data read and write. For Windows it is the standard file system.
@@ -184,4 +183,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2022-12-14</div>
+<div id="rev">Last edited: 2022-12-21</div>
