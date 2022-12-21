@@ -13,7 +13,7 @@ ENDE   INFOBEREICH FÜR DIE AUTOREN
 
 ## Btrfs
 
-Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem für Linux. 
+Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem für Linux.  
 siduction unterstützt die Installation in eine mit *Btrfs* formatierte Partition. Mit der Veröffentlichung von 2022.12.0 kommt die Möglichkeit hinzu, mit Snapper Snapshots von Btrfs zu verwalten und über Grub zu booten. Das Installationsprogramm legt dabei innerhalb der ausgewählten Partition Subvolumen für das Wurzelverzeichnis `@`, die Benutzerverzeichnisse `@home` und `@root`, die Verzeichnisse `@tmp` und `@var@log` sowie ein Subvolumen `@snapshots` für System Snapshots an.
 
 Btrfs funktioniert gut mit SSDs und herkömmlichen Festplatten. Der eigene eingebaute RAID Mechanismus (unterstützt wird RAID 0, 1 und 10) arbeitet auch bei Festplatten verschiedener Größe zuverlässig. Metadaten und Dateidaten behandelt Btrfs unterschiedlich. Normalerweise werden Metadaten auch bei nur einem Laufwerk doppelt gespeichert. Bei mehreren Laufwerken kann der Administrator innerhalb des gleichen Dateisystems unterschiedliche RAID Level für die Metadaten und Dateidaten festlegen.  
@@ -395,16 +395,13 @@ Wir prüfen, ob das System so wie erwartet arbeitet. Wenn das der Fall ist führ
 
 ~~~
 # snapper --ambit classic rollback
+Anwendungsbereich ist classic
 Nur-Lesen-Schnappschuss des Standard-Subvolumens erstellen. (Schnappschuss 15.)
 Lesen-Schreiben-Schnappschuss des derzeit laufenden Subvolumens erstellen. (Schnappschuss 16.)
 Einstellung des Standard-Subvolumens zu Schnappschuss 16.
 ~~~
 
-Die Ausgabe beschreibt präzise den Ablauf des Rollback. Anschließend ist der Bootmanager Grub zu aktualisieren, damit die neuen Snapshots im Submenü erscheinen und der Snapshot # 16 als Standard-Subvolumen benutzt wird.
-
-~~~
-# update-grub
-~~~
+Die Ausgabe beschreibt präzise den Ablauf des Rollback. Anschließend wird automatisch der Bootmanager Grub aktualisiert, damit die neuen Snapshots im Submenü erscheinen und der Snapshot # 16 als Standard-Subvolumen benutzt wird.
 
 Wir führen einen Reboot durch und wählen den Grub Standardeintrag um im zurückgesetzten System zu arbeiten.
 
@@ -569,6 +566,7 @@ Wir benutzen zur Auswahl der Dateiänderungen Snapper in der gleichen Art wie zu
 $ snapper -c data_pr diff 16..0 /data/user1/Test.txt
 --- /data/.snapshots/16/snapshot/user1/Test.txt
 +++ /data/user1/Test.txt
+[...]
 ~~~
 
 Wir starten *Meld* und wählen für den Dateivergleich die beiden Dateien mit den Pfaden aus. Die Unterschiede sind sofort sichtbar.
