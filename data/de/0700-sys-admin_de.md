@@ -10,6 +10,10 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Systemadministration allgemein](0702-sys-admin-gen_de.md#systemadministration-allgemein) Kurz und knapp, ein Streifzug durch die Systemadministration; Bootoptionen, systemd - Dienste verwalten, Prozesse beenden, Passwörter verwalten, Schriftarten in siduction, das Drucksystem CUPS und Sound in siduction.
 
++ [Btrfs Dateisystem in siduction](0704-sys-admin-btrfs-snapper_de.md#btrfs). Die Subvolumen nach der Installation. Neue Subvolumen anlegen und verwalten. Snapshot in Btrfs.
+
++ [Btrfs Snapshots mit Snapper](0704-sys-admin-btrfs-snapper_de.md#snapper) erstellen und verwalten. Die Konfiguration von Snapper und die Zusammenarbeit mit systemd. System Rollback und Wiederherstellung von Dateien.
+
 + [APT Paketverwaltung](0705-sys-admin-apt_de.md#apt-paketverwaltung), Paketquellen, Pakete verwalten, Aktualisierung des Systems, Programmpakete suchen und warum ausschließlich apt verwendet werden soll. 
 
 + [Lokaler APT-Mirror](0706-sys-admin-apt-localmirr_de.md#lokaler-apt-mirror); Apt-Cacher, der Proxy-Server für Debian-Pakete. Server installieren und die Client Konfiguration.
@@ -34,4 +38,4 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Systemjournal](0717-systemd-journald_de.md#systemjournal), der journald lokal und über das Netzwerk, journald konfigurieren, Abfrage des systemd-Journals mit journalctl, die Ausgaben filtern und steuern, Beispiele um journalctl zu beherrschen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-11-02</div>
+<div id="rev">Zuletzt bearbeitet: 2022-12-21</div>

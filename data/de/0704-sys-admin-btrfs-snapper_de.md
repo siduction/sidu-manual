@@ -1,16 +1,5 @@
 % Btrfs und Snapper
 
-ANFANG   INFOBEREICH FÜR DIE AUTOREN  
-Dieser Bereich ist vor der Veröffentlichung zu entfernen !!!  
-**Status: RC2**
-
-+ Neu im Handbuch
-+ Zu erledigen:
-    + Rechtschreibprüfung
-    + Inhaltliche prüfung durch 2. Person
-
-ENDE   INFOBEREICH FÜR DIE AUTOREN
-
 ## Btrfs
 
 Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem für Linux.  
@@ -62,7 +51,7 @@ Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den I
  .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log
 ~~~
 
-Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden können, änder wir die Gruppe:
+Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden könnsnapper-konfigurationen, änder wir die Gruppe:
 
 ~~~
 # chgrp users /data
@@ -116,7 +105,7 @@ Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an, e
 ~~~
 
 Der Befehl erinnert von der Syntax her an einen einfachen Kopiervorgang, wobei `01` der Ordner ist, in dem sich die Dateien des Snapshot befinden.  
-Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend, die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs_de.md#snapper-rollback).
+Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend, die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs-snapper_de.md#snapper-rollback).
 
 ## Snapper
 
@@ -180,7 +169,7 @@ TIMELINE_LIMIT_YEARLY  | 10    | 10    | 0     |
 TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  |
 ~~~
 
-Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum Handling der automatischen Snapshots verbergen sich in den zugehörigen systemd Units. Das Kapitel ["Snapper und systemd"](0704-sys-admin-btrfs_de.md#snapper-und-systemd) erklärt die Funktionen und gibt Hinweise zu deren Anpassung.
+Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum Handling der automatischen Snapshots verbergen sich in den zugehörigen systemd Units. Das Kapitel ["Snapper und systemd"](0704-sys-admin-btrfs-snapper_de.md#snapper-und-systemd) erklärt die Funktionen und gibt Hinweise zu deren Anpassung.
   
 Bei jeder APT-Aktion werden die **Apt Snapshot** *"pre"* und *"post"* erstellt. Der Schlüssel `NUMBER_LIMIT=50` bewirkt, dass die jüngsten fünfundzwanzig Snapshotpaare erhalten bleiben.
 
@@ -371,7 +360,7 @@ Der Snapshot # 91 bleibt jetzt so lange erhalten bis wir ihn selbst löschen.
 
 **Snapshot löschen**
 
-Wir können zu jeder Zeit einen beliebigen Snapshot löschen sofern wir die Rechte dazu haben. Für Snapper ist die Löschaktion nicht von Belang, denn der Cleanup Algorithmus prüft bei jedem Durchlauf neu welche Snapshots gehalten werden. Das obere Kapitel [Snapper Konfiguration](0704-sys-admin-btrfs_de.md#snapper-konfiguration) erklärt darüber hinaus ausführlich die Einstellungen mit denen wir den Cleanup Algorithmus bei Bedarf anpassen. 
+Wir können zu jeder Zeit einen beliebigen Snapshot löschen sofern wir die Rechte dazu haben. Für Snapper ist die Löschaktion nicht von Belang, denn der Cleanup Algorithmus prüft bei jedem Durchlauf neu welche Snapshots gehalten werden. Das obere Kapitel [Snapper Konfiguration](0704-sys-admin-btrfs-snapper_de.md#snapper-konfiguration) erklärt darüber hinaus ausführlich die Einstellungen mit denen wir den Cleanup Algorithmus bei Bedarf anpassen. 
 
 Der folgende Befehl entfernt den Snapshot # 91 aus unserem Subvolumen `@data`.
 

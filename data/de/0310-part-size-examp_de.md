@@ -73,7 +73,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | 5 | 4 GB | Linux Swap | Linux Swap |
 
 **Desktop PC, Linux allein**  
-**500 GB Festplatte mit Btrfs-Snapshot (ab siduction 2022.12.0):**
+**500 GB Festplatte mit Btrfs-Snapshot:**
 
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
@@ -131,8 +131,8 @@ Eine `swap`-Partition entspricht in der Funktionalität etwa der Auslagerungsdat
 **ext4**  
 Das *ext4* Dateisystem ist das Default-Dateisystem bei siduction. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
 
-**Btrfs** (Neu hinzugekommen ab siduction 2022.12.0)  
-*Btrfs* kann an Stelle von *ext4* verwendet werden. Zusammen mit dem Programm *Snapper* bieten es die Möglchkeit Snapschots des Dateisystems zu erstellen, die anschließend im Bootmanager Grub auswählbar sind. Man benötigt eine ausreichend große Festplatte. Siehe auch [Systemadministration Btrfs](0704-sys-admin-btrfs_de.md#btrfs).
+**Btrfs**  
+*Btrfs* kann an Stelle von *ext4* verwendet werden. Zusammen mit dem Programm *Snapper* bieten es die Möglchkeit Snapschots des Dateisystems zu erstellen, die anschließend im Bootmanager Grub auswählbar sind. Man benötigt eine ausreichend große Festplatte. Siehe auch [Systemadministration Btrfs](0704-sys-admin-btrfs-snapper_de.md#btrfs).
 
 **NTFS**  
 Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit *NTFS* formatiert werden. Siduction kann lesend und schreibend auf die Daten zugreifen. Für Windows ist es das Standarddateisystem.
