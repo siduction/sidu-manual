@@ -38,8 +38,8 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#datensicherung">Datensicherung</a></li>
 <li><a
 href="#installationsvorbereitungen">Installationsvorbereitungen</a></li>
-<li><a href="#partitionierung">Partitionierung</a></li>
-<li><a href="#dateisysteme">Dateisysteme</a></li>
+<li><a href="#partitionierung-und-dateisysteme">Partitionierung und
+Dateisysteme</a></li>
 <li><a href="#duplizierung-auf-einen-anderen-computer">Duplizierung auf
 einen anderen Computer</a></li>
 <li><a href="#das-installationsprogramm-calamares">Das
@@ -91,24 +91,22 @@ auf ein USB-Medium</a>.</p>
 sind auf der Handbuchseite <a
 href="./cd-content_de.html#minimale-systemanforderungen">Inhalt der
 Live-ISO</a> beschrieben.<br />
-Mit 15 GB Festplattenvolumen und 4 GB Arbeitsspeicher ist man zur Zeit
-auf der sicheren Seite. Auf PCs mit maximal 2 GB RAM sollte eine
-Swap-Partition angelegt werden. Mehr als 4 GB Swap wird normal nicht
-ben&ouml;tigt und ist nur bei Suspend-to-Disk und Serversystemen wirklich
-sinnvoll.</p>
-<h3 id="partitionierung">Partitionierung</h3>
-<p>Die Partitionierung der Laufwerke ist von vielen Faktoren
-abh&auml;ngig:</p>
-<ul>
-<li>Auswahl der siduction-Variante</li>
-<li>Gr&ouml;&szlig;e der vorhandenen Laufwerke und des Arbeitsspeichers</li>
-<li>Single-Boot oder Dual-Boot mit einem bereits installierten System
-(Windows, Linux, MAC)</li>
-<li>Gemeinsame Nutzung von Daten f&uuml;r die installierten Systeme</li>
-</ul>
-<p>Beispiele und Gr&ouml;&szlig;en f&uuml;r unterschiedliche Installationssituationen
-beschreibt die Handbuchseite <a
-href="./part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung</a>.<br />
+Mit 15 GB Festplattenspeicher und 4 GB Arbeitsspeicher ist man zur Zeit
+auf der sicheren Seite. Bei Installation auf einer mit Btrfs
+formatierten Partition raten wir zu 50 GByte Festplattenspeicher.<br />
+Auf PCs mit maximal 2 GB RAM sollte eine Swap-Partition angelegt werden.
+Mehr als 4 GB Swap wird normal nicht ben&ouml;tigt und ist nur bei
+Suspend-to-Disk und Serversystemen wirklich sinnvoll.</p>
+<h3 id="partitionierung-und-dateisysteme">Partitionierung und
+Dateisysteme</h3>
+<p>Die Handbuchseite <a
+href="./part-size-examp_de.html#partitionierung-von-installationsmedien">Partitionierung
+von Installationsmedien</a> enth&auml;lt einige Beispiele die verschiedene
+Gr&ouml;&szlig;en der Festplatten ber&uuml;cksichtigen und Anregungen zur Aufteilung bei
+Single- und Dualbootsystemen geben. Im Kapitel <a
+href="./part-size-examp_de.html#dateisysteme-der-partitionen">Dateisysteme
+der Partitionen</a> beschreiben wir, welche Dateisysteme auf den
+Partitionen in der jeweiligen Situation sinnvoll sind.<br />
 Wir empfehlen, das <code>/home</code>-Verzeichnis auf der
 Wurzel-Partition zu belassen. Das Verzeichnis <code>/home</code> sollte
 der Ort sein, an dem die individuellen Konfigurationen abgelegt werden,
@@ -129,19 +127,6 @@ empfohlen bei UEFI Hardware f&uuml;r GPT Partitionstabellen<br />
 <a href="./part-cfdisk_de.html#partitionieren-mit-fdisk">cfdisk</a>, nur
 f&uuml;r &auml;ltere Hardware mit traditionellem BIOS und MBR
 Partitionstabellen.</p>
-<h3 id="dateisysteme">Dateisysteme</h3>
-<p>Wir empfehlen das Dateisystem <strong>ext4</strong>, welches bei
-siduction als Default-Dateisystem verwendet wird. Dies gilt f&uuml;r alle
-Partitionen, wenn ausschlie&szlig;lich Linux Betriebssysteme verwendet
-werden.</p>
-<p>Bei einer Dual-Boot Installation mit <em>Windows</em> ist eine eigene
-Datenpartition mit dem <strong>NTFS</strong> Dateisystem sinnvoll. Linux
-kann lesend und schreibend darauf zugreifen; f&uuml;r Windows ist es das
-Standarddateisystem.</p>
-<p>Bei einer Dual-Boot Installation mit <em>MAC</em> ist ebenfalls eine
-eigene Datenpartition allerdings mit dem <strong>HFS</strong> oder
-<strong>HFS+</strong> Dateisystem sinnvoll. Linux und MAC k&ouml;nnen lesend
-und schreibend darauf zugreifen.</p>
 <h3 id="duplizierung-auf-einen-anderen-computer">Duplizierung auf einen
 anderen Computer</h3>
 <p>Mit folgendem Konsolebefehl wird eine Liste der installierten
@@ -155,7 +140,14 @@ Auf der Zielinstallation wird die Textdatei nach $HOME kopiert und als
 Referenz verwendet, um die ben&ouml;tigten Programmpakete zu installieren.
 Die gesamte Paketliste kann per</p>
 <pre><code>~# apt install $(/home/username/installed.txt)</code></pre>
-<p>installiert werden.</p>
+<p>installiert werden.<br />
+M&ouml;chte man eine alte siduction Installation durch eine neue ersetzen,
+f&uuml;hrt die Verwendung der <code>installed.txt</code> des alten Systems
+auf dem neuen mit gro&szlig;er Wahrscheinlichkeit zu schwerwiegenden
+Problemen. Besser ist es eine <code>installed-old.txt</code> von dem
+alten, und eine <code>installed-new.txt</code> von dem neuen System
+mittels <em>diff</em> zu vergleichen. Anschlie&szlig;end installiert man die
+gew&uuml;nschten Pakete auf der neuen siduction Installation nach.</p>
 <h3 id="das-installationsprogramm-calamares">Das Installationsprogramm
 Calamares</h3>
 <p>W&auml;hrend der Installation sollte, wenn m&ouml;glich, der Computer mit dem
@@ -341,7 +333,7 @@ m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
 <strong><code>man adduser</code></strong> und
 <strong><code>man deluser</code></strong> .</p>
 <div id="rev">
-Zuletzt bearbeitet: 2022-02-09
+Zuletzt bearbeitet: 2022-12-14
 </div>
 </body>
 </html>

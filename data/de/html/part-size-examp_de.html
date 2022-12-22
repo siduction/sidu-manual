@@ -39,6 +39,8 @@ von Installationsmedien</a>
 <li><a href="#mindestanforderungen">Mindestanforderungen</a></li>
 <li><a href="#beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit
 verschiedenen Plattengr&ouml;&szlig;en</a></li>
+<li><a href="#dateisysteme-der-partitionen">Dateisysteme der
+Partitionen</a></li>
 <li><a
 href="#partitionierungsprogramme">Partitionierungsprogramme</a></li>
 <li><a href="#weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</a></li>
@@ -47,33 +49,27 @@ href="#partitionierungsprogramme">Partitionierungsprogramme</a></li>
 </nav>
 <h2 id="partitionierung-von-installationsmedien">Partitionierung von
 Installationsmedien</h2>
+<p>Die Partitionierung der Laufwerke ist von vielen Faktoren
+abh&auml;ngig:</p>
+<ul>
+<li>Auswahl der siduction-Variante</li>
+<li>Gr&ouml;&szlig;e der vorhandenen Laufwerke und des Arbeitsspeichers</li>
+<li>Single-Boot oder Dual-Boot mit einem bereits installierten System
+(Windows, Linux, MAC)</li>
+<li>Gemeinsame Nutzung von Daten f&uuml;r die installierten Systeme</li>
+</ul>
 <p>Linux-Einsteigern empfehlen wir, nur zwei Partitionen anzulegen<br />
 <code>/root</code> (inkl. <code>/home</code> ) und <code>swap</code>, da
 dies eine Erstinstallation wesentlich vereinfacht. Nach der Installation
 k&ouml;nnen weitere Datenpartitionen angelegt werden, oder etwa ein separates
-<code>/home</code>, falls gew&uuml;nscht.</p>
-<p>Wir raten aber eher davon ab eine <code>/home</code>-Partition
-anzulegen.<br />
-Das Verzeichnis <code>/home</code> sollte der Ort sein, an dem die
-individuellen Konfigurationen abgelegt werden, und nur diese. F&uuml;r alle
-weiteren privaten Daten sollte eine eigene Datenpartition angelegt
-werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung und auch im
-Falle einer Datenrettung sind nahezu unermesslich.</p>
-<p>Eine <code>swap</code>-Partition entspricht in der Funktionalit&auml;t
-etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als
-diese. Als Faustregel sollte die Swap-Partition zweimal so gro&szlig; sein wie
-das verwendete RAM. Dies gilt haupts&auml;chlich f&uuml;r Notebooks, die per
-<code>hibernate</code> in den Ruhezustand versetzt werden sollen, oder
-Desktops mit sehr wenig RAM (1 GByte oder weniger). Ger&auml;te mit
-ausreichend RAM brauchen heute keine Swap-Partition mehr.</p>
-<p>F&uuml;r den Datenaustausch mit einer Windows-Installation sollte die
-daf&uuml;r vorgesehene Partition mit <strong>ntfs</strong> formatiert werden.
-Siduction kann mit dem automatisch installierten <em>“ntfs-3g”</em>
-lesend und schreibend auf die Daten zugreifen.</p>
-<p>Es gibt sehr viele gute M&ouml;glichkeiten seine Platten aufzuteilen.
-Diese Beispiele sollten einen ersten Einblick in die M&ouml;glichkeiten
-bieten.</p>
-<p>Die Anschaffung einer externen USB-Festplatte zur regelm&auml;&szlig;igen
+<code>/home</code>, falls gew&uuml;nscht.<br />
+Wir raten aber eher davon ab eine <code>/home</code>-Partition
+anzulegen. Das Verzeichnis <code>/home</code> sollte der Ort sein, an
+dem die individuellen Konfigurationen abgelegt werden, und nur diese.
+F&uuml;r alle weiteren privaten Daten sollte eine eigene Datenpartition
+angelegt werden. Die Vorteile f&uuml;r die Datenstabilit&auml;t, Datensicherung
+und auch im Falle einer Datenrettung sind nahezu unermesslich.<br />
+Die Anschaffung einer externen USB-Festplatte zur regelm&auml;&szlig;igen
 Datensicherung ist ebenso eine &Uuml;berlegung wert.</p>
 <h3 id="mindestanforderungen">Mindestanforderungen</h3>
 <p>Die Mindestanforderungen f&uuml;r den sinnvollen Gebrauch einer siduction
@@ -116,34 +112,32 @@ Installation betragen:</p>
 </tr>
 </tbody>
 </table>
+<p>Davon abweichend empfehlen wir mindestens 50 GByte
+Festplattenspeicher bei Installation auf einer mit Btrfs formatierten
+Partition.</p>
 <h3 id="beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit
 verschiedenen Plattengr&ouml;&szlig;en</h3>
+<p>Es gibt sehr viele gute M&ouml;glichkeiten seine Platten aufzuteilen.
+Diese Beispiele sollten einen ersten Einblick bieten. Sie beziehen sich
+auf Partitionstabellen vom Typ <em>“GPT”</em>, f&uuml;r deren Funktion die
+ersten beiden, sehr kleinen Partitionen erforderlich sind.</p>
 <p>Falls ein Dual-Boot mit MS Windows™ angelegt wird, muss MS Windows
 immer als erstes System auf die Festplatte installiert werden.</p>
-<p>Als Partitionstabelle sollte der Typ <em>“GPT”</em> gew&auml;hlt werden.
-So kann man die Vorteile gegen&uuml;ber <em>“MBR”</em> nutzen. Nur bei alter
-Hardware ist <em>“MBR”</em> noch sinnvoll. Die Erkl&auml;rungen hierzu
-enth&auml;lt unsere Handbuchseite <a
-href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit
-gdisk</a>.</p>
-<p>Die Beispiele beziehen sich auf Partitionstabellen vom Typ
-<em>“GPT”</em>, f&uuml;r deren Funktion die ersten beiden, sehr kleinen
-Partitionen erforderlich sind.</p>
-<p><strong>Dual-Boot mit MS Windows und Linux</strong></p>
-<p><strong>1 TB Festplatte:</strong></p>
+<p><strong>Desktop PC, Dual-Boot (MS Windows und Linux)</strong><br />
+<strong>1 TB Festplatte:</strong></p>
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Size</th>
-<th style="text-align: center;">Filesystem</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
+<th style="text-align: center;">Dateisystem</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
+<td style="text-align: right;">100 MB</td>
 <td style="text-align: center;">FAT16</td>
 <td style="text-align: center;">EFI-System</td>
 </tr>
@@ -161,50 +155,45 @@ Partitionen erforderlich sind.</p>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">300 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten f&uuml;r MS Windows</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">200 GB</td>
+<td style="text-align: right;">500 GB</td>
 <td style="text-align: center;">NTFS</td>
 <td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
+<tr class="odd">
+<td style="text-align: center;">5</td>
 <td style="text-align: right;">30 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">/ (Linux root)</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
+<tr class="even">
+<td style="text-align: center;">6</td>
 <td style="text-align: right;">416 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">Daten f&uuml;r Linux</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
+<tr class="odd">
+<td style="text-align: center;">7</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
 </tr>
 </tbody>
 </table>
-<p><strong>120 GB Festplatte:</strong></p>
+<p><strong>Desktop PC, Dual-Boot (MS Windows und Linux)</strong><br />
+<strong>120 GB Festplatte:</strong></p>
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
 <th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Formatierung</th>
+<th style="text-align: center;">Dateisystem</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
+<td style="text-align: right;">100 MB</td>
 <td style="text-align: center;">FAT16</td>
 <td style="text-align: center;">EFI-System</td>
 </tr>
@@ -240,70 +229,21 @@ Partitionen erforderlich sind.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>80 GB Festplatte:</strong></p>
+<p><strong>Desktop PC, Linux allein</strong><br />
+<strong>500 GB Festplatte:</strong></p>
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
 <th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Formatierung</th>
+<th style="text-align: center;">Dateisystem</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: right;">1 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">40 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">MS Windows System</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: right;">10 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">28 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">/ (Linux root)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: right;">2 GB</td>
-<td style="text-align: center;">Linux Swap</td>
-<td style="text-align: center;">Linux Swap</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Linux allein</strong></p>
-<p><strong>500 GB Festplatte:</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Formatierung</th>
-<th style="text-align: center;">Verwendung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
+<td style="text-align: right;">100 MB</td>
 <td style="text-align: center;">FAT16</td>
 <td style="text-align: center;">EFI-System</td>
 </tr>
@@ -321,38 +261,33 @@ Partitionen erforderlich sind.</p>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">250 GB</td>
+<td style="text-align: right;">466 GB</td>
 <td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten_1</td>
+<td style="text-align: center;">Daten</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: right;">216 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten_2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
 </tr>
 </tbody>
 </table>
-<p><strong>160 GB Festplatte:</strong></p>
+<p><strong>Desktop PC, Linux allein</strong><br />
+<strong>500 GB Festplatte mit Btrfs-Snapshot:</strong></p>
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
 <th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Formatierung</th>
+<th style="text-align: center;">Dateisystem</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
+<td style="text-align: right;">100 MB</td>
 <td style="text-align: center;">FAT16</td>
 <td style="text-align: center;">EFI-System</td>
 </tr>
@@ -363,18 +298,12 @@ Partitionen erforderlich sind.</p>
 <td style="text-align: center;">BIOS-boot</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">26 GB</td>
-<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">496 GB</td>
+<td style="text-align: center;">Btrfs</td>
 <td style="text-align: center;">/</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">130 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">4</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
@@ -382,20 +311,122 @@ Partitionen erforderlich sind.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>60 GB Festplatte:</strong></p>
+<p><strong>Desktop PC, Linux allein</strong><br />
+<strong>160 GB Festplatte:</strong></p>
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Partition</th>
 <th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Formatierung</th>
+<th style="text-align: center;">Dateisystem</th>
 <th style="text-align: center;">Verwendung</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
+<td style="text-align: right;">100 MB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI-System</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">ohne</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">26 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">130 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Daten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux Swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Laptop mit 32 GB RAM, Dual-Boot mit MS Windows und
+Linux</strong><br />
+<strong>1 TB Festplatte:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">Filesystem</th>
+<th style="text-align: center;">Verwendung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 MB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI-System</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">ohne</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">80 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">MS Windows System</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">500 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux root)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">350 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Daten f&uuml;r Linux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: right;">40 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux Swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Laptop mit 8 GB RAM, Linux allein</strong><br />
+<strong>120 GB Festplatte:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
+<th style="text-align: center;">Dateisystem</th>
+<th style="text-align: center;">Verwendung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 MB</td>
 <td style="text-align: center;">FAT16</td>
 <td style="text-align: center;">EFI-System</td>
 </tr>
@@ -413,55 +444,103 @@ Partitionen erforderlich sind.</p>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">33 GB</td>
+<td style="text-align: right;">85 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">Daten</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: right;">2 GB</td>
+<td style="text-align: right;">10 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
 </tr>
 </tbody>
 </table>
-<h3 id="partitionierungsprogramme">Partitionierungsprogramme</h3>
+<h3 id="dateisysteme-der-partitionen">Dateisysteme der Partitionen</h3>
+<p>Als Partitionstabelle sollte der Typ <em>“GPT”</em> gew&auml;hlt werden.
+So kann man die Vorteile gegen&uuml;ber <em>“MBR”</em> nutzen. Nur bei alter
+Hardware ist <em>“MBR”</em> noch sinnvoll. Die Erkl&auml;rungen hierzu
+enth&auml;lt unsere Handbuchseite <a
+href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit
+gdisk</a>.</p>
+<p><strong>Linux Swap</strong><br />
+Eine <code>swap</code>-Partition entspricht in der Funktionalit&auml;t etwa
+der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese.
+Ihre Gr&ouml;&szlig;e richtet sich nach dem installierten System und den
+Anforderungen des Benutzers. Einige Beispiele:</p>
 <ul>
-<li><p><strong>GParted</strong> Ein einfach zu bedienendes
-Partitionierungsprogramm mit graphischer Oberfl&auml;che.<br />
+<li>F&uuml;r Notebooks, die per <code>hibernate</code> in den Ruhezustand
+versetzt werden sollen, empfehlen wir eine swap Partition die wenigstens
+ein GByte oder 25% gr&ouml;&szlig;er ist als das RAM.<br />
+</li>
+<li>Aktuelle Desktop PCs, die <em>nicht</em> in den Ruhezustand versetzt
+werden sollen und &uuml;ber ausreichend RAM verf&uuml;gen (je nach Verwendung ab
+16 GByte), ben&ouml;tigen keine swap Partition mehr.<br />
+</li>
+<li>F&uuml;r Desktop PCs mit sehr wenig RAM gilt nach wie vor die Faustregel,
+dass die swap Partition zweimal so gro&szlig; sein sollte wie das verwendete
+RAM.</li>
+</ul>
+<p><strong>ext4</strong><br />
+Das <em>ext4</em> Dateisystem ist das Default-Dateisystem bei siduction.
+Dies gilt f&uuml;r alle Partitionen, wenn ausschlie&szlig;lich Linux
+Betriebssysteme verwendet werden.</p>
+<p><strong>Btrfs</strong><br />
+<em>Btrfs</em> kann an Stelle von <em>ext4</em> verwendet werden.
+Zusammen mit dem Programm <em>Snapper</em> bieten es die M&ouml;glchkeit
+Snapschots des Dateisystems zu erstellen, die anschlie&szlig;end im
+Bootmanager Grub ausw&auml;hlbar sind. Man ben&ouml;tigt eine ausreichend gro&szlig;e
+Festplatte. Siehe auch <a
+href="./sys-admin-btrfs-snapper_de.html#btrfs">Systemadministration
+Btrfs</a>.</p>
+<p><strong>NTFS</strong><br />
+F&uuml;r den Datenaustausch mit einer Windows-Installation sollte die daf&uuml;r
+vorgesehene Partition mit <em>NTFS</em> formatiert werden. Siduction
+kann lesend und schreibend auf die Daten zugreifen. F&uuml;r Windows ist es
+das Standarddateisystem.</p>
+<p><strong>HFS+</strong><br />
+Bei einer Dual-Boot Installation mit Macintosh ist eine eigene
+Datenpartition mit dem <strong>HFS</strong> oder <strong>HFS+</strong>
+Dateisystem sinnvoll. Linux und MAC k&ouml;nnen lesend und schreibend darauf
+zugreifen.</p>
+<h3 id="partitionierungsprogramme">Partitionierungsprogramme</h3>
+<p class="warning">
+<strong>Achtung</strong> <br />Bei Verwendung jedweder
+Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht
+werden, immer zuvor auf einem anderen Datentr&auml;ger sichern.
+</p>
+<p><strong>GParted</strong><br />
+Ein einfach zu bedienendes Partitionierungsprogramm mit graphischer
+Oberfl&auml;che.<br />
 Gparted ist auf allen mit einer graphischen Oberfl&auml;che ausgestatteten
 siduction Installationen und Installationsmedien verf&uuml;gbar. Gparted
 unterst&uuml;tzt eine Reihe verschiedener Typen von Partitionstabellen. Die
 Handbuchseite <a
 href="./part-gparted_de.html#partitionieren-mit-gparted">Partitionieren
 der Festplatte mit GParted</a> liefert weitere Informationen zum
-Programm.</p></li>
-<li><p><strong>KDE Partition Manager</strong> Ein Qt basiertes, einfach
-zu bedienendes Partitionierungsprogramm mit graphischer
-Oberfl&auml;che.<br />
+Programm.</p>
+<p><strong>KDE Partition Manager</strong><br />
+Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit
+graphischer Oberfl&auml;che.<br />
 Der KDE Partition Manager ist das Standard-Partitionierungsprogramm f&uuml;r
 den KDE Destktop, einfach zu bedienen und genauso umfangreich wie
-Gparted.</p></li>
-<li><p><strong>gdisk / cgdisk</strong> Ein Konsolenprogramm f&uuml;r
-Partitionstabellen vom Typ <em>“GPT-UEFI”</em>.<br />
+Gparted.</p>
+<p><strong>gdisk / cgdisk</strong><br />
+Ein Konsolenprogramm f&uuml;r Partitionstabellen vom Typ
+<em>“GPT-UEFI”</em>.<br />
 gdisk ist das klassische Textmodus-Programm. cgdisk hat eine
 benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a
 href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit
-gdisk</a> liefert weitere Informationen zum Programm.</p></li>
-<li><p><strong>fdisk / cfdisk</strong> Ein Konsolenprogramm f&uuml;r
-Partitionstabellen vom Typ <em>“msdos-MBR”</em>.<br />
+gdisk</a> liefert weitere Informationen zum Programm.</p>
+<p><strong>fdisk / cfdisk</strong><br />
+Ein Konsolenprogramm f&uuml;r Partitionstabellen vom Typ
+<em>“msdos-MBR”</em>.<br />
 Hinweis: fdisk sollte nur noch f&uuml;r alte Hardware, die
 <em>“GPT-UEFI”</em> nicht unterst&uuml;tzt verwendet werden.<br />
 fdisk ist das klassische Textmodus-Programm. cfdisk hat eine
 benutzerfreundlichere ncurses-Oberfl&auml;che. Die Handbuchseite <a
 href="./part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit
-Cfdisk</a> liefert weitere Informationen zum Programm.</p></li>
-</ul>
-<p class="warning">
-<strong>Achtung</strong> <br />Bei Verwendung jedweder
-Partitionierungssoftware droht Datenverlust. Daten, die noch gebraucht
-werden, immer zuvor auf einem anderen Datentr&auml;ger sichern.
-</p>
+Cfdisk</a> liefert weitere Informationen zum Programm.</p>
 <p>Eingebundene Partitionen (auch swap) m&uuml;ssen vor Bearbeitung gel&ouml;st
 werden.<br />
 Im Terminal als <strong>root</strong> mit dem Befehl:</p>
@@ -470,18 +549,18 @@ Im Terminal als <strong>root</strong> mit dem Befehl:</p>
 gel&ouml;st:</p>
 <pre><code># swapoff -a</code></pre>
 <h3 id="weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</h3>
-<p><a target="_blank" href="https://gparted.org/index.php">Hier die umfassende
+<p><a target="_blank" href="https://gparted.org/index.php">Die umfassende
 englischsprachige Dokumentation von GParted</a></p>
 <p>F&uuml;r weitere Partitionierungsoptionen siehe:</p>
 <ul>
 <li><p>Logical Volume Manager <a
 href="./part-lvm_de.html#lvm-partitionierung---logical-volume-manager">LVM-Partitionierung</a></p></li>
-<li><p>Partitionierung mit GPT zur Unterst&uuml;tzung von UEFI <a
+<li><p><a
 href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit
-gdisk (GPT fdisk)</a></p></li>
+GPT</a> zur Unterst&uuml;tzung von UEFI</p></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2021-07-21
+Zuletzt bearbeitet: 2022-12-14
 </div>
 </body>
 </html>

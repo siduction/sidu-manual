@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Btrfs und Snapper</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Btrfs und Snapper</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#btrfs">Btrfs</a>
+<ul>
+<li><a href="#btrfs-subvolumen">Btrfs Subvolumen</a></li>
+<li><a href="#btrfs-snapshot">Btrfs Snapshot</a></li>
+</ul></li>
+<li><a href="#snapper">Snapper</a>
+<ul>
+<li><a href="#snapper-konfiguration">Snapper Konfiguration</a></li>
+<li><a href="#snapper-und-systemd">Snapper und systemd</a></li>
+<li><a href="#snapper---manuelle-snapshots">Snapper - manuelle
+Snapshots</a></li>
+<li><a href="#snapper-rollback">Snapper Rollback</a></li>
+<li><a href="#datei-rollback-im-root-dateisystem">Datei Rollback im
+Root-Dateisystem</a></li>
+<li><a href="#datei-rollback-von-user-daten">Datei Rollback von User
+Daten</a></li>
+<li><a href="#quellen-btrfs-und-snapper">Quellen BTRFS und
+Snapper</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="btrfs">Btrfs</h2>
+<p>Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem f&uuml;r
+Linux.<br />
+siduction unterst&uuml;tzt die Installation in eine mit <em>Btrfs</em>
+formatierte Partition. Mit der Ver&ouml;ffentlichung von 2022.12.0 kommt die
+M&ouml;glichkeit hinzu, mit Snapper Snapshots von Btrfs zu verwalten und &uuml;ber
+Grub zu booten. Das Installationsprogramm legt dabei innerhalb der
+ausgew&auml;hlten Partition Subvolumen f&uuml;r das Wurzelverzeichnis
+<code>@</code>, die Benutzerverzeichnisse <code>@home</code> und
+<code>@root</code>, die Verzeichnisse <code>@tmp</code> und
+<code>@var@log</code> sowie ein Subvolumen <code>@snapshots</code> f&uuml;r
+System Snapshots an.</p>
+<p>Btrfs funktioniert gut mit SSDs und herk&ouml;mmlichen Festplatten. Der
+eigene eingebaute RAID Mechanismus (unterst&uuml;tzt wird RAID 0, 1 und 10)
+arbeitet auch bei Festplatten verschiedener Gr&ouml;&szlig;e zuverl&auml;ssig. Metadaten
+und Dateidaten behandelt Btrfs unterschiedlich. Normalerweise werden
+Metadaten auch bei nur einem Laufwerk doppelt gespeichert. Bei mehreren
+Laufwerken kann der Administrator innerhalb des gleichen Dateisystems
+unterschiedliche RAID Level f&uuml;r die Metadaten und Dateidaten
+festlegen.<br />
+Btrfs verwaltet die Daten innerhalb der Laufwerke in Subvolumen,
+oberfl&auml;chlich betrachtet &auml;hnlich herk&ouml;mmlichen Partitionen. Von den
+Subvolumen kann Btrfs Snapshots anfertigen, die bei Bedarf der
+Datenrekonstruktion dienen. Ein eingeh&auml;ngtes Btrfs-Dateisystem verh&auml;lt
+sich meistens wie jedes andere Linux-Dateisystem. Gelegentlich treten
+jedoch einige Unterschiede zutage, denn Btrfs erledigt seine Arbeit
+vorwiegend im Hintergrund. F&uuml;r Verwirrung sorgt zum Beispiel das L&ouml;schen
+einer gro&szlig;en Datei, ohne dass sich sofort der verf&uuml;gbare freie
+Speicherplatz erh&ouml;ht. Einige Zeit sp&auml;ter ist der fehlende Platz dann
+doch da, oder auch nicht wenn ein vorangegangener Snapshot die Datei
+referenziert.</p>
+<p>Zu Btrfs finden sich im Internet zahlreiche Dokumentationen. Wir
+werden deshalb hier nicht die umfangreichen M&ouml;glichkeiten sowie die
+Befehle und deren Anwendung wiederholen. Die Lekt&uuml;re von
+<strong><code>man btrfs</code></strong> und
+<strong><code>man btrfs-&lt;Befehl&gt;</code></strong> ist
+obligatorisch. Dar&uuml;ber hinaus empfehlen wir das umfangreiche <a
+href="https://btrfs.wiki.kernel.org/index.php/Main_Page">Wiki von
+kernel.org</a> und die ausf&uuml;hrliche Dokumentation von <a
+href="https://btrfs.readthedocs.io/en/latest/index.html">readthedocs.io</a>.</p>
+<p><strong>Btrfs verwenden</strong></p>
+<p>F&uuml;r die fortschrittlichen Eigenschaften von Btrfs (Snapshots,
+Komprimierung, Defragmentierung, Selbstheilung f&uuml;r Daten und Metadaten,
+integrierte Datentr&auml;gerverwaltung …) z.B. gegen&uuml;ber ext4, ben&ouml;tigen wir
+erkennbar gr&ouml;&szlig;ere Laufwerke. Das ist derzeit meist kein Problem, denn
+selbst preiswerte PCs und Laptop verf&uuml;gen oft &uuml;ber 500 GB gro&szlig;e
+Laufwerke.<br />
+Als Mindestgr&ouml;&szlig;e des Btrfs Laufwerks, in das die vollst&auml;ndige
+Installation erfolgen soll, empfehlen wir 100 GB. Abh&auml;ngig vom Volumen
+der privaten Daten auch deutlich mehr. M&ouml;chte man Btrfs nur f&uuml;r die
+root-Partition verwenden, sollte diese eine Gr&ouml;&szlig;e von mindestens 50 GB
+aufweisen. F&uuml;r Benutzer die nicht so viel Speicherplatz zuweisen wollen,
+ist die &uuml;bliche Vorgehensweise entweder Btrfs ohne Snapshots oder ext4
+zu verwenden.<br />
+Btrfs versteht auf der Kommandozeile f&uuml;r seine Befehle und Optionen
+beliebige Abk&uuml;rzungen, sofern diese eindeutig sind. So wird zum Beispiel
+<strong><code>btrfs su li /</code></strong> intern zu
+<strong><code>btrfs subvolume list /</code></strong>.</p>
+<h3 id="btrfs-subvolumen">Btrfs Subvolumen</h3>
+<p>Bei der Erstinstallation in eine einzige Partition werden die
+folgenden Subvolumen angelegt.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Subvolumen</th>
+<th>Einh&auml;ngepunkt</th>
+<th>Bemerkungen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>@</td>
+<td>/</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="home">@home</span></td>
+<td>/home</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="citation" data-cites="root">@root</span></td>
+<td>/root</td>
+<td>Der Benutzer <strong>root</strong></td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="tmp">@tmp</span></td>
+<td>/tmp</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="citation" data-cites="var">@var</span><span
+class="citation" data-cites="log">@log</span></td>
+<td>/var/log</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="snapshots">@snapshots</span></td>
+<td>/.snapshots</td>
+<td>Ablageort f&uuml;r die Snapshot von <code>@</code></td>
+</tr>
+</tbody>
+</table>
+<p>F&uuml;r Btrfs liegen sie gleichwertig auf der h&ouml;chsten Ebene (<em>‘top
+level 5’</em> ). Wir h&auml;ngen sie alle separat an dem gew&uuml;nschten Platz im
+Dateibaum ein. Es wird auch als <em>“flaches Layout”</em> bezeichnet bei
+dem die Dateisystemwurzel an sich nicht eingeh&auml;ngt wird. Sobald die
+Subvolumen erstellt wurden, ist es nicht mehr n&ouml;tig, das “Root”-Ger&auml;t
+einzuh&auml;ngen, wenn nur der Inhalt der Subvolumen von Interesse ist. Im
+laufenden Betrieb befinden wir uns bereits in dem Subvolumen
+<code>@</code>.</p>
+<p><strong>Subvolumen anlegen</strong></p>
+<p>Um ein neues <em>top level 5</em> Subvolumen <code>@data</code>
+anzulegen, booten wir in ein Livesystem und h&auml;ngen die siduction
+Btrfs-Partition unter <code>/mnt</code> ein.</p>
+<pre><code># mount -t btrfs /dev/sdxX /mnt/
+# ls -a /mnt/
+ .  ..  @  @home  @root  @snapshots  @tmp  @var@log</code></pre>
+<p>Der <em>ls</em> Befehl zeigt die vorhandenen <em>top level 5</em>
+Subvolumen nach der Installation.<br />
+Jetzt legen wir das neue Subvolumen und seinen Einh&auml;ngepunkt an und
+geben den Inhalt von <code>/mnt</code> erneut aus.</p>
+<pre><code># btrfs subvolume create /mnt/@data
+# mkdir /mnt/@/data
+# ls -a /mnt/
+ .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log</code></pre>
+<p>Nach einem Reboot in unser siduction enth&auml;lt das Wurzelverzeichnis
+den neuen Ordner <code>/data</code>. Damit die normalen Benutzer das
+Verzeichnis verwenden k&ouml;nnsnapper-konfigurationen, &auml;nder wir die
+Gruppe:</p>
+<pre><code># chgrp users /data</code></pre>
+<p>Subvolumen lassen sich auch verschachteln und somit innerhalb
+bestehender Subvolumen erstellen. Wir raten zur besseren &Uuml;bersicht eher
+zu dem flachen Schema.</p>
+<p><strong>Subvolumen einh&auml;ngen</strong></p>
+<p>Mit dem Befehl<br />
+<strong><code>mount -t btrfs -o subvol=/@data,defaults /data/</code></strong><br />
+h&auml;ngen wir das Subvolumen manuell ein.<br />
+Diese einfache Variante eignet sich nicht f&uuml;r eine dauerhafte
+Verwendung. Au&szlig;erdem unterdr&uuml;ckt sie die vorteilhaften F&auml;higkeiten von
+Btrfs. Wir schauen uns einen Eintrag aus der Datei
+<code>/etc/fstab</code> an.</p>
+<pre><code># grep home /etc/fstab
+UUID=&lt;hier&gt;  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0</code></pre>
+<p>Mit der Option <em>“space_cache=v2”</em> werden die Adressen der
+freien Bl&ouml;cke des Laufwerks zwischengespeichert um die Schreibvorg&auml;nge
+zu beschleunigen.<br />
+Die Option <em>“autodefrag”</em> sorgt f&uuml;r die Defragmentierung der
+Dateien w&auml;hrend der Laufzeit.<br />
+Datenkomprimierung erreichen wir mit der Option
+<em>“compress=zstd”</em>.</p>
+<p>Unser selbst erstelltes Subvolumen <code>@data</code> soll
+automatisch und dauerhaft mit diesen Optionen verf&uuml;gbar sein. Deshalb
+erg&auml;nzen wir die <code>/etc/fstab</code> um den ben&ouml;tigten Eintrag
+entweder mit einem Editor oder mittels zweier Befehle.</p>
+<pre><code># echo &quot;# Extended by root on $(date +%F)&quot; &gt;&gt; /etc/fstab
+# grep home /etc/fstab | sed &#39;s!home!data!g&#39; &quot;$@&quot; &gt;&gt; /etc/fstab</code></pre>
+<p>Sofort im Anschluss steht das Subvolumen durch den kurzen Befehl
+<strong><code>mount /data</code></strong> zur Verf&uuml;gung und es wird wie
+alle anderen bei jedem Bootvorgang eingehangen.</p>
+<h3 id="btrfs-snapshot">Btrfs Snapshot</h3>
+<p>Ein Snapshot ist ein Subvolumen wie jedes andere, jedoch mit einem
+vorgegebenen Anfangsinhalt. Im Dateimanager betrachtet scheint es eine
+vollst&auml;ndige Kopie des urspr&uuml;nglichen Subvolumens zu enthalten. Btrfs
+ist ein Copy-on-Write-Dateisystem, sodass es nicht notwendig ist alle
+Daten tats&auml;chlich zu kopieren. Der Snapshot hat einfach einen Verweis
+auf die aktuelle Wurzel des Dateisystems seines urspr&uuml;nglichen
+Subvolumens. Erst wenn etwas ge&auml;ndert wird erstellt Btrfs eine Kopie der
+Daten. Datei&auml;nderungen in einem Snapshot haben keine Auswirkungen auf
+die Dateien im urspr&uuml;nglichen Subvolumen.</p>
+<p>Ein Snapshot ist nicht rekursiv. Ein Subvolumen oder ein Snapshot ist
+effektiv eine Barriere. Dateien in verschachtelten Subvolumen erscheinen
+nicht im Snapshot. Stattdessen gibt es ein Blind-Subvolumen, was bei
+verschachtelten Layouts f&uuml;r Verwirrung sorgen k&ouml;nnte. Das nicht
+rekursive Verhalten erkl&auml;rt, weshalb siduction w&auml;hrend der Installation
+zus&auml;tzliche Subvolumen angelegt hat. So gelangen keine privaten und
+variablen Daten aus den Subvolumen <code>@home</code>,
+<code>@root</code>, <code>@tmp</code> und <code>@var@log</code> in einen
+Snapshot von <code>@</code>.</p>
+<p>Man sollte beachten, dass Snapshots von Btrfs Dateisystemen in keinem
+Fall eine durchdachte Datensicherung ersetzen. Selbst bei RAID1 und
+RAID10 Systemen mit Btrfs steht die Ausfallsicherheit im Vordergrund und
+nicht die Datensicherung.</p>
+<p><strong>Snapshot erstellen</strong></p>
+<p class="warning">
+<strong>Achtung</strong> <br />Nur anwenden, wenn Sie Snapper
+<strong>nicht</strong> verwenden wollen.
+</p>
+<p>Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es
+sich an, ein entsprechendes Unterverzeichnis anzulegen. Wir nehmen f&uuml;r
+das Beispiel unser selbst erstelltes Subvolumen <code>@data</code>,
+legen das Verzeichnis an und gleich anschlie&szlig;end den ersten
+Snapshot.</p>
+<pre><code># mkdir /data/.snapshots
+# btrfs subvolume snapshot -r /data/ /date/.snapshots/01</code></pre>
+<p>Der Befehl erinnert von der Syntax her an einen einfachen
+Kopiervorgang, wobei <code>01</code> der Ordner ist, in dem sich die
+Dateien des Snapshot befinden.<br />
+Standardm&auml;&szlig;ig werden Snapshots mit Lese- und Schreibzugriff erstellt.
+Mit der Option <code>-r</code> sind sie schreibgesch&uuml;tzt. Wir raten
+dringend, die Option <code>-r</code> zu verwenden, denn ein Snapshot
+bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab.
+Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im
+Handbuch in den Kapiteln ab <a
+href="./sys-admin-btrfs-snapper_de.html#snapper-rollback">“Snapper
+Rollback”</a>.</p>
+<h2 id="snapper">Snapper</h2>
+<p>Snapper ist ein Werkzeug f&uuml;r die Verwaltung von Dateisystem-Snapshots
+unter Linux f&uuml;r Btrfs Dateisysteme und thin-provisioned LVM Volumen.
+Neben der Erstellung und L&ouml;schung von Snapshots kann es auch Snapshots
+vergleichen und Unterschiede zwischen Snapshots r&uuml;ckg&auml;ngig machen. Es
+erm&ouml;glicht Benutzern &auml;ltere Versionen von Dateien einzusehen und
+&Auml;nderungen r&uuml;ckg&auml;ngig zu machen. Au&szlig;erdem unterst&uuml;tzt Snapper
+automatische Snapshots nach Zeitpl&auml;nen oder zu Aktionen.</p>
+<p>Die Standardkonfiguration von Snapper in siduction umfasst
+automatische Pre- und Post-Snapshots des Subvolumen <code>@</code> bei
+&Auml;nderungen am System und die Vorbereitung von zeitgesteuerten Snapshots
+f&uuml;r beliebige andere Subvolumen.</p>
+<p>Die Snapper Dateien befinden sich in:</p>
+<ul>
+<li><code>/usr/bin/</code> Das ausf&uuml;hrbare Programm
+<code>snapper</code>.<br />
+</li>
+<li><code>/usr/lib/snapper/</code> Hilfsprogramme f&uuml;r Snapper.<br />
+</li>
+<li><code>/etc/default/snapper</code> Eine &Uuml;bersicht der konfigurierten
+Subvolumen.<br />
+</li>
+<li><code>/etc/snapper/configs/</code> Die Konfigurationsdateien der
+konfigurierten Subvolumen.<br />
+</li>
+<li><code>/usr/share/snapper/config-templates/</code> Die
+Konfigurationsvorlagen.<br />
+</li>
+<li><code>/var/log/snapper.log</code> Snappers Logdatei.</li>
+</ul>
+<p>Bitte die man pages <strong><code>man snapper</code></strong> und
+<strong><code>nam snapper-configs</code></strong> lesen.</p>
+<h3 id="snapper-konfiguration">Snapper Konfiguration</h3>
+<p>Snapper ben&ouml;tigt eine Konfigurationsdatei f&uuml;r jedes Subvolumen bevor
+es Snapshots darin erzeugen kann. Siduction erstellt bei der
+Installation automatisch die Konfigurationsdatei
+<code>/etc/snapper/configs/root</code> f&uuml;r das Subvolumen
+<code>@</code>. F&uuml;r die anderen Subvolumen m&uuml;ssen wir bei Bedarf selbst
+Konfigurationen nach dem folgenden Muster erstellen.</p>
+<pre><code># snapper -c &lt;config_name&gt; create-config -t &lt;config_vorlage&gt; &lt;subvolume_mount_point&gt;</code></pre>
+<p>Doch zuvor schauen wir uns die Standardkonfiguration an und pr&uuml;fen
+welche Einstellungen sinnvoll sind.<br />
+Die Konfiguration f&uuml;r das Subvolumen <code>@</code> mit dem Namen
+<code>root</code>, die Werte der Standardvorlage <code>default</code>
+und die Werte der Vorlage <code>user</code>, die wir sp&auml;ter erstellen
+werden:</p>
+<pre><code>Snapper Konfiguration
+-----------------------+-------+-------+-------+
+Subvolumen             |   @   |  --   |  --   |
+-----------------------+-------+-------+-------+
+conf-name or templ-name| root  |default| user  |
+=======================+=======+=======+=======+
+Schl&uuml;ssel              | Wert  | Wert  | Wert  |
+-----------------------+-------+-------+-------+
+ALLOW_GROUPS           | users |       | users |
+ALLOW_USERS            |       |       |       |
+BACKGROUND_COMPARISON  | yes   | yes   | yes   |
+EMPTY_PRE_POST_CLEANUP | yes   | yes   | yes   |
+EMPTY_PRE_POST_MIN_AGE | 1800  | 1800  | 1800  |
+FREE_LIMIT             | 0.2   | 0.2   | 0.2   |
+FSTYPE                 | btrfs | btrfs | btrfs |
+NUMBER_CLEANUP         | yes   | yes   | yes   |
+NUMBER_LIMIT           | 50    | 50    | 5     |
+NUMBER_LIMIT_IMPORTANT | 10    | 10    | 2     |
+NUMBER_MIN_AGE         | 1800  | 1800  | 1800  |
+QGROUP                 |       |       |       |
+SPACE_LIMIT            | 0.5   | 0.5   | 0.5   |
+SUBVOLUME              | /     | /     | /     |
+SYNC_ACL               | yes   | yes   | yes   |
+TIMELINE_CLEANUP       | yes   | yes   | yes   |
+TIMELINE_CREATE        | no    | yes   | yes   |
+TIMELINE_LIMIT_DAILY   | 10    | 10    | 2     |
+TIMELINE_LIMIT_HOURLY  | 10    | 10    | 10    |
+TIMELINE_LIMIT_MONTHLY | 10    | 10    | 0     |
+TIMELINE_LIMIT_WEEKLY  | 0     | 0     | 1     |
+TIMELINE_LIMIT_YEARLY  | 10    | 10    | 0     |
+TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  |</code></pre>
+<p>Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum
+Handling der automatischen Snapshots verbergen sich in den zugeh&ouml;rigen
+systemd Units. Das Kapitel <a
+href="./sys-admin-btrfs-snapper_de.html#snapper-und-systemd">“Snapper
+und systemd”</a> erkl&auml;rt die Funktionen und gibt Hinweise zu deren
+Anpassung.</p>
+<p>Bei jeder APT-Aktion werden die <strong>Apt Snapshot</strong>
+<em>“pre”</em> und <em>“post”</em> erstellt. Der Schl&uuml;ssel
+<code>NUMBER_LIMIT=50</code> bewirkt, dass die j&uuml;ngsten f&uuml;nfundzwanzig
+Snapshotpaare erhalten bleiben.</p>
+<p>Snapper erzeugt automatisch <strong>Timeline Snapshot</strong> wenn
+der Schl&uuml;ssel <code>TIMELINE_CREATE=yes</code> in den
+Konfigurationsdateien eingestellt ist. Die systemd Unit
+<code>snapper-timeline.timer</code> aktiviert die zugeh&ouml;rige Service
+Unit st&uuml;ndlich. Entsprechend der <em>default</em> Konfiguration beh&auml;lt
+Snapper jeweils mindestens zehn <code>HOURLY</code>, <code>DAILY</code>,
+<code>MONTHLY</code> und <code>YEARLY</code> Snapshots.</p>
+<p>Dadurch summieren sich die gehaltenen Snapshots erheblich. Die
+Tabelle <em>Gehaltene Snapshots 1</em> ber&uuml;cksichtigt die
+<em>default</em> Konfiguration f&uuml;r das <code>@home</code> Subvolumen und
+die <em>root</em> Konfiguration f&uuml;r <code>@</code> mit einem
+dist-upgrade t&auml;glich.</p>
+<p>Gehaltene Snapshots 1</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Subvolumen</th>
+<th style="text-align: center;">@</th>
+<th style="text-align: center;"><span class="citation"
+data-cites="home">@home</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">am 1. Tag</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 1 Tag</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">10 + max 24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nach 5 Tagen</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15 + max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 1 Woche</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">17 + max 24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nach 1 Monat</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">21 + max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 6 Monaten</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">26 + max 24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nach 1 Jahr</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">30 + max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 10 Jahren</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">40 + max 24</td>
+</tr>
+</tbody>
+</table>
+<p><em>“+ max 24”</em> beschreibt die Anzahl der erstellten <em>HOURLY
+Timeline Snapshot</em> bis zu dem Zeitpunkt an dem der
+<code>snapper-cleanup.timer</code> aktiv wird. Der allererste
+<em>Timeline Snapshot</em> vagabundiert sage und schreibe mindestens
+zehn Jahre und einen Tag in unseren Dateisystem. Wer m&ouml;chte sein
+produktiv eingesetztes System auf diesen Snapshot zur&uuml;cksetzen und die
+ganzen Daten so lange behalten?<br />
+Man beachte: Snapper und Snapshots sind kein Mittel zur Datensicherung.
+Sie erm&ouml;glichen das zeitnahe Zur&uuml;cksetzen des Systems bei auftretenden
+Fehlern oder durch uns angesto&szlig;ene Aktionen mit ungewollten
+Auswirkungen.</p>
+<p>Aus diesen Gr&uuml;nden generieren wir eine neue Konfigurationsvorlage aus
+der Datei <code>/usr/share/snapper/config-templates/default</code> mit
+den Werten der Spalte <em>“user”</em> aus der oben abgebildeten Tabelle
+<em>“Snapper Konfiguration”</em> und speichern sie unter dem Namen
+<code>user</code>. Anschlie&szlig;end erzeugen wir die Konfiguration f&uuml;r unser
+Subvolumen <code>@data</code>.</p>
+<pre><code># snapper -c data_pr create-config -t user /data</code></pre>
+<p>Dies:</p>
+<ol type="1">
+<li>Erstellt die Konfigurationsdatei
+<code>/etc/snapper/configs/data_pr</code> basierend auf der Vorlage
+<code>/usr/share/snapper/config-templates/user</code>.<br />
+</li>
+<li>Erstellt das Subvolumen <code>/data/.snapshots</code>, in dem
+zuk&uuml;nftige Snapshots von <code>@data</code> gespeichert werden. Der Pfad
+eines Snapshots lautet <code>/data/.snapshots/#/snapshot</code>, wobei #
+die Nummer des Snapshots ist.<br />
+</li>
+<li>F&uuml;gt den Namen der Konfiguration <code>data_pr</code> zum Schl&uuml;ssel
+<em>“SNAPPER_CONFIGS”</em> in der Datei<code>/etc/default/snapper</code>
+hinzu.</li>
+</ol>
+<p>Jetzt ist die Konfiguration aktiv. Wenn, wie in unserem Beispiel, der
+Schl&uuml;ssel <code>TIMELINE_CREATE=yes</code> gesetzt ist, &uuml;bernimmt
+systemd mit den Timern die regelm&auml;&szlig;ige Erstellung von <em>“timeline
+snapshots”</em>.<br />
+Wir vergleichen noch einmal die gehaltenen Snapshot.</p>
+<p>Gehaltene Snapshots 2</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Subvolumen</th>
+<th style="text-align: center;">@</th>
+<th style="text-align: center;"><span class="citation"
+data-cites="home">@home</span></th>
+<th style="text-align: center;"><span class="citation"
+data-cites="data">@data</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">am 1. Tag</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">max. 24</td>
+<td style="text-align: center;">max. 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 1 Tag</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">10 + max 24</td>
+<td style="text-align: center;">2 + max 24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nach 5 Tagen</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15 + max 24</td>
+<td style="text-align: center;">2 + max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 1 Woche</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">17 + max 24</td>
+<td style="text-align: center;">3 + max 24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nach 1 Monat</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">21 + max 24</td>
+<td style="text-align: center;">3 + max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 6 Monaten</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">26 + max 24</td>
+<td style="text-align: center;">3 + max 24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nach 1 Jahr</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">30 + max 24</td>
+<td style="text-align: center;">3 + max 24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nach 10 Jahren</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">40 + max 24</td>
+<td style="text-align: center;">3 + max 24</td>
+</tr>
+</tbody>
+</table>
+<p>Im Subvolumen <code>@data</code> bleiben nach einer Woche konstant
+ein Wochensnapschot, zwei Tagessnapshots des Vortages und bis zu
+vierundzwanzig Snapshots des aktuellen Tages erhalten. Wer die maximal
+vierundzwanzig Tagessnapshot als zu viel erachtet schaut sich bitte das
+folgende Kapitel <em>Snapper und systemd</em> an.</p>
+<p>Wir k&ouml;nnen einzelne <em>Schl&uuml;ssel=Wert</em> Paare auch auf der
+Kommandozeile &auml;ndern. Im Beispiel verringern wir in der Konfiguration
+<code>root</code> die Anzahl der gehaltenen, nummerierten Snapshot.</p>
+<pre><code># snapper -c root set-config NUMBER_LIMIT=20</code></pre>
+<p>Jetzt bleiben die j&uuml;ngsten zehn statt f&uuml;nfundzwanzig Pre- und
+Post-Snapshot Paare nach APT Aktionen erhalten. F&uuml;r den Standardgebrauch
+eines Laptop oder PCs d&uuml;rfte dieser Wert ausreichen.<br />
+An dieser Stelle sollte jeder siduction Nutzer abw&auml;gen wie viele
+Snapshot er wie lange halten m&ouml;chte und die Konfiguration entsprechend
+anpassen.</p>
+<h3 id="snapper-und-systemd">Snapper und systemd</h3>
+<p>Snapper installiert drei systemd Unit Paare um in Abh&auml;ngigkeit von
+APT Aktionen und Zeit Snapshots zu erstellen oder zu l&ouml;schen.</p>
+<ul>
+<li><p>Beim Erstellen von Snapshots mit den Schl&uuml;sseln<br />
+<code>DISABLE_APT_SNAPSHOT="no"</code> in der Datei
+<code>/etc/default/snapper</code><br />
+unter Mitwirkung der Systemd Unit<br />
+<code>grub-btrfs.path</code> und <code>grub-btrfs.service</code><br />
+und<br />
+<code>TIMELINE_CREATE="yes"</code> in den Konfigurationsdateien der
+Subvolumen<br />
+unter Mitwirkung der Systemd Unit<br />
+<code>snapper-timeline.timer</code> und
+<code>snapper-timeline.service</code>.</p></li>
+<li><p>Beim L&ouml;schen von Snapshots mit den Schl&uuml;sseln<br />
+<code>EMPTY_PRE_POST_CLEANUP=yes</code>,<br />
+<code>NUMBER_CLEANUP=yes</code>,<br />
+<code>TIMELINE_CLEANUP=yes</code> in den Konfigurationsdateien der
+Subvolumen<br />
+unter Mitwirkung der Systemd Unit<br />
+<code>snapper-cleanup.timer</code> und
+<code>snapper-cleanup.service</code>.</p></li>
+</ul>
+<p>Das Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot
+erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction
+ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus
+m&ouml;glich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende
+Pakete zu erhalten. Ein Rollback mit Snapper ist dann f&uuml;r den Benutzer
+eine gute Alternative um weiterhin zuverl&auml;ssig zu arbeiten.</p>
+<p>Dagegen bietet die <em>TIMTLINE</em> Funktion Raum f&uuml;r individuelle
+Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units
+<code>snapper-timeline.timer</code> und
+<code>snapper-cleanup.timer</code>. Erstere ist der Zeitgeber f&uuml;r die
+Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des
+Entfernen von alten und leeren Snapshots.</p>
+<p>Die Handbuchseite <a
+href="./systemd-timer_de.html#systemd-timer"><em>systemd-timer</em></a>
+erkl&auml;rt die Funktionsweise der Timer Unit.</p>
+<p>Jetzt wenden wir uns dem Inhalt der systemd Unit
+<code>snapper-timeline.timer</code> im Verzeichnis
+<code>/lib/systemd/system/</code> zu.</p>
+<pre><code>[Unit]
+Description=Timeline of Snapper Snapshots
+Documentation=man:snapper(8) man:snapper-configs(5)
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target</code></pre>
+<p>Mit dem Befehl
+<strong><code>systemctl edit --full snapper-timeline.timer</code></strong>
+&ouml;ffnen wir einen Texteditor und &auml;ndern die Datei wie folgt:</p>
+<pre><code>[Unit]
+Description=Timeline of Snapper Snapshots
+Documentation=man:snapper(8) man:snapper-configs(5)
+
+[Timer]
+#OnCalendar=hourly
+OnBootSec=30
+OnUnitActiveSec=2h
+
+[Install]
+WantedBy=timers.target</code></pre>
+<p>Mit dieser &Auml;nderung erhalten wir einen Snapshot drei&szlig;ig Sekunden nach
+dem Boot und danach alle zwei Stunden. Von nun an erstellt Snapper jeden
+Tag maximal zw&ouml;lf statt vierundzanzig Snapshots.<br />
+Wir speichern die Datei und schlie&szlig;en den Editor. systemd legt die
+ge&auml;nderte Datei mit gleichem Namen im Verzeichnis
+<code>/etc/systemd/system/</code> an und f&uuml;hrt den Befehl
+<strong><code>systemctl daemon-reload</code></strong> aus um die
+ge&auml;nderte Konfiguration zu laden.</p>
+<p>Die zweite systemd Timer Unit <code>snapper-cleanup.timer</code>
+k&uuml;mmert sich um die Entsorgung alter, &uuml;berz&auml;hliger und leerer Snapshots.
+Sie hat folgenden Inhalt:</p>
+<pre><code>[Unit]
+Description=Daily Cleanup of Snapper Snapshots
+Documentation=man:snapper(8) man:snapper-configs(5)
+
+[Timer]
+OnBootSec=10m
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target</code></pre>
+<p>Mit dem Wissen um den Inhalt des TIMELINE-Timers k&ouml;nnen wir nun
+abw&auml;gen ob die Konfiguration sinnvoll ist. F&uuml;r jemanden der seinen PC
+jeden Tag neu startet d&uuml;rfte der Schl&uuml;ssel <code>OnBootSec=10m</code>
+eher ung&uuml;nstig sein, wenn er feststellt, dass sich am Vortag kurz vor
+Feierabend ein gravierender Fehler eingeschlichen hat. Sinnvoller ist
+f&uuml;r diesen Fall vermutlich den Schl&uuml;ssel auf <code>OnBootSec=4h</code>
+einzustellen. Die &Auml;nderung der Datei erfolgt analog dem zuvor gezeigten
+Beispiel.</p>
+<h3 id="snapper---manuelle-snapshots">Snapper - manuelle Snapshots</h3>
+<p>Selbstverst&auml;ndlich k&ouml;nnen wir mit Snapper auch unabh&auml;ngig von den
+automatischen Aktionen Snapshots erstellen. Daf&uuml;r muss der ausf&uuml;hrende
+Benutzer in der Snapper-Konfiguration des Subvolumens mit Gruppen- oder
+Userrechten eingetragen sein.</p>
+<p>Die Syntax des Befehls entspricht dem folgendem Muster, das auch die
+h&auml;ufig zur Anwendung kommenden Optionen zeigt.</p>
+<pre><code># snapper -c &lt;config_name&gt; create -t &lt;type&gt; -d &lt;description&gt; -c &lt;cleanup-algorithm&gt; -u &lt;userdata&gt;</code></pre>
+<ul>
+<li>snapper <strong>-c &lt;config_name&gt;</strong> create<br />
+Der Snapper Befehl erstellt von dem Subvolumen der benannten
+Konfiguration einen Snapshot. Fehlt die Option, so wendet Snapper den
+Befehl auf das Subvolumen <code>@</code> mit der Konfiguration
+<code>root</code> an. Diese Regel gilt f&uuml;r alle Snapper Befehle.<br />
+</li>
+<li><strong>-t &lt;type&gt;</strong><br />
+Die Art des zu erstellenden Snapshot. M&ouml;gliche Werte:
+<code>single</code>, <code>pre</code>, <code>post</code>.<br />
+</li>
+<li><strong>-d &lt;description&gt;</strong><br />
+Beliebiger Text. Bei enthaltenen Leer- und Sonderzeichen <code>"</code>
+verwenden.<br />
+</li>
+<li><strong>-c &lt;cleanup-algorithm&gt;</strong><br />
+Die Option bestimmt nach welchen Regeln der Snapshot automatisch
+gel&ouml;scht werden soll. M&ouml;gliche Werte: <code>number</code>,
+<code>timeline</code>, <code>pre</code>, <code>post</code>. Fehlt diese
+Option, bleibt der Snapshot so lange erhalten bis der Benutzer ihn
+manuell l&ouml;scht.<br />
+</li>
+<li><strong>-u &lt;userdata&gt;</strong><br />
+Legt Benutzerdaten f&uuml;r den Snapshot fest. Das Format muss
+<em>Schl&uuml;ssel=Wert</em> sein. Mehrere Benutzerdaten m&uuml;ssen duch ein
+Komma getrennt sein. Zum Beispiel
+<code>author=Tom,important=yes</code>.</li>
+</ul>
+<p>Snapper legt die Snapshots grunds&auml;tzlich im <em>read-only</em> Modus
+an. Man kann die Voreinstellung mit der Option <code>--read-write</code>
+&auml;ndern. Eine &Auml;nderung von Daten in einem Snapshot f&uuml;hrt zu
+inkonsistenten Datenbest&auml;nden. Wir raten dringend davon ab, es sei denn
+man wei&szlig; genau was man tut.</p>
+<p>Nun legen wir einen Snapshot an und lassen uns die Snapshots der
+gleichen Konfiguration anzeigen.</p>
+<pre><code>$ snapper -c data_pr create -t single -d &quot;AB finished&quot; -c number -u user=Pit
+$ snapper -c data_pr list
+ #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
+--+------+-----+--------+-----+--------+-----------+--------
+ 0|single|     |        |root |        |current    |
+88|single|     |22:00:38|root |timeline|timeline   |
+90|single|     |11:34:41|root |timeline|timeline   |
+91|single|     |11:36:23|user1|number  |AB finished|user=Pit</code></pre>
+<p>Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns
+der Fehler unterlaufen das der Snapshot nach der Cleanup Regel
+<em>timeline</em> behandelt wird. Das &auml;ndern wir mit dem Befehl
+<strong><code>snapper -c data_pr modify -c "" 91</code></strong> damit
+Snapper ihn nicht automatisch l&ouml;scht.</p>
+<pre><code>$ snapper -c data_pr list
+ #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
+--+------+-----+--------+-----+--------+-----------+--------
+ 0|single|     |        |root |        |current    |
+88|single|     |22:00:38|root |timeline|timeline   |
+90|single|     |11:34:41|root |timeline|timeline   |
+91|single|     |11:36:23|user1|        |AB finished|user=Pit</code></pre>
+<p>Der Snapshot # 91 bleibt jetzt so lange erhalten bis wir ihn selbst
+l&ouml;schen.</p>
+<p><strong>Snapshot l&ouml;schen</strong></p>
+<p>Wir k&ouml;nnen zu jeder Zeit einen beliebigen Snapshot l&ouml;schen sofern wir
+die Rechte dazu haben. F&uuml;r Snapper ist die L&ouml;schaktion nicht von Belang,
+denn der Cleanup Algorithmus pr&uuml;ft bei jedem Durchlauf neu welche
+Snapshots gehalten werden. Das obere Kapitel <a
+href="./sys-admin-btrfs-snapper_de.html#snapper-konfiguration">Snapper
+Konfiguration</a> erkl&auml;rt dar&uuml;ber hinaus ausf&uuml;hrlich die Einstellungen
+mit denen wir den Cleanup Algorithmus bei Bedarf anpassen.</p>
+<p>Der folgende Befehl entfernt den Snapshot # 91 aus unserem Subvolumen
+<code>@data</code>.</p>
+<pre><code>$ snapper -c data_pr delete 91</code></pre>
+<p>Der Befehl <code>delete 34-50</code> l&ouml;scht eine Reihe von
+Snapshots.<br />
+Der Snapshot # 0 mit der Beschreibung <em>“current”</em> ist nicht
+l&ouml;schbar. Es ist der Snapshot der im Dateibaum eingehangen ist und in
+dem wir zur Zeit arbeiten.</p>
+<h3 id="snapper-rollback">Snapper Rollback</h3>
+<p>Sollte einmal durch eine von uns angesto&szlig;ene, v&ouml;llig aus dem Ruder
+gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System
+besch&auml;digt sein, erm&ouml;glicht Snapper mit dem <em>“Rollback”</em> das
+System in einen oder mehrere Zust&auml;nde zur&uuml;ck zu versetzen, der vor dem
+Auftreten der Probleme vorlag.</p>
+<p><strong>Voraussetzungen</strong><br />
+Ein <em>“Rollback”</em> wird nur mit Btrfs f&uuml;r das Root-Dateisystem
+unterst&uuml;tzt. Das Root-Dateisystem muss sich auf einem einzelnen Ger&auml;t,
+in einer einzelnen Partition und auf einem einzelnen Subvolume befinden.
+Verzeichnisse, die aus <code>/</code> Snapshots ausgeschlossen sind,
+beispielsweise <code>/tmp</code>, k&ouml;nnen sich auf separaten Partitionen
+befinden.</p>
+<p><strong>Rollback durchf&uuml;hren</strong><br />
+Wir booten das System, w&auml;hlen im Bootmen&uuml; <em>“siduction snapshots”</em>
+und anschlie&szlig;end den zu bootenden Snapshot (Zum Beispiel # 13). Der
+j&uuml;ngste Snapshot steht an oberster Stelle der Liste. Nach Auswahl des
+Kernels bootet das System im <code>read-only</code> Modus. Das erzeugt
+bevor der Anmeldebildschirm erscheint eine Fehlermeldung zu
+<em>sddm</em>, die wir ignorieren.<br />
+Wir pr&uuml;fen, ob das System so wie erwartet arbeitet. Wenn das der Fall
+ist f&uuml;hren wir den Rollback als <strong><code>root</code></strong>
+aus:</p>
+<pre><code># snapper --ambit classic rollback
+Anwendungsbereich ist classic
+Nur-Lesen-Schnappschuss des Standard-Subvolumens erstellen. (Schnappschuss 15.)
+Lesen-Schreiben-Schnappschuss des derzeit laufenden Subvolumens erstellen. (Schnappschuss 16.)
+Einstellung des Standard-Subvolumens zu Schnappschuss 16.</code></pre>
+<p>Die Ausgabe beschreibt pr&auml;zise den Ablauf des Rollback. Anschlie&szlig;end
+wird automatisch der Bootmanager Grub aktualisiert, damit die neuen
+Snapshots im Submen&uuml; erscheinen und der Snapshot # 16 als
+Standard-Subvolumen benutzt wird.</p>
+<p>Wir f&uuml;hren einen Reboot durch und w&auml;hlen den Grub Standardeintrag um
+im zur&uuml;ckgesetzten System zu arbeiten.</p>
+<h3 id="datei-rollback-im-root-dateisystem">Datei Rollback im
+Root-Dateisystem</h3>
+<p>Es handelt sich dabei um das R&uuml;ckg&auml;ngigmachen von &Auml;nderungen an
+Dateien. Zu diesem Zweck werden zwei Shnapshots miteinander verglichen
+und dann die gew&uuml;nschte ge&auml;nderte Datei herausgesucht. Anschlie&szlig;end
+l&auml;sst man sich die &Auml;nderungen anzeigen und entscheidet ob sie
+zur&uuml;ckgenommen werden sollen.</p>
+<p>Die Ausgabe von <strong><code>snapper list</code></strong> zeigt die
+aktuell vorhandenen Snapshots des Subvolumens <code>@</code>. (Die
+Spalten wurden gek&uuml;rzt). Alle Snapshots mit einer Ziffer # gr&ouml;&szlig;er Null
+bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die
+einzigste Ausnahme ist der mit einem <code>*</code> gekennzeichnete. In
+ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin
+befindet sich das aktuelle Root-Dateisystem.</p>
+<pre><code> # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
+---+------+-----+--------+-----+--------+-----------+----
+ 0 |single|     |        |root |        |current    |
+42 |single|     |09:50:36|root |        |IP pc1     |
+43 |pre   |     |11:30:18|root |number  |apt        |
+44 |post  |   43|11:34:41|root |number  |apt        |
+45*|single|     |22:00:38|root |        |           |
+46 |single|     |23:00:23|root |timeline|timeline   |</code></pre>
+<p>Der Vergleich zwischen zwei Snapshots erfolgt mit:</p>
+<pre><code># snapper status 42..45
+[...]
+c..... /etc/group
++..... /etc/group-
+c..... /etc/hosts
+[...]</code></pre>
+<p>Jede Zeile benennt eine Datei und die Art der &Auml;nderung. Ein
+<code>+</code> am Anfang der Zeile bedeutet, dass die Datei erstellt,
+ein <code>-</code>, dass die Datei gel&ouml;scht und ein <code>c</code>, dass
+der Inhalt der Datei ge&auml;ndert wurde.<br />
+Umfasst die Ausgabe sehr viele Zeilen, leiten wir sie mit der Option
+<code>-o &lt;/Pfad/Name&gt;</code> in eine Datei um.</p>
+<p>Die Anzeige der Unterschiede einer Datei zwischen zwei Snapshots
+erfolgt mit:</p>
+<pre><code># snapper diff 42..45 /etc/hosts
+--- /.snapshots/42/snapshot/etc/hosts
++++ /.snapshots/45/snapshot/etc/hosts
+@@ -5,5 +5,3 @@
+ ff02::2    ip6-allrouters
+ # This host address
+ 127.0.1.1  lap1
+-# added 2022-12-02
+-192.168.3.1 pc1</code></pre>
+<p>Wollen wir die &Auml;nderung r&uuml;ckg&auml;ngig machen, benutzen wir den
+Befehl:</p>
+<pre><code># snapper undochange 42..45 /etc/hosts</code></pre>
+<p>Ein <em>“Datei Rollback”</em> innerhalb des Root-Dateisystems ergibt
+nur dann Sinn, wenn ein Snapshot f&uuml;r ein <em>“System Rollback”</em>
+vorbereitet werden soll, oder der Snapshot beteiligt ist, in den das
+System gebootet wurde (erkennbar an der Markierung <code>*</code>).
+Eventuell ist danach der Neustart von Services oder Daemon, oder sogar
+ein Reboot notwendig.<br />
+Man darf dem Befehl auch mehrere Dateien getrennt durch Leerzeichen
+mitgeben.</p>
+<p><em>Vorsicht</em><br />
+Wird der Befehl <strong><code>snapper undochange 42..45</code></strong>
+ohne die Angabe einer Datei abgesetzt, macht Snapper alle &Auml;nderungen
+zwischen den Snapshots # 42 und # 45 r&uuml;ckg&auml;ngig. Die bessere Variante
+f&uuml;r ein solches Vorhaben ist ein <em>“System Rollback”</em>.</p>
+<h3 id="datei-rollback-von-user-daten">Datei Rollback von User
+Daten</h3>
+<p><strong>Mit Snapper allein</strong></p>
+<p>Snapper behandelt den Snapshot # 0 zwar wie einen Snapshot, aber er
+stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel.
+Alle anderen Snapshot bilden, wie bereits zuvor erw&auml;hnt, den Zustand des
+Dateisystems zu exakt diesem Zeitpunkt ab. &Auml;nderungen zwischen diesen
+Snapshots agieren demnach nur in der Vergangenheit.<br />
+F&uuml;r uns bedeutet das, dass ein <em>“Datei Rollback”</em> von User Daten
+zwischen den Snapshots # 15 und # 17 wertlos ist, da der Vorgang den
+aktuellen Zustand in unserem Subvolumen nicht betrifft. Wir ben&ouml;tigen
+also immer den Snapshot # 0 als Ziel f&uuml;r &Auml;nderungen.</p>
+<p>Wir schauen uns einen derartigen Vorgang anhand der Datei
+<code>Test.txt</code> im Subvolumen <code>@data</code> an.</p>
+<pre><code>$ snapper -c data_pr list
+  #|Typ   |Vor #|Datum   |Benutzer|Bereinigen|Beschr.
+---+------+-----+--------+--------+----------+--------
+ 0 |single|     |        |root    |          |current
+15 |single|     |12:50:48|root    |timeline  |timeline
+16 |single|     |13:51:08|root    |timeline  |timeline
+17 |single|     |14:51:26|root    |timeline  |timeline</code></pre>
+<p>Der Vergleich zwischen Schnapshot # 15 und # 16:</p>
+<pre><code>$ snapper -c data_pr status 15..16
+[...]
++..... /data/user1/Test.txt
+[...]</code></pre>
+<p>Die Datei erscheint erstmals im Snapshot # 16. Wir vergleichen mit
+dem n&auml;chsten Snapshot.</p>
+<pre><code>$ snapper -c data_pr status 16..17
+[...]
+c..... /data/user1/Test.txt
+[...]</code></pre>
+<p>Die Datei wurde zwischen den Snapshots # 16 und # 17 ver&auml;ndert.<br />
+Es folgt eine Abfrage mit <code>diff</code>, die die &Auml;nderungen zwischen
+# 16 und # 17 ausgibt.</p>
+<pre><code>$ snapper -c data_pr diff 16..17 /data/user1/Test.txt
+--- /data/.snapshots/16/snapshot/user1/Test.txt
++++ /data/.snapshots/17/snapshot/user1/Test.txt
+@@ -8,6 +8,8 @@
+ Testdatei
+
+ Dieser Text stand schon vor
+ dem Snapshot # 16 in der Datei.
+ 
+-Dieser auch, aber er wurde gel&ouml;scht.
++
++Dieser Text wurde nach dem
++Snapshot # 16 eingef&uuml;gt.</code></pre>
+<p>Da die Datei seit dem Snapshot # 17 nicht mehr ver&auml;ndert wurde,
+erzeugt der Befehl
+<strong><code>$ snapper -c data_pr diff 16..0 /data/user1/Test.txt</code></strong>
+f&uuml;r den Vergleich von Snapshot # 16 mit dem aktuellen Inhalt der Datei
+keine andere Ausgabe.</p>
+<p>Nun setzen wir den <code>undochange</code> Befehl zwischen # 16 und #
+0 ab. Danach enth&auml;lt die <em>Test.txt</em> die ersten sechs Zeilen aus
+dem Snapshot # 16.</p>
+<pre><code>$ snapper -c data_pr undochange 16..0 /data/user1/Test.txt
+angelegt:0 ge&auml;ndert:1 gel&ouml;scht:0
+
+$ cat /data/user1/Test.txt
+Testdatei
+
+Dieser Text stand schon vor
+dem Snapshot # 16 in der Datei.
+
+Dieser auch, aber er wurde gel&ouml;scht.</code></pre>
+<p>Eine gel&ouml;schte Datei wird mit dem gleichen Befehl zur&uuml;ck in das
+aktuelle Verzeichnis bef&ouml;rdert. Nur die R&uuml;ckmeldung von Snapper &auml;ndert
+sich geringf&uuml;gig.</p>
+<pre><code>$ snapper -c data_pr undochange 16..0 /data/user1/Test.txt
+angelegt:1 ge&auml;ndert:0 gel&ouml;scht:0</code></pre>
+<p>Vermutlich ist diese Anwendung des Snapper <em>“Datei Rollback”</em>
+eine der am h&auml;ufigsten verwendete.</p>
+<p><strong>Mit Snapper und Meld</strong></p>
+<p>Die vorangegangene Vorgehensweise stellt immer eine Datei als ganzes
+auf den Stand zur&uuml;ck, der dem ausgew&auml;hlten Snapshot entspricht. Einzelne
+Teile der &Auml;nderungen k&ouml;nnen wir so nicht &uuml;bernehmen.<br />
+Das Vergleichsprogramm <strong>Meld</strong> f&uuml;llt genau diese L&uuml;cke.
+<em>Meld</em> ist zus&auml;tzlich in der Lage per <em>Copy &amp; Paste</em>
+Teile an beliebiger Stelle im aktuellen Dokument einzuf&uuml;gen. Ein Vorteil
+auch gegen&uuml;ber <strong>Kompare</strong> des KDE Desktop. In siduction
+wird <em>Meld</em> nicht standardm&auml;&szlig;ig installiert. Wir holen das
+nach.</p>
+<p>Die Aktionen von Snapper sind f&uuml;r den nicht <strong>root</strong>
+Benutzer immer dann m&ouml;glich, wenn in der Konfigurationsdatei f&uuml;r das
+Subvolumen der Schl&uuml;ssel <code>ALLOW_GROUPS=users</code> eingestellt
+ist. Das ist Standard. Jedoch bleibt ihm der Zugriff auf die Dateien des
+Snapshots innerhalb des Dateisystems verwehrt, weil das Verzeichnis
+<code>/.snapshots</code> nur f&uuml;r <strong>root</strong> les- und
+ausf&uuml;hrbar ist. Um mit <em>Meld</em> arbeiten zu k&ouml;nnen &auml;nder wir
+das.</p>
+<p>Snapshots f&uuml;r Benutzer lesbar machen und <em>Meld</em> installieren.
+(Ausf&uuml;hren als <strong>root</strong>.)</p>
+<pre><code># chmod a+rx /data/.snapshots
+# apt update &amp;&amp; apt install meld</code></pre>
+<p>Zur Erinnerung: Snapshots in Btrfs sind immer im nur-lese-Modus
+gespeichert. Einzige Ausnahme ist der <code>System Rollback</code>
+Snapshot.</p>
+<p>Wir benutzen zur Auswahl der Datei&auml;nderungen Snapper in der gleichen
+Art wie zuvor. Der Befehl
+<strong><code>$ snapper -c data_pr diff 16..0 /data/user1/Test.txt</code></strong>
+enth&auml;lt den genauen Pfad zur Datei <code>Test.txt</code> in dem
+Snapshot.</p>
+<pre><code>$ snapper -c data_pr diff 16..0 /data/user1/Test.txt
+--- /data/.snapshots/16/snapshot/user1/Test.txt
++++ /data/user1/Test.txt
+[...]</code></pre>
+<p>Wir starten <em>Meld</em> und w&auml;hlen f&uuml;r den Dateivergleich die
+beiden Dateien mit den Pfaden aus. Die Unterschiede sind sofort
+sichtbar.</p>
+<figure>
+<img src="./images-de/btrfs/meld-de.png"
+title="Dateien vergleichen mit Meld." alt="Meld Dateivergleich" />
+<figcaption aria-hidden="true">Meld Dateivergleich</figcaption>
+</figure>
+<p>Ein Klick auf den Pfeil &uuml;bertr&auml;gt die Zeile in unsere aktuelle Datei.
+Ein weiterer Klick auf das Kreuz entfernt die anderen Zeilen. Eine
+&Uuml;bertragung auf die Datei im Snapshot ist nicht m&ouml;glich, da das
+Dateisystem des Snapshot schreibgesch&uuml;tzt ist.</p>
+<p>Da uns Snapper den genauen Pfad zu unserer Datei im Snapshot anzeigt,
+haben wir auch die ganz konventionelle M&ouml;glichkeit eine Datei aus dem
+Snapshot in unser aktuelles Arbeitsverzeichnis zu kopieren.</p>
+<pre><code>$ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt</code></pre>
+<h3 id="quellen-btrfs-und-snapper">Quellen BTRFS und Snapper</h3>
+<ul>
+<li><strong><code>man btrfs</code></strong> und
+<strong><code>man btrfs-subvolume</code></strong> sowie weitere
+Unterseiten von <em>“man btrfs”</em>.<br />
+</li>
+<li><a target="_blank" href="https://wiki.debianforum.de/Btrfs">Btrfs im
+wiki.debianforum.de</a><br />
+</li>
+<li><a target="_blank" href="https://btrfs.wiki.kernel.org/index.php/Main_Page">Btrfs
+wiki von kernel.org</a><br />
+</li>
+<li><a target="_blank" href="https://btrfs.readthedocs.io/en/latest/index.html">Btrfs
+Dokumentation</a><br />
+</li>
+<li><a target="_blank" href="https://github.com/Antynea/grub-btrfs">Btrfs Snapshot im
+grub Men&uuml;</a><br />
+</li>
+<li><strong><code>man snapper</code></strong> und
+<strong><code>man snapper-cofigs</code></strong><br />
+</li>
+<li><a target="_blank" href="http://snapper.io/">Snapper Projektseite</a><br />
+</li>
+<li><a target="_blank" href="https://github.com/openSUSE/snapper">Snapper auf
+GitHub</a></li>
+</ul>
+<div id="rev">
+Zuletzt bearbeitet: 2022-12-20
+</div>
+</body>
+</html>
