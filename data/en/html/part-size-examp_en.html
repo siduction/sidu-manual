@@ -39,6 +39,8 @@ installation media</a>
 <li><a href="#minimum-requirements">Minimum requirements</a></li>
 <li><a href="#examples-with-different-disk-sizes">Examples with
 different disk sizes</a></li>
+<li><a href="#file-systems-of-the-partitions">File systems of the
+partitions</a></li>
 <li><a href="#partition-editors">Partition editors</a></li>
 <li><a href="#further-information">Further information</a></li>
 </ul></li>
@@ -46,29 +48,30 @@ different disk sizes</a></li>
 </nav>
 <h2 id="partitioning-of-installation-media">Partitioning of installation
 media</h2>
-<p>For Linux beginners, we recommend to create only two partitions
-(root/home and swap) because this makes a first installation much
-easier. After the installation, additional data partitions or, if
-desired, a separate /home can be created.</p>
-<p>However, we do not recommend to create a /home partition.<br />
-The directory <code>/home</code> should be the place where individual
-configurations are stored, and only them. A separate data partition
-should be created for all other private data. The advantages for data
-stability, data backup, and also in case of data recovery are
-immeasurable.</p>
-<p>A swap partition has a similar function as the Windows swap file, but
-the former is far more effective. As a rule of thumb, the swap partition
-should be twice as large as the RAM used. This applies mainly to
-notebooks that are to be hibernated via <code>hibernate</code> or
-desktop computers with very little RAM (1 GByte or less). Devices with
-sufficient RAM no longer need a swap partition.</p>
-<p>For data exchange with a Windows installation, the designated
-partition should be formatted with <strong>NTFS</strong>. siduction can
-read from and write to such a partition with the automatically installed
-<code>ntfs-3g</code>.</p>
-<p>There are many good ways to partition your disks. These examples
-should give a first insight into the possibilities.</p>
-<p>Purchasing an external USB hard drive for regular data backup is also
+<p>The partitioning of the drives depends on many factors:</p>
+<ul>
+<li>Selection of the siduction variant<br />
+</li>
+<li>Size of the available drives and RAM<br />
+</li>
+<li>Single-boot or dual-boot with an already installed system (Windows,
+Linux, MAC)<br />
+</li>
+<li>Sharing of data for the installed systems</li>
+</ul>
+<p>For Linux beginners, we recommend that you create only two
+partitions<br />
+<code>/root</code> (incl. <code>/home</code> ) and <code>swap</code>, as
+this makes a first installation much easier. After the installation,
+additional data partitions can be created, or a separate
+<code>/home</code> if desired.<br />
+However, we rather advise against creating a <code>/home</code>
+partition. The <code>/home</code> directory should be the place where
+the individual configurations are stored, and only these. For all other
+private data, a separate data partition should be created. The
+advantages for data stability, data backup and also in case of data
+recovery are almost immeasurable.<br />
+Purchasing an external USB hard drive for regular data backup is also
 worth considering.</p>
 <h3 id="minimum-requirements">Minimum requirements</h3>
 <p>The minimum requirements for the reasonable use of a siduction
@@ -111,6 +114,8 @@ installation are:</p>
 </tr>
 </tbody>
 </table>
+<p>Otherwise, we recommend at least 50 GB of disk space when installing
+on a partition formatted with Btrfs.</p>
 <h3 id="examples-with-different-disk-sizes">Examples with different disk
 sizes</h3>
 <p>If a dual boot with MS Windows™ is created, MS Windows must always be
@@ -123,8 +128,8 @@ href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
 gdisk</a>.</p>
 <p>The examples refer to partition tables of the type <em>“GPT”</em>. It
 needs the first two, very small partitions in order to function.</p>
-<p><strong>Dual-boot with MS Windows and Linux</strong></p>
-<p><strong>1 TB hard disk:</strong></p>
+<p><strong>Desktop, dual-boot (MS Windows and Linux)</strong><br />
+<strong>1 TB hard disk:</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -155,37 +160,32 @@ needs the first two, very small partitions in order to function.</p>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">300 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">data for MS Windows</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">200 GB</td>
+<td style="text-align: right;">500 GB</td>
 <td style="text-align: center;">NTFS</td>
 <td style="text-align: center;">data for MS Windows and Linux</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
+<tr class="odd">
+<td style="text-align: center;">5</td>
 <td style="text-align: right;">30 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">/ (Linux root)</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
+<tr class="even">
+<td style="text-align: center;">6</td>
 <td style="text-align: right;">416 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">data for Linux</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
+<tr class="odd">
+<td style="text-align: center;">7</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux swap</td>
 <td style="text-align: center;">Linux swap</td>
 </tr>
 </tbody>
 </table>
-<p><strong>120 GB hard disk:</strong></p>
+<p><strong>Desktop, dual-boot (MS Windows and Linux)</strong><br />
+<strong>120 GB hard disk:</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -234,57 +234,8 @@ needs the first two, very small partitions in order to function.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>80 GB hard disk</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Size</th>
-<th style="text-align: center;">File system</th>
-<th style="text-align: center;">Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">100 KB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI system</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: right;">1 MB</td>
-<td style="text-align: center;">without</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">40 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">MS Windows system</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: right;">10 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">data for MS Windows and Linux</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">28 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">/ (Linux root)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: right;">2 GB</td>
-<td style="text-align: center;">Linux Swap</td>
-<td style="text-align: center;">Linux swap</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Linux alone</strong></p>
-<p><strong>500 GB hard disk:</strong></p>
+<p><strong>Desktop, Linux only</strong><br />
+<strong>500 GB hard disk:</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -315,25 +266,20 @@ needs the first two, very small partitions in order to function.</p>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">250 GB</td>
+<td style="text-align: right;">466 GB</td>
 <td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Data_1</td>
+<td style="text-align: center;">data</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: right;">216 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Data_2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux swap</td>
 </tr>
 </tbody>
 </table>
-<p><strong>160 GB hard disk</strong></p>
+<p><strong>Desktop, Linux only</strong><br />
+<strong>500 GB hard disk with Btrfs snapshot:</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -357,18 +303,12 @@ needs the first two, very small partitions in order to function.</p>
 <td style="text-align: center;">BIOS-boot</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">26 GB</td>
-<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">496 GB</td>
+<td style="text-align: center;">btrfs</td>
 <td style="text-align: center;">/</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">130 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">data</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">4</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
@@ -376,7 +316,109 @@ needs the first two, very small partitions in order to function.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>60 GB hard disk</strong></p>
+<p><strong>Desktop, Linux only</strong><br />
+<strong>160 GB hard disk</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">26 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">130 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Laptop with 32 GB RAM, dual boot (MS Windows and
+Linux)</strong><br />
+<strong>1 TB hard disk:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: center;">File system</th>
+<th style="text-align: center;">Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 KB</td>
+<td style="text-align: center;">FAT16</td>
+<td style="text-align: center;">EFI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">1 MB</td>
+<td style="text-align: center;">without</td>
+<td style="text-align: center;">BIOS-boot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">80 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">MS Windows system</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">500 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">data for MS Windows and Linux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux root)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">350 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">data for Linux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: right;">40 GB</td>
+<td style="text-align: center;">Linux swap</td>
+<td style="text-align: center;">Linux swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Laptop with 8 GB RAM, Linux only</strong><br />
+<strong>120 GB hard disk</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -407,19 +449,66 @@ needs the first two, very small partitions in order to function.</p>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">33 GB</td>
+<td style="text-align: right;">85 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">data</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: right;">2 GB</td>
+<td style="text-align: right;">10 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux swap</td>
 </tr>
 </tbody>
 </table>
+<h3 id="file-systems-of-the-partitions">File systems of the
+partitions</h3>
+<p>The type <em>“GPT”</em> should be selected as the partition table. In
+this way the advantages over <em>“MBR”</em> can be used. Only with old
+hardware <em>“MBR”</em> is still meaningful. The explanations for this
+can be found on our manual page <a
+href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
+gdisk</a>.</p>
+<p><strong>Linux Swap</strong><br />
+A <code>swap</code> partition corresponds in functionality to the swap
+file in Windows, but is far more effective than it. Its size depends on
+the installed system and the user’s requirements. Some examples:</p>
+<ul>
+<li>For notebooks that are to be hibernated, we recommend a swap
+partition that is at least one GByte or 25% larger than the RAM.<br />
+</li>
+<li>Current desktop PCs that are <em>not</em> to be hibernated and have
+enough RAM (16 GByte or more, depending on usage) do not need a swap
+partition.<br />
+</li>
+<li>For desktop PCs with very limited RAM, the rule of thumb is still
+that the swap partition should be twice the size of the RAM used.</li>
+</ul>
+<p><strong>ext4</strong><br />
+The <em>ext4</em> file system is the default file system on siduction.
+This applies to all partitions when only Linux operating systems are
+used.</p>
+<p><strong>Btrfs</strong><br />
+<em>Btrfs</em> can be used instead of <em>ext4</em>. Together with the
+program <em>Snapper</em> it offers the possibility to create snapshots
+of the file system which are selectable in the boot manager Grub
+afterwards. You need a sufficiently large hard disk. See also <a
+href="./sys-admin-btrfs-snapper_en.html#btrfs">System administration
+Btrfs</a>.</p>
+<p><strong>NTFS</strong><br />
+For data exchange with a Windows installation the designated partition
+should be formatted with <em>NTFS</em>. Siduction can access the data
+read and write. For Windows it is the standard file system.</p>
+<p><strong>HFS+</strong><br />
+For a dual-boot installation with Macintosh, a separate data partition
+with the <strong>HFS</strong> or <strong>HFS+</strong> file system is
+useful. Linux and MAC can access it read and write.</p>
 <h3 id="partition-editors">Partition editors</h3>
+<p class="warning">
+<strong>Caution</strong> <br />When using any partitioning software,
+there is a risk of data loss. Always back up important data to another
+disk in advance.
+</p>
 <ul>
 <li><p><strong>GParted</strong>: an easy to use partition editor with a
 graphical interface<br />
@@ -448,11 +537,6 @@ has a more user-friendly ncurses interface. The manual page <a
 href="./part-cfdisk_en.html#partitioning-with-fdisk">Partitioning with
 cfdisk</a> provides more information about the program.</p></li>
 </ul>
-<p class="warning">
-<strong>Caution</strong> <br />When using any partitioning software,
-there is a risk of data loss. Always back up important data to another
-disk in advance.
-</p>
 <p><strong>Mounted partitions</strong> (also swap) must be detached
 before editing.<br />
 You can do this by entering to following command as
@@ -473,7 +557,7 @@ href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
 gdisk</a></p></li>
 </ul>
 <div id="rev">
-Last edited: 2022/03/31
+Last edited: 2022-12-21
 </div>
 </body>
 </html>

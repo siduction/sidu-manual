@@ -90,9 +90,11 @@ described on the manual page <a
 href="./cd-content_en.html#minimum-system-requirements">Live ISO
 content</a>.<br />
 With 15 GB hard disk space and 2 GB RAM you are currently on the safe
-side. A swap partition should be created on PCs with 1 GByte RAM or
-less. More than 2 GByte swap is rarely required and only useful for
-suspend to disk and server systems.</p>
+side. When installing on a partition formatted with Btrfs, we advise 50
+GBytes of disk space.<br />
+A swap partition should be created on PCs with 1 GByte RAM or less. More
+than 2 GByte swap is rarely required and only useful for suspend to disk
+and server systems.</p>
 <h3 id="partitioning">Partitioning</h3>
 <p>The partitioning of the drives depends on many factors:</p>
 <ul>
@@ -230,7 +232,7 @@ alt="calamares users" />
 “<em>Log in automatically without password prompt</em>” and<br />
 “<em>Use the same password for the administrator account</em>”.<br />
 They both represent a security risk on their own (see also <a
-href="./term-console_en.html#work-as-root">sudo</a>). If both options
+href="./term-konsole_en.html#work-as-root">sudo</a>). If both options
 are enabled, entering passwords is just a farce!</p></li>
 <li><p>After pressing the <em>“Next”</em> button, a summary of all
 previously made entries appears. Now you still have the possibility to
@@ -315,7 +317,7 @@ added yourself.</p>
 <pre><code>man adduser
 man deluser</code></pre>
 <div id="rev">
-Last edited: 2022/03/30
+Last edited: 2022-12-14
 </div>
 </body>
 </html>
