@@ -182,8 +182,7 @@ geben den Inhalt von <code>/mnt</code> erneut aus.</p>
  .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log</code></pre>
 <p>Nach einem Reboot in unser siduction enth&auml;lt das Wurzelverzeichnis
 den neuen Ordner <code>/data</code>. Damit die normalen Benutzer das
-Verzeichnis verwenden k&ouml;nnsnapper-konfigurationen, &auml;nder wir die
-Gruppe:</p>
+Verzeichnis verwenden k&ouml;nnen, &auml;nder wir die Gruppe:</p>
 <pre><code># chgrp users /data</code></pre>
 <p>Subvolumen lassen sich auch verschachteln und somit innerhalb
 bestehender Subvolumen erstellen. Wir raten zur besseren &Uuml;bersicht eher
@@ -675,10 +674,11 @@ $ snapper -c data_pr list
 91|single|     |11:36:23|user1|number  |AB finished|user=Pit</code></pre>
 <p>Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns
 der Fehler unterlaufen das der Snapshot nach der Cleanup Regel
-<em>timeline</em> behandelt wird. Das &auml;ndern wir mit dem Befehl
-<strong><code>snapper -c data_pr modify -c "" 91</code></strong> damit
-Snapper ihn nicht automatisch l&ouml;scht.</p>
-<pre><code>$ snapper -c data_pr list
+<em>number</em> behandelt wird. Das &auml;ndern wir mit der Option
+<em><code>modify -c ""</code></em> damit Snapper ihn nicht automatisch
+l&ouml;scht.</p>
+<pre><code>$ snapper -c data_pr modify -c &quot;&quot; 91
+$ snapper -c data_pr list
  #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
 --+------+-----+--------+-----+--------+-----------+--------
  0|single|     |        |root |        |current    |
@@ -748,7 +748,7 @@ zur&uuml;ckgenommen werden sollen.</p>
 aktuell vorhandenen Snapshots des Subvolumens <code>@</code>. (Die
 Spalten wurden gek&uuml;rzt). Alle Snapshots mit einer Ziffer # gr&ouml;&szlig;er Null
 bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die
-einzigste Ausnahme ist der mit einem <code>*</code> gekennzeichnete. In
+einzigste Ausnahme ist der mit einem <code>+</code> gekennzeichnete. In
 ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin
 befindet sich das aktuelle Root-Dateisystem.</p>
 <pre><code> # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -757,7 +757,7 @@ befindet sich das aktuelle Root-Dateisystem.</p>
 42 |single|     |09:50:36|root |        |IP pc1     |
 43 |pre   |     |11:30:18|root |number  |apt        |
 44 |post  |   43|11:34:41|root |number  |apt        |
-45*|single|     |22:00:38|root |        |           |
+45+|single|     |22:00:38|root |        |           |
 46 |single|     |23:00:23|root |timeline|timeline   |</code></pre>
 <p>Der Vergleich zwischen zwei Snapshots erfolgt mit:</p>
 <pre><code># snapper status 42..45
@@ -789,7 +789,7 @@ Befehl:</p>
 <p>Ein <em>“Datei Rollback”</em> innerhalb des Root-Dateisystems ergibt
 nur dann Sinn, wenn ein Snapshot f&uuml;r ein <em>“System Rollback”</em>
 vorbereitet werden soll, oder der Snapshot beteiligt ist, in den das
-System gebootet wurde (erkennbar an der Markierung <code>*</code>).
+System gebootet wurde (erkennbar an der Markierung <code>+</code>).
 Eventuell ist danach der Neustart von Services oder Daemon, oder sogar
 ein Reboot notwendig.<br />
 Man darf dem Befehl auch mehrere Dateien getrennt durch Leerzeichen
@@ -949,7 +949,7 @@ grub Men&uuml;</a><br />
 GitHub</a></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2022-12-20
+Zuletzt bearbeitet: 2022-12-23
 </div>
 </body>
 </html>
