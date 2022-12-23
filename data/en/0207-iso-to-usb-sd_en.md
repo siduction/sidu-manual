@@ -72,7 +72,7 @@ We use as root the command `cgdisk /dev/sdb` to create a new GUID partition tabl
    type hex code: 8300 (Linux)  
    Name: data
 
-We write the partition table to the medium and exit `cfdisk`, but still stay in the root console, because the second partition still needs a file system and a meaningful label to make it easier to find in the file manager during the life session after mounting. The commands are:
+We write the partition table to the medium and exit `cgdisk`, but still stay in the root console, because the second partition still needs a file system and a meaningful label to make it easier to find in the file manager during the life session after mounting. The commands are:
 
 ~~~
 mkfs.ext4 -L LifeData /dev/sdb2
