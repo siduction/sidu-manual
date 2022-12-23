@@ -51,7 +51,7 @@ Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den I
  .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log
 ~~~
 
-Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden könnsnapper-konfigurationen, änder wir die Gruppe:
+Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden können, änder wir die Gruppe:
 
 ~~~
 # chgrp users /data
@@ -344,9 +344,10 @@ $ snapper -c data_pr list
 91|single|     |11:36:23|user1|number  |AB finished|user=Pit
 ~~~
 
-Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns der Fehler unterlaufen das der Snapshot nach der Cleanup Regel *timeline* behandelt wird. Das ändern wir mit dem Befehl **`snapper -c data_pr modify -c "" 91`** damit Snapper ihn nicht automatisch löscht. 
+Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns der Fehler unterlaufen das der Snapshot nach der Cleanup Regel *number* behandelt wird. Das ändern wir mit der Option *`modify -c ""`* damit Snapper ihn nicht automatisch löscht. 
 
 ~~~
+$ snapper -c data_pr modify -c "" 91
 $ snapper -c data_pr list
  #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
 --+------+-----+--------+-----+--------+-----------+--------
@@ -398,7 +399,7 @@ Wir führen einen Reboot durch und wählen den Grub Standardeintrag um im zurüc
 
 Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Shnapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.
 
-Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens `@`. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `*` gekennzeichnete. In ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin befindet sich das aktuelle Root-Dateisystem.
+Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens `@`. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `+` gekennzeichnete. In ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin befindet sich das aktuelle Root-Dateisystem.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -407,7 +408,7 @@ Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des S
 42 |single|     |09:50:36|root |        |IP pc1     |
 43 |pre   |     |11:30:18|root |number  |apt        |
 44 |post  |   43|11:34:41|root |number  |apt        |
-45*|single|     |22:00:38|root |        |           |
+45+|single|     |22:00:38|root |        |           |
 46 |single|     |23:00:23|root |timeline|timeline   |
 ~~~
 
@@ -445,7 +446,7 @@ Wollen wir die Änderung rückgängig machen, benutzen wir den Befehl:
 # snapper undochange 42..45 /etc/hosts
 ~~~
 
-Ein *"Datei Rollback"* innerhalb des Root-Dateisystems ergibt nur dann Sinn, wenn ein Snapshot für ein *"System Rollback"* vorbereitet werden soll, oder der Snapshot beteiligt ist, in den das System gebootet wurde (erkennbar an der Markierung `*`). Eventuell ist danach der Neustart von Services oder Daemon, oder sogar ein Reboot notwendig.  
+Ein *"Datei Rollback"* innerhalb des Root-Dateisystems ergibt nur dann Sinn, wenn ein Snapshot für ein *"System Rollback"* vorbereitet werden soll, oder der Snapshot beteiligt ist, in den das System gebootet wurde (erkennbar an der Markierung `+`). Eventuell ist danach der Neustart von Services oder Daemon, oder sogar ein Reboot notwendig.  
 Man darf dem Befehl auch mehrere Dateien getrennt durch Leerzeichen mitgeben.
 
 *Vorsicht*  
@@ -581,4 +582,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2022-12-20</div>
+<div id="rev">Zuletzt bearbeitet: 2022-12-23</div>

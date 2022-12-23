@@ -1,16 +1,5 @@
 % Btrfs and Snapper
 
-BEGINNING INFO AREA FOR THE AUTHORS  
-This section is to be removed before publishing !  
-
-**Status: RC1**
-
-+ New in the manual. Translated with DeepL.
-+ To do:
-    + Spell check
-
-END INFO AREA FOR THE AUTHORS
-
 ## Btrfs
 
 Btrfs is a modern copy-on-write (COW) file system for Linux.  
@@ -42,7 +31,7 @@ When you first install to a single partition, the following subvolumes are creat
 
 For Btrfs, they are equally located at the highest level (*'top level 5'* ). We mount them all separately at the desired place in the file tree. It is also called *"flat layout "* where the file system root itself is not mounted. Once the subvolumes are created, there is no need to mount the "root" device if only the contents of the subvolumes are of interest. During operation, we are already in the subvolume `@`.
 
-**Create subvolume**.
+**Create subvolume**
 
 To create a new *top level 5* subvolume `@data`, we boot into a live system and mount the siduction Btrfs partition under `/mnt`.
 
@@ -70,7 +59,7 @@ After a reboot into our siduction the root directory contains the new folder `/d
 
 Subvolumes can also be nested and thus created within existing subvolumes. For a better overview, we rather recommend the flat scheme.
 
-**Mount subvolume
+**Mount subvolume**
 
 With the command  
 **`mount -t btrfs -o subvol=/@data,defaults /data/`**  
@@ -79,7 +68,7 @@ This simple variant is not suitable for permanent use. It also suppresses the ad
 
 ~~~
 # grep home /etc/fstab
-UUID=<hier>  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0
+UUID=<here>  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0
 ~~~
 
 The option *"space_cache=v2"* caches the addresses of the free blocks of the drive to speed up the write operations.  
@@ -355,9 +344,10 @@ $ snapper -c data_pr list
 91|single|     |11:36:23|user1|number  |AB finished|user=Pit
 ~~~
 
-The snapshot we (user1) created has the # 91. Unfortunately we made the mistake that the snapshot is handled according to the cleanup rule *timeline*. We change this with the command **`snapper -c data_pr modify -c "" 91`** so that Snapper does not delete it automatically. 
+The snapshot we (user1) created has the # 91. Unfortunately we made the mistake that the snapshot is handled according to the cleanup rule *number*. We change this with the optin *`modify -c ""`* so that Snapper does not delete it automatically. 
 
 ~~~
+$ snapper -c data_pr modify -c "" 91
 $ snapper -c data_pr list
  #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
 --+------+-----+--------+-----+--------+-----------+--------
@@ -405,11 +395,11 @@ The output precisely describes the rollback procedure. Afterwards the boot manag
 
 We perform a reboot and select the Grub default entry to work in the reset system.
 
-### File rollback in the root file system.
+### File rollback within the root file system.
 
 This is the undoing of changes to files. For this purpose, two shnapshots are compared and then the desired changed file is picked out. Afterwards you can see the changes and decide if you want to undo them.
 
-The output of **`snapper list`** shows the currently existing snapshots of the subvolume `@`. (The columns have been shortened). All snapshots with a digit # greater than zero represent the state of the file system at that exact time. The only exception is the one marked with a `*`. It was booted into and is identical to snapshot # 0. It contains the current root file system.
+The output of **`snapper list`** shows the currently existing snapshots of the subvolume `@`. (The columns have been shortened). All snapshots with a digit # greater than zero represent the state of the file system at that exact time. The only exception is the one marked with a `+`. It was booted into and is identical to snapshot # 0. It contains the current root file system.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -418,7 +408,7 @@ The output of **`snapper list`** shows the currently existing snapshots of the s
 42 |single|     |09:50:36|root |        |IP pc1     |
 43 |pre   |     |11:30:18|root |number  |apt        |
 44 |post  |   43|11:34:41|root |number  |apt        |
-45*|single|     |22:00:38|root |        |           |
+45+|single|     |22:00:38|root |        |           |
 46 |single|     |23:00:23|root |timeline|timeline   |
 ~~~
 
@@ -456,7 +446,7 @@ If we want to undo the change, we use the command:
 # snapper undochange 42..45 /etc/hosts
 ~~~
 
-A *"File rollback "* within the root file system only makes sense if a snapshot is to be prepared for a *"System rollback "*, or the snapshot into which the system was booted is involved (recognizable by the `*` mark). It may be necessary to restart services or daemon, or even reboot.  
+A *"File rollback "* within the root file system only makes sense if a snapshot is to be prepared for a *"System rollback "*, or the snapshot into which the system was booted is involved (recognizable by the `+` mark). It may be necessary to restart services or daemon, or even reboot.  
 It is also possible to include several files separated by spaces in the command.
 
 *Caution*  
@@ -591,4 +581,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper project page](http://snapper.io/)  
 + [Snapper on GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Last edited: 2022-12-21</div>
+<div id="rev">Last edited: 2022-12-23</div>
