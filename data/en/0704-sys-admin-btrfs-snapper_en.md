@@ -191,7 +191,7 @@ Snapshots held 1
 | after 10 years | 50 | 40 + max. 24 |
 
 *"+ max 24"* describes the number of *HOURLY Timeline Snapshot* created until the time when the `snapper-cleanup.timer` becomes active. The very first *Timeline Snapshot* vagabonds for at least ten years and one day in our file system. Who would want to reset their production system to this snapshot and keep all the data for so long?  
-Note: Snappers and snapshots are not a means of backing up data. They enable the prompt resetting of the system in case of occurring errors or actions triggered by us with unintended effects.
+Note: Snapper and snapshots are not a means of backing up data. They enable the prompt resetting of the system in case of occurring errors or actions triggered by us with unintended effects.
 
 For these reasons we generate a new configuration template from the file `/usr/share/snapper/config-templates/default` with the values of the column *"user "* from the table *"Snapper Configuration "* shown above and save it under the name `user`. Then we create the configuration for our subvolume `@data`.
 
@@ -374,7 +374,7 @@ The snapshot # 0 with the description *"current "* is not deletable. It is the s
 
 ### Snapper rollback
 
-If the system is damaged due to an action initiated by us that went completely out of control, or due to a faulty upgrade, Snapper allows you to use the *"rollback "* to rturn the system to one or more states that existed before the problems occurred.
+If the system is damaged due to an action initiated by us that went completely out of control, or due to a faulty upgrade, Snapper allows you to use the *"rollback "* to return the system to one or more states that existed before the problems occurred.
 
 **Prerequisites**  
 A *"rollback "* is only supported with Btrfs for the root file system. The root file system must be on a single device, in a single partition, and on a single subvolume. Directories that are excluded from `/` snapshots, for example `/tmp`, can be on separate partitions.
