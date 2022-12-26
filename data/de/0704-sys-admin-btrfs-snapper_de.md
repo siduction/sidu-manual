@@ -578,7 +578,7 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Btrfs wiki von kernel.org](https://btrfs.wiki.kernel.org/index.php/Main_Page)  
 + [Btrfs Dokumentation](https://btrfs.readthedocs.io/en/latest/index.html)  
 + [Btrfs Snapshot im grub Menü](https://github.com/Antynea/grub-btrfs)  
-+ **`man snapper`** und **`man snapper-cofigs`**  
++ **`man snapper`** und **`man snapper-configs`**  
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
