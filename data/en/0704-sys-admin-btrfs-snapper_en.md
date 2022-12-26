@@ -344,7 +344,7 @@ $ snapper -c data_pr list
 91|single|     |11:36:23|user1|number  |AB finished|user=Pit
 ~~~
 
-The snapshot we (user1) created has the # 91. Unfortunately we made the mistake that the snapshot is handled according to the cleanup rule *number*. We change this with the optin *`modify -c ""`* so that Snapper does not delete it automatically. 
+The snapshot we (user1) created has the # 91. Unfortunately we made the mistake that the snapshot is handled according to the cleanup rule *number*. We change this with the option *`modify -c ""`* so that Snapper does not delete it automatically. 
 
 ~~~
 $ snapper -c data_pr modify -c "" 91
