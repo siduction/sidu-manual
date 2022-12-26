@@ -122,7 +122,7 @@ Die Snapper Dateien befinden sich in:
 + `/usr/share/snapper/config-templates/` Die Konfigurationsvorlagen.  
 + `/var/log/snapper.log` Snappers Logdatei.
 
-Bitte die man pages **`man snapper`** und **`nam snapper-configs`** lesen.
+Bitte die man pages **`man snapper`** und **`man snapper-configs`** lesen.
 
 ### Snapper Konfiguration
 

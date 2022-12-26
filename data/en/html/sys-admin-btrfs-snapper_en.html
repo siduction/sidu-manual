@@ -273,7 +273,7 @@ templates.<br />
 <li><code>/var/log/snapper.log</code> Snapper’s log file.</li>
 </ul>
 <p>Please read the man pages <strong><code>man snapper</code></strong>
-and <strong><code>nam snapper-configs</code></strong>.</p>
+and <strong><code>man snapper-configs</code></strong>.</p>
 <h3 id="snapper-configuration">Snapper configuration</h3>
 <p>Snapper requires a configuration file for each subvolume before it
 can create snapshots in it. Siduction automatically creates the
@@ -646,7 +646,7 @@ $ snapper -c data_pr list
 91|single|     |11:36:23|user1|number  |AB finished|user=Pit</code></pre>
 <p>The snapshot we (user1) created has the # 91. Unfortunately we made
 the mistake that the snapshot is handled according to the cleanup rule
-<em>number</em>. We change this with the optin
+<em>number</em>. We change this with the option
 <em><code>modify -c ""</code></em> so that Snapper does not delete it
 automatically.</p>
 <pre><code>$ snapper -c data_pr modify -c &quot;&quot; 91
