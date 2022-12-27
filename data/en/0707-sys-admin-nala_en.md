@@ -11,7 +11,7 @@ Nala uses many APT commands such as `install`, `remove`, `purge`, `update`, `sho
 
 ### Use Nala
 
-As of siduction 2022.12.0, Nala is installed automatically and can be used immediately. It is not mandatory to use Nala, you can switch between APT and Nala at will. A look at the manpage **`man nala`** should be mandatory. Before use we strongly recommend to make a change in the configuration file `/etc/nala/nala.conf`.  
+As of siduction 2022.1.0, Nala is installed automatically and can be used immediately. It is not mandatory to use Nala, you can switch between APT and Nala at will. A look at the manpage **`man nala`** should be mandatory. Before use we strongly recommend to make a change in the configuration file `/etc/nala/nala.conf`.  
 
 We change the value for the `auto_remove` configuration option to `false` as shown in the following listing:
 

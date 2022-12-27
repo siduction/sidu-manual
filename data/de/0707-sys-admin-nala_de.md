@@ -10,7 +10,7 @@ Nala verwendet viele gleichlautende Befehle von APT, wie etwa `install`, `remove
 
 ### Nala verwenden
 
-Ab siduction 2022.12.0 wird Nala automatisch installiert und ist sofort verwendbar. Es kann jederzeit ohne Weiteres zwischen APT und Nala gewechselt werden. Ein Blick in die manpage **`man nala`** sollte obligatorisch sein. Vor der Anwendung empfehlen wir dringend, eine Änderung in der Konfigurationsdatei `/etc/nala/nala.conf` vorzunehmen.  
+Ab siduction 2022.1.0 wird Nala automatisch installiert und ist sofort verwendbar. Es kann jederzeit ohne Weiteres zwischen APT und Nala gewechselt werden. Ein Blick in die manpage **`man nala`** sollte obligatorisch sein. Vor der Anwendung empfehlen wir dringend, eine Änderung in der Konfigurationsdatei `/etc/nala/nala.conf` vorzunehmen.  
 Den Wert für die Konfigurationsoption `auto_remove` ändern wir zu `false`, so wie es das folgende Listing zeigt:
 
 ~~~
