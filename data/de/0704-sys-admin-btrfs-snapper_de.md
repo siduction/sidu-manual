@@ -12,7 +12,7 @@ Zu Btrfs finden sich im Internet zahlreiche Dokumentationen. Wir werden deshalb 
 
 **Btrfs verwenden**
 
-Für die fortschrittlichen Eigenschaften von Btrfs (Snapshots, Komprimierung, Defragmentierung, Selbstheilung für Daten und Metadaten, integrierte Datenträgerverwaltung ...) z.B. gegenüber ext4, benötigen wir erkennbar größere Laufwerke. Das ist derzeit meist kein Problem, denn selbst preiswerte PCs und Laptop verfügen oft über 500 GB große Laufwerke.  
+Für die fortschrittlichen Eigenschaften von Btrfs (Snapshots, Komprimierung, Defragmentierung, Selbstheilung für Daten und Metadaten, integrierte Datenträgerverwaltung ...) z.B. gegenüber ext4, benötigen wir erkennbar größere Laufwerke. Das ist derzeit meist kein Problem, denn selbst preiswerte PCs und Laptops verfügen oft über 500 GB große Laufwerke.  
 Als Mindestgröße des Btrfs Laufwerks, in das die vollständige Installation erfolgen soll, empfehlen wir 100 GB. Abhängig vom Volumen der privaten Daten auch deutlich mehr. Möchte man Btrfs nur für die root-Partition verwenden, sollte diese eine Größe von mindestens 50 GB aufweisen. Für Benutzer die nicht so viel Speicherplatz zuweisen wollen, ist die übliche Vorgehensweise entweder Btrfs ohne Snapshots oder ext4 zu verwenden.  
 Btrfs versteht auf der Kommandozeile für seine Befehle und Optionen beliebige Abkürzungen, sofern diese eindeutig sind. So wird zum Beispiel **`btrfs su li /`** intern zu **`btrfs subvolume list /`**.
 
@@ -397,7 +397,7 @@ Wir führen einen Reboot durch und wählen den Grub Standardeintrag um im zurüc
 
 ### Datei Rollback im Root-Dateisystem
 
-Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Shnapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.
+Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Snapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.
 
 Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens `@`. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `+` gekennzeichnete. In ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin befindet sich das aktuelle Root-Dateisystem.
 
