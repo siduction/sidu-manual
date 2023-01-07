@@ -10,7 +10,7 @@ This section contains informations and notes on
 
 + [System administration in general](0702-sys-admin-gen_en.md#system-administration-in-general). Short and sweet, we provide a stiff through system administration, boot options, managing systemd services, terminating processes, managing passwords, fonts in siduction, the printing system CUPS, and sound in siduction.
 
-+ [Btrfs filesystem on siduction](0704-sys-admin-btrfs-snapper_en.md#btrfs). The subvolumes after installation. Creating and managing new subvolumes. Snapshot in Btrfs.
++ [Btrfs filesystem on siduction](0704-sys-admin-btrfs-snapper_en.md#btrfs), the subvolumes after installation, creating and managing new subvolumes, snapshot in Btrfs.
 
 + [Btrfs Snapshots with snapper](0704-sys-admin-btrfs-snapper_en.md#snapper) Creating and managing Btrfs snapshots with Snapper. Configuring Snapper and working with systemd. System rollback and recovery of files.
 
@@ -38,4 +38,4 @@ This section contains informations and notes on
 
 + [systemd-journal](0717-systemd-journald_en.md#system-journal), using journald locally and over a network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
 
-<div id="rev">Last edited: 2022-12-21</div>
+<div id="rev">Last edited: 2023-01-07</div>
