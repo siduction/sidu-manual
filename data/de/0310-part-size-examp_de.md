@@ -42,7 +42,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 50 GB | NTFS | MS Windows System |
 | 4 | 500 GB | NTFS | Daten für MS Windows und Linux |
 | 5 | 30 GB | ext4 | / (Linux root) |
@@ -55,7 +55,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 40 GB | NTFS | MS Windows System |
 | 4 | 48 GB | NTFS | Daten für MS Windows und Linux |
 | 5 | 30 GB | ext4 | / (Linux root) |
@@ -67,7 +67,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 30 GB | ext4 | / |
 | 4 | 466 GB | ext4 | Daten |
 | 5 | 4 GB | Linux Swap | Linux Swap |
@@ -78,7 +78,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 496 GB | Btrfs | / |
 | 4 | 4 GB | Linux Swap | Linux Swap |
 
@@ -88,7 +88,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 26 GB | ext4 | / |
 | 4 | 130 GB | ext4 | Daten |
 | 5 | 4 GB | Linux Swap | Linux Swap |
@@ -99,7 +99,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Size | Filesystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 80 GB | NTFS | MS Windows System |
 | 4 | 500 GB | NTFS | Daten für MS Windows und Linux |
 | 5 | 30 GB | ext4 | / (Linux root) |
@@ -112,7 +112,7 @@ Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer a
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 MB | FAT16 | EFI-System |
-| 2 | 1 MB | ohne | BIOS-boot |
+| 2 | 8 MB | ohne | BIOS-boot |
 | 3 | 25 GB | ext4 | / |
 | 4 | 85 GB | ext4 | Daten |
 | 5 | 10 GB | Linux Swap | Linux Swap |
@@ -185,4 +185,4 @@ Für weitere Partitionierungsoptionen siehe:
 
 + [Partitionieren mit  GPT](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zur Unterstützung von UEFI 
 
-<div id="rev">Zuletzt bearbeitet: 2022-12-14</div>
+<div id="rev">Zuletzt bearbeitet: 2023-02-08</div>

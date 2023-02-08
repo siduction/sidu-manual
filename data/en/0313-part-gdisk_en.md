@@ -146,8 +146,8 @@ The command generates the following output:
 ~~~
 Disk /dev/sdb: 149.5 GiB, 160041885696 bytes, 312581808 sectors
 /dev/sdb1      2048    206847    204800 100M EFI System
-/dev/sdb2    206848    208895      2048   1M BIOS boot
-/dev/sdb3    208896  52637695  52428800  25G Linux root
+/dev/sdb2    206848    223232     16384   8M BIOS boot
+/dev/sdb3    223233  52637695  52428800  25G Linux root
 /dev/sdb4  52637696  61026303   8388608   4G Linux swap
 /dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
 /dev/sdb6 260255744 312581808  52326064  25G Linux root
@@ -288,4 +288,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *"recovery & transformation"* and *"experts"* should only be used if you are very familiar with GPT. As a "non-expert", you should only use these menus if a disk is damaged. Before any drastic action, the option **`b`** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2022/03/31</div>
+<div id="rev">Last edited: 2023/02/08</div>

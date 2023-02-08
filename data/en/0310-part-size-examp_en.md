@@ -44,7 +44,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 50 GB | NTFS | MS Windows system |
 | 4 | 500 GB | NTFS | data for MS Windows and Linux |
 | 5 | 30 GB | ext4 | / (Linux root) |
@@ -57,7 +57,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 40 GB | NTFS | MS Windows System |
 | 4 | 48 GB | NTFS | data for MS Windows and Linux |
 | 5 | 30 GB | ext4 | / (Linux root) |
@@ -69,7 +69,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 30 GB | ext4 | / |
 | 4 | 466 GB | ext4 | data |
 | 5 | 4 GB | Linux Swap | Linux swap |
@@ -80,7 +80,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 496 GB | btrfs | / |
 | 4 | 4 GB | Linux Swap | Linux swap |
 
@@ -90,7 +90,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 26 GB | ext4 | / |
 | 4 | 130 GB | ext4 | data |
 | 5 | 4 GB | Linux Swap | Linux swap |
@@ -101,7 +101,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 80 GB | NTFS | MS Windows system |
 | 4 | 500 GB | NTFS | data for MS Windows and Linux |
 | 5 | 30 GB | ext4 | / (Linux root) |
@@ -114,7 +114,7 @@ The examples refer to partition tables of the type *"GPT"*. It needs the first t
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
 | 1 | 100 KB | FAT16 | EFI system |
-| 2 | 1 MB | without | BIOS-boot |
+| 2 | 8 MB | without | BIOS-boot |
 | 3 | 25 GB | ext4 | / |
 | 4 | 85 GB | ext4 | data |
 | 5 | 10 GB | Linux Swap | Linux swap |
@@ -183,4 +183,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2022-12-21</div>
+<div id="rev">Last edited: 2023-02-08</div>
