@@ -27,7 +27,7 @@ Bei der Erstinstallation in eine einzige Partition werden die folgenden Subvolum
 | @root | /root | Der Benutzer **root** |
 | @tmp | /tmp | |
 | @var@log | /var/log | |
-| @snapshots | /.snapshots | Ablageort für die Snapshot von `@` |
+| @snapshots | /.snapshots | Ablageort für die Snapshot von @ |
 
 Für Btrfs liegen sie gleichwertig auf der höchsten Ebene (*'top level 5'* ). Wir hängen sie alle separat an dem gewünschten Platz im Dateibaum ein. Es wird auch als *"flaches Layout"* bezeichnet bei dem die Dateisystemwurzel an sich nicht eingehängt wird. Sobald die Subvolumen erstellt wurden, ist es nicht mehr nötig, das "Root"-Gerät einzuhängen, wenn nur der Inhalt der Subvolumen von Interesse ist. Im laufenden Betrieb befinden wir uns bereits in dem Subvolumen `@`.
 
@@ -336,12 +336,12 @@ Nun legen wir einen Snapshot an und lassen uns die Snapshots der gleichen Konfig
 ~~~
 $ snapper -c data_pr create -t single -d "AB finished" -c number -u user=Pit
 $ snapper -c data_pr list
- #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
---+------+-----+--------+-----+--------+-----------+--------
- 0|single|     |        |root |        |current    |
-88|single|     |22:00:38|root |timeline|timeline   |
-90|single|     |11:34:41|root |timeline|timeline   |
-91|single|     |11:36:23|user1|number  |AB finished|user=Pit
+ #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
+--+------+-----+--------+----+--------+-----------+--------
+ 0|single|     |        |root|        |current    |
+88|single|     |22:00:38|root|timeline|timeline   |
+90|single|     |11:34:41|root|timeline|timeline   |
+91|single|     |11:36:23|user|number  |AB finished|user=Pit
 ~~~
 
 Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns der Fehler unterlaufen das der Snapshot nach der Cleanup Regel *number* behandelt wird. Das ändern wir mit der Option *`modify -c ""`* damit Snapper ihn nicht automatisch löscht. 
@@ -349,12 +349,12 @@ Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns der Fehler u
 ~~~
 $ snapper -c data_pr modify -c "" 91
 $ snapper -c data_pr list
- #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
---+------+-----+--------+-----+--------+-----------+--------
- 0|single|     |        |root |        |current    |
-88|single|     |22:00:38|root |timeline|timeline   |
-90|single|     |11:34:41|root |timeline|timeline   |
-91|single|     |11:36:23|user1|        |AB finished|user=Pit
+ #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
+--+------+-----+--------+----+--------+-----------+--------
+ 0|single|     |        |root|        |current    |
+88|single|     |22:00:38|root|timeline|timeline   |
+90|single|     |11:34:41|root|timeline|timeline   |
+91|single|     |11:36:23|user|        |AB finished|user=Pit
 ~~~
 
 Der Snapshot # 91 bleibt jetzt so lange erhalten bis wir ihn selbst löschen.
@@ -379,27 +379,57 @@ Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene A
 **Voraussetzungen**  
 Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolume befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
 
+> **Achtung**  
+> Die Funktionalität für Rollback entsprechend der folgenden Anleitung ist in den ISOs zu jetzigen Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf [siduction github](https://github.com/siduction/grub-btrfs-rollback_settings) beachten.
+
 **Rollback durchführen**  
-Wir booten das System, wählen im Bootmenü *"siduction snapshots"* und anschließend den zu bootenden Snapshot (Zum Beispiel # 13). Der jüngste Snapshot steht an oberster Stelle der Liste. Nach Auswahl des Kernels bootet das System im `read-only` Modus. Das erzeugt bevor der Anmeldebildschirm erscheint eine Fehlermeldung zu *sddm*, die wir ignorieren.  
-Wir prüfen, ob das System so wie erwartet arbeitet. Wenn das der Fall ist führen wir den Rollback als **`root`** aus:
+Vor dem Rollback testen wir erst einmal ob das Rollbackziel unseren Erwartungen entspricht. Dazu booten wir unter Verwendung des Submenüs *"siduction snapshots"* in den gewünschten Snapshot, zum Beispiel 13. Das System bootet im *read-only* Modus. Die Fehlermeldung zu *sddm* ignorieren wir.  
+Arbeitet das System wie erwartet, kehren wir mit einem Reboot in des derzeitige default Subvolumen zurück. Dort führen wir den Rollback als **root** aus:
 
 ~~~
-# snapper --ambit classic rollback
+# snapper --ambit classic rollback 13
 Anwendungsbereich ist classic
 Nur-Lesen-Schnappschuss des Standard-Subvolumens erstellen. (Schnappschuss 15.)
 Lesen-Schreiben-Schnappschuss des derzeit laufenden Subvolumens erstellen. (Schnappschuss 16.)
 Einstellung des Standard-Subvolumens zu Schnappschuss 16.
 ~~~
 
-Die Ausgabe beschreibt präzise den Ablauf des Rollback. Anschließend wird automatisch der Bootmanager Grub aktualisiert, damit die neuen Snapshots im Submenü erscheinen und der Snapshot # 16 als Standard-Subvolumen benutzt wird.
+**Rollback immer aus dem default Subvolumen mit Angabe der Subvolumen Nummer des Rollbackziels ausführen.**
 
-Wir führen einen Reboot durch und wählen den Grub Standardeintrag um im zurückgesetzten System zu arbeiten.
+Die Ausgabe beschreibt präzise den Ablauf des Rollback. Anschließend wird automatisch die Menüdatei *grub.cfg* des Bootmanagers Grub aktualisiert, damit die neuen Snapshots im Submenü erscheinen und der Snapshot 16 als Standard-Subvolumen benutzt wird. Die Grub Menüdatei wird immer dann aktualisiert, wenn sich nach einem Snapshot, einem Rollback oder Reboot die Pfade des Btrfs-default-Subvolumen, des gebooteten Subvolumens oder des Grub-default-Menüeintrages unterscheiden.  
+Der Befehl **`snapper list`** zeigt, dass wir uns derzeit in Snapshot 12 befinden und Snapshot 16 das neue Standard-Subvolumen ist. (Das Minus `-` hinter  #12 und das Plus `+` hinter #16.)
+
+~~~
+ # |Typ   |Pre #|Date    |User |Cleanup| Description   |
+---+------+-----+--------+-----+-------+---------------+
+ 0 |single|     |        |root |       |current        |
+12-|single|     |17:28:15|root |number |important      |
+13 |pre   |     |11:34:41|root |number |apt            |
+14 |post  |   13|11:35:56|root |number |apt            |
+15 |single|     |12:05:23|root |number |rollback backup|
+16+|single|     |12:05:23|root |       |r/W copy of #13|
+~~~
+
+Wir führen einen Reboot durch und wählen den Grub Standardeintrag. Jetzt zeigt der `*` hinter #16 an, dass wir uns in diesem Snapshot befinden und er das Standard-Subvolumen ist.
+
+~~~
+ # |Typ   |Pre #|Date    |User |Cleanup| Description   |
+16*|single|     |12:05:23|root |       |r/W copy of #13|
+~~~
+
+Im Rollbackziel wird die Grub Menüdatei ebenfalls automatisch aktualisiert. Zu diesem Zeitpunkt verweist der Grub Eintrag im EFI / MBR noch auf das vorherige Standard-Subvolumen #12. Mit dem Befehl 
+
+~~~
+# grub-install ...
+~~~
+
+schließen wir den Rollback ab und teilen Grub mit, fortan das neue Standard-Subvolumen #16 zu verwenden.
 
 ### Datei Rollback im Root-Dateisystem
 
 Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Snapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.
 
-Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens `@`. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `+` gekennzeichnete. In ihn wurde gebootet und er ist identisch mit dem Snapshot # 0. Darin befindet sich das aktuelle Root-Dateisystem.
+Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens @. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `*` gekennzeichnete. In ihn wurde gebootet und er der Standard-Snapshot. Wurde noch kein System Rollback vorgenommen, tritt Snapshot 0 an seine Stelle.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -408,7 +438,7 @@ Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des S
 42 |single|     |09:50:36|root |        |IP pc1     |
 43 |pre   |     |11:30:18|root |number  |apt        |
 44 |post  |   43|11:34:41|root |number  |apt        |
-45+|single|     |22:00:38|root |        |           |
+45*|single|     |22:00:38|root |        |           |
 46 |single|     |23:00:23|root |timeline|timeline   |
 ~~~
 
@@ -446,18 +476,18 @@ Wollen wir die Änderung rückgängig machen, benutzen wir den Befehl:
 # snapper undochange 42..45 /etc/hosts
 ~~~
 
-Ein *"Datei Rollback"* innerhalb des Root-Dateisystems ergibt nur dann Sinn, wenn ein Snapshot für ein *"System Rollback"* vorbereitet werden soll, oder der Snapshot beteiligt ist, in den das System gebootet wurde (erkennbar an der Markierung `+`). Eventuell ist danach der Neustart von Services oder Daemon, oder sogar ein Reboot notwendig.  
+Ein *"Datei Rollback"* innerhalb des Root-Dateisystems ergibt nur dann Sinn, wenn ein Snapshot für ein *"System Rollback"* vorbereitet werden soll, oder der Snapshot beteiligt ist, in den das System gebootet wurde (erkennbar an der Markierung `*`). Eventuell ist danach der Neustart von Services oder Daemon, oder sogar ein Reboot notwendig.  
 Man darf dem Befehl auch mehrere Dateien getrennt durch Leerzeichen mitgeben.
 
 *Vorsicht*  
-Wird der Befehl **`snapper undochange 42..45`** ohne die Angabe einer Datei abgesetzt, macht Snapper alle Änderungen zwischen den Snapshots # 42 und # 45 rückgängig. Die bessere Variante für ein solches Vorhaben ist ein *"System Rollback"*.
+Wird der Befehl **`snapper undochange 42..45`** ohne die Angabe einer Datei abgesetzt, macht Snapper alle Änderungen zwischen den Snapshots 42 und 45 rückgängig. Die bessere Variante für ein solches Vorhaben ist ein *"System Rollback"*.
 
 ### Datei Rollback von User Daten
 
 **Mit Snapper allein**
 
-Snapper behandelt den Snapshot # 0 zwar wie einen Snapshot, aber er stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel. Alle anderen Snapshot bilden, wie bereits zuvor erwähnt, den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Änderungen zwischen diesen Snapshots agieren demnach nur in der Vergangenheit.  
-Für uns bedeutet das, dass ein *"Datei Rollback"* von User Daten zwischen den Snapshots # 15 und # 17 wertlos ist, da der Vorgang den aktuellen Zustand in unserem Subvolumen nicht betrifft. Wir benötigen also immer den Snapshot # 0 als Ziel für Änderungen.
+Snapper behandelt den Snapshot 0 zwar wie einen Snapshot, aber er stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel. Alle anderen Snapshot bilden, wie bereits zuvor erwähnt, den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Änderungen zwischen diesen Snapshots agieren demnach nur in der Vergangenheit.  
+Für uns bedeutet das, dass ein *"Datei Rollback"* von User Daten zwischen den Snapshots 15 und 17 wertlos ist, da der Vorgang den aktuellen Zustand in unserem Subvolumen nicht betrifft. Wir benötigen also immer den Snapshot 0 als Ziel für Änderungen.
 
 Wir schauen uns einen derartigen Vorgang anhand der Datei `Test.txt` im Subvolumen `@data` an.
 
@@ -471,7 +501,7 @@ $ snapper -c data_pr list
 17 |single|     |14:51:26|root    |timeline  |timeline
 ~~~
 
-Der Vergleich zwischen Schnapshot # 15 und # 16:
+Der Vergleich zwischen Schnapshot 15 und 16:
 
 ~~~
 $ snapper -c data_pr status 15..16
@@ -480,7 +510,7 @@ $ snapper -c data_pr status 15..16
 [...]
 ~~~
 
-Die Datei erscheint erstmals im Snapshot # 16. Wir vergleichen mit dem nächsten Snapshot.
+Die Datei erscheint erstmals im Snapshot 16. Wir vergleichen mit dem nächsten Snapshot.
 
 ~~~
 $ snapper -c data_pr status 16..17
@@ -489,8 +519,8 @@ c..... /data/user1/Test.txt
 [...]
 ~~~
 
-Die Datei wurde zwischen den Snapshots # 16 und # 17 verändert.  
-Es folgt eine Abfrage mit `diff`, die die Änderungen zwischen # 16 und # 17 ausgibt.
+Die Datei wurde zwischen den Snapshots 16 und 17 verändert.  
+Es folgt eine Abfrage mit `diff`, die die Änderungen zwischen 16 und 17 ausgibt.
 
 ~~~
 $ snapper -c data_pr diff 16..17 /data/user1/Test.txt
@@ -500,17 +530,17 @@ $ snapper -c data_pr diff 16..17 /data/user1/Test.txt
  Testdatei
 
  Dieser Text stand schon vor
- dem Snapshot # 16 in der Datei.
+ dem Snapshot 16 in der Datei.
  
 -Dieser auch, aber er wurde gelöscht.
 +
 +Dieser Text wurde nach dem
-+Snapshot # 16 eingefügt.
++Snapshot 16 eingefügt.
 ~~~
 
-Da die Datei seit dem Snapshot # 17 nicht mehr verändert wurde, erzeugt der Befehl **`$ snapper -c data_pr diff 16..0 /data/user1/Test.txt`** für den Vergleich von Snapshot # 16 mit dem aktuellen Inhalt der Datei keine andere Ausgabe.
+Da die Datei seit dem Snapshot 17 nicht mehr verändert wurde, erzeugt der Befehl **`$ snapper -c data_pr diff 16..0 /data/user1/Test.txt`** für den Vergleich von Snapshot 16 mit dem aktuellen Inhalt der Datei keine andere Ausgabe.
 
-Nun setzen wir den `undochange` Befehl zwischen # 16 und # 0 ab. Danach enthält die *Test.txt* die ersten sechs Zeilen aus dem Snapshot # 16.
+Nun setzen wir den `undochange` Befehl zwischen 16 und 0 ab. Danach enthält die *Test.txt* die ersten sechs Zeilen aus dem Snapshot 16.
 
 ~~~
 $ snapper -c data_pr undochange 16..0 /data/user1/Test.txt
@@ -520,7 +550,7 @@ $ cat /data/user1/Test.txt
 Testdatei
 
 Dieser Text stand schon vor
-dem Snapshot # 16 in der Datei.
+dem Snapshot 16 in der Datei.
 
 Dieser auch, aber er wurde gelöscht.
 ~~~
@@ -582,4 +612,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2022-12-23</div>
+<div id="rev">Zuletzt bearbeitet: 2023-02-09</div>

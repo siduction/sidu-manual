@@ -146,7 +146,7 @@ class="citation" data-cites="log">@log</span></td>
 <tr class="even">
 <td><span class="citation" data-cites="snapshots">@snapshots</span></td>
 <td>/.snapshots</td>
-<td>Snapshots of <code>@</code> are stored here</td>
+<td>Snapshots of @ are stored here</td>
 </tr>
 </tbody>
 </table>
@@ -685,25 +685,56 @@ system. The root file system must be on a single device, in a single
 partition, and on a single subvolume. Directories that are excluded from
 <code>/</code> snapshots, for example <code>/tmp</code>, can be on
 separate partitions.</p>
+<p class="warning">
+<strong>Caution</strong> <br />The functionality for rollback according
+to the following instructions is not yet included in the ISOs at this
+time (2023-02-09). Please refer to the instructions on <a
+href="https://github.com/siduction/grub-btrfs-rollback_settings">siduction
+github</a>.
+</p>
 <p><strong>Performing a rollback</strong><br />
-We boot the system, select <em>“siduction snapshots”</em> from the boot
-menu, and then select the snapshot to boot (e.g. #13). The most recent
-snapshot is at the top of the list. After selecting the kernel, the
-system boots in <code>read-only</code> mode. This generates an error
-message regarding <em>sddm</em> before the login screen appears, which
-we ignore.<br />
-We check if the system works as expected. If it does, we perform the
-rollback as <strong>root</strong>:</p>
+Before the rollback, we check if the rollback target works as expected.
+To do this, we boot into the desired snapshot, for example 13, using the
+<em>“siduction snapshots”</em> submenu. The system boots in
+<em>read-only</em> mode. We ignore the error message regarding
+<em>sddm</em>. If it does, we reboot back to the current default
+subvolume. There we perform the rollback as <strong>root</strong>:</p>
 <pre><code># snapper --ambit classic rollback
 Ambit is classic.
 Creating read-only snapshot of default subvolume. (Snapshot 15.)
 Creating read-write snapshot of current subvolume. (Snapshot 16.)
 Setting default subvolume to snapshot 16.</code></pre>
+<p><strong>Always execute rollback from the default subvolume specifying
+the subvolume number of the rollback target.</strong></p>
 <p>The output precisely describes the rollback procedure. Afterwards the
-boot manager Grub is automatically updated to show the new snapshots in
-the submenu and snapshot # 16 is used as the default subvolume.</p>
-<p>We perform a reboot and select the Grub default entry to work in the
-reset system.</p>
+grub menu file <em>grub.cfg</em> is automatically updated to show the
+new snapshots in the submenu and snapshot 16 is used as the default
+subvolume. The grub menu file is updated whenever the paths of the
+btrfs-default subvolume, the booted subvolume, or the grub-default menu
+entry differ after a snapshot, rollback, or reboot.<br />
+The <strong><code>snapper list</code></strong> command shows that we are
+currently in snapshot 12 and snapshot 16 is the new default subvolume.
+(The minus <code>-</code> after #12 and the plus <code>+</code> after
+#16.)</p>
+<pre><code> # |Typ   |Pre #|Date    |User |Cleanup| Description   |
+---+------+-----+--------+-----+-------+---------------+
+ 0 |single|     |        |root |       |current        |
+12-|single|     |17:28:15|root |number |important      |
+13 |pre   |     |11:34:41|root |number |apt            |
+14 |post  |   13|11:35:56|root |number |apt            |
+15 |single|     |12:05:23|root |number |rollback backup|
+16+|single|     |12:05:23|root |       |r/W copy of #13|</code></pre>
+<p>We perform a reboot and select the Grub default entry. Now the
+<code>*</code> after #16 indicates that we are in this snapshot and it
+is the default subvolume.</p>
+<pre><code> # |Typ   |Pre #|Date    |User |Cleanup| Description   |
+16*|single|     |12:05:23|root |       |r/W copy of #13|</code></pre>
+<p>In the rollback target, the Grub menu file is also updated
+automatically. At this point, the Grub entry in the EFI / MBR still
+points to the previous default subvolume #12. We perform the command</p>
+<pre><code># grub-install ...</code></pre>
+<p>to complete the rollback and tell Grub to use the new default
+subvolume #16 from now on.</p>
 <h3 id="file-rollback-within-the-root-file-system">File rollback within
 the root file system</h3>
 <p>This is the undoing of changes to files. For this purpose, two
@@ -711,19 +742,19 @@ shnapshots are compared and then the file to be changed is picked out.
 Afterwards you can see the changes and decide if you want to undo
 them.</p>
 <p>The output of <strong><code>snapper list</code></strong> shows the
-currently existing snapshots of the subvolume <code>@</code>. (The
-columns have been shortened.) All snapshots with a digit # greater than
-zero represent the state of the file system at that exact time. The only
-exception is the one marked with a <code>+</code>. It was booted into
-and is identical to snapshot # 0. It contains the current root file
-system.</p>
+currently existing snapshots of the subvolume @. (The columns have been
+shortened.) All snapshots with a digit # greater than zero represent the
+state of the file system at that exact time. The only exception is the
+one marked with a <code>*</code>. It was booted into and is the default
+snapshot. If no system rollback has been performed yet, snapshot 0 takes
+its place.</p>
 <pre><code> # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
 ---+------+-----+--------+-----+--------+-----------+----
  0 |single|     |        |root |        |current    |
 42 |single|     |09:50:36|root |        |IP pc1     |
 43 |pre   |     |11:30:18|root |number  |apt        |
 44 |post  |   43|11:34:41|root |number  |apt        |
-45+|single|     |22:00:38|root |        |           |
+45*|single|     |22:00:38|root |        |           |
 46 |single|     |23:00:23|root |timeline|timeline   |</code></pre>
 <p>Two snapshots can be compared with:</p>
 <pre><code># snapper status 42..45
@@ -754,26 +785,26 @@ with:</p>
 <p>A <em>“file rollback”</em> within the root file system only makes
 sense if a snapshot is to be prepared for a <em>“system rollback”</em>,
 or the snapshot into which the system was booted is involved
-(recognizable by the <code>+</code> mark). It may be necessary to
+(recognizable by the <code>*</code> mark). It may be necessary to
 restart services or daemons, or even to reboot.<br />
 It is also possible to include several files separated by spaces in the
 command.</p>
 <p><em>Caution</em><br />
 If the command <strong><code>snapper undochange 42..45</code></strong>
 is entered without specifying a file, Snapper will undo all changes
-between snapshots # 42 and # 45. The better alternative for such an
+between snapshots 42 and 45. The better alternative for such an
 operation is a <em>“system rollback”</em>.</p>
 <h3 id="file-rollback-of-user-data">File rollback of user data</h3>
 <p><strong>With Snapper alone</strong></p>
-<p>Snapper treats snapshot # 0 as a snapshot, but it represents the
+<p>Snapper treats snapshot 0 as a snapshot, but it represents the
 current state of the subvolume and is thus variable. All other
 snapshots, as previously mentioned, represent the state of the file
 system at exactly its point in time. Changes between these snapshots
 therefore only act in the past.<br />
 For us, this means that a <em>“file rollback”</em> of user data between
-snapshots # 15 and # 17 is worthless, since the operation does not
-affect the current state in our subvolume. So we always need snapshot #
-0 as a target for changes.</p>
+snapshots 15 and 17 is worthless, since the operation does not affect
+the current state in our subvolume. So we always need snapshot 0 as a
+target for changes.</p>
 <p>We look at such an operation using the <code>Test.txt</code> file in
 the <code>@data</code> subvolume.</p>
 <pre><code>$ snapper -c data_pr list
@@ -783,20 +814,20 @@ the <code>@data</code> subvolume.</p>
 15 |single|     |12:50:48|root    |timeline  |timeline
 16 |single|     |13:51:08|root    |timeline  |timeline
 17 |single|     |14:51:26|root    |timeline  |timeline</code></pre>
-<p>The comparison between snapshot # 15 and # 16:</p>
+<p>The comparison between snapshot 15 and 16:</p>
 <pre><code>$ snapper -c data_pr status 15..16
 [...]
 +..... /data/user1/Test.txt
 [...]</code></pre>
-<p>The file first appears in snapshot # 16. We compare with the next
+<p>The file first appears in snapshot 16. We compare with the next
 snapshot.</p>
 <pre><code>$ snapper -c data_pr status 16..17
 [...]
 c..... /data/user1/Test.txt
 [...]</code></pre>
-<p>The file was changed between snapshots # 16 and # 17.<br />
+<p>The file was changed between snapshots 16 and 17.<br />
 This is followed by a query with <code>diff</code> that prints the
-changes between # 16 and # 17.</p>
+changes between 16 and 17.</p>
 <pre><code>$ snapper -c data_pr diff 16..17 /data/user1/Test.txt
 --- /data/.snapshots/16/snapshot/user1/Test.txt
 +++ /data/.snapshots/17/snapshot/user1/Test.txt
@@ -804,19 +835,18 @@ changes between # 16 and # 17.</p>
  test file
 
  This text was alreadey in
- the file before the snapshot.
+ the file before the snapshot 16.
  
 -So was this one, but it was deteted.
 +
-+This text was inserted after the snapshot.
-+Before that something was missing, wasn&#39;t it?.</code></pre>
-<p>Since the file has not been modified since snapshot # 17, the
++This text was inserted after the snapshot 16.</code></pre>
+<p>Since the file has not been modified since snapshot 17, the
 <strong><code>$ snapper -c data_pr diff 16..0 /data/user1/Test.txt</code></strong>
-command does not produce any other output for comparing snapshot # 16
-with the current contents of the file.</p>
-<p>Now we put the <code>undochange</code> command between # 16 and # 0.
+command does not produce any other output for comparing snapshot 16 with
+the current contents of the file.</p>
+<p>Now we put the <code>undochange</code> command between 16 and 0.
 After that the <em>Test.txt</em> contains the first six lines from
-snapshot # 16.</p>
+snapshot 16.</p>
 <pre><code>$ snapper -c data_pr undochange 16..0 /data/user1/Test.txt
 create:0 modify:1 delete:0
 
@@ -824,7 +854,7 @@ $ cat /data/user1/Test.txt
 test file
 
 This text was alreadey in
-the file before the snapshot.
+the file before the snapshot 16.
 
 So was this one, but it was deteted.</code></pre>
 <p>A deleted file is promoted back to the current directory with the
@@ -904,7 +934,7 @@ grub menu</a><br />
 GitHub</a></li>
 </ul>
 <div id="rev">
-Last edited: 2023-01-07
+Last edited: 2023-02-09
 </div>
 </body>
 </html>
