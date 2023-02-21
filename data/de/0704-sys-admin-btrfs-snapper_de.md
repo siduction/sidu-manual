@@ -380,7 +380,7 @@ Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene A
 Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolume befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
 
 > **Achtung**  
-> Die Funktionalität für Rollback entsprechend der folgenden Anleitung ist in den ISOs zu jetzigen Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf [siduction github](https://github.com/siduction/grub-btrfs-rollback_settings) beachten.
+> Die Funktionalität für Rollback entsprechend der folgenden Anleitung ist in den ISOs zum jetzigen Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf [siduction github](https://github.com/siduction/grub-btrfs-rollback_settings) beachten.
 
 **Rollback durchführen**  
 Vor dem Rollback testen wir erst einmal ob das Rollbackziel unseren Erwartungen entspricht. Dazu booten wir unter Verwendung des Submenüs *"siduction snapshots"* in den gewünschten Snapshot, zum Beispiel 13. Das System bootet im *read-only* Modus. Die Fehlermeldung zu *sddm* ignorieren wir.  
