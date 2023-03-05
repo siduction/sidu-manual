@@ -562,7 +562,7 @@ Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units
 <code>snapper-timeline.timer</code> und
 <code>snapper-cleanup.timer</code>. Erstere ist der Zeitgeber f&uuml;r die
 Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des
-Entfernen von alten und leeren Snapshots.</p>
+Entfernens von alten und leeren Snapshots.</p>
 <p>Die Handbuchseite <a
 href="./systemd-timer_de.html#systemd-timer"><em>systemd-timer</em></a>
 erkl&auml;rt die Funktionsweise der Timer Unit.</p>
@@ -672,7 +672,7 @@ $ snapper -c data_pr list
 88|single|     |22:00:38|root|timeline|timeline   |
 90|single|     |11:34:41|root|timeline|timeline   |
 91|single|     |11:36:23|user|number  |AB finished|user=Pit</code></pre>
-<p>Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns
+<p>Der von uns (user) erstellte Snapshot hat die # 91. Leider ist uns
 der Fehler unterlaufen das der Snapshot nach der Cleanup Regel
 <em>number</em> behandelt wird. Das &auml;ndern wir mit der Option
 <em><code>modify -c ""</code></em> damit Snapper ihn nicht automatisch
@@ -712,16 +712,16 @@ Auftreten der Probleme vorlag.</p>
 <p><strong>Voraussetzungen</strong><br />
 Ein <em>“Rollback”</em> wird nur mit Btrfs f&uuml;r das Root-Dateisystem
 unterst&uuml;tzt. Das Root-Dateisystem muss sich auf einem einzelnen Ger&auml;t,
-in einer einzelnen Partition und auf einem einzelnen Subvolume befinden.
-Verzeichnisse, die aus <code>/</code> Snapshots ausgeschlossen sind,
-beispielsweise <code>/tmp</code>, k&ouml;nnen sich auf separaten Partitionen
-befinden.</p>
+in einer einzelnen Partition und auf einem einzelnen Subvolumen
+befinden. Verzeichnisse, die aus <code>/</code> Snapshots ausgeschlossen
+sind, beispielsweise <code>/tmp</code>, k&ouml;nnen sich auf separaten
+Partitionen befinden.</p>
 <p class="warning">
 <strong>Achtung</strong> <br />Die Funktionalit&auml;t f&uuml;r Rollback
 entsprechend der folgenden Anleitung ist in den ISOs zum jetzigen
 Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf <a
-href="https://github.com/siduction/grub-btrfs-rollback_settings">siduction
-github</a> beachten.
+href="https://github.com/siduction/siduction-btrfs">siduction github</a>
+beachten.
 </p>
 <p><strong>Rollback durchf&uuml;hren</strong><br />
 Vor dem Rollback testen wir erst einmal ob das Rollbackziel unseren
@@ -982,7 +982,7 @@ grub Men&uuml;</a><br />
 GitHub</a></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2023-02-09
+Zuletzt bearbeitet: 2023-03-05
 </div>
 </body>
 </html>

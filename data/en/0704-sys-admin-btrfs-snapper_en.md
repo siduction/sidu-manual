@@ -336,25 +336,25 @@ Now we create a snapshot and display the snapshots of the same configuration.
 ~~~
 $ snapper -c data_pr create -t single -d "AB finished" -c number -u user=Pit
 $ snapper -c data_pr list
- #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
---+------+-----+--------+-----+--------+-----------+--------
- 0|single|     |        |root |        |current    |
-88|single|     |22:00:38|root |timeline|timeline   |
-90|single|     |11:34:41|root |timeline|timeline   |
-91|single|     |11:36:23|user1|number  |AB finished|user=Pit
+ #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
+--+------+-----+--------+----+--------+-----------+--------
+ 0|single|     |        |root|        |current    |
+88|single|     |22:00:38|root|timeline|timeline   |
+90|single|     |11:34:41|root|timeline|timeline   |
+91|single|     |11:36:23|user|number  |AB finished|user=Pit
 ~~~
 
-The snapshot we (user1) created has # 91. Unfortunately we made the mistake to let the snapshot be handled according to the cleanup rule *number*. We change this with the *`modify -c ""`* option so that Snapper will not delete it automatically. 
+The snapshot we (user) created has # 91. Unfortunately we made the mistake to let the snapshot be handled according to the cleanup rule *number*. We change this with the *`modify -c ""`* option so that Snapper will not delete it automatically. 
 
 ~~~
 $ snapper -c data_pr modify -c "" 91
 $ snapper -c data_pr list
- #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
---+------+-----+--------+-----+--------+-----------+--------
- 0|single|     |        |root |        |current    |
-88|single|     |22:00:38|root |timeline|timeline   |
-90|single|     |11:34:41|root |timeline|timeline   |
-91|single|     |11:36:23|user1|        |AB finished|user=Pit
+ #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
+--+------+-----+--------+----+--------+-----------+--------
+ 0|single|     |        |root|        |current    |
+88|single|     |22:00:38|root|timeline|timeline   |
+90|single|     |11:34:41|root|timeline|timeline   |
+91|single|     |11:36:23|user|        |AB finished|user=Pit
 ~~~
 
 Snapshot # 91 will now remain until we delete it ourselves.
@@ -380,7 +380,7 @@ If the system is damaged due to an action initiated by us that went completely o
 A *"rollback"* is only supported with Btrfs for the root file system. The root file system must be on a single device, in a single partition, and on a single subvolume. Directories that are excluded from `/` snapshots, for example `/tmp`, can be on separate partitions.
 
 > **Caution**  
-> The functionality for rollback according to the following instructions is not yet included in the ISOs at this time (2023-02-09). Please refer to the instructions on [siduction github](https://github.com/siduction/grub-btrfs-rollback_settings).
+> The functionality for rollback according to the following instructions is not yet included in the ISOs at this time (2023-02-09). Please refer to the instructions on [siduction github](https://github.com/siduction/siduction-btrfs).
 
 **Performing a rollback**  
 Before the rollback, we check if the rollback target works as expected. To do this, we boot into the desired snapshot, for example 13, using the *"siduction snapshots"* submenu. The system boots in *read-only* mode. We ignore the error message regarding *sddm*.
@@ -610,4 +610,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper project page](http://snapper.io/)  
 + [Snapper on GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Last edited: 2023-02-09</div>
+<div id="rev">Last edited: 2023-03-05</div>

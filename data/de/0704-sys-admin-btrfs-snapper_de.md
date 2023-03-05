@@ -254,7 +254,7 @@ Snapper installiert drei systemd Unit Paare um in Abhängigkeit von APT Aktionen
 
 Das Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus möglich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende Pakete zu erhalten. Ein Rollback mit Snapper ist dann für den Benutzer eine gute Alternative um weiterhin zuverlässig zu arbeiten.
 
-Dagegen bietet die *TIMTLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernen von alten und leeren Snapshots.
+Dagegen bietet die *TIMTLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernens von alten und leeren Snapshots.
 
 Die Handbuchseite [*systemd-timer*](0716-systemd-timer_de.md#systemd-timer) erklärt die Funktionsweise der Timer Unit.
 
@@ -344,7 +344,7 @@ $ snapper -c data_pr list
 91|single|     |11:36:23|user|number  |AB finished|user=Pit
 ~~~
 
-Der von uns (user1) erstellte Snapshot hat die # 91. Leider ist uns der Fehler unterlaufen das der Snapshot nach der Cleanup Regel *number* behandelt wird. Das ändern wir mit der Option *`modify -c ""`* damit Snapper ihn nicht automatisch löscht. 
+Der von uns (user) erstellte Snapshot hat die # 91. Leider ist uns der Fehler unterlaufen das der Snapshot nach der Cleanup Regel *number* behandelt wird. Das ändern wir mit der Option *`modify -c ""`* damit Snapper ihn nicht automatisch löscht. 
 
 ~~~
 $ snapper -c data_pr modify -c "" 91
@@ -377,10 +377,10 @@ Der Snapshot # 0 mit der Beschreibung *"current"* ist nicht löschbar. Es ist de
 Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System beschädigt sein, ermöglicht Snapper mit dem *"Rollback"* das System in einen oder mehrere Zustände zurück zu versetzen, der vor dem Auftreten der Probleme vorlag. 
 
 **Voraussetzungen**  
-Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolume befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
+Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolumen befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
 
 > **Achtung**  
-> Die Funktionalität für Rollback entsprechend der folgenden Anleitung ist in den ISOs zum jetzigen Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf [siduction github](https://github.com/siduction/grub-btrfs-rollback_settings) beachten.
+> Die Funktionalität für Rollback entsprechend der folgenden Anleitung ist in den ISOs zum jetzigen Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf [siduction github](https://github.com/siduction/siduction-btrfs) beachten.
 
 **Rollback durchführen**  
 Vor dem Rollback testen wir erst einmal ob das Rollbackziel unseren Erwartungen entspricht. Dazu booten wir unter Verwendung des Submenüs *"siduction snapshots"* in den gewünschten Snapshot, zum Beispiel 13. Das System bootet im *read-only* Modus. Die Fehlermeldung zu *sddm* ignorieren wir.  
@@ -612,4 +612,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2023-02-09</div>
+<div id="rev">Zuletzt bearbeitet: 2023-03-05</div>

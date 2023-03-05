@@ -638,25 +638,25 @@ advise against this unless you know exactly what you are doing.</p>
 configuration.</p>
 <pre><code>$ snapper -c data_pr create -t single -d &quot;AB finished&quot; -c number -u user=Pit
 $ snapper -c data_pr list
- #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
---+------+-----+--------+-----+--------+-----------+--------
- 0|single|     |        |root |        |current    |
-88|single|     |22:00:38|root |timeline|timeline   |
-90|single|     |11:34:41|root |timeline|timeline   |
-91|single|     |11:36:23|user1|number  |AB finished|user=Pit</code></pre>
-<p>The snapshot we (user1) created has # 91. Unfortunately we made the
+ #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
+--+------+-----+--------+----+--------+-----------+--------
+ 0|single|     |        |root|        |current    |
+88|single|     |22:00:38|root|timeline|timeline   |
+90|single|     |11:34:41|root|timeline|timeline   |
+91|single|     |11:36:23|user|number  |AB finished|user=Pit</code></pre>
+<p>The snapshot we (user) created has # 91. Unfortunately we made the
 mistake to let the snapshot be handled according to the cleanup rule
 <em>number</em>. We change this with the
 <em><code>modify -c ""</code></em> option so that Snapper will not
 delete it automatically.</p>
 <pre><code>$ snapper -c data_pr modify -c &quot;&quot; 91
 $ snapper -c data_pr list
- #|Typ   |Pre #|Date    |User |Cleanup |Description|Userdata
---+------+-----+--------+-----+--------+-----------+--------
- 0|single|     |        |root |        |current    |
-88|single|     |22:00:38|root |timeline|timeline   |
-90|single|     |11:34:41|root |timeline|timeline   |
-91|single|     |11:36:23|user1|        |AB finished|user=Pit</code></pre>
+ #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
+--+------+-----+--------+----+--------+-----------+--------
+ 0|single|     |        |root|        |current    |
+88|single|     |22:00:38|root|timeline|timeline   |
+90|single|     |11:34:41|root|timeline|timeline   |
+91|single|     |11:36:23|user|        |AB finished|user=Pit</code></pre>
 <p>Snapshot # 91 will now remain until we delete it ourselves.</p>
 <p><strong>Delete snapshot</strong></p>
 <p>We can delete any snapshot at any time as long as we have the rights
@@ -689,7 +689,7 @@ separate partitions.</p>
 <strong>Caution</strong> <br />The functionality for rollback according
 to the following instructions is not yet included in the ISOs at this
 time (2023-02-09). Please refer to the instructions on <a
-href="https://github.com/siduction/grub-btrfs-rollback_settings">siduction
+href="https://github.com/siduction/siduction-btrfs">siduction
 github</a>.
 </p>
 <p><strong>Performing a rollback</strong><br />
@@ -934,7 +934,7 @@ grub menu</a><br />
 GitHub</a></li>
 </ul>
 <div id="rev">
-Last edited: 2023-02-09
+Last edited: 2023-03-05
 </div>
 </body>
 </html>
