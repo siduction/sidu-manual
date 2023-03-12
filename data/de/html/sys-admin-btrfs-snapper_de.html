@@ -182,7 +182,7 @@ geben den Inhalt von <code>/mnt</code> erneut aus.</p>
  .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log</code></pre>
 <p>Nach einem Reboot in unser siduction enth&auml;lt das Wurzelverzeichnis
 den neuen Ordner <code>/data</code>. Damit die normalen Benutzer das
-Verzeichnis verwenden k&ouml;nnen, &auml;nder wir die Gruppe:</p>
+Verzeichnis verwenden k&ouml;nnen, &auml;ndern wir die Gruppe:</p>
 <pre><code># chgrp users /data</code></pre>
 <p>Subvolumen lassen sich auch verschachteln und somit innerhalb
 bestehender Subvolumen erstellen. Wir raten zur besseren &Uuml;bersicht eher
@@ -198,7 +198,7 @@ Btrfs. Wir schauen uns einen Eintrag aus der Datei
 <pre><code># grep home /etc/fstab
 UUID=&lt;hier&gt;  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0</code></pre>
 <p>Mit der Option <em>“space_cache=v2”</em> werden die Adressen der
-freien Bl&ouml;cke des Laufwerks zwischengespeichert um die Schreibvorg&auml;nge
+freien Bl&ouml;cke des Laufwerks zwischengespeichert, um die Schreibvorg&auml;nge
 zu beschleunigen.<br />
 Die Option <em>“autodefrag”</em> sorgt f&uuml;r die Defragmentierung der
 Dateien w&auml;hrend der Laufzeit.<br />
@@ -346,7 +346,7 @@ Anpassung.</p>
 <em>“pre”</em> und <em>“post”</em> erstellt. Der Schl&uuml;ssel
 <code>NUMBER_LIMIT=50</code> bewirkt, dass die j&uuml;ngsten f&uuml;nfundzwanzig
 Snapshotpaare erhalten bleiben.</p>
-<p>Snapper erzeugt automatisch <strong>Timeline Snapshot</strong> wenn
+<p>Snapper erzeugt automatisch <strong>Timeline Snapshot</strong>, wenn
 der Schl&uuml;ssel <code>TIMELINE_CREATE=yes</code> in den
 Konfigurationsdateien eingestellt ist. Die systemd Unit
 <code>snapper-timeline.timer</code> aktiviert die zugeh&ouml;rige Service
@@ -415,7 +415,7 @@ data-cites="home">@home</span></th>
 Timeline Snapshot</em> bis zu dem Zeitpunkt an dem der
 <code>snapper-cleanup.timer</code> aktiv wird. Der allererste
 <em>Timeline Snapshot</em> vagabundiert sage und schreibe mindestens
-zehn Jahre und einen Tag in unseren Dateisystem. Wer m&ouml;chte sein
+zehn Jahre und einen Tag in unserem Dateisystem. Wer m&ouml;chte sein
 produktiv eingesetztes System auf diesen Snapshot zur&uuml;cksetzen und die
 ganzen Daten so lange behalten?<br />
 Man beachte: Snapper und Snapshots sind kein Mittel zur Datensicherung.
@@ -448,7 +448,7 @@ hinzu.</li>
 Schl&uuml;ssel <code>TIMELINE_CREATE=yes</code> gesetzt ist, &uuml;bernimmt
 systemd mit den Timern die regelm&auml;&szlig;ige Erstellung von <em>“timeline
 snapshots”</em>.<br />
-Wir vergleichen noch einmal die gehaltenen Snapshot.</p>
+Wir vergleichen noch einmal die gehaltenen Snapshots.</p>
 <p>Gehaltene Snapshots 2</p>
 <table>
 <thead>
@@ -513,22 +513,22 @@ data-cites="data">@data</span></th>
 </tbody>
 </table>
 <p>Im Subvolumen <code>@data</code> bleiben nach einer Woche konstant
-ein Wochensnapschot, zwei Tagessnapshots des Vortages und bis zu
+ein Wochensnapshot, zwei Tagessnapshots des Vortages und bis zu
 vierundzwanzig Snapshots des aktuellen Tages erhalten. Wer die maximal
-vierundzwanzig Tagessnapshot als zu viel erachtet schaut sich bitte das
+vierundzwanzig Tagessnapshots als zu viel erachtet schaut sich bitte das
 folgende Kapitel <em>Snapper und systemd</em> an.</p>
 <p>Wir k&ouml;nnen einzelne <em>Schl&uuml;ssel=Wert</em> Paare auch auf der
 Kommandozeile &auml;ndern. Im Beispiel verringern wir in der Konfiguration
-<code>root</code> die Anzahl der gehaltenen, nummerierten Snapshot.</p>
+<code>root</code> die Anzahl der gehaltenen, nummerierten Snapshots.</p>
 <pre><code># snapper -c root set-config NUMBER_LIMIT=20</code></pre>
 <p>Jetzt bleiben die j&uuml;ngsten zehn statt f&uuml;nfundzwanzig Pre- und
 Post-Snapshot Paare nach APT Aktionen erhalten. F&uuml;r den Standardgebrauch
-eines Laptop oder PCs d&uuml;rfte dieser Wert ausreichen.<br />
+eines Laptops oder PCs d&uuml;rfte dieser Wert ausreichen.<br />
 An dieser Stelle sollte jeder siduction Nutzer abw&auml;gen wie viele
 Snapshot er wie lange halten m&ouml;chte und die Konfiguration entsprechend
 anpassen.</p>
 <h3 id="snapper-und-systemd">Snapper und systemd</h3>
-<p>Snapper installiert drei systemd Unit Paare um in Abh&auml;ngigkeit von
+<p>Snapper installiert drei systemd Unit Paare, um in Abh&auml;ngigkeit von
 APT Aktionen und Zeit Snapshots zu erstellen oder zu l&ouml;schen.</p>
 <ul>
 <li><p>Beim Erstellen von Snapshots mit den Schl&uuml;sseln<br />
@@ -551,13 +551,13 @@ unter Mitwirkung der Systemd Unit<br />
 <code>snapper-cleanup.timer</code> und
 <code>snapper-cleanup.service</code>.</p></li>
 </ul>
-<p>Das Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot
+<p>Dass Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot
 erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction
 ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus
 m&ouml;glich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende
 Pakete zu erhalten. Ein Rollback mit Snapper ist dann f&uuml;r den Benutzer
-eine gute Alternative um weiterhin zuverl&auml;ssig zu arbeiten.</p>
-<p>Dagegen bietet die <em>TIMTLINE</em> Funktion Raum f&uuml;r individuelle
+eine gute Alternative, um weiterhin zuverl&auml;ssig zu arbeiten.</p>
+<p>Dagegen bietet die <em>TIMETLINE</em> Funktion Raum f&uuml;r individuelle
 Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units
 <code>snapper-timeline.timer</code> und
 <code>snapper-cleanup.timer</code>. Erstere ist der Zeitgeber f&uuml;r die
@@ -598,7 +598,7 @@ Tag maximal zw&ouml;lf statt vierundzanzig Snapshots.<br />
 Wir speichern die Datei und schlie&szlig;en den Editor. systemd legt die
 ge&auml;nderte Datei mit gleichem Namen im Verzeichnis
 <code>/etc/systemd/system/</code> an und f&uuml;hrt den Befehl
-<strong><code>systemctl daemon-reload</code></strong> aus um die
+<strong><code>systemctl daemon-reload</code></strong> aus, um die
 ge&auml;nderte Konfiguration zu laden.</p>
 <p>Die zweite systemd Timer Unit <code>snapper-cleanup.timer</code>
 k&uuml;mmert sich um die Entsorgung alter, &uuml;berz&auml;hliger und leerer Snapshots.
@@ -614,8 +614,8 @@ OnUnitActiveSec=1d
 [Install]
 WantedBy=timers.target</code></pre>
 <p>Mit dem Wissen um den Inhalt des TIMELINE-Timers k&ouml;nnen wir nun
-abw&auml;gen ob die Konfiguration sinnvoll ist. F&uuml;r jemanden der seinen PC
-jeden Tag neu startet d&uuml;rfte der Schl&uuml;ssel <code>OnBootSec=10m</code>
+abw&auml;gen, ob die Konfiguration sinnvoll ist. F&uuml;r jemanden, der seinen PC
+jeden Tag neu startet, d&uuml;rfte der Schl&uuml;ssel <code>OnBootSec=10m</code>
 eher ung&uuml;nstig sein, wenn er feststellt, dass sich am Vortag kurz vor
 Feierabend ein gravierender Fehler eingeschlichen hat. Sinnvoller ist
 f&uuml;r diesen Fall vermutlich den Schl&uuml;ssel auf <code>OnBootSec=4h</code>
@@ -626,7 +626,7 @@ Beispiel.</p>
 automatischen Aktionen Snapshots erstellen. Daf&uuml;r muss der ausf&uuml;hrende
 Benutzer in der Snapper-Konfiguration des Subvolumens mit Gruppen- oder
 Userrechten eingetragen sein.</p>
-<p>Die Syntax des Befehls entspricht dem folgendem Muster, das auch die
+<p>Die Syntax des Befehls entspricht dem folgenden Muster, das auch die
 h&auml;ufig zur Anwendung kommenden Optionen zeigt.</p>
 <pre><code># snapper -c &lt;config_name&gt; create -t &lt;type&gt; -d &lt;description&gt; -c &lt;cleanup-algorithm&gt; -u &lt;userdata&gt;</code></pre>
 <ul>
@@ -637,7 +637,7 @@ Befehl auf das Subvolumen <code>@</code> mit der Konfiguration
 <code>root</code> an. Diese Regel gilt f&uuml;r alle Snapper Befehle.<br />
 </li>
 <li><strong>-t &lt;type&gt;</strong><br />
-Die Art des zu erstellenden Snapshot. M&ouml;gliche Werte:
+Die Art des zu erstellenden Snapshots. M&ouml;gliche Werte:
 <code>single</code>, <code>pre</code>, <code>post</code>.<br />
 </li>
 <li><strong>-d &lt;description&gt;</strong><br />
@@ -645,7 +645,7 @@ Beliebiger Text. Bei enthaltenen Leer- und Sonderzeichen <code>"</code>
 verwenden.<br />
 </li>
 <li><strong>-c &lt;cleanup-algorithm&gt;</strong><br />
-Die Option bestimmt nach welchen Regeln der Snapshot automatisch
+Die Option bestimmt, nach welchen Regeln der Snapshot automatisch
 gel&ouml;scht werden soll. M&ouml;gliche Werte: <code>number</code>,
 <code>timeline</code>, <code>pre</code>, <code>post</code>. Fehlt diese
 Option, bleibt der Snapshot so lange erhalten bis der Benutzer ihn
@@ -653,7 +653,7 @@ manuell l&ouml;scht.<br />
 </li>
 <li><strong>-u &lt;userdata&gt;</strong><br />
 Legt Benutzerdaten f&uuml;r den Snapshot fest. Das Format muss
-<em>Schl&uuml;ssel=Wert</em> sein. Mehrere Benutzerdaten m&uuml;ssen duch ein
+<em>Schl&uuml;ssel=Wert</em> sein. Mehrere Benutzerdaten m&uuml;ssen durch ein
 Komma getrennt sein. Zum Beispiel
 <code>author=Tom,important=yes</code>.</li>
 </ul>
@@ -661,7 +661,7 @@ Komma getrennt sein. Zum Beispiel
 an. Man kann die Voreinstellung mit der Option <code>--read-write</code>
 &auml;ndern. Eine &Auml;nderung von Daten in einem Snapshot f&uuml;hrt zu
 inkonsistenten Datenbest&auml;nden. Wir raten dringend davon ab, es sei denn
-man wei&szlig; genau was man tut.</p>
+man wei&szlig; genau, was man tut.</p>
 <p>Nun legen wir einen Snapshot an und lassen uns die Snapshots der
 gleichen Konfiguration anzeigen.</p>
 <pre><code>$ snapper -c data_pr create -t single -d &quot;AB finished&quot; -c number -u user=Pit
@@ -688,10 +688,10 @@ $ snapper -c data_pr list
 <p>Der Snapshot # 91 bleibt jetzt so lange erhalten bis wir ihn selbst
 l&ouml;schen.</p>
 <p><strong>Snapshot l&ouml;schen</strong></p>
-<p>Wir k&ouml;nnen zu jeder Zeit einen beliebigen Snapshot l&ouml;schen sofern wir
-die Rechte dazu haben. F&uuml;r Snapper ist die L&ouml;schaktion nicht von Belang,
-denn der Cleanup Algorithmus pr&uuml;ft bei jedem Durchlauf neu welche
-Snapshots gehalten werden. Das obere Kapitel <a
+<p>Wir k&ouml;nnen zu jeder Zeit einen beliebigen Snapshot l&ouml;schen, sofern
+wir die Rechte dazu haben. F&uuml;r Snapper ist die L&ouml;schaktion nicht von
+Belang, denn der Cleanup Algorithmus pr&uuml;ft bei jedem Durchlauf neu,
+welche Snapshots gehalten werden. Das obere Kapitel <a
 href="./sys-admin-btrfs-snapper_de.html#snapper-konfiguration">Snapper
 Konfiguration</a> erkl&auml;rt dar&uuml;ber hinaus ausf&uuml;hrlich die Einstellungen
 mit denen wir den Cleanup Algorithmus bei Bedarf anpassen.</p>
@@ -701,7 +701,7 @@ mit denen wir den Cleanup Algorithmus bei Bedarf anpassen.</p>
 <p>Der Befehl <code>delete 34-50</code> l&ouml;scht eine Reihe von
 Snapshots.<br />
 Der Snapshot # 0 mit der Beschreibung <em>“current”</em> ist nicht
-l&ouml;schbar. Es ist der Snapshot der im Dateibaum eingehangen ist und in
+l&ouml;schbar. Es ist der Snapshot, der im Dateibaum eingehangen ist und in
 dem wir zur Zeit arbeiten.</p>
 <h3 id="snapper-rollback">Snapper Rollback</h3>
 <p>Sollte einmal durch eine von uns angesto&szlig;ene, v&ouml;llig aus dem Ruder

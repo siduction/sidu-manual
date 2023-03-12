@@ -51,7 +51,7 @@ Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den I
  .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log
 ~~~
 
-Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden können, änder wir die Gruppe:
+Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden können, ändern wir die Gruppe:
 
 ~~~
 # chgrp users /data
@@ -71,7 +71,7 @@ Diese einfache Variante eignet sich nicht für eine dauerhafte Verwendung. Auße
 UUID=<hier>  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0
 ~~~
 
-Mit der Option *"space_cache=v2"* werden die Adressen der freien Blöcke des Laufwerks zwischengespeichert um die Schreibvorgänge zu beschleunigen.  
+Mit der Option *"space_cache=v2"* werden die Adressen der freien Blöcke des Laufwerks zwischengespeichert, um die Schreibvorgänge zu beschleunigen.  
 Die Option *"autodefrag"* sorgt für die Defragmentierung der Dateien während der Laufzeit.  
 Datenkomprimierung erreichen wir mit der Option *"compress=zstd"*.
 
@@ -173,7 +173,7 @@ Snapper arbeitet mit systemd zusammen. Einige Einstellungen zum Handling der aut
   
 Bei jeder APT-Aktion werden die **Apt Snapshot** *"pre"* und *"post"* erstellt. Der Schlüssel `NUMBER_LIMIT=50` bewirkt, dass die jüngsten fünfundzwanzig Snapshotpaare erhalten bleiben.
 
-Snapper erzeugt automatisch **Timeline Snapshot** wenn der Schlüssel `TIMELINE_CREATE=yes` in den Konfigurationsdateien eingestellt ist. Die systemd Unit `snapper-timeline.timer` aktiviert die zugehörige Service Unit stündlich. Entsprechend der *default* Konfiguration behält Snapper jeweils mindestens zehn `HOURLY`, `DAILY`, `MONTHLY` und `YEARLY` Snapshots.
+Snapper erzeugt automatisch **Timeline Snapshot**, wenn der Schlüssel `TIMELINE_CREATE=yes` in den Konfigurationsdateien eingestellt ist. Die systemd Unit `snapper-timeline.timer` aktiviert die zugehörige Service Unit stündlich. Entsprechend der *default* Konfiguration behält Snapper jeweils mindestens zehn `HOURLY`, `DAILY`, `MONTHLY` und `YEARLY` Snapshots.
 
 Dadurch summieren sich die gehaltenen Snapshots erheblich. Die Tabelle *Gehaltene Snapshots 1* berücksichtigt die *default* Konfiguration für das `@home` Subvolumen und die *root* Konfiguration für `@` mit einem dist-upgrade täglich.
 
@@ -190,7 +190,7 @@ Gehaltene Snapshots 1
 | nach 1 Jahr    | 50  | 30 + max 24 |
 | nach 10 Jahren | 50  | 40 + max 24 |
 
-*"+ max 24"* beschreibt die Anzahl der erstellten *HOURLY Timeline Snapshot* bis zu dem Zeitpunkt an dem der `snapper-cleanup.timer` aktiv wird. Der allererste *Timeline Snapshot* vagabundiert sage und schreibe mindestens zehn Jahre und einen Tag in unseren Dateisystem. Wer möchte sein produktiv eingesetztes System auf diesen Snapshot zurücksetzen und die ganzen Daten so lange behalten?  
+*"+ max 24"* beschreibt die Anzahl der erstellten *HOURLY Timeline Snapshot* bis zu dem Zeitpunkt an dem der `snapper-cleanup.timer` aktiv wird. Der allererste *Timeline Snapshot* vagabundiert sage und schreibe mindestens zehn Jahre und einen Tag in unserem Dateisystem. Wer möchte sein produktiv eingesetztes System auf diesen Snapshot zurücksetzen und die ganzen Daten so lange behalten?  
 Man beachte: Snapper und Snapshots sind kein Mittel zur Datensicherung. Sie ermöglichen das zeitnahe Zurücksetzen des Systems bei auftretenden Fehlern oder durch uns angestoßene Aktionen mit ungewollten Auswirkungen.
 
 Aus diesen Gründen generieren wir eine neue Konfigurationsvorlage aus der Datei `/usr/share/snapper/config-templates/default` mit den Werten der Spalte *"user"* aus der oben abgebildeten Tabelle *"Snapper Konfiguration"* und speichern sie unter dem Namen `user`. Anschließend erzeugen wir die Konfiguration für unser Subvolumen `@data`.
@@ -206,7 +206,7 @@ Dies:
 3. Fügt den Namen der Konfiguration `data_pr` zum Schlüssel *"SNAPPER_CONFIGS"* in der Datei`/etc/default/snapper` hinzu.
 
 Jetzt ist die Konfiguration aktiv. Wenn, wie in unserem Beispiel, der Schlüssel `TIMELINE_CREATE=yes` gesetzt ist, übernimmt systemd mit den Timern die regelmäßige Erstellung von *"timeline snapshots"*.  
-Wir vergleichen noch einmal die gehaltenen Snapshot.
+Wir vergleichen noch einmal die gehaltenen Snapshots.
 
 Gehaltene Snapshots 2
 
@@ -221,20 +221,20 @@ Gehaltene Snapshots 2
 | nach 1 Jahr    | 50  | 30 + max 24 | 3 + max 24 |
 | nach 10 Jahren | 50  | 40 + max 24 | 3 + max 24 |
 
-Im Subvolumen `@data` bleiben nach einer Woche konstant ein Wochensnapschot, zwei Tagessnapshots des Vortages und bis zu vierundzwanzig Snapshots des aktuellen Tages erhalten. Wer die maximal vierundzwanzig Tagessnapshot als zu viel erachtet schaut sich bitte das folgende Kapitel *Snapper und systemd* an.
+Im Subvolumen `@data` bleiben nach einer Woche konstant ein Wochensnapshot, zwei Tagessnapshots des Vortages und bis zu vierundzwanzig Snapshots des aktuellen Tages erhalten. Wer die maximal vierundzwanzig Tagessnapshots als zu viel erachtet schaut sich bitte das folgende Kapitel *Snapper und systemd* an.
 
-Wir können einzelne *Schlüssel=Wert* Paare auch auf der Kommandozeile ändern. Im Beispiel verringern wir in der Konfiguration `root` die Anzahl der gehaltenen, nummerierten Snapshot.
+Wir können einzelne *Schlüssel=Wert* Paare auch auf der Kommandozeile ändern. Im Beispiel verringern wir in der Konfiguration `root` die Anzahl der gehaltenen, nummerierten Snapshots.
 
 ~~~
 # snapper -c root set-config NUMBER_LIMIT=20
 ~~~
 
-Jetzt bleiben die jüngsten zehn statt fünfundzwanzig Pre- und Post-Snapshot Paare nach APT Aktionen erhalten. Für den Standardgebrauch eines Laptop oder PCs dürfte dieser Wert ausreichen.  
+Jetzt bleiben die jüngsten zehn statt fünfundzwanzig Pre- und Post-Snapshot Paare nach APT Aktionen erhalten. Für den Standardgebrauch eines Laptops oder PCs dürfte dieser Wert ausreichen.  
 An dieser Stelle sollte jeder siduction Nutzer abwägen wie viele Snapshot er wie lange halten möchte und die Konfiguration entsprechend anpassen. 
     
 ### Snapper und systemd
 
-Snapper installiert drei systemd Unit Paare um in Abhängigkeit von APT Aktionen und Zeit Snapshots zu erstellen oder zu löschen.
+Snapper installiert drei systemd Unit Paare, um in Abhängigkeit von APT Aktionen und Zeit Snapshots zu erstellen oder zu löschen.
 
 + Beim Erstellen von Snapshots mit den Schlüsseln  
   `DISABLE_APT_SNAPSHOT="no"` in der Datei `/etc/default/snapper`  
@@ -252,9 +252,9 @@ Snapper installiert drei systemd Unit Paare um in Abhängigkeit von APT Aktionen
   unter Mitwirkung der Systemd Unit  
   `snapper-cleanup.timer` und `snapper-cleanup.service`.
 
-Das Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus möglich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende Pakete zu erhalten. Ein Rollback mit Snapper ist dann für den Benutzer eine gute Alternative um weiterhin zuverlässig zu arbeiten.
+Dass Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus möglich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende Pakete zu erhalten. Ein Rollback mit Snapper ist dann für den Benutzer eine gute Alternative, um weiterhin zuverlässig zu arbeiten.
 
-Dagegen bietet die *TIMTLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernens von alten und leeren Snapshots.
+Dagegen bietet die *TIMETLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernens von alten und leeren Snapshots.
 
 Die Handbuchseite [*systemd-timer*](0716-systemd-timer_de.md#systemd-timer) erklärt die Funktionsweise der Timer Unit.
 
@@ -289,7 +289,7 @@ WantedBy=timers.target
 ~~~
 
 Mit dieser Änderung erhalten wir einen Snapshot dreißig Sekunden nach dem Boot und danach alle zwei Stunden. Von nun an erstellt Snapper jeden Tag maximal zwölf statt vierundzanzig Snapshots.  
-Wir speichern die Datei und schließen den Editor. systemd legt die geänderte Datei mit gleichem Namen im Verzeichnis `/etc/systemd/system/` an und führt den Befehl **`systemctl daemon-reload`** aus um die geänderte Konfiguration zu laden.
+Wir speichern die Datei und schließen den Editor. systemd legt die geänderte Datei mit gleichem Namen im Verzeichnis `/etc/systemd/system/` an und führt den Befehl **`systemctl daemon-reload`** aus, um die geänderte Konfiguration zu laden.
 
 Die zweite systemd Timer Unit `snapper-cleanup.timer` kümmert sich um die Entsorgung alter, überzähliger und leerer Snapshots. Sie hat folgenden Inhalt:
 
@@ -306,13 +306,13 @@ OnUnitActiveSec=1d
 WantedBy=timers.target
 ~~~
 
-Mit dem Wissen um den Inhalt des TIMELINE-Timers können wir nun abwägen ob die Konfiguration sinnvoll ist. Für jemanden der seinen PC jeden Tag neu startet dürfte der Schlüssel `OnBootSec=10m` eher ungünstig sein, wenn er feststellt, dass sich am Vortag kurz vor Feierabend ein gravierender Fehler eingeschlichen hat. Sinnvoller ist für diesen Fall vermutlich den Schlüssel auf `OnBootSec=4h` einzustellen. Die Änderung der Datei erfolgt analog dem zuvor gezeigten Beispiel.
+Mit dem Wissen um den Inhalt des TIMELINE-Timers können wir nun abwägen, ob die Konfiguration sinnvoll ist. Für jemanden, der seinen PC jeden Tag neu startet, dürfte der Schlüssel `OnBootSec=10m` eher ungünstig sein, wenn er feststellt, dass sich am Vortag kurz vor Feierabend ein gravierender Fehler eingeschlichen hat. Sinnvoller ist für diesen Fall vermutlich den Schlüssel auf `OnBootSec=4h` einzustellen. Die Änderung der Datei erfolgt analog dem zuvor gezeigten Beispiel.
 
 ### Snapper - manuelle Snapshots
 
 Selbstverständlich können wir mit Snapper auch unabhängig von den automatischen Aktionen Snapshots erstellen. Dafür muss der ausführende Benutzer in der Snapper-Konfiguration des Subvolumens mit Gruppen- oder Userrechten eingetragen sein.
 
-Die Syntax des Befehls entspricht dem folgendem Muster, das auch die häufig zur Anwendung kommenden Optionen zeigt.
+Die Syntax des Befehls entspricht dem folgenden Muster, das auch die häufig zur Anwendung kommenden Optionen zeigt.
 
 ~~~
 # snapper -c <config_name> create -t <type> -d <description> -c <cleanup-algorithm> -u <userdata>
@@ -321,15 +321,15 @@ Die Syntax des Befehls entspricht dem folgendem Muster, das auch die häufig zur
 + snapper **-c \<config_name\>** create  
   Der Snapper Befehl erstellt von dem Subvolumen der benannten Konfiguration einen Snapshot. Fehlt die Option, so wendet Snapper den Befehl auf das Subvolumen `@` mit der Konfiguration `root` an. Diese Regel gilt für alle Snapper Befehle.  
 + **-t \<type\>**  
-  Die Art des zu erstellenden Snapshot. Mögliche Werte: `single`, `pre`, `post`.  
+  Die Art des zu erstellenden Snapshots. Mögliche Werte: `single`, `pre`, `post`.  
 + **-d \<description\>**  
   Beliebiger Text. Bei enthaltenen Leer- und Sonderzeichen `"` verwenden.  
 + **-c \<cleanup-algorithm\>**  
-  Die Option bestimmt nach welchen Regeln der Snapshot automatisch gelöscht werden soll. Mögliche Werte: `number`, `timeline`, `pre`, `post`. Fehlt diese Option, bleibt der Snapshot so lange erhalten bis der Benutzer ihn manuell löscht.  
+  Die Option bestimmt, nach welchen Regeln der Snapshot automatisch gelöscht werden soll. Mögliche Werte: `number`, `timeline`, `pre`, `post`. Fehlt diese Option, bleibt der Snapshot so lange erhalten bis der Benutzer ihn manuell löscht.  
 + **-u \<userdata\>**  
-  Legt Benutzerdaten für den Snapshot fest. Das Format muss *Schlüssel=Wert* sein. Mehrere Benutzerdaten müssen duch ein Komma getrennt sein. Zum Beispiel `author=Tom,important=yes`.
+  Legt Benutzerdaten für den Snapshot fest. Das Format muss *Schlüssel=Wert* sein. Mehrere Benutzerdaten müssen durch ein Komma getrennt sein. Zum Beispiel `author=Tom,important=yes`.
 
-Snapper legt die Snapshots grundsätzlich im *read-only* Modus an. Man kann die Voreinstellung mit der Option `--read-write` ändern. Eine Änderung von Daten in einem Snapshot führt zu inkonsistenten Datenbeständen. Wir raten dringend davon ab, es sei denn man weiß genau was man tut.
+Snapper legt die Snapshots grundsätzlich im *read-only* Modus an. Man kann die Voreinstellung mit der Option `--read-write` ändern. Eine Änderung von Daten in einem Snapshot führt zu inkonsistenten Datenbeständen. Wir raten dringend davon ab, es sei denn man weiß genau, was man tut.
 
 Nun legen wir einen Snapshot an und lassen uns die Snapshots der gleichen Konfiguration anzeigen.
 
@@ -361,7 +361,7 @@ Der Snapshot # 91 bleibt jetzt so lange erhalten bis wir ihn selbst löschen.
 
 **Snapshot löschen**
 
-Wir können zu jeder Zeit einen beliebigen Snapshot löschen sofern wir die Rechte dazu haben. Für Snapper ist die Löschaktion nicht von Belang, denn der Cleanup Algorithmus prüft bei jedem Durchlauf neu welche Snapshots gehalten werden. Das obere Kapitel [Snapper Konfiguration](0704-sys-admin-btrfs-snapper_de.md#snapper-konfiguration) erklärt darüber hinaus ausführlich die Einstellungen mit denen wir den Cleanup Algorithmus bei Bedarf anpassen. 
+Wir können zu jeder Zeit einen beliebigen Snapshot löschen, sofern wir die Rechte dazu haben. Für Snapper ist die Löschaktion nicht von Belang, denn der Cleanup Algorithmus prüft bei jedem Durchlauf neu, welche Snapshots gehalten werden. Das obere Kapitel [Snapper Konfiguration](0704-sys-admin-btrfs-snapper_de.md#snapper-konfiguration) erklärt darüber hinaus ausführlich die Einstellungen mit denen wir den Cleanup Algorithmus bei Bedarf anpassen. 
 
 Der folgende Befehl entfernt den Snapshot # 91 aus unserem Subvolumen `@data`.
 
@@ -370,7 +370,7 @@ $ snapper -c data_pr delete 91
 ~~~
 
 Der Befehl `delete 34-50` löscht eine Reihe von Snapshots.  
-Der Snapshot # 0 mit der Beschreibung *"current"* ist nicht löschbar. Es ist der Snapshot der im Dateibaum eingehangen ist und in dem wir zur Zeit arbeiten.
+Der Snapshot # 0 mit der Beschreibung *"current"* ist nicht löschbar. Es ist der Snapshot, der im Dateibaum eingehangen ist und in dem wir zur Zeit arbeiten.
 
 ### Snapper Rollback
 
