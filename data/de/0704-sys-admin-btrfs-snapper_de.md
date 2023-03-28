@@ -230,7 +230,7 @@ Wir können einzelne *Schlüssel=Wert* Paare auch auf der Kommandozeile ändern.
 ~~~
 
 Jetzt bleiben die jüngsten zehn statt fünfundzwanzig Pre- und Post-Snapshot Paare nach APT Aktionen erhalten. Für den Standardgebrauch eines Laptops oder PCs dürfte dieser Wert ausreichen.  
-An dieser Stelle sollte jeder siduction Nutzer abwägen wie viele Snapshot er wie lange halten möchte und die Konfiguration entsprechend anpassen. 
+An dieser Stelle sollte jeder siduction Nutzer abwägen wie viele Snapshots er wie lange halten möchte und die Konfiguration entsprechend anpassen. 
     
 ### Snapper und systemd
 
@@ -254,7 +254,7 @@ Snapper installiert drei systemd Unit Paare, um in Abhängigkeit von APT Aktione
 
 Dass Snapper zu jeder APT-Aktion einen Pre- und Post-Snapshot erstellt, sollte man in siduction auf jeden Fall beibehalten. siduction ist ein Rolling-Release basierend auf Debian sid. Es ist durchaus möglich bei einem Upgrade einzelne, nicht wie vorgesehen funktionierende Pakete zu erhalten. Ein Rollback mit Snapper ist dann für den Benutzer eine gute Alternative, um weiterhin zuverlässig zu arbeiten.
 
-Dagegen bietet die *TIMETLINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernens von alten und leeren Snapshots.
+Dagegen bietet die *TIMELINE* Funktion Raum für individuelle Anpassungen. Die richtigen Adressaten sind die beiden Timer-Units `snapper-timeline.timer` und `snapper-cleanup.timer`. Erstere ist der Zeitgeber für die Erstellung von Snapshots, die zweite bestimmt den Zeitpunkt des Entfernens von alten und leeren Snapshots.
 
 Die Handbuchseite [*systemd-timer*](0716-systemd-timer_de.md#systemd-timer) erklärt die Funktionsweise der Timer Unit.
 
@@ -379,12 +379,9 @@ Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene A
 **Voraussetzungen**  
 Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolumen befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
 
-> **Achtung**  
-> Die Funktionalität für Rollback entsprechend der folgenden Anleitung ist in den ISOs zum jetzigen Zeitpunkt (2023-02-09) noch nicht enthalten. Bitte die Hinweise auf [siduction github](https://github.com/siduction/siduction-btrfs) beachten.
-
 **Rollback durchführen**  
-Vor dem Rollback testen wir erst einmal ob das Rollbackziel unseren Erwartungen entspricht. Dazu booten wir unter Verwendung des Submenüs *"siduction snapshots"* in den gewünschten Snapshot, zum Beispiel 13. Das System bootet im *read-only* Modus. Die Fehlermeldung zu *sddm* ignorieren wir.  
-Arbeitet das System wie erwartet, kehren wir mit einem Reboot in des derzeitige default Subvolumen zurück. Dort führen wir den Rollback als **root** aus:
+Vor dem Rollback testen wir erst einmal, ob das Rollbackziel unseren Erwartungen entspricht. Dazu booten wir unter Verwendung des Submenüs *"siduction snapshots"* in den gewünschten Snapshot, zum Beispiel 13. Das System bootet im *read-only* Modus. Die Fehlermeldung zu *sddm* ignorieren wir.  
+Arbeitet das System wie erwartet, kehren wir mit einem Reboot in das derzeitige default Subvolumen zurück. Dort führen wir den Rollback als **root** aus:
 
 ~~~
 # snapper --ambit classic rollback 13
@@ -396,7 +393,7 @@ Einstellung des Standard-Subvolumens zu Schnappschuss 16.
 
 **Rollback immer aus dem default Subvolumen mit Angabe der Subvolumen Nummer des Rollbackziels ausführen.**
 
-Die Ausgabe beschreibt präzise den Ablauf des Rollback. Anschließend wird automatisch die Menüdatei *grub.cfg* des Bootmanagers Grub aktualisiert, damit die neuen Snapshots im Submenü erscheinen und der Snapshot 16 als Standard-Subvolumen benutzt wird. Die Grub Menüdatei wird immer dann aktualisiert, wenn sich nach einem Snapshot, einem Rollback oder Reboot die Pfade des Btrfs-default-Subvolumen, des gebooteten Subvolumens oder des Grub-default-Menüeintrages unterscheiden.  
+Die Ausgabe beschreibt präzise den Ablauf des Rollbacks. Anschließend wird automatisch die Menüdatei *grub.cfg* des Bootmanagers Grub aktualisiert, damit die neuen Snapshots im Submenü erscheinen und der Snapshot 16 als Standard-Subvolumen benutzt wird. Die Grub Menüdatei wird immer dann aktualisiert, wenn sich nach einem Snapshot, einem Rollback oder Reboot die Pfade des Btrfs-default-Subvolumens, des gebooteten Subvolumens oder des Grub-default-Menüeintrages unterscheiden.  
 Der Befehl **`snapper list`** zeigt, dass wir uns derzeit in Snapshot 12 befinden und Snapshot 16 das neue Standard-Subvolumen ist. (Das Minus `-` hinter  #12 und das Plus `+` hinter #16.)
 
 ~~~
@@ -427,9 +424,9 @@ schließen wir den Rollback ab und teilen Grub mit, fortan das neue Standard-Sub
 
 ### Datei Rollback im Root-Dateisystem
 
-Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Snapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet ob sie zurückgenommen werden sollen.
+Es handelt sich dabei um das Rückgängigmachen von Änderungen an Dateien. Zu diesem Zweck werden zwei Snapshots miteinander verglichen und dann die gewünschte geänderte Datei herausgesucht. Anschließend lässt man sich die Änderungen anzeigen und entscheidet, ob sie zurückgenommen werden sollen.
 
-Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens @. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `*` gekennzeichnete. In ihn wurde gebootet und er der Standard-Snapshot. Wurde noch kein System Rollback vorgenommen, tritt Snapshot 0 an seine Stelle.
+Die Ausgabe von **`snapper list`** zeigt die aktuell vorhandenen Snapshots des Subvolumens @. (Die Spalten wurden gekürzt). Alle Snapshots mit einer Ziffer # größer Null bilden den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Die einzigste Ausnahme ist der mit einem `*` gekennzeichnete. In ihn wurde gebootet und er ist der Standard-Snapshot. Wurde noch kein System Rollback vorgenommen, tritt Snapshot 0 an seine Stelle.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -486,7 +483,7 @@ Wird der Befehl **`snapper undochange 42..45`** ohne die Angabe einer Datei abge
 
 **Mit Snapper allein**
 
-Snapper behandelt den Snapshot 0 zwar wie einen Snapshot, aber er stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel. Alle anderen Snapshot bilden, wie bereits zuvor erwähnt, den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Änderungen zwischen diesen Snapshots agieren demnach nur in der Vergangenheit.  
+Snapper behandelt den Snapshot 0 zwar wie einen Snapshot, aber er stellt den aktuellen Zustand des Subvolumens dar und ist damit variabel. Alle anderen Snapshots bilden, wie bereits zuvor erwähnt, den Zustand des Dateisystems zu exakt diesem Zeitpunkt ab. Änderungen zwischen diesen Snapshots agieren demnach nur in der Vergangenheit.  
 Für uns bedeutet das, dass ein *"Datei Rollback"* von User Daten zwischen den Snapshots 15 und 17 wertlos ist, da der Vorgang den aktuellen Zustand in unserem Subvolumen nicht betrifft. Wir benötigen also immer den Snapshot 0 als Ziel für Änderungen.
 
 Wir schauen uns einen derartigen Vorgang anhand der Datei `Test.txt` im Subvolumen `@data` an.
@@ -501,7 +498,7 @@ $ snapper -c data_pr list
 17 |single|     |14:51:26|root    |timeline  |timeline
 ~~~
 
-Der Vergleich zwischen Schnapshot 15 und 16:
+Der Vergleich zwischen den Schnapshots 15 und 16:
 
 ~~~
 $ snapper -c data_pr status 15..16
@@ -562,14 +559,12 @@ $ snapper -c data_pr undochange 16..0 /data/user1/Test.txt
 angelegt:1 geändert:0 gelöscht:0
 ~~~
 
-Vermutlich ist diese Anwendung des Snapper *"Datei Rollback"* eine der am häufigsten verwendete.
-
 **Mit Snapper und Meld**
 
 Die vorangegangene Vorgehensweise stellt immer eine Datei als ganzes auf den Stand zurück, der dem ausgewählten Snapshot entspricht. Einzelne Teile der Änderungen können wir so nicht übernehmen.  
-Das Vergleichsprogramm **Meld** füllt genau diese Lücke. *Meld* ist zusätzlich in der Lage per *Copy & Paste* Teile an beliebiger Stelle im aktuellen Dokument einzufügen. Ein Vorteil auch gegenüber **Kompare** des KDE Desktop. In siduction wird *Meld* nicht standardmäßig installiert. Wir holen das nach.
+Das Vergleichsprogramm **Meld** füllt genau diese Lücke. *Meld* ist zusätzlich in der Lage per *Copy & Paste* Teile an beliebiger Stelle im aktuellen Dokument einzufügen. Ein Vorteil auch gegenüber **Kompare** des KDE Desktops. In siduction wird *Meld* nicht standardmäßig installiert. Wir holen dies nach.
 
-Die Aktionen von Snapper sind für den nicht **root** Benutzer immer dann möglich, wenn in der Konfigurationsdatei für das Subvolumen der Schlüssel `ALLOW_GROUPS=users` eingestellt ist. Das ist Standard. Jedoch bleibt ihm der Zugriff auf die Dateien des Snapshots innerhalb des Dateisystems verwehrt, weil das Verzeichnis `/.snapshots` nur für **root** les- und ausführbar ist. Um mit *Meld* arbeiten zu können änder wir das.
+Die Aktionen von Snapper sind für den nicht **root** Benutzer immer dann möglich, wenn in der Konfigurationsdatei für das Subvolumen der Schlüssel `ALLOW_GROUPS=users` eingestellt ist. Dies ist Standard. Jedoch bleibt ihm der Zugriff auf die Dateien des Snapshots innerhalb des Dateisystems verwehrt, weil das Verzeichnis `/.snapshots` nur für **root** les- und ausführbar ist. Um mit *Meld* arbeiten zu können änder wir dies.
 
 Snapshots für Benutzer lesbar machen und *Meld* installieren. (Ausführen als **root**.)
 
@@ -593,7 +588,7 @@ Wir starten *Meld* und wählen für den Dateivergleich die beiden Dateien mit de
 
 ![Meld Dateivergleich](./images-de/btrfs/meld-de.png "Dateien vergleichen mit Meld.")
 
-Ein Klick auf den Pfeil überträgt die Zeile in unsere aktuelle Datei. Ein weiterer Klick auf das Kreuz entfernt die anderen Zeilen. Eine Übertragung auf die Datei im Snapshot ist nicht möglich, da das Dateisystem des Snapshot schreibgeschützt ist.
+Ein Klick auf den Pfeil überträgt die Zeile in unsere aktuelle Datei. Ein weiterer Klick auf das Kreuz entfernt die anderen Zeilen. Eine Übertragung auf die Datei im Snapshot ist nicht möglich, da das Dateisystem des Snapshots schreibgeschützt ist.
 
 Da uns Snapper den genauen Pfad zu unserer Datei im Snapshot anzeigt, haben wir auch die ganz konventionelle Möglichkeit eine Datei aus dem Snapshot in unser aktuelles Arbeitsverzeichnis zu kopieren.
 

@@ -379,9 +379,6 @@ If the system is damaged due to an action initiated by us that went completely o
 **Prerequisites**  
 A *"rollback"* is only supported with Btrfs for the root file system. The root file system must be on a single device, in a single partition, and on a single subvolume. Directories that are excluded from `/` snapshots, for example `/tmp`, can be on separate partitions.
 
-> **Caution**  
-> The functionality for rollback according to the following instructions is not yet included in the ISOs at this time (2023-02-09). Please refer to the instructions on [siduction github](https://github.com/siduction/siduction-btrfs).
-
 **Performing a rollback**  
 Before the rollback, we check if the rollback target works as expected. To do this, we boot into the desired snapshot, for example 13, using the *"siduction snapshots"* submenu. The system boots in *read-only* mode. We ignore the error message regarding *sddm*.
 If it does, we reboot back to the current default subvolume. There we perform the rollback as **root**:
@@ -560,8 +557,6 @@ A deleted file is promoted back to the current directory with the same command. 
 $ snapper -c data_pr undochange 16..0 /data/user1/Test.txt
 create:1 modify:0 delete:0
 ~~~
-
-Probably this application of Snapper *"File Rollback"* is one of the most used.
 
 **With Snapper and Meld**
 
