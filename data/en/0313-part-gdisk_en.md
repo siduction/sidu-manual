@@ -63,7 +63,7 @@ The boot command in a root terminal is: **`cgdisk /dev/sdX`**.
 
 `cgdisk` starts with a warning message if no GPT is found.
 
-![warning message]](./images-en/cgdisk/cgdisk_00.png)
+![warning message](./images-en/cgdisk/cgdisk_00.png)
 
 We need a total of five partitions for the two operating systems: two ROOT partitions, one shared DATA partition, and one SWAP partition for swap space. In addition, the *EFI system* partition already mentioned above (maximum 100MB) are required.  
 We recommend leaving the `/home` directory on the ROOT partition. The `/home` directory should be the place where the individual configurations are stored, and only these. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.
@@ -285,4 +285,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *"recovery & transformation"* and *"experts"* should only be used if you are very familiar with GPT. As a "non-expert", you should only use these menus if a disk is damaged. Before any drastic action, the option **`b`** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2023-05-18</div>
+<div id="rev">Last edited: 2023-05-19</div>
