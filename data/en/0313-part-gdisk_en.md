@@ -47,7 +47,7 @@ Besides the command line program `gdisk`, graphical applications like `gparted` 
 > **Back up data beforehand!**  
 > When using any partitioning software, there is a risk of data loss. Data you want to preserve should always be backed up beforehand on another data medium.
 
-In the following example, we will format a 150 GB hard disk so that two Linux systems can be installed as dual boot afterwards. In order to benefit from UEFI's advantages, we need an *EFI system* partition in the GPT and a *BIOS boot* partition for the second stage of the GRUB bootloader.  
+In the following example, we will format a 150 GB hard disk so that two Linux systems can be installed as dual boot afterwards. In order to benefit from UEFI's advantages, we need an *EFI system* partition in the GPT.  
 We show the necessary steps with the partitioning program `cgdisk`, which supports GPT with UEFI.
 
 `cgdisk` is the curses-based program variant of `gdisk`. It provides a user-friendly interface within the terminal.  
@@ -65,7 +65,7 @@ The boot command in a root terminal is: **`cgdisk /dev/sdX`**.
 
 ![warning message]](./images-en/cgdisk/cgdisk_00.png)
 
-We need a total of six partitions for the two operating systems: two ROOT partitions, one shared DATA partition, and one SWAP partition for swap space. In addition, the *EFI system* partition already mentioned above (maximum 100MB) and the *BIOS-boot* partition (1MB) are required.  
+We need a total of five partitions for the two operating systems: two ROOT partitions, one shared DATA partition, and one SWAP partition for swap space. In addition, the *EFI system* partition already mentioned above (maximum 100MB) are required.  
 We recommend leaving the `/home` directory on the ROOT partition. The `/home` directory should be the place where the individual configurations are stored, and only these. A separate data partition should be created for all other private data. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.
 
 The start screen:
@@ -84,12 +84,11 @@ Now we are expected to enter the type code for the partition.
 
 After entering **`L`**, a long list of codes and their usage appears. The integrated search function simplifies the selection. For us, the following codes are necessary:  
 *"ef00"* for EFI system  
-*"ef02*" for BIOS-boot  
 *"8200"* for Swap  
 *"8304"* for Linux root  
 *"8300"* for Linux data
 
-So we enter `ef00` and confirm. Afterwards, we may optionally assign a name (label), which has been done in the example, and confirm the entry again. We proceed after the same pattern for the partitions BIOS-boot, Linux-root, and Swap. The next picture shows the result of our efforts. As we can see, there is still plenty of space for a second system and especially for a shared data partition.
+So we enter `ef00` and confirm. Afterwards, we may optionally assign a name (label), which has been done in the example, and confirm the entry again. We proceed after the same pattern for the partitions Linux-root, and Swap. The next picture shows the result of our efforts. As we can see, there is still plenty of space for a second system and especially for a shared data partition.
 
 ![First part](./images-en/cgdisk/cgdisk_04.png)
 
@@ -146,11 +145,10 @@ The command generates the following output:
 ~~~
 Disk /dev/sdb: 149.5 GiB, 160041885696 bytes, 312581808 sectors
 /dev/sdb1      2048    206847    204800 100M EFI System
-/dev/sdb2    206848    223232     16384   8M BIOS boot
-/dev/sdb3    223233  52637695  52428800  25G Linux root
-/dev/sdb4  52637696  61026303   8388608   4G Linux swap
-/dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
-/dev/sdb6 260255744 312581808  52326064  25G Linux root
+/dev/sdb2    206848  52635647  52428800  25G Linux root
+/dev/sdb3  52635648  61024255   8388608   4G Linux swap
+/dev/sdb4  61024256 260270079 199245824  95G Linux filesyst
+/dev/sdb5 260270080 312581807  52311728  25G Linux root
 ~~~
 
 With this information, we format our previously created partitions.
@@ -163,25 +161,24 @@ The EFI system partition will be given a **FAT32** file system.
 mkfs.vfat /dev/sdb1
 ~~~
 
-**The BIOS_Boot partition must not be formatted!**  
-If the boot manager GRUB finds the *EFI-System* and the *BIOS\_Boot* partition during the installation, it will use them, no matter which installation target we have specified.
+If the boot manager GRUB finds the *EFI-System* partition during the installation, it will use it, no matter which installation target we have specified.
 
-We format the Linux partitions sdb3, sdb5, and sdb6 with **ext4**.
+We format the Linux partitions sdb2, sdb4, and sdb5 with **ext4**.
 
 ~~~
-mkfs.ext4 /dev/sdb3
+mkfs.ext4 /dev/sdb2
 ~~~
 
 To set up the swap partition, format it with
 
 ~~~
-mkswap /dev/sdb4
+mkswap /dev/sdb3
 ~~~
 
 Now the system needs to know about this partition:
 
 ~~~
-swapon /dev/sdb4
+swapon /dev/sdb3
 ~~~
 
 Check if the swap space is available:
@@ -189,13 +186,13 @@ Check if the swap space is available:
 ~~~
 swapon -s
 Filename   Type       Size     Used  Priority
-/dev/sdb4  partition  4194304  0     -2
+/dev/sdb3  partition  4194304  0     -2
 ~~~
 
 If swap was detected correctly:
 
 ~~~
-swapoff /dev/sdb4
+swapoff /dev/sdb3
 ~~~
 
 **Next, it is essential to reboot the system so that the new partitioning and file system scheme is read by the kernel.**
@@ -216,8 +213,8 @@ These possibilities are:
 
 **Booting with UEFI**
 
-If UEFI is to be used for booting, a **FAT** formatted **EFI System** partition (type "*ef00*" ) must be created as the first partition, and an unformatted **BIOS boot** partition (type *"ef02"* ) must be created as the second one. The first partition contains the boot loader(s).  
-During the installation of siduction, any choices made by install-gui as to where to install the boot loader are ignored if the aforementioned partitions exist. The siduction boot loader is stored in the *EFI system* partition at `/efi/siduction`. The EFI system partition is also mounted as `/boot/efi` as long as the option `mount other partitions` is selected. The mount of the *EFI system* partition does not need to be specified in the installer.
+If UEFI is to be used for booting, a **FAT** formatted **EFI System** partition (type "*ef00*" ) must be created as the first partition. The first partition contains the boot loader(s).  
+During the installation of siduction, any choices made by install-gui as to where to install the boot loader are ignored if the aforementioned partition exist. The siduction boot loader is stored in the *EFI system* partition at `/efi/siduction`. The EFI system partition is also mounted as `/boot/efi` as long as the option `mount other partitions` is selected. The mount of the *EFI system* partition does not need to be specified in the installer.
 
 **Booting with BIOS**
 
@@ -288,4 +285,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *"recovery & transformation"* and *"experts"* should only be used if you are very familiar with GPT. As a "non-expert", you should only use these menus if a disk is damaged. Before any drastic action, the option **`b`** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2023/02/08</div>
+<div id="rev">Last edited: 2023-05-18</div>

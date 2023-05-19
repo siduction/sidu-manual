@@ -123,8 +123,7 @@ preserve should always be backed up beforehand on another data medium.
 <p>In the following example, we will format a 150 GB hard disk so that
 two Linux systems can be installed as dual boot afterwards. In order to
 benefit from UEFI’s advantages, we need an <em>EFI system</em> partition
-in the GPT and a <em>BIOS boot</em> partition for the second stage of
-the GRUB bootloader.<br />
+in the GPT.<br />
 We show the necessary steps with the partitioning program
 <code>cgdisk</code>, which supports GPT with UEFI.</p>
 <p><code>cgdisk</code> is the curses-based program variant of
@@ -145,11 +144,10 @@ input</li>
 <p><code>cgdisk</code> starts with a warning message if no GPT is
 found.</p>
 <p>[warning message]](./images-en/cgdisk/cgdisk_00.png)</p>
-<p>We need a total of six partitions for the two operating systems: two
+<p>We need a total of five partitions for the two operating systems: two
 ROOT partitions, one shared DATA partition, and one SWAP partition for
 swap space. In addition, the <em>EFI system</em> partition already
-mentioned above (maximum 100MB) and the <em>BIOS-boot</em> partition
-(1MB) are required.<br />
+mentioned above (maximum 100MB) are required.<br />
 We recommend leaving the <code>/home</code> directory on the ROOT
 partition. The <code>/home</code> directory should be the place where
 the individual configurations are stored, and only these. A separate
@@ -180,16 +178,15 @@ first sector for the new partition. Then we enter the desired size of
 and their usage appears. The integrated search function simplifies the
 selection. For us, the following codes are necessary:<br />
 <em>“ef00”</em> for EFI system<br />
-<em>“ef02<em>” for BIOS-boot<br />
-</em>”8200”</em> for Swap<br />
+<em>“8200”</em> for Swap<br />
 <em>“8304”</em> for Linux root<br />
 <em>“8300”</em> for Linux data</p>
 <p>So we enter <code>ef00</code> and confirm. Afterwards, we may
 optionally assign a name (label), which has been done in the example,
 and confirm the entry again. We proceed after the same pattern for the
-partitions BIOS-boot, Linux-root, and Swap. The next picture shows the
-result of our efforts. As we can see, there is still plenty of space for
-a second system and especially for a shared data partition.</p>
+partitions Linux-root, and Swap. The next picture shows the result of
+our efforts. As we can see, there is still plenty of space for a second
+system and especially for a shared data partition.</p>
 <figure>
 <img src="./images-en/cgdisk/cgdisk_04.png" alt="First part" />
 <figcaption aria-hidden="true">First part</figcaption>
@@ -265,11 +262,10 @@ with the numbers for each partition:</p>
 <p>The command generates the following output:</p>
 <pre><code>Disk /dev/sdb: 149.5 GiB, 160041885696 bytes, 312581808 sectors
 /dev/sdb1      2048    206847    204800 100M EFI System
-/dev/sdb2    206848    223232     16384   8M BIOS boot
-/dev/sdb3    223233  52637695  52428800  25G Linux root
-/dev/sdb4  52637696  61026303   8388608   4G Linux swap
-/dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
-/dev/sdb6 260255744 312581808  52326064  25G Linux root</code></pre>
+/dev/sdb2    206848  52635647  52428800  25G Linux root
+/dev/sdb3  52635648  61024255   8388608   4G Linux swap
+/dev/sdb4  61024256 260270079 199245824  95G Linux filesyst
+/dev/sdb5 260270080 312581807  52311728  25G Linux root</code></pre>
 <p>With this information, we format our previously created
 partitions.</p>
 <p>Please read <strong><code>man mke2fs</code></strong>,
@@ -278,23 +274,22 @@ partitions.</p>
 <p>The EFI system partition will be given a <strong>FAT32</strong> file
 system.</p>
 <pre><code>mkfs.vfat /dev/sdb1</code></pre>
-<p><strong>The BIOS_Boot partition must not be formatted!</strong><br />
-If the boot manager GRUB finds the <em>EFI-System</em> and the
-<em>BIOS_Boot</em> partition during the installation, it will use them,
-no matter which installation target we have specified.</p>
-<p>We format the Linux partitions sdb3, sdb5, and sdb6 with
+<p>If the boot manager GRUB finds the <em>EFI-System</em> partition
+during the installation, it will use it, no matter which installation
+target we have specified.</p>
+<p>We format the Linux partitions sdb2, sdb4, and sdb5 with
 <strong>ext4</strong>.</p>
-<pre><code>mkfs.ext4 /dev/sdb3</code></pre>
+<pre><code>mkfs.ext4 /dev/sdb2</code></pre>
 <p>To set up the swap partition, format it with</p>
-<pre><code>mkswap /dev/sdb4</code></pre>
+<pre><code>mkswap /dev/sdb3</code></pre>
 <p>Now the system needs to know about this partition:</p>
-<pre><code>swapon /dev/sdb4</code></pre>
+<pre><code>swapon /dev/sdb3</code></pre>
 <p>Check if the swap space is available:</p>
 <pre><code>swapon -s
 Filename   Type       Size     Used  Priority
-/dev/sdb4  partition  4194304  0     -2</code></pre>
+/dev/sdb3  partition  4194304  0     -2</code></pre>
 <p>If swap was detected correctly:</p>
-<pre><code>swapoff /dev/sdb4</code></pre>
+<pre><code>swapoff /dev/sdb3</code></pre>
 <p><strong>Next, it is essential to reboot the system so that the new
 partitioning and file system scheme is read by the kernel.</strong></p>
 <h3 id="booting-with-gpt-uefi-or-gpt-bios">Booting with GPT-UEFI or
@@ -315,12 +310,11 @@ create the boot sector of a GPT volume.</p>
 <p><strong>Booting with UEFI</strong></p>
 <p>If UEFI is to be used for booting, a <strong>FAT</strong> formatted
 <strong>EFI System</strong> partition (type “<em>ef00</em>” ) must be
-created as the first partition, and an unformatted <strong>BIOS
-boot</strong> partition (type <em>“ef02”</em> ) must be created as the
-second one. The first partition contains the boot loader(s).<br />
+created as the first partition. The first partition contains the boot
+loader(s).<br />
 During the installation of siduction, any choices made by install-gui as
 to where to install the boot loader are ignored if the aforementioned
-partitions exist. The siduction boot loader is stored in the <em>EFI
+partition exist. The siduction boot loader is stored in the <em>EFI
 system</em> partition at <code>/efi/siduction</code>. The EFI system
 partition is also mounted as <code>/boot/efi</code> as long as the
 option <code>mount other partitions</code> is selected. The mount of the
@@ -405,7 +399,7 @@ create a backup copy in a file and save it on a separate medium. This
 will allow the original configuration to be restored if the action does
 not go as desired.</p>
 <div id="rev">
-Last edited: 2023/02/08
+Last edited: 2023-05-18
 </div>
 </body>
 </html>

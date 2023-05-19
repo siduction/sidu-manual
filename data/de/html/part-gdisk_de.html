@@ -128,9 +128,8 @@ sollen, immer zuvor auf einem anderen Datentr&auml;ger sichern.
 <p>In dem folgenden Beispiel werden wir eine 150GB Festplatte so
 formatieren, dass anschlie&szlig;end zwei Linux Systeme als Dualboot
 installierbar sein werden. Damit die Vorteile des UEFI zum tragen
-kommen, ben&ouml;tigen wir in der GPT eine <em>“EFI-System”</em>-Partition
-und f&uuml;r die zweite Stufe des GRUB-Bootloader eine
-<em>“BIOS-boot”</em>-Partition.<br />
+kommen, ben&ouml;tigen wir in der GPT eine
+<em>“EFI-System”</em>-Partition.<br />
 Wir zeigen die notwendigen Arbeitsschritte mit dem
 Partitionierungsprogramm <code>cgdisk</code>, das GPT mit UEFI
 unterst&uuml;tzt.</p>
@@ -154,11 +153,10 @@ wird.</p>
 <img src="./images-de/cgdisk/cgdisk_00.png" alt="Warnmeldung" />
 <figcaption aria-hidden="true">Warnmeldung</figcaption>
 </figure>
-<p>Wir ben&ouml;tigen f&uuml;r die beiden Betriebssysteme insgesamt sechs
+<p>Wir ben&ouml;tigen f&uuml;r die beiden Betriebssysteme insgesamt f&uuml;nf
 Partitionen: Zwei ROOT-, eine gemeinsame DATEN- sowie eine
 SWAP-Partition f&uuml;r den Auslagerungsspeicher. Zus&auml;tzlich die bereits oben
-erw&auml;hnte <em>“EFI-System”</em>-Partition (maximal 100MB) und die
-<em>“BIOS-boot”</em>-Partition (1MB).<br />
+erw&auml;hnte <em>“EFI-System”</em>-Partition (maximal 100MB).<br />
 Wir empfehlen, das <code>/home</code>-Verzeichnis auf der ROOT-Partition
 zu belassen. Das Verzeichnis <code>/home</code> sollte der Ort sein, an
 dem die individuellen Konfigurationen abgelegt werden, und nur diese.
@@ -191,17 +189,16 @@ erwartet.</p>
 Liste mit den Codes und ihrer Verwendung. Die integrierte Suchfunktion
 vereinfacht die Auswahl. F&uuml;r uns sind folgende Codes notwendig:<br />
 ef00 f&uuml;r EFI-System<br />
-ef02 f&uuml;r BIOS-boot<br />
 8200 f&uuml;r Swap<br />
 8304 f&uuml;r Linux Root<br />
 8300 f&uuml;r Linux Daten</p>
 <p>Wir tragen also <code>ef00</code> ein und best&auml;tigen. Anschlie&szlig;end
 d&uuml;rfen wir optional noch einen Namen (Label) vergeben, was im Beispiel
 getan wurde, und die Eingabe wieder best&auml;tigen. Mit den Partitionen f&uuml;r
-BIOS-boot, Linux-root und Swap wird nach gleichem Muster verfahren. Das
-n&auml;chst Bild zeigt das Ergebnis unserer Bem&uuml;hungen. Wie wir sehen ist
-noch reichlich Platz f&uuml;r ein zweites System und vor allem f&uuml;r eine
-gemeinsam genutzte Daten-Partition vorhanden.</p>
+Linux-root und Swap wird nach gleichem Muster verfahren. Das n&auml;chst Bild
+zeigt das Ergebnis unserer Bem&uuml;hungen. Wie wir sehen ist noch reichlich
+Platz f&uuml;r ein zweites System und vor allem f&uuml;r eine gemeinsam genutzte
+Daten-Partition vorhanden.</p>
 <figure>
 <img src="./images-de/cgdisk/cgdisk_04.png" alt="Erster Teil" />
 <figcaption aria-hidden="true">Erster Teil</figcaption>
@@ -282,11 +279,10 @@ f&uuml;r jede Partition anzeigen:</p>
 <p>Der Befehl generiert die folgende Ausgabe:</p>
 <pre><code>Disk /dev/sdb: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 /dev/sdb1      2048    206847    204800 100M EFI System
-/dev/sdb2    206848    223232     16384   8M BIOS boot
-/dev/sdb3    223233  52637695  52428800  25G Linux root
-/dev/sdb4  52637696  61026303   8388608   4G Linux swap
-/dev/sdb5  61026304 260255743 199229440  95G Linux filesyst
-/dev/sdb6 260255744 312581808  52326064  25G Linux root</code></pre>
+/dev/sdb2    206848  52635647  52428800  25G Linux root
+/dev/sdb3  52635648  61024255   8388608   4G Linux swap
+/dev/sdb4  61024256 260270079 199245824  95G Linux filesyst
+/dev/sdb5 260270080 312581807  52311728  25G Linux root</code></pre>
 <p>Mit diesen Informationen formatieren wir unsere zuvor erstellten
 Partitionen.</p>
 <p>Bitte die Manpages <strong><code>man mke2fs</code></strong>,
@@ -295,26 +291,23 @@ Partitionen.</p>
 <p>Die EFI-Systempartition erh&auml;lt ein <strong>FAT32</strong>
 Dateisystem.</p>
 <pre><code>mkfs.vfat /dev/sdb1</code></pre>
-<p><strong>Die BIOS_Boot-Partition darf nicht formatiert
-werden!</strong><br />
-Sofern der Bootmanager <code>GRUB</code> bei der Installation die
-<em>“EFI-System”</em>- und die <em>“BIOS_Boot”</em>-Partition findet,
-benutzt er sie, gleichg&uuml;ltig, welches Installationsziel wir angegeben
-haben.</p>
-<p>Die Linuxpartitionen <code>sdb3</code>, <code>sdb5</code> und
-<code>sdb6</code> formatieren wir mit <strong>ext4</strong>.</p>
-<pre><code>mkfs.ext4 /dev/sdb3</code></pre>
+<p>Sofern der Bootmanager <code>GRUB</code> bei der Installation die
+<em>“EFI-System”</em>-Partition findet, benutzt er sie, gleichg&uuml;ltig,
+welches Installationsziel wir angegeben haben.</p>
+<p>Die Linuxpartitionen <code>sdb2</code>, <code>sdb4</code> und
+<code>sdb5</code> formatieren wir mit <strong>ext4</strong>.</p>
+<pre><code>mkfs.ext4 /dev/sdb2</code></pre>
 <p>Die Swap-Partition wird mit:</p>
-<pre><code>mkswap /dev/sdb4</code></pre>
+<pre><code>mkswap /dev/sdb3</code></pre>
 <p>eingerichtet. Danach machen wir sie mit:</p>
-<pre><code>swapon /dev/sdb4</code></pre>
+<pre><code>swapon /dev/sdb3</code></pre>
 <p>dem System bekannt und kontrollieren, ob der Swap-Speicher verf&uuml;gbar
 ist:</p>
 <pre><code>swapon -s
 Filename   Type       Size     Used  Priority
-/dev/sdb4  partition  4194304  0     -2</code></pre>
+/dev/sdb3  partition  4194304  0     -2</code></pre>
 <p>Falls Swap korrekt erkannt wurde:</p>
-<pre><code>swapoff /dev/sdb4</code></pre>
+<pre><code>swapoff /dev/sdb3</code></pre>
 <p><strong>Als n&auml;chstes ist es unbedingt notwendig, das System neu zu
 starten, damit das neue Partitionierungs- und Dateisystemschema vom
 Kernel eingelesen wird.</strong></p>
@@ -337,15 +330,14 @@ ein BIOS. (Alle Mainboard vor 2009 haben kein UEFI)</li>
 <p><strong>Booten mit UEFI</strong></p>
 <p>Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT
 formatierte <em>“EFI System”</em>-Partition (Typ “EF00” ) als erste
-Partition, und eine unformatierte <em>“BIOS boot”</em>-Partition (Typ
-“EF02” ) als zweite erstellt werden. Die erste Partition enth&auml;lt den/die
+Partition erstellt werden. Diese Partition enth&auml;lt den/die
 Bootloader.<br />
 W&auml;hrend der Installation von siduction wird jegliche Auswahlm&ouml;glichkeit
 der install-gui, wohin der Bootloader installiert werden soll,
-ignoriert, sofern die vorgenannten Partitionen existieren. Der
-Bootloader von siduction wird in der <em>“EFI-System”</em>-Partition
-unter <code>/efi/siduction</code> gespeichert. Die EFI-Systempartition
-wird auch als <code>/boot/efi</code> eingebunden, solange die Option der
+ignoriert, sofern die vorgenannte Partition existiet. Der Bootloader von
+siduction wird in der <em>“EFI-System”</em>-Partition unter
+<code>/efi/siduction</code> gespeichert. Die EFI-Systempartition wird
+auch als <code>/boot/efi</code> eingebunden, solange die Option der
 Einbindung weiterer Partitionen (“mount other partitions”) gew&auml;hlt ist.
 Die Einbindung der <em>“EFI-System”</em>-Partition muss im Installer
 nicht extra angegeben werden.</p>
@@ -355,8 +347,8 @@ nicht extra angegeben werden.</p>
 Sektor eines MBR-partitionierten Datentr&auml;gers, der sich zwischen der
 Partitionierungstabelle und der ersten Partition befindet, und in diesen
 wird Grub direkt geschrieben.<br />
-Die Partition sollte die Gr&ouml;&szlig;e von 200MB haben. (Der Grund dieser Gr&ouml;&szlig;e
-anstelle der konventionellen 32MB liegt darin, um f&uuml;r den Fall eines
+Die Partition sollte die Gr&ouml;&szlig;e von 200MB haben. (Der Grund dieser Gr&ouml;&szlig;e,
+anstelle der konventionellen 32MB, liegt darin, f&uuml;r den Fall eines
 Wechsels zu UEFI eine ausreichend gro&szlig;e Partition zur Verf&uuml;gung zu
 haben.)</p>
 <h3 id="erweiterte-befehle-von-gdisk">Erweiterte Befehle von gdisk</h3>
@@ -435,7 +427,7 @@ Sicherungskopie in einer Datei anzulegen und diese auf einem separaten
 Datentr&auml;ger speichern. Dadurch kann die originale Konfiguration wieder
 hergestellt werden, falls die Aktion nicht nach Wunsch l&auml;uft.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2023-02-08
+Zuletzt bearbeitet: 2023-05-18
 </div>
 </body>
 </html>

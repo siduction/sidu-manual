@@ -112,74 +112,19 @@ Installation betragen:</p>
 </tr>
 </tbody>
 </table>
-<p>Davon abweichend empfehlen wir mindestens 50 GByte
-Festplattenspeicher bei Installation auf einer mit Btrfs formatierten
-Partition.</p>
+<p>Davon abweichend empfehlen wir mindestens 20 GB Speicherplatz bei
+einer Installation in das Dateisystem <strong>Btrfs</strong> und der
+Verwendung von <code>snapper</code>.<br />
+50 GB sind sinnvoll, wenn Sie siduction auf <strong>Btrfs</strong> &uuml;ber
+einen l&auml;ngeren Zeitraum nutzen wollen und viele Schnappsch&uuml;sse gehalten
+werden.</p>
 <h3 id="beispiele-mit-verschiedenen-plattengr&ouml;&szlig;en">Beispiele mit
 verschiedenen Plattengr&ouml;&szlig;en</h3>
 <p>Es gibt sehr viele gute M&ouml;glichkeiten seine Platten aufzuteilen.
 Diese Beispiele sollten einen ersten Einblick bieten. Sie beziehen sich
-auf Partitionstabellen vom Typ <em>“GPT”</em>, f&uuml;r deren Funktion die
-ersten beiden, sehr kleinen Partitionen erforderlich sind.</p>
-<p>Falls ein Dual-Boot mit MS Windows™ angelegt wird, muss MS Windows
-immer als erstes System auf die Festplatte installiert werden.</p>
-<p><strong>Desktop PC, Dual-Boot (MS Windows und Linux)</strong><br />
-<strong>1 TB Festplatte:</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Dateisystem</th>
-<th style="text-align: center;">Verwendung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">50 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">MS Windows System</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: right;">500 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">30 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">/ (Linux root)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: right;">416 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten f&uuml;r Linux</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: right;">4 GB</td>
-<td style="text-align: center;">Linux Swap</td>
-<td style="text-align: center;">Linux Swap</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Desktop PC, Dual-Boot (MS Windows und Linux)</strong><br />
+auf Partitionstabellen vom Typ <em>“GPT”</em>. Die erste Partition auf
+der ersten Festplatte ist f&uuml;r den Bootvorgang zwingend notwendig.</p>
+<p><strong>Laptop mit 8 GB RAM, Linux allein</strong><br />
 <strong>120 GB Festplatte:</strong></p>
 <table>
 <thead>
@@ -194,36 +139,24 @@ immer als erstes System auf die Festplatte installiert werden.</p>
 <tr class="odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
+<td style="text-align: right;">25 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td style="text-align: right;">40 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">MS Windows System</td>
+<td style="text-align: right;">85 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Daten</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">48 GB</td>
-<td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">30 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">/ (Linux root)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: right;">2 GB</td>
+<td style="text-align: right;">10 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
 </tr>
@@ -244,29 +177,23 @@ immer als erstes System auf die Festplatte installiert werden.</p>
 <tr class="odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
 <td style="text-align: right;">30 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">/</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
+<tr class="odd">
+<td style="text-align: center;">3</td>
 <td style="text-align: right;">466 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">Daten</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
+<tr class="even">
+<td style="text-align: center;">4</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
@@ -288,23 +215,17 @@ immer als erstes System auf die Festplatte installiert werden.</p>
 <tr class="odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
 <td style="text-align: right;">496 GB</td>
 <td style="text-align: center;">Btrfs</td>
 <td style="text-align: center;">/</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
+<tr class="odd">
+<td style="text-align: center;">3</td>
 <td style="text-align: right;">4 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
@@ -326,30 +247,150 @@ immer als erstes System auf die Festplatte installiert werden.</p>
 <tr class="odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
 <td style="text-align: right;">26 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">/</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
+<tr class="odd">
+<td style="text-align: center;">3</td>
 <td style="text-align: right;">130 GB</td>
 <td style="text-align: center;">ext4</td>
 <td style="text-align: center;">Daten</td>
 </tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux Swap</td>
+</tr>
+</tbody>
+</table>
+<p>Falls ein Dual-Boot mit MS Windows™ angelegt wird, muss MS Windows
+immer als erstes System auf die Festplatte installiert werden. Die
+ersten vier Partitionen unserer Beispiele sollen direkt aufeinander
+folgend am Anfang der Festplatte liegen. Danach folgen die Partitionen
+f&uuml;r Linux und gemeinsam genutzte Daten.</p>
+<p>Siehe auch <a
+href="https://learn.microsoft.com/de-de/windows-hardware/manufacture/desktop/configure-uefigpt-based-hard-drive-partitions?view=windows-11">Microsoft:
+UEFI/GPT Partitionierung, Windows 11</a>.</p>
+<p><strong>Desktop PC, Dual-Boot (MS Windows und Linux)</strong><br />
+<strong>1 TB Festplatte:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
+<th style="text-align: center;">Dateisystem</th>
+<th style="text-align: center;">Verwendung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 MB</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">16 MB</td>
+<td style="text-align: center;">ohne</td>
+<td style="text-align: center;">Windows MSR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">50 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Windows System</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">1 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Windows Recovery</td>
+</tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
+<td style="text-align: right;">415 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Daten f&uuml;r Windows und Linux</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux System)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: right;">500 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Daten f&uuml;r Linux</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
 <td style="text-align: right;">4 GB</td>
+<td style="text-align: center;">Linux Swap</td>
+<td style="text-align: center;">Linux Swap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Desktop PC, Dual-Boot (MS Windows und Linux)</strong><br />
+<strong>120 GB Festplatte:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Partition</th>
+<th style="text-align: right;">Gr&ouml;&szlig;e</th>
+<th style="text-align: center;">Dateisystem</th>
+<th style="text-align: center;">Verwendung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">100 MB</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">16 MB</td>
+<td style="text-align: center;">ohne</td>
+<td style="text-align: center;">Windows MSR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">40 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Windows System</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">1 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Windows Recovery</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">47 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">30 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">/ (Linux System)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: right;">2 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
 </tr>
@@ -371,86 +412,48 @@ Linux</strong><br />
 <tr class="odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
+<td style="text-align: center;">FAT32</td>
+<td style="text-align: center;">EFI-System (ESP)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
+<td style="text-align: right;">16 MB</td>
 <td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
+<td style="text-align: center;">Windows MSR</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td style="text-align: right;">80 GB</td>
+<td style="text-align: right;">50 GB</td>
 <td style="text-align: center;">NTFS</td>
-<td style="text-align: center;">MS Windows System</td>
+<td style="text-align: center;">Windows System</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: right;">500 GB</td>
+<td style="text-align: right;">1 GB</td>
+<td style="text-align: center;">NTFS</td>
+<td style="text-align: center;">Windows Recovery</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">499 GB</td>
 <td style="text-align: center;">NTFS</td>
 <td style="text-align: center;">Daten f&uuml;r MS Windows und Linux</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">30 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">/ (Linux root)</td>
-</tr>
 <tr class="even">
 <td style="text-align: center;">6</td>
-<td style="text-align: right;">350 GB</td>
+<td style="text-align: right;">30 GB</td>
 <td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten f&uuml;r Linux</td>
+<td style="text-align: center;">/ (Linux System)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">7</td>
+<td style="text-align: right;">380 GB</td>
+<td style="text-align: center;">ext4</td>
+<td style="text-align: center;">Daten f&uuml;r Linux</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
 <td style="text-align: right;">40 GB</td>
-<td style="text-align: center;">Linux Swap</td>
-<td style="text-align: center;">Linux Swap</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Laptop mit 8 GB RAM, Linux allein</strong><br />
-<strong>120 GB Festplatte:</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Partition</th>
-<th style="text-align: right;">Gr&ouml;&szlig;e</th>
-<th style="text-align: center;">Dateisystem</th>
-<th style="text-align: center;">Verwendung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">100 MB</td>
-<td style="text-align: center;">FAT16</td>
-<td style="text-align: center;">EFI-System</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: right;">8 MB</td>
-<td style="text-align: center;">ohne</td>
-<td style="text-align: center;">BIOS-boot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">25 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">/</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: right;">85 GB</td>
-<td style="text-align: center;">ext4</td>
-<td style="text-align: center;">Daten</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">10 GB</td>
 <td style="text-align: center;">Linux Swap</td>
 <td style="text-align: center;">Linux Swap</td>
 </tr>
@@ -500,8 +503,8 @@ kann lesend und schreibend auf die Daten zugreifen. F&uuml;r Windows ist es
 das Standarddateisystem.</p>
 <p><strong>HFS+</strong><br />
 Bei einer Dual-Boot Installation mit Macintosh ist eine eigene
-Datenpartition mit dem <strong>HFS</strong> oder <strong>HFS+</strong>
-Dateisystem sinnvoll. Linux und MAC k&ouml;nnen lesend und schreibend darauf
+Datenpartition mit dem <em>HFS</em> oder <em>HFS+</em> Dateisystem
+sinnvoll. Linux und MAC k&ouml;nnen lesend und schreibend darauf
 zugreifen.</p>
 <h3 id="partitionierungsprogramme">Partitionierungsprogramme</h3>
 <p class="warning">
@@ -551,6 +554,9 @@ gel&ouml;st:</p>
 <h3 id="weiterf&uuml;hrende-infos">Weiterf&uuml;hrende Infos</h3>
 <p><a target="_blank" href="https://gparted.org/index.php">Die umfassende
 englischsprachige Dokumentation von GParted</a></p>
+<p><a
+href="https://learn.microsoft.com/de-de/windows-hardware/manufacture/desktop/configure-uefigpt-based-hard-drive-partitions?view=windows-11">Microsoft:
+UEFI/GPT Partitionierung, Windows 11</a></p>
 <p>F&uuml;r weitere Partitionierungsoptionen siehe:</p>
 <ul>
 <li><p>Logical Volume Manager <a
@@ -560,7 +566,7 @@ href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit
 GPT</a> zur Unterst&uuml;tzung von UEFI</p></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2023-02-08
+Zuletzt bearbeitet: 2023-05-18
 </div>
 </body>
 </html>
