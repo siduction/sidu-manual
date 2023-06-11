@@ -150,38 +150,72 @@ class="citation" data-cites="log">@log</span></td>
 </tr>
 </tbody>
 </table>
-<p>For Btrfs, they are all located at the highest level (<em>‘top level
-5’</em>). We mount each of them separately at the desired location in
-the file tree. It is also called <em>“flat layout”</em>, i.e. the file
-system root itself is not mounted. Once the subvolumes are created,
-there is no need to mount the “root” device if only the contents of the
-subvolumes are of interest. During operation, we are already in the
-subvolume <code>@</code>.</p>
-<p><strong>Create subvolume</strong></p>
-<p>To create a new <em>top level 5</em> subvolume <code>@data</code>, we
-boot into a live system and mount the siduction Btrfs partition under
-<code>/mnt</code>.</p>
-<pre><code># mount -t btrfs /dev/sdxX /mnt/
-# ls -a /mnt/
- .  ..  @  @home  @root  @snapshots  @tmp  @var@log</code></pre>
-<p>The <em>ls</em> command shows the existing <em>top level 5</em>
-subvolumes after installation.<br />
-Now we create the new subvolume as well as its mount point and reissue
-the contents of <code>/mnt</code>.</p>
-<pre><code># btrfs subvolume create /mnt/@data
-# mkdir /mnt/@/data
-# ls -a /mnt/
- .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log</code></pre>
-<p>After a reboot into siduction, the root directory contains the new
-folder <code>/data</code>. To allow normal users access to the
-directory, we change the group:</p>
-<pre><code># chgrp users /data</code></pre>
-<p>Subvolumes can also be nested and thus be created within existing
-subvolumes. For a better overview, we rather recommend the flat
-scheme.</p>
+<p>For Btrfs, they are all located at the highest level (<em>top level
+5</em>). It is also called <em>“flat layout”</em> because there are no
+nestings. The file system root itself is not mounted, but the <em>top
+level 5</em> subvolumes are. It is no longer necessary to mount the
+“root” device if only the contents of the subvolumes are of interest.
+During operation, we are already in the subvolume <code>@</code>.</p>
+<p>The command <strong><code>btrfs subvolume list /</code></strong>
+prints all subvolumes of the file system root. The <code>-t</code>
+option creates a clearly arranged list.</p>
+<pre><code># btrfs subvolume list -t /
+ID   gen    top level  path
+--   ---    ---------  ----
+256  22981  5          @
+257  22952  5          @root
+258  22982  5          @daten
+269  22972  5          @var@log
+260  22967  5          @snapshots
+261  22967  5          @tmp</code></pre>
+<p><strong>The default subvolume</strong>.</p>
+<p>In siduction the subvolume <code>@</code> should be set as default
+from the beginning, because in case of a rollback the command
+<strong><code>snapper rollback &lt;No&gt;</code></strong> is used. If no
+default subvolume was set before, Snapper will do it now with the
+rollback subvolume.<br />
+This can lead to considerable confusion if the user in the console
+usually mounts the root partition using the device file and the command
+<strong><code>mount -t btrfs /dev/sdxX /mnt/</code></strong>. This is
+because after setting a default subvolume, the <em>top level 5</em>
+subvolumes are no longer accessible with this command.</p>
+<p>The following commands first show the state without a default
+subvolume, next the subvolume <code>@</code> with ID 256 is set as
+default. The output of the last command shows the change.</p>
+<pre><code># btrfs subvolume get-default /
+ID 5 (FS_TREE)
+# btrfs subvolume set-default 256 /
+# btrfs subvolume get-default /
+ID 256 gen 22981 top level 5 path @</code></pre>
 <p><strong>Mount subvolume</strong></p>
+<p>As described before, the access to the <em>top level 5</em>
+subvolumes changes after setting a default subvolume.<br />
+Example without default subvolume:</p>
+<pre><code># mount -t btrfs /dev/sdxX /mnt/
+# ls /mnt/
+@  @daten  @root  @snapshots  @tmp  @var@log</code></pre>
+<p>Example after setting the subvolume <code>@</code> as default:</p>
+<pre><code># mount -t btrfs /dev/sdxX /mnt/
+# ls /mnt/
+bin    disks  initrd.img      lib64   proc  srv  var
+boot   etc    initrd.img.old  libx32  root  sys  vmlinuz
+daten  fll    lib             media   run   tmp  vmlinuz.old
+dev    home   lib32           mnt     sbin  usr</code></pre>
+<p>To get to the <em>top level 5</em> subvolumes with the default
+subvolume set, the <em>subvolid</em> must be specified in the mount
+command.<br />
+Example with default subvolume and mount option
+<code>subvolid=5</code>:</p>
+<pre><code># mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# ls /mnt/
+@  @daten  @root  @snapshots  @tmp  @var@log</code></pre>
+<p>After installation, the <code>/etc/fstab</code> file already contains
+all the necessary entries to automatically mount the subvolumes.<br />
+To show how to manually mount a subvolume and to extend the
+<code>/etc/fstab</code> file, we use the <code>@data</code> subvolume
+created in the next chapter.</p>
 <p>With the command<br />
-<strong><code>mount -t btrfs -o subvol=/@data,defaults /data/</code></strong><br />
+<strong><code>mount -t btrfs -o subvol=@data,defaults /dev/sdxX /data/</code></strong><br />
 we mount the subvolume manually.<br />
 This simple variant is not suitable for permanent use. It also
 suppresses the advantageous capabilities of Btrfs. We look at an entry
@@ -203,6 +237,26 @@ means of two commands.</p>
 <p>Immediately after, the subvolume is available by the short command
 <strong><code>mount /data</code></strong> and it is mounted like all the
 others at every boot.</p>
+<p><strong>Create new subvolume</strong></p>
+<p>To create a new <em>top level 5</em> subvolume <code>@data</code>, we
+mount the siduction Btrfs partition under <code>/mnt</code>.</p>
+<pre><code># mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# ls /mnt/
+@  @home  @root  @snapshots  @tmp  @var@log</code></pre>
+<p>The <em>ls</em> command shows the existing <em>top level 5</em>
+subvolumes after installation.<br />
+Now we create the new subvolume as well as its mount point and reissue
+the contents of <code>/mnt</code>.</p>
+<pre><code># btrfs subvolume create /mnt/@data
+# mkdir /mnt/@/data
+# ls /mnt/
+@  @data  @home  @root  @snapshots  @tmp  @var@log</code></pre>
+<p>To allow normal users access to the directory, we change the
+group:</p>
+<pre><code># chgrp users /mnt/@/data</code></pre>
+<p>Subvolumes can also be nested and thus be created within existing
+subvolumes. For a better overview, we rather recommend the flat
+scheme.</p>
 <h3 id="btrfs-snapshot">Btrfs snapshot</h3>
 <p>A snapshot is a subvolume like any other, but with a given initial
 content. Viewed in the file manager, it appears to contain a complete
