@@ -29,40 +29,73 @@ Bei der Erstinstallation in eine einzige Partition werden die folgenden Subvolum
 | @var@log | /var/log | |
 | @snapshots | /.snapshots | Ablageort für die Snapshot von @ |
 
-Für Btrfs liegen sie gleichwertig auf der höchsten Ebene (*'top level 5'* ). Wir hängen sie alle separat an dem gewünschten Platz im Dateibaum ein. Es wird auch als *"flaches Layout"* bezeichnet bei dem die Dateisystemwurzel an sich nicht eingehängt wird. Sobald die Subvolumen erstellt wurden, ist es nicht mehr nötig, das "Root"-Gerät einzuhängen, wenn nur der Inhalt der Subvolumen von Interesse ist. Im laufenden Betrieb befinden wir uns bereits in dem Subvolumen `@`.
+Für Btrfs liegen sie gleichwertig auf der höchsten Ebene (*top level 5* ). Es wird als *"flaches Layout"* bezeichnet, da keine Verschachtelungen vorliegen. Die Dateisystemwurzel an sich wird nicht eingehängt, sondern die *top level 5* Subvolumen. Es ist nicht mehr nötig, das "Root"-Gerät einzuhängen, wenn nur der Inhalt der Subvolumen von Interesse ist. Im laufenden Betrieb befinden wir uns bereits in dem Subvolumen `@`.
 
-**Subvolumen anlegen**
-
-Um ein neues *top level 5* Subvolumen `@data` anzulegen, booten wir in ein Livesystem und hängen die siduction Btrfs-Partition unter `/mnt` ein.
+Der Befehl **`btrfs subvolume list /`** gibt alle Subvolumen der Dateisystemwurzel aus. Die Option `-t` erstellt eine übersichtliche Liste. 
 
 ~~~
-# mount -t btrfs /dev/sdxX /mnt/
-# ls -a /mnt/
- .  ..  @  @home  @root  @snapshots  @tmp  @var@log
+# btrfs subvolume list -t /
+ID   gen    top level  path
+--   ---    ---------  ----
+256  22981  5          @
+257  22952  5          @root
+258  22982  5          @daten
+269  22972  5          @var@log
+260  22967  5          @snapshots
+261  22967  5          @tmp
 ~~~
 
-Der *ls* Befehl zeigt die vorhandenen *top level 5* Subvolumen nach der Installation.  
-Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den Inhalt von `/mnt` erneut aus. 
+**Das Standard Subvolumen**
+
+In siduction sollte von Anfang an das Subvolumen `@` als Standard gesetzt werden, denn bei einem Rollback kommt der Befehl **`snapper rollback <Nr>`** zum Einsatz. Wurde zuvor noch kein Standard Subvolumen gesetzt, erledigt das jetzt Snapper mit dem Rollback Subvolumen.
+Das kann zu erheblichen Verwirrungen führen, wenn der Benutzer in der Konsole die root-Partition gewöhnlich mittels der Gerätedatei und dem Befehl **`mount -t btrfs /dev/sdxX /mnt/`** einhängt. Denn nach Setzen eines Standard Subvolumens sind die *top level 5* Subvolumen mit diesem Befehl nicht mehr erreichbar.
+
+Die folgenden Befehle zeigen zuerst den Zustand ohne Standard Subvolumen, als nächstes wird das Subvolumen `@` mit der ID 256 als Standard gesetzt. Die Ausgabe des letzten Befehls zeigt die Änderung.
 
 ~~~
-# btrfs subvolume create /mnt/@data
-# mkdir /mnt/@/data
-# ls -a /mnt/
- .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log
+# btrfs subvolume get-default /
+ID 5 (FS_TREE)
+# btrfs subvolume set-default 256 /
+# btrfs subvolume get-default /
+ID 256 gen 22981 top level 5 path @
 ~~~
-
-Nach einem Reboot in unser siduction enthält das Wurzelverzeichnis den neuen Ordner `/data`. Damit die normalen Benutzer das Verzeichnis verwenden können, ändern wir die Gruppe:
-
-~~~
-# chgrp users /data
-~~~
-
-Subvolumen lassen sich auch verschachteln und somit innerhalb bestehender Subvolumen erstellen. Wir raten zur besseren Übersicht eher zu dem flachen Schema.
 
 **Subvolumen einhängen**
 
+Wie zuvor beschrieben, ändert sich der Zugriff auf die *top level 5* Subvolumen nach dem Setzen eines Standard Subvolumens.  
+Beispiel ohne Standard Subvolumen:
+
+~~~
+# mount -t btrfs /dev/sdxX /mnt/
+# ls /mnt/
+@  @daten  @root  @snapshots  @tmp  @var@log
+~~~
+
+Beispiel nach setzten des Subvolumens `@` als Standard:
+
+~~~
+# mount -t btrfs /dev/sdxX /mnt/
+# ls /mnt/
+bin    disks  initrd.img      lib64   proc  srv  var
+boot   etc    initrd.img.old  libx32  root  sys  vmlinuz
+daten  fll    lib             media   run   tmp  vmlinuz.old
+dev    home   lib32           mnt     sbin  usr
+~~~
+
+Um bei gesetztem Standard Subvolumen zu den *top level 5* Subvolumen zu gelangen, muss die *subvolid* im Mountbefehl angegeben werden.  
+Beispiel mit Standard Subvolumen und Mountoption `subvolid=5`:
+
+~~~
+# mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# ls /mnt/
+@  @daten  @root  @snapshots  @tmp  @var@log
+~~~
+
+Die Datei `/etc/fstab` enthält nach der Installation bereits alle notwendigen Einträge um die Subvolumen automatisch einzuhängen.  
+Um zu zeigen, wie ein Subvolumen manuell eingehangen und die Datei `/etc/fstab` erweitert wird, benutzen wir das im nächsten Kapitel erstellte Subvolumen `@data`.
+
 Mit dem Befehl  
-**`mount -t btrfs -o subvol=/@data,defaults /data/`**  
+**`mount -t btrfs -o subvol=@data,defaults /dev/sdxX /data/`**  
 hängen wir das Subvolumen manuell ein.  
 Diese einfache Variante eignet sich nicht für eine dauerhafte Verwendung. Außerdem unterdrückt sie die vorteilhaften Fähigkeiten von Btrfs. Wir schauen uns einen Eintrag aus der Datei `/etc/fstab` an.
 
@@ -82,7 +115,35 @@ Unser selbst erstelltes Subvolumen `@data` soll automatisch und dauerhaft mit di
 # grep home /etc/fstab | sed 's!home!data!g' "$@" >> /etc/fstab
 ~~~
 
-Sofort im Anschluss steht das Subvolumen durch den kurzen Befehl **`mount /data`** zur Verfügung und es wird wie alle anderen bei jedem Bootvorgang eingehangen.
+Sofort im Anschluss steht das Subvolumen durch den kurzen Befehl **`mount /data`** zur Verfügung und es wird, wie alle Anderen, bei jedem Bootvorgang eingehangen.
+
+**Neues Subvolumen anlegen**
+
+Um ein neues *top level 5* Subvolumen `@data` anzulegen, hängen wir die siduction Btrfs-Partition unter `/mnt` ein.
+
+~~~
+# mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# ls /mnt/
+@  @home  @root  @snapshots  @tmp  @var@log
+~~~
+
+Der *ls* Befehl zeigt die vorhandenen *top level 5* Subvolumen nach der Installation.  
+Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den Inhalt von `/mnt` erneut aus. 
+
+~~~
+# btrfs subvolume create /mnt/@data
+# mkdir /mnt/@/data
+# ls /mnt/
+@  @data  @home  @root  @snapshots  @tmp  @var@log
+~~~
+
+Damit die normalen Benutzer das Verzeichnis verwenden können, ändern wir die Gruppe:
+
+~~~
+# chgrp users /mnt/@/data
+~~~
+
+Subvolumen lassen sich auch verschachteln und somit innerhalb bestehender Subvolumen erstellen. Wir raten zur besseren Übersicht eher zu dem flachen Schema.
 
 ### Btrfs Snapshot
 

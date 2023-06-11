@@ -29,40 +29,73 @@ During the first install to a single partition, the following subvolumes are cre
 | @var@log | /var/log | |
 | @snapshots | /.snapshots | Snapshots of @ are stored here |
 
-For Btrfs, they are all located at the highest level (*'top level 5'*). We mount each of them separately at the desired location in the file tree. It is also called *"flat layout "*, i.e. the file system root itself is not mounted. Once the subvolumes are created, there is no need to mount the "root" device if only the contents of the subvolumes are of interest. During operation, we are already in the subvolume `@`.
+For Btrfs, they are all located at the highest level (*top level 5*). It is also called *"flat layout "* because there are no nestings. The file system root itself is not mounted, but the *top level 5* subvolumes are. It is no longer necessary to mount the "root" device if only the contents of the subvolumes are of interest. During operation, we are already in the subvolume `@`.
 
-**Create subvolume**
-
-To create a new *top level 5* subvolume `@data`, we boot into a live system and mount the siduction Btrfs partition under `/mnt`.
+The command **`btrfs subvolume list /`** prints all subvolumes of the file system root. The `-t` option creates a clearly arranged list. 
 
 ~~~
-# mount -t btrfs /dev/sdxX /mnt/
-# ls -a /mnt/
- .  ..  @  @home  @root  @snapshots  @tmp  @var@log
+# btrfs subvolume list -t /
+ID   gen    top level  path
+--   ---    ---------  ----
+256  22981  5          @
+257  22952  5          @root
+258  22982  5          @daten
+269  22972  5          @var@log
+260  22967  5          @snapshots
+261  22967  5          @tmp
 ~~~
 
-The *ls* command shows the existing *top level 5* subvolumes after installation.  
-Now we create the new subvolume as well as its mount point and reissue the contents of `/mnt`. 
+**The default subvolume**.
+
+In siduction the subvolume `@` should be set as default from the beginning, because in case of a rollback the command **`snapper rollback <No>`** is used. If no default subvolume was set before, Snapper will do it now with the rollback subvolume.  
+This can lead to considerable confusion if the user in the console usually mounts the root partition using the device file and the command **`mount -t btrfs /dev/sdxX /mnt/`**. This is because after setting a default subvolume, the *top level 5* subvolumes are no longer accessible with this command.
+
+The following commands first show the state without a default subvolume, next the subvolume `@` with ID 256 is set as default. The output of the last command shows the change.
 
 ~~~
-# btrfs subvolume create /mnt/@data
-# mkdir /mnt/@/data
-# ls -a /mnt/
- .  ..  @  @data  @home  @root  @snapshots  @tmp  @var@log
+# btrfs subvolume get-default /
+ID 5 (FS_TREE)
+# btrfs subvolume set-default 256 /
+# btrfs subvolume get-default /
+ID 256 gen 22981 top level 5 path @
 ~~~
-
-After a reboot into siduction, the root directory contains the new folder `/data`. To allow normal users access to the directory, we change the group:
-
-~~~
-# chgrp users /data
-~~~
-
-Subvolumes can also be nested and thus be created within existing subvolumes. For a better overview, we rather recommend the flat scheme.
 
 **Mount subvolume**
 
+As described before, the access to the *top level 5* subvolumes changes after setting a default subvolume.  
+Example without default subvolume:
+
+~~~
+# mount -t btrfs /dev/sdxX /mnt/
+# ls /mnt/
+@  @daten  @root  @snapshots  @tmp  @var@log
+~~~
+
+Example after setting the subvolume `@` as default:
+
+~~~
+# mount -t btrfs /dev/sdxX /mnt/
+# ls /mnt/
+bin    disks  initrd.img      lib64   proc  srv  var
+boot   etc    initrd.img.old  libx32  root  sys  vmlinuz
+daten  fll    lib             media   run   tmp  vmlinuz.old
+dev    home   lib32           mnt     sbin  usr
+~~~
+
+To get to the *top level 5* subvolumes with the default subvolume set, the *subvolid* must be specified in the mount command.  
+Example with default subvolume and mount option `subvolid=5`:
+
+~~~
+# mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# ls /mnt/
+@  @daten  @root  @snapshots  @tmp  @var@log
+~~~
+
+After installation, the `/etc/fstab` file already contains all the necessary entries to automatically mount the subvolumes.  
+To show how to manually mount a subvolume and to extend the `/etc/fstab` file, we use the `@data` subvolume created in the next chapter.
+
 With the command  
-**`mount -t btrfs -o subvol=/@data,defaults /data/`**  
+**`mount -t btrfs -o subvol=@data,defaults /dev/sdxX /data/`**  
 we mount the subvolume manually.  
 This simple variant is not suitable for permanent use. It also suppresses the advantageous capabilities of Btrfs. We look at an entry from the `/etc/fstab` file.
 
@@ -83,6 +116,34 @@ Our self-created subvolume `@data` should be automatically and permanently avail
 ~~~
 
 Immediately after, the subvolume is available by the short command **`mount /data`** and it is mounted like all the others at every boot.
+
+**Create new subvolume**
+
+To create a new *top level 5* subvolume `@data`, we mount the siduction Btrfs partition under `/mnt`.
+
+~~~
+# mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# ls /mnt/
+@  @home  @root  @snapshots  @tmp  @var@log
+~~~
+
+The *ls* command shows the existing *top level 5* subvolumes after installation.  
+Now we create the new subvolume as well as its mount point and reissue the contents of `/mnt`. 
+
+~~~
+# btrfs subvolume create /mnt/@data
+# mkdir /mnt/@/data
+# ls /mnt/
+@  @data  @home  @root  @snapshots  @tmp  @var@log
+~~~
+
+To allow normal users access to the directory, we change the group:
+
+~~~
+# chgrp users /mnt/@/data
+~~~
+
+Subvolumes can also be nested and thus be created within existing subvolumes. For a better overview, we rather recommend the flat scheme.
 
 ### Btrfs snapshot
 
