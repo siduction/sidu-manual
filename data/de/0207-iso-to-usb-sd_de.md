@@ -48,7 +48,7 @@ Es handelt sich um einen Intenso USB-Stick mit 4 GB Speicherkapazität und einer
 Angenommen die siduction ISO-Abbilddatei wurde im `/home` Verzeichnis des Benutzers **tux** gespeichert, können wir mit den Kommandos `dd` oder `cat` das Zielmedium beschreiben. Die Kommandos erfordern Root-Rechte. Daher je nach System entweder **`sudo`** bzw. **`doas`** voranstellen oder ein Terminal verwenden und mit **`su`** zu **root** werden.
 
 ~~~
-dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
+dd bs=1M oflag=sync status=progress if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
     (oder)
 cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso > /dev/sdb
 ~~~
@@ -106,4 +106,4 @@ Angenommen die siduction ISO-Abbilddatei wurde im `/home` Verzeichnis des Benutz
 dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-10</div>
+<div id="rev">Zuletzt bearbeitet: 2023-07-08</div>
