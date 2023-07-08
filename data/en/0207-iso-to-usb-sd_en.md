@@ -48,7 +48,7 @@ This is an Intenso USB flash drive with 4 GB storage capacity and a sector size 
 Assuming the siduction ISO image file is stored in the `/home` directory of user **tux**, we can use the `dd` or `cat` commands to write to the target medium. The commands require root privileges. Therefore, depending on the system, either prepend **`sudo`** or **`doas`**, or use a terminal and become **root** with **`su`**.
 
 ~~~
-dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
+dd bs=1M oflag=sync status=progress if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
     (or)
 cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso > /dev/sdb
 ~~~
