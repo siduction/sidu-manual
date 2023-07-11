@@ -114,7 +114,7 @@ medium. The commands require root privileges. Therefore, depending on
 the system, either prepend <strong><code>sudo</code></strong> or
 <strong><code>doas</code></strong>, or use a terminal and become
 <strong>root</strong> with <strong><code>su</code></strong>.</p>
-<pre><code>dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
+<pre><code>dd bs=1M oflag=sync status=progress if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
     (or)
 cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso &gt; /dev/sdb</code></pre>
 <p>The copying process may take 15 minutes or longer for an ISO image

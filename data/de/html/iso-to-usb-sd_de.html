@@ -120,7 +120,7 @@ entweder <strong><code>sudo</code></strong> bzw.
 <strong><code>doas</code></strong> voranstellen oder ein Terminal
 verwenden und mit <strong><code>su</code></strong> zu
 <strong>root</strong> werden.</p>
-<pre><code>dd if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
+<pre><code>dd bs=1M oflag=sync status=progress if=/home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/sdb
     (oder)
 cat /home/tux/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso &gt; /dev/sdb</code></pre>
 <p>Der Kopiervorgang kann bei einer etwa 3 GB gro&szlig;en ISO-Abbilddatei
@@ -182,7 +182,7 @@ USB-Ger&auml;t hat die Bezeichnung <code>disk1</code>, so f&uuml;hrt man folgend
 Befehl aus:</p>
 <pre><code>dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1</code></pre>
 <div id="rev">
-Zuletzt bearbeitet: 2022-03-10
+Zuletzt bearbeitet: 2023-07-08
 </div>
 </body>
 </html>
