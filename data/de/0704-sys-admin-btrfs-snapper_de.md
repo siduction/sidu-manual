@@ -668,4 +668,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2023-03-05</div>
+<div id="rev">Zuletzt bearbeitet: 2023-06-11</div>
