@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>release notes</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">release notes</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#release-notes-2023.1.0">release notes 2023.1.0</a>
+<ul>
+<li><a href="#changing-history">Changing history</a></li>
+<li><a href="#self-managed">Self-managed</a></li>
+<li><a href="#what-can-you-expect-from-siduction-2023.1.0">What can you
+expect from siduction 2023.1.0</a></li>
+<li><a href="#the-flavours">The Flavours</a></li>
+<li><a href="#non-free-and-contrib">Non-free and Contrib</a></li>
+<li><a href="#installation-notes-and-known-issues">Installation notes
+and known issues</a></li>
+</ul></li>
+<li><a href="#credits">Credits</a>
+<ul>
+<li><a href="#credits-for-siduction-2023.1.0">Credits for siduction
+2023.1.0</a></li>
+<li><a href="#many-thanks-to-all-involved">Many thanks to all
+involved</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="release-notes-2023.1.0">release notes 2023.1.0</h2>
+<p><strong>“Standing on the Shoulders of Giants”</strong></p>
+<p>The siduction team is very proud to present an unscheduled release
+for a special occasion. Debian GNU/Linux, whose unstable branch some of
+us have been following for over 20 years, celebrates its thirtieth
+birthday on 8/16/2023 and we think that is worthy of all honor.</p>
+<p>Debian is the second oldest distribution after Slackware, and is
+solely supported by the people involved, without a company standing in
+the background or someone at the top deciding where things go. Debian is
+considered the “universal operating system” because of the many
+architectures supported to this day, and the stability of their releases
+is legendary.</p>
+<h3 id="changing-history">Changing history</h3>
+<p>The story began on August 16, 1993, when Ian Murdock introduced his
+self-designed system “Debian Linux Release”. The <a
+href="https://www.debian.org/doc/manuals/project-history/manifesto.de.html">Debian
+Manifesto</a> followed that same year. The first stable version, 1.1,
+was released in 1996, then compiled by under 100 developers. The release
+was codenamed “Buzz”, a first reference to the characters from the movie
+franchise Toy Story, from which the codenames are still borrowed
+today.</p>
+<p>So far, another 16 releases have been added, the current of which is
+codenamed “Bookworm” and was released on June 10, 2023. The motto is
+still: It will be released when it is ready.</p>
+<p>In 1997 already about 400 developers agreed on the Debian social
+contract as an important document, which has been edited only twice
+since its existence and which states under clause 1: <strong>Debian will
+remain 100% free</strong>. At the same time, the “Debian Free Software
+Guidelines” (DFSG) were adopted as part of this contract.</p>
+<h3 id="self-managed">Self-managed</h3>
+<p>Debian administers itself in the form of a do-ocracy. Today, the
+approximately 1,000 developers determine their tasks independently and
+responsibly. That this is not always easy among a thousand creative
+people should be clear to everyone. This is reminded, among other
+things, of upheavals such as the introduction of systemd, which brought
+Debian to its breaking point. The inclusion of non-free firmware on the
+distribution’s installation media was also hotly debated in 2022. The
+discussions about this dragged on for years.</p>
+<p>To the outside world, Debian often appears to be at odds with one
+another, as upcoming decisions are often the subject of heated debate.
+In the end, however, the project seems to emerge stronger from such
+phases. This reliability may also be a reason why more derivatives are
+based on Debian than on any other distribution. Currently <a
+href="https://distrowatch.com/search.php?ostype=All&amp;category=All&amp;origin=All&amp;basedon=Debian&amp;notbasedon=None&amp;desktop=All&amp;architecture=All&amp;package=All&amp;rolling=All&amp;isosize=All&amp;netinstall=All&amp;language=All&amp;defaultinit=All&amp;status=Active#simple">122
+active distributions</a> use Debian as a base. Among them are such
+pioneering distributions as Knoppix or Ubuntu. If you add distributions
+that are no longer active, the number rises to 414. Impressive!</p>
+<p><strong>It all started with Knoppix</strong></p>
+<p>Our own timeline starts with Knoppix and went from Kanotix to sidux
+and aptosid to siduction, which we have been shipping for 12 years now.
+Debian has never failed us, but the decision making process has
+sometimes been a bit too slow. For example, we introduced systemd before
+Debian, and we have been shipping firmware as an option for some time to
+support current hardware on the installation media.</p>
+<p>But otherwise siduction is probably 98% Debian Unstable. We thank you
+for that and wish the Proj́ekt at least 30 more years. Standing on the
+Shoulders of Giants.</p>
+<h3 id="what-can-you-expect-from-siduction-2023.1.0">What can you expect
+from siduction 2023.1.0</h3>
+<p><strong>User and password for the live session are
+siducer/live</strong>.</p>
+<p>First of all, a new wallpaper by artist <a
+href="https://www.artstation.com/angevere">Angevere</a> (Ona Kristensen)
+awaits you, which we may use with kind permission.</p>
+<h3 id="the-flavours">The Flavours</h3>
+<p>The flavours we offer for siduction 2023.1.0 are KDE Plasma 5.27.7.1,
+LXQt 1.3.0, Xfce 4.18, Xorg and noX. GNOME, MATE and Cinnamon did not
+make it again this time because there is no maintainer within siduction
+for them. If you are interested, please get in touch. They may or may
+not come back at some point. Of course they are still installable from
+the repository.</p>
+<p>The released images of siduction 2023.1.0 are a snapshot of Debian
+Unstable, also named Sid, from Aug. 14, 2023, enriched with some useful
+packages and scripts, a Calamares-based installer and a customized
+version of the Linux kernel 6.4-10, while systemd is at 254.1-2.</p>
+<h3 id="non-free-and-contrib">Non-free and Contrib</h3>
+<p>The following non-free and contrib packages are installed by
+default:</p>
+<p><strong>Nonfree:</strong></p>
+<ul>
+<li>amd64-microcode - Processor microcode firmware for AMD CPUs<br />
+</li>
+<li>firmware-amd-graphics - Binary firmware for AMD/ATI graphics
+chips<br />
+</li>
+<li>firmware-atheros - Binary firmware for Atheros wireless cards<br />
+</li>
+<li>firmware-bnx2 - Binary firmware for Broadcom NetXtremeII<br />
+</li>
+<li>firmware-bnx2x - Binary firmware for Broadcom NetXtreme II
+10Gb<br />
+</li>
+<li>firmware-brcm80211 - Binary firmware for Broadcom 802.11 wireless
+card<br />
+</li>
+<li>firmware-crystalhd - Crystal HD Video Decoder (firmware)<br />
+</li>
+<li>firmware-intelwimax - Binary firmware for Intel WiMAX
+Connection<br />
+</li>
+<li>firmware-iwlwifi - Binary firmware for Intel Wireless cards<br />
+</li>
+<li>firmware-libertas - Binary firmware for Marvell Libertas 8xxx
+wireless car<br />
+</li>
+<li>firmware-linux-nonfree - Binary firmware for various drivers in the
+Linux kernel<br />
+</li>
+<li>firmware-misc-nonfree - Binary firmware for various drivers in the
+Linux kernel<br />
+</li>
+<li>firmware-myricom - Binary firmware for Myri-10G Ethernet
+adapters<br />
+</li>
+<li>firmware-netxen - Binary firmware for QLogic Intelligent Ethernet
+(3000)<br />
+</li>
+<li>firmware-qlogic - Binary firmware for QLogic HBAs<br />
+</li>
+<li>firmware-realtek - Binary firmware for Realtek wired/wifi/BT
+adapters<br />
+</li>
+<li>firmware-ti-connectivity - Binary firmware for TI Connectivity
+wireless network<br />
+</li>
+<li>firmware-zd1211 - binary firmware for the zd1211rw wireless
+driver<br />
+</li>
+<li>intel-microcode - Processor microcode firmware for Intel CPUs</li>
+</ul>
+<p><strong>Contrib:</strong></p>
+<ul>
+<li>b43-fwcutter - utility for extracting Broadcom 43xx firmware<br />
+</li>
+<li>firmware-b43-installer - firmware installer for the b43 driver<br />
+</li>
+<li>firmware-b43legacy-installer - firmware installer for the b43legacy
+driver<br />
+</li>
+<li>iucode-tool - Intel processor microcode</li>
+</ul>
+<p><strong>Remove Non-Free Content</strong></p>
+<p>Currently, the installer does not offer the possibility to deselect
+packages that do not comply with the DFSG, the Debian Free Software
+Guidelines. This means that packages such as non-free firmware are
+installed on the system by default. The vrms command will list these
+packages for you. You can manually uninstall unwanted packages or remove
+them all by typing apt purge $(vrms -s) before or after installation.
+Otherwise, our remove-nonfree script can do this for you later.</p>
+<h3 id="installation-notes-and-known-issues">Installation notes and
+known issues</h3>
+<p>If you want to reuse an existing home partition (or any other data
+partition), you should do this after installation and not in the
+Calamares installer. While it will work, it is more robust to add it
+afterwards.<br />
+With some Intel graphics processors on some devices, the system may
+freeze shortly after booting into Live. To fix this, you must set the
+kernel parameter <code>intel_iommu=igfx_off</code> before rebooting.</p>
+<h2 id="credits">Credits</h2>
+<h3 id="credits-for-siduction-2023.1.0">Credits for siduction
+2023.1.0</h3>
+<p><strong>Core Team:</strong></p>
+<p>Torsten Wohlfarth (towo)<br />
+Hendrik Lehmbruch (hendrikL)<br />
+Ferdinand Thommes (devil)<br />
+Vincent Vietzke (vinzv)<br />
+Axel Konrad (akli)</p>
+<p><strong>Past contributors:</strong></p>
+<p>Alf Gaida (agaida) (eaten by the cat)<br />
+Axel Beu 2021†</p>
+<p><strong>Code, ideas and support:</strong></p>
+<p>Markus Meyer (coruja)<br />
+der_bud<br />
+se7en<br />
+davydych<br />
+tuxnix</p>
+<p><strong>Artwork:</strong></p>
+<p>The artwork is by <a
+href="https://www.artstation.com/angevere">Angevere</a> (Ona
+Kristensen). We use it with kind permission.</p>
+<h3 id="many-thanks-to-all-involved">Many thanks to all involved</h3>
+<p>We would like to thank you, all the testers and all the people who
+have supported us over the years. This release is also thanks to you. We
+would also like to thank the birthday boy Debian, as this means we stand
+on the shoulders of giants.<br />
+And now have fun!</p>
+<p>On behalf of the siduction team:</p>
+<p>Ferdinand Thommes</p>
+<div id="rev">
+Last edited: 2023/08/15
+</div>
+</body>
+</html>

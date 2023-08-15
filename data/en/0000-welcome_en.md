@@ -29,7 +29,7 @@ Almost all application programs offer assistance by means of an associated "*Man
 
 ### Copyright Legal and License Notices
 
-All rights © 2006-2022 of the siduction manual are licensed under the [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt).  
+All rights © 2006-2023 of the siduction manual are licensed under the [GNU Free Documentation License](https://gnu.org/licenses/fdl.txt).  
 This permits copying, distribution, and/or modification of the document under the terms of the GNU Free Document License version 1.3 or later (as published by the Free Software Foundation); without invariant sections and without cover texts (front cover texts, back cover texts).
 
 The rights of protected trademarks or copyrights belong to the respective owners, regardless of whether this is noted or not.
@@ -42,5 +42,5 @@ This is experimental software. Use at your own risk. The siduction project, its 
 
 If you do not agree with these terms, you are not allowed to further use or distribute this software.
 
-<div id="rev">Last edited: 2022/03/29</div>
+<div id="rev">Last edited: 2023/08/15</div>
 
