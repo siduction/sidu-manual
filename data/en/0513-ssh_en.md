@@ -2,6 +2,16 @@
 
 ## SSH
 
+> ** Activate SSH**
+> 
+> With siduction, ssh is not activated after the installation, as well as on the live iso!
+> 
+> For to activate *ssh* you can use the script "sshactivate" which can be found under /usr/sbin,
+> or use the starter which can be found under the menu item Internet/Network.
+> 
+> There is also a script to deactivate *ssh*, "sshdeactivate"!
+
+
 **Definition of SSH from [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
 Secure Shell or SSH refers to both a network protocol and corresponding programs that can be used to establish an encrypted network connection with a remote device in a secure manner. Often this method is used to bring a remote command line to the local computer, i.e. the local console displays the output of the remote console and the local keyboard input is sent to the remote computer. This gives the effect of sitting in front of the remote console, which can conveniently be used for remote maintenance of, for example, a root server located in a remote data center. The newer protocol version SSH-2 offers further functions like data transfer via SFTP.
