@@ -10,15 +10,25 @@ Nala verwendet viele gleichlautende Befehle von APT, wie etwa `install`, `remove
 
 ### Nala verwenden
 
-Ab siduction 2022.1.0 wird Nala automatisch installiert und ist sofort verwendbar. Es kann jederzeit ohne Weiteres zwischen APT und Nala gewechselt werden. Ein Blick in die manpage **`man nala`** sollte obligatorisch sein. Vor der Anwendung empfehlen wir dringend, eine Änderung in der Konfigurationsdatei `/etc/nala/nala.conf` vorzunehmen.  
-Den Wert für die Konfigurationsoption `auto_remove` ändern wir zu `false`, so wie es das folgende Listing zeigt:
+Ab siduction 2022.1.0 wird Nala automatisch installiert und ist sofort verwendbar. Es kann jederzeit ohne Weiteres zwischen APT und Nala gewechselt werden. Ein Blick in die manpage **`man nala`** sollte obligatorisch sein. Vor der Anwendung empfehlen wir dringend, zwei Änderungen in der Konfigurationsdatei `/etc/nala/nala.conf` vorzunehmen.
+
+Zum einen den Wert für die Konfigurationsoption `auto_remove`, diesen ändern wir zu `false`, so wie es das folgende Listing zeigt:
 
 ~~~
 # Set to false to disable auto auto-removing
 auto_remove = false
 ~~~
 
-Der Grund hierfür liegt in der Verwendung von *debian sid* als Basis für siduction. Bei einem Upgrade von sid kann gelegentlich eine Situation entstehen, in der wesentliche Teile des Systems entfernt werden sollen. Mit der Option `auto_remove = true` haben wir keine Möglichkeit zu recherchieren, zu prüfen und selbst zu entscheiden, ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb sollten Pakete nicht mit `auto_remove`, sondern erst nach einer Sichtkontrolle entfernt werden.
+Zum anderen den Wert `full_upgrade = false`, dieser muss auf `true` geändert werden, damit automatisch ein `full-upgrade` ausgeführt wird.
+
+~~~
+# Set to true to make full-upgrade the default
+full_upgrade = true
+~~~
+
+Der Grund für beide Änderungen ist, dass siduction auf *GNU Linux debian unstable/sid* basiert und diese Basis sich täglich verändert und deshalb regelmäßig auf den neusten Stand gebracht werden muss. Bei einem Upgrade von *debian sid* kann gelegentlich eine Situation entstehen, in der wesentliche Teile des Systems entfernt werden sollen. Mit der Option `auto_remove = true` haben wir keine Möglichkeit zu recherchieren, zu prüfen und selbst zu entscheiden, ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb sollten Pakete nicht mit `auto_remove`, sondern erst nach einer Sichtkontrolle entfernt werden.
+
+Ist es im Ausnahmefall nötig auf einen `full-upgrade` verzichten zu müssen und statt dessen nur einen `upgrade` vorzunehmen, so kann `nala` mit folgendem Befehl aufgerufen werden, **`nala upgrade --no-full`**.
 
 ### Befehle analog zu APT
 
@@ -37,7 +47,8 @@ Viele der von APT bekannten Befehle sind in Nala identisch. In der Grundeinstell
   Entfernt das benannte Paket mit seinen Konfigurationsdateien aus unserem System.
   
 + **`nala upgrade`**  
-  Führt `update`, gefolgt von `dist-upgrade` aus.
+  Führt `update`, gefolgt von `upgrade` aus. (Defaulteinstellung in der Datei `/etc/nala/nala.conf`)  
+  Führt `update`, gefolgt von `upgrade --full` aus. (Mit den oben genannten Änderungen in der Datei `/etc/nala/nala.conf`)
 
 Die benutzerfreundliche Aufbereitung der Ausgabe im Terminal erleichtert die Übersicht, wie das Beispiel zeigt.  
 (Um root-Rechte zu erlangen, wurde im Befehl *"doas"* verwendet.)
@@ -78,4 +89,4 @@ Sollten wir es uns noch einmal anders überlegen und die Pakete doch wieder verw
 
 In der hier beschriebenen Nala Version 0.11.1 unterstützen die Unterbefehle `undo <ID>` und `redo <ID>` derzeit nur die Aktionen Installieren oder Entfernen. In einer zukünftigen Version, die dann auf der Programmiersprache Rust basieren wird, sollen sich komplette Dist-Upgrades zurückrollen lassen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-11-09</div>
+<div id="rev">Zuletzt bearbeitet: 2023-10-13</div>
