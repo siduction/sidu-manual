@@ -26,7 +26,7 @@ Zum anderen den Wert `full_upgrade = false`, dieser muss auf `true` geändert we
 full_upgrade = true
 ~~~
 
-Der Grund für beide Änderungen ist, daß siduction auf *GNU Linux debian unstable/sid* basiert und diese Basis sich täglich verändert und deshalb regelmäßig auf den neusten Stand gebracht werden muß. Bei einem Upgrade von *debian sid* kann gelegentlich eine Situation entstehen, in der wesentliche Teile des Systems entfernt werden sollen. Mit der Option `auto_remove = true` haben wir keine Möglichkeit zu recherchieren, zu prüfen und selbst zu entscheiden, ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb sollten Pakete nicht mit `auto_remove`, sondern erst nach einer Sichtkontrolle entfernt werden.
+Der Grund für beide Änderungen ist, dass siduction auf *GNU Linux debian unstable/sid* basiert und diese Basis sich täglich verändert und deshalb regelmäßig auf den neusten Stand gebracht werden muss. Bei einem Upgrade von *debian sid* kann gelegentlich eine Situation entstehen, in der wesentliche Teile des Systems entfernt werden sollen. Mit der Option `auto_remove = true` haben wir keine Möglichkeit zu recherchieren, zu prüfen und selbst zu entscheiden, ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb sollten Pakete nicht mit `auto_remove`, sondern erst nach einer Sichtkontrolle entfernt werden.
 
 Ist es im Ausnahmefall nötig auf einen `full-upgrade` verzichten zu müssen und statt dessen nur einen `upgrade` vorzunehmen, so kann `nala` mit folgendem Befehl aufgerufen werden, **`nala upgrade --no-full`**.
 
