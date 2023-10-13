@@ -50,7 +50,7 @@ Many of the commands known from APT are identical in Nala. By default, Nala alwa
   Removes the named package with its configuration files from our system.
   
 + **`nala upgrade`**  
-  Runs `update` followed by `dist-upgrade`.
+  Runs `update` followed by `upgrade`.
 
 The user-friendly formatting of the output in the terminal facilitates the overview, as the example shows.  
 (To gain root privileges, *"doas"* was used in the command.)
