@@ -31,7 +31,7 @@ full_upgrade = true
 
 This is because _**siduction**_ is based on _"GNU Linux debian unstable/sid"_ which changes daily and therefore needs to be updated.
 
-If in an exceptional case it is necessary to `update` the system without a `full-upgrade` and instead only an `upgrade`, `nala` can be called with the following command, `nala upgrade --no-full`.
+If in an exceptional case it is necessary to `upgrade` the system without a `full-upgrade`, `nala` can be called with the following command, `nala upgrade --no-full`.
 
 ### Commands analogous to APT
 
