@@ -2,14 +2,10 @@
 
 ## SSH
 
-> **SSH aktivieren**
-> 
-> Bei siduction ist ssh nach der Installation, als auch auf dem Live-Iso nicht aktiviert!
-> 
-> Um *ssh* zu aktivieren nutzen Sie bitte das Script "sshactivate" welches unter /usr/sbin zu finden ist,
-> oder nutzen sie den Starter welcher im Menüpunkt Internet/Netzwerk zu finden ist.
-> 
-> Ebenso gibt es ein Script um *ssh* wieder zu deaktivieren "sshdeactivate"!
+> **SSH aktivieren**  
+> Bei siduction ist ssh auf dem Live-Iso und nach der Installation nicht aktiviert!  
+> Um *ssh* zu aktivieren und deaktivieren nutzen Sie bitte die Scripte `sshactivate` und `sshdeactivate`. Sie befinden sich in `/usr/sbin`.  
+> Alternativ nutzen sie die Starter im Menü Internet/Netzwerk.
 
 **Definition von SSH aus [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
@@ -288,4 +284,4 @@ mount lokaler_mountpunkt
 umount lokaler_mountpunkt
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2023-09-20</div>
+<div id="rev">Zuletzt bearbeitet: 2023-10-15</div>
