@@ -2,6 +2,11 @@
 
 ## SSH
 
+> **SSH aktivieren**  
+> Bei siduction ist ssh auf dem Live-Iso und nach der Installation nicht aktiviert!  
+> Um *ssh* zu aktivieren und deaktivieren nutzen Sie bitte die Scripte `sshactivate` und `sshdeactivate`. Sie befinden sich in `/usr/sbin`.  
+> Alternativ nutzen sie die Starter im Anwendungsmenü > Internet/Netzwerk.
+
 **Definition von SSH aus [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
 Secure Shell oder SSH bezeichnet sowohl ein Netzwerkprotokoll als auch entsprechende Programme, mit deren Hilfe man auf eine sichere Art und Weise eine verschlüsselte Netzwerkverbindung mit einem entfernten Gerät herstellen kann. Häufig wird diese Methode verwendet, um sich eine entfernte Kommandozeile quasi auf den lokalen Rechner zu holen, das heißt, auf der lokalen Konsole werden die Ausgaben der entfernten Konsole ausgegeben und die lokalen Tastatureingaben werden an den entfernten Rechner gesendet. Hierdurch wird der Effekt erreicht, als säße man vor der entfernten Konsole, was beispielsweise sehr gut zur Fernwartung eines in einem entfernten Rechenzentrum stehenden Root-Servers genutzt werden kann. Die neuere Protokoll-Version SSH-2 bietet weitere Funktionen wie Datenübertragung per SFTP.
@@ -279,4 +284,4 @@ mount lokaler_mountpunkt
 umount lokaler_mountpunkt
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2023-10-15</div>
