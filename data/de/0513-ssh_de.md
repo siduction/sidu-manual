@@ -5,7 +5,7 @@
 > **SSH aktivieren**  
 > Bei siduction ist ssh auf dem Live-Iso und nach der Installation nicht aktiviert!  
 > Um *ssh* zu aktivieren und deaktivieren nutzen Sie bitte die Scripte `sshactivate` und `sshdeactivate`. Sie befinden sich in `/usr/sbin`.  
-> Alternativ nutzen sie die Starter im Menü Internet/Netzwerk.
+> Alternativ nutzen sie die Starter im Anwendungsmenü > Internet/Netzwerk.
 
 **Definition von SSH aus [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
