@@ -11,27 +11,25 @@ Nala uses many APT commands such as `install`, `remove`, `purge`, `update`, `sho
 
 ### Use Nala
 
-As of siduction 2022.1.0, Nala is installed automatically and can be used immediately. It is not mandatory to use Nala, you can switch between APT and Nala at will. A look at the manpage **`man nala`** should be mandatory. Before use we strongly recommend to make two changes in the configuration file `/etc/nala/nala.conf`.  
+As of siduction 2022.1.0, Nala is installed automatically and can be used immediately. It is not mandatory to use Nala, you can switch between APT and Nala at will. A look at the manpage **`man nala`** should be mandatory. Before using it, we strongly recommend making two changes in the configuration file `/etc/nala/nala.conf`.  
 
-First we change the value for the `auto_remove` configuration option to `false` as shown in the following listing:
+First, we change the value for the `auto_remove` configuration option to `false` as shown in the following listing:
 
 ~~~
 # Set to false to disable auto auto-removing
 auto_remove = false
 ~~~
 
-The reason for this is the use of *debian sid* as basis for siduction. When upgrading sid, occasionally a situation may arise where significant parts of the system are to be removed. With the `auto_remove = true` option we have no way to investigate, check, and decide for ourselves if or which packages to remove. Even in normal operation packages should not be removed with `auto_remove`, but only after a visual check.
-
-And we change the value `full_upgrade = false`, to `true`, so that a `full-upgrade` is automatically executed.
+Secondly, the value `full_upgrade = false`, this must be changed to `true` to automatically perform a `full-upgrade`.
 
 ~~~
 # Set to true to make full-upgrade the default
 full_upgrade = true
 ~~~
 
-This is because _**siduction**_ is based on _"GNU Linux debian unstable/sid"_ which changes daily and therefore needs to be updated.
+The reason for both changes is that siduction is based on *GNU Linux debian unstable/sid* and this base changes daily and therefore needs to be updated regularly. When upgrading from *debian sid*, occasionally a situation may arise where significant parts of the system should be removed. With the option `auto_remove = true` we have no way to research, check and decide for ourselves if or which packages to remove. Even in normal operation packages should not be removed with `auto_remove`, but only after a visual check.
 
-If in an exceptional case it is necessary to `upgrade` the system without a `full-upgrade`, `nala` can be called with the following command, `nala upgrade --no-full`.
+If in an exceptional case it is necessary to `upgrade` the system without a `full-upgrade`, `nala` can be called with the following command, **`nala upgrade --no-full`**.
 
 ### Commands analogous to APT
 
@@ -50,7 +48,8 @@ Many of the commands known from APT are identical in Nala. By default, Nala alwa
   Removes the named package with its configuration files from our system.
   
 + **`nala upgrade`**  
-  Runs `update` followed by `upgrade`.
+  Runs `update` followed by `upgrade`. (default setting in `/etc/nala/nala.conf` file)  
+  Runs `update` followed by `upgrade --full`. (With the above changes in the file `/etc/nala/nala.conf`)
 
 The user-friendly formatting of the output in the terminal facilitates the overview, as the example shows.  
 (To gain root privileges, *"doas"* was used in the command.)
@@ -90,4 +89,4 @@ If we change our mind and want to use the packages again, the `nala history redo
 
 In the Nala version 0.11.1 described here, the subcommands `undo <ID>` and `redo <ID>` currently only support the actions Install or Remove. In a future version, which will be based on the Rust programming language, it should be possible to roll back complete dist upgrades.
 
-<div id="rev">Last edited: 2022-11-09</div>
+<div id="rev">Last edited: 2023-10-15</div>
