@@ -2,64 +2,61 @@
 
 ## SSH
 
-> ** Activate SSH**
-> 
-> With siduction, ssh is not activated after the installation, as well as on the live iso!
-> 
-> For to activate *ssh* you can use the script "sshactivate" which can be found under /usr/sbin,
-> or use the starter which can be found under the menu item Internet/Network.
-> 
-> There is also a script to deactivate *ssh*, "sshdeactivate"!
-
+> **Enable SSH**.  
+> For siduction, ssh is not enabled both on the live ISO and after installation!  
+> To enable and disable *ssh* please use the scripts `sshactivate` and `sshdeactivate`. They are located in `/usr/sbin`.  
+> Alternatively use the starters in the application menu > Internet/Network.
 
 **Definition of SSH from [Wikipedia](http://de.wikipedia.org/wiki/Secure_Shell)** :
 
 Secure Shell or SSH refers to both a network protocol and corresponding programs that can be used to establish an encrypted network connection with a remote device in a secure manner. Often this method is used to bring a remote command line to the local computer, i.e. the local console displays the output of the remote console and the local keyboard input is sent to the remote computer. This gives the effect of sitting in front of the remote console, which can conveniently be used for remote maintenance of, for example, a root server located in a remote data center. The newer protocol version SSH-2 offers further functions like data transfer via SFTP.
 
-IANA has assigned TCP port 22 to the protocol, but any other ports can be selected in the daemon's configuration files to make attacks more difficult, for example, since the SSH port is not known to the attacker.
+In general, SSH should only be configured and used for remote control if you are sure about the effects of the settings in the `/etc/ssh/sshd_config` file and, if applicable, the files in the `/etc/ssh/sshd_config.d/` directory.  
+If in doubt, study the documentation in the man pages **`man sshd_config`**, **`man ssh_config`** or on the Internet, or seek the advice of competent persons.
 
 ### Securing SSH 
 
-It is not secure to allow root logins via SSH. It is important not to make root logins the default because Debian should be secure, not insecure. Similarly, attackers should not be able to perform a wordlist-based password attack (brute force attack) on the SSH login over ten minutes. Therefore, it makes sense to limit the login time window as well as the number of possible attempts.
+It is not secure to make root logins via SSH the default. Debian should be secure, not insecure. Likewise, attackers should not be able to perform a wordlist-based password attack (brute force attack) on the SSH login over a long period of time. Therefore, we make some changes in the `/etc/ssh/sshd_config` file.
 
-To make SSH more secure, use a text editor of your choice to edit the file `/etc/ssh/sshd_config`.
+**The following settings can be adjusted to increase security:**  
+(To activate the function of the entries the comment character '#' must be removed).
 
-**The following settings can be adjusted to increase security:**
-
-+ `Port <desired port>:`  
-  This entry must point to the port that is enabled on the router for forwarding. If you don't know what to do here, you should reconsider using SSH for remote control. Debian sets port 22 as default. However, it is advisable to use a port outside the default scan range, so we use port 5874 as example:
++ **Port <desired port>**:  
+  This entry must point to the port that is enabled on the router for forwarding. IANA has assigned TCP port 22 to the protocol and Debian sets it as the default. However, it is advisable to use a port outside the default scanning range. We therefore use port 5874, for example, to make attacks more difficult, since the SSH port is not known to the attacker.
 
   ~~~
   Port 5874
   ~~~
 
-+ `ListenAddress <IP of the computer or network interface>:`  
++ **ListenAddress <IP of the computer or network interface>**:  
   Since the port is forwarded by the router, the computer must use a static IP address unless a local DNS server is used. But if something as complicated as SSH is to be set up using a local DNS server and these instructions are needed, a serious error can occur easily. We'll use a static IP for the example:
 
   ~~~
   ListenAddress 192.168.2.134
   ~~~
 
-  Protocol 2 is already default in Debian, but you should be sure and therefore check again.
+  The SSH protocol 2 with its improved and extended features is already default in Debian.
 
-+ `LoginGraceTime <timeframe of login>:`  
-  By deault, the allowed time is an absurd 600 seconds. Since it usually doesn't take ten minutes to enter a username and password, let's set a slightly more reasonable amount of time:
++ **LoginGraceTime <timeframe of login>**:  
+  By deault, the allowed time is 2 minutes. Since it usually doesn't take two minutes to enter a username and password, we set a slightly shorter time period:
 
   ~~~
-  LoginGraceTime 45
+  LoginGraceTime 30
   ~~~
 
-  Now you have 45 seconds to log in, and hackers don't have ten minutes each time they try to crack the password.
+  Now you have 30 seconds to log in, and hackers don't have two minutes each time they try to crack the password.
 
-+ `PermitRootLogin <yes>:`  
-  Why Debian gives permission to log in as **root** here is incomprehensible. We correct to 'no':
-
++ **PermitRootLogin <prohibit‐password>**:  
+  Why Debian gives permission to log in as root here is not understandable. We correct to `no`:
+  
   ~~~
   PermitRootLogin no
   StrictModes yes
   ~~~
+  
+  Alternatively, you can set this option to *forced-commands-only*. This will allow root to log in via asymmetric authentication, but only if the *command* option is set (which is useful for performing remote backups, even if root logins are not normally allowed). All other authentication methods for root remain disabled.
 
-+ `MaxAuthTries <number of allowed login attempts>:`  
++ **MaxAuthTries <number of allowed login attempts>**:  
    More than 3 or 4 attempts should not be allowed:
 
   ~~~
@@ -68,21 +65,21 @@ To make SSH more secure, use a text editor of your choice to edit the file `/etc
 
 **The following settings must be added if they are not present:**
 
-+ `AllowUsers <xxx>:`  
++ **AllowUsers <xxx>**:  
   Usernames which are allowed to access via SSH, separated by spaces. Only registered users can use the access, and only with user rights. With `adduser` you should add a user that is specifically meant to use SSH:
 
   ~~~
   AllowUsers whoever1 whoever2
   ~~~
 
-+ `PermitEmptyPasswords <xxx>:`  
++ **PermitEmptyPasswords <xxx>**:  
   The user should be given a nice and long password that can't be guessed in a million years. They should be the only one with SSH access. Once logged in, they can become **root** with **`su`**:
 
   ~~~
   PermitEmptyPasswords no
   ~~~
 
-+ `PasswordAuthentication <xxx>:`  
++ **PasswordAuthentication <xxx>**:  
   Obviously, 'yes' must be set here (unless you use a KeyLogin).
 
   ~~~
@@ -108,7 +105,7 @@ $ ssh -X username@xxx.xxx.xxx.xxx (or IP)
 Enter the password for the remote computer's username and start a graphical application in the shell. Examples:
 
 ~~~
-$ iceweasel OR oocalc OR oowriter OR kspread
+$ iceweasel OR libreoffice OR kspread
 ~~~
 
 On very slow connections, it may be advantageous to use the compression option to increase the transfer rate. However, for fast connections, the opposite effect may occur:
@@ -117,13 +114,10 @@ On very slow connections, it may be advantageous to use the compression option t
 $ ssh -C -X username@xxx.xxx.xxx.xxx (or IP)
 ~~~
 
-More information:
+Further information can be obtained with **`man ssh`**.
 
-~~~
-$ man ssh
-~~~
-
-**Note:** If ssh refuses a connection and you get an error message, search in `$HOME` for the hidden directory `.ssh`, delete the file `known_hosts` and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
+**Note:**  
+If ssh refuses a connection and you get an error message, search in `$HOME` for the hidden directory `.ssh`, delete the file `known_hosts` and try a new connection. This problem occurs mainly when you have assigned the IP address dynamically (DCHP).
 
 ### Copy scp via ssh
 
@@ -171,44 +165,35 @@ Additional information:
 man scp
 ~~~
 
-### SSH with Dolphin
+### SSH with Dolphin or Thunar
 
-Both *Dolphin* and *Krusader* are capable of accessing data from a remote computer using the *sftp* protocol present in ssh.
+Dolphin and Thunar are capable of accessing data from a remote machine using the *"sftp "* protocol present in ssh.
 
-This is how it is done:  
-1) Open a new Dolphin window.  
-2) The syntax in the address bar is: "sftp://username@ssh-server.com".
+This is how it is done:
 
-Example 1: A dialog window opens and asks for the SSH password. Enter the password and click OK:
+1. **For a remote server**.  
+  One opens a new file manager window or a new tab.  
+  Enter into the address bar according to the pattern:  
+    - `sftp://username@ssh-server.com`  
+    Then a dialog window opens and asks for the SSH password. One enters the password and clicks OK,  
+    - or the input already contains the password:  
+    `sftp://username:password@remote_hostname_or_ip`  
+    You will not be asked for a password, you will be connected directly.
 
-~~~
-sftp://siduction1@remote_hostname_or_ip
-~~~
+2. **For a LAN environment**.  
+  Following the same pattern as before:  
+    - `sftp://username@192.168.x.x`  
+    with dialog window for SSH password,  
+    - or immediately with password:  
+    `sftp://username:passwort@192.168.x.x`
 
-Example 2: You are not asked for a password but connected directly.
+Please enter the correct IP!  
+A SSH connection is now established. In this window, you can work with the files on the SSH server as if they were local files.
 
-~~~
-sftp://username:password@remote_hostname_or_ip
-~~~
-
-For a LAN environment:
-
-~~~
-sftp://username@10.x.x.x
-or
-sftp://username@198.x.x.x
-~~~
-
-Please enter the correct IP! Afterwards, a dialog window occurs, asking for the ssh password.  
-A SSH connection in Dolphin is now established. In this Dolphin window, you can work with the files on the SSH server as if they were local files.
-
-**NOTE: If a port other than 22 (default) is used, it must be specified when using sftp:**
-
-~~~
-sftp://user@ip:port
-~~~
-
-*"user@ip:port"* - this is the default syntax for many protocols/programs like sftp and smb.
+**NOTE:**  
+If a port other than 22 (default) is used, it must be specified when using sftp. The input then follows the syntax:  
+`sftp://user@ip:port`,  
+this is the default syntax for many protocols/programs like sftp and smb.
 
 ### SSHFS - mount on a remote computer
 
@@ -281,7 +266,8 @@ If the username is not listed, use the `adduser` command as **root**:
 adduser <username> fuse
 ~~~
 
-**Note:** The user will not be a member of the group "fuse" until he logs in again.  
+**Note:**  
+The user will not be a member of the group "fuse" until he logs in again.  
 Now the desired username should be listed and the following command should be executable:
 
 ~~~
@@ -292,4 +278,4 @@ mount local_mountpoint
 umount local_mountpoint
 ~~~
 
-<div id="rev">Last edited: 2023/09/20</div>
+<div id="rev">Last edited: 2023/10/19</div>
