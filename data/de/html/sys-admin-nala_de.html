@@ -67,20 +67,32 @@ Spiegelserver zu minimieren.</p>
 sofort verwendbar. Es kann jederzeit ohne Weiteres zwischen APT und Nala
 gewechselt werden. Ein Blick in die manpage
 <strong><code>man nala</code></strong> sollte obligatorisch sein. Vor
-der Anwendung empfehlen wir dringend, eine &Auml;nderung in der
-Konfigurationsdatei <code>/etc/nala/nala.conf</code> vorzunehmen.<br />
-Den Wert f&uuml;r die Konfigurationsoption <code>auto_remove</code> &auml;ndern
-wir zu <code>false</code>, so wie es das folgende Listing zeigt:</p>
+der Anwendung empfehlen wir dringend zwei &Auml;nderungen in der
+Konfigurationsdatei <code>/etc/nala/nala.conf</code> vorzunehmen.</p>
+<p>Zum einen den Wert f&uuml;r die Konfigurationsoption
+<code>auto_remove</code>, diesen &auml;ndern wir zu <code>false</code>, so
+wie es das folgende Listing zeigt:</p>
 <pre><code># Set to false to disable auto auto-removing
 auto_remove = false</code></pre>
-<p>Der Grund hierf&uuml;r liegt in der Verwendung von <em>debian sid</em> als
-Basis f&uuml;r siduction. Bei einem Upgrade von sid kann gelegentlich eine
-Situation entstehen, in der wesentliche Teile des Systems entfernt
-werden sollen. Mit der Option <code>auto_remove = true</code> haben wir
-keine M&ouml;glichkeit zu recherchieren, zu pr&uuml;fen und selbst zu entscheiden,
-ob oder welche Pakete zu entfernen sind. Auch im normalen Betrieb
-sollten Pakete nicht mit <code>auto_remove</code>, sondern erst nach
-einer Sichtkontrolle entfernt werden.</p>
+<p>Zum anderen den Wert <code>full_upgrade = false</code>, dieser muss
+auf <code>true</code> ge&auml;ndert werden, damit automatisch ein
+<code>full-upgrade</code> ausgef&uuml;hrt wird.</p>
+<pre><code># Set to true to make full-upgrade the default
+full_upgrade = true</code></pre>
+<p>Der Grund f&uuml;r beide &Auml;nderungen ist, dass siduction auf <em>GNU Linux
+debian unstable/sid</em> basiert und diese Basis sich t&auml;glich ver&auml;ndert
+und deshalb regelm&auml;&szlig;ig auf den neusten Stand gebracht werden muss. Bei
+einem Upgrade von <em>debian sid</em> kann gelegentlich eine Situation
+entstehen, in der wesentliche Teile des Systems entfernt werden sollen.
+Mit der Option <code>auto_remove = true</code> haben wir keine
+M&ouml;glichkeit zu recherchieren, zu pr&uuml;fen und selbst zu entscheiden, ob
+oder welche Pakete zu entfernen sind. Auch im normalen Betrieb sollten
+Pakete nicht mit <code>auto_remove</code>, sondern erst nach einer
+Sichtkontrolle entfernt werden.</p>
+<p>Ist es im Ausnahmefall n&ouml;tig auf einen <code>full-upgrade</code>
+verzichten zu m&uuml;ssen und stattdessen nur einen <code>upgrade</code>
+vorzunehmen, so kann <code>nala</code> mit folgendem Befehl aufgerufen
+werden, <strong><code>nala upgrade --no-full</code></strong>.</p>
 <h3 id="befehle-analog-zu-apt">Befehle analog zu APT</h3>
 <p>Viele der von APT bekannten Befehle sind in Nala identisch. In der
 Grundeinstellung erwartet Nala vor dem Ausf&uuml;hren einer angeforderten
@@ -98,8 +110,12 @@ Entfernt das benannte Paket aus unserem System.</p></li>
 Entfernt das benannte Paket mit seinen Konfigurationsdateien aus unserem
 System.</p></li>
 <li><p><strong><code>nala upgrade</code></strong><br />
-F&uuml;hrt <code>update</code>, gefolgt von <code>dist-upgrade</code>
-aus.</p></li>
+F&uuml;hrt <code>update</code>, gefolgt von <code>upgrade</code> aus.
+(Standardeinstellung in der Datei
+<code>/etc/nala/nala.conf</code>)<br />
+F&uuml;hrt <code>update</code>, gefolgt von <code>upgrade --full</code> aus.
+(Mit den oben genannten &Auml;nderungen in der Datei
+<code>/etc/nala/nala.conf</code>)</p></li>
 </ul>
 <p>Die benutzerfreundliche Aufbereitung der Ausgabe im Terminal
 erleichtert die &Uuml;bersicht, wie das Beispiel zeigt.<br />
@@ -174,7 +190,7 @@ Entfernen. In einer zuk&uuml;nftigen Version, die dann auf der
 Programmiersprache Rust basieren wird, sollen sich komplette
 Dist-Upgrades zur&uuml;ckrollen lassen.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2022-11-09
+Zuletzt bearbeitet: 2023-10-15
 </div>
 </body>
 </html>

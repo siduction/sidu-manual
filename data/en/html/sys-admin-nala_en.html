@@ -64,20 +64,32 @@ mirrors.</p>
 <p>As of siduction 2022.1.0, Nala is installed automatically and can be
 used immediately. It is not mandatory to use Nala, you can switch
 between APT and Nala at will. A look at the manpage
-<strong><code>man nala</code></strong> should be mandatory. Before use
-we strongly recommend to make a change in the configuration file
+<strong><code>man nala</code></strong> should be mandatory. Before using
+it, we strongly recommend making two changes in the configuration file
 <code>/etc/nala/nala.conf</code>.</p>
-<p>We change the value for the <code>auto_remove</code> configuration
-option to <code>false</code> as shown in the following listing:</p>
+<p>First, we change the value for the <code>auto_remove</code>
+configuration option to <code>false</code> as shown in the following
+listing:</p>
 <pre><code># Set to false to disable auto auto-removing
 auto_remove = false</code></pre>
-<p>The reason for this is the use of <em>debian sid</em> as basis for
-siduction. When upgrading sid, occasionally a situation may arise where
-significant parts of the system are to be removed. With the
-<code>auto_remove = true</code> option we have no way to investigate,
-check, and decide for ourselves if or which packages to remove. Even in
-normal operation packages should not be removed with
-<code>auto_remove</code>, but only after a visual check.</p>
+<p>Secondly, the value <code>full_upgrade = false</code>, this must be
+changed to <code>true</code> to automatically perform a
+<code>full-upgrade</code>.</p>
+<pre><code># Set to true to make full-upgrade the default
+full_upgrade = true</code></pre>
+<p>The reason for both changes is that siduction is based on <em>GNU
+Linux debian unstable/sid</em> and this base changes daily and therefore
+needs to be updated regularly. When upgrading from <em>debian sid</em>,
+occasionally a situation may arise where significant parts of the system
+should be removed. With the option <code>auto_remove = true</code> we
+have no way to research, check and decide for ourselves if or which
+packages to remove. Even in normal operation packages should not be
+removed with <code>auto_remove</code>, but only after a visual
+check.</p>
+<p>If in an exceptional case it is necessary to <code>upgrade</code> the
+system without a <code>full-upgrade</code>, <code>nala</code> can be
+called with the following command,
+<strong><code>nala upgrade --no-full</code></strong>.</p>
 <h3 id="commands-analogous-to-apt">Commands analogous to APT</h3>
 <p>Many of the commands known from APT are identical in Nala. By
 default, Nala always expects confirmation before performing a requested
@@ -95,7 +107,10 @@ Removes the named package from our system.</p></li>
 Removes the named package with its configuration files from our
 system.</p></li>
 <li><p><strong><code>nala upgrade</code></strong><br />
-Runs <code>update</code> followed by <code>dist-upgrade</code>.</p></li>
+Runs <code>update</code> followed by <code>upgrade</code>. (default
+setting in <code>/etc/nala/nala.conf</code> file)<br />
+Runs <code>update</code> followed by <code>upgrade --full</code>. (With
+the above changes in the file <code>/etc/nala/nala.conf</code>)</p></li>
 </ul>
 <p>The user-friendly formatting of the output in the terminal
 facilitates the overview, as the example shows.<br />
@@ -164,7 +179,7 @@ only support the actions Install or Remove. In a future version, which
 will be based on the Rust programming language, it should be possible to
 roll back complete dist upgrades.</p>
 <div id="rev">
-Last edited: 2022-11-09
+Last edited: 2023-10-15
 </div>
 </body>
 </html>
