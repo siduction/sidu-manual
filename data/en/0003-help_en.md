@@ -7,13 +7,7 @@ Quick help can save you a lot of tears and gives you the opportunity to work on 
 ### The siduction forum
 
 The siduction forum offers the possibility to ask questions and get answers to them. Before creating a new post, use the forum search, as there is a good chance that this or a similar question
-has been asked before. [The forum](https://forum.siduction.org/index.php?name=PNphpBB2) is available in English and German.
-
-### The siduction wiki
-
-The siduction wiki is freely usable and modifiable by all siduction users. We hope that this way the siduction documentation will grow with the project over time.
-
-We hope for contributions from Linux users of all experience levels as this wiki intends to help users of all skill levels. The few minutes "sacrificed" to the wiki and project can save other users (and perhaps yourself) hours of dealing with problems. [Link to siduction wiki](https://forum.siduction.org/index.php?board=66.0)
+has been asked before. [The forum](https://forum.siduction.org/) is available in English and German.
 
 ### IRC - interactive live support. 
 

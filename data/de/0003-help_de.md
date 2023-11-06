@@ -6,13 +6,7 @@ Schnelle Hilfe kann einem viele Tränen ersparen und bietet die Möglichkeit, da
 
 ### Das siduction-Forum
 
-Das siduction-Forum bietet die Möglichkeit Fragen zu stellen und Antworten auf diese zu erhalten. Bevor ein neuer Beitrag erstellt wird, sollte die Forensuche benutzt werden, da die Wahrscheinlichkeit groß ist, dass diese oder eine ähnliche Frage schon einmal gestellt wurde. [Das Forum](https://forum.siduction.org/index.php?name=PNphpBB2)  ist auf Deutsch und Englisch verfügbar.
-
-### Das siduction-Wiki
-
-Das siduction-Wiki ist von allen siduction-Nutzern frei nutz- und veränderbar. Wir hoffen so, dass die siduction-Dokumentation im Laufe der Zeit mit dem Projekt wachsen wird.
-
-Wir hoffen auf Beiträge von Linuxnutzern aller Erfahrungsebenen, da dieses Wiki beabsichtigt, Nutzern jeden Kenntnisstandes zu helfen. Die wenigen Minuten, die dem Wiki und Projekt "geopfert" werden, können anderen Nutzern (und vielleicht einem selbst) Stunden des Suchens nach Problemlösungen ersparen. [Link zum siduction-Wiki](https://forum.siduction.org/index.php?board=66.0) .
+Das siduction-Forum bietet die Möglichkeit Fragen zu stellen und Antworten auf diese zu erhalten. Bevor ein neuer Beitrag erstellt wird, sollte die Forensuche benutzt werden, da die Wahrscheinlichkeit groß ist, dass diese oder eine ähnliche Frage schon einmal gestellt wurde. [Das Forum](https://forum.siduction.org/)  ist auf Deutsch und Englisch verfügbar.
 
 ### IRC - interaktiver Livesupport 
 
