@@ -36,7 +36,7 @@ There are three special features to be considered for the target units:
     The old runlevels 2 and 4 refer to multi-user.target
 
 2. The use in the terminal during a running session  
-    Provided you are in a running graphical session, you can switch to the virtual terminal tty2 with the key combination **`CTRL`**+**`ALT`**+**`F2`**. Here you log in as **root** user. The following table lists the terminal commands, where the expression *"isolate"* ensures that all services not requested by the target unit are terminated.
+    Provided you are in a running graphical session, you can switch to the virtual terminal tty3 with the key combination **`CTRL`**+**`ALT`**+**`F3`**. Here you log in as **root** user. The following table lists the terminal commands, where the expression *"isolate"* ensures that all services not requested by the target unit are terminated.
 
     | target unit | terminal command | init command alt |
     | --------- | --------------- | :----: |

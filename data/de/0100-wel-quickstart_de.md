@@ -96,8 +96,10 @@ init 5
 
 ### Konfiguration von Netzwerken
 
-Der in allen graphischen Oberflächen von siduction integrierte `Networkmanager` bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript `nmcli` Zugang zur Funktionalität des Netwokmanagers. Drahtlose Netzwerke werden von dem Skript gescannt, man kann die Verschlüsselungsmethoden WEP und WPA wählen und die Backends `wireless-tools` bzw. `wpasupplicant` zur Konfiguration drahtloser Netzwerke verwenden. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist mit diesem Skript gegeben.
+Der in allen graphischen Oberflächen von siduction integrierte `Networkmanager` bietet eine schnelle Konfiguration von Netzwerkkarten (Ethernet und drahtlos). Er ist größtenteils selbsterklärend. Im Terminal bietet das Skript `nmcli` Zugang zur Funktionalität des Netwokmanagers.  
+Drahtlose Netzwerke werden gescannt. Man kann sich mit den gefundenen Netzwerken verbinden und Einstellungen zur Verschlüsselungsmethode, zum Internet Protokoll IPv4 oder IPv6 und zu einem Proxy Server vornehmen. Als Backend kommt `iwd` zum Einsatz. Die Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch die Möglichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist gegeben.
 
+In der graphischen Oberfläche befindet sich der Networkmanager in der Taskleiste.  
 Der Startbefehl in der Konsole ist **`nmcli`**  oder **`nmtui`** . Falls das Skript nicht vorhanden ist, installiert man es mit:
 
 ~~~
@@ -106,7 +108,7 @@ apt install network-manager
 
 Mehr Informationen unter [Netzwerk - nmcli](0501-inet-nm-cli_de.md#network-manager-kommandline-tool)
 
-Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt sich an, den WPA-Supplicant in den wohlverdienten Ruhestand zu verabschieden. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. Wer schon jetzt zum iwd wechseln möchte, informiert sich bitte auf unserer Handbuchseite [IWD statt wpa_supplicant](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) über die Vorgehensweise.
+Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt den WPA-Supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller, ist `iwd` der Nachfolger. In seltenen Fällen treten mit `iwd` Verbindungsabbrüche auf. Dann bietet es sich an [zum WPA-Supplicant zurück](0502-inet-iwd_de.md#zurück-zum-wpa_supplicant) zu kehren.
 
 ### Runlevels - Ziel-Unit
 
@@ -125,4 +127,4 @@ Hilfe gibt es jederzeit im IRC bzw. im Forum von siduction.
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
-<div id="rev">Zuletzt bearbeitet: 2022-04-16</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-07</div>

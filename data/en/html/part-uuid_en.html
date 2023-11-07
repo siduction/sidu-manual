@@ -187,6 +187,9 @@ sdb7.</p>
 example, the entry would look like this:</p>
 <pre><code>UUID=2ef32215-d545-4e12-bc00-d0099a218970 /media/disk1part5 ext4 auto,users,exec 0 2
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /media/disk2part7 ext4 auto,users,exec 0 2</code></pre>
+<p>We then inform the kernel about the changes to
+<code>/etc/fstab</code> with the command
+<strong><code>systemctl daemon-reload</code></strong>.</p>
 <h3 id="creation-of-new-mount-points">Creation of new mount points</h3>
 <p><strong>Note:</strong> A mount point that is specified in fstab must
 be associated with an existing directory. During the live session,
@@ -218,7 +221,7 @@ under <em>“&lt;options&gt;”</em>. See also:</p>
 <code>fstab</code> can be assigned meaningful names, for example,
 <em>“data”</em> or <em>“music”</em>.</p>
 <div id="rev">
-Last edited: 2022/04/05
+Last edited: 2023/11/07
 </div>
 </body>
 </html>

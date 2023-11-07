@@ -133,6 +133,8 @@ UUID=2ef32215-d545-4e12-bc00-d0099a218970 /media/disk1part5 ext4 auto,users,exec
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5 /media/disk2part7 ext4 auto,users,exec 0 2
 ~~~
 
+We then inform the kernel about the changes to `/etc/fstab` with the command **`systemctl daemon-reload`**.
+
 ### Creation of new mount points
   
 **Note:**
@@ -176,4 +178,4 @@ man mount
 
 Of course, you don't have to follow the naming scheme *"diskXpartX"*. Mount points and their associated identifiers in `fstab` can be assigned meaningful names, for example, *"data"* or *"music"*.
 
-<div id="rev">Last edited: 2022/04/05</div>
+<div id="rev">Last edited: 2023/11/07</div>

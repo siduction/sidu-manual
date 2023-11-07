@@ -76,9 +76,7 @@ As web browser, [Firefox](https://mozilla.org) or [Chromium](https://chromium.wo
 
 LibreOffice is pre-installed as office software. Dolphin, Thunar, and PCManFM are available as file managers.
 
-Connman or Network Manager is available for network and internet configuration.
-
-Xorg and NoX are delivered with [IWD](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) as wireless daemon. It can be configured via [nmtui/nmcli](0501-inet-nm-cli_en.md#network-manager-command-line-tool) or [iwctl](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant). 
+Network Manager, Connman or iwd is available for network and internet configuration. The WLAN daemon used is `iwd`.
 
 For disk partitioning, [cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](0313-part-gdisk_en.md#partitioning-with-gdisk), and [GParted](0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
 
@@ -90,4 +88,4 @@ Each ISO variant contains an extensive selection of applications for the command
 
 siduction is experimental software. Use at your own risk. The siduction project, its developers, and team members cannot be held liable under any circumstances for damage to hardware or software, lost data, or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.
 
-<div id="rev">Last edited: 2022-12-14</div>
+<div id="rev">Last edited: 2023-11-07</div>

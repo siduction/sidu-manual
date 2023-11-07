@@ -134,6 +134,8 @@ UUID=2ef32215-d545-4e12-bc00-d0099a218970  /media/disk1part5 ext4 auto,users,exe
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5  /media/disk2part7 ext4 auto,users,exec 0 2
 ~~~
 
+Anschließend informieren wir den Kernel über die Änderungen an der `/etc/fstab` mit dem Befehl **`systemctl daemon-reload`**.
+
 ### Erstellung neuer Einhängepunkte
   
 **Anmerkung:**
@@ -173,4 +175,4 @@ man mount
 
 Natürlich muss man sich nicht an das Namensschema *"diskXpartX"* halten. Einhängepunkte (mountpoints) und die dazugehörigen Bezeichner in der fstab können sinnvoll mit z.B. *"data"* oder *"music"* benannt werden.
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-28</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-07</div>

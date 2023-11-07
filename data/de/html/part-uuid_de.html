@@ -192,6 +192,9 @@ benutzt man einen Texteditor (wie mcedit, kate, kwrite oder gedit) mit
 Rootrechten; in diesem Beispiel s&auml;he der Eintrag so aus:</p>
 <pre><code>UUID=2ef32215-d545-4e12-bc00-d0099a218970  /media/disk1part5 ext4 auto,users,exec 0 2
 UUID=a7aeabe9-f09d-43b5-bb12-878b4c3d98c5  /media/disk2part7 ext4 auto,users,exec 0 2</code></pre>
+<p>Anschlie&szlig;end informieren wir den Kernel &uuml;ber die &Auml;nderungen an der
+<code>/etc/fstab</code> mit dem Befehl
+<strong><code>systemctl daemon-reload</code></strong>.</p>
 <h3 id="erstellung-neuer-einh&auml;ngepunkte">Erstellung neuer
 Einh&auml;ngepunkte</h3>
 <p><strong>Anmerkung:</strong> Ein Einh&auml;ngepunkt, der in fstab
@@ -227,7 +230,7 @@ auch:</p>
 dazugeh&ouml;rigen Bezeichner in der fstab k&ouml;nnen sinnvoll mit z.B.
 <em>“data”</em> oder <em>“music”</em> benannt werden.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-11-28
+Zuletzt bearbeitet: 2023-11-07
 </div>
 </body>
 </html>

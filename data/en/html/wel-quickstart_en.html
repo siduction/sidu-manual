@@ -172,28 +172,28 @@ installed system - full-upgrade</a>.</p>
 interfaces of siduction offers a quick configuration of network cards
 (Ethernet and wireless). It is mostly self-explanatory. In the terminal,
 the script <strong>nmcli</strong> provides access to the netwokmanagers
-functionality. Wireless networks are scanned by the script. You can
-choose WEP as well as WPA encryption methods and use the
-<strong>wireless-tools</strong> or <strong>wpasupplicant</strong>
-backends to configure wireless networks. Ethernet configuration is done
-automatically when using a DHCP server on the router (dynamic assignment
-of an IP address), but manual setup (from netmasks to nameservers) is
-also possible with this script.</p>
-<p>The start command in the console is
-<strong><code>nmcli</code></strong> or
-<strong><code>nmtui</code></strong> . If the script is not available,
+functionality.<br />
+Wireless networks are scanned. You can connect to the networks found and
+make settings for the encryption method, the IPv4 or IPv6 Internet
+protocol, and a proxy server. The backend is <code>iwd</code>. Ethernet
+configuration is done automatically when using a DHCP server on the
+router (dynamic assignment of an IP address), but manual setup (from
+netmasks to nameservers) is also possible with this script.</p>
+<p>In the graphical user interface, the network manager is located in
+the taskbar.<br />
+The start command in the console is <strong><code>nmcli</code></strong>
+or <strong><code>nmtui</code></strong> . If the script is not available,
 install it with:</p>
 <pre><code>apt install network-manager</code></pre>
 <p>More information at <a
 href="./inet-nm-cli_en.html#network-manager-command-line-tool">network -
 nmcli</a></p>
 <p>Intel’s <a target="_blank" href="https://iwd.wiki.kernel.org/">iNet wireless
-daemon</a> (<strong>IWD</strong>) is preparing to retire the WPA
-supplicant. Only one tenth as big and much faster, iwd will be the
-successor. If you want to switch to iwd already, please refer to our
-manual page <a
-href="./inet-iwd_en.html#iwd-instead-of-wpa_supplicant">IWD instead of
-wpa_supplicant</a> for the procedure.</p>
+daemon</a> (iwd) is sending the WPA supplicant into well-deserved
+retirement. Only one tenth as big and much faster, iwd will be the
+successor. In rare cases, connections are lost with iwd. It is then
+advisable to <a href="./inet-iwd_en.html#back-to-wpa_supplicant">return
+to the WPA supplicant</a>.</p>
 <h3 id="runlevels---target-unit">Runlevels - target unit</h3>
 <p>By default, siduction boots into the graphical user interface (except
 NoX).<br />
@@ -213,7 +213,7 @@ the IRC immediately in your browser</a>: enter a freely chosen nickname
 and join the channel #siduction-en.</p></li>
 </ul>
 <div id="rev">
-Last edited: 2022/04/16
+Last edited: 2023/11/07
 </div>
 </body>
 </html>

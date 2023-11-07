@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2022/03/29</div>
+<div id="rev">Last edited: 2023/11/06</div>
