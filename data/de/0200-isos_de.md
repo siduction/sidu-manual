@@ -7,7 +7,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 + [Inhalt der Live-ISO](0201-cd-content_de.md#inhalt-der-live-iso),  
   den verfügbaren Varianten, den Systemanforderungen, zu Anwendungen und Hilfsprogrammen und zum Haftungsausschluss.
 
-+ [Verwendung der Live-DVD](0202-live-mode_de.md#live-dvd-verwenden),  
++ [Verwendung des Live-Mediums](0202-live-mode_de.md#live-medium-verwenden),  
   den eingerichteten Usern und deren Passwörtern, der Arbeit mit root-Rechten und der Software-Installation während der Live-Sitzung.
 
 + [Den Bootoptionen (Cheatcodes)](0204-cheatcodes_de.md#bootoptionen-cheatcodes)  
@@ -25,4 +25,4 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zum/zur
 + [Brennen der ISOs auf DVD ohne GUI](0209-no-gui-burn_de.md#life-dvd-ohne-gui-brennen)  
   unter Linux mit einer ganzen Reihe direkt verwendbarer Terminal-Befehle auch zur Ermittlung der verfügbaren Geräte.
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-11</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-09</div>

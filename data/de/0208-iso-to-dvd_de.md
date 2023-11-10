@@ -6,7 +6,7 @@ Bevor die ISO-Abbilddatei auf eine DVD gebrannt wird, sollte man sie stets mit H
 Eine ausführliche Anleitung steht im Handbuchkapitel [ISO Download, Integritätsprüfung](0206-iso-dl_de.md#integritätsprüfung).
 
 > **WICHTIGE INFORMATION:**  
-> siduction, als Linux-LIVE-DVD/CD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbildes geachtet werden. Bitte verwende hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
+> siduction, als Linux-LIVE-DVD, ist sehr stark komprimiert. Aus diesem Grund muss besonders auf die Brennmethode des Abbildes geachtet werden. Bitte verwende hochwertige Medien, das Brennen im DAO-Modus (disk-at-once) und nicht schneller als achtfach (8x).
 
 Wir empfehlen allerdings, sofern die Hardware das Booten von USB unterstützt, das Abbild auf einen USB-Stick oder eine SD-Speicherkarte zu legen. Eine Anleitung dazu bietet die Handbuchseite [ISO auf USB-Stick / Speicherkarte](0207-iso-to-usb-sd_de.md#iso-auf-usb-stick---speicherkarte).
 
@@ -32,4 +32,4 @@ Es gibt verschiedene gute Programme, die die mit Windows Vista eingeführte, int
 + Die Open-Source-Software [cdrtfe](https://cdrtfe.sourceforge.io/cdrtfe/index_de.html) ist in der aktuellen Version kompatibel mit Windows Vista, 7, 8, 10 und 11. Mit dem Programm lassen sich ISO-Abbilder brennen, Daten-Disks (CD, DVD, BD) sowie Audio und Video CD/DVDs erstellen. Man kann es in Windows installieren oder das zip-Archiv herunterladen und nach dem Entpacken `cdrtfe` ohne weitere Installation starten.  
 + Die Closed-Source-Software `CDBurnerXP` ist ein kostenloses Programm, dass neben dem Brennen von ISO-Abbildern auch Daten und Audio CD/DVDs erstellen kann und wieder beschreibbare Medien bei Bedarf löscht. Erhältlich unter [CDBurnerXP](https://cdburnerxp.de.uptodown.com/windows).
 
-<div id="rev">Zuletzt bearbeitet: 2022-04-06</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-10</div>

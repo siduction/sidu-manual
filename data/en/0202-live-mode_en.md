@@ -1,6 +1,6 @@
-% Use Live DVD
+% Use Live Medium
 
-## How to use the live DVD
+## How to use the live medium
 
 ### Users set up on the live medium
 
@@ -11,7 +11,11 @@ No password is set for **root** (system administrator).
 
 The live session will be locked after some time without any input. To unlock, please enter the username **siducer** and the password **live**.
 
-### root privileges on the live DVD
+### chroot helper
+
+A very helpful tool on the live medium is the *chroot helper*. Who can execute the commands to start a chroot off the cuff, most of us cannot. So the next time we need to repair our system, we use the *chroot helper* icon. A terminal window opens and we are asked to select a partition. After a security warning, the *chroot helper* redirects us to the corresponding installation.
+
+### root privileges on the live medium
 
 Several ways of how to run a program with root priviliges are described below.
 
@@ -81,6 +85,6 @@ sudo apt update
 sudo apt install <the-package-you-want>
 ~~~
 
-However, if you shut down the live DVD, no changes will be kept.
+However, if you shut down the live medium, no changes will be kept.
 
-<div id="rev">Last edited: 2022/03/30</div>
+<div id="rev">Last edited: 2023/11/10</div>

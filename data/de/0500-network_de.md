@@ -6,7 +6,7 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
 + [Network Manager Kommandline Tool](0501-inet-nm-cli_de.md#network-manager-kommandline-tool), seiner Bedienung, welche Geräte vorhanden und konfiguriert sind, wie Verbindungen hergestellt und getrennt, und wie von WLAN zu LAN und zurück gewechselt werden kann.
 
-+ [IWD, Intels wireless daemon](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant), als Ersatz für den WPA-Supplicant; seine Installation, Bedienung und die Zusammenarbeit mit dem Network Manager.
++ [IWD, Intels wireless daemon](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) ersetzt den WPA-Supplicant. Seine Bedienung und die Zusammenarbeit mit dem Network Manager.
 
 + [SAMB Client einrichten](0510-samba_de.md#samba) um auf Windows-Freigaben zugreifen zu können.
 

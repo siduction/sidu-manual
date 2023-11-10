@@ -54,11 +54,9 @@ daemon</a> (iwd) sends wpa-supplicant into well-deserved retirement.
 Only a tenth the size and much faster, iwd is the successor. It works
 alone or together with NetworkManager, systemd-networkd, and
 conman.<br />
-Two things iwd still can’t do are to connect via WPA/WPA2 Enterprise and
-to properly handle hidden networks. For such working environments, you
-should stay with wpa-supplicant or, if you use siduction from 2021.3.0,
-<a href="./inet-iwd_en.html#back-to-wpa_supplicant">switch back to
-wpa-supplicant</a>.</p>
+In rare cases, connections are lost with iwd. It is then advisable to <a
+href="./inet-iwd_en.html#back-to-wpa_supplicant">return to the WPA
+supplicant</a>.</p>
 <p>Further information can be found on the <a
 href="https://wiki.archlinux.org/index.php/Iwd">Arch Linux wiki</a> or
 the <a target="_blank" href="https://wiki.debian.org/NetworkManager/iwd">debian
@@ -287,7 +285,7 @@ file.</li>
 ~# systemctl start NetworkManager.service</code></pre>
 <p>Now wpa_supplicant is used to connect to the Wi-Fi hardware.</p>
 <div id="rev">
-Last edited: 2022/04/03
+Last edited: 2023/11/09
 </div>
 </body>
 </html>

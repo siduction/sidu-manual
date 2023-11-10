@@ -50,16 +50,17 @@ Neben dem Befehlszeilenprogramm `gdisk` unterstützen graphische Anwendungen wie
 In dem folgenden Beispiel werden wir eine 150GB Festplatte so formatieren, dass anschließend zwei Linux Systeme als Dualboot installierbar sein werden. Damit die Vorteile des UEFI zum tragen kommen, benötigen wir in der GPT eine *"EFI-System"*-Partition.  
 Wir zeigen die notwendigen Arbeitsschritte mit dem Partitionierungsprogramm `cgdisk`, das GPT mit UEFI unterstützt.
 
+### cgdisk verwenden
+
+cgdisk kann man nur mit Datenträgern verwenden die nicht eingehangen (gemountet) sind. Zum Beispiel benutzt man ein siduction Live-Medium um die einzige vorhandene Festplatte zu bearbeiten, oder man verwendet cgdisk aus dem laufenden System heraus um eine zusätzliche Festplatte bzw. einen USB-Stick zu partitionieren.
+
+Der Startbefehl in einem root-Terminal lautet: **`cgdisk /dev/sdX`**.  
 cgdisk ist die Curses-basierte Programmvariante von gdisk. Sie bietet eine benutzerfreundliche Bedienoberfläche innerhalb des Terminals.  
 Die Navigation erfolgt mittels der Pfeiltasten.
 
 + Für die Partitionen **`auf`** und **`ab`**
 + Für die Aktionsauswahl **`rechts`** und **`links`**.
 + Mit **`Enter`** wird die Auswahl bzw. Eingabe bestätigt.
-
-### cgdisk verwenden
-
-Der Startbefehl in einem root-Terminal lautet: **`cgdisk /dev/sdX`**.
 
 cgdisk startet mit einer Warnmeldung, wenn keine GPT gefunden wird.
 
@@ -97,7 +98,7 @@ Nachdem die zwei Partitionen erstellt wurden, sehen wir die Aufteilung der gesam
 ![Gemeinsame Verwendung](./images-de/cgdisk/cgdisk_05.png)
 
 Die Partitionen, die die beiden Systeme später im Betrieb verwenden, sind farblich gekennzeichnet.  
-An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durch die Ausrichtung der Partition an die Blockgrenzen der Festplatte und können auch zwischen den Partitionen auftauchen. Mit **`Align`** kann der Wert für die Anzahl der Sektoren geändert werden. Für SSD und M2-Disk sind es in der Regel 2048 Sektoren und für alte Festplatten 512 Sektoren. gdisk liest die Metadaten der Festplatten aus und stellt den Wert für die Sektoren danach ein. Deshalb ist in der Regel keine Änderung notwendig.
+Am Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie entstehen durch die Ausrichtung der Partition an die Blockgrenzen der Festplatte und können auch zwischen den Partitionen auftauchen. Mit **`Align`** kann der Wert für die Anzahl der Sektoren geändert werden. Für SSD und M2-Disk sind es in der Regel 2048 Sektoren und für alte Festplatten 512 Sektoren. gdisk liest die Metadaten der Festplatten aus und stellt den Wert für die Sektoren danach ein. Deshalb ist in der Regel keine Änderung notwendig.
 
 Zusätzliche, detailierte Informationen zu den Partitionen lassen sich einsehen, wenn der Befehl **`Info`** benutzt wird.
 
@@ -161,7 +162,8 @@ Die EFI-Systempartition erhält ein **FAT32** Dateisystem.
 mkfs.vfat /dev/sdb1
 ~~~
 
-Sofern der Bootmanager `GRUB` bei der Installation die *"EFI-System"*-Partition findet, benutzt er sie, gleichgültig, welches Installationsziel wir angegeben haben.
+Die EFI Partition muss die erste Partition der Festplatte sein und unter `/boot/efi/` eingehangen werden, um dem siduction Standard zu entsprechen.  
+Sofern der Bootmanager `GRUB` bei der Installation eine derart vorbereitete *"EFI-System"*-Partition findet, benutzt er sie, gleichgültig welches Installationsziel wir angegeben.
 
 Die Linuxpartitionen `sdb2`, `sdb4` und `sdb5` formatieren wir mit **ext4**.
 
@@ -195,7 +197,7 @@ Falls Swap korrekt erkannt wurde:
 swapoff /dev/sdb3
 ~~~
 
-**Als nächstes ist es unbedingt notwendig, das System neu zu starten, damit das neue Partitionierungs- und Dateisystemschema vom Kernel eingelesen wird.** 
+Anschließend informieren wir den Kernel über die Änderungen mit dem Befehl **`systemctl daemon-reload`**.
 
 ### Booten mit GPT-UEFI oder GPT-BIOS
 
@@ -203,23 +205,21 @@ Falls ein bootbarer Datenträger mit GPT erstellt werden soll, gibt es zwei Mög
 
 Diese Möglichkeiten sind:
 
-+ Der Computer (das Mainboard) besitzt ein UEFI
-+ UEFI soll zum Booten des GPT-Datenträgers verwendet werden.
++ Der Computer (das Mainboard) besitzt ein UEFI und UEFI soll zum Booten des GPT-Datenträgers verwendet werden.
 
-**oder** 
+oder
 
-+ Der Computer (das Mainboard) hat **kein** UEFI sondern ein BIOS. (Alle Mainboard vor 2009 haben kein UEFI)
-+ Das BIOS soll zum Booten des GPT-Datenträgers verwendet werden.
++ Der Computer (das Mainboard) hat **kein** UEFI sondern ein BIOS. Das BIOS soll den GPT-Datenträgers booten. (Alle Mainboard vor 2009 haben kein UEFI)
 
 **Booten mit UEFI**
 
-Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT formatierte *"EFI System"*-Partition (Typ "EF00" ) als erste Partition erstellt werden. Diese Partition enthält den/die Bootloader.  
-Während der Installation von siduction wird jegliche Auswahlmöglichkeit der install-gui, wohin der Bootloader installiert werden soll, ignoriert, sofern die vorgenannte Partition existiet. Der Bootloader von siduction wird in der *"EFI-System"*-Partition unter `/efi/siduction`  gespeichert. Die EFI-Systempartition wird auch als `/boot/efi`  eingebunden, solange die Option der Einbindung weiterer Partitionen ("mount other partitions") gewählt ist. Die Einbindung der *"EFI-System"*-Partition muss im Installer nicht extra angegeben werden.
+Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT32 formatierte *"EFI System"*-Partition (Typ "ef00" ) als erste Partition erstellt und unter`/boot/efi` eingebunden werden. Diese Partition enthält den/die Bootloader.  
+Der Bootloader von siduction wird im Verzeichnis `/boot/efi/EFI/siduction/` gespeichert.
 
 **Booten mit BIOS**
 
-Falls das System kein UEFI besitzt, muss als erste eine **BIOS-Boot**-Partition erstellt werden. Diese ersetzt den Sektor eines MBR-partitionierten Datenträgers, der sich zwischen der Partitionierungstabelle und der ersten Partition befindet, und in diesen wird Grub direkt geschrieben.  
-Die Partition sollte die Größe von 200MB haben. (Der Grund dieser Größe, anstelle der konventionellen 32MB, liegt darin, für den Fall eines Wechsels zu UEFI eine ausreichend große Partition zur Verfügung zu haben.)
+Falls das System kein UEFI besitzt, muss die erste eine *"BIOS-Boot"*-Partition (Typ "ef02" ) sein. Grub wird direkt in diese Partition geschrieben. Sie ersetzt den Sektor eines MBR-partitionierten Datenträgers, der sich zwischen der Partitionierungstabelle und der ersten Partition befindet.  
+Die Partition sollte die Größe von 200MB haben. Der Grund dieser Größe, anstelle der konventionellen 32MB, liegt darin, für den Fall eines Wechsels zu UEFI eine ausreichend große Partition zur Verfügung zu haben.
 
 ### Erweiterte Befehle von gdisk
 
@@ -285,4 +285,4 @@ Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID
 
 Trotz alledem: die Optionen der Menüs *"recovery & transformation"*  und *"experts"*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **`b`**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
 
-<div id="rev">Zuletzt bearbeitet: 2023-05-18</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-08</div>

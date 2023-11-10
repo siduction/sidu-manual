@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="pandoc">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Use Live DVD</title>
+<title>Use Live Medium</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
@@ -29,16 +29,17 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Use Live DVD</h1>
+<h1 class="title">Use Live Medium</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-use-the-live-dvd">How to use the live DVD</a>
+<li><a href="#how-to-use-the-live-medium">How to use the live medium</a>
 <ul>
 <li><a href="#users-set-up-on-the-live-medium">Users set up on the live
 medium</a></li>
-<li><a href="#root-privileges-on-the-live-dvd">root privileges on the
-live DVD</a></li>
+<li><a href="#chroot-helper">chroot helper</a></li>
+<li><a href="#root-privileges-on-the-live-medium">root privileges on the
+live medium</a></li>
 <li><a href="#how-to-set-a-new-password">How to set a new
 password</a></li>
 <li><a href="#software-installation-during-live-session">Software
@@ -46,7 +47,7 @@ installation during live session</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="how-to-use-the-live-dvd">How to use the live DVD</h2>
+<h2 id="how-to-use-the-live-medium">How to use the live medium</h2>
 <h3 id="users-set-up-on-the-live-medium">Users set up on the live
 medium</h3>
 <p>The users <strong>siducer</strong> and <strong>root</strong> (the
@@ -57,8 +58,15 @@ No password is set for <strong>root</strong> (system administrator).</p>
 <p>The live session will be locked after some time without any input. To
 unlock, please enter the username <strong>siducer</strong> and the
 password <strong>live</strong>.</p>
-<h3 id="root-privileges-on-the-live-dvd">root privileges on the live
-DVD</h3>
+<h3 id="chroot-helper">chroot helper</h3>
+<p>A very helpful tool on the live medium is the <em>chroot helper</em>.
+Who can execute the commands to start a chroot off the cuff, most of us
+cannot. So the next time we need to repair our system, we use the
+<em>chroot helper</em> icon. A terminal window opens and we are asked to
+select a partition. After a security warning, the <em>chroot helper</em>
+redirects us to the corresponding installation.</p>
+<h3 id="root-privileges-on-the-live-medium">root privileges on the live
+medium</h3>
 <p>Several ways of how to run a program with root priviliges are
 described below.</p>
 <p class="warning">
@@ -118,9 +126,10 @@ apt install &lt;the-package-you-want&gt;</code></pre>
 <p>Otherwise, type <code>sudo</code> before the commands.</p>
 <pre><code>sudo apt update
 sudo apt install &lt;the-package-you-want&gt;</code></pre>
-<p>However, if you shut down the live DVD, no changes will be kept.</p>
+<p>However, if you shut down the live medium, no changes will be
+kept.</p>
 <div id="rev">
-Last edited: 2022/03/30
+Last edited: 2023/11/10
 </div>
 </body>
 </html>

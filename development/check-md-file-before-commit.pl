@@ -100,7 +100,7 @@ foreach $DATEI (@ARGV) {
             if ( defined ($1) ) {
               $_ = $1;
             } else {
-                push @FEHLER, "\tZeile $NR, Syntaxfehler\n";
+                push @FEHLER, "\tZeile $NR, Syntaxfehler im Link\n";
                 next;
             }
 

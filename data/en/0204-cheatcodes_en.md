@@ -6,7 +6,7 @@
 
 This manual page contains tables of
 
-1. [siduction specific parameters (Live DVD only)](0204-cheatcodes_en.md#siduction-specific-parameters)
+1. [siduction specific parameters (live medium only)](0204-cheatcodes_en.md#siduction-specific-parameters)
 2. [boot options for the graphics server X](0204-cheatcodes_en.md#boot-options-for-the-graphics-server-x)
 3. [general parameters of the Linux kernel](0204-cheatcodes_en.md#general-parameters-of-the-linux-kernel)
 4. [values for the general parameter **vga**](0204-cheatcodes_en.md#vga-codes)
@@ -17,7 +17,7 @@ If the *"value"* field is non-empty, one of the possible values must be appended
 
 ### siduction specific parameters
 
-These boot options apply only to the live DVD.
+These boot options apply only to the live medium.
 
 | boot option | value | description | 
 | ---- | ---- | --------- |
@@ -26,19 +26,19 @@ These boot options apply only to the live DVD.
 | fromiso | [Please read "booting 'fromiso'"](0302-hd-ins-fromiso_en.md#boot-from-iso-file). | 
 | hostname | myhostname | changes the network name (hostname) of the live CD system | 
 | lang | be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr, fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru, zh | sets the language preference, the basic localization settings (locales), the keyboard layout (in the console and in X), the timezone, and the Debian mirror. In the long form `lang=ll_cc` or `lang=ll-cc`, *"ll"* refers to the language selection and *"cc"* to the keyboard layout, mirror server, and time zone selection (e.g. `lang=fr-be` ). The default setting for English is en_US with UTC as the time zone and for German de with Europe/Berlin as the time zone. Example for a self-selected setting: `lang=pt_PT tz=Pacific/Auckland` | 
-| md5sum | | tests the checksum of the CD/DVD (to check if CD/DVD is OK) | 
+| md5sum | | tests the checksum of the live medium | 
 | noaptlang | | prevents the installation of localization packages of the selected language | 
 | nocpufreq | | does not enable speedstep/powernow | 
 | nodhcp | | no DHCP (DHCP automatically tries to establish Ethernet connections) | 
 | noeject | | does not remove CD/DVD from drive | 
 | nofstab | | prevents writing a new fstab | 
-| nointro | | skips the output of `index.html` when starting the live DVD/CD | 
+| nointro | | skips the output of `index.html` when starting the live medium | 
 | nomodeset | radeon.modeset=0 | together with `xmodule=vesa` allows a clean boot to X for Radeon cards in live mode | 
 | nonetwork | | prevents automatic configuration of network interfaces at boot time | 
 | noswap | | no activation of the swap partition | 
 | smouse | | searches for serial mouse input devices using hwinfo | 
 | tz | tz=Europe/Dublin | sets the time zone. If the bios or hardware clock is set to UTC, `utc=yes` is specified. A list of all supported time zones can be viewed by copying & pasting `file:///usr/share/zoneinfo/` into the browser. | 
-| toram | copies the DVD/CD into RAM and boots from the RAM copy | 
+| toram | copies the medium into RAM and boots from the RAM copy | 
 
 ### Boot options for the graphics server X
 
@@ -117,4 +117,4 @@ Problems with netbooks or other screen resolutions can be solved by entering `vg
 | 64k | 785 | 788 | 791 | 794 | 798 | 
 | 16M | 786 | 789 | 792 | 795 | 
 
-<div id="rev">Last edited: 2022/03/30</div>
+<div id="rev">Last edited: 2023/11/10</div>

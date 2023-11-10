@@ -6,7 +6,7 @@ This section contains informations and notes on
 
 + the [Network Manager command line tool](0501-inet-nm-cli_en.md#network-manager-command-line-tool), its operation, which devices are present and configured, how to connect and disconnect, and how to switch from WLAN to LAN and back.
 
-+ the [IWD, Intel's wireless daemon](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant), as a replacement for the WPA supplicant, its installation, operation, and how to work with the Network Manager.
++ the [IWD, Intel's wireless daemon](0502-inet-iwd_en.md#iwd-instead-of-wpa_supplicant) replaces the WPA supplicant. Its operation, and how its work with the Network Manager.
 
 + [Setting up a SAMBA Client](0510-samba_en.md#samba) to access Windows shares.
 

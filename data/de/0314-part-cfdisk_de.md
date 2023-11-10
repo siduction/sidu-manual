@@ -244,8 +244,8 @@ Filename        Type        Size      Used   Priority
 /dev/sda1       partition   8914940   0      -2
 ~~~
 
-Wird die Swap-Partition korrekt erkannt, starten wir den Computer neu.
+Anschließend informieren wir den Kernel über die Änderungen mit dem Befehl **`systemctl daemon-reload`**.
 
 Jetzt kann die Installation beginnen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-05-19</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-09</div>

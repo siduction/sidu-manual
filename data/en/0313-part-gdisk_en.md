@@ -50,16 +50,17 @@ Besides the command line program `gdisk`, graphical applications like `gparted` 
 In the following example, we will format a 150 GB hard disk so that two Linux systems can be installed as dual boot afterwards. In order to benefit from UEFI's advantages, we need an *EFI system* partition in the GPT.  
 We show the necessary steps with the partitioning program `cgdisk`, which supports GPT with UEFI.
 
+### Use cgdisk
+
+cgdisk can only be used with non-mounted disks. For example, you can use a siduction live medium to edit the only available hard disk, or you can use cgdisk from the running system to partition an additional hard disk or USB stick.
+
+The boot command in a root terminal is: **`cgdisk /dev/sdX`**.  
 `cgdisk` is the curses-based program variant of `gdisk`. It provides a user-friendly interface within the terminal.  
 Navigation is done using the arrow keys:
 
 + **`up`** and **`down`** for the partitions
 + **`right`** and **`left`** to select an action
 + **`Enter`** to confirm the selection or input
-
-### Use cgdisk
-
-The boot command in a root terminal is: **`cgdisk /dev/sdX`**.
 
 `cgdisk` starts with a warning message if no GPT is found.
 
@@ -161,7 +162,8 @@ The EFI system partition will be given a **FAT32** file system.
 mkfs.vfat /dev/sdb1
 ~~~
 
-If the boot manager GRUB finds the *EFI-System* partition during the installation, it will use it, no matter which installation target we have specified.
+The EFI partition must be the first partition of the hard disk and must be mounted under `/boot/efi/` to comply with the siduction standard.  
+If the boot manager GRUB finds such a prepared *EFI-System* partition during the installation, it will use it.
 
 We format the Linux partitions sdb2, sdb4, and sdb5 with **ext4**.
 
@@ -195,7 +197,7 @@ If swap was detected correctly:
 swapoff /dev/sdb3
 ~~~
 
-**Next, it is essential to reboot the system so that the new partitioning and file system scheme is read by the kernel.**
+We then inform the kernel about the changes with the command **`systemctl daemon-reload`**.
 
 ### Booting with GPT-UEFI or GPT-BIOS
 
@@ -203,23 +205,21 @@ If a bootable volume is to be created with GPT, there are two ways to create the
 
 These possibilities are:
 
-+ The computer (the mainboard) has a UEFI.
-+ UEFI shall be used to boot the GPT medium.
++ The computer (the mainboard) has a UEFI and UEFI shall be used to boot the GPT medium.
 
-**or** 
+or
 
-+ The computer (mainboard) has **no** UEFI but a BIOS. (All mainboards before 2009 do not have UEFI.)
-+ The BIOS shall be used to boot the GPT medium.
++ The computer (mainboard) has **no** UEFI but a BIOS. The BIOS should boot the GPT medium. (All mainboards before 2009 do not have UEFI.)
 
 **Booting with UEFI**
 
-If UEFI is to be used for booting, a **FAT** formatted **EFI System** partition (type "*ef00*" ) must be created as the first partition. The first partition contains the boot loader(s).  
-During the installation of siduction, any choices made by install-gui as to where to install the boot loader are ignored if the aforementioned partition exist. The siduction boot loader is stored in the *EFI system* partition at `/efi/siduction`. The EFI system partition is also mounted as `/boot/efi` as long as the option `mount other partitions` is selected. The mount of the *EFI system* partition does not need to be specified in the installer.
+If UEFI is to be used for booting, an *"EFI System"* partition (type "ef00" ) formatted with FAT32 must be created as the first partition and mounted under`/boot/efi`. This partition contains the boot loader(s).  
+The boot loader of siduction is stored in the directory `/boot/efi/EFI/siduction/`.
 
 **Booting with BIOS**
 
-If the system does not have UEFI, the first thing to do is to create a **BIOS boot** partition. This replaces the sector of an MBR-partitioned disk that is between the partitioning table and the first partition. Grub is written directly onto it.  
-The partition should have the size of 200MB. (The reason for this size instead of the conventional 32MB is to have a sufficiently large partition available in case of a switch to UEFI.)
+If the system does not have a UEFI, the first partition must be a *"BIOS boot"* partition (type "ef02" ). Grub is written directly to this partition. It replaces the sector of an MBR-partitioned disk that is located between the partitioning table and the first partition.  
+The partition should have the size of 200MB. The reason for this size instead of the conventional 32MB is to have a sufficiently large partition available in case of a switch to UEFI.
 
 ### Advanced commands of gdisk
 
@@ -285,4 +285,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *"recovery & transformation"* and *"experts"* should only be used if you are very familiar with GPT. As a "non-expert", you should only use these menus if a disk is damaged. Before any drastic action, the option **`b`** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2023-05-19</div>
+<div id="rev">Last edited: 2023-11-08</div>

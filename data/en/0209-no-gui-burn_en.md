@@ -3,7 +3,7 @@
 ## Burn Live-DVD without GUI
 
 > **IMPORTANT INFORMATION:**  
-> siduction, as a Linux LIVE DVD/CD, is heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (Disk-At-Once), and not faster than eight times (8x).
+> siduction, as a Linux LIVE DVD, is heavily compressed. For this reason, special attention must be paid to the burning method of the image. Please use high quality media, burning in DAO mode (Disk-At-Once), and not faster than eight times (8x).
 
 You don't necessarily need a graphical user interface (GUI) to burn a CD/DVD.  
 Problems that occur during burning are usually caused by frontends like K3b, not so often by backends like growisofs, wodim, or cdrdao.
@@ -162,5 +162,4 @@ This command fills the remaining free space on the DVD with zeros and closes the
 $ growisofs -M /dev/dvd=/dev/zero
 ~~~
 
-<div id="rev">Last edited: 2022/04/11</div>
-
+<div id="rev">Last edited: 2023/11/10</div>

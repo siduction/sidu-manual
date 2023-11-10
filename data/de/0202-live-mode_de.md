@@ -1,6 +1,6 @@
-% Live-DVD verwenden
+% Live-Medium verwenden
 
-## Live-DVD verwenden
+## Live-Medium verwenden
 
 ### Eingerichtete User auf dem Live-Medium
 
@@ -11,7 +11,11 @@ Für den User **root** (Systemadministrator) ist kein Passwort gesetzt.
 
 Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum Entsperren bitte den User **`siducer`** mit dem Passwort **`live`** eingeben.
 
-### Mit root-Rechten auf der Live-DVD
+### Chroot Helfer
+
+Ein sehr hilfreiches Tool auf dem Live-Medium ist der *Chroot Helfer*. Wer kann schon aus dem Stegreif die Befehle zum Starten einer chroot ausführen, die meisten von uns nicht. Wenn wir also das nächste Mal unser System reparieren müssen, benutzen wir das Ikon *Chroot Helfer*. Es öffnet ein Terminal Fenster und wir werden aufgefordert eine Partition auszuwählen. Nach einer Sicherheitswarnung leitet uns der *Chroot Helfer* in die entsprechende Installation um.
+
+### Mit root-Rechten auf dem Live-Medium
 
 Wir beschreiben nachfolgend mehrere Möglichkeiten, ein Programm mit root-Rechten auszuführen.
 
@@ -83,6 +87,6 @@ sudo apt update
 sudo apt install <das-gewünschtes-paket>
 ~~~
 
-Allerdings gilt: Wenn Du die Live-DVD herunterfährst, werden keine Änderungen behalten.
+Allerdings gilt: Wenn Du die Live-Medium herunterfährst, werden keine Änderungen behalten.
 
-<div id="rev">Zuletzt bearbeitet: 2022-01-13</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-10</div>

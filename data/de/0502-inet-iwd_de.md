@@ -3,7 +3,7 @@
 ## IWD
 
 Intels [iNet wireless daemon](https://iwd.wiki.kernel.org/) (iwd) schickt den wpa-supplicant in den wohlverdienten Ruhestand. Nur ein Zehntel so groß und viel schneller, ist iwd der Nachfolger. iwd funktioniert alleine oder zusammen mit NetworkManager, systemd-networkd und Connman.  
-Zwei Dinge, die iwd noch nicht kann, sind die Verbindung per WPA/WPA2 Enterprise und der korrekte Umgang mit versteckten Netzwerken. Bei solchen Arbeitsumgebungen sollte man bei wpa-supplicant bleiben oder ab siduction 2021.3.0 wieder zum [wpa-supplicant wechseln](0502-inet-iwd_de.md#zurück-zum-wpa_supplicant).
+In seltenen Fällen treten mit iwd Verbindungsabbrüche auf. Dann bietet es sich an [zum WPA-Supplicant zurück](0502-inet-iwd_de.md#zurück-zum-wpa_supplicant) zu kehren.
 
 Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinux.org/index.php/Iwd) bzw. das [debian wiki](https://wiki.debian.org/NetworkManager/iwd). 
 
@@ -13,10 +13,10 @@ Weiterführende Informationen bietet das [Arch Linux wiki](https://wiki.archlinu
 
 **Vor siduction 2021.1.0**: Auch bei einem etwas älteren Snapshot kann iwd installiert werden (getestet mit siduction 2018.3.0 und linux-image-5.15.12-1-siduction-amd64). Bitte ebenfalls der Anleitung unter [IWD statt wpa_supplicant](0502-inet-iwd_de.md#iwd-statt-wpa_supplicant) folgen.
 
-### Grafische Konfigurationsprogramme
+### Graphische Konfigurationsprogramme
 
 + **NetworkManager** Für den NetworkManager gibt es verschiedene grafische Oberflächen z.B. für den plasma-desktop/kde `plasma-nm` oder für gnome `network-manager-gnome` und andere. Ihr Benutzung sollte selbsterklärend sein!
-+ **conman** ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend ist, mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
++ **conman** ist ein von Intel entwickelter Netzwerkmanager, klein und Ressourcen schonend. Mehr dazu im [Arch-Wiki](https://wiki.archlinux.org/index.php/ConnMan)
 + **iwgtk** ist nicht in debian-Quellen, es muss aus dem Sourcecode gebaut werden und ist auf [github](https://github.com/J-Lentz/iwgtk) zu finden.
 
 ### Konfiguration im Terminal
@@ -226,7 +226,7 @@ EnableNetworkConfiguration=true
 ~~~
 
 Jetzt ist man in der Lage, sich im Terminal mit den oben beschriebenen Befehlen [**nmtui**, **nmcli** oder **iwctl**](0502-inet-iwd_de.md#konfiguration-im-terminal) WiFi Hardware anzeigen zu lassen, sie zu konfigurieren und sich mit einem Netzwerk zu verbinden.  
-Oder man benutzt den NetworkManager in der graphischen Oberfläche. Siehe: [Grafische Konfigurationsprogramme](0502-inet-iwd_de.md#grafische-konfigurationsprogramme)
+Oder man benutzt den NetworkManager in der graphischen Oberfläche. Siehe: [Grafische Konfigurationsprogramme](0502-inet-iwd_de.md#graphische-konfigurationsprogramme)
 
 ### Zurück zum wpa_supplicant
 
@@ -249,4 +249,4 @@ Vorausgesetzt der NetworkManager und wpa_supplicant sind installiert, benötigen
 
 Jetzt wird wieder der wpa_supplicant für die Verbindung mit der WiFi-Hardware benutzt.
 
-<div id="rev">Zuletzt bearbeitet: 2022-01-13</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-09</div>

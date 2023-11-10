@@ -126,7 +126,14 @@ benefit from UEFI’s advantages, we need an <em>EFI system</em> partition
 in the GPT.<br />
 We show the necessary steps with the partitioning program
 <code>cgdisk</code>, which supports GPT with UEFI.</p>
-<p><code>cgdisk</code> is the curses-based program variant of
+<h3 id="use-cgdisk">Use cgdisk</h3>
+<p>cgdisk can only be used with non-mounted disks. For example, you can
+use a siduction live medium to edit the only available hard disk, or you
+can use cgdisk from the running system to partition an additional hard
+disk or USB stick.</p>
+<p>The boot command in a root terminal is:
+<strong><code>cgdisk /dev/sdX</code></strong>.<br />
+<code>cgdisk</code> is the curses-based program variant of
 <code>gdisk</code>. It provides a user-friendly interface within the
 terminal.<br />
 Navigation is done using the arrow keys:</p>
@@ -138,9 +145,6 @@ Navigation is done using the arrow keys:</p>
 <li><strong><code>Enter</code></strong> to confirm the selection or
 input</li>
 </ul>
-<h3 id="use-cgdisk">Use cgdisk</h3>
-<p>The boot command in a root terminal is:
-<strong><code>cgdisk /dev/sdX</code></strong>.</p>
 <p><code>cgdisk</code> starts with a warning message if no GPT is
 found.</p>
 <figure>
@@ -277,9 +281,11 @@ partitions.</p>
 <p>The EFI system partition will be given a <strong>FAT32</strong> file
 system.</p>
 <pre><code>mkfs.vfat /dev/sdb1</code></pre>
-<p>If the boot manager GRUB finds the <em>EFI-System</em> partition
-during the installation, it will use it, no matter which installation
-target we have specified.</p>
+<p>The EFI partition must be the first partition of the hard disk and
+must be mounted under <code>/boot/efi/</code> to comply with the
+siduction standard.<br />
+If the boot manager GRUB finds such a prepared <em>EFI-System</em>
+partition during the installation, it will use it.</p>
 <p>We format the Linux partitions sdb2, sdb4, and sdb5 with
 <strong>ext4</strong>.</p>
 <pre><code>mkfs.ext4 /dev/sdb2</code></pre>
@@ -293,44 +299,39 @@ Filename   Type       Size     Used  Priority
 /dev/sdb3  partition  4194304  0     -2</code></pre>
 <p>If swap was detected correctly:</p>
 <pre><code>swapoff /dev/sdb3</code></pre>
-<p><strong>Next, it is essential to reboot the system so that the new
-partitioning and file system scheme is read by the kernel.</strong></p>
+<p>We then inform the kernel about the changes with the command
+<strong><code>systemctl daemon-reload</code></strong>.</p>
 <h3 id="booting-with-gpt-uefi-or-gpt-bios">Booting with GPT-UEFI or
 GPT-BIOS</h3>
 <p>If a bootable volume is to be created with GPT, there are two ways to
 create the boot sector of a GPT volume.</p>
 <p>These possibilities are:</p>
 <ul>
-<li>The computer (the mainboard) has a UEFI.</li>
-<li>UEFI shall be used to boot the GPT medium.</li>
+<li>The computer (the mainboard) has a UEFI and UEFI shall be used to
+boot the GPT medium.</li>
 </ul>
-<p><strong>or</strong></p>
+<p>or</p>
 <ul>
 <li>The computer (mainboard) has <strong>no</strong> UEFI but a BIOS.
-(All mainboards before 2009 do not have UEFI.)</li>
-<li>The BIOS shall be used to boot the GPT medium.</li>
+The BIOS should boot the GPT medium. (All mainboards before 2009 do not
+have UEFI.)</li>
 </ul>
 <p><strong>Booting with UEFI</strong></p>
-<p>If UEFI is to be used for booting, a <strong>FAT</strong> formatted
-<strong>EFI System</strong> partition (type “<em>ef00</em>” ) must be
-created as the first partition. The first partition contains the boot
-loader(s).<br />
-During the installation of siduction, any choices made by install-gui as
-to where to install the boot loader are ignored if the aforementioned
-partition exist. The siduction boot loader is stored in the <em>EFI
-system</em> partition at <code>/efi/siduction</code>. The EFI system
-partition is also mounted as <code>/boot/efi</code> as long as the
-option <code>mount other partitions</code> is selected. The mount of the
-<em>EFI system</em> partition does not need to be specified in the
-installer.</p>
+<p>If UEFI is to be used for booting, an <em>“EFI System”</em> partition
+(type “ef00” ) formatted with FAT32 must be created as the first
+partition and mounted under<code>/boot/efi</code>. This partition
+contains the boot loader(s).<br />
+The boot loader of siduction is stored in the directory
+<code>/boot/efi/EFI/siduction/</code>.</p>
 <p><strong>Booting with BIOS</strong></p>
-<p>If the system does not have UEFI, the first thing to do is to create
-a <strong>BIOS boot</strong> partition. This replaces the sector of an
-MBR-partitioned disk that is between the partitioning table and the
-first partition. Grub is written directly onto it.<br />
-The partition should have the size of 200MB. (The reason for this size
+<p>If the system does not have a UEFI, the first partition must be a
+<em>“BIOS boot”</em> partition (type “ef02” ). Grub is written directly
+to this partition. It replaces the sector of an MBR-partitioned disk
+that is located between the partitioning table and the first
+partition.<br />
+The partition should have the size of 200MB. The reason for this size
 instead of the conventional 32MB is to have a sufficiently large
-partition available in case of a switch to UEFI.)</p>
+partition available in case of a switch to UEFI.</p>
 <h3 id="advanced-commands-of-gdisk">Advanced commands of gdisk</h3>
 <p><code>gdisk</code> has advanced options and security mechanisms not
 available in <code>cgdisk</code>.</p>
@@ -402,7 +403,7 @@ create a backup copy in a file and save it on a separate medium. This
 will allow the original configuration to be restored if the action does
 not go as desired.</p>
 <div id="rev">
-Last edited: 2023-05-19
+Last edited: 2023-11-08
 </div>
 </body>
 </html>

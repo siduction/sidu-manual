@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="pandoc">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Live-DVD verwenden</title>
+<title>Live-Medium verwenden</title>
 <style>
 body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
 p, li           {line-height: 1.5;}
@@ -29,16 +29,17 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Live-DVD verwenden</h1>
+<h1 class="title">Live-Medium verwenden</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#live-dvd-verwenden">Live-DVD verwenden</a>
+<li><a href="#live-medium-verwenden">Live-Medium verwenden</a>
 <ul>
 <li><a href="#eingerichtete-user-auf-dem-live-medium">Eingerichtete User
 auf dem Live-Medium</a></li>
-<li><a href="#mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf
-der Live-DVD</a></li>
+<li><a href="#chroot-helfer">Chroot Helfer</a></li>
+<li><a href="#mit-root-rechten-auf-dem-live-medium">Mit root-Rechten auf
+dem Live-Medium</a></li>
 <li><a href="#ein-neues-passwort-setzen">Ein neues Passwort
 setzen</a></li>
 <li><a
@@ -47,7 +48,7 @@ Live-Sitzung</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="live-dvd-verwenden">Live-DVD verwenden</h2>
+<h2 id="live-medium-verwenden">Live-Medium verwenden</h2>
 <h3 id="eingerichtete-user-auf-dem-live-medium">Eingerichtete User auf
 dem Live-Medium</h3>
 <p>Auf dem Live-Medium sind die User <strong>siducer</strong> und
@@ -59,8 +60,17 @@ Passwort gesetzt.</p>
 <p>Die Live-Session wird nach geraumer Zeit ohne Eingaben gesperrt. Zum
 Entsperren bitte den User <strong><code>siducer</code></strong> mit dem
 Passwort <strong><code>live</code></strong> eingeben.</p>
-<h3 id="mit-root-rechten-auf-der-live-dvd">Mit root-Rechten auf der
-Live-DVD</h3>
+<h3 id="chroot-helfer">Chroot Helfer</h3>
+<p>Ein sehr hilfreiches Tool auf dem Live-Medium ist der <em>Chroot
+Helfer</em>. Wer kann schon aus dem Stegreif die Befehle zum Starten
+einer chroot ausf&uuml;hren, die meisten von uns nicht. Wenn wir also das
+n&auml;chste Mal unser System reparieren m&uuml;ssen, benutzen wir das Ikon
+<em>Chroot Helfer</em>. Es &ouml;ffnet ein Terminal Fenster und wir werden
+aufgefordert eine Partition auszuw&auml;hlen. Nach einer Sicherheitswarnung
+leitet uns der <em>Chroot Helfer</em> in die entsprechende Installation
+um.</p>
+<h3 id="mit-root-rechten-auf-dem-live-medium">Mit root-Rechten auf dem
+Live-Medium</h3>
 <p>Wir beschreiben nachfolgend mehrere M&ouml;glichkeiten, ein Programm mit
 root-Rechten auszuf&uuml;hren.</p>
 <p class="warning">
@@ -123,10 +133,10 @@ apt install &lt;das-gew&uuml;nschtes-paket&gt;</code></pre>
 <p>oder ein vorangestelltes <code>sudo</code> vor die Befehle.</p>
 <pre><code>sudo apt update
 sudo apt install &lt;das-gew&uuml;nschtes-paket&gt;</code></pre>
-<p>Allerdings gilt: Wenn Du die Live-DVD herunterf&auml;hrst, werden keine
+<p>Allerdings gilt: Wenn Du die Live-Medium herunterf&auml;hrst, werden keine
 &Auml;nderungen behalten.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2022-01-13
+Zuletzt bearbeitet: 2023-11-10
 </div>
 </body>
 </html>

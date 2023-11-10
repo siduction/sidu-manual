@@ -133,7 +133,15 @@ kommen, ben&ouml;tigen wir in der GPT eine
 Wir zeigen die notwendigen Arbeitsschritte mit dem
 Partitionierungsprogramm <code>cgdisk</code>, das GPT mit UEFI
 unterst&uuml;tzt.</p>
-<p>cgdisk ist die Curses-basierte Programmvariante von gdisk. Sie bietet
+<h3 id="cgdisk-verwenden">cgdisk verwenden</h3>
+<p>cgdisk kann man nur mit Datentr&auml;gern verwenden die nicht eingehangen
+(gemountet) sind. Zum Beispiel benutzt man ein siduction Live-Medium um
+die einzige vorhandene Festplatte zu bearbeiten, oder man verwendet
+cgdisk aus dem laufenden System heraus um eine zus&auml;tzliche Festplatte
+bzw. einen USB-Stick zu partitionieren.</p>
+<p>Der Startbefehl in einem root-Terminal lautet:
+<strong><code>cgdisk /dev/sdX</code></strong>.<br />
+cgdisk ist die Curses-basierte Programmvariante von gdisk. Sie bietet
 eine benutzerfreundliche Bedienoberfl&auml;che innerhalb des Terminals.<br />
 Die Navigation erfolgt mittels der Pfeiltasten.</p>
 <ul>
@@ -144,9 +152,6 @@ Die Navigation erfolgt mittels der Pfeiltasten.</p>
 <li>Mit <strong><code>Enter</code></strong> wird die Auswahl bzw.
 Eingabe best&auml;tigt.</li>
 </ul>
-<h3 id="cgdisk-verwenden">cgdisk verwenden</h3>
-<p>Der Startbefehl in einem root-Terminal lautet:
-<strong><code>cgdisk /dev/sdX</code></strong>.</p>
 <p>cgdisk startet mit einer Warnmeldung, wenn keine GPT gefunden
 wird.</p>
 <figure>
@@ -212,7 +217,7 @@ alt="Gemeinsame Verwendung" />
 </figure>
 <p>Die Partitionen, die die beiden Systeme sp&auml;ter im Betrieb verwenden,
 sind farblich gekennzeichnet.<br />
-An Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie
+Am Anfang und Ende befinden sich noch kleine, freie Bereiche. Sie
 entstehen durch die Ausrichtung der Partition an die Blockgrenzen der
 Festplatte und k&ouml;nnen auch zwischen den Partitionen auftauchen. Mit
 <strong><code>Align</code></strong> kann der Wert f&uuml;r die Anzahl der
@@ -291,9 +296,12 @@ Partitionen.</p>
 <p>Die EFI-Systempartition erh&auml;lt ein <strong>FAT32</strong>
 Dateisystem.</p>
 <pre><code>mkfs.vfat /dev/sdb1</code></pre>
-<p>Sofern der Bootmanager <code>GRUB</code> bei der Installation die
-<em>“EFI-System”</em>-Partition findet, benutzt er sie, gleichg&uuml;ltig,
-welches Installationsziel wir angegeben haben.</p>
+<p>Die EFI Partition muss die erste Partition der Festplatte sein und
+unter <code>/boot/efi/</code> eingehangen werden, um dem siduction
+Standard zu entsprechen.<br />
+Sofern der Bootmanager <code>GRUB</code> bei der Installation eine
+derart vorbereitete <em>“EFI-System”</em>-Partition findet, benutzt er
+sie, gleichg&uuml;ltig welches Installationsziel wir angegeben.</p>
 <p>Die Linuxpartitionen <code>sdb2</code>, <code>sdb4</code> und
 <code>sdb5</code> formatieren wir mit <strong>ext4</strong>.</p>
 <pre><code>mkfs.ext4 /dev/sdb2</code></pre>
@@ -308,9 +316,8 @@ Filename   Type       Size     Used  Priority
 /dev/sdb3  partition  4194304  0     -2</code></pre>
 <p>Falls Swap korrekt erkannt wurde:</p>
 <pre><code>swapoff /dev/sdb3</code></pre>
-<p><strong>Als n&auml;chstes ist es unbedingt notwendig, das System neu zu
-starten, damit das neue Partitionierungs- und Dateisystemschema vom
-Kernel eingelesen wird.</strong></p>
+<p>Anschlie&szlig;end informieren wir den Kernel &uuml;ber die &Auml;nderungen mit dem
+Befehl <strong><code>systemctl daemon-reload</code></strong>.</p>
 <h3 id="booten-mit-gpt-uefi-oder-gpt-bios">Booten mit GPT-UEFI oder
 GPT-BIOS</h3>
 <p>Falls ein bootbarer Datentr&auml;ger mit GPT erstellt werden soll, gibt es
@@ -318,39 +325,32 @@ zwei M&ouml;glichkeiten den Bootsektor eines GPT-Datentr&auml;gers zu
 erstellen.</p>
 <p>Diese M&ouml;glichkeiten sind:</p>
 <ul>
-<li>Der Computer (das Mainboard) besitzt ein UEFI</li>
-<li>UEFI soll zum Booten des GPT-Datentr&auml;gers verwendet werden.</li>
+<li>Der Computer (das Mainboard) besitzt ein UEFI und UEFI soll zum
+Booten des GPT-Datentr&auml;gers verwendet werden.</li>
 </ul>
-<p><strong>oder</strong></p>
+<p>oder</p>
 <ul>
 <li>Der Computer (das Mainboard) hat <strong>kein</strong> UEFI sondern
-ein BIOS. (Alle Mainboard vor 2009 haben kein UEFI)</li>
-<li>Das BIOS soll zum Booten des GPT-Datentr&auml;gers verwendet werden.</li>
+ein BIOS. Das BIOS soll den GPT-Datentr&auml;gers booten. (Alle Mainboard vor
+2009 haben kein UEFI)</li>
 </ul>
 <p><strong>Booten mit UEFI</strong></p>
-<p>Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT
-formatierte <em>“EFI System”</em>-Partition (Typ “EF00” ) als erste
-Partition erstellt werden. Diese Partition enth&auml;lt den/die
-Bootloader.<br />
-W&auml;hrend der Installation von siduction wird jegliche Auswahlm&ouml;glichkeit
-der install-gui, wohin der Bootloader installiert werden soll,
-ignoriert, sofern die vorgenannte Partition existiet. Der Bootloader von
-siduction wird in der <em>“EFI-System”</em>-Partition unter
-<code>/efi/siduction</code> gespeichert. Die EFI-Systempartition wird
-auch als <code>/boot/efi</code> eingebunden, solange die Option der
-Einbindung weiterer Partitionen (“mount other partitions”) gew&auml;hlt ist.
-Die Einbindung der <em>“EFI-System”</em>-Partition muss im Installer
-nicht extra angegeben werden.</p>
+<p>Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT32
+formatierte <em>“EFI System”</em>-Partition (Typ “ef00” ) als erste
+Partition erstellt und unter<code>/boot/efi</code> eingebunden werden.
+Diese Partition enth&auml;lt den/die Bootloader.<br />
+Der Bootloader von siduction wird im Verzeichnis
+<code>/boot/efi/EFI/siduction/</code> gespeichert.</p>
 <p><strong>Booten mit BIOS</strong></p>
-<p>Falls das System kein UEFI besitzt, muss als erste eine
-<strong>BIOS-Boot</strong>-Partition erstellt werden. Diese ersetzt den
-Sektor eines MBR-partitionierten Datentr&auml;gers, der sich zwischen der
-Partitionierungstabelle und der ersten Partition befindet, und in diesen
-wird Grub direkt geschrieben.<br />
-Die Partition sollte die Gr&ouml;&szlig;e von 200MB haben. (Der Grund dieser Gr&ouml;&szlig;e,
+<p>Falls das System kein UEFI besitzt, muss die erste eine
+<em>“BIOS-Boot”</em>-Partition (Typ “ef02” ) sein. Grub wird direkt in
+diese Partition geschrieben. Sie ersetzt den Sektor eines
+MBR-partitionierten Datentr&auml;gers, der sich zwischen der
+Partitionierungstabelle und der ersten Partition befindet.<br />
+Die Partition sollte die Gr&ouml;&szlig;e von 200MB haben. Der Grund dieser Gr&ouml;&szlig;e,
 anstelle der konventionellen 32MB, liegt darin, f&uuml;r den Fall eines
 Wechsels zu UEFI eine ausreichend gro&szlig;e Partition zur Verf&uuml;gung zu
-haben.)</p>
+haben.</p>
 <h3 id="erweiterte-befehle-von-gdisk">Erweiterte Befehle von gdisk</h3>
 <p>gdisk besitzt erweiterte Optionen und Sicherheitsmechanismen die in
 cgdisk nicht zur Verf&uuml;gung stehen.</p>
@@ -427,7 +427,7 @@ Sicherungskopie in einer Datei anzulegen und diese auf einem separaten
 Datentr&auml;ger speichern. Dadurch kann die originale Konfiguration wieder
 hergestellt werden, falls die Aktion nicht nach Wunsch l&auml;uft.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2023-05-18
+Zuletzt bearbeitet: 2023-11-08
 </div>
 </body>
 </html>

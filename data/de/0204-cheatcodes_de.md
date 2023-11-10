@@ -6,7 +6,7 @@
 
 Diese Handbuchseite enthält Tabellen zu den Bootoptionen für
 
-1. siduction spezifische Parameter (nur Live-DVD)
+1. siduction spezifische Parameter (nur Live-Medium)
 2. Bootoptionen für den Grafikserver X
 3. Allgemeine Parameter des Linux-Kernels
 4. Werte für den allgemeinen Parameter **vga**
@@ -17,7 +17,7 @@ Sofern in dem "Werte"-Feld der Tabellen Werte aufgelistet werden, müssen diese 
 
 ### siduction spezifische Parameter
 
-Diese Bootoptionen gelten nur für die Live-DVD.
+Diese Bootoptionen gelten nur für das Live-Medium.
 
 | Bootoption | Wert | Beschreibung | 
 | ---- | ---- | --------- |
@@ -26,19 +26,19 @@ Diese Bootoptionen gelten nur für die Live-DVD.
 |  fromiso  |  | [bitte lies "Booten 'fromiso'"](0302-hd-ins-fromiso_de.md#aus-iso-datei-booten)  | 
 |  hostname  | myhostname | ändert den Netzwerknamen (hostname) des Live-CD-Systems | 
 |  lang  |  be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr, fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru, zh | setzt die Spracheinstellung, die Grundeinstellungen der Lokalisation (locales), das Tastaturlayout (in der Konsole wie in X), die Zeitzone und den Spiegelserver von Debian.  Mit der Langform **lang=ll_cc** oder **lang=ll-cc** bedeutet **ll** die Sprachauswahl und **cc** Tastaturlayout, Spiegelserver und Zeitzonenwahl (z.B. "lang=fr-be" ). Die Grundeinstellung für Englisch ist en_US mit UTC als Zeitzone und für Deutsch, de mit Europe/Berlin als die Zeitzone. Beispiel für eine selbstgewählte Einstellung: "lang=pt_PT tz=Pacific/Auckland"  | 
-|  md5sum  |  | testet die Prüfsumme der CD/DVD (zur Kontrolle, ob CD/DVD in Ordnung sind) | 
+|  md5sum  |  | testet die Prüfsumme des Live-Mediums | 
 |  noaptlang  |  | Verhindert die Installation von Lokalisierungspaketen der gewählten Sprache | 
 |  nocpufreq  |  | aktiviert kein Speedstep/Powernow  | 
 |  nodhcp  |  | kein DHCP (DHCP versucht automatisch Ethernetverbindungen aufzubauen) | 
 |  noeject  |  | entfernt CD/DVD nicht aus dem Laufwerk | 
 |  nofstab  |  | Verhindert das Schreiben einer neuen fstab | 
-|  nointro  |  | überspringt die Ausgabe der index.html beim Start der Live-DVD/CD  | 
+|  nointro  |  | überspringt die Ausgabe der index.html beim Start des Live-Mediums  | 
 |  nomodeset  | radeon.modeset=0 | ermöglicht zusammen mit **xmodule=vesa** ein sauberes Booten nach X bei Radeonkarten im Live-Mode | 
 |  nonetwork  |  | verhindert die automatische Konfiguration von Netzwerkschnittstellen beim Booten | 
 |  noswap  |  | Keine Aktivierung der Swap-Partition | 
 |  smouse  |  | sucht mittels hwinfo nach seriellen Mauseingabegeräten | 
 |  tz  | tz=Europe/Dublin | setzt die Zeitzone. Falls die Bios- bzw. Hardwareuhr auf UTC eingestellt ist, wird **utc=yes** angegeben. Eine Liste aller unterstützter Zeitzonen kann eingesehen werden, wenn per copy & paste: **file:///usr/share/zoneinfo/** in den Browser eingegeben wird . | 
-|  toram  |  | kopiert die DVD/CD ins RAM und startet aus der RAM-Kopie | 
+|  toram  |  | kopiert das Live-Medium ins RAM und startet aus der RAM-Kopie | 
 
 ### Bootoptionen für den Grafikserver X
 
@@ -117,4 +117,4 @@ Probleme bei Netbooks oder anderen Bildschirmauflösungen können mit der Eingab
 |  64k  | 785 | 788 | 791 | 794 | 798 | 
 |  16M  | 786 | 789 | 792 | 795 | 
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-03</div>
+<div id="rev">Zuletzt bearbeitet: 2023-11-10</div>
