@@ -103,19 +103,16 @@ Jeder Spiegelserver umfasst folgende Dateien:
 siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.arch.manifest  
 siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso  
 MD5SUM  
-MD5SUM.gpg  
 SHA256SUM  
-SHA256SUM.gpg  
 SOURCES  
 
 
 `xxx.manifest` Die Datei listet alle Pakete der jeweiligen ISO.  
 `xxx.iso` ist die für den Download angebotene Abbilddatei.  
 `xxx.md5` und `xxx.sha256` enthalten die Checksummen der Abbilddatei und dienen der Überprüfung der Integrität der ISO.  
-`xxx.gpg`-Dateien sind die Signaturdateien, mit denen Checksummendateien (.md5 .sha256) auf Änderungen überprüft werden.  
 `xxx.sources` enthält die Downloadlinks zu den Quellcodedateien der verwendeten Pakete.
 
-Download-Links und Spiegelserver findet man auch auf [siduction.org](https://forum.siduction.org/index.php?page=7)
+Download-Links und Spiegelserver findet man auch auf [siduction.org](https://siduction.org/mirror/)
 
 Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.
 

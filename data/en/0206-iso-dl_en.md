@@ -103,19 +103,16 @@ Each mirror includes the following files:
 siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.arch.manifest  
 siduction-20xx-xx-release-name-window-manager-arch-datetimestamp.iso  
 MD5SUM  
-MD5SUM.gpg  
 SHA256SUM  
-SHA256SUM.gpg  
 SOURCES  
 
 
 The `xxx.manifest` file lists all packages of the respective ISO.  
 `xxx.iso` is the image file provided for download.  
 The `xxx.md5` and `xxx.sha256` files are used to verify the integrity of the ISO.  
-The `xxx.gpg` files are the signature files used to validate checksum files (.md5, .sha256) for changes.  
 `xxx.sources` contains the download links to the source code files of the packages used.
 
-Download links and mirrors can be found at [siduction.org](https://forum.siduction.org/index.php?page=7).
+Download links and mirrors can be found at [siduction.org](https://siduction.org/mirror/).
 
 The tar archive with the sources is interesting for those who want to redistribute siduction. Here, the source code must be published to comply with the license. More information can be found in the tar archive.
 

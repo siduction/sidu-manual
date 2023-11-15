@@ -11,7 +11,7 @@ Siehe auch [DFSG](https://de.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
 
 ### Allgemeines
 
-Für Schnellentschlossene geht es hier weiter zur [Kurzanleitung](0100-wel-quickstart_de.md#siduction-kurzanleitung)
+Für Schnellentschlossene geht es hier weiter zur [Kurzanleitung](0100-quickstart_de.md#quickstart)
 
 Das Handbuch des siduction Betriebssystems ist eine Referenz zum Kennenlernen des Systems wie auch zum Auffrischen der Kenntnisse über das System. Es vermittelt nicht nur Grundlagenwissen, sondern umfasst auch komplexe Themenkreise und unterstützt die Arbeit als Administrator von siduction-Systemen.
 

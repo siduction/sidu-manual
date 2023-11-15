@@ -11,7 +11,7 @@ See also [DFSG](https://ee.wikipedia.org/wiki/Debian_Free_Software_Guidelines)
 
 ### General
 
-For those who want to get started quickly, here is the [Quick Start Guide](0100-wel-quickstart_en.md#quickstart)
+For those who want to get started quickly, here is the [Quick Start Guide](0100-quickstart_en.md#quickstart)
 
 The siduction operating system manual is a reference for getting to know the system as well as for refreshing your knowledge of the system. It not only provides basic knowledge, but also covers complex topics and supports the work as an administrator of siduction systems.
 
