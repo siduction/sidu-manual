@@ -2,7 +2,7 @@
 
 ## Einleitung
 
-siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Pakete, die wir gern nach Debian pushen würden, Hilfsprogramme und Dokumentationen.  
+siduction strebt danach, zu 100% mit Debian Sid kompatibel zu sein. Trotzdem kann siduction gegebenenfalls Pakete anbieten, welche temporär fehlerhafte Debian-Pakete ersetzen. Das Apt Repository von siduction enthält siduction spezifische Pakete wie den siduction-Kernel, Skripte, Hilfsprogramme und Dokumentationen.  
 Die Distribution siduction richtet sich an Benutzer, die bereits einige Erfahrung mit Linux gesammelt haben und sich nicht vor dem Einsatz der Kommandozeile scheuen.
 
 **Zur Stabilität von Debian Sid**
