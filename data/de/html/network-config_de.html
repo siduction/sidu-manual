@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>WLAN Konfiguration</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">WLAN Konfiguration</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#konfiguration-von-netzwerken"
+id="toc-konfiguration-von-netzwerken">Konfiguration von Netzwerken</a>
+<ul>
+<li><a href="#networkmanager"
+id="toc-networkmanager">NetworkManager</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="konfiguration-von-netzwerken">Konfiguration von Netzwerken</h2>
+<p>Der in allen graphischen Oberfl&auml;chen von siduction integrierte
+<code>NetworkManager</code> bietet eine schnelle Konfiguration von
+Netzwerkkarten (WLAN und Ethernet). Im Terminal bietet das Skript
+<code>nmcli</code> Zugang zur Funktionalit&auml;t des NetworkManager.<br />
+Drahtlose Netzwerke werden gescant. Man kann sich mit den gefundenen
+Netzwerken verbinden und Einstellungen zur Verschl&uuml;sselungsmethode, zum
+Internet Protokoll IPv4 oder IPv6 und zu einem Proxy Server vornehmen.
+Als Backend kommt <code>iwd</code> zum Einsatz. Die
+Ethernet-Konfiguration erfolgt bei Verwendung eines DHCP-Servers am
+Router (dynamische Zuweisung einer IP-Adresse) automatisch, aber auch
+die M&ouml;glichkeit eines manuellen Setups (von Netmasks bis Nameserver) ist
+gegeben.<br />
+Auf dem Live Medium und nach der Installation ist der NetworkManager mit
+seinem Backend iwd bereits konfiguriert und einsatzbereit.</p>
+<h3 id="networkmanager">NetworkManager</h3>
+<p>In der graphischen Oberfl&auml;che befindet sich der NetworkManager in der
+Taskleiste. Er ist gr&ouml;&szlig;tenteils selbsterkl&auml;rend.</p>
+<p>Mit <strong><code>nmcli</code></strong> oder
+<strong><code>nmtui</code></strong> steht ein leistungsf&auml;higer
+Kommandozeilenclient f&uuml;r den t&auml;glichen Gebrauch des NetworkManagers zur
+Verf&uuml;gung. <em>nmtui</em> bietet eine benutzerfreundliche ncurses
+Oberfl&auml;che innerhalb des Terminals. Auch hier ist die Funktion
+gr&ouml;&szlig;tenteils selbsterkl&auml;rend. Falls das Skript nicht vorhanden ist,
+installiert man es mit:</p>
+<pre><code>apt install network-manager</code></pre>
+<p>Der Startbefehl in der Konsole ist
+<strong><code>nmcli</code></strong>.<br />
+Eine detaillierte Beschreibung zur Bedienung findet sich unter <a
+href="./inet-nm-cli_de.html#network-manager-kommandline-tool">Netzwerk -
+nmcli</a>.</p>
+<p>Hat man alle notwendigen Informationen zur Hand, gen&uuml;gt auch eine
+einzige Kommandozeile.<br />
+Beispiel:<br />
+Device Name = wlan0<br />
+Device Type = wifi<br />
+SSID = HOME_WLAN<br />
+Passwort = s3Hrg3he!m</p>
+<p>Befehl zum Aufbau der WLAN Verbindung:</p>
+<pre><code>nmcli device wifi connect &quot;HOME_WLAN&quot; password &quot;s3Hrg3he!m&quot;</code></pre>
+<p>Die Verbindung trennt man mit:</p>
+<pre><code>nmcli device down wlan0</code></pre>
+<p>NetworkManager speichert die einmal eingegebenen Verbindungsdaten.
+Befindet man sich erneut in Reichweite dieses Routers, stellt
+NetworkManager die Verbindung automatisch wieder her. Um das Verhalten
+zu &auml;ndern bitte die Manpages<br />
+<strong><code>man NetworkManager</code></strong><br />
+und<br />
+<strong><code>man nm-settings</code></strong><br />
+konsultieren.</p>
+<div id="rev">
+Zuletzt bearbeitet: 2023-11-13
+</div>
+</body>
+</html>

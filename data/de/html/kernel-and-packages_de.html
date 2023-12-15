@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Kernel</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Kernel</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#kernel-und-softwarepakete"
+id="toc-kernel-und-softwarepakete">Kernel und Softwarepakete</a>
+<ul>
+<li><a href="#die-verwaltung-von-softwarepaketen"
+id="toc-die-verwaltung-von-softwarepaketen">Die Verwaltung von
+Softwarepaketen</a></li>
+<li><a href="#aktualisierung-des-systems---upgrade"
+id="toc-aktualisierung-des-systems---upgrade">Aktualisierung des Systems
+- upgrade</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="kernel-und-softwarepakete">Kernel und Softwarepakete</h2>
+<p>Der Linux-Kernel von siduction ist optimiert, um folgende Ziele zu
+erreichen: Problembehebung, erweiterte und aktualisierte Funktionen,
+Leistungsoptimierung, h&ouml;here Stabilit&auml;t. Basis ist immer der aktuelle
+Kernel von <a
+href="https://www.kernel.org/">http://www.kernel.org/</a>.<br />
+siduction basiert auf Debian Sid, was dazu f&uuml;hren kann, dass in seltenen
+F&auml;llen Debian-Pakete Fehler enthalten. Deshalb bieten wir gegebenenfalls
+Pakete an, die tempor&auml;r fehlerhafte Debian-Pakete ersetzen.</p>
+<h3 id="die-verwaltung-von-softwarepaketen">Die Verwaltung von
+Softwarepaketen</h3>
+<p>siduction richtet sich nach den Debian-Regeln bez&uuml;glich der
+Paketestruktur und verwendet <code>apt</code> und <code>dpkg</code> f&uuml;r
+das Management der Softwarepakete. Die Repositorien von Debian und
+siduction befinden sich in <code>/etc/sources.list.d/*</code></p>
+<p>Debian Sid enth&auml;lt mehr als 20.000 Programmpakete, womit die Chancen,
+ein f&uuml;r eine Aufgabe geeignetes Programm zu finden, sehr gut stehen. Wie
+man Programmpakete sucht, ist hier beschrieben:<br />
+<a href="./sys-admin-apt_de.html#programmpakete-suchen">Programmpakete
+suchen</a> .</p>
+<p>Ein Programmpaket wird mit diesem Befehl installiert:</p>
+<pre><code>apt install &lt;Paketname&gt;</code></pre>
+<p>Siehe auch: <a
+href="./sys-admin-apt_de.html#pakete-installieren">Neue Pakete
+installieren</a> .</p>
+<p>Die Repositorien von Debian Sid werden in der Regel viermal am Tag
+aktualisierten bzw. mit neuen Softwarepaketen beschickt. Zur schnellen
+Verwaltung der Pakete wird eine lokale Datenbank verwendet. Der
+Befehl</p>
+<pre><code>apt update</code></pre>
+<p>ist vor jeder Neuinstallation eines Softwarepakets notwendig, um die
+lokale Datenbank mit dem Softwareangebot der Repositorien zu
+synchronisieren.</p>
+<p><strong>Die Nutzung anderer auf Debian basierender Repositorien,
+Quellen und RPMs</strong><br />
+Installationen aus Quellcode sind nicht unterst&uuml;tzt. Empfohlen ist eine
+Kompilierung als <strong>user</strong> (nicht als root) und die
+Platzierung der Anwendung im Home-Verzeichnis, ohne dass sie ins System
+installiert wird. Die Verwendung von <code>checkinstall</code> zum
+Erzeugen von DEB-Paketen sollte auf die rein private Nutzung beschr&auml;nkt
+bleiben. Konvertierungsprogramme f&uuml;r RPM-Pakete wie <code>alien</code>
+sind nicht empfohlen.</p>
+<p>Andere bekannte (und weniger bekannte) Distributionen, die auf Debian
+basieren, erstellen neue, von Debian verschieden strukturierte Pakete
+und verwenden oft andere Verzeichnisse, in denen bei der Installation
+Programme, Skripte und Dateien abgelegt werden, als Debian. Dies kann zu
+instabilen Systemen f&uuml;hren. Manche Pakete lassen sich wegen nicht
+aufl&ouml;sbarer Abh&auml;ngigkeiten, unterschiedlicher Benennungskonventionen
+oder unterschiedlicher Versionierung &uuml;berhaupt nicht installieren. Eine
+unterschiedliche Version von <code>glibc</code> zum Beispiel kann dazu
+f&uuml;hren, dass kein Programm lauff&auml;hig ist.</p>
+<p>Aus diesem Grund sollen die Repositorien von Debian benutzt werden,
+um die ben&ouml;tigten Softwarepakete zu installieren. Andere Softwarequellen
+k&ouml;nnen nur schwer oder gar nicht von siduction unterst&uuml;tzt werden.
+Darunter fallen auch Pakete und PPAs von Ubuntu.</p>
+<h3 id="aktualisierung-des-systems---upgrade">Aktualisierung des Systems
+- upgrade</h3>
+<p>Ein upgrade ist nur bei beendetem Grafikserver X durchzuf&uuml;hren. Um
+den Grafikserver zu beenden, gibt man als <strong>root</strong> den
+Befehl</p>
+<pre><code>init 3</code></pre>
+<p>in eine Konsole ein. Danach sind Systemaktualisierungen sicher
+durchf&uuml;hrbar. Zuerst die lokale Paketdatenbank auffrischen mit</p>
+<pre><code>apt update</code></pre>
+<p>dann mit einer der beiden Varianten das System aktualisieren.</p>
+<pre><code>apt upgrade
+apt full-upgrade</code></pre>
+<p>Anschlie&szlig;end startet man mit folgendem Befehl wieder die graphische
+Oberfl&auml;che:</p>
+<pre><code>init 5</code></pre>
+<p><em>“apt full-upgrade”</em> ist das empfohlene Verfahren, um eine
+siduction Installation auf den neuesten Stand zu bringen. Ausf&uuml;hrlicher
+wird das hier beschrieben:<br />
+<a
+href="./sys-admin-apt_de.html#aktualisierung-des-systems">Aktualisierung
+eines installierten Systems - full-upgrade</a>.</p>
+<div id="rev">
+Zuletzt bearbeitet: 2023-11-13
+</div>
+</body>
+</html>

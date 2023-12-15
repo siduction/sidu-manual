@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Kernel</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Kernel</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#kernel-and-software-packages"
+id="toc-kernel-and-software-packages">Kernel and software packages</a>
+<ul>
+<li><a href="#the-management-of-software-packages"
+id="toc-the-management-of-software-packages">The management of software
+packages</a></li>
+<li><a href="#updating-the-system---upgrade"
+id="toc-updating-the-system---upgrade">Updating the system -
+upgrade</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="kernel-and-software-packages">Kernel and software packages</h2>
+<p>The Linux kernel of siduction is optimized to achieve the following
+goals: problem solving, enhanced and updated features, performance
+optimization, higher stability. The basis is always the latest kernel
+from <a target="_blank" href="https://www.kernel.org/">http://www.kernel.org/</a>.<br />
+siduction is based on Debian Sid, which can lead to Debian packages
+containing errors in rare cases. Therefore, we may offer packages that
+temporarily replace faulty Debian packages.</p>
+<h3 id="the-management-of-software-packages">The management of software
+packages</h3>
+<p>siduction follows Debian rules regarding package structure and uses
+<code>apt</code> as well as <code>dpkg</code> for software package
+management. The Debian and siduction repositories are located in
+<code>/etc/sources.list.d/*</code>.</p>
+<p>Debian Sid contains more than 20,000 program packages, so the chances
+of finding a program suitable for a task are very good. Information on
+how to search for program packages can be found here:<br />
+<a href="./sys-admin-apt_en.html#searching-for-program-packages">Search
+program packages</a> .</p>
+<p>A program package is installed with this command:</p>
+<pre><code>apt install &lt;package_name&gt;</code></pre>
+<p>See also: <a href="./sys-admin-apt_en.html#install-packages">Install
+new packages</a>.</p>
+<p>New and updated software packages are pushed to Debian Sid
+Repositories four times a day. Quick package management is achieved by
+using a local database. The command</p>
+<pre><code>apt update</code></pre>
+<p>is necessary before each installation of a new software package to
+synchronize the local database with the repositories’ software
+supply.</p>
+<p><strong>The use of other Debian based repositories, sources, and
+RPMs</strong>.<br />
+Installations from source code are not supported. It is recommended to
+compile as user (not root) and to place the application in the home
+directory without installing it onto the system. The use of
+<code>checkinstall</code> to generate DEB packages should be limited to
+purely private use. Conversion programs for RPM packages like
+<code>alien</code> are not recommended either.</p>
+<p>Other well-known (and lesser-known) Debian based distributions create
+new packages with a structure different from Debian. They often use
+other directories for programs, scripts, and files during installation,
+which can lead to unstable systems. Some packages cannot be installed at
+all because of unresolvable dependencies, different naming conventions,
+or different versioning. For example, a different version of glibc may
+result in the inability to execute any program at all.</p>
+<p>For this reason, Debian’s repositories should be used to install the
+required software packages. Other software sources may be difficult or
+impossible to support by siduction. This includes packages and PPAs from
+Ubuntu.</p>
+<h3 id="updating-the-system---upgrade">Updating the system -
+upgrade</h3>
+<p>An upgrade can only be performed when X graphics server is stopped.
+To stop the graphics server, the following command can be entered into a
+console as <strong>root</strong>:</p>
+<pre><code>init 3</code></pre>
+<p>After that, system updates can be performed safely. First, refresh
+the local package database with</p>
+<pre><code>apt update</code></pre>
+<p>Then update the system with one of the two alternatives</p>
+<pre><code>apt upgrade
+apt full-upgrade</code></pre>
+<p>Afterwards, start the graphical user interface with the following
+command:</p>
+<pre><code>init 5</code></pre>
+<p><strong>apt full-upgrade</strong> is the recommended procedure to
+upgrade a siduction installation to the latest version. It is described
+in more detail here:<br />
+<a href="./sys-admin-apt_en.html#updating-the-system">Updating an
+installed system - full-upgrade</a>.</p>
+<div id="rev">
+Last edited: 2023/11/15
+</div>
+</body>
+</html>

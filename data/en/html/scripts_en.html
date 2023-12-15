@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>siduction scripts</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">siduction scripts</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#scripts-for-siduction"
+id="toc-scripts-for-siduction">Scripts for siduction</a></li>
+</ul>
+</nav>
+<h2 id="scripts-for-siduction">Scripts for siduction</h2>
+<p>siduction provides some scripts that support administrative tasks and
+help with troubleshooting.</p>
+<ul>
+<li><p><strong>chroothelper</strong><br />
+<em>Change to a chroot environment</em></p>
+<p><em>chroothelper</em> simplifies switching to a chroot environment on
+the live system. It searches the hard disks for installed Linux
+operating systems and offers to chroot to them.</p></li>
+<li><p><strong>sshactivate - sshdeactivate</strong><br />
+<em>Starts and enable sshd or stop and disable sshd</em></p>
+<p><em>sshactivate</em> generates sshd system keys, starts and enable
+the ssh daemon and asks for user password, to allow remote access to the
+(live-)system.<br />
+<em>sshdeactivate</em> stop and disable the ssh daemon.</p></li>
+<li><p><strong>fw-detect</strong><br />
+<em>Check system firmware status</em></p>
+<p><em>fw-detect</em> scans the loaded modules on your system, checks if
+they require firmware and checks if the firmware is present in the
+correct location. By default it will only output information about any
+modules which appear to require firmware.</p></li>
+<li><p><strong>siduction-irc</strong><br />
+<em>Starts an IRC session to #siduction</em></p>
+<p><em>siduction-irc</em> starts an IRC session with following clients
+depends on the environment, HEXCHAT, IRSSI, KONVERSATION, KVIRC,
+WEECHAT, XCHAT and connects to our IRC-channel #siduction on <a
+href="https://www.oftc.net">OFTC</a>.</p></li>
+<li><p><strong>remove-nonfree</strong><br />
+<em>DFSG compliant installation</em></p>
+<p><em>remove-nonfree</em> makes the install DFSG compliant. Running it
+might on the other hand lead to a not working wifi or problems with your
+graphics card.</p></li>
+<li><p><strong>kernel-remover</strong><br />
+<em>removes siduction kernels</em></p>
+<p><em>kernel-remover</em> removes unused kernels from the running
+system. It offers a selection of kernels, removes the selected ones and
+updates the boot menu.</p></li>
+<li><p><strong>siduction-btrfs</strong><br />
+<em>Checks and updates the boot menu</em></p>
+<p><em>siduction-btrfs</em> is a compilation of scripts and systemd
+units that become active on an installation in the Btrfs file system.
+After a snapshot or rollback, the boot menu is checked and updated if
+necessary. <em>siduction-btrfs</em> works in the background without user
+input.</p></li>
+</ul>
+<div id="rev">
+Last edited: 2023/12/08
+</div>
+</body>
+</html>

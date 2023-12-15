@@ -33,24 +33,28 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#lvm-partitioning---logical-volume-manager">LVM
-partitioning - Logical Volume Manager</a>
+<li><a href="#lvm-partitioning---logical-volume-manager"
+id="toc-lvm-partitioning---logical-volume-manager">LVM partitioning -
+Logical Volume Manager</a>
 <ul>
-<li><a href="#six-steps-to-logical-volumes">Six steps to logical
+<li><a href="#six-steps-to-logical-volumes"
+id="toc-six-steps-to-logical-volumes">Six steps to logical
 volumes</a></li>
-<li><a href="#resizing-a-volume">Resizing a volume</a></li>
-<li><a href="#manage-lvm-with-a-gui-program">Manage LVM with a GUI
+<li><a href="#resizing-a-volume" id="toc-resizing-a-volume">Resizing a
+volume</a></li>
+<li><a href="#manage-lvm-with-a-gui-program"
+id="toc-manage-lvm-with-a-gui-program">Manage LVM with a GUI
 program</a></li>
-<li><a href="#more-info">More info</a></li>
+<li><a href="#more-info" id="toc-more-info">More info</a></li>
 </ul></li>
 </ul>
 </nav>
 <h2 id="lvm-partitioning---logical-volume-manager">LVM partitioning -
 Logical Volume Manager</h2>
 <p><strong>The following is a basic introduction.</strong> It is up to
-the esteemed reader to delve deeper into the subject. Further sources of
-information can be found at the end of this text - the list does not
-claim to be complete.</p>
+the esteemed reader to delve deeper into the subject. Please refer to
+the respective man page. Further sources of information can be found at
+the end of this text - the list does not claim to be complete.</p>
 <p>Working with <em>Logical Volumes</em> is much easier than most users
 think. The best feature of LVM is that changes take effect without
 having to reboot the system. <em>Logical Volumes</em> can span multiple
@@ -58,12 +62,12 @@ disks and are scalable. This distinguishes them from other methods of
 disk partitioning.</p>
 <p>You should be familiar with three basic terms:</p>
 <ul>
-<li><p><strong>Physical Volume (Physical Volume):</strong> This includes
-the physical, real-world disks or partitions such as
+<li><p><strong>Physical Volume [PV]:</strong> This includes the
+physical, real-world disks or partitions such as
 <strong>/dev/sda</strong> or <strong>/dev/sdb1</strong> which are used
 for mounting/mounting. LVM can be used to combine multiple physical
 volumes into volume groups.</p></li>
-<li><p><strong>Volume Group:</strong> A volume group consists of
+<li><p><strong>Volume Group [VG]:</strong> A volume group consists of
 <em>physical volumes</em> and is the location of <em>logical
 volumes</em>. A Volume Group can be seen as a “virtual disk” composed of
 <em>physical volumes</em>. Here are some examples for better
@@ -78,11 +82,11 @@ volume group (a virtual drive).</p></li>
 could combine two complete SSDs with two partitions of a third SSD into
 a volume group.</p></li>
 </ul></li>
-<li><p>Logical volumes are created within a <em>volume group</em> and
-mounted to the system. You can also consider them “virtual” partitions.
-They are dynamically modifiable, can be resized, recreated, removed, and
-used. A logical volume can span multiple physical volumes within the
-volume group.</p></li>
+<li><p><strong>Logical Volume [LV]:</strong> Logical volumes are created
+within a <em>volume group</em> and mounted to the system. You can also
+consider them “virtual” partitions. They are dynamically modifiable, can
+be resized, recreated, removed, and used. A logical volume can span
+multiple physical volumes within the volume group.</p></li>
 </ul>
 <h3 id="six-steps-to-logical-volumes">Six steps to logical volumes</h3>
 <p class="warning">
@@ -118,86 +122,103 @@ layout can be restored. For this purpose, enter the command
 writing, and everything remains as it has been before.</p>
 <p>If the volume group is to span more than one physical volume (disk),
 the above operation must be performed on each physical volume.</p></li>
-<li><p>Creating a physical volume</p>
+<li><p>Creating a physical volume [PV]</p>
 <pre><code>pvcreate /dev/sda1</code></pre>
-<p>The command creates the physical volume on the first partition of the
-first hard disk.<br />
+<p>The command creates the PV on the first partition of the first hard
+disk.<br />
 This process is to be repeated on each partition as needed.</p></li>
-<li><p>Creating a volume group</p>
-<p>Now we add the physical volumes to a volume group named
-<em>vulcan</em> (three drives in our example):</p>
+<li><p>Creating a volume group [VG]</p>
+<p>Now we add three PV (/dev/sda1 /dev/sdb1 /dev/sdc1) to a VG named
+<em>vulcan</em>:</p>
 <pre><code>vgcreate vulcan /dev/sda1 /dev/sdb1 /dev/sdc1</code></pre>
 <p>If this step has been performed correctly, the result can be seen in
 the output of the following command:</p>
 <pre><code>vgscan</code></pre>
 <p><code>vgdisplay</code> displays the size with:</p>
 <pre><code>vgdisplay vulcan</code></pre></li>
-<li><p>Creating a logical volume</p>
-<p>At this point you have to decide how big the <em>logical volume</em>
-should be at the beginning. One advantage of LVM is the ability to
-adjust the size without rebooting.</p>
-<p>In our example, we want a 300GB volume named <em>spock</em> inside
-the volume group named <em>vulcan</em>:</p>
+<li><p>Creating a logical volume [LV]</p>
+<p>At this point you have to decide how big the LV should be at the
+beginning. One advantage of LVM is the ability to adjust the size
+without rebooting.</p>
+<p>In our example, we want a 300GB LV named <em>spock</em> inside the VG
+named <em>vulcan</em>:</p>
 <pre><code>lvcreate -n spock --size 300g vulcan</code></pre></li>
-<li><p>Formatting the logical volume</p>
+<li><p>Formatting the LV</p>
 <p>Please be patient, this process may take some time:</p>
 <pre><code>mkfs.ext4 /dev/vulcan/spock</code></pre></li>
-<li><p>Mounting the logical volume</p>
+<li><p>Mounting the LV</p>
 <p>Create the mount point with</p>
 <pre><code>mkdir /media/spock/</code></pre>
-<p>Using <code>/dev/vulcan/spock</code> is preferable to using UUID
+<p>Using <em>“/dev/vulcan/spock”</em> is preferable to using UUID
 numbers with an LVM because it makes it easier to clone the file system
 (no UUID collisions). An LVM allows to create file systems with
-identical UUID numbers (classic example: snapshots). To mount the volume
+identical UUID numbers (classic example: snapshots). To mount the LV
 during the boot process, <code>fstab</code> must be customized with a
 text editor:</p>
-<pre><code>mcedit /etc/fstab</code></pre></li>
-</ol>
+<pre><code>mcedit /etc/fstab</code></pre>
 <p>Then insert the following line according to our example:</p>
 <pre><code>/dev/vulcan/spock /media/spock/ ext4 auto,users,rw,exec,dev,relatime 0 2</code></pre>
 <p>Optional:<br />
-The owner of the volume can be changed so that other users have
-read/write access to the logical volume:</p>
-<pre><code>chown root:users /media/spock
-chmod 775 /media/spock</code></pre>
-<p>We can now repeat steps 4 to 6 for the new logical volume
-<em>kirk</em> to be created.</p>
+The owner of the LV can be changed so that other users have read/write
+access: ~~~ chown root:users /media/spock chmod 775 /media/spock
+~~~</p></li>
+</ol>
+<p>We can now repeat steps 4 to 6 for the new LV <em>kirk</em> to be
+created.</p>
 <p>A simple LVM should now be usable.</p>
 <h3 id="resizing-a-volume">Resizing a volume</h3>
-<p>We recommend using a live ISO to resize partitions. Although
-increasing the partition size of the running system can be done without
-error, decreasing the size of a partition cannot. Anomalies can lead to
-data loss, especially if the <code>/</code> (root) or <code>/home</code>
-directories are affected.</p>
+<p class="warning">
+Caution <br />Always make a data backup first.
+</p>
+<p>We recommend using a live ISO to resize a LV. Although increasing the
+LV size of the running system can be done without error, decreasing the
+size of a LV cannot. Anomalies can lead to data loss, especially if the
+<code>/</code> (root) or <code>/home</code> directories are
+affected.</p>
 <p><strong>Example of an enlargement</strong></p>
-<p>A partition is to be enlarged from 300GB to 500GB:</p>
+<p>The LV <em>spock</em> is to be enlarged from 300GB to 500GB.<br />
+We first check whether there is enough free memory.<br />
+<code>vgdisplay</code> provides information.</p>
+<pre><code>vgdisplay vulcan
+[...]
+Free PE / Size      170890 / 667,50 GiB
+[...]</code></pre>
+<p>There is enough free storage space for our project.<br />
+We can start working.<br />
+Unmounting the LV:</p>
 <pre><code>umount /media/spock/</code></pre>
-<p>Extend the logical volume:</p>
-<pre><code>lvextend -L+200g /dev/vulcan/spock</code></pre>
+<p class="warning">
+Caution <br />Never unmount your root file system during operation.
+</p>
+<p>Extend the LV and its file system:</p>
+<pre><code>lvextend -L+200g --resizefs /dev/vulcan/spock</code></pre>
 <p>The <code>lvextend</code> command needs to be given the size
 <strong>difference</strong> as an option, not the total size
-desired.</p>
-<p>Then resize the file system:<br />
-The first command forcibly performs a check, even if the file system
-appears to be clean.<br />
-The last command remounts the <em>logical volume</em>.</p>
-<pre><code>e2fsck -f /dev/vulcan/spock
-resize2fs /dev/vulcan/spock
-mount /media/spock</code></pre>
-<p><strong>Example of a resize</strong></p>
-<p>A partition is resized from 500GB to 280GB:</p>
+desired.<br />
+The file system is then first checked with the option
+<em>“–resizefs”</em> and then adapted to the new size of the LV.</p>
+<p>Finally, we mount the LV again.</p>
+<pre><code>mount /media/spock</code></pre>
+<p>The enlargement of an LV, even for the <code>/</code> (root) file
+system, is also possible during operation. Only the two commands
+<code>unmount</code> and <code>mount</code> are omitted. However, no
+file system check is then carried out.</p>
+<p>If you want to check the root file system, use the kernel command
+line parameter <code>fsck.mode=force</code> during the boot process.</p>
+<p><strong>Example of a downsizing</strong></p>
+<p>The LV <em>spock</em> is downsized from 500GB to 280GB:</p>
 <pre><code>umount /media/spock/</code></pre>
 <p>Reduce the size of the file system:</p>
 <pre><code>e2fsck -f /dev/vulcan/spock
 resize2fs /dev/vulcan/spock 280g</code></pre>
-<p>After that, the logical volume is changed.</p>
+<p>After that, the LV is changed.</p>
 <pre><code>lvreduce -L-220g /dev/vulcan/spock
 resize2fs /dev/vulcan/spock
 mount /media/spock</code></pre>
 <p>Again, the <code>lvreduce</code> command must be given the size
 <strong>difference</strong> as an option.<br />
 The <code>resize2sf</code> command resizes the file system exactly to
-the logical volume’s size.</p>
+the LV size.</p>
 <h3 id="manage-lvm-with-a-gui-program">Manage LVM with a GUI
 program</h3>
 <p><em>Gparted</em> offers the possibility to manage already created
@@ -214,12 +235,9 @@ href="https://thelinuxexperiment.com/working-with-logical-volumes-part-2/">Worki
 with logical volumes #2</a><br />
 <a
 href="https://thelinuxexperiment.com/working-with-logical-volumes-part-3/">Working
-with logical volumes #3</a><br />
-<a
-href="https://developer.ibm.com/tutorials/l-resizing-partitions-2/">Resizing
-Linux partitions - part 2 (IBM)</a></p>
+with logical volumes #3</a></p>
 <div id="rev">
-Last edited: 2022/04/01
+Last edited: 2023/12/12
 </div>
 </body>
 </html>

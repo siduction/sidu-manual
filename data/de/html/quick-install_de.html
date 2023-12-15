@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Schnellinstallation</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Schnellinstallation</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#schnellinstallation"
+id="toc-schnellinstallation">Schnellinstallation</a></li>
+</ul>
+</nav>
+<h2 id="schnellinstallation">Schnellinstallation</h2>
+<ol type="1">
+<li><p>Auf der <a
+href="https://siduction.org/installation-media/">siduction
+Downloadseite</a> das bevorzugte Flavour aussuchen und die ISO-Datei,
+sowie die Datei mit der zugeh&ouml;rigen Checksumme herunterladen.<br />
+Anschlie&szlig;end den Download wie <a
+href="./iso-dl_de.html#integrit&auml;tspr&uuml;fung">hier beschrieben</a>
+pr&uuml;fen.</p></li>
+<li><p>Die ISO-Datei auf ein bootbares Medium &uuml;bertragen.<br />
+Hilfe bieten die Anleitungen f&uuml;r <a
+href="./iso-to-usb-sd_de.html#iso-auf-usb-stick---speicherkarte">einen
+USB Stick oder eine SD Karte</a> oder zum <a
+href="./iso-to-dvd_de.html#iso-brennen">Brennen auf eine
+DVD</a>.</p></li>
+<li><p>Das so erstellte siduction Live Medium booten.<br />
+<strong>Wichtig:</strong><br />
+W&auml;hrend des Bootvorgangs das EFI Men&uuml; aufrufen (je nach Hersteller eine
+der Tasten <strong><code>Entf</code></strong>,
+<strong><code>F2</code></strong>, <strong><code>F11</code></strong>…
+dr&uuml;cken).<br />
+Im EFI Men&uuml; sowohl den <em>CSM (Compatibility Support Module)</em>
+Modus, als auch <em>Secure Boot</em> deaktivieren.<br />
+Ebenfalls im EFI Men&uuml; das Live Medium zum booten ausw&auml;hlen.</p></li>
+<li><p>Im Bootmen&uuml; des Live Mediums die gew&uuml;nschte Sprache einstellen
+und siduction booten.<br />
+Der Benutzer im Live Medium ist <strong>siducer</strong> sein Passwort
+lautet <strong>live</strong>.<br />
+F&uuml;r den Benutzer <strong>root</strong> (Systemadministrator) ist im Live
+Medium kein Passwort gesetzt. Im Terminal entweder
+<strong><code>sudo &lt;Befehl&gt;</code></strong> ausf&uuml;hren, oder mit
+der Eingabe von <strong><code>su</code></strong> zu root
+werden.</p></li>
+<li><p>Ein Doppelklick auf das Icon
+<strong><code>System installieren</code></strong> startet die
+Installation auf die Festplatte.<br />
+Wenn manuell partitioniert wird, darauf achten, dass die erste Partition
+die EFI System Partition (esp) ist und die Markierungen <em>boot</em>
+und <em>esp</em> gesetzt sind. Sie muss unter <code>/boot/efi/</code>
+eingehangen werden.</p></li>
+</ol>
+<div id="rev">
+Zuletzt bearbeitet: 2023-11-15
+</div>
+</body>
+</html>

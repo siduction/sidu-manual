@@ -33,24 +33,32 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#btrfs">Btrfs</a>
+<li><a href="#btrfs" id="toc-btrfs">Btrfs</a>
 <ul>
-<li><a href="#btrfs-subvolumen">Btrfs Subvolumen</a></li>
-<li><a href="#btrfs-snapshot">Btrfs Snapshot</a></li>
+<li><a href="#btrfs-subvolumen" id="toc-btrfs-subvolumen">Btrfs
+Subvolumen</a></li>
+<li><a href="#btrfs-snapshot" id="toc-btrfs-snapshot">Btrfs
+Snapshot</a></li>
 </ul></li>
-<li><a href="#snapper">Snapper</a>
+<li><a href="#snapper" id="toc-snapper">Snapper</a>
 <ul>
-<li><a href="#snapper-konfiguration">Snapper Konfiguration</a></li>
-<li><a href="#snapper-und-systemd">Snapper und systemd</a></li>
-<li><a href="#snapper---manuelle-snapshots">Snapper - manuelle
+<li><a href="#snapper-konfiguration"
+id="toc-snapper-konfiguration">Snapper Konfiguration</a></li>
+<li><a href="#snapper-und-systemd" id="toc-snapper-und-systemd">Snapper
+und systemd</a></li>
+<li><a href="#snapper---manuelle-snapshots"
+id="toc-snapper---manuelle-snapshots">Snapper - manuelle
 Snapshots</a></li>
-<li><a href="#snapper-rollback">Snapper Rollback</a></li>
-<li><a href="#datei-rollback-im-root-dateisystem">Datei Rollback im
+<li><a href="#snapper-rollback" id="toc-snapper-rollback">Snapper
+Rollback</a></li>
+<li><a href="#datei-rollback-im-root-dateisystem"
+id="toc-datei-rollback-im-root-dateisystem">Datei Rollback im
 Root-Dateisystem</a></li>
-<li><a href="#datei-rollback-von-user-daten">Datei Rollback von User
+<li><a href="#datei-rollback-von-user-daten"
+id="toc-datei-rollback-von-user-daten">Datei Rollback von User
 Daten</a></li>
-<li><a href="#quellen-btrfs-und-snapper">Quellen BTRFS und
-Snapper</a></li>
+<li><a href="#quellen-btrfs-und-snapper"
+id="toc-quellen-btrfs-und-snapper">Quellen BTRFS und Snapper</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -483,9 +491,9 @@ Auswirkungen.</p>
 <p>Aus diesen Gr&uuml;nden generieren wir eine neue Konfigurationsvorlage aus
 der Datei <code>/usr/share/snapper/config-templates/default</code> mit
 den Werten der Spalte <em>“user”</em> aus der oben abgebildeten Tabelle
-<em>“Snapper Konfiguration”</em> und speichern sie unter dem Namen
-<code>user</code>. Anschlie&szlig;end erzeugen wir die Konfiguration f&uuml;r unser
-Subvolumen <code>@data</code>.</p>
+<em>“Snapper Konfiguration”</em> und speichern sie im gleichen
+Verzeichnis unter dem Namen <code>user</code>. Anschlie&szlig;end erzeugen wir
+die Konfiguration f&uuml;r unser Subvolumen <code>@data</code>.</p>
 <pre><code># snapper -c data_pr create-config -t user /data</code></pre>
 <p>Dies:</p>
 <ol type="1">

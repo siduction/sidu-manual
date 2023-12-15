@@ -38,7 +38,7 @@ Die Verbindung trennt man mit:
 nmcli device down wlan0
 ~~~
 
-NetworkManager speichert die einmal eingegebenen Verbindungsdaten. Befindet man sie erneut in Reichweite dieses Routers, stellt NetworkManager die Verbindung automatisch wieder her. Um das Verhalten zu ändern bitte die Manpages  
+NetworkManager speichert die einmal eingegebenen Verbindungsdaten. Befindet man sich erneut in Reichweite dieses Routers, stellt NetworkManager die Verbindung automatisch wieder her. Um das Verhalten zu ändern bitte die Manpages  
 **`man NetworkManager`**  
 und  
 **`man nm-settings`**  
