@@ -4,9 +4,9 @@
 
 **"Standing on the Shoulders of Giants"**
 
-Das siduction-Team ist sehr stolz,euch zu einem besonderen Anlass ein außerplanmäßiges Release vorzustellen. Debian GNU/Linux, dessen Unstable-Zweig einige von uns seit über 20 Jahren verfolgen, feiert am 16.8. 2023 seinen dreißigsten Geburtstag und wir finden, das ist aller Ehren wert. 
+Das siduction-Team ist sehr stolz, euch zu einem besonderen Anlass ein außerplanmäßiges Release vorzustellen. Debian GNU/Linux, dessen Unstable-Zweig einige von uns seit über 20 Jahren verfolgen, feiert am 16.8. 2023 seinen dreißigsten Geburtstag und wir finden, das ist aller Ehren wert. 
 
-Debian ist nach Slackware die zweiälteste Distribution, und wird lediglich von den Beteiligten getragen, ohne das ein Unternehmen im Hintergrund steht oder jemand an der Spitze bestimmt, wo es lang geht. Debian gilt wegen der vielen bis heute unterstützten Architekturen als das »universelle Betriebssystem« und die Stabilität der Veröffentlichungen ist legendär.
+Debian ist nach Slackware die zweitälteste Distribution, und wird lediglich von den Beteiligten getragen, ohne das ein Unternehmen im Hintergrund steht oder jemand an der Spitze bestimmt, wo es lang geht. Debian gilt wegen der vielen bis heute unterstützten Architekturen als das »universelle Betriebssystem« und die Stabilität der Veröffentlichungen ist legendär.
 
 ### Wechselhafte Geschichte
 
@@ -23,9 +23,9 @@ Debian verwaltet sich in Form einer Do-okratie. Dabei bestimmen die heute rund 1
 Nach außen hin wirkt Debian oft zerstritten, da anstehende Entscheidungen oft hart diskutiert werden. Im Endeffekt scheint das Projekt aber gestärkt aus solchen Phasen hervorzugehen. Diese Verlässlichkeit mag auch ein Grund sein, warum mehr Derivate auf Debian als Basis setzen als auf jede andere Distribution. Derzeit nutzen [122 aktive Distributionen](https://distrowatch.com/search.php?ostype=All&category=All&origin=All&basedon=Debian&notbasedon=None&desktop=All&architecture=All&package=All&rolling=All&isosize=All&netinstall=All&language=All&defaultinit=All&status=Active#simple) Debian als Grundlage. Darunter sind so wegweisende Distributionen wie Knoppix oder Ubuntu. Zählt man nicht mehr aktive Distributionen hinzu, steigt die Zahl auf 414. Imposant!
 
 **Mit Knoppix fing alles an**  
-Unsere Zeitleiste beginnt bei Knoppix und ging von Kanotix über sidux und aptosid zu siduction, dass wir nun bereits seit 12 Jahren ausliefern. Debian hat uns nie ednttäuscht, jedoch waren uns die Entscheidungsprozesse manchmal etwas zu langsam. So haben wir beispielsweise Systemd bereits vor Debian eingeführt und auch Firmware liefern wir bereits länger optional aus, um damit aktuelle Hardware auf dem Installationsmedium zu unterstützen. 
+Unsere Zeitleiste beginnt bei Knoppix und ging von Kanotix über sidux und aptosid zu siduction, dass wir nun bereits seit 12 Jahren ausliefern. Debian hat uns nie enttäuscht, jedoch waren uns die Entscheidungsprozesse manchmal etwas zu langsam. So haben wir beispielsweise Systemd bereits vor Debian eingeführt und auch Firmware liefern wir bereits länger optional aus, um damit aktuelle Hardware auf dem Installationsmedium zu unterstützen. 
 
-Aber ansonsten ist siduction vermutlich zu 98 % Debian Unstable. Dafür bedanken wir uns und wünschen dem Proj́ekt mindestens weiterre 30 Jahre. Standing on the Shoulders of Giants.
+Aber ansonsten ist siduction vermutlich zu 98 % Debian Unstable. Dafür bedanken wir uns und wünschen dem Projekt mindestens weitere 30 Jahre. Standing on the Shoulders of Giants.
 
 
 ### Was erwartet euch bei siduction 2023.1.0
@@ -78,42 +78,13 @@ Momentan bietet der Installer keine Möglichkeit, Pakete abzuwählen, die nicht 
 Wenn ihr eine bestehende Home-Partition (oder eine andere Datenpartition) wiederverwenden möchtet, solltet ihr dies nach der Installation und nicht im Calamares-Installer tun. Das funktioniert zwar, es ist aber sicherer, dies hinterher zu tun.  
 Bei einigen Intel-Grafikprozessoren auf einigen Geräten kann es vorkommen, dass das System kurz nach dem Booten in Live eingefroren ist. Um dies zu beheben, müsst ihr den Kernel-Parameter `intel_iommu=igfx_off` setzen, bevor ihr erneut bootet.
 
-## Credits
-
-### Credits für siduction 2023.1.0
-
-**Core Team:**
-
-Torsten Wohlfarth (towo)  
-Hendrik Lehmbruch (hendrikL)  
-Ferdinand Thommes (devil)  
-Vinzenz Vietzke (vinzv)  
-Axel Konrad (akli)
-
-**Früher haben beigetragen:**
-
-Alf Gaida (agaida) (eaten by the cat)  
-Axel Beu 2021†  
-
-**Code, Ideen und Unterstützung:**
-
-Markus Meyer (coruja)  
-der_bud  
-se7en  
-davydych  
-tuxnix
-
-**Artwork:**
-
-Das Artwork stammt von [Angevere](https://www.artstation.com/angevere) (Ona Kristensen). Wir benutzen es mit freundlicher Genehmigung.
-
 ### Vielen Dank an alle Beteiligten
 
-Wir möchten uns bei euch, bei allen Testern und all den Menschen bedanken, die uns über die Jahre hinweg unterstützt haben. Dieses Release ist auch dein Verdienst. Wir möchten zudem dem Geburtstagskind Debian danken, da wir damit auf den Schultern von Giganten stehen.  
+Wir möchten uns bei euch, bei allen Testern und all den Menschen bedanken, die uns über die Jahre hinweg unterstützt haben. Dieses Release ist auch euer Verdienst. Wir möchten zudem dem Geburtstagskind Debian danken, da wir damit auf den Schultern von Giganten stehen.  
 Und nun viel Spaß!
 
 Im Namen des siduction-Teams:
 
 Ferdinand Thommes
 
-<div id="rev">Zuletzt bearbeitet: 2023-08-15</div>
+<div id="rev">Zuletzt bearbeitet: 2023-12-15</div>
