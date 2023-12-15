@@ -254,7 +254,7 @@ Gehaltene Snapshots 1
 *"+ max 24"* beschreibt die Anzahl der erstellten *HOURLY Timeline Snapshot* bis zu dem Zeitpunkt an dem der `snapper-cleanup.timer` aktiv wird. Der allererste *Timeline Snapshot* vagabundiert sage und schreibe mindestens zehn Jahre und einen Tag in unserem Dateisystem. Wer möchte sein produktiv eingesetztes System auf diesen Snapshot zurücksetzen und die ganzen Daten so lange behalten?  
 Man beachte: Snapper und Snapshots sind kein Mittel zur Datensicherung. Sie ermöglichen das zeitnahe Zurücksetzen des Systems bei auftretenden Fehlern oder durch uns angestoßene Aktionen mit ungewollten Auswirkungen.
 
-Aus diesen Gründen generieren wir eine neue Konfigurationsvorlage aus der Datei `/usr/share/snapper/config-templates/default` mit den Werten der Spalte *"user"* aus der oben abgebildeten Tabelle *"Snapper Konfiguration"* und speichern sie unter dem Namen `user`. Anschließend erzeugen wir die Konfiguration für unser Subvolumen `@data`.
+Aus diesen Gründen generieren wir eine neue Konfigurationsvorlage aus der Datei `/usr/share/snapper/config-templates/default` mit den Werten der Spalte *"user"* aus der oben abgebildeten Tabelle *"Snapper Konfiguration"* und speichern sie im gleichen Verzeichnis unter dem Namen `user`. Anschließend erzeugen wir die Konfiguration für unser Subvolumen `@data`.
 
 ~~~
 # snapper -c data_pr create-config -t user /data
