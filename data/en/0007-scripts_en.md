@@ -2,6 +2,8 @@
 
 ## Scripts for siduction
 
+### User executable
+
 siduction provides some scripts that support administrative tasks and help with troubleshooting.
 
 - **chroothelper**  
@@ -35,7 +37,9 @@ By default it will only output information about any modules which appear to req
   *removes siduction kernels*
 
   *kernel-remover* removes unused kernels from the running system. It offers a selection of kernels, removes the selected ones and updates the boot menu.
-  
+
+### Active in the background
+
 - **siduction-btrfs**  
   *Checks and updates the boot menu*
 

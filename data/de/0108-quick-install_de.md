@@ -2,6 +2,8 @@
 
 ## Schnellinstallation
 
+### Fünf Schritte zum Ziel
+
 1) Auf der [siduction Downloadseite](https://siduction.org/installation-media/) das bevorzugte Flavour aussuchen und die ISO-Datei, sowie die Datei mit der zugehörigen Checksumme herunterladen.  
   Anschließend den Download wie [hier beschrieben](0206-iso-dl_de.md#integritätsprüfung) prüfen.
 

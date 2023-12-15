@@ -4,6 +4,8 @@
 
 siduction enthält einige Skripte, die administrative Aufgaben unterstützen und bei der Fehlersuche behilflich sind.
 
+### Vom Benutzer ausführbar
+
 - **chroothelper**  
   *Wechsel in eine chroot-Umgebung*
 
@@ -35,6 +37,8 @@ Standardmäßig gibt fw-detect nur Informationen über Module aus, die allem Ans
   *Entfernt siduction Kernel*
 
   *kernel-remover* entfernt unbenutzte Kernel aus dem laufenden System. Es bietet eine Auswahl der Kernel, entfernt die gewählten und aktualisiert das Bootmenü.
+
+### Im Hintergrund laufend
 
 - **siduction-btrfs**  
   *Überprüft und aktualisiert das Bootmenü*

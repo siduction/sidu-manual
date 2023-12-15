@@ -2,6 +2,8 @@
 
 ## Quick installation
 
+### Five steps to the goal
+
 1) Select the preferred flavor on the [siduction download page](https://siduction.org/installation-media/) and download the ISO file and the file with the associated checksum.  
   Then check the download as described [here](0206-iso-dl_en.md#integrity-check).
 
