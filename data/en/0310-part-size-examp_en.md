@@ -28,8 +28,10 @@ The minimum requirements for the reasonable use of a siduction installation are:
 | siduction Cinnamon | 15GB |
 | siduction KDE Plasma | 15GB |
 
-Otherwise, we recommend at least 20 GB of disk space when installing to the **Btrfs** file system and using `snapper`.  
-50 GB is reasonable if you want to use siduction on **Btrfs** for a longer period of time and many snapshots are kept.
+Otherwise, we recommend at least 20 GB of disk space when installing to the **Btrfs** file system and using `snapper`. 50 GB or more is useful if you want to use siduction on **Btrfs** for a longer period of time and many snapshots are kept.
+
+> **Please note**  
+> siduction does not support a separate boot partition when using the Btrfs file system. 
 
 ### Examples with different disk sizes
 
@@ -185,4 +187,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2023-05-18</div>
+<div id="rev">Last edited: 2023-12-21</div>

@@ -10,6 +10,11 @@ Btrfs verwaltet die Daten innerhalb der Laufwerke in Subvolumen, oberflächlich 
 
 Zu Btrfs finden sich im Internet zahlreiche Dokumentationen. Wir werden deshalb hier nicht die umfangreichen Möglichkeiten sowie die Befehle und deren Anwendung wiederholen. Die Lektüre von **`man btrfs`** und **`man btrfs-<Befehl>`** ist obligatorisch. Darüber hinaus empfehlen wir das umfangreiche [Wiki von kernel.org](https://btrfs.wiki.kernel.org/index.php/Main_Page) und die ausführliche Dokumentation von [readthedocs.io](https://btrfs.readthedocs.io/en/latest/index.html).
 
+> **Bitte beachten**  
+> siduction unterstützt keine separate Boot-Partition bei Verwendung des Btrfs Dateisystems.
+
+Das Verzeichnis */boot* ist ein wesentlicher Bestandteil des Betriebssystems. Mit einer separaten Partition würde es von Systemsnapshots ausgenommen und damit ein Rollback zu Fehlern führen.
+
 **Btrfs verwenden**
 
 Für die fortschrittlichen Eigenschaften von Btrfs (Snapshots, Komprimierung, Defragmentierung, Selbstheilung für Daten und Metadaten, integrierte Datenträgerverwaltung ...) z.B. gegenüber ext4, benötigen wir erkennbar größere Laufwerke. Das ist derzeit meist kein Problem, denn selbst preiswerte PCs und Laptops verfügen oft über 500 GB große Laufwerke.  
@@ -475,13 +480,7 @@ Wir führen einen Reboot durch und wählen den Grub Standardeintrag. Jetzt zeigt
 16*|single|     |12:05:23|root |       |r/W copy of #13|
 ~~~
 
-Im Rollbackziel wird die Grub Menüdatei ebenfalls automatisch aktualisiert. Zu diesem Zeitpunkt verweist der Grub Eintrag im EFI / MBR noch auf das vorherige Standard-Subvolumen #12. Mit dem Befehl 
-
-~~~
-# grub-install ...
-~~~
-
-schließen wir den Rollback ab und teilen Grub mit, fortan das neue Standard-Subvolumen #16 zu verwenden.
+Im Rollbackziel wird die Grub Menüdatei ebenfalls automatisch aktualisiert und Grub aus Snapshot #16 heraus erneut installiert. Grub liest fortan die Menüdatei aus dem neuen Standard-Subvolumen #16.
 
 ### Datei Rollback im Root-Dateisystem
 
@@ -668,4 +667,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2023-06-11</div>
+<div id="rev">Zuletzt bearbeitet: 2023-12-21</div>

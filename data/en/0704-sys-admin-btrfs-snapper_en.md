@@ -10,6 +10,11 @@ Btrfs manages the data within the drives in subvolumes, superficially similarly 
 
 There is a lot of documentation about Btrfs on the Internet. We will therefore not repeat the extensive possibilities as well as the commands and their application here. Reading **`man btrfs`** and **`man btrfs-<command>`** is mandatory. In addition, we recommend the extensive [kernel.org Wiki](https://btrfs.wiki.kernel.org/index.php/Main_Page) and the detailed documentation on [readthedocs.io](https://btrfs.readthedocs.io/en/latest/index.html).
 
+> **Please note**  
+> siduction does not support a separate boot partition when using the Btrfs file system.
+
+The */boot* directory is an essential part of the operating system. With a separate partition, it would be excluded from system snapshots and thus a rollback would lead to errors.
+
 **Use Btrfs**
 
 For the advanced features of Btrfs (snapshots, compression, defragmentation, self-recovery for data and metadata, integrated volume management, ...) e.g. compared to ext4, we need recognizably larger drives. Currently, this is usually not a problem, because even inexpensive PCs and laptop often have 500 GB drives.  
@@ -475,13 +480,7 @@ We perform a reboot and select the Grub default entry. Now the `*` after #16 ind
 16*|single|     |12:05:23|root |       |r/W copy of #13|
 ~~~
 
-In the rollback target, the Grub menu file is also updated automatically. At this point, the Grub entry in the EFI / MBR still points to the previous default subvolume #12. We perform the command
-
-~~~
-# grub-install ...
-~~~
-
-to complete the rollback and tell Grub to use the new default subvolume #16 from now on.
+The Grub menu file is also updated automatically in the rollback target and Grub is reinstalled from snapshot #16. From now on, Grub reads the menu file from the new default subvolume #16.
 
 ### File rollback within the root file system
 
@@ -666,4 +665,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper project page](http://snapper.io/)  
 + [Snapper on GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Last edited: 2023-06-11</div>
+<div id="rev">Last edited: 2023-12-21</div>
