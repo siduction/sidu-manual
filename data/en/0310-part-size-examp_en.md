@@ -141,6 +141,9 @@ The *ext4* file system is the default file system on siduction. This applies to 
 **NTFS**  
 For data exchange with a Windows installation the designated partition should be formatted with *NTFS*. Siduction can access the data read and write. For Windows it is the standard file system.
 
+**exFAT**  
+A file system developed by Microsoft and used in many types of storage devices such as SD cards and USB flash drives. The patents for it were released in 2019 and as a result Linux supports *exFAT* from kernel 5.4. It is also very suitable for partitions that are to be accessed by different operating systems.
+
 **HFS+**  
 For a dual-boot installation with Macintosh, a separate data partition with the *HFS* or *HFS+* file system is useful. Linux and MAC can access it read and write.
 
@@ -187,4 +190,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2023-12-21</div>
+<div id="rev">Last edited: 2023-12-31</div>

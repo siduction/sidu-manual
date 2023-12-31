@@ -4,7 +4,7 @@
 
 Die Partitionierung der Laufwerke ist von vielen Faktoren abhängig:
 
-+ Auswahl der siduction-Variante
++ Auswahl der siduction Variante
 + Größe der vorhandenen Laufwerke und des Arbeitsspeichers
 + Single-Boot oder Dual-Boot mit einem bereits installierten System (Windows, Linux, MAC)
 + Gemeinsame Nutzung von Daten für die installierten Systeme
@@ -136,10 +136,13 @@ Eine `swap`-Partition entspricht in der Funktionalität etwa der Auslagerungsdat
 Das *ext4* Dateisystem ist das Default-Dateisystem bei siduction. Dies gilt für alle Partitionen, wenn ausschließlich Linux Betriebssysteme verwendet werden.
 
 **Btrfs**  
-*Btrfs* kann an Stelle von *ext4* verwendet werden. Zusammen mit dem Programm *Snapper* bieten es die Möglchkeit Snapschots des Dateisystems zu erstellen, die anschließend im Bootmanager Grub auswählbar sind. Man benötigt eine ausreichend große Festplatte. Siehe auch [Systemadministration Btrfs](0704-sys-admin-btrfs-snapper_de.md#btrfs).
+*Btrfs* kann an Stelle von *ext4* verwendet werden. Zusammen mit dem Programm *Snapper* bietet es die Möglichkeit Snapshots des Dateisystems zu erstellen, die anschließend im Bootmanager Grub auswählbar sind. Man benötigt eine ausreichend große Festplatte. Siehe auch [Systemadministration Btrfs](0704-sys-admin-btrfs-snapper_de.md#btrfs).
 
 **NTFS**  
-Für den Datenaustausch mit einer Windows-Installation sollte die dafür vorgesehene Partition mit *NTFS* formatiert werden. Siduction kann lesend und schreibend auf die Daten zugreifen. Für Windows ist es das Standarddateisystem.
+Für eine Windows-Installation müssen die dafür vorgesehenen Partitionen mit *NTFS* formatiert werden. Siduction kann lesend und schreibend auf die Daten zugreifen. Für Windows ist es das Standarddateisystem.
+
+**exFAT**  
+Ein Dateisystem, das von Microsoft entwickelt wurde, und in vielen Arten von Speichergeräten wie SD-Karten und USB-Flash-Laufwerken verwendet wird. Im Jahr 2019 wurden die Patente daran freigegeben und in der Folge unterstützt Linux ab Kernel 5.4 *exFAT*. Es eignet sich auch sehr gut für Partitionen, auf die unterschiedliche Betriebssysteme zugreifen sollen.
 
 **HFS+**  
 Bei einer Dual-Boot Installation mit Macintosh ist eine eigene Datenpartition mit dem *HFS* oder *HFS+* Dateisystem sinnvoll. Linux und MAC können lesend und schreibend darauf zugreifen.
@@ -155,7 +158,7 @@ Gparted ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction
 
 **KDE Partition Manager**  
 Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
-Der KDE Partition Manager ist das Standard-Partitionierungsprogramm für den KDE Destktop, einfach zu bedienen und genauso umfangreich wie Gparted.
+Der KDE Partition Manager ist das Standard-Partitionierungsprogramm für den KDE Desktop, einfach zu bedienen und genauso umfangreich wie Gparted.
 
 **gdisk / cgdisk**  
 Ein Konsolenprogramm für Partitionstabellen vom Typ *"GPT-UEFI"*.  
@@ -191,4 +194,4 @@ Für weitere Partitionierungsoptionen siehe:
 
 + [Partitionieren mit  GPT](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zur Unterstützung von UEFI 
 
-<div id="rev">Zuletzt bearbeitet: 2023-12-21</div>
+<div id="rev">Zuletzt bearbeitet: 2023-12-31</div>
