@@ -139,7 +139,7 @@ The *ext4* file system is the default file system on siduction. This applies to 
 *Btrfs* can be used instead of *ext4*. Together with the program *Snapper* it offers the possibility to create snapshots of the file system which are selectable in the boot manager Grub afterwards. You need a sufficiently large hard disk. See also [System administration Btrfs](0704-sys-admin-btrfs-snapper_en.md#btrfs).
 
 **NTFS**  
-For data exchange with a Windows installation the designated partition should be formatted with *NTFS*. Siduction can access the data read and write. For Windows it is the standard file system.
+For a Windows installation, the partitions intended for this purpose must be formatted with *NTFS*. Siduction has read and write access to the data. It is the standard file system for Windows.
 
 **exFAT**  
 A file system developed by Microsoft and used in many types of storage devices such as SD cards and USB flash drives. The patents for it were released in 2019 and as a result Linux supports *exFAT* from kernel 5.4. It is also very suitable for partitions that are to be accessed by different operating systems.
