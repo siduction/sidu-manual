@@ -385,7 +385,7 @@ Die Syntax des Befehls entspricht dem folgenden Muster, das auch die häufig zur
 ~~~
 
 + snapper **-c \<config_name\>** create  
-  Der Snapper Befehl erstellt von dem Subvolumen der benannten Konfiguration einen Snapshot. Fehlt die Option, so wendet Snapper den Befehl auf das Subvolumen `@` mit der Konfiguration `root` an. Diese Regel gilt für alle Snapper Befehle.  
+  Der Snapper Befehl erstellt von dem Subvolumen der benannten Konfiguration einen Snapshot. Fehlt die Option, so wendet Snapper den Befehl auf das Btrfs default Subvolumen (das Wurzelverzeichnis **/**) mit der Konfiguration `root` an. Diese Regel gilt für alle Snapper Befehle.  
 + **-t \<type\>**  
   Die Art des zu erstellenden Snapshots. Mögliche Werte: `single`, `pre`, `post`.  
 + **-d \<description\>**  

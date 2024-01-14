@@ -385,7 +385,7 @@ The syntax of the command corresponds to the following pattern which also shows 
 ~~~
 
 + snapper **-c \<config_name\>** create  
-  This snapper command creates a snapshot of the subvolume of the named configuration. If the option is missing, Snapper applies the command to the `@` subvolume with the `root` configuration. This rule applies to all Snapper commands.  
+  This snapper command creates a snapshot of the subvolume of the named configuration. If the option is missing, Snapper applies the command to the Btrfs default subvolume (the root directory **/**) with the `root` configuration. This rule applies to all Snapper commands.  
 + **-t \<type\>**  
   specifies the type of snapshot to create. Possible values: `single`, `pre`, `post`.  
 + **-d \<description\>**.  
