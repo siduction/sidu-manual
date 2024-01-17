@@ -52,24 +52,27 @@ The label can be created or changed with one the following commands, according t
   `e2label /dev/sdXx <label>` or  
   `tune2fs -L <label> /dev/sdXx`
   
-+ **jfs**  
++ **JFS**  
   `jfs_tune -L <label> /dev/sdXx`
   
-+ **xfs**  
++ **XFS**  
   `xfs_admin -L <label> /dev/sdXx`
   
-+ **reiserFS**  
++ **ReiserFS**  
   `reiserfstune -l <label> /dev/sdXx`
   
-+ **fat**  
++ **FAT**  
   `fatlabel /dev/sdXx <label>`
   
-+ **ntfs**  
++ **NTFS**  
   `ntfslabel /dev/sdXx <label>`
+  
++ **exFAT**
+  `exfatlabel /dev/sdXx <label>`
 
-An **NTFS** and **FAT** partition's label should consist only of uppercase letters, digits, and special characters that Windows™ allows for file names.
+An NTFS and FAT partition's label should consist only of uppercase letters, digits, and special characters that Windows™ allows for file names.
 
-The syntax in fstab for the *file system* is **LABEL=\<label\>**.
+The syntax in `fstab` for the `<file system>` is `LABEL=\<label\>`.
 
 > It is essential to note:  
 > The labels must have a singular name in order to work when mounted. This also applies to external devices (hard disks, sticks, etc.) that are mounted via USB or Firewire.

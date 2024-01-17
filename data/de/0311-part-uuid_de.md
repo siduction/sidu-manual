@@ -52,21 +52,23 @@ Die Bezeichnung eines Labels kann je nach Dateisystem mit folgenden Befehlen erz
   `e2label /dev/sdXx <label>` oder  
   `tune2fs -L <label> /dev/sdXx`
   
-+ **jfs**  
++ **JFS**  
   `jfs_tune -L <label> /dev/sdXx`
   
-+ **xfs**  
++ **XFS**  
   `xfs_admin -L <label> /dev/sdXx`
   
 + **ReiserFS**  
   `reiserfstune -l <label> /dev/sdXx`
   
-+ **fat**  
++ **FAT**  
   `fatlabel /dev/sdXx <label>`
   
-+ **ntfs**  
++ **NTFS**  
   `ntfslabel /dev/sdXx <label>`
-
+  
++ **exFAT**
+  `exfatlabel /dev/sdXx <label>`
 
 Der Name des Labels einer NTFS- und FAT-Partition sollte nur aus Großbuchstaben, Ziffern und den für Dateinamen erlaubten Sonderzeichen von Windows™ bestehen.
 
