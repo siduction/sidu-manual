@@ -102,6 +102,14 @@ obligatorisch. Dar&uuml;ber hinaus empfehlen wir das umfangreiche <a
 href="https://btrfs.wiki.kernel.org/index.php/Main_Page">Wiki von
 kernel.org</a> und die ausf&uuml;hrliche Dokumentation von <a
 href="https://btrfs.readthedocs.io/en/latest/index.html">readthedocs.io</a>.</p>
+<p class="warning">
+<strong>Bitte beachten</strong> <br />siduction unterst&uuml;tzt keine
+separate Boot-Partition bei Verwendung des Btrfs Dateisystems.
+</p>
+<p>Das Verzeichnis <em>/boot</em> ist ein wesentlicher Bestandteil des
+Betriebssystems. Mit einer separaten Partition w&uuml;rde es von
+Systemsnapshots ausgenommen und damit ein Rollback zu Fehlern
+f&uuml;hren.</p>
 <p><strong>Btrfs verwenden</strong></p>
 <p>F&uuml;r die fortschrittlichen Eigenschaften von Btrfs (Snapshots,
 Komprimierung, Defragmentierung, Selbstheilung f&uuml;r Daten und Metadaten,
@@ -699,8 +707,9 @@ h&auml;ufig zur Anwendung kommenden Optionen zeigt.</p>
 <li>snapper <strong>-c &lt;config_name&gt;</strong> create<br />
 Der Snapper Befehl erstellt von dem Subvolumen der benannten
 Konfiguration einen Snapshot. Fehlt die Option, so wendet Snapper den
-Befehl auf das Subvolumen <code>@</code> mit der Konfiguration
-<code>root</code> an. Diese Regel gilt f&uuml;r alle Snapper Befehle.<br />
+Befehl auf das Btrfs default Subvolumen (das Wurzelverzeichnis
+<strong>/</strong>) mit der Konfiguration <code>root</code> an. Diese
+Regel gilt f&uuml;r alle Snapper Befehle.<br />
 </li>
 <li><strong>-t &lt;type&gt;</strong><br />
 Die Art des zu erstellenden Snapshots. M&ouml;gliche Werte:
@@ -824,11 +833,8 @@ Snapshot befinden und er das Standard-Subvolumen ist.</p>
 <pre><code> # |Typ   |Pre #|Date    |User |Cleanup| Description   |
 16*|single|     |12:05:23|root |       |r/W copy of #13|</code></pre>
 <p>Im Rollbackziel wird die Grub Men&uuml;datei ebenfalls automatisch
-aktualisiert. Zu diesem Zeitpunkt verweist der Grub Eintrag im EFI / MBR
-noch auf das vorherige Standard-Subvolumen #12. Mit dem Befehl</p>
-<pre><code># grub-install ...</code></pre>
-<p>schlie&szlig;en wir den Rollback ab und teilen Grub mit, fortan das neue
-Standard-Subvolumen #16 zu verwenden.</p>
+aktualisiert und Grub aus Snapshot #16 heraus erneut installiert. Grub
+liest fortan die Men&uuml;datei aus dem neuen Standard-Subvolumen #16.</p>
 <h3 id="datei-rollback-im-root-dateisystem">Datei Rollback im
 Root-Dateisystem</h3>
 <p>Es handelt sich dabei um das R&uuml;ckg&auml;ngigmachen von &Auml;nderungen an
@@ -1039,7 +1045,7 @@ grub Men&uuml;</a><br />
 GitHub</a></li>
 </ul>
 <div id="rev">
-Zuletzt bearbeitet: 2023-06-11
+Zuletzt bearbeitet: 2023-12-21
 </div>
 </body>
 </html>

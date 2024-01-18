@@ -123,22 +123,25 @@ according to the respective file system:</p>
 <li><p><strong>ext2/ext3/ext4</strong><br />
 <code>e2label /dev/sdXx &lt;label&gt;</code> or<br />
 <code>tune2fs -L &lt;label&gt; /dev/sdXx</code></p></li>
-<li><p><strong>jfs</strong><br />
+<li><p><strong>JFS</strong><br />
 <code>jfs_tune -L &lt;label&gt; /dev/sdXx</code></p></li>
-<li><p><strong>xfs</strong><br />
+<li><p><strong>XFS</strong><br />
 <code>xfs_admin -L &lt;label&gt; /dev/sdXx</code></p></li>
-<li><p><strong>reiserFS</strong><br />
+<li><p><strong>ReiserFS</strong><br />
 <code>reiserfstune -l &lt;label&gt; /dev/sdXx</code></p></li>
-<li><p><strong>fat</strong><br />
+<li><p><strong>FAT</strong><br />
 <code>fatlabel /dev/sdXx &lt;label&gt;</code></p></li>
-<li><p><strong>ntfs</strong><br />
+<li><p><strong>NTFS</strong><br />
 <code>ntfslabel /dev/sdXx &lt;label&gt;</code></p></li>
+<li><p><strong>exFAT</strong>
+<code>exfatlabel /dev/sdXx &lt;label&gt;</code></p></li>
 </ul>
-<p>An <strong>NTFS</strong> and <strong>FAT</strong> partition’s label
-should consist only of uppercase letters, digits, and special characters
-that Windows™ allows for file names.</p>
-<p>The syntax in fstab for the <em>file system</em> is
-<strong>LABEL=&lt;label&gt;</strong>.</p>
+<p>An NTFS and FAT partition’s label should consist only of uppercase
+letters, digits, and special characters that Windows™ allows for file
+names.</p>
+<p>The syntax in <code>fstab</code> for the
+<code>&lt;file system&gt;</code> is
+<code>LABEL=\&lt;label\&gt;</code>.</p>
 <p class="warning">
 It is essential to note: <br />The labels must have a singular name in
 order to work when mounted. This also applies to external devices (hard

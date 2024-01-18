@@ -122,10 +122,13 @@ installation are:</p>
 </table>
 <p>Otherwise, we recommend at least 20 GB of disk space when installing
 to the <strong>Btrfs</strong> file system and using
-<code>snapper</code>.<br />
-50 GB is reasonable if you want to use siduction on
-<strong>Btrfs</strong> for a longer period of time and many snapshots
-are kept.</p>
+<code>snapper</code>. 50 GB or more is useful if you want to use
+siduction on <strong>Btrfs</strong> for a longer period of time and many
+snapshots are kept.</p>
+<p class="warning">
+<strong>Please note</strong> <br />siduction does not support a separate
+boot partition when using the Btrfs file system.
+</p>
 <h3 id="examples-with-different-disk-sizes">Examples with different disk
 sizes</h3>
 <p>There are several good ways to divide your plates. These examples
@@ -502,9 +505,15 @@ afterwards. You need a sufficiently large hard disk. See also <a
 href="./sys-admin-btrfs-snapper_en.html#btrfs">System administration
 Btrfs</a>.</p>
 <p><strong>NTFS</strong><br />
-For data exchange with a Windows installation the designated partition
-should be formatted with <em>NTFS</em>. Siduction can access the data
-read and write. For Windows it is the standard file system.</p>
+For a Windows installation, the partitions intended for this purpose
+must be formatted with <em>NTFS</em>. Siduction has read and write
+access to the data. It is the standard file system for Windows.</p>
+<p><strong>exFAT</strong><br />
+A file system developed by Microsoft and used in many types of storage
+devices such as SD cards and USB flash drives. The patents for it were
+released in 2019 and as a result Linux supports <em>exFAT</em> from
+kernel 5.4. It is also very suitable for partitions that are to be
+accessed by different operating systems.</p>
 <p><strong>HFS+</strong><br />
 For a dual-boot installation with Macintosh, a separate data partition
 with the <em>HFS</em> or <em>HFS+</em> file system is useful. Linux and
@@ -566,7 +575,7 @@ href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
 gdisk</a></p></li>
 </ul>
 <div id="rev">
-Last edited: 2023-05-18
+Last edited: 2023-12-31
 </div>
 </body>
 </html>

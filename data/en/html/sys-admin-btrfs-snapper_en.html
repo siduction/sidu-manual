@@ -95,6 +95,13 @@ addition, we recommend the extensive <a
 href="https://btrfs.wiki.kernel.org/index.php/Main_Page">kernel.org
 Wiki</a> and the detailed documentation on <a
 href="https://btrfs.readthedocs.io/en/latest/index.html">readthedocs.io</a>.</p>
+<p class="warning">
+<strong>Please note</strong> <br />siduction does not support a separate
+boot partition when using the Btrfs file system.
+</p>
+<p>The <em>/boot</em> directory is an essential part of the operating
+system. With a separate partition, it would be excluded from system
+snapshots and thus a rollback would lead to errors.</p>
 <p><strong>Use Btrfs</strong></p>
 <p>For the advanced features of Btrfs (snapshots, compression,
 defragmentation, self-recovery for data and metadata, integrated volume
@@ -667,8 +674,9 @@ also shows frequently used options.</p>
 <li>snapper <strong>-c &lt;config_name&gt;</strong> create<br />
 This snapper command creates a snapshot of the subvolume of the named
 configuration. If the option is missing, Snapper applies the command to
-the <code>@</code> subvolume with the <code>root</code> configuration.
-This rule applies to all Snapper commands.<br />
+the Btrfs default subvolume (the root directory <strong>/</strong>) with
+the <code>root</code> configuration. This rule applies to all Snapper
+commands.<br />
 </li>
 <li><strong>-t &lt;type&gt;</strong><br />
 specifies the type of snapshot to create. Possible values:
@@ -782,12 +790,9 @@ currently in snapshot 12 and snapshot 16 is the new default subvolume.
 is the default subvolume.</p>
 <pre><code> # |Typ   |Pre #|Date    |User |Cleanup| Description   |
 16*|single|     |12:05:23|root |       |r/W copy of #13|</code></pre>
-<p>In the rollback target, the Grub menu file is also updated
-automatically. At this point, the Grub entry in the EFI / MBR still
-points to the previous default subvolume #12. We perform the command</p>
-<pre><code># grub-install ...</code></pre>
-<p>to complete the rollback and tell Grub to use the new default
-subvolume #16 from now on.</p>
+<p>The Grub menu file is also updated automatically in the rollback
+target and Grub is reinstalled from snapshot #16. From now on, Grub
+reads the menu file from the new default subvolume #16.</p>
 <h3 id="file-rollback-within-the-root-file-system">File rollback within
 the root file system</h3>
 <p>This is the undoing of changes to files. For this purpose, two
@@ -985,7 +990,7 @@ grub menu</a><br />
 GitHub</a></li>
 </ul>
 <div id="rev">
-Last edited: 2023-06-11
+Last edited: 2023-12-21
 </div>
 </body>
 </html>
