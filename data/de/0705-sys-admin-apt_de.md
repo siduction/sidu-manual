@@ -129,7 +129,7 @@ Ist uns der Name des Pakets bekannt, reicht der Befehl **`apt install <Paketname
 Deshalb empfehlen wir folgenden Ablauf:
 
 1. Aus der Desktopumgebung abmelden.
-2. Mit **`Ctrl`**+**`Alt`**+**`F2`** auf die Textkonsole wechseln.
+2. Mit **`Ctrl`**+**`Alt`**+**`F3`** auf die Textkonsole wechseln.
 3. Einloggen als **root**.
 
 Anschließend das gewünschte Programmpaket installieren:
@@ -383,7 +383,7 @@ Zu beachten ist der folgende Ablauf:
 
 1. Aus der Desktopumgebung abmelden.  
    (Diese Vorgehensweise wird heutzutage nur noch bei der Aktualisierung von X oder der Desktop-Umgebung selbst empfohlen, schadet aber auch in anderen Fällen nicht.)
-2. Mit **`Ctrl`**+**`Alt`**+**`F2`** auf die Textkonsole wechseln.
+2. Mit **`Ctrl`**+**`Alt`**+**`F3`** auf die Textkonsole wechseln.
 3. Einloggen als **root**.
 
 Anschließend folgende Befehle ausführen:
@@ -401,11 +401,11 @@ Wurde ein neuer Kernel installiert, ist an Stelle von *"init 5"* der Befehl **`s
 ### Warum ausschließlich apt verwenden
 
 Zum Installieren, Löschen und Durchführen einer Systemaktualisierung soll *apt* verwendet werden.  
-Bitte von Systemaktualisierungen mit Anwendungen wie `synaptic`, `adept` oder `kpackage` absehen!
+Bitte von Systemaktualisierungen mit Anwendungen wie `synaptic` oder `discover` absehen!
 
 Die genannten Programme sind exzellent für eine Installation von *Debian stable* und sie eignen sich sehr gut dazu Programmpakete zu suchen, aber sie sind nicht angepasst an die besonderen Aufgaben der dynamischen Distribution Debian Sid. Sie können nicht immer die umfassenden Änderungen in Sid (Änderungen von Abhängigkeiten, Benennungskonventionen, Skripten u.a.) korrekt auflösen. Es handelt sich dabei nicht um Fehler in diesen Programmen oder Fehler der Entwickler.
 
-Paketmanager wie adept, synaptic und kpackage sind - technisch gesprochen - nicht deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.
+Paketmanager wie synaptic und discover sind - technisch gesprochen - nicht deterministisch. Bei Verwendung einer dynamischen Distribution wie Debian Sid unter Hinzunahme von Drittrepositorien, deren Qualität nicht vom Debian-Team getestet sein kann, kann eine Systemaktualisierung zur Katastrophe führen, da diese Paketmanager durch automatische Lösungsversuche falsche Entscheidungen treffen können.
 
 Weiterhin ist zu beachten, dass alle GUI-Paketmanager in X ausgeführt werden müssen. Systemaktualisierungen in X (selbst ein ohnehin nicht empfohlenes 'apt upgrade') werden früher oder später dazu führen, dass man sein System irreversibel beschädigt.
 
@@ -509,4 +509,4 @@ Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch 
 
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2024-03-22</div>

@@ -129,7 +129,7 @@ If we know the package's name, the command **`apt install <package_name>`** is s
 Therefore we recommend the following procedure:
 
 1. Log out of the desktop environment.
-2. Switch to the text console with **`Ctrl`**+**`Alt`**+**`F2`**
+2. Switch to the text console with **`Ctrl`**+**`Alt`**+**`F3`**
 3. Log in as **root**.
 
 Then install the desired program package:
@@ -385,7 +385,7 @@ Before updating the system, visit the [siduction home page](https://forum.siduct
 
 1. Log out of the desktop environment.  
    (This procedure is nowadays only recommended when updating X or the desktop environment itself, but does not hurt in other cases.)  
-2. Switch to the text console with **`Ctrl`**+**`Alt`**+**`F2`**.
+2. Switch to the text console with **`Ctrl`**+**`Alt`**+**`F3`**.
 3. Log in as **root**.
 
 Then execute the following commands:
@@ -402,11 +402,11 @@ If a new kernel has been installed, the command **`systemctl reboot`** or **`ini
 
 ### Why use apt exclusively
 
-For installing, deleting, and carrying out a system update, *apt* should be used. Please refrain from updating the system with applications like `synaptic`, `adept`, or `kpackage`!
+For installing, deleting, and carrying out a system update, *apt* should be used. Please refrain from updating the system with applications like `synaptic`, or `discover`!
 
 The mentioned programs are excellent *Debian stable* installation and very good for searching program packages, but they are not adapted to the special tasks of the dynamic distribution Debian Sid. They cannot correctly resolve the extensive changes in Sid (changed dependencies, naming conventions, or scripts). This is not due errors in the programs or mistakes by the developers.
 
-Package managers like adept, synaptic, and kpackage are - technically speaking - non-deterministic. When using a dynamic distribution like Debian Sid with the addition of third party repositories whose quality cannot be tested by the Debian team, a system update can lead to disaster, as these package managers can make wrong decisions by automatically trying to solve the problem.
+Package managers like synaptic, and discover are - technically speaking - non-deterministic. When using a dynamic distribution like Debian Sid with the addition of third party repositories whose quality cannot be tested by the Debian team, a system update can lead to disaster, as these package managers can make wrong decisions by automatically trying to solve the problem.
 
 Furthermore, it should be noted that all GUI package managers must be run in X. System updates in X (even an anyway not recommended 'apt upgrade') will sooner or later cause you to irreversibly damage your system.
 
@@ -510,4 +510,4 @@ In addition, a lot of information about Debian packages is provided, including w
 
 A complete description of the APT system can be found in [Debian's APT-HOWTO](https://wiki.debian.org/DebianPackageManagement).
 
-<div id="rev">Last edited: 2022/04/07</div>
+<div id="rev">Last edited: 2024/03/22</div>
