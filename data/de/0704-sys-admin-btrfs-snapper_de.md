@@ -168,9 +168,11 @@ Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an, e
 ~~~
 # mkdir /data/.snapshots
 # btrfs subvolume snapshot -r /data/ /data/.snapshots/01
+  Create a readonly snapshot of '/data' in '/data/.snapshots/01'
 ~~~
 
 Der Befehl erinnert von der Syntax her an einen einfachen Kopiervorgang, wobei `01` der Ordner ist, in dem sich die Dateien des Snapshot befinden.  
+Statt `01` kann man `$(date +%F_%H-%M)` verwenden um das Datum und die Uhrzeit als Ordnernamen zu erhalten.  
 Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend, die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs-snapper_de.md#snapper-rollback).
 
 ## Snapper

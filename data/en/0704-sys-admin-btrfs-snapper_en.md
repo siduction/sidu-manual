@@ -168,9 +168,11 @@ Since a snapshot is a subvolume within its source, it makes sense to create a co
 ~~~
 # mkdir /data/.snapshots
 # btrfs subvolume snapshot -r /data/ /data/.snapshots/01
+  Create a readonly snapshot of '/data' in '/data/.snapshots/01'
 ~~~
 
 The command is syntactically reminiscent of a simple copy operation, where `01` is the folder where the files of the snapshot are located.  
+Instead of `01` you can use `$(date +%F_%H-%M)` to get the date and time as folder name.  
 By default, snapshots are created with read and write access. With the `-r` option they are read-only. We strongly advise using the `-r` option because a snapshot represents the state of the subvolume at the time it is created. How to access the data of a snapshot is explained in the manual in the chapters starting with ["Snapper Rollback"](0704-sys-admin-btrfs-snapper_en.md#snapper-rollback).
 
 ## Snapper
