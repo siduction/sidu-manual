@@ -137,7 +137,7 @@ Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den I
 
 ~~~
 # btrfs subvolume create /mnt/@data
-# mkdir /mnt/@/data
+# mkdir /mnt/@data
 # ls /mnt/
 @  @data  @home  @root  @snapshots  @tmp  @var@log
 ~~~
@@ -145,7 +145,7 @@ Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den I
 Damit die normalen Benutzer das Verzeichnis verwenden können, ändern wir die Gruppe:
 
 ~~~
-# chgrp users /mnt/@/data
+# chgrp users /mnt/@data
 ~~~
 
 Subvolumen lassen sich auch verschachteln und somit innerhalb bestehender Subvolumen erstellen. Wir raten zur besseren Übersicht eher zu dem flachen Schema.
@@ -167,7 +167,7 @@ Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an, e
 
 ~~~
 # mkdir /data/.snapshots
-# btrfs subvolume snapshot -r /data/ /date/.snapshots/01
+# btrfs subvolume snapshot -r /data/ /data/.snapshots/01
 ~~~
 
 Der Befehl erinnert von der Syntax her an einen einfachen Kopiervorgang, wobei `01` der Ordner ist, in dem sich die Dateien des Snapshot befinden.  

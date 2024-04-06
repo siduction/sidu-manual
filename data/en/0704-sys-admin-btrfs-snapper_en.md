@@ -137,7 +137,7 @@ Now we create the new subvolume as well as its mount point and reissue the conte
 
 ~~~
 # btrfs subvolume create /mnt/@data
-# mkdir /mnt/@/data
+# mkdir /mnt/@data
 # ls /mnt/
 @  @data  @home  @root  @snapshots  @tmp  @var@log
 ~~~
@@ -145,7 +145,7 @@ Now we create the new subvolume as well as its mount point and reissue the conte
 To allow normal users access to the directory, we change the group:
 
 ~~~
-# chgrp users /mnt/@/data
+# chgrp users /mnt/@data
 ~~~
 
 Subvolumes can also be nested and thus be created within existing subvolumes. For a better overview, we rather recommend the flat scheme.
@@ -167,7 +167,7 @@ Since a snapshot is a subvolume within its source, it makes sense to create a co
 
 ~~~
 # mkdir /data/.snapshots
-# btrfs subvolume snapshot -r /data/ /date/.snapshots/01
+# btrfs subvolume snapshot -r /data/ /data/.snapshots/01
 ~~~
 
 The command is syntactically reminiscent of a simple copy operation, where `01` is the folder where the files of the snapshot are located.  
