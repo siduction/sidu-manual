@@ -3,7 +3,7 @@
 ## Btrfs
 
 Btrfs ist ein modernes Copy-on-Write (COW) Dateisystem für Linux.  
-siduction unterstützt die Installation in eine mit *Btrfs* formatierte Partition. Mit der Veröffentlichung von 2022.12.0 kommt die Möglichkeit hinzu, mit Snapper Snapshots von Btrfs zu verwalten und über Grub zu booten. Das Installationsprogramm legt dabei innerhalb der ausgewählten Partition Subvolumen für das Wurzelverzeichnis `@`, die Benutzerverzeichnisse `@home` und `@root`, die Verzeichnisse `@tmp` und `@var@log` sowie ein Subvolumen `@snapshots` für System Snapshots an.
+siduction unterstützt die Installation in eine mit *Btrfs* formatierte Partition. Mit der Veröffentlichung von 2022.12.0 kommt die Möglichkeit hinzu, mit Snapper Snapshots von Btrfs zu verwalten und über Grub zu booten. Das Installationsprogramm legt dabei innerhalb der ausgewählten Partition Subvolumen für das Wurzelverzeichnis `@`, die Benutzerverzeichnisse `@home` und `@root`, das Verzeichnis `@var@log` sowie ein Subvolumen `@snapshots` für System Snapshots an.
 
 Btrfs funktioniert gut mit SSDs und herkömmlichen Festplatten. Der eigene eingebaute RAID Mechanismus (unterstützt wird RAID 0, 1 und 10) arbeitet auch bei Festplatten verschiedener Größe zuverlässig. Metadaten und Dateidaten behandelt Btrfs unterschiedlich. Normalerweise werden Metadaten auch bei nur einem Laufwerk doppelt gespeichert. Bei mehreren Laufwerken kann der Administrator innerhalb des gleichen Dateisystems unterschiedliche RAID Level für die Metadaten und Dateidaten festlegen.  
 Btrfs verwaltet die Daten innerhalb der Laufwerke in Subvolumen, oberflächlich betrachtet ähnlich herkömmlichen Partitionen. Von den Subvolumen kann Btrfs Snapshots anfertigen, die bei Bedarf der Datenrekonstruktion dienen. Ein eingehängtes Btrfs-Dateisystem verhält sich meistens wie jedes andere Linux-Dateisystem. Gelegentlich treten jedoch einige Unterschiede zutage, denn Btrfs erledigt seine Arbeit vorwiegend im Hintergrund. Für Verwirrung sorgt zum Beispiel das Löschen einer großen Datei, ohne dass sich sofort der verfügbare freie Speicherplatz erhöht. Einige Zeit später ist der fehlende Platz dann doch da, oder auch nicht wenn ein vorangegangener Snapshot die Datei referenziert.
@@ -30,7 +30,6 @@ Bei der Erstinstallation in eine einzige Partition werden die folgenden Subvolum
 | @ | / | |
 | @home | /home | |
 | @root | /root | Der Benutzer **root** |
-| @tmp | /tmp | |
 | @var@log | /var/log | |
 | @snapshots | /.snapshots | Ablageort für die Snapshot von @ |
 
@@ -47,7 +46,6 @@ ID   gen    top level  path
 258  22982  5          @daten
 269  22972  5          @var@log
 260  22967  5          @snapshots
-261  22967  5          @tmp
 ~~~
 
 **Das Standard Subvolumen**
@@ -73,7 +71,7 @@ Beispiel ohne Standard Subvolumen:
 ~~~
 # mount -t btrfs /dev/sdxX /mnt/
 # ls /mnt/
-@  @daten  @root  @snapshots  @tmp  @var@log
+@  @daten  @root  @snapshots  @var@log
 ~~~
 
 Beispiel nach setzten des Subvolumens `@` als Standard:
@@ -93,7 +91,7 @@ Beispiel mit Standard Subvolumen und Mountoption `subvolid=5`:
 ~~~
 # mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
 # ls /mnt/
-@  @daten  @root  @snapshots  @tmp  @var@log
+@  @daten  @root  @snapshots  @var@log
 ~~~
 
 Die Datei `/etc/fstab` enthält nach der Installation bereits alle notwendigen Einträge um die Subvolumen automatisch einzuhängen.  
@@ -129,7 +127,7 @@ Um ein neues *top level 5* Subvolumen `@data` anzulegen, hängen wir die siducti
 ~~~
 # mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
 # ls /mnt/
-@  @home  @root  @snapshots  @tmp  @var@log
+@  @home  @root  @snapshots  @var@log
 ~~~
 
 Der *ls* Befehl zeigt die vorhandenen *top level 5* Subvolumen nach der Installation.  
@@ -139,7 +137,7 @@ Jetzt legen wir das neue Subvolumen und seinen Einhängepunkt an und geben den I
 # btrfs subvolume create /mnt/@data
 # mkdir /mnt/@data
 # ls /mnt/
-@  @data  @home  @root  @snapshots  @tmp  @var@log
+@  @data  @home  @root  @snapshots  @var@log
 ~~~
 
 Damit die normalen Benutzer das Verzeichnis verwenden können, ändern wir die Gruppe:
@@ -154,7 +152,7 @@ Subvolumen lassen sich auch verschachteln und somit innerhalb bestehender Subvol
 
 Ein Snapshot ist ein Subvolumen wie jedes andere, jedoch mit einem vorgegebenen Anfangsinhalt. Im Dateimanager betrachtet scheint es eine vollständige Kopie des ursprünglichen Subvolumens zu enthalten. Btrfs ist ein Copy-on-Write-Dateisystem, sodass es nicht notwendig ist alle Daten tatsächlich zu kopieren. Der Snapshot hat einfach einen Verweis auf die aktuelle Wurzel des Dateisystems seines ursprünglichen Subvolumens. Erst wenn etwas geändert wird erstellt Btrfs eine Kopie der Daten. Dateiänderungen in einem Snapshot haben keine Auswirkungen auf die Dateien im ursprünglichen Subvolumen.
 
-Ein Snapshot ist nicht rekursiv. Ein Subvolumen oder ein Snapshot ist effektiv eine Barriere. Dateien in verschachtelten Subvolumen erscheinen nicht im Snapshot. Stattdessen gibt es ein Blind-Subvolumen, was bei verschachtelten Layouts für Verwirrung sorgen könnte. Das nicht rekursive Verhalten erklärt, weshalb siduction während der Installation zusätzliche Subvolumen angelegt hat. So gelangen keine privaten und variablen Daten aus den Subvolumen `@home`, `@root`, `@tmp` und `@var@log` in einen Snapshot von `@`.
+Ein Snapshot ist nicht rekursiv. Ein Subvolumen oder ein Snapshot ist effektiv eine Barriere. Dateien in verschachtelten Subvolumen erscheinen nicht im Snapshot. Stattdessen gibt es ein Blind-Subvolumen, was bei verschachtelten Layouts für Verwirrung sorgen könnte. Das nicht rekursive Verhalten erklärt, weshalb siduction während der Installation zusätzliche Subvolumen angelegt hat. So gelangen keine privaten und variablen Daten aus den Subvolumen `@home`, `@root` und `@var@log` in einen Snapshot von `@`.
 
 Man sollte beachten, dass Snapshots von Btrfs Dateisystemen in keinem Fall eine durchdachte Datensicherung ersetzen. Selbst bei RAID1 und RAID10 Systemen mit Btrfs steht die Ausfallsicherheit im Vordergrund und nicht die Datensicherung.
 
@@ -173,7 +171,7 @@ Da ein Snapshot ein Subvolumen innerhalb seiner Quelle ist, bietet es sich an, e
 
 Der Befehl erinnert von der Syntax her an einen einfachen Kopiervorgang, wobei `01` der Ordner ist, in dem sich die Dateien des Snapshot befinden.  
 Statt `01` kann man `$(date +%F_%H-%M)` verwenden um das Datum und die Uhrzeit als Ordnernamen zu erhalten.  
-Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend, die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs-snapper_de.md#snapper-rollback).
+Standardmäßig werden Snapshots mit Lese- und Schreibzugriff erstellt. Mit der Option `-r` sind sie schreibgeschützt. Wir raten dringend die Option `-r` zu verwenden, denn ein Snapshot bildet zum Zeitpunkt seiner Erstellung den Zustand des Subvolumens ab. Wie man auf die Daten eines Snapshots zugreifen kann erfahren wir im Handbuch in den Kapiteln ab ["Snapper Rollback"](0704-sys-admin-btrfs-snapper_de.md#snapper-rollback).
 
 ## Snapper
 
@@ -445,7 +443,7 @@ Der Snapshot # 0 mit der Beschreibung *"current"* ist nicht löschbar. Es ist de
 Sollte einmal durch eine von uns angestoßene, völlig aus dem Ruder gelaufene Aktion, oder durch ein fehlerhaftes Upgrade das System beschädigt sein, ermöglicht Snapper mit dem *"Rollback"* das System in einen oder mehrere Zustände zurück zu versetzen, der vor dem Auftreten der Probleme vorlag. 
 
 **Voraussetzungen**  
-Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolumen befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/tmp`, können sich auf separaten Partitionen befinden.
+Ein *"Rollback"* wird nur mit Btrfs für das Root-Dateisystem unterstützt. Das Root-Dateisystem muss sich auf einem einzelnen Gerät, in einer einzelnen Partition und auf einem einzelnen Subvolumen befinden. Verzeichnisse, die aus `/` Snapshots ausgeschlossen sind, beispielsweise `/root`, können sich auf separaten Partitionen befinden.
 
 **Rollback durchführen**  
 Vor dem Rollback testen wir erst einmal, ob das Rollbackziel unseren Erwartungen entspricht. Dazu booten wir unter Verwendung des Submenüs *"siduction snapshots"* in den gewünschten Snapshot, zum Beispiel 13. Das System bootet im *read-only* Modus. Die Fehlermeldung zu *sddm* ignorieren wir.  
@@ -669,4 +667,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper Projektseite](http://snapper.io/)  
 + [Snapper auf GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Zuletzt bearbeitet: 2023-12-21</div>
+<div id="rev">Zuletzt bearbeitet: 2024-04-21</div>

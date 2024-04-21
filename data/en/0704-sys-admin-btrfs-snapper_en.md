@@ -3,7 +3,7 @@
 ## Btrfs
 
 Btrfs is a modern copy-on-write (COW) file system for Linux.  
-siduction supports installation into a partition formatted with *Btrfs*. The release of 2022.12.0 enables you  to manage snapshots of Btrfs with Snapper and to boot via Grub. The installer creates subvolumes within the selected partition for the root directory `@`, the user directories `@home` and `@root`, the directories `@tmp` and `@var@log`, and a subvolume `@snapshots` for system snapshots.
+siduction supports installation into a partition formatted with *Btrfs*. The release of 2022.12.0 enables you  to manage snapshots of Btrfs with Snapper and to boot via Grub. The installer creates subvolumes within the selected partition for the root directory `@`, the user directories `@home` and `@root`, the directory `@var@log`, and a subvolume `@snapshots` for system snapshots.
 
 Btrfs works well with SSDs and conventional hard disks. Its own built-in RAID mechanism (RAID 0, 1, and 10 are supported) works reliably even with disks of different sizes. Metadata and file data are handled differently by Btrfs. Usually, metadata is stored twice even with only one drive. If multiple drives are present, the administrator can set different RAID levels for the metadata and file data within the same file system.  
 Btrfs manages the data within the drives in subvolumes, superficially similarly to conventional partitions. It can take snapshots of the subvolumes, which can be used for data reconstruction if needed. A mounted Btrfs file system behaves mostly like any other Linux file system. Occasionally, however, some differences come to light because Btrfs does most of its work in the background. For example, deleting a large file without immediately increasing the available free space causes confusion. Some time later, the missing space is there after all, or not if a previous snapshot references the file.
@@ -30,7 +30,6 @@ During the first install to a single partition, the following subvolumes are cre
 | @ | / | |
 | @home | /home | |
 | @root | /root | The **root** user |
-| @tmp | /tmp | |
 | @var@log | /var/log | |
 | @snapshots | /.snapshots | Snapshots of @ are stored here |
 
@@ -47,7 +46,6 @@ ID   gen    top level  path
 258  22982  5          @daten
 269  22972  5          @var@log
 260  22967  5          @snapshots
-261  22967  5          @tmp
 ~~~
 
 **The default subvolume**.
@@ -73,7 +71,7 @@ Example without default subvolume:
 ~~~
 # mount -t btrfs /dev/sdxX /mnt/
 # ls /mnt/
-@  @daten  @root  @snapshots  @tmp  @var@log
+@  @daten  @root  @snapshots  @var@log
 ~~~
 
 Example after setting the subvolume `@` as default:
@@ -93,7 +91,7 @@ Example with default subvolume and mount option `subvolid=5`:
 ~~~
 # mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
 # ls /mnt/
-@  @daten  @root  @snapshots  @tmp  @var@log
+@  @daten  @root  @snapshots  @var@log
 ~~~
 
 After installation, the `/etc/fstab` file already contains all the necessary entries to automatically mount the subvolumes.  
@@ -129,7 +127,7 @@ To create a new *top level 5* subvolume `@data`, we mount the siduction Btrfs pa
 ~~~
 # mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
 # ls /mnt/
-@  @home  @root  @snapshots  @tmp  @var@log
+@  @home  @root  @snapshots  @var@log
 ~~~
 
 The *ls* command shows the existing *top level 5* subvolumes after installation.  
@@ -139,7 +137,7 @@ Now we create the new subvolume as well as its mount point and reissue the conte
 # btrfs subvolume create /mnt/@data
 # mkdir /mnt/@data
 # ls /mnt/
-@  @data  @home  @root  @snapshots  @tmp  @var@log
+@  @data  @home  @root  @snapshots  @var@log
 ~~~
 
 To allow normal users access to the directory, we change the group:
@@ -154,7 +152,7 @@ Subvolumes can also be nested and thus be created within existing subvolumes. Fo
 
 A snapshot is a subvolume like any other, but with a given initial content. Viewed in the file manager, it appears to contain a complete copy of the original subvolume. Btrfs is a copy-on-write file system, so it is not necessary to actually copy all the data. The snapshot simply has a reference to the current filesystem root of its original subvolume. Only when something is changed does Btrfs create a copy of the data. File changes in a snapshot do not affect the files in the original subvolume.
 
-A snapshot is not recursive. A subvolume or snapshot is effectively a barrier. Files in nested subvolumes do not appear in the snapshot. Instead, there is a blind subvolume, which could cause confusion in nested layouts. The non-recursive behavior explains why siduction created additional subvolumes during installation. Thus, private and variable data from `@home`, `@root`, `@tmp`, and `@var@log` subvolumes do not end up in a snapshot of `@`.
+A snapshot is not recursive. A subvolume or snapshot is effectively a barrier. Files in nested subvolumes do not appear in the snapshot. Instead, there is a blind subvolume, which could cause confusion in nested layouts. The non-recursive behavior explains why siduction created additional subvolumes during installation. Thus, private and variable data from `@home`, `@root`, and `@var@log` subvolumes do not end up in a snapshot of `@`.
 
 It should be noted that snapshots of Btrfs file systems are in no way a substitute for thoughtful data protection. Even for RAID1 and RAID10 systems with Btrfs, the focus is on failover and not on backup.
 
@@ -445,7 +443,7 @@ The snapshot # 0 with the description *"current"* is not deletable. It is the sn
 If the system is damaged due to an action initiated by us that went completely out of control, or due to a faulty upgrade, Snapper allows you to use the *"rollback"* to return the system to one or more states that existed before the problems occurred.
 
 **Prerequisites**  
-A *"rollback"* is only supported with Btrfs for the root file system. The root file system must be on a single device, in a single partition, and on a single subvolume. Directories that are excluded from `/` snapshots, for example `/tmp`, can be on separate partitions.
+A *"rollback"* is only supported with Btrfs for the root file system. The root file system must be on a single device, in a single partition, and on a single subvolume. Directories that are excluded from `/` snapshots, for example `/root`, can be on separate partitions.
 
 **Performing a rollback**  
 Before the rollback, we check if the rollback target works as expected. To do this, we boot into the desired snapshot, for example 13, using the *"siduction snapshots"* submenu. The system boots in *read-only* mode. We ignore the error message regarding *sddm*.
@@ -667,4 +665,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper project page](http://snapper.io/)  
 + [Snapper on GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Last edited: 2023-12-21</div>
+<div id="rev">Last edited: 2024-04-21</div>
