@@ -453,7 +453,7 @@ If it does, we reboot back to the current default subvolume. There we perform th
 # snapper --ambit classic rollback
 Ambit is classic.
 Creating read-only snapshot of default subvolume. (Snapshot 15.)
-Creating read-write snapshot of current subvolume. (Snapshot 16.)
+Creating read-write snapshot of snapshot 13. (Snapshot 16.)
 Setting default subvolume to snapshot 16.
 ~~~
 
@@ -481,6 +481,10 @@ We perform a reboot and select the Grub default entry. Now the `*` after #16 ind
 ~~~
 
 The Grub menu file is also updated automatically in the rollback target and Grub is reinstalled from snapshot #16. From now on, Grub reads the menu file from the new default subvolume #16.
+
+The following graphic illustrates how the test-btrfs-default script adjusts the configuration of GRUB after a rollback.
+
+![Rollback graphic](./images-en/btrfs/rollback-graph-en.png)
 
 ### File rollback within the root file system
 

@@ -453,7 +453,7 @@ Arbeitet das System wie erwartet, kehren wir mit einem Reboot in das derzeitige 
 # snapper --ambit classic rollback 13
 Anwendungsbereich ist classic
 Nur-Lesen-Schnappschuss des Standard-Subvolumens erstellen. (Schnappschuss 15.)
-Lesen-Schreiben-Schnappschuss des derzeit laufenden Subvolumens erstellen. (Schnappschuss 16.)
+Lesen-Schreiben-Schnappschuss des Schnappschusses 13 erstellen. (Schnappschuss 16.)
 Einstellung des Standard-Subvolumens zu Schnappschuss 16.
 ~~~
 
@@ -481,6 +481,10 @@ Wir führen einen Reboot durch und wählen den Grub Standardeintrag. Jetzt zeigt
 ~~~
 
 Im Rollbackziel wird die Grub Menüdatei ebenfalls automatisch aktualisiert und Grub aus Snapshot #16 heraus erneut installiert. Grub liest fortan die Menüdatei aus dem neuen Standard-Subvolumen #16.
+
+Die folgende Graphik veranschaulicht wie das Skript test-btrfs-default nach einem Rollback die Konfiguration von GRUB anpasst.
+
+![Rollback Diagramm](./images-de/btrfs/rollback-graph-de.png)
 
 ### Datei Rollback im Root-Dateisystem
 
