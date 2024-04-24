@@ -116,7 +116,7 @@ Download-Links und Spiegelserver findet man auch auf [siduction.org](https://sid
 
 Das Tar-Archiv mit den Quellen ist für den interessant, der siduction weitervertreiben will. Hier müssen die Sourcen mit weitergegeben werden, um der Lizenz zu genügen. Weitere Informationen gibt es in dem Tar-Archiv.
 
-Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6667 #siduction-de erreichbar. 
+Wenn jemand einen FTP-Server mit entsprechendem Traffic zur Verfügung stellen kann, sind wir jederzeit in den [siduction-Foren](https://siduction.org) oder im IRC irc.oftc.net:6697 #siduction-de erreichbar. 
 
 ### Integritätsprüfung
 
@@ -168,4 +168,4 @@ CertUtil -hashfile C:\TEMP\<mein_ISO_Abbild.img> SHA256
 
 Für ältere Windows Versionen ist das unter der General Public License veröffentlichte Programm `md5summer` (486 KB) erhältlich.
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-27</div>
+<div id="rev">Zuletzt bearbeitet: 2024-04-23</div>

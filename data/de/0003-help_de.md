@@ -26,7 +26,7 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
 
   ~~~
   irc.oftc.net
-  port 6667
+  port 6697
   ~~~
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
@@ -118,7 +118,7 @@ Zuerst stellt man sicher, dass WeeChat installiert ist, indem man im Menü den E
 $ weechat-curses
 ~~~
 
-Jetzt kann man sich mit irc.oftc.net auf Port 6667 verbinden. Nach erfolgter Verbindung wird das Pseudonym (der "Nickname") geändert:
+Jetzt kann man sich mit irc.oftc.net auf Port 6697 verbinden. Nach erfolgter Verbindung wird das Pseudonym (der "Nickname") geändert:
 
 `/nick 'Dein_neuer_nick'`
 
@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2023-11-06</div>
+<div id="rev">Zuletzt bearbeitet: 2024-04-23</div>

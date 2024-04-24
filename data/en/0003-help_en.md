@@ -27,7 +27,7 @@ If you prefer another chat client, you need to enter these server details:
 
   ~~~
   irc.oftc.net
-  port 6667
+  port 6697
   ~~~
 
 + [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en): Enter a free nickname and join the channel #siduction-en.
@@ -119,7 +119,7 @@ First, make sure that weechat is installed by looking for the weechat entry in t
 $ weechat-curses
 ~~~
 
-Now you can connect to irc.oftc.net on port 6667. After successful connection, the pseudonym (the "nickname") will be changed:
+Now you can connect to irc.oftc.net on port 6697. After successful connection, the pseudonym (the "nickname") will be changed:
 
 **/nick 'Your_new_nick'**.
 
@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2023/11/06</div>
+<div id="rev">Last edited: 2024/04/23</div>
