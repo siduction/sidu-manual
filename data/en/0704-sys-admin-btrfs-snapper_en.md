@@ -192,25 +192,26 @@ Please read the man pages **`man snapper`** and **`man snapper-configs`**.
 
 ### Snapper configuration
 
-Snapper requires a configuration file for each subvolume that will contain snapshots. siduction automatically creates the `/etc/snapper/configs/root` configuration file for the `@` subvolume during installation. For the other subvolumes, we need to create configurations ourselves if needed, following the pattern below.
+Snapper works together with systemd. Some settings regarding the handling of automatic snapshots are hidden in the associated systemd units. The chapter ["Snapper and systemd"](0704-sys-admin-btrfs-snapper_en.md#snapper-and-systemd) explains the functions and gives hints for their adjustment.
+
+Siduction automatically creates the configurations for the @ and @home subvolumes during installation. For the other sub-volumes, we must create configurations ourselves as required according to the following pattern.
 
 ~~~
 # snapper -c <config_name> create-config -t <config_template> <subvolume_mount_point>
 ~~~
 
-But before we do that, let's take a look at the default configuration and see which settings make sense.  
-The following list shows the configuration for subvolume `@` with the name `root`, the values of the default template `default`, and the values of the `user` template which we will create later:
+But first let's take a look at the configuration for the subvolume `@` with the name `root`, `@home` with the name `home`, and the default template `default` supplied by snapper.
 
 ~~~
 Snapper configuration
 -----------------------+-------+-------+-------+
-Subvolume              |   @   |  --   |  --   |
+Subvolume              |   @   | @home |  --   |
 -----------------------+-------+-------+-------+
-conf-name or templ-name| root  |default| user  |
+conf-name or templ-name| root  | home  |default|
 =======================+=======+=======+=======+
 Key                    | Value | Value | Value |
 -----------------------+-------+-------+-------+
-ALLOW_GROUPS           | users |       | users |
+ALLOW_GROUPS           | users | users |       |
 ALLOW_USERS            |       |       |       |
 BACKGROUND_COMPARISON  | yes   | yes   | yes   |
 EMPTY_PRE_POST_CLEANUP | yes   | yes   | yes   |
@@ -218,48 +219,44 @@ EMPTY_PRE_POST_MIN_AGE | 1800  | 1800  | 1800  |
 FREE_LIMIT             | 0.2   | 0.2   | 0.2   |
 FSTYPE                 | btrfs | btrfs | btrfs |
 NUMBER_CLEANUP         | yes   | yes   | yes   |
-NUMBER_LIMIT           | 50    | 50    | 5     |
-NUMBER_LIMIT_IMPORTANT | 10    | 10    | 2     |
+NUMBER_LIMIT           | 50    | 50    | 50    |
+NUMBER_LIMIT_IMPORTANT | 10    | 10    | 10    |
 NUMBER_MIN_AGE         | 1800  | 1800  | 1800  |
 QGROUP                 |       |       |       |
 SPACE_LIMIT            | 0.5   | 0.5   | 0.5   |
-SUBVOLUME              | /     | /     | /     |
-SYNC_ACL               | yes   | yes   | yes   |
+SUBVOLUME              | /     | /home | /     |
+SYNC_ACL               | yes   | yes   | no    |
 TIMELINE_CLEANUP       | yes   | yes   | yes   |
-TIMELINE_CREATE        | no    | yes   | yes   |
-TIMELINE_LIMIT_DAILY   | 10    | 10    | 2     |
+TIMELINE_CREATE        | no    | no    | yes   |
+TIMELINE_LIMIT_DAILY   | 10    | 10    | 10    |
 TIMELINE_LIMIT_HOURLY  | 10    | 10    | 10    |
-TIMELINE_LIMIT_MONTHLY | 10    | 10    | 0     |
-TIMELINE_LIMIT_WEEKLY  | 0     | 0     | 1     |
-TIMELINE_LIMIT_YEARLY  | 10    | 10    | 0     |
+TIMELINE_LIMIT_MONTHLY | 10    | 10    | 10    |
+TIMELINE_LIMIT_WEEKLY  | 0     | 0     | 0     |
+TIMELINE_LIMIT_YEARLY  | 10    | 10    | 10    |
 TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  |
+-----------------------+-------+-------+-------+
 ~~~
 
-Snapper works together with systemd. Some settings regarding the handling of automatic snapshots are hidden in the associated systemd units. The chapter ["Snapper and systemd"](0704-sys-admin-btrfs-snapper_en.md#snapper-and-systemd) explains the functions and gives hints for their adjustment.
+A *"pre ‘* and *’post ”* snapshot is created from the `@` subvolume for each APT action. The key `NUMBER_LIMIT=50` ensures that the most recent twenty-five snapshot pairs are retained.
 
-For each APT action, the **Apt snapshot** *"pre "* and *"post "* are created. The key `NUMBER_LIMIT=50` causes the most recent twenty-five snapshot pairs to be preserved.
+siduction has set the keys `ALLOW_GROUPS=users` and `TIMELINE_CREATE=no`.  
+The former allows all members of the *users* group to perform Snapper actions, the latter prevents an excessive increase in the number of snapshots held.
 
-Snapper automatically creates **timeline snapshot** if the `TIMELINE_CREATE=yes` key is set in the configuration files. The systemd unit `snapper-timeline.timer` activates the associated service unit every hour. According to the *default* configuration, Snapper keeps at least ten `HOURLY`, `DAILY`, `MONTHLY`, and `YEARLY` snapshots each.
+We can also change individual *key=value* pairs on the command line. In the example, we reduce the number of numbered snapshots held in the `root` configuration.
 
-This adds up the held snapshots considerably. The *Kept snapshots 1* table takes into account the *default* configuration for the `@home` subvolume and the *root* configuration for `@` with one dist-upgrade a day.
+~~~
+# snapper -c root set-config NUMBER_LIMIT=20
+~~~
 
-Kept snapshots 1
+Now the most recent ten instead of twenty-five pre- and post-snapshot pairs remain after APT actions. For standard use on a laptop or PC, this value should be sufficient.
 
-| subvolume | @ |home |
-| :----------------| :-----: | :-----: |
-| on 1st day     |  2 | max. 24 |
-| after 1 day    |  2 | 10 + max. 24 |
-| after 5 days   | 10 | 15 + max. 24 |
-| after 1 week   | 14 | 17 + max. 24 |
-| after 1 month  | 50 | 21 + max. 24 |
-| after 6 months | 50 | 26 + max. 24 |
-| after 1 year   | 50 | 30 + max. 24 |
-| after 10 years | 50 | 40 + max. 24 |
+If you take into account the Snapper *default* configuration with an active *TIMELINE_CREATE* key and an APT action every day, the snapshots add up to almost 100 within a month. In addition, the very first *timeline snapshot* has been floating around in our file system for at least ten years, believe it or not. Who wants to reset their production system to this snapshot and keep all the data for that long?  
+Please note: Snapper and snapshots are not a means of data backup. They enable the system to be reset promptly in the event of errors occurring or actions initiated by us that have had unintended effects.
 
-*"+ max 24"* describes the number of *HOURLY Timeline Snapshot* created before `snapper-cleanup.timer` is activated. The very first *Timeline Snapshot* vagabonds for at least ten years and one day in our file system. Who would want to reset their production system to this snapshot and keep all the data for so long?  
-Note: Snapper and snapshots are not a means of backing up data. They enable a prompt system reset in case of occurring errors or actions with unintended effects triggered by us.
+At this point, every siduction user should consider how many snapshots they want to keep and for how long and adjust the configuration accordingly.
 
-For these reasons we generate a new configuration template from the file `/usr/share/snapper/config-templates/default` with the values of the *"user"* column from the table *"Snapper Configuration"* shown above and save it under the name `user` in same folder. Then we create the configuration for our subvolume `@data`.
+This is also possible with your own configuration template. For example, for the *@data* subvolume created in the *Btrfs* chapter.  
+To do this, we copy the file `/usr/share/snapper/config-templates/default` into the same directory with the new name `user` and then change the key-value pairs as required. We use this template to create the configuration for our `@data` subvolume.
 
 ~~~
 # snapper -c data_pr create-config -t user /data
@@ -271,32 +268,7 @@ This:
 2. creates the `/data/.snapshots` subvolume where future snapshots of `@data` will be stored. The path of a snapshot is `/data/.snapshots/#/snapshot`, where # is the snapshot number.  
 3. adds the name of the `data_pr` configuration to the key *"SNAPPER_CONFIGS"* in the `/etc/default/snapper` file.
 
-Now the configuration is active. If, as in our example, the key `TIMELINE_CREATE=yes` is set, systemd takes over the regular creation of *"timeline snapshots"* through its timers.  
-We compare the held snapshots once more.
-
-Kept snapshots 2
-
-| Subvolumen | @ | @home | @data |
-| :----------------| :-----: | :-----: | :-----: |
-| on 1st day     |  2  | max. 24 | max. 24 |
-| after 1 day    |  2  | 10 + max. 24 | 2 + max. 24 |
-| after 5 days   | 10  | 15 + max. 24 | 2 + max. 24 |
-| after 1 week   | 14  | 17 + max. 24 | 3 + max. 24 |
-| after 1 month  | 50  | 21 + max. 24 | 3 + max. 24 |
-| after 6 months | 50  | 26 + max. 24 | 3 + max. 24 |
-| after 1 year   | 50  | 30 + max. 24 | 3 + max. 24 |
-| after 10 years | 50  | 40 + max. 24 | 3 + max. 24 |
-
-After one week, the subvolume `@data` constantly keeps one weekly snapshot, two daily snapshots of the previous day, and up to twenty-four snapshots of the current day. If you think that the maximum of twenty-four daily snapshots is too much, please have a look at the following chapter *Snapper and systemd*.
-
-We can also change individual *key=value* pairs on the command line. In the example we reduce the number of held numbered snapshot in the `root` configuration.
-
-~~~
-# snapper -c root set-config NUMBER_LIMIT=20
-~~~
-
-Now the most recent ten instead of twenty-five pre- and post-snapshot pairs remain after APT actions. For standard use on a laptop or PC, this value should be sufficient.  
-At this point, every siduction user should weigh up how many snapshots they want to keep and for how long, and adjust the configuration accordingly. 
+Now the configuration is active. If the key `TIMELINE_CREATE=yes` is set, systemd takes over the regular creation of *"timeline snapshots"* through its timers.
 
 ### Snapper and systemd
 
@@ -470,14 +442,14 @@ The **`snapper list`** command shows that we are currently in snapshot 12 and sn
 13 |pre   |     |11:34:41|root |number |apt            |
 14 |post  |   13|11:35:56|root |number |apt            |
 15 |single|     |12:05:23|root |number |rollback backup|
-16+|single|     |12:05:23|root |       |r/W copy of #13|
+16+|single|     |12:05:23|root |       |r/w copy of #13|
 ~~~
 
 We perform a reboot and select the Grub default entry. Now the `*` after #16 indicates that we are in this snapshot and it is the default subvolume.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup| Description   |
-16*|single|     |12:05:23|root |       |r/W copy of #13|
+16*|single|     |12:05:23|root |       |r/w copy of #13|
 ~~~
 
 The Grub menu file is also updated automatically in the rollback target and Grub is reinstalled from snapshot #16. From now on, Grub reads the menu file from the new default subvolume #16.
@@ -669,4 +641,4 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 + [Snapper project page](http://snapper.io/)  
 + [Snapper on GitHub](https://github.com/openSUSE/snapper)
 
-<div id="rev">Last edited: 2024-04-21</div>
+<div id="rev">Last edited: 2024-04-30</div>
