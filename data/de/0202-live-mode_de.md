@@ -77,16 +77,16 @@ Voraussetzung ist ein root-Terminal,
 
 ~~~
 apt update
-apt install <das-gewünschtes-paket>
+apt install <das-gewünschte-paket>
 ~~~
 
 oder ein vorangestelltes `sudo` vor die Befehle.
 
 ~~~
 sudo apt update
-sudo apt install <das-gewünschtes-paket>
+sudo apt install <das-gewünschte-paket>
 ~~~
 
-Allerdings gilt: Wenn Du die Live-Medium herunterfährst, werden keine Änderungen behalten.
+Allerdings gilt: Wenn Du die Live-Sitzung herunterfährst, werden keine Änderungen behalten.
 
-<div id="rev">Zuletzt bearbeitet: 2023-11-10</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-25</div>
