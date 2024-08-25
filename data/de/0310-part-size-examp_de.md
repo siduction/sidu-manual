@@ -30,21 +30,18 @@ Die Mindestanforderungen für den sinnvollen Gebrauch einer siduction Installati
 
 Davon abweichend empfehlen wir mindestens 20 GB Speicherplatz bei einer Installation in das Dateisystem **Btrfs** und der Verwendung von `snapper`. 50 GB oder mehr, sind sinnvoll, wenn Sie siduction auf **Btrfs** über einen längeren Zeitraum nutzen wollen und viele Schnappschüsse gehalten werden.
 
-> **Bitte beachten**  
-> siduction unterstützt keine separate Boot-Partition bei Verwendung des Btrfs Dateisystems. 
-
 ### Beispiele mit verschiedenen Plattengrößen
 
 Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiele sollten einen ersten Einblick bieten. Sie beziehen sich auf Partitionstabellen vom Typ *"GPT"*. Die erste Partition auf der ersten Festplatte ist für den Bootvorgang zwingend notwendig.
 
 **Laptop mit 8 GB RAM, Linux allein**  
-**120 GB Festplatte:**
+**250 GB Festplatte:**
 
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
-| 2 | 25 GB | ext4 | / |
-| 3 | 85 GB | ext4 | Daten |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
+| 2 | 40 GB | ext4 | / |
+| 3 | 200 GB | ext4 | Daten |
 | 4 | 10 GB | Linux Swap | Linux Swap |
 
 **Desktop PC, Linux allein**  
@@ -52,9 +49,9 @@ Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiel
 
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
-| 2 | 30 GB | ext4 | / |
-| 3 | 466 GB | ext4 | Daten |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
+| 2 | 40 GB | ext4 | / |
+| 3 | 456 GB | ext4 | Daten |
 | 4 | 4 GB | Linux Swap | Linux Swap |
 
 **Desktop PC, Linux allein**  
@@ -62,19 +59,9 @@ Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiel
 
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
 | 2 | 496 GB | Btrfs | / |
 | 3 | 4 GB | Linux Swap | Linux Swap |
-
-**Desktop PC, Linux allein**  
-**160 GB Festplatte:**
-
-| Partition | Größe | Dateisystem | Verwendung |
-| :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
-| 2 | 26 GB | ext4 | / |
-| 3 | 130 GB | ext4 | Daten |
-| 4 | 4 GB | Linux Swap | Linux Swap |
 
 Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden. Die ersten vier Partitionen unserer Beispiele sollen direkt aufeinander folgend am Anfang der Festplatte liegen. Danach folgen die Partitionen für Linux und gemeinsam genutzte Daten.
 
@@ -85,38 +72,25 @@ Siehe auch [Microsoft: UEFI/GPT Partitionierung, Windows 11](https://learn.micro
 
 | Partition | Größe | Dateisystem | Verwendung |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
 | 2 | 16 MB | ohne | Windows MSR |
 | 3 | 50 GB | NTFS | Windows System |
 | 4 | 1 GB | NTFS | Windows Recovery |
-| 5 | 415 GB | NTFS | Daten für Windows und Linux |
+| 5 | 415 GB | exFAT | Daten für Windows und Linux |
 | 6 | 30 GB | ext4 | / (Linux System) |
 | 7 | 500 GB | ext4 | Daten für Linux |
 | 8 | 4 GB | Linux Swap | Linux Swap |
-
-**Desktop PC, Dual-Boot (MS Windows und Linux)**  
-**120 GB Festplatte:**
-
-| Partition | Größe | Dateisystem | Verwendung |
-| :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
-| 2 | 16 MB | ohne | Windows MSR |
-| 3 | 40 GB | NTFS | Windows System |
-| 4 | 1 GB | NTFS | Windows Recovery |
-| 5 | 47 GB | NTFS | Daten für MS Windows und Linux |
-| 6 | 30 GB | ext4 | / (Linux System) |
-| 7 | 2 GB | Linux Swap | Linux Swap |
 
 **Laptop mit 32 GB RAM, Dual-Boot mit MS Windows und Linux**  
 **1 TB Festplatte:**
 
 | Partition | Size | Filesystem | Verwendung |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
 | 2 | 16 MB | ohne | Windows MSR |
 | 3 | 50 GB | NTFS | Windows System |
 | 4 | 1 GB | NTFS | Windows Recovery |
-| 5 | 499 GB | NTFS | Daten für MS Windows und Linux |
+| 5 | 499 GB | exFAT | Daten für MS Windows und Linux |
 | 6 | 30 GB | ext4 | / (Linux System) |
 | 7 | 380 GB | ext4 | Daten für Linux |
 | 8 | 40 GB | Linux Swap | Linux Swap |
@@ -194,4 +168,4 @@ Für weitere Partitionierungsoptionen siehe:
 
 + [Partitionieren mit  GPT](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zur Unterstützung von UEFI 
 
-<div id="rev">Zuletzt bearbeitet: 2023-12-31</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-25</div>

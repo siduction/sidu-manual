@@ -30,21 +30,18 @@ The minimum requirements for the reasonable use of a siduction installation are:
 
 Otherwise, we recommend at least 20 GB of disk space when installing to the **Btrfs** file system and using `snapper`. 50 GB or more is useful if you want to use siduction on **Btrfs** for a longer period of time and many snapshots are kept.
 
-> **Please note**  
-> siduction does not support a separate boot partition when using the Btrfs file system. 
-
 ### Examples with different disk sizes
 
 There are several good ways to divide your plates. These examples should give a first insight. They refer to partition tables of the type *"GPT "*. The first partition on the first disk is mandatory for the boot process.
 
 **Laptop with 8 GB RAM, Linux only**  
-**120 GB hard disk**
+**250 GB hard disk**
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-System (ESP) |
-| 2 | 25 GB | ext4 | / |
-| 3 | 85 GB | ext4 | data |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
+| 2 | 40 GB | ext4 | / |
+| 3 | 200 GB | ext4 | data |
 | 4 | 10 GB | Linux Swap | Linux Swap |
 
 **Desktop, Linux only**  
@@ -52,9 +49,9 @@ There are several good ways to divide your plates. These examples should give a 
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI system (ESP) |
-| 2 | 30 GB | ext4 | / |
-| 3 | 466 GB | ext4 | data |
+| 1 | 300 MB | FAT16 | EFI system (ESP) |
+| 2 | 40 GB | ext4 | / |
+| 3 | 456 GB | ext4 | data |
 | 4 | 4 GB | Linux Swap | Linux swap |
 
 **Desktop, Linux only**  
@@ -62,19 +59,9 @@ There are several good ways to divide your plates. These examples should give a 
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI system (ESP) |
+| 1 | 300 MB | FAT16 | EFI system (ESP) |
 | 2 | 496 GB | btrfs | / |
 | 3 | 4 GB | Linux Swap | Linux swap |
-
-**Desktop, Linux only**  
-**160 GB hard disk**
-
-| Partition | Size | File system | Use |
-| :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI system (ESP) |
-| 2 | 26 GB | ext4 | / |
-| 3 | 130 GB | ext4 | data |
-| 4 | 4 GB | Linux Swap | Linux swap |
 
 If a dual boot with MS Windows&#8482; is created, MS Windows must always be installed as the first system onto the hard disk. The first four partitions of our examples should be located directly after each other at the beginning of the hard disk. After that, the partitions for Linux and shared data follow.
 
@@ -85,38 +72,25 @@ See also [Microsoft: UEFI/GPT partitioning, Windows 11](https://learn.microsoft.
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 MB | FAT32 | EFI-system (ESP) |
+| 1 | 300 MB | FAT32 | EFI-system (ESP) |
 | 2 | 16 MB | without | Windows MSR |
 | 3 | 50 GB | NTFS | Windows system |
 | 4 | 1 GB | NTFS | Windows RE |
-| 5 | 415 GB | NTFS | data for Windows and Linux |
+| 5 | 415 GB | exFAT | data for Windows and Linux |
 | 6 | 30 GB | ext4 | / (Linux root) |
 | 7 | 500 GB | ext4 | data for Linux |
 | 8 | 4 GB | Linux Swap | Linux Swap |
-
-**Desktop, dual-boot (MS Windows and Linux)**  
-**120 GB hard disk:**
-
-| Partition | Size | File system | Use |
-| :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI system (ESP) |
-| 2 | 16 MB | without | Windows MSR |
-| 3 | 40 GB | NTFS | Windows system |
-| 4 | 1 GB | NTFS | Windows RE |
-| 5 | 47 GB | NTFS | data for Windows and Linux |
-| 6 | 30 GB | ext4 | / (Linux root) |
-| 7 | 2 GB | Linux swap | Linux swap  |
 
 **Laptop with 32 GB RAM, dual boot (MS Windows and Linux)**  
 **1 TB hard disk:**
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 100 KB | FAT16 | EFI system (ESP) |
+| 1 | 300 MB | FAT16 | EFI system (ESP) |
 | 2 | 16 MB | without | Windows MSR |
 | 3 | 50 GB | NTFS | Windows system |
 | 4 | 1 GB | NTFS | Windows RE |
-| 5 | 499 GB | NTFS | data for Windows and Linux |
+| 5 | 499 GB | exFAT | data for Windows and Linux |
 | 6 | 30 GB | ext4 | / (Linux root) |
 | 7 | 380 GB | ext4 | data for Linux |
 | 8 | 40 GB | Linux swap | Linux swap |
@@ -190,4 +164,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2023-12-31</div>
+<div id="rev">Last edited: 2024-08-25</div>
