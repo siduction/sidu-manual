@@ -15,7 +15,7 @@ Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits syste
 ### Konzeption des systemd
 
 Systemd stellt ein Abhängigkeitssystem zwischen verschiedenen Einheiten namens *"Units"* in 11 verschiedenen Typen (siehe unten) bereit. Units kapseln verschiedene Objekte, die für den Systemstart und -betrieb relevant sind.  
-Units können *"aktiv"* oder *"inaktiv"*, sowie im Prozess der *"Aktivierung"* oder *"Deaktivierung"*, d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand *"fehlgeschlagen"* ist auch verfügbar, der sehr ähnlich zu inaktiv ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](0717-systemd-journald_de.md#systemjournal).  
+Units können *"aktiv"* oder *"inaktiv"*, sowie im Prozess der *"Aktivierung"* oder *"Deaktivierung"*, d.h. zwischen den zwei erstgenannten Zuständen sein. Ein besonderer Zustand *"fehlgeschlagen"* ist auch verfügbar, der sehr ähnlich zu inaktiv ist. Falls dieser Zustand erreicht wird, wird die Ursache für spätere Einsichtnahme protokolliert. Siehe die Handbuchseite [Sytemd-Journal](0720-systemd-journald_de.md#systemjournal).  
 Mit systemd können viele Prozesse parallel gesteuert werden, da die Unit-Dateien mögliche Abhängigkeiten deklarieren und systemd erforderliche Abhängigkeiten automatisch hinzugefügt.
 
 Die von systemd verwalteten Units werden mittels Unit-Dateien konfiguriert.  
@@ -136,4 +136,4 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 [Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
 [Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Seite zuletzt aktualisiert 2024-08-30</div>

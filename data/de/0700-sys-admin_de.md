@@ -36,6 +36,6 @@ Dieser Abschnitt beinhaltet Informationen und Hinweise zur/zum
 
     + [systemd-timer Unit](0716-systemd-timer_de.md#systemd-timer), die benötigten Dateien, die Optionen der timer-Unit, timer-Unit anlegen und eingliedern, timer-Unit als cron Ersatz.
 
-+ [Systemjournal](0717-systemd-journald_de.md#systemjournal), der journald lokal und über das Netzwerk, journald konfigurieren, Abfrage des systemd-Journals mit journalctl, die Ausgaben filtern und steuern, Beispiele um journalctl zu beherrschen.
++ [Systemjournal](0720-systemd-journald_de.md#systemjournal), der journald lokal und über das Netzwerk, journald konfigurieren, Abfrage des systemd-Journals mit journalctl, die Ausgaben filtern und steuern, Beispiele um journalctl zu beherrschen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-12-21</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-30</div>

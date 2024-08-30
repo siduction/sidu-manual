@@ -49,7 +49,7 @@ There are several good ways to divide your plates. These examples should give a 
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 300 MB | FAT16 | EFI system (ESP) |
+| 1 | 300 MB | FAT32 | EFI system (ESP) |
 | 2 | 40 GB | ext4 | / |
 | 3 | 456 GB | ext4 | data |
 | 4 | 4 GB | Linux Swap | Linux swap |
@@ -59,9 +59,19 @@ There are several good ways to divide your plates. These examples should give a 
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 300 MB | FAT16 | EFI system (ESP) |
+| 1 | 300 MB | FAT32 | EFI system (ESP) |
 | 2 | 496 GB | btrfs | / |
 | 3 | 4 GB | Linux Swap | Linux swap |
+
+**Desktop PC, Linux allein**  
+**500 GB hard disk with Btrfs snapshot and systemd-boot:**
+
+| Partition | Size | File system | Use |
+| :----: | ----: | :----: | :----: |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
+| 2 | 495 GB | Btrfs | / |
+| 3 | 1 GB | ext4 | XBOOLDR |
+| 4 | 4 GB | Linux Swap | Linux Swap |
 
 If a dual boot with MS Windows&#8482; is created, MS Windows must always be installed as the first system onto the hard disk. The first four partitions of our examples should be located directly after each other at the beginning of the hard disk. After that, the partitions for Linux and shared data follow.
 
@@ -86,7 +96,7 @@ See also [Microsoft: UEFI/GPT partitioning, Windows 11](https://learn.microsoft.
 
 | Partition | Size | File system | Use |
 | :----: | ----: | :----: | :----: |
-| 1 | 300 MB | FAT16 | EFI system (ESP) |
+| 1 | 300 MB | FAT32 | EFI system (ESP) |
 | 2 | 16 MB | without | Windows MSR |
 | 3 | 50 GB | NTFS | Windows system |
 | 4 | 1 GB | NTFS | Windows RE |
@@ -164,4 +174,4 @@ For more partitioning options see:
 
 + partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
 
-<div id="rev">Last edited: 2024-08-25</div>
+<div id="rev">Last edited: 2024-08-29</div>

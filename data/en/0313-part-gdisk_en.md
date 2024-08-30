@@ -205,16 +205,23 @@ If a bootable volume is to be created with GPT, there are two ways to create the
 
 These possibilities are:
 
-+ The computer (the mainboard) has a UEFI and UEFI shall be used to boot the GPT medium.
++ The computer (the mainboard) has a UEFI and UEFI shall be used to boot the GPT medium. An *"EFI System"* partition formatted with FAT32 (gdisk type "EF00") is required as the first partition on the medium.
 
 or
 
 + The computer (mainboard) has **no** UEFI but a BIOS. The BIOS should boot the GPT medium. (All mainboards before 2009 do not have UEFI.)
 
-**Booting with UEFI**
+**Booting with UEFI and the boot loader GRUB**
 
-If UEFI is to be used for booting, an *"EFI System"* partition (type "ef00" ) formatted with FAT32 must be created as the first partition and mounted under`/boot/efi`. This partition contains the boot loader(s).  
+If UEFI is to be used for booting, an *"EFI System"* partition (type "EF00" ) formatted with FAT32 must be created as the first partition and mounted under`/boot/efi`. This partition contains the boot loader(s).  
 The boot loader of siduction is stored in the directory `/boot/efi/EFI/siduction/`.
+
+**Booting with UEFI and the boot loader systemd-boot**
+
+For systemd-boot, an additional *XBOOTLDR* partition of at least 1 GB (gdisk type "EA00") should be created somewhere on the same medium.  
+The *"EFI System"* partition must be mounted for systemd-boot under`/efi`  
+and the *XBOOTLDR* partition under`/boot`.
+See also the [systemd-boot manual page](0717-systemd-boot_en.md#systemd-boot).
 
 **Booting with BIOS**
 
@@ -285,4 +292,4 @@ This menu allows low-level editing such as changing the partition GUID or the di
 
 Despite all this: the options of the menus *"recovery & transformation"* and *"experts"* should only be used if you are very familiar with GPT. As a "non-expert", you should only use these menus if a disk is damaged. Before any drastic action, the option **`b`** in the main menu should be used to create a backup copy in a file and save it on a separate medium. This will allow the original configuration to be restored if the action does not go as desired.
 
-<div id="rev">Last edited: 2023-11-08</div>
+<div id="rev">Last edited: 2024/08/30</div>

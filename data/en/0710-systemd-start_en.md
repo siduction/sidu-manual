@@ -15,7 +15,7 @@ siduction has been using systemd as default init system since release 2013.2 "De
 ### Concept of systemd
 
 Systemd provides a dependency system between different *"units"* of 11 different types (see below). Units encapsulate various objects relevant to system startup and operation.  
-Units can be *"active"* or *"inactive"*, as well as in the process of *"activation"* or *"deactivation"*, i.e. between the two former states. A special state *"failed"*, which is very similar to *"inactive"*, is also available. When this state is reached, the cause is logged for later inspection. See the manual page [systemd-journal](0717-systemd-journald_en.md#system-journal).  
+Units can be *"active"* or *"inactive"*, as well as in the process of *"activation"* or *"deactivation"*, i.e. between the two former states. A special state *"failed"*, which is very similar to *"inactive"*, is also available. When this state is reached, the cause is logged for later inspection. See the manual page [systemd-journal](0720-systemd-journald_en.md#system-journal).  
 With systemd, many processes can be controlled in parallel because the unit files declare possible dependencies and systemd adds required dependencies automatically.
 
 The units managed by systemd are configured using unit files.  
@@ -138,4 +138,4 @@ man systemd.unit
 man systemd.syntax
 ~~~
 
-<div id="rev">Last edited: 2022/04/08</div>
+<div id="rev">Last edited: 2024/08/30</div>

@@ -43,6 +43,6 @@ Standardmäßig gibt fw-detect nur Informationen über Module aus, die allem Ans
 - **siduction-btrfs**  
   *Überprüft und aktualisiert das Bootmenü*
 
-  *siduction-btrfs* ist eine Zusammenstellung von Skripten und systemd Units, die auf einer Installation in das Btrfs Dateisystem aktiv wird. Nach einem Snapshot oder Rollback wird das Bootmenü überprüft und gegebenenfalls aktualisiert. *siduction-btrfs* arbeitet im Hintergrund ohne Benutzereingaben.
+  *siduction-btrfs* ist eine Zusammenstellung von Skripten und systemd Units, die auf einer Installation in das Btrfs Dateisystem aktiv wird. Nach einem Snapshot oder Rollback wird das Bootmenü überprüft und gegebenenfalls aktualisiert. *siduction-btrfs* arbeitet im Hintergrund ohne Benutzereingaben. Ab Version 0.2.0-5 unterstützt *siduction-btrfs* auch den Bootmanager *systemd-boot* und generiert Booteinträge nach einem Rollback für das Rollbackziel. Mehr Informationen finden sich in unserer [Handbuchseite zu systemd-boot](0717-systemd-boot_de.md#systemd-boot).
 
-<div id="rev">Zuletzt bearbeitet: 2023-12-08</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-30</div>

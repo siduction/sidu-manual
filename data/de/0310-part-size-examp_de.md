@@ -63,6 +63,16 @@ Es gibt sehr viele gute Möglichkeiten seine Platten aufzuteilen. Diese Beispiel
 | 2 | 496 GB | Btrfs | / |
 | 3 | 4 GB | Linux Swap | Linux Swap |
 
+**Desktop PC, Linux allein**  
+**500 GB Festplatte mit Btrfs-Snapshot und systemd-boot:**
+
+| Partition | Größe | Dateisystem | Verwendung |
+| :----: | ----: | :----: | :----: |
+| 1 | 300 MB | FAT32 | EFI-System (ESP) |
+| 2 | 495 GB | Btrfs | / |
+| 3 | 1 GB | ext4 | XBOOLDR |
+| 4 | 4 GB | Linux Swap | Linux Swap |
+
 Falls ein Dual-Boot mit MS Windows&#8482; angelegt wird, muss MS Windows immer als erstes System auf die Festplatte installiert werden. Die ersten vier Partitionen unserer Beispiele sollen direkt aufeinander folgend am Anfang der Festplatte liegen. Danach folgen die Partitionen für Linux und gemeinsam genutzte Daten.
 
 Siehe auch [Microsoft: UEFI/GPT Partitionierung, Windows 11](https://learn.microsoft.com/de-de/windows-hardware/manufacture/desktop/configure-uefigpt-based-hard-drive-partitions?view=windows-11).
@@ -168,4 +178,4 @@ Für weitere Partitionierungsoptionen siehe:
 
 + [Partitionieren mit  GPT](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zur Unterstützung von UEFI 
 
-<div id="rev">Zuletzt bearbeitet: 2024-08-25</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-29</div>

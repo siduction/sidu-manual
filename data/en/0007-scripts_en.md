@@ -43,6 +43,6 @@ By default it will only output information about any modules which appear to req
 - **siduction-btrfs**  
   *Checks and updates the boot menu*
 
-  *siduction-btrfs* is a compilation of scripts and systemd units that become active on an installation in the Btrfs file system. After a snapshot or rollback, the boot menu is checked and updated if necessary. *siduction-btrfs* works in the background without user input.
+  *siduction-btrfs* is a compilation of scripts and systemd units that become active on an installation in the Btrfs file system. After a snapshot or rollback, the boot menu is checked and updated if necessary. *siduction-btrfs* works in the background without user input. As of version 0.2.0-5, *siduction-btrfs* also supports the boot manager *systemd-boot* and generates boot entries after a rollback for the rollback target. More information can be found in our [systemd-boot manual page](0717-systemd-boot_en.md#systemd-boot).
 
-<div id="rev">Last edited: 2023/12/08</div>
+<div id="rev">Last edited: 2024/08/30</div>

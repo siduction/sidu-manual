@@ -205,16 +205,23 @@ Falls ein bootbarer Datenträger mit GPT erstellt werden soll, gibt es zwei Mög
 
 Diese Möglichkeiten sind:
 
-+ Der Computer (das Mainboard) besitzt ein UEFI und UEFI soll zum Booten des GPT-Datenträgers verwendet werden.
++ Der Computer (das Mainboard) besitzt ein UEFI und UEFI soll zum Booten des GPT-Datenträgers verwendet werden. Notwendig ist eine mit FAT32 formatierte *"EFI System"*-Partition (gdisk Typ "EF00") als erste Partition auf dem Medium.
 
 oder
 
 + Der Computer (das Mainboard) hat **kein** UEFI sondern ein BIOS. Das BIOS soll den GPT-Datenträgers booten. (Alle Mainboard vor 2009 haben kein UEFI)
 
-**Booten mit UEFI**
+**Booten mit UEFI und dem Bootloader GRUB**
 
-Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT32 formatierte *"EFI System"*-Partition (Typ "ef00" ) als erste Partition erstellt und unter`/boot/efi` eingebunden werden. Diese Partition enthält den/die Bootloader.  
+Die *"EFI System"*-Partition muss für GRUB unter`/boot/efi` eingebunden werden. Diese Partition enthält den/die Bootloader.  
 Der Bootloader von siduction wird im Verzeichnis `/boot/efi/EFI/siduction/` gespeichert.
+
+**Booten mit UEFI und dem Bootloader systemd-boot**
+
+Für systemd-boot sollte zusätzlich eine mindestens 1 GB große *XBOOTLDR* Partition (gdisk Typ "EA00") irgendwo auf dem gleichen Medium erstellt werden.  
+Die *"EFI System"*-Partition muss für systemd-boot unter`/efi`  
+und die *XBOOTLDR* Partition unter`/boot` eingebunden werden.
+Siehe auch die [Handbuchseite zu systemd-boot](0717-systemd-boot_de.md#systemd-boot).
 
 **Booten mit BIOS**
 
@@ -285,4 +292,4 @@ Dieses Menü ermöglicht Low-Level-Bearbeitung wie Änderung der Partitions GUID
 
 Trotz alledem: die Optionen der Menüs *"recovery & transformation"*  und *"experts"*  sollten nur benutzt werden, wenn man sich sehr gut mit GPT auskennt. Als "Nicht-Experte" sollte man diese Menüs nur verwenden, wenn ein Datenträger beschädigt ist. Vor jeder drastischen Aktion sollte die Option **`b`**  im Hauptmenü verwendet werden, um eine Sicherungskopie in einer Datei anzulegen und diese auf einem separaten Datenträger speichern. Dadurch kann die originale Konfiguration wieder hergestellt werden, falls die Aktion nicht nach Wunsch läuft.
 
-<div id="rev">Zuletzt bearbeitet: 2023-11-08</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-30</div>
