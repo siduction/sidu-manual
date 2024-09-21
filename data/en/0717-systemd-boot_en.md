@@ -60,7 +60,7 @@ The instructions are based on the standard installation of *siduction* with an E
 To switch to sd-boot, only the two packages `systemd-boot` and `systemd-boot-efi` are required.  
 But be careful, first some work on the system is necessary.
 
-#### System preparation
+### System preparation
 
 **Partitioning**
 
@@ -173,8 +173,8 @@ Once the preparations have been completed and the result has been checked, e.g. 
 Copied "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" to "/efi/EFI/systemd/systemd-bootx64.efi".
 Copied "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" to "/efi/EFI/BOOT/BOOTX64.EFI".
 Created "/boot/e5cc6ff820c1450c93a29d8723c78cd1".
-⚠️ Mount point '/efi' which backs the random seed file is world accessible, which is a security hole! ⚠️
-⚠️ Random seed file '/efi/loader/random-seed' is world accessible, which is a security hole! ⚠️
+! Mount point '/efi' which backs the random seed file is world accessible, which is a security hole!
+! Random seed file '/efi/loader/random-seed' is world accessible, which is a security hole!
 Random seed file /efi/loader/random-seed successfully installed (32 bytes).
 Created EFI boot entry "Linux Boot Manager".
 ~~~
@@ -333,4 +333,4 @@ With the *siduction-btrfs* package, siduction is able to create menu entries for
 [boot_loader_specification](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [File system driver by akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Last edited: 2024/09/13</div>
+<div id="rev">Last edited: 2024/09/21</div>

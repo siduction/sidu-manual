@@ -310,7 +310,9 @@ create the boot sector of a GPT volume.</p>
 <p>These possibilities are:</p>
 <ul>
 <li>The computer (the mainboard) has a UEFI and UEFI shall be used to
-boot the GPT medium.</li>
+boot the GPT medium. An <em>“EFI System”</em> partition formatted with
+FAT32 (gdisk type “EF00”) is required as the first partition on the
+medium.</li>
 </ul>
 <p>or</p>
 <ul>
@@ -318,13 +320,23 @@ boot the GPT medium.</li>
 The BIOS should boot the GPT medium. (All mainboards before 2009 do not
 have UEFI.)</li>
 </ul>
-<p><strong>Booting with UEFI</strong></p>
+<p><strong>Booting with UEFI and the boot loader GRUB</strong></p>
 <p>If UEFI is to be used for booting, an <em>“EFI System”</em> partition
-(type “ef00” ) formatted with FAT32 must be created as the first
+(type “EF00” ) formatted with FAT32 must be created as the first
 partition and mounted under<code>/boot/efi</code>. This partition
 contains the boot loader(s).<br />
 The boot loader of siduction is stored in the directory
 <code>/boot/efi/EFI/siduction/</code>.</p>
+<p><strong>Booting with UEFI and the boot loader
+systemd-boot</strong></p>
+<p>For systemd-boot, an additional <em>XBOOTLDR</em> partition of at
+least 1 GB (gdisk type “EA00”) should be created somewhere on the same
+medium.<br />
+The <em>“EFI System”</em> partition must be mounted for systemd-boot
+under<code>/efi</code><br />
+and the <em>XBOOTLDR</em> partition under<code>/boot</code>. See also
+the <a href="./systemd-boot_en.html#systemd-boot">systemd-boot manual
+page</a>.</p>
 <p><strong>Booting with BIOS</strong></p>
 <p>If the system does not have a UEFI, the first partition must be a
 <em>“BIOS boot”</em> partition (type “ef02” ). Grub is written directly
@@ -405,7 +417,7 @@ create a backup copy in a file and save it on a separate medium. This
 will allow the original configuration to be restored if the action does
 not go as desired.</p>
 <div id="rev">
-Last edited: 2023-11-08
+Last edited: 2024/08/30
 </div>
 </body>
 </html>

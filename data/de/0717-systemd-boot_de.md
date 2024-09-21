@@ -18,13 +18,13 @@ siduction installiert den Bootmanager GRUB automatisch. Eine Auswahl von sd-boot
 
 **Funktionen von sd-boot:**
 
-- Von vollständig verschlüsselter Festplatte booten.  
-- Unterstützung für die XBOOTLDR Partition  
-- Laden von Drop-in-Treibern.  
-- Registrieren von SecureBoot-Schlüsseln.  
-- Erstellen eines Menüeintrages bei Installation neuer Kernel.  
-- Boot-Zählung  
-  In Zusammenhang mit gescheiterten Bootvorgängen kann der Booteintrag automatisch entfernt werden.  
+- Von vollständig verschlüsselter Festplatte booten.
+- Unterstützung für die XBOOTLDR Partition
+- Laden von Drop-in-Treibern.
+- Registrieren von SecureBoot-Schlüsseln.
+- Erstellen eines Menüeintrages bei Installation neuer Kernel.
+- Boot-Zählung
+  In Zusammenhang mit gescheiterten Bootvorgängen kann der Booteintrag automatisch entfernt werden.
 - Unterstützung für die Übergabe eines Zufallsseeds an das OS.  
   Es dient dem Schutz vor der Verwendung manipulierter OS-Images.
 
@@ -59,7 +59,7 @@ Die Anleitung basiert auf der Standardinstallation von *siduction* mit einer ESP
 Um zu sd-boot zu wechseln sind nur die zwei Pakete `systemd-boot` und `systemd-boot-efi` notwendig.  
 Doch Vorsicht, zuerst sind einige Arbeiten am System notwendig.
 
-#### Vorbereitung des Systems
+### Vorbereitung des Systems
 
 **Partitionierung**
 
@@ -172,8 +172,8 @@ Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit den Befehl
 Copied "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" to "/efi/EFI/systemd/systemd-bootx64.efi".
 Copied "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" to "/efi/EFI/BOOT/BOOTX64.EFI".
 Created "/boot/e5cc6ff820c1450c93a29d8723c78cd1".
-⚠️ Mount point '/efi' which backs the random seed file is world accessible, which is a security hole! ⚠️
-⚠️ Random seed file '/efi/loader/random-seed' is world accessible, which is a security hole! ⚠️
+! Mount point '/efi' which backs the random seed file is world accessible, which is a security hole!
+! Random seed file '/efi/loader/random-seed' is world accessible, which is a security hole!
 Random seed file /efi/loader/random-seed successfully installed (32 bytes).
 Created EFI boot entry "Linux Boot Manager".
 ~~~
@@ -334,4 +334,4 @@ siduction ist mit dem Paket *siduction-btrfs* in der Lage bei einem *Rollback* f
 [boot_loader_specification (en)](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [Dateisystem Treiber von akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Zuletzt bearbeitet: 2024-09-13</div>
+<div id="rev">Zuletzt bearbeitet: 2024-09-21</div>

@@ -36,6 +36,8 @@ This section contains informations and notes on
 
     + [systemd-timer unit](0716-systemd-timer_en.md#systemd-timer), the required files, the options of the timer unit, creating as well as including timer units, and timer units as cron replacement.
 
+    + [systemd-boot](0717-systemd-boot_en.md#systemd-boot), the boot manager of systemd. Special features, comparison with Grub, installation.
+
 + [systemd-journal](0720-systemd-journald_en.md#system-journal), using journald locally and over a network, configuring journald, querying the systemd journal with journalctl, filtering and controlling the output, examples to master journalctl.
 
-<div id="rev">Last edited: 2024/08/30</div>
+<div id="rev">Last edited: 2024/09/21</div>

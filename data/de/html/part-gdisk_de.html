@@ -332,7 +332,9 @@ erstellen.</p>
 <p>Diese M&ouml;glichkeiten sind:</p>
 <ul>
 <li>Der Computer (das Mainboard) besitzt ein UEFI und UEFI soll zum
-Booten des GPT-Datentr&auml;gers verwendet werden.</li>
+Booten des GPT-Datentr&auml;gers verwendet werden. Notwendig ist eine mit
+FAT32 formatierte <em>“EFI System”</em>-Partition (gdisk Typ “EF00”) als
+erste Partition auf dem Medium.</li>
 </ul>
 <p>oder</p>
 <ul>
@@ -340,13 +342,22 @@ Booten des GPT-Datentr&auml;gers verwendet werden.</li>
 ein BIOS. Das BIOS soll den GPT-Datentr&auml;gers booten. (Alle Mainboard vor
 2009 haben kein UEFI)</li>
 </ul>
-<p><strong>Booten mit UEFI</strong></p>
-<p>Wenn UEFI zum Booten verwendet werden soll, muss eine mit FAT32
-formatierte <em>“EFI System”</em>-Partition (Typ “ef00” ) als erste
-Partition erstellt und unter<code>/boot/efi</code> eingebunden werden.
-Diese Partition enth&auml;lt den/die Bootloader.<br />
+<p><strong>Booten mit UEFI und dem Bootloader GRUB</strong></p>
+<p>Die <em>“EFI System”</em>-Partition muss f&uuml;r GRUB
+unter<code>/boot/efi</code> eingebunden werden. Diese Partition enth&auml;lt
+den/die Bootloader.<br />
 Der Bootloader von siduction wird im Verzeichnis
 <code>/boot/efi/EFI/siduction/</code> gespeichert.</p>
+<p><strong>Booten mit UEFI und dem Bootloader systemd-boot</strong></p>
+<p>F&uuml;r systemd-boot sollte zus&auml;tzlich eine mindestens 1 GB gro&szlig;e
+<em>XBOOTLDR</em> Partition (gdisk Typ “EA00”) irgendwo auf dem gleichen
+Medium erstellt werden.<br />
+Die <em>“EFI System”</em>-Partition muss f&uuml;r systemd-boot
+unter<code>/efi</code><br />
+und die <em>XBOOTLDR</em> Partition unter<code>/boot</code> eingebunden
+werden. Siehe auch die <a
+href="./systemd-boot_de.html#systemd-boot">Handbuchseite zu
+systemd-boot</a>.</p>
 <p><strong>Booten mit BIOS</strong></p>
 <p>Falls das System kein UEFI besitzt, muss die erste eine
 <em>“BIOS-Boot”</em>-Partition (Typ “ef02” ) sein. Grub wird direkt in
@@ -433,7 +444,7 @@ Sicherungskopie in einer Datei anzulegen und diese auf einem separaten
 Datentr&auml;ger speichern. Dadurch kann die originale Konfiguration wieder
 hergestellt werden, falls die Aktion nicht nach Wunsch l&auml;uft.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2023-11-08
+Zuletzt bearbeitet: 2024-08-30
 </div>
 </body>
 </html>

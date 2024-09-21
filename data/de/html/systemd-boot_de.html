@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>systemd-boot</title>
+<style>
+body            {font-family: Verdana, sans-serif; margin: 0 auto; float: none; max-width: 55em; padding: 4%; color: black;}
+p, li           {line-height: 1.5;}
+p img           {width: 1.5em; height: auto; border: 0.1em solid #CCC;}
+p code, li code {display: inline; color: #000; padding: 0.1em; font-size: 1.2em;}
+p.warning       {display: block; line-height: 1.3em; padding: 0.4em; background: #FFDDDD; border: 0.15em solid #C33; border-radius: 0.5em;}
+p.warning code  {background: #FFDDDD; border: none;}
+code            {display: block; max-width: 100%; background-color: #EEE; padding: 0.3em; border: #CCC thin solid; border-radius: 3px; font-size: 1.2em;}
+pre             {color: #000; padding: 0.3em;}
+pre code        {display: block; overflow:auto; max-width: 100%; color: #000; padding-bottom: 0.8em;}
+li pre code     {padding: 0.3em 0.3em 0.8em 0.3em;}
+table, th, td   {background-color: #EED; border: #CCC thin solid; border-collapse: collapse; padding: 0.15em;}
+hr              {height: 0.2em; background-color: #CCC; border: 0; margin: 2em 0 2em 0;}
+figcaption      {font-size: 0.8em; color: #888;}
+figure img      {max-width: 85%; height: auto; border: 0.1em solid #CCC;}
+a               {color: black; text-decoration: underline;}
+a:visited       {color: #FF6600;}
+a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ease-in;}
+#rev            {float:right; font-size: 0.8em; color: #888;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">systemd-boot</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#systemd-boot" id="toc-systemd-boot">systemd-boot</a>
+<ul>
+<li><a href="#systemd-boot-installieren"
+id="toc-systemd-boot-installieren">systemd-boot installieren</a></li>
+<li><a href="#vorbereitung-des-systems"
+id="toc-vorbereitung-des-systems">Vorbereitung des Systems</a></li>
+<li><a href="#konfiguration"
+id="toc-konfiguration">Konfiguration</a></li>
+<li><a href="#grub-entfernen" id="toc-grub-entfernen">GRUB
+entfernen</a></li>
+<li><a href="#systemd-boot-und-btrfs"
+id="toc-systemd-boot-und-btrfs">systemd-boot und Btrfs</a></li>
+<li><a href="#weitere-informationen"
+id="toc-weitere-informationen">Weitere Informationen</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="systemd-boot">systemd-boot</h2>
+<p>Obwohl bereits vor mehr als zehn Jahren in systemd aufgenommen,
+findet man den Bootmanager systemd-boot (kurz sd-boot) auf Dektop
+Systemen selten. Entscheidet man sich bei einem passenden Setup und nach
+gr&uuml;ndlichen Tests f&uuml;r sd-boot, stellt der Umstieg f&uuml;r einen etwas
+ge&uuml;bten Nutzer keine gro&szlig;e Herausforderung dar.</p>
+<p><strong>Besonderheiten</strong></p>
+<p>Der Bootmanager sd-boot wurde mit dem Ziel entwickelt den Bootvorgang
+schnell, einfach und sicher zu gestalten. Der Anwender erh&auml;lt ein
+textbasiertes Bootmen&uuml;. Die Anzeige kommt ohne jeglichen Schnickschnack
+aus.<br />
+Er ist, dem Namen entsprechend, tief in systemd integriert und greift
+auf dort vorhandene Dienste zu. sd-boot erstellt ein optisch
+minimalistisches Bootmen&uuml;. Jeder Men&uuml;eintrag beruht auf einer einzigen,
+eigenen Textdatei. Die Konfiguration f&uuml;r die Benutzerschnittstelle ist
+im Vergleich zu GRUB rudiment&auml;r und der Installationsumfang, mit 32
+Dateien und einem zwanzigstel des Datenvolumens, sehr gering.<br />
+sd-boot ist ausschlie&szlig;lich f&uuml;r UEFI Hardware verf&uuml;gbar. Daf&uuml;r ben&ouml;tigt
+sd-boot zwingend eine ESP (<strong>E</strong>fi <strong>S</strong>ystem
+<strong>P</strong>artition). Empfohlen wird zus&auml;tzlich eine XBOOTLDR
+Partition.<br />
+Ist nur die ESP vorhanden, wird sie unter <code>/boot</code>
+eingehangen.<br />
+Bei ESP und XBOOTLDR Partition wird die ESP unter <code>/efi</code> und
+die XBOOTLDR Partition unter <code>/boot</code> eingehangen.<br />
+Dateisystemtreiber f&uuml;r die XBOOTLDR Partition sind ggf. unterhalb
+<code>/efi</code> abzulegen.<br />
+sd-boot kann nur Betriebssysteme von Partitionen des gleichen Mediums
+booten. Um Betriebssysteme von weiteren Medien zu booten benutzt man die
+ChainLoader Technik zu GRUB oder einem anderen Bootloader.</p>
+<p>siduction installiert den Bootmanager GRUB automatisch. Eine Auswahl
+von sd-boot ist w&auml;hrend der Installation nicht m&ouml;glich. Wechselt man
+sp&auml;ter zu sd-boot, so erzeugt sd-boot angepasste initrd f&uuml;r jeden im
+System vorhandenen Kernel. Nur mit diesen initrd bootet sd-boot.</p>
+<p><strong>Funktionen von sd-boot:</strong></p>
+<ul>
+<li>Von vollst&auml;ndig verschl&uuml;sselter Festplatte booten.</li>
+<li>Unterst&uuml;tzung f&uuml;r die XBOOTLDR Partition</li>
+<li>Laden von Drop-in-Treibern.</li>
+<li>Registrieren von SecureBoot-Schl&uuml;sseln.</li>
+<li>Erstellen eines Men&uuml;eintrages bei Installation neuer Kernel.</li>
+<li>Boot-Z&auml;hlung In Zusammenhang mit gescheiterten Bootvorg&auml;ngen kann
+der Booteintrag automatisch entfernt werden.</li>
+<li>Unterst&uuml;tzung f&uuml;r die &Uuml;bergabe eines Zufallsseeds an das OS.<br />
+Es dient dem Schutz vor der Verwendung manipulierter OS-Images.</li>
+</ul>
+<p>Dar&uuml;ber hinaus besteht die M&ouml;glichkeit vor einem Reboot oder w&auml;hrend
+des Bootvorganges Kommandos an sd-boot zu &uuml;bergeben. Informationen
+hierzu gibt <code>man systemd-boot</code>.</p>
+<p><strong>Anwendungsszenarien</strong></p>
+<p>Eignung bei unterschiedlichen Systemkonfigurationen und im Vergleich
+mit GRUB.</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Konfiguration</th>
+<th style="text-align: center;">sd-boot</th>
+<th style="text-align: center;">GRUB</th>
+<th style="text-align: left;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ein immutable OS</td>
+<td style="text-align: center;">++</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: left;">Es ist nur ein minimalistischer
+Bootmanager ohne Men&uuml; notwendig. GRUB ist f&uuml;r diesen Zweck
+&uuml;berdimensioniert.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ein OS auf einer HD</td>
+<td style="text-align: center;">++</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: left;">Bootmen&uuml; nur bei mehreren Kerneln
+notwendig.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mehrere Linux OS auf einer HD</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">sd-boot auf allen OS notwendig. GRUB
+ben&ouml;tigt externes Modul <em>os-prober</em>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dualboot mit WIN / MAC auf einer HD</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">Wie zuvor. Bei beiden booten mittels
+ChainLoader m&ouml;glich.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mehrere Linux OS auf mehreren HD</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">sd-boot kann nur OS von einer HD booten.
+Zwei Instanzen im UEFI mit Auswahl &uuml;ber die Firmware notwendig.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dualboot mit WIN / MAC auf mehreren
+HD</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">Wie zuvor.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mehrere Varianten eines Linux OS auf einer
+HD</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: left;">Bei sd-boot manuelles Anpassen der
+Men&uuml;eintr&auml;ge n&ouml;tig. Bei GRUB die Datei
+<code>/etc/default/grub.d/xxxx.cfg</code> erstellen oder &auml;ndern.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Linux OS auf Btrfs Dateisystem mit
+Unterst&uuml;tzung von snapper</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: left;">sd-boot erstellt Men&uuml;eintr&auml;ge nur einmalig
+bei der Installation der Kernel, gleichg&uuml;ltig aus welchem Subvolumen.
+Andere Subvolumen erhalten keinen Eintrag. GRUB ist je nach Distribution
+auf unterschiedliche, zus&auml;tzliche Software angewiesen.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eine vollverschl&uuml;sselte HD</td>
+<td style="text-align: center;">++</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">sd-boot reicht die Aufgaben an den Kernel
+und den User-Space weiter und ist dadurch effizienter. GRUB ben&ouml;tigt
+zus&auml;tzliche Software.</td>
+</tr>
+</tbody>
+</table>
+<p>sd-boot spielt seine Vorteile bei einem einfachen Hardware Setup voll
+aus, aber scheitert bei Betriebssystemen auf mehreren Medien.<br />
+Grub wiederum ist universeller einsetzbar, dadurch schwergewichtig und
+ben&ouml;tigt trotzdem externe Software. F&uuml;r einfache Hardware Setup ist GRUB
+&uuml;berdimensioniert.</p>
+<h3 id="systemd-boot-installieren">systemd-boot installieren</h3>
+<p class="warning">
+<strong>Achtung</strong> <br />Unbedingt eine Datensicherung auf einem
+externen Medium vornehmen. Es sind Arbeiten an Partitionen notwendig um
+sd-boot den Empfehlungen entsprechend zu installieren.
+</p>
+<p>Die Anleitung basiert auf der Standardinstallation von
+<em>siduction</em> mit einer ESP (<strong>E</strong>fi
+<strong>S</strong>ystem <strong>P</strong>artition), die unter
+<code>/boot/efi</code> eingehangen ist. Dies ist auch der Standard f&uuml;r
+Debian und viele Debian Derivate. Um zu sd-boot zu wechseln sind nur die
+zwei Pakete <code>systemd-boot</code> und <code>systemd-boot-efi</code>
+notwendig.<br />
+Doch Vorsicht, zuerst sind einige Arbeiten am System notwendig.</p>
+<h3 id="vorbereitung-des-systems">Vorbereitung des Systems</h3>
+<p><strong>Partitionierung</strong></p>
+<p>Eine wesentliche &Auml;nderung von sd-boot gegen&uuml;ber der
+Standardinstallation von siduction mit GRUB ist die Auslagerung des
+Verzeichnisses <code>/boot</code> in eine oder besser zwei separate
+Partitionen. Die Empfehlungen von sd-boot lauten:</p>
+<ul>
+<li><p><strong>Sowohl ESP als auch XBOOTLDR:</strong><br />
+<em>ESP</em><br />
+gdisk Partitionstyp “EF00”, Part-GUID code:
+C12A7328-F81F-11D2-BA4B-00A0C93EC93<br />
+Dateisystem: VFAT, eingehangen unter /efi/<br />
+Gr&ouml;&szlig;e: 100 MB<br />
+<em>XBOOTLDR</em><br />
+gdisk Partitionstyp “EA00”, Part-GUID code:
+BC13C2FF-59E6-4262-A352-B275FD6F7172<br />
+Dateisystem: Jedes, dass die UEFI-Implementierung lesen kann,
+eingehangen unter /boot/<br />
+Gr&ouml;&szlig;e: mind. 1 GB</p></li>
+<li><p><strong>Nur ESP:</strong><br />
+(Bedingt empfohlen, siehe unten.)<br />
+gdisk Partitionstyp “EF00”, Part-GUID code:
+C12A7328-F81F-11D2-BA4B-00A0C93EC93<br />
+Dateisystem: VFAT, eingehangen unter /boot/<br />
+Gr&ouml;&szlig;e: Mind. 1 GB</p></li>
+<li><p><strong>Nicht empfohlen:</strong><br />
+ESP eingehangen unter /boot/efi/</p></li>
+</ul>
+<p>Hierzu &uuml;bersetzte Zitate der <a
+href="https://uapi-group.org/specifications/specs/boot_loader_specification/">boot_loader_specification</a>.</p>
+<p>[&Uuml;bersetzung Anfang]<br />
+<em>Hinweis: Diese Partitionen werden von allen
+Betriebssysteminstallationen auf derselben Festplatte gemeinsam genutzt,
+sodass alle denselben Ort f&uuml;r Eintr&auml;ge im Bootloader-Men&uuml;
+verwenden.</em><br />
+[…]<br />
+<em>Das Einh&auml;ngen des ESP in /boot/efi/, wie es traditionell gemacht
+wurde, wird nicht empfohlen. Eine solche verschachtelte Einrichtung
+erschwert eine Implementierung &uuml;ber direkte autofs-Einh&auml;ngungen - wie
+sie beispielsweise von systemd implementiert werden -, da die
+Einrichtung des inneren autofs das &auml;u&szlig;ere ausl&ouml;st. Es wird empfohlen,
+die beiden Partitionen &uuml;ber autofs zu mounten. Da das einfache
+VFAT-Dateisystem eine geringe Datenintegrit&auml;t aufweist, sollte es, wann
+immer m&ouml;glich, nicht eingeh&auml;ngt werden.</em><br />
+[…]<br />
+<em>Bei Systemen, bei denen die Firmware in der Lage ist, Dateisysteme
+direkt zu lesen, muss die ESP - und die GPT-XBOOTLDR-Partition sollte -
+ein Dateisystem sein, dass von der Firmware gelesen werden kann. F&uuml;r die
+meisten Systeme bedeutet dies VFAT (16 oder 32 Bit). Anwendungen, die
+auf beide Partitionen zugreifen, sollten daher nicht davon ausgehen,
+dass ausgefeiltere Dateisystemfunktionen wie Symlinks, Hardlinks,
+Zugriffskontrolle oder Gro&szlig;-/Kleinschreibung unterst&uuml;tzt
+werden.</em><br />
+[&Uuml;bersetzung Ende]</p>
+<p><strong>Mindestgr&ouml;&szlig;e</strong></p>
+<p>H&auml;lt man sich an die Empfehlungen von sd-boot und benutzt sowohl die
+ESP als auch die XBOOTLDR Partition, kann man die geringe Gr&ouml;&szlig;e der ESP
+beibehalten und f&uuml;r die XBOOTLDR Partition ein leistungsst&auml;rkeres
+Dateisystem verwenden. Notwendige Dateisystemtreiber f&uuml;r die XBOOTLDR
+Partition sind von <a target="_blank" href="https://efi.akeo.ie">akeo.ie</a> zu holen
+und nach <code>/efi/EFI/systemd/drivers/</code> zu kopieren.<br />
+Die XBOOTLDR Partition sollte mindestens 1 GB umfassen, da sd-boot alle
+Kernel und initrd darin doppelt ablegt. So wie es der Standard
+vorschreibt einmal direkt unter <code>/boot/</code> und ein weiteres Mal
+unter <code>/boot/&lt;Kennung&gt;/&lt;Version&gt;/</code>. Damit fallen
+f&uuml;r einen Kernel mit initrd 70 bis 100 MB an. Der Grund hierf&uuml;r d&uuml;rfte
+in der Verwendung von VFAT, das keine Symlinks unterst&uuml;tzt, liegen. Bei
+mehreren OS mit jeweils mehreren Kernel ist die Gr&ouml;&szlig;e von 1 GB
+grenzwertig und die bisher &uuml;blichen 200 bis 300 MB der ESP sind v&ouml;llig
+untauglich. Das zieht eine &Auml;nderung der Partitionierung nach sich.</p>
+<p>Wir behalten die ESP in ihrer bisherigen Gr&ouml;&szlig;e und erstellen an
+beliebiger Stelle auf dem gleichen Medium die XBOOTLDR Partition (gdisk
+Typ EA00). Wie bereits erw&auml;hnt mindestens 1 GB gro&szlig;, besser 2 GB. Wenn
+sich dabei die UUID einer bereits vorhandenen Partition &auml;ndert, muss man
+die Datei <code>/etc/fstab</code> anpassen. Siehe: <a
+href="./part-uuid_de.html#anpassung-der-fstab">Die fstab
+anpassen</a>.</p>
+<p><strong>Daten kopieren und Dateien anpassen</strong></p>
+<p>Wir &ouml;ffnen ein Terminal und werden mit <code>su</code> zu ROOT.<br />
+Sollte <code>gdisk</code> nicht installiert sein, holen wir dies nach
+und lesen den <em>Partition GUID code</em> der ESP und XBOOTLDR
+Partition aus. Die Ger&auml;tedatei kann nat&uuml;rlich auch ‘/dev/sda’ sein und
+die Ziffer hinter der Option <code>-i</code> benennt die Partition auf
+dem Medium.</p>
+<pre><code># sgdisk -i1 /dev/nvme0n1
+Partition GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93B (EFI system partition)
+[...]
+# sgdisk -i4 /dev/nvme0n1
+Partition GUID code: BC13C2FF-59E6-4262-A352-B275FD6F7172 (XBOOTLDR partition)
+[...]</code></pre>
+<p>Die jeweils erste Zeile der Ausgabe von <code>sgdisk</code> muss wie
+gezeigt aussehen. Wenn nicht, mit <code>gdisk</code> den Partitionstyp
+zu <em>EF00</em> (ESP) und <em>EA00</em> (XBOOTLDR) &auml;ndern.</p>
+<p>Im n&auml;chsten Schritt legen wir neue Verzeichnisse an und kopieren das
+Verzeichnis <code>/boot</code>.</p>
+<pre><code># cd /
+# mkdir /efi
+# mkdir /grub
+# cp -a /boot/* /grub/
+# umount /boot/efi/
+# rm -r /boot/*</code></pre>
+<p>Mit der Befehlsfolge sicherten wir auch die Daten der ESP.<br />
+Nun passen wir die Datei <code>/etc/fstab</code> an. (Zuvor eine
+Sicherungskopie erstellen.)</p>
+<pre><code># cp /etc/fstab /etc/fstab_$(date +%F)</code></pre>
+<p>Von der Zeile mit dem Einh&auml;ngepunkt <code>/boot/efi</code> erstellen
+wir eine Kopie und entfernen aus der urspr&uuml;nglichen Zeile lediglich den
+String “/boot”.<br />
+In die Kopie schreiben wir die Daten f&uuml;r die XBOOTLDR Partition mit der
+Einh&auml;ngung nach <code>/boot</code>.<br />
+Schlie&szlig;lich sollten die &Auml;nderungen so aussehen.</p>
+<pre><code>[...]
+UUID=FA62-156D           /efi    vfat   defaults 0 2
+UUID=&lt;uuid_der_xbootldr&gt; /boot   ext4   defaults 0 2
+[...]</code></pre>
+<p>Jetzt h&auml;ngen wir die Partitionen ein und kopieren den Kernel mit
+Zubeh&ouml;r nach <code>/boot</code>. Dann erstellen wir noch das Verzeichnis
+f&uuml;r die Dateisystemtreiber der XBOOTLDR Partition.</p>
+<pre><code># systemctl daemon-reload
+# mount /boot/
+# mount /efi/
+# cp -a /grub/vmlinuz-6.8.9-1-siduction-amd64 /boot/
+# cp -a /grub/initrd.img-6.8.9-1-siduction-amd64 /boot/
+# cp -a /grub/System.map-6.8.9-1-siduction-amd64 /boot/
+# cp -a /grub/config-6.8.9-1-siduction-amd64 /boot/
+   # oder einfacher: cp -a /grub/*-6.8.9-1-siduction-amd64 /boot/
+# mkdir -p /efi/EFI/systemd/drivers/</code></pre>
+<p>Zum Abschluss holen wir die Dateisystemtreiber von der Webseite <a
+href="https://efi.akeo.ie">akeo.ie</a> und speichern sie im erstellten
+Verzeichnis unterhalb <code>/efi/</code>. Auf Ausf&uuml;hrrechte achten.</p>
+<p><strong>Installation</strong></p>
+<p>Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit
+den Befehlen <code>ls -l /boot</code> <code>lsblk</code> oder
+<code>sgdisk -i...</code> &uuml;berpr&uuml;ft, reicht eine Kommandozeile aus um
+die zwei ben&ouml;tigten Pakete unserem System hinzuzuf&uuml;gen und sd-boot nach
+ESP und XBOOTLDR zu installieren.</p>
+<pre><code># apt install systemd-boot-efi systemd-boot
+[...]
+Copied &quot;/usr/lib/systemd/boot/efi/systemd-bootx64.efi&quot; to &quot;/efi/EFI/systemd/systemd-bootx64.efi&quot;.
+Copied &quot;/usr/lib/systemd/boot/efi/systemd-bootx64.efi&quot; to &quot;/efi/EFI/BOOT/BOOTX64.EFI&quot;.
+Created &quot;/boot/e5cc6ff820c1450c93a29d8723c78cd1&quot;.
+! Mount point &#39;/efi&#39; which backs the random seed file is world accessible, which is a security hole!
+! Random seed file &#39;/efi/loader/random-seed&#39; is world accessible, which is a security hole!
+Random seed file /efi/loader/random-seed successfully installed (32 bytes).
+Created EFI boot entry &quot;Linux Boot Manager&quot;.</code></pre>
+<p>Im Firmware UEFI Men&uuml; finden wir jetzt an erster Stelle den <em>Linux
+Boot Manager</em>, der, wie die Ausgabe zeigt, in die ESP geschrieben
+wurde. Gleichzeitig hat sd-boot die Booteintr&auml;ge f&uuml;r den <em>Linux Boot
+Manager</em> in der XBOOTLDR Partition erstellt.<br />
+F&uuml;r jedes weitere OS auf dem Medium ist die ‘Vorbereitung des Systems’
+und die ‘Installation’ notwendig.</p>
+<h3 id="konfiguration">Konfiguration</h3>
+<p>Es gibt nur zwei Orte, an denen die Konfiguration f&uuml;r sd-boot
+liegt.<br />
+F&uuml;r den <em>Linux Boot Manager</em> ist es die Datei
+<code>/efi/loader/loader.conf</code> und f&uuml;r die <em>Men&uuml;eintr&auml;ge</em>
+sind es die Dateien mit der Erweiterung <code>.conf</code> im
+Verzeichnis <code>/boot/loader/entries/</code>.</p>
+<p><strong>Linux Boot Manager</strong></p>
+<p>Die Konfiguration des <em>Linux Boot Manager</em> betrifft nur die
+Punkte<br />
+- Anzeige des Men&uuml;s und Timeout - nein/ja/Dauer<br />
+- Konsole-Modus - Wert<br />
+- Editieren der Kernelzeile - ja/nein<br />
+- Standard Booteintrag festlegen - Wert</p>
+<p>Bei nur einem System mit einem Kernel hat die Konfigurationsdatei
+folgenden Inhalt:</p>
+<pre><code>#timeout 3
+#console-mode keep</code></pre>
+<p>Es wird ohne die Anzeige eines Men&uuml;s direkt in das Betriebssystem
+gebootet, denn ‘timeout’ ist auskommentiert. Der Grund: Bisher existiert
+nur ein einziger Men&uuml;punkt. Nach entfernen des Kommentarzeichens
+erscheint das Men&uuml; einer siduction XFCE Installation.</p>
+<pre><code>                    siduction XFCE
+            Reboot Into Firmware Interface</code></pre>
+<p>Bei mehreren OS auf dem Medium erth&auml;lt die Datei
+<code>/efi/loader/loader.conf</code> eine zus&auml;tzliche Zeile
+<code>default &lt;Kennnung&gt;-*</code> um den Standardeintrag zu
+definieren.</p>
+<pre><code>timeout 3
+#console-mode keep
+default e5cc6ff820c1450c93a29d8723c78cd1-*</code></pre>
+<p><strong>Men&uuml;eintr&auml;ge</strong></p>
+<p>Die Konfigurationsdateien liegen in dem Verzeichnis
+<code>/boot/loader/entries/</code> und ihr Name entspricht dem Format
+<code>&lt;Kennung&gt;-&lt;Kernelversion&gt;.conf</code>.<br />
+sd-boot f&uuml;gt dem Men&uuml; bei der Installation weiterer Kernel automatisch
+die Eintr&auml;ge hinzu. Mit einem zus&auml;tzlichen Kernel erhalten die
+Men&uuml;punkte auch die Kernelversion.</p>
+<pre><code>           siduction XFCE (6.8.10-1-siduction-amd64)
+           siduction XFCE (6.8.9-1-siduction-amd64)
+                Reboot Into Firmware Interface</code></pre>
+<p>Von <strong>mehreren OS</strong> auf unterschiedlichen Partitionen
+wird nur dasjenige automatisch im Men&uuml; aufgef&uuml;hrt, von dem aus sd-boot
+installiert wurde. Die dort vorhandenen Kernel erscheinen in der
+Auswahl. Installiert man in jedem OS sd-boot, finden diese Booteintr&auml;ge
+auch ihren Weg in das Men&uuml;. Hier zum Beispiel UBUNTU.</p>
+<pre><code>           siduction XFCE (6.8.10-1-siduction-amd64)
+           siduction XFCE (6.8.9-1-siduction-amd64)
+                       Ubuntu 24.04 LTS
+                Reboot Into Firmware Interface</code></pre>
+<p>Sollte, aus welchen Gr&uuml;nden auch immer, ein Men&uuml;eintrag fehlen, kann
+die Generierung des Eintrags zu jeder Zeit erneut angesto&szlig;en werden. Es
+ist sicherzustellen, dass sich der Kernel, die vmlinuz und die config-
+Datei der entsprechenden Version im Verzeichnis <code>/boot/</code>
+befinden.<br />
+Aus dem entsprechenden OS heraus erstellt der Befehl</p>
+<pre><code>dpkg-reconfigure linux-image-6.8.9-1-siduction-amd64</code></pre>
+<p>auch den gew&uuml;nschten Men&uuml;eintrag.</p>
+<h3 id="grub-entfernen">GRUB entfernen</h3>
+<p>sd-boot kann zum jetzigen Zeitpunkt (08-2024) bei der Installation
+von siduction nicht als Standard Bootmanager ausgew&auml;hlt werden. Sofern
+ausf&uuml;hrliche Tests mit sd-boot erfolgreich verliefen, m&uuml;ssen wir GRUB
+aus unserem System entfernen um Fehler beim Update und Upgrade zu
+vermeiden.</p>
+<p><strong>Pakete</strong></p>
+<p>Wir &ouml;ffnen ein Terminal, werden mit <code>su</code> zu ROOT und
+benutzen den Befehl <code>apt purge</code> um auch die
+Konfigurationsdateien zu entfernen.</p>
+<pre><code>01|# apt purge grub*
+02| Paketlisten werden gelesen…
+03| Abh&auml;ngigkeitsbaum wird aufgebaut…
+04| Statusinformationen werden eingelesen…
+05| Die folgenden Pakete werden ENTFERNT:
+06|   grub-pc-bin* os-prober* grub-btrfs* siduction-btrfs* grub-efi-amd64-bin*
+07|   grub2-common* grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
+08| 0 aktualisiert, 0 neu installiert, 10 zu entfernen.
+09| Nach dieser Operation werden 0 B Plattenplatz zus&auml;tzlich benutzt.
+10| M&ouml;chten Sie fortfahren? [J/n] j
+11| (Lese Datenbank ... 249262 Dateien und Verzeichnisse sind derzeit installiert.)
+12| L&ouml;schen der Konfigurationsdateien von grub-btrfs (4.11-0~1siduction3) ...
+13| /var/lib/dpkg/info/grub-btrfs.postrm: 23: update-grub: not found
+14| dpkg: Fehler beim Bearbeiten des Paketes grub-btrfs (--purge):
+15|  »installiertes post-removal-Skript des Paketes grub-btrfs«-Unterprozess gab den Fehlerwert 127 zur&uuml;ck
+16| Fehler traten auf beim Bearbeiten von:
+17|  grub-btrfs</code></pre>
+<p>Das Paket <em>grub-btrfs</em> wirft dabei einen Fehler aus. In Zeile
+13 lesen wir, dass das post-removal-Skript den Befehl aus Zeile 23
+(update-grub) nicht mehr findet, was nat&uuml;rlich richtig ist, denn
+<em>grub-pc-bin</em> wurde bereits entfernt.<br />
+Folglich kommentieren wir die Zeile aus und bem&uuml;hen apt noch einmal.</p>
+<pre><code># sed -i &#39;23s!\(.*\)!#\1!&#39; /var/lib/dpkg/info/grub-btrfs.postrm
+# apt purge grub-btrfs</code></pre>
+<p>Nach dieser Aktion sind die von uns erstellten Sicherungskopien und
+zwei Verzeichnisse von GRUB &uuml;brig. Es handelt sich um<br />
+das Verzeichnis <code>/grub/</code>,<br />
+die Sicherungsdatei <code>/etc/fstab_*</code>,<br />
+das Verzeichnis <code>/usr/share/grub/</code><br />
+und das Verzeichnis <code>/etc/default/grub.d/</code>.</p>
+<p>Mit</p>
+<pre><code># rm -r /grub/
+# rm /etc/fstab_*
+# rm -r /usr/share/grub/
+# rm -r /etc/default/grub.d/</code></pre>
+<p>entledigen wir uns der &Uuml;berbleibsel.</p>
+<p><strong>UEFI bereinigen</strong></p>
+<p>In der Firmware existiert noch der siduction Booteintrag aus der
+Installation mit GRUB. Wir lassen uns im Terminal mit ROOT-Rechten den
+Inhalt anzeigen. (Gek&uuml;rzt dargestellt.)</p>
+<pre><code># efibootmgr
+ BootCurrent: 0001
+ Timeout: 0 seconds
+ BootOrder: 0001,0000,0002,2001,2002
+ Boot0000* siduction
+ Boot0001* Linux Boot Manager
+ Boot0002* EFI Hard Drive
+ Boot2001* EFI USB Device
+ Boot2002  EFI Network RC</code></pre>
+<p>Der erste Befehl entfernt den Eintrag von GRUB.<br />
+Der zweite Befehl l&ouml;scht anschlie&szlig;enden das zugeh&ouml;rige Verzeichnis aus
+<code>/efi/</code>.</p>
+<pre><code># efibootmgr -b 0000 -B
+# rm -r /efi/EFI/siduction/</code></pre>
+<h3 id="systemd-boot-und-btrfs">systemd-boot und Btrfs</h3>
+<p>Das Dateisystem Btrfs bietet, besonders in Zusammenarbeit mit
+snapper, die M&ouml;glichkeit ein defektes System auf einen vorherigen Stand
+zur&uuml;ckzusetzen. In diesem Zusammenhang ist die von sd-boot verlangte
+Auslagerung des Verzeichnisses <code>/boot</code> in eine separate
+Partition hinderlich. Das Verzeichnis <code>/boot</code> ist ein
+wesentlicher Bestandteil des Betriebssystems und man sollte es im
+Zusammenhang mit Btrfs nicht in eine Partition oder ein Subvolumen
+auslagern. Denn dort wird es von Snapshots des Wurzeldateisystems nicht
+erfasst.<br />
+siduction ist mit dem Paket <em>siduction-btrfs</em> in der Lage bei
+einem <em>Rollback</em> f&uuml;r alle im Rollbackziel enthaltenen Kernel
+Men&uuml;eintr&auml;ge zu erstellen. Men&uuml;eintr&auml;ge f&uuml;r andere Snapshot stehen nicht
+zur Verf&uuml;gung. Somit kann der Benutzer selbst entscheiden, ob er sd-boot
+bei einer Installation des Systems auf Btrfs verwenden m&ouml;chte.</p>
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+<p><code>man systemd-boot</code><br />
+<a
+href="https://uapi-group.org/specifications/specs/boot_loader_specification/">boot_loader_specification
+(en)</a><br />
+<a target="_blank" href="https://efi.akeo.ie">Dateisystem Treiber von akeo.ie</a></p>
+<div id="rev">
+Zuletzt bearbeitet: 2024-09-21
+</div>
+</body>
+</html>
