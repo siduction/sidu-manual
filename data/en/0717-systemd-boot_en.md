@@ -15,6 +15,8 @@ For ESP and XBOOTLDR partitions, the ESP is mounted under `/efi` and the XBOOTLD
 File system drivers for the XBOOTLDR partition may have to be stored under `/efi`.  
 sd-boot can only boot operating systems from partitions of the same medium. To boot operating systems from other media, use the ChainLoader method to GRUB or another boot loader.
 
+siduction installs the boot manager GRUB automatically. It is not possible to select sd-boot during the installation. If you switch to sd-boot later, sd-boot creates customized initrd for each kernel present in the system. Only with these initrd will sd-boot boot.
+
 **systemd-boot functions:**
 
 - Boot from fully encrypted hard disk.  
@@ -320,10 +322,15 @@ The second command then deletes the corresponding directory from `/efi/`.
 # rm -r /efi/EFI/siduction/
 ~~~
 
+### systemd-boot and Btrfs
+
+The Btrfs file system, especially in conjunction with snapper, offers the possibility of restoring a defective system to a previous state. In this context, the relocation of the `/boot` directory to a separate partition required by sd-boot is a hindrance. The `/boot` directory is an essential part of the operating system and should not be moved to a partition or subvolume in connection with Btrfs. This is because it is not covered by snapshots of the root file system.  
+With the *siduction-btrfs* package, siduction is able to create menu entries for all kernels contained in the rollback target during a *rollback*. Menu entries for other snapshots are not available. The user can therefore decide for himself whether he wants to use sd-boot when installing the system on Btrfs.
+
 ### Further information
 
 `man systemd-boot`  
 [boot_loader_specification](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [File system driver by akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Last edited: 2024/08/29</div>
+<div id="rev">Last edited: 2024/09/13</div>

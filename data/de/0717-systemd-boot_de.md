@@ -14,6 +14,8 @@ Bei ESP und XBOOTLDR Partition wird die ESP unter `/efi` und die XBOOTLDR Partit
 Dateisystemtreiber für die XBOOTLDR Partition sind ggf. unterhalb `/efi` abzulegen.  
 sd-boot kann nur Betriebssysteme von Partitionen des gleichen Mediums booten. Um Betriebssysteme von weiteren Medien zu booten benutzt man die ChainLoader Technik zu GRUB oder einem anderen Bootloader.
 
+siduction installiert den Bootmanager GRUB automatisch. Eine Auswahl von sd-boot ist während der Installation nicht möglich. Wechselt man später zu sd-boot, so erzeugt sd-boot angepasste initrd für jeden im System vorhandenen Kernel. Nur mit diesen initrd bootet sd-boot.
+
 **Funktionen von sd-boot:**
 
 - Von vollständig verschlüsselter Festplatte booten.  
@@ -321,10 +323,15 @@ Der zweite Befehl löscht anschließenden das zugehörige Verzeichnis aus `/efi/
 # rm -r /efi/EFI/siduction/
 ~~~
 
+### systemd-boot und Btrfs
+
+Das Dateisystem Btrfs bietet, besonders in Zusammenarbeit mit snapper, die Möglichkeit ein defektes System auf einen vorherigen Stand zurückzusetzen. In diesem Zusammenhang ist die von sd-boot verlangte Auslagerung des Verzeichnisses `/boot` in eine separate Partition hinderlich. Das Verzeichnis `/boot` ist ein wesentlicher Bestandteil des Betriebssystems und man sollte es im Zusammenhang mit Btrfs nicht in eine Partition oder ein Subvolumen auslagern. Denn dort wird es von Snapshots des Wurzeldateisystems nicht erfasst.  
+siduction ist mit dem Paket *siduction-btrfs* in der Lage bei einem *Rollback* für alle im Rollbackziel enthaltenen Kernel Menüeinträge zu erstellen. Menüeinträge für andere Snapshot stehen nicht zur Verfügung. Somit kann der Benutzer selbst entscheiden, ob er sd-boot bei einer Installation des Systems auf Btrfs verwenden möchte.
+
 ### Weitere Informationen
 
 `man systemd-boot`  
 [boot_loader_specification (en)](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [Dateisystem Treiber von akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Zuletzt bearbeitet: 2024-08-29</div>
+<div id="rev">Zuletzt bearbeitet: 2024-09-13</div>
