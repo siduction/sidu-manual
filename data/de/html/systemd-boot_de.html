@@ -52,7 +52,7 @@ id="toc-weitere-informationen">Weitere Informationen</a></li>
 </nav>
 <h2 id="systemd-boot">systemd-boot</h2>
 <p>Obwohl bereits vor mehr als zehn Jahren in systemd aufgenommen,
-findet man den Bootmanager systemd-boot (kurz sd-boot) auf Dektop
+findet man den Bootmanager systemd-boot (kurz sd-boot) auf Desktop
 Systemen selten. Entscheidet man sich bei einem passenden Setup und nach
 gr&uuml;ndlichen Tests f&uuml;r sd-boot, stellt der Umstieg f&uuml;r einen etwas
 ge&uuml;bten Nutzer keine gro&szlig;e Herausforderung dar.</p>
@@ -91,8 +91,9 @@ System vorhandenen Kernel. Nur mit diesen initrd bootet sd-boot.</p>
 <li>Laden von Drop-in-Treibern.</li>
 <li>Registrieren von SecureBoot-Schl&uuml;sseln.</li>
 <li>Erstellen eines Men&uuml;eintrages bei Installation neuer Kernel.</li>
-<li>Boot-Z&auml;hlung In Zusammenhang mit gescheiterten Bootvorg&auml;ngen kann
-der Booteintrag automatisch entfernt werden.</li>
+<li>Boot-Z&auml;hlung<br />
+In Zusammenhang mit gescheiterten Bootvorg&auml;ngen kann der Booteintrag
+automatisch entfernt werden.</li>
 <li>Unterst&uuml;tzung f&uuml;r die &Uuml;bergabe eines Zufallsseeds an das OS.<br />
 Es dient dem Schutz vor der Verwendung manipulierter OS-Images.</li>
 </ul>
@@ -166,9 +167,10 @@ HD</td>
 HD</td>
 <td style="text-align: center;">o</td>
 <td style="text-align: center;">o</td>
-<td style="text-align: left;">Bei sd-boot manuelles Anpassen der
-Men&uuml;eintr&auml;ge n&ouml;tig. Bei GRUB die Datei
-<code>/etc/default/grub.d/xxxx.cfg</code> erstellen oder &auml;ndern.</td>
+<td style="text-align: left;">Bei sd-boot ist die Datei
+<code>/etc/os-release</code> notwendig, bei GRUB ist die Datei
+<code>/etc/default/grub.d/xxxx.cfg</code> ggf. zu erstellen oder zu
+&auml;ndern.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Linux OS auf Btrfs Dateisystem mit
@@ -181,6 +183,16 @@ Andere Subvolumen erhalten keinen Eintrag. GRUB ist je nach Distribution
 auf unterschiedliche, zus&auml;tzliche Software angewiesen.</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">siduction auf Btrfs Dateisystem mit
+Unterst&uuml;tzung von snapper</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">Das Paket siduction-btrfs erstellt
+Men&uuml;eintr&auml;ge f&uuml;r sd-boot und GRUB nach einem Rollback. Der Standard
+Booteintrag bootet das Rollbackziel. Bei GRUB wird mit Hilfe des Pakets
+grub-btrfs das Untermen&uuml; <em>siduction snapshots</em> angezeigt.</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Eine vollverschl&uuml;sselte HD</td>
 <td style="text-align: center;">++</td>
 <td style="text-align: center;">+</td>
@@ -191,10 +203,14 @@ zus&auml;tzliche Software.</td>
 </tbody>
 </table>
 <p>sd-boot spielt seine Vorteile bei einem einfachen Hardware Setup voll
-aus, aber scheitert bei Betriebssystemen auf mehreren Medien.<br />
+aus, aber scheitert bei Betriebssystemen auf mehreren Medien. Mit
+Unterst&uuml;tzung von siduction-btrfs eignet sich sd-boot auch gut f&uuml;r eine
+Installation in das Dateisystem Btrfs bei gleichzeitiger Verwendung von
+Snapper.<br />
 Grub wiederum ist universeller einsetzbar, dadurch schwergewichtig und
-ben&ouml;tigt trotzdem externe Software. F&uuml;r einfache Hardware Setup ist GRUB
-&uuml;berdimensioniert.</p>
+ben&ouml;tigt trotzdem externe Software. Auch hier ist siduction-btrfs bei
+einer Installation in das Dateisystem Btrfs n&uuml;tzlich. F&uuml;r einfache
+Hardware Setup ist GRUB &uuml;berdimensioniert.</p>
 <h3 id="systemd-boot-installieren">systemd-boot installieren</h3>
 <p class="warning">
 <strong>Achtung</strong> <br />Unbedingt eine Datensicherung auf einem
@@ -450,7 +466,7 @@ Konfigurationsdateien zu entfernen.</p>
 (update-grub) nicht mehr findet, was nat&uuml;rlich richtig ist, denn
 <em>grub-pc-bin</em> wurde bereits entfernt.<br />
 Folglich kommentieren wir die Zeile aus und bem&uuml;hen apt noch einmal.</p>
-<pre><code># sed -i &#39;23s!\(.*\)!#\1!&#39; /var/lib/dpkg/info/grub-btrfs.postrm
+<pre><code># sed -i &#39;23s!^!#!&#39; /var/lib/dpkg/info/grub-btrfs.postrm
 # apt purge grub-btrfs</code></pre>
 <p>Nach dieser Aktion sind die von uns erstellten Sicherungskopien und
 zwei Verzeichnisse von GRUB &uuml;brig. Es handelt sich um<br />
@@ -491,12 +507,16 @@ Partition hinderlich. Das Verzeichnis <code>/boot</code> ist ein
 wesentlicher Bestandteil des Betriebssystems und man sollte es im
 Zusammenhang mit Btrfs nicht in eine Partition oder ein Subvolumen
 auslagern. Denn dort wird es von Snapshots des Wurzeldateisystems nicht
-erfasst.<br />
-siduction ist mit dem Paket <em>siduction-btrfs</em> in der Lage bei
-einem <em>Rollback</em> f&uuml;r alle im Rollbackziel enthaltenen Kernel
-Men&uuml;eintr&auml;ge zu erstellen. Men&uuml;eintr&auml;ge f&uuml;r andere Snapshot stehen nicht
-zur Verf&uuml;gung. Somit kann der Benutzer selbst entscheiden, ob er sd-boot
-bei einer Installation des Systems auf Btrfs verwenden m&ouml;chte.</p>
+erfasst.</p>
+<p>Trotzdem ist siduction mit dem Paket <em>siduction-btrfs</em> in der
+Lage nach einem Rollback f&uuml;r alle im Rollbackziel enthaltenen Kernel
+Men&uuml;eintr&auml;ge zu erstellen. Au&szlig;erdem bootet dann der Standard Booteintrag
+in das Rollbackziel. Men&uuml;eintr&auml;ge f&uuml;r andere Snapshot stehen jedoch
+nicht zur Verf&uuml;gung.</p>
+<p>Das Paket <em>siduction-btrfs</em> ist nicht an einen bestimmten
+Bootmanager gebunden. Somit kann der Benutzer selbst entscheiden, ob er
+bei einer Installation des Systems auf Btrfs zu sd-boot wechseln
+m&ouml;chte.</p>
 <h3 id="weitere-informationen">Weitere Informationen</h3>
 <p><code>man systemd-boot</code><br />
 <a
@@ -504,7 +524,7 @@ href="https://uapi-group.org/specifications/specs/boot_loader_specification/">bo
 (en)</a><br />
 <a target="_blank" href="https://efi.akeo.ie">Dateisystem Treiber von akeo.ie</a></p>
 <div id="rev">
-Zuletzt bearbeitet: 2024-09-21
+Zuletzt bearbeitet: 2024-12-17
 </div>
 </body>
 </html>

@@ -528,14 +528,14 @@ creates a new directory under <code>/etc/systemd/system/</code> named
 <code>&lt;UNIT_FILE&gt;.d</code> and in it the file
 <code>override.conf</code> which contains only the changes from the
 original unit file. This applies to all unit files in the directories
-entered in the <a href="#load-path-of-unit-files">Hirarchy of load
-paths</a> including <code>/etc/systemd/system/</code>
+entered in the <a href="#loading-path-of-the-unit-files">Hirarchy of
+load paths</a> including <code>/etc/systemd/system/</code>
 downwards.</p></li>
 <li><p><strong><code>systemctl edit - -full &lt;UNIT_FILE&gt;</code></strong>
 creates a new file with the same name in the
 <code>/etc/systemd/system/</code> directory. This applies to all unit
 files in the directories entered in the <a
-href="#load-path-of-unit-files">Hirarchy of load paths</a> below
+href="#loading-path-of-the-unit-files">Hirarchy of load paths</a> below
 <code>/etc/systemd/system/</code>. Files already existing in the
 <code>/etc/systemd/system/</code> directory will be
 overwritten.</p></li>
@@ -630,7 +630,7 @@ man systemd.swap
 man systemd-analyze
 man systemctl</code></pre>
 <div id="rev">
-Last edited: 2022/04/08
+Last edited: 2024-12-17
 </div>
 </body>
 </html>

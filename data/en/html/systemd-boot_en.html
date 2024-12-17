@@ -85,20 +85,14 @@ sd-boot later, sd-boot creates customized initrd for each kernel present
 in the system. Only with these initrd will sd-boot boot.</p>
 <p><strong>systemd-boot functions:</strong></p>
 <ul>
-<li>Boot from fully encrypted hard disk.<br />
-</li>
-<li>Support for the XBOOTLDR partition.<br />
-</li>
-<li>Loading of drop-in drivers.<br />
-</li>
-<li>Registering SecureBoot keys.<br />
-</li>
-<li>Create a menu entry when installing new kernels.<br />
-</li>
+<li>Boot from fully encrypted hard disk.</li>
+<li>Support for the XBOOTLDR partition.</li>
+<li>Loading of drop-in drivers.</li>
+<li>Registering SecureBoot keys.</li>
+<li>Create a menu entry when installing new kernels.</li>
 <li>Boot counting<br />
 In connection with failed boot processes, the boot entry can be removed
-automatically.<br />
-</li>
+automatically.</li>
 <li>Support for passing a random seed to the OS.<br />
 This serves to protect against the use of manipulated OS images.</li>
 </ul>
@@ -170,9 +164,10 @@ instances in UEFI with selection via firmware necessary.</td>
 HD</td>
 <td style="text-align: center;">o</td>
 <td style="text-align: center;">o</td>
-<td style="text-align: left;">With sd-boot manual adjustment of the menu
-entries necessary. For GRUB, create or modify the file
-<code>/etc/default/grub.d/xxxx.cfg</code>.</td>
+<td style="text-align: left;">For sd-boot the file
+<code>/etc/os-release</code> is required, for GRUB the file
+<code>/etc/default/grub.d/xxxx.cfg</code> must be created or modified if
+necessary.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Linux OS on Btrfs file system with support
@@ -185,6 +180,16 @@ subvolumes do not receive an entry. GRUB relies on different additional
 software depending on the distribution.</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">siduction on Btrfs file system with
+support for snapper</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">The siduction-btrfs package creates menu
+entries for sd-boot and GRUB after a rollback. The standard boot entry
+boots the rollback target. For GRUB, the <em>siduction snapshots</em>
+submenu is displayed with the help of the grub-btrfs package.</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">A fully encrypted HD</td>
 <td style="text-align: center;">++</td>
 <td style="text-align: center;">+</td>
@@ -195,10 +200,13 @@ software.</td>
 </tbody>
 </table>
 <p>sd-boot fully demonstrates its advantages with a simple hardware
-setup, but fails with operating systems on multiple media.<br />
+setup, but fails with operating systems on multiple media. With support
+for siduction-btrfs, sd-boot is also well suited for installation in the
+Btrfs file system with simultaneous use of Snapper.<br />
 Grub, on the other hand, can be used more universally, is therefore
-heavyweight and still requires external software. GRUB is oversized for
-simple hardware setups.</p>
+heavyweight and still requires external software. Here too,
+siduction-btrfs is useful when installing to the Btrfs file system. GRUB
+is oversized for simple hardware setups.</p>
 <h3 id="installing-systemd-boot">Installing systemd-boot</h3>
 <p class="warning">
 Attention <br />It is essential to make a data backup on an external
@@ -450,7 +458,7 @@ that the post-removal script can no longer find the command from line 23
 (update-grub), which is of course correct, because <em>grub-pc-bin</em>
 has already been removed.<br />
 Consequently, we comment out the line and try apt again.</p>
-<pre><code># sed -i &#39;23s!\(.*\)!#\1!&#39; /var/lib/dpkg/info/grub-btrfs.postrm
+<pre><code># sed -i &#39;23s!^!#!&#39; /var/lib/dpkg/info/grub-btrfs.postrm
 # apt purge grub-btrfs</code></pre>
 <p>After this action, the backup copies we created and two GRUB
 directories remain. These are<br />
@@ -489,19 +497,22 @@ separate partition required by sd-boot is a hindrance. The
 <code>/boot</code> directory is an essential part of the operating
 system and should not be moved to a partition or subvolume in connection
 with Btrfs. This is because it is not covered by snapshots of the root
-file system.<br />
-With the <em>siduction-btrfs</em> package, siduction is able to create
-menu entries for all kernels contained in the rollback target during a
-<em>rollback</em>. Menu entries for other snapshots are not available.
-The user can therefore decide for himself whether he wants to use
-sd-boot when installing the system on Btrfs.</p>
+file system.</p>
+<p>Nevertheless, siduction with the package <em>siduction-btrfs</em> is
+able to create menu entries for all kernels contained in the rollback
+target after a rollback. In addition, the standard boot entry then boots
+into the rollback target. However, menu entries for other snapshots are
+not available.</p>
+<p>The <em>siduction-btrfs</em> package is not tied to a specific boot
+manager. This means that the user can decide for themselves whether they
+want to switch to sd-boot when installing the system on Btrfs.</p>
 <h3 id="further-information">Further information</h3>
 <p><code>man systemd-boot</code><br />
 <a
 href="https://uapi-group.org/specifications/specs/boot_loader_specification/">boot_loader_specification</a><br />
 <a target="_blank" href="https://efi.akeo.ie">File system driver by akeo.ie</a></p>
 <div id="rev">
-Last edited: 2024/09/21
+Last edited: 2024-12-17
 </div>
 </body>
 </html>
