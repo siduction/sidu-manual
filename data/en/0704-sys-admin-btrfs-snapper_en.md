@@ -2,7 +2,7 @@
 
 ## Btrfs
 
-Btrfs is a modern copy-on-write (COW) file system for Linux.  
+Btrfs is a modern copy-on-write file system for Linux.  
 siduction supports installation into a partition formatted with *Btrfs*. The release of 2022.12.0 enables you  to manage snapshots of Btrfs with Snapper and to boot via Grub. The installer creates subvolumes within the selected partition for the root directory `@`, the user directories `@home` and `@root`, the directory `@var@log`, and a subvolume `@snapshots` for system snapshots.
 
 Btrfs works well with SSDs and conventional hard disks. Its own built-in RAID mechanism (RAID 0, 1, and 10 are supported) works reliably even with disks of different sizes. Metadata and file data are handled differently by Btrfs. Usually, metadata is stored twice even with only one drive. If multiple drives are present, the administrator can set different RAID levels for the metadata and file data within the same file system.  
@@ -11,9 +11,10 @@ Btrfs manages the data within the drives in subvolumes, superficially similarly 
 There is a lot of documentation about Btrfs on the Internet. We will therefore not repeat the extensive possibilities as well as the commands and their application here. Reading **`man btrfs`** and **`man btrfs-<command>`** is mandatory. In addition, we recommend the extensive [kernel.org Wiki](https://btrfs.wiki.kernel.org/index.php/Main_Page) and the detailed documentation on [readthedocs.io](https://btrfs.readthedocs.io/en/latest/index.html).
 
 > **Please note**  
-> siduction does not support a separate boot partition when using the Btrfs file system.
+> siduction does not recommend a separate boot partition when using the Btrfs file system.
 
-The */boot* directory is an essential part of the operating system. With a separate partition, it would be excluded from system snapshots and thus a rollback would lead to errors.
+The */boot* directory is an essential part of the operating system. With a separate partition, it would be excluded from system snapshots and thus a rollback could possibly lead to errors.  
+The situation is somewhat more differentiated when using *systemd-boot*. In this case, please consult the [systemd-boot](0717-systemd-boot_en.md#systemd-boot) manual pages.
 
 **Use Btrfs**
 
@@ -32,8 +33,9 @@ During the first install to a single partition, the following subvolumes are cre
 | @root | /root | The **root** user |
 | @var@log | /var/log | |
 | @snapshots | /.snapshots | Snapshots of @ are stored here |
+| @home/.snapshots | - | Snapshots of @home are stored here |
 
-For Btrfs, they are all located at the highest level (*top level 5*). It is also called *"flat layout "* because there are no nestings. The file system root itself is not mounted, but the *top level 5* subvolumes are. It is no longer necessary to mount the "root" device if only the contents of the subvolumes are of interest. During operation, we are already in the subvolume `@`.
+For Btrfs, with the exception of `@home/.snapshots`, they are all located at the highest level (*top level 5*). It is also called *"flat layout "*. Only in the `@home` subvolume is there a nesting for the associated snapshots. The file system root itself is not mounted, but the *top level 5* subvolumes are. It is no longer necessary to mount the "root" device if only the contents of the subvolumes are of interest. During operation, we are already in the subvolume `@`.
 
 The command **`btrfs subvolume list /`** prints all subvolumes of the file system root. The `-t` option creates a clearly arranged list. 
 
@@ -43,59 +45,55 @@ ID   gen    top level  path
 --   ---    ---------  ----
 256  22981  5          @
 257  22952  5          @root
-258  22982  5          @daten
-269  22972  5          @var@log
+258  22982  5          @home
 260  22967  5          @snapshots
+269  22972  5          @var@log
+271  22969  258        @home/.snapshots
 ~~~
 
-**The default subvolume**.
+**The default subvolume**
 
-In siduction the subvolume `@` should be set as default from the beginning, because in case of a rollback the command **`snapper rollback <No>`** is used. If no default subvolume was set before, Snapper will do it now with the rollback subvolume.  
-This can lead to considerable confusion if the user in the console usually mounts the root partition using the device file and the command **`mount -t btrfs /dev/sdxX /mnt/`**. This is because after setting a default subvolume, the *top level 5* subvolumes are no longer accessible with this command.
-
-The following commands first show the state without a default subvolume, next the subvolume `@` with ID 256 is set as default. The output of the last command shows the change.
+During the installation of siduction on Btrfs, the subvolume `@` is set as the Btrfs default subvolume, as the following command shows.
 
 ~~~
-# btrfs subvolume get-default /
-ID 5 (FS_TREE)
-# btrfs subvolume set-default 256 /
 # btrfs subvolume get-default /
 ID 256 gen 22981 top level 5 path @
 ~~~
 
-**Mount subvolume**
+A rollback with the recommended command **`snapper -a classic rollback <Nr>`** then sets the standard subvolume to the rollback target. A rollback is dealt with in detail a little later in the chapter [Snapper rollback](0704-sys-admin-btrfs-snapper_en.md#snapper-rollback).
 
-As described before, the access to the *top level 5* subvolumes changes after setting a default subvolume.  
-Example without default subvolume:
+**Create new subvolume**
 
-~~~
-# mount -t btrfs /dev/sdxX /mnt/
-# ls /mnt/
-@  @daten  @root  @snapshots  @var@log
-~~~
-
-Example after setting the subvolume `@` as default:
-
-~~~
-# mount -t btrfs /dev/sdxX /mnt/
-# ls /mnt/
-bin    disks  initrd.img      lib64   proc  srv  var
-boot   etc    initrd.img.old  libx32  root  sys  vmlinuz
-daten  fll    lib             media   run   tmp  vmlinuz.old
-dev    home   lib32           mnt     sbin  usr
-~~~
-
-To get to the *top level 5* subvolumes with the default subvolume set, the *subvolid* must be specified in the mount command.  
-Example with default subvolume and mount option `subvolid=5`:
+We would like to have an additional subvolume with the name `@data`.  
+By setting a default subvolume, the *top level 5* level of the Btrfs remains hidden in the directory tree. The additional mount option `subvolid=5` is required. We use it to reach this level and can create the new subvolume in it. Finally, we unmount `/mnt`.
 
 ~~~
 # mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
+# btrfs subvolume create /mnt/@data
+Create subvolume '/mnt/@data'
 # ls /mnt/
-@  @daten  @root  @snapshots  @var@log
+@  @data  @home  @root  @snapshots  @var@log
+# umount /mnt
 ~~~
 
-After installation, the `/etc/fstab` file already contains all the necessary entries to automatically mount the subvolumes.  
-To show how to manually mount a subvolume and to extend the `/etc/fstab` file, we use the `@data` subvolume created in the next chapter.
+The *ls* command only shows the existing *top level 5* subvolumes, including the new one.
+
+We create the mount point for the new subvolume in the root directory. To allow normal users access to the directory, we change the group.
+
+~~~
+# cd /
+# mkdir /data
+# chgrp users /mnt/@data
+~~~
+
+Subvolumes can also be nested and thus be created within existing subvolumes. For a better overview, we rather recommend the flat scheme.
+
+Subvolumes can also be nested and thus created within existing subvolumes. We recommend a flat scheme for a better overview. The “.snapshots” subvolumes required by Snapper are an exception.
+
+**Mount subvolume**
+
+After installation, the `/etc/fstab` file already contains all the necessary entries to automatically mount the subvolumes. The standard subvolume is always hooked in under **`/`**, even after a rollback.  
+To show how to manually mount a subvolume and to extend the `/etc/fstab` file, we use the previously created `@data` subvolume.
 
 With the command  
 **`mount -t btrfs -o subvol=@data,defaults /dev/sdxX /data/`**  
@@ -107,50 +105,22 @@ This simple variant is not suitable for permanent use. It also suppresses the ad
 UUID=<here>  /home  btrfs  subvol=/@home,defaults,noatime,space_cache=v2,autodefrag,compress=zstd 0 0
 ~~~
 
-The option *"space_cache=v2"* caches the addresses of the free blocks on the drive to speed up write operations.  
-The option *"autodefrag "* ensures defragmentation of the files during runtime.  
-We achieve data compression with the *"compress=zstd"* option.
+The option *"space_cache=v2"* caches the addresses of the free blocks on the drive to speed up write operations. The option *"autodefrag "* ensures defragmentation of the files during runtime, and the last option  *"compress=zstd "* compresses the data.
 
-Our self-created subvolume `@data` should be automatically and permanently available with these options. Therefore we add the required entry to `/etc/fstab` either with an editor or by means of two commands.
+Our self-created subvolume `@data` should be automatically and permanently available with these options. Therefore we add the required entry to `/etc/fstab` with two commands. We then use systemd to inform the kernel of the change and mount the new subvolume last.
 
 ~~~
 # echo "# Extended by root on $(date +%F)" >> /etc/fstab
 # grep home /etc/fstab | sed 's!home!data!g' "$@" >> /etc/fstab
+# systemctl daemon-reload
+# mount /data
 ~~~
 
-Immediately after, the subvolume is available by the short command **`mount /data`** and it is mounted like all the others at every boot.
-
-**Create new subvolume**
-
-To create a new *top level 5* subvolume `@data`, we mount the siduction Btrfs partition under `/mnt`.
-
-~~~
-# mount -t btrfs -o subvolid=5 /dev/sdxX /mnt/
-# ls /mnt/
-@  @home  @root  @snapshots  @var@log
-~~~
-
-The *ls* command shows the existing *top level 5* subvolumes after installation.  
-Now we create the new subvolume as well as its mount point and reissue the contents of `/mnt`. 
-
-~~~
-# btrfs subvolume create /mnt/@data
-# mkdir /mnt/@data
-# ls /mnt/
-@  @data  @home  @root  @snapshots  @var@log
-~~~
-
-To allow normal users access to the directory, we change the group:
-
-~~~
-# chgrp users /mnt/@data
-~~~
-
-Subvolumes can also be nested and thus be created within existing subvolumes. For a better overview, we rather recommend the flat scheme.
+Now the subvolume `@data`, like all others, is mounted during every boot process.
 
 ### Btrfs snapshot
 
-A snapshot is a subvolume like any other, but with a given initial content. Viewed in the file manager, it appears to contain a complete copy of the original subvolume. Btrfs is a copy-on-write file system, so it is not necessary to actually copy all the data. The snapshot simply has a reference to the current filesystem root of its original subvolume. Only when something is changed does Btrfs create a copy of the data. File changes in a snapshot do not affect the files in the original subvolume.
+A snapshot is a subvolume like any other, but with a given initial content. Viewed in the file manager, it appears to contain a complete copy of the original subvolume. Btrfs is a copy-on-write file system, so it is not necessary to actually copy all the data. The snapshot simply has a reference to the current filesystem root of its original subvolume. Only when a file in the subvolume is changed does Btrfs create a copy of the original file in the snapshot. In the opposite direction, changes to a file in a snapshot have no effect on the file in the original subvolume.
 
 A snapshot is not recursive. A subvolume or snapshot is effectively a barrier. Files in nested subvolumes do not appear in the snapshot. Instead, there is a blind subvolume, which could cause confusion in nested layouts. The non-recursive behavior explains why siduction created additional subvolumes during installation. Thus, private and variable data from `@home`, `@root`, and `@var@log` subvolumes do not end up in a snapshot of `@`.
 
@@ -177,7 +147,7 @@ By default, snapshots are created with read and write access. With the `-r` opti
 
 Snapper is a tool for managing file system snapshots on Linux for Btrfs file systems and thin-provisioned LVM volumes. Besides creating and deleting snapshots, it can also compare snapshots and undo differences between snapshots. It allows users to view older versions of files and undo changes. In addition, Snapper supports automatic snapshots according to schedules or to actions.
 
-The default configuration of Snapper in siduction includes automatic pre- and post-snapshots of the `@` subvolume when changes are made to the system and preparation of scheduled snapshots for any other subvolumes.
+The default configuration of Snapper in siduction includes automatic pre- and post-snapshots of the `@` subvolume when changes are made to the system and preparation of scheduled snapshots for any other subvolumes. An additional configuration template with the name *rolling* is also supplied. 
 
 The Snapper files are located in:
 
@@ -200,47 +170,47 @@ Siduction automatically creates the configurations for the @ and @home subvolume
 # snapper -c <config_name> create-config -t <config_template> <subvolume_mount_point>
 ~~~
 
-But first let's take a look at the configuration for the subvolume `@` with the name `root`, `@home` with the name `home`, and the default template `default` supplied by snapper.
+But first let's take a look at the configuration for the subvolume `@` with the name `root`, `@home` with the name `home`, and the two templates `default` from snapper and `rolling` from siduction.
 
 ~~~
 Snapper configuration
------------------------+-------+-------+-------+
-Subvolume              |   @   | @home |  --   |
------------------------+-------+-------+-------+
-conf-name or templ-name| root  | home  |default|
-=======================+=======+=======+=======+
-Key                    | Value | Value | Value |
------------------------+-------+-------+-------+
-ALLOW_GROUPS           | users | users |       |
-ALLOW_USERS            |       |       |       |
-BACKGROUND_COMPARISON  | yes   | yes   | yes   |
-EMPTY_PRE_POST_CLEANUP | yes   | yes   | yes   |
-EMPTY_PRE_POST_MIN_AGE | 1800  | 1800  | 1800  |
-FREE_LIMIT             | 0.2   | 0.2   | 0.2   |
-FSTYPE                 | btrfs | btrfs | btrfs |
-NUMBER_CLEANUP         | yes   | yes   | yes   |
-NUMBER_LIMIT           | 50    | 50    | 50    |
-NUMBER_LIMIT_IMPORTANT | 10    | 10    | 10    |
-NUMBER_MIN_AGE         | 1800  | 1800  | 1800  |
-QGROUP                 |       |       |       |
-SPACE_LIMIT            | 0.5   | 0.5   | 0.5   |
-SUBVOLUME              | /     | /home | /     |
-SYNC_ACL               | yes   | yes   | no    |
-TIMELINE_CLEANUP       | yes   | yes   | yes   |
-TIMELINE_CREATE        | no    | no    | yes   |
-TIMELINE_LIMIT_DAILY   | 10    | 10    | 10    |
-TIMELINE_LIMIT_HOURLY  | 10    | 10    | 10    |
-TIMELINE_LIMIT_MONTHLY | 10    | 10    | 10    |
-TIMELINE_LIMIT_WEEKLY  | 0     | 0     | 0     |
-TIMELINE_LIMIT_YEARLY  | 10    | 10    | 10    |
-TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  |
------------------------+-------+-------+-------+
+-----------------------+-------+-------+-------+-------+
+Subvolume              |   @   | @home |  --   |  --   |
+-----------------------+-------+-------+-------+-------+
+conf-name or templ-name| root  | home  |default|rolling|
+=======================+=======+=======+=======+=======+
+Key                    | Value | Value | Value | Value |
+-----------------------+-------+-------+-------+-------+
+ALLOW_GROUPS           | users | users |       | users |
+ALLOW_USERS            |       |       |       |       |
+BACKGROUND_COMPARISON  | yes   | yes   | yes   | yes   |
+EMPTY_PRE_POST_CLEANUP | yes   | yes   | yes   | yes   |
+EMPTY_PRE_POST_MIN_AGE | 1800  | 1800  | 1800  | 1800  |
+FREE_LIMIT             | 0.2   | 0.2   | 0.2   | 0.2   |
+FSTYPE                 | btrfs | btrfs | btrfs | btrfs |
+NUMBER_CLEANUP         | yes   | yes   | yes   | yes   |
+NUMBER_LIMIT           | 50    | 50    | 50    | 20    |
+NUMBER_LIMIT_IMPORTANT | 10    | 10    | 10    | 5     |
+NUMBER_MIN_AGE         | 1800  | 1800  | 1800  | 1800  |
+QGROUP                 |       |       |       |       |
+SPACE_LIMIT            | 0.5   | 0.5   | 0.5   | 0.5   |
+SUBVOLUME              | /     | /home | /     |       |
+SYNC_ACL               | yes   | yes   | no    | no    |
+TIMELINE_CLEANUP       | yes   | yes   | yes   | yes   |
+TIMELINE_CREATE        | no    | no    | yes   | yes   |
+TIMELINE_LIMIT_DAILY   | 10    | 10    | 10    | 6     |
+TIMELINE_LIMIT_HOURLY  | 10    | 10    | 10    | 11    |
+TIMELINE_LIMIT_MONTHLY | 10    | 10    | 10    |       |
+TIMELINE_LIMIT_WEEKLY  | 0     | 0     | 0     | 1     |
+TIMELINE_LIMIT_YEARLY  | 10    | 10    | 10    |       |
+TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  | 1800  |
+-----------------------+-------+-------+-------+-------+
 ~~~
 
 A *"pre ‘* and *’post ”* snapshot is created from the `@` subvolume for each APT action. The key `NUMBER_LIMIT=50` ensures that the most recent twenty-five snapshot pairs are retained.
 
-siduction has set the keys `ALLOW_GROUPS=users` and `TIMELINE_CREATE=no`.  
-The former allows all members of the *users* group to perform Snapper actions, the latter prevents an excessive increase in the number of snapshots held.
+siduction has set the `ALLOW_GROUPS=users` and thus enables all members of the *users* group to execute Snapper actions.  
+The key `TIMELINE_CREATE=no` prevents the respective subvolume from snapshot being added every hour.
 
 We can also change individual *key=value* pairs on the command line. In the example, we reduce the number of numbered snapshots held in the `root` configuration.
 
@@ -250,25 +220,23 @@ We can also change individual *key=value* pairs on the command line. In the exam
 
 Now the most recent ten instead of twenty-five pre- and post-snapshot pairs remain after APT actions. For standard use on a laptop or PC, this value should be sufficient.
 
-If you take into account the Snapper *default* configuration with an active *TIMELINE_CREATE* key and an APT action every day, the snapshots add up to almost 100 within a month. In addition, the very first *timeline snapshot* has been floating around in our file system for at least ten years, believe it or not. Who wants to reset their production system to this snapshot and keep all the data for that long?  
+If you take into account the Snapper *default* configuration with an active *TIMELINE_CREATE* key and an APT action every day, the snapshots add up to almost 80 within a month. In addition, the very first *timeline snapshot* has been floating around in our file system for at least ten years, believe it or not. Who wants to reset their production system to this snapshot and keep all the data for that long?  
 Please note: Snapper and snapshots are not a means of data backup. They enable the system to be reset promptly in the event of errors occurring or actions initiated by us that have had unintended effects.
 
-At this point, every siduction user should consider how many snapshots they want to keep and for how long and adjust the configuration accordingly.
-
-This is also possible with your own configuration template. For example, for the *@data* subvolume created in the *Btrfs* chapter.  
-To do this, we copy the file `/usr/share/snapper/config-templates/default` into the same directory with the new name `user` and then change the key-value pairs as required. We use this template to create the configuration for our `@data` subvolume.
+At this point, every siduction user should consider how many snapshots they want to keep and for how long and adjust the configuration accordingly. The `rolling` template, which takes into account the special features of siduction, provides a good starting point for this.  
+Using this template, Snapper generates the configuration for the `@data` subvolume created in the *Btrfs* chapter with the following command.
 
 ~~~
-# snapper -c data_pr create-config -t user /data
+# snapper -c data_pr create-config -t rolling /data
 ~~~
 
 This:
 
-1. creates the `/etc/snapper/configs/data_pr` configuration file based on the `/usr/share/snapper/config-templates/user` template.  
+1. creates the `/etc/snapper/configs/data_pr` configuration file based on the `/usr/share/snapper/config-templates/rolling` template.  
 2. creates the `/data/.snapshots` subvolume where future snapshots of `@data` will be stored. The path of a snapshot is `/data/.snapshots/#/snapshot`, where # is the snapshot number.  
 3. adds the name of the `data_pr` configuration to the key *"SNAPPER_CONFIGS"* in the `/etc/default/snapper` file.
 
-Now the configuration is active. If the key `TIMELINE_CREATE=yes` is set, systemd takes over the regular creation of *"timeline snapshots"* through its timers.
+Now the configuration is active. If the key `TIMELINE_CREATE=yes` is set and the systemd unit `snapper-timeline.timer` is active, systemd takes over the regular creation of *"timeline snapshots"* through its timers.
 
 ### Snapper and systemd
 
@@ -296,7 +264,7 @@ On the other hand the *TIMTLINE* function offers room for individual adjustments
 
 The manual page [*systemd-timer*](0716-systemd-timer_en.md#systemd-timer) explains how the timer unit works.
 
-Now we turn to the contents of the systemd unit `snapper-timeline.timer` in the directory `/lib/systemd/system/`.
+Now we turn to the contents of the systemd unit `snapper-timeline.timer` in the directory `/usr/lib/systemd/system/`.
 
 ~~~
 [Unit]
@@ -310,23 +278,12 @@ OnCalendar=hourly
 WantedBy=timers.target
 ~~~
 
-With the command **`systemctl edit --full snapper-timeline.timer`** we open a text editor and change the file as follows:
+With the command  
+**`systemctl edit --full snapper-timeline.timer`**  
+we open a text editor and change the **[Timer]** section to:  
+`OnCalendar=*-*-* 00/02:00:00`.
 
-~~~
-[Unit]
-Description=Timeline of Snapper Snapshots
-Documentation=man:snapper(8) man:snapper-configs(5)
-
-[Timer]
-#OnCalendar=hourly
-OnBootSec=30
-OnUnitActiveSec=2h
-
-[Install]
-WantedBy=timers.target
-~~~
-
-With this change, we get a snapshot thirty seconds after the boot and every two hours thereafter. From now on, Snapper creates a maximum of twelve snapshots every day instead of twenty-four.  
+Snapper now creates timeline snapshots every two hours starting from midnight. Please refer to `man systemd.time` for the time and date specifications.  
 We save the file and close the editor. systemd creates the changed file with the same name in the `/etc/systemd/system/` directory and runs the **`systemctl daemon-reload`** command to load the changed configuration.
 
 The second systemd timer unit `snapper-cleanup.timer` takes care of disposing of old, excess and empty snapshots. It has the following content:
@@ -344,7 +301,7 @@ OnUnitActiveSec=1d
 WantedBy=timers.target
 ~~~
 
-With the knowledge of the contents of the TIMELINE timer we can weigh now whether the configuration is meaningful. For someone who restarts his PC every day, the key `OnBootSec=10m` might be rather unfavorable if he finds that a serious error has crept in shortly before closing time on the previous day. In this case it probably makes more sense to set the key to `OnBootSec=4h`. The file is changed in the same way as in the example shown above.
+With the knowledge of the contents of the TIMELINE timer we can weigh now whether the configuration is meaningful. For someone who restarts his PC every day, the key `OnBootSec=10m` might be rather unfavorable if he finds that a serious error has crept in shortly before closing time on the previous day. In this case it probably makes more sense to set the key to `OnBootSec=3h`. The file is changed in the same way as in the example shown above.
 
 ### Snapper - manual snapshots
 
@@ -367,19 +324,19 @@ The syntax of the command corresponds to the following pattern which also shows 
 + **-u \<userdata\>**  
   specifies user data for the snapshot. The format must be *key=value*. Multiple user data must be separated by a comma, for example `author=Tom,important=yes`.
 
-Snapper always creates snapshots in *read-only* mode. You can change the default with the `--read-write` option. Changing data in a snapshot will lead to inconsistent data sets. We strongly advise against this unless you know exactly what you are doing.
+Snapper always creates snapshots in *read-only* mode. You can change the default with the `--read-write` option. Changing data in a snapshot will lead to inconsistent data sets. We strongly advise against this unless you know exactly what you are doing and why.
 
-Now we create a snapshot and display the snapshots of the same configuration.
+Now we create a snapshot and display the snapshots of the same configuration. (The columns have been shortened.)
 
 ~~~
-$ snapper -c data_pr create -t single -d "AB finished" -c number -u user=Pit
+$ snapper -c data_pr create -t single -d "AB finished" -c number -u user=Tom
 $ snapper -c data_pr list
  #|Typ   |Pre #|Date    |User|Cleanup |Description|Userdata
 --+------+-----+--------+----+--------+-----------+--------
  0|single|     |        |root|        |current    |
 88|single|     |22:00:38|root|timeline|timeline   |
 90|single|     |11:34:41|root|timeline|timeline   |
-91|single|     |11:36:23|user|number  |AB finished|user=Pit
+91|single|     |11:36:23|user|number  |AB finished|user=Tom
 ~~~
 
 The snapshot we (user) created has # 91. Unfortunately we made the mistake to let the snapshot be handled according to the cleanup rule *number*. We change this with the *`modify -c ""`* option so that Snapper will not delete it automatically. 
@@ -392,7 +349,7 @@ $ snapper -c data_pr list
  0|single|     |        |root|        |current    |
 88|single|     |22:00:38|root|timeline|timeline   |
 90|single|     |11:34:41|root|timeline|timeline   |
-91|single|     |11:36:23|user|        |AB finished|user=Pit
+91|single|     |11:36:23|user|        |AB finished|user=Tom
 ~~~
 
 Snapshot # 91 will now remain until we delete it ourselves.
@@ -401,7 +358,7 @@ Snapshot # 91 will now remain until we delete it ourselves.
 
 We can delete any snapshot at any time as long as we have the rights to do so. Snapper does not care about the delete action, because on each run the cleanup algorithm checks which snapshots are kept. The preceding chapter [Snapper Configuration](0704-sys-admin-btrfs-snapper_en.md#snapper-configuration) also explains in detail the settings with which we can adjust the cleanup algorithm if necessary. 
 
-The following command removes snapshot # 91 from our `@data` subvolume.
+The following command removes snapshot # 91 from the `@data` subvolume.
 
 ~~~
 $ snapper -c data_pr delete 91
@@ -418,7 +375,7 @@ If the system is damaged due to an action initiated by us that went completely o
 A *"rollback"* is only supported with Btrfs for the root file system. The root file system must be on a single device, in a single partition, and on a single subvolume. Directories that are excluded from `/` snapshots, for example `/root`, can be on separate partitions.
 
 **Performing a rollback**  
-Before the rollback, we check if the rollback target works as expected. To do this, we boot into the desired snapshot, for example 13, using the *"siduction snapshots"* submenu. The system boots in *read-only* mode. We ignore the error message regarding *sddm*.
+Before the rollback, we check if the rollback target works as expected. To do this, we boot into the desired snapshot, for example 13, using the *siduction snapshots* submenu. The system boots in *read-only* mode. We ignore the error message regarding *sddm*.
 If it does, we reboot back to the current default subvolume. There we perform the rollback as **root**:
 
 ~~~
@@ -431,8 +388,9 @@ Setting default subvolume to snapshot 16.
 
 **Always execute rollback from the default subvolume specifying the subvolume number of the rollback target.**
 
-The output precisely describes the rollback procedure. Afterwards the grub menu file *grub.cfg* is automatically updated to show the new snapshots in the submenu and snapshot 16 is used as the default subvolume. The grub menu file is updated whenever the paths of the btrfs-default subvolume, the booted subvolume, or the grub-default menu entry differ after a snapshot, rollback, or reboot.  
-The **`snapper list`** command shows that we are currently in snapshot 12 and snapshot 16 is the new default subvolume. (The minus `-` after #12 and the plus `+` after #16.)
+The output precisely describes the rollback procedure. Afterwards the grub menu file *grub.cfg* is automatically updated. The standard boot entry now boots into the new standard subvolume (snapshot 16). In addition, the new snapshots appear in the *siduction snapshots* submenu. When using the boot manager systemd-boot, boot entries are created for all kernels contained in snapshot 16. Here too, snapshot 16 becomes the default boot target.
+
+The **`snapper list`** command shows that we are currently in snapshot 12 and snapshot 16 is the new default subvolume. (The minus `-` behind #12 and the plus `+` behind #16.)
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup| Description   |
@@ -445,24 +403,18 @@ The **`snapper list`** command shows that we are currently in snapshot 12 and sn
 16+|single|     |12:05:23|root |       |r/w copy of #13|
 ~~~
 
-We perform a reboot and select the Grub default entry. Now the `*` after #16 indicates that we are in this snapshot and it is the default subvolume.
+We perform a reboot. Now the `*` behind #16 indicates that we are in this snapshot and it is the default subvolume.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup| Description   |
 16*|single|     |12:05:23|root |       |r/w copy of #13|
 ~~~
 
-The Grub menu file is also updated automatically in the rollback target and Grub is reinstalled from snapshot #16. From now on, Grub reads the menu file from the new default subvolume #16.
-
-The following graphic illustrates how the test-btrfs-default script adjusts the configuration of GRUB after a rollback.
-
-![Rollback graphic](./images-en/btrfs/rollback-graph-en.png)
-
 ### File rollback within the root file system
 
 This is the undoing of changes to files. For this purpose, two shnapshots are compared and then the file to be changed is picked out. Afterwards you can see the changes and decide if you want to undo them.
 
-The output of **`snapper list`** shows the currently existing snapshots of the subvolume @. (The columns have been shortened.) All snapshots with a digit # greater than zero represent the state of the file system at that exact time. The only exception is the one marked with a `*`. It was booted into and is the default snapshot. If no system rollback has been performed yet, snapshot 0 takes its place.
+The output of **`snapper list`** shows the currently available snapshots of the root file system. (The columns have been shortened.) All snapshots with a digit # greater than zero represent the state of the file system at that exact time. The only exception is the one marked with a `*`. It was booted into and is the default snapshot. If no system rollback has been performed yet, snapshot 0 takes its place.
 
 ~~~
  # |Typ   |Pre #|Date    |User |Cleanup |Description|Us..
@@ -570,7 +522,9 @@ $ snapper -c data_pr diff 16..17 /data/user1/Test.txt
 +This text was inserted after the snapshot 16.
 ~~~
 
-Since the file has not been modified since snapshot 17, the **`$ snapper -c data_pr diff 16..0 /data/user1/Test.txt`** command does not produce any other output for comparing snapshot 16 with the current contents of the file.
+Since the file has not been modified since snapshot 17, the  
+**`$ snapper -c data_pr diff 16..0 /data/user1/Test.txt`**  
+command does not produce any other output for comparing snapshot 16 with the current contents of the file.
 
 Now we put the `undochange` command between 16 and 0. After that the *Test.txt* contains the first six lines from snapshot 16.
 
@@ -633,12 +587,13 @@ $ cp /data/.snapshots/16/snapshot/user1/Test.txt /home/user1/Test.txt
 
 ### Sources BTRFS and Snapper
 
-+ **`man btrfs`** and **`man btrfs-subvolume`** as well as other subpages of *"man btrfs "*  
-+ [Btrfs wiki from kernel.org](https://btrfs.wiki.kernel.org/index.php/Main_Page)  
-+ [Btrfs documentation](https://btrfs.readthedocs.io/en/latest/index.html)  
-+ [Btrfs snapshot in grub menu](https://github.com/Antynea/grub-btrfs)  
-+ **`man snapper`** and **`man snapper-configs`**  
-+ [Snapper project page](http://snapper.io/)  
++ **`man btrfs`** and **`man btrfs-subvolume`** as well as other subpages of *"man btrfs "*
++ [Btrfs wiki from kernel.org](https://btrfs.wiki.kernel.org/index.php/Main_Page)
++ [Btrfs documentation](https://btrfs.readthedocs.io/en/latest/index.html)
++ [Btrfs snapshot in grub menu](https://github.com/Antynea/grub-btrfs)
++ **`man snapper`** and **`man snapper-configs`**
++ [Snapper project page](http://snapper.io/)
 + [Snapper on GitHub](https://github.com/openSUSE/snapper)
++ **`man systemd.time`** und **`man systemd.timer`**
 
-<div id="rev">Last edited: 2024-04-30</div>
+<div id="rev">Last edited: 2024-12-17</div>
