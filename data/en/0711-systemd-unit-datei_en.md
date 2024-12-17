@@ -386,9 +386,9 @@ Please also refer to the man pages `man systemd-analyze` and `man systemctl`.
 
   *"systemctl edit"* opens the selected unit file in the configured editor.
 
-    + **`systemctl edit <UNIT_FILE>`** creates a new directory under `/etc/systemd/system/` named `<UNIT_FILE>.d` and in it the file `override.conf` which contains only the changes from the original unit file. This applies to all unit files in the directories entered in the [Hirarchy of load paths](#load-path-of-unit-files) including `/etc/systemd/system/` downwards.
+    + **`systemctl edit <UNIT_FILE>`** creates a new directory under `/etc/systemd/system/` named `<UNIT_FILE>.d` and in it the file `override.conf` which contains only the changes from the original unit file. This applies to all unit files in the directories entered in the [Hirarchy of load paths](#loading-path-of-the-unit-files) including `/etc/systemd/system/` downwards.
 
-    + **`systemctl edit - -full <UNIT_FILE>`** creates a new file with the same name in the `/etc/systemd/system/` directory. This applies to all unit files in the directories entered in the [Hirarchy of load paths](#load-path-of-unit-files) below `/etc/systemd/system/`. Files already existing in the `/etc/systemd/system/` directory will be overwritten.
+    + **`systemctl edit - -full <UNIT_FILE>`** creates a new file with the same name in the `/etc/systemd/system/` directory. This applies to all unit files in the directories entered in the [Hirarchy of load paths](#loading-path-of-the-unit-files) below `/etc/systemd/system/`. Files already existing in the `/etc/systemd/system/` directory will be overwritten.
 
     + **`systemctl edit - -full - -force <UNIT_FILE>`** creates a new file in the directory `/etc/systemd/system/`. Without the `--full` option, only an `override.conf` file would be generated in the new directory `/etc/systemd/system/<UNIT_FILE>.d/`, which lacks the associated unit file.
 
@@ -502,4 +502,4 @@ man systemd-analyze
 man systemctl
 ~~~
 
-<div id="rev">Last edited: 2022/04/08</div>
+<div id="rev">Last edited: 2024-12-17</div>

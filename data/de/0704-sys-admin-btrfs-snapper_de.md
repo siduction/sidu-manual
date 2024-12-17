@@ -110,7 +110,7 @@ Mit der Option *"space_cache=v2"* werden die Adressen der freien Blöcke des Lau
 Unser selbst erstelltes Subvolumen `@data` soll automatisch und dauerhaft mit diesen Optionen verfügbar sein. Deshalb ergänzen wir die Datei `/etc/fstab` um den benötigten Eintrag mittels zweier Befehle. Anschließend benutzen wir systemd um den Kernel über die Änderung zu informieren und hängen das neue Subvolumen zuletzt ein.
 
 ~~~
-# echo "# Extended by root on $(date +%F)" >> /etc/fstab
+# echo -e "#\n# Extended by root on $(date +%F)" >> /etc/fstab
 # grep home /etc/fstab | sed 's!home!data!g' "$@" >> /etc/fstab
 # systemctl daemon-reload
 # mount /data
@@ -151,11 +151,11 @@ Die Standardkonfiguration von Snapper in siduction umfasst automatische Pre- und
 
 Die Snapper Dateien befinden sich in:
 
-+ `/usr/bin/` Das ausführbare Programm `snapper`.  
-+ `/usr/lib/snapper/` Hilfsprogramme für Snapper.  
-+ `/etc/default/snapper` Eine Übersicht der konfigurierten Subvolumen.  
-+ `/etc/snapper/configs/` Die Konfigurationsdateien der konfigurierten Subvolumen.  
-+ `/usr/share/snapper/config-templates/` Die Konfigurationsvorlagen.  
++ `/usr/bin/` Das ausführbare Programm `snapper`.
++ `/usr/lib/snapper/` Hilfsprogramme für Snapper.
++ `/etc/default/snapper` Eine Übersicht der konfigurierten Subvolumen.
++ `/etc/snapper/configs/` Die Konfigurationsdateien der konfigurierten Subvolumen.
++ `/usr/share/snapper/config-templates/` Die Konfigurationsvorlagen.
 + `/var/log/snapper.log` Snappers Logdatei.
 
 Bitte die man pages **`man snapper`** und **`man snapper-configs`** lesen.
@@ -170,7 +170,7 @@ Siduction erstellt bei der Installation automatisch die Konfigurationen für die
 # snapper -c <config_name> create-config -t <config_vorlage> <subvolume_mount_point>
 ~~~
 
-Doch zuvor schauen wir uns die Konfiguration für das Subvolumen `@` mit dem Namen `root`, `@home` mit dem Namen `home` und die beiden Vorlagen `default` von snapper sowie `rolling` an.
+Doch zuvor schauen wir uns die Konfiguration für das Subvolumen `@` mit dem Namen `root`, `@home` mit dem Namen `home` und die beiden Vorlagen `default` von snapper sowie `rolling` von siduction an.
 
 ~~~
 Snapper Konfiguration
@@ -281,7 +281,7 @@ WantedBy=timers.target
 Mit dem Befehl  
 **`systemctl edit --full snapper-timeline.timer`**  
 öffnen wir einen Texteditor und ändern die Sektion **[Timer]** zu  
-`OnCalendar=*-*-* 00/02:00:00`.
+`OnCalendar=*-*-* 00/02:00:00`
 
 Snapper erstellt fortan ausgehend von Mitternacht alle zwei Stunden timeline Snapshots. Die Zeit- und Datumsspezifikationen bitte unter `man systemd.time` nachlesen.  
 Wir speichern die Datei und schließen den Editor. systemd legt die geänderte Datei mit gleichem Namen im Verzeichnis `/etc/systemd/system/` an und führt den Befehl **`systemctl daemon-reload`** aus, um die geänderte Konfiguration zu laden.

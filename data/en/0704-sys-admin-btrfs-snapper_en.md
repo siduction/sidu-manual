@@ -110,7 +110,7 @@ The option *"space_cache=v2"* caches the addresses of the free blocks on the dri
 Our self-created subvolume `@data` should be automatically and permanently available with these options. Therefore we add the required entry to `/etc/fstab` with two commands. We then use systemd to inform the kernel of the change and mount the new subvolume last.
 
 ~~~
-# echo "# Extended by root on $(date +%F)" >> /etc/fstab
+# echo -e "#\n# Extended by root on $(date +%F)" >> /etc/fstab
 # grep home /etc/fstab | sed 's!home!data!g' "$@" >> /etc/fstab
 # systemctl daemon-reload
 # mount /data
@@ -151,11 +151,11 @@ The default configuration of Snapper in siduction includes automatic pre- and po
 
 The Snapper files are located in:
 
-+ `/usr/bin/` The `snapper` executable program.  
-+ `/usr/lib/snapper/` Utilities for snapper.  
-+ `/etc/default/snapper` An overview of the configured subvolumes.  
-+ `/etc/snapper/configs/` The configuration files of the configured subvolumes.  
-+ `/usr/share/snapper/config-templates/` The configuration templates.  
++ `/usr/bin/` The `snapper` executable program.
++ `/usr/lib/snapper/` Utilities for snapper.
++ `/etc/default/snapper` An overview of the configured subvolumes.
++ `/etc/snapper/configs/` The configuration files of the configured subvolumes.
++ `/usr/share/snapper/config-templates/` The configuration templates.
 + `/var/log/snapper.log` Snapper's log file.
 
 Please read the man pages **`man snapper`** and **`man snapper-configs`**.
@@ -281,7 +281,7 @@ WantedBy=timers.target
 With the command  
 **`systemctl edit --full snapper-timeline.timer`**  
 we open a text editor and change the **[Timer]** section to:  
-`OnCalendar=*-*-* 00/02:00:00`.
+`OnCalendar=*-*-* 00/02:00:00`
 
 Snapper now creates timeline snapshots every two hours starting from midnight. Please refer to `man systemd.time` for the time and date specifications.  
 We save the file and close the editor. systemd creates the changed file with the same name in the `/etc/systemd/system/` directory and runs the **`systemctl daemon-reload`** command to load the changed configuration.

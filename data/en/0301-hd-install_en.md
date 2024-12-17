@@ -106,7 +106,7 @@ During the installation, the computer should preferably be connected to the Inte
 
    ![calamares partitions finish](./images-en/install-hd/calamares-en_06.png "Partitions result")
 
-6. Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with [adduser](#adduser).
+6. Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with [adduser](#add-user).
 
    ![calamares users](./images-en/install-hd/calamares-en_07.png "users")
 
@@ -172,4 +172,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2022-12-14</div>
+<div id="rev">Last edited: 2024-12-17</div>

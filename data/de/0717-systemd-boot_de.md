@@ -42,7 +42,7 @@ Eignung bei unterschiedlichen Systemkonfigurationen und im Vergleich mit GRUB.
 | Dualboot mit WIN / MAC auf einer HD | + | + | Wie zuvor. Bei beiden booten mittels ChainLoader möglich. |
 | Mehrere Linux OS auf mehreren HD | - | + | sd-boot kann nur OS von einer HD booten. Zwei Instanzen im UEFI mit Auswahl über die Firmware notwendig. |
 | Dualboot mit WIN / MAC auf mehreren HD | - | + | Wie zuvor. |
-| Mehrere Varianten eines Linux OS auf einer HD | o | o | Bei sd-boot ist die Datei `/etc/os-release` notwendig, bei GRUB ist die Datei `/etc/default/grub.d/xxxx.cfg` ggf. zu erstellen oder ändern. |
+| Mehrere Varianten eines Linux OS auf einer HD | o | o | Bei sd-boot ist die Datei `/etc/os-release` notwendig, bei GRUB ist die Datei `/etc/default/grub.d/xxxx.cfg` ggf. zu erstellen oder zu ändern. |
 | Linux OS auf Btrfs Dateisystem mit Unterstützung von snapper | - | o | sd-boot erstellt Menüeinträge nur einmalig bei der Installation der Kernel, gleichgültig aus welchem Subvolumen. Andere Subvolumen erhalten keinen Eintrag. GRUB ist je nach Distribution auf unterschiedliche, zusätzliche Software angewiesen. |
 | siduction auf Btrfs Dateisystem mit Unterstützung von snapper | + | + | Das Paket siduction-btrfs erstellt Menüeinträge für sd-boot und GRUB nach einem Rollback. Der Standard Booteintrag bootet das Rollbackziel. Bei GRUB wird mit Hilfe des Pakets grub-btrfs das Untermenü *siduction snapshots* angezeigt. |
 | Eine vollverschlüsselte HD | ++ | + | sd-boot reicht die Aufgaben an den Kernel und den User-Space weiter und ist dadurch effizienter. GRUB benötigt zusätzliche Software. |

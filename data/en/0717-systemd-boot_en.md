@@ -2,7 +2,6 @@
 
 ## systemd-boot
 
-
 Although it was included in systemd more than ten years ago, the boot manager systemd-boot (sd-boot for short) is rarely found on desktop systems. If you decide to use sd-boot with a suitable setup and after thorough testing, the changeover is not a major challenge for a somewhat experienced user.
 
 **Features**
