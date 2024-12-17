@@ -2,7 +2,7 @@
 
 ## systemd-boot
 
-Obwohl bereits vor mehr als zehn Jahren in systemd aufgenommen, findet man den Bootmanager systemd-boot (kurz sd-boot) auf Dektop Systemen selten. Entscheidet man sich bei einem passenden Setup und nach gründlichen Tests für sd-boot, stellt der Umstieg für einen etwas geübten Nutzer keine große Herausforderung dar.
+Obwohl bereits vor mehr als zehn Jahren in systemd aufgenommen, findet man den Bootmanager systemd-boot (kurz sd-boot) auf Desktop Systemen selten. Entscheidet man sich bei einem passenden Setup und nach gründlichen Tests für sd-boot, stellt der Umstieg für einen etwas geübten Nutzer keine große Herausforderung dar.
 
 **Besonderheiten**
 
@@ -23,7 +23,7 @@ siduction installiert den Bootmanager GRUB automatisch. Eine Auswahl von sd-boot
 - Laden von Drop-in-Treibern.
 - Registrieren von SecureBoot-Schlüsseln.
 - Erstellen eines Menüeintrages bei Installation neuer Kernel.
-- Boot-Zählung
+- Boot-Zählung  
   In Zusammenhang mit gescheiterten Bootvorgängen kann der Booteintrag automatisch entfernt werden.
 - Unterstützung für die Übergabe eines Zufallsseeds an das OS.  
   Es dient dem Schutz vor der Verwendung manipulierter OS-Images.
@@ -42,12 +42,13 @@ Eignung bei unterschiedlichen Systemkonfigurationen und im Vergleich mit GRUB.
 | Dualboot mit WIN / MAC auf einer HD | + | + | Wie zuvor. Bei beiden booten mittels ChainLoader möglich. |
 | Mehrere Linux OS auf mehreren HD | - | + | sd-boot kann nur OS von einer HD booten. Zwei Instanzen im UEFI mit Auswahl über die Firmware notwendig. |
 | Dualboot mit WIN / MAC auf mehreren HD | - | + | Wie zuvor. |
-| Mehrere Varianten eines Linux OS auf einer HD | o | o | Bei sd-boot manuelles Anpassen der Menüeinträge nötig. Bei GRUB die Datei `/etc/default/grub.d/xxxx.cfg` erstellen oder ändern. |
+| Mehrere Varianten eines Linux OS auf einer HD | o | o | Bei sd-boot ist die Datei `/etc/os-release` notwendig, bei GRUB ist die Datei `/etc/default/grub.d/xxxx.cfg` ggf. zu erstellen oder ändern. |
 | Linux OS auf Btrfs Dateisystem mit Unterstützung von snapper | - | o | sd-boot erstellt Menüeinträge nur einmalig bei der Installation der Kernel, gleichgültig aus welchem Subvolumen. Andere Subvolumen erhalten keinen Eintrag. GRUB ist je nach Distribution auf unterschiedliche, zusätzliche Software angewiesen. |
+| siduction auf Btrfs Dateisystem mit Unterstützung von snapper | + | + | Das Paket siduction-btrfs erstellt Menüeinträge für sd-boot und GRUB nach einem Rollback. Der Standard Booteintrag bootet das Rollbackziel. Bei GRUB wird mit Hilfe des Pakets grub-btrfs das Untermenü *siduction snapshots* angezeigt. |
 | Eine vollverschlüsselte HD | ++ | + | sd-boot reicht die Aufgaben an den Kernel und den User-Space weiter und ist dadurch effizienter. GRUB benötigt zusätzliche Software. |
 
-sd-boot spielt seine Vorteile bei einem einfachen Hardware Setup voll aus, aber scheitert bei Betriebssystemen auf mehreren Medien.  
-Grub wiederum ist universeller einsetzbar, dadurch schwergewichtig und benötigt trotzdem externe Software. Für einfache Hardware Setup ist GRUB überdimensioniert.
+sd-boot spielt seine Vorteile bei einem einfachen Hardware Setup voll aus, aber scheitert bei Betriebssystemen auf mehreren Medien. Mit Unterstützung von siduction-btrfs eignet sich sd-boot auch gut für eine Installation in das Dateisystem Btrfs bei gleichzeitiger Verwendung von Snapper.  
+Grub wiederum ist universeller einsetzbar, dadurch schwergewichtig und benötigt trotzdem externe Software. Auch hier ist siduction-btrfs bei einer Installation in das Dateisystem Btrfs nützlich. Für einfache Hardware Setup ist GRUB überdimensioniert.
 
 ### systemd-boot installieren
 
@@ -278,7 +279,7 @@ Das Paket *grub-btrfs* wirft dabei einen Fehler aus. In Zeile 13 lesen wir, dass
 Folglich kommentieren wir die Zeile aus und bemühen apt noch einmal.
 
 ~~~
-# sed -i '23s!\(.*\)!#\1!' /var/lib/dpkg/info/grub-btrfs.postrm
+# sed -i '23s!^!#!' /var/lib/dpkg/info/grub-btrfs.postrm
 # apt purge grub-btrfs
 ~~~
 
@@ -325,8 +326,11 @@ Der zweite Befehl löscht anschließenden das zugehörige Verzeichnis aus `/efi/
 
 ### systemd-boot und Btrfs
 
-Das Dateisystem Btrfs bietet, besonders in Zusammenarbeit mit snapper, die Möglichkeit ein defektes System auf einen vorherigen Stand zurückzusetzen. In diesem Zusammenhang ist die von sd-boot verlangte Auslagerung des Verzeichnisses `/boot` in eine separate Partition hinderlich. Das Verzeichnis `/boot` ist ein wesentlicher Bestandteil des Betriebssystems und man sollte es im Zusammenhang mit Btrfs nicht in eine Partition oder ein Subvolumen auslagern. Denn dort wird es von Snapshots des Wurzeldateisystems nicht erfasst.  
-siduction ist mit dem Paket *siduction-btrfs* in der Lage bei einem *Rollback* für alle im Rollbackziel enthaltenen Kernel Menüeinträge zu erstellen. Menüeinträge für andere Snapshot stehen nicht zur Verfügung. Somit kann der Benutzer selbst entscheiden, ob er sd-boot bei einer Installation des Systems auf Btrfs verwenden möchte.
+Das Dateisystem Btrfs bietet, besonders in Zusammenarbeit mit snapper, die Möglichkeit ein defektes System auf einen vorherigen Stand zurückzusetzen. In diesem Zusammenhang ist die von sd-boot verlangte Auslagerung des Verzeichnisses `/boot` in eine separate Partition hinderlich. Das Verzeichnis `/boot` ist ein wesentlicher Bestandteil des Betriebssystems und man sollte es im Zusammenhang mit Btrfs nicht in eine Partition oder ein Subvolumen auslagern. Denn dort wird es von Snapshots des Wurzeldateisystems nicht erfasst.
+
+Trotzdem ist siduction mit dem Paket *siduction-btrfs* in der Lage nach einem Rollback für alle im Rollbackziel enthaltenen Kernel Menüeinträge zu erstellen. Außerdem bootet dann der Standard Booteintrag in das Rollbackziel. Menüeinträge für andere Snapshot stehen jedoch nicht zur Verfügung.
+
+Das Paket *siduction-btrfs* ist nicht an einen bestimmten Bootmanager gebunden. Somit kann der Benutzer selbst entscheiden, ob er bei einer Installation des Systems auf Btrfs zu sd-boot wechseln möchte.
 
 ### Weitere Informationen
 
@@ -334,4 +338,4 @@ siduction ist mit dem Paket *siduction-btrfs* in der Lage bei einem *Rollback* f
 [boot_loader_specification (en)](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [Dateisystem Treiber von akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Zuletzt bearbeitet: 2024-09-21</div>
+<div id="rev">Zuletzt bearbeitet: 2024-12-17</div>
