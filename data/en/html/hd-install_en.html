@@ -272,20 +272,13 @@ possibility to install the complete system onto an encrypted partition
 or hard disk. Only the first stage of the boot manager <em>Grub</em> is
 located (without encryption) on the <em>“BIOS-boot”</em> partition. Grub
 asks for the encrypted installations password at the beginning of every
-boot process before the boot menu appears.<br />
-The partitioning described in step 5 above is now slightly different.
-When selecting one of the first three options, the function <em>“Encrypt
-system”</em> appears in addition, where we also enter the password at
-the same time.</p>
-<figure>
-<img src="./images-en/install-hd/calamares-en_11.png"
-title="Encrypt system" alt="calamares encrypt system" />
-<figcaption aria-hidden="true">calamares encrypt system</figcaption>
-</figure>
-<p>If we use <em>“Manual partitioning”</em>, we need an empty, unused
-area on the hard disk. In case this is not available, we first delete
-one or more partitions that are no longer needed. Then we create the new
-partition.</p>
+boot process before the boot menu appears.</p>
+<p>The partitioning described in step 5 above is now slightly
+different.<br />
+We also use the “<em>Manual partitioning</em>” option here. The
+encrypted system requires an empty, unused area on the hard disk. If
+this is not available, we first delete partitions that are no longer
+required. Then we create the new partition.</p>
 <figure>
 <img src="./images-en/install-hd/calamares-en_12.png"
 title="Manual partition encrypt 1"
@@ -314,14 +307,14 @@ the following command as <strong>root</strong>:</p>
 more options that allow additional settings. Finally, a prompt appears,
 asking to enter the password twice.</p>
 <p>siduction specific desktop icons (for the manual and IRC) must be
-added yourself.</p>
+added by yourself.</p>
 <p>To remove a user, enter:</p>
 <pre><code>~# deluser &lt;username&gt;</code></pre>
 <p>More information:</p>
 <pre><code>man adduser
 man deluser</code></pre>
 <div id="rev">
-Last edited: 2024-12-17
+Last edited: 2024-12-18
 </div>
 </body>
 </html>
