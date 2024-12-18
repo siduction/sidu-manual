@@ -131,12 +131,10 @@ During the installation, the computer should preferably be connected to the Inte
 
 ### Encrypt system
 
-Since *siduction 2021.2 Farewell*, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* is located (without encryption) on the *"BIOS-boot"* partition. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.  
-The partitioning described in step 5 above is now slightly different. When selecting one of the first three options, the function *"Encrypt system"* appears in addition, where we also enter the password at the same time.
+Since *siduction 2021.2 Farewell*, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* is located (without encryption) on the *"BIOS-boot"* partition. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.
 
-![calamares encrypt system](./images-en/install-hd/calamares-en_11.png "Encrypt system")
-
-If we use *"Manual partitioning"*, we need an empty, unused area on the hard disk. In case this is not available, we first delete one or more partitions that are no longer needed. Then we create the new partition.
+The partitioning described in step 5 above is now slightly different.  
+We also use the “*Manual partitioning*” option here. The encrypted system requires an empty, unused area on the hard disk. If this is not available, we first delete partitions that are no longer required. Then we create the new partition.
 
 ![calamares, manual partitioning encrypt 1](./images-en/install-hd/calamares-en_12.png "Manual partition encrypt 1")
 
@@ -157,7 +155,7 @@ To add new users with automatic takeover of group permissions, run the following
 
 Pressing the **`Enter`** key will bring up more options that allow additional settings. Finally, a prompt appears, asking to enter the password twice.
 
-siduction specific desktop icons (for the manual and IRC) must be added yourself. 
+siduction specific desktop icons (for the manual and IRC) must be added by yourself. 
 
 To remove a user, enter:
 
@@ -172,4 +170,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2024-12-17</div>
+<div id="rev">Last edited: 2024-12-18</div>

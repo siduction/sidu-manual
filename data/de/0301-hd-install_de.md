@@ -119,12 +119,10 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
 ### System verschlüsseln
 
-Ab *siduction 2021.2 Farewell* besteht innerhalb des Installationsprogramms Calamares die Möglichkeit, das vollständige System in eine verschlüsselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers Grub befindet sich unverschlüsselt auf der "*BIOS-boot*"-Partition. Grub fragt bei jedem Bootvorgang das Passwort für die verschlüsselte Installation ab, bevor das Bootmenü erscheint.  
-Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringfügig anders. Bei der Auswahl einer der drei ersten Optionen, erscheint zusätzlich die Funktion "*Verschlüssele System*", in der wir auch gleich das Passwort eingeben.
+Ab *siduction 2021.2 Farewell* besteht innerhalb des Installationsprogramms Calamares die Möglichkeit, das vollständige System in eine verschlüsselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers Grub befindet sich unverschlüsselt auf der "*BIOS-boot*"-Partition. Grub fragt bei jedem Bootvorgang das Passwort für die verschlüsselte Installation ab, bevor das Bootmenü erscheint.
 
-![calamares System verschlüsseln](./images-de/install-hd/calamares-de_11.png "System verschlüsseln")
-
-Benutzen wir "*Manuelle Partitionierung*", so benötigen wir einen leeren, unbenutzten Bereich auf der Festplatte. Ist dieser nicht vorhanden, löschen wir zuerst eine oder mehrere nicht mehr benötigte Partitionen. Dann erstellen wir die neue Partition.
+Die oben unter 5 beschriebene Partitionierung gestaltet sich nun geringfügig anders.  
+Wir benutzen auch hier die Option "*Manuelle Partitionierung*". Für das verschlüsselte System braucht es auf der Festplatte einen leeren, unbenutzter Bereich. Ist dieser nicht vorhanden, löschen wir zuerst nicht mehr benötigte Partitionen. Dann erstellen wir die neue Partition.
 
 ![calamares Manuelle Partition verschlüsseln 1](./images-de/install-hd/calamares-de_12.png "Manuelle Partition verschlüsseln 1")
 
@@ -155,4 +153,4 @@ So entfernt man einen Benutzer
 
 Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
-<div id="rev">Zuletzt bearbeitet: 2022-12-14</div>
+<div id="rev">Zuletzt bearbeitet: 2024-12-18</div>
