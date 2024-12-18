@@ -48,7 +48,7 @@ fi
 case $1 in
 de)
     language=de-DE      ## LaTex options, see: 
-    paper=a4paper       ## https://de.overleaf.com/learn/latex/Page_size_and_margins
+    paper=a4            ## https://de.overleaf.com/learn/latex/Page_size_and_margins
     textheight=227mm    ##
     titel="Siduction Handbuch"
     team="siduction Team"
@@ -56,7 +56,7 @@ de)
     ;;
 en)
     language=en-US
-    paper=letterpaper
+    paper=letter
     textheight=211mm
     titel="siduction manual"
     team="siduction team"
