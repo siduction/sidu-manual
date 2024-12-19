@@ -70,70 +70,75 @@ The text file can then be copied to the target systems `$HOME` directory and be 
 
 During the installation, the computer should preferably be connected to the Internet because Calamares uses the GeoIP service to determine default settings for localization and time.
 
-1. The installation program can be started comfortably via the ![calamares icon](./images-en/install-hd/calamares-en_00.png) icon on the desktop or in the menu: *"System"* > *"Install system"*.
+ 1. The installation program can be started comfortably via the ![calamares icon](./images-en/install-hd/calamares-en_00.png) icon on the desktop or in the menu: *"System"* > *"Install system"*.
 
-2. After a double click on the icon, Calamares starts and we see the "*Welcome*" window.
+ 2. After a double click on the icon, Calamares starts and we see the "*Welcome*" window.
 
-   ![calamares welcome](./images-en/install-hd/calamares-en_01.png "Welcome")
+    ![calamares welcome](./images-en/install-hd/calamares-en_01.png "Welcome")
 
-   If an internet connection is provided, the correct language should already be set here.
+    If an internet connection is provided, the correct language should already be set here.
 
-3. In the next window ("*Location*"), you have the possibility to make changes to *region*, *timezone*, and *system language*, as well as the date and number *format*.
+ 3. Next, there is the option to select additional, non-free software sources. If this option is activated, the sources *contrib* and *non-free* are also activated and it is possible to install non-free drivers (e.g. Nvidia) and proprietary software.
 
-   ![calamares location](./images-en/install-hd/calamares-en_02.png "Location") 
+    ![calamares sources](./images-en/install-hd/calamares-en_02.png "Sources") 
 
-4. Next, you can set up the keyboard.
+ 4. In the next window "Location", you have the possibility to make changes to *region*, *timezone*, and *system language*, as well as the date and number *format*.
 
-   ![calamares keyboard](./images-en/install-hd/calamares-en_03.png "Keyboard")
+    ![calamares location](./images-en/install-hd/calamares-en_03.png "Location") 
 
-   In the upper section, the keyboard is displayed graphically and the changes are visible immediately. At the bottom, there is an input line to test the keyboard layout.
+ 5. Next, you can set up the keyboard.
 
-5. Then we reach the already mentioned partitioning, which determines the parts of the harddisk(s) siduction uses.
+    ![calamares keyboard](./images-en/install-hd/calamares-en_04.png "Keyboard")
 
-   ![calamares partitions](./images-en/install-hd/calamares-en_04.png "Partitions")
+    In the upper section, the keyboard is displayed graphically and the changes are visible immediately. At the bottom, there is an input line to test the keyboard layout.
 
-   In our example, we use *"Manual partitioning"* because the partitions have already been created in advance and we only need to select the correct installation target. After clicking *"Next"*, the following window appears where we can select and edit the individual partitions.
+ 6. Then we reach the already mentioned partitioning, which determines the parts of the harddisk(s) siduction uses.
 
-   ![calamares work on partitions](./images-en/install-hd/calamares-en_05.png "Edit partitions")
+    ![calamares partitions](./images-en/install-hd/calamares-en_05.png "Partitions")
 
-   We use the partitions:  
-   sda7 for `/` (root)  
-   sda6 for `/data` together with the Linux system already present on sda3 and sda4
+    In our example, we use *"Manual partitioning"* because the partitions have already been created in advance and we only need to select the correct installation target. After clicking `Next`, the following window appears where we can select and edit the individual partitions.
 
-   After selecting the partition in question and pressing the *"Change"* button, a window opens where we enter the above mountpoint and also format sda7 with the **ext4** file system. The partition sda6 is not formatted because we want to use the data already stored there together with the existing Linux system.  
-   We do not need to edit the swap partition (sda5) since it will be automatically detected and integrated during the installation.  
-   We can see the result of our efforts in the next image.
+    ![calamares work on partitions](./images-en/install-hd/calamares-en_06.png "Edit partitions")
 
-   ![calamares partitions finish](./images-en/install-hd/calamares-en_06.png "Partitions result")
+    We use the partitions:    
+    `nvme0n1p1` for `/boot/efi`  
+    `nvme0n1p4` for `/` (root)  
+    `nvme0n1p3` for `/data` together with the Linux system already present on `nvme0n1p2`.
 
-6. Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with [adduser](#add-user).
+    After selecting the desired partition and pressing the `Change` button, a window opens where we enter the above mountpoint and also format `nvme0n1p4` with the **ext4** file system. The partition `nvme0n1p3` is not formatted because we want to use the data already stored there together with the existing Linux system.  
+    We do not need to edit the swap partition `nvme0n1p6` since it will be automatically detected and integrated during the installation.  
+    We can see the result of our efforts in the next image.
 
-   ![calamares users](./images-en/install-hd/calamares-en_07.png "users")
+    ![calamares partitions finish](./images-en/install-hd/calamares-en_07.png "Partitions result")
 
-   We explicitly recommend not to use the options  
-   "*Log in automatically without password prompt*" and  
-   "*Use the same password for the administrator account*".  
-   They both represent a security risk on their own (see also [sudo](0701-term-konsole_en.md#work-as-root)). If both options are enabled, entering passwords is just a farce!
+ 7. Next, we set username, login name, computer name, user password, and root password (remember them well!). The passwords should not be too simple for security reasons. Additional users can be added after installation in a terminal with [adduser](#add-user).
 
-7. After pressing the *"Next"* button, a summary of all previously made entries appears. Now you still have the possibility to make changes via *"Back"*. If you are satisfied with the result, a click on *"Install"* opens the small warning window in which you have to confirm the installation.
+    ![calamares users](./images-en/install-hd/calamares-en_08.png "users")
 
-   ![calamares summary](./images-en/install-hd/calamares-en_08.png "Summary") 
+    We explicitly recommend not to use the options  
+    "*Log in automatically without asking for the password*" and  
+    "*Use the same password for the administrator account*".  
+    They both represent a security risk on their own (see also [sudo](0701-term-konsole_en.md#work-as-root)). If both options are enabled, entering passwords is just a farce!
 
-8. Now the installation starts. This takes some time depending on the hardware. The progress will be displayed respectively. Even if it takes a little longer, please do not abort the installation, but give the process time.
+ 8. After pressing the `Next` button, a summary of all previously made entries appears. Now you still have the possibility to make changes via `Back`. If you are satisfied with the result, a click on `Install` opens the small warning window in which you have to confirm the installation.
 
-   ![calamares install](./images-en/install-hd/calamares-en_09.png "Install")
+    ![calamares summary](./images-en/install-hd/calamares-en_09.png "Summary") 
 
-9. At the end, we get the possibility to reboot into the newly installed system. 
+ 9. Now the installation starts. This takes some time depending on the hardware. The progress will be displayed respectively. Even if it takes a little longer, please do not abort the installation, but give the process time.
 
-   ![calamares reboot](./images-en/install-hd/calamares-en_10.png "Exit")
+    ![calamares install](./images-en/install-hd/calamares-en_10.png "Install")
 
-   Remove the CD from the drive before rebooting!
+10. At the end, we get the possibility to reboot into the newly installed system. 
+
+    ![calamares reboot](./images-en/install-hd/calamares-en_11.png "Exit")
+
+    Remove the USB stick with the live medium before rebooting!
 
 ### Encrypt system
 
-Since *siduction 2021.2 Farewell*, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* is located (without encryption) on the *"BIOS-boot"* partition. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.
+Since *siduction 2021.2 Farewell*, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* remains unencrypted. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.
 
-The partitioning described in step 5 above is now slightly different.  
+The partitioning described in step 6 above is now slightly different.  
 We also use the “*Manual partitioning*” option here. The encrypted system requires an empty, unused area on the hard disk. If this is not available, we first delete partitions that are no longer required. Then we create the new partition.
 
 ![calamares, manual partitioning encrypt 1](./images-en/install-hd/calamares-en_12.png "Manual partition encrypt 1")
@@ -143,7 +148,7 @@ In the next step, the function *"Encrypt"* is selectable now.
 ![calamares, manual partitioning encrypt 2](./images-en/install-hd/calamares-en_13.png "Manual partition encrypt 2")
 
 We enter our password and then select the root directory `/` as mount point.  
-After finishing the partitioning, we continue the installation with the menu item *"User"* as described above in step 6.
+After finishing the partitioning, we continue the installation with the menu item *"User"* as described above in step 7.
 
 ### Add user
 
@@ -170,4 +175,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2024-12-18</div>
+<div id="rev">Last edited: 2024-12-19</div>
