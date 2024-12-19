@@ -174,29 +174,39 @@ alt="calamares Willkommen" />
 </figure>
 <p>Sofern eine Internetverbindung besteht, sollte hier bereits die
 richtige Sprache eingestellt sein.</p></li>
+<li><p>Als n&auml;chstes besteht die M&ouml;glichkeit zus&auml;tzliche, unfreie
+Software Quellen zu w&auml;hlen. Bei Aktivierung dieser Option werden die
+Quellen <em>contrib</em> und <em>non-free</em> auch aktiviert und es ist
+m&ouml;glich unfreie Treiber (z. B. Nvidia) und propriet&auml;re Software zu
+installieren.</p>
+<figure>
+<img src="./images-de/install-hd/calamares-de_02.png" title="Quellen"
+alt="calamares Quellen" />
+<figcaption aria-hidden="true">calamares Quellen</figcaption>
+</figure></li>
 <li><p>Im n&auml;chsten Fenster “Standort” besteht die M&ouml;glichkeit &Auml;nderungen
 zur <em>“Region”</em>, der <em>“Zeitzone”</em> und
 <em>“Systemsprache”</em>, sowie dem <em>“Format”</em> f&uuml;r das Datum und
 die Zahlen vorzunehmen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_02.png" title="Standort"
+<img src="./images-de/install-hd/calamares-de_03.png" title="Standort"
 alt="calamares Standort" />
 <figcaption aria-hidden="true">calamares Standort</figcaption>
 </figure></li>
-<li><p>Es folgen die Einstellungen zur Tastatur.</p>
+<li><p>Es folgen die Einstellungen zur Tastatur. Im oberen Teil wird die
+Tastatur graphisch dargestellt und die &Auml;nderungen werden sofort
+sichtbar. Ganz unten befindet sich eine Eingabezeile um das
+Tastaturlayout zu testen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_03.png" title="Tastatur"
+<img src="./images-de/install-hd/calamares-de_04.png" title="Tastatur"
 alt="calamares Tastatur" />
 <figcaption aria-hidden="true">calamares Tastatur</figcaption>
-</figure>
-<p>Im oberen Teil wird die Tastatur graphisch dargestellt und die
-&Auml;nderungen werden sofort sichtbar. Ganz unten befindet sich eine
-Eingabezeile um das Tastaturlayout zu testen.</p></li>
+</figure></li>
 <li><p>Im n&auml;chsten Schritt erreichen wir die bereits oben erw&auml;hnte
 Partitionierung mit der bestimmt wird, welche Teile der Festplatte(n)
 siduction verwendet.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_04.png"
+<img src="./images-de/install-hd/calamares-de_05.png"
 title="Partitionen" alt="calamares Partitionen" />
 <figcaption aria-hidden="true">calamares Partitionen</figcaption>
 </figure>
@@ -206,28 +216,29 @@ wurden und wir nur noch das richtige Installationsziel ausw&auml;hlen. Nach
 einem Klick auf <code>Weiter</code> erscheint das n&auml;chste Fenster, in
 dem wir die einzelnen Partitionen ausw&auml;hlen und bearbeiten k&ouml;nnen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_05.png"
+<img src="./images-de/install-hd/calamares-de_06.png"
 title="Partitionen bearbeiten" alt="calamares Partitionen bearbeiten" />
 <figcaption aria-hidden="true">calamares Partitionen
 bearbeiten</figcaption>
 </figure>
 <p>Wir benutzen die Partitionen<br />
-<code>sda7</code> f&uuml;r <code>/</code> (root)<br />
-<code>sda6</code> f&uuml;r <code>/daten</code> gemeinsam mit dem bereits auf
-<code>sda3</code> und <code>sda4</code> vorhandenem Linux</p>
+<code>nvme0n1p1</code> f&uuml;r <code>/boot/efi</code><br />
+<code>nvme0n1p4</code> f&uuml;r <code>/</code> (root)<br />
+<code>nvme0n1p3</code> f&uuml;r <code>/daten</code> gemeinsam mit dem bereits
+auf <code>nvme0n1p2</code> vorhandenem Linux</p>
 <p>Nach Ausw&auml;hlen der betreffenden Partition und Bet&auml;tigen des Schalters
 <code>&Auml;ndern</code> &ouml;ffnet sich ein Fenster, in dem wir den oben
-bezeichneten Mountpiont eintragen und f&uuml;r <code>sda7</code> auch die
-Formatierung mit dem Dateisystem <strong>ext4</strong> vornehmen. Die
-Partition <code>sda6</code> wird nicht formatiert, da wir die dort schon
-abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux nutzen
-m&ouml;chten.<br />
-Die Swap-Partition <code>sda5</code> brauchen wir nicht bearbeiten, da
-sie w&auml;hrend der Installation automatisch erkannt und integriert
+bezeichneten Mountpiont eintragen und f&uuml;r <code>nvme0n1p4</code> auch
+die Formatierung mit dem Dateisystem <strong>ext4</strong> vornehmen.
+Die Partition <code>nvme0n1p3</code> wird nicht formatiert, da wir die
+dort schon abgelegten Daten gemeinsam mit dem bereits vorhandenen Linux
+nutzen m&ouml;chten.<br />
+Die Swap-Partition <code>nvme0n1p6</code> brauchen wir nicht bearbeiten,
+da sie w&auml;hrend der Installation automatisch erkannt und integriert
 wird.<br />
 Das Ergebnis unserer Bem&uuml;hungen sehen wir im n&auml;chsten Bild.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_06.png"
+<img src="./images-de/install-hd/calamares-de_07.png"
 title="Partitionen Ergebnis" alt="calamares Partitionen Ergebnis" />
 <figcaption aria-hidden="true">calamares Partitionen
 Ergebnis</figcaption>
@@ -239,7 +250,7 @@ werden. Weitere Benutzer k&ouml;nnen nach der Installation in einem Terminal
 mit <a href="./hd-install_de.html#benutzer-hinzuf&uuml;gen">adduser</a>
 hinzugef&uuml;gt werden.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_07.png" title="Benutzer"
+<img src="./images-de/install-hd/calamares-de_08.png" title="Benutzer"
 alt="calamares Benutzer" />
 <figcaption aria-hidden="true">calamares Benutzer</figcaption>
 </figure>
@@ -259,7 +270,7 @@ mit dem Ergebnis zufrieden, &ouml;ffnet ein Klick auf
 <code>Installieren</code> das kleine Warnfenster in dem wir die
 Installation best&auml;tigen m&uuml;ssen.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_08.png"
+<img src="./images-de/install-hd/calamares-de_09.png"
 title="Zusammenfassung" alt="calamares Zusammenfassung" />
 <figcaption aria-hidden="true">calamares Zusammenfassung</figcaption>
 </figure></li>
@@ -268,28 +279,27 @@ Zeit. Der Fortschritt wird entsprechend angezeigt. Auch wenn es etwas
 l&auml;nger dauert, bitte die Installation nicht abbrechen, sondern dem
 Prozess Zeit geben.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_09.png"
+<img src="./images-de/install-hd/calamares-de_10.png"
 title="Installieren" alt="calamares Installieren" />
 <figcaption aria-hidden="true">calamares Installieren</figcaption>
 </figure></li>
 <li><p>Am Ende erhalten wir die M&ouml;glichkeit zu einem Reboot in das neu
 installierte System.</p>
 <figure>
-<img src="./images-de/install-hd/calamares-de_10.png" title="Beenden"
+<img src="./images-de/install-hd/calamares-de_11.png" title="Beenden"
 alt="calamares Beenden" />
 <figcaption aria-hidden="true">calamares Beenden</figcaption>
 </figure>
-<p>Vor dem Reboot die CD aus dem Laufwerk nehmen!</p></li>
+<p>Vor dem Reboot den USB Stick mit dem Live Medium entfernen!</p></li>
 </ol>
 <h3 id="system-verschl&uuml;sseln">System verschl&uuml;sseln</h3>
 <p>Ab <em>siduction 2021.2 Farewell</em> besteht innerhalb des
 Installationsprogramms Calamares die M&ouml;glichkeit, das vollst&auml;ndige
 System in eine verschl&uuml;sselte Partition oder Festplatte zu installieren.
-Lediglich die erste Stufe des Bootmanagers Grub befindet sich
-unverschl&uuml;sselt auf der “<em>BIOS-boot</em>”-Partition. Grub fragt bei
-jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte Installation ab,
-bevor das Bootmen&uuml; erscheint.</p>
-<p>Die oben unter 5 beschriebene Partitionierung gestaltet sich nun
+Lediglich die erste Stufe des Bootmanagers Grub bleibt unverschl&uuml;sselt.
+Grub fragt bei jedem Bootvorgang das Passwort f&uuml;r die verschl&uuml;sselte
+Installation ab, bevor das Bootmen&uuml; erscheint.</p>
+<p>Die oben unter 6 beschriebene Partitionierung gestaltet sich nun
 geringf&uuml;gig anders.<br />
 Wir benutzen auch hier die Option “<em>Manuelle Partitionierung</em>”.
 F&uuml;r das verschl&uuml;sselte System braucht es auf der Festplatte einen
@@ -315,7 +325,7 @@ alt="calamares Manuelle Partition verschl&uuml;sseln 2" />
 verschl&uuml;sseln 2</figcaption>
 </figure>
 <p>Nach Beendigung der Partitionierung setzen wir die Installation mit
-dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 6 beschrieben,
+dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 7 beschrieben,
 fort.</p>
 <h3 id="benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</h3>
 <p>Um neue Benutzer mit automatischer &Uuml;bernahme der
@@ -333,7 +343,7 @@ m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
 <strong><code>man adduser</code></strong> und
 <strong><code>man deluser</code></strong> .</p>
 <div id="rev">
-Zuletzt bearbeitet: 2024-12-18
+Zuletzt bearbeitet: 2024-12-19
 </div>
 </body>
 </html>
