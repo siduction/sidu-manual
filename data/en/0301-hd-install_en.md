@@ -136,8 +136,6 @@ During the installation, the computer should preferably be connected to the Inte
 
 ### Encrypt system
 
-Since *siduction 2021.2 Farewell*, the installer provides the possibility to install the complete system onto an encrypted partition or hard disk. Only the first stage of the boot manager *Grub* remains unencrypted. Grub asks for the encrypted installations password at the beginning of every boot process before the boot menu appears.
-
 The partitioning described in step 6 above is now slightly different.  
 We also use the “*Manual partitioning*” option here. The encrypted system requires an empty, unused area on the hard disk. If this is not available, we first delete partitions that are no longer required. Then we create the new partition.
 

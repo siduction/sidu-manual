@@ -123,8 +123,6 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 
 ### System verschlüsseln
 
-Ab *siduction 2021.2 Farewell* besteht innerhalb des Installationsprogramms Calamares die Möglichkeit, das vollständige System in eine verschlüsselte Partition oder Festplatte zu installieren. Lediglich die erste Stufe des Bootmanagers Grub bleibt unverschlüsselt. Grub fragt bei jedem Bootvorgang das Passwort für die verschlüsselte Installation ab, bevor das Bootmenü erscheint.
-
 Die oben unter 6 beschriebene Partitionierung gestaltet sich nun geringfügig anders.  
 Wir benutzen auch hier die Option "*Manuelle Partitionierung*". Für das verschlüsselte System braucht es auf der Festplatte einen leeren, unbenutzter Bereich. Ist dieser nicht vorhanden, löschen wir zuerst nicht mehr benötigte Partitionen. Dann erstellen wir die neue Partition.
 
