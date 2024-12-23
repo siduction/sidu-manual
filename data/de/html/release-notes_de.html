@@ -33,152 +33,194 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#release-notes-2023.1.0"
-id="toc-release-notes-2023.1.0">Release Notes 2023.1.0</a>
+<li><a href="#release-notes-2024.1.0-shine-on"
+id="toc-release-notes-2024.1.0-shine-on">Release Notes 2024.1.0 Shine on
+…</a>
 <ul>
-<li><a href="#wechselhafte-geschichte"
-id="toc-wechselhafte-geschichte">Wechselhafte Geschichte</a></li>
-<li><a href="#selbstverwaltet"
-id="toc-selbstverwaltet">Selbstverwaltet</a></li>
-<li><a href="#was-erwartet-euch-bei-siduction-2023.1.0"
-id="toc-was-erwartet-euch-bei-siduction-2023.1.0">Was erwartet euch bei
-siduction 2023.1.0</a></li>
-<li><a href="#die-flavours" id="toc-die-flavours">Die Flavours</a></li>
-<li><a href="#non-free-und-contrib"
-id="toc-non-free-und-contrib">Non-free und Contrib</a></li>
+<li><a href="#was-erwartet-euch-bei-siduction-2024.1.0"
+id="toc-was-erwartet-euch-bei-siduction-2024.1.0">Was erwartet euch bei
+siduction 2024.1.0</a></li>
+<li><a href="#siduction-editionen"
+id="toc-siduction-editionen">siduction Editionen</a></li>
+<li><a href="#siduction-btrfs-verbessert"
+id="toc-siduction-btrfs-verbessert">siduction-btrfs verbessert</a></li>
+<li><a href="#non-free-and-contrib"
+id="toc-non-free-and-contrib">Non-free and Contrib</a></li>
 <li><a href="#installationshinweise-und-bekannte-probleme"
 id="toc-installationshinweise-und-bekannte-probleme">Installationshinweise
 und bekannte Probleme</a></li>
-<li><a href="#vielen-dank-an-alle-beteiligten"
-id="toc-vielen-dank-an-alle-beteiligten">Vielen Dank an alle
-Beteiligten</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="release-notes-2023.1.0">Release Notes 2023.1.0</h2>
-<p><strong>“Standing on the Shoulders of Giants”</strong></p>
-<p>Das siduction-Team ist sehr stolz, euch zu einem besonderen Anlass
-ein au&szlig;erplanm&auml;&szlig;iges Release vorzustellen. Debian GNU/Linux, dessen
-Unstable-Zweig einige von uns seit &uuml;ber 20 Jahren verfolgen, feiert am
-16.8. 2023 seinen drei&szlig;igsten Geburtstag und wir finden, das ist aller
-Ehren wert.</p>
-<p>Debian ist nach Slackware die zweit&auml;lteste Distribution, und wird
-lediglich von den Beteiligten getragen, ohne das ein Unternehmen im
-Hintergrund steht oder jemand an der Spitze bestimmt, wo es lang geht.
-Debian gilt wegen der vielen bis heute unterst&uuml;tzten Architekturen als
-das »universelle Betriebssystem« und die Stabilit&auml;t der
-Ver&ouml;ffentlichungen ist legend&auml;r.</p>
-<h3 id="wechselhafte-geschichte">Wechselhafte Geschichte</h3>
-<p>Die Geschichte begann am 16. August 1993, als Ian Murdock sein selbst
-konzipiertes System »Debian Linux Release« vorstellte. Im gleichen Jahr
-folgte das <a
-href="https://www.debian.org/doc/manuals/project-history/manifesto.de.html">Debian
-Manifest</a> Die erste stabile Version 1.1 erschien 1996, damals noch
-von unter 100 Entwicklern zusammengestellt. Das Release trug den
-Codenamen »Buzz«, ein erster Bezug auf die Figuren aus dem
-Film-Franchise Toy Story, dem auch heute noch die Codenamen entliehen
-werden.</p>
-<p>Bisher sind weitere 16 Ver&ouml;ffentlichungen hinzugekommen, deren
-aktuelle den Codenamen »Bookworm« tr&auml;gt und die am 10. Juni 2023
-freigegeben wurde. Das Motto lautet dabei immer noch: Es wird
-ver&ouml;ffentlicht, wenn es fertig ist.</p>
-<p>1997 stimmten bereits rund 400 Entwickler mit dem
-Debian-Gesellschaftsvertrag einem wichtigen Dokument zu, das seit seinem
-Bestehen erst zwei Mal editiert wurde und das unter der Ziffer 1.
-konstatiert: <strong>Debian wird zu 100% frei bleiben</strong>.
-Gleichzeitig wurden als Teil dieses Vertrags die »Debian-Richtlinien f&uuml;r
-Freie Software« (DFSG) beschlossen.</p>
-<h3 id="selbstverwaltet">Selbstverwaltet</h3>
-<p>Debian verwaltet sich in Form einer Do-okratie. Dabei bestimmen die
-heute rund 1.000 Entwickler selbst&auml;ndig und verantwortlich ihre
-Aufgaben. Dass das unter Tausend Kreativen nicht immer einfach ist,
-sollte jedem klar sein. Daran erinnern unter anderem Verwerfungen wie
-die Einf&uuml;hrung von Systemd, die Debian bis an die Belastungsgrenze
-brachte. Hei&szlig; diskutiert wurde 2022 auch die Inklusion unfreier Firmware
-auf den Installationsmedien der Distribution. Die Diskussionen dar&uuml;ber
-zogen sich &uuml;ber Jahre hin.</p>
-<p>Nach au&szlig;en hin wirkt Debian oft zerstritten, da anstehende
-Entscheidungen oft hart diskutiert werden. Im Endeffekt scheint das
-Projekt aber gest&auml;rkt aus solchen Phasen hervorzugehen. Diese
-Verl&auml;sslichkeit mag auch ein Grund sein, warum mehr Derivate auf Debian
-als Basis setzen als auf jede andere Distribution. Derzeit nutzen <a
-href="https://distrowatch.com/search.php?ostype=All&amp;category=All&amp;origin=All&amp;basedon=Debian&amp;notbasedon=None&amp;desktop=All&amp;architecture=All&amp;package=All&amp;rolling=All&amp;isosize=All&amp;netinstall=All&amp;language=All&amp;defaultinit=All&amp;status=Active#simple">122
-aktive Distributionen</a> Debian als Grundlage. Darunter sind so
-wegweisende Distributionen wie Knoppix oder Ubuntu. Z&auml;hlt man nicht mehr
-aktive Distributionen hinzu, steigt die Zahl auf 414. Imposant!</p>
-<p><strong>Mit Knoppix fing alles an</strong><br />
-Unsere Zeitleiste beginnt bei Knoppix und ging von Kanotix &uuml;ber sidux
-und aptosid zu siduction, dass wir nun bereits seit 12 Jahren
-ausliefern. Debian hat uns nie entt&auml;uscht, jedoch waren uns die
-Entscheidungsprozesse manchmal etwas zu langsam. So haben wir
-beispielsweise Systemd bereits vor Debian eingef&uuml;hrt und auch Firmware
-liefern wir bereits l&auml;nger optional aus, um damit aktuelle Hardware auf
-dem Installationsmedium zu unterst&uuml;tzen.</p>
-<p>Aber ansonsten ist siduction vermutlich zu 98 % Debian Unstable.
-Daf&uuml;r bedanken wir uns und w&uuml;nschen dem Projekt mindestens weitere 30
-Jahre. Standing on the Shoulders of Giants.</p>
-<h3 id="was-erwartet-euch-bei-siduction-2023.1.0">Was erwartet euch bei
-siduction 2023.1.0</h3>
-<p><strong>User und Passwort f&uuml;r die Live-Session lauten
-siducer/live</strong></p>
-<p>Zun&auml;chst einmal erwartet euch ein neues Wallpaper der K&uuml;nstlerin <a
-href="https://www.artstation.com/angevere">Angevere</a> (Ona
-Kristensen), das wir mit freundlicher Genehmigung benutzen d&uuml;rfen.</p>
-<h3 id="die-flavours">Die Flavours</h3>
-<p>Die Flavours, die wir f&uuml;r siduction 2023.1.0 anbieten, sind KDE
-Plasma 5.27.7.1, LXQt 1.3.0, Xfce 4.18, Xorg und noX. GNOME, MATE und
+<h2 id="release-notes-2024.1.0-shine-on">Release Notes 2024.1.0 Shine on
+…</h2>
+<p>Das siduction-Team freut sich, euch ein neues Release vorzustellen.
+Seit dem letzten Release ist einige Zeit vergangen. Der Grund daf&uuml;r ist,
+dass wir auf KDE Plasma 6 in Debian Unstable gewartet haben. Plasma 6
+erschien zwar bereits Ende Februar 2024, die Freigabe in Unstable wurde
+aber durch die <a
+href="https://wiki.debian.org/ReleaseGoals/64bit-time">t64-Transition
+in  Debian</a>, an die ihr euch bestimmt noch erinnert, um rund vier
+Monate verz&ouml;gert. Nun ist es aber so weit und seit rund zwei Wochen ist
+Plasma 6.2 in Unstable verf&uuml;gbar.<br />
+User und Passwort f&uuml;r die Live-Session lauten siducer/live</p>
+<h3 id="was-erwartet-euch-bei-siduction-2024.1.0">Was erwartet euch bei
+siduction 2024.1.0</h3>
+<p>Zun&auml;chst ein paar Worte zum neuen Artwork von siduction 2024.1.0 mit
+dem Titel »Shine on…«. Das bekannte Album von Pink Floyd stand hier
+Pate. Und wenn ihr jetzt einen Ohrwurm habt… Gern geschehen :)<br />
+Als Grundlage dient das Wallpaper <a
+href="https://invent.kde.org/plasma/breeze/-/commit/aec3e3d93eb79042c6dbf14c9c1f6fffd2c3a86d">Nexus</a>
+von Krystian Zajdel. Wir haben es f&uuml;r siduction angepasst und huldigen
+damit den Entwicklern von KDE, die in diesem Jahr wieder enorm viel
+Arbeit in das Projekt gesteckt haben und es f&uuml;r uns weiterhin zur besten
+Desktop-Umgebung machen. Wenn ihr das auch so seht, denkt bitte &uuml;ber
+eine <a target="_blank" href="https://kde.org/de/donate/">Spende oder F&ouml;rderung von
+KDE</a> nach.</p>
+<h3 id="siduction-editionen">siduction Editionen</h3>
+<p>Die Flavours, die wir f&uuml;r siduction 2024.1.0 anbieten, sind KDE
+Plasma 6.2.4.1, LXQt 2.1.0-1, Xfce 4.20, Xorg und noX. GNOME, MATE und
 Cinnamon haben es wieder nicht geschafft, da es keinen Betreuer
 innerhalb von siduction daf&uuml;r gibt. Bei Interesse meldet euch bitte.
-Vielleicht kommen sie irgendwann zur&uuml;ck oder auch nicht. Nat&uuml;rlich sind
+Vielleicht kommen sie eines Tages zur&uuml;ck oder auch nicht. Nat&uuml;rlich sind
 sie weiterhin aus dem Repository installierbar.</p>
-<p>Die ver&ouml;ffentlichten Images von siduction 2023.1.0 sind ein
+<p>Die ver&ouml;ffentlichten Images von siduction 2024.1.0 sind ein
 Schnappschuss von Debian Unstable, das auch den Namen Sid tr&auml;gt, vom
-14.08.2023. Sie sind mit einigen n&uuml;tzlichen Paketen und Skripten, einem
+23.12.2024. Sie sind mit einigen n&uuml;tzlichen Paketen und Skripten, einem
 auf Calamares basierenden Installer und einer angepassten Version des
-Linux-Kernels 6.4-10 angereichert, w&auml;hrend systemd bei 254.1-2
+Linux-Kernels 6.12.6 angereichert, w&auml;hrend systemd bei 257.1-3
 steht.</p>
-<h3 id="non-free-und-contrib">Non-free und Contrib</h3>
+<p><strong>KDE Plasma 6</strong></p>
+<p>Plasma 6 ist mittlerweile fast zu 100 % in Unstable und Testing
+angekommen und wird somit auch f&uuml;r Debian 13 »Trixie« verf&uuml;gbar sein.
+Obwohl Wayland der Standard-Sitzungstyp bei Plasma 6 ist, haben wir uns
+f&uuml;r X11 als Standard entschieden, weil Calamares unter Wayland derzeit
+das gew&uuml;nschte Tastaturlayout nicht &uuml;bernimmt. Das k&ouml;nnte fatale
+Auswirkungen bei verschl&uuml;sselten Installationen haben. Nat&uuml;rlich k&ouml;nnt
+ihr im SDDM jederzeit zu Wayland wechseln. Als Bestandsanwender habt ihr
+ja vermutlich bereits auf Plasma 6 aktualisiert, jetzt steht die
+aktuelle Plasma-Generation auch f&uuml;r Neuinstallationen bereit.</p>
+<p>Bekannte Fehler: Dolphin kann derzeit &uuml;ber smb:// keine Verbindung
+aufbauen. Als Alternative bietet sich &uuml;bergangsweise sftp an. Der Fehler
+liegt in dem Paket kio-extras.</p>
+<p><strong>Xfce 4.20</strong></p>
+<p>Gerade noch so hat es das am 15. Dezember ver&ouml;ffentlichte <a
+href="https://linuxnews.de/xfce-4-20-wayland-unterstuetzung-und-noch-viel-mehr/">Xfce
+4.20</a> nach Unstable und somit in unser neues Release geschafft. Die
+neue Ver&ouml;ffentlichung von Xfce konzentriert sich unter anderem auf die
+initiale, noch experimentelle Bereitstellung von Wayland. &Uuml;berdies
+erhielt unter anderem der Dateimanager Thunar wesentliche
+Verbesserungen.</p>
+<p>Bekannte Fehler: Leider ist die Implementierung von Wayland derzeit
+so experimentell, dass die Sitzung erst gar nicht startet. Wir haben
+dementsprechend Wayland blockiert. Wenn dieser Fehler behoben wird,
+werden wir dies in einem Punkt-Release bald wieder freischalten.</p>
+<p><strong>LXQt 2.1</strong></p>
+<p>LXQt ist der leichtgewichtige Bruder von KDE Plasma. Der seit zehn
+Jahren entwickelte Desktop bietet in <a
+href="https://linuxnews.de/lxqt-2-1-0-unterstuetzt-sieben-wayland-compositoren/">Version
+2.1.0</a> eine nutzbare, aber ebenfalls noch als experimentell
+eingestufte Wayland-Sitzung.</p>
+<h3 id="siduction-btrfs-verbessert">siduction-btrfs verbessert</h3>
+<p>Bei Verwendung des Btrfs Dateisystems mit siduction erm&ouml;glichen wir
+es, eure Snapshots mit dem bei SUSE entwickelten Tool <a
+href="https://documentation.suse.com/de-de/sles/12-SP5/html/SLES-all/cha-snapper.html">Snapper</a>
+zu verwalten, dem im <a
+href="https://manual.siduction.org/index_de.html">siduction Handbuch</a>
+unter <em>Systemadministration → Btrfs und Snapper</em> ein eigenes
+Kapitel gewidmet ist.</p>
+<p>siduction-btrfs kann auf Systemen mit MBR- und GPT-Partitionstabellen
+verwendet werden, mit oder ohne separate /boot-Partition.<br />
+Seit der Version 0.3.0 verwendet siduction-btrfs das
+Snapper-Plugin-Verzeichnis.</p>
+<p><em>Mit dem Bootmanager GRUB</em><br />
+Nach einem Rollback wird im Rollbackziel mittels chroot die Datei
+<em>/boot/grub/grub.cfg</em> neu erstellt und anschlie&szlig;end wird aus dem
+Rollbackziel heraus GRUB neu installiert. Dadurch gelangt der User mit
+einem einfachen Reboot direkt in das Rollbackziel. Alle anderen
+Subvolumen, auch das zuvor verwendete, sind &uuml;ber das Untermen&uuml;
+<em>siduction snapshots</em> erreichbar.<br />
+Wird bei Software Installation oder Upgrade die Datei
+<em>/boot/grub/grub.cfg</em> aktualisiert, erweitert das Skript
+<em>grub-menu-title</em> die Men&uuml;zeile des Standardbooteintrages um das
+Flavor und das Subvolumen.</p>
+<p><em>Mit dem Bootmanager systemd-boot</em><br />
+Nach einem Rollback erstellt das Skript <em>rollback-sd-boot</em> die
+Booteintr&auml;ge. Dabei ber&uuml;cksichtigt es alle im Rollbackziel enthaltenen
+Kernel. Der Standardbooteintrag wird auf das Standardsubvolumen
+gesetzt.<br />
+Wird ein Subvolumen gel&ouml;scht, f&uuml;r das Booteintr&auml;ge bestanden, werden
+diese entfernt.</p>
+<p><em>Snapper Snapshot Beschreibung</em><br />
+Im Anschluss an eine APT Aktion &auml;ndert das Skript
+<em>snapshot-description</em> die von Snapper angezeigte Beschreibung
+(apt) zu einem aussagekr&auml;ftigeren Text.</p>
+<p><strong>Das Changelog der &Auml;nderungen:</strong></p>
+<ul>
+<li>siduction-btrfs (0.2.0) unstable; urgency=medium
+<ul>
+<li>Unterst&uuml;tzung f&uuml;r systemd-boot hinzugef&uuml;gt.</li>
+<li>Installationsabh&auml;ngikeiten zu grub-common und grub-btrfs
+entfernt.<br />
+Beides erm&ouml;glicht den vollst&auml;ndigen Wechsel von GRUB zu
+systemd-boot.</li>
+<li>Verbesserte Beschreibung von Schnappsch&uuml;ssen im Snapper.</li>
+</ul></li>
+<li>siduction-btrfs (0.3.0-1) unstable; urgency=medium
+<ul>
+<li>Umgeschrieben mit dem Ziel, das Snapper-Plugin-Verzeichnis zu
+verwenden.</li>
+<li>Unterst&uuml;tzung f&uuml;r eine Boot-Partition bei Verwendung von GRUB
+hinzugef&uuml;gt.</li>
+</ul></li>
+</ul>
+<h3 id="non-free-and-contrib">Non-free and Contrib</h3>
 <p>Die folgenden non-free und contrib Pakete sind standardm&auml;&szlig;ig
 installiert:</p>
-<p><strong>Nonfree:</strong><br />
-- amd64-microcode – Processor microcode firmware for AMD CPUs<br />
-- firmware-amd-graphics – Binary firmware for AMD/ATI graphics
-chips<br />
-- firmware-atheros – Binary firmware for Atheros wireless cards<br />
-- firmware-bnx2 – Binary firmware for Broadcom NetXtremeII<br />
-- firmware-bnx2x – Binary firmware for Broadcom NetXtreme II 10Gb<br />
-- firmware-brcm80211 – Binary firmware for Broadcom 802.11 wireless
-card<br />
-- firmware-crystalhd – Crystal HD Video Decoder (firmware)<br />
-- firmware-intelwimax – Binary firmware for Intel WiMAX Connection<br />
-- firmware-iwlwifi – Binary firmware for Intel Wireless cards<br />
-- firmware-libertas – Binary firmware for Marvell Libertas 8xxx wireless
-car<br />
-- firmware-linux-nonfree – Binary firmware for various drivers in the
-Linux kernel<br />
-- firmware-misc-nonfree – Binary firmware for various drivers in the
-Linux kernel<br />
-- firmware-myricom – Binary firmware for Myri-10G Ethernet
-adapters<br />
-- firmware-netxen – Binary firmware for QLogic Intelligent Ethernet
-(3000)<br />
-- firmware-qlogic – Binary firmware for QLogic HBAs<br />
-- firmware-realtek – Binary firmware for Realtek wired/wifi/BT
-adapters<br />
-- firmware-ti-connectivity – Binary firmware for TI Connectivity
-wireless network<br />
-- firmware-zd1211 – binary firmware for the zd1211rw wireless
-driver<br />
-- intel-microcode – Processor microcode firmware for Intel CPUs</p>
-<p><strong>Contrib:</strong><br />
-- b43-fwcutter – utility for extracting Broadcom 43xx firmware<br />
-- firmware-b43-installer – firmware installer for the b43 driver<br />
-- firmware-b43legacy-installer – firmware installer for the b43legacy
-driver<br />
-- iucode-tool – Intel processor microcode</p>
-<p><strong>Non-Free Inhalte entfernen</strong><br />
-Momentan bietet der Installer keine M&ouml;glichkeit, Pakete abzuw&auml;hlen, die
-nicht mit den DFSG, den Debian-Richtlinien f&uuml;r Freie Software,
+<p><strong>Nonfree:</strong></p>
+<ul>
+<li>amd64-microcode – Processor microcode firmware for AMD CPUs</li>
+<li>firmware-amd-graphics – Binary firmware for AMD/ATI graphics
+chips</li>
+<li>firmware-atheros – Binary firmware for Atheros wireless cards</li>
+<li>firmware-bnx2 – Binary firmware for Broadcom NetXtremeII</li>
+<li>firmware-bnx2x – Binary firmware for Broadcom NetXtreme II 10Gb</li>
+<li>firmware-brcm80211 – Binary firmware for Broadcom 802.11 wireless
+card</li>
+<li>firmware-crystalhd – Crystal HD Video Decoder (firmware)</li>
+<li>firmware-intelwimax – Binary firmware for Intel WiMAX
+Connection</li>
+<li>firmware-iwlwifi – Binary firmware for Intel Wireless cards</li>
+<li>firmware-libertas – Binary firmware for Marvell Libertas 8xxx
+wireless car</li>
+<li>firmware-linux-nonfree – Binary firmware for various drivers in the
+Linux kernel</li>
+<li>firmware-misc-nonfree – Binary firmware for various drivers in the
+Linux kernel</li>
+<li>firmware-myricom – Binary firmware for Myri-10G Ethernet
+adapters</li>
+<li>firmware-netxen – Binary firmware for QLogic Intelligent Ethernet
+(3000)</li>
+<li>firmware-qlogic – Binary firmware for QLogic HBAs</li>
+<li>firmware-realtek – Binary firmware for Realtek wired/wifi/BT
+adapters</li>
+<li>firmware-ti-connectivity – Binary firmware for TI Connectivity
+wireless network</li>
+<li>firmware-zd1211 – binary firmware for the zd1211rw wireless
+driver</li>
+<li>intel-microcode – Processor microcode firmware for Intel CPUs</li>
+</ul>
+<p><strong>Contrib:</strong></p>
+<ul>
+<li>b43-fwcutter – utility for extracting Broadcom 43xx firmware</li>
+<li>firmware-b43-installer – firmware installer for the b43 driver</li>
+<li>firmware-b43legacy-installer – firmware installer for the b43legacy
+driver</li>
+<li>iucode-tool – Intel processor microcode</li>
+</ul>
+<p><strong>Non-Free Inhalte entfernen</strong></p>
+<p>Momentan bietet der Installer keine M&ouml;glichkeit, Pakete abzuw&auml;hlen,
+die nicht mit den DFSG, den Debian-Richtlinien f&uuml;r Freie Software,
 &uuml;bereinstimmen. Das bedeutet, dass Pakete wie etwa unfreie Firmware
 standardm&auml;&szlig;ig auf dem System installiert werden. Der Befehl vrms wird
 diese Pakete f&uuml;r dich auflisten. Du kannst nicht erw&uuml;nschte Pakete
@@ -190,23 +232,13 @@ id="installationshinweise-und-bekannte-probleme">Installationshinweise
 und bekannte Probleme</h3>
 <p>Wenn ihr eine bestehende Home-Partition (oder eine andere
 Datenpartition) wiederverwenden m&ouml;chtet, solltet ihr dies nach der
-Installation und nicht im Calamares-Installer tun. Das funktioniert
-zwar, es ist aber sicherer, dies hinterher zu tun.<br />
+Installation und nicht im Calamares-Installer tun.<br />
 Bei einigen Intel-Grafikprozessoren auf einigen Ger&auml;ten kann es
 vorkommen, dass das System kurz nach dem Booten in Live eingefroren ist.
-Um dies zu beheben, m&uuml;sst ihr den Kernel-Parameter
-<code>intel_iommu=igfx_off</code> setzen, bevor ihr erneut bootet.</p>
-<h3 id="vielen-dank-an-alle-beteiligten">Vielen Dank an alle
-Beteiligten</h3>
-<p>Wir m&ouml;chten uns bei euch, bei allen Testern und all den Menschen
-bedanken, die uns &uuml;ber die Jahre hinweg unterst&uuml;tzt haben. Dieses
-Release ist auch euer Verdienst. Wir m&ouml;chten zudem dem Geburtstagskind
-Debian danken, da wir damit auf den Schultern von Giganten stehen.<br />
-Und nun viel Spa&szlig;!</p>
-<p>Im Namen des siduction-Teams:</p>
-<p>Ferdinand Thommes</p>
+Um dies zu beheben, m&uuml;sst ihr den Kernel-Parameter intel_iommu=igfx_off
+setzen, bevor ihr erneut bootet.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2023-12-15
+Zuletzt bearbeitet: 2024-12-23
 </div>
 </body>
 </html>

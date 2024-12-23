@@ -2,7 +2,7 @@
 
 ## Credits
 
-### Credits for siduction 2023.1.0
+### Credits for siduction 2024.1.0
 
 **Core Team:**
 
@@ -15,7 +15,8 @@ Axel Konrad (akli)
 **Past contributors:**
 
 Alf Gaida (agaida) (eaten by the cat)  
-Axel Beu 2021†
+Axel Beu 2021†  
+Markus Meyer (coruja)
 
 **Code, ideas and support:**
 
@@ -23,11 +24,8 @@ Markus Meyer (coruja)
 der_bud  
 se7en  
 davydych  
-tuxnix
-
-**Artwork:**
-
-The artwork is by [Angevere](https://www.artstation.com/angevere) (Ona Kristensen). We use it with kind permission.
+tuxnix  
+tobilinuxer
 
 ## Credits for the manual
 
@@ -61,8 +59,11 @@ Bram Verdoodt (Bram0s)
 Petr Vorel (pumrel)  
 zenren
 
-### Many thanks to all involved
+### Our thanks go to all those involved and our loyal users
 
-We would like to thank you, all the testers and all the people who have supported us over the years. siduction is also thanks to you.
+We would like to thank you, all the testers and all the people who have supported us over the years. siduction is also thanks to you. With this release, we would also like to thank the KDE community for providing an excellent desktop environment.
 
-<div id="rev">Last edited: 2023/12/15</div>
+On behalf of the siduction team:  
+Ferdinand Thommes
+
+<div id="rev">Last edited: 2023-12-23</div>

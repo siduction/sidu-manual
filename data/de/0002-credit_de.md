@@ -2,7 +2,7 @@
 
 ## Credits
 
-### Credits für siduction 2023.1.0
+### Credits für siduction 2024.1.0
 
 **Core Team:**
 
@@ -16,6 +16,7 @@ Axel Konrad (akli)
 
 Alf Gaida (agaida) (eaten by the cat)  
 Axel Beu 2021†  
+Markus Meyer (coruja)
 
 **Code, Ideen und Unterstützung:**
 
@@ -23,11 +24,8 @@ Markus Meyer (coruja)
 der_bud  
 se7en  
 davydych  
-tuxnix
-
-**Artwork:**
-
-Das Artwork für siduction 2023.1.0 (Standing on the Shoulders of Giants) stammt von [Angevere](https://www.artstation.com/angevere) (Ona Kristensen). Wir benutzen es mit freundlicher Genehmigung.
+tuxnix  
+tobilinuxer
 
 ### Credits für das Handbuch
 
@@ -61,8 +59,11 @@ Bram Verdoodt (Bram0s)
 Petr Vorel (pumrel)  
 zenren
 
-### Vielen Dank an alle Beteiligten
+### Unser Dank gilt allen Beteiligten und unseren treuen Usern
 
-Wir möchten uns bei euch, bei allen Testern und all den Menschen bedanken, die uns über die Jahre hinweg unterstützt haben. siduction ist auch euer Verdienst.
+Wir möchten uns bei euch, bei allen Testern und all den Menschen bedanken, die uns über die Jahre hinweg unterstützt haben. Dieses Release ist auch dein Verdienst. Wir danken zudem mit diesem Release der KDE-Gemeinschaft, die eine hervorragende Desktop-Umgebung bereitstellt.
 
-<div id="rev">Zuletzt bearbeitet: 2023-12-15</div>
+Im Namen des siduction-Teams:  
+Ferdinand Thommes
+
+<div id="rev">Zuletzt bearbeitet: 2024-12-23</div>
