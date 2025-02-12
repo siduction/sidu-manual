@@ -68,11 +68,11 @@ Apart from normal keyboard input, the mouse can also be used due to gpm.
 This is how to open an existing file (a backup copy is created first):
 
 ~~~
-$ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(date +%F)
+$ cp /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/debian.sources_$(date +%F)
 
 then
 
-$ mcedit /etc/apt/sources.list.d/debian.list
+$ mcedit /etc/apt/sources.list.d/debian.sources
 ~~~
 
 Now the file can be edited and saved. The changes will take effect immediately.
@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2024/04/23</div>
+<div id="rev">Last edited: 2025/02/12</div>

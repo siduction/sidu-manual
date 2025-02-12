@@ -128,7 +128,7 @@ Zuerst legen wir die Datei `30proxy` im Verzeichnis `/etc/apt/apt.conf.d/` an, d
 # echo "Acquire::http { Proxy "http://192.168.3.5:3142"; };" > /etc/apt/apt.conf.d/30proxy
 ~~~
 
-Als nächstes ändern wir die Adressen der Downloadmirror im Verzeichnis `/etc/apt/sources.list.d/` von "https" auf "http" innerhalb der Dateien `debian.list`, `extra.list` und `fixes.list`.  
+Als nächstes ändern wir die Adressen der Downloadmirror im Verzeichnis `/etc/apt/sources.list.d/` von "https" auf "http" innerhalb der Dateien `debian.sources`, `extra.sources` und `fixes.sources`.  
 Die Verwendung von "https" ist zwar möglich, aber zum Einen mit einigem Konfigurationsaufwand verbunden und zum Anderen zur Zeit nicht notwendig, da alle Downloadmirror "http" noch akzeptieren.
 
 Ein anschließendes
@@ -140,4 +140,4 @@ Ein anschließendes
 sollte ohne Fehlermeldungen durchlaufen.  
 Der erste Aufruf von **`apt full-upgrade`** auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu benötigen
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Seite zuletzt aktualisiert 2025-02-12</div>

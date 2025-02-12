@@ -67,10 +67,15 @@ Pretty much any video card that uses a [KMS](https://wiki.debian.org/KernelModes
 Since the non-free firmware is usually required for correct operation (AMD, Intel from Skylake on, and Nvidia from Fermi on), an entry similar to
 
 ~~~
-deb http://deb.debian.org/debian/ unstable main contrib non-free 
+Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 ~~~
 
-should be set. To prevent subsequent problems with WiFi, network, Bluetooth, or similar, a 
+should be set in `/etc/apt/sources.list/debian.sources`. To prevent subsequent problems with WiFi, network, Bluetooth, or similar, a 
 
 ~~~
 apt update && apt install firmware-linux-nonfree
@@ -138,4 +143,4 @@ Since the legacy drivers 304.xx and 340.xx are no longer supported by nVidia, it
 
 Notebooks with hybrid graphics Intel/nVidia, so-called Optimus hardware, are problematic. In the past, [Bumblebee](https://wiki.debian.org/Bumblebee) was recommended, but this solution is anything but optimal. nVidia itself recommends configuring these setups with [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/). Our recommendation is to avoid such hardware if possible. We cannot provide setup tips for Optimus hardware here.
 
-<div id="rev">Last edited: 2022/02/16</div>
+<div id="rev">Last edited: 2025/02/12</div>

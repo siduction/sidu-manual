@@ -3,7 +3,7 @@
 ## Downloading the ISO
 
 Please use the closest mirror. Mirror servers listed below, with details for the entry in  
-`/etc/apt/sources.list.d/siduction.list`, are updated in a timely manner.
+`/etc/apt/sources.list.d/siduction.sources`, are updated in a timely manner.
 
 **Europe**  
 
@@ -168,4 +168,4 @@ CertUtil -hashfile C:\TEMP\<my_ISO_file.img> SHA256
 
 On older Windows versions you can use the `md5summer` program (486 kB) published under the General Public License.
 
-<div id="rev">Last edited: 2024/04/23</div>
+<div id="rev">Last edited: 2025/02/12</div>

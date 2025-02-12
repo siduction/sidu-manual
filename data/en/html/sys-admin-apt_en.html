@@ -38,8 +38,8 @@ id="toc-apt-package-management">APT package management</a>
 <ul>
 <li><a href="#apt-and-apt-get" id="toc-apt-and-apt-get">apt and
 apt-get</a></li>
-<li><a href="#sources.list---list-of-sources"
-id="toc-sources.list---list-of-sources">sources.list - List of
+<li><a href="#sources.list.d---list-of-sources"
+id="toc-sources.list.d---list-of-sources">sources.list.d - List of
 sources</a></li>
 <li><a href="#apt-update" id="toc-apt-update">apt update</a></li>
 <li><a href="#install-packages" id="toc-install-packages">Install
@@ -149,7 +149,7 @@ unhold</a></td>
 <tr class="even">
 <td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt
 search</a></td>
-<td>apt-get search</td>
+<td>apt-cache search</td>
 <td>Search for packages according to the pattern entered (regex
 possible).</td>
 </tr>
@@ -160,71 +160,89 @@ show</a></td>
 <td>Display the details of a package.</td>
 </tr>
 <tr class="even">
-<td><a href="./sys-admin-apt_en.html#searching-for-program-packages">apt
-list</a></td>
+<td>apt policy</td>
 <td>apt-cache policy</td>
 <td>Show the installed or installable version of a package.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="sources.list---list-of-sources">sources.list - List of
+<h3 id="sources.list.d---list-of-sources">sources.list.d - List of
 sources</h3>
-<p>The APT system needs a configuration file which contains information
-about the location of installable and upgradeable packages. In general,
-this file is called sources.list. Modern systems use modularized sources
-now to improve the overview.</p>
-<p>siduction provides the sources in this folder:</p>
-<p><code>/etc/apt/sources.list.d/</code></p>
-<p>Inside this directory you can find the following files by
-default:</p>
-<p><code>debian.list</code><br />
-<code>extra.list</code><br />
-<code>fixes.list</code></p>
-<p>This has the advantage that it is easier to automatically select from
-mirror servers (“mirror switching”), and it also makes it easier to add
-or replace source lists.</p>
-<p>Custom source list files can be added with the naming<br />
-<code>/etc/apt/sources.list.d/xxxx.list</code>.<br />
-For example, on siduction<br />
-<code>/etc/apt/sources.list.d/extra.list</code> might look like
-this:</p>
-<pre><code>This is the default mirror, chosen at first boot.
+<p>The APT system requires at least one configuration file which
+contains information about the location of installable and upgradeable
+packages. In general, this file is called “&lt;sourcename&gt;.sources”.
+siduction provides the sources in the folder
+<code>/etc/apt/sources.list.d/</code>. Inside this directory you can
+find the following files by default:</p>
+<p><code>debian.sources</code><br />
+<code>extra.sources</code><br />
+<code>fixes.sources</code></p>
+<p>The division into several files facilitates the selection of mirror
+servers (“mirror switching”) and the addition or replacement of source
+lists.</p>
+<p>Custom source list files can be added with the naming
+<code>/etc/apt/sources.list.d/&lt;sourcename&gt;.sources</code>.</p>
+<p>In January 2025, Debian introduced the <em>deb822</em> format for the
+source lists in the Unstable branch. The previous single-line entries
+are now replaced by a series of consecutive key-value pairs. A blank
+line separates the sources from each other. The <em>Signed-By</em> key
+required for each source is new. Activation and deactivation is carried
+out using the <em>Enabled</em> key and replaces the comment character
+previously used.</p>
+<p>To make it easier to switch to the current format, apt provides a
+transformation script. The call requires <strong>root</strong> rights
+and is made with <code>apt modernize-sources</code>.</p>
+<p>For example, on siduction<br />
+<code>/etc/apt/sources.list.d/extra.sources</code> in the format
+<em>deb822</em> might look like this:</p>
+<pre><code># This is the default mirror, chosen at first boot.
 # One might consider to choose the geographically nearest
- or the fastest mirror.
- 
-deb http://packages.siduction.org/extra unstable main contrib non-free
-
-#deb-src http://packages.siduction.org/extra unstable main contrib non-free</code></pre>
-<p>Under <code>/etc/apt/sources.list.d/fixes.list</code> it might look
-like this:</p>
-<pre><code>deb https://packages.siduction.org/fixes unstable main contrib non-free
-
-#deb-src https://packages.siduction.org/fixes unstable main contrib non-free</code></pre>
-<p>And <code>/etc/apt/sources.list.d/debian.list</code> contains the
+#  or the fastest mirror.
+Types:      deb
+URIs:       https://packages.siduction.org/extra
+Suites:     unstable
+Components: main
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/siduction-archive-keyring.gpg
+[...]</code></pre>
+<p>And <code>/etc/apt/sources.list.d/debian.sources</code> contains the
 actual Debian repo:</p>
 <pre><code># debian loadbalancer
-deb http://deb.debian.org/debian/ unstable main contrib non-free
-
-#deb-src http://deb.debian.org/debian/ unstable main contrib non-free</code></pre>
+Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
+[...]</code></pre>
 <p>More entries for optional siduction repositories can be found at <a
 href="https://packages.siduction.org/">siduction repositories</a>.</p>
 <p>For example, adding one or more Debian repositories would look like
 this:</p>
-<pre><code>#Debian
-#Unstable
-deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
+<pre><code># Debian
+## Unstable
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 
-#deb-src http://ftp.us.debian.org/debian/ unstable main contrib non-free
+## Testing
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     testing
+Components: main contrib non-free non-free-firmware
+Enabled:    no
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 
-# Testing
-#deb http://ftp.us.debian.org/debian/ testing main contrib non-free
-
-#deb-src http://ftp.us.debian.org/debian/ testing main contrib non-free
-
-# Experimental
-#deb http://ftp.us.debian.org/debian/ experimental main contrib non-free
-
-#deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free</code></pre>
+## Experimental
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     experimental
+Components: main contrib non-free non-free-firmware
+Enabled:    no
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg</code></pre>
 <p><em>NOTE:</em><br />
 This example uses the US Debian mirror starting with ftp.us. This
 setting can be changed as <strong>root</strong> by adjusting the country
@@ -326,8 +344,8 @@ Processing triggers for man-db (2.8.5-2) ...</code></pre>
 <p>In the last case, the configuration files are not removed from the
 system; they can be reused in a later reinstallation of the program
 package (in the example: gaim). If the configuration files should also
-be removed, then the following call is needed:</p>
-<p><strong><code>apt purge funtools</code></strong></p>
+be removed, then the call
+<strong><code>apt purge funtools</code></strong> is needed.</p>
 <p>This will also remove the configuration files. In case you want to
 see if configuration files of already removed programs are still on the
 system, you can easily get a result with <code>dpkg</code>:</p>
@@ -364,10 +382,10 @@ chapter in the Debian Handbook.</p>
 <p>Although downgrading is not supported, it can succeed for simple
 packages. The steps for a downgrade are now demonstrated on the package
 kmahjongg:</p>
-<p>The sources of unstable are stored in<br />
-<code>/etc/apt/sources.list.d/debian.list</code><br />
-with a hash sign “#” and add the sources for testing. After that, we
-execute the following commands:</p>
+<p>We edit the file <code>/etc/apt/sources.list.d/debian.sources</code>
+with <strong>root</strong> rights. For the Unstable sources, the key
+<em>Enabled</em> is given the value <em>no</em> and for Testing we set
+the value <em>yes</em>. We then execute the following commands:</p>
 <pre><code>apt update
 apt install kmahjongg/testing</code></pre>
 <p>The now installed package is set to hold in order to protect it from
@@ -424,28 +442,24 @@ libpam-modules/unstable upgradeable from 0.79-1 to 0.79-3
 [...]</code></pre>
 <p>The same can be achieved with:</p>
 <pre><code>apt list --upgradable</code></pre>
-<p>The upgrade of a single package (here e.g. debtags-1.6.6.0) can be
-done considering the dependencies with:</p>
-<pre><code>root@siduction# apt install debtags-1.6.6.0
-Reading package lists... Ready
-Building dependency tree... Done
-The following packages will be REMOVED:
-  apt-index-watcher
-The following packages will be updated:
-  debtags
-1 updated, 0 reinstalled, 1 to remove and 0 not upgraded.
-Need to get 660kB of archives.
-After unpacking, 1991kB of disk space will have been freed.
-Do you want to continue [Y/n]?
-Get:1 http://ftp.de.debian.org unstable/main debtags 1.6.6 [660kB]
-Fetched 660kB in 1s (513kB/s)
-(Reading database ... 138695 files and directories currently installed).
-Removing apt-index-watcher ...
-(Reading database ... 138692 files and directories currently installed).
-Preparing to replace debtags 1.6.2 (with .../debtags_1.6.6_i386.deb) ...
-Unpacking replacement for debtags ...
-Setting up debtags (1.6.6) ...
-Installing new version of the configuration file /etc/debtags/sources.list ...</code></pre>
+<p>The upgrade of a single package (here e.g. xterm 397-1) can be done
+with:</p>
+<pre><code>root@siduction# apt install xterm=397-1
+Upgrading:
+  xterm
+
+Summary:
+  Upgrading: 1, Installing: 0, Removing: 0, Not Upgrading: 12
+  Download size: 860 kB
+  Space needed: 1.024 B / 176 GB available
+
+Get:1 https://deb.debian.org/debian unstable/main amd64 xterm amd64 397-1 [860 kB]
+Fetched 860 kB in 0 s (1.760 kB/s).
+Changelogs are read... Finished
+(Reading database ... 456325 files and directories currently installed).
+Preparing to unpack .../archives/xterm_397-1_amd64.deb ...
+Unpacking xterm (397-1) over (396-1) ...
+Setting up xterm (397-1) ...</code></pre>
 <p><strong>Download (only)</strong></p>
 <p>A little known but great option is the <code>-d</code> option:</p>
 <pre><code>apt update &amp;&amp; apt full-upgrade -d</code></pre>
@@ -591,8 +605,8 @@ Description: small man(1) front-end for X
  external viewer to display the manual page. More than one
  external viewer windows can be launched at the same time.
 [...]</code></pre>
-<p>All installable versions of the package (depending on the
-sources.list) can be listed as follows:</p>
+<p>All installable versions of the package (depending on the active
+sources) can be listed as follows:</p>
 <pre><code>user1@pc1:~$ apt list gman
 listing... Done
 gman/unstable,now 0.9.3-5.3 amd64 [installed]</code></pre>
@@ -637,7 +651,7 @@ is English only.</p>
 href="https://wiki.debian.org/DebianPackageManagement">Debian’s
 APT-HOWTO</a>.</p>
 <div id="rev">
-Last edited: 2024/03/22
+Last edited: 2025/02/12
 </div>
 </body>
 </html>

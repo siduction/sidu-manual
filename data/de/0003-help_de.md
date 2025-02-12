@@ -61,18 +61,18 @@ Nun sollte man seine Maus im Textmodus (tty) nutzen können.
 
 **Dateimanager und Textbearbeitung**
 
-Der *"Midnight Commander"* ist ein einfach zu bedienender Dateimanager im Text-Modus (tty) und Texteditor. Er wird mit siduction ausgeliefert.  
+Der *"Midnight Commander"* ist ein einfach zu bedienender Dateimanager und Texteditor im Text-Modus (tty). Er wird mit siduction ausgeliefert.  
 Abgesehen von den normalen Tastatureingaben kann aufgrund von gpm auch die Maus benutzt werden.  
 Mit dem Befehl `mc` wird der Midnight Commander aufgerufen und mit `mcedit` kann eine vorhandene Datei bearbeitet bzw. eine neue Datei erstellt werden.
 
 So öffnet man eine vorhandene Datei (zuerst wird eine Sicherungskopie angelegt):
 
 ~~~
-$ cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list_$(date +%F)
+$ cp /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/debian.sources_$(date +%F)
 
   anschließend
 
-$ mcedit /etc/apt/sources.list.d/debian.list
+$ mcedit /etc/apt/sources.list.d/debian.sources
 ~~~
 
 Nun kann die Datei bearbeitet und gespeichert werden. Die Änderungen werden sofort wirksam.  
@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2024-04-23</div>
+<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>

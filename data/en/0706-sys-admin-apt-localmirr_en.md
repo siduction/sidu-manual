@@ -128,7 +128,7 @@ First we create the file `30proxy` in the directory `/etc/apt/apt.conf.d/` which
 # echo "Acquire::http { proxy "http://192.168.3.5:3142"; };" > /etc/apt/apt.conf.d/30proxy
 ~~~
 
-Next, we change the addresses of the download mirrors in the directory `/etc/apt/sources.list.d/` from "https" to "http" within the files `debian.list`, `extra.list`, and `fixes.list`.  
+Next, we change the addresses of the download mirrors in the directory `/etc/apt/sources.list.d/` from "https" to "http" within the files `debian.sources`, `extra.sources`, and `fixes.sources`.  
 Using "https" is possible: On the one hand it requires some configuration effort, and on the other hand it is not necessary at the moment because all download mirrors still accept "http".
 
 A subsequent
@@ -140,4 +140,4 @@ A subsequent
 should run without error messages.  
 The first call of **`# apt full-upgrade`** on a client loads all new packages into the cache of the APT proxy server. Thus, this process takes the same amount of time as before. The further accesses of the clients make use of the cache and then run substantially faster, without requiring bandwidth again.
 
-<div id="rev">Last edited: 2022/04/05</div>
+<div id="rev">Last edited: 2025/02/12</div>

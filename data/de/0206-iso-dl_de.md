@@ -3,7 +3,7 @@
 ## ISO download
 
 Bitte verwende den nächstgelegenen Spiegelserver. Spiegelserver, die unterhalb des Links mit Angaben für den Eintrag in  
-`/etc/apt/sources.list.d/siduction.list` gelistet sind, werden zeitnah aktualisiert.  
+`/etc/apt/sources.list.d/siduction.sources` gelistet sind, werden zeitnah aktualisiert.  
 
 **Europa**
 
@@ -168,4 +168,4 @@ CertUtil -hashfile C:\TEMP\<mein_ISO_Abbild.img> SHA256
 
 Für ältere Windows Versionen ist das unter der General Public License veröffentlichte Programm `md5summer` (486 KB) erhältlich.
 
-<div id="rev">Zuletzt bearbeitet: 2024-04-23</div>
+<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>

@@ -155,8 +155,8 @@ your own circumstances.</p>
 <pre><code># echo &quot;Acquire::http { proxy &quot;http://192.168.3.5:3142&quot;; };&quot; &gt; /etc/apt/apt.conf.d/30proxy</code></pre>
 <p>Next, we change the addresses of the download mirrors in the
 directory <code>/etc/apt/sources.list.d/</code> from “https” to “http”
-within the files <code>debian.list</code>, <code>extra.list</code>, and
-<code>fixes.list</code>.<br />
+within the files <code>debian.sources</code>,
+<code>extra.sources</code>, and <code>fixes.sources</code>.<br />
 Using “https” is possible: On the one hand it requires some
 configuration effort, and on the other hand it is not necessary at the
 moment because all download mirrors still accept “http”.</p>
@@ -169,7 +169,7 @@ Thus, this process takes the same amount of time as before. The further
 accesses of the clients make use of the cache and then run substantially
 faster, without requiring bandwidth again.</p>
 <div id="rev">
-Last edited: 2022/04/05
+Last edited: 2025/02/12
 </div>
 </body>
 </html>

@@ -20,56 +20,53 @@ Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO
 | [apt purge](0705-sys-admin-apt_de.md#pakete-entfernen) | apt-get purge | Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien. |
 | - | [apt-mark hold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets) | Verhindert, dass apt eine andere Version das Paketes installiert.  |
 | - | [apt-mark unhold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets)  | Hebt den Befehl 'apt-mark hold' auf. |
-| [apt search](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-get search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
+| [apt search](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
 | [apt show](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache show  | Anzeige der Details eines Paketes. |
-| [apt list](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
+| apt policy | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
 
-### sources.list - Liste der Quellen
+### sources.list.d - Liste der Quellen
 
-Das APT-System benötigt eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei sources.list. Moderne Systeme benutzen mittlerweile modularisierte Sourcen um die Übersicht zu verbessern.
+Das APT-System benötigt mindestens eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei \<sourcename\>.sources". siduction stellt die Quellen in dem Ordner `/etc/apt/sources.list.d/` bereit. Innerhalb dieses Verzeichnisses befinden sich standardmäßig folgende Dateien: 
 
-siduction stellt die Quellen in diesem Ordner bereit:
+`debian.sources`  
+`extra.sources`  
+`fixes.sources`
 
-`/etc/apt/sources.list.d/`
+Die Aufteilung in mehrere Dateien erleichtert die Auswahl von Spiegelservern ("mirror switching") und das Ergänzen oder Austauschen von Quellen-Listen.
 
-Innerhalb dieses Verzeichnisses befinden sich standardmäßig folgende Dateien: 
+Eigene Quellen-Listen können mit der Benennung `/etc/apt/sources.list.d/<sourcename>.sources` hinzugefügt werden.
 
-`debian.list`  
-`extra.list`  
-`fixes.list`
+Im Januar 2025 führte Debian im Unstable Zweig das Format *deb822* für die Quellen-Listen ein. Die bisher einzeiligen Einträge ersetzt jetzt eine Reihe von aufeinander folgenden Schlüssel-Wert Paaren. Eine Leerzeile trennt die Quellen voneinander. Neu ist der für jede Quelle erforderliche Schlüssel *Signed-By*. Die Aktivierung und Deaktivierung erfolgt über den Schlüssel *Enabled* und ersetzt das zuvor verwendete Kommentarzeichen.
 
-Dies hat den Vorteil, dass leichter automatisch aus Spiegelservern gewählt werden kann ("mirror switching"), und auch das Ergänzen oder Austauschen von Quellen-Listen ist so einfacher zu gestalten.
+Damit der Umstieg zu dem aktuellen Format leichter gelingt, liefert apt ein Transformationsskript mit. Der Aufruf benötigt **root** Rechte und erfolgt mit `apt modernize-sources`.
 
-Eigene Quellen-Listen-Dateien können mit der Benennung  
-`/etc/apt/sources.list.d/xxxx.list` hinzugefügt werden.  
-Auf einem siduction könnte  
-`/etc/apt/sources.list.d/extra.list` zum Beispiel so aussehen:
+Die Quellen-Liste `/etc/apt/sources.list.d/extra.sources`  
+sieht bei siduction im Format *deb822* zum Beispiel so aus:
 
 ~~~
-This is the default mirror, choosen at first boot.
+# This is the default mirror, choosen at first boot.
 # One might consider to choose the geographical nearest
- or the fastest mirror.
- 
-deb     http://packages.siduction.org/extra unstable main contrib non-free
-
-#deb-src http://packages.siduction.org/extra unstable main contrib non-free
+#  or the fastest mirror.
+Types:      deb
+URIs:       https://packages.siduction.org/extra
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/siduction-archive-keyring.gpg
+[...]
 ~~~
 
-unter `/etc/apt/sources.list.d/fixes.list` könnte es so aussehen:
-
-~~~
-deb      https://packages.siduction.org/fixes unstable main contrib non-free
-
-#deb-src https://packages.siduction.org/fixes unstable main contrib non-free
-~~~
-
-und `/etc/apt/sources.list.d/debian.list` enthält dann das eigentliche Debian Repo:
+und `/etc/apt/sources.list.d/debian.sources` enthält dann das eigentliche Debian Repo:
 
 ~~~
 # debian loadbalancer
-deb     http://deb.debian.org/debian/ unstable main contrib non-free
-
-#deb-src http://deb.debian.org/debian/ unstable main contrib non-free
+Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
+[...]
 ~~~
 
 Weitere Einträge für optionale siduction Repositories finden sich auf [siduction Repositories](https://packages.siduction.org/).
@@ -77,21 +74,30 @@ Weitere Einträge für optionale siduction Repositories finden sich auf [siducti
 Fügt man zum Beispiel ein oder mehrere Debian Repositories hinzu, so würde dies folgender maßen aussehen:
 
 ~~~
-#Debian
-# Unstable
-deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
+# Debian
+## Unstable
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 
-#deb-src http://ftp.us.debian.org/debian/ unstable main contrib non-free
+## Testing
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     testing
+Components: main contrib non-free non-free-firmware
+Enabled:    no
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 
-# Testing
-#deb http://ftp.us.debian.org/debian/ testing main contrib non-free
-
-#deb-src http://ftp.us.debian.org/debian/ testing main contrib non-free
-
-# Experimental
-#deb http://ftp.us.debian.org/debian/ experimental main contrib non-free
-
-#deb-src http://ftp.us.debian.org/debian/ experimental main contrib non-free
+## Experimental
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     experimental
+Components: main contrib non-free non-free-firmware
+Enabled:    no
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 ~~~
 
 *ZUR BEACHTUNG:*  
@@ -247,9 +253,7 @@ Debian unterstützt keinen Downgrade von Paketen. In einfachen Fällen kann das 
 
 Obwohl ein Downgrade nicht unterstützt ist, kann er bei einfachen Paketen gelingen. Die Schritte für einen Downgrade werden nun am Paket kmahjongg demonstriert:
 
-Die Quellen von Unstable werden in  
-`/etc/apt/sources.list.d/debian.list`  
-mit einem Rautezeichen "#" versehen und die Quellen für Testing hinzugefügt. Danach führen wir die folgenden Befehle aus:
+Wir editieren die Datei `/etc/apt/sources.list.d/debian.sources` mit **root** Rechten. Bei den Quellen von Unstable erhält der Schlüssel *Enabled* den Wert *no* und bei Testing setzen wir den Wert *yes*. Danach führen wir die folgenden Befehle aus:
 
 ~~~
 apt update
@@ -262,9 +266,7 @@ Das nun installierte Paket wird vor Aktualisierungen geschützt, auf Hold gesetz
 apt-mark hold kmahjongg
 ~~~
 
-Anschließend machen wir die Änderungen in  
-`/etc/apt/sources.list.d/debian.list`  
-wieder rückgängig. Also die Quellen für Testing mit einem Rautezeichen "#" versehen, während die Rautezeichen vor den Quellen für Unstable wieder entfernt werden. Nach dem Speichern der Änderungen:
+Anschließend machen wir die Änderungen in `/etc/apt/sources.list.d/debian.sources` wieder rückgängig. Nach dem Speichern der Änderungen:
 
 ~~~
 apt update
@@ -314,29 +316,25 @@ Das gleiche erreicht man mit:
 apt list --upgradable
 ~~~
 
-Die Aktualisierung eines einzelnes Pakets (hier z. B. debtags-1.6.6.0) kann unter Berücksichtigung der Abhängigkeiten vorgenommen werden mit:
+Die Aktualisierung eines einzelnes Pakets (hier z. B. xterm 397-1) erfolgt mit:
 
 ~~~
-root@siduction# apt install debtags-1.6.6.0
-Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
-Die folgenden Pakete werden ENTFERNT:
-  apt-index-watcher
-Die folgenden Pakete werden aktualisiert:
-  debtags
-1 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.
-Es müssen 660kB Archive geholt werden.
-Nach dem Auspacken werden 1991kB Plattenplatz freigegeben worden sein.
-Möchtest Du fortfahren [J/n]?
-Hole:1 http://ftp.de.debian.org unstable/main debtags 1.6.6 [660kB]
-Es wurden 660kB in 1s geholt (513kB/s)
-(Lese Datenbank ... 138695 Dateien und Verzeichnisse sind derzeit installiert.)
-Entferne apt-index-watcher ...
-(Lese Datenbank ... 138692 Dateien und Verzeichnisse sind derzeit installiert.)
-Vorbereiten zum Ersetzen von debtags 1.6.2 (durch .../debtags_1.6.6_i386.deb) ...
-Entpacke Ersatz für debtags ...
-Richte debtags ein (1.6.6) ...
-Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
+root@siduction# apt install xterm=397-1
+Upgrading:
+  xterm
+
+Summary:
+  Upgrading: 1, Installing: 0, Removing: 0, Not Upgrading: 12
+  Download size: 860 kB
+  Space needed: 1.024 B / 176 GB available
+
+Holen:1 https://deb.debian.org/debian unstable/main amd64 xterm amd64 397-1 [860 kB]
+Es wurden 860 kB in 0 s geholt (1.760 kB/s).
+Changelogs werden gelesen... Fertig
+(Lese Datenbank ... 456325 Dateien und Verzeichnisse sind derzeit installiert.)
+Vorbereitung zum Entpacken von .../archives/xterm_397-1_amd64.deb ...
+Entpacken von xterm (397-1) über (396-1) ...
+xterm (397-1) wird eingerichtet ...
 ~~~
 
 **(Nur) Downloaden**
@@ -472,7 +470,7 @@ Description: small man(1) front-end for X
 [...]
 ~~~
 
-Alle installierbaren Versionen des Pakets (abhängig von der sources.list) können folgendermaßen aufgelistet werden:
+Alle installierbaren Versionen des Pakets (abhängig von den aktiven Quellen) können folgendermaßen aufgelistet werden:
 
 ~~~
 user1@pc1:~$ apt list gman
@@ -509,4 +507,4 @@ Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch 
 
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
 
-<div id="rev">Zuletzt bearbeitet: 2024-03-22</div>
+<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>

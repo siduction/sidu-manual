@@ -134,9 +134,15 @@ engineering</a>.</p>
 <p>Since the non-free firmware is usually required for correct operation
 (AMD, Intel from Skylake on, and Nvidia from Fermi on), an entry similar
 to</p>
-<pre><code>deb http://deb.debian.org/debian/ unstable main contrib non-free </code></pre>
-<p>should be set. To prevent subsequent problems with WiFi, network,
-Bluetooth, or similar, a</p>
+<pre><code>Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg</code></pre>
+<p>should be set in <code>/etc/apt/sources.list/debian.sources</code>.
+To prevent subsequent problems with WiFi, network, Bluetooth, or
+similar, a</p>
 <pre><code>apt update &amp;&amp; apt install firmware-linux-nonfree</code></pre>
 <p>makes sense. This will install more firmwares than you might need,
 but that should not be a disadvantage.</p>
@@ -207,7 +213,7 @@ href="https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-sync
 Our recommendation is to avoid such hardware if possible. We cannot
 provide setup tips for Optimus hardware here.</p>
 <div id="rev">
-Last edited: 2022/02/16
+Last edited: 2025/02/12
 </div>
 </body>
 </html>

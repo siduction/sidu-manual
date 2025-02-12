@@ -64,10 +64,15 @@ So ziemlich jede Grafikkarte, welche einen [KMS](https://wiki.debian.org/KernelM
 
 3D Beschleunigung steht unter Linux für Intel-, AMD- und nVidia-Grafikkarten zur Verfügung. Wie gut die freien Treiber 3D implementiert haben, hängt ein wenig von der Grafikkarte selbst ab. Generell ist anzumerken, dass fast alle Grafikkarten nicht-freie Firmware benötigen, um einen problemlosen Betrieb zu ermöglichen. Diese Firmware gibt es bei Debian nur im non-free Repository, da sie nicht DFSG konform ist. Ist die korrekte Firmware installiert, ist 3D Support mit Intel oder AMD Grafikkarten ohne weiteres Zutun verfügbar. Bei nVidia Grafik sieht die Geschichte etwas anders aus. Ältere Karten, welche seitens nVidia als legacy Karten eingestuft sind, funktionieren relativ gut, auch wenn immer mit Problemen zu rechnen ist, da auch der verwendete Desktop eine Rolle spielt. Der freie nouveau-Treiber wird ohne Unterstützung von nVidia per [reverse engineering](https://de.wikipedia.org/wiki/Reverse_Engineering) entwickelt.
 
-Da für den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und Nvidia ab Fermi) die nicht-freie Firmware benötigt wird, sollte in /etc/apt/sources.list/debian.list ein Eintrag analog
+Da für den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und Nvidia ab Fermi) die nicht-freie Firmware benötigt wird, sollte in `/etc/apt/sources.list.d/debian.sources` ein Eintrag analog
 
 ~~~
-deb http://deb.debian.org/debian/ unstable main contrib non-free 
+Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 ~~~
 
 gesetzt sein. Um sich nachfolgende Probleme mit WLAN, Netzwerk, Bluetooth oder Ähnliches zu ersparen, ist ein 
@@ -138,5 +143,5 @@ Da die Legacy Treiber 304.xx und 340.xx von NVidia nicht mehr supportet werden, 
 
 Problematisch sind Notebooks mit Hybridgrafik Intel/nVidia, sogenannte Optimus Hardware. Hier wurde früher auf [Bumblebee](https://wiki.debian.org/Bumblebee) verwiesen, diese Lösung ist aber alles Andere, als optimal. nVidia selbst empfielt hingegen diese Setups per [PRIME](https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/) zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es geht, zu vermeiden. Tipps zur Einrichtung für Optimus Hardware können wir hier nicht geben.
 
-<div id="rev">Zuletzt bearbeitet: 2021-05-05</div>
+<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>
 

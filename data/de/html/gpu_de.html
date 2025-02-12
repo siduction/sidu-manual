@@ -133,8 +133,14 @@ href="https://de.wikipedia.org/wiki/Reverse_Engineering">reverse
 engineering</a> entwickelt.</p>
 <p>Da f&uuml;r den korrekten Betrieb in der Regel (AMD, Intel ab Skylake und
 Nvidia ab Fermi) die nicht-freie Firmware ben&ouml;tigt wird, sollte in
-/etc/apt/sources.list/debian.list ein Eintrag analog</p>
-<pre><code>deb http://deb.debian.org/debian/ unstable main contrib non-free </code></pre>
+<code>/etc/apt/sources.list.d/debian.sources</code> ein Eintrag
+analog</p>
+<pre><code>Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg</code></pre>
 <p>gesetzt sein. Um sich nachfolgende Probleme mit WLAN, Netzwerk,
 Bluetooth oder &Auml;hnliches zu ersparen, ist ein</p>
 <pre><code>apt update &amp;&amp; apt install firmware-linux-nonfree</code></pre>
@@ -210,7 +216,7 @@ zu konfigurieren. Unsere Empfehlung ist aber, solche Hardware, wenn es
 geht, zu vermeiden. Tipps zur Einrichtung f&uuml;r Optimus Hardware k&ouml;nnen
 wir hier nicht geben.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2021-05-05
+Zuletzt bearbeitet: 2025-02-12
 </div>
 </body>
 </html>
