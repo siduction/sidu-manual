@@ -282,9 +282,17 @@ alt="calamares reboot" />
 <p>The partitioning described in step 6 above is now slightly
 different.<br />
 We also use the “<em>Manual partitioning</em>” option here. The
-encrypted system requires an empty, unused area on the hard disk. If
-this is not available, we first delete partitions that are no longer
-required. Then we create the new partition.</p>
+encrypted system requires at least three partitions. According to the
+partitioning used above, these are</p>
+<p><code>/dev/nvme0n1p1</code> unencrypted and mounted at
+<code>/boot/efi</code>,<br />
+<code>/dev/nvme0n1p5</code> unencrypted and mounted at
+<code>/boot</code>,<br />
+<code>/dev/nvme0n1p4</code> for the encrypted system.</p>
+<p>The partition <code>/dev/nvme0n1p4</code> requires a different file
+system to the one used previously. Therefore, the first step is to
+delete the partition and create a new partition in the empty, unused
+area.</p>
 <figure>
 <img src="./images-en/install-hd/calamares-en_12.png"
 title="Manual partition encrypt 1"
@@ -320,7 +328,7 @@ added by yourself.</p>
 <pre><code>man adduser
 man deluser</code></pre>
 <div id="rev">
-Last edited: 2024-12-19
+Last edited: 2025-03-25
 </div>
 </body>
 </html>

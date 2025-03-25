@@ -21,6 +21,6 @@
   No password is set for the user **root** (system administrator) in the live medium. In the terminal, either execute **`sudo <command>`** or become root by entering **`su`**.
 
 5) Double-click on the **`Install system`** icon to start the installation on the hard disk.  
-  If partitioning manually, make sure that the first partition is the EFI system partition (esp) and that the *boot* and *esp* marks are set. It must be mounted under `/boot/efi/`.
+  If partitioning manually, make sure that the first partition is the EFI system partition (ESP) and that the *boot* mark is set. It must be mounted under `/boot/efi/`.
 
-<div id="rev">Last edited: 2023/11/15</div>
+<div id="rev">Last edited: 2025/03/25</div>

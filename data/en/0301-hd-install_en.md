@@ -137,7 +137,13 @@ During the installation, the computer should preferably be connected to the Inte
 ### Encrypt system
 
 The partitioning described in step 6 above is now slightly different.  
-We also use the “*Manual partitioning*” option here. The encrypted system requires an empty, unused area on the hard disk. If this is not available, we first delete partitions that are no longer required. Then we create the new partition.
+We also use the “*Manual partitioning*” option here. The encrypted system requires at least three partitions. According to the partitioning used above, these are
+
+`/dev/nvme0n1p1` unencrypted and mounted at `/boot/efi`,  
+`/dev/nvme0n1p5` unencrypted and mounted at `/boot`,  
+`/dev/nvme0n1p4` for the encrypted system.
+
+The partition `/dev/nvme0n1p4` requires a different file system to the one used previously. Therefore, the first step is to delete the partition and create a new partition in the empty, unused area.
 
 ![calamares, manual partitioning encrypt 1](./images-en/install-hd/calamares-en_12.png "Manual partition encrypt 1")
 
@@ -173,4 +179,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2024-12-19</div>
+<div id="rev">Last edited: 2025-03-25</div>

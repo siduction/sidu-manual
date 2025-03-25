@@ -21,6 +21,6 @@
   Für den Benutzer **root** (Systemadministrator) ist im Live Medium kein Passwort gesetzt. Im Terminal entweder **`sudo <Befehl>`** ausführen, oder mit der Eingabe von **`su`** zu root werden.
 
 5) Ein Doppelklick auf das Icon **`System installieren`** startet die Installation auf die Festplatte.  
-  Wenn manuell partitioniert wird, darauf achten, dass die erste Partition die EFI System Partition (esp) ist und die Markierungen *boot* und *esp* gesetzt sind. Sie muss unter `/boot/efi/` eingehangen werden.
+  Wenn manuell partitioniert wird, darauf achten, dass die erste Partition die EFI System Partition (ESP) und die Markierung *bootfähig* gesetzt ist. Sie muss unter `/boot/efi/` eingehangen werden.
 
-<div id="rev">Zuletzt bearbeitet: 2023-11-15</div>
+<div id="rev">Zuletzt bearbeitet: 2025-03-25</div>

@@ -124,7 +124,13 @@ Während der Installation sollte, wenn möglich, der Computer mit dem Internet v
 ### System verschlüsseln
 
 Die oben unter 6 beschriebene Partitionierung gestaltet sich nun geringfügig anders.  
-Wir benutzen auch hier die Option "*Manuelle Partitionierung*". Für das verschlüsselte System braucht es auf der Festplatte einen leeren, unbenutzter Bereich. Ist dieser nicht vorhanden, löschen wir zuerst nicht mehr benötigte Partitionen. Dann erstellen wir die neue Partition.
+Wir benutzen auch hier die Option "*Manuelle Partitionierung*". Das verschlüsselte System erfordert mindestens drei Partitionen. Entsprechend der oben verwendeten Partitionierung sind dies:
+
+`/dev/nvme0n1p1` unverschlüsselt und eingehangen unter `/boot/efi`,  
+`/dev/nvme0n1p5` unverschlüsselt und eingehangen unter `/boot`,  
+`/dev/nvme0n1p4` für das verschlüsselte System.
+
+Die Partition `/dev/nvme0n1p4` benötigt ein anderes als das bisher verwendete Dateisystem. Deshalb löschen wir im ersten Schritt die Partition und erstellen in dem leeren, unbenutzten Bereich eine neue Partition.
 
 ![calamares Manuelle Partition verschlüsseln 1](./images-de/install-hd/calamares-de_12.png "Manuelle Partition verschlüsseln 1")
 
@@ -155,4 +161,4 @@ So entfernt man einen Benutzer
 
 Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
-<div id="rev">Zuletzt bearbeitet: 2024-12-19</div>
+<div id="rev">Zuletzt bearbeitet: 2025-03-25</div>

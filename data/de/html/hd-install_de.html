@@ -296,9 +296,16 @@ alt="calamares Beenden" />
 <p>Die oben unter 6 beschriebene Partitionierung gestaltet sich nun
 geringf&uuml;gig anders.<br />
 Wir benutzen auch hier die Option “<em>Manuelle Partitionierung</em>”.
-F&uuml;r das verschl&uuml;sselte System braucht es auf der Festplatte einen
-leeren, unbenutzter Bereich. Ist dieser nicht vorhanden, l&ouml;schen wir
-zuerst nicht mehr ben&ouml;tigte Partitionen. Dann erstellen wir die neue
+Das verschl&uuml;sselte System erfordert mindestens drei Partitionen.
+Entsprechend der oben verwendeten Partitionierung sind dies:</p>
+<p><code>/dev/nvme0n1p1</code> unverschl&uuml;sselt und eingehangen unter
+<code>/boot/efi</code>,<br />
+<code>/dev/nvme0n1p5</code> unverschl&uuml;sselt und eingehangen unter
+<code>/boot</code>,<br />
+<code>/dev/nvme0n1p4</code> f&uuml;r das verschl&uuml;sselte System.</p>
+<p>Die Partition <code>/dev/nvme0n1p4</code> ben&ouml;tigt ein anderes als
+das bisher verwendete Dateisystem. Deshalb l&ouml;schen wir im ersten Schritt
+die Partition und erstellen in dem leeren, unbenutzten Bereich eine neue
 Partition.</p>
 <figure>
 <img src="./images-de/install-hd/calamares-de_12.png"
@@ -337,7 +344,7 @@ m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
 <strong><code>man adduser</code></strong> und
 <strong><code>man deluser</code></strong> .</p>
 <div id="rev">
-Zuletzt bearbeitet: 2024-12-19
+Zuletzt bearbeitet: 2025-03-25
 </div>
 </body>
 </html>
