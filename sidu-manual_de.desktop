@@ -6,4 +6,4 @@ Icon=sidu-manual
 Name=Manual
 Terminal=false
 Name[de]=Handbuch
-Categories=System;
+Categories=System;Documentation;
