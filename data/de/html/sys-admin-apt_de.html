@@ -302,10 +302,10 @@ auf die Textkonsole wechseln.</li>
 <li>Einloggen als <strong>root</strong>.</li>
 </ol>
 <p>Anschlie&szlig;end das gew&uuml;nschte Programmpaket installieren:</p>
-<pre><code>init 3
+<pre><code>systemctl isolate multi-user.target
 apt update
 apt install &lt;Paketname&gt;
-init 5 &amp;&amp; exit</code></pre>
+systemctl isolate graphical.target &amp;&amp; exit</code></pre>
 <p>Im unteren Beispiel wird das Paket “funtools” installiert.</p>
 <pre><code>root@siduction# apt install funtools
 Paketlisten werden gelesen... Fertig
@@ -493,10 +493,10 @@ xterm (397-1) wird eingerichtet ...</code></pre>
 <p><code>-d</code> erm&ouml;glicht, die Pakete eines full-upgrades lokal zu
 speichern, ohne dass sie installiert werden. Dies kann in einer Konsole
 durchgef&uuml;hrt werden, w&auml;hrend man in X ist. Der full-upgrade selbst kann
-zu einem sp&auml;teren Zeitpunkt in init 3 erfolgen. Dadurch erh&auml;lt man auch
-die M&ouml;glichkeit, nach eventuellen Warnungen zu recherchieren und danach
-zu entscheiden, ob man die Aktualisierung durchf&uuml;hren m&ouml;chte oder
-nicht:</p>
+zu einem sp&auml;teren Zeitpunkt im multi-user.target erfolgen. Dadurch
+erh&auml;lt man auch die M&ouml;glichkeit, nach eventuellen Warnungen zu
+recherchieren und danach zu entscheiden, ob man die Aktualisierung
+durchf&uuml;hren m&ouml;chte oder nicht:</p>
 <pre><code>root@siduction#apt full-upgrade -d
 Reading package lists... Done
 Building dependency tree
@@ -543,15 +543,15 @@ auf die Textkonsole wechseln.</li>
 <li>Einloggen als <strong>root</strong>.</li>
 </ol>
 <p>Anschlie&szlig;end folgende Befehle ausf&uuml;hren:</p>
-<pre><code>init 3
+<pre><code>systemctl isolate multi-user.target
 apt update
 apt full-upgrade
 apt clean
-init 5 &amp;&amp; exit</code></pre>
-<p>Wurde ein neuer Kernel installiert, ist an Stelle von <em>“init
-5”</em> der Befehl <strong><code>systemctl reboot</code></strong> oder
-<strong><code>init 6</code></strong> notwendig, um in den neuen Kernel
-zu booten.</p>
+systemctl isolate graphical.target &amp;&amp; exit</code></pre>
+<p>Wurde ein neuer Kernel installiert, ist an Stelle von <em>“systemctl
+isolate graphical.target”</em> der Befehl
+<strong><code>systemctl reboot</code></strong> notwendig, um in den
+neuen Kernel zu booten.</p>
 <h3 id="warum-ausschlie&szlig;lich-apt-verwenden">Warum ausschlie&szlig;lich apt
 verwenden</h3>
 <p>Zum Installieren, L&ouml;schen und Durchf&uuml;hren einer Systemaktualisierung
@@ -688,7 +688,7 @@ Benutzerf&uuml;hrung von packagesearch ausschlie&szlig;lich Englisch.</p>
 href="https://wiki.debian.org/DebianPackageManagement">Debians
 APT-HOWTO</a></p>
 <div id="rev">
-Zuletzt bearbeitet: 2025-02-12
+Zuletzt bearbeitet: 2025-09-19
 </div>
 </body>
 </html>

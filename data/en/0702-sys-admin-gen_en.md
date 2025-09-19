@@ -101,7 +101,6 @@ will remove the symlinks from all requirements and dependencies within systemd a
 ### systemd-target - formerly runlevel
 
 Already since the 2013.2 "December" release, siduction has been using systemd as the default init system.  
-The old sysvinit commands are still supported. (for this a quote from `man systemd`: "... is provided for compatibility reasons and because it is easier to type.")  
 More detailed information about systemd can be found on the manual page [System administration - systemd](0710-systemd-start_en.md#systemd---the-system-and-services-manager).  
 The various runlevels that are booted or switched to are described by systemd as **target** units. They have the extension **.target**.
 
@@ -415,4 +414,4 @@ The desired sound settings are made as **user** from a terminal:
 $ alsamixer
 ~~~
 
-<div id="rev">Last edited: 2022/04/05</div>
+<div id="rev">Last edited: 2025/09/19</div>

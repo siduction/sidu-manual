@@ -57,9 +57,9 @@ Jetzt erkl&auml;ren wir die Funktion der Unit
 <p>Die verschiedenen Runlevel, in die gebootet oder gewechselt wird,
 beschreibt systemd als Ziel-Unit. Sie besitzen die Erweiterung
 “.target”.</p>
-<p>Die alten sysvinit-Befehle werden weiterhin unterst&uuml;tzt. (Hierzu ein
-Zitat aus <code>man systemd</code>: “… wird aus Kompatibilit&auml;tsgr&uuml;nden
-und da es leichter zu tippen ist, bereitgestellt.”)</p>
+<p>Mit systemd 258~rc1-1 (August 2025) wurde die Unterst&uuml;tzung der alten
+sysvinit-Befehle im laufenden System entfernt. Die Anpassung der
+Kernelbootzeile mit den sysvinit-Befehlen ist weiterhin m&ouml;glich.</p>
 <table>
 <colgroup>
 <col style="width: 27%" />
@@ -165,29 +165,24 @@ dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.</p>
 <tr class="header">
 <th>Ziel-Unit</th>
 <th>Terminal-Befehl</th>
-<th style="text-align: center;">init-Befehl alt</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>emergency.target</td>
 <td>systemctl isolate emergency.target</td>
-<td style="text-align: center;">-</td>
 </tr>
 <tr class="even">
 <td>rescue.target</td>
 <td>systemctl isolate rescue.target</td>
-<td style="text-align: center;">init 1</td>
 </tr>
 <tr class="odd">
 <td>multi-user.target</td>
 <td>systemctl isolate multi-user.target</td>
-<td style="text-align: center;">init 3</td>
 </tr>
 <tr class="even">
 <td>graphical.target</td>
 <td>systemctl isolate graphical.target</td>
-<td style="text-align: center;">init 5</td>
 </tr>
 </tbody>
 </table></li>
@@ -202,28 +197,24 @@ aufgerufen werden sollen.</p>
 <tr class="header">
 <th>Ziel</th>
 <th>Terminal-Befehl</th>
-<th style="text-align: center;">init-Befehl alt</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>halt</td>
 <td>systemctl halt</td>
-<td style="text-align: center;">-</td>
 </tr>
 <tr class="even">
-<td>poweroff</td>
-<td>systemctl poweroff</td>
-<td style="text-align: center;">init 0</td>
+<td>shutdown</td>
+<td>systemctl shutdown</td>
 </tr>
 <tr class="odd">
 <td>reboot</td>
 <td>systemctl reboot</td>
-<td style="text-align: center;">init 6</td>
 </tr>
 </tbody>
 </table>
-<p><em>“halt”</em>, <em>“poweroff”</em> und <em>“reboot”</em> holen
+<p><em>“halt”</em>, <em>“shutdown”</em> und <em>“reboot”</em> holen
 mehrere Units in der richtigen Reihenfolge herein, um das System
 geordnet zu beenden und ggf. einen Neustart auszuf&uuml;hren.</p></li>
 </ol>
@@ -232,7 +223,7 @@ geordnet zu beenden und ggf. einen Neustart auszuf&uuml;hren.</p></li>
 href="https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html">Manpage
 systemd.target, de</a></p>
 <div id="rev">
-Seite zuletzt aktualisiert 2021-11-29
+Seite zuletzt aktualisiert 2025-08-31
 </div>
 </body>
 </html>

@@ -141,10 +141,10 @@ Therefore we recommend the following procedure:
 Then install the desired program package:
 
 ~~~
-init 3
+systemctl isolate multi-user.target
 apt update
 apt install <package_name>
-init 5 && exit
+systemctl isolate graphical.target && exit
 ~~~
 
 In the example below, the package "funtools" is installed.
@@ -345,7 +345,7 @@ A little known but great option is the `-d` option:
 apt update && apt full-upgrade -d
 ~~~
 
-`-d` allows to save the packages of a full-upgrade locally without installing them. This can be done in a console while in X. The full-upgrade itself can be done later in init 3. This also gives one the opportunity to check for any warnings and then decide whether or not to perform the upgrade:
+`-d` allows to save the packages of a full-upgrade locally without installing them. This can be done in a console while in X. The full-upgrade itself can be done later in multi-user.target. This also gives one the opportunity to check for any warnings and then decide whether or not to perform the upgrade:
 
 ~~~
 root@siduction#apt full-upgrade -d
@@ -389,14 +389,14 @@ Before updating the system, visit the [siduction home page](https://forum.siduct
 Then execute the following commands:
 
 ~~~
-init 3
+systemctl isolate graphical.target
 apt update
 apt full-upgrade
 apt clean
-init 5 && exit
+systemctl isolate multi-user.target && exit
 ~~~
 
-If a new kernel has been installed, the command **`systemctl reboot`** or **`init 6`** needs to be run instead of *"init 5"* in order to boot with the new kernel.
+If a new kernel has been installed, the command **`systemctl reboot`** needs to be run instead of *"systemctl isolate graphical.target"* in order to boot with the new kernel.
 
 ### Why use apt exclusively
 
@@ -508,4 +508,4 @@ In addition, a lot of information about Debian packages is provided, including w
 
 A complete description of the APT system can be found in [Debian's APT-HOWTO](https://wiki.debian.org/DebianPackageManagement).
 
-<div id="rev">Last edited: 2025/02/12</div>
+<div id="rev">Last edited: 2025/09/19</div>

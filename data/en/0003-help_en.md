@@ -34,7 +34,7 @@ If you prefer another chat client, you need to enter these server details:
 
 ### Useful helpers in text mode
 
-Normally, you should use text mode runlevel 3 (**`init 3`** or **`journalctl isolate multi-user.target`**) if you want to perform a dist-upgrade or if you are forced to beceause of a serious system error.
+Normally, you should use text mode `systemctl isolate multi-user.target` if you want to perform a dist-upgrade or if you are forced to beceause of a serious system error.
 
 **gpm**
 
@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2025/02/12</div>
+<div id="rev">Last edited: 2025/08/31</div>

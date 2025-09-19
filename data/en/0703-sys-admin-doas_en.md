@@ -58,9 +58,10 @@ permit bob as anne cmd /home/anne/bin/script1 args -n
 permit bob as anne cmd /home/anne/bin/script2 args
 
 # lisa may execute system upgrade
-permit persist lisa cmd init
-deny lisa cmd init args 1
-deny lisa cmd init args 5
+permit persist lisa as root cmd systemctl args isolate
+deny lisa cmd systemctl args "isolate emergency.target"
+deny lisa cmd systemctl args "isolate rescue target"
+deny lisa cmd systemctl args "isolate graphical.target"
 permit persist lisa cmd apt args update
 permit persist lisa cmd apt args full-upgrade
 ~~~
@@ -77,7 +78,7 @@ bob@sidu:~$
 
 The script was executed without comment after Bob entered his user password.
 
-To allow **Lisa** to perform the system upgrade, she should switch to *multi-user.target* (init 3) and perform a *systemctl reboot* (init 6) after completion. The rule line `permit persist lisa as root cmd init` without specifying *args* causes all other calls of init are allowd, except those that are prohibited by the following rules below. Therefore, she cannot go directly from the *multi-user.target* to the *graphical.target* (init 5). Here we see the structure of a hierarchy.
+To allow **Lisa** to perform the system upgrade, she should switch to *multi-user.target* and perform a *systemctl reboot* after completion. The rule line `permit persist lisa as root cmd systemctl args isolate` causes all other calls of *systemctl isolate* are allowd, except those that are prohibited by the following rules below. Therefore, she cannot go directly from the *multi-user.target* to the *graphical.target*. Here we see the structure of a hierarchy.
 
 **Notes**  
 If you keep typing *sudo*, the line `alias sudo="doas"` in your *.bashrc* will help.  
@@ -90,4 +91,4 @@ man doas.conf
 [DE: LinuxNews, Linux Rechtemanagement, sudo durch doas ersetzen](https://linuxnews.de/2020/10/linux-rechtemanagement-sudo-durch-doas-ersetzen/)  
 [DE: LinuxUser 08.2021, Kleiner Bruder](https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/)
 
-<div id="rev">Page last updated 2022/03/06</div>
+<div id="rev">Page last updated 2025/09/19</div>

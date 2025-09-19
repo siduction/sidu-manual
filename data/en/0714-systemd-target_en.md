@@ -7,7 +7,7 @@ Now the function of the **systemd.target** unit will be explained in more detail
 
 The different runlevels that are booted or switched to are described by systemd as target units. They have the extension ".target".
 
-The old sysvinit commands are still supported. (For this a quote from `man systemd`: "... is provided for compatibility reasons and because it is easier to type.")
+With systemd 258~rc1-1 (August 2025), support for the old sysvinit commands was removed from the running session. It is still possible to customize the kernel boot line with the sysvinit commands.
 
 | target unit | description | 
 | --- | -------- |
@@ -38,24 +38,24 @@ There are three special features to be considered for the target units:
 2. The use in the terminal during a running session  
     Provided you are in a running graphical session, you can switch to the virtual terminal tty3 with the key combination **`CTRL`**+**`ALT`**+**`F3`**. Here you log in as **root** user. The following table lists the terminal commands, where the expression *"isolate"* ensures that all services not requested by the target unit are terminated.
 
-    | target unit | terminal command | init command alt |
-    | --------- | --------------- | :----: |
-    | emergency.target | systemctl isolate emergency.target | - |
-    | rescue.target | systemctl isolate rescue.target | init 1 |
-    | multi-user.target | systemctl isolate multi-user.target | init 3 |
-    | graphical.target | systemctl isolate graphical.target | init 5 |
+    | target unit | terminal command |
+    | --------- | --------------- |
+    | emergency.target | systemctl isolate emergency.target |
+    | rescue.target | systemctl isolate rescue.target |
+    | multi-user.target | systemctl isolate multi-user.target |
+    | graphical.target | systemctl isolate graphical.target |
 
 
 3. Target units that should not be called directly  
     A number of target units are used to group intermediate steps with dependencies during the boot process or the .target change. The following list shows three frequently used commands that **should not** be called with the syntax "isolate xxxxx.target".
 
-    | target | terminal command | init command alt |
-    | -------- | --------------- | :--------: |
-    | halt | systemctl halt | - |
-    | poweroff | systemctl poweroff | init 0 |
-    | reboot | systemctl reboot | init 6 |
+    | target | terminal command |
+    | -------- | --------------- |
+    | halt | systemctl halt |
+    | shutdown | systemctl shutdown |
+    | reboot | systemctl reboot |
 
-    *"halt"*, *"poweroff"*, and *"reboot"* fetch several units in the correct order to terminate the system in an orderly fashion and to reboot if necessary.
+    *"halt"*, *"shutdown"*, and *"reboot"* fetch several units in the correct order to terminate the system in an orderly fashion and to reboot if necessary.
 
 ### Sources systemd-target
 
@@ -63,4 +63,4 @@ There are three special features to be considered for the target units:
 man systemd.target
 ~~~
 
-<div id="rev">Last edited: 2022/04/09</div>
+<div id="rev">Last edited: 2025/08/31/div>

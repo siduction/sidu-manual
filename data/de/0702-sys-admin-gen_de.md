@@ -101,7 +101,6 @@ die Symlinks aus allen Anforderungen und Abhängigkeiten innerhalb systemd und d
 ### systemd-target ehemals Runlevel
 
 Seit der Veröffentlichung von 2013.2 "December" benutzt siduction bereits systemd als Standard-Init-System.  
-Die alten sysvinit-Befehle werden weiterhin unterstützt. (hierzu ein Zitat aus `man systemd`: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")  
 Ausführlichere Informationen zum systemd enthält die Handbuchseite [Systemadministration.systemd](0710-systemd-start_de.md#systemd-der-system--und-dienste-manager).  
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als **Ziel-Unit**. Sie besitzen die Erweiterung **.target**.
 
@@ -415,4 +414,4 @@ Die gewünschten Sound-Einstellungen werden als **\<user\>** von einem Terminal 
 $ alsamixer
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>

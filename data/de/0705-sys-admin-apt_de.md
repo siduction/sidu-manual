@@ -141,10 +141,10 @@ Deshalb empfehlen wir folgenden Ablauf:
 Anschließend das gewünschte Programmpaket installieren:
 
 ~~~
-init 3
+systemctl isolate multi-user.target
 apt update
 apt install <Paketname>
-init 5 && exit
+systemctl isolate graphical.target && exit
 ~~~
 
 Im unteren Beispiel wird das Paket "funtools" installiert.
@@ -345,7 +345,7 @@ Eine wenig bekannte, aber großartige Möglichkeit ist die Option -d:
 apt update && apt full-upgrade -d
 ~~~
 
-`-d` ermöglicht, die Pakete eines full-upgrades lokal zu speichern, ohne dass sie installiert werden. Dies kann in einer Konsole durchgeführt werden, während man in X ist. Der full-upgrade selbst kann zu einem späteren Zeitpunkt in init 3 erfolgen. Dadurch erhält man auch die Möglichkeit, nach eventuellen Warnungen zu recherchieren und danach zu entscheiden, ob man die Aktualisierung durchführen möchte oder nicht:
+`-d` ermöglicht, die Pakete eines full-upgrades lokal zu speichern, ohne dass sie installiert werden. Dies kann in einer Konsole durchgeführt werden, während man in X ist. Der full-upgrade selbst kann zu einem späteren Zeitpunkt im multi-user.target erfolgen. Dadurch erhält man auch die Möglichkeit, nach eventuellen Warnungen zu recherchieren und danach zu entscheiden, ob man die Aktualisierung durchführen möchte oder nicht:
 
 ~~~
 root@siduction#apt full-upgrade -d
@@ -387,14 +387,14 @@ Zu beachten ist der folgende Ablauf:
 Anschließend folgende Befehle ausführen:
 
 ~~~
-init 3
+systemctl isolate multi-user.target
 apt update
 apt full-upgrade
 apt clean
-init 5 && exit
+systemctl isolate graphical.target && exit
 ~~~
 
-Wurde ein neuer Kernel installiert, ist an Stelle von *"init 5"* der Befehl **`systemctl reboot`** oder **`init 6`** notwendig, um in den neuen Kernel zu booten.
+Wurde ein neuer Kernel installiert, ist an Stelle von *"systemctl isolate graphical.target"* der Befehl **`systemctl reboot`** notwendig, um in den neuen Kernel zu booten.
 
 ### Warum ausschließlich apt verwenden
 
@@ -507,4 +507,4 @@ Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch 
 
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
 
-<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>
+<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>

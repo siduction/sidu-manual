@@ -99,7 +99,7 @@ upgrade</h3>
 <p>An upgrade can only be performed when X graphics server is stopped.
 To stop the graphics server, the following command can be entered into a
 console as <strong>root</strong>:</p>
-<pre><code>init 3</code></pre>
+<pre><code>systemctl isolate multi-user.target</code></pre>
 <p>After that, system updates can be performed safely. First, refresh
 the local package database with</p>
 <pre><code>apt update</code></pre>
@@ -108,14 +108,14 @@ the local package database with</p>
 apt full-upgrade</code></pre>
 <p>Afterwards, start the graphical user interface with the following
 command:</p>
-<pre><code>init 5</code></pre>
+<pre><code>systemctl isolate graphical.target</code></pre>
 <p><strong>apt full-upgrade</strong> is the recommended procedure to
 upgrade a siduction installation to the latest version. It is described
 in more detail here:<br />
 <a href="./sys-admin-apt_en.html#updating-the-system">Updating an
 installed system - full-upgrade</a>.</p>
 <div id="rev">
-Last edited: 2023/11/15
+Last edited: 2025/09/19
 </div>
 </body>
 </html>

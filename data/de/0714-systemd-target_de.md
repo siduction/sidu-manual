@@ -7,7 +7,7 @@ Jetzt erklären wir die Funktion der Unit **systemd.target**, die den allgemein 
 
 Die verschiedenen Runlevel, in die gebootet oder gewechselt wird, beschreibt systemd als Ziel-Unit. Sie besitzen die Erweiterung ".target".
 
-Die alten sysvinit-Befehle werden weiterhin unterstützt. (Hierzu ein Zitat aus `man systemd`: "... wird aus Kompatibilitätsgründen und da es leichter zu tippen ist, bereitgestellt.")
+Mit systemd 258~rc1-1 (August 2025) wurde die Unterstützung der alten sysvinit-Befehle im laufenden System entfernt. Die Anpassung der Kernelbootzeile mit den sysvinit-Befehlen ist weiterhin möglich.
 
 | Ziel-Unit | Beschreibung | 
 | --- | -------- |
@@ -38,27 +38,27 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 2. Die Verwendung im Terminal während einer laufenden Sitzung.
     Vorausgesetzt man befindet sich in einer laufenden graphischen Sitzung, kann man mit der Tastenkombination **`CTRL`**+**`ALT`**+**`F3`** zum virtuellen Terminal tty3 wechseln. Hier meldet man sich als User **root** an. Die folgende Tabelle listet die Terminal-Befehle auf, wobei der Ausdruck *"isolate"* dafür sorgt, dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.
 
-    | Ziel-Unit | Terminal-Befehl | init-Befehl alt |
-    | --------- | --------------- | :----: |
-    | emergency.target | systemctl isolate emergency.target | - |
-    | rescue.target | systemctl isolate rescue.target | init 1 |
-    | multi-user.target | systemctl isolate multi-user.target | init 3 |
-    | graphical.target | systemctl isolate graphical.target | init 5 |
+    | Ziel-Unit | Terminal-Befehl |
+    | --------- | --------------- |
+    | emergency.target | systemctl isolate emergency.target |
+    | rescue.target | systemctl isolate rescue.target |
+    | multi-user.target | systemctl isolate multi-user.target |
+    | graphical.target | systemctl isolate graphical.target |
 
 
 3. Ziel-Units, die nicht direkt aufgerufen werden sollen.  
     Eine ganze Reihe von Ziel-Units sind dazu da während des Bootvorgangs oder des .target-Wechsels Zwischenschritte mit Abhängigkeiten zu gruppieren. Die folgende Liste zeigt drei häufig verwendete Kommandos die **nicht** mit der Syntax "isolate xxxxxxx.target" aufgerufen werden sollen.
 
-    | Ziel | Terminal-Befehl | init-Befehl alt |
-    | -------- | --------------- | :--------: |
-    | halt | systemctl halt | - |
-    | poweroff | systemctl poweroff | init 0 |
-    | reboot | systemctl reboot | init 6 |
+    | Ziel | Terminal-Befehl |
+    | -------- | --------------- |
+    | halt | systemctl halt |
+    | shutdown | systemctl shutdown |
+    | reboot | systemctl reboot |
 
-    *"halt"*, *"poweroff"* und *"reboot"* holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
+    *"halt"*, *"shutdown"* und *"reboot"* holen mehrere Units in der richtigen Reihenfolge herein, um das System geordnet zu beenden und ggf. einen Neustart auszuführen.
 
 ### Quellen systemd-target
 
 [Manpage systemd.target, de](https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html)
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Seite zuletzt aktualisiert 2025-08-31</div>

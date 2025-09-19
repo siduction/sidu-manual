@@ -117,9 +117,10 @@ permit bob as anne cmd /home/anne/bin/script1 args -n
 permit bob as anne cmd /home/anne/bin/script2 args
 
 # lisa may execute system upgrade
-permit persist lisa cmd init
-deny lisa cmd init args 1
-deny lisa cmd init args 5
+permit persist lisa as root cmd systemctl args isolate
+deny lisa cmd systemctl args &quot;isolate emergency.target&quot;
+deny lisa cmd systemctl args &quot;isolate rescue target&quot;
+deny lisa cmd systemctl args &quot;isolate graphical.target&quot;
 permit persist lisa cmd apt args update
 permit persist lisa cmd apt args full-upgrade</code></pre>
 <p><strong>Explanations</strong><br />
@@ -138,14 +139,13 @@ bob@sidu:~$</code></pre>
 <p>The script was executed without comment after Bob entered his user
 password.</p>
 <p>To allow <strong>Lisa</strong> to perform the system upgrade, she
-should switch to <em>multi-user.target</em> (init 3) and perform a
-<em>systemctl reboot</em> (init 6) after completion. The rule line
-<code>permit persist lisa as root cmd init</code> without specifying
-<em>args</em> causes all other calls of init are allowd, except those
-that are prohibited by the following rules below. Therefore, she cannot
-go directly from the <em>multi-user.target</em> to the
-<em>graphical.target</em> (init 5). Here we see the structure of a
-hierarchy.</p>
+should switch to <em>multi-user.target</em> and perform a <em>systemctl
+reboot</em> after completion. The rule line
+<code>permit persist lisa as root cmd systemctl args isolate</code>
+causes all other calls of <em>systemctl isolate</em> are allowd, except
+those that are prohibited by the following rules below. Therefore, she
+cannot go directly from the <em>multi-user.target</em> to the
+<em>graphical.target</em>. Here we see the structure of a hierarchy.</p>
 <p><strong>Notes</strong><br />
 If you keep typing <em>sudo</em>, the line
 <code>alias sudo="doas"</code> in your <em>.bashrc</em> will help.<br />
@@ -165,7 +165,7 @@ LinuxNews, Linux Rechtemanagement, sudo durch doas ersetzen</a><br />
 href="https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/">DE:
 LinuxUser 08.2021, Kleiner Bruder</a></p>
 <div id="rev">
-Page last updated 2022/03/06
+Page last updated 2025/09/19
 </div>
 </body>
 </html>

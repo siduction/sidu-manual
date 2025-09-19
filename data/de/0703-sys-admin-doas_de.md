@@ -58,9 +58,10 @@ permit bob as anne cmd /home/anne/bin/script1 args -n
 permit bob as anne cmd /home/anne/bin/script2 args
 
 # lisa darf Systemupgrade ausführen
-permit persist lisa cmd init
-deny lisa cmd init args 1
-deny lisa cmd init args 5
+permit persist lisa as root cmd systemctl args isolate
+deny lisa cmd systemctl args "isolate emergency.target"
+deny lisa cmd systemctl args "isolate rescue target"
+deny lisa cmd systemctl args "isolate graphical.target"
 permit persist lisa cmd apt args update
 permit persist lisa cmd apt args full-upgrade
 ~~~
@@ -77,7 +78,7 @@ bob@sidu:~$
 
 Das Skript wurde nach Eingabe des Benutzerpasswortes von Bob ohne Kommentar ausgeführt.
 
-Damit **Lisa** das Systemupgrade ausführen kann, soll sie zum *multi-user.target* (init 3) wechseln und nach Abschluss einen *systemctl reboot* (init 6) durchführen. Die Regelzeile *"permit persist lisa as root cmd init"* ohne die Angabe von args bewirkt, dass alle Aufrufe von init erlaubt sind, außer denen, die in den nachfolgenden Regeln verboten werden. Deshalb kann sie nicht direkt vom *multi-user.target* in das *graphical.target* (init 5) wechseln. Hier sehen wir den Aufbau einer Hierarchie.
+Damit **Lisa** das Systemupgrade ausführen kann, soll sie zum *multi-user.target* wechseln und nach Abschluss einen *systemctl reboot* durchführen. Die Regelzeile *"permit persist lisa as root cmd systemctl args isolate"* bewirkt, dass alle Aufrufe von *systemctl isolate* erlaubt sind, außer denen, die in den nachfolgenden Regeln verboten werden. Deshalb kann sie nicht direkt vom *multi-user.target* in das *graphical.target* wechseln. Hier sehen wir den Aufbau einer Hierarchie.
 
 **Hinweise**  
 Wer immer wieder `sudo` eintippt, dem hilft die Zeile `alias sudo="doas"` in seiner `.bashrc`.  
@@ -90,4 +91,4 @@ man doas.conf
 [LinuxNews, Linux Rechtemanagement, sudo durch doas ersetzen](https://linuxnews.de/2020/10/linux-rechtemanagement-sudo-durch-doas-ersetzen/)  
 [LinuxUser 08.2021, Kleiner Bruder](https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/)
 
-<div id="rev">Zuletzt bearbeitet: 2022-04-01</div>
+<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>

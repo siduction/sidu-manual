@@ -208,7 +208,7 @@ Description of options:
   Example:  
   WantedBy=graphical.target
 
-  This tells systemd to launch the unit when starting graphical.target (formerly "init 5"). 
+  This tells systemd to launch the unit when starting graphical.target. 
 
 + `RequiredBy=`  
   This option can be used multiple times or contain a space-separated list.  
@@ -502,4 +502,4 @@ man systemd-analyze
 man systemctl
 ~~~
 
-<div id="rev">Last edited: 2024-12-17</div>
+<div id="rev">Last edited: 2025/09/17</div>

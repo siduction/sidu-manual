@@ -37,7 +37,7 @@ php7.4-mysql
 phpmyadmin
 ~~~
 
-Wie bei siduction üblich, erledigen wir die Installationen im "multi-user.target" (init 3) im Terminal.
+Wie bei siduction üblich, erledigen wir die Installationen im "multi-user.target" im Terminal.
 
 **Vorbereitungen**
 
@@ -495,4 +495,4 @@ bezüglich der Konfiguration beachten.
 
 Danach kann der Server, ausschließlich für System- und Software- Aktualisierungen, temporär über eine zweite Netzwerkschnittstelle mit dem Internet verbunden werden.
 
-<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>

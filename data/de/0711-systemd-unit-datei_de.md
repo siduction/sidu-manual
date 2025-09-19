@@ -210,7 +210,7 @@ Beschreibung der Optionen:
   Beispiel:  
   WantedBy=graphical.target
 
-  Das teilt systemd mit, die Unit beim Starten von graphical.target (früher "init 5") hereinzuziehen. 
+  Das teilt systemd mit, die Unit beim Starten von graphical.target hereinzuziehen. 
 
 + `RequiredBy=`  
   Diese Option kann mehrfach verwendet werden oder eine durch Leerzeichen getrennte Liste enthalten.  
@@ -499,4 +499,4 @@ Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgeliefe
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Seite zuletzt aktualisiert 2025-09-19</div>

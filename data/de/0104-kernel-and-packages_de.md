@@ -40,7 +40,7 @@ Aus diesem Grund sollen die Repositorien von Debian benutzt werden, um die benö
 Ein upgrade ist nur bei beendetem Grafikserver X durchzuführen. Um den Grafikserver zu beenden, gibt man als **root** den Befehl
 
 ~~~
-init 3
+systemctl isolate multi-user.target
 ~~~
 
 in eine Konsole ein. Danach sind Systemaktualisierungen sicher durchführbar. Zuerst die lokale Paketdatenbank auffrischen mit
@@ -59,10 +59,10 @@ apt full-upgrade
 Anschließend startet man mit folgendem Befehl wieder die graphische Oberfläche:
 
 ~~~
-init 5
+systemctl isolate graphical.target
 ~~~
 
 *"apt full-upgrade"* ist das empfohlene Verfahren, um eine siduction Installation auf den neuesten Stand zu bringen. Ausführlicher wird das hier beschrieben:  
 [Aktualisierung eines installierten Systems - full-upgrade](0705-sys-admin-apt_de.md#aktualisierung-des-systems).
 
-<div id="rev">Zuletzt bearbeitet: 2023-11-13</div>
+<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>

@@ -40,7 +40,7 @@ For this reason, Debian's repositories should be used to install the required so
 An upgrade can only be performed when X graphics server is stopped. To stop the graphics server, the following command can be entered into a console as **root**:
 
 ~~~
-init 3
+systemctl isolate multi-user.target
 ~~~
 
 After that, system updates can be performed safely. First, refresh the local package database with
@@ -59,10 +59,10 @@ apt full-upgrade
 Afterwards, start the graphical user interface with the following command:
 
 ~~~
-init 5
+systemctl isolate graphical.target
 ~~~
 
 **apt full-upgrade** is the recommended procedure to upgrade a siduction installation to the latest version. It is described in more detail here:  
 [Updating an installed system - full-upgrade](0705-sys-admin-apt_en.md#updating-the-system).
 
-<div id="rev">Last edited: 2023/11/15</div>
+<div id="rev">Last edited: 2025/09/19</div>

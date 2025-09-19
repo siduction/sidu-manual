@@ -33,7 +33,7 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
 
 ### Nützliche Helfer im Textmodus
 
-Normalerweise verwendet man den Textmodus Runlevel 3 ( `init 3` bzw. `journalctl isolate multi-user.target` ), wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
+Normalerweise verwendet man den Textmodus `systemctl isolate multi-user.target`, wenn man ein dist-upgrade durchführen möchte, oder gezwungenermaßen, wenn das System einen schwerwiegenden Fehler aufweist.
 
 **gpm**
 
@@ -226,4 +226,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>
+<div id="rev">Zuletzt bearbeitet: 2025-08-31</div>

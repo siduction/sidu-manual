@@ -37,7 +37,7 @@ php7.4-mysql
 phpmyadmin
 ~~~
 
-As usual with siduction, we run the installations in the "multi-user.target" (init 3) in the terminal.
+As usual with siduction, we run the installations in the "multi-user.target" in the terminal.
 
 **Preparations**
 
@@ -489,4 +489,4 @@ regarding the configuration.
 
 After that, exclusively for system and software updates, the server can be temporarily connected to the Internet via a second network interface.
 
-<div id="rev">Last edited: 2022/04/03</div>
+<div id="rev">Last edited: 2025/09/19</div>

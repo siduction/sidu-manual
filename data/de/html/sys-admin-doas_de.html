@@ -122,9 +122,10 @@ permit bob as anne cmd /home/anne/bin/script1 args -n
 permit bob as anne cmd /home/anne/bin/script2 args
 
 # lisa darf Systemupgrade ausf&uuml;hren
-permit persist lisa cmd init
-deny lisa cmd init args 1
-deny lisa cmd init args 5
+permit persist lisa as root cmd systemctl args isolate
+deny lisa cmd systemctl args &quot;isolate emergency.target&quot;
+deny lisa cmd systemctl args &quot;isolate rescue target&quot;
+deny lisa cmd systemctl args &quot;isolate graphical.target&quot;
 permit persist lisa cmd apt args update
 permit persist lisa cmd apt args full-upgrade</code></pre>
 <p><strong>Erkl&auml;rungen</strong><br />
@@ -143,12 +144,12 @@ bob@sidu:~$</code></pre>
 <p>Das Skript wurde nach Eingabe des Benutzerpasswortes von Bob ohne
 Kommentar ausgef&uuml;hrt.</p>
 <p>Damit <strong>Lisa</strong> das Systemupgrade ausf&uuml;hren kann, soll
-sie zum <em>multi-user.target</em> (init 3) wechseln und nach Abschluss
-einen <em>systemctl reboot</em> (init 6) durchf&uuml;hren. Die Regelzeile
-<em>“permit persist lisa as root cmd init”</em> ohne die Angabe von args
-bewirkt, dass alle Aufrufe von init erlaubt sind, au&szlig;er denen, die in
+sie zum <em>multi-user.target</em> wechseln und nach Abschluss einen
+<em>systemctl reboot</em> durchf&uuml;hren. Die Regelzeile <em>“permit
+persist lisa as root cmd systemctl args isolate”</em> bewirkt, dass alle
+Aufrufe von <em>systemctl isolate</em> erlaubt sind, au&szlig;er denen, die in
 den nachfolgenden Regeln verboten werden. Deshalb kann sie nicht direkt
-vom <em>multi-user.target</em> in das <em>graphical.target</em> (init 5)
+vom <em>multi-user.target</em> in das <em>graphical.target</em>
 wechseln. Hier sehen wir den Aufbau einer Hierarchie.</p>
 <p><strong>Hinweise</strong><br />
 Wer immer wieder <code>sudo</code> eintippt, dem hilft die Zeile
@@ -170,7 +171,7 @@ Linux Rechtemanagement, sudo durch doas ersetzen</a><br />
 href="https://www.linux-community.de/ausgaben/linuxuser/2021/08/mit-doas-statt-sudo-administrative-aufgaben-erledigen/">LinuxUser
 08.2021, Kleiner Bruder</a></p>
 <div id="rev">
-Zuletzt bearbeitet: 2022-04-01
+Zuletzt bearbeitet: 2025-09-19
 </div>
 </body>
 </html>
