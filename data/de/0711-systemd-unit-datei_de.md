@@ -499,4 +499,4 @@ Die hier genannten Hilfsmittel stellen nur einen Teil der mit systemd ausgeliefe
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisiert 2025-09-19</div>
+<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>

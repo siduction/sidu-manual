@@ -120,4 +120,4 @@ und mit der bevorzugten Suchmaschine im Internet.
 [Deutsche Manpage, systemd.service](https://manpages.debian.org/testing/manpages-de/systemd.service.5.de.html)  
 [LinuxCommunity, Systemd-Units selbst erstellen](https://www.linux-community.de/ausgaben/linuxuser/2018/07/handarbeit-2/)  
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

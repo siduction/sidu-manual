@@ -61,4 +61,4 @@ Bei den Ziel-Units sind drei Besonderheiten zu beachten:
 
 [Manpage systemd.target, de](https://manpages.debian.org/testing/manpages-de/systemd.target.5.de.html)
 
-<div id="rev">Seite zuletzt aktualisiert 2025-08-31</div>
+<div id="rev">Zuletzt bearbeitet: 2025-08-31</div>

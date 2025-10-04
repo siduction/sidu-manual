@@ -230,4 +230,4 @@ TriggeredBy: ● server1.path
 Ein anders gelagertes Beispiel:  
 [PRO-LINUX.DE, Systemd Path Units...](https://www.pro-linux.de/artikel/2/1994/systemd-path-units-zum-%C3%9Cberwachen-von-dateien-und-verzeichnissen-verwenden.html)
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

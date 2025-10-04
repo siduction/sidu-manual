@@ -85,6 +85,7 @@ langcode=$1
 #  - pandoc (LaTex) Remove metatag from all files.
 #  - Remove file names in the link to other manual pages.
 #  - Fix images in text (prevent floating by pandoc).
+#  - Remove the HTML tag in the last line.
 #  - pandoc (LaTex) Insert "\clearpage" at the end of each file.
 #  - pandoc (LaTex) Insert metatag only in the first file.
 #  - Create folder for the PDF.
@@ -104,20 +105,28 @@ if [ $langcode = de ]; then
     for i in $LISTE ; do
         sed -i -E '/^% \w/d' "$i";
         sed -i -e "s/([-_./[:alnum:]]*de.md#/(#/g" "$i";
+
 #        # pictures whith caption
 #        sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\caption{\2}\n\1\\end{figure}~' "$i";
+
         # pictures whithout caption
         sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/de\3}\n\1\\end{figure}~' "$i";
+
+        sed -i -e 's|^.*\(Zuletzt bearbeitet.*\)</.*|\\begin{footnotesize}\n\1\n\\end{footnotesize}|' "$i";
         sed -i -e '$ a \\\clearpage' "$i";
    done
 else
     for i in $LISTE ; do
         sed -i -E '/^% \w/d' "$i";
         sed -i -e "s/([-_./[:alnum:]]*en.md#/(#/g" "$i";
+        
 #        # pictures whith caption
 #        sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/en\3}\n\1\\caption{\2}\n\1\\end{figure}~' "$i";
+
         # pictures whithout caption
         sed -i -e 's~^\( \{,8\}\)!\[\(.*\)\](\.\(.*\.png\).*~\1\\begin{figure}[H]\n\1\\centering\n\1\\includegraphics[width=11cm]{../data/en\3}\n\1\\end{figure}~' "$i";
+
+        sed -i -e 's|^.*\(Last edited.*\)</.*|\\begin{footnotesize}\n\1\n\\end{footnotesize}|' "$i";
         sed -i -e '$ a \\\clearpage' "$i";
    done
 fi

@@ -1,4 +1,4 @@
-%release notes
+% release notes
 
 ## release notes 2024.1.0  Shine on ...
 

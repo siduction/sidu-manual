@@ -318,4 +318,4 @@ Viele der oben genannten Optionen lassen sich miteinander kombinieren, damit nur
 
 Dank an Helge Kreuzmann für die deutschen Übersetzungen.
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

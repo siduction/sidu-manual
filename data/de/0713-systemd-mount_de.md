@@ -217,4 +217,4 @@ Im Internet finden sich mit Hilfe der favorisierten Suchmaschine vielerlei Beisp
 [Debianforum, Netzlaufwerke einbinden](https://wiki.debianforum.de/Netzlaufwerke_einbinden)  
 [Ubuntuusers, Mount-Units](https://wiki.ubuntuusers.de/systemd/Mount_Units/)
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

@@ -115,4 +115,4 @@ Es wird nicht die timer-Unit, sondern die von ihr auszulösende service-Unit auf
 [Archlinux Wiki, Timers](https://wiki.archlinux.org/index.php/Systemd/Timers)  
 [PRO-LINUX.DE, Systemd Timer Units...](https://www.pro-linux.de/artikel/2/1992/systemd-timer-units-f%C3%BCr-zeitgesteuerte-aufgaben-verwenden.html)
 
-<div id="rev">Seite zuletzt aktualisiert 2021-11-29</div>
+<div id="rev">Zuletzt bearbeitet: 2021-11-29</div>

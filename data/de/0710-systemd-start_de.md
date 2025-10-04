@@ -136,4 +136,4 @@ Damit bleibt die Konfiguration in systemd erhalten. Mit dem entsprechenden "star
 [Deutsche Manpage 'systemd.unit'](https://manpages.debian.org/testing/manpages-de/systemd.unit.5.de.html)  
 [Deutsche Manpage 'systemd.syntax'](https://manpages.debian.org/testing/manpages-de/systemd.syntax.7.de.html)
 
-<div id="rev">Seite zuletzt aktualisiert 2024-08-30</div>
+<div id="rev">Zuletzt bearbeitet: 2024-08-30</div>

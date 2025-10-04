@@ -140,4 +140,4 @@ Ein anschließendes
 sollte ohne Fehlermeldungen durchlaufen.  
 Der erste Aufruf von **`apt full-upgrade`** auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu benötigen
 
-<div id="rev">Seite zuletzt aktualisiert 2025-02-12</div>
+<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>
