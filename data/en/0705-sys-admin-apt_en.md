@@ -5,25 +5,6 @@
 APT is an acronym for **A**dvanced **P**ackaging **T**ool and provides a collection of programs and scripts that assist the system and administrator in installing and managing Debian packages.  
 A complete description of the APT system can be found in [Debian's APT-HOWTO](https://wiki.debian.org/DebianPackageManagement).
 
-### apt and apt-get
-
-**apt** is intended as an end-user interface and, compared to more specialized tools such as apt-get and apt-cache, enables some options more suitable for interactive use by default. With apt not all options of apt-get and apt-cache are available. Please read the man pages of apt, apt-get, and apt-cache. The following table shows the respective commands and their basic meaning.
-
-| apt | apt-get | short info |
-| --- | --- | --- |
-| [apt update](0705-sys-admin-apt_en.md#apt-update) | apt-get update | Refresh the package database. |
-| apt upgrade | apt-get upgrade | Update the system to the latest available package versions. |
-| [apt full-upgrade](0705-sys-admin-apt_en.md#updating-the-system) | apt-get dist-upgrade | Upgrade the system to the latest available package versions even if it means removing already installed packages. |
-| apt full-upgrade -d | apt-get dist-upgrade -d | Upgrade the system as before, but only downloads without installing anything.  |
-| [apt install](0705-sys-admin-apt_en.md#install-packages) | apt-get install | Install one or more packages. |
-| [apt remove](0705-sys-admin-apt_en.md#remove-packages) | apt-get remove | Remove one or more packages. |
-| [apt purge](0705-sys-admin-apt_en.md#remove-packages) | apt-get purge | Remove one or more packages including configuration files. |
-| - [apt-mark hold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Prevent apt from installing another version of the package. |
-| - | [apt-mark unhold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Cancel the 'apt-mark hold' command. |
-| [apt search](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-cache search | Search for packages according to the pattern entered (regex possible). |
-| [apt show](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-cache show | Display the details of a package. |
-| apt policy | apt-cache policy | Show the installed or installable version of a package. |
-
 ### sources.list.d - List of sources
 
 The APT system requires at least one configuration file which contains information about the location of installable and upgradeable packages. In general, this file is called "\<sourcename\>.sources". siduction provides the sources in the folder `/etc/apt/sources.list.d/`. Inside this directory you can find the following files by default: 
@@ -104,6 +85,25 @@ Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 This example uses the US Debian mirror starting with ftp.us. This setting can be changed as **root** by adjusting the country code (for example: ftp.at, ftp.de). Most countries have local Debian mirrors available. This provides a higher connection speed for the user and also saves bandwidth.
 
 [List of currently available Debian servers and their mirrors](https://www.debian.org/mirrors/)
+
+### apt and apt-get
+
+**apt** is intended as an end-user interface and, compared to more specialized tools such as apt-get and apt-cache, enables some options more suitable for interactive use by default. With apt not all options of apt-get and apt-cache are available. Please read the man pages of apt, apt-get, and apt-cache. The following table shows the respective commands and their basic meaning.
+
+| apt | apt-get | short info |
+| --- | --- | --- |
+| [apt update](0705-sys-admin-apt_en.md#apt-update) | apt-get update | Refresh the package database. |
+| apt upgrade | apt-get upgrade | Update the system to the latest available package versions. |
+| [apt full-upgrade](0705-sys-admin-apt_en.md#updating-the-system) | apt-get dist-upgrade | Upgrade the system to the latest available package versions even if it means removing already installed packages. |
+| apt full-upgrade -d | apt-get dist-upgrade -d | Upgrade the system as before, but only downloads without installing anything.  |
+| [apt install](0705-sys-admin-apt_en.md#install-packages) | apt-get install | Install one or more packages. |
+| [apt remove](0705-sys-admin-apt_en.md#remove-packages) | apt-get remove | Remove one or more packages. |
+| [apt purge](0705-sys-admin-apt_en.md#remove-packages) | apt-get purge | Remove one or more packages including configuration files. |
+| - [apt-mark hold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Prevent apt from installing another version of the package. |
+| - | [apt-mark unhold](0705-sys-admin-apt_en.md#hold-or-downgrade-a-package) | Cancel the 'apt-mark hold' command. |
+| [apt search](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-cache search | Search for packages according to the pattern entered (regex possible). |
+| [apt show](0705-sys-admin-apt_en.md#searching-for-program-packages) | apt-cache show | Display the details of a package. |
+| apt policy | apt-cache policy | Show the installed or installable version of a package. |
 
 ### apt update
 
@@ -508,4 +508,4 @@ In addition, a lot of information about Debian packages is provided, including w
 
 A complete description of the APT system can be found in [Debian's APT-HOWTO](https://wiki.debian.org/DebianPackageManagement).
 
-<div id="rev">Last edited: 2025/09/19</div>
+<div id="rev">Last edited: 2025/10/04</div>

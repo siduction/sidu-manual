@@ -5,25 +5,6 @@
 APT ist eine Abkürzung für **A**dvanced **P**ackaging **T**ool und stellt eine Sammlung von Programmen und Skripten bereit, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterstützt.  
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
 
-### apt und apt-get
-
-**apt** ist als Endanwenderschnittstelle gedacht und aktiviert verglichen mit spezialisierteren Werkzeugen wie apt-get und apt-cache standardmäßig einige für den interaktiven Gebrauch besser geeignete Optionen. Mit apt stehen nicht alle Optionen von apt-get und apt-cache zur Verfügung. Bitte die man-Pages von apt, apt-get und apt-cache lesen. Die folgende Tabelle zeigt die jeweiligen Befehle und ihre grundlegende Bedeutung.
-
-| apt | apt-get | Kurzinfo |
-| --- | --- | --- |
-| [apt update](0705-sys-admin-apt_de.md#aktualisierung-des-systems) | apt-get update | Auffrischen der Paketdatenbank. |
-| apt upgrade | apt-get upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen. |
-| [apt full-upgrade](0705-sys-admin-apt_de.md#full-upgrade-ausführen) | apt-get dist-upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn dadurch bereits installierte Pakete entfernt werden müssen. |
-| apt full-upgrade -d | apt-get dist-upgrade -d | Aktualisierung das System wie zuvor, jedoch wird nur der Download durchgeführt und nichts installiert.  |
-| [apt install](0705-sys-admin-apt_de.md#pakete-installieren) | apt-get install | Installieren eines oder mehrerer Pakete. |
-| [apt remove](0705-sys-admin-apt_de.md#pakete-entfernen) | apt-get remove | Entfernen eines oder mehrerer Pakete. |
-| [apt purge](0705-sys-admin-apt_de.md#pakete-entfernen) | apt-get purge | Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien. |
-| - | [apt-mark hold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets) | Verhindert, dass apt eine andere Version das Paketes installiert.  |
-| - | [apt-mark unhold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets)  | Hebt den Befehl 'apt-mark hold' auf. |
-| [apt search](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
-| [apt show](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache show  | Anzeige der Details eines Paketes. |
-| apt policy | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
-
 ### sources.list.d - Liste der Quellen
 
 Das APT-System benötigt mindestens eine Konfigurationsdatei, welche Informationen über den Ort der installierbaren und aktualisierbaren Pakete beinhaltet. Im allgemeinen nennt man diese Datei \<sourcename\>.sources". siduction stellt die Quellen in dem Ordner `/etc/apt/sources.list.d/` bereit. Innerhalb dieses Verzeichnisses befinden sich standardmäßig folgende Dateien: 
@@ -104,6 +85,25 @@ Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
 In diesem Beispiel wird der US-amerikanische Debian-Spiegelserver beginnend mit ftp.us verwendet. Diese Einstellung kann als root geändert werden, indem der Landes-Code angepasst wird (zum Beispiel: ftp.at, ftp.de). Die meisten Länder haben lokale Debian-Spiegelserver zur Verfügung. Dies bietet für den Anwender eine höhere Anbindungsgeschwindigkeit und spart auch Bandbreite.
 
 [Liste der aktuell verfügbaren Debian-Server und deren Spiegelserver.](https://www.debian.org/mirrors/)
+
+### apt und apt-get
+
+**apt** ist als Endanwenderschnittstelle gedacht und aktiviert verglichen mit spezialisierteren Werkzeugen wie apt-get und apt-cache standardmäßig einige für den interaktiven Gebrauch besser geeignete Optionen. Mit apt stehen nicht alle Optionen von apt-get und apt-cache zur Verfügung. Bitte die man-Pages von apt, apt-get und apt-cache lesen. Die folgende Tabelle zeigt die jeweiligen Befehle und ihre grundlegende Bedeutung.
+
+| apt | apt-get | Kurzinfo |
+| --- | --- | --- |
+| [apt update](0705-sys-admin-apt_de.md#aktualisierung-des-systems) | apt-get update | Auffrischen der Paketdatenbank. |
+| apt upgrade | apt-get upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen. |
+| [apt full-upgrade](0705-sys-admin-apt_de.md#full-upgrade-ausführen) | apt-get dist-upgrade | Aktualisiert das System auf die neuesten, zur Verfügung stehenden Paketversionen auch wenn dadurch bereits installierte Pakete entfernt werden müssen. |
+| apt full-upgrade -d | apt-get dist-upgrade -d | Aktualisierung das System wie zuvor, jedoch wird nur der Download durchgeführt und nichts installiert.  |
+| [apt install](0705-sys-admin-apt_de.md#pakete-installieren) | apt-get install | Installieren eines oder mehrerer Pakete. |
+| [apt remove](0705-sys-admin-apt_de.md#pakete-entfernen) | apt-get remove | Entfernen eines oder mehrerer Pakete. |
+| [apt purge](0705-sys-admin-apt_de.md#pakete-entfernen) | apt-get purge | Entfernen eines oder mehrerer Pakete incl. der Konfigurationsdateien. |
+| - | [apt-mark hold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets) | Verhindert, dass apt eine andere Version das Paketes installiert.  |
+| - | [apt-mark unhold](0705-sys-admin-apt_de.md#hold-oder-downgraden-eines-pakets)  | Hebt den Befehl 'apt-mark hold' auf. |
+| [apt search](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache search | Sucht entsprechend des eingegebenen Musters nach Paketen. (regex möglich) |
+| [apt show](0705-sys-admin-apt_de.md#programmpakete-suchen) | apt-cache show  | Anzeige der Details eines Paketes. |
+| apt policy | apt-cache policy | Zeigt die installierte, oder installierbare Version eines Paketes. |
 
 ### apt update
 
@@ -507,4 +507,4 @@ Zusätzlich werden viele Informationen zu den Debian-Paketen angeboten, so auch 
 
 Eine vollständige Beschreibung des APT-Systems findet man in [Debians APT-HOWTO](https://wiki.debian.org/DebianPackageManagement)
 
-<div id="rev">Zuletzt bearbeitet: 2025-09-19</div>
+<div id="rev">Zuletzt bearbeitet: 2025-10-04</div>
