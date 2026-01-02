@@ -36,11 +36,11 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#apt-package-management"
 id="toc-apt-package-management">APT package management</a>
 <ul>
-<li><a href="#apt-and-apt-get" id="toc-apt-and-apt-get">apt and
-apt-get</a></li>
 <li><a href="#sources.list.d---list-of-sources"
 id="toc-sources.list.d---list-of-sources">sources.list.d - List of
 sources</a></li>
+<li><a href="#apt-and-apt-get" id="toc-apt-and-apt-get">apt and
+apt-get</a></li>
 <li><a href="#apt-update" id="toc-apt-update">apt update</a></li>
 <li><a href="#install-packages" id="toc-install-packages">Install
 packages</a></li>
@@ -71,6 +71,91 @@ administrator in installing and managing Debian packages.<br />
 A complete description of the APT system can be found in <a
 href="https://wiki.debian.org/DebianPackageManagement">Debian’s
 APT-HOWTO</a>.</p>
+<h3 id="sources.list.d---list-of-sources">sources.list.d - List of
+sources</h3>
+<p>The APT system requires at least one configuration file which
+contains information about the location of installable and upgradeable
+packages. In general, this file is called “&lt;sourcename&gt;.sources”.
+siduction provides the sources in the folder
+<code>/etc/apt/sources.list.d/</code>. Inside this directory you can
+find the following files by default:</p>
+<p><code>debian.sources</code><br />
+<code>extra.sources</code><br />
+<code>fixes.sources</code></p>
+<p>The division into several files facilitates the selection of mirror
+servers (“mirror switching”) and the addition or replacement of source
+lists.</p>
+<p>Custom source list files can be added with the naming
+<code>/etc/apt/sources.list.d/&lt;sourcename&gt;.sources</code>.</p>
+<p>In January 2025, Debian introduced the <em>deb822</em> format for the
+source lists in the Unstable branch. The previous single-line entries
+are now replaced by a series of consecutive key-value pairs. A blank
+line separates the sources from each other. The <em>Signed-By</em> key
+required for each source is new. Activation and deactivation is carried
+out using the <em>Enabled</em> key and replaces the comment character
+previously used.</p>
+<p>To make it easier to switch to the current format, apt provides a
+transformation script. The call requires <strong>root</strong> rights
+and is made with <code>apt modernize-sources</code>.</p>
+<p>For example, on siduction<br />
+<code>/etc/apt/sources.list.d/extra.sources</code> in the format
+<em>deb822</em> might look like this:</p>
+<pre><code># This is the default mirror, chosen at first boot.
+# One might consider to choose the geographically nearest
+#  or the fastest mirror.
+Types:      deb
+URIs:       https://packages.siduction.org/extra
+Suites:     unstable
+Components: main
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/siduction-archive-keyring.gpg
+[...]</code></pre>
+<p>And <code>/etc/apt/sources.list.d/debian.sources</code> contains the
+actual Debian repo:</p>
+<pre><code># debian loadbalancer
+Types:      deb
+URIs:       https://deb.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
+[...]</code></pre>
+<p>More entries for optional siduction repositories can be found at <a
+href="https://packages.siduction.org/">siduction repositories</a>.</p>
+<p>For example, adding one or more Debian repositories would look like
+this:</p>
+<pre><code># Debian
+## Unstable
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     unstable
+Components: main contrib non-free non-free-firmware
+Enabled:    yes
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
+
+## Testing
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     testing
+Components: main contrib non-free non-free-firmware
+Enabled:    no
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
+
+## Experimental
+Types:      deb
+URIs:       http://ftp.us.debian.org/debian/
+Suites:     experimental
+Components: main contrib non-free non-free-firmware
+Enabled:    no
+Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg</code></pre>
+<p><em>NOTE:</em><br />
+This example uses the US Debian mirror starting with ftp.us. This
+setting can be changed as <strong>root</strong> by adjusting the country
+code (for example: ftp.at, ftp.de). Most countries have local Debian
+mirrors available. This provides a higher connection speed for the user
+and also saves bandwidth.</p>
+<p><a target="_blank" href="https://www.debian.org/mirrors/">List of currently available
+Debian servers and their mirrors</a></p>
 <h3 id="apt-and-apt-get">apt and apt-get</h3>
 <p><strong>apt</strong> is intended as an end-user interface and,
 compared to more specialized tools such as apt-get and apt-cache,
@@ -166,91 +251,6 @@ show</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="sources.list.d---list-of-sources">sources.list.d - List of
-sources</h3>
-<p>The APT system requires at least one configuration file which
-contains information about the location of installable and upgradeable
-packages. In general, this file is called “&lt;sourcename&gt;.sources”.
-siduction provides the sources in the folder
-<code>/etc/apt/sources.list.d/</code>. Inside this directory you can
-find the following files by default:</p>
-<p><code>debian.sources</code><br />
-<code>extra.sources</code><br />
-<code>fixes.sources</code></p>
-<p>The division into several files facilitates the selection of mirror
-servers (“mirror switching”) and the addition or replacement of source
-lists.</p>
-<p>Custom source list files can be added with the naming
-<code>/etc/apt/sources.list.d/&lt;sourcename&gt;.sources</code>.</p>
-<p>In January 2025, Debian introduced the <em>deb822</em> format for the
-source lists in the Unstable branch. The previous single-line entries
-are now replaced by a series of consecutive key-value pairs. A blank
-line separates the sources from each other. The <em>Signed-By</em> key
-required for each source is new. Activation and deactivation is carried
-out using the <em>Enabled</em> key and replaces the comment character
-previously used.</p>
-<p>To make it easier to switch to the current format, apt provides a
-transformation script. The call requires <strong>root</strong> rights
-and is made with <code>apt modernize-sources</code>.</p>
-<p>For example, on siduction<br />
-<code>/etc/apt/sources.list.d/extra.sources</code> in the format
-<em>deb822</em> might look like this:</p>
-<pre><code># This is the default mirror, chosen at first boot.
-# One might consider to choose the geographically nearest
-#  or the fastest mirror.
-Types:      deb
-URIs:       https://packages.siduction.org/extra
-Suites:     unstable
-Components: main
-Enabled:    yes
-Signed-By:  /usr/share/keyrings/siduction-archive-keyring.gpg
-[...]</code></pre>
-<p>And <code>/etc/apt/sources.list.d/debian.sources</code> contains the
-actual Debian repo:</p>
-<pre><code># debian loadbalancer
-Types:      deb
-URIs:       https://deb.debian.org/debian/
-Suites:     unstable
-Components: main contrib non-free non-free-firmware
-Enabled:    yes
-Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
-[...]</code></pre>
-<p>More entries for optional siduction repositories can be found at <a
-href="https://packages.siduction.org/">siduction repositories</a>.</p>
-<p>For example, adding one or more Debian repositories would look like
-this:</p>
-<pre><code># Debian
-## Unstable
-Types:      deb
-URIs:       http://ftp.us.debian.org/debian/
-Suites:     unstable
-Components: main contrib non-free non-free-firmware
-Enabled:    yes
-Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
-
-## Testing
-Types:      deb
-URIs:       http://ftp.us.debian.org/debian/
-Suites:     testing
-Components: main contrib non-free non-free-firmware
-Enabled:    no
-Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg
-
-## Experimental
-Types:      deb
-URIs:       http://ftp.us.debian.org/debian/
-Suites:     experimental
-Components: main contrib non-free non-free-firmware
-Enabled:    no
-Signed-By:  /usr/share/keyrings/debian-archive-keyring.gpg</code></pre>
-<p><em>NOTE:</em><br />
-This example uses the US Debian mirror starting with ftp.us. This
-setting can be changed as <strong>root</strong> by adjusting the country
-code (for example: ftp.at, ftp.de). Most countries have local Debian
-mirrors available. This provides a higher connection speed for the user
-and also saves bandwidth.</p>
-<p><a target="_blank" href="https://www.debian.org/mirrors/">List of currently available
-Debian servers and their mirrors</a></p>
 <h3 id="apt-update">apt update</h3>
 <p>To get updated information about the packages, a database is kept
 with the needed entries. The apt program uses it when installing a
@@ -651,7 +651,7 @@ is English only.</p>
 href="https://wiki.debian.org/DebianPackageManagement">Debian’s
 APT-HOWTO</a>.</p>
 <div id="rev">
-Last edited: 2025/09/19
+Last edited: 2025/10/04
 </div>
 </body>
 </html>

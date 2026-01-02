@@ -152,7 +152,7 @@ configuration.</p>
 <code>/etc/apt/apt.conf.d/</code> which instructs apt to use the server.
 Here we use the above mentioned IP of the server. Please adapt the IP to
 your own circumstances.</p>
-<pre><code># echo &quot;Acquire::http { proxy &quot;http://192.168.3.5:3142&quot;; };&quot; &gt; /etc/apt/apt.conf.d/30proxy</code></pre>
+<pre><code># echo &#39;Acquire::http::Proxy &quot;http://192.168.3.5:3142&quot;;&#39; &gt; /etc/apt/apt.conf.d/30proxy</code></pre>
 <p>Next, we change the addresses of the download mirrors in the
 directory <code>/etc/apt/sources.list.d/</code> from “https” to “http”
 within the files <code>debian.sources</code>,
@@ -169,7 +169,7 @@ Thus, this process takes the same amount of time as before. The further
 accesses of the clients make use of the cache and then run substantially
 faster, without requiring bandwidth again.</p>
 <div id="rev">
-Last edited: 2025/02/12
+Last edited: 2026/01/02
 </div>
 </body>
 </html>
