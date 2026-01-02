@@ -125,7 +125,7 @@ Die Clients, die auf den APT-Proxy-Server zugreifen, bedürfen nur geringfügige
 Zuerst legen wir die Datei `30proxy` im Verzeichnis `/etc/apt/apt.conf.d/` an, die *apt* anweist den Server zu benutzen. Wir verwenden hier die oben genannte IP des Servers. Bitte die IP an die eigenen Gegebenheiten anpassen.
 
 ~~~
-# echo "Acquire::http { Proxy "http://192.168.3.5:3142"; };" > /etc/apt/apt.conf.d/30proxy
+# echo 'Acquire::http::Proxy "http://192.168.3.5:3142";' > /etc/apt/apt.conf.d/30proxy
 ~~~
 
 Als nächstes ändern wir die Adressen der Downloadmirror im Verzeichnis `/etc/apt/sources.list.d/` von "https" auf "http" innerhalb der Dateien `debian.sources`, `extra.sources` und `fixes.sources`.  
@@ -140,4 +140,4 @@ Ein anschließendes
 sollte ohne Fehlermeldungen durchlaufen.  
 Der erste Aufruf von **`apt full-upgrade`** auf einem Client lädt alle neuen Pakete in den Cache des APT-Proxy-Servers. Somit dauert dieser Vorgang genauso lang wie es zuvor üblich war. Die weiteren Zugriffe der Clienten bedienen sich des Cache und laufen dann wesentlich schneller ab, ohne erneut Bandbreite zu benötigen
 
-<div id="rev">Zuletzt bearbeitet: 2025-02-12</div>
+<div id="rev">Zuletzt bearbeitet: 2026-01-02</div>
