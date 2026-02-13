@@ -68,17 +68,17 @@ A significant change of sd-boot compared to the standard installation of siducti
 
 - **Both ESP and XBOOTLDR:**  
   *ESP  
-  gdisk partition type “EF00”, Part-GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
+  Partition type “EFI System”, Part-GUID: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
   File system: VFAT, mounted under /efi/  
   Size: 100 MB  
   *XBOOTLDR  
-  gdisk Partition type “EA00”, Part-GUID code: BC13C2FF-59E6-4262-A352-B275FD6F7172  
+  Partition type “Linux extended boot”, Part-GUID: BC13C2FF-59E6-4262-A352-B275FD6F7172  
   File system: Any file system that the UEFI implementation can read, mounted under /boot/  
   Size: at least 1 GB
 
 - **Only ESP:**  
   (Conditionally recommended, see below.)  
-  gdisk partition typ "EF00", Part-GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
+  Partition typ "EFI System", Part-GUID: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
   File system: VFAT, mounted under /boot/  
   Size: at least 1 GB
 
@@ -100,24 +100,20 @@ Quotes from the [boot_loader_specification](https://uapi-group.org/specification
 If you follow the recommendations of sd-boot and use both the ESP and the XBOOTLDR partition, you can keep the small size of the ESP and use a more powerful file system for the XBOOTLDR partition. Necessary file system drivers for the XBOOTLDR partition are to be fetched from [akeo.ie](https://efi.akeo.ie) and copied to `/efi/EFI/systemd/drivers/`.  
 The XBOOTLDR partition should be at least 1 GB, as sd-boot stores all kernels and initrd in it twice. As prescribed by the standard, once directly under `/boot/` and once again under `/boot/<entry-token-or-machine-id>/<version>/`. This results in 70 to 100 MB for a kernel with initrd. The reason for this is probably the use of VFAT, which does not support symlinks. With several OSes, each with several kernels, the size of 1 GB is borderline and the usual 200 to 300 MB of the ESP are completely unsuitable. This requires a change in partitioning.
 
-We keep the ESP in its previous size and create the XBOOTLDR partition (gdisk type EA00) anywhere on the same medium. As already mentioned, at least 1 GB in size, preferably 2 GB. If the UUID of an existing partition changes, the `/etc/fstab` file must be adjusted. See: [Customize the fstab](0311-part-uuid_en.md#adjusting-the-fstab).
+We keep the ESP in its previous size and create the XBOOTLDR partition anywhere on the same medium. As already mentioned, at least 1 GB in size, preferably 2 GB. If the UUID of an existing partition changes, the `/etc/fstab` file must be adjusted. See: [Customize the fstab](0311-part-uuid_en.md#adjusting-the-fstab).
 
 **Copy data and adapt files**
 
 We open a terminal and become ROOT with `su`.  
-If `gdisk` is not installed, we do this and read the *Partition GUID code* of the ESP and XBOOTLDR partition. The device file can of course also be '/dev/sda' and the number after the `-i` option names the partition on the medium.
+The `lsblk` command then displays the type name and type GUID for both partitions.
 
 ~~~
-# sgdisk -i1 /dev/nvme0n1
-Partition GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93B (EFI system partition)
-[...]
-# sgdisk -i4 /dev/nvme0n1
-Partition GUID code: BC13C2FF-59E6-4262-A352-B275FD6F7172 (XBOOTLDR partition)
-[...]
+# lsblk -n -o NAME,PARTTYPENAME,PARTTYPE /dev/nvme0n1p1 /dev/nvme0n1p4
+nvme0n1p1 EFI System          c12a7328-f81f-11d2-ba4b-00a0c93ec93b
+nvme0n1p4 Linux extended boot bc13c2ff-59e6-4262-a352-b275fd6f7172
 ~~~
 
-The first line of the output of `sgdisk` must look as shown. If not, use `gdisk` to change the partition type to *EF00* (ESP) and *EA00* (XBOOTLDR).
-
+If the output does not match the example shown, we use the `cfdisk` program to change the partition type.  
 In the next step we create new directories and copy the directory `/boot`.
 
 ~~~
@@ -165,7 +161,7 @@ Finally, we fetch the file system drivers from the website [akeo.ie](https://efi
 
 **Installation**
 
-Once the preparations have been completed and the result has been checked, e.g. with the commands `ls -l /boot` `lsblk` or `sgdisk -i...`, a command line is sufficient to add the two required packages to our system.
+Once the preparations are complete and the result has been checked, e.g., with the commands `ls -l /boot`, `lsblk`, or `cfdisk`, a single command line is sufficient to add the two required packages to our system and install sd-boot to ESP and XBOOTLDR.
 
 ~~~
 # apt install systemd-boot-efi systemd-boot

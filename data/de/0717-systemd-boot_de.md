@@ -58,7 +58,7 @@ Grub wiederum ist universeller einsetzbar, dadurch schwergewichtig und benötigt
 
 Die Anleitung basiert auf der Standardinstallation von *siduction* mit einer ESP (**E**fi **S**ystem **P**artition), die unter `/boot/efi` eingehangen ist. Dies ist auch der Standard für Debian und viele Debian Derivate. 
 Um zu sd-boot zu wechseln sind nur die zwei Pakete `systemd-boot` und `systemd-boot-efi` notwendig.  
-Doch Vorsicht, zuerst sind einige Arbeiten am System notwendig.
+Doch Vorsicht, zuerst sind einige Arbeiten am System erforderlich.
 
 ### Vorbereitung des Systems
 
@@ -68,17 +68,17 @@ Eine wesentliche Änderung von sd-boot gegenüber der Standardinstallation von s
 
 - **Sowohl ESP als auch XBOOTLDR:**  
   *ESP*  
-  gdisk Partitionstyp "EF00", Part-GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
+  Partitionstyp "EFI System", Part-GUID: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
   Dateisystem: VFAT, eingehangen unter /efi/  
   Größe: 100 MB  
   *XBOOTLDR*  
-  gdisk Partitionstyp "EA00", Part-GUID code: BC13C2FF-59E6-4262-A352-B275FD6F7172  
+  Partitionstyp "Linux extended boot", Part-GUID: BC13C2FF-59E6-4262-A352-B275FD6F7172  
   Dateisystem: Jedes, dass die UEFI-Implementierung lesen kann, eingehangen unter /boot/  
   Größe: mind. 1 GB
 
 - **Nur ESP:**  
   (Bedingt empfohlen, siehe unten.)  
-  gdisk Partitionstyp "EF00", Part-GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
+  Partitionstyp "EFI System", Part-GUID: C12A7328-F81F-11D2-BA4B-00A0C93EC93  
   Dateisystem: VFAT, eingehangen unter /boot/  
   Größe: Mind. 1 GB
 
@@ -100,24 +100,20 @@ Hierzu übersetzte Zitate der [boot_loader_specification](https://uapi-group.org
 Hält man sich an die Empfehlungen von sd-boot und benutzt sowohl die ESP als auch die XBOOTLDR Partition, kann man die geringe Größe der ESP beibehalten und für die XBOOTLDR Partition ein leistungsstärkeres Dateisystem verwenden. Notwendige Dateisystemtreiber für die XBOOTLDR Partition sind von [akeo.ie](https://efi.akeo.ie) zu holen und nach `/efi/EFI/systemd/drivers/` zu kopieren.  
 Die XBOOTLDR Partition sollte mindestens 1 GB umfassen, da sd-boot alle Kernel und initrd darin doppelt ablegt. So wie es der Standard vorschreibt einmal direkt unter `/boot/` und ein weiteres Mal unter `/boot/<Kennung>/<Version>/`. Damit fallen für einen Kernel mit initrd 70 bis 100 MB an. Der Grund hierfür dürfte in der Verwendung von VFAT, das keine Symlinks unterstützt, liegen. Bei mehreren OS mit jeweils mehreren Kernel ist die Größe von 1 GB grenzwertig und die bisher üblichen 200 bis 300 MB der ESP sind völlig untauglich. Das zieht eine Änderung der Partitionierung nach sich.
 
-Wir behalten die ESP in ihrer bisherigen Größe und erstellen an beliebiger Stelle auf dem gleichen Medium die XBOOTLDR Partition (gdisk Typ EA00). Wie bereits erwähnt mindestens 1 GB groß, besser 2 GB. Wenn sich dabei die UUID einer bereits vorhandenen Partition ändert, muss man die Datei `/etc/fstab` anpassen. Siehe: [Die fstab anpassen](0311-part-uuid_de.md#anpassung-der-fstab).
+Wir behalten die ESP in ihrer bisherigen Größe und erstellen an beliebiger Stelle auf dem gleichen Medium die XBOOTLDR Partition. Wie bereits erwähnt mindestens 1 GB groß, besser 2 GB. Wenn sich dabei die UUID einer bereits vorhandenen Partition ändert, muss man die Datei `/etc/fstab` anpassen. Siehe: [Die fstab anpassen](0311-part-uuid_de.md#anpassung-der-fstab).
 
 **Daten kopieren und Dateien anpassen**
 
 Wir öffnen ein Terminal und werden mit `su` zu ROOT.  
-Sollte `gdisk` nicht installiert sein, holen wir dies nach und lesen den *Partition GUID code* der ESP und XBOOTLDR Partition aus. Die Gerätedatei kann natürlich auch '/dev/sda' sein und die Ziffer hinter der Option `-i` benennt die Partition auf dem Medium.
+Anschließend zeigt uns der `lsblk` Befehl für beide Partitionen den Typ Namen und die Typ GUID an.
 
 ~~~
-# sgdisk -i1 /dev/nvme0n1
-Partition GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93B (EFI system partition)
-[...]
-# sgdisk -i4 /dev/nvme0n1
-Partition GUID code: BC13C2FF-59E6-4262-A352-B275FD6F7172 (XBOOTLDR partition)
-[...]
+# lsblk -n -o NAME,PARTTYPENAME,PARTTYPE /dev/nvme0n1p1 /dev/nvme0n1p4
+nvme0n1p1 EFI System          c12a7328-f81f-11d2-ba4b-00a0c93ec93b
+nvme0n1p4 Linux extended boot bc13c2ff-59e6-4262-a352-b275fd6f7172
 ~~~
 
-Die jeweils erste Zeile der Ausgabe von `sgdisk` muss wie gezeigt aussehen. Wenn nicht, mit `gdisk` den Partitionstyp zu *EF00* (ESP) und *EA00* (XBOOTLDR) ändern.
-
+Sollte die Ausgabe nicht dem gezeigten Beispiel entsprechen, benutzen wir das Programm `cfdisk` um den Partitionstyp zu ändern.  
 Im nächsten Schritt legen wir neue Verzeichnisse an und kopieren das Verzeichnis `/boot`.
 
 ~~~
@@ -165,7 +161,7 @@ Zum Abschluss holen wir die Dateisystemtreiber von der Webseite [akeo.ie](https:
 
 **Installation**
 
-Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit den Befehlen `ls -l /boot` `lsblk` oder `sgdisk -i...` überprüft, reicht eine Kommandozeile aus um die zwei benötigten Pakete unserem System hinzuzufügen und sd-boot nach ESP und XBOOTLDR zu installieren. 
+Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit den Befehlen `ls -l /boot`, `lsblk` oder `cfdisk` überprüft, reicht eine Kommandozeile aus um die zwei benötigten Pakete unserem System hinzuzufügen und sd-boot nach ESP und XBOOTLDR zu installieren.
 
 ~~~
 # apt install systemd-boot-efi systemd-boot
