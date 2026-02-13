@@ -256,31 +256,16 @@ sd-boot cannot currently (08-2024) be selected as the default boot manager when 
 We open a terminal, become ROOT with `su` and use the command `apt purge` to remove the configuration files as well.
 
 ~~~
-01|# apt purge grub*
-02| Package lists are read...
-03| Dependency tree is built...
-04| Status information is read in...
-05| The following packages are REMOVED:
-06| grub-pc-bin* os-prober* grub-btrfs* siduction-btrfs* grub-efi-amd64-bin*
-07| grub2-common* grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
-08| 0 updated, 0 reinstalled, 10 to be removed.
-09| After this operation 0 B disk space will be used additionally.
-10| Do you want to continue? [Y/n] y
-11| (Read database ... 249262 files and directories are currently installed).
-12| Delete the configuration files of grub-btrfs (4.11-0~1siduction3) ...
-13| /var/lib/dpkg/info/grub-btrfs.postrm: 23: update-grub: not found
-14| dpkg: Error while removing the package grub-btrfs (--purge):
-15| “installed post-removal script of grub-btrfs package” subprocess returned error value 127
-16| An errors occurred while removing:
-17|  grub-btrfs
-~~~
-
-The *grub-btrfs* package throws an error. In line 13 we read that the post-removal script can no longer find the command from line 23 (update-grub), which is of course correct, because *grub-pc-bin* has already been removed.  
-Consequently, we comment out the line and try apt again.
-
-~~~
-# sed -i '23s!^!#!' /var/lib/dpkg/info/grub-btrfs.postrm
-# apt purge grub-btrfs
+# apt purge grub*
+ Package lists are read...
+ Dependency tree is built...
+ Status information is read in...
+ The following packages are REMOVED:
+ grub-pc-bin* os-prober* grub-btrfs* grub2-common* grub-efi-amd64-bin*
+ grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
+ 0 updated, 0 reinstalled, 9 to be removed.
+ After this operation 0 B disk space will be used additionally.
+ Do you want to continue? [Y/n]
 ~~~
 
 After this action, the backup copies we created and two GRUB directories remain. These are  

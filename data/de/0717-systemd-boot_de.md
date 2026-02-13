@@ -256,31 +256,16 @@ sd-boot kann zum jetzigen Zeitpunkt (08-2024) bei der Installation von siduction
 Wir öffnen ein Terminal, werden mit `su` zu ROOT und benutzen den Befehl `apt purge` um auch die Konfigurationsdateien zu entfernen.
 
 ~~~
-01|# apt purge grub*
-02| Paketlisten werden gelesen…
-03| Abhängigkeitsbaum wird aufgebaut…
-04| Statusinformationen werden eingelesen…
-05| Die folgenden Pakete werden ENTFERNT:
-06|   grub-pc-bin* os-prober* grub-btrfs* siduction-btrfs* grub-efi-amd64-bin*
-07|   grub2-common* grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
-08| 0 aktualisiert, 0 neu installiert, 10 zu entfernen.
-09| Nach dieser Operation werden 0 B Plattenplatz zusätzlich benutzt.
-10| Möchten Sie fortfahren? [J/n] j
-11| (Lese Datenbank ... 249262 Dateien und Verzeichnisse sind derzeit installiert.)
-12| Löschen der Konfigurationsdateien von grub-btrfs (4.11-0~1siduction3) ...
-13| /var/lib/dpkg/info/grub-btrfs.postrm: 23: update-grub: not found
-14| dpkg: Fehler beim Bearbeiten des Paketes grub-btrfs (--purge):
-15|  »installiertes post-removal-Skript des Paketes grub-btrfs«-Unterprozess gab den Fehlerwert 127 zurück
-16| Fehler traten auf beim Bearbeiten von:
-17|  grub-btrfs
-~~~
-
-Das Paket *grub-btrfs* wirft dabei einen Fehler aus. In Zeile 13 lesen wir, dass das post-removal-Skript den Befehl aus Zeile 23 (update-grub) nicht mehr findet, was natürlich richtig ist, denn *grub-pc-bin* wurde bereits entfernt.  
-Folglich kommentieren wir die Zeile aus und bemühen apt noch einmal.
-
-~~~
-# sed -i '23s!^!#!' /var/lib/dpkg/info/grub-btrfs.postrm
-# apt purge grub-btrfs
+# apt purge grub*
+ Paketlisten werden gelesen…
+ Abhängigkeitsbaum wird aufgebaut…
+ Statusinformationen werden eingelesen…
+ Die folgenden Pakete werden ENTFERNT:
+   grub-pc-bin* os-prober* grub-btrfs* grub2-common* grub-efi-amd64-bin*
+   grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
+ 0 aktualisiert, 0 neu installiert, 9 zu entfernen.
+ Nach dieser Operation werden 0 B Plattenplatz zusätzlich benutzt.
+ Möchten Sie fortfahren? [J/n] 
 ~~~
 
 Nach dieser Aktion sind die von uns erstellten Sicherungskopien und zwei Verzeichnisse von GRUB übrig. Es handelt sich um  
