@@ -75,6 +75,10 @@ A significant change of sd-boot compared to the standard installation of siducti
   Partition type “Linux extended boot”, Part-GUID: BC13C2FF-59E6-4262-A352-B275FD6F7172  
   File system: Any file system that the UEFI implementation can read, mounted under /boot/  
   Size: at least 1 GB
+  
+  > **sd.boot bug**  
+  > Since systemd 258.2, sd-boot can only read data from the XBOOTLDR partition if the partition has been formatted with vfat.  
+  > [systemd-boot fails to use other file system than vfat](https://github.com/systemd/systemd/issues/40232)
 
 - **Only ESP:**  
   (Conditionally recommended, see below.)  
@@ -317,4 +321,4 @@ The *siduction-btrfs* package is not tied to a specific boot manager. This means
 [boot_loader_specification](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [File system driver by akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Last edited: 2024-12-17</div>
+<div id="rev">Last edited: 2026-02-16</div>

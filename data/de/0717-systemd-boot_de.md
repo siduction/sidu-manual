@@ -75,6 +75,10 @@ Eine wesentliche Änderung von sd-boot gegenüber der Standardinstallation von s
   Partitionstyp "Linux extended boot", Part-GUID: BC13C2FF-59E6-4262-A352-B275FD6F7172  
   Dateisystem: Jedes, dass die UEFI-Implementierung lesen kann, eingehangen unter /boot/  
   Größe: mind. 1 GB
+  
+  > **sd.boot bug**  
+  > sd-boot kann seit systemd 258.2 Daten aus der XBOOTLDR Partition nur noch dann lesen, wenn die Partition mit vfat formatiert wurde.  
+  > [systemd-boot fails to use other file system than vfat](https://github.com/systemd/systemd/issues/40232)
 
 - **Nur ESP:**  
   (Bedingt empfohlen, siehe unten.)  
@@ -319,4 +323,4 @@ Das Paket *siduction-btrfs* ist nicht an einen bestimmten Bootmanager gebunden. 
 [boot_loader_specification (en)](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
 [Dateisystem Treiber von akeo.ie](https://efi.akeo.ie)
 
-<div id="rev">Zuletzt bearbeitet: 2024-12-17</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-16</div>
