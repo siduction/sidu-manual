@@ -2,44 +2,44 @@
 
 ## Partitionieren mit fdisk
 
-**fdisk** und das mit einer benutzerfreundlicheren ncurses Oberfläche versehene **cfdisk** erlauben die Bearbeitung von MBR Partitionstabellen auf Basis des BIOS und GPT Partitionstabellen auf Basis des UEFI. Allerdings können sie nur MBR Partitionstabellen erstellen.
+> **ACHTUNG !**  
+> Das Anlegen von Partitionstabellen, Partitionen und das Bearbeiten von Partitionen vernichtet alle Daten auf dem betreffenden Datenträger.
 
 Im Jahr 2000 begann die Einführung von GPT Partitionstabellen auf Basis des UEFI. Der neuere Standard **G**lobally Unique Identifier **P**artition **T**able (GPT), der Teil des UEFI Standards ist, hat bei aktueller Hardware den MBR ersetzt und erlaubt Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Weitere Informationen dazu gibt es in [Wikipedia GUID-Partitionstabelle](https://de.wikipedia.org/wiki/GUID_Partition_Table)
 
-Zum Erstellen von GPT Partitionstabellen das Kommandozeilenprogramm `parted` verwenden oder die Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zu Rate ziehen.
+**fdisk** und das mit einer benutzerfreundlicheren ncurses Oberfläche versehene **cfdisk** erlauben die Bearbeitung von DOS Partitionstabellen auf Basis des BIOS und GPT Partitionstabellen auf Basis des UEFI.
 
-### Benennung von Speichergeräten
-
-**Bitte BEACHTEN:**  
-siduction verwendet in der `fstab` UUID für die Benennung von Speichergeräten. Bitte das Kapitel [Benennung nach UUID](0311-part-uuid_de.md#uuid---benennung-von-blockgeräten) zu Rate ziehen.
-
-**Festplatten**
-
-Informationen über die Geräte erhält man leicht von einem Informationsfenster (Pop-Up), wenn man mit der Maus auf das Icon eines Geräts auf dem Desktop geht. Dies funktioniert sowohl vom Live-ISO als auch bei einem installierten siduction.
-
-Wir empfehlen die Erstellung einer Tabelle (manuell oder generiert), welche die Details aller Geräte enthält. Dies kann sehr hilfreich sein, falls Probleme auftreten. In einem Terminal werden wir mit **`su`** zu **root** und geben **`fdisk -l`** ein. Bei zwei Festplatten bekommen wir z. B. eine Ausgabe ähnlich der unten gezeigten.
+Möchte man nicht nur eine vorhandene Partitionstabelle bearbeiten, sondern eine neue erstellen oder von DOS zu GPT wechseln, ist das Kommandozeilenprogramm `parted` die richtige Wahl. Ein kurzer Befehl erstellt auf `/dev/sda` eine neue GPT Partitionstabelle.
 
 ~~~
-user1@pc1:/$ su
-Passwort:
-root@pc1:/# fdisk -l
+parted /dev/sda mktable gpt
+~~~
 
+Die Aktion ist noch einmal zu bestätigen, da alle bisher auf der Festplatte vorhandenen Daten verloren gehen.
+
+### Informationen zu Speichergeräten
+
+Einige Informationen über die Geräte erhält man leicht von einem Pop-Up Fenster, wenn man auf dem Desktop mit der Maus auf das Icon eines Geräts geht. Dies funktioniert sowohl vom Live-ISO als auch bei einem installierten siduction.  
+Ausführlichere Informationen bietet die Verwendung von `lsblk`, `blkid` und `fdisk` in einem root Terminal. Der Befehl  
+**`fdisk -l | tee /root/fdisk-l_$(date +%F_%H-%M-%S)`**  
+erzeugt neben dem unten gezeigten Auszug auch eine Datei mit Zeitstempel im Verzeichnis des Benutzers root. Dies kann sehr hilfreich sein, falls Probleme auftreten.
+
+~~~
+[...]
 Disk /dev/sda: 149,5 GiB, 160041885696 bytes, 312581808 sectors
 Disk model: FUJITSU MHY2160B
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
-Disk identifier: 0x6513a8ff
+Disk identifier: 0xXXXXXXXX
 
 Device   Boot   Start       End   Sectors Size Id Type
-/dev/sda1        2048  41945087  41943040  20G 83 Linux filesystem
-/dev/sda2    41945088  83888127  41943040  20G 83 Linux filesystem
-/dev/sda3    83888128  88291327   4403200 2,1G 82 Linux swap
+/dev/sda1        2048  83888127  83886080  40G 83 Linux
+/dev/sda2    83888128  88291327   4403200 2,1G 82 Linux swap
 /dev/sda4    88291328 312581807 224290480 107G  5 Extended
-/dev/sda5    88293376 249774079 161480704  77G 83 Linux filesystem
-/dev/sda6   249776128 281233407  31457280  15G 83 Linux filesystem
-/dev/sda7   281235456 312581807  31346352  15G 83 Linux filesystem
+/dev/sda5    88293376 249774079 161480704  77G 8e Linux LVM
+/dev/sda6   249776128 312581807  62803632  30G 8e Linux LVM
 
 
 Disk /dev/nvme0n1: 465,76 GiB, 500107862016 bytes, 976773168 sectors
@@ -48,140 +48,111 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: gpt
-Disk identifier: 9DF814ED-0169-4EA5-8E77-D2F7639CCDD3
+Disk identifier: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
-Device             Start       End   Sectors  Size Type
-/dev/nvme0n1p1      2048    206847    204800  100M EFI System
-/dev/nvme0n1p2    206848 922953727 922746880  440G Linux filesystem
-/dev/nvme0n1p3 922953728 976766975  53813248 25,7G Linux swap
+Device        Start       End   Sectors  Size Type
+/dev/sdb1      2048    206847    204800  100M EFI System
+/dev/sdb2    206848 922953727 922746880  440G Linux filesyst
+/dev/sdb3 922953728 976766975  53813248 25,7G Linux swap
 ~~~
 
-Mit dem Befehl  
-**`fdisk -l > /home/<MEIN USER NAME>/Dokumente/fdisk-l_Ausgabe`** erhalten wir eine Text-Datei mit dem gleichen Inhalt.
+**DOS Partitionstabelle**
 
-**Partitionen**
-
-Die Partitionen auf einer MBR Festplatte werden durch eine Zahl zwischen 1 und 15 definiert. Es sind maximal 14 mountbare Partitionen möglich.
-
-Es gibt folgende Partitionstypen:  
-primäre, erweiterte und logische.
-
-Die logischen Partitionen befinden sich innerhalb der erweiterten Partition. Es sind maximal vier primäre bzw. drei primäre und eine erweiterte Partition anlegbar. Die erweiterte Partition wiederum kann bis zu elf logische Partitionen enthalten.  
-Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 (zum Beispiel sda1 bis sda4). Logische Partitionen sind immer gebündelt und Teil einer erweiterten Partition. Mit libata können maximal elf logische Partitionen definiert werden, und ihre Bezeichnungen beginnen mit Nummer 5 und enden höchstens mit Nummer 15.
+DOS Partitionstabellen gelten auf aktueller Hardware für Laptop und PC als veraltet und sollten dort nicht mehr verwendet werden. Auf kleineren Speichergeräten wie USB Stick oder Speicherkarte sind sie häufiger anzutreffen.  
+Die Partitionen in einer DOS Partitionstabelle können vom Typ *primär*, *erweitert* und *logisch* sein. Sie werden durch eine Zahl zwischen 1 und 15 definiert.  
+Es sind maximal vier primäre Partitionen anlegbar. Eine dieser Partitionen kann eine erweiterte sein. Innerhalb der erweiterten Partition wiederum sind bis zu elf logische Partitionen möglich. Somit ist die Anzahl der Partitionen auf 14 begrenzt.  
+Primäre oder erweiterte Partitionen erhalten eine Bezeichnung zwischen 1 und 4 (zum Beispiel sda1 bis sda4). Logische Partitionen sind immer gebündelt und Teil einer erweiterten Partition. Ihre Bezeichnungen beginnen mit Nummer 5 und enden mit Nummer 15.
 
 **Beispiel**
 
 ~~~
-4 Partitionen (alles primäre):
+4 Partitionen, alles primäre:
 
 |sda1|sda2|sda3|sda4|
 
 
-6 Partitionen (3 primäre, 1 erweiterte und 3 logische):
+6 mountbare Partitionen
+  2 primäre, 1 erweiterte, darin 4 logische:
 
-|sda1|sda2|sda3|-
-                 |         enthält nur 
-               |sda4| ->   Verweise auf
-                 |         logische Partitionen
-                 |
-               |sda5|sda6|sda7|
+|sda1|sda2|-
+            |
+          |sda4|  (erweiterte Partition)
+            |
+          |sda5|sda6|sda7|sda8|
 ~~~
 
-*"/dev/sda5"* kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Gerät).
+*/dev/sda5* kann nur eine logische Partition sein (in diesem Fall die erste logische auf diesem Gerät).
 
-*"/dev/nvme0n1p2"* ist die zweite Partition auf einer M.2 HD mit einer GPT Partitionstabelle. Die Einschränkungen der MBR Partitionstabelle gelten hier nicht.
+**GPT Partitionstabelle**
+
+Im Gegensatz zu der DOS Partitionstabelle erlaubt die GPT Partitionstabelle Platten/Partitionen größer als 2 TByte und eine theoretisch unbegrenzte Anzahl primärer Partitionen. Es gibt keine erweiterte Partition und auch keine logischen Partitionen.  
+Das Beispiel in dem folgenden Kapitel *Cfdisk verwenden* beruht auf einer Festplatte mit GPT Partitionstabelle.
 
 ### Cfdisk verwenden
 
 > **Daten zuvor sichern!**  
 > Bei Verwendung jedweder Partitionierungssoftware droht Datenverlust. Daten, die erhalten bleiben sollen immer zuvor auf einem anderen Datenträger sichern.
 
-cfdisk wird in einer Konsole als **root** gestartet (nach **`su`** ist die Eingabe des root-Passworts gefordert):
+Das Programm cfdisk bitte nur auf einer Festplatte anwenden, deren sämtliche Partitionen nicht eingehangen sind.  
+Wir starten cfdisk in einer root Konsole (nach **`su`** ist die Eingabe des root Passworts gefordert).
 
 ~~~
 user1@pc1:/$ su
 Passwort:
 root@pc1:/#
-cfdisk /dev/sda
+cfdisk /dev/sdc
 ~~~
-
-cfdisk nur auf einer Festplatte anwenden, deren sämtliche Partitionen nicht eingehangen sind. Alle Daten gehen mit dem Schreiben der geänderten Partitionstabelle verloren.
 
 **Die Bedienoberfläche**
 
-Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Fensters befinden sich einige Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten **`auf`** und **`ab`**, um Befehle auszuwählen, die Pfeiltasten **`rechts`** und **`links`**. Mit der **`Enter`** Taste wird der Befehl ausgeführt.
+Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle. Am unteren Ende des Fensters befinden sich die Befehlsschalter. Um zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten **`auf`** und **`ab`**, um Befehle auszuwählen, die Pfeiltasten **`rechts`** und **`links`**. Mit der **`Enter`** Taste wird der Befehl ausgeführt.
 
 ![cfdisk - Start](./images-de/cfdisk/cfdisk_01.png)
 
-Wir haben auf der Beispielfestplatte drei Partitionen.
-
-| Device | Part. Größe | Part. Typ | Mountpoint |
-| :---: | :---: | :---: | :---: |
-| /dev/sda1 | 8,5G | Linux swap | - |
-| /dev/sda2 | 50,0G | Linux filesystem | / |
-| /dev/sda3 | 60,8G | Linux filesystem | /Daten |
-
-Aus der Daten-Partition möchten wir die Verzeichnisse `/Bilder` und `/Musik` in eigene Partitionen auslagern und dafür mehr Platz schaffen. Gleichzeitig sollen diese auch für ein auf einer weiteren Festplatte residierendes Windows zugänglich sein. Die Root-Partition ist mit 50 GB überdimensioniert und wird verkleinert.
-
-**Löschen einer Partition**
-
-Um Platz zu schaffen, löschen wir die Daten-Partition und verkleinern anschließend die Root-Partition.
-
-Um die Partition `/dev/sda3` zu löschen, wird sie mit den auf-ab-Tasten markiert und der Befehl **`Delete`** mit den Pfeiltasten links-rechts gewählt und durch **`Enter`** bestätigt.
-
-![Löschen einer Partition](./images-de/cfdisk/cfdisk_02.png) 
-
-**Größe einer Partition ändern**
-
-Die Partition `/dev/sda2` wird markiert und der Befehl **`Resize`** ausgewählt und bestätigt.
-
-![Größenänderung einer Partition](./images-de/cfdisk/cfdisk_03.png)
-
-Anschließend erfolgt die Eingabe der neuen Größe von `20G`
-
-![Neue Größe der Partition](./images-de/cfdisk/cfdisk_04.png)
+Die Festplatte */dev/sdc* enthält nur eine leere GPT Partitionstabelle.
 
 **Erstellen einer neuen Partition**
 
-Der nun freie Platz der Festplatte wird markiert. Die Befehlsauswahl springt automatisch auf **`New`**, die zu bestätigen ist.
+Im ersten Schritt legen wir eine 300 MB große Efi System Partition (ESP) an. Der bereits markierte Befehl **`New`** wird mit der **`Enter`** Taste bestätigt.
 
-![Neue Partition anlegen](./images-de/cfdisk/cfdisk_05.png)
+![Art der Partition ändern](./images-de/cfdisk/cfdisk_02.png)
 
-Anschließend ist die neue Größe von `15G` für die Daten-Partition einzugeben.
+Damit das UEFI die ESP erkennt muss ihr Partitonstyp auf *EFI System* gesetzt werden. Mit dem Befehl **`Type`** fahren wir fort.
 
-![Größe der neuen Partition](./images-de/cfdisk/cfdisk_06.png)
+![Art der Partition setzen](./images-de/cfdisk/cfdisk_03.png)
 
-Jetzt muss zwischen einer *"primären"* oder einer *"erweiterten"* (extended) Partition entschieden werden. Wir entscheiden uns für eine primäre Partition.
+Die Pfeiltasten führen uns zu *EFI System*. Am unteren Rand wird die GUID des Partitonstyps angezeigt. Die **`Enter`** Taste schließt die Auswahl ab.
 
-![Art der neuen Partition](./images-de/cfdisk/cfdisk_07.png)
+In den nächsten Schritten legen wir mit der gleichen Vorgehensweise drei weitere Partitionen an.
 
-Nach bestätigen der Auswahl erscheint die neue Partition in der Liste.
+1,6G Typ: Linux extended boot  
+18G Typ: Linux swap  
+213G Typ: Linux filesystem
 
-Anschließend wird wieder der freie Plattenplatz markiert, bestätigt und die voreingestellte gesamte Größe ebenso bestätigt. In der folgenden Auswahl zur Art der Partition ist jetzt `extended` zu wählen. Dies erstellt die Erweiterte Partition (hier 'Container' genannt), in der die zwei zusätzlichen Partitionen für Musik und Bilder anzulegen sind.  
-Der Ablauf für das Erstellen der beiden Partitionen entspricht dem oben gezeigten Vorgehen. Als einziger Unterschied entfällt die Auswahl zwischen primärer und erweiterter Partition, da nur noch logische Partitionen möglich sind.
+Das Ergebnis:
 
-![Fertige Partitionstabelle](./images-de/cfdisk/cfdisk_09.png)
+![Zwischenergebnis Partitionen](./images-de/cfdisk/cfdisk_04.png)
 
-So sieht das Ergebnis aus.
+Für unser siduction haben wir jetzt eine 213 GB große Partition. Das ist sinnvoll, wenn wir LVM oder das Dateisystem Btrfs nutzen möchten. Eine andere Variante wäre eine Systempartition mit 60 GB und eine weitere Partition mit 153 GB für davon unabhängige Daten. Beide erhalten später das Dateisystem ext4.
 
-**Partitionstyp**
+**Größe einer Partition ändern**
 
-Um den Typ einer Partition zu ändern, markiert man die gewünschte Partition und wählt den Befehl **`Type`** aus.  
-Es erscheint eine Auswahlliste in der mit den Pfeiltasten auf und ab der Partitionstyp gewählt wird. In unserem Beispiel wählen wir für die Partitionen `/dev/sda5` und `/dev/sda6` den Typ *"Microsoft storage Spaces"* aus. So kann das oben erwähnte Windows auf die Partition zugreifen. Zusätzlich wird unten der GUID Code zum Partitionstyp angezeigt.
+Die Partition */dev/sdc4* wird markiert und der Befehl **`Resize`** ausgewählt und bestätigt.
 
-![Partitionstyp auswählen](./images-de/cfdisk/cfdisk_11.png)
+![Größenänderung einer Partition](./images-de/cfdisk/cfdisk_05.png)
 
-**Eine Partition bootfähig machen**
+Wir ändern die Größe auf 60G. Wieder beendet die **`Enter`** Taste den Vorgang.
 
-Für Linux besteht kein Grund, eine Partition bootfähig zu machen, aber einige andere Betriebssysteme brauchen das. Dabei wird die entsprechende Partition markiert und der Befehl **`Bootable`** gewählt (Anmerkung: Bei Installation auf eine externe Festplatte muss eine Partition bootfähig gemacht werden).
+Anschließend erstellen wir mit dem gesamten Rest (153 GB) eine Partition vom Typ *Linux filesystem*.  
+Die Partitionierung ist jetzt abgeschlossen.
 
 **Partitionstabelle schreiben**
 
 Wenn alles fertig partitioniert ist, kann das Resultat mit dem Befehl **`Write`** gesichert werden. Die Partitionstabelle wird jetzt auf die Platte geschrieben.
 
-![Partitionstabelle schreiben](./images-de/cfdisk/cfdisk_12.png)
+![Partitionstabelle schreiben](./images-de/cfdisk/cfdisk_06.png)
 
-**Da damit alle Daten auf der entsprechenden Festplatte/Partition gelöscht werden**, sollte man sich seiner Sache wirklich sicher sein, bevor man **`yes`** eintippt und noch einmal mit **`Enter`** bestätigt.
+Da damit alle vorher vorhandenen Daten auf der Festplatte gelöscht werden, sollte man sich seiner Sache wirklich sicher sein, bevor man **`yes`** eintippt und noch einmal mit **`Enter`** bestätigt.
 
 **Cfdisk beenden**
 
@@ -189,62 +160,66 @@ Mit dem Befehl **`Quit`** verlassen wir das Programm. Nach Beendigung von cfdisk
 
 ### Formatieren von Partitionen
 
-Es gibt für Linux verschiedene Filesysteme, die man benutzen kann. Da wären **Ext2**, **Ext4**, **Btrfs**, **XFS**, **JFS** und **ZFS**.  
+Es gibt für Linux verschiedene Dateisysteme, die man benutzen kann. Da wären **Ext2**, **Ext4**, **Btrfs**, **XFS**, **JFS** und **ZFS**.  
 Ext2 kann von Interesse sein, wenn man von Windows aus zugreifen möchte, da es Windows-Treiber für dieses Dateisystem gibt. [Ext2-Dateisystem für MS Windows (Treiber und englischsprachige Doku)](http://www.fs-driver.org/).
 
-Für normalen Gebrauch empfehlen wir das Dateisystem **ext4**. Es ist das Standard-Dateisystem von siduction. 
+Für normalen Gebrauch empfehlen wir das Dateisystem ext4. Es ist das Standard-Dateisystem von siduction.
 
-Nach Beendigung von cfdisk wird die Root-Konsole weiter verwendet. Eine Formatierung erfordert Root-Rechte.  
-Der Befehl lautet **`mkfs.ext4 /dev/sdaX`**. Für "X" trägt man die Nummer der ausgewählten Partition ein.
-
-~~~
-mkfs.ext4 /dev/sda2
-mke2fs 1.45.6 (20-Mar-2020)
-/dev/sdb2 contains a ext4 file system
-	last mounted on Tue May 26 14:26:34 2020
-Proceed anyway? (y,N)
-~~~
-
-Die Abfrage wird mit **`y`** beantwortet, wenn man darin sicher ist, dass die richtige Partition formatiert werden soll. Bitte mehrfach überprüfen!
-
-Nach Abschluss der Formatierung muss die Meldung erfolgen, dass **ext4** erfolgreich geschrieben wurde. Ist das nicht der Fall, ist bei der Partitionierung etwas schiefgelaufen oder **sdaX** ist keine Linux-Partition. Wir überprüfen mit:
+Nach Beendigung von cfdisk wird die Root-Konsole weiter verwendet. Eine Formatierung erfordert root Rechte.  
+Der Befehl lautet **`mkfs.ext4 /dev/sdXX`**. Für "XX" trägt man die Bezeichnung der ausgewählten Partition ein.
 
 ~~~
-fdisk -l /dev/sda
+mkfs.ext4 /dev/sdc4
+[...]
+mkfs.ext4 /dev/sdc5
 ~~~
 
-Wenn etwas falsch ist, muss gegebenenfalls noch einmal partitioniert werden.
+Nach Abschluss der Formatierung erscheint eine Meldung über den Erfolg der Aktion. Ist das nicht der Fall, so ist bei der Partitionierung etwas schief gelaufen oder die Partition ist keine Linux Partition. Wir überprüfen das mit:
 
-War die Formatierung erfolgreich, so wird dieser Ablauf für die anderen Partitionen wiederholt, wobei der Befehl entsprechend des Partitions-Typ und des gewünschten Dateisystem anzupassen ist. (z. B.: `mkfs.ext2` oder `mkfs.vfat` oder `mkfs.btrfs` usw.)
+~~~
+fdisk -l /dev/sdc
+~~~
+
+Gegebenenfalls muss noch einmal partitioniert werden.
+
+War die Formatierung erfolgreich, wiederholen wir dieser Ablauf für die anderen Partitionen, wobei der Befehl an die Partition und das gewünschte Dateisystem anzupassen ist. (z. B.: `mkfs.ext2` oder `mkfs.fat` oder `mkfs.btrfs` usw.)  
 Bitte die Manpage **`man mkfs`** lesen.
 
-Zuletzt wird die Swap-Partition formatiert, in diesem Fall **sda1**:
+Unserem Beispiel folgend erhalten die Partitionen /dev/sdc1 und /dev/sdc2 ein fat Dateisystem vom Typ 32.
 
 ~~~
-mkswap /dev/sda1
+mkfs.fat -F 32 /dev/sdc1
+[...]
+mkfs.fat -F 32 /dev/sdc2
 ~~~
 
-Im Anschluss wird die Swap-Partition aktiviert:
+Zuletzt wird die Swap Partition formatiert, in diesem Fall /dev/sdc3:
 
 ~~~
-swapon /dev/sda1
+mkswap /dev/sdc3
 ~~~
 
-Danach kann in der Konsole überprüft werden, ob die Swap-Partition erkannt wird:
+Im Anschluss wird die Swap Partition aktiviert:
+
+~~~
+swapon /dev/sdc3
+~~~
+
+Danach kann in der Konsole überprüft werden, ob die Swap Partition erkannt wird:
 
 ~~~
 swapon -s
 ~~~
 
-Bei eingebundener Swap-Partition sollte die Ausgabe auf den vorherigen Befehl etwa so aussehen:
+Bei eingebundener Swap Partition sollte die Ausgabe auf den vorherigen Befehl etwa so aussehen:
 
 ~~~
-Filename        Type        Size      Used   Priority
-/dev/sda1       partition   8914940   0      -2
+Filename        Type        Size       Used   Priority
+/dev/sdc3       partition   37748736   0      -2
 ~~~
 
 Anschließend informieren wir den Kernel über die Änderungen mit dem Befehl **`systemctl daemon-reload`**.
 
 Jetzt kann die Installation beginnen.
 
-<div id="rev">Zuletzt bearbeitet: 2026-02-16</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-21</div>
