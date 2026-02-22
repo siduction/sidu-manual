@@ -184,7 +184,7 @@ reset
 
 eingegeben und die Eingabetaste **`Enter`** gedrückt werden.
 
-Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von **`Strg`**+**`l`** behoben werden, dadurch wird das Terminal-Fenster neu aufgebaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, die eine ncurses-Schnittstelle benutzen, zum Beispiel *"cgdisk"*.
+Wenn die Ausgabe eines Terminals verzerrt erscheint, kann dies meist durch das Drücken von **`Strg`**+**`l`** behoben werden, dadurch wird das Terminal-Fenster neu aufgebaut. Solche Verzerrungen treten meist auf, wenn man mit Programmen arbeitet, die eine ncurses-Schnittstelle benutzen, zum Beispiel *"cfdisk"*.
 
 Ein Terminal kann eingefroren erscheinen, was aber in der Regel nicht der Fall ist, sondern die Eingaben werden weiterhin verarbeitet, auch wenn es nicht so scheint. Dies kann durch versehentliches Drücken von **`Strg`**+**`s`** verursacht sein. In diesem Fall kann **`Strg`**+**`q`**  versucht werden, um die Konsole wieder frei zu geben.
 
@@ -289,4 +289,4 @@ $ ./user-script-name.sh
 
 Das funktioniert als user natürlich nur, wenn das Script keine Befehle enthält, die root-Rechte benötigen.
 
-<div id="rev">Zuletzt bearbeitet: 2022-03-01</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-22</div>

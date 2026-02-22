@@ -25,9 +25,8 @@ Mit drei Grundbegriffen sollte man vertraut sein:
 > **Achtung**  
 > Wir gehen in unserem Beispiel von nicht partitionierten Festplatten aus. Zu beachten ist: Falls alte Partitionen gelöscht werden, gehen alle Daten unwiederbringlich verloren.
 
-Als Partitionierungsprogramm werden cfdisk oder gdisk benötigt, da zur Zeit GParted bzw. der KDE-Partitionsmanager (partitionmanager) das Anlegen von *Logical Volumes* nicht unterstützen. Siehe auch die Handbuchseiten:  
-[Partitionieren mit cfdisk (msdos-MBR)](0314-part-cfdisk_de.md#partitionieren-mit-fdisk)  
-[Partitionieren mit gdisk (GPT-UEFI)](0313-part-gdisk_de.md#partitionieren-mit-gdisk)
+Als Partitionierungsprogramm wird cfdisk benötigt, da zur Zeit GParted bzw. der KDE-Partitionsmanager (partitionmanager) das Anlegen von *Logical Volumes* nicht unterstützen. Siehe auch die Handbuchseite:  
+[Partitionieren mit cfdisk (msdos-MBR)](0314-part-cfdisk_de.md#partitionieren-mit-fdisk)
 
 Alle folgenden Befehle und Aktionen erfordern root-Rechte.
 
@@ -217,4 +216,4 @@ Gparted bietet die Möglichkeit zur Verwaltung von bereits angelegten Logical Vo
 [Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  (Englisch)  
 [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)  (Englisch)
 
-<div id="rev">Zuletzt bearbeitet: 2023-12-12</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-22</div>

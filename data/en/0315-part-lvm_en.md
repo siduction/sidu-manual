@@ -25,9 +25,8 @@ You should be familiar with three basic terms:
 > **Caution**  
 > We assume non-partitioned hard disks in our example. Note: If old partitions are deleted, all data will be irretrievably lost.
 
-As partition editor, either cfdisk or gdisk must be used because currently neither GParted nor the KDE partition manager support the creation of *logical volumes*. See also the manual pages:  
-[Partitioning with cfdisk (msdos-MBR)](0314-part-cfdisk_en.md#partitioning-with-fdisk)  
-[Partitioning with gdisk (GPT-UEFI)](0313-part-gdisk_en.md#partitioning-with-gdisk)
+As partition editor cfdisk must be used because currently neither GParted nor the KDE partition manager support the creation of *logical volumes*. See also the manual page:  
+[Partitioning with cfdisk (msdos-MBR)](0314-part-cfdisk_en.md#partitioning-with-fdisk)
 
 All of the following commands and actions require **root** privileges.
 
@@ -217,4 +216,4 @@ The `resize2sf` command resizes the file system exactly to the LV size.
 [Working with logical volumes #2](https://thelinuxexperiment.com/working-with-logical-volumes-part-2/)  
 [Working with logical volumes #3](https://thelinuxexperiment.com/working-with-logical-volumes-part-3/)
 
-<div id="rev">Last edited: 2023/12/12</div>
+<div id="rev">Last edited: 2026/02/22</div>

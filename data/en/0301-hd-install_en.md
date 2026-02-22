@@ -39,8 +39,7 @@ We recommend leaving the `/home` directory on the root partition. The `/home` di
 The partitioning can be done during installation or already in advance during the live session with the following programs:  
 [Gparted](0312-part-gparted_en.md#partitioning-with-gparted), a graphical user interface program for GTK desktops  
 KDE Partition Manager, another graphical user interface program for Qt desktops  
-[gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk), recommended for UEFI hardware with GTP partition tables  
-[cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), only for older hardware with traditional BIOS and MBR partition tables
+[cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), a program for the terminal with a user-friendly ncurses interface. Suitable for UEFI hardware with GPT partition tables and for older hardware or smaller drives such as USB sticks and memory cards with BIOS and MSDOS partition tables.
 
 ### File systems
 
@@ -179,4 +178,4 @@ man adduser
 man deluser
 ~~~
 
-<div id="rev">Last edited: 2025-03-25</div>
+<div id="rev">Last edited: 2026-02-22</div>

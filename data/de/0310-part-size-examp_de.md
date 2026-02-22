@@ -107,7 +107,7 @@ Siehe auch [Microsoft: UEFI/GPT Partitionierung, Windows 11](https://learn.micro
 
 ### Dateisysteme der Partitionen
 
-Als Partitionstabelle sollte der Typ *"GPT"* gewählt werden. So kann man die Vorteile gegenüber *"MBR"* nutzen. Nur bei alter Hardware ist *"MBR"* noch sinnvoll. Die Erklärungen hierzu enthält unsere Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk).
+Als Partitionstabelle sollte der Typ *"GPT"* gewählt werden. So kann man die Vorteile gegenüber *"MBR"* nutzen. Nur bei alter Hardware ist *"MBR"* noch sinnvoll.
 
 **Linux Swap**  
 Eine `swap`-Partition entspricht in der Funktionalität etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese. Ihre Größe richtet sich nach dem installierten System und den Anforderungen des Benutzers. Einige Beispiele: 
@@ -144,14 +144,10 @@ Gparted ist auf allen mit einer graphischen Oberfläche ausgestatteten siduction
 Ein Qt basiertes, einfach zu bedienendes Partitionierungsprogramm mit graphischer Oberfläche.  
 Der KDE Partition Manager ist das Standard-Partitionierungsprogramm für den KDE Desktop, einfach zu bedienen und genauso umfangreich wie Gparted.
 
-**gdisk / cgdisk**  
-Ein Konsolenprogramm für Partitionstabellen vom Typ *"GPT-UEFI"*.  
-gdisk ist das klassische Textmodus-Programm. cgdisk hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk) liefert weitere Informationen zum Programm.
-
 **fdisk / cfdisk**  
-Ein Konsolenprogramm für Partitionstabellen vom Typ *"msdos-MBR"*.  
-Hinweis: fdisk sollte nur noch für alte Hardware, die *"GPT-UEFI"* nicht unterstützt verwendet werden.  
-fdisk ist das klassische Textmodus-Programm. cfdisk hat eine benutzerfreundlichere ncurses-Oberfläche. Die Handbuchseite [Partitionieren mit Cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
+Ein Konsolenprogramm für Partitionstabellen vom Typ *"msdos-MBR"* und *"GPT-UEFI"*.  
+fdisk ist das klassische Textmodus-Programm. cfdisk hat eine benutzerfreundlichere ncurses-Oberfläche.  
+Hinweis: Partitionstabellen vom Typ *"msdos-MBR"* sollten nur noch für alte Hardware, die *"GPT-UEFI"* nicht unterstützt, oder für kleinere Laufwerke wie USB Sticks und Speicherkarten verwendet werden. Die Handbuchseite [Partitionieren mit Cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk) liefert weitere Informationen zum Programm.
 
 Eingebundene Partitionen (auch swap) müssen vor Bearbeitung gelöst werden.  
 Im Terminal als **root** mit dem Befehl:
@@ -176,6 +172,6 @@ Für weitere Partitionierungsoptionen siehe:
 
 + Logical Volume Manager [LVM-Partitionierung](0315-part-lvm_de.md#lvm-partitionierung---logical-volume-manager)
 
-+ [Partitionieren mit  GPT](0313-part-gdisk_de.md#partitionieren-mit-gdisk) zur Unterstützung von UEFI 
++ [Partitionieren mit cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk) zur Unterstützung von UEFI 
 
-<div id="rev">Zuletzt bearbeitet: 2024-08-29</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-22</div>

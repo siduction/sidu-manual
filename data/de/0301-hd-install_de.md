@@ -32,8 +32,7 @@ Wir empfehlen, das `/home`-Verzeichnis auf der Wurzel-Partition zu belassen. Das
 Die Partitionierung kann während der Installation vorgenommen werden, oder bereits im Vorfeld während der Live-Sitzung mit den folgenden Programmen:  
 [Gparted](0312-part-gparted_de.md#partitionieren-mit-gparted), ein Programm für die graphische Oberfläche für GTK-Desktops  
 KDE Partition Manager, ein weiteres Programm für die graphische Oberfläche für Qt-Desktops  
-[gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk), empfohlen bei UEFI Hardware für GPT Partitionstabellen  
-[cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk), nur für ältere Hardware mit traditionellem BIOS und MBR Partitionstabellen.
+[cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk), ein Programm für das Terminal mit einer benutzerfreundlichen ncurses Oberfläche. Geeignet für UEFI Hardware mit GPT Partitionstabellen und für ältere Hardware oder kleinere Laufwerke wie USB Sticks und Speicherkarten mit BIOS und MSDOS Partitionstabellen.
 
 ### Duplizierung auf einen anderen Computer
 
@@ -161,4 +160,4 @@ So entfernt man einen Benutzer
 
 Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
-<div id="rev">Zuletzt bearbeitet: 2025-03-25</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-22</div>

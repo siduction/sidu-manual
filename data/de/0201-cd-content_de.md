@@ -79,7 +79,7 @@ Als Bürosoftware ist Libreoffice vorinstalliert. Als Dateimanager stehen unter 
 
 Zur Netzwerk- und Internetkonfiguration steht Network-Manager, Connman oder iwd zur Verfügung. Als WLAN-Daemon kommt `iwd` zum Einsatz.
 
-Zur Partitionierung von Festplatten werden [cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk), [gdisk und cgdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk) und [GParted](0312-part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
+Zur Partitionierung von Festplatten werden fdisk und [cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk) sowie parted und [GParted](0312-part-gparted_de.md#partitionieren-mit-gparted) mitgeliefert. Gparted bietet auch die Möglichkeit, die Größe von NTFS-Partitionen zu ändern.
 
 Tools zur Systemanalyse wie [Memtest86+](http://www.memtest.org/) (ein Tool zur umfassenden Speicheranalyse) werden ebenso mitgeliefert.
 
@@ -89,4 +89,4 @@ Jede ISO-Variante enthält eine umfangreiche Auswahl an Anwendungen für die Bef
 
 siduction ist experimentelle Software. Benutzung auf eigene Gefahr. Das siduction-Projekt, seine Entwickler und Team-Mitglieder können unter keinen Umständen wegen Beschädigung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Schäden des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder verwenden noch verteilen.
 
-<div id="rev">Zuletzt bearbeitet: 2023-11-07</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-17</div>

@@ -78,7 +78,7 @@ LibreOffice is pre-installed as office software. Dolphin, Thunar, and PCManFM ar
 
 Network Manager, Connman or iwd is available for network and internet configuration. The WLAN daemon used is `iwd`.
 
-For disk partitioning, [cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), [gdisk and cgdisk](0313-part-gdisk_en.md#partitioning-with-gdisk), and [GParted](0312-part-gparted_en.md#partitioning-with-gparted) are supplied. Gparted also provides the ability to resize NTFS partitions.
+fdisk and [cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) as well as parted and [GParted](0312-part-gparted_en.md#partitioning-with-gparted) are included for partitioning hard disks. Gparted also provides the ability to resize NTFS partitions.
 
 System analysis tools such as [Memtest86+](http://www.memtest.org/) (a tool for comprehensive memory analysis) are included, too.
 
@@ -88,4 +88,4 @@ Each ISO variant contains an extensive selection of applications for the command
 
 siduction is experimental software. Use at your own risk. The siduction project, its developers, and team members cannot be held liable under any circumstances for damage to hardware or software, lost data, or any other direct or indirect damage to the user by using this software. Anyone who does not agree to these terms may not use or distribute this software.
 
-<div id="rev">Last edited: 2023-11-07</div>
+<div id="rev">Last edited: 2026-02-17</div>

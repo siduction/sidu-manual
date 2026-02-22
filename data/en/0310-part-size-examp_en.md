@@ -107,7 +107,7 @@ See also [Microsoft: UEFI/GPT partitioning, Windows 11](https://learn.microsoft.
 
 ### File systems of the partitions
 
-The type *"GPT "* should be selected as the partition table. In this way the advantages over *"MBR "* can be used. Only with old hardware *"MBR "* is still meaningful. The explanations for this can be found on our manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
+The type *"GPT "* should be selected as the partition table. In this way the advantages over *"MBR "* can be used. Only with old hardware *"MBR "* is still meaningful.
 
 **Linux Swap**  
 A `swap` partition corresponds in functionality to the swap file in Windows, but is far more effective than it. Its size depends on the installed system and the user's requirements. Some examples: 
@@ -136,18 +136,15 @@ For a dual-boot installation with Macintosh, a separate data partition with the 
 > **Caution**  
 > When using any partitioning software, there is a risk of data loss. Always back up important data to another disk in advance.
 
-+ **GParted**: an easy to use partition editor with a graphical interface  
-  *Gparted* is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page [Partitioning the hard disk with GParted](0312-part-gparted_en.md#partitioning-with-gparted) provides more information about the program.
+**GParted**: an easy to use partition editor with a graphical interface  
+*Gparted* is available on all siduction installations and installation media equipped with a graphical user interface. It supports a number of different partition table types. The manual page [Partitioning the hard disk with GParted](0312-part-gparted_en.md#partitioning-with-gparted) provides more information about the program.
 
-+ **KDE Partition Manager**: a Qt based, easy to use partition editor with a graphical user interface  
+**KDE Partition Manager**: a Qt based, easy to use partition editor with a graphical user interface  
   The *KDE Partition Manager* is the standard partition editor for the KDE Destktop and as comprehensive as *Gparted*.
 
-+ **gdisk / cgdisk**: a console program for partition tables of the type *GPT - UEFI*  
-  *gdisk* is the classic text mode program, while *cgdisk* has a more user friendly ncurses interface. The manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk) provides more information about the program.
-
-+ **fdisk / cfdisk**: a console program for partition tables of the type *msdos - MBR*  
-  Note: *fdisk* should only be used for old hardware that does not support *GPT - UEFI*.  
-  *fdisk* is the classic text mode program, while *cfdisk* has a more user-friendly ncurses interface. The manual page [Partitioning with cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) provides more information about the program.
+**fdisk / cfdisk**: a console program for partition tables of the type *msdos - MBR* and *GPT - UEFI*  
+Note: partition tables of the type *msdos - MBR* should only be used for old hardware that does not support *GPT - UEFI* or for smaller drives such as USB sticks and memory cards.  
+*fdisk* is the classic text mode program, while *cfdisk* has a more user-friendly ncurses interface. The manual page [Partitioning with cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) provides more information about the program.
 
 **Mounted partitions** (also swap) must be detached before editing.  
 You can do this by entering to following command as **root**:
@@ -172,6 +169,6 @@ For more partitioning options see:
 
 + Logical Volume Manager [LVM partitioning](0315-part-lvm_en.md#lvm-partitioning---logical-volume-manager)
 
-+ partitioning with GPT to support UEFI [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)
++ partitioning with cfdisk [Partitioning with fdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk)
 
-<div id="rev">Last edited: 2024-08-29</div>
+<div id="rev">Last edited: 2026-02-22</div>

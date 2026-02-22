@@ -14,13 +14,11 @@ This section contains informations and notes on
 
 + [Partitioning with GParted](0312-part-gparted_en.md#partitioning-with-gparted) on the graphical user interface.
 
-+ [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk) according to the UEFI-GPT standard in the terminal.
-
-+ [Partitioning with fdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) based on the conventional BIOS with MBR partition tables (should only be used on old hardware).
++ [Partitioning with fdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk) according to the UEFI-GPT standard or the conventional BIOS with msdos partition tables.
 
 + [LVM partitioning (Logical Volume Manager)](0315-part-lvm_en.md#lvm-partitioning---logical-volume-manager) - in six steps to the goal, and the management of *logical volume*.
 
 + moving private data from [/home directory](0316-home-move_en.md#move-the-home-directory), for example to make one data partition available for multiple operating systems on parallel installations.
 
 
-<div id="rev">Last edited: 2022/04/01</div>
+<div id="rev">Last edited: 2026/02/22</div>

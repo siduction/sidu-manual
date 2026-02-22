@@ -59,20 +59,29 @@ Der Kopiervorgang kann bei einer etwa 3 GB großen ISO-Abbilddatei durchaus 15 M
 
 Meist ist das Speichermedium deutlich größer als die ISO-Abbilddatei. Die bisher gezeigten Methoden verwenden alle das gesamte Speichermedium, obwohl die ISO-Abbilddatei nur 2,9 GiB belegt. Das lässt sich im Nachhinein nicht ändern. Es bietet sich an, die Vorteile der Kommandozeile zu nutzen und vorausschauend zwei Partitionen einzurichten. Die erste Partition beinhaltet später das Live-System und die zweite den sonst ungenutzten Speicherplatz. Dadurch haben wir die Möglichkeit Daten auf dem Medium zur Life-Sitzung mitzunehmen und während der Life-Sitzung dort abzulegen.
 
-Wir benutzen als root den Befehl `cgdisk /dev/sdb` um eine neue GUID-Partitionstabelle zu erstellen (siehe die Handbuchseite [Partitionieren mit gdisk](0313-part-gdisk_de.md#partitionieren-mit-gdisk)) und verwenden folgenden Daten:
+Wir benutzen als root den Befehl `parted` um eine neue GUID Partitionstabelle zu erstellen.
+
+> Achtung  
+> Dabei gehen alle Daten auf diesem Medium verloren.
+
+~~~
+parted /dev/sdb mktable gpt
+~~~
+
+Nach Bestätigung der Sicherheitsabfrage wird die neue Partitionstabelle geschrieben. Der nächste Befehl **`cfdisk /dev/sdb`** startet das Programm cfdisk, mit dem wir entsprechend der folgenden Daten die gewünschten Partitionen anlegen. (Siehe die Handbuchseite [Partitionieren mit cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk))
 
 1. Partition:  
    Startsektor: 64 (Voreinstellung)  
    Größe: 3G (3 GB, etwas größer als die ISO-Abbilddatei)  
-   Typ Hex-Code: 0700 (Microsoft basic data)  
+   Partition Type: Microsoft basic data  
    Name: siduction  
 2. Partition:  
    Startsektor: xxxxxxxx (Voreinstellung, 1. Sektor nach der vorherigen Partition)  
    Größe: xxxxxxxx (Voreinstellung, die maximal mögliche Größe)  
-   Typ Hex-Code: 8300 (Linux)  
+   Partition Type: Linux  filesystem  
    Name: data
 
-Wir schreiben die Partitionstabelle auf das Medium und beenden `gdisk`, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
+Wir schreiben die Partitionstabelle auf das Medium und beenden cfdisk, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
 
 ~~~
 mkfs.ext4 -L LifeData /dev/sdb2
@@ -106,4 +115,4 @@ Angenommen die siduction ISO-Abbilddatei wurde im `/home` Verzeichnis des Benutz
 dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1
 ~~~
 
-<div id="rev">Zuletzt bearbeitet: 2023-07-08</div>
+<div id="rev">Zuletzt bearbeitet: 2026-02-17</div>

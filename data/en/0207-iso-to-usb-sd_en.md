@@ -59,7 +59,16 @@ The copying process may take 15 minutes or longer for an ISO image file of about
 
 Usually the storage medium is much larger than the ISO image file. The methods shown so far all use the entire storage medium, although the ISO image file only occupies 2.9 GiB. This cannot be changed afterwards. It is a good idea to take advantage of the command line and set up two partitions in advance. The first partition will later contain the live system and the second one the otherwise unused space. This allows us to take data on the media to the live session and store it there during the live session.
 
-We use as root the command `cgdisk /dev/sdb` to create a new GUID partition table (see the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk)) and use the following data:
+We use as root the command `parted` to create a new GUID partition table.
+
+> Warning  
+> This will result in the loss of all data on this medium.
+
+~~~
+parted /dev/sdb mktable gpt
+~~~
+
+After confirming the security prompt, the new partition table is written. The next command, **`cfdisk /dev/sdb`**, starts the cfdisk program, which we use to create the desired partitions according to the following data. (See the manual page [Partitioning with cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk))
 
 1st partition:  
    Start sector: 64 (default)  
@@ -72,7 +81,7 @@ We use as root the command `cgdisk /dev/sdb` to create a new GUID partition tabl
    type hex code: 8300 (Linux)  
    Name: data
 
-We write the partition table to the medium and exit `cgdisk`, but still stay in the root console, because the second partition still needs a file system and a meaningful label to make it easier to find in the file manager during the life session after mounting. The commands are:
+We write the partition table to the medium and exit `cfdisk`, but still stay in the root console, because the second partition still needs a file system and a meaningful label to make it easier to find in the file manager during the life session after mounting. The commands are:
 
 ~~~
 mkfs.ext4 -L LifeData /dev/sdb2
@@ -106,4 +115,4 @@ Assuming the siduction ISO image file is stored in the `/home` directory of user
 dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1
 ~~~
 
-<div id="rev">Last edited: 2022/04/11</div>
+<div id="rev">Last edited: 2026/02/22</div>

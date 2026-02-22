@@ -67,7 +67,7 @@ The first menu item *"GParted"* opens a drop-down list which allows you to read 
   1. Create a new (empty) partition table of the same type, and thus remove all old partitions and data in the fastest way.
 
   2. Change the partition table type. It makes sense to change from **msdos-MBR** to **gpt-UEFI** or vice versa. Here, too, all data will be lost.  
-    In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost. More information about UEFI and GPT can be found on the manual page [Partitioning with gdisk](0313-part-gdisk_en.md#partitioning-with-gdisk).
+    In 2009, UEFI with GPT was introduced, has been gradually spreading ever since, and will replace the MBR. While modern UEFI mainboards support MBR, the benefits of GPT are lost.
 
   ![GParted partition table](./images-en/gparted/gparted03-en.png)
 
@@ -159,4 +159,4 @@ We can see that the last entry in the `fstab` (mounted to `/mnt/TEST_res`) is no
 * After the check, the computer is automatically rebooted the second time. This ensures that the system can run without problems.
 * After the restart, Windows will work properly. However, you have to let the system finish booting and wait for the login window!
 
-<div id="rev">Last edited: 2022/03/31</div>
+<div id="rev">Last edited: 2026/02/22</div>

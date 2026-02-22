@@ -184,7 +184,7 @@ reset
 
 must be entered and the **`Enter`** key must be pressed.
 
-If the output of a terminal appears distorted, this can usually be fixed by pressing **`Ctrl`**+**`l`**, this will rebuild the terminal window. Such distortions usually occur when working with programs that use an ncurses interface, for example *cgdisk*.
+If the output of a terminal appears distorted, this can usually be fixed by pressing **`Ctrl`**+**`l`**, this will rebuild the terminal window. Such distortions usually occur when working with programs that use an ncurses interface, for example *cfdisk*.
 
 A terminal may appear frozen, but this is usually not the case; input continues to be processed even if it does not appear to be so. This can be caused by accidentally pressing **`Ctrl`**+**`s`**. In this case, **`Ctrl`**+**`q`** can be tried to free the console again.
 
@@ -288,4 +288,4 @@ $ ./user-script-name.sh
 
 Of course, this will only work as **user** if the script does not contain any commands that require **root** privileges.
 
-<div id="rev">Last edited: 2022/04/04</div>
+<div id="rev">Last edited: 2026/02/22</div>
