@@ -59,7 +59,7 @@ Der Kopiervorgang kann bei einer etwa 3 GB großen ISO-Abbilddatei durchaus 15 M
 
 Meist ist das Speichermedium deutlich größer als die ISO-Abbilddatei. Die bisher gezeigten Methoden verwenden alle das gesamte Speichermedium, obwohl die ISO-Abbilddatei nur 2,9 GiB belegt. Das lässt sich im Nachhinein nicht ändern. Es bietet sich an, die Vorteile der Kommandozeile zu nutzen und vorausschauend zwei Partitionen einzurichten. Die erste Partition beinhaltet später das Live-System und die zweite den sonst ungenutzten Speicherplatz. Dadurch haben wir die Möglichkeit Daten auf dem Medium zur Life-Sitzung mitzunehmen und während der Life-Sitzung dort abzulegen.
 
-Wir benutzen als root den Befehl `parted` um eine neue GUID Partitionstabelle zu erstellen.
+Wir benutzen als root den Befehl `parted` um eine neue MSDOS Partitionstabelle zu erstellen.
 
 > Achtung  
 > Dabei gehen alle Daten auf diesem Medium verloren.

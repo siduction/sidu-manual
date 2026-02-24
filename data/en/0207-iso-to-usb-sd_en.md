@@ -59,7 +59,7 @@ The copying process may take 15 minutes or longer for an ISO image file of about
 
 Usually the storage medium is much larger than the ISO image file. The methods shown so far all use the entire storage medium, although the ISO image file only occupies 2.9 GiB. This cannot be changed afterwards. It is a good idea to take advantage of the command line and set up two partitions in advance. The first partition will later contain the live system and the second one the otherwise unused space. This allows us to take data on the media to the live session and store it there during the live session.
 
-We use as root the command `parted` to create a new GUID partition table.
+We use as root the command `parted` to create a new MSDOS partition table.
 
 > Warning  
 > This will result in the loss of all data on this medium.
