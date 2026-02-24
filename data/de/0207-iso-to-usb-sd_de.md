@@ -65,21 +65,21 @@ Wir benutzen als root den Befehl `parted` um eine neue GUID Partitionstabelle zu
 > Dabei gehen alle Daten auf diesem Medium verloren.
 
 ~~~
-parted /dev/sdb mktable gpt
+parted /dev/sdb mktable msdos
 ~~~
 
 Nach Bestätigung der Sicherheitsabfrage wird die neue Partitionstabelle geschrieben. Der nächste Befehl **`cfdisk /dev/sdb`** startet das Programm cfdisk, mit dem wir entsprechend der folgenden Daten die gewünschten Partitionen anlegen. (Siehe die Handbuchseite [Partitionieren mit cfdisk](0314-part-cfdisk_de.md#partitionieren-mit-fdisk))
 
 1. Partition:  
-   Startsektor: 64 (Voreinstellung)  
+   Startsektor: 2048 (Voreinstellung)  
    Größe: 3G (3 GB, etwas größer als die ISO-Abbilddatei)  
-   Partition Type: Microsoft basic data  
-   Name: siduction  
+   primary  
+   Partition Type: W95 FAT32 (LBA) (c)  
+   bootable  
 2. Partition:  
    Startsektor: xxxxxxxx (Voreinstellung, 1. Sektor nach der vorherigen Partition)  
    Größe: xxxxxxxx (Voreinstellung, die maximal mögliche Größe)  
-   Partition Type: Linux  filesystem  
-   Name: data
+   Partition Type: Linux (83)
 
 Wir schreiben die Partitionstabelle auf das Medium und beenden cfdisk, bleiben aber noch in der root-Konsole, denn die zweite Partition benötigt noch ein Dateisystem und ein aussagekräftiges Label um sie während der Life-Sitzung nach dem Mounten leichter im Dateimanager zu finden. Die Befehle lauten:
 
