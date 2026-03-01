@@ -38,6 +38,11 @@ By default it will only output information about any modules which appear to req
 
   *kernel-remover* removes unused kernels from the running system. It offers a selection of kernels, removes the selected ones and updates the boot menu.
 
+- **onoff**  
+  *replacement for the removed command init.*
+
+  *onoff* makes the functionality removed by systemd 258~rc1-1, init 0 to init 6, available again to the user in a running system.
+
 ### Active in the background
 
 - **siduction-btrfs**  

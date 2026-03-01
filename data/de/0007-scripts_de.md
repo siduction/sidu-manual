@@ -38,6 +38,11 @@ Standardmäßig gibt fw-detect nur Informationen über Module aus, die allem Ans
 
   *kernel-remover* entfernt unbenutzte Kernel aus dem laufenden System. Es bietet eine Auswahl der Kernel, entfernt die gewählten und aktualisiert das Bootmenü.
 
+- **onoff**  
+  *Ersatz für den entfernten Befehl init.*
+
+  *onoff* stellt die durch systemd 258~rc1-1 entfernte Funktionalität von init 0 bis init 6 für den Benutzer in einem laufenden System wieder zur Verfügung.
+
 ### Im Hintergrund laufend
 
 - **siduction-btrfs**  
