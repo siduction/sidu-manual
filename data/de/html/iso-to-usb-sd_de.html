@@ -140,29 +140,38 @@ einzurichten. Die erste Partition beinhaltet sp&auml;ter das Live-System und
 die zweite den sonst ungenutzten Speicherplatz. Dadurch haben wir die
 M&ouml;glichkeit Daten auf dem Medium zur Life-Sitzung mitzunehmen und
 w&auml;hrend der Life-Sitzung dort abzulegen.</p>
-<p>Wir benutzen als root den Befehl <code>cgdisk /dev/sdb</code> um eine
-neue GUID-Partitionstabelle zu erstellen (siehe die Handbuchseite <a
-href="./part-gdisk_de.html#partitionieren-mit-gdisk">Partitionieren mit
-gdisk</a>) und verwenden folgenden Daten:</p>
+<p>Wir benutzen als root den Befehl <code>parted</code> um eine neue
+MSDOS Partitionstabelle zu erstellen.</p>
+<p class="warning">
+Achtung <br />Dabei gehen alle Daten auf diesem Medium verloren.
+</p>
+<pre><code>parted /dev/sdb mktable msdos</code></pre>
+<p>Nach Best&auml;tigung der Sicherheitsabfrage wird die neue
+Partitionstabelle geschrieben. Der n&auml;chste Befehl
+<strong><code>cfdisk /dev/sdb</code></strong> startet das Programm
+cfdisk, mit dem wir entsprechend der folgenden Daten die gew&uuml;nschten
+Partitionen anlegen. (Siehe die Handbuchseite <a
+href="./part-cfdisk_de.html#partitionieren-mit-fdisk">Partitionieren mit
+cfdisk</a>)</p>
 <ol type="1">
 <li>Partition:<br />
-Startsektor: 64 (Voreinstellung)<br />
+Startsektor: 2048 (Voreinstellung)<br />
 Gr&ouml;&szlig;e: 3G (3 GB, etwas gr&ouml;&szlig;er als die ISO-Abbilddatei)<br />
-Typ Hex-Code: 0700 (Microsoft basic data)<br />
-Name: siduction<br />
+primary<br />
+Partition Type: W95 FAT32 (LBA) (c)<br />
+bootable<br />
 </li>
 <li>Partition:<br />
 Startsektor: xxxxxxxx (Voreinstellung, 1. Sektor nach der vorherigen
 Partition)<br />
 Gr&ouml;&szlig;e: xxxxxxxx (Voreinstellung, die maximal m&ouml;gliche Gr&ouml;&szlig;e)<br />
-Typ Hex-Code: 8300 (Linux)<br />
-Name: data</li>
+Partition Type: Linux (83)</li>
 </ol>
 <p>Wir schreiben die Partitionstabelle auf das Medium und beenden
-<code>gdisk</code>, bleiben aber noch in der root-Konsole, denn die
-zweite Partition ben&ouml;tigt noch ein Dateisystem und ein aussagekr&auml;ftiges
-Label um sie w&auml;hrend der Life-Sitzung nach dem Mounten leichter im
-Dateimanager zu finden. Die Befehle lauten:</p>
+cfdisk, bleiben aber noch in der root-Konsole, denn die zweite Partition
+ben&ouml;tigt noch ein Dateisystem und ein aussagekr&auml;ftiges Label um sie
+w&auml;hrend der Life-Sitzung nach dem Mounten leichter im Dateimanager zu
+finden. Die Befehle lauten:</p>
 <pre><code>mkfs.ext4 -L LifeData /dev/sdb2</code></pre>
 <p>Mit dem so vorbereiteten Speichermedium schreiben wir die
 ISO-Abbilddatei in die <strong>1. Partition</strong>.</p>
@@ -186,7 +195,7 @@ USB-Ger&auml;t hat die Bezeichnung <code>disk1</code>, so f&uuml;hrt man folgend
 Befehl aus:</p>
 <pre><code>dd if=/Users/steve/siduction-21.3.0-wintersky-kde-amd64-202112231751.iso of=/dev/disk1</code></pre>
 <div id="rev">
-Zuletzt bearbeitet: 2023-07-08
+Zuletzt bearbeitet: 2026-02-17
 </div>
 </body>
 </html>

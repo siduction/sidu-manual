@@ -186,37 +186,37 @@ systemd as <strong>target</strong> units. They have the extension
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Target Unit</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>emergency.target</td>
 <td>starts into an emergency shell on the main console. It is the
 minimum version of a system boot to obtain an interactive shell. This
 unit can be used to guide the boot process step by step.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>rescue.target</td>
 <td>starts the base system (including system mounts) and an emergency
 shell. Compared to multi-user.target, this target could be considered as
 single-user.target.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>multi-user.target</td>
 <td>starts a multi-user system with a working network, without graphics
 server X. This unit is used when you want to stop X or to not boot into
 X. <a href="./sys-admin-apt_en.html#updating-the-system">A system update
 (dist-upgrade) is performed on this unit</a> .</td>
 </tr>
-<tr class="even">
+<tr>
 <td>graphical.target</td>
 <td>starts multi-user mode with network capability and a running X
 Window System.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>default.target</td>
 <td>is the default unit that systemd starts at system startup. In
 siduction this is a symlink to graphical.target (except NoX).</td>
@@ -424,7 +424,7 @@ diagonal and DPI value for <strong>4K</strong> screens.</p>
 <p>4K resolution: 3840 x 2160 (16:9)</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">Diagonal</th>
 <th style="text-align: center;">X-axis</th>
 <th style="text-align: center;">Y-axis</th>
@@ -432,37 +432,37 @@ diagonal and DPI value for <strong>4K</strong> screens.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">24 inch</td>
 <td style="text-align: center;">531 mm</td>
 <td style="text-align: center;">299 mm</td>
 <td style="text-align: center;">184</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">27 inch</td>
 <td style="text-align: center;">598 mm</td>
 <td style="text-align: center;">336 mm</td>
 <td style="text-align: center;">163</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">28 inch</td>
 <td style="text-align: center;">620 mm</td>
 <td style="text-align: center;">349 mm</td>
 <td style="text-align: center;">157</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">32 inch</td>
 <td style="text-align: center;">708 mm</td>
 <td style="text-align: center;">398 mm</td>
 <td style="text-align: center;">138</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">37 inch</td>
 <td style="text-align: center;">819 mm</td>
 <td style="text-align: center;">461 mm</td>
 <td style="text-align: center;">119</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">42 inch</td>
 <td style="text-align: center;">930 mm</td>
 <td style="text-align: center;">523 mm</td>

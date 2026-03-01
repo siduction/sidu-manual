@@ -66,26 +66,26 @@ Kernelbootzeile mit den sysvinit-Befehlen ist weiterhin m&ouml;glich.</p>
 <col style="width: 72%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Ziel-Unit</th>
 <th>Beschreibung</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>emergency.target</strong></td>
 <td>Startet in eine Notfall-Shell auf der Hauptkonsole. Es ist die
 minimalste Version eines Systemstarts, um eine interaktive Shell zu
 erlangen. Mit dieser Unit kann der Bootvorgang Schritt f&uuml;r Schritt
 begleitet werden.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>rescue.target</strong></td>
 <td>Startet das Basissystem (einschlie&szlig;lich Systemeinh&auml;ngungen) und eine
 Notfall-Shell. Im Vergleich zu multi-user.target k&ouml;nnte dieses Ziel als
 single-user.target betrachtet werden.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>multi-user.target</strong></td>
 <td>Mehrbenutzersystem mit funktionierendem Netzwerk, ohne Grafikserver
 X. Diese Unit wird verwendet, wenn man X stoppen bzw. nicht in X booten
@@ -94,12 +94,12 @@ dieser Unit wird in besonderen F&auml;llen (wenn X selbst oder die
 Desktop-Umgebung aktualisiert werden) eine Systemaktualisierung
 (dist-upgrade) durchgef&uuml;hrt</a> .</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>graphical.target</strong></td>
 <td>Die Unit f&uuml;r den Mehrbenutzermodus mit Netzwerkf&auml;higkeit und einem
 laufenden X-Window-System.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>default.target</strong></td>
 <td>Die Vorgabe-Unit, die Systemd beim Systemstart startet. In siduction
 ist dies ein Symlink auf graphical.target (au&szlig;er bei der Variante
@@ -122,29 +122,29 @@ Tabelle listet die Kernel-Befehle und ihre noch g&uuml;ltigen numerischen
 Entsprechungen auf.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Ziel-Unit</th>
 <th>Kernel-Befehl</th>
 <th style="text-align: center;">Kernel-Befehl alt</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>emergency.target</td>
 <td>systemd.unit=emergency.target</td>
 <td style="text-align: center;">-</td>
 </tr>
-<tr class="even">
+<tr>
 <td>rescue.target</td>
 <td>systemd.unit=rescue.target</td>
 <td style="text-align: center;">1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>multi-user.target</td>
 <td>systemd.unit=multi-user.target</td>
 <td style="text-align: center;">3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>graphical.target</td>
 <td>systemd.unit=graphical.target</td>
 <td style="text-align: center;">5</td>
@@ -162,25 +162,25 @@ Terminal-Befehle auf, wobei der Ausdruck <em>“isolate”</em> daf&uuml;r sorgt
 dass alle Dienste die die Ziel-Unit nicht anfordert, beendet werden.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Ziel-Unit</th>
 <th>Terminal-Befehl</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>emergency.target</td>
 <td>systemctl isolate emergency.target</td>
 </tr>
-<tr class="even">
+<tr>
 <td>rescue.target</td>
 <td>systemctl isolate rescue.target</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>multi-user.target</td>
 <td>systemctl isolate multi-user.target</td>
 </tr>
-<tr class="even">
+<tr>
 <td>graphical.target</td>
 <td>systemctl isolate graphical.target</td>
 </tr>
@@ -194,21 +194,21 @@ die <strong>nicht</strong> mit der Syntax “isolate xxxxxxx.target”
 aufgerufen werden sollen.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Ziel</th>
 <th>Terminal-Befehl</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>halt</td>
 <td>systemctl halt</td>
 </tr>
-<tr class="even">
+<tr>
 <td>shutdown</td>
 <td>systemctl shutdown</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>reboot</td>
 <td>systemctl reboot</td>
 </tr>

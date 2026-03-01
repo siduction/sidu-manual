@@ -111,7 +111,7 @@ mit GRUB.</p>
 <col style="width: 55%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: left;">Konfiguration</th>
 <th style="text-align: center;">sd-boot</th>
 <th style="text-align: center;">GRUB</th>
@@ -119,7 +119,7 @@ mit GRUB.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">Ein immutable OS</td>
 <td style="text-align: center;">++</td>
 <td style="text-align: center;">o</td>
@@ -127,42 +127,42 @@ mit GRUB.</p>
 Bootmanager ohne Men&uuml; notwendig. GRUB ist f&uuml;r diesen Zweck
 &uuml;berdimensioniert.</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">Ein OS auf einer HD</td>
 <td style="text-align: center;">++</td>
 <td style="text-align: center;">o</td>
 <td style="text-align: left;">Bootmen&uuml; nur bei mehreren Kerneln
 notwendig.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">Mehrere Linux OS auf einer HD</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: left;">sd-boot auf allen OS notwendig. GRUB
 ben&ouml;tigt externes Modul <em>os-prober</em>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">Dualboot mit WIN / MAC auf einer HD</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: left;">Wie zuvor. Bei beiden booten mittels
 ChainLoader m&ouml;glich.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">Mehrere Linux OS auf mehreren HD</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: left;">sd-boot kann nur OS von einer HD booten.
 Zwei Instanzen im UEFI mit Auswahl &uuml;ber die Firmware notwendig.</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">Dualboot mit WIN / MAC auf mehreren
 HD</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: left;">Wie zuvor.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">Mehrere Varianten eines Linux OS auf einer
 HD</td>
 <td style="text-align: center;">o</td>
@@ -172,7 +172,7 @@ HD</td>
 <code>/etc/default/grub.d/xxxx.cfg</code> ggf. zu erstellen oder zu
 &auml;ndern.</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">Linux OS auf Btrfs Dateisystem mit
 Unterst&uuml;tzung von snapper</td>
 <td style="text-align: center;">-</td>
@@ -182,7 +182,7 @@ bei der Installation der Kernel, gleichg&uuml;ltig aus welchem Subvolumen.
 Andere Subvolumen erhalten keinen Eintrag. GRUB ist je nach Distribution
 auf unterschiedliche, zus&auml;tzliche Software angewiesen.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">siduction auf Btrfs Dateisystem mit
 Unterst&uuml;tzung von snapper</td>
 <td style="text-align: center;">+</td>
@@ -192,7 +192,7 @@ Men&uuml;eintr&auml;ge f&uuml;r sd-boot und GRUB nach einem Rollback. Der Standa
 Booteintrag bootet das Rollbackziel. Bei GRUB wird mit Hilfe des Pakets
 grub-btrfs das Untermen&uuml; <em>siduction snapshots</em> angezeigt.</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">Eine vollverschl&uuml;sselte HD</td>
 <td style="text-align: center;">++</td>
 <td style="text-align: center;">+</td>
@@ -224,7 +224,7 @@ sd-boot den Empfehlungen entsprechend zu installieren.
 Debian und viele Debian Derivate. Um zu sd-boot zu wechseln sind nur die
 zwei Pakete <code>systemd-boot</code> und <code>systemd-boot-efi</code>
 notwendig.<br />
-Doch Vorsicht, zuerst sind einige Arbeiten am System notwendig.</p>
+Doch Vorsicht, zuerst sind einige Arbeiten am System erforderlich.</p>
 <h3 id="vorbereitung-des-systems">Vorbereitung des Systems</h3>
 <p><strong>Partitionierung</strong></p>
 <p>Eine wesentliche &Auml;nderung von sd-boot gegen&uuml;ber der
@@ -234,19 +234,26 @@ Partitionen. Die Empfehlungen von sd-boot lauten:</p>
 <ul>
 <li><p><strong>Sowohl ESP als auch XBOOTLDR:</strong><br />
 <em>ESP</em><br />
-gdisk Partitionstyp “EF00”, Part-GUID code:
+Partitionstyp “EFI System”, Part-GUID:
 C12A7328-F81F-11D2-BA4B-00A0C93EC93<br />
 Dateisystem: VFAT, eingehangen unter /efi/<br />
 Gr&ouml;&szlig;e: 100 MB<br />
 <em>XBOOTLDR</em><br />
-gdisk Partitionstyp “EA00”, Part-GUID code:
+Partitionstyp “Linux extended boot”, Part-GUID:
 BC13C2FF-59E6-4262-A352-B275FD6F7172<br />
 Dateisystem: Jedes, dass die UEFI-Implementierung lesen kann,
 eingehangen unter /boot/<br />
-Gr&ouml;&szlig;e: mind. 1 GB</p></li>
+Gr&ouml;&szlig;e: mind. 1 GB</p>
+<blockquote>
+<p><strong>sd.boot bug</strong><br />
+sd-boot kann seit systemd 258.2 Daten aus der XBOOTLDR Partition nur
+noch dann lesen, wenn die Partition mit vfat formatiert wurde.<br />
+<a target="_blank" href="https://github.com/systemd/systemd/issues/40232">systemd-boot
+fails to use other file system than vfat</a></p>
+</blockquote></li>
 <li><p><strong>Nur ESP:</strong><br />
 (Bedingt empfohlen, siehe unten.)<br />
-gdisk Partitionstyp “EF00”, Part-GUID code:
+Partitionstyp “EFI System”, Part-GUID:
 C12A7328-F81F-11D2-BA4B-00A0C93EC93<br />
 Dateisystem: VFAT, eingehangen unter /boot/<br />
 Gr&ouml;&szlig;e: Mind. 1 GB</p></li>
@@ -296,29 +303,23 @@ mehreren OS mit jeweils mehreren Kernel ist die Gr&ouml;&szlig;e von 1 GB
 grenzwertig und die bisher &uuml;blichen 200 bis 300 MB der ESP sind v&ouml;llig
 untauglich. Das zieht eine &Auml;nderung der Partitionierung nach sich.</p>
 <p>Wir behalten die ESP in ihrer bisherigen Gr&ouml;&szlig;e und erstellen an
-beliebiger Stelle auf dem gleichen Medium die XBOOTLDR Partition (gdisk
-Typ EA00). Wie bereits erw&auml;hnt mindestens 1 GB gro&szlig;, besser 2 GB. Wenn
-sich dabei die UUID einer bereits vorhandenen Partition &auml;ndert, muss man
-die Datei <code>/etc/fstab</code> anpassen. Siehe: <a
+beliebiger Stelle auf dem gleichen Medium die XBOOTLDR Partition. Wie
+bereits erw&auml;hnt mindestens 1 GB gro&szlig;, besser 2 GB. Wenn sich dabei die
+UUID einer bereits vorhandenen Partition &auml;ndert, muss man die Datei
+<code>/etc/fstab</code> anpassen. Siehe: <a
 href="./part-uuid_de.html#anpassung-der-fstab">Die fstab
 anpassen</a>.</p>
 <p><strong>Daten kopieren und Dateien anpassen</strong></p>
 <p>Wir &ouml;ffnen ein Terminal und werden mit <code>su</code> zu ROOT.<br />
-Sollte <code>gdisk</code> nicht installiert sein, holen wir dies nach
-und lesen den <em>Partition GUID code</em> der ESP und XBOOTLDR
-Partition aus. Die Ger&auml;tedatei kann nat&uuml;rlich auch ‘/dev/sda’ sein und
-die Ziffer hinter der Option <code>-i</code> benennt die Partition auf
-dem Medium.</p>
-<pre><code># sgdisk -i1 /dev/nvme0n1
-Partition GUID code: C12A7328-F81F-11D2-BA4B-00A0C93EC93B (EFI system partition)
-[...]
-# sgdisk -i4 /dev/nvme0n1
-Partition GUID code: BC13C2FF-59E6-4262-A352-B275FD6F7172 (XBOOTLDR partition)
-[...]</code></pre>
-<p>Die jeweils erste Zeile der Ausgabe von <code>sgdisk</code> muss wie
-gezeigt aussehen. Wenn nicht, mit <code>gdisk</code> den Partitionstyp
-zu <em>EF00</em> (ESP) und <em>EA00</em> (XBOOTLDR) &auml;ndern.</p>
-<p>Im n&auml;chsten Schritt legen wir neue Verzeichnisse an und kopieren das
+Anschlie&szlig;end zeigt uns der <code>lsblk</code> Befehl f&uuml;r beide
+Partitionen den Typ Namen und die Typ GUID an.</p>
+<pre><code># lsblk -n -o NAME,PARTTYPENAME,PARTTYPE /dev/nvme0n1p1 /dev/nvme0n1p4
+nvme0n1p1 EFI System          c12a7328-f81f-11d2-ba4b-00a0c93ec93b
+nvme0n1p4 Linux extended boot bc13c2ff-59e6-4262-a352-b275fd6f7172</code></pre>
+<p>Sollte die Ausgabe nicht dem gezeigten Beispiel entsprechen, benutzen
+wir das Programm <code>cfdisk</code> um den Partitionstyp zu
+&auml;ndern.<br />
+Im n&auml;chsten Schritt legen wir neue Verzeichnisse an und kopieren das
 Verzeichnis <code>/boot</code>.</p>
 <pre><code># cd /
 # mkdir /efi
@@ -357,10 +358,10 @@ href="https://efi.akeo.ie">akeo.ie</a> und speichern sie im erstellten
 Verzeichnis unterhalb <code>/efi/</code>. Auf Ausf&uuml;hrrechte achten.</p>
 <p><strong>Installation</strong></p>
 <p>Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit
-den Befehlen <code>ls -l /boot</code> <code>lsblk</code> oder
-<code>sgdisk -i...</code> &uuml;berpr&uuml;ft, reicht eine Kommandozeile aus um
-die zwei ben&ouml;tigten Pakete unserem System hinzuzuf&uuml;gen und sd-boot nach
-ESP und XBOOTLDR zu installieren.</p>
+den Befehlen <code>ls -l /boot</code>, <code>lsblk</code> oder
+<code>cfdisk</code> &uuml;berpr&uuml;ft, reicht eine Kommandozeile aus um die zwei
+ben&ouml;tigten Pakete unserem System hinzuzuf&uuml;gen und sd-boot nach ESP und
+XBOOTLDR zu installieren.</p>
 <pre><code># apt install systemd-boot-efi systemd-boot
 [...]
 Copied &quot;/usr/lib/systemd/boot/efi/systemd-bootx64.efi&quot; to &quot;/efi/EFI/systemd/systemd-bootx64.efi&quot;.
@@ -444,30 +445,16 @@ vermeiden.</p>
 <p>Wir &ouml;ffnen ein Terminal, werden mit <code>su</code> zu ROOT und
 benutzen den Befehl <code>apt purge</code> um auch die
 Konfigurationsdateien zu entfernen.</p>
-<pre><code>01|# apt purge grub*
-02| Paketlisten werden gelesen…
-03| Abh&auml;ngigkeitsbaum wird aufgebaut…
-04| Statusinformationen werden eingelesen…
-05| Die folgenden Pakete werden ENTFERNT:
-06|   grub-pc-bin* os-prober* grub-btrfs* siduction-btrfs* grub-efi-amd64-bin*
-07|   grub2-common* grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
-08| 0 aktualisiert, 0 neu installiert, 10 zu entfernen.
-09| Nach dieser Operation werden 0 B Plattenplatz zus&auml;tzlich benutzt.
-10| M&ouml;chten Sie fortfahren? [J/n] j
-11| (Lese Datenbank ... 249262 Dateien und Verzeichnisse sind derzeit installiert.)
-12| L&ouml;schen der Konfigurationsdateien von grub-btrfs (4.11-0~1siduction3) ...
-13| /var/lib/dpkg/info/grub-btrfs.postrm: 23: update-grub: not found
-14| dpkg: Fehler beim Bearbeiten des Paketes grub-btrfs (--purge):
-15|  »installiertes post-removal-Skript des Paketes grub-btrfs«-Unterprozess gab den Fehlerwert 127 zur&uuml;ck
-16| Fehler traten auf beim Bearbeiten von:
-17|  grub-btrfs</code></pre>
-<p>Das Paket <em>grub-btrfs</em> wirft dabei einen Fehler aus. In Zeile
-13 lesen wir, dass das post-removal-Skript den Befehl aus Zeile 23
-(update-grub) nicht mehr findet, was nat&uuml;rlich richtig ist, denn
-<em>grub-pc-bin</em> wurde bereits entfernt.<br />
-Folglich kommentieren wir die Zeile aus und bem&uuml;hen apt noch einmal.</p>
-<pre><code># sed -i &#39;23s!^!#!&#39; /var/lib/dpkg/info/grub-btrfs.postrm
-# apt purge grub-btrfs</code></pre>
+<pre><code># apt purge grub*
+ Paketlisten werden gelesen…
+ Abh&auml;ngigkeitsbaum wird aufgebaut…
+ Statusinformationen werden eingelesen…
+ Die folgenden Pakete werden ENTFERNT:
+   grub-pc-bin* os-prober* grub-btrfs* grub2-common* grub-efi-amd64-bin*
+   grub-common* grub-efi-ia32-bin* memtest86+* grub-pc*
+ 0 aktualisiert, 0 neu installiert, 9 zu entfernen.
+ Nach dieser Operation werden 0 B Plattenplatz zus&auml;tzlich benutzt.
+ M&ouml;chten Sie fortfahren? [J/n] </code></pre>
 <p>Nach dieser Aktion sind die von uns erstellten Sicherungskopien und
 zwei Verzeichnisse von GRUB &uuml;brig. Es handelt sich um<br />
 das Verzeichnis <code>/grub/</code>,<br />
@@ -524,7 +511,7 @@ href="https://uapi-group.org/specifications/specs/boot_loader_specification/">bo
 (en)</a><br />
 <a target="_blank" href="https://efi.akeo.ie">Dateisystem Treiber von akeo.ie</a></p>
 <div id="rev">
-Zuletzt bearbeitet: 2024-12-17
+Zuletzt bearbeitet: 2026-02-16
 </div>
 </body>
 </html>

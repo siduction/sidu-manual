@@ -90,35 +90,35 @@ parameters</h3>
 <col style="width: 52%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>boot option</th>
 <th>value</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>blacklist</td>
 <td>module_name</td>
 <td>temporary deactivation of modules before udev becomes active</td>
 </tr>
-<tr class="even">
+<tr>
 <td>desktop</td>
 <td>kde, gnome, fluxbox</td>
 <td>select desktop environment</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>fromiso</td>
 <td><a href="./hd-ins-fromiso_en.html#boot-from-iso-file">Please read
 “booting ‘fromiso’”</a>.</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td>hostname</td>
 <td>myhostname</td>
 <td>changes the network name (hostname) of the live CD system</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>lang</td>
 <td>be, bg, cz, da, de, de_CH, el, en, en_AU, en_GB, en_IE, es, fr,
 fr_BE, ga, hr, hu, it, ja, nl, nl_BE, pl, pt (pt_BR), pt_PT, ro, ru,
@@ -133,67 +133,67 @@ English is en_US with UTC as the time zone and for German de with
 Europe/Berlin as the time zone. Example for a self-selected setting:
 <code>lang=pt_PT tz=Pacific/Auckland</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td>md5sum</td>
 <td></td>
 <td>tests the checksum of the live medium</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>noaptlang</td>
 <td></td>
 <td>prevents the installation of localization packages of the selected
 language</td>
 </tr>
-<tr class="even">
+<tr>
 <td>nocpufreq</td>
 <td></td>
 <td>does not enable speedstep/powernow</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>nodhcp</td>
 <td></td>
 <td>no DHCP (DHCP automatically tries to establish Ethernet
 connections)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>noeject</td>
 <td></td>
 <td>does not remove CD/DVD from drive</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>nofstab</td>
 <td></td>
 <td>prevents writing a new fstab</td>
 </tr>
-<tr class="even">
+<tr>
 <td>nointro</td>
 <td></td>
 <td>skips the output of <code>index.html</code> when starting the live
 medium</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>nomodeset</td>
 <td>radeon.modeset=0</td>
 <td>together with <code>xmodule=vesa</code> allows a clean boot to X for
 Radeon cards in live mode</td>
 </tr>
-<tr class="even">
+<tr>
 <td>nonetwork</td>
 <td></td>
 <td>prevents automatic configuration of network interfaces at boot
 time</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>noswap</td>
 <td></td>
 <td>no activation of the swap partition</td>
 </tr>
-<tr class="even">
+<tr>
 <td>smouse</td>
 <td></td>
 <td>searches for serial mouse input devices using hwinfo</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>tz</td>
 <td>tz=Europe/Dublin</td>
 <td>sets the time zone. If the bios or hardware clock is set to UTC,
@@ -201,7 +201,7 @@ time</td>
 can be viewed by copying &amp; pasting
 <code>file:///usr/share/zoneinfo/</code> into the browser.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>toram</td>
 <td>copies the medium into RAM and boots from the RAM copy</td>
 <td></td>
@@ -220,14 +220,14 @@ for Radeon, Intel, or MGA graphics cards.</p>
 <col style="width: 58%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>boot option</th>
 <th>value</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>dpi</td>
 <td>auto <em>or</em> DPI count</td>
 <td>sets the desired pixels per inch for the monitor. The DPI is
@@ -238,80 +238,80 @@ values: 1.25 for a 4:3 screen, 1.18 for a 16:10 screen, or 1.147 for a
 1.147x1920/24 dpi=92, or for a 15” screen with 1600x1200 resolution this
 results in 1.25x1600/15 dpi=133.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>hsync</td>
 <td>80</td>
 <td>sets the horizontal frequency of the monitor (in kilohertz)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>noml</td>
 <td></td>
 <td>prevents the X.org configuration from containing a list of
 modelines, thus causing the correct mode to be detected
 automatically</td>
 </tr>
-<tr class="even">
+<tr>
 <td>noxrandr</td>
 <td></td>
 <td>prevents the new X.org drivers from using the extensions of RandR
 1.2 and uses the old techniques to query monitor properties</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>screen</td>
 <td>1280x1024</td>
 <td>sets custom resolution for X (1280x1024 or other screen
 resolutions)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>vsync</td>
 <td>(e.g.) 60</td>
 <td>sets the vertical frequency of the monitor (in hertz)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>xdepth</td>
 <td>values: 8 15 16 24</td>
 <td>set the color depth used by X.org (not all drivers support
 <code>1</code> and <code>4</code>)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>keytable</td>
 <td>(e.g.) us, de, gb</td>
 <td>keyboard layout used by X.org</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>xkbmodel</td>
 <td>(e.g.) pc105</td>
 <td>keyboard type used by X.org (the number indicates the number of
 keys)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>xkboptions</td>
 <td>(e.g.) grp:alt_shift_toggle</td>
 <td>assignment variant of the keyboard used by X.org</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>xkbvariant</td>
 <td>(e.g.) nodeadkeys</td>
 <td>set a layout variant of the keyboard</td>
 </tr>
-<tr class="even">
+<tr>
 <td>xmode</td>
 <td>800x600</td>
 <td>set the screen resolution according to the given value
 (<code>1024x768</code>, <code>1600x1200</code> etc.)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>xmodule or xdriver</td>
 <td>ati, fbdev, i810, intel, mga, nouveau, radeon, savage, vesa</td>
 <td>uses the selected X module</td>
 </tr>
-<tr class="even">
+<tr>
 <td>xrandr</td>
 <td></td>
 <td>forces X.org configuration using the new RandR 1.2 extensions of the
 X.org drivers</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>xrate</td>
 <td>XX</td>
 <td>forces a preferred retry frequency for drivers supported by RandR
@@ -319,13 +319,13 @@ X.org drivers</td>
 boot option. Detailed documentation can be found <a
 href="http://wiki.debian.org/XStrikeForce/HowToRandR12">here</a>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>xhrefresh</td>
 <td>(e.g.) 75</td>
 <td>sets the horizontal frequency of the monitor for X (in
 kilohertz)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>xvrefresh</td>
 <td>(e.g.) 60</td>
 <td>sets the vertical frequency of the monitor for X (in hertz)</td>
@@ -341,19 +341,19 @@ the Linux kernel</h3>
 <col style="width: 58%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>boot option</th>
 <th>value</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>apm</td>
 <td>off</td>
 <td>disables Advanced Power Managment</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1, 3, 5</td>
 <td>(e.g.) 3</td>
 <td>boot targets or runlevels which can be entered manually in the Grub
@@ -361,63 +361,63 @@ boot line. See also the manual page <a
 href="./sys-admin-gen_en.html#systemd-target---formerly-runlevel">Runlevel
 - target unit</a>.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>irqpoll</td>
 <td></td>
 <td>uses IRQ polling</td>
 </tr>
-<tr class="even">
+<tr>
 <td>mem</td>
 <td>(e.g.) 128M, 1G</td>
 <td>uses the specified memory size</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>noagp</td>
 <td></td>
 <td>no AGP support (Accelerated Graphics Port)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>noapic</td>
 <td></td>
 <td>no APIC query (Advanced Programmable Interrupt Controller)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>nodma</td>
 <td></td>
 <td>no support for DMA (Direct Memory Access)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>noisapnpbios</td>
 <td></td>
 <td>does not perform an ISA “Plug and Play” query at startup</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>nomce</td>
 <td></td>
 <td>disables the kernel option “Machine Check Exception”</td>
 </tr>
-<tr class="even">
+<tr>
 <td>nosmp</td>
 <td></td>
 <td>does not use Symmetric Multi-Processor (multiple CPUs or CPUs with
 Hyper-Threading)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>pci</td>
 <td>noacpi</td>
 <td>no ACPI for PCI devices</td>
 </tr>
-<tr class="even">
+<tr>
 <td>quiet</td>
 <td></td>
 <td>no output on screen</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>vga</td>
 <td>normal</td>
 <td>more about vga codes in the next paragraph</td>
 </tr>
-<tr class="even">
+<tr>
 <td>video</td>
 <td>(e.g.) DVI-0:800x600</td>
 <td>for graphics cards with KMS enabled; applies to Intel and ATI
@@ -436,7 +436,7 @@ entering <code>vga=0</code> in the grub line.</p>
 <p><strong>Decimal</strong></p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">colors</th>
 <th style="text-align: center;">640x480</th>
 <th style="text-align: center;">800x600</th>
@@ -445,28 +445,28 @@ entering <code>vga=0</code> in the grub line.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">256</td>
 <td style="text-align: center;">257</td>
 <td style="text-align: center;">259</td>
 <td style="text-align: center;">261</td>
 <td style="text-align: center;">263</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">32k</td>
 <td style="text-align: center;">272</td>
 <td style="text-align: center;">275</td>
 <td style="text-align: center;">278</td>
 <td style="text-align: center;">281</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">64k</td>
 <td style="text-align: center;">273</td>
 <td style="text-align: center;">276</td>
 <td style="text-align: center;">279</td>
 <td style="text-align: center;">282</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">16M</td>
 <td style="text-align: center;">274</td>
 <td style="text-align: center;">277</td>
@@ -478,7 +478,7 @@ entering <code>vga=0</code> in the grub line.</p>
 <p><strong>hexadecimal</strong></p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">colors</th>
 <th style="text-align: center;">640x480</th>
 <th style="text-align: center;">800x600</th>
@@ -487,28 +487,28 @@ entering <code>vga=0</code> in the grub line.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">256</td>
 <td style="text-align: center;">0x101</td>
 <td style="text-align: center;">0x103</td>
 <td style="text-align: center;">0x105</td>
 <td style="text-align: center;">0x107</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">32k</td>
 <td style="text-align: center;">0x110</td>
 <td style="text-align: center;">0x113</td>
 <td style="text-align: center;">0x116</td>
 <td style="text-align: center;">0x119</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">64k</td>
 <td style="text-align: center;">0x111</td>
 <td style="text-align: center;">0x114</td>
 <td style="text-align: center;">0x117</td>
 <td style="text-align: center;">0x11A</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">16M</td>
 <td style="text-align: center;">0x112</td>
 <td style="text-align: center;">0x115</td>
@@ -520,7 +520,7 @@ entering <code>vga=0</code> in the grub line.</p>
 <p><strong>VESA</strong></p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">colors</th>
 <th style="text-align: center;">640x480</th>
 <th style="text-align: center;">800x600</th>
@@ -530,7 +530,7 @@ entering <code>vga=0</code> in the grub line.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">256</td>
 <td style="text-align: center;">769</td>
 <td style="text-align: center;">771</td>
@@ -538,7 +538,7 @@ entering <code>vga=0</code> in the grub line.</p>
 <td style="text-align: center;">775</td>
 <td style="text-align: center;">796</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">32k</td>
 <td style="text-align: center;">784</td>
 <td style="text-align: center;">787</td>
@@ -546,7 +546,7 @@ entering <code>vga=0</code> in the grub line.</p>
 <td style="text-align: center;">793</td>
 <td style="text-align: center;">797</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">64k</td>
 <td style="text-align: center;">785</td>
 <td style="text-align: center;">788</td>
@@ -554,7 +554,7 @@ entering <code>vga=0</code> in the grub line.</p>
 <td style="text-align: center;">794</td>
 <td style="text-align: center;">798</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">16M</td>
 <td style="text-align: center;">786</td>
 <td style="text-align: center;">789</td>

@@ -36,8 +36,9 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 <li><a href="#partitioning-with-fdisk"
 id="toc-partitioning-with-fdisk">Partitioning with fdisk</a>
 <ul>
-<li><a href="#naming-storage-devices"
-id="toc-naming-storage-devices">Naming storage devices</a></li>
+<li><a href="#information-about-storage-devices"
+id="toc-information-about-storage-devices">Information about storage
+devices</a></li>
 <li><a href="#use-cfdisk" id="toc-use-cfdisk">Use cfdisk</a></li>
 <li><a href="#formatting-partitions"
 id="toc-formatting-partitions">Formatting partitions</a></li>
@@ -45,10 +46,12 @@ id="toc-formatting-partitions">Formatting partitions</a></li>
 </ul>
 </nav>
 <h2 id="partitioning-with-fdisk">Partitioning with fdisk</h2>
-<p><strong>fdisk</strong> and <strong>cfdisk</strong> create MBR
-partition tables based on the BIOS. The introduction of GPT partition
-tables based on UEFI began in 2000.</p>
-<p>The newer <strong>G</strong>lobally Unique Identifier
+<p class="warning">
+<strong>ATTENTION!</strong> <br />Creating partition tables, partitions,
+and editing partitions will destroy all data on the affected device.
+</p>
+<p>The introduction of GPT partition tables based on UEFI began in 2000.
+The newer <strong>G</strong>lobally Unique Identifier
 <strong>P</strong>artition <strong>T</strong>able (GPT) standard, which
 is part of the UEFI standard, has replaced MBR on current hardware and
 allows disks/partitions larger than 2 TBytes and a theoretically
@@ -56,120 +59,112 @@ unlimited number of primary partitions. More information about this can
 be found in <a
 href="https://en.wikipedia.org/wiki/GUID_Partition_Table">Wikipedia GUID
 partition table</a>.</p>
-<p>We recommend to use <em>fdisk</em> and <em>cfdisk</em> only for
-partitioning on older hardware.<br />
-For creating GPT partition tables, please refer to the manual page <a
-href="./part-gdisk_en.html#partitioning-with-gdisk">Partitioning with
-gdisk</a>.</p>
-<h3 id="naming-storage-devices">Naming storage devices</h3>
-<p><strong>Please NOTE:</strong><br />
-siduction uses UUID in <code>fstab</code> for storage device naming.
-Please refer to the chapter <a
-href="./part-uuid_en.html#uuid---naming-of-block-devices">Naming by
-UUID</a>.</p>
-<p><strong>Disks</strong></p>
-<p>Information about the devices can be easily obtained from an
-information window (pop-up) by hovering the mouse over the icon of a
-device on the desktop. This works both from the live ISO and with
-siduction installed.</p>
-<p>We recommend creating a table (manual or generated) that contains the
-details of all devices. This can be very helpful if problems arise. In a
-terminal, we become <strong>root</strong> with
-<strong><code>su</code></strong> and type
-<strong><code>fdisk -l</code></strong>. For example, with two disks, we
-get output similar to that shown below.</p>
-<pre><code>user1@pc1:/$ su
-password:
-root@pc1:/# fdisk -l
-
+<p><strong>fdisk</strong> and <strong>cfdisk</strong>, which has a more
+user-friendly ncurses interface, allow you to edit DOS partition tables
+based on BIOS and GPT partition tables based on UEFI.</p>
+<p>If you want to not only edit an existing partition table, but also
+create a new one or switch from DOS to GPT, the command line program
+<code>parted</code> is the right choice. A short command creates a new
+GPT partition table on <code>/dev/sda</code>.</p>
+<pre><code>parted /dev/sda mktable gpt</code></pre>
+<p>The action must be confirmed again, as all data currently stored on
+the device will be lost.</p>
+<h3 id="information-about-storage-devices">Information about storage
+devices</h3>
+<p>Information about the devices can be easily obtained from an pop-up
+window by hovering the mouse over the icon of a device on the desktop.
+This works both from the live ISO and with siduction installed.<br />
+We can obtain more detailed information in a root terminal using
+<code>lsblk</code>, <code>blkid</code>, and <code>fdisk</code>. In
+addition to the excerpt shown below, the<br />
+<strong><code>fdisk -l | tee /root/fdisk-l_$(date +%F_%H-%M-%S)</code></strong><br />
+command also creates a timestamped file in the root user’s directory.
+This can be very helpful if problems arise.</p>
+<pre><code>[...]
 Disk /dev/sda: 149.5 GiB, 160041885696 bytes, 312581808 sectors
 Disk model: FUJITSU MHY2160B
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
-Disk identifier: 0x6513a8ff
+Disk identifier: 0xXXXXXXXX
 
 Device   Boot   Start       End   Sectors Size Id Type
-/dev/sda1        2048  41945087  41943040  20G 83 Linux
-/dev/sda2    41945088  83888127  41943040  20G 83 Linux
-/dev/sda3    83888128  88291327   4403200 2,1G 82 Linux swap
+/dev/sda1        2048  83888127  83886080  40G 83 Linux
+/dev/sda2    83888128  88291327   4403200 2,1G 82 Linux swap
 /dev/sda4    88291328 312581807 224290480 107G  5 Extended
-/dev/sda5    88293376 249774079 161480704  77G 83 Linux
-/dev/sda6   249776128 281233407  31457280  15G 83 Linux
-/dev/sda7   281235456 312581807  31346352  15G 83 Linux
+/dev/sda5    88293376 249774079 161480704  77G 8e Linux LVM
+/dev/sda6   249776128 312581807  62803632  30G 8e Linux LVM
 
 
-Disk /dev/sdb: 119,25 GiB, 128035676160 bytes, 250069680 sectors
-Disk model: Samsung SSD 850 
+Disk /dev/nvme0n1: 465,76 GiB, 500107862016 bytes, 976773168 sectors
+Disk model: CT500P3SSD8
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x000403b7
+Disklabel type: gpt
+Disk identifier: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
-Device   Boot  Start       End   Sectors  Size Id Type
-/dev/sdb1       2048  17831935  17829888  8.5G 82 Linux swap
-/dev/sdb2   17831936 122687487 104855552   50G 83 Linux
-/dev/sdb3  122687488 250068991 127381504 60,8G 83 Linux</code></pre>
-<p>By entering the command<br />
-<strong><code>fdisk -l &gt; /home/&lt;MY USER NAME&gt;/documents/fdisk-l_output</code></strong>
-we get a text file with the same content.</p>
-<p><strong>Partitions</strong></p>
-<p>The partitions on an MBR hard disk are defined by a number between 1
-and 15. A maximum of 14 mountable partitions is possible.</p>
-<p>The following partition types exist:<br />
-primary, extended, and logical.</p>
-<p>The logical partitions are located within the extended partition. A
-maximum of four primary or three primary and one extended partition can
-be created. The extended partition, in turn, can contain up to eleven
-logical partitions.<br />
-Primary or extended partitions are given a designator between 1 and 4
-(for example sda1 to sda4). Logical partitions are always bundled and
-part of an extended partition. A maximum of eleven logical partitions
-can be defined with <em>libata</em>, and their names start with number 5
-and end with number 15 at most.</p>
-<p><strong>Examples</strong></p>
-<pre><code>4 partitions (all primary):
+Device        Start       End   Sectors  Size Type
+/dev/sdb1      2048    206847    204800  100M EFI System
+/dev/sdb2    206848 922953727 922746880  440G Linux filesyst
+/dev/sdb3 922953728 976766975  53813248 25,7G Linux swap</code></pre>
+<p><strong>DOS partition table</strong></p>
+<p>DOS partition tables are considered obsolete on current laptop and PC
+hardware and should no longer be used there. They are more commonly
+found on smaller storage devices such as USB sticks or memory
+cards.<br />
+The partitions in a DOS partition table can be of the type
+<em>primary</em>, <em>extended</em>, and <em>logical</em>. They are
+defined by a number between 1 and 15.<br />
+A maximum of four primary partitions can be created. One of these
+partitions can be an extended partition. Within the extended partition,
+up to eleven logical partitions are possible. This limits the number of
+partitions to 14.<br />
+Primary or extended partitions are assigned a label between 1 and 4 (for
+example, sda1 to sda4). Logical partitions are always grouped together
+and are part of an extended partition. Their labels start with number 5
+and end with number 15.</p>
+<p><strong>Example</strong></p>
+<pre><code>4 partitions, all primary:
 
 |sda1|sda2|sda3|sda4|
 
 
-6 partitions (3 primary, 1 extended, and 3 logical):
+6 mountable partitions
+  2 primary, 1 extended within 4 logical:
 
-|sda1|sda2|sda3|-
-                 |       contains only 
-               |sda4| -&gt; references to
-                 |       logical partitions
-                 |
-               |sda5|sda6|sda7|</code></pre>
-<p><strong>/dev/sda5</strong> can only be a logical partition (in this
-case the first logical one on this device). It is located on the first
-hard disk of the computer (depending on the BIOS configuration).</p>
-<p><strong>/dev/sdb3</strong> can only be a primary or extended
-partition. The letter “b” indicates that this partition is on a
-different device than the partition of the first example, which contains
-the letter “a”.</p>
+|sda1|sda2-
+           |
+         |sda4|  (extended partition)
+           |
+           |sda5|sda6|sda7|sda8|</code></pre>
+<p><em>/dev/sda5</em> can only be a logical partition (in this case the
+first logical one on this device).</p>
+<p><strong>GPT partition table</strong></p>
+<p>Unlike the DOS partition table, the GPT partition table allows
+disks/partitions larger than 2 TB and a theoretically unlimited number
+of primary partitions. There are no extended partitions and no logical
+partitions.<br />
+The example in the following chapter, <em>Use cfdisk</em>, is based on a
+hard disk with a GPT partition table.</p>
 <h3 id="use-cfdisk">Use cfdisk</h3>
-<strong>Backup data beforehand!</strong><br />
-
 <p class="warning">
-There is a risk of data loss when using any partition editor. Always
-back up data you want to keep on another disk first.
+<strong>Backup data beforehand!</strong> <br />There is a risk of data
+loss when using any partition editor. Always back up data you want to
+keep on another disk first.
 </p>
-<p><strong>cfdisk</strong> is started in a console as
-<strong>root</strong> (after <strong><code>su</code></strong> the root
-password is required):</p>
+<p>Please only use the cfdisk program on a hard disk where none of the
+partitions are mounted.<br />
+We start cfdisk in a root console (after
+<strong><code>su</code></strong>, you will be prompted to enter the root
+password).</p>
 <pre><code>user1@pc1:/$ su
 password:
 root@pc1:/#
-cfdisk /dev/sda</code></pre>
-<p><strong>cfdisk</strong> should only be used on a hard disk with all
-partitions unmounted. All data will be lost when the changed partition
-table is written.</p>
+cfdisk /dev/sdc</code></pre>
 <p><strong>The user interface</strong></p>
-<p>On the first screen, <code>cfdisk</code> shows the current partition
-table with the names and some information about each partition. At the
+<p>On the first screen, cfdisk shows the current partition table. At the
 bottom of the window, there are some command buttons. To switch between
 partitions, use the arrow keys <strong><code>up</code></strong> and
 <strong><code>down</code></strong>. To select commands, use the arrow
@@ -181,192 +176,121 @@ command.</p>
 <img src="./images-en/cfdisk/cfdisk_01.png" alt="cfdisk - Start" />
 <figcaption aria-hidden="true">cfdisk - Start</figcaption>
 </figure>
-<p>We have three partitions on the example disk.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Device</th>
-<th style="text-align: right;">Part. Size</th>
-<th style="text-align: center;">Part. Type</th>
-<th style="text-align: right;">Mountpoint</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>/dev/sda1</td>
-<td style="text-align: right;">8.5G</td>
-<td style="text-align: center;">82 Swap</td>
-<td style="text-align: right;">-</td>
-</tr>
-<tr class="even">
-<td>/dev/sda2</td>
-<td style="text-align: right;">50.0G</td>
-<td style="text-align: center;">83 Linux</td>
-<td style="text-align: right;">/</td>
-</tr>
-<tr class="odd">
-<td>/dev/sda3</td>
-<td style="text-align: right;">60.8G</td>
-<td style="text-align: center;">83 Linux</td>
-<td style="text-align: right;">/data</td>
-</tr>
-</tbody>
-</table>
-<p>From the data partition, we want to move the directories
-<code>Pictures</code> and <code>Music</code> to their own partitions and
-create more space for them. At the same time, they should be accessible
-for a Windows system residing on another harddisk. The root partition is
-oversized with 50 GB and will be reduced.</p>
-<p><strong>Delete a partition</strong></p>
-<p>To create space, we delete the data partition and then shrink the
-root partition.</p>
-<p>To delete the partition <strong>/dev/sda3</strong>, highlight it with
-the up-down keys and select the command <em>“Delete”</em> with the
-left-right arrow keys. Finally, confirm the action by hitting
-<strong><code>Enter</code></strong>.</p>
+<p>The hard disk <em>/dev/sdc</em> contains only an empty GPT partition
+table.</p>
+<p><strong>Creating a new partition</strong></p>
+<p>In the first step, we create a 300 MB Efi System Partition (ESP). The
+already selected command <strong><code>New</code></strong> is confirmed
+with the <strong><code>Enter</code></strong> key.</p>
 <figure>
-<img src="./images-en/cfdisk/cfdisk_02.png" alt="Delete a partition" />
-<figcaption aria-hidden="true">Delete a partition</figcaption>
+<img src="./images-en/cfdisk/cfdisk_02.png"
+alt="Change partition type" />
+<figcaption aria-hidden="true">Change partition type</figcaption>
 </figure>
-<p><strong>Resize a partition</strong></p>
-<p>Highlight the partition <strong>/dev/sda2</strong>, select the
-command <em>“Resize”</em>, and confirm.</p>
+<p>In order for the UEFI to recognize the ESP, its partition type must
+be set to <em>EFI System</em>. We continue with the command
+<strong><code>Type</code></strong>.</p>
 <figure>
-<img src="./images-en/cfdisk/cfdisk_03.png" alt="Resize a partition" />
-<figcaption aria-hidden="true">Resize a partition</figcaption>
+<img src="./images-en/cfdisk/cfdisk_03.png" alt="Set partition type" />
+<figcaption aria-hidden="true">Set partition type</figcaption>
 </figure>
-<p>Then the new size of <em>“20G”</em> is to be entered.</p>
+<p>The arrow keys take us to <em>EFI System</em>. The GUID of the
+partition type is displayed at the bottom. The
+<strong><code>Enter</code></strong> key completes the selection.</p>
+<p>In the next steps, we create three more partitions using the same
+procedure.</p>
+<p>1,6G Typ: Linux extended boot<br />
+18G Typ: Linux swap<br />
+213G Typ: Linux filesystem</p>
+<p>The result:</p>
 <figure>
 <img src="./images-en/cfdisk/cfdisk_04.png"
-alt="New Size of a partition" />
-<figcaption aria-hidden="true">New Size of a partition</figcaption>
+alt="Interim result partitions" />
+<figcaption aria-hidden="true">Interim result partitions</figcaption>
 </figure>
-<p><strong>Creating a new partition</strong></p>
-<p>The hard disk’s freed space is highlighted. The command selection
-automatically jumps to <em>“New”</em>, which has to be confirmed.</p>
+<p>For our siduction, we now have a 213 GB partition. This is useful if
+we want to use LVM or the Btrfs file system. Another option would be a
+60 GB system partition and another 153 GB partition for independent
+data. Both will later receive the ext4 file system.</p>
+<p><strong>Resize a partition</strong></p>
+<p>Highlight the partition <em>/dev/sdc4</em>, select the command
+<strong><code>Resize</code></strong>, and confirm.</p>
 <figure>
-<img src="./images-en/cfdisk/cfdisk_05.png"
-alt="Create a new partition" />
-<figcaption aria-hidden="true">Create a new partition</figcaption>
+<img src="./images-en/cfdisk/cfdisk_05.png" alt="Resize a partition" />
+<figcaption aria-hidden="true">Resize a partition</figcaption>
 </figure>
-<p>Then enter the new size of <em>“15G”</em> for the data partition.</p>
+<p>We change the size to 60G. Again, the
+<strong><code>Enter</code></strong> key completes the process.</p>
+<p>Then we create a partition of type <em>Linux filesystem</em> with the
+entire remainder (153 GB).<br />
+The partitioning is now complete.</p>
+<p><strong>Write partition table</strong></p>
+<p>Once everything has been partitioned, the result can be saved with
+the <strong><code>Write</code></strong> command. The partition table is
+now written to the disk.</p>
 <figure>
 <img src="./images-en/cfdisk/cfdisk_06.png"
-alt="Create a new partition - Size" />
-<figcaption aria-hidden="true">Create a new partition -
-Size</figcaption>
-</figure>
-<p>Now we have to choose between a <strong>primary</strong> or an
-<strong>extended</strong> partition. We select a primary partition.</p>
-<figure>
-<img src="./images-en/cfdisk/cfdisk_07.png"
-alt="Create a new partition - primary" />
-<figcaption aria-hidden="true">Create a new partition -
-primary</figcaption>
-</figure>
-<p>After that, we mark the free disk space again, confirm it, and
-confirm the preset total size as well. In the following selection,
-<strong>extended</strong> has to be chosen. This creates the extended
-partition (here called <em>“container”</em>) in which the two additional
-partitions are to be created.<br />
-Finally, the partitions for <code>Music</code> and <code>Images</code>
-are to be created in the desired size according to the procedure shown
-above. Since only logical partitions are possible, the selection between
-primary and extended partition is omitted.</p>
-<figure>
-<img src="./images-en/cfdisk/cfdisk_09.png" alt="partition finished" />
-<figcaption aria-hidden="true">partition finished</figcaption>
-</figure>
-<p>This is how the result looks like.</p>
-<p><strong>Partition type</strong></p>
-<p>To change the type of a partition, select the desired partition and
-choose the command <em>“Type”</em>.<br />
-A selection list appears in which the partition type can be selected
-with the arrow keys <strong><code>up</code></strong> and
-<strong><code>down</code></strong>. In our example, we select “<em>7
-HPFS/NTFS/exFAT</em>” for the partitions <strong>/dev/sda5</strong> and
-<strong>/dev/sda6</strong>. This way, the above mentioned Windows system
-can access the partition.</p>
-<figure>
-<img src="./images-en/cfdisk/cfdisk_11.png"
-alt="partition select type" />
-<figcaption aria-hidden="true">partition select type</figcaption>
-</figure>
-<p><strong>Make a partition bootable</strong></p>
-<p>For Linux there is no need to make a partition bootable, but some
-other operating systems need it. This is done by highlighting the
-appropriate partition and selecting the <em>“Bootable”</em> command.
-(<strong>Note:</strong> when installing to an external hard drive, a
-partition must be made bootable.)</p>
-<p><strong>Write partition table</strong></p>
-<p>When everything has been partitioned, the result can be saved with
-the command <em>“Write”</em>. The partition table is now written to the
-disk.</p>
-<figure>
-<img src="./images-en/cfdisk/cfdisk_12.png"
 alt="Write partition to disk" />
 <figcaption aria-hidden="true">Write partition to disk</figcaption>
 </figure>
-<p><strong>Since this will delete all data on the corresponding
-disk/partition</strong>, you should be really sure before typing
-<strong>yes</strong> and confirming again with the
-<strong><code>Enter</code></strong> key.</p>
+<p>Since this will delete all existing data on the hard drive, you
+should be absolutely sure before typing
+<strong><code>yes</code></strong> and confirming again with
+<strong><code>Enter</code></strong>.</p>
 <p><strong>Quit cfdisk</strong></p>
 <p>By entering the command <em>“Quit”</em>, we can quit the program.
-After leaving <code>cfdisk</code> and before the installation, you
-should reboot in any case to read in the partition table again.</p>
+After leaving cfdisk and before the installation, you should reboot in
+any case to read in the partition table again.</p>
 <h3 id="formatting-partitions">Formatting partitions</h3>
 <p>There are several file systems for Linux that can be used. There are
-<strong>Ext2</strong>, <strong>Ext4</strong>, <strong>ReiserFs</strong>,
-and for more experienced users <strong>XFS</strong>,
-<strong>JFS</strong>, and <strong>ZFS</strong>.<br />
-<strong>Ext2</strong> may be of interest when accessing from Windows, as
-there are Windows drivers for this file system. <a
+<strong>Ext2</strong>, <strong>Ext4</strong>, <strong>Btrfs</strong>,
+<strong>XFS</strong>, <strong>JFS</strong>, and
+<strong>ZFS</strong>.<br />
+Ext2 may be of interest when accessing from Windows, as there are
+Windows drivers for this file system. <a
 href="http://www.fs-driver.org/">Ext2 file system for MS Windows
 (drivers and documentation)</a>.</p>
-<p>For normal use, we recommend the <strong>ext4</strong> file system.
-It is siduction’s default file system.</p>
-<p>After <code>cfdisk</code> has finished, the <strong>root</strong>
-console is still needed as formatting requires root privileges.<br />
-The command is <strong><code>mkfs.ext4 /dev/sdaX</code></strong>. For
-<em>“X”</em>, enter the number of the selected partition.</p>
-<pre><code>mkfs.ext4 /dev/sda2
-mke2fs 1.45.6 (20-Mar-2020)
-/dev/sdb2 contains an ext4 file system
-    last mounted on Tue May 26 14:26:34 2020
-Proceed anyway? (y,N)</code></pre>
-<p>The query is to be answered with <strong><code>y</code></strong> if
-you are sure that the correct partition should be formatted. Please
-check several times!</p>
-<p>After the formatting is finished, you should get a message that ext4
-was written successfully. If this is not the case, something went wrong
-during partitioning or <strong>sdaX</strong> is not a Linux partition.
-We check with:</p>
-<pre><code>fdisk -l /dev/sda</code></pre>
-<p>If something is wrong, you may have to partition again.</p>
+<p>For normal use, we recommend the ext4 file system. It is siduction’s
+default file system.</p>
+<p>After exiting cfdisk, the root console continues to be used.
+Formatting requires root privileges.<br />
+The command is <strong><code>mkfs.ext4 /dev/sdXX</code></strong>. For
+“XX”, enter the name of the selected partition.</p>
+<pre><code>mkfs.ext4 /dev/sdc4
+[...]
+mkfs.ext4 /dev/sdc5</code></pre>
+<p>Once formatting is complete, a message will appear indicating that
+the operation was successful. If this is not the case, something went
+wrong during partitioning or the partition is not a Linux partition. We
+can check this with:</p>
+<pre><code>fdisk -l /dev/sdc</code></pre>
+<p>If necessary, partitioning must be repeated.</p>
 <p>If the formatting was successful, this procedure can be repeated for
 the other partitions, adapting the command according to the partition
-type and the desired file system (e.g.:
-<strong><code>mkfs.ext2</code></strong> or
-<strong><code>mkfs.vfat</code></strong> or
-<strong><code>mkfs.ntfs</code></strong>, etc.). Please read the man page
-<strong>man mkfs</strong>.</p>
-<p>Finally, format the swap partition, in this case sda1:</p>
-<pre><code>mkswap /dev/sda1</code></pre>
+and the desired file system (e.g.: <code>mkfs.ext2</code> or
+<code>mkfs.fat</code> or <code>mkfs.btrfs</code>, etc.).<br />
+Please read the man page <strong>man mkfs</strong>.</p>
+<p>Following our example, the partitions /dev/sdc1 and /dev/sdc2 are
+assigned a FAT file system of type 32.</p>
+<pre><code>mkfs.fat -F 32 /dev/sdc1
+[...]
+mkfs.fat -F 32 /dev/sdc2</code></pre>
+<p>Finally, format the swap partition, in this case sdc3:</p>
+<pre><code>mkswap /dev/sdc3</code></pre>
 <p>Next, the swap partition is activated:</p>
-<pre><code>swapon /dev/sda1</code></pre>
+<pre><code>swapon /dev/sdc3</code></pre>
 <p>After that, you can check in the console if the swap partition is
 recognized:</p>
 <pre><code>swapon -s</code></pre>
 <p>With the swap partition mounted, the output of the previous command
 should look something like this:</p>
-<pre><code>Filename Type Size Used Priority
-/dev/sda1 partition 8914940 0 -2</code></pre>
+<pre><code>Filename        Type        Size       Used   Priority
+/dev/sdc3       partition   37748736   0      -2</code></pre>
 <p>We then inform the kernel about the changes with the command
 <strong><code>systemctl daemon-reload</code></strong>.</p>
 <p>Now the installation can begin.</p>
 <div id="rev">
-Last edited: 2023/11/09
+Last edited: 2026/02/21
 </div>
 </body>
 </html>

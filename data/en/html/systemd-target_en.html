@@ -65,25 +65,25 @@ customize the kernel boot line with the sysvinit commands.</p>
 <col style="width: 72%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>target unit</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>emergency.target</strong></td>
 <td>launches into an emergency shell on the main console. It is the most
 minimal version of a system boot to get an interactive shell. This unit
 can be used to guide the boot process step by step.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>rescue.target</strong></td>
 <td>starts the base system (including system mounts) and an emergency
 shell. Compared to multi-user.target, this target could be considered as
 single-user.target.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>multi-user.target</strong></td>
 <td>starts a multi-user system with a working network, without graphics
 server X. This unit is used when you want to stop X or not to boot into
@@ -91,12 +91,12 @@ it. <a href="./sys-admin-apt_en.html#run-full-upgrade">This unit is used
 in special cases (when X itself or the desktop environment are upgraded)
 to perform a system upgrade (dist-upgrade)</a>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>graphical.target</strong></td>
 <td>is the unit for multi-user mode with network capability and a
 running X window system.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>default.target</strong></td>
 <td>is the default unit that systemd launches at system startup. In
 siduction this is a symlink to graphical.target (except for the noX
@@ -119,29 +119,29 @@ the following syntax: “systemd.unit=xxxxx.target”. The table lists the
 kernel commands and their still valid numeric equivalents.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>target unit</th>
 <th>kernel command</th>
 <th style="text-align: center;">kernel command old</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>emergency.target</td>
 <td>systemd.unit=emergency.target</td>
 <td style="text-align: center;">-</td>
 </tr>
-<tr class="even">
+<tr>
 <td>rescue.target</td>
 <td>systemd.unit=rescue.target</td>
 <td style="text-align: center;">1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>multi-user.target</td>
 <td>systemd.unit=multi-user.target</td>
 <td style="text-align: center;">3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>graphical.target</td>
 <td>systemd.unit=graphical.target</td>
 <td style="text-align: center;">5</td>
@@ -158,25 +158,25 @@ the terminal commands, where the expression <em>“isolate”</em> ensures
 that all services not requested by the target unit are terminated.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>target unit</th>
 <th>terminal command</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>emergency.target</td>
 <td>systemctl isolate emergency.target</td>
 </tr>
-<tr class="even">
+<tr>
 <td>rescue.target</td>
 <td>systemctl isolate rescue.target</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>multi-user.target</td>
 <td>systemctl isolate multi-user.target</td>
 </tr>
-<tr class="even">
+<tr>
 <td>graphical.target</td>
 <td>systemctl isolate graphical.target</td>
 </tr>
@@ -189,21 +189,21 @@ following list shows three frequently used commands that <strong>should
 not</strong> be called with the syntax “isolate xxxxx.target”.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>target</th>
 <th>terminal command</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>halt</td>
 <td>systemctl halt</td>
 </tr>
-<tr class="even">
+<tr>
 <td>shutdown</td>
 <td>systemctl shutdown</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>reboot</td>
 <td>systemctl reboot</td>
 </tr>
@@ -216,6 +216,7 @@ fashion and to reboot if necessary.</p></li>
 <h3 id="sources-systemd-target">Sources systemd-target</h3>
 <pre><code>man systemd.target</code></pre>
 <div id="rev">
-<p>Last edited: 2025/08/31/div&gt;</p>
+Last edited: 2025/08/31/
+</div>
 </body>
 </html>

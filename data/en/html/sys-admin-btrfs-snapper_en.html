@@ -126,40 +126,40 @@ commands and options, as long as they are unique. For example,
 subvolumes are created.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Subvolume</th>
 <th>Mount point</th>
 <th>Remarks</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>@</td>
 <td>/</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td><span class="citation" data-cites="home">@home</span></td>
 <td>/home</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><span class="citation" data-cites="root">@root</span></td>
 <td>/root</td>
 <td>The <strong>root</strong> user</td>
 </tr>
-<tr class="even">
+<tr>
 <td><span class="citation" data-cites="var">@var</span><span
 class="citation" data-cites="log">@log</span></td>
 <td>/var/log</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><span class="citation" data-cites="snapshots">@snapshots</span></td>
 <td>/.snapshots</td>
 <td>Snapshots of @ are stored here</td>
 </tr>
-<tr class="even">
+<tr>
 <td><span class="citation"
 data-cites="home">@home</span>/.snapshots</td>
 <td>-</td>
@@ -380,7 +380,7 @@ TIMELINE_LIMIT_WEEKLY  | 0     | 0     | 0     | 1     |
 TIMELINE_LIMIT_YEARLY  | 10    | 10    | 10    |       |
 TIMELINE_MIN_AGE       | 1800  | 1800  | 1800  | 1800  |
 -----------------------+-------+-------+-------+-------+</code></pre>
-<p>A <em>“pre ’</em> and <em>’post ”</em> snapshot is created from the
+<p>A <em>“pre ‘</em> and <em>’post ”</em> snapshot is created from the
 <code>@</code> subvolume for each APT action. The key
 <code>NUMBER_LIMIT=50</code> ensures that the most recent twenty-five
 snapshot pairs are retained.</p>

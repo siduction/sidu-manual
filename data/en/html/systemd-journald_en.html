@@ -285,45 +285,45 @@ simple user. Here are some examples:</p>
 <col style="width: 62%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>command</th>
 <th>display</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>journalctl</td>
 <td>the full journal of all users, oldest entries first</td>
 </tr>
-<tr class="even">
+<tr>
 <td>journalctl -r</td>
 <td>as before, newest entries first</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>journalctl -b</td>
 <td>the log of the last boot</td>
 </tr>
-<tr class="even">
+<tr>
 <td>journalctl -b -1 -k</td>
 <td>all kernel messages from the next to last boot (-1)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>journalctl -b -p err</td>
 <td>limited to the last boot and the priority ERROR</td>
 </tr>
-<tr class="even">
+<tr>
 <td>journalctl –since=yesterday</td>
 <td>the journal since yesterday</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>journalctl /dev/sda</td>
 <td>the journal of the device file /dev/sda</td>
 </tr>
-<tr class="even">
+<tr>
 <td>journalctl /usr/bin/dbus-daemon</td>
 <td>all logs of the D-Bus daemon</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>journalctl -f</td>
 <td>live view of the journal (formerly: tail -f /var/log/messages)</td>
 </tr>
