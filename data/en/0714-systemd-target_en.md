@@ -63,4 +63,4 @@ There are three special features to be considered for the target units:
 man systemd.target
 ~~~
 
-<div id="rev">Last edited: 2025/08/31/<div>
+<div id="rev">Last edited: 2025/08/31/</div>
