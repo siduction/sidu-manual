@@ -16,9 +16,9 @@ If you are unsure, please announce this immediately in the IRC channel so that h
 
 **Rules of conduct in IRC**
 
-* A friendly tone is obligatory because we all do the support on a voluntary basis.
-* It is helpful to make a request that is accurate to the best of your knowledge and to search for solutions in the siduction wiki beforehand if possible.
-* Please never post a request in IRC and the forum at the same time. At best, we rub our eyes in amazement.
++ A friendly tone is obligatory because we all do the support on a voluntary basis.
++ It is helpful to make a request that is accurate to the best of your knowledge and to search for solutions in the siduction wiki beforehand if possible.
++ Please never post a request in IRC and the forum at the same time. At best, we rub our eyes in amazement.
 
 **Reach siduction**
 
@@ -31,6 +31,9 @@ If you prefer another chat client, you need to enter these server details:
   ~~~
 
 + [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en): Enter a free nickname and join the channel #siduction-en.
+
++ If you already have an identity with **matrix**, then use this link.  
+  [siduction on matrix](https://matrix.to/#/#siduction:matrix.sp-codes.de)
 
 ### Useful helpers in text mode
 
@@ -226,4 +229,4 @@ $ inxi --help
 [Common Unix Printing System CUPS](https://www.cups.org/) (In KDE, the KDE Help Center provides information about CUPS.)  
 [LibreOffice](https://libreoffice.org/) (There is a wide choice in the "Help" menu.)
 
-<div id="rev">Last edited: 2025/08/31</div>
+<div id="rev">Last edited: 2026/03/03</div>

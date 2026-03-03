@@ -15,14 +15,14 @@ Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe geg
 
 **Verhaltensregeln im IRC**
 
-* Ein freundlicher Umgangston ist obligatorisch, denn wir leisten den Support alle ehrenamtlich.
-* Hilfreich ist es, eine nach bestem Wissen genaue Anfrage zu stellen und nach Möglichkeit zuvor im siduction-Wiki nach Lösungen zu suchen.
-* Bitte niemals gleichzeitig im IRC und Forum eine Anfrage stellen. Bestenfalls reiben wir uns verwundert die Augen.
++ Ein freundlicher Umgangston ist obligatorisch, denn wir leisten den Support alle ehrenamtlich.
++ Hilfreich ist es, eine nach bestem Wissen genaue Anfrage zu stellen und nach Möglichkeit zuvor im siduction-Wiki nach Lösungen zu suchen.
++ Bitte niemals gleichzeitig im IRC und Forum eine Anfrage stellen. Bestenfalls reiben wir uns verwundert die Augen.
 
 **siduction erreichen**
 
 + Klicke einfach auf das **"IRC Chat #siduction"-Symbol**  auf dem Desktop oder verwende den kmenu-Eintrag von koversation.  
-Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingeben:
+  Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingeben:
 
   ~~~
   irc.oftc.net
@@ -30,6 +30,9 @@ Wenn du einen anderen Chat-Client bevorzugst, musst du diese Serverdaten eingebe
   ~~~
 
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
+
++ Du hast bereits eine Identität bei **matrix**, dann benutze diesen Link.  
+  [siduction on matrix](https://matrix.to/#/#siduction-de:matrix.sp-codes.de)
 
 ### Nützliche Helfer im Textmodus
 
@@ -226,4 +229,4 @@ $ inxi --help
 [Common Unix Printing System CUPS (EN)](https://www.cups.org/) . In KDE bietet das KDE-Hilfezentrum Informationen zu CUPS.  
 [LibreOffice](https://de.libreoffice.org/) Im Menü "Hilfe" finden sich viele Angebote.
 
-<div id="rev">Zuletzt bearbeitet: 2025-08-31</div>
+<div id="rev">Zuletzt bearbeitet: 2026-03-03</div>
