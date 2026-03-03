@@ -33,7 +33,7 @@ If you prefer another chat client, you need to enter these server details:
 + [With this link you can start the IRC immediately in your browser](https://webchat.oftc.net/?nick=siducer007&channels=siduction-en): Enter a free nickname and join the channel #siduction-en.
 
 + If you already have an identity with **matrix**, then use this link.  
-  [siduction on matrix](https://matrix.to/#/#siduction:matrix.sp-codes.de)
+  <https://matrix.to/#/#siduction:matrix.sp-codes.de>
 
 ### Useful helpers in text mode
 

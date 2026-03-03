@@ -32,7 +32,7 @@ Bei Unklarheiten bitte dies sofort im IRC-Channel bekannt geben, damit Hilfe geg
 + [Mit diesem Link kannst Du den IRC sofort in Deinem Browser aufrufen](https://webchat.oftc.net/?nick=siducer007&channels=siduction-de) : gib dazu einen frei gewählten Nicknamen ein und betritt den Channel #siduction-de.
 
 + Du hast bereits eine Identität bei **matrix**, dann benutze diesen Link.  
-  [siduction on matrix](https://matrix.to/#/#siduction-de:matrix.sp-codes.de)
+  <https://matrix.to/#/#siduction-de:matrix.sp-codes.de>
 
 ### Nützliche Helfer im Textmodus
 
