@@ -7,20 +7,22 @@ Obwohl bereits vor mehr als zehn Jahren in systemd aufgenommen, findet man den B
 **Besonderheiten**
 
 Der Bootmanager sd-boot wurde mit dem Ziel entwickelt den Bootvorgang schnell, einfach und sicher zu gestalten. Der Anwender erhält ein textbasiertes Bootmenü. Die Anzeige kommt ohne jeglichen Schnickschnack aus.  
-Er ist, dem Namen entsprechend, tief in systemd integriert und greift auf dort vorhandene Dienste zu. sd-boot erstellt ein optisch minimalistisches Bootmenü. Jeder Menüeintrag beruht auf einer einzigen, eigenen Textdatei. Die Konfiguration für die Benutzerschnittstelle ist im Vergleich zu GRUB rudimentär und der Installationsumfang, mit 32 Dateien und einem zwanzigstel des Datenvolumens, sehr gering.  
-sd-boot ist ausschließlich für UEFI Hardware verfügbar. Dafür benötigt sd-boot zwingend eine ESP (**E**fi **S**ystem **P**artition). Empfohlen wird zusätzlich eine XBOOTLDR Partition.  
+Er ist, dem Namen entsprechend, tief in systemd integriert und greift auf dort vorhandene Dienste zu. sd-boot erstellt ein optisch minimalistisches Bootmenü. Jeder Menüeintrag beruht auf einer einzigen, eigenen Textdatei. Die Konfiguration für die Benutzerschnittstelle ist im Vergleich zu GRUB rudimentär und der Installationsumfang sehr gering.  
+sd-boot ist ausschließlich für UEFI Hardware verfügbar. Dafür benötigt sd-boot zwingend eine ESP (**E**fi **S**ystem **P**artition). Eine zusätzliche XBOOTLDR Partition wird besonders dann empfohlen, wenn Dualboot mit Windows oder macOS gewünscht wird.
+
 Ist nur die ESP vorhanden, wird sie unter `/boot` eingehangen.  
 Bei ESP und XBOOTLDR Partition wird die ESP unter `/efi` und die XBOOTLDR Partition unter `/boot` eingehangen.  
-Dateisystemtreiber für die XBOOTLDR Partition sind ggf. unterhalb `/efi` abzulegen.  
+Beide Partitionen erfordern ein VFAT Dateisystem.  
 sd-boot kann nur Betriebssysteme von Partitionen des gleichen Mediums booten. Um Betriebssysteme von weiteren Medien zu booten benutzt man die ChainLoader Technik zu GRUB oder einem anderen Bootloader.
 
-siduction installiert den Bootmanager GRUB automatisch. Eine Auswahl von sd-boot ist während der Installation nicht möglich. Wechselt man später zu sd-boot, so erzeugt sd-boot angepasste initrd für jeden im System vorhandenen Kernel. Nur mit diesen initrd bootet sd-boot.
+Der Standard Bootmanager bei siduction ist GRUB. Auch die ISOs booten mittels GRUB.  
+Ab siduction 2026.1.0 besteht in allen Flavours mit dem *cli-installer* die Möglichkeit sd-boot während der Installation auszuwählen. Damit entfällt ein späterer Wechsel zu sd-boot.  
+sd-boot bnötigt eine andere initrd als GRUB. Der Installer erstellt diese automatisch. Für den Benutzer ist es wichtig zu verstehen, dass für GRUB erstellte initrd nicht mit sd-boot booten.
 
 **Funktionen von sd-boot:**
 
 - Von vollständig verschlüsselter Festplatte booten.
 - Unterstützung für die XBOOTLDR Partition
-- Laden von Drop-in-Treibern.
 - Registrieren von SecureBoot-Schlüsseln.
 - Erstellen eines Menüeintrages bei Installation neuer Kernel.
 - Boot-Zählung  
@@ -52,12 +54,14 @@ Grub wiederum ist universeller einsetzbar, dadurch schwergewichtig und benötigt
 
 ### systemd-boot installieren
 
+Ab siduction 2026.1.0 kann man mit dem *cli-installer* gleich bei der Erstinstallation den Bootmanager *systemd-boot* auswählen. Wer diese Option nutzt, benötigt die folgende Anleitung nicht.
+
 > **Achtung**  
 > Unbedingt eine Datensicherung auf einem externen Medium vornehmen.  
 > Es sind Arbeiten an Partitionen notwendig um sd-boot den Empfehlungen entsprechend zu installieren.
 
-Die Anleitung basiert auf der Standardinstallation von *siduction* mit einer ESP (**E**fi **S**ystem **P**artition), die unter `/boot/efi` eingehangen ist. Dies ist auch der Standard für Debian und viele Debian Derivate. 
-Um zu sd-boot zu wechseln sind nur die zwei Pakete `systemd-boot` und `systemd-boot-efi` notwendig.  
+Die Anleitung basiert auf der Standardinstallation von *siduction* mit dem Bootmanager GRUB und einer ESP (**E**fi **S**ystem **P**artition), die unter `/boot/efi` eingehangen ist. Dies ist auch der Standard für Debian und viele Debian Derivate. 
+Um zu sd-boot zu wechseln sind nur die Pakete `systemd-boot`, `systemd-boot-tools` und `systemd-boot-efi` mit zusätzlichen Abhängigkeiten notwendig.  
 Doch Vorsicht, zuerst sind einige Arbeiten am System erforderlich.
 
 ### Vorbereitung des Systems
@@ -73,7 +77,7 @@ Eine wesentliche Änderung von sd-boot gegenüber der Standardinstallation von s
   Größe: 100 MB  
   *XBOOTLDR*  
   Partitionstyp "Linux extended boot", Part-GUID: BC13C2FF-59E6-4262-A352-B275FD6F7172  
-  Dateisystem: Jedes, dass die UEFI-Implementierung lesen kann, eingehangen unter /boot/  
+  Dateisystem: VFAT, eingehangen unter /boot/  
   Größe: mind. 1 GB
   
   > **sd.boot bug**  
@@ -94,14 +98,14 @@ Hierzu übersetzte Zitate der [boot_loader_specification](https://uapi-group.org
 [Übersetzung Anfang]  
 *Hinweis: Diese Partitionen werden von allen Betriebssysteminstallationen auf derselben Festplatte gemeinsam genutzt, sodass alle denselben Ort für Einträge im Bootloader-Menü verwenden.*  
 [...]  
-*Das Einhängen des ESP in /boot/efi/, wie es traditionell gemacht wurde, wird nicht empfohlen. Eine solche verschachtelte Einrichtung erschwert eine Implementierung über direkte autofs-Einhängungen - wie sie beispielsweise von systemd implementiert werden -, da die Einrichtung des inneren autofs das äußere auslöst. Es wird empfohlen, die beiden Partitionen über autofs zu mounten. Da das einfache VFAT-Dateisystem eine geringe Datenintegrität aufweist, sollte es, wann immer möglich, nicht eingehängt werden.*  
+*Das Einhängen der ESP in /boot/efi/, wie es traditionell gemacht wurde, wird nicht empfohlen. Eine solche verschachtelte Einrichtung erschwert eine Implementierung über direkte autofs-Einhängungen - wie sie beispielsweise von systemd verwendet werden -, da die Einrichtung des inneren autofs das äußere auslöst. Es wird empfohlen, die beiden Partitionen über autofs zu mounten. Da das einfache VFAT-Dateisystem eine geringe Datenintegrität aufweist, sollte es, wann immer möglich, nicht eingehangen bleiben.*  
 [...]  
-*Bei Systemen, bei denen die Firmware in der Lage ist, Dateisysteme direkt zu lesen, muss die ESP - und die GPT-XBOOTLDR-Partition sollte - ein Dateisystem sein, dass von der Firmware gelesen werden kann. Für die meisten Systeme bedeutet dies VFAT (16 oder 32 Bit). Anwendungen, die auf beide Partitionen zugreifen, sollten daher nicht davon ausgehen, dass ausgefeiltere Dateisystemfunktionen wie Symlinks, Hardlinks, Zugriffskontrolle oder Groß-/Kleinschreibung unterstützt werden.*  
+*Bei Systemen, bei denen die Firmware in der Lage ist, Dateisysteme direkt zu lesen, muss die ESP - und die MBR boot und GPT-XBOOTLDR-Partition sollte - ein Dateisystem sein, dass von der Firmware gelesen werden kann. Für die meisten Systeme bedeutet dies VFAT (16 oder 32 Bit). Für beide Partitionen muss derselbe Dateisystemtyp verwendet werden.*  
 [Übersetzung Ende]  
 
 **Mindestgröße**
 
-Hält man sich an die Empfehlungen von sd-boot und benutzt sowohl die ESP als auch die XBOOTLDR Partition, kann man die geringe Größe der ESP beibehalten und für die XBOOTLDR Partition ein leistungsstärkeres Dateisystem verwenden. Notwendige Dateisystemtreiber für die XBOOTLDR Partition sind von [akeo.ie](https://efi.akeo.ie) zu holen und nach `/efi/EFI/systemd/drivers/` zu kopieren.  
+Hält man sich an die Empfehlungen von sd-boot und benutzt sowohl die ESP als auch die XBOOTLDR Partition, kann man die geringe Größe der ESP beibehalten. Will man ausschließlich die unter `/boot` eingehangene ESP verwenden, empfehlen wir mindestens 1GB.  
 Die XBOOTLDR Partition sollte mindestens 1 GB umfassen, da sd-boot alle Kernel und initrd darin doppelt ablegt. So wie es der Standard vorschreibt einmal direkt unter `/boot/` und ein weiteres Mal unter `/boot/<Kennung>/<Version>/`. Damit fallen für einen Kernel mit initrd 70 bis 100 MB an. Der Grund hierfür dürfte in der Verwendung von VFAT, das keine Symlinks unterstützt, liegen. Bei mehreren OS mit jeweils mehreren Kernel ist die Größe von 1 GB grenzwertig und die bisher üblichen 200 bis 300 MB der ESP sind völlig untauglich. Das zieht eine Änderung der Partitionierung nach sich.
 
 Wir behalten die ESP in ihrer bisherigen Größe und erstellen an beliebiger Stelle auf dem gleichen Medium die XBOOTLDR Partition. Wie bereits erwähnt mindestens 1 GB groß, besser 2 GB. Wenn sich dabei die UUID einer bereits vorhandenen Partition ändert, muss man die Datei `/etc/fstab` anpassen. Siehe: [Die fstab anpassen](0311-part-uuid_de.md#anpassung-der-fstab).
@@ -109,7 +113,7 @@ Wir behalten die ESP in ihrer bisherigen Größe und erstellen an beliebiger Ste
 **Daten kopieren und Dateien anpassen**
 
 Wir öffnen ein Terminal und werden mit `su` zu ROOT.  
-Anschließend zeigt uns der `lsblk` Befehl für beide Partitionen den Typ Namen und die Typ GUID an.
+Anschließend zeigt uns der `lsblk` Befehl für beide Partitionen den Namen, Typ-Namen, und die Typ-GUID an.
 
 ~~~
 # lsblk -n -o NAME,PARTTYPENAME,PARTTYPE /dev/nvme0n1p1 /dev/nvme0n1p4
@@ -147,7 +151,7 @@ UUID=<uuid_der_xbootldr> /boot   ext4   defaults 0 2
 [...]
 ~~~
 
-Jetzt hängen wir die Partitionen ein und kopieren den Kernel mit Zubehör nach `/boot`. Dann erstellen wir noch das Verzeichnis für die Dateisystemtreiber der XBOOTLDR Partition.
+Jetzt hängen wir die Partitionen ein und kopieren den Kernel mit Zubehör nach `/boot`.
 
 ~~~
 # systemctl daemon-reload
@@ -158,23 +162,18 @@ Jetzt hängen wir die Partitionen ein und kopieren den Kernel mit Zubehör nach 
 # cp -a /grub/System.map-6.8.9-1-siduction-amd64 /boot/
 # cp -a /grub/config-6.8.9-1-siduction-amd64 /boot/
    # oder einfacher: cp -a /grub/*-6.8.9-1-siduction-amd64 /boot/
-# mkdir -p /efi/EFI/systemd/drivers/
 ~~~
-
-Zum Abschluss holen wir die Dateisystemtreiber von der Webseite [akeo.ie](https://efi.akeo.ie) und speichern sie im erstellten Verzeichnis unterhalb `/efi/`. Auf Ausführrechte achten.
 
 **Installation**
 
-Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit den Befehlen `ls -l /boot`, `lsblk` oder `cfdisk` überprüft, reicht eine Kommandozeile aus um die zwei benötigten Pakete unserem System hinzuzufügen und sd-boot nach ESP und XBOOTLDR zu installieren.
+Sind die Vorbereitungen abgeschlossen und wurde das Ergebnis z.B. mit den Befehlen `ls -l /boot`, `lsblk` oder `cfdisk` überprüft, reicht eine Kommandozeile aus um die benötigten Pakete unserem System hinzuzufügen und sd-boot nach ESP und XBOOTLDR zu installieren.
 
 ~~~
-# apt install systemd-boot-efi systemd-boot
+# apt install systemd-boot-efi systemd-boot systemd-boot-tools
 [...]
 Copied "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" to "/efi/EFI/systemd/systemd-bootx64.efi".
 Copied "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" to "/efi/EFI/BOOT/BOOTX64.EFI".
 Created "/boot/e5cc6ff820c1450c93a29d8723c78cd1".
-! Mount point '/efi' which backs the random seed file is world accessible, which is a security hole!
-! Random seed file '/efi/loader/random-seed' is world accessible, which is a security hole!
 Random seed file /efi/loader/random-seed successfully installed (32 bytes).
 Created EFI boot entry "Linux Boot Manager".
 ~~~
@@ -238,7 +237,7 @@ Von **mehreren OS** auf unterschiedlichen Partitionen wird nur dasjenige automat
                 Reboot Into Firmware Interface
 ~~~
 
-Sollte, aus welchen Gründen auch immer, ein Menüeintrag fehlen, kann die Generierung des Eintrags zu jeder Zeit erneut angestoßen werden. Es ist sicherzustellen, dass sich der Kernel, die vmlinuz und die config- Datei der entsprechenden Version im Verzeichnis `/boot/` befinden.  
+Sollte, aus welchen Gründen auch immer, ein Menüeintrag fehlen, können wir die Generierung des Eintrags zu jeder Zeit erneut angestoßen. Es ist sicherzustellen, dass sich der Kernel und die config- Datei der entsprechenden Version im Verzeichnis `/boot/` befinden.  
 Aus dem entsprechenden OS heraus erstellt der Befehl 
 
 ~~~
@@ -249,7 +248,7 @@ auch den gewünschten Menüeintrag.
 
 ### GRUB entfernen
 
-sd-boot kann zum jetzigen Zeitpunkt (08-2024) bei der Installation von siduction nicht als Standard Bootmanager ausgewählt werden. Sofern ausführliche Tests mit sd-boot erfolgreich verliefen, müssen wir GRUB aus unserem System entfernen um Fehler beim Update und Upgrade zu vermeiden.
+Sofern ausführliche Tests mit sd-boot erfolgreich verliefen, müssen wir GRUB aus unserem System entfernen um Fehler beim Update und Upgrade zu vermeiden.
 
 **Pakete**  
 
@@ -320,7 +319,6 @@ Das Paket *siduction-btrfs* ist nicht an einen bestimmten Bootmanager gebunden. 
 ### Weitere Informationen
 
 `man systemd-boot`  
-[boot_loader_specification (en)](https://uapi-group.org/specifications/specs/boot_loader_specification/)  
-[Dateisystem Treiber von akeo.ie](https://efi.akeo.ie)
+[boot_loader_specification (en)](https://uapi-group.org/specifications/specs/boot_loader_specification/)
 
-<div id="rev">Zuletzt bearbeitet: 2026-02-16</div>
+<div id="rev">Zuletzt bearbeitet: 2026-05-29</div>
