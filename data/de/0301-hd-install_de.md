@@ -140,6 +140,50 @@ Wir geben unser Passwort ein und wählen anschließend als Einhängepunkt das Wu
 
 Nach Beendigung der Partitionierung setzen wir die Installation mit dem Menüpunkt *"Benutzer"*, wie oben unter 7 beschrieben, fort.
 
+### Der cli-installer und fll-installer
+
+**Installation von siduction im Terminal oder auf TTY**
+
+Mit der Aufnahme von Calamares als graphisches Installationsprogramm verlor der fll-installer zunehmend an Bedeutung. Das führte dazu, dass der cli- und der fll-installer seit 2018 nahezu unverändert blieben. Da siduction auch weiterhin ein NOX Flavour bereitstellen möchte, bedurfte das Gespann cli- und fll-installer einer grundlegenden Überarbeitung mit der Integration aktueller Features.
+
+Die wichtigsten Änderungen:  
+- Aktualisierung veralteter Befehle, Abfragen und Dialoge.  
+- Nonfree Sourcen als Opt-in.  
+- Vollständige Unterstützung von UEFI GPT.  
+- Unterstützung des Btrfs Dateisystems mit dem Anlegen der bei siduction üblichen Subvolumen.  
+- Auswahl der Bootmanager systemd-boot und GRUB.  
+- Einheitliches Aussehen der Benutzerschnittstelle für alle Dialoge.  
+- Programmteile der graphischen Oberfläche wurden entfernt.  
+
+Zusammenfassend kann man sagen:
+
+*Auferstanden aus der Laichenhalle der veralteten fullstory Pakete.*
+
+Das besondere Highlight ist die Integration des Bootmanagers systemd-boot, der somit in allen Flavours bei der Erstinstallation bereit steht. Wer über ein einfaches Hardware Setup verfügt ist mit systemd-boot gut beraten.  
+Informationen hierzu bietet unsere Handbuchseite [systemd-boot](0717-systemd-boot_de.md#systemd-boot).
+
+Der *cli-installer* führt den Benutzer durch die Konfiguration, bietet sinnvolle Aktionen an, prüft Abhängigkeiten und Bedingungen und informiert über vorgenommene Einstellungen. Zu guter Letzt startet der fll-installer und bringt siduction auf die Festplatte.  
+Ein Abbruch des Programms ist zu jeder Zeit möglich.
+
+**cli-installer starten**
+
+Wie bereits erwähnt, steht der *cli-installer* in allen Flavours zur Verfügung.  
+Entweder in der graphischen Oberfläche in einem Terminal, oder nach einem Wechsel zu TTY. Dort ist folgender Aufruf auszuführen.
+
+Als *siducer*
+
+~~~
+$ sudo cli-installer
+~~~
+
+oder wenn mit dem Befehl **`su`** bereits root Rechte erlangt wurden
+
+~~~
+# cli-installer
+~~~
+
+Eine benutzerfreundliche ncurses-Oberfläche leitet durch die Dialoge des Programms, um alle für die Installation von siduction notwendigen Informationen zu erlangen.
+
 ### Benutzer hinzufügen
 
 Um neue Benutzer mit automatischer Übernahme der Gruppenberechtigungen hinzuzufügen, führt man folgenden Befehl als **root** aus:
@@ -160,4 +204,4 @@ So entfernt man einen Benutzer
 
 Mehr Informationen bieten die Manpages **`man adduser`** und **`man deluser`** .
 
-<div id="rev">Zuletzt bearbeitet: 2026-02-22</div>
+<div id="rev">Zuletzt bearbeitet: 2026-05-29</div>

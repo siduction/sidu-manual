@@ -24,30 +24,15 @@ The minimum requirements for installing the siduction variants are described on 
 With 15 GB hard disk space and 2 GB RAM you are currently on the safe side. When installing on a partition formatted with Btrfs, we advise 50 GBytes of disk space.  
 A swap partition should be created on PCs with 1 GByte RAM or less. More than 2 GByte swap is rarely required and only useful for suspend to disk and server systems.
 
-### Partitioning
+### Partitioning and file systems
 
-The partitioning of the drives depends on many factors:
-
-+ the chosen siduction variant
-+ size of the available drives and RAM
-+ single-boot or dual-boot with an already installed system (Windows, Linux, MAC)
-+ sharing of data for the installed systems
-
-Examples and sizes for different installation situations are described on the manual page [Partitioning](0310-part-size-examp_en.md#partitioning-of-installation-media).  
+The [Partitioning Installation Media](0310-part-size-examp_en.md#partitioning-of-installation-media) manual page includes several examples that take into account different hard drive sizes and offers suggestions for partitioning single-boot and dual-boot systems. In the section [File Systems for Partitions](0310-part-size-examp_en.md#file-systems-of-the-partitions), we describe which file systems are appropriate for the partitions in each situation.  
 We recommend leaving the `/home` directory on the root partition. The `/home` directory should be the place where individual configurations are stored, and only those. For all other private data, including `.ssh`, `.gnupg`, and the mail archives, a separate data partition should be created and linked to the `/home` directory if necessary. The advantages for data stability, data backup, and also in case of data recovery are almost immeasurable.  
 
 The partitioning can be done during installation or already in advance during the live session with the following programs:  
 [Gparted](0312-part-gparted_en.md#partitioning-with-gparted), a graphical user interface program for GTK desktops  
 KDE Partition Manager, another graphical user interface program for Qt desktops  
 [cfdisk](0314-part-cfdisk_en.md#partitioning-with-fdisk), a program for the terminal with a user-friendly ncurses interface. Suitable for UEFI hardware with GPT partition tables and for older hardware or smaller drives such as USB sticks and memory cards with BIOS and MSDOS partition tables.
-
-### File systems
-
-We recommend the **ext4** file system, which is used as the default file system on siduction. This applies to all partitions if only Linux operating systems are used.
-
-For a dual-boot installation with *Windows*, a separate data partition with the **NTFS** file system makes sense. Linux can read and write to it; on Windows it is the default file system.
-
-For a dual-boot installation with *MAC*, it also makes sense to have a separate data partition, but with the **HFS** or **HFS+** file system. Linux and MAC can have read and write access to it.
 
 ### Duplication to another computer
 
@@ -64,6 +49,7 @@ The text file can then be copied to the target systems `$HOME` directory and be 
 ~# apt install $(/home/username/installed.txt)
 ~~~
 
+If you want to replace an old siduction installation with a new one, using the old system's `installed.txt` file on the new system will most likely cause serious problems. It is better to compare an `installed-old.txt` file from the old system with an `installed-new.txt` file from the new system using *diff*. Then, install the desired packages on the new siduction installation.
 
 ### The Calamares installer
 
@@ -153,6 +139,50 @@ In the next step, the function *"Encrypt"* is selectable now.
 We enter our password and then select the root directory `/` as mount point.  
 After finishing the partitioning, we continue the installation with the menu item *"User"* as described above in step 7.
 
+### The cli-installer and fll-installer
+
+**Installing siduction via the terminal or TTY**
+
+With the inclusion of Calamares as a graphical installer, the fll-installer became increasingly obsolete. As a result, the cli-installer and the fll-installer have remained virtually unchanged since 2018. Since siduction intends to continue offering a NOX flavor, the cli- and fll-installer duo required a major overhaul with the integration of current features.
+
+Key changes:  
+- Updated outdated commands, prompts, and dialogs.  
+- Nonfree sources are now opt-in.  
+- Full support for UEFI GPT.  
+- Support for the Btrfs file system, including the creation of subvolumes as is standard with siduction.  
+- Choice of boot managers: systemd-boot and GRUB.  
+- Consistent user interface design across all dialogs.  
+- Certain components of the graphical user interface have been removed.  
+
+In summary:
+
+*Risen from the morgue of outdated fullstory packages.*
+
+A particular highlight is the integration of the systemd-boot boot manager, which is now available in all flavors during the initial installation. If you have a simple hardware setup, systemd-boot is a good choice.  
+For more information, see our [systemd-boot](0717-systemd-boot_en.md#systemd-boot) manual page.
+
+The *cli-installer* guides the user through the configuration process, suggests appropriate actions, checks dependencies and requirements, and provides information about the settings that have been configured. Finally, the fll-installer starts and installs siduction onto the hard drive.  
+You can cancel the program at any time.
+
+**Run cli-installer**
+
+As mentioned earlier, the *cli-installer* is available in all flavors.  
+It can be run either in the graphical interface, in a terminal, or after switching to a TTY. In that case, execute the following command.
+
+As *siducer*
+
+~~~
+$ sudo cli-installer
+~~~
+
+or if root privileges have already been obtained using the **`su`** command
+
+~~~
+# cli-installer
+~~~
+
+A user-friendly ncurses interface guides you through the program's dialogs to gather all the information needed to install siduction.
+
 ### Add user
 
 To add new users with automatic takeover of group permissions, run the following command as **root**:
@@ -171,11 +201,6 @@ To remove a user, enter:
 ~# deluser <username>
 ~~~
 
-More information:
+For more information, see the man pages **`man adduser`** and **`man deluser`** .
 
-~~~
-man adduser
-man deluser
-~~~
-
-<div id="rev">Last edited: 2026-02-22</div>
+<div id="rev">Last edited: 2026-05-29</div>
