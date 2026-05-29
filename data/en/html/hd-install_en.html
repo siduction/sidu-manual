@@ -39,8 +39,9 @@ id="toc-installation-on-hdd">Installation on HDD</a>
 <li><a href="#data-backup" id="toc-data-backup">Data backup</a></li>
 <li><a href="#installation-preparations"
 id="toc-installation-preparations">Installation preparations</a></li>
-<li><a href="#partitioning" id="toc-partitioning">Partitioning</a></li>
-<li><a href="#file-systems" id="toc-file-systems">File systems</a></li>
+<li><a href="#partitioning-and-file-systems"
+id="toc-partitioning-and-file-systems">Partitioning and file
+systems</a></li>
 <li><a href="#duplication-to-another-computer"
 id="toc-duplication-to-another-computer">Duplication to another
 computer</a></li>
@@ -48,6 +49,9 @@ computer</a></li>
 id="toc-the-calamares-installer">The Calamares installer</a></li>
 <li><a href="#encrypt-system" id="toc-encrypt-system">Encrypt
 system</a></li>
+<li><a href="#the-cli-installer-and-fll-installer"
+id="toc-the-cli-installer-and-fll-installer">The cli-installer and
+fll-installer</a></li>
 <li><a href="#add-user" id="toc-add-user">Add user</a></li>
 </ul></li>
 </ul>
@@ -99,18 +103,16 @@ GBytes of disk space.<br />
 A swap partition should be created on PCs with 1 GByte RAM or less. More
 than 2 GByte swap is rarely required and only useful for suspend to disk
 and server systems.</p>
-<h3 id="partitioning">Partitioning</h3>
-<p>The partitioning of the drives depends on many factors:</p>
-<ul>
-<li>the chosen siduction variant</li>
-<li>size of the available drives and RAM</li>
-<li>single-boot or dual-boot with an already installed system (Windows,
-Linux, MAC)</li>
-<li>sharing of data for the installed systems</li>
-</ul>
-<p>Examples and sizes for different installation situations are
-described on the manual page <a
-href="./part-size-examp_en.html#partitioning-of-installation-media">Partitioning</a>.<br />
+<h3 id="partitioning-and-file-systems">Partitioning and file
+systems</h3>
+<p>The <a
+href="./part-size-examp_en.html#partitioning-of-installation-media">Partitioning
+Installation Media</a> manual page includes several examples that take
+into account different hard drive sizes and offers suggestions for
+partitioning single-boot and dual-boot systems. In the section <a
+href="./part-size-examp_en.html#file-systems-of-the-partitions">File
+Systems for Partitions</a>, we describe which file systems are
+appropriate for the partitions in each situation.<br />
 We recommend leaving the <code>/home</code> directory on the root
 partition. The <code>/home</code> directory should be the place where
 individual configurations are stored, and only those. For all other
@@ -130,17 +132,6 @@ program for the terminal with a user-friendly ncurses interface.
 Suitable for UEFI hardware with GPT partition tables and for older
 hardware or smaller drives such as USB sticks and memory cards with BIOS
 and MSDOS partition tables.</p>
-<h3 id="file-systems">File systems</h3>
-<p>We recommend the <strong>ext4</strong> file system, which is used as
-the default file system on siduction. This applies to all partitions if
-only Linux operating systems are used.</p>
-<p>For a dual-boot installation with <em>Windows</em>, a separate data
-partition with the <strong>NTFS</strong> file system makes sense. Linux
-can read and write to it; on Windows it is the default file system.</p>
-<p>For a dual-boot installation with <em>MAC</em>, it also makes sense
-to have a separate data partition, but with the <strong>HFS</strong> or
-<strong>HFS+</strong> file system. Linux and MAC can have read and write
-access to it.</p>
 <h3 id="duplication-to-another-computer">Duplication to another
 computer</h3>
 <p>The following console command creates a list of installed software
@@ -154,6 +145,13 @@ The text file can then be copied to the target systems
 required program packages. You can install the complete package list
 via</p>
 <pre><code>~# apt install $(/home/username/installed.txt)</code></pre>
+<p>If you want to replace an old siduction installation with a new one,
+using the old system’s <code>installed.txt</code> file on the new system
+will most likely cause serious problems. It is better to compare an
+<code>installed-old.txt</code> file from the old system with an
+<code>installed-new.txt</code> file from the new system using
+<em>diff</em>. Then, install the desired packages on the new siduction
+installation.</p>
 <h3 id="the-calamares-installer">The Calamares installer</h3>
 <p>During the installation, the computer should preferably be connected
 to the Internet because Calamares uses the GeoIP service to determine
@@ -314,6 +312,52 @@ alt="calamares, manual partitioning encrypt 2" />
 <code>/</code> as mount point.<br />
 After finishing the partitioning, we continue the installation with the
 menu item <em>“User”</em> as described above in step 7.</p>
+<h3 id="the-cli-installer-and-fll-installer">The cli-installer and
+fll-installer</h3>
+<p><strong>Installing siduction via the terminal or TTY</strong></p>
+<p>With the inclusion of Calamares as a graphical installer, the
+fll-installer became increasingly obsolete. As a result, the
+cli-installer and the fll-installer have remained virtually unchanged
+since 2018. Since siduction intends to continue offering a NOX flavor,
+the cli- and fll-installer duo required a major overhaul with the
+integration of current features.</p>
+<p>Key changes:<br />
+- Updated outdated commands, prompts, and dialogs.<br />
+- Nonfree sources are now opt-in.<br />
+- Full support for UEFI GPT.<br />
+- Support for the Btrfs file system, including the creation of
+subvolumes as is standard with siduction.<br />
+- Choice of boot managers: systemd-boot and GRUB.<br />
+- Consistent user interface design across all dialogs.<br />
+- Certain components of the graphical user interface have been
+removed.</p>
+<p>In summary:</p>
+<p><em>Risen from the morgue of outdated fullstory packages.</em></p>
+<p>A particular highlight is the integration of the systemd-boot boot
+manager, which is now available in all flavors during the initial
+installation. If you have a simple hardware setup, systemd-boot is a
+good choice.<br />
+For more information, see our <a
+href="./systemd-boot_en.html#systemd-boot">systemd-boot</a> manual
+page.</p>
+<p>The <em>cli-installer</em> guides the user through the configuration
+process, suggests appropriate actions, checks dependencies and
+requirements, and provides information about the settings that have been
+configured. Finally, the fll-installer starts and installs siduction
+onto the hard drive.<br />
+You can cancel the program at any time.</p>
+<p><strong>Run cli-installer</strong></p>
+<p>As mentioned earlier, the <em>cli-installer</em> is available in all
+flavors.<br />
+It can be run either in the graphical interface, in a terminal, or after
+switching to a TTY. In that case, execute the following command.</p>
+<p>As <em>siducer</em></p>
+<pre><code>$ sudo cli-installer</code></pre>
+<p>or if root privileges have already been obtained using the
+<strong><code>su</code></strong> command</p>
+<pre><code># cli-installer</code></pre>
+<p>A user-friendly ncurses interface guides you through the program’s
+dialogs to gather all the information needed to install siduction.</p>
 <h3 id="add-user">Add user</h3>
 <p>To add new users with automatic takeover of group permissions, run
 the following command as <strong>root</strong>:</p>
@@ -325,11 +369,11 @@ asking to enter the password twice.</p>
 added by yourself.</p>
 <p>To remove a user, enter:</p>
 <pre><code>~# deluser &lt;username&gt;</code></pre>
-<p>More information:</p>
-<pre><code>man adduser
-man deluser</code></pre>
+<p>For more information, see the man pages
+<strong><code>man adduser</code></strong> and
+<strong><code>man deluser</code></strong> .</p>
 <div id="rev">
-Last edited: 2026-02-22
+Last edited: 2026-05-29
 </div>
 </body>
 </html>

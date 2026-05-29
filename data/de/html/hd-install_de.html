@@ -51,6 +51,9 @@ id="toc-das-installationsprogramm-calamares">Das Installationsprogramm
 Calamares</a></li>
 <li><a href="#system-verschl&uuml;sseln" id="toc-system-verschl&uuml;sseln">System
 verschl&uuml;sseln</a></li>
+<li><a href="#der-cli-installer-und-fll-installer"
+id="toc-der-cli-installer-und-fll-installer">Der cli-installer und
+fll-installer</a></li>
 <li><a href="#benutzer-hinzuf&uuml;gen" id="toc-benutzer-hinzuf&uuml;gen">Benutzer
 hinzuf&uuml;gen</a></li>
 </ul></li>
@@ -328,6 +331,54 @@ verschl&uuml;sseln 2</figcaption>
 <p>Nach Beendigung der Partitionierung setzen wir die Installation mit
 dem Men&uuml;punkt <em>“Benutzer”</em>, wie oben unter 7 beschrieben,
 fort.</p>
+<h3 id="der-cli-installer-und-fll-installer">Der cli-installer und
+fll-installer</h3>
+<p><strong>Installation von siduction im Terminal oder auf
+TTY</strong></p>
+<p>Mit der Aufnahme von Calamares als graphisches Installationsprogramm
+verlor der fll-installer zunehmend an Bedeutung. Das f&uuml;hrte dazu, dass
+der cli- und der fll-installer seit 2018 nahezu unver&auml;ndert blieben. Da
+siduction auch weiterhin ein NOX Flavour bereitstellen m&ouml;chte, bedurfte
+das Gespann cli- und fll-installer einer grundlegenden &Uuml;berarbeitung mit
+der Integration aktueller Features.</p>
+<p>Die wichtigsten &Auml;nderungen:<br />
+- Aktualisierung veralteter Befehle, Abfragen und Dialoge.<br />
+- Nonfree Sourcen als Opt-in.<br />
+- Vollst&auml;ndige Unterst&uuml;tzung von UEFI GPT.<br />
+- Unterst&uuml;tzung des Btrfs Dateisystems mit dem Anlegen der bei siduction
+&uuml;blichen Subvolumen.<br />
+- Auswahl der Bootmanager systemd-boot und GRUB.<br />
+- Einheitliches Aussehen der Benutzerschnittstelle f&uuml;r alle
+Dialoge.<br />
+- Programmteile der graphischen Oberfl&auml;che wurden entfernt.</p>
+<p>Zusammenfassend kann man sagen:</p>
+<p><em>Auferstanden aus der Laichenhalle der veralteten fullstory
+Pakete.</em></p>
+<p>Das besondere Highlight ist die Integration des Bootmanagers
+systemd-boot, der somit in allen Flavours bei der Erstinstallation
+bereit steht. Wer &uuml;ber ein einfaches Hardware Setup verf&uuml;gt ist mit
+systemd-boot gut beraten.<br />
+Informationen hierzu bietet unsere Handbuchseite <a
+href="./systemd-boot_de.html#systemd-boot">systemd-boot</a>.</p>
+<p>Der <em>cli-installer</em> f&uuml;hrt den Benutzer durch die
+Konfiguration, bietet sinnvolle Aktionen an, pr&uuml;ft Abh&auml;ngigkeiten und
+Bedingungen und informiert &uuml;ber vorgenommene Einstellungen. Zu guter
+Letzt startet der fll-installer und bringt siduction auf die
+Festplatte.<br />
+Ein Abbruch des Programms ist zu jeder Zeit m&ouml;glich.</p>
+<p><strong>cli-installer starten</strong></p>
+<p>Wie bereits erw&auml;hnt, steht der <em>cli-installer</em> in allen
+Flavours zur Verf&uuml;gung.<br />
+Entweder in der graphischen Oberfl&auml;che in einem Terminal, oder nach
+einem Wechsel zu TTY. Dort ist folgender Aufruf auszuf&uuml;hren.</p>
+<p>Als <em>siducer</em></p>
+<pre><code>$ sudo cli-installer</code></pre>
+<p>oder wenn mit dem Befehl <strong><code>su</code></strong> bereits
+root Rechte erlangt wurden</p>
+<pre><code># cli-installer</code></pre>
+<p>Eine benutzerfreundliche ncurses-Oberfl&auml;che leitet durch die Dialoge
+des Programms, um alle f&uuml;r die Installation von siduction notwendigen
+Informationen zu erlangen.</p>
 <h3 id="benutzer-hinzuf&uuml;gen">Benutzer hinzuf&uuml;gen</h3>
 <p>Um neue Benutzer mit automatischer &Uuml;bernahme der
 Gruppenberechtigungen hinzuzuf&uuml;gen, f&uuml;hrt man folgenden Befehl als
@@ -344,7 +395,7 @@ m&uuml;ssen selbst hinzugef&uuml;gt werden.</p>
 <strong><code>man adduser</code></strong> und
 <strong><code>man deluser</code></strong> .</p>
 <div id="rev">
-Zuletzt bearbeitet: 2026-02-22
+Zuletzt bearbeitet: 2026-05-29
 </div>
 </body>
 </html>
