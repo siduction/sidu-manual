@@ -2,7 +2,7 @@
 
 ## Credits
 
-### Credits für siduction 2024.1.0
+### Credits für siduction 2026.1.0
 
 **Core Team:**
 
@@ -26,6 +26,9 @@ se7en
 davydych  
 tuxnix  
 tobilinuxer
+
+**Server & Hosting**
+sla
 
 ### Credits für das Handbuch
 
@@ -66,4 +69,4 @@ Wir möchten uns bei euch, bei allen Testern und all den Menschen bedanken, die 
 Im Namen des siduction-Teams:  
 Ferdinand Thommes
 
-<div id="rev">Zuletzt bearbeitet: 2024-12-23</div>
+<div id="rev">Zuletzt bearbeitet: 2026-07-08</div>
