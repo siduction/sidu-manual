@@ -33,17 +33,20 @@ a:hover         {color: #FFF; background-color: #FF6600; transition: all .25s ea
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#release-notes-2024.1.0-shine-on"
-id="toc-release-notes-2024.1.0-shine-on">Release Notes 2024.1.0 Shine on
-…</a>
+<li><a href="#release-notes-2026.1.0-big-crime"
+id="toc-release-notes-2026.1.0-big-crime">Release Notes 2026.1.0 Big
+Crime</a>
 <ul>
-<li><a href="#was-erwartet-euch-bei-siduction-2024.1.0"
-id="toc-was-erwartet-euch-bei-siduction-2024.1.0">Was erwartet euch bei
-siduction 2024.1.0</a></li>
+<li><a href="#was-erwartet-euch-bei-siduction-2026.1.0"
+id="toc-was-erwartet-euch-bei-siduction-2026.1.0">Was erwartet euch bei
+siduction 2026.1.0</a></li>
 <li><a href="#siduction-editionen"
 id="toc-siduction-editionen">siduction Editionen</a></li>
-<li><a href="#siduction-btrfs-verbessert"
-id="toc-siduction-btrfs-verbessert">siduction-btrfs verbessert</a></li>
+<li><a href="#cli-installer"
+id="toc-cli-installer">cli-installer</a></li>
+<li><a href="#btrfs-dateisystem"
+id="toc-btrfs-dateisystem">Btrfs-Dateisystem</a></li>
+<li><a href="#onoff" id="toc-onoff">onoff</a></li>
 <li><a href="#non-free-and-contrib"
 id="toc-non-free-and-contrib">Non-free and Contrib</a></li>
 <li><a href="#installationshinweise-und-bekannte-probleme"
@@ -52,128 +55,153 @@ und bekannte Probleme</a></li>
 </ul></li>
 </ul>
 </nav>
-<h2 id="release-notes-2024.1.0-shine-on">Release Notes 2024.1.0 Shine on
-…</h2>
-<p>Das siduction-Team freut sich, euch ein neues Release vorzustellen.
-Seit dem letzten Release ist einige Zeit vergangen. Der Grund daf&uuml;r ist,
-dass wir auf KDE Plasma 6 in Debian Unstable gewartet haben. Plasma 6
-erschien zwar bereits Ende Februar 2024, die Freigabe in Unstable wurde
-aber durch die <a
-href="https://wiki.debian.org/ReleaseGoals/64bit-time">t64-Transition
-in  Debian</a>, an die ihr euch bestimmt noch erinnert, um rund vier
-Monate verz&ouml;gert. Nun ist es aber so weit und seit rund zwei Wochen ist
-Plasma 6.2 in Unstable verf&uuml;gbar.<br />
-User und Passwort f&uuml;r die Live-Session lauten siducer/live</p>
-<h3 id="was-erwartet-euch-bei-siduction-2024.1.0">Was erwartet euch bei
-siduction 2024.1.0</h3>
-<p>Zun&auml;chst ein paar Worte zum neuen Artwork von siduction 2024.1.0 mit
-dem Titel »Shine on…«. Das bekannte Album von Pink Floyd stand hier
-Pate. Und wenn ihr jetzt einen Ohrwurm habt… Gern geschehen :)<br />
-Als Grundlage dient das Wallpaper <a
-href="https://invent.kde.org/plasma/breeze/-/commit/aec3e3d93eb79042c6dbf14c9c1f6fffd2c3a86d">Nexus</a>
-von Krystian Zajdel. Wir haben es f&uuml;r siduction angepasst und huldigen
-damit den Entwicklern von KDE, die in diesem Jahr wieder enorm viel
-Arbeit in das Projekt gesteckt haben und es f&uuml;r uns weiterhin zur besten
-Desktop-Umgebung machen. Wenn ihr das auch so seht, denkt bitte &uuml;ber
-eine <a target="_blank" href="https://kde.org/de/donate/">Spende oder F&ouml;rderung von
-KDE</a> nach.</p>
+<h2 id="release-notes-2026.1.0-big-crime">Release Notes 2026.1.0 Big
+Crime</h2>
+<p>Das siduction-Team freut sich, euch endlich wieder ein neues Release
+vorzustellen. Seit dem letzten Release ist mehr Zeit vergangen als
+geplant.</p>
+<p>Eigentlich sollte Big Crime traditionsgem&auml;&szlig; zwischen den Jahren
+erscheinen. Fehlende Zeit bei den Beteiligten f&uuml;hrte dazu, dass die
+Ver&ouml;ffentlichung erst jetzt erscheint. Die aktuellen Abbilder stehen <a
+href="https://siduction.org/installation-media/">zum Download</a>
+bereit.</p>
+<h3 id="was-erwartet-euch-bei-siduction-2026.1.0">Was erwartet euch bei
+siduction 2026.1.0</h3>
+<p>Zun&auml;chst ein paar Worte zum neuen Artwork von siduction 2026.1.0 mit
+dem Titel »Big Crime«: Als Vorlage dient der gleichnamige Song von Neil
+Young, in dem er die Politik der derzeitigen US-Regierung scharf
+kritisiert. Das Wallpaper wurde mit Gemini-KI erzeugt.</p>
 <h3 id="siduction-editionen">siduction Editionen</h3>
-<p>Die Flavours, die wir f&uuml;r siduction 2024.1.0 anbieten, sind KDE
-Plasma 6.2.4.1, LXQt 2.1.0-1, Xfce 4.20, Xorg und noX. GNOME, MATE und
-Cinnamon haben es wieder nicht geschafft, da es keinen Betreuer
-innerhalb von siduction daf&uuml;r gibt. Bei Interesse meldet euch bitte.
-Vielleicht kommen sie eines Tages zur&uuml;ck oder auch nicht. Nat&uuml;rlich sind
-sie weiterhin aus dem Repository installierbar.</p>
-<p>Die ver&ouml;ffentlichten Images von siduction 2024.1.0 sind ein
+<p>Die Varianten, die wir mit siduction 2026.1.0 anbieten, sind KDE
+Plasma 6.7.4, Xfce 4.20, Xorg und NOX. GNOME, MATE und Cinnamon haben es
+leider nicht in die Auswahl geschafft, da es keinen Betreuer innerhalb
+von siduction daf&uuml;r gibt. Wenn ihr Interesse habt oder jemanden mit
+Interesse kennt, meldet euch bitte. Vielleicht kommen sie eines Tages
+zur&uuml;ck. Nat&uuml;rlich sind sie weiterhin aus dem Repository
+installierbar.</p>
+<p>LXDE ist derzeit nicht in einem Release-f&auml;higen Zustand. Wir werden
+es nachliefern, wenn es wieder f&uuml;r eine Ver&ouml;ffentlichung bereit
+ist.<br />
+Die ver&ouml;ffentlichten Images von siduction 2026.1.0 sind ein
 Schnappschuss von Debian Unstable, das auch den Namen Sid tr&auml;gt, vom
-23.12.2024. Sie sind mit einigen n&uuml;tzlichen Paketen und Skripten, einem
-auf Calamares basierenden Installer und einer angepassten Version des
-Linux-Kernels 6.12.6 angereichert, w&auml;hrend systemd bei 257.1-3
-steht.</p>
-<p><strong>KDE Plasma 6</strong></p>
-<p>Plasma 6 ist mittlerweile fast zu 100 % in Unstable und Testing
-angekommen und wird somit auch f&uuml;r Debian 13 »Trixie« verf&uuml;gbar sein.
-Obwohl Wayland der Standard-Sitzungstyp bei Plasma 6 ist, haben wir uns
-f&uuml;r X11 als Standard entschieden, weil Calamares unter Wayland derzeit
-das gew&uuml;nschte Tastaturlayout nicht &uuml;bernimmt. Das k&ouml;nnte fatale
-Auswirkungen bei verschl&uuml;sselten Installationen haben. Nat&uuml;rlich k&ouml;nnt
-ihr im SDDM jederzeit zu Wayland wechseln. Als Bestandsanwender habt ihr
-ja vermutlich bereits auf Plasma 6 aktualisiert, jetzt steht die
-aktuelle Plasma-Generation auch f&uuml;r Neuinstallationen bereit.</p>
-<p>Bekannte Fehler: Dolphin kann derzeit &uuml;ber smb:// keine Verbindung
-aufbauen. Als Alternative bietet sich &uuml;bergangsweise sftp an. Der Fehler
-liegt in dem Paket kio-extras.</p>
-<p><strong>Xfce 4.20</strong></p>
-<p>Gerade noch so hat es das am 15. Dezember ver&ouml;ffentlichte <a
+12.10.2026. Sie sind mit einigen n&uuml;tzlichen Paketen und Skripten, einem
+auf Calamares basierenden Installer sowie dem stark &uuml;berarbeiteten
+CLI-Installer und einer angepassten Version des Linux-Kernels 7.2.10
+angereichert, w&auml;hrend systemd bei v262-1 steht.</p>
+<ul>
+<li><p><strong>KDE Plasma 6.7.4</strong><br />
+Wir haben mit der Ver&ouml;ffentlichung von siduction 2026.1.0 »Big Crime«
+schlussendlich auf Plasma 6.7 gewartet. Diese neue Hauptversion bildet
+einen Einschnitt insofern, als es die letzte Hauptversion von KDE Plasma
+ist, die noch eine X11-Sitzung mitbringt. Ab Plasma 6.8, das am 14.
+Oktober erscheint, ist Wayland der alleinige Standard.<br />
+Anwender, die dann noch Probleme mit einzelnen Anwendungen unter Wayland
+haben, k&ouml;nnen auf Xfce ausweichen, das bisher standardm&auml;&szlig;ig noch nicht
+auf Wayland setzt.<br />
+Auf GitHub wird derzeit ein Fork namens <a
+href="https://github.com/Sonic-DE">SonicDE</a> entwickelt, der bereits
+jetzt in Testing und Unstable installierbar ist, den wir aber noch nicht
+ausgiebig getestet haben. Wenn ihr bereits Erfahrungen damit habt, k&ouml;nnt
+ihr diese gerne bei uns im Forum posten.</p></li>
+<li><p><strong>Xfce 4.20</strong><br />
+Xfce bleibt seinem langsamen Turnus treu und steht, wie beim letzten
+Release, immer noch bei <a
 href="https://linuxnews.de/xfce-4-20-wayland-unterstuetzung-und-noch-viel-mehr/">Xfce
-4.20</a> nach Unstable und somit in unser neues Release geschafft. Die
-neue Ver&ouml;ffentlichung von Xfce konzentriert sich unter anderem auf die
-initiale, noch experimentelle Bereitstellung von Wayland. &Uuml;berdies
+4.20</a>. Es bietet derzeit eine noch experimentelle Implementierung von
+Wayland, die seit der Ver&ouml;ffentlichung weiter ausgebaut wurde. &Uuml;berdies
 erhielt unter anderem der Dateimanager Thunar wesentliche
-Verbesserungen.</p>
-<p>Bekannte Fehler: Leider ist die Implementierung von Wayland derzeit
-so experimentell, dass die Sitzung erst gar nicht startet. Wir haben
-dementsprechend Wayland blockiert. Wenn dieser Fehler behoben wird,
-werden wir dies in einem Punkt-Release bald wieder freischalten.</p>
-<p><strong>LXQt 2.1</strong></p>
-<p>LXQt ist der leichtgewichtige Bruder von KDE Plasma. Der seit zehn
-Jahren entwickelte Desktop bietet in <a
-href="https://linuxnews.de/lxqt-2-1-0-unterstuetzt-sieben-wayland-compositoren/">Version
-2.1.0</a> eine nutzbare, aber ebenfalls noch als experimentell
-eingestufte Wayland-Sitzung.</p>
-<h3 id="siduction-btrfs-verbessert">siduction-btrfs verbessert</h3>
-<p>Bei Verwendung des Btrfs Dateisystems mit siduction erm&ouml;glichen wir
+Verbesserungen.</p></li>
+<li><p><strong>Xorg</strong><br />
+Xorg bietet wie gehabt eine M&ouml;glichkeit, das System basierend auf einem
+vorinstallierten X-Server selbst aufzubauen. Das gilt jetzt noch f&uuml;r
+alle ausgelieferten Desktop-Umgebungen, wird aber ab Plasma 6.8 mit KDE
+und LXQt nicht mehr funktionieren. Als Fenstermanager dient Fluxbox, ein
+extrem schneller und speicherschonender Fenstermanager f&uuml;r das X Window
+System. Somit eignet sich Xorg auch als Ausgangspunkt f&uuml;r Anwender die
+(noch) nicht mit Wayland arbeiten k&ouml;nnen oder wollen.</p></li>
+<li><p><strong>NOX</strong><br />
+Nox unterscheidet sich von Xorg durch die Abwesenheit eines X-Servers.
+Mit dem &uuml;berarbeiteten cli-installer (siehe unten) ist die Installation
+auch in ein aktuelles UEFI GPT System m&ouml;glich.</p></li>
+</ul>
+<h3 id="cli-installer">cli-installer</h3>
+<p>F&uuml;r siduction 2026.1.0 wurde der cli-installer komplett modernisiert.
+Er ist in allen Flavours enthalten.</p>
+<p>Das besondere Highlight ist der integrierte Bootmanager systemd-boot,
+der somit in allen Flavours zur Installation bereit steht. Wer &uuml;ber ein
+einfaches Hardware Setup verf&uuml;gt ist mit systemd-boot gut beraten.</p>
+<p>Mit der Aufnahme von Calamares als grafisches Installationsprogramm
+verlor der zugrundeliegende fll-installer zunehmend an Bedeutung. Das
+f&uuml;hrte dazu, dass der cli- und der fll-installer seit 2018 nahezu
+unver&auml;ndert blieben. Da siduction auch weiterhin ein NOX Flavour
+bereitstellen m&ouml;chte, bedurfte das Gespann cli- und fll-installer einer
+grundlegenden &Uuml;berarbeitung mit der Integration aktueller
+Features.<br />
+Zum Verst&auml;ndnis: W&auml;hrend der <em>cli-installer</em> die
+Benutzeroberfl&auml;che f&uuml;r den Nutzer bietet, ist der <em>fll-installer</em>
+das eigentliche Werkzeug im Hintergrund, das die Daten auf die
+Festplatte schreibt.<br />
+Der &uuml;berarbeitete cli-installer f&uuml;hrt den Benutzer durch die
+Konfiguration, bietet sinnvolle Aktionen an, pr&uuml;ft Abh&auml;ngigkeiten und
+Bedingungen und informiert &uuml;ber vorgenommene Einstellungen. Ein Abbruch
+des Programms ist zu jeder Zeit m&ouml;glich.</p>
+<p><strong>Die wichtigsten &Auml;nderungen:</strong><br />
++ Aktualisierung veralteter Befehle, Abfragen und Dialoge.<br />
++ Nonfree-Sourcen als Opt-in.<br />
++ Vollst&auml;ndige Unterst&uuml;tzung von UEFI GPT.<br />
++ Unterst&uuml;tzung des Btrfs Dateisystems mit dem Anlegen der bei siduction
+&uuml;blichen Subvolumen.<br />
++ Auswahl zwischen den Bootmanagern systemd-boot und GRUB.<br />
++ Einheitliches Aussehen der Benutzerschnittstelle f&uuml;r alle
+Dialoge.<br />
++ Programmteile der grafischen Oberfl&auml;che wurden entfernt.</p>
+<h3 id="btrfs-dateisystem">Btrfs-Dateisystem</h3>
+<p>Bei Verwendung des Btrfs-Dateisystems mit siduction erm&ouml;glichen wir
 es, eure Snapshots mit dem bei SUSE entwickelten Tool <a
 href="https://documentation.suse.com/de-de/sles/12-SP5/html/SLES-all/cha-snapper.html">Snapper</a>
 zu verwalten, dem im <a
 href="https://manual.siduction.org/index_de.html">siduction Handbuch</a>
 unter <em>Systemadministration → Btrfs und Snapper</em> ein eigenes
-Kapitel gewidmet ist.</p>
+Kapitel gewidmet ist. Neu hinzugekommen ist das Programm <em>Btrfs
+Assistant</em>, welches den Benutzern in den graphischen Oberfl&auml;chen zur
+Verf&uuml;gung steht und <em>snapper-gui</em> ersetzt.</p>
+<p><strong>Auszug aus der Dokumentation (info-md) von
+siduction-btrfs:</strong></p>
 <p>siduction-btrfs kann auf Systemen mit MBR- und GPT-Partitionstabellen
-verwendet werden, mit oder ohne separate /boot-Partition.<br />
-Seit der Version 0.3.0 verwendet siduction-btrfs das
+verwendet werden, mit oder ohne separate /boot-Partition.</p>
+<p>Seit der Version 0.3.0 verwendet siduction-btrfs das
 Snapper-Plugin-Verzeichnis.</p>
-<p><em>Mit dem Bootmanager GRUB</em><br />
+<p><em>Bei Verwendung des Bootmanagers GRUB</em><br />
 Nach einem Rollback wird im Rollbackziel mittels chroot die Datei
-<em>/boot/grub/grub.cfg</em> neu erstellt und anschlie&szlig;end wird aus dem
-Rollbackziel heraus GRUB neu installiert. Dadurch gelangt der User mit
-einem einfachen Reboot direkt in das Rollbackziel. Alle anderen
+<em>/boot/grub/grub.cfg</em> neu erstellt und anschlie&szlig;end aus dem
+Rollbackziel heraus GRUB neu installiert. Dadurch gelangt der Benutzer
+mit einem einfachen Reboot direkt in das Rollbackziel. Alle anderen
 Subvolumen, auch das zuvor verwendete, sind &uuml;ber das Untermen&uuml;
 <em>siduction snapshots</em> erreichbar.<br />
-Wird bei Software Installation oder Upgrade die Datei
+Wird bei Software-Installation oder Upgrade die Datei
 <em>/boot/grub/grub.cfg</em> aktualisiert, erweitert das Skript
 <em>grub-menu-title</em> die Men&uuml;zeile des Standardbooteintrages um das
 Flavor und das Subvolumen.</p>
-<p><em>Mit dem Bootmanager systemd-boot</em><br />
+<p><em>Bei Verwendung des Bootmanagers systemd-boot</em><br />
 Nach einem Rollback erstellt das Skript <em>rollback-sd-boot</em> die
 Booteintr&auml;ge. Dabei ber&uuml;cksichtigt es alle im Rollbackziel enthaltenen
-Kernel. Der Standardbooteintrag wird auf das Standardsubvolumen
-gesetzt.<br />
-Wird ein Subvolumen gel&ouml;scht, f&uuml;r das Booteintr&auml;ge bestanden, werden
+Kernel. Der Standardbooteintrag wird auf das Rollbackziel, das jetzt das
+Standardsubvolumen ist, gesetzt.<br />
+Wird ein Subvolumen gel&ouml;scht f&uuml;r das Booteintr&auml;ge bestanden, werden
 diese entfernt.</p>
 <p><em>Snapper Snapshot Beschreibung</em><br />
 Im Anschluss an eine APT Aktion &auml;ndert das Skript
 <em>snapshot-description</em> die von Snapper angezeigte Beschreibung
 (apt) zu einem aussagekr&auml;ftigeren Text.</p>
-<p><strong>Das Changelog der &Auml;nderungen:</strong></p>
-<ul>
-<li>siduction-btrfs (0.2.0) unstable; urgency=medium
-<ul>
-<li>Unterst&uuml;tzung f&uuml;r systemd-boot hinzugef&uuml;gt.</li>
-<li>Installationsabh&auml;ngikeiten zu grub-common und grub-btrfs
-entfernt.<br />
-Beides erm&ouml;glicht den vollst&auml;ndigen Wechsel von GRUB zu
-systemd-boot.</li>
-<li>Verbesserte Beschreibung von Schnappsch&uuml;ssen im Snapper.</li>
-</ul></li>
-<li>siduction-btrfs (0.3.0-1) unstable; urgency=medium
-<ul>
-<li>Umgeschrieben mit dem Ziel, das Snapper-Plugin-Verzeichnis zu
-verwenden.</li>
-<li>Unterst&uuml;tzung f&uuml;r eine Boot-Partition bei Verwendung von GRUB
-hinzugef&uuml;gt.</li>
-</ul></li>
-</ul>
+<h3 id="onoff">onoff</h3>
+<p>Dieses kleine Skript ist ein Ersatz f&uuml;r den entfernten Befehl
+<em>init</em>. <strong>onoff</strong> stellt die durch systemd 258~rc1-1
+entfernte Funktionalit&auml;t von <code>init 0</code> bis <code>init 6</code>
+f&uuml;r den Benutzer in einem laufenden System wieder zur Verf&uuml;gung. Um in
+einen anderen Systemzustand zu wechseln, gen&uuml;gt es mit Root-Rechten den
+Befehl <code>onoff</code>, gefolgt von der Ziffer f&uuml;r den gew&uuml;nschten
+Systemzustand, im Terminal einzugeben. Die langen systemd-Befehle kann
+sich der Benutzer sparen und die gewohnten Ziffern verwenden.</p>
 <h3 id="non-free-and-contrib">Non-free and Contrib</h3>
 <p>Die folgenden non-free und contrib Pakete sind standardm&auml;&szlig;ig
 installiert:</p>
@@ -208,6 +236,7 @@ adapters</li>
 wireless network</li>
 <li>firmware-zd1211 – binary firmware for the zd1211rw wireless
 driver</li>
+<li>firmware-sof-signed - Intel audio firmware</li>
 <li>intel-microcode – Processor microcode firmware for Intel CPUs</li>
 </ul>
 <p><strong>Contrib:</strong></p>
@@ -219,26 +248,26 @@ driver</li>
 <li>iucode-tool – Intel processor microcode</li>
 </ul>
 <p><strong>Non-Free Inhalte entfernen</strong></p>
-<p>Momentan bietet der Installer keine M&ouml;glichkeit, Pakete abzuw&auml;hlen,
-die nicht mit den DFSG, den Debian-Richtlinien f&uuml;r Freie Software,
-&uuml;bereinstimmen. Das bedeutet, dass Pakete wie etwa unfreie Firmware
-standardm&auml;&szlig;ig auf dem System installiert werden. Der Befehl vrms wird
-diese Pakete f&uuml;r dich auflisten. Du kannst nicht erw&uuml;nschte Pakete
-manuell deinstallieren oder sie alle entfernen, indem du vor oder nach
-der Installation apt purge $(vrms -s) eingibst. Andernfalls kann sp&auml;ter
-unser Skript remove-nonfree dies f&uuml;r dich tun.</p>
+<p>Wer sich bei der Installation daf&uuml;r entschieden hat, auch unfreie
+Software zu installieren, das aber sp&auml;ter &auml;ndern m&ouml;chte, l&auml;sst sich die
+unfreie Software in der Installation mit dem Befehl <em>vrms</em>
+(Virtual Richard Stallman) anzeigen. Du kannst nicht erw&uuml;nschte Pakete
+manuell deinstallieren oder mit dem Befehl
+<code>apt purge \$(vrms -s)</code> alle auf einmal inklusive
+Konfiguration entfernen. Unser Skript <em>remove-nonfree</em> f&uuml;hrt zum
+gleichen Ergebnis.</p>
 <h3
 id="installationshinweise-und-bekannte-probleme">Installationshinweise
 und bekannte Probleme</h3>
 <p>Wenn ihr eine bestehende Home-Partition (oder eine andere
 Datenpartition) wiederverwenden m&ouml;chtet, solltet ihr dies nach der
-Installation und nicht im Calamares-Installer tun.<br />
-Bei einigen Intel-Grafikprozessoren auf einigen Ger&auml;ten kann es
-vorkommen, dass das System kurz nach dem Booten in Live eingefroren ist.
-Um dies zu beheben, m&uuml;sst ihr den Kernel-Parameter intel_iommu=igfx_off
-setzen, bevor ihr erneut bootet.</p>
+Installation und nicht im Calamares-Installer tun. Bei einigen
+Intel-Grafikprozessoren auf einigen Ger&auml;ten kann es vorkommen, dass das
+System kurz nach dem Booten in Live eingefroren ist. Um dies zu beheben,
+m&uuml;sst ihr den Kernel-Parameter <code>intel_iommu=igfx_off</code> setzen,
+bevor ihr erneut bootet.</p>
 <div id="rev">
-Zuletzt bearbeitet: 2024-12-23
+Zuletzt bearbeitet: 2026-10-15
 </div>
 </body>
 </html>
