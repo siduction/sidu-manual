@@ -8,9 +8,13 @@
 
 Torsten Wohlfarth (towo)  
 Hendrik Lehmbruch (hendrikL)  
-Ferdinand Thommes (devil)  
+Axel Konrad (akli)  
 Vinzenz Vietzke (vinzv)  
-Axel Konrad (akli)
+Ferdinand Thommes (devil)
+
+**Server & Hosting**
+
+Stefan (sla)
 
 **Früher haben beigetragen:**
 
@@ -26,9 +30,6 @@ se7en
 davydych  
 tuxnix  
 tobilinuxer
-
-**Server & Hosting**
-sla
 
 ### Credits für das Handbuch
 
@@ -69,4 +70,4 @@ Wir möchten uns bei euch, bei allen Testern und all den Menschen bedanken, die 
 Im Namen des siduction-Teams:  
 Ferdinand Thommes
 
-<div id="rev">Zuletzt bearbeitet: 2026-07-08</div>
+<div id="rev">Zuletzt bearbeitet: 2026-10-15</div>

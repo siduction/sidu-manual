@@ -8,9 +8,13 @@
 
 Torsten Wohlfarth (towo)  
 Hendrik Lehmbruch (hendrikL)  
-Ferdinand Thommes (devil)  
+Axel Konrad (akli)  
 Vincent Vietzke (vinzv)  
-Axel Konrad (akli)
+Ferdinand Thommes (devil)
+
+**Server & Hosting**
+
+Stefan (sla)
 
 **Past contributors:**
 
@@ -26,9 +30,6 @@ se7en
 davydych  
 tuxnix  
 tobilinuxer
-
-**Server & Hosting**
-sla
 
 ## Credits for the manual
 
@@ -69,4 +70,4 @@ We would like to thank you, all the testers and all the people who have supporte
 On behalf of the siduction team:  
 Ferdinand Thommes
 
-<div id="rev">Last edited: 2026-07-08</div>
+<div id="rev">Last edited: 2026-10-15</div>

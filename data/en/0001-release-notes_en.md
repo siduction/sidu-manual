@@ -12,34 +12,35 @@ First, a few words about the new artwork for siduction 2026.1.0, titled “Big C
 
 ### siduction Editions
 
-The flavors we offer for siduction 2026.1.0 are KDE Plasma 6.7, LXQt 2.3.0, Xfce 4.20, Xorg, and NOX. GNOME, MATE, and Cinnamon didn’t make the cut again, as there is no maintainer for them within siduction. If you’re interested, please get in touch. Maybe they’ll make a comeback someday. Of course, they can still be installed from the repository.  
-The released images of siduction 2026.1.0 are a snapshot of Debian Unstable—also known as Sid—from July xx, 2026. They include several useful packages and scripts, a Calamares-based installer, the revised cli-installer, and a customized version of the Linux kernel 7.x.x, while systemd is at version v261~rc3-1.
+The editions we offer with siduction 2026.1.0 are KDE Plasma 6.7.4, Xfce 4.20, Xorg, and NOX. Unfortunately, GNOME, MATE, and Cinnamon did not make it into the selection because there are no maintainers for them within siduction. If you are interested or know someone who might be, please get in touch. Perhaps they will return one day. Of course, they can still be installed from the repository.
 
-+ **KDE Plasma 6.7**  
-  We ultimately decided to wait for Plasma 6.7 before releasing this version. This new major release marks a turning point in that it is the last major version of KDE Plasma to still offer an X11 session. With Plasma 6.8, scheduled for release in early 2027, Wayland will be the sole standard.  
-  Users who are still experiencing issues with certain applications under Wayland can switch to Xfce, which does not yet use Wayland by default.  
-  A fork called [SonicDE](https://github.com/Sonic-DE) is currently being developed on GitHub; it can already be installed in the Unstable branch, but we haven’t tested it yet. Feel free to share your experiences with it in the forum.
+LXDE is currently not in a release-ready state. We will provide it later once it is ready for release.
+
+The released siduction 2026.1.0 images are snapshots of Debian Unstable, also known as Sid, from October 12, 2026. They include several useful packages and scripts, a Calamares-based installer, a substantially revised CLI installer, and a customized version of Linux kernel 7.2.10, while systemd is at version 262-1.
+
++ **KDE Plasma 6.7.4**  
+  We ultimately waited for Plasma 6.7 before releasing siduction 2026.1.0 “Big Crime”. This new major version marks a turning point, as it is the last major release of KDE Plasma to include an X11 session. Starting with Plasma 6.8, scheduled for release on October 14, Wayland will be the only supported display protocol.  
+  Users who still encounter problems with individual applications under Wayland can switch to Xfce, which does not yet use Wayland by default.  
+  A fork called [SonicDE](https://github.com/Sonic-DE) is currently being developed on GitHub. It can already be installed in Testing and Unstable, although we have not yet tested it extensively. If you have any experience with it, feel free to share your findings in our forum.
 
 + **Xfce 4.20**  
-  Xfce remains true to its slow release cycle and, as with the last release, is still at [Xfce 4.20](https://linuxnews.de/xfce-4-20-wayland-unterstuetzung-und-noch-viel-mehr/). It still offers experimental support for Wayland, which has been further expanded since the release. In addition, the Thunar file manager, among other components, has received significant improvements.
-
-+ **LXQt 2.3.0**  
-  LXQt is the lightweight counterpart to KDE Plasma. The desktop, which has been in development for ten years, also offers a Wayland session in [Version 2.3.0](https://linuxnews.de/lxqt-2-3-0-mit-mehr-wayland-unterstuetzung/) that is still classified as experimental. Improvements to Wayland support have continued, particularly in the LXQt panel, whose desktop switcher is now enabled for the labwc and niri tiling compositors, and there is a new IPC (interprocess communication)-based backend for Wayfire.
+  Xfce remains true to its slow release cycle and, as with our previous release, is still at [Xfce 4.20](https://www.xfce.org/about/tour420/). It currently offers an experimental Wayland implementation, which has been further developed since its release. In addition, the Thunar file manager, among other components, has received significant improvements.
 
 + **Xorg**  
-  Insert text
+  As before, Xorg provides a way to build your own system based on a preinstalled X server. This currently still works with all the desktop environments we provide, but starting with Plasma 6.8, it will no longer work with KDE and LXQt.  
+  Fluxbox serves as the window manager, offering an extremely fast and resource-efficient environment for the X Window System. This also makes Xorg a suitable starting point for users who cannot or do not yet want to use Wayland.
 
 + **NOX**  
-  With the updated cli-installer (see below), installation on a UEFI GPT system is possible. In addition, users can choose between the *systemd-boot* and *GRUB* boot managers.
+  NOX differs from Xorg in that it does not include an X server. With the revised cli-installer (see below), installation on a modern UEFI/GPT system is now also possible.
 
 ### cli-installer
 
-For siduction 2026.1.0, the cli-installer was completely modernized. It is included in all flavors.  
-With the inclusion of Calamares as the graphical installer, the underlying fll-installer became increasingly obsolete. As a result, both the cli-installer and the fll-installer have remained virtually unchanged since 2018. Since siduction intends to continue offering a NOX flavor, the cli- and fll-installers required a fundamental overhaul to incorporate the latest features.
+For siduction 2026.1.0, the cli-installer was completely modernized. It is included in all flavors.
 
-To clarify: While the *cli-installer* provides the user interface, the *fll-installer* is the actual tool running in the background that writes the data to the hard drive.
+A particular highlight is the integrated boot manager, systemd-boot, which is thus available for installation in all flavors. If you have a simple hardware setup, systemd-boot is a good choice.
 
-A particular highlight is the integrated boot manager, systemd-boot, which is thus available for installation in all flavors. If you have a simple hardware setup, systemd-boot is a good choice.  
+With the inclusion of Calamares as the graphical installer, the underlying fll-installer became increasingly obsolete. As a result, both the cli-installer and the fll-installer have remained virtually unchanged since 2018. Since siduction intends to continue offering a NOX flavor, the cli- and fll-installers required a fundamental overhaul to incorporate the latest features.  
+To clarify: While the *cli-installer* provides the user interface, the *fll-installer* is the actual tool running in the background that writes the data to the hard drive.  
 The revised cli-installer guides the user through the configuration, suggests appropriate actions, checks dependencies and conditions, and provides information about the settings that have been made. You can cancel the program at any time.
 
 **Key changes:**  
@@ -55,7 +56,7 @@ The revised cli-installer guides the user through the configuration, suggests ap
 
 When using the Btrfs file system with siduction, we allow you to manage your snapshots using [Snapper](https://documentation.suse.com/sles/12-SP5/html/SLES-all/cha-snapper.html), a tool developed by SUSE, which has its own chapter in the [siduction manual](https://manual. siduction.org/index_en.html) under *System Administration → Btrfs and Snapper*. A new addition is the *Btrfs Assistant* program, which is available to users in the graphical interfaces and replaces *snapper-gui*.
 
-**Excerpt from the siduction-btrfs info-md:**
+**Excerpt from the documentation (info-md) for siduction-btrfs:**
 
 siduction-btrfs can be used on systems with MBR and GPT partition tables, with or without a separate /boot partition.
 
@@ -72,17 +73,9 @@ If a subvolume is deleted for which boot entries existed, those entries will be 
 *Snapper Snapshot Description*  
 After an APT action, the *snapshot-description* script changes the description displayed by Snapper (apt) to a more meaningful text.
 
-**ChangeLog of changes:**
+### onoff
 
-*siduction-btrfs (0.2.0) unstable; urgency=medium*  
-+ Added support for systemd-boot.
-+ Removed installation dependencies on grub-common and grub-btrfs.
-    + Both allow for a complete switch from GRUB to systemd-boot.
-+ Improved description of snapshots in Snapper.
-
-*siduction-btrfs (0.3.0-1) unstable; urgency=medium*  
-+ Rewritten to use the Snapper plugin directory.
-+ Added support for a boot partition when using GRUB.
+This small script serves as a replacement for the removed *init* command. **onoff** restores the functionality of `init 0` through `init 6`, which was removed by systemd 258~rc1-1, for users on a running system. To switch to a different system state, simply enter the command `onoff`, followed by the number corresponding to the desired system state, in the terminal with root privileges. Users can avoid the long systemd commands and use the familiar numbers instead.
 
 ### Non-free and Contrib
 
@@ -120,11 +113,11 @@ The following non-free and contrib packages are installed by default:
 
 **Remove Non-Free Content**
 
-Currently, the installer does not offer an option to deselect packages that do not comply with the DFSG, the Debian Free Software Guidelines. This means that non-free packages, such as proprietary firmware, are installed by default on the system. The command vrms will list these packages for you. You can manually uninstall unwanted packages or remove them all by entering `apt purge $(vrms -s)` before or after installation. Otherwise, our script `remove-nonfree` can do this for you later.
+If you opted to install non-free software but later change your mind, you can use the vrms (Virtual Richard Stallman) command to identify non-free packages installed on your system. You can remove unwanted packages manually or use the command `apt purge $(vrms -s)` to remove them all at once, including their configuration files. Our *remove-nonfree* script achieves the same result.
 
 ### Installation Notes and Known Issues
 
 If you want to reuse an existing home partition (or another data partition), do so after the installation, not in the Calamares installer.  
 On some Intel graphics processors on certain devices, the system may freeze shortly after booting into Live. To fix this, you need to set the kernel parameter `intel_iommu=igfx_off` before rebooting.
 
-<div id="rev">Last edited: 2026-07-08</div>
+<div id="rev">Last edited: 2026-10-15</div>
