@@ -14,7 +14,7 @@ First, a few words about the new artwork for siduction 2026.1.0, titled “Big C
 
 The editions we offer with siduction 2026.1.0 are KDE Plasma 6.7.4, Xfce 4.20, Xorg, and NOX. Unfortunately, GNOME, MATE, and Cinnamon did not make it into the selection because there are no maintainers for them within siduction. If you are interested or know someone who might be, please get in touch. Perhaps they will return one day. Of course, they can still be installed from the repository.
 
-LXDE is currently not in a release-ready state. We will provide it later once it is ready for release.
+LXQt is currently not in a release-ready state. We will provide it later once it is ready for release.
 
 The released siduction 2026.1.0 images are snapshots of Debian Unstable, also known as Sid, from October 12, 2026. They include several useful packages and scripts, a Calamares-based installer, a substantially revised CLI installer, and a customized version of Linux kernel 7.2.10, while systemd is at version 262-1.
 
